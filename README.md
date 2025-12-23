@@ -16,7 +16,7 @@ Web3, 实习
 - 报名结束时间：2026-01-09
 ## 共学时间
 
-- 共学开始时间：2026-01-11
+- 共学开始时间：2026-01-12
 - 共学结束时间：2026-02-08
 ## 发起人
 
@@ -26,7 +26,7 @@ Web3, 实习
 - Email：nanakodesyo@gmail.com
 ## 发起组织
 
-  [ETHPanda](https://x.com/ETHPanda_Org) <img alt="organization-logo" height="60px" width="60px" src="https://cdn.lxdao.io/10aed40b-4786-4c2b-aaaa-b7d8a119c00e.png" />
+  [ETHPanda](https://ethpanda.org/) <img alt="organization-logo" height="60px" width="60px" src="https://cdn.lxdao.io/10aed40b-4786-4c2b-aaaa-b7d8a119c00e.png" />
 
   [LXDAO](https://x.com/LXDAO_Official) <img alt="organization-logo" height="60px" width="60px" src="https://cdn.lxdao.io/bafkreiay6vxsvv3ksxr75lzzt3iqy3zja3o2epuxh47ivs24p2xs3awexm.png" />
 
