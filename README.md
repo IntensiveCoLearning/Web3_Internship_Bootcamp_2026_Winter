@@ -712,7 +712,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [wanghanyu0120](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/wanghanyu0120.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Sakura125809](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Sakura125809.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [AureliusZoe](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/AureliusZoe.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [oliver917-boop](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/oliver917-boop.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
