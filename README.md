@@ -790,7 +790,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [azolonev-debug](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/azolonev-debug.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Rainzz0929](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Rainzz0929.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [shemb870-dotcom](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/shemb870-dotcom.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [lingxingdell](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lingxingdell.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
