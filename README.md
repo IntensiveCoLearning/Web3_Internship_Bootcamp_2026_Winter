@@ -757,7 +757,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Tank97367](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Tank97367.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [3204086095-netizen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/3204086095-netizen.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [12poem](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/12poem.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [perlie0721-afk](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/perlie0721-afk.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
