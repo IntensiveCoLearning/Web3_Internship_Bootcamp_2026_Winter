@@ -10,7 +10,7 @@ timezone: UTC+13
 
 ## Self-introduction
 
-我是 Bruce，学习中
+我是 Bruce，学习中，希望可以多多交流
 
 ## Notes
 
