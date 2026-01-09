@@ -10,7 +10,7 @@ timezone: UTC+1
 
 ## Self-introduction
 
-刚接触web3
+Web3 实习计划 2025 冬季实习生
 
 ## Notes
 
