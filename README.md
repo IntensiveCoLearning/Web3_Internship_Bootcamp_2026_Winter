@@ -706,7 +706,11 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [zoiaw1214](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zoiaw1214.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [tang04043](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/tang04043.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [heruiqing505-boop](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/heruiqing505-boop.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [BoteDance](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/BoteDance.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [ll7224](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ll7224.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [33406-ssk](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/33406-ssk.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
