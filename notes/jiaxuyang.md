@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-热爱科学
+一枚应用科学到现实的普通人类
 
 ## Notes
 
