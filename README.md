@@ -970,7 +970,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [xingyan33](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xingyan33.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [cxh993505935-sys](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/cxh993505935-sys.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [antoniasun1818-hash](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/antoniasun1818-hash.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Adazhangdada](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Adazhangdada.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
