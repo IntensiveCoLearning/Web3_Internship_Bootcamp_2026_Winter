@@ -975,7 +975,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [BUSHIGUAIGUAI](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/BUSHIGUAIGUAI.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yeonhw](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yeonhw.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Cap-bit-mint](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Cap-bit-mint.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [XuetaoZhang](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/XuetaoZhang.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
