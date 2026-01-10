@@ -882,7 +882,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [zylbeyondlimits](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zylbeyondlimits.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [kola-official](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/kola-official.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [xixi411](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xixi411.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Miing831](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Miing831.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
