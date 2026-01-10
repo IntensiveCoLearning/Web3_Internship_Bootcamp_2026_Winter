@@ -1029,7 +1029,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Xiaonan2020](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Xiaonan2020.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [onschat880-eng](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/onschat880-eng.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [shgjx2014](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/shgjx2014.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [cecilia721](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/cecilia721.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
