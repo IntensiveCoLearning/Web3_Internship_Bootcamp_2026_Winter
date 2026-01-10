@@ -830,7 +830,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [zhangjinkangzhang918-sys](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zhangjinkangzhang918-sys.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yaoyok](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yaoyok.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [dadanina](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/dadanina.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Yeahbeep](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Yeahbeep.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
