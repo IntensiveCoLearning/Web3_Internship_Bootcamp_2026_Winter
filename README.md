@@ -905,7 +905,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [whatareyousay](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/whatareyousay.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [3382501165a-sys](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/3382501165a-sys.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [xiaoyujiayougogogog-sys](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xiaoyujiayougogogog-sys.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Jenny1-9](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Jenny1-9.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
