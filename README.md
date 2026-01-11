@@ -1103,7 +1103,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [michelQ](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/michelQ.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yzhou8620020-png](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yzhou8620020-png.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [karrysmith78-art](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/karrysmith78-art.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [s541031659-afk](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/s541031659-afk.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
