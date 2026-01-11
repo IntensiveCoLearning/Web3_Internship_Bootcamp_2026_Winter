@@ -1167,7 +1167,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [yunfeng1688](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yunfeng1688.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Attila-infinity](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Attila-infinity.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [JenniferCon](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JenniferCon.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [mengyoudealice-sketch](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/mengyoudealice-sketch.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
