@@ -1140,7 +1140,10 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [fufudefa](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fufudefa.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Lesring](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Lesring.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [crabread1004](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/crabread1004.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [3343086702zcl-byte](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/3343086702zcl-byte.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [yangxiao19020306-lab](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yangxiao19020306-lab.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
