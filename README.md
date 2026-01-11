@@ -1194,7 +1194,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [beforeface](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/beforeface.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [linchris02](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/linchris02.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [lix27905-web](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lix27905-web.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [chimeraHHH](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/chimeraHHH.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
