@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+前私募小运营 脚踏实地 仰望星空
 
 ## Notes
 
