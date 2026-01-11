@@ -1213,7 +1213,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [ThatMann-bot](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ThatMann-bot.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Archsoos](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Archsoos.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [fylcr](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fylcr.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [muxin-web3](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/muxin-web3.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
