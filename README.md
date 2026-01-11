@@ -1048,7 +1048,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Raphael-LEI](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Raphael-LEI.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [ziyu777web1](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ziyu777web1.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Loong-XY-09](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Loong-XY-09.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Chanceyz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Chanceyz.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
