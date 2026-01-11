@@ -1077,7 +1077,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [eureka1d2](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/eureka1d2.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [XuTan-20](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/XuTan-20.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [jeef6573-crypto](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jeef6573-crypto.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [LittleModesty](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/LittleModesty.md) | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
