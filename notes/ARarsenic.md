@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-在校学生
+本科在校生，物理学major，关注量子计算机和密码学，相信区中心化的未来
 
 ## Notes
 
