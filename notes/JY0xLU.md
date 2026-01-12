@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+我是来自香港大学（HKU）的学生，目前主修计算机科学（CS）与金融数学（Financial Mathematics）
 
 ## Notes
 
