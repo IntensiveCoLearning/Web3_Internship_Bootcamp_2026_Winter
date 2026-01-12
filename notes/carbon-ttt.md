@@ -24,5 +24,9 @@ web3 learning~
 -   X（tweitter）+ Solana Smart Cashtags：是一个web2流量平台+web3资产的组合，这使得用户几乎不需要了解区块链就可以很轻松的使用。
     
 -   以太坊具备良好的市场契合度，尤其是在与现实世界资产（RWA）的相关领域中。
+    
+-   截止至目前crypto的市值是3.1万亿美元
+    
+-   web3语言:solidity（智能合约的底层逻辑）、move、carior、funor
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
