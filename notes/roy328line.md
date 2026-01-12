@@ -22,6 +22,8 @@ Web3 实习笔记 2026/01/12
 来源\*\*  
 Web3intern 实习手册：\*\*[**区块链基础概念**](https://web3intern.xyz/zh/blockchain-basic/) [**以太坊概览**](https://web3intern.xyz/zh/overview-of-ethereum/)
 
+[《从零到一学以太坊》](https://github.com/XiaoHai67890/021Ethereum)
+
 TL;DR  
 区块链是分布式账本，数据以区块形式串成链。  
 哈希将任意数据映射为固定长度摘要，输入微小变化会导致输出显著变化。  
