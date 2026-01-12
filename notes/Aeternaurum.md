@@ -43,6 +43,10 @@ Web3 实习计划 2025 冬季实习生
 2.  [https://sepolia-faucet.pk910.de/](https://sepolia-faucet.pk910.de/) （需要自己挖矿）
     
 
+### **从零到一学以太坊**
+
+[https://github.com/XiaoHai67890/021Ethereum](https://github.com/XiaoHai67890/021Ethereum)
+
 ### web3行业词汇
 
 [https://unstoppabledomains.com/blog/the-web3-glossary](https://unstoppabledomains.com/blog/the-web3-glossary)
