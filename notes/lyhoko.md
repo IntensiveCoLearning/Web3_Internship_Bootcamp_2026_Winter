@@ -15,6 +15,8 @@ timezone: UTC+7
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今天还什么都没学
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
