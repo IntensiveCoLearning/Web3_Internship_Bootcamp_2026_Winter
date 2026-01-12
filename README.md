@@ -1303,7 +1303,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Ginger417](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Ginger417.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Zriceli490](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Zriceli490.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [jimzzzzzzz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jimzzzzzzz.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [mumiaozxz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/mumiaozxz.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [mumiaozxz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/mumiaozxz.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [hzhao0315](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/hzhao0315.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [25h9yjqhqk-ops](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/25h9yjqhqk-ops.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [lhl1888](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lhl1888.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1315,6 +1315,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Mushroomvw](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Mushroomvw.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Jasmine-mh](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Jasmine-mh.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
