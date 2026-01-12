@@ -668,7 +668,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [liuyuedayueyue-star](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/liuyuedayueyue-star.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [cxydjjzl](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/cxydjjzl.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yangyunqi0077-collab](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yangyunqi0077-collab.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [daithanhtruongstu](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/daithanhtruongstu.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [daithanhtruongstu](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/daithanhtruongstu.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [13187731822](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/13187731822.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [whitemime](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/whitemime.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [asterhe](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/asterhe.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1371,6 +1371,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [whyyt](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/whyyt.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [hedyhai0125-debug](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/hedyhai0125-debug.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
