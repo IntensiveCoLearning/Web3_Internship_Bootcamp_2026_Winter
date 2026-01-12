@@ -55,6 +55,15 @@ SHA256(SHA256(prevBlock, A, t))<=balance(A)*m
 
 -   **链接上链**：新区块被添加到区块链上，更新全网的账本状态
     
--   **奖励发放**：成功打包区块的矿工获得代币奖励和交易手续费
+
+**奖励发放**：成功打包区块的矿工获得代币奖励和交易手续费
+
+# Jan12 分享会
+
+RWA**现实世界中存在的、有价值的资产**，通过 **tokenization（代币化）** 的方式被映射到区块链上，形成可在链上流通、拆分、抵押、交易的数字化资产。
+
+DePIN资源上链
+
+Rust\\合规\\Research analyst AI usage & On-chain Reputation
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
