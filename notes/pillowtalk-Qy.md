@@ -278,6 +278,8 @@ Web3垂直平台：SmartDeer、Crypto Jobs List
 
 链上简历：GitHub绿格子、Mirror文章、DAO提案记录
 
+![f9a7d20559a92e37ceb9bbe668193070.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-12-1768232186376-f9a7d20559a92e37ceb9bbe668193070.jpg)
+
 ## 总结：
 
 ### 结合上述的内容和自身情况来看：
