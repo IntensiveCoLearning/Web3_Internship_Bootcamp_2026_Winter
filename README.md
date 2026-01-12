@@ -1276,7 +1276,10 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [bbruichang-jpg](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/bbruichang-jpg.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [wangye914](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/wangye914.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [zyzzyvar](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zyzzyvar.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [HaiChuan844](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/HaiChuan844.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [gitgdut](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/gitgdut.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
