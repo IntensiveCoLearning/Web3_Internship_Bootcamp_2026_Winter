@@ -432,7 +432,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [njuer-naive](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/njuer-naive.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yuanxuejpjp](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yuanxuejpjp.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Vera9777](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Vera9777.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [qaz14732](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/qaz14732.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [qaz14732](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/qaz14732.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Suzuki666888](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Suzuki666888.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [zh0006xu](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zh0006xu.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [fredyuan-beep](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fredyuan-beep.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -893,7 +893,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Mia0525](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Mia0525.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [suliu9271-jpg](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/suliu9271-jpg.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [zmanfei0316-stack](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zmanfei0316-stack.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [baikingrio](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/baikingrio.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [baikingrio](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/baikingrio.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [chip-cmyk](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/chip-cmyk.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [jiushu-web3](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jiushu-web3.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [zjt20030324-debug](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zjt20030324-debug.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1299,6 +1299,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [prospermen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/prospermen.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [haowen0516](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/haowen0516.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
