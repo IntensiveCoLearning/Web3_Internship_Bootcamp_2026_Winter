@@ -65,5 +65,7 @@ RWA**现实世界中存在的、有价值的资产**，通过 **tokenization（�
 DePIN资源上链
 
 Rust\\合规\\Research analyst AI usage & On-chain Reputation
+
+DAO/开源社区/投研社区
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
