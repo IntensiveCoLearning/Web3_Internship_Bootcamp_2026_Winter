@@ -647,7 +647,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Wynston-Gao](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Wynston-Gao.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Sheryl0907](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Sheryl0907.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Xian172](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Xian172.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [zhouyx2026](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zhouyx2026.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [zhouyx2026](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zhouyx2026.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [tymineros-glitch](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/tymineros-glitch.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Lucassss226](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Lucassss226.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [1713015358-code](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/1713015358-code.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1377,6 +1377,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [wang-chonghuan](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/wang-chonghuan.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yicwang92-cpu](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yicwang92-cpu.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
