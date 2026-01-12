@@ -11,6 +11,8 @@ timezone: UTC+8
 ## Self-introduction
 
 Web3 实习计划 2025 冬季实习生
+base广西南宁，数学系本科
+相关技能：数学建模/数学分析，人像拍摄，活动线下摄影记录，自媒体文案撰写
 
 ## Notes
 
