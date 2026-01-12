@@ -37,7 +37,7 @@ INTJ
 
 # 今日学习成果：
 
-开营仪式笔记：[https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/01/](https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/01/)
+开营仪式笔记：[https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/day1-01/](https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/day1-01/)
 
 中文周会笔记：[https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/week-meeting01/](https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/week-meeting01/)
 
