@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季链习生
+来自Web3 实习计划 2025 冬季的一名链习生
 
 ## Notes
 
