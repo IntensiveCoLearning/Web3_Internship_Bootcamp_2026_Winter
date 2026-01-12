@@ -2,9 +2,9 @@
 timezone: UTC+8
 ---
 
-# edc8000
+# jacezhou
 
-**GitHub ID:** edc8000
+**GitHub ID:** jacezhou
 
 **Telegram:** @rightnow911
 
