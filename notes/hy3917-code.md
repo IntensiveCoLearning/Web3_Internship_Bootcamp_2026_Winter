@@ -17,6 +17,9 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+今日学习内容：[**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) **\- Intro 《021学习以太坊》第一章**  
+**会议总结 （Web3行业全局介绍&岗位概览 ）**  
+  
 [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) **\- Intro**[**学习笔记**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1)  
 视频深入探讨了区块链的核心逻辑，特别是对于开发者而言的思维转变：
 
@@ -232,14 +235,12 @@ NFT：数字收藏品、代币门控聊天 (Token-gated chats)、SVG NFT（直�
 
 1\. 核心定义与愿景
 
--   **什么是以太坊？**
+-   **什么是以太坊？**以太坊是一个**去中心化、开源、具备智能合约功能**的公共区块链平台。
     
-    -   以太坊是一个**去中心化、开源、具备智能合约功能**的公共区块链平台。
-        
-    -   它不仅仅是像比特币那样的“记账系统”，更是一台“全球可编程的计算机”（World Computer）。
-        
-    -   **核心组件：** EVM（以太坊虚拟机），它是图灵完备的，允许运行任意逻辑的程序。
-        
+-   它不仅仅是像比特币那样的“记账系统”，更是一台“全球可编程的计算机”（World Computer）。
+    
+-   **核心组件：** EVM（以太坊虚拟机），它是图灵完备的，允许运行任意逻辑的程序。
+    
 -   **愿景：** 建立在抗审查、去中心化基础设施上的全球共享状态机，任何人都可以在上面构建应用（dApps）。
     
 
