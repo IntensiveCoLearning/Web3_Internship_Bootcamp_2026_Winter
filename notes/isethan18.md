@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+我叫Ethan Jin（金家乐），刚毕业于墨尔本大学，前web2和传统金融从业者，base杭州上海。
 
 ## Notes
 
