@@ -15,6 +15,8 @@ WHUweb3Club|build in public
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-12
+<!-- DAILY_CHECKIN_2026-01-12_START -->
+打卡test Day1
+<!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
