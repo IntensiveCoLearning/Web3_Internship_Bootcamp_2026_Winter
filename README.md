@@ -1345,7 +1345,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [yueshang-1999](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yueshang-1999.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [joyymy](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/joyymy.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [LosAveRoad](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/LosAveRoad.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [smileluck](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/smileluck.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
