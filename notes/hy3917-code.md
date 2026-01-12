@@ -17,7 +17,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
-[**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) **- Intro**[**学习笔记**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1)  
+[**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) **\- Intro**[**学习笔记**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1)  
 视频深入探讨了区块链的核心逻辑，特别是对于开发者而言的思维转变：
 
 **_区块链本质_**：不仅仅是链表，更是一个**P2P 网状网络**。所有节点遵循同一套规则，具有抗审查性。
