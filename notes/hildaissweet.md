@@ -15,6 +15,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-12
+<!-- DAILY_CHECKIN_2026-01-12_START -->
+今天学习了不同岗位的要求，并知道了投研社区。
+<!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
