@@ -15,6 +15,8 @@ Web3 Builder
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-12
+<!-- DAILY_CHECKIN_2026-01-12_START -->
+开通狐狸钱包，稍后尝试测试币转给同学。了解web3手册，尝试mint一个NFT
+<!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
