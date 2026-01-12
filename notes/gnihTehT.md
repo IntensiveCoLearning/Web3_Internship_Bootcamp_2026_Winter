@@ -119,6 +119,10 @@ Web3 实习计划 2025 冬季实习生
 
 ![QQ_1768202463799.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/gnihTehT/images/2026-01-12-1768202468191-QQ_1768202463799.png)
 
+## 如何查看收款记录？
+
+由于MetaMask`活动`UI里只会显示由你发起的活动，所以收款记录要在[https://sepolia.etherscan.io](https://sepolia.etherscan.io)上输入钱包地址查看。
+
 ## 名词解释：
 
 **Etherscan**以太坊区块链浏览器
