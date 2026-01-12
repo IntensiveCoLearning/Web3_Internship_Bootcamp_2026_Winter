@@ -1153,7 +1153,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Kerwin-di666](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Kerwin-di666.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [567szy](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/567szy.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [loooorange](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/loooorange.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [asuraryanlee](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/asuraryanlee.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [asuraryanlee](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/asuraryanlee.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [whs938431-lang](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/whs938431-lang.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [xiaowang-juz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xiaowang-juz.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [nekoyushi0405](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/nekoyushi0405.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1338,6 +1338,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [EddieLuo322](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/EddieLuo322.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [sunchaoyu00-byte](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sunchaoyu00-byte.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
