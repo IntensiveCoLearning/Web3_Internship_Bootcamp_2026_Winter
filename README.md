@@ -1336,7 +1336,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [MXEC](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/MXEC.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [QianCyrus](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/QianCyrus.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [EddieLuo322](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/EddieLuo322.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [sunchaoyu00-byte](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sunchaoyu00-byte.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
