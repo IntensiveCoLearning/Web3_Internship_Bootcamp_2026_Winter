@@ -11,6 +11,7 @@ timezone: UTC+8
 ## Self-introduction
 
 Web3 实习计划 2026 冬季实习生 | 想学技术和运营 |
+INTJ | 黑客松准备中
 INTJ
 
 ## Notes
