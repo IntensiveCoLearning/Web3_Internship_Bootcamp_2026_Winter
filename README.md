@@ -1003,7 +1003,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [GIN123456GIN](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/GIN123456GIN.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [luuzuofan-design](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/luuzuofan-design.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [cocer6737](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/cocer6737.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [babymiano1](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/babymiano1.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [babymiano1](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/babymiano1.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [love4399game](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/love4399game.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [leela-1239](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/leela-1239.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [SalingerC](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/SalingerC.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1360,6 +1360,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [fankaiming2](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fankaiming2.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [haorenxi](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/haorenxi.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
