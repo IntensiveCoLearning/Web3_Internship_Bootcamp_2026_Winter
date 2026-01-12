@@ -29,6 +29,12 @@ Day1打卡
 
 3.已创建 MetaMask钱包并进行交互
 
-4.待晚上进一步补充
+4.web3行业介绍主题分享会已参加
+
+![84f8e71e4b106531d5312de2591fed0d.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/JarvisRiser/images/2026-01-12-1768222313685-84f8e71e4b106531d5312de2591fed0d.png)
+
+5.未来四周的学习规划和职业目标：
+
+准备从web2转向web3，灵活运用自身在web2各行业的经验，以及在web2不同行业（教育、职场、创业）的自媒体成功起号经验，往web3运营岗发起进攻。通过熟悉的技能打开新行业的大门，先让自己置身其中，感受水温，真切的感受到这个行业在做的事情，再逐步优化。
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
