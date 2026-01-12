@@ -46,5 +46,9 @@ Web3 实习计划 2025 冬季实习生
 JD&待遇
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Jiiiiiiiiil/images/2026-01-12-1768232960212-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Jiiiiiiiiil/images/2026-01-12-1768232998764-image.png)
+
+# 以太坊中文周会笔记
+
+待更新
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
