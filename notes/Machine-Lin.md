@@ -148,5 +148,26 @@ Web3 实习计划 2025 冬季实习生
 -   web3.0不是区块链技术，而是传统互联网的数据组织升级；web3是区块链驱动的革命
     
 -   web3.0主要不依赖ai，而是勇敢标准化数据格式实现
+    
+
+## 5.技术栈对比
+
+web2开发：
+
+```
+React + Node.js + MySQL
+```
+
+web3开发：
+
+```
+React + Ethers.js + Solidity + IPFS
+```
+
+web3.0开发：
+
+```
+Python + RDFLib + SPARQL
+```
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
