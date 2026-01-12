@@ -15,6 +15,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-12
+<!-- DAILY_CHECKIN_2026-01-12_START -->
+完成了web3行业介绍学习
+<!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
