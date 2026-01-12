@@ -22,7 +22,7 @@ timezone: UTC+8
 1.  Web3 实习手册入门导读部分  
     区块链：一种去中心化的分布式账本技术
     
-2.  Web2 to Web3 A Developer's Guide to Building on Ethereum - Day 1 - Intro
+2.  Web2 to Web3 A Developer’s Guide to Building on Ethereum - Day 1 - Intro
     
 
 从 Web2 转向 Web3 开发时，开发者不仅需要学习新的工具，更需要建立一种全新的去中心化心理模型。
