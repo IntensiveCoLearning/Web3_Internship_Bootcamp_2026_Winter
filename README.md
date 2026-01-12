@@ -1208,7 +1208,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [shy11415](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/shy11415.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [19135621009](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/19135621009.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [JChang0934](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JChang0934.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [YC-Indis](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/YC-Indis.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [YC-Indis](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/YC-Indis.md) | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Murphy3513-create](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Murphy3513-create.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [ThatMann-bot](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ThatMann-bot.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Archsoos](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Archsoos.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1364,6 +1364,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [rhyme42](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/rhyme42.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [paulyangybr-bit](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/paulyangybr-bit.md) |   | | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
