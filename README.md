@@ -1413,7 +1413,10 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Rzsanw](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Rzsanw.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [hurryzhang9-max](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/hurryzhang9-max.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [1449679079-source](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/1449679079-source.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [kingdashougs-hue](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/kingdashougs-hue.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [zhuzzzz-max](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zhuzzzz-max.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
