@@ -1408,7 +1408,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [emdysq](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/emdysq.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [SelfishMan-mm](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/SelfishMan-mm.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [GarryHuang0118](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/GarryHuang0118.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Keli-23](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Keli-23.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
