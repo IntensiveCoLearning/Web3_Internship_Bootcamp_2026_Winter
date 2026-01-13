@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+### **\[UNIV3-1\] Introduction of Uniswap V3**
+
+**Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
+
+$$  
+P\_{X/Y} = \\frac{Y}{X}  
+$$
+
+  
+
+只有当 L^2 足够大，这个 Pair 才可以说够“坚固”，不然很容易被恶意操控。既然如此，Uniswap V3 的出发点就是能否直接通过很小的资金来代表很大的流动性。于是 Uniswap V3 的核心`Concentrated Liquidity`就诞生了，其目的就是允许一对 Pair 可以在指定价格区间进行 swap，换句话说就是将流动性集中在指定价格区间。只有在指定价格区间的流动性才是真流动性`real reserves`,非区间的流动性都是虚拟流动性`virtual reserves`
+
+**Diff between V2 and V3:** 在V2中，我们通过X和Y的存量来计算流动性和Price，但是在V3中我们通过流动性和Price来计算X和Y。Active Liqituity用ERC712来表示，而不是ERC20。Swap Fee也存在区别，V2是固定0.3%，但是V3有四种不同的计费规则。TWAP的计算也会有区别
+
+![uniswapV3OverView.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Max-wht/images/2026-01-13-1768322676813-uniswapV3OverView.png)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ### **\[N-2\] Phased Plan from 1/12 to 2/8 in 2026**
 
 **Discription:** 我的目标岗位是合约审计。这个岗位门槛真的很高，而且是和合约开发高度耦合的。一个优秀的审计员无疑也是一个优秀的开发者，二者需要的知识储备，技术栈都是相似的。
@@ -241,6 +261,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
