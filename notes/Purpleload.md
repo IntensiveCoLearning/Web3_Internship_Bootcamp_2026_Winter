@@ -15,8 +15,20 @@ web2 打工人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+打卡
+
+不知道要幹嘛 任務都做7/80% 了 哈哈
+
+在聽Bruce 老師講 fundamental of web 3
+
+每天都有不同主題 , 又是下班時間 我都當podcast 來聽
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 打卡
 
 1.  选了Draken 老師做助教 , 因為是Web2 转 Web3 的人
