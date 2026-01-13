@@ -17,6 +17,27 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+## **\[N-2\] Phased Plan from 1/12 to 2/8 in 2026**
+
+**Discription:** 我的目标岗位是合约审计。这个岗位门槛真的很高，而且是和合约开发高度耦合的。一个优秀的审计员无疑也是一个优秀的开发者，二者需要的知识储备，技术栈都是相似的。
+
+这四周我需要学习市面上主流Defi的源码，学习里面优秀的设计模式，以及其他Dapp如何接入这些Defi protocal
+
+-   uniswap V3
+    
+-   uniswap V4
+    
+-   Aave V4
+    
+-   GMX
+    
+
+一周学一个吧，前两周允许我进度慢一点，还在期末考试中。除此之外继续跟进实习计划的任务，目标是保持在排行榜的前面，也希望能在实习结束接到一个开发的实习。目前我Solidity的代码量还是太少了，还是没能做到随心所欲的地步，需要一些开发来逐渐精通。
+
+这一段时间应该是参加不了Competitve Audit了，不过这些比赛我今后长期活跃在其中。还有黑客松，我也会经常参加。最近还觉得需要在社交媒体中建立自己的权威，比如在推特上，这个方向我也会关注，不过不是现在这四周的重心。
+
+我能感觉到现在是我人生的一个小小新阶段的起步。未来会专注于合约审计和开发并行学习，我觉得自己还是需要开发的经验作为积累，二者并行的学习模式可能是最适合现阶段的我的。
+
 ### **\[UNIV2-3\] TWAP (time weight everage price) in UniswapV2**
 
 **Discription:** 在使用 Uniswap 这种链上 Oracle 最为 price 来源的时候，很容易(100%)会受到攻击，原因就在于 Uniswap 的价格太好操控了，任何一个人做 FlashLoan 就可以让价格波动很大。由此 Uniswap 提供`TWAP`(time weight everage price)来防止价格波动。注意，TWAP 价格和现货价格是两个东西。
@@ -27,13 +48,13 @@ Web3 实习计划 2025 冬季实习生
     
     -   Token X 以 Token Y 计价的现货价格:
         
-        P\_X/Y=YX_P_\__X_/_Y_\=_XY_​
+        P\_X/Y=YX\_P\_\__X_/_Y_\=\_XY\_​
         
 -   **TWAP 价格**
     
     -   Token X 在时间区间 i 到 k 的时间加权平均价格
         
-        TWAPX(Tk,Tn)=∑i=kn−1ΔTi PiTn−TkTWAP_X_​(_Tk_​,_Tn_​)=_Tn_​−_Tk_​_i_\=_k_∑_n_−1​Δ_Ti_​_Pi_​​
+        TWAPX(Tk,Tn)=∑i=kn−1ΔTi PiTn−TkTWAP\_X\_​(\_Tk\_​,\_Tn\_​)=\_Tn\_​−_Tk\_​\_i_\=_k_∑_n_−1​Δ\_Ti\_​\_Pi\_​​
         
 
 💹 \_update in pair
@@ -220,6 +241,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ### **\[B-1\] Etherscan::Transaction**
 
