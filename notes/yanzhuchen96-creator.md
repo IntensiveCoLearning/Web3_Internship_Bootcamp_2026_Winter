@@ -34,10 +34,13 @@ Web3 实习计划 2025 冬季实习生
 
 先找到人（UDP + Kademlia） → 再拉上加密专线（TCP + RLPx/devp2p） → 最后靠八卦（gossip）把消息传满全网（Gossip + 请求/响应）  
 RLPx = 在一条 TCP 线上开很多“分机”：同一根网线同时承载区块同步、 交易广播、状态请求等多种子协议流量。 这也是为什么会说：“以太坊的 P2P 网络主要由 UDP 的 Node Discovery 协议 + TCP 上的 RLPx/devp2p 协议 组成”。
+
+轻节点不参与共识，不能做验证者
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## 今日学习目标（周一 1.12）
