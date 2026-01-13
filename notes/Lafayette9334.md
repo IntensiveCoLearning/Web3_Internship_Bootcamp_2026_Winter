@@ -16,6 +16,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+计划：学习「web3行业全局介绍&岗位概览」
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
