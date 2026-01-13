@@ -15,8 +15,86 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## **Day 2 学习计划**
+
+总体学习计划如下：
+
+-   阅读Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
+    
+-   学习《021学习以太坊》中的第一章
+    
+-   观看[**A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+    
+-   观看[**Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+    
+
+## **Web3 实习手册阅读**
+
+### **1\. 行业赛道全览：Web3 的生态版图**
+
+Web3 已从单一支付系统演变为多元生态，手册重点剖析了四大核心领域：
+
+-   **DeFi (去中心化金融)：** 核心在于“无需准入”和“资产自托管”。
+    
+    -   **Uniswap：** 通过恒定乘积公式 (`x * y = k`) 实现自动定价的去中心化交易所。
+        
+    -   **Compound/MakerDAO：** 展示了超额抵押借贷和去中心化稳定币（DAI/USDS）的运行机制。
+        
+-   **NFT (非同质化代币)：** 实现了数字所有权的唯一性，代表案例包括先锋项目 CryptoPunks 和交易平台 OpenSea。
+    
+-   **DAO (去中心化自治组织)：** 探索社区驱动的治理模式，如支持公共物品建设的 **LXDAO**。
+    
+-   **MEME 与交叉创新：** 分析了文化溢价下的 MEME 币现象，以及 AI + Web3、模块化区块链等 2025 年新兴趋势。
+    
+
+### **2\. Web3 工作方式：远程协作与行业基因**
+
+远程办公是 Web3 世界的生存法则，强调高效、异步且安全的协作习惯。
+
+-   **必备工具箱：** 掌握社交媒体 (Twitter/Discord/Telegram)、资产管理 (MetaMask)、协作文档 (Notion)、代码托管 (GitHub) 及会议工具 (Zoom/Calendly)。
+    
+-   **远程协作素养：** 学习 OKR 目标管理、跨时区异步沟通技巧（超预期交付、埋点式复盘）以及如何防范日益猖獗的钓鱼和钓鱼诈骗。
+    
+-   **行业黑话 (Lingo)：** 熟练使用 **DYOR** (自行研究)、**FOMO** (害怕错过)、**WAGMI** (大家都会成功) 等文化语言，这是快速融入 Web3 社区的“门票”。
+    
+
+## **《021学习以太坊》第一章学习**
+
+这本书第一章主要讲了三件事：
+
+### **1\. 底层逻辑（区块链基础概念）**
+
+-   **不只是账本**：它是一个去中心化的分布式系统，核心就是“不可篡改”和“所有权”。
+    
+-   **Web2 vs Web3**：Web2 是你租大公司的房子住（数据是人家的），Web3 是你自己买地盖房（数据所有权归你）。
+    
+
+### **2\. 以太坊运转原理**
+
+-   **世界计算机**：它不只能转账，还能跑智能合约（Smart Contracts），就像一台自动售货机，代码写好了就自动执行。
+    
+-   **经济账 Gas**：干活得付钱，Base Fee 还会被销毁来让 ETH 更有价值。
+    
+-   **两种账户**：你用的钱包叫 EOA，存代码的叫 CA。
+    
+
+### **3\. web3行业赛道全览**
+
+-   **DeFi 还是老大**：Uniswap 靠 `x*y=k` 自动定价，Compound 让你抵押借贷。
+    
+-   **NFT 和 DAO**：NFT 搞定数字资产的唯一性，DAO 则是大家凑在一起不归谁管、靠投票决定怎么干活的组织。
+    
+
+## **A Developer's Guide to Building on Ethereum - Intro / Becoming a Power User - Wallets, Mnemonics, Keypairs 学习**
+
+这个视频强调了从 Web2 转型 Web3 的关键在于“先成为用户，再成为开发者”，通过为期四周的计划，从熟悉 MetaMask 和 DEX 等工具的“超级用户”，逐步晋升到掌握 Hardhat 和 Ethers.js 的专业工程师，最终目标是能够独立构建去中心化应用或从事高阶的合约安全审计（这也是我现在正在努力进军的方向）。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 Web3 实习笔记 2026/01/12
 
 学习计划
