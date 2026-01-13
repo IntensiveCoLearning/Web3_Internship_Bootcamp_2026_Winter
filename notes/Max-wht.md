@@ -17,7 +17,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
-## **\[N-2\] Phased Plan from 1/12 to 2/8 in 2026**
+### **\[N-2\] Phased Plan from 1/12 to 2/8 in 2026**
 
 **Discription:** 我的目标岗位是合约审计。这个岗位门槛真的很高，而且是和合约开发高度耦合的。一个优秀的审计员无疑也是一个优秀的开发者，二者需要的知识储备，技术栈都是相似的。
 
@@ -241,6 +241,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ### **\[B-1\] Etherscan::Transaction**
