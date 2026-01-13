@@ -15,8 +15,262 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# [Ethereum](ethereum.org)
+
+## 1\. What is Ethereum?
+
+**Ethereum** is a **decentralized blockchain network and software development platform**, powered by its native cryptocurrency **ether (ETH)**.
+
+Unlike Bitcoin, which focuses on peer-to-peer digital cash, Ethereum supports **smart contracts** — open-source programs that run automatically on the blockchain.
+
+**Key idea**: **Ethereum = programmable, global, permissionless infrastructure**
+
+## 2\. Smart Contracts
+
+**Smart contracts** are:
+
+-   Open-source programs
+    
+-   Deployed on Ethereum
+    
+-   Run **24/7**, globally
+    
+-   Cannot be altered once deployed
+    
+-   Do not rely on banks, companies, or governments
+    
+
+They allow anyone to build **decentralized applications (dapps)** that are:
+
+-   Trustless
+    
+-   Censorship resistant
+    
+-   Automatically enforced by code
+    
+
+## 3\. The Ethereum Network
+
+The **Ethereum network** is made up of thousands of independent computers called **nodes**.
+
+Each node:
+
+-   Stores the entire state of Ethereum
+    
+-   Verifies transactions and smart contracts
+    
+-   Operates independently around the world
+    
+
+### Key advantages of the Ethereum network:
+
+1\. Censorship resistance
+
+No bank, company, or government can block transactions or freeze accounts.
+
+2\. High security
+
+All nodes store and verify the same data. Any invalid change is rejected by the network.
+
+3\. Durability and reliability
+
+Ethereum has no single point of failure and maintains continuous uptime even during disruptions.
+
+## 4\. Ether (ETH)
+
+**Ether (ETH)** is the native cryptocurrency of Ethereum.
+
+ETH is used to:
+
+1.  **Pay gas fees** (transaction fees)
+    
+2.  **Reward validators**
+    
+3.  **Secure the network through staking**
+    
+
+### ETH supply mechanics:
+
+-   New ETH is issued as validator rewards
+    
+-   A portion of ETH is **burned** with every transaction
+    
+-   On high-usage days, more ETH is burned than created
+    
+-   This can make ETH **deflationary**
+    
+
+## 5\. Gas Fees
+
+Every transaction on Ethereum requires a **gas fee**, paid in ETH.
+
+Gas fees:
+
+-   Prevent spam
+    
+-   Compensate validators
+    
+-   Reflect network demand
+    
+
+High fees indicate strong usage and security demand.
+
+## 6\. Proof of Stake (PoS)
+
+Ethereum originally used **Proof of Work**, but transitioned to **Proof of Stake** in 2022.
+
+In Proof of Stake:
+
+-   **Validators** lock up ETH as a security deposit (staking)
+    
+-   Validators propose and attest to blocks
+    
+-   Honest behavior earns rewards
+    
+-   Dishonest behavior results in penalties (slashing)
+    
+
+This upgrade reduced Ethereum’s energy consumption by **over 99%**.
+
+## 7\. How Transactions Work (Simplified Flow)
+
+Example: Sending stablecoins on Ethereum
+
+1.  A wallet signs and broadcasts a transaction
+    
+2.  The transaction enters the **mempool**
+    
+3.  A validator selects the transaction
+    
+4.  The transaction is included in a block
+    
+5.  Smart contracts update balances
+    
+6.  Validators attest to the block’s validity
+    
+
+All state changes are synchronized across all nodes.
+
+## 8\. Layer 2 (L2) Networks
+
+**Layer 2 (L2) networks** run on top of Ethereum to improve scalability.
+
+They:
+
+-   Reduce transaction costs
+    
+-   Increase transaction speed
+    
+-   Inherit Ethereum’s security
+    
+
+Examples:
+
+-   Optimism
+    
+-   Arbitrum
+    
+-   zkSync
+    
+-   Base
+    
+
+L2s process millions of transactions while settling on Ethereum.
+
+## 9\. What is Ethereum Used For?
+
+Ethereum enables use cases that were previously impossible:
+
+### Consumers
+
+-   Access financial services without banks
+    
+-   Own digital assets (NFTs)
+    
+-   Sign in using wallets instead of passwords
+    
+-   Participate in decentralized communities
+    
+
+### Developers & Businesses
+
+-   Deploy tamper-proof smart contracts
+    
+-   Launch global applications instantly
+    
+-   Build composable financial products
+    
+
+### Governments & NGOs
+
+-   Transparent aid distribution
+    
+-   Digital identity systems
+    
+-   Public infrastructure for registries and voting
+    
+
+## 10\. Ethereum vs Bitcoin
+
+| Feature | Bitcoin | Ethereum |
+| --- | --- | --- |
+| Purpose | Digital money | Programmable infrastructure |
+| Smart contracts | Limited | Fully programmable |
+| Consensus | Proof of Work | Proof of Stake |
+| Energy use | High | Low |
+| Supply | Fixed (21M BTC) | Dynamic (issuance + burn) |
+
+**Bitcoin** focuses on value storage.  
+**Ethereum** focuses on building applications.
+
+## 11\. Governance & Development
+
+Ethereum has **no central authority**.
+
+The network is maintained by:
+
+-   Developers
+    
+-   Node operators
+    
+-   Validators
+    
+-   Community members
+    
+
+Changes are proposed through **Ethereum Improvement Proposals (EIPs)** and adopted only through community consensus.
+
+## 12\. Ethereum Roadmap (2025)
+
+Ethereum follows a **shared vision**, not a fixed roadmap.
+
+Recent upgrade:
+
+-   **Pectra (May 2025)**
+    
+    -   Improved smart wallet functionality
+        
+    -   Better Layer 2 compatibility
+        
+    -   Increased staking flexibility
+        
+
+Ongoing priorities:
+
+-   Scalability
+    
+-   Usability
+    
+-   Security
+    
+-   Decentralization
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 
 ## 核心
