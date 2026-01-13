@@ -27,12 +27,11 @@ timezone: UTC+8
 | Vibe Coding 方法论：不会编程的人如何用 AI 写出能跑的代码 |   |
 | 写给00后：为什么我们不能错过 Web3 |   |
 
-  
 **一些工具和网站:**
 
 | 官方文档 | 研究报告 | 中文资源： |
 | --- | --- | --- |
-| Ethereum.org - 以太坊官方文档 | Messari - 区块链项目深度分析= | ETHPanda - 以太坊中文社区 |
+| Ethereum.org - 以太坊官方文档 | Messari - 区块链项目深度分析 | ETHPanda - 以太坊中文社区 |
 | Uniswap Docs - Uniswap 协议文档 | The Block - 行业数据和趋势 | LXDAO |
 | OpenSea Learn - NFT 入门指南 | Delphi Digital - 加密市场研究 |   |
 
@@ -41,6 +40,6 @@ timezone: UTC+8
 |   | 找工作 |
 | --- | --- |
 | 用AI设计网站：Stitch - Design with AI | DeJob |
-|   | The Ethereum Season of Internships |
+|   | The Ethereum Season of Internships - 英文，以太坊实习季 |
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 <!-- Content_END -->
