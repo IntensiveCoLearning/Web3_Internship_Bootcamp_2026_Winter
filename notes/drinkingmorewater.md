@@ -118,10 +118,13 @@ Q:私钥泄露被偷了怎么办？警方不给立案
 A:数额比较大的可能会立案，通过冻结对方账号来追回。但是如果在对方钱包里没有上链是直接追踪不到的。一旦私钥被破解就会归零。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768310582407-image.png)
+
+硬件钱包：onekey
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
