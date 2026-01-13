@@ -16,8 +16,20 @@ web3素人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 今日计划
+
+1.  021以太坊第一章
+    
+2.  My fisrt NFT
+    
+3.  Web3实习手册入门导读
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 区块链基础概念
 
 ## 一、区块链
