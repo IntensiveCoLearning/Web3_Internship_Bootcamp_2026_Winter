@@ -15,6 +15,10 @@ Learning Web3 through self-directed study, with a focus on understanding protoco
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+Went through the Web3 onboarding and introductory Ethereum materials to establish a general overview.
 
-
+Currently focusing on understanding the overall structure and relationships between core concepts, with deeper understanding to come from practice.
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
