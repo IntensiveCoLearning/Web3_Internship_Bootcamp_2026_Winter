@@ -62,5 +62,11 @@ timezone: UTC+8
 以太坊（Ethereum）是一个开源的去中心化区块链平台，通过其原生加密货币以太币（Ether，简称 ETH）提供去中心化的以太虚拟机（EVM）来处理点对点合约。
 
 以太坊的核心创新在于 **智能合约（Smart Contracts）** 。智能合约是存储在区块链上的可执行代码，能够在满足预设条件时自动执行操作，无需人工干预。这一特性使得以太坊不仅是数字货币的载体，更是构建去中心化应用（Dapps）、去中心化金融（DeFi）、非同质化代币（NFT）等生态系统的基础设施。
+
+我的第一个NFT：
+
+我刚刚在《我的第一个 NFT》 @LXDAO\_Official [https://nft.myfirst.io/](https://nft.myfirst.io/) 网站上学习什么是 Web3 和 NFT，并且铸造了一个 NFT 来当头像。有兴趣的可以一起来学习铸造一个～
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/poyoxd-bit/images/2026-01-13-1768270511262-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/poyoxd-bit/images/2026-01-13-1768270533293-image.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
