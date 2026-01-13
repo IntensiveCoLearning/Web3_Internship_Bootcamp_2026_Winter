@@ -15,8 +15,309 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 自我介绍(●'◡'●)
+
+-   Only 04infj/tj 大三在读❤️
+    
+-   目标：2026上半年在web3拿到大结果
+    
+-   爱好：看书，赚钱，看漫画，玩经营类小游戏，徒步，聊天，成长...
+    
+-   副业：设计接单，各类小兼职（我们也可以想法交流~）
+    
+-   如果你也想一起进步或者聊聊欢迎联系~vx:LL2020150
+    
+
+# 今日web3通识学习💕
+
+### 区块链
+
+-   区块链概念：去中心化分布式账本技术
+    
+    -   区块：交易记录，之前区块摘要（哈希)。有限存储容量。每个区块一定时间内打包
+        
+    -   链：一条链链接两个区块。只有一条链。区块按顺序串联
+        
+    -   区块链
+        
+        ![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmE5NzY1MDBjYjNjN2ViYzFiNTQ4ZTU0YWI3ZTI2NTZfTkxRbTJrTmJ3d3NEenlXb3ZUSnhHc0Z1NUdHdXBycDRfVG9rZW46QmJlYWJSbHVMb1ZOc2N4TUlsQWMxNmhZbm1iXzE3NjgzMDg2NDQ6MTc2ODMxMjI0NF9WNA)
+-   区块链特性
+    
+    -   不可篡改：（每个区块链接上个区块摘要，修改一个all修改。+区块链网络分布全球一个人无法控制>51%节点）
+        
+        -   一个区块链网络十分多节点（矿机）记账，每个节点记录完整相同区块链消息
+            
+            ![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=MjJiOGVmNzc2YWIyMTdjMjRhOTAyMTU3YWRmYWU4NGFfNW42RVlrck90OU9tVzdlMFBrcEdBMTF1b3kzTTBMb05fVG9rZW46Q2dsaGJXd1Jyb2J2NHd4amt3OGM0S0g5bmpkXzE3NjgzMDg2NDQ6MTc2ODMxMjI0NF9WNA)
+    -   去中心化（区块链网络分布全球）
+        
+    -   公开透明匿名：（区块链消息公开透明，但是不知道是谁的）
+        
+    -   快速交易（交易打包在区块链中，交易自动完成）
+        
+-   BTC（提供区块链服务的奖励货币）
+    
+    -   区块链很好，但是需要人提供服务，而提供服务的人可以获得奖励BTC
+        
+    -   货币属性（有限，自由转账）
+        
+    -   高不稳定价格：由供需决定，容易受热点新闻影响
+        
+    -   缺点
+        
+        -   难以追踪和现在，容易被黑产利用。
+            
+        -   打包区块需要时间，会影响实时性
+            
+    -   区块链如何交易公开透明且同时保护隐私
+        
+        -   交易通过随机生成的钱包地址完成。交易公开透明吗。匿名：别人不知道钱包和你的关系
+            
+-   区块链组成部分+运行
+    
+    -   去中心化网络+区块链+维持网络运行的代币奖励（矿工）
+        
+    -   如何运行
+        
+        -   发起交易——交易广播（消息传递到各个节点）——节点验证（合法性，余额）——打包成块（验证过的交易打包成新的区块）——链接上链（新区块被加到区块链上）——奖励发放（矿工）
+            
+-   区块链分类（公链，私链，联盟链）
+    
+    -   公链：自由出入，规则由大家制定。数据所有人可见。但人太多，决策效率低
+        
+    -   联盟链：多公司组成的董事会
+        
+        -   需要邀请/申请
+            
+        -   权限分类
+            
+            -   决策者：可修改数据库规则
+                
+            -   观察者：只能看
+                
+        -   管理数据模式：半公开数据（只有董事会可以看到），联合决策（董事会成员投票）
+            
+        -   效率比公链高，隐私比公链好
+            
+    -   私链：私人俱乐部。严格审批，固定成员，数据私有，老板决定。效率高
+        
+
+### 以太坊（去中心化区块链平台）
+
+-   相关概念
+    
+    -   以太坊：开源的去中心化区块链平台。通过ETH提供去中心化以太虚拟机EVM处理对点合约
+        
+    -   ETH(以太币）：原生加密货币。在以太坊操作都需要ETH支付gas fee
+        
+    -   智能合约：存储在区块链上可执行代码，满足预设条件自动执行操作
+        
+        -   在此基础构建Dapps(去中心化应用），DeFi（去中心化金融),NFT(非同质化代币/数字艺术品）,DAO(道，去中心化自治组织）
+            
+-   发展阶段
+    
+    -   PoW阶段：工作量证明（矿工通过挖矿争夺打包权利，消耗大量电力）
+        
+        -   以太坊2.0与The Merge双链并行：PoW挖矿+信标链Beacon Chain运行PoS验证
+            
+            -   PoS验证
+                
+                -   系统随机选择验证者来提议和验证区块，节省电力
+                    
+        -   以太坊2.0与The Merge双链合并
+            
+            -   以太坊关闭PoW挖矿，共识机制插入PoS系统。以太坊主网由信标链保护安全
+                
+            -   实际架构
+                
+                -   执行层：处理交易、智能合约（原主网）
+                    
+                -   共识层：管理验证者、确定区块顺序（信标链
+                    
+        -   一些技术
+            
+            -   Layer 2 ：在链下批量处理交易，定期将交易数据“打包”提交到以太坊主网，主网验证数据正确性
+                
+            -   ZK-Rollup ：在链下一次性处理数百笔交易，生成一个简洁的“正确性证明”，以太坊只需验证这个证明
+                
+                -   代表项目：zkSync Era、Polygon zkEVM、Scroll
+                    
+-   生态概览
+    
+    -   多层架构
+        
+        -   Layer 1（L1）
+            
+            1.  以太坊主网：核心区块链，负责最终安全性与共识。
+                
+            2.  EVM：以太坊虚拟机，执行智能合约代码。
+                
+            3.  账户系统：外部账户（EOA）与合约账户（CA）共同构成网络基础。
+                
+        -   Layer 2（L2）
+            
+            1.  Rollup：通过将交易批量处理后提交至 L1，降低 Gas 费。
+                
+                -   Optimistic Rollup：假设交易合法，仅在争议时验证。
+                    
+                -   ZK Rollup：通过零知识证明验证交易，无需链上争议。
+                    
+        -   侧链（Sidechains）：独立运行的链，通过桥接与主网交互。
+            
+        -   以太坊生态分层架构
+            
+    -   多层次
+        
+        -   应用
+            
+            -   DeFi 应用：Uniswap（去中心化交易所）、Aave（借贷协议）、Compound（借贷协议）
+                
+            -   NFT 平台：OpenSea、Foundation、SuperRare
+                
+            -   钱包应用：MetaMask、Coinbase Wallet、Rainbow
+                
+            -   DAO 工具：Snapshot、Aragon、Colony
+                
+        -   协议
+            
+            -   共识层客户端：Prysm、Lighthouse、Nimbus、Teku
+                
+            -   执行层客户端：Geth、Nethermind、Erigon、Besu
+                
+            -   核心协议：EVM、状态管理、Gas 机制
+                
+        -   扩展
+            
+            -   Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
+                
+            -   侧链：Polygon PoS、xDAI（Gnosis Chain）
+                
+            -   状态通道：Lightning Network for Ethereum
+                
+-   机制
+    
+
+-   账户系统——用户发起交易
+    
+    -   EOA外部账户 密钥（公钥和私钥）生成
+        
+    -   CA合约账户：代码驱动。只有你按下才能执行代码
+        
+    -   包含字段
+        
+        -   Nonce：防止重复交易的计数器（EOA 记录发送次数，CA 记录创建合约次数）
+            
+        -   余额：账户持有的 ETH 数量（单位为Wei）
+            
+        -   CodeHash：EOA 为空哈希，CA 存储合约字节码的哈希值。
+            
+        -   StorageRoot：记录账户数据的 Merkle 树根哈希
+            
+-   Gas模型——矿工打包
+    
+    -   Gas 费用 = 用多少 × 每单位多少钱
+        
+-   以太坊虚拟机EVM：执行代码
+    
+    -   专门用来运行智能合约的虚拟计算机
+        
+
+### web3全局概览
+
+私钥，钱包与个人主权——证明你是谁
+
+-   私钥：一长串
+    
+    -   不可修改，没了就是没了
+        
+    -   不截图，不网盘，不发人，不复制不可信环境，小心剪贴板（容易被监控）
+        
+-   助记词：私钥可读备份（私钥推出多个助记词）
+    
+-   钱包地址：公开收款码
+    
+
+交易和签名——授权
+
+交易（TX/Transaction)
+
+私钥签名了一段信息，证明是你发出
+
+区块链网站可以看到交易很多细节
+
+区块链网络运行——保证账本可信
+
+![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=YjdmYjhjYjQzOTUzNjFjMDM2NGNlZGRiYjg2OWMxMDJfYmd4dHVBaW0yTkxmWFM5cVJLQlZSV3d2eXZXdUVPTHhfVG9rZW46QzhYb2JKVkZJb3ZreUN4MEVScmN5YmsxbjJTXzE3NjgzMDkxMzY6MTc2ODMxMjczNl9WNA)
+
+1.  如何认同同一笔帐：PoW PoS
+    
+
+智能合约——规则自动执行
+
+-   区块链账本的可执行代码
+    
+-   在EVM（虚拟机）运行，交易触发执行，写进区块链
+    
+
+区块链协议如何升级——优化
+
+![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=OGY3NWQzMmE5NmJjNmIxMTNlMTlmNjg0Mzk5MjZjNWNfaUJ1Q0RQTlE0RTRIOFZpNVJkRVIwOEFTcG1na0lYTVJfVG9rZW46T2ZWT2IxSXNZbzhKMXV4Q0F0UGNMdVFHbjR2XzE3NjgzMDkxMzY6MTc2ODMxMjczNl9WNA)
+
+跨学科
+
+![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGFmYjIxYTI2NTYyM2NlZmMyMjA3ZmY2MDQxYzg1NTFfcmU4OGlPRVhCa3RwS2FkNHE0QUJtbTRJb1p2cmJZYnFfVG9rZW46VGZvRmJNUGtXb0UzUm94dFhnbmNKZDY1bkZoXzE3NjgzMDkxMzY6MTc2ODMxMjczNl9WNA)
+
+# 今日实操❤️
+
+### NFT
+
+-   了解什么是区块链（区块，链，区块链），区块链组成（去中心化网络+区块链，代币机制激励运行），以太坊（区块链），btc,eth（币）
+    
+-   NFT：非同质化代币
+    
+    -   同质化代币：货币的代币：可随时兑换
+        
+    -   非同质化代币（NFT）：存储在区块链唯一且不可互换的数据单元
+        
+        -   最常见NTF：头像，绘画，3D艺术品，照片。
+            
+-   NFT特征
+    
+    -   独一无二，不可分割
+        
+    -   不可更改且透明
+        
+    -   万物皆可NTF（虚拟世界中任何非货币实体）
+        
+    -   完全控制（所有者对NFT拥有永久完全控制权）
+        
+    -   确认正确性成本低
+        
+    -   无需想象力（功能与规则由参与者定义）
+        
+-   DYOR（Do Your Own Research）
+    
+    -   自己做研究再做出购买决定
+        
+        -   比如买NFT之前——考虑购买原因：这件艺术品是否引起你的共鸣？经过研究和分析你决定团队实力很强？（而不是害怕错过噪音：这个肯定能升值）
+            
+        -   了解关于NFT的一切（艺术品预览，团队成员及其背景，项目计划及实施可能，朋友评论）
+            
+        -   评估价格合理性
+            
+-   铸造你的第一个NFT
+    
+    -   获取以太坊钱包
+        
+    -   获取ETH
+        
+    -   连接钱包
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # web3通识🥳
 
 ### Meta钱包使用
