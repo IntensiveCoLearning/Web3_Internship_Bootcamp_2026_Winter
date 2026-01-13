@@ -17,7 +17,7 @@ se major, into crypto
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
-> link: [Rust Cource-圣经](https://course.rs/basic/intro.html)
+> link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
     
@@ -39,6 +39,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## **rust basics ongoing**
 
