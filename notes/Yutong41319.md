@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+学习内容：
+
+入门导读行业赛道
+
+![行业赛道1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Yutong41319/images/2026-01-13-1768316651390-____1.jpg)
+
+感悟：
+
+今天学习内容有点少，但是对web3赛道的了解更深入了，尤其是web3和乡建的这一个部分让我觉得很神奇，虽然我还不太明白具体是如何实现的，我想我会在明天对这一部分做一个更详细的了解，web3在线下基层的应用以及它所能解决的问题让我感到非常好奇
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今日学习内容：  
 入门导读（区块链基础概念+以太坊概览）  
 Video（Web2 to Web3 - learn how to build on Ethereum）  
