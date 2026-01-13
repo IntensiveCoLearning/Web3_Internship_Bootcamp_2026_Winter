@@ -18,10 +18,15 @@ timezone: UTC+8
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 第二天打卡
+
+参加了今晚的bruce老师的知识分享会
+
+具体讲了web3的运行原理，智能合约的运行，nft该怎么制作
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今天是打卡的第一天
 
