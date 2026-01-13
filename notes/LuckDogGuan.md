@@ -16,8 +16,20 @@ base 厦门 俩年C++/C嵌入式工程师，INTJ,对web3/交易 感兴趣，希�
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# solidity测试网发送接收代币
+
+Fund 发送，getFund接收
+
+[https://github.com/LuckDogGuan/solidity\_learn/blob/main/ChainlinkWeb3Learn/3.FundMe/FundMe.sol](https://github.com/LuckDogGuan/solidity_learn/blob/main/ChainlinkWeb3Learn/3.FundMe/FundMe.sol)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-13-1768287549845-image.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 开营仪式
 
 发现参加web3的各行各业都有，非常震惊，但是同时也是开心的。
