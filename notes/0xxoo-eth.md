@@ -34,10 +34,21 @@ interested in web3
     -   交易(tr) = thing to do + Gas Fee + Nonce（防重放）
         
     -   生成本地签名——广播到RPC节点（原始消息、声称发送地址、签名）——RPC节点执行ecrecover验证
+        
+        -   钱包——RPC节点——全网
+            
+    -   不可篡改需要时间
+        
+    -   共识机制：PoW(BTC) v PoS(ETH)
+        
+3.  智能合约 = 区块链账本里的可执行代码
+    
+    -   将合约逻辑放入区块链，每次调用，进入EVM运行，创建临时运行环境执行代码，将结果写入区块链
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
