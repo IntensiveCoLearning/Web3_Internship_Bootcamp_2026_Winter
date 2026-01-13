@@ -15,8 +15,23 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+[https://www.youtube.com/watch?v=fnUKVeYp-QI](https://www.youtube.com/watch?v=fnUKVeYp-QI)  
+  
+參與今天的ETH PoS訓練後，重溫了 Squad staking, Lido CSM 與 Obol 如何降低 ETH validator 的門檻。
+
+做了一個 airdrop scam test:  
+{ "chainId": 11155111, "data": "0x5fba79f5", "from": "0xB2206f941A5206B55BFA33E665687523A8bcEd80", "gas": "0x1e8480", "gasPrice": "0x46f8ba3d", "nonce": "0x5", "to": "0x24F709E3441E09dEB499578c3594dD9C4b927C94", "value": "0x6f05b59d3b20000" }  
+  
+value 的 0x6f05b59d3b20000 原來是 0.5 ETH，實在太恐怖  
+  
+自學手冊看到智能合約開發
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 希望一邊自學，一邊以實踐累積經驗  
 參與了今天的smartdeer 職位講座，了解到實際不同職位的需要，同時亦看到自學手冊關於 web3 各方面不同崗位的要求。  
 也由其中一個同學分享的筆記重溫一次重點。  
@@ -29,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 [https://unphishable.io/](https://unphishable.io/challenges/airdrop-scam)
