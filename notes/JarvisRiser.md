@@ -15,8 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+web3实习计划Day2
+
+今日学习记录如下
+
+1.已查看中文周会Playlist
+
+2.已观看Web3 行业全局介绍 & 岗位概览，观后认为目前还是应从运营作为切入点，后续转换至BD，以及运用好自身FRM的优势尝试合规岗。
+
+3.晚些准备进一步进行mint NFT以及完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 Day1打卡
 
 1.已完成相应软件配置下载安装
