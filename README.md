@@ -1300,7 +1300,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [haowen0516](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/haowen0516.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Coco-fmm](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Coco-fmm.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [lejm909](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lejm909.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [Ginger417](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Ginger417.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Ginger417](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Ginger417.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Zriceli490](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Zriceli490.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [jimzzzzzzz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jimzzzzzzz.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [mumiaozxz](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/mumiaozxz.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1394,6 +1394,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [moses4wen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/moses4wen.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [n620970v11-stack](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/n620970v11-stack.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
