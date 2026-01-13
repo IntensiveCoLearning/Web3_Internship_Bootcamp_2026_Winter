@@ -17,24 +17,26 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
-**今日学习《021学习以太坊》第二章学习笔记：以太坊的骨架与脉络**
+**今日学习《021学习以太坊》《Web3实习手册入门导读》《Uniswap v2 核心白皮书》《**[**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs》**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
 
-**一、 现在的节点是“双核”驱动**  
+**021 第二章学习笔记：以太坊的骨架与脉络**
+
+一、 现在的节点是“双核”驱动  
 读完这一章，首先要更新的一个重要概念是：自 2022 年“合并（The Merge）”之后，运行一个以太坊全节点不再是启动一个软件那么简单了。现在的架构是**执行层（EL）与共识层（CL）的分离与协作**。可以把它们想象成同一个办公室里的两个部门：执行客户端（如 Geth）是“干活的”，负责处理交易、运行智能合约、维护账本状态；而共识客户端（如 Prysm）是“做决策的”，负责通过 PoS 机制投票、确立链的最新区块。两者必须同时运行，并通过本地的 **Engine API** 接口像专线电话一样实时沟通，才能组成一个完整的、能同步数据的以太坊节点。
 
-**二、 节点类型的选择逻辑**  
+二、 节点类型的选择逻辑  
 在存储数据方面，书中用“图书馆”做比喻非常精准，这决定了我们在实际业务中该部署哪种节点。  
 最常用的是**全节点（Full Node）**，它像一个公共图书馆，保存了最新的账本状态和所有的区块数据，但会定期“修剪”那些过时的中间状态以节省空间，这对绝大多数开发者和钱包服务来说已经足够安全且高效。  
 如果是做深度历史数据分析或司法审计的，那就需要**归档节点（Archive Node）**，它像国家档案馆一样，不仅有现在的数据，还保留了从创世块以来每一个时间切片的所有历史状态，代价就是需要巨大的硬盘空间（TB 级别）。  
 而对于普通用户或手机设备轻节点（Light Node）则像一个只存了目录的检索机，它不存具体数据，只验证区块头，需要数据时再去向全节点查询，主打轻量和便捷。
 
-**三、 数据的传播：像“传八卦”一样**  
+三、 数据的传播：像“传八卦”一样  
 以太坊作为一个去中心化网络，没有中央服务器来分发数据，而是依靠 **P2P 网络和 Gossip 协议**。这个机制非常有意思，它模仿了人类社会的谣言传播：当你发出一笔交易，你的节点不会把它广播给全网所有人（那样网络会瘫痪），而是随机传给身边的几个“邻居节点”，邻居再传给邻居。这种指数级的扩散方式，保证了信息能在几秒钟内覆盖全球成千上万个节点，同时又具有极强的容错性——哪怕某些节点挂了，消息也能通过其他路径传达。
 
-**四、 为什么我们要自己跑节点？**  
+四、 为什么我们要自己跑节点？  
 这一章花了很大篇幅讨论“自建节点 vs 使用公共 RPC（如 Infura）”的权衡。核心逻辑在于“Don’t trust, verify”（不要信任，要验证）**。虽然使用 Infura 这种第三方服务很方便，但你本质上是在信任它们给你的数据是真的，而且你的隐私（IP 地址与钱包的关联）也暴露给了服务商。对于开发者或机构而言，运行自己的全节点意味着**拥有“主权”：你不受制于人的限速，不用担心被审查，且能获得最低的内网延迟。
 
-**五、 实操层面的建议**  
+五、 实操层面的建议  
 最后，在实际动手层面，现在的节点同步技术已经很成熟。比如 **Snap Sync（快照同步）** 技术，让新节点不需要从 2015 年开始重跑一遍历史（那太慢了），而是直接下载最近的状态快照，几天甚至几小时就能追上进度。如果你的需求仅仅是查查数据，而不想买硬盘跑节点，书中也指了条明路：利用 **Dune** 或 **Google BigQuery** 这种数据分析平台，或者用 Etherscan 的 API，这属于“借别人的车赶路”，在学习初期是非常经济实惠的选择。
 
 **关于 Uniswap v2 核心白皮书的阅读笔记**
@@ -49,13 +51,14 @@ Uniswap v2 本质上是对 v1 版本的全面升级，核心算法依然沿用�
 
 最后是关于手续费和 ETH 的处理。v2 依然收取 0.3% 的交易费，但代码里埋了一个“协议费开关”。这个开关一旦由治理层打开，将会从这 0.3% 中分出 0.05% 给协议方，流动性提供者（LP）则剩下 0.25%。目前这个开关默认是关闭的。另外，为了简化核心代码逻辑，v2 的 Core 合约不再直接处理原生 ETH，而是全部统一使用 WETH（封装的 ETH），这意味着所有涉及 ETH 的交易在底层都变成了 ERC-20 对 ERC-20 的标准交互。
 
-Web3实习手册入门导读笔记  
+**Web3实习手册入门导读笔记**
 
 ![微信图片_20260113220932_143_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314441097-_____20260113220932_143_8.jpg)![微信图片_20260113220934_144_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314459383-_____20260113220934_144_8.jpg)![微信图片_20260113220936_145_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314475089-_____20260113220936_145_8.jpg)![微信图片_20260113220937_146_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314491720-_____20260113220937_146_8.jpg)![微信图片_20260113220938_147_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314507813-_____20260113220938_147_8.jpg)![微信图片_20260113222433_149_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314523320-_____20260113222433_149_8.jpg)![微信图片_20260113222434_150_8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-13-1768314534159-_____20260113222434_150_8.jpg)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
