@@ -44,11 +44,914 @@ Web3 实习计划 2025 冬季实习生
 
 * * *
 
-看到这句话说明我还没更新今天的笔记
+## **Rust基础**
+
+### **String**
+
+**str和 String的区别**
+
+-   str 是字符串切片，是一串长度可变的字节序列，是要访问的一块数据本身
+    
+-   &str 胖指针，起始位置+长度
+    
+-   String 是 围绕 Vec<u8> 封装的结构体，封装了一些列
+    
+
+**构造**
+
+```Rust
+println!("Hello, world!");
+
+let mut s = String::new();
+let data = "initial contents";
+let s = data.to_string();
+// The method also works on a literal directly:
+//实现了display trait的类型都可以使用to_string方法
+let s = "initial contents".to_string();
+let s = String::from("initial contents");
+```
+
+**连接字符串**
+
+```Rust
+let mut s = String::from("foo");
+s.push_str("bar");//使用push_str方法追加字符串
+
+let mut s1 = String::from("foo");
+let s2 = "bar";
+s1.push_str(s2);//使用push_str方法追加字符串，本质上s2没有被移动，对s2的数据进行了一次“字节拷贝”
+println!("s2 is {s2}");//s2仍然有效
+
+let mut s = String::from("lo");
+s.push('l');//使用push方法追加单个字符
+
+let s1 = String::from("Hello, ");
+let s2 = String::from("world!");
+let s3 = s1 + &s2; // s1被移动，无法再使用
+//s2仍然有效，因为它是通过引用传递的
+
+let s1 = String::from("tic");
+let s2 = String::from("tac");
+let s3 = String::from("toe");
+let s = format!("{s1}-{s2}-{s3}");
+//使用format!宏来连接字符串，format!宏不会获取任何参数的所有权
+```
+
+**迭代字符串的方法**
+
+字符串不支持索引访问，因为字符串是UTF-8编码的，某些字符可能占用多个字节
+
+不支持下面的操作
+
+```Rust
+let s1 = String::from("hi");
+let h = s1[0];
+```
+
+获取第N个字节
+
+```Rust
+let s1 = String::from("hello");
+// 1. 先转成字节切片，再索引
+let h_byte = s1.as_bytes()[0]; 
+println!("{}", h_byte); // 输出 104 (这是 'h' 的 ASCII 码)
+println!("{}", h_byte as char); // 强转回 char，输出 'h'
+```
+
+获取第N个Unicode字符
+
+```Rust
+let s1 = String::from("你好World");
+// 1. 获取迭代器 -> 取第0个 -> 解包(因为可能越界返回None)
+let c = s1.chars().nth(0).unwrap(); 
+println!("{}", c); // 输出 "你"
+```
+
+直接迭代
+
+```Rust
+for c in "Зд".chars() {
+    println!("{c}");
+}
+```
+
+逐字节
+
+```Rust
+for b in "Зд".bytes() {
+    println!("{b}");
+}
+```
+
+### Hash Map
+
+> 用太久dict说哈希表想不起来是什么，其实就是字典
+
+基础操作
+
+```Rust
+    use std::collections::HashMap;//导入HashMap类型
+
+    let mut scores = HashMap::new();//创建一个空的HashMap
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);//向HashMap中插入键值对
+
+    let team_name = String::from("Blue");
+    let score = scores.get(&team_name).copied().unwrap_or(0);//通过键获取值
+
+    for (key, value) in &scores {//遍历HashMap中的键值对
+        println!("{key}: {value}");
+    }
+```
+
+在通过调用 `insert` 将变量移入哈希映射后，我们无法再使用这些变量，所有权转移到哈希表
+
+解决方法可以直接使用clone或者引用，但是用引用的话需要考虑生命周期的问题
+
+更新
+
+直接 insert ，相同的键会被覆盖
+
+使用 entry 可以只在没有键值的时候插入
+
+```Rust
+    scores.entry(String::from("Yellow")).or_insert(50);
+    scores.entry(String::from("Blue")).or_insert(50);
+```
+
+`Entry` 上的 `or_insert` 方法被定义为：如果该键存在，则返回对应 `Entry` 键的值的可变引用；如果不存在，则将参数作为此键的新值插入，并返回对新值的可变引用。
+
+基于旧值更新
+
+```Rust
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+```
+
+hashmap的所有权最小粒度是hashmap，不是键值对
+
+```Rust
+fn reverse(v: &mut Vec<String>) {
+    let n = v.len();
+    for i in 0 .. n / 2 {
+        let p1 = &mut v[i] as *mut String;
+        let p2 = &mut v[n - i - 1] as *mut String;
+        unsafe { std::ptr::swap_nonoverlapping(p1, p2, 1); }
+    }
+}
+```
+
+### 错误处理
+
+Rust 认为错误不可避免，因此强制要求开发者在**编译阶段**就显式处理潜在的错误，以确保程序的健壮
+
+Rust 将错误明确分为两类：
+
+-   **可恢复错误**（Recoverable）：例如文件未找到，通常只需报告问题或重试。
+    
+-   **不可恢复错误**（Unrecoverable）：通常是 Bug（如数组越界），需要立即终止程序。
+    
+
+与大多数语言使用“异常”（Exceptions）不同，Rust 使用特定的工具来处理这两类错误：
+
+-   用 `panic!` **宏** 处理不可恢复错误。
+    
+-   用 `Result<T, E>` **类型** 处理可恢复错误。
+    
+
+用 Result 的一个例子
+
+```Rust
+use std::fs::File;
+
+fn main() {
+    let greeting_file_result = File::open("hello.txt");
+
+    let greeting_file = match greeting_file_result {
+        Ok(file) => file,
+        Err(error) => panic!("Problem opening the file: {error:?}"),
+    };
+}
+```
+
+还能进一步细分处理
+
+```Rust
+use std::fs::File;
+use std::io::ErrorKind;
+
+fn main() {
+    let greeting_file_result = File::open("hello.txt");
+
+    let greeting_file = match greeting_file_result {
+        Ok(file) => file,
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("hello.txt") {
+                Ok(fc) => fc,
+                Err(e) => panic!("Problem creating the file: {e:?}"),
+            },
+            _ => {
+                panic!("Problem opening the file: {error:?}");
+            }
+        },
+    };
+}
+```
+
+更进一步，不使用 match 的写法
+
+```Rust
+    let greeting_file = File::open("hello.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {error:?}");
+            })
+        } else {
+            panic!("Problem opening the file: {error:?}");
+        }
+    });
+```
+
+使用 unwrap 的例子
+
+```Rust
+let greeting_file = File::open("hello.txt").unwrap();
+```
+
+`unwrap()` 的本质就是：“如果不成功，就 panic”。
+
+就相当于不处理失败的 result
+
+**Expect**
+
+```Rust
+let greeting_file = File::open("hello.txt").expect("hello.txt should be included in this project");
+```
+
+expect相当于加了个错误信息的 unwrap ，失败时 panic 并且输出错误信息
+
+Propagating Errors 错误传递
+
+当一个函数的实现调用了一个可能失败的函数时，与其在函数内部处理错误，不如将错误返回给调用代码，由它来决定如何处理
+
+```Rust
+fn read_username_from_file() -> Result<String, io::Error> {
+    let username_file_result = File::open("hello.txt");
+    let mut username_file = match username_file_result {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+
+    let mut username = String::new();
+    match username_file.read_to_string(&mut username) {
+        Ok(_) => Ok(username),
+        Err(e) => Err(e),
+    }
+}
+```
+
+下面是更简单的写法
+
+```Rust
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut username_file = File::open("hello.txt")?;
+    let mut username = String::new();
+    username_file.read_to_string(&mut username)?;
+    Ok(username)
+}
+```
+
+再缩
+
+```Rust
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut username = String::new();
+    File::open("hello.txt")?.read_to_string(&mut username)?;
+    Ok(username)
+}
+```
+
+再缩
+
+```Rust
+fn read_username_from_file() -> Result<String, io::Error> {
+    fs::read_to_string("hello.txt")
+}
+```
+
+我们只能在返回 Result、Option 或实现 FromResidual 的其他类型的函数中使用 ? 操作符。
+
+`?` 是 Rust 中用于“错误传播” (Error Propagation) 的语法糖：如果这个操作成功了，就把里面的值给我；如果出错了，立马把错误扔给调用我的函数，我也不干了
+
+`File::open("hello.txt")?.read_to_string(&mut username)?`
+
+在 open 返回 err 的时候就不会执行 read\_to\_string 了
+
+```Rust
+fn read_username_from_file() -> Option<String> {
+  let mut username_file = File::open("hello.txt")?;
+  let mut username = String::new();
+  username_file.read_to_string(&mut username)?;
+  Some(username)
+}
+```
+
+这个代码不能通过编译，因为 ？ 会直接返回一个 result 类型，但是函数的输出是 option
+
+修改的话可以将 option 换为 result
+
+To panic! or Not to panic!
+
+-   在原型设计阶段，当你还没准备好处理错误时，\` `unwrap` 和 `expect` 方法非常有用
+    
+-   当您有一些逻辑确保 `Result` 值为 `Ok` 时，调用 `expect` 也是合适的，但这些逻辑编译器无法理解。
+    
+
+* * *
+
+## 021学习以太坊 第三章
+
+### 创建合约的两个操作码
+
+  **CREATE**
+
+  合约地址 = keccak256( RLP(\[s ender, nonce\]) ) 的后 20 字节
+
+  **CREATE2**
+
+  合约地址 = keccak256(0xff + deployer + salt + keccak256(init\_code)) 的后 20 字节
+
+CREATE2 的最大价值是可预测地址，相同输入在任意 EVM 链上会生成相同地 址
+
+### 一、EOA 的定义与控制方式
+
+以太坊有两种账户
+
+-   EOA：由公私钥对控制，可以发起交易，简单来说就是发起交易或者调用合约的人
+    
+    -   有私钥，不可存代码，只能签名，只能交易
+        
+-   合约账户：用于存储被调用的合约，可以通过访问合约账户的地址执行存储的合约
+    
+    -   没有私钥，有地址，有余额，可持有NFT
+        
+
+一个账户有以下字段：
+
+| 字段 | EOA (你的钱包) | 合约账户 (如 Uniswap) |
+| nonce | 交易次数 | 创建过的子合约数 |
+| balance | 你的 ETH 余额 | 合约持有的 ETH 余额 |
+| storageRoot | 空 | 指向合约的数据存储树 |
+| codeHash | 空哈希 | 指向合约的代码逻辑 |
+
+**助记词**
+
+-   BIP-39 定义了助记词，便于记忆
+    
+-   由助记词可以生成**无数个**私钥。
+    
+-   一组助记词能生成无数个私钥，那具体生成哪一个呢？这就要靠**派生路径**来指定。
+    
+
+$$\\text{助记词} \\xrightarrow{\\text{加盐(可选)}} \\mathbf{\\text{种子 (Seed)}} \\xrightarrow{\\text{派生路径}} \\mathbf{\\text{特定的私钥}}$$
+
+### 二、合约账户的概念与创建流程
+
+**合约账户**
+
+-   有地址，有余额
+    
+-   有 code（合约逻辑）和 storage（状态存储），可以读写状态、转账、 调用其他合约
+    
+-   不能主动发起交易
+    
+
+**创建合约账户流程**
+
+1.  编写智能合约
+    
+2.  编译成 EVM 字节码
+    
+    1.  初始化部署在链上
+        
+    2.  被调用
+        
+
+**如何在 Solidity 合约代码中，去调用另一个合约或给别人转账**
+
+**方法一：使用低级接口** `.call`
+
+```Solidity
+(bool success, bytes memory data) = _targetAddress.call{value: _amount, gas: _gas}(_payload);
+```
+
+  参数
+
+    **目标地址 (**`_targetAddress`**)**:
+
+-   你要转账给谁？或者你要调用哪个合约？
+    
+-   类型：`address` 或 `address payable`。
+    
+
+    **附带金额 (**`value`**)** _(可选)_:
+
+-   你要转多少 ETH 过去？
+    
+-   参数写法：`{value: 1 ether}` 或 `{value: msg.value}`。
+    
+-   注意：单位是 Wei。如果不写，默认为 0。
+    
+
+    **Gas 限制 (**`gas`**)** _(可选)_:
+
+-   你限制这步操作最多消耗多少 Gas？
+    
+-   参数写法：`{gas: 5000}`。
+    
+-   建议：通常**不建议**手动指定，除非有特殊安全需求。默认会把剩余所有 Gas 传过去。
+    
+
+    **调用数据 (**`_payload`**)**:
+
+-   **如果是纯转账**：传空字符 `""`。
+    
+-   **如果要调用函数**：需要使用 `abi.encodeWithSignature(...)` 对函数名和参数进行编码。
+    
+
+```Solidity
+function sendMoney(address payable _to) public payable {
+    // 接口：call
+    // 参数：value (金额), data (空)
+    (bool success, ) = _to.call{value: msg.value}("");
+    
+    require(success, "Transfer failed."); // 必须检查返回值
+}
+```
+
+**方法二：使用接口 Interface**
+
+```Solidity
+interface IERC20 {
+    function transfer(address recipient, uint256 amount) external returns (bool);
+}
+```
+
+```Solidity
+function callByInterface(address _tokenAddress, address _to, uint256 _amount) public {
+    // 1. 实例化接口
+    IERC20 token = IERC20(_tokenAddress);
+    
+    // 2. 直接调用 (编译器会自动处理参数编码和 call 接口)
+    bool success = token.transfer(_to, _amount);
+    
+    require(success, "Token transfer failed");
+}
+```
+
+算了，先不看 solidity 了，等之后系统的学一下吧
+
+合约账户的能力与限制
+
+**核心能力**
+
+-   **管钱管数据**：既能持有 ETH/Token，又能存储复杂数据（Storage）。
+    
+-   **执行逻辑**：是 DEX、NFT、DAO 的载体，代码定义规则。
+    
+-   **链上交互**：在运行过程中，可以转账、调用别的合约，甚至生出新合约（CREATE/CREATE2）。
+    
+
+**核心限制**
+
+-   **被动执行**：**无私钥**。它不能主动“动”起来，必须由外部（EOA）或其他合约“推一把”才能运行。
+    
+-   **代码固化**：部署后**代码不可改**（Code Immutable），只能修改内部数据（除非用代理模式）。
+    
+-   **部署昂贵**：因为占用了链上的永久存储空间，创建合约的 Gas 费很高。
+    
+
+### 三、以太坊地址“0x”开头的由来
+
+以太坊地址本质是一串 20 字节（160 bit）的二进制数据，写成字符串时通 常用十六进制展示，于是按照编程界传统加了个前缀 0x
+
+### 四、EOA 与合约账户的控制方式对比
+
+| 维度 | EOA (外部账户) | CA (合约账户) |
+| 控制核心 | 私钥 (Private Key) | 代码 (Code Logic) |
+| 能否主动 | 能 (一切交易的起点) | 不能 (只能被动响应调用) |
+| 创建成本 | 免费 (本地生成密钥对) | 昂贵 (需支付 Gas 存贮代码上链) |
+| 权限管理 | 只有“拥有/未拥有”私钥两种状态 | 高度灵活 (多签、角色、白名单) |
+| 主要风险 | 私钥丢失/泄露 | 代码漏洞 (Bug) / 逻辑错误 |
+| 可变性 | 行为固定 (只能签名发交易) | 代码不可变 (但可经由代理升级) |
+| 识别方式 | eth_getCode 返回空 | eth_getCode 返回字节码 |
+
+由于 EOA 存在“单点故障”（私钥丢了就全完了），而合约账户可以编程，因此衍生出了两种增强安全性的机制：
+
+**A. 多签钱包 (Multisig Wallet)**
+
+-   **本质**：用智能合约模拟“多把钥匙开一把锁”。
+    
+-   **机制**：**M-of-N**。例如 3 人管理，至少 2 人签名同意才能转账。
+    
+-   **优势**：
+    
+    -   **防单点故障**：丢了一个私钥，钱还在。
+        
+    -   **适合团队**：DAO 国库、公司资产管理 (如 Gnosis Safe)。
+        
+
+**B. 时间锁 (Timelock)**
+
+-   **本质**：给操作加一个“冷静期”或“公示期”。
+    
+-   **机制**：**提案 -> 等待延迟(Delay) -> 执行**。
+    
+    -   例如：管理员想修改合约参数，提交后必须等 48 小时才能生效。
+        
+-   **优势**：
+    
+    -   **防跑路/恶意篡改**：社区发现管理员作恶，可以在 48 小时内卖币退出。
+        
+    -   **增加透明度**：所有重大变更不仅公开，而且有预告。
+        
+-   **代价**：牺牲了紧急响应速度（修 Bug 也要等）。
+    
+
+### 六、合约账户的余额与状态存储
+
+无论哪种账户，在状态树中都存储为：
+
+$$Account = (nonce, balance, storageRoot, codeHash)$$
+
+### 七、EOA 与合约账户的互相调用机制
+
+### 九、ERC20 / ERC721 代币与合约账户的关系
+
+转代币” 本质上是 “调用代币合约的一段代码 + 改一行存储
+
+> 感觉这一章结构好像有点乱，很多重复的东西在来回讲
+
+* * *
+
+## Uniswap V2 学习官方文档
+
+分为核心层和外围层
+
+-   核心层 [https://github.com/Uniswap/v2-core](https://github.com/Uniswap/v2-core)
+    
+-   外围层 [https://github.com/Uniswap/v2-periphery](https://github.com/Uniswap/v2-periphery)
+    
+
+### Ecosystem Participants
+
+**主要参与角色**
+
+-   **流动性提供者 (LPs)**：提供资金（卖方/做市商）。
+    
+-   **交易者 (Traders)**：进行兑换（买方）。
+    
+-   **开发者 (Developers)**：构建工具和入口（基础设施）。
+    
+
+**核心机制**：
+
+-   LPs 把代币存入池子 -> 交易者来兑换并支付 **0.30%** 的手续费 -> 这些手续费全部分给 LPs 作为奖励。
+    
+-   这个机制激励了更多人提供流动性，流动性越好，交易滑点越低，吸引更多交易者，产生更多手续费，从而吸引更多 LPs……
+    
+
+**A. 流动性提供者 (Liquidity Providers / LPs)**
+
+1.  **被动型 LPs (Passive LPs)**：普通持币者，存池子里吃利息
+    
+2.  **专业型 LPs (Professional LPs)**：专业的做市商团队。他们使用复杂的策略和自定义工具来监控各个 DeFi 协议的收益率，并在不同项目间搬砖。
+    
+3.  **代币项目方 (Token Projects)**：新发币的项目方（比如发了一个新 Token "ABC"），为了让大家能买卖 "ABC"，项目方自己会充当 LP，创建一个 "ABC/ETH" 的交易对。这样一来，Uniswap 就成了这个代币的“交易所”。
+    
+4.  **DeFi 先驱 (DeFi Pioneers)**：探索高阶玩法的人。比如把 LP Token（你在 Uniswap 存钱后拿到的凭证）再拿去抵押借贷，实现“流动性挖矿”或“乐高组合”。
+    
+
+**B. 交易者 (Traders)**
+
+1.  **投机者 (Speculators)**：普通的买卖交易者。比如看涨 ETH，就用 USDT 换 ETH。
+    
+2.  **套利机器人 (Arbitrage Bots)**：低买高卖的自动脚本，虽然它们是为了赚钱，但在客观上帮助 Uniswap 的价格**回归市场公允价格**，保持了市场的有效性。
+    
+3.  **DAPP 用户**：为了使用某个应用而买币。
+    
+4.  **智能合约 (Smart Contracts)**：比如“DEX 聚合器”（如 1inch），它是一个合约，它会自动计算发现 Uniswap 的价格最好，于是它的合约代码会自动调用 Uniswap 的合约进行交易。
+    
+
+**C. 开发者 (Developers)**
+
+就是各种各样围绕 Uniswap 做开发的人
+
+### Smart contracts
+
+架构采用 核心 + 外围 的涉及
+
+Core（核心层）**“极简主义 (Brutalist)”**。
+
+-   代码极少，逻辑极简。容易审计，安全性越高。这是因为 Core 掌管着所有资金，绝对不能出错。
+    
+-   因为太简单，所以对人类很不友好（User-unfriendly），直接调用它会很麻烦且容易出错。
+    
+-   **包含组件**：
+    
+    -   **Singleton Factory (单例工厂)**：只有一个。它的任务只有两个：
+        
+        -   创建并索引所有的 Pair 合约（每个交易对一个）
+            
+            1.  每一个 Pair 合约就是一个独立的“资金池”
+                
+        -   控制是否开启协议收费。
+            
+    -   **Pairs (交易对)**：
+        
+        -   **做市商 (AMM)**：实际执行 `x * y = k` 逻辑的地方。
+            
+        -   **存钱罐**：记录池子里有多少币。
+            
+        -   **价格预言机**：提供历史价格数据。
+            
+
+Periphery（外围层）“用户友好”
+
+-   它是 Core 的“管家”或“界面”。它没有特权（Permissionless），只是为了方便大家使用而写的一套工具合约。
+    
+-   Periphery 哪怕有 Bug，通常也不会导致 Core 里的资金直接被盗（因为资金在 Pair 里，不在 Router 里），最多是用户在使用 Router 过程中出问题。
+    
+-   **包含组件**：
+    
+    -   **Library (库)**：提供各种计算公式（比如算价格、算地址），主要是为了复用代码。
+        
+    -   **Router (路由)**：这是前端（Web UI）和钱包直接打交道的对象。
+        
+        -   **路径路由**：支持 `ETH -> A -> B -> C` 这种多跳交易。
+            
+        -   **ETH 支持**：把 ETH 处理成 WETH（后面会细讲）。
+            
+        -   **辅助功能**：比如支持用签名来移除流动性（Meta-transactions）。
+            
+
+三大关键设计决策 (Design Decisions)
+
+Sending Tokens (代币发送机制)
+
+-   **传统做法**：通常我们调用合约是 `approve` -> `transferFrom`。即：我授权给你，你把钱从我这拉走。
+    
+-   **Uniswap V2 的做法**：**“先转钱，再调用”**。
+    
+    -   **流程**：
+        
+        -   用户先把代币转账（Transfer）给 Pair 合约。
+            
+        -   用户调用 Pair 的 `swap` 或 `mint` 函数。
+            
+        -   Pair 检查：`当前余额 - 记录的余额 = 用户打进来的钱`。
+            
+    -   **为什么这么做？** 文档提到这部分原因在白皮书里，简单说是为了**解耦**和**安全性**，同时也支持了 **Flash Swap（闪电贷）**（这是唯一例外，可以先借钱再还）。
+        
+
+WETH (包装 ETH)
+
+-   **V1 vs V2**：
+    
+    -   V1 的池子必须是 ETH ↔ ERC20。
+        
+    -   V2 的池子是 ERC20 ↔ ERC20。
+        
+-   **问题**：ETH 是原生货币，不符合 ERC-20 标准（它没有 `approve`, `transferFrom` 接口）。
+    
+-   **解决**：V2 Core 完全不支持 ETH。
+    
+    -   如果想创建 ETH 交易对，必须先把 ETH 包装成 **WETH (Wrapped ETH)**，它就是一个标准的 ERC-20 代币。
+        
+    -   这样 Core 的代码就不用写两套逻辑（一套处理 ETH，一套处理 ERC20），代码更干净。
+        
+    -   **用户感知**：用户在前端依然是用 ETH，是因为 **Router (Periphery)** 帮用户做了“ETH 转 WETH”的动作。
+        
+
+Minimum Liquidity (最小流动性销毁)
+
+-   **机制**：当第一个人给一个新池子添加流动性时，会有 **1000 wei** (极微小的金额) 的 LP Token 被永久**销毁（Burn）**。
+    
+-   **目的**：**防数学攻击**。
+    
+    -   如果不销毁，攻击者可以通过操控初始流动性，构造出极其极端的价格或数量（比如把 totalSupply 弄得非常小），从而利用舍入误差（Rounding Errors）窃取后续用户的资金。
+        
+    
+    > 在 Solidity（以太坊编程语言）中，**除法是向下取整的**。
+    > 
+    > -   `3 / 2 = 1.5` -> 在 Solidity 中结果是 **1**。
+    >     
+    > -   `1 / 2 = 0.5` -> 在 Solidity 中结果是 **0**。
+    >     
+    > 
+    > 如果算出来的结果不到 1，就会变成 0。如果你存了钱，但系统计算你应该得到 `0.99` 个凭证，系统就会给你 **0** 个凭证。你的钱进去了，凭证没拿到，钱就归池子里其他人了。
+    > 
+    > 攻击者利用 `TotalSupply = 1`，通过捐赠操控分母，让后续用户的 `(存款 * 1) / 储备量` 计算结果小于 1，利用 Solidity 的舍入为 0 特性，让用户“存了钱却拿不到凭证”。
+    > 
+    > 强行把 `TotalSupply` 拉大 1000 倍。攻击者想操控比例，成本也随之扩大 1000 倍甚至更多，导致攻击在经济上不划算。
+    
+    -   销毁这 1000 wei 相当于提高了攻击门槛（成本），让这种数学攻击变得极其昂贵且不可行。
+        
+    -   对于正常用户，这 1000 wei 的价值几乎为零，可以忽略不计。
+        
+
+### Glossary
+
+-   **utomated market maker(自动做市商)**：自动做市商是以太坊上的一个智能合约，它持有链上流动性储备。用户可以根据自动做市商公式设定的价格，与这些储备进行交易。
+    
+-   **Constant product formula(恒定乘积公式)**：Uniswap 使用的自动做市算法。参见 x\*y=k。
+    
+-   **ERC20(ERC20)**：ERC20 代币是以太坊上的同质化代币。Uniswap 支持所有标准的 ERC20 实现。
+    
+-   **Factory(工厂合约)**：一个智能合约，用于为任意 ERC20/ERC20 交易对部署一个唯一的智能合约。
+    
+-   **Pair(交易对合约)**：由 Uniswap V2 工厂合约部署的智能合约，用于实现两种 ERC20 代币之间的交易。
+    
+-   **Pool(资金池)**：交易对内的流动性是汇集了所有流动性提供者资金的集合。
+    
+-   **Liquidity provider / LP(流动性提供者 / LP)**：流动性提供者是指将等值的两种 ERC20 代币存入交易对流动性池中的人。流动性提供者承担价格风险，并获得费用作为补偿。
+    
+-   **Mid price(中间价)**：在特定时刻用户买入和卖出代币价格的中间值。在 Uniswap 中，这是两种 ERC20 代币储备量的比率。
+    
+-   **Price impact(价格影响)**：中间价与一笔交易实际成交价格之间的差额（通常由交易规模引起）。
+    
+-   **Slippage(滑点)**：交易对的价格在交易“提交时”与“实际执行时”之间的变动量（通常由市场波动或抢跑引起）。
+    
+-   **Core(核心合约)**：Uniswap 赖以生存的基础智能合约。升级核心合约的新版本需要进行流动性迁移。
+    
+-   **Periphery(外围合约)**：有用但非 Uniswap 存在所必需的外部智能合约。部署新的外围合约无需迁移流动性。
+    
+-   **Flash swap(闪电兑换)**：一种允许在支付代币费用之前就可以先使用所购买代币的交易模式。
+    
+-   **x _y = k(x_ y = k)**：恒定乘积公式。
+    
+-   **Invariant(不变量/恒定值)**：恒定乘积公式中的 "k" 值。
+    
+
+### Swaps
+
+当提取（购买）任一代币时，必须存入（卖出）一定比例的另一种代币，以维持常数不变。
+
+在最基础的层面上，Uniswap V2 中的所有兑换都发生在一个函数中，该函数被恰当地命名为 `swap`：
+
+```Solidity
+function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data);
+```
+
+**Uniswap V2 模式 (Transfer + Swap)**
+
+1.  **用户**：直接把 100 USDT **推（Push / Transfer）** 到 Pair 合约地址。
+    
+2.  **用户**：调用 Pair 合约的 `swap` 函数。
+    
+3.  **Pair**：看一眼自己兜里现在的钱，再查一下账本上原来的钱，算出差额：
+    
+4.  `当前余额 (Balance)` - `账本储备 (Reserve)` = `用户刚才打进来的钱 (Input)`。
+    
+5.  **Pair**：根据这个差额，算出该给你多少目标代币，然后发给你。
+    
+
+如果在非原子操作中，先转币给交易对再调用 swap 是不安全的，因为发送的代币容易被套利者截获
+
+### Pools 资金池
+
+-   **冷启动**：池子刚创建时是空的（余额为 0）。
+    
+-   **定价权**：**第一个**存入流动性的人（Initial LP），他存入的 Token A 和 Token B 的**比例**，直接决定了池子的**初始价格**。
+    
+-   **风险约束**：如果第一个人乱定价（比如存入比例偏离市场价），套利者（Arbitrageurs）会立刻进场搬砖，把便宜的币买走，导致第一个人亏损。
+    
+    -   _结论：市场博弈迫使 LP 必须按公允价格存币。_
+        
+
+**Pool tokens (资金池代币 / 流动性代币)**
+
+  **LP Token = 存款收据**：当你存入流动性，你会收到 `Liquidity Tokens`。
+
+-   **首次铸造公式**：数量 = sqrt(x \* y)。
+    
+-   **后续存入**：必须按当前池子的价格比例存入。
+    
+
+  **收益来源**：每笔交易收取的 **0.3% 手续费**，会按比例分给所有 LP。
+
+-   注意：手续费不会直接打到你钱包，而是加到池子里，让你的 LP Token 变得更值钱。
+    
+
+  **退出机制**：把 LP Token 发回给合约（**Burn/销毁**），合约把对应的本金 + 赚到的手续费退给你。
+
+### Flash Swaps
+
+-   **什么是 Flash Swap？** 它允许你从 Uniswap 的池子里**预先提取**任意数量的代币（甚至把池子借空），拿去干任何你想干的事（比如去别的平台卖掉）。
+    
+-   **唯一的条件**： 这一切必须在同一个交易（同一区块）内完成。在交易结束的那一刹那，你必须：
+    
+    -   **方案 A**：用另一种代币支付刚才借走的代币（相当于买）。
+        
+    -   **方案 B**：把借走的代币原本奉还，并支付少量手续费（相当于借）。
+        
+-   **如果不还钱？** 整个交易会直接 **Revert（回滚）**，就像这一切从未发生过一样。
+    
+
+**场景 A：无本金套利 (Capital Free Arbitrage)**
+
+-   **痛点**：以前发现差价（Uniswap 便宜，Oasis 贵），你得自己先有本金买下便宜的，再去卖。没钱就只能看着机会溜走。
+    
+-   **Flash Swap 解法**：
+    
+    -   **借**：从 Uniswap 借出 1 ETH（此时还没付钱）。
+        
+    -   **卖**：去 Oasis 把这 1 ETH 卖成 220 DAI。
+        
+    -   **还**：回到 Uniswap，按照当时的价格（比如 200 DAI）还债。
+        
+    -   **赚**：剩下的 20 DAI 就是你的利润，你实际上是**空手套白狼**（除了 Gas 费）。
+        
+-   **意义**：实现了**套利的民主化**，任何人只要有技术（代码），不需要有资本，就能抹平市场差价。
+    
+
+**场景 B：瞬时杠杆 (Instant Leverage)**
+
+-   **痛点**：以前想在 MakerDAO 做 2 倍杠杆，需要“抵押 -> 借贷 -> 买币 -> 再抵押 -> 再借贷...”循环多次，操作繁琐且 Gas 费极高。
+    
+-   **Flash Swap 解法**：
+    
+    -   **借**：直接从 Uniswap 借出你最终想要的总 ETH 数额。
+        
+    -   **存**：把这些 ETH 一次性存入 MakerDAO。
+        
+    -   **铸**：生成 DAI。
+        
+    -   **还**：用生成的 DAI 偿还 Uniswap 的闪电贷。
+        
+-   **意义**：把复杂的多步操作压缩进一个原子交易中，省钱、省心。
+    
+
+* * *
+
+歇逼了，今天就先学到这了
+
+-   **入门技术&深度技术任务**
+    
+    -   021 学习以太坊第 3 章✅
+        
+    -   [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)**⭕**
+        
+    -   [Uniswap V2 学习官方文档](https://docs.uniswap.org/contracts/v2/overview?utm_source=chatgpt.com)✅
+        
+-   **Rust基础**
+    
+    -   第八章 common collection✅
+        
+    -   第九章 error handling ✅
+        
+-   **杂项**
+    
+    -   把小登试卷er图那题改完吧⭕
+        
+
+要学会跟自己和解
+
+明明今天好像一直都在学，但是怎么感觉进度那么慢？
+
+嗷，好像是下午打牌去了
+
+唉，唉唉
+
+明天再加把劲吧
+
+试卷再不改老登估计要催了
+
+想一下
+
+明天周三，后天周四
+
+明天要把企业项目的方案整理一下，组会给老登看
+
+然后还有论文的代码实验，拖到周五六日干吧
+
+明天改卷子，明天必须要改卷子了
+
+今天就先这样吧，明天再努力
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NjM5MWQwOGExNmRkYzE5ZTAxNzVlZWRmM2ZmYTllM2JfSGJxaHM0U0lRVXlha0NjSUVXbkNwSEkyQllyZEcxdmNfVG9rZW46UkVCTWJDUk91bzNxNzR4MHhENGNXelpwbkpoXzE3NjgzMTgxMDg6MTc2ODMyMTcwOF9WNA)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 （叽里咕噜写了半天不小心点到白框外面的内容之后全部内容没有了，后续干脆直接把飞书文档上的学习记录复制粘贴过来吧）
 
