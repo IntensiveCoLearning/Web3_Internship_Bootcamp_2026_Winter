@@ -1404,7 +1404,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Mingxin1638](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Mingxin1638.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [151-mat](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/151-mat.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [bermudeswarrioryf223-prog](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/bermudeswarrioryf223-prog.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [ilfautQch](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ilfautQch.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
