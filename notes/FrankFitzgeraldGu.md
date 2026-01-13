@@ -18,7 +18,7 @@ M.S. (CityU)
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 今天复习一下之前学过的区块链基础知识  
-学习比特币白皮书《比特币:一种点对点的电子现金系统》和**《021学习以太坊》开源教材.pdf**  
+学习比特币白皮书《比特币:一种点对点的电子现金系统》和《021学习以太坊》开源教材  
 **总结了一下术语和概念：**
 
 •Hash: Map data of arbitrary size to data of a fixed sizeSecurity properties:1 Collision resistant(No
@@ -33,7 +33,7 @@ key=an identity verify(pk, msg, sig)==true double-spending attack Bitcoin entiti
 
 emulate a public trusted ledger 特点 pseudonymous(ECDSA) decentralized peer-to-2
 
-•Centralized: Controlled by a single entity (如bank's database)优Efficiency, clear control
+•Centralized: Controlled by a single entity (如bank’s database)优Efficiency, clear control
 
 劣 Single point of failure, censorship risk, potential for unilateral control/abuse.
 
@@ -59,7 +59,7 @@ Principle: Making block creation costly deters attackers. Requires significant e
 
 Proof-of-Stake (PoS): Nodes (validators) are chosen to propose blocks based on the
 
-amount of cryptocurrency they "stake" (lock up) as collateral.节点（验证者）是根据他们
+amount of cryptocurrency they “stake” (lock up) as collateral.节点（验证者）是根据他们
 
 作为抵押品“质押”（锁定）的加密货币数量来选择提出区块的。Randomly elect a leader in
 
@@ -97,11 +97,11 @@ Nodes always try to extend the chain with the most cumulative proof-of-work (typ
 
 the longest one). Over time, one chain attracts more work and outpaces others. Shorter,
 
-abandoned forks become "orphaned".
+abandoned forks become “orphaned”.
 
 Result: Eventual Consistency the network converges
 
-•Real-World Consideration: Scalability 可扩展性-A system's ability to handle increasing
+•Real-World Consideration: Scalability 可扩展性-A system’s ability to handle increasing
 
 amounts of work (more users 或 transactions).
 
@@ -137,7 +137,7 @@ when predefined conditions are met. Enforce rules transparently.
 
 Examples: Decentralized finance (DeFi), supply chain tracking, automated verification
 
-checks. Execution Cost 执行成本(e.g., "Gas" in Ethereum): Users pay fees to
+checks. Execution Cost 执行成本(e.g., “Gas” in Ethereum): Users pay fees to
 
 execute transactions or smart contract functions. Compensates node operators for
 
@@ -196,10 +196,47 @@ sunk costs Needs to maintain selfish mining for weeks before becomes profitable
 computing resources• Might damage system robustness•Ethereum solution: charge fee
 
 per computational step (gas)• Special gas fees also apply to storage operations
+
+晚上听了bruce老师的web3 运行原理
+
+今天的课程系统性地讲解了以太坊与 Web3 的整体运行原理，让我第一次从“钱包 → 交易 → 区块 → 共识 → 网络参与者”的完整链路理解区块链，而不仅是停留在“转账或炒币”的表层认知。
+
+### 1\. 钱包与私钥：真正的“资产主权”
+
+课程一开始强调了钱包的本质：**私钥即身份，钱包即账户**。任何人都可以无需许可地创建钱包地址，这意味着资产完全由个人掌控，而不是由银行或平台代管。但这也让我意识到，去中心化并不等于“更安全”，一旦私钥或助记词泄露，资产将无法追回。因此 Web3 世界中，**安全意识本身就是门槛**。
+
+### 2\. 交易不是转账那么简单
+
+通过实际演示我理解了，一笔交易不仅仅是“给谁多少钱”，而是由**操作内容、Gas 费用和防重放的 nonce**共同组成。钱包的作用是帮助用户组装交易、用私钥签名并广播到网络，而真正决定交易能否被打包的，是 Gas 费用与网络拥堵情况。
+
+### 3\. 数字签名与信任来源的改变
+
+区块链中的信任并不依赖账号或机构，而依赖密码学。私钥可以对交易信息进行签名，任何人都能验证交易确实由该地址发出，却无法伪造。这让我意识到，Web3 的信任基础从“相信某个人或公司”，转变为“相信数学和共识机制”。
+
+### 4\. 交易生命周期与区块确认
+
+交易在签名后会进入交易池排队，由验证者挑选并打包进区块。以太坊平均每 12 秒出一个区块，但交易并非立刻不可篡改，仍需等待约 12 分钟进入 Finalized 状态。这一点对实际开发和支付场景非常关键，也让我理解了为什么“交易成功 ≠ 已经安全确认”。
+
+### 5\. 共识机制与网络安全
+
+以太坊目前采用 POS 共识机制，通过质押 32 ETH 成为验证者并参与投票。作恶将被罚没押金，从经济层面约束行为。虽然 POS 相比 POW 更节能，但也存在质押集中化的风险，这让我意识到**去中心化并不是一个状态，而是一种需要持续维护的过程**。
+
+### 6\. RPC 与现实中的中心化问题
+
+钱包并不直接连接区块链，而是通过 RPC 节点服务商。这是目前 Web3 中相对中心化的一环，也可能成为审查或单点故障的来源。好在以太坊支持多个 RPC 和自建节点，这让我理解到去中心化是“可替换性”的体现，而不是完全消灭中心。
+
+### 7\. 智能合约：Code is Law
+
+智能合约本质是部署在区块链上的可执行代码，规则公开、自动执行、难以篡改。通过 NFT Mint 合约示例，我直观理解了“代码即规则”的含义，也意识到合约安全与开源审计的重要性。
+
+### 8\. 总结反思
+
+这节课让我认识到，Web3 并不仅是技术革新，更是一种**信任结构、权力分配和协作方式的重构**。它带来了无需许可、抗审查和全球协作的可能性，但也把安全责任完全交还给个人。未来 Web3 是否能大规模落地，很大程度取决于：**如何在去中心化与用户友好之间取得平衡**。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 **Web3 实习营第一天**  
 参加了三个线上会议
