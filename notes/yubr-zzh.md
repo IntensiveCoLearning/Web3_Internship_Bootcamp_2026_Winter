@@ -15,8 +15,117 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 一、文档阅读--以太坊
+
+1.  **以太坊的介绍：**
+    
+
+以太坊（Ethereum）是一个开源的去中心化区块链平台，通过其原生加密货币以太币（Ether，简称 ETH）提供去中心化的以太虚拟机（EVM）来处理点对点合约。
+
+以太坊的核心创新在于 智能合约（Smart Contracts） 。智能合约是存储在区块链上的可执行代码，能够在满足预设条件时自动执行操作，无需人工干预。这一特性使得以太坊不仅是数字货币的载体，更是构建去中心化应用（Dapps）、去中心化金融（DeFi）、非同质化代币（NFT）等生态系统的基础设施。
+
+以太坊的定位是“区块链 2.0”的代表。以太坊通过**智能合约**和**可编程性**，推动区块链技术向更广泛的应用场景扩展。
+
+**2、以太坊与Bitcoin的区别**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-13-1768308889369-image.png)
+
+**3、以太坊的发展历程**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-13-1768309130988-image.png)
+
+# 二、分享会--Web3运行原理
+
+1、助记词、私钥和公钥
+
+助记词：一个可以对多个私钥
+
+私钥：一串字符串，具有隐私性，需要注意私钥安全
+
+![微信图片_20260113211003.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-13-1768309943898-_____20260113211003.jpg)![微信图片_20260113211010.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-13-1768309915828-_____20260113211010.jpg)
+
+2、交易和签名
+
+数字签名
+
+gas fee ：去中心化网络的激励代币机制；可类比“油费”
+
+交易的完整周期（附上img）：从交易到出块：
+
+![微信图片_20260113211027.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-13-1768309994011-_____20260113211027.jpg)
+
+3、共识机制
+
+目的：让全球节点共同认同一个账本
+
+Pow:工作量证明 --- BTC
+
+算力竞争写帐
+
+Pos：权益证明 -- ETH
+
+质押＋随机选人写帐（更节能)
+
+4、几个概念的关系
+
+钱包通常不连全网，而是连接一个RPC(一个提供节点的API)
+
+5、智能合约
+
+本质： = 区块链账本里的“可执行代码”
+
+·在EVM(虚拟机）里运行
+
+·交易出发执行->改变链上状态
+
+·写进区块链 ：具备难以篡改、难追溯的特性
+
+社会学意义：
+
+“code is law”
+
+·规则可验证、按代码执行
+
+·部署后难修改
+
+·减少中介和摩擦
+
+6、区块链协议升级
+
+·以太坊如何改规则(附上img）：
+
+·节点客户端多样性： 节点软件不止一种——执行层客户端+共识层客户端（因而不怕单一软件出现bug）
+
+7、Web3关键特性回顾
+
+·去中心化
+
+钱包创建（人人可生成钥匙）
+
+交易广播
+
+网络运行（节点越分散越稳定）
+
+客户端越多越稳
+
+无许可、抗审查、开放开源、隐私
+
+**总的来说，Web3就是，用私钥签名来证明你是谁，用共识网络保证账本可信，用智能合约让规则自动执行。**
+
+![微信图片_20260113211044.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-13-1768310022051-_____20260113211044.jpg)
+
+8、分享会末尾的几点思考
+
+·在网络的运行中，当它逐渐与现实世界的一些运行模式相关联时，比如一些税收、公共基础设施等，这些的话又该如何定义、或者进行资产分配？
+
+·由于网络的抗审查，它对所有人都是抗审查的，对于一些黑产也是抗审查的，那么应该如何去避免这些问题，从而让整个网络的运行更加安全些？
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 ## 一、区块链入门导读知识
 
 ### · 区块链主要由两个核心组成部分：
