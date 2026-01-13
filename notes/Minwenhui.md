@@ -15,8 +15,14 @@ I'm Min, with experience in media reporting and new media operations. I'm curiou
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+![8d0f4c9d21bf5236f93384327823d335.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Minwenhui/images/2026-01-13-1768309514395-8d0f4c9d21bf5236f93384327823d335.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # web3行业全局介绍&岗位概览
 
 ## 一、历史回溯
