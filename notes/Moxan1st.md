@@ -25,6 +25,8 @@ Web3 实习计划 2025 冬季实习生
     
 -   Day2 youtube视频——与实习手册的任务有重合
     
+-   铸造第一个DFT——好耶，有点意思
+    
 
 # 详情
 
@@ -83,10 +85,22 @@ Web3 实习计划 2025 冬季实习生
 -   教育与培训：[g官方](http://ethereum.org)文档、Devcon/Devconnect 大会、黑客松（每年催生上千新项目）。
     
 -   生态创新：DeFi、NFT、DAO、L2、RWA 等应用层由独立团队 / DAO 构建，需求反向反馈至 EIP 与客户端开发；协议升级（Merge、Dencun、Pectra）由多团队协作迭代。
+    
+
+# 第二章
+
+## Section1
+
+1.  运行以太坊客户端软件的电脑，就是以太坊节点
+    
+2.  以太坊节点 = 一台电脑 + EL执行客户端（干活）+CL共识客户端（投票） +（可选）一个验证者客户端
+    
+3.  EL跟CL之间通过EngineAPI协作
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 **Week 1 day 1**
