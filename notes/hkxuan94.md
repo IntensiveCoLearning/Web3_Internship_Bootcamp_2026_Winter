@@ -15,6 +15,12 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+13-01-2026 打卡  
 
+今天系统理解了钱包、私钥、交易签名与 Gas 机制，对 Web3 如何“真正运行”有了更完整的认知。
 
+也再次意识到，安全与长期基础设施建设是这个行业的核心前提。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
