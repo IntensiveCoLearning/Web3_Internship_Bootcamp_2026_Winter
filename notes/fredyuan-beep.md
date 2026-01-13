@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+GM今日未更新 晚间更新全部笔记
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # **Web3实习手册 入门导读笔记**
 
 ## **一、区块链是什么？**
@@ -62,6 +68,7 @@ Probably, 不论科技的尽头是什么样，我可以理解为尽头是power�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
