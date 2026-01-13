@@ -10,7 +10,7 @@ timezone: UTC-5
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+北美 计算机专业
 
 ## Notes
 
