@@ -15,8 +15,21 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+-   看这三个东西，记笔记： Day 1: A Developer's Guide to Building on Ethereum - Intro
+    
+-   **Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**
+    
+-   021 学习以太坊第 1&2 章
+    
+
+\==========================================================================================================
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今日计划
 
 花二十分钟把要提交的任务挨个完成一下
