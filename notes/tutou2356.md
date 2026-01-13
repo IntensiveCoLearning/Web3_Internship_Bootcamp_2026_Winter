@@ -15,8 +15,74 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+二、以太坊概览
+
+\*\*2.4 2022 年 9 月 The merge : PoW(\*\*工作量证明 Proof of Work) \*\*—> PoS(\*\*权益证明 Proof of Stake)
+
+| 特性 | 工作量证明 (PoW) - 旧模式 | 权益证明 (PoS) - 新模式 | | 竞争方式 | 算力竞赛（谁机器算得快） | 资产质押（谁押的钱多、被选中） | | 参与者称呼 | 矿工 (Miner) | 验证者 (Validator) | | 硬件要求 | 高性能显卡/ASIC矿机 | 普通服务器/家用电脑即可 | | 能源消耗 | 极高（相当于一个国家） | 极低 | | 作恶惩罚 | 浪费了电费和算力成本 | 直接扣除质押的真金白银 |
+
+**合并后的新架构**
+
+现在的以太坊实际上是两层结构：
+
+-   **执行层**：处理交易、智能合约（原主网）
+    
+-   **共识层**：管理验证者、确定区块顺序（信标链）
+    
+
+2.5 策略调整
+
+1.  64 条分片链 ---->**数据分片**，配合 Layer 2 进行数据处理交易
+    
+2.  **技术准备：Blob（二进制大对象）：** EIP-4844 引入了一种新的数据格式叫 Blob。你可以把它理解为挂在交易旁边的\*\*“外挂存储包”\*\*。**特点：** 这个“外挂包”里的数据，以太坊虚拟机（EVM）是不去执行它的，只负责存储。而且它有个有效期（比如18天后自动删除），所以**非常便宜**。已于 2024 年 3 月 13 日上线主网
+    
+3.  **ZK-Rollup 技术：**主网只需验证一个证明而非数百笔交易。**代表项目**：zkSync Era、Polygon zkEVM、Scroll
+    
+4.  其他方向：**EIP-1559 成果**：已实现基础费用机制，但 Gas 费仍受网络拥堵影响较大；**Verkle 树技术**：优化状态存储结构，减少节点同步所需的数据量；**执行环境优化**：提升 EVM 性能，支持更复杂的智能合约应用
+    
+
+![以太坊升级路线图](https://web3intern.xyz/assets/ethereum-roadmap_01-Bi2f1MRr.jpg)
+
+2.6 以太坊生态概览：L1、L2、Sidechains 等
+
+**1.Layer 1（L1）：**以太坊主网：核心区块链，负责最终安全性与共识；EVM：以太坊虚拟机，执行智能合约代码；账户系统：外部账户（EOA）与合约账户（CA）共同构成网络基础。
+
+**2.Layer 2（L2）：**Rollup：通过将交易批量处理后提交至 L1，降低 Gas 费；Optimistic Rollup：假设交易合法，仅在争议时验证；ZK Rollup：通过零知识证明验证交易，无需链上争议。
+
+3.以太坊生态：
+
+1） 应用层（Application Layer）：用户直接交互的应用和界面
+
+DeFi 应用：Uniswap（去中心化交易所）、Aave（借贷协议）、Compound（借贷协议）
+
+NFT 平台：OpenSea、Foundation、SuperRare
+
+钱包应用：MetaMask、Coinbase Wallet、Rainbow
+
+DAO 工具：Snapshot、Aragon、Colony
+
+2） 协议层（Protocol Layer）以太坊的核心基础设施
+
+共识层客户端：Prysm、Lighthouse、Nimbus、Teku
+
+执行层客户端：Geth、Nethermind、Erigon、Besu
+
+核心协议：EVM、状态管理、Gas 机制
+
+3） 扩展层（Scaling Layer）提升性能和降低成本的解决方案
+
+Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
+
+侧链：Polygon PoS、xDAI（Gnosis Chain）
+
+状态通道：Lightning Network for Ethereum
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 一、区块链
 
 1.1 区块链的构成：区块 -- 交易记录等一些信息, 和之前的区块摘要（哈希） 10分钟打包生成一个
