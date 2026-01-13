@@ -64,13 +64,14 @@ Web3 实习计划 2025 冬季实习生
     
 -   **区块链浏览器 (Etherscan)**：
     
-    -   遵循 "Don't Trust, Verify" 原则。
+    -   遵循 “Don’t Trust, Verify” 原则。
         
     -   通过 Tx Hash 查询交易状态、区块高度和 Gas 消耗。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # Web3 初学者：从零到一的链上实操笔记
 
