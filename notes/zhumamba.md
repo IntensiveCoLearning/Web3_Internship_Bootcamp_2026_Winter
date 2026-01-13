@@ -15,8 +15,24 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今日计划：
+
+1.  mint一个NFT
+    
+2.  提交岗位意向和四周学习规划
+    
+3.  参加分享会
+    
+4.  观看[**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+    
+5.  **观看** [021 学习以太坊第 1&2 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # Web3入门Day1个人心得&笔记总结
 
 今日心得：今天一边整理Web3的一些基础概念，一边也开始自己真正上手试了试，我开了U卡和MetaMask钱包，给同学转了账，也用U给网站充了值。之前很多看着有点抽象的东西，比如钱包、交易确认这些，自己操作一遍之后感觉就顺多了，也更能理解 Web3跟传统支付到底差在哪。
