@@ -19,6 +19,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+学习了 web3 的全局行业分享会，对行业有了基础了解，也对未来行业转型有一定的方向
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->

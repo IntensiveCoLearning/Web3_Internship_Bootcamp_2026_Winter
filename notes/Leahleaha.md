@@ -15,8 +15,34 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+笔记：
+
+-   解释了私钥、助记词、公钥和地址之间的关系
+    
+-   强调了私钥安全的重要性
+    
+-   阐述了个人主权的概念
+    
+
+区块链交易（Transaction）的构成
+
+-   现场演示了一笔测试网交易的发送过程
+    
+-   交易签名的实际操作
+    
+-   数字签名的工作原理
+    
+
+-   区块链网络运行方式
+    
+-   智能合约本质
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 以大坊中文周会
 
 ![以大坊中文周会.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Leahleaha/images/2026-01-12-1768227977214-_______.jpg)

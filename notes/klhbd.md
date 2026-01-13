@@ -15,8 +15,327 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+**以太坊（Ethereum）概览**
+
+来源：[https://web3intern.xyz/zh/overview-of-ethereum/](https://web3intern.xyz/zh/overview-of-ethereum/)
+
+**简介**：一个**开源的去中心化区块链平台**，通过其原生加密货币以太币（Ether，简称 ETH）提供去中心化的以太虚拟机（EVM）来处理点对点合约。
+
+**原生代币**：以太币（ETH），全球市值排名第二的加密货币，仅次于比特币。自 The Merge 后，ETH 呈现轻微通缩趋势，年通胀率约为 0.2%-0.8%。
+
+💡燃料费（Gas Fee)：区块链操作中支付给网络服务提供商的手续费
+
+**提出人**：维塔利克·布特林（Vitalik Buterin）
+
+**提出时间**：2013-2014
+
+**目标**：构建“下一代加密货币与去中心化应用平台”，成为全球范围内的“世界计算机”。
+
+**核心创新**：智能合约（Smart Contracts）→数字货币载体、构建生态系统的基础设施【去中心化应用（Dapps）、去中心化金融（DeFi）、非同质化代币（NFT）等】
+
+💡智能合约
+
+储存在区块链上的可执行代码
+
+满足预设条件下自动执行操作，无需人工干预
+
+-   比特币是区块链 1.0 的象征（专注于货币属性）
+    
+-   以太坊的定位是“区块链 2.0”的代表（通过智能合约和可编程性推动岗区块链技术向更广泛的应用场景拓展）
+    
+
+Ethereum VS Bitcoin
+
+![8d7a7689dc588aae61b183775e15005e.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/klhbd/images/2026-01-13-1768289782678-8d7a7689dc588aae61b183775e15005e.png)
+
+-   以太坊→灵活性→支持更多应用场景，DeFi（借贷、交易）、NFT（数字艺术品）、DAO（去中心化自治组织）等
+    
+-   比特币（Bitcoin）→作为“数字黄金”的存储价值
+    
+
+**以太坊（Ethereum）定位与演进**
+
+**定位：** 基于区块链的去中心化“全球计算机”。
+
+**核心逻辑：** 通过改变底层**共识机制**（节能安全）和引入**分片/L2技术**（提速降费）来实现大规模应用。
+
+**升级路线**：升级路线图以 **“The Merge”** 为分水岭，从**工作量证明（PoW）** 彻底转向**权益证明（PoS）**，并确立了以**Layer 2扩展**为核心的未来路径。
+
+### 三大关键发展阶段
+
+### 1\. 以太坊 1.0：PoW 挖矿时代 （已成为历史）
+
+-   **机制：** 类似比特币，靠算力“挖矿”，争夺打包交易的权利，成功打包区块的矿工获得新生成的ETH奖励。
+    
+-   **痛点：** 能耗高（全球以太坊矿工的电力消耗相当于小国家用电量）、速度慢（每秒处理30笔交易（TPS））、费用贵。
+    
+
+💡PoW（Proof of Work）：工作量证明
+
+核心逻辑：用“努力”换取“信任”
+
+区块链网络（如比特币）用来达成共识的一种机制，通过“比拼算力”来决定谁有权记账并获得奖励。
+
+💡TPS（Transactions Per Second）：每秒事务处理量
+
+衡量一个系统处理能力和速度的核心指标
+
+💡不可能三角（Trilemma）：去中心化、安全性、可拓展性（高TPS）
+
+以太坊的策略是通过 **Layer 2** 来提升 TPS，同时保证 **Layer 1** 的去中心化和安全。
+
+2.  The Merge（合并）：开启 PoS 时代 （2022年完成）
+    
+
+-   **核心动作：** 以太坊主网的执行层全新的**信标链（Beacon Chain，共识层）** 合并，**彻底关闭PoW挖矿**。
+    
+-   **新架构**：
+    
+    -   **执行层**：处理交易、智能合约（原主网）
+        
+    -   **共识层**：管理验证者、确定区块顺序（信标链）
+        
+
+💡PoS（Proof of Stake）：权益证明
+
+核心逻辑：用“资产”换取”信任“
+
+![039f222e2d141b8bee0161d37456ffa6.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/klhbd/images/2026-01-13-1768289851296-039f222e2d141b8bee0161d37456ffa6.png)
+
+### 3\. 未来升级方向：
+
+**重点方向**
+
+-   **分片技术演进——从执行分片到数据分片（**全面分片预计 2025-2026 年 启动，重点是 Proto-Danksharding）
+    
+    -   专注于**数据分片**，配合 Layer 2 实现扩容
+        
+    -   数据可用性分片、配合L2、EIP-4844 先行
+        
+    -   **预期效果：**
+        
+        -   **Layer 2 成本进一步降低 90%+**
+            
+        -   **以太坊主网专注于做“结算层”和“数据可用性层”**
+            
+-   **EIP-4844（Cancun 升级）——“省钱神器”（已于 2024 年 3 月 13 日上线主网）**
+    
+    -   解决方案：引入专门的“Blob 交易”类型，数据存储成本大幅降低
+        
+    -   技术细节：Blob 数据会在一定时间后自动删除，不会永久占用主网存储
+        
+    -   实际效果：
+        
+        -   L2 交易费用降低 **70% - 90%**
+            
+        -   Arbitrum、Optimism 等主流 L2 费用降至几美分
+            
+
+💡**EIP-4844**（ **Proto-Danksharding**）
+
+核心创新：引入“Blob”（Binary Large Objects，二进制大对象）交易→以太坊区块的一个“外挂行李舱”，只存不算、定期自动清理
+
+目标：让 Layer 2 (L2) 的手续费暴跌
+
+-   **ZK-Rollup 技术——“批量验证，一步到位”**
+    
+    -   批量处理
+        
+    -   零知识证明：生成一个简洁的“正确性证明”
+        
+    -   主网验证
+        
+    -   **优势：速度快、成本低、安全性高**
+        
+    -   代表项目：zkSync Era、Polygon zkEVM、Scroll
+        
+
+💡**ZK-Rollup 技术：**Zero-Knowledge Rollup（零知识证明汇总）
+
+本质：用“数学的确定性”代替了“人为的监督”
+
+其他方向：
+
+-   **EIP-1559 成果**：已实现基础费用机制，但 Gas 费仍受网络拥堵影响较大
+    
+-   **Verkle 树技术**：优化状态存储结构，减少节点同步所需的数据量
+    
+-   **执行环境优化**：提升 EVM 性能，支持更复杂的智能合约应用
+    
+
+💡以太坊升级命名惯例
+
+![4b0d74fbd373027e00c6ef06bfee4a51.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/klhbd/images/2026-01-13-1768289927223-4b0d74fbd373027e00c6ef06bfee4a51.png)
+
+以太坊生态概览
+
+以太坊生态系统：
+
+**Layer 1（L1）：以太坊主网、EVM（以太坊虚拟机，Ethereum Virtual Machine）、账户系统**
+
+**Layer 2（L2）：**
+
+-   Rollup
+    
+    -   Optimistic Rollup（假设交易合法）
+        
+    -   ZK Rollup（零知识证明汇总）
+        
+
+**侧链（Sidechains）：独立运行的链**
+
+**以太坊生态分层架构**
+
+![bed0fa16b136104059c9e4fc992ebec0.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/klhbd/images/2026-01-13-1768290067830-bed0fa16b136104059c9e4fc992ebec0.png)
+
+详情：[https://web3intern.xyz/zh/overview-of-ethereum/#四、以太坊生态概览-l1、l2、sidechains-等](https://web3intern.xyz/zh/overview-of-ethereum/#四、以太坊生态概览-l1、l2、sidechains-等)
+
+💡可参考：[https://youtu.be/35FF4PP58\_A?si=5lOSsWkuyftsC9Ca](https://youtu.be/35FF4PP58_A?si=5lOSsWkuyftsC9Ca)
+
+### 1\. Layer 1（底层网络）：地基与规则
+
+Layer 1 指的是区块链的**基础层**（主网）。它是一个独立运行的系统，负责处理所有的安全、共识和交易记录。
+
+-   **核心任务：** 确保安全性和去中心化。它就像一个国家的法律和中央银行。
+    
+-   **例子：** **比特币 (Bitcoin)**、**以太坊 (Ethereum)**、**Solana**。
+    
+-   **瓶颈：** 由于每一笔交易都要经过全网所有节点的验证，所以速度慢（TPS 低），一旦人用多了，就像高峰期的独木桥，又堵又贵。
+    
+
+### 2\. Layer 2（二层网络）：扩容与效率
+
+Layer 2 是构建在 Layer 1 **之上**的辅助协议。它的存在是为了分担主网的压力。
+
+-   **核心任务：** 负责“干苦力”。它把成千上万笔小交易拿到链下处理，处理完后再把汇总结果发回 Layer 1 记录。
+    
+-   **例子：** \* 以太坊的 **Arbitrum**、**Optimism**、**Base**、**zkSync**。
+    
+    -   比特币的 **Lightning Network (闪电网络)**。
+        
+-   **优势：** 极快、极便宜。它继承了 Layer 1 的安全性，但拥有极高的 TPS。
+    
+
+**以太坊文化与价值观**
+
+一个由 **“密码朋克精神”驱动，以“去中心化”为核心，通过“无需许可”的开放协作，共同建设“抗审查”的数字公共基础设施”** 的独特生态。 详情：[https://web3intern.xyz/zh/overview-of-ethereum/#五、以太坊文化与价值观](https://web3intern.xyz/zh/overview-of-ethereum/#五、以太坊文化与价值观)
+
+**以太坊核心机制**
+
+三个关键机制：**账户系统、Gas 模型 和 以太坊虚拟机（EVM）**
+
+**账户系统**
+
+-   由私钥控制的 **外部账户（EOA，Externally Owned Account）**
+    
+    -   公钥通过加密算法生成一个唯一的地址→分享接收转账
+        
+    -   私钥→控制账户（人类可读备份形式：**助记词（Mnemonic Phrase）**
+        
+-   由智能合约代码控制的 **合约账户（CA，Contract Account）**
+    
+
+**Gas模型：交易燃料费**
+
+-   **总费用 = Gas Limit × Gas Price**
+    
+    -   **Gas Limit（限额）：**最多愿意“烧”多少
+        
+    -   **Gas Price（单价）**：每单位燃料多少钱，用 Gwei 表示（1 Gwei = 0.000000001 ETH）。高峰期加价。
+        
+
+💡在 EIP-1559 升级后，Gas Price 被拆分为两部分：
+
+**基础费用（Base Fee）：**自动计算，直接销毁帮助ETH通缩。 **小费（Tip）**：额外加的钱，用来鼓励矿工优先处理。
+
+-   **存在目的**：激励矿工/验证者、防止资源滥用
+    
+
+**以太坊虚拟机**（EVM，Ethereum Virtual Machine）：专用于运行智能合约的虚拟计算机，运行在每个节点上，确保整个网络处理代码时，**结果一致、可信任**。
+
+核心特点：图灵完备、全球同步、隔离安全
+
+**一般流程**
+
+![06720d21826526da0b51ffd71a9bdd09.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/klhbd/images/2026-01-13-1768291115758-06720d21826526da0b51ffd71a9bdd09.png)
+
+区块链行业赛道
+
+DeFi（Decentralized Finance，去中心化金融）
+
+DeFi 的目标是建立一个不依赖传统中介（银行等）的自由金融体系。
+
+-   去中心化交易所（DEX，**Decentralized Exchange**）
+    
+    -   Uniswap：DEX代表
+        
+        -   核心创新：引入“自动做市商”（AMM）模式，通过“恒定乘积公式” 实现代币定价，随着池子中资产比例的变化，兑换价格也会自动调整。
+            
+        -   **恒定乘积公式：x \* y = k，x** 和 **y** 代表流动性池中的两种加密货币，比如 ETH 和 USDC；**k** 是一个常数，必须始终是50,000（忽略手续费情况下）
+            
+        -   交易核心：
+            
+        -   **流动性池 (Liquidity Pool)：** 由很多用户共同提供的资金池，**用于交易中的兑换**。它是去中心化交易的“燃料仓”。不再是“人等循环”，而是“人对池交易”。池子越大，交易时的价格波动（滑点）就越小。
+            
+        -   **流动性提供者 (LP)：** 相当于池子的“小股东”。通过存入等值的两种资产，换取池子的份额，并以此赚取分红（手续费）。
+            
+        -   DEX VS CEX（Centralized Exchange）
+            
+            ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/klhbd/images/2026-01-13-1768292099487-image.png)
+-   Compound：去中心化借贷协议
+    
+    -   超额抵押借贷。用户存入资产获得利息（cToken），也可以抵押资产借出另一种代币，但如果抵押物价值下跌会触发“强制清算”。
+        
+-   MakerDAO（现已更名为 Sky）：稳定币系统
+    
+    -   通过超额抵押（如抵押 ETH）生成与美元挂钩的稳定币 **DAI (现为 USDS)**。
+        
+
+NFT：数字所有权革命
+
+NFT 解决了数字资产“易复制、所有权模糊”的问题，本质是数字资产的唯一性和所有权。
+
+-   **本质：** 利用区块链确权，让图片、艺术品、游戏道具真正属于用户。
+    
+-   **智能合约赋能：** 自动执行所有权转移，甚至可以自动给创作者发放转售版税。
+    
+-   **典型项目：** CryptoPunks（头像鼻祖）、OpenSea（主流交易市场，目前全球最大的 NFT 交易平台）。
+    
+
+### DAO：去中心化自治组织（组织变革）Decentralized Autonomous Organization
+
+DAO 是一种通过代码和代币持有者投票，而非传统层级结构管理的组织形式。
+
+-   **特点：** 社区驱动、透明化、无国界。
+    
+-   **案例：** Nouns DAO（艺术治理）、LXDAO（公共物品建设）、ConstitutionDAO（曾试图众筹购买美国宪法副本）。
+    
+
+### MEME：文化与投资热潮
+
+MEME 币基于互联网文化和社区情绪，而非传统财务模型。
+
+-   **代表：** DOGE（鼻祖）、PEPE（社区驱动）。
+    
+-   **提示：** 波动剧烈，新手参与需高度警惕风险。
+    
+
+### 五、 2025 年新兴趋势（重点关注）
+
+1.  **Intent-Based（意图驱动）：** 用户只需说出“目标”（如：用最少的钱买到币），系统自动寻找最优路径。
+    
+2.  **账户抽象 (AA) 与智能钱包：** 像 Web2 一样用社交账号恢复钱包，支持免 Gas 费交易。
+    
+3.  **模块化区块链：** 将执行、共识、数据可用性等功能分离（如 Celestia），提高性能和定制性。
+    
+4.  **AI + Web3：** 包括去中心化算力（Render）、AI 代理执行脚本以及 AI 驱动的自动化交易。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 **区块链**
 
 **一、定义**：去中心化的分布式账本技术，用于在网络节点之间安全、透明且不可篡改地记录事务数据。数据按照时间顺序打包成“区块”并链接城“链”。

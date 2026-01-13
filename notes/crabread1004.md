@@ -15,26 +15,90 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 1.13共学笔记
+
+1.12补充：
+
+web3行业赛道：
+
+1.DeFi（去中心化金融）
+
+2.NFT（数字资产）
+
+3.DAO（去中心化自治组织）
+
+[4.MEME](http://4.MEME) 币（社区自治与实用）
+
+非学分任务：
+
+1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
+    
+    1.  与许多传统货币不同，**以太币可能会随时间推移变得越来越稀缺**。每次有人使用以太坊时，都会销毁一小部分以太币，使其永久退出流通。在交易繁忙的日子里，被销毁的以太币数量会超过新铸造的数量，使得以太币具有通缩特性，其价值会随时间推移而增长。以太坊的使用量越大，被销毁的以太币就越多。
+        
+    2.  比特币通过矿工来保障网络安全。这些高性能计算机相互竞争，致力于破解复杂的数学难题，胜出者有权将下一笔交易区块添加至区块链，并获得比特币作为奖励。——以太坊：诚实的验证者可获得以太币奖励，而任何不诚实的验证者则会损失部分质押。
+        
+2.  [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+    
+3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs、**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+    
+4.  分享会自用笔记：[https://www.notion.so/1-13-web3-2e7408fac1a680f3ba9ff5c27a86a3a6?source=copy\_link](https://www.notion.so/1-13-web3-2e7408fac1a680f3ba9ff5c27a86a3a6?source=copy_link)
+    
+5.  **crptoria - Ep.141 2026展望上 - 加密货币的本质：货币控制权从国家回归个人**
+    
+
+学分任务：
+
+1.  在 My First NFT mint 第一个 NFT
+    
+    1.1 测试币不足解决方案：
+    
+    挖矿： [https://sepolia-faucet.pk910.de/#/](https://sepolia-faucet.pk910.de/#/)
+    
+    钱包使用和领水网站：[如何完成“创建钱包，并尝试测试币转账”？](https://www.notion.so/2e54867ff3e180b5bc84e33a7e2f9835?pvs=21)（感谢群友！）
+    
+    1.2 Gas Fee查看：[https://sepolia.etherscan.io/gastracker](https://sepolia.etherscan.io/gastracker)
+    
+2.  完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战2章
+    
+    2.1 一些工具
+    
+    你可以用 [https://openchain.xyz/signatures](https://openchain.xyz/signatures) 来解码函数选择器
+    
+    你可以用 [https://calldata.swiss-knife.xyz/decoder](https://calldata.swiss-knife.xyz/decoder) 解码完整的通话数据
+    
+    2.2码一些自己难以识别的
+    
+    **Seaport Zero Order NFT 钓鱼**
+    
+    **地址前缀/后缀钓鱼**
+    
+    **Uniswap V3 多呼叫钓鱼**
+    
+    **安全代理合同攻击**
+    
+    **谷歌伪造钓鱼（注意邮件标题！）**
+    
+3.  确立岗位目标意向，提供四周学习规划
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
+
+
 1.  学习内容：
     
-    1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
+    1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分——已总结至notion
         
     2.  [021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
         
-2.  拓展 & 辅助理解材料
+2.  拓展 & 辅助理解材料——layer2拓展（英文阅读速度有些慢）
     
-    1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
-        
-    2.  [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
-        
-    3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
-        
-3.  工具安装
+3.  工具安装——完成了除tg注册外工具安装学习
     
-    1.  剩余待办：tg注册
-        
 
 **4.分享会：行业介绍&全局概览**
 

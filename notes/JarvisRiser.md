@@ -15,8 +15,33 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+web3实习计划Day2
+
+今日学习记录如下
+
+1.已查看中文周会Playlist
+
+2.已观看Web3 行业全局介绍 & 岗位概览，观后认为目前还是应从运营作为切入点，后续转换至BD，以及运用好自身FRM的优势尝试合规岗。
+
+3.已完成2026-Co-Learning
+
+![ca4ab06ad813396289d0854d7f392e39.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/JarvisRiser/images/2026-01-13-1768295918640-ca4ab06ad813396289d0854d7f392e39.png)
+
+4.已完成mint第一个NFT
+
+我刚刚在《我的第一个 NFT》 @LXDAO\_Official [https://nft.myfirst.io/](https://nft.myfirst.io/) 网站上学习什么是 Web3 和 NFT，并且铸造了一个 NFT 来当头像。有兴趣的可以一起来学习铸造一个～
+
+5.晚些准备进一步进行mint NFT以及完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
+
+
 Day1打卡
 
 1.已完成相应软件配置下载安装

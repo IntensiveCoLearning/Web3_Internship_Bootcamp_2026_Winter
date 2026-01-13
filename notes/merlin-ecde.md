@@ -15,16 +15,50 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今日完成：区块链底层逻辑学习
+
+共同搭建链上投研社群
+
+去中心化，解决某些信用问题。
+
+举例:
+
+以货币交易举例，中心化方式是由央行记录交易形成总帐本的，而去中心化方式，顾名思义就是这个帐本谁都能记，然后把账本放到区块链上，这就达成了去中心化。
+
+从上面的举例，会延伸出下面几个问题:
+
+1、区块链是什么样子的，安全吗?顾名思义，就是一个个区块形成的一条链，这好像是句废话哈哈，具体来讲，每个区块都是一个账本，记录着某段时间人们之间的交易。区块链是从一个区块开始，随着时间一个个区块往后延升的，大家可以想出来什么样子了吧
+
+安全问题，我们需要先了解一下哈希函数，这个函数可以把我们输入转成固定长度的输出，看似一段乱码(例如543gfdjf568)，这个输出乱码我们叫做哈希值，每一个区块都有一个区块头，里面记录着这个区块以及上一个区块的哈希值，这样是不是每个区块都形成联系了呢，正是这个关系才让区块链形成了，可以想象一下。假设现在一个区块链上有10个区块，然后有黑客想要篡改第二个区块里面的某条交易记录，那么第二个区块的哈希值就会改变，连锁反应，后面的区块的哈希值也都会改变，就知道了第二区块的哈希值也都会改变，就知道了第二区块的哈希值被人篡改了，正是区块链的这个方式保证了安全性。
+
+2、账本真的谁都能记吗?别人为什么要去记啊?
+
+因为p2p网络技术，所以账本是谁都能记的，but，你记的账本会不会放到区块链，就不一定了，这个记账权会通过pow的方式，简单的说，有一个哈希函数，里面的参数包括随机数、上一个区块的哈希值和你记的账本，这个函数会算出一个值，谁先算出的值小于某个指定值，谁就获得了记账权。大家为什么要去记账本啊，闲的没事嘛，当然不是!因为只要你记得账本能够放到区块链上，官方会奖励你50个比特币，什么概念哈哈，当然也是比特币唯一的发行方式。所以大家都争着想第一个算出的值小于指定值，那么怎么算?从上面函数的参数可以看到我们能调整的就是随机数和账本交易记录，而且只能通过遍历的方式算出，所以谁先算出来完全看运气和显卡性能，这个算的过程也是我们常听的"挖矿"。
+
+3、那么在区块链上是怎么交易的呢?
+
+现在我们交易需要有银行卡，银行卡有卡号和密码，而在区块链上我们也账号密码，在区块链上账号叫地址，密码叫私钥(由256位二进制数字形成)。私钥是可以无限生成的，但是私钥一旦生成就无法修改了，而且地址也是有私钥形成的，可以看出私钥的重要程度了吧，所以要保管好自己的私钥哦。具体交易流程如下:张三有了地址和私钥，假设要转账10块给李四，那么首先会通过sign函数得到本次转账签名，然后张三会把地址、交易信息和本次转账的签名发布到网上，任何人都可以通过verify函数验证本次交易是否真实，并记到自己的账本上，这条交易记录就被记下来了。大家可以想象一下，某十分钟内有100条交易，交易者把自己的地址、交易信息和签名发布到网上，然后网上有一万个人把这些交易记到了自己的账本上，最终只会有一个人的账本会被记录到区块链上，另外9999个人在这10分钟内做的就是无用功了，没卷过嘛。
+
+4、比特币的奖励机制
+
+上面讲了比特币唯一的发行方式就是奖励获得记账权的人，一开始是奖励50个，大约每过四年的时间，奖励会减一半，最后的总发行量大概在2100万个，到2040年奖励结束，之后就只剩下一些利息了。大家可以发现随着挖矿带来的巨大利益的驱使，越来越多的人参与到挖矿中，以及算力的提升，会不会解上面的哈希函数越来越快了呢，一会儿奖励50个，一会儿奖励50个的......2100万个比特币早就要没了。其实不然，哈希函数中的指定值会根据奖励速度调大调小，平均奖励周期会在10分钟，即每10分钟区块链会多一个区块。此外，我们可以在blockchain网站上可以看到增加区块的时间，以及区块内的交易信息。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # **1.12学习计划**
 
 1、阅读ETFPanda Talk系列——100 年后的数字社会是怎么样的？- Vitalik 访谈
 
 2、完成实习手册入门导读部分的阅读
 
-3、YouTube视频观看——A Developer's Guide to Building on Ethereum
+3、YouTube视频观看——A Developer’s Guide to Building on Ethereum
 
 4、进行总结打卡
+
+![Blockchain_2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231214614-Blockchain_2.png)![Blockchain_3.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231245061-Blockchain_3.png)![Blockchain_4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231262247-Blockchain_4.png)![Blockchain_5.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231276874-Blockchain_5.png)![Blockchain_6.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231309869-Blockchain_6.png)![Blockchain_7.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231447388-Blockchain_7.png)![Blockchain_8.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-12-1768231338089-Blockchain_8.png)
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->

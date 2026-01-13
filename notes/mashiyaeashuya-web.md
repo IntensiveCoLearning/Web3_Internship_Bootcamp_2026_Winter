@@ -17,6 +17,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mashiyaeashuya-web/images/2026-01-13-1768314640956-image.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->

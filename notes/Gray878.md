@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+1\. 学习使用 Google Calendar
+
+2\. 查看以太坊中文周会 260112 回放
+
+3\. 查看「Web3行业全局介绍＆岗位概览」回放
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今日计划：
 
 1.  观看昨天的开营仪式

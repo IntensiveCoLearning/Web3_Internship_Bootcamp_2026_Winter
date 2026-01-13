@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+课堂学习web3的历史，基础信息等。
+
+钱包的使用以及 钱包 ->助记词 -> 私钥 -> 公钥 之间的关系
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 1.  梳理web3职业区分，以及方向
     
 2.  学习solidity基础语法

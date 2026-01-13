@@ -15,8 +15,15 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今日学习go-eth链下交互，学习使用foundry框架
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
 学习内容:
 
 1.下载metamask，领水，互转sepolia测试代币

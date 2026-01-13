@@ -15,8 +15,235 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+### **\[N-2\] Phased Plan from 1/12 to 2/8 in 2026**
+
+**Discription:** 我的目标岗位是合约审计。这个岗位门槛真的很高，而且是和合约开发高度耦合的。一个优秀的审计员无疑也是一个优秀的开发者，二者需要的知识储备，技术栈都是相似的。
+
+这四周我需要学习市面上主流Defi的源码，学习里面优秀的设计模式，以及其他Dapp如何接入这些Defi protocal
+
+-   uniswap V3
+    
+-   uniswap V4
+    
+-   Aave V4
+    
+-   GMX
+    
+
+一周学一个吧，前两周允许我进度慢一点，还在期末考试中。除此之外继续跟进实习计划的任务，目标是保持在排行榜的前面，也希望能在实习结束接到一个开发的实习。目前我Solidity的代码量还是太少了，还是没能做到随心所欲的地步，需要一些开发来逐渐精通。
+
+这一段时间应该是参加不了Competitve Audit了，不过这些比赛我今后长期活跃在其中。还有黑客松，我也会经常参加。最近还觉得需要在社交媒体中建立自己的权威，比如在推特上，这个方向我也会关注，不过不是现在这四周的重心。
+
+我能感觉到现在是我人生的一个小小新阶段的起步。未来会专注于合约审计和开发并行学习，我觉得自己还是需要开发的经验作为积累，二者并行的学习模式可能是最适合现阶段的我的。
+
+### **\[UNIV2-3\] TWAP (time weight everage price) in UniswapV2**
+
+**Discription:** 在使用 Uniswap 这种链上 Oracle 最为 price 来源的时候，很容易(100%)会受到攻击，原因就在于 Uniswap 的价格太好操控了，任何一个人做 FlashLoan 就可以让价格波动很大。由此 Uniswap 提供`TWAP`(time weight everage price)来防止价格波动。注意，TWAP 价格和现货价格是两个东西。
+
+**Math:**
+
+-   **Spot Price 现货价格(AMM)**
+    
+    -   Token X 以 Token Y 计价的现货价格:
+        
+        P\_X/Y=YX\_P\_\__X_/_Y_\=\_XY\_​
+        
+-   **TWAP 价格**
+    
+    -   Token X 在时间区间 i 到 k 的时间加权平均价格
+        
+        TWAPX(Tk,Tn)=∑i=kn−1ΔTi PiTn−TkTWAP\_X\_​(\_Tk\_​,\_Tn\_​)=\_Tn\_​−_Tk\_​\_i_\=_k_∑_n_−1​Δ\_Ti\_​\_Pi\_​​
+        
+
+💹 \_update in pair
+
+```js
+function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reserve1) private {
+        require(balance0 <= uint112(-1) && balance1 <= uint112(-1), 'UniswapV2: OVERFLOW');
+        uint32 blockTimestamp = uint32(block.timestamp % 2 ** 32);
+        uint32 timeElapsed = blockTimestamp - blockTimestampLast; // overflow is desired
+        if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
+            // * never overflows, and + overflow is desired
+            price0CumulativeLast += uint(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) * timeElapsed;
+            price1CumulativeLast += uint(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) * timeElapsed;
+        }
+        reserve0 = uint112(balance0);
+        reserve1 = uint112(balance1);
+        blockTimestampLast = blockTimestamp;
+        emit Sync(reserve0, reserve1);
+    }
+```
+
+💹 How to use TWAP in your dapp
+
+```js
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4 <0.9;
+
+import {IUniswapV2Pair} from "../../../src/interfaces/uniswap-v2/IUniswapV2Pair.sol";
+import {FixedPoint} from "../../../src/uniswap-v2/FixedPoint.sol";
+
+// Modified from https://github.com/Uniswap/v2-periphery/blob/master/contracts/examples/ExampleOracleSimple.sol
+// Do not use this contract in production
+contract UniswapV2Twap {
+    using FixedPoint for *;
+
+    // Minimum wait time in seconds before the function update can be called again
+    // TWAP of time > MIN_WAIT
+    uint256 private constant MIN_WAIT = 300;
+
+    IUniswapV2Pair public immutable pair;
+    address public immutable token0;
+    address public immutable token1;
+
+    // Cumulative prices are uq112x112 price * seconds
+    uint256 public price0CumulativeLast;
+    uint256 public price1CumulativeLast;
+    // Last timestamp the cumulative prices were updated
+    uint32 public updatedAt;
+
+    // TWAP of token0 and token1
+    // range: [0, 2**112 - 1]
+    // resolution: 1 / 2**112
+    // TWAP of token0 in terms of token1
+    FixedPoint.uq112x112 public price0Avg;
+    // TWAP of token1 in terms of token0
+    FixedPoint.uq112x112 public price1Avg;
+
+    // Exercise 1
+    constructor(address _pair) {
+        // 1. Set pair contract from constructor input
+        pair = IUniswapV2Pair(_pair);
+        // 2. Set token0 and token1 from pair contract
+        token0 = pair.token0();
+        token1 = pair.token1();
+        // 3. Store price0CumulativeLast and price1CumulativeLast from pair contract
+        price0CumulativeLast = pair.price0CumulativeLast();
+        price1CumulativeLast = pair.price1CumulativeLast();
+        // 4. Call pair.getReserve to get last timestamp the reserves were updated
+        (, , updatedAt) = pair.getReserves();
+        //    and store it into the state variable updatedAt
+    }
+
+    // Exercise 2
+    // Calculates cumulative prices up to current timestamp
+    //@note 这个函数计算并返回截止到当前时间戳的累积价格，用于后续计算时间加权平均价格。
+    function _getCurrentCumulativePrices()
+        internal
+        view
+        returns (uint256 price0Cumulative, uint256 price1Cumulative)
+    {
+        // 1. Get latest cumulative prices from the pair contract
+        price0Cumulative = pair.price0CumulativeLast();
+        price1Cumulative = pair.price1CumulativeLast();
+        // If current block timestamp > last timestamp reserves were updated,
+        // calculate cumulative prices until current time.
+        // Otherwise return latest cumulative prices retrieved from the pair contract.
+
+        // 2. Get reserves and last timestamp the reserves were updated from
+        //    the pair contract
+        (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast) = pair
+            .getReserves();
+
+        // 3. Cast block.timestamp to uint32, and update the timestamp of the last update
+        uint32 blockTimestamp = uint32(block.timestamp);
+        if (blockTimestampLast != blockTimestamp) {
+            // 4. Calculate elapsed time
+            uint32 dt = blockTimestamp - blockTimestampLast;
+
+            // Addition overflow is desired
+            unchecked {
+                // 5. Add spot price * elapsed time to cumulative prices.
+                //    - Use FixedPoint.fraction to calculate spot price.
+                //    - FixedPoint.fraction returns UQ112x112, so cast it into uint256.
+                //    - Multiply spot price by time elapsed
+                price0Cumulative +=
+                    uint256(FixedPoint.fraction(reserve1, reserve0)._x) *
+                    dt;
+                price1Cumulative +=
+                    uint256(FixedPoint.fraction(reserve0, reserve1)._x) *
+                    dt;
+            }
+        }
+    }
+
+    // Exercise 3
+    // Updates cumulative prices
+    function update() external {
+        // 1. Cast block.timestamp to uint32
+        uint32 blockTimestamp = uint32(block.timestamp);
+        // 2. Calculate elapsed time since last time cumulative prices were
+        //    updated in this contract
+        uint32 dt = blockTimestamp - updatedAt;
+        // 3. Require time elapsed >= MIN_WAIT
+        require(dt >= MIN_WAIT, "InsufficientTimeElapsed");
+
+        // 4. Call the internal function _getCurrentCumulativePrices to get
+        //    current cumulative prices
+        (
+            uint256 price0Cumulative,
+            uint256 price1Cumulative
+        ) = _getCurrentCumulativePrices();
+
+        // Overflow is desired, casting never truncates
+        // https://docs.uniswap.org/contracts/v2/guides/smart-contract-integration/building-an-oracle
+        // Subtracting between two cumulative price values will result in
+        // a number that fits within the range of uint256 as long as the
+        // observations are made for periods of max 2^32 seconds, or ~136 years
+        unchecked {
+            // 5. Calculate TWAP price0Avg and price1Avg
+            //    - TWAP = (current cumulative price - last cumulative price) / dt
+            //    - Cast TWAP into uint224 and then into FixedPoint.uq112x112
+            price0Avg = FixedPoint.uq112x112(
+                uint224(price0Cumulative - price0CumulativeLast) / dt
+            );
+            price1Avg = FixedPoint.uq112x112(
+                uint224(price1Cumulative - price1CumulativeLast) / dt
+            );
+        }
+
+        // 6. Update state variables price0CumulativeLast, price1CumulativeLast and updatedAt
+        price0CumulativeLast = price0Cumulative;
+        price1CumulativeLast = price1Cumulative;
+        updatedAt = blockTimestamp;
+    }
+
+    // Exercise 4
+    // Returns the amount out corresponding to the amount in for a given token
+    function consult(
+        address tokenIn,
+        uint256 amountIn
+    ) external view returns (uint256 amountOut) {
+        // 1. Require tokenIn is either token0 or token1
+        require(tokenIn == token0 || tokenIn == token1, "InvalidToken");
+        // 2. Calculate amountOut
+        //    - amountOut = TWAP of tokenIn * amountIn
+        //    - Use FixePoint.mul to multiply TWAP of tokenIn with amountIn
+        //    - FixedPoint.mul returns uq144x112, use FixedPoint.decode144 to return uint144
+        if (tokenIn == token0) {
+            // Example
+            //   token0 = WETH
+            //   token1 = USDC
+            //   price0Avg = avg price of WETH in terms of USDC = 2000 USDC / 1 WETH
+            //   tokenIn = WETH
+            //   amountIn = 2
+            //   amountOut = price0Avg * amountIn = 4000 USDC
+            amountOut = FixedPoint.mul(price0Avg, amountIn).decode144();
+        } else {
+            amountOut = FixedPoint.mul(price1Avg, amountIn).decode144();
+        }
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
+
 ### **\[B-1\] Etherscan::Transaction**
 
 **Description** 对于ETH来说，区分交易的类别是很重要的。

@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## 今天主要阅读了021 学习以太坊第 2&3 章，了解了web3领域中合规与网络安全相关的内容。
+
+## 以及铸造了第一个NFT
+
+![mfnft.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-13-1768306490962-mfnft.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 ## **今天是开营的第一天，学习内容上午主要看了web3实习手册入门导读部分，了解了区块链基础概念和以太坊概览**
 
 ## **区块链：**

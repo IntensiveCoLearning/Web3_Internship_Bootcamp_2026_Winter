@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## 021学习以太坊第一章
+
+## 下载开发环境remix IDE
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 
 1.  区块链由区块和链组成，特性有**_不可篡改，公开透明，快速交易_**。

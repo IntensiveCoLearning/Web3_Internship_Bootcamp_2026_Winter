@@ -15,8 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+以太坊原理笔记：核心是去中心化计算平台，融合代码执行与经济激励。
+
+1.  **智能合约**：自执行代码协议，部署后不可变。示例：自动拍卖合约。运行需 EVM，支付 Gas 防 DDoS。
+    
+2.  **dApps**：前端+合约的后端应用。去中心化优势：无单点故障。流行如 DeFi（借贷）、NFT 市场。依赖 Web3.js 等工具连接钱包。
+    
+3.  **代币**：ERC 标准创建资产。ERC-20 用于稳定币、治理代币；ERC-721 用于独特 NFT，如艺术品。发行简单，但需合规。
+    
+4.  **PoS vs PoW**：PoW 靠算力挖矿，早期以太坊用之，但耗电。PoS 质押 ETH 抽签出块，The Merge 后节能 99%。验证者在线率高，slash 罚没防作恶。目前 110万+ 验证者，APR 3-5%。
+    
+5.  **Gas**：交易燃料，计量计算/存储成本。高峰期 Gas 贵，导致拥堵。优化如 L2 Rollup 转移计算。
+    
+6.  **Proto-Danksharding & Dencun**：EIP-4844 在 2024 Dencun 升级上线。引入 Blob 临时数据，专为 L2 减费（calldata → Blob，存 18 天）。效果：L2 费用暴跌，推动生态活跃。
+    
+7.  **分片 & Danksharding**：未来扩容。分片并行处理，提高吞吐；Danksharding 目标 64 Blob/块 + DAS 采样，节点无需全下载数据。Proto 是过渡，铺路百万 TPS。
+    
+8.  **叔块**：PoW 时代，分支块奖励机制。叔块被主链引用，奖励矿工，防孤块，提高包容。PoS 后优化，减少网络碎片。
+    
+
+综合：以太坊从 PoW 向 PoS 转型，扩容聚焦 Danksharding。挑战：Gas 波动、安全漏洞。未来：L2 生态主导，用户体验如 Web2。建议实践：用 MetaMask 部署简单合约，体验 Gas；观察 Beacon Chain 数据。持续学习升级如 Prague/Electra。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 **学习目标：**
 
 Web3 实习手册「入门导读」部分

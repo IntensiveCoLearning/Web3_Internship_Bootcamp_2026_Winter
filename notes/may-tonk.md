@@ -15,8 +15,112 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
+
+-   **复习solidity内容(ERC20)**
+    
+
+1.  主要检查关于代币铸造和payable进一步的了解[my\_web3\_study/contracts/\_ERC20.sol at master · may-tonk/my\_web3\_study](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_ERC20.sol)
+    
+2.  学习白名单[my\_web3\_study/contracts/\_DucthAuvtion.sol at master · may-tonk/my\_web3\_study](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_DucthAuvtion.sol)
+    
+
+-   **如何识别钓鱼授权**
+    
+
+1.  **授权（approve）** = 允许某合约未来可以操作你代币
+    
+2.  **钓鱼授权** = 授权对象是恶意合约，一旦签署，对方可随时转走资产
+    
+3.  **防范**
+    
+4.  **核对合约地址和官方文档**
+    
+5.  **不要无限授权**，尽量选择“最小额度”
+    
+6.  **只操作自己主动访问的可信网站**
+    
+7.  **使用钱包内授权管理检查并撤销可疑授权**
+    
+8.  **分钱包管理**：主钱包、DApp交互钱包分开
+    
+
+-   **内容治理方式**
+    
+
+1.  **规则层**：平台政策、奖励/惩罚、透明流程
+    
+2.  **社区层**：投票、举报、仲裁、DAO 决策
+    
+3.  **技术层**：智能合约执行规则、链上存证、AI 审核
+    
+
+-   **在去中心化协作下怎么实现公平可信分配机制**
+    
+
+在去中心化协作中，核心特点是：
+
+1.  **没有中心化管理者**
+    
+    -   所有参与者平等参与协作和治理。
+        
+2.  **多方贡献难量化**
+    
+    -   不同成员贡献类型不同：代码、内容、创意、审核、推广等。
+        
+
+### **设计原则**
+
+1.  **透明性（Transparency）**
+    
+    -   分配规则、计算公式、操作记录全链上公开。
+        
+2.  **去中心化（Decentralization）**
+    
+    -   分配权不依赖单一机构，由智能合约或社区投票决定。
+        
+3.  **贡献导向（Contribution-Oriented）**
+    
+    -   奖励与实际贡献挂钩，避免“一刀切”。
+        
+4.  **可验证性（Verifiability）**
+    
+    -   每个参与者可独立验证分配结果，防止操纵。
+        
+
+-   **抗操纵性（Sybil-Resistance）**
+    
+
+1.  如何防止作弊、刷量、虚报贡献？
+    
+2.  **分配需要透明、可验证**
+    
+3.  每个人都能看到规则和结果，确保公平。
+    
+4.  **贡献量化**：先确定“谁贡献了什么”，量化成可计算指标
+    
+5.  **规则透明**：所有分配公式和权重上链
+    
+6.  **去中心化执行**：智能合约自动分配，无需信任第三方
+    
+7.  **社区参与**：投票或仲裁处理难以量化或争议内容
+    
+8.  **防作弊设计**：身份绑定、质押惩罚、多维度验证
+    
+
+## **关于Dapp的定义**
+
+![屏幕截图 2026-01-13 213317.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/may-tonk/images/2026-01-13-1768311248576-_____2026-01-13_213317.png)
+
+相关链接[dapps 技术入门 |](https://ethereum.org/developers/docs/dapps/) [ethereum.org](http://ethereum.org) [— Technical introduction to dapps |](https://ethereum.org/developers/docs/dapps/) [ethereum.org](http://ethereum.org)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
 # 今日学习内容：
 
 ## **_探索web3深度技术学习有关的内容并对相关部分进行总结_**

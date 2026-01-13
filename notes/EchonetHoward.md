@@ -15,8 +15,228 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## 📅 Day 2 运营向训练计划
+
+### 🎯 核心目标 (Objective)
+
+**完成入门导读，完善 Web3 运营使用工具**
+
+### 📈 关键结果 (Key Results)
+
+-   **KR 1： Web3 核心概念翻译。**
+    
+
+1.  继续学习Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分；
+    
+2.  能用非技术语言向 Web2 用户解释「比特币」和「以太坊」的价值；
+    
+3.  尝试在学习过程中，挖掘一个能「优化 Web3 实习手册内容」的角度，例如补充信息等 PR。
+    
+
+-   **KR 2： 钱包的使用**
+    
+
+1.  学习「 [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)**」**
+    
+2.  尝试用钱包转 Sepolia 测试币给同学。
+    
+3.  完成 [http://unphishable.io/](http://unphishable.io/) 的挑战
+    
+
+-   **KR 3： Web3 工作工具使用**
+    
+
+1.  按照工具安装指南：[https://web3intern.xyz/zh/remote-work-guide/；](https://web3intern.xyz/zh/remote-work-guide/%EF%BC%9B)
+    
+2.  重点完成 **Notion / LinkedIn / Figma / GitHub** 的软件使用，初步上手 Web3 常用的工作软件。
+    
+
+## 📝 复盘 (Reflection)
+
+**KR 1：**
+
+**完成度：0.5（1.0），以太坊的知识体系十分庞大，需要花更多时间去理解与吸收。**
+
+**心得：**
+
+### 1\. 背景
+
+上期我们聊到了比特币作为一种**「比特币：一种点对点电子货币系统」**，用于解决**「传统互联网 Web2 贸易高度依赖中介信任」**问题，可伟大的**「区块链的技术」与「去中心化的理念」**似乎存在更多可能性。
+
+2014 年，Crypto 世界迎来了它的天降猛男 — **Vitalik Buterin** 。他的目标是构建「下一代加密货币与去中心化应用平台」。为了实现该目标，**Ethereum （以太坊）**便孕育而生。作为一个图灵完备的虚拟机，能够执行智能合约代码，让区块链不再只是“记账”，而是可以运行各类程序和应用。
+
+Ethereum （以太坊）名字的含义，指的是一种假设的、遍布宇宙并允许光传播的不可见介质。**「智能合约（Smart Contracts）」**作为以太坊的核心创新，同它的名字一样科幻。该「合约」是存储在区块链上的可执行代码，能够在满足预设条件时自动执行操作，无需人工干预。
+
+这一特性使得以太坊不仅是数字货币的载体，更是构建**去中心化应用（Dapps）、去中心化金融（DeFi）、非同质化代币（NFT）**等生态系统的基础设施。
+
+### 2\. 历史变迁
+
+「二哥」走的路比「大哥」艰难的多。
+
+早期**以太坊（ 1.0 阶段）** 同比特币一样使用 **PoW（工作量证明）** 机制来维护网络安全。可每秒只能处理约 30 笔交易（TPS），速度慢、费用高。为了解决这些问题，以太坊启动了多次升级，但不解决PoW，核心问题无法改变。
+
+于是，2020 年 12 月：信标链启动，以太坊团队首先创建了一条**全新的信标链（Beacon Chain）**，专门运行 **PoS 共识机制**。以太坊主网继续使用 PoW 挖矿，信标链独立运行 PoS 验证，两条链并行存在，互不干扰。
+
+可在 PoW 时期，以太坊需要大量电力驱动 GPU/矿机进行哈希计算，曾被多篇研究比喻为“接近一个中小国家的能耗水平”。因此以太坊团队做出了「**历史性」的决策 —— The Merge：将两条链合并**。以太坊迎来了2.0时代。
+
+合并后，安全性不再依赖算力竞赛，而改为依赖质押的 ETH 数量和经济惩罚机制 ——Staking and Slashing。该机制充分调动了质押者维护生态安全的积极性：
+
+1.  **验证者必须质押 32 ETH （Staking）才能参与出块和投票**。
+    
+2.  **如果出现作恶行为（例如双重签名、验证无效区块等），共识层会对其进行 Slashing（削减质押），直接罚没一部分甚至大部分质押资金。**
+    
+
+以太坊基金会以及多篇独立分析报告的结论是：以太坊在合并后，能源消耗约减少 99.95% 左右。而以太坊的进化还在继续，例如：分片技术演进——从执行分片到数据分片；EIP-4844（Cancun 升级）；ZK-Rollup 技术等
+
+### 3\. 以太坊生态的构成。
+
+以太坊的生态系统由多层架构组成，包括 L1（主网）、L2（二层扩展解决方案）、侧链（Sidechains） 等，共同支持高吞吐量和低费用的交易处理。
+
+**Layer 1（L1）**作为以太坊主网，用于核心区块链，负责最终安全性与共识；
+
+**Layer 2（L2）**通过将交易批量处理后提交至 L1，降低 Gas 费；
+
+**侧链（Sidechains）**：独立运行的链，通过桥接与主网交互。
+
+不同的架构下，以太坊生态可以分为以下几个层次：
+
+1.  **应用层（Application Layer）**：用户直接交互的应用和界面；
+    
+2.  **协议层（Protocol Layer）**：以太坊的核心基础；
+    
+3.  **扩展层（Scaling Layer）**：提升性能和降低成本的解决方案
+    
+
+### **4\. 以太坊核心机制：从账户到执行的完整链路**
+
+在上面我们就了解到，以太坊不仅仅是一条区块链，更是一个全球共享的“分布式计算机”。它的核心价值在于通过代码实现无需信任的自动化规则（如智能合约），而这一切的背后依赖于三个关键机制：**账户系统、Gas 模型 和 以太坊虚拟机（EVM）**。
+
+**1\. 账户系统：你的数字身份**
+
+**账户系统** 包含由私钥控制的 **外部账户（EOA）** 和由智能合约代码控制的 **合约账户（CA）** 。
+
+想象你第一次接触以太坊——你需要一个“数字钱包”来参与网络。这个钱包的核心是 **外部账户（EOA）** ，它由一对密钥（私钥和公钥）生成，就像银行账户的密码和账号。私钥是你控制账户的“钥匙”，必须严格保密；公钥通过加密算法生成一个唯一的地址（如 `0xAbc...123`），你可以把它分享给朋友接收转账。
+
+**2\. Gas 模型：交易的燃料费**
+
+当你用钱包使用自己的 EOA 发起一笔交易（比如转账或操作合约），这件事当然 不会是免费的，你需要支付「燃料费」 ——也就是 Gas（= 用多少 × 每单位多少钱）。在 EIP-1559 升级后，**Gas Price** 被分成两部分：
+
+A. 基础费用（Base Fee）：每个区块都会有，自动计算，直接销毁（直接消失）来帮助 ETH 通缩，毕竟物以稀为贵。
+
+B. 小费（Tip）：你额外加的钱，用来鼓励矿工优先处理你。
+
+Gas 的存在有两个目的：
+
+1.  **激励矿工/验证者**：你给得越多（Gas Price 越高），他们越愿意优先处理你的交易。
+    
+2.  **防止资源滥用**：如果有人想让合约死循环，Gas 会用光，交易失败，系统不会被拖垮。
+    
+
+**3\. 以太坊虚拟机（EVM）：代码的执行引擎**
+
+EVM（ Ethereum Virtual Machine）是 **以太坊的“大脑”**，是专门用来**运行智能合约的虚拟计算机**。它运行在每个节点上，确保整个网络在处理代码时，**结果都一致、可信任**。解决了 Web2 世界里对第三方平台（银行）不信任的问题，也避免被迫向银行出售个人信息等隐私安全。
+
+**KR 2：**
+
+**完成度：0.7（1.0） Unphishable 的挑战未全部完成。**
+
+**心得：**
+
+**「哦，对了我将AG的视频用AI翻译成了中文稿，在GitHub上免费开放了：**[EchonetHoward/-Web2-to-Web3-EN-to-CN: 我是Howard，作为2026 Web3 冬季训练营的一员，我深感啃生肉视频对学习热情大大减少的痛苦。于是我创建了这个开放公开的文档，将Austin Griffith发布的 Web2 to Web3 的系列视频翻译成中文，供中文学习者使用。在此声明：本专题仅供学习参考，翻译皆为机翻。」](https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN)
+
+Austin Griffith **在第二天主要探讨：设置钱包，助记词（Mnemonics）与钱包安全**
+
+Austin Griffith 在视频中演示了如何安装：MetaMask。**并再三强调**：保管好你的种子短语（Seed Phrase）如果有任何人得到了这 12 个单词，他们就可以在任何地方重建我们的整个钱包，并转走所有资金。
+
+Austin Griffith 在创建钱包中，指出去中心化最大的优势：「 恭喜，你在以太坊上创建了一个账户！ 这就是神奇的地方：**你不需要任何人的许可**。你在银行开户需要各种审核，你是他们数据库里的一条记录。但在以太坊上，任何人都可以参与，你只需要生成一个巨大的随机数（在这里就是这 12 个单词）。」
+
+同样的，我照着视频的步骤，在 Edge 和 iPhone 上分别下载了 MetaMask。而MetaMask 现在默认隐藏了测试网。你需要点击「显示/隐藏测试网络」才能看到。
+
+![屏幕截图 2026-01-13 094708.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272668966-_____2026-01-13_094708.png)
+
+如果大家没有像我这样有「Sepolia」测试币的朋友怎么办？
+
+获取 Sepolia 测试币的水龙头：[https://sepolia-faucet.pk910.de/](https://sepolia-faucet.pk910.de/)
+
+水龙头领取网站：
+
+-   [Faucet Trade](https://faucet.trade/sepolia-eth-faucet)
+    
+-   [Google Cloud](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
+    
+-   [PK910挖矿式](https://sepolia-faucet.pk910.de/)
+    
+-   [Infura](https://www.infura.io/faucet/sepolia)
+    
+-   [Polygon](https://faucet.polygon.technology/)
+    
+-   [Binance Smart Chain](https://www.bnbchain.org/en/testnet-faucet)
+    
+-   [Chainlink](https://faucets.chain.link/)
+    
+-   [Alchemy](https://www.alchemy.com/faucets/ethereum-sepolia)
+    
+-   [QuickNode](https://faucet.quicknode.com/ethereum/sepolia)
+    
+
+我用的是 「Google Clond Web3 」。收到了0.05个Sepolia Eth 测试币。
+
+![屏幕截图 2026-01-13 094438.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272722102-_____2026-01-13_094438.png)
+
+随后我尝试向同学转账，并收到转账成功的消息。
+
+![屏幕截图 2026-01-13 100339.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272735250-_____2026-01-13_100339.png)
+
+**Austin Griffith 在视频中总结：**
+
+1.  **去** [**MetaMask.io**](http://MetaMask.io) **下载钱包。**
+    
+2.  **生成助记词，用纸记下来，藏好。**
+    
+3.  **去水龙头领点测试币。**
+    
+4.  **尝试删除钱包，用助记词恢复，证明你能找回它。**
+    
+5.  **创建一个新账户，自己给自己转账。**
+    
+6.  **去 Etherscan 上查看交易。**
+    
+7.  **做完这些，你就准备好成为一名以太坊超级用户了！**
+    
+
+最后推荐去「[Unphishable](https://unphishable.io/)」做一些 Web3 安全支付的挑战，提高防范意识。我自己先做了 15 关，受益匪浅，有不同的诈骗形式，千奇百怪，防不胜防，需自己体验方可防范。
+
+![屏幕截图 2026-01-13 102510.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272768775-_____2026-01-13_102510.png)
+
+**KR 3：**
+
+**完成度：0.75（1.0）** Figma 没时间处理了，回头再试试
+
+**心得：**
+
+1.  下载注册 \*\*LinkedIn（\*\*手机端一直不成功，电脑端就一次ok了）
+    
+
+![屏幕截图 2026-01-13 085958.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272788314-_____2026-01-13_085958.png)
+
+2.  下载注册 **Notion**
+    
+
+![屏幕截图 2026-01-13 104516.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272854285-_____2026-01-13_104516.png)
+
+3.  下载注册 **GitHub**
+    
+
+![屏幕截图 2026-01-13 104607.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272868477-_____2026-01-13_104607.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
+
 ## 📅 Day 1 运营向训练计划
 
 ### 🎯 核心目标 (Objective)

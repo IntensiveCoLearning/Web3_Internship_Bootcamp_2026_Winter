@@ -15,8 +15,263 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
+
+这是一个官方的社区，所有基础的问题都可以得到解答。而且可以通过小测试来看自己的基础知识熟练程度。能复习到很多想不起来的知识）
+
+![{8179956E-E244-4958-940C-4B5BC2CD08D4}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768270534204-_8179956E-E244-4958-940C-4B5BC2CD08D4_.png)![{A1861CFD-AECA-4472-8AB1-E8E17352A4E7}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768270810279-_A1861CFD-AECA-4472-8AB1-E8E17352A4E7_.png)![{E34D033C-F1A4-4A26-8D4F-D4FFD1ABF7C1}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768271809835-_E34D033C-F1A4-4A26-8D4F-D4FFD1ABF7C1_.png)![{F2198AB6-DF0F-40A7-926B-525E385615E7}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768270903389-_F2198AB6-DF0F-40A7-926B-525E385615E7_.png)![{1B13C47B-EBAE-4E21-9FD4-BD208D636A48}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768272004331-_1B13C47B-EBAE-4E21-9FD4-BD208D636A48_.png)![{616A74C7-F5CA-4D0D-B501-76F92ECB9BD6}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768272340840-_616A74C7-F5CA-4D0D-B501-76F92ECB9BD6_.png)![{3791158C-00DD-49D5-B43C-9074330D1ACC}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768272318029-_3791158C-00DD-49D5-B43C-9074330D1ACC_.png)![{7015DDF1-226C-44F1-A640-733B62751438}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768273008285-_7015DDF1-226C-44F1-A640-733B62751438_.png)![{7C5B78F1-920E-42AE-8BEB-2F7ACE3858B8}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768273416423-_7C5B78F1-920E-42AE-8BEB-2F7ACE3858B8_.png)
+
+# [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+
+Austin Griffith、Eda 和 Carlos关于这个课程的安排：
+
+第1周：成为以太坊的用户；设置 MetaMask 钱包；了解 gas 费用和交易流程；学习使用去中心化应用（DApps）、ENS 域名服务；体验去中心化交易所（DEX）兑换代币；认识 NFT 及 ERC-20、ERC-721 标准
+
+第2周：脚本与智能合约交互；编写脚本调用智能合约；了解提供者（Providers）、签名者（Signers）和 ethers.js 库；学习测试框架 Hardhat
+
+第3周：速成实战(通过[speedrunethereum](https://speedrunethereum.com/)项目实战：构建 NFT、质押应用、代币售卖器、掷骰子游戏);进阶学习 DEX、多签钱包、SVG NFT、FTS 等
+
+第4周：开放式项目开发与导师指导。自由发挥，导师团队提供支持和指导
+
+**区块链技术简介与核心概念**
+
+-   区块链是一个去中心化、无中央控制的网络系统，通过全球数千节点点对点通信实现共识。
+    
+-   目前共识机制以工作量证明PoW（Proof of Work）为主，未来将过渡到权益证明PoS（Proof of Stake）
+    
+-   区块链本质是一个网络层级的分布式账本，数据以区块链形式串联，节点协作维护账本完整性。
+    
+-   用户通过私钥生成地址，无需中介即可进行资金收发
+    
+-   信任最小化（Trust Minimization）是区块链的核心优势，智能合约充当“自动化托管（Escrow）”的角色，保障交易双方在互不信任的情况下安全交互
+    
+
+**智能合约与信任机制**
+
+-   智能合约相当于程序化的自动售货机，基于“if-then”规则运行。
+    
+
+举例说明：在买卖鞋子的场景中，智能合约作为中间托管，确保买卖双方同时满足条件时才完成资产交换。传统托管依赖人为信任，智能合约基于代码执行，降低了信任成本。
+
+**区块链应用及其特点**
+
+-   智能合约部署后不可更改，具备不可阻断性（Unstoppable）
+    
+-   网络高度冗余，每个节点保存完整数据，保证服务持续和抗审查能力
+    
+-   以太坊生态的核心是信任代码即法律，程序即规则
+    
+-   传统开发者需要时间建立新的思维模型，理解区块链的全局架构与机制
+    
+
+**当前以太坊应用场景举例**
+
+| 应用类型 | 功能描述 | 说明 |
+| --- | --- | --- |
+| 去中心化金融（DeFi） | 通过智能合约实现资产投资、借贷、流动性挖矿等金融活动 | 流动性池（LP），赚取手续费 |
+| 去中心化自治组织（DAO） | 组织治理以代币投票决定方向，强化社区自治 | Snapshot、Tally 等投票工具 |
+| 非同质化代币（NFT） | 数字收藏品、身份验证、权限管理等 | SVG NFT（链上渲染）、Token Gated 应用 |
+
+**区块链现存问题与改进方向**
+
+区块链存在性能瓶颈（例如交易延迟、手续费高昂），以及用户私钥管理风险（私钥丢失即资产丢失）等问题，
+
+未来技术改进方向包括分层扩容（L2）、多重签名钱包设计等增强用户体验和安全性的方案。
+
+**未来展望与技术潜力**
+
+以太坊等区块链技术可能在更大范围内实现跨国协作与协调机制
+
+例如在国家层面进行军事预算等复杂协调，智能合约可作为**无信任的自动执行工具**，替代传统的人为中介
+
+技术赋予个人更大改变世界的能力，尤其是开发者能通过智能合约构建各种创新的协调和信任机制
+
+**成功路径分三个层级：**
+
+| 序号 | 职业目标 | 具体方向 |
+| --- | --- | --- |
+| 1 | 获得区块链相关职位 | 掌握基础知识，能胜任行业内岗位 |
+| 2 | 自主开发项目 | 构建并运营自己的去中心化应用或产品 |
+| 3 | 成为智能合约安全审计专家 | 深入学习安全漏洞，参与合约审计，提高行业安全性 |
+
+# [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+
+重点在以太坊钱包的设置与使用。
+
+**MetaMask安装与使用基础**
+
+MetaMask是主流的以太坊浏览器插件钱包，注重安全性优先，用户体验可能略显笨重。
+
+支持Chrome插件、iOS和Android手机应用。
+
+安装时需注意：确保从官网（[metamask.io](http://metamask.io)）下载，防止钓鱼网站。
+
+MetaMask的标志性狐狸头像是安全设计元素，难以被伪造。
+
+**助记词顺序确认与安全性讨论**
+
+用户需按正确顺序确认12词助记词，防止错误。
+
+有疑问：是否有人能通过“穷举”助记词组合找到别人的钱包？
+
+统计学角度解释：虽然理论上可能，但因词汇量约2048个，12词组合极其庞大，穷举需要宇宙寿命级别的时间，即使用全世界所有计算机也无法实现。
+
+**交易发送与验证过程**
+
+以太坊地址以“0x”开头，用户需仔细核对地址避免转错。
+
+发送交易时需要支付少量“Gas费”，即交易手续费，视网络拥堵情况变化。
+
+交易完成后，用户可通过Etherscan等区块浏览器查询交易详情，包括发送方、接收方、金额、手续费等。
+
+交易一旦确认无法撤销，无客户服务介入，用户需谨慎操作。
+
+交易可以通过提高Gas费用“加速”或“替换”未确认交易。
+
+**Etherscan区块浏览器的作用**
+
+Etherscan是以太坊重要的公共基础设施，允许用户查询链上所有交易和账户状态。
+
+用户可通过交易哈希查看交易是否成功，确认资金流动。
+
+支持查看主网及各测试网数据。
+
+提供透明、不可篡改的链上数据验证，帮助用户独立核实资产安全。
+
+**私钥与签名机制**
+
+私钥是签署交易和消息的唯一凭证，必须严加保护。
+
+签名允许在不暴露私钥的情况下验证交易发起者身份。
+
+任何修改签名信息都会导致签名验证失败，确保数据不可篡改。
+
+交易哈希是交易数据及签名的哈希值，用于唯一确定交易。
+
+**托管钱包与非托管钱包的区别**
+
+托管钱包（如Coinbase）由第三方持有私钥，用户实际拥有的是数据库中的账户余额记录。
+
+非托管钱包（如MetaMask）用户自行管理私钥，资产真实存在区块链上。
+
+“不拥有私钥即不拥有资产”——托管风险包括黑客攻击、平台倒闭等。
+
+托管钱包适合初学者和小额资产，非托管钱包适合有一定经验且注重资产安全的用户。
+
+**其他钱包推荐与硬件钱包简介**
+
+除MetaMask外，还有Rainbow、Coinbase Wallet等多种以太坊钱包可选，体验和设计各异。
+
+Rainbow钱包注重移动端用户体验，流程相似，均基于12词助记词。
+
+硬件钱包是一种物理设备，用于安全存储私钥，私钥永不离开设备。
+
+硬件钱包适合长期冷存储，交易时需连接电脑签名，安全性高但使用繁琐。
+
+# [Unphishable](https://unphishable.io/) 钓鱼攻防挑战
+
+## 0x0004:空投骗局
+
+在实际情况下，千万不要在不了解交易内容的情况下签署任何交易，其实还是能看出来的这个测试中小狐狸也有提示红色感叹号来告知可能存在的风险。
+
+![{910987EA-1363-4EE1-95A6-597D281D2C4A}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768309310538-_910987EA-1363-4EE1-95A6-597D281D2C4A_.png)
+
+## 0x0005:**USDT审批钓鱼**
+
+除了批准之外，还要注意增加权限的功能。
+
+# 分享会 - Web3 运行原理：从钱包出块、从应用到协议
+
+## 钱包、私钥和个人主权
+
+**私钥**：私钥泄露钱包里所有资产都面临危险（**私钥→公钥：1→1**）
+
+**助记词**：可读形式的私钥，十几个到二十四个单词。助记词是所有资产的“母体”，它可以派生出无数个账户（**助记词→私钥：1→N**）
+
+**地址**：公钥截取后的字符串，公开收款号。由私钥推导而来。
+
+**公钥**：通过私钥计算，用来验证签名
+
+## 交易与签名
+
+### **交易tx=你要做的事+手续费+防重放序号**
+
+-   你要做的事情：转账、调用合约、投票等
+    
+-   手续费:为网络资源付费，提供激励，可以自主提高手续费来换取优先处理
+    
+-   防重放序号Nonce：随机数，可以避免同一笔交易被重复执行
+    
+
+### 数字签名
+
+这里使用现代密码学教程中对于数字签名的原理部分来帮助理解
+
+![{4FBC5BCD-9FB7-4EA5-A200-A1F9BD776EEE}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768311184008-_4FBC5BCD-9FB7-4EA5-A200-A1F9BD776EEE_.png)![{BF5E3EA1-5600-4460-8FBD-285925A6DFBB}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768311240617-_BF5E3EA1-5600-4460-8FBD-285925A6DFBB_.png)
+
+## 区块链网络运行
+
+### [交易的完整生命周期](https://txcity.io/v/eth-btc)：
+
+-   Wallet（签名）
+    
+-   RPC/Node（传播）
+    
+-   Mempool（排队）
+    
+-   Builder（挑选）
+    
+-   Block（落盘）
+    
+-   Explorer（可查）
+    
+
+**为什么“不可篡改需要时间”？**
+
+| 为什么要等确认？区块会引用上一块hash区块越往后叠，推翻的成本越高PoS下12-13分钟达到更稳定的最终状态 |
+| --- |
+
+### 钱包、RPC、节点、网络：如何链接
+
+| 关键关系：钱包连一个RPC（访问节点的API）RPC背后是节点/节点集群RPC往往是“中心化入口风险点” |
+
+用[Chainlist](https://chainlist.org/)查看/添加网络
+
+## 智能合约
+
+_本质：区块链账本里的“可执行代码”_
+
+社会学意义：
+
+-   规则可验证、按代码执行
+    
+-   部署后难以更改
+    
+-   减少中介与摩擦
+    
+
+## 区块链协议如何升级：EIP和节点客户端多样性
+
+## Web3总结
+
+**web3是跨学科的领域**
+
+-   社会学：去中心化治理与共识形成
+    
+-   经济学：激励设计保证安全与可持续（Gas、质押、惩罚）
+    
+-   密码学：签名、哈希、ZK提供可信基础
+    
+
+| 技术层面：用私钥签名证明你是谁用共识网络保证账本可信用智能合约让规则自动执行 |
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
 # 开营仪式
 
 一开始很紧张，但正在努力跟上大家。前面听这个实习计划的介绍感觉对我这个p人非常友好又能推着我前进。我个人是学过一点solidity的，看到入门技术可以帮助建立认识并且回忆基础非常开心。希望学有余力的情况下可以在深度技术的边缘试探。目前是对黑客松了解不多但是听到成员们反复提到也有很大的兴趣。后面的破冰真是天地之大，我之渺小，群内的职业跨度和地区、年龄跨度都远超我的想象，也更说明了web3是给了所有人一个机会。紧张但是喜欢这样的环境，感觉行动起来了。

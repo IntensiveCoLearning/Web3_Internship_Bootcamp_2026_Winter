@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今天需要准备学校的期末考试，所以只学习了几章Unphishable，观看了**A Developer's Guide to Building on Ethereum - Day 1。**
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 1.学习Web3 实习手册[入门导读](https://web3intern.xyz/zh/blockchain-basic/)部分。
 
 ## 1.区块链是一种去中心化的分布式账本技术，有不可篡改，公开透明，匿名，快速交易的特性。

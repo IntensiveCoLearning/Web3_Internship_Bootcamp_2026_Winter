@@ -15,8 +15,120 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+主要内容：web3安全 && 合规思考
+
+## 1\. Web3合规性要求与常见法律风险
+
+> 中国对web3态度严峻，已经明确禁止：禁止ICO；禁止虚拟货币交易所运营与提供撮合服务；明确虚拟货币不具有法偿性，不得作为支付工具；禁止境外交易平台向中国境内居民提供服务；打击以虚拟货币为载体的非法集资，传销，洗钱，赌博等活动
+
+目前对于国内来说，技术栈不被禁止，但业务基本都是红区。
+
+1.  代币发行与交易 当前中国法律明令禁止任何单位或者个人通过ICO， IEO，IDO等方式进行融资活动，只要融资具备流通性或者功能，都可能会构成非法金融行为
+    
+    **技术人员也会被视为共同行为人**
+    
+2.  赌博，传销，洗钱等刑事风险
+    
+3.  场外交易中的洗钱与非法经营风险
+    
+4.  民商事争议
+    
+
+## 2\. 全球监管背景与趋势
+
+> 近年来，全球加密货币合规化趋势日益明显，监管框架稳步推进：欧盟的 MiCA 正在逐步落地；新加坡出台新规，将反洗钱/反恐怖融资要求与 FATF 标准接轨；美国国会今年也出台了《稳定币法案》（GENIUS Act）和《稳定币法案》（STABLE Act），为稳定币发行、反洗钱和消费者保护等提供了清晰的框架。
+> 
+> 更健全的监管框架能够提供更清晰的指导方针，降低风险，增强用户信心，从而为加密货币行业释放新的增长机遇。越来越多的机构正在转变对合规的认识，不再将其视为障碍，而是将其视为战略优势。通过积极采取 KYC、客户尽职调查、地址筛选和交易监控等措施，他们正在全面显著提升合规能力。
+> 
+> 然而，区块链的匿名性和链上交互（尤其是跨链活动）的复杂性对机构在风险评估、团队协作和报告生成方面提出了重大挑战。
+
+1.  什么是 FATF **（Financial Action Task Force，金融行动特别工作组）**？ 是一个民间组织，全球反洗钱和反恐怖融资标注制定者
+    
+2.  稳定币监管的意义
+    
+    1.  稳定币已成为DeFi生态的基础设施，总市值超过 1500 亿美元。如果主要稳定币出现问题，可能引发系统性风险
+        
+    2.  稳定币可能影响传统金融体系的货币供应
+        
+3.  全球主要监管趋势
+    
+    1.  美国监管框架
+        
+    2.  欧盟监管框架
+        
+    3.  香港监管框架
+        
+    4.  监管趋势以及对web3从业者的影响总结
+        
+        1.  趋严化
+            
+        2.  协调化
+            
+        3.  合规成本增加
+            
+        4.  创新友好
+            
+        5.  长期利好
+            
+        6.  市场准入门槛提高
+            
+
+## 3\. Web3 入职法律风险
+
+> 主要是对于项目注册地、薪酬结构、用人主体不明确时，新型的雇佣关系、社保的缴纳、工资的发放形式等等
+
+1.  雇佣关系新形态 基本都是远程办公，由于许多项目方在中国境内无注册公司，不具备用工主体资格，因此难以与员工签订有效的《劳动合同》，也无法依法缴纳五险一金。一旦发生薪资争议或因公受伤，员工将难以依照《劳动合同法》享受合法保障。 为弥补上述漏洞，有些项目方会通过 EOR（名义雇主）模式，委托国内合规公司与员工签署合同。通过这种方式可以解决劳动关系里的部分问题，但在发生纠纷的情况下，劳动关系的认定仍然是需要关注的重点。
+    
+2.  **薪酬结构及风险提示** 一般为人民币+token或者全USDT模式 ⚠根据我国《劳动法》规定，工资应以法定货币（即人民币）支付，不得以实物或虚拟币等形式代替。这意味着，如果薪酬中 Token 或 USDT 部分被认定为工资支付，可能导致支付行为无效。
+    
+3.  虚拟货币出金与合规风险 容易构成犯罪
+    
+4.  项目合法性需提前审查
+    
+
+## 4\. Web3 项目的刑事风险及案例介绍
+
+> Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通常为在境外开展敏感业务部分，境内主要负责技术研发。
+> 
+> 但需要注意的是，即便不是主犯，也可能会被认定为共同犯罪或者帮助犯罪。
+> 
+> 警惕构成赌博、非法经营、非法集资、传销等的风险。
+
+1.  开设赌场罪，赌博罪
+    
+2.  非法经营罪
+    
+3.  非法吸取公众存款罪
+    
+4.  组织、领导传销活动罪
+    
+5.  洗钱罪
+    
+
+## 资源
+
+1.  区块链安全红手册（项目方）：[\*\*](https://www.slowmist.com/redhandbook/)[https://www.slowmist.com/redhandbook/\*\*](https://www.slowmist.com/redhandbook/**)
+    
+2.  区块链黑暗森林自救手册：[\*\*](https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook/blob/main/README_CN.md)[https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook/blob/main/README\_CN.md\*\*](https://github.com/slowmist/Blockchain-dark-forest-selfguard-handbook/blob/main/README_CN.md**)
+    
+3.  [Revoke.cash](http://Revoke.cash) 授权管理：[\*\*](https://revoke.cash/)[https://revoke.cash/\*\*](https://revoke.cash/**)
+    
+4.  Scam Sniffer 钓鱼检测：[\*\*](https://www.scamsniffer.io/)[https://www.scamsniffer.io/\*\*](https://www.scamsniffer.io/**)
+    
+5.  1Password 密码管理器：[\*\*](https://1password.com/)[https://1password.com/\*\*](https://1password.com/**)
+    
+6.  Bitwarden 密码管理器：[\*\*](https://bitwarden.com/)[https://bitwarden.com/\*\*](https://bitwarden.com/**)
+    
+7.  SlowMist Hacked 区块链被黑档案库，大量的案例索引：[\*\*](https://hacked.slowmist.io/)[https://hacked.slowmist.io/\*\*](https://hacked.slowmist.io/**)
+    
+8.  反钓鱼攻防学习平台：[\*\*](https://unphishable.io/)[https://unphishable.io/\*\*](https://unphishable.io/**)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 概念梳理
 
 ### Web1 / Web2 / Web3

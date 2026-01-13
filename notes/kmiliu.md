@@ -15,8 +15,883 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# [Ethereum](ethereum.org)
+
+## 1\. What is Ethereum?
+
+**Ethereum** is a **decentralized blockchain network and software development platform**, powered by its native cryptocurrency **ether (ETH)**.
+
+Unlike Bitcoin, which focuses on peer-to-peer digital cash, Ethereum supports **smart contracts** — open-source programs that run automatically on the blockchain.
+
+**Key idea**: **Ethereum = programmable, global, permissionless infrastructure**
+
+## 2\. Smart Contracts
+
+**Smart contracts** are:
+
+-   Open-source programs
+    
+-   Deployed on Ethereum
+    
+-   Run **24/7**, globally
+    
+-   Cannot be altered once deployed
+    
+-   Do not rely on banks, companies, or governments
+    
+
+They allow anyone to build **decentralized applications (dapps)** that are:
+
+-   Trustless
+    
+-   Censorship resistant
+    
+-   Automatically enforced by code
+    
+
+## 3\. The Ethereum Network
+
+The **Ethereum network** is made up of thousands of independent computers called **nodes**.
+
+Each node:
+
+-   Stores the entire state of Ethereum
+    
+-   Verifies transactions and smart contracts
+    
+-   Operates independently around the world
+    
+
+### Key advantages of the Ethereum network:
+
+1\. Censorship resistance
+
+No bank, company, or government can block transactions or freeze accounts.
+
+2\. High security
+
+All nodes store and verify the same data. Any invalid change is rejected by the network.
+
+3\. Durability and reliability
+
+Ethereum has no single point of failure and maintains continuous uptime even during disruptions.
+
+## 4\. Ether (ETH)
+
+**Ether (ETH)** is the native cryptocurrency of Ethereum.
+
+ETH is used to:
+
+1.  **Pay gas fees** (transaction fees)
+    
+2.  **Reward validators**
+    
+3.  **Secure the network through staking**
+    
+
+### ETH supply mechanics:
+
+-   New ETH is issued as validator rewards
+    
+-   A portion of ETH is **burned** with every transaction
+    
+-   On high-usage days, more ETH is burned than created
+    
+-   This can make ETH **deflationary**
+    
+
+## 5\. Gas Fees
+
+Every transaction on Ethereum requires a **gas fee**, paid in ETH.
+
+Gas fees:
+
+-   Prevent spam
+    
+-   Compensate validators
+    
+-   Reflect network demand
+    
+
+High fees indicate strong usage and security demand.
+
+## 6\. Proof of Stake (PoS)
+
+Ethereum originally used **Proof of Work**, but transitioned to **Proof of Stake** in 2022.
+
+In Proof of Stake:
+
+-   **Validators** lock up ETH as a security deposit (staking)
+    
+-   Validators propose and attest to blocks
+    
+-   Honest behavior earns rewards
+    
+-   Dishonest behavior results in penalties (slashing)
+    
+
+This upgrade reduced Ethereum’s energy consumption by **over 99%**.
+
+## 7\. How Transactions Work (Simplified Flow)
+
+Example: Sending stablecoins on Ethereum
+
+1.  A wallet signs and broadcasts a transaction
+    
+2.  The transaction enters the **mempool**
+    
+3.  A validator selects the transaction
+    
+4.  The transaction is included in a block
+    
+5.  Smart contracts update balances
+    
+6.  Validators attest to the block’s validity
+    
+
+All state changes are synchronized across all nodes.
+
+## 8\. Layer 2 (L2) Networks
+
+**Layer 2 (L2) networks** run on top of Ethereum to improve scalability.
+
+They:
+
+-   Reduce transaction costs
+    
+-   Increase transaction speed
+    
+-   Inherit Ethereum’s security
+    
+
+Examples:
+
+-   Optimism
+    
+-   Arbitrum
+    
+-   zkSync
+    
+-   Base
+    
+
+L2s process millions of transactions while settling on Ethereum.
+
+## 9\. What is Ethereum Used For?
+
+Ethereum enables use cases that were previously impossible:
+
+### Consumers
+
+-   Access financial services without banks
+    
+-   Own digital assets (NFTs)
+    
+-   Sign in using wallets instead of passwords
+    
+-   Participate in decentralized communities
+    
+
+### Developers & Businesses
+
+-   Deploy tamper-proof smart contracts
+    
+-   Launch global applications instantly
+    
+-   Build composable financial products
+    
+
+### Governments & NGOs
+
+-   Transparent aid distribution
+    
+-   Digital identity systems
+    
+-   Public infrastructure for registries and voting
+    
+
+## 10\. Ethereum vs Bitcoin
+
+| Feature | Bitcoin | Ethereum |
+| --- | --- | --- |
+| Purpose | Digital money | Programmable infrastructure |
+| Smart contracts | Limited | Fully programmable |
+| Consensus | Proof of Work | Proof of Stake |
+| Energy use | High | Low |
+| Supply | Fixed (21M BTC) | Dynamic (issuance + burn) |
+
+**Bitcoin** focuses on value storage.  
+**Ethereum** focuses on building applications.
+
+## 11\. Governance & Development
+
+Ethereum has **no central authority**.
+
+The network is maintained by:
+
+-   Developers
+    
+-   Node operators
+    
+-   Validators
+    
+-   Community members
+    
+
+Changes are proposed through **Ethereum Improvement Proposals (EIPs)** and adopted only through community consensus.
+
+## 12\. Ethereum Roadmap (2025)
+
+Ethereum follows a **shared vision**, not a fixed roadmap.
+
+Recent upgrade:
+
+-   **Pectra (May 2025)**
+    
+    -   Improved smart wallet functionality
+        
+    -   Better Layer 2 compatibility
+        
+    -   Increased staking flexibility
+        
+
+Ongoing priorities:
+
+-   Scalability
+    
+-   Usability
+    
+-   Security
+    
+-   Decentralization
+    
+
+# [**Web3**](https://ethereum.org/web3/)
+
+## 1\. What is Web3?
+
+**Web3** is a vision for a new version of the internet that embraces **decentralization**, where the web is **built, operated, and owned by its users**, rather than controlled by centralized corporations.
+
+Core idea: **Web3 puts power in the hands of individuals instead of large technology companies.**
+
+Web3 uses:
+
+-   **Blockchains**
+    
+-   **Cryptocurrencies**
+    
+-   **NFTs**
+    
+
+to enable **ownership**, **permissionless participation**, and **trustless systems**.
+
+## 2\. The Evolution of the Web
+
+### Web 1.0: Read-Only (1990–2004)
+
+-   Coincides with the early World Wide Web
+    
+-   Developed by **Tim Berners-Lee** at CERN
+    
+-   Focused on **static websites**
+    
+-   Users consumed information but rarely produced content
+    
+-   Little to no user interaction
+    
+
+Architecture:
+
+-   **Client-server architecture**
+    
+-   Websites owned by companies
+    
+-   Often called the **read-only web**
+    
+
+### Web 2.0: Read-Write (2004–now)
+
+-   Emerged with social media platforms
+    
+-   Users could **create and share content**
+    
+-   Enabled user-to-user interaction
+    
+-   Introduced **advertising-driven revenue models**
+    
+
+Key characteristics:
+
+-   Platforms host user-generated content
+    
+-   A small number of companies control:
+    
+    -   User data
+        
+    -   Monetization
+        
+    -   Platform rules
+        
+
+Main issue: Users create value but **do not own their data or content**.
+
+### Web 3.0: Read-Write-Own
+
+-   Term coined by **Gavin Wood** in 2014
+    
+-   A response to excessive trust in centralized platforms
+    
+
+Architecture:
+
+-   **Decentralized node architecture**
+    
+
+Key shift:
+
+-   Web1 = Read
+    
+-   Web2 = Read-Write
+    
+-   **Web3 = Read-Write-Own**
+    
+
+## 3\. Core Ideas of Web3
+
+### 1\. Web3 is decentralized
+
+-   Ownership and control are distributed among builders and users
+    
+-   No single centralized authority
+    
+
+### 2\. Web3 is permissionless
+
+-   Anyone can participate
+    
+-   No gatekeepers or exclusions
+    
+
+### 3\. Web3 has native payments
+
+-   Uses **cryptocurrencies** instead of banks or payment processors
+    
+-   Enables direct peer-to-peer transactions
+    
+
+### 4\. Web3 is trustless
+
+-   Relies on **incentives and economic mechanisms**
+    
+-   Removes the need for trusted third parties
+    
+
+## 4\. Why is Web3 Important?
+
+### Ownership
+
+Web3 enables **direct ownership** of digital assets.
+
+Example:
+
+-   In Web2 games, in-game items are tied to an account
+    
+-   If the platform bans or shuts down the account, assets are lost
+    
+
+In Web3:
+
+-   Ownership is enforced via **non-fungible tokens (NFTs)**
+    
+-   Ownership cannot be revoked by platform creators
+    
+-   Assets can be sold or traded on open markets
+    
+
+### Censorship Resistance
+
+In Web2:
+
+-   Platforms can change rules, ban creators, or remove content
+    
+-   Creators lose reputation and audience if they leave a platform
+    
+
+In Web3:
+
+-   Data and reputation live **on the blockchain**
+    
+-   Users can move their identity and reputation between platforms
+    
+-   **Censorship resistance is a native feature**
+    
+
+### Decentralized Autonomous Organizations (DAOs)
+
+**DAOs** enable collective ownership and governance of platforms.
+
+Technical definition:
+
+-   DAOs are **smart contracts**
+    
+-   They automate decentralized decision-making over shared resources (tokens)
+    
+
+Key features:
+
+-   Tokens act like shares
+    
+-   Token holders vote on proposals
+    
+-   Voting outcomes are executed automatically by code
+    
+
+Note:
+
+-   Many Web3 communities call themselves DAOs
+    
+-   Levels of decentralization and automation vary
+    
+
+### Identity
+
+Problems in Web2:
+
+-   Separate accounts for each platform
+    
+-   Reliance on social logins
+    
+-   Platforms control access and personal data
+    
+
+Web3 solution:
+
+-   **Ethereum address** as a universal login
+    
+-   **Ethereum Name Service (ENS)** for human-readable identities
+    
+
+Benefits:
+
+-   Single login across platforms
+    
+-   Censorship-resistant
+    
+-   Anonymous
+    
+-   User-controlled
+    
+
+### Native Payments
+
+Web2 payments:
+
+-   Depend on banks and payment processors
+    
+-   Exclude people without bank access
+    
+
+Web3 payments:
+
+-   Use tokens like **ETH**
+    
+-   Enable direct, browser-native payments
+    
+-   Require no trusted third party
+    
+
+## 5\. Web3 Limitations
+
+### Accessibility
+
+-   Transaction fees can be expensive
+    
+-   Limits adoption in developing regions
+    
+-   Addressed through:
+    
+    -   Ethereum roadmap
+        
+    -   **Layer 2 scaling solutions**
+        
+
+### User Experience
+
+-   High technical barrier to entry
+    
+-   Users must understand:
+    
+    -   Wallet security
+        
+    -   Private keys
+        
+    -   Complex interfaces
+        
+-   Wallet providers are improving UX, but challenges remain
+    
+
+### Education
+
+-   Web3 requires new **mental models**
+    
+-   Similar to early Web1 education efforts
+    
+-   Broad educational initiatives are necessary for mass adoption
+    
+
+### Centralized Infrastructure
+
+-   Web3 still depends on centralized tools:
+    
+    -   GitHub
+        
+    -   Twitter
+        
+    -   Discord
+        
+-   Decentralized alternatives are emerging but immature
+    
+
+## 6\. A Decentralized Future
+
+-   Web3 is still young and evolving
+    
+-   Recent progress includes:
+    
+    -   Increased interest in cryptocurrency
+        
+    -   Improvements in Layer 2 scaling
+        
+    -   Experiments in governance
+        
+    -   Advances in digital identity
+        
+
+Key idea: Web3 is not complete — it is actively being built.
+
+## 7\. How Can I Get Involved?
+
+-   Get a wallet
+    
+-   Find a community
+    
+-   Explore Web3 applications
+    
+-   Join a DAO
+    
+-   Build on Web3
+    
+
+# Web3 运行原理
+
+## 钱包私钥和个人主权
+
+-   私钥Private Key: 终极签名印章，不可重制，区块链只认“签名”
+    
+-   助记词Seed Phrase: 私钥的备份
+    
+-   地址： 公钥截取后的字符串
+    
+
+助记词一对多个私钥，助记词通过cryptology到private key，private key也通过运算生成公钥，但是公钥无法算出私钥
+
+### 私钥的安全性建议
+
+**私钥很安全——除非你自己泄漏了**
+
+-   ﻿﻿私钥是不可重置的密码（丢了就是永远丢），只能换钱包
+    
+-   ﻿﻿区块链不认识你是谁，只认识“谁能签名"
+    
+-   ﻿﻿大部分资产被盗，不是链被攻破，而是私钥/助记词泄露或授权被钓鱼
+    
+
+**安全原则（强制记住）**
+
+-   ﻿﻿助记词/私钥：不截图、不网盘、不发人、不复制到不可信环境
+    
+-   ﻿﻿剪贴板是高风险区（很多恶意软件会读剪贴板）
+    
+-   ﻿﻿任何人一旦拿到私钥/助记词= 拿到资产控制权
+    
+
+### 私钥的社会学意义：个人主权的起点、
+
+任何人都可以随机创建私钥一立刻拥有一个无需许可的账户与资产权利
+
+• 对比传统金融：开银行账户需要身份、审批、地域、制度
+
+**背后原因：**
+
+-   ﻿﻿这是密码学提供的“可验证的个人主权”
+    
+-   ﻿﻿你不需要别人“给你账号”，你自己就能生成“权利入口”
+    
+
+## 交易和签名
+
+### 交易是什么
+
+**交易（Transaction or tx）= 你要做的事＋手续费＋防重放序号**
+
+-   ﻿﻿你要做的事：比如转账、调用合约 mint、投票等
+    
+-   ﻿﻿手续费（Gas Fee）：为网络资源付费（并提供激励）
+    
+-   ﻿﻿防重放序号（Nonce）：避免同一笔交易被重复执行
+    
+
+**钱包在做什么：**
+
+-   ﻿﻿组装交易内容
+    
+-   ﻿﻿用私钥签名（生成数字签名，证明是你授权）
+    
+-   ﻿﻿广播到区块链网络
+    
+
+### Gas Fee 是什么？
+
+**Gas Fee 的三层作用：**
+
+-   ﻿「防垃圾交易淹没网络（提高作恶成本）
+    
+-   ﻿﻿激励打包者/验证者提供算力与带宽
+    
+-   ﻿﻿形成经济闭环：资源使用者付费 一网络可持续运转
+    
+
+**经济学视角：**
+
+-   ﻿﻿Gas 是去中心化网络的激励机制之一
+    
+-   ﻿﻿没有激励，网络很难长期稳定运行
+    
+
+测试网: [https://sepolia.etherscan.io/](https://sepolia.etherscan.io/)
+
+主网: [https://etherscan.io/](https://etherscan.io/)
+
+## 区块链网络运行
+
+### 从一笔交易到出块
+
+交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
+
+-   Wallet（签名）
+    
+-   RRC/Node（传播）
+    
+-   Mempool（排队）
+    
+-   Builder/Validator (#kit) [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
+    
+-   ﻿﻿Block (IA) [https://beaconcha.in/block/24224597](https://beaconcha.in/block/24224597)
+    
+-   ﻿﻿Explorer (PJ#) [https://etherscan.io/](https://etherscan.io/)
+    
+
+### 为什么“不可篡改需要时间”
+
+**为什么要等确认？**
+
+-   ﻿﻿区块像账本新一页，会引用上一页指纹（hash）
+    
+-   ﻿﻿区块越往后叠，历史被推翻的成本越高
+    
+-   ﻿﻿PoS 下存在“最终确认 （finality）”：通常需要约12-13分钟达到更稳定的最终状态
+    
+
+**实操：查看 Block 信息**
+
+[https://etherscan.io/block/0xb36a9426b3646ddf3d64213-](https://etherscan.io/block/0xb36a9426b3646ddf3d64213-)
+
+bcc65f854db7b7ba1c9995ffc62
+
+### 共识机制：PoW vs PoS
+
+**挑战：匿名且互不信任的全球节点，如何认可同一本账？**
+
+**PoW（工作量证明）BTC**
+
+-   ﻿﻿算力竞争写账（耗能）
+    
+-   ﻿﻿像"解一道很难但答案很好验的题”：谁先解出谁记账，全网快速验算
+    
+
+**PoS（权益证明）ETH**
+
+-   ﻿﻿质押＋随机选人写账（更节能）
+    
+-   ﻿﻿像“押保证金参加抽签当记账员”：押得多/信誉好概率更高；作恶会被罚没押金
+    
+
+### 钱包、RPC、节点、网络：如何链接
+
+**关键关系：**
+
+-   ﻿﻿钱包通常不直连全网：它连一个 RPC（访问节点的 API）
+    
+-   ﻿﻿RPC 背后是节点（或节点集群）  
+    所以：RPC 往往是“中心化入口风险点”
+    
+
+**实操：看钱包的 RPC设置**
+
+-   ﻿﻿打开钱包网络设置查看 RPC URL/ Chain ID
+    
+-   ﻿﻿用 Chainlist 查看/添加网络：[https://chainlist.org/](https://chainlist.org/)
+    
+
+## 智能合约
+
+### 智能合约的本质
+
+**智能合约 = 区块链账本里的“可执行代码”。**
+
+-   ﻿﻿在EVM（虚拟机）里运行
+    
+-   ﻿﻿交易触发执行一改变链上状态
+    
+-   ﻿﻿写进区块链：具备"难以篡改、可追溯”的特性
+    
+
+**实操：查看** [**https://nft.myfirst.io/**](https://nft.myfirst.io/) **的合约**
+
+### 智能合约的社会学意义
+
+**Code is law:**
+
+-   ﻿﻿规则可验证、按代码执行：任何人都能检查规则与执行历史
+    
+-   ﻿﻿部署后难以更改：减少“临时改规则”的空间（除非使用升级机制）
+    
+-   ﻿﻿减少中介与摩擦：把“信任人/机构”压缩为“信任代码＋共识＋审计/治理”
+    
+
+**例子（交换的最小模型）：**
+
+-   ﻿﻿A把 NFT 存入合约->B转账进合约->合约自动完成交换（按写死的规则执行）
+    
+-   ﻿﻿传统世界往往要信任中介、律师、法院与流程；智能合约试图把一部分信任成本变成可验证的程序规则。
+    
+
+**实操: Mint** [**https://nft.myfirst.io/**](https://nft.myfirst.io/) **的 NFT**
+
+## 区块链协议升级
+
+### 以太坊如何“改规则”
+
+EIP 的基本路径：
+
+-   ﻿﻿先讨论（Magicians 论坛）一再形成文档（EIPs）一再进入升级（每年1-2次）
+    
+-   ﻿﻿每次升级都是一次硬分叉 [https://eips.ethereum.org/EIPS/eip-7607](https://eips.ethereum.org/EIPS/eip-7607)
+    
+-   ﻿﻿关键点：不是某公司拍板，是社区协作推进
+    
+
+相关入口：
+
+-   ﻿EIP FU#: [https://eips.ethereum.org/](https://eips.ethereum.org/)
+    
+-   ﻿﻿EIP ittz: [https://ethereum-magicians.org/](https://ethereum-magicians.org/)
+    
+
+### 节点客户端多样性
+
+节点软件不止一种：执行层客户端＋共识层客户端
+
+-   ﻿﻿多样性越高：越不怕单一软件 bug / 分叉风险
+    
+-   ﻿﻿去中心化不仅是“节点多”，还包括“实现多样”
+    
+-   ﻿﻿以太坊自上线期，从未有过宕机
+    
+
+实操：看主网节点/验证者分布数据
+
+-   ﻿﻿节点软件占比：[https://ethernodes.org/](https://ethernodes.org/)
+    
+-   ﻿﻿Rated Network Explorer 查看 Validators（验证者）
+    
+-   Etherscan Node Tracker（节点服务器）[https://etherscan.io/nodetracker](https://etherscan.io/nodetracker)
+    
+
+## Web3 关键特性回顾
+
+### Web3 关键特性
+
+去中心化
+
+-   ﻿﻿钱包创建：高度去中心化（人人可生成钥匙）
+    
+-   ﻿﻿交易广播：可能中心化 RPC入口、前端入口）
+    
+-   ﻿﻿网络运行：节点越分散越安全
+    
+-   ﻿﻿客户端越多样越稳（减少单点软件风险）
+    
+
+其他特性
+
+-   ﻿﻿无许可：任何人都可以读/写网络（写入需要 gas）
+    
+-   ﻿﻿抗审查：节点全球分布、入口可替换（钱包/前端/RPC都可换）
+    
+-   开放开源：客户端开源、交易记录公开可查询（透明可审计）
+    
+-   ﻿隐私（现状与演进）
+    
+-   ﻿﻿现状：公开账本＋伪匿名（地址不等于身份）
+    
+-   ﻿风险：可通过关联分析追踪行为图谱
+    
+-   ﻿﻿演进：隐私方案仍在发展（例如ZK、隐私链/隐私层等
+    
+
+### 总结
+
+**Web3 是跨学科的领域**
+
+-   社会学：法中心化治理与共识形成
+    
+-   经济学：激励设计保证安全与可持续（Gas、质押、惩罚）
+    
+-   密码学：签名、哈希、ZK 提供可信基础
+    
+
+**技术层面一句话：**
+
+-   Web3就是：用私钥签名证明你是谁，用共识网络保证账本可信，用智能合约让规则自动执行。
+    
+
+**技术之外：**
+
+-   权力的重新分配：数字资产与权利自我控制、无许可、抗审查、公开可信、去中间商
+    
+-   这些是构建未来数字世界的重要基础（也是LXDAO人ETHPanda 关注的方向）
+    
+
+### 留给大家的思考（新的挑战）
+
+-   ﻿﻿资产自托管：如何提高安全性、降低管理私钥的复杂度？
+    
+-   ﻿﻿没有中心化机构/税收时，公共基础设施谁来维护？  
+    如果有税收，又如何分配？
+    
+-   ﻿﻿没有审查且隐私很强时，如何界定并治理有害信息/黑产？
+    
+-   ﻿﻿去中心化协作下，如何实现公平、可信的分配？
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
+
+
 # Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 
 ## 核心

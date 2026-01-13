@@ -17,8 +17,24 @@ INTJ
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 今日目标：
+
+1.  参加下午的Co-Learning
+    
+2.  参加晚上的Web运行原理分享会
+    
+3.  复习Solidity，准备写demo
+    
+4.  学习zk相关的知识
+    
+5.  将今日所学内容整理为笔记并发布到个人知识库
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 今日目标：
 
 1.  完成任务

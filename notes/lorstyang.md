@@ -15,8 +15,84 @@ ha
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 创建钱包以及测试网转账
+
+[https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
+
+# 铸造NFT
+
+[https://sepolia.etherscan.io/tx/0x4088b1550b659f7e0d2b6a7bb5d3a93834ab88c781e41535f379d5a72695b096](https://sepolia.etherscan.io/tx/0x4088b1550b659f7e0d2b6a7bb5d3a93834ab88c781e41535f379d5a72695b096)
+
+# 参加Web3 运行原理分享会
+
+-   钱包 私钥 个人主权
+    
+-   交易与签名
+    
+-   区块链网络运行
+    
+    -   [https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
+        
+    -   [https://beaconcha.in/block/24226416](https://beaconcha.in/block/24226416)
+        
+    -   [https://etherscan.io/](https://etherscan.io/)
+        
+-   智能合约
+    
+    -   [https://nft.myfirst.io/](https://nft.myfirst.io/)
+        
+-   协议升级
+    
+    -   [https://ethereum-magicians.org/](https://ethereum-magicians.org/)
+        
+    -   [https://ethernodes.org/](https://ethernodes.org/)
+        
+-   参考
+    
+    -   b站bv号 BV1NjBKBnEcu，**Vitalik Devconnect 2025 演讲**
+        
+        good for
+        
+        -   支付 金融应用（双花问题）
+            
+        -   ENS
+            
+        -   强有力的参与保证（eg.抗审查）
+            
+        -   不存在证明
+            
+        
+        not good for
+        
+        -   隐私
+            
+        -   Extreme scalability（eg. 以太坊上运行LLM代价很大）
+            
+        -   低延迟（去中心化特性）
+            
+        -   现实世界信息
+            
+
+# 白皮书
+
+[https://ethereum.org/zh/whitepaper/](https://ethereum.org/zh/whitepaper/)
+
+读了一部分白皮书
+
+回顾BTC的概念以及历史，提及其存在的一些缺陷
+
+-   建立新区块链要付出更多的代价
+    
+-   脚本功能有限
+    
+-   元币协议存在扩展性差的缺陷
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # **区块链**
 
 **定义**：区块链是一种**分布式、去中心化的公共数字账本**。它由按时间顺序排列并链接在一起的“区块”组成，每个区块记录着多笔交易或数据。  
