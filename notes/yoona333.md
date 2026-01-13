@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+1.  学习 AI 原生开发工作流
+    
+2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
+    
+3.  参与线上 Co-Learning、Web3 安全、合规分享会
+    
+4.  学习 以太坊协议
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 1.  √ 学习UI UX Pro Max的使用
     
 2.  √ 学习 AI 原生开发工作流
@@ -130,6 +142,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 1.  √ 学习巩固 Uniswap v2 源码
