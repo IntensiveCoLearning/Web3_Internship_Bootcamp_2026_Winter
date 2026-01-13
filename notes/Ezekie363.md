@@ -15,8 +15,70 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# **1.13学习笔记01**
+
+**021学习以太坊第一章**
+
+**第一章认识以太坊笔记摘要**
+
+_EIP-4844升级_ （坎昆升级）
+
+目的：降低L2手续费，提升L1速度，利于未来扩展。
+
+核心思想：提供一种便宜、临时只用于数据可用性的数据存储方式Blob，用于Rollup数据发布。
+
+通过引入Blob数据和独立的Blob Gas市场，是迈向Danksharding的关键过渡升级。
+
+_Rollup_
+
+把多笔交易打包，链下执行，链上验证。
+
+1.Optimistice Rollup：默认提交正确结果
+
+特点：较慢，实现简单，EVM兼容好。
+
+代表：Optimism、Arbitrum
+
+2.ZK Rollup：数学证明结算结果一定正确
+
+特点：快，安全性强、技术复杂。
+
+代表：zkSync、Startnet。
+
+_Gas模型_
+
+Gas Fee = GasUsed \* min（Max Fee，Base Fee + Priority Fee）
+
+GasUsed <= Gas Limit
+
+用户需要设定：Gas Limit、Max Fee、Priority Fee
+
+Gas Limit = 最多消耗的Gas，并非ETH，只是计量单位，防止交易过多或者智能合约死循环。
+
+Max Fee = 能接受的最大总单价，是Base Fee + Priority Fee的上限。
+
+Priority Fee = 每Gas单位提供给验证者的小费，全部花完。
+
+Base Fee = 每Gas单位基础费，协议自动调整，用完后销毁Burn。
+
+_Slashing_
+
+严重行为：双重提议、同时给两个不同区块投票、环绕投票。
+
+双重提议：同一验证者同一时间提议了两个不同的区块。
+
+同时给两个不同区块投票：同一验证者同一高度给两个不同区块投票。
+
+环绕投票：同一验证者提交的新投票“包围”自己以前的投票。
+
+普通的掉线等行为仅会被轻微罚没。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # **1.12学习笔记01**
 
 ## **Web3实习手册入门导读**
