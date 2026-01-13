@@ -48,7 +48,7 @@ Web3 实习计划 2025 冬季实习生
 -   **KR 3： Web3 工作工具使用**
     
 
-1.  按照工具安装指南：[https://web3intern.xyz/zh/remote-work-guide/；](https://web3intern.xyz/zh/remote-work-guide/；)
+1.  按照工具安装指南：[https://web3intern.xyz/zh/remote-work-guide/；](https://web3intern.xyz/zh/remote-work-guide/%EF%BC%9B)
     
 2.  重点完成 **Notion / LinkedIn / Figma / GitHub** 的软件使用，初步上手 Web3 常用的工作软件。
     
@@ -94,9 +94,9 @@ Ethereum （以太坊）名字的含义，指的是一种假设的、遍布宇�
 
 以太坊的生态系统由多层架构组成，包括 L1（主网）、L2（二层扩展解决方案）、侧链（Sidechains） 等，共同支持高吞吐量和低费用的交易处理。
 
-**Layer 1（L1）**作为以太坊主网，用于核心区块链，负责最终安全性与共识；
+\*\*Layer 1（L1）\*\*作为以太坊主网，用于核心区块链，负责最终安全性与共识；
 
-**Layer 2（L2）**通过将交易批量处理后提交至 L1，降低 Gas 费；
+\*\*Layer 2（L2）\*\*通过将交易批量处理后提交至 L1，降低 Gas 费；
 
 **侧链（Sidechains）**：独立运行的链，通过桥接与主网交互。
 
@@ -143,6 +143,8 @@ EVM（ Ethereum Virtual Machine）是 **以太坊的“大脑”**，是专门�
 **完成度：0.7（1.0） Unphishable 的挑战未全部完成。**
 
 **心得：**
+
+**「哦，对了我将AG的视频用AI翻译成了中文稿，在GitHub上免费开放了：**[EchonetHoward/-Web2-to-Web3-EN-to-CN: 我是Howard，作为2026 Web3 冬季训练营的一员，我深感啃生肉视频对学习热情大大减少的痛苦。于是我创建了这个开放公开的文档，将Austin Griffith发布的 Web2 to Web3 的系列视频翻译成中文，供中文学习者使用。在此声明：本专题仅供学习参考，翻译皆为机翻。」](https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN)
 
 Austin Griffith **在第二天主要探讨：设置钱包，助记词（Mnemonics）与钱包安全**
 
@@ -214,7 +216,7 @@ Austin Griffith 在创建钱包中，指出去中心化最大的优势：「 恭
 
 **心得：**
 
-1.  下载注册 **LinkedIn（**手机端一直不成功，电脑端就一次ok了）
+1.  下载注册 \*\*LinkedIn（\*\*手机端一直不成功，电脑端就一次ok了）
     
 
 ![屏幕截图 2026-01-13 085958.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-13-1768272788314-_____2026-01-13_085958.png)
@@ -232,6 +234,7 @@ Austin Griffith 在创建钱包中，指出去中心化最大的优势：「 恭
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## 📅 Day 1 运营向训练计划
 
