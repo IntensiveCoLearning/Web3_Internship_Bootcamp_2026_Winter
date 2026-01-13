@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+1.13 期末周倒数day2 忙
+
+基本完成了unpinshable的beginner部分
+
+个人总结 钓鱼手法：1，更改address（手段：小规模更改值，利用前端特性（修改copyboard））
+
+2，使用非法domain，但是伪装成看似官方的
+
+应对措施 ： 严格比对地址
+
+弹出钱包的交易确认界面时，认真确认交易内容
+
+时刻确认是否是官方domain
+
+善用etherscan（上面可以看到block中所有的交易）
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 ## **以太坊特性**
 
 -   不同于数字黄金，具有高度可编程性
