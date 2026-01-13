@@ -15,8 +15,27 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
+    
+2.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+    
+3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs、**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+    
+
+1.  在 My First NFT mint 第一个 NFT
+    
+2.  完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战2章
+    
+3.  确立岗位目标意向，提供四周学习规划
+    
+4.  查看「Web3 行业全局介绍 & 岗位概览」回放
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 1.  学习内容：
     
     1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分——已总结至notion
