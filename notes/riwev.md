@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
+
+这是一个官方的社区，所有基础的问题都可以得到解答。而且可以通过小测试来看自己的基础知识熟练程度。能复习到很多想不起来的知识）
+
+![{8179956E-E244-4958-940C-4B5BC2CD08D4}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768270534204-_8179956E-E244-4958-940C-4B5BC2CD08D4_.png)![{A1861CFD-AECA-4472-8AB1-E8E17352A4E7}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768270810279-_A1861CFD-AECA-4472-8AB1-E8E17352A4E7_.png)![{E34D033C-F1A4-4A26-8D4F-D4FFD1ABF7C1}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768271809835-_E34D033C-F1A4-4A26-8D4F-D4FFD1ABF7C1_.png)![{F2198AB6-DF0F-40A7-926B-525E385615E7}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768270903389-_F2198AB6-DF0F-40A7-926B-525E385615E7_.png)![{1B13C47B-EBAE-4E21-9FD4-BD208D636A48}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768272004331-_1B13C47B-EBAE-4E21-9FD4-BD208D636A48_.png)![{616A74C7-F5CA-4D0D-B501-76F92ECB9BD6}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768272340840-_616A74C7-F5CA-4D0D-B501-76F92ECB9BD6_.png)![{3791158C-00DD-49D5-B43C-9074330D1ACC}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768272318029-_3791158C-00DD-49D5-B43C-9074330D1ACC_.png)![{7015DDF1-226C-44F1-A640-733B62751438}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768273008285-_7015DDF1-226C-44F1-A640-733B62751438_.png)![{7C5B78F1-920E-42AE-8BEB-2F7ACE3858B8}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-13-1768273416423-_7C5B78F1-920E-42AE-8BEB-2F7ACE3858B8_.png)
+
+# [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+
+# [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+
+# [Unphishable](https://unphishable.io/) 钓鱼攻防挑战
+
+## 0x0004:
+
+## 0x0005:
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # 开营仪式
 
 一开始很紧张，但正在努力跟上大家。前面听这个实习计划的介绍感觉对我这个p人非常友好又能推着我前进。我个人是学过一点solidity的，看到入门技术可以帮助建立认识并且回忆基础非常开心。希望学有余力的情况下可以在深度技术的边缘试探。目前是对黑客松了解不多但是听到成员们反复提到也有很大的兴趣。后面的破冰真是天地之大，我之渺小，群内的职业跨度和地区、年龄跨度都远超我的想象，也更说明了web3是给了所有人一个机会。紧张但是喜欢这样的环境，感觉行动起来了。
