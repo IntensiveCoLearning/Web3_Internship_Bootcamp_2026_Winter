@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-努力成为 web3 builder
+目标掌握Solidity 基础，可以写一个小项目
 
 ## Notes
 
