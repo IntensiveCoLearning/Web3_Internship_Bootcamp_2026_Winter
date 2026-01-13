@@ -15,8 +15,41 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## w1d2
+
+今天先保底把昨天没干完的事情干完吧
+
+-   **入门技术&深度技术任务**
+    
+    -   021 学习以太坊第 3 章
+        
+    -   [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+        
+    -   [Uniswap V2 学习官方文档](https://docs.uniswap.org/contracts/v2/overview?utm_source=chatgpt.com)
+        
+-   **Rust基础**
+    
+    -   第八章 common collection
+        
+    -   第九章 error handling
+        
+-   **杂项**
+    
+    -   把小登试卷er图那题改完吧
+        
+
+先这样吧，至少今天要把这些事给干完
+
+* * *
+
+看到这句话说明我还没更新今天的笔记
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 （叽里咕噜写了半天不小心点到白框外面的内容之后全部内容没有了，后续干脆直接把飞书文档上的学习记录复制粘贴过来吧）
 
 总之，先给接下来的一段时间设定一个总体的目标吧，平常也有记录学习笔记的习惯，干脆一起记录吧，反正差不多也都算是沾点边的东西
