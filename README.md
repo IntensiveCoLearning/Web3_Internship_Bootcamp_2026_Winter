@@ -1229,7 +1229,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [joysguo](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/joysguo.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yumyum-05](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yumyum-05.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [zeuszhang123](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zeuszhang123.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [JaggerChan](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JaggerChan.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [JaggerChan](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JaggerChan.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [ThompsonCloud](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ThompsonCloud.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Cy70927](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Cy70927.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [sebvzwx](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sebvzwx.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1433,6 +1433,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [weiweithehappyprince](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/weiweithehappyprince.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Carl040814](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Carl040814.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
