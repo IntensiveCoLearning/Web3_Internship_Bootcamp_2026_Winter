@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+成功订阅了Google Calender
+
+学了下面的这个pdf
+
+[XiaoHai67890/021Ethereum: 作为一本开源教材，用于系统性学习以太坊相关的知识以及以太坊对于未来的展望](https://github.com/XiaoHai67890/021Ethereum)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 先把需要的平台注册一遍
 
 晚上看了问web3行业全局介绍和岗位概览
