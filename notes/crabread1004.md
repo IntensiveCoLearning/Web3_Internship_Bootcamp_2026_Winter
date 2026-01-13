@@ -17,14 +17,28 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+# 1.13共学笔记
+
+非学分任务：
+
 1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
     
-2.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+2.  [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
     
 3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs、**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
     
 
+学分任务：
+
 1.  在 My First NFT mint 第一个 NFT
+    
+    4.1 测试币不足解决方案：
+    
+    挖矿： [https://sepolia-faucet.pk910.de/#/](https://sepolia-faucet.pk910.de/#/)
+    
+    钱包使用和领水网站：[如何完成“创建钱包，并尝试测试币转账”？](https://www.notion.so/2e54867ff3e180b5bc84e33a7e2f9835?pvs=21)（感谢群友！）
+    
+    4.2 Gas Fee查看：[https://sepolia.etherscan.io/gastracker](https://sepolia.etherscan.io/gastracker)
     
 2.  完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战2章
     
@@ -35,6 +49,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 1.  学习内容：
     
