@@ -10,7 +10,7 @@ timezone: UTC+7
 
 ## Self-introduction
 
-ENTP/UNSW Master Of IT/BTC holder
+Web3 实习计划 2025 冬季实习生
 
 ## Notes
 
