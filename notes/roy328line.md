@@ -25,7 +25,7 @@ Web3 实习计划 2025 冬季实习生
     
 -   学习《021学习以太坊》中的第一章
     
--   观看[**A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+-   观看[**A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
     
 -   观看[**Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
     
@@ -38,10 +38,13 @@ Web3 已从单一支付系统演变为多元生态，手册重点剖析了四大
 
 -   **DeFi (去中心化金融)：** 核心在于“无需准入”和“资产自托管”。
     
-    -   **Uniswap：** 通过恒定乘积公式 (`x * y = k`) 实现自动定价的去中心化交易所。
-        
-    -   **Compound/MakerDAO：** 展示了超额抵押借贷和去中心化稳定币（DAI/USDS）的运行机制。
-        
+    |   | Uniswap | Compound | MakerDao(SKY) |
+    | --- | --- | --- | --- |
+    | 类别 | 去中心化交易所(DEX) | 去中心化借贷协议 | 稳定币系统 |
+    | 核心机制 | 自动做市商（AMM）恒定乘积公式：x×y=k | cToken 凭证动态利率 | 超额抵押生成稳定币 |
+    | 关键特点与创新 | 放弃传统订单簿，以流动性池驱动价格随池内资产比例自动调整无需中介，24/7 全天候交易 | 存入资产获得 cToken，代表存款份额与应计利息利率根据市场供需动态调整支持超额抵押借贷 | 抵押资产（如 ETH）铸造与美元挂钩的 DAI（升级为 USDS）通过稳定费率调节供需；以清算机制维护系统稳定 |
+    | 参与方式 | 交易者：支付手续费兑换代币流动性提供者（LP）：存入代币对赚取交易手续费（如 0.3%） | 存款人：存入资产赚取利息借款人：提供抵押品后借出其他资产，需注意清算风险 | 用户：抵押资产获取流动性（稳定币）用于投资/支付治理者：持有 MKR（现为 SKY）参与提案投票 |
+    
 -   **NFT (非同质化代币)：** 实现了数字所有权的唯一性，代表案例包括先锋项目 CryptoPunks 和交易平台 OpenSea。
     
 -   **DAO (去中心化自治组织)：** 探索社区驱动的治理模式，如支持公共物品建设的 **LXDAO**。
@@ -87,13 +90,14 @@ Web3 已从单一支付系统演变为多元生态，手册重点剖析了四大
 -   **NFT 和 DAO**：NFT 搞定数字资产的唯一性，DAO 则是大家凑在一起不归谁管、靠投票决定怎么干活的组织。
     
 
-## **A Developer's Guide to Building on Ethereum - Intro / Becoming a Power User - Wallets, Mnemonics, Keypairs 学习**
+## **A Developer’s Guide to Building on Ethereum - Intro / Becoming a Power User - Wallets, Mnemonics, Keypairs 学习**
 
 这个视频强调了从 Web2 转型 Web3 的关键在于“先成为用户，再成为开发者”，通过为期四周的计划，从熟悉 MetaMask 和 DEX 等工具的“超级用户”，逐步晋升到掌握 Hardhat 和 Ethers.js 的专业工程师，最终目标是能够独立构建去中心化应用或从事高阶的合约安全审计（这也是我现在正在努力进军的方向）。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 Web3 实习笔记 2026/01/12
 
