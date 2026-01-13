@@ -604,7 +604,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [7metachain](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/7metachain.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [drinkingmorewater](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/drinkingmorewater.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Serenayyy123](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Serenayyy123.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [vincentxthen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/vincentxthen.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [vincentxthen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/vincentxthen.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [lindi312](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lindi312.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [fenixIves](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fenixIves.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yiming123620](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yiming123620.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1410,6 +1410,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [GarryHuang0118](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/GarryHuang0118.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Keli-23](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Keli-23.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
