@@ -89,38 +89,37 @@ Web3 实习计划 2025 冬季实习生
     
     -   每个参与者可独立验证分配结果，防止操纵。
         
-5.  **抗操纵性（Sybil-Resistance）**
-    
-    -   防止刷量、虚假身份或多账户作弊。
-        
-6.  如何防止作弊、刷量、虚报贡献？
+
+-   **抗操纵性（Sybil-Resistance）**
     
 
-1.  **分配需要透明、可验证**
+1.  如何防止作弊、刷量、虚报贡献？
     
-2.  每个人都能看到规则和结果，确保公平。
+2.  **分配需要透明、可验证**
     
-3.  **贡献量化**：先确定“谁贡献了什么”，量化成可计算指标
+3.  每个人都能看到规则和结果，确保公平。
     
-4.  **规则透明**：所有分配公式和权重上链
+4.  **贡献量化**：先确定“谁贡献了什么”，量化成可计算指标
     
-5.  **去中心化执行**：智能合约自动分配，无需信任第三方
+5.  **规则透明**：所有分配公式和权重上链
     
-6.  **社区参与**：投票或仲裁处理难以量化或争议内容
+6.  **去中心化执行**：智能合约自动分配，无需信任第三方
     
-7.  **防作弊设计**：身份绑定、质押惩罚、多维度验证
+7.  **社区参与**：投票或仲裁处理难以量化或争议内容
+    
+8.  **防作弊设计**：身份绑定、质押惩罚、多维度验证
     
 
--   **关于Dapp的定义**
-    
+## **关于Dapp的定义**
 
 ![屏幕截图 2026-01-13 213317.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/may-tonk/images/2026-01-13-1768311248576-_____2026-01-13_213317.png)
 
-相关链接[dapps 技术入门 |](https://ethereum.org/developers/docs/dapps/) [ethereum.org](http://ethereum.org) [--- Technical introduction to dapps |](https://ethereum.org/developers/docs/dapps/) [ethereum.org](http://ethereum.org)
+相关链接[dapps 技术入门 |](https://ethereum.org/developers/docs/dapps/) [ethereum.org](http://ethereum.org) [— Technical introduction to dapps |](https://ethereum.org/developers/docs/dapps/) [ethereum.org](http://ethereum.org)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # 今日学习内容：
 
