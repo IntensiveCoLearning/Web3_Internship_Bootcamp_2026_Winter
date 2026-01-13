@@ -15,8 +15,31 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# To do list
+
+-   学习alloy
+    
+-   以太坊回放
+    
+-   Web3实习手册提交PR
+    
+-   Unphishable继续完成
+    
+-   学习Web3实习手册
+    
+-   021学习以太坊
+    
+-   推特继续关注账号
+    
+
+# Note
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # To do list
 
 ## Tasks
