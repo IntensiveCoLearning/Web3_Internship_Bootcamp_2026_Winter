@@ -1400,7 +1400,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Luna0127](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Luna0127.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [vitalebob](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/vitalebob.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [daisybaicai](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/daisybaicai.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [yvette-ping](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yvette-ping.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
