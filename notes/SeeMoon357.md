@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+上传一下**1.12 关于岗位现状了解的晚间会议**的会议记录。目前会议记录手动总结的形式，看过同学们的AI总结，优秀的很明显。后续也会开始尝试使用AI总结。
+
+好像不能直接上传,md文件，那就以共享notion的形式吧：
+
+[https://www.notion.so/2e706a4c5fdd805f9491fb4d55f08125?v=2e706a4c5fdd803fb09c000c7c5e929d&source=copy\_link](https://www.notion.so/2e706a4c5fdd805f9491fb4d55f08125?v=2e706a4c5fdd803fb09c000c7c5e929d&source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今天参与了co-learning、助教老师的小灶会议、行业岗位会议，但是很不幸，时间点无法参与，错过了周会。
 
 今天时间稍紧，学习了《Web3实习手册》的入门章节的一部分，我会把笔记贴在下面。明天会有更多稳定时间，完成这一份48H的任务。
