@@ -109,10 +109,15 @@ DYOR (Do Your Own Research)：意思时要你自己做研究来决定是否购�
 时刻问自己：你愿意随便给一个陌生人送钱吗？
 
 PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
+
+[https://nft.myfirst.io/](https://nft.myfirst.io/)
+
+![mfnft.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jasmine-pixel363/images/2026-01-13-1768291577611-mfnft.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
