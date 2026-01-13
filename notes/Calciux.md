@@ -25,7 +25,7 @@ Web3 实习计划 2025 冬季实习生
     
     -   ERC-20 fungible token的统一标准,使所有代币在钱包、交易所、DeFi 协议中可互操作
         
-    -   ERC-721 non-fungible token 每个token彼此不相同,是独立不可替代的实体,相互不等价ERC-1155 同时包含FT和NFT, 通过不同的标识来区分不同token的性质
+    -   ERC-721 non-fungible token 每个token彼此不相同,是独立不可替代的实体,相互不等价ERC-1155 同时包含FT/NFT/半同质化, 通过不同的标识来区分不同token的性质
         
 -   Decun 升级
     
@@ -44,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # Web3实习手册C1
 
