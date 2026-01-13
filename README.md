@@ -205,7 +205,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [sophiezhu557](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sophiezhu557.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yinlynette705-maker](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yinlynette705-maker.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Saudade77](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Saudade77.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [bruce237](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/bruce237.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [bruce237](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/bruce237.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [daicidemeigui](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/daicidemeigui.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [okbti](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/okbti.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [daisq24](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/daisq24.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -467,7 +467,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [lanwudawn](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lanwudawn.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [xiaoloouyan-hue](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xiaoloouyan-hue.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [tutou2356](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/tutou2356.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [biduone](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/biduone.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [biduone](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/biduone.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Suemens850](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Suemens850.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [shuil129](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/shuil129.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [cheryl-netizen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/cheryl-netizen.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -629,7 +629,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Leahleaha](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Leahleaha.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yangqiyang1214](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yangqiyang1214.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [YifanSui](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/YifanSui.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [jiezi77706](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jiezi77706.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [jiezi77706](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jiezi77706.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [pigziv](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/pigziv.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [fjzzy1999](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fjzzy1999.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [nounoupop77](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/nounoupop77.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1429,8 +1429,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Danochai](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Danochai.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [nkr-404-NotFound](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/nkr-404-NotFound.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [riley-netizen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/riley-netizen.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [liutianfu678](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/liutianfu678.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [liutianfu678](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/liutianfu678.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
