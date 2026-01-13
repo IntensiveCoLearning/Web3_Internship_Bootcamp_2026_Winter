@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+第二天打卡
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今天是打卡的第一天
 
 今天先去领水网站领了0.317的测试eth
