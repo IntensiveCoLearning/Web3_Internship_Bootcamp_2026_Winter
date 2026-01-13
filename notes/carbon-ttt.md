@@ -15,8 +15,14 @@ web3 learning~
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/carbon-ttt/images/2026-01-13-1768319857388-image.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 -   以太坊提升了blob容量，让L2的成本和用户交易Gas变低，这样会让钱包/DeFi的用户体验变得更好，也让更多的Web3产品有做成产品的可能。
     
 -   出块的时间变得更快，可能是以牺牲去中心化或安全边际为代价的。
