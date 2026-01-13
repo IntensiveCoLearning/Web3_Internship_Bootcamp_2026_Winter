@@ -17,17 +17,120 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
-1.  学习UI UX Pro Max的使用
+1.  √ 学习UI UX Pro Max的使用
     
-2.  学习 AI 原生开发工作流
+2.  √ 学习 AI 原生开发工作流
     
-3.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
+3.  √ 看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
     
-4.  参与线上 Co-Learning、Web3 运行原理
+4.  √ 参与线上 Co-Learning、Web3 运行原理
+    
+
+整体的 UI 设计还可以，布局、配色有一定的提升，在 [SKILL.md](http://SKILL.md) 文件中，也会有怎么操作，去写提示词。后续在项目中，可以用这个进行整体的风格统一优化
+
+下面是我使用的提示词：
+
+请为我生成一个吵架陪练器网站
+
+产品类型：consumer web tool
+
+行业语境：communication / conflict resolution / social
+
+风格关键词：modern, clean, minimal, friendly, playful accents
+
+技术栈：React + Tailwind
+
+产品定位： 把“想怼但不想翻车”的对话，变成三套可直接发送的回应：强硬赢面 / 体面收场 / 搞笑反杀。
+
+目标用户：
+
+-   20-35 岁高频社交沟通人群（同事/对象/客户/家人/群聊）
+    
+-   容易在冲突中“要么憋着要么爆炸”的用户
+    
+
+输出语言规则：
+
+-   默认中文输出。
+    
+-   如果用户输入主要为英文，则输出英文（自动判断）
+    
+
+核心价值主张（页面必须体现）：
+
+-   30 秒生成：可复制、可直接发
+    
+-   降温优先：即使强硬也不升级矛盾
+    
+-   风险提示：告诉你“发出去会发生什么”
+    
+-   可替换变量：让你把话说得更像“你”
+    
+
+功能：
+
+即时生成：输入完点按钮，2秒内出结果
+
+一键复制：每条回应旁边有复制按钮，点完显示"已复制"
+
+快捷操作：回车发送、Ctrl+1/2/3快速复制对应模式
+
+示例提示：输入框hover显示吵架例句，降低使用门槛
+
+整体的 UI 设计还可以，布局、配色有一定的提升，在 [SKILL.md](http://SKILL.md) 文件中，也会有怎么操作，去写提示词。后续在黄金河上，可以用这个进行整体的风格统一优化
+
+下面是我使用的提示词：
+
+请为我生成一个吵架陪练器网站
+
+产品类型：consumer web tool
+
+行业语境：communication / conflict resolution / social
+
+风格关键词：modern, clean, minimal, friendly, playful accents
+
+技术栈：React + Tailwind
+
+产品定位： 把“想怼但不想翻车”的对话，变成三套可直接发送的回应：强硬赢面 / 体面收场 / 搞笑反杀。
+
+目标用户：
+
+20-35 岁高频社交沟通人群（同事/对象/客户/家人/群聊）
+
+容易在冲突中“要么憋着要么爆炸”的用户
+
+输出语言规则：
+
+默认中文输出。
+
+如果用户输入主要为英文，则输出英文（自动判断）
+
+核心价值主张（页面必须体现）：
+
+30 秒生成：可复制、可直接发
+
+降温优先：即使强硬也不升级矛盾
+
+风险提示：告诉你“发出去会发生什么”
+
+可替换变量：让你把话说得更像“你”
+
+功能：
+
+即时生成：输入完点按钮，2秒内出结果
+
+一键复制：每条回应旁边有复制按钮，点完显示"已复制"
+
+快捷操作：回车发送、Ctrl+1/2/3快速复制对应模式
+
+示例提示：输入框hover显示吵架例句，降低使用门槛
+
+![img_v3_02ts_9f0248c5-c1c3-4998-80fd-ca9c2c8bd50g.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yoona333/images/2026-01-13-1768318153897-img_v3_02ts_9f0248c5-c1c3-4998-80fd-ca9c2c8bd50g.jpg)![img_v3_02ts_77c08a7b-2cc8-44f4-a3e2-b6481921720g.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yoona333/images/2026-01-13-1768318229677-img_v3_02ts_77c08a7b-2cc8-44f4-a3e2-b6481921720g.jpg)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 1.  √ 学习巩固 Uniswap v2 源码
     
