@@ -15,8 +15,51 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+账户
+
+-   两种：
+    
+    1.  EOA：人管的，私钥控制。发交易、签合约。
+        
+    2.  合约账户：代码管的，没私钥。跑智能合约。
+        
+-   地址：长串数字+字母，从公钥来。私钥超重要，丢了完蛋。
+    
+
+钱包
+
+-   工具管私钥，帮签名、连app。
+    
+-   类型：软件（如MetaMask，便宜但风险）；硬件（如Ledger，安全）；纸钱包（打印，易丢）。
+    
+-   用时：备份助记词！新手MetaMask起步。
+    
+
+交易
+
+-   基本单位：转钱或调合约。
+    
+-   内容：从哪到哪、多少钱、数据、Gas费。
+    
+-   Gas：付计算，网络忙贵。
+    
+-   过程：签→发→上链。Layer2快。
+    
+
+场景
+
+-   DeFi：智能合约做金融。Uniswap换币，Aave借钱。Layer2省费，钱包连上玩。风险：合约bug。
+    
+-   NFT：独特东西，ERC-721。OpenSea买艺术/道具。Layer2如Immutable快。
+    
+-   Layer2：扩展L1。Optimistic（假设对，有挑战）；ZK（证明快）。DeFi/NFT上用，桥资产过去。
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 学习eth基础，安装完成所有软件
 
 啥是Ethereum？
