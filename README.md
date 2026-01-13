@@ -633,7 +633,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [pigziv](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/pigziv.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [fjzzy1999](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/fjzzy1999.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [nounoupop77](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/nounoupop77.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [Chanlawrence-free](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Chanlawrence-free.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Chanlawrence-free](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Chanlawrence-free.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [DrC-Web3](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/DrC-Web3.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [chenlillia](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/chenlillia.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [wruimia](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/wruimia.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1418,6 +1418,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [didididkyy](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/didididkyy.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [haung25](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/haung25.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
