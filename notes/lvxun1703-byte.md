@@ -47,8 +47,14 @@ I am the founder of **Transvivid**, where we integrate **TCM (Traditional Chines
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今天没怎么学习，看了一些回放
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 回看了昨晚没太听清楚的开营仪式，正在看导读部分和每周的周报，希望能有个好的开头
 <!-- DAILY_CHECKIN_2026-01-12_END -->
 <!-- Content_END -->
