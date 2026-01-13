@@ -19,17 +19,26 @@ interested in web3
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 1.  钱包、助记词、地址
     
-    -   助记词—1-1—私钥—>—公钥—(hash)—钱包地址
+    -   助记词—1-N—私钥—>—公钥—(hash)—钱包地址
         
+        -   **分层确定性钱包** (Hierarchical Deterministic Wallet, HD Wallet)。
+            
     -   区块链不认识你是谁，只认识“谁能签名”：拥有私钥=拥有钱包控制权
         
     -   安全原则：**不截图、不网盘、不发人、不复制**
         
     -   私钥的社会学意义：个人主权的起点
+        
+2.  交易与签名
+    
+    -   交易(tr) = thing to do + Gas Fee + Nonce（防重放）
+        
+    -   生成本地签名——广播到RPC节点（原始消息、声称发送地址、签名）——RPC节点执行ecrecover验证
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 SmarDeer 分享会
