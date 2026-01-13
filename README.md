@@ -1191,7 +1191,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [lxy965142065](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lxy965142065.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yufeiyi](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yufeiyi.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yoyogx1](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yoyogx1.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [beforeface](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/beforeface.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [beforeface](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/beforeface.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [linchris02](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/linchris02.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [lix27905-web](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/lix27905-web.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [chimeraHHH](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/chimeraHHH.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1401,6 +1401,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [vitalebob](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/vitalebob.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [daisybaicai](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/daisybaicai.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
