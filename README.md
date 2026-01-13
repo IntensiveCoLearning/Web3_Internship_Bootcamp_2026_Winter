@@ -258,7 +258,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [Xiaoxuemao](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Xiaoxuemao.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Jiiiiiiiiil](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Jiiiiiiiiil.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Susie-beep](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Susie-beep.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [sun97956](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sun97956.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [sun97956](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sun97956.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [JohnCGD](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JohnCGD.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [ggus39](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ggus39.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [G-H11](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/G-H11.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -391,7 +391,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [chaoyue005](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/chaoyue005.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Eddie-534](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Eddie-534.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yhu68544-coder](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yhu68544-coder.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [YangDuoduo6](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/YangDuoduo6.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [YangDuoduo6](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/YangDuoduo6.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [jadehu1119](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jadehu1119.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [123ziggychen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/123ziggychen.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Jazzjiang5z](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Jazzjiang5z.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -454,7 +454,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [jiahuu](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/jiahuu.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [sgxy975-bit](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sgxy975-bit.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [LuckDogGuan](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/LuckDogGuan.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [JackCC703](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JackCC703.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [JackCC703](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/JackCC703.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [2218429406](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/2218429406.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [liziye627-design](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/liziye627-design.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [SkySommer](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/SkySommer.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -596,7 +596,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [pTNTq](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/pTNTq.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [gnin1228](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/gnin1228.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yubr-zzh](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yubr-zzh.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [Free-riding](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Free-riding.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Free-riding](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Free-riding.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Deades-coder](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Deades-coder.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [0xJayzee](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/0xJayzee.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Tian-Timm](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Tian-Timm.md) | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1171,7 +1171,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [zeroants](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zeroants.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Jaylyn04126](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Jaylyn04126.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [kiko22-alt](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/kiko22-alt.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [c1095828717-hue](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/c1095828717-hue.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [c1095828717-hue](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/c1095828717-hue.md) | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [verver0107](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/verver0107.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [yhx988](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/yhx988.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [sjhxn](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/sjhxn.md) | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1425,6 +1425,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [hkxuan94](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/hkxuan94.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Eumenides-K](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Eumenides-K.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
