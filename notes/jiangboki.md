@@ -22,8 +22,16 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
-web3实习手册阅读  
+web3历史  
+第一阶段2009-2014  
+btc主导1.0时代  
+第二阶段2015-2020  
+以太坊上主网+交易所上线  
+第三阶段2020-2024  
+web3概念爆发（nft/defi/gamefi）去中心化钱包 metamask opensea等去中心化产品，区块链扩容l2，大规模入场  
+2024-至今 etf上市，rwa资产上链，ai+web3  
   
+web3实习手册阅读  
 1.社区运营核心：获课/增长→留存/活跃→奖励机制/角色分层→节奏/可持续  
 2.web3赛道全览  
 1\. 基础设施：  
@@ -37,13 +45,14 @@ l2（optimism/arbitum）解决原链速度成本问题
 衍生品/稳定币usdt/usdc/dai/mkr/perpetual（金融工具）  
 3\. NTF 不可替代的代币 独一无二的数字东西 可转移 可验证唯一性   
 4\. DAO 去中心化自治组织，由成员共同投票决定事情的组织（公开 透明 通过代币/治理权投票机制运行）  
-makerDAO aaveDAO unisawpDAO  
-  
+makerDAO aaveDAO unisawpDAO
+
 ai很重要！！！！ai很重要！！！！ai很重要！！！！
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 1.创建了一个新的x，关注了行业推荐官推，大部分都是之前没有关注的，推特现在噪音太多，推荐很实用  
 2.订阅了本次实习计划的公共日历，也是第一次了解Google Calendar  
