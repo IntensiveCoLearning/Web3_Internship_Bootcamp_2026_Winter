@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 总览
+
+# 详情
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -125,6 +133,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
