@@ -15,8 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+总结：
+
+1）攻击来源：邮箱，Discord，社媒等方式，因此注册web3钱包的邮箱需进行精心挑选，选一个独立的邮箱。
+
+2）储蓄账户减少操作；日常高频使用账户仅放少量资产
+
+3）提防浏览器插件攻击，采取Chrome Profile 的用法。新开一个 Chrome Profile 仅仅安装 MetaMask 插件
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 购买前的调查内容包括（同样适用于日常大件购物）
 
 1在决定购买 NFT 之前，您需要考虑清楚你为什么购买？
