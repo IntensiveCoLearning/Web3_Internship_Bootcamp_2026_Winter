@@ -15,8 +15,14 @@ interested in web3
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+1.  签报、助记词、地址
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 SmarDeer 分享会
 
 1.  Web3的发展阶段：
