@@ -22,11 +22,14 @@ Web3 实习计划 2025 冬季实习生
 也由其中一個同學分享的筆記重溫一次重點。  
 [https://x.com/swiftevo1/status/2010838414778597429?s=20](https://x.com/swiftevo1/status/2010838414778597429?s=20)
 
-希望在四周訓練營後，能完成一份　desci 自學手冊的草稿
+希望在四周訓練營後，能完成一份　desci 自學手冊的草稿  
+  
+當中亦有學習到防洗錢原來還有 ACAMS 的證書可以考取
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 [https://unphishable.io/](https://unphishable.io/challenges/airdrop-scam)
 
