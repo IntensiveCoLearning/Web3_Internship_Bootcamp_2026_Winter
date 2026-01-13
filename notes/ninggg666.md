@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-努力學習 Web3 中！
+外商品牌行銷的 Web3 小白，努力學習中！
 
 ## Notes
 
