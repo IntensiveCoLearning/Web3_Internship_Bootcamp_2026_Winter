@@ -1396,7 +1396,9 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [xiaoxiong12138](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xiaoxiong12138.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [LuandaSui1-cloud](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/LuandaSui1-cloud.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [HarrisBooker](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/HarrisBooker.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Yulia1923](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Yulia1923.md) | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
