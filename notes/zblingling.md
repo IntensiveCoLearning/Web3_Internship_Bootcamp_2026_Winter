@@ -25,7 +25,6 @@ se major, into crypto
     
     Shadowing: 同变量名在内部作用域遮蔽，在类型不同时不冲突
     
-
 -   所有权和借用
     
     &和\*：引用（Reference）与解引用（Dereference）
@@ -39,6 +38,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## **rust basics ongoing**
