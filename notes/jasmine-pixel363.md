@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今日任务：
+
+完成钱包以及NFT任务
+
+看Web3手册并做笔记
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今日任务：
 
 1.  参加今日三次会议（以太坊周会、Co-learning、行业分享会）
