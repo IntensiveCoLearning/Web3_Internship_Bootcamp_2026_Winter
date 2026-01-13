@@ -19,11 +19,101 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 # DAY2
 
-## TASK:学习Hardhat-Tutorial
+## TASK:学习Hardhat3-Tutorial
+
+### 什么是HardHat3
+
+Hardhat 3 是一个面向以太坊开发者的智能合约开发环境，它帮助开发、编译、测试、调试和部署 Solidity 合约，并支持编写脚本与测试工程。它扩展了之前的 Hardhat 生态，引入更现代化的工具链和默认配置
+
+### Setting up the environment
+
+-   安装Node.js v22或更高版本
+    
+-   安装包管理器：npm pnpm或yarn
+    
+-   选择一个编译器并安装Hardhat插件
+    
+
+### Creating a new Hardhat project
+
+1.  **create an empty directory and initialize a Hardhat project**
+    
+
+```
+mkdir hardhat-example
+cd hardhat-example
+npx hardhat --init
+```
+
+2.  **verify**
+    
+
+```
+npx hardhat --help
+```
+
+### Write and Compile a contract
+
+```
+pragma solidity ^0.8.28;
+
+contract Counter {
+  uint public x;
+
+  function inc() public { x++; }
+}
+```
+
+compile:
+
+```
+npx hardhat build
+```
+
+or
+
+```
+npx hardhat compile
+```
+
+### Test
+
+1.  **Solidity Test**
+    
+
+写.t.sol的Solidity测试文件，在EVM内部直接运行逻辑
+
+```
+npx hardhat test
+```
+
+仅运行Solidity：
+
+```
+npx hardhat test solidity
+```
+
+2.  **Javascript/Typescript Test**
+    
+
+在Node.js运行环境中进行，更贴近客户端调用合约的模式
+
+运行Typescript测试：
+
+```
+npx hardhat test nodejs
+```
+
+### Ignition
+
+```
+npx hardhat ignition deploy ignition/modules/Counter.ts
+```
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # **DAY1**
 
