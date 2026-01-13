@@ -27,8 +27,8 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
     
 -   合约账户（如 Uniswap 资金池）：由代码控制，无私钥。它像自动售货机，必须被 EOA“踢一脚”（调用）才会执行逻辑，无法主动发起顶层交易
     
-
-**运营启示：**做产品设计时，要明白用户（EOA）是起点，合约是后端逻辑
+-   运营启示：做产品设计时，要明白用户（EOA）是起点，合约是后端逻辑
+    
 
 **助记词 (Mnemonic) 的真相**：
 
@@ -49,13 +49,13 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 **Etherscan (区块浏览器)：**
 
-去伪存真：钱包 UI 可能会骗人（延迟或 Bug），但 Etherscan 是“公正的第三方” 。
+去伪存真：钱包 UI 可能会骗人（延迟或 Bug），但 Etherscan 是“公正的第三方”
 
-关键数据：作为运营，必须学会看 Status (是否成功)、From/To (资金流向)、Gas Price (当前成本) 。
+关键数据：作为运营，必须学会看 Status (是否成功)、From/To (资金流向)、Gas Price (当前成本)
 
 **Nonce (交易计数器)：**
 
-防重放：交易必须按顺序排队。每个账户都有一个 Nonce 值（0, 1, 2...），必须按顺序执行
+防重放：交易必须按顺序排队。每个账户都有一个 Nonce 值（0, 1, 2…），必须按顺序执行
 
 运营场景：用户投诉“交易卡住了”，通常是因为前一笔交易（低 Nonce）没确认，导致后面所有交易都在排队
 
@@ -65,7 +65,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 -   托管（如交易所）：私钥在平台手里，资产只是数据库里的一行数字。风险是平台跑路
     
--   非托管（如 MetaMask）：Not your keys, not your coins。自己掌握私钥，拥有资产的完全主权，但也承担所有安全责任
+-   非托管（如 MetaMask）：**Not your keys, not your coins**。自己掌握私钥，拥有资产的完全主权，但也承担所有安全责任
     
 
 # 💡 我的心路历程：Day 2 复盘
@@ -81,6 +81,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今天是我通过“**实操 + 理论 + 行业视野**”的结合，我完成了从创建钱包到理解以太坊底层逻辑的闭环
 
