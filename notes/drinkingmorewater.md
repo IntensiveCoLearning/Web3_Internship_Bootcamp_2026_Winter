@@ -107,11 +107,16 @@ unfinalized状态：未完成
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768308604265-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768308910924-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768309044355-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768309206098-image.png)
 
-web3是用来构建新型数字世界的基础设施之一
+# Q&A
+
+Q:web3的意义在哪？
+
+A:web3是用来构建新型数字世界的基础设施之一，用来解决**信任**和**资金**的问题，比如亚非拉国家在他们自己的汇率崩掉以后可以用usdc进行交易。现在的web3里又两拨人，一波叫Degen是炒币的，另一批是Regen（regeneration）思考web3能创造什么价值。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-12-1768219487812-image.png)
 
