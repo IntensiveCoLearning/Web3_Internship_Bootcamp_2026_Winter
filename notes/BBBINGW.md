@@ -15,8 +15,20 @@ note for 2026
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+# 今日todo
+
+-   \[ \] 入门导读以太坊概览
+    
+-   \[ \] 行业赛道全览
+    
+-   \[ \] 工作方式
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # todo list
 
 ## 1-12
