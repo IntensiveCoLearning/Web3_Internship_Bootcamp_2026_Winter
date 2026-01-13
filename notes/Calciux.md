@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## 学习以太坊 1-2
+
+### 以太坊
+
+-   Tokens
+    
+    -   ERC-20 fungible token的统一标准,使所有代币在钱包、交易所、DeFi 协议中可互操作
+        
+    -   ERC-721 non-fungible token 每个token彼此不相同,是独立不可替代的实体,相互不等价ERC-1155 同时包含FT和NFT, 通过不同的标识来区分不同token的性质
+        
+-   Decun 升级
+    
+    -   Proto-Danksharding
+        
+    -   引入 blob: 临时的专门给Rollup存放交易数据的区域 主链不会保存完整的内容而是爆粗哪一个commitment, 能够验证
+        
+-   完整的danksharding
+    
+    -   blob变成了多个data shards, 每个shards只保存一部分数据
+        
+    -   Data Availability Sampling(DAS) 允许节点不下载整个区块而可以验证数据的真实性
+        
+    -   DAS利用Reed-Solomon ensure code(是一种maxium distance seperable code), 只要其中的部分数据就能恢复全部数据, 而大量节点的同时抽样验证保证了数据的生产者几乎不可能隐藏数据, 从而确保了只需要下载少量数据就可以验证数据是否被真实发布.
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 # Web3实习手册C1
 
 ### 去中心化?
