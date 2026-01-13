@@ -20,10 +20,13 @@ Web3 实习计划 2025 冬季实习生
 # Day 2
 
 今天开始学习Solidity🎉
+
+发现Solidity和C#还是有很大的相似之处
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # Day1 共学第一天
 
