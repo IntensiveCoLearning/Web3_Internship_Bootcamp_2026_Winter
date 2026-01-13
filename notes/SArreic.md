@@ -17,11 +17,18 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
-Today I installed metamask and solflare wallet plugin on my edge web browser, enabling transaction management through websites on both Ethereum and Solana chain. I also successfully get sepolia ETH through PoW Faucet with my Ethereum testnet wallet address.
+Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
+
+During today’s learning session, I reviewed the foundational principles of Web3 and blockchain technology, covering core functions and underlying architectural logic—such as how transactions are executed and how smart contracts operate on Ethereum and other blockchain platforms. This refreshed my understanding of the technical groundwork that supports decentralized applications and ecosystems.
+
+Building on this, I also explored current industry trends discussed in recent Web3 forums, including the growing emphasis on layer-2 scaling solutions and real-world asset tokenization. These developments further illustrate how blockchain infrastructure continues to evolve to support broader adoption and more complex use cases.
+
+Overall, today’s hands-on setup and conceptual review strengthened my practical readiness and theoretical clarity as I continue to engage with the Web3 space—whether through testing dApps, contributing to projects, or preparing for a career in this fast-evolving field.
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 Today, I expanded my understanding of the Web3 space by attending the Ethereum Chinese weekly meeting and reviewing industry materials. The discussion covered Ethereum’s Fusca upgrade, L2 developments, and recent security incidents. From a market perspective, 2026 is viewed as a “foundation year” for industry consolidation, with Real World Assets (RWA), prediction markets, and compliance emerging as key trends—signaling a shift from early speculation toward integration with traditional finance.
 
