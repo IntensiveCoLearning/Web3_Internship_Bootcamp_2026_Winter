@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+Today I installed metamask and solflare wallet plugin on my edge web browser, enabling transaction management through websites on both Ethereum and Solana chain. I also successfully get sepolia ETH through PoW Faucet with my Ethereum testnet wallet address.
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 Today, I expanded my understanding of the Web3 space by attending the Ethereum Chinese weekly meeting and reviewing industry materials. The discussion covered Ethereum’s Fusca upgrade, L2 developments, and recent security incidents. From a market perspective, 2026 is viewed as a “foundation year” for industry consolidation, with Real World Assets (RWA), prediction markets, and compliance emerging as key trends—signaling a shift from early speculation toward integration with traditional finance.
 
 Currently pursuing a master’s degree in Singapore, I have been involved in building RWA-based business applications in a real industry setting. This year, I contributed to the founding of a Non-Fungible Digital Asset program supported by Alpha Leddar Group, where I helped design the architecture and implement key components. While RWA is still an emerging field with few proven successes, I see it as a promising area with significant future potential—one where I can apply my technical skills, including Solidity, to deliver tangible contributions.
