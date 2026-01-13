@@ -23,11 +23,15 @@ timezone: UTC+8
     
 -   **输入理解 实习手册入门导读的剩余部分**
     
--   **看完两个视频，Becoming a Power User /A Developer's Guide to Building on Ethereum**
+-   **看完两个视频，Becoming a Power User /A Developer’s Guide to Building on Ethereum**
+    
+
+![Web3行业发展与招聘趋势.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-13-1768301952951-Web3_________.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # 1.12计划
 
