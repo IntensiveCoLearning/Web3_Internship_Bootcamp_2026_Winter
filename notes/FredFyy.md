@@ -15,8 +15,18 @@ Fred，web3新人，和大家一起学习
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今日学习计划：
+
+1.阅读web3实习手册入门导读部分后两篇
+
+2.学习课程Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今日计划：
 
 1.阅读Web3 实习手册「入门导读」前两篇
