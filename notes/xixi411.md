@@ -15,6 +15,8 @@ web3新人，狠狠学
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+_杀杀杀_
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
