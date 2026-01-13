@@ -19,10 +19,26 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 # 1.13共学笔记
 
+1.12补充：
+
+web3行业赛道：
+
+1.DeFi（去中心化金融）
+
+2.NFT（数字资产）
+
+3.DAO（去中心化自治组织）
+
+[4.MEME](http://4.MEME) 币（社区自治与实用）
+
 非学分任务：
 
 1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
     
+    1.  与许多传统货币不同，**以太币可能会随时间推移变得越来越稀缺**。每次有人使用以太坊时，都会销毁一小部分以太币，使其永久退出流通。在交易繁忙的日子里，被销毁的以太币数量会超过新铸造的数量，使得以太币具有通缩特性，其价值会随时间推移而增长。以太坊的使用量越大，被销毁的以太币就越多。
+        
+    2.  比特币通过矿工来保障网络安全。这些高性能计算机相互竞争，致力于破解复杂的数学难题，胜出者有权将下一笔交易区块添加至区块链，并获得比特币作为奖励。——以太坊：诚实的验证者可获得以太币奖励，而任何不诚实的验证者则会损失部分质押。
+        
 2.  [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
     
 3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs、**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
@@ -69,6 +85,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
