@@ -266,10 +266,327 @@ Ongoing priorities:
 -   Security
     
 -   Decentralization
+    
+
+# [**Web3**](https://ethereum.org/web3/)
+
+## 1\. What is Web3?
+
+**Web3** is a vision for a new version of the internet that embraces **decentralization**, where the web is **built, operated, and owned by its users**, rather than controlled by centralized corporations.
+
+Core idea: **Web3 puts power in the hands of individuals instead of large technology companies.**
+
+Web3 uses:
+
+-   **Blockchains**
+    
+-   **Cryptocurrencies**
+    
+-   **NFTs**
+    
+
+to enable **ownership**, **permissionless participation**, and **trustless systems**.
+
+## 2\. The Evolution of the Web
+
+### Web 1.0: Read-Only (1990–2004)
+
+-   Coincides with the early World Wide Web
+    
+-   Developed by **Tim Berners-Lee** at CERN
+    
+-   Focused on **static websites**
+    
+-   Users consumed information but rarely produced content
+    
+-   Little to no user interaction
+    
+
+Architecture:
+
+-   **Client-server architecture**
+    
+-   Websites owned by companies
+    
+-   Often called the **read-only web**
+    
+
+### Web 2.0: Read-Write (2004–now)
+
+-   Emerged with social media platforms
+    
+-   Users could **create and share content**
+    
+-   Enabled user-to-user interaction
+    
+-   Introduced **advertising-driven revenue models**
+    
+
+Key characteristics:
+
+-   Platforms host user-generated content
+    
+-   A small number of companies control:
+    
+    -   User data
+        
+    -   Monetization
+        
+    -   Platform rules
+        
+
+Main issue: Users create value but **do not own their data or content**.
+
+### Web 3.0: Read-Write-Own
+
+-   Term coined by **Gavin Wood** in 2014
+    
+-   A response to excessive trust in centralized platforms
+    
+
+Architecture:
+
+-   **Decentralized node architecture**
+    
+
+Key shift:
+
+-   Web1 = Read
+    
+-   Web2 = Read-Write
+    
+-   **Web3 = Read-Write-Own**
+    
+
+## 3\. Core Ideas of Web3
+
+### 1\. Web3 is decentralized
+
+-   Ownership and control are distributed among builders and users
+    
+-   No single centralized authority
+    
+
+### 2\. Web3 is permissionless
+
+-   Anyone can participate
+    
+-   No gatekeepers or exclusions
+    
+
+### 3\. Web3 has native payments
+
+-   Uses **cryptocurrencies** instead of banks or payment processors
+    
+-   Enables direct peer-to-peer transactions
+    
+
+### 4\. Web3 is trustless
+
+-   Relies on **incentives and economic mechanisms**
+    
+-   Removes the need for trusted third parties
+    
+
+## 4\. Why is Web3 Important?
+
+### Ownership
+
+Web3 enables **direct ownership** of digital assets.
+
+Example:
+
+-   In Web2 games, in-game items are tied to an account
+    
+-   If the platform bans or shuts down the account, assets are lost
+    
+
+In Web3:
+
+-   Ownership is enforced via **non-fungible tokens (NFTs)**
+    
+-   Ownership cannot be revoked by platform creators
+    
+-   Assets can be sold or traded on open markets
+    
+
+### Censorship Resistance
+
+In Web2:
+
+-   Platforms can change rules, ban creators, or remove content
+    
+-   Creators lose reputation and audience if they leave a platform
+    
+
+In Web3:
+
+-   Data and reputation live **on the blockchain**
+    
+-   Users can move their identity and reputation between platforms
+    
+-   **Censorship resistance is a native feature**
+    
+
+### Decentralized Autonomous Organizations (DAOs)
+
+**DAOs** enable collective ownership and governance of platforms.
+
+Technical definition:
+
+-   DAOs are **smart contracts**
+    
+-   They automate decentralized decision-making over shared resources (tokens)
+    
+
+Key features:
+
+-   Tokens act like shares
+    
+-   Token holders vote on proposals
+    
+-   Voting outcomes are executed automatically by code
+    
+
+Note:
+
+-   Many Web3 communities call themselves DAOs
+    
+-   Levels of decentralization and automation vary
+    
+
+### Identity
+
+Problems in Web2:
+
+-   Separate accounts for each platform
+    
+-   Reliance on social logins
+    
+-   Platforms control access and personal data
+    
+
+Web3 solution:
+
+-   **Ethereum address** as a universal login
+    
+-   **Ethereum Name Service (ENS)** for human-readable identities
+    
+
+Benefits:
+
+-   Single login across platforms
+    
+-   Censorship-resistant
+    
+-   Anonymous
+    
+-   User-controlled
+    
+
+### Native Payments
+
+Web2 payments:
+
+-   Depend on banks and payment processors
+    
+-   Exclude people without bank access
+    
+
+Web3 payments:
+
+-   Use tokens like **ETH**
+    
+-   Enable direct, browser-native payments
+    
+-   Require no trusted third party
+    
+
+## 5\. Web3 Limitations
+
+### Accessibility
+
+-   Transaction fees can be expensive
+    
+-   Limits adoption in developing regions
+    
+-   Addressed through:
+    
+    -   Ethereum roadmap
+        
+    -   **Layer 2 scaling solutions**
+        
+
+### User Experience
+
+-   High technical barrier to entry
+    
+-   Users must understand:
+    
+    -   Wallet security
+        
+    -   Private keys
+        
+    -   Complex interfaces
+        
+-   Wallet providers are improving UX, but challenges remain
+    
+
+### Education
+
+-   Web3 requires new **mental models**
+    
+-   Similar to early Web1 education efforts
+    
+-   Broad educational initiatives are necessary for mass adoption
+    
+
+### Centralized Infrastructure
+
+-   Web3 still depends on centralized tools:
+    
+    -   GitHub
+        
+    -   Twitter
+        
+    -   Discord
+        
+-   Decentralized alternatives are emerging but immature
+    
+
+## 6\. A Decentralized Future
+
+-   Web3 is still young and evolving
+    
+-   Recent progress includes:
+    
+    -   Increased interest in cryptocurrency
+        
+    -   Improvements in Layer 2 scaling
+        
+    -   Experiments in governance
+        
+    -   Advances in digital identity
+        
+
+Key idea: Web3 is not complete — it is actively being built.
+
+## 7\. How Can I Get Involved?
+
+-   Get a wallet
+    
+-   Find a community
+    
+-   Explore Web3 applications
+    
+-   Join a DAO
+    
+-   Build on Web3
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 
