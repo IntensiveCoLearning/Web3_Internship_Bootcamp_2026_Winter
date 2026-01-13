@@ -15,8 +15,21 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+今天主要参加了线上的两个会议:
+
+1.  每日的线上co-learning
+    
+2.  web3 原理
+    
+
+完成了NO.0x0019 的unphishable 的教程
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 昨晚在x上看完了直播, 对这次的Boot Camp 有了个系统的认知. 后面的破冰环节发现大家都挺厉害的.
 
   
