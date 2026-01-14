@@ -15,8 +15,131 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## web3安全分享
+
+### Bybit被盗事件
+
+通常是指2025年2月21日发生的一起超大规模黑客攻击事件，攻击目标是交易所Bybit的以太坊多签冷钱包，被盗资产价值约14.4–15亿美元，是迄今为止金额最大的加密货币盗窃案之一。 事件发生后，链上分析人士和安全公司介入调查，Bybit也公开承认遭遇重大安全漏洞，并启动追踪与资产追回工作。\[1\]\[2\]
+
+## 事件经过概览
+
+-   2025年2月21日，链上监测账号（如ZachXBT）发现Bybit官方冷钱包发生异常大额转出，约40万枚ETH及相关衍生代币被转往陌生地址，总价值接近15亿美元。\[2\]
+    
+-   随后多家安全机构确认，这次攻击主要集中在Bybit的以太坊多重签名冷钱包，而非普通用户热钱包余额，因而短期内用户充值、提现功能基本维持正常，只是个别相关代币有临时限制。\[1\]\[3\]
+    
+
+## 黑客攻击手法
+
+-   攻击核心在于“社会工程+智能合约篡改”：黑客先通过网络钓鱼等方式拿到冷钱包签名者的界面控制权，让签名者在“看起来正常”的前端界面上签署了恶意交易。\[3\]\[5\]\[1\]
+    
+-   这些恶意交易并不是普通转账，而是修改Safe多签钱包的实现合约逻辑，黑客利用DELEGATECALL嵌入后门函数（如sweepETH、sweepERC20），最终一次性把冷钱包里的ETH和stETH全部转走。\[5\]\[2\]
+    
+
+## 可能的幕后组织
+
+-   多名链上分析人士指出，本次攻击的作案模式、测试交易、关联地址等特征高度疑似与朝鲜黑客组织“Lazarus Group”相符。\[6\]\[2\]
+    
+-   媒体和链上情报平台据此将该案归类为“国家级黑客组织参与的加密货币史上最大盗窃案之一”。\[9\]\[6\]
+    
+
+## 资产流向与追回进展
+
+-   被盗ETH最初被集中转入少数地址，随后被拆分到数十个新地址，每个地址约1万枚ETH，以增加追踪难度。\[8\]\[3\]
+    
+-   部分与DeFi协议相关的代币（如cmETH）在对接方紧急冻结或暂停提现后，被成功追回了一小部分（例如mETH Protocol追回约1.5万枚cmETH，占总被盗资金约3%）。\[4\]\[2\]
+    
+
+## 对用户与行业的影响
+
+-   Bybit方面表示将承担损失，不会把冷钱包被盗的损失转嫁给普通用户，平台继续维持运营，但该事件引发了市场对其资金实力与风险管理的担忧，甚至出现“是否会有倒闭风险”的讨论。\[8\]
+    
+-   安全公司和托管机构总结认为，本次事件暴露了“仅依赖多签但缺乏独立验证层”的根本缺陷，开始推广多重签名+独立协签、交易模拟验证等更高等级的托管方案。\[7\]
+    
+
+[1](https://cn.investing.com/analysis/article-200490913)[2](https://www.secrss.com/articles/75898)[3](https://www.binance.com/zh-CN/square/post/20617152521513)[4](https://www.youtube.com/watch?v=OYjxr2SMVVM)[5](https://www.startupterrace.com/post/bybit-%E5%A6%82%E4%BD%95%E8%A2%AB%E9%A7%AD%E5%AE%A2%E3%80%8C%E8%A9%90%E9%A8%99%E3%80%8D%EF%BC%9F%E9%81%8E%E7%A8%8B%E7%99%BC%E7%94%9F%E4%BB%80%E9%BA%BC%E4%BA%8B%EF%BC%9F%E6%A1%88%E4%BB%B6%E3%80%81%E6%8A%80%E8%A1%93%E6%BC%8F%E6%B4%9E%E6%87%B6%E4%BA%BA%E5%8C%85%E6%95%B4%E7%90%86)[6](https://www.bbc.com/zhongwen/articles/c62kx7k2709o/trad)[7](https://www.cobo.com/zh/post/the-bybit-breach-why-multi-sig-alone-isn-t-enough)[8](https://chainee.io/bybit-hacker/)[9](https://www.reddit.com/r/CryptoCurrency/comments/1iuww8t/the_largest_crypto_theft_of_all_time_historic_14/)[10](https://www.reddit.com/r/ethereum/comments/1iuw5ff/the_crypto_exchange_bybit_has_been_hacked_and/?tl=zh-hans)
+
+### 典型案例与攻击手法
+
+高频攻击与欺诈
+
+私钥窃取
+
+钓鱼攻击
+
+Rug Token
+
+**Rug Token**（通常被称为 **Rug Pull**，中文常译为“拉地毯”或“卷款跑路”）是加密货币领域中一种恶意的**诈骗行为**。
+
+简单来说，就是项目开发方在吸引了大量投资者的资金后，突然放弃项目并卷走资金池中的钱，导致投资者手中的代币（Token）瞬间变得一文不值。
+
+### 1\. 这个词的来源
+
+这个术语源自英语俚语 “To pull the rug out from under someone”（把某人脚下的地毯抽走）。形象地描述了投资者在毫无防备的情况下，脚下的支持（资金流动性）被突然抽空，导致其摔倒（蒙受巨大损失）的场景。
+
+### 2\. Rug Pull 是如何运作的？
+
+Rug Pull 通常发生在去中心化交易所（DEX，如 Uniswap 或 PancakeSwap）上，主要有以下几种常见手段：
+
+-   **抽走流动性 (Liquidity Removal)：**
+    
+-   这是最常见的方式。开发方发行一个新代币，并将其与以太坊 (ETH) 或 BNB 等主流币配对，建立一个流动性池。
+    
+-   当很多投资者买入该代币，池子里的主流币（钱）越来越多时，拥有流动性控制权的开发方突然将池子里的主流币全部撤回。
+    
+-   结果：池子里只剩下没人要的空气币，投资者无法卖出套现。
+    
+-   **限制卖出 (Selling Restrictions / Honeypot)：**
+    
+-   开发方在智能合约代码中埋下恶意代码，只允许大家“买入”，不允许“卖出”（或者只允许特定的白名单钱包卖出）。
+    
+-   投资者看到价格不断上涨（因为只有买单没有卖单），Fomo（错失恐惧症）情绪下继续买入。
+    
+-   最后开发方自己在高位抛售跑路，其他所有人都被套牢。
+    
+-   **大量抛售 (Pump and Dump)：**
+    
+-   开发方预留了大量代币。通过营销炒作把价格拉高后，开发方突然一次性抛售手中持有的海量代币。
+    
+-   巨大的抛压瞬间击穿价格，导致币价归零。
+    
+
+### 3\. 如何识别潜在的 Rug Token？
+
+虽然并非所有 Rug Pull 都能被轻易识破，但以下迹象通常是危险信号：
+
+-   **流动性未锁定 (Liquidity Not Locked)：** 正规项目的开发方通常会通过第三方平台（如 Team Finance, Unicrypt）锁定流动性一段时间（如 6 个月或 1 年），以证明他们不会跑路。如果流动性没锁，或者锁仓时间极短，风险极高。
+    
+-   **团队完全匿名且无历史信誉：** 虽然加密圈有很多匿名项目，但如果是一个全新的匿名团队，且没有任何可查的过往开发经历，需要保持警惕。
+    
+-   **代码未审计 (No Audit)：** 智能合约没有经过CertiK等专业安全公司的审计，可能隐藏后门。
+    
+-   **高得离谱的收益承诺：** 如果项目承诺年化收益率（APY）极高且不仅不可持续，通常是陷阱。
+    
+-   **社交媒体互动异常：** 比如只有机器人刷屏，或者官方群禁言、只允许吹捧言论。
+    
+
+### 总结
+
+**Rug Token 就是一种“割韭菜”的工具。** 如果你听说某个币是 Rug Token，意思就是这个项目方已经跑路了，或者这个币本身就是为了跑路而设计的骗局。
+
+* * *
+
+### **Video Explanation**
+
+[Avoid Crypto Scams - 7 Signs of a Rug Pull!](https://www.youtube.com/watch?v=a3CZBBqIfn0) This video is relevant because it visually explains the red flags mentioned above, helping you practically identify potential scams before investing.
+
+> 突然对安全相关行业很感兴趣
+
+![alt text](image-3.png)
+
+UXlink Balancer
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## 1.13号共学
 
 ### A l1和l2的区别
@@ -443,6 +566,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
