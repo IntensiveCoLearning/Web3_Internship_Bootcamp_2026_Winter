@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+学习咯
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 **今天下午把web3行业全局介绍的回放又看了一遍，知道了其实Compliance/Law的赛道是最不卷的，看来这个方向不错。知道了**web3找工作链上简历很重要，举个例子，比如说开发岗的话，链上简历就包括① 钱包地址（核心）② 链上交互记录（最重要）③ GitHub / 合约部署（技术岗必备）④ DAO / 社区贡献记录⑤ ENS / Lens / Farcaster（身份增强），具体可实现方案就举个例子可以是要有一个用了一年以上的钱包地址，用过主流 DApp（非一次性交互），GitHub 有 2–3 个小项目至少部署过 1 个合约，有 ENS，参与过 1–2 个 DAO，这样链上简历的要求就入门了。如果还差项目经验也可以参加一些permissionless work，比如在 DAO 接任务和在开源社区贡献代码 / 改 bug，具体步骤是①Fork 项目②本地跑起来③建分支④修 bug（最小改动）⑤写清楚 Commit，提 PR。如果是**Compliance/Law入行的话可以弄个**CAMS，区块链基础+链上理解+CAMS=懂链的合规。
 
 还有就是知道了有很多Jobs category，有以下这些：Project/Program Management，Engineering (all types)，Operations/Admin，Compliance/Legal，Marketing/Community，Security/Auditing，Research。其中细分职位包括智能合约/链端，前端/全栈，安全审计，社区运营/Mod，增长/BD，Research/分析师，产品经理(PM)，合规/法务。初级的岗位还得是技术开发的薪资最高，不过各种细分职位的上限都挺高的。
@@ -26,6 +32,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今天看了直播，加上昨天开营仪式的直播介绍，知道了web3的一些赛道以及要怎么做才能进行这个赛道
 
