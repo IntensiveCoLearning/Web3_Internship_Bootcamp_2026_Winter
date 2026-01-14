@@ -46,10 +46,40 @@ KYC 的核心目的是：
     
 
 一句话说就是进行实名认证信息
+
+### **执行客户端（Execution Client）**
+
+也称为**执行层客户端**（Execution Layer Client），负责处理以太坊的**交易执行**和**状态管理**。
+
+**主要功能：**
+
+-   执行智能合约和交易；
+    
+-   维护以太坊的世界状态（账户余额、合约代码、存储等）；
+    
+-   管理交易池（mempool）；
+    
+-   提供 JSON-RPC API 供用户或 DApp 与以太坊交互（如 `eth_sendTransaction`、`eth_call` 等）。
+    
+
+### **2\. 共识客户端（Consensus Client）**
+
+也称为**共识层客户端**（Consensus Layer Client），负责处理以太坊的**PoS 共识机制**（权益证明）。
+
+**主要功能：**
+
+-   运行信标链（Beacon Chain）逻辑；
+    
+-   验证者（Validator）管理：包括质押、出块、投票（attestations）；
+    
+-   与其他共识客户端通信，达成区块最终性（finality）；
+    
+-   与执行客户端协作：共识客户端决定“哪个区块应该被添加”，执行客户端负责“这个区块里的交易如何执行”。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 ## L1和L2的相关知识
 
@@ -242,6 +272,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
