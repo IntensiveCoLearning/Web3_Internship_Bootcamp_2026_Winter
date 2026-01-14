@@ -29,6 +29,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -133,6 +134,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
