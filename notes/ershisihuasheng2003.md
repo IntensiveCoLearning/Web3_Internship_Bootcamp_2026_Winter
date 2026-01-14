@@ -26,10 +26,45 @@ to do list:
 3.完成钓鱼攻防挑战
 
 4.完成web3实习手册第一章节的学习
+
+# **Web 3 实习计划——day 3**
+
+我是Sam，一个本科专业是国际经济与贸易的小白学生。今天请大家跟随我的视角开始第三天的Web3学习。
+
+今天的任务安排有co-learning，Web3安全主题分享会和Web3合规主题分享会。但是今天的co-learning和我健身时间刚好撞了，碰巧没有戴耳机。所以今天的co-learning没有怎么听。
+
+晚上回来的安全主题分享会和合规主题分享会可以说是干货满满了，大赚，幸亏听了。
+
+第一部分——安全主题
+
+安全主题主要是围绕Web3近期的安全风险展开的，有境外北韩的黑客团队对头部交易所的攻击，还有黑客伪装成合作伙伴进行欺骗等操作，以及很常见的各类社交媒体上的钓鱼帖子。
+
+我遇到过很多钓鱼帖子，都说自己钱包账户里有多少多少美刀，然后现在看淡世事了转给你，但是你提取出来是需要一笔gas费用。那么需要你用自己的账户往里面充一笔gas之后才能完成转账提取，当你完成这个操作，那么黑客就可以获取你的私钥进而转走钱包里面所有的钱。后面的操作是今天听力Adam老师的分享才知道的这么一个操作。
+
+这是身边可以遇到的一种，还有另一种就是发送的各类不明链接，这种链接会伪装成正规软件，钱包、交易所等等让你放松警惕，当你登录进去之后就会泄露自己的账号信息接着又是很熟悉的把钱都转走。于是对我们个人的防范有这么几个箴言：
+
+不点，不签，不装，不转。
+
+陌生链接不点，陌生链接需要的签名不签，陌生软件不装，陌生信息不转。这是我们个人能做的，至于社区生态的等等bug就不是我现在能够理解和说清楚的了。小卡拉米这一块。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ershisihuasheng2003/images/2026-01-14-1768403480962-image.png)![](https://www.notion.so/image/attachment%3A600d3b82-a134-4d50-b54c-a40bc20a9cd4%3A842caf8fb8eb3d8b380ea05e1129bccb.png?table=block&id=2e89f0d8-b2d3-800b-afec-d951a53b0246&spaceId=f4c9f0d8-b2d3-81ac-8dea-0003247be12f&width=1420&userId=2e6d872b-594c-814a-a697-00025dead95a&cache=v2)
+
+第二部分——合规主题
+
+Web3的合规问题，给我们讲课分享的邓律用了这么一句话来总结：
+
+中心化的法规和去中心化金融之间的矛盾。这部分很干，很硬核，让我们受益匪浅。有个同学是这么说的，怪不得叫作冬季计划，听完之后身上都有寒意。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ershisihuasheng2003/images/2026-01-14-1768403508180-image.png)![](https://www.notion.so/image/attachment%3A4483b402-21f5-4ac7-95ef-e30a07cde121%3A552ba78d3dfbc7beaec1081483124517.png?table=block&id=2e89f0d8-b2d3-80ce-8640-dc5ff6f67a58&spaceId=f4c9f0d8-b2d3-81ac-8dea-0003247be12f&width=1420&userId=2e6d872b-594c-814a-a697-00025dead95a&cache=v2)
+
+邓律给我们介绍了违规的各种情况，包括机构或者个人违规的情形以及个人（因为我们都是学生居多）在某些不小心情况下应该如何应对。说起了很多生动的例子，在这我们就不细说了。总之，坚持学习，守好底线，不去触碰红线；保护好自己，越学习越了解越安全。
+
+大概就这样吧，不好多说什么了。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 我是sam，一个本科专业是国际经济与贸易的小白学生。小白到以太坊是什么玩意儿都不清楚的小白，今天请大家跟随我的视角开始第二天的Web3学习。
 
@@ -54,6 +89,7 @@ co-learning就是大家在一起线上共学一个小时，并且助教老师也
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # Web3实习计划——day 1
