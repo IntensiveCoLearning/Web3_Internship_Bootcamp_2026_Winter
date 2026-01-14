@@ -22,11 +22,14 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+# **web3运行原理回放笔记**
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangboki/images/2026-01-14-1768405482754-image.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 web3历史  
 第一阶段2009-2014  
@@ -58,6 +61,7 @@ ai很重要！！！！ai很重要！！！！ai很重要！！！！
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
