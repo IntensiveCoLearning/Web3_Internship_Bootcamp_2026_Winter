@@ -142,10 +142,139 @@ web3目前缺用户，所以更需要安全的基础设施
 ## 中心化的法律vs去中心化的理念
 
 polymarket美国开了特殊评价体系，金融衍生品，按照事件合约定性处理，大陆体系中一定会当作赌博处理，合规最好是去海外
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395353315-image.png)
+
+## 出金风险和入金攻击
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395385591-image.png)
+
+出金风险：收到赃款；提供相关凭证证明自己是善意的都可以解除冻结→要好对方信息，讲明交易背景
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395705963-image.png)
+
+入金攻击：政治竞争对手泼脏水和洗钱组织合作
+
+## U商的搬砖套利
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395760375-image.png)
+
+U商在大陆做不了，海外还可以
+
+U商的终极形态是加密支付
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395845751-image.png)
+
+车队是帮助洗钱组织从料兑换为法币（也就是漂白）内容的组织
+
+U卡：要考量项目方（发卡方）是否合规
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395968864-image.png)
+
+典型两种U卡风险：①万事达卡的合作，是把你看作公司的员工，会有查出来被冻结的风险；②U卡发行的公司，由很多有虚拟资产的人组成
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396093514-image.png)
+
+## 项目方经营行为
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396129294-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396147447-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396170539-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396281517-image.png)
+
+三类罪名：
+
+1.  非法吸收公共存款和集资诈骗
+    
+2.  非法经营
+    
+3.  传销
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396379588-image.png)
+
+在大陆司法环境中完全不看这些，会直接判罚
+
+## KOL衍生风险
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396453522-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396596378-image.png)
+
+平台KOL：非法利用信息网络
+
+个人KOL：吃的是交易所的返佣，也没有建立劳动关系，通过财务数据锁定这些人员，以开设赌场的共犯进行处理
+
+有一些交易所没有出事：做好了文件和材料上的形式合规以及中国特色的深度合规，与地方办案人员做好了关系，外地公安过来都会被当地公安打回去；当地的公安发现吃里扒外也可以报案
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396775210-image.png)
+
+本身不是针对币圈，针对各行各业都是要进行ico非法集资的
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768396842892-image.png)
+
+## Q&A
+
+1.  传统律师如何入行？通过自我营销、社群加入、线下见面、服务产生的机会会自然产生资源对接
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397025804-image.png)
+2.  境外有合法拍照的交易所/项目方，给他们打工会否存在一些风险？
+    
+    1.  首先要自己背调，对方是否拿到了正规的拍照。例如美国msb拍照还未进入合规展业的深度范畴，就开始拉人。
+        
+    2.  深度和对方聊，是否有大陆的业务开展，有没有大陆的客户。例如应聘行政岗可能涉及云服务的采购，就要考虑清楚，第一，拍照问题；第二，是否有大陆展业；第三，如果不翻墙能否登录交易所官网，有没有下载交易所的app，用大陆的邮箱和手机号能否注册。如果入职强调了没有向大陆展业但实质上没有限制大陆的信息注册，启示就有向大陆展业的状态。合约群体板块是高风险地区。
+        
+    3.  程序员群体：如果上述的都block了，肉身在大陆还是可以的，因为大陆管辖权到不了。问题就在于**薪资**如果发生矛盾怎么办？虚拟币如何变成人民币？合同怎么签？如果完全是海外主体，难以使用大陆进行劳动仲裁。有的也可能会用自己在大陆开展的公司进行聘请。
+        
+        ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397526453-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397439075-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397302319-image.png)
+
+合规考量博弈的东西很多。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397565939-image.png)
+
+3.如何更好保全自己？
+
+提前签授权。资源博弈。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397719693-image.png)
+
+4.刚入行，有什么情况容易触发合规红线？
+
+其实对于新人来讲到处都是风险。不作恶本身也是一种保命符。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398029664-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768397901711-image.png)
+
+5.推荐的合规出金方式？
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398156806-image.png)
+
+老乡群体、亲友群体可能会是有一份保障。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398200756-image.png)
+
+香港合规出金是最安全的。
+
+第二个是，如果奇怪入金怎么办？越南方的公安联系的方式越文明。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398338009-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398404028-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398497425-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398591712-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398614148-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398718951-image.png)
+
+第一次一般没啥问题。第二次最好是先找律师聊一聊。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398769485-image.png)
+
+6.中国和外国人合作能不能推给外国人？还是会立案，只是说会司法成本较高。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768398945169-image.png)
+
+追诉期限？过往处理职务犯罪时，例如之前收了一笔钱，一百万就达到了三年追溯期。量刑和金额挂钩。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768399033749-image.png)
+
+虚拟货币被骗了咋办？
+
+中大职业环境重要的就是资源博弈。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768399093886-image.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -256,6 +385,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
