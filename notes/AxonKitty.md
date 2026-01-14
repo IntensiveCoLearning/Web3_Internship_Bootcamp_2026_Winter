@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+### Todo List:
+
+-   学习以太坊第一章上下的混淆概念
+    
+-   《021》第2章+第3章
+    
+-   攻防挑战
+    
+-   分享会：合规
+    
+-   分享会：安全
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## 1 理论学习
 
 src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -75,6 +91,7 @@ src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # 开营
