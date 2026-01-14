@@ -15,8 +15,84 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 一、以太坊生态概览
+
+以太坊的生态系统由多层架构组成，包括 **_L1（主网）、L2（二层扩展解决方案）、侧链（Sidechains）_** 等，共同支持高吞吐量和低费用的交易处理。
+
+以太坊的几个架构如图：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yubr-zzh/images/2026-01-14-1768397731495-image.png)
+
+而以太坊生态又可分为如下几个层次：
+
+**1、应用层**
+
+是用户直接交互的应用界面：
+
+**·**DeFi 应用：Uniswap（去中心化交易所）、Aave（借贷协议）、Compound（借贷协议）
+
+• NFT 平台：OpenSea、Foundation、SuperRare
+
+• 钱包应用：MetaMask、Coinbase Wallet、Rainbow
+
+• DAO 工具：Snapshot、Aragon、Colony
+
+**2、协议层**
+
+以太坊的核心基础设施：
+
+• 共识层客户端：Prysm、Lighthouse、Nimbus、Teku
+
+• 执行层客户端：Geth、Nethermind、Erigon、Besu
+
+• 核心协议：EVM、状态管理、Gas 机制
+
+**3、扩展层**
+
+提升性能和降低成本的解决方案：
+
+• Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
+
+• 侧链：Polygon PoS、xDAI（Gnosis Chain）
+
+• 状态通道：Lightning Network for Ethereum
+
+# 二、以太坊文化与价值观
+
+## 核心价值观主要有如下几点：
+
+1、去中心化治理
+
+没有单一的控制者或权威机构，验证者遍布全球
+
+2、无需许可与开放性
+
+任何人都可以使用、开发、部署智能合约，没有地域、身份和财富的限制
+
+3、抗审查性
+
+4、密码朋克精神 也就是“Code is law" :用算法和数学构建信任
+
+5、公共物品导向：
+
+优先考虑生态系统整体利益
+
+支持开源项目和基础设施建设
+
+通过各种资助计划推动创新
+
+6、可持续发展理念
+
+长期主义思维，注重技术的可持续演进
+
+平衡创新速度与网络稳定性
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 一、文档阅读--以太坊
 
 1.  **以太坊的介绍：**
@@ -125,6 +201,7 @@ Pos：权益证明 -- ETH
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## 一、区块链入门导读知识
 
