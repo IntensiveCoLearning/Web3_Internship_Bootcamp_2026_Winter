@@ -35,6 +35,8 @@ Web3【安全与合规】分享会
 
 制作了思维导图——但是还需要继续复习
 
+![第一章 认识以太坊.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/CloudFragments/images/2026-01-14-1768403489147-_________.png)
+
 ### **2.ChainLink的Web3教程**
 
 重新操作了Meta Mask钱包测试，并且对背后的区块链知识了解更加深刻——尤其是其背后的密码学相关知识。明天将要学习solidity 的编程知识。
@@ -56,6 +58,7 @@ Web3【安全与合规】分享会
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # **Web3实习计划——学习打卡DAY 02**
 
@@ -92,6 +95,7 @@ Bruce老师演示了“从一笔交易到出块”的简易过程。其中有些
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # Web3实习计划——学习打卡DAY 01
