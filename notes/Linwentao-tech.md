@@ -15,8 +15,70 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## 1\. Web3 合规
+
+中国对加密的态度很明确：  
+**技术可以，金融不行。**
+
+写区块链、做开发没问题，但一旦碰到 **发币、交易、融资、返利**，就可能触发刑事风险，比如非法集资、传销、洗钱、开设赌场等。
+
+真实案例已经很多：
+
+-   EOS 赌博平台 → 开设赌场罪
+    
+-   USDT 换汇 → 非法经营
+    
+-   矿机资金盘 → 非法吸存
+    
+-   PlusToken → 传销
+    
+-   用币跨境转钱 → 洗钱
+    
+
+从业建议：  
+看项目白皮书和 Token 模型有没有**承诺收益、拉人头、回购托底**；  
+工资如果是「RMB + Token」要特别小心；  
+出金别碰来源不清的币。
+
+海外也在加强监管（MiCA、SEC、FATF），方向是：**合规才能活**。
+
+* * *
+
+## 2\. 以太坊基础
+
+以太坊只有两种账户：
+
+-   **EOA**：有私钥，能发交易（像银行卡）
+    
+-   **合约**：有代码，被调用才执行（像自动售货机）
+    
+
+合约通常用 **Proxy** 升级：  
+用户调代理，代理用 `delegatecall` 跑逻辑，换逻辑就能升级。
+
+ERC20、NFT 本质都是合约里的**记账表**，没有“币”，只有数据。
+
+* * *
+
+## 3\. 安全
+
+链上常见问题：  
+重入、权限、外部调用、预言机、Gas DoS。  
+用 CEI、ReentrancyGuard、AccessControl、SafeERC20、TWAP/Chainlink。
+
+现实中更危险的是：  
+假面试、假空投、剪贴板劫持、社工诈骗。  
+**硬件钱包 + 核对地址**比任何技术都重要。
+
+开发用 Foundry / Hardhat，  
+安全靠测试 + 人工审计 + 源码验证。
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 在day1的视频里比较抓住我眼球的是，视频首先介绍了blockchain的概念.What is blockchain from high level? It’s a system set up without any central control ad thousands of people from the world can communicate p2p. And of course it has many issues like gas and wallet issues. It’s kinda like linked list but its more about the network where all the nodes are participating together. If any of nodes got knocked out the whole network still continues working.
 
 其次介绍了blockchain中trust的概念，然后引用到了escrow这个term。首先提出了一个问题。How to to make a transaction for two parties if they don’t trust or don’t like each other. So in web3 the concept of escrow is executed by smart contract like a middle layer.
@@ -40,6 +102,7 @@ Factory不参与交易，不存Liquidity，不计算价格。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 今天系统地学习了《Web3 实习手册》的「入门导读」部分，并通读了《精通以太坊》第 1 和第 2 章。虽然我之前就学习过区块链的底层原理，但当时更多是碎片化的了解。这次是比较沉下心来重新梳理了一遍，不仅把旧知识重新夯实，也补充了不少之前忽略的细节比如共识层和执行层机制。  
