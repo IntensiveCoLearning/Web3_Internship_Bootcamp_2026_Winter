@@ -19,11 +19,14 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 DAY3
 
-今天准备去学习剩下solidity入门课程
+今天准备去学习剩下solidity入门课程，把入门通了一遍。
+
+明天考试，今天大多时间都在复习，请假一次笔记
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # Day 2
 
@@ -44,6 +47,7 @@ DAY3
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
