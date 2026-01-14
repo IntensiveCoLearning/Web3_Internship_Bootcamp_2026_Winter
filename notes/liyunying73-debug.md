@@ -17,11 +17,14 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
-打卡
+[https://sepolia-faucet.pk910.de](https://sepolia-faucet.pk910.de)今天试着在这个网站上采矿，有了更深入的体验。
+
+今天完成了**挑战：Tokenization和Crowdfunding（**[Speedrun Ethereum: Learn Solidity Development Through Interactive Challenges](https://speedrunethereum.com/)**）**
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 观看了day two 的线上视频
 
@@ -30,6 +33,7 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 **技术方面：**
