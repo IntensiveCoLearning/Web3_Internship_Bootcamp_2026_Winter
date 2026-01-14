@@ -26,11 +26,13 @@ timezone: UTC+8
 
 4.合规；主要是各法律法规，政府等地区的，也不是准备学习的方向
 
-然后讲的一些平台（smartdeer等）求职的就自己探索了
+然后讲的一些平台（smartdeer等）求职的就自己探索了  
+其中提到的github代码 pr记录也许比pdf简历有用，code is law !
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 主要看了岗位介绍，着重开发岗
 <!-- DAILY_CHECKIN_2026-01-12_END -->
