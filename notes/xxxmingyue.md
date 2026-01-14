@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 完成区块链完全-访问控制漏洞的撰写
+
+使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
+
+目前只搭建了框架，未来打算将Ethpanda相关的学习内容更新到个人博客上
+
+**可查看下面的文章**
+
+[访问控制漏洞](https://xxxmingyue.github.io/#/notes/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E6%BC%8F%E6%B4%9E)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 线上共学讨论
 
 1.  **什么是DAO？**  
@@ -61,6 +75,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 \# 学习Unphishable：
 
