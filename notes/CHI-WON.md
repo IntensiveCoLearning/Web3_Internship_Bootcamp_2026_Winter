@@ -22,10 +22,158 @@ Web3 实习计划 2025 冬季实习生
 ## TASK:
 
 回顾Solidity基础语法
+
+## 完成情况：
+
+1.  **短路原则**：回顾了一下Bool型的运算符，主要关注了**短路原则**。当逻辑与（&&）的第一个条件为false时，就不会再去判断第二个条件；当逻辑或（｜｜）的第一个条件为false时，就不会再去判断第二个条件。
+    
+2.  **数据位置和gas：**回顾了Solidity数据存储的三种类型：storage，memory和calldata。不同存储位置的gas成本不同。
+    
+
+-   storage:合约里的状态变量默认都是storage，存储在链上，消耗的gas多
+    
+-   memory：函数里的参数和临时变量一般用，存储在内存中，不上链。尤其是如果返回数据类型是变长的情况下，必须加memory修饰。如：string ,bytes,array和自定义结构
+    
+-   calldata：和memory类似，存储在内存，不上链。不同在于calldata变量不能修改。
+    
+-   整体gas消耗： storage >memory >calldata
+    
+
+3.  **数据位置和赋值规则：**在不同的存储类型相互赋值时，有时会产生独立的副本（修改新的变量不会影响原变量），有时会产生引用（修改新变量会影响原变量）
+    
+
+赋值本质上是创建引用指向本体，因此修改本体或是引用，变化会被同步。eg：合约里的storage赋值给本地（函数里的）
+
+storage时，会创建引用，改变新变量会影响原变量。
+
+-   👉 **storage ↔ storage**：产生「引用」
+    
+-   👉 **storage → memory**：产生「独立副本」
+    
+-   👉 **memory ↔ memory**：产生「独立副本」
+    
+-   👉 **calldata → memory**：产生「独立副本」
+    
+-   👉 **calldata → storage**：产生「拷贝写入」
+    
+-   🚫 **calldata 不能被引用修改**
+    
+
+4.  **全局变量：**全局范围工作的变量，都是预留关键字，在函数内可以不声明直接使用。
+    
+
+一些常用的全局变量：
+
+-   `blockhash(uint blockNumber)`: (`bytes32`) 给定区块的哈希值 – 只适用于最近的256个区块, 不包含当前区块。
+    
+-   `block.coinbase`: (`address payable`) 当前区块矿工的地址
+    
+-   `block.gaslimit`: (`uint`) 当前区块的gaslimit
+    
+-   `block.number`: (`uint`) 当前区块的number
+    
+-   `block.timestamp`: (`uint`) 当前区块的时间戳，为unix纪元以来的秒
+    
+-   `gasleft()`: (`uint256`) 剩余 gas
+    
+-   `msg.data`: (`bytes calldata`) 完整call data
+    
+-   `msg.sender`: (`address payable`) 消息发送者 (当前 caller)
+    
+-   `msg.sig`: (`bytes4`) calldata的前四个字节 (function identifier)
+    
+-   `msg.value`: (`uint`) 当前交易发送的 `wei` 值
+    
+-   `block.blobbasefee`: (`uint`) 当前区块的blob基础费用。这是Cancun升级新增的全局变量。
+    
+-   `blobhash(uint index)`: (`bytes32`) 返回跟当前交易关联的第 `index` 个blob的版本化哈希（第一个字节为版本号，当前为`0x01`，后面接KZG承诺的SHA256哈希的最后31个字节）。若当前交易不包含blob，则返回空字节。这是Cancun升级新增的全局变量。
+    
+
+5.  **数组：**用来存储一组数据，分为固定和可变数组
+    
+
+-   固定长度数组：用T\[k\]的格式声，T是元素的类型，k是长度
+    
+
+```
+uint[8] array1
+btyes1[5] array2
+address[100] arrays3
+```
+
+-   可变长度数组：声明时不指定长度，用T\[\]格式
+    
+
+```
+uint[] array4;
+bytes1[] array5;
+address[] array6;
+bytes array7;
+```
+
+6.  **Mapping**
+    
+
+```
+mapping(uint => address)
+```
+
+主要回顾了一下mapping的规则：
+
+-   keytype不能使用自定义的结构体，但是valuetype可以使用自定义的类型
+    
+-   映射的存储位置必须是`storage`
+    
+-   如果映射声明为`public`，那么Solidity会自动给你创建一个`getter`函数，可以通过`Key`来查询对应的`Value`
+    
+
+7.  **构造函数：**构造函数（`constructor`）是一种特殊的函数，每个合约可以定义一个，并在部署合约的时候自动运行一次。它可以用来初始化合约的一些参数
+    
+8.  **修饰器：**  
+    修饰器（`modifier`）是`Solidity`特有的语法，类似于面向对象编程中的装饰器（`decorator`），声明函数拥有的特性，并减少代码冗余。它就像钢铁侠的智能盔甲，穿上它的函数会带有某些特定的行为。`modifier`的主要使用场景是运行函数前的检查，例如地址，变量，余额等。
+    
+
+```
+// 定义modifier
+modifier onlyOwner {
+   require(msg.sender == owner); // 检查调用者是否为owner地址
+   _; // 如果是的话，继续运行函数主体；否则报错并revert交易
+}
+
+function changeOwner(address _newOwner) external onlyOwner{
+   owner = _newOwner; // 只有owner地址运行这个函数，并改变owner
+}
+```
+
+9.  **事件：**`Solidity`中的事件（`event`）是`EVM`上日志的抽象，它具有两个特点：
+    
+    -   响应：应用程序（`ethers.js`）可以通过`RPC`接口订阅和监听这些事件，并在前端做响应。
+        
+    -   经济：事件是`EVM`上比较经济的存储数据的方式，每个大概消耗2,000 `gas`；相比之下，链上存储一个新变量至少需要20,000 `gas`。
+        
+
+**声明事件**
+
+声明用event关键字开头，接事件名称，括号里时需要记录的变量类型和变量名
+
+```
+event Transfer(address indexed from, address indexed to, uint256 value);
+```
+
+最主要的是**EVM日志log:**evm用日志存储solidity事件，每条日志记录都包含主题`topics`和数据`data`两部分。主题长度不能超过4，第一个元素是事件的签名（哈希）。
+
+10.  **继承：**继承是面向对象编程很重要的组成部分，可以显著减少重复代码。如果把合约看作是对象的话，`Solidity`也是面向对象的编程，也支持继承。
+     
+     ### **规则**
+     
+     -   `virtual`: 父合约中的函数，如果希望子合约重写，需要加上`virtual`关键字。
+         
+     -   `override`：子合约重写了父合约中的函数，需要加上`override`关键字。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # DAY2
 
@@ -123,6 +271,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
