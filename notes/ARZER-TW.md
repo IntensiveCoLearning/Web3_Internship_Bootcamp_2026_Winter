@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## 今日完整工作總結
+
+* * *
+
+### 任務一：提交繁體中文翻譯 PR #33
+
+**目標**：為 Web3-Internship-Handbook 新增繁體中文（zh-TW）版本
+
+**完成步驟**：
+
+1.  **Fork & Clone** 專案，建立 `feat/add-traditional-chinese` 分支
+    
+2.  **複製簡體中文目錄** `docs/zh` → `docs/zh-tw`
+    
+3.  **使用 OpenCC (s2twp)** 批量轉換簡繁體
+    
+4.  **更新配置文件**：`config.ts`、`plume.config.ts`、`notes.ts`、`navbar.ts`
+    
+5.  **修復側邊欄消失問題**：將所有 `.md` 文件的 `permalink: /zh/...` 改為 `/zh-tw/...`
+    
+6.  **提交 PR** 並成功合併
+    
+
+**PR #33 成果**：
+
+-   205 個檔案變更
+    
+-   維護者 @brucexu-eth 評論：「非常的贊，辛苦」
+    
+-   Commit `3497ebe` 合併到 main
+    
+
+* * *
+
+### 任務二：發現並修復部署後 404 問題
+
+**現象**：PR 合併部署後，線上側邊欄連結 404，但本地開發模式正常
+
+**根因**：
+
+```
+notes.ts 側邊欄連結        Markdown permalink
+part1/blockchain-basic.md  ≠  /zh-tw/blockchain-basic/
+```
+
+**修復**：移除 `notes.ts` 中的 `part1/`、`part2/` 子目錄前綴
+
+**驗證方式**：
+
+```bash
+npm run docs:build              # 生產構建
+npx serve docs/.vuepress/dist   # 模擬真實部署
+```
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 * * *
 
 # Web3 運行原理分享會筆記
@@ -251,6 +311,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## 今日學習心得：經歷要說對的語言
 
