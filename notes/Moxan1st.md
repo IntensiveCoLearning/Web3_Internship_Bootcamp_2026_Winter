@@ -34,7 +34,17 @@ Web3 实习计划 2025 冬季实习生
 
 3.《021学习以太坊第三章》——大部分很顺；虽然有一些内容重复，但是可读性比前两章有提高。
 
-3.在Remix学习基础代码
+4.在Remix学习基础代码——完成简单合约的配置了！
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-14-1768391493272-image.png)
+
+5.配置Foundry——手册中的方式下载速度很慢，利用Clash代理端口转发WSL下的数据科学上网后速度加快
+
+```
+//添加镜像
+export FOUNDRYUP_GITHUB_API=https://ghproxy.com/https://api.github.com
+foundryup
+```
 
 # 详情
 
@@ -159,6 +169,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -267,6 +278,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
