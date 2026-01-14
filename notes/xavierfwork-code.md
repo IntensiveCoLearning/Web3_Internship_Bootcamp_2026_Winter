@@ -15,6 +15,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+區塊鏈基礎知識、比特幣 UTXO 架構、區塊鏈應用分層 L0-L4、以太坊基礎知識、Web3 資訊流
+<!-- DAILY_CHECKIN_2026-01-14_END -->
 <!-- Content_END -->
