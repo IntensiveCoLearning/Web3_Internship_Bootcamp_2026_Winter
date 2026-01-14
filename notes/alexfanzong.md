@@ -55,7 +55,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 传统股东 (Shareholder) 对应 DAO 里的“持币者” (Token Holder)，这部分人往往只关心币价涨跌。
 
-公司整体利益 (Entity Maximization) 对应 DAO 里的“建设者共识” (Builder Culture)，这部分人关心的是协议能否长期存活。
+公司整体利益 (Entity Maximization) 对应 DAO 里的“建设者共识” (BUIDL Culture)，这部分人关心的是协议能否长期存活。
 
 这里的治理困境在于： 如果严格按照“一币一票”（One Token One Vote），那么有钱的“巨鲸”就能控制社区。但巨鲸可能是投机者，他们会为了短期套现而牺牲社区的长期价值。
 
@@ -63,7 +63,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 ![IMG_4580.JPG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/alexfanzong/images/2026-01-14-1768400551029-IMG_4580.JPG)
 
-如流程图所示，普通人哪怕买了币也只是 Member，必须通过“参与建设获取 U 激励”并“累积 500U”兑换 Builder Card 之后，才能Claim 治理权。LXDAO的理念是不再追求治理的投票率，而是专注提升治理质量，**将治理权交给愿意参与治理的建设者**。
+如流程图所示，普通人哪怕买了币也只是 Member，必须通过“参与建设获取 U 激励”并“累积 500U”兑换 Buidler Card 之后，才能Claim 治理权。LXDAO的理念是不再追求治理的投票率，而是专注提升治理质量，**将治理权交给愿意参与治理的建设者**。
 
 这是一种对传统公司法的反向修正。在传统的逻辑下，资本雇佣劳动。谁出钱（买股票），谁有投票权。而LXDAO的逻辑是，**用劳动确权治理**。
 
@@ -107,6 +107,7 @@ LXDAO 的案例揭示了 Builder DAO 的真实面目：它更像是一个**数�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -223,6 +224,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
