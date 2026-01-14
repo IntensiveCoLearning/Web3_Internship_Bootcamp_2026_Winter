@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
+    
+2.  021 学习以太坊第 2&3 章
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 拓展 & 辅助理解材料
 
 1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
@@ -28,6 +36,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ### 入门导读 & 初步理解
 
