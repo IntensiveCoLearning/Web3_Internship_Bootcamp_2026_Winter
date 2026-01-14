@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+![IMG_0746.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/anniechen100505-droid/images/2026-01-14-1768404771672-IMG_0746.jpeg)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 一。资产自托管：如何提高安全性、降低管理私钥的复杂度？核心矛盾：自托管 = 自由 + 风险。大部分人死在私钥丢失、助记词泄露、以及社交工程攻击。未來私钥管理的趨勢是：用戶不再看到私钥，所有複雜度都被 AA + MPC + TEE 隱藏，由智能帳戶負責安全與恢復。解决路径：
 
 1.智能账户。可提供：無私鑰登錄（email、手機登入 → 背後由 MPC + AA 實現）。交易可限額、可凍結。社交恢復（朋友、家人、多設備）。
@@ -72,6 +78,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ![IMG_0704.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/anniechen100505-droid/images/2026-01-12-1768232109262-IMG_0704.jpeg)![IMG_0699.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/anniechen100505-droid/images/2026-01-12-1768231977242-IMG_0699.jpeg)
 <!-- DAILY_CHECKIN_2026-01-12_END -->
