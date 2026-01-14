@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今日任务：
+
+主要查看开营仪式，搞清楚主要模式和时间
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 **理工背景**”已学 C/C++，转学 Solidity、Rust 相对轻松；跟着 GitHub / Ethereum 官方教程做项目。
 
 **技术岗**： Solidity、Rust 可以去做智能合约工程师，用EVM以太坊虚拟机进行
