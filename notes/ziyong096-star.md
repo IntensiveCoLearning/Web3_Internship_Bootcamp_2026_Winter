@@ -15,8 +15,223 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 自我介绍(●'◡'●)
+
+-   Only 04infj/tj 大三在读❤️
+    
+-   目标：2026上半年在web3拿到大结果
+    
+-   爱好：看书，赚钱，看漫画，玩经营类小游戏，徒步，聊天，成长...
+    
+-   副业：设计接单，各类小兼职
+    
+-   如果你也想一起进步或者聊聊欢迎联系~vx:LL2020150
+    
+
+# 软技能类成长
+
+### 提高效率
+
+-   思维导图+输出学习：快速扫一遍（目录，大标题）。目标：看懂能看懂。笔记就是梳理脑子过程和逻辑。想怎么用自己的话表达出来（思维导图）
+    
+-   元宝实时转写总结（英文）
+    
+-   Gemini生成笔记
+    
+
+# web3通识
+
+## 行业赛道
+
+去中心化金融DeFi
+
+1.  Uniswap:去中心化交易所DEX
+    
+    1.  核心创新在于引入AMM（自动做市商）
+        
+        1.  恒定乘积公式——代币定价
+            
+        2.  流动性池和流动性提供者LP——收取交易手续费
+            
+            1.  流动性池：很多用户提供的资金池。无需在中心化交易所等匹配，加入流动性池，根据池子资金自动帮助完成交易
+                
+            2.  去中心化vs中心化交易所
+                
+                1.  去中心化：无需中介，快速便捷。全天候规则，大额交易更便捷
+                    
+2.  Compound去中心化借贷协议
+    
+    1.  用户将资产存入，获得cToken
+        
+3.  MarkerDAO（sky):稳定币系统
+    
+    1.  一个去中心化的借贷协议，它允许用户通过超额抵押资产来生成 DAI，一种与美元挂钩的稳定币（超额抵押，例如用户必须将价值 2 美元的资产抵押，才能生成 1 美元的 DAI。）
+        
+
+NFT数字所有权
+
+1.  NFT：数字资产唯一性和所有权
+    
+2.  智能合约：自动化所有权转移和交易
+    
+3.  CryptoPunks:NFT的先锋
+    
+    ![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=NmMyYjg4ODlmMjg3NzI3M2NlYzU4N2I4MWNiYTljMDBfbjF1V0hrTllLM1hIVEI5aHFJb2VIcmRzZU03bzU3TnRfVG9rZW46R2xub2J5TjAwb3lwcm14VUtEcGN1VWVkbnplXzE3NjgzODc3MDE6MTc2ODM5MTMwMV9WNA)
+4.  OpenSea:NFT交易的中心
+    
+    1.  全球最大的 NFT 交易平台，基本上覆盖了所有主流 NFT 的交易。
+        
+
+DAO去中心化自治组织
+
+1.  Nouns DAO:社区驱动的NFT艺术DAO
+    
+    1.    每天都会生成一个独一无二的 NFT —— 一个卡通小人头像。这些头像会通过拍卖出售，所有的收益都会存入 DAO 的金库。持有 Nouns NFT 的人不仅仅是收藏者，还能参与组织的决策
+        
+2.  LXDAO：支持web3公共物品的建设者
+    
+    1.  每个人都能通过贡献自己的时间和技能，帮助建设一个去中心化的未来
+        
+3.  ConstitutionDAO:美国宪法拍卖
+    
+
+MEME
+
+1.  meme币：缺乏技术价值，通过强大的社区共识和文化认同获得价值。具有高投机和波动
+    
+    ![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=YzUzMzI1OWUzYjk4YmQyMGQyNGRhYjEzZWQ1MjY1OTBfa1ZNSURXUHBobEhFZHpFMXppSEdvYnVaanBKbk1GZ1FfVG9rZW46V01uMWJsZ1hVb2tNRVZ4ejJpemN4SWNTbnFkXzE3NjgzODc3MDE6MTc2ODM5MTMwMV9WNA)
+2.  狗狗币GOGE：名人驱动
+    
+    1.    DOGE 借用了“狗狗”表情包形象。
+        
+    2.    特斯拉 CEO 埃隆·马斯克通过推特频繁提及 DOGE，甚至宣布特斯拉接受 DOGE 支付，推动 DOGE 市值突破 800 亿美元。
+        
+    3.    但后来马斯克的态度发生变化，特斯拉暂停接受 DOGE 支付，导致 DOGE 价格大幅波动。
+        
+    4.    这种依赖名人效应的模式让投资者在市场情绪波动中成为“接盘侠”。
+        
+3.  PEPE：社区驱动
+    
+4.  新手规避MEME币风险
+    
+    1.  警惕“无实际价值”的炒作：如 DOGE 的“支付功能”从未普及
+        
+    2.  拒绝盲目跟风：名人效应（如马斯克）、政治事件（如特朗普）可能短期内价格飙升，不具备持续性
+        
+    3.  关注链上数据透明度
+        
+        1.  项目方是否公开代币分配、核心地址信息？
+            
+        2.  如果代币高度集中，可能会被少数大户操控价格，导致投资者亏损。
+            
+    4.  分散投资，控制仓位：总投资在10%以内，避免单一投资的巨大风险
+        
+
+领域交叉
+
+1.  DeFi+NTF数字资产金融化
+    
+    1.  NFT 作为非同质化代币流动性较差，持有者很难在不出售的情况下获得流动性。DeFi + NFT 的结合解决了这个问题
+        
+2.  DAO+MEME：社区文化治理
+    
+    1.  既保持了 MEME 文化的趣味性，又具备了实际的治理功能
+        
+        1.  社区代币分发创新
+            
+            1.  FriendTech 的 Key 机制：
+                
+                -   用户通过购买 KOL 的“Key”获得私聊权限和收益分成
+                    
+                -   Key 价格随供需变化，形成社交影响力的金融化
+                    
+                -   持有者可以参与该 KOL 的社区决策，如内容方向、合作项目等
+                    
+            2.  具体运作：比如某个 Crypto KOL 发行了 1000 个 Key，早期支持者以 0.1 ETH 购买，随着影响力增长，Key 价格上涨到 1 ETH，持有者既获得了经济收益，也获得了社区话语权
+                
+        2.  MEME 币社区治理模式
+            
+            1.  Shiba Inu 的 ShibaSwap：不仅是交易协议，还是社区治理平台
+                
+                -   SHIB 持有者可以投票决定协议升级、新功能开发、合作伙伴选择
+                    
+                -   通过“Doggy DAO”机制，社区成员提交提案，全民投票决定发展方向
+                    
+        3.  创新应用场景
+            
+            1.  Nouns DAO：每天拍卖一个新的 Noun NFT，收益进入 DAO 金库
+                
+                -   持有者可以提案使用资金，如资助创意项目、举办活动、开发工具
+                    
+                -   将 MEME 文化（有趣的像素头像）与严肃的治理相结合
+                    
+3.  AI+DeFi智能化金融
+    
+    1.  智能投资策略
+        
+    2.  风险管理与预测
+        
+    3.  用户体验优化
+        
+4.  WEB3+乡建
+    
+
+新兴趋势
+
+1.  intent-Based交易：意图驱动，系统不同求解器给出报价，系统最终自动寻找最优报价对应路径
+    
+2.  账户抽象与智能钱包：以太坊账户具备智能合约的灵活性，无需持有ETH就可交易
+    
+3.  模块化区块链：功能分离
+    
+4.  AI+Web3
+    
+
+### Web3工作方式
+
+![whiteboard_exported_image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ziyong096-star/images/2026-01-14-1768387841316-whiteboard_exported_image.png)
+
+### 学习建议
+
+[对于](https://web3intern.xyz/zh/industry-knowledge/#%E5%AF%B9%E4%BA%8E%E6%B1%82%E8%81%8C%E8%80%85)初学者：
+
+1.  基础优先：深入理解 DeFi 核心概念，而非追逐最新热点
+    
+2.  实践学习：在测试网上体验各种协议，理解用户流程
+    
+3.  安全意识：了解常见攻击向量和防护措施
+    
+
+[对于求职者：](https://web3intern.xyz/zh/industry-knowledge/#%E5%AF%B9%E4%BA%8E%E6%B1%82%E8%81%8C%E8%80%85)
+
+1.  专业化发展：选择 1-2 个领域深入研究
+    
+2.  技术栈匹配：根据目标岗位学习相应技术
+    
+3.  项目经验：参与开源项目或 Hackathon
+    
+4.  行业动态：持续关注最新发展和监管变化
+    
+
+[延伸阅读资源：](https://web3intern.xyz/zh/industry-knowledge/#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB%E8%B5%84%E6%BA%90)
+
+-   技术文档：[Ethereum.org](http://Ethereum.org)、各项目官方文档
+    
+-   研究报告：Messari、The Block、Delphi Digital
+    
+-   播客节目：Bankless、ETHPanda Talk
+    
+
+### 安全与合规
+
+![whiteboard_exported_image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ziyong096-star/images/2026-01-14-1768388068013-whiteboard_exported_image.png)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 自我介绍(●‘◡’●)
 
 -   Only 04infj/tj 大三在读❤️
@@ -316,6 +531,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # web3通识🥳
