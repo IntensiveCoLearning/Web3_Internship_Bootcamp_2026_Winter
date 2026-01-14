@@ -333,7 +333,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [cheng-zhaofeng](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/cheng-zhaofeng.md) | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Erics37](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Erics37.md) | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [ChaseChai](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/ChaseChai.md) | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
-| [BRabb1t](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/BRabb1t.md) | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
+| [BRabb1t](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/BRabb1t.md) | ✅ | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [liwnldutng](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/liwnldutng.md) | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [zzz100868](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zzz100868.md) | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [1wids](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/1wids.md) | ⭕️ | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1456,6 +1456,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [willpan1225](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/willpan1225.md) | ⭕️ | ⭕️ |   | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Rayarkl](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Rayarkl.md) | ⭕️ | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
