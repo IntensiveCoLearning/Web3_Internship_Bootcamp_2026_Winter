@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+感谢LXDAO，感谢ETHPanda、感谢邓律、感谢uu们的总结。
+
+以往都是大致了解web3的界限，今天是比较系统了解一下合规方面，确实是切身相关的知识。不论是运营还是技术，都容易触碰红线边缘。
+
+该行业有天生的金融属性，有关于金融方面必定多加谨慎。
+
+不作恶是从业者的保命符!!!!!!
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Juicewithice/images/2026-01-14-1768400783628-image.png)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 1ETH = 10^18 wei
 
 100ETH = 100000000000000000000 wei
@@ -32,6 +46,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 尝试玩一下Remix 按照教程简单操作，然后玩一下课后挑战，用户1写入，用户2改动，用户3查看。
