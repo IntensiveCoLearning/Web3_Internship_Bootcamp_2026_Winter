@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+学习Web3 实习手册「安全与合规」部分，参加colearning和分享会。
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 区块链运行机制：POW耗能的安全成本高，POS节能但有权利集中问题。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 colearning：即使作为产品想进入web3行业还是需要了解底层协议和技术，除了白皮书有余力最好使用AI也看看代码，比如unswapv2的代码就是很优质的学习材料。
 
