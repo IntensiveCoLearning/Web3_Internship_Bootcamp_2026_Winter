@@ -15,8 +15,29 @@ stay hungry, stay foolish
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+1-14
+
+观看“web3运行原理”录播，进一步从基础技术层面加深web3的认知。
+
+作业：
+
+1.  如何更方便且保证安全地管理私钥？
+    
+2.  没有中心化组织、监督、管理的web3社群如何保证分布式节点这种公共商品的维护与管理？如果赋予税收机制，税收如何进行分配？
+    
+3.  抗审查的设计给潜在不法分子/攻击者也提供了便利，如何在维持抗审查机制的同时确保安全性？
+    
+4.  匿名的特性下如何确保参与者的可信度？
+    
+
+今天学到的词汇：Degen / Regen。Degen （degenerate）, short for speculative trading for taking profits; Regen (regenerative), is about creating positive social impact and value through blockchain technology.
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 1-13
 
 观看了1-12日“「Web3 行业全局介绍 & 岗位概览」回放”，对web3行业当前现状、从业人员软硬件要求等有了一定的了解。
@@ -30,6 +51,7 @@ todo：1. 结合自身过往经历与专长定位匹配的方向；2. 尝试寻�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 1-11晚参加了开营仪式，对于项目流程和规划有了进一步的了解。
 
