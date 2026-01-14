@@ -103,7 +103,7 @@ B. 密鑰與地址的生成原理
 
 \-- 公鑰/地址 (Public Address)：由私鑰單向推導出來，這是你可以公開收款的帳號,。
 
-\-- 確定性 (Deterministic)：同一個助記詞可以依序生成無數個帳戶（Account 1, Account 2...），只要有助記詞，就能恢復所有關聯帳戶。
+\-- 確定性 (Deterministic)：同一個助記詞可以依序生成無數個帳戶（Account 1, Account 2…），只要有助記詞，就能恢復所有關聯帳戶。
 
 C. 安全操作規範
 
@@ -115,7 +115,7 @@ C. 安全操作規範
 
 \-- 託管 (如 中心化交易所)：交易所持有私鑰，你只是資料庫裡的一筆紀錄。
 
-風險是 "Not your keys, not your coins"。
+風險是 “Not your keys, not your coins”。
 
 \-- 非託管 (如 MetaMask)：自己持有私鑰，完全掌控資產，但也需承擔所有保管責任。
 
@@ -161,8 +161,6 @@ Uniswap V2 的代碼庫分為兩個核心部分：
 
 \-
 
-5.
-
 @CyfrinUpdraft
 
 進階 Foundry 第二節部署NFT
@@ -171,6 +169,6 @@ Uniswap V2 的代碼庫分為兩個核心部分：
 
 \-
 
-![Screenshot 2026-01-13 at 9.15.06 PM.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/JhiNResH/images/2026-01-14-1768371146602-Screenshot_2026-01-13_at_9.15.06_PM.png)
+![Screenshot 2026-01-13 at 9.14.59 PM.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/JhiNResH/images/2026-01-14-1768371279130-Screenshot_2026-01-13_at_9.14.59_PM.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
