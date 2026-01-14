@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+Web3实习计划-DAY3
+
+1.已完成前日视频回放
+
+2.待今日完成钓鱼攻防调整
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 web3实习计划Day2
 
 今日学习记录如下
@@ -38,6 +48,7 @@ web3实习计划Day2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
