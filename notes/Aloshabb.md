@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+参加了co-learning
+
+上完了web3以太坊安全合规课程
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 1.参加了以太坊中文周会
 
 2.参加了co-learning
