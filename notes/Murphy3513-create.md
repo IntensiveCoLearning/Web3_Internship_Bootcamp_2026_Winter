@@ -15,6 +15,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今日学习了web3运行原理
+<!-- DAILY_CHECKIN_2026-01-14_END -->
 <!-- Content_END -->
