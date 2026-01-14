@@ -21,13 +21,14 @@ In today’s review, I revisited essential concepts and practical skills in Web3
 
 The session also covered token identification, emphasizing that the contract address is the true identifier rather than the token name. Anyone can create tokens with identical names or displayed prices, making it critical to verify addresses on decentralized exchanges and look for “verified” labels or warning symbols. For careers in Web3, practical takeaways include maintaining a strong GitHub portfolio for technical roles, curating case studies for operations positions, and leveraging Twitter to build a personal brand—beginning with content in one’s native language for better engagement.
 
-Other key points included tools like Dune for on-chain analytics (requiring SQL proficiency) and RootData for aggregated project insights. Roles such as Developer Relations and Web3 Product Manager demand both technical depth and community engagement, while BD positions vary between driving user growth and leveraging partnerships. From a technical perspective, stablecoins were explained in terms of centralized issuance versus decentralized, over-collateralized models like DAI, which rely on arbitrage to maintain peg stability.
+Other key points included tools like Dune for on-chain analytics and RootData for aggregated project insights. Roles such as Developer Relations and Web3 Product Manager demand both technical depth and community engagement, while BD positions vary between driving user growth and leveraging partnerships. From a technical perspective, stablecoins were explained in terms of centralized issuance versus decentralized, over-collateralized models like DAI, which rely on arbitrage to maintain peg stability.
 
 Finally, the discussion touched on blockchain fundamentals such as 51% attacks, the trade-offs of IPFS versus centralized storage, and the competitive landscape among public chains. Innovation—whether in speed, privacy, or ZK proofs—remains a key differentiator for new chains, rather than short-term speculative gains. Overall, today’s review reinforced both the tactical knowledge needed to operate safely in Web3 and the strategic mindset required to grow within this evolving ecosystem.
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
 
@@ -40,6 +41,7 @@ Overall, today’s hands-on setup and conceptual review strengthened my practica
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
