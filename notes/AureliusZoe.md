@@ -23,13 +23,16 @@ Zoe
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-14-1768388806225-image.png)
 
-来参会啦！  
+来参会啦！
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-14-1768395273259-image.png)
+
+参会完毕，收获良多呀……没想到还有这么多需要注意的地方。一不小心就“入坑”了。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
