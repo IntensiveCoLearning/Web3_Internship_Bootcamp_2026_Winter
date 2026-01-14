@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今日准备继续学习solidity基础语法
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 今日继续阅读web3实习手册，参加了线上co-learning和Bruce老师的Web3运营原理分享
 
 俩会议中，co-learning探讨了DAO组织的治理，钱的影响是否违背了去中心化的初衷；晚上的分享会议上，Bruce老师介绍了web3的技术原理，我了解许多新名词如RPC，EIP，ERC，EVM。
@@ -50,6 +56,7 @@ contract MyRobot{
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
