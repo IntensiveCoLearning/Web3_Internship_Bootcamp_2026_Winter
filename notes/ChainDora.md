@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## Web3 四大核心领域
+
+-   **DeFi（去中心化金融）**
+    
+    -   代表案例：Uniswap（自动做市商 AMM）、Compound（去中心化借贷）、MakerDAO/Sky（稳定币系统）。
+        
+    -   特点：无需中介，智能合约自动执行，流动性池与手续费分配机制。
+        
+    -   风险点：价格波动可能触发清算。
+        
+-   **NFT（非同质化代币）**
+    
+    -   本质：数字资产的唯一性与所有权。
+        
+    -   技术：区块链记录 + 智能合约自动化交易与版税。
+        
+    -   案例：CryptoPunks（先锋收藏品）、OpenSea（最大交易平台）。
+        
+-   **DAO（去中心化自治组织）**
+    
+    -   社区治理，无需传统公司架构。
+        
+    -   案例：Nouns DAO（NFT艺术社区）、LXDAO（支持 Web3 公共物品）、ConstitutionDAO（竞拍美国宪法原稿）。
+        
+    -   优势：公开透明、社区驱动；劣势：隐私与资金安全挑战。
+        
+-   **MEME 币**
+    
+    -   特点：社区驱动、文化属性强，投机性高。
+        
+    -   案例：DOGE（狗狗币）、PEPE（青蛙币）、SHIB（柴犬币）。
+        
+    -   风险提醒：高度波动，依赖情绪与名人效应，需控制仓位。
+        
+
+## 交叉创新
+
+-   **DeFi + NFT**：NFT 抵押借贷、碎片化流动性（如 BendDAO、Sudoswap）。
+    
+-   **DAO + MEME**：社区文化与治理结合（如 ShibaSwap、FriendTech）。
+    
+-   **AI + DeFi**：智能化金融服务（Yearn Finance V3、Gauntlet、Chaos Labs）。
+    
+-   **Web3 + 乡建**：南塘 DAO 探索乡村自治与区块链结合。
+    
+
+## 未来趋势
+
+1.  **Intent-Based 交易**：意图驱动的自动化交易（UniswapX、1inch Fusion、CoW Protocol）。
+    
+2.  **账户抽象与智能钱包**：ERC-4337 标准，支持 Gas 代付、社交恢复（Safe、Argent）。
+    
+3.  **模块化区块链**：分层架构提升扩展性（Celestia、Polygon CDK、OP Stack）。
+    
+4.  **AI + Web3 融合**：去中心化 AI 训练、预测市场、AI 创作（[Fetch.ai](http://Fetch.ai)、SingularityNET）。
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -79,6 +139,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## 区块链基础概念
 
