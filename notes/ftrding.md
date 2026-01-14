@@ -15,8 +15,34 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+<img width="1446" height="1034" alt="image" src="[https://github.com/user-attachments/assets/dc9727b5-d037-4254-9ac9-19f4f0aaf30a](https://github.com/user-attachments/assets/dc9727b5-d037-4254-9ac9-19f4f0aaf30a)" />
+
+1.了解区块链的核心组成部分以及区块链生态系统的运行包含以下几个关键步骤：
+
+用户发起交易：用户通过钱包应用发起转账、智能合约调用等操作
+
+交易广播：交易信息被广播到整个网络中的各个节点
+
+节点验证：网络中的矿工节点验证交易的合法性（余额是否足够、签名是否正确等）
+
+打包成块：通过共识机制（如工作量证明），矿工将验证过的交易打包成新的区块
+
+链接上链：新区块被添加到区块链上，更新全网的账本状态
+
+奖励发放：成功打包区块的矿工获得代币奖励和交易手续费
+
+2.公链 vs 私链 vs 联盟链三者的区别
+
+<img width="2454" height="422" alt="image" src="[https://github.com/user-attachments/assets/eada699c-bb42-4a52-86b6-f26f7755e7f7](https://github.com/user-attachments/assets/eada699c-bb42-4a52-86b6-f26f7755e7f7)" />
+
+3.观看x直播，了解相关的法律知识及注意事项
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 今天有点忙没什么时间看，看了直播简单了解web3运作原理，但还是很多专业术语不会，听的比较懵懵懂懂的；其次简单了解一下比特币的作用
 
 一、BTC 是什么（一句话）
@@ -80,6 +106,7 @@ BTC 的突破：第一次在互联网上，实现了“无需信任第三方的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 主要回放昨天视频，规划这一周的学习目标，完成软件的安装与配置，目前钱包和NFT尚未弄好
 
