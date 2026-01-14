@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-区块链专业的一名大三学生
+一名大三的区块链专业学生，平时爱好打打游戏
 
 ## Notes
 
