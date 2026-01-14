@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+In today’s review, I revisited essential concepts and practical skills in Web3, with a focus on wallet security and risk prevention. I learned that wallet signature authorizations can expose funds to theft—even without private key leakage—due to malicious or vulnerable website interactions. Tools such as the Scam Sniffer browser extension help detect dangerous sites, though manual judgment remains essential. Best practices include keeping only minimal gas funds in MetaMask and considering Apple devices for added security.
+
+The session also covered token identification, emphasizing that the contract address is the true identifier rather than the token name. Anyone can create tokens with identical names or displayed prices, making it critical to verify addresses on decentralized exchanges and look for “verified” labels or warning symbols. For careers in Web3, practical takeaways include maintaining a strong GitHub portfolio for technical roles, curating case studies for operations positions, and leveraging Twitter to build a personal brand—beginning with content in one’s native language for better engagement.
+
+Other key points included tools like Dune for on-chain analytics (requiring SQL proficiency) and RootData for aggregated project insights. Roles such as Developer Relations and Web3 Product Manager demand both technical depth and community engagement, while BD positions vary between driving user growth and leveraging partnerships. From a technical perspective, stablecoins were explained in terms of centralized issuance versus decentralized, over-collateralized models like DAI, which rely on arbitrage to maintain peg stability.
+
+Finally, the discussion touched on blockchain fundamentals such as 51% attacks, the trade-offs of IPFS versus centralized storage, and the competitive landscape among public chains. Innovation—whether in speed, privacy, or ZK proofs—remains a key differentiator for new chains, rather than short-term speculative gains. Overall, today’s review reinforced both the tactical knowledge needed to operate safely in Web3 and the strategic mindset required to grow within this evolving ecosystem.
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
 
 During today’s learning session, I reviewed the foundational principles of Web3 and blockchain technology, covering core functions and underlying architectural logic—such as how transactions are executed and how smart contracts operate on Ethereum and other blockchain platforms. This refreshed my understanding of the technical groundwork that supports decentralized applications and ecosystems.
@@ -28,6 +40,7 @@ Overall, today’s hands-on setup and conceptual review strengthened my practica
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 Today, I expanded my understanding of the Web3 space by attending the Ethereum Chinese weekly meeting and reviewing industry materials. The discussion covered Ethereum’s Fusca upgrade, L2 developments, and recent security incidents. From a market perspective, 2026 is viewed as a “foundation year” for industry consolidation, with Real World Assets (RWA), prediction markets, and compliance emerging as key trends—signaling a shift from early speculation toward integration with traditional finance.
