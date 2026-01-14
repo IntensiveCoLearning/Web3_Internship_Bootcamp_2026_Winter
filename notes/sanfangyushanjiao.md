@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+### 1.14-15 安全 & 合规
+
+1.  学习内容：
+    
+    1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
+        
+    2.  021 学习以太坊第 2&3 章
+        
+2.  拓展 & 辅助理解材料
+    
+    1.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
+        
+    2.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
+        
+    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+        
+3.  工具安装
+    
+    1.  MetaMask / [Rabby](https://x.com/Rabby_io) 钱包安装 & 创建，并熟悉
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 12~13学习目标
 
 入门技术学习内容：
@@ -130,6 +154,7 @@ EIP-4844 (Proto-Danksharding)：引入了Blob数据包，专门为L2提供廉价
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 12~13学习目标
