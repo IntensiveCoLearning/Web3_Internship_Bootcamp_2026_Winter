@@ -1,5 +1,5 @@
 ---
-timezone: GMT+0
+timezone: UTC+0
 ---
 
 # vic-crypto995
