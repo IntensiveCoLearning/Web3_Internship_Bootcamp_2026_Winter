@@ -17,66 +17,34 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
-# 安全分享会
+# 合规性
 
-## 安全总态势
+ICO(initial coin offering)公开融资，虚拟货币交易所，虚拟货币挖矿
 
--   精准猎杀：不得不感慨黑客是真的赚钱，精准猎杀项目方巨头，直接赚麻了，
-    
--   广撒网：资金盘和貔貅盘，面向普通web3人员
-    
--   2025一共1200+，超35亿美金
-    
+法官不懂，会把合约说成是赌博，然后交易所就是赌博应用……
 
-## 精准猎杀bybit
+所以很多业务形态都是很模糊的
 
-2025 15亿safe 多签，不广撒网，这样就不会被暴露，直接一笔干大，效果就是工作人员进去一看发现一切操作都没问题，就签名授权了，于是钱没了
+最多就是钱被扣了，人能出来
 
-安全效应机制和黑客的巅峰对决
+说是ai超算力，但是给海外，他们用来挖矿和我们无关了。
 
-地址投毒 粉尘攻击：超1000u，可能就会莫名其妙多出来一堆无用的usdt，然后没有注意，因为地址前面和后面差不多，然后从交易历史转账的时候就直接给了，自动化真黑客睡后收入了
+要和当局打好关系
 
-私钥泄露 智能合约漏洞 钓鱼攻击
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/boomthing/images/2026-01-14-1768395285097-image.png)
 
-cefi成为主要的黑客提款机，虽然是大项目方了，但黑客的渗透方式更高级，早就渗透到了核心管理人员设备。deepfake技术手段，还有现在ai可以找以前人找不到的漏洞
+这个行业入金攻击太离谱了吧——两个体制内要晋升，一个直接给海外五万，然后对方黑款直接打到另一个账户上。真tm危险啊
 
-然后潜伏着，等到一定时机，直接拿下，我靠牛逼
+我不是很理解啊，办案人员自己不懂就把他当作赌博然后定罪，这也太离谱了吧
 
-智能合约漏洞的话：一些老牌的东西不断被挖出漏洞，还是要继续干提升基础设施和安全，留户啊要
+涉及到合约，期权的岗位，风险都会很高。
 
-这说明什么?怎么可能是一个人对抗一整个安全团队。其实是国家级黑客，规模很大，很牛逼，朝鲜黑客组织盗取了20.2亿美元，真的吊我靠
-
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/boomthing/images/2026-01-14-1768390721728-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/boomthing/images/2026-01-14-1768391047814-image.png)
-
-钓鱼内容会和你当前处理的事情紧密相连，一不小心放松警惕，直接就毁了。抗审查的话国家什么也管不了咯
-
-捕捉热点，发同名的token，比如什么币安meme啥的，然后没看就寄了
-
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/boomthing/images/2026-01-14-1768391458918-image.png)
-
-woc，用实时换脸和语音克隆的话，还长期潜伏，这不就是相当于美女潜入富豪的生活，然后骗取你的感情三个月然后最后卷走你钱跑路……这谁看的出来woc，确实，商业伙伴你还不会问：说！你是谁？你真实身份是什么？没招了，然后发视频会议也……包括什么投资人，求职都很危险
-
-我不行了，连ETHpanda发的安装链接都要怀疑。
-
-建议：独立验证，一定小心，决定小心，引入风险
-
-## 攻击方式演变与新技术骗局
-
-EIP-7702——授权和交易合并成一个，地址加入了智能合约地址。提高用户的体验
-
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/boomthing/images/2026-01-14-1768392432929-image.png)
-
-刚上线——99%交易都是恶意的。新技术引入新的风险——就是给你私钥，让你帮忙，给你钱
-
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/boomthing/images/2026-01-14-1768392886583-image.png)
-
-希望自己不要交学费：四不——不点，不签，不装，不转
-
-有一种感觉,web3安全问题见多了，web2平时见到的骗局感觉有点low了
+为什么有一些没事呢？一个是文件的形式合规，另一个是深度合规,和当局打好关系。外地的过来都能被打回去
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 这几天在忙着期末考试，感觉对于小白来说想一下首席子理解还是需要很多时间，只能是尽量的跟上步伐了。等马上期末考试结束就可以完全all in了。
 
@@ -110,6 +78,7 @@ gm,gn Anon CT NFT PFP Hardhat Foundry ABI
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 以前自学过程中，我已经接触过不少 Web3 相关内容。同时我也逐渐意识到，在 AI 时代，单纯的信息记录本身并不具备太多价值。
