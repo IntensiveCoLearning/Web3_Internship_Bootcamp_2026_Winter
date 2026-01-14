@@ -10,7 +10,7 @@ timezone: UTC+11
 
 ## Self-introduction
 
-smart contract dev
+Web3 实习计划 2025 冬季实习生
 
 ## Notes
 
