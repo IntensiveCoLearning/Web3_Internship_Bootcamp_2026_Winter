@@ -15,8 +15,18 @@ web2 打工人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+打卡
+
+web3 安全
+
+不点、不装、不签、不管
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 打卡
 
 不知道要幹嘛 任務都做7/80% 了 哈哈
@@ -28,6 +38,7 @@ web2 打工人
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 打卡
 
