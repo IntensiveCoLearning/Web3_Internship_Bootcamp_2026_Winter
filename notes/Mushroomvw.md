@@ -16,8 +16,24 @@ Focused on AI, Web3, and building scalable, real-world systems.
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## **Web3 安全基础与常见风险**
+
+### **今日目标**
+
+建立对 Web3 安全问题的基本认知，理解“风险来自哪里”
+
+### **学习内容**
+
+1.  Web3 实习手册：安全与合规（安全相关部分）
+    
+2.  021 学习以太坊：第 2 章
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 \*\*今日目标：\*\*理解我如何真正使用以太坊
 
 **学习内容：**
@@ -50,6 +66,7 @@ Focused on AI, Web3, and building scalable, real-world systems.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
