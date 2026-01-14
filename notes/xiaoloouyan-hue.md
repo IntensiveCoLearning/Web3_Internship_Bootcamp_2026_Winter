@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+-   看 运行原理 回放+笔记总结
+    
+-   （读+笔记）Web3 实习手册「入门导读」部分
+    
+    A Developer's Guide to Building on Ethereum - Intro
+    
+    Becoming a Power User - Wallets, Mnemonics, Keypairs
+    
+    021 学习以太坊第 1&2 章
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -28,6 +42,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 -   设置好基本的软件和钱包；完成测试币转账；防钓鱼的刷题很有趣！etc
     
