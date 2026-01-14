@@ -22,27 +22,69 @@ Web3 实习计划 2025 冬季实习生
 
 |   | BTC | ETH |
 | --- | --- | --- |
-| 目標與定位 | 去中心化的加密貨幣、總量固定 | 去中心化的平台、智能合約]、DApps、"區塊鏈2.0" |
+| 目標與定位 | 去中心化的加密貨幣、總量固定 | 去中心化的平台、智能合約]、DApps、“區塊鏈2.0” |
 | 編程能力 | 較基本，腳本語言有限、僅支持簡單的交易驗證邏輯 | 圖靈完全/完備的編程語言(如Solidity)，可開發複雜智能合約 |
 | 共識機制 | 工作量證明 PoW (Proof of Work) | PoW -> 權益證明 PoS (Proof of Stak) |
 | 交易速度 | 10分/區塊 | ≈ 12s/區塊 ，交易確認快 / 適合高頻 |
 | 經濟模型 | 總量固定 / 抗通漲 | 供應靈活，通過EIP-1559 等機制可能呈現通縮趨勢 |
 
--   **EIP-1559**:為2021的升級，原先手續費全部給礦工，在這之後手續費分為"**基礎費(Base Fee)**"、"**優先費(Priority Fee)**"，多了**銷毀機制**  
+-   **EIP-1559**:為2021的升級，原先手續費全部給礦工，在這之後手續費分為"**基礎費(Base Fee)**"、“**優先費(Priority Fee)**”，多了**銷毀機制**  
     供應變化量=發行量-銷毀量 / 總量減少->資產增值
     
--   **EIP-4844:**旨在**降低手續費**，引入資料區塊(Blobs)，大幅降低資料儲存成本  
+-   **EIP-4844:旨在降低手續費**，引入資料區塊(Blobs)，大幅降低資料儲存成本
     
-    | EIP-4844 | 升級前() | 升級後 (Blobs/EIP-4844) |
-    | --- | --- | --- |
-    | 儲存位置 | 永久存儲在區塊鏈上 | 暫時存儲 (約 18 天) |
-    | 成本 | 極高 (昂貴的鏈上空間) | 極低 (專屬、限時空間) |
-    | L2 手續費 | 較貴 (約 0.2 - 1.0u) | 極便宜 (可能降至 < 0.01u) |
-    | 吞吐量 | 受限 | 大幅提升 為未來分片打基礎 |
+
+| EIP-4844 | 升級前() | 升級後 (Blobs/EIP-4844) |
+| --- | --- | --- |
+| 儲存位置 | 永久存儲在區塊鏈上 | 暫時存儲 (約 18 天) |
+| 成本 | 極高 (昂貴的鏈上空間) | 極低 (專屬、限時空間) |
+| L2 手續費 | 較貴 (約 0.2 - 1.0u) | 極便宜 (可能降至 < 0.01u) |
+| 吞吐量 | 受限 | 大幅提升 為未來分片打基礎 |
+
+-   **ZK-Rollup:**零知識匯總 (Zero-Knowledge Rollup) 將交易在鏈下(L2)做打包，以太坊只需驗證打包後的"證明"即可，完善隱私問題、安全性、提升速度、降低成本
+    
+-   **The Merge** (2022 年):從高能耗 PoW -> 低能耗 PoS
+    
+-   **EIP-4844** (2024):讓L2更便宜，普通人也能夠用得起
+    
+-   **數據分片**(2025-2026):進一步降低 L2 成本，提升整體擴展性
+    
+
+![ethereum-roadmap_01-Bi2f1MRr.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-14-1768394589462-ethereum-roadmap_01-Bi2f1MRr.jpg)
+
+# 以太坊生態組成:L1、L2、Sidechains 等等
+
+## 架構部分
+
+-   L1:**以太坊主網**+**EVM**(主機)+**帳戶系統**(外部帳戶EOA+合約帳戶CA)
+    
+-   L2:**Rollup**(批量處理降低gas)+**Optimistic Rollup**(假設交易合法，僅在爭議時驗證)+**ZK Rollup**(0知識證明)
+    
+-   側鏈(**Sidechains**):與主網並行的獨立鏈，僅在交互時與主往連接(Bridge) / 缺點:驗證者較少，易遭駭客攻擊(Bridge)
+    
+
+## 生態層次
+
+1.  **應用層** (Application Layer) : _Web3中，用戶直接_**_交互的介面_**  
+    Defi應用:Uniswap（去中心化交易所）、Aave（借貸協議）、Compound（借貸協議）  
+    NFT平台:OpenSea、Foundation、SuperRare  
+    錢包應用:MetaMask、Coinbase Wallet、Rainbow  
+    DAO工具:Snapshot、Aragon、Colony  
+    
+2.  **協議層** (Protocol Layer) : _以太坊_**_核心_**_基礎設施_  
+    共識層客戶層:Prysm、Lighthouse、Nimbus、Teku  
+    執行層客戶層:Geth、Nethermind、Erigon、Besu  
+    核心協議:EVM、状态管理、Gas 机制  
+    
+3.  **擴展程** (Scaling Layer) : _提升_**_性能_**_+降低_**_成本_**_的解決方案_  
+    L2 Rollups:Arbitrum、Optimism、Polygon zkEVM、zkSync Era  
+    側鏈:Polygon PoS、xDAI（Gnosis Chain）  
+    狀態通道:Lightning Network for Ethereum
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # 以太坊的起源
 
@@ -123,6 +165,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
