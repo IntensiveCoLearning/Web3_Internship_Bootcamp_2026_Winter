@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+工具安装
+
+MetaMask / Rabby 钱包安装 & 创建，并熟悉
+
+学习以太坊第 3 章
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 学习内容：
 
 1\. Web3 实习手册「安全与合规」部分
@@ -26,6 +36,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 拓展 & 辅助理解材料
 
@@ -38,6 +49,7 @@ Becoming a Power User - Wallets, Mnemonics, Keypairs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 学习内容：
