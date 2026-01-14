@@ -19,11 +19,16 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 今日任务：
 
-主要查看开营仪式，搞清楚主要模式和时间
+查看开营仪式，搞清楚主要模式和时间
+
+查看Web3 行业全局介绍 & 岗位概览，搞清楚进入web3的模式
+
+![4f3e69892aa1914aeb433717dd062f9e.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/zhangbobo123/images/2026-01-14-1768395473427-4f3e69892aa1914aeb433717dd062f9e.jpg)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 **理工背景**”已学 C/C++，转学 Solidity、Rust 相对轻松；跟着 GitHub / Ethereum 官方教程做项目。
 
