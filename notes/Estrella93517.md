@@ -423,6 +423,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 ## Becoming a Power User - Day 2: Wallets, Mnemonics, Keypairs
 
 📍**以太坊钱包设置介绍**
@@ -937,6 +938,7 @@ EIP基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
