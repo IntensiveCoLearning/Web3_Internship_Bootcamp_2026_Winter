@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今天学习了**Becoming a Power User - Day 2: Wallets, Mnemonics, Keypairs，熟悉了web3安全的知识**
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 今天需要准备学校的期末考试，所以只学习了几章Unphishable，观看了**A Developer's Guide to Building on Ethereum - Day 1。**
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # 1.学习Web3 实习手册[入门导读](https://web3intern.xyz/zh/blockchain-basic/)部分。
 
