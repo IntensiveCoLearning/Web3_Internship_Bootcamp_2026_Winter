@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# Co-learning
+
+## 运营
+
+參與項目的過程，所做的事情都可以進行分析描述，當作案例分析這樣寫進履歷
+
+发推建议用英文，數據會好一點
+
+推薦surf ai
+
+沙丘dune
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # [Ethereum](ethereum.org)
 
 ## 1\. What is Ethereum?
@@ -889,6 +905,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
