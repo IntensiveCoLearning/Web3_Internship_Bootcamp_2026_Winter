@@ -17,8 +17,19 @@ base广西南宁，数学系本科
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## 今日心得
+
+  
+白天时被迫去参加应酬，精力被分散太多，晚上几乎没有力气再去学习了，只能根据进度尽我所能把以太坊合规的部分补充完毕，明天还要啃四节Web3课程！
+
+![b7c71e4b7beeb670f74bd34720705269.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Exyang999/images/2026-01-14-1768394034343-b7c71e4b7beeb670f74bd34720705269.jpg)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # **day2**
 
 今天有点忙，但是认真研究了昨天的行业现状回放，收获颇丰，算是真正感觉到自己开始近距离观察到Web3这个行业，而且作为现在为数不多投入就大概率能有回报的高速发展行业，第一次感觉到自己搭上了时代的顺风车哈哈哈
@@ -62,6 +73,7 @@ Web3不同于Web2，许多产品的原生逻辑存在巨大差异，需要从底
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## 今日心得
 
