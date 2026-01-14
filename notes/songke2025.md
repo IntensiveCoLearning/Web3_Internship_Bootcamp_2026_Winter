@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+### 一：安全与合规：
+
+-   Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分。
+    
+-   参加了Web3安全主题分析会。
+    
+-   参加了Web3合规主题分析会.
+    
+
+今天学习了Web3 的安全与合规，要注意的就是两件事：做到不被坑，能长期发展和符合法律法规。  
+安全上，要尽量避免合约漏洞、钓鱼网站和私钥泄露，让自己资产不容易丢；合规上，是让项目在法律允许的范围内运行，减少被封、被关停的风险。我们在操作既要安全操作、又要合规，在Web3 行业才能更好地学习和发展。
+
+### 二：观看YouTube的视频：
+
+-   [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
+    
+
+使用钱包与去中心化应用进行交互，注册一个 ENS 地址，然后将一些 ETH 兑换成 DAI。  
+展示了在 Web3 中，身份和库存如何从一个应用到另一个应用跟随。
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ### 一：YouTube的Day2的课程
 
 [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
@@ -44,6 +68,7 @@ Web2 到 Web3 🚀 - 第一周成为高级用户 - 第二天：钱包、助记�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今天着重学习了Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分。
 
