@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+Day3 打卡，工作概述：
+
+1.  实践：注册metamask钱包，通过水龙头领取SepoliaETH代币
+    
+2.  理论：学习 Web3 实习手册 合规与安全部分
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 Day2打卡，工作概述：
 
 1.  完成Web3实习手册中「入门导读」部分的学习
@@ -43,6 +53,7 @@ Web3 的应用层呈现出多元融合的态势：DeFi 通过自动做市商和�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 Day1打卡，工作概述：
 
