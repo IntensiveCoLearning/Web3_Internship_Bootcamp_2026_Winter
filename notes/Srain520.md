@@ -17,11 +17,16 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
-今天学习一些零零散散的技术栈，更多的是参考社区学员的githup分享，以及他们过往的展示产品，自己欠缺的知识比较多，一点点的提升。学习效率比较低，虽说交流的不多，但此次训练营对自己的人生发展改观帮助非常大，感谢布老师和其他老师的分享和建议
+今天学习一些零零散散的技术栈，更多的是参考社区学员的githup分享，以及他们过往的展示产品，自己欠缺的知识比较多，一点点的提升。学习效率比较低，虽说交流的不多，但此次训练营对自己的人生发展改观帮助非常大；
+
+有需要扩展的，可以了解一下web3的人才概览，来自于githup的分享，非本人编辑
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Srain520/images/2026-01-14-1768374683395-image.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 **个人学习笔记——仅供参考**
 
@@ -229,6 +234,7 @@ EOA与合约账户的对比表：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ![微信图片_20260112103644_3_19.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Srain520/images/2026-01-12-1768186872412-_____20260112103644_3_19.png)
