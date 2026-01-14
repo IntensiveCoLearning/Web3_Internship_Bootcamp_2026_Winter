@@ -17,10 +17,7 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
-* * *
-
-## **  
-Solidity 布尔类型小结**
+Solidity 布尔类型小结
 
 | 分类 | 核心内容 | 关键说明/示例 |
 | --- | --- | --- |
@@ -38,7 +35,7 @@ Solidity 布尔类型小结**
 | --- | --- | --- |
 | 基础定义 | 地址类型作用、两种类型 | 作用：表示以太坊账户/合约地址（20字节） 类型： 1. address：普通地址，不可接收ETH 2. address payable：可支付地址，可接收ETH |
 | 类型转换 | 普通地址转可支付地址 | 语法：address payable ap = payable(addr); 注意：合约地址需实现receive/fallback才能接收ETH |
-| 常用操作 | 1. 地址比较 2. 查询余额 3. ETH转账 | 1. 比较：==/!=，零地址：address(0) 2. 余额：addr.balance（单位wei，address(this).balance查合约余额） 3. 转账：推荐to.call{value: msg.value}("")，需校验返回值 |
+| 常用操作 | 1. 地址比较 2. 查询余额 3. ETH转账 | 1. 比较：==/!=，零地址：address(0) 2. 余额：addr.balance（单位wei，address(this).balance查合约余额） 3. 转账：推荐to.call{value: msg.value}(“”)，需校验返回值 |
 | 重要提示 | 开发最佳实践与风险防范 | 1. 校验零地址：require(addr != address(0)) 2. 转账优先用call，避免transfer/send的2300 Gas限制 3. 防范重入攻击 |
 
 ```
@@ -74,6 +71,7 @@ contract PiggyBank {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## Solidity 数据类型小结
 
 | **分类**                     | **核心内容**                                                 | **关键特性**                                                 |
@@ -119,6 +117,7 @@ contract PiggyBank {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## 准备：
