@@ -16,8 +16,16 @@ web3素人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 今日计划
+
+1.WEB3实习手册 【安全与合规】部分
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 今日完成
 
 1.Unphishable钓鱼攻防1-12题
@@ -103,6 +111,7 @@ web3素人
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # 区块链基础概念
