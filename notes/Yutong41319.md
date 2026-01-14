@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今日学习内容
+
+合规与安全
+
+参与两场会议
+
+笔记
+
+![安全与合规.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Yutong41319/images/2026-01-14-1768403742354-_____.jpg)![会议总结.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Yutong41319/images/2026-01-14-1768403842262-____.jpg)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 学习内容：
 
 入门导读行业赛道
@@ -30,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今日学习内容：  
 入门导读（区块链基础概念+以太坊概览）  
