@@ -129,11 +129,12 @@ PoW --The Merge–> PoS
 
 * * *
 
-tips: 今天在实习没能完整的听完视频，只能先自己卡看文档学习sadQAQ
+tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 -   Bitcoin & Ethereum
     
@@ -257,6 +258,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 区块链：时间顺序相连的区块
