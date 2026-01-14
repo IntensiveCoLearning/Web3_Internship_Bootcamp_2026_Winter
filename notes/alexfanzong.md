@@ -15,8 +15,34 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+\---
+
+\> **Copyright & License / 版权声明：**
+
+\> **本系列作者：** Alex Fan | Web3 合规与投融资 从业者
+
+\> **首发平台：** Web3 Internship Bootcamp 2026 Winter
+
+\> **转载/分享规则：**
+
+欢迎分享：您可以自由转发给朋友或分享链接。
+
+必须署名：转载或引用时请务必注明作者为 "Alex Fan" 并附上原文链接。
+
+禁止商用/洗稿：严禁直接将本文内容作为自己的原创内容发布在X、公众号等媒体平台，或用于商业获利。
+
+\> **免责声明：** 本文内容仅为个人学习心得与交流分享，不构成任何形式的法律意见或投资建议。
+
+\> **_Let's build & learn together._**
+
+\---
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## 5.Unphishable安全挑战：传统欺诈与侵权在Web3世界的变体
 
 通过 Unphishable 的安全挑战（入门级别），我从技术表象中剥离出了其背后的法律侵权逻辑。
@@ -125,6 +151,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # **前言：法律作为技术的“事前构建者”**
 
