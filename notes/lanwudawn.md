@@ -19,13 +19,20 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 ### **DAY3**
 
-**TODOLIST : 1. 今天有两个分享会 2.完成NFT头像创建**  
+**TODOLIST : 1. 今天有两个分享会❌ 2.完成NFT头像创建✔**
+
+**这两天我要忙毕业设计开题，好累。好多笔记没记下，X上还没分享。这几天也在参与Akasha Insight社区的建设，创了一个github资源库，嗯还好。以后我的残酷共学内容形式应该是：1todolist+笔记 2碎碎念**  
+
+![mfnft.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/lanwudawn/images/2026-01-14-1768401467495-mfnft.png)
+
+myfirstNFT  
   
-**这两天我要忙毕业设计开题，好累。好多笔记没记下，X上还没分享。这几天也在参与Akasha Insight社区的建设，创了一个github资源库，嗯还好。以后我的残酷共学内容形式应该是：1todolist+笔记 2碎碎念**
+有点焦虑，因为毕设，分享会今天也缺席了，据说内容很好，之后看回放补吧！
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 DAY2  
 昨天晚上赶在ddl之前仓促提交笔记。下定决心一定要早些笔记。  
@@ -36,6 +43,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 **_DAY1_**  
