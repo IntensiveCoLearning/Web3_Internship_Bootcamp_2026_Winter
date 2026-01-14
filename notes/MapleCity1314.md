@@ -15,8 +15,118 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## 智能合约开发入门
+
+### 一、 DAPP架构和开发流程
+
+开发 Dapp 需要理解和掌握去中心化技术栈、智能合约编程以及前端与区块链的交互方式。
+
+1.  前端（UI） DApp 前端不会直接连接区块链网络，而是通过 钱包注入的 Provider 或第三方 RPC 节点 与区块链交互。通过RPC Node对智能合约发起 read only调用，获取链上数据 对需要修改状态的操作 前端构造对智能合约的交易调用，交由钱包完成签名后通过RPCNode广播到区块链网络
+    
+2.  智能合约：智能合约通过执行自动化规则来确保交易和操作的透明性与不可篡改性 在以太坊平台上，智能合约通常使用 **Solidity** 编程语言编写，并通过 **Ethereum Virtual Machine (EVM)** 执行。
+    
+3.  数据检索器： 智能合约通常以 `Event` 形式释放日志事件，比如释放代表 NFT 转移的 `Transfer` 事件，数据检索器会检索这些数据并将其写入到 PostgreSQL 等传统数据库中
+    
+4.  区块链和去中心化存储：如IPFS，Arweave
+    
+
+## 二、Dapp开发流程
+
+1.  需求分析
+    
+    -   确定功能需求
+        
+    -   选择区块链平台
+        
+    -   设计用户体验（UIUX）
+        
+2.  智能合约开发
+    
+    -   编写智能合约
+        
+    -   编写测试用例 （思考：AI自动审批智能合约？）
+        
+    -   审计与优化
+        
+3.  检索器开发
+    
+    -   确定功能需要的数据内容
+        
+    -   编写检索器程序
+        
+    -   部署和运维
+        
+4.  前端开发
+    
+    -   选择前端框架
+        
+    -   链接钱包
+        
+    -   显示区块链数据
+        
+    -   处理交易签名与确认
+        
+5.  与区块链交互
+    
+    前端和智能合约通过 **Viem（推荐）、Ethers.js 或 Wagmi** 等现代化库进行交互。b
+    
+6.  部署与上线 可以部署在IPFS或者传统Web服务（如Vercel）
+    
+
+## 二、以太坊开发环境搭建
+
+以太坊开发环境的搭建主要有以下几种常用方式，适合不同的开发需求：
+
+### 基础环境准备
+
+我这里使用的是Windows平台 + WSL2，其他环境可能有所不同，命令来自开发手册，后续更新同步我自己博客
+
+```bash
+# 安装 nvm（如未装）。推荐参考文档 <https://github.com/nvm-sh/nvm> 安装最新版本
+curl -o- <https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh> | bash
+
+# 安装 Node.js LTS
+nvm install --lts
+nvm use --lts
+
+# 安装 yarn（可选）
+npm install -g yarn
+```
+
+### 以太坊本地开发
+
+我这里只用了Foundry ，别问，速度才是真理 • [**Foundry 官方文档**](https://getfoundry.sh/introduction/getting-started) - [https://getfoundry.sh/introduction/getting-started](https://getfoundry.sh/introduction/getting-started)
+
+```bash
+curl -L <https://foundry.paradigm.xyz> | bash
+foundryup
+```
+
+Foundry 提供以下以太坊开发工具：
+
+-   `forge`: 帮助构建、测试、调试、部署和验证智能合约
+    
+-   `anvil`: 本地开发节点，完全兼容以太坊 JSON-RPC 规范
+    
+-   `cast`: 命令行工具，用于与链上应用交互
+    
+
+* * *
+
+环境安装出了点问题 暂时先用remix
+
+## RPC节点
+
+在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。但RPC并不参与共识过程。在集群中，运行RPC的节点扮演着不同的角色
+
+## JSON-RPC协议
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 主要内容：web3安全 && 合规思考
 
 ## 1\. Web3合规性要求与常见法律风险
@@ -128,6 +238,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # 概念梳理
 
