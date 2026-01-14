@@ -15,8 +15,41 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## w1d3
+
+-   **入门技术&深度技术任务**
+    
+    -   [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+        
+    -   021 以太坊 第四章
+        
+-   **Rust基础**
+    
+    -   10 [Generic Types, Traits, and Lifetimes](https://rust-book.cs.brown.edu/ch10-00-generics.html#generic-types-traits-and-lifetimes)
+        
+-   **杂项**
+    
+    -   改卷子
+        
+    -   整理企业项目方案
+        
+
+有点慢了，感觉走远了
+
+总之加油干吧还能怎么办，实在不行明天开始争取能把上午的时间变成学习的
+
+看着后面几天的任务好像不多，等到周五六日猛猛补进度吧
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=OTBlNGEwODFkNTY1N2Q3NDZhMTFiNTJhNzgyNDM4OTFfU2NtN1A5bkF6ZXR2YmY2eFN0VGUybmo3djFXRFhKWDhfVG9rZW46VFBrb2JFcWtsb0dMT3p4VHRpMGNHTG5FbmJhXzE3NjgzNjc4Mjk6MTc2ODM3MTQyOV9WNA)
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## w1d2
 
 今天先保底把昨天没干完的事情干完吧
@@ -951,6 +984,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 （叽里咕噜写了半天不小心点到白框外面的内容之后全部内容没有了，后续干脆直接把飞书文档上的学习记录复制粘贴过来吧）
