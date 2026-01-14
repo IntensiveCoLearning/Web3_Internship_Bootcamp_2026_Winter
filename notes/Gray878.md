@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+查看「Web3 运行原理」回放
+
+创建钱包，并尝试测试币转账
+
+\[260114\] 线上 Co-Learning
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 1\. 学习使用 Google Calendar
 
 2\. 查看以太坊中文周会 260112 回放
@@ -26,6 +36,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今日计划：
 
