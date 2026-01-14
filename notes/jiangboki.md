@@ -20,8 +20,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangboki/images/2026-01-14-1768405482754-image.png)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 web3历史  
 第一阶段2009-2014  
 btc主导1.0时代  
@@ -52,6 +58,7 @@ ai很重要！！！！ai很重要！！！！ai很重要！！！！
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 1.创建了一个新的x，关注了行业推荐官推，大部分都是之前没有关注的，推特现在噪音太多，推荐很实用  
