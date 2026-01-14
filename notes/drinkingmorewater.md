@@ -45,7 +45,7 @@ web3天然有资产和金融属性，而金融的本质是风控和安全
     
 4.  后头几个都是**私钥泄露**和热钱包被盗
     
-5.  **“地址投毒”**就是地址一旦进行交易，地址中就会无端产生一些不知道是啥的资产，名字也叫usdt，可能就会发现不是真的usdt，属于钓鱼攻击的一种方式，也叫做粉尘攻击。乱七八糟东西改成和交易历史中首尾地址相同的地址，直接复制这个地址转出去就会转错。这个供给完全自动化。（评论区：unphishable上做过，0utransferfrom骗局）
+5.  \*\*“地址投毒”\*\*就是地址一旦进行交易，地址中就会无端产生一些不知道是啥的资产，名字也叫usdt，可能就会发现不是真的usdt，属于钓鱼攻击的一种方式，也叫做粉尘攻击。乱七八糟东西改成和交易历史中首尾地址相同的地址，直接复制这个地址转出去就会转错。这个供给完全自动化。（评论区：unphishable上做过，0utransferfrom骗局）
     
 
 总结：
@@ -99,11 +99,19 @@ web3目前缺用户，所以更需要安全的基础设施
 
 ## GoPlus安全建议
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768392915474-image.png)
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768392915474-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768393330881-image.png)
+
+## Q&A
+
+1.  如何判断合约地址真实？通过第三方安全检测；右下角也会有风险提示和项目方信息
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768393432598-image.png)
+2.  web3安全漏洞挖掘方式和web2有什么区别？主要集中在哪些方面？老师：这是不同的漏洞明细+技术工具，web3存在业务层or语法层的；web2挖漏洞的工具更多
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # Web3运行原理
 
@@ -212,6 +220,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
