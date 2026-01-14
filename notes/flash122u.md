@@ -15,9 +15,66 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+* * *
+
+## **  
+Solidity 布尔类型小结**
+
+| 分类 | 核心内容 | 关键说明/示例 |
+| --- | --- | --- |
+| 基础特性 | 关键字、取值、默认值 | 关键字：bool；取值：true/false；默认值：false |
+| 核心运算符 | 逻辑运算符：&&（与）、\|\|（或）、!（非） 比较运算符：==/!=/</<=/>/>= | 1. &&/\|\| 支持短路求值； 2. 所有比较运算符返回布尔值 |
+| 短路求值 | 规则、优化技巧 | 规则：&&左false/\|\|左true 则右侧不执行； 技巧：按概率前置条件节省Gas |
+| 典型应用 | 权限控制、状态管理、功能开关、条件判断 | 示例： 1. 权限：user == owner \|\| admins[user]； 2. 开关：!featureEnabled |
+| 最佳实践 | 命名、Gas优化、安全校验 | 1. 命名：isXXX/hasXXX； 2. Gas：bool与小类型打包存储； 3. 校验：require(布尔条件, 报错信息) |
+
+* * *
+
+## **Solidity 地址类型小结**
+
+| 分类 | 核心内容 | 关键说明/示例 |
+| --- | --- | --- |
+| 基础定义 | 地址类型作用、两种类型 | 作用：表示以太坊账户/合约地址（20字节） 类型： 1. address：普通地址，不可接收ETH 2. address payable：可支付地址，可接收ETH |
+| 类型转换 | 普通地址转可支付地址 | 语法：address payable ap = payable(addr); 注意：合约地址需实现receive/fallback才能接收ETH |
+| 常用操作 | 1. 地址比较 2. 查询余额 3. ETH转账 | 1. 比较：==/!=，零地址：address(0) 2. 余额：addr.balance（单位wei，address(this).balance查合约余额） 3. 转账：推荐to.call{value: msg.value}("")，需校验返回值 |
+| 重要提示 | 开发最佳实践与风险防范 | 1. 校验零地址：require(addr != address(0)) 2. 转账优先用call，避免transfer/send的2300 Gas限制 3. 防范重入攻击 |
+
+```
+//存钱罐合约
+pragma solidity ^0.8.0;
+​
+contract PiggyBank {
+    address public owner;
+​
+    constructor() {
+        owner = msg.sender;
+    }
+​
+    // 接收 ETH
+    receive() external payable {}
+​
+    // 查询余额
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+​
+    // 提取 ETH（只有 owner 可以）
+    function withdraw() public {
+        require(msg.sender == owner, "Only owner can withdraw");
+        (bool success, ) = payable(owner).call{value: address(this).balance}("");
+        require(success, "Withdraw failed");
+    }
+}
+```
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
-<!-- DAILY_CHECKIN_2026-01-13_START -->## Solidity 数据类型小结
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+## Solidity 数据类型小结
 
 | **分类**                     | **核心内容**                                                 | **关键特性**                                                 |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -58,14 +115,11 @@ timezone: UTC+8
 | **使用场景选择**      | 1. **优先用 uint**：代币余额、数组索引、时间戳、计数器等**非负场景**<br>2. **使用 int**：温度、价格波动、数值差值等**需表示正负的场景** |
 | **常见陷阱&避坑方案** | 1. **无符号下溢**：`uint x=0; x-1`会回退 → 先判断`x>0`再减法<br>2. **除法截断**：需精度时放大分子（如`(5*1e18)/2`）<br>3. **类型转换截断**：大类型转小类型前，用`require(val <= type(uint8).max)`校验<br>4. **跨类型比较**：`int`与`uint`直接比较易出错 → 统一转换为相同类型再比较 |
 | **进阶技巧**          | 用`type(X).min`/`type(X).max`获取整型`X`的最值（如`type(uint8).max=255`） |
-
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
-
-
 # 2026-01-12
-
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## 准备：
 
@@ -131,9 +185,5 @@ timezone: UTC+8
 | 函数定义     | 格式：`function 名(参数) 可见性 状态可变性 returns(返回类型)` |
 | 状态可变性   | view（仅读状态）、pure（不读不改）、payable（可接收以太币）  |
 | 核心特性     | 状态修改需上链交易（耗Gas），仅读取可直接节点执行（免Gas）；链上数据透明，private不隐藏数据 |
-
 <!-- DAILY_CHECKIN_2026-01-12_END -->
-
-
-
 <!-- Content_END -->
