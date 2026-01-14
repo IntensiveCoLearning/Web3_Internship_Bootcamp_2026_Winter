@@ -15,8 +15,8 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
-# 2026-01-14
-<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
 # 今日学习内容与总结：  
 
 ## **区块链基础概念（吃汤圆，2025）**
@@ -188,5 +188,5 @@ ETH 远不只是数字货币，它是驱动整个“世界计算机”运行的*
 -   Web 3实习手册 (Ch.1, Sectors 1-2)
     
 -   从零到一学习以太坊 (Ch.1, Sectors 1-5)
-<!-- DAILY_CHECKIN_2026-01-14_END -->
+<!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
