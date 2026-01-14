@@ -34,10 +34,62 @@ Web3 实习计划 2025 冬季实习生
 -   Go 工程项
     
 -   参会
+    
+
+# Note
+
+### CREATE 合约地址不可预测性
+
+1.  CREATE 地址计算公式  
+    公式：address = keccak256(rlp(\[sender, nonce\]))\[12:\]  
+    sender：部署合约的账户地址（EOA 或合约）  
+    nonce：部署时账户当前的 nonce  
+    rlp(...)：以太坊递归长度前缀编码  
+    keccak256：哈希结果256 bits(32 bytes)  
+    \[12:\]：取后 20 bytes 作为地址
+    
+2.  nonce 定义  
+    链上 nonce：账户已执行交易数量，所有节点最终一致  
+    pending nonce：节点根据链上 nonce + 本地 mempool 中的未确认交易数推算  
+    每个节点不同，不参与共识，只是本地估算值
+    
+3.  内存池（Mempool）  
+    每个节点本地缓存尚未打包进区块的交易  
+    每个节点独立维护，节点间不一致  
+    生命周期：发送交易 → 节点收到 → 加入 mempool → 广播 → 矿工打包 → 上链 → 从 mempool 删除
+    
+
+### CREATE 地址不可预测的核心原因  
+查询的 pending nonce ≠ 出块节点实际使用的 nonce
+
+-   节点视图不一致：不同节点 mempool 中交易数量不同，不同节点看到的 pending nonce 不一致
+    
+-   交易替换：钱包自动加价重发交易
+    
+-   交易乱序传播：节点先收到后续 nonce 交易
+    
+-   区块重组（Reorg）：区块回滚导致 nonce 回退
+    
+
+### CREATE2 的可预测性
+
+-   地址公式：keccak256(0xff ++ deployer ++ salt ++ keccak256(init\_code))
+    
+-   只依赖 deployer、salt、init\_code，不依赖 nonce 或 mempool
+    
+-   因此在任何节点、时间、环境下可稳定预测
+    
+
+### 总结
+
+-   CREATE 不可预测性是分布式系统一致性问题，不是密码学问题
+    
+-   核心链路：nonce ∈ 分布式局部状态 → 局部视图不一致 → 工程不可预测
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # To do list
 
@@ -96,6 +148,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
