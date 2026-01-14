@@ -15,8 +15,153 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+Web3安全讲座
+
+![image.png](attachment:6a6c418b-5304-48d6-9677-50a505645c06:image.png)
+
+三种最典型的攻击方式。Rug Token是发一种类似代币的假代币，让人们误以为是真的。
+
+![image.png](attachment:dc99694f-978f-4c0f-90d0-83d1f05d35de:image.png)
+
+2025年很多用了很久的应用都被发现了漏洞，说明AI在其中应该是起到了大作用。2026年预期会有更多新的漏洞被发现，项目方需要提前做准备。
+
+攻击者窃取到私钥后不一定会立即行动，会变得更有目的性。
+
+![image.png](attachment:d2e71393-eeae-4c5e-ad25-242bcd83093d:image.png)
+
+使用Deepfake技术实施社会工程学攻击变得很流行。
+
+![image.png](attachment:9d7850e3-2e6f-4fb1-bb28-994f7ecd43dd:image.png)
+
+邓小宇讲Web3合规
+
+ICO（Initial Coin Offering）公开融资。发币不违法，但借助发币非法融资则违法。
+
+逐利性执法，打击交易所获取收益。
+
+Web2中心化的法律不适合Web3去中心化的理念。
+
+PolyMarket如果开在中国，肯定会被定性为赌博。
+
+交易所出金可能会收到黑钱，然后引起警方关注。
+
+U商套利原理
+
+![image.png](attachment:2c8e6bd1-f44a-4743-b5da-14e02c25ac28:image.png)
+
+U卡？
+
+项目方风险。
+
+KOL衍生风险。
+
+KOL帮交易所宣传，当交易所被当作赌场被抓后，KOL会被当作共犯。
+
+中国不支持用虚拟币付工资。
+
+入金风险小，出金风险大。
+
+出金收到赃款，可能被警方追查，然后要求退钱。警方可能强行实施。
+
+以太坊的生态系统由多层架构组成，包括 **L1（主网）、L2（二层扩展解决方案）、侧链（Sidechains）** 等，共同支持高吞吐量和低费用的交易处理。
+
+1.  **Layer 1（L1）**
+    
+    -   **以太坊主网**：核心区块链，负责最终安全性与共识。
+        
+    -   **EVM**：以太坊虚拟机，执行智能合约代码。
+        
+    -   **账户系统**：外部账户（EOA）与合约账户（CA）共同构成网络基础。
+        
+2.  **Layer 2（L2）**
+    
+    -   **Rollup**：通过将交易批量处理后提交至 L1，降低 Gas 费。
+        
+        -   **Optimistic Rollup**：假设交易合法，仅在争议时验证。
+            
+        -   **ZK Rollup**：通过零知识证明验证交易，无需链上争议。
+            
+        
+        注意，L2并不是链，而是中心化的网络服务。为了提高效率降低成本，将这些中心化的L2服务接入L1链，从而实现安全和效率的平衡。
+        
+3.  **侧链（Sidechains）**：独立运行的链，通过桥接与主网交互。
+    
+
+### [**以太坊生态分层架构**](https://web3intern.xyz/zh/overview-of-ethereum/#%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%94%9F%E6%80%81%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84)
+
+从软件栈的功能层次来看，以太坊生态可以分为以下几个层次：
+
+### [**1. 应用层（Application Layer）**](https://web3intern.xyz/zh/overview-of-ethereum/#_1-%E5%BA%94%E7%94%A8%E5%B1%82-application-layer)
+
+用户直接交互的应用和界面：
+
+-   **DeFi 应用**：Uniswap（去中心化交易所）、Aave（借贷协议）、Compound（借贷协议）
+    
+-   **NFT 平台**：OpenSea、Foundation、SuperRare
+    
+-   **钱包应用**：MetaMask、Coinbase Wallet、Rainbow
+    
+-   **DAO 工具**：Snapshot、Aragon、Colony
+    
+
+### [**2. 协议层（Protocol Layer）**](https://web3intern.xyz/zh/overview-of-ethereum/#_2-%E5%8D%8F%E8%AE%AE%E5%B1%82-protocol-layer)
+
+以太坊的核心基础设施：
+
+-   **共识层客户端**：Prysm、Lighthouse、Nimbus、Teku
+    
+-   **执行层客户端**：Geth、Nethermind、Erigon、Besu
+    
+-   **核心协议**：EVM、状态管理、Gas 机制
+    
+
+### [**3. 扩展层（Scaling Layer）**](https://web3intern.xyz/zh/overview-of-ethereum/#_3-%E6%89%A9%E5%B1%95%E5%B1%82-scaling-layer)
+
+提升性能和降低成本的解决方案：
+
+-   **Layer 2 Rollups**：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
+    
+-   **侧链**：Polygon PoS、xDAI（Gnosis Chain）
+    
+-   **状态通道**：Lightning Network for Ethereum
+    
+
+以太坊的账户分为**外部账户（EOA）和合约账户（CA）**。前者是普通用户的钱包，后者是部署的智能合约。也就是说，智能合约的地位和一个钱包账户类似，它不属于某个钱包，而是单独的地址。合约账户部署后生成一个地址，没有私钥。
+
+每个账户都包含四个关键字段：
+
+-   **Nonce**：防止重复交易的计数器（EOA 记录发送次数，CA 记录创建合约次数）。
+    
+-   **余额**：账户持有的 ETH 数量（单位为 Wei）。
+    
+-   **CodeHash**：EOA 为空哈希，CA 存储合约字节码的哈希值。
+    
+-   **StorageRoot**：记录账户数据的 Merkle 树根哈希（如 NFT 归属关系）。
+    
+
+任何交易都需要付燃料费。
+
+Gas 费用 = **用多少 × 每单位多少钱**，就像你打车一样：
+
+-   **Gas Limit（限额）**：你最多愿意“烧”多少燃料。 比如你觉得最多可能需要 15 万单位，就设置 150,000。
+    
+-   **Gas Price（单价）**：每单位燃料多少钱，用 Gwei 表示（1 Gwei = 0.000000001 ETH）。 网络越拥堵，价格越贵，就像打车高峰期加价。
+    
+
+所以，**总费用 = Gas Limit × Gas Price**。
+
+以前，Gas Price 全部给矿工。 现在，分成两部分：
+
+-   **基础费用（Base Fee）**：每个区块都会有，自动计算，直接销毁（直接消失）来帮助 ETH 通缩，毕竟物以稀为贵。
+    
+-   **小费（Tip）**：你额外加的钱，用来鼓励矿工优先处理你。
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## **以太坊概览**
 
 以太坊是区块链2.0，比特币是区块链1.0。
@@ -87,6 +232,7 @@ MetaMask这种钱包App生成私钥后会保存在本地，设置的密码用来
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## **区块链基础概念**
 
