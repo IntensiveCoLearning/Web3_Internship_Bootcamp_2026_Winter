@@ -54,11 +54,26 @@ CeFi: centralized finance
 
 Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-14-1768391768690-image.png)
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-14-1768391768690-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-14-1768392147725-image.png)
+
+# 分享会 合规
+
+1.大陆的负面清单 ICO公开融资\\虚拟货币交易所/挖矿
+
+2.中心化的法律 vs 去中心化理念
+
+3.
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-14-1768395370636-image.png)
+
+4.
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-14-1768395775996-image.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -240,6 +255,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
