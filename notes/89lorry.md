@@ -15,8 +15,23 @@ timezone: UTC-8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-13
+<!-- DAILY_CHECKIN_2026-01-13_START -->
+-   用Etherscan验证交易在链上是否真实发生：
+    
+
+查以太坊主网 `https://etherscan.io/`
+
+查Sepolia testnet  `https://sepolia.etherscan.io/`
+
+-   做了unphihable的beginner部分，下面这道题还挺好玩的，学了punycode，解码网址`https://www.punycoder.com/`
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/89lorry/images/2026-01-14-1768370020555-image.png)
+<!-- DAILY_CHECKIN_2026-01-13_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 ### 1.12
 
 -   三年前就注册过metamask但是是为了写论文，没有实际操作过。今天尝试用测试币在两个账户间转账，用的faucet是google cloud web3，got 0.05 Sepolia ETH. in chinese 活水
