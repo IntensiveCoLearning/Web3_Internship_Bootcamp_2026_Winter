@@ -18,6 +18,12 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 今天邓律的分享让我收获颇丰，我打算将其中的知识点消化输出为推文，先来打卡，稍后来补充输出的内容
+
+以下是今天输出的推特链接：https://x.com/0xjAc3/status/2011488065123205326?s=20
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/70824c3b-bda1-4b64-a98d-b2c08f84b112" />
+
+以及今天co learning 环节，wachi老师分享的账号初期的写内容方向，就是对最近的项目方的运营案例做分享，解析，所以也将「对运营案例解析」加入到内容输出的矩阵中
+
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
