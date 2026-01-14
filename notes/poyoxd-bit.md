@@ -17,46 +17,12 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
-## [**一、社区运营核心职责**](https://web3intern.xyz/zh/community-intern/#%E4%B8%80%E3%80%81%E7%A4%BE%E5%8C%BA%E8%BF%90%E8%90%A5%E6%A0%B8%E5%BF%83%E8%81%8C%E8%B4%A3)
-
-### [**1\. 日常内容与社群维护**](https://web3intern.xyz/zh/community-intern/#_1-%E6%97%A5%E5%B8%B8%E5%86%85%E5%AE%B9%E4%B8%8E%E7%A4%BE%E7%BE%A4%E7%BB%B4%E6%8A%A4)
-
--   定期更新社媒账号的内容与推文，维持活跃度。
-    
--   管理社群秩序，答疑、禁言、打击垃圾内容，并设计、抛出话题引导用户参与讨论。
-    
-
-### [**2\. 内容发布与互动引导**](https://web3intern.xyz/zh/community-intern/#_2-%E5%86%85%E5%AE%B9%E5%8F%91%E5%B8%83%E4%B8%8E%E4%BA%92%E5%8A%A8%E5%BC%95%E5%AF%BC)
-
--   活动预热公告、AMA 宣传图、Twitter Space 等活动开播提醒。
-    
--   发布或者转发与品牌调性相关的内容，并在各渠道推送，引导大家查阅、讨论、转发。
-    
-
-### [**3\. 活动策划与组织**](https://web3intern.xyz/zh/community-intern/#_3-%E6%B4%BB%E5%8A%A8%E7%AD%96%E5%88%92%E4%B8%8E%E7%BB%84%E7%BB%87)
-
--   **线上活动**：Twitter Space、线上课程或内容分享、线上黑客松等。
-    
--   **线下活动**：Meetup、Workshop、黑客松等。
-    
--   活动前：策划主题、邀约嘉宾、邀请合作伙伴支持、设计海报与推文。
-    
--   活动中：主持引导、观众互动、记录要点。
-    
--   活动后：整理内容、发推总结、投稿媒体或公众号。
-    
-
-### [**4\. 对外合作与社区联动**](https://web3intern.xyz/zh/community-intern/#_4-%E5%AF%B9%E5%A4%96%E5%90%88%E4%BD%9C%E4%B8%8E%E7%A4%BE%E5%8C%BA%E8%81%94%E5%8A%A8)
-
--   与其他项目社区进行联动，如联合 AMA、线上/线下活动支持等。
-    
--   与 KOL 保持沟通，争取转发、联名传播。
-    
--   与媒体保持联系，对重要活动与内容进行快讯等其他方式的支持，扩大曝光。
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/poyoxd-bit/images/2026-01-14-1768380067333-image.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 1、测试钱包转账
 
