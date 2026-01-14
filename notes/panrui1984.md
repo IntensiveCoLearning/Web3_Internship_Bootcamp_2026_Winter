@@ -15,8 +15,41 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今天晚上的法律合规专题课意义十分重大，可以说非常有帮助。
+
+正巧，今天在人民法院报公众号一篇文章，
+
+[https://yuanbao.tencent.com/chat/naQivTmsDa?from=WeixinAskAi&tridChannel=wxllqndtabgzhwzzj.lqybh5xzrk.pc&askAi=%7B%22coverUrl%22%3A%22https%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz\_jpg%2Fqrrm9dFnnpS9d0qQTibdAaibcMFa1FM97JJglO3XGib5VZPXwIKfhFuofUaPvhsnbj62fKkiaQVRyyHJGFQLvian8EA%2F0%3Fwx\_fmt%3Djpeg%22%2C%22link%22%3A%22https%3A%2F%2Fmp.weixin.qq.com%2Fs%2F6NUlNDibHR\_KmEmMi311hQ%22%2C%22title%22%3A%22%E6%B6%89%E8%99%9A%E6%8B%9F%E8%B4%A7%E5%B8%81%E7%8A%AF%E7%BD%AA%E6%A1%88%E4%BB%B6%E7%9A%84%E9%80%82%E6%B3%95%E7%BB%9F%E4%B8%80%E6%8E%A2%E8%AE%A8%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E6%9C%9F%E2%80%9C%E8%87%B3%E6%AD%A3%C2%B7%E7%90%86%E8%AE%BA%E5%AE%9E%E5%8A%A1%E5%90%8C%E8%A1%8C%E2%80%9D%E5%88%91%E4%BA%8B%E5%AE%A1%E5%88%A4%E7%A0%94%E8%AE%A8%E4%BC%9A%E7%BB%BC%E8%BF%B0%22%7D&retry=1&nonce=maeDZrC6xsbwctJf&state=yf\_wechat\_login&code=041EudGa1TTXZK0UVEHa1ZcvMp4EudGA](https://yuanbao.tencent.com/chat/naQivTmsDa?from=WeixinAskAi&tridChannel=wxllqndtabgzhwzzj.lqybh5xzrk.pc&askAi=%7B%22coverUrl%22%3A%22https%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2Fqrrm9dFnnpS9d0qQTibdAaibcMFa1FM97JJglO3XGib5VZPXwIKfhFuofUaPvhsnbj62fKkiaQVRyyHJGFQLvian8EA%2F0%3Fwx_fmt%3Djpeg%22%2C%22link%22%3A%22https%3A%2F%2Fmp.weixin.qq.com%2Fs%2F6NUlNDibHR_KmEmMi311hQ%22%2C%22title%22%3A%22%E6%B6%89%E8%99%9A%E6%8B%9F%E8%B4%A7%E5%B8%81%E7%8A%AF%E7%BD%AA%E6%A1%88%E4%BB%B6%E7%9A%84%E9%80%82%E6%B3%95%E7%BB%9F%E4%B8%80%E6%8E%A2%E8%AE%A8%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E6%9C%9F%E2%80%9C%E8%87%B3%E6%AD%A3%C2%B7%E7%90%86%E8%AE%BA%E5%AE%9E%E5%8A%A1%E5%90%8C%E8%A1%8C%E2%80%9D%E5%88%91%E4%BA%8B%E5%AE%A1%E5%88%A4%E7%A0%94%E8%AE%A8%E4%BC%9A%E7%BB%BC%E8%BF%B0%22%7D&retry=1&nonce=maeDZrC6xsbwctJf&state=yf_wechat_login&code=041EudGa1TTXZK0UVEHa1ZcvMp4EudGA)
+
+# **涉虚拟货币犯罪案件的适法统一探讨——第四期“至正·理论实务同行”刑事审判研讨会综述**
+
+以下是我对其重要观点做了一些总结
+
+1.  **关于“主观明知”的认定（洗钱罪）**
+    
+    -   **核心**：必须证明行为人“知道或应当知道”钱来自特定上游犯罪
+        
+2.  **关于“非法经营罪”的认定**
+    
+    -   **核心**：经常性提供人民币与外币之间的兑换服务并牟利，属于“变相买卖外汇”
+        
+    -   **区分**：个人偶尔炒币不构罪，但以此为业则可能构成
+        
+
+**简单来说**：
+
+-   **怎么算“明知”洗钱？**​ 不能乱推定，需要实锤证据。
+    
+-   **什么时候算“洗钱成功”？**​ 赃款换成U币的那一刻就算。
+    
+-   **什么换汇行为算犯罪？**​ 把虚拟货币当生意做，专门帮人跨境兑换就违法。
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 “Web3 运行原理”课程笔记
 
 ### 交易（TX）
@@ -85,6 +118,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 今天完成的任务如下：
