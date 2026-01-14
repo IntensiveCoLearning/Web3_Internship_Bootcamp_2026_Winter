@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# To do list
+
+-   推特发学习总结
+    
+-   021以太坊阅读
+    
+-   实习手册阅读
+    
+-   Unphishable至少5章
+    
+-   安装欺诈检测插件
+    
+-   今天你Commit了吗：Arbireum Rust Task4
+    
+-   Go 工程项
+    
+-   参会
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # To do list
 
 -   学习alloy ✅
@@ -74,6 +96,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # To do list
