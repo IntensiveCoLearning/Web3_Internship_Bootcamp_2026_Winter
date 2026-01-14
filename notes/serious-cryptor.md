@@ -15,8 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+Date: 2026/1/14
+
+-   学习内容：web3合规会议 + web3安全会议
+    
+-   进展：整理了这几次会议的笔记，做了一个小复盘，对web3整体画像清晰了一些
+    
+-   感悟：今天的合规和安全会议对新人来说是很necessary，老师讲的很多案例自己刚进圈的时候也遇到过，后悔没早一点加入Ethpanda了hhh，以后对钱包的授权私钥管理要加强，做到四个不，不乱点、不乱签、不乱装、不乱转。在合规方面，对入职的公司提前做好背调，对公司相关产品要自己进行大陆身份测试，秉持着不害人，不贪财，不存侥幸心理的中心思想，遇到不明财产要提前备案，交易要留痕，小心使得万年船。
+    
+-   疑惑：今天的脑子不太够用，听了太多有点懵，明天复盘一下
+    
+
+notion笔记同步更新：[https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14dd?source=copy\_link](https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14dd?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 Date: 2026/1/13
 
 -   学习内容：实习手册-智能合约开发 +《021以太坊》DAPP部分 + 20:00的web3运行原理 + 我的第一个NFT
@@ -36,6 +53,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8029a48cf359223ea4
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 Date: 2026/1/12
 
