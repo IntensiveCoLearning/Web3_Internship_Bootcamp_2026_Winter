@@ -15,8 +15,48 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
+
+今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
+
+ETH:协议层 + 应用层 (Protocol Layer + Application Layer)
+
+智能合约：图灵完备，可编程，自动执行
+
+运行合约需要gas 计价单位：Wei
+
+智能合约和dAPP: 智能合约是运行在链上的代码；
+
+dAPP:智能合约+网页前端
+
+抗审查：高权力无法干涉，无法关停
+
+代币的核心认证是基于合约地址
+
+DEX交易：verified;问号或感叹号的token
+
+链上数据分析：学SQL，DUNE；RootDATA
+
+好奇心，坚持基本功（对我来说，一定要坚持）
+
+稳定币：USDT/USDC(centralized) DAI(decentralized)
+
+经济模型漏洞？可套利？
+
+签名：digital signature 证明yourself
+
+私钥：个人保密认证 公钥：身份公认信息
+
+发送，转账：就是签名
+
+问题：每一笔交易都伴随着ECDSA,TPS增加，签名会越来越慢，硬件未来？？？
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -36,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ## **以太坊特性**
 
