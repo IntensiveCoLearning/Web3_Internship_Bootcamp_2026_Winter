@@ -15,6 +15,8 @@ hello
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+hi
+<!-- DAILY_CHECKIN_2026-01-14_END -->
 <!-- Content_END -->
