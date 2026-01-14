@@ -15,8 +15,31 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## **Day 3 学习计划**
+
+2026/01/14 总体学习计划如下：
+
+-   阅读Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
+    
+-   学习《021学习以太坊》中的第二章
+    
+-   观看[**ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
+    
+
+## **Web3 实习手册阅读**
+
+### **1\. 安全与合规**
+
+## **《021学习以太坊》第二章学习**
+
+## **ENS, DEX, Identity, Inventory, Sybil 学习**
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -155,6 +178,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
