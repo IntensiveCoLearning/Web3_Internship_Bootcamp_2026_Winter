@@ -15,8 +15,33 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 1.14共学笔记
+
+非学分任务：
+
+1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
+    
+2.  021 学习以太坊第 2&3 章
+    
+3.  拓展 & 辅助理解材料
+    
+    1.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
+        
+    2.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
+        
+    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+        
+
+学分任务：
+
+1.分享会：合规与安全
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 1.13共学笔记
 
 1.12补充：
@@ -85,6 +110,7 @@ web3行业赛道：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
