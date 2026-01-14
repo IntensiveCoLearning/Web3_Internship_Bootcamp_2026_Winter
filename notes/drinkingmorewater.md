@@ -107,10 +107,46 @@ web3目前缺用户，所以更需要安全的基础设施
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768393432598-image.png)
 2.  web3安全漏洞挖掘方式和web2有什么区别？主要集中在哪些方面？老师：这是不同的漏洞明细+技术工具，web3存在业务层or语法层的；web2挖漏洞的工具更多
+    
+
+# Web3合规
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768393916429-image.png)
+
+曼昆 刑事辩护案件 办理了国内最大的加密交易所永续合约案件
+
+合规一般是针对于公司，个人一般是风控
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768394433614-image.png)
+
+今日主题限制在大陆的刑事业务
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768394677561-image.png)
+
+## 中国内地三个负面清单
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768394729394-image.png)
+
+1.  单纯发币没有公开融资没事；没有拿到拍照就引入传帮带机制就会有风险
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768394874639-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768394951617-image.png)
+
+赌博活动和金融活动的最大差异是风险掌握在自己手里还是开盘人员手里；合约不是赌博
+
+逐利性执法
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395102281-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768395207233-image.png)
+
+探路合规的特殊因素，以ai算力中心加入
+
+## 中心化的法律vs去中心化的理念
+
+polymarket美国开了特殊评价体系，金融衍生品，按照事件合约定性处理，大陆体系中一定会当作赌博处理，合规最好是去海外
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 # Web3运行原理
@@ -220,6 +256,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
