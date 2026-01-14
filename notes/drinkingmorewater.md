@@ -15,8 +15,96 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# **Web3安全**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
+
+Web3安全与风险趋势
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388821045-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768389182403-image.png)
+
+gogohelp社区
+
+101案例集
+
+包含项目方+用户被盗事件
+
+web3天然有资产和金融属性，而金融的本质是风控和安全
+
+## 精准猎杀
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768389747331-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768389815526-image.png)
+
+1.  bybit 定时资金调拨时 黑客黑了safe的某个开发人员 实现精准打击 没广撒网是因为容易暴露；不容易发现这是黑客攻击，因为操作如常
+    
+2.  攻防不断升级，应急响应能力不断增强；第二个是因为**智能合约漏洞**
+    
+3.  balancer 很老牌的机构 潜藏了很多年的合约漏洞被挖掘出来了 应用了ai进行了挖 安全响应没有那么多
+    
+4.  后头几个都是**私钥泄露**和热钱包被盗
+    
+5.  **“地址投毒”**就是地址一旦进行交易，地址中就会无端产生一些不知道是啥的资产，名字也叫usdt，可能就会发现不是真的usdt，属于钓鱼攻击的一种方式，也叫做粉尘攻击。乱七八糟东西改成和交易历史中首尾地址相同的地址，直接复制这个地址转出去就会转错。这个供给完全自动化。（评论区：unphishable上做过，0utransferfrom骗局）
+    
+
+总结：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768390512434-image.png)
+
+CeFi：中心化机构——为什么成功的项目方仍然会出现这样的问题？和黑客的攻击手段有关，例如各类高级的交易方式
+
+DeFi：去中心化的机构——破坏性增强，老牌机构不断被挖出新漏洞
+
+web3目前缺用户，所以更需要安全的基础设施
+
+## 广撒网
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768390982582-image.png)
+
+和每个人息息相关
+
+1.  私钥窃取
+    
+2.  钓鱼攻击：每个小时都在发生，要授权要签名；和你当前要处理的事情息息相关，很容易放松警惕
+    
+3.  rug token
+    
+4.  利用kol效益发的
+    
+5.  评论区：讲安全刚好看到这个新上gate的币 就是安全相关的项目
+    
+    ![1A02277A-3FBB-4E52-BCCD-84AA67F60F91.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768391284494-1A02277A-3FBB-4E52-BCCD-84AA67F60F91.jpg)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768391323052-image.png)
+
+1.  略
+    
+2.  UXLINK AI深度伪造和社会工程供给；针对高净值用户发生了很多；社区里面出现了挤兑的趋势，有很多用户质疑监守自盗（因为管理员账号权限所以被偷了）
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768391692114-image.png)
+
+养成**独立验证**的习惯
+
+## 新型骗局
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768392250380-image.png)
+
+1.  7702赋予了链上DAO地址的智能合约能力，例如批量交易、自动化功能、社交恢复等
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768392418844-image.png)
+
+7702让你即使有私钥也转不走资产
+
+## GoPlus安全建议
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768392915474-image.png)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -124,6 +212,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
