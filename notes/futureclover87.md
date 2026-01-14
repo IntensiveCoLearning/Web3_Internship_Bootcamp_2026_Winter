@@ -32,8 +32,32 @@ INTJ-but 兴趣广泛 皮艇/桨板/网球/书法 喜欢在秋高气爽的天气
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+核心深挖了区块链钱包原理
+
+a, 核心关联：助记词推导出私钥，私钥推导出公钥（地址），过程不可逆
+
+b, 钱包和账号的关系：助记词+ECDSA Pair可以推出私钥+公钥，助记词相当于大钱包，下面可以有多个小钱包，小钱包之间彼此独立不相关联
+
+c, 公钥的作用：指令+签名 可以进行全网发布，任何人可以用ECDSA倒推出地址，如果信息被篡改，则地址也会发生改变，和原有地址必须互相验证，从而验证签名
+
+d, 是否可被攻破？128位的随机二进制序列是真正安全性核心，这是助记词的源头，但是用户通常不会看到
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-14-1768391042314-image.png)
+
+e, 是否可能被撞中扫走地址上的资产？并不是随机组合的2048个单词里面随机选择12个就可以生成助记词，必须要符合效验和验证
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-14-1768390925169-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-14-1768390950460-image.png)
+
+e, 助记词原理：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-14-1768390963027-image.png)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 今天核心学习收获
 
 1.  了解Web 3.0 和 Web 3 的区别，之前经常会混用，而Web 3 才是真正区块链的指向，待学习深入了解RDF，OWL，SPARQL的语言
