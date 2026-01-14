@@ -20,10 +20,15 @@ timezone: UTC+8
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-14-1768392918826-image.png)
 
 web3攻击趋向精准化+广撒网，要多多谨慎，不乱点链接，不乱下载
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-14-1768398888718-image.png)
+
+准时全程参与合规会议，对这个行业的合法以及违规场景有了更多了解
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-13-1768296913066-image.png)
