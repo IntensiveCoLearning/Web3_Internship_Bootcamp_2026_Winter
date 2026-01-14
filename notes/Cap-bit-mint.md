@@ -15,8 +15,24 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+-   Unphishable 钓鱼攻防挑战通关啦！
+    
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NTY1NGY5YTRiMjI1MmVkODQ2YThlMDk3NmIxNjYzMWJfWGFhSUJ3dEpiR3FGODFEaFZIdGhNMDVXWE1zTXZseWtfVG9rZW46UTYyNGJkSmw3bzJQeWF4cGoySGNiTlhWbnNmXzE3Njg0MDU4MzU6MTc2ODQwOTQzNV9WNA)
+
+-   参与「Web3合规 & 安全」分享会（近3小时）
+    
+
+尤其刚完成钓鱼攻防练习，再听Web3安全议题，产生强烈共鸣，收获颇丰！
+
+-   完成youtube《 [**Web2 to Web3 - learn how to build on Ethereum**](https://www.youtube.com/playlist?list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69)》day4部分学习
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 -   参与【Web3 运行原理】——感谢Bruce老师的分享，虽然有些内容比较深，但解决了我一开始学习的一些困惑。
     
 -   创建自己的第一个NFT嘻嘻😁
@@ -28,6 +44,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 -   成功创建钱包，并完成首笔交易（感谢共学群里某大佬分享的教程：[如何完成“创建钱包，并尝试测试币转账”？）](https://humdrum-volleyball-4a2.notion.site/2e54867ff3e180b5bc84e33a7e2f9835)
     
