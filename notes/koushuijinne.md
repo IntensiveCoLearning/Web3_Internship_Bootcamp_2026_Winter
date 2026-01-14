@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# web3安全
+
+## 1\. defi优于cefi
+
+## 2\. 国家级黑客已深度进化
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 对web3的个人看法
 
 1\. Web3 与去中心化
@@ -88,6 +98,7 @@ DAO \*\*（Decentralized Autonomous Organization，去中心化自治组织）\*
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
