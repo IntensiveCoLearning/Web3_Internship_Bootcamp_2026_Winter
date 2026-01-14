@@ -17,6 +17,10 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+## 学习计划
 
-
+-   完成通用部分，所有需要下载学习的部分
+<!-- DAILY_CHECKIN_2026-01-14_END -->
 <!-- Content_END -->
