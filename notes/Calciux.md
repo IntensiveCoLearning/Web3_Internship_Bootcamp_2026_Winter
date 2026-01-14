@@ -34,10 +34,32 @@ CeFi: centralized finance
 • 洗钱工业化：资金在被盗后迅速进入一个高度自动化的洗钱链条，通常可以在45天内完成从链上混币到非法平台法币结算的全过程。
 
 **地址投毒（Address Poisoning）是 Web3 中一种高频且隐蔽的钓鱼攻击，攻击者伪造与你真实地址“极其相似”的假地址vanity address，并通过小额转账把它“污染”进你的交易记录，诱导你在下一次转账时误复制该假地址，从而把资产直接转给攻击者。**
+
+## 高频攻击类型
+
+-   Private Key Theft
+    
+    -   Social engineering
+        
+    -   Malware / Clipboard hijack
+        
+    -   phishing / approval phising
+        
+    -   side channel attack
+        
+    -   Supply Chain Attack
+        
+-   **“Rug token” 指的是与 rug pull相关的代币：通常是开发者为了实施诈骗而创建的代币，最终会通过撤走流动性或抛售代币让投资者血本无归。**
+    
+
+Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-14-1768391768690-image.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ## 学习以太坊 1-2
@@ -218,6 +240,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
