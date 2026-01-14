@@ -19,8 +19,82 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+安全认知
+
+-   案例
+    
+
+2.2 UXLINK - AI 深伪（deepfake）与社工攻击
+
+养成独立验证的习惯
+
+2.3 balancer - 计算精度与合约漏洞
+
+黑客的能力普遍高于项目方
+
+-   攻击方式演变与新技术骗局
+    
+
+3.1 eip-7702与新型钓鱼
+
+7702升级：地址转变为智能合约地址
+
+3.2
+
+3.3
+
+3.4
+
+-   安全建议
+    
+    -   对用户：养成安全习惯
+        
+        -   不点、不签、不装、不转
+            
+        -   官方渠道下载app并交叉验证
+            
+        -   安装安全插件
+            
+        -   签名时务必核对内容
+            
+    -   对生态：全周期安全管理
+        
+        -   开发
+            
+        -   运行
+            
+        -   响应
+            
+        -   原生安全：协议层升级
+            
+
+goplus 安全社区
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/violetzhs/images/2026-01-14-1768393372079-image.png)
+
+合规下半部分：
+
+刑事层面，大陆法系
+
+中国内地三个负面清单：
+
+-   ico公开融资
+    
+-   虚拟货币交易所
+    
+-   虚拟货币挖矿
+    
+
+中心化的法律 vs 去中心化的理念
+
+·
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 **「Web3 运行原理」**
 
 **智能合约 = 区块链账本里的“可执行代码”**
@@ -40,6 +114,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # 开营仪式
 
