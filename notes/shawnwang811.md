@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今日学习：
+
+铸造了自己的NFT
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 当前行业现状：从单纯DeFi转向RWA，以及AI等现实领域
 
 核心平台：
@@ -52,6 +60,7 @@ POS的共识机制，资本游戏，股份制
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今日学习：
 
