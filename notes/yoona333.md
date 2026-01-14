@@ -23,11 +23,110 @@ Web3 实习计划 2025 冬季实习生
     
 3.  参与线上 Co-Learning、Web3 安全、合规分享会
     
-4.  学习 以太坊协议
+4.  学习 以太坊协议  
+    
+
+**下文所说的nftdemo文件，地址在这里哦** [https://github.com/yoona333/NFTdemo](https://github.com/yoona333/NFTdemo)
+
+前提：
+
+使用Metamask里面的Sepolia测试网络。（如果Sepolia测试网络里面没有币，可以去[https://faucets.chain.link/](https://faucets.chain.link/) 这个网站里领取，每隔12小时领取0.25SepoliaETH。）  
+[大家可以看我的这篇 CSDN。](https://blog.csdn.net/yoona333/article/details/138653349?spm=1001.2014.3001.5501)
+
+**如何领取SepoliaETH币方法**：
+
+**打开**[**https://faucets.chain.link/网页。**](https://faucets.chain.link/网页。)
+
+1、点击连接钱包
+
+2、点击“我同意”、连接小狐狸。​
+
+你会发现，这里已经连接上了，轻轻触碰这个图标，会像图中所示。你也可以点开这个图标，会显示已连接到该网站。​编辑​
+
+3、这个地址是metamask里面账户的地址、点击0.25 test ETH​
+
+4、点击登录 login GitHub，没有GitHub账号，请注册一个。在“确认您是真人”的前面方框那 里 点击一下，就会出现勾勾。，再点击send request。 ​
+
+5、等这个蓝色线到达最后，再点击close。再去你的 metamask 账户上查看是否有增加Sepolia测试币。就可以领取啦。（每12小时可以领取一次哟）​编辑​
+
+**一、将合约代码导入remix 中（记得环境选择这个哟**
+
+**Remix**    [**https://remix.ethereum.org/**](https://remix.ethereum.org/) 
+
+​编辑）
+
+**这里有两种方法，第一种可能有些同学使用不了，可以试试第二种。**
+
+**第一种方法：**
+
+1、首先进入remix中，在首页有个home，点击GitHub。就会出现一个框框。​编辑​
+
+就是这样的框框，这里面输入这一串网址，你可以点开来看一下，是GitHub上的代码，把它导入到remix中去。[https://github.com/ConsenSys/Tokens/blob/fdf687c69d998266a95f15216b1955a4965a0a6d/contracts/eip20/EIP20.sol](https://github.com/ConsenSys/Tokens/blob/fdf687c69d998266a95f15216b1955a4965a0a6d/contracts/eip20/EIP20.sol) ​编辑​
+
+导入之后，会有这些，点开看**EIP20.sol文件**，会发现报红，因为这个文件中还导入了**EIP20Interface.sol**文件，所以我们接下来导入此文件。 ​编辑​
+
+2、导入EIP20Interface.sol文件，同样的方法，在home里面，点击GitHub，就会出现框框，输入
+
+[https://github.com/Consensys/Tokens/blob/fdf687c69d998266a95f15216b1955a4965a0a6d/contracts/eip20/EIP20Interface.sol](https://github.com/Consensys/Tokens/blob/fdf687c69d998266a95f15216b1955a4965a0a6d/contracts/eip20/EIP20Interface.sol)
+
+就可以发现多了一个代码，记得点开这两个sol文件，它会自动多出来json文件。编译版本记得改。 ​
+
+**第二种方法：直接自己在remix里面新建一个文件夹叫class（自己随便取名）里面再自己手动创建两个文件（注意后缀名为.sol），分别对应刚刚两个导入的文件名称，再点进去那两个链接，讲里面的合约内容分别复制到刚刚创建的文件夹里面去。效果也是一样的。**
+
+**二、导入好了代码之后，我们还要导入一个文件夹，这里面就是关于NFT的文件。**
+
+点击这个图标，代表的是上传文件夹。
+
+​
+
+**三、打开这个**[**https://www.pinata.cloud/**](https://www.pinata.cloud/) **网页。进入这个网页需要Vpn，科学上网。**
+
+Pinata（用户可以在Pinata上注册账户，创建存储桶，并上传图片等文件。上传完成后，Pinata会生成一个唯一的CID（内容标识符），用于标识文件在IPFS网络中的位置，并生成一个可永久访问的链接，用户可以将此链接分享给他人，使他们能够访问在IPFS网络上存储的内容
+
+1、进入之后，点击Get created。 ​
+
+2、如果没有帐户，就选择Create one，创建一个账户。​
+
+3、填写好自己的信息之后，点击Sign up。注意自己的邮箱，会发送信息让你确认。最好在电脑上登录自己的邮箱。如果注册后，登不上去，可以刷新页面，再登录试试。​
+
+4、登录之后是这样的。然后我们再点击这个upload，上传一张照片。
+
+5、可以自己给它取名字，为了方便好记。然后点开这个图片，这个上面就是图片的网址。  
+
+**四、打开remix，在remix中找到刚刚导入的nftdemo文件夹里面的 nft-metadata.json。将双引号里面的网址改成刚刚图片的网址，记得保存哈。现在在自己的此电脑里找到netdemo文件夹，找到里面的nft-metadata.json，看下有没有改成照片的网址，如果没变，请手动改。**
+
+**五、再次点开pinata的网页，然后点击upload，将刚刚的nft-metadata.json文件也上传上去。**  
+
+**六、接下来，我们开始部署合约了。打开remix，找到nftdemo下的MyNFT.sol文件。**  
+
+**七、点击deploy部署，小狐狸就会自动跳出来，然后点击确认。注意看这个gas值，如果太高的话，就尽量白天部署，因为我们和国外是有时差的，这样会便宜很多。**  
+
+**八、点击确认之后，稍等一会，桌面右下角会弹出消息提示，然后左下角箭头这里，出来了部署的合约，我们把这个合约展开。**  
+
+**九、找到这个mintNFT方法，然后根据图片上的提示，将参数填入进去。**​
+
+这个是我上传的json文件的网址（url）  
+
+**十、点击交易之后，又会跳出metamask，然后也是要注意消耗的燃料费用。**
+
+成功之后会有消息提示。  
+
+**十一、接下来，打开小狐狸，找到这个收藏品，点击导入NFT。**​
+
+点击导入之后，会出现这个，然后看着图片，将信息填好之后，点击导入。
+
+**十二、导入之后，会发现收藏品里面多了东西。**
+
+**十三、点开这个NFT，然后进去之后，再点击三个点点，再选择在Opensea上查看。**​
+
+最后的效果就是这样子哦，我也不是一次就出来的，换了好几张图片，操作了很多遍才成功哒。  
+
+**最后希望我的笔记可以帮助到大家！**​
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 1.  √ 学习UI UX Pro Max的使用
     
@@ -142,6 +241,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
