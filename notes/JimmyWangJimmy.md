@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 。
 
 📝 学习笔记：链上支付（On-chaiPayment）技术逻辑
@@ -88,6 +94,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 ### **开营仪式回放笔记--第一天学习打卡**
 
