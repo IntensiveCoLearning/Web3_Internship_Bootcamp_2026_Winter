@@ -41,7 +41,7 @@ Web3 实习计划 2025 冬季实习生
 | L2 手續費 | 較貴 (約 0.2 - 1.0u) | 極便宜 (可能降至 < 0.01u) |
 | 吞吐量 | 受限 | 大幅提升 為未來分片打基礎 |
 
--   **ZK-Rollup:**零知識匯總 (Zero-Knowledge Rollup) 將交易在鏈下(L2)做打包，以太坊只需驗證打包後的"證明"即可，完善隱私問題、安全性、提升速度、降低成本
+-   \*\*ZK-Rollup:\*\*零知識匯總 (Zero-Knowledge Rollup) 將交易在鏈下(L2)做打包，以太坊只需驗證打包後的"證明"即可，完善隱私問題、安全性、提升速度、降低成本
     
 -   **The Merge** (2022 年):從高能耗 PoW -> 低能耗 PoS
     
@@ -69,21 +69,51 @@ Web3 实习计划 2025 冬季实习生
     Defi應用:Uniswap（去中心化交易所）、Aave（借貸協議）、Compound（借貸協議）  
     NFT平台:OpenSea、Foundation、SuperRare  
     錢包應用:MetaMask、Coinbase Wallet、Rainbow  
-    DAO工具:Snapshot、Aragon、Colony  
+    DAO工具:Snapshot、Aragon、Colony
     
 2.  **協議層** (Protocol Layer) : _以太坊_**_核心_**_基礎設施_  
     共識層客戶層:Prysm、Lighthouse、Nimbus、Teku  
     執行層客戶層:Geth、Nethermind、Erigon、Besu  
-    核心協議:EVM、状态管理、Gas 机制  
+    核心協議:EVM、状态管理、Gas 机制
     
 3.  **擴展程** (Scaling Layer) : _提升_**_性能_**_+降低_**_成本_**_的解決方案_  
     L2 Rollups:Arbitrum、Optimism、Polygon zkEVM、zkSync Era  
     側鏈:Polygon PoS、xDAI（Gnosis Chain）  
     狀態通道:Lightning Network for Ethereum
+    
+
+# 今日兩場直播課堂
+
+1.  安全主題分享會
+    
+2.  合規主題分享
+    
+
+兩場都屬於是非常硬，也是不管新手老手都必須要去鑽研的深度問題。
+
+### _安全部分_在面對一些駭客的攻擊手法越來越強大的情況下，
+
+-   必須要對自己的每一筆認證都確切核對交易內容，勿做盲簽
+    
+-   安裝安全插件 ex: scam sniffer
+    
+-   交易時確認合約/代幣地址
+    
+-   私鑰、助記詞的備份及存放 / 冷熱錢包的安全分離
+    
+
+### **_合規_**在目前當局監管機制下的風險
+
+-   認清自己做過的交易紀錄，避免與黑U做交互，讓錢包帳戶暴露在風險下
+    
+-   出金務必走合規管道，避免誤觸刑案
+    
+-   找崗位時也要認清自己的項目是否合規，或存在的風險考輛
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 # 以太坊的起源
@@ -165,6 +195,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
