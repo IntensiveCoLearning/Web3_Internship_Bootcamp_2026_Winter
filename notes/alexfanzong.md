@@ -21,9 +21,9 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 \> **Copyright & License / 版权声明：**
 
-\> **本系列作者：** Alex Fan | Web3 合规与投融资 从业者
+本系列作者： **Alex Fan | Web3 合规与投融资 从业者**
 
-\> **首发平台：** Web3 Internship Bootcamp 2026 Winter
+首发平台： Web3 Internship Bootcamp 2026 Winter
 
 \> **转载/分享规则：**
 
@@ -39,7 +39,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 \-–
 
-## 7.DAO 的性质与治理困局：为什么必须从“资合”走向“人合”
+## 【深度研究】DAO 的性质与治理困局：为什么必须从“资合”走向“人合”
 
 最近在研究 LXDAO 的治理改革方案，其中的一个核心矛盾让我感到无比熟悉：**“如何防止巨鲸控制社区？”** 以及 **“如何解决社区成员的治理冷漠？”**
 
@@ -53,9 +53,9 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 在传统公司法中，因为“股东利益至上”会导致股东往往追求短期股价，可能损害员工、债权人和公司的长期发展。这个矛盾在 DAO 里被放大了：
 
-传统股东 (Shareholder) 对应 DAO 里的“持币者” (Token Holder/HODLer)，这部分人往往只关心币价涨跌。
+传统股东 (Shareholder) 对应 DAO 里的“持币者” (Token Holder)，这部分人往往只关心币价涨跌。
 
-公司整体利益 (Entity Maximization) 对应 DAO 里的“建设者共识” (BUIDL Culture)，这部分人关心的是协议能否长期存活。
+公司整体利益 (Entity Maximization) 对应 DAO 里的“建设者共识” (Builder Culture)，这部分人关心的是协议能否长期存活。
 
 这里的治理困境在于： 如果严格按照“一币一票”（One Token One Vote），那么有钱的“巨鲸”就能控制社区。但巨鲸可能是投机者，他们会为了短期套现而牺牲社区的长期价值。
 
@@ -63,11 +63,11 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 ![IMG_4580.JPG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/alexfanzong/images/2026-01-14-1768400551029-IMG_4580.JPG)
 
-如流程图所示，普通人哪怕买了币也只是 Member，必须通过“参与建设获取 U 激励”并“累积 500U”兑换 Buidler Card 之后，才能Claim 治理权。LXDAO的理念是不再追求治理的投票率，而是专注提升治理质量，**将治理权交给愿意参与治理的建设者**。
+如流程图所示，普通人哪怕买了币也只是 Member，必须通过“参与建设获取 U 激励”并“累积 500U”兑换 Builder Card 之后，才能Claim 治理权。LXDAO的理念是不再追求治理的投票率，而是专注提升治理质量，**将治理权交给愿意参与治理的建设者**。
 
 这是一种对传统公司法的反向修正。在传统的逻辑下，资本雇佣劳动。谁出钱（买股票），谁有投票权。而LXDAO的逻辑是，**用劳动确权治理**。
 
-回到公司法的逻辑，这相当于把公司的**“表决权”与“收益权”进行了彻底分离**：
+回到公司法的逻辑，这相当于把公司的“表决权”与“收益权”进行了彻底分离\*\*：
 
 Token (代币)： 仅代表收益权/分红权（类似于优先股）
 
@@ -75,7 +75,7 @@ Buidler Card (身份卡)： 代表表决权（类似于双重股权结构中的 
 
 ### **（3）解决“治理冷漠”的悖论：从“激励投票”转向“筛选投票”**
 
-DAO 治理的另一大顽疾是“治理冷漠”。在传统观念中，为了解决股东（Token Holder）懒得投票（理性的无知）的问题，通常的做法是降低门槛（如委托投票）或增加激励。
+DAO 治理的另一大顽疾是“治理冷漠”。在传统观念中，为了解决股东懒得投票（理性的无知）的问题，通常的做法是降低门槛（如委托投票）或增加激励。
 
 但 LXDAO 的实践提供了一个反直觉的解法：与其求着搭便车的人（Free-riders）来投票，不如设立门槛，只让真正承担责任的人投票。
 
@@ -102,11 +102,12 @@ LXDAO 的案例揭示了 Builder DAO 的真实面目：它更像是一个**数�
 
 -   核心资产差异： 传统上市公司的核心资产是厂房、专利和资本；Builder DAO 的核心资产是“**愿意持续贡献的人**”（Human Capital Intensive）。
     
--   治理逻辑倒置：**传统公司（资合）是资本雇佣劳动，**股东出钱，雇佣员工，所以资本拥有最终话语权；**Builder DAO（人合）是劳动雇佣资本（或劳动主导资本）**， 在 Web3 的早期阶段，钱往往是充裕甚至过剩的，而靠谱的建设者是稀缺的。因此，治理权必须掌握在**人力资本提供者**手中，而非**财务资本提供者**手中。
+-   治理逻辑倒置：**传统公司（资合）是资本雇佣劳动，股东出钱，雇佣员工，所以资本拥有最终话语权；Builder DAO（人合）是劳动雇佣资本（或劳动主导资本）， 在 Web3 的早期阶段，钱往往是充裕甚至过剩的，而靠谱的建设者是稀缺的。因此，治理权必须掌握在人力资本提供者手中，而非财务资本提供者手中**。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -222,6 +223,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
