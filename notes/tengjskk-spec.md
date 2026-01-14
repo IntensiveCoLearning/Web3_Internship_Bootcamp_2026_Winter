@@ -15,8 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+# 1.领取水龙头测试币，铸造NFT
+
+# 2.回看布老师讲的web3运行原理
+
+# 3.小红书与推特更新
+
+# 完成进度：
+
+![截屏2026-01-14 18.44.03.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-14-1768388095535-__2026-01-14_18.44.03.png)![mfnft.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-14-1768388157219-mfnft.png)![IMG_1916.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-14-1768388247384-IMG_1916.jpg)
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # **目标计划：**
 
 -   **「Web3 行业全局介绍 & 岗位概览」回放，利用AI工具整理内容，今日同步更新Twitter和小红书**
@@ -31,6 +45,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # 1.12计划
