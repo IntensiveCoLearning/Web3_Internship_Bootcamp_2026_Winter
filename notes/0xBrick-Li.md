@@ -19,21 +19,21 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 # To do list
 
--   推特发学习总结
+-   推特发学习总结 ✅
     
--   021以太坊阅读
+-   021以太坊阅读 ✅
     
--   实习手册阅读
+-   实习手册阅读 ✅
     
 -   Unphishable至少5章
     
 -   安装欺诈检测插件
     
--   今天你Commit了吗：Arbireum Rust Task4
+-   今天你Commit了吗：Arbireum Rust Task4 ✅
     
 -   Go 工程项
     
--   参会
+-   参会 ✅
     
 
 # Note
@@ -44,7 +44,7 @@ Web3 实习计划 2025 冬季实习生
     公式：address = keccak256(rlp(\[sender, nonce\]))\[12:\]  
     sender：部署合约的账户地址（EOA 或合约）  
     nonce：部署时账户当前的 nonce  
-    rlp(...)：以太坊递归长度前缀编码  
+    rlp(…)：以太坊递归长度前缀编码  
     keccak256：哈希结果256 bits(32 bytes)  
     \[12:\]：取后 20 bytes 作为地址
     
@@ -59,7 +59,8 @@ Web3 实习计划 2025 冬季实习生
     生命周期：发送交易 → 节点收到 → 加入 mempool → 广播 → 矿工打包 → 上链 → 从 mempool 删除
     
 
-### CREATE 地址不可预测的核心原因  
+### CREATE 地址不可预测的核心原因
+
 查询的 pending nonce ≠ 出块节点实际使用的 nonce
 
 -   节点视图不一致：不同节点 mempool 中交易数量不同，不同节点看到的 pending nonce 不一致
@@ -89,6 +90,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 # To do list
@@ -148,6 +150,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
