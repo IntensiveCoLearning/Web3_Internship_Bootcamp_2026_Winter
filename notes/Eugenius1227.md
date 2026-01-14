@@ -17,6 +17,6 @@ hello
 <!-- Content_START -->
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
-hi
+你好
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 <!-- Content_END -->
