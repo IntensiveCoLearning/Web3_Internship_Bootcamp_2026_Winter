@@ -15,8 +15,14 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-14
+<!-- DAILY_CHECKIN_2026-01-14_START -->
+今日目标：完成Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
+<!-- DAILY_CHECKIN_2026-01-14_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # 1\. 核心认知：
 
 ## 账户体系的本质不再是 Web2 的“账号密码”模式，而是“钥匙与锁”的主权模式
@@ -81,6 +87,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 今天是我通过“**实操 + 理论 + 行业视野**”的结合，我完成了从创建钱包到理解以太坊底层逻辑的闭环
