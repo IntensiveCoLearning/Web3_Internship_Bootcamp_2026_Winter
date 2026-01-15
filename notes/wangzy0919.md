@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天决定看完第零周的拓展资源和注意事项，顺便完成一些任务
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 1.今天确定了主要进行深度技术方向的学习，因为自己本身就是区块链专业的学生。入门技术都学过，可以快速复习过一遍
 
 2.使用metamask在sepolia测试网上铸造了一个NFT
@@ -26,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 今天在实习计划的网站中到处摸索一下，并制定好接下来一个月的学习计划
 <!-- DAILY_CHECKIN_2026-01-12_END -->
