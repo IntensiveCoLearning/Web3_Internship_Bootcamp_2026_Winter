@@ -31,10 +31,54 @@ Web3 实习计划 2025 冬季实习生
 Engine API: EL-CL之间的通信接口
 
 -   节点间的通信:
+    
+    -   节点发现
+        
+        1.  boot nodes
+            
+        2.  UDP上的Discovery Protocol
+            
+        3.  Kademlia 是一种分布式哈希表（DHT）算法，广泛应用于 P2P 网络
+            
+        
+        -   **节点 ID**：每个节点都有一个唯一的 ID（通常是通过哈希函数生成的 160 位二进制数）。
+            
+        -   **距离度量**：两个节点的距离定义为它们 ID 的异或值（XOR）。距离越小，表示越接近。
+            
+        -   **K-桶 (K-bucket)**：每个节点维护一个路由表，分成多个桶，每个桶存储与自己在某个距离范围内的节点。这样可以快速找到“更接近目标”的节点。
+            
+        -   **查找过程**：
+            
+            1.  节点计算目标数据的哈希值。
+                
+            2.  从路由表中选择与目标最接近的节点。
+                
+            3.  逐步向更接近目标的节点转发查询，直到找到存储数据的节点或达到查询深度.
+                
+
+一般可以达到O(log n), XOR距离满足度量性质可以保证算法正确性, 是为了加快查找过程而设计的
+
+-   信道: 建立在一条TCP上的 devp2p协议栈
+    
+-   数据传输 gossip+请求响应缺失的历史数据
+    
+
+区块头 state root / Merkle 根
+
+what is merkle tree?
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-15-1768488613763-image.png)
+
+### RPC
+
+在区块链生态中，RPC 通常指 区块链节点提供的一种接口，供应用程序 （比如钱包、dApp、区块浏览器等）远程调用。
+
+执行客户端（Execution Client）：EVM + 状态 + RPC
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ## 分享会 web3安全
@@ -93,6 +137,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -277,6 +322,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
