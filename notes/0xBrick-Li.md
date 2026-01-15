@@ -25,9 +25,9 @@ Web3 实习计划 2025 冬季实习生
     
 -   阅读uniswap
     
--   阅读Web3实习手册
+-   阅读Web3实习手册 ✅
     
--   今天你Commit了吗？
+-   今天你Commit了吗？✅
     
 -   制定职业规划，完成职业规划任务 ✅
     
@@ -81,10 +81,16 @@ Web3后端远程实习  Go + Solidity + 以太坊 L2
 -   简历打磨
     
 -   面试准备
+    
+
+Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成功。
+
+学一门好，多了嚼不烂。 -----Jintol老师
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # To do list
@@ -165,6 +171,7 @@ Web3后端远程实习  Go + Solidity + 以太坊 L2
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -222,6 +229,7 @@ Web3后端远程实习  Go + Solidity + 以太坊 L2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
