@@ -17,6 +17,8 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+# Web3 合规分享会
+
 # [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
 
 ## NFT的多样性和市场现状
@@ -101,8 +103,6 @@ Web3 实习计划 2025 冬季实习生
 -   用户通过签名交易授权所有权变更
     
 
-# Web3 合规分享会
-
 # [**Unphishable**](https://unphishable.io/) **钓鱼攻防挑战**
 
 ## **0x0008：Telegram Token 钓鱼**
@@ -124,6 +124,7 @@ Punycode 是一种编码系统，它允许将非 ASCII 字符（例如西里尔�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -338,6 +339,7 @@ Punycode 是一种编码系统，它允许将非 ASCII 字符（例如西里尔�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -595,6 +597,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
