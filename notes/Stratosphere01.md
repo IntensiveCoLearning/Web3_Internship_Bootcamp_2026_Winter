@@ -15,8 +15,44 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## 转变：从“对话”到“行动”—— ai分享会
+
+![1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487695452-1.jpg)![2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487716965-2.jpg)![3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487733276-3.jpg)![4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487747286-4.jpg)![5.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487762438-5.jpg)![6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487780369-6.jpg)
+
+### wachi:
+
+erc8004其实只是设计了框架:
+
+identity registry - 有什么agent
+
+reputation registry - 怎么存每个agent的reputation
+
+validation registry - permissioned的agent标签
+
+注意：协议并没有规定reputation是怎么衡量与计算的
+
+具体的reputation计算规则以及机制（是否有dispute）都要依赖于registry维护机构来设计
+
+打比方：erc8004就是一个大众点评，上边有很多餐厅（这个是identity registry）
+
+然后大众点评的评分机制是消费过能有更高权重，用户VIP等级也有更高的权重（reputation）
+
+最后是不是地区美食榜、环境榜就是validation registry（官方给打标签）
+
+最近比较火热的高德美食榜也可以看作一个8004，他也是由这套体系架构起来的。有很多餐厅，有评分，有榜单。但是他的评分是按照大家导航的次数，以及公里数（有家餐厅所有人导航了4躺地月来回的距离，都要去吃）
+
+![7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487838172-7.jpg)
+
+**p.s.**402协议本来就内嵌在原初互联网架构里（且当时已经有公司做出来了但没有成型导致互联网经济转向内容广告）现在有了Web3才发现它用来是这样用的 冥冥之中的伏笔一样
+
+![8.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487868502-8.jpg)![9.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487898615-9.jpg)![10.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487914679-10.jpg)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ## 好奇心和坚持基本功会反复带来好处 —— co-learning1.14
 
 运营岗位求职与作品集建议：
@@ -370,6 +406,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 ## **治理完全有效的基础只能是社会阶段提升，人民综合素质提高才可以。——co-learning1.13**
 
 本次的co-learning环节更像是一场哲思辩论会，evo swift同学与XiaoHai67890、Draken、wachi三位老师展开了关于DAO治理投票权相关的优劣争议。“无限花园的隐喻”和关怀、包容性的适应性领导力立场更有关联，和 目前 资本的攫取主义 呈现出来的是两翻景色，展示了小海老师深厚的哲学功底。
@@ -429,6 +466,7 @@ LXDAO解决方案：从第七季度开始，LXDAO不再追求治理的投票率�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## 学习笔记1：DAY1
