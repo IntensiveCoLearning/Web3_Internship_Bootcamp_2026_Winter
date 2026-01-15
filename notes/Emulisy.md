@@ -17,9 +17,9 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
-\# From Wallet Transaction to Block Confirmation: Complete Flow
+# From Wallet Transaction to Block Confirmation: Complete Flow
 
-\## 1. Transaction Creation (Wallet Side)
+## 1\. Transaction Creation (Wallet Side)
 
 1\. **User initiates a transaction in the wallet**
 
@@ -31,17 +31,17 @@ Web3 实习计划 2025 冬季实习生
 
 {
 
-"from": "AliceAddress",
+“from”: “AliceAddress”,
 
-"to": "BobAddress",
+“to”: “BobAddress”,
 
-"value": 1 ETH,
+“value”: 1 ETH,
 
-"nonce": 5,
+“nonce”: 5,
 
-"gasLimit": 21000,
+“gasLimit”: 21000,
 
-"gasPrice": 50 Gwei
+“gasPrice”: 50 Gwei
 
 }
 
@@ -57,9 +57,9 @@ Web3 实习计划 2025 冬季实习生
 
 \- Anyone can verify the signature but cannot forge it
 
-\---
+\-–
 
-\## 2. Transaction Broadcasting
+## 2\. Transaction Broadcasting
 
 1\. Wallet broadcasts the signed transaction to the blockchain network (P2P network)
 
@@ -69,9 +69,9 @@ Web3 实习计划 2025 冬季实习生
 
 3\. At this stage, the transaction is **not yet part of any block**
 
-\---
+\-–
 
-\## 3. Transaction Validation (Nodes / Miners / Validators)
+## 3\. Transaction Validation (Nodes / Miners / Validators)
 
 Before packaging into a block, transactions are validated:
 
@@ -81,11 +81,11 @@ Before packaging into a block, transactions are validated:
 
 3\. **Nonce correctness** → prevents duplicate transactions
 
-✅ Only valid transactions are eligible to be included in a block
+Only valid transactions are eligible to be included in a block
 
-\---
+\-–
 
-\## 4. Block Packaging
+## 4\. Block Packaging
 
 1\. Miner/validator selects transactions from the mempool
 
@@ -115,9 +115,9 @@ Block N+1
 
 3\. Essentially, the block organizes transactions into a structured format ready for consensus
 
-\---
+\-–
 
-\## 5. Consensus Phase
+## 5\. Consensus Phase
 
 Different blockchains use different consensus mechanisms:
 
@@ -141,9 +141,9 @@ Different blockchains use different consensus mechanisms:
 
 \> Core idea: global agreement on which block is accepted
 
-\---
+\-–
 
-\## 6. Block Confirmation (On-chain)
+## 6\. Block Confirmation (On-chain)
 
 1\. Nodes receive the new block and re-verify transactions and block integrity
 
@@ -157,13 +157,13 @@ Different blockchains use different consensus mechanisms:
 
 4\. Wallet can check transaction status:
 
-\- "Pending" → "Confirmed after 1/2/3 blocks"
+\- “Pending” → “Confirmed after 1/2/3 blocks”
 
 \- Confirmed transactions are immutable
 
-\---
+\-–
 
-\## 7. Summary Flow Diagram (Text Version)
+## 7\. Summary Flow Diagram (Text Version)
 
 \`\`\`text
 
@@ -192,6 +192,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # **Ethereum Basics**
 
@@ -380,6 +381,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # Blockchain Basics
