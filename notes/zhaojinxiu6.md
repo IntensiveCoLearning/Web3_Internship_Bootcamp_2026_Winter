@@ -15,8 +15,938 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## **1.15**
+
+### **EIP-7702与ERC-4437**
+
+EIP-7702 引入的是「第四种交易类型」。
+
+**“第四种交易类型”**指的是： **在以太坊现有 3 种 Typed Transaction 之外，新增一种全新的** `txType = 0x04` **的交易编码与语义规则**，而不是“交易用途的第四类”。
+
+**账户类型**
+
+首先回顾一下账户类型。
+
+以太坊（Ethereum）中的账户分为 **两种类型**：
+
+NaN.  **EOA（Externally Owned ，外部拥有账户）**
+      
+      NaN.  外部拥有账户。最常见的账户类型，也是我们的个人账户（钱包地址）。EOA由私钥控制。将账户的公钥进行哈希运算，通常使用Keccak256算法进行哈希运算。去哈希值的最后20个字节（160位）。长度160 bit
+            
+NaN.  **合约账户（Contract Account）**
+      
+      NaN.  合约账户。部署在网络上的智能合约，由在区块链上的代码控制。将调用或创建该智能合约的外部账户地址+交易数量Nonce。长度也是160bit。
+            
+      
+      两种账户类型都能：
+      
+      -   接收、持有和发送 ETH 和 token。
+          
+      -   与已部署的智能合约进行交互。
+          
+      
+      区别：数据存储上稍有不同， 因为外部账户无内部存储数据和合约代码，因此外部账户数据中 `StorageRoot` 和 `CodeHash` 是一个空默认值。 一旦属于空默认值，则不会存储对应物理数据库中。 在程序逻辑上，存在 `code` 则为合约账户。 即`CodeHash`为空值时，账户是一个外部账户，否则是合约账户。
+      
+      外部持有账户
+      
+      -   创建帐户是免费的
+          
+      -   可以发起交易
+          
+      -   外部所有的帐户之间只能进行以太币和代币交易
+          
+      -   由一对加密密钥组成：控制帐户活动的公钥和私钥
+          
+      
+      合约账户
+      
+      -   创建合约存在成本，因为需要使用网络存储空间
+          
+      -   只能在收到交易时发送交易
+          
+      -   从外部帐户向合约帐户发起的交易能触发可执行多种操作的代码，例如转移代币甚至创建新合约
+          
+      -   合约帐户没有私钥。 相反，它们由智能合约代码逻辑控制
+          
+
+**如何创建智能合约地址？**
+
+有两种在以太坊中创建智能合约地址的方法。
+
+每个智能合约通过其地址在区块链中标识。该地址是一系列的长的数字和字符，它从0xba开始......但是问题是如何计算0xba。
+
+部署在区块链上的智能合约代码是交易的一部分。当我们在区块链上部署智能合约时，我们需要一个钱包地址，以便流程将是第一种：**钱包地址 => 交易 => 智能合约**。当我们执行以太坊网络中的任何事务时，它将增加一个成为`Nonce`的数字。所以智能合约地址通过其钱包地址和`Nonce`确定。因此结论是将`Nonce`、发件人地址放在数组中，然后使用`rlp.encode()`机制，在`rlp.encode()`操作结果之后，使用`keccak256()`函数将其放置，并提供32个字节的数据。 智能合约地址使用哈希的最后20个字节。
+
+创建智能合约地址的另一种方法是使用成为`create2`的`opcode`。`create2`取决于发件人地址和合约代码以创建智能合约地址。创建一个智能合约地址并不是那么流行。
+
+智能合约地址：智能合约地址独特地确定区块链上的智能合约，每个智能合约地址都与四个不同的字段相关联：
+
+-   `Nonce`：一个计数器，用来显示外部帐户发送的交易数量或合约帐户创建的合约数量。 每个帐户只能执行具有一个给定随机数的一笔交易，以防范重放攻击，重放攻击指多次广播和重复执行已签署的交易。`Nonce`是一个整数，每次地址发送任何交易时都会增加。因此，在智能合约部署时间`Nonce = 0`之后，智能合约发送第一个交易后，`Nonce`将增加到1，然后依此类推。
+    
+-   `Balance`：这个地址拥有的 Wei 数量。 Wei 是以太币的计数单位，每个 ETH 有 1e18（1018） 个 Wei。如果我们将以太余额发送给智能合约，则其以太余额的增加，如果将智能合约发送到另一个地址，则其以太余额的下降。
+    
+-   `codeHash`：当我们用`solidity`编程智能合约时，该代码将转到区块链上的存储代码字段。该哈希表示以太坊虚拟机 (EVM) 上的帐户_代码_。 合约帐户具有编程的代码片段，可以执行不同的操作。 如果帐户收到消息调用，则执行此 EVM 代码。 与其他帐户字段不同，不能更改。 所有代码片段都被保存在状态数据库的相应哈希下，供后续检索。 此哈希值称为 codeHash。 对于外部所有的帐户，codeHash 字段是空字符串的哈希。
+    
+-   `storageRoot` 有时被称为存储哈希。 Merkle Patricia trie 根节点的 256 位哈希已编码了帐户的存储内容（256 位整数值映射），并编码为 Trie，作为来自 256 的 Keccak 256 位哈希的映射位整数键，用于 RLP 编码的256位整数值。 此 Trie 对此帐户存储内容的哈希进行编码，默认情况下为空。
+    
+
+EOA地址也有四个字段：
+
+-   `Nonce`：Nonce是一个整数，每次地址发送任何交易时都会增加。
+    
+-   `Balance`：balance将增加/降低取决于发送和接受的需求。
+    
+-   `codeHash`： 对于外部所有的帐户，codeHash 字段是空字符串的哈希。
+    
+-   `storageRoot`：此 Trie 对此帐户存储内容的哈希进行编码，默认情况下为空。
+    
+
+**以太坊交易的“类型”**
+
+**最原始的交易（Legacy tx）**
+
+最早的以太坊只有一种交易格式：
+
+```
+ [nonce, gasPrice, gasLimit, to, value, data, v, r, s]
+```
+
+-   ❌ 没有 type byte
+    
+-   ❌ 编码方式固定
+    
+-   ❌ 扩展性极差
+    
+
+* * *
+
+**EIP-2718：Typed Transaction 的引入（分水岭）**
+
+EIP-2718 定义了一个**总框架**：
+
+```
+ transaction = type || rlp(payload)
+```
+
+只要有了 `type` 字节，就可以不断扩展新交易。
+
+* * *
+
+**EIP-2718 体系**
+
+**第一种：EIP-2930（type = 0x01）**
+
+**Access List Transaction**
+
+```
+ 0x01 || rlp([
+   chainId,
+   nonce,
+   gasPrice,
+   gasLimit,
+   to,
+   value,
+   data,
+   accessList,
+   v, r, s
+ ])
+```
+
+作用：
+
+-   提前声明 storage / address
+    
+-   减少 cold access gas
+    
+
+* * *
+
+**第二种：EIP-1559（type = 0x02）**
+
+**Dynamic Fee Transaction**
+
+```
+0x02 || rlp([
+  chainId,
+  nonce,
+  maxPriorityFeePerGas,
+  maxFeePerGas,
+  gasLimit,
+  to,
+  value,
+  data,
+  accessList,
+  v, r, s
+])
+```
+
+作用：
+
+-   baseFee
+    
+-   fee market reform
+    
+
+* * *
+
+**第三种：EIP-4844（type = 0x03）**
+
+**Blob Transaction（Cancun）**
+
+```
+ 0x03 || rlp([
+   chainId,
+   nonce,
+   maxPriorityFeePerGas,
+   maxFeePerGas,
+   gasLimit,
+   to,
+   value,
+   data,
+   accessList,
+   blobVersionedHashes,
+   v, r, s
+ ])
+```
+
+作用：
+
+-   承载 blob
+    
+-   给 L2 用
+    
+
+**第四种：EIP-7702（type = 0x04）**
+
+-   新的 RLP payload 结构
+    
+-   新的验证规则
+    
+-   新的执行语义（EOA code override）
+    
+
+这在 **EIP-2718 体系里**就是：**全新的 Typed Transaction**
+
+```
+ 0x04 || rlp([
+   chainId,
+   nonce,
+   maxPriorityFeePerGas,
+   maxFeePerGas,
+   gasLimit,
+   to,
+   value,
+   data,
+   accessList,
+   authorizationList,   // 新增
+   v, r, s
+ ])
+```
+
+关键不是字段多少，而是：
+
+-   **只有 0x04 交易才能携带** `authorizationList`
+    
+-   只有它能触发：EOA → 临时合约化
+    
+
+**为什么需要EIP-7702？**
+
+在7702之前，以太坊账户模型有一个根本割裂：
+
+| 类型 | 特性 |
+| --- | --- |
+| EOA | 能发起交易（有私钥），但不能自定义验证逻辑 |
+| CA | 能写复杂逻辑，但不能主动发交易 |
+
+这导致：
+
+NaN.  **EOA 无法做到**
+      
+      -   多签
+          
+      -   社交恢复
+          
+      -   自定义签名算法
+          
+      -   session key / 限额
+          
+      -   sponsor gas
+          
+NaN.  **Account Abstraction（AA）只能靠“绕路”**
+      
+      -   EIP-4337：用合约 + mempool + bundler **模拟**
+          
+      -   但不是协议原生，复杂、gas 高、UX 差
+          
+      
+      而EIP-7702就是为了让EOA在不失去私钥模型的前提下，具备合约级的能力。
+      
+
+Pectra升级之后，将使我们能够升级我们的EOA（外部持有账户），这意味着我们可以将代码附加到EOA的CodeHash上，我们还讲拥有像合约账户一样的存储，同样的也是占用StorageRoot。这时候EOA和CA的四个字段在内容上没有区别。
+
+**如何将EOA升级到智能合约？**
+
+基本上我们需要发送第四种交易类型，定义这个授权列表的参数，包括链ID还有现有智能合约的地址，以及我们希望附加到EOA上的代码。
+
+我们可以设置多个授权，然后定义将要使用的链以及该链上的合约地址。让智能合约在每个链都可以附加不同的代码以及不同的逻辑。并且EOA可以执行此代码。
+
+**EIP-7702 的“前身们”**
+
+**第一代：EIP-86 / EIP-2938（早期 AA，已废弃）**
+
+**EIP-86（2017)**
+
+-   最早提出 **“所有账户都是合约”**
+    
+-   彻底取消 EOA
+    
+
+问题：
+
+-   破坏性太强
+    
+-   共识成本过高
+    
+-   客户端复杂度爆炸
+    
+
+**结论：过于激进，失败**
+
+* * *
+
+**第二代：EIP-4337（合约层 AA）**
+
+你应该非常熟了，我简要点关键。
+
+**EIP-4337 核心**
+
+-   用 **UserOperation**
+    
+-   不走 tx mempool
+    
+-   bundler → EntryPoint → 合约钱包
+    
+
+**优点**
+
+-   不改共识
+    
+-   已上线（主网可用）
+    
+
+**缺点**
+
+-   非原生
+    
+-   gas 高
+    
+-   infra 复杂
+    
+-   dApp 兼容成本
+    
+
+这是“模拟 AA”，不是协议 AA
+
+* * *
+
+**第三代：EIP-3074（7702 的直接前身）**
+
+**EIP-3074 做了什么？**
+
+引入两个新 opcode：
+
+-   `AUTH`
+    
+-   `AUTHCALL`
+    
+
+允许：
+
+```
+     EOA 授权
+        ↓
+合约代替 EOA 发起调用
+```
+
+即：
+
+> **合约可以“借用”EOA 的身份**
+
+**能力**
+
+-   批量交易
+    
+-   sponsor gas
+    
+-   合约代管 EOA
+    
+
+**致命问题（为什么被否）**
+
+-   **安全模型太危险**
+    
+    -   合约一旦获得 AUTH
+        
+    -   就可能：
+        
+        -   无限调用
+            
+        -   drain 资产
+            
+        -   用户难以理解授权范围
+            
+-   UX 风险极高
+    
+-   易被钓鱼
+    
+
+**Vitalik 最终反对 EIP-3074**
+
+**EIP-7702 vs EIP-3074（关键区别）**
+
+| 对比项 | EIP-3074 | EIP-7702 |
+| --- | --- | --- |
+| 权力主体 | 合约 | EOA 自身 |
+| 授权模型 | EOA → 合约 | EOA 临时升级自己 |
+| 风险 | 授权不可控 | 作用域 = 单笔交易 |
+| 执行上下文 | 合约控制 | EOA 控制 |
+| 设计哲学 | 借身份 | 变形账户 |
+
+**EIP-7702 与 EIP-4337 的关系**
+
+它们不是竞争，而是**互补**：
+
+-   **7702**
+    
+    -   协议级
+        
+    -   面向 EOA
+        
+    -   更轻量
+        
+-   **4337**
+    
+    -   合约级
+        
+    -   面向合约钱包
+        
+    -   更灵活
+        
+
+未来很可能：
+
+-   普通用户：7702
+    
+-   高级钱包 / DAO / Bot：4337
+    
+
+**安全改进点**
+
+-   临时生效
+    
+-   不可跨交易持久授权
+    
+-   私钥仍是最终控制权
+    
+
+**对以太坊模型的影响**
+
+EIP-7702 实际上在模糊：EOA和CA的区别
+
+但**没有打破它**，而是：
+
+> 在不推翻 EOA 的情况下，引入“合约行为能力”
+
+这是一个**极其以太坊风格的折中设计**。
+
+**EIP-7702的核心机制**
+
+EIP-7702 引入一个新概念（简化表述）：**EOA 的 code 不是空，而是“指向某个合约代码”**
+
+-   不是部署合约
+    
+-   不改变账户类型
+    
+-   只是告诉 EVM：**执行这个 EOA 时，逻辑来自某段合约代码**
+    
+
+**简易工作流程**
+
+```
+ EOA 发交易
+   ↓
+ 交易中声明：使用 code = X
+   ↓
+ EVM 执行时：
+   - msg.sender = EOA
+   - 执行逻辑 = 合约 X
+   - storage = EOA 自己的 storage
+   ↓
+ 交易结束
+   ↓
+ EOA 恢复为普通 EOA
+ ​
+```
+
+但是：
+
+-   EOA仍然签名交易
+    
+-   状态存储在EOA的storage
+    
+-   只在本次交易有效
+    
+
+本质是 **“EOA 的一次性 delegatecall 语义”**
+
+**有了 7702，一个普通 EOA 可以：**
+
+-   使用 **多签 / 自定义验证逻辑**
+    
+-   支持 **批量交易**
+    
+-   使用 **session key**
+    
+-   **免 gas / sponsor gas**
+    
+-   兼容现有 dApp（msg.sender 仍是 EOA）
+    
+
+> 不需要迁移成合约钱包 不需要 EIP-4337 的整套 infra
+
+EIP-7702 允许 EOA 在单笔交易中，**临时**拥有一段“合约代码指针”，EVM 执行时用该代码，但 storage / balance/ nonce / msg.sender全部仍属于该 EOA
+
+而这次的临时修改状态不是部署代码，也不是修改账户类型，更不是永久升级。
+
+EIP-7702不是新增字段，而是：允许某些交易在执行期“覆盖”codeHash的取值来源
+
+-   状态中**EOA仍然 codeHash =empty**
+    
+-   但在执行时：effectiveCode = tx.authorization.codeAddress
+    
+
+这是**执行层（Execution Layer）语义变化**，不是状态结构变化。
+
+交易层：EIP-7702的新交易格式：
+
+EIP-7702 引入 **新的交易类型**（类似 EIP-1559）。
+
+```
+ Transaction7702 {
+   chainId
+   nonce
+   gasLimit
+   maxFeePerGas
+   maxPriorityFeePerGas
+   to
+   value
+   data
+ ​
+   authorizationList[]   //  核心
+   signature
+ }
+```
+
+**authorizationList 的结构**
+
+```
+ Authorization {
+   chainId
+   nonce
+   codeAddress     // 指向已有合约
+   signature       // EOA 对本 authorization 的签名
+ }
+```
+
+> EOA 明确签名声明：在本交易中，我同意把“我的代码”解释为 codeAddress
+
+-   codeAddress **必须是已部署合约**
+    
+-   合约代码 **不会被复制**，只是引用
+    
+
+**EVM的执行逻辑**
+
+**Step 1：交易进入执行层**
+
+-   交易 sender = EOA
+    
+-   nonce / gas 校验正常
+    
+
+* * *
+
+**Step 2：验证 authorization**
+
+对 `authorizationList` 中每一项：
+
+NaN.  校验签名：
+      
+      ```
+       ecrecover(authorization) == sender
+      ```
+      
+NaN.  校验：
+      
+      -   chainId 正确
+          
+      -   nonce 正确（防重放）
+          
+      -   codeAddress 有 code
+          
+
+失败 → 整笔交易 **revert**
+
+* * *
+
+**Step 3：构造「执行期账户视图」**
+
+**这是 7702 的核心实现点**
+
+客户端在执行交易时：
+
+```
+ executionContext.accountCode[sender] = code(codeAddress)
+```
+
+但注意：
+
+-   不写入 state trie
+    
+-   不改 codeHash
+    
+-   不持久化
+    
+
+只是 **execution-layer overlay**
+
+* * *
+
+**Step 4：CALL / DELEGATECALL 行为变化**
+
+对 sender（EOA）来说：
+
+```
+ address(this)   == EOA
+ msg.sender      == EOA
+ storage         == EOA.storage
+ code            == codeAddress.code
+```
+
+等价于：
+
+```
+ EOA.delegatecall(codeAddress)
+```
+
+但这不是 delegatecall 指令，而是 **账户级语义改变**
+
+**delegatecall 是“合约借用代码”，7702 是“账户临时戴代码”**
+
+| 对比项 | delegatecall | EIP-7702 |
+| --- | --- | --- |
+| 触发方式 | opcode | 交易级语义 |
+| 执行主体 | 合约 | EOA |
+| msg.sender | 不变 | EOA |
+| address(this) | 调用者 | EOA |
+| storage | 调用者 | EOA |
+| 是否嵌套 | 可 | 不可嵌套 |
+| 是否持久 | 否 | 否 |
+| 风险 | 合约可控 | 用户签名明确授权 |
+
+* * *
+
+**Step 5：执行结束**
+
+-   storage 写入： 持久（写在 EOA 下）
+    
+-   balance 变化： 持久
+    
+-   code： 不保存
+    
+-   下一个交易：EOA 仍是普通 EOA
+    
+
+**重入 / selfdestruct / create 的处理**
+
+selfdestruct
+
+-   如果 codeAddress 中调用 `selfdestruct`：
+    
+    -   不会销毁 EOA
+        
+    -   不会影响 codeAddress
+        
+-   只影响正常转账语义
+    
+
+客户端 **屏蔽破坏性账户行为**
+
+* * *
+
+create / create2
+
+-   create 的 `address(this)` 是 **EOA**
+    
+-   所以：
+    
+    -   EOA 可以直接创建合约（之前做不到）
+        
+-   但 nonce 规则仍是 EOA 的 nonce
+    
+
+这是一个 **新能力点 + 新攻击面**
+
+* * *
+
+重入
+
+-   因为没有 AUTH 之类的“跨交易授权”
+    
+-   重入仅限本次 call tree
+    
+-   不存在 3074 那种“持久授权风险”
+    
+
+* * *
+
+**回滚与失败语义**
+
+| 场景 | 行为 |
+| --- | --- |
+| authorization 校验失败 | 整笔交易 revert |
+| 执行中 revert | storage / balance 回滚 |
+| OOG | 全回滚 |
+| codeAddress revert | 等价普通 revert |
+
+**不会留下任何“半升级状态”**
+
+**客户端实现角度**
+
+在 Geth / Nethermind / Besu 中：
+
+-   不新增 trie
+    
+-   不新增 account field
+    
+-   在 **EVM 执行前**：
+    
+    -   构造一个 `StateOverlay`
+        
+    -   覆盖 `GetCode(sender)` 的返回值
+        
+
+> 这也是 7702 能快速落地的重要原因
+
+EIP-7702 的实现本质是：在执行层为 EOA 增加一个“临时 code lookup override”，所有状态写入仍锚定在 EOA，自始至终不改变账户本体
+
+**Account Abstraction（AA）**
+
+Account Abstraction（AA)直译是 ”账户抽象”。就是把“谁能发交易、如何验证交易、怎么付 gas”从以太坊协议里写死的规则，变成“可编程的逻辑”。
+
+**AA 不是“智能合约钱包”， 而是“把交易合法性的判定权，从协议交给账户本身”。**
+
+**为什么以太坊需要 AA**
+
+**传统以太坊账户模型**
+
+```
+ EOA:
+   - 只能用 ECDSA 私钥签名
+   - 只能单签
+   - 只能自己付 gas
+   - 逻辑 = 协议写死
+ ​
+ Contract Account:
+   - 可编程逻辑
+   - 不能主动发交易
+```
+
+这导致一个**结构性问题**：
+
+> **“最需要灵活性的账户（用户账户），反而最不灵活。”**
+
+* * *
+
+**AA 到底“抽象”了什么？**
+
+AA 抽象的是这三件事
+
+**1\. 交易验证逻辑（Validation）**
+
+传统 EOA：
+
+```
+ require(ecrecover(tx.sig) == sender)
+```
+
+AA 账户可以：
+
+-   多签
+    
+-   社交恢复
+    
+-   BLS / Passkey / WebAuthn
+    
+-   session key
+    
+-   限额 / 白名单
+    
+
+**“谁能花钱”变成代码决定**
+
+* * *
+
+**2\. Gas 支付逻辑（Gas Abstraction）**
+
+传统：
+
+```
+ sender.balance >= gas * price
+```
+
+AA 可以：
+
+-   第三方代付（Paymaster）
+    
+-   用 ERC20 付 gas
+    
+-   sponsor tx
+    
+-   延迟结算
+    
+
+**“谁付 gas”不再是 sender**
+
+* * *
+
+**3\. 交易执行逻辑（Execution）**
+
+传统：
+
+-   一次 tx = 一个 call
+    
+
+AA 可以：
+
+-   批量交易
+    
+-   条件执行
+    
+-   原子组合
+    
+
+**“怎么执行”变成账户逻辑的一部分**
+
+* * *
+
+**AA 的终极目标**
+
+> **让“账户 = 程序”，而不是“账户 = 私钥”。**
+
+* * *
+
+**AA 的三种实现路径**
+
+这是你刚才一直在接触但没明确区分的地方。
+
+* * *
+
+**路线一：协议级 AA（最理想）**
+
+-   修改共识 / EVM
+    
+-   所有账户原生可编程
+    
+
+例子：
+
+-   早期 EIP-86（失败）
+    
+-   **EIP-7702（部分实现）**
+    
+
+优点：原生、干净 缺点：难推进、改动大
+
+* * *
+
+**路线二：合约级 AA（现实妥协）**
+
+代表：**EIP-4337**
+
+```
+ UserOperation
+   ↓
+ EntryPoint
+   ↓
+ Smart Wallet
+```
+
+已上线 不是协议原生 gas 高 / infra 重
+
+* * *
+
+**路线三：混合 / 渐进式 AA（现在的方向）**
+
+-   保留 EOA
+    
+-   给 EOA 加能力
+    
+-   不破坏生态
+    
+
+代表：
+
+-   **EIP-7702**
+    
+-   ERC-7579（模块化钱包）
+    
+
+* * *
+
+**把 AA 和 7702 结合起来看**
+
+**7702 为什么被说成 AA？**
+
+-   7702 **不把 EOA 变成合约**
+    
+-   但它允许：
+    
+    -   自定义验证
+        
+    -   sponsor gas
+        
+    -   批量执行
+        
+-   且这些逻辑来自 **合约代码**
+    
+
+所以它是：
+
+> **“EOA 的一次性 Account Abstraction”**
+
+* * *
+
+**一个极简对照表**
+
+| 能力 | 传统 EOA | AA | EIP-7702 |
+| --- | --- | --- | --- |
+| 自定义验证 | × | √ | √ |
+| 多签 | × | √ | √ |
+| sponsor gas | × | √ | √ |
+| 合约逻辑 | × | √ | √（临时） |
+| 协议原生 | √ | ×(4337) | √ |
+| 永久 | √ | √ | × |
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 \## 1.14
 
 \### 合规
@@ -306,6 +1236,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 \## 1.13
 
@@ -708,6 +1639,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## **1.12**
