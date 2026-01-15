@@ -15,8 +15,40 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+**1.学习**[**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
+
+NFT（Non-Fungible Tokens）是构建在区块链上的数字资产，其核心价值源于以下几个方面：
+
+**Digital Scarcity：**艺术家可以通过智能合约限制代币的总供应量（例如 10,000 个）。一旦合约部署，即便原作者也无法超越该限制，从而创造了技术层面的稀缺性。
+
+**On-chain Provenance:** 区块链记录了从铸造（Minting）到历次转手的所有权路径。市场可以以此辨别原始艺术品与“仿制品”，因为后者无法伪造原始艺术家的合约签名。
+
+**Permissionless Environment：**NFT 是一个无许可的环境，任何人都可以部署任何内容。这虽然促进了创新，但也导致了市场中存在大量劣质内容，用户需具备辨别能力。
+
+**身份与库存的随行性：**在 Web3 中，用户的身份（如 ENS 域名）和资产库存（NFT）不属于特定平台，而是跟随用户的钱包在不同服务（如 OpenSea、Zapper、Rarible）之间漫游。
+
+**NFT 正在向功能化发展：**
+
+Token Gating： 持有特定 NFT 才能进入聊天室或参加会议。
+
+治理与投票：NFT 可作为参与 DAO（去中心化自治组织）投票的凭证。
+
+流动性凭证：在 Uniswap 等协议中，用户的流动性头寸被铸造成 NFT，代表对底层储备的所有权。
+
+Royalties： 创作者可以在合约中直接编程版税规则（如二次销售额的 10% 自动分配给原作者），从而剔除传统中介，最大化创作者收益。
+
+**2\. 参加AI分享会**
+
+**ERC-8004 智能体链上护照**
+
+**SpoonOS架构**
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 **1.学习**[**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
 **1.1 Web3 身份的自主性与可迁移性:** 用户对 Web3 身份拥有完全的控制权。借由 ENS（以太坊域名服务），可以将复杂的十六进制地址（如 0xae9...）转化为好记的名称（如 sanfordstout.eth）。这个身份不从属于特定的平台，而是随着用户的钱包在各个 Web3 应用间流转，保持了跨平台的一致性。
@@ -70,6 +102,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 **1.复习了Web3实习手册入门导读部分和021学习以太坊第一章**
 
@@ -184,6 +217,7 @@ Blob 的特点是不会进入 L1 的长期状态，只会临时保存一段时�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 **1.学习了web3实习手册入门导读部分：**
