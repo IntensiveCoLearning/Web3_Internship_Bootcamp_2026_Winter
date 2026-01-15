@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# To do list
+
+-   推特持续关注行业名单
+    
+-   021以太坊学习第四章
+    
+-   阅读uniswap
+    
+-   阅读Web3实习手册
+    
+-   今天你Commit了吗？
+    
+-   制定职业规划，完成职业规划任务
+    
+-   Unphishable完成至少5章
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # To do list
 
 -   推特发学习总结 ✅
@@ -93,6 +113,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -150,6 +171,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
