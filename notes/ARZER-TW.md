@@ -15,8 +15,184 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## 2026/01/15 學習筆記
+
+### 今天做了什麼
+
+晚上參加了 LXDAO 的「AI 機器基礎概念」分享會（20:00-21:00），分享會提到了 ERC-8004 這個 AI Agent 信任框架，聽完後我對它的聲譽系統有些疑問，跟 Claude 深入討論後延伸到 AI Agent 對區塊鏈安全的影響。另外，針對昨天提交 PR 時遇到的側邊欄 404 問題，今天花時間研究了底層原因。
+
+* * *
+
+### 分享會延伸討論：從 ERC-8004 到 AI Agent 安全
+
+**ERC-8004 是什麼？**
+
+分享會提到了 ERC-8004，這是今年八月由 MetaMask、Ethereum Foundation、Google、Coinbase 一起提出的 AI Agent 信任框架，包含三個註冊表：身份（Identity）、聲譽（Reputation）、驗證（Validation）。
+
+**我的疑問：聲譽系統能防女巫嗎？**
+
+聽完之後我在想，這套聲譽系統真的能防 Sybil Attack 嗎？仔細看會發現 ERC-8004 只定義了「有哪些 Agent」、「可以存什麼數據」，但真正的核心問題——Reputation 怎麼算、怎麼防刷分——都還沒定義。
+
+攻擊者完全可以：
+
+1.  批量註冊一堆「合法」Agent
+    
+2.  養號累積 Reputation
+    
+3.  同時發動攻擊後換下一批
+    
+
+所以 ERC-8004 比較像是「基礎設施的基礎設施」，真正的防禦能力要等後續的 Reputation 算法設計。
+
+**延伸思考：AI Agent 大規模化後的攻擊問題**
+
+順著這個思路往下想，如果聲譽系統擋不住，那 AI Agent 大規模化之後會發生什麼事？
+
+AI Agent 跟傳統 Bot 不一樣的地方在於，它可以動態判斷攻擊時機、模擬正常用戶行為、甚至形成群體智能。這讓傳統的 spam 攻擊變得更難防。想像一下，如果有人把攻擊能力包裝成「服務」賣出去（AaaS），不懂技術的人付錢就能癱瘓一條鏈——這在 Web2 已經很成熟了，區塊鏈版本只是時間問題。
+
+**那直接 Ban 非註冊 AI 呢？**
+
+這條路也走不通：
+
+1.  鏈上交易只有 from、to、data、signature，根本分不出是人還是 AI
+    
+2.  協議層要 ban 就得硬分叉，這違背 Permissionless 的設計
+    
+3.  DCA 機器人、清算機器人、止損單這些正常的自動化也會被誤殺
+    
+
+**比較務實的方向**
+
+討論下來的結論是：與其想辦法「阻止進入」，不如「讓攻擊變得不划算」。像是加密 Mempool 讓攻擊者拿不到資訊優勢、本地費用市場讓攻擊影響範圍受限、或是分層服務讓驗證過的用戶有優先權但不強制所有人驗證。
+
+之後可以深入看看 zkKYC 或 Reputation 算法設計——特別是怎麼設計一個真正能抵抗 Sybil Attack 的聲譽系統。
+
+* * *
+
+### 📚 VuePress 側邊欄 404 問題研究
+
+**問題背景**
+
+為 Web3-Internship-Handbook 提交繁體中文翻譯（PR #33）後，線上側邊欄連結出現 404，但本地測試正常。
+
+**問題根因**
+
+notes.ts 配置：
+
+```typescript
+{ text: '區塊鏈基礎概念', link: 'part1/blockchain-basic.md' }
+```
+
+Markdown frontmatter：
+
+```yaml
+permalink: /zh-tw/blockchain-basic/
+```
+
+**Plume notes.ts 的 link 解析邏輯：**
+
+| link 格式 | Plume 處理方式 | 生成的 href |
+| --- | --- | --- |
+| part1/blockchain-basic.md | 檔案路徑推導 → 轉 .html | /zh-tw/part1/blockchain-basic.html |
+| blockchain-basic/ | 直接當路徑使用 | /zh-tw/blockchain-basic/ |
+
+這裡的關鍵是：VuePress 本身的 internal link 機制理論上會尊重 permalink，但 **Plume theme 的 notes 模組在處理** `.md` **連結時，只用檔案路徑推導，不會去查該頁有沒有設 permalink**。
+
+所以即使 Markdown 檔案設了 `permalink: /zh-tw/blockchain-basic/`，Plume 還是傻傻地用檔案路徑算出 `/zh-tw/part1/blockchain-basic.html`。
+
+結果：
+
+```
+側邊欄指向：/zh-tw/part1/blockchain-basic.html  ← 不存在
+頁面位置：  /zh-tw/blockchain-basic/            ← 在這裡
+```
+
+**為什麼本地沒發現？**
+
+| 環境 | 結果 |
+| --- | --- |
+| npm run docs:dev | ✅ 正常 |
+| npm run docs:build + npx serve dist | ✅ 正常 |
+| GitHub Pages | ❌ 404 |
+
+可能原因：
+
+-   本地構建緩存（`node_modules/.cache` 或 `.vuepress/.cache`）保留了舊的解析結果
+    
+-   GitHub Actions 的 Node.js / VuePress 版本與本地不同
+    
+-   測試時序問題：本地測試時可能配置狀態跟最終提交的不一致
+    
+
+核心教訓：本地測試通過不代表線上一定正常，線上環境是最終驗證標準。
+
+**解決方案**
+
+將 link 從檔案路徑格式改為 permalink 格式：
+
+```typescript
+// ❌ 問題配置
+{ link: 'part1/blockchain-basic.md' }
+
+// ✅ 正確配置  
+{ link: 'blockchain-basic/' }
+```
+
+原則：當 Markdown 有自訂 permalink 時，sidebar link 應該直接對齊 permalink，不要用 `.md` 檔案路徑。
+
+**提交前驗證 SOP**
+
+```bash
+# 1. 生產構建
+npm run docs:build
+
+# 2. 靜態伺服器預覽
+npx serve docs/.vuepress/dist
+
+# 3. 驗證清單
+#    □ 關鍵頁面正常載入
+#    □ 側邊欄 href 值正確（DevTools 檢查）
+#    □ 點擊連結回傳 HTTP 200
+
+# 4. 合併後追蹤
+#    □ 確認 GitHub Actions 部署成功
+#    □ 線上實際測試關鍵功能
+```
+
+**關鍵學習點**
+
+1.  **Plume notes 的行為**：處理 `.md` 連結時只看檔案路徑，不查 permalink
+    
+2.  **permalink 決定頁面位置**：sidebar link 必須配合，不能假設檔案路徑 = 最終 URL
+    
+3.  **環境差異**：開發環境可能比較寬容，生產環境最嚴格
+    
+4.  **兩種解法**：要嘛 link 對齊 permalink，要嘛乾脆不用 permalink 讓路徑完全由檔案位置決定
+    
+
+**相關 PR**
+
+| PR | 內容 | 狀態 |
+| --- | --- | --- |
+| #33 | 新增繁體中文翻譯 | ✅ 已合併 |
+| #34 | 修復側邊欄 404 | 🚀 待合併 |
+
+* * *
+
+### 今天的收穫
+
+研究方向上，從 ERC-8004 的聲譽系統出發，發現 Sybil-resistant 的 Reputation 算法設計是個有價值的研究缺口。
+
+技術上搞懂了 VuePress Plume 的路由解析機制，也理解了開發環境「太寬容」反而會埋坑這件事。
+
+PR #34 等合併後要追蹤一下線上是否正常。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ## 今日完整工作總結
 
 * * *
@@ -76,6 +252,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 * * *
 
@@ -311,6 +488,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## 今日學習心得：經歷要說對的語言
