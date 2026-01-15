@@ -15,8 +15,16 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今日目标：
+
+1.把ytb三个视频看了，深刻理解安全和合规在web3行业的重要性
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # 1\. 安全核心：从“精准猎杀”到“AI 降维打击”
 
 安全态势：2025 年安全事件超 1200 起，呈现出精准猎杀机构（如 Bybit 损失 15 亿美元）与广撒网诈骗并行的特点
@@ -46,6 +54,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -113,6 +122,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
