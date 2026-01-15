@@ -15,8 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# Day 4
+
+web3 ai
+
+\- x402 = HTTP时代的加密货币自动售货机
+
+\- EIP-8004 = 链上AI Agent的身份证+大众点评+蓝V认证系统
+
+两者一起用 → 真正无信任、自动、可组合的AI Agent经济开始变得可行。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # Day 3
 
 区块链安全
@@ -24,6 +38,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # Day 2
 
@@ -50,6 +65,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # Day1 笔记
