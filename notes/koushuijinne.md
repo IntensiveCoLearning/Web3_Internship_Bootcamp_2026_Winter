@@ -15,8 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# co-learning
+
+-   币圈重视个人IP，要实时输出个人分享，不能闷头学习
+    
+-   币圈信息太多，要做好自己的垂直赛道
+    
+-   要有自己的特色，适当说点骚话
+    
+
+# 分享会
+
+-   AI agent经济是大势所趋，区块链透明，无需信任，天然适合AI支付场景
+    
+-   基于SponsOs，未来可以构建DEFI 交易智能体，数据市场代理，自主服务代理等应用
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # web3安全
 
 ## 1\. defi优于cefi
@@ -26,6 +45,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 对web3的个人看法
 
@@ -98,6 +118,7 @@ DAO \*\*（Decentralized Autonomous Organization，去中心化自治组织）\*
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
