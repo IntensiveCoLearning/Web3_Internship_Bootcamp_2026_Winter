@@ -17,11 +17,20 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
-今天尝试完成[Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization)
+今天完成了[Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization)
+
+Deployed URL**：**[**https://challenge01-gj2ce1kuk-bareerahs-projects-5c91fe7e.vercel.app**](https://challenge01-gj2ce1kuk-bareerahs-projects-5c91fe7e.vercel.app)
+
+Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3CeEEcbD245FBFB10890CA110c54158**](https://sepolia.etherscan.io/address/0x15efbfb8D3CeEEcbD245FBFB10890CA110c54158)
+
+过程笔记：[https://www.notion.so/1-15-2e993a939bd680729552ecefa29e4980?source=copy\_link](https://www.notion.so/1-15-2e993a939bd680729552ecefa29e4980?source=copy_link)
+
+在挑战过程中，出现了一个错误，导致最后验证的时候没有反应，问 AI 排查错误发现没有部署到 sepolia 上，后面重新部署
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 \- 全球加密货币合规趋势日益明显，监管框架稳步推进。
 
@@ -200,6 +209,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 **dApp（）**
 
 **用智能合约做后端，用以太坊做数据库和结算层”的应用程序**
@@ -224,6 +234,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
