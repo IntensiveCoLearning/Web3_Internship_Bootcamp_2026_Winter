@@ -22,10 +22,50 @@ Web3 实习计划 2025 冬季实习生
 1.  参加分享会
     
 2.  学习1h并整理笔记
+    
+
+### Commit–Reveal Scheme（承诺–揭示机制）
+
+hash the commit
+
+reveal the secret
+
+一个秘密值 𝑠，比如：
+
+投票选择 NFT metadata 出价 随机数 未来要 reveal 的内容
+
+把你要提交的内容 先算一个哈希值，只把这个哈希写到链上，内容本身暂时不公开。
+
+特性：不可逆（别人看不到 s）不可篡改（你之后改不了 s）
+
+到了约定的时间， 你把当初的秘密 𝑠 公开。
+
+### 为什么 Web3 非常需要这套机制？
+
+因为区块链是：完全透明、所有交易可预测（mempool）
+
+如果你直接 reveal：会被抢跑（front-running），会被操纵结果
+
+### 典型应用场景：
+
+**NFT / 元数据**
+
+mint 时：hash(metadata + salt) 上链（hash the commit）
+
+mint 结束：reveal metadata 社区验证 hash 是否一致
+
+**链上投票 / DAO 治理**
+
+**拍卖（sealed-bid auction）**
+
+**链上随机数（避免矿工操纵）**
+
+commit 一个随机种子 区块生成后 reveal 和区块哈希一起算随机数
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 今日任务：
@@ -209,6 +249,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -313,6 +354,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
