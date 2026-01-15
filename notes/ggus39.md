@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天把钓鱼的基本过完了，推的总结还在思考，看了一些回放，
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今天休息。。。。
 
 简单了解了一些智能合约，还有一些平板的笔记，最近事情有点多，感觉没有头绪
@@ -28,6 +34,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 今天过了十关多一点的关于诈骗钓鱼的，在GitHub上开了一个自己的小记录，下来可能会在推上也开始记录，不仅仅记录web3了可能就，也会在睡前写一个小日记，看了一些昨天的web3行业岗位，看了一些NFT的东西吧，坚持输出与学习！！！
 
 ![QQ_1768294824119.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-01-13-1768294830637-QQ_1768294824119.png)
@@ -37,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
