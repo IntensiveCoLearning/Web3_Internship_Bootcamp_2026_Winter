@@ -17,8 +17,40 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今日任务：看视频，理解概念
+
+### 一些工具：
+
+Etherscan+metamsk: 钱包转账，计算gas fee
+
+ENS: Ethereum name system,通过命名的方式映射address, 这样只需要记住名字就可以代替地址了
+
+uniswap: 连接钱包，swap token,
+
+DAI: 美元稳定币
+
+open sea: NFT
+
+### 新方向：AI与web3
+
+![image.png](attachment:a6c54be2-14b6-4e09-9cd3-e389a1448d41:image.png)
+
+![image.png](attachment:a94d7060-8f30-4abd-8a73-208d40aa05fd:image.png)
+
+ENGINE：API框架，
+
+![image.png](attachment:12822e1e-cd23-4ab5-906f-e9148a0a69e6:image.png)
+
+项目的价值主张: 实现链上AI经济，帮助想使用AI agent 的用户更方便的调用。
+
+multiple agent pipeline写smart contract：有什么相关的DB推荐吗
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -50,6 +82,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 今日任务：对基础概念的了解
 
@@ -191,6 +224,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
