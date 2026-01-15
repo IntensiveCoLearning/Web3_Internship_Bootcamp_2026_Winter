@@ -24,10 +24,109 @@ Web3 实习计划 2025 冬季实习生
 -   观看前几天的课程回放
     
 -   保证至少3小时的学习时间
+    
+
+# Notes
+
+### 哈希
+
+-   哈希函数 - cryptographic hash function
+    
+    -   collision resistance
+        
+        -   无法找到人为制造collision的方法
+            
+        -   没有办法篡改内容而不被检测出来
+            
+    -   hiding
+        
+        -   哈希函数的计算过程是单向的
+            
+        -   前提：输入的空间大，分布均匀
+            
+    -   以上两个性质带来了digital commitment, digital equivalent of a sealed envelope
+        
+    -   输入空间不够，则在输入后拼接一个随机数
+        
+    -   puzzle friendly
+        
+        -   挖矿的过程没有捷径，只能通过尝试不同的nonce才能找到符合要求的解 → proof of work
+            
+        -   nonce - 随机数
+            
+        -   H( block header ) ≤ target
+            
+    -   difficult to solve, but easy to verify
+        
+-   比特币中的哈希函数 - SHA-256
+    
+    -   secure hash algorithm
+        
+
+### 签名
+
+-   开户：创立一个公钥-私钥对（public key, private key )
+    
+-   来自asymmetric encryption algorithm
+    
+    -   加密 - public key - 相当于账号
+        
+    -   解密 - private key - 相当于账户密码
+        
+    -   对称加密体系的弱点：密钥分发不便
+        
+-   encryption key
+    
+-   签名-私钥，验证签名 - 公钥
+    
+-   a good source of randomness
+    
+-   对message取哈希，对哈希签名哈希指针 hash pointers
+    
+
+### 区块链
+
+-   区块链与普通链表的区别
+    
+    -   block chain is a linked list using hash pointers
+        
+
+-   实现tamper-evident log
+    
+
+### Merkle tree
+
+-   用哈希指针代替了普通指针的binary tree
+    
+-   只要记住root hash, 就能检测链表中任何部位的修改
+    
+-   每一个区块都是transaction
+    
+
+-   block header - root hash
+    
+-   block body
+    
+-   Merkle proof
+    
+    -   全节点
+        
+    -   轻节点
+        
+    -   proof of membership / inclusion
+        
+        -   O(logN)
+            
+    -   proof of non-membership
+        
+        -   O(N)
+            
+        -   if sorted Merkle tree is applied - O(logN)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -44,6 +143,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -86,6 +186,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
