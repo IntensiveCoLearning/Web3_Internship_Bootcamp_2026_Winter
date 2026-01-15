@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天学习完了《021 学习以太坊》的第二章并做笔记发了推文，感觉成就感满满！
+
+![IMG_4149.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483352442-IMG_4149.jpeg)![IMG_4148.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483381863-IMG_4148.png)![IMG_4150.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483414358-IMG_4150.jpeg)![IMG_4151.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483429069-IMG_4151.jpeg)![IMG_4152.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483444785-IMG_4152.jpeg)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 [https://x.com/RayWu\_Web3/status/2011349821723197660](https://x.com/RayWu_Web3/status/2011349821723197660)
 
 今天尝试在x上发了第一篇自己的content，知识分享的魔力真的很有成就感啊。
@@ -34,6 +42,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 1.  **区块链是什么？（核心定义与特性）**
     
@@ -136,6 +145,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # 开营
