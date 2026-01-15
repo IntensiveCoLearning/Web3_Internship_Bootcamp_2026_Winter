@@ -15,8 +15,184 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+\# From Wallet Transaction to Block Confirmation: Complete Flow
+
+\## 1. Transaction Creation (Wallet Side)
+
+1\. **User initiates a transaction in the wallet**
+
+\- Example: Alice wants to send 1 ETH to Bob
+
+\- Wallet generates a transaction object:
+
+\`\`\`json
+
+{
+
+"from": "AliceAddress",
+
+"to": "BobAddress",
+
+"value": 1 ETH,
+
+"nonce": 5,
+
+"gasLimit": 21000,
+
+"gasPrice": 50 Gwei
+
+}
+
+\`\`\`
+
+\- `nonce`: sequence number to prevent replay attacks
+
+\- `gas`: transaction fee to compensate miners/validators
+
+2\. **Wallet signs the transaction with the private key**
+
+\- Ensures the transaction is authorized by Alice
+
+\- Anyone can verify the signature but cannot forge it
+
+\---
+
+\## 2. Transaction Broadcasting
+
+1\. Wallet broadcasts the signed transaction to the blockchain network (P2P network)
+
+2\. Nodes receive the transaction and place it in the **mempool** (pending transaction pool)
+
+\- Transactions in mempool are waiting to be included in a block
+
+3\. At this stage, the transaction is **not yet part of any block**
+
+\---
+
+\## 3. Transaction Validation (Nodes / Miners / Validators)
+
+Before packaging into a block, transactions are validated:
+
+1\. **Signature verification** → confirms the transaction is from Alice
+
+2\. **Sufficient balance** → Alice has enough ETH + gas
+
+3\. **Nonce correctness** → prevents duplicate transactions
+
+✅ Only valid transactions are eligible to be included in a block
+
+\---
+
+\## 4. Block Packaging
+
+1\. Miner/validator selects transactions from the mempool
+
+\- Usually prioritizes transactions with higher gas fees
+
+2\. Creates a new block:
+
+\- Contains a list of transactions
+
+\- Includes **previous block hash**
+
+\- Constructs a block header:
+
+\`\`\`text
+
+Block N+1
+
+\- PreviousHash: hash(Block N)
+
+\- MerkleRoot: hash(all transactions)
+
+\- Timestamp: 1673779200
+
+\- Nonce: ??? (used in PoW)
+
+\`\`\`
+
+3\. Essentially, the block organizes transactions into a structured format ready for consensus
+
+\---
+
+\## 5. Consensus Phase
+
+Different blockchains use different consensus mechanisms:
+
+\### a. Proof of Work (PoW, e.g., Bitcoin)
+
+\- Miner performs **work computation**
+
+\- Tries different `Nonce` values to find a hash below the target
+
+\- Successfully mined block is broadcast to the network
+
+\### b. Proof of Stake (PoS, e.g., Ethereum 2.0)
+
+\- Validator is selected as block proposer
+
+\- Verifies transaction validity
+
+\- Signs the block and broadcasts it
+
+\- Other validators vote to finalize the block
+
+\> Core idea: global agreement on which block is accepted
+
+\---
+
+\## 6. Block Confirmation (On-chain)
+
+1\. Nodes receive the new block and re-verify transactions and block integrity
+
+2\. Updates local ledger/state
+
+3\. Block is appended to the blockchain
+
+\- Links to previous block hash
+
+\- Transactions in this block are now confirmed
+
+4\. Wallet can check transaction status:
+
+\- "Pending" → "Confirmed after 1/2/3 blocks"
+
+\- Confirmed transactions are immutable
+
+\---
+
+\## 7. Summary Flow Diagram (Text Version)
+
+\`\`\`text
+
+Wallet creates & signs transaction
+
+↓
+
+Broadcast to network (mempool)
+
+↓
+
+Nodes/Miners validate transactions
+
+↓
+
+Transactions packaged into new block
+
+↓
+
+Consensus mechanism confirms the block
+
+↓
+
+Block appended to blockchain, transaction complete
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # **Ethereum Basics**
 
 ## **1\. What Ethereum Is**
@@ -204,6 +380,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # Blockchain Basics
 
