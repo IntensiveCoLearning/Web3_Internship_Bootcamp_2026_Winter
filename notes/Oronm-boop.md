@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天了解一下solana公链，学习rust语言
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ### **一、 2025年 Web3 安全概况与趋势**
 
 -   **安全数据**：GoPlus 内部记录了约 1200 起安全事件（B 端项目方与 C 端用户各占约一半），造成的总经济损失超过 35 亿美元 4。  
@@ -100,11 +106,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 今日学习go-eth链下交互，学习使用foundry框架
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
