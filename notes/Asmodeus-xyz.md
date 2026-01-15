@@ -15,8 +15,149 @@ QS600+金融本硕；Web3初学者
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+# 一、EOA的定义与控制方式
+
+## EOA（Externally Owned Account，外部拥有账户）
+
+-   有私钥
+    
+-   能“主动发起交易”
+    
+-   没有合约代码
+    
+
+## EOA状态
+
+-   地址（address）：从公钥派生，20 字节，以 0x 开头的 40 个十六进制字符。
+    
+-   nonce（交易计数器）：表示这个账户已经发送过几笔交易。
+    
+-   balance（余额）：账户持有的 ETH 数量，以 wei 计（1 ETH = 10¹⁸ wei）。
+    
+-   code / storage：code 为空，没有合约代码；storage 也为空。
+    
+
+# 二、合约账户的概念与创建流程
+
+## 合约账户（Contract Account）
+
+-   无私钥，由部署时的代码“锁死行为”
+    
+-   不能主动发起交易，只能“被调用”后按合约逻辑执行
+    
+-   有代码和存储（storage）
+    
+
+## 合约账户
+
+-   nonce：曾经用 CREATE / CREATE2 创建过多少个合约。
+    
+-   balance：账户持有的 ETH 数量。
+    
+-   storageRoot：该合约存储 trie 的根哈希（合约状态的入口）。
+    
+-   codeHash：EVM 字节码的哈希，用于在底层存储中定位合约代码。
+    
+
+## 创建合约交易
+
+-   起点是某个 EOA 的签名（只有EOA能发起合约）
+    
+-   看到 to == null，识别这是创建合约交易
+    
+-   运行 data 里的 init code
+    
+-   init code 的最后会 RETURN 一段字节码——这就是 runtime code
+    
+-   EVM 把这段返回值作为新合约账户的 code，写入世界状态
+    
+
+## 合约地址的计算
+
+-   普通 CREATE：sender + nonce 决定地址
+    
+-   CREATE2：0xff + deployer + salt + keccak(init\_code)
+    
+    -   和 nonce 无关，因此可以跨链用相同的组合在多条 EVM 链上得到同一地址
+        
+    -   0x表示16进制
+        
+
+# 三、合约账户的余额与状态存储
+
+| 属性 | EOA | 合约账户 |
+| 私钥 | 有私钥，可签名交易 | 无私钥，不能主动签名 |
+| balance | 有余额字段 | 同样有余额字段（可以像 EOA 一样持有 ETH /代币） |
+| codeHash | 逻辑上“无代码”；规范中存的是空代码哈希 | 有字节码哈希，用于合约执行与识别 |
+| storageRoot | 逻辑上“无存储”；规范中是空存储根 | 有 trie 根，用于存储合约状态 |
+
+-   补充解释 codeHash
+    
+    -   在以太坊中，codeHash 是合约账户（Contract Account）状态的一部分，表示该合约账户的字节码（bytecode）的哈希值。
+        
+    -   对于 EOA，由于没有合约代码，codeHash 通常为空字符串的哈希…
+        
+
+# 四、EOA 与合约账户的互相调用机制
+
+## 外部交易：EOA到合约账户
+
+EOA 用户通过私钥签名发起外部交易（external transaction），交易中会包含：
+
+-   to：目标合约地址（或 EOA 地址）
+    
+-   data：编码后的调用数据（函数选择器 + 参数）
+    
+-   value：附带发送的 ETH（可选）
+    
+-   gas 与 gasPrice / maxFee 等字段
+    
+
+## 内部交易：合约账户之间
+
+-   call：普通调用，对方在自己的存储中执行逻辑，msg.sender 变为当前合约；
+    
+-   delegatecall：在当前合约的存储上下文中执行对方代码——存储读写仍落在发起方（调用者）合约上，msg.sender/msg.value 保持外层值，常用于代理 / 升级模式；
+    
+-   staticcall：只读调用，不允许修改状态，只能 view/pure。
+    
+
+# 五、MetaMask 钱包对 EOA 的管理
+
+当你初次使用 MetaMask 创建钱包时，它会在本地生成一个 12 个英文单词的Secret Recovery Phrase（SRP，助记词），遵循 BIP-39 标准，从这个种子可以派生出多个私钥与 EOA 地址。
+
+## 六、代币与合约账户的关系
+
+-   代币操作是合约调用
+    
+-   “转代币” 本质上是 “调用代币合约的一段代码 + 改一行存储”
+    
+-   用户持有代币，是合约里那份“账”
+    
+
+# 七、合约部署后的不可篡改性与销毁
+
+## 代码不可更改
+
+## SELFDESTRUCT：从删除到废弃
+
+## metamorphic 合约模式已经失效：SELFDESTRUCT + CREATE2
+
+-   地址不变 → 代理合约
+    
+
+## 代理合约模式（Proxy Pattern）
+
+-   主合约（proxy）永不变，只是可指向不同的实现合约地址，通过 delegatecall 调用新的逻辑，实现功能升级，同时保留原始地址和状态。
+    
+-   换实现合约地址
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # 一、节点与客户端
 
 ## 节点
@@ -147,6 +288,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 # 一、Web3合规性要求与常见法律风险
 
 ## 核心法律风险梳理
@@ -221,6 +363,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化自治组织）与 MEME（模因币）四大领域
@@ -420,6 +563,7 @@ DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
