@@ -50,19 +50,19 @@ owner = msg.sender; // 部署合约的人是管理员
 
 }
 
-// --- 1. 定义修饰符 ---
+// — 1. 定义修饰符 —
 
 modifier onlyOwner() {
 
 // 检查调用者是不是管理员
 
-require(msg.sender == owner, "You are not the owner!");
+require(msg.sender == owner, “You are not the owner!”);
 
-\_; // <--- 重要！这里代表执行原函数的代码
+\_; // <— 重要！这里代表执行原函数的代码
 
 }
 
-// --- 2. 使用修饰符 ---
+// — 2. 使用修饰符 —
 
 // 只有管理员能修改这个数值
 
@@ -94,6 +94,7 @@ payable(owner).transfer(address(this).balance);
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -118,6 +119,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 -   客户端是由软件实现的，相当与一个软件，节点是运行客户端的电脑，客户端又分执行客户端和共识客户端，若一个电脑跑着执行客户端和共识客户端则代表它是一个全节点（仅仅以太坊，比特币的全节点就一个客户端负责着交易验证、脚本执行和工作量证明共识规则验证的功能）。
@@ -156,6 +158,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
