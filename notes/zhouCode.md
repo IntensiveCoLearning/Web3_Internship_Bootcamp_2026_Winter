@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# Day2
+
+学习了 skills 怎么写 [https://www.bilibili.com/video/BV1HuiyBQE9G](https://www.bilibili.com/video/BV1HuiyBQE9G) 这个视频讲的非常好。简单来说就是渐进式加载预设的提示词，以节约 token 和上下文空间。是一种不错的提示词管理方式，各类 CLI 也能自动检测 skills 按需加载。
+
+对于我的项目来说，感觉也会需要一些 skills 达到提示词复用，所以创建了一个专门的 github 仓库，用来保存属于自己的 skills。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 # Day1
 
 记录开发过程，尝试使用 Agent 模式复刻曾经做过的项目，devp2p 协议测试工具。查看是否还有可以优化的空间。  
