@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+1.15
+
+今天重新拾起之前只做完mvp的agent项目，太久没看有点忘了，先把项目顺了一下。温习了以下知识点：
+
+1.在使用OpenAI的chat.completions接口时，可用的参数包括：
+
+temperature:温度参数，控制生成文本的随机性
+
+max\_tokens: 限制生成最大token数量
+
+top\_p(nucleus sampling):一般在0.8-0.95间；正比于文本的多样性和创造性，反比于文本的可预测性和相关；本质是“从概率从高到低累计达到p的那一组词中随机选择下一个词“）
+
+top\_k(Top-k sampling): 只从模型认为最可能的”k“个词中选择下一个词。正比于文本多样性
+
+n：生成的回复数量，会在response.choices中返回
+
+传递给model的messages里面，system传递系统指令，user传递具体任务要求，assistant是历史助手输出，承接上下文
+
+注意：openai官方文档建议不要同时调整temperature和top\_p，因为这是一对替代参数，服务同样的目的
+
+**复习了下python中的with语句**
+
+有的时候，总是会面对着代码发呆，即便是以前自己写出来的……不知道是不是只有自己有这个症状。比如今天又对着with发呆了……
+
+好吧，按官方一点的话说，with是一种上下文管理协议。
+
+通俗点看，with就相当于file先open再close，只是更便捷，也更容易进行异常处理。
+
+所以with其实是open 和close，再结合try&except&finally的包装体。
+
+好了，眼前的with又变清秀了……
+
+**今天晚上的ai agent课**超级爱，完全贴合我的兴趣。我准备周末看看spoonOS的源代码，看看可不可以做点有意思的事情。
+
+至少我现在能想到的优化有：声誉体系的优化（评分矩阵，以及沟通agent与developer之间的评分），甚至是对ERC8004的补充；声誉系统防刷（其实我感觉这个如果是建立在普遍的trust score系统上，会更加健壮，就像我看vitalik采访说的其实现在core developer也在聚焦这个事情）
+
+然后就是理解EIP1559对gas的改革，wachi老师给的这个网站非常好，一动手就懂：[https://aistudio.google.com/apps/drive/1GTbHPGD\_x\_rOSzEPKFI7T\_S8Nj8AKVGM?fullscreenApplet=true&showPreview=true&showAssistant=true](https://aistudio.google.com/apps/drive/1GTbHPGD_x_rOSzEPKFI7T_S8Nj8AKVGM?fullscreenApplet=true&showPreview=true&showAssistant=true)
+
+留一下，以后我也发给有需要的人
+
+今天也发了一条X分享学习！今天在社群也超活跃！发了测试币给拿不到币的同学，也把直播分享给了一个对web3感兴趣的朋友。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 服了 现在是14号的0:51， 13号的打卡超了40分钟，这么快就用了一次请假
 
 在具体的笔记之前，我也在这两天做了很多改变，比如身为超级大i人，今天也在co-learning中进行了分享；比如作为社交能量较低的人，也开始在X分享学习；努力开始高能量地展示和社交，寻找web3的工作机会；这两天一直学习腰很酸，今天晚上出去跑了步，感觉神清气爽；比如今天主动联系LXDAO申请加入；
@@ -183,6 +229,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 **2026.1.12**
