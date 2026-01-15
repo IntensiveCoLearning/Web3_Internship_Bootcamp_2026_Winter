@@ -17,391 +17,187 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
-\### \[UNI-V3-2\] Spot Price
+### **\[UNI-V3-2\] Spot Price**
 
 **Discription:** 在 UniswapV3 中如何计算 SpotPrice 现货价格？
 
-<details>
+✅SLOT0 in Pair
 
-<summary>✅SLOT0 in Pair</summary>
-
-\`\`\`js
-
+```js
 struct Slot0 {
+        // the current price
+        uint160 sqrtPriceX96;
+        // the current tick
+        int24 tick;
+        // the most-recently updated index of the observations array
+        uint16 observationIndex;
+        // the current maximum number of observations that are being stored
+        uint16 observationCardinality;
+        // the next maximum number of observations to store, triggered in observations.write
+        uint16 observationCardinalityNext;
+        // the current protocol fee as a percentage of the swap fee taken on withdrawal
+        // represented as an integer denominator (1/x)%
+        uint8 feeProtocol;
+        // whether the pool is locked
+        bool unlocked;
+    }
+```
 
-// the current price
+注意到 Slot0 中有两个参数`sqrtPriceX96`和`tick`。 任意知道这两个变量的其中一个就可以计算出 Price。
 
-uint160 sqrtPriceX96;
-
-// the current tick
-
-int24 tick;
-
-// the most-recently updated index of the observations array
-
-uint16 observationIndex;
-
-// the current maximum number of observations that are being stored
-
-uint16 observationCardinality;
-
-// the next maximum number of observations to store, triggered in observations.write
-
-uint16 observationCardinalityNext;
-
-// the current protocol fee as a percentage of the swap fee taken on withdrawal
-
-// represented as an integer denominator (1/x)%
-
-uint8 feeProtocol;
-
-// whether the pool is locked
-
-bool unlocked;
-
-}
-
-\`\`\`
-
-</details>
-
-注意到 Slot0 中有两个参`sqrtPriceX96tick`。 任意知道这两个变量的其中一个就可以计算出 Price。
-
-<details>
-
-<summary>✅Calculate Price By Tick</summary>
+✅Calculate Price By Tick
 
 **Discription:** 用 Tick 表示 Price 也叫离散价格模型。在 Uniswap V3 中，tick 是一个 整数，价格(token1 / token0)按固定比例离散化：
 
-$$
-
-\\text{price}(tick) = 1.0001^{\\,tick}
-
-$$
+price(tick)=1.0001 tickprice(_tick_)=1.0001_tick_
 
 其中
 
-\- $\\text{price}$ 表示 token1 / token0
+-   priceprice 表示 token1 / token0
+    
+-   tick∈Z_tick_∈Z
+    
 
-\- $tick \\in \\mathbb{Z}$
+每一个 tick 约等于`0.01%`的价格变化
 
-每一个 tick 约等`0.01%`的价格变化
-
-假设我们已经知道了 WETH/USDT\[^weth/usdt\_pool\]池的 tick
-
-\[^weth/usdt\_pool\]: [https://etherscan.io/address/0x4e68ccd3e89f51c3074ca5072bbac773960dfa36#readContract](https://etherscan.io/address/0x4e68ccd3e89f51c3074ca5072bbac773960dfa36#readContract)
+假设我们已经知道了 WETH/USDT[^weth/usdt\_pool](https://etherscan.io/address/0x4e68ccd3e89f51c3074ca5072bbac773960dfa36#readContract)池的 tick
 
 通过 etherscan 可以看到如下信息
 
-\`\`\`txt
-
+```txt
 The 0th storage slot in the pool stores many values, and is exposed as a single method to save gas when accessed externally.
 
-sqrtPriceX96 uint160, tick int24, observationIndex uint16, observationCardinality uint16, observationCardinalityNext uint16, feeProtocol uint8, unlocked bool
+ sqrtPriceX96 uint160, tick int24, observationIndex uint16, observationCardinality uint16, observationCardinalityNext uint16, feeProtocol uint8, unlocked bool
 
-\[ slot0 method Response \]
+[ slot0 method Response ]
+  sqrtPriceX96   uint160 :  4586418891309846984317130
+  tick   int24 :  -195150
+  observationIndex   uint16 :  55
+  observationCardinality   uint16 :  150
+  observationCardinalityNext   uint16 :  150
+  feeProtocol   uint8 :  102
+  unlocked   bool :  true
+```
 
-sqrtPriceX96 uint160 : 4586418891309846984317130
-
-tick int24 : -195150
-
-observationIndex uint16 : 55
-
-observationCardinality uint16 : 150
-
-observationCardinalityNext uint16 : 150
-
-feeProtocol uint8 : 102
-
-unlocked bool : true
-
-\`\`\`
-
-\`\`\`python
-
-\# Weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-
-\# USDT = 0xdAC17F958D2ee523a2206206994597C13D831ec7
-
-\# Weth is token0 and USDT is token1
-
+```python
+# Weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+# USDT = 0xdAC17F958D2ee523a2206206994597C13D831ec7
+# Weth is token0 and USDT is token1
 tick = -194624
 
-\# p repercent token0 in terms of token1 (1 weth = p usdt)
+# p repercent token0 in terms of token1 (1 weth = p usdt)
+#      Raw_Amount_USDT(token1)
+# p = ----------------------
+#      Raw_Amount_WETH(token0)
 
-\# Raw\_Amount\_USDT(token1)
+p = 1.0001 ** tick
 
-\# p = ----------------------
+decimal_usdt = 6
+decimal_weth = 18
 
-\# Raw\_Amount\_WETH(token0)
+price = p * (10 ** (decial_weth - decimal_usdt))
 
-p = 1.0001 \*\* tick
-
-decimal\_usdt = 6
-
-decimal\_weth = 18
-
-price = p _(10_ \* (decial\_weth - decimal\_usdt))
-
-\`\`\`
+```
 
 换一个例子，假设我们在 Weth/UDSC 池子里
 
-\`\`\`python
+```python
 
-\# Weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-
-\# USDC = 0xA0...
-
-\# USDC is token0 and WETH is token1
-
+# Weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+# USDC = 0xA0...
+# USDC is token0 and WETH is token1
 tick = 194609
 
-\# p repercent token0 in terms of token1 (1 udsc = p weth)
+# p repercent token0 in terms of token1 (1 udsc = p weth)
+#      Raw_Amount_WETH(token1)
+# p = ----------------------
+#      Raw_Amount_USDC(token0)
 
-\# Raw\_Amount\_WETH(token1)
+p = 1.0001 ** tick
 
-\# p = ----------------------
+decimal_weth = 18
+decimal_usdc = 6
 
-\# Raw\_Amount\_USDC(token0)
-
-p = 1.0001 \*\* tick
-
-decimal\_weth = 18
-
-decimal\_usdc = 6
-
-\# raw\_amount\_token1 decimal\_token0(1e6)
-
-\# price = ----------------------- X --------------------------
-
-\# raw\_amount\_token0 decimal\_token1(1e18)
-
-price = p _(10_ \* (decial\_usdc - decimal\_weth))
+#          raw_amount_token1          decimal_token0(1e6)
+# price = ----------------------- X --------------------------
+#          raw_amount_token0          decimal_token1(1e18)
+price = p * (10 ** (decial_usdc - decimal_weth))
 
 price2 = 1/price
+```
 
-\`\`\`
+price(tick)=1.0001 tickprice(_tick_)=1.0001_tick_
 
-</details>
+-   tick < 0 : 代表着 token1 更少更稀有
+    
+-   tick > 0 : 代表着 token0 更少更稀有
+    
 
-$$
-
-\\text{price}(tick) = 1.0001^{\\,tick}
-
-$$
-
-\- tick < 0 : 代表着 token1 更少更稀有
-
-\- tick > 0 : 代表着 token0 更少更稀有
-
-<details>
-
-<summary>✅Calculate Price By SqrtPriceX96</summary>
+✅Calculate Price By SqrtPriceX96
 
 **Discription:** 在 Uniswap V3 中，池子的核心价格状态不是直接存 price，而是存：
 
-$$
-
-\\text{sqrtPriceX96}
-
-\=
-
-\\sqrt{\\frac{P\_1}{P\_0}}
-
-\\cdot
-
-2^{96}
-
-$$
+sqrtPriceX96=P1P0⋅296sqrtPriceX96=_P_0​_P_1​​​⋅296
 
 其中：
 
 现在有 WETH / USDT pool
 
-\`\`\`python
+```python
 
-sqrt\_q\_96 = 4586418891309846984317130
+sqrt_q_96  = 4586418891309846984317130
+Q96 = 2 ** 96
 
-Q96 = 2 \*\* 96
+p = (sqrt_q_96/Q96) ** 2
 
-p = (sqrt\_q\_96/Q96) \*\* 2
+price = p / 1e6 * 1e18
 
-price = p / 1e6 \* 1e18
+```
 
-\`\`\`
+另一个需要知道的是`tick`和`sqrt_q_96`的相互转化
 
-</details>
+💹SqrtQ96 To Tick
 
-另一个需要知道的`ticksqrt_q_96`的相互转化
+P=1.0001tick=(sqrtPriceX96Q96)2_P_\=1.0001tick=(_Q_96sqrtPriceX96​)2
 
-<details>
+tick=2⋅log⁡ ⁣(sqrtPriceX96Q96)log⁡(1.0001)tick=log(1.0001)2⋅log(_Q_96sqrtPriceX96​)​
 
-<summary>💹SqrtQ96 To Tick</summary>
-
-$$
-
-P
-
-\=
-
-1.0001^{\\text{tick}}
-
-\=
-
-\\left(
-
-\\frac{\\text{sqrtPriceX96}}{Q96}
-
-\\right)^2
-
-$$
-
-$$
-
-\\text{tick}
-
-\=
-
-\\frac{
-
-2 \\cdot \\log\\!\\left(\\frac{\\text{sqrtPriceX96}}{Q96}\\right)
-
-}{
-
-\\log(1.0001)
-
-}
-
-$$
-
-\`\`\`python
-
-Q96 = 2 \*\* 96
-
-sqrt\_p\_x96 = 1386025840740905446350612632896904
-
+```python
+Q96 = 2 ** 96
+sqrt_p_x96 = 1386025840740905446350612632896904
 tick = 195402
 
-t = 2 \* math.log(sqrt\_p\_x96 / Q96) / math.log(1.0001)
-
-\`\`\`
+t = 2 * math.log(sqrt_p_x96 / Q96) / math.log(1.0001)
+```
 
 结果发现整数位都是一样的，最后取整数位 tick 相同
 
-</details>
+✅Exersice
 
-<details>
+### **\[UNIV-3\] Math In UniswapV3**
 
-<summary>✅Exersice</summary>
+**Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
 
-FullMath\[^github-fullmath\]是 UniswapV3 中用来安全计算的库。
+YX=P_XY_​=_P_
 
-\[^github-fullmath\]: [https://github.com/Uniswap/v3-core/blob/0.8/contracts/libraries/FullMath.sol](https://github.com/Uniswap/v3-core/blob/0.8/contracts/libraries/FullMath.sol)
+XY=L2_XY_\=_L_2
 
-\`\`\`js
+LP=X_P_​_L_​=_X_
 
-pragma solidity 0.8.24;
+LP=Y_LP_​=_Y_
 
-import {Test, console2} from "forge-std/Test.sol";
+现在我们已经知道如何用过 price 和 liquidity 来表示 X 和 Y 了。现在还有一个问题就是在 uniswap V3 中，X 代表着 real resource 和 virtual resource 志和，如何计算 real resource？
 
-import {IUniswapV3Pool} from "../../../src/interfaces/uniswap-v3/IUniswapV3Pool.sol";
+l:lower h:higher
 
-import {UNISWAP\_V3\_POOL\_USDC\_WETH\_500} from "../../../src/Constants.sol";
+x=LPl−LPh_x_\=_Pl_​​_L_​−_Ph_​​_L_​
 
-import {FullMath} from "../../../src/uniswap-v3/FullMath.sol";
-
-contract UniswapV3SwapTest is Test {
-
-// token0 (X)
-
-uint256 private constant USDC\_DECIMALS = 1e6;
-
-// token1 (Y)
-
-uint256 private constant WETH\_DECIMALS = 1e18;
-
-// 1 << 96 = 2 \*\* 96
-
-uint256 private constant Q96 = 1 << 96;
-
-IUniswapV3Pool private immutable pool =
-
-IUniswapV3Pool(UNISWAP\_V3\_POOL\_USDC\_WETH\_500);
-
-// Exercise 1
-
-// - Get price of WETH in terms of USDC and return price with 18 decimals
-
-function test\_spot\_price\_from\_sqrtPriceX96() public {
-
-//@note p = amount\_weth/amount\_usdc = usdc in terms of weth
-
-//@note p has 18-6 = 12 decimals
-
-//@note 1/p has 6-18 = -12 decimals
-
-uint256 price = 0;
-
-IUniswapV3Pool.Slot0 memory slot0 = pool.slot0();
-
-// Write your code here
-
-// Don’t change any other code
-
-// sqrtPriceX96 \* sqrtPriceX96 might overflow
-
-// So use FullMath.mulDiv to do uint256 \* uint256 / uint256 without overflow
-
-//@note sqrtPriceX96^2 = (sqrt(p) \* Q96)^2
-
-//@note = p \* Q96^2
-
-//@note = p _2_ \* 192
-
-//也就是说我们还有64bit用来保存p 但是如果p的decimal时18的时候，p最多只能到达18
-
-//由此上面的方法是错误的
-
-//@note sqrtPriceX96^2 / Q96^2 = sqrt(p)^2
-
-//@note = p
-
-//这个方法当sqrtPriceX96很小的话，会导致p = 0
-
-//@note 因此，我们需要用FullMath.mulDiv来计算
-
-price = FullMath.mulDiv(slot0.sqrtPriceX96, slot0.sqrtPriceX96, Q96);
-
-// price = p \* Q96
-
-// 1/price = 1 / (p \* Q96) 在solidity中，1/一个很大的数 -->结果为0，向下取整
-
-price = (Q96 _1e12_ 1e18) / price;
-
-assertGt(price, 0, "price = 0");
-
-console2.log("price %e", price);
-
-/\*
-
-\[PASS\] test\_spot\_price\_from\_sqrtPriceX96() (gas: 14755)
-
-Logs:
-
-price 2.3744513783461654702155066169421839144e37k
-
-\*/
-
-}
-
-}
-
-\`\`\`
+y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
@@ -422,6 +218,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ### **\[N-2\] Phased Plan from 1/12 to 2/8 in 2026**
@@ -648,6 +445,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
