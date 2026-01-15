@@ -15,8 +15,124 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# 📒 共学营 Day 4 学习笔记
+
+今天我让 ChatGPT 来模拟面试官，针对 **Uniswap V2** 对我进行了一轮面试式提问，通过答题 + 讲解的方式复盘了协议的核心设计，收获还是挺大的，主要集中在 **协议合约结构** 和 **LP Token 机制** 两个问题上。
+
+* * *
+
+## ✅ 面试题一：Uniswap V2 的核心合约有哪些？各自职责是什么？
+
+### 🧩 合约分层结构
+
+Uniswap V2 的合约整体分为 **Core（协议核心层）** 和 **Periphery（外围交互层）** 两部分。
+
+### 🔹 Core 层
+
+-   **UniswapV2Factory**
+    
+    -   负责创建和管理所有交易对（Pair）
+        
+    -   通过 `createPair(tokenA, tokenB)` 使用 `CREATE2` 部署 Pair
+        
+    -   保证任意代币对只会存在一个池子
+        
+-   **UniswapV2Pair**
+    
+    -   真正持有资金池资产的合约
+        
+    -   内部实现 `mint / burn / swap / sync / skim`
+        
+    -   所有交易和流动性变化都发生在 Pair 中
+        
+-   **UniswapV2ERC20**
+    
+    -   Pair 继承的 ERC20 实现
+        
+    -   用于实现 LP Token
+        
+    -   支持 `permit`（EIP-2612），方便无 gas 授权
+        
+
+### 🔹 Periphery 层
+
+-   **UniswapV2Router02**
+    
+    -   面向用户的统一交互入口
+        
+    -   提供添加/移除流动性接口
+        
+    -   封装多跳 swap 路径
+        
+    -   处理 ETH 与 WETH 的转换逻辑
+        
+
+📌 总结：Router 只负责调度和路径计算，**不托管资产**，真正的资产始终在 Pair 合约中。
+
+* * *
+
+## ✅ 面试题二：LP Token 有什么作用？数量是如何计算的？
+
+### 🎯 LP Token 的作用
+
+-   LP Token 是流动性提供者在池子中的**份额凭证**
+    
+-   代表持有者在池中拥有的资产比例
+    
+-   可通过 `burn()` 随时赎回对应比例的两种代币
+    
+-   本身是 ERC20，可转让、可组合进其他 DeFi 协议
+    
+
+* * *
+
+### 📐 LP Token 的计算方式
+
+1️⃣ 第一次添加流动性（初始化池子）
+
+```
+liquidity = sqrt(amountA * amountB) - MINIMUM_LIQUIDITY
+```
+
+-   `MINIMUM_LIQUIDITY = 1000` 会被永久锁定
+    
+-   用于防止池子被完全抽空以及除零等边界问题
+    
+
+* * *
+
+2️⃣ 后续添加流动性（池子已存在）
+
+```
+liquidity = min(
+  amountA * totalSupply / reserveA,
+  amountB * totalSupply / reserveB
+)
+```
+
+-   按资产在池子中的**占比**计算 LP Token
+    
+-   取 `min` 是为了保持当前价格比例不被破坏
+    
+-   多余的一侧资产会被退回给用户
+    
+
+* * *
+
+### 🧠 核心理解
+
+> 后续加池不是按投入的绝对数量算，而是按能提供多少“等比例流动性份额”来算。
+
+* * *
+
+今天通过面试式复盘的方式，把 Uniswap V2 的基础结构和 LP 机制又系统过了一遍，也发现一些以前只是记结论、但没认真推过公式的地方，后面打算继续往 swap 过程和价格累计机制方向深入。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -104,6 +220,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # 📒 共学营 Day 2 学习笔记｜以太坊的去中心化是如何被“工程化”的
 
@@ -249,6 +366,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 > **Web3 实习计划 · Day 1 学习记录**
