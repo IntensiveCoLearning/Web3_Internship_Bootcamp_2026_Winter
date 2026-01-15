@@ -80,10 +80,22 @@ Web3 实习计划 2025 冬季实习生
     
 
 ![屏幕截图 2026-01-15 150439.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768460711179-_____2026-01-15_150439.png)
+
+-   **要核实清楚这交易真正调用的是什么，是发送还是收款**
+    
+-   **不能被前端的页面所迷惑，要在后端或者交易端仔细核查调用的函数类型**
+    
+-   **核查地址的可信度**
+    
+-   **千万不要在不了解交易内容的情况下签署任何交易！**
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461930530-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461954108-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461879418-image.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -612,6 +624,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -1048,6 +1061,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
