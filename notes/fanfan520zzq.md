@@ -15,8 +15,50 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+```ini
+solidity stduy;
+uint -> 256 bit
+set(),get() ： modify or retrieve variable 
+public: use variable in other contract
+address : 160 bit
+了解了一下椭圆曲线加密（ECC），私钥d，公钥Q=kP,P是基点，k是私钥，Q是公钥
+加密与解密，报文M，随机数r保密，C1=rP,C2=M+rQ
+解密：M=C2-dC1
+交易可以看作是从一个帐户发送到另一个帐户的消息 交易包含：一个二进制数据（合约负载），eth
+交易没有接收者或者接收者位null，交易会创建一个new contract ， 这种合约的有效负载被认为是EVM字节码并执行
+为创建一个合约：您不需要发送实际的合约代码，而使发送能够产生合约代码的代码（不太懂？创造了一个临时函数？）
+
+EVM的三个数据区域：
+1. 内存（Memory）：临时存储区域，合约执行期间使用，调用结束后清空。
+2. 存储（Storage）：256bit 持久化存储区域，合约的状态变量保存在这里，直到合约被销毁。
+3. 堆栈（Stack）：用于存储临时变量和函数调用的返回值，大小有限制（1024个元素）。
+
+EVM不基于寄存器架构，而是基于堆栈架构，这意味着所有操作都是通过堆栈进行的，而不是通过寄存器。
+栈的深度限制为1024个元素（每个元素长度为一个字 256位），这意味着在执行复杂的计算时需要小心，以避免栈溢出错误。
+对栈的访问仅在顶部，拷贝最顶端16个元素的一个到栈顶，交换栈顶元素和下面16个元素中的一个；其他操作只能取顶上两个，运算后，把结果压在栈顶，无法访问指定深度的元素。
+EVM指令集：精简
+库：可以放在一个合约的存储中，并且可以被其他合约调用和使用，从而实现代码的重用和模块化设计。
+
+while (voters[to].delegate != address(0)) {
+    to = voters[to].delegate;
+    require(to != msg.sender, "Found loop in delegation.");
+} //链式循环 address(0) 终止
+
+AI:AI agent : LLM+memory+tool
+问题：身份欺诈；不可审计；影子AI
+M2M微支付
+AI协议栈：应用框架层；身份层；交易层
+ERC-8004: identity registry ; reputation registry ; validation
+合规：持续监控；不可篡改的认证；记录存证
+SpoonOS: AI operating system ; AI container ; AI marketplace
+```
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
 
 今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
@@ -57,6 +99,7 @@ DEX交易：verified;问号或感叹号的token
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -76,6 +119,7 @@ DEX交易：verified;问号或感叹号的token
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## **以太坊特性**
