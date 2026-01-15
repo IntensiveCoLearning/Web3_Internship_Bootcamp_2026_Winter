@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+### 一：YouTube的Day4的课程
+
+1.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
+    
+
+👩‍💻 Web2 到 Web3 🚀 - 第一周第四天 - 🎫 NFTs!!! ERC20 与 ERC721，IPFS，元数据。
+
+-   NFT：NFT (Non-Fungible Token) 是一种在区块链上记录“独一无二所有权”的数字资产。每个 NFT 都不可互换，用来证明某个数字或现实资产的归属。
+    
+-   ERC20：ERC-20 是 Ethereum 上最基础、最通用的 同质化代币标准，定义了代币如何转账、授权、查询余额等行为。
+    
+-   ERC721：ERC-721 是 Ethereum 上的 NFT（非同质化代币）标准，用于表示唯一、不可互换的资产（一枚 = 一个独立物品）。
+    
+-   IPFS：IPFS（InterPlanetary File System） 是一种 去中心化文件存储与分发协议，常用于 NFT 元数据、图片、视频 的长期保存与抗审查访问。
+    
+-   元数据：元数据（Metadata） 是 NFT 的“灵魂说明书”，定义了 这枚 NFT 是什么、长什么样、有什么属性。  
+    在 Ethereum 的 ERC-721 / ERC-1155 体系里，合约只存一个 `tokenURI`，真正内容都在元数据里。
+    
+
+### 二：打卡通用任务
+
+-   打开知名开发者 & Builder X 关注清单。
+    
+
+### 三：阅读群友分析的Ai及其概念分享会的笔记
+
+-   AI[及其基础概1.AI](http://及其基础概1.AI)智能体的演进:从"聊天"到"打工"。
+    
+-   [AI](http://2.AI)智能体面临的核心挑战。
+    
+-   Web3提供的解决方案:协议栈。
+    
+-   Spoon0S框架介绍。
+    
+-   未来展望:机器经济的崛起。
+    
+
+-   复习了之前交易所AI产品调研
+    
+
+[https://hjpvwrbpwy3c.jp.larksuite.com/wiki/BcK5wGuhZiwtufkjSSFjLb3Qpzc](https://hjpvwrbpwy3c.jp.larksuite.com/wiki/BcK5wGuhZiwtufkjSSFjLb3Qpzc)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ### 一：安全与合规：
 
 -   Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分。
@@ -40,6 +86,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 ### 一：YouTube的Day2的课程
 
@@ -68,6 +115,7 @@ Web2 到 Web3 🚀 - 第一周成为高级用户 - 第二天：钱包、助记�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 今天着重学习了Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分。
