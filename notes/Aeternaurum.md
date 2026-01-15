@@ -21,7 +21,9 @@ Web3 实习计划 2025 冬季实习生
 
 # SpoonOS AI：Web3 时代的智能体操作系统
 
-基于文档《Agentic\_AI\_Web3\_Operating\_System\_with\_notes.pdf》及相关协议解析，SpoonOS AI 被定义为**连接 Web2 开发能力与 Web3 基础设施的桥梁** ，是专为\*\*“机器经济（Machine Economy）”\*\*打造的操作系统 。
+SpoonOS AI 被定义为**连接 Web2 开发能力与 Web3 基础设施的桥梁** ，
+
+是专为\*\*“机器经济（Machine Economy）”\*\*打造的操作系统 。
 
 * * *
 
@@ -151,6 +153,7 @@ SpoonOS 能够构建全新的“自主经济”应用 ：
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # 分享会
 
 ## Part1 安全
@@ -264,6 +267,7 @@ U卡使用风险
 
 
 
+
 # Day2
 
 ### 分享会（web3原理）
@@ -354,6 +358,7 @@ EIP（以太坊改进提案）的流程
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
