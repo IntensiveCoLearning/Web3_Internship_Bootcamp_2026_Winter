@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+亲爱的助教老师您好，明天上午10点我要考电动力学，这学期的最后一门考试，今天实在是没有时间学习其他的了。之后我会补上今天的内容，谢谢啦！
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 Today, I attended an online sharing session on Web3 compliance. After listening to the lawyer's presentation, I felt a chill run down my spine, but I also felt fortunate to have learned these lessons in time. I used to think that as long as the technology wasn't "evil" and the company held an overseas license, everything was safe. However, today's notes completely overturned my "naive" thoughts.
 
 The first thing that alerted me was the due diligence for job hunting. I used to think that a project with a US MSB license was a legitimate player, but the lawyer bluntly stated that this might just be "entry-level compliance" and does not represent deep compliance. If I can access their official website without a VPN, or register with a Mainland Chinese ID and phone number, the legal risk is still extremely high, even if they superficially claim "not to do business in the Mainland" . Especially if I apply for a position involving derivatives like contracts or options, if something goes wrong, it is very easy to be characterized as "opening a casino" in the domestic judicial environment, and it is hard to defend oneself with "technological neutrality".
@@ -30,6 +36,7 @@ Finally, I deeply understood that **"**compliance" is not just what is written o
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 Today I reviewed the core structure of blockchain systems. A blockchain consists of a sequence of blocks, each containing transaction records and the hash of the previous block. This chained hash structure ensures data integrity and makes historical records effectively immutable.
 
@@ -46,6 +53,7 @@ Finally, I examined scalability challenges in public blockchains, such as increa
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 Completed most of the tasks except Ethereum Chinese Weekly Meeting because of time conflict.
