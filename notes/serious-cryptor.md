@@ -15,8 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+Date: 2026/1/15
+
+-   学习内容：web3与ai会议 + 《021以太坊》第一章
+    
+-   进展：整理了会议笔记，看完了第一章-认识以太坊
+    
+-   感悟：感觉今天rick老师讲的很专业，SpoonOS的出现很好的向我们展示出web3对于ai支付的解决方案，感觉以后可以尝试一下SpoonOS来量化hhh，比人更冷静不会fomo。看了以太坊第一章，对以太坊整体有了一定了解，以太坊的去中心化实现机制还需要复盘。听了今天Tina老师在Colearning的发言，打算下周开始在社交账号输出内容，形成输出驱动输入的效率革命。
+    
+-   疑惑：数字人民币的智能合约技术栈与以太坊有相似之处吗？国内数字货币的发展会产生web3的岗位吗？
+    
+
+notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e918f14dd?source=copy\_link](https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e918f14dd?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 Date: 2026/1/14
 
 -   学习内容：web3合规会议 + web3安全会议
@@ -33,6 +50,7 @@ notion笔记同步更新：[https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 Date: 2026/1/13
 
@@ -53,6 +71,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8029a48cf359223ea4
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 Date: 2026/1/12
