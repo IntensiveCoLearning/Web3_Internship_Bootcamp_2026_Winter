@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天学习了实习手册web3行业知识里的三个单元。运营部分——内容创作工具里还没用过notion，赶紧下载下来。数据与调研工具里后几个都没听过，之前只用过defi llama，后面对比看看。在举办活动上应该是“策划 → 筹备 → 执行 → 复盘”全流程，之前比较忽视复盘阶段，可将嘉宾金句 / 精彩瞬间剪辑为 15s 视频、收集嘉宾的反馈，是我之前没考虑到的。 合规和网络安全部分，感觉很震撼！在大陆好像做什么都可能违法，案例里面即使是做协助工作也会被判刑。监管的趋势和影响总结蛮好的⬇️
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-16-1768536060349-image.png)
+
+还听了昨晚web3安全分享会的录制，总结起来就是警钟长鸣，时间久了也不能掉以轻心，无论再急也要自己做下验证。最简单的就是“不点、不签、不装、不转”。也通过这次分享认识了GoPlus，以后遇到meme可以在上面检查下。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今天听了web3运行原理的回放。演示如何发一笔交易、并在链上查看记录的过程挺不错。
 
 节点选择优先打包哪些交易，打了从上海到北京出价的例子，非常形象好理解，印象深刻。
@@ -31,6 +41,7 @@ timezone: UTC+8
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 今天偷偷用上班时间学习了web3实习手册的行业赛道全览、工作方式两个单元。很喜欢2025年新趋势那部分，意图交易是我之前还没接触到的！记录一下。再就是～觉得也可以再介绍下RWA还有稳定币。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366256468-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366570343-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366594056-image.png)
@@ -38,6 +49,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 看了实习手册入门导读的前脸个单元。由于之前看过北大的区块链公开课，这次的内容基本都了解。以太坊上线时间是不是应该是2015年啊。
