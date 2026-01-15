@@ -15,8 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# AI及其基础概念
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-15-1768478510205-image.png)
+
+# 从聊天机器到自主经济体系
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-15-1768478587764-image.png)
+
+## 2026年的转变：从“对话”到“行动”
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-15-1768478653667-image.png)
+
+## 大脑、记忆和工具
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-15-1768478825968-image.png)
+
+## 基础设施缺口：身份与信任的危机
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-15-1768479021315-image.png)
+
+AI：能力很强的黑户
+
+## 支付摩擦
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-15-1768479200166-image.png)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -279,6 +309,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -386,6 +417,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
