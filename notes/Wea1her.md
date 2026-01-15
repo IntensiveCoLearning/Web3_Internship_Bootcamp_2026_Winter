@@ -17,8 +17,30 @@ INTJ
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# 今天做了什么：
+
+1.  对昨晚的直播，Web3合规内容进行整理，并上传到个人知识库。
+    
+2.  准备写职业规划。
+    
+3.  继续研究项目Demo。
+    
+
+# 今日目标：
+
+1.  参加下午co-Learning和晚上的会议。
+    
+2.  持续学习。
+    
+
+关于实习计划的所有笔记文档都放在：[https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/](https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # 昨天直播的思考：
 
 ### 1\. 资产自托管：如何既安全又不复杂？
@@ -86,6 +108,7 @@ INTJ
 
 
 
+
 # 今日目标：
 
 1.  参加下午的Co-Learning
@@ -101,6 +124,7 @@ INTJ
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
