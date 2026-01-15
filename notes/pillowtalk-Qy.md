@@ -52,10 +52,39 @@ Web3 实习计划 2025 冬季实习生
     
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768459536163-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768459774380-image.png)
+
+### **如何保护自己：**
+
+-   永远不要向任何人透露你的助记词，无论他们自称是谁。
+    
+-   将您的助记词离线存储在安全的地方。
+    
+-   使用硬件钱包可以增加一层安全保障。
+    
+-   如果你收到要求你提供助记词的消息，那几乎可以肯定是网络钓鱼攻击。
+    
+-   如有疑问，请结束对话并直接联系官方渠道。
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768460245178-image.png)
+
+**🛡️ 安全检查站**
+
+-   **检查许可证类型并了解授权范围**
+    
+-   **验证付款人地址是否来自可信来源**
+    
+-   **请注意授权金额，谨防无限制授权。**
+    
+-   **确认网站来源的可靠性**
+    
+
+![屏幕截图 2026-01-15 150439.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768460711179-_____2026-01-15_150439.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -582,6 +611,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -1018,6 +1048,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
