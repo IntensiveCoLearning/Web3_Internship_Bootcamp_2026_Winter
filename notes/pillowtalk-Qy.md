@@ -96,16 +96,238 @@ Web3 实习计划 2025 冬季实习生
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461930530-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461954108-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461879418-image.png)
 
-# \*\*USDT审批钓鱼演示：\*\*编号0x0005
+# **\*\*USDT审批钓鱼演示：编号0x0005**
 
 -   **请务必对任何要求获得 USDT 批准的请求保持警惕！**
     
 
-![屏幕截图 2026-01-15 160144.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768464204321-_____2026-01-15_160144.png)
+-   **除了批准之外，还要注意增加权限的功能**
+    
+-   **increaseAllowance 也可以增加代币批准数量**
+    
+-   **有些钓鱼网站利用这种方式来掩盖其真实意图**
+    
+-   **切勿无限期地向未知网站授予访问权限！**
+    
+
+![屏幕截图 2026-01-15 160144.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768464204321-_____2026-01-15_160144.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768464314886-image.png)
+
+# **虚假代币空投钓鱼攻击** ：识别真实域名与虚假域名：编号0x0006
+
+-   攻击者会创建域名与合法网站**非常相似**的虚假网站，试图欺骗用户
+    
+-   务必**逐字逐句**地仔细检查域名
+    
+-   要警惕使用**数字而不是字母的域名**（例如，用“1”代替“i”）
+    
+-   将**官方网站添加到收藏夹**，而不是点击电子邮件中的链接
+    
+-   使用仅对**合法域名**自动填充密码的**密码管理器**
+    
+-   **安装浏览器扩展程序**，以防范钓鱼网站
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768464615286-image.png)
+
+# **超高收益质押平台：**编号0x0007
+
+**⚠️ 可疑质押平台的危险信号：**
+
+-   **不切实际的回报（日均 50% 的回报在数学上是不可持续的）**
+    
+-   **代币审批次数不限，而非仅限于特定数量。**
+    
+-   **没有可验证的智能合约代码或审计**
+    
+-   **紧迫感和害怕错过 (FOMO) 营销策略**
+    
+-   **匿名团队或虚假身份**
+    
+
+**🛡️ 如何保护自己：**
+
+-   **投资前务必对项目进行充分调研。**
+    
+-   **检查智能合约是否已在 Etherscan 上验证。**
+    
+-   **寻找信誉良好的公司进行的安全审计。**
+    
+-   **永远不要批准无限制的代币支出**
+    
+-   **如果回报率好得令人难以置信，那它们很可能就是假的。**
+    
+
+**💡 安全提示：务必将代币审批数量限制在所需的确切数量内！**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768466681510-image.png)
+
+# 学习如何识别和避免 Telegram 中的种子短语钓鱼：编号0x0008
+
+**需要注意的警告信号：**
+
+-   **收到关于免费代币或空投的垃圾邮件**
+    
+-   **领取奖励的紧迫性或时间压力**
+    
+-   **请求提供您的助记词或私钥**
+    
+-   **高价值回报的承诺**
+    
+-   **语法或拼写错误**
+    
+
+**如何保护自己：**
+
+-   **永远不要与任何人分享你的助记词**
+    
+-   **正规项目绝不会索要你的助记词**
+    
+-   **对主动发送的免费代币信息保持警惕**
+    
+-   **所有信息均需通过官方渠道核实**
+    
+-   **如果某件事好得令人难以置信，那它很可能就是假的**
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768466809850-image.png)
+
+# **Punycode 网络钓鱼攻击：**编号0x0009
+
+**保护自己的最佳方法包括：**
+
+-   直接在浏览器中输入已知的官方网址，而不是点击电子邮件中的链接。
+    
+-   将您经常访问的重要网站添加到书签。
+    
+-   安装能够检测 Punycode 域名的浏览器扩展程序
+    
+-   注意域名中是否存在不寻常的字符或拼写错误
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768467489327-image.png)
+
+# **剪贴板网络钓鱼挑战：**编号0x0010
+
+1.  在复制粘贴的时候，可能复制的内容会被更改，所以在粘贴之后要再仔细核对和才可以发送
+    
+2.  最好的方式是手输，不依靠其他软件
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768485338327-image.png)
+
+# **谷歌搜索广告钓鱼攻击：**编号0x0011
+
+**了解谷歌搜索广告网络钓鱼攻击**
+
+-   攻击者经常购买与热门加密货币项目相关的谷歌广告，这些广告会出现在搜索结果的顶部，并标记为“赞助”或“广告”。
+    
+-   这些广告通常使用与官方网站非常相似的域名，但存在一些细微差别，例如：
+    
+-   使用不同的顶级域名（例如，.is 而不是 .fi）
+    
+-   在域名中添加或删除字母
+    
+-   使用连字符或用数字代替字母
+    
+-   当用户点击这些广告时，他们会被引导至钓鱼网站，这些网站看起来与官方网站一模一样，但其目的是窃取资金或私钥。
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768485744817-image.png)
+
+# 恶意软件网络钓鱼：编号0x0012
+
+### **风险：数据泄露**
+
+通过伪装成 Teams 更新安装的恶意软件可以访问您设备上的敏感文件，从而可能导致未经授权访问个人和公司数据。这可能导致知识产权盗窃、机密信息泄露和违反合规性规定。
+
+### **风险：凭证盗窃**
+
+当用户在伪造的 Teams 网站上输入其 Microsoft 凭据时，攻击者会窃取这些信息，从而访问电子邮件、OneDrive、SharePoint 和其他 Microsoft 365 服务。这可能导致帐户被盗用，并进一步损害组织资源。
+
+### **风险：钱包空空**
+
+对于使用同一设备访问加密货币钱包或金融服务的用户来说，通过虚假的 Teams 更新安装的恶意软件可能包含扫描钱包凭证的功能，从而导致数字资产被盗。
+
+### **安全提示**
+
+-   输入凭据或下载软件前，务必先验证网址。
+    
+-   请仅从微软官方网站或应用商店下载 Microsoft Teams。
+    
+-   对任何不寻常的安装过程或要求都要保持警惕。
+    
+-   如果您下载了可疑软件包，[可以在打开之前使用VirusTotal.com](http://可以在打开之前使用VirusTotal.com)进行扫描。但是请注意，即使未检测到任何威胁（0 项检测结果），也不能保证绝对安全。
+    
+
+**关键学习要点：**
+
+-   务必检查网址是否为官方域名（[teams.microsoft.com](http://teams.microsoft.com)）。
+    
+-   要警惕简化的界面和缺失的标准安全功能。
+    
+-   请仅从官方来源下载应用程序
+    
+-   对异常的安装过程保持警惕
+    
+
+**请记住：微软官方服务绝不会要求您通过可疑的第三方网站下载软件。**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768489941574-image.png)
+
+# **虚假扩展程序钓鱼：**编号0x0037
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768489578685-image.png)
+
+### **如何避免买到假冒产品**
+
+虚假浏览器扩展程序是攻击者常用的网络钓鱼手段，目的是窃取您的数据、密码和加密货币。以下是如何保护自己：
+
+**关键预警信号：**
+
+-   用户数量少：官方扩展程序拥有成千上万甚至数百万的用户。
+    
+-   可疑出版商：检查出版商名称是否与官方公司名称一致。
+    
+-   最近创建日期：虚假扩展程序通常是新创建的。
+    
+-   评论：留意虚假或可疑的评论
+    
+-   请求过多权限：警惕那些请求超出实际需求的扩展程序。
+    
+
+**推广安全最佳实践**
+
+-   务必从官方网站下载：直接访问官方网站（例如 [metamask.io](http://metamask.io)），而不是在应用商店搜索。虚假或恶意扩展程序可能会出现在搜索结果甚至官方应用商店中，有时会模仿真实扩展程序的名称、图标或品牌。访问官方网站可以确保您获得正版、安全的版本，避免落入仿冒或诈骗页面，从而保障您的安全和资产安全。
+    
+-   查看用户数量和评价：官方扩展程序用户数量多，评价通常也比较正面。
+    
+-   请仔细阅读权限说明：仅授予必要的权限。
+    
+-   保持扩展程序更新：定期更新通常包含安全补丁。
+    
+-   移除不常用的扩展程序：移除不再使用的扩展程序，从而减少攻击面。
+    
+
+**如果您安装了虚假扩展程序，该怎么办？**
+
+1.  创建一个新的钱包（最好在新的浏览器上），并将所有资金从被盗钱包中转出。
+    
+2.  卸载扩展程序
+    
+3.  更改所有可能已被泄露的密码。
+    
+4.  检查您的加密货币钱包中是否存在未经授权的交易
+    
+5.  使用信誉良好的杀毒软件扫描您的设备是否存在恶意软件
+    
+6.  密切监控您的账户是否存在可疑活动
+    
+7.  考虑使用硬件钱包以增强安全性。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -642,6 +864,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -1078,6 +1301,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
