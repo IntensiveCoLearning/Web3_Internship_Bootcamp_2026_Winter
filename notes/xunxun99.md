@@ -15,8 +15,23 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+一、Web3工作方式
+
+-   常用工具及远程帮工软件
+    
+-   远程协作习惯（OKR写法与最佳习惯、远程办公注意事项、职场软技能
+    
+-   行业黑话
+    
+
+二、
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 一、行业赛道全览
 
 二、web3工作方式
@@ -30,6 +45,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 一、以太坊概念
 
@@ -65,6 +81,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
