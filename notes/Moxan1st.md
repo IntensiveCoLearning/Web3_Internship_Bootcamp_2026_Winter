@@ -19,11 +19,19 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 # 总览
 
+1.  跟GPT学foundry的基本操作——已经把foundry自带counter部署到sepolia [合约地址](https://sepolia.etherscan.io/address/0x02343bfb4ce8e6e5add0d95562187787fd5ce2ec#readContract) 并且通过命令存变量，加一。
+    
+2.  理解和写简易的项目——完成remix自带storage、owner和ballot
+    
+3.  《021学习以太坊第四章》——
+    
+
 # 详情
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 # 总览
 
@@ -216,6 +224,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -324,6 +333,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
