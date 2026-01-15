@@ -17,7 +17,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
-# **Unphishable 钓鱼攻防挑战**
+# **Unphishable 钓鱼攻防挑战：**[**https://unphishable.io/**](https://unphishable.io/)
 
 1.**安全存储您的助记词**
 
@@ -68,7 +68,7 @@ Web3 实习计划 2025 冬季实习生
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768460245178-image.png)
 
-# **美国商务部许可网络钓鱼演示**
+# **美国商务部许可网络钓鱼演示：**编号0x0003
 
 **🛡️ 安全检查站**
 
@@ -83,7 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 ![屏幕截图 2026-01-15 150439.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768460711179-_____2026-01-15_150439.png)
 
-# **空投骗局**挑战
+# **空投骗局**挑战：编号0x0004
 
 -   **要核实清楚这交易真正调用的是什么，是发送还是收款**
     
@@ -95,10 +95,13 @@ Web3 实习计划 2025 冬季实习生
     
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461930530-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461954108-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768461879418-image.png)
+
+# **USDT审批钓鱼演示：**编号0x0005
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -631,6 +634,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -1067,6 +1071,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
