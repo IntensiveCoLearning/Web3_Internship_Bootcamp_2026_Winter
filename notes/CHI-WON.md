@@ -15,8 +15,107 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# DAY4
+
+对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
+
+## Cheatcodes
+
+**Cheatcodes 是 Foundry 在测试环境中，给 EVM 插上的“调试接口（debug interface）”，**它们 **不是 Solidity 语法，**也**不是 EVM opcode，**而是 **forge 在执行测试时，拦截特定合约调用并执行宿主逻辑。**
+
+拦截特定合约调用并执行宿主逻辑：
+
+在一个没有Foundry的世界里，EVM的规则是：
+
+-   Solidity 编译成字节码
+    
+-   EVM 执行 `CALL`
+    
+-   跳到目标地址
+    
+-   执行目标合约的字节码
+    
+-   返回结果
+    
+
+所有的逻辑都发生在EVM内部。而在Foundry中存在vm。vm是一个固定地址的合约接口，这个地址是 Foundry 预留的（常量地址），它的 ABI 是已知的。
+
+在forge执行测试时，执行引擎不是geth，也不睡真实的节点，而是Foundry自己实现的EVM，这个EVM在执行call指令时，会检查目的地址是不是cheatcodes地址，calldata是否匹配某个已知cheatcodes，如果不是，就正常进入合约字节码执行，如果是，就不进入EVM合约执行，直接在宿主程序rust中执行对应逻辑，这就是拦截特定合约应用。
+
+宿主逻辑：
+
+宿主指的是：
+
+-   运行 forge 的进程
+    
+-   用 Rust 写的测试运行器
+    
+-   在 EVM 之外
+    
+
+Foundry和Hardhat在不同的阶段用各自的差异：
+
+-   Foundry：偏地层、偏协议和合约工程，有极强的测试能力
+    
+-   Hardhat：偏应用、偏前端协作、插件生态成熟
+    
+
+除了对Foundry有一个基本的了解之外，在AI及其基础概念的分享会后，对AI Agent的基础也做了一些简单的了解。
+
+## What is AI Agent
+
+An AI agent is a digital worker that can understand instructions and take actions in order to complete tasks.
+
+## Five AI Agent Components
+
+1.  LLM
+    
+2.  Prompting
+    
+3.  Memory
+    
+4.  External knowledge
+    
+5.  Tools
+    
+
+## What is API
+
+Definition of API: Application Programming Interface
+
+## Two Types Of Request
+
+1.  Get request
+    
+2.  Post request
+    
+
+## Two Types Of Agent:
+
+1.  Conversational agent
+    
+2.  automated agent
+    
+
+## Real World Examples
+
+1.  personal assistant
+    
+2.  copilots
+    
+3.  lead generation and appointment setting agents
+    
+4.  research agent
+    
+
+[https://youtu.be/w0H1-b044KY?si=3I8lRFocdl8Y5WKF](https://youtu.be/w0H1-b044KY?si=3I8lRFocdl8Y5WKF)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # **DAY3**
 
 ## TASK:
@@ -175,6 +274,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -271,6 +371,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
