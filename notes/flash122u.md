@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+1
+
+1
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 Solidity 布尔类型小结
 
 | 分类 | 核心内容 | 关键说明/示例 |
@@ -72,6 +80,7 @@ contract PiggyBank {
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 ## Solidity 数据类型小结
 
 | **分类**                     | **核心内容**                                                 | **关键特性**                                                 |
@@ -117,6 +126,7 @@ contract PiggyBank {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
