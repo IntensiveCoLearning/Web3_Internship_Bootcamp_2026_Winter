@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# 支付摩擦：机器经济需要新货币
+
+-   新需求：
+    
+    -   机器对机器微支付
+        
+    -   按api调用/推理付费
+        
+    -   毫秒级结算
+        
+
+链上交易只需要付gas费
+
+**机器人和自动化代理已处理70%的稳定币转账**
+
+web3与ai协议栈：赋予智能体自主权
+
+区块链为ai智能体提供了不可篡改的身份证明和原生银行帐户
+
+-   在身份层可为ai一个身份声明等，证明ai agent的模型
+    
+-   交易层解决付款问题
+    
+-   应用层则将身份层和交易所进行打包为api
+    
+
+## ERC-8004:智能体的链上护照
+
+每个ai agent都是一个nft，具有唯一性，不可篡改，可验证性
+
+身份注册表：基于ERC-721标准
+
+其声誉系统：
+
+防止不可篡改的反馈评分，防止垃圾信息：仅付费用户可评价
+
+验证机制：
+
+TEE或zkML证明，证明你是谁
+
+## x402协议：HTTP原生的机器支付
+
+应用：按文件付费，按算力付费，无需订阅
+
+![截屏2026-01-15 20.28.07.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-15-1768480102769-__2026-01-15_20.28.07.png)
+
+每次调用会有gas费：可双方链上锁定一笔押金，最后总算到swap里再aa。
+
+# 安全和合规：从“黑盒”到‘透明审计“
+
+高风险：系统评估，和招聘风险。
+
+web3对ai合规的解决方案：
+
+不可篡改的审计日志。所有推理，交易，验证记录永久存证。满足最严格的监管审计要求
+
+# 如何怎么使用ai agent
+
+### Spoonos：web3
+
+集成ERC-8004 ,Web3 development， web2 ai dev tools
+
+从而无需从头构建基础设施
+
+![截屏2026-01-15 20.36.19.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-15-1768480590912-__2026-01-15_20.36.19.png)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # 高频攻击与欺诈类型
 
 -   私钥窃盗：病毒木马，偷私钥
@@ -91,6 +161,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 私钥的安全性
 
@@ -235,6 +306,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # Web 3现状:
