@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+Today’s learning focused on the evolving threat landscape in Web3, highlighted by key data, attack methodologies, and emerging challenges. In 2025 alone, the ecosystem suffered over $3.5 billion in losses across more than 1,200 major security incidents, reflecting a trend toward both highly targeted attacks and widespread automated threats. High-profile breaches—such as the multi-signature compromise at Bybit, AI-driven deepfake social engineering at ULXINK, and complex DeFi contract exploits like Balancer—illustrate how attackers are leveraging advanced techniques, supply chain vulnerabilities, and AI to execute sophisticated and damaging campaigns.
+
+Notably, attack vectors have diversified. “Precision hunting” tactics, often linked to state-sponsored actors like North Korea’s Lazarus Group, accounted for the majority of high-value institutional thefts. Meanwhile, “spray-and-pray” methods such as phishing, private key theft, and rug pulls remained pervasive, increasingly enhanced by AI-generated content and automated tooling. Emerging threats also include novel phishing schemes exploiting EIP-7702 delegation features, self-propagating supply chain worms like Shai-Huud, and AI-aided smart contract vulnerability discovery—marking a shift toward more automated, scalable, and stealthy attacks.
+
+From a legal and compliance perspective, while specific regulations around Web3 terminologies remain underdeveloped in many jurisdictions, the industry is increasingly expected to adopt proactive security governance. This includes implementing security-by-design in development, conducting continuous monitoring, establishing rapid response protocols, and enhancing user education on practices such as verifying transactions, isolating sensitive wallets, and using safety tools like Scam Sniffer.
+
+Overall, today’s review underscores that security in Web3 is no longer merely a technical afterthought, but a foundational requirement for mainstream adoption. Both individual users and projects must cultivate stronger security habits, embrace multi-layered protection strategies, and stay informed on evolving threats—especially as AI continues to reshape the offensive and defensive dynamics of the space.
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 In today’s review, I revisited essential concepts and practical skills in Web3, with a focus on wallet security and risk prevention. I learned that wallet signature authorizations can expose funds to theft—even without private key leakage—due to malicious or vulnerable website interactions. Tools such as the Scam Sniffer browser extension help detect dangerous sites, though manual judgment remains essential. Best practices include keeping only minimal gas funds in MetaMask and considering Apple devices for added security.
 
 The session also covered token identification, emphasizing that the contract address is the true identifier rather than the token name. Anyone can create tokens with identical names or displayed prices, making it critical to verify addresses on decentralized exchanges and look for “verified” labels or warning symbols. For careers in Web3, practical takeaways include maintaining a strong GitHub portfolio for technical roles, curating case studies for operations positions, and leveraging Twitter to build a personal brand—beginning with content in one’s native language for better engagement.
@@ -30,6 +42,7 @@ Finally, the discussion touched on blockchain fundamentals such as 51% attacks, 
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
 
 During today’s learning session, I reviewed the foundational principles of Web3 and blockchain technology, covering core functions and underlying architectural logic—such as how transactions are executed and how smart contracts operate on Ethereum and other blockchain platforms. This refreshed my understanding of the technical groundwork that supports decentralized applications and ecosystems.
@@ -41,6 +54,7 @@ Overall, today’s hands-on setup and conceptual review strengthened my practica
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
