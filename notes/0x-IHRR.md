@@ -15,8 +15,110 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+函数修饰器 **modifier** ：这是个关键字，它的主要作用是把重复的代码弄到一块去，这样其它函数需要使用的时候直接修饰一下就可以了，还可以弄三明治形式，插到中间，总的来说，就是可以不用写太多重复代码，跟函数一样，我觉得应该可以算是函数里面的函数，叫函函算了。
+
+\`\`\`
+
+contract FunctionModifier {
+
+pool public paused; // 定义暂停的状态变量，这里默认是false
+
+uint public count; // 定义计数器
+
+function setPaused(bool \_paused) external {
+
+paused = \_paused;
+
+}
+
+modifier whenNotPaused {
+
+require(!paused, "paused"); // 这里的逻辑我绕了一下，！是不的意思，paused是暂停的意思，paused的默认值又是false，所以这里就是 不false，不false=true，那这里就是true的意思，就不会报错，而且会继续执行后续的代码，刚开始对false和true没弄明白，这里是需要去接受外部输入的，就是用户调用，在调用层，用户输入的值如果是false，也就是默认值，这里就不会暂停，但如果用户输入的是true，这里就会是 ！true = 不true = false，那这里就会报错“paused”，就会暂停，因为这里条件不满足，这是require的判断逻辑。
+
+\_; // 这就是函数修饰完之后其它代码插入的地方，我觉得可以理解成占位符吧，反正就是先占个茅坑
+
+}
+
+function inc() external whenNotPaused {
+
+count += 1; // 这里就可以把在函数修饰符里面占的茅坑填上了
+
+}
+
+function dec() external whenNotPaused {
+
+count -= 1; // 这里跟前面的inc()的功能是一样的，所以inc（）和dec（）两个函数甚至更多函数需要用到暂停这个功能，就直接用whenNotPaused修饰一样就可以了，就避免每次都需要写一行暂停，虽然不算麻烦，但整体看上去会更简洁，就是不知道会不会省Gas，应该不会，毕竟工作量还是要有的
+
+}
+
+modifier cap(uint \_x) {
+
+require(\_x < 100, "x >= 100"); // 在函数修饰符里面加上变量，整体读下来，其实跟直接把判断逻辑写在函数里面没区别，就是把这个判断逻辑单独摘出来，然后其它函数可能也能用得上，如果只是单独放在一个函数里面，那就只有那个函数局部可以使用，想到这里，这个函数修饰符的作用，是不是就是把逻辑封装成一个类似于状态变量类型的东西呢？（这里AI纠正了一下，它说把修饰器说成是 逻辑模板/共享规则 会更好，我也觉得是的）状态变量是值，但这里是逻辑，同样是其它函数都可以使用，不过状态变量是函数和代码都可以调用，而这个函数修饰符只是给函数服务而已
+
+\_;
+
+}
+
+// 这里有两个修饰符，按从左往右的顺序运行，先判断是否需要暂停，再判断用户输入的值是否小于100，这里cap的修饰里面需要传参进去
+
+function incBy(uint _x) external whenNotPaused cap(_x) {
+
+count += \_x; // 前面都没问题的话，这里的代码就会插入茅坑
+
+}
+
+modifier sandwich() {
+
+// Code Here 这里就很好理解了，先执行第一步
+
+count += 10;
+
+\_; // 然后占茅坑
+
+// More Code Here
+
+count \*= 2; // 茅坑填完之后，再回到修饰符执行这段代码，跟三明治、汉堡包🍔一样，夹心的
+
+}
+
+function foo() external sandwich {
+
+count += 1;
+
+}
+
+}
+
+\`\`\`
+
+构造函数 **constructor** ：这个玩意只能在Deploy Contract的时候定义一次，难怪叫构造函数，跟Docker里面Build功能差不多吧，定义完之后就不会变动了，暂时也没学到怎么改变构造函数那一块，可能需要重新部署干嘛的
+
+\`\`\`
+
+contract Constructor {
+
+address public owner;
+
+uint public x;
+
+constructor(uint \_x) {
+
+owner = msg.sender; // 这段定义部署者的代码应该是构造函数最常用的，在Deploy Contract时就会把msg.sender的地址传给owner，因为构造函数只能用一次，所以这时就把owner和合约部署者的地址绑定在一起，之后就可以用这个功能去设计一些只有owner可以调用的函数，这个倒是不难理解，msg.sender就是当前调用这个合约的地址，即时的，也是最核心的全局变量之一，但因为是即时的，所以在用户A--调用合约B--再调用合约C时，合约C的msg.sender会是合约B的地址，如果要获取到真实的用户A的地址，还需要其它一系列操作
+
+x = \_x; // 这个就是在部署合约时需要用户输入的一个值，也会绑定给x，在这里没啥作用，就是说明一下可以这样写代码，有这么个玩意在
+
+}
+
+}
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 状态变量就是链上的信息，改状态变量就是改链上的数据
 
 数据类型一般是有默认值的：
@@ -161,6 +263,7 @@ revert MyError(msg.sender, \_i); // msg.sender(调用者的地址) i(传入的�
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 public 代表公开
 
 \## 类型和值
@@ -208,6 +311,7 @@ pure、view和无修饰符，是强制约束 + gas优化，我还以为可以从
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 今天是实习计划月的第一天，上午把入门计划全部过了一遍，因为在开营之前就把实习的一些教学材料看过一遍，今天才发现原来是那些东西，所以学习压力不算很大，除了视频还没有全部看完，第一周的任务差不多完成了。  
