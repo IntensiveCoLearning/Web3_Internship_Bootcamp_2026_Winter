@@ -15,8 +15,42 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## 继续昨天的web3安全
+
+攻击方式演变与新技术骗局
+
+![alt text](image-4.png)
+
+**！新技术引入的欺诈骗局** 可以详细了解一下
+
+![alt text](image-5.png)
+
+漏洞挖掘的方式 从黑客的角度
+
+web3的智能合约漏洞 不同于web2漏洞 web端xss sq注入 基于0day远控 人员管理
+
+## AI及其基础概念
+
+解析x402 ERC-8004标准 与SpoonOS框架
+
+微支付？
+
+![alt text](image-6.png)
+
+x402协议
+
+![alt text](image-7.png)![alt text](image-8.png)
+
+构建agentic操作系统
+
+> 四层的协同运作
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ## web3安全分享
 
 ### Bybit被盗事件
@@ -139,6 +173,7 @@ UXlink Balancer
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 ## 1.13号共学
 
@@ -566,6 +601,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
