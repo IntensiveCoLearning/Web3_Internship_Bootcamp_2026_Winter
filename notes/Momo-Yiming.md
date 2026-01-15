@@ -18,7 +18,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 以下是结合今日学习内容web和ai相关总结的思维导图用deepseek处理后输出的文字稿  
-**未来十年最大机遇：当AI智能体学会“花钱”，Web3是唯一的答案**
+**AI智能体学会“花钱”，Web3是唯一的答案**
 
 AI不止会聊天，更将自主走入社会。而Web3，正在为它们铺设第一条公路。
 
@@ -71,8 +71,8 @@ Web3技术，恰好为上述难题提供了原生解决方案。这并非生搬�
 
 AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会经济循环的**必然要求**。未来的竞争，将是生态的竞争——看谁能最先、最完善地为亿万个AI智能体构建好它们赖以生存的“数字社会”。
 
-当AI学会“花钱”和“赚钱”，商业世界的基本规则将被重写。而这一刻，或许在2026年就会到来。  
-  
+当AI学会“花钱”和“赚钱”，商业世界的基本规则将被重写。而这一刻，或许在2026年就会到来。
+
 以下是手工总结输出的思维导图
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-15-1768491726803-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-15-1768491758797-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-15-1768491793981-image.png)
@@ -80,6 +80,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
@@ -91,11 +92,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
