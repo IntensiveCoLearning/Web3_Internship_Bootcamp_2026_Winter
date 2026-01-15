@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+先占个位置！
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 整理之前的笔记  
 [https://www.notion.so/2b04eed4f4c080228b1ae6cb16559064?v=2b04eed4f4c080da8e3b000cb0d30aaf&source=copy\_link](https://www.notion.so/2b04eed4f4c080228b1ae6cb16559064?v=2b04eed4f4c080da8e3b000cb0d30aaf&source=copy_link)
 
@@ -33,6 +39,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
