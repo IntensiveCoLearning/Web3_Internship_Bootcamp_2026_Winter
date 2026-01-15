@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+[unphishable.io](http://unphishable.io)  
+今天主要是在这个网站做了一些钓鱼攻击的安全测试  
+  
+  
+写了四周运营求职计划
+
+![屏幕截图 2026-01-15 235539.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-15-1768492602254-_____2026-01-15_235539.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-15-1768492575712-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-15-1768492620287-image.png)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今天没有太多高密度的学习  
 倒是有些感悟 就当日记来写了  
 
@@ -33,6 +45,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 今天学习吸收内容比较多：
 
@@ -73,6 +86,7 @@ answer：web3目前整体网络环境较差，属于混沌的发展阶段，需�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 web3行业找工作讲座：
