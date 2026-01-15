@@ -18,10 +18,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 测试
+
+![IMG_2231.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Appler-R/images/2026-01-15-1768482027529-IMG_2231.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -30,6 +33,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
