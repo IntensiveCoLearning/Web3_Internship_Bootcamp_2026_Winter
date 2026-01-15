@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今日考完了 明日开始学习
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今日考试 学习搁置
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 今日任务 ：021 学习以太坊第 1 章  
   
@@ -31,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## **  
