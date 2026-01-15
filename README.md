@@ -496,7 +496,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [zhaojinxiu6](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/zhaojinxiu6.md) | ✅ | ✅ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | |
 | [xinyuuum2](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/xinyuuum2.md) | ✅ | ✅ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | |
 | [haotian2294622823](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/haotian2294622823.md) | ⭕️ | ✅ | ⭕️ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | |
-| [Misa-Gen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Misa-Gen.md) | ⭕️ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | | |
+| [Misa-Gen](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Misa-Gen.md) | ⭕️ | ✅ | ✅ | ✅ | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Wea1her](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Wea1her.md) | ✅ | ✅ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | |
 | [vchenki](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/vchenki.md) | ✅ | ⭕️ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | |
 | [SU-AN-coder](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/SU-AN-coder.md) | ✅ | ✅ | ✅ | ✅ |   | | | | | | | | | | | | | | | | | | | | | | | |
@@ -1484,6 +1484,7 @@ Web3 实习计划免责声明及入营协议: [https://ethpanda.notion.site/Web3
 | [erickgo39](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/erickgo39.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | |
 | [Lucifer1H](https://github.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/blob/main/notes/Lucifer1H.md) | ⭕️ | ⭕️ | ❌ | | | | | | | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
+
 
 
 
