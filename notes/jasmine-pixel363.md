@@ -40,6 +40,12 @@ reveal the secret
 
 到了约定的时间， 你把当初的秘密 𝑠 公开。
 
+**call a reveal function**
+
+区块链上所有状态变化都要通过函数调用
+
+reveal 本身是一次交易, 需要 gas, 需要有人主动触发
+
 ### 为什么 Web3 非常需要这套机制？
 
 因为区块链是：完全透明、所有交易可预测（mempool）
@@ -65,6 +71,7 @@ commit 一个随机种子 区块生成后 reveal 和区块哈希一起算随机�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -250,6 +257,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -354,6 +362,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
