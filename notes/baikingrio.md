@@ -15,8 +15,24 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## 阅读Uniswap V2工厂合约代码
+
+Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
+
+首先，合约实现了 IUniswapV2Factory 接口，定义了几个关键状态变量：feeTo（手续费接收地址，默认没有设置）和 feeToSetter（设置 feeTo 的权限持有者，由构造函数初始化）。有一个 mapping getPair，用于存储 token0 和 token1 之间的 pair 地址，支持双向查询；还有 allPairs 数组，记录所有创建的 pair，便于外部查询总数（通过 allPairsLength 函数）。
+
+核心函数是 createPair，它允许任何人创建新的 token 对。函数先检查输入：tokenA 和 tokenB 不能相同，不能为零地址，且 pair 不存在。然后，通过比较地址大小排序 token0 和 token1，确保唯一性。部署使用 create2 操作码，这是一个关键创新点：利用 bytecode（UniswapV2Pair 的创建代码）和 salt（keccak256 编码的 token0+token1）来确定性地生成 pair 地址。这种方式让 pair 地址可预测，避免了传统 create 的随机性，有助于链上交互和安全性。部署后，调用 pair 的 initialize 初始化 token0 和 token1，更新 mapping 和 allPairs，并发出 PairCreated 事件，记录 pair 的创建顺序。
+
+权限控制方面，setFeeTo 和 setFeeToSetter 函数确保只有 feeToSetter 能修改 feeTo（用于协议手续费）和转移 setter 权限。这体现了去中心化治理的初步形式：初始 setter 可以是部署者，后来可转移给 DAO 等。feeTo 如果设置，手续费的 1/6 会流向它，否则默认关闭协议费。
+
+总结一下，这个合约做到了最小化信任假设，任何人可创建 pair，无需许可，促进开放 DeFi 生态。create2 的使用提升了效率和可组合性，例如允许 flash loan 等高级应用。相比 V1，V2 Factory 更灵活，支持任意 ERC20 对，而非只 ETH。整体上，它是 AMM 模型的基石，推动了流动性提供和价格发现的自动化。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约为所有与 Uniswap 交互的参与方提供基本的安全保障。外围合约与一个或多个核心合约交互，但其本身并非核心合约的一部分。
 
 ## 核心合约
@@ -47,6 +63,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -58,6 +75,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ![WeChat509bc988ca05c9df2227c761fde707a1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/baikingrio/images/2026-01-12-1768183404462-WeChat509bc988ca05c9df2227c761fde707a1.jpg)
