@@ -37,10 +37,26 @@ Web3 实习计划 2025 冬季实习生
     
 
 **警告：** 许多网络钓鱼诈骗都以您的助记词为目标。任何合法服务都不会索要您的完整助记词。
+
+## **将 Sepolia 测试网添加到 MetaMask**
+
+安装 MetaMask 后，您需要手动添加 Sepolia 测试网。以下是网络详情：
+
+-   网络名称：Sepolia
+    
+-   链ID：11155111 (0xaa36a7)
+    
+-   RPC URL：[https://ethereum-sepolia-rpc.publicnode.com](https://ethereum-sepolia-rpc.publicnode.com)
+    
+-   区块浏览器：[https://sepolia.etherscan.io/](https://sepolia.etherscan.io/)
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768459536163-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-15-1768459774380-image.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # 领取 Sepolia 测试币并转账给同学
@@ -565,6 +581,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -1001,6 +1018,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
