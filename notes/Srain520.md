@@ -15,8 +15,92 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+以太坊第四章 **智能合约**
+
+智能合约是以太坊应用程序的基石。是部署在区块链上的一段程序代码+一份持久状态：一份“代码（funtions）+数据（state）的组合，驻留在以太坊上的某个地址上，由交易触发后执行”。
+
+智能合约的核心价值，是在条件满足时自动、确定地执行，不需要人来解悉或操作。
+
+Solidity 能直接编译EVM字节码，支持结构体、映射（mapping）、枚举、接口、抽象合约等高级特性，同时又保持与链上资源（storage/memory、calldata、gas、事件日志）的紧密结合；
+
+其中Hardhat、Foundry在日常开发、测试、fork主网模拟方面上，而Foundry在单元测试和模糊测试场景中适合。
+
+**配套生态包括：**
+
+-   Remix：浏览器IDE，适合入门和小demo;
+    
+-   Hardhat：脚本化部署、网络forking、本地链；
+    
+-   Foundry：极速测试（Rust写的CLI工具链）、fuzzing、主网fork；
+    
+-   OpenZeppelin Contracs：ERC-20/721/1155、AccessControl、Governor等标准合约库，审计充分、社区常用。
+    
+
+学习可以从以下：
+
+一、Solidity语言
+
+1.  读官方文档 + 做例子：
+    
+
+-   从Solidity官方文档的“Introduction to Smart Contracts”和“Solidity by Example”开始
+    
+-   用Remix这种网页IDE写第一个合约（HelloWorld，存/读变量，转账，事件触发）。
+    
+
+2.做交互式教程：
+
+-   用CryptoZombies、Solidity by Example的小项目练手，感受storage/memory、gas、事件、modifier等细节
+    
+
+3.学习工具/测试/部署：
+
+-   在本地装Hardhat或Foundry：
+    
+-   学会写单元测试（require失败、revert、边界条件），对于搞DeFi/NFT协议非常关键。
+    
+
+4.做项目：
+
+写一个简单ERC-20代币、投票合约，或者小型DeFi玩具协议，上testnet或L2部署，完整走完：编译——部署——前端调用——调试的闭环。
+
+二、合约编译时产生的内容
+
+1.  智能合约编译产物：
+    
+
+1.1字节码（Bytccodc）
+
+定义：是以太坊虚拟机（EVM）可以理解和执行的低级机器码（可执行文件）。
+
+1.2应用二进制接口（Application Binary Interface,ABI）
+
+定义：ABI是一个JSON（JavaScript Objection Notation）格式的文件，它描述了智能合约的公共接口。包含合约中所有公共函数和事件的详细信息，比如名称、参数类型、返回值类型以及可见性（public、external）。
+
+1.3 合约元数据（Contract Metadata）
+
+定义：这是一个JSON文件，包含了关于合约的额外信息；
+
+1.4 源映射/Source Map/Storage Layout/AST（抽象语法树）
+
+定义：AST是源代码的结构化表示。编译器在编译过程中会生成它，用于分析和优化代码。
+
+1.5 Assembly（EVM Assembly）与Yul IR
+
+三、部署合约：地址与ABI获取
+
+1.  本地编译——得到bytccode+ABI+metadata
+    
+2.  部署合约——得到链上的合约地址
+    
+3.  在Etherscan或Sourcify上做源码验证（source verification）——区块浏览器会根据metadata解析出ABI，并在网页上暴露“Read/Write Contract”面板，供任何人交互。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今天学习一些零零散散的技术栈，更多的是参考社区学员的githup分享，以及他们过往的展示产品，自己欠缺的知识比较多，一点点的提升。学习效率比较低，虽说交流的不多，但此次训练营对自己的人生发展改观帮助非常大；
 
 有需要扩展的，可以了解一下web3的人才概览，来自于githup的分享，非本人编辑
@@ -26,6 +110,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 **个人学习笔记——仅供参考**
@@ -234,6 +319,7 @@ EOA与合约账户的对比表：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
