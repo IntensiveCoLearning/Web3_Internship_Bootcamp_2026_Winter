@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+在 [My First NFT](https://nft.myfirst.io/) mint 第一个 NFT √
+
+完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战 √
+
+phishing site uses "Security Update" as the method name to trick users into believing this is a wallet update operation.
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 相关软件介绍下载。
 
 twitter，Telegram，Discord，MetaMask，
