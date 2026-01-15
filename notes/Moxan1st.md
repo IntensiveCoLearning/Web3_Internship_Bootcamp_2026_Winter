@@ -108,11 +108,20 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "setNumber(uint256)" 100 --
     
 -   private-key：签名交易，支付gas；相当于在metamask里点确认
     
--   Q：实际发生了什么？A：EVM在调用这些函数的时候，实际是先利用函数选择器keccak256("setNumber(uint256)")\[:4\]，计算出对应的数值取前面4个字节，一开始定义它的时候也计算到同样的数值，当这个数值匹配上，就跳到number()对应的代码段。然后calldata = selector + 参数编码。
+-   Q：实际发生了什么？A：EVM在调用这些函数的时候，实际是先利用函数选择器keccak256(“setNumber(uint256)”)\[:4\]，计算出对应的数值取前面4个字节，一开始定义它的时候也计算到同样的数值，当这个数值匹配上，就跳到number()对应的代码段。然后calldata = selector + 参数编码。
+    
+
+```
+cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
+()" --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY
+```
+
+链发生变化了，会有gas，需要签名
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -311,6 +320,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -419,6 +429,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
