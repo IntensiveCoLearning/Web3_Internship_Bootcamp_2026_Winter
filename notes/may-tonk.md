@@ -15,8 +15,151 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# 一、Solidity 核心概念总览表（回温版）
+
+1️⃣ 语言与语法层
+
+| 模块 | 核心概念 | 关键点 | 回温关注点 |
+| --- | --- | --- | --- |
+| 合约结构 | pragma / contract | ^0.8.x 内置溢出检查 | 构造函数、可见性 |
+| 变量 | 状态变量 / 局部变量 | storage 持久化 | gas 成本 |
+| 数据类型 | uint / address / bool | 默认 uint256 | 显式类型 |
+| 引用类型 | array / mapping / struct | mapping 不能遍历 | storage vs memory |
+| 函数 | external / public | calldata 只能 external | ABI 设计 |
+| 修饰符 | modifier | 执行顺序 _; | 权限与校验 |
+
+2️⃣ 数据位置与内存模型
+
+| 关键字 | 存储位置 | 是否可修改 | Gas 成本 | 常见错误 |
+| --- | --- | --- | --- | --- |
+| storage | 链上 | ✅ | 高 | 误以为是拷贝 |
+| memory | 函数内 | ✅ | 中 | 生命周期误判 |
+| calldata | 入参 | ❌ | 最低 | 用在 public |
+
+3️⃣ 函数与执行控制
+
+| 类型 | 说明 | 你需要记住的点 |
+| --- | --- | --- |
+| view | 读状态 | 不消耗 gas（call） |
+| pure | 不读不写 | 常用于工具函数 |
+| payable | 可收 ETH | 必须显式声明 |
+| fallback | 无函数匹配 | ETH 接收兜底 |
+| receive | 仅收 ETH | 无 calldata |
+
+4️⃣ 调用上下文（msg / tx / block）
+
+| 变量 | 含义 | 安全注意 |
+| --- | --- | --- |
+| msg.sender | 当前调用者 | 权限判断唯一可靠 |
+| msg.value | 转入 ETH | payable |
+| msg.data | 原始 calldata | 函数选择器 |
+| tx.origin | 交易发起人 | ❌ 不可用于鉴权 |
+| block.timestamp | 区块时间 | 可被微调 |
+
+5️⃣ EVM 执行与 Gas
+
+| 行为 | 结果 |
+| --- | --- |
+| revert | 状态回滚，gas 消耗 |
+| require | 条件失败即回滚 |
+| 外部调用 | 可能重入 |
+| storage 写入 | gas 最贵 |
+
+6️⃣ 常见安全问题总表
+
+| 风险 | 本质 | 防御方式 |
+| --- | --- | --- |
+| 重入攻击 | 状态未锁 | CEI / ReentrancyGuard |
+| 溢出 | 数值越界 | ^0.8.x 自动检查 |
+| 授权钓鱼 | approve 滥用 | 限额 / revoke |
+| 权限失控 | modifier 错误 | onlyOwner |
+| 签名重放 | nonce 缺失 | nonce / domain |
+
+7️⃣ 数字签名
+
+| 步骤 | 说明 |
+| --- | --- |
+| hash | keccak256 |
+| 前缀 | \x19Ethereum Signed Message |
+| 恢复 | ecrecover |
+| 用途 | permit / 白名单 |
+
+## 复习的相关代码以上传本地的GitHub
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+// 从 Chainlink 导入价格数据接口
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+
+// 定义一个名为 fundyou 的库（library）
+// 库里面封装了一些与价格转换相关的函数
+contract fundme{
+    uint256 public minnal = 1e18;
+    address[] public funders;
+    AggregatorV3Interface public datafeed;
+
+    constructor(address datafeedadd){
+        datafeed = AggregatorV3Interface(datafeedadd);//进行相关数据的转换
+    }
+
+    function fund() public payable{
+        require(getconversion(msg.value)>=minnal,"send last 1 ETH");
+        funders.push(msg.sender);
+
+    }
+    // 获取 ETH / USD 价格
+    function getprice() public view returns (uint256) {
+        // Chainlink ETH/USD 预言机地址（Sepolia 测试网）
+        AggregatorV3Interface pricefeed = datafeed /*AggregatorV3Interface(
+            0x694AA1769357215DE4FAC081bf1f309aDC325306)*/;
+
+        // 获取最新一轮价格数据
+        // latestRoundData() 返回五个值，我们只需要第二个 price
+        (, int256 price, , , ) = pricefeed.latestRoundData();
+
+        // Chainlink 返回的 ETH/USD 价格精度是 8 位小数（即 1e8）
+        // 这里乘上 1e10，把它转换成 1e18 的形式（和以太币精度保持一致）
+        return uint256(price * 1e10);
+    }
+
+    // 把 ETH 数量转换成等值的 USD
+    function getconversion(uint256 ethAmount) public view returns (uint256) {
+        uint256 ethprice = getprice(); // 获取当前 1 ETH 的美元价格
+        // 计算：ETH 数量 × ETH 价格 / 1e18（因为 ETH 的单位是 Wei）
+        uint256 ethusd = (ethprice * ethAmount) / 1e18;
+        return ethusd; // 返回等值的 USD 金额
+    }
+
+    // 获取 Chainlink Aggregator 的版本号
+    function getversion() public view returns(uint) {
+        AggregatorV3Interface pricefeed = datafeed/*AggregatorV3Interface(
+            0x694AA1769357215DE4FAC081bf1f309aDC325306)相关sepolia的接口*/;
+        return pricefeed.version();
+    }
+    
+
+    //外部人员进行直接转账，没有调用合约是触发的一个条件
+    receive() external payable {
+        fund();
+     }
+
+     fallback() external payable{
+        fund();
+     }
+
+}
+```
+
+具体所以代码查看[my\_web3\_study/contracts/fundme.sol at master · may-tonk/my\_web3\_study --- my\_web3\_study/contracts/fundme.sol at master · may-tonk/my\_web3\_study](https://github.com/may-tonk/my_web3_study/blob/master/contracts/fundme.sol)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # **order book(订单薄)和AMM(**自动做市商)(采用ChatGPT纠正总结)
 
 ## 一、什么是订单簿（Order Book）
@@ -324,6 +467,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -426,6 +570,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
