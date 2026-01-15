@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+Web3 AI agent分享会学习打卡
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 Web3安全&合规分享会打卡
 
 今日加班周末补课
@@ -24,6 +30,7 @@ Web3安全&合规分享会打卡
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 权力的重新分配：
 
@@ -55,6 +62,7 @@ Priority Fee：用户自愿支付的小费，用于激励验证者优先打包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
