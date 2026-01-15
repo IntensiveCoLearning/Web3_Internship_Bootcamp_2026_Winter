@@ -72,7 +72,7 @@ commit 一个随机种子 区块生成后 reveal 和区块哈希一起算随机�
 
 **1 gwei = 10^-9 ETH**
 
-**Griefing：**攻击者不一定自己获利，但通过花少量成本，故意让别人付出更高成本、失败或系统变坏
+\*\*Griefing：\*\*攻击者不一定自己获利，但通过花少量成本，故意让别人付出更高成本、失败或系统变坏
 
 Commit–Reveal 中的 griefing（最典型）
 
@@ -108,7 +108,7 @@ Non-Custodial Wallet（非托管钱包）
 
 centralized exchange / decentralized exchange
 
-**hold reserve for both** \= 为两个对象都保留（储备）资金或资产
+**hold reserve for both** = 为两个对象都保留（储备）资金或资产
 
 **Arbitrage（套利）** 指 利用不同市场或平台之间的价格差异进行买卖，从中获取无风险利润。
 
@@ -121,6 +121,20 @@ centralized exchange / decentralized exchange
 三角套利（Triangular Arbitrage）
 
 去中心化交易所（DEX）套利 同一链上不同 DEX 的价格差示例：Uniswap ↔ SushiSwap ↔ Curve
+
+**Sybil Attack**（雪崩攻击 / 冒名攻击）
+
+指 一个人或实体创建大量虚假身份来操控网络或投票权 的攻击行为。 源自 “Sybil” 一词，来自一位多重人格患者的名字
+
+**在 Web3 尤其重要，因为：**
+
+DAO 投票权通常按地址计算
+
+DeFi 激励按用户数量发放
+
+**一个攻击者可以通过大量虚假账户作弊**
+
+**Civil Resistance = 非暴力反抗（守规则改变结果）**
 
 ### Uniswap
 
@@ -146,10 +160,75 @@ x \* y = k（恒定乘积公式），交易时会根据池子余额自动调价
     
 
 完全在链上执行 交易结果即时写入区块链
+
+## DAI 如何保持其稳定币（stablecoin）价值稳定？
+
+### DAI 是什么
+
+DAI 是一个 去中心化稳定币（decentralized stablecoin），主要目标是 1 DAI ≈ 1 USD
+
+它是由 MakerDAO 系统发行和维护的
+
+不像 USDT/USDC 那样有中心化储备金，而是 通过**抵押资产（collateral）**生成
+
+### 核心机制
+
+DAI 保持稳定的核心方法是 供应-需求调节 + 超额抵押（over-collateralized） + 激励与惩罚机制。
+
+1.  **超额抵押生成 DAI（Over-collateralized Loan）**
+    
+
+用户把 加密资产（ETH、WBTC 等）抵押在 MakerDAO 的智能合约里
+
+然后 借出 DAI → 这就是 CDP / Vault
+
+CDP / Vault = **Collateralized Debt Position**，中文叫 **抵押债仓**
+
+抵押要求 超额抵押（Over-collateralization），比如抵押价值 150 USD，最多借出 100 DAI
+
+这样即使抵押物价格下跌，也保证 DAI 背后有足够资产支撑
+
+2.  **稳定目标：DAI Price ≈ 1 USD 系统通过 Stability Fee、Liquidation、Burn/Print 来调节**
+    
+
+MakerDAO 有 Target Price（目标价） = 1 USD
+
+DAI 的市场价格可能高于或低于 1 USD
+
+**##Burn & Print（销毁与铸造）**
+
+当 DAI 价格偏高（>1 USD） 系统鼓励 更多人生成 DAI（print DAI）
+
+当 DAI 价格偏低（<1 USD） 鼓励 用户用 DAI 还债并销毁（burn）
+
+这就是 Supply-Demand Mechanism（供需机制） 的核心逻辑
+
+**##Stability Fee（稳定费 / 利息）**
+
+借 DAI 的人需要支付 利息（Stability Fee）通过调节利息来控制DAI的价格 本质上也是供需关系
+
+**##Liquidation（清算机制）**
+
+抵押物价值下跌到 低于安全阈值（Collateralization Ratio）
+
+例如 ETH 价值下降，Vault 债务过高 系统会 自动清算（liquidate） 抵押物
+
+**##Marker / Secondary Token（MKR）**
+
+MKR = MakerDAO 治理代币 / 备用代币
+
+用途：支付 Stability Fee 在系统亏损时稀释持有者
+
+**Collateral（抵押物） = 用来支持债务或稳定币的资产**
+
+即使 ETH 跌破借出的 DAI 价值，**DAI 持有人仍然 1:1 USD 安全**，**亏损由借款人抵押物和系统备用代币 MKR 承担**。
+
+![DAI的价值稳定机制.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jasmine-pixel363/images/2026-01-15-1768476941582-DAI_______.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -339,6 +418,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -443,6 +523,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
