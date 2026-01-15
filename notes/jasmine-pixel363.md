@@ -254,10 +254,31 @@ MKR = MakerDAO 治理代币 / 备用代币
 ### More English：
 
 All of a sudden, the collateral was worth as much as the token, so they needed to start selling off to cover that and that crashed too, both of these things crash at once sending it into a death spiral.
+
+### **Civil Resistance**
+
+（公民抗争 / 非暴力抵制） 的核心不是“对抗”，
+
+而是：在不使用暴力、不破坏系统规则的前提下，通过集体行为、拒绝配合或重新分配权力，来对抗不公平的制度或权力结构。
+
+**“规则内反抗规则”（Resistance within the system**）
+
+Civil resistance ≠ 破坏系统
+
+而是：不 fork 链、不 DDoS、不 hack
+
+而是：用 open-source、用 permissionless access、用 exit（离开）而不是 voice（申诉）
+
+这在政治理论里叫：Exit as resistance（用离开本身作为反抗）
+
+Sybil Attack是“用假身份操纵结果”
+
+**Token Drop vs Scam（骗局）**
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -453,6 +474,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -557,6 +579,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
