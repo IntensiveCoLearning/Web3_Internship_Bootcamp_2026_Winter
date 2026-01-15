@@ -21,16 +21,97 @@ Web3 实习计划 2025 冬季实习生
 
 1.  跟GPT学foundry的基本操作——已经把foundry自带counter部署到sepolia [合约地址](https://sepolia.etherscan.io/address/0x02343bfb4ce8e6e5add0d95562187787fd5ce2ec#readContract) 并且通过命令存变量，加一。
     
-2.  理解和写简易的项目——完成remix自带storage、owner和ballot
+2.  理解和写简易的项目——看懂remix自带storage、owner和ballot
     
 3.  《021学习以太坊第四章》——
     
 
 # 详情
+
+## Foundry部署合约
+
+### 上链操作
+
+```
+forge script script/Counter.s.sol   --rpc-url $SEPOLIA_RPC_URL   --private-key $PRIVATE_KEY   --broadcast
+```
+
+forge：Foundry的主命令类似npm
+
+script：部署/调用合约
+
+\--broadcast：广播出去，上链
+
+### 返回结果
+
+```
+Chain 11155111
+
+Estimated gas price: 2.01715883 gwei
+
+Estimated total gas used for script: 203856
+
+Estimated amount required: 0.00041120993044848 ETH
+
+==========================
+
+##### sepolia
+✅  [Success] Hash: 0x885152ed592b64843b3e87fb4b85b9a7f7fdd24e2020f784705dc4b22e47b682
+Contract Address: 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec
+Block: 10046638
+Paid: 0.000161505770940765 ETH (156813 gas * 1.029925905 gwei)
+
+✅ Sequence #1 on sepolia | Total Paid: 0.000161505770940765 ETH (156813 gas * avg 1.029925905 gwei)
+```
+
+-   `11155111` 是 Sepolia 的 **chainId**
+    
+-   Q：为什么gas实际值<预估值？A：实际EVM执行中会有没走到的分支、没用到的 storage。gas会退回
+    
+-   区块号Block: 10046638
+    
+-   合约地址Contract Address: 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec
+    
+
+```
+cast call 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "number()" --rpc-url $SEPOLIA_RPC_URL
+```
+
+-   cast：Foundry的链上交互工具
+    
+-   call：读取，不改变链上状态，不生成交易所以不消耗gas
+    
+-   send：写入
+    
+-   ”number()“：函数签名
+    
+-   Q：我没有写number()这个函数，为什么可以直接调用？A：编译器自动生成了这个函数
+    
+
+```
+function number() external view returns (uint256) {
+    return number;
+}
+```
+
+### 存变量
+
+```
+cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "setNumber(uint256)" 100 --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY
+```
+
+-   send：上链
+    
+-   "setNumber(uint256)"：函数名，形参要省去
+    
+-   100：传入形参的具体值
+    
+-   private-key：签名交易，支付gas；相当于在metamask里点确认
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # 总览
@@ -225,6 +306,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -333,6 +415,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
