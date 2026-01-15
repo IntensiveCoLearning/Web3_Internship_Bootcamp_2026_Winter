@@ -15,8 +15,28 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+> link: [Solana basics](https://solana.com/docs)
+
+-   concepts
+    
+    account：合约是无状态的stateless，程序逻辑与数据彻底分离，不同于eth中同时storage存储数据和合约代码
+    
+    并行的要点：合约提前声明需要读写哪些账户
+    
+    三大支柱
+    
+    PDA
+    
+    rent账户需要预存sol来维持生存
+    
+    spl token是sol官方的一套标准代币合约
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   所有权和借用
@@ -93,6 +113,7 @@ se major, into crypto
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -114,6 +135,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
