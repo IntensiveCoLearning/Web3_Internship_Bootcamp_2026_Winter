@@ -17,13 +17,85 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
-1
+**  
+Solidity 合约类型总结**
 
-1
+| 核心维度 | 具体内容 |
+| --- | --- |
+| 合约类型定义 | Solidity 中合约本身是一种数据类型，与 uint、address 等基础类型地位等同，可声明合约类型变量（如 Hello h）。 |
+| 合约创建方式 | 使用 new 关键字在合约中部署新合约（如 h = new Hello()），返回新合约实例。 |
+| 合约交互方式 | 通过合约类型变量调用目标合约的公开函数（如 h.sayHi()），实现合约间函数调用。 |
+| 类型转换规则 | 合约类型 ↔ 地址类型可双向转换： 1. 合约转地址：address(hello) 2. 地址转合约：Hello(helloAddr) |
+| 核心应用场景 | 构建复杂合约系统（如工厂合约创建子合约、多合约协作交互）。 |
+| 关键注意事项 | 仅能调用目标合约的公开/外部函数；转换地址需确保对应合约已部署且类型匹配。 |
+
+```
+pragma solidity ^0.8.0;
+​
+// 1. 定义 Counter 合约
+contract Counter {
+    // 计数状态变量
+    uint public count;
+​
+    // 增加计数的函数
+    function increment() public {
+        count += 1;
+    }
+​
+    // 获取当前计数的函数
+    function getCount() public view returns (uint) {
+        return count;
+    }
+}
+​
+// 2. 定义 CounterFactory 工厂合约
+contract CounterFactory {
+    // 存储创建的 Counter 合约实例
+    Counter public counter;
+​
+    // 创建新的 Counter 合约
+    function createCounter() public returns (address) {
+        counter = new Counter();
+        return address(counter);
+    }
+​
+    // 调用 Counter 合约的 increment 函数
+    function incrementCounter() public {
+        // 检查合约是否已创建
+        require(address(counter) != address(0), "Counter not created yet");
+        counter.increment();
+    }
+​
+    // 获取 Counter 合约的当前计数值
+    function getCounterValue() public view returns (uint) {
+        require(address(counter) != address(0), "Counter not created yet");
+        return counter.getCount();
+    }
+}
+```
+
+## **Solidity 枚举类型总结**
+
+| 核心维度 | 具体内容 |
+| --- | --- |
+| 定义方式 | 使用 enum 关键字定义，格式：enum 枚举名 { 常量1, 常量2, ... } |
+| 数值特性 | 1. 从 0 开始递增编号 2. 底层存储为 uint8 类型 3. 默认值为第一个枚举值 |
+| 类型转换 | 1. 枚举 ↔ uint 可相互转换 2. 整型转枚举需用 require 检查值范围，避免越界 |
+| 核心操作 | 1. 支持 ==/!= 比较运算 2. 通过 type(枚举名).min/max 获取取值范围 |
+| 典型应用场景 | 表示有限状态集合：订单状态、任务工作流、合约运行状态等 |
+| 最佳实践 | 1. 替代“魔法数字”提升代码可读性 2. 状态转换时添加合法性验证 3. 状态变更时触发事件 |
+| 核心优势 | 1. 代码可读性/可维护性提升 2. 限制变量取值范围，减少非法状态 |
+
+-   枚举是**值类型**，赋值时会进行拷贝，而非引用；
+    
+-   枚举定义后不可动态增删常量，适合表示固定的状态集合；
+    
+-   结合结构体、映射可实现复杂的状态管理（如订单/任务系统）。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 Solidity 布尔类型小结
 
@@ -81,6 +153,7 @@ contract PiggyBank {
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 ## Solidity 数据类型小结
 
 | **分类**                     | **核心内容**                                                 | **关键特性**                                                 |
@@ -126,6 +199,7 @@ contract PiggyBank {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
