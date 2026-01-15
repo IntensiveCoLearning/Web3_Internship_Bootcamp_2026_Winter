@@ -15,8 +15,19 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+**今日学习：Web3合规/Web3安全/021学习以太坊4章**  
+**1.Web3合规**
+
+![Web3 合规与刑事风险防范.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hy3917-code/images/2026-01-15-1768451217894-Web3__________.png)
+
+**2.Web3安全**
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 以下是021第三章《账户类型与结构》的详细学习总结：
 
 **一、 以太坊账户的“双轨制”：EOA 与合约账户**  
@@ -69,6 +80,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 **今日学习《021学习以太坊》《Web3实习手册入门导读》《Uniswap v2 核心白皮书》《**[**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs》**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
 
 **021 第二章学习笔记：以太坊的骨架与脉络**
@@ -110,6 +122,7 @@ Uniswap v2 本质上是对 v1 版本的全面升级，核心算法依然沿用�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
