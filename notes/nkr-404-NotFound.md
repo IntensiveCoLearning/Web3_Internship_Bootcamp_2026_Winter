@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天主要看了 021 文档的第2章和第3章
+
+了解了以太坊的基础技术原理和底层架构.
+
+对整个链技术有了一定的熟悉, 对于分布式一致协议需要深入再看一下.
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 安装了 meta mask 并创建了钱包
 
 与币安账号关联
@@ -32,6 +42,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 今天的进展:
 
