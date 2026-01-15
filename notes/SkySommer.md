@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天学习了AI基础概念和AI与Web3的联系，时间有限简单mark一下。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 web3安全和合规分享会后的思考
 
 在 Web3，安全不是一个“功能”，而是产品的**生命线**。在 Web2，数据泄露可能只是道歉和罚款；在 Web3，代码漏洞直接等于资产归零。
@@ -93,6 +99,7 @@ ZK（零知识证明）是合规的终极解药。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 今天和昨天配置了常用的软件和账户（Zoom、X、Telegram、Google Calendar），观看了开营仪式回放。
 
