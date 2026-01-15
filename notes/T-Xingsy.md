@@ -18,17 +18,18 @@ web3素人
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
-# 今日计划
+# 今日完成
 
 1.Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
 
-2.[**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
+2.[**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
 
-[**3.Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
+3.部署了geth客户端，建立了局域网pow私链节点，并将其导入metamask钱包中
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 # 今日完成
 
@@ -100,6 +101,7 @@ web3素人
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -188,6 +190,7 @@ web3素人
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
