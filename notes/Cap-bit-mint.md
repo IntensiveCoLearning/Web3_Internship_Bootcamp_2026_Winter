@@ -15,8 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+-   参加分享会《AI 及其基础概念》——对于非技术向的我，还是有点难度，还需要课后再看回放巩固理解，感谢Rick 老师分享。
+    
+-   熟悉Dune Analytic工具——完成账号注册 + 基础界面了解，搭配 YouTube 教程持续学习中。
+    
+-   完成Web3高频面试问题和回答思路整理
+    
+-   完成今日份口语练习
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 -   Unphishable 钓鱼攻防挑战通关啦！
     
 
@@ -33,6 +45,7 @@ timezone: UTC+8
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 -   参与【Web3 运行原理】——感谢Bruce老师的分享，虽然有些内容比较深，但解决了我一开始学习的一些困惑。
     
 -   创建自己的第一个NFT嘻嘻😁
@@ -44,6 +57,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 -   成功创建钱包，并完成首笔交易（感谢共学群里某大佬分享的教程：[如何完成“创建钱包，并尝试测试币转账”？）](https://humdrum-volleyball-4a2.notion.site/2e54867ff3e180b5bc84e33a7e2f9835)
