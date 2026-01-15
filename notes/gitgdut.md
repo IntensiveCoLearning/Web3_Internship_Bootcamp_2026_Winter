@@ -15,6 +15,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天安装了必要工具
+<!-- DAILY_CHECKIN_2026-01-15_END -->
 <!-- Content_END -->
