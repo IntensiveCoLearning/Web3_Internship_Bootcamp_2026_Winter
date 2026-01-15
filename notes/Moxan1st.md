@@ -23,7 +23,7 @@ Web3 实习计划 2025 冬季实习生
     
 2.  理解和写简易的项目——看懂remix自带storage、owner和ballot
     
-3.  《021学习以太坊第四章》——
+3.  《021学习以太坊第四章》——当作词典查缺补漏一下
     
 
 # 详情
@@ -102,15 +102,18 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "setNumber(uint256)" 100 --
 
 -   send：上链
     
--   "setNumber(uint256)"：函数名，形参要省去
+-   “setNumber(uint256)”：函数名，形参要省去
     
 -   100：传入形参的具体值
     
 -   private-key：签名交易，支付gas；相当于在metamask里点确认
+    
+-   Q：实际发生了什么？A：EVM在调用这些函数的时候，实际是先利用函数选择器keccak256("setNumber(uint256)")\[:4\]，计算出对应的数值取前面4个字节，一开始定义它的时候也计算到同样的数值，当这个数值匹配上，就跳到number()对应的代码段。然后calldata = selector + 参数编码。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -307,6 +310,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -415,6 +419,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
