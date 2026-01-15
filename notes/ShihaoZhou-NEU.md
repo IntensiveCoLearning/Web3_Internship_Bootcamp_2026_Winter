@@ -16,8 +16,59 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# 学习计划
+
+## 学习内容：
+
+1.  Web3 实习手册「入门导读」部分
+    
+
+-   ✅️Web3 工作方式
+    
+-   ✅️行业赛道全览
+    
+-   ✅️安全与合规
+    
+-   ⭕️区块链岗位全景图
+    
+-   ⭕️智能合约开发
+    
+-   021 学习以太坊第 1 章
+    
+-   ⭕️六、以太坊 dApps 的概念与应用
+    
+-   ⭕️七、以太坊的去中心化实现机制
+    
+-   ⭕️八、网络结构的开放性与参与机制
+    
+-   ⭕️九、行业应用案例：金融、游戏与社交
+    
+-   ⭕️十、生态系统创新：DeFi、NFT 与 DAO
+    
+-   ⭕️十一、社区与开发生态扮演的角色
+    
+-   ⭕️021学习以太坊第2章
+    
+
+## 拓展 & 辅助理解材料
+
+1.  ⭕️Ethereum 官网 Overview 基础内容学习
+    
+
+-   ✅️Day 1: A Developer’s Guide to Building on Ethereum - Intro
+    
+-   ✅️Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs
+    
+-   ✅️Day 3: ENS, DEX, Identity, Inventory, Sybil
+    
+-   ⭕️Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # **学习计划**
 
 1.  学习内容：
@@ -244,6 +295,7 @@ _表：OKR 评分标准参考_
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -420,6 +472,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
