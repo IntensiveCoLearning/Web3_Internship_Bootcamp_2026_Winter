@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-UIBE FTA cofounder，擅长做投研分析，也会玩点vibe coding
+UIBE FTA cofounder，量化专业，crypto native，也会玩点vibe coding
 
 ## Notes
 
