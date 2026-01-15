@@ -15,8 +15,19 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
+开发环境并熟悉：  
+[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
+
+[Remix 使用教程](https://www.notion.so/2bc1a400ef948075ab7ec8b8259c7746?pvs=21)  
+同时开始在B站上学习智能合约编程[https://www.bilibili.com/video/BV1Ca411n7ta/?spm\_id\_from=333.1007.top\_right\_bar\_window\_default\_collection.content.click&vd\_source=6be132124d2a630c6fcea0ba05bfbbf9](https://www.bilibili.com/video/BV1Ca411n7ta/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&vd_source=6be132124d2a630c6fcea0ba05bfbbf9)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 这两天系统性学习了**区块链基础概念、以太坊概览、行业赛道全览、Web3 工作方式**，果然比我之前东学一点西看一些有效率有条理多了。  
 **收纳了很多富有见解的笔记：**
 
