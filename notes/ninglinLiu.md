@@ -15,8 +15,227 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# Checkpoint 3 学习总结：部署 NFT 合约到以太坊测试网（Sepolia）
+
+## 一、学习目标回顾
+
+本阶段（Checkpoint 3）的目标是将本地开发完成的 NFT 智能合约，从 **Hardhat 本地网络** 部署到 **以太坊公共测试网 Sepolia**，并理解以下核心问题：
+
+-   合约部署账户（deployer）的来源与安全性
+    
+-   测试网与本地网络的区别
+    
+-   钱包、地址、合约三者之间的关系
+    
+-   Hardhat + Scaffold-ETH 2 的完整部署流程
+    
+
+* * *
+
+## 二、关键操作与实践过程
+
+### 1️⃣ 切换 Hardhat 默认网络为 Sepolia
+
+在 `packages/hardhat/hardhat.config.ts` 中完成以下配置修改：
+
+-   将 `defaultNetwork` 从 `localhost` 修改为 `sepolia`
+    
+-   确认 `networks.sepolia` 配置正确（RPC + deployer 私钥）
+    
+
+这一步明确了：**后续** `yarn deploy` **默认就是向 Sepolia 测试网发交易**。
+
+* * *
+
+### 2️⃣ 使用 CLI 生成部署钱包（Deployer）
+
+通过命令：
+
+```
+yarn generate
+```
+
+完成了以下工作：
+
+-   生成一个新的 **以太坊标准 EOA 钱包**
+    
+-   私钥被加密后存储在 `packages/hardhat/.env`
+    
+-   该钱包专门用于部署合约（而不是日常交互）
+    
+
+关键理解：
+
+-   该钱包 **不依赖 MetaMask**
+    
+-   是专业开发中常见的“部署账户（deployer）”模式
+    
+-   可选地导入到 MetaMask，但不是必须
+    
+
+* * *
+
+### 3️⃣ 查询账户状态并理解多网络余额
+
+通过：
+
+```
+yarn account
+```
+
+学会查看同一地址在不同网络上的状态：
+
+-   localhost
+    
+-   mainnet
+    
+-   sepolia
+    
+
+理解到：
+
+-   **同一个地址，在不同网络上是“独立存在”的**
+    
+-   Sepolia 测试币 ≠ 主网 ETH
+    
+-   主网余额为 0 并不影响测试网部署
+    
+
+* * *
+
+### 4️⃣ 测试币（Sepolia ETH）获取与问题排查
+
+实践中发现：
+
+-   **Alchemy Faucet 要求主网 ≥ 0.001 ETH**，对新开发者不友好
+    
+-   最终通过 **Google Cloud Sepolia Faucet** 成功获取测试币
+    
+
+学习到：
+
+-   Faucet 有不同门槛设计
+    
+-   测试网 ETH 仅用于 gas，不具备真实价值
+    
+
+* * *
+
+### 5️⃣ 成功部署 NFT 合约到 Sepolia
+
+在测试币到账后，通过：
+
+```
+yarn deploy --network sepolia
+```
+
+成功完成：
+
+-   NFT 合约 `YourCollectible` 部署
+    
+-   获得 **Sepolia 链上的真实合约地址**
+    
+-   前端 `deployedContracts.ts` 自动更新
+    
+
+这标志着：
+
+> 合约已经不再是“本地模拟”，而是真正存在于以太坊公共测试网络上。
+
+* * *
+
+## 三、关键概念理解（本阶段最重要）
+
+### ✅ 钱包 / 地址 / 合约 的关系
+
+-   **钱包（Wallet）**：控制私钥的工具（CLI / MetaMask / 硬件）
+    
+-   **地址（Address）**：钱包在链上的身份
+    
+-   **合约（Contract）**：由地址发起交易创建，部署后有独立地址
+    
+
+📌 合约 ≠ 钱包  
+📌 合约“属于”部署者，但不等同于部署者
+
+* * *
+
+### ✅ 为什么前端右上角仍显示 `Hardhat`
+
+这是一个重要的认知点：
+
+-   Hardhat config 决定的是 **合约部署用的网络**
+    
+-   前端右上角显示的是 **浏览器钱包当前连接的网络**
+    
+-   二者是**两套系统**
+    
+
+➡️ 只有当 MetaMask 切换到 Sepolia，前端才会显示 Sepolia  
+➡️ 但即使不切，合约依然已经正确部署在 Sepolia
+
+* * *
+
+## 四、遇到的问题与解决方式
+
+### 问题 1：`yarn deploy` 报错 TS 编译失败
+
+原因：
+
+-   在 `hardhat.config.ts` 中误加了 `arbitrum / optimism` 网络配置
+    
+-   类型定义与当前 Hardhat 模板不匹配
+    
+
+解决：
+
+-   回退配置
+    
+-   只保留 `sepolia` 网络
+    
+-   成功重新部署
+    
+
+* * *
+
+### 问题 2：不知道如何用命令行打开配置文件
+
+解决方式：
+
+```
+code packages/hardhat/hardhat.config.ts
+```
+
+并理解：
+
+-   `code` 是 VS Code 的 CLI 命令
+    
+-   必须在已安装并启用 VS Code 的前提下使用
+    
+
+* * *
+
+## 五、阶段性总结
+
+通过本次 Checkpoint 3，我已经：
+
+-   ✅ 掌握了 **本地 → 公共测试网** 的完整部署流程
+    
+-   ✅ 理解了 **开发者钱包 ≠ 浏览器钱包**
+    
+-   ✅ 成功将 NFT 合约部署到 **Ethereum Sepolia**
+    
+-   ✅ 能独立排查 faucet、网络、Hardhat 配置问题
+    
+
+为后续步骤（合约验证、前端接入、NFT 交互）打下了完整基础。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # 今日学习笔记：以太坊 Fusaka 升级（🦓）梳理
 
 **学习主题**：Fusaka 网络升级内容与影响  
@@ -151,6 +370,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 今天Web3运营学习经验总结（2026年1月13日）
 
 作为Web3 builder，我的运营重点围绕AI+Web3项目（如AI狼人杀竞技场带NFT角色），今天的学习主要从社交平台增长、社区构建和变现路径入手。基于我们讨论的策略和AI产品建议，以下是关键经验提炼，强调实战性和低成本执行。核心逻辑：Web3运营不是烧钱，而是通过价值互动构建忠实社区，转化成可持续收入。1. 粉丝增长起步：从小基数（40粉丝）到1k的实战框架
@@ -200,6 +420,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## 今日 Web3 防钓鱼总结日志（D-Log）
