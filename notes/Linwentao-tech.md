@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+### **Day 3 — ENS、身份与 Uniswap**
+
+这一节通过创建新钱包账户、注册 ENS 和在 Uniswap 上换币，让我第一次真正理解了 Web3 的“身份”和“资产跟随性”。ENS 不只是一个好记的名字，而是一个链上 NFT，它把人类可读的身份（如 sanfordstout.eth）和钱包地址绑定在一起，并且在 Uniswap、Zapper 等不同应用中自动被识别。用 Uniswap 把 ETH 换成 DAI 时，我也理解了去中心化交易所并不是订单簿，而是由智能合约和流动性池自动定价运行的，这让我对 DeFi 的运作方式有了更直观的认识。
+
+* * *
+
+### **Day 4 — NFT、IPFS 与链上数据**
+
+这一节通过 OpenSea、Rarible 和直接在 Etherscan 上铸造 NFT，我理解了 NFT 的本质是“所有权记录”，而不是图片本身。ERC-721 合约只是记录了哪个 tokenId 属于哪个地址，图片和元数据要么存储在 IPFS，要么直接存在链上。IPFS 的内容寻址机制让我明白了为什么好的 NFT 是不可篡改的，而链上 NFT（如用 SVG 生成）则进一步增强了可组合性，让其他智能合约也能读取这些数据来构建游戏或应用。
+
+* * *
+
+### **Day 5 — Gas、Layer2 与多签钱包**
+
+这一节让我体验了成为“以太坊超级用户”的真实感觉，包括交易卡住、Nonce、加速和取消交易的底层原理。我理解了为什么 Gas 出价太低会让交易卡在 mempool，以及 MetaMask 的 speed up 和 cancel 实际上是在用相同 nonce 发更高 Gas 的交易覆盖旧交易。同时在 Optimism 上体验到极低的手续费，也让我理解了 Layer2 对以太坊扩展性的意义。最后通过 Safe 多签钱包，我看到了比单一私钥更安全的资产管理方式，也理解了智能合约可以像“用户”一样去调用 Uniswap 等协议，这正是 Web3 可组合性的体现。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ## 1\. Web3 合规
 
 中国对加密的态度很明确：  
@@ -79,6 +99,7 @@ ERC20、NFT 本质都是合约里的**记账表**，没有“币”，只有数�
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 在day1的视频里比较抓住我眼球的是，视频首先介绍了blockchain的概念.What is blockchain from high level? It’s a system set up without any central control ad thousands of people from the world can communicate p2p. And of course it has many issues like gas and wallet issues. It’s kinda like linked list but its more about the network where all the nodes are participating together. If any of nodes got knocked out the whole network still continues working.
 
 其次介绍了blockchain中trust的概念，然后引用到了escrow这个term。首先提出了一个问题。How to to make a transaction for two parties if they don’t trust or don’t like each other. So in web3 the concept of escrow is executed by smart contract like a middle layer.
@@ -102,6 +123,7 @@ Factory不参与交易，不存Liquidity，不计算价格。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
