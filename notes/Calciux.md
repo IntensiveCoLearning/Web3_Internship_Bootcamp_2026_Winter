@@ -83,7 +83,6 @@ what is merkle tree?
     
 -   **链选择 (Canonical Chain Selection)** 由PoS完成(CL)
     
-
 -   网络中可能同时存在多个候选区块（分叉）。
     
 -   PoS 共识通过 **投票机制**（attestations）来决定哪条链是“最重的链”。
@@ -92,10 +91,17 @@ what is merkle tree?
     
 
 助记词 (Mnemonic) → 种子 (Seed) → 派生路径 → 私钥 →密码学算法→ 公钥 → 地址(作为更方便的标识符)
+
+State Trie / World State Trie（状态树 /全局状态树 /Merkle-Patricia Trie） 以太坊将所有账户的状态（余额、nonce、智能合约代码地址、合约存储根 等）组织在一个 Modified Merkle-Patricia Trie（MPT）中。这个状态树的根哈 希（stateRoot）被记在区块头里，以表示一块执行完所有交易后的“当前全网状 态”(参考上面的merkle trie)
+
+Patricia Trie
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Calciux/images/2026-01-15-1768491661116-image.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -156,6 +162,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -342,6 +349,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
