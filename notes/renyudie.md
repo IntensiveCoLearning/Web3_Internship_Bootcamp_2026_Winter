@@ -51,6 +51,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -82,6 +83,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 今日任务：对基础概念的了解
@@ -224,6 +226,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
