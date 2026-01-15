@@ -67,10 +67,90 @@ mint 结束：reveal metadata 社区验证 hash 是否一致
 **链上随机数（避免矿工操纵）**
 
 commit 一个随机种子 区块生成后 reveal 和区块哈希一起算随机数
+
+### 一些概念：
+
+**1 gwei = 10^-9 ETH**
+
+**Griefing：**攻击者不一定自己获利，但通过花少量成本，故意让别人付出更高成本、失败或系统变坏
+
+Commit–Reveal 中的 griefing（最典型）
+
+正常流程：commit reveal 结算
+
+Griefing 方式： 攻击者 commit 但 故意不 reveal
+
+后果：系统卡住 别人没法结算 或者要等很久 / 失败
+
+**ENS-Etherscan Reverse record**
+
+需要3 次交易来完成一个ens id的创建
+
+**Wrapped Token** = 把原生币“包装”成 ERC-20 代币，以便在以太坊生态里无缝使用 DeFi、DEX、智能合约。
+
+WETH 直接在链上 wrap / unwrap，去中心化
+
+WBTC 依赖托管，稍微中心化
+
+都是 1:1 锚定资产，不用担心价格差异太大
+
+在 DeFi 里流动性和智能合约兼容性是它们的主要价值
+
+This contract runs on Ethereum as the **substrate**（下面自动触发学英语技能）
+
+**Custodial Wallet** 托管钱包 钱包由第三方托管 用户 不直接控制私钥，第三方帮你管理资产
+
+MetaMask 的 Custodial 选项（和交易所账户绑定）
+
+Non-Custodial Wallet（非托管钱包）
+
+**Seed Phrase**（助记词 / 种子短语） 是一组 通常 12 或 24 个单词，用来生成你的 钱包私钥和地址，也就是你的资产的“万能钥匙”。
+
+centralized exchange / decentralized exchange
+
+**hold reserve for both** \= 为两个对象都保留（储备）资金或资产
+
+**Arbitrage（套利）** 指 利用不同市场或平台之间的价格差异进行买卖，从中获取无风险利润。
+
+自动化交易（Bot）：套利大多靠高频交易机器人执行
+
+跨交易所套利（Exchange Arbitrage）
+
+跨链套利（Cross-chain Arbitrage）
+
+三角套利（Triangular Arbitrage）
+
+去中心化交易所（DEX）套利 同一链上不同 DEX 的价格差示例：Uniswap ↔ SushiSwap ↔ Curve
+
+### Uniswap
+
+是 最著名的 Ethereum DEX，基于 AMM（Automated Market Maker，自动做市商）
+
+用户界面友好
+
+操作感和中心化交易所差不多 你甚至可以看价格、选择 slippage、确认交易 但底层实际上是 智能合约执行 swap
+
+### **Uniswap 的底层工作原理**
+
+1.  **资产在流动性池里（Pool）**
+    
+
+每个交易对（比如 ETH/USDT）有一个池子，流动性提供者（LP）存入等值代币
+
+2.  **价格由公式决定**
+    
+
+x \* y = k（恒定乘积公式），交易时会根据池子余额自动调价
+
+3.  **交易不经过中心化服务器**
+    
+
+完全在链上执行 交易结果即时写入区块链
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -258,6 +338,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -362,6 +443,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
