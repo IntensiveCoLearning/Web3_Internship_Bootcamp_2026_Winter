@@ -73,11 +73,30 @@ what is merkle tree?
 
 在区块链生态中，RPC 通常指 区块链节点提供的一种接口，供应用程序 （比如钱包、dApp、区块浏览器等）远程调用。
 
+### EL & CL
+
 执行客户端（Execution Client）：EVM + 状态 + RPC
+
+共识客户端负责以太坊的共识层（Consensus Layer / Beacon Chain），专门 处理 PoS 逻辑与链头选择
+
+-   EL维护当前链的世界状态,
+    
+-   **链选择 (Canonical Chain Selection)** 由PoS完成(CL)
+    
+
+-   网络中可能同时存在多个候选区块（分叉）。
+    
+-   PoS 共识通过 **投票机制**（attestations）来决定哪条链是“最重的链”。
+    
+-   “最重”在 PoS 中不是算力，而是 **质押权重**：哪条链获得更多验证者的投票支持，就成为 canonical chain。
+    
+
+助记词 (Mnemonic) → 种子 (Seed) → 派生路径 → 私钥 →密码学算法→ 公钥 → 地址(作为更方便的标识符)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -137,6 +156,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -322,6 +342,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
