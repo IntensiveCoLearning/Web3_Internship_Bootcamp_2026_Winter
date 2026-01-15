@@ -21,14 +21,12 @@ Web3 实习计划 2025 冬季实习生
 
 1.  参加分享会
     
-2.  进行笔记整理并完成任务
-    
-
-ps：今天准备先完成论文初稿，所以学习时间会短一点
+2.  学习1h并整理笔记
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 今日任务：
 
@@ -210,6 +208,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -314,6 +313,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
