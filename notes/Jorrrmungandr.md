@@ -15,8 +15,48 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今天主要学习了NFT相关的知识
+
+NFT 不是一张图片，而是一个\*\*智能合约（Smart Contract）\*\*，记录了
+
+_​_\*Token ID\*\*​ （唯一的编号）
+
+_​_\*Owner Address\*\*​（所有者地址）
+
+_​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服务器的 URL）
+
+一个NFT合约需要满足代币标准ERC-721，其中最核心的是两个状态变量：
+
+1\. `_owners`​: `mapping(uint256 => address)`
+
+\* 输入 Token ID，返回持有者的钱包地址。
+
+2\. `_balances`\*: `mapping(address => uint256)`
+
+\* 输入钱包地址，返回该地址持有的 NFT 数量。
+
+一个NFT合约还需要实现代币标准ERC-721规定的所有方法，比如：
+
+\* balanceOf(owner): 查询某人有多少个 NFT。
+
+\* ownerOf(tokenId): 查询某个 ID 的主人是谁。
+
+\* safeTransferFrom(from, to, tokenId): 安全转账。
+
+\* approve(to, tokenId): 授权别人（如 OpenSea）操作你的这一个 NFT。
+
+\* setApprovalForAll(operator, approved): 授权别人操作你所有的 NFT（钓鱼攻防挑战中提到）。
+
+\* tokenURI(tokenId): 获取某个 ID 对应 NFT 的元数据链接。
+
+后续还有新的ERC-1155对 NFT 进行了拓展，单个合约可以管理多种类型的代币（\*\*包括同质化和非同质化\*\*）。支持批量转账，极大节省 Gas 费。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 计划：
 
 1、继续学习ethereum基本概念  
@@ -25,6 +65,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 计划：  
 1、体验一下wagmi的基本功能
@@ -39,6 +80,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
