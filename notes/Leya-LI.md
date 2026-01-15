@@ -15,8 +15,60 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible Tokens (NFTs)**, explaining their fundamental concepts, technical standards, and how users interact with them in the Ethereum ecosystem. **👩‍💻 Web2 to Web3 🚀 - Week 1 Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata** [**https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+
+### **Core Concepts of NFTs**
+
+-   **Definition**: NFTs represent digital ownership with on-chain provenance, allowing artists to mint unique collections that can be verified as authentic \[[03:44](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=224)\].
+    
+-   **Digital Scarcity**: Unlike fungible tokens (like ETH), NFTs have a capped supply specified in a smart contract, ensuring only a certain amount can ever be minted \[[05:30](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=330)\].
+    
+-   **Digital Identity & Inventory**: Your inventory and identity follow you across different Web3 services (e.g., from an ENS registration to a marketplace like OpenSea) \[[01:43](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=103)\].
+    
+
+### **NFT Technical Standards**
+
+-   **ERC-20 vs. ERC-721**:
+    
+    -   **ERC-20 (Fungible)**: Tracked as a balance in a contract; sending a token means subtracting from one balance and adding to another \[[50:26](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=3026)\].
+        
+    -   **ERC-721 (Non-Fungible)**: Tracked by owner per individual asset ID; each token is a unique object with its own owner \[[50:26](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=3026)\].
+        
+-   **Metadata & Storage**:
+    
+    -   **Off-Chain (IPFS)**: Most NFTs store their metadata and images on the InterPlanetary File System (IPFS) to be "content-addressable," meaning the address changes if the content changes \[[43:21](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=2601)\].
+        
+    -   **On-Chain (SVG)**: Some NFTs (like "Loogies") render their artwork (SVG) directly from the smart contract, making them more composable and truly decentralized, though more expensive to mint \[[56:59](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=3419)\].
+        
+
+### **Marketplaces & Minting**
+
+-   **OpenSea**: A major marketplace where users can buy, sell, and auction NFTs; it serves as a decentralized inventory that follows your wallet \[[01:50](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=110)\].
+    
+-   **The Minting Process**: "Minting" is the act of creating the token directly from a smart contract \[[19:12](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=1152)\]. This can happen on a project's website or directly through a block explorer like Etherscan \[[28:06](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=1686)\].
+    
+-   **Trust & Verification**: Verified contracts on Etherscan allow users to read the code and understand the rules (like total supply) before interacting \[[30:10](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=1810)\].
+    
+
+### **Utility and Creative Empowerment**
+
+-   **Utility**: Beyond art, NFTs can provide "token gating" (access to chat rooms or voting rights) \[[09:15](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=555)\].
+    
+-   **Artist Empowerment**: NFTs allow creators to connect directly with their audience, monetize "super fans," and build in permanent royalties that are automatically paid out on secondary sales \[[08:36](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=516)\].
+    
+
+### **Key Technical Demos**
+
+-   **IPFS Interaction**: Using a hash to retrieve content from the peer-to-peer storage network \[[37:01](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=2221)\].
+    
+-   **Interacting with Contracts**: Using Etherscan's "Read" and "Write" functions to check balances or mint tokens without a frontend website \[[36:17](http://www.youtube.com/watch?v=NOdrEpnoCiM&t=2177)\].
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 In this video, "Web2 to Web3 - Week 1, Day 3," Austin Griffith and his team demonstrate how to use an Ethereum wallet to interact with various Web3 services, emphasizing how your identity and inventory follow you across the decentralized web.
 
 ### **1\. Identity & Naming (ENS)**
@@ -74,6 +126,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 ### **1\. Getting Started with MetaMask**
 
@@ -136,6 +189,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 **Web2 to Web3 - Day 1 Intro Notes**
