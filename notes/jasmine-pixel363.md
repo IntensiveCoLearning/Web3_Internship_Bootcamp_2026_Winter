@@ -169,7 +169,7 @@ DAI 是一个 去中心化稳定币（decentralized stablecoin），主要目标
 
 它是由 MakerDAO 系统发行和维护的
 
-不像 USDT/USDC 那样有中心化储备金，而是 通过**抵押资产（collateral）**生成
+不像 USDT/USDC 那样有中心化储备金，而是 通过\*\*抵押资产（collateral）\*\*生成
 
 ### 核心机制
 
@@ -224,10 +224,15 @@ MKR = MakerDAO 治理代币 / 备用代币
 即使 ETH 跌破借出的 DAI 价值，**DAI 持有人仍然 1:1 USD 安全**，**亏损由借款人抵押物和系统备用代币 MKR 承担**。
 
 ![DAI的价值稳定机制.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jasmine-pixel363/images/2026-01-15-1768476941582-DAI_______.png)
+
+### More English：
+
+All of a sudden, the collateral was worth as much as the token, so they needed to start selling off to cover that and that crashed too, both of these things crash at once sending it into a death spiral.
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -419,6 +424,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -523,6 +529,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
