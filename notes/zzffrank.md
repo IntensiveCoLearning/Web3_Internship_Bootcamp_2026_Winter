@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# 备战期末ing
+
+浏览实习手册安全与合规部分
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 web3原理分享回访学习
 
 铸造第一个nft
@@ -25,6 +33,7 @@ web3原理分享回访学习
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 ## 021学习以太坊第一章
 
 ## 下载开发环境remix IDE
@@ -32,6 +41,7 @@ web3原理分享回访学习
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
