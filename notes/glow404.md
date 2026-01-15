@@ -21,11 +21,18 @@ timezone: UTC+8
 
 完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战 √
 
-phishing site uses "Security Update" as the method name to trick users into believing this is a wallet update operation.
+phishing site uses “Security Update” as the method name to trick users into believing this is a wallet update operation.
+
+常见公链：btc，eth，sol，bnb，ADA,XRP。(原生资产）
+
+扩展链（layer2）：Optimism、Base、Arbitrum。（有些有原生代币，治理代币（Governance Token））
+
+USDT USDC DAI UNI LINK：平台标准代币（Fungible Token）ERC20代币，SPL Token，依赖智能合约
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 相关软件介绍下载。
 
