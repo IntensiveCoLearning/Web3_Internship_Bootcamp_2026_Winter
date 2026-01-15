@@ -17,6 +17,8 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+0114/0115 以準備後續 2 月底開始教課的相關內容簡報，並與身邊的小夥伴進行討論與試教
+
 -   DeFi 基本知識
     
     -   DEX:Uniswap
@@ -36,6 +38,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 區塊鏈基礎知識、比特幣 UTXO 架構、區塊鏈應用分層 L0-L4、以太坊基礎知識、Web3 資訊流
 <!-- DAILY_CHECKIN_2026-01-14_END -->
