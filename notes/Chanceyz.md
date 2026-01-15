@@ -15,8 +15,40 @@ stay hungry, stay foolish
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+1-15
+
+观看 “[web3安全](https://www.youtube.com/watch?v=d4wpNX61QyA&list=PLpInLW2dF2K-koNbtY5Z6pmIicb7TC603&index=2)”视频回放。
+
+笔记：
+
+-   许多黑客团队甚至是国家级团队，技术水平高于项目方。
+    
+-   AI coding时代，开发人员需要谨慎有效防范AI生成代码中的潜在恶意代码风险。
+    
+-   安全建议：
+    
+
+![SR SHAN.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Chanceyz/images/2026-01-15-1768487242361-SR_SHAN.png)
+
+观看 “web3合约”视频回放。
+
+笔记：
+
+-   合规：有规可合。当前许多合规工作：对于新兴web3项目，借鉴传统行业的合规要求与法律框架，使新项目在没有明确法规的情境下符合滞后的合规要求。
+    
+-   对比如ico的监管不是针对 “币圈”的，是对所有非法集资的合规化要求。
+    
+
+继续阅读以太坊基础知识，卡在了layer2，不是很理解运作机制，明天继续。
+
+今日词汇：Merkle tree; hash
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 1-14
 
 观看“web3运行原理”录播，进一步从基础技术层面加深web3的认知。
@@ -38,6 +70,7 @@ stay hungry, stay foolish
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 1-13
 
 观看了1-12日“「Web3 行业全局介绍 & 岗位概览」回放”，对web3行业当前现状、从业人员软硬件要求等有了一定的了解。
@@ -51,6 +84,7 @@ todo：1. 结合自身过往经历与专长定位匹配的方向；2. 尝试寻�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 1-11晚参加了开营仪式，对于项目流程和规划有了进一步的了解。
