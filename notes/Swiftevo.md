@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+昨天保安和法律的課很實用, 立即裝了goplus, 再去 revoke 了不少過期的簽名,
+
+認識到新的同學, 把 notion 與 obdistin 裝好連好, 搭建起個人資料庫的第一步.
+
+繼續讀自學手冊的智能合約開發部份
+
+同時也學到了現金流的關建字去追蹤資金流向
+
+因為防騙網站, 走了去AI了解 chain ID 的原因, 背景
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 [https://www.youtube.com/watch?v=fnUKVeYp-QI](https://www.youtube.com/watch?v=fnUKVeYp-QI)  
   
 參與今天的ETH PoS訓練後，重溫了 Squad staking, Lido CSM 與 Obol 如何降低 ETH validator 的門檻。
@@ -32,6 +46,7 @@ value 的 0x6f05b59d3b20000 原來是 0.5 ETH，實在太恐怖
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 希望一邊自學，一邊以實踐累積經驗  
 參與了今天的smartdeer 職位講座，了解到實際不同職位的需要，同時亦看到自學手冊關於 web3 各方面不同崗位的要求。  
 也由其中一個同學分享的筆記重溫一次重點。  
@@ -44,6 +59,7 @@ value 的 0x6f05b59d3b20000 原來是 0.5 ETH，實在太恐怖
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
