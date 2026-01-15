@@ -15,8 +15,14 @@ a web3 newbie
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+今日主要学习了 DApp开发。学习了 DApp 应用的架构设计，交互过程等概念。前端一般使用 ReactJS 或 VueJS 等技术框架，和 Web2 无差异。主要差异在于要使用 Ether.js 或 Web3.js 等框架与合约交互。要了解ABI 的调用方式和方法等。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今天主要学习了 Solidity 语言相关的内容。学习了 Call，DelegateCall,MultiCall，Gas，合约升级等知识。
 
 1、什么是 Message Call ？
@@ -75,6 +81,7 @@ delegate call 是特殊的 message call，在调用过程中，上下文中的 m
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 初步了解了 Web3 的行业情况。关注了推荐的 Web3 行业的 X 账号，可以通过这些账号获取到更多的 Web3 行业资讯。尝试铸造自己的第一个 NFT，可惜网站一直提示 401 错误，目前还未解决，后面再慢慢解决吧。
