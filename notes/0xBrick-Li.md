@@ -19,7 +19,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 # To do list
 
--   推特持续关注行业名单
+-   推特持续关注行业名单 ✅
     
 -   021以太坊学习第四章
     
@@ -29,13 +29,63 @@ Web3 实习计划 2025 冬季实习生
     
 -   今天你Commit了吗？
     
--   制定职业规划，完成职业规划任务
+-   制定职业规划，完成职业规划任务 ✅
     
--   Unphishable完成至少5章
+-   Unphishable完成至少5章 ✅
+    
+
+# 职业规划与学习计划
+
+**目标求职意向**
+
+Web3后端远程实习  Go + Solidity + 以太坊 L2
+
+**4周后达成目标：**
+
+-   Go工程能力
+    
+-   Web3 实战经验
+    
+-   可展示项目
+    
+
+**Week 1  Go 工程基础**
+
+-   gin 框架
+    
+-   REST API
+    
+-   Go完成简单的后端项目
+    
+
+**Week 2  Solidity + 链交互**
+
+-   solidity中级
+    
+-   学会后端与链交互
+    
+
+**Week 3：Go Indexer**
+
+-   go-ethereum
+    
+-   订阅区块 / event
+    
+-   ABI 解码
+    
+
+**Week 4：面试准备**
+
+-   README 优化
+    
+-   简历打磨
+    
+-   面试准备
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 # To do list
 
@@ -114,6 +164,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -171,6 +222,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
