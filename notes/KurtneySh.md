@@ -15,8 +15,34 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+ERC-8004: 智能体的链上护照
+
+身份注册表(Identity Registry)
+
+1.  基于ERC-721标准
+    
+2.  提供唯一、可转移的链上ID
+    
+
+声誉系统(Reputation Registry)
+
+1.  记录不可篡改的反馈评分(0-100分)
+    
+2.  防止垃圾信息：仅付费客户可评价
+    
+
+验证机制(Validation)
+
+1.  TEE (可信执行环境)或zkML证明
+    
+2.  解决核心问题：“你是谁”和“你可信吗
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -40,6 +66,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 # 以太坊中文周会纪要总结（2026/01/12）
 
