@@ -17,8 +17,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## 今天计划
+
+继续看，把第一章web3的教材看完。
+
+看录播1节。
+
+solidity进阶
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ## 学习计划
 
 -   完成通用部分，所有需要下载学习的部分
