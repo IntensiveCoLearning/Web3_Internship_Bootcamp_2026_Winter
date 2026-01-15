@@ -15,8 +15,32 @@ interested in web3
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+AI及其基础概念（分享会）
+
+1.  AI Agent的演进：从聊天工具到具备执行能力的智能体，通过Function Call、MCP等技术实现从文本交互到实际行动的转变。
+    
+2.  Web3与AI结合的必要性：传统互联网基础设施无法满足AI Agent大规模交易需求，区块链面对如何解决身份验证、支付结算和行为可追溯性等挑战。
+    
+3.  核心协议标准：
+    
+    -   ERC-8004：为AI Agent提供链上身份认证系统，包括唯一ID、声誉评分机制和验证机制
+        
+    -   HTTP 402：原生支付协议，支持微支付和毫秒级结算
+        
+    -   Spoon OS框架：AI Agent操作系统，将复杂的Web3功能封装成简单API，包括四层架构（输入层、核心层、协议层、输出层）。
+        
+4.  合规性问题：AI监管趋势（如欧盟AI法案）以及区块链如何通过不可篡改的审计日志满足合规要求。
+    
+5.  实际应用场景：DeFi交易机器人、数据市场、AI协作等应用案例。
+    
+6.  技术细节：包括支付验证方式、Gas费用优化、跨链交易、身份管理等具体实现问题。
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # **MiCA 为什么限制算法稳定币？**
 
 2023年4月，欧洲议会正式通过《加密资产市场监管法案》（Markets in Crypto-Assets Regulation, MiCA），这标志着欧盟在加密资产监管领域迈出了里程碑式的一步。该法案对稳定币（stablecoins）的监管尤为严格，特别是对算法稳定币（algorithmic stablecoins）采取了近乎禁止性的立场。
@@ -36,6 +60,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 1.  钱包、助记词、地址
     
@@ -68,6 +93,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
