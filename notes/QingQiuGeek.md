@@ -15,8 +15,51 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+# **Web3 行业全局介绍 & 岗位概览**
+
+## 发展规模
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768484798780-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485033688-image.png)
+
+## 求职岗位
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485051000-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485156432-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485182238-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485292440-image.png)
+
+## 求职面试
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485424613-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-15-1768485505401-image.png)
+
+# Web3运行原理
+
+助记词和私钥一对多，私钥可以自己生成。
+
+交易就是要做的事+gas费+防重放序号nonce，而钱包则要组装交易内容并私钥签名，然后广播到区块链网络。
+
+## 交易流程
+
+-   当发起一笔交易后，这笔交易首先被发送给区块链其中一个节点A，在进入节点A前，先验证交易的格式、签名、nonce 等基本合法性，通过**验证**后，这笔交易会被**暂存**到节点A的内存池中，这个池子用来暂存已验证合法但尚未被打包的交易的池子。
+    
+
+-   然后节点A立刻广播到邻居节点，然后才在自己的池中按照 Gas 费用高低**排序**，矿工/验证者会优先选择价格更高的交易进行打包，打包成新区块添加到自己的区块链中（每个节点都有自己的区块链，一个个区块首尾相连形成的链）。
+    
+-   邻居节点收到交易后也会先进行合法性校验，通过后再转发给它们的邻居，不断重复上一步骤，如此病毒式传播，直到该区块链大部分节点都记录这笔交易，此时就可以认为这笔交易在链上达成了共识，被认可。
+    
+
+但并非所有节点都会接收或保留这笔交易，有些节点可能因 Gas 费过低而拒绝加入自己的内存池、可能因内存池已满而丢弃低优先级交易。
+
+  
+POW：工作量证明，一种验证交易的方式，验证者/矿工需要投入大量算力来解决复杂数学题，验证成功后才能获得奖励（挖矿）。这种方式能耗很高。
+
+POS：权益证明，一种更环保的验证方式，验证者/矿工需要先质押一定数量的代币，才有资格去验证交易。验证成功后会获得奖励，相比 PoW 更节能。
+
+智能合约：虚拟机中设定好的代码程序，不可篡改且自动执行
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 今天参与了以太坊中文周会和web3行业全局介绍&岗位概览分享
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-12-1768223118971-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-12-1768223106935-image.png)
