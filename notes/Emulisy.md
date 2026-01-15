@@ -27,8 +27,7 @@ Web3 实习计划 2025 冬季实习生
 
 \- Wallet generates a transaction object:
 
-\`\`\`json
-
+```
 {
 
 “from”: “AliceAddress”,
@@ -44,8 +43,7 @@ Web3 实习计划 2025 冬季实习生
 “gasPrice”: 50 Gwei
 
 }
-
-\`\`\`
+```
 
 \- `nonce`: sequence number to prevent replay attacks
 
@@ -57,8 +55,6 @@ Web3 实习计划 2025 冬季实习生
 
 \- Anyone can verify the signature but cannot forge it
 
-\-–
-
 ## 2\. Transaction Broadcasting
 
 1\. Wallet broadcasts the signed transaction to the blockchain network (P2P network)
@@ -68,8 +64,6 @@ Web3 实习计划 2025 冬季实习生
 \- Transactions in mempool are waiting to be included in a block
 
 3\. At this stage, the transaction is **not yet part of any block**
-
-\-–
 
 ## 3\. Transaction Validation (Nodes / Miners / Validators)
 
@@ -82,8 +76,6 @@ Before packaging into a block, transactions are validated:
 3\. **Nonce correctness** → prevents duplicate transactions
 
 Only valid transactions are eligible to be included in a block
-
-\-–
 
 ## 4\. Block Packaging
 
@@ -99,29 +91,34 @@ Only valid transactions are eligible to be included in a block
 
 \- Constructs a block header:
 
-\`\`\`text
-
+```
 Block N+1
+```
 
-\- PreviousHash: hash(Block N)
+```
+- PreviousHash: hash(Block N)
+```
 
-\- MerkleRoot: hash(all transactions)
+```
+- MerkleRoot: hash(all transactions)
+```
 
-\- Timestamp: 1673779200
+```
+- Timestamp: 1673779200
+```
 
-\- Nonce: ??? (used in PoW)
-
-\`\`\`
+```
+- Nonce: ??? (used in PoW)
+```
 
 3\. Essentially, the block organizes transactions into a structured format ready for consensus
-
-\-–
 
 ## 5\. Consensus Phase
 
 Different blockchains use different consensus mechanisms:
 
-\### a. Proof of Work (PoW, e.g., Bitcoin)
+-   a. Proof of Work (PoW, e.g., Bitcoin)
+    
 
 \- Miner performs **work computation**
 
@@ -129,7 +126,8 @@ Different blockchains use different consensus mechanisms:
 
 \- Successfully mined block is broadcast to the network
 
-\### b. Proof of Stake (PoS, e.g., Ethereum 2.0)
+-   b. Proof of Stake (PoS, e.g., Ethereum 2.0)
+    
 
 \- Validator is selected as block proposer
 
@@ -139,9 +137,7 @@ Different blockchains use different consensus mechanisms:
 
 \- Other validators vote to finalize the block
 
-\> Core idea: global agreement on which block is accepted
-
-\-–
+**Core idea: global agreement on which block is accepted**
 
 ## 6\. Block Confirmation (On-chain)
 
@@ -163,9 +159,7 @@ Different blockchains use different consensus mechanisms:
 
 \-–
 
-## 7\. Summary Flow Diagram (Text Version)
-
-\`\`\`text
+## 7\. Summary Flow Diagram
 
 Wallet creates & signs transaction
 
@@ -192,6 +186,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 # **Ethereum Basics**
@@ -381,6 +376,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
