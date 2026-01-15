@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+## 📅 Day 4 运营向训练计划
+
+### 🎯 核心目标 (Objective)
+
+继续学习[「安全与合规」](https://web3intern.xyz/zh/security/)部分。
+
+### 📈 关键结果 (Key Results)
+
+-   **KR 1：**
+    
+
+1.  继续学习Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分。
+    
+2.  重点学习「[\*\*二、 常见网络安全风险与防护措施](https://web3intern.xyz/zh/security/#%E4%BA%8C%E3%80%81-%E5%B8%B8%E8%A7%81%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E4%B8%8E%E9%98%B2%E6%8A%A4%E6%8E%AA%E6%96%BD)」\*\*部分。
+    
+3.  分析至少 3 点 Web3 实习生会遇到的潜在「网络安全风险」
+    
+
+-   **KR 2：**
+    
+
+1.  **学习「** [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**」**
+    
+2.  弄清「\*\*NFT」「ERC」「ERC721」「IPFS」「Metadata」\*\*等的核心概念。
+    
+3.  从运营的角度，思考以上内容是否可以撰写一篇科普向推文。
+    
+
+-   **KR 3：**
+    
+
+1.  收看「Web3 行业全局介绍 & 岗位概览」回放
+    
+2.  收看「Web3 运行原理」回放。
+    
+
+## 📝 复盘 (Reflection)
+
+**KR 1：**
+
+**完成度：**
+
+**心得：**
+
+**KR 2：**
+
+**完成度：**
+
+**心得：**
+
+**KR 3：**
+
+**完成度：**
+
+**心得：**
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ### 🎯 核心目标 (Objective)
 
 学习[「安全与合规」](https://web3intern.xyz/zh/security/)部分，回顾历史知识
@@ -292,6 +352,7 @@ Web3 治理遇到的挑战\*\*「 Sybil 」\*\*：
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 ## 📅 Day 2 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -509,6 +570,7 @@ Austin Griffith 在创建钱包中，指出去中心化最大的优势：「 恭
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
