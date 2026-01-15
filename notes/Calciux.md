@@ -18,10 +18,24 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 ## 021学习以太坊 C2
+
+-   Node: 运行clinet的机器
+    
+    -   Excution Client: 负责业务逻辑/状态 监听其他广播来的区块 & 自己转发 / 执行交易与智能合约
+        
+    -   Consensus Client: PoS 维护信标链（Beacon Chain）
+        
+    -   Validator
+        
+
+Engine API: EL-CL之间的通信接口
+
+-   节点间的通信:
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## 分享会 web3安全
 
@@ -79,6 +93,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -262,6 +277,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
