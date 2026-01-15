@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+最近期末周实在是太太太太太忙了
+
+done
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-15-1768489537661-image.png)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 自学中
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-14-1768366993827-image.png)
@@ -24,6 +34,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 注册推特，关注重要官推账号：done
@@ -43,6 +54,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
