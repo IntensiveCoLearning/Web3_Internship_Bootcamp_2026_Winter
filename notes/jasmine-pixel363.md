@@ -161,6 +161,32 @@ x \* y = k（恒定乘积公式），交易时会根据池子余额自动调价
 
 完全在链上执行 交易结果即时写入区块链
 
+### Etherscan
+
+在 Etherscan → Overview 里：
+
+Balance ：你这个地址当前持有的 ETH 数量
+
+Value：这些 ETH 按当前价格折算成的 美元价值（USD）
+
+Token： 你这个地址持有的 代币（ERC-20 / ERC-721 / ERC-1155）
+
+为什么 Value 不包含 Token？
+
+因为：
+
+1.  ETH 是链的原生资产（Native Asset）
+    
+2.  ERC-20 / NFT 的价格：依赖外部市场 流动性不同 很难统一准确估值
+    
+
+**ERC-20 Tokens：DAI USDC UNI WETH**
+
+**NFT（ERC-721 / ERC-1155）：NFT 收藏品 游戏道具 数字艺术**
+
+3.  Etherscan 是 区块浏览器（block explorer） 不是资产管理工具
+    
+
 ## DAI 如何保持其稳定币（stablecoin）价值稳定？
 
 ### DAI 是什么
@@ -232,6 +258,7 @@ All of a sudden, the collateral was worth as much as the token, so they needed t
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -425,6 +452,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -529,6 +557,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
