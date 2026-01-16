@@ -15,8 +15,23 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今日暂时请假一天  
+未完成项目为：[021 学习以太坊第 1&2 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
+
+-   [DeFiLlama](https://defillama.com/)：各赛道概览、TVL 数据分析、专有名词 & 缩写的理解
+    
+-   [Dune Analytics](https://dune.com/)：数据查询与可视化
+    
+-   [Etherscan](https://etherscan.io/)：了解交易等数据的查看与追踪  
+      
+    暂定晚上回来以后完成 如果今天没空完成 明日补齐！
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 完成[**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata观看**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)  
 **一、NFT基础概念**
 
@@ -328,6 +343,7 @@ Nonce冲突：前序交易未确认
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 **完成合规与安全学习手册：  
 一.国内监管：全面禁止金融属性，有限开展技术创新**
 
@@ -441,6 +457,7 @@ Nonce冲突：前序交易未确认
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -589,6 +606,7 @@ Nonce冲突：前序交易未确认
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
