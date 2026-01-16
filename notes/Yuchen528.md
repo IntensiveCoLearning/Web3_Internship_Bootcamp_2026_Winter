@@ -15,8 +15,35 @@ Yuchen
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
+
+行业赛道：
+
+1.  DeFi
+    
+2.  NFT
+    
+3.  DAO
+    
+4.  MEME
+    
+
+交叉创新领域
+
+1.  DAO+MEME
+    
+2.  AI+DeFi
+    
+3.  社区代币分发创新
+    
+4.  WEB3+乡建
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 -   Bitcoin & Ethereum
     
 
@@ -134,6 +161,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 -   Bitcoin & Ethereum
@@ -258,6 +286,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
