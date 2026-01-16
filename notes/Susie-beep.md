@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+X的输出还是挺重要的，一方面输出倒逼输入，另一方面提高影响力
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 把SpoonOS当web3的Langchain，真是一个概念没学明白又回忆起另一个没学明白的概念。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 学习Web3 实习手册「安全与合规」部分，参加colearning和分享会。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
@@ -30,11 +37,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 区块链运行机制：POW耗能的安全成本高，POS节能但有权利集中问题。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
