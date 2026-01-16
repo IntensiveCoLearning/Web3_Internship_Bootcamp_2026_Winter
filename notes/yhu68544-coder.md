@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+\#### 7.NFT（非同质化代币）理解：
+
+同质化代币（FT，全称 Fungible Token）是可以被任意交换的代币，就像钱一样。比如ETH,BTC
+
+非同质化代币（NFT，全称 Non-fungible Token）则是独一无二、完全不同，难以用来平等交换的代币。Every NFT is unique.(就像my house ≠your house)
+
+NFT的特性和价值：独一无二，不可分割；不可篡改，公开透明；万物皆可NFT（在虚拟世界代表任意非钱币的实体）；完全控制权（在公链上的数字藏品才算）；确权成本低；无限想象空间。
+
+NFT 市场处于非常早期的阶段，作品质量参差不齐鱼龙混杂。所以在参与购买 NFT 的时候，需要 DYOR（Do your own research）。
+
+!\[\[Pasted image 20260116225137.png\]\]
+
+\#### 8.黑话总结（\[@punk6529 Tweet\]([https://twitter.com/punk6529/status/1433002033242595338)\[The](https://twitter.com/punk6529/status/1433002033242595338\)[The) Web3 Glossary\]([https://unstoppabledomains.com/blog/the-web3-glossary)\[WTF](https://unstoppabledomains.com/blog/the-web3-glossary\)[WTF) gm\]([https://github.com/WTFAcademy/WTF-gm)）：](https://github.com/WTFAcademy/WTF-gm\)）：)
+
+\- DYOR（Do your own research）：你自己要做研究来决定是否购买，是一个免责申明。
+
+\- FOMO(Fear of missing out):害怕失去机会。在这种情绪下，往往会高价接盘，容易被套牢。
+
+\- FUD（Fear,uncertainty,and doubt）害怕犹豫不确定。在这种情绪下，往往会低价出货，容易卖飞了。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 \#### 6.以太坊以太币理解（+实习计划公众号讲解）
 
 以太坊是由社区驱动的技术，为加密货币以太币（ETH）和成千上万的去中心化应用程序提供动力。
@@ -82,6 +106,7 @@ Layer 2（L2）是什么意思？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 1.14：
 
