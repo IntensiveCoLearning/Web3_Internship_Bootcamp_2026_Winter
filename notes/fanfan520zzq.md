@@ -15,8 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+```ini
+1.16 今天明天都有事
+
+一个节点是如何组成的？ 一台电脑+two clients + PoS
+
+two clients : consensus client + execution client
+两个client之间用Engine API 连接
+核心组件包括库文件：web3.js , web3.py
+
+执行客户端： 交易执行，EVM操作，状态管理
+共识客户端： PoS共识机制，区块提议，验证与最终性
+
+节点间的通讯方式：P2P+gossip
+gossip:八卦：人传人扩散传播
+工作模式：1.选择：从节点列表中选择几个通信 2.传播：pull，push，push-pull（最常用） 3，更新merge：如果是新信息，继续传播
+gossip问题：走神的节点会错过信息
+
+节点与节点之间建立通信：1，udp联通，kademlia（kademlia分布式哈希表协议，XOR距离） 2，tcp稳定联通，RLPx（在一个tcp中运行多个协议） 3.goppip传播
+
+full node : 执行客户端+共识客户端，从创世（可信检查点）开始验证整条chain，用 snap/fast sync补齐再自我验证 ，
+archive node : 禁用pruning的全节点。体量很大
+light node ： 只保存区块头， 不参与共识 ， 不能做验证者 
+
+RPC: Remote Procedure Call 远程过程调用 ， client 向节点中的服务挂钩并返回结果，client不关心自己的req运行在哪里，如何运行，只要结果。 etherumscan就是一种RPC
+```
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ```ini
 solidity stduy;
 uint -> 256 bit
@@ -59,6 +89,7 @@ SpoonOS: AI operating system ; AI container ; AI marketplace
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
 
 今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
@@ -100,6 +131,7 @@ DEX交易：verified;问号或感叹号的token
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -119,6 +151,7 @@ DEX交易：verified;问号或感叹号的token
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
