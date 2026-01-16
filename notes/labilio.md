@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+-   今天没有课程，是学员分享会。感觉最有收获的是Uniswap讲解，有一个Token计算公式，我对这个还挺有兴趣的，因为我之前做计量经济学的时候多次做过这个事
+    
+-   还有Figma，我从2020年其实就大量用Ps这种设计工具了，后面转到Canva也很熟练了，不过他们在工业界用的并不多，还是Figma最有影响力，我上手这个肯定不慢，明天就去试一试  
+    
+-   今天没有课程所以练习了一下Vibe Coding开发，正好锻炼一下产品思维：  
+    **几乎所有手机都有灵动岛功能，也有大量的专注计时器软件，电脑为什么没有呢？**
+    
+
+_客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不能用_快捷键\*控制音乐播放)
+
+\* **那为什么不能把APP产品和网页的优点二合一呢？**
+
+这是一个基于 Electron 的桌面小部件音乐播放器，具有毛玻璃效果的精美 UI。它可以挂在屏幕前台，为你播放 Lofi Girl 直播间的专注音乐，并提供学习计时功能。
+
+![gemini展示.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/labilio/images/2026-01-16-1768578840387-gemini__.png)![桌面展示.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/labilio/images/2026-01-16-1768578850853-____.jpg)
+
+项目地址：[https://github.com/labilio/lofi-radio](https://github.com/labilio/lofi-radio)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## AI和WEB3 — 基本介绍和SpoonOS的介绍
 
 ### 🗨️ 过去的痛点：
@@ -73,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 ​从业风险： 并不是拿着国外的牌照（比如MSB）在国内就绝对安全，远程办公也有法律风险。
 
 ​冻卡问题： 出金最怕收到黑钱，笔记建议要保留好所有的聊天记录和KYC信息，万一警察找上门，这些是证明自己“善意第三人”的关键。
@@ -82,6 +105,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ## 课程内容 Bruce - 基础知识
@@ -131,6 +155,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
