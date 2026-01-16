@@ -15,8 +15,57 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+# 14\. 以太坊概述
+
+-   区块链2.0
+    
+-   mining puzzle
+    
+-   memory hard - ASIC resistance
+    
+-   proof of work → proof of stake
+    
+-   支持smart contract
+    
+-   BitCoin - BTC - decentralized currency - satoshi
+    
+-   Ethereum - ETH - decentralized contract - wei
+    
+-   fiat currency
+    
+
+# 15\. 以太坊的账户
+
+-   创始人Vitalik
+    
+-   比特币 - 基于交易模式的账本 - transaction baed ledger
+    
+-   以太坊 - account-based ledger
+    
+-   状态树
+    
+-   replay attack - 记录交易次数nonce
+    
+-   外部账户 - externally owned account
+    
+    -   balance
+        
+    -   nonce ( counter )
+        
+-   合约账户 - contract account
+    
+    -   合约账户不能主动发起一个交易
+        
+    -   code
+        
+    -   storage
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # Plan
 
 -   Bitcoin, Ethereum Whitepaper（配合北大肖臻老师的课程）
@@ -130,6 +179,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 近期我正在参与南塘 DAO 的艺术共创营，并有机会直接参与到实际的开发工作中。这一经历让我意识到，相比单纯的概念学习，通过真实项目参与 Web3 的协作与建设，是目前对我来说最有效的成长路径。因此，我将接下来一段时间的学习重点，明确放在“认知夯实 + 实战开发同步推进”上。
 
 在认知层面，我计划系统阅读比特币（Bitcoin）与以太坊（Ethereum）的白皮书，从最原始的设计问题出发，理解去中心化系统试图解决的核心矛盾，以及智能合约与链上计算为何会出现。我希望通过回到源头的方式，建立对 Web3 基础逻辑的整体理解，而不是停留在碎片化的应用层认知。
@@ -143,6 +193,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -186,6 +237,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
