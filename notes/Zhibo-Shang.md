@@ -15,13 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+Today I learned about the structure of an Ethereum node after The Merge. After The Merge, a full Ethereum node is no longer one single program. Instead, it is built from two main clients, the execution client and the consensus client. If a user only wants to sync the blockchain and check blocks and transactions, running these two clients is enough. However, if someone wants to produce blocks and earn staking rewards, they also need to run a validator client. The validator client works like a plugin of the consensus client and is used for signing messages, voting, and proposing blocks.
+
+The execution client is responsible for executing all transactions in a block. It calculates account balances and smart contract states and then gives the final execution results. In simple words, the execution client does the math but does not decide which block is the official one. The consensus client does not execute transactions by itself. Instead, it checks the execution results from the execution client and runs the Proof of Stake rules to decide which block is valid and which chain should be accepted as the official chain. This means the execution client gives the results, and the consensus client decides whether to accept them.
+
+The execution client and the consensus client communicate through a special interface called the Engine API. This API is a private connection used only between these two clients. It is not a public RPC or REST API. Through the Engine API, they send block data and execution results to each other. A simple example is that the execution client is like a clerk, the consensus client is like a judge, and the Engine API is their private phone line. From today’s study, I understand that The Merge is not only a change of consensus mechanism, but also a new design of Ethereum’s node structure, which makes the system more modular and easier to upgrade in the future.
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 亲爱的助教老师您好，明天上午10点我要考电动力学，这学期的最后一门考试，今天实在是没有时间学习其他的了。之后我会补上今天的内容，谢谢啦！
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 Today, I attended an online sharing session on Web3 compliance. After listening to the lawyer's presentation, I felt a chill run down my spine, but I also felt fortunate to have learned these lessons in time. I used to think that as long as the technology wasn't "evil" and the company held an overseas license, everything was safe. However, today's notes completely overturned my "naive" thoughts.
 
@@ -36,6 +47,7 @@ Finally, I deeply understood that **"**compliance" is not just what is written o
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 Today I reviewed the core structure of blockchain systems. A blockchain consists of a sequence of blocks, each containing transaction records and the hash of the previous block. This chained hash structure ensures data integrity and makes historical records effectively immutable.
@@ -53,6 +65,7 @@ Finally, I examined scalability challenges in public blockchains, such as increa
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
