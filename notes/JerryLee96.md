@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+**今天的分享会学到了什么：**
+
+1.web3的监管面临挑战，是未来的必然方向
+
+2.稳定币,链上交易:是更高效,更低成本的方式
+
+3.贡献,证明自己做了什么 prof what you did
+
+4.经营推特的账户:蹭大帖子,标题党,求互关
+
+5.迭代思维,费曼学习法(教是最好的学)
+
+6.思维导图:总结知识点,方便扩展,记忆复习
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 **以太坊：去中心化区块链平台**
 
 -   特点 **账户系统**
@@ -87,6 +105,7 @@ EIP1559升级后：基础费用（给矿工）+Tip
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 ![IMG_2212.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/JerryLee96/images/2026-01-13-1768309649885-IMG_2212.jpeg)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
