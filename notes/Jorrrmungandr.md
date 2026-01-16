@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天主要实践了一下Wagmi框架
+
+Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户变化”、“错误处理”等逻辑封装成了方便调用的hooks，比如 useReadContract 类似于 useQuery，用于读取合约数据，并且同样具有缓存功能；还有 useWriteContract，类似 useMutation，需要用户手动触发签名交易。
+
+常用的API还有 useConnect、useDisconnect、useAccount、useBalance等。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今天主要学习了NFT相关的知识
 
 NFT 不是一张图片，而是一个\*\*智能合约（Smart Contract）\*\*，记录了
@@ -57,6 +67,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 计划：
 
 1、继续学习ethereum基本概念  
@@ -65,6 +76,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 计划：  
@@ -80,6 +92,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
