@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+没学，明日回归
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ai agent视频+小宇宙牛油果烤面包ai agebt播客
 
 -   erc-8004
@@ -27,6 +33,7 @@ ai agent视频+小宇宙牛油果烤面包ai agebt播客
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 -   学习vibe coding，加入另一个训练实操
     
 -   合规直播
@@ -36,11 +43,13 @@ ai agent视频+小宇宙牛油果烤面包ai agebt播客
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 ![1113notes.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fridachen1127/images/2026-01-13-1768341952160-1113notes.jpg)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
