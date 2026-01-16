@@ -17,21 +17,25 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
-以太坊
+### 以太坊
 
 以太坊是由社区驱动的技术，为加密货币**以太币（ETH）和去中心化应用**提供动力
 
-特点
+### 特点
 
 推出了**智能合约**的功能，开发者可以在以太坊上基于智能合约和协议开发各类应用（NFT就是一个重要的应用，主流的NFT项目大都在以太坊网络中发布）
 
-gas fee：
+### gas fee
 
 由于区块链是去中心化的，因此在区块链上的操作都需要支付手续费给网络服务商，这个手续费就称为gas fee
+
+### 助记词/私钥/地址
 
 助记词与账户/私钥之间是一对多的关系，私钥和地址（公钥）之间是一一对应的关系，metamask的密码只是一个本地的密码锁。
 
 因此，如果丢失了助记词，则所有账户都将丢失；如果丢失了私钥，只会丢失私钥对应的这个账户
+
+### NFT vs FT
 
 非同质化代币（NFT，non-fungible token）:独一无二完全不同，难以用来平等交换
 
@@ -39,23 +43,37 @@ gas fee：
 
 NFT的现状：1.处于非常早期的阶段，2.目前大部分NFT是头像类型的项目
 
+### 一些黑话
+
 DYOR：do your own research
 
 FOMO：fear or missing out
 
+### web3应用
+
 链接钱包是web3应用的重要特征，由于区块链是公开透明的，网站可以读取全部再区块链上的信息。
+
+### bitcoin vs Ethereum
 
 bitcoin的主网主要是用来“记账”，它的可扩展性差，编程能力相对有限，很难在上面发布一个复杂的代币。
 
 以太坊、Solana、Tron：属于“智能合约平台”，可编程区块链，支持开发者在上面写代码（智能合约），一键发布自己的代币（app）
 
+### Smart contracts
+
 Smart contracts let anyone create their own digital assets and decentralized applications that run 24/7 globally.
+
+### Ethereum
 
 Ethereum is a thriving ecosystem of digital assets like stablecoins, non-fungible tokens(NFTs) and governance tokens, as well as a world of dapps for decentralized finance(DeFi), art and collectibles, gaming and decentralized social media.
 
 It is a global digital infrastructure that anyone can use but nobody can abuse.
 
-Layer2(Ethereum extensions): Layer 2 networks are created on top of Ethereum to increase Ethereum's capacity. L2s act as express lanes, making transactions faster and cheaper.
+### Layer2
+
+Layer2(Ethereum extensions): Layer 2 networks are created on top of Ethereum to increase Ethereum’s capacity. L2s act as express lanes, making transactions faster and cheaper.
+
+### Ethereum mechanism
 
 2015-2022 Ethereum used a system called proof of work
 
@@ -64,6 +82,7 @@ Layer2(Ethereum extensions): Layer 2 networks are created on top of Ethereum to 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -137,6 +156,7 @@ web3 不等于 web3.0
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
