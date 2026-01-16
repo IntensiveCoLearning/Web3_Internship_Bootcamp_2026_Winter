@@ -10,7 +10,9 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+这里是Xinyu 可以叫我Michelle~
+Base上海 美本美硕 工作三年DS/DA
+小白转web3 很高兴认识大家~一起学习~
 
 ## Notes
 
