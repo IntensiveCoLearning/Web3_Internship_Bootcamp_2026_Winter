@@ -15,13 +15,22 @@ timezone: UTC-8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+-   观看了 [Web3 运行原理](https://youtu.be/WY8GtLbMRb4)
+    
+-   观看了 [Web3 合规](https://youtu.be/DYgn0D_fVVQ)
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 -   阅读完 Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 -   为 Web3 实习手册 提交了 2 个 pr，且已被合并。
     
@@ -44,6 +53,7 @@ timezone: UTC-8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 -   观看了 Bruce 访谈 [Vitalik](https://x.com/ETHPanda_Org/status/1846109488442757627) 和 [Audrey Tang](https://x.com/ETHPanda_Org/status/1945302365596270782) 的视频。
