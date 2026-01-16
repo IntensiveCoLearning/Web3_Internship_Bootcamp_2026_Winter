@@ -19,13 +19,100 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 # DAY5
 
-Uniswap v2
+## 学习内容：
 
-Hardhat3
+# Uniswap-Learning
+
+## How Uniswap Works
+
+### Definition
+
+Uniswp V2是一个“不用订单簿、只靠资金池定价”的自动兑换系统。
+
+用户不是和“另一个人”交易，而是直接和一个合约里的资金池交易。
+
+​
+
+### Role
+
+1.  资金池（Pair合约）
+    
+2.  每一个交易对都有一个合约，例：ETH/USDC
+    
+3.  池子里同时存着两种货币
+    
+4.  池子由普通用户（流动性提供者）提供资金
+    
+5.  交易者（Trader）
+    
+6.  想用A换B的人
+    
+7.  把A打进池子
+    
+8.  从池子里拿走B
+    
+9.  流动性提供者（Liquid Provider）
+    
+10.  往池子里同时存入两种代币
+     
+11.  赚取交易手续费（0.3%）
+     
+
+### Why Price comes
+
+Uniswap没有人报价。价格由一个关键的公式决定：
+
+x \* y = k
+
+-   x: 池子里Token A的数量
+    
+-   y: Token B的数量
+    
+-   k: 一个常数（交易前后必须保持不变）
+    
+
+这叫做**恒定乘积做市模型（Constant Product AMM）.**
+
+**​**
+
+### **Where liquidity comes**
+
+​
+
+LP提供流动性：
+
+-   必须按当前池子的比例
+    
+-   同时存入两种Token
+    
+-   合约会分配LP Token作为凭证
+    
+
+​
+
+LP Token:
+
+LP Token代表Provider占整个池子的份额，将来可以用它取回本金和取回手续费收入
+
+​
+
+Gas：每笔交易收 **0.3%**
+
+-   **不会给 Uniswap 官方**
+    
+-   **全部进入池子**
+    
+-   按 LP Token 占比分给流动性提供者
+    
+
+​
+
+​
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # DAY4
 
@@ -125,6 +212,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # **DAY3**
@@ -287,6 +375,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -383,6 +472,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
