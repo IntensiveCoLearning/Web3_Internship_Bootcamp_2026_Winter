@@ -15,8 +15,24 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+**学习：香港的数字金融实验：IPO上链能否成为下一个风口？**
+
+时代背景
+
+1.  链上原生货币的崛起
+    
+2.  宏观前提之二：监管框架的清晰化
+    
+3.  宏观前提之三：传统金融机构的战略入场
+    
+4.  AI Agent
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ERC-8004: 智能体的链上护照
 
 身份注册表(Identity Registry)
@@ -43,6 +59,7 @@ ERC-8004: 智能体的链上护照
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -66,6 +83,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 # 以太坊中文周会纪要总结（2026/01/12）
