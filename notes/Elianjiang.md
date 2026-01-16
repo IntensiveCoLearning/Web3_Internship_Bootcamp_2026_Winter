@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **1\. DeFiLlama** [**https://defillama.com/**](https://defillama.com/)
 
 这玩意儿说白了就是**看热闹的排行榜**。
@@ -61,6 +67,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 多模态大模型（MLLM）核心技术笔记
@@ -137,6 +144,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -306,6 +314,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## Web3 学习笔记：MetaMask 转账实操
 
 ### 1\. 基础信息
@@ -406,6 +415,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
