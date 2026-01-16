@@ -15,8 +15,83 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今日学习内容：
+
+1.  youtube视频web2 to web3观看学习
+    
+2.  学习代币经济学基础知识
+    
+
+# Tokenomics代币经济学
+
+-   **Token属性：货币&资产**
+    
+    -   货币属性token：为了使用某种产品或服务而持有
+        
+        -   比如layer2的token、gamifi中in-game token、garments token用来购买道具
+            
+    -   资产属性token：为了收益分配和增值而持有的
+        
+        -   比如Defi中的token
+            
+    -   大部分稳定币属于货币类，完全货币属性
+        
+    -   存在一部分完全资产属性，例如LDO（Lido的治理代币）
+        
+    -   很多公链代币则是混合属性，例如ETH（既是gas费支付手段，又是资产）
+        
+-   **衡量Token的主要指标及概念**
+    
+    -   流通供应量 Circulating Supply：市场上流通且在公众手中的代币数量
+        
+    -   总供应量 Total Supply：创世代币总量-已销毁的代币（如果有）
+        
+        -   Token可能会被销毁，也有可能产生通胀或通缩
+            
+    -   最大供应量 Max Supply：加密货币生命周期内的最大代币数量
+        
+        -   有些预先设定不可更改，有些可通过社区共识更改
+            
+    -   市值 Market Cap：流通供应量的总市值
+        
+        -   Current Price\*Circulating Supply
+            
+    -   FDV完全稀释市值 Fully Diluted Value
+        
+        -   Current Price\*Total Supply
+            
+    -   交易量 Volume：衡量过去一段时间（15min\\30min\\1h\\4h\\1d）在token交易量的标准
+        
+    -   交易量/市值 Vol/Mkt Cap
+        
+        -   这是一个衡量流动性的指标，比率越高，加密货币的流动性就越强；反之
+            
+    -   TVL总锁定价值 Total Value Locked：用户将资产存入特定平台的总价值
+        
+-   **Token用途**
+    
+    -   价值存储
+        
+    -   支付服务费
+        
+    -   挖矿/质押：Defi项目，随之会有分红（手续费收入/借贷收入）
+        
+    -   治理：根据提案门槛、提案分级，不同的提案需要不同的token才能投票
+        
+    -   分红
+        
+    -   抵押物
+        
+    -   meme
+        
+    -   社区共识
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今日学习内容：
 
 1.  学习观看视频平台的web3运营基本入门，并整理相关笔记
@@ -221,6 +296,7 @@ web2传统互联网演进：概念驱动、产品驱动、运营驱动
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 今日学习内容：
 
 1.  完成学习比特币白皮书
@@ -312,6 +388,7 @@ web2传统互联网演进：概念驱动、产品驱动、运营驱动
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 学习内容：
@@ -407,6 +484,7 @@ _例：比如A要付6个btc向B购买一杯咖啡，A的钱包里没有6个btc�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
