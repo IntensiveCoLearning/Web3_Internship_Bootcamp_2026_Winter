@@ -15,13 +15,83 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+DeFiLlama 是运营分析的“晴雨表”，重点在于理解资金流向。
+
+### 1\. 核心指标与专有名词
+
+-   **TVL (Total Value Locked):** 总锁仓量。衡量项目（或公链）吸引资金的能力。
+    
+-   **Volume / Fees:** 交易量与手续费。判断一个协议是否有真实用户和造血能力。
+    
+-   **FDV (Fully Diluted Valuation):** 完全稀释估值。对比 TVL/FDV 可以看出币价是否被高估。
+    
+-   **Stablecoins (Market Cap):** 稳定币市值。这是市场的“弹药库”，稳定币净流入通常意味着行情看涨。
+    
+
+### 2\. 运营分析维度
+
+-   **Yields (收益率):** 监控各个池子的 APY，分析竞品如何通过高收益吸引流动性。
+    
+-   **Raises (融资情况):** 追踪哪些项目拿到了钱，判断当前资本热点赛道（如 AI、DePIN、L2 等）。
+    
+-   **Categories (赛道分类):** 学习 Dexes, Lending, Liquid Staking (LST) 等名词，观察哪个赛道的份额在增长。
+    
+
+## Dune Analytics：自定义数据分析
+
+Dune 是运营进阶的必经之路，它能让你从“看现成的图表”转变为“自己挖掘规律”。
+
+### 1\. 核心学习路径
+
+-   **SQL 基础:** 你不需要成为大牛，但要能看懂 `SELECT`, `FROM`, `WHERE`, `GROUP BY`。
+    
+-   **抽象表 (Abstractions):** 学会搜索 `dex.trades` 或 `erc20.transfers`，这是 Dune 整理好的干净数据。
+    
+-   **可视化:** 学习如何将查询结果转化为 **Bar Chart (柱状图)** 或 **Counter (计数器)**。
+    
+
+### 2\. 运营分析实战
+
+-   **用户留存:** 编写查询查看某个协议在过去 30 天的每日活跃用户（DAU）。
+    
+-   **财富效应:** 分析某个新币种持仓地址的分布（是巨鲸持仓还是散户散布）。
+    
+-   **Dashboard 拼装:** 学习如何将多个 Query 组合成一个完整的项目分析面板
+    
+
+## Etherscan：微观行为追踪
+
+区块浏览器是真相的终点，用于验证事实和监控竞品动态。
+
+### 1\. 基础查看技巧
+
+-   **Transaction Hash (TxHash):** 学会解析一笔交易的 **Status (成功/失败)**、**Gas Fee** 和 **Nonce**。
+    
+-   **Token Tracker:** 查看代币的持有者排名 (Holders)，监控前 10 名地址是否有大额抛售。
+    
+-   **Contract Tab:** 学会看 **Contract Source Code**（是否开源、有无后门）和 **Read/Write Contract**（直接与合约交互）。
+    
+
+### 2\. 运营监控进阶
+
+-   **Method 分析:** 在交易列表看 `Method` 列，识别用户是在 Swap、Stake 还是 Claim，判断用户最常用的功能。
+    
+-   **Address Watchlist:** 给竞品钱包或巨鲸地址设置 **Watchlist (邮件提醒)**，实时监控他们的资金动向。
+    
+-   **Internal Transactions:** 这里的“内部交易”通常涉及智能合约自动触发的转账，是分析复杂 DeFi 操作的关键。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 1\. 核心概念：什么是 ERC-20？在 ERC-20 标准出现之前，每个人发行的代币代码都不一样，这导致钱包和交易所很难适配。ERC-20 的出现规定了一套“通用语言”，只要你按照这个标准写代码，所有的以太坊钱包（如 MetaMask）和去中心化交易所（如 Uniswap）都能自动识别并支持你的代币。同质化：1 枚 USDT 永远等于另 1 枚 USDT。可分割性：通常可以精确到小数点后 18 位（类似 1 元可以分成 100 分）。2. 接口解析：它能做什么？一个标准的 ERC-20 智能合约必须实现以下 6 个核心函数。我们可以通过这张图直观地看它们是如何互动的：查询类函数（只读）totalSupply(): 返回代币的总发行量。balanceOf(address): 查看某个钱包地址里有多少币。操作类函数（写入）transfer(to, amount): 最常用。你直接把币转给别人。approve(spender, amount): 授权。告诉合约：我允许某人（或某个协议）动用我钱包里的 $X$ 个币。transferFrom(from, to, amount): 被动转账。由被授权的人（spender）调用，把币从你的钱包转走。allowance(owner, spender): 查看你还剩下多少额度授权给了对方。3. 授权机制：新手最容易踩的坑在 Web3 中，你会频繁遇到 "Approve"（授权） 操作。例如你想在 Uniswap 上卖出代币，你需要先执行 approve，允许 Uniswap 的合约操作你的币。💡 贴士： 很多钓鱼网站会骗你点击 approve 授权“无限额度”，一旦你点下去，对方就能不需要你的确认直接转走你所有的币。这是 Web3 安全中最需要防范的一环。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## 第一部分：法律红线——哪些事千万不能碰？
 
@@ -90,6 +160,7 @@ Web3 公司多在海外，作为员工要防止自己变成“背锅侠”或“
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 **会计研报与WEB3研报**
@@ -185,6 +256,7 @@ Web3 协议的财务分析应关注其“价值捕获”能力，而非仅仅看
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
