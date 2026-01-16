@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+Today’s learning focused on the convergence of Agentic AI and Web3, highlighting the shift from reactive conversational models to autonomous, action-oriented systems. While traditional large language models (LLMs) generate text based on prompts, Agentic AI integrates reasoning, memory through vector databases, and external tool usage via APIs—enabling persistent, goal-driven execution in real-world environments.
+
+A critical gap in current AI infrastructure is the lack of verifiable identity and trust. Issues such as identity spoofing, untraceable actions, and ungoverned “shadow AI” deployments pose significant risks. Blockchain emerges as a foundational solution, providing tamper-proof identity registries, reputation systems, and validation mechanisms using TEE or zkML proofs. This enables what is termed an “on-chain passport” for AI agents, answering the essential questions of “Who are you?” and “Can you be trusted?”
+
+Moreover, the rise of machine-to-machine (M2M) economies demands new payment models. Traditional subscription-based or manual payment systems are ill-suited for microtransactions and API-based usage. Protocols like x402 enable native HTTP-level machine payments—supporting pay-per-file, pay-per-inference, and other granular settlement models. Notably, by 2025, bots and autonomous agents already facilitated 70% of stablecoin transfers, signaling a shift toward an economy where AI agents operate with their own wallets and financial autonomy.
+
+Frameworks such as SpoonOS abstract away the complexity of building such integrated systems. They provide developers with ready-to-use components for identity, payment, and compliance—allowing them to focus on enhancing AI capabilities rather than underlying infrastructure. Use cases include DeFi trading agents with verifiable performance history, data marketplace agents that monetize datasets via microtransactions, and autonomous coding assistants that charge per bug fix.
+
+From a regulatory perspective, immutable on-chain logs offer transparent and auditable trails of AI decisions and transactions, aligning with requirements like the EU AI Act for high-risk systems. This moves AI operations from “black box” models to accountable, monitorable systems.
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 Today’s learning focused on the evolving threat landscape in Web3, highlighted by key data, attack methodologies, and emerging challenges. In 2025 alone, the ecosystem suffered over $3.5 billion in losses across more than 1,200 major security incidents, reflecting a trend toward both highly targeted attacks and widespread automated threats. High-profile breaches—such as the multi-signature compromise at Bybit, AI-driven deepfake social engineering at ULXINK, and complex DeFi contract exploits like Balancer—illustrate how attackers are leveraging advanced techniques, supply chain vulnerabilities, and AI to execute sophisticated and damaging campaigns.
 
 Notably, attack vectors have diversified. “Precision hunting” tactics, often linked to state-sponsored actors like North Korea’s Lazarus Group, accounted for the majority of high-value institutional thefts. Meanwhile, “spray-and-pray” methods such as phishing, private key theft, and rug pulls remained pervasive, increasingly enhanced by AI-generated content and automated tooling. Emerging threats also include novel phishing schemes exploiting EIP-7702 delegation features, self-propagating supply chain worms like Shai-Huud, and AI-aided smart contract vulnerability discovery—marking a shift toward more automated, scalable, and stealthy attacks.
@@ -28,6 +42,7 @@ Overall, today’s review underscores that security in Web3 is no longer merely 
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 In today’s review, I revisited essential concepts and practical skills in Web3, with a focus on wallet security and risk prevention. I learned that wallet signature authorizations can expose funds to theft—even without private key leakage—due to malicious or vulnerable website interactions. Tools such as the Scam Sniffer browser extension help detect dangerous sites, though manual judgment remains essential. Best practices include keeping only minimal gas funds in MetaMask and considering Apple devices for added security.
 
@@ -43,6 +58,7 @@ Finally, the discussion touched on blockchain fundamentals such as 51% attacks, 
 
 
 
+
 Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
 
 During today’s learning session, I reviewed the foundational principles of Web3 and blockchain technology, covering core functions and underlying architectural logic—such as how transactions are executed and how smart contracts operate on Ethereum and other blockchain platforms. This refreshed my understanding of the technical groundwork that supports decentralized applications and ecosystems.
@@ -54,6 +70,7 @@ Overall, today’s hands-on setup and conceptual review strengthened my practica
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
