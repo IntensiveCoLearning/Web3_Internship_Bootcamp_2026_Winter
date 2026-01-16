@@ -15,8 +15,22 @@ web2 打工人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+打卡
+
+轉github名字中bug了
+
+在实习计划打不了卡
+
+要直接去残酷共学打試試
+
+在聽同學分享會
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 打卡
 
 today podcast is about AI x web 3 by Rick
@@ -33,6 +47,7 @@ some notes -
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 打卡
 
 web3 安全
@@ -42,6 +57,7 @@ web3 安全
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 打卡
@@ -55,6 +71,7 @@ web3 安全
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
