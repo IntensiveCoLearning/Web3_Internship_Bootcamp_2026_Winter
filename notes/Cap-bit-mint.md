@@ -27,6 +27,7 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 -   参加分享会《AI 及其基础概念》——对于非技术向的我，还是有点难度，还需要课后再看回放巩固理解，感谢Rick 老师分享。
     
 -   熟悉Dune Analytic工具——完成账号注册 + 基础界面了解，搭配 YouTube 教程持续学习中。
@@ -38,6 +39,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 -   Unphishable 钓鱼攻防挑战通关啦！
@@ -58,6 +60,7 @@ timezone: UTC+8
 
 
 
+
 -   参与【Web3 运行原理】——感谢Bruce老师的分享，虽然有些内容比较深，但解决了我一开始学习的一些困惑。
     
 -   创建自己的第一个NFT嘻嘻😁
@@ -69,6 +72,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
