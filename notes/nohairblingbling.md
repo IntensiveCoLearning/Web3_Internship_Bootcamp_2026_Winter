@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+先占位打卡，晚点总结一下这周的进展和收获。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 -   今天在课程大纲网站补充了新的课程录播
     
 -   昨天晚上的内容需要再Review一下
@@ -27,6 +33,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 课程outline的plugin上线了：[https://web3internship-plugin.pages.dev/](https://web3internship-plugin.pages.dev/)  
   
 晚上的分享会有种罗翔说刑法的web3专版
@@ -36,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 今天听Bruce老师的分享会很有收获，highlevel宏观的介绍了web3。
 
 另外正在vibe coding时间表。
@@ -43,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
