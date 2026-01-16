@@ -15,19 +15,29 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-16-1768536167975-image.png)
+
+学会了Remix IDE 的入门使用
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 AI机器基础概念
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 Web3 已从野蛮生长转向合规化，了解各国监管政策的同时注意安全反诈，警惕钓鱼链接，冒充官方，凡是助记词，账号密码等敏感信息谨慎输入，插件软件从官方下，面试只用Zoom/腾讯会议等主流平台，绝不下“专门面试平台”
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 Web1: 只能看（只读）。像看报纸，新浪、搜狐发什么你看什么。
@@ -71,6 +81,7 @@ Web3: 私钥（一串乱码）。千万不能丢！ 丢了谁也帮不了你，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
