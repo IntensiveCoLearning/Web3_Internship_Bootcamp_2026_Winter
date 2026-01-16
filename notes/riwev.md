@@ -108,10 +108,24 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 -   请仅从官方来源下载应用程序
     
 -   对异常的安装过程保持警惕
+    
+
+# 第一周例会
+
+群友们分享后我觉得可以借鉴的清晰完整的思路：
+
+1.  明确学习目标
+    
+2.  借用工具无论是思维导图还是ai
+    
+3.  关注行业资讯，看v神发言肯定常看常新
+    
+4.  学习是自己的
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
@@ -296,6 +310,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -514,6 +529,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -775,6 +791,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
