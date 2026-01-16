@@ -15,8 +15,14 @@ web3
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 软件
 
 会议
@@ -28,6 +34,7 @@ nft
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 打卡第一天
 <!-- DAILY_CHECKIN_2026-01-12_END -->
