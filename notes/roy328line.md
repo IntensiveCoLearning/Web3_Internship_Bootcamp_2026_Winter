@@ -25,11 +25,21 @@ Web3 实习计划 2025 冬季实习生
     
 -   熟悉[DeFiLlama、](https://defillama.com/)[Dune Analytics、](https://dune.com/)[Etherscan](https://etherscan.io/)
     
--   观看[**Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+-   观看[**Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+    
+
+## **Remix IDE** 熟悉
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/roy328line/images/2026-01-16-1768547482343-image.png)
+
+## **DeFiLlama、Dune Analytics、Etherscan** 熟悉
+
+## **Stuck Transactions, Gas Limits, Multisigs, L2s, Lending… 学习**
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ## **Day 4 学习计划**
 
@@ -130,6 +140,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -263,6 +274,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -415,6 +427,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
