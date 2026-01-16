@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+1、准备今晚分享会内容
+
+2、参加线上co-learning
+
+3、参加第一周例会
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 1、学习MPC钱包，发一篇推文
 
 2、参加 AI 及其基础概念分享会
@@ -25,11 +35,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 1.  学习本地部署remixd
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 1.  进阶hardhat v2框架 [DAPP开发框架之hardhat进阶使用-CSDN博客](https://hua1223.blog.csdn.net/article/details/136885624)
@@ -39,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
