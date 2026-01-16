@@ -15,8 +15,148 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天就学到了可以改owner的方法，简单也简单，用管理员身份去指定下一个管理员，皇帝选皇帝，世袭制，也可以是举贤制，但总的来说，就是管理员权限最大，没有他的支持，当不了下一个管理员。
+
+\`\`\`
+
+// 这是一个很常见的权限管理合约
+
+contract Ownable {
+
+address public owner; // 先定义一个状态亦是，给管理员空间占个茅坑
+
+constructor() {
+
+onwer = msg.sender; // 用构造函数把第一个部署的合约地址赋值给owner
+
+}
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "not owner"); // 整一个函数修饰器，判断当前调用这个函数的地址是不是管理员，如果是管理员就放行，如果不是，就报错
+
+\_;
+
+}
+
+function setOwner(address \_newOwner) external onlyOwner {
+
+require(\_newOwner != address(0), "invalid address"); // 这是一个用来给管理员指定下一个管理员的函数，但是当前管理员指定的下一个管理员地址不能是0地址，否则会被锁死
+
+owner = \_newOwner; // 把新地址扔给owner
+
+}
+
+function onlyOwnerCatCallThisFunc() external onlyOwner {
+
+// Code 这是只有管理员可以调用的函数
+
+}
+
+function anyOneCanCall() external {
+
+// Code 这是所有人都可以调用的函数，主要是用来测试合约是否可以正常管理权限，我试过了，没问题的
+
+}
+
+}
+
+\`\`\`
+
+智能合约中接收返回值
+
+\`\`\`
+
+contract FunctionOutputs {
+
+// public是为了外部和内部都可以调用，pure纯函数意味着不需要访问状态变量，定义了两种返回类型，这个returns我没有去研究，但猜测是在返回值有两个或以上数量时才会修饰一下，返回的类型就在后面用（）装起来统一定义，跟在数据定义不一样
+
+function returnMany() public pure returns (uint, bool) {
+
+return(1, true);
+
+}
+
+function named() public pure returns (uint x, bool b) {
+
+// 这里可以给返回值弄一个名字，在上面的返回类型里面直接定义
+
+return(1, false);
+
+}
+
+function assigned() public pure returns (uint x, bool b) {
+
+// 这个就直接在里面定义，可以不用return了，我感觉是这样
+
+x = 1;
+
+b = true;
+
+}
+
+function destructingAssigments() public pure {
+
+(uint x, bool b) = returnMany(); // 这就是在函数里面调用其它函数的用法，用（）把需要接收的函数值类型和名称定义好，然后跟变量赋值一样使用
+
+(, bool b) = returnMany(); // 这里是只想接收某一个值，这里只想接收布尔值，这个跟python里面列表切片一样，不想要也需要占个坑，不然会报错，因为返回两个值，只弄了一个值接收，就不知道传那个给它，我猜测是这样
+
+}
+
+}
+
+\`\`\`
+
+solidity里面的数组玩法、以及在内存中如何定义、如何调用返回数组
+
+\`\`\`
+
+contract Array {
+
+uint\[\] public nums = \[1, 2, 3\]; // 给数组赋一个默认值，定义类型就是基础类型后面加个\[\]，其它倒是没什么区别
+
+uint\[3\] public numsFixed = \[4, 5, 6\]; // 定义一个固定数组，与动态数组区别在于类型定义的\[\]里面是否有限定数量
+
+function examples() external {
+
+nums.push(4); // 这个跟git一样，push一下，作用是往原有数组后推入一个新的值，所以这里会把nums变成\[1, 2, 3, 4\]
+
+uint x = nums\[1\]; // 跟其它语言没什么区别，获取数据索引的值，赋值给变量无符号整型x
+
+nums\[2\] = 777; // 跟上面一样，把777赋值给数组索引位置，也就是改操作,这里在会变成\[1, 2, 777, 4\]
+
+delete nums\[1\]; // 我发现solidit这些语言的关键字都会使用一些比较完整的单词，相比较一些简单的语言使用缩写来说，我反而觉得这种形式会更直观一点,但这个删除操作在solidity里面只能把值变成0，不能直接把值真的删除掉，从而改变数组值的数量，所以这里会变成\[1, 0, 777, 4\]
+
+nums.pop(); // 要改变数组数量，就需要用到pop()方法去弹出最后一个值，这里就变成\[1, 0, 777\]
+
+nint len = nums.length; //跟python里面的len()一样
+
+// create array in memory
+
+uint\[\] memory a = new uint\[\](5); // 这里需要用到memory内存关键字，在内存里面定义一个新的数据，但内存中不能使用动态数组，所以需要给这个数组定义一个长度，但这里我不理解的是，为什么不跟前面一样，直接在\[\]里面定义，还需要在\[\]后面再加个()定义长度，真麻烦（噢，这里我明白了，我被这个(5)迷惑住了，这里因为是内存，所以需要在运行时动态获取数组长度，这里其实是type(len)，前面是类型，后面是动态获取到的长度，因为很多时候不知道这个长度是多少，所以不能使用numsFixed，只能是当时获取到多少长度，就用new这个关键字在运行时赋值给数组，uint\[\]是动态数组，就没有限定死长度，大白话就是：用 ‎new T\[\](len) 来在 memory 里分配一个长度为 len 的动态数组
+
+a\[1\] = 123; // 因为只能用固定长度的数组，所以像push()、pop()这些能改变长度的方法就不能使用了，索引和赋值是可以使用的，在内存中局部变量只能够定义定长数组，而动态数组只能够存在于状态变量中
+
+}
+
+// 这个返回类型里面需要输入数组的索引，如果需要数组全部内容，就需要在返回类型的()里面定义一个memory的内存存储类型，这样就可以把数组中的所有元素返回出来
+
+function returnArray() external view returns (uint\[\] memory) {
+
+return nums; // 通过函数来返回数组的全部内容
+
+}
+
+}
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 函数修饰器 **modifier** ：这是个关键字，它的主要作用是把重复的代码弄到一块去，这样其它函数需要使用的时候直接修饰一下就可以了，还可以弄三明治形式，插到中间，总的来说，就是可以不用写太多重复代码，跟函数一样，我觉得应该可以算是函数里面的函数，叫函函算了。
 
 \`\`\`
@@ -118,6 +258,7 @@ x = \_x; // 这个就是在部署合约时需要用户输入的一个值，也�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 状态变量就是链上的信息，改状态变量就是改链上的数据
 
@@ -264,6 +405,7 @@ revert MyError(msg.sender, \_i); // msg.sender(调用者的地址) i(传入的�
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 public 代表公开
 
 \## 类型和值
@@ -311,6 +453,7 @@ pure、view和无修饰符，是强制约束 + gas优化，我还以为可以从
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
