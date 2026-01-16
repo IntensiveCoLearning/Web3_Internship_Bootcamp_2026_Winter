@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+参加了3个多小时的例会 感觉真的是大佬云集 还是需要更多的努力 定一个小目标 周末研究下uniswap的源码
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今天主要学习了X402, 利用402状态码，实现agent直接通过区块链链上支付。x402.org
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 今天主要学习的是区块链的安全, 最主要的新学习到的是可以通过代理合约delegatecall的形式实现合约升级以及EIP-7702被恶意利用导致钓鱼攻击
 <!-- DAILY_CHECKIN_2026-01-14_END -->
@@ -30,11 +37,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 今天最大的是看推荐的Youtube视频 助记词可以生成多个account 对应多个地址 之前一直以为是只能对应一个 也算是刷新了自己的认知
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
