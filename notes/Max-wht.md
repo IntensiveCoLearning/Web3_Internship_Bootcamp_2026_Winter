@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+### **\[UNIV-3\] Math In UniswapV3**
+
+**Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
+
+YX=P_XY_​=_P_
+
+XY=L2_XY_\=_L_2
+
+LP=X_P_​_L_​=_X_
+
+LP=Y_LP_​=_Y_
+
+现在我们已经知道如何用过 price 和 liquidity 来表示 X 和 Y 了。现在还有一个问题就是在 uniswap V3 中，X 代表着 real resource 和 virtual resource 志和，如何计算 real resource？
+
+l:lower h:higher
+
+x=LPl−LPh_x_\=_Pl_​​_L_​−_Ph_​​_L_​
+
+y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ### **\[UNI-V3-2\] Spot Price**
 
 **Discription:** 在 UniswapV3 中如何计算 SpotPrice 现货价格？
@@ -199,6 +223,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -218,6 +243,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -445,6 +471,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
