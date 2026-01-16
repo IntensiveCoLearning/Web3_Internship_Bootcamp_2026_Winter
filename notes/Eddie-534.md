@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
+
+-   收获：
+    
+
+1\. 掌握了Remix在线IDE的基本操作，包括编译、部署与调试；
+
+2\. 理解了Solidity合约的基本结构（如pragma声明、合约定义、状态变量与函数）；
+
+3\. 亲手实现了输出“Hello World”的简易合约，并验证了合约调用；
+
+4\. 对预言机在链下数据获取中的作用建立了初步认知。
+
+-   反思：
+    
+
+作为刚入门的新手，明显感受到理论知识与动手实践之间的衔接挑战，后续需加强变量类型、函数修饰符等基础语法的系统学习，同时逐步探索更复杂的合约逻辑设计。
+
+![屏幕截图 2026-01-16 234708.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-16-1768578491482-_____2026-01-16_234708.png)![屏幕截图 2026-01-16 234656.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-16-1768578592017-_____2026-01-16_234656.png)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 26.1.15学习了以太坊教材的第二章和第三章
 
 -   第二章：网络结构与节点类型
@@ -152,6 +176,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -247,6 +272,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -288,6 +314,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
