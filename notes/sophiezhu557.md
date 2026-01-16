@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-15
+<!-- DAILY_CHECKIN_2026-01-15_START -->
+《021学习以太坊》概念自学总结：  
+  
+EL和CL其实各有链，但不是独立平行关系：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophiezhu557/images/2026-01-16-1768529594331-image.png)
+
+Beacon chain：
+
+-   决定时间、顺序、finality
+    
+-   负责 fork choice
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophiezhu557/images/2026-01-16-1768529617899-image.png)
+
+平时说的 block header，多数指的是 Execution Block Header。基本只有validator才会看到共识区块的样子。
+
+**Execution Chain**
+
+-   只是一条“被认可的执行结果序列”
+    
+-   没有独立共识权
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophiezhu557/images/2026-01-16-1768529647861-image.png)
+
+**ExecutionPayload：**一个“执行区块（Execution Block）的完整内容”，被塞进 Beacon Block 里，供共识层投票用。
+
+state trie：
+
+在逻辑上独立于CL和EL存在。
+
+-   当前以太坊的世界状态 = 一棵state trie
+    
+-   每个区块执行后 → 得到新的 trie
+    
+-   用它的 root hash（stateRoot）放进 block header
+    
+
+在实现层：
+
+**EL：**
+
+-   **完整维护 state trie**
+    
+-   执行交易时：
+    
+    -   读 trie
+        
+    -   写 trie
+        
+    -   更新 storage trie
+        
+-   计算新的 stateRoot
+    
+-   把 stateRoot 塞进 executionPayload
+    
+
+EL **理解并操作 trie**
+
+### CL:
+
+-   **完全不理解 trie**
+    
+-   只做一件事：检查 executionPayload.stateRoot 是否一致
+<!-- DAILY_CHECKIN_2026-01-15_END -->
+
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 今天看了Bruce讲的web3运行原理。结合前几天看的《021学习以太坊》，稍微整理了一部分知识：
 
 -   私钥、公钥
@@ -85,6 +155,7 @@ proposer和attester都是节点。是proposer在mempool中捞起各种交易打�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 这是第一篇打卡，记录一下进入共学营迄今为止的摄入的一些web3知识和资源：
 
