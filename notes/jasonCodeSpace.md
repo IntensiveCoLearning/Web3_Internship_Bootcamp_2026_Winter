@@ -15,8 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+看了一下这个  
+学习内容：
+
+1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
+    
+2.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
+    
+
+这两天上班有点忙, 明天周末可以多学学
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
     
 2.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro
@@ -31,6 +45,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 今天听了两个课程:
 
@@ -49,6 +64,7 @@ timezone: UTC+8
 
 
 
+
 今天主要参加了线上的两个会议:
 
 1.  每日的线上co-learning
@@ -61,6 +77,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
