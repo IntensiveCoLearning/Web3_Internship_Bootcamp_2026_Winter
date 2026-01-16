@@ -15,8 +15,69 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+
+### **交易故障自救**
+
+-   **Nonce（交易序号）**：以太坊的交易是按顺序执行的（0, 1, 2...）。如果Nonce 5卡住了，6和7永远不会执行
+    
+-   **交易卡顿原因**： Gas 费（小费）给得太低，交易就会被扔在内存池（Mempool）里排队，就会一直显示Pending
+    
+-   **如何取消交易（自救技巧）**：
+    
+    -   你不能删除交易，但可以**覆盖**它。
+        
+    -   **方法**：发起记账新交易，**把Nonce设为和卡住的那笔一样**，**Gas费设置得更高**，金额设为0，接收方设为自己
+        
+    -   **原理**：矿工会为了更高的Gas节省费用新交易，旧交易因为Nonce冲突会被全网丢弃
+        
+
+重置MetaMask：当钱包因为网络切换或Nonce错乱彻底卡死时，使用Settings(设置) -> Advanced（高级） -> Reset Account（重置账户）清除本地存储历史（不影响资金）。
+
+### **2\. 进阶交互**
+
+不使用 Uniswap 网页，直接去 Etherscan 找到 DAI 的智能合约，在 “Write Contract” 页面调用 transfer 函数转账。
+
+-   **核心**： 前端只是外壳，只要会读写合约，即使网站挂了也能直接控制链上资产
+    
+
+### **3\. ERC-20 的授权机制（Approve）**
+
+-   代币合约默认锁定，必须先调用 **Approve** 函数授权给 DEX 合约特定额度，才能进行 **Swap**（交换）
+    
+-   防止恶意合约未经允许直接转走用户的代币
+    
+
+**4\. Layer 2**
+
+通过跨链桥将资产从主网（L1）转移到 **Layer 2**（如 Optimism）
+
+-   **结果**：L2 拥有极低的 Gas 费（几美分）和极快的确认速度，解决了主网费用高昂（存 100 刀要花 20 刀 Gas）的痛点。
+    
+
+**5\. DeFi 借贷**
+
+-   **机制**：在 Aave 存入 ETH 作为抵押品，借出 DAI
+    
+-   **风险**：
+    
+    -   **清算（Liquidation）**：如果 ETH 价格大跌导致抵押率不足，你的 ETH 会被强制卖掉还债
+        
+    -   **循环贷**：存 ETH > 借 U > 买 ETH > 再存
+        
+
+**6\. 多签钱包**
+
+n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——n）个私钥签名，设置多少就要多少私钥才可转出
+
+-   **用途**：团队资金管理、DAO 财库、或个人**防私钥丢失**的备份手段。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## [**Web3 安全**](https://youtu.be/d4wpNX61QyA?si=3J0BfXHWLE6mibvT)
 
 ### **3.个人用户（四部大法）**
@@ -147,6 +208,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
@@ -349,6 +411,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 | 类型 | 比特币（bitcoin） | 以太坊(Ethereum) |
 | --- | --- | --- |
 | 发行 | 总量定2100万，每四年减半一次 | 无上限，但链上活动复杂，烧掉的燃料（ggs）就越多 |
@@ -444,6 +507,7 @@ EVM（Ethereum Virtual Machine）是 **_以太坊的“大脑_”**，是专门�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
