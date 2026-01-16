@@ -17,7 +17,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
-# [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+# [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
 
 ## Gas费用的构成与调整
 
@@ -108,13 +108,11 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 -   请仅从官方来源下载应用程序
     
 -   对异常的安装过程保持警惕
-    
-
-# 第一周例会
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
 
@@ -298,6 +296,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -515,6 +514,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -775,6 +775,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
