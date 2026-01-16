@@ -15,8 +15,54 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+> link: [Rust Course-圣经](https://course.rs/basic/intro.html)
+
+-   泛型 (Generics)
+    
+    ```
+    fn add<T>(a:T, b:T) -> T {
+        a + b
+    }
+    ​
+    // 类型限制: 规定泛型必须实现的特征
+    // 也可以写作 fn fn_name <T>() where T: std::fmt::Debug
+    fn display_array<T: std::fmt::Debug, const N: usize>(arr: [T; N]) {
+        println!("{:?}", arr);
+    }
+    ```
+    
+-   特征 (Trait)
+    
+    孤儿规则: 如果要为类型 A 实现特征 T, A 和 T 至少有一个是在当前作用域中定义的
+    
+    ```
+    pub trait Summary {
+        // 可以包含该方法的默认实现
+        fn summarize(&self) -> String {
+            String::from("(Read more...)")
+        }
+    }
+    ```
+    
+    使用特征作为函数参数: 特征作为泛型约束条件 的另一种写法
+    
+    ```
+    pub fn notify(item: &impl Summary) {
+        println!("Breaking news! {}", item.summarize());
+    }
+    ​
+    // same as
+    pub fn notify<T: Summary>(item: &T) {
+        println!("Breaking news! {}", item.summarize());
+    }
+    ```
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -36,6 +82,7 @@ se major, into crypto
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
@@ -114,6 +161,7 @@ se major, into crypto
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -135,6 +183,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
