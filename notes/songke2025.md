@@ -15,8 +15,31 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+### 一：YouTube的Day4的课程
+
+[**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
+
+👩‍💻 Web2 到 Web3 🚀 - 第一周第五天：卡住的交易，Gas 限制，多重签名，L2s，借贷...
+
+-   **Stuck Transactions（交易卡住）** 指交易已广播到网络但长时间处于 Pending，无法被打包确认，也阻塞了后续交易。
+    
+-   **Gas Limits** 指你为一笔交易允许消耗的最大计算量上限。在 Ethereum 上，Gas 用完 ≠ 成功，而是 Out of Gas → 回滚且已花的 Gas 不退。
+    
+-   **Multisigs（多签钱包）** 指一笔交易需要多个签名共同批准才能执行的账户/合约，常用于资金托管、DAO 金库、项目权限管理。
+    
+-   **L2s（Layer 2）** 是构建在 Ethereum 之上的扩容网络，把大量交易放到主链之外处理，只把结果/证明提交回主链，从而更快、更便宜。
+    
+
+### 二：打卡通用任务
+
+在 My First NFT mint 第一个 NFT。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ### 一：YouTube的Day4的课程
 
 1.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
@@ -63,6 +86,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 ### 一：安全与合规：
 
 -   Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分。
@@ -86,6 +110,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ### 一：YouTube的Day2的课程
@@ -115,6 +140,7 @@ Web2 到 Web3 🚀 - 第一周成为高级用户 - 第二天：钱包、助记�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
