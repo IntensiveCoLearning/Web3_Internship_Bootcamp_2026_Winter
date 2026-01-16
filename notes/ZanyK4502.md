@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+先打先打 等下我补充笔记
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # 徘徊、坚持、肯定
 
 ## 今天主要有三个点
@@ -61,6 +67,7 @@ ethereum 模式 tx table 数据表
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -120,6 +127,7 @@ Chainlist 是社区维护的第三方工具，用于快速配置链的 RPC 和�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -189,6 +197,7 @@ Chainlist 是社区维护的第三方工具，用于快速配置链的 RPC 和�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
