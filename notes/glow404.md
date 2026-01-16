@@ -68,6 +68,7 @@ IBC：Inter-Blockchain Communication Protocol，跨链通信协议。
 
 
 
+
 在 [My First NFT](https://nft.myfirst.io/) mint 第一个 NFT √
 
 完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战 √
@@ -130,6 +131,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
