@@ -15,8 +15,99 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## 八、网络结构的开放性与参与机制
+
+permissionless：任何人都可以运行节点、发送交易、部署合约，网络本身不设“准入门槛” 或白名单
+
+### 1\. 节点的性能要求
+
+存储，带宽和计算性能
+
+• 全节点：4 核 CPU、16 GB 内存、1 TB NVMe SSD、至少 20–25 Mbps 稳定带宽，且尽量不要有流量封顶；
+
+• 归档节点：动辄 4–10 TB SSD、64 GB 内存以上，只适合专业服务商或 基础设施项目来跑。
+
+### 2\. 共识效率的四个重要指标
+
+1.  吞吐量
+    
+2.  延时
+    
+3.  资源消耗
+    
+4.  容错能力
+    
+
+总结：节点太多太少都不好，需要一个trade off
+
+### 3\. 以太坊技术路线选择
+
+明确的：现在的官方路线已经演变成更明确的 “Rollup 为中心 + 数 据分片（Danksharding/PeerDAS）”
+
+Layer1：负责共识、安全、最终结算和数据存储
+
+Layer2：
+
+常见的Layer2有3种类型，Rollup，State Channels，sidechains
+
+Rollup又分为Optimistic和ZK Rollup
+
+我对ZK的理解是，牺牲了极小部分效率，提升了很多安全性，因为ZK基于红黑树状结构，本身是平衡树，效率是O(logn)量级
+
+因此出现了 Rollup、Proto-Danksharding / Danksharding、PeerDAS 等一系列扩容方案，专门用来在不牺牲去中心化的前提下，把性能拉上去。
+
+给一个可以背的句子（面试的时候可以直接使用）：
+
+以太坊的网络结构 = 理论上对任何人开放（permissionless），现实中受限 于硬件和带宽，但通过 Layer 2 + 数据分片等方案，把“更多人参与”和 “系统还能跑得动”两件事尽量同时做到。
+
+## 九、行业应用案例：金融、游戏与社交
+
+### 1\. 去中心化金融（DeFi、稳定币、RWA）
+
+-   Uniswap(dex/自动做市 AMM)
+    
+-   Aave（自动借贷协议）
+    
+-   MakerDAO/Sky + DAI稳定币（抵押ETH发行稳定币）
+    
+-   Lido、EigenLayer 质押/再质押协议
+    
+-   RWA（Real-World Assets，现实世界资产上链）
+    
+
+### 2\. 游戏、虚拟世界与 NFT
+
+-   NFT 赛道最早就是在以太坊上被玩“爆”的。
+    
+-   CryptoKitties（加密猫）
+    
+-   Decentraland（虚拟土地 / 元宇宙）
+    
+-   The Sandbox（开放世界 / 创作者经济）
+    
+-   Axie Infinity、Illuvium、The Sandbox 等链游生态
+    
+-   OpenSea、Blur、Magic Eden 等 NFT 市场，OpenSea 长期是以太坊 NFT 交易量的重要一极。
+    
+
+### 3\. 社交、内容创作与 DAO / 公共物品
+
+-   Lens Protocol / Lens Chain
+    
+-   Farcaster
+    
+-   [friend.tech](http://friend.tech) 等 SocialFi 应用
+    
+-   协议治理 DAO：Uniswap DAO、Aave DAO、MakerDAO
+    
+-   Gitcoin Grants 等公共物品资助平台
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # 第一章 认识以太坊
 
 ## 一、以太坊的起源与发展
@@ -127,6 +218,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 学习了安全分享会
 
 # 1\. 安全事故规模
@@ -163,6 +255,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 学习了web3的运行原理
 
 # 1.钱包，私钥，和个人主权
@@ -184,6 +277,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
