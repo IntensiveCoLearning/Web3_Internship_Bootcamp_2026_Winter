@@ -98,7 +98,7 @@ Web3 实习计划 2025 冬季实习生
 yarn chain
 ```
 
-![1113aeba0187ebd8b1edd59afa25ff7f](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/1113aeba0187ebd8b1edd59afa25ff7f.png?lastModify=1768545861)
+![d11820b4618838f60c8a467eb1bda2af.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546325268-d11820b4618838f60c8a467eb1bda2af.png)
 
 然后我部署合约并启动nexyjs项目，运行前端
 
@@ -107,23 +107,21 @@ yarn deploy
 yarn start
 ```
 
-![e998c67743d8b438cb46fbe6c2ba0904](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/e998c67743d8b438cb46fbe6c2ba0904.png?lastModify=1768545861)
-
 在浏览器进入[http://localhost:3000](http://localhost:3000)
 
-![19be03cbd95cf3a28a436e9fef9aa6ce](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/19be03cbd95cf3a28a436e9fef9aa6ce.png?lastModify=1768545861)
+![d307b11569f5d10a51850b10e1a1e12b.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546342768-d307b11569f5d10a51850b10e1a1e12b.png)
 
 ## **Checkpoint 1: ⛽️ Gas & Wallets 👛**
 
 使用另一个浏览器往我的主账户发送ETH：
 
-![20afbb3ff0567cb82f7cda431c99c55e](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/20afbb3ff0567cb82f7cda431c99c55e.png?lastModify=1768545861)
+![da514e202b3f638425778cb8853b253a.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546459183-da514e202b3f638425778cb8853b253a.png)
 
 ## **Checkpoint 2: 🖨 Minting**
 
 我在我的主浏览器里mint NFT，同时还用另一个浏览器mint NFT并发送给我的主钱包，现在我的主钱包拥有两个NFT。
 
-![61df2fb7970f6be301d428500776d03b](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/61df2fb7970f6be301d428500776d03b.png?lastModify=1768545861)
+![d36bbe3e98e6125595922adfc585c2e1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546486446-d36bbe3e98e6125595922adfc585c2e1.png)
 
 ## **Checkpoint 3: 💾 Deploy your contract! 🛰**
 
@@ -131,7 +129,7 @@ yarn start
 yarn deploy --network sepolia
 ```
 
-![image-20260116144155343](file:///C:/Users/87089/AppData/Roaming/Typora/typora-user-images/image-20260116144155343.png?lastModify=1768545861)
+![c8eaa9d136efc11f4f3e6cfd1326c30d.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546510506-c8eaa9d136efc11f4f3e6cfd1326c30d.png)
 
 ```
 yarn generate
@@ -139,17 +137,17 @@ yarn generate
 
 根据private key生成钱包，并往这个地址转账
 
-![94d3410e1d2aeb42b7c0a92353de7eda](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/94d3410e1d2aeb42b7c0a92353de7eda.png?lastModify=1768545861)
+![fd40ff604ced20222dab02c7891fb649.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546520249-fd40ff604ced20222dab02c7891fb649.png)
 
 ## **Checkpoint 4: 🚢 Ship your frontend! 🚁**
 
-![image-20260116144429850](file:///C:/Users/87089/AppData/Roaming/Typora/typora-user-images/image-20260116144429850.png?lastModify=1768545861)
+![4151f44d0d09e562a961811deed95e33.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546369835-4151f44d0d09e562a961811deed95e33.png)
 
 ```
 yarn test
 ```
 
-![e56dec9bbc615c36a68b3086d6a69ff1](file:///C:/Users/87089/xwechat_files/wxid_r1kwjb19lzu621_8263/temp/RWTemp/2026-01/f8bdf50876c36e54f52d69b808a1f95d/e56dec9bbc615c36a68b3086d6a69ff1.png?lastModify=1768545915)
+![273f96d6f340a0a13073d4017f5ed813.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546533641-273f96d6f340a0a13073d4017f5ed813.png)
 
 ## **Checkpoint 5: 📜 Contract Verification**
 
@@ -159,15 +157,18 @@ verify我们的NFT合约，让别人能够在sepolia.etherscan上看到合约源
 yarn verify --network sepolia
 ```
 
-![image-20260116144604842](file:///C:/Users/87089/AppData/Roaming/Typora/typora-user-images/image-20260116144604842.png?lastModify=1768545964)
+![18cb250a8bbc46c49a7aa72ed9f70834.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546604226-18cb250a8bbc46c49a7aa72ed9f70834.png)
 
 ## **Checkpoint 6: 💪 Flex!**
 
 最后我们在sepolia网络上再次mintNFT，小号钱包mint完之后发送给我的主钱包
+
+![4991241f45be5d63cd2623baf3cca697.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Block-RS/images/2026-01-16-1768546567095-4991241f45be5d63cd2623baf3cca697.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ## **Day 4 学习计划**
 
@@ -308,6 +309,7 @@ yarn verify --network sepolia
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ## **Day 3 学习计划**
@@ -538,6 +540,7 @@ LP 提供的资金不再撒向全区间，而是“锁定”在特定范围。�
 
 
 
+
 ## **Day 2 学习计划**
 
 今天是我在这个训练营打卡的第二天，我的总体学习计划如下：
@@ -732,6 +735,7 @@ Uniswap V2 的交易手续费默认为 **0.3%**。这笔费用在交易发生时
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
