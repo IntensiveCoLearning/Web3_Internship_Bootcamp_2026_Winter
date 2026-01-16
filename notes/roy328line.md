@@ -34,11 +34,52 @@ Web3 实习计划 2025 冬季实习生
 
 ## **DeFiLlama、Dune Analytics、Etherscan** 熟悉
 
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/roy328line/images/2026-01-16-1768548416087-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/roy328line/images/2026-01-16-1768548656918-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/roy328line/images/2026-01-16-1768548711623-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/roy328line/images/2026-01-16-1768548747789-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/roy328line/images/2026-01-16-1768548957655-image.png)
+
 ## **Stuck Transactions, Gas Limits, Multisigs, L2s, Lending… 学习**
+
+### 1\. 交易机制与疑难排解
+
+-   **卡住的交易与 Gas 费：** 演示如何故意设置极低的 Gas 费来让交易“浮动”在内存池（Mempool）中而不被处理。
+    
+-   **Nonce 的重要性：** 解释 Nonce（随机数）的概念，说明交易必须按顺序处理。如果 Nonce 较小的交易卡住，后续所有交易都会停滞。
+    
+-   **加速与取消交易：** 介绍如何使用 MetaMask 的“加速（Speed Up）”功能，以及通过发送一笔具有相同 Nonce 但 Gas 费较高、金额为 0 的交易来“取消”原交易。
+    
+-   **重置账户（Reset Account）：** 演示当 MetaMask 显示数据异常时，如何通过“高级设置”中的“重置账户”清空本地交易记录(这不会导致资产损失)。
+    
+
+### 2\. 直接与智能合约互动
+
+-   **Etherscan 操作：** 演示不通过 dApp 界面，直接在 Etherscan 上连接钱包并调用智能合约（如 DAI 合约）的 `transfer` 函数来转账。
+    
+-   **ERC-20 批准模式（Approve Pattern）：** 解释在使用 DEX（如 Uniswap）交换代币时，为什么通常需要两笔交易：第一笔是“授权（Approve）”合约动用代币，第二笔才是实际的“交换（Swap）”。
+    
+
+### 3\. Layer 2 (L2) 解决方案与跨链桥
+
+-   **Optimism 跨链：** 演示如何将资产从以太坊主网跨链至 Optimism，并解释 L2 的优势在于更低廉的费用与更快的交易速度。
+    
+-   **L2 实操：** 在 Optimism 上快速铸造 NFT（Optimistic Loogie），并在二层网络的市集（Quixotic）上架销售，其成本远低于主网。
+    
+
+### 4\. 去中心化金融 (DeFi) 与借贷
+
+-   **Aave 借贷：** 介绍如何提供抵押品（如 ETH）来借出其他资产。
+    
+-   **风险提示：** 讨论杠杆与清算（Liquidation）的风险，提醒开发者应专注于构建工具而非沉迷于投机博弈。
+    
+
+### 5\. 多重签名钱包 (Multisig) - Gnosis Safe
+
+-   **安全性：** 解释助记词一旦泄露资产就会归零的风险，并推荐使用智能合约钱包（如 Gnosis Safe）来提升安全性。
+    
+-   **设置与操作：** 现场建立了一个 2/4（四人中需两人签名）的多签钱包，并演示如何利用 **WalletConnect** 将多签钱包连接到 Uniswap 进行交易提案与签署。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ## **Day 4 学习计划**
@@ -140,6 +181,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -274,6 +316,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -427,6 +470,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
