@@ -15,8 +15,92 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+以太坊在合并（The Merge）之后，采用了执行层（Execution Layer）与共识层（Consensus Layer）分离的架构。这种设计将原先由单一客户端处理的功能拆分为两个独立的组件：
+
+-   **执行客户端**（Execution Client，原称 ETH1 客户端）：负责处理交易、执行智能合约、维护以太坊状态（账户余额、合约存储等），并生成执行负载（Execution Payload）。
+    
+-   **共识客户端**（Consensus Client，原称 ETH2 客户端）：负责 PoS 共识机制，包括验证者管理、信标链（Beacon Chain）逻辑、区块提议与投票、分叉选择规则（LMD-GHOST）等。
+    
+
+这两个客户端通过一个标准化的 API 接口进行通信，这个接口称为 **Engine API**（引擎 API），它基于 JSON-RPC 协议实现。
+
+### **一、通信方式**
+
+-   **协议**：JSON-RPC over HTTP 或 IPC（通常使用 HTTP）
+    
+-   **默认端口**：
+    
+    -   执行客户端开放 Engine API 端口（如 `http://localhost:8551`）
+        
+    -   共识客户端连接该端口调用 Engine API
+        
+-   **认证**：通常通过 JWT（JSON Web Token）进行身份验证，确保只有合法的共识客户端能调用执行客户端的 Engine API。
+    
+
+### **二、主要通信内容（Engine API 的关键方法）**
+
+以下是共识客户端与执行客户端之间交互的核心内容：
+
+**1\. 获取执行负载（Execution Payload）**
+
+-   **方法**：`engine_getPayloadVX`（V1/V2/V3...）
+    
+-   **用途**：当共识客户端被选为区块提议者时，它会向执行客户端请求一个“执行负载”（即包含交易的区块体）。
+    
+-   **返回内容**：交易列表、状态根、收据根、gas 使用量、base fee 等。
+    
+
+**2\. 提交新头部/负载以进行验证**
+
+-   **方法**：`engine_newPayloadVX`
+    
+-   **用途**：共识客户端收到一个新区块（来自网络）后，将其执行负载发送给执行客户端，要求验证其有效性（如状态转换是否正确、交易是否合法等）。
+    
+-   **返回结果**：VALID / INVALID / SYNCING / ACCEPTED 等状态。
+    
+
+**3\. 更新安全头和最终化头（Forkchoice Update）**
+
+-   **方法**：`engine_forkchoiceUpdatedVX`
+    
+-   **用途**：
+    
+    -   告知执行客户端当前的**链头**（head block）、**安全头**（safe block）、**最终化头**（finalized block）。
+        
+    -   如果需要构建新区块，此调用也会触发执行客户端准备一个 payload（通过 `payloadId` 返回）。
+        
+-   **关键作用**：驱动执行客户端切换到正确的链分支，并为下一轮出块做准备。
+    
+
+**4\. 交换能力与状态同步**
+
+-   其他辅助方法如 `engine_exchangeCapabilities`、`engine_getPayloadBodiesByHashV1` 等，用于能力协商或批量获取负载体。
+    
+
+* * *
+
+### **三、典型工作流程示例（出块过程）**
+
+1.  共识客户端被选为 slot N 的提议者。
+    
+2.  调用 `engine_forkchoiceUpdatedVX`，传入当前 head，请求准备新 payload。
+    
+3.  执行客户端开始打包交易，返回 `payloadId`。
+    
+4.  共识客户端稍后调用 `engine_getPayloadVX(payloadId)` 获取完整的执行负载。
+    
+5.  共识客户端将该负载嵌入信标区块（Beacon Block）中，并广播到网络。
+    
+6.  其他节点收到该信标区块后，提取执行负载，通过 `engine_newPayloadVX` 让本地执行客户端验证。
+    
+7.  若验证通过，再调用 `engine_forkchoiceUpdatedVX` 切换到新链头。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # 上链的流程
 
 用户操作 → DApp 构造交易 → 钱包签名（私钥） → 广播到节点 → 内存池 → 验证者打包 → 上链 → 合约执行 → 状态更新 → DApp 监听结果。钱包永远不会把私钥发送给 DApp 或网络。每笔交易都需用户手动确认，防止恶意操作。一旦上链，交易无法被修改或删除。所有交易和状态变更公开可查（除非使用隐私链）。
@@ -220,6 +304,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 # **U卡是什么？**
 
 **U卡 = 加密资产账户 + 全球支付卡 + 钱包联动理财入口**
@@ -303,6 +388,7 @@ KYC 的核心目的是：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -499,6 +585,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
