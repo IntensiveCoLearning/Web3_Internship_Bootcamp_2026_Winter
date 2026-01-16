@@ -15,8 +15,89 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+# 脚本编写与智能合约交互
+
+* * *
+
+### 一、 开发环境准备与 Ethers.js
+
+1.  **Node.js 与版本管理：** 建议使用 `n` 或 `nvm` 等版本管理器，以便在不同项目间切换 Node 版本。
+    
+2.  **项目初始化：** 通过 `npm init` 创建项目，并在 `package.json` 中设置 `"type": "module"`，这样可以使用 **ES6 模块导入（Import）** 和 **顶级 await（Top-level await）**，增加代码的可移植性。
+    
+3.  **Ethers.js 库：** 这是一个轻量级的 JavaScript 辅助库，用于与以太坊通信。它提供了处理大数字（BigNumber）、格式化数据、管理钱包和连接智能合约的工具。
+    
+4.  **环境变量安全：** 使用 `.env` 文件配合 `dotenv` 库来存储 API 密钥和私钥，并通过 `.gitignore` 确保这些敏感信息不会上传到 GitHub。
+    
+
+### 二、 核心概念：提供者 (Providers) —— “只读”窗口
+
+**Provider** 是你连接以太坊网络的节点接口，它仅允许**读取**区块链数据。
+
+-   **实践应用：**
+    
+    -   **获取节点：** 可以使用自建节点（如 Austin 背后的硬件节点）、第三方服务（Infura、Alchemy）或 ethers 的默认提供者（仅用于测试）。
+        
+    -   **基本查询：** 通过 `provider.getBlockNumber()` 获取当前区块高度，验证连接是否存活。
+        
+    -   **ENS 解析：** 使用 `provider.resolveName("atg.eth")` 将域名转换为地址，或用 `provider.lookupAddress(address)` 进行反向查询。
+        
+
+### 三、 核心概念：大数字 (BigNumber) 处理
+
+以太坊的数值远超 JavaScript 的安全整数范围。
+
+-   **实践应用：**
+    
+    -   **格式化：** 使用 `ethers.utils.formatEther(wei)` 将巨大的 Wei 转换为人类可读的 ETH 单位。
+        
+    -   **解析：** 使用 `ethers.utils.parseEther("1.5")` 将用户输入的 ETH 字符串转换为机器处理的 BigNumber。
+        
+    -   **数学运算：** 不能使用标准的 `+` 或 ，必须使用 BigNumber 对象的内置方法，如 `.add()` 或 `.mul()`。
+        
+
+### 四、 核心概念：钱包 (Wallets) 与 签名者 (Signers) —— “读写”权限
+
+**Signer** 拥有私钥，可以对交易进行加密签名。**Wallet** 是 Signer 的一种具体实现。
+
+-   **实践应用：**
+    
+    -   **创建钱包：** 可以通过 `Wallet.createRandom()` 随机生成，或从助记词（Mnemonic）结合路径（Path）派生出多个账户。
+        
+    -   **私钥导入：** 可以通过 `new ethers.Wallet(privateKey)` 将现有私钥导入脚本（需注意去除 0x 前缀或确保变量非空）。
+        
+    -   **离线签名：** 即使不连接 Provider，Wallet 也可以离线签名消息（ECDSA），用于身份验证或离线交易准备。
+        
+
+### 五、 综合实践：发送交易 (Transactions)
+
+发送一笔交易需要将 **Signer** 连接到 **Provider**，从而获得“发送”到网络的能力。
+
+1.  **构造交易：** 确定接收者（To）和金额（Value）。如果接收者是 ENS 域名，必须先通过**主网 Provider** 解析出地址（即便是在测试网上发交易）。
+    
+2.  **两阶段等待：**
+    
+    -   `await signer.sendTransaction(tx)`：等待交易发送到**内存池（Mempool）**，此时你会获得交易哈希（Hash）。
+        
+    -   `await tx.wait()`：等待交易被矿工打包并**上链（Mined）**，这才是交易最终成功的标志。
+        
+3.  **调试技巧：** 当交易失败或地址解析为 `null` 时，可能会意外地执行“合约创建”操作，务必在发送前打印调试信息。
+    
+
+### 六、 新奇见解与进阶心得
+
+-   **性能差异：** 连接自己的本地节点（如 Nethermind）比使用 Infura 等公共 API 快得多，适合需要大规模抓取数据的场景。
+    
+-   **跨网络挑战：** 一个脚本可能需要同时管理多个 Provider（例如用主网 Provider 查 ENS，用测试网 Provider 发交易），这是 Web3 开发者常遇到的逻辑复杂点。
+    
+-   **盲点清除：** 脚本编写能让我理解 Metamask 背后发生的细节（如 Nonce、Gas 估计），从而从普通用户进化为“权力用户”。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # Day4 ENS, DEX, Identity, Inventory, Sybil
 
 以太坊身份识别（Identity）、资产清单（Inventory）以及去中心化服务交互的核心知识。通过这些工具，用户可以在 Web3 世界中建立跨平台的持久化身份。
@@ -256,6 +337,7 @@ NFT 并不是将图片直接“塞”进区块链，通常有以下两种方式�
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 ### Todo List:
 
 -   学习以太坊第一章上下的混淆概念
@@ -414,6 +496,7 @@ A：
 
 
 
+
 ## 1 理论学习
 
 src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -472,6 +555,7 @@ src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
