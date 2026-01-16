@@ -19,11 +19,11 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 # 总览
 
--   Remix中的例程学习
+-   Remix中的例程学习Ballot——细节还挺多的
     
--   评估一下Ethereumspeedrun是不是必要用foundry过一遍
+-   评估一下Ethereumspeedrun是不是必要用foundry过一遍——没干
     
--   学习一下ERC-20，写一个简化版的
+-   学习一下ERC-20，写一个简化版的——去了一下午医院，全然没有学捏
     
 
 # 详情
@@ -35,10 +35,12 @@ Web3 实习计划 2025 冬季实习生
 -   为什么 voters 用 mapping，而 proposals 用 array？
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-16-1768528945006-image.png)
+-   proposalName指的是投票的选项，而不是议题的选项，这是一个单议题多选项的投票合约。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 总览
@@ -145,6 +147,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -349,6 +352,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -457,6 +461,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
