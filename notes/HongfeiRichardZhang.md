@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天学习内容
+
+1.  复习回顾相关章节，完成未完成课程
+    
+2.  行业探索
+    
+    -   知名开发者 & Builder X 关注清单
+        
+3.  实践 & 下周准备
+    
+    1.  开发环境并熟悉：[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
+        
+        -   [Remix 使用教程](https://www.notion.so/2bc1a400ef948075ab7ec8b8259c7746?pvs=21)
+            
+4.  参加周五晚例会，分享本周感悟与学习笔记
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 昨天在准备期末考，今天完成以下内容：
 
 1.  学习内容：
@@ -41,6 +61,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 完成以下任务：
 
 1.  拓展 & 辅助理解材料
@@ -58,6 +79,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
