@@ -15,8 +15,76 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+````markdown
+# Day 5 学习笔记：Remix IDE开发环境
+
+## Remix IDE简介
+基于浏览器的以太坊智能合约开发环境，特点：
+- 无需安装，浏览器直接使用
+- 支持完整开发流程：编写→编译→部署→测试
+
+## 基础操作
+
+### 访问与界面
+- 官方地址：remix.ethereum.org
+- 界面核心区域：文件浏览器、编辑器、编译面板、部署面板、控制台
+
+### 开发流程示例
+
+#### 1. 创建与编写合约
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 private _value;
+    event ValueChanged(uint256 newValue);
+    
+    function store(uint256 value) public {
+        _value = value;
+        emit ValueChanged(value);
+    }
+    
+    function retrieve() public view returns (uint256) {
+        return _value;
+    }
+}
+```
+
+#### 2. 编译合约
+- 切换编译面板，选择对应Solidity版本
+- 点击"Compile"按钮，查看ABI、Bytecode等结果
+
+#### 3. 部署合约
+- 切换部署面板，选择"JavaScript VM"模拟环境
+- 选择账户，点击"Deploy"按钮
+- 部署成功后显示在"Deployed Contracts"区域
+
+#### 4. 交互测试
+- 调用`retrieve()`查看初始值（0）
+- 调用`store(42)`更新值
+- 再次调用`retrieve()`验证更新
+
+## 关键功能
+- **调试**：支持断点、单步执行、变量状态查看
+- **测试**：支持Solidity测试文件编写与执行
+- **插件**：可安装安全检查、代码格式化等插件扩展功能
+
+## 学习心得
+Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适合初学者。其完整的开发流程支持大幅降低了智能合约开发的入门门槛。
+
+- 使用固定Solidity版本，避免浮动版本号
+- 测试环境用模拟账户，勿用真实资金
+- 主网部署前充分测试
+- 注意Gas费用设置
+````
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -67,6 +135,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 ## Day 2 学习笔记：以太坊开发与钱包安全
 
@@ -132,6 +201,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 ## Day 1 学习笔记：区块链基础与Web3概念
