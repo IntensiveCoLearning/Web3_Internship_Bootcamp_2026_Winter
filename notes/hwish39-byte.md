@@ -15,13 +15,91 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## 今天主要学习了solidity入门基础知识
+
+### Solidity 编程基础：构建去中心化逻辑的基石
+
+-   **分类**：Smart Contract Development / EVM
+    
+-   **定义**：Solidity 是一种面向合约的、高级强类型编程语言，专门用于在以太坊虚拟机（EVM）上实现智能合约。它的语法受 C++、Python 和 JavaScript 影响。
+    
+
+-   **值类型 (Value Types)**：
+    
+    -   uint / int：无符号/有符号整数（uint256 是最常用的，对应 EVM 的 256 位字长）。
+        
+    -   address：保存以太坊地址（20 字节）。**address payable** 允许接收转账。
+        
+    -   bool：布尔值。
+        
+
+-   **引用类型 (Reference Types)**：
+    
+    -   **Structs**：自定义结构体。
+        
+    -   **Arrays**：定长或动态数组。
+        
+    -   **Mappings**：极其高效的键值对映射（mapping(address => uint)），类似于哈希表，但不可遍历。
+        
+
+### 三大内存结构 (Data Locations) —— **进阶关键**
+
+在 Solidity 中，理解变量存在哪比变量是什么更重要，因为这直接关系到 **Gas 成本**：
+
+-   **Storage**：永久存储在区块链上。非常昂贵，类比于硬盘。
+    
+-   **Memory**：函数执行期间存在的临时内存。成本较低，类比于 RAM。
+    
+-   **Calldata**：不可变的临时存储，通常用于存储函数参数。最便宜。
+    
+
+### 函数详解 (Functions)
+
+-   **可见性 (Visibility)**：
+    
+    -   public：内部/外部均可调用。
+        
+    -   private：仅当前合约可见。
+        
+    -   internal：当前合约及继承合约可见。
+        
+    -   external：仅外部可见（通常更省 Gas）。
+        
+
+-   **状态修饰符**：
+    
+    -   view：只读，不修改状态。
+        
+    -   pure：不读取也不修改状态（如数学计算）。
+        
+    -   payable：允许函数接收 ETH。
+        
+
+### 错误处理 (Error Handling)
+
+Solidity 采用“全有或全无”机制：
+
+-   require(condition, "error message")：最常用，不满足条件则回滚（Revert）所有操作并退还剩余 Gas。
+    
+-   revert()：手动触发回滚。
+    
+-   assert(condition)：用于检查不应该发生的严重错误。
+    
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## 今天主要听了rick老师的智能体AI与web3融合的分享会。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## **今天主要听了两场有关安全与合规的分享交流会，总结了一些内容**
 
@@ -63,6 +141,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 ## 今天主要阅读了021 学习以太坊第 2&3 章，了解了web3领域中合规与网络安全相关的内容。
 
 ## 以及铸造了第一个NFT
@@ -72,6 +151,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
