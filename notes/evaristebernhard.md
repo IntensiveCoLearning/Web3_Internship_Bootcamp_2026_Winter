@@ -15,8 +15,99 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+在前几天已经分别学习了 Uniswap V2 的 AMM 定价公式、Pair 合约中的 swap / mint / burn 逻辑后，今天主要把零散的点串起来，重点放在 **Router 在整个交易流程中的作用，以及一次 swap 从用户到 Pair 的完整路径**。
+
+### 一、从“用户视角”重新理解 Uniswap V2
+
+之前更多是从 Pair 合约出发看逻辑，但今天尝试从**用户发起一笔交易**开始理解整个流程。  
+实际使用中，用户并不会直接调用 Pair，而是通过 Router 统一入口，例如：
+
+```
+swapExactTokensForTokens(
+    uint amountIn,
+    uint amountOutMin,
+    address[] calldata path,
+    address to,
+    uint deadline
+)
+```
+
+今天比较清楚的一点是：  
+**Router 并不持有资金，也不决定价格，它只是负责“算路径 + 组织调用”**。
+
+* * *
+
+### 二、Router 中的路径与数量计算
+
+在真正执行 swap 之前，Router 会根据 `path` 调用 `getAmountsOut`，逐跳计算每一跳的输出数量：
+
+```
+amounts[i + 1] = getAmountOut(
+    amounts[i],
+    reserveIn,
+    reserveOut
+);
+```
+
+这一步让我意识到：
+
+-   多跳 swap 本质是多个 Pair 的串联
+    
+-   每一跳都会受到当前池子储备的影响
+    
+-   最终滑点是逐跳累积的结果
+    
+
+所以多跳路径并不是“免费优化”，而是在**流动性深度和路径长度之间做权衡**。
+
+* * *
+
+### 三、真正执行 swap 时发生了什么
+
+在 `_swap` 中，Router 会按顺序调用每一个 Pair 的 `swap`，并把输出 token 直接转给下一个 Pair：
+
+```
+pair.swap(amount0Out, amount1Out, nextTo, new bytes(0));
+```
+
+这让我更直观地理解到：
+
+-   Uniswap V2 并没有“全局状态”
+    
+-   每个 Pair 只关心自己的储备是否满足 K 约束
+    
+-   Router 只是负责把这些局部操作拼成一次完整交易
+    
+
+* * *
+
+### 四、对设计边界的认识
+
+通过今天的学习，也更清楚 Uniswap V2 的一些限制：
+
+-   Router 提供的是**使用层面的安全性**，而不是价格保护
+    
+-   滑点、MEV、抢跑并不是 V2 能彻底解决的问题
+    
+-   这套设计在简洁性和可组合性上做了明显取舍
+    
+
+* * *
+
+### 五、今日总结
+
+-   Router 是“调度者”，Pair 才是核心执行者
+    
+-   多跳 swap 是多个独立 AMM 的组合
+    
+-   Uniswap V2 的设计非常克制，功能边界清晰
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ### 一、Uniswap V2（继续学习）
 
 在前两天理解了 Uniswap V2 的 swap 和 LP 机制后，今天主要补了一点 **Router 的作用**，搞清楚用户为什么几乎不直接和 Pair 合约交互。
@@ -89,6 +180,7 @@ function swapExactTokensForTokens(
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ### 一、Uniswap V2（继续学习）
 
@@ -165,6 +257,7 @@ DeFi 表面上是“代码即规则”，但实际问题更多来自：
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 今天主要学习了 **Uniswap V2 的基础 AMM 机制**，重点放在 **swap 定价公式和 Pair 合约的核心逻辑**，没有深入到全部源码。
 
 ### 1\. AMM 定价公式（今天重点）
@@ -225,6 +318,7 @@ require(balance0Adjusted * balance1Adjusted >= k, "K");
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
