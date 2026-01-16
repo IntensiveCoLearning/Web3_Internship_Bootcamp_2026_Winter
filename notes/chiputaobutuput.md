@@ -15,8 +15,163 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## 一、什么是 **Dune Analytics**
+
+**Dune Analytics**（现简称 **Dune**）是一款专注于 **区块链链上数据分析的平台**，允许任何人：
+
+-   通过 **类 SQL 语句** 对大量链上数据进行查询与聚合；
+    
+-   将结果可视化成 **图表与仪表盘（Dashboard）**；
+    
+-   分享与复用社区中其它人的分析成果；
+    
+-   支持包括 Ethereum、Solana 等 **100+ 公链数据**。
+    
+
+📌 它类似于链圈的 “数据 GitHub”，用户既能使用别人的分析，也能自己深度定制。
+
+## 二、核心概念解释
+
+### 1) **链上数据仓库**
+
+区块链本质上是一个去中心化账本，**每一笔交易、事件和合约调用都会写入链上**。  
+这些原始数据经过 Dune 预处理并构建成可查询的 **数据表（dataset）**。
+
+### 2) **SQL / 类 SQL**
+
+-   Dune 使用一种兼容 SQL 的查询语言（也称 **DuneSQL**），允许你用 familiar 的语法读取数据。
+    
+-   SQL 是结构化查询语言的标准，通过 SELECT、FROM、WHERE、GROUP BY 等语句过滤和处理数据。
+    
+
+### 3) **Query 与 Dashboard**
+
+-   **Query**：一条 SQL 查询语句，用来从数据仓库提取你想要的信息。
+    
+-   **Dashboard**：把多个 Query 的可视化图组合起来的面板，用于展示财经指标、链上行为趋势等。
+    
+
+## 三、Dune 的基本操作流程
+
+### 1) 登录与创建 Query
+
+Step 1 — 登录
+
+注册一个免费账户（邮箱登录即可）。
+
+Step 2 — 打开 New Query
+
+在 Dune 控制台点击 **“New Query”**，就能看到侧边的数据表和编辑器。
+
+### 2) 编写你的第一条 Query
+
+示例：查前 5 条以太坊交易
+
+```
+SELECT * FROM ethereum.transactions
+LIMIT 5
+```
+
+解释：
+
+-   `SELECT *` 表示把所有字段都取出；
+    
+-   `FROM ethereum.transactions` 指定要查询的数据表；
+    
+-   `LIMIT 5` 是限制返回结果数量。
+    
+
+### 3) 聚合与可视化
+
+示例：统计每日 ETH 转账数量
+
+```
+SELECT date_trunc('day', block_time) as day,
+       count(*) AS txn_count
+FROM ethereum.transactions
+GROUP BY 1
+ORDER BY day DESC
+```
+
+说明：
+
+-   `date_trunc('day', block_time)` 按日分组；
+    
+-   `count(*)` 是计算每天交易数量。
+    
+
+完成查询后，你可以把结果导入图表，例如柱状图（Bar Chart）或者折线图（Line Chart）。
+
+## 四、常见 Query 进阶技巧
+
+### 1) **汇总求和（SUM）**
+
+示例：统计某地址总 ETH 转账金额
+
+```
+SELECT sum(value / 1e18) AS total_eth
+FROM ethereum.transactions
+WHERE "from" = '\x1Db3439a222C...'  
+```
+
+📌 Dune 中 `value` 默认是 wei 单位，需要除以 `1e18` 转换成 ETH。
+
+### 2) **分类汇总（GROUP BY）**
+
+统计不同分类的数量和总和，有助于做更复杂的数据解读。
+
+### 3) **累计和（Cumulative Sum）**
+
+有时候你希望看到数据的累积趋势，这可以用窗口函数实现。
+
+## 五、可视化 & 仪表盘构建
+
+**创建图表**
+
+在查询结果页面点击 **“New Visualization”**，选择：
+
+-   条形图（Bar Chart）
+    
+-   折线图（Line Chart）
+    
+-   数值计数器（Counter）
+    
+-   饼图等图表样式
+    
+
+然后配置图表的 X 轴、Y 轴即可。
+
+**组合 Dashboard**
+
+图表做好后点击 **“Add to Dashboard”** 即可将它放进你要展示的仪表盘。
+
+## 六、实用技巧与进阶建议
+
+### 1) **Fork 神技能**
+
+如果你对某个现有 Dashboard 感兴趣，可以直接 **Fork（复制）别人的 Query 或看板**，修改特定参数以快速入手。
+
+### 2) **查找数据表**
+
+Dune 的 **Data Catalog**（数据目录）能帮你发现各种链上数据表，例如：
+
+-   `ethereum.transactions`（交易表）
+    
+-   `erc20.ERC20_evt_Transfer`（代币转账事件）
+    
+-   `dex.trades`（去中心化交易所交易数据）
+    
+
+### 3) **使用社区资源**
+
+Dune 有大量免费的社区 Dashboard 和 Query，可用于学习和灵感获取。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## SpoonOS是一个让AI Agent能够真正工作的操作系统
 
 ### 1\. 输入层（相当于 “原材料仓库”）
@@ -97,6 +252,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## 一、合规性要求与法律风险
 
@@ -311,6 +467,7 @@ FATF（金融行动特别工作组）
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 1\. **认识以太坊**
 
 -   以太坊是一个支持图灵完备代码执行的开源区块链平台，用于构建 DApp 和智能合约。
@@ -383,6 +540,7 @@ FATF（金融行动特别工作组）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
