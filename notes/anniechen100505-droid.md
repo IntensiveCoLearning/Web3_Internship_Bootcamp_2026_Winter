@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+![IMG_0788.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/anniechen100505-droid/images/2026-01-16-1768577301042-IMG_0788.jpeg)
+
+**16/01/2026週會（同學們的分享）簡要筆記：**
+
+1.notebook可以視頻轉換總結
+
+2.figma可以做圖像導圖
+
+3.可以看vatalik的采訪和推文
+
+4.學習全過程：輸入-思考-總結-輸出-反饋
+
+5.rwa资产代幣化不能讓散戶參與投票，散戶不能決定實體的決策
+
+6.深度探讨ipo到ico，ipo也在逐漸上鏈，香港hashkey成功上市的案例
+
+7.x-mind思维导图
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 🤖 AI Agent × Web3 × 未來經濟
 
 \## —— 從 2026 AI Agent 時代到 Web3 基礎設施的完整筆記
@@ -371,6 +393,7 @@ AI Agent 在未經治理框架下運作（Source: Truyo）
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 ## **Web3 合規與刑事風險防範**
 
 深度合規不是 Web3 特有：
@@ -466,6 +489,7 @@ Web3 常被包裝成「自由、匿名、無國界」，但實際上只要牽涉
 
 
 
+
 一。资产自托管：如何提高安全性、降低管理私钥的复杂度？核心矛盾：自托管 = 自由 + 风险。大部分人死在私钥丢失、助记词泄露、以及社交工程攻击。未來私钥管理的趨勢是：用戶不再看到私钥，所有複雜度都被 AA + MPC + TEE 隱藏，由智能帳戶負責安全與恢復。解决路径：
 
 1.智能账户。可提供：無私鑰登錄（email、手機登入 → 背後由 MPC + AA 實現）。交易可限額、可凍結。社交恢復（朋友、家人、多設備）。
@@ -521,6 +545,7 @@ Web3 常被包裝成「自由、匿名、無國界」，但實際上只要牽涉
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
