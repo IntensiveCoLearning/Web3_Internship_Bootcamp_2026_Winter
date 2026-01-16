@@ -18,10 +18,13 @@ timezone: UTC+8
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 今天相对比较忙，因此还没有看课程内容，但是根据自己所学的知识查询了如何经营推特账号的知识，然后也学习了bg wallet card的使用，尝试开通by card以及一些期权方面的知识（意识到了保险实际上是一类期权之后），并且开始逐步规划web3的英语能力。计划明天参加lxdao的会议以及英语角的分享：进一步明确就业方面需要用到的能力
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-16-1768578387133-image.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -34,6 +37,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
