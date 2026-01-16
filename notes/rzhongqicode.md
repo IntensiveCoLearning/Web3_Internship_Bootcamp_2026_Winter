@@ -48,10 +48,23 @@ FOMO：fear or missing out
 bitcoin的主网主要是用来“记账”，它的可扩展性差，编程能力相对有限，很难在上面发布一个复杂的代币。
 
 以太坊、Solana、Tron：属于“智能合约平台”，可编程区块链，支持开发者在上面写代码（智能合约），一键发布自己的代币（app）
+
+Smart contracts let anyone create their own digital assets and decentralized applications that run 24/7 globally.
+
+Ethereum is a thriving ecosystem of digital assets like stablecoins, non-fungible tokens(NFTs) and governance tokens, as well as a world of dapps for decentralized finance(DeFi), art and collectibles, gaming and decentralized social media.
+
+It is a global digital infrastructure that anyone can use but nobody can abuse.
+
+Layer2(Ethereum extensions): Layer 2 networks are created on top of Ethereum to increase Ethereum's capacity. L2s act as express lanes, making transactions faster and cheaper.
+
+2015-2022 Ethereum used a system called proof of work
+
+2022-now Ethereum use a mechanism call proof of stake(99% more energy efficient)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -124,6 +137,7 @@ web3 不等于 web3.0
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
