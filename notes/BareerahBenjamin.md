@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天打算梳理一下前4天老师们的直播，然后学一点rust
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今天完成了[Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization)
 
 Deployed URL**：**[**https://challenge01-gj2ce1kuk-bareerahs-projects-5c91fe7e.vercel.app**](https://challenge01-gj2ce1kuk-bareerahs-projects-5c91fe7e.vercel.app)
@@ -30,6 +36,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 \- 全球加密货币合规趋势日益明显，监管框架稳步推进。
@@ -210,6 +217,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 
 
+
 **dApp（）**
 
 **用智能合约做后端，用以太坊做数据库和结算层”的应用程序**
@@ -234,6 +242,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
