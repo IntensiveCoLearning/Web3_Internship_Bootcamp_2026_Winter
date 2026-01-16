@@ -32,8 +32,30 @@ INTJ-but 兴趣广泛 皮艇/桨板/网球/书法 喜欢在秋高气爽的天气
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今日学习 交易实践+Remix 环境准备+AI 回放课
+
+交易实践
+
+1,加速交易-从地址1到地址2的交易，如果设置了low gas fee，则需要等待很长时间的打包，可以同时并行完全一样的交易（hash不同）设置更高的gas fee，在etherscan上可以同时查到这两笔交易
+
+2, metamask设置reset account，可以清除所有pending的record，并不是把账户重置
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-16-1768565027239-image.png)
+
+3, 取消交易-用一笔nonce 相同的但是无意义的交易eg自己给自己传0eth (but metamask advance上暂没有找到 nonce设置）
+
+ 4, etherscan interface上可以用dai smart contract写入transfer
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-16-1768565095407-image.png)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-16-1768565113751-image.png)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ENS的应用 [app.ens.domains](http://app.ens.domains)
 
 1，ENS作为user-friendly的应用，可以简化地址的复杂性，可以花费少量eth获得一个expected duration的ENS
@@ -58,6 +80,7 @@ b, 你可以在不转移域名所有权的情况下，随时更改反向记录�
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 核心深挖了区块链钱包原理
 
 a, 核心关联：助记词推导出私钥，私钥推导出公钥（地址），过程不可逆
@@ -81,6 +104,7 @@ e, 助记词原理：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 今天核心学习收获
