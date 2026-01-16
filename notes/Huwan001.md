@@ -16,8 +16,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+# 今日成功鑄造NFT
+
+![NFT1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-16-1768539711931-NFT1.png)
+
+# 完成領水 / 領取測試幣
+
+![測試轉帳1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-16-1768539769473-____1.png)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -43,6 +55,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # **以太坊與比特幣的差異**
@@ -145,6 +158,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -224,6 +238,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
