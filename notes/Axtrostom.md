@@ -15,8 +15,115 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## Unphishable 钓鱼攻防挑战
+
+第一章测试是安装小狐狸
+
+连接钱包
+
+连接测试网络
+
+领取测试币
+
+之前已经做过了，基本上没什么问题
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGM0NmUyMDg4Y2IwOTEyYjc2OWVlODRmOTYxMWViMWJfbGljdTFxcWIzQmEzNnBOaVVUcTJaTDVBTE1aMmpkTlBfVG9rZW46SEgyMmJvTHZQbzg1cG54eFo5OGNSeThqbktiXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MjA2M2I5NmZjNzg5YWU5YzU2N2Y3Y2IyYjY5N2ZjMTFfYU1QUWR0RzNsQXhGeE5yYVBuM0N4WjRwc3pOb2tBR3JfVG9rZW46SUZFZ2JHdms4b1R1UDZ4UXNJdmMxQjRtbk5iXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+然后第二个实验是防钓鱼测试
+
+钱包这个东西不是丢了就丢了，怎么还能找回的） 也算是顺利通过
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDk5OThkYjUyNTYwMWFmNGJiMmMyZDNjYTgzMGUxYTJfY2NIaElNMHpRZEtCcEI1TFZjd1prUW1paHA0bHh6ZktfVG9rZW46RTF1bWJJSXdmb2VaRlF4UFQ1VmNIM2pRbjRlXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+然后第三个实验是请求比我身份证号都长的支出上限
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTY5ZDQzODE5MDJiYzliMTc5ZTgwY2ZjYmQzNDlhZTJfWkVVWmcxSFdQaXJJaHlJdnMzRUJJYWw2V1M4T3FqWjdfVG9rZW46UVdiUmJoSjVnb1ZaOTB4cVVFWWNzdTIxbk1iXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+取消后直接完成了
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NTU4NWVjZjY5ZjUxMDY2MTdjOTA1MGE5YjkxM2E5NGVfcHRTSTJ2UWE1NGhnUmt4VW5qc3RwNGhzeGRVNnJBRHZfVG9rZW46T1RjUGJ1czRwb3JEbXF4bnJkRWM2TjJSbjllXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+然后是第四个测试，怎么领取空投还要我自己花钱的
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=Zjg2NDQ1YzkyZTRkNDQ0ZWYyMzU5NDg0MjRjNzFjZDJfT3lmNVRidGgzaW1EaDhXT2lkVjh4RkttNUhqUmhEdmpfVG9rZW46V3hMN2JteG92b0RLZFl4WlJkV2NTc2dibk1oXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+也是通过了
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MTlkNjFlM2IyNjgwMDRkMTQ1MzUyOTFkNTY1MDUzOGJfc0xlYnJLZXZpRXdCamFNcXRnY0ZTc0hFMkNlY0YwR3ZfVG9rZW46R01ETWJlYUs4b0tQbkh4aE9EUWNNRURSbmhmXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+感觉总之就是不要花钱）
+
+第五个也通过了
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YzAxNGE2ZWVmZWRiMDFkMjdmZjFhMzFhNDU3MTA1ZWVfUVNlUmJyZ241eFYybFN3dnpmZU9JZjZQMUxaTDdzRlpfVG9rZW46TTNvMmJFQmIxb2RJVXB4RVg4aWNsNHlabkJlXzE3Njg1NjYwNDA6MTc2ODU2OTY0MF9WNA)
+
+[app.un1swap.org](http://app.un1swap.org)
+
+[app.uniswap.org](http://app.uniswap.org)
+
+查了一下交易信息的格式
+
+```YAML
+Transaction Hash:   0x5d2a... (唯一的交易ID)
+Status:             Success (成功)
+Block:              18234567
+Timestamp:          1 min ago
+Transaction Action: Swap 1,000 USDT for 0.5 ETH (明确的操作描述)
+From:               0xYourWalletAddress (你的钱包地址)
+Interacted With (To): 0xUniswapRouterAddress (Uniswap 官方路由合约，且通常有绿勾认证)
+
+ERC-20 Tokens Transferred: 
+From 0xYourWallet... To 0xUniswapPool... For 1,000 USDT (Tether USD)
+From 0xUniswapPool... To 0xYourWallet... For 0.5 WETH (Wrapped Ether)
+
+Value:              0 ETH (因为你转的是代币，不是 ETH 本身)
+Transaction Fee:    0.002 ETH (Gas 费)
+```
+
+钓鱼信息中
+
+```YAML
+Transaction Hash:
+0x1b23f927c47a6cb68fb7207a42c600a34726c583082301d2b7626d5447a5e363
+Status:
+Success 20 Block Confirmations
+Block:
+3504400
+Timestamp:
+5 mins ago (Mar-17-2025 02:34:36 AM UTC)
+Transaction Action:
+Call Function by 0x4276BF06...a1B7D03Ce on 0x4d264c6A...41F757Fe5
+From:
+0x4276BF06Aebd8A1F3D89a1fd5BF84bFa1B7D03Ce
+Interacted With (To):
+0x4d264c6Ab8933633cd8B052dE243Fa41F757Fe5
+ERC-20 Tokens Transferred:
+From 0x4276BF06...a1B7D03Ce To 0xE1a9d5C7...615506D4
+For 8,888 ERC-20: app.un1swap.org (UNI)
+Value:
+0 ETH
+Transaction Fee:
+0.0000001689464305 ETH
+Gas Price:
+0.003237514 Gwei (0.000000000003237514 ETH)
+```
+
+ERC-20 Tokens Transferred:
+
+From 0x4276BF06...a1B7D03Ce To 0xE1a9d5C7...615506D4
+
+For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
+
+这部分本应该是代币名称的，被改成钓鱼链接了
+
+然后下一个测试也是要无上限的转账
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ### 一、 宏观背景与合规基本逻辑
 
 1\. 合规 vs. 风控
@@ -179,6 +286,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## w1d3
 
@@ -673,6 +781,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1610,6 +1719,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
