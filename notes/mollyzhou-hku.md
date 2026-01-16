@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+**Day 3: ENS, DEX, Identity, Inventory, Sybil：**[**https://gemini.google.com/share/487d38ce5338**](https://gemini.google.com/share/487d38ce5338)
+
+**Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata：**[**https://gemini.google.com/share/fc9bd615ba37**](https://gemini.google.com/share/fc9bd615ba37)
+
+**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**：[https://gemini.google.com/share/ac4eb718d6e8](https://gemini.google.com/share/ac4eb718d6e8)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 今天完成Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分学习以及MetaMask 钱包安装 & 创建。
 
 延伸学习一下**Terra崩盘事件和算法稳定币。**呼应昨天对去中心化监管的思考，deFi需要建立在真实资产之上，而不能仅仅依赖用户信心和算法技术。一定程度的监管对于web3良性发展上必要的，牺牲一定自主权换安全性（也算是信任成本）
@@ -192,6 +202,7 @@ C. 市场格局的永久改变
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 看完了实习手册的【入门导读】，对区块链原理和以太坊机制理解更加深刻了，行业赛道方面希望深入了解AI+DiFi和WEB3+乡建
 
 我将两个Youtube教程视频的transcript交给Gemini进行了摘要总结，方便快速浏览和时间轴上定位复习
@@ -314,6 +325,7 @@ Web3 的去中心化治理目前更像是一个\*\*“虽然混乱但充满活�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 今天完成了：1. 工具安装；2. 阅读021 学习以太坊第 1&2 章 不太理解的概念用ai询问重新理解了一下，问答笔记如下。
