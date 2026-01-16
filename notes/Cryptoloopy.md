@@ -1,5 +1,5 @@
 ---
-timezone: UTC+8
+timezone: UTC+0
 ---
 
 # Cryptoloopy
@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Love the world!
+goodday
 
 ## Notes
 
