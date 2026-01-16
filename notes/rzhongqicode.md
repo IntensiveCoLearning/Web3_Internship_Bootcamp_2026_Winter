@@ -44,10 +44,15 @@ DYOR：do your own research
 FOMO：fear or missing out
 
 链接钱包是web3应用的重要特征，由于区块链是公开透明的，网站可以读取全部再区块链上的信息。
+
+bitcoin的主网主要是用来“记账”，它的可扩展性差，编程能力相对有限，很难在上面发布一个复杂的代币。
+
+以太坊、Solana、Tron：属于“智能合约平台”，可编程区块链，支持开发者在上面写代码（智能合约），一键发布自己的代币（app）
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -117,6 +122,7 @@ web3 不等于 web3.0
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
