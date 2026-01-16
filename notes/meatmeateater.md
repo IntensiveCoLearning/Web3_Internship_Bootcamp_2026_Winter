@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 \# AI 機器在區塊鏈上的基礎概念
 
 \## Phase 1: 核心技術架構與議題板塊
@@ -126,6 +132,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 \# Web3 運行原理分享會筆記
 
@@ -330,6 +337,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/H1yGm5Gr-e](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/H1yGm5Gr-e)
@@ -583,6 +591,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
