@@ -64,10 +64,25 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 反过来，如果杯子已经是 0 ml，再倒出1 ml，现实世界是不可能的，但合约会从未来偷水，直接变成 255 ml，这就是 underflow，攻击者就能用这种方式把余额之类的数字变得巨大会很危险。
 
 很多合约会写类似先减掉余额，再检查，在老版本下，balance - amount 如果 underflow 变成一个巨大数字，后面的检查可能就被绕过去，导致别人能多提钱、多铸币等。​攻击者只要精心选择 amount，让运算结果刚好溢出/下溢，就能骗过逻辑，从而偷走合约里的资产，这是历史上真实发生过、亏很多钱的一类问题。
+
+## 智能合约常见组件
+
+| 组件名称 | 定义与作用 | 特点 / 注意事项 | 代码示例 |
+| --- | --- | --- | --- |
+| 状态变量(State Variables) | 存储在区块链上的数据，构成了合约的永久状态​ | - 持久性：值永久存储在链上，不会在函数调用结束后消失- 可见性：支持 public（自动生成 getter）、internal（合约内部和继承合约可访问）、private（仅当前合约内可访问）- 在 0.8.x 之后常用 constant / immutable 修饰，节省 gas​ | uint256 public totalSupply;address private owner; |
+| 函数(Functions) | 智能合约中执行操作的代码块，可修改状态、执行计算并返回结果​ | 可见性：- public：可从合约内部、继承合约或外部调用- external：只能从外部调用（通常用于对外接口）- internal：合约内部或继承合约中调用- private：仅当前合约内部调用状态可变性：- pure：不读取也不修改合约状态- view：读取但不修改状态- payable：可以接收以太币- 默认（无修饰符）：可以修改状态​ | function transfer(address to, uint amount) public { ... } |
+| 特殊函数receive() / fallback() | 处理合约收款和未匹配调用的特殊函数​ | - receive()：专门处理「只带 ETH、不带 calldata」的转账- fallback()：处理「调用不存在的函数」或合约没有 receive() 时的 ETH 转账​ | receive() external payable { }fallback() external { } |
+| 事件(Events) | 智能合约向区块链日志中「广播」消息的方式​ | - 日志记录：数据存储在区块链的日志中，而不是合约的状态存储中，成本更低- 可监听性：外部应用可以「监听」特定事件，实时更新 DApp 界面或触发相应操作- 可使用 indexed 关键字（最多 3 个）方便前端筛选​ | event Transfer(address indexed from, address indexed to, uint256 value); |
+| 修饰符(Modifiers) | 给函数加「前置条件」的可复用代码块，常用于权限控制​ | - 代码复用：避免在多个函数中重复相同的检查逻辑- 安全性：有助于强制执行安全策略（如 onlyOwner）​ | modifier onlyOwner { require(msg.sender == owner); _; } |
+| 构造函数(Constructor) | 只在合约部署时执行一次的初始化函数​ | - 一次性执行：部署后不能再次调用- 可接受参数在部署时传入- 现在推荐用 constructor 关键字​ | constructor(address _owner) { owner = _owner; } |
+| 结构体(Structs) | 自定义复合数据结构，将多项信息打包在一起​ | - 可用作状态变量、函数参数和返回值- 帮助构建更清晰的业务模型​ | struct Order { address seller; uint256 price; } |
+| 枚举(Enums) | 定义有限集合的枚举值，常用于状态机​ | - 适合标记订单/流程状态- 类型安全，可读性强​ | enum Status { Pending, Active, Cancelled } |
+| 自定义错误(Custom Errors) | 自 Solidity 0.8.4 起可定义的错误类型，与 revert 配合使用​ | - 比传统 require(..., "string") 更省 gas- 可携带结构化参数，方便调试​ | error InsufficientBalance(uint requested, uint available); |
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 1.15 学习笔记
@@ -118,6 +133,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -176,6 +192,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -259,6 +276,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
