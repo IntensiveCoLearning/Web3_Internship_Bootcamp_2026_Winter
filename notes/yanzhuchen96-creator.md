@@ -15,8 +15,49 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## 学习solidity推荐路线
+
+1.  读官方文档 + 做例子：
+    
+
+-   从 Solidity 官方文档的 “Introduction to Smart Contracts” 和 “Solidity by Example” 开始。
+    
+-   用 Remix 这种网页 IDE 写第一个合约（HelloWorld，存／读变量， 转账，事件触发）。
+    
+
+2.  做交互式教程：
+    
+
+-   用 CryptoZombies、Solidity by Example 的小项目练手，感受 storage / memory、gas、事件、modifier 等细节。
+    
+
+3.  学习工具／测试／部署：
+    
+
+-   在本地装 Hardhat（适合脚本部署、多网络管理）或 Foundry（适合写大量单测、fuzzing、主网 fork 研究协议）
+    
+-   学会写单元测试（require 失败、revert、边界条件），**这一步对以后搞 DeFi / NFT 协议非常关键**。
+    
+
+4.  安全／最佳实践：
+    
+
+-   学习常见漏洞：重入、整数溢出／下溢、访问控制错误、price oracle 操纵、flash-loan 攻击等。
+    
+-   用 Slither、Mythril 之类的工具做静态分析，配合 Foundry/Hardhat 测试，把显而易见的坑先扫一遍。
+    
+
+5.  做一个小项目：
+    
+
+-   写一个简单 ERC-20 代币、投票合约，或者小型 DeFi 玩具协议，上 testnet 或某条 L2（如 Sepolia / Arbitrum Sepolia / Base 测试网）部署一遍，完整走完：编译 → 部署 → 前端调用 → 调试的闭环。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -65,6 +106,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # 1.14 学习笔记
@@ -121,6 +163,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -202,6 +245,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
