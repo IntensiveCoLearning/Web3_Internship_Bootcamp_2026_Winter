@@ -15,8 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+1\. 学习视频Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...
+
+Gas 机制的核心：交易并非简单的价值流动，而是对智能合约状态的调整；Gas 限制（Limit）防止程序陷入死循环，而最高费用（Max Fee）则是竞价块空间的关键。
+
+Nonce 与交易管理：Nonce 是防止重放攻击的关键序列号，也是解决交易“卡死”的核心。通过手动调整 Nonce 或提高 Gas 费用，可以实现交易的加速或取消。
+
+L2 的价值主张：以太坊二层网络（如 Optimism）在保留 L1 安全性的同时，显著降低了费用并实现了近乎实时的交易确认。
+
+安全进阶：相比助记词，多重签名钱包（Multisig）通过多方签名验证提供了更高级别的资产保护和恢复机制。
+
+矿工池（Mempool）竞价
+
+区块空间是有限的。矿工会优先选择 Mempool 中出价最高的交易。如果设置的 Max Fee 过低（如在 Gas 均价为 30 Gwei 时设置 10 Gwei），交易将处于“浮动”状态，直至网络闲暇或手动加速。
+
+多重签名钱包由智能合约驱动，而非单一助记词。
+
+M-of-N 验证：例如设置 4 个持有者，需要其中 2 人签名才能执行交易。
+
+容错性：如果一个私钥丢失或泄露，剩余持有者可以协同追回资金并更换持有者。
+
+在 Aave 等协议中，用户可以质押抵押品（如 ETH）借出另一种资产。
+
+清算风险：如果抵押品价值下降导致贷款担保不足，资产会被清算。
+
+循环杠杆：这种机制可用于做空或放大杠杆，但对开发者而言，参与此类“投机游戏”具有极高风险。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 **1.学习**[**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
 
 NFT（Non-Fungible Tokens）是构建在区块链上的数字资产，其核心价值源于以下几个方面：
@@ -48,6 +78,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 **1.学习**[**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
@@ -102,6 +133,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 **1.复习了Web3实习手册入门导读部分和021学习以太坊第一章**
@@ -217,6 +249,7 @@ Blob 的特点是不会进入 L1 的长期状态，只会临时保存一段时�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
