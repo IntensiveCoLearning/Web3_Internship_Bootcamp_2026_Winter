@@ -20,10 +20,28 @@ timezone: UTC+8
 撸空投[https://www.bilibili.com/video/BV1Fp421f7KT/share\_source=copy\_web&vd\_source=cf0b889aa72345dc7ae4a6ff8d7d606e](https://www.bilibili.com/video/BV1Fp421f7KT/?share_source=copy_web&vd_source=cf0b889aa72345dc7ae4a6ff8d7d606e)
 
 1.16 尝试撸空投，注意风险和安全。
+
+**TVL**
+
+-   **全称**：Total Value Locked，总锁定价值。
+    
+
+**解释**：一个 DeFi 协议中用户存入的所有加密资产的总价值。它是衡量一个 DeFi 协议受欢迎程度和规模的最常用指标。价值越高，通常意味着用户越多、资金越安全（但也可能风险越集中）。  
+  
+Lido是指在DeFi生态中，基于Ethereum 2.0 Beacon Chain建造的质押协议平台，用户无需锁定ETH即可获得质押奖励并获得对应Token，如stETH等，支持多条公链质押服务。在ETH合并后，Lido的TVL（总锁仓价值）大幅提升，99.2%的TVL来自于ETH质押，成为ETH质押领域的领先平台。
+
+早期的空投主要发生在以太坊主网。但现在，生态已经爆炸式发展。新项目为了获取用户、降低手续费、或基于不同技术愿景，会部署在众多不同的区块链上，例如： • 以太坊二层网络：Arbitrum, Optimism, Base, zkSync • 其他EVM链：Polygon, Avalanche, BNB Chain • 非EVM链：Solana, Cosmos生态链（如Osmosis, Injective），Near等。 • 结果：一个有潜力的空投，可能要求你在 Arbitrum 上做交换、在 zkSync 上做跨链、在 Cosmos 链上做质押。
+
+EVM兼容/Cosmos体系的钱包格式是不一样的。
+
+基于Cosmos SDK开发的区块链，使用自己的一套标准。地址通常以 cosmos1..., osmo1..., inj1...​ 开头。Bech32编码。
+
+Keplr 钱包可以专门管理cosmos链的账户。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 在 [My First NFT](https://nft.myfirst.io/) mint 第一个 NFT √
 
@@ -87,6 +105,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
