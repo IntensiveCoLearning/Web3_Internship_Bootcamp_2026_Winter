@@ -32,10 +32,23 @@ gas fee：
 助记词与账户/私钥之间是一对多的关系，私钥和地址（公钥）之间是一一对应的关系，metamask的密码只是一个本地的密码锁。
 
 因此，如果丢失了助记词，则所有账户都将丢失；如果丢失了私钥，只会丢失私钥对应的这个账户
+
+非同质化代币（NFT，non-fungible token）:独一无二完全不同，难以用来平等交换
+
+同质化代币（FT，fungible token）:可以被任意交换
+
+NFT的现状：1.处于非常早期的阶段，2.目前大部分NFT是头像类型的项目
+
+DYOR：do your own research
+
+FOMO：fear or missing out
+
+链接钱包是web3应用的重要特征，由于区块链是公开透明的，网站可以读取全部再区块链上的信息。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -104,6 +117,7 @@ web3 不等于 web3.0
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
