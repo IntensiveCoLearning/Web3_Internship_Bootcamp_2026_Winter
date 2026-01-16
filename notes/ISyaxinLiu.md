@@ -15,8 +15,1010 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+# 搭建区块链（一）
+
+今天完成：
+
+-   项目初始化
+    
+-   Block（区块）类的创建
+    
+-   测试驱动开发（TDD）
+    
+-   创世区块（Genesis Block）的实现
+    
+
+## 第一步：安装必要软件
+
+### 1\. 安装 Node.js
+
+-   访问 [nodejs.org](http://nodejs.org)
+    
+-   下载并安装 LTS 版本（长期支持版）
+    
+-   安装时保持默认选项即可
+    
+
+### 2\. 安装 Git Bash（强烈推荐）
+
+-   访问 [git-scm.com](http://git-scm.com)
+    
+-   下载 Git for Windows 并安装
+    
+-   Git Bash 会随 Git 一起安装
+    
+-   **为什么要用它？** 因为它提供类似Mac/Linux的命令行环境，课程中的命令可以直接使用
+    
+
+## 第二步：验证安装
+
+打开 **Git Bash**（安装后在开始菜单可以找到），输入以下命令检查：
+
+bash
+
+```bash
+node -v
+# 应该显示版本号，比如 v18.x.x
+
+npm -v
+# 应该显示版本号，比如 9.x.x
+```
+
+## 第三步：创建项目
+
+在 Git Bash 中按顺序执行：
+
+bash
+
+```bash
+# 1. 创建项目文件夹
+mkdir cryptoChain
+
+# 2. 进入文件夹
+cd cryptoChain
+
+# 3. 初始化 Node.js 项目
+npm init -y
+
+# 4. 安装测试库 Jest
+npm i jest --save-dev
+```
+
+## 第四步：验证成功
+
+bash
+
+```bash
+# 查看 package.json 文件内容
+cat package.json
+{
+  "name": "cryptochain",           // 项目名称
+  "version": "1.0.0",               // 版本号
+  "description": "",                // 项目描述（暂时为空）
+  "main": "index.js",               // 入口文件
+  "scripts": {                      // 可执行的命令
+    "test": "..."                   // 测试命令（稍后会修改）
+  },
+  "keywords": [],                   // 关键词（暂时为空）
+  "author": "",                     // 作者（可以填你的名字）
+  "license": "ISC",                 // 开源协议
+  "type": "commonjs",               // 模块类型
+  "devDependencies": {              // 开发依赖
+    "jest": "^23.6.0"               // ✅ Jest 已安装！
+  }
+}
+```
+
+### 1\. 区块（Block）的四个核心数据
+
+每个区块包含：
+
+-   **timestamp**（时间戳）- 记录区块创建时间
+    
+-   **lastHash**（前区块哈希）- 前一个区块的哈希值
+    
+-   **hash**（当前哈希）- 当前区块的哈希值
+    
+-   **data**（数据）- 存储的实际内容（交易、信息等）
+    
+
+### 2\. JavaScript 类（Class）的基础
+
+-   使用 `class` 关键字定义类
+    
+-   `constructor` 构造方法 - 创建实例时自动执行
+    
+-   `this` 关键字 - 指向当前实例
+    
+-   `new` 关键字 - 创建类的实例
+    
+
+### 3\. 编程最佳实践
+
+-   当参数≥3个时，用**对象**包裹参数（而不是单独传参）
+    
+-   好处：**不用记住参数顺序**，减少错误
+    
+
+* * *
+
+## 🛠️ 操作流程
+
+### 第一步：创建 block.js 文件
+
+在项目根目录下创建文件：
+
+bash
+
+```bash
+# 在 Git Bash 中，确保你在 cryptoChain 目录
+touch block.js
+```
+
+或者直接在 VS Code 中右键新建文件。
+
+* * *
+
+### 第二步：编写 Block 类
+
+打开vscode, 在 `block.js` 中写入以下代码：
+
+javascript
+
+```javascript
+// 定义 Block 类
+class Block {
+  // 构造函数 - 用对象包裹参数（最佳实践）
+  constructor({ timestamp, lastHash, hash, data }) {
+    this.timestamp = timestamp;  // 设置时间戳
+    this.lastHash = lastHash;    // 设置前区块哈希
+    this.hash = hash;            // 设置当前哈希
+    this.data = data;            // 设置数据
+  }
+}
+
+// 创建一个区块实例（测试用）
+const block1 = new Block({
+  timestamp: '01/01/01',
+  lastHash: 'foo-last-hash',
+  hash: 'foo-hash',
+  data: 'foo-data'
+});
+
+// 打印查看
+console.log('block1', block1);
+```
+
+* * *
+
+### 第三步：运行测试
+
+在命令行执行：
+
+bash
+
+````bash
+node block.js
+```
+
+**预期输出：**
+```
+block1 Block {
+  timestamp: '01/01/01',
+  lastHash: 'foo-last-hash',
+  hash: 'foo-hash',
+  data: 'foo-data'
+}
+````
+
+## 📚 核心知识点
+
+### 1\. 测试驱动开发（TDD - Test Driven Development）
+
+**定义：先写测试，再写代码**
+
+**工作流程：**
+
+```
+1. 写测试 → 2. 测试失败（红色❌）→ 3. 写代码 → 4. 测试通过（绿色✅）→ 重复
+```
+
+### 2\. TDD 的三大好处
+
+| 好处 | 说明 |
+| --- | --- |
+| 代码可靠 | 确保新功能不会破坏旧代码 |
+| 提高效率 | 不用运行整个项目，只测试特定功能 |
+| 学习机会 | 先看测试需求，自己实现代码 |
+
+### 3\. Jest 测试框架的语法
+
+javascript
+
+```javascript
+// describe - 定义测试组
+describe('Block', () => {
+  // it - 定义单个测试
+  it('has a timestamp, lastHash, hash and data', () => {
+    // expect - 断言/期望
+    expect(block.timestamp).toEqual(timestamp);
+  });
+});
+```
+
+* * *
+
+## 🛠️ 操作流程
+
+### 第一步：修改 block.js
+
+**1\. 注释掉测试代码：**
+
+javascript
+
+```javascript
+class Block {
+  // 先注释掉整个构造函数
+  // constructor({ timestamp, lastHash, hash, data }) {
+  //   this.timestamp = timestamp;
+  //   this.lastHash = lastHash;
+  //   this.hash = hash;
+  //   this.data = data;
+  // }
+}
+
+// 删除测试代码（block1 和 console.log）
+
+// 添加导出语句
+module.exports = Block;
+```
+
+* * *
+
+### 第二步：创建测试文件 block.test.js
+
+**文件命名规则：**`原文件名.test.js`
+
+javascript
+
+```javascript
+// 1. 引入 Block 类
+const Block = require('./block');
+
+// 2. 定义测试组
+describe('Block', () => {
+  
+  // 3. 声明测试变量
+  let timestamp, lastHash, hash, data, block;
+  
+  // 4. 赋值（注意：相同键值可以简写）
+  timestamp = 'a-date';
+  lastHash = 'foo-hash';
+  hash = 'bar-hash';
+  data = ['blockchain', 'data'];
+  
+  block = new Block({
+    timestamp,  // 等同于 timestamp: timestamp
+    lastHash,
+    hash,
+    data
+  });
+  
+  // 5. 编写测试
+  it('has a timestamp, lastHash, hash and data', () => {
+    expect(block.timestamp).toEqual(timestamp);
+    expect(block.lastHash).toEqual(lastHash);
+    expect(block.hash).toEqual(hash);
+    expect(block.data).toEqual(data);
+  });
+});
+```
+
+* * *
+
+### 第三步：配置 package.json
+
+修改测试脚本：
+
+json  无标题
+
+```json
+{
+  "scripts": {
+    "test": "jest --watchAll"
+  }
+}
+```
+
+`--watchAll` **的作用：**
+
+-   自动监听文件变化
+    
+-   保存代码后自动重新运行测试
+    
+
+* * *
+
+### 第四步：运行测试
+
+在 Git Bash 中执行：
+
+bash
+
+````bash
+npm run test
+```
+
+**第一次运行：**
+```
+❌ FAIL  block.test.js
+  Block is not defined
+```
+
+**修复：** 在 block.test.js 顶部添加 `const Block = require('./block');`
+
+---
+
+### 第五步：逐步让测试通过（TDD 核心）
+
+**1. 第一次运行测试 - 全部失败：**
+```
+❌ Expected: 'a-date'
+   Received: undefined
+```
+
+**解决：** 取消 `constructor({ timestamp, lastHash, hash, data })` 的注释
+
+---
+
+**2. 第二次运行 - timestamp 通过：**
+```
+✅ timestamp 通过
+❌ lastHash 失败
+```
+
+**解决：** 取消 `this.timestamp = timestamp;` 的注释
+
+---
+
+**3. 第三次运行 - lastHash 通过：**
+```
+✅ timestamp 通过
+✅ lastHash 通过
+❌ hash 失败
+```
+
+**解决：** 取消 `this.lastHash = lastHash;` 的注释
+
+---
+
+**4. 继续直到全部通过：**
+```
+✅ timestamp 通过
+✅ lastHash 通过
+✅ hash 通过
+✅ data 通过
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+````
+
+## 📚 核心知识点
+
+### 1\. 什么是创世区块（Genesis Block）？
+
+**问题：区块链的第一个区块怎么办？**
+
+| 普通区块 | 创世区块 |
+| --- | --- |
+| 需要前一个区块的哈希 | 没有前一个区块！ |
+| 数据来自真实交易 | 数据是硬编码的默认值 |
+| 动态生成 | 程序启动时就存在 |
+
+**比喻：**
+
+-   创世区块 = 家谱的第一代祖先（没有父母信息）
+    
+-   普通区块 = 后代（有父母信息）
+    
+
+* * *
+
+### 2\. 静态函数（Static Function）
+
+**定义：** 不需要创建实例就能调用的函数
+
+javascript
+
+```javascript
+// 普通函数 - 需要 new 创建实例
+const block1 = new Block({...});
+block1.someMethod();  // 在实例上调用
+
+// 静态函数 - 直接在类上调用
+Block.genesis();  // 不需要 new，直接调用
+```
+
+**为什么需要静态函数？**
+
+-   创世区块只需要创建一次
+    
+-   不属于任何特定的区块实例
+    
+-   是整个区块链的起点
+    
+
+* * *
+
+### 3\. SCREAMING\_SNAKE\_CASE 命名规范
+
+javascript
+
+```javascript
+const GENESIS_DATA = { ... }  // 全大写 + 下划线
+```
+
+**含义：** 一眼就能看出这是**硬编码的全局常量**
+
+| 命名风格 | 用途 | 示例 |
+| --- | --- | --- |
+| camelCase  驼峰命名法 | 普通变量/函数 | genesisBlock |
+| PascalCase  帕斯卡命名法 | 类名 | Block |
+| SCREAMING_SNAKE_CASE | 全局常量 | GENESIS_DATA |
+
+* * *
+
+## 🛠️ 操作流程
+
+### 第一步：创建配置文件 config.js
+
+**作用：** 存放全局常量和硬编码值
+
+javascript
+
+```javascript
+// config.js
+const GENESIS_DATA = {
+  timestamp: 1,           // 时间戳设为 1
+  lastHash: '-----',      // 前区块哈希（随便设）
+  hash: 'hash-one',       // 当前哈希（随便设）
+  data: []                // 数据为空数组
+};
+
+// 导出（注意是在对象里导出）
+module.exports = { GENESIS_DATA };
+```
+
+**为什么用对象包裹？**
+
+javascript
+
+```javascript
+// 方式1：直接导出
+module.exports = GENESIS_DATA;
+// 导入时：const GENESIS_DATA = require('./config');
+
+// 方式2：对象包裹（推荐）
+module.exports = { GENESIS_DATA };
+// 导入时：const { GENESIS_DATA } = require('./config');
+// 好处：可以导出多个常量
+```
+
+* * *
+
+### 第二步：编写测试 block.test.js
+
+在已有的 `describe('Block')` 里**再嵌套**一个 `describe`：
+
+javascript
+
+```javascript
+const Block = require('./block');
+const { GENESIS_DATA } = require('./config');  // 新增：导入创世数据
+
+describe('Block', () => {
+  
+  // 原有测试...
+  
+  // 新增：创世区块测试组
+  describe('genesis()', () => {
+    
+    // 创建创世区块实例
+    const genesisBlock = Block.genesis();
+    
+    // 测试1：返回的是 Block 实例
+    it('returns a Block instance', () => {
+      expect(genesisBlock instanceof Block).toBe(true);
+    });
+    
+    // 测试2：数据等于 GENESIS_DATA
+    it('returns the genesis data', () => {
+      expect(genesisBlock).toEqual(GENESIS_DATA);
+    });
+  });
+});
+```
+
+* * *
+
+## 💡 新语法详解
+
+### 1\. 对象解构导入
+
+javascript
+
+```javascript
+// config.js 导出
+module.exports = { GENESIS_DATA };
+
+// block.test.js 导入
+const { GENESIS_DATA } = require('./config');
+//      ↑ 解构语法，从对象中提取 GENESIS_DATA
+```
+
+**等价于：**
+
+javascript
+
+```javascript
+const config = require('./config');
+const GENESIS_DATA = config.GENESIS_DATA;
+```
+
+* * *
+
+### 2\. instanceof 操作符
+
+**作用：** 检查某个对象是不是某个类的实例
+
+javascript
+
+```javascript
+const block = new Block({...});
+
+console.log(block instanceof Block);  // true
+console.log(block instanceof Array);  // false
+```
+
+**在测试中使用：**
+
+javascript
+
+```javascript
+expect(genesisBlock instanceof Block).toBe(true);
+//     ↑ 检查是否是 Block 类型        ↑ 期望结果是 true
+```
+
+* * *
+
+### 3\. .toBe() vs .toEqual()  
+3\. .toBe() 与 .toEqual()
+
+| 方法 | 用途 | 示例 |
+| --- | --- | --- |
+| .toBe() | 比较基本类型（严格相等） | expect(true).toBe(true) |
+| .toEqual() | 比较对象内容 | expect({a:1}).toEqual({a:1}) |
+
+javascript
+
+```javascript
+// toBe - 用于布尔值、数字、字符串
+expect(5).toBe(5);
+expect(true).toBe(true);
+
+// toEqual - 用于对象、数组
+expect({name: 'Alice'}).toEqual({name: 'Alice'});
+expect([1, 2, 3]).toEqual([1, 2, 3]);
+```
+
+* * *
+
+### 4\. 嵌套 describe
+
+javascript
+
+````javascript
+describe('外层测试组', () => {
+  
+  describe('内层测试组1', () => {
+    it('测试1', () => {...});
+  });
+  
+  describe('内层测试组2', () => {
+    it('测试2', () => {...});
+  });
+});
+```
+
+**输出结果：**
+```
+Block
+  ✓ has timestamp, lastHash, hash and data
+  genesis()
+    ✓ returns a Block instance
+    ✓ returns the genesis data
+````
+
+* * *
+
+## 📋 完整文件结构
+
+### config.js（新建）
+
+javascript
+
+```javascript
+const GENESIS_DATA = {
+  timestamp: 1,
+  lastHash: '-----',
+  hash: 'hash-one',
+  data: []
+};
+
+module.exports = { GENESIS_DATA };
+```
+
+* * *
+
+### block.test.js（修改）
+
+javascript
+
+```javascript
+const Block = require('./block');
+const { GENESIS_DATA } = require('./config');  // ← 新增
+
+describe('Block', () => {
+  
+  // === 原有测试 ===
+  let timestamp, lastHash, hash, data, block;
+  
+  timestamp = 'a-date';
+  lastHash = 'foo-hash';
+  hash = 'bar-hash';
+  data = ['blockchain', 'data'];
+  
+  block = new Block({
+    timestamp,
+    lastHash,
+    hash,
+    data
+  });
+  
+  it('has a timestamp, lastHash, hash and data', () => {
+    expect(block.timestamp).toEqual(timestamp);
+    expect(block.lastHash).toEqual(lastHash);
+    expect(block.hash).toEqual(hash);
+    expect(block.data).toEqual(data);
+  });
+  
+  // === 新增测试 ===
+  describe('genesis()', () => {
+    const genesisBlock = Block.genesis();
+    
+    it('returns a Block instance', () => {
+      expect(genesisBlock instanceof Block).toBe(true);
+    });
+    
+    it('returns the genesis data', () => {
+      expect(genesisBlock).toEqual(GENESIS_DATA);
+    });
+  });
+});
+```
+
+* * *
+
+### block.js（暂时不改）
+
+保持原样，因为还没写 `genesis()` 函数
+
+* * *
+
+## 🔄 运行测试
+
+bash
+
+````bash
+npm run test
+```
+
+**预期结果：**
+```
+❌ FAIL  ./block.test.js
+  Block
+    ✓ has a timestamp, lastHash, hash and data
+    genesis()
+      ✗ Block.genesis is not a function
+````
+
+**这是正常的！** 因为我们还没写 `Block.genesis()` 函数。
+
+* * *
+
+## 🎯 下节课预告
+
+下节课会实现：
+
+javascript
+
+```javascript
+class Block {
+  // ...原有代码...
+  
+  // 新增静态函数
+  static genesis() {
+    return new Block(GENESIS_DATA);
+  }
+}
+```
+
+## 📚 核心知识点
+
+### 1\. 静态方法（Static Method）
+
+**定义：** 属于类本身，而不属于实例的方法
+
+javascript
+
+```javascript
+class Block {
+  // 静态方法 - 直接在类上调用
+  static genesis() {
+    return new Block(GENESIS_DATA);
+  }
+  
+  // 普通方法 - 需要实例才能调用
+  someMethod() {
+    // ...
+  }
+}
+
+// 调用方式对比
+Block.genesis();              // ✅ 静态方法
+const block = new Block({...});
+block.someMethod();           // ✅ 普通方法
+```
+
+* * *
+
+### 2\. 工厂方法模式（Factory Method Pattern）  
+2\. 工厂方法模式
+
+**定义：** 不直接用构造函数，而是用专门的函数来创建实例
+
+javascript
+
+```javascript
+// 方式1：直接用构造函数
+const block = new Block({
+  timestamp: 1,
+  lastHash: '-----',
+  hash: 'hash-one',
+  data: []
+});
+
+// 方式2：工厂方法（更优雅）
+const block = Block.genesis();
+```
+
+**好处：**
+
+-   隐藏创建细节
+    
+-   代码更简洁
+    
+-   便于维护（只需改工厂方法）
+    
+
+* * *
+
+### 3\. 静态方法中的 this
+
+javascript
+
+```javascript
+class Block {
+  static genesis() {
+    return new Block(GENESIS_DATA);  // ← 可以写成这样
+    return new this(GENESIS_DATA);   // ← 也可以写成这样
+  }
+}
+```
+
+**在静态方法中：**
+
+-   `this` = 类本身
+    
+-   `this` = `Block`
+    
+
+* * *
+
+## 🛠️ 操作流程（TDD 让测试通过）
+
+### 第一步：准备工作
+
+**布局窗口：**
+
+-   左侧：命令行（运行 `npm run test`）
+    
+-   右侧：代码编辑器
+    
+
+**Jest 的监听模式：**
+
+-   保存代码 → 自动重新运行测试
+    
+-   实时看到测试结果
+    
+
+* * *
+
+### 第二步：解决第一个错误
+
+**错误信息：**
+
+bash
+
+```bash
+❌ Block.genesis is not a function
+```
+
+**解决方法：** 在 block.js 中添加静态方法
+
+javascript
+
+```javascript
+// block.js
+class Block {
+  constructor({ timestamp, lastHash, hash, data }) {
+    this.timestamp = timestamp;
+    this.lastHash = lastHash;
+    this.hash = hash;
+    this.data = data;
+  }
+  
+  // 新增：静态方法
+  static genesis() {
+    // 先留空
+  }
+}
+
+module.exports = Block;
+```
+
+**保存后自动测试：**
+
+bash
+
+```bash
+❌ Expected: Block instance
+   Received: undefined
+```
+
+* * *
+
+### 第三步：返回 Block 实例
+
+javascript
+
+```javascript
+static genesis() {
+  return new Block();  // 返回新实例
+}
+```
+
+**保存后测试：**
+
+bash
+
+```bash
+❌ Cannot destructure 'timestamp' of undefined or null
+```
+
+**原因：** 构造函数需要参数，但我们没传！
+
+* * *
+
+### 第四步：导入 GENESIS\_DATA
+
+**在 block.js 顶部添加：**
+
+javascript
+
+```javascript
+const { GENESIS_DATA } = require('./config');
+
+class Block {
+  // ...
+}
+```
+
+* * *
+
+### 第五步：使用 GENESIS\_DATA
+
+javascript
+
+```javascript
+static genesis() {
+  return new Block(GENESIS_DATA);
+}
+```
+
+**保存后测试：**
+
+bash
+
+```bash
+✅ PASS  block.test.js
+  Block
+    ✓ has timestamp, lastHash, hash and data
+    genesis()
+      ✓ returns a Block instance
+      ✓ returns the genesis data
+```
+
+**全部通过！🎉**
+
+* * *
+
+### 第六步：优化代码（可选）
+
+**将** `Block` **改为** `this`**：**
+
+javascript
+
+```javascript
+static genesis() {
+  return new this(GENESIS_DATA);  // this = Block
+}
+```
+
+**测试依然通过！**
+
+* * *
+
+### 第七步：调试验证
+
+**临时添加 console.log：**
+
+javascript
+
+````javascript
+// block.test.js
+describe('genesis()', () => {
+  const genesisBlock = Block.genesis();
+  
+  console.log('genesisBlock', genesisBlock);  // ← 临时添加
+  
+  it('returns a Block instance', () => {
+    expect(genesisBlock instanceof Block).toBe(true);
+  });
+  
+  // ...
+});
+```
+
+**命令行输出：**
+```
+genesisBlock Block {
+  timestamp: 1,
+  lastHash: '-----',
+  hash: 'hash-one',
+  data: []
+}
+````
+
+**验证完后删除 console.log**
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -220,6 +1222,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ## **Web3的核心运作原理**
@@ -943,6 +1946,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
