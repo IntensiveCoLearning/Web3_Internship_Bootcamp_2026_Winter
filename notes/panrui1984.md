@@ -15,8 +15,137 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今天模仿写的调研报告
+
+# Circle Arc生态调研报告
+
+# 一．项目背景
+
+Arc 是一个专为稳定币金融和资产代币化而打造的 EVM 兼容 Layer-1 区块链。
+
+Arc项目希望解决如下痛点：
+
+原生代币Gas 费价格波动剧烈带来了不可预测的运营成本与会计复杂度；
+
+商业交易所需的隐私保护功能缺失；-
+
+完全公开、无需许可的交易提交机制催生了“最大可提取价值”（MEV）现象；
+
+稳定币流动性与应用分布在多条链上，造成用户与开发者的高摩擦成本
+
+Arc提出的解决方案要点是：
+
+-   **USDC as Native Gas**​：以稳定的 USDC 支付费用，使成本可预测。
+    
+-   **Built-in FX Engine**​：链上无缝的货币互换。
+    
+-   **Sub-Second Finality**​：交易在不到一秒内确认，确定且可靠。
+    
+-   **Opt-in Privacy**​：使用受信任执行环境（TEEs）进行机密计算，如社区回复所指出。
+    
+-   **Full Circle Integration**​：利用 Circle 的平台，便于稳定币的发行和管理。
+    
+-   **EVM Compatibility**​：开发者可以使用熟悉的工具进行开发，让 DeFi 应用（包括潜在的 meme 代币发行）更易上手。
+    
+
+# 二．团队背景
+
+Arc由Circle 主导开发，核心团队成员包括Gordon Y. Liao、Rachel Mayer、Adrian Soghoian 等，均来自 Circle。
+
+Gordon Liao               Chief Economist and Head of Research at [Circle](https://www.circle.com/en/)
+
+Rachel Mayer
+
+Adrian Soghoian     Principal Software Engineer 
+
+Adrian Soghoian
+
+Sanket Jain   Principal Software Engineer, Gateway CEO
+
+团队成员在稳定币，区块链基础设施搭建等领域均具备深厚积累。
+
+# 三．投资方
+
+项目白皮书中未提及Circle以外的投资方，我们可以简单的认为目前阶段Arc完全由Circle主导。
+
+根据招股说明书显示（424B4 Prospectus \[Rule 424(b)(4)\] Accession Number: 0001193125-25-181916 链接：[424B4](https://www.sec.gov/Archives/edgar/data/1876042/000119312525181916/d839239d424b4.htm)），目前Circle的主要持有方及比例如下：
+
+（最后一列未投票权比例）
+
+# 四．项目规划
+
+根据白皮书公布的项目路线图，Arc已知如下关键节点：
+
+1.       2025年秋季发布测试网；
+
+2.       主网Beta阶段包括包含稳定费率架构，亚秒级结算等核心功能；
+
+3.       后续升级包括隐私增强，mev缓解等，并过渡至PoS机制；
+
+已公开项目活动有两项
+
+\> Private testnet after public testnet launch
+
+\> Grab the “Architect” role on Circle DC:
+
+根据白皮书揭露信息，Arc 当前不强调发币（不排除未来可能），但从定位来看，很可能成为 Circle 打通全球支付和链上金融的关键拼图。
+
+# 五．项目生态
+
+项目生态聚焦三大领域
+
+1． 赋予企业/开发者/消费者以及资产发行方；
+
+2． 支撑原生应用（外部，支付和代币化资产等场景）；
+
+3． 通过Circle的平台，衔接链上（跨链）和链下（传统金融）的互通；
+
+我们可以得出推论，Arc的项目承接着Circle通过稳定币打通传统金融和链下资金流通的诉求，实现全场景的资金在链上的流动。
+
+# 六．竞品分析
+
+目前，Tether、Circle、Stripe等众多公司正纷纷推出其专用区块链，旨在服务于全球稳定币支付。项目的核心诉求均相似，因此存在很大的竞争关系。
+
+# 七．商务机会
+
+Arc是一款专为稳定币金融打造的开放式 Layer-1 区块链。正如Arc描述的痛点所述，之前Defi项目面临着Gas波动，隐私审计缺失，使得机构用户使用充满疑虑，因此借助于Arc的稳定币特性，针对机构用户开发新一代Defi应用，获取客群使用。
+
+可以有如下合作切入点：
+
+1） 稳定币生态
+
+支持 USDC/EURC、USDC / 人民币等合规货币对的 24/7 链上交易， 实现近似于传统外汇市场的流动性；
+
+2） 低费率
+
+利用 Arc 的 稳定 Gas 费率 降低用户借贷成本，以及快速成交特性，满足机构用户所需；
+
+# 八．部署项目
+
+若在Arc上部署项目，给予项目生态的描述，可以考虑部署一套企业跨境支付平台，功能要点有：
+
+1） 跨境支付
+
+Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现实时汇率的结算，支持多种稳定币的支付。打通法币与稳定的衔接；
+
+2） 根据白皮书路线图所述，Arc规划selective transparency，满足保护敏感信息的同时支持监管的审计；
+
+所需商务支持：
+
+生态对接。接入Circle平台生态，实现与链下金融和跨链支持。
+
+活动联合：联合 Circle 开展行业推广活动，触达中小企业客户。
+
+稳定币的三个环节
+
+发行（tether，circle）-》流通（转账和支付 Ethereum/tron） => 交易
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -46,6 +175,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 今天晚上的法律合规专题课意义十分重大，可以说非常有帮助。
 
@@ -79,6 +209,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 “Web3 运行原理”课程笔记
@@ -149,6 +280,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
