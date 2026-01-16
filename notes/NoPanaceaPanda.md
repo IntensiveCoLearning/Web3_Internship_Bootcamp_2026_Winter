@@ -15,8 +15,74 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+Friday, January 16, 2026, 20:00-21:00 CST
+
+"Web3实习计划（冬季）第一周例会"
+
+今天的干货太多了，大家分享的内容都很有深度，脑子要爆炸啦！
+
+整理了一部分优秀学员的分享：
+
+![31d5808b11c0eaf169dfd2eaba6c8797.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NoPanaceaPanda/images/2026-01-16-1768578397495-31d5808b11c0eaf169dfd2eaba6c8797.png)
+
+### **一、 核心理念与心态**
+
+1.  **归零与深耕**：进入Web3，需要“归零心态”（周星星），但同时要将过往经验转化为优势，在市场规范化进程中找到位置。
+    
+2.  **健康与修心**：行业噪音多，需保持**身心健康**，通过“修心”建立内在稳定器，才能长期坚持（周星星）。
+    
+3.  **理性热爱**：因理性的热爱而投身（斯文），避免纯投机心态，关注技术本质与长期发展。
+    
+
+### **二、 高效学习系统**
+
+1.  **目标管理（OKR法）**：像管理公司一样管理学习，用Notion等工具打卡。每天设定**3个关键结果（KR）**，完成70%即达标（Howard）。确保每一步都围绕核心目标，且**可量化**。
+    
+2.  **信息处理与笔记**：用Figma或XMind等工具做笔记，梳理逻辑链，利于思维发散和后期回顾（萌萌、Vincent）。直接阅读行业奠基人（如Vitalik）的文章，思考根本问题（如“不可能三角”）（斯文）。
+    
+3.  **检验与输出**：学习的“掌控感”可能主观，需要通过向他人讲解、在社交平台创作等方式**输出**，获取真实反馈（萌萌）。大胆尝试新工具（如thirdweb），并随着学习深入不断**迭代你的工具和方法论**（Howard）。
+    
+
+### **三、 技术认知与实践建议**
+
+1.  **基础认知**：Web3可理解为基于高级加密算法的**去中心化全球超级计算机**，核心特性是**无法篡改**（Vincent）。
+    
+2.  **安全第一**：新人**远离合约交易和山寨币**，先从理解比特币、以太坊的技术图表开始（Vincent）。高度重视私钥管理，理解其代表资产的绝对控制权（斯文采访感悟）。
+    
+3.  **实践入门**：从在以太坊测试网创建自己的NFT、探索thirdweb等开发平台开始（Howard）。系统学习如 **Uniswap** 这样的标杆协议，理解其**AMM（自动做市商）**、滑点保护、防MEV攻击等机制（Max）。
+    
+
+### **四、 内容创作与个人品牌**
+
+1.  **起号心态**：**面向普通人**：爆款内容往往解决普通人的问题或满足其兴趣（Karen）。**“厚脸皮”精神**：敢于引用、艾特他人，为自己互动，打造“表演型人格”以持续输出（Karen）。**不求回报**：初期以分享和建立习惯为目的，降低预期，从群友和AI获取初始反馈（Karen）。
+    
+2.  **创作方法**：结合你追星、游戏、电商等现有兴趣领域产出内容，自然且有热情（Karen）。适合观点抒发、科普和实时评论。按 **“是什么-为什么-怎么做”** 逻辑展开，穿插个人故事与思考，增加可读性（Karen）。用AI辅助输入（整理信息）和输出（润色），但核心观点、故事和思考必须**亲自操刀**，避免“AI味”（Karen、萌萌）。
+    
+
+### [群里大佬分享：](https://www.notion.so/2ea34f54cd028012bd5ae69ef88d5e1f?source=copy_link)
+
+### [https://www.notion.so/2ea34f54cd028012bd5ae69ef88d5e1f?source=copy\_link](https://www.notion.so/2ea34f54cd028012bd5ae69ef88d5e1f?source=copy_link)
+
+### [哈哈哈继续做大佬们的搬运工](https://www.notion.so/web3-2eaf9ce4f86c8070bd20c0d099f922f7?source=copy_link把今天晚上的资料整理到了notion里，资料是从群里拷贝的)
+
+### [https://www.notion.so/web3-2eaf9ce4f86c8070bd20c0d099f922f7?source=copy\_link](https://www.notion.so/web3-2eaf9ce4f86c8070bd20c0d099f922f7?source=copy_link把今天晚上的资料整理到了notion里，资料是从群里拷贝的)
+
+先用AI总结一部分，慢慢吸收消化。
+
+时间太快啦，下周就到第二周开始技术向啦，期待ing
+
+### 附：huahua大佬做的MPC钱包demo
+
+### 在线预览链接：[https://w3a-mpc.vercel.app/](https://w3a-mpc.vercel.app/)
+
+### 源码是在这里：[https://github.com/huahuahua1223/w3a-mpc](https://github.com/huahuahua1223/w3a-mpc)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 Thursday, January 15, 2026, 20:00-21:00 CST
 
 “AI及其基础概念分享会”
@@ -30,6 +96,7 @@ Thursday, January 15, 2026, 20:00-21:00 CST
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 Wednesday, January 14, 2026, 19:00-20:30 CST
 
@@ -100,6 +167,7 @@ Wednesday, January 14, 2026, 19:00-20:30 CST
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 Tuesday, January 13, 2026, 20:00-21:00 CST
 
 **“Web3运行原理”笔记与思考：**
@@ -127,6 +195,7 @@ Tuesday, January 13, 2026, 20:00-21:00 CST
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
