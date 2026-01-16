@@ -15,8 +15,305 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+## **Uniswap V2 学习笔记**
+
+### **模块：Swap · MEV · TWAP · CREATE2**
+
+### **一、Uniswap V2 的两个 Swap 接口（用户侧）**
+
+**1\. swapExactTokensForTokens**
+
+**语义**：
+
+固定输入数量，接受价格波动，但不接受低于阈值的输出。
+
+**核心参数**
+
+-   amountIn：用户确定的输入代币数量
+    
+-   amountOutMin：最小可接受输出（滑点保护）
+    
+-   path：兑换路径（支持多跳）
+    
+-   to：接收地址
+    
+-   deadline：交易过期时间
+    
+
+**使用动机**
+
+-   防止 MEV / sandwich attack 导致成交价格恶化
+    
+-   若最终输出 < amountOutMin → 整笔交易回滚
+    
+
+* * *
+
+**2\. swapTokensForExactTokens**
+
+**语义**：
+
+固定目标输出数量，接受输入成本浮动，但不超过上限。
+
+**核心参数**
+
+-   amountOut：期望得到的代币数量
+    
+-   amountInMax：最大可接受输入成本
+    
+-   path / to / deadline：含义相同
+    
+
+**本质区别**
+
+-   一个约束输出下限
+    
+-   一个约束输入上限
+    
+-   底层撮合逻辑一致
+    
+
+* * *
+
+### **二、path 与多跳 Swap（Router 层）**
+
+-   swap **不是 1 对 1**
+    
+-   path 是 token 地址数组，例如：
+    
+
+```
+WETH → USDC → DAI
+```
+
+-   当不存在直接池时，通过中间池绕路完成兑换
+    
+
+**Router 的职责**
+
+-   根据 reserves **一次性计算整条路径的 amounts\[\]**
+    
+-   通过 \_swap 循环调用多个 Pair
+    
+-   **不持有资产，不存储状态**
+    
+
+### **三、Router.\_swap 的执行逻辑**
+
+-   for 循环遍历 path
+    
+-   每一跳调用对应 Pair 的 swap
+    
+-   上一跳输出 → 下一跳输入
+    
+-   最终完成目标 token 的兑换
+    
+
+* * *
+
+### **四、Pair 合约中的 Swap 核心逻辑**
+
+**1\. token 排序规则**
+
+-   地址小 → token0
+    
+-   地址大 → token1
+    
+
+**2\. Swap 执行流程**
+
+1.  getReserves() 获取历史储备量
+    
+2.  执行代币转账
+    
+3.  通过 balance - reserve 计算真实输入量
+    
+4.  判断哪一侧是输入、哪一侧是输出
+    
+5.  校验恒定乘积公式
+    
+6.  调用 \_update 更新状态
+    
+
+* * *
+
+### **五、MEV 与 Flash Loan 风险背**
+
+**MEV 的来源**
+
+-   区块构建者 / 搜索者可重排交易
+    
+-   可进行 frontrun / sandwich / backrun
+    
+
+**Flash Loan 的放大效应**
+
+-   单笔交易中借入巨量资金
+    
+-   瞬时操纵池子价格
+    
+-   无需长期资本成本
+    
+
+**结论**
+
+-   Uniswap 现货价格**极易被操纵**
+    
+-   不适合作为链上 Oracle
+    
+
+* * *
+
+### **六、TWAP（Time Weighted Average Price）**
+
+**1\. 引入目的**
+
+-   抵抗短时间价格操纵
+    
+-   提高攻击成本
+    
+
+**2\. 核心思想**
+
+> 用时间换稳定性
+
+**3\. 实现方式（Pair.\_update）**
+
+在每次 swap / mint / burn 时：
+
+-   记录当前区块时间
+    
+-   记录当前价格
+    
+-   累加：
+    
+
+```
+priceCumulative += price × timeElapsed
+```
+
+**4\. TWAP 计算**
+
+外部合约取两个时间点的 priceCumulative 差值
+
+-   再除以时间间隔
+    
+-   得到该时间段的平均价格
+    
+
+**关键区分**
+
+-   TWAP ≠ Spot Price
+    
+-   抗操纵 ≠ 不可操纵
+    
+
+* * *
+
+### **七、CREATE2 与 Pair 地址确定性部署**
+
+**1\. CREATE vs CREATE2**
+
+-   CREATE
+    
+    -   地址依赖部署者 nonce
+        
+    -   无法提前预测
+        
+    
+-   CREATE2
+    
+    -   地址完全由参数决定
+        
+    -   可在链下提前计算
+        
+    
+
+**2\. CREATE2 地址公式**
+
+```
+address = keccak256(
+  0xff ++ factory_address ++ salt ++ keccak256(init_code)
+)[12:]
+```
+
+* * *
+
+### **八、Uniswap V2 中 CREATE2 的具体设计**
+
+-   factory\_address：Factory 合约地址
+    
+-   salt：keccak256(token0, token1)
+    
+-   init\_code：Pair 合约 creation code
+    
+
+**关键点**
+
+-   token0 / token1 顺序固定
+    
+-   creation code 固定
+    
+-   任意 token 对 → 唯一 Pair 地址
+    
+
+* * *
+
+### **九、Factory.createPair 的完整流程**
+
+1.  校验 tokenA ≠ tokenB
+    
+2.  按地址大小排序 token0 / token1
+    
+3.  生成 salt
+    
+4.  使用 CREATE2 部署 Pair
+    
+5.  初始化 Pair（传入 token0 / token1）
+    
+6.  更新映射关系
+    
+7.  发出 PairCreated 事件
+    
+
+* * *
+
+### **十、主网示例理解（USDC / WETH）**
+
+-   USDC 地址以 0xA 开头
+    
+-   WETH 地址以 0xC 开头
+    
+-   因此：
+    
+    -   token0 = USDC
+        
+    -   token1 = WETH
+        
+    
+
+代入 CREATE2 公式 → 可提前计算 Pair 地址。
+
+* * *
+
+### **十一、整体结构总结（一句话版）**
+
+-   **Router**：算路径、算金额、调合约
+    
+-   **Pair**：管资产、管价格、管状态
+    
+-   **MEV**：结构性风险
+    
+-   **TWAP**：工程缓解方案
+    
+-   **CREATE2**：Uniswap V2 架构级设计关键点
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ### SpoonOS ：
 
 **让开发者不用自己实现身份、支付、私钥、验证、审计这些底层能力。**
@@ -216,6 +513,7 @@ AI 正在从“工具调用者”，变成“连续做决定并承担后果的�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 在项目里真正会踩的坑
 
@@ -524,6 +822,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 笔记：
 
 -   解释了私钥、助记词、公钥和地址之间的关系
@@ -549,6 +848,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
