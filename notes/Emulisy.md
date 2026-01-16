@@ -15,8 +15,229 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+# Smart Contract Development – Concise Notes  
+
+## Dapp Architecture
+
+A Dapp is different from a traditional centralized app. Logic and data are not controlled by a single server but distributed across the blockchain.
+
+Main components:
+
+Frontend
+
+-   Built with HTML, CSS, JavaScript (React, Vue)
+    
+-   Does NOT connect directly to blockchain
+    
+-   Uses wallet-injected provider or RPC node
+    
+-   Reads data via contract calls
+    
+-   Sends transactions via wallet signing (MetaMask)
+    
+
+Smart Contracts
+
+-   Core business logic of the Dapp
+    
+-   Deployed on blockchain
+    
+-   Immutable and transparent
+    
+-   Written in Solidity on Ethereum
+    
+-   Executed by the EVM
+    
+
+Indexer (Data Retriever)
+
+-   Listens to smart contract events
+    
+-   Processes and stores data in traditional databases
+    
+-   Solves inefficient on-chain data queries
+    
+-   Common for NFTs, DeFi analytics, dashboards
+    
+
+Blockchain & Decentralized Storage
+
+-   Blockchain stores state and transaction history
+    
+-   IPFS / Arweave store large files (images, metadata)
+    
+-   Ensures decentralization and data persistence
+    
+
+##   
+2\. Dapp Development Workflow  
+
+1.  Requirement Planning
+    
+
+-   Define features (transfer, staking, voting)
+    
+-   Choose blockchain (Ethereum, Polygon, Solana)
+    
+-   Design user experience
+    
+
+2.  Smart Contract Development
+    
+
+-   Write Solidity contracts
+    
+-   Write unit tests
+    
+-   Perform security audits
+    
+-   Prevent common vulnerabilities
+    
+
+3.  Indexer Development
+    
+
+-   Decide what data frontend needs
+    
+-   Parse events from contracts
+    
+-   Store processed data in databases
+    
+-   Often written in TypeScript
+    
+
+4.  Frontend Development
+    
+
+-   Build UI with modern frameworks
+    
+-   Connect wallet (MetaMask)
+    
+-   Display on-chain and indexed data
+    
+-   Handle transaction confirmation
+    
+
+5.  Deployment
+    
+
+-   Deploy contracts to testnet or mainnet
+    
+-   Deploy frontend to IPFS or web hosting
+    
+-   Monitor, update, and maintain
+    
+
+————————————————  
+3\. Ethereum Development Environment  
+————————————————
+
+Basic tools:
+
+-   Node.js
+    
+-   npm or yarn
+    
+-   Git
+    
+
+Local development frameworks:
+
+Foundry
+
+-   Very fast, Rust-based
+    
+-   Includes tools for testing, deploying, local node
+    
+-   Suitable for advanced users
+    
+
+Hardhat
+
+-   Most popular Ethereum dev framework
+    
+-   Beginner-friendly
+    
+-   Strong plugin ecosystem
+    
+-   Common in production projects
+    
+
+Wallet & Frontend Tools
+
+-   MetaMask for signing transactions
+    
+-   Viem and Wagmi for frontend-chain interaction
+    
+-   OpenZeppelin for secure contract libraries
+    
+-   Remix for quick browser testing
+    
+
+##   
+4\. RPC Nodes  
+
+What is RPC
+
+-   RPC nodes are blockchain servers
+    
+-   They expose APIs for reading data and sending transactions
+    
+-   Frontends rely on RPC nodes to talk to the blockchain
+    
+
+What RPC does
+
+-   Read balances, blocks, contract state
+    
+-   Broadcast signed transactions
+    
+-   Listen to smart contract events
+    
+-   Switch networks and query chain info
+    
+
+JSON-RPC
+
+-   Standard Ethereum communication protocol
+    
+-   Uses methods like getBalance, call, sendTransaction, getLogs
+    
+
+RPC Providers
+
+-   Alchemy: enterprise-grade, production use
+    
+-   Infura: popular for development
+    
+-   QuickNode: high performance
+    
+-   Public nodes: free but unstable
+    
+-   Ankr: multi-chain support
+    
+
+##   
+5\. RPC Best Practices  
+
+-   Never hardcode private keys or API keys
+    
+-   Use environment variables
+    
+-   Handle RPC failures and retries
+    
+-   Be aware of rate limits
+    
+-   Use multiple RPC endpoints as fallback
+    
+-   Prefer local nodes for development
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -186,6 +407,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -376,6 +598,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
