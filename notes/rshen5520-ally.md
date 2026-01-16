@@ -17,11 +17,14 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-16-1768565469875-image.png)
+[https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN](https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-16-1768568377188-image.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-15-1768471438546-image.png)
 
@@ -37,6 +40,7 @@ timezone: UTC+8
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-14-1768392918826-image.png)
 
 web3攻击趋向精准化+广撒网，要多多谨慎，不乱点链接，不乱下载
@@ -48,6 +52,7 @@ web3攻击趋向精准化+广撒网，要多多谨慎，不乱点链接，不乱
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
