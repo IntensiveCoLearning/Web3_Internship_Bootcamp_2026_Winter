@@ -17,8 +17,14 @@ Web3新人 INTP/base上海
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今日休假
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # Day 4
 
 这里是在图书馆度过一晚整天昏昏沉沉的 Juustin。眼睛快睁不开了v\_v
@@ -53,6 +59,7 @@ Web3新人 INTP/base上海
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 # Day 3
 
@@ -100,6 +107,7 @@ Web3新人 INTP/base上海
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 # Day 2
 
 这里是一天学完两门大课双目失神的Juustin。以下是水到不行的今日学习日志。
@@ -128,6 +136,7 @@ Web3新人 INTP/base上海
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
