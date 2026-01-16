@@ -51,10 +51,20 @@ Solana ：Raydium / Orca / Lifinity
 BNB Chain：PancakeSwap
 
 IBC：Inter-Blockchain Communication Protocol，跨链通信协议。
+
+-   **组池子**  
+    \= **往 DEX 的流动性池里存入两种资产，创建或参与一个交易对**
+    
+-   **LP（Liquidity Provider）**  
+    \= **你作为“流动性提供者”的身份**
+    
+-   **LP Token**  
+    \= **你存入流动性后获得的“凭证”，流动性池子份额。**
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -120,6 +130,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
