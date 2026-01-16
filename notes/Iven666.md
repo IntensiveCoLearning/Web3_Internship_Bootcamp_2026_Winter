@@ -15,8 +15,48 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+### 按照协议费用排名前10大协议：
+
+泰达，Circle 稳定币 Meteora, solana 链上的Defi
+
+Ethena,USDE提供商，基于区块链技术的合成稳定币
+
+Pump [Pump.fun](http://Pump.fun) 是一个“一键发币 + 自动做市 + 快速投机”的 Meme 币发行平台，本质是把「发币 + 赌博 + 流动性」产品化。
+
+Hyperliquid 链上永续合约
+
+EigenCloud **EigenCloud** 是一个由 **Eigen Labs** 推出的区块链基础设施项目，它的目标是 **把区块链的“可验证性”扩展到任何应用场景，包括链上和链下**。它不仅仅是一个普通的协议，而是一个 **开发者平台 + 可验证计算层**，致力于把加密经济安全（crypto-economic security）变成可编程的云服务。
+
+Uniswap dex
+
+Lido 流动性质押协议
+
+AAVE 链上借贷协议
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM2NmNmZTZlYWRhOGY4M2M5MDVkMWViNGI3MTM3ZGRfT2xwS1Rmd0o4REhuaWhXSEZ4dVZwaUNndmNNM2FXMlFfVG9rZW46QzN0VWJMZ0NOb0tiSE54SlJTdmNyM0l4bk9jXzE3Njg1NTUzNTE6MTc2ODU1ODk1MV9WNA)
+
+### 按照收入排名的前10大Defi协议
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=N2I1ZmZlZmFkY2QzNDc2MmIyMzA4YTg2MmNlYTVkZTJfaEhJRGNLOEZBWXRCNE1ROG5WOW5acTRYb1hRVUdLOWZfVG9rZW46VmJKcGJNNTZOb0JaVkJ4WGZDNWNCTnROblRlXzE3Njg1NTUzNTE6MTc2ODU1ODk1MV9WNA)
+
+Tron 没有追求极致的去中心化，而是通过高效的DPoS机制，在性能、成本和市场规模上取得了巨大成功，尤其是在稳定币支付领域建立了近乎垄断的地位。如果你想快速、廉价地转移稳定币（尤其是USDT），Tron网络是目前全球最优的选择。对于开发者，它提供了一个高流量、低成本的平台，尤其是对于特定的DApp类型。
+
+Grayscale 灰度，RWA资产
+
+GMGN GMGN 不是一个技术创新型区块链协议，而是一个利用区块链/NFT进行募资和利润分配的“中心化云挖矿金融产品”。
+
+edgeX 链上永续合约，团队成员信息未透露，EdgeX 的风险收益比极差，欺诈特征远多于创新特征，应被视为加密世界中的“危险地带”，普通投资者切勿靠近。
+
+[four.meme](http://four.meme) Meme币发行工厂
+
+Axiom Pro 关于 Axiom Pro，这是一个在加密货币交易领域中出现的、具有极高风险且充满争议的服务平台。它并非一个公链或DeFi协议，而是一个围绕 MEV（矿工可提取价值）套利 构建的、需要用户高度授权和托管的自动化交易工具。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ### 数据库的基本概念介绍
 
 **数据库（Database）**：数据库是结构化信息或数据的有序集合，是按照数据结构来组织、存储和管理数据的仓库。Dune平台目前提供了多个数据库，分别支持来自不同区块链的数据。
@@ -48,6 +88,7 @@ limit 返回记录数量
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## 个人（我）可能触及的法律边缘
 
@@ -88,6 +129,7 @@ limit 返回记录数量
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 以太坊 dApps 的概念与应用
@@ -181,6 +223,7 @@ limit 返回记录数量
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
