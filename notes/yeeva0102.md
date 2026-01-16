@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+讀了社區運營指南和和規和網路安全
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 學習了智能合約開發
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 學習了WEB3工作方式及崗位前景圖
 <!-- DAILY_CHECKIN_2026-01-14_END -->
@@ -30,11 +37,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 讀了行業賽道全覽，最讓我震驚的是DAO(去中心化自治組織)，沒想到可以集結全世界各地人籌資，去購買一份美國憲法副本，展現了區塊鏈背後的核心，不會受限於地區、人種、是否有資格，只要有一個錢包將資產發給DAO，就可以參與這起事件；不再是由中心化組織因各種理由拒絕你交易等
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
