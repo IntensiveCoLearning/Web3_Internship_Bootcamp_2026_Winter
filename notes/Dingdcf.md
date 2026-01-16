@@ -24,6 +24,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今天主要完成了实习计划中的相对实践的任务：测试网代币、nft铸造和防钓鱼攻击演练。对我来说比较重要的主要还是钱包安全这一点，后面要玩的不少撸毛项目都与钱包安全相关，而钱包安全直接与本金安全相关，因此我格外重视。今天最主要的收获还是学习到了区块链浏览器的使用的方法
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-15-1768491400511-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-15-1768491279844-image.png)
@@ -31,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
