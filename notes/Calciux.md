@@ -19,13 +19,26 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 ## Web3 安全与合规
 
+### 常规法律风险
+
 IEO: Initial Exchange Offering
 
 IDO: Initial DEX Offering
+
+技术人员若参与代币模型设计、空投逻辑配置、合约部署等环节，也会被视为“共同行为人”，无法以“只是写代码”为由免责。
+
+## 全球监管
+
+FATF: Travel Rule
+
+稳定币（Stablecoin）是一类特殊的加密货币，它的价值通常与某种稳定资产挂钩（如美元、黄金），目的是保持价格稳定，避免像比特币、以太坊那样的大幅波动。USDT和 USDC都是与美元 1:1 挂钩的稳定币.
+
+Stablecoin 有 systematical risk: 储备资产风险/挤兑风险/algorithm stablecoin(依靠信心和算法,稳定币+支撑货币, 类似于人们日常生活中的货币加上央行的货币政策工具)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ## 021学习以太坊 C2
 
@@ -117,6 +130,7 @@ Patricia Trie
 
 
 
+
 ## 分享会 web3安全
 
 **CeFi成为主要的黑客攻击靶机**：管理层私钥被盗、热钱包私钥被盗是主要的原因，暴露了显著的风险。
@@ -173,6 +187,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -361,6 +376,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
