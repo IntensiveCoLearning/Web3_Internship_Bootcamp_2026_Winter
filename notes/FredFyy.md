@@ -15,8 +15,22 @@ Fred，web3新人，和大家一起学习
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+一、 Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata
+
+1\. NFT购买可以确保所获得的资产不会被篡改变化，即使它是一个依赖网络存在的虚拟资产。
+
+2\. NFT有两种，一种是链下存储，指向存储在IPFS上的文件；另一种是链上存储，所有的数据都在链上（提供可组合性）。
+
+二、 Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending
+
+设置多重签名在原钱包丢失的情况下还可以发挥作用，这是之前不知道的。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 针对day1的笔记中1.4问题有了新的思考
 
 可以分两部分来深入探讨：
@@ -79,6 +93,7 @@ Fred，web3新人，和大家一起学习
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 今日学习计划：
 
 1.学习课程Day 3: ENS, DEX, Identity, Inventory, Sybil
@@ -92,6 +107,7 @@ Fred，web3新人，和大家一起学习
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 今日学习计划：
@@ -143,6 +159,7 @@ OKR之前也有了解过，通过文档更深入了解了一项工作任务在OK
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
