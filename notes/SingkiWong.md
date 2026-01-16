@@ -17,11 +17,22 @@ Live better with web3
 <!-- Content_START -->
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
-打卡
+打卡三、节点间交换的数据类型
+
+节点在P2P网络中交换多种数据以保持同步：
+
+区块数据：包括区块头（元数据、父哈希、状态根）和区块体（交易列表）。
+
+交易与收据：交易细节及其执行后的收据（Gas消耗、事件日志）。
+
+状态数据：账户余额、合约代码和存储，以 状态树片段 形式交换。
+
+网络控制信息：用于发现节点、维持连接的 Ping/Pong 等消息。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 打卡
 
@@ -37,11 +48,13 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 
 
+
 继续学习
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -53,6 +66,7 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
