@@ -17,8 +17,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今日计划，学习hardhat
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## 今天计划
 
 继续看，把第一章web3的教材看完。
@@ -30,6 +36,7 @@ solidity进阶
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## 学习计划
 
