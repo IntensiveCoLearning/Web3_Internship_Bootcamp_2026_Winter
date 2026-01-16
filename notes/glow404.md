@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+撸空投[https://www.bilibili.com/video/BV1Fp421f7KT/share\_source=copy\_web&vd\_source=cf0b889aa72345dc7ae4a6ff8d7d606e](https://www.bilibili.com/video/BV1Fp421f7KT/?share_source=copy_web&vd_source=cf0b889aa72345dc7ae4a6ff8d7d606e)
+
+1.16 尝试撸空投，注意风险和安全。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 在 [My First NFT](https://nft.myfirst.io/) mint 第一个 NFT √
 
 完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战 √
@@ -79,6 +87,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
