@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+一轮对话还没跑完，就烧了 0.5U 的 TOKEN，钱包告急，及时止损，转战 Trae，最近送了 1 个月免费会员，并且支持 Agent 和 Skills，看网友反馈据说已经可以媲美 Cursor 了，尝试一下。
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # Day2
 
 学习了 skills 怎么写 [https://www.bilibili.com/video/BV1HuiyBQE9G](https://www.bilibili.com/video/BV1HuiyBQE9G) 这个视频讲的非常好。简单来说就是渐进式加载预设的提示词，以节约 token 和上下文空间。是一种不错的提示词管理方式，各类 CLI 也能自动检测 skills 按需加载。
@@ -26,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 # Day1
 
