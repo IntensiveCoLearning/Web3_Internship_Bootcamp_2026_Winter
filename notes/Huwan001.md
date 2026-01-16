@@ -25,10 +25,47 @@ Web3 实习计划 2025 冬季实习生
 # 完成領水 / 領取測試幣
 
 ![測試轉帳1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-16-1768539769473-____1.png)
+
+# 創建錢包領取測試幣過程
+
+## 使用Chrome加入Metamask錢包
+
+-   創建的新錢包要先去加入 **Unichain Sepolia** 網路  
+    
+
+|   |   |
+| --- | --- |
+| 網路名稱 (Network Name) | Unichain Sepolia |
+| 新的 RPC URL | https://sepolia.unichain.org |
+| 鏈 ID (Chain ID) | 1301 |
+| 貨幣符號 (Currency Symbol) | ETH |
+| 區塊瀏覽器 (Optional) | https://sepolia.uniscan.xyz |
+
+## 尋找領水網站
+
+-   有些領水網站無法使用**主網餘額為0**的錢包領取
+    
+
+解決方法
+
+1.  使用不需有餘額的網站領取
+    
+2.  找群友協助轉少量測試幣
+    
+3.  轉入真實資金當Gas fee
+    
+
+| 領水網站 | 網站 | 條件 | 限制 |
+| --- | --- | --- | --- |
+| Alchemy Sepolia Faucet | Faucet - Ethereum Sepolia \| Alchemy | 需註冊帳戶 | 0.5ETH / 天 |
+| MetaMask / Linea | https://www.infura.io/faucet/sepolia | 需註冊帳戶(需要人機驗證) POH | 0.5ETH / 天 |
+| Google Cloud | https://cloud.google.com/application/web3/faucet | 登入google帳戶 | 0.5ETH / 天 |
+| Sepolia PoW Faucet | https://sepolia-faucet.pk910.de/ | 無須Gas fee | 挖礦方式最多2.5ETH / 天 |
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
@@ -55,6 +92,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -159,6 +197,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -238,6 +277,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
