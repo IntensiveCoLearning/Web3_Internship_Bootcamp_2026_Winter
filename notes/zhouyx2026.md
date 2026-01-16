@@ -23,6 +23,7 @@ timezone: UTC+8
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 复习了《Web3实习手册》，线上听了Emily介绍Web3行业和岗位概览，拉近了与Web3的距离。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 <!-- Content_END -->
