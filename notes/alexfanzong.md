@@ -15,8 +15,14 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+![截屏2026-01-16 下午6.58.46.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/alexfanzong/images/2026-01-16-1768561138487-__2026-01-16___6.58.46.png)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 \-–
 
 \> **Copyright & License / 版权声明：**
@@ -117,6 +123,7 @@ _Disclaimer：本文探讨的 RWA 架构基于国际通行的 Web3 实践，具�
 
 
 
+
 \-–
 
 \> **Copyright & License / 版权声明：**
@@ -207,6 +214,7 @@ LXDAO 的案例揭示了 Builder DAO 的真实面目：它更像是一个**数�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -328,6 +336,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
