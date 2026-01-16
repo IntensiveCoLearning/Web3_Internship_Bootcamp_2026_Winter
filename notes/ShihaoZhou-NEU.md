@@ -22,8 +22,7 @@ Web3 实习计划 2025 冬季实习生
 
 ## 学习内容：
 
-1.  Web3 实习手册「行业知识」部分
-    
+### Web3 实习手册「行业知识」部分
 
 -   ✅️区块链岗位全景图
     
@@ -46,20 +45,21 @@ Web3 实习计划 2025 冬季实习生
 -   ⭕️021学习以太坊第2章
     
 
-1.  拓展 & 辅助理解材料
-    
-2.  ⭕️Ethereum 官网 Overview 基础内容学习
+### 拓展 & 辅助理解材料
+
+1.  ⭕️Ethereum 官网 Overview 基础内容学习
     
 
 -   ✅️Day 1 ~ Day 3
     
 -   ⭕️Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata
     
--   ⭕️Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...
+-   ⭕️Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # 学习计划
 
@@ -140,6 +140,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -372,6 +373,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -548,6 +550,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
