@@ -15,8 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+今日没有仔细听 感觉没有记下一些有用的东西
+
+```markdown
+## 每周例会
+
+### 2笔记痛点
+
+### 分享
+可以尝试使用OKR  学会自己叙述出一些概念
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+
+从一名的启发
+![alt text](image-12.png)
+![alt text](image-13.png)
+
+
+关于账号运营的分享
+```
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## 继续昨天的web3安全
 
 攻击方式演变与新技术骗局
@@ -50,6 +75,7 @@ x402协议
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ## web3安全分享
 
@@ -173,6 +199,7 @@ UXlink Balancer
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ## 1.13号共学
@@ -601,6 +628,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
