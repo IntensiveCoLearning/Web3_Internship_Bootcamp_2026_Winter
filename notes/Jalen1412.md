@@ -15,8 +15,14 @@ enjoy it
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+补补前两天的
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **web3行业岗位全局介绍**
 
 smartdeer
@@ -87,11 +93,13 @@ web3垂直平台：smartdeer，[web3.career](http://web3.career)，remote3，cry
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 补上前三天的学习
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 补上前两天的学习
