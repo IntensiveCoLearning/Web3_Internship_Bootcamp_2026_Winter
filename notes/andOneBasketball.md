@@ -15,8 +15,172 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 📒 共学营 Day 5 学习笔记
+
+今天继续让 ChatGPT 模拟面试官，对 **Uniswap V2** 进行面试式复盘，重点学习了 **Flash Swap 的执行机制、安全保护设计，以及 TWAP 价格累计器的源码实现方式**。整体感觉是：Uniswap V2 的设计是多层机制叠加形成安全闭环，对理解 DeFi 可组合性和抗攻击设计很有启发。
+
+* * *
+
+## ✅ Q6：Uniswap V2 的 Flash Swap 是什么？如何实现“先拿钱、后还钱”？
+
+### 一、Flash Swap 的本质
+
+-   允许用户在一次交易中先从池子拿走代币
+    
+-   在回调中完成套利或资金操作
+    
+-   交易结束前归还资产 + 手续费
+    
+-   不满足池子约束则整体回滚
+    
+
+### 二、触发方式
+
+-   通过 `UniswapV2Pair.swap(amount0Out, amount1Out, to, data)`
+    
+-   当 `data.length > 0` 时，调用接收方合约 `uniswapV2Call` 回调
+    
+
+### 三、为什么可以先转币再校验
+
+1.  transfer token 给接收方
+    
+2.  执行回调函数
+    
+3.  读取最终余额
+    
+4.  校验恒定乘积 + 手续费
+    
+
+-   校验在回调后发生，因此可以先使用资金
+    
+
+### 四、必须归还多少资产
+
+-   归还 = 借出数量 + 0.3% 手续费
+    
+-   swap 末尾校验恒定乘积，不满足则 revert
+    
+
+### 五、常见用途
+
+-   套利
+    
+-   抵押借贷清算
+    
+-   杠杆头寸构建
+    
+-   跨协议资金迁移
+    
+
+* * *
+
+## ✅ Q7：Uniswap V2 如何防止 Flash Swap 回调中的重入攻击？
+
+### 一、函数级重入保护
+
+-   `lock` 修饰符保护 swap、mint、burn、skim、sync
+    
+-   一次调用未结束前无法再次进入
+    
+-   Flash Swap 回调中无法重入调用 swap
+    
+
+### 二、资金层面校验
+
+-   swap 末尾做恒定乘积 + 手续费校验
+    
+-   不满足条件直接 revert，保证池子资产安全
+    
+
+### 三、双重保险机制
+
+-   lock 锁：防止函数重入
+    
+-   最终校验：防止套利型攻击
+    
+-   两者结合保证 Flash Swap 可组合但安全
+    
+
+### 四、链上纠偏注意
+
+-   如果项目方单独 transfer 再 sync 可能被抢跑
+    
+-   正确做法：在一个合约函数里同时 transfer + sync 原子操作
+    
+
+* * *
+
+## ✅ Q8：Uniswap V2 的 TWAP 是如何实现的？为什么需要价格累计器？
+
+### 一、为什么不能用即时价格
+
+-   spot price = reserve1 / reserve0
+    
+-   易被闪电贷操纵
+    
+-   若用于抵押或清算可能被攻击
+    
+
+### 二、价格累计器核心变量
+
+-   `price0CumulativeLast`、`price1CumulativeLast`
+    
+-   `blockTimestampLast`
+    
+-   含义：价格 × 时间 的累计积分值
+    
+
+### 三、累计方式（源码逻辑）
+
+```
+price0CumulativeLast += (reserve1 / reserve0) * timeElapsed
+price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
+```
+
+-   每次状态更新（swap/mint/burn/sync）时累加
+    
+-   使用的是**上一次 reserve**
+    
+
+### 四、TWAP 计算方式
+
+-   读取两个时间点的 cumulative：P1, P2
+    
+-   计算公式：`TWAP = (P2 - P1) / (T2 - T1)`
+    
+-   即时间区间内平均价格
+    
+
+### 五、抗操纵原理
+
+-   攻击者必须在整个时间窗口持续维持异常价格
+    
+-   成本高且易被套利者拉回
+    
+-   避免了使用瞬时价格被闪电贷操纵
+    
+
+* * *
+
+## 📌 今日总结
+
+-   今天的学习重点是协议的安全与可组合性设计
+    
+-   Flash Swap 的原子性 + lock 重入保护
+    
+-   TWAP 的时间积分机制
+    
+-   这些都是 DeFi 可组合操作的核心安全保障
+    
+-   对自己未来做链上系统和金融类合约设计非常有借鉴意义
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -132,6 +296,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # 📒 共学营 Day 4 学习笔记
 
@@ -250,6 +415,7 @@ liquidity = min(
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -337,6 +503,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -484,6 +651,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
