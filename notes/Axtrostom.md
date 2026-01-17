@@ -15,8 +15,157 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+感觉前两天干别的活有点懈怠了
+
+今天开始继续加油吧
+
+先整理一下上周有没有什么没完成的内容
+
+### 1.12-13 入门导读 & 初步理解
+
+1.  学习内容：
+    
+    1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分✅
+        
+    2.  [021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)✅
+        
+2.  拓展 & 辅助理解材料
+    
+    1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习✅
+        
+    2.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro✅
+        
+    3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)**✅**
+        
+3.  工具安装
+    
+    1.  工具安装指南：[https://web3intern.xyz/zh/remote-work-guide/✅](https://web3intern.xyz/zh/remote-work-guide/✅)
+        
+
+### 1.14-15 安全 & 合规
+
+1.  学习内容：
+    
+    1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分✅
+        
+    2.  021 学习以太坊第 2&3 章✅
+        
+2.  拓展 & 辅助理解材料
+    
+    1.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)**⭕**
+        
+    2.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**⭕**
+        
+    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
+        
+3.  工具安装
+    
+    1.  MetaMask / [Rabby](https://x.com/Rabby_io) 钱包安装 & 创建，并熟悉✅
+        
+
+### 1.16 实践、回顾与成果展示
+
+1.  复习回顾相关章节，完成未完成课程
+    
+2.  行业探索
+    
+    1.  知名开发者 & Builder X 关注清单
+        
+3.  实践 & 下周准备
+    
+    1.  开发环境并熟悉：[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)**⭕**
+        
+        1.  [Remix 使用教程](https://www.notion.so/2bc1a400ef948075ab7ec8b8259c7746?pvs=21)
+            
+4.  参加周五晚例会，分享本周感悟与学习笔记
+    
+
+### 1.12-13 入门导读 & 初步理解
+
+1.  学习内容：
+    
+    1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分✅
+        
+    2.  [021 学习以太坊第 1&2 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)✅
+        
+2.  拓展 & 辅助理解材料
+    
+    1.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro✅
+        
+    2.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)**✅**
+        
+    3.  [Uniswap V2 学习官方文档](https://docs.uniswap.org/contracts/v2/overview?utm_source=chatgpt.com)✅
+        
+
+### 1.14-15 安全 & 合规
+
+1.  学习内容：
+    
+    1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分✅
+        
+    2.  021 学习以太坊第 3&4 章✅
+        
+2.  拓展 & 辅助理解材料
+    
+    1.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)**⭕**
+        
+    2.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**⭕**
+        
+    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
+        
+
+### 1.16 实践、回顾与成果展示
+
+1.  复习回顾相关章节，完成未完成课程
+    
+2.  行业探索
+    
+    1.  知名开发者 & Builder X 关注清单
+        
+3.  实践与挑战 - Simple NFT
+    
+    1.  视频指导：入门级 Web2 to Web3 中的 Week 3, Day 1 - simple NFT✅
+        
+        -   **Link:** [**Speed Run Ethereum: Challenge 0 - Simple NFT**](https://www.youtube.com/watch?v=ej_RgaO1Pr0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=11)**✅**
+            
+    2.  挑战：[Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization) **（**[**中文版链接**](https://www.notion.so/Challenge-0-2afbbd63be8780dbbd56cb01490da15e?pvs=21)**）⭕**
+        
+4.  有余力、学习进度比较快的同学可尝试 Bounty 内容：[Challenge #5](https://speedrunethereum.com/challenge/over-collateralized-lending)
+    
+5.  参加周五晚例会，分享本周感悟与学习笔记
+    
+
+这块剩余没干完的活有
+
+-   [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)**⭕**
+    
+-   [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**⭕**
+    
+-   [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
+    
+-   开发环境并熟悉：[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)**⭕**
+    
+-   [Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization) **（**[**中文版链接**](https://www.notion.so/Challenge-0-2afbbd63be8780dbbd56cb01490da15e?pvs=21)**）⭕**
+    
+
+Rust基础的语法算是学完了，后面这段时间就持续刷题进行巩固吧
+
+今天先把这些东西补上吧
+
+之后干什么？
+
+1.  系统学一下 solidity ，做到能读懂，能使用 ai 辅助完成变成即可
+    
+2.  每天至少一道算法题
+    
+3.  该把论文想办法弄出来了
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -123,6 +272,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ### 一、 宏观背景与合规基本逻辑
 
@@ -286,6 +436,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ## w1d3
@@ -781,6 +932,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1719,6 +1871,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
