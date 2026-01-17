@@ -15,8 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+### Remix
+
+在浏览器中，不需要配环境、不需要安装，即可写代码。
+
+### 三个核心操作栏
+
+1.  File Explorers: 写代码的地方，跟普通编辑器一样
+    
+2.  Solidity Complier：检查代码是否能正常编译
+    
+3.  Deploy & Run：将编译好的合约，部署到链上，并且能进行交互
+    
+
+### 部署面板的设置
+
+-   Environment：选择要部署的链
+    
+-   Account：选择账户
+    
+-   Contract：选择要部署的合约
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ### 以太坊
 
 以太坊是由社区驱动的技术，为加密货币**以太币（ETH）和去中心化应用**提供动力
@@ -95,6 +120,7 @@ Layer2(Ethereum extensions): Layer 2 networks are created on top of Ethereum to 
 
 
 
+
 ### 区块链
 
 是一种去中心化的分布式账本技术，特点：安全、透明、不可篡改，由一系列按时间顺序相连的区块构成。
@@ -156,6 +182,7 @@ web3 不等于 web3.0
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
