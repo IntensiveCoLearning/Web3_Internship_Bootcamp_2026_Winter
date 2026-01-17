@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 总览
+
+# 详情
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 总览
 
 -   Remix中的例程学习Ballot——细节还挺多的
@@ -40,6 +48,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -147,6 +156,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -353,6 +363,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -461,6 +472,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
