@@ -15,13 +15,20 @@ WHUweb3Club|build in public
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+Day6！
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 Day5！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 打卡Day4
 
@@ -32,6 +39,7 @@ Day5！
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 1.14打卡
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -40,11 +48,13 @@ Day5！
 
 
 
+
 回看开营仪式+一些vibe coding
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
