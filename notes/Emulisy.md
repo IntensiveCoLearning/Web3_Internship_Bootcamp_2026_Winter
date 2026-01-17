@@ -35,7 +35,7 @@ Every Solidity file should start with a license identifier and the pragma versio
 
 * * *
 
-A contract is similar to a 'class' in object-oriented languages.
+A contract is similar to a ‘class’ in object-oriented languages.
 
 contract MyContract { // State variables (stored on the blockchain) uint256 public myNumber;
 
@@ -57,7 +57,7 @@ A. Value Types
 
 -   boolean: bool public isActive = true;
     
--   uint: Unsigned integer (positive only). 'uint256' is the standard.
+-   uint: Unsigned integer (positive only). ‘uint256’ is the standard.
     
 -   int: Signed integer (positive and negative).
     
@@ -66,7 +66,7 @@ A. Value Types
 
 B. Reference Types
 
--   string: string public name = "Solidity";
+-   string: string public name = “Solidity”;
     
 -   struct: Custom defined types. struct User { uint id; string name; }
     
@@ -140,9 +140,9 @@ while (x < 5) { // loop logic }
 
 * * *
 
--   require(condition, "message"): Reverts if condition is false. Used for inputs.
+-   require(condition, “message”): Reverts if condition is false. Used for inputs.
     
--   revert("message"): Aborts execution and reverts changes.
+-   revert(“message”): Aborts execution and reverts changes.
     
 -   assert(condition): Used for internal invariants (serious bugs).
     
@@ -174,6 +174,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # Smart Contract Development – Concise Notes  
 
@@ -397,6 +398,7 @@ RPC Providers
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -566,6 +568,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -758,6 +761,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
