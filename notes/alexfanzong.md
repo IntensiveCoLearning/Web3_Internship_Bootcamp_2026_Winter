@@ -15,8 +15,36 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+## 0基础法律人如何学习代码？
+
+今天和几位朋友聊起“法律人学代码”以及最近很火的“vibe coding”，发现误区还在。很多人以为是要去抢程序员的饭碗，或者只是为了顺手提升一下dirty work的效率。
+
+对于这个问题，我的底层思考是：**学习代码，本质上是法律思维的一次“工业化升级”。**
+
+### **1\. 告别“自然语言的模糊”，拥抱“形式语言的精准”**
+
+传统法律是用自然语言（Natural Language）写的，充满了歧义和解释空间（所以才有诉讼）。但在 Web3，**Code is Law**。 智能合约一旦部署，不仅是法律效力的问题，更是**物理执行**的问题。
+
+不懂代码逻辑的律师，在 Web3 世界里就像是“文盲”——你看不懂真正的“合同条款”（Solidity），你只能依赖翻译。
+
+**我们要学的不是 Syntax（语法），而是 Logic（逻辑）。** 语法可以交给 AI，但架构的逻辑必须由懂法律的人来设计。
+
+### 2.**AI 时代的“伪代码”思维 (Pseudo-code Thinking)**
+
+现在的律师不需要手敲出 function() , 但必须具备写“伪代码”的能力。
+
+在AI工具眼花缭乱的当下，**如何跟 AI 提问、明确自己写代码的目的、不断的修正，才是我们真正的工作流。**
+
+比如把复杂的法律条款，拆解成结构化、无歧义的流程图。这本身也是法律人的核心技能之一。
+
+**你可以不写代码，但你必须能定义代码的规则。**
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ### 【周研究总结分享】
 
 ## **重构链上契约：DAO 治理困局与双轨制解法**
@@ -26,6 +54,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -132,6 +161,7 @@ _Disclaimer：本文探讨的 RWA 架构基于国际通行的 Web3 实践，具�
 
 
 
+
 \-–
 
 \> **Copyright & License / 版权声明：**
@@ -222,6 +252,7 @@ LXDAO 的案例揭示了 Builder DAO 的真实面目：它更像是一个**数�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -346,6 +377,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
