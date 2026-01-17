@@ -15,8 +15,17 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+-   观看实习计划第一周例会回放
+    
+
+![截屏2026-01-17 21.03.07.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-17-1768655336019-__2026-01-17_21.03.07.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 今日计划
 
 -   回放AI及其基础概念
@@ -68,6 +77,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 今日计划
 
 -   查看web3安全和合规回放
@@ -79,6 +89,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # 1.领取水龙头测试币，铸造NFT
@@ -97,6 +108,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 
 
+
 # **目标计划：**
 
 -   **「Web3 行业全局介绍 & 岗位概览」回放，利用AI工具整理内容，今日同步更新Twitter和小红书**
@@ -111,6 +123,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
