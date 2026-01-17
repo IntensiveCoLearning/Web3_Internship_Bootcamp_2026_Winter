@@ -15,8 +15,17 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+-   **安全與合規**
+    
+
+![截圖 2026-01-17 晚上11.47.22.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ninggg666/images/2026-01-17-1768665231354-___2026-01-17___11.47.22.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 -   **Compound：去中心化借貸協議**  
     有點像是當鋪？  
     可把手上的 ETH 拿去抵押的概念  
@@ -66,6 +75,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ## **▵ 帳戶 & 數位錢包**
 
@@ -132,6 +142,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ## **▵ 以太坊概覽**
 
 1.  以太坊是什麼？跟比特幣差在哪？
@@ -171,6 +182,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
