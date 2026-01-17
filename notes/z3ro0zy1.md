@@ -15,8 +15,95 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+最近Prediction Market大火，借此机会也频繁尝试了钱包的交互功能。在使用像 Trust Wallet 或 MetaMask 这样的 Web3 钱包时，我经常会遇到**_确认Confirm_**和**_签名Signature_**这两个操作。虽然它们看起来都是点一下同意，但在底层的技术逻辑和安全影响上有本质区别。
+
+* * *
+
+**确认 (Confirm)**：通常指授权钱包发起一笔**链上交易**。这会消耗燃料费，并且会改变区块链的状态（比如转账、兑换代币）。
+
+**签名 (Signature)**：通常指你使用私钥对一段**信息**进行加密证明。它可以是**离线**的，用来证明我是这个钱包的主人，常用于登录网站或授权某些协议。
+
+| 特性 | 确认 (Confirm) | 签名 (Signature) |
+| 是否上链 | 是 | 通常不直接上链（离线或作为交易一部分） |
+| Gas 费用 | 需要消耗 Gas | 通常不需要（免费） |
+| 状态改变 | 改变账本 | 不改变账本（仅作为身份验证或授权） |
+| 典型场景 | 转账、DEX 交易、质押 | 登录 DApp、设置个人资料、Permit 授权 |
+
+在钱包里点击确认时，后台发生的物理过程就是：
+
+1.  包含谁发给谁、发多少、Gas是多少。
+    
+2.  用私钥对这一串数据进行数学运算。
+    
+3.  将原始数据和生成的签名组合在一起，形成一个**已签名的交易对象**。
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-17-1768652333296-image.png)
+
+既然私钥在web3中几乎确定一切，所以我想冷钱包为什么现在越来越被人重视？
+
+冷钱包是**私钥永不联网**。那么它如何完成链上交互？
+
+1.  **构造（联网端）：** 用手机或电脑（观察钱包）构造一个转账请求（未签名的交易）。
+    
+2.  **传输（未签名）：** 通过 USB、蓝牙或 **二维码**，将这个未签名的交易传给冷钱包硬件。
+    
+3.  **签名（硬件端）：** 硬件内部通过私钥对交易进行签名。**私钥在这个过程中始终闭环在芯片内。**
+    
+4.  **传回（已签名）：** 硬件将生成的“签名”传回给手机/电脑。
+    
+5.  **广播（联网端）：** 手机/电脑将这个带有签名的包裹发送到区块链网络。
+    
+
+> **总结：** 冷钱包存在的唯一目的，就是为了在不接触互联网的情况下，给那个“交易包裹”盖上你的数字私钥印章。
+
+* * *
+
+Some thoughts about the Prediction Markets, including Opinion and Polymarket.
+
+Honestly, although there are many top lawyers are defending their binary options nature, which may be a complicated economical definition, I don't understand that. However, it is cannot be doubted that those so-called prediction markets definitely are illegal in many regions. Be that as it may, nobody would ignore its impact, and someone believe that is the trend of future where gamble would become common and acceptable.
+
+**_I'd not like to talk about the Binary outcomes(1USD=1Yes share + 1 No share) and the prices as possibility._**
+
+**_I care about Settlement principles and its Core Philosophy!_**
+
+## 1.Settlement Principle
+
+Blockchain cannot inherently perceive the situations of real world, such as who won the president election? Polymarket utilizes the UMA Optimistic Oracle as the resolution.
+
+1.1 Proposal: Once an event concluded, anyone can propose the outcome by providing a security deposit.
+
+1.2 Challenge period: If no one disputes the proposed result with a certain timeframe, the result is confirmed as TRUTH and the market ends.
+
+1.3 Dispute resolution: If a challenge is created, the decision will be processed further by UMA token holders for a vote. Voters rely on the Schelling Point--the idea that in absence of communication, people tend to the most obvious factual answer. This is because voting with the majority or the common recognition is incentivized with rewards( the oppose voters security deposit), which means voting for an incorrect answer results in a financial penalty.
+
+For example:
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-17-1768655975951-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-17-1768655995355-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-17-1768656029787-image.png)
+
+## 2\. Core Philosophy
+
+It is more that just a betting platform, which underpinned a profound framework.
+
+## 2.1 Skin in the GAME
+
+unlike traditional polls or expert punditry. Prediction market requires participants to back their claims through real capitals like money. This financial commitment forces objectivity, because if a participant allow bias to affect their judgment, they face immediate economic loss.
+
+## 2.2 Information Aggregation
+
+The market acts as a powerful magnet, attracting individuals globally who possess insider information, proprietary data, or superior analytical models. These fragmented pieces of information are synthesized through trading into a single, accurate, and real-time price tag.
+
+Insider Example:
+
+![Image](https://pbs.twimg.com/media/G9uGLKmawAAo8jj?format=jpg&name=large)
+
+备考ielts中 😑
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 图灵完备
 
 图灵完备是计算机科学中最核心的概念之一。
@@ -140,6 +227,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 # **CEX入门研究**
 
 ```
@@ -228,6 +316,7 @@ _我觉得真的吸引人的有以下两大块_
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -314,6 +403,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
