@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+今天来打个卡, vibecode了一天.
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 看了一下这个  
 学习内容：
 
@@ -30,6 +36,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 1.  Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
     
@@ -45,6 +52,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 今天听了两个课程:
@@ -65,6 +73,7 @@ timezone: UTC+8
 
 
 
+
 今天主要参加了线上的两个会议:
 
 1.  每日的线上co-learning
@@ -77,6 +86,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
