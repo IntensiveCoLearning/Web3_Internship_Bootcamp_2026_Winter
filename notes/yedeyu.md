@@ -15,8 +15,14 @@ timezone: UTC-8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+-   参加 LXDAO 周会 [260118](https://x.com/lxdao_official/status/2012360045485580478?s=46)
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 -   观看了 [Web3 运行原理](https://youtu.be/WY8GtLbMRb4)
     
 -   观看了 [Web3 合规](https://youtu.be/DYgn0D_fVVQ)
@@ -28,11 +34,13 @@ timezone: UTC-8
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 -   阅读完 Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -57,6 +65,7 @@ timezone: UTC-8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
