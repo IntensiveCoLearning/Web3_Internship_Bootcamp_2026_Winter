@@ -15,8 +15,32 @@ Hi, I'm Yao, a junior developer
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+一個完整的以太節點，需要包括
+
+執行客戶端以及共識客戶端，想賺到質押受益還需要加上驗證端
+
+1.  執行客戶端 (Execution Client，EL)
+    
+    a.負責鏈上的業務邏輯以及狀態  
+    b.算交易
+    
+
+2共識客戶端
+
+a.跑pos,選區塊,投票
+
+b.他們都透過engine api進行溝通
+
+這兩個加起來就叫做全節點
+
+多加上validator，他就會是驗證節點
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 偷偷往後看了一些我有興趣的東西
 
 # **為什麼地址都是0x開頭呢**
@@ -37,6 +61,7 @@ Hi, I'm Yao, a junior developer
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 Rollup 是layer2 的主流路線，目的是要幫助L1 擴容，提高吞吐量
 
 Optimistic Rollup → 默認交易正確，只有錯誤的才要提出
@@ -54,6 +79,7 @@ ZK Rollup → 利用零知識證明
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 Rollup 是layer2 的主流路線，目的是要幫助L1 擴容，提高吞吐量
 
 Optimistic Rollup → 默認交易正確，只有錯誤的才要提出
@@ -68,6 +94,7 @@ ZK Rollup → 利用零知識證明
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
