@@ -15,8 +15,48 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+初步梳理下周分享会主题提纲——初探以太坊账户抽象
+
+以太坊账户抽象：从概念到实践
+
+一、什么是账户抽象？
+
+核心概念
+
+技术本质
+
+账户抽象的创新
+
+二、历史演进
+
+三、ERC-4337
+
+核心架构
+
+运行流程
+
+功能实现
+
+四、EIP-7702
+
+核心思想
+
+与 4337 的对比
+
+未来展望
+
+五、应用举例
+
+六、合规视角
+
+七、总结回顾
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **学习：香港的数字金融实验：IPO上链能否成为下一个风口？**
 
 时代背景
@@ -32,6 +72,7 @@ get hands dirty
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ERC-8004: 智能体的链上护照
 
@@ -60,6 +101,7 @@ ERC-8004: 智能体的链上护照
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -83,6 +125,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
