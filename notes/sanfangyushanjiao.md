@@ -15,13 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1.  学习内容：
+    
+    1.  Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分
+        
+    2.  021 学习以太坊第 4 章
+        
+    3.  学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
+        
+2.  拓展 & 辅助理解材料
+    
+    1.  [**Day 1: Scripting and Smart Contracts! Providers, Signers, and Wallets**](https://www.youtube.com/watch?v=m2AJAcWk394&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
+        
+    2.  [**Day 2: Reading and Writing to Contracts with Ethers.js**](https://www.youtube.com/watch?v=9qt35swYSUg&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=7)
+        
+3.  工具安装
+    
+    1.  开发环境并熟悉：[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
+        
+        -   [Remix 使用教程](https://www.notion.so/2bc1a400ef948075ab7ec8b8259c7746?pvs=21)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 1.16 实践、回顾与成果展示 1. 复习回顾相关章节，完成未完成课程 2. 行业探索 • 知名开发者 & Builder X 关注清单 3. 实践 & 下周准备 1. 开发环境并熟悉：Remix IDE • Remix 使用教程 4. 参加周五晚例会，分享本周感悟与学习笔记
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 ### 1.14-15 安全 & 合规
 
@@ -46,6 +71,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 12~13学习目标
@@ -161,6 +187,7 @@ EIP-4844 (Proto-Danksharding)：引入了Blob数据包，专门为L2提供廉价
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
