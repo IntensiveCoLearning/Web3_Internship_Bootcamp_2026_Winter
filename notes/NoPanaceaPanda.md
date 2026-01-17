@@ -15,8 +15,57 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+Saturday, January 17
+
+今天学习Remix IDE通识课程的时候发现了一位宝藏UP主
+
+链接挂在这里，感兴趣的小伙伴可以关注一波：[梁培利老师的个人空间-梁培利老师个人主页-哔哩哔哩视频](https://space.bilibili.com/220951871?spm_id_from=333.788.upinfo.head.click)
+
+他作为成都信息工程大学区块链工程专业讲师在校链协做了宣讲，我比较共鸣的点如下：
+
+![ad68e1c850f1b1c8316ac3a503f52524.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NoPanaceaPanda/images/2026-01-17-1768662704895-ad68e1c850f1b1c8316ac3a503f52524.png)
+
+有很多人把区块链技术和web3简单理解为炒币和投机，实则不然。web3技术可以弥补传统web2的痛点，而且传统web2将近饱和，而web3面临巨大的人才缺口，这个行业是充满活力的。
+
+今天还学习了**恒定乘积自动做市商算法**
+
+![8a08ba076fd21010f4aafbfeec168cc2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NoPanaceaPanda/images/2026-01-17-1768662988232-8a08ba076fd21010f4aafbfeec168cc2.png)
+
+1.  **核心公式**：x×y=k_x_×_y_\=_k_
+    
+    -   x_x_ = 池中 ETH 数量
+        
+    -   y_y_ = 池中 USDT 数量
+        
+    -   k_k_ = 常数
+        
+    -   任何交易必须保持 k_k_ 不变，因此买入或卖出会反向影响价格。
+        
+
+**2.三个案例**：
+
+**卖出 5 ETH**：获得 6,666.67 USDT，均价 1,333.33 USDT/ETH，相比初始价（2,000 USDT/ETH）**下跌 33.33%**。  
+→ **小规模交易已产生滑点**。
+
+**用 10,000 USDT 买入 ETH**：仅得 3.33 ETH，均价 3,003 USDT/ETH，**比初始价高出 50.15%**。  
+→ **大额买入会大幅推高价格**。
+
+**极端卖出 10,000 ETH**：价格几乎归零（0.2 USDT/ETH），滑点约 -99.99%。  
+→ **流动性不足时，大额交易会导致价格崩溃**。
+
+  
+池子越小（k_k_ 越小），价格波动越剧烈。**在真实投资前，先理解“流动性风险”如何无声吞噬资产**。计算的 S_S_ 值即是滑点比例。在真实交易中，若不设滑点容忍度，可能被套利机器人利用（即“夹子攻击”）。**“Not your keys, not your coins”**的另一面当你将资产存入流动性池，你信任的是数学公式与合约代码——但若池子流动性浅、代码有漏洞，资产仍会暴露于风险中。
+
+从“安全守则”跨入“池中数学”，在加密货币世界中，真正的安全不仅来自工具，更来自对系统运作机制的清醒认知。
+
+学习一些基础算法有助于深入理解web3世界运行的底层逻辑，希望未来编写智能合约能用到这些知识。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 Friday, January 16, 2026, 20:00-21:00 CST
 
 "Web3实习计划（冬季）第一周例会"
@@ -83,6 +132,7 @@ Friday, January 16, 2026, 20:00-21:00 CST
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 Thursday, January 15, 2026, 20:00-21:00 CST
 
 “AI及其基础概念分享会”
@@ -96,6 +146,7 @@ Thursday, January 15, 2026, 20:00-21:00 CST
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 Wednesday, January 14, 2026, 19:00-20:30 CST
@@ -168,6 +219,7 @@ Wednesday, January 14, 2026, 19:00-20:30 CST
 
 
 
+
 Tuesday, January 13, 2026, 20:00-21:00 CST
 
 **“Web3运行原理”笔记与思考：**
@@ -195,6 +247,7 @@ Tuesday, January 13, 2026, 20:00-21:00 CST
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
