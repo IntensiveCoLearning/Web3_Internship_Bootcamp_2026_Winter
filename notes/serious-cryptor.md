@@ -15,8 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+Date: 2026/1/17
+
+-   学习内容：《021以太坊》网络结构与节点类型
+    
+-   进展：学习了ETH网络与节点，整理了笔记
+    
+-   感悟：xiaohai老师对节点到客户端的整体通信模型讲解的很透彻，看了之后自己也能在整理笔记的时候构建起模型。ETH在节点与客户端也兼顾去中心化的思想，鼓励开发者自己搭建全节点，更好的提升用户的隐私性与康审查能力，并为ETH链带来更好的弹性。
+    
+-   疑惑：
+    
+
+notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy\_link](https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 Date: 2026/1/15
 
 -   学习内容：web3周会 + 《021以太坊》去中心化存储机制
@@ -33,6 +50,7 @@ notion笔记同步更新：[还在整理中ing...](https://www.notion.so/web3-2e
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 Date: 2026/1/15
 
@@ -52,6 +70,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 Date: 2026/1/14
 
 -   学习内容：web3合规会议 + web3安全会议
@@ -68,6 +87,7 @@ notion笔记同步更新：[https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -90,6 +110,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8029a48cf359223ea4
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
