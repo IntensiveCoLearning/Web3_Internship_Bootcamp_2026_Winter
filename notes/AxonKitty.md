@@ -15,8 +15,104 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+主题：Ethers.js 基础与交易脚本
+
+背景：有 Java/Python 后端经验，熟悉常规 API 调用，初次接触区块链脚本开发。
+
+1\. 为什么选择 Ethers.js？
+
+在 Web3 开发中，JavaScript 库是连接前端/后端与区块链节点的桥梁。虽然 Web3.js 存在时间更久，但 Ethers.js 目前似乎更受欢迎。从代码风格来看，Ethers.js 的模块化设计更好，且自带 TypeScript 定义，这对习惯强类型的 Java 开发者来说比较友好。
+
+2\. 开发环境配置
+
+-   **运行时**：基于 Node.js。
+    
+-   **模块系统**：视频中特意强调在 `package.json` 中添加 `"type": "module"` 以启用 ES6 的 `import` 语法。这比 Node 传统的 `require` 更接近 Python 的 import 风格，代码可读性更强。
+    
+-   **依赖管理**：
+    
+    -   `ethers`：核心库。
+        
+    -   `dotenv`：用于管理环境变量。
+        
+-   **安全性（关键）**：作为后端开发者，我们习惯将配置放在配置文件中。在 Web3 中，私钥（Private Key）就是最高权限的凭证。**绝对严禁**将私钥硬编码在脚本里，必须使用 `.env` 文件加载，并确保其在 `.gitignore` 列表中。这与我们在常规后端开发中保护数据库密码或 AWS Key 的逻辑一致，但风险更高（资产直接丢失）。
+    
+
+3\. 核心对象模型：Provider 与 Signer
+
+这部分可以类比数据库连接和权限管理：
+
+-   **Provider (提供者)**：
+    
+    -   **类比**：只读的数据库连接或 API 客户端。
+        
+    -   **功能**：负责连接区块链节点（如 Infura 或 Alchemy）。通过它我们可以读取链上数据（区块高度、余额、ENS 解析），但无法修改状态。
+        
+    -   **底层**：本质上是对 JSON-RPC 接口的封装。
+        
+-   **Signer / Wallet (签名者/钱包)**：
+    
+    -   **类比**：拥有“写”权限的认证用户 session。
+        
+    -   **功能**：持有私钥，用于对交易数据进行密码学签名。
+        
+    -   **逻辑**：区块链上的任何状态改变（转账、调用合约写方法）都需要消耗 Gas 并经过数字签名验证。`Wallet` 类通常继承自 `Signer`。
+        
+
+4\. 数据类型的大坑：BigNumber
+
+这是从 Python/Java 转到 JavaScript 开发 Web3 最不适应的一点。
+
+-   **问题**：以太坊的最小单位 Wei 是 $10^{18}$ 级别。JavaScript 的 `number` 类型基于 IEEE 754 双精度浮点数，会有精度丢失问题（类似 Java 的 `double` 或 Python 的 `float`）。
+    
+-   **解决方案**：Ethers.js 提供了 `BigNumber` 类（类似 Java 的 `BigDecimal` 或 Python 原生的无限精度 `int`）。
+    
+-   **最佳实践**：
+    
+    -   严禁使用 JS 原生运算符（`+`, `-`）直接操作涉及金额的数字。
+        
+    -   **格式化**：`ethers.utils.formatEther(bn)` —— 将链上的 BigNumber (Wei) 转换为人类可读的 String (ETH)。
+        
+    -   **解析**：`ethers.utils.parseEther("1.0")` —— 将字符串 (ETH) 转换为链上可用的 BigNumber (Wei)。
+        
+
+5\. 交易流程与异步处理
+
+视频演示了一个从测试网（Rinkeby）发送 ETH 的脚本。流程如下：
+
+1.  **初始化**：实例化 Provider，通过私钥实例化 Wallet 并连接 Provider。
+    
+2.  **构建交易**：定义接收方（`to`）和金额（`value`）。有趣的是，Ethers.js 支持直接传入 ENS 域名（如 `xx.eth`），库内部会自动解析为十六进制地址，类似 DNS 解析。
+    
+3.  **发送与等待**：
+    
+    -   `wallet.sendTransaction(tx)`：将签名后的交易广播到网络内存池（Mempool）。
+        
+    -   `await tx.wait()`：**关键步骤**。这与常规 HTTP 请求不同，HTTP 返回 200 通常意味着成功，但在这里，广播成功不代表交易成功。必须等待矿工打包并产出区块。这个 `await` 实际上是在轮询链上状态，直到确认交易被包含在某个区块中。
+        
+
+6\. 总结与思考
+
+今天的脚本编写解开了之前使用 MetaMask 时的黑盒逻辑。从代码层面看，区块链交互本质上就是：
+
+构建数据 -> 私钥签名 -> RPC 广播 -> 异步轮询确认。
+
+作为初学者，最大的风险点在于私钥管理和数值精度控制。接下来的重点应该是学习如何通过脚本与智能合约（ABI 接口）进行更复杂的交互。
+
+**To-Do List:**
+
+1.  在测试网申请更多测试币。
+    
+2.  尝试写一个脚本，批量查询一组地址的余额。
+    
+3.  深入理解 JS 的 Promise 和 async/await 机制，这在处理链上异步事件时至关重要。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 脚本编写与智能合约交互
 
 * * *
@@ -97,6 +193,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # Day4 ENS, DEX, Identity, Inventory, Sybil
 
@@ -338,6 +435,7 @@ NFT 并不是将图片直接“塞”进区块链，通常有以下两种方式�
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ### Todo List:
 
 -   学习以太坊第一章上下的混淆概念
@@ -497,6 +595,7 @@ A：
 
 
 
+
 ## 1 理论学习
 
 src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -555,6 +654,7 @@ src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
