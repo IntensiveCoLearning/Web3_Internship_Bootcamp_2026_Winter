@@ -15,8 +15,94 @@ timezone: UTC-5
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-16
+<!-- DAILY_CHECKIN_2026-01-16_START -->
+入门导读 & 以太坊基础理解（1.12–1.13）
+
+建立对 Web3 的整体认知。通过 _A Developer’s Guide to Building on Ethereum_ 的 Intro，对“区块链 ≠ 虚拟币”这一点有了更清晰的理解：区块链更像是一个去中心化的计算与结算基础设施，而以太坊在其中承担了全球共享状态机的角色。
+
+Wallets / Mnemonics / Keypairs，重点在责任的转移：
+
+\* 私钥=资产控制权，丢失或泄露几乎不可逆
+
+_助记词不是登录密码，而是_私钥的根源表示
+
+\*Web2 的找回机制在 Web3 中基本不存在
+
+结合《学习以太坊》第 1&2 章，对账户模型（EOA vs 合约账户）、Gas 的基本作用也有了初步概念，为后续安全内容打下基础。
+
+工具安装方面，按照官方指南完成了开发与使用环境的准备：
+
+\* 文档：\[[https://web3intern.xyz/zh/remote-work-guide/\](https://web3intern.xyz/zh/remote-work-guide/)](https://web3intern.xyz/zh/remote-work-guide/]\(https://web3intern.xyz/zh/remote-work-guide/\))
+
+\* 明显感受到 Web3 对环境一致性、插件安全性的要求比传统前端/后端更高。
+
+安全 & 合规认知（1.14–1.15）
+
+**1\. 安全层面**
+
+_ENS、DEX、NFT 等并不是“新概念集合”，而是围绕_\*资产映射、身份、流动性\*\*展开的基础设施组合
+
+_ERC20 vs ERC721 的核心区别在于_可替代性，这直接影响金融属性和监管风险
+
+_IPFS 解决的是“内容寻址”，但_不等于内容永存，Pin 策略本身也是中心化风险点
+
+**2\. 合规与风险**
+
+\* 同一套技术，在不同司法辖区可能有完全不同的法律后果
+
+\* 即使项目本身是“正经协议”，参与方式不当也可能涉及风险（如帮信、非法经营的边缘问题）
+
+\* 官方下载、自己核验、避免“榜单前三/群友链接”，这是最低级但最重要的安全原则
+
+MetaMask 的创建过程本身就是一次安全教育：
+
+\* 助记词不截图、不云存
+
+\* 插件来源与授权页面必须逐项核对
+
+实践工具 & 行业探索（1.16）
+
+**1\. 数据平台**
+
+\* DeFiLlama：\[[https://defillama.com\](https://defillama.com)](https://defillama.com]\(https://defillama.com\))
+
+\* 用于快速理解各赛道（DeFi、L2、Restaking 等）的 TVL 分布
+
+\* 也能直观看到叙事是否有真实资金支持
+
+\* Dune Analytics：\[[https://dune.com\](https://dune.com)](https://dune.com]\(https://dune.com\))
+
+\* 通过 SQL + Dashboard，将链上行为转化为可解释的数据
+
+\* 很多研究报告本质上就是 Dune 的再包装
+
+\* Etherscan：\[[https://etherscan.io\](https://etherscan.io)](https://etherscan.io]\(https://etherscan.io\))
+
+**2.行业视角的转变**
+
+Web3是一个结合：
+
+\* 分布式系统
+
+\* 金融工程
+
+\* 安全工程
+
+\* 法律与合规
+
+**阶段性总结**
+
+1\. 从用户视角 → **系统与风险视角**
+
+2\. 从“工具使用” → **机制理解**
+
+3\. 从“听故事” → **用数据验证叙事**
+<!-- DAILY_CHECKIN_2026-01-16_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 Web3 提供可信的数据和执行环境，AI 提供智能分析和自动化能力。
 
 **AI 在 Web3 中的作用**
@@ -73,6 +159,7 @@ Web3 提供可信的数据和执行环境，AI 提供智能分析和自动化能
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 ### 安全
 
 区块链相关工具（钱包、插件、客户端）**一旦被篡改，后果极重**。
@@ -123,6 +210,7 @@ Web3 提供可信的数据和执行环境，AI 提供智能分析和自动化能
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 **区块链基础**
 
 \* **定义**：区块链是去中心化的分布式账本，用于记录和验证交易。
@@ -148,6 +236,7 @@ Web3 提供可信的数据和执行环境，AI 提供智能分析和自动化能
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
