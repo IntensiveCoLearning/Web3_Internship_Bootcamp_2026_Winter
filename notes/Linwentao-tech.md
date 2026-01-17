@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+虽然之前已经接触并使用过 NFT，但通过这次重新实现一个最小化的 ERC-721 合约，我对 NFT 的核心结构和设计边界进行了更系统的梳理。
+
+在实现过程中，我再次确认 NFT 的本质并不是图片或内容本身，而是一条链上的所有权记录。合约真正负责的是tokenId的唯一性、NFT 与钱包地址之间的归属关系，以及通过tokenURL关联到链下的元数据。图片、音频等内容只是被引用的外部资源，而不是 NFT 的核心。
+
+此外，完整走了一遍合约部署、mint NFT 以及在区块浏览器中验证资产归属的流程，也再次加深了我对 Web3 特性的理解：资产直接绑定在地址上，而不是依赖某一个平台或应用存在。这种特性，在简单 NFT 这个场景下被体现得非常直接。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 这几天的学习让我对 Web3 的理解更上了一层。
 
 一开始重新理解了区块链本身：它不是某种神奇的数据结构，而是一个去中心化的网络系统。节点可以失效，但系统仍然运作。真正解决的问题不是“存数据”，而是在不互信的情况下如何协作，而智能合约本质上就是一个可验证的 escrow。
@@ -42,6 +52,7 @@ Day 5 更偏“实战体验”。我理解了 Gas、Nonce，以及 MetaMask 的 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ### **Day 3 — ENS、身份与 Uniswap**
 
 这一节通过创建新钱包账户、注册 ENS 和在 Uniswap 上换币，让我第一次真正理解了 Web3 的“身份”和“资产跟随性”。ENS 不只是一个好记的名字，而是一个链上 NFT，它把人类可读的身份（如 sanfordstout.eth）和钱包地址绑定在一起，并且在 Uniswap、Zapper 等不同应用中自动被识别。用 Uniswap 把 ETH 换成 DAI 时，我也理解了去中心化交易所并不是订单簿，而是由智能合约和流动性池自动定价运行的，这让我对 DeFi 的运作方式有了更直观的认识。
@@ -61,6 +72,7 @@ Day 5 更偏“实战体验”。我理解了 Gas、Nonce，以及 MetaMask 的 
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ## 1\. Web3 合规
@@ -127,6 +139,7 @@ ERC20、NFT 本质都是合约里的**记账表**，没有“币”，只有数�
 
 
 
+
 在day1的视频里比较抓住我眼球的是，视频首先介绍了blockchain的概念.What is blockchain from high level? It’s a system set up without any central control ad thousands of people from the world can communicate p2p. And of course it has many issues like gas and wallet issues. It’s kinda like linked list but its more about the network where all the nodes are participating together. If any of nodes got knocked out the whole network still continues working.
 
 其次介绍了blockchain中trust的概念，然后引用到了escrow这个term。首先提出了一个问题。How to to make a transaction for two parties if they don’t trust or don’t like each other. So in web3 the concept of escrow is executed by smart contract like a middle layer.
@@ -150,6 +163,7 @@ Factory不参与交易，不存Liquidity，不计算价格。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
