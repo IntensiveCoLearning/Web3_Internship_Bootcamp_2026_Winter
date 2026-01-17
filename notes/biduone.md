@@ -25,7 +25,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 # 开发环境
 
--   基于VSCode+hardhat搭建开发环境，学习solidity结构、关键词、语法
+-   基于VSCode+hardhat搭建开发环境，学习solidity结构、 状态变量， 函数， 函数修饰器
     
 -   尝试学习“Introduction to Smart Contracts” 和“Solidity by Example”，
     
@@ -73,6 +73,7 @@ timezone: UTC+8
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -102,6 +103,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 以太坊网络
@@ -178,6 +180,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -229,6 +232,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -303,6 +307,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
