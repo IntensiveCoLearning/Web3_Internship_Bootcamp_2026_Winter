@@ -17,11 +17,68 @@ enjoy it
 <!-- Content_START -->
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
-补补前两天的
+**钱包私钥个人主权**
+
+private key
+
+seed phrase 可以生成无限的私钥
+
+public key
+
+address
+
+**交易签名**
+
+交易=你做的事+手续费（gas fee）+防冲放序号（nonce）
+
+签名：私钥签名一段信息
+
+RPC节点可以通过公钥验证是你的消息和交易
+
+**区块链网络运行**
+
+gas price
+
+gas usage
+
+gas fee
+
+完整的周期：wallet——RPC/Node——Mempool——Builder/Validator——Block——Explorer
+
+eth在pos下大概需要12/13mins可以达到safe的状态
+
+pow 工作量证明 题难但是很好验证，hash
+
+pos 权益证明 交押金就能当记账员
+
+rpc背后一群节点
+
+**智能合约**
+
+区块链账本里可执行的代码
+
+在EVM（虚拟机）中运行
+
+code is law
+
+所有信息代码都可以查看，部署之后很难修改
+
+**区块链协议如何升级**
+
+EIP
+
+所有方向路径都是社区共同推进的
+
+**web3关键特性回顾**
+
+私钥证明你是谁，共识网络保证账本可信，智能合约让规则自动执行
+
+web3是解决一些信任和资金问题， 加密隐私抗审查
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 **web3行业岗位全局介绍**
 
@@ -94,11 +151,13 @@ web3垂直平台：smartdeer，[web3.career](http://web3.career)，remote3，cry
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 补上前三天的学习
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
