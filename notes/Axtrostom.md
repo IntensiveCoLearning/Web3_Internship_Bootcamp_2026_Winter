@@ -35,13 +35,13 @@ Web3 实习计划 2025 冬季实习生
     
     1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习✅
         
-    2.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro✅
+    2.  [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro✅
         
     3.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)**✅**
         
 3.  工具安装
     
-    1.  工具安装指南：[https://web3intern.xyz/zh/remote-work-guide/✅](https://web3intern.xyz/zh/remote-work-guide/✅)
+    1.  工具安装指南：[https://web3intern.xyz/zh/remote-work-guide/✅](https://web3intern.xyz/zh/remote-work-guide/%E2%9C%85)
         
 
 ### 1.14-15 安全 & 合规
@@ -58,7 +58,7 @@ Web3 实习计划 2025 冬季实习生
         
     2.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**⭕**
         
-    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
+    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
         
 3.  工具安装
     
@@ -92,7 +92,7 @@ Web3 实习计划 2025 冬季实习生
         
 2.  拓展 & 辅助理解材料
     
-    1.  [**Day 1: A Developer's Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro✅
+    1.  [**Day 1: A Developer’s Guide to Building on Ethereum**](https://www.youtube.com/watch?v=zuJ-elbo88E&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=1) - Intro✅
         
     2.  [**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)**✅**
         
@@ -113,7 +113,7 @@ Web3 实习计划 2025 冬季实习生
         
     2.  [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**⭕**
         
-    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
+    3.  [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
         
 
 ### 1.16 实践、回顾与成果展示
@@ -143,7 +143,7 @@ Web3 实习计划 2025 冬季实习生
     
 -   [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)**⭕**
     
--   [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
+-   [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)**⭕**
     
 -   开发环境并熟悉：[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)**⭕**
     
@@ -161,10 +161,238 @@ Rust基础的语法算是学完了，后面这段时间就持续刷题进行巩�
 2.  每天至少一道算法题
     
 3.  该把论文想办法弄出来了
+    
+
+* * *
+
+## [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
+
+### ENS 域名注册 (Ethereum Name Service)https://ens.domains/
+
+这是视频的核心演示部分，展示了如何将难记的十六进制地址转化为易读的名称（如 `sanfordstout.eth`）。
+
+本质是 NFT
+
+-   **类比 DNS**：ENS 之于以太坊地址，就像 DNS 之于 IP 地址。
+    
+-   **注册流程（两步交易）**：
+    
+    -   **Commit（提交）**：为了防止抢跑（Front-running），用户首先向智能合约提交一个哈希（Commitment）。这一步不包含具体的域名明文，旨在锁定请求。
+        
+    -   **Wait（等待）**：通常等待一分钟，确保 Commit 交易被打包。
+        
+    -   **Reveal（揭示）**：发送第二笔交易揭示域名并正式注册。Austin 解释了这是一种通过“提交-揭示”方案（Commit-Reveal Scheme）来防止恶意观察者在看到注册请求后提高 Gas 费抢注域名的博弈机制。
+        
+    
+    > 为什么需要使用两步交易的方式? 如果不采用两步机制，会发生 **抢跑攻击（Front-running）**：
+    > 
+    > 1.  你发送交易：“我要注册 `secretproject.eth`”。
+    >     
+    > 2.  恶意机器人在内存池看到这笔交易，发现这个名字很有价值。
+    >     
+    > 3.  机器人立刻发送一笔 Gas 费更高的交易：“我要注册 `secretproject.eth`”。
+    >     
+    > 4.  矿工优先打包机器人的交易，你注册失败，域名被抢注。
+    >     
+    > 
+    > 整个流程简单来说就是先把域名的承诺放到链上，之后再揭示承诺的信息，注册这个域名
+    > 
+    > 那么存在一个问题，怎么通过承诺来判断一个域名是否被注册过?还是说只在第二步中验证域名是否被注册过？
+    > 
+    > 答案是不检查，要是被注册过了就白花第一步的 Gas 了
+    
+-   **反向解析 (Reverse Record)**：演示了第三笔交易，将地址反向指向域名。这样当 DApp 读取该地址时，能自动显示为 `sanfordstout.eth`。
+    
+
+**ENS 架构简图**
+
+  ENS 主要由三个核心合约组成：
+
+1.  **Registry (注册表)：** 核心合约，记录所有域名及其拥有者，以及该域名对应的 Resolver 地址。
+    
+2.  **Registrar (注册器)：** 负责按照特定规则（例如每年付费、竞拍等）向用户分配域名的合约。
+    
+3.  **Resolver (解析器)：** 真正干活的合约。当钱包问“`sanford.eth` 的地址是多少？”时，Registry 会指引它去问 Resolver，Resolver 返回具体的地址。
+    
+
+**ENS是由谁运营？**
+
+-   **开发团队（ENS Labs）：** `ens.domains` 这个网站本身，以及 ENS 核心智能合约的开发工作，主要由 **ENS Labs**（前身为 True Names Ltd）负责。这是一家 DAO 非营利性质的组织，致力于开发和维护 ENS 标准。
+    
+
+**ENS 的域名与地址映射表存放在哪里？所有的全节点上吗？**
+
+-   **是的，存放在以太坊区块链的“状态（State）”中，因此每一个同步了最新状态的以太坊全节点（Full Node）都保存着这份完整的映射表。**
+    
+
+> 域名下面还可以有子域名，比如说这样
+> 
+> **主域名 (NFT):** `company.eth` -> 绑定到公司冷钱包/多签钱包。
+> 
+> **子域名 1:** `pay.company.eth` -> 绑定到财务收币地址。
+> 
+> **子域名 2:** `dev.company.eth` -> 绑定到开发者的地址。
+> 
+> **子域名 3:** `01.company.eth` -> 绑定到 1 号机器人的地址。
+
+### Web3 身份与库存 (Identity & Inventory)
+
+-   **身份的可移植性**：视频强调了 Web3 身份的特点——你的身份（Identity）和资产库存（Inventory）是跟随钱包的，而不是存储在某个特定应用的服务器上。
+    
+-   **实例演示**：
+    
+    -   登录 **ENS App** 时，应用识别出了用户。
+        
+    -   登录 **Uniswap** 时，右上角自动显示了 `sanfordstout.eth`。
+        
+    -   使用 **Zapper.fi** 时，无需连接钱包，仅输入域名即可查看该“角色”在链上的所有资产（ETH 和 DAI）。
+        
+
+### Uniswap 与去中心化交易 (DEX)
+
+-   **DEX vs CEX**：
+    
+    -   **CEX（中心化交易所）**：基于订单簿（Order Book）和中心化数据库，类似传统银行或股票交易。
+        
+    -   **DEX（去中心化交易所）**：基于智能合约储备池（Liquidity Pools）。Austin 将其比作一个“自动售货机”，里面存有两种资产（如 ETH 和 DAI），并通过算法（自动做市商 AMM）根据供需自动调节价格。
+        
+-   **实操**：演示了将部分 ETH 兑换为稳定币 DAI。Austin 提到这不仅是一次简单的转账，而是与持有巨大资产储备的智能合约进行交互。
+    
+
+### 稳定币 (Stablecoins) 与女巫抵抗 (Sybil Resistance)
+
+-   **DAI 的机制**：简要（且通俗地）解释了 DAI 作为一个去中心化稳定币，是如何通过超额抵押（Over-collateralized loans）、铸造/销毁机制以及 MakerDAO 的治理代币来维持与美元挂钩的。
+    
+-   **女巫攻击 (Sybil Attack)**：视频最后反思了刚才的操作——他们轻松创建了一个看似真人的“Sanford Stout”身份。这引出了 Web3 中的一个核心难题：如何区分通过算法生成的虚假账户和真实人类（Civil Resistance/Sybil Resistance）。
+    
+
+## [**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
+
+### 市场浏览与属性 (Marketplace & Properties)
+
+-   **平台体验**：展示了如何使用 OpenSea 浏览 NFT。
+    
+-   **属性与稀缺性**：解释了 NFT 的属性（Traits/Properties），例如某个头像的背景色或配饰。稀缺性是由智能合约中设定的总量（Total Supply）和属性的分布决定的。
+    
+-   **实用性 (Utility)**：NFT 不仅仅是图片，还可以作为门票（Token Gating）、投票权或游戏道具（如视频中提到的赛马、斗鸡游戏）。
+    
+
+### 铸造 NFT 的两种方式 (Minting Methods)
+
+视频演示了两种截然不同的铸造体验：
+
+-   **方式一：通过项目官网铸造 (On-Chain NFT)**
+    
+    -   他们访问了一个名为 "MetaAvatar" 的项目网站。
+        
+    -   **On-Chain（全链上）**：这组 NFT 特别之处在于它的图像（SVG代码）是直接存储在以太坊智能合约里的，而不是存储在外部服务器。
+        
+    -   **互操作性测试**：铸造完成后，他们尝试在 OpenSea、Zapper、Rarible 等不同平台查看该 NFT。Austin 指出，某些平台（如 Rarible）没有及时显示或审查了某些内容，这体现了**Web2 平台（前端）的审查性**与**Web3 协议（后端）的抗审查性**之间的差异——只要链上确认了，你就拥有它，无论前端是否显示。
+        
+-   **方式二：通过 Etherscan 直接交互 (Direct Contract Interaction)**
+    
+    -   Carlos 部署了一个简单的测试网（Rinkeby）NFT 合约。
+        
+    -   **Power User 操作**：他们没有使用任何前端网页，而是直接在 **Etherscan** 的 "Write Contract" 页面，连接钱包并调用 `mint` 函数。
+        
+    -   这展示了只要合约开源且经过验证，用户可以直接绕过项目方的前端与智能合约交互。
+        
+
+### NFT 的存储层：IPFS vs. HTTP
+
+这是视频中最硬核的技术部分，Austin 详细拆解了 NFT 到底是什么。
+
+-   **NFT 的本质**：在 ERC-721 标准下，你拥有的其实是一个 `TokenID`（例如 #1）。
+    
+-   **元数据 (Metadata)**：智能合约中有一个 `tokenURI` 函数，它指向描述这个 NFT 的文件（JSON格式，包含名称、描述、图片链接）。
+    
+-   **IPFS (星际文件系统)**：
+    
+    -   视频演示了如何通过 Etherscan 读取 `tokenURI`，获取一个 IPFS 哈希值。
+        
+    -   **内容寻址 (Content Addressing)**：Austin 演示了如果修改文件内容（Buffalo -> Bison），哈希值就会彻底改变。这保证了 **不可篡改性**。
+        
+    -   **中心化风险 (Rug Pull)**：Austin 警告说，如果 NFT 的 `tokenURI` 指向的是一个普通的 HTTP 链接（如 `aws.amazon.com/my-nft.png`），项目方随时可以把图片换成其他东西或者直接删库跑路。只有存储在 IPFS 或全链上的 NFT 才是相对安全的。
+        
+    
+    > **什么是 IPFS？**
+    > 
+    > **IPFS (InterPlanetary File System，星际文件系统)** 是一个点对点（P2P）的分布式文件存储和传输协议。它的目标是取代 HTTP，构建一个更快、更安全、更开放的 Web。
+    > 
+    > **最核心的区别：**
+    > 
+    > -   **HTTP (Web2):** 基于**位置**寻址 (Location-based)。
+    >     
+    >     -   _“去阿里云深圳机房的 X 服务器找_ `photo.jpg`_。”_
+    >         
+    >     -   缺点：如果服务器挂了，或者文件被删了，你就找不到了（404）。
+    >         
+    > -   **IPFS (Web3):** 基于**内容**寻址 (Content-based)。
+    >     
+    >     -   _“我要找哈希值为_ `QmAbC...` _的那张照片，我不关心它在谁的电脑里，谁有就给我传一份。”_
+    >         
+    >     
+    > 
+    > **IPFS 的原理（简单版）**
+    > 
+    > 1.  **内容寻址 (Content Addressing) —— 视频中提到的 "Cid"**
+    >     
+    > 
+    > 这是 IPFS 的灵魂。 当你把一张图片上传到 IPFS，系统会对文件内容进行哈希计算（SHA-256），生成一个唯一的指纹，叫 **CID (Content ID)**。
+    > 
+    > 2.  **默克尔有向无环图 (Merkle DAG)**
+    >     
+    >     1.    IPFS 不会把大文件直接存进去，而是像拼图一样：
+    >         
+    >     2.    **切片：** 把大文件（比如一部电影）切成每块 256KB 的小碎片。
+    >         
+    >     3.    **哈希：** 给每个碎片算一个哈希。
+    >         
+    >     4.    **树状结构：** 用一个根哈希（Root Hash）把这些碎片连起来。 这使得 IPFS 可以去重（大家都有同样的文件头，只存一份即可）和并行传输。
+    >         
+    > 3.  **分布式哈希表 (DHT) —— 怎么找到文件？**
+    >     
+    >     1.    当你告诉网络“我要下载 `QmAbC...`”时：
+    >         
+    >     2.  你的电脑会询问附近的节点：“你知道谁有 `QmAbC...` 吗？”
+    >         
+    >     3.  网络通过 DHT（类似一个去中心化的电话簿）快速定位到拥有这个文件碎片的节点（可能是你的邻居，也可能是地球另一端的人）。
+    >         
+    >     4.  **点对点传输：** 你的电脑同时从几十个节点下载不同的碎片，拼成完整文件。
+    >         
+    > 4.  **inning (固定) —— 关键的“坑”**
+    >     
+    >     1.    视频里提到了一点：**IPFS 不是魔法硬盘。** IPFS 节点（比如你自己的电脑）有垃圾回收机制。如果你下载了一个文件，过段时间不看，缓存会被自动清理。
+    >         
+    >     2.  **问题：** 如果你是某个冷门 NFT 的唯一拥有者，且你关机了，别人就无法通过 IPFS 下载这个 NFT 的图片了（虽然链上的哈希还在）。
+    >         
+    >     3.  **解决：** 你需要 **"Pin"**（大头针钉住）这个文件。这通常由 Infura、Pinata 这样的服务商来做（类似 Web3 的云盘），他们承诺永远保持服务器开机并“钉住”你的文件，确保它永远在线。
+    >         
+    
+
+### 代码层面的理解 (Solidity Logic)
+
+Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungible）与非同质化代币（Non-Fungible）的区别：
+
+-   **Fungible (如 ERC-20)**：使用 `mapping(address => uint256) balance`。主要记录“**谁有多少个**”。转账只是在一个大账本上加减数字。
+    
+-   **Non-Fungible (如 ERC-721)**：使用 `mapping(uint256 => address) owner`。主要记录“**这个 ID 归谁**”。转账是将特定 ID 的拥有者修改为新地址。
+    
+-   **全链上 SVG**：展示了如何在 Solidity 中用代码拼接字符串来生成 SVG 图像（如 `<circle cx="..." />`），使得图像数据完全存在区块链上。
+    
+
+### 总结
+
+-   **转账的本质**：并没有文件在网线中传输，所有人只是在同步更新同一个去中心化的账本（状态机）。
+    
+-   **版税 (Royalties)**：简要提及开发者可以在合约中写入版税逻辑，让创作者在二级市场交易中持续获利。
+    
+-   **核心观念**：从“用户”转变为“开发者”，学会查看合约源码、理解元数据存储位置（On-chain vs IPFS vs Centralized Server）是判断 NFT 价值和安全性的关键。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## Unphishable 钓鱼攻防挑战
 
@@ -272,6 +500,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ### 一、 宏观背景与合规基本逻辑
@@ -436,6 +665,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -932,6 +1162,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1871,6 +2102,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
