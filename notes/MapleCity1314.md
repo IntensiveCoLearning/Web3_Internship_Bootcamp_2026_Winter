@@ -15,8 +15,142 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
+
+### 1\. **什么是Uniswap？**
+
+Uniswap 是一个去中心化的交易协议，它通过智能合约来提供交易服务，允许用户无需通过传统的订单簿系统即可进行代币交换。它通过自动化做市商（AMM）算法来实现代币交易，而不需要订单簿。其目的是提供无需信任的、无需许可的交易方式。
+
+### 2\. **Uniswap如何工作？**
+
+Uniswap 使用的是自动化做市商（AMM）模型，而不是传统的基于订单簿的交易系统。AMM通过提供流动性池（Liquidity Pool）来支持交易。每个流动性池由两种代币组成，例如ETH和USDT。交易者可以通过这些池进行交换，而流动性提供者（LP）则提供资金来维护这些池，并通过交易费获得奖励。
+
+-   **流动性池：** 每个池包含两种代币，池中的代币按一定比例存入（例如1:1比例）。每次交易会对池中的代币比例进行微小调整。
+    
+-   **自动化做市商：** 通过智能合约自动执行买卖交易，不依赖于买家和卖家的相互匹配。价格根据池中两种代币的比例自动计算。
+    
+
+### 3\. **如何使用Uniswap进行交易？**
+
+1.  **连接钱包：** 使用如MetaMask等钱包连接Uniswap。
+    
+2.  **选择代币：** 选择你想交换的代币，输入金额。
+    
+3.  **确认交易：** 查看交易的汇率和预计的手续费，确认交易。
+    
+4.  **执行交易：** 钱包会弹出提示，确认交易后就会执行，交易完成后你会收到目标代币。
+    
+
+### 4\. **如何成为流动性提供者？**
+
+作为流动性提供者，你需要将两种代币存入Uniswap的流动性池。例如，你可以选择ETH和USDT的流动性池，按比例存入这两种代币。作为回报，你将获得池中的流动性提供者代币（LP代币），并根据你在池中所占的比例获得交易费。
+
+### 5\. **风险与注意事项**
+
+-   **无常损失（Impermanent Loss）：** 如果池中的两种代币价格波动很大，你可能会遇到无常损失，即你提供的流动性在一段时间后可能会导致你亏损。
+    
+-   **交易费用：** 每次交易都会产生交易费用（通常为0.3%），这笔费用会分配给流动性提供者。
+    
+-   **代币的安全性：** 与所有DeFi项目一样，Uniswap的智能合约可能存在漏洞，所以需要谨慎操作。
+    
+
+### 安装依赖
+
+首先，我们需要安装`web3.js`库来与以太坊区块链进行交互。可以通过以下命令安装：
+
+```bash
+npm install web3
+```
+
+### 设置Web3连接
+
+在代码中，我们需要连接到以太坊网络，通常我们会使用像Infura这样的服务来连接到以太坊主网。
+
+```javascript
+const Web3 = require('web3');
+
+// 使用Infura或其他服务提供的RPC URL
+const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID'));
+```
+
+### 获取账户信息
+
+我们假设你已经在MetaMask或其他钱包中有一个账户。通过web3.js，我们可以获取钱包的地址。
+
+```javascript
+// 获取账户地址
+async function getAccount() {
+  const accounts = await web3.eth.getAccounts();
+  return accounts[0]; // 获取第一个账户
+}
+
+getAccount().then(account => {
+  console.log('当前账户地址：', account);
+});
+```
+
+### 与Uniswap智能合约交互
+
+Uniswap的智能合约是基于以太坊ERC-20标准的代币交换协议，因此我们可以通过合约地址和ABI与其交互。
+
+1.  **Uniswap的合约地址**：  
+    Uniswap的V2合约地址（比如ETH和USDT的交易对）可以在etherscan上找到。你需要在实际代码中填写正确的合约地址。
+    
+2.  **ABI**：ABI是合约的应用二进制接口，它定义了如何与智能合约进行交互。在Uniswap的情况下，ABI可以在Uniswap的GitHub上找到，或者你可以从etherscan获取。
+    
+
+假设我们要交易ETH和USDT的代币对：
+
+```javascript
+const uniswapRouterABI = [ /* Uniswap Router合约ABI */ ];
+const uniswapRouterAddress = '0x5C69bEe701ef814a2B6a3EDD47dB8fD5d42a08b2'; // Uniswap V2的Router合约地址
+
+const uniswapRouter = new web3.eth.Contract(uniswapRouterABI, uniswapRouterAddress);
+
+// 交换ETH为USDT的函数
+async function swapETHForUSDT(amountInETH) {
+  const account = await getAccount();
+  
+  // ETH转为Wei，1ETH = 10^18 Wei
+  const amountInWei = web3.utils.toWei(amountInETH.toString(), 'ether');
+  
+  const path = ['0xC02aaA39Cc39cB917f28A9C8aD9bF5014b7F8F7B', '0xdac17f958d2ee523a2206206994597c13d831ec7']; // WETH -> USDT 地址
+  const to = account; // 交易接收地址
+  const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20分钟后的截止时间
+  
+  const tx = await uniswapRouter.methods.swapExactETHForTokens(
+    0, // 最小输出数量，设为0表示接受任何数量
+    path,
+    to,
+    deadline
+  ).send({
+    from: account,
+    value: amountInWei
+  });
+  
+  console.log('交易成功！', tx);
+}
+
+// 调用函数进行交易
+swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
+```
+
+### 解释：
+
+1.  **合约ABI和地址**：我们用Uniswap的合约地址和ABI创建了一个`uniswapRouter`对象，这样我们可以调用Uniswap的`swapExactETHForTokens`方法。
+    
+2.  **交易路径**：我们设置了ETH和USDT的交易路径，`path`数组中包含了两种代币的地址——WETH（Wrapped ETH）和USDT。
+    
+3.  **交换ETH为USDT**：在调用`swapExactETHForTokens`时，我们传入了ETH的数量、交易路径、接收地址和交易截止时间。
+    
+4.  **发送交易**：通过调用`send()`方法，我们发起了交易。此时，钱包会要求用户签名并发送交易。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 \# 深度思考：Web3 + AI 的终局——隐私计算与无许可代理（Trustless Agents）
 
 \## 1. 核心论点：从“工具”到“经济主体”的跃迁
@@ -152,6 +286,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ### 传统LLM的核心局限
 
@@ -555,6 +690,7 @@ Agent AI 则走向了完全不同的方向。
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -664,6 +800,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -778,6 +915,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
