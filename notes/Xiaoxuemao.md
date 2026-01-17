@@ -15,8 +15,34 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+现在 Ethers.js / Web3.js 已经不怎么使用了，大家现在基本上都是用的 Viem
+
+只有在“创建合约的同一笔交易中”调用时才会真正移除代码，否则只会清空余额而不会删掉合约代码和历史
+
+**Solidity** 是以太坊上最普遍使用的合约语言，拥有完整生态系统，包括 Truffle、Hardhat、OpenZeppelin 等框架，以及大量文档、库与教程支持。
+
+**配套生态**包括：
+
+Remix：浏览器 IDE，适合入门和小 demo；
+
+Hardhat：脚本化部署、网络 forking、本地链；
+
+Foundry：极速测试（Rust 写的 CLI 工具链）、fuzzing、主网 fork；
+
+OpenZeppelin Contracts：ERC-20/721/1155、AccessControl、Governor 等标准合约库，审计充分、社区采用率极高。
+
+**合约元数据**（Contract Metadata）
+
+定义：这是一个 JSON 文件，包含了关于合约的额外信息，例如： 编译器版本和设置、源代码路径或其IPFS/Swarm等去中心化存储的引用、ABI、NatSpec 文档（如果在代码里写了）
+
+Solidity 编译器会默认生成这一文件，并且（默认）把它的 IPFS 哈希通过 CBOR 编码附加在运行时代码的尾部。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **去中心化交易所（DEX）**
 
 **恒定乘积公式**：x \* y = k
@@ -40,6 +66,7 @@ MakerDAO 是一个去中心化的借贷协议，DAI，Sky，USDS。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 即使别人截获了你已成功上链的交易数据，在你账户 nonce 已经前进的情况下，**再次**广播这笔交易**会被**直接**拒绝**；Nonce：阻止“把你签过的交易拿出来复读” 。
 
@@ -120,6 +147,7 @@ SpoonOS：Web3
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 **世界各势力对加密市场的态度趋势**
 
 -   1\. 美国监管框架
@@ -189,6 +217,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式
 
 
 
+
 C/C++性能好但不安全；
 
 Java/C#拥有GC，安全但性能不行；
@@ -244,6 +273,7 @@ Discovery 协议，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
