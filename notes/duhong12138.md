@@ -15,13 +15,20 @@ web3链上分析，亿级交易员
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+学习了今天的内容
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 学习了今天的内容
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 学习了今天的ai内容
 <!-- DAILY_CHECKIN_2026-01-16_END -->
@@ -30,11 +37,13 @@ web3链上分析，亿级交易员
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 建立了web3的安全知识
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
