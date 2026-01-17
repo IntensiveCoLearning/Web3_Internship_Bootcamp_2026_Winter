@@ -15,8 +15,20 @@ wosunjian
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1.完成钱包基本操作,在领水网站上pow 挖矿获取测试币
+
+2.铸造了第一个nft
+
+![mfnft.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/wosunjian123/images/2026-01-17-1768657498719-mfnft.png)
+
+3.正在学习以太坊基础知识
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # Web3 运行原理学习笔记
 
 ### **一、 核心概念：钱包与主权**
@@ -451,6 +463,7 @@ ok link 链上溯源工具
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 打卡,学习了web3法律法规方面的知识
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -459,11 +472,13 @@ ok link 链上溯源工具
 
 
 
+
 在co-learning中听老师/同学探讨了web3和DAO未来发展方向,打卡.其他的还在学
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
