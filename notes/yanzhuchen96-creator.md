@@ -19,7 +19,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 # 1.17 学习笔记
 
-今天我跟着教程 [Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization) **（**[**中文版链接**](https://www.notion.so/Challenge-0-2afbbd63be8780dbbd56cb01490da15e?pvs=21)\*\*）\*\*按照步骤学习和操作，完成了人生中的第一个 Web3 小项目，搭建并部署了一个 NFT dApp。
+今天我跟着教程 [Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization) （[**中文版链接**](https://www.notion.so/Challenge-0-2afbbd63be8780dbbd56cb01490da15e?pvs=21)）按照步骤学习和操作，完成了人生中的第一个 Web3 小项目，搭建并部署了一个 NFT dApp。
 
 先是在 AI 的帮助下搭建好了环境 （因为教程主要面向有基础的人群，所以没对这一部分有过多描述），然后按照文档启动了三个终端窗口：第一个跑 yarn chain 启动本地区块链，第二个跑 yarn deploy 部署合约，第三个跑 yarn start 启动前端。接着打开浏览器访问 localhost:3000，mint 了一些 NFT，还挺可爱的。
 
@@ -33,7 +33,7 @@ Web3 实习计划 2025 冬季实习生
 
 接着用 yarn account 查看部署账户的地址和二维码，然后从我的 MetaMask 转了一些 Sepolia 测试网 ETH 过去。测试网的币是免费领的，不值钱，但部署合约需要支付 Gas 费，所以这一步必不可少。
 
-充值完成后，我运行 yarn deploy --network sepolia，输入密码，合约就开始部署了。终端显示了部署交易的哈希值和合约地址 0x9f66652be09f29E52fD7E1F15096A7e932684Bd9。我把这个地址粘贴到 Sepolia Etherscan 里搜索，真的能看到合约已经上链了，虽然还没有交易记录，但标记为 "Contract"，说明部署成功了，有点小激动。
+充值完成后，我运行 yarn deploy --network sepolia，输入密码，合约就开始部署了。终端显示了部署交易的哈希值和合约地址 0x9f66652be09f29E52fD7E1F15096A7e932684Bd9。我把这个地址粘贴到 Sepolia Etherscan 里搜索，真的能看到合约已经上链了，虽然还没有交易记录，但标记为 “Contract”，说明部署成功了，有点小激动。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yanzhuchen96-creator/images/2026-01-17-1768649239059-image.png)
 
@@ -41,7 +41,7 @@ Web3 实习计划 2025 冬季实习生
 
 本地的前端只有我自己能访问，要让别人看到就得部署到公网。跟着教程走，我先在终端上运行 yarn vercel:login，浏览器自动打开让我用 GitHub 账号登录。登录成功后回到终端，运行 yarn vercel 开始部署。
 
-中间一直回车，确认一些基本的默认设置，一路顺利。等了一两分钟 build，最后给了我两个链接：一个是 Vercel 的管理后台（Inspect），一个是公开访问网址（Production）。我点开 Production 链接 https://nextjs-3bwzotaht-cydots-projects.vercel.app，看到了我的 NFT 网站，虽然页面显示没找到 NFT（因为我还没在测试网上铸造），但网站本身已经活了。
+中间一直回车，确认一些基本的默认设置，一路顺利。等了一两分钟 build，最后给了我两个链接：一个是 Vercel 的管理后台（Inspect），一个是公开访问网址（Production）。我点开 Production 链接 [https://nextjs-3bwzotaht-cydots-projects.vercel.app](https://nextjs-3bwzotaht-cydots-projects.vercel.app)，看到了我的 NFT 网站，虽然页面显示没找到 NFT（因为我还没在测试网上铸造），但网站本身已经活了。
 
 最后就是运行 yarn test 进行一些自动化测试功能，不太明白具体是在干嘛，不过这不是今天的重点。
 
@@ -51,7 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 ## 一些感想
 
-首先就是这次的实践终于让我对 Web3 开发栈有了更清晰的初步认识，以前只知道 Next.js, Solidity, blahblah... 各自是什么东西，但是不知道它们具体如何一起运转，支撑起一个项目。一开始觉得很复杂，但实际跟着流程走下来，发现 Scaffold-ETH 把很多底层细节都封装好了，只要理解核心概念（合约是什么、前端怎么调用、部署到哪里），操作上并不难。
+首先就是这次的实践终于让我对 Web3 开发栈有了更清晰的初步认识，以前只知道 Next.js, Solidity, blahblah… 各自是什么东西，但是不知道它们具体如何一起运转，支撑起一个项目。一开始觉得很复杂，但实际跟着流程走下来，发现 Scaffold-ETH 把很多底层细节都封装好了，只要理解核心概念（合约是什么、前端怎么调用、部署到哪里），操作上并不难。
 
 最大的收获是真正理解了"去中心化"的含义。我的智能合约部署在公共区块链上，任何人都能调用，我自己也没法关闭或修改。前端部署在 Vercel 上，全世界都能访问。NFT 的所有权记录在链上，不依赖任何公司的服务器。这种感觉和以前写传统 Web 应用完全不同，我发布的不只是一个网站，而是一个真正意义上的去中心化应用。
 
@@ -67,6 +67,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## 学习 Solidity 推荐路线
@@ -139,6 +140,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -187,6 +189,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -248,6 +251,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -334,6 +338,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
