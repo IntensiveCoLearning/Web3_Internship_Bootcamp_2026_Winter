@@ -15,8 +15,95 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 准备以太坊开发环境
+
+## [Foundry安装](https://getfoundry.sh/introduction/installation)
+
+```
+curl -L https://foundry.paradigm.xyz | bash
+```
+
+-   如果你是windows显示bash不是内部命令或者外部命令则需要借助[git bash](https://git-scm.com/install/)或者wsl，下面简单介绍git bash流程
+    
+
+进入官网下载，安装时勾选"Use Git and optional Unix tools from the Command Prompt"，将bash相关命令添加到PATH
+
+```
+bash --version
+```
+
+配置环境变量后再验证
+
+```
+where bash
+```
+
+返回bash完整路径即成功
+
+![{D4134E63-AFCB-426C-BF44-D03B6B3EF3AD}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-17-1768655107916-_D4134E63-AFCB-426C-BF44-D03B6B3EF3AD_.png)
+
+按照它说的运行source …再运行foundryup
+
+如果你想安装由[Tempo 的 Foundry 分支](https://github.com/tempoxyz/tempo-foundry)分发的二进制文件
+
+```
+foundryup -n tempo
+```
+
+![{2ED67B66-B616-4824-993E-94FADD4D74F6}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-17-1768655284812-_2ED67B66-B616-4824-993E-94FADD4D74F6_.png)
+
+### **从源头构建**
+
+**先决条件**
+
+你需要[Rust](https://rust-lang.org/)编译器和 Cargo（Rust 的包管理器）。最简单的安装方法是使用[https://rustup.rs/](https://rustup.rs/)
+
+Foundry 通常只支持使用最新稳定版 Rust 进行构建。如果您使用的是旧版 Rust，可以通过以下命令进行更新`rustup`：
+
+```
+rustup update stable
+```
+
+**建筑**
+
+[您可以使用Foundryup](https://getfoundry.sh/introduction/installation#using-foundryup)提供的各种标志：
+
+```
+foundryup --branch masterfoundryup --path path/to/foundry
+```
+
+或者，您也可以使用以下命令通过 Cargo 安装：
+
+```
+cargo install --git https://github.com/foundry-rs/foundry --profile release --locked forge cast chisel anvil
+```
+
+[您也可以从Foundry 代码库](https://github.com/foundry-rs/foundry)的本地副本手动构建：
+
+```
+# clone the repository
+git clone https://github.com/foundry-rs/foundry.git
+cd foundry
+# install Forge
+cargo install --path ./crates/forge --profile release --force --locked
+# install Cast
+cargo install --path ./crates/cast --profile release --force --locked
+# install Anvil
+cargo install --path ./crates/anvil --profile release --force --locked
+# install Chisel
+cargo install --path ./crates/chisel --profile release --force --locked
+```
+
+### **使用 GitHub Actions 进行 CI 安装**
+
+有关在 CI 流水线中设置 Foundry 的说明，请参阅[foundry-rs/foundry-toolchain](https://github.com/foundry-rs/foundry-toolchain) GitHub Action。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
 
 ## Gas费用的构成与调整
@@ -125,6 +212,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -310,6 +398,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -529,6 +618,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -791,6 +881,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
