@@ -17,13 +17,168 @@ Base上海 美本美硕 工作三年DS/DA
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+今天用gemini老师辅助学了一下remix。记录一下，明天继续。
+
+## 一、 Remix 操作全流程
+
+### 1\. 编写 (Development)
+
+在 `contracts` 文件夹新建 `.sol` 文件。这是定义“规则”的地方。
+
+### 2\. 编译 (Compilation)
+
+-   **动作**：点击左侧第二个图标（S形），点击 **Compile**。
+    
+-   **结果**：将人类能读懂的 Solidity 代码变成区块链能运行的 **Bytecode（字节码）**。
+    
+-   **注意**：只要改了代码（哪怕只是加个空格），都要重新 Compile。
+    
+
+### 3\. 部署 (Deployment)
+
+-   **动作**：点击左侧第三个图标（以太坊形），点击 **Deploy**。
+    
+-   **结果**：在模拟的区块链环境（Remix VM）中，为代码创建一个**实例**。
+    
+-   **重要**：每次 Deploy 都会生成一个**全新的、带唯一地址**的合约。
+    
+
+### 4\. 交互 (Interaction)
+
+-   **橙色按钮 (Functions)**：如 `set`、`increment`。它们是**动作**，会改写数据，需要消耗 Gas。
+    
+-   **蓝色按钮 (Variables/Getters)**：如 `storedData`。它们是**状态**，点一下就是“看一眼”当前数值。
+    
+
+* * *
+
+## 二、 核心概念深挖：`storedData` 与 `increment`
+
+### 1\. `storedData` 是“状态变量” (State Variable)
+
+-   **定义**：它是永久存储在区块链“硬盘”上的数据。
+    
+-   **类比**：它是数据库表里的一个 **Cell（单元格）**。
+    
+-   **可见性**：因为标记了 `public`，Remix 会自动给它配一个**蓝色按钮**，让你随时查询它的值。
+    
+
+### 2\. `increment` 是“改变状态的函数” (State-Changing Function)
+
+-   **定义**：它是一段计算逻辑。
+    
+-   **逻辑**：它执行的是 `新值 = 旧值 + 1`，然后把新值覆写回 `storedData`。
+    
+-   **异步感**：在链上，你点完 `increment`，数据确实变了，但你屏幕上的 `storedData` 按钮显示的还是旧值。你必须**再点一下蓝色按钮**手动“刷新”视图。
+    
+
+* * *
+
+## 三、 一个更全面的例子
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 这个合约模拟了一个“全球计费/打卡系统”
+contract AdvancedStorage {
+    // 1. 数据存储
+    uint256 public totalCount;        // 总计数值
+    address public lastUser;         // 记录最后一个操作的人的钱包地址
+    address public owner;            // 合约的所有者（管理员）
+
+    // 2. 事件：这是给 Dune 这种分析工具看的“信号发射器”
+    event NumberUpdated(address indexed operator, uint256 newValue);
+
+    // 构造函数：只在合约第一次部署时运行一次，确定谁是管理员
+    constructor() {
+        owner = msg.sender; // 谁部署的合约，谁就是 owner
+    }
+
+    // 3. 修改数据的函数（橙色按钮）
+    function increment() public {
+        totalCount = totalCount + 1;
+        lastUser = msg.sender; // msg.sender 是一个内置变量，代表当前点按钮的人
+        
+        // 发射信号，Dune 就能抓到这条流水了
+        emit NumberUpdated(msg.sender, totalCount);
+    }
+
+    // 带有权限限制的设置函数
+    function adminSet(uint256 x) public {
+        // 只有管理员能点这个按钮，其他人点会报错（变红）
+        require(msg.sender == owner, "Only owner can change this!");
+        totalCount = x;
+        lastUser = msg.sender;
+        emit NumberUpdated(msg.sender, x);
+    }
+
+    // 4. 重置函数
+    function reset() public {
+        totalCount = 0;
+    }
+}
+```
+
+* * *
+
+## 四、 操练步骤
+
+1.  **准备环境**：清空左下角所有的旧合约（点垃圾桶）。
+    
+2.  **部署**：用 **Account A** 部署这个合约。`owner` 按钮显示的是 Account A 的地址。
+    
+3.  **身份记录测试**：
+    
+    -   保持在 **Account A**，点击 `increment`。
+        
+    -   点击 `totalCount` 看到 `1`。
+        
+    -   点击 `lastUser` 看到 **Account A** 的地址。
+        
+4.  **多账号协作测试**：
+    
+    -   切换到 **Account B**。
+        
+    -   点击 `increment`。
+        
+    -   再次点击 `totalCount` 看到 `2`。
+        
+    -   **关键点**：点击 `lastUser`，发现它变成了 **Account B** 的地址！这证明了合约精准记录了“谁是最后一个修改者”。
+        
+5.  **权限挑战（报错测试）**：
+    
+    -   依然保持在 **Account B**，尝试在 `adminSet` 旁边输入 `999` 并点击。
+        
+    -   **结果**：右下角黑窗报错，提示 `"Only owner can change this!"`。
+        
+    -   **意义**：你通过代码实现了“数据访问权限控制”。
+        
+
+* * *
+
+## 五、 总结
+
+-   **合约** = 一个永远在线、不可收买的**后台逻辑 + 数据库**
+    
+-   **钱包地址 (msg.sender)** = 每个人的**唯一 ID**
+    
+-   **Require** = **业务守则**
+    
+-   **Event** = **埋点数据**
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 打算利用周末时间吧这周的内容再熟悉一下。今天没有大课，听了同学们的sharing，发现也有几个和我差不多年龄的朋友们。可能大家之前都是小白，但是现在对于行业的了解已经颇有深度。还是要抓紧练习呀。周末要好好把这周内容总结一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 今天没机会参加直播，看了群里小伙伴总结的txt，先简单写一个笔记。
 
@@ -87,6 +242,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 今天信息量有点大了……内容有点硬核了……
@@ -156,6 +312,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -288,6 +445,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
