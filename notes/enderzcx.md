@@ -15,13 +15,21 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
+Trezor的域名到底是什么 试了很多都不对。。。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 《021学习以太坊》: 比特币更像是“价值锚”， 以太坊更像是“应用发动机” 已学习到32页
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
@@ -33,6 +41,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 这两天系统性学习了**区块链基础概念、以太坊概览、行业赛道全览、Web3 工作方式**，果然比我之前东学一点西看一些有效率有条理多了。  
