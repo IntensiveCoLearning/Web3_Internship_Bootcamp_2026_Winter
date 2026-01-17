@@ -15,8 +15,170 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+### LXDAO每周六上午有周会，新人想要加入 LXDAO 成为 Member 可以在明天的周会上做一个自我介绍
+
+这是我关于LXDAO的note
+
+LXDAO面板：[https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9)
+
+这是个挺实用的工作面板，把 LXDAO 构建可持续开源生态的计划都拆解成具体任务了。实时更新的，想参与贡献的话直接来这里找活干就行。​
+
+### 新人参与指南
+
+第1步：了解 LXDAO
+
+关注官推：[**https://x.com/LXDAO\_Official**](https://x.com/LXDAO_Official)
+
+关注微信公众号：LXDAO
+
+每周六上午11点 UTC+8 参加社区周会：[**https://s.lxdao.io/CC**](https://s.lxdao.io/CC)
+
+论坛看社区动态：[**https://forum.lxdao.io/**](https://forum.lxdao.io/)
+
+第2步：体验特色项目
+
+参与或发起残酷共学：[**https://intensivecolearn.ing/**](https://intensivecolearn.ing/)
+
+试试协作分配工具：[**https://fairsharing.xyz/**](https://fairsharing.xyz/)
+
+参与休闲黑客松：[**https://github.com/CasualHackathon**](https://github.com/CasualHackathon)
+
+第3步：贡献获取奖励
+
+从路线图任务开始干活
+
+申请公共事务岗位：[**https://forum.lxdao.io/t/lip77-lxdao-s15-pod/3351**](https://forum.lxdao.io/t/lip77-lxdao-s15-pod/3351)
+
+发起 Pod 推动路线图：[**https://forum.lxdao.io/t/lxdao-pod/3139**](https://forum.lxdao.io/t/lxdao-pod/3139)
+
+第4步：深度参与治理
+
+拿到500+贡献值就能申领 Buidler Card：[**https://lxdao.io/buidlers**](https://lxdao.io/buidlers)
+
+在 Snapshot 发起提案：[**https://snapshot.org/#/s:lxdao.eth**](https://snapshot.org/#/s:lxdao.eth)
+
+参与季度会议
+
+五大核心方向
+
+1\. Education - Web3 & DAO 教育
+
+重点项目包括：
+
+MyFirstWeb3 重构（P1优先级，20%进度）
+
+Web3 Internship Bootcamp - Winter（P1，75%进度）
+
+MyFirstZKVote（P2，95%进度，12月15日截止）
+
+《021学习以太坊》（P1，100%完成）
+
+各种线上线下活动和黑客松模板
+
+2\. Funding - 资金可持续性
+
+研究方向：
+
+Octant 协议分析
+
+Web3 资金分配算法研究
+
+打造可持续的 Funding Source
+
+开源项目商业化方案研究
+
+DAO 和开源项目的 Accounting 系统（P3）
+
+Sustainability-First DAO Funding Framework（P3，40%进度）
+
+3\. LXBuildPath 套件落地
+
+产品开发：
+
+HappyPods（多个相关任务，包括 Grants Pool 和线上测试）
+
+FairSharing 2.0（P1，90%进度）
+
+ICL（残酷共学）相关优化和重构
+
+高校链协模版（P1，1月20日截止）
+
+休闲黑客松产品化方案
+
+4\. Research - 研究与机制创新
+
+探索内容：
+
+Evidence Layer for Digital Public Goods（P2）
+
+DAO 治理与协作研究（P3）
+
+以太坊生态开源资助研究报告（P2）
+
+Gov/acc 深度研究（P1）
+
+ZK 技术在 DAO 投票中的应用（P2）
+
+x402 方向机制研究（P2）
+
+开源协议报告（P2）
+
+5\. 其他事项
+
+治理优化：
+
+治理权透明度问题（P2）
+
+核心成员份额流程优化（P2）
+
+国库资金透明度优化
+
+LXDAO 季度 routine 和规则（P1）
+
+创建新人贡献列表（轻度/中度/重度）（P1）
+
+LXDAO 官网信息更新（P2）
+
+任务认领流程
+
+快速流程（推荐新人）
+
+适合1-2周能完成的简单任务：
+
+周会上听到任务 → 现场举手
+
+与发起人沟通明确交付物
+
+直接开干，不用写申请
+
+完成后在论坛备案帖提交等发奖
+
+标准流程（复杂任务）
+
+适合路线图核心任务：
+
+路线图找任务 → 联系负责人沟通
+
+论坛写申请帖（用模板）
+
+等审核通过 → 开始执行
+
+周会同步进度
+
+完成提交验收 → 领钱
+
+申请模板
+
+text
+
+`**认领任务：** [任务名称] **我的称呼：** [你的昵称] **联系方式：** [微信/Telegram] **钱包地址：** [收款地址] **我的计划：** [一句话说明怎么做]`
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 难忘今宵，误闯天家
 
 周五分享会笔记：
@@ -71,6 +233,7 @@ Notion、Figma、思维导图基本成了标配：有人用 OKR 把自己当成�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 分享会笔记：
 
@@ -144,6 +307,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 
 
+
 # 今天一直在准备明天的考试，不过晚上的分享会内容非常干货，现先依据其他小伙伴的笔记做个总结，19号之后会全部补齐回放：
 
 ## web3安全分享会笔记
@@ -197,6 +361,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -256,6 +421,7 @@ Gas 被讲成“油费”这个比喻很形象：Gas price 像油价，Gas usage
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
