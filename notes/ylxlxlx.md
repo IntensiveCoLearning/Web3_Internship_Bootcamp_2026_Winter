@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1.17: [https://share.mubu.com/doc/1TgnooGlYc](https://share.mubu.com/doc/1TgnooGlYc)
+
+![1.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-17-1768660624749-1.17.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今天大概是整合思路，修炼心法的一天。听了太多优秀的分享，难免沉浸在他人的叙事中迷失方向，也是时候把目光收回，直率又坦诚地面对自我了。
 
 回顾本周，焦虑大概是我入营期间最大的阻碍。看着大家陆续有所产出，花样层出不穷，想表达些什么，字符在聊天框里却是删了又删。虽然，大家能够在这里齐聚，本身就带有一种被认可的意味，不少伙伴的鼓励也让我从自卑的阴影中走出。但，总有什么在心中作祟，让我一度畏避。
@@ -55,6 +63,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 1.15：[https://share.mubu.com/doc/6m79uk4dKs7](https://share.mubu.com/doc/6m79uk4dKs7)
 
 ![1.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-15-1768489745986-1.15.png)
@@ -62,6 +71,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 1.14：[https://share.mubu.com/doc/26\_ed53s3z7](https://share.mubu.com/doc/26_ed53s3z7)
@@ -74,6 +84,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.13：[https://share.mubu.com/doc/msBQpFHRq7](https://share.mubu.com/doc/msBQpFHRq7)
 
 ![1.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-13-1768314188386-1.13.png)
@@ -83,6 +94,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
