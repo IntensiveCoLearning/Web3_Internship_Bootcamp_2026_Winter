@@ -15,8 +15,122 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1月17日工程日志： ## 🎯 核心议题 \*\*From Scripting to Engineering.\*\* 放弃 JS/TS 驱动的 Hardhat 框架，全面迁移至以太坊基金会及 Paradigm 强推的 \*\*Foundry\*\* 工具链。 \*\*目标：\*\* 建立一套支持 Fuzzing（模糊测试）、Gas Snapshot（Gas 快照对比）及 Mainnet Forking（主网分叉模拟）的工业级开发环境。 --- ## 🛠️ 1. 技术选型：Why Foundry Over Hardhat? 1. \*\*测试反馈环 (Feedback Loop)\*\*：Foundry 基于 Rust 编写的 EVM，编译速度比 Hardhat (Node.js) 快 20-50 倍。在跑大型协议的集成测试时，这几分钟的差距决定了开发体验。 2. \*\*上下文统一 (Context Switching)\*\*：Hardhat 强迫开发者用 JS/TS 写测试逻辑（异步操作、BigNumber 处理极其痛苦）。Foundry 允许 \*\*Solidity-Native Testing\*\*，直接用 Solidity 写测试，测试代码本身就是合约逻辑的一部分。 3. \*\*高级测试原语\*\*：原生支持 \*\*Property-Based Testing (Fuzzing)\*\* 和 \*\*Invariant Testing\*\*，这是传统 Unit Test 无法覆盖的安全盲区。 --- ## ⚡ 2. 工程环境配置 (Infrastructure) ### 2.1 基础组件安装 跳过基础 curl 安装，重点配置 \`foundry.toml\` 以适配不同网络环境与优化器设置。 \`\`\`toml # foundry.toml 核心配置 \[profile.default\] src = 'src' out = 'out' libs = \['lib'\] op`imizer = tru`optimizer\_runs = 20000 #`针对生产环境的高频调用优`fs\_permissions = \[{ access = "read", path = "./"}\] # 允`读取本地文件，用于复杂脚`
+
+### 2.2 依赖管理 (Dependency Management)
+
+使用 Git Submodules 替代 npm/yarn，确保合约库的源码级可溯源性。
+
+Bash
+
+```
+# 安装 OpenZeppelin 和 Solmate (Gas 优化狂魔必备)
+forge install OpenZeppelin/openzeppelin-contracts
+forge install transmissions11/solmate 
+```
+
+* * *
+
+## 🔬 3. 核心组件深度实战 (Deep Dive)
+
+### 3.1 Forge: 模糊测试与 Gas 审计
+
+这是 Foundry 的杀手锏。我不只写单元测试，我写不变量测试。
+
+实战：编写一个 Fuzzing Test Case
+
+不同于 Hardhat 手动构造边缘数据，Foundry 会自动生成随机数轰炸合约接口。
+
+Solidity
+
+```
+// test/Vault.t.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
+
+import "forge-std/Test.sol";
+import "../src/Vault.sol";
+
+contract VaultTest is Test {
+    Vault public vault;
+
+    function setUp() public {
+        vault = new Vault();
+    }
+
+    // Fuzzing Test: Foundry 会自动填充 amount 参数进行数千次调用
+    // 验证逻辑：无论存多少钱，取出的金额不应超过存款（假设无收益）
+    function testFuzz_Withdraw(uint256 amount) public {
+        // 限制输入范围，避免溢出测试干扰业务逻辑
+        vm.assume(amount > 0 && amount < 1000 ether);
+        
+        vault.deposit{value: amount}();
+        uint256 balanceBefore = address(this).balance;
+        
+        vault.withdraw(amount);
+        
+        assertEq(address(this).balance, balanceBefore + amount);
+    }
+}
+```
+
+**运行 Gas 报告：**
+
+Bash
+
+```
+forge test --gas-report
+# 输出详细的 Gas 消耗表，精确到每个函数的平均/最大/最小消耗
+```
+
+### 3.2 Cast: 命令行级 RPC 交互
+
+`Cast` 不仅仅是工具，它是对 **EVM 数据结构** 的直接操作。
+
+-   **ABI 解码**：`cast 4byte-decode [Calldata]` —— 逆向分析黑客交易时的利器。
+    
+-   **存储槽读取**：`cast storage [Address] [Slot]` —— 绕过 `private` 变量限制，直接读取合约底层 Storage Layout。
+    
+
+**实战：读取合约的 Private 变量（验证链上无隐私）**
+
+Bash
+
+```
+# 假设 Slot 0 存储了管理员地址
+cast storage 0x...ContractAddress... 0 --rpc-url $SEPOLIA_RPC
+```
+
+### 3.3 Chisel: Solidity REPL
+
+在写复杂算法（如位运算、汇编优化）时，不需要部署合约，直接在终端验证逻辑。
+
+Bash
+
+```
+$ chisel
+➜ uint256 a = 0xff;
+➜ uint256 b = 0x01;
+➜ a & b
+Type: uint256
+├ Hex: 0x0000000000000000000000000000000000000000000000000000000000000001
+└ Decimal: 1
+```
+
+* * *
+
+今天的环境搭建引发了我对 AI 辅助审计 的思考：
+
+传统的审计依赖人工阅读代码，而 Foundry 提供了完美的 Trace 功能 。
+
+未来的 AI Agent 审计工具，极有可能是基于 forge test 的输出日志进行训练的。Agent 不再只是“看代码”，而是“看执行路径”，结合 Fuzzing 自动生成的边缘 Case，实现自动化的漏洞挖掘。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **1月16日学习日志：**
 
 第一周的实习即将结束，今天的周会和复盘让我对“Web3工程师”这个职业有了全新的定义。如果说在学校是学习如何解题，那么这周的实战则是学习如何定义问题和构建规则。以下是本周的四维工程重构：
@@ -70,6 +184,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 **1月15日学习日志：**
 
 经过前三天关于原理、安全与合规的高密度输入，今天我利用空档期对“AI x Crypto”这一核心赛道进行了底层逻辑的梳理，并为明天的分享会做了最后准备。
@@ -107,6 +222,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 **1月14日学习日志：**
@@ -151,6 +267,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 **1月13日学习日志**
 
 今天的布老师主讲的Web3 运行原理分享会给出了大量具体的网络实运行数据，结合讲座内容与我的最近学习背景，对以太坊底层架构的几个关键风险点进行了如下梳理：
@@ -176,6 +293,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
