@@ -15,8 +15,1356 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 区块链搭建（二）
+
+# 📚 第6课：mineBlock 方法实现
+
+## 核心知识点
+
+### 1\. 为什么叫 mineBlock（挖矿）？
+
+**命名原因：**
+
+```
+createBlock   ✗ 太普通
+addBlock      ✗ 不准确
+mineBlock     ✅ 强调"需要计算工作"
+```
+
+**区块链原理：**
+
+-   创建新区块需要**计算工作**（computational work）
+    
+-   类比为"挖矿"（mining）
+    
+-   控制区块链增长速度
+    
+
+* * *
+
+### 2\. Jest 测试的 expect 顺序  
+2\. Jest 测试中 expect 的顺序
+
+**重要规则：**
+
+javascript
+
+````javascript
+// ✅ 正确写法
+expect(实际值).toEqual(期望值);
+
+// 示例
+expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+//     ↑ 实际值              ↑ 期望值
+```
+
+**记忆方法：**
+```
+expect(你要测的东西).toEqual(它应该等于什么);
+````
+
+**与其他测试框架对比：**
+
+javascript
+
+```javascript
+// 其他框架（如 Assert）
+assert.equal(期望值, 实际值);  // 顺序相反
+
+// Jest
+expect(实际值).toEqual(期望值);  // 顺序相反
+```
+
+* * *
+
+### 3\. .not 链式调用
+
+**检查"不等于"：**
+
+javascript
+
+```javascript
+// 检查不是 undefined
+expect(minedBlock.timestamp).not.toEqual(undefined);
+
+// 等价于
+expect(minedBlock.timestamp).toBeDefined();  // 更简洁
+```
+
+* * *
+
+### 4\. [Date.now](http://Date.now)() 获取时间戳
+
+javascript
+
+```javascript
+const timestamp = Date.now();  // 返回当前时间的毫秒数
+
+console.log(Date.now());  // 1705564800000
+```
+
+* * *
+
+## 🛠️ 操作流程（TDD）
+
+### 第一步：编写测试 block.test.js
+
+在 `genesis()` 测试组后面添加新的测试组：
+
+javascript
+
+```javascript
+describe('Block', () => {
+  
+  // ... 原有测试 ...
+  
+  // 新增：mineBlock() 测试组
+  describe('mineBlock()', () => {
+    
+    // 1. 定义测试变量
+    const lastBlock = Block.genesis();
+    const data = 'mined data';
+    const minedBlock = Block.mineBlock({ lastBlock, data });
+    
+    // 测试1：返回 Block 实例
+    it('returns a Block instance', () => {
+      expect(minedBlock instanceof Block).toBe(true);
+    });
+    
+    // 测试2：设置正确的 lastHash
+    it('sets the `lastHash` to be the `hash` of the lastBlock', () => {
+      expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+    });
+    
+    // 测试3：设置正确的 data
+    it('sets the data', () => {
+      expect(minedBlock.data).toEqual(data);
+    });
+    
+    // 测试4：有 timestamp
+    it('sets a `timestamp`', () => {
+      expect(minedBlock.timestamp).not.toEqual(undefined);
+    });
+  });
+});
+```
+
+* * *
+
+### 第二步：运行测试，看到失败
+
+bash
+
+````bash
+npm run test
+```
+
+**第一个错误：**
+```
+❌ Block.mineBlock is not a function
+````
+
+* * *
+
+### 第三步：在 block.js 添加方法框架
+
+javascript
+
+````javascript
+class Block {
+  // ... 原有代码 ...
+  
+  static mineBlock({ lastBlock, data }) {
+    // 先留空
+  }
+}
+```
+
+**保存后自动测试：**
+```
+❌ Expected: Block instance
+   Received: undefined
+````
+
+* * *
+
+### 第四步：返回 Block 实例
+
+javascript
+
+````javascript
+static mineBlock({ lastBlock, data }) {
+  return new this();
+}
+```
+
+**保存后测试：**
+```
+❌ Cannot destructure 'timestamp' of undefined
+````
+
+* * *
+
+### 第五步：添加 timestamp
+
+javascript
+
+````javascript
+static mineBlock({ lastBlock, data }) {
+  return new this({
+    timestamp: Date.now()
+  });
+}
+```
+
+**保存后测试：**
+```
+❌ Expected: lastBlock.hash
+   Received: undefined
+````
+
+* * *
+
+### 第六步：添加 lastHash
+
+javascript
+
+````javascript
+static mineBlock({ lastBlock, data }) {
+  return new this({
+    timestamp: Date.now(),
+    lastHash: lastBlock.hash
+  });
+}
+```
+
+**保存后测试：**
+```
+❌ Expected: 'mined data'
+   Received: undefined
+````
+
+* * *
+
+### 第七步：添加 data
+
+javascript
+
+````javascript
+static mineBlock({ lastBlock, data }) {
+  return new this({
+    timestamp: Date.now(),
+    lastHash: lastBlock.hash,
+    data
+  });
+}
+```
+
+**保存后测试：**
+```
+✅ 全部通过！
+````
+
+# 📚 第7课：哈希函数（Hash Function）实现
+
+## 核心知识点
+
+### 1\. 什么是 SHA-256？
+
+**SHA-256 = Secure Hash Algorithm 256-bit  
+SHA-256 = 安全哈希算法 256 位**
+
+```
+输入：任意数据（"foo"）
+  ↓
+SHA-256 算法
+  ↓
+输出：256位（32字节）的哈希值
+```
+
+**表示形式：**
+
+| 形式  Format | 长度 | 示例 |
+| --- | --- | --- |
+| 二进制 | 256位（0和1） | 0101100111... |
+| 十六进制 | 64个字符 | 2c26b46b68ffc68ff99b453c1d30413413422d706... |
+
+**为什么是64个字符？**
+
+```
+256位 ÷ 4位/字符 = 64个十六进制字符
+每个十六进制字符：0-9, A-F（共16种）
+```
+
+* * *
+
+### 2\. 哈希的四大特性
+
+特性1：确定性
+
+javascript
+
+```javascript
+hash('foo')  → 永远返回相同结果
+hash('foo')  → 永远返回相同结果
+```
+
+特性2：雪崩效应（改一个字符，结果完全不同）
+
+javascript
+
+```javascript
+hash('foo')  → 2c26b46b68ffc68ff99b453c1d30413413422d706...
+hash('foO')  → 完全不同的哈希值
+```
+
+特性3：单向性（不可逆）
+
+javascript
+
+````javascript
+// ✅ 容易：数据 → 哈希
+hash('foo')  → 2c26b46b68ffc68ff99b453c1d30413413422d706...
+
+// ❌ 困难：哈希 → 数据（几乎不可能）
+unhash('2c26b46b...')  → ？？？
+```
+
+#### 特性4：防碰撞
+```
+几乎不可能找到两个不同的输入产生相同的哈希值
+````
+
+* * *
+
+### 3\. JavaScript 展开运算符（Spread Operator）
+
+**问题：** 函数不知道会接收多少个参数
+
+javascript
+
+```javascript
+// ❌ 传统方式（只能接收固定数量）
+function hash(arg1, arg2, arg3) {
+  // 如果有100个参数怎么办？
+}
+
+// ✅ 展开运算符（可以接收任意数量）
+function cryptoHash(...inputs) {
+  // inputs 是一个数组，包含所有参数
+}
+```
+
+**使用示例：**
+
+javascript
+
+```javascript
+cryptoHash('a')           → inputs = ['a']
+cryptoHash('a', 'b')      → inputs = ['a', 'b']
+cryptoHash('a', 'b', 'c') → inputs = ['a', 'b', 'c']
+```
+
+* * *
+
+### 4\. Node.js crypto 模块
+
+**内置模块，无需安装：**
+
+javascript
+
+````javascript
+const crypto = require('crypto');
+
+// 创建哈希对象
+const hash = crypto.createHash('sha256');
+
+// 更新数据
+hash.update('要哈希的数据');
+
+// 获取结果（十六进制）
+const result = hash.digest('hex');
+```
+
+---
+
+## 🛠️ 操作流程（TDD）
+
+### 第一步：在线生成测试数据
+
+**1. 访问 SHA-256 在线工具**
+
+搜索："sha256 generator online"
+
+推荐网站：
+- https://emn178.github.io/online-tools/sha256.html
+- https://www.movable-type.co.uk/scripts/sha256.html
+
+**2. 生成 "foo" 的哈希值**
+
+输入：`foo`
+
+输出（大写）：
+```
+2C26B46B68FFC68FF99B453C1D30413413422D706483BFA0F98A5E886266E7AE
+````
+
+**3\. 转换为小写**
+
+在浏览器控制台：
+
+javascript
+
+````javascript
+"2C26B46B68FFC68FF99B453C1D30413413422D706483BFA0F98A5E886266E7AE".toLowerCase()
+```
+
+得到：
+```
+2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae
+````
+
+* * *
+
+### 第二步：创建测试文件 crypto-hash.test.js
+
+javascript
+
+```javascript
+const cryptoHash = require('./crypto-hash');
+
+describe('cryptoHash()', () => {
+  
+  // 测试1：生成正确的 SHA-256 输出
+  it('generates a SHA-256 hashed output', () => {
+    expect(cryptoHash('foo'))
+      .toEqual('2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae');
+  });
+  
+  // 测试2：相同参数不同顺序，产生相同哈希
+  it('produces the same hash with the same input arguments in any order', () => {
+    expect(cryptoHash('one', 'two', 'three'))
+      .toEqual(cryptoHash('three', 'one', 'two'));
+  });
+});
+```
+
+* * *
+
+### 第三步：运行测试，看到失败
+
+bash
+
+````bash
+npm run test
+```
+
+**错误1：**
+```
+❌ Cannot find module './crypto-hash'
+````
+
+* * *
+
+### 第四步：创建 crypto-hash.js 文件
+
+javascript
+
+````javascript
+// 空函数
+const cryptoHash = () => {
+  
+};
+
+module.exports = cryptoHash;
+```
+
+**保存后自动测试：**
+```
+❌ Expected: '2c26b46b68ffc...'
+   Received: undefined
+````
+
+* * *
+
+### 第五步：实现基础版本
+
+javascript
+
+````javascript
+const crypto = require('crypto');
+
+const cryptoHash = (...inputs) => {
+  const hash = crypto.createHash('sha256');
+  hash.update(inputs.join(' '));
+  return hash.digest('hex');
+};
+
+module.exports = cryptoHash;
+```
+
+**保存后测试：**
+```
+✅ 测试1通过：generates a SHA-256 hashed output
+❌ 测试2失败：参数顺序不同，哈希也不同
+````
+
+* * *
+
+### 第六步：添加排序功能
+
+javascript
+
+````javascript
+const crypto = require('crypto');
+
+const cryptoHash = (...inputs) => {
+  const hash = crypto.createHash('sha256');
+  hash.update(inputs.sort().join(' '));  // ← 添加 .sort()
+  return hash.digest('hex');
+};
+
+module.exports = cryptoHash;
+```
+
+**保存后测试：**
+```
+✅ 全部通过！
+````
+
+* * *
+
+## 💻 完整代码
+
+### crypto-hash.test.js
+
+javascript
+
+```javascript
+const cryptoHash = require('./crypto-hash');
+
+describe('cryptoHash()', () => {
+  
+  it('generates a SHA-256 hashed output', () => {
+    expect(cryptoHash('foo'))
+      .toEqual('2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae');
+  });
+  
+  it('produces the same hash with the same input arguments in any order', () => {
+    expect(cryptoHash('one', 'two', 'three'))
+      .toEqual(cryptoHash('three', 'one', 'two'));
+  });
+});
+```
+
+* * *
+
+### crypto-hash.js（最终版）
+
+javascript
+
+```javascript
+const crypto = require('crypto');
+
+const cryptoHash = (...inputs) => {
+  const hash = crypto.createHash('sha256');
+  hash.update(inputs.sort().join(' '));
+  return hash.digest('hex');
+};
+
+module.exports = cryptoHash;
+```
+
+**代码解析：**
+
+javascript
+
+```javascript
+const cryptoHash = (...inputs) => {
+  // 1. 创建 SHA-256 哈希对象
+  const hash = crypto.createHash('sha256');
+  
+  // 2. 处理输入
+  //    - inputs.sort()：排序（确保顺序一致）
+  //    - .join(' ')：用空格连接成字符串
+  hash.update(inputs.sort().join(' '));
+  
+  // 3. 返回十六进制结果
+  return hash.digest('hex');
+};
+```
+
+* * *
+
+## 📖 新语法详解
+
+### 1\. 展开运算符（...）
+
+**收集参数：**
+
+javascript
+
+```javascript
+function sum(...numbers) {
+  console.log(numbers);  // 是一个数组
+}
+
+sum(1, 2, 3);     // numbers = [1, 2, 3]
+sum(1, 2, 3, 4);  // numbers = [1, 2, 3, 4]
+```
+
+**展开数组：**
+
+javascript
+
+```javascript
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5];  // [1, 2, 3, 4, 5]
+```
+
+* * *
+
+### 2\. 箭头函数简写
+
+javascript
+
+```javascript
+// 传统写法
+function cryptoHash(inputs) {
+  return result;
+}
+
+// 箭头函数
+const cryptoHash = (inputs) => {
+  return result;
+};
+
+// 单参数可省略括号
+const cryptoHash = inputs => {
+  return result;
+};
+```
+
+* * *
+
+### 3\. 数组方法链式调用
+
+javascript
+
+```javascript
+const inputs = ['three', 'one', 'two'];
+
+// 方法链
+inputs.sort().join(' ');
+
+// 等价于
+const sorted = inputs.sort();      // ['one', 'three', 'two']
+const joined = sorted.join(' ');   // 'one three two'
+```
+
+* * *
+
+### 4\. crypto 模块 API
+
+javascript
+
+```javascript
+// 1. 导入模块
+const crypto = require('crypto');
+
+// 2. 创建哈希对象
+const hash = crypto.createHash('sha256');
+//                              ↑ 算法名称
+
+// 3. 添加数据
+hash.update('数据');
+
+// 4. 获取结果
+const result = hash.digest('hex');
+//                          ↑ 输出格式
+```
+
+**digest 支持的格式：**
+
+-   `'hex'` - 十六进制字符串
+    
+-   `'base64'` - Base64 编码
+    
+-   `'binary'` - 二进制
+    
+
+* * *
+
+## 💡 关键理解
+
+### 1\. 为什么需要排序？
+
+**问题：**
+
+javascript
+
+```javascript
+cryptoHash('a', 'b', 'c')  → hash1
+cryptoHash('c', 'a', 'b')  → hash2
+```
+
+如果不排序，hash1 ≠ hash2
+
+**解决：**
+
+javascript
+
+```javascript
+// 排序后都变成 'a b c'
+inputs.sort().join(' ')
+```
+
+现在 hash1 = hash2 ✅
+
+* * *
+
+### 2\. 为什么用空格连接？
+
+javascript
+
+```javascript
+// 用空格
+['one', 'two'].join(' ')  → 'one two'
+
+// 不用空格
+['one', 'two'].join('')   → 'onetwo'
+```
+
+**都可以！** 只要保持一致即可。课程选择空格是为了：
+
+-   可读性更好
+    
+-   调试时更清楚
+    
+
+* * *
+
+### 3\. 哈希在区块链中的作用
+
+javascript
+
+```javascript
+// 区块的唯一标识
+const block = {
+  timestamp: 1705564800000,
+  lastHash: 'hash-one',
+  data: 'transaction data'
+};
+
+// 生成区块的哈希
+const blockHash = cryptoHash(
+  block.timestamp,
+  block.lastHash,
+  block.data
+);
+
+block.hash = blockHash;
+```
+
+**如果数据被篡改：**
+
+javascript
+
+```javascript
+block.data = '被修改的数据';
+
+// 重新计算哈希
+const newHash = cryptoHash(...);
+
+newHash !== block.hash  // ✅ 检测到篡改！
+```
+
+* * *
+
+## 🧪 测试用例分析
+
+### 测试1：验证算法正确性
+
+javascript
+
+```javascript
+it('generates a SHA-256 hashed output', () => {
+  expect(cryptoHash('foo'))
+    .toEqual('2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae');
+});
+```
+
+**作用：** 确保使用的是 SHA-256 算法，不是其他哈希
+
+* * *
+
+### 测试2：验证顺序无关性
+
+javascript
+
+```javascript
+it('produces the same hash with the same input arguments in any order', () => {
+  expect(cryptoHash('one', 'two', 'three'))
+    .toEqual(cryptoHash('three', 'one', 'two'));
+});
+```
+
+**作用：** 确保无论参数顺序如何，结果一致
+
+# 📚 第8课：为 mineBlock 添加哈希功能
+
+## 核心知识点
+
+### 1\. 区块哈希的生成原理
+
+**区块的哈希应该基于什么？**
+
+javascript
+
+```javascript
+hash = SHA256(timestamp + lastHash + data)
+```
+
+**包含的字段：**
+
+-   `timestamp` - 当前区块的时间戳
+    
+-   `lastHash` - 前一个区块的哈希
+    
+-   `data` - 当前区块的数据
+    
+
+**为什么要包含这些？**
+
+-   任何字段改变 → 哈希改变
+    
+-   保证区块唯一性
+    
+-   防止数据篡改
+    
+
+* * *
+
+### 2\. 变量提取（Extract Variable）
+
+**重构技巧：避免代码重复**
+
+**❌ 之前（重复代码）：**
+
+javascript
+
+```javascript
+return new this({
+  timestamp: Date.now(),
+  lastHash: lastBlock.hash,
+  hash: cryptoHash(Date.now(), lastBlock.hash, data),  // 重复
+  data
+});
+```
+
+**✅ 现在（提取变量）：**
+
+javascript
+
+```javascript
+const timestamp = Date.now();
+const lastHash = lastBlock.hash;
+const hash = cryptoHash(timestamp, lastHash, data);  // 复用变量
+
+return new this({
+  timestamp,
+  lastHash,
+  hash,
+  data
+});
+```
+
+* * *
+
+## 🛠️ 操作流程（TDD）
+
+### 第一步：编写测试 block.test.js
+
+在 `mineBlock()` 测试组中添加新测试：
+
+javascript
+
+```javascript
+describe('Block', () => {
+  
+  // ... 原有测试 ...
+  
+  describe('mineBlock()', () => {
+    const lastBlock = Block.genesis();
+    const data = 'mined data';
+    const minedBlock = Block.mineBlock({ lastBlock, data });
+    
+    // ... 原有测试 ...
+    
+    // 新增测试：验证哈希计算正确
+    it('creates a SHA-256 `hash` based on the proper inputs', () => {
+      expect(minedBlock.hash)
+        .toEqual(cryptoHash(minedBlock.timestamp, lastBlock.hash, data));
+    });
+  });
+});
+```
+
+* * *
+
+### 第二步：导入 cryptoHash
+
+在 `block.test.js` 顶部添加：
+
+javascript
+
+```javascript
+const Block = require('./block');
+const { GENESIS_DATA } = require('./config');
+const cryptoHash = require('./crypto-hash');  // ← 新增
+```
+
+* * *
+
+### 第三步：运行测试，看到失败
+
+bash
+
+````bash
+npm run test
+```
+
+**错误信息：**
+```
+❌ Expected: 'f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8'
+   Received: undefined
+````
+
+**原因：** `minedBlock.hash` 还是 `undefined`
+
+* * *
+
+### 第四步：修改 block.js（提取变量）
+
+**修改前：**
+
+javascript
+
+```javascript
+static mineBlock({ lastBlock, data }) {
+  return new this({
+    timestamp: Date.now(),
+    lastHash: lastBlock.hash,
+    data
+  });
+}
+```
+
+**修改后：**
+
+javascript
+
+```javascript
+static mineBlock({ lastBlock, data }) {
+  // 1. 提取变量
+  const timestamp = Date.now();
+  const lastHash = lastBlock.hash;
+  
+  // 2. 使用变量
+  return new this({
+    timestamp,
+    lastHash,
+    data
+  });
+}
+```
+
+* * *
+
+### 第五步：添加 hash 计算
+
+javascript
+
+```javascript
+const cryptoHash = require('./crypto-hash');  // ← 在文件顶部导入
+
+static mineBlock({ lastBlock, data }) {
+  const timestamp = Date.now();
+  const lastHash = lastBlock.hash;
+  
+  // 3. 计算哈希
+  const hash = cryptoHash(timestamp, lastHash, data);
+  
+  return new this({
+    timestamp,
+    lastHash,
+    hash,  // ← 添加 hash 字段
+    data
+  });
+}
+```
+
+* * *
+
+### 第六步：测试通过
+
+bash
+
+```bash
+✅ PASS  block.test.js
+  Block
+    ✓ has a timestamp, lastHash, hash and data
+    genesis()
+      ✓ returns a Block instance
+      ✓ returns the genesis data
+    mineBlock()
+      ✓ returns a Block instance
+      ✓ sets the `lastHash` to be the `hash` of the lastBlock
+      ✓ sets the data
+      ✓ sets a `timestamp`
+      ✓ creates a SHA-256 `hash` based on the proper inputs
+```
+
+* * *
+
+## 💻 完整代码
+
+### block.test.js（完整版）
+
+javascript
+
+```javascript
+const Block = require('./block');
+const { GENESIS_DATA } = require('./config');
+const cryptoHash = require('./crypto-hash');  // ← 新增
+
+describe('Block', () => {
+  
+  // 测试组1：基础属性
+  let timestamp, lastHash, hash, data, block;
+  
+  timestamp = 'a-date';
+  lastHash = 'foo-hash';
+  hash = 'bar-hash';
+  data = ['blockchain', 'data'];
+  
+  block = new Block({
+    timestamp,
+    lastHash,
+    hash,
+    data
+  });
+  
+  it('has a timestamp, lastHash, hash and data', () => {
+    expect(block.timestamp).toEqual(timestamp);
+    expect(block.lastHash).toEqual(lastHash);
+    expect(block.hash).toEqual(hash);
+    expect(block.data).toEqual(data);
+  });
+  
+  // 测试组2：创世区块
+  describe('genesis()', () => {
+    const genesisBlock = Block.genesis();
+    
+    it('returns a Block instance', () => {
+      expect(genesisBlock instanceof Block).toBe(true);
+    });
+    
+    it('returns the genesis data', () => {
+      expect(genesisBlock).toEqual(GENESIS_DATA);
+    });
+  });
+  
+  // 测试组3：挖矿区块
+  describe('mineBlock()', () => {
+    const lastBlock = Block.genesis();
+    const data = 'mined data';
+    const minedBlock = Block.mineBlock({ lastBlock, data });
+    
+    it('returns a Block instance', () => {
+      expect(minedBlock instanceof Block).toBe(true);
+    });
+    
+    it('sets the `lastHash` to be the `hash` of the lastBlock', () => {
+      expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+    });
+    
+    it('sets the data', () => {
+      expect(minedBlock.data).toEqual(data);
+    });
+    
+    it('sets a `timestamp`', () => {
+      expect(minedBlock.timestamp).not.toEqual(undefined);
+    });
+    
+    // 新增测试
+    it('creates a SHA-256 `hash` based on the proper inputs', () => {
+      expect(minedBlock.hash)
+        .toEqual(cryptoHash(minedBlock.timestamp, lastBlock.hash, data));
+    });
+  });
+});
+```
+
+* * *
+
+### block.js（完整版）
+
+javascript
+
+```javascript
+const { GENESIS_DATA } = require('./config');
+const cryptoHash = require('./crypto-hash');  // ← 新增
+
+class Block {
+  constructor({ timestamp, lastHash, hash, data }) {
+    this.timestamp = timestamp;
+    this.lastHash = lastHash;
+    this.hash = hash;
+    this.data = data;
+  }
+  
+  static genesis() {
+    return new this(GENESIS_DATA);
+  }
+  
+  static mineBlock({ lastBlock, data }) {
+    // 提取变量
+    const timestamp = Date.now();
+    const lastHash = lastBlock.hash;
+    
+    // 计算哈希
+    const hash = cryptoHash(timestamp, lastHash, data);
+    
+    // 返回新区块
+    return new this({
+      timestamp,
+      lastHash,
+      hash,
+      data
+    });
+  }
+}
+
+module.exports = Block;
+```
+
+* * *
+
+## 📖 代码详解
+
+### 为什么要提取变量？
+
+**问题：如果不提取**
+
+javascript
+
+```javascript
+static mineBlock({ lastBlock, data }) {
+  return new this({
+    timestamp: Date.now(),
+    lastHash: lastBlock.hash,
+    hash: cryptoHash(Date.now(), lastBlock.hash, data),  // ← 问题！
+    data
+  });
+}
+```
+
+**❌ 错误：** `Date.now()` 被调用了**两次**
+
+javascript
+
+```javascript
+第一次：timestamp: Date.now()     → 1705564800000
+第二次：cryptoHash(Date.now()...) → 1705564800001  // 可能不同！
+```
+
+**结果：** 哈希验证会失败，因为用的不是同一个时间戳
+
+* * *
+
+**✅ 正确做法：提取变量**
+
+javascript
+
+```javascript
+const timestamp = Date.now();  // 只调用一次
+const hash = cryptoHash(timestamp, ...);  // 使用同一个值
+```
+
+* * *
+
+### 哈希计算顺序重要吗？
+
+**不重要！** 因为我们在 `cryptoHash` 中已经排序了
+
+javascript
+
+```javascript
+// 这两个结果相同
+cryptoHash(timestamp, lastHash, data)
+cryptoHash(data, timestamp, lastHash)
+```
+
+**原因：** `crypto-hash.js` 中的 `.sort()`
+
+javascript
+
+```javascript
+const cryptoHash = (...inputs) => {
+  const hash = crypto.createHash('sha256');
+  hash.update(inputs.sort().join(' '));  // ← 排序保证一致
+  return hash.digest('hex');
+};
+```
+
+* * *
+
+### 测试中的哈希验证
+
+javascript
+
+```javascript
+it('creates a SHA-256 `hash` based on the proper inputs', () => {
+  expect(minedBlock.hash)
+    .toEqual(cryptoHash(minedBlock.timestamp, lastBlock.hash, data));
+});
+```
+
+**这个测试在验证：**
+
+1.  `minedBlock.hash` 存在
+    
+2.  它的值等于重新计算的哈希
+    
+3.  使用了正确的输入（timestamp, lastHash, data）
+    
+
+* * *
+
+## 💡 关键理解
+
+### 1\. 区块链的数据完整性
+
+javascript
+
+````javascript
+// 创世区块
+const genesis = {
+  timestamp: 1,
+  lastHash: '-----',
+  hash: 'hash-one',
+  data: []
+};
+
+// 区块1
+const block1 = {
+  timestamp: 1705564800000,
+  lastHash: 'hash-one',  // ← 指向创世区块
+  hash: cryptoHash(1705564800000, 'hash-one', 'some data'),
+  data: 'some data'
+};
+
+// 区块2
+const block2 = {
+  timestamp: 1705564900000,
+  lastHash: block1.hash,  // ← 指向区块1
+  hash: cryptoHash(1705564900000, block1.hash, 'more data'),
+  data: 'more data'
+};
+```
+
+**链式结构：**
+```
+创世区块 → 区块1 → 区块2 → 区块3 → ...
+hash-one   hash-two  hash-three
+````
+
+* * *
+
+### 2\. 如何检测篡改？
+
+**场景：有人修改了区块1的数据**
+
+javascript
+
+```javascript
+// 原始区块1
+block1.data = 'some data';
+block1.hash = 'abc123...';
+
+// 篡改
+block1.data = 'hacked data';  // ← 数据被改了
+
+// 验证
+const recalculatedHash = cryptoHash(
+  block1.timestamp,
+  block1.lastHash,
+  block1.data  // ← 用被篡改的数据
+);
+
+recalculatedHash !== block1.hash  // ✅ 检测到篡改！
+```
+
+* * *
+
+### 3\. 完整的挖矿流程
+
+javascript
+
+````javascript
+// 1. 获取最后一个区块
+const lastBlock = blockchain.getLastBlock();
+
+// 2. 准备新数据
+const data = '转账100元给Alice';
+
+// 3. 挖矿（创建新区块）
+const newBlock = Block.mineBlock({ lastBlock, data });
+// 内部流程：
+//   - 生成时间戳
+//   - 获取 lastHash
+//   - 计算 hash
+//   - 返回新区块
+
+// 4. 新区块结构
+{
+  timestamp: 1705564800000,
+  lastHash: 'hash-from-last-block',
+  hash: cryptoHash(timestamp, lastHash, data),
+  data: '转账100元给Alice'
+}
+```
+
+---
+
+## 🔄 TDD 流程回顾
+```
+1. 写测试：期望 minedBlock.hash 等于 cryptoHash(...)
+   ↓
+2. 运行 → ❌ hash is undefined
+   ↓
+3. 提取变量：timestamp, lastHash
+   ↓
+4. 运行 → ❌ 还是 undefined
+   ↓
+5. 计算 hash = cryptoHash(...)
+   ↓
+6. 添加到返回对象
+   ↓
+7. 运行 → ❌ cryptoHash is not defined
+   ↓
+8. 导入 cryptoHash
+   ↓
+9. 运行 → ✅ 全部通过
+````
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 搭建区块链（一）
 
 今天完成：
@@ -1019,6 +2367,7 @@ genesisBlock Block {
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -1222,6 +2571,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1946,6 +3296,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
