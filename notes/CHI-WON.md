@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# DAY6
+
+\[\] 前端
+
+\[\]Dapp
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # DAY5
 
 ## 学习内容：
@@ -112,6 +122,7 @@ Gas：每笔交易收 **0.3%**
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # DAY4
@@ -212,6 +223,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -376,6 +388,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -472,6 +485,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
