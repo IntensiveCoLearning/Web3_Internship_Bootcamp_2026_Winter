@@ -19,17 +19,19 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 # To do list
 
--   参加LXDAO周会
+-   参加LXDAO周会 ✅
     
--   今天你Commit了吗
+-   今天你Commit了吗 ✅
     
--   今天你发推了吗
+-   今天你发推了吗 ✅
     
 -   学习Go
     
 -   学习Uniswap
     
--   学习Solidity
+-   学习Solidity ✅
+    
+-   完成Speed Run Etherum Challenge0 ✅
     
 
 # Note
@@ -39,10 +41,17 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 -   初级程序员在学习过程中的代码自己写，熟练以后AI辅助
     
 -   英语非常重要，不会英语岗位减少一半
+    
+
+已部署Speed Run Etherum Challenge0至vercel，欢迎大家来挖自己的NFT  
+[https://challenge-tokenization-nextjs-five.vercel.app](https://challenge-tokenization-nextjs-five.vercel.app/myNFTs)
+
+这个小挑战真的很好，将合约、前端、本地部署、测试网部署都跑了一遍，对小白理解dapp的项目结构和部署流程非常友好
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # To do list
 
@@ -85,6 +94,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -162,6 +172,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -252,6 +263,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -309,6 +321,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
