@@ -15,8 +15,112 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## UniswapV2Pair.sol - 交易对合约
+
+### 主要作用
+
+每个交易对就是一个独立的 ERC-20 LP 代币合约 + AMM 池，同时实现：
+
+-   流动性提供/移除（mint/burn）
+    
+-   代币交换（swap）
+    
+-   价格预言机（price oracle）
+    
+-   手续费累积
+    
+
+### 继承与接口
+
+继承：
+
+-   UniswapV2ERC20（基本的 ERC-20 实现，代表 LP 份额） 实现接口：IUniswapV2Pair
+    
+
+### 核心状态变量
+
+```
+uint public constant MINIMUM_LIQUIDITY = 10**3;  // 永久锁定的最小流动性（防止精度丢失）
+
+address public factory;          // 所属工厂地址
+address public token0;           // 排序后的较小地址代币
+address public token1;           // 排序后的较大地址代币
+
+uint112 private reserve0;        // token0 储备量（uint112 节省 gas）
+uint112 private reserve1;        // token1 储备量
+uint32  private blockTimestampLast; // 上次更新时间戳
+
+uint public price0CumulativeLast;     // token0 累计价格（用于 TWAP）
+uint public price1CumulativeLast;     // token1 累计价格
+
+uint public kLast;                    // 上次同步时的 k = reserve0 * reserve1
+```
+
+### 关键事件
+
+```
+event Mint(address indexed sender, uint amount0, uint amount1);
+event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+event Swap(...);
+event Sync(uint112 reserve0, uint112 reserve1);
+```
+
+### 核心函数
+
+1.  **initialize(address _token0, address_ token1)**
+    
+    -   只能由工厂调用一次
+        
+    -   设置 token0/token1
+        
+2.  **getReserves()** → (uint112 _reserve0, uint112_ reserve1, uint32 \_blockTimestampLast)
+    
+    -   返回当前储备量（视图函数）
+        
+3.  **mint(address to) → uint liquidity**
+    
+    -   提供流动性，铸造 LP 代币
+        
+    -   计算新增流动性比例（基于当前储备）
+        
+    -   第一次添加流动性时，会永久锁定 MINIMUM\_LIQUIDITY（0.0001%）给 address(0)
+        
+    -   更新 kLast（用于判断是否需要手续费）
+        
+4.  **burn(address to) → (uint amount0, uint amount1)**
+    
+    -   移除流动性，销毁 LP 代币，返还两种代币
+        
+5.  **swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)**
+    
+    -   交换核心函数！
+        
+    -   要求：至少有一个 amountOut > 0
+        
+    -   计算输入量（amountIn = balance - reserve + fee）
+        
+    -   验证 k 增加（考虑 0.3% 手续费）
+        
+    -   转移输出代币给 to
+        
+    -   如果 data 不为空，调用 to 的 uniswapV2Call（闪电贷回调）
+        
+    -   最后更新储备 + 累计价格
+        
+6.  **skim(address to)**
+    
+    -   把多余的代币（因直接转入而非通过 mint）转给 to（通常是攻击者或清理用）
+        
+7.  **sync()**
+    
+    -   强制同步储备量 = 当前余额（用于修复储备不一致的情况）
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -49,6 +153,7 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -64,6 +169,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约为所有与 Uniswap 交互的参与方提供基本的安全保障。外围合约与一个或多个核心合约交互，但其本身并非核心合约的一部分。
@@ -98,6 +204,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -109,6 +216,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
