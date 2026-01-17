@@ -15,8 +15,93 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+今天主要学习的问题是：**在考虑滑点和手续费的情况下，如何在 Uniswap V2 买入并去 Binance 卖出，以实现单笔利润最大化？**
+
+**1\. 市场环境假设**
+
+-   **路径**：USDT (Quote) $\\to$ ETH (Base) \[Uniswap\] $\\to$ USDT \[Binance\]。
+    
+-   **CEX 假设**：只吃第一档深度（Level 1），认为回款是线性的。
+    
+-   **DEX 假设**：标准的 Constant Product Market Maker (CPMM)。
+    
+
+**2\. 核心变量**
+
+| 符号 | 含义 | 备注 |
+| $R_b$ | DEX Base 储备 (如 ETH) | 随交易减少 |
+| $R_q$ | DEX Quote 储备 (如 USDT) | 随交易增加 |
+| $\gamma$ | Uniswap 手续费因子 | 固定为 $0.997$ (0.3% fee) |
+| $P$ | Binance 最佳买价 (Bid) | 假设为固定值 |
+| $f$ | Binance Taker 费率 | 如 0.001 |
+| $C_{gas}$ | 预估 Gas 费用 | Quote 本位 (新增变量) |
+| $y$ | DEX 买入 Base 数量 | 待求的优化变量 |
+
+* * *
+
+### 二、推导过程 (Core Derivation)
+
+1\. DEX 的成本函数
+
+根据 $x \\cdot y = k$ 模型，买入 $y$ 个 Base 需要投入的 Quote 数量 $x(y)$ 为：
+
+$$(R\_b - y)(R\_q + \\gamma x) = R\_b R\_q$$
+
+整理得成本函数：
+
+$$Cost\_{dex}(y) = x(y) = \\frac{R\_q \\cdot y}{\\gamma(R\_b - y)}$$
+
+2\. 利润函数构建
+
+总利润 = CEX回款 - DEX成本 - 固定Gas费
+
+$$\\Pi(y) = (1-f)Py - \\frac{R\_q y}{\\gamma(R\_b - y)} - C\_{gas}$$
+
+3\. 求解最优输入量 $y^\*$
+
+对 $y$ 求导并令导数为 0（寻找驻点）：
+
+$$\\frac{d\\Pi}{dy} = (1-f)P - \\frac{R\_q R\_b}{\\gamma(R\_b - y)^2} - 0 = 0$$
+
+> **关键发现**：常数项 $C\_{gas}$ 的导数为 0。这意味着 **Gas 费的高低不改变最优下单量 $y^\*$ 的大小**，只改变是否开单的门槛。
+
+解方程 $(R\_b - y)^2 = \\frac{R\_q R\_b}{\\gamma(1-f)P}$，得到理论最优解：
+
+$$y^\* = R\_b - \\sqrt{\\frac{R\_q R\_b}{\\gamma (1-f)P}}$$
+
+* * *
+
+### 三、工程落地逻辑 (Implementation)
+
+在实盘 Bot 中，不能直接盲目使用 $y^\*$，必须经过“截断”和“盈亏检查”。
+
+Step 1: 理论计算
+
+计算 $y^\*$。
+
+-   若 $\\gamma(1-f)P \\le \\frac{R\_q}{R\_b}$（即 CEX 净价低于 DEX 边际价格），公式根号内无实数解或算出的 $y^\*$ 为负，直接 `Return`。
+    
+
+Step 2: 深度截断 (Clipping)
+
+获取 CEX 的盘口量 $Q\_{top}$。
+
+$$y\_{trade} = \\min(y^\*, Q\_{top})$$
+
+(防止买太多导致在 CEX 砸穿第一档价格)
+
+Step 3: 最终盈亏检查 (Gatekeeping)
+
+这是 $C\_{gas}$ 发挥作用的地方。计算实际净利润：
+
+$$\\Pi\_{net} = \[(1-f)P \\cdot y\_{trade}\] - \[\\text{DEX\\\_Cost}(y\_{trade})\] - C\_{gas}$$
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 在前几天已经分别学习了 Uniswap V2 的 AMM 定价公式、Pair 合约中的 swap / mint / burn 逻辑后，今天主要把零散的点串起来，重点放在 **Router 在整个交易流程中的作用，以及一次 swap 从用户到 Pair 的完整路径**。
 
 ### 一、从“用户视角”重新理解 Uniswap V2
@@ -108,6 +193,7 @@ pair.swap(amount0Out, amount1Out, nextTo, new bytes(0));
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ### 一、Uniswap V2（继续学习）
 
 在前两天理解了 Uniswap V2 的 swap 和 LP 机制后，今天主要补了一点 **Router 的作用**，搞清楚用户为什么几乎不直接和 Pair 合约交互。
@@ -180,6 +266,7 @@ function swapExactTokensForTokens(
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ### 一、Uniswap V2（继续学习）
@@ -258,6 +345,7 @@ DeFi 表面上是“代码即规则”，但实际问题更多来自：
 
 
 
+
 今天主要学习了 **Uniswap V2 的基础 AMM 机制**，重点放在 **swap 定价公式和 Pair 合约的核心逻辑**，没有深入到全部源码。
 
 ### 1\. AMM 定价公式（今天重点）
@@ -318,6 +406,7 @@ require(balance0Adjusted * balance1Adjusted >= k, "K");
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
