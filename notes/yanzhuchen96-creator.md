@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 1.17 学习笔记
+
+今天我跟着教程 [Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization) **（**[**中文版链接**](https://www.notion.so/Challenge-0-2afbbd63be8780dbbd56cb01490da15e?pvs=21)**）**按照步骤学习和操作，完成了人生中的第一个 Web3 小项目，搭建并部署了一个 NFT dApp。
+
+先是在 AI 的帮助下搭建好了环境 （因为教程主要面向有基础的人群，所以没对这一部分有过多描述），然后按照文档启动了三个终端窗口：第一个跑 yarn chain 启动本地区块链，第二个跑 yarn deploy 部署合约，第三个跑 yarn start 启动前端。接着打开浏览器访问 localhost:3000，mint 了一些 NFT，还挺可爱的。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yanzhuchen96-creator/images/2026-01-17-1768648171018-image.png)
+
+在 Debug Contracts 页面，我第一次直接调用了合约函数 ownerOf(tokenId)，输入 NFT 的编号（比如 1、2），就能查到它归哪个钱包地址所有。同时在 AI 的帮助下知道了那些卡片上显示的数字 42、38、15 是 NFT 的属性分数，而不是 tokenId，解决了我一开始的认知混淆问题。Anyway，这让我真实感受到了"链上所有权"是怎么回事，每个 NFT 的主人都精确记录在区块链上，任何人都能查，没法篡改。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## 学习 Solidity 推荐路线
 
 1.  读官方文档 + 做例子：
@@ -85,6 +99,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -133,6 +148,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -192,6 +208,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -276,6 +293,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
