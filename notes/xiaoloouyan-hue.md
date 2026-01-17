@@ -17,13 +17,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
-**👩‍💻 Web2 to Web3 🚀 A Developer's Guide to Building on Ethereum - Day 1 - 👋 Intro!**
+**👩‍💻 Web2 to Web3 🚀 A Developer’s Guide to Building on Ethereum - Day 1 - 👋 Intro!**
 
 **Week 1 - 👩‍🔬 Becoming A Power User**
 
 The first step to starting as a developer in the web3 ecosystem is first to become a Power User!
 
-You should start by getting hands-on & using the tools which will give you a much greater understanding of what you can do and what the crypto space is all about. In this section, we're talking about the tools in the crypto space, using them and helping you become an Ethereum power user.
+You should start by getting hands-on & using the tools which will give you a much greater understanding of what you can do and what the crypto space is all about. In this section, we’re talking about the tools in the crypto space, using them and helping you become an Ethereum power user.
 
 -   **Day 1**: [Introduction](https://youtu.be/zuJ-elbo88E)
     
@@ -44,7 +44,7 @@ In short:
 
 👉 **You deposit tokens into a pool, and your LP position proves what you own and what you earn.**
 
-**治理代币被用于 Snapshot、Tally 等应用中进行投票与合约执行，同时还能解锁如 NFT、Token Gated 聊天等功能，扩展出丰富的链上应用场景。区块链和智能合约虽然很酷，但目前仍然昂贵、缓慢、不友好且风险高，用户体验和基础设施还有很多需要改进的地方。从用户 → 高阶用户 → 开发者：**即使你不写代码，也可以通过第一周，完成你进入区块链世界的第一步。
+\*\*治理代币被用于 Snapshot、Tally 等应用中进行投票与合约执行，同时还能解锁如 NFT、Token Gated 聊天等功能，扩展出丰富的链上应用场景。区块链和智能合约虽然很酷，但目前仍然昂贵、缓慢、不友好且风险高，用户体验和基础设施还有很多需要改进的地方。从用户 → 高阶用户 → 开发者：\*\*即使你不写代码，也可以通过第一周，完成你进入区块链世界的第一步。
 
 无论从哪个角度进入区块链，第一步都是先成为一个 **power user（高阶用户）**。如果你想加入 DAO，或者参与 DeFi，就必须真正理解钱包是如何工作的，包括交易机制、Gas、私钥等基础概念。课程会以一个相对平稳、不过快的节奏，把这些内容完整讲清楚，并通过一系列较长的视频，系统性地梳理新手在使用过程中常见的卡点和困惑。
 
@@ -59,6 +59,7 @@ In short:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## **新闻总结🚀 2026：Meme‑Coin／Web3 社区的新混合主义**
 
@@ -167,6 +168,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -357,6 +359,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -418,6 +421,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -429,6 +433,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
