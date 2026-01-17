@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1\. 学习eth 笔记 [https://www.notion.so/Web3-2e820f214f72805eb1e6cf3deb82438f?source=copy\_link](https://www.notion.so/Web3-2e820f214f72805eb1e6cf3deb82438f?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 今日任务
 
 1.web3 (4篇文章)
@@ -33,6 +39,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 1.  bitcoin （3篇） [http://xhslink.com/o/7V4bbX2DT7T](http://xhslink.com/o/7V4bbX2DT7T)
     
 2.  实习手册（part1） 📚Web3学习笔记——区块链（day2）📒 区块链能运转，... [http://xhslink.com/o/1H5OENj7lxj](http://xhslink.com/o/1H5OENj7lxj)
@@ -44,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
