@@ -70,15 +70,16 @@ Web3 实习计划 2025 冬季实习生
 
 ### 什么是 viem
 
-\*\*viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*它帮你用代码去读链上数据、发交易、调智能合约
+viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*它帮你用代码去读链上数据、发交易、调智能合约。
 
-### 。
+## rainbowkit
 
 **RainbowKit** 是一个开源的 **React 库（JavaScript UI 工具包）**，用于在基于 Web3 的前端应用（dApp）中快速、安全且可定制地集成用户的钱包连接功能。换句话说，它帮助开发者在网页上让用户连接他们的加密钱包（比如 MetaMask、WalletConnect、Coinbase Wallet 等）并进行交互，而不需要自己从头实现这一切界面与逻辑。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # DAY5
@@ -176,6 +177,7 @@ Gas：每笔交易收 **0.3%**
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -278,6 +280,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -446,6 +449,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -542,6 +546,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
