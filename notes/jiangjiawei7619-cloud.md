@@ -15,13 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+自己用Figma做了个私钥公钥助记词之间的关系图
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangjiawei7619-cloud/images/2026-01-17-1768669454685-image.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangjiawei7619-cloud/images/2026-01-17-1768619902337-image.png)
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今天把区块链基础原理搞清楚了，包括哈希，公钥私钥，默克尔树根，挖矿，工作量证明等概念，以及web3常见骗局
 <!-- DAILY_CHECKIN_2026-01-16_END -->
