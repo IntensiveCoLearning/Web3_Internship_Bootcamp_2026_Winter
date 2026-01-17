@@ -15,13 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+今天参与了LXDAO的周会，更深入的了解了DAO的运作机制和LXDAO项目的开展流程。
+
+除此之外，我还梳理了这周所学到的内容，昨天的实习项目周会让我学到了一些运营的知识，还有朋友分享Uniwap和Solidity的知识，让我意识到自己需要了解和学习的知识还有许多。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今天打算梳理一下前4天老师们的直播，然后学一点rust
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 今天完成了[Challenge #0 - Tokenization](https://speedrunethereum.com/challenge/tokenization)
 
@@ -36,6 +45,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -218,6 +228,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 
 
+
 **dApp（）**
 
 **用智能合约做后端，用以太坊做数据库和结算层”的应用程序**
@@ -242,6 +253,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
