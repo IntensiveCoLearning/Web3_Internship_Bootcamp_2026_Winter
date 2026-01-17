@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+![屏幕截图 2026-01-17 210033.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662485478-_____2026-01-17_210033.png)
+
+![屏幕截图 2026-01-17 210038.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662464045-_____2026-01-17_210038.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 阅读了ethpanda发布的100年后的数字生活  
 下面写了些观后感和ai总结
 
@@ -83,6 +91,7 @@ _(1:11:35 - 结尾)_
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 [unphishable.io](http://unphishable.io)  
 今天主要是在这个网站做了一些钓鱼攻击的安全测试  
   
@@ -94,6 +103,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 今天没有太多高密度的学习  
@@ -112,6 +122,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -154,6 +165,7 @@ answer：web3目前整体网络环境较差，属于混沌的发展阶段，需�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
