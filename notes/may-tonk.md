@@ -15,8 +15,331 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 今日复习hash的处理（详细代码上传在GitHub）
+
+[GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
+
+## **一、合约功能概览**
+
+这个合约主要是**演示 Solidity 中哈希函数的使用**，核心功能包括：
+
+1.  存储字符串的哈希，用于后续验证。
+    
+2.  将多个变量（整数、字符串、地址）拼接后计算哈希。
+    
+3.  检查输入字符串的哈希是否与存储的哈希一致。
+    
+4.  比较两个输入字符串的哈希是否相同。
+    
+
+* * *
+
+## **二、核心概念与知识点**
+
+### 1\. 哈希函数（Hash Function）
+
+-   哈希函数是一种**单向映射函数**，把任意长度的输入映射为固定长度输出（以太坊用 32 字节 = 256 位）。
+    
+-   特性：
+    
+    1.  **确定性**：相同输入永远得到相同输出。
+        
+    2.  **不可逆**：无法从哈希值推回原始输入。
+        
+    3.  **抗碰撞**：不同输入得到相同哈希的概率极低。
+        
+    4.  **雪崩效应**：输入哪怕只有一位不同，哈希值差异巨大。
+        
+-   在 Solidity 中常用：
+    
+    -   `keccak256(bytes memory) returns (bytes32)`
+        
+        > Ethereum 中的标准哈希函数，基于 Keccak-256 算法。
+        
+
+* * *
+
+### 2\. 编码函数 `abi.encodePacked` 与 `abi.encode`
+
+-   **abi.encodePacked(...)**
+    
+    -   紧凑拼接参数生成字节流。
+        
+    -   输出长度可变，适合哈希计算或签名。
+        
+    -   注意 **多类型拼接可能导致碰撞**：
+        
+        ```
+        abi.encodePacked(uint16(0x1234), uint8(0x56)) 
+        // 与 abi.encodePacked(uint8(0x12), uint16(0x3456)) 可能产生相同字节流
+        ```
+        
+-   **abi.encode(...)**
+    
+    -   使用标准 ABI 编码（每个参数固定长度，防止碰撞）。
+        
+    -   如果担心 `abi.encodePacked` 的拼接碰撞问题，可使用 `abi.encode`。
+        
+
+* * *
+
+### 3\. Solidity 中字符串、整数、地址的哈希
+
+-   **整数与地址**：Solidity 会把它们转换为对应的字节形式再哈希。
+    
+-   **字符串**：需要先转换成字节流，常用：
+    
+    ```
+    keccak256(abi.encodePacked("hello"))
+    ```
+    
+-   **哈希拼接**：
+    
+    ```
+    keccak256(abi.encodePacked(x, name, add))
+    ```
+    
+    -   `x` 是 `uint`，`name` 是 `string`，`add` 是 `address`。
+        
+    -   返回 32 字节 `bytes32` 哈希值。
+        
+
+* * *
+
+### 4\. Storage vs Memory
+
+-   **storage**：存储在区块链上的变量，修改需要 Gas。
+    
+-   **memory**：临时变量，仅存在函数调用期间。
+    
+-   函数类型：
+    
+    -   `view`：只读取 storage，不修改状态。
+        
+    -   `pure`：不读取也不修改 storage，只依赖输入参数计算。
+        
+
+在你的合约中：
+
+-   `hash()`、`justice()` 是 `view`，读取了 storage。
+    
+-   `justic2()` 是 `pure`，不访问 storage。
+    
+
+* * *
+
+### 5\. 哈希对比方法
+
+-   检查字符串是否一致：
+    
+
+```
+keccak256(abi.encodePacked(st)) == _msg
+```
+
+-   比较两个字符串是否相同：
+    
+
+```
+keccak256(abi.encodePacked(st1)) == keccak256(abi.encodePacked(st2))
+```
+
+-   **为什么要用哈希比较？**
+    
+    -   Solidity 不能直接用 `==` 比较 `string memory`。
+        
+    -   使用哈希比较可以快速判断相等性，节省 Gas。
+        
+
+* * *
+
+## **三、合约代码逐行分析**
+
+1.  **初始化存储哈希**
+    
+
+```
+bytes32 public _msg = keccak256(abi.encodePacked("0xAA"));
+```
+
+-   将字符串 `"0xAA"` 转为字节流，再生成 32 字节哈希存储在 `_msg`。
+    
+-   后续可用 `justice()` 检查输入是否等于 `"0xAA"`。
+    
+
+2.  **示例状态变量**
+    
+
+```
+uint public x = 10;
+string public name = "0xff";
+address public add = 0x7A58c0Be72BE218B41C608b7Fe7C5bB630736C71;
+```
+
+-   用于 `hash()` 函数演示多类型变量哈希拼接。
+    
+
+3.  **hash() 函数**
+    
+
+```
+function hash() public view returns(bytes32) {
+    return keccak256(abi.encodePacked(x, name, add));
+}
+```
+
+-   拼接三个变量生成哈希。
+    
+-   可用于数据完整性验证，比如检查变量组合是否被篡改。
+    
+
+4.  **justice() 函数**
+    
+
+```
+function justice(string memory st) public view returns(bool) {
+    return keccak256(abi.encodePacked(st)) == _msg;
+}
+```
+
+-   输入字符串 `st` 与存储的 `_msg` 哈希比较。
+    
+-   返回 `true` 或 `false`。
+    
+
+5.  **justic2() 函数**
+    
+
+```
+function justic2(string memory st1, string memory st2) public pure returns(bool) {
+    return keccak256(abi.encodePacked(st1)) == keccak256(abi.encodePacked(st2));
+}
+```
+
+-   比较两个字符串是否相等。
+    
+-   `pure` 函数不依赖合约状态，仅根据输入计算结果。
+    
+
+* * *
+
+## **四、哈希应用场景**
+
+1.  **身份验证**
+    
+    -   存储密码哈希而不是明文：
+        
+        ```
+        bytes32 public passwordHash;
+        passwordHash = keccak256(abi.encodePacked("mypassword"));
+        ```
+        
+    -   用户输入时比较哈希，而不是明文存储。
+        
+2.  **数据完整性校验**
+    
+    -   文件或数据上传前计算哈希，防止篡改。
+        
+3.  **签名验证**
+    
+    -   与 `ecrecover` 搭配，验证消息是否由特定地址签名。
+        
+4.  **Merkle 树**
+    
+    -   大量数据哈希组合，常用于链上存证和证明。
+        
+
+* * *
+
+## **五、扩展与注意事项**
+
+1.  **abi.encodePacked 碰撞风险**
+    
+    -   拼接多类型数据可能产生哈希碰撞。
+        
+    -   安全起见：
+        
+        -   使用 `abi.encode`（带类型长度信息）。
+            
+        -   或者在拼接前加定长前缀。
+            
+2.  **字符串大小写**
+    
+    -   `"0xAA"` 与 `"0xaa"` 哈希不同，大小写敏感。
+        
+3.  **Gas 成本**
+    
+    -   `keccak256` 是低成本操作，但 storage 写入哈希较贵。
+        
+    -   读取 storage 哈希比直接计算更节省 Gas。
+        
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+/*
+  合约名：Hash
+  功能：
+  1. 演示 keccak256 哈希函数的使用
+  2. 通过 abi.encodePacked 生成哈希
+  3. 验证输入字符串是否与存储的哈希一致
+  4. 比较两个输入字符串哈希是否一致
+*/
+contract Hash {
+
+    // -------------------------
+    // 1) 初始化存储哈希
+    // -------------------------
+    // abi.encodePacked("0xAA") 将字符串 "0xAA" 转换为紧凑字节流
+    // keccak256(...) 返回 32 字节哈希
+    // _msg 存储了 "0xAA" 的哈希，用于后续验证
+    bytes32 public _msg = keccak256(abi.encodePacked("0xAA"));
+
+    // -------------------------
+    // 2) 示例状态变量
+    // -------------------------
+    uint public x = 10; // uint256 类型的整数
+    string public name = "0xff"; // 字符串
+    address public add = 0x7A58c0Be72BE218B41C608b7Fe7C5bB630736C71; // 示例地址
+
+    // -------------------------
+    // 3) hash() 函数
+    // -------------------------
+    // 作用：返回 x、name、add 拼接后的哈希
+    // view：因为只读取了 storage（x, name, add），没有修改状态
+    function hash() public view returns(bytes32) {
+        // abi.encodePacked 将多个参数紧凑拼接为字节流
+        // keccak256 对拼接后的字节流计算哈希
+        return keccak256(abi.encodePacked(x, name, add));
+    }
+
+    // -------------------------
+    // 4) justice() 函数
+    // -------------------------
+    // 作用：检查输入字符串 st 的哈希是否等于 _msg
+    // view：因为读取了 storage 变量 _msg
+    function justice(string memory st) public view returns(bool) {
+        // 将输入字符串 st 编码为紧凑字节流
+        // 然后计算哈希与 _msg 对比
+        return keccak256(abi.encodePacked(st)) == _msg;
+    }
+
+    // 作用：比较两个输入字符串 st1 和 st2 的哈希是否相同
+    // pure：不读取或修改任何 storage
+    function justic2(string memory st1, string memory st2) public pure returns(bool) {
+        return keccak256(abi.encodePacked(st1)) == keccak256(abi.encodePacked(st2));
+    }
+
+}
+```
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -120,6 +443,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # 一、Solidity 核心概念总览表（回温版）
 
@@ -263,6 +587,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # **order book(订单薄)和AMM(**自动做市商)(采用ChatGPT纠正总结)
@@ -574,6 +899,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -676,6 +1002,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
