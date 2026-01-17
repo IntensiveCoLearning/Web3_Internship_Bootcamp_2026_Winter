@@ -15,8 +15,59 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+## 📅 Day 6运营向训练计划
+
+### 🎯 核心目标 (Objective)
+
+### 📈 关键结果 (Key Results)
+
+-   **KR 1：** 复习回顾相关章节，完成未完成课程
+    
+
+1.  行业探索：
+    
+    -   知名开发者 & Builder X 关注清单
+        
+    -   熟悉相关数据平台（用于运营分析）：
+        
+        -   [DeFiLlama](https://defillama.com/)：各赛道概览、TVL 数据分析、专有名词 & 缩写的理解
+            
+        -   [Dune Analytics](https://dune.com/)：数据查询与可视化
+            
+        -   [Etherscan](https://etherscan.io/)：了解交易等数据的查看与追踪
+            
+
+-   **KR 2：**
+    
+-   **KR 3：**
+    
+
+## 📝 复盘 (Reflection)
+
+**KR 1：**
+
+**完成度：**
+
+**心得：**
+
+**KR 2：**
+
+**完成度：**
+
+**心得：**
+
+**KR 3：**
+
+**完成度：**
+
+**心得：**
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## 📅 Day 5 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -360,6 +411,7 @@ Adam 针对不同群体提出了具体的防御建议：
 
 
 
+
 ## 📅 Day 4 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -663,6 +715,7 @@ Emily 提醒从业者要保持警惕，识别风险项目：
 
 
 
+
 ### 🎯 核心目标 (Objective)
 
 学习[「安全与合规」](https://web3intern.xyz/zh/security/)部分，回顾历史知识
@@ -943,6 +996,7 @@ Web3 治理遇到的挑战\*\*「 Sybil 」\*\*：
 
 
 
+
 ## 📅 Day 2 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -1160,6 +1214,7 @@ Austin Griffith 在创建钱包中，指出去中心化最大的优势：「 恭
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
