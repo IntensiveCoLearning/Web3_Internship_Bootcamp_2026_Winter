@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+重新刷《021学习以太坊》
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/haolan0427/images/2026-01-17-1768663964030-image.png)
+
+学习Hardhat，正在看官方文档[https://hardhat.org/docs/getting-started](https://hardhat.org/docs/getting-started)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 《021学习以太坊》第5章，了解EVM以及ta在以太坊生态中的意义，也深刻理解了为什么以太坊虚拟机能被称为真正意义上的世界计算机了，也学习了一笔交易的Gas是如何组成的，以及在编写智能合约时，如何让Gas是合理的。
 
 《021学习以太坊》第6章，这章主要讲述了以太坊是如何以及为什么从最初的PoW共识转移到PoS共识机制、以太坊目前PoS共识机制的核心组成和机理、以太坊系统的历史以及一些重要的升级。
@@ -24,6 +34,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 《021学习以太坊》第三章，了解了以太坊账户，真正能主动发起交易的EOA账户，和只能被动调用的合约账户，也学习了无论是EOA账户还是合约账户都以一个四元组的形式存储在world state中，还学习了不同账户之间的交互，以及ERC20和ERC721协议，也知道了，一旦合约上链，后期的更改是做不到的，如何有合约的升级的要求，可以采用代理合约模式。
 
@@ -34,6 +45,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -48,6 +60,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -67,6 +80,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
