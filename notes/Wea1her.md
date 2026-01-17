@@ -27,10 +27,13 @@ INTJ
     
 
 今天周六，假期愉快~
+
+[https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/day5-meeting/](https://docs.0xweather.com/web3-internship-bootcamp-2026-winter/day5-meeting/)
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # 昨天做了什么：
 
@@ -54,6 +57,7 @@ INTJ
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 # 今天做了什么：
 
 1.  对昨晚的直播，Web3合规内容进行整理，并上传到个人知识库。
@@ -75,6 +79,7 @@ INTJ
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -148,6 +153,7 @@ INTJ
 
 
 
+
 # 今日目标：
 
 1.  参加下午的Co-Learning
@@ -163,6 +169,7 @@ INTJ
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
