@@ -15,8 +15,35 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# To do list
+
+-   参加LXDAO周会
+    
+-   今天你Commit了吗
+    
+-   今天你发推了吗
+    
+-   学习Go
+    
+-   学习Uniswap
+    
+-   学习Solidity
+    
+
+# Note
+
+LXDAO周会Random Talk环节Bruce老师答疑：
+
+-   初级程序员在学习过程中的代码自己写，熟练以后AI辅助
+    
+-   英语非常重要，不会英语岗位减少一半
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # To do list
 
 -   今天你commit了吗？
@@ -58,6 +85,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -134,6 +162,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -222,6 +251,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -279,6 +309,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
