@@ -15,8 +15,44 @@ Yuchen
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+Web3工作方式
+
+1.OKR写法与最佳实践：目标（Objectives）全团队公开可见，关键结果（Key Results）量化可追踪
+
+2.远程会议：明确需求、决策留痕。决策事项 + 行动项明确 **DRI**（直接责任人）+ **Deadline**（精确到时区）
+
+3.软技能：文档能力，AI能力、媒体工具
+
+-   **Web3 常用工具：**
+    
+    -   CoinMarketCap 全球最值得信赖的加密货币数据、洞见和社区来源：[**https://coinmarketcap.com/**](https://coinmarketcap.com/)
+        
+    -   CoinGecko 是世界上最大的独立加密货币数据聚合器：[**https://www.coingecko.com/**](https://www.coingecko.com/)
+        
+    -   DefiLlama 是 DeFi（去中心化金融）领域最大的 TVL 聚合器：[**https://defillama.com/**](https://defillama.com/)
+        
+    -   RootData 是一个 Web3 资产数据平台：[**https://www.rootdata.com/zh/Projects?influenceSort=2**](https://www.rootdata.com/zh/Projects?influenceSort=2)
+        
+    -   媒体：
+        
+        -   律动 BlockBeats：[**http://theblockbeats.info/**](http://theblockbeats.info/)
+            
+        -   PANews：[**https://www.panewslab.com/zh**](https://www.panewslab.com/zh)
+            
+    -   免费发推抽奖工具：[**https://apidance.pro/twitter\_giveaway**](https://apidance.pro/twitter_giveaway)
+        
+    -   查看链上持仓：[**https://pummmm.com**](https://pummmm.com)
+        
+    -   查看持币地址、筹码分布：[**https://bubblemaps.io/**](https://bubblemaps.io/)
+        
+    -   即将启动的加密项目 IDO、IEO、ICO 列表：[**https://www.coincarp.com/zh/upcoming-ido/**](https://www.coincarp.com/zh/upcoming-ido/)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
 
 行业赛道：
@@ -43,6 +79,7 @@ Yuchen
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 -   Bitcoin & Ethereum
     
@@ -161,6 +198,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -286,6 +324,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
