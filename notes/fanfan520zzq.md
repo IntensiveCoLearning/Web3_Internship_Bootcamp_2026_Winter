@@ -15,8 +15,34 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1.17
+
+EOA Externally Owned Account 私钥控制，发送与接收交易，也可以是合约账户
+
+State Trie 状态树：所有账户的状态（balance，nonce，智能合约代码地址，合约存储根） 有点像c语言里面的统一存放数据的.h文件，但是树里面也有赋值，它不仅仅是一个目录
+
+树组织在一个MPT:Modefied MerklePatricia Trie中，树的根哈希stateRoot在区块头里面
+
+DAG:有向无环图
+
+目前的节点：1-2w 验证者：100w
+
+数据同步：这是我刚开始了解eth想到的一个感觉比较深刻的问题：通信之间有延迟，不会带来很多误差吗？
+
+同步的内容：区块链数据（区块及其头部信息），状态数据（balance，合约ad，code）
+
+三种同步方式：1.FullSync 全同步，数值与坐标全等的同步
+
+2.SnapSync：快照同步 下载header chain ， 不太懂 ， 并行接收？
+
+3.LightSync：不保存完整状态，也不执行所有交易：连接到邻居节点，获取区块头，验证chain连续性，请求最新状态根快照，下载，填充本地trie，获取未同步的块并执行，完全同步
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ```ini
 1.16 今天明天都有事
 
@@ -46,6 +72,7 @@ RPC: Remote Procedure Call 远程过程调用 ， client 向节点中的服务�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ```ini
 solidity stduy;
@@ -90,6 +117,7 @@ SpoonOS: AI operating system ; AI container ; AI marketplace
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
 
 今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
@@ -132,6 +160,7 @@ DEX交易：verified;问号或感叹号的token
 
 
 
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -151,6 +180,7 @@ DEX交易：verified;问号或感叹号的token
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
