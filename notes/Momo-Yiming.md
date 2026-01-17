@@ -15,13 +15,51 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-17-1768663888886-image.png)
+
+  
+导图输出文字版（结合AI）  
+一、个人成长与内容标准
+
+**Howard**​ 提出，应**将个人视为一个“公司”来审视和经营**，这意味着我们需要像管理企业一样，进行战略规划、资源分配和持续优化，以实现自我价值的最大化。同时，他分享了一个衡量价值的实用标准：一篇**好的文章，应是自己愿意反复阅读3-4遍，并且有强烈意愿主动分享给他人**的内容。这强调了深度认同与价值共鸣的重要性 。
+
+**周星星**​ 则强调了**好奇心作为第一生命力**的关键作用。他鼓励大家在30岁之后，依然要主动**拓展未知领域**，保持对世界的好奇与探索欲，这是个人持续成长的底层动力 。
+
+## 二、高效工具与学习方法
+
+在工具与方法的分享上，嘉宾们带来了具体实用的推荐。
+
+-   **Vincent**​ 推荐使用 **Figma 来制作思维导图**。这款设计工具以其强大的协作性和灵活性，能够帮助我们将抽象的逻辑关系进行可视化的高效整理 。
+    
+-   **Alex Fan**​ 详细介绍了如何**通过思维导图构建逻辑体系并进行复盘**。他特别分享了一个高效技巧：**“收缩节点，逐级回顾”**。在复盘时，先折叠所有细节，然后像打开地图一样，按照自己的思路逻辑逐级展开。这种方法能有效**变被动输入为主动思考**，强迫大脑回忆和梳理知识结构，从而加深理解 。
+    
+
+## 三、领域探索与深度研究
+
+其他嘉宾也分享了他们在前沿领域的探索。
+
+-   **Swen**​ 推荐关注 **Vitalik Buterin（以太坊联合创始人）的文章**，这对于理解区块链领域的前沿思想至关重要 。
+    
+-   **Max**​ 作为在读大学生，分享了对 **Uniswap 运行原理的深入研究**，并探讨了一个专业议题——**无常损失在多大程度上可以通过永续合约进行对冲**，展现了深厚的学术探索能力 。  
+      
+    对后续自己的影响和改进  
+    1.反馈复盘时使用思维导图缩节点再展开的方式  
+    2.把自己的发展路径分层化（把自己当成一个公司去运营）从事业，外貌，人际关系不同方面如何分层精细，逐级提升？  
+    3.其实跨境电商工作中常用figma作为设计软件，但是自己从没用于构建导图，后续学习figma多方面的应用也是一门必修课！  
+    4.关注 **Vitalik**以及其文章，精华在此!
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 以下是结合今日学习内容web和ai相关总结的思维导图用deepseek处理后输出的文字稿  
 **AI智能体学会“花钱”，Web3是唯一的答案**
@@ -90,6 +128,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -101,11 +140,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
