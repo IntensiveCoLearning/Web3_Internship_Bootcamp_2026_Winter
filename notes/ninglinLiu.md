@@ -15,8 +15,155 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 今日 Web3 学习报告：ZK × Monad 并行批量验证与 zkKYC Gate 落地
+
+## 1\. 今日目标与产出
+
+今天的学习主线是把“ZK 证明验证”从概念层面落地成**可部署、可验收、可演示**的完整闭环系统，并围绕 Monad 的并行执行叙事构建一个真实需求场景：**批量 zkKYC 合规门禁**。
+
+最终产出：
+
+-   [https://github.com/ninglinLiu/zkhahaha](https://github.com/ninglinLiu/zkhahaha)
+    
+-   已部署到 Vercel 的前端可访问站点（评委可直接打开验收）：[https://zk-parallel-web666.vercel.app](https://zk-parallel-web666.vercel.app)
+    
+-   Monad Testnet 上的两类合约：
+    
+    -   `ParallelZKPlayground`（批量验证引擎）
+        
+    -   `KycPass`（ERC721 SBT Pass，门禁凭证）
+        
+-   完整演示动线：`/kyc → Verify 50 → Mint Pass → /gate`
+    
+-   关键页面与功能：Upload Proof / Batch Verify / View Receipt / Batch zk-KYC / Gate
+    
+
+* * *
+
+## 2\. 核心认知升级：ZK “验证”到底在系统里扮演什么角色？
+
+今天最大的理解变化是：  
+**ZK 不只是密码学证明，而是一种“可信计算结果的凭证系统”**。
+
+在应用层，用户/机构最需要的不是“我能不能验一个 proof”，而是：
+
+-   能不能一次性处理很多用户（规模化）
+    
+-   能不能把验证结果直接变成权限（可用性）
+    
+-   能不能不引入隐私数据存储（合规性）
+    
+
+因此我把系统拆成两层：
+
+-   **验证引擎层**：负责批量验证、产出回执（Playground）
+    
+-   **业务凭证层**：把回执映射为可消费的权限（KycPass + Gate）
+    
+
+这让项目从“验证器轮子”升级为“解决真实需求的工作流”。
+
+* * *
+
+## 3\. 并行执行视角：为什么 Monad 对这类系统有优势？
+
+今天明确了一个很关键的工程点：  
+并行不是靠口号，而是靠**存储布局**与**写冲突控制**。
+
+我在合约层采用：
+
+-   `mapping(bytes32 => Result)` 作为结果存储  
+    让每个 `proofId` 写入独立存储槽，避免全局共享写热点
+    
+-   避免 `totalVerified++` 等全局累加器  
+    统计指标（通过率、gas/proof 等）由前端从事件/回执聚合
+    
+
+这对应 Monad 的并行执行叙事：  
+**当写入目标是独立槽位时，同一笔交易内的多个写入更容易并行化处理**，批量验证才能成为“系统设计的一等公民”。
+
+* * *
+
+## 4\. zkKYC Gate 场景：从“验证”到“准入”的闭环
+
+今天把 zkKYC 的产品逻辑跑通：
+
+### /kyc（Issuer 视角）
+
+-   一键生成 50 个 Applicants（含 claims：country / over18 / notSanctioned）
+    
+-   批量验证（Verify 50）→ 前端展示关键指标：
+    
+    -   Gas Used、Gas / Proof、Latency、Success Rate、Verified Count
+        
+-   对通过地址批量发放 Pass（Mint Pass）
+    
+
+### /gate（用户视角）
+
+-   连接钱包 → 调用 `hasPass(address)` 判断是否持证
+    
+-   持证显示 Access Granted（解锁内容）
+    
+-   未持证显示 Not Verified 并引导回 /kyc
+    
+
+这条动线解决了一个“评委验收很现实”的问题：  
+**不是你能不能证明你会写合约，而是评委打开链接能不能三步点出一个能用的结果。**
+
+* * *
+
+## 5\. 工程层面的收获：黑客松交付思维
+
+今天的工程学习不止是写代码，更是“怎么交付”：
+
+-   **公网可用**比“本地能跑”重要：Vercel + Monad Testnet 的可访问闭环是获奖门槛
+    
+-   **可演示动线**比“技术细节”重要：把功能按评委行为路径组织（/kyc → /gate）
+    
+-   **指标可视化**很加分：gas/proof、延迟、通过率让“高性能叙事”变得可验证
+    
+-   **模块化叙事**更容易扩展：验证引擎（Playground）未来可复用到 zkAML、隐私验资、抗女巫等场景
+    
+
+* * *
+
+## 6\. 仍需补强与下一步计划
+
+接下来可以进一步增强“像真实系统”的部分（不影响现有演示）：
+
+1.  **Pass 元数据与视觉强化**
+    
+    -   KYC Pass 加入更完整的 tokenURI（徽章/等级/issuer 标识）
+        
+2.  **Receipt 体验强化**
+    
+    -   /receipt 页面做更直观的 proofId → status → txHash → explorer 的展示链路
+        
+3.  **Demo 稳定性增强**
+    
+    -   自动检测网络 / 自动切换 Monad Testnet
+        
+    -   为评委准备“无脑按钮”：一键生成、一键验证、一键 mint、一键 gate
+        
+4.  **扩展叙事**
+    
+    -   在同一验证引擎上扩展第二个场景：Proof-of-Assets / Sybil Shield（保持系统不是单点 demo）
+        
+
+* * *
+
+## 7\. 今日一句话总结
+
+今天把 ZK 从“概念”推进到“产品级闭环”：  
+**在 Monad 并行执行模型上实现批量 proof 验证，并把验证结果铸造成 SBT Pass，用于合规门禁与访问控制——评委打开链接即可验证。**
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # Checkpoint 3 学习总结：部署 NFT 合约到以太坊测试网（Sepolia）
 
 ## 一、学习目标回顾
@@ -236,6 +383,7 @@ code packages/hardhat/hardhat.config.ts
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 # 今日学习笔记：以太坊 Fusaka 升级（🦓）梳理
 
 **学习主题**：Fusaka 网络升级内容与影响  
@@ -371,6 +519,7 @@ code packages/hardhat/hardhat.config.ts
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 今天Web3运营学习经验总结（2026年1月13日）
 
 作为Web3 builder，我的运营重点围绕AI+Web3项目（如AI狼人杀竞技场带NFT角色），今天的学习主要从社交平台增长、社区构建和变现路径入手。基于我们讨论的策略和AI产品建议，以下是关键经验提炼，强调实战性和低成本执行。核心逻辑：Web3运营不是烧钱，而是通过价值互动构建忠实社区，转化成可持续收入。1. 粉丝增长起步：从小基数（40粉丝）到1k的实战框架
@@ -420,6 +569,7 @@ code packages/hardhat/hardhat.config.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
