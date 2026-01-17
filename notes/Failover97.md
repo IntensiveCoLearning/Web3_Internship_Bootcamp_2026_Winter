@@ -15,8 +15,187 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+### FrontRunning
+
+区块链网络上的每笔交易在执行前都会在内存池中经历一段可见期。这种透明性使得网络参与者能够在交易被打包进区块之前查看并对其做出响应。攻击者可以利用这种信息泄露来影响交易的执行过程。
+
+**直觉解释**：利用交易在Mempool中的可见期，在之前、之中和之后插手，改变结果，从而达到牟利的目的。
+
+**置换攻击**
+
+```jsx
+pragma solidity ^0.8.17;
+
+contract GuessTheNumberChallenge {
+    bytes32 challenge;
+
+    constructor(bytes32 _challenge) payable {
+        require(msg.value == 1 ether);
+        challenge = _challenge;
+    }
+
+    function isComplete() public view returns (bool) {
+        return address(this).balance == 0;
+    }
+
+    function guess(uint256 number) public payable {
+        require(msg.value == 1 ether, "Submission fee required");
+        uint256 balance = address(this).balance;
+        require(balance != 0, "Game has ended");
+
+        bytes32 userChallenge = keccak256(abi.encode(number));
+        if (userChallenge == challenge) {
+            (bool success, ) = msg.sender.call{value: balance}("");
+            require(success, "Transfer failed");
+        }
+    }
+```
+
+合约逻辑：
+
+猜数字游戏，猜到数字的人可以提取合约中所有的余额
+
+该系统存在一个根本性的设计缺陷。当用户准备提交猜测时，他们会调用一个`guess`函数并将猜测的数字作为参数传递。除非采取特殊预防措施，否则该交易会在被挖矿并打包到区块之前就出现在内存池中。这种可见性使得任何观察者都有机会复制交易数据，其中包括`guess`函数签名及其参数。
+
+通用抢先者可以复制此交易数据，并在分叉网络上模拟该交易（分叉链居然可以clone一个合约的所有状态包括状态参数的值？？？）。如果交易盈利，他们可以重新提交复制的有效载荷，并支付高于原始用户的 gas 价格。这种在 gas 价格拍卖中出价更高的行为，增加了他们的交易在原始用户交易之前被挖矿的概率。
+
+这种情况反映了抢先交易的一个关键方面。一旦复制的交易数据被提交并被挖矿，原始交易在智能合约系统的上下文中就变得无关紧要了。
+
+**插入攻击**
+
+滑点窃取攻击或者叫夹心饼干（Sandwich Attack)攻击。
+
+![image.png](attachment:9e1bc133-3f66-498a-ba4e-fde34d7850e7:image.png)
+
+假设你发起交易（进入mempool)
+
+所有人都能看到：你要买什么、买多少、滑点是多少（可接受的差价范围）
+
+攻击操作：
+
+攻击者抢先买币—>推高价格至滑点可接受的最高价——>你买币——>攻击者趁机卖出——→\*\*结果：\*\*攻击者赚到了你接受的差价
+
+危机直觉：只要用户交易公开、价格即时操纵、只要存在滑点就有被夹空间
+
+**抑制攻击（block stuffing)**
+
+攻击目的：让某些关键交易晚进区块，来达到操纵市场的目的：比如预言机更新、清算、开奖、最后一笔抢购。
+
+手段：攻击者用高优先级费用+高gas消耗占满区块容量，让别人的交易连续几个区块都进不去，从而改变结果或者制造系统性风险。
+
+EIP-1559缓解风险——把“持续填满区块”的成本抬高
+
+```jsx
+// EIP-1559 之前
+交易费用 = gasUsed × gasPrice
+// gasPrice 全部给矿工
+
+// 区块容量固定
+区块 gas limit = 15,000,000 gas
+```
+
+成本：const attackCost = (blockGasLimit × attackGasPrice) / 1e9;
+
+攻击成本有限；如果攻击者本身就是矿工就可以免费填充自己的区块
+
+EIP-1599的新的费用结构
+
+```jsx
+// EIP-1559 之后
+交易费用 = (baseFee + priorityFee) × gasUsed
+
+// baseFee：基础费，被销毁 🔥
+// priorityFee：小费，给验证者
+// Base Fee 调整机制
+
+if (上一个区块使用量 > 目标容量) {
+    baseFee 增加 12.5%
+} else if (上一个区块使用量 < 目标容量) {
+    baseFee 减少 12.5%
+}
+
+// 弹性区块
+目标容量 = 15,000,000 gas
+最大容量 = 30,000,000 gas (2倍弹性)
+```
+
+![image.png](attachment:6b9ffd4e-c1e6-4482-befc-dcf695d3a2f5:image.png)
+
+**恶意攻击**
+
+拒绝服务攻击
+
+```jsx
+pragma solidity ^0.8.17;
+
+contract DelayedWithdrawal {
+    address beneficiary;
+    uint256 delay;
+    uint256 lastDeposit;
+
+    constructor(uint256 _delay) {
+        beneficiary = msg.sender;
+        lastDeposit = block.timestamp;
+        delay = _delay;
+    }
+
+    modifier checkDelay() {
+        require(block.timestamp >= lastDeposit + delay, "Keep waiting");
+        _;
+    }
+
+    function deposit() public payable {
+        require(msg.value != 0);
+        lastDeposit = block.timestamp;
+    }
+
+    function withdraw() public checkDelay {
+        (bool success, ) = beneficiary.call{value: address(this).balance}("");
+        require(success, "Transfer failed");
+    }
+}
+```
+
+延迟提现合约：受益人必须在lastDeposit时间戳+delay的时间间隔才能实现取现。然而攻击者可以通过不断的更新lastDeposit，导致受益人无法提现。
+
+**毒气恶意攻击（Infficient Gas Griefing)**
+
+这种攻击中，攻击者可能只提供足够的gas来确保顶层函数成功执行，同时确保外部调用因gas耗尽而失败。由于[63/64规则](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-150.md)，顶层合约可以完成其函数调用，而顶层函数不检查外部调用是否成功，从而导致合约目的最终不能执行。
+
+常见毒气攻击合约：此类问题在执行**通用调用**的智能合约中尤为常见，例如中继器和多重签名钱包。
+
+```jsx
+contract Relayer {
+    // 记录哪些数据已经执行过（防止重放攻击）
+    mapping (bytes => bool) executed;
+    
+    // 目标合约地址
+    address target;
+    
+    function forward(bytes memory _data) public {
+        // 步骤 1：检查这个数据是否已经执行过
+        require(!executed[_data], "Replay protection");
+        
+        // 步骤 2：（代码中省略）验证签名
+        // ... signature validation ...
+        
+        // ❌ 步骤 3：标记为已执行（危险！先改状态）
+        executed[_data] = true;
+        
+        // ❌ 步骤 4：外部调用（没检查返回值！）
+        target.call(abi.encodeWithSignature("execute(bytes)", _data));
+        //     ↑
+        //   这就是外部调用！
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -34,6 +213,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 # JS的特点
 
@@ -262,6 +442,7 @@ console.log(multiply(3, 4)); // 输出: 12
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -398,6 +579,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
