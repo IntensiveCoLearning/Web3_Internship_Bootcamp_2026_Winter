@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+In today's reading of "Ze’s Crypto Journal: From Underground Gambling in Texas to the Monad Airdrop—The Unchanging Law of the Jungle," a profound parallel is drawn between the opaque power structures of the gray economy and the seemingly decentralized yet deeply manipulated crypto space. The narrative follows the author's former boss attempting to lure a debt-ridden young woman into running an illegal Texas Hold’em club—a high-risk endeavor where legal consequences would fall entirely on her, while the orchestrator remained shielded. This mirrors the recent controversy surrounding the Monad airdrop, where early contributors were excluded, fake links proliferated, and insiders enjoyed preferential treatment. In both cases, rules are designed not to ensure fairness, but to serve those who control them.
+
+The reflection extends to the mechanisms of exploitation prevalent in crypto trading. On platforms like Hyperliquid, vulnerabilities such as flash squeezes and wick manipulation allow large players to liquidate retail traders with surgical precision—events that have led to millions in losses within hours. These are not merely technical failures but systemic features that benefit the powerful. Just as the gray economy preys on the desperate with promises of quick wealth, the crypto market often operates under a facade of decentralization while enabling centralized control and selective enforcement.
+
+At its core, the essay challenges the original promise of blockchain—transparency, fairness, and decentralization—and contrasts it with today’s reality: a space where data can be cherry-picked, rules reinterpreted, and retail participants systematically marginalized. It argues that in any arena, whether offline or on-chain, morality often becomes a constraint for the vulnerable, while rules serve as tools for the powerful. True empowerment does not come from chasing speculative gains within rigged systems, but from building competence, understanding risk, and—where possible—shaping the rules rather than merely following them. The path forward in Web3 lies not in blind participation, but in conscious, critical engagement that acknowledges both its transformative potential and its recurring failures of justice.
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 Today’s learning focused on the convergence of Agentic AI and Web3, highlighting the shift from reactive conversational models to autonomous, action-oriented systems. While traditional large language models (LLMs) generate text based on prompts, Agentic AI integrates reasoning, memory through vector databases, and external tool usage via APIs—enabling persistent, goal-driven execution in real-world environments.
 
 A critical gap in current AI infrastructure is the lack of verifiable identity and trust. Issues such as identity spoofing, untraceable actions, and ungoverned “shadow AI” deployments pose significant risks. Blockchain emerges as a foundational solution, providing tamper-proof identity registries, reputation systems, and validation mechanisms using TEE or zkML proofs. This enables what is termed an “on-chain passport” for AI agents, answering the essential questions of “Who are you?” and “Can you be trusted?”
@@ -31,6 +41,7 @@ From a regulatory perspective, immutable on-chain logs offer transparent and aud
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 Today’s learning focused on the evolving threat landscape in Web3, highlighted by key data, attack methodologies, and emerging challenges. In 2025 alone, the ecosystem suffered over $3.5 billion in losses across more than 1,200 major security incidents, reflecting a trend toward both highly targeted attacks and widespread automated threats. High-profile breaches—such as the multi-signature compromise at Bybit, AI-driven deepfake social engineering at ULXINK, and complex DeFi contract exploits like Balancer—illustrate how attackers are leveraging advanced techniques, supply chain vulnerabilities, and AI to execute sophisticated and damaging campaigns.
 
 Notably, attack vectors have diversified. “Precision hunting” tactics, often linked to state-sponsored actors like North Korea’s Lazarus Group, accounted for the majority of high-value institutional thefts. Meanwhile, “spray-and-pray” methods such as phishing, private key theft, and rug pulls remained pervasive, increasingly enhanced by AI-generated content and automated tooling. Emerging threats also include novel phishing schemes exploiting EIP-7702 delegation features, self-propagating supply chain worms like Shai-Huud, and AI-aided smart contract vulnerability discovery—marking a shift toward more automated, scalable, and stealthy attacks.
@@ -42,6 +53,7 @@ Overall, today’s review underscores that security in Web3 is no longer merely 
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 In today’s review, I revisited essential concepts and practical skills in Web3, with a focus on wallet security and risk prevention. I learned that wallet signature authorizations can expose funds to theft—even without private key leakage—due to malicious or vulnerable website interactions. Tools such as the Scam Sniffer browser extension help detect dangerous sites, though manual judgment remains essential. Best practices include keeping only minimal gas funds in MetaMask and considering Apple devices for added security.
@@ -59,6 +71,7 @@ Finally, the discussion touched on blockchain fundamentals such as 51% attacks, 
 
 
 
+
 Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
 
 During today’s learning session, I reviewed the foundational principles of Web3 and blockchain technology, covering core functions and underlying architectural logic—such as how transactions are executed and how smart contracts operate on Ethereum and other blockchain platforms. This refreshed my understanding of the technical groundwork that supports decentralized applications and ecosystems.
@@ -70,6 +83,7 @@ Overall, today’s hands-on setup and conceptual review strengthened my practica
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
