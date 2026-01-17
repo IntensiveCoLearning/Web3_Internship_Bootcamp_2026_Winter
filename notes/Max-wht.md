@@ -15,8 +15,156 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+### **\[UNIV3-3\] Swap In UniswapV3Pool.sol**
+
+**Discription:** 通过`swap-router-contract__UniswapV3Router::exactInputSingle`用户可以与`v3-core`进行交互。提供四种方式，exactInput,exactInputSingle,exactOutput,exactOutputSingle
+
+✅ Exersice
+
+```js
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
+
+import {Test, console2} from "forge-std/Test.sol";
+import {IERC20} from "../../../src/interfaces/IERC20.sol";
+import {IWETH} from "../../../src/interfaces/IWETH.sol";
+import {ISwapRouter} from "../../../src/interfaces/uniswap-v3/ISwapRouter.sol";
+import {DAI, WETH, WBTC, UNISWAP_V3_SWAP_ROUTER_02} from "../../../src/Constants.sol";
+
+contract UniswapV3SwapTest is Test {
+    IWETH private weth = IWETH(WETH);
+    IERC20 private dai = IERC20(DAI);
+    IERC20 private wbtc = IERC20(WBTC);
+    ISwapRouter private router = ISwapRouter(UNISWAP_V3_SWAP_ROUTER_02);
+    uint24 private constant POOL_FEE = 3000;
+
+    function setUp() public {
+        deal(DAI, address(this), 1000 * 1e18);
+        dai.approve(address(router), type(uint256).max);
+    }
+
+    // Exercise 1
+    // - Swap 1000 DAI for WETH on DAI/WETH pool with 0.3% fee
+    // - Send WETH from Uniswap V3 to this contract
+    function test_exactInputSingle() public {
+        uint256 wethBefore = weth.balanceOf(address(this));
+
+        // Write your code here
+        // Call router.exactInputSingle
+        uint256 amountOut = router.exactInputSingle(
+            ISwapRouter.ExactInputSingleParams({
+                tokenIn: DAI,
+                tokenOut: WETH,
+                fee: POOL_FEE,
+                recipient: address(this),
+                amountIn: 1000 * 1e18,
+                amountOutMinimum: 1,
+                sqrtPriceLimitX96: 0
+            })
+        );
+
+        uint256 wethAfter = weth.balanceOf(address(this));
+
+        console2.log("WETH amount out %e", amountOut);
+        assertGt(amountOut, 0);
+        assertEq(wethAfter - wethBefore, amountOut);
+    }
+
+    // Exercise 2
+    // Swap 1000 DAI for WETH and then WETH to WBTC
+    // - Swap DAI to WETH on pool with 0.3% fee
+    // - Swap WETH to WBTC on pool with 0.3% fee
+    // - Send WBTC from Uniswap V3 to this contract
+    // NOTE: WBTC has 8 decimals
+    function test_exactInput() public {
+        // Write your code here
+        // Call router.exactInput
+        bytes memory path = abi.encodePacked(
+            DAI,
+            uint24(3000),
+            WETH,
+            uint24(3000),
+            WBTC
+        );
+        uint256 amountOut = router.exactInput(
+            ISwapRouter.ExactInputParams({
+                path: path,
+                recipient: address(this),
+                amountIn: 1000 * 1e18,
+                amountOutMinimum: 1
+            })
+        );
+
+        console2.log("WBTC amount out %e", amountOut);
+        assertGt(amountOut, 0);
+        assertEq(wbtc.balanceOf(address(this)), amountOut);
+    }
+
+    // Exercise 3
+    // - Swap maximum of 1000 DAI to obtain exactly 0.1 WETH from DAI/WETH pool with 0.3% fee
+    // - Send WETH from Uniswap V3 to this contract
+    function test_exactOutputSingle() public {
+        uint256 wethBefore = weth.balanceOf(address(this));
+
+        // Write your code here
+        // Call router.exactOutputSingle
+        uint256 amountIn = router.exactOutputSingle(
+            ISwapRouter.ExactOutputSingleParams({
+                tokenIn: DAI,
+                tokenOut: WETH,
+                fee: POOL_FEE,
+                recipient: address(this),
+                amountOut: 0.1 * 1e18,
+                amountInMaximum: 1000 * 1e18,
+                sqrtPriceLimitX96: 0
+            })
+        );
+
+        uint256 wethAfter = weth.balanceOf(address(this));
+
+        console2.log("DAI amount in %e", amountIn);
+        assertLe(amountIn, 1000 * 1e18);
+        assertEq(wethAfter - wethBefore, 0.1 * 1e18);
+    }
+
+    // Exercise 4
+    // Swap maximum of 1000 DAI to obtain exactly 0.01 WBTC
+    // - Swap DAI to WETH on pool with 0.3% fee
+    // - Swap WETH to WBTC on pool with 0.3% fee
+    // - Send WBTC from Uniswap V3 to this contract
+    // NOTE: WBTC has 8 decimals
+    function test_exactOutput() public {
+        // Write your code here
+        // Call router.exactOutput
+        bytes memory path = abi.encodePacked(
+            WBTC,
+            uint24(3000),
+            WETH,
+            uint24(3000),
+            DAI
+        );
+        uint256 amountIn = router.exactOutput(
+            ISwapRouter.ExactOutputParams({
+                path: path,
+                recipient: address(this),
+                amountOut: 0.01 * 1e8,
+                amountInMaximum: 1000 * 1e18
+            })
+        );
+
+        console2.log("DAI amount in %e", amountIn);
+        assertLe(amountIn, 1000 * 1e18);
+        assertEq(wbtc.balanceOf(address(this)), 0.01 * 1e8);
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -40,6 +188,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ### **\[UNI-V3-2\] Spot Price**
 
@@ -224,6 +373,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -243,6 +393,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -471,6 +622,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
