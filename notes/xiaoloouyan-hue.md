@@ -15,8 +15,51 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+**👩‍💻 Web2 to Web3 🚀 A Developer's Guide to Building on Ethereum - Day 1 - 👋 Intro!**
+
+**Week 1 - 👩‍🔬 Becoming A Power User**
+
+The first step to starting as a developer in the web3 ecosystem is first to become a Power User!
+
+You should start by getting hands-on & using the tools which will give you a much greater understanding of what you can do and what the crypto space is all about. In this section, we're talking about the tools in the crypto space, using them and helping you become an Ethereum power user.
+
+-   **Day 1**: [Introduction](https://youtu.be/zuJ-elbo88E)
+    
+
+A **cron job** is a **scheduled task** that runs automatically at specified times or intervals on **Unix/Linux systems** (and many servers, including cloud and web servers).
+
+In simple terms:
+
+👉 **Cron = a time-based task scheduler**
+
+**Web2 cron jobs run on servers you control; Web3 “cron jobs” are usually event-driven, decentralized, or delegated to keeper networks because blockchains don’t have clocks.**
+
+**Incentives = mechanisms that make rational actors want to perform an action instead of ignoring it.**
+
+**LP positions** are **Liquidity Provider positions** — they represent your **share of liquidity** that you supply to a decentralized exchange (DEX).
+
+In short:
+
+👉 **You deposit tokens into a pool, and your LP position proves what you own and what you earn.**
+
+**治理代币被用于 Snapshot、Tally 等应用中进行投票与合约执行，同时还能解锁如 NFT、Token Gated 聊天等功能，扩展出丰富的链上应用场景。区块链和智能合约虽然很酷，但目前仍然昂贵、缓慢、不友好且风险高，用户体验和基础设施还有很多需要改进的地方。从用户 → 高阶用户 → 开发者：**即使你不写代码，也可以通过第一周，完成你进入区块链世界的第一步。
+
+无论从哪个角度进入区块链，第一步都是先成为一个 **power user（高阶用户）**。如果你想加入 DAO，或者参与 DeFi，就必须真正理解钱包是如何工作的，包括交易机制、Gas、私钥等基础概念。课程会以一个相对平稳、不过快的节奏，把这些内容完整讲清楚，并通过一系列较长的视频，系统性地梳理新手在使用过程中常见的卡点和困惑。
+
+从更长远的角度看，区块链真正令人兴奋的潜力在于**协调机制（coordination mechanisms）**，而且这种机制可能最终会上升到国家层级。当我们在讲经典的 Alice 和 Bob、托管（escrow）和博弈论时，可以想象一种极端但现实的场景：如果 Alice 是朝鲜，Bob 是美国，涉及的是军费预算、国家博弈和不信任环境，那么一个基于人类中介的托管系统显然无法成立。在足够去信任的环境下，如果像以太坊这样的系统规模足够大，国家本身运行验证节点，智能合约就可能成为那个“非人类的中立协调层”。通过程序化的规则和激励机制，系统甚至可以对不合作或背叛行为施加惩罚，比如损失质押资产，或更复杂的约束方式。
+
+正是这种可能性让人对这项技术产生持续的震撼感。每一次使用智能合约，都会让人想到它还能被用来构建多少新的、以前无法实现的协调结构。这些应用也许在未来会产生国家层面的影响，而这正是当前所构建的一切的意义所在——设计和实验全新的协调机制。
+
+从个人层面来说，开发智能合约第一次让人强烈地感受到“我真的拥有改变世界的行动力”。希望学习这门课程的人，在经历前几周、亲手构建应用之后，也能产生类似的感受。这不仅是学习一项技术，而是进入一种新的、可以参与塑造未来系统的方式。在课程中，你将逐步了解各种应用的使用方式，并尝试亲自操作，从而在实践中学习。课程不仅关注概念，还强调动手经验：学员需要主动尝试、操作，并从中获得理解。这种“先用后做”的方法能够帮助学员真正理解以太坊作为一个应用平台的功能，而不仅仅是一个数据库或工具。
+
+课程结束后，学习路径大致分为三个层次。第一层是成为有能力被雇佣的专业人士，通过完成课程，你将掌握足够的知识应对区块链相关职位的面试和工作。第二层是独立开发自己的项目，找到自己的用户和市场，开始实现创意产品和链上应用。第三层是进入审计领域，专注于智能合约安全，通过复现攻击案例、学习漏洞和优化方法，成为以太坊智能合约的专家。每个层次都建立在实际操作和经验之上，而不仅仅是理论学习。课程强调持续实践的重要性：通过不断构建小型项目、写出清晰的 README 文档，并在 Crypto Twitter 上展示成果，学员能够不断迭代、获得反馈、强化理解。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## **新闻总结🚀 2026：Meme‑Coin／Web3 社区的新混合主义**
 
 2025 年，对于 Meme‑coin／Web3 社区来说，是“混合模式 + 再发明 + 爆裂舆论”的一年。 它既不是简单的“炒作货币”，也在尝试“科技 + 社群 + 功能 + 文化”的新组合。两篇近期报告（以及相关市场观察）为我们勾勒出这样一个图景。
@@ -124,6 +167,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ### NFTs!!! ERC20 vs ERC721, IPFS, Metadata
@@ -312,6 +356,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -372,6 +417,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -383,6 +429,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
