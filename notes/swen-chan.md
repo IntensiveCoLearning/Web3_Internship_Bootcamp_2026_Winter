@@ -15,8 +15,124 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+### 1.今天准备了LXDAO 新成员发言，但没轮到哈哈哈。那就下周再说吧
+
+### 2.然后记录一下今天和wachi老师沟通学到的精华（他原话）：
+
+**我觉得Web3需要的最核心的技能是在这里，在知道技术边界的前提下，做出好的设计。最后再vibe coding让AI五分钟把Solidity写出来哈哈哈**
+
+我其实作为一个转行人，其实是对技术有焦虑的。倒也不是技术本身的焦虑，任何语言、框架、项目，我觉得真的上手了也就那样，熟能生巧。问题在于，一旦缺失了企业级的经历，就无法再获得企业级的机会，这是个死循环
+
+### **3.思考了一个问题：关于“没有中心化机构/税收”，公共基础设施谁来维护？如果有税收又如何分配“**（这也是之前bruce老师留下的思考题）：
+
+这是经济学上典型的公共品搭便车问题。
+
+在web3的可行机制探讨：协议内生资金（发行/区块奖励/手续费/MEV）；基金会/生态资助/DAO Grant；二次方资助/追溯性公共品资助；企业赞助+商业化反哺
+
+税收分配：DAO机制公开决定比例和方向，规则上链，尽量与效果挂钩
+
+### **4.今天和wachi老师聊了下UCP与x402集成的可能**
+
+首先介绍一下UCP和x402
+
+**UCP（Universal Commerce Protocol）是一个面向“Agentic Commerce（代理式商业）”的开放协议，目标是让 AI Agent 能用统一语言完成从“发现商品/服务→发起结账→完成支付→订单生命周期管理”的全链路交互**。也就是说，agent可以把“登录、选规格、填地址、付款、查物流、退货”这些流程和接口全打通，一键复用。
+
+在支付层面，UCP 采用 **“Payment Handler（支付处理器/处理方式）”的模块化机制**：
+
+-   支付凭证/支付能力提供方（Payment Credential Provider）发布“处理器规范（Handler Definition）”，包含 JSON Schema 等“蓝图”；
+    
+-   商家（Business）选择某个 handler，并在 Checkout 响应里填入自己的配置（例如 merchant id、公钥、环境等）；
+    
+-   平台（Platform）读取商家配置，按 handler 规范去执行“支付凭证获取/处理流程”。
+    
+
+**x402**是一个“把支付嵌入 HTTP 请求”的开放标准，本意为复活 HTTP 里长期“预留未广泛使用”的 **402 Payment Required**
+
+流程：
+
+1.资源服务器（API/网页/服务）在未收到付款时返回 **402**，并给出“需要如何支付”的要求；
+
+2.客户端（可为 AI agent）按要求签名/构造支付载荷，再重试请求；
+
+3.服务器可本地验证或通过 **facilitator** 去验证与结算。
+
+图示如下：
+
+我认为两者集成 **在 API/数字服务/Agent 工具调用（按次计费）场景可行且契合**，似乎pieverse也在做这个事情了。
+
+\*\*集成方式：\*\*把x402 封装成 UCP 的一个 Payment Handler
+
+按UCP guide文档定义好：
+
+handler declaration(name, version, spec, config\_schema, instrument\_schemas)
+
+config\_schema.json(env, facilitator, payee/chain/asset等）
+
+instrument shcema(requirement id, amount, asset, order id等）
+
+credential schema(sign, nonce, challenge, receipt）
+
+**测试：**
+
+可重复执行的状态机：
+
+1.  客户端request → 服务器返回402 challenge
+    
+2.  客户端选择requirement → 构造 payload → 签名
+    
+3.  重试request → 服务端verify/settle
+    
+4.  返回 success + receipt/response
+    
+
+但和wachi老师交流后发现，我可能忽视了产品落地的复杂性。
+
+目前“Agent 支付/链上支付”的真实可落地能力，行业普遍只做到“单笔付款（一次性转账）”这一层。要实现upto和流支付，目前还没有落地的方案。这方面，先保持关注吧。
+
+### **5.因为聊到了polymarket，也就顺便了解了一下UMA(Universal Market Access)**
+
+UMA是一个去中心化金融协议，允许用户创建和交易追踪任何资产价格的合成资产。可以充当乐观预言机，通过代币持有者验证数据，保障链上数据准确性，支持Web3市场。在polymarket的场景下，当出现结果challenge的情况，就需要UMA tokenholders去投票裁决。
+
+### **6.关于polymarket的optimistic oracle+社区投票解决challenge机制**
+
+wachi老师问了我两个问题：
+
+（1） 为什么社区有动力投票呢？
+
+（2） 一个market resolved之后，仓位就已经结算了。如果dispute成功，整个refund的流程是什么样的，资金从哪里出？
+
+回答：
+
+（1）这个问题我其实也在思考。一个退货的dispute，怎么能号召社区来投票呢？我们现实在小区中，修个电梯让大家达成一致都能拖个一年半载的，怎么能保证社区有动力投票。我想从经济和人性的角度，可能还是要从激励出发。
+
+首先我check了polymarket的UMA文档
+
+发现这确实也是个复杂的问题，既要给诚实的参与者奖励，也要惩罚不诚实，我还看到提高经济成本等做法
+
+感觉这个设计就有点像我们之前讨论的，大户本身利益也是绑定在网络上的，这本身就是最好的经济约束
+
+（2）refund的流程是：polymarket每个结果都有2小时的challenge period；2小时内有dispute的话，请求送到UMA DVM座位backstop，由tokenholders投票裁决；然后才会把UMA的结果写入“最终不可逆结算”。
+
+dispute过程有一个bond机制，proposer和challenger各自押上bond，用结果再分配，这样就解决了资金的问题
+
+我的思考是：虽然两个问题已经解决方法。但
+
+（1）UMA token holders仍然可能受“外部激励”导致中心化投票的结果；
+
+（2）一个模糊的问题更可能引起论战，所以如何提高问题本身措辞的精准是更“第一性”和更有效率的问题。如果为了解决模糊问题而搞一堆治理解决方案，反而本末倒置；
+
+（3）有可能出现即便错误结果，但无人挑战的情况，尤其是冷门盘，小资金参与、低活跃时间的情况下
+
+wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大家会上心一点。但如果只是一笔交易，参与者只有买卖双方，这个机制感觉也要改
+
+我的看法是：单笔交易的话，感觉可以引入“竞选纠错者”，给点经济激励，允许套利者参与纠错、裁决；或者就是有个整体的仲裁池，可以给这些“尾部”交易出现dispute的情况兜底。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -52,6 +168,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 1.15
@@ -99,6 +216,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -268,6 +386,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
