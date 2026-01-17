@@ -15,8 +15,166 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# SOLIDITY BASIC SYNTAX NOTES
+
+1.  FILE STRUCTURE
+    
+
+* * *
+
+Every Solidity file should start with a license identifier and the pragma version.
+
+```
+// SPDX-License-Identifier: MIT pragma solidity ^0.8.20;
+```
+
+2.  CONTRACT STRUCTURE
+    
+
+* * *
+
+A contract is similar to a 'class' in object-oriented languages.
+
+contract MyContract { // State variables (stored on the blockchain) uint256 public myNumber;
+
+```
+// Constructor (runs once upon deployment)
+constructor(uint256 _initialNumber) {
+    myNumber = _initialNumber;
+}
+```
+
+}
+
+3.  DATA TYPES
+    
+
+* * *
+
+A. Value Types
+
+-   boolean: bool public isActive = true;
+    
+-   uint: Unsigned integer (positive only). 'uint256' is the standard.
+    
+-   int: Signed integer (positive and negative).
+    
+-   address: Holds a 20-byte Ethereum address. address public owner; address payable public recipient; (can receive Ether)
+    
+
+B. Reference Types
+
+-   string: string public name = "Solidity";
+    
+-   struct: Custom defined types. struct User { uint id; string name; }
+    
+-   mapping: Key-value pairs (hash tables). mapping(address => uint) public balances;
+    
+-   Arrays: uint\[\] public dynamicArray; uint\[5\] public fixedArray;
+    
+
+4.  FUNCTIONS
+    
+
+* * *
+
+A. Syntax function functionName(uint _param) public view returns (uint) { return_ param + myNumber; }
+
+B. Visibility Modifiers
+
+-   public: Can be called internally and externally.
+    
+-   private: Only accessible within the current contract.
+    
+-   internal: Accessible within the contract and derived contracts.
+    
+-   external: Can only be called from outside the contract.
+    
+
+C. State Modifiers
+
+-   view: Promises not to modify the state (reads data only).
+    
+-   pure: Promises not to modify or read from the state (calculates logic only).
+    
+-   payable: Allows the function to receive Ether.
+    
+
+5.  DATA LOCATIONS
+    
+
+* * *
+
+Where data is stored during execution:
+
+-   storage: Persistent on-chain storage (state variables).
+    
+-   memory: Temporary storage (exists only during function execution).
+    
+-   calldata: Non-modifiable temporary storage for function arguments.
+    
+
+6.  CONTROL STRUCTURES
+    
+
+* * *
+
+Solidity uses standard C-style syntax.
+
+```
+// If-Else if (x > 10) { // do something } else { // do something else }
+```
+
+```
+// Loops for (uint i = 0; i < 10; i++) { // loop logic }
+```
+
+```
+while (x < 5) { // loop logic }
+```
+
+7.  ERROR HANDLING
+    
+
+* * *
+
+-   require(condition, "message"): Reverts if condition is false. Used for inputs.
+    
+-   revert("message"): Aborts execution and reverts changes.
+    
+-   assert(condition): Used for internal invariants (serious bugs).
+    
+
+8.  EVENTS
+    
+
+* * *
+
+Events allow logging to the blockchain, which apps can listen for.
+
+event Transfer(address indexed from, address indexed to, uint amount);
+
+function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender, _to,_ amount); }
+
+9.  GLOBAL VARIABLES
+    
+
+* * *
+
+-   msg.sender: Address of the person calling the function.
+    
+-   msg.value: Amount of Wei sent with the call.
+    
+-   block.timestamp: Current block timestamp.
+    
+-   block.number: Current block number.
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # Smart Contract Development – Concise Notes  
 
 ## Dapp Architecture
@@ -238,6 +396,7 @@ RPC Providers
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -407,6 +566,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -598,6 +758,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
