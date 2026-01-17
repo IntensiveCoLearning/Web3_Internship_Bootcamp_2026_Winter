@@ -15,8 +15,24 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1.  复习回顾相关章节，完成未完成课程
+    
+2.  行业探索
+    
+    -   知名开发者 & Builder X 关注清单
+        
+3.  实践 & 下周准备
+    
+    1.  开发环境并熟悉：[Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
+        
+        -   [Remix 使用教程](https://www.notion.so/2bc1a400ef948075ab7ec8b8259c7746?pvs=21)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 拓展 & 辅助理解材料
 
 1.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
@@ -27,6 +43,7 @@ timezone: UTC+8
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 1.  Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
     
 2.  021 学习以太坊第 2&3 章
@@ -34,6 +51,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 拓展 & 辅助理解材料
@@ -47,6 +65,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
