@@ -15,8 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+投研相关内容收集：
+
+| 名称 | 链接 | 提供者（可选 | 内容 |
+| Etherscan | Etherscan 官网 |   | 查看交易、合约、地址活动 |
+| Dune Analytics | Dune 官网 |   | 可视化仪表盘，SQL 查询链上数据 |
+| CoinGecko / CoinMarketCap | CoinGecko 官网CoinMarketCap 官网 |   | 币价监控与基本信息查询 |
+| Token Terminal | Token Terminal 官网 |   | 项目财务表现与用户增长分析 |
+| RootData | https://www.rootdata.com/ |   | 查看项目融资及其项目方之间的关联 |
+| Token Unlocks | https://tokenomist.ai/ |   | 提供加密货币的代币解锁日历、供应量、分配情况等信息 |
+| DeFiLlama | (defillama.com) |   | 全球最全的 DeFi 数据平台 |
+
+| WAYTOAGI-vibe coding训练营 | https://waytoagi.feishu.cn/wiki/MSt8wNWUii8q4ZkD1okcrbTfnU9 |
+| Datawhale-清华-easy-vibe教程 | https://github.com/datawhalechina/easy-vibe |
+| 鱼皮Vibe Coding教程 | 教程文档开源地址：https://github.com/liyupi/ai-guide教程在线阅读地址：ai.codefather.cn/vibe |
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # **Uniswap 运作机制深度解析**
 
 ## **定义**
@@ -52,6 +71,7 @@ Uniswap V2 构建了一种别具一格的自动兑换体系，它摒弃了传统
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 我今天学习了用几个网站进行链上数据的研究。
 
@@ -99,6 +119,7 @@ Etherscan：单笔交易/地址/合约侦探
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ### **今天学习了《学习以太坊》的第三章，以下是学习笔记。**
@@ -185,6 +206,7 @@ Etherscan：单笔交易/地址/合约侦探
 
 
 
+
 今天学习了web3的安全与合规，总结如下：
 
 **中国大陆监管现状（2026年）** 中国对虚拟货币维持“全面禁止金融属性”高压态势，稳定币、ICO、交易、挖矿、场外OTC均属非法金融活动。核心刑事风险包括：
@@ -222,6 +244,7 @@ Etherscan：单笔交易/地址/合约侦探
 
 
 
+
 以太坊原理笔记：核心是去中心化计算平台，融合代码执行与经济激励。
 
 1.  **智能合约**：自执行代码协议，部署后不可变。示例：自动拍卖合约。运行需 EVM，支付 Gas 防 DDoS。
@@ -246,6 +269,7 @@ Etherscan：单笔交易/地址/合约侦探
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
