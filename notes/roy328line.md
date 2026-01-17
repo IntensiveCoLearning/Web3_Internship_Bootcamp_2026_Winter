@@ -23,8 +23,6 @@ Web3 实习计划 2025 冬季实习生
 
 -   Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-intern/)部分
     
--   熟悉 [Dune Analytics](https://dune.com/)
-    
 
 ## **Web3 实习手册**[「社区运营指南」](https://web3intern.xyz/zh/community-intern/)**阅读**
 
@@ -50,12 +48,11 @@ Web3 实习计划 2025 冬季实习生
 | 社群承接与支持 | Discord、Telegram、微信群 | 频道结构、权限与 Bot、AMA 支持与客服 |
 | 内容生产与协作 | Notion、ChatGPT、Figma/Canva、Tally/Typeform | 文档管理、海报生成、报名与调研、协作分工 |
 | 数据与调研 | Etherscan、Dune、CoinGecko/CoinMarketCap、Token Terminal | 链上查证、指标面板、价格与基本面、增长分析 |
-
-## **Dune Analytics 熟悉**
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -128,6 +125,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -235,6 +233,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -396,6 +395,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -534,6 +534,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
