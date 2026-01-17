@@ -15,8 +15,142 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# LXDAO周会
+
+1 阅读了一遍web3黑话  
+[WTFAcademy/WTF-gm: Web3黑话汇总（黑宝书）](https://github.com/WTFAcademy/WTF-gm)
+
+2.  了解到了LXDAO注意做的事情，下周打算参与LXDAO
+    
+
+公平物品的可持续这个课题很好，我个人理解的是如何保证公告物品的可持续除了需要本身开源精神以外，还需要通过一定的激励
+
+## 招聘平台分析
+
+后续打算从产品的角度，详细地区做一个竞品分析，包括从求职者的角度，从企业主的角度，梳理对应的功能点等。+加入todolist
+
+### [Web3.Career](http://Web3.Career)
+
+[Web3.career](http://Web3.career)  
+**产品模式**  
+纯粹的流量分发平台、页面看起来像传统的web2，主要提供详细的薪资、JD要求、公司要求数据，他的产品核心不是功能点，而是在于他的大而全和SEO。
+
+![Pasted image 20260117114704.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661472760-Pasted_image_20260117114704.png)
+
+**Web2 vs Web3**：  
+更偏于传统Web2.5
+
+**流量入口**  
+SEO  
+基本上，去搜索：“Web3 jobs”、几乎都在第一名
+
+![Pasted image 20260117115114.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661484864-Pasted_image_20260117115114.png)
+
+**盈利模式**  
+流量变现  
+包括：
+
+1.  **企业付费发帖**：标准的流量生意。因为我流量大，所以你必须来我这发。
+    
+2.  **置顶/加急费**：类似传统工作网站的竞价排名逻辑。
+    
+
+![Pasted image 20260117115410.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661501191-Pasted_image_20260117115410.png)
+
+### Dejob
+
+社群服务型  
+[Dejob](https://www.qianwen.com/chat/a7346cbad2ef4d12963553c83683231a)([http://t.me/DeJob\_official\_group](http://t.me/DeJob_official_group))
+
+**产品模式 (Mode)**  
+“私域流量+猎头服务”混合体。
+
+它的描述：“人才库、链上工作台、DID”。这说明它的愿景是做 Web3 的 Link3 或 LinkedIn，但现状（看它依赖 TG 和表单）其实更像是一个数字化猎头/中介。它通过人工或半自动化的方式在撮合。
+
+**Web2 vs Web3**  
+运营上很 Web3，产品上目前偏 Web2。  
+Web3 特征：重度依赖 Telegram (TG) 频道。在官网上可连接个人钱包。  
+Web2 特征：还在用“填表单”这种传统方式收集需求
+
+![Pasted image 20260117115802.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661519323-Pasted_image_20260117115802.png)
+
+**流量入口**  
+Telegram 私域流量 + 合作伙伴互推  
+它不像 [Web3.career](http://Web3.career) 靠 Google，它靠的是在各个币圈群里的活跃度、以及和项目方的合作（BD驱动）
+
+**盈利方式**  
+未在官网上找到提供企业认证发布岗位需要付费，倾向于是在tg上接受投放广告收费
+
+### Cryptojoblist
+
+[Cryptocurrency Jobs and Blockchain Jobs (75 new in Jan 2026)](https://cryptojobslist.com/)
+
+**产品模式**
+
+1.  也是垂直的招聘板
+    
+2.  提供企业直接搜索对应的人才
+    
+
+![Pasted image 20260117120604.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661536489-Pasted_image_20260117120604.png)
+
+它是这个圈子的“老字号”，有一定的社区信任度。它不仅仅发职位，还做很多采访、公司介绍，试图建立“雇主品牌”。
+
+**Web2 vs Web3**  
+Web 2
+
+**流量入口**  
+品牌直接访问 + Newsletter
+
+**盈利模式**  
+阶梯式付费  
+付费发布广告帖子
+
+![Pasted image 20260117120229.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661549264-Pasted_image_20260117120229.png)
+
+### AbetterWeb3
+
+用爱发电型/社区共建  
+[abetterweb3](https://abetterweb3.notion.site/)
+
+**产品模式**  
+信息聚合。  
+用 Notion 做网站，说明它极低成本，且极度透明。它更像是一个“避坑指南”+“职位汇总”。它的核心价值是真实。
+
+**Web2 vs Web3**  
+精神上 Web3 (开源、去中心化)  
+技术上 依赖 Web2 (使用Notion)
+
+**流量入口**  
+Twitter (X) + 社群、社媒推荐。
+
+**盈利模式**  
+目前可能是非盈利
+
+### CryptocurrencyJobs
+
+[Cryptocurrency Jobs and Blockchain Jobs - Cryptocurrency Jobs](https://cryptocurrencyjobs.co/)
+
+**产品模式**  
+精选型招聘板
+
+**Web2 vs Web3**  
+Web 2
+
+**流量入口**  
+SEO + 邮件订阅
+
+**盈利模式**  
+一次性付费 ($299)
+
+![Pasted image 20260117121331.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-17-1768661560725-Pasted_image_20260117121331.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -78,6 +212,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # 阅读《学习以太坊》
 
@@ -233,6 +368,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -246,6 +382,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -293,6 +430,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
