@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+20260117 DAY6 周度学习回顾
+
+本周进行了链上相关知识的初步破冰，令人印象深刻的还是合规课程
+
+部分案件的办案逻辑让人感到震惊
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 20260116 Web3实习计划Day5
 
   
@@ -26,6 +36,7 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 Web3实习计划 Day4
 
 今日已完成web3安全、web3合规分享会内容学习，晚上进一步对本周教案内容进一步熟悉演练
@@ -33,6 +44,7 @@ Web3实习计划 Day4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 Web3实习计划-DAY3
@@ -48,6 +60,7 @@ Web3实习计划-DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -73,6 +86,7 @@ web3实习计划Day2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
