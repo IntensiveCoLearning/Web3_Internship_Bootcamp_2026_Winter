@@ -21,8 +21,58 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 开发环境
+
+-   基于VSCode+hardhat搭建开发环境，学习solidity结构、关键词、语法
+    
+-   尝试学习“Introduction to Smart Contracts” 和“Solidity by Example”，
+    
+
+## **Solidity**状态变量（**State Variables**）
+
+-   public：会自动生成一个同名的 getter 函数，允许外部读取。
+    
+-   internal：只能在合约内部和继承合约中访问。
+    
+-   private：只能在当前合约内部访问。
+    
+
+## Solidity函数
+
+### 可见性：
+
+-   public：可以从合约内部、继承合约或外部调用。
+    
+-   external：只能从外部调用，不能从合约内部直接调用（但可以通过this.functionName() 间接调用）。通常用于对外接口函数。
+    
+-   internal：只能从合约内部或继承合约中调用。
+    
+-   private：只能从当前合约内部调用。
+    
+
+### 状态可变性：
+
+-   pure：不读取也不修改合约状态的函数。
+    
+-   view：读取合约状态但不修改状态的函数。
+    
+-   payable：可以接收以太币的函数。
+    
+-   默认（无修饰符）：可以修改合约状态的函数。
+    
+
+从 0.6.0 起， Solidity 对 receive() 和 fallback() 这两个特殊函数做了更清晰的语义区分：
+
+-   receive()：专门处理“只带 ETH、不带 calldata”的转账；
+    
+-   fallback()：处理“调用不存在的函数”或合约没有 receive() 时的 ETH 转账。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -52,6 +102,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # 以太坊网络
 
@@ -126,6 +177,7 @@ The Merge 之后：
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -177,6 +229,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -250,6 +303,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
