@@ -15,8 +15,76 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+复习021学习以太坊
+
+1\. 节点架构：执行层与共识层的分离
+
+自“合并（The Merge）”以后，一个完整的以太坊节点不再是单一软件，而是由两个核心客户端配合运行：
+
+执行客户端 (Execution Client, EL)：负责处理交易、运行 EVM（以太坊虚拟机）、维护世界状态（账户余额、合约存储）以及提供 RPC 接口。常见的实现有 Geth, Nethermind, Besu 等。
+
+共识客户端 (Consensus Client, CL)：负责 PoS 共识逻辑，包括信标链维护、区块提议与投票（Attestation）、以及最终性确认。常见的实现有 Lighthouse, Prysm, Teku 等。
+
+Engine API：这是两者之间的“专线电话”，用于传递区块骨架和执行结果。共识客户端指挥执行客户端验证区块或打包交易。
+
+2\. 节点类型与区别
+
+根据存储数据量和功能的不同，节点主要分为三类：
+
+全节点 (Full Node)：保存所有区块头和区块体，验证所有新交易，但会对陈旧的历史状态进行裁剪（Pruning）。它是网络的安全基石，能够独立验证链的合法性。
+
+归档节点 (Archive Node)：在全节点基础上，保存从创世区块至今的所有历史状态快照。它类似“时间机器”，能瞬间查询任意历史时刻的余额或合约状态，适合区块浏览器、审计和数据分析使用，但存储成本极高（TB级别）。
+
+轻节点 (Light Node)：只保存区块头，不存完整交易和状态。它依赖全节点获取数据，通过 Merkle 证明进行验证，适合手机等资源受限设备。
+
+3\. 网络通信机制
+
+以太坊节点之间的“社交”分为三个阶段：
+
+发现 (Discovery)：基于 UDP 协议和 Kademlia 算法（DHT），通过引导节点（Bootnodes）找到并认识新的邻居节点。
+
+连接 (Connection)：基于 TCP 协议建立加密通道（RLPx），在此通道上复用多种子协议传输数据。
+
+传播 (Gossip)：使用 Gossip（八卦）协议传播新交易和新区块。节点随机传给几个邻居，邻居再扩散，实现全网秒级同步。对于历史数据的补全，则使用点对点的“请求-响应”模式。
+
+4\. 同步模式 (Sync Modes)
+
+节点加入网络时需要下载数据，主要有三种模式：
+
+Snap Sync (快照同步)：推荐模式。先下载区块头，再并发下载最新的“状态快照”，最后补齐近期数据。速度快，安全性高。
+
+Full Sync (全同步)：从创世块开始重新执行每一笔交易，极其耗时，通常用于审计或极高安全需求。
+
+Light Sync (轻同步)：只下载区块头，不构建状态树，无法参与共识，仅做轻量级验证。
+
+5\. 运行节点的意义
+
+对于开发者或机构，运行自己的全节点（而不是依赖 Infura 等公共 RPC）有以下核心价值：
+
+隐私与抗审查：不暴露 IP 和交易意图给第三方服务商。
+
+去信任验证：坚守“Don’t trust, verify”原则，独立验证每一笔交易的正确性。
+
+基础设施韧性：在云服务宕机或被限流时，自有节点能保证业务不中断。
+
+6\. 数据分析与工具扩展
+
+RPC 接口：节点通过 JSON-RPC 接口（如 eth\_getBalance）对外提供服务，这是钱包和 dApp 与链交互的窗口。
+
+不跑节点的分析方法：如果不想维护硬件，可以使用 Dune (SQL分析)、BigQuery (公共数据集) 或 Etherscan API 来获取链上数据。
+
+7\. 网络现状与去中心化
+
+目前以太坊主网约有近 100 万个活跃验证者。
+
+去中心化的保障来自于：多客户端实现（防止单一软件 bug 导致全网瘫痪）、地理分布以及云与自建节点的混合部署。
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 1\. 学习视频Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...
 
 Gas 机制的核心：交易并非简单的价值流动，而是对智能合约状态的调整；Gas 限制（Limit）防止程序陷入死循环，而最高费用（Max Fee）则是竞价块空间的关键。
@@ -46,6 +114,7 @@ M-of-N 验证：例如设置 4 个持有者，需要其中 2 人签名才能执�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 **1.学习**[**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)
 
@@ -78,6 +147,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 **1.学习**[**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
@@ -133,6 +203,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -249,6 +320,7 @@ Blob 的特点是不会进入 L1 的长期状态，只会临时保存一段时�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
