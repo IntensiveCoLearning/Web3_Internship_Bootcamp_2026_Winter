@@ -15,8 +15,146 @@ ha
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# ENS（Ethereum Name Service）
+
+-   ENS 是以太坊上的**去中心化域名系统**，本质是个智能合约。
+    
+-   把“难记的钱包地址”变成“人能读的名字”
+    
+    -   0x7e3A...9f2C ❌
+        
+    -   `yang.eth` ✅
+        
+-   类似Email
+    
+
+## 原因
+
+-   钱包地址太长、容易转错
+    
+-   一个地址只能“是地址”，没有身份感
+    
+
+## 作用
+
+-   收款：别人直接给 `yang.eth` 转账
+    
+-   绑定信息：
+    
+    -   钱包地址
+        
+    -   Twitter / Github
+        
+    -   头像（NFT）
+        
+-   Web3 身份入口
+    
+
+# DEX（Decentralized Exchange）
+
+去中心化交易所
+
+-   Uniswap
+    
+-   Curve
+    
+
+## 核心机制
+
+-   AMM（自动做市商）
+    
+-   用资金池定价，而不是挂单撮合
+    
+
+## 作用
+
+-   去信任（不信交易所）
+    
+-   抗审查
+    
+-   资产自持
+    
+
+# Identity（去中心化身份）
+
+“你是谁”不再由平台决定，而是你自己拥有
+
+Identity 通常是由多个组件组合而成：
+
+-   钱包地址（基础）
+    
+-   ENS（可读身份）
+    
+-   NFT / POAP（经历）
+    
+-   链上行为（信用、历史）
+    
+
+## 典型实现方式
+
+-   DID（Decentralized ID）
+    
+-   Verifiable Credentials（可验证凭证）
+    
+
+# Inventory（资产/物品清单）
+
+Inventory 在 Web3 里通常指：
+
+-   Token（ERC20）
+    
+-   NFT（ERC721 / 1155）
+    
+-   SBT（不可转让身份资产）
+    
+-   游戏道具 / 凭证
+    
+
+## 与传统web2的区别
+
+-   资产是用户直接持有
+    
+-   可跨应用使用
+    
+-   资产可组合性（Composability）
+    
+
+# Sybil（女巫攻击）
+
+一个人伪装成“很多人”来薅羊毛或操纵系统
+
+常见场景
+
+-   空投刷号
+    
+-   DAO 投票作弊
+    
+-   治理攻击
+    
+
+是web3的痛点之一，原因：
+
+-   创建地址几乎是 0 成本
+    
+-   没有 KYC 的前提下很难区分“真人”
+    
+
+## 解决手段（与ENS DEX Identity Inventory有关）
+
+| 手段 | 依赖 |
+| --- | --- |
+| 空投门槛 | 历史交互 |
+| 身份证明 | Identity / DID |
+| 社交图谱 | ENS + 社交绑定 |
+| 成本约束 | 质押 / Gas |
+| SBT | Inventory（不可转让） |
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ## 安全
 
 ### 常见风险
@@ -105,6 +243,7 @@ ha
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -180,6 +319,7 @@ ha
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
