@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+# 领取 Sepolia 测试币
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-17-1768663428128-image.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # Co-Learning总结
 
 ## 1) QL/BD 想提供 case studies：核心看什么？
@@ -907,6 +915,7 @@ function returnArray() external view returns (uint[] memory) {
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -1071,6 +1080,7 @@ Web3 项目常见：
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # Co-learning
 
 ## 运营
@@ -1191,6 +1201,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2068,6 +2079,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
