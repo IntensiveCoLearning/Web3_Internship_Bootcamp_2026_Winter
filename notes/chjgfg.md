@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+研究同态加密算法
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-17-1768660629820-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-17-1768660648048-image.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 监听以太坊主网货币的流动和监听孙宇晨的以太坊钱包变化
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-16-1768574328590-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-16-1768574346337-image.png)
@@ -25,6 +33,7 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 继续复习之前的合约, 荷兰拍卖就很有意思
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-15-1768487381716-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-15-1768487320613-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chjgfg/images/2026-01-15-1768487344339-image.png)
@@ -32,6 +41,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 复习solidity的基础语法
@@ -45,11 +55,13 @@ timezone: UTC+8
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
