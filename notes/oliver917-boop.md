@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+回看LXDAO例会
+
+![IMG_4937.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-17-1768650603954-IMG_4937.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ![29f2dab02eb2284507fac70193049afe.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-16-1768568768084-29f2dab02eb2284507fac70193049afe.jpeg)
 
 收听第一周线上交流会
@@ -25,6 +33,7 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ![da4a118f61cac12067ce9c2f1fc0a409.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-15-1768482606486-da4a118f61cac12067ce9c2f1fc0a409.jpeg)
 
 已观看AI与web3融合线上会
@@ -32,6 +41,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 已听完web3安全线上会，正在听web3合规
@@ -44,6 +54,7 @@ timezone: UTC+8
 
 
 
+
 今天外出，路上信号不好，明天补看
 
 ![IMG_4872.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-13-1768310212807-IMG_4872.png)
@@ -51,6 +62,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
