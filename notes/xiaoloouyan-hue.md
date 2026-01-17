@@ -55,10 +55,23 @@ In short:
 从个人层面来说，开发智能合约第一次让人强烈地感受到“我真的拥有改变世界的行动力”。希望学习这门课程的人，在经历前几周、亲手构建应用之后，也能产生类似的感受。这不仅是学习一项技术，而是进入一种新的、可以参与塑造未来系统的方式。在课程中，你将逐步了解各种应用的使用方式，并尝试亲自操作，从而在实践中学习。课程不仅关注概念，还强调动手经验：学员需要主动尝试、操作，并从中获得理解。这种“先用后做”的方法能够帮助学员真正理解以太坊作为一个应用平台的功能，而不仅仅是一个数据库或工具。
 
 课程结束后，学习路径大致分为三个层次。第一层是成为有能力被雇佣的专业人士，通过完成课程，你将掌握足够的知识应对区块链相关职位的面试和工作。第二层是独立开发自己的项目，找到自己的用户和市场，开始实现创意产品和链上应用。第三层是进入审计领域，专注于智能合约安全，通过复现攻击案例、学习漏洞和优化方法，成为以太坊智能合约的专家。每个层次都建立在实际操作和经验之上，而不仅仅是理论学习。课程强调持续实践的重要性：通过不断构建小型项目、写出清晰的 README 文档，并在 Crypto Twitter 上展示成果，学员能够不断迭代、获得反馈、强化理解。
+
+**How to set up a wallet and become a power user on Ethereum**。这一节的核心目标不是写代码，而是**把钱包真正用起来**：理解 wallet 是什么、seed phrase 是什么、安全模型是怎样的，以及如何开始像一个“power user”一样使用 Ethereum。
+
+课程从 **MetaMask** 开始。MetaMask 被明确介绍为 _go‑to browser extension_，但也提前给了一个重要的免责声明：**MetaMask 是 security‑first，而不是 UX‑first**。这意味着 Web3 世界里很多操作会显得“clunky”，但这些复杂性大多是为了安全服务的。安装时一定要确认官网是 [metamask.io](http://metamask.io)，防止 phishing（如 fake 域名 mediamask 之类）。
+
+创建钱包时最关键的概念是 **12‑word seed phrase / mnemonic / secret recovery phrase**。它被反复强调为 **master key**：这 12 个单词按顺序决定了你整个钱包的控制权。任何人一旦拿到这 12 个词，就可以在任何地方 **recreate your entire wallet** 并立即清空资产。与之相对的是 MetaMask 设置的 **local password**，它只是用来在本地设备上加密钱包数据，如果忘了可以通过 seed phrase 恢复，所以它的安全等级远低于 seed phrase。关于 seed phrase 的保存方式，课程强调的不是“最聪明”，而是“**能恢复 + 足够安全**”。常见错误包括：截图、通过 WhatsApp/Telegram 发送、复制到明文文档、随便存在 GitHub 或文本框里。相对可接受的方法包括：手写在纸上、放在 password manager（如 1Password），但前提是资产规模不大。如果是高价值资产，就需要更高级的方案，比如 **hardware wallet + multisig smart contract wallet**。同时也提醒：不要过度“创意型安全”，比如把 seed phrase 拆得太复杂，最后连自己都无法恢复。
+
+一个非常重要但常被忽视的实践是：**在往钱包里打真实资产之前，先验证你能不能恢复它**。例如删除 MetaMask → 用 seed phrase 重新导入 → 确认地址一致。这一步如果失败，说明你的备份方案本身是有问题的。
+
+在确认 seed phrase 时，MetaMask 要求用户重新按顺序排列 12 个单词。这里顺带引出了一个安全问题：**为什么不能暴力枚举 12 个单词？** 理论上是可能的，但实际组合空间巨大（类似 52 张牌洗牌的例子），即使全世界一起跑脚本，也几乎不可能撞到一个已有余额的钱包。这是密码学安全的基础假设之一。
+
+钱包创建完成后，课程强调了一个 Ethereum 非常反直觉但核心的特性：**创建账户不需要任何许可**。你不是被“注册”进某个数据库，而只是生成了一个足够随机的数（seed phrase → private key → address）。任何人都可以创建账户，这也是 Ethereum 的 permissionless 特性。接下来进入实操：发送 ETH，但首先是在 **testnets** 上完成。课程介绍了 testnet 的作用：它们是“真实运行的 Ethereum 网络”，但 ETH 没有真实价值，主要用于开发和学习。提到的 testnets 包括 **Ropsten、Kovan、Rinkeby、Goerli**，并简单区分了它们的特点（block time、使用场景、未来可持续性）。获取 testnet ETH 的方式是通过 **faucet**。在转账过程中，强调了几个 power user 的基本习惯：发送前要反复核对地址（开头几个字符 + 结尾几个字符），理解 **gas fee** 是发送交易必须支付的成本，并意识到“你需要花 ETH 才能转 ETH”。之后引入了 **Etherscan** 作为 _disinterested third party_ 和 **block explorer**。Etherscan 被定义为 Ethereum 的公共基础设施，用来验证“交易是否真的发生了”。通过 transaction hash，可以看到 from / to、value、gas、block、data 字段；也可以通过 address 页面查看所有交易历史，包括 **internal transactions**（例如 faucet 通过 smart contract 发币）。一个非常重要的 Web3 现实是：**交易不可逆，没有客服**。一旦交易被 mined，就无法撤回。唯一接近“撤销”的情况发生在交易还停留在 **mempool** 时，可以通过发送一个 **same nonce + higher gas** 的交易来 replace / speed up / cancel。但一旦上链，结局不可改变。这一节最后明确了学习成果：到此为止，你已经完成了在 Ethereum 上的“第一步”——你创建了 wallet，理解了 seed phrase 的安全模型，能在 testnet 上发送 ETH，并会用 Etherscan 验证链上行为。接下来要深入的是：**seed phrase 如何派生 private key / public address、ECDSA key pairs、以及一个 seed phrase 如何生成多个 accounts**——这些将是从“会用”走向“真正理解”的关键。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## **新闻总结🚀 2026：Meme‑Coin／Web3 社区的新混合主义**
@@ -168,6 +181,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -360,6 +374,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -422,6 +437,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -433,6 +449,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
