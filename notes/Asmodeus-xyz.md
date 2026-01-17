@@ -15,8 +15,16 @@ QS600+金融本硕；Web3初学者
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+创建钱包，测试币转账
+
+![截屏2026-01-16 22.44.20.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-17-1768655912594-__2026-01-16_22.44.20.png)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 # 一、EOA的定义与控制方式
 
 ## EOA（Externally Owned Account，外部拥有账户）
@@ -158,6 +166,7 @@ EOA 用户通过私钥签名发起外部交易（external transaction），交�
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 # 一、节点与客户端
 
 ## 节点
@@ -289,6 +298,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # 一、Web3合规性要求与常见法律风险
 
 ## 核心法律风险梳理
@@ -363,6 +373,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -563,6 +574,7 @@ DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
