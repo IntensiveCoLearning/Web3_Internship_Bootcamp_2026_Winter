@@ -15,8 +15,94 @@ M.S. (CityU)
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+1.上午参加lxdao的周会，学习了很多区块链治理的知识
+
+2.学习了mpc和zkp，概念总结如下：
+
+The Need for Privacy-Preserving Computation
+
+Problem: Often, valuable insights can be gained by combining data from different sources (e.g., hospitals, companies, individuals).     Constraint: This data is often sensitive and cannot be shared directly due to privacy regulations, business confidentiality, or personal concerns.    Goal: Enable computation on combined data without revealing the private inputs.      Key Technologies: Secure Multi-Party Computation (MPC) and Zero-Knowledge Proofs (ZKP).
+
+What are Zero-Knowledge Proofs (ZKP)?
+
+Goal: A Prover wants to convince a Verifier that a statement is true, without revealing why
+
+it's true or any secret information related to the statement.
+
+Example: Alice (Prover) wants to prove to Bob (Verifier) that she knows the solution to a puzzle, without showing Bob the solution itself.
+
+Core Idea: Use a protocol involving challenges and responses that demonstrate knowledge or property adherence probabilistically or definitively, without leaking the core secret.
+
+How do ZKPs work? (Conceptual Process)
+
+Commitment/Claim: The Prover makes a claim or commits to possessing certain
+
+knowledge (the "witness").证明者（Prover）提出一个声明或承诺拥有某种知识（即“证据”）
+
+Challenge-Response (often iterative迭代): The Verifier issues challenges based on the claim. The Prover provides responses based on their secret knowledge (witness) and the challenge. Crucially, the responses don't reveal the witness itself.
+
+Verification: The Verifier checks if the Prover's responses are consistent with the claim according to the protocol rules. If they are (after enough rounds, if iterative), the Verifier is convinced.
+
+Key Properties of ZKPs
+
+Completeness: If the Prover's statement is true (and they have the witness), they can always convince an honest Verifier.
+
+Soundness: If the Prover's statement is false (or they lack the witness), they have only a negligible chance of fooling an honest Verifier.
+
+Zero-Knowledge: The Verifier learns nothing beyond the fact that the statement is true. The proof reveals no information about the secret witness itself.
+
+What is Secure Multi-Party Computation (MPC)?多个参与方在不泄露各自输入数据的情况下共同计算某个函数
+
+Goal: Compute a function on multiple parties' private data without them revealing their data to each other.   Example: Alice has X , Bob has Y . They want to compute f(X, Y) (e.g., X + Y , Avg(X,Y) ) without Alice learning Y or Bob learning X .
+
+Core Idea: Transform the data and the computation so no single party sees another's raw input.
+
+How does MPC work? (Conceptual Process)
+
+Input Sharing/Transformation: Parties process their private inputs using techniques like: ①Secret Sharing: Input is split into "shares", distributed among parties. No single share reveals the input. ②Homomorphic Encryption: Input is encrypted. Computations can be done directly on the encrypted data.Key Point: Raw private data is never directly exchanged
+
+Secure Computation: Parties jointly perform calculations on the transformed (shared or encrypted) data following a specific protocol.  The protocol ensures calculations are correct without revealing intermediate values linked to original inputs.
+
+Output Reconstruction: Parties combine their results (or decrypt the final encrypted result) to get the final output of f(X, Y) .  Ideally, only the final result is learned.
+
+MPC: Key Goal Achieved
+
+Input Privacy: Throughout the process (sharing, computation, reconstruction), no party learns the raw private inputs of others.
+
+Correctness: The protocol ensures the final output is the same as if the computation were done centrally with all raw data (assuming no cheating/failures, which protocols also address).
+
+Example Application: Combining MPC & ZKP: Scenario应用示例
+
+Why combine them? MPC protects inputs during computation, but assumes inputs are correctly formed or honestly provided. ZKP can verify properties of inputs before they enter the MPC, without revealing the inputs.
+
+Scenario场景: Multiple hospitals want to compute average patient recovery time (MPC) but need to ensure each hospital:
+
+\* Only includes valid patient records (e.g., times are positive numbers).
+
+\* Submits data consistent with a prior commitment (e.g., number of patients).
+
+MPC: Considerations & Limitations
+
+Input Privacy vs. Output Privacy: MPC primarily protects inputs. The output itself is revealed and might leak information. Example: If only two parties compute an average, knowing the average and your own input reveals the other party's input.虽然输入数据被保护，但计算结果是公开的。
+
+Mitigation Strategies缓解策略: Use techniques like Differential Privacy on the output.  Agree only on aggregated/binned results instead of precise values.  Ensure enough participants to dilute information leakage.
+
+ZKP: Considerations & Limitations
+
+Proof Scope证明范围: A ZKP proves exactly the statement formulated. It doesn't inherently prove related things not explicitly included in the statement.  Example: Proving your list contains valid entries doesn't prove you included all relevant entries (omission is hard to prove directly).
+
+Mitigation Strategies: Careful protocol design: Define precisely what needs proving.
+
+External/Procedural Controls: Use pre-commitments (e.g., publicly declare dataset size before proving properties)
+
+General Considerations (Both MPC & ZKP) 局限性①Complexity: Implementing and running these protocols can be complex.②Performance: Can be computationally intensive and require significant communication overhead compared to traditional methods. Performance depends heavily on the specific protocol choice and scale.③Assumptions: Different protocols rely on different cryptographic assumptions (e.g., hardness of factoring, discrete logarithms)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **今天参加了echo老师的colearing会议**
 
 ## 1) 我今天对 “QL / KOL / BD / 运营” 的理解更现实了
@@ -60,6 +146,7 @@ ps:晚上的学员分享实在是太强了 大为震撼
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 **今晚参加了Rick老师关于ai及基础概念的分享会**
@@ -190,6 +277,7 @@ Rick 的回答让我更清楚：
 
 
 
+
 今天连续参加了三场会议，分别是 Co-learning 讨论、Web3 安全主题分享以及 Web3 合规主题分享。整体感受是：**今天的内容比技术更“现实”**，让我开始真正思考在 Web3 中“如何活得久”，而不仅是“如何入行”。
 
 ## 一、Co-learning：自由的另一面是责任
@@ -230,6 +318,7 @@ Rick 的回答让我更清楚：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -453,6 +542,7 @@ per computational step (gas)• Special gas fees also apply to storage operation
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
