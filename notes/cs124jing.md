@@ -15,8 +15,53 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+**Agent跟web3的融合**
+
+_AI agent的结构_：the brain（LLM） --> the memory（RAG流程：抓取数据然后上下文存储） --> the tools(API调用）
+
+_agent的缺点：_
+
+-   identity spoofing：在传统网络中无法验证操作者是人类还是机器人。攻击人可以模仿agent执行未经授权操作
+    
+-   Untraceability不可审计：缺乏不可篡改的日志，如果ai签署不利合同，责任难以追述
+    
+-   Shadow AI：agent结构的安全部署缺乏统一治理框架
+    
+
+_Web3 ai协议栈_：为agent提供了不可篡改的身份证明和原生银行账户
+
+-   **Application**：
+    
+    -   SpoonOS Framework:连接web2开发（python/longchain)与web3基础设施(wallet, smart contracts)的桥梁
+        
+        -   架构概览
+            
+
+![截屏2026-01-17 08.30.54.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/cs124jing/images/2026-01-17-1768660273271-__2026-01-17_08.30.54.png)
+
+-   **Identity**：
+    
+    -   ERC-8004标准（链上护照）：
+        
+        -   Identity registry：提供唯一可转移的链上ID
+            
+        -   Reputation registry：记录不可篡改的反馈评分/防止垃圾信息
+            
+        -   Validation：解决核心问题（你是谁/你可信吗）
+            
+-   **Transaction**：X402协议（HTTP原生机器支付）
+    
+
+![截屏2026-01-17 08.28.49.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/cs124jing/images/2026-01-17-1768660142855-__2026-01-17_08.28.49.png)
+
+web3是唯一能承载高频，低频机器交易的基础设施
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 **web3安全**
 
 -   精准猎杀
@@ -46,6 +91,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 **web3运行原理**
 
@@ -96,6 +142,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 **行业全局介绍&岗位预览**
 
 **_行业概览_**
@@ -140,6 +187,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
