@@ -22,25 +22,39 @@ timezone: UTC+8
 Defi：主要赛道为DEX,去中心化借贷。
 
 AMM：Automated Market Maker（自动化做市商）。AMM 不靠买卖盘，而是通过一个或多个资金池来定价。  
-x⋅y=k_。_
+x⋅y=k。
 
-_无常损失：_
+永续合约：**没有到期日的期货合约**。
 
-_价格滑点：_
+_无常损失：_把币存入流动性池（如 Uniswap）赚取收益，结果最后还不如当初直接把币拿在手里不动赚得多。
 
-AAVE：
+_价格滑点：_打算”成交的价格与“实际”成交价格之间的差额，流动性差的时候容易出现。
 
-跨链桥：
+AAVE：去中心化借贷平台的龙头。
+
+跨链桥：**每一个 L2**：都有 **自己独立的区块，自己独立的状态树，自己的一套账户余额与合约状态。比如**Arbitrum 上有 1 ETH，在 Optimism 上也有 ETH，虽然价格几乎相同，但是必须通过跨链桥来相互兑换。
+
+跨链桥的运作原理一般是：Lock & Mint / Burn & Mint模型。
+
+RWA：用真实资产作抵押，换取虚拟货币。
+
+KOL = Key Opinion Leader（关键意见领袖），能影响散户买卖行为的人。
+
+TON：**The Open Network**，**开放网络**。区块链版微信，原生绑定telegram，直接继承telegram用户，
+
+DEPIN：Decentralized Physical Infrastructure Networks，去中心化物理基础设施网络，web3的共享经济。
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 撸空投[https://www.bilibili.com/video/BV1Fp421f7KT/share\_source=copy\_web&vd\_source=cf0b889aa72345dc7ae4a6ff8d7d606e](https://www.bilibili.com/video/BV1Fp421f7KT/?share_source=copy_web&vd_source=cf0b889aa72345dc7ae4a6ff8d7d606e)
@@ -99,6 +113,7 @@ IBC：Inter-Blockchain Communication Protocol，跨链通信协议。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -169,6 +184,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
