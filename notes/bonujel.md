@@ -15,8 +15,206 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## **行动**
+
+-   参与《Key Hash Based Tokens: 从 ERC-721 到 ERC-7962》分享会
+    
+-   设定计划
+    
+
+## **内容**
+
+### **erc-7962**
+
+**背景**
+
+以太坊现有标准（特别是 ERC-20 和 ERC-721）在面对现代 Web3 需求时暴露出一些系统性缺陷：
+
+1.  账户模型的透明性悖论
+    
+    以太坊采用基于账户的状态模型，其中状态被存储为 `mapping(address => balance)`。这种设计使得资产的所有权直接绑定到一个 160 位的以太坊地址上。
+    
+    -   **身份暴露风险：** 在该模型下，为了证明资产所有权，用户必须在交易中暴露其地址。由于该地址通常是静态且长期复用的，链上分析工具可以轻易地构建出基于该地址的行为图谱（Behavioral Graph）。对于高净值个人或试图保护商业机密的机构而言，这种全透明性是不可接受的 。
+        
+    -   **关联性攻击（Linkability Attack）：** 即使是一个新生成的地址，一旦接收了来自交易所或其他已知实体的资金（例如为了支付 Gas 费），其“纯净性”即被破坏。资金流向的每一跳都是公开的，使得追踪变得微不足道 。
+        
+
+2.  执行与所有权的强耦合
+    
+    在传统标准中，资产的**持有者**（Owner）必须同时是交易的**发起者**（Initiator）和**Gas 支付者**（Payer）。
+    
+
+-   **msg.sender 依赖：** 智能合约通常通过检查 `msg.sender` 来验证权限。这意味着持有资产的冷钱包必须直接与区块链网络交互才能转移资产，增加了私钥暴露在在线环境中的风险。
+    
+
+-   **Gas 支付摩擦：** 用户必须持有 ETH 才能转移 ERC-20 代币。这对于试图通过“元交易”（Meta-Transactions）或账户抽象（Account Abstraction）来降低用户门槛的应用来说，是一个巨大的阻碍。虽然 EIP-2612 引入了 `permit` 机制来缓解这一问题，但它并未改变底层的所有权模型，且并非所有代币都支持该扩展 。
+    
+
+**方案详情**
+
+ERC-7962 提出的核心解决方案是引入“密钥哈希”（Key Hash）作为所有权的标识符，并采用基于 EIP-712 的签名机制来授权状态变更。这种设计在应用层模拟了比特币的 UTXO 特性，同时保留了以太坊合约的可编程性。
+
+1.  核心原语：密钥哈希（Key Hash）
+    
+    在 ERC-7962 中，代币不再由 `address` 持有，而是由 `keyHash` 控制。
+    
+    -   定义： keyHash 是一个 bytes32 类型的值，计算公式为：
+        
+        $$  
+        keyHash = \\text{keccak256}(\\text{key})  
+        $$
+        
+          
+        
+        其中，key 是一个 65 字节的非压缩 secp256k1 公钥（以 0x04 开头）4。
+        
+    
+    -   **设计意图：**
+        
+        1.  **隐匿性（Obscurity）：** 与以太坊地址（公钥哈希的后20字节）不同，`keyHash` 使用完整的 32 字节哈希。更为重要的是，在资产被花费之前，链上仅记录哈希值，而不记录公钥本身。这就构成了一个密码学承诺（Commitment）：用户承诺拥有一个私钥，其对应的公钥哈希为链上记录的值，但无需在拥有阶段暴露公钥 4。
+            
+        2.  **抗量子准备：** 虽然当前实现依赖于 ECDSA，但哈希本身是抗量子的。如果未来 ECDSA 被破解，只要用户没有发起过交易（即没有暴露公钥），其资产在理论上仍然是安全的（前提是能够迁移到新的签名算法）4。
+            
+
+2.  接口规范
+    
+    ERC-7962 定义了两个主要接口：`IERCKeyHash721`（针对非同质化代币）和 `IERCKeyHash20`（针对同质化代币）。这两个接口在设计上与 ERC-721/ERC-20 保持了最小程度的语义兼容，但在核心的 `transfer` 逻辑上进行了彻底的重构。
+    
+
+1.  IERCKeyHash721：非同质化代币接口，该接口用于管理 NFT 资产。
+    
+
+```
+interface IERCKeyHash721 {
+    // 事件定义
+    event KeyHashTransfer721(uint256 indexed tokenId, bytes32 indexed fromKeyHash, bytes32 indexed toKeyHash);
+​
+    // 视图函数
+    function ownerOf(uint256 tokenId) external view returns (bytes32);
+    //... 其他元数据函数 (name, symbol, tokenURI)
+​
+    // 状态变更函数
+    function transfer(
+        uint256 tokenId, 
+        bytes32 toKeyHash, 
+        bytes memory key, 
+        bytes memory signature, 
+        uint256 deadline
+    ) external;
+}
+```
+
+-   `ownerOf` 返回 `bytes32` 而非 `address`。这意味着第三方应用（如 NFT 市场或浏览器）在展示所有者时，只能展示一个哈希值，无法直接关联到用户的 ENS 或历史活动地址，从而实现了“默认隐私” 1。
+    
+-   `transfer` 函数移除了 `from` 参数（或隐式的 `msg.sender` 检查）。转移的合法性完全依赖于 `signature` 的验证。这使得 NFT 的转移可以由任何第三方（Relayer）代为提交上链，天然支持无 Gas 交易 3。
+    
+
+2.  同质化代币与 UTXO 混合模型
+    
+    这是 ERC-7962 最具创新性的部分，它试图在以太坊的账户模型之上模拟 UTXO 的隐私特性。
+    
+
+```
+interface IERCKeyHash20 {
+    // 事件定义
+    event KeyHashTransfer20(bytes32 indexed fromKeyHash, bytes32 indexed toKeyHash, uint256 amount);
+​
+    // 视图函数
+    function balanceOf(bytes32 keyHash) external view returns (uint256);
+​
+    // 状态变更函数 - 引入了 leftKeyHash
+    function transfer(
+        bytes32 fromKeyHash, 
+        bytes32 toKeyHash, 
+        uint256 amount, 
+        bytes memory key, 
+        bytes memory signature, 
+        uint256 deadline, 
+        bytes32 leftKeyHash 
+    ) external;
+}
+```
+
+在标准的 ERC-20 转账中，如果 Alice 有 100 个代币并转给 Bob 10 个，剩下的 90 个仍然留在 Alice 的地址中。这种余额的连续性是链上追踪的主要依据。
+
+ERC-KeyHash20 强制引入了 leftKeyHash（找零哈希）参数，并实施了严格模式（Strict Mode）：
+
+$$  
+\\text{leftKeyHash} \\neq \\text{fromKeyHash} \\land \\text{leftKeyHash} \\neq \\text{toKeyHash}  
+$$
+
+  
+
+这意味着，每当用户发起一笔交易，原有的 fromKeyHash 将被清空（或余额减少），而剩余的资金必须转移到一个新的、未被使用过的 leftKeyHash 中。
+
+-   **隐私增强：** 对于外部观察者而言，一笔交易产生了一个输入和两个输出（目标地址和找零地址）。如果没有额外的背景信息，很难区分哪个是真实的支付目标，哪个是找零。这模仿了比特币 UTXO 模型的隐私特性，打破了地址的长期复用性，极大地增加了链上分析的难度 3。
+    
+
+3.  签名认证与 EIP-712 结构化数据
+    
+    ERC-7962 的安全性完全建立在链下签名与链上验证的机制之上。为了防止重放攻击（Replay Attacks）和跨域攻击，标准强制使用 **EIP-712** 结构化数据签名 3。
+    
+    **验证流程：**
+    
+    1.  公钥完整性检查： 合约首先验证交易中提供的明文公钥 key 的哈希值是否与链上存储的所有者 keyHash 一致。`require(keccak256(key) == currentOwnerKeyHash)`
+        
+    
+    2.  **构建摘要（Digest）：** 使用 EIP-712 标准构建消息摘要。摘要包含了 `DOMAIN_SEPARATOR`（防止跨链重放）、`Transfer` 结构体哈希（包含 `nonce`, `deadline`, `toKeyHash`, `amount`, `leftKeyHash` 等所有关键参数）。
+        
+    
+    3.  **恢复签名者：** 使用 `ecrecover` 从摘要和 `signature` 中恢复出签名者的以太坊地址。
+        
+    
+    4.  地址匹配： 计算公钥 key 对应的以太坊地址，并与恢复出的签名者地址进行比对。`address signer = address(uint160(uint256(keccak256(key[1:]))))`,`require(signer == ecrecoverOutput)`
+        
+        这一步至关重要，因为它确保持有私钥的人确实授权了该笔特定的状态变更 。
+        
+
+**gas变化**
+
+隐私与灵活性往往伴随着计算成本的增加。ERC-7962 的 Gas 消耗模型与传统 ERC-20 有显著差异，这直接影响其采用门槛。
+
+1.  Gas 成本结构拆解
+    
+    在标准 ERC-20 转账中，主要成本是 SSTORE（存储写入），用于更新发送方和接收方的余额。 而在 ERC-7962 转账中，成本结构发生了变化：
+    
+    1.  **Call Data 成本增加：** 必须传入 65 字节的公钥和 65 字节的签名，以及多个 `bytes32` 哈希参数。这比标准的 `transfer(to, amount)` 增加了数百到上千 Gas 的数据成本 。
+        
+    
+    2.  **计算成本增加：** `ecrecover` 预编译合约消耗 3,000 Gas，此外还有大量的 `keccak256` 哈希计算。
+        
+    
+    3.  **存储成本剧增（UTXO 模式）：** 在 ERC-KeyHash20 的严格模式下，一笔转账涉及三个存储槽的更新：
+        
+        -   `fromKeyHash` 余额清零（SSTORE 释放，可能退税）。
+            
+        
+        -   `toKeyHash` 余额增加（SSTORE 初始化或修改）。
+            
+        
+        -   `leftKeyHash` 余额增加（SSTORE 初始化）。 相比之下，ERC-20 只有两个存储更新。这意味着 ERC-7962 的单笔转账基础成本可能比 ERC-20 高出 **30% - 50%** 。
+            
+
+2.  批量处理与 Gas 摊薄
+    
+    尽管单笔交易成本较高，但 ERC-7962 的设计天然支持**批量聚合（Batching）**。 由于所有权验证仅依赖签名，一个“聚合器”（Aggregator）合约可以收集成百上千个用户的 `transfer` 签名，然后在一笔以太坊交易中提交。在这种模式下：
+    
+    -   **基础 Gas (21,000)** 被所有用户分摊。
+        
+    
+    -   **存储操作** 可能被优化（例如多个用户转给同一个接收方，只更新一次接收方余额）。 对于 DataDanceChain 这样需要向大量用户分发数据收益的场景，ERC-7962 的批量处理模式实际上比发送数千笔独立的 ERC-20 交易要**经济得多** 。
+        
+
+3.  原生 Gas 代付（Gas Sponsorship）
+    
+    ERC-7962 最具经济吸引力的特性在于其原生的 Gas 代付能力。在 ERC-20 生态中，实现无 Gas 交易需要复杂的元交易标准（如 EIP-2771）或中继网络（如 Gas Station Network）。而在 ERC-7962 中，代付是协议层的默认行为。任何持有签名的实体都可以提交交易并支付 Gas，这使得应用开发者可以轻松地为用户补贴 Gas 费用，极大地降低了 Web3 的准入门槛（User Onboarding）。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## **行动**
 
 -   观看第一周例会直播
@@ -28,6 +226,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## **行动**
 
@@ -201,6 +400,7 @@ Stripe最近也推出了针对AI代理的支付接口（Agentic Commerce Protoco
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ## **行动**
 
 1.  通读《web3实习手册》，对整体生态以及求职方向有了比较系统的理解
@@ -287,6 +487,7 @@ d律分析了具体的业务场景风险，包括发币融资、交易所运营�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -417,6 +618,7 @@ Gas 不仅仅是费用，它是去中心化网络能持续运行的经济保障�
 
 
 
+
 ## **行动**
 
 -   观看“Web3 行业全局介绍 & 岗位概览“直播
@@ -541,6 +743,7 @@ event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, addres
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
