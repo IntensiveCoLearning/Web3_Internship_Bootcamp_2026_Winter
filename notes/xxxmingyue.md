@@ -15,8 +15,108 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 从 ERC-721 到 ERC-7962
+
+这是我让大模型解析文档得到的：
+
+### **1\. 核心概念与数据结构**
+
+ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值（`keyHash`），而不是传统的以太坊地址。
+
+-   **Key (公钥)**: 用户需持有 65 字节的未压缩 secp256k1 公钥（以 `0x04` 开头）。在交易时，公钥作为参数 `key` 传入以证明所有权。
+    
+-   **Key Hash (密钥哈希)**: 合约中存储的所有者标识是 `keyHash`，即 `keccak256(key)`。这使得链上不直接存储用户的地址。
+    
+-   **状态映射 (Mappings)**:
+    
+    -   **ERC-KeyHash721**: 维护 `tokenId` 到 `keyHash` 的映射。
+        
+    -   **ERC-KeyHash20**: 维护 `keyHash` 到 `balance`（余额）的映射。
+        
+    -   **Nonce**: 必须维护 `mapping(bytes32 => uint256) _keyNonces`，记录每个 `keyHash` 的 nonce 值以防止重放攻击。
+        
+
+### **2\. 签名验证机制 (Signature Verification)**
+
+这是 ERC-7962 实现中最关键的步骤。由于所有权与 `keyHash` 绑定，但交易是由以太坊地址签名的，验证过程如下：
+
+3.  **验证 KeyHash**: 检查传入的明文公钥 `key` 的哈希值 `keccak256(key)` 是否等于当前代币所有者的 `keyHash`。
+    
+4.  **构建 EIP-712 消息**: 根据 EIP-712 标准构建结构化数据哈希（digest）。
+    
+5.  **恢复签名者**: 使用 `ecrecover(digest, signature)` 恢复签名者的以太坊地址。
+    
+6.  **匹配地址**: 验证恢复出的签名者地址是否由传入的公钥 `key` 派生而来。具体算法是取公钥去除前缀 `0x04` 后的部分进行 keccak256 哈希，取最后 20 字节。
+    
+7.  **检查过期时间**: 验证 `block.timestamp` 是否小于等于 `deadline`。
+    
+
+### **8\. 具体接口实现逻辑**
+
+**A. ERC-KeyHash721 (NFT) 的** `transfer` **实现**
+
+该函数用于转移 NFT 所有权。
+
+-   **输入参数**: `tokenId`, `toKeyHash` (新所有者), `key` (当前所有者公钥), `signature`, `deadline`。
+    
+-   **执行流程**:
+    
+    1.  验证 `fromKeyHash`（当前所有者）非零且代币存在。
+        
+    2.  执行上述的“签名验证机制”，确保操作者拥有对应私钥。
+        
+    3.  验证 `toKeyHash` 非零。
+        
+    4.  更新状态：将 `tokenId` 的所有者修改为 `toKeyHash`。
+        
+    5.  增加 `fromKeyHash` 的 nonce 值。
+        
+    6.  触发 `KeyHashTransfer721` 事件。
+        
+
+**B. ERC-KeyHash20 (同质化代币) 的** `transfer` **实现**
+
+该实现采用了类似比特币 UTXO 的模型来处理部分转账，以增强隐私。
+
+-   **输入参数**: `fromKeyHash`, `toKeyHash`, `amount`, `key`, `signature`, `deadline`, `leftKeyHash` (剩余资金接收地址)。
+    
+-   **执行流程**:
+    
+    1.  检查 `fromKeyHash` 余额是否充足。
+        
+    2.  执行“签名验证机制”。
+        
+    3.  **严格模式检查**: 强制要求 `leftKeyHash`（找零地址）**不等于** `toKeyHash` 且 **不等于** `fromKeyHash`。这是为了强制密钥轮换，切断资金链路。
+        
+    4.  更新状态：
+        
+        -   `balanceOf[fromKeyHash]` 清零（或扣除全额）。
+            
+        -   `balanceOf[toKeyHash]` 增加 `amount`。
+            
+        -   `balanceOf[leftKeyHash]` 增加剩余金额 (`original_balance - amount`)。
+            
+    5.  增加 `fromKeyHash` 的 nonce 值。
+        
+    6.  触发 `KeyHashTransfer20` 事件。
+        
+
+### **7\. 安全性与隐私设计**
+
+-   **Gas 费分离**: 由于交易通过签名授权，任何地址（Relayer）都可以提交交易并支付 Gas 费，实现了所有权与 Gas 支付的分离。
+    
+-   **防重放**: 实现必须使用针对每个 `keyHash` 的 nonce 机制，类似于 EIP-2612。
+    
+-   **防篡改**: 必须使用 EIP-712 结构化数据签名，包含所有关键参数（如 `leftKeyHash`, `amount`, `tokenId` 等）。
+    
+-   **隐私限制**: 虽然链上存储的是哈希，但在交易发生时 `key` 会在 calldata 中公开。因此，建议用户在每次接收代币（`toKeyHash`）或找零（`leftKeyHash`）时使用新的密钥对，以最大限度减少可链接性。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # LXDAO周会
 
 1 阅读了一遍web3黑话  
@@ -151,6 +251,7 @@ SEO + 邮件订阅
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -212,6 +313,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 阅读《学习以太坊》
@@ -369,6 +471,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -382,6 +485,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -430,6 +534,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
