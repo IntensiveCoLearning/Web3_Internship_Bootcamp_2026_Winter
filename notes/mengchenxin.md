@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 今天刚刚接触solidity语言,以下是我的主要两点感受
+
+-   **入门友好但进阶有门槛**：Solidity 语法贴近 JavaScript/TypeScript，对有前端或后端基础的开发者来说，写简单合约（如计数器、转账）很容易上手；但一旦涉及链上安全、gas 优化、底层原理（如存储布局、ABI 编码），就需要深入理解区块链特性，进阶门槛明显高于普通编程语言。
+    
+-   **安全是核心生命线**：不同于传统代码，Solidity 合约部署后无法修改，一个微小的漏洞（如溢出、重入、权限问题）可能导致资产损失，这让编写时必须极度谨慎 —— 既要依赖语言本身的安全特性（如 0.8.x 自动溢出检查），也要掌握审计思维，这是 Solidity 最独特也最考验开发者的点。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 区块链核心基础与关键原理
 
 1.  区块链的诞生源于对分布式系统难题的突破。CAP 定理指出，分布式系统需在一致性、可用性、分区容错性中三选二，而区块链需优先保障分区容错性。同时，拜占庭将军问题揭示了恶意参与者存在时的共识困境，而中本聪 2008 年推出的比特币，通过创新组合技术，首次实现了拜占庭容错、无许可、去中心化的系统。
@@ -28,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # 比特币白皮书一
 
@@ -84,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 [https://www.bilibili.com/video/BV1gCJ8zNELv/?spm\_id\_from=333.788.top\_right\_bar\_window\_history.content.click&vd\_source=b65fb6471899fe6858fba22e46841906](https://www.bilibili.com/video/BV1gCJ8zNELv/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=b65fb6471899fe6858fba22e46841906)
 
 今天看了ETHpanda Talk,原来都是布老师的系列阿.布老师可以的,一个人撑着一个系列
@@ -104,6 +116,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # unphishable
 
 今天主要是刷题
@@ -113,6 +126,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -154,6 +168,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
