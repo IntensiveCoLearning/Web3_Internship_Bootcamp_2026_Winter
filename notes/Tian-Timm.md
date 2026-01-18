@@ -15,8 +15,210 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+Web2 to Web3 🚀 - Week 1 Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata 笔记
+
+1\. NFT 基础体验 (NFT Basics)
+
+OpenSea 体验:
+
+登录 OpenSea（NFT 市场），我们的身份和库存自动同步过来，能看到持有的 ENS。
+
+市场逻辑: Web3 的市场只是读取链上数据的前端。如果你在 OpenSea 买了一个 NFT，去 Rarible 或 LooksRare 也能看到并出售它，因为数据在链上，不属于特定平台。
+
+稀缺性 (Scarcity):
+
+艺术家可以通过智能合约限制总量（例如 10,000 个）。
+
+正版验证: 即使图片可以复制，但链上的“出处 (Provenance)”无法伪造。只有从原始合约铸造的才是正品。
+
+2\. 铸造 NFT (Minting)
+
+演示:
+
+访问一个独立的铸造网站（MetaAvatar），连接钱包。
+
+交互: 点击 "Mint" 按钮，发起交易。
+
+信任问题: 向一个陌生的智能合约发送 ETH。虽然代码是开源的（可以在 Etherscan 上看），但普通用户通常很难每次都去审计代码，这依然存在一定的信任风险。
+
+结果: 交易确认后，NFT 出现在钱包和各大市场中。
+
+3\. 开发者视角：直接通过 Etherscan 铸造
+
+场景: 如果项目方没有前端网页，或者网页挂了，能不能买？
+
+操作:
+
+找到合约地址，去 Etherscan 的 "Write Contract" 页面。
+
+连接钱包（Connect to Web3）。
+
+直接调用 mint 函数。
+
+代码浅析:
+
+Austin 展示了一个简单的 NFT 合约代码。
+
+核心逻辑：total supply（总量）限制，counter（计数器）确保不超过总量。即便拥有者有特权（Owner Mint），也受限于写死的总量代码，这就是代码即法律 (Code is Law)。
+
+4\. NFT 的核心：元数据 (Metadata) & IPFS
+
+我们到底拥有什么？
+
+在链上（合约里），你拥有的其实只是一个 Token ID（比如 ID #1）的所有权记录。
+
+真正的内容（图片、属性）通常存储在链下。
+
+Token URI:
+
+合约里有一个函数叫 tokenURI，它指向元数据的存储位置。
+
+演示中，这个 URI 指向了 IPFS。
+
+IPFS (星际文件系统):
+
+内容寻址 (Content Addressable): 地址是基于文件内容的哈希值生成的。
+
+不可篡改: 如果你改了图片的一个像素，哈希值就变了，地址也就变了。
+
+这保证了 NFT 的元数据是不可变 (Immutable) 的。如果指向中心化服务器（如 AWS），项目方随时可以把你的酷炫图片换成一张猫的照片，你就被 "Rug" 了。
+
+5\. 进阶：完全链上 NFT (On-Chain NFTs)
+
+Svg NFT:
+
+展示了一个 "Loogies" NFT 的例子。
+
+它的图像不是存在 IPFS，而是直接由智能合约代码生成的 SVG 代码。
+
+特点:
+
+颜色、形状等属性直接存储在合约变量里。
+
+高可组合性: 其他合约可以直接读取这些属性（比如“胖瘦”、“颜色”）来进行游戏互动（如繁殖、战斗），完全不需要依赖外部服务器。
+
+数据永久存在链上，只要以太坊还在，图就在。
+
+6\. 其它概念
+
+同质化 (ERC20) vs 非同质化 (ERC721):
+
+ERC20: 像钱一样，记录的是余额 (Balance)。你的 1 ETH 和我的 1 ETH 是一样的，混在一起。
+
+ERC721: 像收藏品，记录的是所有者 (Owner)。每个 ID 都是唯一的，记录 ID #1 属于 Alice，ID #2 属于 Bob。
+
+版税 (Royalties):
+
+智能合约可以设定，每次转售时自动分给原作者一定比例（如 10%），这是 Web3 赋能创作者的重要特性。
+
+审查与互操作性:
+
+演示中发现 Rarible 没有显示某些 NFT，这展示了即使底层是去中心化的，前端（Web2 公司）依然可以进行过滤和审查。
+
+Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending... 笔记
+
+这是“Web2 到 Web3”课程第一周第五天的笔记。这一集的主题是“成为高级用户 (Power User)”，主要通过制造各种“错误”和复杂场景，来学习如何处理交易卡顿、Layer 2、DeFi 和多签钱包。
+
+📝 Web2 to Web3 学习笔记 (Week 1, Day 5)
+
+讲师: Austin Griffith 主题: 交易故障排除、Layer 2 (Optimism)、DeFi (Aave)、多签 (Gnosis Safe)
+
+1\. 交易故障排除 (Troubleshooting Transactions)
+
+故意制造卡顿:
+
+演示了一笔 Gas 费设置极低（10 Gwei）的交易，这笔交易会一直处于 "Pending" 状态，因为矿工不想打包它。
+
+Nonce 的重要性: 以太坊交易是按顺序执行的（Nonce 0, 1, 2...）。如果 Nonce #6 卡住了，哪怕你发一笔更高 Gas 的 Nonce #7，它也不会被执行，必须先解决 #6。
+
+加速交易 (Speed Up):
+
+MetaMask 的 "Speed Up" 按钮原理：发送一笔相同 Nonce 但 Gas 费更高 的新交易来覆盖旧交易。
+
+取消交易 (Cancel):
+
+MetaMask 的 "Cancel" 按钮原理：发送一笔 0 ETH 转账给自己，使用相同 Nonce 和 高 Gas。这样矿工打包了这笔空转账，原来的卡顿交易就被“挤掉”作废了。
+
+手动取消: 在设置里打开 "Customize Transaction Nonce"，手动填入卡顿交易的 Nonce，给自己转 0 ETH。
+
+重置账户 (Reset Account):
+
+如果 MetaMask 的 Nonce 乱了或者状态不同步，可以使用 Settings -> Advanced -> Reset Account。这不会丢失资金，只会清除本地的交易历史记录，强制重新从链上读取状态。
+
+2\. 直接与合约交互 (Etherscan & Decimals)
+
+跳过 UI:
+
+演示了不通过钱包 UI，而是直接在 Etherscan 的 "Write Contract" 页面调用 DAI 合约的 transfer 函数。
+
+精度问题 (Decimals):
+
+在代码层面，代币没有小数点。发送 5 个 DAI，实际填入的数值是 5000000000000000000 (5 \* 10^18)。
+
+这是开发者和普通用户视角的巨大差异。
+
+3\. Layer 2 体验 (Optimism)
+
+跨链桥 (Bridging):
+
+将 ETH 从主网 (L1) 存入 Optimism (L2)。
+
+特点: 需要等待几分钟，期间资金在两边都“消失”了，体验比较吓人。
+
+L2 优势:
+
+快: 交易几乎瞬间确认。
+
+省: 手续费只需几分钱（对比主网几十美元）。
+
+演示: 在 Quixotic 市场 Mint 了一个 NFT，并挂单拍卖，体验丝滑。
+
+ENS 问题: 很多钱包在 L2 网络下无法解析主网的 ENS 域名，导致还是得复制粘贴长地址。
+
+4\. DeFi 初探 (Aave & Uniswap)
+
+授权 (Approve):
+
+任何 ERC20 代币（如 DAI）在被 DApp 使用前，必须先发一笔交易 Approve，授权合约扣款。所以 Swap 往往需要两笔交易（Approve + Swap）。
+
+借贷 (Lending):
+
+演示在 Aave 存入 ETH 作为抵押品 (Collateral)。
+
+借款逻辑: 抵押 100 块，借出 60 块。
+
+做空/杠杆: Austin 解释了如何通过“循环借贷”（抵押 ETH -> 借稳定币 -> 买 ETH -> 再抵押...）来加杠杆，或者借币卖出来做空。
+
+清算风险: 如果抵押品价值下跌，会被强制清算 (Liquidation)。
+
+主网痛点: 在主网存取款光 Gas 费就要几十刀，小额资金根本玩不起，进一步凸显了 L2 的必要性。
+
+5\. 多签钱包 (Multisig / Gnosis Safe)
+
+什么是多签？
+
+普通的钱包是一个私钥控制。多签钱包是一个智能合约，需要多个人（或多个设备）签名才能执行交易。
+
+M-of-N 机制: 演示了建立一个 "2-of-4" 的 Safe，意味着 4 个管理者中只要有任意 2 个人签名，资金就能动。
+
+安全场景:
+
+防丢: 哪怕你丢了一个私钥，剩下的私钥依然能把钱取出来。
+
+遗产继承: 可以把私钥分给家人，防止意外发生后资产永久锁死。
+
+高级玩法 (WalletConnect):
+
+通过 WalletConnect 将多签钱包（Gnosis Safe）连接到 Uniswap。
+
+在 Uniswap 网页上点 Swap，实际上是在 Gnosis Safe 里发起了一个“提案”，然后成员们线下各自签名，最后上链执行。这意味着多签钱包也可以像个人用户一样玩 DeFi。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 Day 3: ENS, DEX, Identity, Inventory, Sybil 笔记
 
 1\. 钱包与账户 (Wallet & Accounts)
@@ -111,6 +313,7 @@ DAI 的机制 (超额抵押):
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 第一周例会
 
 同学分享
@@ -126,6 +329,7 @@ DAI 的机制 (超额抵押):
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 AI分享会
@@ -169,6 +373,7 @@ Web3是唯一能承载高频、低额机器交易的基础设施
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -224,6 +429,7 @@ U商：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -287,6 +493,7 @@ web3最有价值的地方：不在于彻底颠覆，更多是带来全新机制�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
