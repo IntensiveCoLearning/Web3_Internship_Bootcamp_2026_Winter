@@ -15,13 +15,33 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+不同的链的账户，私钥，多个地址可以对应同一套助记词，这是web3钱包的运作原理。
+
+Defi：主要赛道为DEX,去中心化借贷。
+
+AMM：Automated Market Maker（自动化做市商）。AMM 不靠买卖盘，而是通过一个或多个资金池来定价。  
+x⋅y=k_。_
+
+_无常损失：_
+
+_价格滑点：_
+
+AAVE：
+
+跨链桥：
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 撸空投[https://www.bilibili.com/video/BV1Fp421f7KT/share\_source=copy\_web&vd\_source=cf0b889aa72345dc7ae4a6ff8d7d606e](https://www.bilibili.com/video/BV1Fp421f7KT/?share_source=copy_web&vd_source=cf0b889aa72345dc7ae4a6ff8d7d606e)
 
@@ -79,6 +99,7 @@ IBC：Inter-Blockchain Communication Protocol，跨链通信协议。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -148,6 +169,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
