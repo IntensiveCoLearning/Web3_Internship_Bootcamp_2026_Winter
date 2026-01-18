@@ -21,7 +21,6 @@ timezone: UTC+8
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724065411-image.png)
 
-#   
 **领取水龙头**
 
 水龙头是在测试网使用的货币，没有交易价值，铸造 NFT 的前提是钱包要有 Sepolia 水龙头，因为要支付 gas 费。我的 Sepolia 是在 ETH。
@@ -32,13 +31,13 @@ timezone: UTC+8
 
 # **铸造 NFT**
 
-在\[铸造网站\]([https://nft.myfirst.io/)搭配好自己的](https://nft.myfirst.io/\)搭配好自己的) NFT 头像后链接钱包，选择 Sepolia 网络并支付，如果没有 Sepolia 测试水龙头将无法铸造。
+在\[铸造网站\]([https://nft.myfirst.io/)搭配好自己的](https://nft.myfirst.io/\)%E6%90%AD%E9%85%8D%E5%A5%BD%E8%87%AA%E5%B7%B1%E7%9A%84) NFT 头像后链接钱包，选择 Sepolia 网络并支付，如果没有 Sepolia 测试水龙头将无法铸造。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724110572-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724152805-image.png)
 
 # **使用 EtherScan 查看交易内容**
 
-364 是铸造的 Token ID，**\*\*Mint\*\***意为铸造
+364 是铸造的 Token ID，\*\*\*\*Mint\*\*\*\*意为铸造
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724186137-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724220896-image.png)
 
@@ -46,7 +45,7 @@ timezone: UTC+8
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724266689-image.png)
 
-如果要查看 NFT 具体内容，可以点击 Input Data 的 view in decoder，然后就可以看到 NFT 的图片链接了  
+如果要查看 NFT 具体内容，可以点击 Input Data 的 view in decoder，然后就可以看到 NFT 的图片链接了
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724283475-image.png)
 
@@ -60,7 +59,7 @@ timezone: UTC+8
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724366229-image.png)
 
-导入后如果 NFT 头像没有加载出来是正常状况，可能是 IPFS 问题，可以尝试刷新。  
+导入后如果 NFT 头像没有加载出来是正常状况，可能是 IPFS 问题，可以尝试刷新。
 
 # **IPFS**
 
@@ -80,23 +79,23 @@ InterPlanetary File System 星际文件系统， 是一种去中心化的文件�
 
 {
 
-  "name": "MyFirstNFT #364",
+“name”: “MyFirstNFT #364”,
 
-  "image": "ipfs://QmT8Tk2sVjKx7U9zZzZzZzZzZzZzZzZzZzZzZzZzZzZz"
+“image”: “ipfs://QmT8Tk2sVjKx7U9zZzZzZzZzZzZzZzZzZzZzZzZzZzZz”
 
 }
 
-\`\`\`  
+\`\`\`
 
-\- 原生格式：ipfs://QmXxxx...（这是标准写法，Web3 应用推荐使用）
+\- 原生格式：ipfs://QmXxxx…（这是标准写法，Web3 应用推荐使用）
 
 \- 通过网关访问（浏览器兼容）：
 
-  [https://ipfs.io/ipfs/QmXxxx](https://ipfs.io/ipfs/QmXxxx)...
+[https://ipfs.io/ipfs/QmXxxx](https://ipfs.io/ipfs/QmXxxx)…
 
-  [https://gateway.pinata.cloud/ipfs/QmXxxx](https://gateway.pinata.cloud/ipfs/QmXxxx)...
+[https://gateway.pinata.cloud/ipfs/QmXxxx](https://gateway.pinata.cloud/ipfs/QmXxxx)…
 
-  [https://cloudflare-ipfs.com/ipfs/QmXxxx](https://cloudflare-ipfs.com/ipfs/QmXxxx)...
+[https://cloudflare-ipfs.com/ipfs/QmXxxx](https://cloudflare-ipfs.com/ipfs/QmXxxx)…
 
 IPFS 是内容寻址，如果两个人上传了同一个文件，那么他们共享同一个哈希地址，指向同一份数据。
 
@@ -110,28 +109,22 @@ IPFS 是内容寻址，如果两个人上传了同一个文件，那么他们共
 
 \[[nft.storage](http://nft.storage)\]([https://app.pinata.cloud](https://app.pinata.cloud))
 
-# EIP  
+# EIP
 
-  
-Ethereum Improvement Proposal（以太坊改进提案），EIP 是向以太坊社区提出新功能、流程或标准的正式文档。任何重大变更（如协议升级、新操作码、费用机制）都必须先提交 EIP。  
-  
+Ethereum Improvement Proposal（以太坊改进提案），EIP 是向以太坊社区提出新功能、流程或标准的正式文档。任何重大变更（如协议升级、新操作码、费用机制）都必须先提交 EIP。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724576889-image.png)
 
-  
+ERC
 
-#   
-ERC  
-
-  
-Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智能合约和 DApp 开发者制定的应用层标准，确保不同项目之间的互操作性。  
-  
+Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智能合约和 DApp 开发者制定的应用层标准，确保不同项目之间的互操作性。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/QingQiuGeek/images/2026-01-18-1768724558926-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 \## Node.js 是什么？  
   
@@ -285,6 +278,7 @@ my-node-app/
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -395,6 +389,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -435,6 +430,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
