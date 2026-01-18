@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## [**一、DeFi：去中心化金融的创新实践**](https://web3intern.xyz/zh/industry-knowledge/#%E4%B8%80%E3%80%81defi-%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E9%87%91%E8%9E%8D%E7%9A%84%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5)
 
 DeFi，全称为 Decentralized Finance（去中心化金融），是基于区块链技术建立的金融体系，目标是提供不依赖传统银行或金融中介的服务，比如借贷、交易、支付等，让每个人都可以自由参与，无需审批、无需信任中介机构。以下是 DeFi 领域的三个典型案例：
@@ -245,6 +251,7 @@ ConstitutionDAO 发起众筹
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -316,6 +323,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # **安全与合规**
@@ -545,6 +553,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -677,6 +686,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -825,6 +835,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
