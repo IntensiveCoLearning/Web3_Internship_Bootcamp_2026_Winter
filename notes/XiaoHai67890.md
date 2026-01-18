@@ -15,19 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+答疑  
+周末愉快
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 周末愉快
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今天在旅行，据说错过了非常牛的分享会，等会放出来了，去好好学习一下
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 最近看到 Vitalik 写的以太坊需要更去中心化的稳定币，有一些想法和发散，放到每日笔记里吧。
@@ -74,12 +83,14 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 co- learning  
 听布老师的分享会，重温基础知识
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
