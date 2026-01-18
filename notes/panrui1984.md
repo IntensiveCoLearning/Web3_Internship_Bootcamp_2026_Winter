@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+24-25区块链主要进展记录
+
+Ordi开启的BRC20铭文
+
+Pepe开启的meme coin周期
+
+Pump Fun 成为新资产放行的标准和范式，大幅降低了发币的门槛
+
+引发两个赛道
+
+1， 钱包
+
+2， Telegram Trading Bot
+
+3， 引领Cex融合链上交易（Alpha）
+
+4， Polymarket
+
+5， Hyperliquid
+
+外部
+
+1， 比特币和以太坊现货ETF
+
+[https://www.theblock.co/data/crypto-markets/](https://www.theblock.co/data/crypto-markets/)
+
+比特币ETF
+
+![图片1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/panrui1984/images/2026-01-18-1768740044435-__1.png)
+
+以太坊ETF
+
+![图片2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/panrui1984/images/2026-01-18-1768740052855-__2.png)
+
+2， 币股
+
+[BitcoinTreasuries.NET](http://BitcoinTreasuries.NET) [\- Top Bitcoin Treasury Companies](https://bitcointreasuries.net/)
+
+![图片3.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/panrui1984/images/2026-01-18-1768740064641-__3.png)
+
+3， 稳定币法案
+
+[Total Stablecoin Supply](https://www.theblock.co/data/stablecoins/usd-pegged/total-stablecoin-supply)
+
+![图片4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/panrui1984/images/2026-01-18-1768740075955-__4.png)
+
+4， RWA
+
+美股，美债等更多资产上链
+
+ICO合规化（Project Crypto）
+
+5，401k
+
+允许美国养老金 401K 投资加密货币、黄金、私募股权（PE）等另类资产
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 模仿写的调研报告
 
 一.   项目介绍
@@ -119,6 +179,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今天模仿写的调研报告
 
@@ -250,6 +311,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -279,6 +341,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -314,6 +377,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -386,6 +450,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
