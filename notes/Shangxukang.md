@@ -15,19 +15,43 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+NFT是基于ERC-721的一个实践，在现实世界中通常表达为一个藏品，也有会员身份（ERC-1155）。
+
+某组织想要发行其membership，这往往以某个ETH地址体现。
+
+但，membership属于隐私，希望在不暴露隐私的情况下进行数据交易。ERC-7962 is designed to solve such a problem.
+
+能发现：拥有某NFT的某地址是什么，以及此地址的所有交易记录
+
+\- ERC-7962是在ERC-721的基础上，应用ZK原理保证了向第三方证明其归属，但是不暴露其真实地址。
+
+\- `KeyHash=keccak(publicKey)`作为资产所有权标识，从而地址不上链
+
+\- 商家是msg.sender，用户
+
+\- 强制key轮换，增强不可关联性。
+
+\- 更佳UX：gas sponsorship，代付gas费，交易的发起者和token的owner可以分开。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天没有特别需要记录的内容
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今天主要是听同学的复盘，发现很多同学学的都很认真，不但完成了基本任务，还进行了很多扩展。我应该向他们学习。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 合规
@@ -87,6 +111,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
