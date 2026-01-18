@@ -15,8 +15,20 @@ cooking at solidity
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+熟悉了remix并且写了一点solidity
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-18-1768745613218-image.png)
+
+完成了入门技术任务：通过Ethernaunt的第一关
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-18-1768750495591-image.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今晚读完了《021学习以太坊的最后一章》，以下是概括性总结：
 
 ### 一、早期共识机制：工作量证明（PoW）
@@ -63,6 +75,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ## 学习了《021学习以太坊》的四五章 以下是一些概括性笔记
 
 ###   
@@ -108,6 +121,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 完成任务：  
 读完了XiaoHai老师的《021学习以太坊》前三章。以下是个人总结的一些比较重要的概括性笔记。
 
@@ -151,6 +165,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
