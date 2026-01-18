@@ -15,8 +15,49 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 账户类型与结构
+
+CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
+
+ender, nonce\]) ) 的后 20 字节。
+
+CREATE2（EIP-1014 引入）：合约地址由 创建者地址 + salt + init\_code（init\_code 的哈希）决定，地址在部署前可以被精确预计算：keccak256(0xff ++ deployer ++ salt ++ keccak256(init\_code)) 的后 20 字节（0xff 是定界前缀）。CREATE2 于 Constantinople（EIP-1014）引入。
+
+## 一、EOA 的定义与控制方式
+
+EOA = 由“私钥”直接控制的钱包账户，能发交易、收资金、调合约，但自己不带代码逻辑。控制私钥的人 = 控制这个账户的一切。
+
+EOA（Externally Owned Account，外部拥有账户）
+
+EOA 像“人 + 银行卡”，合约账户像“写死规则的自动售货机”
+
+### 一个 EOA 在状态里到底长什么样？
+
+-   地址（address）
+    
+-   nonce（交易计数器）
+    
+-   balance（余额）
+    
+-   code / storage
+    
+
+### 我是怎么“控制”一个 EOA 的？
+
+私钥签名：真正的控制权
+
+助记词（BIP-39）和派生路径（BIP-44）
+
+Nonce：阻止“把你签过的交易拿出来复读”
+
+Gas：想让 EOA 动起来，必须给它加油
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 十一、Gossip 协议在节点传输中的作用
 
 Gossip 协议就是以太坊的“八卦广播系统”：
@@ -44,6 +85,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # 七、执行与共识客户端的协同配合
 
@@ -74,6 +116,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 网络结构与节点类型
@@ -170,6 +213,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -213,6 +257,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -345,6 +390,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
