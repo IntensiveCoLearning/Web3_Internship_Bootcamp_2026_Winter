@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## **今天主要听了分享会，从erc-721到erc-7962，总结了一些内容**
+
+### **核心概念对比：**
+
+-   **ERC-721 (Address-Based)**：
+    
+    -   **所有权逻辑**：代币属于一个 **以太坊地址**。合约内部记录的是 tokenId => address。
+        
+    -   **操作限制**：只有该地址的所有者（持有私钥并能发起交易的人）才能直接转移代币，且必须作为 msg.sender 支付 Gas 费。
+        
+    -   **透明度**：所有权是公开且永久关联的，任何人都可以在链上追踪某个地址持有的所有资产。
+        
+-   **ERC-7962 (Key-Hash-Based)**：
+    
+    -   **所有权逻辑**：代币属于一个 **Key Hash**（即 keccak256(key)）。所有权不再死死绑定在某个特定的以太坊地址上。\[[**1**](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQEpMufv9lwM-_rehuWdksFST8_tw61GzNEtOX9e9bDFiOo9MP7QJyv8EPfXsVoaLcPzSBmaha5GYPp2NnK4Tlau6Hm_LYg9zXSGd_ho8rp-ttSg9go4nvUeuxm7fp-Q-kNfBK3XCD97qyklz7hYZxEi5XcpMxXj6_pz2ORv7en6Mw%3D%3D)\]
+        
+    -   **操作限制**：通过 **EIP-712 签名** 来授权操作。只要你能提供符合 Key Hash 的有效签名，任何地址（第三方、转发器、企业账户）都可以帮你提交交易。
+        
+    -   **抽象化**：它实现了**所有权（Ownership）与执行权（Execution）的彻底分离**。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今天 Echo 老师的 Co-learning 直接把“KOL 饭圈 + 运营内卷”现场搬到我面前，瓜太多，CPU 又烧了。
 
 ### **1\. KOL 江湖分层**
@@ -45,6 +69,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 今天的会，本以为是“Agent + MCP”小范围技术分享，结果直接把我脑容量干到溢出——AI×Web3 的完整基建图谱一次性砸下来，当场进入“听过即学过”的玄学状态。
@@ -86,6 +111,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 把这三个修饰符想成“安检门”，编译器提前查你口袋，不让带的就是不能带，带错了直接不让过，不是你想加就加、想省就省的“优化开关”。
 
 1.  pure  
@@ -106,6 +132,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -139,6 +166,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
