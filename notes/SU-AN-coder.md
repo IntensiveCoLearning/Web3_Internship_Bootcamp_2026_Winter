@@ -15,8 +15,610 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 以太坊脚本与Solidity开发笔记
+
+通过`ethers.js`的以太坊链上交互脚本开发，使用 Hardhat 完成智能合约本地开发 / 测试，最后通过 Scaffold-ETH 实现合约快速迭代与前端交互，来独立完成合约读写、交易发送等核心功能
+
+## 一、 开发环境搭建
+
+### 1\. 配置
+
+bash
+
+```
+# 创建项目并初始化
+mkdir eth-dev-demo && cd eth-dev-demo
+npm init -y
+
+# 启用ES6模块（修改package.json）
+echo '{
+  "type": "module",
+  "dependencies": {
+    "ethers": "^6.8.0",
+    "dotenv": "^16.3.1"
+  }
+}' > package.json
+
+# 安装依赖
+npm install
+```
+
+### 2\. 安全注意
+
+-   创建`.env`存储敏感信息（API 密钥、私钥），添加至`.gitignore`
+    
+-   不同项目使用独立助记词和私钥，禁止硬编码敏感数据
+    
+
+## 二、 ethers.js ：链上交互的基础
+
+### 1\. 核心概念
+
+| 组件 | 核心功能 | 读取链上数据 | 签名 / 发送交易 | 依赖条件 |
+| --- | --- | --- | --- | --- |
+| Provider | 连接以太坊节点，获取链上数据 | ✅ | ❌ | 节点 RPC 地址 / API 密钥 |
+| Wallet | 私钥管理、离线签名 | ❌ | ✅（仅离线） | 私钥 / 助记词 |
+| Signer | Wallet + Provider 组合 | ✅ | ✅ | Wallet + Provider |
+
+### 2\. Provider：链上数据读取
+
+2.1 不同类型 Provider的初始化
+
+js
+
+```
+import { ethers } from "ethers";
+import dotenv from "dotenv";
+dotenv.config();
+
+// 1. 托管节点（Infura/Alchemy）- 推荐生产环境
+const infuraProvider = new ethers.InfuraProvider(
+  "sepolia", // 测试网（替代原Rinkeby）
+  process.env.INFURA_API_KEY
+);
+
+// 2. 本地节点（如Geth/Hardhat）- 无速率限制
+const localProvider = new ethers.JsonRpcProvider("http://localhost:8545");
+
+// 3. 默认Provider（仅测试，有速率限制）
+const defaultProvider = ethers.getDefaultProvider("sepolia");
+```
+
+2.2读取示例
+
+js
+
+```
+async function testProvider() {
+  // 1. 获取当前区块高度
+  const blockNumber = await infuraProvider.getBlockNumber();
+  console.log("当前区块高度：", blockNumber);
+
+  // 2. 解析ENS域名（仅主网生效）
+  const address = await infuraProvider.resolveName("vitalik.eth");
+  console.log("ENS解析结果：", address);
+
+  // 3. 查询钱包余额（以Vitalik地址为例）
+  const balance = await infuraProvider.getBalance("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045");
+  console.log("钱包余额：", ethers.formatEther(balance), "ETH");
+
+  // 4. 获取区块详情
+  const block = await infuraProvider.getBlock(blockNumber);
+  console.log("最新区块交易数：", block.transactions.length);
+}
+
+testProvider();
+```
+
+### 3\. Wallet 与 Signer：交易签名与发送
+
+3.1 钱包生成导入
+
+js
+
+```
+async function testWallet() {
+  // 1. 随机生成钱包（含助记词）
+  const randomWallet = ethers.Wallet.createRandom();
+  console.log("随机钱包地址：", randomWallet.address);
+  console.log("助记词：", randomWallet.mnemonic.phrase);
+  console.log("私钥：", randomWallet.privateKey);
+
+  // 2. 从私钥导入钱包
+  const importedWallet = new ethers.Wallet(process.env.PRIVATE_KEY);
+  // 3. 连接Provider成为Signer（具备交易发送能力）
+  const signer = importedWallet.connect(infuraProvider);
+
+  // 验证Signer余额
+  const signerBalance = await signer.getBalance();
+  console.log("Signer余额：", ethers.formatEther(signerBalance), "ETH");
+  return signer;
+}
+```
+
+3.2 ETH 交易
+
+js
+
+```
+async function sendEth() {
+  const signer = await testWallet();
+  // 交易参数
+  const txParams = {
+    to: "0xRecipientAddress", // 接收地址
+    value: ethers.parseEther("0.01"), // 转账金额（转成wei）
+    gasLimit: 21000, // 基础转账Gas Limit
+    gasPrice: await infuraProvider.getGasPrice() // 自动获取当前Gas Price
+  };
+
+  // 发送交易
+  const tx = await signer.sendTransaction(txParams);
+  console.log("交易哈希：", tx.hash);
+  // 等待区块确认（建议等待1-6个确认）
+  const receipt = await tx.wait(1);
+  console.log("交易确认：", receipt.status === 1 ? "成功" : "失败");
+}
+
+sendEth();
+```
+
+### 4\. BigNumber处理
+
+js
+
+```
+// 以太坊数值单位转换（1 ETH = 10^18 wei）
+const ethAmount = "0.5";
+const weiAmount = ethers.parseEther(ethAmount); // ETH → wei
+console.log("0.5 ETH =", weiAmount.toString(), "wei");
+
+const convertedEth = ethers.formatEther(weiAmount); // wei → ETH
+console.log(weiAmount.toString(), "wei =", convertedEth, "ETH");
+
+// 大数值运算（避免JS原生运算溢出）
+const balance1 = ethers.parseEther("1.23");
+const balance2 = ethers.parseEther("4.56");
+
+const sum = balance1.add(balance2); // 加法
+const diff = balance2.sub(balance1); // 减法
+const product = balance1.mul(2); // 乘法
+const quotient = balance2.div(3); // 除法
+
+console.log("求和：", ethers.formatEther(sum), "ETH");
+console.log("差值：", ethers.formatEther(diff), "ETH");
+```
+
+## 三、 智能合约交互
+
+### 1\. 前提：获取 ABI 与合约地址
+
+-   **ABI 获取**：从 Etherscan 验证合约页面复制，或从 Hardhat 编译后的`artifacts`文件夹读取
+    
+-   **合约地址**：部署后生成的唯一地址（测试网 / 主网）
+    
+
+### 2\. 合约读取操作（只读，没有Gas 消耗）
+
+2.1 ERC20 代币读取示例
+
+js
+
+```
+async function readContract() {
+  // USDC Sepolia测试网合约信息
+  const usdcAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
+  const usdcAbi = [
+    "function balanceOf(address owner) view returns (uint256)",
+    "function decimals() view returns (uint8)",
+    "function symbol() view returns (string)"
+  ]; // 简化ABI（仅需用到的函数）
+
+  // 初始化只读合约实例
+  const usdcContract = new ethers.Contract(usdcAddress, usdcAbi, infuraProvider);
+
+  // 调用view函数
+  const symbol = await usdcContract.symbol();
+  const decimals = await usdcContract.decimals();
+  const balance = await usdcContract.balanceOf("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045");
+
+  console.log("代币符号：", symbol);
+  console.log("小数位数：", decimals);
+  console.log("钱包余额：", ethers.formatUnits(balance, decimals), symbol);
+}
+
+readContract();
+```
+
+### 3\. 合约写入操作（交易，消耗 Gas）
+
+3.1 ERC20 代币转账示例
+
+js
+
+```
+async function writeContract() {
+  const signer = await testWallet();
+  const usdcAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
+  const usdcAbi = [
+    "function transfer(address to, uint256 amount) returns (bool)",
+    "function balanceOf(address owner) view returns (uint256)"
+  ];
+
+  // 初始化可写合约实例（连接Signer）
+  const usdcContract = new ethers.Contract(usdcAddress, usdcAbi, signer);
+
+  // 转账参数（转10 USDC，注意小数位数）
+  const recipient = "0xRecipientAddress";
+  const amount = ethers.parseUnits("10", 6); // USDC小数位数为6
+
+  // 发送转账交易
+  const tx = await usdcContract.transfer(recipient, amount);
+  console.log("转账交易哈希：", tx.hash);
+  const receipt = await tx.wait(1);
+  if (receipt.status === 1) {
+    console.log("转账成功！");
+    // 验证余额
+    const newBalance = await usdcContract.balanceOf(recipient);
+    console.log("接收方新余额：", ethers.formatUnits(newBalance, 6), "USDC");
+  }
+}
+
+writeContract();
+```
+
+### 4\. 原始交易与函数选择器
+
+js
+
+```
+async function rawTransaction() {
+  const signer = await testWallet();
+  const contractAddress = "0xContractAddress";
+  
+  // 1. 函数选择器：transfer(address,uint256)的哈希前4字节
+  const functionSelector = ethers.id("transfer(address,uint256)").slice(0, 10);
+  // 2. 编码参数（接收地址+转账金额）
+  const recipientEncoded = ethers.AbiCoder.defaultAbiCoder().encode(["address"], ["0xRecipientAddress"]);
+  const amountEncoded = ethers.AbiCoder.defaultAbiCoder().encode(["uint256"], [ethers.parseUnits("10", 6)]);
+  // 3. 拼接callData
+  const callData = functionSelector + recipientEncoded.slice(2) + amountEncoded.slice(2);
+
+  // 发送原始交易
+  const tx = await signer.sendTransaction({
+    to: contractAddress,
+    data: callData
+  });
+  console.log("原始交易哈希：", tx.hash);
+}
+```
+
+### 5\. 交易进阶方向：Nonce 与 Gas 优化
+
+js
+
+```
+async function optimizeTx() {
+  const signer = await testWallet();
+  // 1. 获取账户当前Nonce
+  const nonce = await signer.getNonce("pending"); // pending：包含待确认交易
+  // 2. 自定义Gas参数（加速交易）
+  const gasPrice = (await infuraProvider.getGasPrice()).mul(120).div(100); // 提高20% Gas Price
+  const gasLimit = 100000;
+
+  const tx = await signer.sendTransaction({
+    to: "0xRecipientAddress",
+    value: ethers.parseEther("0.01"),
+    nonce: nonce,
+    gasPrice: gasPrice,
+    gasLimit: gasLimit
+  });
+  console.log("自定义Gas交易哈希：", tx.hash);
+}
+```
+
+## 四、 Hardhat：本地的开发与测试
+
+### 1\. 环境搭建
+
+bash
+
+```
+# 1. 初始化Hardhat项目
+mkdir hardhat-demo && cd hardhat-demo
+npm init -y
+npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
+
+# 2. 创建项目（选择Create a JavaScript project）
+npx hardhat
+
+# 3. 核心依赖安装
+npm install dotenv @nomiclabs/hardhat-ethers ethers
+```
+
+### 2\. 配置
+
+js
+
+```
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
+
+module.exports = {
+  solidity: "0.8.24", // Solidity版本
+  networks: {
+    // 1. 本地节点
+    localhost: {
+      url: "http://127.0.0.1:8545"
+    },
+    // 2. Sepolia测试网
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [process.env.PRIVATE_KEY]
+    }
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY // 用于合约验证
+  }
+};
+```
+
+### 3\. 核心命令
+
+bash
+
+```
+# 1. 启动本地节点（生成10个测试账户，每个含10000 ETH）
+npx hardhat node
+
+# 2. 编译合约（生成ABI/字节码，存于artifacts）
+npx hardhat compile
+
+# 3. 部署合约到本地节点
+npx hardhat run scripts/deploy.js --network localhost
+
+# 4. 部署合约到测试网
+npx hardhat run scripts/deploy.js --network sepolia
+
+# 5. 运行自动化测试
+npx hardhat test
+
+# 6. 验证合约（Etherscan）
+npx hardhat verify --network sepolia 0xDeployedContractAddress "构造函数参数（如有）"
+```
+
+### 4\. 核心实战：部署 + 测试示例
+
+4.1 编写简单合约（contracts/Counter.sol）
+
+solidity
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.24;
+
+contract Counter {
+    uint256 public count;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    function increment() public onlyOwner {
+        count += 1;
+    }
+
+    function setCount(uint256 newCount) public onlyOwner {
+        require(newCount >= 0, "Invalid count");
+        count = newCount;
+    }
+
+    function getCount() public view returns (uint256) {
+        return count;
+    }
+}
+```
+
+4.2 部署脚本（scripts/deploy.js）
+
+js
+
+```
+import { ethers } from "hardhat";
+
+async function main() {
+  // 部署合约
+  const Counter = await ethers.getContractFactory("Counter");
+  const counter = await Counter.deploy();
+  await counter.waitForDeployment();
+
+  console.log(`Counter合约部署地址：${await counter.getAddress()}`);
+
+  // 调用合约函数（部署后立即交互）
+  await counter.increment();
+  console.log("初始计数：", await counter.getCount());
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+
+4.3 自动化测试（test/counter-test.js）
+
+js
+
+```
+import { expect } from "chai";
+import { ethers } from "hardhat";
+
+describe("Counter合约测试", function () {
+  let counter;
+  let owner;
+  let user;
+
+  // 每个测试前部署新合约（隔离环境）
+  beforeEach(async function () {
+    [owner, user] = await ethers.getSigners();
+    const Counter = await ethers.getContractFactory("Counter");
+    counter = await Counter.deploy();
+    await counter.waitForDeployment();
+  });
+
+  // 测试1：初始计数为0
+  it("初始计数应为0", async function () {
+    expect(await counter.getCount()).to.equal(0);
+  });
+
+  // 测试2：所有者可增加计数
+  it("所有者可调用increment", async function () {
+    await counter.increment();
+    expect(await counter.getCount()).to.equal(1);
+  });
+
+  // 测试3：非所有者禁止调用increment
+  it("非所有者调用increment应失败", async function () {
+    await expect(counter.connect(user).increment()).to.be.revertedWith("Not owner");
+  });
+});
+```
+
+## 五、 Scaffold-ETH：快速开发的工具链
+
+### 1\. 一键搭建环境
+
+bash
+
+```
+# 1. 克隆仓库
+git clone https://github.com/scaffold-eth/scaffold-eth-2.git
+cd scaffold-eth-2
+
+# 2. 安装依赖
+yarn install
+
+# 3. 启动本地节点
+yarn chain
+
+# 4. 启动前端（新终端）
+yarn start
+
+# 5. 部署合约（新终端）
+yarn deploy
+```
+
+### 2\. 它的优势与开发流程
+
+2.1 核心优势
+
+-   **热重载**：修改合约后执行`yarn deploy`，前端自动更新，无需刷新
+    
+-   **Burner Wallet**：内置测试钱包，无需 MetaMask，一键获取测试 ETH
+    
+-   **可视化交互**：前端自动生成合约函数调用界面，无需手写前端代码
+    
+
+2.2 快速开发实战：计数器合约优化
+
+1.  **修改合约（packages/hardhat/contracts/Counter.sol）**
+    
+    solidity
+    
+    ```
+    // 添加payable函数，调用需支付0.001 ETH
+    function increment() public payable onlyOwner {
+        require(msg.value >= 0.001 ether, "Insufficient ETH");
+        count += 1;
+    }
+    ```
+    
+2.  **重新部署**：`yarn deploy`（无需停止节点 / 前端）
+    
+3.  **前端交互**：
+    
+    -   在浏览器中打开`http://localhost:3000`
+        
+    -   选择 Counter 合约，调用`increment`函数，输入 0.001 ETH
+        
+    -   点击 “Call” 发送交易，实时查看计数更新
+        
+
+### 3\. 合约间交互
+
+solidity
+
+```
+// 合约A：Bank（存储ETH）
+contract Bank {
+    mapping(address => uint256) public balances;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function deposit() public payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw(uint256 amount) public {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+        balances[msg.sender] -= amount;
+        // 安全转账：先更新状态，再转账（防重入）
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+}
+
+// 合约B：Middleware（调用Bank合约）
+contract Middleware {
+    Bank public bank;
+
+    constructor(address bankAddress) {
+        bank = Bank(bankAddress);
+    }
+
+    // 代理存款
+    function depositToBank() public payable {
+        bank.deposit{value: msg.value}();
+    }
+}
+```
+
+## 六、 其他要点
+
+### 1\. 安全最佳实践
+
+-   重入攻击防御：遵循 “检查 - 效果 - 交互” 原则（先更新状态，再执行外部调用）
+    
+-   权限控制：优先使用 OpenZeppelin 的`Ownable`合约，避免自定义权限逻辑
+    
+-   数值安全：依赖 Solidity 0.8 + 内置溢出检查，禁止直接转换 BigNumber 为 JS 数值
+    
+
+### 2\. 常见陷阱
+
+-   ENS 仅主网生效，测试网需验证地址有效性
+    
+-   合约无`receive()`函数无法接收直接转账的 ETH
+    
+-   Hardhat 测试账户私钥公开，禁止用于主网
+    
+
+ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider（读）、Signer（写）、BigNumber（数值处理）三大核心模块，代码编写需注重异步处理和错误捕获。智能合约交互 需区分只读 / 写入操作，ABI 仅需包含用到的函数以简化代码，交易发送后需等待区块确认并验证状态。Hardhat 是本地开发的首选工具，支持合约编译、部署、测试一体化，自动化测试需覆盖核心逻辑和边界条件。Scaffold-ETH 大幅提升开发效率，通过热重载和可视化交互，实现 “修改 - 部署 - 测试” 的快速迭代，适合合约原型开发。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -83,6 +685,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # EVM与Gas机制 笔记
 
@@ -272,6 +875,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -413,6 +1017,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -511,6 +1116,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -638,6 +1244,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
