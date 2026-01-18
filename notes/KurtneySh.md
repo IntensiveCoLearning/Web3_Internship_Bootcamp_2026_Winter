@@ -15,8 +15,16 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+1.  学习mpc钱包代码
+    
+2.  参加Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 分享会
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 初步梳理下周分享会主题提纲——初探以太坊账户抽象
 
 以太坊账户抽象：从概念到实践
@@ -57,6 +65,7 @@ get hands dirty
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 **学习：香港的数字金融实验：IPO上链能否成为下一个风口？**
 
 时代背景
@@ -72,6 +81,7 @@ get hands dirty
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ERC-8004: 智能体的链上护照
@@ -102,6 +112,7 @@ ERC-8004: 智能体的链上护照
 
 
 
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -125,6 +136,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
