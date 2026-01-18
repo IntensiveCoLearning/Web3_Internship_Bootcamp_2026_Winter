@@ -15,8 +15,15 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+观看youtube视频，加深对区域链的印象，了解平台：[https://defillama.com/](https://defillama.com/)  
+[https://x.com/hildaiscute/status/2012494673256857959?s=20](https://x.com/hildaiscute/status/2012494673256857959?s=20)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 以太坊（Ethereum）是一条“可编程的区块链”。
 
 如果说 比特币解决的是「钱如何不依赖银行转移」，
@@ -28,6 +35,7 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 <img width="1446" height="1034" alt="image" src="[https://github.com/user-attachments/assets/dc9727b5-d037-4254-9ac9-19f4f0aaf30a](https://github.com/user-attachments/assets/dc9727b5-d037-4254-9ac9-19f4f0aaf30a)" />
 
@@ -54,6 +62,7 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 今天有点忙没什么时间看，看了直播简单了解web3运作原理，但还是很多专业术语不会，听的比较懵懵懂懂的；其次简单了解一下比特币的作用
@@ -119,6 +128,7 @@ BTC 的突破：第一次在互联网上，实现了“无需信任第三方的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
