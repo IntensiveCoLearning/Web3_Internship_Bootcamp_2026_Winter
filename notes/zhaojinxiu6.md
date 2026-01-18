@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+### **ABI编解码函数：**
+
+-   `abi.decode(bytes memory encodedData, (...)) returns (...)`
+    
+    -   根据传入的数据类型解码数据（`encode`，`encodePacked`均可解码）
+        
+    -   数据类型通过在括号中作为第二个参数给出。
+        
+    -   example：`(uint a, uint[2] memory b, bytes memory c) = abi.decode(data, (uint, uint[2], bytes))`
+        
+-   `abi.encode(...) returns (bytes memory)`
+    
+    -   对给定的数据进行 abi 编码
+        
+-   `abi.encodePacked(...) returns (bytes memory)`
+    
+    -   对给定的数据进行紧密编码（此编码可能会不明确）
+        
+-   `abi.encodeWithSelector(bytes4 selector, ...) returns (bytes memory)`
+    
+    -   从第二个数据开始，对给定的参数进行 ABI 编码，并在前面添加给定的 4 bytes 的函数选择器
+        
+    -   通过该内置函数，我们可以构造我们的 `calldata`
+        
+-   `abi.encodeCall(function functionPointer, (...) ) returns (bytes memory)`
+    
+    -   使用元组中找到的参数对 `functionPointer`的调用进行 ABI 编码。
+        
+    -   执行完整的类型检查，确保类型与函数签名匹配。
+        
+    -   结果等于 `abi.encodeWithSelector(functionPointer.selector, ...)`
+        
+-   `abi.encodeWithSignature(string memory signature, ...) returns (bytes memory)`
+    
+    -   相当于 `abi.encodeWithSelector(bytes4(keccak256(bytes(signature))), ...)`
+        
+
+返回的是一个 `bytes` **类型的动态数组**，它本质上就是一个 `byte` **数组**，即 `bytes memory`，你当然可以通过索引（`data[i]`）访问和修改它的每一个字节。这会生成一个完整的 calldata：
+
+-   前 4 字节：函数选择器（`registerTreasury()` 的 keccak256 hash 前四位）
+    
+-   后 32 字节：参数部分，但 ABI 会扩展成一个完整的 `uint256` 占满 32 字节（高位为 0）
+    
+
+所以总共 4 + 32 = 36 字节的数组。你能通过索引 `data[0] ... data[35]` 访问和修改任何一位。
+
+**拓展：**`abi.encode()`**,** `string.concat()`**, 和** `abi.encodePacked()` **这三者在 Solidity 中的主要作用是数据编码和字符串拼接，但它们的行为和适用场景有所不同：**
+
+**总结**
+
+| 方法 | 作用 | 返回类型 | 适用场景 | 是否适用于哈希计算 | 是否适用于字符串拼接 |
+| --- | --- | --- | --- | --- | --- |
+| abi.encode() | 标准 ABI 编码（32 字节对齐） | bytes | 存储、参数传递、哈希安全 | 是（无哈希冲突） | 否 |
+| string.concat() | 字符串拼接 | string | 字符串操作 | 否 | 是 |
+| abi.encodePacked() | 紧凑编码（可能导致哈希冲突） | bytes | 哈希计算（但可能冲突） | 可能冲突 | 但需转换成 string |
+
+* * *
+
+**什么时候用？**
+
+-   **拼接字符串** ➝ `string.concat()`
+    
+-   **计算哈希** ➝ `abi.encodePacked()`**（注意哈希冲突）**
+    
+-   **存储数据、避免哈希冲突** ➝ `abi.encode()`
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## **1.17**
 
 ### **数据存储**
@@ -72,11 +142,13 @@ Solidity合约数据存储采用的为合约的每项数据指定一个可计算
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 把这周的笔记汇总整理了一下。然后做钓鱼攻防任务ing。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ## **1.15**
@@ -1021,6 +1093,7 @@ AA 可以：
 
 
 
+
 \## 1.14
 
 \### 合规
@@ -1310,6 +1383,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1716,6 +1790,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
