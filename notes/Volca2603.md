@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天回顾了在周一错过的以太坊中文周会，这个周会类似于web3新闻每周速递，虽然对其中一些基础名词已经很熟悉了，不过这次分享会其中还有一些产品我暂时还不是很懂，不知道是干嘛的，而且看了之后我也发现目前我对整个行业的生态，细分类也不是很懂，还需要继续研究学习
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天没有学什么新知识，做了两关 [https://ethernaut.openzeppelin.com/](https://ethernaut.openzeppelin.com/)的关卡，很好玩，爱玩，做出来挺有成就感，能从攻击方角度反思自己的代码问题，不过我个人觉得这个对于没有代码基础的人还是有一些难度的，话说第三关把代码贴到remix，compile版本选6.x就显示导入包有问题，暂时还不知道咋处理啊可恶！打卡我就把过关截图贴一下吧
 
 ![level1_ScreenShot_2026-01-17_050219_044.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Volca2603/images/2026-01-17-1768661315606-level1_ScreenShot_2026-01-17_050219_044.png)![2_ScreenShot_2026-01-17_061807_140.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Volca2603/images/2026-01-17-1768661332327-2_ScreenShot_2026-01-17_061807_140.png)
@@ -24,6 +30,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 感觉这一周过得还挺漫长的，可能是因为一直在学新东西。
 
@@ -36,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 今天开展了一场A工及其基础建设的会议，本来我以为只会讲一些agent和mcp工具的知识，而且我正好也在用，并且自己也想实现一些ai agent来玩玩，没有想到会议内容这么丰富，讲了把AI工具跟web3结合，还有AI结合web3的发展史以及未来发展，又是听到大脑空白的一天，已经吸收不了任何知识了。
@@ -76,6 +84,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -161,6 +170,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 01/13/2026
 
 关于layer 2一直有所耳闻，但是一直没弄明白是咋回事，而且学习文档的[**MyFirstLayer2**](https://layer2.myfirst.io/)外链里的图片都已经挂了啊啊啊，遂在网上找教程，结合今天的web3底层原理直播记录一下我了解的layer2
@@ -232,6 +242,7 @@ Layer2 就像主网的 “翅膀”—— 它让以太坊能承载更多用户�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
