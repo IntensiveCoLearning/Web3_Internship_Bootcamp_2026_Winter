@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+![Screenshot_2026-01-18-23-38-39-13_e39d2c7de19156b0683cd93e8735f348.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-18-1768750796755-Screenshot_2026-01-18-23-38-39-13_e39d2c7de19156b0683cd93e8735f348.jpg)![Screenshot_2026-01-18-23-38-48-61_e39d2c7de19156b0683cd93e8735f348.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-18-1768750813024-Screenshot_2026-01-18-23-38-48-61_e39d2c7de19156b0683cd93e8735f348.jpg)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ![IMG_20260117_232248.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-17-1768664542227-IMG_20260117_232248.jpg)![IMG_20260117_232302.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-17-1768664565672-IMG_20260117_232302.jpg)![IMG_20260117_232312.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-17-1768664581342-IMG_20260117_232312.jpg)
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 今学习清单：
 
@@ -38,11 +45,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ![Screenshot_2026-01-14-22-42-18-35_61aa5a907fcb71423ad8e0bf0d8889f7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-14-1768401940869-Screenshot_2026-01-14-22-42-18-35_61aa5a907fcb71423ad8e0bf0d8889f7.jpg)![Screenshot_2026-01-14-22-42-34-38_61aa5a907fcb71423ad8e0bf0d8889f7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-14-1768402009261-Screenshot_2026-01-14-22-42-34-38_61aa5a907fcb71423ad8e0bf0d8889f7.jpg)![Screenshot_2026-01-14-22-42-37-84_61aa5a907fcb71423ad8e0bf0d8889f7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/explorerlily/images/2026-01-14-1768402051356-Screenshot_2026-01-14-22-42-37-84_61aa5a907fcb71423ad8e0bf0d8889f7.jpg)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
