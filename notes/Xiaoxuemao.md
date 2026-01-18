@@ -15,8 +15,42 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+与传统 Web 应用不同，DApp 前端不会直接连接区块链网络，而是通过 **钱包注入**的 Provider **或第三方** **RPC 节点** 与区块链**交互**；
+
+前端还需要集成区块链钱包（如 MetaMask）来进行身份验证和签署交易，确保用户的隐私和安全。
+
+目前主流的检索器框架，如 ponder 和 subgraph 都是用了 TypeScript 语言作为检索器的程序编写语言
+
+部署智能合约：推荐使用 Hardhat 或 Foundry（现代化开发工具）将智能合约部署到测试网（如 Sepolia、Holesky）或主网。
+
+**RPC**（Remote Procedure Call，远程过程调用）是一种通信协议，允许应用程序通过网络调用远程服务器上的函数或方法。
+
+以太坊使用 JSON-RPC 2.0 协议作为标准的 RPC 通信格式。所有请求和响应都是 JSON 格式，通过 HTTP 或 WebSocket 传输。
+
+**主流 RPC 服务商**选择建议
+
+开发测试阶段：使用 Public Node 或 Infura 免费额度
+
+生产环境：选择 Alchemy 或 QuickNode，确保稳定性和性能
+
+多链项目：考虑 Ankr 或 QuickNode 的多链支持
+
+企业应用：优先选择 Alchemy，提供 SLA 保障和专业技术支持
+
+对于高频请求，考虑使用 WebSocket 连接
+
+Solidity状态修饰符
+
+**pure**不读取也不修改状态的函数
+
+**payable**可以接收以太币的函数
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 现在 Ethers.js / Web3.js 已经不怎么使用了，大家现在基本上都是用的 Viem
 
 只有在“创建合约的同一笔交易中”调用时才会真正移除代码，否则只会清空余额而不会删掉合约代码和历史
@@ -43,6 +77,7 @@ Solidity 编译器会默认生成这一文件，并且（默认）把它的 IPFS
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 **去中心化交易所（DEX）**
 
 **恒定乘积公式**：x \* y = k
@@ -66,6 +101,7 @@ MakerDAO 是一个去中心化的借贷协议，DAI，Sky，USDS。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 即使别人截获了你已成功上链的交易数据，在你账户 nonce 已经前进的情况下，**再次**广播这笔交易**会被**直接**拒绝**；Nonce：阻止“把你签过的交易拿出来复读” 。
@@ -148,6 +184,7 @@ SpoonOS：Web3
 
 
 
+
 **世界各势力对加密市场的态度趋势**
 
 -   1\. 美国监管框架
@@ -218,6 +255,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式
 
 
 
+
 C/C++性能好但不安全；
 
 Java/C#拥有GC，安全但性能不行；
@@ -273,6 +311,7 @@ Discovery 协议，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
