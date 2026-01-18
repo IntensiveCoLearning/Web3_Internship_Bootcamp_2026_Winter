@@ -15,8 +15,54 @@ enjoy it
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+**web3安全**
+
+degen：degenerate gambler
+
+regen：regenerate finance
+
+攻击趋势：精准攻击大客户+资金盘广撒网初级用户
+
+ai时代：安全意识的养成
+
+1.偷私钥
+
+2.钓鱼攻击，比如发个链接，本质也是偷私钥
+
+3.rug token/rug pull
+
+4.高管权限
+
+[5.ai](http://5.ai) deepfake
+
+6.eip-7702新型钓鱼，新技术引入的骗局
+
+[7.ai](http://7.ai) coding容易安装恶意的插件
+
+对用户：
+
+1.链接不要轻易点
+
+2.下载app用官方渠道
+
+3.买代币核对合约地址
+
+4.冷热钱包分离
+
+**web3合规**
+
+ico：initial coin offering
+
+虚拟货币交易所
+
+虚拟货币挖矿
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 **钱包私钥个人主权**
 
 private key
@@ -78,6 +124,7 @@ web3是解决一些信任和资金问题， 加密隐私抗审查
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 **web3行业岗位全局介绍**
@@ -152,11 +199,13 @@ web3垂直平台：smartdeer，[web3.career](http://web3.career)，remote3，cry
 
 
 
+
 补上前三天的学习
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
