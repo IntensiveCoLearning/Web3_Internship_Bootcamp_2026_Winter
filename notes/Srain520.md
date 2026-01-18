@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天 see video,输出的太乱，可自行看看适合各自程度的学习
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 由于我是自主学习，没有什么约定俗成的任务，我做笔记是为了加深自己的理解，所以有差距的同学可以忽略
 
 不必拿来参考，我本身是web3新人，对于学习路径没有什么特别经验的价值。
@@ -172,6 +178,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # **多模态大模型（MLLM）核心技术笔记**
 
 ### **什么是多模态大模型？**
@@ -249,6 +256,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 以太坊第四章 **智能合约**
@@ -337,6 +345,7 @@ Solidity 能直接编译EVM字节码，支持结构体、映射（mapping）、�
 
 
 
+
 今天学习一些零零散散的技术栈，更多的是参考社区学员的githup分享，以及他们过往的展示产品，自己欠缺的知识比较多，一点点的提升。学习效率比较低，虽说交流的不多，但此次训练营对自己的人生发展改观帮助非常大；
 
 有需要扩展的，可以了解一下web3的人才概览，来自于githup的分享，非本人编辑
@@ -346,6 +355,7 @@ Solidity 能直接编译EVM字节码，支持结构体、映射（mapping）、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -557,6 +567,7 @@ EOA与合约账户的对比表：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
