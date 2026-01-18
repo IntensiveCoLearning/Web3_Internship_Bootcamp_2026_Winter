@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+撰写了学习总结，[https://x.com/uogh007/status/2012760845420261510?s=20](https://x.com/uogh007/status/2012760845420261510?s=20)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 研究了polymarket，好多套利项目
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # **「AI 及其基础概念」分享会**
 
@@ -128,6 +135,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ## Web3合规
@@ -284,11 +292,13 @@ AI 技术的大规模应用彻底重塑了 Web3 的社交工程学边界。2025 
 
 
 
+
 参加了Billions线下活动
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -459,6 +469,7 @@ Web3被称为“世界上人效杠杆率最高的行业之一”，以下这组�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
