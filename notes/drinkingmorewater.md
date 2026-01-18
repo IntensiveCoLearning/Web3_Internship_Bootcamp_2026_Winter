@@ -103,7 +103,6 @@ NFT (非同质化代币)是基于ERC-721的一个实践，在现实世界中通�
 
 ERC-7962 就是基于这样的现实需求构思并实现。
 
-##   
 ZK：zero knowledge零知识证明
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738223320-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738213350-image.png)
@@ -176,10 +175,126 @@ ERC-7962M
 -   ownerOf 返回keyHash而非地址
     
 -   无approve机制，强调一次性key/ key轮换
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739169650-image.png)
+
+## ERC-KeyHash20 (FT)
+
+-   keyHash→balance余额模型
+    
+-   转账采用UTXO风格拆分
+    
+-   转出部分→toKeyHash
+    
+-   剩余部分→leftKeyHash
+    
+-   强制key轮换，增强不可关联性
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739283686-image.png)
+
+## Gas 与交易模型
+
+-   任何地址都可提交交易
+    
+-   所有权只由签名控制
+    
+-   天然支持:
+    
+    -   Gas Sponsorship
+        
+    -   批量转账
+        
+    -   Relayer / Paymaster
+        
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739494250-image.png)
+
+## 安全设计
+
+-   EIP-712结构化签名，防参数篡改
+    
+-   per-keyHash nonce，防重放攻击
+    
+-   deadline控制签名有效期
+    
+-   强制low-S/v校验，防签名可塑性
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739587671-image.png)
+
+## 优势总结
+
+-   更强隐私(地址不上链)
+    
+-   更佳用户体验(免ETH/Gas代付)
+    
+-   更高灵活性(批量、代付、抽象账户)
+    
+-   与 ERC-5564 (StealthAddress)理念一致
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739769364-image.png)
+
+## 局限与代价
+
+-   Gas 成本高于传统 ERC-20/ERC-721
+    
+-   公钥在 calldata 中暴露(需key轮换)A
+    
+-   与现有ERC标准不向后兼容
+    
+-   对密钥管理要求更高
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739809171-image.png)
+
+## 适用场景
+
+-   隐私资产/匿名 NFT
+    
+-   Web3新手友好钱包
+    
+-   企业级批量分发、空投
+    
+-   Account Abstraction/Paymaster 体系
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739818383-image.png)
+
+[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/24422](https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/24422)  传送门
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739945656-image.png)
+
+## Q&A
+
+1.  透明vs隐私：过程透明，信息隐私
+    
+2.  谁来承担gas费？商业效率/成本核算问题，商家来承担
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768740581529-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768740672477-image.png)
+3.  哈希算法不可逆
+    
+4.  助教老师分享！[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/24422](https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/24422)
+    
+    [https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7962.md](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7962.md)
+    
+5.  每次使用生成一对密钥，对公钥hash
+    
+6.  交际过程详解
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768741432169-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768741570561-image.png)
+
+7.区块链上最贵的是发起一笔新交易，而不管这个交易里面做了什么，就像你请一个快递员跑一趟，让他把 10 个不同地址的快递一起送了，他只收你一次出车费，而不是每个地址都叫一辆新车。
+
+8.批处理方式（批处理中继）：你们合包一辆大巴。只需要付一次“大巴出车费”（一笔交易的基础费用），然后大巴载着你们10个人，依次开到10个地点。虽然路程总和没变（计算逻辑总Gas没变），但你们省下了9次地铁起步价。
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -224,6 +339,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -530,6 +646,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -800,6 +917,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -907,6 +1025,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
