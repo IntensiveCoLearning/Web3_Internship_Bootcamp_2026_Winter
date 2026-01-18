@@ -15,8 +15,25 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天使用gemini3 pro体验了一下vibe coding，做了一个简单的nft minter  
+铸造nft主要分为两步：
+
+1、发起交易 :
+
+唤起钱包，用户点击“确认”后，交易被广播到内存池，此时你会得到一个 `hash` (交易哈希)，但这不代表成功，只代表交易“已发送”
+
+2、监听 & 上链:
+
+前端拿到 `hash` 后，挂起监听。直到矿工把这笔交易打包进区块，才算真正铸造成功。  
+
+（注意，evm不懂小数，要将ETH转化为Wei）
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天参加了LXDAO的周会, 了解了LXDAO的使命愿景以及工作模式, 并学习了他们写的My First ZKVote教程(和My First NFT类似, 这种边学习边实践的模式我非常喜欢! 建议多来点)
 
 传统链上投票的痛点 - 所有人都能看到“谁投了谁”, 缺乏隐私性
@@ -49,6 +66,7 @@ ZK投票的过程是:
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今天主要实践了一下Wagmi框架
 
 Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户变化”、“错误处理”等逻辑封装成了方便调用的hooks，比如 useReadContract 类似于 useQuery，用于读取合约数据，并且同样具有缓存功能；还有 useWriteContract，类似 useMutation，需要用户手动触发签名交易。
@@ -58,6 +76,7 @@ Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 今天主要学习了NFT相关的知识
@@ -102,6 +121,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 
 
+
 计划：
 
 1、继续学习ethereum基本概念  
@@ -110,6 +130,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -127,6 +148,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
