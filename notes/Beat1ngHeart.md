@@ -15,8 +15,92 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+-   **2026-01-17 ~ 01-18**
+    
+    -   以太坊P2P网络全流程：节点发现（Bootnodes + UDP + Kademlia）→ 建立安全连接（TCP + RLPx）→ 消息传播（Gossip协议 + 请求-响应）
+        
+    -   节点类型对比（用图书馆比喻）：
+        
+        -   全节点：独立、修剪旧状态、最常用、安全
+            
+        -   归档节点：永久保留所有历史状态、查历史神器、硬盘需求极大
+            
+        -   轻节点：只存区块头 + Merkle Proof、手机钱包常用
+            
+    -   客户端架构：执行客户端（EL，如Geth/Nethermind） + 共识客户端（CL，如Prysm/Lighthouse） + Engine API通信 + 可选验证者（Validator，32 ETH staking）
+        
+    -   CL如何组织投票、Gossip广播见证、Gasper（Casper-FFG + LMD-GHOST）复合共识
+        
+    -   MEV、PBS（提议者-建构者分离）、同步委员会（Sync Committee）
+        
+    -   全网运行大流程（从用户签名交易 → Gossip → 提议/构建区块 → EVM执行 → 见证投票 → Finality）
+        
+-   **2026-01-16**
+    
+    -   dApp核心特征（去中心化、确定性、图灵完备、隔离性）
+        
+    -   dApp优缺点、典型场景（DeFi、NFT、DAO等）
+        
+    -   PoS vs Gasper的关系、提议者 vs 验证者（见证者）
+        
+    -   DevP2P协议栈、同步委员会作用
+        
+-   **2026-01-15**
+    
+    -   智能合约 vs dApp区别
+        
+    -   Tokens由合约管理、Gas消耗
+        
+    -   PoS与PoW安全来源对比
+        
+    -   Dencun升级、Proto-Danksharding、Blob、完整Danksharding目标
+        
+    -   Rollup（Optimistic vs ZK）、L1 vs L2职责分离
+        
+    -   ETH的多重角色（Gas、Staking、安全、经济价值）
+        
+    -   典型Slashing行为（双重提议、双重投票、环绕投票）及流程
+        
+-   **2026-01-14**
+    
+    -   Rollup + Blob的关系与降费逻辑
+        
+    -   Base Fee销毁原因、验证者真实收入来源（区块奖励 + Priority Fee + MEV）
+        
+    -   Gas费影响因素
+        
+-   **2026-01-13**
+    
+    -   Solidity入门准备 + 学习路径规划
+        
+    -   账户模型（EOA vs CA）
+        
+    -   Gas模型、EVM（图灵完备、全球同步、隔离）
+        
+    -   典型交易执行流程类比
+        
+    -   Web3主要赛道概览（DeFi、NFT、DAO、MEME、交叉创新）
+        
+-   **2026-01-12**（开营周起始）
+    
+    -   区块链基础（定义、特性、类型、公链vs联盟链vs私链）
+        
+    -   比特币 vs 以太坊对比
+        
+    -   以太坊发展阶段（PoW → The Merge → PoS → 未来分片/Blob）
+        
+    -   Layer 2核心逻辑与优势
+        
+    -   生态分层（L1、L2、应用层）
+        
+    -   实战：安装环境、Mint第一个NFT、参与中文周会、co-learning
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今天事情比较多
 
 明天补笔记
@@ -24,6 +108,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 1\. AI 的演变趋势（2023-2026）
 
@@ -158,6 +243,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天的分享会主题是Web3运行原理
 
 大部分之前学过，所以感觉没什么好记录的，都是很重要的基础知识
@@ -197,6 +283,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
