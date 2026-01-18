@@ -15,8 +15,46 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 第二章 网路结构与节点类型
+
+## 一、以太坊节点与客户端软件
+
+-   节点（node）：任何一台运行以太坊客户端软件并连接到其他节点的电脑
+    
+-   客户端（client）：是对以太坊协议的具体实现，会按协议规则验证数据、同 步区块和状态，帮助网络保持安全。
+    
+
+客户端分三种：
+
+-   执行客户端：主要负责链上的业务逻辑和状态
+    
+-   共识客户端：主要负责权益证明 PoS 共识
+    
+-   验证者客户端：在轮到你时提议新区块，在每个 slot 为看到的区块做 attestation（投票）
+    
+
+客户端之间的通信：
+
+Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
+
+小结（可以直接背下来）
+
+以太坊节点 = 一台电脑 + 两个必备客户端 + （可选）一个验证者客户端：
+
+• 执行客户端负责“算交易、管状态、对外提供 RPC”；
+
+• 共识客户端负责“跑 PoS、选区块、投票达成共识”；
+
+• 它们通过 Engine API 的“专线电话”互相协作，整个节点再通过 P2P。
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NDRiMTgwMDVkOGFjN2ZmYjI4ZThhNWYyNzdhZDlkNTBfa1Zieno1YU5TOEdXeEZaeWhHVFhNdTM2WWlyaXlmZHlfVG9rZW46RmM2WmJPSm9Mb1VxWVN4VkpmOWM0UnBibjBnXzE3Njg3MjM0MTY6MTc2ODcyNzAxNl9WNA)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## 十、生态系统创新：DeFi、NFT 与 DAO
 
 分成三块：
@@ -101,6 +139,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、 集
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## 八、网络结构的开放性与参与机制
 
@@ -192,6 +231,7 @@ Rollup又分为Optimistic和ZK Rollup
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 第一章 认识以太坊
@@ -306,6 +346,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了安全分享会
 
 # 1\. 安全事故规模
@@ -344,6 +385,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了web3的运行原理
 
 # 1.钱包，私钥，和个人主权
@@ -365,6 +407,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
