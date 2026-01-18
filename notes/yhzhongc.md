@@ -15,13 +15,22 @@ web3入门小白
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+1.  学习零知识证明
+    
+2.  学习021以太坊书籍
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天学习了021以太坊书籍的第一章，关于以太坊的历史
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 1.  web3原理分享会、
     
@@ -30,6 +39,7 @@ web3入门小白
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 1.  参与web3原理分享会
@@ -41,6 +51,7 @@ web3入门小白
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
