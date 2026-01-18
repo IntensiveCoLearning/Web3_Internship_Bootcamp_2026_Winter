@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天开通了x的premium，并且初步研究了下x的盈利模式，同时不仅加入了lxdao members还进到了一个任务组
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-18-1768751608665-image.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天参与了lxdao的周会并且在会议上面做了自我介绍加入了lxdao，对dao整体的组织结构有了更加深入的了解，并打算报名参加其中的一个项目。然后学习了用u卡套壳google pay以及paypal支付gpt。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-17-1768665054168-image.png)
@@ -24,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今天相对比较忙，因此还没有看课程内容，但是根据自己所学的知识查询了如何经营推特账号的知识，然后也学习了bg wallet card的使用，尝试开通by card以及一些期权方面的知识（意识到了保险实际上是一类期权之后），并且开始逐步规划web3的英语能力。计划明天参加lxdao的会议以及英语角的分享：进一步明确就业方面需要用到的能力
 
@@ -39,6 +48,7 @@ timezone: UTC+8
 
 
 
+
 今天主要完成了实习计划中的相对实践的任务：测试网代币、nft铸造和防钓鱼攻击演练。对我来说比较重要的主要还是钱包安全这一点，后面要玩的不少撸毛项目都与钱包安全相关，而钱包安全直接与本金安全相关，因此我格外重视。今天最主要的收获还是学习到了区块链浏览器的使用的方法
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-15-1768491400511-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-15-1768491279844-image.png)
@@ -46,6 +56,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
