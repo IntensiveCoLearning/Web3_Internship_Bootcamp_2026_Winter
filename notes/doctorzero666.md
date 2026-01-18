@@ -15,8 +15,166 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
+
+## **目标**
+
+-   用最低成本跑通 NFT 从 0 到 1 的完整流程：
+    
+    **创建 Collection → 创建 NFT → 铸造（mint）→ 上架（list）→ 钱包可见**
+    
+
+* * *
+
+## **环境与工具**
+
+-   平台：OpenSea
+    
+-   钱包：MetaMask
+    
+-   链：Base（最终选择）
+    
+-   标准：ERC1155
+    
+-   NFT 类型：图片 NFT
+    
+
+* * *
+
+## **实际流程回顾（按时间顺序）**
+
+### **1）创建 Collection（相当于创建“文件夹”）**
+
+-   在 OpenSea 进入创建页面，看到提示：需要先创建/部署 Collection Contract
+    
+-   填写了：
+    
+    -   **Name**（系列名）
+        
+    -   **Token Symbol**（系列简称，类似股票代码/代号）
+        
+    -   选择链（最开始误选/默认在 Ethereum，后来考虑低成本）
+        
+
+✅ 结果：Collection 创建成功，但当时 **ITEMS=0**（还没有任何具体 NFT）
+
+* * *
+
+### **2）遇到的问题：无法继续制作 NFT（Polygon 网络费警告）**
+
+-   MetaMask 弹窗显示：
+    
+    -   Network：Polygon
+        
+    -   Method：Create Clone（创建/克隆 ERC1155 合约）
+        
+    -   Network fee 红色提示，余额显示 **0 POL**
+        
+-   结论：这是链上交易，需要 gas；钱包里没有 Polygon 的 gas（POL/MATIC），导致无法执行。
+    
+
+✅ 解决思路：
+
+-   低成本跑通流程，不用主网 → 改用 Base 或 Polygon
+    
+-   我主网有 ETH，但不能直接付 Polygon/Base 的 gas（需要把资产转到对应链）
+    
+
+* * *
+
+### **3）链选择策略：从 Polygon 转到 Base**
+
+-   目标是更省 gas、更快跑通
+    
+-   最终选择 **Base 链** 来铸造与上架
+    
+
+* * *
+
+### **4）创建具体 NFT（从“文件夹”变成“文件”）**
+
+-   在 Collection 里点击 **Create / Add item**
+    
+-   上传图片 + 填写基础信息（Name/Description 等）
+    
+-   创建成功后进入 NFT 单品页，看到关键字段：
+    
+    -   **Owned by You**
+        
+    -   **ERC1155 · BASE · Token #1**
+        
+    -   可以点击 **List for sale**
+        
+
+✅ 结果：证明 NFT 已经创建/铸造成功（至少 OpenSea 已识别为我持有）
+
+* * *
+
+### **5）上架出售（List for sale）**
+
+-   选择 Fixed price（一口价）
+    
+-   设置价格：**0.01 ETH**
+    
+-   上架成功后页面显示：
+    
+    -   Listed 0.01 ETH
+        
+    -   可 Edit listing
+        
+
+✅ 结果：完成“铸造 → 上架”的完整闭环
+
+* * *
+
+### **6）钱包里看不到 NFT 的问题（最终解决）**
+
+现象：OpenSea 显示我拥有 NFT，但 MetaMask NFT 列表里一开始看不到。
+
+原因（高概率）：
+
+-   Base 链 + ERC1155 在钱包里可能不会自动索引/展示，需要手动导入或等待。
+    
+
+解决：
+
+-   在 MetaMask 的 NFT 页面使用 **Import NFT**
+    
+-   输入：
+    
+    -   Contract Address（合约地址）
+        
+    -   Token ID（#1）
+        
+-   导入后成功在钱包里看到 NFT ✅
+    
+
+* * *
+
+## **今日关键收获（Lessons Learned）**
+
+1.  **Collection ≠ NFT**：
+    
+    先创建的是系列/文件夹，只有 Add item 才是真正创建具体 NFT。
+    
+2.  **切网络不等于跨链**：
+    
+    主网 ETH 不能直接付 Polygon/Base 的 gas，需要把资产转到对应链。
+    
+3.  **Gas Token 很关键**：
+    
+    Polygon 需要 POL/MATIC，Base 需要 Base 链上的 ETH。
+    
+4.  **钱包不显示不代表没铸造**：
+    
+    OpenSea 显示 Owned by You 基本可信；钱包可能需要 Import NFT 才能看到。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -128,6 +286,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # **今日总结：EVM 与 Gas 机制（以太坊怎么“跑代码”和“收钱”）、共识机制与生态展望（以太坊怎么更安全、更扩容、未来往哪走）**
 
@@ -275,6 +434,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # **今日学习总结：账户类型与结构（EOA vs 合约账户）、智能合约理论基础（合约怎么工作、怎么交互、怎么更安全）**
@@ -584,6 +744,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -701,6 +862,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1048,6 +1210,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
