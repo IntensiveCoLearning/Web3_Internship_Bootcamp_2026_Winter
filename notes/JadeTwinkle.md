@@ -22,10 +22,13 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 1.  制作今天的播客——有关于web3安全和合规部分
     
 2.  web3 marketing调研，准备从产品的角度切入
+    
+3.  听今天的分享会
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今天依然是感想为主，没有学习太多的专业知识，但是进行了好几轮的头脑风暴
 
@@ -52,6 +55,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天做了很多杂七杂八的事情，没有特别规范的整理，就简单叙述一下：
 
 很神奇的就像是命运的推背感一样，就开始了投研相关的运营工作，还被赋予了leader的责任和任务，所以今天简要了解了一些有关于拆解投研笔记的流程，感觉慢慢开始学习一些金融相关的知识
@@ -67,6 +71,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -122,6 +127,7 @@ ENS 不止是收款地址，它还是跨平台的“通用账户”，在 Uniswa
 
 
 
+
 # 1\. 安全核心：从“精准猎杀”到“AI 降维打击”
 
 安全态势：2025 年安全事件超 1200 起，呈现出精准猎杀机构（如 Bybit 损失 15 亿美元）与广撒网诈骗并行的特点
@@ -151,6 +157,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -226,6 +233,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
