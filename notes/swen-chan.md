@@ -15,8 +15,23 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天主要是提交了个pr，链接：[https://github.com/lxdao-official/myfirstnft-frontend/pull/20](https://github.com/lxdao-official/myfirstnft-frontend/pull/20)  
+关于myfirstnft网页的这个问题，我第一天也遇到了，但是当时没多想，觉得完成任务就行了。
+
+但后来看到和我一样的同学越来越多，我就萌生了修复这个问题的想法，直到今天在群里又看到有人提到这个错误，我就动手了。
+
+很久没有提交pr，折腾了一下午环境，算是敲了一晚上代码，赶在24点之前提交了。
+
+具体说，PR 修复的问题是，即在用户选择连接 MetaMask 时，实际上弹出了其他钱包。这是由于 Web3Modal v1 中的 `injected` 提供商默认选择了最近注入的 `ethereum` 钱包。通过将 MetaMask 作为自定义提供商选项添加，我们确保了正确的 MetaMask 钱包被选中，并显示在 Web3Modal 界面中。
+
+晚上敲代码都忘了看直播课……最后才想起来打了个卡。算了没事，上次忘记打卡后就不追求排名了
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ### 1.今天准备了LXDAO 新成员发言，但没轮到哈哈哈。那就下周再说吧
 
 ### 2.然后记录一下今天和wachi老师沟通学到的精华（他原话）：
@@ -134,6 +149,7 @@ wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -169,6 +185,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -218,6 +235,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -389,6 +407,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
