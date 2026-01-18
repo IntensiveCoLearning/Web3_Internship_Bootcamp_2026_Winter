@@ -101,10 +101,40 @@ npx hardhat run scripts/deploy.js --network localhost
     
 
 # **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
+
+## ERC-7962 Idea Design:
+
+会员身份属于隐私数据，但是如果把ZK应用其中，就能够在不暴露隐私的情况下进行数据交易，在现实社会中非常有意义。
+
+ZK：零知识证明
+
+在不暴露具体细节的情况下，能够向第三方证明数据的某种特性。
+
+![{8651F227-48E7-4AF6-9868-491722C33D87}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-18-1768738509892-_8651F227-48E7-4AF6-9868-491722C33D87_.png)![{E063B236-B548-4754-81A8-BDF421160C23}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-18-1768738793146-_E063B236-B548-4754-81A8-BDF421160C23_.png)
+
+## ERC-7962 核心概念：
+
+-   以 KeyHash 而非地址作为资产所有权表示
+    
+-   所有权与发起地址解耦，不在链上存储地址
+    
+-   覆盖 ERC-20 与 ERC-721 两类资产模型
+    
+-   用户只需要签名表达意图，无需持币、无需理解 Gas 、无需管理地址隐私，也能完成资产操作
+    
+
+ERC-7962解决的关键问题
+
+-   隐私问题：避免地址可追踪，降低身份与资产的关联性
+    
+-   UX问题：用户只需要签名表达意图，无需持币、无需理解 Gas 、无需管理地址隐私，也能完成资产操作
+    
+-   拓展性问题：天然支持批量交易、Relayer、账户抽象场景
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # 准备以太坊开发环境
@@ -193,6 +223,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -304,6 +335,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -492,6 +524,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -714,6 +747,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -979,6 +1013,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
