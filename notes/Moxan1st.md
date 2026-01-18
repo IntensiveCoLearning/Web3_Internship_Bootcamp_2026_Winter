@@ -26,7 +26,7 @@ Web3 实习计划 2025 冬季实习生
 -   Gas 优化任务
     
 
-2.规划第二周细节，计划每日 To-do list
+2.规划第二周细节，计划每日 To-do list（周一周二）
 
 3.确定一个 Web3实习计划 官方平台的痛点，分析和寻找改进方案，提交给助教。
 
@@ -61,10 +61,36 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 体验层面，条形图让学分构成可视化，用户可快速知晓各类学分完成进度。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-18-1768738163121-image.png)
+
+## 第二周的每日 To-do list
+
+### 周一
+
+-   设置开发环境并熟悉 Remix IDE
+    
+-   在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
+    
+-   部署合约到 Sepolia 测试网
+    
+-   优化 Web3 实习计划官方平台
+    
+-   完成一个 Gas 优化案例
+    
+
+### 周二
+
+-   完成挑战 Challenge #0 - Tokenization
+    
+-   通过 Ethernaut 前 3 关
+    
+-   安装 Figma
+    
+-   计划两到三天后的学习内容
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -95,6 +121,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Remix中的例程学习Ballot——细节还挺多的
@@ -118,6 +145,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -230,6 +258,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -446,6 +475,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -554,6 +584,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
