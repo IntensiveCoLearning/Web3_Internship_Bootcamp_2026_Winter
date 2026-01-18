@@ -122,12 +122,7 @@ Web3 实习计划 2025 冬季实习生
 
 ## 4\. 综合对比分析表
 
-| 比较项 | ERC-5564 | ERC-7962 |
-| 一句话定义 | 地址生成器协议 | 代币资产管理协议 |
-| 主要解决 | 转账时的链接切断 (Linkability) | 资产持有时的可追踪性 (Traceability) |
-| 对现有设施影响 | 小。主要在钱包端升级，合约端改动不大。 | 大。需要发行全新的代币合约，交易所也得适配。 |
-| 隐私级别 | 中等 (主要防人肉搜索) | 高等 (主要防算法追踪) |
-| 你的角色 | 你是被动的收款方 | 你是主动的资产管理者 |
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Aeternaurum/images/2026-01-18-1768743676766-image.png)
 
 * * *
 
@@ -152,6 +147,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -465,6 +461,7 @@ dApp的架构为应用带来了独特的优势，但同时也伴随着一系列�
 
 
 
+
 # 分享会
 
 * * *
@@ -572,6 +569,7 @@ SpoonOS 定位为连接 **Web2 开发能力**（如 Python, LangChain）与 **We
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -699,6 +697,7 @@ U卡使用风险
 
 
 
+
 # Day2
 
 ### 分享会（web3原理）
@@ -789,6 +788,7 @@ EIP（以太坊改进提案）的流程
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
