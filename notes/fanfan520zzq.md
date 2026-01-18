@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+1.18 note
+
+NFT数字藏品：链上唯一
+
+ERC-721:一种智能合约
+
+用户的表示：address形式存在，一种公钥，NFT属于某一个地址，组织通过ERC721,mint给予用户身份
+
+ERC-7962:应用了ZK：以公钥哈希（keyhash）为标志，而不是address
+
+解决了：地址隐私；UX签名表达意图，无需持币，无需理解gas；拓展性好
+
+可以任何地址都提交你的transaction
+
+ZK:proof，证明无法反推，最终得到证明真值而不是value
+
+代付gas费：自己付会暴露；gas更高了
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 1.17
 
 EOA Externally Owned Account 私钥控制，发送与接收交易，也可以是合约账户
@@ -42,6 +64,7 @@ DAG:有向无环图
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ```ini
 1.16 今天明天都有事
@@ -72,6 +95,7 @@ RPC: Remote Procedure Call 远程过程调用 ， client 向节点中的服务�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ```ini
@@ -118,6 +142,7 @@ SpoonOS: AI operating system ; AI container ; AI marketplace
 
 
 
+
 期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
 
 今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
@@ -161,6 +186,7 @@ DEX交易：verified;问号或感叹号的token
 
 
 
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -180,6 +206,7 @@ DEX交易：verified;问号或感叹号的token
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
