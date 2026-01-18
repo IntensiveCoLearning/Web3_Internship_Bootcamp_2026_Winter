@@ -15,13 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+-   完成防钓鱼测试
+    
+-   回顾过去一周的学习内容，查漏补缺
+    
+
+# 进度情况：
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ![Web3 学实习计划第一周例会.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-17-1768655707138-Web3___________.jpg)
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 今日计划
@@ -77,6 +89,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 
 
+
 今日计划
 
 -   查看web3安全和合规回放
@@ -88,6 +101,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -110,6 +124,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 
 
+
 # **目标计划：**
 
 -   **「Web3 行业全局介绍 & 岗位概览」回放，利用AI工具整理内容，今日同步更新Twitter和小红书**
@@ -124,6 +139,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
