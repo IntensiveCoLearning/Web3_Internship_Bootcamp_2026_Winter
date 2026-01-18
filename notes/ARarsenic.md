@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# Day 7
+
+FHE 全同态加密
+
+核心思路：在不解密的情况下对数据二次处理。应用：区块链隐私处理
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 # Day 4
 
 web3 ai
@@ -31,6 +41,7 @@ web3 ai
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 # Day 3
 
 区块链安全
@@ -38,6 +49,7 @@ web3 ai
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 # Day 2
@@ -65,6 +77,7 @@ web3 ai
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
