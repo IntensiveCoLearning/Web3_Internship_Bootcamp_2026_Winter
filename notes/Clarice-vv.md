@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+不同岗位的能力要求
+
+开发岗
+
+Web3 最广泛和通用的开发语言，易上手，建议新手要学习一下，理解智能合约的编程思维逻辑.
+
+趋势：Rust 的应用越来越多，很多链和自创语言基于 Rust 开发学习和关注Web3 新语言：Move, Cario, Func 等.
+
+合约安全意识：系统设计：对DeFi/L2的理解
+
+运营/市场岗
+
+偏好做过社区，海外媒体运营如Twitter. Facebook.
+
+discord等背景人选：
+
+英文口语能力：懂 token economics
+
+链上活跃，做过转化闭环，了解Web2和Web3获客方式。
+
+产品/投研岗
+
+偏好社区和做过积分系统背景的产品经理；
+
+计算机金融专业毕业产品人选有优势
+
+如何进入 Web3
+
+SmartDeer 全球招&全球雇全球人力资源一站式服务解决方案
+
+6 00
+
+从 Web2 带能力迁移
+
+Web2 头部公司技术/产品/ 增长有海外/ 英文工作经验，能独立交付项目成
+
+果
+
+HR / 财务/法务/ 运营支持
+
+全球雇佣 / 薪酬/合规 / 牌照
+
+从生側切入 Pomisdonles Wok
+
+DAO
+
+开源社区
+
+投资研究社区
+
+建立链上声誉
+
+Twitter (X) / Farcaster
+
+输出研报、参与 Space 讨论，让Founder 在公域流量池里看到你
+
+失效渠道：传统招聘网站（Indeed, Boss直聘）覆盖率低。
+
+核心渠道：
+
+-   ﻿﻿Web3 垂直平台：SmartDeer, [Web3.career](http://Web3.career), Remote3, CryptoJobsList.
+    
+-   ﻿﻿社交网络：Twitter CX），Web3媒体，Farcaster （Warpcast）， Discord 官方公告区， Linkedin及公司官网（Notion）
+    
+-   ﻿﻿隐形渠道：GitHub Contrbution（代码贡献即筒历），，DAO 治理提案。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 补昨日笔记：
 
 主要就是一些学员web3的心得和感受
@@ -26,6 +96,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 x402协议：HTTP原生的机器支付
 
@@ -38,6 +109,7 @@ SpoonOS架构概览：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 Web3关鍵特性
@@ -90,6 +162,7 @@ Web3就是：用私钥签名证明你是谁，用共识网络保证账本可信�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
