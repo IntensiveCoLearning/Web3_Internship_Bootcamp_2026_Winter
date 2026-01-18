@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天把昨天DApp的那个潦草前端改了，改成用next.js写，最后部署在vercel上。但是还有点地方有问题，暂时上线不了
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天开始学solidity，以及用solidity写代码玩了（其实是vibe coding）
 
 用GPT vide code了一个极简的留言+打钱网页。
@@ -77,6 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -153,6 +160,7 @@ EL **理解并操作 trie**
 
 
 
+
 今天看了Bruce讲的web3运行原理。结合前几天看的《021学习以太坊》，稍微整理了一部分知识：
 
 -   私钥、公钥
@@ -221,6 +229,7 @@ proposer和attester都是节点。是proposer在mempool中捞起各种交易打�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
