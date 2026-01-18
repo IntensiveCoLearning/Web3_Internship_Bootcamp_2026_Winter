@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+[https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
+
+今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
+
+7天内系统学习了Web3与以太坊核心知识：区块链基础、Web3概念、钱包安全、合规要求、NFT/IPFS，以及Remix智能合约开发。收获：理解去中心化特性、用户主权价值，掌握钱包原理、Uniswap AMM机制、NFT标准，熟悉Remix开发流程。 Web3前景广阔需持续学习！
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 学习总结（Day1-6）
 
 ### Day1：区块链基础与Web3概念
@@ -101,6 +111,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -170,6 +181,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -220,6 +232,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -287,6 +300,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
