@@ -15,8 +15,87 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## 会员身份属于隐私数据，但如果把ZK应用其中，就能够在不暴露隐私的情况下进行数据交易，在现实社会中非常有意义 —— ERC-7962协议分享会
+
+### 一、 核心背景与构思 (Idea Origination)
+
+**内容总结：**
+
+-   **痛点**：传统的 ERC-721（NFT）和会员体系将资产与 ETH 地址（钱包地址）深度绑定。由于区块链的公开性，这导致了严重的隐私泄露。
+    
+-   **需求**：在不暴露个人钱包地址隐私的前提下，实现会员身份数据的验证与交易。
+    
+-   **目标**：实现“身份与资产的解耦”。
+    
+
+**学习思考：**
+
+-   **身份系统的演进**：早期的 Web3 认为“地址即身份”，但这其实是隐私的灾难。ERC-7962 的出现反映了 Web3 正在从“纯透明”向“可控隐私”转变。
+    
+-   **思考点**：为什么我们需要脱离地址？因为地址关联了你的所有历史记录（余额、交易、习惯）。如果会员卡只是地址里的一个 NFT，别人只要知道你的卡，就能看到你的钱包底裤。这种“解耦”是 Web3 进入大规模社交（DeSoc）的先决条件。
+    
+
+### 二、 零知识证明背景 (ZK Background)
+
+**内容总结：**
+
+-   **原理**：ZK（Zero-Knowledge Proofs）允许证明者在不泄露具体数据的情况下，向验证者证明某个陈述是正确的。
+    
+-   **应用**：ERC-7962 借鉴了 ZK 的思路，通过证明“我拥有这个 KeyHash 对应的私钥”，而不是“我是这个地址”，来完成资产的操作。
+    
+
+**学习思考：**
+
+-   **从“硬 ZK”到“软 ZK”**：真正的 ZK 电路（如 ZK-SNARKs）计算成本很高。ERC-7962 实际上是利用了\*\*密码学签名（ECDSA）\*\*来实现类似 ZK 的效果——即通过签名证明所有权而不必在链上显式存储地址。
+    
+-   **思考点**：这种设计降低了普通开发者使用“隐私功能”的门槛。你不需要写复杂的 ZK 电路，只需要理解 KeyHash 和签名逻辑即可。
+    
+
+### 三、 ERC-7962 设计核心 (Design)
+
+**内容总结：**
+
+-   **标识符**：不再存储 `address`，而是存储 `keyHash = keccak256(publicKey)`。
+    
+-   **ERC-KeyHash721 (NFT)**：`ownerOf` 返回的是 KeyHash。取消了传统的 `approve`（授权）机制，转而推崇“一次性 Key”或“Key 轮换”。
+    
+-   **ERC-KeyHash20 (FT)**：采用了类似比特币的 **UTXO 模型**。转账时，余额会被拆分为“发给对方的部分”和“回到自己新 KeyHash 的余额（找零）”。
+    
+-   **安全性**：使用 EIP-712 签名防篡改，增加 Nonce 和 Deadline 防重放。
+    
+
+**学习思考：**
+
+-   **UTXO 的回归**：以太坊本身是账户模型（Account-based），但在 ERC-20 层面引入 UTXO 风格是一个非常天才的隐私策略。通过“找零”强制用户轮换 Key，切断了资产在链上的连续追踪线索。
+    
+-   **授权机制的变革**：传统的 `approve` 经常导致安全事故。ERC-7962 抛弃它，转而使用签名触发（Sign-to-action），这更符合账户抽象（AA）的理念。
+    
+-   **思考点**：KeyHash 虽然保护了地址，但如果用户长期不更换 Key，这个 KeyHash 也会变成另一种形式的“地址”。因此，“Key 轮换”的自动化程度将决定这个协议是否好用。
+    
+
+### 四、 优势、局限与总结 (Conclusion)
+
+**内容总结：**
+
+-   **优势**：极佳的隐私保护；用户体验友好（支持 Gas 代付、Relayer）；天然适配账户抽象。
+    
+-   **局限**：Gas 消耗比普通代币高；不直接兼容现有的 Uniswap 等 DeFi 协议；对用户的密钥管理能力有要求。
+    
+
+**学习思考：**
+
+-   **成本与隐私的权衡**：隐私不是免费的。为了隐藏地址，我们需要在合约里做更多的哈希运算和签名验证，这必然导致 Gas 费上升。它可能更适合部署在 Layer 2 上。
+    
+-   **生态兼容性挑战**：这是最现实的问题。目前的钱包（MetaMask 等）是按地址设计的，如果 `ownerOf` 不再返回地址，现有的 NFT 市场（如 OpenSea）就需要大规模重构才能显示这些资产。
+    
+-   **未来展望**：ERC-7962 不仅仅是一个 Token 标准，它更像是一个“链上隐私中间件”。它最先落地的场景可能是：企业内部的分销、隐私会员卡、匿名投票，或者是那些不需要频繁交易、但对隐私极其敏感的资产。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## 通知：
 
 ### 今日轮休
@@ -26,6 +105,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## KOL相关讨论探讨 —— co-learning1.16
 
@@ -70,6 +150,7 @@ X平台经常改算法
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ## 转变：从“对话”到“行动”—— ai分享会
 
 ![1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487695452-1.jpg)![2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487716965-2.jpg)![3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487733276-3.jpg)![4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487747286-4.jpg)![5.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487762438-5.jpg)![6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487780369-6.jpg)
@@ -105,6 +186,7 @@ validation registry - permissioned的agent标签
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -464,6 +546,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 ## **治理完全有效的基础只能是社会阶段提升，人民综合素质提高才可以。——co-learning1.13**
 
 本次的co-learning环节更像是一场哲思辩论会，evo swift同学与XiaoHai67890、Draken、wachi三位老师展开了关于DAO治理投票权相关的优劣争议。“无限花园的隐喻”和关怀、包容性的适应性领导力立场更有关联，和 目前 资本的攫取主义 呈现出来的是两翻景色，展示了小海老师深厚的哲学功底。
@@ -523,6 +606,7 @@ LXDAO解决方案：从第七季度开始，LXDAO不再追求治理的投票率�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
