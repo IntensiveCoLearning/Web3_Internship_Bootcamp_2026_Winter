@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+**以太坊生态分层：**
+
+**应用层：用户可以直接交互的应用和界面**
+
+DeFi 应⽤：Uniswap（去中⼼化交易 所）、Aave（借贷协议）、Compound （借贷协议）
+
+NFT 平台：OpenSea、Foundation、 SuperRare
+
+钱包应⽤：MetaMask、Coinbase Wallet、Rainbow
+
+DAO ⼯具：Snapshot、Aragon、 Colony
+
+**协议层（Protocol Layer）:以太坊的核心基础设施**
+
+共识层客户端：Prysm、Lighthouse、 Nimbus、Teku
+
+执⾏层客户端：Geth、Nethermind、 Erigon、Besu
+
+核⼼协议：EVM、状态管理、Gas 机制
+
+**扩展层（Scaling Layer）：提升性能和降低成本的解决方案**
+
+Layer 2 Rollups：Arbitrum、 Optimism、Polygon zkEVM、zkSync Era、
+
+侧链：Polygon PoS、xDAI（Gnosis Chain）
+
+状态通道：Lightning Network for Ethereum
+
+以太坊核心机制：从账户到执行的完整链路
+
+1.账户系统：数字身份
+
+包括：由私钥控制的 外部账户（EOA）由⼀对密钥（私钥和公钥）⽣成
+
+由智能合约代码控制的 合约账户（CA）由代码驱动、不能主动发起交易，只能通过 EOA 触发
+
+2.每个账户包含四个关键字段
+
+Nonce：防⽌重复交易的计数器:EOA 记录发送次数、CA 记录创建合约次数
+
+CodeHash：EOA 为空哈希、CA 存储合约字节码的哈希值
+
+StorageRoot：记录账户数据的 Merkle 树根哈希（如 NFT 归属关系）
+
+以太坊虚拟机EVM（Ethereum Virtual Machine）：代码的执⾏引擎
+
+以太坊的“⼤脑”，是专⻔⽤来运⾏智能合约 的虚拟计算机
+
+运⾏在每个节点上，确保整个⽹络在处理 代码时，结果都⼀致、可信任
+
+核心特点：图灵完备：就像真正的电脑⼀样，EVM 可 以执⾏各种逻辑，⽐如 if 判断、循环等
+
+全球同步：每个矿⼯/节点都会⾃⼰执⾏⼀ 遍合约代码，保证结果⼀样
+
+隔离安全：EVM 把合约“关”在⼀个⼩房间 ⾥运⾏，不允许它乱访问⽤户的数据和⽹ 络，保护隐私和安全
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天看了web3运行原理的回放，以下是今日份的笔记
 
 **私钥、助记词、地址三者的关系：**
@@ -143,6 +203,7 @@ PoS(权益证明）ETH
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今天听了Echo老师的Co-learning，老师分享了Web3 领域中 KOL 合作、运营工作的相关内容，还有很多Kol的小八卦
 
 **KOL 分类与合作**：
@@ -193,6 +254,7 @@ PoS(权益证明）ETH
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今天在co-learning 中收获很多~
 
 **如何快速起号？**
@@ -226,6 +288,7 @@ Q:现在给一个0~1的项目方做社媒运营，但是活跃度不高，除了
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -269,6 +332,7 @@ ZK Rollup （零知识）：用零知识证明直接向 L1 证明一大批交易
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -318,6 +382,7 @@ Layer2的定位可能会从过渡方案转变为专门的应用层，以太坊�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
