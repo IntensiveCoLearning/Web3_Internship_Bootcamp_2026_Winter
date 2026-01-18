@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+RPC 远端程序呼叫
+
+Remote Procedure Call
+
+是一个电脑通讯协定。该协定允许执行于一台电脑的程式呼叫另一个位址空间（通常为一个开放网路的一台电脑）的子程式，而程式设计师就像呼叫本地程式一样
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 助记词的延伸脉络：
 
 -   註记词 → 唯一 种子
@@ -50,6 +60,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # 如何进入 Web3
 
@@ -135,6 +146,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 0114/0115 以準備後續 2 月底開始教課的相關內容簡報，並與身邊的小夥伴進行討論與試教
 
 -   DeFi 基本知識
@@ -156,6 +168,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
