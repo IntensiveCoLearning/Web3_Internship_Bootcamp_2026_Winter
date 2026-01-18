@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天更多是在把之前学过的东西重新对齐和压实。
+
+通过重新实现一个最小化的 ERC-721 合约，我把 NFT 的边界想得更清楚了：NFT 本质上只是链上的所有权记录，合约关心的是 tokenId 的唯一性、地址归属，以及 tokenURI 指向的元数据。图片、音频这些内容本身并不在 NFT 里，只是被引用。配合 IPFS 的内容寻址机制，这种所有权在链上、内容在链下的分工就很清晰了。
+
+在身份和 DeFi 这部分，通过 ENS 和 Uniswap 的实际使用，我开始真正用“协议结构”而不是应用界面去理解它们。ENS 是一个链上 NFT，用来把可读名字绑定到地址；Uniswap 不是换币工具，而是一套 AMM 合约体系，Factory 负责创建池子，Pair 持有流动性并执行 swap，Router 帮用户处理路径和滑点。普通用户几乎只和 Router 交互，直接调用 Pair 更多是工程场景，比如套利、MEV 或清算。
+
+在基础层面，Gas、Nonce 以及交易的加速和取消，让我更清楚交易在 mempool 里的真实行为逻辑。在 Optimism 上的低手续费体验，也让我直观理解了 Layer2 对以太坊扩展性的价值。通过 Safe 多签，我意识到合约本身也可以作为“账户”与其他协议交互，这是可组合性很重要的一点。
+
+最后，合规和安全的内容让我对现实边界保持清醒：技术开发本身问题不大，但一旦涉及发币、交易或资金承诺，风险会迅速放大。整体来看，这一周最大的变化不是多学了多少工具，而是开始用机制和约束的角度去理解 Web3，这对之后做 DeFi 和合约开发会更有用。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 虽然之前已经接触并使用过 NFT，但通过这次重新实现一个最小化的 ERC-721 合约，我对 NFT 的核心结构和设计边界进行了更系统的梳理。
 
 在实现过程中，我再次确认 NFT 的本质并不是图片或内容本身，而是一条链上的所有权记录。合约真正负责的是tokenId的唯一性、NFT 与钱包地址之间的归属关系，以及通过tokenURL关联到链下的元数据。图片、音频等内容只是被引用的外部资源，而不是 NFT 的核心。
@@ -26,6 +40,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 这几天的学习让我对 Web3 的理解更上了一层。
 
@@ -53,6 +68,7 @@ Day 5 更偏“实战体验”。我理解了 Gas、Nonce，以及 MetaMask 的 
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ### **Day 3 — ENS、身份与 Uniswap**
 
 这一节通过创建新钱包账户、注册 ENS 和在 Uniswap 上换币，让我第一次真正理解了 Web3 的“身份”和“资产跟随性”。ENS 不只是一个好记的名字，而是一个链上 NFT，它把人类可读的身份（如 sanfordstout.eth）和钱包地址绑定在一起，并且在 Uniswap、Zapper 等不同应用中自动被识别。用 Uniswap 把 ETH 换成 DAI 时，我也理解了去中心化交易所并不是订单簿，而是由智能合约和流动性池自动定价运行的，这让我对 DeFi 的运作方式有了更直观的认识。
@@ -72,6 +88,7 @@ Day 5 更偏“实战体验”。我理解了 Gas、Nonce，以及 MetaMask 的 
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -140,6 +157,7 @@ ERC20、NFT 本质都是合约里的**记账表**，没有“币”，只有数�
 
 
 
+
 在day1的视频里比较抓住我眼球的是，视频首先介绍了blockchain的概念.What is blockchain from high level? It’s a system set up without any central control ad thousands of people from the world can communicate p2p. And of course it has many issues like gas and wallet issues. It’s kinda like linked list but its more about the network where all the nodes are participating together. If any of nodes got knocked out the whole network still continues working.
 
 其次介绍了blockchain中trust的概念，然后引用到了escrow这个term。首先提出了一个问题。How to to make a transaction for two parties if they don’t trust or don’t like each other. So in web3 the concept of escrow is executed by smart contract like a middle layer.
@@ -163,6 +181,7 @@ Factory不参与交易，不存Liquidity，不计算价格。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
