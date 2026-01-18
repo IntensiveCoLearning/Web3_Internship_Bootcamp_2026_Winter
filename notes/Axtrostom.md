@@ -15,8 +15,107 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
+    
+
+-   **代币传输机制：** 视频开始演示了从一个账户发送 DAI（稳定币）到另一个账户。Austin 强调了一个概念：**代币并不存储在浏览器或钱包里**，钱包只是在读取链上的账本。发送代币实际上是向 DAI 的智能合约发送指令，让其更新余额。
+    
+-   **故意制造“堵塞”交易：**
+    
+    -   他们尝试发送一笔交易，但故意将 **Gas Price (Max Fee)** 设置得非常低（例如 10 Gwei，而当时市场价约 30 Gwei）。
+        
+    -   **结果：** 交易进入了 **Mempool（内存池）**，但矿工因为费用太低而不打包它，导致交易处于 "Pending"（挂起）状态。
+        
+-   **Nonce（交易序号）的重要性：**
+    
+    -   他们解释了 **Nonce** 的概念：这是为了防止重放攻击的计数器。
+        
+    -   如果你有一笔 Nonce 为 6 的交易卡住了，那么 Nonce 为 7、8 的后续交易都会排队等待，无法执行。必须先解决 Nonce 6 的问题。
+        
+
+### 解决“卡住”的交易 (Fixing Stuck Transactions)
+
+视频演示了三种处理卡顿交易的方法：
+
+1.  **加速 (Speed Up)：** 使用 MetaMask 的加速按钮，实质上是发送一笔内容相同但 Gas 费更高的新交易来覆盖旧交易。
+    
+2.  **手动取消 (Manual Cancel)：**
+    
+    1.  这是一种高级技巧。原理是向**自己的地址**发送 **0 ETH**，但手动将 **Nonce** 设置为与那笔卡住的交易**相同**（例如 Nonce 6），并支付正常的 Gas 费。
+        
+    2.  一旦这笔“空交易”被打包，原来的交易就会被覆盖并失效（Dropped）。
+        
+    3.  _演示插曲：_ MetaMask 的界面在手动设置 Nonce 时出现了一些 UI 故障，这也是视频想要展示的真实 Web3 开发体验——工具并不完美。
+        
+3.  **重置账户 (Reset Account)：** Austin 展示了在 MetaMask 设置中“重置账户”。这不会丢失资金，只是清除了本地的交易历史记录。这通常用于解决 MetaMask 状态与链上状态不一致导致的 UI 卡死问题。
+    
+
+### 直接与合约交互 (Direct Contract Interaction)
+
+-   除了使用钱包界面，他们演示了如何直接在 **Etherscan** 上操作。
+    
+-   **操作：** 找到 DAI 的智能合约页面，使用 "Write Contract" 功能直接调用 `transfer` 函数。
+    
+-   **技术细节：** 这里展示了开发者需要注意的精度问题（Decimals）。在合约层面发送 5 个 DAI，需要输入 `5000000000000000000`（18个零），而不是简单的 "5"。
+    
+
+### Layer 2 与 跨链 (Layer 2 & Bridging)
+
+-   **跨链桥 (Bridging)：** 演示了将 ETH 从以太坊主网（L1）跨链到 **Optimism**（L2）。
+    
+    -   体验了跨链的等待时间（Grace Period），资金从 L1 消失但尚未到达 L2 的“恐慌时刻”。
+        
+-   **L2 的优势：** 资金到达 Optimism 后，他们展示了交易速度极快且 Gas 费极低（几美分 vs 主网的几十美元）。
+    
+-   **NFT 铸造：** 在 Optimism 上铸造了一个 "Optimistic Loogie" NFT，并随后在 Quixotic（Optimism 上的 NFT 市场）上挂单出售。
+    
+
+### DeFi 操作与授权模式 (DeFi & Approve Pattern)
+
+-   **Uniswap/Matcha 交易：** 演示了代币兑换（Swap）。
+    
+-   **Approve（授权）机制：** 视频重点讲解了 ERC-20 代币的一个重要模式。当你想用合约（如 Uniswap）处理你的代币（如 DAI）时，你必须先发送一笔 **Approve** 交易，授权合约动用你的资金，然后再发送第二笔交易进行 **Swap**。
+    
+-   **借贷 (Aave)：** 他们尝试在 Aave 上抵押 ETH 借出 DAI。
+    
+    -   _教训：_ 在主网操作 DeFi 非常昂贵。为了借出一小笔钱，可能需要支付极高的 Gas 费（视频中光是抵押就要 20-30 美元手续费），这说明了为什么 L2 对普通用户如此重要。
+        
+
+### 多签钱包 (Multisig / Gnosis Safe)
+
+视频花了很大篇幅介绍了 **Gnosis Safe**（现名 Safe）：
+
+-   **为什么需要多签：** 为了安全。单私钥钱包（助记词）一旦丢失或泄露，资金全无。多签钱包要求多个地址（如 2/3 或 2/4）共同签名才能执行交易。
+    
+-   **创建过程：** 他们在 Optimism 上创建了一个 2-of-4 的多签钱包（意味着 4 个拥有者中任意 2 个人签名即可转账）。
+    
+-   **操作演示：**
+    
+    -   向多签钱包转入资金。
+        
+    -   发起一笔转出资金的提案（Proposal）。
+        
+    -   Austin 签名（第一签）。
+        
+    -   Etta 或 Carlos 签名（第二签）并执行交易。
+        
+-   **WalletConnect 集成：** 展示了如何通过 WalletConnect 将多签钱包连接到 Uniswap。这意味着他们可以作为一个“组织”在 Uniswap 上进行交易，交易请求会发回 Gnosis Safe 界面等待多方签名。
+    
+
+### 总结的核心理念
+
+-   **Web3 的用户体验 (UX) 仍有待提高：** 视频中多次出现 MetaMask 报错、ENS 在 L2 上无法解析、交易卡顿等情况。Austin 鼓励开发者要有耐心，并致力于解决这些问题。
+    
+-   **安全性：** 强调了助记词管理的风险，推崇使用多签钱包来管理重要资产或团队资金。
+    
+-   **实操出真知：** 鼓励开发者去主网和 L2 上实际消耗一点 Gas，去体验被“卡住”的感觉，这样才能真正理解底层逻辑。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 感觉前两天干别的活有点懈怠了
 
 今天开始继续加油吧
@@ -394,6 +493,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -500,6 +600,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -665,6 +766,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1162,6 +1264,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2102,6 +2205,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
