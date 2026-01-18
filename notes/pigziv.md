@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+打卡，今天周日，好好休息了一下，准备晚上的会议
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天早上早期听了一个lxdao的周会，了解了lxdao基本的运作流程，对lxdao的组织架构和日常任务有了初步的了解，接下来准备在计划过程中逐步加入lxdao，我认为做一件事首先是先有热爱，再弹性行动。
 
 今天学习了一些ai web3的基本原理，在free talk过程中还听了bruce和另一位同学讨论vibe coding。我认为我需要学习vibe coding
@@ -24,6 +30,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今天听分享会学到了很多。
 
@@ -47,6 +54,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -133,6 +141,7 @@ B. 广撒网 (针对普通用户)
 
 
 
+
 打卡，补充一下昨天bruce分享的完整版笔记
 
 [https://east-drizzle-be3.notion.site/Web3-2e8ec4f8802580068955e171247899c1?pvs=74](https://east-drizzle-be3.notion.site/Web3-2e8ec4f8802580068955e171247899c1?pvs=74)哈哈，应该能看到点进网站，里面有我对bruce课后小习题的思考
@@ -142,6 +151,7 @@ B. 广撒网 (针对普通用户)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -174,6 +184,7 @@ code is the law，我觉得智能合约可以提供一个比较好的工具。�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
