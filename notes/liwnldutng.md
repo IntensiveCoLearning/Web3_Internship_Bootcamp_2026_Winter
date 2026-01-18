@@ -15,13 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今天有点松散，效率不太高，主要对cheatcode进行了学习以及一下总结：
+
+vm.prank(PLAYER)：下一个非vm操作由PLAYER执行
+
+[vm.deal](http://vm.deal)(PLAYER,VALUE):对PLAYER给VALUE数值的tokens
+
+vm.expectRevert():
+
+vm.expectEmit(false，false，false，false，address(adr)):前三个bool指是否有对应的indexed parameter，第四个指是否有non-indexed parameter，最后地址指emitter地址（合同地址）。
+
+vm.roll(block.number + 1):set block.number.(plus 1)
+
+vm.warp(block.timestamp + 1):set block.timestamp.(block.timestamp add 1 sec)
+
+周总结：原本计划：solidity foundry 学习完成、uniswap v2学习
+
+实际进展：foundry大概还剩十八节课，uniswap还没学。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天完成了lxdao周会的自我介绍，然后以及成为member的资料，明天多学点吧，摸鱼好几天了。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今天学的不多，主要是分享会还有周例会内容，周六日准备把solidity剩下部分做完，学习下uniswap这几个系列。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
@@ -30,11 +53,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今天没有学习太多，简单看了下实习手册的智能合约部分，晚上听了分享会，大概总结为erc-8004借助x402为ai agent提供身份，可验证性Tee并引入评价机制，spoonos优化了ai-agent执行erc-8004并上链的操作。之前就参加过erc-8004的残酷共学，那时候还是啥也不懂，现在稍微能明晰一些。或许后面可以尝试下erc-8004与spoonos。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -63,6 +88,7 @@ constructor 是部署时执行的初始化逻辑，interface 中不能存在。�
 
 
 
+
 今天没有学太多，先设定下四周的目标吧：
 
 岗位方向：优先技术岗 目标：多学习，找到个较满意的实习机会或者工作
@@ -76,6 +102,7 @@ constructor 是部署时执行的初始化逻辑，interface 中不能存在。�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
