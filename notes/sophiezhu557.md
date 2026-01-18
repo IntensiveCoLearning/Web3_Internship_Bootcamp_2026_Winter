@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-17
+<!-- DAILY_CHECKIN_2026-01-17_START -->
+今天开始学solidity，以及用solidity写代码玩了（其实是vibe coding）
+
+用GPT vide code了一个极简的留言+打钱网页。
+
+[https://github.com/sophiezhu557/Toy\_SmartContract](https://github.com/sophiezhu557/Toy_SmartContract)
+<!-- DAILY_CHECKIN_2026-01-17_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 《021学习以太坊》概念自学总结：  
   
 EL和CL其实各有链，但不是独立平行关系：
@@ -87,6 +97,7 @@ EL **理解并操作 trie**
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 今天看了Bruce讲的web3运行原理。结合前几天看的《021学习以太坊》，稍微整理了一部分知识：
 
 -   私钥、公钥
@@ -155,6 +166,7 @@ proposer和attester都是节点。是proposer在mempool中捞起各种交易打�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 这是第一篇打卡，记录一下进入共学营迄今为止的摄入的一些web3知识和资源：
