@@ -15,8 +15,348 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 一、ERC-721 的整体认知（相关代码上传在GitHub）
+
+## [ERC721代码相关链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_ERC721.sol)
+
+ERC-721 解决的核心问题只有一句话：
+
+> **如何在链上唯一、可验证地表示“这个 NFT 属于谁”**
+
+因此它围绕三件事展开：
+
+1.  **所有权（ownership）**
+    
+2.  **转移（transfer）**
+    
+3.  **授权（approval）**
+    
+
+你看到的所有函数，本质都服务于这三点。
+
+* * *
+
+# 二、IERC721 中的核心函数（必须掌握）
+
+## 1️⃣ `balanceOf(address owner)`
+
+### 用途
+
+> 查询某个地址**拥有多少个 NFT**
+
+```
+function balanceOf(address owner) external view returns (uint256);
+```
+
+### 使用场景
+
+-   NFT 钱包页面显示「你拥有 X 个 NFT」
+    
+-   DApp 判断用户是否有资格（比如持有至少 1 个 NFT）
+    
+
+### 注意点（非常重要）
+
+-   **不能传** `address(0)`
+    
+-   `address(0)` 在 ERC-721 中表示“无效地址”
+    
+
+👉 合规实现里必须 `require(owner != address(0))`
+
+* * *
+
+## 2️⃣ `ownerOf(uint256 tokenId)`
+
+### 用途
+
+> 查询某个 **tokenId 属于谁**
+
+```
+function ownerOf(uint256 tokenId) external view returns (address);
+```
+
+### 使用场景
+
+-   NFT 市场展示当前持有人
+    
+-   合约校验「你是不是这个 NFT 的主人」
+    
+
+### 注意点
+
+-   如果 `tokenId` **不存在**，必须 revert
+    
+-   **不能返回 address(0)**
+    
+
+* * *
+
+## 3️⃣ `safeTransferFrom`（最重要的转移函数）
+
+### 用途
+
+> **安全转移 NFT**
+
+```
+function safeTransferFrom(
+  address from,
+  address to,
+  uint256 tokenId
+) external;
+```
+
+### 为什么叫 “safe”
+
+-   如果 `to` 是合约地址
+    
+-   会检查它是否实现 `onERC721Received`
+    
+-   防止 NFT 被转进「收不回来的合约」
+    
+
+### 使用场景
+
+-   NFT 市场转移
+    
+-   钱包转账 NFT
+    
+-   游戏资产流转
+    
+
+### 注意点（新手高频踩坑）
+
+1.  **from 必须是当前 owner**
+    
+2.  **msg.sender 必须有权限**
+    
+3.  **to 不能是 address(0)**
+    
+
+> 💡 实际开发中  
+> **99% 的 NFT 转移都应该用** `safeTransferFrom`
+
+* * *
+
+## 4️⃣ `transferFrom`（不安全转移）
+
+### 用途
+
+> 直接转移 NFT（不检查接收方）
+
+```
+function transferFrom(
+  address from,
+  address to,
+  uint256 tokenId
+) external;
+```
+
+### 什么时候用？
+
+-   接收方是 EOA（普通钱包）
+    
+-   且你明确知道风险
+    
+
+* * *
+
+## 5️⃣ `approve(address to, uint256 tokenId)`
+
+### 用途
+
+> **授权某个地址操作指定 NFT**
+
+```
+function approve(address to, uint256 tokenId) external;
+```
+
+### 典型场景
+
+-   用户授权 NFT 市场合约出售 NFT
+    
+-   授权游戏合约使用 NFT
+    
+
+### 授权规则
+
+-   只能授权 **一个地址**
+    
+-   覆盖旧授权
+    
+-   `to = address(0)` 表示取消授权
+    
+
+### 注意点
+
+-   授权 ≠ 转移
+    
+-   授权后对方可以 `transferFrom`
+    
+
+* * *
+
+## 6️⃣ `getApproved(uint256 tokenId)`
+
+### 用途
+
+> 查询某个 NFT 当前被授权给谁
+
+```
+function getApproved(uint256 tokenId) external view returns (address);
+```
+
+### 使用场景
+
+-   NFT 市场判断是否已被授权
+    
+-   前端展示授权状态
+    
+
+### 注意点
+
+-   tokenId 不存在必须 revert
+    
+
+* * *
+
+## 7️⃣ `setApprovalForAll(address operator, bool approved)`
+
+### 用途
+
+> **批量授权（非常重要）**
+
+```
+function setApprovalForAll(address operator, bool approved) external;
+```
+
+### 典型场景
+
+-   一次授权 NFT 市场管理你**所有 NFT**
+    
+-   比单个 approve 更省 Gas
+    
+
+## ERC721核心声明
+
+![屏幕截图 2026-01-18 213619.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/may-tonk/images/2026-01-18-1768743602248-_____2026-01-18_213619.png)
+
+## ERC-721 合约函数使用总结
+
+### 一、ERC-721 本质在解决什么
+
+ERC-721 的本质只有一件事：  
+**在链上，明确、唯一、可验证地记录“某个 NFT 属于谁，并且如何安全地转移和授权”。**
+
+因此，所有函数都围绕三点展开：
+
+1.  所有权（Ownership）
+    
+2.  转移（Transfer）
+    
+3.  授权（Approval）
+    
+
+* * *
+
+### 二、所有权相关函数（“谁拥有 NFT”）
+
+-   `balanceOf(owner)`  
+    用来统计一个地址拥有多少个 NFT。  
+    常用于前端展示和资格判断。  
+    注意：不能查询 `address(0)`。
+    
+-   `ownerOf(tokenId)`  
+    查询某个 NFT 当前属于谁。  
+    tokenId 不存在必须直接报错（revert）。  
+    这是 NFT 所有权的“最终真相来源”。
+    
+
+* * *
+
+### 三、转移相关函数（“NFT 如何流动”）
+
+-   `safeTransferFrom`**（首选）**  
+    安全转移 NFT。  
+    如果接收方是合约，会检查它是否能正确接收 NFT，防止资产被锁死。  
+    实际 DApp 中，几乎所有 NFT 转移都应该使用它。
+    
+-   `transferFrom`**（不安全）**  
+    不做接收方检查。  
+    新手阶段不建议使用，容易造成 NFT 无法找回。
+    
+
+转移时必须满足：
+
+-   from 是当前 owner
+    
+-   msg.sender 是 owner 或被授权者
+    
+-   to 不能是 `address(0)`
+    
+
+* * *
+
+### 四、授权相关函数（“谁可以代我操作 NFT”）
+
+-   `approve(to, tokenId)`  
+    授权某个地址操作某一个 NFT。  
+    常用于 NFT 市场出售单个 NFT。  
+    授权可以被覆盖或取消。
+    
+-   `setApprovalForAll(operator, approved)`  
+    批量授权，允许某个地址操作你所有 NFT。  
+    NFT 市场最常用的授权方式。  
+    安全风险高，必须让用户明确知情。
+    
+-   `getApproved(tokenId)` **/** `isApprovedForAll(owner, operator)`  
+    查询授权状态，用于前端展示和合约判断。
+    
+
+* * *
+
+### 五、元数据相关函数（“NFT 显示给人看的内容”）
+
+-   `name()` **/** `symbol()`  
+    NFT 集合的名称和简称。
+    
+-   `tokenURI(tokenId)`**（非常关键）**  
+    返回 NFT 的元数据地址。  
+    一般指向 IPFS / Arweave / HTTP。  
+    NFT 图片、属性、描述全部依赖它。
+    
+
+常见错误：
+
+-   所有 tokenId 返回同一个 URI
+    
+-   URI 指向的 JSON 不符合标准
+    
+-   tokenId 不存在却返回 URI
+    
+
+* * *
+
+### 六、事件（Event）的重要性
+
+ERC-721 强依赖事件，而不是函数返回值：
+
+-   `Transfer`  
+    mint、转移、销毁都会触发。  
+    钱包和 NFT 市场靠它同步状态。
+    
+-   `Approval` **/** `ApprovalForAll`  
+    市场监听授权变化。
+    
+
+没有正确触发事件，外部世界就“看不见”你的 NFT。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -340,6 +680,7 @@ contract Hash {
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -443,6 +784,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 一、Solidity 核心概念总览表（回温版）
@@ -587,6 +929,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -900,6 +1243,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -1002,6 +1346,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
