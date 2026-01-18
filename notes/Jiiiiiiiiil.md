@@ -15,8 +15,23 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+ERC - 7962 分享会
+
+-   以Key Hash作为资产所有权标识，解耦所有权与交易发起地址，不储存链上地址，保护用户隐私
+    
+-   用户只需签名表达意图，无需理解web3交易流程，也能完成资产操作，可以同样满足web2用户需求
+    
+
+-   💡ERC-7962 通过数学方法，不用暴露具体地址（数值），也可以证明归属 ：P（x,y），x+y=z
+    
+-   可以查到交易记录证明，但无法追踪地址，身份与资产关联性低
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 LXDAO 周会
 
 ![1484fc74b0f717955696f5d8dbe1a846.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Jiiiiiiiiil/images/2026-01-17-1768620811913-1484fc74b0f717955696f5d8dbe1a846.png)
@@ -25,11 +40,13 @@ LXDAO 周会
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 第一周例会打卡
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 Web3 AI agent分享会学习打卡
@@ -40,6 +57,7 @@ Web3 AI agent分享会学习打卡
 
 
 
+
 Web3安全&合规分享会打卡
 
 今日加班周末补课
@@ -47,6 +65,7 @@ Web3安全&合规分享会打卡
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -81,6 +100,7 @@ Priority Fee：用户自愿支付的小费，用于激励验证者优先打包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
