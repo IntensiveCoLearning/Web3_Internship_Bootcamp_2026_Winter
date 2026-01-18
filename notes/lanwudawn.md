@@ -15,8 +15,15 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+### **DAY 5**  
+**今天应该是DAY7的，**
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 **_DAY4_**  
 **_TODOLIST: 1 阅读教程并整理_**  
   
@@ -25,6 +32,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ### **DAY3**
@@ -46,6 +54,7 @@ myfirstNFT
 
 
 
+
 DAY2  
 昨天晚上赶在ddl之前仓促提交笔记。下定决心一定要早些笔记。  
 \------  
@@ -55,6 +64,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
