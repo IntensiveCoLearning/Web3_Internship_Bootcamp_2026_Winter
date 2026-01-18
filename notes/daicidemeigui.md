@@ -15,8 +15,88 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# Remix IDEA
+
+## 简单编写一个智能合约
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract TestToken {
+    string public name = "TEST";
+    uint8 public decimals = 18;
+    uint256 public totalSupply;
+    
+    address public owner;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+    
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    
+    constructor(uint256 _initialSupply) {
+        owner = msg.sender;
+        totalSupply = _initialSupply * 10 ** decimals;
+        balanceOf[msg.sender] = totalSupply;
+        emit Transfer(address(0), msg.sender, totalSupply);
+    }
+   
+
+    function transfer(address to, uint256 value) external returns (bool) {
+        require(balanceOf[msg.sender] >= value, "Insufficient balance");
+        
+        balanceOf[msg.sender] -= value;
+        balanceOf[to] += value;
+        
+        emit Transfer(msg.sender, to, value);
+        return true;
+    }
+    
+    function approve(address spender, uint256 value) external returns (bool) {
+        allowance[msg.sender][spender] = value;
+        emit Approval(msg.sender, spender, value);
+        return true;
+    }
+    
+    function transferFrom(address from, address to, uint256 value) external returns (bool) {
+        require(balanceOf[from] >= value, "Insufficient balance");
+        require(allowance[from][msg.sender] >= value, "Allowance exceeded");
+        
+        balanceOf[from] -= value;
+        balanceOf[to] += value;
+        allowance[from][msg.sender] -= value;
+        
+        emit Transfer(from, to, value);
+        return true;
+    }
+}
+```
+
+## 使用Remix部署
+
+先编译和运行脚本
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-18-1768735642704-image.png)
+
+成功后会在这里看到部署的合约
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-18-1768735699840-image.png)
+
+最后进行测试合约功能，使用transfer进行转账
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-18-1768735755858-image.png)
+
+然后再用balance查看接收代币的地址有多少数量
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-18-1768735789248-image.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 以太坊
 
 ## ERC
@@ -79,6 +159,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 # 安全与合规
 
 ## 国内相关公告/文件
@@ -137,6 +218,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
 
+
 # 以太坊
 
 ## 以太坊的应用场景
@@ -170,6 +252,7 @@ PoS 是一种通过资产持有权达成共识的机制。验证者根据其持�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
