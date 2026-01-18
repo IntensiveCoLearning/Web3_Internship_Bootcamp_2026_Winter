@@ -17,48 +17,47 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
-**👩‍💻 Web2 to Web3 🚀 A Developer’s Guide to Building on Ethereum - Day 1 - 👋 Intro!**
+这是以太坊「成为 Power User」第一周的第四天，主题是 **NFT**。这一天的目标不是从技术原理开始，而是像真实用户一样去 **买、铸造（mint）、发送和查看 NFT**，通过实际操作来理解 NFT 在 Web3 中是如何工作的。课程延续了之前的逻辑：钱包（MetaMask）、身份（ENS）、资产（NFT）会在不同 Web3 服务之间自然流动。
 
-**Week 1 - 👩‍🔬 Becoming A Power User**
+课程一开始回顾了已经完成的步骤：安装并使用 MetaMask、进行过 ETH 与 DAI 的兑换、完成过链上交易。这些都是今天操作 NFT 的基础。接着通过 OpenSea 这个 NFT 市场，展示了一个重要概念：**你的 Web3 身份和资产会跨平台存在**。即使是 ENS 域名，本质上也是一个 ERC-721 NFT，它会出现在你的钱包和 OpenSea 的资产列表中。如果把 ENS NFT 转给别人，对方就会真正拥有并控制这个域名，这一点和 Uniswap 的 LP NFT（代表流动性所有权）是同样的逻辑。
 
-The first step to starting as a developer in the web3 ecosystem is first to become a Power User!
+在介绍 NFT 时，课程强调了 NFT 的核心价值并不只是“图片”，而是 **链上可验证的所有权与来源（provenance）**。艺术家在链上铸造作品，任何人都可以验证这是原始合约、原始作者。即使别人复制一模一样的图片重新 mint，市场也会把它视为“仿品”，因为合约地址和历史不同。这种“真实性”与“稀缺性”来自合约中设定的最大供应量（例如 10,000 个），即便原作者重新部署一个新合约，市场通常也不会承认它的价值。
 
-You should start by getting hands-on & using the tools which will give you a much greater understanding of what you can do and what the crypto space is all about. In this section, we’re talking about the tools in the crypto space, using them and helping you become an Ethereum power user.
+同时也明确指出，NFT 世界是一个\*\*完全无许可（permissionless）\*\*的环境，任何人都可以部署合约、发行 NFT，因此垃圾项目和投机行为不可避免。用户需要自己判断，而不是默认“下一个蓝筹”。在 OpenSea 中还能看到 NFT 的属性（traits）和稀有度比例，这些属性数据通常存储在 metadata 中，构成 NFT 价值的一部分。
 
--   **Day 1**: [Introduction](https://youtu.be/zuJ-elbo88E)
+NFT 不只是艺术品，也可能具有 **utility（功能性）**。课程举了几个例子，比如 token-gating（只有持有 NFT 才能进入某个 Discord 或聊天室）、治理投票（持有 NFT 才有投票权）、链上游戏资产（马、鸡、道具等）。这些 NFT 本质上是“钥匙”或“权限凭证”，而不仅是收藏品。不同 NFT 所在的链也可能不同，例如以太坊主网或 Polygon（L2），这引出了对 Layer 2 的简单提示，但当天主要仍聚焦在以太坊主网。
+
+接下来课程选择了一个具体项目，演示 **在项目官网直接 mint NFT**，而不是在二级市场购买。通过连接 MetaMask，用户向一个智能合约发送交易，支付 mint 费用和 gas。这里重点强调了一点：在 Web3 中，用户是在“向合约打钱”，而合约代码是公开的。通过 Etherscan 可以查看合约地址、交易记录，甚至直接阅读 Solidity 源码。虽然普通用户不会逐行审计代码，但理解“你在信任一段公开代码”是非常重要的 Web3 认知。
+
+NFT mint 成功后，虽然是在项目官网铸造的，但因为遵循 ERC-721 标准，它会自动出现在 OpenSea、Zapper 等其他平台中，再次印证了“资产与身份跨平台流动”的概念。不过课程也展示了现实中的不完美：不同平台对 NFT 的 **索引和展示是有选择性的**。有些市场（如 Foundation、Rarible）是高度策展和中心化的，它们可能不显示你合法拥有的 NFT，或者不解析 ENS。这引出了一个重要讨论：**Web3 的协议层是去中心化的，但很多应用层仍然是 Web2 公司，存在展示层面的“软审查”**。Web2 与 Web3 并不是非此即彼，而是混合存在。
+
+随后课程深入到 NFT 的底层结构，对比了 **on-chain NFT** 和 **IPFS NFT**。大多数 NFT 实际上并不是把图片直接存到链上，而是：
+
+-   链上合约只负责记录“谁拥有哪个 token ID”
+    
+-   token ID 对应一个 tokenURI
+    
+-   tokenURI 指向 IPFS 上的 metadata（JSON）
+    
+-   metadata 再指向图片、SVG 或其他资源
     
 
-A **cron job** is a **scheduled task** that runs automatically at specified times or intervals on **Unix/Linux systems** (and many servers, including cloud and web servers).
+通过 Etherscan 的 readContract 功能，课程一步步演示了如何查询 tokenURI，再通过 IPFS 网关查看 metadata 和图片。这里引出了 IPFS 的核心概念：**内容寻址（content-addressed）**。在 IPFS 中，地址是内容的 hash，只要内容发生任何变化，hash 就会完全不同。这意味着：只要地址不变，内容就是不可篡改的；如果内容变了，它就“不是同一个东西”了。
 
-In simple terms:
+这也带来了对 NFT 风险的讨论。如果 metadata 或图片只是指向某个普通 Web 服务器，创作者是可以随时替换内容的，NFT 的“不可变性”就被破坏了，这也是常见的 rug 风险之一。相比之下，把内容放在 IPFS（并确保被 pin）或直接 on-chain，会更接近 NFT 的精神。
 
-👉 **Cron = a time-based task scheduler**
+课程还通过 Loot 和 SVG NFT 的例子，说明 **on-chain NFT 的可组合性（composability）**。当属性、颜色、形态都直接存储在合约中时，其他合约就可以读取并基于这些属性进行二次创作，例如繁殖、升级、游戏交互等。这种“无需许可的组合”是 Web3 非常独特的能力。
 
-**Web2 cron jobs run on servers you control; Web3 “cron jobs” are usually event-driven, decentralized, or delegated to keeper networks because blockchains don’t have clocks.**
+在技术层面，课程最后用一个极简的 Solidity 对比解释了 **Fungible Token（ERC-20）** 和 **Non-Fungible Token（ERC-721）** 的本质区别。ERC-20 是通过“地址 → 余额”的映射来表示价值，转账只是数字的加减；ERC-721 则是通过“token ID → owner”的映射来表示所有权，每一个 token 都是独一无二的。所谓“发送 NFT”，并不是物理传输，而是全网共同更新一份“谁拥有它”的账本状态。
 
-**Incentives = mechanisms that make rational actors want to perform an action instead of ignoring it.**
+最后回到一个重要的认知转变：区块链不是“资产在网络中移动”，而是**所有节点同时更新一份状态账本**。你签名一笔交易，网络确认后，所有人都同意“所有权发生了变化”。理解这一点，是从 Web2 思维转向 Web3 思维的关键一步。
 
-**LP positions** are **Liquidity Provider positions** — they represent your **share of liquidity** that you supply to a decentralized exchange (DEX).
-
-In short:
-
-👉 **You deposit tokens into a pool, and your LP position proves what you own and what you earn.**
-
-\*\*治理代币被用于 Snapshot、Tally 等应用中进行投票与合约执行，同时还能解锁如 NFT、Token Gated 聊天等功能，扩展出丰富的链上应用场景。区块链和智能合约虽然很酷，但目前仍然昂贵、缓慢、不友好且风险高，用户体验和基础设施还有很多需要改进的地方。从用户 → 高阶用户 → 开发者：\*\*即使你不写代码，也可以通过第一周，完成你进入区块链世界的第一步。
-
-无论从哪个角度进入区块链，第一步都是先成为一个 **power user（高阶用户）**。如果你想加入 DAO，或者参与 DeFi，就必须真正理解钱包是如何工作的，包括交易机制、Gas、私钥等基础概念。课程会以一个相对平稳、不过快的节奏，把这些内容完整讲清楚，并通过一系列较长的视频，系统性地梳理新手在使用过程中常见的卡点和困惑。
-
-从更长远的角度看，区块链真正令人兴奋的潜力在于**协调机制（coordination mechanisms）**，而且这种机制可能最终会上升到国家层级。当我们在讲经典的 Alice 和 Bob、托管（escrow）和博弈论时，可以想象一种极端但现实的场景：如果 Alice 是朝鲜，Bob 是美国，涉及的是军费预算、国家博弈和不信任环境，那么一个基于人类中介的托管系统显然无法成立。在足够去信任的环境下，如果像以太坊这样的系统规模足够大，国家本身运行验证节点，智能合约就可能成为那个“非人类的中立协调层”。通过程序化的规则和激励机制，系统甚至可以对不合作或背叛行为施加惩罚，比如损失质押资产，或更复杂的约束方式。
-
-正是这种可能性让人对这项技术产生持续的震撼感。每一次使用智能合约，都会让人想到它还能被用来构建多少新的、以前无法实现的协调结构。这些应用也许在未来会产生国家层面的影响，而这正是当前所构建的一切的意义所在——设计和实验全新的协调机制。
-
-从个人层面来说，开发智能合约第一次让人强烈地感受到“我真的拥有改变世界的行动力”。希望学习这门课程的人，在经历前几周、亲手构建应用之后，也能产生类似的感受。这不仅是学习一项技术，而是进入一种新的、可以参与塑造未来系统的方式。在课程中，你将逐步了解各种应用的使用方式，并尝试亲自操作，从而在实践中学习。课程不仅关注概念，还强调动手经验：学员需要主动尝试、操作，并从中获得理解。这种“先用后做”的方法能够帮助学员真正理解以太坊作为一个应用平台的功能，而不仅仅是一个数据库或工具。
-
-课程结束后，学习路径大致分为三个层次。第一层是成为有能力被雇佣的专业人士，通过完成课程，你将掌握足够的知识应对区块链相关职位的面试和工作。第二层是独立开发自己的项目，找到自己的用户和市场，开始实现创意产品和链上应用。第三层是进入审计领域，专注于智能合约安全，通过复现攻击案例、学习漏洞和优化方法，成为以太坊智能合约的专家。每个层次都建立在实际操作和经验之上，而不仅仅是理论学习。课程强调持续实践的重要性：通过不断构建小型项目、写出清晰的 README 文档，并在 Crypto Twitter 上展示成果，学员能够不断迭代、获得反馈、强化理解。
+这一天的核心并不是“买了什么 NFT”，而是通过完整链路理解：NFT 是如何被铸造的、如何在不同平台被识别、它真正“存在哪”、你究竟拥有什么，以及哪些地方仍然存在 Web2 式的中心化与风险。
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 **👩‍💻 Web2 to Web3 🚀 A Developer’s Guide to Building on Ethereum - Day 1 - 👋 Intro!**
 
@@ -114,6 +113,7 @@ In short:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -225,6 +225,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -421,6 +422,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -485,6 +487,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -496,6 +499,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
