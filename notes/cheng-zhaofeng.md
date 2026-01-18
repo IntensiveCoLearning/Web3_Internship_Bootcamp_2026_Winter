@@ -47,13 +47,14 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 • 共识客户端负责“跑 PoS、选区块、投票达成共识”；
 
-• 它们通过 Engine API 的“专线电话”互相协作，整个节点再通过 P2P。
+• 它们通过 Engine API 的“专线电话”互相协作，整个节点再通过 P2P。。
 
 ![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NDRiMTgwMDVkOGFjN2ZmYjI4ZThhNWYyNzdhZDlkNTBfa1Zieno1YU5TOEdXeEZaeWhHVFhNdTM2WWlyaXlmZHlfVG9rZW46RmM2WmJPSm9Mb1VxWVN4VkpmOWM0UnBibjBnXzE3Njg3MjM0MTY6MTc2ODcyNzAxNl9WNA)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ## 十、生态系统创新：DeFi、NFT 与 DAO
@@ -140,6 +141,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、 集
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -233,6 +235,7 @@ Rollup又分为Optimistic和ZK Rollup
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -351,6 +354,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了安全分享会
 
 # 1\. 安全事故规模
@@ -391,6 +395,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了web3的运行原理
 
 # 1.钱包，私钥，和个人主权
@@ -412,6 +417,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
