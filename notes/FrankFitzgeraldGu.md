@@ -15,8 +15,72 @@ M.S. (CityU)
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+Privacy-Focused Browsers注重隐私的浏览器: Brave, Firefox (with Enhanced Tracking Protection),
+
+DuckDuckGo browser often have stronger default protections.
+
+Browser Extensions: Content Blockers (e.g., uBlock Origin): Block requests to known tracking domains/scripts using filter lists.   Behavioral Blockers (e.g., Privacy Badger): Learn which domains seem to be tracking you across sites and block them.
+
+Other: VPNs (mask IP address), Tor Browser (anonymizes traffic)
+
+The Core Privacy Challenge with Data
+
+Personal Data: Information relating to an identifiable individual.      Sensitive Data: Subset of personal data needing extra protection (e.g., health, beliefs,finances).
+
+Goal: Enable useful analysis (research, statistics) on datasets containing personal/sensitive info.      Risk: Analysis or data release might inadvertently reveal information about specific individuals.
+
+Two Main Strategies: i. Anonymization: Modify the data itself to remove identifying links.  ii. Formal Privacy: Add constraints/noise to the analysis process to protect individuals mathematically
+
+Data Anonymization: The k-Anonymity Approach
+
+Quasi-Identifiers (QIs)准标识符: Attributes that are not unique on their own but can identify individuals when combined (e.g., ZIP Code邮政编码, Birth Date, Gender).单独看不具有唯一性，但与其他信息结合时可以识别个人的属性
+
+k-Anonymity Goal: Ensure that for any combination of QIs in the dataset, there are at least k individuals sharing that combination. Makes individuals "hide in a crowd" of size k .确保在数据集中，对于任何一组准标识符的组合，至少有k个个体共享该组合。这使得个人在大小为k的“群体”中“隐藏”，从而保护个人隐私。Most based on generalization and suppression
+
+Techniques: Generalization泛化: Replace specific values with broader ones (Age 28 -> 20-29 ).用宽泛的值代替具体的值             
+
+Suppression抑制: Hide specific values ( \* ) 隐藏特定的值，例如用星号代替
+
+Limitations of k-Anonymity
+
+Homogeneity Attack同质性: In the example above, if you know someone lives in 90210 and is 30-39, you know they have HBP高血压, because everyone in that group does. kanonymity is met, but privacy is breached for the sensitive attribute!
+
+Background Knowledge Attack: Attacker might know extra info (e.g.,"My neighbor Bob is in the dataset and is ~35"). This can help narrow possibilities even in a kanonymous dataset.
+
+Curse of Dimensionality维度的诅咒: Hard to achieve k-anonymity with many QIs without
+
+excessive generalization/suppression, destroying data utility.
+
+(Advanced: l-diversity, t-closeness try to address homogeneity but have own
+
+issues).
+
+Formal Privacy: Differential Privacy (DP)
+
+Different Philosophy: Instead of modifying the data structure, DP defines a mathematical property of the analysis algorithm or query mechanism.差分隐私不通过修改数据结构来保护隐私，而是定义了分析算法或查询机制的数学属性
+
+Core Promise: The output of a DP analysis is statistically indistinguishable whether any particular individual's data was included in the input dataset or not.
+
+Mechanism: Carefully calibrated random noise is added to the results of computations (counts, sums, averages, ML model weights, etc.).
+
+Privacy Parameter (ε, epsilon): Controls the level of privacy. Lower ε = more noise,stronger privacy; Higher ε = less noise, weaker privacy
+
+Why is Differential Privacy Often Considered Stronger?
+
+Resilience to Background Knowledge: The privacy guarantee holds regardless of what external information an attacker possesses.
+
+Protection Against Diverse Attacks: Inherently protects against linkage attacks, homogeneity attacks, differencing attacks, etc.Quantifiable Privacy Loss: Epsilon (ε) provides a measure of privacy loss.可量化的隐私损失Composition: DP guarantees compose predictably – you can track the total privacy loss (ε) across multiple queries (the "privacy budget").
+
+Focus: Protects individuals while allowing aggregate statistical analysis.
+
+Anonymization (like k-anonymity) modifies data to obscure individuals but has known vulnerabilities (homogeneity, background knowledge). Differential Privacy adds noise to analysis results, providing a formal, mathematical guarantee against inferring individual information. DP is robust against background knowledge and allows quantifiable privacy loss (ε) and composition. The choice involves a privacy-utility trade-off. DP often requires careful implementation to maintain usefulness.
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 1.上午参加lxdao的周会，学习了很多区块链治理的知识
 
 2.学习了mpc和zkp，概念总结如下：
@@ -103,6 +167,7 @@ General Considerations (Both MPC & ZKP) 局限性①Complexity: Implementing and
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 **今天参加了echo老师的colearing会议**
 
 ## 1) 我今天对 “QL / KOL / BD / 运营” 的理解更现实了
@@ -146,6 +211,7 @@ ps:晚上的学员分享实在是太强了 大为震撼
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -278,6 +344,7 @@ Rick 的回答让我更清楚：
 
 
 
+
 今天连续参加了三场会议，分别是 Co-learning 讨论、Web3 安全主题分享以及 Web3 合规主题分享。整体感受是：**今天的内容比技术更“现实”**，让我开始真正思考在 Web3 中“如何活得久”，而不仅是“如何入行”。
 
 ## 一、Co-learning：自由的另一面是责任
@@ -318,6 +385,7 @@ Rick 的回答让我更清楚：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -542,6 +610,7 @@ per computational step (gas)• Special gas fees also apply to storage operation
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
