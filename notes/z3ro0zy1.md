@@ -15,8 +15,74 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
+
+# **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-18-1768725253845-image.png)
+
+The author argues that New Year’s resolutions are ineffective, a sentiment I find hard to dispute. Reflecting on my WeChat circle this past January 1st, I saw countless posts herald 2026 as 'their year,' yet my friends have repeated itself since I added them. Ultimately, the true purpose of goal-setting isn't the resolution itself, but the honest admission of one's shortcomings and the recognition of the distance between one's current self and their ideal identity.
+
+* * *
+
+## I – You aren’t where you want to be because you aren’t the person who would be there
+
+```
+When it comes to setting big goals, people tend to focus on one of the two requirements for success:
+```
+
+```
+Changing your actions to make progress toward the goal (least important, second order)
+```
+
+```
+Changing who you are so that your behavior naturally follows (most important, first order)
+```
+
+This hits the nail on the head regarding why people quit their disciplined lifestyles so quickly. We're essentially trying to build a great life on a **rotting foundation**.
+
+```
+charismatic dude who can chat up a group without a shred of anxiety entering his mind.
+```
+
+Such a person is the one I aspire to become. **Charismatic.**
+
+Regarding the first point, my understanding is this: To achieve a specific outcome, you must first become the type of person who naturally produces that result. Just as someone who constantly oversleeps cannot become a CEO, or someone who is lazy and overeats cannot maintain a great physique, the purpose of the first section is to remind us to focus on the 'path' rather than just the high-level goal.
+
+In other words: Who are you? Do your habits and mental models support what you are trying to achieve? Because behavior is ultimately the result of your mindset, most people fail their goals because they try to change their actions while their 'foundation' remains the same. For someone whose brain is wired for the instant gratification of TikTok, attempting to learn something complex is extremely difficult because their current identity isn't built for that depth. Or on the other words, immersing into douyin, which determines a person can not continue studying for a long time, such as 2 hours.
+
+And, there is also a hint that I should pay more attention on the habits I have disgusting. Real changes happens when I really realize that some habits are destructing my future. So, it is not about want new life, but about rejecting the old.
+
+## **II – You aren’t where you want to be because you don’t _want_ to be there**
+
+People have some unconscious goals that prevent people from doing something. For example, procrastinating support the Ego protection. Honestly, when I started prepare IELTS exam, I also procrastinated the exam date, because I fear failure, especially after longtime study, which means i am not capable. However, I had fixed the date and deal with it as just a test or even a game.
+
+Goal is lens, allowing me to notice relative information. If my goal is protecting my poor ego, then I just fear the judgement from others, which eventually causes procrastinating.
+
+## **III – You aren’t where you want to be because you’re afraid to be there**
+
+**The part conveys a concept: inclusive.**
+
+Low-level identification: "I belong to the XX faction. Anyone who opposes XX is wrong." (Closed)
+
+Advanced self-identity: "I am a person who is constantly evolving. Anything that can help me grow, I will absorb."
+
+你看现在网络上因为意识形态干不停的情况，就是因为彼此之间在挑战。结局是一地鸡毛，没意义。
+
+### 你对应的综合素质不支持你达成目标
+
+### 你没有达成目标是因为你根本不想达成
+
+### 你没有达成目标是因为你害怕达成 （防御机制）
+
+先写到这，一会再补充！
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 最近Prediction Market大火，借此机会也频繁尝试了钱包的交互功能。在使用像 Trust Wallet 或 MetaMask 这样的 Web3 钱包时，我经常会遇到**_确认Confirm_**和**_签名Signature_**这两个操作。虽然它们看起来都是点一下同意，但在底层的技术逻辑和安全影响上有本质区别。
 
 * * *
@@ -103,6 +169,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # 图灵完备
 
@@ -228,6 +295,7 @@ Insider Example:
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # **CEX入门研究**
 
 ```
@@ -317,6 +385,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -403,6 +472,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
