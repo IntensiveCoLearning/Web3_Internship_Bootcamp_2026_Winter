@@ -32,13 +32,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 核心概念 1.以keyhash（哈希运算中的参数）而非地址作为资产所有权标识  
 2.所有权和交易发起地址不在链上存储  
 3.覆盖ERC-20和ERC-721两大功能  
-4.用户只需意图，无需持币，理解地址和gas（gas在实际商业模式中由项目方代付）  
-  
+4.用户只需意图，无需持币，理解地址和gas（gas在实际商业模式中由项目方代付）
+
 解决问题  
 1.隐私：隔离实际资产与链上身份  
 2.UX问题：用户只需签名表达意图，无需持币，理解gas以及管理地址——更容易让web2的参与者参与web3  
-3.扩展性问题：天然支持批量交易  
-  
+3.扩展性问题：天然支持批量交易
+
 思维导图——
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-18-1768749152890-image.png)
@@ -46,6 +46,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-17-1768663888886-image.png)
 
@@ -85,11 +86,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -162,6 +165,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -175,11 +179,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
