@@ -16,8 +16,46 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 学习计划
+
+## Web3 实习手册「行业知识」部分
+
+-   ⭕️智能合约开发
+    
+
+## 021学习以太坊
+
+-   ⭕️第2章
+    
+-   ✅️一 ~ 四
+    
+-   ⭕️五 ~ 十三
+    
+
+## 拓展 & 辅助理解材料
+
+1.  ⭕️Ethereum 官网 Overview 基础内容学习
+    
+2.  Web2 to Web3
+    
+
+-   ✅️Day 1 ~ Day 3
+    
+-   ✅️Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata
+    
+-   ⭕️Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…
+    
+
+## Solidity学习
+
+-   ⭕️Remix 使用教程
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -322,6 +360,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 学习计划
@@ -647,6 +686,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -726,6 +766,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -966,6 +1007,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -1142,6 +1184,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
