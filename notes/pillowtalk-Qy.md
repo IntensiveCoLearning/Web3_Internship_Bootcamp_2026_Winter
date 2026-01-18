@@ -17,7 +17,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
-## 一周要点速览（2026-01-14 ～ 01-17）
+## 一周学习要点速览（2026-01-14 ～ 01-17）
 
 ### 核心思想主线：**AI × 公共物品 × 区块链**
 
@@ -150,6 +150,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -478,6 +479,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -834,6 +836,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1472,6 +1475,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -2009,6 +2013,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -2445,6 +2450,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
