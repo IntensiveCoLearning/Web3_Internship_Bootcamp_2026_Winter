@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+1、回顾Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分；
+
+2、创建好小狐狸钱包并添加至浏览器扩展程序；
+
+3、Mint第一个NFT并提交作业；
+
+4、撰写本周学习总结。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 关于学习软件的推荐：
 
 除Notion外，还有Notebook llm、figma、Mermaid、推荐vitalik 的文章
@@ -34,6 +46,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 D4-Al及基础概念
 
@@ -78,6 +91,7 @@ Wachi老师解释：erc8004其实只是设计了框架，协议并没有规定re
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 一、安全主题
@@ -213,6 +227,7 @@ c、Balancer智能合约漏洞 - 老牌DeFi协议被挖出深层零日漏洞，�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
