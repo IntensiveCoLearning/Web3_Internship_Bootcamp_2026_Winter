@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+**Web3实习计划 01.18**
+
+ERC-7962
+
+ERC-7962 是一个以太坊提案（ERC, Ethereum Request for Comments），主要目标是为 AI Agent（智能体）在链上的身份、权限与交互 提供一个标准化接口。
+
+优势总结
+
+1 更强隐私
+
+2 更佳用户体验（免ETH/Gas 代付）
+
+3 更高灵活性（批量、代付）
+
+4 与 ERC-5564（Stealth Address）理念一致
+
+[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/24422](https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/24422)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 **三. 以太坊的定位与演进**
 
 1.  分片技术演进——从执行分片到数据分片
@@ -56,6 +78,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 **四、Web3 vs Web 3.0 vs Web2 的范式革命**
@@ -152,11 +175,13 @@ DeFi 协议 =
 
 
 
+
 GM 有一点要注意，1.14 的任务未完成，需要今日结束。晚间更新学习笔记。13号的还有些补充没加上
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -260,6 +285,7 @@ Web 3.0 是**语义网技术驱动**的数据组织升级
 
 
 
+
 # **Web3实习手册 入门导读笔记**
 
 ## **一、区块链是什么？**
@@ -305,6 +331,7 @@ Probably, 不论科技的尽头是什么样，我可以理解为尽头是power�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
