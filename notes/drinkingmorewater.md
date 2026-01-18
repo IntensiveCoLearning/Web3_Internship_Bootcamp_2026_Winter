@@ -25,9 +25,8 @@ Web3 实习计划 2025 冬季实习生
 
 实习计划中进行了为期一周的学习。
 
-作为一个在此之前仅仅听说过Web3这个名词的文科生，一周之内入门似乎是天方夜谭。但是经过每日1h的讲座学习，事实证明，任何人都可以在5小时内入门一个全新领域。  
+作为一个在此之前仅仅听说过Web3这个名词的文科生，一周之内入门似乎是天方夜谭。但是经过每日1h的讲座学习，事实证明，任何人都可以在5小时内入门一个全新领域。
 
-##   
 Web3是什么？
 
 您可以把现在的互联网想象成一个**大超市**，方便是方便，但啥都是人家的。
@@ -67,10 +66,121 @@ Web3目前以远程工作为主，更需要求职者擦亮双眼。远程工作�
 ## **Web3运行原理**
 
 Web3是用来构建新型数字世界的基础设施之一，用来解决**信任**和**资金**的问题，比如亚非拉国家在他们自己的汇率崩掉以后可以用代币进行交易。现在的web3里又两拨人，一波叫Degen是炒币的，另一批是Regen（regeneration）思考web3能创造什么价值。
+
+# Key Hash Based Tokens:从 ERC-721到 ERC-7962
+
+从 ERC-721 到 ERC-7962，NFT 不只是图片。
+
+今晚 Web3 实习计划的分享将带你理解 Key Hash Based Tokens 的设计逻辑，看看以太坊是如何一步步把“所有权”推向更可编程、更安全的未来。
+
+🎙️嘉宾：Alex Tian@Dugubuyan｜ERC-7962 作者、@DataDanceChain 顾问
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737793790-image.png)
+
+## Outline
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737852018-image.png)
+
+## NFT数字藏品
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737887110-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737895575-image.png)
+
+NFT (非同质化代币)是基于ERC-721的一个实践，在现实世界中通常表达为一个藏品(类似于文物，字画等)，也有基于会员身份的实践(通常会以ERC-1155作为理论基础)。
+
+区块链上会有不可篡改的owner记录
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737954161-image.png)
+
+## 会员身份最佳实践
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737980954-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768737995926-image.png)
+
+商业组织或者机构在发展社区的过程中，用户的标识在Web3世界里往往会以某个ETH地址体现。组织会部署 ERC-721智能合约，通过 mint 给予用户身份。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738098922-image.png)
+
+会员身份属于隐私数据，但是如果把ZK应用其中，就能够在不暴露隐私的情况下进行数据交易，在现实社会中非常有意义。
+
+ERC-7962 就是基于这样的现实需求构思并实现。
+
+##   
+ZK：zero knowledge零知识证明
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738223320-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738213350-image.png)
+
+在不暴露具体细节的情况下，能够向第三方证明数据的某些特性。比如，有两个整数值，第三方关注其和或者乘积是某个值，但是不能暴露具体值。
+
+提供Proof(X，Y)，向第三方证明X+Y=Z，但是Proof(X，Y)无法反推出X和Y的具体值。
+
+## ERC-7962
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738391435-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738412588-image.png)
+
+ERC-7962是在ERC-721的基础上应用ZK原理保证了向第三方证明其归属，但是不暴露其真实地址。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738460866-image.png)
+
+ERC-7962M
+
+核心概念
+
+-   以KeyHash(公钥哈希)而非地址作为资产所有权标识
+    
+-   所有权与交易发起地址解耦，不在链上存储地址
+    
+    -   传统的链上地址总会有一个 msg.sender 总会有一个发起者
+        
+-   覆盖ERC-20 与 ERC-721两类资产模型
+    
+    -   721是非同质化代币
+        
+-   用户只需签名表达意图，无需持币、无需理解 Gas、无需管理地址隐私，也能完成资产操作
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738627812-image.png)
+
+解决的关键问题
+
+-   隐私问题：避免地址可追踪，降低身份与资产的关联性
+    
+-   UX问题：用户只需签名表达意图，无需持币、无需理解Gas、无需管理地址隐私，也能完成资产操作。
+    
+    -   好处：用户很可能是web2的人，对数字藏品也能接受，但是对于安装钱包、管理私钥等环节觉得操作繁琐，把他们纳入进来。商家作为地址发起方，交易的操作都是商家发起的。
+        
+-   扩展性问题：天然支持批量交易、Relayer、账户抽象场景
+    
+
+评论：[https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7962.md](https://github.com/ethereum/ERCs/blob/master/ERCS/erc-7962.md)  可以在这边看详情
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768738965054-image.png)
+
+## 技术实现要点
+
+所有权由 keyHash=keccak256(publicKey)表示转账时提交：
+
+-   公钥(key)
+    
+-   EIP-712签名
+    
+-   nonce +deadline (防重放)
+    
+-   通过 ECDSA 验证签名人与keyHash 的一致性
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-18-1768739037539-image.png)
+
+## ERC-KeyHash721 (NFT)
+
+-   tokenld keyHash 映射关系
+    
+-   ownerOf 返回keyHash而非地址
+    
+-   无approve机制，强调一次性key/ key轮换
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 -   思维导图Mindmap
@@ -114,6 +224,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -418,6 +529,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -687,6 +799,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -794,6 +907,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
