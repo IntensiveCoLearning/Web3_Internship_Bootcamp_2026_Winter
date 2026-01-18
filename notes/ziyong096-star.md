@@ -15,8 +15,23 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+1.  今日重新整合一下知识
+    
+
+把一周学习分为，学习能力篇，web知识和实践篇，工作相关篇。昨天已经整理了学习能力篇。今天整理剩下2个
+
+2.  把胡老师两个作业做，很多都没有说明思路，但是不做我觉得会有一些后悔
+    
+3.  今日晚上开始做账号了…选题库，模式，钩子，定位…
+    
+4.  ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ziyong096-star/images/2026-01-18-1768716529519-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ziyong096-star/images/2026-01-18-1768716552074-image.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 复盘昨日例会——new学习体系
 
 结合自己和同学们的方法，我重新汇总学习体系，并以此实践来重新制作本周所学的内容。
@@ -35,6 +50,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # 今日web3学习计划
 
 1.  第一周信息理清，重复概括，弄成自己可以输出的体系
@@ -50,6 +66,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -523,6 +540,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # 自我介绍(●'◡'●)
 
 -   Only 04infj/tj 大三在读❤️
@@ -737,6 +755,7 @@ MEME
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1041,6 +1060,7 @@ MEME
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
