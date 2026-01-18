@@ -15,8 +15,140 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+### My Study Notes on Ethereum Nodes and Networking
+
+### Today I studied how Ethereum nodes communicate and how different parts of the system work together, especially after the Ethereum Merge.
+
+### First, I learned about RPC (Remote Procedure Call).  
+RPC is a computer communication protocol. It allows a program (the client) to call a function or method in another program (the server), usually on another machine over the network. The key idea is that it feels like calling a local function, and the developer does not need to handle network details by hand.
+
+### Then I looked at Web3 Libraries, such as web3.js and [web3.py](http://web3.py).  
+These libraries are used to interact with Ethereum nodes. They sit between user applications (like wallets or dApps) and Ethereum nodes, send requests, and receive results.
+
+### I also learned about the two main Ethereum clients:
+
+-   The execution client is responsible for executing smart contracts, updating account balances, and calculating transaction results.
+    
+-   The consensus client is responsible for blockchain consensus, such as block proposals and validations.
+    
+
+### In Web3 libraries, different interfaces connect to different clients:
+
+-   `web3.eth` connects to the execution client.
+    
+-   `web3.beacon` connects to the consensus client.  
+    These interfaces act as communication channels between the Web3 library and the two separate clients.
+    
+
+### After that, I studied the Engine API.  
+The Engine API is a set of internal JSON-RPC interfaces introduced after the Ethereum Merge. Its job is to connect the execution client and the consensus client, which now run as separate programs but must work closely together.
+
+### Next, I learned about bootnodes (bootstrap nodes).  
+Bootnodes are full nodes that stay online for a long time and publish their addresses. When a new node joins the Ethereum network for the first time, it contacts these bootnodes to enter the network.
+
+### Node Discovery Process
+
+### The first step is Discovery, which means how new nodes find other nodes.
+
+1.  Check if a node is online  
+    A new node sends a Ping to a bootnode, and the bootnode replies with Pong. This confirms that the node is alive.
+    
+2.  Ask for contacts (node addresses)  
+    The new node sends a FindNode request.  
+    The response is:
+    
+    -   Neighbors in discv4, or
+        
+    -   Nodes in discv5,  
+        which contain contact information of other active nodes.
+        
+
+### After getting these neighbors, the new node repeats the same process with them: Ping/Pong and FindNode. Step by step, it fills its own neighbor table until it reaches a set limit.  
+This process is based on Kademlia-style DHT (Distributed Hash Table).
+
+### In Ethereum, node lookup works by getting closer to a target node ID at each hop. This greatly reduces broadcast traffic and improves discovery efficiency.
+
+### Building a Secure Connection
+
+### After discovery, nodes build a secure connection using TCP + RLPx / devp2p.
+
+-   TCP is used first to create a stable and reliable connection.
+    
+-   RLPx runs on top of TCP and allows multiple protocols to be multiplexed inside a single TCP connection.
+    
+
+### So overall, Ethereum’s P2P network is built from:
+
+-   UDP-based Node Discovery, and
+    
+-   TCP-based RLPx/devp2p communication.
+    
+
+### Message Propagation
+
+### There are two main propagation models:
+
+1.  Gossip (messages spread gradually through the network)
+    
+2.  Request–Response (a node asks for specific data and gets a reply)
+    
+
+### So node communication can be summarized in three stages:
+
+1.  Discovery stage (UDP + Kademlia)
+    
+2.  Connection stage (TCP + RLPx/devp2p)
+    
+3.  Propagation stage (Gossip + request/response)
+    
+
+### Types of Ethereum Nodes
+
+### I also studied different types of Ethereum nodes.
+
+### A full node stores:
+
+-   The current blockchain state,
+    
+-   All block headers and block bodies (transactions and receipts),
+    
+-   But only keeps the recent states (typically the last ~128 blocks). Older states are removed by pruning to save disk space.
+    
+
+### A full node:
+
+-   Runs both an execution client and a consensus client,
+    
+-   Verifies the blockchain from genesis (or from a trusted checkpoint using snap/fast sync),
+    
+-   Independently checks whether new blocks and transactions are valid,
+    
+-   Provides JSON-RPC interfaces for wallets, dApps, and scripts,
+    
+-   Can theoretically reconstruct any past state, though very old states may require help from archive nodes.
+    
+
+### An archive node is a full node without pruning.  
+It stores all historical states from genesis to the present.  
+These nodes are mainly used by:
+
+-   Block explorers (like Etherscan),
+    
+-   On-chain data analysis companies,
+    
+-   Advanced debugging and backtesting tools.
+    
+
+### A light node only stores block headers and requests detailed data from full nodes when needed.
+
+### Overall, this study helped me understand that Ethereum is not just a blockchain, but a complex distributed system made of different clients, protocols, and node types, all carefully designed for efficiency, security, and decentralization.
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 Today I learned about the structure of an Ethereum node after The Merge. After The Merge, a full Ethereum node is no longer one single program. Instead, it is built from two main clients, the execution client and the consensus client. If a user only wants to sync the blockchain and check blocks and transactions, running these two clients is enough. However, if someone wants to produce blocks and earn staking rewards, they also need to run a validator client. The validator client works like a plugin of the consensus client and is used for signing messages, voting, and proposing blocks.
 
 The execution client is responsible for executing all transactions in a block. It calculates account balances and smart contract states and then gives the final execution results. In simple words, the execution client does the math but does not decide which block is the official one. The consensus client does not execute transactions by itself. Instead, it checks the execution results from the execution client and runs the Proof of Stake rules to decide which block is valid and which chain should be accepted as the official chain. This means the execution client gives the results, and the consensus client decides whether to accept them.
@@ -27,11 +159,13 @@ The execution client and the consensus client communicate through a special inte
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 亲爱的助教老师您好，明天上午10点我要考电动力学，这学期的最后一门考试，今天实在是没有时间学习其他的了。之后我会补上今天的内容，谢谢啦！
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 Today, I attended an online sharing session on Web3 compliance. After listening to the lawyer's presentation, I felt a chill run down my spine, but I also felt fortunate to have learned these lessons in time. I used to think that as long as the technology wasn't "evil" and the company held an overseas license, everything was safe. However, today's notes completely overturned my "naive" thoughts.
@@ -50,6 +184,7 @@ Finally, I deeply understood that **"**compliance" is not just what is written o
 
 
 
+
 Today I reviewed the core structure of blockchain systems. A blockchain consists of a sequence of blocks, each containing transaction records and the hash of the previous block. This chained hash structure ensures data integrity and makes historical records effectively immutable.
 
 Wallet balances on a blockchain are not stored explicitly. Instead, balances are derived by scanning the entire transaction history associated with a given wallet address. Although all transactions are publicly accessible, wallet ownership remains anonymous because addresses are randomly generated and not directly linked to real-world identities.
@@ -65,6 +200,7 @@ Finally, I examined scalability challenges in public blockchains, such as increa
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
