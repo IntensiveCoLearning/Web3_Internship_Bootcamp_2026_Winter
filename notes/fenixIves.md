@@ -15,8 +15,373 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+# 07 智能合约开发大致流程
+
+智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
+
+### **一、需求与架构设计阶段（核心：明确目标，规避风险）**
+
+这是开发的起点，直接决定后续合约的功能和安全性，不能跳过。
+
+1.  **明确业务需求**
+    
+
+-   确定合约的核心功能：是NFT铸造、DeFi借贷、DAO投票，还是简单的转账/数据存储？
+    
+-   定义核心规则：比如NFT的铸造数量、价格、权限；DeFi的利率计算、抵押率、清算规则。
+    
+-   示例：需求是「开发一个限量1000枚的NFT合约，仅合约拥有者可开启铸造，用户支付0.01 ETH铸造1枚」。
+    
+
+2.  **选择目标区块链与技术栈**
+    
+
+-   **区块链选择**（优先兼容EVM的链，新手友好）：
+    
+
+-   以太坊（Ethereum）：生态最成熟，适合高安全性需求的合约（如DeFi）。
+    
+-   BSC/Polygon：手续费低、速度快，适合面向大众用户的应用型合约（如NFT、小游戏）。
+    
+
+-   **技术栈确定**：
+    
+
+-   开发语言：**Solidity**（主流，优先学习）。
+    
+-   开发框架：**Hardhat/Truffle**（二选一，推荐Hardhat，文档清晰、生态活跃）。
+    
+-   辅助工具：Remix IDE（在线编写，快速验证小合约）、OpenZeppelin（开源安全合约库，避免重复造轮子）。
+    
+
+3.  **架构设计与风险评估**
+    
+
+-   拆分合约模块：复杂需求建议分多个合约（如主合约+权限管理合约+数据存储合约），降低单个合约的复杂度。
+    
+-   预判风险点：比如权限控制（谁能调用核心函数）、溢出问题（Solidity 0.8.x已内置检查，低版本需手动处理）、重入攻击（转账时使用`ReentrancyGuard`防护）。
+    
+-   选择安全方案：优先使用OpenZeppelin的合约（如`Ownable`权限管理、`ERC721`NFT标准、`ReentrancyGuard`防重入）。
+    
+
+### **二、合约开发阶段（核心：编写代码，遵循规范）**
+
+1.  **搭建本地开发环境**
+    
+
+-   以Hardhat为例，命令行步骤：
+    
+
+```
+# 1. 新建项目文件夹并进入
+mkdir nft-contract && cd nft-contract
+# 2. 初始化npm项目
+npm init -y
+# 3. 安装Hardhat
+npm install --save-dev hardhat
+# 4. 初始化Hardhat项目（选择Create a JavaScript project）
+npx hardhat
+# 5. 安装OpenZeppelin合约库（必装，提升安全性）
+npm install @openzeppelin/contracts
+```
+
+2.  **编写合约代码**
+    
+
+-   在项目的`contracts/`目录下创建`.sol`文件（如`MyNFT.sol`）。
+    
+-   遵循Solidity规范：
+    
+
+-   开头指定编译器版本（如`pragma solidity ^0.8.20;`，避免使用过时版本）。
+    
+-   继承开源库合约（如`ERC721`+`Ownable`），减少自研代码量。
+    
+-   注释清晰：对核心函数、参数、权限进行说明，方便后续测试和维护。
+    
+
+-   示例（简单NFT合约）：
+    
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyNFT is ERC721, Ownable {
+    uint256 public totalSupply;
+    uint256 public maxSupply = 1000;
+    uint256 public mintPrice = 0.01 ether;
+
+    // 构造函数：初始化NFT名称、符号，设置合约拥有者
+    constructor() ERC721("MyNFT", "MNFT") Ownable(msg.sender) {}
+
+    // 铸造函数：仅当未达到最大供应量时，用户支付ETH可铸造
+    function mint() external payable {
+        require(totalSupply < maxSupply, "Sold out");
+        require(msg.value == mintPrice, "Invalid payment");
+        totalSupply++;
+        // _safeMint：安全铸造，确保接收方是ERC721兼容地址
+        _safeMint(msg.sender, totalSupply);
+    }
+
+    // 提取合约余额：仅拥有者可操作
+    function withdraw() external onlyOwner {
+        (bool success, ) = payable(owner()).call{value: address(this).balance}("");
+        require(success, "Withdraw failed");
+    }
+
+    // 接收ETH的函数
+    receive() external payable {}
+}
+```
+
+3.  **编译合约**
+    
+
+-   使用Hardhat编译合约，生成**字节码**（部署到区块链的代码）和**ABI**（前端交互的接口）：
+    
+
+```
+npx hardhat compile
+```
+
+-   编译成功后，会在`artifacts/`目录下生成合约的编译产物，ABI是后续前端交互的核心文件。
+    
+
+### **三、测试阶段（核心：全面验证，消灭BUG）**
+
+**智能合约上线后无法修改，测试是重中之重**，必须覆盖功能测试、边界测试、安全测试。
+
+1.  **编写自动化测试用例**
+    
+
+-   在项目的`test/`目录下创建测试文件（如`MyNFT.test.js`），使用JavaScript/TypeScript编写，基于`Chai`断言库。
+    
+-   测试覆盖场景：
+    
+
+-   功能测试：铸造NFT、提取余额是否正常。
+    
+-   边界测试：达到最大供应量后是否无法铸造、支付金额错误是否会报错。
+    
+-   权限测试：非拥有者是否无法调用`withdraw`函数。
+    
+
+-   示例测试代码片段：
+    
+
+```
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("MyNFT", function () {
+  let myNFT;
+  let owner;
+  let user;
+
+  beforeEach(async function () {
+    // 部署合约
+    [owner, user] = await ethers.getSigners();
+    const MyNFTFactory = await ethers.getContractFactory("MyNFT");
+    myNFT = await MyNFTFactory.deploy();
+    await myNFT.waitForDeployment();
+  });
+
+  // 测试铸造功能
+  it("Should mint NFT successfully", async function () {
+    const mintPrice = await myNFT.mintPrice();
+    await expect(myNFT.connect(user).mint({ value: mintPrice }))
+      .to.emit(myNFT, "Transfer") // 验证Transfer事件是否触发
+      .withArgs(ethers.ZeroAddress, user.address, 1);
+    expect(await myNFT.totalSupply()).to.equal(1);
+  });
+
+  // 测试权限控制
+  it("Should reject withdraw by non-owner", async function () {
+    await expect(myNFT.connect(user).withdraw()).to.be.revertedWithCustomError(myNFT, "OwnableUnauthorizedAccount");
+  });
+});
+```
+
+2.  **运行自动化测试**
+    
+
+-   执行测试命令，查看所有用例是否通过：
+    
+
+```
+npx hardhat test
+```
+
+-   若测试失败，根据报错信息修改合约代码，直到所有用例通过。
+    
+
+3.  **本地节点手动调试（可选）**
+    
+
+-   启动Hardhat本地节点，模拟区块链环境：
+    
+
+```
+npx hardhat node
+```
+
+-   另开终端，部署合约到本地节点，手动调用函数验证：
+    
+
+```
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+4.  **安全审计（可选但推荐）**
+    
+
+-   个人/小型项目：使用工具自查（如`Slither`静态分析工具）。
+    
+-   商业/高价值项目：委托专业审计机构（如慢雾、CertiK）进行审计，排查安全漏洞。
+    
+
+### **四、部署阶段（核心：先测试网，后主网）**
+
+遵循「**测试网验证→主网上线**」的流程，避免主网资产损失。
+
+1.  **编写部署脚本**
+    
+
+-   在项目的`scripts/`目录下创建`deploy.js`：
+    
+
+```
+const { ethers } = require("hardhat");
+
+async function main() {
+  const MyNFTFactory = await ethers.getContractFactory("MyNFT");
+  console.log("Deploying MyNFT...");
+  const myNFT = await MyNFTFactory.deploy();
+  await myNFT.waitForDeployment();
+  console.log("MyNFT deployed to:", myNFT.target); // 打印合约地址，务必保存
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
+```
+
+2.  **配置测试网/主网**
+    
+
+-   修改`hardhat.config.js`，添加测试网（如Sepolia）或主网配置，需要：
+    
+
+-   钱包私钥（MetaMask导出，**绝对保密**）。
+    
+-   RPC节点URL（从Alchemy/Infura免费申请）。
+    
+
+-   配置示例：
+    
+
+```
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config(); // 用dotenv管理私钥，避免硬编码
+
+module.exports = {
+  solidity: "0.8.20",
+  networks: {
+    sepolia: {
+      url: process.env.ALCHEMY_SEPOLIA_URL,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+    // 以太坊主网（部署前务必谨慎）
+    mainnet: {
+      url: process.env.ALCHEMY_MAINNET_URL,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+  },
+};
+```
+
+-   创建`.env`文件存储私钥和RPC URL：
+    
+
+```
+PRIVATE_KEY=你的钱包私钥
+ALCHEMY_SEPOLIA_URL=你的Sepolia RPC地址
+```
+
+3.  **部署到测试网**
+    
+
+-   获取测试网代币（如Sepolia ETH，通过水龙头免费领取），用于支付部署手续费。
+    
+-   执行部署命令：
+    
+
+```
+npx hardhat run scripts/deploy.js --network sepolia
+```
+
+-   部署成功后，记录**合约地址**，并在区块链浏览器（如Etherscan）查看合约状态。
+    
+
+4.  **测试网功能验证**
+    
+
+-   通过Remix或前端Demo，在测试网手动调用合约函数，验证所有功能是否正常（如铸造NFT、提取余额）。
+    
+
+5.  **部署到主网（最终步骤）**
+    
+
+-   测试网验证无误后，执行主网部署命令（需支付真实Gas费，务必谨慎）：
+    
+
+```
+npx hardhat run scripts/deploy.js --network mainnet
+```
+
+-   主网部署后，**建议在Etherscan上验证合约源代码**，提升透明度。
+    
+
+### **五、上线与维护阶段（核心：交互开发，监控运行）**
+
+1.  **前端交互开发**
+    
+
+-   使用Ethers.js/Web3.js，结合合约ABI和地址，开发前端DApp：
+    
+
+-   实现钱包连接（如MetaMask）。
+    
+-   调用合约函数（如铸造NFT、查询余额）。
+    
+-   监听合约事件（如`Transfer`事件，实时更新NFT持有状态）。
+    
+
+2.  **合约监控与维护**
+    
+
+-   监控合约的交易记录和资产变动（通过区块链浏览器）。
+    
+-   若合约设计了可升级方案（如使用代理模式），可通过升级合约修复非核心问题；普通合约无法升级，需提前做好需求调研。
+    
+
+### **总结：智能合约开发核心流程**
+
+`需求设计 → 环境搭建 → 代码编写 → 编译 → 自动化测试 → 测试网部署验证 → 主网部署 → 前端交互 → 监控维护`
+
+其中，**需求设计和测试**是决定合约成败的关键，新手切勿跳过这两个环节。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -340,6 +705,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -501,6 +867,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # **以太坊生态核心逻辑全梳理：**
@@ -777,6 +1144,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1072,6 +1440,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -1300,6 +1669,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
