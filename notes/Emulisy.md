@@ -15,8 +15,135 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## 一、Web3 合规 (Compliance)
+
+1.  核心监管概念
+    
+    -   KYC (Know Your Customer/了解你的客户): 验证用户身份的过程，通常需要上传护照、身份证和面部识别。这是交易所和法币出入金通道的标配。
+        
+    -   AML (Anti-Money Laundering/反洗钱): 监控和防止非法资金流动的法规。链上分析工具（如 Chainalysis）被用来追踪黑客资金或制裁地址。
+        
+    -   CTF (Counter-Terrorist Financing/反恐融资): 防止资金流向恐怖主义活动的措施。
+        
+2.  代币分类与证券法 (以美国 SEC 为例)
+    
+    -   豪威测试 (Howey Test): 判断一种加密资产是否属于“证券”的核心标准。如果满足以下条件，通常被视为证券：
+        
+        1.  金钱投资。
+            
+        2.  投资于共同事业。
+            
+        3.  期待获利。
+            
+        4.  获利主要来自于他人的努力。
+            
+    -   证券型代币 (Security Token): 受到严格证券法监管，发行需注册。
+        
+    -   功能型代币 (Utility Token): 主要用于网络内部使用（如 Gas 费），监管相对宽松，但界限日益模糊。
+        
+3.  全球主要监管框架
+    
+    -   欧盟 (MiCA 法案): 世界上第一个全面的加密资产监管框架，涵盖稳定币发行商和服务提供商（CASP）。
+        
+    -   香港 (VASP 牌照): 虚拟资产服务提供商发牌制度，允许散户在持牌交易所交易大盘币（BTC/ETH）。
+        
+    -   美国: 监管分散，SEC（证券交易委员会）管证券，CFTC（商品期货交易委员会）管商品。目前执法主要靠起诉（Regulation by Enforcement）。
+        
+4.  稳定币合规
+    
+    -   储备金证明: 发行商需证明有 1:1 的法币或等价资产支持。
+        
+    -   审计与透明度: 定期发布由第三方会计事务所出具的鉴证报告。
+        
+5.  DAO 的法律结构
+    
+    -   纯链上组织: 法律实体地位不明，成员可能承担无限连带责任。
+        
+    -   法律包装 (Legal Wrapper):
+        
+        -   UNA (非法人非营利协会): 常用于 DAO。
+            
+        -   LLC (有限责任公司): 如怀俄明州 DAO LLC，为成员提供责任保护。
+            
+        -   基金会结构: 常见于开曼群岛或瑞士，作为 DAO 的现实世界代理人。
+            
+
+## 二、Web3 安全 (Security)
+
+1.  智能合约常见漏洞 (Smart Contract Vulnerabilities)
+    
+    A. 重入攻击 (Reentrancy)
+    
+    -   原理: 攻击者合约在被调用转账时，回调原合约的函数，在原合约更新余额之前再次提取资金。
+        
+    -   防御: 使用“检查-生效-交互”模式 (Checks-Effects-Interactions)，或使用重入锁 (ReentrancyGuard)。
+        
+    
+    B. 整数溢出/下溢 (Overflow/Underflow)
+    
+    -   原理: 数字超过变量存储上限归零，或减过头变成最大值。
+        
+    -   防御: Solidity 0.8.0 版本以后编译器自动检查，此前版本需用 SafeMath 库。
+        
+    
+    C. 访问控制缺失 (Access Control)
+    
+    -   原理: 关键函数（如铸币、提款、修改所有权）没有加 `onlyOwner` 等修饰符，导致任何人都能调用。
+        
+    -   防御: 严格检查每个函数的可见性和修饰符。
+        
+    
+    D. 预言机操纵 (Oracle Manipulation) / 闪电贷攻击
+    
+    -   原理: 攻击者利用闪电贷借入巨款，瞬间砸盘或拉升去中心化交易所(DEX)的价格，导致依赖该价格的借贷协议发生错误清算或坏账。
+        
+    -   防御: 使用时间加权平均价格 (TWAP) 或去中心化预言机 (如 Chainlink)，不依赖单一 DEX 的现货价格。
+        
+    
+    E. 抢跑 (Front-running) / MEV
+    
+    -   原理: 机器人在内存池 (Mempool) 看到你的交易，通过提高 Gas 费抢先打包，从而从你的滑点中获利。
+        
+2.  钱包与用户安全
+    
+    A. 私钥与助记词管理
+    
+    -   铁律: 助记词一旦触网（截图、发微信、存网盘）即视为泄露。
+        
+    -   冷钱包 (Hardware Wallet): 私钥永不触网（如 Ledger, Trezor）。
+        
+    -   热钱包: 浏览器插件或手机 App，仅用于存放小额资金。
+        
+    
+    B. 授权签名 (Approve/Permit) 风险
+    
+    -   风险: 许多 DApp 要求“无限授权” (Unlimited Allowance)。如果 DApp 合约被黑，用户钱包里的对应代币会被转空。
+        
+    -   防御: 定期使用 [Revoke.cash](http://Revoke.cash) 等工具取消不用的授权；仅授权实际交易金额。
+        
+    
+    C. 钓鱼攻击 (Phishing)
+    
+    -   手法: 假冒的空投网站、假冒的 NFT Mint 页面、高仿推特账号。
+        
+    -   识别: 检查域名拼写，不点击不明链接，不轻易签署 "SetApprovalForAll" 或不明 Hash 的签名。
+        
+3.  开发与运营安全流程
+    
+    -   审计 (Audit): 任何主网上线的代码必须经过至少一家（最好两家）专业安全公司（如 CertiK, OpenZeppelin, SlowMist）的审计。
+        
+    -   多重签名 (Multi-sig): 团队管理的金库或合约权限，必须使用多签钱包（如 Gnosis Safe），避免单人作恶或私钥丢失。
+        
+    -   漏洞赏金 (Bug Bounty): 在 Immunefi 等平台发布赏金计划，奖励发现漏洞的白帽子。
+        
+    -   时间锁 (Timelock): 关键参数修改需经过时间锁延迟（如 24-48 小时），给社区反应时间。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # SOLIDITY BASIC SYNTAX NOTES
 
 1.  FILE STRUCTURE
@@ -174,6 +301,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # Smart Contract Development – Concise Notes  
@@ -399,6 +527,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -568,6 +697,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -761,6 +891,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
