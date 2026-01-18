@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+### \[N-4\] Just jotting down some thoughts in 1/18/2026
+
+昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
+
+想想我为什么会加入到Web3这个圈子，很直白的原因是互联网大厂太卷，准备实习不比高考轻松，还不如考研，我也不喜欢考研，我不喜欢考试。二五年五月我记得很清楚，学长们都在准备大厂面试，整个工作室都弥漫着焦虑、紧张和迷茫，虽然我不需要实习，那时我才大一，但是这种氛围让我窒息，也是这个时候了解到了web3，当时我通过媒体了解到的消息，Web3看来这是一个远离压力充满希望的桃花源。
+
+那时我的Web3学习之路启程了，我一直保持一个学习者的角色到现在。
+
+我没有大家那么"社会化"，周五的例会大家都侃侃而谈，谈论Web3的治理、传统金融、讨论工作...... 但是这些方面我都很不清楚。我觉得我是个"局外人"，觉得我还只是个"小孩"，而你们都是"大人"。很难要求一个十九岁的年轻人知道这么多社会上的东西，就算知道了也没有体会过。我也只出于技术的热爱所以加入Web3，而Web3之于金融，Web3之于政府，甚至Web3之于人类历史，我都觉得很懵。我只觉得这是一片技术的蓝海，我能从开源的代码中学习到行业的所有知识，我能知道市面上所有DeFi的源码和技术细节，我能自由探索没有限制，这是我热爱Web3而不是Web2的原因，还有一部分是因为Web3有像ETHPanda和LXDAO这样充满活力和热爱的社区，我能感受到归属感，真的很赞。
+
+这半年的"旅程"很充实，就像人生的锚点，回忆会一直清晰，感受会愈发强烈。我会一直前进，无论多少困难都不会使我低头，我有这样的自信"still I raise up."，未来我不会是一个无名小辈，与君共勉。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ### **\[UNIV3-3\] Swap In UniswapV3Pool.sol**
 
 **Discription:** 通过`swap-router-contract__UniswapV3Router::exactInputSingle`用户可以与`v3-core`进行交互。提供四种方式，exactInput,exactInputSingle,exactOutput,exactOutputSingle
@@ -165,6 +181,7 @@ contract UniswapV3SwapTest is Test {
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -188,6 +205,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ### **\[UNI-V3-2\] Spot Price**
@@ -374,6 +392,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -393,6 +412,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -622,6 +642,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
