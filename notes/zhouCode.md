@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+今日还在重构agent架构，暂无具体更新。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 更新了一下 agent 提示词，但是似乎还是不能很好的完成我需要的任务。可能是需求太过于垂直了。
 
 保存一下提示词。现在一共有 4 个角色，架构师，开发者，审计，QA，感觉还是需要优化一下提示词。
@@ -186,11 +192,13 @@ timezone: UTC+8
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 一轮对话还没跑完，就烧了 0.5U 的 TOKEN，钱包告急，及时止损，转战 Trae，最近送了 1 个月免费会员，并且支持 Agent 和 Skills，看网友反馈据说已经可以媲美 Cursor 了，尝试一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # Day2
@@ -202,6 +210,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
