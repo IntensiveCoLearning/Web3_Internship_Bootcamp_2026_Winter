@@ -143,10 +143,25 @@ ZK：零知识证明
 -   批量转账
     
 -   Relayer / Payment
+    
+
+## 优势总结
+
+-   更强隐私
+    
+-   更加用户体验（免 ETH / Gas 代付）
+    
+-   更高灵活性
+    
+-   与 ERC-5564 观念一致
+    
+
+**局限**： Gas 更高、 key 轮换
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -237,6 +252,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -350,6 +366,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -540,6 +557,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -764,6 +782,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1031,6 +1050,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
