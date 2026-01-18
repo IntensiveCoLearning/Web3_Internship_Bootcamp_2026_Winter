@@ -15,8 +15,36 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## **  
+Solidity 结构体总结**
+
+| 类别 | 具体说明 | 示例/注意事项 |
+| --- | --- | --- |
+| 结构体定义 | 使用 struct 关键字定义自定义复合类型，将多个不同类型数据组合成新类型 | struct Person { address account; bool gender; uint8 age; } |
+| 成员类型规则 | 1. 支持基本类型、数组、映射、其他结构体作为成员 2. 不能直接包含自身作为成员 3. 可包含自身类型的数组/映射（不推荐） | 错误示例：struct Person { Person child; }（无法编译） 合法示例：struct Person { Person[] childs; } |
+| 赋值方式 | 1. 仅声明（使用默认值） 2. 按成员顺序赋值 3. 具名方式赋值 4. 逐个更新成员 | 具名赋值示例：Person({account: address(0x0), gender: false, age: 18}) |
+| 访问器函数 | public 结构体状态变量会自动生成访问器函数，无参数，返回包含所有成员的元组 | 生成的函数示例：function person() external view returns (address, bool, uint8) { ... } |
+| 存储特性 | 结构体成员默认连续分配存储槽；变长成员（数组/映射）单独分配存储槽，仅留指向位置 | 解释了“可包含自身数组/映射，但不能直接包含自身”的底层原因 |
+
+## **Solidity 映射知识点总结表格**
+
+| 核心知识点 | 具体内容 |
+| --- | --- |
+| 映射定义方式 | 键值对存储结构，格式：mapping(KeyType => ValueType)，功能类似 Java Map/Python Dict，常用于存储余额、用户等级等键值数据 |
+| 存储位置限制 | 仅能保存在 storage（状态变量默认），不支持 memory 修饰 |
+| 键/值类型限制 | 键：仅支持内置值类型、bytes、string、合约/枚举，不支持映射、变长数组、结构体等复杂类型 值：无类型限制，可是任意类型（包括嵌套映射） |
+| 核心特性 | 1. 无长度属性，无法直接获取长度 2. 无键/值集合，无法直接迭代 3. 不存在的键返回对应值类型默认值（如 uint 为 0，bool 为 false） |
+| 嵌套映射 | 支持嵌套（值类型为另一个映射），示例：mapping(address => mapping(address => uint)) tokenBalances |
+| 访问器函数 | public 映射状态变量会生成访问器函数，参数为键类型，返回值类型；嵌套映射的访问器会接收多层键参数 |
+| 可迭代映射实现方式 | 方式1：维护键的数组（实现简单但Gas成本较高） 方式2：通过链表（推荐，可实现O(1)复杂度），用mapping存储下一个元素地址 |
+| 数组 vs 映射 | 数组：适合迭代场景，Gas消耗随长度增加变大，不宜过大 映射：适合已知键快速取值，Gas消耗更优，不支持直接迭代 |
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 * * *
 
 ## **Solidity 数组总结**
@@ -63,6 +91,7 @@ NaN.  **Gas 优化核心**：优先选择存储更紧凑的类型（bytes32 > by
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 **  
 Solidity 合约类型总结**
@@ -145,6 +174,7 @@ contract CounterFactory {
 
 
 
+
 Solidity 布尔类型小结
 
 | 分类 | 核心内容 | 关键说明/示例 |
@@ -203,6 +233,7 @@ contract PiggyBank {
 
 
 
+
 ## Solidity 数据类型小结
 
 | **分类**                     | **核心内容**                                                 | **关键特性**                                                 |
@@ -248,6 +279,7 @@ contract PiggyBank {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
