@@ -27,6 +27,7 @@ Remote Procedure Call
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 # 助记词的延伸脉络：
 
 -   註记词 → 唯一 种子
@@ -60,6 +61,7 @@ Remote Procedure Call
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 如何进入 Web3
@@ -147,6 +149,7 @@ Remote Procedure Call
 
 
 
+
 0114/0115 以準備後續 2 月底開始教課的相關內容簡報，並與身邊的小夥伴進行討論與試教
 
 -   DeFi 基本知識
@@ -168,6 +171,7 @@ Remote Procedure Call
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
