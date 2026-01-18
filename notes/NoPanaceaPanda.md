@@ -15,8 +15,96 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+Sunday, January 18, 2026, 20:00-21:00 CST
+
+“Key Hash Based Tokens：从ERC-721到ERC-7962”
+
+![fab68dfe19c4e7f7df11b09e2a9586b3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NoPanaceaPanda/images/2026-01-18-1768751114291-fab68dfe19c4e7f7df11b09e2a9586b3.jpg)
+
+## **一、核心问题**
+
+**现有 NFT / 会员身份** 基于 ERC-721/1155，**地址公开可追踪**，隐私性差。
+
+**需求**：在**不暴露用户地址**的前提下，证明资产所有权或身份真实性。
+
+## **二、解决方案：ERC-7962（Key Hash Based Tokens）**
+
+**所有权标识**：用 `keyHash = keccak256(publicKey)` 代替以太坊地址。
+
+**隐私保护**：所有权与交易发起地址解耦，地址不上链。
+
+**支持资产类型**：
+
+ERC-KeyHash721（NFT）
+
+ERC-KeyHash20（同质化代币）
+
+**用户体验**：
+
+-   只需签名，无需持有 ETH、无需理解 Gas、无需管理地址。
+    
+-   天然支持批量交易、Gas 代付、账户抽象。 **三、技术实现要点**
+    
+
+1.  **转账时提交**：公钥 + EIP-712 签名 + nonce + deadline。
+    
+2.  **验证方式**：ECDSA 验证签名人与 keyHash 一致性。
+    
+3.  **安全机制**：
+    
+    -   EIP-712 结构化签名
+        
+    -   每个 keyHash 独立 nonce（防重放）
+        
+    -   有效期控制（deadline）
+        
+    -   强制 low-S 签名格式
+        
+
+## **四、主要优势**
+
+**隐私增强**：地址不上链，防止链上追踪。
+
+**用户体验好**：无需 Gas、无需持币，签名即操作。
+
+**扩展性强**：支持批量、Relayer、Paymaster、账户抽象。
+
+**理念先进**：与 ERC-5564（隐身地址）一致。
+
+## **五、局限与挑战**
+
+Gas 成本高于传统 ERC 标准
+
+公钥在 calldata 中暴露（需定期更换 key）
+
+不向后兼容现有 ERC 标准
+
+用户需自行管理密钥，门槛提高
+
+## **六、适用场景**
+
+隐私 NFT / 匿名资产
+
+Web3 新手友好型钱包
+
+企业批量空投与分发
+
+基于账户抽象（AA）的支付体系
+
+会员身份隐私保护
+
+* * *
+
+ERC-7962 是一种**以公钥哈希代表所有权**的隐私代币标准，通过签名验证实现“地址不上链”，适用于**隐私资产、会员身份、企业分发和账户抽象**等场景，是 Web3 隐私保护与用户体验结合的一次重要探索。
+
+如果需要将此总结整理成演讲稿、PPT 大纲或学习卡片，我也可以帮你继续优化。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 Saturday, January 17
 
 今天学习Remix IDE通识课程的时候发现了一位宝藏UP主
@@ -65,6 +153,7 @@ Saturday, January 17
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 Friday, January 16, 2026, 20:00-21:00 CST
 
@@ -133,6 +222,7 @@ Friday, January 16, 2026, 20:00-21:00 CST
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 Thursday, January 15, 2026, 20:00-21:00 CST
 
 “AI及其基础概念分享会”
@@ -146,6 +236,7 @@ Thursday, January 15, 2026, 20:00-21:00 CST
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -220,6 +311,7 @@ Wednesday, January 14, 2026, 19:00-20:30 CST
 
 
 
+
 Tuesday, January 13, 2026, 20:00-21:00 CST
 
 **“Web3运行原理”笔记与思考：**
@@ -247,6 +339,7 @@ Tuesday, January 13, 2026, 20:00-21:00 CST
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
