@@ -15,8 +15,46 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+\# 1月18日工程日志：EVM 架构视角与战术预演 (Week 1 Day 7)
+
+\## 第一周复盘
+
+第一周结束，我完成了对 Web3 \*\*底层基础设施、安全边界、合规逻辑\*\* 的完整闭环构建。
+
+作为工程方向的 Builder，今天的核心任务是为下周的 Solidity 开发建立\*\*“EVM 架构观”\*\*。
+
+\## 核心思考：原子性与可组合性
+
+在预习下周的 DeFi 协议逻辑时，我深刻理解了为什么以太坊被称为 "Infinite Machine"：
+
+1\. \*\*原子性 (Atomicity)\*\*：
+
+Web2 的数据库事务需要复杂的锁机制，而在 EVM 中，一笔交易要么全部成功，要么完全回滚。
+
+\* \*工程启示\*：这让 \*\*Flashloan（闪电贷）\*\* 成为可能——借款、套利、还款在一个区块内完成，无风险套利的本质就是利用了 EVM 的原子性。
+
+2\. \*\*可组合性 (Money Legos)\*\*：
+
+Aave 的存款凭证 (aToken) 可以被 Uniswap 交易，又可以作为 MakerDAO 的抵押品。
+
+\* \*AI 结合点\*：AI Agent 不需要像人类一样去跟每个银行谈接口，它只需要调用合约的标准 ABI。\*\*智能合约是为 AI 诞生的原生 API\*\*。
+
+\## 下周战术部署 (Week 2 Preview)
+
+下周进入 Solidity 深水区，我将不再关注基础语法，而是聚焦于\*\*底层存储与 Gas 优化\*\*：
+
+\* \*\*Storage Layout\*\*：深入理解 Slot 0, Slot 1 的存储机制，这是手写汇编优化 Gas 的前提。
+
+\* \*\*Memory vs Calldata\*\*：彻底搞懂数据拷贝成本，写出 Gas Efficient 的代码。
+
+\* \*\*DelegateCall\*\*：掌握代理合约（Proxy）模式，理解合约的可升级性架构。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 1月17日工程日志： ## 🎯 核心议题 \*\*From Scripting to Engineering.\*\* 放弃 JS/TS 驱动的 Hardhat 框架，全面迁移至以太坊基金会及 Paradigm 强推的 \*\*Foundry\*\* 工具链。 \*\*目标：\*\* 建立一套支持 Fuzzing（模糊测试）、Gas Snapshot（Gas 快照对比）及 Mainnet Forking（主网分叉模拟）的工业级开发环境。 --- ## 🛠️ 1. 技术选型：Why Foundry Over Hardhat? 1. \*\*测试反馈环 (Feedback Loop)\*\*：Foundry 基于 Rust 编写的 EVM，编译速度比 Hardhat (Node.js) 快 20-50 倍。在跑大型协议的集成测试时，这几分钟的差距决定了开发体验。 2. \*\*上下文统一 (Context Switching)\*\*：Hardhat 强迫开发者用 JS/TS 写测试逻辑（异步操作、BigNumber 处理极其痛苦）。Foundry 允许 \*\*Solidity-Native Testing\*\*，直接用 Solidity 写测试，测试代码本身就是合约逻辑的一部分。 3. \*\*高级测试原语\*\*：原生支持 \*\*Property-Based Testing (Fuzzing)\*\* 和 \*\*Invariant Testing\*\*，这是传统 Unit Test 无法覆盖的安全盲区。 --- ## ⚡ 2. 工程环境配置 (Infrastructure) ### 2.1 基础组件安装 跳过基础 curl 安装，重点配置 \`foundry.toml\` 以适配不同网络环境与优化器设置。 \`\`\`toml # foundry.toml 核心配置 \[profile.default\] src = 'src' out = 'out' libs = \['lib'\] op`imizer = tru`optimizer\_runs = 20000 #`针对生产环境的高频调用优`fs\_permissions = \[{ access = "read", path = "./"}\] # 允`读取本地文件，用于复杂脚`
 
 ### 2.2 依赖管理 (Dependency Management)
@@ -131,6 +169,7 @@ Type: uint256
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 **1月16日学习日志：**
 
 第一周的实习即将结束，今天的周会和复盘让我对“Web3工程师”这个职业有了全新的定义。如果说在学校是学习如何解题，那么这周的实战则是学习如何定义问题和构建规则。以下是本周的四维工程重构：
@@ -185,6 +224,7 @@ Type: uint256
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 **1月15日学习日志：**
 
 经过前三天关于原理、安全与合规的高密度输入，今天我利用空档期对“AI x Crypto”这一核心赛道进行了底层逻辑的梳理，并为明天的分享会做了最后准备。
@@ -222,6 +262,7 @@ Type: uint256
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -268,6 +309,7 @@ Type: uint256
 
 
 
+
 **1月13日学习日志**
 
 今天的布老师主讲的Web3 运行原理分享会给出了大量具体的网络实运行数据，结合讲座内容与我的最近学习背景，对以太坊底层架构的几个关键风险点进行了如下梳理：
@@ -293,6 +335,7 @@ Type: uint256
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
