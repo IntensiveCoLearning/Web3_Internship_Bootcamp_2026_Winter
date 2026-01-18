@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+**从 ERC-721 到 ERC-7962**
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 钱包  
 冷钱包  
 硬钱包
@@ -25,11 +31,13 @@ timezone: UTC+8
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 安全运营
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 安全性  
@@ -42,6 +50,7 @@ timezone: UTC+8
 
 
 
+
 NFT是什么  
 创建新代币有啥用  
 以太坊中的mint是啥意思
@@ -49,6 +58,7 @@ NFT是什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
