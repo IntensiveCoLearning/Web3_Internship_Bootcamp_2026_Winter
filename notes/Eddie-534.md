@@ -15,8 +15,83 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+26.1.18 今天继续跟进B站Chainlink预言机教程，学完了第三章剩下的部分。
+
+-   内容梳理：
+    
+
+1.  token vs coin
+    
+
+区分了token和coin的概念，明白了coin是底层链原生货币（如ETH），而token则是建立在链上的“自定义资产”，ERC-20就是最常见的一种token标准。
+
+2.  创建一个通证合约
+    
+
+第一次动手写了一个最简单的通证合约，虽然只有名称和符号，但算是迈出了第一步！
+
+3.  Solidity 继承
+    
+
+学习了继承的语法和用途，知道怎么通`is`关键字复用合约逻辑，感觉这和面向对象编程里的继承挺像的。
+
+4.  ERC-20标准
+    
+
+详细学习了ERC-20的六大核心函数和两个事件：
+
+`balanceOf`
+
+`transfer`
+
+`transferFrom`
+
+`approve`
+
+`allowance`
+
+`totalSupply`
+
+理解了它是如何实现代币转账、授权和余额查询的。
+
+5.  抽象合约 & 虚函数
+    
+
+接触`abstract contractvirtual`关键字，明白了如何设计可扩展的合约接口。
+
+6.  重写
+    
+
+通`override`关键字重写父类函数，实现自定义逻辑，感觉就像在“修补”标准模板。
+
+7.  继承 ERC-20 合约
+    
+
+直接继承OpenZeppelin的ERC-20合约，快速构建合规通证，省去重复造轮子的时间。
+
+8.  自定义 ERC-20 合约
+    
+
+尝试在标准ERC-20基础上添加了铸造和销毁功能，让通证具备可调控的供应量。
+
+9.  合约测试
+    
+
+虽然没有实际跑测试，但了解了测试的重要性和基本方法，尤其是对ERC-20各类功能的验证流程。
+
+-   学习心得：
+    
+
+今天的内容从理论过渡到实战，尤其是ERC-20标准那一块，刚开始看函数名有点懵，但跟着写一遍之后，就清晰多了。继承和重写这部分让我感觉Solidity也挺“现代”的，结构清晰，复用性强。最后自己写一个可铸币的ERC-20合约的时候，真的有种“发行自己的代币”的感觉。
+
+![屏幕截图 2026-01-18 203331.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-18-1768739994283-_____2026-01-18_203331.png)![屏幕截图 2026-01-18 203321.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-18-1768740084596-_____2026-01-18_203321.png)![屏幕截图 2026-01-18 203340.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-18-1768740095863-_____2026-01-18_203340.png)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 26.1.17跟着B站上的Chainlink预言机教程，继续学习Solidity的进阶部分
 
 -   内容梳理：
@@ -68,6 +143,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
 
 -   收获：
@@ -91,6 +167,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 26.1.15学习了以太坊教材的第二章和第三章
@@ -230,6 +307,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 
 
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -327,6 +405,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -368,6 +447,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
