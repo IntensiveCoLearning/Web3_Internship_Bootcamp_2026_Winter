@@ -19,7 +19,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 ## ERC-7962：从“房产登记”到“不记名资产”的法律范式转移
 
-## **1\. 技术上的 Hash，法律上的“不记名”**
+### **1\. 技术上的 Hash，法律上的“不记名”**
 
 -   **传统 ERC-721 = 记名证券 (Registered Security)：** 所有权与 Owner Addres 强绑定，如同房产登记，天然导致资产图谱的穿透与泄露。
     
@@ -30,7 +30,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 **ZK的本质是**验证即确权，无需披露身份。
 
-## 2\. 架构优势：链上的“资产隔离墙”
+### 2\. 架构优势：链上的“资产隔离墙”
 
 -   **反向追踪 ：** 在传统模式下，一个钱包地址（Identity）串联了所有资产行为。ERC-7962 通过强制的 **Key Rotation（密钥轮换）**，相当于为每一笔资产设立了一个独立的 **SPV（特殊目的载体）**，从而外部观察者无法通过单一锚点（地址）绘制出用户的完整资产版图。
     
@@ -40,6 +40,7 @@ ERC-7962 用极其精简的哈希逻辑，低成本地实现了“所有权与�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ## 0基础法律人如何学习代码？
 
@@ -71,6 +72,7 @@ ERC-7962 用极其精简的哈希逻辑，低成本地实现了“所有权与�
 
 
 
+
 ### 【周研究总结分享】
 
 ## **重构链上契约：DAO 治理困局与双轨制解法**
@@ -80,6 +82,7 @@ ERC-7962 用极其精简的哈希逻辑，低成本地实现了“所有权与�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -192,6 +195,7 @@ _Disclaimer：本文探讨的 RWA 架构基于国际通行的 Web3 实践，具�
 
 
 
+
 \-–
 
 \> **Copyright & License / 版权声明：**
@@ -282,6 +286,7 @@ LXDAO 的案例揭示了 Builder DAO 的真实面目：它更像是一个**数�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -409,6 +414,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
