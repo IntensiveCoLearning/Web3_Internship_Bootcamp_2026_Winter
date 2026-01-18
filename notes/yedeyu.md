@@ -18,10 +18,13 @@ timezone: UTC-8
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 -   简单浏览 Web3 实习计划（冬季）[第一周例会](https://youtu.be/4f_nBIrn8PA)
+    
+-   阅读 Web3 实习手册 [Web3 行业知识](https://web3intern.xyz/zh/position-introduction/) 部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 -   参加 LXDAO 周会 [260118](https://x.com/lxdao_official/status/2012360045485580478?s=46)
     
@@ -30,6 +33,7 @@ timezone: UTC-8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -51,11 +55,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -85,6 +91,7 @@ timezone: UTC-8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
