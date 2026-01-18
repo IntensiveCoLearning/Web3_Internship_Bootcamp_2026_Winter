@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+学习质押项目
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天学习了solana的**Pinocchio框架。**  
 **Pinocchio vs Anchor：从 Anchor 开发者视角看 Pinocchio 代码**
 
@@ -215,6 +221,7 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -222,11 +229,13 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今天了解一下solana公链，学习rust语言
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -316,11 +325,13 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 今日学习go-eth链下交互，学习使用foundry框架
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
