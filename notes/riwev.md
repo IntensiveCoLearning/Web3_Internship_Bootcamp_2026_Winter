@@ -58,15 +58,54 @@ anvil
 
 ![{ABF5EAAD-AB4B-4C5D-BDB0-E09EBC0DD0F3}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-18-1768708537042-_ABF5EAAD-AB4B-4C5D-BDB0-E09EBC0DD0F3_.png)
 
-`out` 目录包含你的合约工件(artifact，例如 ABI，而 `cache` 目录被 `forge` 使用来（记录），以便仅仅去重新编译那些必要编译的内容。
+`out` 目录包含你的合约工件( artifact ，例如 ABI ，而 `cache` 目录被 `forge` 使用来（记录），以便仅仅去重新编译那些必要编译的内容。
 
-# Remix常用
+# **Hardhat（推荐，现代以太坊开发框架）**
+
+这个很熟不记录了
+
+```bash
+npm install --global hardhat
+mkdir eth-dev && cd eth-dev
+npx hardhat
+```
+
+选择“创建一个基本示例项目”，会自动生成合约、测试和配置。
+
+**启动本地节点**
+
+```bash
+npx hardhat node
+```
+
+**部署合约**
+
+```bash
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+# **以太坊钱包和前端交互**
+
+-   推荐使用 MetaMask 浏览器插件作为开发钱包。
+    
+-   前端推荐使用 Viem 和 Wagmi。
+    
+
+# **其他常用工具**
+
+-   Remix IDE（网页版，适合快速测试合约）：[**https://remix.ethereum.org**](https://remix.ethereum.org)
+    
+-   OpenZeppelin 合约库：`npm install @openzeppelin/contracts`
+    
+-   [**Chainlink 测试环境**](https://docs.chain.link/resources/link-token-contracts) - 预言机集成指南
+    
 
 # **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # 准备以太坊开发环境
 
@@ -154,6 +193,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
@@ -264,6 +304,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -451,6 +492,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -672,6 +714,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -936,6 +979,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
