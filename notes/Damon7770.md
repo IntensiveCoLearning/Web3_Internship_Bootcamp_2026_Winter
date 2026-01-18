@@ -15,14 +15,21 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+准备补齐之前遗漏的内容
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今日打卡  
 休息一天 外出活动
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今日暂时请假一天  
 未完成项目为：[021 学习以太坊第 1&2 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -38,6 +45,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 完成[**Day 4: NFTs!!! ERC20 vs ERC721, IPFS, Metadata观看**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=4)  
@@ -353,6 +361,7 @@ Nonce冲突：前序交易未确认
 
 
 
+
 **完成合规与安全学习手册：  
 一.国内监管：全面禁止金融属性，有限开展技术创新**
 
@@ -466,6 +475,7 @@ Nonce冲突：前序交易未确认
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -616,6 +626,7 @@ Nonce冲突：前序交易未确认
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
