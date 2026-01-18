@@ -31,7 +31,7 @@ ha
         
 -   Nonce 阻塞
     
-    -   账户的交易必须 \*\*\*\*nonce 连续
+    -   账户的交易必须 nonce 连续
         
     -   前一笔卡住 → 后面全卡
         
@@ -211,6 +211,7 @@ L1（以太坊主网）的问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # ENS（Ethereum Name Service）
 
@@ -535,6 +536,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 ## 安全
 
 ### 常见风险
@@ -626,6 +628,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -701,6 +704,7 @@ tokenURI(tokenId) → 一个 URL
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
