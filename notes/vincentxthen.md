@@ -30,7 +30,7 @@ DAY7
 
 ### **一、技术问题根源：钱包注入冲突**
 
--   **历史背景**：最早只有 MetaMask 钱包，它将自身注入浏览器的全局变量 `window.ethereum`。后续其他钱包（如 OKX、360 等）也沿用同一名称注入，导致 **DApp 调用时出现竞争条件（race condition）**，可能调用到非预期的钱包（例如“360 版 ethereum”）。
+-   **历史背景**：最早只有 MetaMask 钱包，它将自身注入浏览器的全局变量 `window.ethereum`。后续其他钱包（如 OKX）也沿用同一名称注入，导致 **DApp 调用时出现竞争条件（race condition）**，可能调用到非预期的钱包（**就像360 版ethereum流氓软件**（wachi老师的比喻，包袱没响他会伤心的，请大笑&鼓掌😀😀😀👏👏👏）。
     
 -   **解决方案**：**EIP-6963（Multi Injected Provider Discovery）** 被提出，要求钱包在注入时提供标准化的元数据（如名称、图标、ID），让 DApp 能识别并选择具体的钱包提供商，从而解决冲突。
     
@@ -84,6 +84,7 @@ DAY7
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 DAY6
 
 //成都雾霾连续爆表一个月 今天鼻炎终于大爆发，疯狂喷嚏鼻涕，头昏脑胀
@@ -100,6 +101,7 @@ DAY6
 
 
 
+
 DAY5  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-16-1768527930951-image.png)![ef61c24d894cda2d950ed415f9db039e.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-16-1768527943018-ef61c24d894cda2d950ed415f9db039e.jpg)
@@ -111,6 +113,7 @@ DAY5
 
 
 
+
 DAY4  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485305863-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485449721-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485466886-image.png)
@@ -118,6 +121,7 @@ DAY4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -136,6 +140,7 @@ DAY3
 
 
 
+
 DAY2  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296425226-image.png)![5256c0f3e7c881eda8158c6049c39b84.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296346499-5256c0f3e7c881eda8158c6049c39b84.jpg)
@@ -143,6 +148,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
