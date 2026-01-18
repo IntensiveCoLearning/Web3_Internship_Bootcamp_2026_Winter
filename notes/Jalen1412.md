@@ -15,8 +15,14 @@ enjoy it
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+加油
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 **web3安全**
 
 degen：degenerate gambler
@@ -62,6 +68,7 @@ ico：initial coin offering
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 **钱包私钥个人主权**
 
@@ -124,6 +131,7 @@ web3是解决一些信任和资金问题， 加密隐私抗审查
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -200,11 +208,13 @@ web3垂直平台：smartdeer，[web3.career](http://web3.career)，remote3，cry
 
 
 
+
 补上前三天的学习
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
