@@ -15,8 +15,32 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+## ERC-7962：从“房产登记”到“不记名资产”的法律范式转移
+
+## **1\. 技术上的 Hash，法律上的“不记名”**
+
+-   **传统 ERC-721 = 记名证券 (Registered Security)：** 所有权与 Owner Addres 强绑定，如同房产登记，天然导致资产图谱的穿透与泄露。
+    
+-   **ERC-7962 = 不记名证券 (Bearer Instrument)：** 引入 Key Hash 取代地址。
+    
+
+这里的法律隐喻是， 链上存储的不再是“户主名”，而是“保险箱的锁”。谁持有钥匙（Key），谁就是 Owner。
+
+**ZK的本质是**验证即确权，无需披露身份。
+
+## 2\. 架构优势：链上的“资产隔离墙”
+
+-   **反向追踪 ：** 在传统模式下，一个钱包地址（Identity）串联了所有资产行为。ERC-7962 通过强制的 **Key Rotation（密钥轮换）**，相当于为每一笔资产设立了一个独立的 **SPV（特殊目的载体）**，从而外部观察者无法通过单一锚点（地址）绘制出用户的完整资产版图。
+    
+
+ERC-7962 用极其精简的哈希逻辑，低成本地实现了“所有权与控制权的分离”。这对于构建高隐私需求的金融产品提供了最基础的代码法理依据。
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## 0基础法律人如何学习代码？
 
 今天和几位朋友聊起“法律人学代码”以及最近很火的“vibe coding”，发现误区还在。很多人以为是要去抢程序员的饭碗，或者只是为了顺手提升一下dirty work的效率。
@@ -46,6 +70,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ### 【周研究总结分享】
 
 ## **重构链上契约：DAO 治理困局与双轨制解法**
@@ -55,6 +80,7 @@ Cornell Alum. Synergizing Law, Finance, and Web3 Tech. Focused on RWA Compliance
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -165,6 +191,7 @@ _Disclaimer：本文探讨的 RWA 架构基于国际通行的 Web3 实践，具�
 
 
 
+
 \-–
 
 \> **Copyright & License / 版权声明：**
@@ -255,6 +282,7 @@ LXDAO 的案例揭示了 Builder DAO 的真实面目：它更像是一个**数�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -381,6 +409,7 @@ Core Devs (核心开发者) = 常务委员会/表决机构。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
