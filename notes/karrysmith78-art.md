@@ -15,8 +15,36 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+### **1\. The Myth of the "Expert"**
+
+Everyone in the UX group thought becoming a KOL was hard. That’s the first lie you need to unlearn. Technical principles? Top-tier insights? Most of it is just content that can be mastered in two weeks with Google and AI.
+
+We are all half-baked. I’m half-baked, and your favorite influencer is likely half-baked too. The secret isn't knowing everything; it's the audacity to "shake the bucket" until it fills up.
+
+> [**https://x.com/kiki520\_eth/status/1906646951195783560**](https://x.com/kiki520_eth/status/1906646951195783560)
+> 
+> [**https://x.com/kiki520\_eth/status/1922758293849862385**](https://x.com/kiki520_eth/status/1922758293849862385)
+
+### **2\. The Packaging Philosophy: Results Over Everything**
+
+Why does this "half-baked" approach work? Because the crypto circle only respects one thing: **Results.** Human nature is wired to admire and fear the strong. If you can package yourself as a "strongman" with proven results—even if those results were scavenged or borrowed—you become the beacon for the "grassroots leeks." These retail investors don't want complex truths; they want a winner to follow. In this game, packaging isn't just a strategy; it’s the wealth code itself.
+
+> [**https://x.com/kiki520\_eth/status/1961057037393273033**](https://x.com/kiki520_eth/status/1961057037393273033)
+
+### **3\. For the 05s: Your Influence is Your Only Real Asset**
+
+To the post-05s generation entering the space: ignore the traditional career advice. Building your own traffic and influence as a KOL is the only foundation that matters.
+
+A resume is a static piece of paper; your personal brand is a dynamic leverage that works while you sleep. Whether you want to join a top-tier institution or go solo, your influence is the only business card you truly own and control. Don't just work in the industry—become a pillar of it.
+
+> [**https://x.com/kiki520\_eth/status/1961733450937114954**](https://x.com/kiki520_eth/status/1961733450937114954)
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 ![屏幕截图 2026-01-14 222507.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/karrysmith78-art/images/2026-01-14-1768400735775-_____2026-01-14_222507.png)
 
 "I haven't earned a single Aura token... nor joined any“
@@ -43,11 +71,13 @@ timezone: UTC+8
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
 
+
 听了各位老师的web3实习计划关于web3职业分享会和各位同学的分享,我也收获颇深。首先是技术岗主要看项目经验和掌握的技术栈，对于正准备进入web3行业的人可以多去开源网站di bug,为社区作贡献，多去参加黑客松比赛，同时也能精进自己的技术。其次是非技术岗，比如运营、bd、产品经理等，主要是积累人脉资源，web3社区氛围都是很友好的，可以多去参加一些社区(TinTinLand、水分子、Polkdot生态社区等等），也可以多去参加黑客松。多去了解一些海外市场、web3热词，培养自己的网感。在推特、ins、facebook等各大媒体上发表一些自己的文章（紧跟时代热点），提升用户点赞，反正多去写，或许一开始是比较艰难。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 作为想要从事运营的人员，首先要多在推特上多发文章，如果能够抓住热点，获得数据流量、用户点赞数、粉丝数在一定层面反应成功与否，也是一份能力的证明、求职方面更有说服力。其次多接触项目方，积累人脉，运营的话需要看你的一些资源。最后多关注web3 的时事，培养网感，必要一些行业热词都要理解，比如meme,打土狗，尽可能多地掌握一些金融知识，区块链应用主要在金融方面。
