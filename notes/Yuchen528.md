@@ -15,8 +15,95 @@ Yuchen
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-18
+<!-- DAILY_CHECKIN_2026-01-18_START -->
+行业黑话：
+
+1.  基础类
+    
+
+-   DYOR
+    
+-   FOMO
+    
+-   FUD
+    
+
+2.  技术类
+    
+
+-   L1/L2
+    
+-   EVM: Ethereum Virtual Machine，以太坊虚拟机，运行智能合约的核心
+    
+-   Smart Contract
+    
+-   Bridge: 跨链桥，用于在多条链之间转移资产
+    
+-   Oracle: 预言机，用于向链上提供链下数据
+    
+-   Fork: 分叉，指复制已有代码的项目，或区块链协议分裂
+    
+-   Mint: 铸造，生成新的 NFT 或代币
+    
+-   Burn
+    
+-   Rugpull: 抽地毯，项目方卷款跑路（尤其在 DeFi 项目）
+    
+
+3.  投资类：
+    
+
+-   Pump: 拉盘，代币价格快速上涨
+    
+-   Dump: 砸盘，代币价格快速下跌
+    
+-   HODL: 原为"Hold"打错，后来变成文化，意为坚定持币不卖
+    
+-   Bagholder: "接盘侠"，高位买入亏损后长期持币的人
+    
+-   Alpha: 内部消息/潜在机会，表示未公开但价值潜力大的信息
+    
+-   Tokenomics: 代币经济学，研究代币发行、分配、用途等机制
+    
+
+4.  文化类
+    
+
+-   gm/gn
+    
+-   Anon: 匿名者
+    
+-   KOL: Key Opinion Leader，意见领袖，影响力人物
+    
+-   CT: Crypto Twitter，加密行业活跃的信息与讨论来源
+    
+-   DAO: 去中心化自治组织，社区驱动型的组织管理形式
+    
+-   NFT PFP: NFT 头像项目，如 CryptoPunks、BAYC，PFP = Profile Picture
+    
+
+5.  开发类
+    
+
+-   Hardhat / Foundry: 常用的智能合约开发框架
+    
+-   RPC: Remote Procedure Call，链上节点访问接口
+    
+-   Gas
+    
+-   Etherscan: 区块浏览器，用于查看合约、交易、地址信息
+    
+-   Viem / Ethers.js / Wagmi: Web3 前端交互库
+    
+-   ABI: Application Binary Interface，合约调用所需的接口信息
+    
+-   Mainnet / Testnet: 主网 / 测试网，分别对应正式和测试环境
+<!-- DAILY_CHECKIN_2026-01-18_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 Web3工作方式
 
 1.OKR写法与最佳实践：目标（Objectives）全团队公开可见，关键结果（Key Results）量化可追踪
@@ -53,6 +140,7 @@ Web3工作方式
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
 
 行业赛道：
@@ -79,6 +167,7 @@ Web3工作方式
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 -   Bitcoin & Ethereum
@@ -198,6 +287,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -324,6 +414,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
