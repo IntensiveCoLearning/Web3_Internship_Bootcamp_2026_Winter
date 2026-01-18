@@ -19,15 +19,40 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 # DAY7
 
-仍旧是：
+看完了ERC-7962分享会，我发现自己对底层的加密原理和签名技术还是一知半解，于是又回去补习了一下关于非对称加密和签名的知识，以及现在广泛使用的ERC-20和ERC-721协议。
 
-\[\]typescript
+## 非对称加密：
 
-\[\]frontend
+引用wiki百科**：公开密钥密码学**（英语：**Public-key cryptography**）也称**非对称式密码学**（英语：**Asymmetric cryptography**）是[密码学](https://zh.wikipedia.org/wiki/%E5%AF%86%E7%A2%BC%E5%AD%B8)的一种[算法](https://zh.wikipedia.org/wiki/%E6%BC%94%E7%AE%97%E6%B3%95)，它需要两个[密钥](https://zh.wikipedia.org/wiki/%E5%AF%86%E9%92%A5)，一个是公开密钥，另一个是私有密钥；公钥用作加密，私钥则用作解密。使用公钥把[明文](https://zh.wikipedia.org/wiki/%E6%98%8E%E6%96%87)加密后所得的[密文](https://zh.wikipedia.org/wiki/%E5%AF%86%E6%96%87)，只能用相对应的[私钥](https://zh.wikipedia.org/wiki/%E7%A7%81%E9%92%A5)才能解密并得到原本的明文，最初用来加密的公钥不能用作解密。由于加密和解密需要两个不同的密钥，故被称为非对称加密；不同于加密和解密都使用同一个密钥的[对称加密](https://zh.wikipedia.org/wiki/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86)。公钥可以公开，可任意向外发布；私钥不可以公开，必须由用户自行严格秘密保管，绝不透过任何途径向任何人提供，也不会透露给被信任的要通信的另一方。
+
+基于公开密钥加密的特性，它还能提供[数字签名](https://zh.wikipedia.org/wiki/%E6%95%B8%E4%BD%8D%E7%B0%BD%E7%AB%A0)的功能，使电子文件可以得到如同在纸本文件上亲笔签署的效果。
+
+## 数字签名：
+
+如果某一用户使用他的私钥加密明文，任何人都可以用该用户的公钥解密密文；由于私钥只由该用户自己持有，故可以肯定该文件必定出自于该用户；公众可以验证该用户发布的数据或文件是否完整、中途有否曾被篡改，接收者可信赖这些数据、文件确实来自于该用户，这被称作[数字签名](https://zh.wikipedia.org/wiki/%E6%95%B8%E4%BD%8D%E7%B0%BD%E7%AB%A0)，大部分国家已经立法承认数字签名拥有等同传统亲笔[签名](https://zh.wikipedia.org/wiki/%E7%AD%BE%E5%90%8D)的法律效力。公钥可以透过[数字证书认证机构](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E8%AE%A4%E8%AF%81%E6%9C%BA%E6%9E%84)签授的[电子证书](https://zh.wikipedia.org/wiki/%E9%9B%BB%E5%AD%90%E8%AD%89%E6%9B%B8)形式公布，接收者透过[信任链](https://zh.wikipedia.org/wiki/%E4%BF%A1%E4%BB%BB%E9%8F%88)形成一套完整的[公开密钥基础建设](https://zh.wikipedia.org/wiki/%E5%85%AC%E9%96%8B%E9%87%91%E9%91%B0%E5%9F%BA%E7%A4%8E%E5%BB%BA%E8%A8%AD)。例如，从网上下载的安装程序，大部分都带有程序制作者的数字签名，可以证明该程序的确是该作者（公司）发布的而不是第三方伪造的且未被篡改过（身份认证/验证）。而现时的[网上银行](https://zh.wikipedia.org/wiki/%E7%BD%91%E4%B8%8A%E9%93%B6%E8%A1%8C)或[购物网站](https://zh.wikipedia.org/wiki/%E8%B3%BC%E7%89%A9%E7%B6%B2%E7%AB%99)都会使用[HTTPS](https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE)，避免沟通过程中的信息泄露。
+
+## ERC-20:
+
+ERC-20 是以太坊区块链上的一种技术标准，用于定义代币如何运行。ERC 代表“Ethereum Request for Comments”，而 20 是提案的编号。作为一种通用协议，ERC-20 允许开发者轻松创建和发行兼容的代币。ERC-20 的设计初衷是解决代币开发和交易中的碎片化问题，通过制定标准化接口，任何符合 ERC-20 规则的代币都可以在以太坊网络中无缝交互。例如，许多知名的加密货币，如 USDT 和 DAI，都基于 ERC-20 标准。
+
+### 工作原理：
+
+ERC-20 通过定义一套标准化接口，确保代币能够在以太坊网络中的钱包、交易所和去中心化应用（DApps）之间无缝交互。这些接口包括总供应量（totalSupply），用于定义代币的最大供应数量；余额查询（balanceOf），允许用户查看某个地址持有的代币数量；转账功能（transfer），用于在地址之间直接转移代币；以及授权与批准机制（approve/allowance），使用户可以授权第三方使用其代币，例如在去中心化交易所进行交易。通过这些规则，ERC-20 标准为开发者和用户提供了一种简洁、高效的方式来创建和管理代币，使其能够轻松融入以太坊生态系统。
+
+## ERC-721:
+
+### NFT:
+
+非同质化代币（NFT）让数字资产能够在公共区块链上被拥有、交易和组合。而 ERC-721 标准正是这场变革的核心——它定义了如何在钱包、交易市场和应用程序中创建、转移和查找独一无二的代币。
+
+### ERC-721:
+
+ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代币的独特性体现在其 ID，与可 1:1 兑换的同质化代币（如 ERC-20）不同，NFT 无法互相替代。该标准规定了所有符合规范的合约必须实现的核心函数和事件，从而确保钱包和交易市场能够提供一致的支持。
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # DAY6
 
@@ -91,6 +116,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -196,6 +222,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -294,6 +321,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -466,6 +494,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -562,6 +591,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
