@@ -15,8 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+20260119 WEB3实习计划Day8
+
+已完成**以太坊中文周会 260119**
+
+**已完成线上 Co-Learning**
+
+待进一步完成学习总结并发布社媒平台
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 20260118-WEB3实习Day7
 
 今日将对过去一周汲取的web3知识进行复盘，并线下与实习计划的同学进行会面交流，互相交换有效知识
@@ -24,6 +36,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 20260117 DAY6
 
@@ -39,6 +52,7 @@ timezone: UTC+8
 
 
 
+
 20260116 Web3实习计划Day5
 
   
@@ -51,6 +65,7 @@ timezone: UTC+8
 
 
 
+
 Web3实习计划 Day4
 
 今日已完成web3安全、web3合规分享会内容学习，晚上进一步对本周教案内容进一步熟悉演练
@@ -58,6 +73,7 @@ Web3实习计划 Day4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -76,6 +92,7 @@ Web3实习计划-DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -104,6 +121,7 @@ web3实习计划Day2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
