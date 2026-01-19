@@ -19,11 +19,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 2026/01/19 总体学习计划如下：
 
--   Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分
-    
 -   021 学习以太坊第 4 章
-    
--   观看 [**Scripting and Smart Contracts! Providers, Signers, and Wallets**](https://www.youtube.com/watch?v=m2AJAcWk394&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
     
 
 ## **《021学习以太坊》第四章学习**
@@ -112,6 +108,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -168,6 +165,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -203,6 +201,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -279,6 +278,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -390,6 +390,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -559,6 +560,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -697,6 +699,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
