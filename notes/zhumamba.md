@@ -15,8 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## 今日计划
+
+-   安装figma
+    
+-   体验 [My first ZK vote](https://zkvote.0xtmp.xyz/)
+    
+-   收听分享会并总结
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## **ERC-721 与 ERC-7962 区别**
 
 -   ERC-721像：  
@@ -156,6 +168,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ### 今日学习心得
 
 今天主要围绕Web3招聘渠道和平台模式做了系统梳理，开始用“产品视角”而不是“求职者视角”去看招聘这件事，收获挺大的。
@@ -174,6 +187,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -224,6 +238,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -412,6 +427,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -649,6 +665,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1157,6 +1174,7 @@ DAO 是以太坊孕育的新型组织形态。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
