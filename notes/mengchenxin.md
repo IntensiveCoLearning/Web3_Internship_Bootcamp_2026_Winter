@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# [https://www.wtf.academy/zh/course/solidity101/Function](https://www.wtf.academy/zh/course/solidity101/Function)的二三章
+
+Solidity中的变量类型主要分为值类型、引用类型和映射类型，其中值类型在赋值时直接传递数值，是合约开发的基础。常见值类型包括五大类，各有其特性与适用场景。
+
+布尔型为二值变量，取值仅为true或false，支持逻辑非、与、或及相等性判断等运算符，且逻辑与（&&）和逻辑或（||）遵循短路规则，可优化运算效率。整型分为带符号（int）和无符号（uint）两类，常用uint256类型，支持加减乘除、取余、幂运算及比较运算符，满足数值计算需求。地址类型含普通地址（address）和可支付地址（payable address），后者额外具备转账和查询余额的方法，是ETH转账场景的核心类型。定长字节数组（如bytes1、bytes32）长度不可变，最多存储32字节数据，可通过下标访问单个字节。枚举（enum）为用户自定义类型，本质是为uint值分配名称，提升代码可读性，但实际应用中较为冷门。
+
+函数是Solidity实现复杂操作的核心，其声明格式包含多种关键字，需明确可见性、功能权限等属性。函数可见性分为四类：public内外均可见，private仅本合约可访问，external仅外部可访问（_内部需通过this调用_），internal可在本合约及继承合约中使用，且合约函数必须显式指定可见性。
+
+**pure和view关键字是Solidity的特色，核心作用是减少Gas消耗，二者均不修改链上状态，用户直接调用无需支付Gas。**其中view函数可读取但不能改写状态变量，类似“看客”；pure函数既不能读取也不能改写状态变量，仅可处理输入参数的纯计算。payable关键字标识可接收ETH的函数，支持在调用时向合约转入ETH，常用于支付相关场景。此外，virtual关键字允许函数被继承合约重写，override关键字则标识重写父合约的函数，适配面向对象开发需求。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 今天刚刚接触solidity语言,以下是我的主要两点感受
 
 -   **入门友好但进阶有门槛**：Solidity 语法贴近 JavaScript/TypeScript，对有前端或后端基础的开发者来说，写简单合约（如计数器、转账）很容易上手；但一旦涉及链上安全、gas 优化、底层原理（如存储布局、ABI 编码），就需要深入理解区块链特性，进阶门槛明显高于普通编程语言。
@@ -26,6 +40,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # 区块链核心基础与关键原理
 
@@ -38,6 +53,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 比特币白皮书一
@@ -96,6 +112,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 [https://www.bilibili.com/video/BV1gCJ8zNELv/?spm\_id\_from=333.788.top\_right\_bar\_window\_history.content.click&vd\_source=b65fb6471899fe6858fba22e46841906](https://www.bilibili.com/video/BV1gCJ8zNELv/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=b65fb6471899fe6858fba22e46841906)
 
 今天看了ETHpanda Talk,原来都是布老师的系列阿.布老师可以的,一个人撑着一个系列
@@ -117,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # unphishable
 
 今天主要是刷题
@@ -126,6 +144,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -168,6 +187,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
