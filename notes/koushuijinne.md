@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+学习中文周会，线上共学，学习运营基础知识
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 学习了零知识证明的基本概念，以及ERC-721到ERC-7962
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # LXDAO周例会
 
@@ -36,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天分享了很多有趣的事
 
 首先是echo助教讲到kol圈子的各种乱象，给了新人一个警惕，不能为了挣钱无视道德底线
@@ -45,6 +53,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -70,6 +79,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # web3安全
 
 ## 1\. defi优于cefi
@@ -79,6 +89,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -155,6 +166,7 @@ DAO \*\*（Decentralized Autonomous Organization，去中心化自治组织）\*
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
