@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今天主要是写了tron全节点数据的levelDB转换脚本，每秒能转换上万条数据
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天主要看了下回放，和学习了下solidity的攻击手段（重入，闪电贷等）
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今天继续研究了polygon的全节点数据，日志的解析、交易哈希的解析等等，对于整个存储架构有了初步的了解
 <!-- DAILY_CHECKIN_2026-01-17_END -->
@@ -30,11 +37,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今天比较忙，没有学习太多的新东西，主要是看了些以太坊的技术原理
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -47,11 +56,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要是看了下视频回放，尝试搭建了eth、bsc、polygon、tron的全节点数据，回顾了下2.0的api文档
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
