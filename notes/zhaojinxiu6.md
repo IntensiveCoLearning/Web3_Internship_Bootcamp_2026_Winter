@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## **1.19**
+
+今天把Crowdfunding挑战完成了，也算是第一次利用hardhat框架去完成项目了。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ### **ABI编解码函数：**
 
 -   `abi.decode(bytes memory encodedData, (...)) returns (...)`
@@ -87,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 ## **1.17**
 
 ### **数据存储**
@@ -143,11 +152,13 @@ Solidity合约数据存储采用的为合约的每项数据指定一个可计算
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 把这周的笔记汇总整理了一下。然后做钓鱼攻防任务ing。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1094,6 +1105,7 @@ AA 可以：
 
 
 
+
 \## 1.14
 
 \### 合规
@@ -1383,6 +1395,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1790,6 +1803,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
