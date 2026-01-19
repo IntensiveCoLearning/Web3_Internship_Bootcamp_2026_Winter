@@ -15,8 +15,74 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+作为一个最近刚开始卷 Web3 智能合约开发的新手，我把这两天跟着教程学习的心得总结一下。
+
+### 1\. 环境搭建：Web2 的习惯，Web3 的命门
+
+在 Web3 开发里，**Node.js** 依然是咱们的老朋友，建议用 `n` 或 `nvm` 来管理版本。初始化项目还是 `npm init`，但我发现为了代码能前后端复用，在 `package.json` 里设置 `"type": "module"` 来使用 **ES6 模块语法**（`import/export`）非常方便，这样脚本代码就能直接粘到 React 前端去用了。
+
+**安全警告：** 在 Web2 我们习惯用 `.env` 存 API Key，在 Web3 这更是命门。**千万别把存有私钥或助记词的** `.env` **上传到 GitHub**，否则你的资产一秒钟就会被卷走。
+
+### 2\. 核心三剑客：Provider, Signer, 和 Wallet
+
+这是我刚上手时最容易搞混的三个概念，也是 `ethers.js` 的核心：
+
+-   **Provider（提供者）**：它是你连接区块链的“只读”窗口。你可以通过 Infura、Alchemy 或者自己跑个本地节点（比如 Nethermind）来接入。你可以用它查余额、查区块高度，但它不能帮你签名发交易。
+    
+-   **Signer（签名者）**：它是拥有私钥的实体，能对交易进行数字签名。
+    
+-   **Wallet（钱包）**：在 `ethers.js` 里，钱包既是 Signer 也能连接 Provider。我们可以代码生成随机钱包，或者从助记词/私钥导入。
+    
+
+### 3\. BigNumber 与单位转换：拒绝溢出
+
+这是 Web2 开发者最头疼的地方：JavaScript 的 `Number` 类型处理不了以太坊中那么大的数值（以太坊数值经常达到 $10^{18}$ 甚至更大）。
+
+-   **BigNumber**：为了防止溢出，`ethers.js` 使用特殊的 BigNumber 对象来处理数学运算（如 `.add()` 或 `.mul()`），千万别直接转成 JS 数字做运算。
+    
+-   **单位转换**：1 ETH 等于 $10^{18}$ Wei。别去数 18 个零，要用内置工具：
+    
+    -   `formatEther`：把大数转成人类看得懂的字符串（比如 1.5 ETH）。
+        
+    -   `parseEther`：把人类输入的字符串转成 BigNumber（发交易必备）。
+        
+
+### 4\. 玩转智能合约：ABI 就是你的 Swagger
+
+要跟智能合约打交道，你得有两样东西：**合约地址**和 **ABI**。
+
+-   **ABI (Application Binary Interface)**：你可以把它理解为 Web2 里的 **API 定义文件或 Swagger**。它是一个 JSON 数组，告诉 `ethers.js` 合约有哪些函数、需要什么参数。如果合约在 Etherscan 上验证过，你可以直接把 ABI 拷下来用。
+    
+-   **读 vs 写**：
+    
+    -   **读合约**（如查询 `balanceOf`）：不需要消耗 Gas，用 Provider 就能搞定。
+        
+    -   **写合约**（如 `mint` 或 `transfer`）：必须通过 **Signer** 发起交易，并支付 Gas 费。如果函数标记为 `payable`，你还得在交易里塞点真金白银（ETH）。
+        
+
+### 5\. 底层逻辑：一切皆交易与 Call Data
+
+这两天最让我“脑洞大开”的认知是：**与合约交互本质上就是发了一笔带有特殊数据的交易**。
+
+-   **Call Data**：当你调用一个函数时，其实是往交易的 `data` 字段里填了一串十六进制数。
+    
+-   **Method ID**：它是函数签名（如 `mint()`）哈希后的前 4 个字节。合约节点看到这串 ID，就知道你想调哪个函数了。
+    
+-   **Nonce 与 Gas**：每笔交易都有一个 Nonce（序号），必须按顺序执行。如果你交易卡住了，可以用相同的 Nonce 调高 Gas 费来“加速”交易。
+    
+
+### 6\. 实操感悟：发代币交易
+
+我们还试了在主网上给别人发 **DAI**（一种 ERC-20 代币）。这不像发 ETH 那么简单，你需要调用 DAI 合约的 `transfer` 函数。通过查看 Etherscan 上的交易详情，我亲眼看到了那串封装了接收地址和金额的 **Call Data**，这种底层掌控感太棒了。
+
+**总结一下：** 虽然 Web3 里的各种报错信息（比如 `unpredictable gas limit`）非常玄学，但只要理清了 **Provider/Signer** 和 **ABI/Call Data** 的关系，代码写起来就比手动点 MetaMask 爽多了！
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天主要是学习了Web3 实习计划中关于 **ERC-7962（Key Hash Based Tokens）** 的分享会的内容，主要内容涵盖了从传统 ERC-721 到新型隐私协议 ERC-7962 的演进。
 
 **1\. 背景与痛点：**
@@ -134,6 +200,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 主题：Ethers.js 基础与交易脚本
 
 背景：有 Java/Python 后端经验，熟悉常规 API 调用，初次接触区块链脚本开发。
@@ -231,6 +298,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 # 脚本编写与智能合约交互
 
 * * *
@@ -311,6 +379,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -556,6 +625,7 @@ NFT 并不是将图片直接“塞”进区块链，通常有以下两种方式�
 
 
 
+
 ### Todo List:
 
 -   学习以太坊第一章上下的混淆概念
@@ -717,6 +787,7 @@ A：
 
 
 
+
 ## 1 理论学习
 
 src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -775,6 +846,7 @@ src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
