@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今天完成一个项目，使用以下技术
+
+合约：Vyper  Snekmate  Moccasin  
+
+前端：React  Vite  Rainbowkit
+
+区块链：Anvil   Tenderly
+
+IPFS: Pinata
+
+Wallet: Metamask
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 -   **2026-01-17 ~ 01-18**
     
     -   以太坊P2P网络全流程：节点发现（Bootnodes + UDP + Kademlia）→ 建立安全连接（TCP + RLPx）→ 消息传播（Gossip协议 + 请求-响应）
@@ -101,6 +117,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今天事情比较多
 
 明天补笔记
@@ -108,6 +125,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 1\. AI 的演变趋势（2023-2026）
@@ -244,6 +262,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天的分享会主题是Web3运行原理
 
 大部分之前学过，所以感觉没什么好记录的，都是很重要的基础知识
@@ -283,6 +302,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
