@@ -15,8 +15,72 @@ cooking at solidity
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+### 学习了实习手册中的智能合约开发的前七部分：
+
+一、Dapp 架构和开发流程  
+介绍去中心化应用的整体架构：前端、智能合约、数据索引器、区块链+去中心化存储。  
+开发流程包括：需求分析、智能合约编写测试审计、索引器开发、前端开发、部署上线。强调Dapp的透明性、安全性和用户体验挑战。
+
+二、以太坊开发环境搭建  
+基础环境准备：Node.js、npm/yarn、Git。  
+本地开发链推荐两种：Foundry和Hardhat。  
+钱包使用MetaMask，前端交互推荐Viem + Wagmi。  
+其他工具：Remix IDE、OpenZeppelin合约库、Chainlink测试环境。
+
+三、RPC 节点服务详解  
+解释RPC在Web3中的作用：连接前端与区块链，读取数据、发送交易、监听事件。  
+JSON-RPC协议格式及常用方法。  
+主流服务商对比：Alchemy、Infura、QuickNode、Ankr等。  
+获取/使用RPC URL的方法，最佳实践，常见问题解决。
+
+四、Solidity 智能合约编程  
+Solidity基础语法：版本声明、数据类型、函数修饰符。  
+开发范式：状态机、事件驱动、模块化。  
+合约结构：状态变量、构造函数、函数、继承、接口、事件。  
+安全实践：防范重入攻击、整数溢出，并列出常见风险及防护措施。
+
+五、智能合约实战项目  
+通过“链上留言板”项目，使用Remix IDE实战。  
+合约功能：mapping存储留言、事件NewMessage、函数leaveMessage/getMessage/getMessageCount。  
+步骤：新建文件、编译、部署到JavaScript VM或MetaMask、调用函数交互。适合初学者快速上手。
+
+六、以太坊技术基础  
+账户模型：EOA vs 合约账户。  
+Gas机制：Gas Limit、Base Fee、Priority Fee等费用组成。  
+交易生命周期：签名构造 → 广播到mempool → 打包执行 → 区块共识。
+
+七、部署合约
+
+  
+测试网介绍：推荐Sepolia。  
+领取测试币：使用水龙头： [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/)  
+在Remix中部署到Sepolia：连接MetaMask、确认Gas、部署后通过Etherscan验证交易、合约、事件日志，并进行交互测试。
+
+### 完成basic部分合约部署和学习
+
+  
+包括：  
+数据类型
+
+变量和常量
+
+读取和更改变量  
+Ethre和wei的进制（18位）  
+Gas和Gas Price
+
+数组、枚举、结构体、内存、修饰符Modifier等  
+地址：0x0d6a1f6361888C64880eC512C04AA2c245067Db2
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-19-1768825635088-image.png)
+
+明天完成剩下的basic部分学习。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 熟悉了remix并且写了一点solidity
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-18-1768745613218-image.png)
@@ -28,6 +92,7 @@ cooking at solidity
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今晚读完了《021学习以太坊的最后一章》，以下是概括性总结：
 
@@ -76,6 +141,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ## 学习了《021学习以太坊》的四五章 以下是一些概括性笔记
 
 ###   
@@ -122,6 +188,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 完成任务：  
 读完了XiaoHai老师的《021学习以太坊》前三章。以下是个人总结的一些比较重要的概括性笔记。
 
@@ -165,6 +232,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
