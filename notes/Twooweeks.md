@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
+
+今日笔记：
+
+\- 版本的格式 pragma solidity >=0.8.18 <0.9.0,选择高版本的编译器可以兼容低版本的。
+
+\- remix VM是一条虚拟链用于测试；
+
+\- 变量、函数可见性分为四类，分别是:public:对外部和内部可见(为存储/状态变量创建一个getter函数);private:仅在当前合约中可见;external:仅对外可见(仅适用于函数)一一即只能通过this.func调用消息;internal:仅在内部可见
+
+\- 函数还有两种状态，分别是view和pure，view函数\*\*只能\*\*从区块链上读取数据，pure函数可以更改区块链的状态。view和pure不改变区块链的状态，因此不消耗gas。但是调用view或者pure函数时，需要支付读取和调用这个检索函数的gas费用。
+
+\- SOLIDITY对于结构体的定义与赋值与c语言一致；
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-19-1768836977255-image.png)
+
+今天还把nft的任务做完了，明日继续加油
+
+![3376d8e30bc46416a00928672b5e623f.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-19-1768837011858-3376d8e30bc46416a00928672b5e623f.png)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 零知识证明
 
 -   验证者V无需知晓证明者P所掌握知识的具体细节，仅通过持续向P提出针对性问题，就能验证P是否具备对应能力，而P在整个过程中只需证明自己拥有该能力，全程不泄露任何核心知识信息。这一原理可通过《阿里巴巴与四十大盗》的故事更直观地理解，其中两个经典场景恰好诠释了零知识证明的核心特质。
@@ -52,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 第六章 共识机制与生态展望
 
@@ -161,6 +186,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -189,6 +215,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -277,6 +304,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -301,6 +329,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -345,6 +374,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
