@@ -15,8 +15,71 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+Today I focused on how users and applications actually interact with Ethereum nodes, especially through JSON-RPC, and how a transaction moves through the network from start to finish.
+
+First, I learned more about JSON-RPC.  
+JSON-RPC is a simple request–response protocol. A user or application sends a request in JSON format to an Ethereum node, and the node replies with a result or an error.
+
+Some common JSON-RPC methods include:
+
+-   `eth_blockNumber`, which returns the latest block number
+    
+-   `eth_getBalance`, which checks the balance of an address
+    
+-   `eth_getTransactionByHash`, which queries a specific transaction
+    
+-   `eth_call`, which simulates a smart contract call without changing the blockchain
+    
+-   `eth_sendRawTransaction`, which sends a signed transaction to the network
+    
+
+I noticed that most values returned by JSON-RPC are in hex format, and numbers are often very large, so they need special handling in applications.
+
+Then I studied the full lifecycle of a transaction.
+
+A transaction usually starts when a user signs it locally with a private key. The signed transaction is then sent to an execution client through JSON-RPC. The execution client checks basic things such as:
+
+-   the account nonce
+    
+-   whether the balance is enough
+    
+-   gas limits and fees
+    
+
+If the transaction passes these checks, it enters the mempool (transaction pool). From there, it is spread to other nodes using the gossip protocol.
+
+Block proposers choose transactions from their mempool and include them in a new block. After the block is proposed, both the execution client and the consensus client verify it. Once the block is accepted, the transaction becomes part of the blockchain and is considered confirmed.
+
+After that, I learned more about the mempool itself.
+
+The mempool is not a single global pool. Each node has its own mempool, so different nodes may see slightly different pending transactions. Transactions in the mempool can be:
+
+-   pending (ready to be included)
+    
+-   queued (waiting because of nonce order or low fees)
+    
+
+I also reviewed the basics of EIP-1559, which explains how base fees and priority fees affect transaction speed. This helped me understand why some transactions are fast, while others get stuck or dropped.
+
+Finally, I studied node synchronization modes.
+
+A new node cannot instantly verify the entire blockchain, so different sync methods exist:
+
+-   Full sync verifies everything from genesis, but is very slow
+    
+-   Snap sync downloads recent state data quickly and then verifies it later
+    
+-   Light sync only keeps block headers and asks full nodes for data when needed
+    
+
+Snap sync allows a node to become usable faster, while still moving toward full verification over time.
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ### My Study Notes on Ethereum Nodes and Networking
 
 ### Today I studied how Ethereum nodes communicate and how different parts of the system work together, especially after the Ethereum Merge.
@@ -149,6 +212,7 @@ These nodes are mainly used by:
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 Today I learned about the structure of an Ethereum node after The Merge. After The Merge, a full Ethereum node is no longer one single program. Instead, it is built from two main clients, the execution client and the consensus client. If a user only wants to sync the blockchain and check blocks and transactions, running these two clients is enough. However, if someone wants to produce blocks and earn staking rewards, they also need to run a validator client. The validator client works like a plugin of the consensus client and is used for signing messages, voting, and proposing blocks.
 
 The execution client is responsible for executing all transactions in a block. It calculates account balances and smart contract states and then gives the final execution results. In simple words, the execution client does the math but does not decide which block is the official one. The consensus client does not execute transactions by itself. Instead, it checks the execution results from the execution client and runs the Proof of Stake rules to decide which block is valid and which chain should be accepted as the official chain. This means the execution client gives the results, and the consensus client decides whether to accept them.
@@ -160,11 +224,13 @@ The execution client and the consensus client communicate through a special inte
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 亲爱的助教老师您好，明天上午10点我要考电动力学，这学期的最后一门考试，今天实在是没有时间学习其他的了。之后我会补上今天的内容，谢谢啦！
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -185,6 +251,7 @@ Finally, I deeply understood that **"**compliance" is not just what is written o
 
 
 
+
 Today I reviewed the core structure of blockchain systems. A blockchain consists of a sequence of blocks, each containing transaction records and the hash of the previous block. This chained hash structure ensures data integrity and makes historical records effectively immutable.
 
 Wallet balances on a blockchain are not stored explicitly. Instead, balances are derived by scanning the entire transaction history associated with a given wallet address. Although all transactions are publicly accessible, wallet ownership remains anonymous because addresses are randomly generated and not directly linked to real-world identities.
@@ -200,6 +267,7 @@ Finally, I examined scalability challenges in public blockchains, such as increa
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
