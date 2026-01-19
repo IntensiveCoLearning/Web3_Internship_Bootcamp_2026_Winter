@@ -21,8 +21,28 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# 智能合约开发实操
+
+## RemixIDE
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-01-19-1768815539497-image.png)
+
+## EVM相关知识
+
+-   EVM 的栈是 256 位的，**默认uint256最省gas**
+    
+-   uint类型默认值为0，不同**类型转换会消耗gas**
+    
+-   **external** 比 **public** 更节省 gas
+    
+-   减少存储操作（Storage Write）能省gas
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -51,6 +71,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # 开发环境
 
@@ -104,6 +125,7 @@ timezone: UTC+8
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -133,6 +155,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -213,6 +236,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -264,6 +288,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -340,6 +365,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
