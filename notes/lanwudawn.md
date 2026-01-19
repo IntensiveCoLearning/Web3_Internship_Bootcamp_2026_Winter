@@ -19,13 +19,25 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 DAY6
 
-TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境  
-  
-看了智能合约开发的内容，定义很多，一时间理解不了，还是要在实践中慢慢理解。
+TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
+
+看了智能合约开发的内容，定义很多，一时间理解不了，还是要在实践中慢慢理解。  
+\------  
+**常用 JSON-RPC 方法**：
+
+| 方法名 | 功能 | 示例 |
+| --- | --- | --- |
+| eth_getBalance | 查询账户余额 | eth_getBalance(address, block) |
+| eth_blockNumber | 获取最新区块号 | eth_blockNumber() |
+| eth_sendTransaction | 发送交易 | eth_sendTransaction(txObject) |
+| eth_call | 调用合约（只读） | eth_call(callObject, block) |
+| eth_getTransactionReceipt | 获取交易收据 | eth_getTransactionReceipt(txHash) |
+| eth_getLogs | 查询事件日志 | eth_getLogs(filterObject) |
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ### **DAY 5**
@@ -40,6 +52,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 
 
+
 **_DAY4_**  
 **_TODOLIST: 1 阅读教程并整理_**  
   
@@ -48,6 +61,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -77,6 +91,7 @@ myfirstNFT
 
 
 
+
 DAY2  
 昨天晚上赶在ddl之前仓促提交笔记。下定决心一定要早些笔记。  
 \------  
@@ -86,6 +101,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
