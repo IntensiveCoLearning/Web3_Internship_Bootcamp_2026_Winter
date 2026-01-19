@@ -15,8 +15,200 @@ QS600+金融本硕；Web3初学者
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## 智能合约开发 —— 知识结构速览
+
+### 一、Dapp 架构与开发流程
+
+**Dapp 的核心特点：去中心化、合约驱动、前端直连区块链**
+
+**基本架构**
+
+-   **前端（UI）**：React / Vue 等，通过钱包 + RPC 与链交互
+    
+-   **智能合约**：Solidity 编写，部署在 EVM 上，承载业务逻辑
+    
+-   **数据检索器（Indexer）**：监听合约事件 → 写入数据库，供前端高效查询
+    
+-   **区块链 & 去中心化存储**：链上存状态与交易，IPFS/Arweave 存大文件
+    
+
+**开发流程**
+
+1.  需求分析与链选型
+    
+2.  智能合约开发 + 测试 + 审计
+    
+3.  检索器开发与部署
+    
+4.  前端开发与钱包交互
+    
+5.  合约与前端部署上线
+    
+
+* * *
+
+### 二、以太坊开发环境搭建
+
+**基础工具**
+
+-   Node.js、npm/yarn、Git
+    
+
+**本地开发链**
+
+-   **Foundry**（高性能，Rust 实现）：forge / anvil / cast
+    
+-   **Hardhat**（生态成熟，教学友好）
+    
+
+**辅助工具**
+
+-   Remix（快速测试）
+    
+-   OpenZeppelin（安全合约库）
+    
+-   MetaMask（钱包）
+    
+-   Viem / Wagmi（前端交互推荐）
+    
+
+* * *
+
+### 三、RPC 节点与链上交互
+
+**RPC 是什么**
+
+-   前端 / 后端访问区块链的“标准接口”
+    
+
+**核心功能**
+
+-   读取链上数据
+    
+-   发送交易
+    
+-   监听事件
+    
+-   Gas 估算、网络管理
+    
+
+**JSON-RPC**
+
+-   以太坊标准通信协议（eth\_call / eth\_sendTransaction 等）
+    
+
+**RPC 服务商**
+
+-   Alchemy、Infura、QuickNode、Ankr、Public Node
+    
+-   开发期 vs 生产环境选择策略
+    
+
+**最佳实践**
+
+-   API Key 环境变量管理
+    
+-   失败重试 + 速率限制处理
+    
+-   多 RPC 端点容灾
+    
+
+* * *
+
+### 四、Solidity 智能合约基础
+
+**语言特性**
+
+-   静态类型、面向合约、运行于 EVM
+    
+
+**核心语法**
+
+-   数据类型：uint / address / mapping / struct / enum
+    
+-   函数可见性：public / external / internal / private
+    
+-   状态修饰符：view / pure / payable
+    
+
+**合约结构**
+
+-   状态变量
+    
+-   构造函数
+    
+-   普通函数
+    
+-   事件（Events）
+    
+
+**高级特性**
+
+-   继承与 override
+    
+-   接口与抽象合约
+    
+-   函数修饰符（权限控制）
+    
+
+* * *
+
+### 五、智能合约安全实践（重点）
+
+**高频风险**
+
+-   重入攻击（Reentrancy）
+    
+-   权限缺失（Access Control）
+    
+-   整数溢出（< Solidity 0.8）
+    
+
+**防护手段**
+
+-   Checks–Effects–Interactions 模式
+    
+-   ReentrancyGuard
+    
+-   onlyOwner / AccessControl
+    
+-   使用 Solidity ≥0.8
+    
+
+* * *
+
+### 六、实战项目：链上留言板
+
+**项目目标**
+
+-   用户可在链上永久存储留言
+    
+-   使用事件供前端 / 检索器监听
+    
+
+**核心流程**
+
+1.  Remix 编写合约
+    
+2.  编译 → 部署
+    
+3.  调用函数写入留言
+    
+4.  监听事件进行展示
+    
+
+* * *
+
+### 一句话总结
+
+> 本章系统性地覆盖了 **Dapp 架构 → 合约开发 → RPC 交互 → Solidity 编程 → 安全实践 → 上链实战**，是一条从 Web2 开发者通往 Web3 合约工程师的完整学习路径。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 尝试使用Remix IDE，跑通测试并撰写新的代码完成任务
 
 ![截屏2026-01-17 22.24.38.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-18-1768750752757-__2026-01-17_22.24.38.png)
@@ -25,6 +217,7 @@ QS600+金融本硕；Web3初学者
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 创建钱包，测试币转账
 
 ![截屏2026-01-16 22.44.20.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-17-1768655912594-__2026-01-16_22.44.20.png)
@@ -32,6 +225,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 一、EOA的定义与控制方式
@@ -177,6 +371,7 @@ EOA 用户通过私钥签名发起外部交易（external transaction），交�
 
 
 
+
 # 一、节点与客户端
 
 ## 节点
@@ -310,6 +505,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 # 一、Web3合规性要求与常见法律风险
 
 ## 核心法律风险梳理
@@ -384,6 +580,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -586,6 +783,7 @@ DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
