@@ -15,8 +15,147 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+RPC (Remote Procedure Call) 是连接 **前端应用 (DApp)** 与 **区块链网络** 的桥梁。区块链节点本身维护着账本数据，RPC 节点则是允许外部访问这些数据的“网关”。
+
+> **💡 通俗理解：银行 ATM 模型**
+> 
+> -   **RPC 节点 = ATM 机**：它是用户交互的终端。
+>     
+> -   **区块链网络 = 银行核心系统**：存储资金和账本的底层。
+>     
+> -   **操作**：你可以通过 ATM (RPC) 查询余额 (读数据) 或 转账 (写数据/发交易)。
+>     
+
+### 主要职责
+
+-   **读 (Read)**：查询余额、区块高度、Gas 价格、读取合约状态。
+    
+-   **写 (Write)**：广播签名后的交易到网络。
+    
+-   **听 (Listen)**：通过 WebSocket 监听链上事件 (Events) 和状态变化。
+    
+
+* * *
+
+## 2\. 通信协议：JSON-RPC 2.0
+
+以太坊及兼容链的标准通信格式。所有交互均通过发送 JSON 请求完成。
+
+-   **传输方式**：HTTP (请求/响应模式) 或 WebSocket (长连接/推送模式)。
+    
+-   **常用方法速查**：
+    
+
+| 方法名 | 功能 | 备注 |
+| eth_getBalance | 查询余额 | 需提供地址和区块标签 (如 "latest") |
+| eth_blockNumber | 获取最新区块号 | 检查链同步状态常用 |
+| eth_sendTransaction | 发送交易 | 将签名交易广播出去 |
+| eth_call | 模拟调用 | 只读操作，不消耗 Gas |
+| eth_getLogs | 查询日志 | 用于检索历史事件 |
+
+* * *
+
+## 3\. RPC 服务商选择指南
+
+自建节点成本高昂，绝大多数开发者选择第三方服务。
+
+| 服务商 | 免费额度 | 适用场景 | 核心特点 |
+| Alchemy | 3亿次/月 | 生产环境/企业 | 稳定性极高，工具链完善，Debug 功能强 |
+| Infura | 10万次/月 | 开发测试 | 老牌服务商 (ConsenSys)，基础稳固 |
+| QuickNode | 有限 | 高频交易 | 低延迟，高性能，支持多链 |
+| Ankr | 有限 | 多链应用 | 去中心化网络，支持链种类丰富 |
+| Public Node | 无限制 | 学习/演示 | 完全免费，但不稳定，有速率限制 |
+
+**🚀 建议：** 开发阶段用 Infura/Public，生产环境强烈推荐 **Alchemy** 或 **QuickNode** 以保证 SLA。
+
+* * *
+
+## 4\. 开发实战与配置
+
+### 获取端点 (Endpoint)
+
+1.  注册服务商 (如 Alchemy)。
+    
+2.  创建 App (选择主网或测试网)。
+    
+3.  获取 HTTPS URL (例如 `https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY`).
+    
+
+### 代码集成 (推荐库)
+
+-   **Viem (推荐)**：现代、轻量级，类型安全。
+    
+-   **Ethers.js**：生态最成熟，文档丰富。
+    
+-   **Web3.js**：历史最悠久。
+    
+
+### Hardhat 安全配置
+
+**永远不要**将 API Key 硬编码在代码中。
+
+1.  **安装 dotenv**: `npm install dotenv`
+    
+2.  **创建** `.env` **文件**:
+    
+    Code snippet
+    
+    ```
+    MAINNET_RPC_URL=https://...
+    PRIVATE_KEY=your_private_key
+    ```
+    
+3.  **配置** `hardhat.config.js`:
+    
+    JavaScript
+    
+    ```
+    require("dotenv").config();
+    module.exports = {
+      networks: {
+        mainnet: {
+          url: process.env.MAINNET_RPC_URL,
+          accounts: [process.env.PRIVATE_KEY],
+        }
+      }
+    };
+    ```
+    
+
+* * *
+
+## 5\. 最佳实践
+
+### 🛡️ 安全第一
+
+-   **Git 隔离**：确保 `.env` 文件在 `.gitignore` 列表中。
+    
+-   **Key 轮换**：如果怀疑 Key 泄露，立即在服务商后台重置。
+    
+-   **后端代理**：在生产环境中，尽量避免在前端直接暴露 API Key，可通过后端服务器转发请求。
+    
+
+### ⚙️ 稳定性管理
+
+-   **重试机制 (Retry)**：网络抖动是常态，代码必须处理超时和失败重试。
+    
+-   **多节点备份 (Failover)**：配置多个 RPC URL (如 Alchemy + Infura)。如果主节点失败，自动切换到备用节点。
+    
+-   **速率限制 (Rate Limit)**：注意服务商的每秒请求数限制 (RPS)，必要时在代码中实现请求队列或节流。
+    
+
+### 🛠️ 本地开发
+
+-   使用 **Hardhat Node** 或 **Anvil (Foundry)** 开启本地 RPC。
+    
+-   **优点**：速度极快、无 Gas 消耗、可随时重置状态、无速率限制。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ### 一、 DApp 核心架构
 
 与传统 Web2 应用不同，Web3 应用的后端逻辑运行在去中心化网络上。
@@ -132,6 +271,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 这是一份纯文字版的 Remix IDE 学习笔记总结：
 
 **Remix IDE 学习笔记**
@@ -189,6 +329,7 @@ Remix 是 Web3 开发的首选入门工具，核心特点是免安装、零配�
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ### **1\. 节点的“新架构”：执行层 + 共识层**
 
 自从“合并”（The Merge）以后，一个完整的以太坊节点不再是单一的软件，而是必须由两个配合工作的客户端组成 。书中用了一个很形象的“法院”比喻来解释两者的关系
@@ -216,6 +357,7 @@ Remix 是 Web3 开发的首选入门工具，核心特点是免安装、零配�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -260,6 +402,7 @@ eg：工资法币表述，实际发虚拟币，离职后劳动仲裁，成功，
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -393,6 +536,7 @@ RWA 现实世界资产上链
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
