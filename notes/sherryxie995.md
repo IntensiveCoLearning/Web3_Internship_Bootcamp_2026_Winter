@@ -15,13 +15,97 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## 一、 Web3 的核心哲学
+
+与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
+
+-   **去中心化 (Decentralization)**：不再依赖单一中心服务器，而是由分布式节点维护。
+    
+-   **无须许可 (Permissionless)**：任何人都可以加入网络或使用协议。
+    
+-   **抗审查 (Censorship Resistance)**：数据不可篡改。
+    
+-   **可验证性 (Verifiability)**：基于数学和密码学，而非信任机构。
+    
+
+* * *
+
+## 二、 Web3 技术架构栈
+
+理解 Web3 的最好方式是看它的逻辑层级。你可以将其类比为传统的 OSI 模型。
+
+### 1\. 协议层（L1 / 底层区块链）
+
+这是 Web3 的物理/数据链路层。
+
+-   **代表性网络**：Ethereum, Bitcoin, Solana, Polkadot。
+    
+-   **核心组件**：共识机制（PoW, PoS）、状态机、点对点网络。
+    
+
+### 2\. 扩展层（L2 / 侧链）
+
+为了解决 L1 的扩展性问题（如以太坊的高 gas 费和慢速）。
+
+-   **Rollups**：Optimistic Rollups (Arbitrum, Optimism) 和 **ZK-Rollups** (zkSync, Starknet)。
+    
+    > **密码学联系**：作为密码学专家，你会对 ZK-Rollups 中的 **zk-SNARKs** 或 **zk-STARKs** 产生浓厚兴趣。
+    
+
+### 3\. 中间件与基础设施
+
+-   **存储**：IPFS, Filecoin, Arweave（去中心化存储而非云服务器）。
+    
+-   **预言机 (Oracles)**：Chainlink（将现实世界数据引入区块链）。
+    
+-   **索引**：The Graph（像 Google 索引网页一样索引区块链数据）。
+    
+
+### 4\. 交互层（前端与钱包）
+
+-   **钱包 (Wallet)**：本质是**私钥管理工具**。MetaMask, OKX Wallet。
+    
+-   **通讯库**：`ethers.js`, `web3.js`（让前端能与智能合约通信）。
+    
+
+* * *
+
+## 三、 关键技术笔记
+
+### 1\. 智能合约 (Smart Contracts)
+
+-   **定义**：存储在区块链上的自动执行代码（If-Then 逻辑）。
+    
+-   **语言**：以太坊主流是 **Solidity**，高性能链（如 Solana）常用 **Rust**。
+    
+-   **特性**：确定性执行、原子性。
+    
+
+### 2\. 身份与账户 (DID & Account Abstraction)
+
+-   **账户抽象 (ERC-4337)**：将外部账户 (EOA) 变为合约账户，让用户可以用邮箱登录，甚至丢失私钥后找回。
+    
+-   **DID**：去中心化身份，用户完全控制自己的社交、个人信用数据。
+    
+
+### 3\. 代币经济学 (Tokenomics)
+
+-   **ERC-20**：同质化代币（如 USDT、ETH）。
+    
+-   **ERC-721 / ERC-1155**：非同质化代币 (NFT)，代表唯一资产。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ## [**一、DeFi：去中心化金融的创新实践**](https://web3intern.xyz/zh/industry-knowledge/#%E4%B8%80%E3%80%81defi-%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E9%87%91%E8%9E%8D%E7%9A%84%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5)
 
@@ -252,6 +336,7 @@ ConstitutionDAO 发起众筹
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -323,6 +408,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -554,6 +640,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -686,6 +773,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -835,6 +923,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
