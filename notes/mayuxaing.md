@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+\## 脚本
+
+\### 一、本质
+
+比特币脚本根本不是“编程语言”，它是一个被故意打残的、不可图灵完备的 Forth 系栈机。
+
+唯一任务：在你花钱那一刻，回答一个问题——「这笔 UTXO 现在能不能被花？」。
+
+比特币里根本没有“账户余额”，只有一堆带锁的小钱箱（UTXO）
+
+每个 UTXO 就是一个结构体，里面只有两样关键东西：
+
+\+ 多少 BTC
+
+\+ 一段“锁脚本”（ScriptPubKey）
+
+想花它，就必须给矿工证明：我能配出一段“解锁脚本”，把它和锁脚本拼接后，在比特币虚拟机里执行结果为 TRUE。
+
+\### 二、核心设计限制（为什么这么残）
+
+\+ 无循环、无跳转（彻底杜绝 while、for、goto）
+
+\+ 栈最大 1000 项，脚本最大 10 000 字节（防栈溢出、DoS）
+
+\+ 大量 opcode 早被 Satoshi 永久禁用（OP\_CAT、OP\_MUL、OP\_AND 等）
+
+\+ 不能读取链上其他状态、不能读时间（除非你主动塞进交易里）
+
+\+ 执行路径 100% 确定，任何节点跑出来结果都一模一样
+
+→ 相当于一个开了全防护（canary + RELRO + seccomp + no-exec-stack）的超残血 VM
+
+\### 三、上锁 vs 解锁完整流程（P2PKH 现场打靶）
+
+UTXO 里永远只存一把锁（Locking Script = ScriptPubKey）
+
+最常见写法（1… 和 bc1q… 地址）：
+
+\`\`\`plain
+
+OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
+
+\`\`\`
+
+你花钱时在 input 里提供钥匙（Unlocking Script = ScriptSig / Witness）：
+
+\`\`\`plain
+
+<签名> <完整公钥>
+
+\`\`\`
+
+矿工会把这两段拼接成下面这根“ROP 链”，然后丢进脚本虚拟机执行：
+
+\`\`\`plain
+
+<签名> <公钥> OP\_DUP OP\_HASH160 <pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
+
+\`\`\`
+
+执行过程逐条 opcode（你自己推栈就能 100% 复现）：
+
+| 步骤 | 操作 | 栈（从底→顶） | 备注 |
+
+| --- | ------------------- | ------------------------------ | ------------------- |
+
+| 1 | push 签名 | \[sig\] | |
+
+| 2 | push 公钥 | \[sig, pubkey\] | |
+
+| 3 | OP\_DUP | \[sig, pubkey, pubkey\] | 复制一份公钥 |
+
+| 4 | OP\_HASH160 | \[sig, pubkey, hash160(pubkey)\] | 计算公钥哈希 |
+
+| 5 | push 锁里的 pubkeyhash | \[sig, pubkey, h1, h2\] | |
+
+| 6 | OP\_EQUALVERIFY | \[sig, pubkey\] | h1 == h2？不相等直接 Fail |
+
+| 7 | OP\_CHECKSIG | \[TRUE 或 FALSE\] | 用公钥验签，验证是否对本交易签名 |
+
+最后栈顶剩下非零值（TRUE）→ 矿工放行，钱归你花。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 \## 比特币节点
 
 **比特币节点（Bitcoin Node）= 参与比特币网络的计算机**，运行Bitcoin Core 或其他兼容实现。
@@ -110,6 +196,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 \## 区块结构
 
@@ -232,6 +319,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -333,6 +421,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -485,6 +574,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
