@@ -15,8 +15,149 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## **_首先继续昨天的阅读，然后搞一下React前端，因为我发现后续有DAPP开发。_**
+
+* * *
+
+## **The life you want lies within a specific level of mind**
+
+![Image](https://pbs.twimg.com/media/G-ebHTubsAEsAee?format=jpg&name=large)
+
+This is a integram theory. The reality is determined by my level of consciousness.
+
+The Ladder of Consciousness: The author lists nine stages of self-development from the "Impulsive Stage" to the "Unitive Stage". Each higher stage can accommodate more complexity, less prejudice and greater understanding.
+
+Cognitive limitations: If a person are at the "conformist" stage, it is very difficult for him to understand how a strategist thinks, because the filters through which you observe the world are completely different.
+
+The essence of change: True change is not about running faster on the old steps, but leaping to the next one. Most readers are between stage 4 (self-awareness) and stage 8 (constructive awareness), a period that marks the crucial transition from being shaped by society to shaping oneself.
+
+1.  Impulsive: Black and white thinking, also called 二极管思维, I think.
+    
+2.  Self-protective: Look out exclusively for themselves.
+    
+3.  Conformist: The rules or norms in your family or social circle feel like reality itself. It is difficult for a person staying this stage to understand why there is someone believing or vote differently.
+    
+4.  Self-aware: The transition begins when you have an inner life that does not always match the exterior world. You might don't believe what everyone else does. For example, in some underdeveloped regions, people hold a traditional viewpoint that men must marry a woman, and correspondingly, a woman must be married at specific time. If you begin contemplating that such thing seems not necessary.
+    
+5.  **Conscientious: This is where you build your own system of principles and hold yourself accountable for them. Examples include leaving a family religion after careful study to adopt a personal philosophy or building a career plan based on the belief that right efforts yield right results.**
+    
+6.  Individualist: Honestly, I begin realizing this that my principles were shaped by my experience and living context. So it is necessary to hold them more loosely.
+    
+
+From my perspective, reaching Individualist is a key node for most people. As for later stages, which depend on individuals' personal wisdom. So, I won't write about those things.
+
+**V – Intelligence is the ability to get what you want out of life**
+
+![Image](https://pbs.twimg.com/media/G-eb5tkbEAA8v0u?format=jpg&name=medium)
+
+We can judge intelligence based on the system’s ability to iterate and persist with trial and error.
+
+In conclusion, intelligence is the ability to learn from mistakes.
+
+* * *
+
+# React 继续学习
+
+今日完成了官方手册中入门棋盘联系。
+
+* * *
+
+## 一、 架构思维：状态提升 (Lifting State Up)
+
+当多个组件需要共享数据（例如：棋盘需要显示数据，历史记录列表也需要知道数据）时，我们将状态移至它们的**公共父组件**中。
+
+**Game (大脑)**：拥有唯一真实的数据源（`historyRecords` 和 `activeStep`）。
+
+**Board (执行者)**：不存数据，只通过 Props 接收“当前长什么样”并负责显示。
+
+**Square (末梢)**：纯展示组件，只负责把传进来的值画出来。
+
+* * *
+
+## 二、 核心原则：不可变性 (Immutability)
+
+在 React 中，我们**永远不直接修改**旧的数组或对象。
+
+**做法**：使用 `.slice()` 复制数组，或者使用 `[...]` 展开运算符创建新数组。
+
+**意义**：
+
+**性能优化**：React 只需要对比引用地址（旧数组 vs 新数组）就能知道是否需要重绘。
+
+**时光旅行**：因为每一波数据都是独立保存的“快照”，我们可以轻松跳回任何一步。
+
+**简化逻辑**：避免了复杂的撤销/重放逻辑。
+
+* * *
+
+## 三、 数据流：双向奔赴
+
+React 是单向数据流，但交互是双向的：
+
+-   **向下传数据 (Props)**：父组件把变量传给子组件（如 `visualValue={...}`）。
+    
+-   **向上传信号 (Callbacks)**：子组件通过执行父组件传下来的函数，把信息反馈回去。
+    
+    -   _关键技巧_：**匿名函数包装**。为了给函数传参数而不让它立即执行，必须写成 `() => doSomething(i)`。
+        
+
+* * *
+
+## 四、 智能状态：派生状态 (Derived State)
+
+**原则**：如果一个值可以通过已有的 State 计算出来，就不要为它开辟新的 `useState`。
+
+**错误示例**：额外设置一个 `const [isXNext, setIsXNext] = useState(true)`。
+
+**正确示例**：`const isNextX = activeStep % 2 === 0;`。
+
+**好处**：保证了数据的一致性。当 `activeStep` 改变时，`isNextX` 永远是同步准确的。
+
+* * *
+
+## 五、 TypeScript 的“合同”约束
+
+TS 最大的作用是安全
+
+1.  **Interface (接口)**：规定组件必须接收哪些 Prop。`visualValue: string | null`：明确告诉开发者，这里可能没值。
+    
+2.  **函数类型签名**：`() => void`：不带参数。`(data: Type) => void`：带参数的回调。
+    
+3.  **泛型 State**：`useState<Type[]>(...)` 确保你不会不小心往数组里塞进奇怪的东西。
+    
+
+* * *
+
+## 六、 列表渲染与 Key
+
+使用 `.map()` 将数据数组转换为 UI 元素。
+
+-   **Key 的作用**：React 用 Key 来标识哪些元素改变、添加或删除了。
+    
+-   **最佳实践**：在井字棋历史记录这种“顺序固定”的场景下，使用数组索引 `index` 作为 `key` 是安全的。
+    
+
+* * *
+
+## 七、 时光旅行逻辑拆解
+
+这一行代码：
+
+`const nextHistory = [...historyRecords.slice(0, activeStep + 1), latestLayout];`
+
+1.  `slice(0, activeStep + 1)`：截取从开始到当前步的历史。这解决了“回到过去并重新下棋”时，旧的未来会被自动“剪掉”的问题。
+    
+2.  `[...]`：将新的一步棋无损地贴在旧历史后面。
+    
+
+继续备考中 🙈
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -82,6 +223,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 最近Prediction Market大火，借此机会也频繁尝试了钱包的交互功能。在使用像 Trust Wallet 或 MetaMask 这样的 Web3 钱包时，我经常会遇到**_确认Confirm_**和**_签名Signature_**这两个操作。虽然它们看起来都是点一下同意，但在底层的技术逻辑和安全影响上有本质区别。
 
@@ -169,6 +311,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 图灵完备
@@ -296,6 +439,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -386,6 +530,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -472,6 +617,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
