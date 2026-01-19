@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今日任务：
+
+学习1h
+
+参加分享会
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今日任务：
 
 1.  参加分享会
@@ -27,6 +37,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 今日笔记：
 
 1.  参加会议
@@ -36,6 +47,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 笔记补充：
@@ -89,6 +101,7 @@ VASP（虚拟资产提供商）制度：2023 年 6 月生效，要求加密货�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -367,6 +380,7 @@ Sybil Attack是“用假身份操纵结果”
 
 
 
+
 今日任务：
 
 1.  整理昨天分享会内容
@@ -559,6 +573,7 @@ Code is law 难篡改 可追溯
 
 
 
+
 # 今日任务：
 
 完成钱包以及NFT任务
@@ -663,6 +678,7 @@ PS：FOMO（Fear Of Missing Out） FUD (Fear, Uncertainty and Doubt)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
