@@ -17,13 +17,37 @@ Web3新人 INTP/base上海
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# Day 6?
+
+这里是重新捡起学习动力的Juustin，这里是今日日志。
+
+## 干了啥
+
+-   运营部分直播
+    
+-   ZK零知识证明学习
+    
+
+## 想了啥
+
+感觉运营好像也逃不出早期客服的感觉，但是要一步一步做起啊 ，今天听的居多，要做的但是有很多啊
+
+## 明天干啥
+
+实干部分，包括figma 文案etc.
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今日休假
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 # Day 4
 
@@ -59,6 +83,7 @@ Web3新人 INTP/base上海
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 # Day 3
@@ -108,6 +133,7 @@ Web3新人 INTP/base上海
 
 
 
+
 # Day 2
 
 这里是一天学完两门大课双目失神的Juustin。以下是水到不行的今日学习日志。
@@ -136,6 +162,7 @@ Web3新人 INTP/base上海
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
