@@ -15,8 +15,67 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## **学习笔记**
+
+### **Remix 使用教程**
+
+**左侧工具栏**
+
+-   File Exploers
+    
+-   Solidity Compiler
+    
+-   Deploy & Run
+    
+
+**按钮的颜色**
+
+蓝色：查（只读）View / Pure
+
+橙色：改（写入）Trasaction
+
+红色：付费（转账）payable
+
+### **智能合约开发**
+
+小案例学习：
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.21;
+contract bank{
+    mapping (address => uint256)public balances;
+    function deposit() external payable{
+        require(msg.value>0,"No ETH sent");
+        balances[msg.sender] +=msg.value;
+​
+    }
+    function withdraw(uint256 amount) external {
+        require(amount > 0, "Cannot withdraw zero amount");
+        require(amount<= balances[msg.sender],"Insufficent balances");
+        balances[msg.sender] -= amount;
+        payable (msg.sender).transfer(amount);
+    }
+​
+​
+}
+//1.存钱函数
+// function deposit() external payable
+​
+//2.查询余额
+// mapping(address => uint) public balance;
+​
+//3.提款函数
+// function withdraw(uint amount) external
+​
+```
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## **学习笔记**
 
 ### **Alex.Tian分享会从 ERC-721到 ERC-7962**
@@ -90,6 +149,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ## **学习笔记**
 
@@ -191,6 +251,7 @@ _函数 Functions_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## **学习笔记**
@@ -363,6 +424,7 @@ EIP-7702允许 EOA 在一笔交易中受全球资金表现得像一个合约账�
 
 
 
+
 ## **学习笔记**
 
 ### **从零到一学习以太坊第二章 //P131已结束第二章**
@@ -515,6 +577,7 @@ EOA是由私钥控制的区块链账户，用来发起交易。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -783,6 +846,7 @@ _轻节点（Light Node）_
 
 
 
+
 # **1.13学习笔记01**
 
 ## **021学习以太坊第一章**
@@ -942,6 +1006,7 @@ Web3目标所要实现的：权利的重新分配、无许可、抗审查、公�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
