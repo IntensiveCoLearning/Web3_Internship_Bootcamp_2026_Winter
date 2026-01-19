@@ -15,8 +15,287 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## 一、Telegram 社群搭建与基础设置
+
+## 1\. 建群与基础信息
+
+Telegram 建群本身很简单：新建群聊 → 取名 → 拉人，就算完成了最基本的社群搭建。
+
+群的基础信息至少包括：头像、群名称、简介（描述社群定位），这些决定了新用户对群的第一印象。
+
+群类型可以设置为 private group（私密群，只能邀请进入）或 public group（公开群，可以通过链接或搜索加入），根据用途选择即可。
+
+## 2\. 权限与管理员
+
+群权限要优先设置好，例如：谁可以改群信息、谁可以拉人、能不能创建新话题/频道等，避免新成员随意改动群设置。
+
+管理员最好“按角色给权限”，而不是一股脑给满权限：
+
+-   全职运营、核心团队可以有改群信息、踢人、设机器人等完整权限。
+    
+-   外聘的版主/志愿者更适合给部分权限，比如只能删消息、禁言、踢出等。
+    
+
+这一点在 Web3 社群里尤为重要，因为一旦错误给权给了恶意账号，对方可以借机器人、群公告等手段发钓鱼链接，后果比较严重。
+
+## 3\. Topic（话题）的使用与整理
+
+Telegram 支持话题，把一个群拆成多个“子板块”，对信息量大、讨论主题多的社群会更友好。
+
+话题不要贪多：
+
+-   过多的 topic 会让新成员无从下手，运营侧也容易失控。
+    
+-   对长期不活跃的 topic，可以考虑关闭或合并，保持信息结构的“可读性”。
+    
+
+-   可以参考成熟项目的做法：高优先级信息（公告、活动、重要更新）固定在少数几个话题里，方便快速浏览。
+    
+
+* * *
+
+## 二、使用 Rose 机器人管理 Telegram 群
+
+## 1\. 认准官方账号与基础接入
+
+Rose 是一个常用的 Telegram 群管理机器人，可以做欢迎、封禁、防刷屏、黑名单关键词等多种管理工作。
+
+由于高仿号很多，添加前一定要确认 handle 和认证信息，确保是官方 Rose，而不是钓鱼仿冒版本。
+
+基本接入流程：
+
+-   先在与 Rose 的私聊里 `/start`，完成初始化。
+    
+-   把 Rose 拉进自己的群，并授予管理员权限，否则很多管理功能无法启用。
+    
+
+## 2\. 核心功能与常用命令
+
+Rose 属于“全能型群管”，官方文档列出的功能包括：
+
+-   locks（锁定功能，例如禁止发链接、媒体、机器人等）
+    
+-   blocklist（关键词黑名单）
+    
+-   welcome messages（新成员欢迎语）
+    
+-   CAPTCHA（入群验证，防止机器人号）
+    
+-   notes、filters 等扩展能力。
+    
+
+-   管理员权限与 Rose 行为是绑定的：
+    
+    -   例如有“Change Group Info”的管理员可以通过 Rose 改设置、有“Delete Messages”的可以用删除/清理命令等。
+        
+-   `/settings` 是一个入口命令，可以在群里或私聊中打开 Rose 设置菜单，对群进行可视化配置。
+    
+
+## 3\. Blocklist（关键词屏蔽）的使用
+
+-   Blocklist 的逻辑是：设置一批触发词，只要有人发消息包含这些词，机器人就按规则处理（删帖、警告、禁言等）。​
+    
+-   添加方式通常类似：
+    
+    -   触发命令（如 `/addblocklist` 或对应菜单）；
+        
+    -   填写要屏蔽的词（例如“赚钱”“投资返利”等容易被诈骗账号利用的词）；
+        
+    -   保存后生效。
+        
+-   可以通过查看 blocklist 列表和删除条目来不断调整，让规则既能挡住垃圾信息，又不过度干涉正常对话。
+    
+
+## 4\. 安全与滥用风险
+
+-   给机器人管理员权限本身就意味着“把群的大门钥匙交给了它”，所以：
+    
+    -   必须确认为官方账号；
+        
+    -   管理面板的访问和修改最好只开放给少数可信管理员。​
+        
+-   Web3 场景中，最典型的风险是：假冒机器人在群里发布“空投”“高收益项目”等钓鱼链接，用户一旦点击授权或转账，很容易资产被转走。
+    
+
+* * *
+
+## 三、数据面板：读懂 Telegram 社群的数据
+
+## 1\. 数据面板入口与前提
+
+-   对于拥有管理员权限的群，Telegram 和部分管理工具可以提供数据面板，用来统计：成员数、发言人数、消息量、增长曲线等。
+    
+-   新建不久的群往往数据为空或不完整，需要一定时间积累活动数据，才能看出趋势。
+    
+
+## 2\. 关键指标与运营意义
+
+-   常见可见维度包括：
+    
+    -   成员数量与增长曲线：可以和活动时间线对照，看某次活动对拉新是否有效。
+        
+    -   发言人数与消息量：判断活跃度，而不是只看“群有多少人”。
+        
+    -   加入来源：区分邀请链接、自然搜索、活动专用链接等，有助于评估不同渠道的带量效果。
+        
+    -   语言分布：如果英语或其他语种用户突然增多，就需要考虑是否要增设对应语种的管理员或分区。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
+        
+-   运营闭环里，这些数据主要用于：
+    
+    -   评估活动是否达标；
+        
+    -   发现潜力人群（例如海外用户上升）；
+        
+    -   指导之后的内容策略和时间选择。
+        
+
+## 3\. 活跃时段与消息投放
+
+-   许多后台都会给出「活跃时段」之类的统计，显示一天中哪些小时段消息量最高。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
+    
+-   可以把最关键的公告、活动推广安排在这些高活跃时段，提高触达概率，而不是在大家都不在线的时候发完就“沉底”。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
+    
+
+* * *
+
+## 四、从 0 到 1 策划一场 Twitter Space
+
+## 1\. 明确主题与受众
+
+-   一场 Space 的策划，第一步是确定主题和想要吸引的目标人群，例如：以太坊十周年回顾、某个新协议（如 404 类资产）等。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    
+-   主题确定后，要给 Space 起一个清晰、有辨识度的标题，既能让核心圈层一眼看懂，又能对路人有吸引力。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    
+
+## 2\. 准备问题库与嘉宾名单
+
+-   主持人需要提前做功课，整理问题库，而不是完全临场发挥：
+    
+    -   主题的背景与现状：它解决了什么问题、和现有方案相比有什么不同。
+        
+    -   该领域最近的热点和争议。
+        
+    -   嘉宾过往提到过的观点，可以顺势接住深入聊。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+        
+-   嘉宾选择可以从已有印象入手：
+    
+    -   谁在这个话题上公开聊得多、观点清晰；
+        
+    -   谁有对应的项目或组织背景，能补足不同视角。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+        
+
+## 3\. 邀请嘉宾的沟通要点
+
+-   邀请函要做到“信息充分但不啰嗦”，建议至少包含：
+    
+    -   活动主题与时间；
+        
+    -   大致会涉及的内容方向（从问题库中抽几条代表性的）；
+        
+    -   形式说明：Twitter Space，时长大致多久，有无 Q&A 环节。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+        
+-   这样嘉宾可以快速判断：是否匹配自己的专业、时间是否合适、准备成本怎样。
+    
+
+## 4\. 收集嘉宾信息用于宣发
+
+-   为了制作海报和活动推文，建议提前收集这四类信息：
+    
+    -   姓名或常用 ID；
+        
+    -   Twitter handle；
+        
+    -   所属机构/项目及职务；
+        
+    -   头像（或允许使用的公开形象图）。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+        
+-   这些信息既用于海报，也用于文案中的 @ 标记，方便嘉宾以及其背后的机构账号转发，放大传播效果。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    
+
+* * *
+
+## 五、Twitter Space 的创建、宣发与复盘
+
+## 1\. 创建 Space 与时间规划
+
+-   在 X（原 Twitter）上创建 Space 的大致步骤：
+    
+    -   打开移动端 App，长按发推按钮或点击底部的 Spaces 图标；
+        
+    -   选择“创建 Space”，填入标题、话题标签；
+        
+    -   通过日历/时间设置界面预约时间（注意时区，一般中国地区是 UTC+8）。\[[twoclassychics](https://twoclassychics.com/2024/05/how-to-start-a-twitter-space-a-step-by-step-guide/)\]​
+        
+-   建议在 Space 开始前的 2–3 天就完成创建，并留出时间配合海报和文案做预热。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    
+
+## 2\. 宣发节奏与渠道
+
+-   宣发材料包括：海报、核心文案、Space 链接。
+    
+-   常见节奏：
+    
+    -   T-2~3 天：首发海报+长一点的介绍，明确主题、嘉宾、时间、收听方式。
+        
+    -   T-1 天：再次提醒，把文案精简一点，强调倒计时。
+        
+    -   活动开始前 5–10 分钟：最后一波“马上开始”的提醒。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+        
+-   渠道上不仅在 X 发，还可以同步到 Telegram 群、Discord、微信群等，保证目标人群尽可能都能看到。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
+    
+
+## 3\. Space 当场执行要点
+
+-   开场：
+    
+    -   主办方简单介绍项目/组织；
+        
+    -   逐一请嘉宾自我介绍，给足个人品牌露出的空间；
+        
+    -   简要说明这场 Space 的背景和将要覆盖的内容，让临时进来的人也能快速“对上频道”。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+        
+-   中段问答：
+    
+    -   按照问题库推进，同时根据现场回答灵活追问。
+        
+    -   如果某位嘉宾已经“顺带回答”了后面的问题，可以调整提问顺序，避免重复。
+        
+-   Q&A 环节：
+    
+    -   不是强制的，但如果现场氛围不错，开放提问可以增强参与感；
+        
+    -   要注意时间控制，不要让 Q&A 抢掉主线内容。
+        
+
+## 4\. 活动数据与复盘
+
+-   复盘时可以重点关注几类指标：
+    
+    -   宣发推文的浏览量、互动数（点赞、转发、评论）；
+        
+    -   Space 的实时在线人数峰值，这是判断“热度”最直接的指标；
+        
+    -   总收听次数可以参考，但要注意其容易“虚高”：同一个人反复进出可能被计多次。\[[socialmediaexaminer](https://www.socialmediaexaminer.com/twitter-spaces-a-live-audio-guide-for-marketers/)\]​
+        
+-   Web3 项目在做 Space 时也要注意“买量”现象：
+    
+    -   有些账号会用机器人充人数，其中相当一部分听众头像会被折叠到列表里，而不是展示在主视图；
+        
+    -   真正的质量信号，往往来自现场互动、后续讨论和有内容的转发，而不仅仅是一个好看的“总收听数”。\[[kubbco](https://www.kubbco.com/blog/twitter-spaces-the-ultimate-guide-to-hosting-engaging-conversations)\]​
+        
+-   总结时可以从主题匹配度、宣发到位程度、时间选择、嘉宾结构、技术与流程问题等维度，写出下次要保留和要改进的点，这样每办一次活动，自己的“活动运营手感”都会更扎实一些。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
+    
+
+* * *
+
+如果你之后要把这份内容整理进自己的 Web3 实习/运营手册，可以在此基础上再加上你自己的实践例子，比如实际操作某个 Space 的时间线截图、数据截图和踩坑记录，会更贴近你个人的节奏。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 分享会笔记
 
 从这次分享里，大概把自己理清了几个关键点，就按「为什么要搞 7962、它在做什么、怎么做到的、能用在什么地方」这几个问题来记一下。
@@ -134,6 +413,7 @@ ERC‑7962 就是试图在这个缝里做一层「隐私友好的会员 / 资产
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ### LXDAO每周六上午有周会，新人想要加入 LXDAO 成为 Member 可以在明天的周会上做一个自我介绍
 
@@ -298,6 +578,7 @@ text
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 # 难忘今宵，误闯天家
 
 周五分享会笔记：
@@ -352,6 +633,7 @@ Notion、Figma、思维导图基本成了标配：有人用 OKR 把自己当成�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -429,6 +711,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 
 
+
 # 今天一直在准备明天的考试，不过晚上的分享会内容非常干货，现先依据其他小伙伴的笔记做个总结，19号之后会全部补齐回放：
 
 ## web3安全分享会笔记
@@ -482,6 +765,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -543,6 +827,7 @@ Gas 被讲成“油费”这个比喻很形象：Gas price 像油价，Gas usage
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
