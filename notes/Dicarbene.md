@@ -15,8 +15,127 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+````markdown
+# Day 8 学习笔记：智能合约开发与Solidity基础
+
+## 核心内容
+学习了Dapp架构、Solidity基础语法以及中文排版规范，掌握智能合约开发的基本框架和Solidity编程语言的核心概念。
+
+## 主要知识点
+
+### 一、Dapp架构与开发流程
+
+#### Dapp核心架构
+1. **前端**：HTML、CSS、JavaScript构建，通过钱包Provider或RPC节点与区块链交互
+2. **智能合约**：Dapp核心，定义业务逻辑，部署在区块链上
+3. **数据检索器**：检索智能合约Event，写入传统数据库供前端查询
+4. **区块链与去中心化存储**：存储合约状态和大规模非结构化数据
+
+#### Dapp开发流程
+- **需求分析与规划**：确定功能、选择区块链平台、设计UX
+- **智能合约开发**：编写合约、测试、审计优化
+- **检索器开发**：捕获Event数据，写入数据库
+- **前端开发**：与区块链交互，展示数据和处理交易
+
+### 二、Solidity基础语法
+
+#### 1. 合约结构
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    // 状态变量
+    uint256 public myNumber;
+    string public myString;
+    
+    // 事件
+    event NumberUpdated(uint256 newValue);
+    
+    // 构造函数
+    constructor(uint256 initialValue) {
+        myNumber = initialValue;
+    }
+    
+    // 函数
+    function setNumber(uint256 newValue) public {
+        myNumber = newValue;
+        emit NumberUpdated(newValue);
+    }
+    
+    // 读取函数
+    function getNumber() public view returns (uint256) {
+        return myNumber;
+    }
+}
+```
+
+#### 2. 数据类型
+- **值类型**：uint256、int256、bool、address、bytes32等
+- **引用类型**：array、struct、mapping
+- **特殊类型**：enum、bytes、string
+
+#### 3. 函数
+- **可见性**：public、private、internal、external
+- **状态修改器**：view、pure、payable
+- **修饰符**：自定义逻辑，如onlyOwner
+
+#### 4. 合约交互
+- 合约调用：通过地址调用其他合约
+- 事件：记录合约状态变化
+- 继承：合约间代码复用
+
+### 三、中文排版规范总结
+
+#### 1. 空格使用
+- 中英文之间加空格：`在 LeanCloud 上` ✅
+- 中文与数字之间加空格：`花了 5000 元` ✅
+- 数字与单位之间加空格：`10 Gbps` ✅
+- 度數/百分比与数字之间不加空格：`90°`、`15%` ✅
+- 全形標點與其他字符之間不加空格：`iPhone，好開心！` ✅
+
+#### 2. 标点符号
+- 不重复使用标点：`戰勝了巴西隊！` ✅（而非`戰勝了巴西隊！！！`）
+- 使用全形中文標點：`嗨！你知道嘛？` ✅（而非`嗨!你知道嘛?`）
+
+#### 3. 全形和半形
+- 数字使用半形：`1000 元` ✅（而非`１０００ 元`）
+- 英文整句使用半形标点：`「Stay hungry, stay foolish.」` ✅
+
+#### 4. 专有名词
+- 大小写正确：`GitHub` ✅（而非`github`或`Github`）
+
+## 学习心得
+
+1. **Dapp架构理解**：Dapp与传统应用的核心区别在于去中心化，前端不直接连接区块链，而是通过钱包或RPC节点交互，智能合约作为核心业务逻辑层。
+
+2. **Solidity基础掌握**：Solidity语法与JavaScript有相似之处，但也有独特特性，如状态变量、可见性修饰符、事件等，需要深入理解其运行机制。
+
+3. **中文排版规范重要性**：规范的中文排版能提升内容可读性和专业性，在智能合约注释、文档编写中尤为重要。
+
+4. **开发流程认知**：智能合约开发需要完整的流程，从需求分析到部署上线，每个环节都需要严格把控，特别是安全审计环节。
+
+## 待解决的问题
+
+- 如何编写更安全的智能合约，避免常见漏洞？
+- 如何优化智能合约的Gas使用？
+- 如何设计高效的数据检索器？
+- 如何将中文排版规范应用到智能合约开发文档中？
+
+## 学习计划
+
+- 继续学习Solidity高级特性
+- 实践编写简单的智能合约
+- 学习智能合约安全审计
+- 深入理解Dapp完整开发流程
+````
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -26,6 +145,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # 学习总结（Day1-6）
 
@@ -112,6 +232,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -182,6 +303,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -232,6 +354,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -300,6 +423,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
