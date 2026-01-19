@@ -15,8 +15,75 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# **My first zk vote**
+
+![{A67417D0-33A1-49ED-B5B7-CC10EBBD196F}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-19-1768810634689-_A67417D0-33A1-49ED-B5B7-CC10EBBD196F_.png)
+
+## **零知识证明基础：证明什么、向谁证明？**
+
+### **Prover / Verifier 模型**
+
+零知识证明通常用两个角色来描述：
+
+-   **证明者（Prover）**：掌握某个秘密信息，希望向他人证明自己「确实知道」这个秘密；
+    
+-   **验证者（Verifier）**：希望确认某个断言是真的，但不想（或不允许）知道该秘密本身。
+    
+
+### **Statement / Witness：你在“证明”什么？**
+
+我们把「要被证明的陈述」称为 **语句（statement）**，把证明者掌握的秘密称为 **见证（witness）**。
+
+见证则包括：
+
+-   你的私有身份秘密（如某个随机生成的 `identitySecret`）；
+    
+-   证明你是选民集合成员所需的 Merkle 路径；
+    
+-   你选择的具体投票选项等私密数据
+    
+
+### **零知识证明必须满足的三个性质**
+
+形式上，一个零知识证明系统需要同时满足三个核心性质：
+
+1.  **完备性（Completeness）**
+    
+    如果语句是真的，并且证明者与验证者都按照协议诚实地执行，那么验证者最终一定会被说服。
+    
+2.  **可靠性（Soundness）**
+    
+    如果语句是假的，那么任何试图伪造证明的「作弊」证明者，都几乎不可能骗过诚实的验证者。
+    
+3.  **零知识性（Zero-Knowledge）**
+    
+    验证者在整个证明过程中，除了“语句是真的”这一事实之外**不会获得任何额外信息**。
+    
+    换句话说，验证者无法从证明内容中，还原出证明者所掌握的秘密。
+    
+
+## ZK 投票流程：
+
+![{04A9FE53-36D4-4996-9D14-238D5555848D}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-19-1768810813928-_04A9FE53-36D4-4996-9D14-238D5555848D_.png)
+
+**链上公开：我提交了一个“有效的证明”。 链上不公开：我是谁、我投了什么。**
+
+### **身份注册与选民集合**
+
+![身份承诺、Merkle 树与 nullifier 示意](https://zkvote.0xtmp.xyz/images/merkle-nullifier.svg)
+
+# Remix 使用：
+
+![{27AF75D7-9075-44D8-8C16-8337F286776F}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-19-1768813052368-_27AF75D7-9075-44D8-8C16-8337F286776F_.png)
+
+# [**Day 1: Scripting and Smart Contracts! Providers, Signers, and Wallets**](https://www.youtube.com/watch?v=m2AJAcWk394&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # foundry 创建新项目的 forge 测试
 
 Foundry 提供以下以太坊开发工具：
@@ -166,6 +233,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -252,6 +320,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -366,6 +435,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -557,6 +627,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -782,6 +853,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1050,6 +1122,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
