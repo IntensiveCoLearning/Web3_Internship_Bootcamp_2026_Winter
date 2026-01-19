@@ -15,8 +15,51 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+### Rag
+
+RAG（检索增强生成）—Retrieval-Augmented Generation
+
+**解决问题：**一、知识有截止日期 二、产生幻觉
+
+**技术流程：**
+
+-   索引阶段（离线准备）：chunks(将知识库切成小块+Embedding Model(存储于向量库）——>上下文构建
+    
+-   检索阶段（实时查询）：在向量库进行相似度搜索
+    
+-   增强阶段（上下文构建）：检索到文档片段（context)+用户问题=prompt
+    
+-   生成阶段（LLM输出）
+    
+
+**技术要点**
+
+chunk size: 大—>引入噪音 小—→丢失上下文
+
+embedding model:平衡语义理解能力和推理速度
+
+vector retrieval: hybrid search+稠密向量检索/稀疏检索提升效果
+
+### MCP（Model context Protocol)
+
+**目的：**在MCP之前,每个工具都需要单独集成,开发者要为每个API写专门的适配代码。MCP提供了统一的协议规范,就像USB标准让各种设备都能即插即用。
+
+**技术架构**
+
+MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源作为MCP server。协议定义了三个核心概念:
+
+-   **Resources**(资源):AI可以读取的数据源,如文件、数据库记录、API响应
+    
+-   **Prompts**(提示模板):预定义的操作模板,降低AI使用工具的难度
+    
+-   **Tools**(工具):AI可以主动调用的函数,实现具体操作
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 工作原理
 
 当你拥有一个 ERC-7962 代币时，所有权记录的是你的公钥哈希，而不是你的地址。要转移代币，你需要提供：
@@ -179,6 +222,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ### FrontRunning
 
@@ -360,6 +404,7 @@ contract Relayer {
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -377,6 +422,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -609,6 +655,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -745,6 +792,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
