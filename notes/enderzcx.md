@@ -17,11 +17,13 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
-**体验 My first zk vote**
+**体验 My first zk vote**  
+**成功把一个智能合约部署在测试网上并且发送了一段信息 Remix有点难用 不知道是我的网络问题还是什么**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
@@ -30,6 +32,7 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -43,11 +46,13 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 《021学习以太坊》: 比特币更像是“价值锚”， 以太坊更像是“应用发动机” 已学习到32页
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -63,6 +68,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
