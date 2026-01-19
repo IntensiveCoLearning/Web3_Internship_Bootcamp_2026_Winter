@@ -15,8 +15,397 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# Uniswap v2
+
+Uniswap v2 的核心功能升级（任意 ERC20 配对、闪电贷、TWAP 预言机）
+
+## 一、核心定位与 v1 核心差异
+
+### 1\. 定位
+
+-   核心不变：遵循 “恒定乘积” 规则（两种资产储备金乘积保持不变），去中心化自动做市商（AMM），交易费率默认 0.3%。
+    
+-   核心升级：v1 仅支持 ERC20-ETH 配对，v2 支持任意 ERC20-ERC20 配对，新增闪电贷、抗操纵预言机、可开关协议费等功能，合约架构更简洁安全。
+    
+
+### 2\. 与v1的差异
+
+| 对比维度 | Uniswap v1 | Uniswap v2 |
+| --- | --- | --- |
+| 交易对支持 | 仅 ERC20-ETH | 任意 ERC20-ERC20 |
+| 核心功能 | 基础兑换 | 闪电贷、TWAP 预言机、协议费、元交易 |
+| 开发语言 | Vyper | Solidity |
+| ETH 处理 | 直接支持原生 ETH | 需包装为 WETH（ERC20 标准） |
+| 地址生成 | 依赖创建顺序（CREATE） | 确定性地址（CREATE2） |
+
+## 二、新特性（实战聚焦）
+
+### 1\. 任意 ERC20-ERC20 配对
+
+-   交易者：无需通过 ETH 搭桥，直接兑换两种 ERC20 代币，减少 1 次手续费和滑点。
+    
+-   流动性提供者：关联资产（如 USDT-USDC）直接配对，降低无常损失。
+    
+
+solidity
+
+```
+// 工厂合约关键函数：创建 ERC20-ERC20 交易对
+function createPair(address tokenA, address tokenB) external returns (address pair) {
+    // 确保 tokenA < tokenB，避免重复配对
+    (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
+    require(token0 != address(0), "Invalid token");
+    require(getPair(token0, token1) == address(0), "Pair exists");
+    
+    // 用 CREATE2 生成确定性地址（离线可预计算）
+    bytes memory bytecode = type(UniswapV2Pair).creationCode;
+    bytes32 salt = keccak256(abi.encodePacked(token0, token1));
+    assembly {
+        pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
+    }
+    
+    // 初始化交易对
+    IUniswapV2Pair(pair).initialize(token0, token1);
+    allPairs.push(pair);
+    emit PairCreated(token0, token1, pair, allPairs.length);
+}
+```
+
+### 2\. TWAP 价格预言机（抗操纵）
+
+-   不依赖瞬时价格，记录每个区块首次交易前的储备金比例，通过时间加权计算平均价格（TWAP），抗操纵性更强。
+    
+-   实用场景：借贷协议定价、衍生品结算等需要可靠价格的场景。
+    
+
+solidity
+
+```
+// 调用 Uniswap v2 交易对获取 TWAP（简化版）
+contract TWAPConsumer {
+    // 交易对地址（如 USDT-USDC 交易对）
+    address public pairAddress = 0x...;
+    
+    // 记录起始价格累计值和时间
+    struct TWAPData {
+        uint256 priceCumulative;
+        uint256 timestamp;
+    }
+    mapping(address => TWAPData) public twapRecords;
+    
+    // 1. 记录起始状态
+    function startTWAP() external {
+        IUniswapV2Pair pair = IUniswapV2Pair(pairAddress);
+        (uint256 priceCumulative0, uint256 priceCumulative1, uint256 timestamp) = pair.getReserves();
+        twapRecords[msg.sender] = TWAPData({
+            priceCumulative: priceCumulative0, // 以 token0 计价 token1 的累计价格
+            timestamp: timestamp
+        });
+    }
+    
+    // 2. 计算区间 TWAP 价格
+    function getTWAP() external view returns (uint256 twap) {
+        TWAPData memory data = twapRecords[msg.sender];
+        IUniswapV2Pair pair = IUniswapV2Pair(pairAddress);
+        (uint256 currentCumulative, , uint256 currentTime) = pair.getReserves();
+        
+        // 计算时间差和价格差（简化逻辑，实际需处理精度）
+        uint256 timeElapsed = currentTime - data.timestamp;
+        uint256 priceDiff = currentCumulative - data.priceCumulative;
+        
+        // TWAP = 价格累计差 / 时间差（返回 token1 相对于 token0 的平均价格）
+        twap = priceDiff / timeElapsed;
+    }
+}
+
+// 交易对接口（简化）
+interface IUniswapV2Pair {
+    function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
+    function initialize(address token0, address token1) external;
+}
+```
+
+### 3\. 闪电贷（Flash Swaps）
+
+-   允许在同一原子交易中 “借资产→用资产→还资产”，无需抵押，未按时归还则交易回滚。
+    
+-   支持两种模式：1）借 A 还 A（纯借贷）；2）借 A 还 B（兑换 + 借贷），手续费均为 0.3%。
+    
+
+solidity
+
+```
+// 闪电贷回调合约（必须实现）
+contract FlashSwapReceiver {
+    address public factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6; // Uniswap v2 工厂地址（主网）
+    
+    // 闪电贷核心回调函数（Uniswap v2 要求必须实现）
+    function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external {
+        // 1. 验证调用者是 Uniswap 交易对
+        address pair = msg.sender;
+        (address token0,) = IUniswapV2Factory(factory).getPair(msg.sender);
+        require(msg.sender == IUniswapV2Factory(factory).getPair(token0, token1), "Not Uniswap pair");
+        require(sender == address(this), "Sender not this");
+        
+        // 2. 使用借来的资产（示例：套利、偿还债务等）
+        uint borrowedAmount = amount0 > 0 ? amount0 : amount1;
+        address borrowedToken = amount0 > 0 ? token0 : token1;
+        // ... 此处执行核心逻辑（如用 borrowedToken 在其他平台套利）
+        
+        // 3. 归还资产（需包含 0.3% 手续费）
+        uint repayAmount = borrowedAmount * 1003 / 1000; // 0.3% 手续费
+        IERC20(borrowedToken).transfer(pair, repayAmount);
+    }
+}
+
+// 发起闪电贷（简化）
+function initiateFlashSwap(address pair, address tokenToBorrow, uint amount) external {
+    // 调用交易对的 swap 函数，指定回调合约
+    IUniswapV2Pair(pair).swap(
+        tokenToBorrow == token0 ? amount : 0,
+        tokenToBorrow == token1 ? amount : 0,
+        address(this), // 回调合约地址
+        "" // 额外数据（可选）
+    );
+}
+
+// 必要接口
+interface IUniswapV2Factory {
+    function getPair(address tokenA, address tokenB) external view returns (address);
+}
+
+interface IUniswapV2Pair {
+    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+}
+
+interface IERC20 {
+    function transfer(address to, uint value) external returns (bool);
+    function balanceOf(address owner) external view returns (uint);
+}
+```
+
+### 4\. 可开关协议费
+
+-   协议费为交易费的 1/6（0.05%），默认关闭，由 `feeToSetter` 地址控制开启 / 关闭。
+    
+-   费用收取：不实时扣除，仅在流动性存入 / 取出时结算，通过 mint 额外流动性代币给 `feeTo` 地址实现。
+    
+
+solidity
+
+```
+// 工厂合约中协议费控制逻辑
+contract UniswapV2Factory {
+    address public feeTo;
+    address public feeToSetter;
+    
+    // 设置协议费收款地址（开启协议费）
+    function setFeeTo(address _feeTo) external {
+        require(msg.sender == feeToSetter, "Not feeToSetter");
+        feeTo = _feeTo;
+    }
+    
+    // 转移 feeToSetter 权限
+    function setFeeToSetter(address _feeToSetter) external {
+        require(msg.sender == feeToSetter, "Not feeToSetter");
+        feeToSetter = _feeToSetter;
+    }
+}
+```
+
+## 三、核心合约架构
+
+### 1\. 合约分层
+
+-   核心合约：`UniswapV2Pair`（存储流动性、处理 swap/flashSwap）、`UniswapV2Factory`（创建交易对、管理协议费）。
+    
+-   路由合约：`UniswapV2Router`（简化用户交互，处理资金转移、路径计算）。
+    
+
+### 2\. 核心合约关键代码
+
+交易对合约（UniswapV2Pair）
+
+solidity
+
+```
+contract UniswapV2Pair {
+    address public token0;
+    address public token1;
+    uint112 private reserve0; // 储备金 0
+    uint112 private reserve1; // 储备金 1
+    uint32 private blockTimestampLast; // 最后交易区块时间戳
+    uint256 public priceCumulative0; // 价格累计值 0
+    uint256 public priceCumulative1; // 价格累计值 1
+    bool private locked; // 重入锁
+    
+    // 防止重入攻击
+    modifier noReentrant() {
+        require(!locked, "Reentrant");
+        locked = true;
+        _;
+        locked = false;
+    }
+    
+    // 初始化交易对
+    function initialize(address _token0, address _token1) external {
+        token0 = _token0;
+        token1 = _token1;
+    }
+    
+    // 更新储备金和价格累计值（内部函数）
+    function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reserve1) private {
+        require(balance0 <= type(uint112).max && balance1 <= type(uint112).max, "Overflow");
+        uint32 blockTimestamp = uint32(block.timestamp % 2**32);
+        uint32 timeElapsed = blockTimestamp - blockTimestampLast;
+        if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
+            // 更新价格累计值（用于 TWAP）
+            priceCumulative0 += uint256(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) * timeElapsed;
+            priceCumulative1 += uint256(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) * timeElapsed;
+        }
+        reserve0 = uint112(balance0);
+        reserve1 = uint112(balance1);
+        blockTimestampLast = blockTimestamp;
+        emit Sync(reserve0, reserve1);
+    }
+    
+    // 核心 swap 函数（简化版）
+    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external noReentrant {
+        require(amount0Out > 0 || amount1Out > 0, "Insufficient output amount");
+        (uint112 _reserve0, uint112 _reserve1,) = getReserves();
+        require(amount0Out < _reserve0 && amount1Out < _reserve1, "Insufficient liquidity");
+        
+        // 转移资产给用户
+        if (amount0Out > 0) IERC20(token0).transfer(to, amount0Out);
+        if (amount1Out > 0) IERC20(token1).transfer(to, amount1Out);
+        
+        // 处理闪电贷回调
+        if (data.length > 0) IUniswapV2Callee(to).uniswapV2Call(msg.sender, amount0Out, amount1Out, data);
+        
+        // 更新储备金
+        uint balance0 = IERC20(token0).balanceOf(address(this));
+        uint balance1 = IERC20(token1).balanceOf(address(this));
+        uint amount0In = balance0 > _reserve0 - amount0Out ? balance0 - (_reserve0 - amount0Out) : 0;
+        uint amount1In = balance1 > _reserve1 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
+        require(amount0In > 0 || amount1In > 0, "Insufficient input amount");
+        
+        // 扣除 0.3% 手续费后更新储备金
+        uint balance0Adjusted = balance0 * 1000 - amount0In * 3;
+        uint balance1Adjusted = balance1 * 1000 - amount1In * 3;
+        require(balance0Adjusted * balance1Adjusted >= uint(_reserve0) * uint(_reserve1) * 1000**2, "K");
+        _update(balance0, balance1, _reserve0, _reserve1);
+        emit Swap(msg.sender, amount0In, amount1In, amount0Out, amount1Out, to);
+    }
+    
+    // 获取储备金和价格累计值
+    function getReserves() public view returns (uint112 _reserve0, uint112 _reserve1, uint32 _blockTimestampLast) {
+        _reserve0 = reserve0;
+        _reserve1 = reserve1;
+        _blockTimestampLast = blockTimestampLast;
+    }
+}
+
+// 辅助接口
+interface IUniswapV2Callee {
+    function uniswapV2Call(address sender, uint amount0, uint amount1, bytes calldata data) external;
+}
+
+// 简化的 UQ112x112 编码工具（用于价格计算）
+library UQ112x112 {
+    uint224 constant Q112 = 2**112;
+    function encode(uint112 y) internal pure returns (uint224 z) {
+        z = uint224(y) * Q112;
+    }
+    function uqdiv(uint224 x, uint112 y) internal pure returns (uint224 z) {
+        z = x / uint224(y);
+    }
+}
+```
+
+## 四、实战示例
+
+### 1\. 添加流动性
+
+solidity
+
+```
+// 通过 Router 合约添加流动性（简化版）
+function addLiquidity(
+    address router,
+    address tokenA,
+    address tokenB,
+    uint amountA,
+    uint amountB
+) external {
+    // 授权 Router 转移资产
+    IERC20(tokenA).approve(router, amountA);
+    IERC20(tokenB).approve(router, amountB);
+    
+    // 调用 Router 添加流动性
+    (uint amountADesposited, uint amountBDeposited, uint liquidity) = IUniswapV2Router(router).addLiquidity(
+        tokenA,
+        tokenB,
+        amountA,
+        amountB,
+        0, // 最小接收流动性代币数量（实际需设置合理值）
+        0, // 最小接收流动性代币数量
+        msg.sender,
+        block.timestamp + 300 // 交易过期时间
+    );
+    
+    // 流动性代币已转入 msg.sender 地址
+    console.log("获取流动性代币数量：", liquidity);
+}
+
+interface IUniswapV2Router {
+    function addLiquidity(
+        address tokenA,
+        address tokenB,
+        uint amountADesired,
+        uint amountBDesired,
+        uint amountAMin,
+        uint amountBMin,
+        address to,
+        uint deadline
+    ) external returns (uint amountA, uint amountB, uint liquidity);
+}
+```
+
+### 2\. 移除流动性
+
+solidity
+
+```
+function removeLiquidity(
+    address router,
+    address pair,
+    uint liquidityAmount
+) external {
+    // 授权 Router 转移流动性代币
+    IERC20(pair).approve(router, liquidityAmount);
+    
+    // 调用 Router 移除流动性
+    (uint amountA, uint amountB) = IUniswapV2Router(router).removeLiquidity(
+        tokenA,
+        tokenB,
+        liquidityAmount,
+        0, // 最小接收 tokenA 数量
+        0, // 最小接收 tokenB 数量
+        msg.sender,
+        block.timestamp + 300
+    );
+    
+    console.log("收回 tokenA 数量：", amountA);
+    console.log("收回 tokenB 数量：", amountB);
+}
+```
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 以太坊脚本与Solidity开发笔记
 
 通过`ethers.js`的以太坊链上交互脚本开发，使用 Hardhat 完成智能合约本地开发 / 测试，最后通过 Scaffold-ETH 实现合约快速迭代与前端交互，来独立完成合约读写、交易发送等核心功能
@@ -619,6 +1008,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -685,6 +1075,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # EVM与Gas机制 笔记
@@ -876,6 +1267,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -1018,6 +1410,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -1116,6 +1509,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1244,6 +1638,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
