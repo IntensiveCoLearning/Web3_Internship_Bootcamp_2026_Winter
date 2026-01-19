@@ -15,8 +15,102 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# DApp Development Workflow
+
+## Requirement Analysis
+
+\- Clarify the problem the DApp aims to solve
+
+\- Determine whether blockchain is necessary
+
+\- Decide on the target chain (e.g. Ethereum, Polygon)
+
+\- Define core features and user interactions
+
+## Smart Contract Design
+
+\- Design contract logic and data structures
+
+\- Define state variables, functions, and access control
+
+\- Consider security, gas efficiency, and upgradeability
+
+\- Choose the programming language (usually Solidity)
+
+## Smart Contract Development
+
+\- Write smart contracts
+
+\- Follow best practices (checks-effects-interactions pattern)
+
+\- Add events for frontend listening
+
+\- Write unit tests for contract logic
+
+## Smart Contract Testing
+
+\- Test contracts using local or test networks
+
+\- Cover normal cases and edge cases
+
+\- Perform security testing to avoid common vulnerabilities
+
+\- Fix bugs and optimize gas usage
+
+## Contract Deployment
+
+\- Deploy contracts to a testnet
+
+\- Verify contract code if required
+
+\- Deploy to mainnet after sufficient testing
+
+\- Record contract addresses and ABIs
+
+## Frontend Development
+
+\- Build user interface (Web, Mobile, etc.)
+
+\- Integrate wallet connection (e.g. MetaMask)
+
+\- Use libraries like ethers.js or web3.js
+
+\- Handle transaction states and user feedback
+
+## Frontend and Contract Integration
+
+\- Connect frontend to deployed smart contracts
+
+\- Call read/write functions
+
+\- Listen to contract events
+
+\- Manage errors and network changes
+
+## DApp Testing
+
+\- End-to-end testing with real wallets
+
+\- Test user flows and transaction lifecycle
+
+\- Ensure correct behavior under network delays or failures
+
+## Deployment and Maintenance
+
+\- Deploy frontend to hosting services
+
+\- Monitor contract usage and errors
+
+\- Update frontend as needed
+
+\- Maintain and upgrade contracts if supported
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 一、Web3 合规 (Compliance)
 
 1.  核心监管概念
@@ -143,6 +237,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # SOLIDITY BASIC SYNTAX NOTES
 
@@ -301,6 +396,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -528,6 +624,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -697,6 +794,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -891,6 +989,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
