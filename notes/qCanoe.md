@@ -15,8 +15,83 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
+
+A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
+
+![Smart Contracts in Blockchain - GeeksforGeeks](https://media.geeksforgeeks.org/wp-content/uploads/20220527093234/Howdoesasmartcontractwork1.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/qCanoe/images/2026-01-19-1768834292532-image.png)
+
+**1\. Dapp 与智能合约的整体框架**
+
+去中心化应用（Dapp）与传统 Web 应用最大的不同在于其核心逻辑运行在区块链上，不由单一实体控制。一个完整的 Dapp 主要由四部分组成：前端界面、智能合约、数据检索层与区块链/去中心化存储系统。前端通过钱包（如 MetaMask）与 RPC 节点连接链上数据和交易，智能合约负责业务逻辑实现，而检索器将链上事件转换为可供前端查询的数据。
+
+* * *
+
+**2\. Dapp 的开发流程**
+
+从需求到上线，一般分为以下阶段：
+
+首先进行**需求分析与规划**，明确目标功能、选择合适链（如以太坊、Polygon 等），并设计用户体验。随后进入**智能合约开发阶段**，用 Solidity 编写业务逻辑。由于合约一旦部署就不可更改，因此在这一阶段要编写全面的测试代码和进行安全审计。之后开发数据**检索器**与前端，前端通过 Web3 库与链上合约交互，显示状态并触发交易。最后部署智能合约和前端，发布到测试网或主网并维护。
+
+![Dapp 开发流程图](https://web3intern.xyz/assets/dapp_development-workflow_01-sGuU6DCd.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/qCanoe/images/2026-01-19-1768834346013-image.png)
+
+**3\. 智能合约开发核心要点**
+
+讲到智能合约具体开发，重点理解以下几点：
+
+-   **开发语言与环境**：以太坊生态中 Solidity 是最常用语言，要掌握其语法、生命周期管理和安全实践。合约编写完后需要由于编译器（如 solc、Hardhat/Foundry 工具链）生成 ABI 与 bytecode，供部署与前端调用使用。
+    
+-   **合约测试**：单元测试是确保逻辑正确的基础，通过框架如 Hardhat、Truffle 或 Foundry 写全面的单测和集成测试；还要考虑安全性测试（重入、溢出攻击等）。
+    
+-   **安全审计**：合约一旦部署不可更改，高风险逻辑需要仔细审查漏洞，使用社区审计合约库（如 OpenZeppelin）和 formal verification 等技术提升安全性。
+    
+
+* * *
+
+**4\. 开发环境搭建**
+
+在开始写合约之前，建议搭建完善的本地开发环境：
+
+-   安装 Node.js 和包管理器（npm/yarn），这是绝大多数工具的基础。
+    
+-   选择开发框架：**Hardhat**（现代、插件丰富）或 **Foundry**（Rust 生态中本地构建/测试效率高）。这些工具能帮助编译、部署、测试合约。
+    
+-   本地链：可以直接用 Hardhat 内置节点或 Foundry 的 anvil 启动测试链；这样快速迭代合约逻辑。
+    
+-   常用工具：Remix IDE 适合快速实验，OpenZeppelin 提供安全、可复用合约库；前端则可用 Viem、Ethers.js、Wagmi 等现代库与链交互。
+    
+
+* * *
+
+**5\. RPC 节点与链交互**
+
+RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取数据、发送交易、监听事件等。开发中可以选择第三方 RPC 服务（如 Infura、Alchemy）或运行本地节点测试。理解基本 JSON-RPC 方法（如 `eth_call`、`eth_sendTransaction`）有助于调试与性能优化。
+
+* * *
+
+**6\. 常见智能合约模式与扩展**
+
+理解合约常见模式对编写成熟 Dapp 很重要：
+
+-   **事件（Event）**：合约通过事件广播状态变化，检索器可以实时捕获并存库供前端查询。
+    
+-   **代币标准**：如 ERC-20、ERC-721、ERC-1155 等，熟悉标准能提升可组合性。
+    
+-   **权限控制**：Ownable、AccessControl 等模式常用于管理合约操作权限。
+    
+
+* * *
+
+**7\. 安全与调试实践总结**
+
+智能合约一旦发布难以更改，因此安全至关重要。实践包括：代码审计、单测覆盖、使用开源安全库、利用静态分析工具（如 solc-verify）检查不变量，还可参考研究工具（如 eThor 等）进行深度形式验证和漏洞检测。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -62,6 +137,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ### **1.17 021 学习以太坊第 1-3 章回顾**
 
@@ -144,6 +220,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -197,6 +274,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -279,6 +357,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -339,6 +418,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -376,6 +456,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
