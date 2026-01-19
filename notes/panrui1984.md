@@ -15,8 +15,138 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+以下记录
+
+1 Gas优化方式
+
+在 EVM 中，Gas 主要分为三类：
+
+1.  **计算消耗**：运算、函数调用
+    
+2.  **存储消耗**：对 storage 的读写
+    
+3.  **交易消耗**：部署合约、转账、事件日志
+    
+
+其中**storage 写入**Gas消耗尤为重要
+
+可以考虑如下场景
+
+优化前：
+
+function A(uint256 x) external {
+
+    for (uint i = 0; i < 10; i++) {
+
+        y += x;
+
+    }
+
+}
+
+// 优化后：
+
+function B(uint256 x) external {
+
+    uint256 tmp = y;
+
+    for (uint i = 0; i < 10; i++) {
+
+        tmp += x;
+
+    }
+
+    y = tmp;
+
+}
+
+优化前Gas消耗量
+
+20000 + 1000 +  20000 _10 + 10_ （计算操作的gas消耗量）  = 221000
+
+其中循环10次写入
+
+优化后
+
+20000 + 1000 + 10\* （计算gas消耗量） + 20000 （最后一次写入）
+
+可以看出gas的消耗量大幅优化
+
+2.  solidity
+    
+
+智能合约开发中，重放攻击属于最常见的安全威胁，仍以《web3实习手册》中提出的漏洞为例
+
+漏洞
+
+// ❌ 有漏洞
+
+function withdraw() public {
+
+    require(balance\[msg.sender\] > 0);
+
+    (bool sent,) = [msg.sender.call](http://msg.sender.call){value: balance\[msg.sender\]}("");
+
+    require(sent);
+
+    balance\[msg.sender\] = 0;
+
+}
+
+// ✅ 修复后
+
+function withdraw() public {
+
+    uint256 amount = balance\[msg.sender\];
+
+    balance\[msg.sender\] = 0;
+
+    (bool sent,) = [msg.sender.call](http://msg.sender.call){value: amount}("");
+
+    require(sent);
+
+}
+
+示例中采用扣除后更新状态的方案
+
+此外，也可以使用装饰器加锁的方案，代码如下
+
+Contract example{
+
+       bool private lock;
+
+    mapping(address => uint256) private balance;
+
+       modifier reentrancy(){
+
+       require(!lock, ‘no reentrancy);
+
+       lock = true;
+
+\_;
+
+Lock = false;
+
+}
+
+   Function withdraw() public reentrancy {
+
+    Uint256 amount = balance\[msg.sender\];
+
+       Balance\[msg.sender\] = 0;
+
+           (bool sent,) = [msg.sender.call](http://msg.sender.call){value: amount}("");
+
+           require(sent, “failed to send);
+
+}
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 24-25区块链主要进展记录
 
 Ordi开启的BRC20铭文
@@ -76,6 +206,7 @@ ICO合规化（Project Crypto）
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 模仿写的调研报告
 
@@ -179,6 +310,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 今天模仿写的调研报告
@@ -312,6 +444,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -341,6 +474,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -377,6 +511,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -450,6 +585,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
