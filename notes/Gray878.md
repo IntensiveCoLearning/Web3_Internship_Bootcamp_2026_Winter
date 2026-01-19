@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+观看以太坊周会
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 1.  查看Web3合规回放
     
 2.  查看Web3安全回放
@@ -26,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 查看「Web3 运行原理」回放
 
@@ -40,6 +47,7 @@ timezone: UTC+8
 
 
 
+
 1\. 学习使用 Google Calendar
 
 2\. 查看以太坊中文周会 260112 回放
@@ -49,6 +57,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
