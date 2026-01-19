@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+学习内容
+
+参与了分享会
+
+今天去医院了，学的有点少
+
+笔记
+
+![11.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Yutong41319/images/2026-01-19-1768832573994-11.jpg)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 学习内容
 
 今天比较忙碌，没来得及听课，继续对uniswap进行分析，从产品和投资的角度生成了一份报告，但其中有一些概念还没很深入的理解，但我下一步应该会分析下一个应用，来继续验证分析模版，以及更深入的了解web3
@@ -193,6 +207,7 @@ Uniswap 证明了 Web3 世界中「协议成功」与「Token 成功」可以并
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今日学习内容  
   
@@ -455,6 +470,7 @@ Uniswap 证明了 Web3 世界中「协议成功」与「Token 成功」可以并
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 学习内容
 
 课程+视频
@@ -466,6 +482,7 @@ Uniswap 证明了 Web3 世界中「协议成功」与「Token 成功」可以并
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -486,6 +503,7 @@ Uniswap 证明了 Web3 世界中「协议成功」与「Token 成功」可以并
 
 
 
+
 学习内容：
 
 入门导读行业赛道
@@ -499,6 +517,7 @@ Uniswap 证明了 Web3 世界中「协议成功」与「Token 成功」可以并
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
