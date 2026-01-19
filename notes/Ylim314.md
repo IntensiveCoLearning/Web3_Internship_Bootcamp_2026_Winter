@@ -15,8 +15,76 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+**1月20日学习日志：**
+
+第二周的学习正式开始，今天的重头戏是 DataDance 的 Alex 导师带来的关于 ERC-7962 的深度架构分享。这不仅是对 ERC-721 的改进，更是一次对以太坊底层账户模型的“降维打击”与重构。
+
+### 一、 架构层面的范式转移
+
+1\. 传统模型 (ERC-721/20) 的痛点
+
+在传统的 Solidity 开发中，我们习惯了 mapping(tokenId => address)。这种设计将资产强绑定在 Address上。
+
+-   隐私裸奔：只要知道地址，就能查到该地址下的所有资产。
+    
+-   授权风险：转移资产必须先 `Approve`，导致了无数的钓鱼攻击。
+    
+
+2\. ERC-7962 的 UTXO 化尝试
+
+Alex 提出的 ERC-7962 核心在于将所有权映射改为 mapping(tokenId => bytes32 keyHash)。
+
+-   所有权解耦：资产不再属于某个“钱包”，而是属于某个“公钥哈希”。谁拥有这把钥匙，谁就能花费这个资产。
+    
+-   类似比特币：这本质上是在以太坊的 Account 模型上，通过智能合约实现了一套类 UTXO的逻辑。
+    
+
+### 二、 隐私与合规的工程博弈
+
+结合会议中 Alex 与学员的 Q&A，我对 ERC-7962 的隐私特性有了更准确的工程认知：
+
+-   它是“Output Privacy”而非“完全匿名”：
+    
+    它不同于 Tornado Cash 的混币逻辑。ERC-7962 的隐私性体现在\*\*“持有即隐身”\*\*。
+    
+    -   _Mint 阶段_：资产生成时，链上只记录一个 Hash。没人知道这个 Hash 背后是谁。
+        
+    -   _Transfer 阶段_：只有当用户出示公钥并签名消费时，链上才会通过 `ecrecover` 验证身份。
+        
+    -   _工程隐喻_：这就像是给每个 Token 发了一个“一次性保险箱”。只有开箱那一刻，大家才知道钥匙在你手里。
+        
+
+### 三、 对 AI Agent 的特殊意义
+
+作为关注 AI 方向的开发者，我敏锐地发现 ERC-7962 是 AI Agent 资产交互的绝佳载体：
+
+1.  免 Gas 交互 ：
+    
+    ERC-7962 天然支持元交易。AI Agent 可以只生成签名，而由专门的 Paymaster 合约代付 Gas。这意味着我们可以在链上部署成千上万个“贫穷”的 Agent，它们不需要持有 ETH 也能操作资产。
+    
+2.  一次性密钥：
+    
+    Slides 中提到的 Key Rotation功能，允许 AI Agent 为每一次任务生成临时的 Session Key。
+    
+    -   _场景_：Agent A 完成任务 -> 获得 Token -> 任务结束 -> Agent A 销毁 Key A，将资产“发送”给 Key B（无需暴露 Agent A 的主钱包地址）。这极大地提升了自动化系统的安全性。
+        
+3.  消除 Approve 授权风险：
+    
+    由于所有权是基于签名的，转移 Token 不需要 Approve 合约。AI 在执行高频交易时，不再面临“授权给恶意 DEX 后被清空钱包”的风险。
+    
+
+### 四、 关键技术细节备忘
+
+-   验证逻辑：不是存储 `address`，而是验证 `keccak256(abi.encodePacked(publicKey)) == storedKeyHash`。
+    
+-   安全防范：为了防止重放攻击（Replay Attack），ERC-7962 在签名结构中引入了 `per-keyHash nonce`。这与我们周一学的 EOA Nonce 机制异曲同工，但在应用层实现了更细粒度的控制。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 \# 1月18日工程日志：EVM 架构视角与战术预演 (Week 1 Day 7)
 
 \## 第一周复盘
@@ -54,6 +122,7 @@ Aave 的存款凭证 (aToken) 可以被 Uniswap 交易，又可以作为 MakerDA
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 1月17日工程日志： ## 🎯 核心议题 \*\*From Scripting to Engineering.\*\* 放弃 JS/TS 驱动的 Hardhat 框架，全面迁移至以太坊基金会及 Paradigm 强推的 \*\*Foundry\*\* 工具链。 \*\*目标：\*\* 建立一套支持 Fuzzing（模糊测试）、Gas Snapshot（Gas 快照对比）及 Mainnet Forking（主网分叉模拟）的工业级开发环境。 --- ## 🛠️ 1. 技术选型：Why Foundry Over Hardhat? 1. \*\*测试反馈环 (Feedback Loop)\*\*：Foundry 基于 Rust 编写的 EVM，编译速度比 Hardhat (Node.js) 快 20-50 倍。在跑大型协议的集成测试时，这几分钟的差距决定了开发体验。 2. \*\*上下文统一 (Context Switching)\*\*：Hardhat 强迫开发者用 JS/TS 写测试逻辑（异步操作、BigNumber 处理极其痛苦）。Foundry 允许 \*\*Solidity-Native Testing\*\*，直接用 Solidity 写测试，测试代码本身就是合约逻辑的一部分。 3. \*\*高级测试原语\*\*：原生支持 \*\*Property-Based Testing (Fuzzing)\*\* 和 \*\*Invariant Testing\*\*，这是传统 Unit Test 无法覆盖的安全盲区。 --- ## ⚡ 2. 工程环境配置 (Infrastructure) ### 2.1 基础组件安装 跳过基础 curl 安装，重点配置 \`foundry.toml\` 以适配不同网络环境与优化器设置。 \`\`\`toml # foundry.toml 核心配置 \[profile.default\] src = 'src' out = 'out' libs = \['lib'\] op`imizer = tru`optimizer\_runs = 20000 #`针对生产环境的高频调用优`fs\_permissions = \[{ access = "read", path = "./"}\] # 允`读取本地文件，用于复杂脚`
 
@@ -170,6 +239,7 @@ Type: uint256
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 **1月16日学习日志：**
 
 第一周的实习即将结束，今天的周会和复盘让我对“Web3工程师”这个职业有了全新的定义。如果说在学校是学习如何解题，那么这周的实战则是学习如何定义问题和构建规则。以下是本周的四维工程重构：
@@ -225,6 +295,7 @@ Type: uint256
 
 
 
+
 **1月15日学习日志：**
 
 经过前三天关于原理、安全与合规的高密度输入，今天我利用空档期对“AI x Crypto”这一核心赛道进行了底层逻辑的梳理，并为明天的分享会做了最后准备。
@@ -262,6 +333,7 @@ Type: uint256
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -310,6 +382,7 @@ Type: uint256
 
 
 
+
 **1月13日学习日志**
 
 今天的布老师主讲的Web3 运行原理分享会给出了大量具体的网络实运行数据，结合讲座内容与我的最近学习背景，对以太坊底层架构的几个关键风险点进行了如下梳理：
@@ -335,6 +408,7 @@ Type: uint256
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
