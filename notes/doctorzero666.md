@@ -15,8 +15,197 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# **Ethereum 状态树（State Trie）学习笔记**
+
+## **1\. 状态树是什么**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/doctorzero666/images/2026-01-19-1768824261071-image.png)
+
+-   以太坊维护的是“全世界当前状态”（账户余额、nonce、合约代码、合约变量等），而不是像比特币那样只维护 UTXO。
+    
+-   _状态树（State Trie）_\*用来记录全体账户（EOA/合约账户）的当前状态。
+    
+-   技术结构：**Merkle Patricia Trie（MPT）**
+    
+    -   Trie：按 key（地址）组织数据
+        
+    -   Merkle：用哈希把整棵树“承诺”（commit），可验证
+        
+
+* * *
+
+## **2\. 状态树里每个账户存什么**
+
+状态树叶子节点对应一个账户（EOA 或 Contract）：
+
+-   nonce：交易计数/合约创建计数
+    
+-   balance：ETH 余额
+    
+-   storageRoot：合约存储（变量）的根（合约才用）
+    
+-   codeHash：合约代码哈希（合约才用）
+    
+
+> 关键点：EOA/合约账户本质上都是状态树中的“叶子”。差异只是合约账户额外关联 code 和 storage。
+
+* * *
+
+## **3\. 出新区块时：状态树是“全量承诺”，但“只改动局部”**
+
+### **区块里到底记录什么？**
+
+-   区块头只写一个核心值：**stateRoot（状态树根哈希）**
+    
+-   **不会把全量状态塞进区块里**；全量状态由节点在本地数据库维护。
+    
+
+### **更新是怎么发生的？**
+
+-   本区块交易只会影响少量账户/合约变量 → 只更新这些对应的叶子（及相关路径）。
+    
+-   但因为是 Merkle 结构：
+    
+    改动叶子 → 叶子 hash 变 → 沿路径向上重算 → 最终 root 变。
+    
+-   树的实现支持**结构共享（persistent / copy-on-write）**：
+    
+    -   看起来“生成了新树（新 root）”
+        
+    -   实际上大量没动的分支直接复用旧节点
+        
+    -   只复制/更新“变动叶子到根的那条路径”附近的节点
+        
+
+> 类比 Git：改一个文件不会复制整个仓库，只产生新的 commit（root）并复用大部分对象。
+
+* * *
+
+## **4\. 以太坊不止一棵树（3棵核心 Trie）**
+
+-   **State Trie（状态树）**：全体账户/合约状态（世界当前长啥样）
+    
+-   **Transaction Trie**：本区块交易列表（证明某交易在该区块中）
+    
+-   **Receipt Trie**：交易回执/日志（事件 logs、执行结果）
+    
+
+> 我们讨论的“状态树”特指 State Trie。
+
+* * *
+
+## **5\. 为什么状态树重要**
+
+-   **可验证性**：给定区块头的 stateRoot + 某账户的 proof，可以验证该账户状态属于该 root（轻节点/跨链/提款证明的基础）。
+    
+-   **确定性共识**：同样起始状态 + 同样交易顺序 → 必然得到同一个 stateRoot，便于全网达成一致。
+    
+-   **支撑智能合约状态**：合约变量由 storage（也有根 hash）管理，最终都锚定到 stateRoot。
+    
+
+* * *
+
+# **Rollup 与状态树的关系**
+
+## **6\. Rollup 的“roll-up”不是靠 L1 状态树“只记叶子”**
+
+Rollup 的扩容核心：
+
+-   **把大量交易放在 L2 执行（计算外包）**
+    
+-   L1 只需要保存“让它能信”的最小信息：
+    
+    -   **L2 state root（或相关承诺）**
+        
+    
+    -   数据（Optimistic）或证明（ZK）
+        
+
+## **7\. Optimistic vs ZK：L1 怎么信 L2**
+
+### **Optimistic Rollup**
+
+-   L2 执行一批交易，算出新的 L2Root\_new
+    
+-   提交到 L1 合约：交易数据（通常 calldata）+ L2Root\_new
+    
+-   默认相信没错，但留 **challenge window**
+    
+    有人可提交 **fraud proof** 指出某步计算错误
+    
+
+### **ZK Rollup**
+
+-   L2 执行交易得到 L2Root\_new
+    
+-   生成 zk proof：证明从 old root 按规则执行后得到 new root
+    
+-   L1 验证 proof 很快，通过就更新合约里记录的 root
+    
+
+> 核心点：L1 不会自己重算 L2 全部交易；L1 只验证“数据+挑战机制”或“零知识证明”。
+
+## **8\. L1 状态树在 Rollup 里扮演的角色**
+
+-   L1 合约把 latestL2Root 写进自己的 storage
+    
+    → L1 的 stateRoot 间接承诺了“当前认可的 L2 root 是多少”
+    
+-   用户提款时通常需要 proof：证明“提款请求/余额变化属于某个 L2 root”
+    
+    → 合约用记录的 L2 root 来校验 proof
+    
+
+* * *
+
+# **回溯（reorg / rollback）怎么处理**
+
+## **9\. L1 链回溯（reorg）时：状态树如何回到过去**
+
+发生 reorg 时：
+
+1.  找到两条分叉的共同祖先块（common ancestor）
+    
+2.  以祖先块的 stateRoot 为起点
+    
+3.  重新执行新分叉上的区块序列
+    
+4.  得到新的 head 和新的 stateRoot
+    
+
+> 本质不是“倒着撤销交易”，而是“换一条历史重新算”。
+
+## **10\. Rollup 遇到 L1 reorg：会发生什么**
+
+-   Rollup 提交 batch/更新 L2 root 本质是一次 L1 交易（写入合约 storage、产生事件）。
+    
+-   若该 L1 区块被 reorg 掉：
+    
+    -   这次“提交”就像没发生过（事件消失、合约状态回滚）
+        
+    -   sequencer/relayer 会重新提交（或重新组织 batch 再提交）
+        
+-   用户侧表现：
+    
+    -   UI 可能短暂显示不一致（索引器要跟随主链）
+        
+    -   提款/跨链消息可能延迟
+        
+    -   所以系统会强调等待 **N 个 L1 confirmations**
+        
+
+## **11\. 历史状态查询与节点类型**
+
+-   **Archive Node**：保留完整历史状态，能直接查任意高度的账户/合约状态
+    
+-   **Full Node（常见）**：可能会 prune 老状态，查久远历史可能需要重建或依赖索引服务
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -175,6 +364,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -286,6 +476,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # **今日总结：EVM 与 Gas 机制（以太坊怎么“跑代码”和“收钱”）、共识机制与生态展望（以太坊怎么更安全、更扩容、未来往哪走）**
@@ -434,6 +625,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -745,6 +937,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -862,6 +1055,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1210,6 +1404,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
