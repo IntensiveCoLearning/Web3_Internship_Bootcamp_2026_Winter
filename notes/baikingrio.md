@@ -15,8 +15,131 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## Swap 与价格预言机
+
+Uniswap V2 的核心功能之一是 Swap（代币交换），允许用户在流动性池中交换两种 ERC-20 代币，同时维护常量乘积公式（x \* y = k）。Swap 通过 Pair 合约实现，涉及费用计算、储备更新和事件触发。
+
+另一个重要特性是 价格预言机（Oracle），Uniswap V2 内置 TWAP（时间加权平均价格）机制，用于提供可靠的价格数据，防止短期操纵。预言机基于累积价格计算平均价格，常用于 DeFi 协议（如借贷平台）获取喂价，这些机制在 UniswapV2Pair.sol 合约中实现。
+
+### Swap
+
+-   Swap 不是直接匹配买卖订单，而是从池中取出一种代币，存入另一种。
+    
+-   使用常量乘积公式确保价格自动调整：交换后，储备量乘积保持不变（忽略费用）。
+    
+-   费用：0.3%（997/1000），其中 0.25% 奖励 LP，0.05% 可选给协议（通过 Factory 的 feeTo）。
+    
+-   滑点：大额交易会导致价格偏差，用户需设置容忍度。
+    
+-   支持闪电交换（Flash Swap）：先取出代币，后支付（通过回调）。
+    
+
+在 UniswapV2Pair.sol 中，核心函数是：
+
+```
+function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external lock {
+    require(amount0Out > 0 || amount1Out > 0, 'UniswapV2: INSUFFICIENT_OUTPUT_AMOUNT');
+    (uint112 _reserve0, uint112 _reserve1,) = getReserves(); // 获取当前储备
+    require(amount0Out < _reserve0 && amount1Out < _reserve1, 'UniswapV2: INSUFFICIENT_LIQUIDITY');
+
+    uint balance0;
+    uint balance1;
+    { // 作用域避免栈溢出
+        address _token0 = token0;
+        address _token1 = token1;
+        require(to != _token0 && to != _token1, 'UniswapV2: INVALID_TO');
+        if (amount0Out > 0) _safeTransfer(_token0, to, amount0Out); // 先转出输出代币（乐观转账）
+        if (amount1Out > 0) _safeTransfer(_token1, to, amount1Out);
+        if (data.length > 0) IUniswapV2Callee(to).uniswapV2Call(msg.sender, amount0Out, amount1Out, data); // 回调，支持闪电贷
+        balance0 = IERC20(_token0).balanceOf(address(this));
+        balance1 = IERC20(_token1).balanceOf(address(this));
+    }
+    uint amount0In = balance0 > _reserve0 - amount0Out ? balance0 - (_reserve0 - amount0Out) : 0;
+    uint amount1In = balance1 > _reserve1 - amount1Out ? balance1 - (_reserve1 - amount1Out) : 0;
+    require(amount0In > 0 || amount1In > 0, 'UniswapV2: INSUFFICIENT_INPUT_AMOUNT');
+    
+    { // 验证费用后常量乘积
+        uint balance0Adjusted = balance0.mul(1000).sub(amount0In.mul(3)); // 0.3% 费 (3/1000)
+        uint balance1Adjusted = balance1.mul(1000).sub(amount1In.mul(3));
+        require(balance0Adjusted.mul(balance1Adjusted) >= uint(_reserve0).mul(_reserve1).mul(1000**2), 'UniswapV2: K');
+    }
+
+    _update(balance0, balance1, _reserve0, _reserve1); // 更新储备和累积价格
+    emit Swap(msg.sender, amount0In, amount1In, amount0Out, amount1Out, to);
+}
+```
+
+-   **关键步骤**：
+    
+    1.  检查输出量 > 0 且不超过储备。
+        
+    2.  乐观转出输出代币（支持闪电交换）。
+        
+    3.  如果有 data，调用回调（uniswapV2Call），允许用户在同一交易中还款。
+        
+    4.  计算输入量（balance - reserve + out）。
+        
+    5.  验证调整后余额满足 k 值（扣除 0.3% 费）。
+        
+    6.  更新储备（\_update 函数，同时更新预言机）。
+        
+    7.  触发 Swap 事件。
+        
+-   **锁修饰符**：使用 ReentrancyGuard 防止重入攻击。
+    
+-   **闪电交换示例**：用户可先借出代币，执行套利，然后在回调中归还 + 费用。
+    
+
+### 价格预言机机制
+
+-   Uniswap V2 提供 TWAP 预言机，抵抗短期价格操纵（因为累积价格基于时间加权）。
+    
+-   每当储备更新（mint/burn/swap/sync）时，计算累积价格。
+    
+-   外部合约可查询平均价格：(priceCumulativeCurrent - priceCumulativeLast) / (timeElapsed)。
+    
+-   价格单位：token1/token0 或 token0/token1，使用固定点数（UQ112x112）表示。
+    
+-   变量
+    
+
+```
+uint public price0CumulativeLast;
+uint public price1CumulativeLast;
+uint32 public blockTimestampLast;
+```
+
+-   \_update 函数（在 mint/burn/swap/sync 中调用）
+    
+
+```
+function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reserve1) private {
+    require(balance0 <= uint112(-1) && balance1 <= uint112(-1), 'UniswapV2: OVERFLOW');
+    uint32 blockTimestamp = uint32(block.timestamp % 2**32); // 防溢出
+    uint32 timeElapsed = blockTimestamp - blockTimestampLast;
+    
+    if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
+        // 累积价格：price0 = reserve1 / reserve0 (UQ112x112 编码)
+        price0CumulativeLast += uint(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) * timeElapsed;
+        price1CumulativeLast += uint(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) * timeElapsed;
+    }
+    reserve0 = uint112(balance0);
+    reserve1 = uint112(balance1);
+    blockTimestampLast = blockTimestamp;
+    emit Sync(reserve0, reserve1);
+}
+```
+
+-   getReserves：返回储备和时间戳，用于外部计算 TWAP。
+    
+-   UQ112x112 库：用于精确价格计算（112 位整数 + 112 位小数）。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -121,6 +244,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -154,6 +278,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -169,6 +294,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -205,6 +331,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -216,6 +343,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
