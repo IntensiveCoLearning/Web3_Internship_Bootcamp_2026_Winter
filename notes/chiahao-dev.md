@@ -17,8 +17,80 @@ base 加拿大 一年半Java后端工程师，半年网络工程师，性格是i
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+### Day8
+
+今天需要完成的任务：
+
+1\. 挑战：Challenge #0 - Tokenization （中文版链接）√
+
+已完成，部署地址：[https://challenge-tokenization-difpjh93h-0xchiahaos-projects.vercel.app/](https://challenge-tokenization-difpjh93h-0xchiahaos-projects.vercel.app/)
+
+2\. 021 学习以太坊第 5 章 完成√
+
+3\. 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines) 完成√  
+
+1\. EVM：以太坊的“心脏”与“大脑” EVM（以太坊虚拟机）不仅仅是一个运行代码的环境，它是一个确定性的、栈式的状态机。
+
+• 架构本质：EVM 是一个全网共享的“CPU + 状态机”。它读取旧状态（State）和交易（Transaction），通过执行智能合约的字节码（Bytecode），计算出新状态。所有全节点运行完全相同的 EVM 规则，确保了共识的一致性。
+
+• 内部组件：EVM 内部包含\*\*栈（Stack）\*\*用于运算、\*\*内存（Memory）用于临时数据处理、以及最昂贵的存储（Storage）\*\*用于持久化状态。此外，它通过执行上下文（如 msg.sender）来管理权限和资金流向。
+
+• 执行流程：合约源码（Solidity）被编译为字节码。当交易触发合约时，EVM 采用“逐条执行”模式，即 Fetch-Decode-Execute 循环。它将字节码解析为操作码（OpCode，如 ADD, SSTORE），一步步修改栈、内存或存储。这种逐条执行机制是精确计费和防止 DoS 攻击的基础。
+
+2\. Gas 机制：安全与经济的博弈 Gas 不仅是计费单位，更是以太坊的防御系统。
+
+• 设计目的：Gas 的核心作用是防止无限循环（图灵停机问题）和资源滥用（DoS 攻击）。通过给每个 OpCode 定价（如简单的 ADD 便宜，涉及磁盘 IO 的 SSTORE 昂贵），网络迫使攻击者付出巨大的经济成本。
+
+• EIP-1559 变革：London 升级引入了新的费率模型。费用被拆分为 Base Fee（基础费） 和 Priority Fee（优先费/小费）。Base Fee 根据区块拥堵程度动态调整并被直接销毁（Burn），这让 ETH 具有了通缩属性；而 Priority Fee 则是真正付给验证者的激励。
+
+• 异常处理：当交易执行中 Gas 耗尽（Out of Gas），EVM 会触发异常，回滚所有状态更改（原子性），但不退还已消耗的 Gas。这是为了防止攻击者免费消耗全网算力。
+
+3\. 合约优化：开发者必修课 章节最后强调了基于 Gas 模型的代码优化策略：
+
+• 存储是瓶颈：写 Storage（SSTORE）是链上最贵的操作。优化原则是“读多写少”，尽量使用 memory 或 calldata 进行中间计算，最后一次性写入 Storage。
+
+• 临时存储新特性：Dencun 升级引入了 transient storage (EIP-1153)，允许在单笔交易内存储临时状态，比写入 Storage 更省 Gas，适合重入锁等场景
+
+Q27：请深入剖析 EIP-1559 机制下，maxFeePerGas、maxPriorityFeePerGas 和 Base Fee 三者的动态关系。如果用户设置的 Max Fee 低于当前 Base Fee，交易会发生什么？
+
+A27: “在 EIP-1559 模型下，用户实际支付的单价计算公式是：实际单价 = Min(maxFeePerGas, BaseFee + maxPriorityFeePerGas)。
+
+1\. 三者关系：Base Fee 是协议根据上一区块拥堵情况自动计算的“底价”，这部分会被直接销毁。Priority Fee 是给验证者的小费。Max Fee 是用户愿意支付的绝对上限。
+
+2\. 异常情况：如果用户设置的 maxFeePerGas 低于当前的 Base Fee，这笔交易不仅不会被打包，甚至大概率不会进入内存池（Mempool）。因为 Base Fee 是协议强制要求的最低门槛，连销毁的部分都付不起，验证者无法将其纳入区块，否则该区块会被网络拒绝
+
+Q28: 在 EVM 中，如果一个智能合约在执行了一系列状态修改（如转账、修改变量）后，触发了 Out of Gas 异常或显式调用了 revert，链上状态和 Gas 费用会发生什么变化？请从底层机制解释原因。
+
+A28: “这涉及 EVM 的原子性设计。
+
+1\. 状态回滚：一旦触发 Out of Gas 或 revert，EVM 会强制中断执行，并回滚当前交易上下文中所做的所有状态修改（包括内部调用的子合约修改）。这就好比这笔交易从未修改过账本，保证了数据库的一致性。
+
+2\. Gas 结算差异：
+
+◦ 如果是 Out of Gas：所有预支付的 Gas 都会被消耗殆尽，不予退还。这是为了防止攻击者利用失败交易发起 DoS 攻击，免费消耗全网算力。
+
+◦ 如果是显式 revert：通常会退还剩余未使用的 Gas，仅扣除执行到 revert 指令前消耗的部分（但在较旧的 EVM 版本或特定 OpCode 下行为可能不同，现代 Solidity 开发主要关注剩余 Gas 退还）。
+
+3\. 链上记录：虽然状态回滚了，但这笔交易本身（Hash、Nonce 等）依然会被打包进区块，只是其状态标记为‘失败’。”
+
+Q29: 在 Solidity 开发中，为什么说 Storage 是 Gas 杀手？在 Dencun 升级（EIP-4844/EIP-1153）后，针对“重入锁”或“临时计算”这类场景，你有哪些新的优化思路？
+
+A29:
+
+“Storage 昂贵是因为它需要操作底层的 Merkle Patricia Trie 并进行磁盘 I/O，这是一个永久性的全网状态变更，因此 SSTORE 指令定价极高。
+
+针对优化思路，除了传统的‘用 calldata 代替 memory’和‘缓存 Storage 到 Stack’外，Dencun 升级带来了质变：
+
+1\. 瞬态存储（Transient Storage, EIP-1153）：这是最新的优化利器。对于重入锁（Reentrancy Guard）这种只在单笔交易内有效、交易结束后无需保留的状态，以前我们被迫使用昂贵的 Storage。现在可以使用 TSTORE 和 TLOAD 操作瞬态存储。它的数据随交易结束而丢弃，不占用永久状态，Gas 成本远低于 Storage，是实现低成本重入保护的最佳选择。
+
+2\. Blob 数据（EIP-4844）：虽然主要服务于 L2，但对于需要临时发布大量数据供链下验证但不需要合约读取的场景，Blob 也是一种极致的 Gas 优化方案。”
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ### Day7
 
 自动化市场制造（AMM）与恒定乘积公式
@@ -85,6 +157,7 @@ x · y = k 在 Uniswap V2 中是“单笔交易内的约束不变量”，
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 ### Day6  
 
 今天尝试阅读Uniswap V2 学习官方文档，这一周作息日夜颠倒，感觉很难深入思考。上次反应过后，主办方很贴心地将直播和重播设置为同组任务，在此感谢ethpanda和lxdao人性化的措施！今天调整一下作息，早点休息了。
@@ -92,6 +165,7 @@ x · y = k 在 Uniswap V2 中是“单笔交易内的约束不变量”，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ### Day5
@@ -123,6 +197,7 @@ Review: 今天完成了021学习以太坊3&4章内容的学习，看了同学们
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -223,6 +298,7 @@ Review：今天状态回暖，虽然看得不多，但是内容理解较为深�
 
 
 
+
 ### Day3
 
 Q10: 目前以太坊 L1 实际吞吐大约在 15–30 TPS 左右，不会无限提升，否则会伤害去中心化。为什么提升吞吐速度会伤害去中心化？
@@ -306,6 +382,7 @@ A18: Gossip 协议相当于以太坊的“去中心化广播系统”： 它让�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -432,6 +509,7 @@ Review: 在群友的提醒下，才发现深度技术里的课程安排，稍微
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
