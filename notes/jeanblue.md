@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+![IMG_9683.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jeanblue/images/2026-01-19-1768833492859-IMG_9683.png)
+
+今天听了周会，大家分享了行业新闻动态。我对稳定币比较感兴趣，主要听了tempo的稳定币支付。
+
+晚上听了社群的搭建以及x space 的发布。且找到了一个搭子。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ![IMG_9673.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jeanblue/images/2026-01-18-1768751064407-IMG_9673.png)
 
 我还需要再看看，不是很懂
@@ -25,11 +35,13 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ![IMG_0100.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jeanblue/images/2026-01-15-1768491574881-IMG_0100.png)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 安全：
@@ -49,6 +61,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
