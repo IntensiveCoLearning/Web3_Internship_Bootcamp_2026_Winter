@@ -15,8 +15,53 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+> link: [Rust Course-圣经](https://course.rs/basic/intro.html)
+
+-   特征对象 (Trait Objects)
+    
+    实现多态：允许存储不同类型但实现相同 Trait 的实例
+    
+    `dyn` 关键字：表示动态分发（Dynamic Dispatch），在运行时确定具体调用哪个方法
+    
+    ```
+    // 必须使用指针：&dyn Trait 或 Box<dyn Trait>
+    pub struct Screen {
+        pub components: Vec<Box<dyn Summary>>,
+    }
+    ```
+    
+    -   限制：只有满足“对象安全”的 Trait 才能拥有特征对象（如：方法不返回 `Self`，不包含泛型参数）。
+        
+
+-   错误处理 (Error Handling)
+    
+    Rust 不支持 Exception，通过返回类型处理异常
+    
+    -   不可恢复错误：`panic!("crash and burn")`
+        
+    -   可恢复错误：`Result<T, E>` 枚举
+        
+    
+    ```
+    enum Result<T, E> {
+        Ok(T),
+        Err(E),
+    }
+    ​
+    // 传播错误：? 运算符（简写 match）
+    fn read_username() -> Result<String, io::Error> {
+        let mut s = String::new();
+        File::open("hello.txt")?.read_to_string(&mut s)?;
+        Ok(s)
+    }
+    ```
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   泛型 (Generics)
@@ -63,6 +108,7 @@ se major, into crypto
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -82,6 +128,7 @@ se major, into crypto
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
@@ -162,6 +209,7 @@ se major, into crypto
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -183,6 +231,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
