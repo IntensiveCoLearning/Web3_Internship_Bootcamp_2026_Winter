@@ -32,8 +32,52 @@ INTJ-but 兴趣广泛 皮艇/桨板/网球/书法 喜欢在秋高气爽的天气
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+0基础程序小白自学笔记-Hardhat/Foundry/Remix 教程案例跑通
+
+1， 窗口调用
+
+Git or VS code Terminal, Terminal 更user-friendly一些，Git进去每次要重新配置，Terminal可以多窗口
+
+2，版本
+
+node js 版本（目前最新的是24，但是测试版容易不兼容，20版本太低，新版hardhat不支持，可以使用22，直接调用指令 nvm use 22；如果系统有更早版本的，建议删掉避免不兼容)
+
+Hardhat 2.0（虽然第 3 版是推荐，但目前小白教程都是基于第 2 版写的。避免新旧版本差异导致报错。）
+
+3,  常见错误
+
+bash: syntax error near unexpected token 'newline'，命令没输完就换行了，或者在命令末尾多输入了一个符号
+
+复制粘贴指令 留意有没有换行，有没有去掉<>，都会无法被识别
+
+报错后可以看下提示，有时候解决方案就在提示里面，eg Foundry 里面强制 broadcast， npx hardhat --init 强制初始化命令
+
+5，端口占用
+
+Git Bash 虽然关闭了，但它在后台留下了一个“僵尸进程（Ghost Process）”。即使你关闭了窗口，那个 node.exe 依然死死霸占着端口不放。
+
+暴力清除
+
+taskkill /F /IM node.exe
+
+6，结束程序
+
+关闭 Hardhat 节点时，先在终端里按 Ctrl + C ，等它显示出原来的命令提示符（比如 PS C:\\...>）后再关闭窗口，这样最干净
+
+7, 复制粘贴
+
+快捷键-Git Bash 里面的粘贴是 Shift+Insert, 复制是Ctrl+Insert, 避免用Ctrl+C，是退出任务执行
+
+用原生记事本粘贴指令，避免用其他notebook之类会有其他格式带入命令
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-19-1768818439814-image.png)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天看了Vitalik和ETHPanda的访谈，了解了一些新的概念 RPGF/Zuzala/MPC&FHE
 
 1 , RPGF 的全称是 Retroactive Public Goods Funding，即追溯性公共产品资助
@@ -125,6 +169,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 今日学习 交易实践+Remix 环境准备+AI 回放课
 
 交易实践
@@ -146,6 +191,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ENS的应用 [app.ens.domains](http://app.ens.domains)
@@ -174,6 +220,7 @@ b, 你可以在不转移域名所有权的情况下，随时更改反向记录�
 
 
 
+
 核心深挖了区块链钱包原理
 
 a, 核心关联：助记词推导出私钥，私钥推导出公钥（地址），过程不可逆
@@ -197,6 +244,7 @@ e, 助记词原理：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
