@@ -15,8 +15,50 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# eth周会
+
+## 【新闻环节】
+
+## 2.1 EIP新增4个
+
+\[1\]EIP7778 block gas accouting without refunds.
+
+\[2\]7780原生token转账发log,ETH不发， track balance changde
+
+\[3\]7843 slotnum opcode return the corresponding slot number .
+
+\[4\]8024 swapn dupn
+
+## 2.2 文章《stablecoin for global payouts》
+
+[tempo.xyz/blog/global](http://tempo.xyz/blog/global)\-payouts
+
+the costs of traditional cross-border payouts
+
+传统支付渠道：供应商手续费+银行汇款手续费=8%max
+
+且时间长5dyas+汇率不利波动风险+审查风险等
+
+稳定币绕过中间商/以秒计/实时结算/可追踪/美元/无国界
+
+## 3.1 研究
+
+《combining preconfirmations with based rollups for synchronous composability》
+
+**based rollups vs sequenced rollups**
+
+《using rateless coding for das》
+
+<SALT：small authentication large trie>
+
+<stateless validator>
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 1⃣️ ✅完成总结任务
 
 一周结束了，刚刚在推上提交了学习总结：
@@ -130,6 +172,7 @@ gas问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -297,6 +340,7 @@ EVM（Ethereum Virtual Machine）=**以太坊的“大脑”=专门用来运行�
 
 
 
+
 # web3安全
 
 **GoPlus token安全检测官网**
@@ -388,6 +432,7 @@ trust wallet被插入恶意后门
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -579,6 +624,7 @@ _开始构建你的自主智能体：为感知经济打造的agentic操作系统
 
 
 
+
 web3合规
 
 **合规风险1：金融与赌博混同**
@@ -653,6 +699,7 @@ web3合规
 
 
 
+
 web3运行原理
 
 **1.web3运行的起点是链上钱包，通过区块链技术进行交易，交易的过程叫出块，规制交易的方式叫合约。**
@@ -676,6 +723,7 @@ web3运行原理
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
