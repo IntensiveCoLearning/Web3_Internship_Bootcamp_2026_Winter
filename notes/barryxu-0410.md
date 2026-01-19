@@ -81,8 +81,18 @@ contract D {
 }
 
 contract E{   //call：目标合约地址.call(字节码);
-    
+    event Response(bool success,bytes data);
+    function callSetX(address payable _add,uint256 x)public payable{
+        (bool success, bytes memory data)=_add.call{value:msg.value}(
+            abi.encodeWithSignature("setX (uint256)",x)
+        );
+        emit Response(success, data);
+    }
 }
+
+
+
+
 
 ```
 <!-- DAILY_CHECKIN_2026-01-19_END -->
@@ -90,11 +100,13 @@ contract E{   //call：目标合约地址.call(字节码);
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 今天是第一周的最后一日，我对一周进行了总结：
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今日听取了ETH Panda与V神的访谈，探讨了100年后人类数字社会的发展形态
@@ -107,6 +119,7 @@ contract E{   //call：目标合约地址.call(字节码);
 
 
 
+
 今天认真听了周会，感觉大家都好厉害，刚好这周忙完了，下周一定要卷起来
 
 up up up！！！！
@@ -114,6 +127,7 @@ up up up！！！！
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -197,6 +211,7 @@ o 它目前是一个 SDK/开发框架，帮助开发者快速构建具备 Web3 �
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -306,6 +321,7 @@ contract test {
 
 
 
+
 今日继续阅读web3实习手册，参加了线上co-learning和Bruce老师的Web3运营原理分享
 
 俩会议中，co-learning探讨了DAO组织的治理，钱的影响是否违背了去中心化的初衷；晚上的分享会议上，Bruce老师介绍了web3的技术原理，我了解许多新名词如RPC，EIP，ERC，EVM。
@@ -339,6 +355,7 @@ contract MyRobot{
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
