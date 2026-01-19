@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天试着mint NFT，卡在领测试币，钱包里找不到测试网络的地址，哭了，明天问问大佬们。
+
+听了今晚八点半的运营实操，讲了管理telegram社群，拉了个小群操作了下，给机器人设敏感词一时想不出来什么敏感词哈哈。还介绍了组织一场twitter space，邀请完嘉宾要拉个群，在海报内容发出去之前跟嘉宾确认下内容，并作好提前量，留出足够时间邀请用户。
+
+还看了实习手册的一些大佬分享心得，前提不要怕做dirty work，在这个过程学习知识磨练技能，并找到自己感兴趣又做得好的方向。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 听了学员分享的回放～再提醒自己一下！先去做！执行力第一！行动就已经成功了一半！在过程中寻找反馈形成正向循环。先fake it，till make it！
 
 今晚的分享会是介绍ERC7962 目标客户是web2的用户，设计上从可用性友好出发，方便web2用户参与链上交易。但感觉web3的原生用户是不会愿意信任relayer。对这个项目中零知识证明到底应用在哪些地方还是有点迷糊。。。还有个疑问是听嘉宾的意思是用公钥取哈希的方式来保护公钥的隐私，可我记得地址本来就是公钥经过哈希运算并截取部分来生成的。
@@ -24,6 +34,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今天学习了web3实习手册智能合约部分，只能做个了解，技术方面暂时不深入研究啦哈哈。
 
@@ -36,6 +47,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天学习了实习手册web3行业知识里的三个单元。运营部分——内容创作工具里还没用过notion，赶紧下载下来。数据与调研工具里后几个都没听过，之前只用过defi llama，后面对比看看。在举办活动上应该是“策划 → 筹备 → 执行 → 复盘”全流程，之前比较忽视复盘阶段，可将嘉宾金句 / 精彩瞬间剪辑为 15s 视频、收集嘉宾的反馈，是我之前没考虑到的。 合规和网络安全部分，感觉很震撼！在大陆好像做什么都可能违法，案例里面即使是做协助工作也会被判刑。监管的趋势和影响总结蛮好的⬇️
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-16-1768536060349-image.png)
@@ -45,6 +57,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -65,6 +78,7 @@ timezone: UTC+8
 
 
 
+
 今天偷偷用上班时间学习了web3实习手册的行业赛道全览、工作方式两个单元。很喜欢2025年新趋势那部分，意图交易是我之前还没接触到的！记录一下。再就是～觉得也可以再介绍下RWA还有稳定币。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366256468-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366570343-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366594056-image.png)
@@ -72,6 +86,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
