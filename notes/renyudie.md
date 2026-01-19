@@ -17,8 +17,58 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
+
+### 工具类
+
+1.  Telegram管理
+    
+    机器人：rose, botfather,
+    
+    数据面板：
+    
+2.  智能合约：remix.IDE+etherscan+AI工具（codex cli）
+    
+    mint: 发币数+位数（18）个零
+    
+    transfer：钱包地址+发币数
+    
+3.  办公软件：飞书/notion+canvas/figma
+    
+
+### Telegram管理
+
+数据面板group statistics
+
+rose设置
+
+### 活动运营
+
+**活动运营sop**：活动运营 SOP（Standard Operating Procedure），指的是把一次活动从策划到复盘的全过程，**拆解成可重复、可执行、可评估的标准流程**，目的是降低不确定性、提升执行效率，并保证活动效果的稳定性。
+
+-   活动前：策划主题、邀约嘉宾、邀请合作伙伴支持、设计海报与推文。
+    
+-   活动中：主持引导、观众互动、记录要点。
+    
+-   活动后：整理内容、发推总结、投稿媒体或公众号。
+    
+
+**AMA** ：**AMA** 是 **Ask Me Anything** 的缩写，在互联网和 Web3 场景中，AMA 通常指一种**公开问答形式的互动活动**，由项目方、创始人或核心成员直接与用户进行实时沟通。
+
+在 Web3 行业，AMA 已经从普通问答演变为一种**标准化的社区运营和市场沟通工具**，常见形式包括：
+
+-   Telegram / Discord AMA
+    
+-   Twitter Space（X Space）
+    
+-   YouTube / Live Stream AMA
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## 闪电贷攻击（flash lown）
 
 闪电贷是一种无需抵押的链上借贷，但前提是：借款、使用和还款必须在同一笔交易中完成，否则整笔交易会被回滚（State Reversion / Rollback）。
@@ -122,6 +172,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -156,6 +207,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -187,6 +239,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -331,6 +384,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
