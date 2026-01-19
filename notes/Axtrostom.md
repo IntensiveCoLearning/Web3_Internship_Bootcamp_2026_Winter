@@ -15,8 +15,891 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## Solidity基础语法
+
+### 基础数据类型
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Primitives {
+
+    bool public boo = true;
+
+    uint8 public u8 = 1;
+    uint256 public u256 = 456;
+    uint public u = 123; // uint 是 uint256 的别名 (即默认就是 256 位)
+
+    int8 public i8 = -1;
+    int256 public i256 = 456;
+    int public i = -123; // int 与 int256 相同
+
+    // int 的最小值和最大值
+    int256 public minInt = type(int256).min;
+    int256 public maxInt = type(int256).max;
+
+    address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;
+
+    /*
+    在 Solidity 中，byte 数据类型代表字节序列。
+    Solidity 提供两种类型的字节数组：
+
+     - 定长字节数组 (fixed-sized byte arrays)
+     - 动态字节数组 (dynamically-sized byte arrays)
+     
+     Solidity 中的术语 bytes (带s) 代表动态字节数组。
+     它是 byte[] 的简写。
+    */
+    bytes1 a = 0xb5; //  [10110101]
+    bytes1 b = 0x56; //  [01010110]
+
+    // 默认值
+    // 未赋值的变量会自动拥有一个默认值
+    bool public defaultBoo; // 默认值为 false
+    uint256 public defaultUint; // 默认值为 0
+    int256 public defaultInt; // 默认值为 0
+    address public defaultAddr; // 默认值为 0x0000000000000000000000000000000000000000
+}
+```
+
+只有整数，没有小数
+
+编辑器会要求先声明版权，一般使用下面这个，意思是谁都能用，出事不管
+
+```Solidity
+// SPDX-License-Identifier: MIT
+```
+
+之后要声明 solidity 的版本
+
+-   `pragma solidity ^0.8.0;`允许 0.8.x 系列的所有版本
+    
+-   `pragma solidity 0.8.19;`**锁死版本**，必须是 0.8.19
+    
+-   `pragma solidity >=0.7.0 <0.9.0;`范围更广，跨越大，意思是要版本在 0.7.0 以上， 0.9.0 以下
+    
+
+Gas 费用是根据你在本次交易中触碰到的**最大内存位置（Max Offset）** 来计算的。
+
+-   如果你曾经用到了第 128KB 的位置，系统就记住了“这个用户用了 128KB”。
+    
+-   **你不需要为已经买过的空间再次付费**。
+    
+
+但是，solidity 中无法释放内存，
+
+**看看你的场景在 Solidity 里通过** `new` **关键字是如何实际发生的：**
+
+1.  **第一步：** 申请 128KB 数组 `Array A`。
+    
+    1.  内存指针从 `0` 移到了 `128KB`。
+        
+    2.  **费用：** 支付 128KB 的 Gas。
+        
+2.  **第二步：** 你“释放”了 `Array A` (比如 `delete a` 或者离开了函数作用域)。
+    
+    1.  **残酷的现实：** 内存指针**依然停留在 128KB**。Solidity 不会把指针拨回去，它只是忘掉了变量 `a` 而已。
+        
+3.  **第三步：** 申请 64KB 数组 `Array B`。
+    
+    1.  Solidity 会从指针当前的位置（128KB）开始往后分配。
+        
+    2.  新的指针位置 = `128KB + 64KB` = **192KB**。
+        
+    3.  **费用：** 你不仅没有“免费”，反而因为不仅扩容了（从 128 到 192），而且这部分扩容还是处于**更昂贵的二次方计费区间**，所以 Gas 费更贵了！
+        
+
+但是可以通过移动空闲内存指针的方法重复利用空间
+
+```Solidity
+function reuseMemory() public pure {
+    // 1. 正常申请内存
+    uint[] memory a = new uint[](100); // 指针移到了后面
+    
+    // ... 用完了 a ...
+
+    // 2. 【关键】手动把“空闲内存指针”拨回去！
+    // 0x40 是 Solidity 记录“下一个空闲内存位置在哪里”的特殊地址
+    assembly {
+        // 强制告诉 EVM：现在的空闲位置是初始位置 (比如 0x80)，忽略刚才申请的 a
+        mstore(0x40, 0x80) 
+    }
+
+    // 3. 再次申请内存
+    uint[] memory b = new uint[](50); 
+    // 这次 b 会直接覆盖之前 a 的位置。
+    // 因为最大内存位置没有超过之前的上限，所以这一步是【免费】的（指扩展成本为0）。
+}
+```
+
+### 定义变量
+
+Solidity 中变量分为以下三种
+
+-   Local 在函数内部声明，不存储在链上，便宜
+    
+-   State 在函数外部声明，存储在链上，贵
+    
+-   Global 提供有关区块链的信息，其实就是通过接口获取一些全局的信息
+    
+
+```Solidity
+contract Variables {
+    // 【状态变量 (State Variables)】
+    // 状态变量存储在区块链上。
+    // (特点：写入需要消耗较高的 Gas，数据永久存在，直到合约销毁)
+    string public text = "Hello";
+    uint256 public num = 123;
+
+    function doSomething() public view {
+        // 【局部变量 (Local Variables)】
+        // 局部变量不会保存到区块链上。
+        // (特点：只在函数执行的瞬间存在，函数跑完就销毁，不占链上空间，很便宜)
+        uint256 i = 456;
+
+        // 【全局变量 (Global Variables)】
+        // 这里列出了一些全局变量
+        // (特点：这是 Solidity 提供的“内置信息”，你可以直接读取当前链的状态)
+        
+        uint256 timestamp = block.timestamp; // 当前区块的时间戳 (即：这个区块是几点几分被挖出来的)
+        address sender = msg.sender; // 调用者的地址 (即：是谁发起了这笔交易/谁点了按钮)
+    }
+}
+```
+
+常量，硬编码，不占用内存
+
+```Solidity
+contract Constants {
+    // 常量全用大写
+    address public constant MY_ADDRESS =
+        0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
+    uint256 public constant MY_UINT = 123;
+}
+```
+
+不可变变量
+
+```Solidity
+contract Immutable {
+    // 编码规范：常量（和不可变量）通常使用全大写字母命名
+    // 这样做是为了让读者一眼就能看出：这个变量是不能被修改的
+    address public immutable MY_ADDRESS;
+    uint256 public immutable MY_UINT;
+
+    // 构造函数：合约部署时执行
+    constructor(uint256 _myUint) {
+        // 在这里进行赋值。
+        // 注意：这是不可变量 (immutable) 唯一一次可以被赋值的机会！
+        MY_ADDRESS = msg.sender;
+        MY_UINT = _myUint;
+    }
+}
+```
+
+一般不可变变量都是 state 的，在部署合约的同时记录一些信息用
+
+在合约部署的那一瞬间，EVM 会把它的值直接 **“硬编码” (Hardcode)** 进合约的**代码逻辑 (Bytecode)** 里。
+
+读写状态变量
+
+```Solidity
+contract SimpleStorage {
+    // 【状态变量】
+    // 用于存储一个数字。它会永久保存在区块链上。
+    uint256 public num;
+
+    // 【写操作】
+    // 你必须发送一笔“交易” (Transaction) 才能修改状态变量。
+    // 这意味着：需要消耗 Gas，且需要等待矿工打包确认。
+    function set(uint256 _num) public {
+        num = _num;
+    }
+
+    // 【读操作】
+    // 你可以在“不发送交易”的情况下读取状态变量。
+    // 这意味着：免费，且立刻返回结果。
+    function get() public view returns (uint256) {
+        return num;
+    }
+}
+```
+
+1 `ether` = 10^18 `wei`
+
+**Giga-wei** = 10^9 wei
+
+### 死循环太烧了
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=N2VjYmM2ZGIzMzUzMmZlMDIxNjBhMjkxODAwOTExOWRfaWZKaEs3ZUJxOEttQzJGMFlCZnhsNnJnUjNleWNCd3BfVG9rZW46QUd6T2Jhclpxb3NaVlJ4VXpsaWNuU2VRbnF5XzE3Njg4Mjc4OTg6MTc2ODgzMTQ5OF9WNA)
+
+### If else 不用看
+
+```Solidity
+contract IfElse {
+    function foo(uint256 x) public pure returns (uint256) {
+        if (x < 10) {
+            return 0;
+        } else if (x < 20) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    function ternary(uint256 _x) public pure returns (uint256) {
+        return _x < 10 ? 1 : 2;
+    }
+}
+```
+
+### 然后是 for 和 while，基本上跟 cpp 一样
+
+```Solidity
+contract Loop {
+    function loop() public {
+        // for loop
+        for (uint256 i = 0; i < 10; i++) {
+            if (i == 3) {
+                continue;
+            }
+            if (i == 5) {
+                break;
+            }
+        }
+        uint256 j;
+        while (j < 10) {
+            j++;
+        }
+    }
+}
+```
+
+### 然后是 struct
+
+结构体可以在合约外部声明，并在另一个合约中导入。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Todos {
+    struct Todo {
+        string text;      
+        bool completed;   
+    }
+
+    // 【结构体数组】
+    // 这是一个列表，里面存的全是 Todo 类型的数据
+    Todo[] public todos;
+
+    function create(string calldata _text) public {
+        // 【3种初始化结构体的方法】
+        
+        // 方法 1: 像函数调用一样 (推荐用于字段少的结构体)
+        todos.push(Todo(_text, false));
+
+        // 方法 2: 键值对映射 (Key-value mapping) —— 【最推荐】
+        todos.push(Todo({text: _text, completed: false}));
+
+        // 方法 3: 先初始化一个空的，再手动赋值
+        Todo memory todo;
+        todo.text = _text;
+        // todo.completed 默认就是 false，所以不写也行
+        todos.push(todo); // 最后把它推入数组（拷贝进 Storage）
+    }
+
+    // Solidity 会自动为 public 的数组生成读取函数，
+    // 所以其实你不需要手写下面这个 get 函数。
+    // 但这个函数展示了如何手动解构返回数据。
+    function get(uint256 _index)
+        public
+        view
+        returns (string memory text, bool completed)
+    {
+        // 从数组里取出第 _index 个任务
+        // 注意：这里用了 storage，但只是为了读取
+        Todo storage todo = todos[_index];
+        return (todo.text, todo.completed);
+    }
+
+    // 【修改任务内容】
+    function updateText(uint256 _index, string calldata _text) public {
+        // 关键点：【storage】关键字！
+        // 这意味着 `todo` 是一个指向链上数据的“指针”。
+        // 修改 `todo.text` 会直接修改区块链上的原始数据。
+        Todo storage todo = todos[_index];
+        todo.text = _text;
+    }
+
+    // 【切换完成状态】
+    function toggleCompleted(uint256 _index) public {
+        Todo storage todo = todos[_index];
+        // 取反：如果是 true 变 false，如果是 false 变 true
+        todo.completed = !todo.completed;
+    }
+}
+```
+
+关于这个 get 函数
+
+```Solidity
+    function get(uint256 _index)
+        public
+        view
+        returns (string memory text, bool completed){
+        Todo storage todo = todos[_index];
+        return (todo.text, todo.completed);
+    }
+```
+
+View 意思是说这个函数是 只读 的，同时意味着不会产生太多开销（为什么要显示写明 view？）
+
+> 除了“只读”，写明 `view` 还有两个核心作用：
+> 
+> 1.  **安全锁 (Compiler Safety)：** 这是一个给编译器的承诺。如果你在 `view` 函数里不小心写了修改数据的代码（比如 `i += 1`），**编译器会直接报错**，阻止你编译通过。它防止了程序员犯傻。
+>     
+> 2.  **前端交互 (ABI Interface)：** 这一点至关重要。当 Remix、MetaMask 或前端代码（Web3.js）看到 `view` 标签时，它们就知道：**“这个操作不需要消耗 Gas，不需要弹出小狐狸钱包让用户签名，直接在本地节点读取即可。”** 如果不写 `view`，前端可能会把它当成一笔交易，去收用户的 Gas 费。
+>     
+
+`Todo storage todo = todos[_index];`这一句c
+
+Solidity 有些时候要写明变量的存储位置
+
+这一句差不多意思是定义了一个存储在区链上的变量的索引
+
+类型 是 Todo storage ， 变量名是 todo
+
+然后函数返回值中的`string memory text`
+
+意思是 返回值是临时存放在 内存中 的，而不是存放在 链上 的
+
+为什么 \_index completed 这些变量没写？
+
+因为对于`uint`, `int`, `bool`, `address`, `bytes1`~`bytes32`这些数据类型，数据量很小，长度固定，它们默认通过**值拷贝**的方式传递，通常直接放在 EVM 的**栈 (Stack)** 上。因为太简单了，编译器不需要你操心它们的位置。**所以不需要（也不能）写关键字。**
+
+后面这个函数
+
+```Solidity
+    // 【修改任务内容】
+    function updateText(uint256 _index, string calldata _text) public {
+        Todo storage todo = todos[_index];
+        todo.text = _text;
+    }
+```
+
+使用了 `calldata` 关键字，意思是这个变量是直接引用了【交易的原始输入数据】，而不是把它复制到内存里。它是只读的，且最省 Gas。
+
+然后可以调用别的 sol 文件中的数据结构
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+// This is saved 'StructDeclaration.sol'
+
+struct Todo {
+    string text;
+    bool completed;
+}
+```
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+import "./StructDeclaration.sol";
+
+contract Todos {
+    // An array of 'Todo' structs
+    Todo[] public todos;
+}
+```
+
+### 自定数据类型，或者说给数据类型起别名
+
+然后可以自定义数据类型，防止张冠李戴，也可以实现底层位操作节省Gas，直接看下面这个代码吧
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// Code copied from optimism
+// https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/dispute/lib/LibUDT.sol
+
+type Duration is uint64;
+
+type Timestamp is uint64;
+
+type Clock is uint128;
+
+library LibClock {
+    function wrap(Duration _duration, Timestamp _timestamp)
+        internal
+        pure
+        returns (Clock clock_)
+    {
+        assembly {
+            // data | Duration | Timestamp
+            // bit  | 0 ... 63 | 64 ... 127
+            clock_ := or(shl(0x40, _duration), _timestamp)
+        }
+    }
+
+    function duration(Clock _clock)
+        internal
+        pure
+        returns (Duration duration_)
+    {
+        assembly {
+            duration_ := shr(0x40, _clock)
+        }
+    }
+
+    function timestamp(Clock _clock)
+        internal
+        pure
+        returns (Timestamp timestamp_)
+    {
+        assembly {
+            timestamp_ := shr(0xC0, shl(0xC0, _clock))
+        }
+    }
+}
+
+// Clock library without user defined value type
+library LibClockBasic {
+    function wrap(uint64 _duration, uint64 _timestamp)
+        internal
+        pure
+        returns (uint128 clock)
+    {
+        assembly {
+            clock := or(shl(0x40, _duration), _timestamp)
+        }
+    }
+}
+
+contract Examples {
+    function example_no_uvdt() external {
+        // Without UDVT
+        uint128 clock;
+        uint64 d = 1;
+        uint64 t = uint64(block.timestamp);
+        clock = LibClockBasic.wrap(d, t);
+        // Oops! wrong order of inputs but still compiles
+        clock = LibClockBasic.wrap(t, d);
+    }
+
+    function example_uvdt() external {
+        // Turn value type into user defined value type
+        Duration d = Duration.wrap(1);
+        Timestamp t = Timestamp.wrap(uint64(block.timestamp));
+        // Turn user defined value type back into primitive value type
+        uint64 d_u64 = Duration.unwrap(d);
+        uint64 t_u54 = Timestamp.unwrap(t);
+
+        // LibClock example
+        Clock clock = Clock.wrap(0);
+        clock = LibClock.wrap(d, t);
+        // Oops! wrong order of inputs
+        // This will not compile
+        // clock = LibClock.wrap(t, d);
+    }
+}
+```
+
+### Mapping，不可迭代
+
+简单来说就是键值对
+
+```Solidity
+contract Mapping {
+    // 【定义映射】
+    // 语法：mapping(KeyType => ValueType)
+    // 这里是建立一个从 "地址 (address)" 到 "数字 (uint)" 的映射
+    // 典型场景：存储每个用户的代币余额
+    mapping(address => uint256) public myMap;
+
+    function get(address _addr) public view returns (uint256) {
+        return myMap[_addr];
+    }
+    function set(address _addr, uint256 _i) public {
+        // Mapping 永远会返回一个值。
+        // 如果这个键 (key) 从来没有被设置过，它会返回该类型的【默认值】。
+        // 对于 uint 来说，默认值是 0。
+        myMap[_addr] = _i;
+    }
+
+    function remove(address _addr) public {
+        // 将该地址对应的值重置为默认值 (0)。
+        // 注意：它不是从内存中“移除”这个键，而是把值清零。
+        delete myMap[_addr];
+    }
+}
+
+contract NestedMapping {
+    // 【嵌套映射 (Nested Mapping)】
+    // 映射套映射 (从 address 映射到 另一个映射)
+    // 结构：地址 -> (ID -> 是否完成)
+    // 典型场景：检查某个用户(address) 是否完成了 第N项任务(uint)
+    mapping(address => mapping(uint256 => bool)) public nested;
+
+    function get(address _addr1, uint256 _i) public view returns (bool) {
+        // 你可以从嵌套映射中获取值
+        // 即使它没有被初始化，也会返回 false (bool 的默认值)
+        return nested[_addr1][_i];
+    }
+
+    function set(address _addr1, uint256 _i, bool _boo) public {
+        // 写入嵌套映射：像二维数组一样操作
+        nested[_addr1][_i] = _boo;
+    }
+
+    function remove(address _addr1, uint256 _i) public {
+        // 重置嵌套映射中的某一个具体的值
+        delete nested[_addr1][_i];
+    }
+```
+
+### Array
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Array {
+    // 【初始化数组的几种方式】
+    // 动态数组：长度不固定，可以随时增加或减少
+    uint256[] public arr;
+    // 初始化时这就赋值：包含 1, 2, 3 的动态数组
+    uint256[] public arr2 = [1, 2, 3];
+    
+    // 定长数组：长度固定为 10，不能 push 或 pop
+    // 初始化时所有元素默认都是 0
+    uint256[10] public myFixedSizeArr;
+
+    function get(uint256 i) public view returns (uint256) {
+        return arr[i];
+    }
+
+    // Solidity 可以返回整个数组。
+    // 【警告】如果数组长度可能无限增长，应避免使用此函数。
+    // 因为如果数组太大，返回它会消耗过多 Gas，甚至导致交易失败。
+    function getArr() public view returns (uint256[] memory) {
+        return arr;
+    }
+
+    function push(uint256 i) public {
+        // 将 i 添加到数组末尾，数组长度 +1
+        arr.push(i);
+    }
+
+    function pop() public {
+        // 移除数组最后一个元素，数组长度 -1
+        arr.pop();
+    }
+
+    function getLength() public view returns (uint256) {
+        return arr.length;
+    }
+
+    function remove(uint256 index) public {
+        // 【注意】delete 关键字并不会改变数组长度！
+        // 它只是将 index 位置的值重置为默认值。
+        // 在这里，arr[index] 会变成 0，但数组长度不变。
+        delete arr[index];
+    }
+
+    function examples() external pure {
+        // 【内存数组】
+        // 在内存中创建数组，必须指定长度（这里是5）。
+        // 内存中不能创建变长数组（不能 push/pop）。
+        uint256[] memory a = new uint256[](5);
+        // 更新内存数组的值
+        a[1] = 123;
+    }
+}
+```
+
+Solidity 四种可见性修饰符（`public`, `private`, `internal`, `external`），用来定义函数的 【调用权限】（即：谁有资格调用这个函数）
+
+  **public (公开的)**：
+
+-   **权限**：**所有人**都可以调用。
+    
+-   **范围**：合约**内部**可以调，合约**外部**（用户钱包、其他合约）也可以调。
+    
+-   _注意：变量也可以设为 public，系统会自动生成 getter 函数。_
+    
+
+  **private (私有的)**：
+
+-   **权限**：**只有当前合约自己**可以调用。
+    
+-   **范围**：最严格的权限。连**继承**了这个合约的子合约**都不能**调用。
+    
+
+  **internal (内部的)**：
+
+-   **权限**：**自己和“孩子们”**可以调用。
+    
+-   **范围**：当前合约可以调，**继承**了该合约的子合约也可以调。
+    
+-   _注意：这是状态变量的默认可见性。_
+    
+
+  **external (外部的)**：
+
+-   **权限**：**只有外部**可以调用。
+    
+-   **范围**：合约**内部不能**直接调用（除非用 `this.func()` 强制调用，但这很费钱）。
+    
+-   _优势：当参数是大型数组时，external 比 public 更省 Gas（因为直接读 calldata 不用拷贝到 memory）。_
+    
+
+三种状态修饰符（`write`, `view`, `pure`），用来定义函数的 **【区块链状态读写权限】（即：能否读取或修改链上的数据）**
+
+  **write (默认/无关键字)**：
+
+-   _（注：Solidity 代码中没有_ `write` _这个关键字，不写 view 或 pure 就是默认状态）_
+    
+-   **权限**：**可读 + 可写**。
+    
+-   **代价**：执行时需要发送交易，**消耗 Gas**。
+    
+-   _场景：转账、修改余额、更新变量。_
+    
+
+  **view (查看)**：
+
+-   **权限**：**只读 + 不可写**。
+    
+-   **代价**：外部调用时**免费**（本地查询）；内部被其他 write 函数调用时消耗 Gas。
+    
+-   _场景：查询余额_ `balanceOf`_、查询状态。_
+    
+
+  **pure (纯净)**：
+
+-   **权限**：**不读 + 不可写**。
+    
+-   **代价**：外部调用时**免费**。
+    
+-   _场景：数学计算库（如_ `1+1`_）、工具函数，与链上状态完全无关。_
+    
+
+然后为了解决 Array 不能删除的问题，有以下两个解决方式
+
+一个是将后面半截的数组左移
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract ArrayRemoveByShifting {
+    // [1, 2, 3] -- remove(1) --> [1, 3, 3] --> [1, 3]
+    // [1, 2, 3, 4, 5, 6] -- remove(2) --> [1, 2, 4, 5, 6, 6] --> [1, 2, 4, 5, 6]
+    // [1, 2, 3, 4, 5, 6] -- remove(0) --> [2, 3, 4, 5, 6, 6] --> [2, 3, 4, 5, 6]
+    // [1] -- remove(0) --> [1] --> []
+
+    uint256[] public arr;
+
+    function remove(uint256 _index) public {
+        require(_index < arr.length, "index out of bound");
+
+        for (uint256 i = _index; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr.pop();
+    }
+
+    function test() external {
+        arr = [1, 2, 3, 4, 5];
+        remove(2);
+        // [1, 2, 4, 5]
+        assert(arr[0] == 1);
+        assert(arr[1] == 2);
+        assert(arr[2] == 4);
+        assert(arr[3] == 5);
+        assert(arr.length == 4);
+
+        arr = [1];
+        remove(0);
+        // []
+        assert(arr.length == 0);
+    }
+}
+```
+
+一个是将最后一个元素移到删除的位置
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract ArrayReplaceFromEnd {
+    uint256[] public arr;
+
+    // Deleting an element creates a gap in the array.
+    // One trick to keep the array compact is to
+    // move the last element into the place to delete.
+    function remove(uint256 index) public {
+        // Move the last element into the place to delete
+        arr[index] = arr[arr.length - 1];
+        // Remove the last element
+        arr.pop();
+    }
+
+    function test() public {
+        arr = [1, 2, 3, 4];
+
+        remove(1);
+        // [1, 4, 3]
+        assert(arr.length == 3);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+        assert(arr[2] == 3);
+
+        remove(2);
+        // [1, 4]
+        assert(arr.length == 2);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+    }
+}
+```
+
+### Enum
+
+```Solidity
+contract Enum {
+    // 【定义枚举】
+    enum Status {
+        Pending,  // 待处理 (对应 0)
+        Shipped,  // 已发货 (对应 1)
+        Accepted, // 已签收 (对应 2)
+        Rejected, // 已拒收 (对应 3)
+        Canceled  // 已取消 (对应 4)
+    }
+
+    // 【状态变量】
+    // 默认值是该类型定义中的第一个元素。
+    // 在这个例子中，status 初始值就是 "Pending" (也就是 0)
+    Status public status;
+
+    // 【读取枚举】
+    // 虽然返回类型写的是 Status，但在底层和 Remix 的输出中，
+    // 它返回的是 uint (无符号整数)。
+    // Pending  - 0
+    // Shipped  - 1
+    // Accepted - 2
+    // Rejected - 3
+    // Canceled - 4
+    function get() public view returns (Status) {
+        return status;
+    }
+
+    // 【更新状态】
+    // 你可以传入一个 uint (比如 1)，它会自动转换成对应的 Enum (Shipped)
+    // 或者直接传入 Status 类型
+    function set(Status _status) public {
+        status = _status;
+    }
+
+    // 【更新为特定值】
+    // 你可以像这样直接引用枚举里的某个选项
+    function cancel() public {
+        status = Status.Canceled; // 把状态改成 4
+    }
+
+    // 【重置】
+    // delete 会把变量重置为它的默认值
+    // 对于枚举来说，默认值就是第一个元素 (索引为0的元素)，即 Pending
+    function reset() public {
+        delete status;
+    }
+```
+
+就像 Struct 一样，Enum 也可以定义在单独的文件里，方便多个合约复用。
+
+## Data Locations - Storage, Memory and Calldata
+
+```Solidity
+contract DataLocations {
+    // 变量被声明为 storage、memory 或 calldata，以显式指定数据的存储位置。
+    // storage  - 变量是状态变量（存储在区块链上，就像硬盘）
+    // memory   - 变量位于内存中，仅在函数调用期间存在（就像 RAM）
+    // calldata - 包含函数参数的特殊数据位置（只读，且非常省钱）
+
+    uint256[] public arr;
+    mapping(uint256 => address) map;
+    
+    struct MyStruct {
+        uint256 foo;
+    }
+    
+    mapping(uint256 => MyStruct) myStructs;
+
+    function f() public {
+        // 【核心演示 1：传递 Storage 指针】
+        // 使用状态变量调用 _f 函数。
+        // 注意：这里传进去的是“引用”（指针），不是拷贝。
+        _f(arr, map, myStructs[1]);
+
+        // 【核心演示 2：Storage 引用】
+        // 从映射中获取一个结构体。
+        // 关键点：使用了 'storage' 关键字。
+        // 这意味着 myStruct 只是一个指针，指向链上数据库里的那个数据。
+        // 修改 myStruct.foo 会直接修改区块链上的数据！
+        MyStruct storage myStruct = myStructs[1];
+
+        // 【核心演示 3：Memory 副本】
+        // 在内存中创建一个结构体。
+        // 关键点：使用了 'memory' 关键字。
+        // 这意味着 myMemStruct 只是一个临时的变量。
+        // 修改 myMemStruct.foo 不会影响任何链上数据，函数结束它就消失了。
+        MyStruct memory myMemStruct = MyStruct(0);
+    }
+
+    function _f(
+        // 这里接收的参数是 storage 类型
+        // 这意味着这个函数可以直接修改传入的原始状态变量
+        uint256[] storage _arr,
+        mapping(uint256 => address) storage _map,
+        MyStruct storage _myStruct
+    ) internal {
+        // 对 storage 变量做一些操作
+        _arr.push(1); // 会直接改变外面的 arr 数组
+        _myStruct.foo = 123; // 会直接改变外面的 myStructs 映射
+    }
+
+    // 你可以返回 memory 变量
+    // memory 适用于函数内部的临时计算，或者作为返回值
+    function g(uint256[] memory _arr) public returns (uint256[] memory) {
+        // 对 memory 数组做一些操作
+    }
+
+    // calldata 专门用于外部函数的输入参数
+    // 它是只读的，不可修改，但比 memory 更省 Gas
+    function h(uint256[] calldata _arr) external {
+        // 对 calldata 数组做一些操作
+    }
+}
+```
+
+前面看差不多了
+
+然后该补充的直接看代码里面的注释吧
+
+`storage` - 变量是状态变量（存储在区块链上） `Memory` - 变量位于内存中，并在函数被调用时存在 `calldata` - 特殊数据位置，包含函数参数
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
     
 
@@ -115,6 +998,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 感觉前两天干别的活有点懈怠了
 
@@ -494,6 +1378,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -600,6 +1485,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -766,6 +1652,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1264,6 +2151,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2205,6 +3093,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
