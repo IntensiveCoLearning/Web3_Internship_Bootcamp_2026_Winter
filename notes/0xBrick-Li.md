@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# To do list
+
+-   **完成“链上留言板”智能合约开发**
+    
+-   部署合约到 Sepolia 测试网
+    
+-   完成一个简单 DApp（含前端）
+    
+-   搭建本地区块链节点
+    
+-   **挑战：Crowdfunding**
+    
+-   **Uniswap V2 实操**
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # To do list
 
 -   今天你commit了吗 ✅
@@ -173,6 +191,7 @@ ERC-7962的核心创新在于，它通过引入\*\*`密钥哈希 (keyHash)`\*\* 
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # To do list
 
 -   参加LXDAO周会 ✅
@@ -207,6 +226,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -252,6 +272,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -332,6 +353,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -428,6 +450,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -485,6 +508,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
