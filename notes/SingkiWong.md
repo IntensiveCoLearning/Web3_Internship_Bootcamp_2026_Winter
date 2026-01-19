@@ -15,13 +15,20 @@ Live better with web3
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今天继续打卡，开了运营和技术
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 打卡，今天周末休息
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 打卡三、节点间交换的数据类型
 
@@ -41,6 +48,7 @@ Live better with web3
 
 
 
+
 打卡
 
 **NFT is still in very early stage**
@@ -57,11 +65,13 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 
 
+
 继续学习
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -75,6 +85,7 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
