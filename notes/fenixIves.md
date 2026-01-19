@@ -15,8 +15,305 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# 10 Gas优化
+
+## 一、Gas 优化总纲
+
+**一句话原则：**
+
+**Gas 的本质成本顺序是：  
+**`Storage 写 > Storage 读 > Memory > Calldata > 纯计算`
+
+你所有优化，都是在做一件事：  
+👉 **减少 storage 的读写次数和体量**
+
+* * *
+
+## 二、必须牢记的 8 个 Gas 优化要点（实战级）
+
+### 1️⃣ 减少 `storage` 写操作（最重要）
+
+原因
+
+-   `SSTORE` 是 EVM 里最贵的操作
+    
+-   一次写 ≈ **20,000 gas**
+    
+
+❌ 差代码
+
+```
+count += 1;
+count += 1;
+```
+
+✅ 优化
+
+```
+count += 2;
+```
+
+* * *
+
+### 2️⃣ 用 `memory / calldata`，别滥用 `storage`
+
+❌ 差
+
+```
+function foo(uint256[] storage arr) internal {
+    ...
+}
+```
+
+✅ 好
+
+```
+function foo(uint256[] calldata arr) external {
+    ...
+}
+```
+
+**calldata 是只读、最便宜的数据位置**
+
+* * *
+
+### 3️⃣ 合并 storage 变量（storage packing）
+
+原因
+
+-   一个 slot = 32 bytes
+    
+-   小类型可以打包
+    
+
+❌ 浪费
+
+```
+uint256 a;
+bool b;
+uint256 c;
+```
+
+✅ 优化
+
+```
+uint256 a;
+uint256 c;
+bool b;
+```
+
+甚至：
+
+```
+uint128 a;
+uint128 b;
+```
+
+* * *
+
+### 4️⃣ 减少重复读取 storage（缓存到 memory）
+
+❌ 差
+
+```
+if (user.balance > 0) {
+    doSomething(user.balance);
+}
+```
+
+✅ 好
+
+```
+uint256 bal = user.balance;
+if (bal > 0) {
+    doSomething(bal);
+}
+```
+
+* * *
+
+### 5️⃣ 能 `view / pure` 就别写状态
+
+原因
+
+-   `view` 不消耗 gas（本地调用）
+    
+-   写操作永远要付钱
+    
+
+❌ 不必要写
+
+```
+function calc() public returns (uint256) {
+    result = a + b;
+    return result;
+}
+```
+
+✅
+
+```
+function calc() public pure returns (uint256) {
+    return a + b;
+}
+```
+
+* * *
+
+### 6️⃣ 用 `immutable` / `constant`
+
+原因
+
+-   不进 storage
+    
+-   直接编译进 bytecode
+    
+
+✅
+
+```
+address public immutable owner;
+uint256 public constant FEE = 100;
+```
+
+* * *
+
+### 7️⃣ 循环中避免 storage 操作
+
+❌
+
+```
+for (uint i = 0; i < users.length; i++) {
+    balances[users[i]] += 1;
+}
+```
+
+✅（可行时）
+
+```
+uint len = users.length;
+// users.length 是 storage
+//每次循环读一次 = 多一次 SLOAD
+//缓存后只读一次
+
+for (uint i = 0; i < len; i++) {
+    address u = users[i];
+    uint256 bal = balances[u];
+    balances[u] = bal + 1;
+}
+
+//users[i] 只读一次
+//balances[u] 只读一次
+```
+
+* * *
+
+### 8️⃣ 用 `unchecked`（Solidity ≥0.8）
+
+```
+unchecked {
+    i++;
+}
+```
+
+跳过溢出检查，**在你确信安全时用**。
+
+* * *
+
+## 三、一个完整实例：从“新手写法”到“Gas 优化写法”
+
+### 场景：简单的充值逻辑
+
+* * *
+
+### ❌ 原始版本（常见）
+
+```
+contract Vault {
+    mapping(address => uint256) public balances;
+
+    function deposit() external payable {
+        balances[msg.sender] = balances[msg.sender] + msg.value;
+    }
+
+    function withdraw(uint256 amount) external {
+        require(balances[msg.sender] >= amount);
+        balances[msg.sender] = balances[msg.sender] - amount;
+        payable(msg.sender).transfer(amount);
+    }
+}
+```
+
+* * *
+
+### ✅ 优化版本（保持逻辑一致）
+
+```
+contract Vault {
+    mapping(address => uint256) public balances;
+
+    function deposit() external payable {
+        uint256 bal = balances[msg.sender];
+        balances[msg.sender] = bal + msg.value;
+    }
+
+    function withdraw(uint256 amount) external {
+        uint256 bal = balances[msg.sender];
+        require(bal >= amount);
+
+        balances[msg.sender] = bal - amount;
+        payable(msg.sender).transfer(amount);
+    }
+}
+```
+
+### 优化点总结：
+
+-   storage 读 → 缓存到 memory
+    
+-   少一次 `SLOAD`
+    
+-   在高频函数中非常明显
+    
+
+* * *
+
+## 四、一个 Ethernaut 风格的“致命反例”
+
+```
+function contribute() public payable {
+    contributions[msg.sender] += msg.value;
+    contributions[msg.sender] += msg.value;
+}
+```
+
+这里不仅：
+
+-   Gas 翻倍
+    
+-   还可能引入漏洞
+    
+
+**Gas 优化 = 安全优化的前置条件**
+
+* * *
+
+## 五、你现在这个阶段最该记住的 3 条
+
+**只记这三条就够你用很久：**
+
+1.  **Storage 写是最贵的**
+    
+2.  **能不写就不写，能少写就少写**
+    
+3.  **先写清楚、再谈优化，别本末倒置**
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # Solidity学习笔记
 
 # 一、值类型（Value Types）
@@ -1116,6 +1413,7 @@ contract ExceptionExample {
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -1482,6 +1780,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -1807,6 +2106,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -1968,6 +2268,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2246,6 +2547,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2545,6 +2847,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -2773,6 +3076,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
