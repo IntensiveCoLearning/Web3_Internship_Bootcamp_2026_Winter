@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+笔记标题为笔记：以太坊中文周会（2026/01/19）
+
+**1\. 每周简报 (News Briefing)**
+
+-   **以太坊更新**：拒绝了7个EIP，将 **EIP-7954** 纳入考量（合约大小上限从24KB提升至32KB）。
+    
+-   **Vitalik 展望**：2026年将重聚焦于“自主权”和“去信任”，计划通过 zkEVM、Helios 等技术简化协议并进行“垃圾回收”（清除复杂代码）。
+    
+-   **Starknet 升级**：区块生产速度提升40%，最终确认时间降至1秒。
+    
+-   **市场与安全**：2025年加密盗窃案创历史新高（约40.4亿美元）；比特币和以太坊 ETF 全年吸引310亿美元流入。
+    
+
+**2\. 技术分享：新 EIP 与稳定币支付**
+
+-   **新提案 (Pectra后)**：
+    
+    -   **EIP-778x**：修复 Gas Refund 漏洞。
+        
+    -   **EIP-7008**：为 ETH 转账增加 Log，便于追踪。
+        
+    -   **Slot Number Opcode**：解耦区块号与时间。
+        
+    -   **EIP-824**：增加 SWAPN/DUPN 指令，突破堆栈深度限制。
+        
+-   **稳定币支付**：Paradigm/Stripe 报告指出稳定币在跨国支付中可节省高达 80% 成本并实现实时结算。
+    
+
+**3\. 硬核技术：Rollup 与 Monad 开源**
+
+-   **Ink 混合 Rollup**：结合 Based Rollup（抗审查）与 Sequencer Rollup（低延迟）的优势。
+    
+-   **网络编码 (RLNC)**：探讨比 Reed-Solomon 更高效的数据可用性采样编码方式，降低带宽开销。
+    
+-   **Monad 开源项目**：
+    
+    -   **存储优化**：替代 MPT 树，减少磁盘 I/O。
+        
+    -   **无状态验证 (Stateless Validator)**：利用更小的 Witness 降低节点门槛。
+        
+    -   **Monad EVM**：支持更大合约（~500KB）及异步 I/O 优化。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 Alex Tian 导师在“Web3 实习计划”分享会中提到 **ERC-7962（Key Hash Based Tokens）**
 
 该协议由 DataDance 团队提出，旨在通过零知识证明（ZK）原理解决区块链资产所有权的隐私与用户体验问题
@@ -71,6 +117,7 @@ Alex 认为，像星巴克这样的大型品牌应用，不需要用户去学习
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 ![屏幕截图 2026-01-17 210033.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662485478-_____2026-01-17_210033.png)
 
 ![屏幕截图 2026-01-17 210038.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662464045-_____2026-01-17_210038.png)
@@ -78,6 +125,7 @@ Alex 认为，像星巴克这样的大型品牌应用，不需要用户去学习
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 阅读了ethpanda发布的100年后的数字生活  
@@ -148,6 +196,7 @@ _(1:11:35 - 结尾)_
 
 
 
+
 [unphishable.io](http://unphishable.io)  
 今天主要是在这个网站做了一些钓鱼攻击的安全测试  
   
@@ -159,6 +208,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -179,6 +229,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -223,6 +274,7 @@ answer：web3目前整体网络环境较差，属于混沌的发展阶段，需�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
