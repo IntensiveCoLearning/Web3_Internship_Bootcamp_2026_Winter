@@ -15,8 +15,97 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# **智能合约开发**
+
+## **一、Dapp （**去中心化应用，Decentralized Application**）架构和开发流程**
+
+### **1\. Dapp 架构**
+
+四个核心部分：**前端（User Interface），智能合约（Smart Contracts），数据检索器（Indexer），4. 区块链和去中心化存储（Blockchain & Decentralized Storage）**
+
+**1) 前端（User Interface）**
+
+DApp 与用户交互的界面，一般由 HTML、CSS 和 JavaScript（如 React、Vue 等框架）构建。
+
+DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provider 或第三方 RPC 节点 与区块链交互。
+
+2）**智能合约（Smart Contracts）**
+
+智能合约是 Dapp 的核心，它定义了应用的业务逻辑，并部署在区块链上。智能合约通过执行自动化的规则来确保交易和操作的透明性与不可篡改性。在以太坊平台上，智能合约通常使用 **Solidity** 编程语言编写，并通过 **Ethereum Virtual Machine (EVM)** 执行。
+
+**3） 数据检索器（Indexer）**
+
+智能合约通常以 `Event` 形式释放日志事件，比如释放代表 NFT 转移的 `Transfer` 事件，数据检索器会检索这些数据并将其写入到 PostgreSQL 等传统数据库中。Dapp 在前端进行数据展示时需要检索器内的数据。
+
+**4）区块链和去中心化存储（Blockchain & Decentralized Storage）**
+
+区块链用于存储智能合约的状态数据及交易记录。去中心化存储如 **IPFS**（InterPlanetary File System）或 **Arweave**，用于存储大规模的非结构化数据（如图片、文档等），确保数据不易丢失和篡改。
+
+通过使用去中心化存储，Dapp 确保所有数据在多个节点上备份，保证数据的持久性和去中心化特性。
+
+### **2\. Dapp 开发流程**
+
+![Dapp 开发流程图](https://web3intern.xyz/assets/dapp_development-workflow_01-sGuU6DCd.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tutou2356/images/2026-01-19-1768829935710-image.png)
+
+## **二、以太坊开发环境搭建**
+
+**1\. 基础环境准备** 所有开发工作的前置条件，建议使用版本管理工具来安装，以避免权限问题。
+
+-   **Node.js：** 必需。推荐使用 `nvm` 安装 LTS（长期支持）版本。
+    
+-   **包管理器：** npm（自带）或 yarn。
+    
+-   **Git：** 用于代码版本控制。
+    
+
+**2\. 本地开发框架（二选一）** 根据编程习惯选择其一即可，目前通过 Foundry 进行合约测试是主流趋势。
+
+-   **Foundry（高性能路线）**
+    
+    -   **特点：** Rust 编写，速度极快。支持直接用 Solidity 写测试脚本（无需切换语言）。
+        
+    -   **核心组件：**
+        
+        -   `forge`: 编译、测试、部署。
+            
+        -   `anvil`: 本地测试节点。
+            
+        -   `cast`: 命令行交互工具。
+            
+    -   **常用命令：** `forge init` (初始化), `forge test` (测试), `anvil` (启动节点)。
+        
+-   **Hardhat（经典路线）**
+    
+    -   **特点：**基于 JavaScript/TypeScript，生态最成熟，插件丰富。适合熟悉 JS 的开发者。
+        
+    -   **常用命令：** `npx hardhat` (初始化), `npx hardhat node` (启动节点)。
+        
+
+**3\. 前端与钱包交互**
+
+-   **钱包：** **MetaMask**（浏览器插件），用于管理账户密钥和签名交易。
+    
+-   **前端库：**
+    
+    -   **Viem：** 轻量级底层接口库，性能优于 ethers.js。
+        
+    -   **Wagmi：** 基于 React Hooks 的封装库，用于快速实现“连接钱包”等功能。
+        
+
+**4\. 其他常用工具**
+
+-   **Remix IDE：** 网页版编辑器，无需配置环境，适合快速编写和测试简单合约。
+    
+-   **OpenZeppelin：** 标准合约库（如 ERC20, ERC721），开发时直接引用，安全可靠。
+    
+-   **Chainlink：** 预言机服务，用于在合约中获取链下数据（如价格信息）。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 今天学习了web3实习手册入门导读中的web3工作方式一章，了解了很多行业黑话，解决了之前的一些困惑。
 
 了解了后端工程师和合约工程师的要求。
@@ -129,6 +218,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 3.**MakerDAO（现已更名为 Sky）：稳定币系统**
 
@@ -257,6 +347,7 @@ MEME 币具有极高的投机性和波动性。价格可能在短时间内暴涨
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ## 二、以太坊概览
 
 ### 2.7 **以太坊核心机制：从账户到执行的完整链路**
@@ -380,6 +471,7 @@ Compound 是一个去中心化的借贷平台，允许用户借入或借出加�
 
 
 
+
 二、以太坊概览
 
 \*\*2.4 2022 年 9 月 The merge : PoW(\*\*工作量证明 Proof of Work) \*\*—> PoS(\*\*权益证明 Proof of Stake)
@@ -445,6 +537,7 @@ Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
