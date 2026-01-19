@@ -15,8 +15,106 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# 📒 共学营 Day 8 学习笔记
+
+今天继续复盘 Uniswap V2 面试题，从第 9 题到第 12 题，主要聚焦 **LP Token 机制、Flash Swap、重入防护、TWAP 价格安全设计**。
+
+* * *
+
+## Q9：LP Token 的本质与流动性份额计算
+
+**问题：**  
+Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所占份额？移除流动性时如何计算可取回的两种代币数量？
+
+**回答：**
+
+-   LP Token 本质是 **提供两种代币流动性的凭证**，代表在池子中的份额。
+    
+-   拥有的 LP Token 数量 ÷ 池子总 LP Token 数量 = 在池子中的占比。
+    
+-   移除流动性时，可取回代币数量 = 占比 × 当前池子代币余额。
+    
+-   实际代码中 `_mintFee` 会根据 `√k` 的增长计算协议费，LP Token 的总量和占比会影响可取回数量。
+    
+
+**补充说明：**
+
+-   `kLast` 用于记录上次的 reserve 乘积，协议费只在 `feeTo` 地址非空时生效。
+    
+-   协议抽取 LP 手续费比例为 **1/6 √k 增长**，等价于总交易额的 0.05%，其余归 LP。
+    
+
+* * *
+
+## Q10：重入攻击与 lock 机制
+
+**问题：**  
+为什么在 swap / mint / burn 中使用 `lock`？仅靠 lock 是否能完全防止所有重入风险？
+
+**回答：**
+
+-   lock 用于 **防止同一 Pair 合约内的函数重入**，例如 swap → swap、swap → mint。
+    
+-   攻击者可能在回调中尝试再次进入核心函数，利用中间状态套利。
+    
+-   lock 不能防止跨合约调用或 token 回调（ERC777/fee-on-transfer）产生的重入。
+    
+-   Uniswap V2 的安全依赖多层防御：
+    
+    -   `lock` 控制流安全
+        
+    -   balance 差值计算保证资产真实性
+        
+    -   invariant 校验保证数学模型不被破坏
+        
+
+* * *
+
+## Q11：为什么用 balance 差值而不是 amountIn
+
+**问题：**  
+为什么协议在 mint / swap / burn 时，不直接使用用户传入的 `amountIn`，而要用 `balanceOf(pair) - reserve` 计算实际输入？
+
+**回答：**
+
+-   用户传入的 `amountIn` 可能与实际到账量不一致，尤其是 fee-on-transfer 或 ERC777 代币。
+    
+-   `balanceOf(pair) - reserve` 计算实际资产变化，保证交易逻辑基于真实流入资产。
+    
+-   这样可防止攻击者利用 token 回调或手续费设计绕过恒定乘积约束。
+    
+
+* * *
+
+## Q12：TWAP 的作用与 MEV 区分
+
+**问题：**  
+为什么 Uniswap V2 使用 TWAP（时间加权平均价格）而不是直接使用当前价格？TWAP 是否能防止 MEV 攻击？
+
+**回答：**
+
+-   TWAP 用于防止依赖价格的协议被瞬时大额交易操纵，例如闪电贷攻击。
+    
+-   通过累积一段时间的价格，平滑短时波动，降低借贷、清算等敏感操作风险。
+    
+-   TWAP **不能防止 MEV** 或交易被前置，它只保护 **协议引用的价格安全**。
+    
+-   MEV 需要额外机制（交易排序策略、Flashbots 等）来防护。
+    
+
+* * *
+
+💡 **学习感悟：**  
+今天复盘 Q9~Q12，加深了对 Uniswap V2 **LP Token、Flash Swap、重入防护与价格安全设计**的理解。  
+尤其是 lock + balance 校验 + invariant 的多层防御逻辑，让我对 **安全意识内化到工程实践**的理念有更直观的认识。  
+对于 Web3 开发者来说，理解这些设计不仅是面试题，更是编写安全、高可用 DeFi 协议的基础。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 # 📒 共学营 Day 5 学习笔记
 
 今天继续让 ChatGPT 模拟面试官，对 **Uniswap V2** 进行面试式复盘，重点学习了 **Flash Swap 的执行机制、安全保护设计，以及 TWAP 价格累计器的源码实现方式**。整体感觉是：Uniswap V2 的设计是多层机制叠加形成安全闭环，对理解 DeFi 可组合性和抗攻击设计很有启发。
@@ -181,6 +279,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -296,6 +395,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 📒 共学营 Day 4 学习笔记
@@ -416,6 +516,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -503,6 +604,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -651,6 +753,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
