@@ -21,8 +21,63 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# 智能合约开发实操
+
+## RemixIDE
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-01-19-1768815539497-image.png)
+
+## EVM相关知识
+
+-   EVM 的栈是 256 位的，**默认uint256最省gas**
+    
+-   uint类型默认值为0，不同**类型转换会消耗gas**
+    
+-   **external** 比 **public** 更节省 gas
+    
+-   减少存储操作（Storage Write）能省gas
+    
+-   gas优化总结 [https://chat.deepseek.com/share/v72qicwl6pmdzn2ixi](https://chat.deepseek.com/share/v72qicwl6pmdzn2ixi)
+    
+
+## 运营管理
+
+### tg管理
+
+拉群、数据分析（加群曲线、发言活跃曲线）、加管理机器人（注意山寨高仿机器人）
+
+### 活动管理
+
+准备阶段
+
+-   邀请：主题、时间、涉及话题内容
+    
+-   材料： Twitter Space链接、zoom链接、海报(主题、时间、内容)
+    
+
+宣发阶段
+
+-   至少提前2-3预热
+    
+-   当天二次预热
+    
+-   Twitter Space\\Zoom开始前5分钟，再进行提示参与
+    
+
+执行阶段
+
+-   开场：亮品牌、嘉宾IP介绍、活动背景
+    
+-   问答：N
+    
+-   互动：N
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # 智能合约开发实操
 
 ## RemixIDE
@@ -77,6 +132,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -105,6 +161,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -162,6 +219,7 @@ timezone: UTC+8
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -191,6 +249,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -275,6 +334,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -326,6 +386,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -404,6 +465,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
