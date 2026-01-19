@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+实习手册智能合约完成50%部分学习
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 实习手册智能合约完成20%部分学习
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 Day 5
 
@@ -69,11 +76,13 @@ Gas Limit
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 请假一天
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -96,6 +105,7 @@ DAO 和智能合约在法律层面同样存在灰色地带。DAO 通常不具备
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -139,6 +149,7 @@ DAO 是用智能合约和投票规则运行的组织。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
