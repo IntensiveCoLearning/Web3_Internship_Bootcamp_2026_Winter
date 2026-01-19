@@ -19,51 +19,45 @@ INTJ
 <!-- Content_START -->
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
-### 一、 ERC-7962 的核心机制分析
+# Gas优化的理解：
 
-在传统标准中，资产的所有权是由 `address` 确定的；而在 ERC-7962 中，所有权被定义为 `keyHash`（即 `keccak256(publicKey)`）。
+gas优化，就是尽可能的不与存储在storage上的变量进行操作，并尽可能使用memory来操作变量，
 
-其技术核心在于：
+例如：
 
-1.  **UTXO 化的转移模型**：每一笔转账都要求提供 `fromKeyHash`、`toKeyHash` 以及一个 `leftKeyHash`（找零地址）。
-    
-2.  **强制密钥轮换**：由于执行操作需要揭露原始公钥（Public Key），为了安全，协议强制用户在每次花费后将余额转入全新的 `keyHash`。
-    
-3.  **解耦执行与所有权**：通过 EIP-712 签名验证，任何人（Relayer）都可以代为提交交易，而资产所有权始终锁在哈希背后。
-    
+浪费gas的写法（在循环中多次 SLOAD/SSTORE）：
 
-### 二、 核心优点：打破“链上追踪”的枷锁
+````
+```solidity
+uint256 public totalReward;
 
-1.  **原生隐私属性（Pseudonymity++）**
-    
-    -   **分析**：在 ERC-20 中，你的余额和交易历史是静态挂钩的。ERC-7962 通过强制“找零”机制，将比特币的 UTXO 隐私特性引入了以太坊。观察者很难仅凭一个 `keyHash` 勾勒出用户的完整资产画像。
-        
-2.  **极致的账户抽象兼容性**
-    
-    -   **分析**：它原生支持代付 Gas（Gasless Transaction）。因为资产不绑定在执行地址上，项目方可以轻松实现“用户签名 -> 中继器广播 -> 中继器付 Gas”的无感体验，无需复杂的代理合约或 ERC-4337 基础设施。
-        
-3.  **所有权与执行权的彻底分离**
-    
-    -   **分析**：这对于**机构级托管**极其友好。资产可以锁定在一个哈希下，而具体的交易执行可以分发给不同的操作员或自动化系统，大大降低了私钥长期暴露在联网环境下的风险。
-        
+function updateReward(uint256[] memory rewards) public {
+    for(uint256 i = 0; i < rewards.length; i++) {
+        // 每次循环都在写状态变量，极度昂贵
+        totalReward += rewards[i]; 
+    }
+}
+````
 
-### 三、 核心缺点：性能与生态的“阵痛”
+真正的gas优化（内存缓存）：
 
-1.  **状态膨胀（State Bloat）风险**
-    
-    -   **分析**：强制轮换密钥意味着链上会产生大量的 `keyHash` 映射记录。相比于 ERC-20 一个地址对应一个 `balance`，ERC-7962 的存储压力更大，长期来看会增加节点的维护成本。
-        
-2.  **用户心智负担与 UX 挑战**
-    
-    -   **分析**：普通用户很难理解“为什么我每次发完钱，我的地址就变了”。如果前端钱包层没有做好自动化的密钥管理（Hierarchical Deterministic Wallets, HD Wallets），用户极易丢失对“找零地址”的控制。
-        
-3.  **兼容性“孤岛”**
-    
-    -   **分析**：目前的 DeFi 协议（Uniswap, Aave 等）全是基于 `msg.sender` 或 `address` 构建的。ERC-7962 无法直接与现有的流动性池交互，需要复杂的 Wrapper 合约或协议层的重构，这在短期内会形成严重的流动性隔离。
+````
+```solidity
+function updateReward(uint256[] memory rewards) public {
+    uint256 tempTotal = totalReward; // 1次 SLOAD
+    for(uint256 i = 0; i < rewards.length; i++) {
+        tempTotal += rewards[i]; // 在 Stack 上操作，几乎免费
+    }
+    totalReward = tempTotal; // 1次 SSTORE
+}
+````
+
+将状态变量转存为局部变量，在**循环（Loop）或者多次读写同一状态变量**时会有质的优化飞跃。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # 今日感悟：
 
@@ -72,6 +66,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # 今日目标：
@@ -88,6 +83,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -117,6 +113,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 
 
+
 # 今天做了什么：
 
 1.  对昨晚的直播，Web3合规内容进行整理，并上传到个人知识库。
@@ -138,6 +135,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -217,6 +215,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 
 
+
 # 今日目标：
 
 1.  参加下午的Co-Learning
@@ -232,6 +231,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
