@@ -15,8 +15,106 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# 以太坊中文分享
+
+![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
+
+## **Synchronous Composability for Based and Sequenced Rollups**
+
+Research explores combining the low latency of sequenced rollups with the synchronous composability of based rollups.
+
+• **Rollup Types**:
+
+    ◦ **Based Rollups**: L1 determines transaction ordering; rollup blocks are L1 transactions.
+
+    ◦ **Sequenced Rollups**: Offchain mechanisms (e.g., centralized sequencers) determine ordering, regularly committing history to L1.
+
+• **Proposed Hybrid Design**: Uses three block types:
+
+    ◦ **Regular sequenced blocks**: Frequent blocks requiring a sequencer certificate.
+
+    ◦ **Slot-ending sequenced blocks**: Blocks that signal it is valid to build a based block on top of them during the current L1 slot.
+
+    ◦ **Based blocks**: Can be built by anyone on top of slot-ending blocks to enable **synchronous composability** with L1 liquidity.
+
+• **Timing Dynamics**: The sequencer plays a "timing game," releasing regular blocks with low latency and then a slot-ending block near the L1 slot's end to allow for based block inclusion.
+
+• **Trade-offs and Challenges**:
+
+    ◦ This design requires rollups to revert if the L1 reverts.
+
+    ◦ Permissionlessness is not inherent because based blocks still require a sequencer certificate for the slot-ending block; a **forced-inclusion channel** on L1 is the suggested path to achieve it.
+
+    ◦ Real-time proving and short "dead time" windows before L1 proposals present technical hurdles for block builders.
+
+\--------------------------------------------------------------------------------
+
+## **MegaETH EVM (mega-evm)**
+
+The `mega-evm` is a specialized Ethereum Virtual Machine tailored for MegaETH, extending `revm` and `op-revm` for high performance.
+
+• **Specs vs. Hardforks**: The codebase distinguishes between **Specs** (defining what the EVM does, e.g., `REX`) and **Hardforks** (defining when those behaviors are activated).
+
+• **Key Feature Sets (Specs)**:
+
+    ◦ **MINI\_REX**: Introduces a **multidimensional gas model** (independent tracking for compute, data, and KV updates), disables `SELFDESTRUCT`, and supports large contracts up to **512 KB**.
+
+    ◦ **REX**: Refined storage gas economics with optimized formulas and a 39,000 storage gas baseline for all transactions.
+
+    ◦ **REX2**: Inherits Rex1 behavior but restores `SELFDESTRUCT` using EIP-6780 semantics.
+
+• **Parallel Execution**: Supports block environment access tracking to detect conflicts for parallel processing.
+
+• **Command Line Tool**: The `mega-evme` binary allows for executing, debugging, and replaying EVM transactions directly from the CLI.
+
+\--------------------------------------------------------------------------------
+
+## **SALT: Small Authentication Large Trie**
+
+**SALT** is an authenticated key-value store designed to eliminate random disk I/Os during state root updates.
+
+• **Efficiency**: It maintains a low memory footprint (1 GB for up to 3 billion KV pairs) and can scale to tens of billions of items.
+
+• **Architecture**:
+
+    ◦ **Two-Tier Structure**: A static **4-level 256-ary main trie** (top tier) and **dynamic buckets** (second tier).
+
+    ◦ **Buckets**: Use **Strongly History-Independent (SHI)** hash tables, which guarantee a canonical commitment regardless of insertion order.
+
+• **Cryptographic Operations**:
+
+    ◦ Uses **Inner Product Arguments (IPA)** with Pedersen commitments for incremental, homomorphic updates.
+
+    ◦ Updating a key-value pair requires only a few elliptic curve multiplications (ECMul), leading to highly efficient state root updates.
+
+• **Proofs**: Provides compact witnesses for both **membership** (key exists) and **non-membership** (key does not exist). Non-membership proofs use SHI invariants to prove a key cannot exist anywhere in its linear probe sequence.
+
+## **MegaETH Stateless Validator**
+
+This is a Rust implementation that allows nodes to verify blocks without maintaining the full blockchain state.
+
+• **Mechanism**: Instead of a local state database, it uses **cryptographic witness data from SALT** to verify state transitions.
+
+• **Key Characteristics**:
+
+    ◦ **Partial Statelessness**: Contract bytecode is fetched on-demand via RPC and cached, significantly reducing the size of the witness.
+
+    ◦ **Parallelism**: Validation workers operate independently on different blocks, allowing throughput to scale linearly with CPU cores.
+
+    ◦ **Multi-Client Support**: Supports multiple execution engines, including a vanilla `revm` interpreter and one based on formal K semantics, to ensure state transition integrity.
+
+• **Trust Model**: The validator acts as an **execution client** to verify the state transition function (STF). It does not verify the canonical chain itself; that task remains for a consensus client like `op-node`.
+
+• **Coordination**: Uses a central **ValidatorDB** with ACID transactions to manage task queues, block data, witnesses, and cached contracts.
+
+NotebookLM can be inaccurate; please double check its responses.
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 1) 总结
 
 分享的核心观点是：**2026 年的 AI 正在从“只会说”变成“能做事并能收钱”的 agent（智能体）**；而要让 agent 真正进入经济活动，需要两类基础设施：
@@ -183,6 +281,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -290,6 +389,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1186,6 +1286,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -1353,6 +1454,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -1473,6 +1575,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2353,6 +2456,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
