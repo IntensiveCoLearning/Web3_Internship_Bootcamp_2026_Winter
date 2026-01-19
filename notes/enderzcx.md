@@ -18,11 +18,23 @@ timezone: UTC+8
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 **体验 My first zk vote**  
-**成功把一个智能合约部署在测试网上并且发送了一段信息 Remix有点难用 不知道是我的网络问题还是什么**
+**成功把一个智能合约部署在测试网上并且发送了一段信息 Remix有点难用 不知道是我的网络问题还是什么**  
+[**3.2 审计标准流程**](https://web3intern.xyz/zh/smart-contract-development/#_3-2-%E5%AE%A1%E8%AE%A1%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B)
+
+Solidity 审计流程
+
+1.  **静态分析（Static Analysis）**：使用工具如 Slither、Mythril 扫描代码缺陷
+    
+2.  **动态测试（Fuzzing/Property Testing）**：模拟攻击行为和极限条件
+    
+3.  **人工审查（Manual Review）**：由资深审计员检查业务逻辑漏洞
+    
+4.  **审计报告生成（Audit Report）**：明确发现的问题及修复建议
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
@@ -36,12 +48,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -58,6 +72,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -68,6 +83,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
