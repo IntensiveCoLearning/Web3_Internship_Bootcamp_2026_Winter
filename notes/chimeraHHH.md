@@ -18,16 +18,22 @@ WHUweb3Club|build in public
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 学习Uniswap及SDK
+
+今天开了三场会（
+
+晚上打理具身智能与AI4Learning项目
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 Day7 学习安全与合规
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 Day6！
@@ -38,11 +44,13 @@ Day6！
 
 
 
+
 Day5！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -59,6 +67,7 @@ Day5！
 
 
 
+
 1.14打卡
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -70,11 +79,13 @@ Day5！
 
 
 
+
 回看开营仪式+一些vibe coding
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
