@@ -15,8 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+研究了一下Dapp
+
+1.Dapp 架构
+
+2.Dapp开发流程
+
+并开始尝试开发一个简单的Dapp
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 研究了一下深度技术赛道中的任务
 
 1.部署合约到sepolia测试网
@@ -26,6 +38,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今天预习了一下第一周的任务
 
@@ -38,6 +51,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天稍微有点摆，听了一个每周例会
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -46,11 +60,13 @@ timezone: UTC+8
 
 
 
+
 今天决定看完第零周的拓展资源和注意事项，顺便完成一些任务
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -64,6 +80,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
