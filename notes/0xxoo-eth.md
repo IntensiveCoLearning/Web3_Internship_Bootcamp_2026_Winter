@@ -19,11 +19,12 @@ interested in web3
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 拖延了一个星期，安装了REMIX IDE. 完成了learnETH第一个教程。期待后面开始自己写代码实现。
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/0xxoo-eth/images/2026-01-19-1768837768278-image.png)
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/0xxoo-eth/images/2026-01-19-1768838161668-image.png)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 今晚学习了「从ERC-721到ERC-7962」，Alex老师详细介绍了ERC-7962这个新的代币标准，这是一个基于零知识证明（ZK）和哈希算法的代币协议。
 
@@ -34,6 +35,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今天学习Bruce分享如何成为靠谱的Web3实习生的经验谈。最近我也在远程协作中反思工作能力和工作态度等问题。
@@ -47,6 +49,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -117,6 +120,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 
 
+
 AI及其基础概念（分享会）
 
 1.  AI Agent的演进：从聊天工具到具备执行能力的智能体，通过Function Call、MCP等技术实现从文本交互到实际行动的转变。
@@ -145,6 +149,7 @@ AI及其基础概念（分享会）
 
 
 
+
 # **MiCA 为什么限制算法稳定币？**
 
 2023年4月，欧洲议会正式通过《加密资产市场监管法案》（Markets in Crypto-Assets Regulation, MiCA），这标志着欧盟在加密资产监管领域迈出了里程碑式的一步。该法案对稳定币（stablecoins）的监管尤为严格，特别是对算法稳定币（algorithmic stablecoins）采取了近乎禁止性的立场。
@@ -164,6 +169,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -201,6 +207,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
