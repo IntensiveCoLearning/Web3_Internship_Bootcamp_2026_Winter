@@ -15,8 +15,102 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+学习视频Day 1: Scripting and Smart Contracts! Providers, Signers, and Wallets
+
+1\. 开发环境与基础设置
+
+在进行 Web3 脚本编写前，必须构建稳健的本地开发环境。
+
+1.1 环境要求
+
+• Node.js 版本管理： 建议使用 n 或 nvm 管理 Node 版本（推荐版本为 Node 14 或 16）。
+
+• 模块系统： 推荐在 package.json 中设置 "type": "module" 以启用 ES6 导入语法（import），这不仅与前端 React 开发保持一致，还允许在主线程中使用顶层 await。
+
+• 依赖库：
+
+    ◦ ethers.js：与以太坊交互的核心辅助库。
+
+    ◦ dotenv：用于管理敏感的环境变量（如 API 密钥和私钥），防止其被上传至 GitHub。
+
+1.2 安全实践
+
+• .gitignore 设置： 必须忽略 node\_modules 和 .env 文件。
+
+• 环境变量： 私钥应存储在 .env 中，并通过 process.env 调用，而不是硬编码在脚本里。
+
+2\. 提供者 (Provider) 深度解析
+
+Provider 是连接区块链的只读门户，它不持有私钥，仅用于查询链上状态。
+
+2.1 Provider 的角色
+
+Provider 类似于 Web2 中的 API 接口（如 Firebase）。它允许脚本向区块链请求数据，例如查询区块高度或账户余额。
+
+2.2 连接方式
+
+• 公共/第三方服务： 如 Infura 或 Alchemy。这些服务提供负载均衡的节点集群，适合生产环境。
+
+• 默认提供者： ethers.getDefaultProvider() 适用于测试，但在高频请求下会失效。
+
+• 本地节点： 运行自己的以太坊节点（如 Nethermind 或 Geth）可以提供最快的响应速度和更高的隐私性，无需信任第三方公司。
+
+2.3 核心功能演示
+
+• 获取区块高度： provider.getBlockNumber() 用于确认连接状态及同步进度。
+
+• ENS 解析：
+
+    ◦ resolveName：将 ENS 域名（如 atg.eth）解析为以太坊地址。
+
+    ◦ lookupAddress：将地址反向解析为 ENS 域名。
+
+◦ 注意： ENS 解析通常需要在以太坊主网（Mainnet）Provider 上运行，即使交易发生在测试网。
+
+3\. 签名者 (Signer) 与钱包 (Wallet)
+
+Signer 是 Provider 的子集，具备本地加密签名功能，能够发送改变区块链状态的交易。
+
+3.1 钱包的生成与派生
+
+• 随机生成： ethers.Wallet.createRandom() 可生成全新的助记词和私钥。
+
+• 助记词派生： 演示了如何通过循环路径（Path）从同一组助记词派生出多个不同的账户地址，这与 MetaMask 的多账户功能逻辑一致。
+
+• 私钥导入： 可以通过私钥直接实例化钱包对象。注意：私钥前的 0x 前缀在某些库处理中可能导致错误，需仔细调试。
+
+3.2 离线签名
+
+Signer 可以在不连接互联网的情况下签名消息（signMessage）。这在 Web3 身份验证中非常强大，允许用户证明其所有权而无需支付 Gas 费。
+
+4\. 交易发送实战流程
+
+在测试网（如 Rinkeby）上发送交易的完整逻辑如下：
+
+1\. 连接 Provider： 确定脚本指向的目标网络。
+
+2\. 实例化 Signer： 将私钥钱包连接至 Provider（wallet.connect(provider)）。
+
+3\. 准备交易对象： 定义接收者地址（to）和金额（value）。
+
+4\. 发送交易：
+
+    ◦ 调用 sendTransaction。
+
+    ◦ 第一步等待： 交易进入内存池（Mempool），此时可以获取交易哈希（Hash）。
+
+    ◦ 第二步等待（tx.wait()）： 等待交易被矿工打包进区块（Mined/Confirmed）。
+
+5.1 关键陷阱
+
+在编写交互脚本时，如果 to 字段为空且包含数据，以太坊会将其视为合约创建交易。演示中由于 ENS 解析返回 null 而导致意外创建了一个空合约。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 复习了021学习以太坊的第三章内容
 
 **1\. 以太坊的两大账户类型**
@@ -78,6 +172,7 @@ SELFDESTRUCT 的变更：在Dencun升级（EIP-6780）后，SELFDESTRUCT 操作�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 复习021学习以太坊
 
@@ -148,6 +243,7 @@ RPC 接口：节点通过 JSON-RPC 接口（如 eth\_getBalance）对外提供�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 1\. 学习视频Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...
 
 Gas 机制的核心：交易并非简单的价值流动，而是对智能合约状态的调整；Gas 限制（Limit）防止程序陷入死循环，而最高费用（Max Fee）则是竞价块空间的关键。
@@ -177,6 +273,7 @@ M-of-N 验证：例如设置 4 个持有者，需要其中 2 人签名才能执�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -211,6 +308,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -268,6 +366,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -386,6 +485,7 @@ Blob 的特点是不会进入 L1 的长期状态，只会临时保存一段时�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
