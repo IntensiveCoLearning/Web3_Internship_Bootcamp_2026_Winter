@@ -15,8 +15,80 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+Monday, January 19, 2026
+
+"Co-learning":
+
+**合约部署及gas费用问题**：
+
+**gas费用变化原因**：合约部署时右侧的network fee根据网络负载浮动，若代码中设置infinite gas且数值输出输入过大，会导致交易异常触发高消耗。
+
+**gas费用与变量关系**：状态变量首次写入未设置过为0，修改非零值消耗约2万gas，远高于非0值修改的5000 gas，操作变量后为0会返还gas费。
+
+**代码逻辑及优化建议**：函数中逻辑设置可能存在多此一举情况，如设置unsigned变量小于等于0时为0；可检查代码是否有死循环，进入Metamask设置gas limit。
+
+**数据类型转换消耗**：在EVM里，unit256比unit8或unit128更便宜高效，无需转换，基本单位为256位
+
+**网络连接问题**：连接以太坊钱包做NFT任务时网络连不上，可找Jake老师解答；IPFS网络连不上可能是环境配置、端口运行、私钥格式或依赖问题。
+
+**合约任务问题**：以太坊闯关第二个任务中向合约转ETH无法成为owner，需先进行少量以太币贡献使contribution不为0，再进行更多转账；若遇到问题可在控制台查看JS返回值。
+
+**编译器版本问题**：代码逻辑没问题但运行出错，可能是SOLIDITY编译器版本太新与目标网络不兼容，可降低版本或调整EVM版本配置，如调整到上海、London等。
+
+**部署指令问题**：deploy部署指令运行未上链，在私链部署需加protest后缀强制开启广播模式。
+
+**活动运营问题**：
+
+**Web2与Web3活动运营区别**：底层逻辑相同，都是针对人群选择活动方式吸引并转化。不同在于Web3数据开放无法作假，数据分析多了链上项目维度，角色从参与者变为社区共建者，且依赖Web3营销工具，如galaxy、Questn等。
+
+**协作工具使用建议**：飞书操作流程与notion有共通点，建议多尝试notion，以便适应不同项目方习惯使用的协作表单。
+
+**贷款社群任务说明**：配合今晚分享会的TG社群任务，社群最多可有5 - 10个管理员，可拉一起学习的小伙伴加入并设置群聊基础信息和机器人管理。推荐ROS机器人，拉机器人时要注意区分真假，完成任务提交相关截图即可，分享会会给出真机器人handle。
+
+**智能合约演示问题**：
+
+**合约编写部署流程**：使用Remix IDE和etherscan开源网址及AI工具编写ERC - 20最简单智能合约，有owner、Mate和转账功能，版本选0.8.19，创建新文件编译，选择测试网Spolia Testnet和Paris EVM版本，部署合约需提前在小狐狸钱包领水支付gas费。
+
+**合约操作报错问题**：发币和转账操作报错，可能是地址和amount类型写反，address类型要写对地址，amount可随意写；若EVM被block，指令一直在pending中可尝试重新部署合约。
+
+**合约开源验证说明**：合约最终使用需进行开源验证，在etherscan上选择单文件类型，对应编译器版本0.8.19、协议MIT，放入合约代码和地址验证，若失败可能是合约地址写错。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NoPanaceaPanda/images/2026-01-19-1768836752268-image.png)
+
+**今天初步学习了Remix IDE与基础智能合约实例：**
+
+学习了Solidity的语法、核心概念以及如何将合约部署到以太坊测试网络。内容涵盖了Remix IDE的使用、基本数据类型、映射（mapping）、结构体（struct）、消息发送者（`msg.sender`）、可支付函数（`payable`）以及修饰符（modifier）等关键知识点。
+
+**分享两个Q&A:**
+
+1.  在Remix IDE中，如何将智能合约部署到真实的以太坊测试网络而不是Remix虚拟机？
+    
+
+回答：首先，在Remix IDE的“DEPLOY & RUN TRANSACTIONS”面板中，将“Environment”设置为“Injected Provider - Metamask”。然后，确保你的Metamask钱包连接到正确的测试网络（如Sepolia测试网）并拥有测试代币。点击“Deploy”按钮，Metamask会弹出确认交易的窗口，确认后合约将被部署到测试网络上。
+
+1.  `payable`关键字在Solidity智能合约中有什么作用？
+    
+
+回答：`payable`关键字用于修饰函数或地址，表示该函数可以接收以太币的转账，或者该地址可以接收以太币。如果一个函数没有被声明为`payable`，那么当用户尝试向其发送以太币时，交易将会失败并被回滚。它对于实现支付、小费或代币购买等功能至关重要。
+
+**术语解释:**
+
+-   **Remix IDE**: 一个用于在浏览器中开发、编译和部署Solidity智能合约的在线集成开发环境。它提供了代码编辑器、编译器、部署和调试工具，非常适合初学者。
+    
+-   **Solidity**: 一种面向合约的、高级的编程语言，用于实现智能合约。它被用于在各种区块链平台（尤其是以太坊）上编写去中心化应用程序（dApp）的逻辑。
+    
+-   **Mapping (映射)**: Solidity中的一种数据结构，它将键类型（key type）映射到值类型（value type）。它类似于其他编程语言中的哈希表或字典，允许通过键快速查找对应的值。
+    
+-   `msg.sender`: 一个全局变量，在Solidity智能合约中用于获取当前函数调用或交易的发起者的地址。这在需要识别调用者身份或控制访问权限时非常有用。
+    
+-   **Modifier (修饰符)**: Solidity中的一种特殊代码块，可以用于修改函数的行为。它通常用于在函数执行前添加检查（如访问控制、前置条件），以避免代码重复并提高可读性和安全性。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 Sunday, January 18, 2026, 20:00-21:00 CST
 
 “Key Hash Based Tokens：从ERC-721到ERC-7962”
@@ -105,6 +177,7 @@ ERC-7962 是一种**以公钥哈希代表所有权**的隐私代币标准，通�
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 Saturday, January 17
 
 今天学习Remix IDE通识课程的时候发现了一位宝藏UP主
@@ -153,6 +226,7 @@ Saturday, January 17
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 Friday, January 16, 2026, 20:00-21:00 CST
@@ -223,6 +297,7 @@ Friday, January 16, 2026, 20:00-21:00 CST
 
 
 
+
 Thursday, January 15, 2026, 20:00-21:00 CST
 
 “AI及其基础概念分享会”
@@ -236,6 +311,7 @@ Thursday, January 15, 2026, 20:00-21:00 CST
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -312,6 +388,7 @@ Wednesday, January 14, 2026, 19:00-20:30 CST
 
 
 
+
 Tuesday, January 13, 2026, 20:00-21:00 CST
 
 **“Web3运行原理”笔记与思考：**
@@ -339,6 +416,7 @@ Tuesday, January 13, 2026, 20:00-21:00 CST
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
