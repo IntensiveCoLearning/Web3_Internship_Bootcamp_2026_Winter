@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## 今天主要**完成挑战 Challenge #0 - Tokenization和通过了 Ethernaut 前 3 关，对nft有了更深的理解**
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 今天主要听了分享会，从erc-721到erc-7962，总结了一些内容
 
 ### 核心概念对比：
@@ -65,11 +71,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 # 今天虽然没看什么，但是还是坚持打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## 今天主要学习了solidity入门基础知识
@@ -151,11 +159,13 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要听了rick老师的智能体AI与web3融合的分享会。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -203,6 +213,7 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要阅读了021 学习以太坊第 2&3 章，了解了web3领域中合规与网络安全相关的内容。
 
 ## 以及铸造了第一个NFT
@@ -212,6 +223,7 @@ Solidity 采用“全有或全无”机制：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
