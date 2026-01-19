@@ -25,12 +25,7 @@ Web3 实习计划 2025 冬季实习生
 
 ## 2\. 三大架构对比
 
-| 类型 | 公有链 (Public) | 联盟链 (Consortium) | 私有链 (Private) |
-| 比喻 | 广场告示牌 (所有人可见可贴) | 董事会圆桌 (成员可见可写) | 公司内网 (仅管理员写) |
-| 代表 | Bitcoin, Ethereum | Hyperledger Fabric, FISCO BCOS | Quorum, Internal DB |
-| 准入 | 无许可 (Permissionless) | 授权准入 (Permissioned) | 邀请制 |
-| 信任源 | 数学 + 博弈论 (PoW/PoS) | 商业信誉 + 多方签名 (PBFT) | 单一组织信誉 |
-| 适用场景 | 全球支付, DeFi, DAO | 供应链溯源, 银行清算 | 内部审计, 测试 |
+| 类型 | 公有链 (Public) | 联盟链 (Consortium) | 私有链 (Private) | | 比喻 | 广场告示牌 (所有人可见可贴) | 董事会圆桌 (成员可见可写) | 公司内网 (仅管理员写) | | 代表 | Bitcoin, Ethereum | Hyperledger Fabric, FISCO BCOS | Quorum, Internal DB | | 准入 | 无许可 (Permissionless) | 授权准入 (Permissioned) | 邀请制 | | 信任源 | 数学 + 博弈论 (PoW/PoS) | 商业信誉 + 多方签名 (PBFT) | 单一组织信誉 | | 适用场景 | 全球支付, DeFi, DAO | 供应链溯源, 银行清算 | 内部审计, 测试 |
 
 ## 3\. 中国特色的区块链
 
@@ -46,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # 价值的重构：区块链技术与 Web3 生态系统深度研究报告
 
@@ -235,6 +231,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 学习笔记 Day 6：DeFi 的代码原语
 
 ## 1\. 代币标准：ERC-20 的本质
@@ -300,6 +297,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -404,6 +402,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 & AI 学习笔记 Day 4：智能的本质
 
 ## 1\. 人工智能的分级：专才 vs 通才
@@ -463,6 +462,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -544,6 +544,7 @@ Step 3: 交易红线 (非实名必拒)
 
 
 
+
 # Web3 学习笔记 Day 2：成为高级用户
 
 ## 1\. 核心概念：钱包的本质
@@ -598,6 +599,7 @@ Step 3: 交易红线 (非实名必拒)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
