@@ -15,8 +15,45 @@ ha
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# Remix
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/lorstyang/images/2026-01-19-1768834231707-image.png)
+
+# 智能合约开发教程
+
+# 示例代码
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    // 这个变量用来存一个数字
+    uint256 private myNumber;
+
+    // 写入函数：把数字存进去 (要花 Gas)
+    function store(uint256 _num) public {
+        myNumber = _num;
+    }
+
+    // 读取函数：把数字读出来 (免费)
+    function retrieve() public view returns (uint256) {
+        return myNumber;
+    }
+
+    // 存进来的数加一
+    function addOne() public  {
+        myNumber += 1;
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # Stuck Transactions（卡住的交易）
 
 交易被广播了，但一直不被打包进区块
@@ -211,6 +248,7 @@ L1（以太坊主网）的问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # ENS（Ethereum Name Service）
@@ -537,6 +575,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 ## 安全
 
 ### 常见风险
@@ -629,6 +668,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -704,6 +744,7 @@ tokenURI(tokenId) → 一个 URL
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
