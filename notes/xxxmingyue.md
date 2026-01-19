@@ -15,8 +15,122 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# 阅读web3实习计划《智能合约开发》
+
+整体架构：前端、智能合约、去中心化存储、数据检索器
+
+前端：  
+完全的链下架构，负责于智能合约、RPC等进行交互，常见的框架包括viem、web3.js等
+
+智能合约开发框架：  
+包括boundary和hardhat，一个是rust编写的一个是js编写的，个人倾向于使用hardhat
+
+去中心化存储：  
+IPFS：内容寻址的分布式文件系统，常配合 Filecoin 实现持久化存储；  
+Arweave：提供“永久存储”服务，一次付费永久保存；
+
+数据检索器：  
+也就是event事件，我觉得实习日记上写得就很好，相当于智能合约没有办法去查询这个地址下有多少nft，必须得通过数据检索，去记录每次event事件，梳理出应该会有多少个NFT
+
+基本的solidity数据结构：
+
+基本数据类型：  
+值类型：uint, int, bool, address, bytes, string 等；  
+引用类型：array, struct, mapping。
+
+函数定义：  
+可见性：public, external, internal, private；  
+状态可变性：view, pure, nonpayable, payable；  
+修饰器（Modifiers）：用于复用校验逻辑（如 onlyOwner）。
+
+面向对象特性：  
+继承（Inheritance）：支持多继承，使用 is 关键字；  
+接口（Interface）与抽象合约（Abstract Contract）：用于解耦和标准化；  
+库（Library）：部署一次，多个合约复用（如 SafeMath）。
+
+事件（Events）：  
+使用 event 关键字定义；  
+通过 emit 触发；  
+是链下索引和监听的核心机制。
+
+# 运营相关
+
+参考：[活动前期策划](https://docs.google.com/presentation/d/19Ga8uaswI1ntTR_JrdPyVzc9kUyPebgbsFbQJa1x2-0/edit?usp=sharing)
+
+如何组织一场Twitter space：  
+标准SOP：
+
+1.  确定基本信息
+    
+    1.  主题
+        
+    2.  问题库
+        
+    3.  时间
+        
+    4.  主持人
+        
+    5.  拟邀嘉宾
+        
+2.  邀请嘉宾
+    
+    1.  标准文案
+        
+        1.  主题、时间、话题内容
+            
+        2.  xx 老师好！我们计划在 \[时间\] 举办关于 \[主题\] 的 Twitter Space，想邀请你参加～  
+            涉及的话题有：1...2...3...
+            
+    2.  收集嘉宾信息
+        
+        1.  name、twitter handle、title、headshot
+            
+3.  宣发
+    
+    1.  包括宣发文案、海报、链接
+        
+    2.  宣发渠道
+        
+        1.  tg、x、等社媒社群
+            
+    3.  提前3天预热
+        
+    4.  当天需要第二波预热
+        
+4.  准备
+    
+    1.  提前3天创建群聊、包含嘉宾和工作人员
+        
+    2.  提前1天同步对应的问题和链接
+        
+5.  上线
+    
+    1.  活动前5分钟，再次确认space 链接
+        
+    2.  开场
+        
+        1.  活动主题介绍
+            
+        2.  嘉宾介绍
+            
+        3.  嘉宾问答
+            
+        4.  观众提问
+            
+6.  复盘
+    
+    1.  实时在线人数
+        
+    2.  宣发推文数据
+        
+    3.  节奏情况等
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 从 ERC-721 到 ERC-7962
 
 这是我让大模型解析文档得到的：
@@ -116,6 +230,7 @@ ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # LXDAO周会
 
@@ -252,6 +367,7 @@ SEO + 邮件订阅
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -313,6 +429,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -472,6 +589,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -485,6 +603,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -534,6 +653,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
