@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-19-1768835897094-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-19-1768835906066-image.png)
+
+今天是非常饱满的一天，白天当大使做任务,下午去上课，晚上回来写推文。
+
+我很爱这样的生活，每天都在学习新的事情新的知识，我很爱这样的自己
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 加入 Web3 Career Build 已经整整一个星期了，这七天personal growth 的速度快到让我自己都震惊——甚至远远超过了我在研究生阶段那半年积累的知识厚度。
 
 每天沉浸在高强度的学习、讨论和实践里，我不止一次进入那种纯粹的 flow zone：时间消失、外界噪音全被屏蔽，只剩下大脑在高速运转，为了钻研一个课题即便胃都饿昏了我都停不下来，只有完成阶段性的任务以后才能暂缓下来喘口气。
@@ -31,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647773836-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647763202-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647792969-image.png)
 
 今天依旧是一篇推，今天整天围绕着一个全新的课题写，写昏头了，虽然没有任何经验，但是这种从零开始探索的感觉真的特别上瘾。上瘾到我午饭到了都放着没吃，直到手头上的课题暂时搞了一段落了以后才敢放心的拿起筷子。
@@ -40,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-16-1768564682757-image.png)
@@ -56,6 +68,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习完了《021 学习以太坊》的第二章并做笔记发了推文，感觉成就感满满！
 
 ![IMG_4149.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483352442-IMG_4149.jpeg)![IMG_4148.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483381863-IMG_4148.png)![IMG_4150.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483414358-IMG_4150.jpeg)![IMG_4151.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483429069-IMG_4151.jpeg)![IMG_4152.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483444785-IMG_4152.jpeg)
@@ -63,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -84,6 +98,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -190,6 +205,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
