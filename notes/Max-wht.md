@@ -15,8 +15,52 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+### \[ETH Panda周会\]
+
+快讯
+
+-   以太坊基础设施基本完成，需要开始走向去中性化世界。是否意味着下一波Dapp风潮
+    
+-   BNB Chain升级，finalize小于1s
+    
+-   市场正在进入一个由政策信号主导的新阶段
+    
+-   黑客攻击增加
+    
+-   starknet只有市值没有交易量
+    
+-   avalanche的c-chain活跃性达到历史新高
+    
+
+以太坊新EIP
+
+下次升级主要feature: BAL/ePBS
+
+-   EIP7778
+    
+-   EIP7708 ETH转账会发送log
+    
+-   EIP7843 SLOTNUM Opcode 通过block时间戳计算slot。
+    
+-   EIP8024 加入SWAPn和DUPn Opcode
+    
+
+Tempo链稳定币支付
+
+稳定币绕过中间商(银行，汇率差)直接交付，在跨国交易上有优势
+
+-   实时结算
+    
+-   低成本
+    
+-   可追踪
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ### \[N-4\] Just jotting down some thoughts in 1/18/2026
 
 昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
@@ -32,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ### **\[UNIV3-3\] Swap In UniswapV3Pool.sol**
@@ -184,6 +229,7 @@ contract UniswapV3SwapTest is Test {
 
 
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -207,6 +253,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -397,6 +444,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -416,6 +464,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -647,6 +696,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
