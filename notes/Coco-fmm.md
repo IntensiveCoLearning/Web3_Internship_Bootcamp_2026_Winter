@@ -17,13 +17,16 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
-重温Web3英语表达，联系口语
+重温Web3英语表达，练习口语
 
 研究钱包
+
+坚持长期主义，越轻松干得更给力
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 my god
 
@@ -36,6 +39,7 @@ my god
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 继续重温AI及其基础概念
 
 跟着🍠up实践
@@ -43,6 +47,7 @@ my god
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -59,6 +64,7 @@ my god
 
 
 
+
 查看昨晚的回放，学习安全知识
 
 重温Web3实习手册
@@ -66,6 +72,7 @@ my god
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -80,6 +87,7 @@ my god
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
