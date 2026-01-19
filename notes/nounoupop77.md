@@ -15,8 +15,105 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天學習了零知識證明。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/nounoupop77/images/2026-01-19-1768838798042-image.png)
+
+-   完备性保证「合法选民的合法投票不会被无故拒绝」；
+    
+-   可靠性保证「非选民或者试图一人多投的人无法通过验证」；
+    
+-   零知识性保证「验证者无法从证明中推断出你是谁、投了什么票」。
+    
+
+自動生成identitySecret，由此計算identity commitment身份承諾-->所有`identityCommitment` 被组织成一棵 **Merkle 树**，其根节点 `root` 存储在投票合约中。选民在**本地**保存自己的 `identitySecret` 和对应的 Merkle 路径
+
+某个合法 `identitySecret` 与当前投票 ID `electionId` 计算得到-->nullifier(唯一)
+
+在零知識證明中：区块浏览器只会看到 nullifierHash/voteCommitment/proof，看不到具体选项或真实身份，因此无法把这次投票与你的钱包地址绑定。
+
+1.  从你的输入中收集**公开输入（public inputs）**：
+    
+    -   如投票所属的 `electionId`；
+        
+    -   当前选民集合的 Merkle 根 `root` 等。
+        
+2.  从本地或钱包中收集**私有输入（witness）**：
+    
+    -   你的身份秘密 `identitySecret`；
+        
+    -   对应的 Merkle 路径；
+        
+    -   你选择的投票选项 `vote`。
+        
+
+![ZK 投票端到端流程示意](https://zkvote.0xtmp.xyz/images/zk-flow-v2.svg)
+
+重新生成的流程图（v2）：避免 SVG 字符转义导致的图裂。
+
+1.  **生成身份秘密与承诺**
+    
+    -   前端在本地生成 `identitySecret`；
+        
+    -   计算 `identityCommitment` 并发送给后台/注册合约；
+        
+    -   等待该承诺被加入选民 Merkle 树。
+        
+2.  **获取最新的选民集合信息**
+    
+    -   前端从合约读取当前的 Merkle 根 `root`；
+        
+    -   根据你的 `identityCommitment` 计算并存储对应的 Merkle 路径。
+        
+3.  **在本地构造 ZK 证明**
+    
+    -   你在界面中选择「同意 / 反对」等选项；
+        
+    -   浏览器端把以下数据输入到证明电路：
+        
+        -   私有输入：`identitySecret`、Merkle 路径、`vote`；
+            
+        -   公开输入：`root`、`electionId`；
+            
+    -   调用 zk 库，使用 `Proving Key` 生成证明 `proof`，同时计算 `nullifier`。
+        
+4.  **提交投票交易**
+    
+    -   前端将 `proof`、`publicInputs`（包含 `root`、`nullifier`、投票选项等必要字段）打包，调用投票合约；
+        
+    -   你的钱包会弹出签名与发送交易的确认页面，但交易数据中不包含你的身份秘密。
+        
+5.  **链上验证与计票**
+    
+    -   合约调用 Verifier 合约验证 `proof` 是否有效；
+        
+    -   检查 `nullifier` 是否已被使用；
+        
+    -   如果验证通过且 `nullifier` 未出现过，则记录这张票并标记 `nullifier` 为已使用。
+        
+6.  **查看结果与审计**
+    
+    -   任何人都可以在链上查看：
+        
+        -   每一次投票调用时提供的 `publicInputs`；
+            
+        -   以及合约验证通过的事实；
+            
+    -   但没有人可以从这些数据中还原出：
+        
+        -   具体是哪一个 `identitySecret` 参与了某次投票；
+            
+        -   某个真实世界身份在这场投票中选择了什么。
+            
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/nounoupop77/images/2026-01-19-1768840038673-image.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 今天參加運營分享會。
 
 -   知道了如何在telegram搭建和運營社群。通過對話題進行管理，分類來增加社群活躍度，對數據進行分析為社群製造吸引人的話題，認識到了機器人@MissRose\_bot，通過/help指令可以看到ross的功能
@@ -26,6 +123,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 今天在分享會上學習了標準erc7962。
 
@@ -40,6 +138,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天有點忙碌所以都是斷斷續續在加入會議，不過也零零碎碎地學到了一些知識！
 
 下午的co-learning，聼助教分享了一些運營經驗，雖然本身并沒有往運營發展的打斷但還是受益匪淺！感覺見了些市面哈哈哈
@@ -49,6 +148,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -65,6 +165,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 -   今天在平臺上mint了一個nft，很有趣地感受到了nft和錢包之間的關聯，每一步都需要錢包的確認。雖説在之前已經mint過nft，也在平臺上上架已經購買過，但還是感嘆mint一個nft這個平臺的簡單通俗易懂。
     
 -   參加了今晚的分享會，在懵懵懂懂的情況下，發現有同學做了會議紀要并且無私地發出，非常感動，想到了web3的很多知識都是開源公開的，由衷感謝這種慷慨的行爲，在web3，至少知識不是私有化。
@@ -74,6 +175,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
