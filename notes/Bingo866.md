@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今日完成
+
+✅Web3 实习手册智能合约开发部门
+
+（好难🤯大概理解框架，代码不懂
+
+![IMG_0525.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Bingo866/images/2026-01-19-1768830408964-IMG_0525.jpeg)
+
+）
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今日完成
 
 ✅021学习以太坊第三章
@@ -33,6 +47,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 今日完成
 
@@ -65,6 +80,7 @@ Engine API：客户端之间的传输员
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 今日完成
 
 ✅入门导读
@@ -89,6 +105,7 @@ IDO（去中心化发币）
 
 
 
+
 今日完成：
 
 ✅ 021学习以太坊第一章（第七至第十一节）
@@ -110,6 +127,7 @@ IDO（去中心化发币）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
