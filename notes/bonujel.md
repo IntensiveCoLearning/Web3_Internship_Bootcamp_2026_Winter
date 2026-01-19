@@ -15,8 +15,57 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## **行动**
+
+-   完成《体验 My first zk vote》
+    
+-   参与《分享会 - 以太坊中文周会 260119》直播
+    
+-   配置remix
+    
+
+## **内容**
+
+### **wsl+remix ide开发实践（代码保存在本地）**
+
+在 WSL 装好 Node/npm，并安装 remixd 在 WSL 终端执行：
+
+```
+node -v
+npm -v
+npm i -g @remix-project/remixd
+```
+
+如果 `node -v` 不存在，先用 nvm 装一个 LTS 再继续。
+
+在 WSL 启动 remixd（共享项目目录给 Remix）
+
+```
+cd ~/projects/my-contracts
+remixd -s . -u https://remix.ethereum.org
+```
+
+-   `-s .` 表示只共享当前目录（尽量别共享整个 home）。
+    
+-   `-u https://remix.ethereum.org` 限制只允许指定的 Remix IDE 连接。
+    
+-   终端里会打印服务监听信息（端口/地址），保持这个进程运行即可；用完 `Ctrl+C` 关掉。
+    
+
+在 Windows 浏览器打开 Remix Web 并连接
+
+-   打开 remix.ethereum.org
+    
+-   在 Plugin Manager 里启用 “Remixd” 插件（或在左侧 File Explorer 里找到 remixd 入口）
+    
+-   连接 `localhost`（通常直接可连） 连接成功后，Remix 左侧文件树会出现 WSL 的目录；在 VS Code（Remote - WSL）里编辑保存，Remix 里会同步看到变化。
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## **行动**
 
 -   参与《Key Hash Based Tokens: 从 ERC-721 到 ERC-7962》分享会
@@ -215,6 +264,7 @@ $$
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 ## **行动**
 
 -   观看第一周例会直播
@@ -226,6 +276,7 @@ $$
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## **行动**
@@ -401,6 +452,7 @@ Stripe最近也推出了针对AI代理的支付接口（Agentic Commerce Protoco
 
 
 
+
 ## **行动**
 
 1.  通读《web3实习手册》，对整体生态以及求职方向有了比较系统的理解
@@ -487,6 +539,7 @@ d律分析了具体的业务场景风险，包括发币融资、交易所运营�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -619,6 +672,7 @@ Gas 不仅仅是费用，它是去中心化网络能持续运行的经济保障�
 
 
 
+
 ## **行动**
 
 -   观看“Web3 行业全局介绍 & 岗位概览“直播
@@ -743,6 +797,7 @@ event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, addres
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
