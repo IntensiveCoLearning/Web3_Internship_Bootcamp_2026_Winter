@@ -16,8 +16,14 @@ I aim to build a long-term learning archive through consistent practice and publ
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+今天看了下上周周会的回放，收获还是蛮多的，大家从各个视角分享讨论的内容非常有意思有画面感，让我们看到了一些自己平时没看到的点和面，希望这样的分享可以经常有
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 在学习 Web3 安全相关内容后，我逐渐意识到，Web3 的最大风险并非技术本身，而是**用户对风险的低估**。私钥即资产，一旦泄露或误签恶意合约，几乎不存在追回的可能，这与传统金融“可冻结、可申诉”的机制完全不同。因此，Web3 安全首先是认知安全，而非工具安全。
 
 大量安全事故并非源于复杂攻击，而是钓鱼链接、假空投、授权滥用等基础问题，说明很多风险来自人为操作失误。通过学习我认识到，参与 Web3 必须建立最小权限原则，区分主钱包与交互钱包，谨慎授权和签名，并定期清理合约授权。只有在充分理解规则和风险的前提下参与，才能避免将“去中心化的自由”变成不可逆的损失。
@@ -25,6 +31,7 @@ I aim to build a long-term learning archive through consistent practice and publ
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 「3 个人 + 3 个信封」的故事
 
@@ -109,6 +116,7 @@ I aim to build a long-term learning archive through consistent practice and publ
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 通过对 Web3 合规问题的学习，我逐渐认识到，监管所限制的并非区块链技术本身，而是失控的金融行为。中国内地明确禁止 ICO、虚拟货币交易所和挖矿，本质上是为了防范非法融资、金融风险扩散以及资源错配。这让我意识到，Web3 不能简单等同于炒币或投机，而应回归技术和应用层面。
 
 合规并不意味着创新受阻，而是要求创新具备边界和责任。真正可持续的 Web3 形态，应集中在底层技术、数据分析、数字身份、协作工具等非金融或弱金融领域，而不是绕开监管进行资本运作。对个人而言，这次学习促使我调整方向，从追逐短期机会转向积累长期可迁移的能力，以更加理性、现实的视角看待 Web3 的发展路径。
@@ -116,6 +124,7 @@ I aim to build a long-term learning archive through consistent practice and publ
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -134,6 +143,7 @@ I aim to build a long-term learning archive through consistent practice and publ
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
