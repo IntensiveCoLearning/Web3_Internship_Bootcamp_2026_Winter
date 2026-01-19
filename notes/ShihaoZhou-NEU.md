@@ -50,13 +50,14 @@ Web3 实习计划 2025 冬季实习生
 
 -   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
     
--   [\[GitHub repository\]](https://github.com/ShihaoZhou-NEU/Solidity_Learning)
+-   \[\[GitHub repository\]\]([https://github.com/ShihaoZhou-NEU/Solidity\_Learning](https://github.com/ShihaoZhou-NEU/Solidity_Learning))
     
-    -   3 Lessons
+    -   ✅️3 Lessons
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 # 学习计划
@@ -357,6 +358,7 @@ EL + CL +Engine API
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -666,6 +668,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1001,6 +1004,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1080,6 +1084,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1330,6 +1335,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -1506,6 +1512,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
