@@ -15,19 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+contract A{
+    event Received(address Sender, uint Value);
+    receive() external payable { 
+        emit Received(msg.sender,msg.value);
+    }
+}
+
+contract B{   //接收ETH合约
+    event Log(uint amount,uint gas);
+    receive() external payable{
+        emit Log(msg.value,gasleft());
+    }
+    function getBalance() view public returns(uint){
+        return address(this).balance;
+    }
+}
+
+contract C{     //发送ETH合约
+    constructor() payable{}
+    receive() external payable{}
+    function transferETH(address payable _to,uint256 amount)external payable{
+        _to.transfer(amount);
+    }
+
+    error CallFailed();
+    function callETH(address payable _to,uint256 amount)external payable{
+        (bool success,)=_to.call{value:amount}("");
+        if(!success){
+            revert CallFailed();
+        }
+    }
+}
+
+contract D {
+    uint256 private _x = 0; // 状态变量x
+    // 收到eth的事件，记录amount和gas
+    event Log(uint amount, uint gas);
+    
+    fallback() external payable{}
+
+    // 返回合约ETH余额
+    function getBalance() view public returns(uint) {
+        return address(this).balance;
+    }
+
+    // 可以调整状态变量_x的函数，并且可以往合约转ETH (payable)
+    function setX(uint256 x) external payable{
+        _x = x;
+        // 如果转入ETH，则释放Log事件
+        if(msg.value > 0){
+            emit Log(msg.value, gasleft());
+        }
+    }
+
+    // 读取x
+    function getX() external view returns(uint x){
+        x = _x;
+    }
+}
+
+contract E{   //call：目标合约地址.call(字节码);
+    
+}
+
+```
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天是第一周的最后一日，我对一周进行了总结：
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 今日听取了ETH Panda与V神的访谈，探讨了100年后人类数字社会的发展形态
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -39,6 +114,7 @@ up up up！！！！
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -121,6 +197,7 @@ o 它目前是一个 SDK/开发框架，帮助开发者快速构建具备 Web3 �
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -228,6 +305,7 @@ contract test {
 
 
 
+
 今日继续阅读web3实习手册，参加了线上co-learning和Bruce老师的Web3运营原理分享
 
 俩会议中，co-learning探讨了DAO组织的治理，钱的影响是否违背了去中心化的初衷；晚上的分享会议上，Bruce老师介绍了web3的技术原理，我了解许多新名词如RPC，EIP，ERC，EVM。
@@ -261,6 +339,7 @@ contract MyRobot{
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
