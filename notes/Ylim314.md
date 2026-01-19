@@ -79,11 +79,12 @@ Alex 提出的 ERC-7962 核心在于将所有权映射改为 mapping(tokenId => 
 
 -   验证逻辑：不是存储 `address`，而是验证 `keccak256(abi.encodePacked(publicKey)) == storedKeyHash`。
     
--   安全防范：为了防止重放攻击（Replay Attack），ERC-7962 在签名结构中引入了 `per-keyHash nonce`。这与我们周一学的 EOA Nonce 机制异曲同工，但在应用层实现了更细粒度的控制。
+-   安全防范：为了防止重放攻击，ERC-7962 在签名结构中引入了 `per-keyHash nonce`。这与我们周一学的 EOA Nonce 机制异曲同工，但在应用层实现了更细粒度的控制。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 \# 1月18日工程日志：EVM 架构视角与战术预演 (Week 1 Day 7)
 
@@ -122,6 +123,7 @@ Aave 的存款凭证 (aToken) 可以被 Uniswap 交易，又可以作为 MakerDA
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 1月17日工程日志： ## 🎯 核心议题 \*\*From Scripting to Engineering.\*\* 放弃 JS/TS 驱动的 Hardhat 框架，全面迁移至以太坊基金会及 Paradigm 强推的 \*\*Foundry\*\* 工具链。 \*\*目标：\*\* 建立一套支持 Fuzzing（模糊测试）、Gas Snapshot（Gas 快照对比）及 Mainnet Forking（主网分叉模拟）的工业级开发环境。 --- ## 🛠️ 1. 技术选型：Why Foundry Over Hardhat? 1. \*\*测试反馈环 (Feedback Loop)\*\*：Foundry 基于 Rust 编写的 EVM，编译速度比 Hardhat (Node.js) 快 20-50 倍。在跑大型协议的集成测试时，这几分钟的差距决定了开发体验。 2. \*\*上下文统一 (Context Switching)\*\*：Hardhat 强迫开发者用 JS/TS 写测试逻辑（异步操作、BigNumber 处理极其痛苦）。Foundry 允许 \*\*Solidity-Native Testing\*\*，直接用 Solidity 写测试，测试代码本身就是合约逻辑的一部分。 3. \*\*高级测试原语\*\*：原生支持 \*\*Property-Based Testing (Fuzzing)\*\* 和 \*\*Invariant Testing\*\*，这是传统 Unit Test 无法覆盖的安全盲区。 --- ## ⚡ 2. 工程环境配置 (Infrastructure) ### 2.1 基础组件安装 跳过基础 curl 安装，重点配置 \`foundry.toml\` 以适配不同网络环境与优化器设置。 \`\`\`toml # foundry.toml 核心配置 \[profile.default\] src = 'src' out = 'out' libs = \['lib'\] op`imizer = tru`optimizer\_runs = 20000 #`针对生产环境的高频调用优`fs\_permissions = \[{ access = "read", path = "./"}\] # 允`读取本地文件，用于复杂脚`
@@ -240,6 +242,7 @@ Type: uint256
 
 
 
+
 **1月16日学习日志：**
 
 第一周的实习即将结束，今天的周会和复盘让我对“Web3工程师”这个职业有了全新的定义。如果说在学校是学习如何解题，那么这周的实战则是学习如何定义问题和构建规则。以下是本周的四维工程重构：
@@ -296,6 +299,7 @@ Type: uint256
 
 
 
+
 **1月15日学习日志：**
 
 经过前三天关于原理、安全与合规的高密度输入，今天我利用空档期对“AI x Crypto”这一核心赛道进行了底层逻辑的梳理，并为明天的分享会做了最后准备。
@@ -333,6 +337,7 @@ Type: uint256
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -383,6 +388,7 @@ Type: uint256
 
 
 
+
 **1月13日学习日志**
 
 今天的布老师主讲的Web3 运行原理分享会给出了大量具体的网络实运行数据，结合讲座内容与我的最近学习背景，对以太坊底层架构的几个关键风险点进行了如下梳理：
@@ -408,6 +414,7 @@ Type: uint256
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
