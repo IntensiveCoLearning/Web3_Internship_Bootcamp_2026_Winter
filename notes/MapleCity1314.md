@@ -15,8 +15,83 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+````markdown
+# 实际完成内容
+- 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
+- 梳理 `postMessage` 写入流程及长度校验的边界条件
+- 分析 `getMessage` / `getMessages` 的读取策略与分页限制
+
+# 技术细节
+
+**1 消息数据结构与存储方式**  
+用途：定义消息内容与作者信息，使用动态数组维护历史消息。  
+```solidity
+struct Message {
+    string text;
+    address author;
+    uint40 timestamp;
+}
+
+Message[] private messages;
+```
+
+**2 消息发布写入流程**  
+用途：限制消息长度与空消息，保证写入数据合规，并记录作者与时间戳。  
+```solidity
+function postMessage(string calldata text) external {
+    uint256 length = bytes(text).length;
+    require(length > 0, "Empty message");
+    require(length <= MAX_MESSAGE_LENGTH, "Message too long");
+
+    messages.push(
+        Message({text: text, author: msg.sender, timestamp: uint40(block.timestamp)})
+    );
+}
+```
+
+**3 单条消息读取与边界保护**  
+用途：确保读取索引合法，避免越界访问。  
+```solidity
+function getMessage(uint256 index) external view returns (string memory, address, uint40) {
+    require(index < messages.length, "Index out of bounds");
+    Message memory msgItem = messages[index];
+    return (msgItem.text, msgItem.author, msgItem.timestamp);
+}
+```
+
+**4 分页读取与限制策略**  
+用途：限制分页参数范围、避免过大返回，同时支持越界偏移安全返回空数组。  
+```solidity
+function getMessages(
+    uint256 offset,
+    uint256 limit
+) external view returns (string[] memory, address[] memory, uint40[] memory) {
+    uint256 total = messages.length;
+    if (offset >= total) {
+        return (new string[](0), new address[](0), new uint40[](0));
+    }
+    require(limit > 0, "Limit is zero");
+    require(limit <= MAX_PAGE_SIZE, "Limit too large");
+    ...
+}
+```
+
+# 遇到的问题
+- `getMessages` 对 `offset >= total` 的处理方式是直接返回空数组，而不是 revert，需在前端或调用方明确预期返回语义，避免误判为异常情况。
+
+# 收获与总结
+- 理解了该合约采用“写入严格校验、读取容错返回”的设计思路：写入路径强校验，读取路径对越界做安全返回。
+- 对消息类合约的分页读取策略有了更清晰认知，尤其是 `MAX_PAGE_SIZE` 与 `limit` 组合限制在防止滥用和优化 gas 的作用。
+````
+
+[https://github.com/MapleCity1314/0x-presto-memo/tree/main](https://github.com/MapleCity1314/0x-presto-memo/tree/main)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 **ERC-8004**是一个关于\*\*信任最小化代理人（Trustless Agent, TA）\*\*的标准，它提出了在以太坊或类似区块链网络中如何定义和实现去中心化代理人。这个标准主要用于为智能合约和区块链上的去中心化应用（dApp）提供可信的代理人架构。ERC-8004定义了如何通过去中心化的方式管理和操作信任最小化代理，确保代理人能够在没有第三方信任的情况下执行任务。
 
 ### **ERC-8004的关键目标**
@@ -162,6 +237,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -295,6 +371,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 \# 深度思考：Web3 + AI 的终局——隐私计算与无许可代理（Trustless Agents）
@@ -432,6 +509,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -839,6 +917,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -948,6 +1027,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1064,6 +1144,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
