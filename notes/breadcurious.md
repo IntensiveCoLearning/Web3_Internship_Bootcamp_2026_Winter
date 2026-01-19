@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+1.今天主要阅读了排版规则，标点、英文、中文、空格距离等规范，之前从没有想到排版的细节会有这了多，还需要多学习。
+
+2.Figma的海报文字编辑了一下，板式没改，在文字方面，发现自己figma还需要多下载一些字体，所以暂时海报和原始文件字体不太一致，会去下载更多字体。
+
+![实习计划 - Web3 行业全局介绍 & 岗位概览.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/breadcurious/images/2026-01-19-1768837987796-_____-_Web3______________.jpg)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 今天回顾第一周例会的同学分享，有好几个同学的每天知识点记录方式以及每日任务打卡非常值得学习，并且这些同学的分享给我很多鼓励。
 
 1.Figma中的Figma Jam做思维导图非常好用。
@@ -34,6 +44,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 今天去回顾了合规安全的分享会视频
 
@@ -56,6 +67,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 1.学习安全合规方面的知识，对于各种类型的钓鱼、木马等手段有了解，对MEME发行的各种币以及风险有大致的认识。
@@ -89,6 +101,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
