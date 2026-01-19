@@ -15,8 +15,60 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+**Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
+
+-   _ERC-721_
+    
+    -   经典NFT标准，定义了每个NFT的唯一性，只能mint/transfer/ownerOf
+        
+    -   没有approve机制，强调一次性key/key轮换
+        
+    -   ownerOf返回keyHash而不是地址
+        
+    -   NFT是基于ERC-721的实践
+        
+-   _ERC-7962_
+    
+    -   可扩展的NFT
+        
+    -   在ERC-721的基础上应用ZK原理保证了向第三方证明其归属，但不暴露真实地址
+        
+    -   **特点：**
+        
+        -   用KeyHash而不是address作为资产所有权标识
+            
+    -   **解决的关键问题：**
+        
+        -   隐私问题：避免地址可追踪
+            
+        -   UX问题：用户只需要签名表达意图
+            
+        -   扩展性问题：天然支持批量交易
+            
+    -   实际应用：在不暴露隐私的情况下进行数据交易
+        
+
+_What is zero knowledge?_
+
+-   不暴露细节的情况下，向第三方证明数据的某些特点
+    
+-   eg. Proof(X< Y) to proof X + Y = Z but no reverse
+    
+
+_Gas和交易模型_
+
+-   任何地址都可以提交交易
+    
+-   所有权只由签名控制
+    
+-   支持gas sponsorship/批量转账/replayer
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 **Agent跟web3的融合**
 
 _AI agent的结构_：the brain（LLM） --> the memory（RAG流程：抓取数据然后上下文存储） --> the tools(API调用）
@@ -62,6 +114,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 **web3安全**
 
 -   精准猎杀
@@ -91,6 +144,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 **web3运行原理**
@@ -143,6 +197,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **行业全局介绍&岗位预览**
 
 **_行业概览_**
@@ -187,6 +242,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
