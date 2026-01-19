@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+学习社区运营指南部分
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 web3社区运营的核心职责
 
 日常内容与社群维护。
@@ -29,6 +35,7 @@ web3社区运营的核心职责
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 熟悉difiLIma
 
 \\[Dune Analytics\\](https://dune.com/)[Etherscan](https://etherscan.io/)：
@@ -36,6 +43,7 @@ web3社区运营的核心职责
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 今天学习常见网络安全风险与攻击方式
@@ -57,6 +65,7 @@ web3社区运营的核心职责
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -84,6 +93,7 @@ web3社区运营的核心职责
 
 
 
+
 阅读以太坊概念和行业赛道概览。
 
 以太坊（Ethereum）是一个开源的去中心化区块链平台，通过其原生加密货币以太币（Ether，简称 ETH）提供去中心化的以太虚拟机（EVM）来处理点对点合约。
@@ -95,6 +105,7 @@ web3社区运营的核心职责
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
