@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+clock on
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 不同的链的账户，私钥，多个地址可以对应同一套助记词，这是web3钱包的运作原理。
 
 Defi：主要赛道为DEX,去中心化借贷。
@@ -49,11 +55,13 @@ DEPIN：Decentralized Physical Infrastructure Networks，去中心化物理基�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -113,6 +121,7 @@ IBC：Inter-Blockchain Communication Protocol，跨链通信协议。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -184,6 +193,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
