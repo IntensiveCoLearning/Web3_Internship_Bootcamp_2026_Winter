@@ -35,11 +35,12 @@ Web3 实习计划 2025 冬季实习生
 
 今天还把nft的任务做完了，明日继续加油
 
-![3376d8e30bc46416a00928672b5e623f.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-19-1768837011858-3376d8e30bc46416a00928672b5e623f.png)
+![3376d8e30bc46416a00928672b5e623f.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-19-1768837011858-3376d8e30bc46416a00928672b5e623f.png)![2b7500a8831abadbf4d9e43be12be7ea.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-19-1768837451578-2b7500a8831abadbf4d9e43be12be7ea.jpg)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 零知识证明
 
@@ -76,6 +77,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 第六章 共识机制与生态展望
@@ -187,6 +189,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -215,6 +218,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -305,6 +309,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -329,6 +334,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -374,6 +380,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
