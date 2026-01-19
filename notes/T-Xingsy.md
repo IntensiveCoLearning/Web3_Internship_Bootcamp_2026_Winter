@@ -16,8 +16,60 @@ web3素人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# 今日完成
+
+1.  **分享会 - 社区运营基础 & 活动策划与执行流程**
+    
+2.  **完成** [My first ZK vote](https://zkvote.0xtmp.xyz/)
+    
+
+## 零知识证明
+
+1.  传统链下投票
+    
+    -   依靠中心化服务器
+        
+    -   难以证明没有被篡改
+        
+    -   普通民众无法验证公平性
+        
+2.  传统区块链投票
+    
+    -   交易公开透明
+        
+    -   不可篡改
+        
+    -   投票记录与内容被关联到其他行为
+        
+3.  零知识证明（vk投票）
+    
+    -   其他人只能看到交易地址
+        
+    -   其他人无法观察到参与的提案以及投票选项
+        
+
+## 零知识证明投票原理
+
+-   浏览器本地生成identitysecret
+    
+-   根据identitysecret生成commitment
+    
+-   从合约获取Merkel树root
+    
+-   将commitment加入merkel树
+    
+-   根据私有输入和公开输入生成proof+nullifier
+    
+-   链上合约验证公开输入和proof是否匹配
+    
+-   nullifier证明没有重复投票
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 今日完成
 
 1.**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -47,6 +99,7 @@ web3素人
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 # **为什么以太坊的攻击成本是全网质押币的三分之一？**
 
@@ -96,6 +149,7 @@ _这涉及到以太坊的共识机制_
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 # 今日完成
 
 1.Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
@@ -107,6 +161,7 @@ _这涉及到以太坊的共识机制_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -181,6 +236,7 @@ _这涉及到以太坊的共识机制_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -272,6 +328,7 @@ _这涉及到以太坊的共识机制_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
