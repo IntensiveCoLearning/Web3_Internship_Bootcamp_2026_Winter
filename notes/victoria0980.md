@@ -15,8 +15,116 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# 0119 社群运营分享会
+
+## **搭建TG社群**
+
+### 基础设置
+
+edit 头像 组织名称 描述
+
+group type - private邀请才能进入/public定制化链接，都可以加入
+
+permissions - 设置能否更改profile
+
+admin - 权限：edit stories/change profile/ban users
+
+topic - 分区讨论：general/各类赛道
+
+### **TG数据面板**
+
+三个点 - group statistic - overview
+
+memeber数量 - posting member/viewing member/growth/
+
+什么方式进入joined/invies/left
+
+members primary language：群内语言使用
+
+text情况/内容形式
+
+top hours：什么时间触达概率更高
+
+### **常用机器人 rose设置**
+
+MissRose\_bot
+
+1.  1v1对话框设置
+    
+2.  需要确认是官方账号，因为入群要设置为admin，确保群内安全合规情况
+    
+3.  拉进群
+    
+4.  后期设置：
+    
+
+\-/start
+
+-   /help：blocklist：example
+    
+
+addblocklist：屏蔽什么词
+
+## **twitter space策划**
+
+准备 - 执行 - 复盘
+
+### 一 基础信息
+
+主题 - 针对人群 brainstorming
+
+问题库 - 针对话题提前准备问题库 提供给嘉宾
+
+时间 主持人 拟邀嘉宾
+
+### 二 邀请嘉宾
+
+邀请时，话术中一定要确保涉及到具体内容且精简，主题/时间/可能涉及的话题内容（问题库）
+
+信息收集basic：Name/Twitter Handle/Title/Hearshot头像 - 用于海报宣发
+
+### 三 宣发阶段
+
+海报+文案+Twitter Space链接
+
+包含内容：开始时间，主题，可能涉及主题，拟邀嘉宾信息，链接
+
+全渠道分发：社媒/社群同步，开始前2-3天开始预热
+
+twitter space创建： More - Create your space：title+时间（时区中国UC+8）
+
+### 四 宣发时间轴
+
+Pre2-3天：宣发预热 首次公告
+
+当天：第二波预热 reminder
+
+开始5-10分钟前：最后reminder，提醒大家加入
+
+### 五 其他
+
+创建群聊：相关人员+嘉宾老师 - 同步所有问题库+所有宣发海报及文案需要提前让嘉宾老师确认
+
+### 六 执行
+
+开场：介绍自己（背景）+嘉宾自我介绍（背景）+整个space背景介绍（本次内容）
+
+嘉宾问答：问题库
+
+观众互动提问
+
+### 七 复盘review
+
+数据回顾：首推推文浏览量，Space实时在线人数（买粉：折叠起来）+tune in（有多少人进来过space，但反复进入的数据也算），其他社媒数据
+
+可优化部分：宣发节奏/主持节奏
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 延续周末vibe，分析一下热点，这周叙事比较火热的infofi
 
 近期，从创作者晒马斯克给发的工资，何一下场喊话币安广场，CZbinance广场开直播，Infofi（社交化金融）赛道热度攀升。其核心逻辑很清晰：传统金融冰冷，社交充满粘性。将两者结合，是希望让用户的社交影响力、内容创作和社区活动能直接转化为可衡量的经济收益。
@@ -48,6 +156,7 @@ Kaito的历程清晰展现了Infofi赛道的核心考验：如何在理想（去
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今天是周六，简单放一下知识脉络性学习，周末进行一些一周热点review+个人分析。
 
@@ -126,6 +235,7 @@ BTC近期趋势分析：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 延续昨日学习脉络，更新如下：
@@ -641,6 +751,7 @@ RWA是加密经济与万亿美元传统资产的关键连接桥。它为DeFi带�
 
 
 
+
 将最近学习到的知识构建一个体系化的知识库
 
 ![Web3：新手入门.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/victoria0980/images/2026-01-15-1768472918608-Web3_____.png)
@@ -967,6 +1078,7 @@ RWA是加密经济与万亿美元传统资产的关键连接桥。它为DeFi带�
 
 
 
+
 # **Web3运行原理**
 
 **资产安全与钱包原理**
@@ -1143,6 +1255,7 @@ trust wallet - 供应链攻击/恶意软件植入
 
 
 
+
 1.  行业全局及岗位概览学习
     
     ![0113 行业岗位概述.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/victoria0980/images/2026-01-13-1768288371227-0113_______.png)
@@ -1251,6 +1364,7 @@ Web2 到 Web3 学习笔记：Intro
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
