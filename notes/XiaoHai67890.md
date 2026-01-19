@@ -15,14 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+co- learning  
+系统阅读了些vitalik写的一些文章，有意思的
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 答疑  
 周末愉快
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 周末愉快
 <!-- DAILY_CHECKIN_2026-01-17_END -->
@@ -31,11 +39,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天在旅行，据说错过了非常牛的分享会，等会放出来了，去好好学习一下
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -84,12 +94,14 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 co- learning  
 听布老师的分享会，重温基础知识
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
