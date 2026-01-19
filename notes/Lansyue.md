@@ -50,7 +50,6 @@ Telegram 支持话题，把一个群拆成多个“子板块”，对信息量�
     
 -   对长期不活跃的 topic，可以考虑关闭或合并，保持信息结构的“可读性”。
     
-
 -   可以参考成熟项目的做法：高优先级信息（公告、活动、重要更新）固定在少数几个话题里，方便快速浏览。
     
 
@@ -85,7 +84,6 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
     
 -   notes、filters 等扩展能力。
     
-
 -   管理员权限与 Rose 行为是绑定的：
     
     -   例如有“Change Group Info”的管理员可以通过 Rose 改设置、有“Delete Messages”的可以用删除/清理命令等。
@@ -209,9 +207,9 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
         
     -   所属机构/项目及职务；
         
-    -   头像（或允许使用的公开形象图）。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    -   头像（或允许使用的公开形象图）。
         
--   这些信息既用于海报，也用于文案中的 @ 标记，方便嘉宾以及其背后的机构账号转发，放大传播效果。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+-   这些信息既用于海报，也用于文案中的 @ 标记，方便嘉宾以及其背后的机构账号转发，放大传播效果。
     
 
 * * *
@@ -226,9 +224,9 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
         
     -   选择“创建 Space”，填入标题、话题标签；
         
-    -   通过日历/时间设置界面预约时间（注意时区，一般中国地区是 UTC+8）。\[[twoclassychics](https://twoclassychics.com/2024/05/how-to-start-a-twitter-space-a-step-by-step-guide/)\]​
+    -   通过日历/时间设置界面预约时间（注意时区，一般中国地区是 UTC+8）。
         
--   建议在 Space 开始前的 2–3 天就完成创建，并留出时间配合海报和文案做预热。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+-   建议在 Space 开始前的 2–3 天就完成创建，并留出时间配合海报和文案做预热。
     
 
 ## 2\. 宣发节奏与渠道
@@ -241,9 +239,9 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
         
     -   T-1 天：再次提醒，把文案精简一点，强调倒计时。
         
-    -   活动开始前 5–10 分钟：最后一波“马上开始”的提醒。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    -   活动开始前 5–10 分钟：最后一波“马上开始”的提醒。
         
--   渠道上不仅在 X 发，还可以同步到 Telegram 群、Discord、微信群等，保证目标人群尽可能都能看到。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
+-   渠道上不仅在 X 发，还可以同步到 Telegram 群、Discord、微信群等，保证目标人群尽可能都能看到。
     
 
 ## 3\. Space 当场执行要点
@@ -254,7 +252,7 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
         
     -   逐一请嘉宾自我介绍，给足个人品牌露出的空间；
         
-    -   简要说明这场 Space 的背景和将要覆盖的内容，让临时进来的人也能快速“对上频道”。\[[linkedin](https://www.linkedin.com/posts/vestpi_as-usual-we-have-summarily-compiled-the-activity-7415428100282540032-MIGc)\]​
+    -   简要说明这场 Space 的背景和将要覆盖的内容，让临时进来的人也能快速“对上频道”。
         
 -   中段问答：
     
@@ -277,24 +275,20 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
         
     -   Space 的实时在线人数峰值，这是判断“热度”最直接的指标；
         
-    -   总收听次数可以参考，但要注意其容易“虚高”：同一个人反复进出可能被计多次。\[[socialmediaexaminer](https://www.socialmediaexaminer.com/twitter-spaces-a-live-audio-guide-for-marketers/)\]​
+    -   总收听次数可以参考，但要注意其容易“虚高”：同一个人反复进出可能被计多次。
         
 -   Web3 项目在做 Space 时也要注意“买量”现象：
     
     -   有些账号会用机器人充人数，其中相当一部分听众头像会被折叠到列表里，而不是展示在主视图；
         
-    -   真正的质量信号，往往来自现场互动、后续讨论和有内容的转发，而不仅仅是一个好看的“总收听数”。\[[kubbco](https://www.kubbco.com/blog/twitter-spaces-the-ultimate-guide-to-hosting-engaging-conversations)\]​
+    -   真正的质量信号，往往来自现场互动、后续讨论和有内容的转发，而不仅仅是一个好看的“总收听数”。
         
--   总结时可以从主题匹配度、宣发到位程度、时间选择、嘉宾结构、技术与流程问题等维度，写出下次要保留和要改进的点，这样每办一次活动，自己的“活动运营手感”都会更扎实一些。\[[formo](https://formo.so/blog/how-to-build-a-web3-community-best-engagement-strategies)\]​
-    
-
-* * *
-
-如果你之后要把这份内容整理进自己的 Web3 实习/运营手册，可以在此基础上再加上你自己的实践例子，比如实际操作某个 Space 的时间线截图、数据截图和踩坑记录，会更贴近你个人的节奏。
+-   总结时可以从主题匹配度、宣发到位程度、时间选择、嘉宾结构、技术与流程问题等维度，写出下次要保留和要改进的点，这样每办一次活动，自己的“活动运营手感”都会更扎实一些。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # 分享会笔记
 
@@ -413,6 +407,7 @@ ERC‑7962 就是试图在这个缝里做一层「隐私友好的会员 / 资产
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ### LXDAO每周六上午有周会，新人想要加入 LXDAO 成为 Member 可以在明天的周会上做一个自我介绍
@@ -579,6 +574,7 @@ text
 
 
 
+
 # 难忘今宵，误闯天家
 
 周五分享会笔记：
@@ -633,6 +629,7 @@ Notion、Figma、思维导图基本成了标配：有人用 OKR 把自己当成�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -712,6 +709,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 
 
+
 # 今天一直在准备明天的考试，不过晚上的分享会内容非常干货，现先依据其他小伙伴的笔记做个总结，19号之后会全部补齐回放：
 
 ## web3安全分享会笔记
@@ -765,6 +763,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -827,6 +826,7 @@ Gas 被讲成“油费”这个比喻很形象：Gas price 像油价，Gas usage
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
