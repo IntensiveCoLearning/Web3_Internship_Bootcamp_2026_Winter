@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+_gm 真的不想笔记，明后还有三门，考完就学奥！_
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 GM,这两天期末考，21号考完 22号补作业
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 gm
 <!-- DAILY_CHECKIN_2026-01-17_END -->
@@ -30,11 +37,13 @@ gm
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天怎么说，备考期末考＋期末考，每天补上学习内容！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -47,11 +56,13 @@ _gm，不好意思，今天是期末日，给自己一天时间备考，考试�
 
 
 
+
 _gm 马上学习！_
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
