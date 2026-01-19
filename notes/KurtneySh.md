@@ -15,8 +15,52 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+1.  参加以太坊中文周会
+    
+2.  参加线上Co-Learning
+    
+
+思考问题：
+
+X402：是什么？尝试解决什么问题？解决了么？如何实现了Agent2Agent之间的付款
+
+是建立在 HTTP 402 状态码之上的支付协议；
+
+尝试解决 **AI 时代的支付问题**：
+
+传统支付系统不适合 AI 时代
+
+-   在微型支付里，手续费比支付金额还高
+    
+-   传统金融结算时间过长
+    
+-   需要账户、kyc等门槛
+    
+
+解决了吗？
+
+还在发展当中
+
+如何实现 Agent 到 Agent 的付款？
+
+核心流程：
+
+-   客户端请求资源 → 服务器返回 402 状态码和支付要求
+    
+-   客户端准备支付 → 创建签名的支付载荷（PaymentPayload）
+    
+-   附带支付重试 → 在 HTTP 请求头中包含 X-PAYMENT 头部
+    
+-   验证和结算 → 通过 Facilitator验证支付并在区块链上结算
+    
+-   授权访问 → 验证成功后服务器返回 200 OK 和请求的资源
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 1.  学习mpc钱包代码
     
 2.  参加Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 分享会
@@ -24,6 +68,7 @@ get hands dirty
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 初步梳理下周分享会主题提纲——初探以太坊账户抽象
 
@@ -66,6 +111,7 @@ get hands dirty
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 **学习：香港的数字金融实验：IPO上链能否成为下一个风口？**
 
 时代背景
@@ -81,6 +127,7 @@ get hands dirty
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -113,6 +160,7 @@ ERC-8004: 智能体的链上护照
 
 
 
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -136,6 +184,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
