@@ -15,8 +15,112 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## **一、什么是 Remix？**
+
+Remix 是一个基于 React 的全栈 Web 框架，强调：
+
+-   **服务器优先（Server-first）**：数据获取在服务端完成，提升 SEO 和性能。
+    
+-   **嵌套路由（Nested Routing）**：UI 与路由结构一致，支持并行加载数据。
+    
+-   **渐进增强（Progressive Enhancement）**：即使 JavaScript 被禁用，也能正常工作。
+    
+-   **内置数据加载/提交机制**：通过 `loader` 和 `action` 简化数据流。
+    
+
+## **二、环境配置**
+
+### **1\. 前提条件**
+
+-   Node.js ≥ 18.x（推荐使用 LTS 版本）
+    
+-   npm / yarn / pnpm（任选其一）
+    
+
+> 可通过 `node -v` 和 `npm -v` 检查版本。
+
+### **2\. 创建新项目**
+
+使用官方 CLI 快速创建：
+
+**bash**
+
+```
+npx create-remix@latest my-remix-app
+```
+
+然后按提示选择：
+
+-   **部署目标**（如：Remix App Server、Vercel、Netlify、Cloudflare 等）
+    
+-   **TypeScript 支持**（推荐开启）
+    
+-   **是否运行** `npm install`
+    
+
+例如选择本地开发（Remix App Server）：
+
+**bash**
+
+```
+Where do you want to deploy? → Remix App Server
+TypeScript or JavaScript? → TypeScript
+Do you want me to run `npm install`? → Yes
+```
+
+## **Telegram 社群运营要点**
+
+**1\. 基础搭建**
+
+-   创建群组 → 设置头像/名称/描述。
+    
+-   类型选择：**私密**（仅邀请） or **公开**（可搜索+链接）。
+    
+-   合理设置**成员权限**和**管理员角色**（如大使）。
+    
+
+**2\. 话题（Topic）管理**
+
+-   用 Topic 分类信息（如 #公告、#作业）。
+    
+-   不宜过多，定期关闭不活跃话题。
+    
+-   需更强分类？→ 推荐 **Discord**。
+    
+
+**3\. 数据统计（仅管理员可见）**
+
+-   路径：群组右上角 → “…” → “统计数据”
+    
+-   关注：
+    
+    -   成员增长趋势
+        
+    -   成员来源（链接 vs 自然）
+        
+    -   语言分布（决定是否需多语种管理员）
+        
+    -   活跃高峰时段（优化发布时间）
+        
+
+**4\. 机器人配置（以 Rose 为例）**
+
+-   添加官方 Rose 机器人 → **授予管理员权限**。
+    
+-   私聊输入 `/start` 开始配置。
+    
+-   常用命令：
+    
+    -   `/help`：查看帮助
+        
+    -   `/addblocklist 关键词`：自动屏蔽违规词
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 一周学习要点速览（2026-01-14 ～ 01-17）
 
 ### 核心思想主线：**AI × 公共物品 × 区块链**
@@ -150,6 +254,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -479,6 +584,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -836,6 +942,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1476,6 +1583,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -2014,6 +2122,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -2450,6 +2559,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
