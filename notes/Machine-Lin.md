@@ -47,7 +47,6 @@ function <函数名>(<参数列表>)
     
 -   <函数修饰符>：如 `onlyOwner` 等自定义逻辑控制
     
-
 -   **virtual/override：用于支持继承与函数重写**
     
 
@@ -67,10 +66,200 @@ contract VisibilityExample {
     function externalFunc() external pure returns(uint256) { return 4; }
 }
 ```
+
+可以理解为一般编程语言的作用域。
+
+## 3.函数状态修饰符
+
+用于指明函数是否修改或读取合约状态。
+
+```
+contract StateModifiers {
+    uint256 public count = 0;
+
+    // view: 只读函数，不修改状态
+    function getCount() public view returns(uint256) {
+        return count;
+    }
+
+    // pure: 纯函数，不读取也不修改状态
+    function add(uint256 a, uint256 b) public pure returns(uint256) {
+        return a + b;
+    }
+
+    // payable: 可接收以太币
+    function deposit() public payable {
+        // msg.value 是发送的以太币数量
+    }
+
+    // 默认：可修改状态
+    function increment() public {
+        count++;
+    }
+}
+```
+
+注释需要注意看看。
+
+## 4.函数参数和返回值
+
+Solidity 支持多参数与多返回值，以及命名返回值。
+
+```
+// 多个返回值
+function getPersonInfo() public pure returns(string memory name, uint256 age) {
+    name = "Alice";
+    age = 25;
+}
+
+// 命名返回值
+function calculate(uint256 a, uint256 b) public pure returns(uint256 sum, uint256 product) {
+    sum = a + b;
+    product = a * b;
+    // 自动返回命名变量
+}
+
+// 调用带多返回值的函数
+function callExample() public pure {
+    (string memory name, uint256 age) = getPersonInfo();
+    // 或者忽略某些返回值
+    (, uint256 productOnly) = calculate(5, 3);
+}
+```
+
+## 5.修饰符
+
+修饰符允许在函数执行前插入额外逻辑，常用于权限控制与前置检查。
+
+```
+contract ModifierExample {
+    address public owner;
+    bool public paused = false;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // 自定义修饰符
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not the owner");
+        _;  // 继续执行被修饰的函数
+    }
+
+    modifier whenNotPaused() {
+        require(!paused, "Contract is paused");
+        _;
+    }
+
+    function togglePause() public onlyOwner {
+        paused = !paused;
+    }
+
+    // 使用多个修饰符
+    function criticalFunction() public onlyOwner whenNotPaused {
+        // 函数逻辑
+    }
+}
+```
+
+## 6.**继承与函数重写**
+
+Solidity 支持单继承与多继承，子合约可重写父合约中的函数。
+
+```
+// 基础合约
+contract Animal {
+    string public name;
+
+    constructor(string memory _name) {
+        name = _name;
+    }
+
+    function speak() public virtual returns(string memory) {
+        return "Some sound";
+    }
+}
+
+// 继承合约
+contract Dog is Animal {
+    constructor(string memory _name) Animal(_name) {}
+
+    // 重写父类函数
+    function speak() public pure override returns(string memory) {
+        return "Woof!";
+    }
+}
+
+// 多重继承
+contract Pet is Animal {
+    address public owner;
+
+    constructor(string memory _name, address _owner) Animal(_name) {
+        owner = _owner;
+    }
+}
+
+contract Labrador is Dog, Pet {
+    constructor(string memory _name, address _owner)
+        Dog(_name)
+        Pet(_name, _owner) {}
+}
+```
+
+## 7.**接口与抽象合约**
+
+接口与抽象合约用于定义规范与继承框架。
+
+```
+// 接口定义
+interface IERC20 {
+    function transfer(address to, uint256 amount) external returns (bool);
+    function balanceOf(address account) external view returns (uint256);
+}
+
+// 抽象合约
+abstract contract AbstractToken {
+    string public name;
+
+    // 没有函数体的抽象函数，必须被子类使用 override 关键词重载实现
+    function totalSupply() public virtual returns (uint256);
+
+    // 有函数体实现的抽象函数，子类可以不使用 override 关键词重载直接继承已有的实现，也可以选择使用 override 关键词重载实现
+    function decimals() public view virtual returns (uint8) {
+        return 18;
+    }
+}
+```
+
+## 8.**事件机制**
+
+事件用于在链上记录重要状态变化，并可由外部监听器（如检索器或前端应用）捕捉。
+
+```
+contract EventExample {
+    // 定义事件
+    event Transfer(address indexed from, address indexed to, uint256 amount);
+    event Approval(address indexed owner, address indexed spender, uint256 amount);
+
+    mapping(address => uint256) public balances;
+
+    function transfer(address to, uint256 amount) public {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+
+        // 触发事件
+        // 可以在区块链浏览器查找到当前事件记录
+        emit Transfer(msg.sender, to, amount);
+    }
+}
+```
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # 一、Solidity智能合约编程
 
@@ -187,6 +376,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # 一、Dapp架构
@@ -348,6 +538,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -454,6 +645,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -523,6 +715,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -634,6 +827,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -855,6 +1049,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
