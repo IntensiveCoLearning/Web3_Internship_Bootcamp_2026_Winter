@@ -15,8 +15,35 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+# TODO
+
+1.  执行播客计划，合作组队，想出选题和方案
+    
+2.  阅览技术和运营的总体任务，了解这周大概需要学会什么
+    
+3.  回放和复习之前的会议，有关于密码学部分的专业内容补习
+    
+
+# **💡今日心得**
+
+已经完成了初步的建群组织工作，后续会慢慢推进选题和制作，很高兴的是对想做的东西，自己脑子里有一个很清晰的框架，所以觉得之后的推进应该也挺顺利的
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/JadeTwinkle/images/2026-01-19-1768837435014-image.png)
+
+因为我自己想要发展的方向是PM，所以我觉得并不局限于技术或者运营二选一，两边都会看一看自己能够做到什么程度
+
+甚至来说的话，我虽然做的是运营的事情比较多，但之后会花更多的重心在技术上
+
+运营感觉之前做过很多的相关工作了，也想尝试学点新东西
+
+也跟着教程完成了remix的初步尝试，好久没看代码了都不习惯哈哈哈哈哈
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # TODO
 
 1.  制作今天的播客——有关于web3安全和合规部分
@@ -28,6 +55,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今天依然是感想为主，没有学习太多的专业知识，但是进行了好几轮的头脑风暴
@@ -56,6 +84,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 
 
+
 今天做了很多杂七杂八的事情，没有特别规范的整理，就简单叙述一下：
 
 很神奇的就像是命运的推背感一样，就开始了投研相关的运营工作，还被赋予了leader的责任和任务，所以今天简要了解了一些有关于拆解投研笔记的流程，感觉慢慢开始学习一些金融相关的知识
@@ -71,6 +100,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -128,6 +158,7 @@ ENS 不止是收款地址，它还是跨平台的“通用账户”，在 Uniswa
 
 
 
+
 # 1\. 安全核心：从“精准猎杀”到“AI 降维打击”
 
 安全态势：2025 年安全事件超 1200 起，呈现出精准猎杀机构（如 Bybit 损失 15 亿美元）与广撒网诈骗并行的特点
@@ -157,6 +188,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -233,6 +265,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
