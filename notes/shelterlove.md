@@ -15,8 +15,356 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+## bytes 格式介绍
+
+### **1) 基本概念**
+
+-   `bytes`：动态字节数组。
+    
+-   `bytesN`：定长字节类型。
+    
+
+常见用法示例：
+
+-   `bytes32`：哈希（`keccak256`）、Merkle Root、ID、固定长度 key。
+    
+-   `bytes4`：函数选择器（function selector）。
+    
+-   `bytes1`：单字节标记、位运算场景。
+    
+
+补充：
+
+-   `bytes` 常用作 `abi.encode(...)` 的结果，也常见于 `calldata` 输入参数。
+    
+-   `string` 也是可变长度，约定为 UTF-8 编码的字节序列。
+    
+
+### **2) 转换规则**
+
+-   `bytesN` 之间可转换；常用 `bytes4`（从 hash（一般是 `bytes32`）截取）作为 selector。
+    
+-   大转小：删除右侧字节。
+    
+-   小转大：在右侧补零。
+    
+-   `bytes` 是数组，可单独访问某些字节。
+    
+
+### **3) 从** `bytes` **解释为具体类型（**`address` **/** `uint256` **/** `bytes32` **等）**
+
+常见有三种做法：
+
+1.  **标准做法：**`abi.decode`
+    
+    -   不能解码 `abi.encodePacked(...)` 的结果（packed 编码没有边界信息，很多情况下不可逆）。
+        
+2.  `assembly`**（内联汇编）**
+    
+
+`mload` 是 EVM 的一条**内存读取指令**（memory load）。在 Solidity 的 `assembly` 里，用它从 **memory** 的某个地址一次性读出 **32 字节（256 bit）**的数据。
+
+**基本定义**
+
+-   语法（Yul/assembly）：
+    
+
+```
+assembly {
+    let x := mload(ptr)
+}
+```
+
+-   含义：从内存地址 `ptr` 开始，读取 **32 字节**，返回一个 256 位整数（`uint256` 语义的 word）。
+    
+
+EVM 的内存按字节寻址，但 `mload` 总是“按 word（32 字节）”读。
+
+原因：EVM 的基本计算单位是 256-bit word：栈操作、算术、哈希、ABI 编码等几乎都围绕 32 字节对齐。
+
+`mload` **读到的是什么：与 Solidity memory 布局的关系**
+
+Solidity 中很多动态类型在 memory 的布局是：
+
+-   `bytes memory b` / `string memory s`
+    
+    -   `b` 指向一段内存
+        
+    -   **前 32 字节**是长度 `len`
+        
+    -   接下来才是数据内容（从 `b + 32` 开始）
+        
+
+因此常见写法：
+
+```
+bytes32 out;
+assembly {
+    out := mload(add(b, 32)) // 读 b 的数据区前 32 字节
+}
+```
+
+这里：
+
+-   `b` 指向“长度字段”的指针
+    
+-   `add(b, 32)` 跳过 length，指向数据起始处
+    
+
+**读不足 32 字节会怎样？**
+
+`mload` 永远读 32 字节；如果你实际上只关心其中一部分（比如 `address` 20 字节），就需要位移截取：
+
+```
+address a;
+assembly {
+    let word := mload(add(b, 32)) // 读 32 字节
+    a := shr(96, word)            // 右移 12 字节，取高 20 字节作为 address
+}
+```
+
+说明：
+
+-   `address` 是 20 字节（160 bit）
+    
+-   256 - 160 = 96，所以 `shr(96, word)` 常用来把 32 字节里对应部分对齐到低位
+    
+
+> 注意：截取“高 20 字节”还是“低 20 字节”取决于你数据在内存里的对齐方式；在解析 bytes/string 的场景中，上述写法是最常见且通常正确的。
+
+3.  **手工拼装（较复杂）**
+    
+
+**从** `bytes` **的第 0~19 字节拼出** `address`**（20 字节）**
+
+```
+function readAddressManual(bytes memory b, uint256 offset)
+    internal
+    pure
+    returns (address out)
+{
+    require(b.length >= offset + 20, "too short");
+
+    uint256 x;
+    for (uint256 i = 0; i < 20; i++) {
+        x = (x << 8) | uint8(b[offset + i]); // 逐字节左移拼装（大端）
+    }
+
+    out = address(uint160(x));
+}
+```
+
+* * *
+
+## 几个语法小 tips
+
+1.  `view` 代表只读；`pure` 不读也不改，但不代表不能运算（可以用临时变量、入参、常量做计算）。
+    
+
+```
+function doSomething() public view {
+    // Local variables are not saved to the blockchain.
+    uint256 i = 456;
+
+    // pure 函数做不了下面的
+    uint256 timestamp = block.timestamp; // Current block timestamp
+    address sender = msg.sender;         // address of the caller
+}
+```
+
+2.  `immutable` 可以在构造函数中赋值，不同部署的合约可以不同；`constant` 是常量，一直一样。
+    
+3.  状态变量的读取可以不经过发送交易：读取一些变量时不需要和钱包交互。
+    
+4.  单位：`1 ether = 10e18 wei = 10e9 gwei`。Solidity 中的 `1` 代表 `1 wei`，可以使用单位：`1 wei`、`1 gwei`、`1 ether`。
+    
+5.  Gas 的两个上限：`gas limit`（交易级）和 `block gas limit`（区块级）。为了防止无限消耗 gas，前者自己设置，后者是区块网络定义。
+    
+6.  逻辑结构示例：
+    
+
+```
+if (condition) {
+    // ...
+} else if (otherCondition) {
+    // ...
+} else {
+    // ...
+}
+
+for (uint256 i = 0; i < 10; i++) {
+    // ...
+}
+
+while (i < 10) {
+    i++;
+}
+```
+
+7.  `mapping` 可以嵌套：
+    
+
+```
+mapping(address => mapping(uint256 => bool)) public nested;
+
+// 访问
+nested[_addr][_i];
+
+// 删除
+delete nested[_addr1][_i];
+```
+
+8.  `array` 可以在新建的时候固定长度，也可以是动态长度：
+    
+
+```
+uint256[] public arr;
+uint256[] public arr2 = [1, 2, 3];
+uint256[10] public myFixedSizeArr;
+
+// 创建 memory array 只能固定长度
+uint256[] memory a = new uint256[](5);
+
+// push / pop / delete
+// arr.push(i) 新增元素 i
+// arr.pop()  删除最后一个元素
+// delete arr[index] 删除指定索引
+```
+
+9.  `enum`（useful to model choice and keep track of state），可以声明在合约外：
+    
+
+```
+enum Status {
+    Pending,
+    Shipped,
+    Accepted,
+    Rejected,
+    Canceled
+}
+
+Status public status;
+status = Status.Pending;
+```
+
+10.  user defined value type：有点难，之后再详细了解。
+     
+11.  `struct` 结构体：
+     
+
+```
+struct Todo {
+    string text;
+    bool completed;
+}
+
+Todo[] public todos;
+
+todos.push(Todo(_text, false));
+```
+
+12.  三个变量类别：
+     
+
+-   `storage`：会存储在链上的数据
+    
+-   `memory`：可读可写，临时内存
+    
+-   `calldata`：仅读，一般是外部调用时随交易携带的输入数据；尽量不要拷贝，`calldata[i]` 是直接取值，不会拷贝
+    
+
+13.  Cancun 升级后新增 **transient storage**
+     
+
+介于 `memory` 和 `storage` 之间：像 `storage` 一样是 key→value（32 字节槽），但只在**同一笔交易（transaction）内**有效，交易结束会自动清零。
+
+-   写入：`assembly { tstore(SLOT, 321) }`
+    
+    -   `SLOT` 是 `bytes32` 或 `uint256`，是存储槽，不会和 storage 冲突
+        
+-   读取：`assembly { v := tload(SLOT) }`
+    
+
+只要在同一笔交易，都能读到；案例给了一个防止重入攻击的方式，比 `storage` 更便宜。
+
+常规实现：
+
+```
+bool private locked;
+
+modifier lock() {
+    require(!locked);
+    locked = true;
+    _;
+    locked = false;
+}
+```
+
+`tstore` 实现：
+
+```
+bytes32 constant SLOT = 0;
+
+modifier lock() {
+    assembly {
+        if tload(SLOT) { revert(0, 0) }
+        tstore(SLOT, 1)
+    }
+    _;
+    assembly {
+        tstore(SLOT, 0)
+    }
+}
+```
+
+14.  `error`：`require` / `revert` / `assert`
+     
+
+```
+require(_i > 10, "Input must be greater than 10");
+
+if (_i <= 10) {
+    revert("Input must be greater than 10");
+}
+
+assert(_i > 10);
+```
+
+推荐使用 `if + revert + 自定义错误`：
+
+```
+error InsufficientBalance();
+error InsufficientBalance(uint256 available, uint256 required);
+
+if (bal < amount) {
+    revert InsufficientBalance(bal, amount); // 触发带参数的错误
+}
+```
+
+15.  `modifier` 修饰符：方便条件判断
+     
+
+```
+modifier onlyOwner() {
+    require(msg.sender == owner, "Not owner");
+    _;
+}
+
+function changeOwner(address _newOwner)
+    public
+    onlyOwner
+    validAddress(_newOwner)
+{
+    owner = _newOwner;
+}
+```
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 今日计划完成情况
 
 1.  完成speed run etheruem challenge 0
@@ -41,6 +389,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ## 学习任务完成情况
 
@@ -246,6 +595,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## 学习任务完成情况
@@ -498,6 +848,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## 今日学习任务完成情况
 
 1.  021学习以太坊第三章
@@ -537,6 +888,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -594,6 +946,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -694,6 +1047,7 @@ Q：NFT的价值来自什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
