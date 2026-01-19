@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+1.19note : 今天明天收拾东西回家了。。期末周考砸了。。。。
+
+ZK匿名投票：资格证明、不可篡改、公开透明（几乎无隐私）、自动执行
+
+实现了端到端可验证性，投票行为与地址绑定
+
+链上投票=公开交易+可独立复算
+
+心态有点崩溃了。。。容我缓缓，今天少记点
+
+区块头：父区块哈希，时间戳，Merkle root，与共识机制相关的字段
+
+区块体：交易（tx，rx，金额，gas，签名）
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 1.18 note
 
 NFT数字藏品：链上唯一
@@ -38,6 +56,7 @@ ZK:proof，证明无法反推，最终得到证明真值而不是value
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 1.17
 
@@ -64,6 +83,7 @@ DAG:有向无环图
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ```ini
@@ -95,6 +115,7 @@ RPC: Remote Procedure Call 远程过程调用 ， client 向节点中的服务�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -143,6 +164,7 @@ SpoonOS: AI operating system ; AI container ; AI marketplace
 
 
 
+
 期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
 
 今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
@@ -187,6 +209,7 @@ DEX交易：verified;问号或感叹号的token
 
 
 
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -206,6 +229,7 @@ DEX交易：verified;问号或感叹号的token
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
