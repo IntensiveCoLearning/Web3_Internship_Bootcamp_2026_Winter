@@ -20,8 +20,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+erc-7962更像是在以太坊现有的资产模型之上的一种增强功能，引入了keyhash和密钥轮换的机制，在不依赖地址的情况下实现资产所有权验证，增加隐私性和用户体验，不是基础的替代品，代价就是系统复杂度和gas成本的问题，更适合有明确需求的人群，其整体思想是去中心化和隐私优先的。  
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangboki/images/2026-01-19-1768833686014-image.png)
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## **Web3 行业法律合规回放笔记**
 
 1.**Mimicallin 案例**：通过社区操控币种价格，最后因发行方撤回流动性，导致被认定为诈骗。即便聘请顶级律师，最终仍判定为犯罪。  
@@ -49,6 +57,7 @@ KYC 和 KYT 是防范非法资金流动和洗钱的重要手段，是保证项�
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 # **web3运行原理回放笔记**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangboki/images/2026-01-14-1768405482754-image.png)
@@ -56,6 +65,7 @@ KYC 和 KYT 是防范非法资金流动和洗钱的重要手段，是保证项�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -90,6 +100,7 @@ ai很重要！！！！ai很重要！！！！ai很重要！！！！
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
