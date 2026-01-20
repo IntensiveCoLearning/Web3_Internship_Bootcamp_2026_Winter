@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## 狗狗币
+
+今天因为市里有足球比赛，没办法挤出太多时间去学习，因为在与同事聊天的过程中，发现他知道比特币，不知道以太坊，但知道狗狗币，这让我有点惊讶，原来加密货币中，除了比特币，狗狗币才是第二个火出圈外的加密货币，正如狗狗币宣言所讲述的那样，狗狗币是人民的加密货币
+
+于是也尝试报名活动实操，希望能让大家多了解狗狗币
+
+今天就当水文了，以下是狗狗币的宣言
+
+### The Dogecoin Manifesto
+
+We are Dogecoin, the accidental crypto-movement that makes people smile
+
+We are developing a currency for the people  
+and we strive to do only good everyday  
+Through this work we have come to value:
+
+Being **useful**, we value _utility_ over _technical brilliance_  
+Being **personable**, we value _individuals and interactions_ over _profit-driven economics_  
+Being **welcoming**, we value _collaboration and trust_ over _competition and exclusivity_  
+Being **reliable**, we value _working solutions_ over _speed of delivery_
+
+That is, while there is value in the items on  
+the right, we value the items on the left more
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # Web3 与 AI
 
 Web3 与 AI 这对组合，简直是王炸组合，第一次这么清晰地感受到人类好像在跨越奇点，尝试进化成“新人类”，科幻小说正在照进现实
@@ -75,6 +103,7 @@ AI 这么强大，我们自然会联想到 AI 滥用的问题，在传统网络�
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ## **《The Ethereum Cypherpunk Manifesto》随想 - 续篇**
 
 今天除了听了课，还去玩了下，没多少时间去学习，就去完善一下昨天的内容
@@ -126,6 +155,7 @@ AI 这么强大，我们自然会联想到 AI 滥用的问题，在传统网络�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ## 《以太坊密码朋克宣言》随想
 
 今天有点累，就没有继续学习理论和概念上的知识，但读到《以太坊密码朋克宣言》时备受启发，便开始胡思乱想
@@ -162,6 +192,7 @@ AI 这么强大，我们自然会联想到 AI 滥用的问题，在传统网络�
 
 
 
+
 ## Web3 合规
 
 之前对 Web3 在东大一直会有一个疑问，既然不支持，甚至违法，为什么那些交易所可以让中国人开户，币安甚至突破3亿用户，这些问题，围绕着合规相关的一些问题在今天都得到了一些解答，言论自由万岁
@@ -190,6 +221,7 @@ KOL 做交易所返佣注意会有成为公开开设赌场帮凶的风险
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -267,6 +299,7 @@ KOL 做交易所返佣注意会有成为公开开设赌场帮凶的风险
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -393,6 +426,7 @@ Base58Check 最终地址：1JQheacLPdM5ySCkrZkV66G2ApAXe1mqLj
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -543,6 +577,7 @@ Base58Check 最终地址：1JQheacLPdM5ySCkrZkV66G2ApAXe1mqLj
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
