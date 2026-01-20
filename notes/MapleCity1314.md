@@ -15,8 +15,269 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## Gas 优化
+
+> 本笔记用于记录在 Solidity / EVM 开发实习过程中，对 Gas 成本产生原因、常见优化技巧以及实战案例 的理解与总结。
+
+* * *
+
+## 一、Gas 原理理解与思考
+
+### 1\. 什么是 Gas
+
+-   **Gas** 是以太坊中衡量计算和存储资源消耗的计量单位
+    
+-   每一条 EVM 指令（opcode）都有固定或动态的 Gas 成本
+    
+-   用户实际支付费用：
+    
+
+```
+实际费用 = Gas Used × Gas Price
+
+```
+
+Gas 的存在目的是：
+
+-   防止无限计算（DoS）
+    
+-   激励矿工 / 验证者执行交易
+    
+-   让链上资源以“市场化”的方式被使用
+    
+
+* * *
+
+### 2\. Gas 主要消耗来源
+
+### （1）存储（Storage）
+
+-   `SSTORE`、`SLOAD` 是 **最昂贵** 的操作
+    
+-   写入 storage（尤其是从 `0 → 非0`）消耗极高
+    
+-   读取 storage 也远比内存昂贵
+    
+
+> 结论：减少 storage 读写是 Gas 优化的核心目标
+
+### （2）计算（Computation）
+
+-   算术运算、条件判断、函数调用
+    
+-   虽然单次便宜，但在循环中会被放大
+    
+
+### （3）内存（Memory）
+
+-   比 storage 便宜，但比 stack 贵
+    
+-   动态扩容 memory 会产生额外 Gas
+    
+
+### （4）调用与数据拷贝
+
+-   外部调用（`call` / `delegatecall`）
+    
+-   calldata ↔ memory 拷贝
+    
+
+* * *
+
+### 3\. Gas 优化的基本原则
+
+1.  **少用 storage，多用 memory / calldata**
+    
+2.  **减少写操作，合并写操作**
+    
+3.  **用计算换存储**（在合理范围内）
+    
+4.  **避免无意义的循环与重复计算**
+    
+5.  **写给 EVM 看的代码，而不仅是给人看**
+    
+
+* * *
+
+## 二、常见 Gas 优化技巧
+
+### 1\. 减少存储操作
+
+### （1）缓存 storage 到 memory
+
+```solidity
+uint256 temp = myStorageVar; // 只读一次 storage
+for (...) {
+    use(temp);
+}
+
+```
+
+避免在循环中多次读取同一个 storage 变量。
+
+### （2）合并写入
+
+```solidity
+// 不推荐
+count++;
+total++;
+
+// 推荐：一次性写回
+uint256 _count = count;
+uint256 _total = total;
+_count++;
+_total++;
+count = _count;
+total = _total;
+
+```
+
+* * *
+
+### 2\. 使用位压缩（Bit Packing）
+
+Solidity 的 storage slot 大小为 **32 字节**，可以在同一个 slot 中存放多个小类型变量。
+
+```solidity
+struct User {
+    uint128 balance;
+    uint64  lastLogin;
+    uint64  level;
+}
+
+```
+
+优势：
+
+-   多个变量共用一个 storage slot
+    
+-   减少 `SLOAD` / `SSTORE` 次数
+    
+
+注意：
+
+-   顺序很重要（从大到小排列）
+    
+-   只适合数据范围可控的场景
+    
+
+* * *
+
+### 3\. 循环优化
+
+### （1）缓存数组长度
+
+```solidity
+uint256 len = arr.length;
+for (uint256 i = 0; i < len; i++) {
+    ...
+}
+
+```
+
+避免每次循环都读取 `arr.length`。
+
+### （2）使用 `unchecked`
+
+```solidity
+unchecked {
+    i++;
+}
+
+```
+
+在明确不会溢出的情况下，跳过 Solidity 0.8+ 的溢出检查。
+
+### （3）避免链上大循环
+
+-   能 off-chain 处理的逻辑尽量 off-chain
+    
+-   使用分页、批量提交
+    
+
+* * *
+
+## 三、实战：链上留言板 Gas 优化
+
+### 1\. 需求描述
+
+-   用户可以在链上发布留言
+    
+-   支持查询历史留言
+    
+
+* * *
+
+### 2\. 优化前实现（存在问题）
+
+```solidity
+contract MessageBoard {
+    string[] public messages;
+
+    function leaveMessage(string memory msg) public {
+        messages.push(msg);
+    }
+}
+
+```
+
+### 存在的问题
+
+1.  `string` 是动态类型，存储成本高
+    
+2.  每条留言完整存入 storage
+    
+3.  无限制增长，长期 Gas 成本不可控
+    
+
+* * *
+
+### 3\. 优化后实现
+
+### 优化思路
+
+-   留言内容不上链，仅存 **hash / 简要信息**
+    
+-   使用 `event` 存储完整内容（便宜且可索引）
+    
+-   减少 storage 写入
+    
+
+### 优化后代码示例
+
+```solidity
+contract MessageBoardOptimized {
+    event Message(address indexed user, string content);
+
+    uint256 public messageCount;
+
+    function leaveMessage(string calldata msg) external {
+        emit Message(msg.sender, msg);
+        unchecked {
+            messageCount++;
+        }
+    }
+}
+
+```
+
+* * *
+
+### 4\. 优化效果总结
+
+| 对比项 | 优化前 | 优化后 |
+| --- | --- | --- |
+| Storage 写入 | 高（string 数组） | 极低（仅计数） |
+| 单次 Gas | 高 | 明显降低 |
+| 可扩展性 | 差 | 好 |
+| 可读性 | 一般 | 良好 |
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -91,6 +352,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 **ERC-8004**是一个关于\*\*信任最小化代理人（Trustless Agent, TA）\*\*的标准，它提出了在以太坊或类似区块链网络中如何定义和实现去中心化代理人。这个标准主要用于为智能合约和区块链上的去中心化应用（dApp）提供可信的代理人架构。ERC-8004定义了如何通过去中心化的方式管理和操作信任最小化代理，确保代理人能够在没有第三方信任的情况下执行任务。
 
@@ -238,6 +500,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -371,6 +634,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -509,6 +773,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -918,6 +1183,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1027,6 +1293,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1144,6 +1411,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
