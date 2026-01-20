@@ -33,18 +33,28 @@ timezone: UTC+8
     
 -   function的external比public更省gas，external可通过外部和this.xxxFunction()调用
     
+-   unchecked{} 在require保证安全的前提下，跳过溢出检查 节省Gas
+    
+-   require报错会更消耗gas相比revert
+    
 
 ## ERC-20代币合约
 
--   Transfer
+-   Transfer、Approval、mint
     
--   Aproval
+
+## ERC-721NFT合约
+
+## 去学习uniswap v3代码，aave代码
+
+-   理解它的安全设计
     
--   mint
+-   理解它的存储设计
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # 智能合约开发实操
@@ -103,6 +113,7 @@ timezone: UTC+8
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -131,6 +142,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -192,6 +204,7 @@ timezone: UTC+8
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -221,6 +234,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -309,6 +323,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -360,6 +375,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -440,6 +456,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
