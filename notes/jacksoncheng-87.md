@@ -15,8 +15,91 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+课上笔记
+
+## **一、EVM存储架构**
+
+**四大存储区：**
+
+-   **Storage**：永久存储，Gas消耗最高
+    
+-   **Memory**：临时存储，Gas消耗低
+    
+-   **Stack**：运算栈
+    
+-   **Code**：只读输入
+    
+
+**优化策略：**
+
+-   用uint8/uint16替代uint256节省空间
+    
+-   临时变量用Memory不用Storage
+    
+-   减少Storage读写次数
+    
+
+## **二、ERC-20代币合约**
+
+**账本系统设计：**
+
+-   balances映射：记录每个地址余额
+    
+-   allowances映射：记录授权额度
+    
+
+**必备功能实现：**
+
+-   **transfer()**：转账 = require验证 + 余额扣减/增加 + event广播
+    
+-   **approve()**：授权他人操作代币
+    
+-   **balanceOf()**：查询余额（view函数）
+    
+-   **mint()**：铸造新币（internal限制）
+    
+
+**关键技术点：**
+
+-   **require**：条件验证，失败自动回滚
+    
+-   **msg.sender**：获取调用者地址
+    
+-   **event**：链上事件通知
+    
+-   **函数修饰符**：
+    
+-   external/internal：控制调用权限
+    
+-   view/pure：控制状态修改
+    
+
+Remix基础学习部分：
+
+**Remix在线编辑器**：其中左侧的第四个 debugg图标 可以快速的让我们找到代码错误点
+
+在 Remix 的交互面板里，按钮的颜色代表了极重要的含义，计费逻辑：蓝色随便点，橙色要花钱，红色是打钱。
+
+| 按钮颜色 | 含义 | 专业术语 | 是否花钱(Gas)? | 是否需要确认? |
+| --- | --- | --- | --- | --- |
+| 蓝色 | 查 (只读) | view / pure | 免费 | 瞬间返回，不用等 |
+| 橙色 | 改 (写入) | Transaction | 付费 | 需要矿工打包，需要等 |
+| 红色 | 付 (转账) | payable | 付费+转账 | 既执行代码，又接收 ETH |
+
+记住常见的误区：
+
+-   重要的代码要复制保存到本地电脑，或者使用 Remix 里的 "Connect to [Localhost](http://Localhost)" 功能（进阶），避免刷新网址代码没了；
+    
+-   回到 Compiler 页面，看看有没有红色的错误提示。修好 bug 才能部署；
+    
+-   在 Environment 里，把 Remix VM 切换成 Injected Provider - MetaMask。这时 Remix 就会连接你浏览器里的小狐狸钱包，用你钱包里的真（测试）币来部署。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 **智能合约开发**
 
 **1\. DApp 整体架构与开发全流程**
@@ -204,6 +287,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -211,6 +295,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -285,6 +370,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -430,6 +516,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -714,6 +801,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -777,6 +865,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -931,6 +1020,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
