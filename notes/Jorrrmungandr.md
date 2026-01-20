@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天进一步学习了智能合约，体验了实习手册中给的leader board demo
+
+-   `constructor()` 为合约构造函数，仅在合约部署的那一刻执行一次
+    
+
+-   全局变量 `msg.sender` 是 Solidity 中最常用的全局变量，代表当前调用合约函数的钱包地址。
+    
+-   事件机制，使用 `event` 定义， `emit` 触发。前端页面（如 React/Vue）可以监听这些事件，当有人留言时自动刷新页面。
+    
+
+-   通过钱包或浏览器直接调用 `view` 函数时，完全不消耗 Gas。单数如果一个“写操作”函数在执行过程中调用了 `view` 函数，它仍然会作为整体交易的一部分消耗 Gas。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 今天学习了 Solidity 的基本用法和 Remix IDE 的基本操作  
 1、Solidity 中常见的数据类型和函数修饰符  
 2、仿照 demo 写了个简单的数据存储合约  
@@ -27,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 今天使用gemini3 pro体验了一下vibe coding，做了一个简单的nft minter  
 铸造nft主要分为两步：
@@ -44,6 +61,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今天参加了LXDAO的周会, 了解了LXDAO的使命愿景以及工作模式, 并学习了他们写的My First ZKVote教程(和My First NFT类似, 这种边学习边实践的模式我非常喜欢! 建议多来点)
@@ -80,6 +98,7 @@ ZK投票的过程是:
 
 
 
+
 今天主要实践了一下Wagmi框架
 
 Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户变化”、“错误处理”等逻辑封装成了方便调用的hooks，比如 useReadContract 类似于 useQuery，用于读取合约数据，并且同样具有缓存功能；还有 useWriteContract，类似 useMutation，需要用户手动触发签名交易。
@@ -89,6 +108,7 @@ Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -137,6 +157,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 
 
+
 计划：
 
 1、继续学习ethereum基本概念  
@@ -145,6 +166,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -164,6 +186,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
