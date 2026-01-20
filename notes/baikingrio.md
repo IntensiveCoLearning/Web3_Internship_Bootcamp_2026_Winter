@@ -15,8 +15,92 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## UniswapV2的协议费用
+
+V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
+
+### 1、协议费用的开关与接收地址
+
+-   由 **UniswapV2Factory** 合约控制。
+    
+-   关键变量：
+    
+    -   feeTo：协议费用接收地址（默认是 address(0)，即关闭状态）。
+        
+    -   feeToSetter：只有这个地址可以调用 setFeeTo(address) 来开启/修改接收地址。
+        
+-   当 feeTo != address(0) 时，协议费用机制开启（feeOn = true）。
+    
+
+### 2、为什么不直接在 swap 时收取？
+
+-   直接在每笔 swap 中扣除 0.05% 会显著增加 gas 成本（因为swap 是最频繁的操作）。
+    
+-   Uniswap V2 的巧妙设计：**把协议费用“延迟”到 mint / burn 时收取**，通过铸造额外的 LP Token 给 feeTo 来实现。
+    
+-   这样 swap 操作保持低 gas，而费用在流动性添加/移除（相对不频繁）时一次性结算。
+    
+
+### 3、核心计算逻辑：\_mintFee 函数
+
+协议费用在 Pair 合约的 mint() 和 burn() 函数中调用 \_mintFee() 来处理。
+
+核心代码（简化版）：
+
+```
+function _mintFee(uint112 _reserve0, uint112 _reserve1) private returns (bool feeOn) {
+    address feeTo = IUniswapV2Factory(factory).feeTo();
+    feeOn = feeTo != address(0);
+    uint _kLast = kLast;  // 上次更新时的 k 值（reserve0 * reserve1）
+
+    if (feeOn) {
+        if (_kLast != 0) {
+            uint rootK = Math.sqrt(uint(_reserve0).mul(_reserve1));          // 当前 √k
+            uint rootKLast = Math.sqrt(_kLast);                               // 上次 √k
+            if (rootK > rootKLast) {                                          // 有费用累积（k 增长了）
+                uint numerator = totalSupply.mul(rootK.sub(rootKLast));
+                uint denominator = rootK.mul(5).add(rootKLast);               // 关键：×5 + 上次
+                uint liquidity = numerator / denominator;                     // 要额外铸造的 LP 数量
+                if (liquidity > 0) _mint(feeTo, liquidity);                   // 铸造给 feeTo
+            }
+        }
+    } else if (_kLast != 0) {
+        kLast = 0;  // 关闭时清零
+    }
+}
+```
+
+-   **kLast**：记录上一次 mint/burn/sync 时（即流动性事件）的 k 值（reserve0 × reserve1）。
+    
+-   swap 发生时 k 会增长（因为 0.3% 费用被加到储备中），但 kLast 不变。
+    
+-   当有人再次 mint 或 burn 时，比较当前 √k 和 √kLast 的增长。
+    
+-   额外铸造的 LP 数量公式：
+    
+
+```
+liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
+```
+
+这个公式确保铸造的 LP 份额正好对应于累积费用的 1/6（即协议拿走累积费用的 1/6，LP 们分 5/6）。
+
+### 4、数学原理（为什么 ×5 + √kLast）
+
+-   假设费用累积导致 k 增长，增长部分全部来自 0.3% 交易费。
+    
+-   协议想拿走 1/6 的费用增长 → 相当于让协议拥有增长部分流动性的 1/6。
+    
+-   通过铸造新 LP Token 给 feeTo，稀释现有 LP，但精确控制稀释比例为 1/6。
+    
+-   推导后正好得到上述公式：分母是 5×当前√k + 上次√k，相当于把增长的 1/6 分配给协议，5/6 留给 LP。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## Swap 与价格预言机
 
 Uniswap V2 的核心功能之一是 Swap（代币交换），允许用户在流动性池中交换两种 ERC-20 代币，同时维护常量乘积公式（x \* y = k）。Swap 通过 Pair 合约实现，涉及费用计算、储备更新和事件触发。
@@ -140,6 +224,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -245,6 +330,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -279,6 +365,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -294,6 +381,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -332,6 +420,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -343,6 +432,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
