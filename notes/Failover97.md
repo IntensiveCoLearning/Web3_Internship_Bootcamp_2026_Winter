@@ -15,8 +15,44 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### **参数顺序错误**
+
+solidity不支持命名参数
+
+```jsx
+# Python 支持命名参数
+def transfer(to, amount, notify):
+    pass
+
+# 可以任意顺序，只要指定名字
+transfer(amount=100, notify=True, to="0x123...")  ✅
+transfer(notify=True, to="0x123...", amount=100)  ✅
+```
+
+所以solidity必须严格按照顺序传递参数
+
+### Oracle Manipulation Attacks(预言机操纵攻击）
+
+漏洞：盲目依赖单一数据源信息
+
+例一：闪电贷进行链上价格操作。通过大量买入（稀缺性）抬高单一货币价格，已虚高价格进行质押获利，大量以原价卖出归还闪电贷。
+
+```jsx
+攻击者可以对即将到账的资产 A 进行闪电贷，然后在相关的 Uniswap 资金池中，以大笔交易将资产 A 兑换成资产 B。
+这项交易将提高资产 B 的价格（需求增加），并降低资产 A 的成本（供给增加）。
+当资产 B 存入上述函数时，其价格仍然会被闪电贷推高。
+因此，资产 B 使攻击者获得了不成比例的股份数量。
+这些份额可以被提取，使攻击者从资产池中获得等量的 A 和 B 资产。
+重复这个过程会耗尽所有脆弱资金池中的资金。
+攻击者可以利用赎回股份所得的资金偿还闪电贷。
+```
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### Rag
 
 RAG（检索增强生成）—Retrieval-Augmented Generation
@@ -59,6 +95,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ## 工作原理
 
@@ -222,6 +259,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ### FrontRunning
@@ -405,6 +443,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -422,6 +461,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -656,6 +696,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -792,6 +833,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
