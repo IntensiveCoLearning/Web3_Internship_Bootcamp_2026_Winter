@@ -15,8 +15,251 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### **Solidity Walk Through 学习笔记**
+
+**日期**：2026-01-20  
+**实习主题**：Solidity 基础语法与智能合约开发（Web3 实习）  
+**目标**：掌握 Solidity 核心语法，理解智能合约工作原理，为后续开发打下基础。
+
+* * *
+
+**一、什么是 Solidity？**
+
+-   **定义**：Solidity 是以太坊（Ethereum）等区块链平台的 **智能合约专用编程语言**，用于编写可自动执行的去中心化应用（dApp）逻辑。
+    
+-   **为什么重要**：
+    
+    -   智能合约是区块链的核心，实现“代码即法律”（Code is Law）。
+        
+    -   应用场景：DeFi（去中心化金融）、NFT、DAO 等。
+        
+-   **关键特性**：
+    
+    -   面向对象（OOP）、静态类型（编译时检查类型）。
+        
+    -   与以太坊虚拟机（EVM）兼容，需编译为字节码部署。
+        
+    -   **版本注意**：当前主流为 `0.8.x`（推荐使用 `0.8.24+`，避免旧版本漏洞）。
+        
+
+> 💡 **实习提示**：Solidity 代码需在 **Remix IDE**（在线编译器）或 **Hardhat** 环境中测试，避免直接在主网部署！
+
+* * *
+
+**二、核心语法与关键概念**
+
+**1\. 合约结构（Contract Structure）**
+
+**solidity**
+
+编辑
+
+```
+// SPDX-License-Identifier: MIT  // 声明许可证（必须！）
+pragma solidity ^0.8.24;       // 指定编译器版本（^ 表示兼容 0.8.24+）
+
+// 合约定义：所有代码的根容器
+contract Counter {
+    // 状态变量（存储在区块链上，永久保存）
+    uint public count = 0;
+
+    // 函数：定义合约行为
+    function increment() public {
+        count += 1;
+    }
+
+    function decrement() public {
+        require(count > 0, "Count cannot be negative"); // 输入验证（安全必备！）
+        count -= 1;
+    }
+
+    // 事件（用于监听链上操作）
+    event CountUpdated(uint newCount);
+}
+```
+
+**2\. 关键变量类型**
+
+**表格**
+
+| 类型 | 说明 | 示例 |
+| --- | --- | --- |
+| uint | 无符号整数（常用） | uint public balance; |
+| string | 字符串 | string public name; |
+| bool | 布尔值 | bool public isActive; |
+| address | 以太坊地址（如钱包地址） | address public owner; |
+| mapping | 键值对（类似哈希表） | mapping(address => uint) public balances; |
+
+> ⚠️ **重要规则**：
+> 
+> -   所有变量默认为 `private`，需显式声明 `public` 才能外部访问（如 `count` 通过 `count()` 函数读取）。
+>     
+> -   `uint` 无负数，避免使用 `int`（易引发溢出漏洞）。
+>     
+
+**3\. 函数与安全机制**
+
+-   **函数修饰器（Modifiers）**：  
+    用于复用验证逻辑（如权限控制）。
+    
+    **solidity**
+    
+    编辑
+    
+    ```
+    modifier onlyOwner {
+        require(msg.sender == owner, "Not owner");
+        _; // 继续执行原函数
+    }
+    
+    function setOwner(address _newOwner) public onlyOwner {
+        owner = _newOwner;
+    }
+    ```
+    
+-   **输入验证**：
+    
+    -   必须用 `require()` 检查条件（如 `require(count > 0, "Invalid count")`），否则可能被攻击（如重入攻击）。
+        
+    -   **避免** `assert()`（仅用于内部逻辑错误，不用于输入验证）。
+        
+
+**4\. 事件（Events）**
+
+-   用于 **监听链上操作**（如前端触发通知）。
+    
+    **solidity**
+    
+    编辑
+    
+    ```
+    event CountIncremented(uint newCount);
+    
+    function increment() public {
+        count += 1;
+        emit CountIncremented(count); // 触发事件
+    }
+    ```
+    
+-   **作用**：比 `return` 更高效（节省 Gas 费用），适合 dApp 前端实时更新。
+    
+
+* * *
+
+**三、实战示例：计数器合约（Counter）**
+
+**目标**：实现一个可增/减的计数器，包含安全验证。  
+**代码**（可直接复制到 Remix IDE 测试）：
+
+**solidity**
+
+编辑
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+contract Counter {
+    uint public count = 0;
+    address public owner;
+
+    // 构造函数：合约部署时自动执行
+    constructor() {
+        owner = msg.sender; // 设置部署者为所有者
+    }
+
+    // 增加计数
+    function increment() public {
+        count += 1;
+        emit CountUpdated(count);
+    }
+
+    // 减少计数（需验证非负）
+    function decrement() public {
+        require(count > 0, "Count is already 0");
+        count -= 1;
+        emit CountUpdated(count);
+    }
+
+    // 事件：通知计数变化
+    event CountUpdated(uint newCount);
+}
+```
+
+**测试步骤**（Remix IDE）：
+
+1.  在 Remix 中新建文件 `Counter.sol`，粘贴代码。
+    
+2.  编译：选择 `Compiler` → `0.8.24` → `Compile Counter.sol`。
+    
+3.  部署：在 `Deploy & Run Transactions` 选项卡，点击 `Deploy`。
+    
+4.  调用函数：
+    
+    -   `increment()` → 计数变为 `1`
+        
+    -   `decrement()` → 计数变为 `0`
+        
+    -   再调用 `decrement()` → 触发 `require` 错误（显示“Count is already 0”）。
+        
+
+> ✅ **关键收获**：
+> 
+> -   `msg.sender`：获取调用者地址（安全控制基础）。
+>     
+> -   事件 `emit`：让 dApp 前端感知链上变化。
+>     
+
+* * *
+
+**四、常见错误与安全注意事项（实习生必看！）**
+
+**表格**
+
+| 错误类型 | 例子 | 如何避免 |
+| --- | --- | --- |
+| 整数溢出/下溢 | count -= 1 未检查 count > 0 | 用 require(count > 0, ...) |
+| 重入攻击 | 未用 reentrancyGuard 修饰器 | 用 OpenZeppelin 库（如 ReentrancyGuard） |
+| 未验证输入 | 直接赋值 address = _address | 用 require(_address != address(0), ...) |
+| Gas 费用过高 | 复杂循环（如 for 遍历大数组） | 用 mapping 或 array 优化 |
+
+> 🔐 **安全黄金法则**：
+> 
+> 1.  所有外部调用前加 `require` 验证。
+>     
+> 2.  优先使用 **OpenZeppelin 库**（已验证安全的合约模板）。
+>     
+> 3.  部署前用 **Slither** 或 **MythX** 工具扫描漏洞。
+>     
+
+* * *
+
+**五、学习资源推荐**
+
+**表格**
+
+| 资源类型 | 链接 | 用途 |
+| --- | --- | --- |
+| 官方文档 | soliditylang.org | 最新语法参考（必读！） |
+| 交互式教程 | CryptoZombies | 通过游戏学 Solidity |
+| 安全指南 | OpenZeppelin Docs | 学习安全合约模板 |
+| IDE 测试 | Remix IDE | 0 基础上手，无需本地环境 |
+
+* * *
+
+**六、总结与下一步**
+
+-   **核心要点**：  
+    ✅ Solidity 是智能合约的“语言”，需严格遵循安全规范。  
+    ✅ 状态变量 + 函数 + 事件 = 基础合约骨架。  
+    ✅ **安全 > 功能**：输入验证是生命线。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # **Web3社区运营与活动策划学习笔记**
 
 ## **一、学分管理重要通知（关键！）**
@@ -200,6 +443,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ## **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 —— Web3 实习学习笔记**
 
@@ -448,6 +692,7 @@ const keyHash = generateKeyHash(publicKey); // 生成代币 ID
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 Web3防钓鱼攻防练习学习笔记
 
 日期：2026年1月17日（星期六）
@@ -590,6 +835,7 @@ Web3安全 = 人 + 技术：
 
 
 
+
 **NFT铸造实操：My First NFT**
 
 **2024年最新流程（以Mintbase为例，免代码）**：
@@ -669,6 +915,7 @@ Web3安全 = 人 + 技术：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -787,6 +1034,7 @@ goplus token 插件
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -983,6 +1231,7 @@ Web3.0 ≠ 仅区块链技术，而是 **“用户拥有数据、去中心化治
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
