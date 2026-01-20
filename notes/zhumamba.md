@@ -15,8 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 今日计划list：
+
+1.  阅读Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-intern/)部分
+    
+2.  完成作业中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
+    
+3.  在 [My first ZK vote](https://zkvote.0xtmp.xyz/) 体验不同的投票方式
+    
+4.  良心杀相关内容的知识储备
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## 今日收获
 
 今天主要在 Figma 里完成了一张 Web3 活动海报的适配和修改，过程中踩了不少坑，但也系统性地补齐了几个非常关键的设计工具知识点。
@@ -47,6 +61,7 @@ timezone: UTC+8
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ## 今日计划
 
 -   安装figma
@@ -58,6 +73,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## **ERC-721 与 ERC-7962 区别**
@@ -201,6 +217,7 @@ timezone: UTC+8
 
 
 
+
 ### 今日学习心得
 
 今天主要围绕Web3招聘渠道和平台模式做了系统梳理，开始用“产品视角”而不是“求职者视角”去看招聘这件事，收获挺大的。
@@ -219,6 +236,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -271,6 +289,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -461,6 +480,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -700,6 +720,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1210,6 +1231,7 @@ DAO 是以太坊孕育的新型组织形态。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
