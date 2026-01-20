@@ -15,8 +15,254 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## 一、 EVM 与智能合约运行环境
+
+### 1\. EVM (Ethereum Virtual Machine) 本质
+
+-   EVM 是一个**栈式虚拟机 (Stack-based VM)**。
+    
+-   所有智能合约最终都会被编译成字节码（Bytecode）在 EVM 中运行。
+    
+-   理解 EVM 是进行合约优化和安全设计的前提。
+    
+
+### 2\. 四大执行区 (存储区)
+
+合约的性能（Gas）与安全性与数据存储位置密切相关：
+
+1.  **Stack (栈)**：
+    
+    -   指令和操作数按顺序入栈、出栈计算（如 $1+1$ 的过程）。
+        
+    -   空间有限，用于临时运算。
+        
+2.  **Storage (链上存储)**：
+    
+    -   **永久保存**合约状态的地方（相当于硬盘）。
+        
+    -   **Gas 成本最高**：写入和修改 Storage 是合约中最昂贵的操作。
+        
+    -   _优化核心_：减少 Storage 的读写规模。
+        
+3.  **Memory (运行时内存)**：
+    
+    -   生命周期仅限于一次函数调用期间（相当于 RAM）。
+        
+    -   临时数据，不上链，调用结束即销毁。
+        
+4.  **Calldata (调用数据)**：
+    
+    -   用户交互时传入的参数区域。
+        
+    -   **只读**，不可修改。
+        
+
+## 二、 Gas 成本与合约优化核心
+
+**核心原则**：**少存、少改**（针对 Storage）。
+
+-   **Gas 消耗量级参考**：
+    
+    -   初始化写入 Storage (SSTORE)：约 **20,000 Gas**。
+        
+    -   修改已有 Storage：约 **5,000 Gas**。
+        
+    -   相比之下，Memory 操作极其便宜。
+        
+-   **优化策略**：
+    
+    -   能用 Memory/Stack 解决的计算，不要读写 Storage。
+        
+    -   合理设计变量类型（如 `uint8` vs `uint256` 在打包存储时的区别）。
+        
+
+## 三、 Solidity 开发环境
+
+-   **工具**：**Remix IDE** (推荐初学者)。
+    
+    -   支持编译、部署、Debug。
+        
+    -   提供私有链环境（JavaScript VM），无需消耗真实 Gas，调试速度快。
+        
+-   **版本意识**：
+    
+    -   Solidity 版本更新快，不同版本（如 0.6.x vs 0.8.x）在安全机制（如溢出检查）上有巨大差异。
+        
+    -   课程基准版本：`^0.8.20`。
+        
+
+## 四、 Solidity 数据类型体系
+
+### 1\. 值类型 (Value Types)
+
+直接存储值，成本相对较低。
+
+-   **bool**: `true` / `false`。
+    
+-   **int / uint**: 有符号/无符号整数。
+    
+    -   支持位宽定制：`uint8` ~ `uint256`。
+        
+    -   _优化_：在结构体中，相邻的小位宽变量（如 uint64）可以打包在一个 Storage Slot 中节省 Gas。
+        
+-   **address**: 存储 EOA 或合约地址（20字节），自带类型校验。
+    
+-   **bytes32**: 定长字节数组，用于存储非地址类的哈希或定长数据。
+    
+
+### 2\. 引用类型 (Reference Types)
+
+存储的是引用指针，开辟新空间，成本较高。
+
+-   **string**: 字符串。
+    
+-   **Array**: 动态数组 (`bytes`, `bytes[]`, `uint[]`)。
+    
+-   **Mapping (映射)**:
+    
+    -   智能合约最常用的“账本”结构。
+        
+    -   不支持遍历，通过 Key 索引 Value。
+        
+
+## 五、 ERC20 合约核心实现
+
+### 1\. 核心存储数据 (State Variables)
+
+这些数据都需要存储在 Storage 中：
+
+```
+string public name;       // 代币名称
+string public symbol;     // 代币符号
+uint8 public decimals;    // 精度 (通常为18)
+uint256 public totalSupply; // 总供应量
+address public owner;     // 合约拥有者
+```
+
+### 2\. 账本结构 (Mappings)
+
+ERC20 的核心逻辑由两张“表”构成：
+
+1.  **余额账本**: 记录谁有多少钱。
+    
+    ```
+    mapping(address => uint256) public balances;
+    ```
+    
+2.  **授权账本**: 记录A授权给B能花多少钱。
+    
+    ```
+    // owner => spender => amount
+    mapping(address => mapping(address => uint256)) public allowance;
+    ```
+    
+
+### 3\. 构造函数 (Constructor)
+
+-   **时机**：仅在部署合约时执行一次。
+    
+-   **作用**：初始化链上状态（设置名称、符号、Owner、预铸造代币等）。
+    
+-   **代码逻辑**：`owner = msg.sender;`
+    
+
+## 六、 函数设计与逻辑
+
+### 1\. 函数可见性 (Visibility)
+
+-   **external**: 仅供外部调用（省 Gas，参数直接从 Calldata 读取）。
+    
+-   **public**: 内部外部均可调用。
+    
+-   **internal**: 仅合约内部及继承合约调用。
+    
+-   **private**: 仅当前合约内部调用。
+    
+
+### 2\. 状态修饰符
+
+-   **view**: **只读**。读取链上数据，不修改状态（不消耗 Gas）。
+    
+-   **pure**: **纯函数**。既不读也不改链上状态（仅进行逻辑计算）。
+    
+
+### 3\. 核心业务逻辑
+
+-   **Transfer (转账)**:
+    
+    1.  **校验 (**`require`**)**: 余额是否充足？转账金额 > 0？目标地址非零？
+        
+    2.  **更新状态**: 发送方余额 `-`，接收方余额 `+`。
+        
+    3.  **广播事件**: `emit Transfer(...)`。
+        
+-   **Approve (授权)**:
+    
+    1.  修改 `allowance` 映射。
+        
+    2.  用于 DeFi 交互（如 Uniswap 交易前需授权）。
+        
+-   **Mint (铸造)**:
+    
+    -   **安全模式**: 通常设计为 `internal` 函数，负责修改 `totalSupply` 和 `balances`。
+        
+    -   **对外接口**: 暴露一个带权限控制（如 `onlyOwner`）的 `external` 函数去调用内部 `mint`。
+        
+
+## 七、 事件 (Events) 与日志
+
+-   **定义**: `event Transfer(address indexed from, address indexed to, uint256 value);`
+    
+-   **作用**:
+    
+    -   **链下同步**: 主要是给前端、交易所、区块浏览器监听状态变化的。
+        
+    -   **索引 (**`indexed`**)**: 允许链下通过特定参数（如 from 或 to）快速检索日志。
+        
+    -   **成本**: 比存储 Storage 便宜，但不具备链上可访问性（合约无法读 Event）。
+        
+
+## 八、 错误处理与安全机制
+
+### 1\. 错误回滚
+
+-   **require(condition, "error message")**: 最常用。如果不满足条件，回滚交易并退还剩余 Gas。
+    
+-   **revert()**: 直接触发回滚，可配合 `if` 使用。自定义错误 (`error MyError()`) 比字符串报错更省 Gas。
+    
+-   **assert()**: 用于检查“逻辑上不可能发生”的内部错误。失败会消耗所有 Gas（注：新版本 Solidity 略有调整，但仍不建议用于常规检查）。
+    
+
+### 2\. 溢出检查 (Overflow/Underflow)
+
+-   **Solidity 0.8+**: **默认开启**溢出检查（如 `uint8 x = 255; x + 1` 会报错回滚）。
+    
+-   **unchecked { ... }**:
+    
+    -   如果在逻辑上确定不会溢出，可以用此代码块包裹运算。
+        
+    -   **目的**: 节省 Gas（省去了系统自带的检查指令）。
+        
+
+### 3\. 修饰符 (Modifier)
+
+-   **作用**: 抽象函数的前置检查逻辑（AOP 切面编程思想）。
+    
+-   **示例 (**`onlyOwner`**)**:
+    
+    ```
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _; //以此处为界，执行原函数体
+    }
+    ```
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # Web3 社区运营与活动策划学习笔记
 
 **主题**：社群搭建基础与线上活动策划实操 **核心工具**：Telegram (TG), Twitter Space, Rose Bot
@@ -209,6 +455,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ## 1\. 背景与动机 (Motivation)
 
 ### 现状痛点
@@ -317,6 +564,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # Solidity 学习笔记
@@ -523,6 +771,7 @@ contract MyContract {
 
 
 
+
 ## 一、 AI 的进化：从“嘴替”到“打工人”
 
 ### 1\. 2023 vs 2026 的 AI 范式转变
@@ -685,6 +934,7 @@ Spoon OS 提出的解决方案架构，旨在为机器经济打造操作系统�
 
 
 
+
 ## 一、 核心认知：中国大陆的“合规”现状
 
 1.  **合规即风控**：
@@ -832,6 +1082,7 @@ Spoon OS 提出的解决方案架构，旨在为机器经济打造操作系统�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1012,6 +1263,7 @@ Spoon OS 提出的解决方案架构，旨在为机器经济打造操作系统�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
