@@ -15,8 +15,266 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## 1\. 理解「链上留言」的合约代码
+
+以下是一段关于「链上留言」的智能合约代码。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0; // 指定 Solidity 编译器版本为 0.8.0
+
+contract MessageBoard {
+    
+    // （1）数据存储结构
+    // 保存所有人的留言记录
+    mapping(address => string[]) public messages; 
+
+    // （2）事件定义
+    // 留言事件，便于检索器和区块链浏览器追踪
+    event NewMessage(address indexed sender, string message);  
+
+    // （3）构造函数
+    // 在部署时留言一条欢迎词
+    constructor() {
+        string memory initMsg = "Hello ETH Pandas";
+        messages[msg.sender].push(initMsg);
+        emit NewMessage(msg.sender, initMsg);
+    } 
+
+    // （4）核心功能函数
+    // 发送一条留言
+    function leaveMessage(string memory _msg) public {
+        messages[msg.sender].push(_msg);     // 添加到发言记录
+        emit NewMessage(msg.sender, _msg);   // 发出事件
+    }
+
+    // 查询某人第 n 条留言（从 0 开始）
+    function getMessage(address user, uint256 index) public view returns (string memory) {
+        return messages[user][index];
+    }
+
+    // 查询某人一共发了多少条
+    function getMessageCount(address user) public view returns (uint256) {
+        return messages[user].length;
+    }
+}
+```
+
+对于以上代码，我们可以拆分开来进行理解。此前，让我们回顾一下——一个智能合约的基本结构通常由三部分组成：**状态变量、构造函数和函数**。
+
+### （1）数据存储结构部分
+
+```markdown
+// 保存所有人的留言记录
+mapping(address => string[]) public messages; 
+```
+
+`mapping` 是映射类型`mapping(address => string[])` 是数据存储结构`messages` 是状态变量——永久存储在区块链上。数据存储结构中的 `address => string[]` 将用户钱包地址映射到一个字符串数组， `address` 是用户的钱包地址，也就是以太坊地址 `string[]` 则是用户的留言，且由于是数组形式，因此可以有多条。外部的 `public` 则是指自动生成一个查询函数，外部可以据此读取数据。  
+  
+在此我们需要区分一下「数据存储结构」与「状态变量」之间的关系。「数据存储结构」指的是数据的组织方式，「状态变量」是变量本身。状态变量通过数据存储结构来定义其自身的类型。以 `messages` 和 `mapping(address => string[])` 之间为例 `message` 呈现出来的正是 `mapping(address => string[])` 所表达字符串组信息，比如 `“这是第一条留言”, “这是第二条留言”`。
+
+````markdown
+以下都是数据存储结构
+mapping(address => string[])   // 映射类型
+uint256                        // 无符号整数
+string                         // 字符串
+address                        // 地址类型
+string[]                       // 字符串数组
+struct User { ... }            // 结构体类型
+```
+````
+
+```markdown
+contract Example {
+    // 状态变量名: messages
+    // 数据类型: mapping(address => string[])
+    mapping(address => string[]) public messages;
+    
+    // 状态变量名: totalSupply
+    // 数据类型: uint256
+    uint256 public totalSupply;
+    
+    // 状态变量名: owner
+    // 数据类型: address
+    address public owner;
+}
+```
+
+### （2）事件定义部分
+
+```markdown
+// 留言事件，便于检索器和区块链浏览器追踪
+event NewMessage(address indexed sender, string message);  
+```
+
+看到这部分有一个 `event`，指的是事件。事件用于记录区块链上发生的重要操作，里面的 `indexed` 可以使之后的 `sender` 作为索引以进行快速检索。所以整个事件定义部分可以让 Dapp 的前端监听该事件以实时更新界面，区块链浏览器可以追踪谁发了什么留言，而且比直接读取存储便宜。事件定义部分就相当于区块链日志（logs）。
+
+### （3）构造函数部分
+
+```markdown
+// 在部署时留言一条欢迎词
+constructor() {
+    string memory initMsg = "Hello ETH Pandas";
+    messages[msg.sender].push(initMsg);
+    emit NewMessage(msg.sender, initMsg);
+} 
+```
+
+构造函数旨在合约部署时执行一次 `msg.sender` 是部署合约的人的地址，`emit` 用于触发事件通知，综合来看，这里的构造函数可以自动为部署合约的人留下一条欢迎消息「Hello ETH Pandas」。
+
+### （4）核心功能函数
+
+````markdown
+// 发送一条留言
+function leaveMessage(string memory _msg) 
+    public 
+{
+    messages[msg.sender].push(_msg);     // 添加到发言记录
+    emit NewMessage(msg.sender, _msg);   // 发出事件
+}
+
+// 查询某人第 n 条留言（从 0 开始）
+function getMessage(address user, uint256 index)
+    public 
+    view 
+    returns 
+    (string memory) 
+{
+    return messages[user][index];
+}
+
+// 查询某人一共发了多少条
+function getMessageCount(address user)
+    public
+    view
+    returns
+    (uint256)
+{
+    return messages[user].length;
+}
+```
+
+让我们再回顾以下 Solidity 中函数的标准声明格式。
+
+```Solidity
+function <函数名>(<参数列表>)
+    <可见性>
+    <状态可变性>
+    <修饰符列表>
+    <虚拟/重写关键字>
+    returns (<返回值列表>)
+{
+    // 函数体
+}
+````
+
+好，接下来则需要区分一下 Solidity 函数的类型，我们主要从「状态可变性修饰符」来进行分类，主要有四种，分别是无可变性修饰符`view`、 `pure` 和 `payable`。
+
+| 修饰符 | 是否读取状态 | 是否修改状态 | 是否接收 ETH | Gas 费用 |
+| --- | --- | --- | --- | --- |
+| 无修饰符（普通） | ✅ | ✅ | ❌ | 需要 |
+| view | ✅ | ❌ | ❌ | 免费* |
+| pure | ❌ | ❌ | ❌ | 免费* |
+| payable | ✅ | ✅ | ✅ | 需要 |
+
+\*免费是指本地调用时；如果通过交易调用仍需 Gas
+
+注意：智能合约不一定必须含有普通函数，从语法角度来看，一个合约只包含 `view` 或 `pure` 函数也是完全合法的。但从实用角度来看，只有 `view` 或 `pure` 函数的合约由于无法改变状态，因而没有实际价值。大多数有意义的合约都会有至少一个可以修改状态的函数。
+
+补充完相关知识后，可以对合约中具体的三个函数进行解释。
+
+```
+function leaveMessage(string memory _msg) 
+    public 
+{
+    messages[msg.sender].push(_msg);     // 添加到发言记录
+    emit NewMessage(msg.sender, _msg);   // 发出事件
+}
+```
+
+这个函数可以发送事件通知前端，`public` 意味着任何人都可以调用，`string memory` 意为参数临时存储在内存中，而非永久存储（便宜）——相对低，`storage` 则意为永久保存在区块链上（昂贵），`.push()` 是将新留言添加到该用户的留言数组末尾。
+
+```
+function getMessage(address user, uint256 index)
+    public 
+    view 
+    returns 
+    (string memory) 
+{
+    return messages[user][index];
+}
+```
+
+这个函数可用于查询指定留言，通过索引查询某用户的第 n 条留言，从 0 开始。里面的 `view` 意味着只读函数，不修改状态也不消耗 Gas。
+
+```
+function getMessageCount(address user)
+    public
+    view
+    returns
+    (uint256)
+{
+    return messages[user].length;
+}
+```
+
+这个函数可以查询用户总共发送了多少留言，配合上面的函数可以遍历所有留言。
+
+## **2\. 理解编译与部署信息**
+
+在 Remix IDE 中创建文件 `messageboard.sol` 中，将「链上留言」合约代码粘贴到其中，之后进行编译和部署，可以查看以下消息。
+
+-   `status` 指代交易状态码，1 = 成功，0 = 失败。此处为 1 表示合约已经成功部署并且执行。
+    
+-   `transaction hash` 指代交易哈希，它是我们发起的这笔交易在区块链上的唯一 ID，可以在区块链浏览器中查询这笔交易的所有细节。
+    
+-   `block hash` 指代区块哈希，是这一区块的唯一标识，`block number` 指这笔交易被打包进第 6 个区块——一个区块可以包含多笔交易。
+    
+-   `contract address` 指代合约地址，是这份合约在区块链上的永久地址，后面调用合约函数都需要用到该地址，是**最重要的信息之一**，如同合约的身份证。
+    
+-   `from` 后的字符是部署该合约的账户地址，我们在 Remix IDE 中进行测试部署的第一个账户，也是构造函数中 `msg.sender` 的值。
+    
+-   `to` 之后的字符则是表示调用了合约的构造函数——部署合约时总是调用构造函数。
+    
+-   `transaction cost` 是指部署的总费用，包括数据存储、计算等所有开销，是实际支付的 gas
+    
+-   `execution cost` 是执行费用，指实际执行智能合约逻辑的成本，`transaction cost` - `execution cost` 就是数据存储的开销。
+    
+-   `output` 输出的大量字节码是合约的编译后字节码，EVM 实际执行的机器码，也是 Solidity 代码编译之后的二进制表示。
+    
+-   由于构造函数没有参数，而且也没有返回值，因此 `decode input` 输入为空，`decode output` 输出为空。
+    
+-   `logs` 指事件日志，证明了此次构造函数成功执行，其中，`event: "NewMessage"` 触发了在构造函数中定义的 `NewMessage` 事件，`arg[0]` 指代部署者地址，`agr[1]` 指代留言内容。总的来说，这是构造函数里 `emit NewMessage(msg.sender, initMsg)` 的结果。
+    
+-   `raw logs` 指原始日志。
+    
+
+## **3\. 测试网与领取 Sepoia 代币**
+
+\> 以太坊测试网（Ethereum Testnets）是用于开发、测试和部署智能合约的网络环境，它们模拟主网功能但使用无价值的测试代币，让开发者可以安全地进行实验而无需承担真实的经济成本。
+
+第一周便听到测试网这个概念，同时也领取了 SepETH，但一直不清楚是什么。特别是 Sepolia，原来它和 Holesky 都是测试网的一种，两者的共识机制都是 Pos，前者特点是长期支持的主要测试网，与主网最相似，稳定性高，一般用于最终部署前测试，生产环境模拟，Dapp 集成测试。
+
+在将合约正式部署到 Sepoia 测试网前，让我们先领取一些测试币。关于测试币的领取，第一周在一个网站中已经领取过，并且学员们也会相互赠送一些，这次到 [https://sepolia-faucet.pk910.de/](https://sepolia-faucet.pk910.de/) 中领取。
+
+该网站也叫「水龙头」，领取测试币的过程则被称作「领水」，在该网站中输入自己的 Sepoia 测试地址，然后 start minting，水龙头就可以启动 Pow（Proof of Work）来开始挖矿，获得 SepETH。背后的运行规则是浏览器持续运行挖矿脚本，这需要消耗 CPU 算力，同时 SepETH 也会不断增加，等到一定量以后停止挖矿，便会获得相应量的测试币。一般来说，0.05 - 0.1 SpeETH 可以部署 1 - 2 个合约，0.2 - 0.5 SepETH 可以进行多次部署和交互，0.5 - 1 ETH 则可以用于长期开发了。
+
+根据我看到的信息，至少要挖到 0.05 SepETH 才可以领取，单次最多则只能领取 2.5。
+
+最后我领取了 0.503 个 SepETH。
+
+## **4\. 将合约部署到 Speoia 测试网**
+
+纯粹按照手册的指示，选择 `Injected Provider - MetaMask`，我无法成功部署。
+
+在 Remix IDE 里的部署部分连接钱包，我最后在 Enviroment 中的浏览器拓展选择 Sepolia 测试网，之后编译和部署，倒也能跑出反馈。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 \## Dapp
 
 \* 去中心化应用
@@ -252,6 +510,7 @@ returns (<返回值列表>)
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ## **补充梳理：图灵完备与智能合约**
 
 当朋友问起我什么是「以太坊」（Ethereum）时，我总会习惯性地通过其与「比特币」的对比来进行说明。但需要指出的是，这里的比特币并非简单地指「代币」（Token）——一种在去中心化的网络中用于给予维持网络运行的节点/网络服务提供商/「矿工」 的奖励/Gas Fee，如比特币、以太币等。
@@ -323,6 +582,7 @@ returns (<返回值列表>)
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ## **1\. LXDAO 周会**
 
 今天早上参加了 LXDAO 的周会，大致了解一下社区的运作模式和每周一会的内容。就社区的运作模式来说，和在实习手册中看到的描述相近，主要是由成员来提出提案，大家进行讨论和反馈，确认对社区有帮助便会支持一起做出来。在LXDAO 的 [notion](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9) 上可以见到其 Dashboard，根据不同主题分出了许多板块，包括教育、资金可持续性还有研究与机制创新等，里面还清晰地罗列着 Not started、In progress、Pending 和 Done 等状态的项目任务。接任务的方式有两种，一种是在周会现场举手加入，然后联系发起人；另一种是在路线图中找到任务并以详细计划进行申请。
@@ -372,6 +632,7 @@ returns (<返回值列表>)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -456,6 +717,7 @@ Leon 也是通过思维导图的方式来分享自己对 Web3 的学习。如果
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -621,6 +883,7 @@ AI 与 Web3 的结合—— AI 赚钱？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -906,6 +1169,7 @@ GoPlus 有相关网站可以检测风险。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1205,6 +1469,7 @@ wachi 助教补充了一段信息：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
