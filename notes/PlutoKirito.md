@@ -15,8 +15,124 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# Solidity：函数与数据存储位置
+
+## 一、 函数定义语法
+
+Solidity 函数的标准声明结构如下：
+
+Solidity
+
+```
+function <name>(<params>) {visibility} [mutability] [virtual|override] [<modifiers>] [returns (<types>)] {
+    <body>
+}
+```
+
+### 1\. 可见性说明符 (Visibility)
+
+| 修饰符 | 合约内部调用 | 继承合约调用 | 外部合约/钱包调用 | 说明 |
+| public | ✅ | ✅ | ✅ | 默认生成的 Getter 函数也是 public |
+| private | ✅ | ❌ | ❌ | 权限最严，子合约不可见 |
+| internal | ✅ | ✅ | ❌ | 状态变量的默认可见性 |
+| external | ⚠️ | ❌ | ✅ | 内部需通过 this.f() 调用，通常更省 Gas |
+
+### 2\. 状态修饰符 (State Mutability)
+
+决定函数对链上数据的读写权限，直接影响 **Gas 消耗**：
+
+-   **pure**：既不读取也不修改链上状态（如：纯数学计算）。
+    
+-   **view**：只读不写。可以读取状态变量，但不能修改。
+    
+-   **payable**：允许函数在调用时接收 ETH。
+    
+-   **(无修饰符)**：默认类型，可读可写，消耗 Gas。
+    
+
+> **Gas 贴士**：前端直接调用 `pure/view` 函数不消耗 Gas；但在合约内部被非 `pure/view` 函数调用时，仍会产生 Gas。
+
+* * *
+
+## 二、 深度解析：Pure vs. View
+
+### 1\. 什么是“修改链上状态”？
+
+只要执行以下操作，就必须支付 Gas，且不能标记为 `view/pure`：
+
+1.  修改状态变量；2. 释放事件 (emit)；3. 创建合约；4. 使用 `selfdestruct`；5. 发送 ETH；6. 调用任何非 `view/pure` 的函数。
+    
+
+### 2\. 状态变量 (Storage) 与 函数参数 (Memory)
+
+| 对比项 | 状态变量 (State Var) | 函数参数 (Params) |
+| 存储位置 | 区块链上 (Storage) | 内存/栈 (Memory/Stack) |
+| 生命周期 | 永久存在 | 仅函数执行期间 |
+| Pure 访问 | ❌ 不允许读取 | ✅ 允许读取 |
+
+**💡 密室类比**：
+
+-   **Pure 函数** = 密室里的计算器。
+    
+-   **状态变量** = 墙外的公告牌（密室看不见，所以不能用）。
+    
+-   **函数参数** = 你带进密室的小纸条（自己带的，随时可以用）。
+    
+
+* * *
+
+## 三、 继承修饰符 (Inheritance)
+
+-   **virtual**：父合约中的函数必须标有 `virtual` 才能被子合约重写。
+    
+-   **override**：子合约重写父合约函数时，必须使用 `override` 关键字。
+    
+
+* * *
+
+## 四、 三大内存结构 (Data Locations)
+
+在处理引用类型（数组、结构体、映射）时，必须明确指定位置。
+
+| 关键字 | 含义 | C 语言类比 | 修改原数据？ |
+| storage | 引用。指向链上永久存储的指针。 | int* p = &x | ✅ 会 |
+| memory | 复制。在内存中创建临时副本。 | memcpy() | ❌ 不会 |
+| calldata | 只读副本。外部参数专用，不可修改。 | const int* | ❌ 不允许改 |
+
+### 代码示例：指针 vs 副本
+
+Solidity
+
+```
+uint[] x = [1, 2, 3]; 
+
+function update() public {
+    // 情况 A：storage (引用)
+    uint[] storage xPtr = x; 
+    xPtr[0] = 100; // x 变为 [100, 2, 3]
+
+    // 情况 B：memory (复制)
+    uint[] memory xCopy = x; 
+    xCopy[1] = 200; // x 依然是 [100, 2, 3]，副本变了但原件没变
+}
+```
+
+* * *
+
+## 五、 总结与最佳实践
+
+1.  **优先使用** `external`：如果函数只被外部调用，`external` 比 `public` 更节省 Gas。
+    
+2.  **显式声明**：状态变量默认是 `internal`，但最好手动写出以增强代码可读性。
+    
+3.  **慎用** `storage`：在函数内部修改 `storage` 变量非常昂贵，如无必要，先在 `memory` 处理后再写回。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # ERC-7962：从公开所有权到隐私身份凭证
 
 ## 1\. 背景：ERC-721 的隐私困境
@@ -95,6 +211,7 @@ ERC-7962 不仅保护隐私，更彻底革新了用户体验，让 Web3 真正�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # Solidity 智能合约
 
@@ -216,6 +333,7 @@ contract MyContract {
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # ERC721 存储逻辑与 Gas 权衡 (Enumerable 深度解析)
 
 ## 一、 核心矛盾：Mapping 的“单向盲区”
@@ -290,6 +408,7 @@ mapping(uint256 => address) private \_owners;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -399,6 +518,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 一、 全球主流加密监管框架对比
 
 ### 1\. 欧盟：MiCA (最全、最具示范性)
@@ -504,6 +624,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 不点！不签！不装！不转！
 
 ## 一、 Web3 安全：攻防新态势
@@ -598,6 +719,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 
 
+
 ## 一、核心概念辨析
 
 -   **区块 (Block)**：实际存储交易数据和状态的“账本页”。
@@ -681,6 +803,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
