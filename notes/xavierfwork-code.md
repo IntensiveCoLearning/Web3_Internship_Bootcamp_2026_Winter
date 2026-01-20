@@ -20,10 +20,17 @@ timezone: UTC+8
 學習過程中：高度計劃並量化管理學習成果的方式 - OKR 方法
 
 學習來源：第一週例會 Howard
+
+OKR 可以適用非常短期、短線上的操作檢核
+
+並且可以透過多個孤劍數據指標去對其同一核心目標，核心目標可以是固定不變的
+
+同時 KR 的數量可以適度的去調整，具有相當高的靈活性，並且便於每日去做一個量化的檢核與復盤
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # ERC-7962
 
@@ -58,6 +65,7 @@ timezone: UTC+8
 
 
 
+
 RPC 远端程序呼叫
 
 Remote Procedure Call
@@ -81,6 +89,7 @@ Remote Procedure Call
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -120,6 +129,7 @@ Remote Procedure Call
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -217,6 +227,7 @@ Remote Procedure Call
 
 
 
+
 0114/0115 以準備後續 2 月底開始教課的相關內容簡報，並與身邊的小夥伴進行討論與試教
 
 -   DeFi 基本知識
@@ -238,6 +249,7 @@ Remote Procedure Call
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
