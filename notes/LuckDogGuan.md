@@ -16,13 +16,22 @@ base 厦门 俩年C++/C嵌入式工程师，INTJ,对web3/交易 感兴趣，希�
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天折腾了一下运营方面，使用ai写文章，ai生成图片。
+
+发布的平台是小红书，小红书账号直接没了本来开开心心的，后续看看转到推特发吧，国内账号限制太多了。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 完成基础技术的任务
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # ERC20到ERC721
 
@@ -33,11 +42,13 @@ base 厦门 俩年C++/C嵌入式工程师，INTJ,对web3/交易 感兴趣，希�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ![1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638306219-1.png)![2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638321868-2.png)![3.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638335930-3.png)![4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638349733-4.png)![5.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638362024-5.png)![6.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638378879-6.png)![7.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638393268-7.png)![9.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638419098-9.png)![10.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638435829-10.png)![11.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638446428-11.png)![12.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-17-1768638456431-12.png)
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -100,6 +111,7 @@ AI 在传统互联网中面临“信用危机”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -208,6 +220,7 @@ AI 在传统互联网中面临“信用危机”：
 
 
 
+
 # web3[Unphishable 钓鱼挑战](https://unphishable.io/)
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/LuckDogGuan/images/2026-01-14-1768369761218-image.png)
@@ -215,6 +228,7 @@ AI 在传统互联网中面临“信用危机”：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -232,6 +246,7 @@ Fund 发送，getFund接收
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
