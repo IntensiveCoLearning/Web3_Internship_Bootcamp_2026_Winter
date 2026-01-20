@@ -15,8 +15,61 @@ Web3 实习计划 2025 冬季实习生 哦耶
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1\. EVM 基础EVM 是以太坊智能合约的栈式虚拟机，所有合约以字节码在 EVM 中执行。理解 EVM 是掌握 Solidity 编写、优化与安全的前提。四大存储区：
+
+-   Stack：栈式计算模型（操作数入栈 → 计算出栈）
+    
+-   Storage：永久链上状态，gas 最贵（初始化 ≈20k gas，修改 ≈5k gas）
+    
+-   Memory：临时运行内存，一次调用结束即销毁
+    
+-   Calldata：只读调用数据区，用于函数参数
+    
+
+优化核心：尽量少读写 storage（少存、少改、避免不必要访问）。2. 开发环境推荐 Remix（在线编辑器）：内置私有链、编译、部署、debug，可直观查看 memory/storage 变化。  
+Solidity 版本敏感，教学以 0.8.20 为基准（^0.8.20 支持 0.8.20 及以上）。阅读源码时务必确认版本。3. 数据类型
+
+-   值类型（gas 较低）：bool、int/uint（建议用最小位宽，如 uint8）、address（带类型校验）、bytes32
+    
+-   引用类型（gas 较高，开辟新空间）：string、动态数组、bytes、mapping（常用于余额/授权账本）
+    
+
+4\. ERC20 核心设计链上存储：name, symbol, decimals, totalSupply, owner  
+两大账本：
+
+-   mapping(address => uint256) balances
+    
+-   mapping(address => mapping(address => uint256)) allowance
+    
+
+Constructor：部署时初始化（名称、符号、精度、owner = msg.sender、可 mint 初始代币）函数可见性：external / public / internal / private  
+状态修饰符：view（只读）、pure（不读不改）核心方法：
+
+-   totalSupply() / balanceOf() → view
+    
+-   transfer(to, amount) → 校验余额、非零地址 → 更新 balances → emit Transfer
+    
+-   approve(spender, amount) → 更新 allowance → emit Approval
+    
+
+事件：Transfer / Approval / Mint，用于链下监听（DEX 依赖事件而非频繁读 storage）Mint：通常设为 internal + external 权限函数封装5. 安全 & 优化要点
+
+-   错误处理：require（带信息）、revert（省 gas）、自定义 error、assert（少用）
+    
+-   unchecked：0.8+ 默认防溢出，确定安全时用 {} 节省 gas（初学慎用）
+    
+-   modifier：复用权限校验（如 onlyOwner、非重入）
+    
+-   重入攻击：EVM 单线程，但存在重入风险 → 用 nonReentrant modifier 防护
+    
+-   常见骗局：modifier 限制转出 / 抢跑 Bot（监听事件 + 高 gas 优先转走）
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 一、Telegram社群基础搭建要点
 
 1.  创建 → 设置头像/名称/简介 → 选择Private（推荐初期）或Public（可自定义链接）。
@@ -80,6 +133,7 @@ Web3 实习计划 2025 冬季实习生 哦耶
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持续发展。周会主要聚焦社区动态、项目进展和工作组更新。
 
 关键内容总结：
@@ -97,6 +151,7 @@ LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # Web3 运营与 KOL 合作学习笔记
@@ -120,6 +175,7 @@ LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -163,6 +219,7 @@ AI能力强但仍是“黑户”：身份不可验证、行为不可审计、支
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -247,6 +304,7 @@ AI能力强但仍是“黑户”：身份不可验证、行为不可审计、支
 
 
 
+
 1\. 安全第一原则
 
 私钥绝对不能截图、完整复制、全文发送或存储在易被监控的地方。剪贴板易被恶意软件窃取，建议分段复制+手动输入。涉及真金白银时，安全意识必须极度严格（曾有学员因授权泄露被黑客快速转走奖金）。
@@ -302,6 +360,7 @@ RPC仍存一定中心化风险（可自选或研究去中心化RPC方案）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
