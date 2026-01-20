@@ -81,7 +81,7 @@ Web3 实习计划 2025 冬季实习生
 
 首先可以打开TUN工具
 
-还不行的话，需要手动调一下端口：export http\_proxy="[http://127.0.0.1:7890”（端口号取决于vpn）](http://127.0.0.1:7890”（端口号取决于vpn）)  
+还不行的话，需要手动调一下端口：export http\_proxy="[http://127.0.0.1:7890”（端口号取决于vpn）](http://127.0.0.1:7890%E2%80%9D%EF%BC%88%E7%AB%AF%E5%8F%A3%E5%8F%B7%E5%8F%96%E5%86%B3%E4%BA%8Evpn%EF%BC%89)  
 然后再进行操作
 
 备注：env | grep -i proxy 可以check代理端口
@@ -94,8 +94,10 @@ Web3 实习计划 2025 冬季实习生
     
 -   cast: 命令行工具，用于与链上应用交互
     
+-   chisel：快速、实用且强大的REPL（read，eval，print，loop）
+    
 
-发现这几个工具的名字也很有意思。forge，是锻造的意思，相当于炼铁的过程；anvil是铁砧的意思，也就是用来放锻造物的平面块；cast是投掷的意思，很好理解了，就是炼出来的铁用上了！扔到链上去！
+发现这几个工具的名字也很有意思。forge，是锻造的意思，相当于炼铁的过程；anvil是铁砧的意思，也就是用来放锻造物的平面块；cast是投掷的意思，很好理解了，就是炼出来的铁用上了！扔到链上去！；chisel则是凿的意思，意味着可以最简单的方式进行工作
 
 foundry的文档要记一下，方便随时查阅命令：
 
@@ -112,6 +114,7 @@ foundry的文档要记一下，方便随时查阅命令：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 今天本来想开始技术向的学习的，毕竟之前也没接触过solidity，结果到现在（22:40）仍然没法开始……
 
@@ -156,6 +159,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 今天主要是提交了个pr，链接：[https://github.com/lxdao-official/myfirstnft-frontend/pull/20](https://github.com/lxdao-official/myfirstnft-frontend/pull/20)  
 关于myfirstnft网页的这个问题，我第一天也遇到了，但是当时没多想，觉得完成任务就行了。
 
@@ -170,6 +174,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -293,6 +298,7 @@ wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大�
 
 
 
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -328,6 +334,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -380,6 +387,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -554,6 +562,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
