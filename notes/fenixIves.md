@@ -15,8 +15,469 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# 11 ERC-20 代币标准
+
+## 一、ERC-20 标准概述
+
+ERC-20 是以太坊区块链上最常用的代币标准，由 Fabian Vogelsteller 于 2015 年提出，全称为 Ethereum Request for Comments 20。它定义了一套通用的接口规范，确保不同代币在以太坊生态中能够兼容、互操作，比如支持代币转账、查询余额、授权转账等核心功能，是当前 DeFi、NFT 生态及各类加密项目发行代币的基础。
+
+**核心价值**：统一接口让钱包、交易所、DApp 无需为每种代币单独开发适配逻辑，只需遵循 ERC-20 规范即可兼容所有符合标准的代币，大幅降低了代币发行与应用集成的成本。
+
+## 二、ERC-20 核心接口规范
+
+ERC-20 标准强制要求实现 6 个核心函数和 2 个事件，同时可扩展自定义功能（如 mint 铸币、burn 销毁）。以下是接口的详细解析：
+
+### （一）核心函数（必实现）
+
+以下为6个核心函数的独立代码块示例，均基于自定义ERC-20合约实现，包含完整逻辑与安全校验，可直接嵌入合约中使用：
+
+1.  **totalSupply() → uint256**功能：返回代币的总供应量，即已发行的代币总量（不包含未铸造或已销毁的部分）。特性：只读函数，无需消耗 Gas（除首次查询时的区块同步成本）。
+    
+
+```
+// 返回代币总供应量
+function totalSupply() public view returns (uint256) {
+ return _totalSupply;
+}
+```
+
+2.  **balanceOf(address \_owner) → uint256**功能：返回指定地址 `_owner` 所持有的代币余额。注意：以太坊地址本质是 20 字节的哈希值，函数需对传入地址做合法性校验（可选，增强安全性）。
+    
+
+```
+// 返回指定地址的代币余额
+function balanceOf(address _owner) public view returns (uint256) {
+ require(_owner != address(0), "ERC20: balance query for the zero address");
+ return _balances[_owner];
+}
+```
+
+3.  **transfer(address \_to, uint256 \_value) → bool**功能：从调用者地址（msg.sender）向目标地址 `_to` 转账 `_value` 数量的代币，返回转账是否成功。核心逻辑：需校验调用者余额是否充足、目标地址非零地址、转账数量非负，同时触发 Transfer 事件。
+    
+
+```
+// 从调用者地址向目标地址转账
+function transfer(address _to, uint256 _value) public returns (bool) {
+ address sender = msg.sender;
+ require(sender != address(0), "ERC20: transfer from the zero address");
+ require(_to != address(0), "ERC20: transfer to the zero address");
+ require(_value > 0, "ERC20: transfer value must be positive");
+
+ uint256 senderBalance = _balances[sender];
+ require(senderBalance >= _value, "ERC20: insufficient balance");
+ 
+ _balances[sender] = senderBalance - _value;
+ _balances[_to] += _value;
+
+ emit Transfer(sender, _to, _value);
+ return true;
+}
+```
+
+4.  **approve(address \_spender, uint256 \_value) → bool**功能：授权地址 `_spender` 可从调用者地址中划转最多 `_value` 数量的代币，返回授权是否成功。应用场景：适用于第三方代付场景（如交易所划转用户代币、DApp 自动扣取手续费），避免用户每次转账都手动触发交易。
+    
+
+```
+// 授权第三方地址划转代币
+function approve(address _spender, uint256 _value) public returns (bool) {
+ address owner = msg.sender;
+ require(owner != address(0), "ERC20: approve from the zero address");
+ require(_spender != address(0), "ERC20: approve to the zero address");
+
+ _allowances[owner][_spender] = _value;
+ emit Approval(owner, _spender, _value);
+ return true;
+}
+```
+
+5.  **allowance(address \_owner, address \_spender) → uint256**功能：返回地址 `_spender` 从 `_owner` 地址中可划转的剩余代币数量（即未使用的授权额度）。注意：授权额度可通过再次调用 approve 覆盖（存在重入风险，需谨慎处理）。
+    
+
+```
+// 查询第三方地址的剩余授权额度
+function allowance(address _owner, address _spender) public view returns (uint256) {
+ return _allowances[_owner][_spender];
+}
+```
+
+6.  **transferFrom(address \_from, address \_to, uint256 \_value) → bool**功能：由授权地址 `_spender` 从 `_from`地址向 `_to` 地址划转 `_value` 数量的代币，返回划转是否成功。核心逻辑：需校验 `_spender` 的授权额度是否充足、`_from` 余额是否充足，划转后同步扣减授权额度，触发 Transfer 事件。
+    
+
+```
+// 第三方地址从指定地址划转代币
+function transferFrom(
+ address _from,
+ address _to,
+ uint256 _value
+) public returns (bool) {
+ address spender = msg.sender;
+ require(_from != address(0), "ERC20: transfer from the zero address");
+ require(_to != address(0), "ERC20: transfer to the zero address");
+ require(_value > 0, "ERC20: transfer value must be positive");
+
+ uint256 currentAllowance = _allowances[_from][spender];
+ require(currentAllowance >= _value, "ERC20: insufficient allowance");
+ 
+ _allowances[_from][spender] = currentAllowance - _value;
+
+ uint256 fromBalance = _balances[_from];
+ require(fromBalance >= _value, "ERC20: insufficient balance");
+ _balances[_from] = fromBalance - _value;
+ _balances[_to] += _value;
+
+ emit Transfer(_from, _to, _value);
+ return true;
+}
+```
+
+### （二）核心事件（必触发）
+
+1.  **Transfer(address indexed \_from, address indexed \_to, uint256 \_value)**
+    
+
+触发时机：代币发生转账时（包括普通转账、transferFrom 划转、铸币 mint、销毁 burn）。
+
+说明：`indexed` 关键字用于索引参数，支持后续通过区块浏览器按地址查询转账记录（最多 3 个 indexed 参数）；铸币时 `_from` 设为地址 0（零地址），销毁时 `_to` 设为零地址。
+
+2.  **Approval(address indexed \_owner, address indexed \_spender, uint256 \_value)**
+    
+
+触发时机：调用 approve 函数授权或修改授权额度时。说明：记录授权关系的变更，方便追踪第三方地址的授权状态。
+
+## 三、完整 ERC-20 代币实现代码（Solidity）
+
+以下基于 Solidity 0.8.20 版本实现标准 ERC-20 代币，包含 mint（铸币）、burn（销毁）扩展功能，同时添加常见安全校验（如防溢出、零地址校验）。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/**
+ * @title ERC20 标准代币实现
+ * @dev 遵循 EIP-20 规范，包含铸币、销毁功能
+ */
+contract ERC20Token {
+    // 代币名称（可选，增强可读性）
+    string public name;
+    // 代币符号（可选，如 ETH、USDT）
+    string public symbol;
+    // 小数位数（可选，默认 18 位，与以太坊原生币一致）
+    uint8 public decimals;
+
+    // 存储每个地址的代币余额
+    mapping(address => uint256) private _balances;
+    // 存储授权关系：_allowances[所有者地址][授权地址] = 授权额度
+    mapping(address => mapping(address => uint256)) private _allowances;
+
+    // 代币总供应量
+    uint256 private _totalSupply;
+
+    // 构造函数：初始化代币基本信息
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        uint8 _decimals,
+        uint256 _initialSupply
+    ) {
+        name = _name;
+        symbol = _symbol;
+        decimals = _decimals;
+        // 初始化铸币：将初始供应量发放给合约部署者
+        _mint(msg.sender, _initialSupply * 10 **uint256(decimals));
+    }
+
+    // -------------------------- 核心接口实现 --------------------------
+    /**
+     * @dev 返回代币总供应量
+     */
+    function totalSupply() public view returns (uint256) {
+        return _totalSupply;
+    }
+
+    /**
+     * @dev 返回指定地址的代币余额
+     * @param _owner 待查询地址
+     */
+    function balanceOf(address _owner) public view returns (uint256) {
+        require(_owner != address(0), "ERC20: balance query for the zero address");
+        return _balances[_owner];
+    }
+
+    /**
+     * @dev 从调用者地址向目标地址转账
+     * @param _to 接收地址
+     * @param _value 转账数量（未乘以小数位数，需外部处理）
+     */
+    function transfer(address _to, uint256 _value) public returns (bool) {
+        address sender = msg.sender;
+        require(sender != address(0), "ERC20: transfer from the zero address");
+        require(_to != address(0), "ERC20: transfer to the zero address");
+        require(_value > 0, "ERC20: transfer value must be positive");
+
+        // 扣减发送者余额
+        uint256 senderBalance = _balances[sender];
+        require(senderBalance >= _value, "ERC20: insufficient balance");
+        _balances[sender] = senderBalance - _value;
+
+        // 增加接收者余额
+        _balances[_to] += _value;
+
+        // 触发转账事件
+        emit Transfer(sender, _to, _value);
+        return true;
+    }
+
+    /**
+     * @dev 授权第三方地址划转代币
+     * @param _spender 授权地址
+     * @param _value 授权额度
+     */
+    function approve(address _spender, uint256 _value) public returns (bool) {
+        address owner = msg.sender;
+        require(owner != address(0), "ERC20: approve from the zero address");
+        require(_spender != address(0), "ERC20: approve to the zero address");
+
+        // 覆盖原有授权额度
+        _allowances[owner][_spender] = _value;
+
+        // 触发授权事件
+        emit Approval(owner, _spender, _value);
+        return true;
+    }
+
+    /**
+     * @dev 查询第三方地址的剩余授权额度
+     * @param _owner 所有者地址
+     * @param _spender 授权地址
+     */
+    function allowance(address _owner, address _spender) public view returns (uint256) {
+        return _allowances[_owner][_spender];
+    }
+
+    /**
+     * @dev 第三方地址从指定地址划转代币
+     * @param _from 资金来源地址
+     * @param _to 接收地址
+     * @param _value 划转数量
+     */
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _value
+    ) public returns (bool) {
+        address spender = msg.sender;
+        require(_from != address(0), "ERC20: transfer from the zero address");
+        require(_to != address(0), "ERC20: transfer to the zero address");
+        require(_value > 0, "ERC20: transfer value must be positive");
+
+        // 校验授权额度
+        uint256 currentAllowance = _allowances[_from][spender];
+        require(currentAllowance >= _value, "ERC20: insufficient allowance");
+
+        // 扣减授权额度
+        _allowances[_from][spender] = currentAllowance - _value;
+
+        // 扣减来源地址余额
+        uint256 fromBalance = _balances[_from];
+        require(fromBalance >= _value, "ERC20: insufficient balance");
+        _balances[_from] = fromBalance - _value;
+
+        // 增加接收地址余额
+        _balances[_to] += _value;
+
+        // 触发转账事件
+        emit Transfer(_from, _to, _value);
+        return true;
+    }
+
+    // -------------------------- 扩展功能 --------------------------
+    /**
+     * @dev 铸币：增加总供应量，发放给指定地址（仅合约拥有者可调用，需扩展权限控制）
+     * @param _to 接收铸币的地址
+     * @param _value 铸币数量
+     */
+    function _mint(address _to, uint256 _value) internal {
+        require(_to != address(0), "ERC20: mint to the zero address");
+        require(_value > 0, "ERC20: mint value must be positive");
+
+        _totalSupply += _value;
+        _balances[_to] += _value;
+
+        // 铸币触发 Transfer 事件，from 为零地址
+        emit Transfer(address(0), _to, _value);
+    }
+
+    /**
+     * @dev 销毁：减少总供应量，从调用者地址扣除代币
+     * @param _value 销毁数量
+     */
+    function burn(uint256 _value) public {
+        address sender = msg.sender;
+        uint256 senderBalance = _balances[sender];
+        require(senderBalance >= _value, "ERC20: insufficient balance to burn");
+        require(_value > 0, "ERC20: burn value must be positive");
+
+        _balances[sender] = senderBalance - _value;
+        _totalSupply -= _value;
+
+        // 销毁触发 Transfer 事件，to 为零地址
+        emit Transfer(sender, address(0), _value);
+    }
+
+    // -------------------------- 事件定义 --------------------------
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+// 示例：部署一个名为 "MyToken" 的 ERC-20 代币
+contract MyToken is ERC20Token {
+    // 构造函数调用父合约构造函数，初始化参数
+    constructor() ERC20Token("MyToken", "MTK", 18, 1000000) {
+        // 可选：添加自定义逻辑（如给多地址分配初始代币）
+    }
+}
+```
+
+## 四、代码关键细节解析
+
+### （一）小数位数（decimals）
+
+decimals 表示代币的最小分割单位，默认 18 位（与以太坊 ETH 一致），即 1 个代币 = 10^18 个最小单位。例如：部署时传入初始供应量 1000000，实际总供应量为 1000000 \* 10^18，确保代币可精细分割，适配小额交易。
+
+注意：外部交互时（如转账、查询），需统一处理小数位数，避免因单位不一致导致金额错误。
+
+### （二）安全校验
+
+1.  零地址校验：禁止向零地址转账、铸币，避免代币永久锁定（零地址无私钥，资产无法找回）。
+    
+2.  余额/授权额度校验：确保转账、划转、销毁时金额充足，避免溢出（Solidity 0.8.x 版本自带溢出检查，低于该版本需使用 SafeMath 库）。
+    
+3.  权限控制：示例中 \_mint 为 internal 函数，仅合约内部可调用，实际项目中需添加 Ownable 权限控制（如 OpenZeppelin 的 Ownable 合约），限制仅所有者可铸币，防止恶意增发。
+    
+
+### （三）授权机制的潜在问题与解决方案
+
+**1\. 授权覆盖问题**：再次调用 approve 会直接覆盖原有授权额度，若第三方已使用部分额度，可能导致意外授权失效。
+
+解决方案：实现 `increaseAllowance` 和 `decreaseAllowance` 函数，增量修改授权额度，而非直接覆盖。示例代码如下：
+
+```
+// 增量增加授权额度
+function increaseAllowance(address _spender, uint256 _addedValue) public returns (bool) {
+    address owner = msg.sender;
+    _allowances[owner][_spender] += _addedValue;
+    emit Approval(owner, _spender, _allowances[owner][_spender]);
+    return true;
+}
+
+// 增量减少授权额度
+function decreaseAllowance(address _spender, uint256 _subtractedValue) public returns (bool) {
+    address owner = msg.sender;
+    uint256 currentAllowance = _allowances[owner][_spender];
+    require(currentAllowance >= _subtractedValue, "ERC20: allowance too low");
+    _allowances[owner][_spender] = currentAllowance - _subtractedValue;
+    emit Approval(owner, _spender, _allowances[owner][_spender]);
+    return true;
+}
+```
+
+**2\. 重入攻击风险**：transferFrom 函数中，若接收地址是合约且包含回调函数，可能存在重入攻击（反复调用 transferFrom 划转资产）。
+
+解决方案：遵循“ Checks-Effects-Interactions ”模式（先校验、再更新状态、最后交互），示例代码已符合该模式，无需额外处理；也可使用 ReentrancyGuard 库加固。
+
+## 五、ERC-20 代币的部署与测试
+
+### （一）部署环境
+
+可通过 Remix IDE（在线版：[https://remix.ethereum.org/）、Truffle、Hardhat](https://remix.ethereum.org/）、Truffle、Hardhat) 等工具部署合约，测试网推荐 Goerli、Sepolia，主网需支付 ETH 作为 Gas 费。
+
+### （二）测试流程
+
+1.  部署 MyToken 合约，确认名称、符号、总供应量等参数正确。
+    
+2.  调用 balanceOf 函数，查询部署者地址余额，应等于初始供应量。
+    
+3.  调用 transfer 函数，向其他地址转账，验证余额变化及 Transfer 事件触发。
+    
+4.  调用 approve 授权第三方地址，再通过 transferFrom 划转，验证授权额度扣减及转账结果。
+    
+5.  调用 burn 函数，销毁部分代币，验证总供应量及余额减少。
+    
+
+## 六、ERC-20 与其他代币标准的区别
+
+-   **ERC-721**：非同质化代币（NFT）标准，每个代币都是唯一的，无法分割，适用于数字藏品、游戏道具等；而 ERC-20 是同质化代币，可分割、可互换。
+    
+-   **ERC-1155**：多资产标准，支持同时发行同质化、非同质化代币，兼容 ERC-20 和 ERC-721 功能，适用于复杂游戏、资产管理场景。
+    
+-   **ERC-223**：在 ERC-20 基础上增加转账回调功能，解决向合约转账时的资产锁定问题，但兼容性不如 ERC-20 广泛。
+    
+
+## 七、开源库 OpenZeppelin
+
+**优先使用开源库**：推荐使用 **OpenZeppelin** 的 ERC20 实现（`@openzeppelin/contracts/token/ERC20/ERC20.sol`）
+
+经过安全审计，避免自定义实现带来的漏洞。 OpenZeppelin 核心知识补充OpenZeppelin 是以太坊生态最主流的安全智能合约开发框架，核心价值在于提供「可复用、经审计、标准化」的合约模块，开发者通过继承其合约，可直接复用大量成熟函数，无需从零开发，大幅提升效率与安全性。
+
+使用 **OpenZeppelin** 可复用海量函数，且覆盖多种场景需求，具体分为以下两类：
+
+-   1\. 基础核心函数复用（以 ERC20 为例）继承 OpenZeppelin 的 `ERC20` 合约后，可直接复用 ERC-20 标准强制要求的 6 个核心函数（`totalSupply`、`balanceOf`、`transfer`、`approve`、`allowance`、`transferFrom`），以及事件定义、小数位数（默认 18 位）、基础安全校验（零地址、溢出检查）等逻辑，无需手动编码实现。
+    
+-   2\. 扩展功能函数复用OpenZeppelin 提供丰富的扩展模块，可按需继承复用对应函数，常见包括：
+    
+
+`ERC20Burnable`：复用 `burn`（销毁自身代币）、`burnFrom`（销毁授权代币）函数，无需自定义销毁逻辑。
+
+`ERC20Pausable`：复用 `pause`、`unpause` 函数，可紧急暂停代币转账、授权等操作，应对安全风险。
+
+`ERC20Permit`：复用签名授权相关函数，支持离线签名授权，无需用户发起链上 approve 交易，优化交互体验。
+
+`Ownable`：复用 `owner`（查询所有者）、`transferOwnership`（转移所有权）函数，快速实现权限控制，如限制仅所有者铸币。
+
+-   3\. 复用优势与注意事项
+    
+
+**优势**：复用的函数均经过多次第三方安全审计，规避了自定义实现可能存在的重入、授权覆盖、溢出等漏洞；同时遵循行业标准，兼容性极强，可直接适配钱包、交易所、DApp 等生态组件。
+
+**注意事项**：需根据项目需求按需继承扩展模块，避免引入冗余功能导致 Gas 成本上升；使用时需指定正确的 OpenZeppelin 版本（如 `@openzeppelin/contracts@4.9.0`），确保函数兼容性与安全性。
+
+示例：基于 OpenZeppelin 复用函数的 ERC20 合约
+
+```
+// 引入 OpenZeppelin 核心与扩展合约
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+// 继承后直接复用 ERC20、ERC20Burnable、Ownable 的所有函数
+contract MyToken is ERC20, ERC20Burnable, Ownable {
+    // 构造函数仅需初始化名称、符号（小数位默认18位，可通过扩展修改）
+    constructor() ERC20("MyToken", "MTK") Ownable(msg.sender) {
+        // 复用 ERC20 内部铸币函数 _mint（仅所有者可调用，因继承 Ownable）
+        _mint(msg.sender, 1000000 * 10 ** decimals());
+    }
+
+    // 可选：自定义函数（基于复用函数扩展）
+    function mintTo(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount); // 复用 _mint 函数
+    }
+}
+```
+
+上述合约仅需少量代码，即可实现自定义合约的全部核心功能，且所有复用函数均具备工业级安全性。
+
+1.  安全审计：上线主网前必须进行专业安全审计，重点检查权限控制、溢出、重入、授权机制等风险点。
+    
+2.  Gas 优化：减少不必要的存储操作和校验逻辑，降低用户交互成本（如批量转账可优化为单次交易）。
+    
+3.  合规性：代币发行需符合当地法律法规，避免被认定为非法融资工具。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -313,6 +774,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # Solidity学习笔记
 
@@ -1414,6 +1876,7 @@ contract ExceptionExample {
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -1781,6 +2244,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -2107,6 +2571,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -2268,6 +2733,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2547,6 +3013,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2848,6 +3315,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -3076,6 +3544,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
