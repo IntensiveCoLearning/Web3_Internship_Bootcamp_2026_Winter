@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+學習過程中：高度計劃並量化管理學習成果的方式 - OKR 方法
+
+學習來源：第一週例會 Howard
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # ERC-7962
 
 在 ERC-721 的基礎應用上結合 ZK 技術，向第三方保證其歸屬，但不暴露其真實地址。
@@ -49,6 +57,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 RPC 远端程序呼叫
 
 Remote Procedure Call
@@ -72,6 +81,7 @@ Remote Procedure Call
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -110,6 +120,7 @@ Remote Procedure Call
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -205,6 +216,7 @@ Remote Procedure Call
 
 
 
+
 0114/0115 以準備後續 2 月底開始教課的相關內容簡報，並與身邊的小夥伴進行討論與試教
 
 -   DeFi 基本知識
@@ -226,6 +238,7 @@ Remote Procedure Call
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
