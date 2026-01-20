@@ -15,8 +15,40 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### 1\. 行业地位：无可撼动的生态统治力
+
+Solidity 是 EVM（以太坊虚拟机）的母语。尽管 Solana (Rust) 和 Move 生态（Aptos/Sui）在高性能领域发力，但 Solidity 的地位反而因为 **Layer 2 (L2)** 和 **zkEVM** 的普及而得到了巩固。
+
+-   **标准制定者：** 从 ERC-20 到 ERC-721，再到复杂的流动性挖矿逻辑，Solidity 拥有最成熟的合约库（如 OpenZeppelin）。
+    
+-   **跨链通用语言：** 几乎所有新兴的链（如 Base, Arbitrum, Scroll, 甚至最近升级支持 Solidity 的 Polkadot 2.0）都必须优先支持 EVM。学会了 Solidity，就意味着你掌握了通往 90% 以上 DeFi 锁仓价值（TVL）的钥匙。
+    
+
+### 2\. 技术设计：极简与极险的平衡
+
+Solidity 的设计深受 JavaScript 和 C++ 的影响，这导致了它具有明显的“两面性”：
+
+-   **优点（易学性）：** 语法直观，开发者可以快速从 Web2 转向 Web3。它采用了面向合约（Contract-oriented）的设计，非常符合金融业务的直觉。
+    
+-   **缺点（安全陷阱）：** 它的底层设计（如重入漏洞、整数溢出、Gas 限制等）对开发者极其不友好。在 Solidity 中，**每一行代码都可能涉及真金白银的损失。**
+    
+-   **改进：** 随着 0.8.x 版本的迭代，语言本身内置了溢出检查等安全机制，编译器变得越来越聪明。
+    
+
+### 3\. 工具链的进化：从“简陋”到“工业化”
+
+早期的 Solidity 开发者受困于 Remix 或 Truffle 等原始工具，但现在生态已发生了质变：
+
+-   **Foundry 的统治：** 现在的开发者大多使用 Foundry（基于 Rust 开发），它极大地提升了测试速度和调试效率。
+    
+-   **形式化验证：** 2026 年，通过 AI 辅助审计和形式化验证（Formal Verification）来检测 Solidity 代码逻辑漏洞已成为大厂标配，这弥补了语言本身的某些不安全性。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 今天完成一个项目，使用以下技术
 
 合约：Vyper  Snekmate  Moccasin  
@@ -32,6 +64,7 @@ Wallet: Metamask
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 -   **2026-01-17 ~ 01-18**
     
@@ -118,6 +151,7 @@ Wallet: Metamask
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今天事情比较多
 
 明天补笔记
@@ -125,6 +159,7 @@ Wallet: Metamask
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -263,6 +298,7 @@ Wallet: Metamask
 
 
 
+
 今天的分享会主题是Web3运行原理
 
 大部分之前学过，所以感觉没什么好记录的，都是很重要的基础知识
@@ -302,6 +338,7 @@ Wallet: Metamask
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
