@@ -49,10 +49,127 @@ Web3 实习计划 2025 冬季实习生
 ## Solidity学习
 
 -   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
+    
+-   [**\[GitHub repository\]**](https://github.com/ShihaoZhou-NEU/Solidity_Learning)
+    
+
+从最小到最大排列：
+
+| 单位 | Wei 值 | 换算关系 | 用途场景 |
+| --- | --- | --- | --- |
+| Wei | 1 Wei | 最小单位 | 底层计算 |
+| Kwei (Babbage) | 10³ Wei | 1 Kwei = 1,000 Wei | - |
+| Mwei (Lovelace) | 10⁶ Wei | 1 Mwei = 1,000,000 Wei | - |
+| Gwei (Shannon) | 10⁹ Wei | 1 Gwei = 1,000,000,000 Wei | Gas 费用 |
+| Microether (Szabo) | 10¹² Wei | 1 Szabo = 1,000,000,000,000 Wei | - |
+| Milliether (Finney) | 10¹⁵ Wei | 1 Finney = 0.001 ETH | - |
+| Ether (ETH) | 10¹⁸ Wei | 1 ETH = 1,000,000,000,000,000,000 Wei | 交易计价 |
+| Kether | 10²¹ Wei | 1,000 ETH | - |
+
+EVM: 机制要弄明白
+
+是Stack运行
+
+Storage：存储成本，gas的关键，优化的关键
+
+Call data:
+
+定长字节，byte32
+
+值类型
+
+\- bool
+
+\- uint
+
+\- int
+
+\- address
+
+\- byte
+
+引用类型
+
+\- string
+
+\- 数组 uint\[\]
+
+\- bytes 动态字节数组
+
+映射
+
+\- mapping(address => uint256)
+
+搜索材料
+
+1\. memory 什么用
+
+2\. external 与 public 什么区别
+
+3\. view：只读
+
+4\. pure：既不修改也不读取
+
+5\. 事件里面的 indexed 是什么
+
+6\. unchecked
+
+7\. emit
+
+8\. 为什么 approve 要 returns bool
+
+9\. modify
+
+10\. onlyOwner
+
+11\. uniswap and AAVE 合约标准可以看看
+
+12\. OpenZeppelin 合约模版
+
+13\. 可升级合约，加proxy，使得合约可以升级，
+
+14\. 钻石架构
+
+\# 公共物品
+
+非排他性的，非竞争性
+
+solidity，hardhat
+
+Web3中的阳光和空气
+
+开源代码
+
+协议安全
+
+开发者工具/文档
+
+公地悲剧：搭便车问题：
+
+\- 每个人都免费使用，理性的选择是等待别人付费
+
+\- 结果：市场失灵，高使用 ！= 高收入
+
+机制一：委员会制度
+
+\- 优点：简单快速，决策效率高
+
+\- 缺点：权力集中，偏好固化与偏见，有限的知识
+
+机制二：二次方自助（QF），人数 > 金额
+
+\- 配捐池的资金分配有贡献者的数量决定，放大了社区的共识
+
+机制三：回溯性资助（RetroPGF）先创造价值，后获得奖励
+
+\- 传统模式：为“承诺”付费，风险：可能不发芽
+
+\- 回溯模式：为“结果”付费，优势：价值已证明
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # 学习计划
 
@@ -93,6 +210,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -395,6 +513,7 @@ EL + CL +Engine API
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -706,6 +825,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1045,6 +1165,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1124,6 +1245,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1378,6 +1500,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -1554,6 +1677,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
