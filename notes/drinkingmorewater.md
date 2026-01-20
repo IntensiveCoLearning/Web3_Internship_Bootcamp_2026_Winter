@@ -27,6 +27,79 @@ LXDAO Core Memher
 
 Optimism S7GovNERDs
 
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768906830596-image.png)
+
+## outline
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768906882404-image.png)
+
+## 什么是公共物品？
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768906981108-image.png)
+
+公共物品(公共物品)
+
+非排他性(Non-Excludable) 非竞争性(Non-Rivalrous)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907049497-image.png)
+
+开源代码：任何人都可以复制和构建
+
+协议安全：保护整个网络，不分用户
+
+开发者工具：降低建造者的门槛
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907131010-image.png)
+
+## 搭便车问题(TheFree Rider Problem)
+
+如果每个人都能免费使用，理性的选择是等待别人付费。
+
+结果:市场失灵。高使用量≠高收入。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907198117-image.png)
+
+问题:纯粹的市场无法为公共物品定价。
+
+方案:我们需要新的机制来捕获这些价值。
+
+目标:确保对生态系统有价值的事物能够生存。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907265231-image.png)
+
+## 机制一：委员会制
+
+优点：简单、快速；决策效率高
+
+缺点：权力集中、偏好固化与偏见、有限的知识
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907348170-image.png)
+
+## 机制二：二次方资助
+
+人数＞金额
+
+配捐池的资金分配由贡献者的数量决定，放大了社区的共识。
+
+[https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2019.3337?journalCode=mnsc](https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2019.3337?journalCode=mnsc)  
+QF (二次方資助, quadratic funding) 當年的論文, 由 Vitalik 所寫
+
+也可以留意到，Vitalik 的這份論文版權為了能出版, 也完全屬於 PubsOnline 出版社, Vitalick 是沒有這份論文的版權的. >\_<
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907502918-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907525327-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907589053-image.png)
+
+先创造价值，后获得奖励
+
+传统模式:为"承诺"付费。风险:可能不发芽。
+
+回溯模式:为"结果"付费。优势:价值已证明。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907740685-image.png)
+
+混合模式:QF(早期项目)+ Retro Funding(成熟项目)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907882724-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768907850846-image.png)
+
 # 「Solidity Walk Through」
 
 ![2e6a019b2825dbafe05c1233b2a3fc15.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768906267101-2e6a019b2825dbafe05c1233b2a3fc15.jpg)
@@ -38,6 +111,7 @@ Top交易所合约工程师
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
@@ -86,6 +160,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 # Web3新人文科生一周内快速入门指南
@@ -371,6 +446,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -412,6 +488,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -724,6 +801,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -997,6 +1075,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -1104,6 +1183,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
