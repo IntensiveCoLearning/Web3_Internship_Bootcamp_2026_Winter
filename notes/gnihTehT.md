@@ -15,8 +15,89 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# Day 9
+
+今日通过了 Ethernaut 前 3 关
+
+## 通关流程
+
+第一关是关于console 操作
+
+```
+await contract.info()
+→ info1()
+
+await contract.info1()
+→ info2("hello")
+
+await contract.info2("hello")
+→ 看 infoNum
+
+await contract.infoNum()
+→ 42
+
+await contract.info42()
+→ 看 theMethodName
+
+await contract.theMethodName()
+→ "method7123949"
+
+await contract.method7123949()
+→ 提示调用 authenticate(password)
+```
+
+第二关是关于ownership主要用到了这个，通过合约转账再提款
+
+```
+\\贡献一点
+await web3.eth.estimateGas({
+  from: player,
+  to: contract.address,
+  value: web3.utils.toWei("0.001", "ether")
+})
+\\验证
+await contract.getContribution()
+\\提取
+await contract.withdraw({ from: player })
+\\检查余额
+await web3.eth.getBalance(contract.address)
+```
+
+第四关是拼写错误
+
+```
+function Fal1out()
+```
+
+旧版本的solidity的构造函数是
+
+```
+function Fallout() public { }
+```
+
+写成Fal1out意味着名字不匹配合约名，它只是一个普通 public 函数。
+
+任何人、在任何时间、都可以调用这个函数、并成为 owner。
+
+## 总结
+
+这三关本质上是在建立一个最重要的 Web3 心智模型：合约 ≠ 你以为的“有界面函数”，而是一坨可以被“用各种方式触发”的状态机。
+
+-   第一关 Fallback 理解不通过 ABI 也能转账，从而触发 receive / fallback 改 owner”；
+    
+-   第二关 Fallout 让你理解“构造函数如果写错，就会变成任何人都能调用的普通函数，从而重置 owner”；
+    
+-   第三关，理解“链上真正发生的是一笔交易，而不是 JS 函数调用，gas、value、data 才是本体”
+    
+
+三关合起来就是一句话：安全不取决于你‘以为’用户怎么用合约，而取决于“合约在 EVM 层面能被怎么调用”。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # Day 8
 
 ## 运营
@@ -52,6 +133,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 # DAY7
 
 做了一周的总结，画成了漫画。
@@ -70,6 +152,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # DAY 6
 
 今天把昨天的第一次例会又过了一遍，并在早上参加了LXDAO的周会，因为太i了怯场没能在这次自我介绍，很遗憾，希望能够趁下次机会加入！
@@ -84,6 +167,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # **Day5**
 
 今天听了co learning和第一次例会，非常拓宽眼界！明天将把今晚的内容整理成一个笔记，今天的干货真的太多了，比在学校的学习知识密度要高很多倍！
@@ -93,6 +177,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -152,6 +237,7 @@ contract Counter{
 
 
 
+
 DAY3
 
 今天准备去学习剩下solidity入门课程，把入门通了一遍。
@@ -161,6 +247,7 @@ DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -192,6 +279,7 @@ DAY3
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
