@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+分享会看了Elon老师边写边讲的简单教程，还是比生硬看教材好很多的。
+
+分享会提出的 "良心杀" 其中能进行的博弈还是很吸引人的，俺选 ETHpanda 它才是众望所归。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 中文排版规范真是好料，以前只觉得别人语句看起来就算比自己的排版清晰，第一次具体了解一个如何排版，全角半角从小到大都没分过，今天也是系统了解一下了。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Juicewithice/images/2026-01-19-1768836216973-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Juicewithice/images/2026-01-19-1768836226861-image.png)
@@ -32,6 +40,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ERC7962 的核心目标:在不暴露真实地址的情况下，向第三方证明资产或身份的归属.
 
@@ -55,6 +64,7 @@ ERC7962中任何人都可以发起交易
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ## 一、Sepolia 是什么？
@@ -198,6 +208,7 @@ Sepolia ETH 是 **测试币**，特点：
 
 
 
+
 ETH安全依赖节点数量和节点分散程度。
 
 **全节点（Full Node）**
@@ -233,11 +244,13 @@ ETH安全依赖节点数量和节点分散程度。
 
 
 
+
 分享会中的讲解AI要想从一个辅助工具，变成一个真正能执行决策的执行者，在其中加入区块链是必不可少的，区块链可以为监管方提供无法伪造的日志来确保合法。理解区块链能在信任上大大降低的成本。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -262,6 +275,7 @@ ETH安全依赖节点数量和节点分散程度。
 
 
 
+
 1ETH = 10^18 wei
 
 100ETH = 100000000000000000000 wei
@@ -277,6 +291,7 @@ ETH安全依赖节点数量和节点分散程度。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
