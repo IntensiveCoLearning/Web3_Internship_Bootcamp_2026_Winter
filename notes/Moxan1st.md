@@ -19,6 +19,17 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 # 总览
 
+-   提交 Gas 优化案例
+    
+-   完成挑战 Challenge #0 - Tokenization
+    
+-   通过 Ethernaut 前 3 关
+    
+-   安装 Figma
+    
+-   计划两到三天后的学习内容
+    
+
 # 详情
 
 ## Gas优化
@@ -35,11 +46,60 @@ Web3 实习计划 2025 冬季实习生
 
 所以省 Gas 的一个关键思路就是减少对 Storage 的写操作
 
-在
+Remix环境下部署三种方案，测试结果如下
+
+Normal: 0x72fa8f163b3065f3074de108412cd12e22a9db037511c2886d67323dc2655197
+
+Cached: 0x2ef9a8d7c82b8ccb61a1465eeddb63c1cd1bdf362511fe6bfc8217efc8ef0e37
+
+Unchecked: 0x407884377de7e5cababcfc3d90762810cfabc68860b2ed927de2c6e48aaa1ca1
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-20-1768893016323-image.png)
+
+## 漏洞修复案例
+
+### 案例1 重入
+
+mapping 用作账本映射。`mapping(address => uint256) public balances；` 非常常见。
+
+`msg.sender.call{value: amount}("");`
+
+**危险的核心就在这个** `.call` **带来的“控制权移交”：**
+
+1.  当你执行这行代码时，EVM 会暂停合约。
+    
+2.  EVM 跳到 `msg.sender` 的地址去执行代码（如果是合约账户）。
+    
+3.  如果对方是个恶意合约，它的代码里写着：`再次调用合约的 withdraw()`。
+    
+4.  合约还没跑到 `balances[msg.sender] = 0` 呢，就被迫重新开始了。
+    
+
+解决：
+
+1.  检查-生效-交互模式（CEI Pattern）：执行顺序发生改变。
+    
+2.  重入锁（Reentrancy Guard）：有个保镖守着，只能按流程顺序访问。
+    
+
+### 案例2 **访问控制**
+
+前面的人存都是正常的，直到有第一个人取，它马上就被付给msg.sender了。
+
+解决：在敏感操作（转账）的时候注意权限管理。
+
+## **案例3 整数溢出防护**
+
+例子里面的2^256 - 1实际是很大的数，是不是可以考虑修改为比较现实的例子。
+
+解决：限制上限 + 使用最新编译器
+
+使用最新编译器的时候，Counter 超过2^256 - 1的时候会报错，交易回滚。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # 总览
@@ -62,6 +122,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -177,6 +238,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -199,6 +261,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -234,6 +297,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -353,6 +417,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -583,6 +648,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -691,6 +757,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
