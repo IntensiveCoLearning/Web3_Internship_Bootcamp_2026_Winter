@@ -15,13 +15,30 @@ a web3 newbie
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+solidity:
+
+可见性修饰符：public external private internal
+
+**public** 修饰符限制最宽松，被修饰的方法在合约的内部和外部均可被调用。但是 public 修饰的方法的参数会被进行一次内存 copy，因此在 GAS 费上会教被 external 修饰的方法高。
+
+**external** 修饰符修饰的方法只能被外部调用。
+
+**private** 修饰符修饰的方法只能被合约内部调用，且不能被继承合约调用。
+
+**internal** 修饰符修饰的方法能被合约内部调用，也能被继承合约进行调用。利用此能力可以进行代码复用，编写合约库。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天听课学习了 ERC-7962
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 今天的主要任务是尝试自己练习并编写 DApp。学习 Ether.js。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
@@ -30,11 +47,13 @@ a web3 newbie
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今日主要学习了 DApp开发。学习了 DApp 应用的架构设计，交互过程等概念。前端一般使用 ReactJS 或 VueJS 等技术框架，和 Web2 无差异。主要差异在于要使用 Ether.js 或 Web3.js 等框架与合约交互。要了解ABI 的调用方式和方法等。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -96,6 +115,7 @@ delegate call 是特殊的 message call，在调用过程中，上下文中的 m
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
