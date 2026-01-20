@@ -15,8 +15,29 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## web3公共物品资金分配
+
+public good
+
+### 什么是公共物品
+
+基础设施 ：开源代码 协议安全 开发者工具、文档 Web3 公共物品就是那些开源的、无许可的、对整个加密生态系统至关重要，但很难直接商业变现的基础设施和工具。
+
+### 特性 问题
+
+搭便车问题 非排他性 (Non-excludable)： 你无法阻止任何人使用它。  
+非竞争性 (Non-rivalrous)： 一个人的使用不会减少其他人使用的可用性。
+
+## 机制 也是主要的资金分配方式
+
+委员会制 二次方资助 回溯性资助
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## 1.19ethh周会
 
 ### 1\. 以太坊：回归核心价值与协议“瘦身”
@@ -129,6 +150,7 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ## Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 ## Key Hash Based Tokens (基于密钥哈希的代币)
@@ -190,11 +212,13 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 qiandao
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -223,6 +247,7 @@ qiandao
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -261,6 +286,7 @@ x402协议
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -389,6 +415,7 @@ UXlink Balancer
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -822,6 +849,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
