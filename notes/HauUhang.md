@@ -15,8 +15,52 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# 四、Solidity 智能合约编程
+
+## **1\. 基础语法与开发范式**
+
+## 2\. 合约结构详解
+
+## **3\. 安全实践**
+
+**重入攻击（Reentrancy）防护，流程**
+
+1.  合约调用外部合约或地址（如 `call` 发送以太币）；
+    
+2.  外部合约在其回调函数中重新调用原合约尚未更新状态的函数；
+    
+3.  原合约在状态尚未变更的前提下再次执行逻辑；
+    
+4.  攻击者反复进入该函数，实现多次提现等恶意操作
+    
+
+**防护措施：**
+
+1.  检查-生效-交互模式（CEI Pattern）
+    
+2.  重入锁（Reentrancy Guard）
+    
+
+**访问控制（Access Control）**
+
+**整数溢出防护（Integer Overflow Protection）**
+
+## **3\. 新建合约文件**
+
+编译
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-20-1768915929497-image.png)
+
+部署
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-20-1768916017628-image.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # **中文文案排版指北**
 
 ## **空格**
@@ -106,6 +150,7 @@ timezone: UTC+8
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -148,6 +193,7 @@ Gas：想让 EOA 动起来，必须给它加油
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # 十一、Gossip 协议在节点传输中的作用
 
 Gossip 协议就是以太坊的“八卦广播系统”：
@@ -175,6 +221,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -207,6 +254,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -307,6 +355,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -350,6 +399,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -484,6 +534,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
