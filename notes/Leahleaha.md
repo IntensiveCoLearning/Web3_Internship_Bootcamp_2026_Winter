@@ -15,8 +15,154 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+**Solidity 入门认知（Elon 线上课）**
+
+**今日学习内容**
+
+参加 Elon 老师的 Solidity 入门线上课程，聚焦 Solidity 的定位、学习顺序与新手阶段的正确切入方式。
+
+```
+Solidity / EVM 基础与 ERC20 合约全览
+├─ 一、EVM 与智能合约运行环境
+│  ├─ 1. EVM 的本质（栈式虚拟机）
+│  └─ 2. EVM 四大执行区
+│     ├─ Stack（栈）
+│     ├─ Storage（链上存储）
+│     ├─ Memory（运行时内存）
+│     └─ Calldata（调用数据）
+│
+├─ 二、Gas 成本与合约优化核心
+│  ├─ Storage 写入与修改的 Gas 差异
+│  └─ 合约优化的基本策略（少存、少改）
+│
+├─ 三、Solidity 开发环境与版本意识
+│  ├─ Remix 作为学习与调试工具
+│  └─ Solidity 版本差异与 ^0.8.20 约束
+│
+├─ 四、Solidity 数据类型体系
+│  ├─ 值类型（Value Types）
+│  │  ├─ bool
+│  │  ├─ int / uint（位宽与 gas）
+│  │  ├─ address
+│  │  └─ bytes32
+│  └─ 引用类型（Reference Types）
+│     ├─ string
+│     ├─ 动态数组
+│     ├─ bytes / bytes[]
+│     └─ mapping（账本结构）
+│
+├─ 五、ERC20 合约的核心结构设计
+│  ├─ 1. ERC20 标准的定位
+│  ├─ 2. 核心链上存储数据
+│  │  ├─ name / symbol
+│  │  ├─ decimals
+│  │  ├─ totalSupply
+│  │  └─ owner
+│  └─ 3. 账本结构
+│     ├─ 余额账本（balances）
+│     └─ 授权账本（allowance）
+│
+├─ 六、Constructor 与初始化逻辑
+│  ├─ 部署期参数传入
+│  ├─ owner 初始化（msg.sender）
+│  └─ 构造函数内 mint 行为
+│
+├─ 七、函数设计与可见性
+│  ├─ 函数可见性
+│  │  ├─ external
+│  │  ├─ public
+│  │  ├─ internal
+│  │  └─ private
+│  └─ 状态可变性修饰符
+│     ├─ view
+│     └─ pure
+│
+├─ 八、ERC20 核心方法逻辑
+│  ├─ totalSupply 查询
+│  ├─ balanceOf 查询
+│  ├─ transfer 转账逻辑
+│  │  ├─ require 校验
+│  │  ├─ 余额更新
+│  │  └─ Transfer 事件
+│  └─ approve 授权逻辑
+│     ├─ allowance 修改
+│     └─ Approval 事件
+│
+├─ 九、事件（Event）与链上日志
+│  ├─ Transfer / Approval / Mint
+│  ├─ indexed 索引
+│  └─ 事件在链下同步中的作用
+│
+├─ 十、Mint、Internal 与接口封装模式
+│  ├─ internal mint 的安全意义
+│  └─ external + internal 分层设计
+│
+├─ 十一、Remix 中的编译、部署与调用
+│  ├─ 编译与错误检查
+│  ├─ 部署流程（字节码 → 链上）
+│  ├─ constructor 执行时机
+│  └─ 私有链调试模式
+│
+├─ 十二、Solidity 错误与回滚机制
+│  ├─ require
+│  ├─ revert
+│  └─ assert
+│
+├─ 十三、unchecked 与整数溢出检查
+│  ├─ Solidity 0.8+ 默认溢出保护
+│  └─ unchecked 的使用边界
+│
+├─ 十四、modifier（修饰符）机制
+│  ├─ 前置条件抽象
+│  ├─ onlyOwner 示例
+│  └─ 权限控制与重用
+│
+├─ 十五、助记词陷阱与抢跑机制
+│  ├─ 合约层权限限制
+│  └─ 抢跑 Bot + 高 gas 抢先交易
+│
+├─ 十六、EVM 执行模型与安全问题
+│  ├─ 单线程顺序执行
+│  └─ 重入问题与防护
+│
+└─ 十七、学习与进阶方向
+   ├─ Solidity 的真实难点（逻辑而非语法）
+   ├─ Storage 与 Gas 优化意识
+   └─ 协议级源码阅读
+      ├─ Uniswap V3
+      └─ Aave
+```
+
+**今日关键结论**
+
+-   Solidity 学习应从“谁调用、改了什么状态、是否允许”入手。
+    
+-   Remix 适合新手用于理解编译、执行与反馈，是当前阶段的核心工具。
+    
+-   过早追求复杂合约或工程化工具会增加理解成本。
+    
+
+**当前阶段定位**
+
+处于 Solidity 的 0→1 阶段，尚未进入合约部署与链上操作。
+
+**下一步最小推进（明确且可执行）**
+
+-   在 Remix 中新建一个最小 Solidity 文件
+    
+-   **成功编译（无报错）**
+    
+
+**下一步推进**
+
+在 Remix 中新建最小 Solidity 文件，仅完成一次无报错编译，用于验证对课程内容的理解。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 学习 智能合约开发  
   
   
@@ -42,6 +188,7 @@ Dapp = “业务逻辑上链 + 用户用钱包签名交互”的应用形态。
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 完成本周遗留任务
 
 -   Sepolia 测试币领取与转账
@@ -60,6 +207,7 @@ Dapp = “业务逻辑上链 + 用户用钱包签名交互”的应用形态。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 **Gas 不是手续费，是“强制约束”**
@@ -233,6 +381,7 @@ TVL 是规模指标，不是安全指标。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -536,6 +685,7 @@ address = keccak256(
 
 
 
+
 ### SpoonOS ：
 
 **让开发者不用自己实现身份、支付、私钥、验证、审计这些底层能力。**
@@ -735,6 +885,7 @@ AI 正在从“工具调用者”，变成“连续做决定并承担后果的�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1051,6 +1202,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 
 
+
 笔记：
 
 -   解释了私钥、助记词、公钥和地址之间的关系
@@ -1076,6 +1228,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
