@@ -19,15 +19,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 # 总览
 
--   提交 Gas 优化案例
+-   提交 Gas 优化案例——Done
     
--   完成挑战 Challenge #0 - Tokenization
+-   完成挑战 Challenge #0 - Tokenization——还在写
     
--   通过 Ethernaut 前 3 关
+-   安装 Figma——没干
     
--   安装 Figma
-    
--   计划两到三天后的学习内容
+-   计划两天后的学习内容——留给明天
     
 
 # 详情
@@ -88,17 +86,41 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 解决：在敏感操作（转账）的时候注意权限管理。
 
-## **案例3 整数溢出防护**
+### **案例3 整数溢出防护**
 
 例子里面的2^256 - 1实际是很大的数，是不是可以考虑修改为比较现实的例子。
 
 解决：限制上限 + 使用最新编译器
 
 使用最新编译器的时候，Counter 超过2^256 - 1的时候会报错，交易回滚。
+
+## 挑战 Challenge #0 - Tokenization
+
+由于没有用 Hardhat，利用 Gemini 辅助配置了这个挑战的环境。
+
+并且遇到了一些问题，最大的意外：子模块依赖丢失 (Git Submodules)
+
+-   **现象：** 报错提示找不到 `forge-std/Vm.sol` 或 `Script.sol`。
+    
+-   应对：**手动克隆：** 用 `git clone` 强行把库下载到 `lib`。**重写地图：** 手写 `remappings.txt` 告诉编译器“不要去网上找了，看我本地的文件夹”。
+    
+
+部署了环境，ERC-20还在写......  
+
+## 周三计划
+
+-   完成挑战 Challenge #0 - Tokenization
+    
+-   通过 Ethernaut 前 3 关
+    
+-   安装 Figma
+    
+-   计划两到三天后的学习内容
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -122,6 +144,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -239,6 +262,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -261,6 +285,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -297,6 +322,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -417,6 +443,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -649,6 +676,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -757,6 +785,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
