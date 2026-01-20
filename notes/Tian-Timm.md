@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+Solidity walk through
+
+EVM 虚拟机
+
+四个执行区
+
+1\. stack
+
+栈式运行环境
+
+2\. storage
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 1.19
 
 运营向分享会
@@ -58,6 +74,7 @@ twitter space
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 Web2 to Web3 🚀 - Week 1 Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata 笔记
 
@@ -262,6 +279,7 @@ M-of-N 机制: 演示了建立一个 "2-of-4" 的 Safe，意味着 4 个管理�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 Day 3: ENS, DEX, Identity, Inventory, Sybil 笔记
 
 1\. 钱包与账户 (Wallet & Accounts)
@@ -358,6 +376,7 @@ DAI 的机制 (超额抵押):
 
 
 
+
 第一周例会
 
 同学分享
@@ -373,6 +392,7 @@ DAI 的机制 (超额抵押):
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -418,6 +438,7 @@ Web3是唯一能承载高频、低额机器交易的基础设施
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -475,6 +496,7 @@ U商：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -540,6 +562,7 @@ web3最有价值的地方：不在于彻底颠覆，更多是带来全新机制�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
