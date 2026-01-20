@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1\. 核心语言与环境 (Languages & Environment)
+
+-   **Solidity (EVM系)**:
+    
+    -   目前最主流的智能合约语言，语法类似 JavaScript/C++。
+        
+    -   **关键特性**: 静态类型、继承、库 (Libraries)、修饰符 (Modifiers)。
+        
+    -   **版本管理**: 注意 `pragma solidity ^0.8.0` 等版本声明，新版本自带溢出保护。
+        
+-   **其他语言**:
+    
+    -   **Rust**: 用于 Solana, Near, Polkadot 等高性能链，内存安全更强，但上手难度稍高。
+        
+    -   **Vyper**: Pythonic 风格，强调安全性与审计友好性。
+        
+    -   **Move**: (Aptos/Sui) 面向资源的编程语言，资产作为一等公民。
+        
+
+2\. 开发框架与工具链 (Frameworks & Tools)
+
+-   **入门级**:
+    
+    -   **Remix IDE**: 也就是 "Web IDE"，无需安装本地环境，适合快速原型开发和学习语法。
+        
+-   **专业级 (工业标准)**:
+    
+    -   **Hardhat**: 基于 JavaScript/TypeScript。插件生态丰富（如 Etherscan 验证插件），适合习惯 JS 全栈的开发者。
+        
+    -   **Foundry**: 基于 Rust 编写，**速度极快**。特点是**用 Solidity 写测试脚本**（不再需要切换语言写 JS 测试），支持 Fuzzing（模糊测试）。
+        
+-   **交互库**:
+    
+    -   **Ethers.js / Viem / Wagmi**: 前端与合约交互的必备库，用于连接钱包、构建交易数据。
+        
+
+3\. 智能合约安全 (Security) - _重中之重_
+
+-   **常见漏洞**:
+    
+    -   **重入攻击 (Reentrancy)**: 著名的 DAO 被盗事件原因。_对策_: 使用 `Checks-Effects-Interactions` 模式或 `ReentrancyGuard`。
+        
+    -   **整型溢出 (Overflow/Underflow)**: Solidity 0.8.x 后已内置检查。
+        
+    -   **权限控制失误**: 确保敏感函数（如 `mint`, `withdraw`）有 `onlyOwner` 或 `AccessControl` 限制。
+        
+    -   **随机数攻击**: 链上无法生成真随机数，需使用 Chainlink VRF。
+        
+-   **安全库**:
+    
+    -   **OpenZeppelin**: 行业标准库。**不要重复造轮子**，直接继承其 `ERC20`, `Ownable`, `Pausable` 等合约。
+        
+
+4\. 关键代币标准 (Token Standards)
+
+-   **ERC-20**: 同质化代币（如 USDT, UNI）。核心：`transfer`, `approve`, `transferFrom`。
+    
+-   **ERC-721**: 非同质化代币 (NFT)。核心：`tokenId`，每个代币独一无二。
+    
+-   **ERC-1155**: 多重代币标准。在一个合约中同时管理多种 Fungible 和 Non-Fungible 代币，Gas 更高效（GameFi 常用）。
+    
+
+5\. 高级开发概念 (Advanced Concepts)
+
+-   **可升级合约 (Upgradability)**:
+    
+    -   由于区块链不可篡改，合约部署后无法修改代码。
+        
+    -   **代理模式 (Proxy Pattern)**: 用户访问 `Proxy` 合约，`Proxy` 将调用委托给 `Logic` 合约。升级时只需将 `Proxy` 指向新的 `Logic` 合约地址。
+        
+-   **Gas 优化**:
+    
+    -   使用 `calldata` 代替 `memory`（针对只读参数）。
+        
+    -   变量打包 (Variable Packing)：将多个小变量塞进一个 256bit 插槽。
+        
+    -   自定义错误 (`error MyError()`) 代替长字符串报错信息 (`require(..., "Message")`)。
+        
+-   **预言机 (Oracles)**:
+    
+    -   合约无法主动获取链下数据（如 ETH 价格、天气）。需通过预言机（如 Chainlink）将数据“喂”进链上。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 ## 一、以太坊网络结构（Network Architecture）
 
 ### 1️⃣ 网络本质
@@ -216,6 +302,7 @@ Uniswap 合约地址
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 ## 第二章：网络结构与节点类型
 
 ### 一、节点与客户端
@@ -317,6 +404,7 @@ Uniswap 合约地址
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
 
+
 ### 📌 核心法律风险要点
 
 -   **代币发行与交易**：中国全面禁止ICO、IEO、IDO等任何形式的代币融资活动。即使以“积分”、“空投”等形式进行，也可能被认定为**非法吸收公众存款**。技术人员参与相关环节，**无法以“只写代码”为由免责**。
@@ -379,6 +467,7 @@ Uniswap 合约地址
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
