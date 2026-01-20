@@ -19,8 +19,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+补
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 **社区运营基础 & 活动策划与执行流程**
 
 1.  从0到1搭建tg社群
@@ -39,6 +45,7 @@ timezone: UTC+8
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
+
 **AI 及其基础概念**
 
 **基础设施缺口：身份与信任的危机**
@@ -52,6 +59,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 安全认知
@@ -130,6 +138,7 @@ goplus 安全社区
 
 
 
+
 **「Web3 运行原理」**
 
 **智能合约 = 区块链账本里的“可执行代码”**
@@ -149,6 +158,7 @@ goplus 安全社区
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
