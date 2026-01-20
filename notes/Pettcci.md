@@ -15,8 +15,28 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+【Day 9】学习笔记
+
+已完成
+
+1.  完成[Unphishable](https://unphishable.io/)钓鱼攻防挑战beginner，有两节可能没有理解意思没有过去，明天继续。最重要就是无论如何，自己的seed phrase不可以被任何人知道、也不要存储在电子设备上，钓鱼很多方式，注意假域名混淆视听。
+    
+2.  创建了自己的first NFT，认真阅读了LXDAO的科普，guide做的很好，之前并不完全理解NFT优点和价值，也不知道竟然目前NFT市场还处于蓬勃阶段，深刻了对gas fee的理解。
+    
+    ![mfnft.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Pettcci/images/2026-01-20-1768918823410-mfnft.png)
+3.  观看了周一web3新闻回放
+    
+
+未完成
+
+本计划多学多做，但工作可控部分不多，必须要留出时间了！
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 【Day 8】学习笔记
 
 已完成：
@@ -76,6 +96,7 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 【Day 7】学习笔记
 
 已完成
@@ -131,6 +152,7 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 【Day4】学习打卡
@@ -225,6 +247,7 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 
 
 
+
 【Day 3】今日学习进度
 
 ## 一、已完成
@@ -298,6 +321,7 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 
 
 
+
 【Day 3】又是出差开会的一天QAQ
 
 1.  完成
@@ -328,6 +352,7 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
