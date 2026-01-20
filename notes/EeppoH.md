@@ -15,8 +15,35 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+```remix-solidity
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    // 这个变量用来存一个数字
+    uint256 public myNumber;
+
+    // 写入函数：把数字存进去 (要花 Gas)
+    function store(uint256 _num) public {
+        myNumber = _num;
+    }
+function addOne() public {
+    myNumber += 1;
+}
+    // 读取函数：把数字读出来 (免费)
+    function retrieve() public view returns (uint256) {
+        return myNumber;
+    }
+}
+```
+
+最近实在太忙了，感觉代码这一块需要大块时间来慢慢弥补➕理解（对于我这个小白来说）。今天的打卡是靠自己写出了绿色的完整合约。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 Sat 17 Jan 复习了一遍过去一周所有的概念
 
 **区块链是什么**
@@ -150,6 +177,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 昨天留下的问题，LP TOKEN证明的不是存入的ETH或者USDC在mempool里的存款，LP TOKEN证明的是自己的存款在CA账户里的比例。
 
 这个比例本身不会变，只要没有新增LP和退出的LP，交易得再多，这个比例也不会变。但是这个比例的资产内容会一直在变，因为有人用ETH换USDC也会有人用USDC换ETH，所以池子里X/Y一直在变化。昨晚把mempool和CA账户的资产概念混淆了，mempool的唯一作用是暂存“还没有被请求的交易”。
@@ -165,6 +193,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 什么是EVM? Ethereum Virtual Machine以太坊虚拟机。想象以太坊不是一本单纯的账本（像比特币那样只记转账），而是一台**全世界联网的超级电脑**，这台电脑能跑程序、执行代码、玩游戏、借贷、交易NFT……但它**不是一台实体电脑**，而是**分布在全球成千上万台节点电脑上的“虚拟电脑”**。
@@ -209,6 +238,7 @@ Gas在EOA to EOA时只是记账付费（手续费），在EOA to CA时是计算�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -260,6 +290,7 @@ Scaling layer扩展层 提升性能和降低成本的解决方案。我的理解
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
