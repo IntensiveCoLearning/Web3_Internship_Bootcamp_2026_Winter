@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# **📒 共学营 Day 9 学习笔记**
+
+**主题**：Ethernaut 合约学习与历史项目排查
+
+## 今日收获
+
+1.  **Hello Ethernaut 关卡完成**
+    
+    -   今天顺利通过了 Ethernaut 的 `Hello Ethernaut` 关卡。
+        
+    -   复习了关卡合约的基本结构和事件触发逻辑，加深了对 Solidity 中 `constructor`、`msg.sender` 与事件触发机制的理解。
+        
+    -   实践中对 Remix 部署流程和合约交互有了更熟练的操作体验。
+        
+2.  **历史 Ethernaut 项目排查**
+    
+    -   找到了一个 5 年前的开源项目：[https://github.com/MrToph/ethernaut](https://github.com/MrToph/ethernaut)。
+        
+    -   在尝试运行和交互时发现，官方 Ethernaut 合约已经发生了更新，导致：
+        
+        -   合约 ABI 与事件 (`event`) 定义不完全一致。
+            
+        -   老项目中监听的事件可能无法正常捕获，或者数据字段顺序/名称发生变化。
+            
+    -   通过对比历史 ABI 与最新合约，学习了如何调整本地脚本以匹配新版本事件，巩固了对 Solidity `event` 机制的理解。
+        
+3.  **实践技巧**
+    
+    -   当官方合约更新时，历史项目可能会出现 `event` 或 `function` 不匹配的问题。
+        
+    -   解决方法包括：
+        
+        1.  拉取最新合约 ABI。
+            
+        2.  对比旧事件和新事件的字段，调整监听逻辑。
+            
+        3.  使用 Remix 或 Hardhat 测试部署新合约，确保交互正常。
+            
+    -   这一过程帮助理解 Solidity 事件、ABI 编码及前端监听机制之间的关系。
+        
+
+## 遇到问题与思考
+
+-   **问题**：老项目的事件监听脚本报错或没有触发。
+    
+-   **分析**：事件定义或 ABI 与当前合约版本不一致。
+    
+-   **解决方案**：
+    
+    -   使用官方最新合约 ABI 替换老项目 ABI。
+        
+    -   调整事件监听逻辑，确保字段对应正确。
+        
+-   **思考**：
+    
+    -   区块链项目的前后端/脚本高度依赖 ABI，版本管理很重要。
+        
+    -   历史项目排查也是学习 Solidity、事件机制和合约更新兼容性的好方法。
+        
+
+## 明日计划
+
+-   尝试其他 Ethernaut 基础关卡，如 `Fallback` 或 `Vault`，加深对以太坊存储和访问控制机制的理解。
+    
+-   继续整理老项目排查经验，尝试写一套 ABI 版本兼容工具或脚本。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # 📒 共学营 Day 8 学习笔记
 
 今天继续复盘 Uniswap V2 面试题，从第 9 题到第 12 题，主要聚焦 **LP Token 机制、Flash Swap、重入防护、TWAP 价格安全设计**。
@@ -114,6 +184,7 @@ Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 # 📒 共学营 Day 5 学习笔记
 
@@ -280,6 +351,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -395,6 +467,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -517,6 +590,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -604,6 +678,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -753,6 +828,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
