@@ -15,8 +15,47 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+[https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
+
+This video focuses on advanced Web3 user skills, covering troubleshooting transactions, utilizing Layer 2 (L2) networks, and managing assets with decentralized financial tools.
+
+### **Transaction Management & Troubleshooting**
+
+-   **Stuck Transactions**: If a transaction is stuck with a low gas fee, you can use the **"Speed Up"** button in MetaMask to resubmit it with a higher bid \[[12:15](http://www.youtube.com/watch?v=11QTT6BK5j0&t=735)\].
+    
+-   **Canceling Transactions**: To cancel a pending transaction, you send a new transaction to yourself for 0 ETH using the **same Nonce** but a higher gas fee \[[19:12](http://www.youtube.com/watch?v=11QTT6BK5j0&t=1152)\].
+    
+-   **Resetting MetaMask**: If the wallet becomes confused with incorrect nonces or chain IDs, using the **"Reset Account"** feature clears the local activity history without affecting your funds \[[15:57](http://www.youtube.com/watch?v=11QTT6BK5j0&t=957)\].
+    
+-   **The Nonce**: This is a sequential transaction counter for your address \[[10:13](http://www.youtube.com/watch?v=11QTT6BK5j0&t=613)\]. Transactions must be mined in order; for example, transaction #6 must finish before #7 can start \[[10:26](http://www.youtube.com/watch?v=11QTT6BK5j0&t=626)\].
+    
+
+### **L2 Applications and Platforms**
+
+The video highlights the speed and cost advantages of Layer 2 networks, specifically using **Optimism**, which settles to Ethereum mainnet for security but offers much cheaper transactions \[[31:29](http://www.youtube.com/watch?v=11QTT6BK5j0&t=1889)\].
+
+| Website Name | Purpose / Use Case |
+| Optimism Bridge | Used to transfer ETH from the Ethereum mainnet (L1) to the Optimism network (L2) [30:21]. |
+| Aave | A lending and borrowing platform where you can provide assets as collateral to take out loans [38:11]. |
+| Matcha | A decentralized exchange (DEX) aggregator that finds the cheapest paths for swapping tokens across multiple platforms [41:28]. |
+| Uniswap | A popular DEX for swapping tokens; it is also used via Layer 2 to demonstrate faster, cheaper swaps [45:04]. |
+| Quixotic | An NFT marketplace specifically built on the Optimism network for buying and selling digital assets [36:26]. |
+| Safe (formerly Gnosis Safe) | A multi-signature (multisig) smart contract wallet that requires multiple people to approve a transaction before it can execute [01:00:34]. |
+
+### **Advanced Concepts**
+
+-   **Account Abstraction & Multisigs**: The **Safe** allows for "M-of-N" security (e.g., 2 out of 4 signers), protecting funds even if one individual's seed phrase is leaked \[[01:03:50](http://www.youtube.com/watch?v=11QTT6BK5j0&t=3830)\].
+    
+-   **WalletConnect**: A protocol that allows you to connect a mobile wallet (like Rainbow) or a multisig safe to a desktop browser application by scanning a QR code or pasting a link \[[01:12:08](http://www.youtube.com/watch?v=11QTT6BK5j0&t=4328)\].
+    
+-   **ERC-20 Approval Pattern**: Unlike sending ETH, sending tokens (like DAI) requires a two-step process: first, an **"Approve"** transaction to let the contract spend your tokens, followed by the actual swap or transfer \[[43:05](http://www.youtube.com/watch?v=11QTT6BK5j0&t=2585)\].
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible Tokens (NFTs)**, explaining their fundamental concepts, technical standards, and how users interact with them in the Ethereum ecosystem. **👩‍💻 Web2 to Web3 🚀 - Week 1 Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata** [**https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
 
 ### **Core Concepts of NFTs**
@@ -68,6 +107,7 @@ This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 In this video, "Web2 to Web3 - Week 1, Day 3," Austin Griffith and his team demonstrate how to use an Ethereum wallet to interact with various Web3 services, emphasizing how your identity and inventory follow you across the decentralized web.
 
@@ -126,6 +166,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 ### **1\. Getting Started with MetaMask**
@@ -189,6 +230,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
