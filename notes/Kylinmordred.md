@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Kylinmordred/images/2026-01-20-1768923813121-image.png)
+
+web3交易风险的重视
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # 交易技术分析核心笔记
 
 ## 一、 核心交易工具概念
@@ -107,11 +115,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 今天，实操了比特币的交易，比想象中的复杂很多，学了很多关于交易的名词，合约，止跌止赢，冰山价
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -124,11 +134,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天我通过课程了解web3在ai方面的应用。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -146,6 +158,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 -   今天主要在了解web3方向关于以太坊的内容，过去认为它是一种结合技术的虚拟币，感可能对于以太坊的应用落地抱有怀疑。
     
 -   听了co-learning关于加密货币独裁民主-与庄家散户之间的相似情况，加密货币是否真的是去中心话的
@@ -153,6 +166,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
