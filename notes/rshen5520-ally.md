@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+Solidity课堂讲解，这一门会议涉及到了很多编程知识，作为小白有很多不熟悉的地方，计划会议结束后多次观看该会议内容。同步开启编程学习。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-20-1768914778453-image.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 [https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN](https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN)
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-19-1768835002322-image.png)
@@ -28,6 +36,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 [https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN](https://github.com/EchonetHoward/-Web2-to-Web3-EN-to-CN)
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-16-1768568377188-image.png)
@@ -35,6 +44,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -56,6 +66,7 @@ timezone: UTC+8
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/rshen5520-ally/images/2026-01-14-1768392918826-image.png)
 
 web3攻击趋向精准化+广撒网，要多多谨慎，不乱点链接，不乱下载
@@ -67,6 +78,7 @@ web3攻击趋向精准化+广撒网，要多多谨慎，不乱点链接，不乱
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
