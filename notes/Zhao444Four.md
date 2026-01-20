@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+【web3公共物品资金】
+
+【solidity walk through】
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # eth周会
 
 ## 【新闻环节】
@@ -58,6 +66,7 @@ the costs of traditional cross-border payouts
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 1⃣️ ✅完成总结任务
 
@@ -172,6 +181,7 @@ gas问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -341,6 +351,7 @@ EVM（Ethereum Virtual Machine）=**以太坊的“大脑”=专门用来运行�
 
 
 
+
 # web3安全
 
 **GoPlus token安全检测官网**
@@ -432,6 +443,7 @@ trust wallet被插入恶意后门
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -625,6 +637,7 @@ _开始构建你的自主智能体：为感知经济打造的agentic操作系统
 
 
 
+
 web3合规
 
 **合规风险1：金融与赌博混同**
@@ -700,6 +713,7 @@ web3合规
 
 
 
+
 web3运行原理
 
 **1.web3运行的起点是链上钱包，通过区块链技术进行交易，交易的过程叫出块，规制交易的方式叫合约。**
@@ -723,6 +737,7 @@ web3运行原理
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
