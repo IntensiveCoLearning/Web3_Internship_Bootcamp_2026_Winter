@@ -15,8 +15,257 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天还在啃remix的compile编译&deploy部署。
+
+* * *
+
+## 🔍 问题诊断 Diagnosis：Remix 里你到底在干什么？
+
+Remix 的核心工作流只有两步：
+
+1.  **Compile（编译）**：把 Solidity 源码变成
+    
+    -   **Bytecode（字节码）**：给 EVM 执行/部署用
+        
+    -   **ABI（接口说明）**：给 Remix/前端 JS 生成“按钮”、编码参数、解码返回值用
+        
+2.  **Deploy & Run Transactions（部署与运行）**：用你编译出来的 ABI/Bytecode
+    
+    -   **Deploy（部署）**：发一笔“创建合约交易”，得到一个 **contract address（合约地址）**
+        
+    -   **Call / Transaction（调用）**：对合约地址执行“只读调用”或“写入交易”
+        
+
+你觉得难的点在于：Web3 把一次操作拆成了**网络、签名者、gas、value、合约**这些参数（像驾驶舱）。
+
+* * *
+
+## 🧠 解题思路 Thinking：用第一性原理看 Remix
+
+只记一句话就通：
+
+> **Deploy & Run Transactions = 一个“交易构造器 Transaction Builder” + “合约启动器 Contract Launcher”。**
+
+你在这里做任何事，都在回答 5 个根问题：
+
+1.  我把请求发给谁？→ **Environment（Provider/Network）**
+    
+2.  我用谁的身份做？→ **Account（Signer）**
+    
+3.  我要执行什么？→ **Deploy / Function Call**
+    
+4.  我允许它烧多少资源？→ **Gas Limit**
+    
+5.  我要不要顺便转钱？→ **Value（ETH）**
+    
+
+* * *
+
+## 🛠️ 操作指南 Actionable Steps：调试 + 部署（最短闭环）
+
+### Part A：编译 Compile（调试入口）
+
+A1. 版本匹配（Version Compatibility）
+
+-   看 `pragma solidity ...`
+    
+-   看左侧编译器版本 `COMPILER`
+    
+
+✅ 规则：编译器版本要落在 pragma 的范围里，否则会报错（常见 pitfall）。
+
+A2. 编译失败时怎么 Debug（读 Error Log）
+
+Remix 常见报错类型（你一眼分类）：
+
+-   **ParserError**：语法/导入路径问题（比如 missing semicolon、import 找不到）
+    
+-   **TypeError**：类型不匹配/函数签名不对
+    
+-   **DocstringParsingError**：注释 NatSpec tag 不合法（你之前遇到的 `@custom:...`）
+    
+
+✅ Debug 小流程（必背）：
+
+1.  先看报错类型（Error Type）
+    
+2.  看定位：`file:line:col`（文件/行/列）
+    
+3.  看关键字：`not found / invalid / expected / mismatch`
+    
+4.  修复后再 Compile
+    
+
+* * *
+
+### Part B：部署 Deploy（Deploy & Run Transactions 驾驶舱拆解）
+
+你在 Deploy 页面看到的每一块，分别对应 Web3 的真实概念：
+
+B1. Environment（环境 / 网络 / Provider）
+
+-   ✅ **Remix VM**：内置模拟链（推荐学习用，不花真钱）
+    
+-   **Browser extension**：MetaMask（可能连测试网/主网，会花 gas）
+    
+-   **WalletConnect**：手机钱包
+    
+-   **Custom External Http Provider**：你填 RPC（连真实节点）
+    
+
+> 新手铁律：先用 Remix VM，闭环跑通再连钱包。
+
+B2. Account（账户 / 签名者 Signer）
+
+这里选的是**谁来发交易**：
+
+-   Deploy / store 这种写入行为都需要 signer（签名）
+    
+-   Remix VM 里的 100 ETH 是模拟余额
+    
+
+B3. Gas Limit（资源上限）
+
+-   **Estimated Gas**：自动估算（新手用这个）
+    
+-   **Custom**：手动上限（只在 out-of-gas 才用）
+    
+
+> Gas Limit 不是“你一定花这么多”，是“最多允许烧到这里”。
+
+B4. Value（随交易转账的 ETH）
+
+-   默认 `0 Wei`（不带钱）
+    
+-   只有函数是 **payable** 才需要填 Value
+    
+-   单位：`1 ETH = 10^18 Wei`
+    
+
+B5. Contract（选要部署的合约）
+
+从你刚编译出的合约里选：比如 `Storage`
+
+* * *
+
+### Part C：一键跑通闭环（Deploy → Write → Read）
+
+下面是你“真正理解这页”的最短实验：
+
+C1. Deploy（创建合约交易）
+
+1.  Environment 选 `Remix VM`
+    
+2.  Account 任意
+    
+3.  Contract 选 `Storage`
+    
+4.  Value = 0
+    
+5.  点 **Deploy**
+    
+
+✅ 成功标志：
+
+-   `Transactions recorded` 会从 0 变成 1
+    
+-   `Deployed Contracts` 会出现 `Storage at 0x...`（合约地址）
+    
+
+C2. Call vs Transaction（读写差异）
+
+展开 `Deployed Contracts` 里的 `Storage`，你会看到函数按钮：
+
+-   `retrieve()`（`view`）：**Call（只读调用）**
+    
+    -   不改链上状态
+        
+    -   通常不产生交易（或不计入交易记录）
+        
+-   `store(uint256)`：**Transaction（写入交易）**
+    
+    -   改链上状态
+        
+    -   一定会产生交易记录，需要 gas
+        
+
+C3. 读-写-读（验证状态变化）
+
+1.  点 `retrieve()` → 初始多半是 `0`
+    
+2.  在 `store` 输入 `123` → 点 `store`（发交易）
+    
+3.  再点 `retrieve()` → 应该变成 `123`
+    
+
+> 你能做出这三步，就说明你已经掌握了“部署与调用”。
+
+* * *
+
+### Part D：调试部署阶段常见坑（Deployment Debug Checklist）
+
+✅ 1) 点 Deploy 没反应？
+
+-   先确认你已经成功编译（没有红色 error）
+    
+-   Contract 下拉里能选到合约名
+    
+
+✅ 2) out of gas？
+
+-   切到 `Custom`，把 gas limit 调大（比如 3,000,000）
+    
+-   但对 Storage 这种简单合约通常不会发生，除非你改了复杂逻辑
+    
+
+✅ 3) 函数点了没改变？
+
+-   你点的是 `retrieve()`（只读）当然不会改变
+    
+-   你要点 `store()` 这种写入函数才会改变状态
+    
+
+✅ 4) Value 填了但报错？
+
+-   你调用的函数不是 `payable`，不能带 ETH
+    
+-   把 Value 改回 `0 Wei`
+    
+
+* * *
+
+## 📚 举一反三 Learning Point：你要带走的核心模型
+
+### 1) Web3 最核心的两类“调用”
+
+-   **Call（只读）**：`view/pure`，不改状态
+    
+-   **Transaction（写入）**：改状态，要签名，要 gas
+    
+
+### 2) Deploy 的本质
+
+-   Deploy = 发一笔**创建合约交易**
+    
+-   结果 = 产生 **合约地址**，链上保存代码（bytecode）
+    
+
+### 3) Remix 这页就是“交易构造器”
+
+你每次卡住，就按这句自检：
+
+> 我选对链了吗（Environment）？我选对身份了吗（Account）？我是在读还是在写（Call/Tx）？gas/value 合理吗？
+
+* * *
+
+![截屏2026-01-20 20.28.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Chanlawrence-free/images/2026-01-20-1768912299398-__2026-01-20_20.28.17.png)![截屏2026-01-20 20.28.24.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Chanlawrence-free/images/2026-01-20-1768912286890-__2026-01-20_20.28.24.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -163,6 +412,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -186,6 +436,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -199,6 +450,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -253,6 +505,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -353,6 +606,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -390,6 +644,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -406,6 +661,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
