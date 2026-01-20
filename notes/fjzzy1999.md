@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1.学习了Day 2: Reading and Writing to Contracts with Ethers.js
+
+1\. 核心基础设施：工具类与环境配置
+
+为了提高开发效率并确保代码可复用，建立一个工具文件（如 utils.js）至关重要。
+
+1.1 Provider 与 Signer 的职能
+
+• Provider（提供者）： 连接区块链节点的只读接口。脚本通过它获取区块高度、查询余额或解析 ENS 名称。
+
+• Signer（签名者）： 拥有私钥的实体，能够签署交易。Signer 通常需要连接到一个 Provider 才能将签署后的交易广播到网络。
+
+• 链 ID（Chain ID）： 不同网络（如 Mainnet 为 1，Rinkeby 为 4）之间通过链 ID 区分，但在代码逻辑层面，由于 EVM 兼容性，交互方式基本一致。
+
+1.2 安全协议 (OpSec)
+
+• 助记词管理： 严禁在代码中硬编码私钥。应使用本地生成的助记词文件或环境变量。
+
+• 环境变量： 使用 dotenv 库加载 .env 文件，并确保该文件已被列入 .gitignore。
+
+• 隔离原则： 建议为每个项目生成独立的助记词，并仅存入足以支付测试气费（Gas）的资金，避免因开发环境泄露导致生产资金受损。
+
+2\. 智能合约交互流程
+
+2.1 读取合约数据 (Read Operation)
+
+读取操作是免费且“脱链”的（不改变状态）。
+
+• 必需元素： 合约地址、ABI（或其特定片段）、Provider。
+
+• 示例： 脚本通过调用 mintPrice() 获取 NFT 合约的铸造价格。由于以太坊处理大数（BigNumber），通常需要使用 ethers.utils.formatEther 将 Wei 转换为可读的 ETH 数值。
+
+2.2 写入合约数据 (Write Operation)
+
+写入操作会改变区块链状态，需要支付 Gas 费。
+
+• 必需元素： 合约地址、ABI、Signer（已连接 Provider）。
+
+• Payable 函数： 某些函数（如 mint）被标记为 payable，意味着在调用时必须附带 value（原生代币）。
+
+• 金额转换： 在发送交易前，需使用 ethers.utils.parseEther("0.01") 将常用数值转换为合约可识别的 Wei 格式。
+
+3\. 技术深挖：交易剖析与 Call Data
+
+3.1 什么是 Call Data？
+
+当脚本与合约交互时，它并非直接“戳”应用，而是构建了一笔包含 data 字段的交易。
+
+• 函数选择器（Function Selector）： 合约通过 data 字段的前 4 个字节来识别用户想调用的函数。这 4 个字节是函数签名（如 mint()）的 Keccak-256 哈希值的前 4 位。
+
+• 参数编码： 函数参数会被编码并追加在选择器之后。
+
+3.2 手工构造原始交易
+
+研讨中展示了不依赖合约实例（Contract Instance），仅通过 signer.sendTransaction 手动填充 to、value 和 data 字段来调用合约的方法。这种方式揭示了 Web3 交互的本质。
+
+4\. 交易管理：Nonce 与 Gas 调优
+
+4.1 Nonce 的作用
+
+Nonce 确保交易按顺序执行且防止重放攻击。如果 Nonce 4 的交易卡住，Nonce 5 的交易将无法被打包。
+
+4.2 交易加速 (Speed Up)
+
+通过发送一笔 Nonce 相同 但 Gas Price 更高 的新交易，可以覆盖掉内存池（Mempool）中正在等待的旧交易。这一逻辑在脚本中可以通过硬编码 gasPrice 和 nonce 字段来实现，模拟了 Metamask 中的“加速”功能。
+
+5\. 实践案例：主网 DAI 代币转账
+
+通过脚本在以太坊主网上向 sanford.eth 发送 5 美元的 DAI。
+
+• ENS 解析： 使用 provider.resolveName("sanford.eth") 动态获取目标地址，而非硬编码。
+
+• ERC-20 交互：
+
+1\. 获取 DAI 的合约地址和 ABI。
+
+2\. 调用合约的 balanceOf 函数检查余额。
+
+3\. 调用 transfer(to, amount) 函数进行转账。
+
+• 观察视角： 与发送 ETH 不同，代币转账在 Etherscan 上体现为“ERC-20 Token Transfers”中的内部合约状态变更，而非原生的 Value 转移。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 学习视频Day 1: Scripting and Smart Contracts! Providers, Signers, and Wallets
 
 1\. 开发环境与基础设置
@@ -111,6 +197,7 @@ Signer 可以在不连接互联网的情况下签名消息（signMessage）。�
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 复习了021学习以太坊的第三章内容
 
 **1\. 以太坊的两大账户类型**
@@ -172,6 +259,7 @@ SELFDESTRUCT 的变更：在Dencun升级（EIP-6780）后，SELFDESTRUCT 操作�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 复习021学习以太坊
@@ -244,6 +332,7 @@ RPC 接口：节点通过 JSON-RPC 接口（如 eth\_getBalance）对外提供�
 
 
 
+
 1\. 学习视频Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending...
 
 Gas 机制的核心：交易并非简单的价值流动，而是对智能合约状态的调整；Gas 限制（Limit）防止程序陷入死循环，而最高费用（Max Fee）则是竞价块空间的关键。
@@ -273,6 +362,7 @@ M-of-N 验证：例如设置 4 个持有者，需要其中 2 人签名才能执�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -308,6 +398,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -366,6 +457,7 @@ Royalties： 创作者可以在合约中直接编程版税规则（如二次销�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -485,6 +577,7 @@ Blob 的特点是不会进入 L1 的长期状态，只会临时保存一段时�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
