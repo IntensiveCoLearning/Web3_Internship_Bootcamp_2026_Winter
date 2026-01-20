@@ -15,8 +15,376 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+\# Solidity 笔记总结（进阶与 ERC20 / EVM 篇）
+
+\## 一、EVM 与智能合约运行环境
+
+\### 1. EVM 的本质
+
+EVM 是以太坊生态中所有智能合约的运行环境，本质是一个\*\*栈式虚拟机\*\*。
+
+Solidity 编写的代码最终都会被编译为 EVM 字节码，在 EVM 中按指令顺序执行。
+
+理解 EVM 是理解 Solidity 性能优化、安全问题和存储设计的前提。
+
+\---
+
+\### 2. EVM 的四大执行区（存储区）
+
+\#### Stack（栈）
+
+\- EVM 采用栈式执行模型
+
+\- 操作数和指令按顺序入栈、出栈执行
+
+\- 用于计算，不存储长期数据
+
+\#### Storage（链上存储）
+
+\- 合约的\*\*永久存储区\*\*
+
+\- 所有状态变量最终都存储在 storage
+
+\- Gas 成本最高，是合约优化的核心关注点
+
+\#### Memory（运行时内存）
+
+\- 函数调用期间使用
+
+\- 生命周期仅限一次调用
+
+\- 不上链，成本低于 storage
+
+\#### Calldata（调用数据）
+
+\- 外部调用合约时传入的参数
+
+\- 只读
+
+\- 常用于 external 函数参数
+
+类比理解：
+
+\- storage 类似硬盘
+
+\- memory / calldata 类似运行时内存
+
+\---
+
+\## 二、Gas 成本与合约优化核心
+
+Gas 成本主要来自 **storage 的读写**：
+
+\- 第一次写入 storage：约 20,000 gas
+
+\- 修改已有 storage：约 5,000 gas（量级）
+
+优化目标：
+
+\- 尽量少存
+
+\- 尽量少改
+
+\- 减少不必要的 storage 读写
+
+\---
+
+\## 三、Solidity 开发环境与版本意识
+
+\- 推荐使用 Remix 作为学习和调试工具
+
+\- 支持私有链、编译、部署和调试
+
+\- 可查看 memory / storage 变化
+
+Solidity 版本更新频繁：
+
+\- 不同版本在安全机制和内存管理上有差异
+
+\- 教学以 ^0.8.20 为基准
+
+\- 阅读协议源码时必须关注 Solidity 版本
+
+\---
+
+\## 四、Solidity 数据类型体系
+
+\### 1. 值类型（Value Types）
+
+直接存值，存储成本相对较低：
+
+\- bool
+
+\- int / uint（支持不同位宽，位宽越小越省 gas）
+
+\- address（有类型校验，不要用 string 存地址）
+
+\- bytes32（常用于定长非地址数据）
+
+\### 2. 引用类型（Reference Types）
+
+存储的是引用，通常更消耗 storage：
+
+\- string
+
+\- 动态数组
+
+\- bytes / bytes\[\]
+
+\- mapping
+
+mapping 常用于账本结构：
+
+\- address => uint：余额
+
+\- address => address => uint：授权关系
+
+\---
+
+\## 五、ERC20 合约的核心结构设计
+
+\### 1. ERC20 的定位
+
+ERC20 是以太坊代币的标准接口规范。
+
+满足该标准的合约具备通用的代币能力。
+
+\### 2. 核心链上存储数据
+
+以下数据必须存储在 storage：
+
+\- name：代币名称
+
+\- symbol：代币符号
+
+\- decimals：精度（链上无浮点数）
+
+\- totalSupply：总发行量
+
+\- owner：合约拥有者
+
+\### 3. 账本结构
+
+ERC20 的两本核心账本：
+
+\- 余额账本`mapping(address => uint256) balances`
+
+\- 授权账本`mapping(address => mapping(address => uint256)) allowance`
+
+\---
+
+\## 六、Constructor 与初始化逻辑
+
+constructor 在合约部署时执行：
+
+\- 接收部署参数
+
+\- 初始化 name / symbol / decimals
+
+\- 设置 owner = msg.sender
+
+\- 可在构造函数中直接 mint 初始代币
+
+纯工具型合约可以不写 constructor。
+
+\---
+
+\## 七、函数设计与可见性
+
+\### 1. 函数可见性
+
+\- external：外部调用
+
+\- public：内外皆可
+
+\- internal：合约内部
+
+\- private：仅当前合约
+
+\### 2. 状态可变性修饰符
+
+\- view：读取链上状态但不修改
+
+\- pure：既不读也不改链上状态
+
+\---
+
+\## 八、ERC20 核心方法逻辑
+
+\### totalSupply
+
+\- 只读方法
+
+\- 使用 view
+
+\- 返回 uint256
+
+\### balanceOf
+
+\- 读取 balances mapping
+
+\- 参数为 address
+
+\- 返回余额
+
+\### transfer
+
+\- 参数：to、amount
+
+\- external 方法
+
+\- 不使用 view / pure
+
+\- require 校验：
+
+\- amount > 0
+
+\- to 不是零地址
+
+\- 余额充足
+
+\- 更新余额账本
+
+\- emit Transfer 事件
+
+\### approve
+
+\- 修改授权账本 allowance
+
+\- emit Approval 事件
+
+\- dApp 交互的第一步
+
+\---
+
+\## 九、事件（Event）与链上日志
+
+事件用于链上到链下同步：
+
+\- Transfer
+
+\- Approval
+
+\- Mint
+
+特点：
+
+\- 可 indexed（最多三个）
+
+\- DEX 等协议主要依赖事件，而非频繁读取 storage
+
+\- 事件是链下系统确认状态变更的主要方式
+
+\---
+
+\## 十、Mint 与 internal / external 分层设计
+
+常见设计模式：
+
+\- external 函数负责权限校验
+
+\- internal 函数负责状态变更
+
+mint 通常设计为 internal：
+
+\- 防止任何用户随意铸币
+
+\- 外部接口通过权限控制调用 internal mint
+
+\---
+
+\## 十一、Remix 中的编译、部署与调用
+
+\- 编译：检查语法与逻辑错误
+
+\- 部署：
+
+\- 合约代码 → 字节码 → 链上
+
+\- constructor 在部署时执行
+
+\- 调用：
+
+\- view / pure 不消耗 gas
+
+\- 写操作需要交易和 gas
+
+\- 私有链模式适合快速调试
+
+\---
+
+\## 十二、错误与回滚机制
+
+\- require：条件校验 + 字符串错误信息（gas 较高）
+
+\- revert：主动回滚，可配合自定义 error
+
+\- assert：逻辑上不应失败的断言，失败消耗全部剩余 gas
+
+推荐：
+
+\- 使用自定义 error 替代字符串，节省 gas
+
+\---
+
+\## 十三、unchecked 与溢出检查
+
+\- Solidity 0.8+ 默认开启溢出检查
+
+\- unchecked 可跳过检查，节省少量 gas
+
+\- 初学阶段不建议使用
+
+\---
+
+\## 十四、modifier（修饰符）机制
+
+modifier 用于抽象前置条件：
+
+\- 将 require 逻辑集中复用
+
+\- 常见：onlyOwner、重入保护
+
+\- 降低重复代码与部署成本
+
+\---
+
+\## 十五、助记词陷阱与抢跑机制
+
+常见两类风险：
+
+1\. 合约层限制
+
+\- 使用 modifier 限制转账权限
+
+\- 表面有余额，实际无法转出
+
+2\. 抢跑 Bot
+
+\- 监听交易或事件
+
+\- 检测到转入 gas 后，用更高 gas 抢先转走
+
+\- 本质是链上可见性 + 优先级机制
+
+\---
+
+\## 十六、EVM 执行模型与安全问题
+
+\- EVM 是单线程、顺序执行
+
+\- 不存在 Web2 意义上的并发
+
+\- 主要风险是\*\*重入攻击\*\*
+
+\- 通过重入锁或 modifier 防护
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # Solidity 学习笔记
 
 ## **一、基础语法与核心概念**
@@ -202,6 +570,7 @@ revert MyError(msg.sender, _i);
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 # Web3求职分享会笔记——技术岗
 
 **一、总体认知**
@@ -386,6 +755,7 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ![第一次例会.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-16-1768578807139-_____.jpg)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -394,11 +764,13 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 
 
+
 ![AI及其基础概念.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-15-1768491304447-AI______.jpg)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -423,6 +795,7 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 
 
+
 今天的学习让我对 Web3 的运行原理有了一个更清晰、也更现实的认识。相比之前停留在概念层面的理解，这次更多是在理解“它到底是怎么跑起来的”。从钱包生成、私钥和助记词开始，我第一次真正意识到安全并不是一句口号，而是使用 Web3 的前提条件。私钥一旦泄露，资产几乎不可追回，这种“完全自我负责”的模式既赋权，也极度考验个人的安全意识。
 
 在交易和签名部分，我逐渐理解了为什么区块链交易不可篡改却又需要等待确认时间。交易不是发出去就立刻“绝对安全”，而是要经过广播、打包、共识，直到区块被最终确认。这让我意识到，Web3 在设计上更追求系统整体的可信，而不是单次操作的即时性。Gas 机制和抢跑原理也让我看到，所谓“去中心化”，依然是一个用经济激励来约束行为的系统。
@@ -434,6 +807,7 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
