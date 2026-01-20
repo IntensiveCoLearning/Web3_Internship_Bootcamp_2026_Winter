@@ -118,10 +118,71 @@ LXDAO 论坛（创建提案）
 Elon@0xElonC
 
 Top交易所合约工程师
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768912496840-image.png)
+
+stack：栈
+
+storage：存储
+
+memory&code
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768912650557-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768912868065-image.png)
+
+定长字节：byte32
+
+引用类型：存储方式不同
+
+mapping：映射类型
+
+动态字节数组
+
+## ERC20合约
+
+需要代币的符号、名称、精度、发行量、代币合约的拥有者
+
+string public 直接用name存储
+
+存储上链数据：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768913319650-image.png)
+
+mapping：用户持有代币的多少
+
+address：其他用户来铸造or转让代币的地址
+
+部署合约需要一个**构造函数constructor**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768913464575-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768913504105-image.png)
+
+区块链：世界各地人维护账本的数据库
+
+定义function方法
+
+external读取数据
+
+view标明这个数据是只读的
+
+pure既不会修改也不会读取区块链的状态
+
+查询用户余额
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768914071389-image.png)
+
+external 更省gas
+
+external 函数的参数来自 **calldata（只读，不拷贝）**
+
+销毁的话就转到空地址
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768914218276-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-20-1768914562331-image.png)
+
+internal铸造
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -172,6 +233,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -461,6 +523,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -502,6 +565,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -818,6 +882,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -1093,6 +1158,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -1200,6 +1266,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
