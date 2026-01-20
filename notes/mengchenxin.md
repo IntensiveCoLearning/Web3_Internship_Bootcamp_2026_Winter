@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # [https://www.wtf.academy/zh/course/solidity101/Function](https://www.wtf.academy/zh/course/solidity101/Function)的二三章
 
 Solidity中的变量类型主要分为值类型、引用类型和映射类型，其中值类型在赋值时直接传递数值，是合约开发的基础。常见值类型包括五大类，各有其特性与适用场景。
@@ -31,6 +37,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 # 今天刚刚接触solidity语言,以下是我的主要两点感受
 
 -   **入门友好但进阶有门槛**：Solidity 语法贴近 JavaScript/TypeScript，对有前端或后端基础的开发者来说，写简单合约（如计数器、转账）很容易上手；但一旦涉及链上安全、gas 优化、底层原理（如存储布局、ABI 编码），就需要深入理解区块链特性，进阶门槛明显高于普通编程语言。
@@ -40,6 +47,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # 区块链核心基础与关键原理
@@ -53,6 +61,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -113,6 +122,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 
 
+
 [https://www.bilibili.com/video/BV1gCJ8zNELv/?spm\_id\_from=333.788.top\_right\_bar\_window\_history.content.click&vd\_source=b65fb6471899fe6858fba22e46841906](https://www.bilibili.com/video/BV1gCJ8zNELv/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=b65fb6471899fe6858fba22e46841906)
 
 今天看了ETHpanda Talk,原来都是布老师的系列阿.布老师可以的,一个人撑着一个系列
@@ -135,6 +145,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 
 
+
 # unphishable
 
 今天主要是刷题
@@ -144,6 +155,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -187,6 +199,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
