@@ -15,8 +15,84 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天做入门技术的一个任务，啃完了 Ethernaut 的前三关，花的时间比自己想象中的要久，作为一个 Solidity 初学者，要一行一行读懂智能合约还是有点难度的。通过 Hello Ethernaut、Fallback 和 Fallout 这三关，我从完全没用过浏览器控制台，到能看懂合约逻辑、定位漏洞并写出攻击代码，感觉自己被硬生生推着跨了一小步门槛，过程很痛苦，但进步还挺大。
+
+## 第 0 关：Hello Ethernaut
+
+这一关其实没有真正的漏洞，更像是一个“新手村教程”。我第一次学会在浏览器的 Console 里，用 JavaScript 去调用链上的合约方法，比如
+
+```
+await contract.infoNum()
+```
+
+看到返回各种谜语一样的字符串提示，然后根据提示一步步调用下一个函数。以前看教程都只说“合约有函数”，但我第一次意识到：在前端，其实是用 Web3/ethers 这类库，把合约当成一个 JS 对象 contract，然后 contract.xxx() 就是在发起 RPC 调用。为了拿到真正的返回值，我得在 Console 里加上 await，不然拿到的只是一个 Promise，打印出来就是 "\[object Promise\]"。这让我第一次搞明白了异步和 await 在 Web3 里的实际用法：await 就是“等链上的调用完成，把结果拿回来再继续”。
+
+在这一关里，密码本身是通过
+
+```
+contract.password() 
+```
+
+这种公开的 getter 暴露出来的，最后再用
+
+```
+contract.authenticate(password) 
+```
+
+通关。对我来说，这一关最大的收获不是“破解”，而是学会了三件事：
+
+-   怎么在 Ethernaut 里点 “Get new instance” 拿到自己的靶场合约实例；
+    
+-   怎么在浏览器控制台里用
+    
+
+```
+await contract.xxx() 
+```
+
+和合约交互；
+
+-   以及怎么理解“public 变量自动带 getter 方法”这个 Solidity 特性——比如
+    
+
+```
+string public password; 
+```
+
+会自动生成 password() 让外部读。
+
+## 第 1 关：Fallback
+
+Fallback 这关的合约让我认真看了一份完整 Solidity 源码，并且从“读代码”到“设计攻击步骤”完整走了一遍。合约核心是：用 mapping(address => uint256) public contributions; 记录每个地址的贡献额，用 address public owner; 记录当前 owner，在构造函数里把部署者设成 owner 并把 contributions\[owner\] 设成一个巨大的值。只有 owner 才能调用 withdraw() 把余额提走，这里的权限控制通过 modifier onlyOwner 和 require(msg.sender == owner) 实现，这让我第一次明确理解了 modifier 的语法：\_ 代表真正的函数体插入在这里执行。
+
+真正有意思的是两个入口：一个是 contribute()，一个是 receive()。contribute() 里有 require(msg.value < 0.001 ether);，然后把 msg.value 加到 contributions\[msg.sender\] 上；如果当前地址的贡献超过 owner，就把 owner 改成这个地址。另一个是 receive() external payable：只要我之前贡献过（contributions\[msg.sender\] > 0），再给合约发一笔纯转账（带 msg.value > 0、没有调用 data），这个 receive() 就会被触发，直接 owner = msg.sender;。这让我第一次理解了 Solidity 里的特殊函数：receive() 是“收钱但没有 data 时会触发的函数”，而它如果设计得不安全，就会成为一个隐藏的攻击入口。
+
+在实战通关时，我写出了看起来“有点像脚本”的 Console 调用流程：先 await contract.contribute({ value: web3.utils.toWei("0.0005","ether") })，再 await contract.sendTransaction({ value: web3.utils.toWei("0.0005","ether") })，利用 web3.utils.toWei("0.0005","ether") 把人类好读的 ETH 小数转换成链上用的 wei 整数。之前我完全不知道 web3.utils.toWei 是干嘛的，现在我知道凡是给 value 填 ETH 数的时候，都应该想到它。最后，成为 owner 以后，再 await contract.withdraw() 把合约余额清零。这个过程把很多零散概念串起来：msg.value 的单位是 wei、public payable 函数可以收钱、合约地址本身也有 balance，以及“隐藏在 fallback/receive 的权限漏洞”。
+
+## 第 2 关：Fallout
+
+Fallout 这一关让我感受到“一个小小的命名错误，会直接变成致命漏洞”。合约用 using SafeMath for uint256; 引入了 OpenZeppelin 的 SafeMath，对 allocations 这个 mapping(address => uint256) 做安全加法，同时定义了 address payable public owner; 来保存 owner。但是非常关键的一行是：function Fal1out() public payable { ... }。注释写着 /\* constructor \*/，但函数名实际上是 Fal1out（中间是数字 1），而合约名是 Fallout。在 0.6 版本里，构造函数应该写成 constructor()，这种“同名函数当构造函数”的老写法已经失效，所以这段其实是一个普通的 public 函数，任何人都可以后来调用。里面的逻辑却是构造函数该干的事：owner = msg.sender; allocations\[owner\] = msg.value;。也就是说，只要我随时调用 Fal1out()，就能把 owner 改成自己。
+
+这关的实战非常直接，我觉得甚至比第一关还简单，也有可能是因为我第一关仔细研究过后打好了基础。我先 await contract.owner() 看当前 owner，然后直接 await contract.Fal1out()（可选地附带一点 value），再查一次 owner，就已经变成了我的地址。拿到所有权之后，还可以调用 collectAllocations()：这个函数被 onlyOwner 修饰，只允许 owner 调用，内部是 msg.sender.transfer(address(this).balance);，一行代码把合约所有余额转给当前 owner。相比上一关，这一关的“攻击代码”反而更短，但难点在于对语言细节的理解——构造函数语法的变化、函数名和合约名严格一致的重要性、以及 address payable 和 .transfer 的搭配。
+
+这一关也让我重新审视注释的可信度：代码里写着 `/* constructor */`，但编译器真正认的是语法和名字，不是注释。作为审计或者攻防的一方，不能只相信注释说明，要精确看函数签名和 Solidity 版本。在 0.6+ 里如果还写“同名函数构造”，反而会变成一个任何人都能调用的后门。
+
+## 收获
+
+通关前三关之后，我最大的变化是：不再把智能合约当作“黑盒 API”，而是开始习惯先看源码、找 owner 是怎么被设置的、有哪些函数能修改 owner，再根据控制台能调用的接口，设计出一条通往目标的交互路径。在 Hello Ethernaut 里，我只是机械地照着提示调 infoNum()、info42()、theMethodName()、password()、authenticate()；在 Fallback 里，我开始关注 receive() 和 contribute() 的条件组合，意识到“特殊函数 + 条件不严”就是攻击面；到了 Fallout，我则专注于构造函数和权限初始化，体会到版本变更对安全的影响。
+
+技术细节上，我也习惯了几个模式：在浏览器 Console 里，所有链上交互几乎都要加 await 才能拿到返回值；如果遇到金额，就用 web3.utils.toWei("数字","ether") 转成 wei；遇到 mapping、modifier、receive、constructor 时，会顺手想一想它们可能带来的攻击面。对一个刚入门 Solidity 的我来说，这三个小关更像是一个“安全视角”的语法练习：每一行代码不仅是“怎么写”，更是“写错会怎样被人利用”。这也让我对后面更复杂的 DeFi 合约和 Web3 实习计划有了点底气——至少，现在再看到一份合约，不会完全不知道从哪里下手看起了。
+
+![截屏2026-01-20 17.37.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yanzhuchen96-creator/images/2026-01-20-1768903496433-__2026-01-20_17.37.50.png)
+
+最后感慨一下，很感谢 OpenZeppelin 能设计出这么好的“游戏式实战编程”，相比看视频和看书简直”无痛“太多了，开发者也很会给情绪价值，每通过一个关卡都有“牛逼”霸屏。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # 1.19 学习笔记
 
 ## ZK Vote 学习笔记
@@ -134,6 +210,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 
 
+
 ## **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 AI提炼总结**
 
 本次分享围绕一个从 ERC-721 演进出来的新协议 **ERC-7962** 展开，目的是在保持数字藏品（NFT）属性的同时，引入更强的隐私保护和更好的用户体验。讲者首先回顾了传统 NFT 的特点：基于 ERC-721 标准，每个 token 的 owner 是一个公开可查的地址，谁持有什么资产、做过哪些交易都可以在链上被分析。这样带来了两个问题，一是隐私缺失，容易被构建“资产图谱”；二是对普通 Web2 用户不友好，需要自己装钱包、管私钥、付 gas 费，这阻碍了 Web2 用户向 Web3 迁移。
@@ -185,6 +262,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -242,6 +320,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -328,6 +407,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -376,6 +456,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -470,6 +551,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 # 1.13 学习笔记
 
 ## **节点和客户端的关系以及客户端间的协同配合**
@@ -537,6 +619,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
