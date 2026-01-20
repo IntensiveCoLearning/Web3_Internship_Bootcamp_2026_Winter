@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天出差，没学太多，主要是两场分享会。一场是投票治理加良心杀游戏，一场是简单的solidity回顾主要通过erc-20的功能实现。wa老师作业的第一个问题：x402是之前就有的网络协议，主要用于网页支付，erc-8004通过设置链上的身份注册调用x402协议以及信誉评价体系，达成agent2agent之间的trustless支付。前段时间有热烈的讨论和围绕erc-8004的构建吧，至于说大范围的应用与实际问题的解决感觉还不是很完全。应用这部分确实没充分调研只能说点自己的感觉。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天有点松散，效率不太高，主要对cheatcode进行了学习以及一下总结：
 
 vm.prank(PLAYER)：下一个非vm操作由PLAYER执行
@@ -39,11 +45,13 @@ vm.warp(block.timestamp + 1):set block.timestamp.(block.timestamp add 1 sec)
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 今天完成了lxdao周会的自我介绍，然后以及成为member的资料，明天多学点吧，摸鱼好几天了。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 今天学的不多，主要是分享会还有周例会内容，周六日准备把solidity剩下部分做完，学习下uniswap这几个系列。
@@ -54,11 +62,13 @@ vm.warp(block.timestamp + 1):set block.timestamp.(block.timestamp add 1 sec)
 
 
 
+
 今天没有学习太多，简单看了下实习手册的智能合约部分，晚上听了分享会，大概总结为erc-8004借助x402为ai agent提供身份，可验证性Tee并引入评价机制，spoonos优化了ai-agent执行erc-8004并上链的操作。之前就参加过erc-8004的残酷共学，那时候还是啥也不懂，现在稍微能明晰一些。或许后面可以尝试下erc-8004与spoonos。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -89,6 +99,7 @@ constructor 是部署时执行的初始化逻辑，interface 中不能存在。�
 
 
 
+
 今天没有学太多，先设定下四周的目标吧：
 
 岗位方向：优先技术岗 目标：多学习，找到个较满意的实习机会或者工作
@@ -102,6 +113,7 @@ constructor 是部署时执行的初始化逻辑，interface 中不能存在。�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
