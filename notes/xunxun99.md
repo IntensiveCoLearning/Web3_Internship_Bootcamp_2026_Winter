@@ -32,6 +32,7 @@ timezone: UTC+8
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
 
+
 一、行业赛道全览
 
 二、web3工作方式
@@ -45,6 +46,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 一、以太坊概念
@@ -81,6 +83,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
