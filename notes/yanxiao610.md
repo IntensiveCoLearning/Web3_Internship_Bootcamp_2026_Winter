@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天没学多少东西，主要就是试着在remix中写了些东西
+
+这个是进行转账操作
+
+```
+function withdraw(uint256 amount) public {
+    // 重入锁第一步：检查当前函数是否正在被执行
+    // 如果 locked == true，说明已经有人在执行 withdraw，直接拒绝
+    require(!locked);
+
+    //  上锁：从现在开始，任何再次进入 withdraw 的尝试都会失败
+    locked = true;
+
+    //  校验余额是否足够
+    // 防止用户取超过自己余额的钱
+    require(balances[msg.sender] >= amount);
+
+    //  先扣余额（Effects）
+    // 这是安全的核心：先更新链上状态，保证余额不会被重复使用
+    balances[msg.sender] -= amount;
+
+    //  外部调用：把 ETH 转给调用者
+    // 使用 call 而不是 transfer，更通用，但也更危险
+    // 所以必须放在“扣余额”之后
+    (bool ok, ) = payable(msg.sender).call{value: amount}("");
+
+    //  检查转账是否成功
+    // 如果失败，整个交易回滚，上面的扣余额也会一起回滚
+    require(ok);
+
+    //  解锁：函数执行完毕，允许下一次调用 withdraw
+    locked = false;
+}
+```
+
+这个是看教程中的例题
+
+```
+contract SimpleStorage {
+    // 这个变量用来存一个数字
+    uint256 public myNumber;
+
+    // 写入函数：把数字存进去 (要花 Gas)
+    function store(uint256 _num) public {
+        myNumber = _num + 1;//数字加1
+    }
+
+    // 读取函数：把数字读出来 (免费)
+    function retrieve() public view returns (uint256) {
+        return myNumber;
+    }
+}
+```
+
+因为我有编写代码的经历。所以相对来讲还是比较容易接受这个编译器和语法的
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # **Solidity 转账与重入安全**
 
 ## **一、重入**
@@ -148,6 +208,7 @@ require(ok);
 
 
 
+
 ## 1 Solidity 是干嘛的
 
 Solidity 不是普通程序语言， 它是用来 **写链上规则的**。
@@ -269,11 +330,13 @@ require(msg.sender == owner);
 
 
 
+
 今天有点事，请假一天
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -414,6 +477,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -661,6 +725,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 
 
+
 # **Web3 安全与合规**
 
 * * *
@@ -778,6 +843,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -957,6 +1023,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
