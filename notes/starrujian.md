@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+![794d0b6744e32fd71cd3ed74e44aba97.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-20-1768917575078-794d0b6744e32fd71cd3ed74e44aba97.jpg)![4adc12f93e6c4ad7d8b6d6ddbbe31e2c.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-20-1768917585309-4adc12f93e6c4ad7d8b6d6ddbbe31e2c.jpg)
+
+参加了co-learning  
+参加了Web3 公共物品资金分配第一节课分享会，Solidity Walk Through分享会  
+完成了challenge1
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ![bf66fae7291672005dd4623ad4352df9.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830919055-bf66fae7291672005dd4623ad4352df9.jpg)![475d85a82545a2967b25533a8a189044.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830934965-475d85a82545a2967b25533a8a189044.jpg)![316426d83026d5142409a5a6b524eda9.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830970895-316426d83026d5142409a5a6b524eda9.jpg)![ff44489beab3b90ee5691a018dcfd475.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830991583-ff44489beab3b90ee5691a018dcfd475.jpg)
 
 学习了Web3 实习手册智能合约开发部分，复习了solidity语法  
@@ -27,6 +37,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-18-1768735198203-image.png)
 
   
@@ -36,6 +47,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 学习使用了notion\\notebooklm进行电子笔记制作和思维导图制作.  
@@ -277,6 +289,7 @@ text
 
 
 
+
 ![屏幕截图 2026-01-16 221103.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573694758-_____2026-01-16_221103.png)![屏幕截图 2026-01-16 222134.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573713152-_____2026-01-16_222134.png)![屏幕截图 2026-01-16 222339.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573747267-_____2026-01-16_222339.png)
 
 今天参加了co-learning,了解了很多关于推特运营知识。  
@@ -290,6 +303,7 @@ text
 
 
 
+
 ![a58869e1a7314e3274685058fd6022d6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-15-1768487495398-a58869e1a7314e3274685058fd6022d6.jpg)![35533a7d179db624edf96fc1f96e5248.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-15-1768487508084-35533a7d179db624edf96fc1f96e5248.jpg)
 
 参加了co-learning,了解了一些参与项目时的事项和推特运营方法。  
@@ -299,6 +313,7 @@ text
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -320,6 +335,7 @@ text
 
 
 
+
 ![74c3021506f97df351d6cf647edd713f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317934329-74c3021506f97df351d6cf647edd713f.jpg)![17ab3b4e386b1201205ca0dbedd78906.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317946669-17ab3b4e386b1201205ca0dbedd78906.jpg)![abe735b02cc10522c4b56fb0f046bccb.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317955707-abe735b02cc10522c4b56fb0f046bccb.jpg)![4fdc8074d269deec2fcf2b0f858173fc.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317980780-4fdc8074d269deec2fcf2b0f858173fc.jpg)
 
 今天参加了线上co-learning  
@@ -330,6 +346,7 @@ text
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
