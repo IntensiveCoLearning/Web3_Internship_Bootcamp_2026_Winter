@@ -22,10 +22,183 @@ Web3 实习计划 2025 冬季实习生
 2026/01/20 总体学习计划如下：
 
 -   Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)
+    
+
+## **Web3 实习手册**[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)**阅读**
+
+## 一、Dapp 架構速記
+
+### 1) 架構元件與資料流
+
+| 元件 | 在做什麼 | 你要掌握的接口 / 產物 | 典型輸出 |
+| --- | --- | --- | --- |
+| 前端 UI | 顯示狀態、發起互動 | Provider / Wallet 注入、合約 ABI、合約地址 | 讀狀態、送交易 |
+| 錢包 | 身分與簽名器 | eth_requestAccounts、交易簽名 | 已簽名交易 |
+| RPC 節點 | 讀鏈、發送交易、訂閱事件 | JSON-RPC（HTTP / WebSocket） | balance、receipt、logs |
+| 智能合約 | 鏈上邏輯與狀態機 | Solidity、事件 Events、合約介面 | 狀態改變 + Logs |
+| Indexer | 把 Events 變成可查詢資料 | 事件解析、DB schema、同步策略 | PostgreSQL / API |
+| 去中心化存儲 | 放大檔案與非結構化資料 | IPFS / Arweave | metadata、圖片、文件 |
+
+### **2) 開發流程拆解**
+
+| 階段 | 核心輸入 | 核心輸出 | 驗收標準 |
+| --- | --- | --- | --- |
+| 需求分析 | 功能與風險假設 | 合約介面草案 + UX 流程 | 能列出狀態、權限、事件 |
+| 合約開發 | Solidity、測試 | 合約 + 測試用例 | 測試通過、事件完整 |
+| Indexer | Events | 可查詢資料庫 / API | 同步穩定、可重放 |
+| 前端開發 | ABI + 地址 | 可用 UI | 完成讀寫、錯誤處理 |
+| 部署上線 | 測試網 → 主網 | 合約地址、前端部署 | Etherscan 可驗證、監控就緒 |
+
+## 二、以太坊開發環境：工具選型表
+
+### 1) Foundry vs Hardhat vs Remix
+
+| 工具 | 定位 | 你會用到的核心命令 / 功能 | 適合場景 |
+| --- | --- | --- | --- |
+| Foundry | 高性能合約開發套件 | forge（build/test/deploy）、anvil（本地節點）、cast（命令行交互) | 重度合約工程、測試與腳本化部署 |
+| Hardhat | JS 生態的以太坊框架 | hardhat node、本地部署腳本 | 與前端 / TS 生態整合、團隊協作 |
+| Remix IDE | 免安裝的快速試驗場 | 編譯、部署、互動、檢視交易 | 新手入門、快速驗證想法 |
+
+### **2) 最小環境清單**
+
+| 類別 | 必要項 | 補充 |
+| --- | --- | --- |
+| 基礎 | Node.js（nvm 管理）、npm / yarn、Git | 用 LTS 版本降低相依性風險 |
+| 合約工具鏈 | Foundry 或 Hardhat | 二選一即可起步 |
+| 常用依賴 | OpenZeppelin、Chainlink 測試環境 | 優先用成熟庫做權限、重入保護等 |
+
+## 三、RPC 節點：從概念到工程落地
+
+### 1) RPC 的職責地圖
+
+| RPC 能力 | 對應行為 | 產品中會用在哪 |
+| --- | --- | --- |
+| 讀鏈 | 查餘額、合約狀態、區塊、Gas 價格 | 首頁資料、持倉、歷史 |
+| 發交易 | 廣播已簽名交易、查確認數、估 Gas | swap、stake、mint |
+| 事件 | eth_getLogs、WebSocket 訂閱事件 | 通知、Indexer、即時 UI 更新 |
+
+### **2) 常用 JSON-RPC 方法速查**
+
+| 方法 | 用途 | 該記住的點 |
+| --- | --- | --- |
+| eth_getBalance | 查地址餘額 | params 帶 block tag（latest |
+| eth_call | 只讀呼叫合約 | 不改狀態、通常不付 Gas |
+| eth_sendTransaction | 發送交易 | 實務上多由錢包簽名後走 provider |
+| eth_getTransactionReceipt | 查回執 | 看 status、gasUsed、logs |
+| eth_getLogs | 查事件 | Indexer 的基礎能力 |
+
+## 四、Solidity：最小可用知識面
+
+### 1) 型別與資料結構
+
+| 類別 | 代表型別 | 用途 | 注意點 |
+| --- | --- | --- | --- |
+| 基礎 | bool、uint / int、address、bytes、string | 狀態、計算、地址、序列化資料 | bytes / string 的 Gas 成本與存儲策略 |
+| 複合 | array、mapping、struct、enum | 集合、索引、結構化資料 | mapping 不可遍歷，常需 Indexer 輔助 |
+
+### **2) 可見性與狀態修飾符（合約介面設計核心）**
+
+| 維度 | 選項 | 何時用 |
+| --- | --- | --- |
+| 可見性 | public / external / internal / private | external 多用於對外接口且更省 Gas；internal 給繼承或內部模組 |
+| 狀態修飾 | pure / view / payable / 無修飾 | read-only 用 view；收款用 payable；其餘按是否改狀態 |
+
+### **3) 合約結構與事件**
+
+| 結構元素 | 作用 | 實務建議 |
+| --- | --- | --- |
+| pragma + license | 指定編譯器版本與授權 | 版本鎖定避免編譯差異 |
+| 狀態變數 | 永久存儲於鏈上 | 常量 constant、immutable 的使用時機要清楚 |
+| 函數 | 讀寫狀態、執行業務 | 對外接口要搭配事件與權限 |
+| 事件 Events | 記錄狀態變化、供前端 / Indexer 監聽 | 重要動作必打事件，indexed 用在查詢維度 |
+
+## **五、Remix 實操：把閉環跑通**
+
+| 步驟 | 在 Remix 做什麼 | 驗收 |
+| --- | --- | --- |
+| 編譯 | 選編譯器版本、Compile | 無 error / warning |
+| 部署 | 選環境（測試網 / 注入錢包）、Deploy | 拿到合約地址 |
+| 互動 | 呼叫函數（write）並簽名送出交易 | Etherscan 看到交易與 Logs |
+| 讀取 | 使用 call 讀狀態或讀 mapping / view function | 前端可同步展示 |
+
+## **六、交易與 Gas：產品視角的必要理解**
+
+| 概念 | 定義 | 對產品的影響 |
+| --- | --- | --- |
+| call | 只讀模擬執行，不改狀態 | 適合頁面資料讀取，通常不付 Gas |
+| send | 交易上鏈改狀態 | 需要錢包簽名、付 Gas、等待確認 |
+| receipt | 交易回執 | 用於更新 UI、顯示成功 / 失敗、解析 logs |
+| events / logs | 合約發出的可索引訊號 | Indexer 與通知的核心輸入 |
+
+## **七、部署到測試網：檢查清單**
+
+| 事項 | 目的 | 要保存的關鍵產物 |
+| --- | --- | --- |
+| 選測試網（Sepolia / Holesky） | 與主網隔離風險 | chainId、RPC URL |
+| 部署合約 | 生成鏈上地址 | 合約地址、部署者地址 |
+| 觸發事件並在瀏覽器檢視 | 驗證 write path 正常 | 交易 hash、event logs |
+
+## 八、前端整合：從 ABI 到可用原型
+
+| 階段 | 動作 | 失敗時要處理的錯誤類型 |
+| --- | --- | --- |
+| 初始化 | 檢測 Web3 provider 並連線 | provider 不存在、網路不匹配 |
+| 授權 | eth_requestAccounts | 使用者拒絕授權 |
+| 實例化 | ABI + 合約地址建立合約實例 | 地址無效、ABI 不匹配 |
+| 讀取 | .call() 讀狀態 | RPC 超時、資料不同步 |
+| 寫入 | .send() 送交易並等待 receipt | Gas 不足、交易被拒、revert |
+
+## 九、高階內容：優化、安全、審計、協作、L2
+
+### 1) Gas 優化速查
+
+| 技巧 | 目標 | 典型做法 |
+| --- | --- | --- |
+| 減少 storage 操作 | 降低最貴的 SSTORE / SLOAD 成本 | 先讀到 memory 再一次寫回 |
+| 位壓縮 | 更省存儲槽位 | 用 uint128 等打包 struct |
+| 迴圈優化 | 降低重複讀取與運算 | cache length、用 ++i |
+| external 優先 | 降低 calldata 複製成本 | 對外接口用 external |
+
+### **2) 常見漏洞與防護**
+
+| 漏洞 | 典型成因 | 防護要點 |
+| --- | --- | --- |
+| 重入 Reentrancy | 外部 call 回調重進入 | Checks-Effects-Interactions、ReentrancyGuard |
+| 預言機操縱 | 價格源不可靠 | Chainlink、多源驗證、TWAP |
+| 溢出 / 下溢 | 舊版或 unchecked | Solidity 0.8+、謹慎使用 unchecked |
+| 權限缺失 | 管理函數未保護 | onlyOwner、AccessControl、多簽 |
+| 未初始化代理 | proxy 未初始化被接管 | 初始化流程與防呆 |
+| 三明治 / 搶跑 | MEV 前後夾擊 | 交易保護、滑點與路由策略 |
+
+### **3) 合約審計：工具與流程**
+
+| 類別 | 工具 / 方法 | 解決什麼 |
+| --- | --- | --- |
+| 靜態分析 | Slither、MythX 等 | 規範問題、已知漏洞掃描 |
+| 動態測試 | Fuzzing / property testing | 邊界條件與攻擊模擬 |
+| 人工 Review | 資深審計員審業務邏輯 | 邏輯漏洞與經濟攻擊面 |
+| 報告輸出 | Audit report | 問題分級、修復建議 |
+
+### **4) GitHub 協作與 PR 流程**
+
+| 主題 | 建議做法 |
+| --- | --- |
+| 分支策略 | main / develop / feature / fix / release |
+| commit 規範 | feat、fix、docs、refactor、test、chore |
+| PR 檢查 | 測試通過、lint 通過、文件齊全、至少 1 位 reviewer |
+| 開源禮儀 | 變更配測試與文件、公開透明溝通、重大改動走 Discussion |
+
+### **5) Layer 2：Rollup 對比**
+
+| 類型 | 原理 | 優點 | 缺點 |
+| --- | --- | --- | --- |
+| Optimistic Rollup | 欺詐證明期 | EVM 相容、成本低 | 提現延遲（文中給出 1–2 週量級） |
+| ZK Rollup | 零知識證明 | 安全性高、可快速提現 | 開發難、EVM 相容性不完整 |
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 2026/01/19 总体学习计划如下：
@@ -122,6 +295,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -181,6 +355,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -216,6 +391,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -295,6 +471,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -409,6 +586,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -584,6 +762,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -722,6 +901,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
