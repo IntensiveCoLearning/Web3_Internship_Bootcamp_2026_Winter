@@ -15,8 +15,318 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# Elon 老師 Solidity 課程心得
+
+## 核心收穫：從 EVM 底層理解 Solidity
+
+這堂課最有價值的地方，不是教語法，而是從 **EVM 的運行機制** 出發來理解 Solidity。這讓我意識到：學 Solidity 不能只當成「又一個程式語言」，而是要理解它背後的執行環境。
+
+### EVM 四大執行區的直覺理解
+
+| 執行區 | 類比 | 特性 | Gas 成本 |
+| --- | --- | --- | --- |
+| Stack | CPU 暫存器 | 棧式運算，指令入棧出棧 | 最低 |
+| Storage | 硬碟 | 永久上鏈，合約狀態存這 | 極高（寫入 ~20,000 gas） |
+| Memory | RAM | 函數執行期間的臨時空間 | 中等 |
+| Calldata | 函數參數 | 唯讀，用戶傳入的輸入數據 | 低 |
+
+**關鍵洞察**：合約優化的核心就是「少碰 Storage」。初始化寫入約 20,000 gas，修改約 5,000 gas。這個量級差異直接決定了合約設計的方向。
+
+* * *
+
+## 資料型別的 Storage 意識
+
+### 值類型 vs 引用類型的本質差異
+
+這不只是語法差異，而是 **storage 開銷的差異**：
+
+**值類型**（直接存值，成本可控）：
+
+-   `bool`：布林值
+    
+-   `uint` / `int`：整數，可指定位寬（uint8 ~ uint256）
+    
+-   `address`：地址類型，有內建檢查
+    
+-   `bytes32`：定長字節
+    
+
+**引用類型**（會開新空間，成本更高）：
+
+-   `string`：字串
+    
+-   動態陣列
+    
+-   `bytes` / `bytes[]`
+    
+-   `mapping`
+    
+
+**實務原則**：
+
+```solidity
+// ❌ 浪費 storage
+string userAddress = "0x1234...";
+
+// ✅ 正確做法
+address userAddress = 0x1234...;
+```
+
+位寬選擇也影響成本：確定數值不會超過 255？用 `uint8` 而非 `uint256`。
+
+* * *
+
+## ERC20 的兩本賬本設計
+
+這是理解代幣合約的核心 mental model：
+
+```solidity
+// 賬本一：餘額賬本
+mapping(address => uint256) balances;
+
+// 賬本二：授權賬本（雙層 mapping）
+mapping(address => mapping(address => uint256)) allowance;
+```
+
+**授權賬本的結構**：`allowance[owner][spender] = amount`
+
+-   owner：代幣持有者
+    
+-   spender：被授權者（通常是 DeFi 協議）
+    
+-   amount：授權額度
+    
+
+這解釋了為什麼與 DeFi 協議互動時，第一步總是 **approve**。
+
+* * *
+
+## 函數可見性與狀態修飾符
+
+### 可見性四種層級
+
+| 修飾符 | 外部可調用 | 繼承合約可用 | 內部可用 |
+| --- | --- | --- | --- |
+| external | ✅ | ❌ | ❌ |
+| public | ✅ | ✅ | ✅ |
+| internal | ❌ | ✅ | ✅ |
+| private | ❌ | ❌ | ✅ |
+
+### 狀態可變性
+
+| 修飾符 | 讀取鏈上狀態 | 修改鏈上狀態 |
+| --- | --- | --- |
+| view | ✅ | ❌ |
+| pure | ❌ | ❌ |
+| （無） | ✅ | ✅ |
+
+**設計模式**：`external` + `internal` 分層
+
+```solidity
+// 外部接口：權限校驗
+function mint(address to, uint256 amount) external onlyOwner {
+    _mint(to, amount);
+}
+
+// 內部邏輯：實際狀態變更
+function _mint(address to, uint256 amount) internal {
+    balances[to] += amount;
+    totalSupply += amount;
+    emit Mint(to, amount);
+}
+```
+
+這樣設計的好處：
+
+1.  外部函數專注權限控制
+    
+2.  內部函數可被多個外部函數複用
+    
+3.  測試更方便
+    
+
+* * *
+
+## 錯誤處理三兄弟
+
+| 機制 | 用途 | Gas 特性 |
+| --- | --- | --- |
+| require | 條件校驗 + 錯誤訊息 | 字串訊息增加 gas |
+| revert | 回滾，可不返回訊息 | 較省 gas |
+| assert | 「不可能失敗」的斷言 | 失敗消耗剩餘 gas，現已少用 |
+
+**Gas 優化方向**：用 custom error 取代 require 的字串
+
+```solidity
+// ❌ 傳統寫法
+require(amount > 0, "Amount must be greater than zero");
+
+// ✅ 優化寫法
+error InvalidAmount();
+if (amount == 0) revert InvalidAmount();
+```
+
+* * *
+
+## Modifier：前置條件的優雅抽象
+
+```solidity
+modifier onlyOwner() {
+    require(msg.sender == owner, "Not owner");
+    _;  // 繼續執行原函數
+}
+
+// 使用
+function mint(address to, uint256 amount) external onlyOwner {
+    // 只有 owner 能執行到這裡
+}
+```
+
+**應用場景**：
+
+-   權限控制（onlyOwner, onlyAdmin）
+    
+-   重入保護（nonReentrant）
+    
+-   狀態檢查（whenNotPaused）
+    
+
+* * *
+
+## 事件（Event）：鏈上到鏈下的橋樑
+
+```solidity
+event Transfer(address indexed from, address indexed to, uint256 value);
+event Approval(address indexed owner, address indexed spender, uint256 value);
+
+// 觸發事件
+emit Transfer(msg.sender, to, amount);
+```
+
+**indexed 的意義**：最多 3 個參數可加 indexed，用於鏈下快速檢索。
+
+**為什麼事件重要**：
+
+1.  DEX 等協議依賴事件監聽同步狀態
+    
+2.  比頻繁讀 storage 更高效
+    
+3.  區塊瀏覽器的交易紀錄就是解析事件
+    
+
+* * *
+
+## 助記詞陷阱的兩種實現機制
+
+這部分很有意思，課堂上提問者問的問題：
+
+### 機制一：合約層權限限制
+
+```solidity
+modifier onlyOwner() {
+    require(msg.sender == owner, "Not owner");
+    _;
+}
+
+function transfer(address to, uint256 amount) external onlyOwner {
+    // 只有 owner 能轉出
+}
+```
+
+結果：你導入私鑰後看到餘額，但無法轉出（不是 owner）。
+
+### 機制二：抢跑 Bot
+
+1.  Bot 監聽目標地址的所有交易（透過事件）
+    
+2.  偵測到有人轉入 gas
+    
+3.  立即用更高 gas fee 發起交易，搶先轉走資金
+    
+4.  利用的是 mempool 的可見性 + gas priority
+    
+
+* * *
+
+## unchecked：謹慎使用的優化手段
+
+Solidity 0.8+ 預設開啟整數溢位檢查。
+
+```solidity
+// 確定不會溢位時，可用 unchecked 省 gas
+unchecked {
+    counter++;
+}
+```
+
+**我的看法**：初學階段不要碰這個。安全第一。
+
+* * *
+
+## 學習路線建議
+
+1.  **先理解 EVM**：storage/memory/calldata 的差異
+    
+2.  **手寫 ERC20**：在 Remix 部署，給朋友轉測試代幣
+    
+3.  **閱讀協議源碼**：
+    
+    -   Uniswap V3：AMM 邏輯、tick 機制
+        
+    -   Aave：借貸邏輯、storage 優化
+        
+4.  **關注 storage 設計**：這是合約優化的核心
+    
+
+* * *
+
+## 我的反思
+
+1.  **EVM 的確定性執行** 與密碼學中的確定性函數有相似的設計哲學——相同輸入必須產生相同輸出，否則共識無法達成。
+    
+2.  **storage 的 Merkle 結構**（雖然課上沒講）與我之前學的 Merkle Tree 直接相關——這是理解輕客戶端驗證、狀態證明的基礎。
+    
+3.  **事件的設計**讓我想到鏈上/鏈下的邊界問題——鏈上狀態是 trustless 的，但鏈下監聽事件的系統呢？這裡有安全研究的空間。
+    
+
+### 安全視角的觀察
+
+課上提到的幾個點值得深入：
+
+1.  **重入攻擊**：單線程順序執行不代表沒有重入問題。外部調用可能觸發惡意合約的 fallback，再次調用原合約。
+    
+2.  **授權機制的風險**：infinite approval 是常見的 UX 優化，但也是安全隱患。
+    
+3.  **modifier 的正確使用**：modifier 只是語法糖，不當使用可能造成意料之外的行為。
+    
+
+* * *
+
+## 課程筆記速查表
+
+```
+EVM 四大區：Stack / Storage / Memory / Calldata
+Storage 成本：初始化 ~20,000 gas | 修改 ~5,000 gas
+
+值類型：bool, uint/int, address, bytes32
+引用類型：string, 動態陣列, bytes, mapping
+
+可見性：external > public > internal > private
+狀態：view（只讀）| pure（無狀態）| 無（可寫）
+
+錯誤：require（帶訊息）| revert（不帶）| assert（斷言）
+事件：indexed 最多 3 個，用於鏈下檢索
+
+modifier：前置條件抽象，避免重複 require
+unchecked：跳過溢位檢查，慎用
+```
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -28,6 +338,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 1.將昨天撰寫的文章再度修改後上傳至x  
@@ -105,6 +416,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -719,6 +1031,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -748,6 +1061,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -937,6 +1251,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -996,6 +1311,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1239,6 +1555,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
