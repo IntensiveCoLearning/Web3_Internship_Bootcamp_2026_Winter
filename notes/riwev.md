@@ -33,55 +33,18 @@ Web3 实习计划 2025 冬季实习生
         
     -   每次写入 `storage` 的成本高达 20,000 gas；优先使用 `memory`。
         
-    -   示例：
-        
-        ```
-        // ❌ 非优化写法
-        mapping(address => uint256) public balances;
-        function deposit() public payable {
-            balances[msg.sender] += msg.value;
-        }
-        
-        // ✅ 优化写法（一次读，一次写）
-        function deposit() public payable {
-            uint256 current = balances[msg.sender];
-            balances[msg.sender] = current + msg.value;
-        }
-        ```
-        
 2.  **使用位压缩（Bit Packing）**
     
     -   将多个变量压缩到一个 `uint256` 中以节省存储空间。
-        
-    -   示例：
-        
-        ```
-        struct Packed {
-            uint128 a;
-            uint128 b;
-        }
-        ```
         
 3.  **循环优化**
     
     -   减少不必要的运算，如 `array.length` 缓存到变量中。
         
-    -   示例：
-        
-        ```
-        // ❌ 非优化
-        for (uint256 i = 0; i < arr.length; i++) {
-            ...
-        }
-        // ✅ 优化
-        uint256 len = arr.length;
-        for (uint i = 0; i < len; ++i) {
-            ...
-        }
-        ```
-        
 4.  **函数可见性选择** - `external` 比 `public` 更节省 gas，适用于仅被外部调用的函数。
     
+
+![{79D05BE9-431F-4C6E-8A2D-61925A9364A8}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768911995657-_79D05BE9-431F-4C6E-8A2D-61925A9364A8_.png)
 
 # **Web3 公共物品资金第一节课**
 
@@ -94,6 +57,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -168,6 +132,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -343,6 +308,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -429,6 +395,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -556,6 +523,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -760,6 +728,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -998,6 +967,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1279,6 +1249,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
