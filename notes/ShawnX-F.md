@@ -15,8 +15,148 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1.  RPC详解
+    
+
+全称 Remote Procedure Call（远程过程调用），连接前端应用与区块链网络的关键桥梁。RPC是一种通信协议，允许应用程序通过网络调用远程服务器上的函数或方法。在区块链开发中，RPC 节点是运行区块链客户端软件的服务器，它们维护完整的区块链数据副本，并提供 API 接口供开发者查询链上数据、发送交易等操作。在 Dapp 开发中，RPC 节点承担着以下关键职责：
+
+-   读取链上数据
+    
+
+查询账户余额、交易历史，读取智能合约的状态变量，获取区块信息、Gas 价格等。
+
+-   发送交易
+    
+
+将用户签名的交易广播到区块链网络，查询交易状态和确认数，估算交易所需的 Gas 费用。
+
+-   事件监听
+    
+
+监听智能合约事件（Events），实时获取链上状态变化，支持 WebSocket 长连接推送。
+
+-   网络管理
+    
+
+切换不同的区块链网络（主网、测试网），获取网络信息和链 ID，管理节点连接状态。
+
+2.  合约结构详解
+    
+
+一个智能合约的基本结构通常由三部分组成：状态变量、构造函数和普通函数。
+
+状态变量（State Variables）是指在合约中定义的、其值**永久**存储在区块链上的变量。它们用于记录合约的持久化数据，构成了合约的整体状态。当合约被**部署后**，这些变量将**被写入区块链**，并在合约的整个生命周期中保持可访问性和可追踪性。
+
+函数（Functions）是智能合约中执行具体逻辑操作的核心组成部分。通过函数，可以实现对状态变量的读取、修改，或执行特定业务逻辑。
+
+Solidity 函数的标准声明格式如下：
+
+ function <函数名>(<参数列表>)  
+<可见性>  
+<状态可变性>  
+<修饰符列表>  
+<虚拟/重写关键字>  
+returns (<返回值列表>)  
+{  
+// 函数体  
+}
+
+-   函数可见性（Function Visibility）决定了函数在何种上下文可以被调用。
+    
+
+| 修饰符 | 可见范围 | 描述 | 使用场景 |
+| public | 内部 + 外部 | 任何地方都可以调用 | 对外提供的公共接口 |
+| external | 仅外部 | 只能从合约外部调用 | 外部用户接口，gas 效率更高 |
+| internal | 内部 + 继承 | 当前合约和子合约可调用 | 内部逻辑函数，需要被继承 |
+| private | 仅内部 | 只有当前合约可调用 | 私有实现细节 |
+
+-   函数状态修饰符（State Mutability Modifiers）用于指明函数是否修改或读取合约状态：
+    
+
+pure不读不改，view可读不可改，payable及无修饰符可读可改
+
+```
+contract StateModifiers {
+    uint256 public count = 0;
+
+    // view: 只读函数，不修改状态
+    function getCount() public view returns(uint256) {
+        return count;
+    }
+
+    // pure: 纯函数，不读取也不修改状态
+    function add(uint256 a, uint256 b) public pure returns(uint256) {
+        return a + b;
+    }
+
+    // payable: 可接收以太币
+    function deposit() public payable {
+        // msg.value 是发送的以太币数量
+    }
+
+    // 默认：可修改状态
+    function increment() public {
+        count++;
+    }
+}
+```
+
+Solidity 支持多参数与多返回值，以及命名返回值：
+
+多个返回值（getPersonInfo）、命名返回值（calculate）、解构赋值与忽略返回值（callExample）
+
+```
+ // 多个返回值
+function getPersonInfo() public pure returns(string memory name, uint256 age) {
+    name = "Alice";
+    age = 25;
+}
+
+// 命名返回值
+function calculate(uint256 a, uint256 b) public pure returns(uint256 sum, uint256 product) {
+    sum = a + b;
+    product = a * b;
+    // 自动返回命名变量
+}
+
+// 调用带多返回值的函数
+function callExample() public pure {
+    (string memory name, uint256 age) = getPersonInfo();
+    // 或者忽略某些返回值
+    (, uint256 productOnly) = calculate(5, 3);
+}
+```
+
+修饰符（Function Modifiers）允许在函数执行前插入额外逻辑，常用于权限控制与前置检查：
+
+核心机制占位符\_，它告诉编译器“现在去执行被修饰的函数体”，如果条件不满足（如require失败），代码会直接报错回滚，\_;之后的内容包括函数体不会被执行。
+
+-   onlyOwner（权限闸门）确保只有合约的部署者可以调用某些功能，应用于保护提现、修改重要参数等敏感操作；
+    
+-   whenNotPaused（开关控制器）实现“熔断机制”，如果发现合约有漏洞或受到攻击，管理员可以一键关停重要功能；
+    
+-   togglePaused（修改状态）
+    
+
+function togglePause() public onlyOwner {  
+paused = !paused;  
+}  
+这里使用了onlyOwner，意味着只有管理员可以切换Paused的状态；
+
+-   criticalFunction（多重叠加）
+    
+
+function criticalFunction() public onlyOwner whenNotPaused {  
+// 逻辑  
+}  
+从左到右顺序执行修饰符。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -101,6 +241,7 @@ _Tips：_
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -158,6 +299,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -194,6 +336,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -242,6 +385,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -256,6 +400,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -293,6 +438,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -393,6 +539,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
