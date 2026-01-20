@@ -15,8 +15,179 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## **学习总结day09**
+
+今天主要的学习计划还是看智能合约开发的相关基础知识和扩展，
+
+**_基本结构：_**
+
+1.  `//` 是 Solidity 中的单行注释符号，例如：`// SPDX-License-Identifier: MIT` 用于指定源代码的许可证类型。
+    
+2.  `pragma` 关键字用于声明 Solidity 源代码所需的编译器版本，确保合约在兼容的编译器环境中正确编译。
+    
+3.  `contract` 关键字用于定义一个智能合约，其语法格式为：`contract 合约名 { ... }`。
+    
+4.  一个智能合约的基本结构通常由以下三部分组成：状态变量、构造函数和普通函数。
+    
+
+**_状态变量（State Variables）：_**
+
+状态变量是指在合约中定义的、**其值永久存储在区块链上的变量**。它们用于记录合约的持久化数据，构成了合约的整体状态，主要实现和使用还是依靠修饰符public（任何地方都可以调用）、external（只能从合约外部调用）、internal（当前合约和子合约可调用）、private（只有当前合约可调用）来定义和使用如：
+
+`uint256 public totalSupply //public可以通过前端代码访问`
+
+**_函数（Functions）：_**
+
+函数是 Solidity 智能合约中执行具体逻辑操作的核心组成部分。通过函数，可以实现对状态变量的读取、修改，或执行特定业务逻辑
+
+```
+function <函数名>(<参数列表>)
+    <可见性> ：如 public、private、internal、external；
+    <状态可变性> 如 view、pure、payable；
+    <修饰符列表>
+    <虚拟/重写关键字> virtual/override：用于支持继承与函数重写；
+    returns (<返回值列表>)
+{
+    // 函数体
+}
+```
+
+支持多参数与多返回值，以及命名返回值:
+
+```
+// 多个返回值
+function getPersonInfo() public pure returns(string memory name, uint256 age) {
+    name = "Alice";
+    age = 25;
+}
+​
+// 命名返回值
+function calculate(uint256 a, uint256 b) public pure returns(uint256 sum, uint256 product) {
+    sum = a + b;
+    product = a * b;
+    // 自动返回命名变量
+}
+```
+
+**继承与函数重写（Inheritance and Override）:**
+
+Solidity 支持单继承与多继承，子合约可重写父合约中的函数：
+
+```
+// 基础合约
+contract Animal {
+    string public name;
+​
+    constructor(string memory _name) {
+        name = _name;
+    }
+​
+    function speak() public virtual returns(string memory) {
+        return "Some sound";
+    }
+}
+​
+// 继承合约
+contract Dog is Animal {
+    constructor(string memory _name) Animal(_name) {}
+​
+    // 重写父类函数
+    function speak() public pure override returns(string memory) {
+        return "Woof!";
+    }
+}
+```
+
+**事件机制（Events）:**
+
+事件用于在链上记录重要状态变化，并可由外部监听器（如检索器或前端应用）捕捉：
+
+```
+contract EventExample {
+    // 定义事件
+    event Transfer(address indexed from, address indexed to, uint256 amount);
+    event Approval(address indexed owner, address indexed spender, uint256 amount);
+​
+    mapping(address => uint256) public balances;
+​
+    function transfer(address to, uint256 amount) public {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+​
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+​
+        // 触发事件
+        // 可以在区块链浏览器查找到当前事件记录
+        emit Transfer(msg.sender, to, amount);
+    }
+}
+```
+
+**_以太坊技术基础：_**
+
+### **1\. 帐户模型**
+
+| 对比维度 | 外部拥有账户 EOA | 合约账户 Contract Account |
+| --- | --- | --- |
+| 地址来源 | keccak256(pubKey)[12:] (公钥 → 地址) | 创建时由 CREATE/CREATE2 计算 |
+| 控制方式 | 私钥签名（用户、钱包） | 合约代码（EVM 字节码） |
+| 状态字段 | nonce、balance | nonce、balance、codeHash、storageRoot |
+| 能否发起交易 | ✅  必须用私钥签名 | ❌  只能由 EOA 触发或合约内部调用 |
+| Gas 费用支付 | 由账户本身 ETH 余额承担 | 由调用者支付 |
+| 典型场景 | 钱包地址、热冷账户 | ERC-20/721 Token、DeFi 协议、DAO |
+
+### **2\. Gas 机制**
+
+| 术语 | 含义 | 备注 |
+| --- | --- | --- |
+| Gas | 执行 1 条 EVM 指令的抽象工作量单位 | 汇编级别价格表见 evm.codes |
+| Gas Limit (Tx) | 发送者愿为本笔交易消耗的 Gas 上限 | 防止死循环耗尽余额 |
+| Gas Used | 实际执行指令花费的 Gas 总和 | 多退少不补 |
+| Base Fee | 随区块动态调整的基础费用（EIP-1559） | 全网销毁，抑制拍卖狂飙 |
+| Priority Fee / Tip | 发送者给出以激励打包者的附加费 | 给矿工 / 验证者 |
+| Max Fee Per Gas | maxFee = baseFee + priorityFee 上限 | 钱包通常自动估算 |
+
+### **3\. 交易生命周期**
+
+-   签名构造
+    
+    -   钱包收集字段：`nonce, to, value, data, gasLimit, maxFeePerGas, priorityFeePerGas, chainId`
+        
+    -   使用私钥生成 `v, r, s` 签名 → **序列化 RLP**
+        
+-   广播到 P2P 网络
+    
+    -   交易进入本地 & 邻居节点的 **mempool**
+        
+    -   节点根据 `maxFeePerGas`、`gasLimit`、`nonce` 做基本筛查
+        
+-   打包 / 提议区块
+    
+    -   验证者（PoS）或矿工（PoW 时代）挑选利润最高、合法顺序的交易
+        
+    -   执行 EVM → 产生 **交易收据**（`status, gasUsed, logsBloom, logs[]`）
+        
+-   区块传播与共识
+    
+    -   区块头包含新 **stateRoot**、**receiptsRoot**
+        
+    -   超 2⁄3 质押者签名后在共识层定案（PoS Finality ≈ 2 Epoch ≈ 64 slot ≈ ~12 min）
+        
+-   确认数 & Finality
+    
+    -   客户端/前端常以 `n ≥ 12` 作"概率足够低"确认
+        
+    -   完全终结在 PoS 下由 **Finality Gadget**（Casper FFG）给出
+        
+
+开始有点看不懂了，周六日还是得要开始好好学习了\[晕\]
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -94,6 +265,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ## 学习总结day07
 
@@ -176,6 +348,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -239,6 +412,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -349,6 +523,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -509,6 +684,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -698,6 +874,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -792,6 +969,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
