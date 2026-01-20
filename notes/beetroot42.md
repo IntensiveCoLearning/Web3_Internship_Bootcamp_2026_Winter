@@ -15,8 +15,168 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# 函数
+
+```solidity
+function <function name>([parameter types[, ...]]) {internal|external|public|private} [pure|view|payable] [virtual|override] [<modifiers>]
+[returns (<return types>)]{ <function body> }
+```
+
+-   `function`：声明函数时的固定用法。要编写函数，就需要以 `function` 关键字开头。
+    
+-   `<function name>`：函数名。
+    
+-   `([parameter types[, ...]])`：圆括号内写入函数的参数，即输入到函数的变量类型和名称。
+    
+-   `{internal|external|public|private}`：函数可见性说明符，共有4种。
+    
+    -   `public`：内部和外部均可见。
+        
+    -   `private`：只能从本合约内部访问，继承的合约也不能使用。
+        
+    -   `external`：只能从合约外部访问（但内部可以通过 `this.f()` 来调用，\*\*`f`\*\*是函数名）。
+        
+    -   `internal`: 只能从合约内部访问，继承的合约可以用。
+        
+
+**注意 1**：合约中定义的函数需要明确指定可见性，它们没有默认值。
+
+**注意 2**：`public|private|internal` 也可用于修饰状态变量(定义可参考[WTF Solidity 第5讲的相关内容](https://www.wtf.academy/zh/course/solidity101/%5B../05_DataStorage/readme.md#1-%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F%5D\(https://github.com/AmazingAng/WTF-Solidity/tree/main/05_DataStorage#1-%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F\)))。`public`**变量会自动生成同名的**`getter`**函数，用于查询数值。未标明可见性类型的状态变量，默认为**`internal`。
+
+</aside>
+
+-   `[pure|view|payable]`：决定函数权限/功能的关键字。`payable`（可支付的）很好理解，带着它的函数，运行的时候可以给合约转入 ETH。
+    
+-   `[virtual|override]`: 方法是否可以被重写，或者是否是重写方法。\*\*`virtual`**用在父合约上，标识的方法可以被子合约重写。**`override`\*\*用在自合约上，表名方法重写了父合约的方法。
+    
+-   `<modifiers>`: 自定义的修饰器，可以有0个或多个修饰器。
+    
+-   `[returns ()]`：函数返回的变量类型和名称。
+    
+-   `<function body>`: 函数体。
+    
+
+## `Pure` **和**`View`
+
+`solidity` 引入这两个关键字主要是因为 以太坊交易需要支付气费（gas fee）。合约的状态变量存储在链上，gas fee 很贵，如果计算不改变链上状态，就可以不用付 `gas`。包含 `pure` 和 `view` 关键字的函数是不改写链上状态的，因此用户直接调用它们是不需要付 gas 的。
+
+注意，合约中非 `pure`/`view` 函数调用 `pure`/`view` 函数时需要付gas
+
+在以太坊中，以下语句被视为修改链上状态：
+
+1.  写入状态变量。
+    
+2.  释放事件。
+    
+3.  创建其他合约。
+    
+4.  使用 `selfdestruct`.
+    
+5.  通过调用发送以太币。
+    
+6.  调用任何未标记 `view` 或 `pure` 的函数。
+    
+7.  使用低级调用（low-level calls）。
+    
+8.  使用包含某些操作码的内联汇编。
+    
+
+## **状态变量 vs 函数参数**
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+
+contract FunctionTypes {
+    uint256 public number = 5;  // ← 这是「状态变量」，存储在区块链上！
+    
+    // ❌ 错误！pure 不能读取状态变量 number
+    function addPure_Wrong() external pure returns(uint256) {
+        return number + 1;  // 编译报错！
+    }
+    
+    // ✅ 正确！_number 是「函数参数」，不是链上状态
+    function addPure(uint256 _number) external pure returns(uint256 new_number) {
+        new_number = _number + 1;  // 完全OK！
+    }
+}
+```
+
+| 对比项 | number (状态变量) | _number (函数参数) |
+| --- | --- | --- |
+| 存储位置 | 区块链上 (storage) | 内存中 (memory/stack) |
+| 生命周期 | 永久存在 | 函数执行时临时存在 |
+| 读取成本 | 需要访问链上状态 | 不需要访问链 |
+| pure 能用？ | ❌ 不能 | ✅ 可以 |
+
+### **用现实世界类比**
+
+想象pure函数是一个「无窗密室」里的计算器：
+
+-   **状态变量**  = 墙外面的公告牌上写的数字`number`
+    
+    -   密室里看不到外面，所以 `pure` 不能读取
+        
+-   **函数参数**  = 你带进密室的纸条上的数字`_number`
+    
+    -   这是你自己带进来的，不需要看外面，所以 `pure` 可以用
+        
+
+### **总结**
+
+`pure`的规则很简单：
+
+> 不能读取或修改任何链上状态
+
+-   ❌ 状态变量 → 是链上状态
+    
+-   ✅ 函数参数 → 是调用时传入的临时值，不算链上状态
+    
+-   ✅ 局部变量 → 函数内部创建的临时值，也不算链上状态
+    
+
+## 引用
+
+```solidity
+uint[] x = [1,2,3];  // 状态变量，存在区块链上 (storage
+
+function fStorage() public {
+    uint[] storage xStorage = x;  // 👈 xStorage 是 x 的「指针」，不是复制！
+    xStorage[0] = 100;            // 修改 xStorage = 修改 x
+}
+执行后结果：x = [100, 2, 3]
+```
+
+**用 C 语言对比**
+
+```solidity
+// C 语言版本 - 完全等价！
+int x[3] = {1, 2, 3};  // 原始数组
+void fStorage() {
+int* xStorage = x;   // xStorage 是指向 x 的指针
+xStorage[0] = 100;   // 通过指针修改，x 也变了！
+}
+// 执行后：x = {100, 2, 3}
+```
+
+**完全一样的逻辑！**
+
+`storage` 关键字告诉编译器：这是一个引用，不是复制。
+
+### **快速记忆表**
+
+| 关键字 | 含义 | C 语言类比 | 修改会影响原数据？ |
+| --- | --- | --- | --- |
+| storage | 引用 | 指针 int* p = x | ✅ 会 |
+| memory | 复制 | memcpy() | ❌ 不会 |
+| calldata | 只读复制 | const 参数 | ❌ 不能改 |
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### 引言：从公开的数字藏品到隐私的会员身份
 
 ERC-721 标准的诞生，开启了数字所有权的新纪元。它使得艺术品、收藏品等独一无二的数字物品，能够作为NFT（非同质化代币）在区块链上拥有不可篡改的所有权记录。我们可以向全世界证明：“这幅数字画作是我的。”
@@ -148,6 +308,7 @@ ERC-7962 的价值远不止于隐私保护。它所带来的“所有权与交�
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 本周，我的学习路径遵循了一个由宏观到微观的逻辑：首先，我从以太坊的宏大愿景出发，试图回答最根本的问题——“它是什么？”；接着，我潜入其底层架构，探索支撑这一切的 **网络结构** 是“如何运作的？”；最后，我将目光聚焦于网络中最核心的交互单元——两种不同的 **账户类型**，探究“谁在其中交互？”。
 
 这次学习对我而言，远不止于理论知识的堆砌，更是一次思维模式的重塑。我深刻体会到，将以太坊的认知从“数字黄金”的单一维度，跃升到“全球可编程平台”即 **世界计算机** 的高度，是理解其所有技术魅力和生态创新的真正起点。
@@ -243,6 +404,7 @@ salt
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # **智能合约——以太坊的可编程核心**
 
 智能合约，其核心是**存储在区块链上的程序**。我们可以将其生动地比作一台自动售货机：当投入硬币（支付 Gas）并选择商品（调用合约函数）后，机器会自动执行既定逻辑，交付商品（执行转账或业务逻辑），整个过程无需任何人工干预。这种自动执行、无需中介的特性，正是智能合约的魅力所在。
@@ -309,6 +471,7 @@ salt
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -435,6 +598,7 @@ EOA为用户提供了直接控制权和发起链上行为的能力，但其功�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -584,6 +748,7 @@ Gossip协议为以太坊网络带来了三大战略优势：
 
 
 
+
 # Web3安全防护
 
 作为一名Web3新手，在实习和日常操作中面临的风险主要可归为以下三类：
@@ -675,6 +840,7 @@ Gossip协议为以太坊网络带来了三大战略优势：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1004,6 +1170,7 @@ DAO 是利用智能合约进行管理的链上组织，其规则公开透明，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
