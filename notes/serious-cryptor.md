@@ -15,8 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+Date: 2026/1/20
+
+-   学习内容：Solidity Talk + 《021以太坊》CL与EL全流程梳理 + 公共资产分配
+    
+-   进展：整理会议笔记，理清了节点进行验证到投票中CL与EL的全流程交互
+    
+-   感悟：学不完了，学不完了
+    
+-   疑惑：
+    
+
+notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy\_link](https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 Date: 2026/1/19
 
 -   学习内容：web3运营会议 + 实习手册Sodility
@@ -33,6 +50,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 Date: 2026/1/18
 
@@ -52,6 +70,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 Date: 2026/1/17
 
 -   学习内容：《021以太坊》网络结构与节点类型
@@ -68,6 +87,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -91,6 +111,7 @@ notion笔记同步更新：[还在整理中ing...](https://www.notion.so/web3-2e
 
 
 
+
 Date: 2026/1/15
 
 -   学习内容：web3与ai会议 + 《021以太坊》第一章
@@ -107,6 +128,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -134,6 +156,7 @@ notion笔记同步更新：[https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14
 
 
 
+
 Date: 2026/1/13
 
 -   学习内容：实习手册-智能合约开发 +《021以太坊》DAPP部分 + 20:00的web3运行原理 + 我的第一个NFT
@@ -153,6 +176,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8029a48cf359223ea4
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
