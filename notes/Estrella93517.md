@@ -15,8 +15,426 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+Web3术语总结
+
+**Aa**
+
+Address 地址  
+
+区块链地址，用于接收和发送加密资产的字符串，由公钥生成
+
+AML (Anti-Money Laundering) 反洗钱  
+
+防止加密资产被用于洗钱等非法活动的合规措施
+
+AMM (Automated Market Maker) 自动做市商  
+
+DEX的核心机制，通过算法提供交易流动性
+
+Airdrop 空投  
+
+项目方向用户免费分发代币的营销方式
+
+Altcoins 山寨币  
+
+除比特币外的其他加密货币
+
+Anarcho Capitalism 无政府资本主义  
+
+一种主张无国家干预、市场完全自主的社会经济理论
+
+Ark 方舟协议  
+
+一种比特币改进提案，旨在提升隐私与效率
+
+ASIC (Application-Specific Integrated Circuit) 专用集成电路  
+
+专门为区块链挖矿设计的硬件设备
+
+Atomic Swap 原子交换  
+
+跨链间无需信任的资产直接交换技术
+
+Austrian School Of Economics 奥地利经济学派  
+
+强调市场自由与经济周期理论的经济学派，常被加密货币支持者引用
+
+Arweave 永久存储网络
+
+提供数据永久存储服务的去中心化存储协议
+
+**Bb**  
+
+Batching 批处理  
+
+将多笔交易打包处理以提升效率
+
+Bitcoin 比特币  
+
+第一个且市值最大的加密货币，基于去中心化账本
+
+Bitcoin Improvement Proposal (BIP) 比特币改进提案  
+
+比特币网络的升级与改进建议标准
+
+Block 区块  
+
+区块链中记录一组交易数据的基本单位
+
+Blockchain 区块链  
+
+去中心化分布式账本技术
+
+Block Header 区块头
+
+区块的元数据部分，包含哈希、时间戳等信息
+
+Block Height 区块高度
+
+区块在区块链中的位置序号
+
+Block Reward 区块奖励  
+
+矿工或验证者成功出块后获得的新代币奖励
+
+Block Subsidy 区块补贴  
+
+新区块生成时系统发放的基础奖励
+
+BRC-20 Tokens BRC-20 代币  
+
+基于比特币网络发行的可互换代币标准
+
+Bull Market 牛市  
+
+加密资产价格持续上涨的市场阶段
+
+Bear Market 熊市  
+
+加密资产价格持续下跌的市场阶段
+
+Bitcoin Address 比特币地址
+
+用于接收和发送比特币的字符串
+
+Bitcoin Client 比特币客户端
+
+运行比特币协议并与网络交互的软件
+
+Bitcoin Core 比特币核心客户端
+
+比特币网络官方实现的主要客户端软件
+
+Bitcoin ETF 比特币交易所交易基金
+
+在证券交易所上市、跟踪比特币价格的基金
+
+Bitcoin Network 比特币网络
+
+全球比特币节点共同维护的分布式网络
+
+Bitcoin Treasury Company 比特币储备公司
+
+持有大量比特币作为储备的公司
+
+**Cc**
+
+CeFi (Centralized Finance) 中心化金融  
+
+由传统机构运营的加密货币金融服务
+
+CEX (Centralized Exchange) 中心化交易所  
+
+由第三方机构运营的加密资产交易平台
+
+Cold Wallet 冷钱包  
+
+离线存储私钥的硬件钱包，安全性高
+
+Collateral 抵押物  
+
+DeFi借贷中用于获得贷款的质押资产
+
+Consensus Mechanism 共识机制  
+
+区块链节点达成数据一致的规则
+
+Creator Economy 创作者经济  
+
+Web3环境下创作者直接变现并自主控制内容权益的生态系统
+
+Cross-chain Bridge 跨链桥  
+
+连接不同区块链以实现跨链资产转移的工具
+
+Cryptocurrency 加密货币  
+
+基于密码学与区块链的数字资产
+
+Cryptography 密码学  
+
+保障区块链数据安全与隐私的核心技术
+
+Chain Reorganization 区块链重组
+
+当不同版本的区块链竞争时发生的链结构调整
+
+Coinbase 铸币交易
+
+区块中的第一笔特殊交易，用于发放矿工奖励
+
+CoinJoin 混合交易
+
+混合多笔交易以增强隐私性的技术
+
+Cold Storage Wallet 冷存储钱包
+
+完全离线的钱包，安全性最高
+
+Confirmation 确认
+
+交易被包含在区块中并被网络接受的过程
+
+Covenants 契约
+
+限制比特币未来使用方式的智能合约功能
+
+Cross-Input Signature Aggregation (CISA) 跨输入签名聚合
+
+允许多个交易输入共享一个签名以减少数据量的技术
+
+Cryptocurrency 加密货币
+
+基于密码学原理创建和运作的数字货币
+
+Cryptography 密码学
+
+保障信息安全和验证交易真实性的数学技术
+
+CheckTemplateVerify (CTV) 模板验证
+
+一种比特币升级提案，用于实现更复杂的交易条件
+
+Cypherpunks 密码朋克
+
+20世纪90年代提倡使用密码学保护隐私的技术社群
+
+**Dd**
+
+DAO (Decentralized Autonomous Organization) 去中心化自治组织  
+
+由智能合约和社区治理的去中心化组织
+
+DApps (Decentralized Applications) 去中心化应用  
+
+不依赖中心化服务器的分布式应用
+
+DeFi (Decentralized Finance) 去中心化金融  
+
+基于区块链、无需中介的金融服务系统
+
+DEX (Decentralized Exchange) 去中心化交易所  
+
+无中介、基于智能合约的代币交易平台
+
+Digital Identity 数字身份  
+
+基于区块链的去中心化用户身份认证系统
+
+DYOR (Do Your Own Research) 自行研究  
+
+加密领域常见建议，提示用户投资前自主调研
+
+DePIN (Decentralized Physical Infrastructure Networks) 去中心化物理基础设施网络
+
+基于区块链的分布式实体设施网络
+
+DAO Treasury DAO财库
+
+由DAO管理的社区资金池
+
+Decentralized Oracle Network 去中心化预言机网络
+
+由多个节点提供数据的预言机系统
+
+Decentralized Storage 去中心化存储
+
+将数据分布式存储在多个节点的存储方案
+
+Digital Asset 数字资产
+
+以数字化形式存在的、具有价值的资产（如NFT、代币）
+
+Digital Signature 数字签名
+
+通过私钥生成、用于验证交易合法性的加密凭证
+
+DCA (Dollar-Cost Averaging) 美元成本平均法
+
+定期投入固定金额的投资策略，平摊购买成本
+
+Distributed Ledger 分布式账本
+
+在多个节点间复制和同步的数据库
+
+Dont Trust, Verify 不信任，就验证
+
+比特币的核心哲学，强调自主验证
+
+Double Spend 双重支付
+
+同一笔资金被重复使用的攻击行为
+
+**Ee**
+
+eCash 电子现金  
+
+早期数字货币概念，强调匿名性与点对点支付
+
+Electronic Money 电子货币
+
+以电子方式存储和传输的货币
+
+Encryption 加密
+
+将信息转换为不可读形式以保护隐私的过程
+
+Encryption Algorithm 加密算法
+
+用于加密和解密数据的数学公式
+
+Exchange 交易所
+
+用户买卖加密货币的平台
+
+Exchange Volume 交易量
+
+在一定时间内交易所的总交易金额
+
+**Ff**
+
+Fiat 法币  
+
+政府发行的法定货币
+
+Flash Loan 闪电贷  
+
+DeFi中无需抵押、须在同一区块内归还的无担保贷款
+
+FOMO (Fear Of Missing Out) 错失恐惧症  
+
+因害怕错过市场机会而盲目跟风投资的心理
+
+Fork 分叉  
+
+区块链协议更新时新旧链分裂的现象
+
+FUD (Fear, Uncertainty, Doubt) 恐惧、不确定、怀疑  
+
+市场中用于打压价格的负面情绪或消息
+
+Fungible Token 同质化代币  
+
+可互相替换、价值相等的代币
+
+Full Node 全节点
+
+存储完整区块链数据并参与交易验证的节点
+
+Filecoin 存储代币
+
+基于IPFS的去中心化存储网络代币
+
+Flippening 市值反超
+
+一种加密货币市值超越比特币的概念
+
+Fractional Reserve Banking 部分准备金银行制度
+
+银行只保留部分存款、贷出其余的银行系统
+
+**Gg**
+
+GameFi 游戏化金融  
+
+集成DeFi机制的区块链游戏
+
+Gas Fee Gas费  
+
+在区块链上执行交易或部署合约的手续费
+
+Genesis Block 创世区块  
+
+区块链的第一个区块，后续所有区块均基于其生成
+
+Governance Token 治理代币  
+
+赋予持有者参与DAO投票决策权利的代币
+
+GPU 图形处理器
+
+早期用于加密货币挖矿的图形处理器
+
+Gresham’s Law 格雷欣法则
+
+“劣币驱逐良币”的经济规律
+
+**Hh**
+
+Halving 减半  
+
+比特币等代币按固定周期减少区块奖励的机制
+
+Hard Fork 硬分叉  
+
+区块链的永久性分叉，与旧协议不兼容
+
+Hash Function 哈希函数  
+
+将任意长度数据转换为固定长度哈希值的加密函数
+
+HODL 长期持有  
+
+加密货币领域长期持有资产而非短期交易的策略
+
+Hot Wallet 热钱包  
+
+联网操作的钱包，交易方便但存在网络安全风险
+
+Hard Money 硬通货
+
+供应量有限、价值稳定的货币
+
+Hardware Wallet 硬件钱包
+
+物理设备存储私钥的钱包
+
+Hash 哈希值
+
+通过哈希函数生成的固定长度字符串
+
+Hash Rate 哈希率
+
+衡量挖矿网络计算能力的指标
+
+Hashing 哈希运算
+
+使用哈希函数处理数据的过程
+
+HODL 长期持有
+
+持币不卖、等待长期收益的策略
+
+Hyperinflation 恶性通货膨胀
+
+极端快速的货币贬值
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### **学分管理重要通知**
 
 **邮箱填写要求**：提交活动申请表时，**必须使用与GitHub绑定的邮箱**。（最重要的放开头！）
@@ -184,6 +602,7 @@ Space实时在线人数：最核心指标，反映活动真实热度（警惕“
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 通过学习ETHPanda和LXDAO联合举办的实习营，我也产出一个念头，我能不能试着自己做一个社区，为大家提供一些学习的途径呢？于是我们开始着手做Cryptotalk社区。这次英语角的顺利举办，也给了我很多启发，在这做个简单总结：
 
 **1\. 不怕起点低，怕的是不敢开始。**  
@@ -235,6 +654,7 @@ Space实时在线人数：最核心指标，反映活动真实热度（警惕“
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -348,6 +768,7 @@ Space实时在线人数：最核心指标，反映活动真实热度（警惕“
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -555,6 +976,7 @@ MetaMask和DApp的用户体验小问题，包括：
 
 
 
+
 ## Week 1, Day 3: ENS, DEX, Identity, Inventory, Sybil
 
 **📍钱包与账户创建**
@@ -744,6 +1166,7 @@ AI的能力上限取决于策略设计者（人）。AI是实现策略自动化�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1149,6 +1572,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1682,6 +2106,7 @@ EIP基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
