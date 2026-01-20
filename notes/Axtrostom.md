@@ -30,10 +30,2608 @@ rust刷刷力扣
 今天保底把 solidity 基础语法看完
 
 * * *
+
+## Solidity
+
+### Transient Storage 瞬态存储
+
+> 必须确保 EVM 版本和虚拟机设置为 Cancun (坎昆升级后的版本)
+
+-   Storage (存储): 数据存储在区块链上（永久，写入极贵，如硬盘）
+    
+-   Memory (内存): 数据在函数调用结束后清除（临时，便宜，如内存条）
+    
+-   Transient Storage (瞬态存储): 数据在【整笔交易】结束后清除（介于两者之间，跨函数保留，交易完销毁）
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 必须确保 EVM 版本和虚拟机设置为 Cancun (坎昆升级后的版本)
+
+interface ITest {
+    function val() external view returns (uint256);
+    function test() external;
+}
+
+// 这是一个辅助合约，用来模拟“回调”场景
+// 它的作用是：当有人调它，它就反过来去调调用者的 val() 函数
+contract Callback {
+    uint256 public val;
+
+    fallback() external {
+        // 反向调用 msg.sender 的 val() 函数
+        val = ITest(msg.sender).val();
+    }
+
+    function test(address target) external {
+        ITest(target).test();
+    }
+}
+
+// 1. 传统 Storage 测试
+contract TestStorage {
+    uint256 public val;
+
+    function test() public {
+        val = 123; // 写 Storage (昂贵，消耗 20000+ Gas)
+        bytes memory b = "";
+        // 触发回调，Callback 会来读取 val
+        msg.sender.call(b);
+    }
+}
+
+// 2. 瞬态存储测试 (主角)
+contract TestTransientStorage {
+    // 定义一个槽位号
+    bytes32 constant SLOT = 0;
+
+    function test() public {
+        // 使用汇编写入瞬态存储
+        // tstore(key, value)
+        assembly {
+            tstore(SLOT, 321)
+        }
+        bytes memory b = "";
+        // 触发回调
+        msg.sender.call(b);
+    }
+
+    // Callback 合约会回调这个函数
+    function val() public view returns (uint256 v) {
+        // 使用汇编读取瞬态存储
+        // tload(key)
+        assembly {
+            v := tload(SLOT)
+        }
+        // 关键点：虽然这是另一个函数调用 (val)，
+        // 但因为还在同一笔交易里，所以 tload 能读到刚才 tstore 存进去的 321。
+    }
+}
+
+// 3. 传统的防重入锁 (使用 Storage)
+contract ReentrancyGuard {
+    bool private locked; // 占用 Storage 槽位
+
+    modifier lock() {
+        require(!locked);
+        locked = true;  // 写 Storage (贵)
+        _;
+        locked = false; // 写 Storage (贵)
+    }
+
+    // 这一套下来大约消耗 35313 gas
+    function test() public lock {
+        // 忽略调用错误
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
+
+// 4. 瞬态存储防重入锁 (使用 Transient Storage)
+contract ReentrancyGuardTransient {
+    bytes32 constant SLOT = 0;
+
+    modifier lock() {
+        assembly {
+            // tload 检查是否上锁
+            if tload(SLOT) { revert(0, 0) }
+            // tstore 上锁 (非常便宜)
+            tstore(SLOT, 1)
+        }
+        _;
+        assembly {
+            // 解锁
+            tstore(SLOT, 0)
+        }
+    }
+
+    // 这一套下来只要 21887 gas (省了约 1.4万 Gas!)
+    function test() external lock {
+        // 忽略调用错误
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
+```
+
+```Solidity
+interface ITest {
+    function val() external view returns (uint256);
+    function test() external;
+}
+```
+
+上面这段代码是定义接口的语法
+
+在 Solidity 中，接口用来定义**两个合约之间如何对话**。
+
+**命名习惯：** 接口通常以大写 `I` 开头（如 `IERC20`, `ITest`），方便识别。
+
+### 接口需要被实现吗？
+
+**理论上：** 接口只是一个空壳（规范），如果想让代码真正跑起来，必须有某个具体的合约去**实现**里面的逻辑。
+
+**写法上：** 你不需要显式地写 `contract A is ITest`。
+
+在 Solidity 中，接口的使用遵循 **“鸭子类型 (Duck Typing)”** 的逻辑：
+
+> “如果它走起路来像鸭子（函数名一样），叫起来像鸭子（参数和返回值一样），那它就是鸭子（实现了接口）。”
+
+只要目标合约里**包含了接口所要求的函数**（名字、参数、返回值都对得上），接口就可以调用它，**完全不需要**目标合约显式地声明 `is ITest`。
+
+调用接口，或者说调用合约的语法如下
+
+```Solidity
+ITest(target).test();
+```
+
+其中
+
+-   `target` **(地址):** 这是一个 `address` 类型的变量。 它代表了目标合约在区块链上的“家庭住址”（例如 `0x5B38Da6a701c568545dCfcB03FcB875f56beddC4`）。
+    
+-   _问题：_ 光有一个地址，编译器并不知道这个地址里住了谁，也不知道它有什么功能。
+    
+-   `ITest(...)` **(包装/转换):** 这步叫 **“类型转换” (Type Casting)**。 它的意思是：**“编译器听令！把** `target` **这个地址，当成一个** `ITest` **类型的合约来看待。”**
+    
+-   一旦你套上了 `ITest` 的壳，编译器就知道：“哦，原来这个地址里有一个叫 `test()` 的函数啊。”
+    
+-   `.test()` **(调用):** 这才是真正的**执行**。 向那个地址发起一笔交易（或调用），执行其中的 `test` 函数。
+    
+
+```Solidity
+fallback() external {
+    val = ITest(msg.sender).val();
+}
+```
+
+这是 Solidity 中的 **回退函数 (Fallback Function)**。
+
+`fallback()` 是一个特殊的函数，它没有名字，也没有参数。它会在以下两种情况下被**自动触发**：
+
+1.  **别人瞎调你的函数时 (Function not found):** 如果有其他合约（或者人）调用了你的合约，但是**函数名字写错了**，或者**根本不存在**这个函数，EVM 不会直接报错，而是会把这个请求转给 `fallback()` 处理。
+    
+2.  **别人给你发空数据时:** 如果有人发起了一笔交易，通过 `call` 或者是直接发数据，但没有指定任何具体的函数签名（就像你代码里的 `msg.sender.call(b)`），也会触发它。
+    
+
+在 Solidity 中，`msg.sender` 是一个**动态变量**，它永远代表**“上一手调用我的人（或合约）”**。
+
+```Solidity
+// 1. 传统 Storage 测试
+contract TestStorage {
+    uint256 public val;
+
+    function test() public {
+        val = 123; // 写 Storage (昂贵，消耗 20000+ Gas)
+        bytes memory b = "";
+        // 触发回调，Callback 会来读取 val
+        msg.sender.call(b);
+    }
+}
+```
+
+如果跨合约传递 memory 类型的参数，需要额外开辟一片内存空间进行值拷贝
+
+  **跨合约传递 Memory 变量的本质：**
+
+1.  **不是引用传递**：指针发不过去。
+    
+2.  **是值拷贝**：数据会被“序列化”传输。
+    
+3.  **双重成本**：
+    
+    1.  发送方：需要 Gas 进行 ABI 编码。
+        
+    2.  接收方：如果声明为 `memory`，需要 **开辟新内存 + 再次拷贝**。
+        
+4.  **优化建议**：接收方的函数参数尽量写成 `calldata`，避免接收时的“二次拷贝”和内存开销。
+    
+
+内存计费的最小单位是 **32 字节 (32 Bytes)**。
+
+```Solidity
+// 2. 瞬态存储测试 (主角)
+contract TestTransientStorage {
+    // 定义一个槽位号
+    bytes32 constant SLOT = 0;
+
+    function test() public {
+        // 使用汇编写入瞬态存储
+        // tstore(key, value)
+        assembly {
+            tstore(SLOT, 321)
+        }
+        bytes memory b = "";
+        // 触发回调
+        msg.sender.call(b);
+    }
+
+    // Callback 合约会回调这个函数
+    function val() public view returns (uint256 v) {
+        // 使用汇编读取瞬态存储
+        // tload(key)
+        assembly {
+            v := tload(SLOT)
+        }
+        // 关键点：虽然这是另一个函数调用 (val)，
+        // 但因为还在同一笔交易里，所以 tload 能读到刚才 tstore 存进去的 321。
+    }
+}
+```
+
+然后这个代码
+
+我草，有点看不懂了
+
+一下塞一堆没见过的东西
+
+**1\.** `SLOT` **必须是 state 变量吗？写成** `tstore(0, 321)` **一样吗？**
+
+**答案：不需要是 state 变量。写成** `0` **是一模一样的。**
+
+在你的代码里，`SLOT` 其实定义的是 `constant`（常量）：
+
+Solidity
+
+```Plain
+bytes32 constant SLOT = 0;
+```
+
+这意味着在编译的时候，编译器会把代码里所有的 `SLOT` 直接替换成数字 `0`。
+
+**为什么大家喜欢用** `SLOT` **而不是直接写** `0`**？** 这纯粹是为了**代码可读性**和**防止冲突**。
+
+-   如果你直接写 `tstore(0, 321)`，过两个月你再看代码：“这个 0 是啥意思？是初始值？还是第 0 个位置？”
+    
+-   如果你写 `tstore(REENTRANCY_GUARD_SLOT, 321)`，你就知道：“哦，这个位置是用来存放防重入锁的。”
+    
+
+**底层的本质：**`tstore` 函数只在乎第一个参数是一个 **32字节的数字（位置编号）**。它不关心这个数字是来自常量、变量，还是你手写的一个 `0`。
+
+* * *
+
+**2\.** `assembly` **是什么？是必要的吗？**
+
+`assembly` **是 Solidity 的“后门”，或者说是“手动挡模式”。**
+
+-   **是什么：** 它允许你在 Solidity 代码中直接写 **Yul 语言**（一种贴近机器码的低级语言）。你可以直接指挥以太坊虚拟机（EVM）去执行最底层的指令（Opcode）。
+    
+-   **是必要的吗？** **在这个特定的例子（瞬态存储）中，是的，它是绝对必要的。**
+    
+
+**为什么？** 因为 Solidity 语言的更新速度往往比以太坊网络（EVM）的更新速度要慢半拍，或者为了安全起见更加保守。
+
+-   **EVM 说：** “兄弟们，坎昆升级（Cancun）完成了！我现在支持瞬态存储了，我有两个新指令：`TSTORE` 和 `TLOAD`！”
+    
+-   **Solidity 编译器说：** “呃，我还没有给这两个新指令设计专门的语法（比如 `transient uint x;` 这种写法还没完全定型或普及）。”
+    
+-   **开发者说：** “但我现在就想用！怎么办？”
+    
+-   **解决办法：** 使用 `assembly`。通过汇编代码，直接调用底层的 `tstore` 和 `tload` 指令，绕过 Solidity 高级语法的限制。
+    
+
+**总结：** 当你想用最新的 EVM 特性，或者想极致优化 Gas（省去 Solidity 自动生成的安全检查代码）时，`assembly` 就是必要的。
+
+* * *
+
+**3\.** `tstore(key, value)` **是什么？**
+
+它是 **Transient Store（瞬态存储写入）** 的缩写。
+
+你可以把它理解为 EVM 底层的一个操作指令。
+
+-   **Key (槽位):** 你要把数据存在哪个柜子里？（比如第 0 号柜子）。
+    
+-   **Value (值):** 你要存什么东西？（比如数字 321）。
+    
+
+它确实是在底层创建了一个 **Key-Value 键值对**。
+
+* * *
+
+**4.** **为什么不直接用 Memory Mapping？**
+
+既然是“临时存储”，Memory 不也是临时的吗？为什么要搞个新东西？这里有三个巨大的区别：
+
+**理由一：Solidity 根本不支持 Memory Mapping**
+
+在 Solidity 中，`mapping` 类型**只能**存在于 `storage` 中。 你**不能**写 `mapping(uint => uint) memory myMap;`。这是语言层面的限制。如果你想在 Memory 里实现类似 Mapping 的功能，你需要自己写极其复杂的哈希算法，不仅代码难写，而且 Gas 费巨贵。
+
+**理由二：生命周期不同（最关键点！）**
+
+这是最容易混淆的地方，请仔细看：
+
+-   **Memory (内存) = 函数级生命周期**
+    
+    -   你在 `test()` 函数里申请了一块 Memory。
+        
+    -   当你调用 `msg.sender.call(b)` 离开当前函数，去执行别人的代码，或者哪怕是别人回调你的 `val()` 函数时。
+        
+    -   **之前的 Memory 对** `val()` **是不可见的！** `val()` 处于一个新的“执行栈帧 (Stack Frame)”中，它有自己独立的一块 Memory。
+        
+    -   _比喻：Memory 是每个人手里的草稿纸。_`test` _写在自己纸上，_`val` _根本看不到_ `test` _的纸。_
+        
+-   **Transient Storage (瞬态存储) = 交易级生命周期**
+    
+    -   它是挂在当前合约实例上的一个**全局暂存区**。
+        
+    -   只要这笔交易还没结束，无论函数怎么跳来跳去（`test` -> `Callback` -> `val`），只要是在同一个合约地址下，大家都能看到这个区域。
+        
+    -   _比喻：Transient Storage 是贴在墙上的白板。_`test` _写上去，_`val` _进屋也能看到。交易结束，白板擦除。_
+        
+
+**理由三：Gas 成本**
+
+就算你能用 Memory 模拟出跨函数共享（通过疯狂传参），当数据量大或者调用层级深时，不断地 Copy Memory 会非常贵。而 `tstore` 就像访问一个全局变量一样便宜。
+
+**tstore就是创建了一个临时的 state 类型的 Mapping**
+
+然后这个函数
+
+```Solidity
+    function val() public view returns (uint256 v) {
+        // 使用汇编读取瞬态存储
+        // tload(key)
+        assembly {
+            v := tload(SLOT)
+        }
+```
+
+读取 直接使用 tloade(key) 就可以了
+
+tloade tstore 必须要在 `assembly { ... }` 里面使用
+
+目前 Solidity (v0.8.26) 还没有把 `tload` 做成一个像 `address(this).balance` 那样的内置函数。EVM 认识它，但 Solidity 编译器不认识它。所以你必须用 `assembly` 告诉编译器：“别管语法了，直接把这行机器码塞进去”。
+
+然后在 assembly 括号中要使用 Yul 语言，
+
+-   **区别：** 在 `assembly { ... }` 区块里（也就是 Yul 语言中），**赋值必须用** `:=`。
+    
+-   **作用：** 把右边运算的结果，塞进左边的变量里。
+    
+
+看一下函数定义 `function val() ... returns (uint256 v)`。
+
+这个 `v` 是 Solidity 定义的**返回值变量**。
+
+Yul 汇编代码可以直接访问外部 Solidity 定义的局部变量。
+
+当这行代码执行完，`v` 就变成了 `321`。函数结束时，就会把 `v` 返回给调用者。
+
+所以就不需要 定义然后显示的写 return 了
+
+**防重入锁 (Reentrancy Guard)** 是智能合约安全中**最重要、最基础**的防御机制之一。
+
+简单来说，它就是给合约的函数装一把**“门锁”：“在我还没办完这次业务之前，任何人都别想再进来，包括我自己。”**
+
+简单来说，防重入锁就是用于保证合约原子性的工具
+
+```Solidity
+// 3. 传统的防重入锁 (使用 Storage)
+contract ReentrancyGuard {
+    bool private locked; // 占用 Storage 槽位
+
+    modifier lock() {
+        require(!locked);
+        locked = true;  // 写 Storage (贵)
+        _;
+        locked = false; // 写 Storage (贵)
+    }
+
+    // 这一套下来大约消耗 35313 gas
+    function test() public lock {
+        // 忽略调用错误
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
+```
+
+`_;` 是什么？
+
+这是 Solidity 中 `modifier` **(修饰器)** 独有的语法符号，你可以把它叫作 **“占位符”** 或者 **“下划线”**。
+
+它的含义是：**“请把被修饰函数的代码，粘贴到这里来执行。”**
+
+在你的代码中，`_;` 起到了 **“三明治夹心”** 的作用，它决定了原本的 `test()` 函数代码在什么时候运行。
+
+`revert(0, 0)` 是 Solidity 内联汇编 (Yul) 中**最节省 Gas 的报错方式**。
+
+它的意思是：**“立即停止交易，回滚所有操作，并且不给任何理由（不返回错误信息）。”**
+
+我们来像拆解炸弹一样拆解这句指令：
+
+**1.** **语法拆解：**`revert(p, s)`
+
+在汇编（Assembly）中，`revert` 接受两个参数：
+
+-   **第一个参数** `p` **(offset):** 错误信息在内存中的**起始位置**。
+    
+-   **第二个参数** `s` **(size):** 错误信息的**数据长度**。
+    
+
+**2\.** `(0, 0)` **代表什么？**
+
+-   **起始位置 0:** 从内存的第 0 个字节开始读。
+    
+-   **长度 0:** 读取 0 个字节。
+    
+
+> 再无话可说，请速速动手
+
+### Function
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Function {
+    // 【多返回值】
+    // 函数可以一次性返回多个值（不需要像 Java 那样封装成对象）
+    function returnMany() public pure returns (uint256, bool, uint256) {
+        return (1, true, 2);
+    }
+
+    // 【命名返回值】
+    // 返回值可以在 returns 里直接起名字 (x, b, y)
+    function named() public pure returns (uint256 x, bool b, uint256 y) {
+        return (1, true, 2);
+    }
+
+    // 【隐式返回】
+    // 既然返回值已经命名了，我们可以直接给这些名字赋值。
+    // 在这种情况下，可以省略 'return' 语句，Solidity 会自动返回这些变量的当前值。
+    function assigned() public pure returns (uint256 x, bool b, uint256 y) {
+        x = 1;
+        b = true;
+        y = 2;
+        // 这里的 return 被省略了，但效果和上面一样
+    }
+
+    // 【解构赋值】
+    // 当调用另一个返回多值的函数时，我们可以用元组 (tuple) 来接住这些值。
+    function destructuringAssignments()
+        public
+        pure
+        returns (uint256, bool, uint256, uint256, uint256)
+    {
+        // 调用 returnMany，把它返回的三个值分别赋给 i, b, j
+        (uint256 i, bool b, uint256 j) = returnMany();
+
+        // 【值可以被省略】
+        // 如果你只想要第 1 和第 3 个值，不想要第 2 个，可以空着不写
+        // (4, 5, 6) -> 4 给 x, 5 被丢弃, 6 给 y
+        (uint256 x, , uint256 y) = (4, 5, 6);
+
+        return (i, b, j, x, y);
+    }
+
+    // 【类型限制】
+    // 不能使用 mapping (映射) 作为输入参数或输出结果
+    
+    // 可以使用 array (数组) 作为输入
+    function arrayInput(uint256[] memory _arr) public {}
+
+    // 可以使用 array (数组) 作为输出
+    uint256[] public arr;
+    function arrayOutput() public view returns (uint256[] memory) {
+        return arr;
+    }
+}
+
+// 调用函数时的【键值对传参】
+contract XYZ {
+    function someFuncWithManyInputs(
+        uint256 x,
+        uint256 y,
+        uint256 z,
+        address a,
+        bool b,
+        string memory c
+    ) public pure returns (uint256) {}
+
+    // 方式 1：常规调用
+    // 必须严格按照定义的顺序传参
+    function callFunc() external pure returns (uint256) {
+        return someFuncWithManyInputs(1, 2, 3, address(0), true, "c");
+    }
+
+    // 方式 2：键值对调用 (Key-Value Inputs)
+    // 只要名字对得上，顺序乱了也没关系，可读性更强
+    function callFuncWithKeyValue() external pure returns (uint256) {
+        return someFuncWithManyInputs({
+            a: address(0),
+            b: true,
+            c: "c",
+            x: 1,
+            y: 2,
+            z: 3
+        });
+    }
+}
+```
+
+感觉没什么好说的
+
+### View and Pure Functions
+
+```JavaScript
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract ViewAndPure {
+    uint256 public x = 1; // 这是一个状态变量（写在区块链上的）
+
+    // 【View 函数】
+    // 承诺不修改状态 (Promise not to modify the state)
+    // 它可以“看”到 x，但不能“改” x
+    function addToX(uint256 y) public view returns (uint256) {
+        return x + y; // 读取了状态变量 x
+    }
+
+    // 【Pure 函数】
+    // 承诺不修改也不读取状态 (Promise not to modify or read from the state)
+    // 它完全不理会 x，只关心传入的参数 i 和 j
+    function add(uint256 i, uint256 j) public pure returns (uint256) {
+        return i + j; // 既没读 x，也没改 x
+    }
+}
+```
+
+-   Getter 函数（读取函数）可以被声明为 view 或 pure。
+    
+-   View 函数声明：承诺不会【修改】任何状态。
+    
+-   Pure 函数声明：承诺既不会【修改】也不会【读取】任何状态变量。
+    
+
+### Error
+
+一个错误将撤销交易期间对状态所做的所有更改。
+
+可以通过调用 `require` 、 `revert` 或 `assert` 抛出错误。
+
+-   `require` 用于在执行前验证输入和条件。
+    
+-   `revert` 类似于 require。以下代码提供了详细信息
+    
+-   `assert` 用于检查永远不应为假的代码。断言失败返回错误信息 `Panic(0x01)`（Assertion failed），**没有**文字描述
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Error {
+    // 1. 测试 require
+    function testRequire(uint256 _i) public pure {
+        // Require 用来做“守门员”，验证：
+        // - 输入参数
+        // - 执行前的条件
+        // - 调用其他函数的返回值
+        // 语法：require(条件, "错误提示信息");
+        require(_i > 10, "Input must be greater than 10");
+    }
+
+    // 2. 测试 revert
+    function testRevert(uint256 _i) public pure {
+        // Revert 适用于判断逻辑非常复杂的场景（例如有多层 if-else 嵌套）
+        // 下面这段代码的作用和上面 testRequire 完全一样
+        if (_i <= 10) {
+            // 语法：revert("错误提示信息");
+            revert("Input must be greater than 10");
+        }
+    }
+
+    uint256 public num;
+    
+    // 3. 测试 assert
+    function testAssert() public view {
+        // Assert 应该仅用于测试内部错误和检查不变量 (Invariants)。
+        // 这里的 num 永远是 0，因为合约里没有修改 num 的函数。
+        // 如果这里报错，说明 EVM 出问题了或者代码逻辑有严重的 Bug。
+        assert(num == 0);
+    }
+
+    // 4. 自定义错误 (Custom Error) - 省钱利器
+    // 定义一个错误类型，可以带参数
+    error InsufficientBalance(uint256 balance, uint256 withdrawAmount);
+
+    function testCustomError(uint256 _withdrawAmount) public view {
+        uint256 bal = address(this).balance;
+        // 如果余额不足
+        if (bal < _withdrawAmount) {
+            // 抛出自定义错误
+            // 这种方式比 require(..., "Long String") 便宜很多
+            revert InsufficientBalance({
+                balance: bal,
+                withdrawAmount: _withdrawAmount
+            });
+        }
+    }
+}
+```
+
+这是一个示例
+
+```Solidity
+contract Account {
+    uint256 public balance;
+    // MAX_UINT 是 uint256 能存的最大数字
+    uint256 public constant MAX_UINT = 2 ** 256 - 1;
+
+    function deposit(uint256 _amount) public {
+        uint256 oldBalance = balance;
+        uint256 newBalance = balance + _amount;
+
+        // 【前置检查】防止溢出 (Overflow)
+        // 这里的逻辑是：如果加法溢出，结果会变小。
+        // (注：Solidity 0.8.0 之后自带溢出检查，这行代码主要是演示逻辑)
+        require(newBalance >= oldBalance, "Overflow");
+
+        balance = newBalance;
+
+        // 【后置检查】不变量检查
+        // 存款后，新余额一定要大于等于旧余额，这是绝对真理。
+        // 如果这行报错，说明上面的加法逻辑有严重漏洞。
+        assert(balance >= oldBalance);
+    }
+
+    function withdraw(uint256 _amount) public {
+        uint256 oldBalance = balance;
+
+        // 【前置检查】防止下溢 (Underflow) 和透支
+        require(balance >= _amount, "Underflow");
+
+        // 这里展示了 if + revert 的写法，效果同上
+        if (balance < _amount) {
+            revert("Underflow");
+        }
+
+        balance -= _amount;
+
+        // 【后置检查】
+        // 取款后，余额肯定变少了。
+        assert(balance <= oldBalance);
+    }
+}
+```
+
+### Function Modifier
+
+修饰符是可以运行在函数调用之前和/或之后的代码。
+
+修饰符可用于：
+
+-   Restrict access 限制访问
+    
+-   Validate inputs 验证输入
+    
+-   Guard against reentrancy hack 防范重入攻击
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract FunctionModifier {
+    // 我们将使用这些变量来演示修饰器是如何工作的
+    address public owner;
+    uint256 public x = 10;
+    bool public locked;
+
+    constructor() {
+        // 将部署合约的人（交易发送者）设置为合约的 owner
+        owner = msg.sender;
+    }
+
+    // 【修饰器 1：权限控制】
+    // 检查调用者是否是合约的 owner
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        // 【关键点】：下划线 _ 是修饰器特有的符号
+        // 它告诉 Solidity：“请把被修饰函数的代码粘贴到这里来执行”
+        _;
+    }
+
+    // 【修饰器 2：参数校验】
+    // 修饰器也可以接收参数。这里检查传入的地址不是 0 地址。
+    modifier validAddress(address _addr) {
+        require(_addr != address(0), "Not valid address");
+        _;
+    }
+
+    // 使用修饰器的函数
+    // 这里同时使用了两个修饰器：
+    // 1. 先执行 onlyOwner 检查身份
+    // 2. 再执行 validAddress 检查参数
+    // 3. 都通过了，才执行 changeOwner 的大括号里的代码
+    function changeOwner(address _newOwner)
+        public
+        onlyOwner
+        validAddress(_newOwner)
+    {
+        owner = _newOwner;
+    }
+
+    // 【修饰器 3：防重入锁】
+    // 修饰器可以在函数执行【前】和【后】都运行代码。
+    // 这个修饰器防止函数在仍在执行时被再次调用（防重入）。
+    modifier noReentrancy() {
+        // --- 函数执行前 (Before) ---
+        require(!locked, "No reentrancy");
+        locked = true;
+        
+        // --- 插入原本的函数逻辑 ---
+        _;
+        
+        // --- 函数执行后 (After) ---
+        locked = false;
+    }
+
+    // 这是一个会触发递归调用的函数，用来测试锁是否生效
+    function decrement(uint256 i) public noReentrancy {
+        x -= i;
+        if (i > 1) {
+            // 这里尝试再次调用自己
+            // 如果没有 noReentrancy，这会成功递归
+            // 但因为有了锁，这里会报错 revert，因为 locked 还是 true
+            decrement(i - 1);
+        }
+    }
+}
+```
+
+前面也基本上看了，没什么好说的，过
+
+### Events
+
+`Events` 允许记录到以太坊区块链。events 的一些用例包括：
+
+-   监听事件并更新用户界面
+    
+-   一种廉价的存储形式
+    
+
+-   主要是为了**通知前端**更新 UI，或者作为**历史数据存档**（因为比 Storage 便宜太多）。
+    
+-   `indexed`**：** 相当于数据库的索引，最多 3 个，用来加速链下查询。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Event {
+    // 【定义事件】
+    // 声明一个叫 Log 的事件。
+    // indexed 关键字：最多可以有 3 个参数被标记为 indexed。
+    // 作用：标记为 indexed 的参数，允许你在链外进行“搜索”和“过滤”（比如：只查关于某个特定用户的日志）。
+    event Log(address indexed sender, string message);
+
+    // 声明另一个没有参数的事件
+    event AnotherLog();
+
+    function test() public {
+        // 【触发事件】
+        // 使用 emit 关键字来发送事件。
+        // 这相当于在区块链上打印了一张“收据”。
+        emit Log(msg.sender, "Hello World!");
+
+        // 再发一次
+        emit Log(msg.sender, "Hello EVM!");
+
+        // 触发那个没参数的事件
+        emit AnotherLog();
+    }
+}
+```
+
+**"A cheap form of storage"**。
+
+-   **State Storage (变量):** 比如 `uint256 public x = 10;`。
+    
+    -   存在哪里？以太坊的“状态树 (State Trie)”里。
+        
+    -   特点：所有节点都要实时维护它，合约可以随时读取它。
+        
+    -   **价格：** 极贵（每 32 字节 20,000 Gas）。
+        
+-   **Events (日志):** 比如 `emit Log(...)`。
+    
+    -   存在哪里？交易的\*\*“收据树 (Receipt Trie)”\*\*里。
+        
+    -   特点：它只是作为历史记录存在区块里，**合约自己读不到它**（一旦发出，泼水难收）。
+        
+    -   **价格：** 极便宜（每字节只需 8 Gas，外加基础费）。
+        
+
+**智能合约无法读取自己（或别人）发出的事件！**
+
+```Solidity
+function tryToReadLog() public {
+    emit Log(msg.sender, "Hello");
+    // ❌ 下面这行代码是不存在的！Solidity 没有这种语法！
+    // string memory m = readLog(msg.sender); 
+}
+```
+
+-   **Events 是单向的：** 从链上 -> 发射到 -> 链下。
+    
+-   如果你需要在合约内部使用数据，必须用 **Storage** 存起来。
+    
+-   如果你只需要告诉前端“我完事了”，或者为了将来数据分析（比如统计由于历史交易量），用 **Events**。
+    
+
+### Events Advanced
+
+在 Solidity 中，事件是一种强大的工具，可以实现各种高级功能和架构。事件的一些高级使用案例包括：
+
+-   事件过滤和监控以实现实时更新和分析
+    
+-   事件日志分析和解码，用于数据提取和处理
+    
+-   去中心化应用（dApps）的事件驱动架构
+    
+-   事件订阅，用于实时通知和更新
+    
+
+`EventDrivenArchitecture` 合约展示了一种事件驱动架构，其中事件用于协调和触发流程的不同阶段，例如发起和确认转账。
+
+`EventSubscription` 合约展示了如何实现事件订阅，允许外部合约或客户端在事件发出时订阅并接收实时更新。它还展示了如何处理事件订阅和管理订阅生命周期。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+// --- 1. 事件驱动架构示例 ---
+contract EventDrivenArchitecture {
+    // 定义两个事件，分别对应流程的两个阶段
+    event TransferInitiated(
+        address indexed from, address indexed to, uint256 value
+    );
+    event TransferConfirmed(
+        address indexed from, address indexed to, uint256 value
+    );
+
+    // 用于记录转账确认状态的 Mapping
+    mapping(bytes32 => bool) public transferConfirmations;
+
+    // 第一步：发起转账
+    function initiateTransfer(address to, uint256 value) public {
+        // 发出“发起”事件，后端或索引器监听到后会进行记录
+        emit TransferInitiated(msg.sender, to, value);
+        // ... (此处省略具体的发起逻辑，如冻结资金)
+    }
+
+    // 第二步：确认转账
+    function confirmTransfer(bytes32 transferId) public {
+        require(
+            !transferConfirmations[transferId], "Transfer already confirmed"
+        );
+        transferConfirmations[transferId] = true;
+        // 发出“确认”事件，标志流程结束
+        emit TransferConfirmed(msg.sender, address(this), 0);
+        // ... (此处省略确认逻辑，如实际划转资金)
+    }
+}
+
+// --- 2. 事件订阅与实时更新示例 ---
+
+// 定义一个接口，订阅者合约必须实现这个接口才能接收通知
+interface IEventSubscriber {
+    function handleTransferEvent(address from, address to, uint256 value)
+        external;
+}
+
+contract EventSubscription {
+    event LogTransfer(address indexed from, address indexed to, uint256 value);
+    
+    // 记录谁订阅了 (防止重复订阅)
+    mapping(address => bool) public subscribers;
+    // 订阅者列表 (用于遍历通知)
+    address[] public subscriberList;
+
+    // 订阅函数
+    function subscribe() public {
+        require(!subscribers[msg.sender], "Already subscribed");
+        subscribers[msg.sender] = true;
+        subscriberList.push(msg.sender); // 加入列表
+    }
+
+    // 取消订阅函数
+    function unsubscribe() public {
+        require(subscribers[msg.sender], "Not subscribed");
+        subscribers[msg.sender] = false;
+        
+        // 【关键技巧】从数组中删除元素的低 Gas 方法：Swap and Pop
+        for (uint256 i = 0; i < subscriberList.length; i++) {
+            if (subscriberList[i] == msg.sender) {
+                // 1. 把最后一个元素移到当前要删除的位置
+                subscriberList[i] = subscriberList[subscriberList.length - 1];
+                // 2. 删除最后一个元素（缩短数组长度）
+                subscriberList.pop();
+                break;
+            }
+        }
+    }
+
+    // 触发转账并通知所有订阅者
+    function transfer(address to, uint256 value) public {
+        // 1. 发出常规日志
+        emit LogTransfer(msg.sender, to, value);
+        
+        // 2. 链上广播：遍历列表，主动调用订阅者合约的函数
+        for (uint256 i = 0; i < subscriberList.length; i++) {
+            // 强制转换地址为接口类型，并调用处理函数
+            IEventSubscriber(subscriberList[i]).handleTransferEvent(
+                msg.sender, to, value
+            );
+        }
+    }
+}
+```
+
+-   为启用高效的过滤和搜索，应索引正确的事件参数。地址通常应被索引，而金额一般不应被索引。
+    
+-   避免冗余事件，不要发出已被底层库或合约覆盖的事件。
+    
+-   事件不能在 `view` 或 `pure` 函数中使用，因为它们通过存储日志来改变区块链状态。
+    
+-   注意发出事件相关的 gas 成本，尤其是在索引参数时，因为它会影响合约的整体 gas 消耗。
+    
+
+### Constructor
+
+构造函数（ `constructor` ）是在合约创建时执行的可选函数。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 基类合约 X (Base contract X)
+contract X {
+    string public name;
+
+    // 构造函数：需要传入一个 _name 参数
+    constructor(string memory _name) {
+        name = _name;
+    }
+}
+
+// 基类合约 Y (Base contract Y)
+contract Y {
+    string public text;
+
+    // 构造函数：需要传入一个 _text 参数
+    constructor(string memory _text) {
+        text = _text;
+    }
+}
+
+// 【方法 1：静态传参】
+// 有两种初始化父合约的方法。
+// 第一种：在继承列表（inheritance list）中直接把参数写死。
+// B 继承自 X 和 Y，并且在定义时就给出了参数。
+contract B is X("Input to X"), Y("Input to Y") {}
+
+// 【方法 2：动态传参】
+contract C is X, Y {
+    // 第二种：在子合约的构造函数中传递参数，
+    // 写法类似于函数修饰器 (modifier)。
+    // 这里 C 的构造函数接收参数，然后把它们“透传”给 X 和 Y。
+    constructor(string memory _name, string memory _text) X(_name) Y(_text) {}
+}
+
+// 【关于执行顺序的重要规则】
+// 父合约构造函数总是按照“继承列表”中的声明顺序被调用。
+// 无论你在子合约构造函数里怎么写（先写 X 还是先写 Y），都不影响这个顺序。
+
+// 这里的继承顺序是：is X, Y
+// 所以构造函数调用顺序是：
+// 1. X
+// 2. Y
+// 3. D
+contract D is X, Y {
+    // 即使这里先写了 X(...) 再写 Y(...)，顺序依然由 `is X, Y` 决定
+    constructor() X("X was called") Y("Y was called") {}
+}
+
+// 这里的继承顺序依然是：is X, Y
+// 所以构造函数调用顺序依然是：
+// 1. X
+// 2. Y
+// 3. E
+contract E is X, Y {
+    // 关键点：哪怕你在这里先写了 Y(...) 后写 X(...)，
+    // 真实的执行顺序依然是先 X 后 Y！
+    constructor() Y("Y was called") X("X was called") {}
+}
+```
+
+### Inheritance 继承
+
+Solidity 支持多重继承。合约可以通过使用 `is` 关键字来继承其他合约。
+
+被子合约重写的函数必须声明为 `virtual` 。
+
+重写父函数的函数必须使用 `override` 关键字。
+
+继承顺序很重要。
+
+你必须按照从“最基础”到“最派生”的顺序列出父合约。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+/* 继承关系图 (Graph of inheritance)
+    A
+   / \
+  B   C
+ / \ /
+F  D,E
+*/
+
+// 基类合约 A
+contract A {
+    // 【关键点 1】virtual
+    // 如果一个函数将来打算被子合约修改（重写），必须标记为 virtual。
+    function foo() public pure virtual returns (string memory) {
+        return "A";
+    }
+}
+
+// 合约使用 'is' 关键字来继承其他合约
+contract B is A {
+    // 【关键点 2】override
+    // 重写父类 A 的 foo 函数。必须加上 override 关键字。
+    function foo() public pure virtual override returns (string memory) {
+        return "B";
+    }
+}
+
+contract C is A {
+    // 重写 A 的 foo 函数
+    function foo() public pure virtual override returns (string memory) {
+        return "C";
+    }
+}
+
+// 【关键点 3】多重继承 (Multiple Inheritance)
+// 合约可以继承多个父合约。
+// 当同一个函数在多个父合约中都被定义时，父合约的搜索顺序是：
+// 从右向左 (Right to Left)，并且是深度优先 (Depth-first) 的。
+
+contract D is B, C {
+    // D.foo() 会返回 "C"
+    // 因为在继承列表 `is B, C` 中，C 在最右边 (Right-most)。
+    // 所以 C 的 foo() 会覆盖 B 的 foo()。
+    
+    // override(B, C) 表示：我要重写的这个函数，在 B 和 C 里都有份。
+    function foo() public pure override(B, C) returns (string memory) {
+        // super.foo() 会调用继承链上的“下一个”合约，这里就是 C
+        return super.foo();
+    }
+}
+
+contract E is C, B {
+    // E.foo() 会返回 "B"
+    // 因为在继承列表 `is C, B` 中，B 在最右边。
+    function foo() public pure override(C, B) returns (string memory) {
+        return super.foo();
+    }
+}
+
+// 【关键点 4】继承顺序 (Inheritance Order)
+// 继承列表必须按照从“最基类 (Base)”到“最派生类 (Derived)”的顺序排列。
+// A 是爷爷，B 是爸爸。你必须先写 A，再写 B。
+// 如果写成 `contract F is B, A`，编译器会报错。
+contract F is A, B {
+    function foo() public pure override(A, B) returns (string memory) {
+        return super.foo();
+    }
+```
+
+**有** `virtual` **标签的函数，被继承时是必须要 override 的吗？不是必须的。** 只要父类的这个函数有“函数体”（即大括号 `{ ... }` 里面有代码），子类就可以选择不重写。
+
+-   _只有一种情况是必须重写的：_ 如果父类函数**没有函数体**（分号结尾），那么子类**必须**实现它（除非子类也是抽象合约）。
+    
+
+**如果不 override 能否直接使用父类的同名函数？完全可以，而且是自动拥有的。** 子合约会自动继承父类的逻辑，就像这行代码是写在子合约里一样。
+
+### Shadowing Inherited State Variables 继承状态变量的遮蔽
+
+与函数不同，状态变量不能通过在子合约中重新声明来覆盖。
+
+简单来说，它的核心规则是：**你不能在子合约里再定义一个和父合约同名的变量，你应该直接修改父合约的那个变量。**
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract A {
+    string public name = "Contract A";
+
+    function getName() public view returns (string memory) {
+        return name;
+    }
+}
+
+// 【错误示范】
+// Solidity 0.6 版本之后，禁止遮蔽（Shadowing）状态变量。
+// 下面的代码无法通过编译。
+// contract B is A {
+//     // 错误：父合约 A 已经有一个叫 'name' 的变量了。
+//     // 你不能在这里重新声明一个 string public name。
+//     string public name = "Contract B";
+// }
+
+contract C is A {
+    // 【正确示范】
+    // 这是覆盖继承状态变量的正确方式。
+    // 不要重新声明，而是通过构造函数去修改它的值。
+    constructor() {
+        // 直接给父类已经定义好的 name 赋值
+        name = "Contract C";
+    }
+
+    // 调用 C.getName() 将返回 "Contract C"
+}
+```
+
+### Calling Parent Contracts 调用父合约
+
+父合约可以直接调用，或使用关键字 `super` 。
+
+使用关键字 `super` ，所有直接父合约都会被调用。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+/* 继承树结构 (Graph of inheritance)
+    A
+   / \
+  B   C
+   \ /
+    D
+*/
+
+contract A {
+    // 这是一个事件。你可以从函数中发出事件，它们会被记录在交易日志中。
+    // 在本例中，这对于追踪函数调用路径非常有用。
+    event Log(string message);
+
+    function foo() public virtual {
+        emit Log("A.foo called");
+    }
+
+    function bar() public virtual {
+        emit Log("A.bar called");
+    }
+}
+
+contract B is A {
+    function foo() public virtual override {
+        emit Log("B.foo called");
+        // 【方式 1：直接调用】指名道姓地调用 A 的 foo
+        A.foo();
+    }
+
+    function bar() public virtual override {
+        emit Log("B.bar called");
+        // 【方式 2：Super 调用】调用继承链上的“上一级”
+        super.bar();
+    }
+}
+
+contract C is A {
+    function foo() public virtual override {
+        emit Log("C.foo called");
+        // 【方式 1：直接调用】指名道姓地调用 A 的 foo
+        A.foo();
+    }
+
+    function bar() public virtual override {
+        emit Log("C.bar called");
+        // 【方式 2：Super 调用】调用继承链上的“上一级”
+        super.bar();
+    }
+}
+
+// D 继承了 B 和 C (注意顺序：is B, C)
+contract D is B, C {
+    // 尝试操作：
+    // - 调用 D.foo 并检查交易日志。
+    //   虽然 D 继承了 A, B 和 C，但它只调用了 C，然后是 A。
+    // - 调用 D.bar 并检查交易日志。
+    //   D 调用了 C，然后 C 的 super 调到了 B，最后 B 的 super 调到了 A。
+    //   虽然 super 被调用了两次（在 B 和 C 中），但 A 只被调用了一次。
+
+    function foo() public override(B, C) {
+        // 这里的 super 指向 C (因为 C 在继承列表的最右边)
+        super.foo();
+    }
+
+    function bar() public override(B, C) {
+        // 这里的 super 指向 C
+        super.bar();
+    }
+}
+```
+
+子类能直接调用 爷类 的接口
+
+比如说上面的代码中的 D 能直接使用 A 的接口，只需要写 A.foo() 即可
+
+### Visibility 可见性
+
+这个前面基本上也看过了
+
+**函数的可见性可以是：**
+
+-   `public` **(公开)**：任何合约、任何账号（EOA）都可以调用。
+    
+-   `private` **(私有)**：**最严格**。只有**定义该函数**的合约内部可以调用（子合约也不行）。
+    
+-   `internal` **(内部)**：只有合约**内部**以及**继承该合约的子合约**可以调用。
+    
+-   `external` **(外部)**：只有**其他合约**和**账号**可以调用（合约内部不能直接调用，必须用特殊手段）。
+    
+
+**状态变量的可见性：**
+
+-   可以是 `public`, `private`, 或 `internal`。
+    
+-   **注意：** 状态变量**不能**定义为 `external`。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Base {
+    // 【Private / 私有】
+    // 权限：仅限本合约内部。
+    // 限制：继承了这个合约的子合约（Child）也无法调用它。
+    function privateFunc() private pure returns (string memory) {
+        return "private function called";
+    }
+
+    // 本合约内部可以调用 private 函数
+    function testPrivateFunc() public pure returns (string memory) {
+        return privateFunc();
+    }
+
+    // 【Internal / 内部】
+    // 权限：本合约内部 + 子合约内部。
+    // 类似于 Java/C++ 中的 protected。
+    function internalFunc() internal pure returns (string memory) {
+        return "internal function called";
+    }
+
+    function testInternalFunc() public pure virtual returns (string memory) {
+        return internalFunc();
+    }
+
+    // 【Public / 公开】
+    // 权限：所有人。内部、子合约、外部账号、外部合约都能调。
+    // 如果是状态变量设为 public，Solidity 会自动为你生成一个 getter 函数。
+    function publicFunc() public pure returns (string memory) {
+        return "public function called";
+    }
+
+    // 【External / 外部】
+    // 权限：仅限外部调用。
+    // 场景：通常用于只给用户调用的接口，省 Gas（参数直接从 calldata 读，不复制到 memory）。
+    function externalFunc() external pure returns (string memory) {
+        return "external function called";
+    }
+
+    // ❌ 编译错误演示：
+    // 这是一个 public 函数（属于内部调用的一种），它不能直接调用 external 函数。
+    // function testExternalFunc() public pure returns (string memory) {
+    //     return externalFunc(); // 报错！
+    //     // 修正方法：使用 this.externalFunc() 发起一个外部调用（极费 Gas，不推荐）
+    // }
+
+    // 【状态变量】
+    string private privateVar = "my private variable";
+    string internal internalVar = "my internal variable";
+    string public publicVar = "my public variable";
+
+    // ❌ 错误：状态变量不能是 external
+    // string external externalVar = "my external variable";
+}
+
+contract Child is Base {
+    // ❌ 错误演示：
+    // 子合约无法访问父合约的 private 函数或变量
+    // function testPrivateFunc() public pure returns (string memory) {
+    //     return privateFunc();
+    // }
+
+    // ✅ 正确：
+    // 子合约可以访问父合约的 internal 函数
+    function testInternalFunc() public pure override returns (string memory) {
+        return internalFunc();
+    }
+}
+```
+
+误区 1：`private` 的数据是保密的吗？
+
+**绝对不是！** 在区块链上，`private` 只是**代码层面的访问限制**。
+
+-   **代码限制：** 别的合约写代码调不到你的 `private` 变量。
+    
+-   **数据公开：** 黑客、普通用户通过区块链浏览器、或者直接读取节点的 Storage 槽位，**可以轻而易举地读出** `private` **变量的值**。
+    
+-   **警示：** 永远不要用 `private` 变量存密码、私钥！
+    
+
+误区 2：`public` 和 `external` 怎么选？
+
+-   如果你的函数**只会被外部**（用户或别的合约）调用，自己合约内部不调，**请务必用** `external`。
+    
+-   **原因：** 处理大数组参数时，`external` 直接从 Calldata（原始数据区）读取，而 `public` 需要把数据从 Calldata 复制到 Memory（内存区）。`external` **更省 Gas。**
+    
+
+误区 3：状态变量默认是什么？
+
+如果你写 `uint256 x;` 没加修饰符：
+
+-   **状态变量** 默认为 `internal`。
+    
+-   **函数** 没有默认值，必须显式声明可见性（Solidity 0.5.0 之后的强制要求）。
+    
+
+### Interface 接口
+
+-   不能包含任何函数实现（只有函数名、参数、返回值，没有大括号 `{...}` 里的逻辑）。
+    
+-   可以继承其他的接口（接口也能有父接口）。
+    
+-   所有声明的函数必须是 `external` 的（因为接口本来就是给外部用的）。
+    
+-   不能声明构造函数（因为它只是个外壳，不需要部署初始化）。
+    
+-   不能声明状态变量（它不存数据，只定义行为）。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 1. 目标合约：这是真正干活的合约
+contract Counter {
+    uint256 public count;
+
+    function increment() external {
+        count += 1;
+    }
+}
+
+// 2. 接口定义：这是 Counter 合约的“说明书”
+// 我们不需要知道 increment 里面具体是怎么写的（是 +=1 还是 +=10），
+// 我们只需要知道它叫什么名字，怎么调用。
+interface ICounter {
+    // 对应 Counter 中的 public count 变量
+    // (Public 变量会自动生成一个同名的 getter 函数)
+    function count() external view returns (uint256);
+
+    // 对应 Counter 中的 increment 函数
+    function increment() external;
+}
+
+// 3. 调用者合约
+contract MyContract {
+    // 传入目标合约的地址 _counter
+    function incrementCounter(address _counter) external {
+        // 【关键语法】: ICounter(_counter)
+        // 意思是：把这个地址 (_counter) 当作 ICounter 接口来看待。
+        // 然后调用它的 increment() 按钮。
+        ICounter(_counter).increment();
+    }
+
+    function getCount(address _counter) external view returns (uint256) {
+        // 同样，把地址包装成接口，调用 count() 读取数据
+        return ICounter(_counter).count();
+    }
+}
+
+// Uniswap 工厂合约的接口
+// 作用：通过两个代币地址，找到它们对应的交易对(Pair)地址
+interface UniswapV2Factory {
+    function getPair(address tokenA, address tokenB)
+        external
+        view
+        returns (address pair);
+}
+
+// Uniswap 交易对合约的接口
+// 作用：查询这个池子里有多少币（流动性储备）
+interface UniswapV2Pair {
+    function getReserves()
+        external
+        view
+        returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
+}
+
+contract UniswapExample {
+    // 这些是 Ethereum 主网上真实的合约地址
+    address private factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+    address private dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
+    address private weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+
+    function getTokenReserves() external view returns (uint256, uint256) {
+        // 第一步：问 Factory，“DAI 和 WETH 的交易池地址在哪？”
+        // 语法：接口名(合约地址).函数名(参数)
+        address pair = UniswapV2Factory(factory).getPair(dai, weth);
+
+        // 第二步：问 Pair 合约，“你池子里现在有多少 DAI 和 WETH？”
+        // 语法：(返回值1, 返回值2, 忽略的值) = 接口调用()
+        (uint256 reserve0, uint256 reserve1,) = UniswapV2Pair(pair).getReserves();
+        // 注意上面那个逗号 ","，表示我们不需要第三个返回值 (时间戳)，直接丢弃
+        return (reserve0, reserve1);
+    }
+}
+```
+
+### Payable
+
+声明为 `payable` 的函数和地址可以接收 `ether` 进入合约。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Payable {
+    // 【可支付地址】
+    // 只有标记为 address payable 的变量，才能使用 .transfer() 或 .send() 方法给它转账
+    address payable public owner;
+
+    // 【可支付构造函数】
+    // 加上 payable，意味着你在部署合约的那一刻，就可以往合约里存入一笔初始资金
+    constructor() payable {
+        // msg.sender 是部署者，我们需要把它强制转换为 payable 类型存起来
+        owner = payable(msg.sender);
+    }
+
+    // 【存款函数】
+    // 这个函数可以接收以太币 (Ether)。
+    // 调用此函数时，附带发送一些 Ether，合约的余额会自动更新。
+    // 函数体是空的 {}，但这没关系，Solidity 引擎会自动处理记账。
+    function deposit() public payable {}
+
+    // 【非支付函数】
+    // 如果你调用这个函数的同时尝试发送 Ether，交易会直接失败 (Revert)。
+    // 因为它没有 payable 标签。
+    function notPayable() public {}
+
+    // 【提款函数】
+    // 将合约里所有的 Ether 取出来发给 owner
+    function withdraw() public {
+        // 获取当前合约里的余额 (address(this).balance)
+        uint256 amount = address(this).balance;
+
+        // 发送 Ether 给 owner
+        // 这是目前推荐的转账写法：call{value: ...}("")
+        (bool success,) = owner.call{value: amount}("");
+        require(success, "Failed to send Ether");
+    }
+
+    // 【转账函数】
+    // 从合约转钱给指定的某个地址
+    function transfer(address payable _to, uint256 _amount) public {
+        // 注意：参数 _to 必须声明为 payable，否则不能给它转账
+        (bool success,) = _to.call{value: _amount}("");
+        require(success, "Failed to send Ether");
+    }
+}
+```
+
+### Sending Ether: Transfer, Send, Call
+
+You can send Ether to other contracts by
+
+-   `transfer` (2300 gas, throws error)
+    
+-   `send` (2300 gas, returns bool)
+    
+-   `call` (forward all gas or set gas, returns bool)
+    
+
+**How to send Ether? (如何发送？)** 你可以通过以下方式发送 ETH 给其他合约：
+
+1.  `transfer`: 限制 **2300 gas**，失败时直接**抛出异常 (revert)**。（已过时，不推荐）
+    
+2.  `send`: 限制 **2300 gas**，失败时**返回** `false`（不会自动 revert）。（已过时，不推荐）
+    
+3.  `call`: **转发剩余所有 gas**（或者你可以指定 gas），失败时**返回** `false`。（**当前推荐的标准做法**）
+    
+
+**How to receive Ether? (如何接收？)** 一个合约想要接收 ETH，必须至少包含以下函数之一：
+
+-   `receive() external payable`
+    
+-   `fallback() external payable`
+    
+
+**逻辑判断：** 如果 `msg.data` 为空，优先调用 `receive()`；否则（或者 `receive` 不存在时），调用 `fallback()`。
+
+**Which method should you use? (应该用哪个？)**
+
+-   **自 2019 年 12 月起，推荐使用** `call` **与重入保护机制结合使用。**
+    
+-   **通过重入保护机制来防范重入攻击。**
+    
+    -   **在进行其他合约调用之前进行所有状态变更**
+        
+    -   使用 `nonReentrant` 重入保护修饰符。
+        
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 引入 Solady 库（这是一个追求极致 Gas 优化的库，比 OpenZeppelin 更省钱）
+import {SafeTransferLib} from "@solady/utils/SafeTransferLib.sol";
+
+// =====================
+// 1. 接收 ETH 的合约
+// =====================
+contract ReceiveEther {
+    /*
+    接收逻辑图：
+                 发送 Ether
+                    |
+              msg.data 为空?
+                 /      \
+               是        否
+              /           \
+        receive()存在?   fallback()
+           /     \
+          是      否
+         /         \
+    receive()    fallback()
+    */
+
+    // 情况 A: 纯转账，msg.data 为空
+    receive() external payable {}
+
+    // 情况 B: msg.data 不为空，或者 receive 不存在
+    fallback() external payable {}
+
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+
+// =====================
+// 2. 发送 ETH 的合约
+// =====================
+contract SendEther {
+    // 【流派 1: Transfer (不推荐)】
+    // 特点：自带 2300 gas 限制。
+    // 缺点：如果目标合约的 receive 函数逻辑稍微复杂一点（消耗超过 2300 gas），转账就会失败。
+    // 这种“写死 Gas”的做法在以太坊升级后很容易出问题。
+    function sendViaTransfer(address payable _to) public payable {
+        _to.transfer(msg.value);
+    }
+
+    // 【流派 2: Send (不推荐)】
+    // 特点：自带 2300 gas 限制，返回布尔值。
+    // 缺点：你需要手动处理失败情况 (require)，且同样受 Gas 限制困扰。
+    function sendViaSend(address payable _to) public payable {
+        bool sent = _to.send(msg.value);
+        require(sent, "Failed to send Ether");
+    }
+
+    // 【流派 3: Call (官方推荐)】
+    // 特点：转发所有剩余 Gas，返回布尔值和数据。
+    // 优点：最灵活，兼容性最好（特别是像 Gnosis Safe 这种智能合约钱包，往往需要消耗更多 Gas 才能收钱）。
+    // 风险：因为转发了所有 Gas，对方可能会利用剩余 Gas 回头攻击你（重入攻击）。所以必须配合“重入锁”使用。
+    function sendViaCall(address payable _to) public payable {
+        // 语法：地址.call{value: 金额}("")
+        (bool sent, bytes memory data) = _to.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+    }
+
+    // 【流派 4: Solady (高手专用)】
+    // 使用 Solady 的 SafeTransferLib
+    // 优点：比原生的 .call 写法还要省 Gas（约 0.36%），且代码更简洁。
+    // 它在底层用汇编 (Yul) 处理了返回值检查。
+    function sendViaSolady(address payable _to) public payable {
+        // 如果失败，会自动 Revert 并抛出 ETHTransferFailed 错误
+        SafeTransferLib.safeTransferETH(_to, msg.value);
+    }
+}
+```
+
+### Fallback 回退函数
+
+`fallback` **是一个特殊的函数，它会在以下两种情况被执行：**
+
+1.  **调用了不存在的函数：** 别人发来一个指令，但合约里没有匹配的函数名。
+    
+2.  **直接发 ETH 且无法由** `receive` **处理：**
+    
+    1.  别人直接转账，但合约里没写 `receive()` 函数；
+        
+    2.  **或者** 别人转账的同时还带了数据 (`msg.data` 不为空)。
+        
+
+**Gas 限制：** 当使用 `transfer` 或 `send` 调用 `fallback` 时，它只有 **2300 gas** 的限制（这非常少，只能做最简单的日志记录，连写入状态变量都不够）。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Fallback {
+    event Log(string func, uint256 gas);
+
+    // 【Fallback 函数】
+    // 必须声明为 external。
+    // 如果想让它能接收以太币，必须加 payable。
+    fallback() external payable {
+        // 这里的 gasleft() 可以让我们看到还剩多少 Gas。
+        // - 如果是用 transfer/send 调用的：这里剩余 Gas 很少（约 2300）。
+        // - 如果是用 call 调用的：这里剩余 Gas 很多（几乎全部）。
+        emit Log("fallback", gasleft());
+    }
+
+    // 【Receive 函数】
+    // 专门用于接收纯 ETH 转账（msg.data 为空时触发）。
+    receive() external payable {
+        emit Log("receive", gasleft());
+    }
+
+    // 辅助函数：查看合约余额
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+
+contract SendToFallback {
+    // 使用 transfer 发送 ETH
+    function transferToFallback(address payable _to) public payable {
+        // 【关键点】
+        // transfer 自带 2300 gas 限制。
+        // 如果目标合约的 fallback/receive 逻辑太复杂（比如写入了 Storage），
+        // 消耗超过了 2300，这笔交易会直接失败 (Revert)。
+        _to.transfer(msg.value);
+    }
+
+    // 使用 call 发送 ETH
+    function callFallback(address payable _to) public payable {
+        // 【关键点】
+        // call 会转发所有剩余的 Gas。
+        // 这是推荐的发送方式，因为它允许目标合约执行复杂的逻辑。
+        (bool sent,) = _to.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+    }
+}
+```
+
+### Call 调用
+
+`call` **是一个用于与其他智能合约交互的低级函数。**
+
+-   **推荐场景：** 当你仅仅是想发送 ETH（触发对方的 `fallback` 或 `receive` 函数）时，这是推荐的方法。
+    
+-   **不推荐场景：** 这通常**不是**调用现有（已知）函数的推荐方式。
+    
+
+**为什么不推荐使用低级 call 来调用函数？**
+
+1.  **Reverts are not bubbled up (异常不冒泡):** 如果目标合约报错了（revert），调用者合约**不会**自动报错停止，它只会收到一个 `false` 的返回值。你需要手动写代码去检查这个失败。
+    
+2.  **Type checks are bypassed (跳过类型检查):** 编译器不会帮你检查参数类型是否匹配（比如你传了 `uint` 给 `string`，编译时不报错，运行时才出错）。
+    
+3.  **Function existence checks are omitted (省略函数存在性检查):** 如果你调用的函数根本不存在，编译器也不管，依然会发送交易，通常会触发对方的 `fallback`。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Receiver {
+    event Received(address caller, uint256 amount, string message);
+
+    // 如果有人瞎调函数（函数名对不上），或者只发钱不带数据，就进这里
+    fallback() external payable {
+        emit Received(msg.sender, msg.value, "Fallback was called");
+    }
+
+    // 这是一个正常的业务函数
+    function foo(string memory _message, uint256 _x)
+        public
+        payable
+        returns (uint256)
+    {
+        emit Received(msg.sender, msg.value, _message);
+        return _x + 1;
+    }
+}
+
+contract Caller {
+    event Response(bool success, bytes data);
+
+    // 假设 Caller 没有 Receiver 的源代码（也就无法使用接口 Interface），
+    // 但我们知道 Receiver 的地址，以及我们要调用的函数名叫 "foo"。
+    function testCallFoo(address payable _addr) public payable {
+        // 【核心语法】
+        // 1. {value: ..., gas: ...} : 自定义发送的 ETH 金额和 Gas 限制
+        // 2. abi.encodeWithSignature(...) : 将函数名和参数手动打包成二进制数据
+        (bool success, bytes memory data) = _addr.call{
+            value: msg.value,
+            gas: 5000
+        }(abi.encodeWithSignature("foo(string,uint256)", "call foo", 123));
+        
+        // 注意：abi.encodeWithSignature 对空格非常敏感！
+        // "foo(string, uint256)" ❌ (逗号后有空格，会导致计算出的 Hash 不对)
+        // "foo(string,uint256)" ✅ (必须紧凑)
+
+        emit Response(success, data);
+    }
+
+    // 演示调用一个不存在的函数
+    function testCallDoesNotExist(address payable _addr) public payable {
+        // 试图调用 "doesNotExist()"
+        (bool success, bytes memory data) = _addr.call{value: msg.value}(
+            abi.encodeWithSignature("doesNotExist()")
+        );
+
+        // 结果：
+        // success 会是 true (只要对方没 revert)
+        // 对方合约会触发 fallback 函数
+        emit Response(success, data);
+    }
+}
+```
+
+### Delegatecall 委托调用
+
+`delegatecall` 是一个类似于 `call` 的低级函数。
+
+当合约 A 对合约 B 执行 `delegatecall` 时，**B 的代码**会被执行，但是是在 **A 的上下文**中执行的。 这意味着：
+
+1.  修改的是 **A 的 Storage (存储)**。
+    
+2.  `msg.sender` 依然是 **触发 A 的那个原始调用者**（而不是 A）。
+    
+3.  `msg.value` 依然是 **原始交易发送的金额**。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 注意：先部署这个合约 (逻辑合约 / 老师)
+contract B {
+    // 注意：这里的存储布局必须和合约 A 一模一样！
+    uint256 public num;
+    address public sender;
+    uint256 public value;
+
+    function setVars(uint256 _num) public payable {
+        // 当 A delegatecall 这里时：
+        // 1. num 修改的是 A 的 num
+        num = _num;
+        // 2. sender 是谁？是调用 A 的那个人 (user)，而不是 A
+        sender = msg.sender;
+        // 3. value 是多少？是 user 发给 A 的钱
+        value = msg.value;
+    }
+}
+
+// 这是一个代理合约 (Proxy / 学生)
+contract A {
+    // 存储布局必须和 B 保持一致 (Slot 0, Slot 1, Slot 2)
+    uint256 public num;
+    address public sender;
+    uint256 public value;
+
+    function setVars(address _contract, uint256 _num) public payable {
+        // 【核心代码】
+        // A 调用 B 的代码，但修改的是 A 自己的状态
+        (bool success, bytes memory data) = _contract.delegatecall(
+            abi.encodeWithSignature("setVars(uint256)", _num)
+        );
+        // 如果成功，此时 A.num 变了，A.sender 变了，但 B 的状态纹丝不动。
+    }
+}
+```
+
+代理调用会产生额外 gas 费用
+
+**地址访问成本 (Address Access Cost - EIP-2929):**
+
+-   **冷加载 (Cold Load):** 如果这是你在本笔交易中第一次访问逻辑合约的地址，需要花费约 **2600 Gas**。
+    
+-   **热加载 (Warm Load):** 如果这个地址在交易中已经被访问过了（或者在预热列表中），只需要 **100 Gas**。
+    
+-   _注：在代理模式（Proxy Pattern）中，通常每次交易只调用一次逻辑合约，所以通常是冷加载的 2600 Gas。_
+    
+
+**内存扩展与数据拷贝 (Memory Expansion & Copying):**
+
+-   你需要把参数从 Calldata 或 Memory 复制一份传给 `delegatecall`。
+    
+-   如果有返回值，还需要把返回值复制回来。
+    
+-   这部分取决于你的参数数据有多大（通常几十到几百 Gas）。
+    
+
+### Function Selector
+
+当调用一个函数时， `calldata` 的前 4 个字节指定要调用的函数。
+
+这 4 个字节称为函数选择器。
+
+例如，下面这段代码。它使用 `call` 在地址 `addr` 的合约上执行 `transfer` 。
+
+```Solidity
+addr.call(abi.encodeWithSignature("transfer(address,uint256)", 0xSomeAddress, 123))
+```
+
+从 `abi.encodeWithSignature(....)` 返回的前 4 个字节是函数选择器。
+
+或许可以在代码中预计算并内联函数选择器，从而节省一点 gas？
+
+**优化写法 (省 Gas):** 我们已经知道 `transfer` 的选择器是 `0xa9059cbb`，直接写死它。
+
+直接 `abi.encodeWithSelector` 传入函数的选择器
+
+```Solidity
+addr.call(abi.encodeWithSelector(0xa9059cbb, recipient, amount));
+```
+
+就是说，encodeWithSelector会把函数名，比如说"transfer(address,uint256)"，直接转化为一个4字节的识别码，用于找到对应的函数
+
+当你向以太坊网络发送一笔交易去调用合约函数时，你发送的数据（Input Data / Calldata）其实是一串长长的十六进制编码。
+
+**结构如下：**`[ 4字节: 函数选择器 ]` + `[ N字节: 参数编码 ]`
+
+### Calling Other Contract 高层级调用 (High-level Call
+
+合约可以通过两种方式调用其他合约。
+
+最简单的方法是直接调用，例如 `A.foo(x, y, z)` 。
+
+另一种调用其他合约的方法是使用低级别的 `call` 。这种方法不推荐使用。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 1. 被调用方 (Callee)
+// 这是我们要去调用的目标合约
+contract Callee {
+    uint256 public x;
+    uint256 public value;
+
+    // 普通函数：修改 x 并返回 x
+    function setX(uint256 _x) public returns (uint256) {
+        x = _x;
+        return x;
+    }
+
+    // 可支付函数：既修改 x，又接收 ETH
+    function setXandSendEther(uint256 _x)
+        public
+        payable
+        returns (uint256, uint256)
+    {
+        x = _x;
+        value = msg.value; // 记录收到了多少钱
+        return (x, value);
+    }
+}
+
+// 2. 调用方 (Caller)
+// 这个合约负责去“戳”上面的合约
+contract Caller {
+    
+    // 【场景 A：直接传入合约类型】
+    // 参数 _callee 的类型直接就是合约 Callee
+    function setX(Callee _callee, uint256 _x) public {
+        // 编译器知道 _callee 里有个函数叫 setX，直接调就行
+        uint256 x = _callee.setX(_x);
+    }
+
+    // 【场景 B：传入地址，自己转换】（最常用）
+    // 通常我们在前端只知道目标合约的地址 (address 0x...)
+    function setXFromAddress(address _addr, uint256 _x) public {
+        // 关键步骤：强制类型转换
+        // 把“光秃秃”的地址 _addr，包装成 Callee 类型的合约实例
+        Callee callee = Callee(_addr);
+        
+        // 现在可以调用了
+        callee.setX(_x);
+    }
+
+    // 【场景 C：调用函数并附带 ETH】
+    // 类似于低级调用的 {value: ...}，高级调用也可以这样写
+    function setXandSendEther(Callee _callee, uint256 _x) public payable {
+        // 语法：合约对象.函数名{value: 金额}(参数)
+        // 这里把 Caller 收到的钱 (msg.value) 转发给了 Callee
+        (uint256 x, uint256 value) = 
+            _callee.setXandSendEther{value: msg.value}(_x);
+    }
+}
+```
+
+### Contract that Creates other Contracts 通过合约创建合约（**工厂模式**）
+
+通过 `new` 关键字，其他合约可以创建合约。自 0.8.0 版本起， `new` 关键字通过指定 `salt` 选项支持 `create2` 功能。
+
+CREATE 和 CREATE2 的开销差别非常小，通常可以忽略不计
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+//要创建的合约，这是我们要生产的“车”。
+contract Car {
+    address public owner;
+    string public model;
+    address public carAddr;
+
+    // 构造函数是 payable 的，意味着你在创建这辆车时，可以顺便塞钱进去
+    constructor(address _owner, string memory _model) payable {
+        owner = _owner;
+        model = _model;
+        carAddr = address(this);
+    }
+}
+
+//工厂
+contract CarFactory {
+    Car[] public cars; // 用于记录所有生产出来的车的地址
+
+    // 【方式 1: 普通创建 (CREATE)】
+    // 使用传统的 `new` 关键字。
+    // 新合约地址 = hash(工厂地址, 工厂的 nonce)
+    // 这种方式生成的地址难以预测（因为 nonce 会变）。
+    function create(address _owner, string memory _model) public {
+        Car car = new Car(_owner, _model);
+        //car 的类型是 Car ， address(car) 获得相应的 地址
+        cars.push(car);
+    }
+
+    // 【方式 2: 带资进组】
+    // 在创建合约的同时，给新合约转入 ETH。
+    // 语法：(new ContractName){value: 金额}(构造函数参数)
+    function createAndSendEther(address _owner, string memory _model)
+        public
+        payable
+    {
+        // 注意：Car 的构造函数必须是 payable 的，这里才不会报错
+        Car car = (new Car){value: msg.value}(_owner, _model);
+        cars.push(car);
+    }
+
+    // 【方式 3: 确定性创建 (CREATE2)】
+    // 使用 `salt` 选项。
+    // 新合约地址 = hash(0xFF, 工厂地址, salt, 新合约字节码)
+    // 只要 salt 不变，代码不变，生成的地址永远是固定的！
+    // 这叫 "Counterfactual instantiation" (反事实实例化)。
+    function create2(address _owner, string memory _model, bytes32 _salt)
+        public
+    {
+        // 语法：(new ContractName){salt: 盐值}(构造函数参数)
+        Car car = (new Car){salt: _salt}(_owner, _model);
+        cars.push(car);
+    }
+
+    // 【方式 4: 全家桶 (带钱 + 带 salt)】
+    function create2AndSendEther(
+        address _owner,
+        string memory _model,
+        bytes32 _salt
+    ) public payable {
+        Car car = (new Car){value: msg.value, salt: _salt}(_owner, _model);
+        cars.push(car);
+    }
+
+    // 辅助函数：读取某辆车的信息
+    function getCar(uint256 _index)
+        public
+        view
+        returns (
+            address owner,
+            string memory model,
+            address carAddr,
+            uint256 balance
+        )
+    {
+        Car car = cars[_index];
+        return (car.owner(), car.model(), car.carAddr(), address(car).balance);
+    }
+}
+```
+
+### try / catch
+
+`try / catch` 只能捕获来自外部函数调用和合约创建的错误。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 用于演示 try / catch 的外部合约
+contract Foo {
+    address public owner;
+
+    constructor(address _owner) {
+        // 情况 A: 如果 owner 是 0地址，抛出带字符串的错误 (Error)
+        require(_owner != address(0), "invalid address");
+        // 情况 B: 如果 owner 是 0x...01，抛出 Panic 错误 (assert 产生)
+        assert(_owner != 0x0000000000000000000000000000000000000001);
+        owner = _owner;
+    }
+
+    function myFunc(uint256 x) public pure returns (string memory) {
+        // 如果 x 为 0，抛出错误
+        require(x != 0, "require failed");
+        return "my func was called";
+    }
+}
+
+contract Bar {
+    event Log(string message);
+    event LogBytes(bytes data);
+
+    Foo public foo;
+
+    constructor() {
+        // 这里创建一个 Foo 实例，用于下面的外部调用演示
+        foo = new Foo(msg.sender);
+    }
+
+    // 【示例 1：捕获外部函数调用的错误】
+    // 输入 0 => 触发 require 报错 => 进入 catch => 输出 Log("external call failed")
+    // 输入 1 => 正常运行 => 进入 try 代码块 => 输出 Log("my func was called")
+    function tryCatchExternalCall(uint256 _i) public {
+        // 语法：try 外部调用 returns (返回值) { ...无报错执行 } catch { ...报错时执行 }
+        // 注意：这里用的是 this.foo 或者直接 foo (因为 foo 是外部合约变量)，这属于外部调用
+        try foo.myFunc(_i) returns (string memory result) {
+            emit Log(result);
+        } catch {
+            // 这种写法是通用的 catch，不管什么错误都进这里
+            emit Log("external call failed");
+        }
+    }
+
+    // 【示例 2：捕获合约创建（new）时的错误】
+    // 输入 address(0) => 触发 require => 进入 catch Error => 输出 "invalid address"
+    // 输入 address(1) => 触发 assert  => 进入 catch (bytes) => 输出 原始字节数据
+    // 输入 address(2) => 成功创建 => 进入 try 代码块 => 输出 "Foo created"
+    function tryCatchNewContract(address _owner) public {
+        // 语法：try new 合约(...) returns (实例变量) { ... }
+        try new Foo(_owner) returns (Foo foo) {
+            // 创建成功，在这里可以使用新创建的 foo 变量
+            emit Log("Foo created");
+        } catch Error(string memory reason) {
+            // 【特定捕获 1】
+            // 专门捕获 require(..., "reason") 或 revert("reason") 抛出的错误
+            emit Log(reason);
+        } catch (bytes memory reason) {
+            // 【特定捕获 2】
+            // 这是一个“兜底”捕获。
+            // 它可以捕获 assert 失败 (Panic)、除以零、或者没有错误信息的 revert。
+            emit LogBytes(reason);
+        }
+    }
+}
+```
+
+语法：
+
+```Solidity
+try 外部调用 returns (返回值) { 
+    ...无报错执行 
+} catch {
+    ...报错时执行 
+ }
+```
+
+错误类型
+
+| 错误类型 | 触发代码示例 | 对应的 Catch 块 |
+| 标准 Error | require(false, "No!"); | catch Error(string memory reason) |
+| Panic | assert(false); 或 1/0; | catch Panic(uint256 code) |
+| Custom Error | revert MyError(); | catch (bytes memory data) (兜底) |
+| Empty Revert | revert(); | catch (bytes memory data) (兜底) |
+
+### Import
+
+Local (本地引用)
+
+这是我们的文件夹结构（假设这两个文件在同一个文件夹下）：
+
+```Solidity
+├── Import.sol
+└── Foo.sol
+```
+
+**文件名：Foo.sol (被导入的文件)**
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 1. 定义一个结构体
+struct Point {
+    uint256 x;
+    uint256 y;
+}
+
+// 2. 定义一个自定义错误
+error Unauthorized(address caller);
+
+// 3. 定义一个“自由函数”(Free Function)
+// 注意：这个函数是在合约外面定义的，不属于任何合约，属于全局作用域
+function add(uint256 x, uint256 y) pure returns (uint256) {
+    return x + y;
+}
+
+// 4. 定义一个合约
+contract Foo {
+    string public name = "Foo";
+}
+```
+
+**文件名：Import.sol (执行导入的文件)**
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 【方式 1: 全局导入】
+// 导入当前目录下的 Foo.sol 文件中的所有内容
+import "./Foo.sol";
+
+// 【方式 2:以此为准的具名导入 (推荐)】
+// 只导入你需要的部分，还可以重命名 (Alias)
+// 语法: import { 原名 as 新名, 原名 } from "路径";
+import {Unauthorized, add as func, Point} from "./Foo.sol";
+
+contract Import {
+    // 初始化 Foo 合约
+    Foo public foo = new Foo();
+
+    // 测试获取 Foo 的名字
+    function getFooName() public view returns (string memory) {
+        return foo.name();
+    }
+}
+```
+
+External (外部引用)
+
+你也可以通过直接复制 GitHub 的 URL 来导入文件（通常用于 Remix 编辑器）。
+
+```Solidity
+// 语法示例：import "https://github.com/owner/repo/blob/branch/path/to/Contract.sol";
+
+// 示例：从 OpenZeppelin 的代码库导入 ECDSA 库 (release-v4.5 分支)
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.5/contracts/utils/cryptography/ECDSA.sol";
+```
+
+### 深度解析：三种导入姿势
+
+在 Solidity 开发中，掌握正确的 `import` 姿势非常重要，这关系到代码的整洁度和编译效率。
+
+A. 全局导入 (Global Import)
+
+> `import "./Foo.sol";`
+
+-   **含义：** 把 `Foo.sol` 里所有能导出的东西（合约、函数、结构体、错误）全拿过来。
+    
+-   **缺点：** 污染命名空间。如果 `Foo.sol` 里有个 `struct Point`，而你的文件里也有个 `struct Point`，就会冲突报错。
+    
+-   **适用场景：** 快速原型开发，或者文件内容很少时。
+    
+
+B. 具名导入 (Named Import) —— **推荐做法**
+
+> `import {Unauthorized, add as func, Point} from "./Foo.sol";`
+
+这是 Solidity 0.7.0 之后引入的现代化写法，模仿了 JS 的 ES6 语法。
+
+-   **精确控制：** 只引入你需要的组件。
+    
+-   **起别名 (Aliasing)：** 使用 `as` 关键字。
+    
+    -   例如：`add as func`。在 `Import.sol` 里，你就不叫它 `add` 了，改叫 `func`。
+        
+    -   **作用：** 完美解决命名冲突。如果两个文件都有 `add` 函数，你可以分别重命名为 `addA` 和 `addB`。
+        
+
+C. 外部导入 (External Import)
+
+> `import "https://github.com/..."`
+
+-   **Remix 专属：** 这种直接写网址的方式，主要是在 **Remix IDE** 网页版里使用。Remix 会自动去下载这个文件。
+    
+-   **本地开发 (Hardhat/Foundry)：** 在本地开发时，我们通常不写网址，而是使用 `npm` 安装库，然后这样导入：
+    
+
+```Solidity
+// 本地开发标准写法
+import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+```
+
+### 补充知识点：自由函数 (Free Functions)
+
+在 `Foo.sol` 中，你看到了一个奇怪的现象：
+
+```Solidity
+function add(uint256 x, uint256 y) pure returns (uint256) { ... }
+```
+
+这个函数**没有被包裹在** `contract { ... }` **里面**。
+
+-   这叫 **Top-level Function (顶级函数)** 或 **Free Function**。
+    
+-   **特点：** 它们不需要实例化合约就可以使用，类似其他语言的静态工具函数。
+    
+-   **用途：** 常用于数学计算库、辅助工具库。
+    
+
+### Library
+
+**核心定义：**
+
+-   库和合约（Contract）很像，但有两大限制：
+    
+    -   **不能声明任何状态变量**（State Variable）。
+        
+    -   **不能接收 ETH**。
+        
+
+**部署规则（面试考点）：**
+
+-   **内嵌 (Embedded):** 如果库里**所有**函数都是 `internal`（内部的），那么库的代码会直接被**复制粘贴**到调用它的合约里。部署时不需要单独部署库。
+    
+-   **链接 (Linked):** 如果库里有 `public` 或 `external` 函数，库必须先单独部署。然后，主合约在部署时需要通过“链接”的方式找到这个库的地址。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+library Math {
+    // 【关键点 1】 internal
+    // 因为是 internal，这部分代码编译时会直接嵌入到 TestMath 合约中。
+    // 不会产生外部调用开销。
+    function sqrt(uint256 y) internal pure returns (uint256 z) {
+        if (y > 3) {
+            z = y;
+            uint256 x = y / 2 + 1;
+            // 巴比伦法求平方根（牛顿迭代法）
+            while (x < z) {
+                z = x;
+                x = (y / x + x) / 2;
+            }
+        } else if (y != 0) {
+            z = 1;
+        }
+        // 默认为 0
+    }
+}
+
+contract TestMath {
+    function testSquareRoot(uint256 x) public pure returns (uint256) {
+        // 调用方式：库名.函数名(参数)
+        return Math.sqrt(x);
+    }
+}
+
+// 这是一个用于删除数组元素并重新整理数组的库
+library Array {
+    // 【关键点 2】 storage 指针
+    // 第一个参数是 `uint256[] storage arr`。
+    // 这意味着这个函数会直接修改调用者合约里的状态变量（那个真实的数组）。
+    function remove(uint256[] storage arr, uint256 index) public {
+        require(arr.length > 0, "Can't remove from empty array");
+        
+        // 【核心算法：Swap and Pop】
+        // 目标：删除 index 位置的元素，且节省 Gas。
+        // 做法：把数组“最后一个元素”搬过来，覆盖掉“index 位置的元素”，然后把尾巴删掉。
+        // 代价：数组的顺序会被打乱（无序删除）。
+        
+        arr[index] = arr[arr.length - 1]; // 1. 搬运尾部元素覆盖目标
+        arr.pop();                        // 2. 删掉尾部
+    }
+}
+
+contract TestArray {
+    // 【关键点 3】 Using 语法糖
+    // 意思是：把 Array 库里的功能，应用到 uint256[] 类型的数据上。
+    // 效果：原本需要写 Array.remove(arr, 1)，现在可以写 arr.remove(1)。
+    // 类似于给 uint256[] 类型“扩展”了新方法。
+    using Array for uint256[];
+
+    uint256[] public arr;
+
+    function testArrayRemove() public {
+        // 初始化数组 [0, 1, 2]
+        for (uint256 i = 0; i < 3; i++) {
+            arr.push(i);
+        }
+
+        // 调用库函数删除索引为 1 的元素 (也就是数字 1)
+        // 过程演示：
+        // 初始: [0, 1, 2]
+        // 目标: 删除 index 1
+        // 搬运: 把末尾的 2 搬到 index 1 -> [0, 2, 2]
+        // Pop : 删掉末尾 -> [0, 2]
+        arr.remove(1);
+
+        assert(arr.length == 2);
+        assert(arr[0] == 0);
+        assert(arr[1] == 2); // 注意：原本最后的元素跑到中间来了
+    }
+}
+```
+
+**为什么用库？**
+
+-   **复用代码：** 不要重复造轮子（比如 `SafeMath` 或字符串处理工具）。
+    
+-   **节省 Gas（针对 Internal）：** 如果代码复用率高，internal 库可以避免多次部署相同逻辑。
+    
+-   **节省合约大小（针对 Public）：** 传统的合约最大限制是 24KB。如果你把大段逻辑拆分到 public 库里单独部署，主合约只存一个链接地址，就可以突破大小限制。
+    
+
+如果 `Array` 库里的函数写的是 `public`，情况就完全变了。这时候它是一个独立的“实体”。
+
+1.  部署流程（必须分两步走）
+    
+
+你不能直接部署主合约。流程如下：
+
+1.  **先部署库：** 把 `Array` 库部署到链上，假设获得地址 `0xAA...AA`。
+    
+2.  **再部署主合约：** 部署 `TestArray`。
+    
+
+2.  怎么定位？（关键概念：链接 Linking）
+    
+
+这就是你问的核心：**主合约怎么知道库在** `0xAA...AA`**？**
+
+这是在**部署前**由编译器和部署工具（如 Remix, Hardhat）完成的，这个过程叫 **链接（Linking）**。
+
+**具体步骤如下：**
+
+-   **Step A: 编译期（挖坑）** 当你编译 `TestArray` 时，编译器不知道库的地址。它会在生成的字节码里留一个 **“占位符”（Placeholder）**。
+    
+-   生成的字节码看起来像这样： `60806040...CALL...$Array_Library_Path$...`_(中间那串奇怪的字符就是留给库地址的坑位)_
+    
+-   **Step B: 链接期（填坑）** 在部署 `TestArray` **之前**，部署工具（Remix/Hardhat）会问你（或者自动查找）：“嘿，Array 库部署在哪里了？”
+    
+-   你告诉它：`0xAA...AA`。
+    
+-   工具会把字节码里的 `$Array_Library_Path$` 替换成 `0xAA...AA`。
+    
+-   **Step C: 部署期（上链）** 将这就“填好坑”的完整字节码部署到链上。此时，`TestArray` 就在代码里永远记住了 `Array` 在 `0xAA...AA`。
+    
+
+对于 **Public Library（需要单独部署和链接的库）**，你不能像调用普通合约那样（比如 `ICallee(地址).func()`）直接在代码里写地址调用。
+
+你需要在 **“部署阶段”** 告诉你的合约：“嘿，那个库在链上的地址是 `0x...`”。这个过程叫 **链接 (Linking)**。
+
+以下是具体的操作步骤：
+
+1.  **代码层面：** 你照常写代码，假装这个库就在你本地。
+    
+2.  **编译层面：** 编译器会生成带有“填空题”（占位符）的字节码。
+    
+3.  **部署层面（关键）：** 你必须在部署脚本里，把那个已经在链上的库地址，**填入**这个“空”里。
+    
+
+第一步：代码怎么写？
+
+假设链上已经有一个 `MathLib`，你需要在你的代码里 **拥有它的源代码（或者接口定义）**。
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// 1. 你必须引入库的定义（源文件）
+// 即使库已经在链上了，编译器也需要知道它里面有哪些函数
+import "./MathLib.sol"; 
+
+contract MyContract {
+    function test() public {
+        // 2. 直接用库的名字调用
+        // 注意：千万不要写成 MathLib(0x地址).add(1, 2) —— 这是错的！
+        // 就直接写 MathLib.add(1, 2);
+        MathLib.add(1, 2);
+    }
+}
+```
+
+第二步：怎么把地址告诉合约？（怎么链接）
+
+这取决于你用什么工具开发。我们分 **Remix** 和 **Hardhat** 两种情况讲。
+
+3.  如果你用 Remix
+    
+
+Remix 比较智能，它通常会在部署面板自动处理，但如果是已经存在的链上库，操作如下：
+
+1.  确保 `MathLib.sol` 在你的文件列表里。
+    
+2.  编译 `MyContract`。
+    
+3.  在 **Deploy & Run** 界面，找到 **Deploy** 按钮上面一点点，通常会有一个生成的配置文件（在旧版 Remix 中可能需要手动部署库；在新版中，如果检测到库）：
+    
+    1.  **情况 A（你自己部署）：** 你先部署 `MathLib`，拿到地址。然后在部署 `MyContract` 时，Remix 会自动检测到你刚才部署的库，并自动链接。
+        
+    2.  **情况 B（链接到现有地址）：** 这在 Remix 网页版里操作比较隐蔽。通常最简单的办法是：创建一个文件 `address_file.json` 告诉 Remix 库的地址（比较麻烦）。
+        
+    3.  **暴力解法：** 在 Remix 里，大部分人会选择**重新部署一遍库**（因为库通常很小，重部署成本低），然后 Remix 会自动链接新部署的这个。
+        
+
+2.  如果你用 Hardhat (推荐，最常用)
+    
+
+这是最标准的工程做法。你在写部署脚本（Deploy Script）时，显式地填入地址。
+
+假设链上的 `MathLib` 地址是 `0x5FbDB2315678...`。
+
+**部署脚本 (**`scripts/deploy.js`**)：**
+
+```JavaScript
+const hre = require("hardhat");
+
+async function main() {
+  // 1. 假设这是链上那个已有的库地址const libraryAddress = "0x5FbDB2315678..."; 
+
+  // 2. 获取你的合约工厂const MyContract = await hre.ethers.getContractFactory("MyContract", {
+    // 【关键步骤】：在这里配置 librarieslibraries: {
+      // 库的名字 : 库的地址MathLib: libraryAddress,
+    },
+  });
+
+  // 3. 部署合约// Hardhat 会自动把 libraryAddress 填入 MyContract 的字节码占位符里const myContract = await MyContract.deploy();
+  await myContract.waitForDeployment();
+
+  console.log("MyContract deployed to:", myContract.target);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+
+当你想要调用一个链上已有的 Public Library：
+
+1.  **代码里：** 不需要写地址。只管 `import` 源代码，然后 `LibName.func()`。
+    
+2.  **部署时：** 必须使用 **Link（链接）** 操作。
+    
+    1.  **Hardhat:** 在 `getContractFactory` 的参数里传入 `libraries: { LibName: "0x..." }`。
+        
+    2.  **Remix:** 最好是让 Remix 帮你重新部署库并自动链接，或者使用脚本注入地址。
+        
+
+### Gas Saving Techniques
+
+-   **Replacing** `memory` **with** `calldata`: 将参数的存储位置从内存改为 `calldata`。
+    
+-   **Loading state variable to memory**: 将状态变量读取到本地内存（栈）中处理。
+    
+-   **Replace for loop** `i++` **with** `++i`: 循环中用 `++i` 代替 `i++`。
+    
+-   **Caching array elements**: 缓存数组元素（和长度）。
+    
+-   **Short circuit**: 利用逻辑运算的“短路”特性。
+    
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// Gas 高尔夫（极限优化）
+contract GasGolf {
+    // 初始状态 Gas 消耗参考：
+    // start - 50908 gas (完全没优化)
+    // use calldata - 49163 gas (使用 calldata)
+    // load state variables to memory - 48952 gas (缓存状态变量)
+    // short circuit - 48634 gas (短路运算)
+    // loop increments - 48244 gas (循环自增优化)
+    // cache array length - 48209 gas (缓存数组长度)
+    // load array elements to memory - 48047 gas (缓存数组元素)
+    // uncheck i overflow/underflow - 47309 gas (不检查 i 溢出 - 最终形态)
+
+    uint256 public total;
+
+    // 【未优化版本】
+    // function sumIfEvenAndLessThan99(uint[] memory nums) external {
+    //     for (uint i = 0; i < nums.length; i += 1) { // 每次都读 nums.length
+    //         bool isEven = nums[i] % 2 == 0;
+    //         bool isLessThan99 = nums[i] < 99;
+    //         if (isEven && isLessThan99) { // 两个状态都读写，没有有效利用短路
+    //             total += nums[i]; // 每次都多次读写 Storage 变量 total
+    //         }
+    //     }
+    // }
+
+    // 【Gas 优化终极版】
+    // 输入示例: [1, 2, 3, 4, 5, 100]
+    function sumIfEvenAndLessThan99(uint256[] calldata nums) external {
+        // 优化 1: 将 storage 变量 total 读取到本地 stack 变量 _total
+        // 避免在循环中反复读写昂贵的 storage
+        uint256 _total = total;
+        
+        // 优化 2: 缓存数组长度，避免每次循环都去读取 nums.length
+        uint256 len = nums.length;
+
+        // 循环头部留空，把 ++i 放到最后
+        for (uint256 i = 0; i < len;) {
+            // 优化 3: 把当前元素取出来存到 stack 变量，避免多次访问数组索引
+            uint256 num = nums[i];
+
+            // 优化 4: 短路运算
+            // 如果 num 是奇数，num < 99 就不会被执行
+            if (num % 2 == 0 && num < 99) {
+                _total += num; // 修改的是本地变量
+            }
+
+            // 优化 5: Unchecked 代码块
+            // 省略了 i 自增时的溢出检查 (因为 i 不可能超过数组长度)
+            // 优化 6: 使用前缀自增 ++i (比 i++ 稍微省一点点)
+            unchecked {
+                ++i;
+            }
+        }
+
+        // 循环结束，只写回一次 storage
+        total = _total;
+    }
+}
+```
+
+还有一些没看
+
+但是感觉这些应该够现在用的了
+
+后面再有需要的再补吧
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ## Solidity基础语法
 
@@ -919,6 +3517,7 @@ contract DataLocations {
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
     
 
@@ -1017,6 +3616,7 @@ contract DataLocations {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1400,6 +4000,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -1506,6 +4107,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1674,6 +4276,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2174,6 +4777,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3117,6 +5721,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
