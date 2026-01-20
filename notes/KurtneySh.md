@@ -15,8 +15,26 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1.  remix 学习
+    
+2.  solidity 学习
+    
+    -   gas 优化：减少存储操作（Storage Write）、使用位压缩（Bit Packing，将多个变量压缩到一个 uint256、循环优化（减少不必要的运算）、函数可见性选择（external 比 public 更节省 gas）
+        
+    -   合约安全：重入攻击 Reentrancy、预言机操纵 Oracle Manipulation、整数溢出/下溢、权限控制缺失、未初始化代理、前置交易/三明治攻击
+        
+    -   Ethernaut 闯关（fallback、fallout）
+        
+3.  实战
+    
+    -   链上留言板 dapp 开发、部署前端到 pinata
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 1.  参加以太坊中文周会
     
 2.  参加线上Co-Learning
@@ -61,6 +79,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 1.  学习mpc钱包代码
     
 2.  参加Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 分享会
@@ -68,6 +87,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 初步梳理下周分享会主题提纲——初探以太坊账户抽象
@@ -112,6 +132,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 
 
+
 **学习：香港的数字金融实验：IPO上链能否成为下一个风口？**
 
 时代背景
@@ -127,6 +148,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -161,6 +183,7 @@ ERC-8004: 智能体的链上护照
 
 
 
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -184,6 +207,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
