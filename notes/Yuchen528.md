@@ -15,8 +15,97 @@ Yuchen
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+智能合约开发
+
+一、Dapp去中心化应用
+
+1.  Dapp架构
+    
+
+-   前端 User Interface: 通过前端注入的Provider或第三方RPC节点与区块链交互，前端需要集成区块链钱包
+    
+-   智能合约 Smart Contracts：通常用Solidity编程语言编写，通过EVM执行
+    
+-   数据检索器 Indexer：智能合约通常以Event形式释放日志事件（如NFT转移的Transfer），数据检索器会检索这些数据并将其写入PostgreSQL等数据库；Dapp在前端进行数据展示时需要检索器内的数据。
+    
+-   区块链和去中心化存储 Blockchain & Decentralized Storage：区块链用于储存智能合约的状态数据及交易记录（eg. 去中心化存储IPFS（InterPlanetary File System）或Arweave）。通过去中心化备份。
+    
+
+2.  开发流程
+    
+
+-   需求分析：确当功能；选择区块链平台；设计用户体验(UX)
+    
+-   智能合约开发：**Dapp的核心。**编写智能合约(Solidity)；编写测试用例；审计和优化
+    
+-   检索器开发：**获取链上数据的核心。**确定功能需要的数据内容；编写检索器程序(主流:ponder/subgraph.用的都是TypeScript)；部署和运维(一般用Docker)
+    
+-   前端开发：选择前端框架(React/Vue)通过JavaScript与智能合约进行交互；连接钱包；显示区块链数据；处理交易签名与确认
+    
+-   与区块链交互：前端和智能合约通过**Viem**等现代化库进行交互。读取数据；发送交易
+    
+-   部署与上线：部署智能合约(Hardhat/Foundry)到测试网或者主网；前端部署(去中心化平台IPFS或传统Web)；发布和维护
+    
+
+二、以太坊开发环境搭建
+
+1.  基础环境：Node.js（建议用 nvm 管理）;npm 或 yarn;Git
+    
+2.  以太坊本地开发连接
+    
+
+-   Foundry
+    
+-   Hardhat
+    
+
+3.  以太坊钱包和前端交互
+    
+4.  其他
+    
+
+-   Remix IDE（网页版，适合快速测试合约）：[**https://remix.ethereum.org**](https://remix.ethereum.org)
+    
+-   OpenZeppelin 合约库：`npm install @openzeppelin/contracts`
+    
+-   [**Chainlink 测试环境**](https://docs.chain.link/resources/link-token-contracts) - 预言机集成指南
+    
+
+三、PRC**（Remote Procedure Call，远程过程调用）**
+
+1.  What?
+    
+
+-   一种通信协议。允许 应用 通过网络调用 远程服务器上的 函数。
+    
+-   区块链中PRC节点是 运行区块链客户端软件的 服务器。维护完整的区块链数据副本，提供API供开发者查询链上数据、发起交易等。-----ATM
+    
+
+2.  在Web3开发中的应用
+    
+
+-   读取链上数据
+    
+-   发送交易
+    
+-   监听事件：监听Events；实时获取链上状态变化；支持WebSocket长连接推送
+    
+-   网络管理：切换不同的区块链网络(主网、测试网)；获取网络信息和链 ID；管理节点连接状态
+    
+
+3.  以太坊使用 **JSON-RPC 2.0** 协议作为标准的 RPC 通信格式。所有请求和响应都是 JSON 格式，通过 HTTP 或 WebSocket 传输。
+    
+
+4.  主流RPC
+    
+5.  How获取（Alchemy）--->使用--->配置
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 岗位概览
 
 1.  技术岗
@@ -41,6 +130,7 @@ Yuchen
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 行业黑话：
 
@@ -130,6 +220,7 @@ Yuchen
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 Web3工作方式
 
 1.OKR写法与最佳实践：目标（Objectives）全团队公开可见，关键结果（Key Results）量化可追踪
@@ -168,6 +259,7 @@ Web3工作方式
 
 
 
+
 今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
 
 行业赛道：
@@ -194,6 +286,7 @@ Web3工作方式
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -315,6 +408,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -443,6 +537,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
