@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### \[B-3\] ISO-4217
+
+ISO 4217 is the international standard defining three-letter alphabetic and three-digit numeric codes for representing currencies, funds, and precious metals, used globally in banking, trade, and finance to avoid ambiguity (e.g., USD for US Dollar, EUR for Euro). It provides clarity by linking countries (first two letters, often from [ISO 3166](https://www.google.com/search?q=ISO+3166&oq=ISO+4217&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEAAYgAQyBwgIEAAYgAQyBwgJEAAYgATSAQc3MzJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&mstk=AUtExfB1DwnqVHHfWw032QSB61ys9eh0hnigvB9s_iOFVn2ar_kZXd8aLrIkYLd7Khmko-tn25KR7sLmbTCwm0xoCc671fEBfRv3PA0CNQ4bWEWTlJ_hKRBT8_LHbxnDec4NxOkRoiUqQXonByOe4UkxZJlPxArzbObyrPaQXsZ18XT-2dY&csui=3&ved=2ahUKEwia1qfkvJmSAxU-ho4IHXyLAxcQgK4QegQIARAB)) with their specific currency (third letter), and also details minor currency units and gold (XAU) or silver (XAG).
+
+这是个国际货币代号。Euler中使用这个来代表法定货币单位。比如USD
+
+```
+0x0000000000000000000000000000000000000348 address
+```
+
+在开发中不能把这个address当作一个ERC20来用。(刚刚看一个Defi源码，把这个当作erc20使了)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### \[ETH Panda周会\]
 
 快讯
@@ -61,6 +77,7 @@ Tempo链稳定币支付
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ### \[N-4\] Just jotting down some thoughts in 1/18/2026
 
 昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
@@ -76,6 +93,7 @@ Tempo链稳定币支付
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -230,6 +248,7 @@ contract UniswapV3SwapTest is Test {
 
 
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -253,6 +272,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -445,6 +465,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -464,6 +485,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -696,6 +718,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
