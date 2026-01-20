@@ -312,6 +312,7 @@ DeFi 借贷是一种点对点的金融服务，它通过区块链上的智能合
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 # 0119 社群运营分享会
 
 ## **搭建TG社群**
@@ -421,6 +422,7 @@ Pre2-3天：宣发预热 首次公告
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 延续周末vibe，分析一下热点，这周叙事比较火热的infofi
 
 近期，从创作者晒马斯克给发的工资，何一下场喊话币安广场，CZbinance广场开直播，Infofi（社交化金融）赛道热度攀升。其核心逻辑很清晰：传统金融冰冷，社交充满粘性。将两者结合，是希望让用户的社交影响力、内容创作和社区活动能直接转化为可衡量的经济收益。
@@ -452,6 +454,7 @@ Kaito的历程清晰展现了Infofi赛道的核心考验：如何在理想（去
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -532,6 +535,7 @@ BTC近期趋势分析：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1051,6 +1055,7 @@ RWA是加密经济与万亿美元传统资产的关键连接桥。它为DeFi带�
 
 
 
+
 将最近学习到的知识构建一个体系化的知识库
 
 ![Web3：新手入门.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/victoria0980/images/2026-01-15-1768472918608-Web3_____.png)
@@ -1379,6 +1384,7 @@ RWA是加密经济与万亿美元传统资产的关键连接桥。它为DeFi带�
 
 
 
+
 # **Web3运行原理**
 
 **资产安全与钱包原理**
@@ -1557,6 +1563,7 @@ trust wallet - 供应链攻击/恶意软件植入
 
 
 
+
 1.  行业全局及岗位概览学习
     
     ![0113 行业岗位概述.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/victoria0980/images/2026-01-13-1768288371227-0113_______.png)
@@ -1665,6 +1672,7 @@ Web2 到 Web3 学习笔记：Intro
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
