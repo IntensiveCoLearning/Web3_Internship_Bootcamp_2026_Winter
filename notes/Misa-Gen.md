@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+-   **Advanced Analytics (数据分析)**：查看成员增长趋势、活跃度和报名转化率，帮助优化活动。
+    
+-   **Mailchimp integration (邮件系统集成)**：支持直接同步成员名单到邮件营销工具。
+    
+-   **Network management (网络管理)**：如果你在全国不同城市有 10 个分会，Pro 版提供一个“仪表盘”来统一管理所有分会。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 运营实操会议笔记
 
 一、Telegram(TG)社群搭建与管理
@@ -99,6 +109,7 @@ Tune-in(进入次数)：参考数据，但较易作假（重复进入会累计�
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ERC-7962协议（Cash-basedTokens）
 
 一、协议背景：从721到7962的演进
@@ -166,6 +177,7 @@ ERC-7962不仅仅是一个技术标准，它代表了Web3的一种新思路：�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 **DeJob招聘网站分析**
@@ -246,6 +258,7 @@ DeJob官网（[https://dejob.ai）及官方Telegram频道。](https://dejob.ai�
 
 
 
+
 **Web3生存与成长指南**
 
 **今天听了三位大佬（奕铭、karen、AlexFAN）的分享，信息量很大。从个人的“自我迭代”，到社交媒体的“起号破圈”，再到对“DAO治理”的深度反思，感觉整个人被重塑了。**
@@ -314,6 +327,7 @@ DeJob官网（[https://dejob.ai）及官方Telegram频道。](https://dejob.ai�
 
 
 
+
 AgenticAI与Web3的融合
 
 1.行业趋势：从“聊天”向“行动”的范式转移
@@ -371,6 +385,7 @@ DeFi资产管理：拥有链上声誉、可自动执行套利策略的交易代�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -472,6 +487,7 @@ DeFi资产管理：拥有链上声誉、可自动执行套利策略的交易代�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
