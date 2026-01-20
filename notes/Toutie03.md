@@ -15,8 +15,125 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### Notion 内容与活动排期表
+
+据库属性设置 (Properties)
+
+在 Notion 中创建一个 Table，设置以下列：
+
+-   **Name (标题):** 内容或活动的主题（e.g., "AMA with Project X", "Weekly Alpha Recap"）
+    
+-   **Date (日期):** 发布或直播的具体时间
+    
+-   **Type (类型):** 单选标签
+    
+    -   `Twitter/X Thread` (推文串)
+        
+    -   `Twitter Space` (语音直播)
+        
+    -   `Discord Event` (社区活动)
+        
+    -   `Mirror Article` (深度文章)
+        
+    -   `Partnership` (联合宣发)
+        
+-   **Status (状态):** 状态标签
+    
+    -   `Idea` (灵感/待定)
+        
+    -   `In Progress` (撰写/筹备中)
+        
+    -   `Review` (审核中)
+        
+    -   `Scheduled` (已排期)
+        
+    -   `Published/Done` (已完成)
+        
+-   **Pillar (内容支柱):** 用于确保内容多元化
+    
+    -   `Education` (科普/教程)
+        
+    -   `Community` (社区互动/Giveaway)
+        
+    -   `Alpha/News` (项目进展/热点)
+        
+    -   `Meme/Vibe` (情绪价值)
+        
+-   **Owner (负责人):** @成员
+    
+-   **Link (链接):** 最终发布链接或草稿链接
+    
+
+### Web3 活动运营 SOP
+
+**Twitter Space (AMA)**
+
+1\. Pre-Event: 筹备期 (T-7 到 T-1)
+
+-   **BD 与 确认 (T-7):**
+    
+    -   确认 Guest（嘉宾）名单、Title、Twitter Handle。
+        
+    -   **关键动作:** 创建专属 Telegram 群组拉群对接，固定好海报素材（Avatar）和具体时间（注意时区转换，Web3 通常用 UTC 或 EST）。
+        
+-   **物料制作 (T-5):**
+    
+    -   设计 Banner 海报（包含双方 Logo, 嘉宾头像, 主题）。
+        
+    -   准备大纲（Agenda）和 Questions List，发给嘉宾确认。
+        
+-   **宣发预热 (T-3 to T-1):**
+    
+    -   **Twitter:** 创建 Space 预约链接。发布预告推文（Tag 嘉宾 + 海报 + 预约链接）。
+        
+    -   **Discord:** 在 `#announcement` 频道发布，并 setup `Discord Event` 提醒。
+        
+    -   **Giveaway 设置:** 如果有抽奖（如 USDT 或 WL），在 Galxe/QuestN 上配置好任务，或者在该条推文下引导 RT + Like。
+        
+
+2\. In-Event: 活动执行 (T-0)
+
+-   **开场前 15 分钟:**
+    
+    -   Host 和嘉宾提前 5-10 分钟进场测试麦克风（Sound check）。
+        
+    -   运营在 Discord `#general` 再次 @everyone 提醒活动即将开始。
+        
+-   **直播中 (Host/Mod):**
+    
+    -   **置顶推文:** 将相关的 Project 推文或 Giveaway 推文置顶在 Space 上方。
+        
+    -   **控制节奏:** 引导自我介绍 -> 核心问答 -> 社区提问 (Q&A)。
+        
+    -   **记录高光:** 运营人员需实时记录嘉宾的金句（Golden Quotes），用于后续发推。
+        
+    -   **防爆破:** 注意举手上麦的听众，防止无关人员发广告或捣乱，随时准备移除。
+        
+
+3\. Post-Event: 复盘与长尾流量 (T+1)
+
+-   **奖励发放:**
+    
+    -   24小时内公示中奖名单（Winners List），并发放奖励（TxID 留底）。**信用是 Web3 品牌的基石。**
+        
+-   **内容沉淀 (Recap):**
+    
+    -   **录音:** 确保 Space 录音已保存。
+        
+    -   **Thread:** 将 Space 的核心观点整理成一条 Thread 发布，Tag 嘉宾。这比直播本身的流量更长尾。
+        
+    -   **切片:** 如果有精力，剪辑 30-60 秒的精彩音频片段做成视频传播。
+        
+-   **数据复盘:**
+    
+    -   统计：同时在线人数（Peak Listeners）、总收听人数、涨粉数、Discord 进群数。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 1.学习**社区运营指南**
 
 这两天主业太忙，有点躺平，今天学习了社区运营指南，发现运营的工作相比我之前的认知，要复杂很多，学习了运营需要用到的工具
@@ -24,6 +141,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ### 第一章：交易序号与故障排除
 
@@ -68,6 +186,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ### Web3 学习笔记：深度拆解区块浏览器与 Gas 机制
@@ -131,6 +250,7 @@ Etherscan 不仅是账本，还是一个强大的合约操作台。
 
 
 
+
 在 Day 3 的学习中，我们通过实际操作理解了 Web3 的三大核心组件：域名系统（ENS）、去中心化交易所（DEX）和资产追踪。
 
 ### 1\. ENS：给长地址起个“人类能懂”的名字
@@ -180,6 +300,7 @@ Etherscan 不仅是账本，还是一个强大的合约操作台。
 
 
 
+
 ## Day 2 核心概念梳理
 
 在今天的视频里，我深入了解了 Web3 账户体系的底层逻辑。这不仅仅是关于如何使用一个软件，更是关于如何重新掌握自己数字身份的控制权。
@@ -220,6 +341,7 @@ Etherscan 不仅是账本，还是一个强大的合约操作台。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
