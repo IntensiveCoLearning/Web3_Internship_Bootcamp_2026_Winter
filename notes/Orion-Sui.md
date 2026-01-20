@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+1.  看了【Web3合规】剩下的一半的回放
+    
+2.  看了【第一周例会】的回放，真长啊，3个半小时，B站赶紧开发3倍速吧，2倍速不够用啊
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 1.  和学姐出去吃饭去了，休息一天
     
 2.  Web3合规
@@ -26,6 +34,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 1.  看了回放复习
     
@@ -58,6 +67,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 1.  看了LXDAO的周会，看了后半部分直播，一会找一下全部，重新看一遍
     
     -   属于说是打开新世界大门了
@@ -75,6 +85,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -103,6 +114,7 @@ timezone: UTC+8
 
 
 
+
 1.  听了一会共学
     
 2.  听了AI分享会
@@ -122,6 +134,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -156,6 +169,7 @@ timezone: UTC+8
 
 
 
+
 1.  听了一会共学
     
 2.  晚上听了Bruce老师的Web3运行原理
@@ -181,6 +195,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
