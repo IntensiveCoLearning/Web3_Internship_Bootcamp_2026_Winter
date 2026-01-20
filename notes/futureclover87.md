@@ -32,8 +32,78 @@ INTJ-but 兴趣广泛 皮艇/桨板/网球/书法 喜欢在秋高气爽的天气
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+Ethernaut 测试笔记
+
+Fallback
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-20-1768917903777-image.png)
+
+要触发 owner = msg.sender（即夺取所有权），你需要满足两个条件：
+
+1.  发送的金额大于 0 (msg.value > 0)。
+    
+2.  你当前的贡献值大于 0 (contributions\[msg.sender\] > 0)。
+    
+
+一旦你成为了 owner，你就拥有了执行 withdraw 函数的权限：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-20-1768917987815-image.png)
+
+如果你在浏览器控制台中操作，命令如下：
+
+1.  进行初始贡献：  
+    await contract.contribute({value: toWei("0.0001")})
+    
+2.  直接转账触发 ownership 转移：  
+    await contract.sendTransaction({value: toWei("0.0001")})
+    
+3.  检查你是否已成为 owner (可选)：  
+    await contract.owner() // 检查返回地址是否是你自己的地址
+    
+4.  提款以清空余额：  
+    await contract.withdraw()
+    
+
+Fallout
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-20-1768918005297-image.png)
+
+这个关卡（Ethernaut Level 2: Fallout）的核心漏洞是一个拼写错误（Typo） 。
+
+-   合约名称是：Fallout 函数名称是：Fal1out
+    
+-   结论：任何人只要调用 Fal1out() 函数，就能成为合约的 owner。
+    
+
+ 打开 [Remix IDE](https://remix.ethereum.org/)。
+
+1.  新建一个文件，命名为 Fallout.sol
+    
+2.  点击 Compile Fallout.sol。
+    
+3.  点击左侧的 Deploy & Run Transactions（部署与运行）图标。
+    
+4.  在 Environment（环境）下拉菜单中，选择 Injected Provider - MetaMask。
+    
+5.  找到 At Address 输入框, 复制你当前关卡实例的地址（Instance Address）。点击 At Address 按钮。
+    
+6.  在 Remix 底部展开加载出来的 FALLOUT 合约。找到黄色按钮 Fal1out,点击 Fal1out 按钮
+    
+7.  MetaMask 会弹出交易确认，点击确认。
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/futureclover87/images/2026-01-20-1768918040567-image.png)
+
+Or 控制台
+
+await contract.Fal1out({value: toWei("0.0001", "ether")})
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 0基础程序小白自学笔记-Hardhat/Foundry/Remix 教程案例跑通
 
 1， 窗口调用
@@ -77,6 +147,7 @@ taskkill /F /IM node.exe
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 今天看了Vitalik和ETHPanda的访谈，了解了一些新的概念 RPGF/Zuzala/MPC&FHE
 
@@ -170,6 +241,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 今日学习 交易实践+Remix 环境准备+AI 回放课
 
 交易实践
@@ -191,6 +263,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -221,6 +294,7 @@ b, 你可以在不转移域名所有权的情况下，随时更改反向记录�
 
 
 
+
 核心深挖了区块链钱包原理
 
 a, 核心关联：助记词推导出私钥，私钥推导出公钥（地址），过程不可逆
@@ -244,6 +318,7 @@ e, 助记词原理：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
