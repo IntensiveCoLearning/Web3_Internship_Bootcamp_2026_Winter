@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## 笔记
+
+**remix实操**
+
+运行了Transient Storage代码，该part旨在介绍一种介于memory 和 storage间的存储方式，在交易过程中类似storage，交易结束就没有了，成本更低，代码内包含两个案例，共计6个合约
+
+案例1 展示tstore的存储能力
+
+通过callback函数分别调用TestStorage和TestTransientStorage ，
+
+在调用val()两个合约都传回了数值，分别为123和321，但合约内部的val，TestTransientStorage仍然为默认值，没有被存下来
+
+案例2 展示tstore用来防止重入攻击，MaliciousCallback中先直接调用test，再通过回调触发fallback()再调用test，重入攻击
+
+常规的方法是通过一个storage变量实现modifier
+
+bool private locked;
+
+require(!locked); locked = true; \_; locked = false;
+
+使用tstore成本更低
+
+bytes32 constant SLOT = 0; assembly { if tload(SLOT) { revert(0, 0) } tstore(SLOT, 1) } \_; assembly { tstore(SLOT, 0) }
+
+在不加locked情况下，增加一个计数器统计重访了多少次，可以看到虽然只运行了一次，但实际上访问了30次
+
+加上lock后，防止了重访
+
+对比两种方式的gas消耗，大幅减少
+
+tstore：27240
+
+storage：4906
+
+## 计划
+
+1.  最近还要写论文，准备年终组会，明天上午写论文
+    
+2.  下午把深度技术的几个任务尝试一下
+    
+3.  继续看solidity by example
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## bytes 格式介绍
 
 ### **1) 基本概念**
@@ -365,6 +411,7 @@ function changeOwner(address _newOwner)
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ## 今日计划完成情况
 
 1.  完成speed run etheruem challenge 0
@@ -389,6 +436,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ## 学习任务完成情况
@@ -595,6 +643,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -849,6 +898,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日学习任务完成情况
 
 1.  021学习以太坊第三章
@@ -888,6 +938,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -946,6 +997,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1047,6 +1099,7 @@ Q：NFT的价值来自什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
