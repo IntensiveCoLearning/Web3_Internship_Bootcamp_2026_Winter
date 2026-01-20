@@ -15,8 +15,42 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+-   特征对象 \[sol中慎用\]
+    
+    总是通过**引用**: 通过 `&` 引用或者 `Box<T>` 智能指针的方式来创建特征对象
+    
+    用法上是泛型的延伸, 因为在同一结构体中不能同时存储不同类型的对象 `let v: Vec<T: Draw> = vec![1.1f64, 8u8];`是错误的
+    
+    泛型-静态分发; 特征对象-动态分发
+    
+-   Self 和 self
+    
+    ```
+    trait Draw {
+        fn draw(&self) -> Self;
+    }
+    ​
+    #[derive(Clone)]
+    struct Button;
+    impl Draw for Button {
+        fn draw(&self) -> Self {
+            return self.clone()
+        }
+    }
+    ​
+    // self 指的是当前的实例对象, Self 指的是 Button 类型
+    ```
+    
+-   对象安全
+    
+    没有泛型参数; 没有方法的返回值类型是 Self
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   特征对象 (Trait Objects)
@@ -61,6 +95,7 @@ se major, into crypto
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
@@ -109,6 +144,7 @@ se major, into crypto
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -128,6 +164,7 @@ se major, into crypto
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -210,6 +247,7 @@ se major, into crypto
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -231,6 +269,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
