@@ -15,8 +15,104 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+**eth最小单位wei的来源**：
+
+1998 年，华裔科学家戴伟（Wei Dai）便提出了匿名分布式电子加密货币 B-Money，中本聪的比特币白皮书参考文献中第一篇就是戴伟（Wei Dai）的文章
+
+账户抽象（AA） 即通过ERC-4337 标准，让以太坊账户具备智能合约的灵活性，简化原有的EOA和CA分治模式。用户无需持有 ETH 即可进行交易，也可以把支付交易费用的功能授权给第三方，支持社交恢复、批量操作等高级功能，极大拓展个人账户。
+
+模块化区块链的概念：
+
+-   **结算层**：最终性和争议解决（Ethereum L1）
+    
+-   **数据可用性层**：数据存储和检索（Celestia、EigenDA、Ethereum Blob）
+    
+-   **执行层**：交易处理和状态转换（Optimism、Arbitrum等L2）
+    
+-   **共识层**：区块排序和最终确定（Ethereum PoS）
+    
+
+**记录一下web3岗位的技术栈**
+
+前端：react/vue/viem（以前是ethers.js, web3.js)/typescript/next.js，基本的html/css/js（es6+)就不说了
+
+后端：node.js/go/python; viem/web3.js/ethers.js; RESTful API/GraphQL; MySQL/PostgreSQL; Docker/Kubernetes，熟悉消息队列（如rabbitMQ、Kafka）
+
+智能合约工程师：solidity/remix/foundry/hardhat/phalcon/tenderly/yul
+
+个人角度看，前端和数据分析可能是更适合我当下的。但也不急着定位，我想针对落地多学习，解决问题为主，吸收前沿信息，不局限于某个技术框架。
+
+**区块链开发的基础知识：**
+
+1.前端。与传统 Web 应用不同，DApp 前端不会直接连接区块链网络，而是通过 钱包注入的 Provider 或第三方 RPC 节点 与区块链交互：
+
+（1）通过 RPC 节点对 智能合约发起只读调用（如 eth\_call），获取合约状态、事件日志等链上数据
+
+（2）对需要修改状态的操作，由前端构造对 智能合约的交易调用，交由钱包完成签名后，再通过 RPC 节点广播到区块链网络并最终上链执行
+
+2.智能合约。智能合约是 Dapp 的核心，它定义了应用的**业务逻辑**，并部署在区块链上。
+
+3.数据检索器（indexer）。
+
+（1）智能合约通常以 Event 形式释放日志事件，比如释放代表 NFT 转移的 Transfer 事件，数据检索器会检索这些数据并将其写入到 PostgreSQL 等传统数据库中
+
+（2）Dapp 在前端进行数据展示时需要检索器内的数据。一个简单的示例是某 NFT 项目需要展示用户持有的所有 NFT，但是 NFT 合约并不会提供通过输入地址参数返回该地址下的所有 NFT 的函数，此时我们可以运行数据检索器将 Transfer 事件读取后写入传统数据库内，前端可以在传统数据库内检索用户持有的 NFT 数据
+
+4.区块链和去中心化存储（Blockchain & Decentralized Storage）
+
+（1）区块链用于存储智能合约的状态数据及交易记录。去中心化存储如 **IPFS**（InterPlanetary File System）或 **Arweave**，用于存储大规模的非结构化数据（如图片、文档等），确保数据不易丢失和篡改。
+
+（2）通过使用去中心化存储，Dapp 确保所有数据在多个节点上备份，保证数据的持久性和去中心化特性。
+
+**Dapp 部署具体步骤**包括：
+
+-   **部署智能合约**：推荐使用 **Hardhat** 或 **Foundry**（现代化开发工具）将智能合约部署到测试网（如 **Sepolia**、**Holesky**）或主网。
+    
+-   **前端部署**：将前端应用部署到去中心化平台（如 **IPFS**）或传统的 Web 服务（如Vercel）。
+    
+-   **发布和维护**：将 Dapp 上线，进行用户反馈收集，定期更新合约和前端，修复潜在问题。
+    
+
+对了，记录一下**拉取github或下载的时候（需要连接github）的网络问题**。
+
+一般是代理没走命令行。
+
+首先可以打开TUN工具
+
+还不行的话，需要手动调一下端口：export http\_proxy="[http://127.0.0.1:7890”（端口号取决于vpn）](http://127.0.0.1:7890”（端口号取决于vpn）)  
+然后再进行操作
+
+备注：env | grep -i proxy 可以check代理端口
+
+今天开始学智能合约啦！装好了foundry以及以下几个工具
+
+-   forge: 帮助构建、测试、调试、部署和验证智能合约
+    
+-   anvil: 本地开发节点，完全兼容以太坊 JSON-RPC 规范
+    
+-   cast: 命令行工具，用于与链上应用交互
+    
+
+发现这几个工具的名字也很有意思。forge，是锻造的意思，相当于炼铁的过程；anvil是铁砧的意思，也就是用来放锻造物的平面块；cast是投掷的意思，很好理解了，就是炼出来的铁用上了！扔到链上去！
+
+foundry的文档要记一下，方便随时查阅命令：
+
+[https://github.com/foundry-rs/foundry?utm\_source=chatgpt.com](https://github.com/foundry-rs/foundry?utm_source=chatgpt.com)
+
+小知识点：
+
+1.Sudoswap将AMM模型应用到NFT交易，创建NFT流动性池，是Uniswap在NFT领域的对标产品。
+
+2.经常说的哈希率（hashrate）就是“算力”，指整个btc网络所有矿工的总计算能力，即每秒能执行哈希运算（本质是一份“解决数学难题”）的次数
+
+3.Genesis Timestamp 的单位是 **Unix 时间戳（POSIX time）**，也就是 **从 1970-01-01 00:00:00 UTC 起算的秒数（seconds）**
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 今天本来想开始技术向的学习的，毕竟之前也没接触过solidity，结果到现在（22:40）仍然没法开始……
 
 因为刚才发现了学习手册的一个错误，准备当下就修改提交PR。所以我先来把总结写一下，免得一不小心就过0点了哈哈
@@ -59,6 +155,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 今天主要是提交了个pr，链接：[https://github.com/lxdao-official/myfirstnft-frontend/pull/20](https://github.com/lxdao-official/myfirstnft-frontend/pull/20)  
 关于myfirstnft网页的这个问题，我第一天也遇到了，但是当时没多想，觉得完成任务就行了。
 
@@ -73,6 +170,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ### 1.今天准备了LXDAO 新成员发言，但没轮到哈哈哈。那就下周再说吧
@@ -194,6 +292,7 @@ wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大�
 
 
 
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -229,6 +328,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -280,6 +380,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -453,6 +554,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
