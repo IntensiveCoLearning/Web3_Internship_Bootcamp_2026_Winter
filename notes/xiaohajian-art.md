@@ -77,6 +77,8 @@ timezone: UTC+8
 
 * * *
 
+## [https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
+
 ## 排版
 
 半角符号：宽度为一个英文字符
@@ -125,6 +127,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
 
@@ -186,6 +189,7 @@ n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 ## [**Web3 安全**](https://youtu.be/d4wpNX61QyA?si=3J0BfXHWLE6mibvT)
@@ -318,6 +322,7 @@ n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -524,6 +529,7 @@ n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——
 
 
 
+
 | 类型 | 比特币（bitcoin） | 以太坊(Ethereum) |
 | --- | --- | --- |
 | 发行 | 总量定2100万，每四年减半一次 | 无上限，但链上活动复杂，烧掉的燃料（ggs）就越多 |
@@ -619,6 +625,7 @@ EVM（Ethereum Virtual Machine）是 **_以太坊的“大脑_”**，是专门�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
