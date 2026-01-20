@@ -15,8 +15,44 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+**Web3公共物品资金分配**
+
+1.  _what is public good?_
+    
+    -   non-excludable
+        
+    -   non-rivalrous
+        
+    -   eg. public good in web3: 开源代码/协议安全/开发者工具或文档
+        
+    -   the free-rider problem:如果每个人都能免费使用，理性的选择是等待别人付费
+        
+2.  _三种资助机制_
+    
+    -   委员会制：
+        
+        -   pro:简单快速/决策效率高
+            
+        -   con:权力集中/偏好固化与偏见/有限的知识
+            
+    -   二次方资助（QF）：
+        
+        -   人数>金额
+            
+        -   配捐池的资金分配由贡献者的数量决定，放大社会的共识
+            
+        -   为公共性付费而不是为资本付费
+            
+    -   RetroPGF回溯性自助
+        
+        -   先创造价值，再获得奖励
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 -   _ERC-721_
@@ -69,6 +105,7 @@ _Gas和交易模型_
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 **Agent跟web3的融合**
 
 _AI agent的结构_：the brain（LLM） --> the memory（RAG流程：抓取数据然后上下文存储） --> the tools(API调用）
@@ -115,6 +152,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 **web3安全**
 
 -   精准猎杀
@@ -144,6 +182,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -198,6 +237,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **行业全局介绍&岗位预览**
 
 **_行业概览_**
@@ -242,6 +282,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
