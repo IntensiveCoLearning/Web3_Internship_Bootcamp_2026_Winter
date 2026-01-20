@@ -19,11 +19,12 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 # **Challenge #0 - Tokenization**
 
-![{521BB8C2-59FC-40D9-846F-9C57CC326C46}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882005193-_521BB8C2-59FC-40D9-846F-9C57CC326C46_.png)![{C80EA707-917B-4A2B-AD7E-FDC55AF7B160}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882045742-_C80EA707-917B-4A2B-AD7E-FDC55AF7B160_.png)![{AEAF3589-FE55-46CA-9EAD-10DF440267F5}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882017120-_AEAF3589-FE55-46CA-9EAD-10DF440267F5_.png)![{575D10C8-461B-43BD-9C76-F5E6E32E3FB8}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882340399-_575D10C8-461B-43BD-9C76-F5E6E32E3FB8_.png)![{A45B1E07-6488-4AF4-BD8E-98C8AAE7D4C6}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882366020-_A45B1E07-6488-4AF4-BD8E-98C8AAE7D4C6_.png)![{B7A9E429-7D4C-41CC-8260-E9DA7BF123A7}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882621427-_B7A9E429-7D4C-41CC-8260-E9DA7BF123A7_.png)![{5A4DA77C-5BE1-4282-A04C-FF2FB8584648}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882589184-_5A4DA77C-5BE1-4282-A04C-FF2FB8584648_.png)
+![{521BB8C2-59FC-40D9-846F-9C57CC326C46}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882005193-_521BB8C2-59FC-40D9-846F-9C57CC326C46_.png)![{C80EA707-917B-4A2B-AD7E-FDC55AF7B160}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882045742-_C80EA707-917B-4A2B-AD7E-FDC55AF7B160_.png)![{AEAF3589-FE55-46CA-9EAD-10DF440267F5}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882017120-_AEAF3589-FE55-46CA-9EAD-10DF440267F5_.png)![{575D10C8-461B-43BD-9C76-F5E6E32E3FB8}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882340399-_575D10C8-461B-43BD-9C76-F5E6E32E3FB8_.png)![{A45B1E07-6488-4AF4-BD8E-98C8AAE7D4C6}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882366020-_A45B1E07-6488-4AF4-BD8E-98C8AAE7D4C6_.png)![{F6D95CC3-B3ED-40EA-B51E-4EB8E0B06C9D}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768887553064-_F6D95CC3-B3ED-40EA-B51E-4EB8E0B06C9D_.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # **My first zk vote**
 
@@ -89,6 +90,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -246,6 +248,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -332,6 +335,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -450,6 +454,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -645,6 +650,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -874,6 +880,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1146,6 +1153,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
