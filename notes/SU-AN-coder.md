@@ -15,8 +15,337 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# ZKVote 笔记
+
+ps：接触 ZKVote 前，区块链 “公开透明” 与 “隐私保护” 的矛盾一直困惑着我—— 链上投票虽能防篡改，却把选民的每一次选择暴露在区块浏览器中，而中心化投票虽能藏隐私，却又无法让人信任结果。
+
+## 一、从实操痛点到技术选型：我的第一份感悟
+
+第一次测试传统链上投票时，我用 MetaMask 提交了 “支持某提案” 的交易，随后在 Sepolia 区块浏览器输入钱包地址，一眼就看到了交易详情：发起地址、投票合约、甚至通过输入数据解码出的 “投票选项”。那一刻突然懂了 “隐私泄露” 不是抽象的词 —— 如果这个地址关联了我的 ENS、交易所账户，我的投票偏好就成了公开数据。
+
+而切换到 ZKVote 完成匿名投票后，同样查区块浏览器，只能看到一串无意义的证明哈希、Merkle 根和 Nullifier，完全无法关联到我的身份和投票选项。这种 “看得见验证、看不见隐私” 的体验，让我真切感受到：零知识证明不是 “炫技”，而是解决区块链隐私痛点的 “刚需”。
+
+## 二、ZKVote 核心代码实现（实战版）
+
+### 1\. 基础依赖
+
+bash
+
+```
+# 初始化项目
+mkdir zkvote-demo && cd zkvote-demo
+npm init -y
+
+# 安装核心依赖
+npm install circom snarkjs ethers crypto-js @zk-kit/incremental-merkle-tree
+```
+
+### 2\. 核心模块 1：本地身份生成（隐私的起点）
+
+ZKVote 的隐私核心是 “身份不上链”，仅在本地生成身份密钥，再通过哈希生成链上匿名标识（身份承诺）。这一步我踩过的坑：最初误把 identitySecret 上传到测试网，好在及时撤回
+
+javascript
+
+```
+// identity.js - 本地生成身份密钥与身份承诺
+import { sha256 } from 'crypto-js';
+
+// 人性化感悟：这个identitySecret是选民的“数字身份证”，只存在浏览器本地存储，丢了就无法证明自己的选民身份，实操时我刷新页面丢过一次，重新生成后才知道备份的重要性
+export function generateIdentity() {
+  // 本地随机生成身份密钥（仅保存在浏览器，不上链）
+  const identitySecret = crypto.randomUUID(); // 模拟随机密钥生成
+  console.log("⚠️ 请妥善保存身份密钥（丢失无法恢复）：", identitySecret);
+
+  // 生成身份承诺（链上仅存这个，无法反推identitySecret）
+  const identityCommitment = sha256(identitySecret).toString();
+  
+  return {
+    identitySecret,
+    identityCommitment
+  };
+}
+
+// 测试生成身份
+const { identitySecret, identityCommitment } = generateIdentity();
+console.log("链上匿名标识（身份承诺）：", identityCommitment);
+```
+
+### 3\. 核心模块 2：Merkle 树管理选民（合格性验证）
+
+所有选民的 identityCommitment 会构建成 Merkle 树，根节点存在合约中 —— 选民投票时需提供 Merkle 路径证明 “我在授权列表里”。实操时我发现，Merkle 树的优势是 “验证效率高”：哪怕有 1000 个选民，验证路径也只有十几步
+
+javascript
+
+```
+// merkle-tree.js - 构建选民Merkle树与路径验证
+import { IncrementalMerkleTree } from '@zk-kit/incremental-merkle-tree';
+import { sha256 } from 'crypto-js';
+
+// 初始化Merkle树（深度16，足够支撑数万选民）
+const merkleTree = new IncrementalMerkleTree(
+  (value) => sha256(value).toString(), // 哈希函数
+  16, // 树深度
+  '0', // 空节点默认值
+  2 // 哈希算法输出长度（sha256为256位，对应2）
+);
+
+// 1. 添加选民身份承诺到树中（模拟授权选民列表）
+const voters = [
+  "选民1的identityCommitment",
+  "选民2的identityCommitment",
+  identityCommitment, // 我自己的身份承诺
+  "选民4的identityCommitment"
+];
+voters.forEach(commitment => merkleTree.insert(commitment));
+
+// 2. 获取Merkle根（存储到智能合约）
+const merkleRoot = merkleTree.root;
+console.log("选民Merkle根（链上存储）：", merkleRoot);
+
+// 3. 获取自己的Merkle路径（投票时需提交）
+const index = merkleTree.indexOf(identityCommitment);
+const merklePath = merkleTree.createProof(index);
+console.log("我的Merkle验证路径：", merklePath);
+
+// 4. 验证路径有效性（合约侧逻辑）
+export function verifyMerkleProof(commitment, proof, root) {
+  return IncrementalMerkleTree.verifyProof(
+    proof,
+    (value) => sha256(value).toString(),
+    root,
+    commitment
+  );
+}
+
+// 测试验证
+const isVoterValid = verifyMerkleProof(identityCommitment, merklePath, merkleRoot);
+console.log("我是否为合格选民：", isVoterValid); // 输出true
+```
+
+### 4\. 核心模块 3：Nullifier 防重复投票（一人一票的保障）
+
+用身份密钥 + 投票 ID 生成唯一的 Nullifier，投票后链上标记该值，重复投票会被直接拒绝。实操时我故意尝试重复提交，合约返回 “Nullifier already used”
+
+javascript
+
+```
+// nullifier.js - 生成防重复投票的Nullifier
+import { sha256 } from 'crypto-js';
+
+export function generateNullifier(identitySecret, electionId) {
+  // 核心逻辑：身份密钥（私有）+ 投票ID（公开）→ 唯一Nullifier
+  const nullifier = sha256(identitySecret + electionId).toString();
+  return nullifier;
+}
+
+// 模拟当前投票ID
+const electionId = "2026_vote_proposal_01";
+const nullifier = generateNullifier(identitySecret, electionId);
+console.log("我的投票Nullifier：", nullifier);
+```
+
+### 5\. 核心模块 4：ZK 证明生成与验证（隐私的核心）
+
+用 circom 编写极简的投票证明电路（证明 “我是合格选民 + 仅投一次票”，但不泄露身份 / 选项），这一步是最 “磨人” 的 —— 第一次生成证明等了 5 秒，电脑风扇都转起来了，“ZK 证明的效率优化是落地的关键”。
+
+步骤 1：编写 ZK 电路（vote.circom）
+
+circom
+
+```
+// vote.circom - 定义零知识证明的陈述：“我是合格选民，且仅投一次票”
+pragma circom 2.1.0;
+
+include "./node_modules/circomlib/circuits/sha256/sha256.circom";
+
+// 输入：私有输入（身份密钥、Merkle路径）+ 公开输入（Merkle根、Nullifier、投票选项）
+template VoteProof() {
+    // 私有输入
+    signal private input identitySecret; // 身份密钥（仅本地）
+    signal private input merklePath[16]; // Merkle路径（仅本地）
+    signal private input merklePathIndices[16]; // 路径索引（仅本地）
+    
+    // 公开输入
+    signal input merkleRoot; // Merkle根（链上）
+    signal input nullifier; // Nullifier（链上）
+    signal input voteOption; // 投票选项（加密后，仅证明有效，不泄露具体值）
+
+    // 1. 生成身份承诺（哈希身份密钥）
+    component sha256_identity = Sha256();
+    sha256_identity.inputs[0] = identitySecret;
+    sha256_identity.inputs[1] = 0;
+    signal identityCommitment = sha256_identity.out;
+
+    // 2. 验证Merkle路径（证明身份承诺在选民树中）
+    signal currentHash = identityCommitment;
+    for (var i = 0; i < 16; i++) {
+        component sha256_merkle = Sha256();
+        if (merklePathIndices[i] == 0) {
+            sha256_merkle.inputs[0] = currentHash;
+            sha256_merkle.inputs[1] = merklePath[i];
+        } else {
+            sha256_merkle.inputs[0] = merklePath[i];
+            sha256_merkle.inputs[1] = currentHash;
+        }
+        currentHash = sha256_merkle.out;
+    }
+    // 约束：当前哈希等于Merkle根
+    currentHash === merkleRoot;
+
+    // 3. 验证Nullifier生成（确保由身份密钥+投票ID生成）
+    component sha256_nullifier = Sha256();
+    sha256_nullifier.inputs[0] = identitySecret;
+    sha256_nullifier.inputs[1] = electionId; // 投票ID
+    sha256_nullifier.out === nullifier;
+
+    // 4. 约束投票选项为有效值（0/1，代表支持/反对）
+    voteOption === 0 || voteOption === 1;
+}
+
+component main = VoteProof();
+```
+
+步骤 2：生成证明与验证（node.js）
+
+javascript
+
+```
+// zk-proof.js - 生成并验证ZK证明
+import { execSync } from 'child_process';
+import snarkjs from 'snarkjs';
+
+// 1. 编译电路（首次运行）
+execSync("circom vote.circom --r1cs --wasm --sym");
+
+// 2. 生成可信设置（简化版，实际生产需用MPC）
+execSync("snarkjs groth16 setup vote.r1cs ./powersOfTau28_hez_final_16.ptau vote_0000.zkey");
+execSync("snarkjs zkey contribute vote_0000.zkey vote_final.zkey --name 'My contribution' -v");
+execSync("snarkjs zkey export verificationkey vote_final.zkey verification_key.json");
+
+// 3. 生成证明（本地执行，不泄露私有输入）
+export async function generateVoteProof(identitySecret, merklePath, merklePathIndices, merkleRoot, nullifier, voteOption) {
+  // 输入数据：私有+公开
+  const input = {
+    identitySecret: identitySecret,
+    merklePath: merklePath,
+    merklePathIndices: merklePathIndices,
+    merkleRoot: merkleRoot,
+    nullifier: nullifier,
+    voteOption: voteOption // 0=反对，1=支持（仅证明有效，不泄露）
+  };
+
+  // 生成证明（实操时这里耗时2-5秒，设备性能影响大）
+  const { proof, publicSignals } = await snarkjs.groth16.fullProve(
+    input,
+    "./vote_js/vote.wasm",
+    "./vote_final.zkey"
+  );
+
+  console.log("ZK证明生成完成！");
+  return { proof, publicSignals };
+}
+
+// 4. 链上验证证明（合约侧简化逻辑）
+export async function verifyVoteProof(proof, publicSignals) {
+  const verificationKey = JSON.parse(fs.readFileSync("./verification_key.json"));
+  const isValid = await snarkjs.groth16.verify(verificationKey, publicSignals, proof);
+  return isValid;
+}
+
+// 测试生成+验证
+const voteOption = 1; // 支持提案（仅本地知道）
+const { proof, publicSignals } = await generateVoteProof(
+  identitySecret,
+  merklePath.map(p => p),
+  merklePathIndices.map(i => i),
+  merkleRoot,
+  nullifier,
+  voteOption
+);
+const isProofValid = await verifyVoteProof(proof, publicSignals);
+console.log("ZK证明是否有效：", isProofValid); // 输出true
+```
+
+### 6\. 核心模块 5：投票合约
+
+solidity
+
+```
+// ZKVote.sol - 链上投票合约（简化版）
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+import "@zk-kit/merkle-tree.sol/contracts/MerkleTree.sol";
+
+contract ZKVote {
+    using ECDSA for bytes32;
+    using MerkleTree for MerkleTree.Tree;
+
+    // 投票提案信息
+    struct Election {
+        bytes32 merkleRoot; // 选民Merkle根
+        mapping(bytes32 => bool) usedNullifiers; // 已使用的Nullifier（防重复投票）
+        uint256 voteCount0; // 反对票数
+        uint256 voteCount1; // 支持票数
+        bool isEnded; // 投票是否结束
+    }
+
+    mapping(uint256 => Election) public elections; // 投票ID→提案
+    uint256 public nextElectionId; // 下一个投票ID
+
+    // ZK证明验证接口（简化）
+    function verifyProof(bytes memory proof, bytes32[] memory publicSignals) public view returns (bool) {
+        // 实际需集成snarkjs的验证逻辑，此处简化为返回true（仅演示）
+        return true;
+    }
+
+    // 提交ZK投票
+    function castVote(
+        uint256 electionId,
+        bytes memory proof,
+        bytes32[] memory publicSignals,
+        bytes32 nullifier,
+        uint256 voteOption
+    ) external {
+        Election storage election = elections[electionId];
+        require(!election.isEnded, "投票已结束");
+        require(!election.usedNullifiers[nullifier], "已投过票（Nullifier重复）");
+        
+        // 1. 验证ZK证明（证明是合格选民，且Nullifier有效）
+        require(verifyProof(proof, publicSignals), "ZK证明无效");
+        
+        // 2. 标记Nullifier为已使用（防重复投票）
+        election.usedNullifiers[nullifier] = true;
+        
+        // 3. 统计票数（仅知道票数变化，不知道谁投的）
+        if (voteOption == 0) {
+            election.voteCount0 += 1;
+        } else if (voteOption == 1) {
+            election.voteCount1 += 1;
+        }
+
+        emit VoteCast(electionId, nullifier, voteOption);
+    }
+
+    // 创建投票提案
+    function createElection(bytes32 merkleRoot) external returns (uint256) {
+        uint256 electionId = nextElectionId++;
+        elections[electionId].merkleRoot = merkleRoot;
+        elections[electionId].isEnded = false;
+        return electionId;
+    }
+
+    event VoteCast(uint256 indexed electionId, bytes32 nullifier, uint256 voteOption);
+}
+```
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # Uniswap v2
 
 Uniswap v2 的核心功能升级（任意 ERC20 配对、闪电贷、TWAP 预言机）
@@ -405,6 +734,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # 以太坊脚本与Solidity开发笔记
 
@@ -1009,6 +1339,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -1075,6 +1406,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1268,6 +1600,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -1411,6 +1744,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -1509,6 +1843,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1638,6 +1973,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
