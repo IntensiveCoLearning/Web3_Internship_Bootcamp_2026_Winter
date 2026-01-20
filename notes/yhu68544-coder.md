@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+\#### 11.行业赛道全览
+
+一、DeFi:Uniswap、Compound、MakerDAO
+
+二、NFT：CryptoPunks、Opensea
+
+三、DAO：Nouns DAO、LXDAO、ConstitutionDAO
+
+四、MEME:DOGE、PEPE
+
+五、DeFi+NFT、DAO+MEME、AI+DeFi、WEB3+乡建
+
+六、Intent-Based交易、账户抽象智能钱包、模块化区块链、AI+Web3融合
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 以太坊概览
 
 !\[\[Pasted image 20260119141418.png\]\]
@@ -301,6 +319,7 @@ _问自己：如果我要创建一个志同道合的学习小组DAO，_\*我们�
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 \#### AI问答笔记总结：# Web3 核心概念与开发架构全景笔记
 
 \##### 一、核心理念：从“平台租用”到“用户拥有”
@@ -533,6 +552,7 @@ IPFS (存储/检索)
 
 
 
+
 \#### 7.NFT（非同质化代币）理解：
 
 同质化代币（FT，全称 Fungible Token）是可以被任意交换的代币，就像钱一样。比如ETH,BTC
@@ -556,6 +576,7 @@ NFT 市场处于非常早期的阶段，作品质量参差不齐鱼龙混杂。�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -625,6 +646,7 @@ Layer 2（L2）是什么意思？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
