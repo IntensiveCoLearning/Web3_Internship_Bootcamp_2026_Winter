@@ -20,10 +20,27 @@ Web3 实习计划 2025 冬季实习生
 # 总览
 
 # 详情
+
+## Gas优化
+
+### 核心概念：Storage vs. Stack
+
+在 EVM 执行指令时：
+
+-   **Storage (存储)**：像电脑的“硬盘”，数据永久保存在区块链上。读写一次都要好几百甚至上千 Gas。
+    
+-   **Stack (栈)**：像电脑的“寄存器”，函数运行时的临时计算空间。操作一次只需要 3 Gas。
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-20-1768880447159-image.png)
+
+所以省 Gas 的一个关键思路就是减少对 Storage 的写操作
+
+在
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # 总览
 
@@ -45,6 +62,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -158,6 +176,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -180,6 +199,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -214,6 +234,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -332,6 +353,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -560,6 +582,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -668,6 +691,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
