@@ -15,8 +15,29 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+-   YES-Token 的价格：**V(Yes)** 美元
+    
+-   NO-Token 的价格：**V(No)** 美元
+    
+
+考虑下面两种极端情况：
+
+-   如果 **_V(Yes) + V(No) = $0.98：_** 交易者可以花$0.98在公开市场各买一份 YES 和 NO，拿在手上。 不管最后结果是 Yes 还是 No，等事件结算时，这两份合起来都能兑回 $1。 也就是说，他锁定了“到期时拿$1”的权利，成本却是 $0.98。这相当于一笔“未来确定性兑付 $1”的合约，隐含到期收益率约为 (1−0.98)/0.98 ≈ 2.04%。
+    
+
+-   如果 **_V(Yes) + V(No) = $1.02：_** 一个做市者可以此刻存入 1 USDC 铸造“完整一套”{YES, NO} 然后立刻在市场上分别卖出 YES 和 NO，套回$1.02。 他相当于用$1的抵押，瞬间换回$1.02，赚了$0.02。
+    
+
+第一种（0.98的情况）**并不是“立刻”拿到1美元，而是“锁定未来会兑回1美元”，需要持有到事件结算。**这笔钱在这段时间里被占用，相当于你把现金借给了市场，**赚一笔无信用风险的贴水回报**（前提是平台/预言机/USDC本身没有违约风险）。
+
+第二种（1.02 的情况）是**即时无风险套利**，因为它不需要等到期。 在polymarket里面，比如我想要买0.3的yes，这个时候其实是有三种情况，1、有人想要卖出0.3yes。（成交）2、有人卖出0.7的no。（本质是你的竞争对手，卖出0.7no等价于买入0.3no，不利！）3、有人想要买入0.7的no。1、3情况，只要订单能够拼单成功就可以（1usdt=1yes+1no（这个1ye和1no不是价值而是份数）只要能凑成一个交易对就行）因此订单成交模型可以理解为拼多多的拼单。但是我们会遇见特殊的情况，比如说！既然是拼单，假设前面的都拼单成功了，那两两yesno配完了，那多出来了一个人怎么办？一个时候就是两个情况，1、你选择提供流动性，你的订单不会立马成交，需要有人来和你配对。2、你选择吃流动性，这时匹配amm的交易系统，那就会有自动做市商进行和你交易，但是你会给出溢价，因为提供流动性的是做市商（一般而言，提供流动性提供市场交易深度的人都是会有“优惠的”） poly 中的订单簿交易，成交的好像不是单独的Yes-Token 和No-Token 的价格。 好像在技术上成交的是概率 P； Yes Token的价格就是 P的前端显示，No-Token 的价格是1-P 的前端显示。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NjNhYjExNWE4YTRlMDEzNGQ5YmQ4OTExMjA1NTJiZGNfb3BjcWFoUzhQN2pOeWJRZlRTYUxTaEpHbjA1VDJoTkJfVG9rZW46Q3VuM2I3MVJVb1p3YWV4dWR0SWN6R0RTbk1jXzE3Njg4MzAwOTk6MTc2ODgzMzY5OV9WNA)
 
 Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大板块功能，可以作模板，网站，海报等设计，还可以使用AI工具 figmajam 等思维导图工具。
@@ -51,6 +72,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ## 一次社区“失速”的复盘：当团队迷失方向，责任一定在发起人
 
@@ -183,6 +205,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ### 按照协议费用排名前10大协议：
 
 泰达，Circle 稳定币 Meteora, solana 链上的Defi
@@ -225,6 +248,7 @@ Axiom Pro 关于 Axiom Pro，这是一个在加密货币交易领域中出现的
 
 
 
+
 ### 数据库的基本概念介绍
 
 **数据库（Database）**：数据库是结构化信息或数据的有序集合，是按照数据结构来组织、存储和管理数据的仓库。Dune平台目前提供了多个数据库，分别支持来自不同区块链的数据。
@@ -256,6 +280,7 @@ limit 返回记录数量
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -299,6 +324,7 @@ limit 返回记录数量
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -395,6 +421,7 @@ limit 返回记录数量
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
