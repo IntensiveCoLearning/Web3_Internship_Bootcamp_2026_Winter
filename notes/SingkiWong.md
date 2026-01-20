@@ -18,10 +18,13 @@ Live better with web3
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 打卡打卡
+
+打卡
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 今天继续打卡，开了运营和技术
 <!-- DAILY_CHECKIN_2026-01-19_END -->
@@ -30,11 +33,13 @@ Live better with web3
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 打卡，今天周末休息
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -58,6 +63,7 @@ Live better with web3
 
 
 
+
 打卡
 
 **NFT is still in very early stage**
@@ -69,6 +75,7 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -89,6 +96,7 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 
 
+
 **同质化代币（FT，全称 Fungible Token）是可以被任意交换的代币，就像钱一样。**
 
 **非同质化代币（NFT，全称 Non-fungible Token）则是独一无二、完全不同，难以用来平等交换的代币。**
@@ -96,6 +104,7 @@ A lot of celebrities and brands also started stepping into NFT world and launchi
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
