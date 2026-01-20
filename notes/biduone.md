@@ -45,6 +45,8 @@ timezone: UTC+8
 
 ## ERC-721NFT合约
 
+## 去学习Proxy合约升级
+
 ## 去学习uniswap v3代码，aave代码
 
 -   理解它的安全设计
@@ -54,6 +56,7 @@ timezone: UTC+8
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -114,6 +117,7 @@ timezone: UTC+8
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -142,6 +146,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -205,6 +210,7 @@ timezone: UTC+8
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -234,6 +240,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -324,6 +331,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -375,6 +383,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -456,6 +465,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
