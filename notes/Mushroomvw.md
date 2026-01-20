@@ -16,8 +16,16 @@ Focused on AI, Web3, and building scalable, real-world systems.
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今天整体学习节奏较慢，没有进行系统性的技术学习，主要是简单浏览了中文排版规范相关内容。更多是对常见问题有了初步意识，例如中英文混排、标点使用和段落结构等，但还停留在了解层面，尚未形成稳定习惯。
+
+这一天的状态也提醒自己，学习并不总是线性推进，有些内容即使看得不深，也是在为之后的输出打基础。排版规范本身并不复杂，但会长期影响阅读体验和专业表达，后续需要在实际写作和笔记中不断内化
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### 学习目标
 
 研读 Web3 实习手册中智能合约开发相关内容，建立对智能合约开发流程的整体认识；熟悉 Remix IDE 的基本界面与使用方式，为后续 Solidity 编写与部署做准备。
@@ -59,6 +67,7 @@ Focused on AI, Web3, and building scalable, real-world systems.
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 今天主要是在翻看同学们的学习笔记。原本只是想对照一下进度，但看着看着，反而更多是一种提醒和对照。不同的人在同一套内容上关注的点差异很大，有人偏重概念整理，有人已经开始尝试延展应用，也有人在一开始就关注安全、治理和现实落地问题。
 
 这种对比让我意识到，学习路径本身并不存在标准答案。即便面对同样的材料，理解深度和关注方向也会随着背景和目标发生偏移。与其焦虑进度，不如确认自己是否真的在构建属于自己的认知结构。
@@ -68,6 +77,7 @@ Focused on AI, Web3, and building scalable, real-world systems.
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -82,6 +92,7 @@ Focused on AI, Web3, and building scalable, real-world systems.
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -103,6 +114,7 @@ Focused on AI, Web3, and building scalable, real-world systems.
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -187,6 +199,7 @@ EOA 由私钥直接控制，看似简单清晰，但问题也最集中：
 
 
 
+
 ## **Web3 安全基础与常见风险**
 
 ### **今日目标**
@@ -235,6 +248,7 @@ EOA 由私钥直接控制，看似简单清晰，但问题也最集中：
 
 
 
+
 \*\*今日目标：\*\*理解我如何真正使用以太坊
 
 **学习内容：**
@@ -267,6 +281,7 @@ EOA 由私钥直接控制，看似简单清晰，但问题也最集中：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
