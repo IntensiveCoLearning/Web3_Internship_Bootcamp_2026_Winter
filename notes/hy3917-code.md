@@ -15,8 +15,99 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+* * *
+
+# 📝 Web3 公共物品（Public Goods）总结笔记
+
+### 1\. 核心定义：什么是 Web3 公共物品？
+
+在经济学中，公共物品需满足两个特性：**非排他性**（Non-excludable，谁都能用）和**非竞争性**（Non-rivalrous，一个人用不影响其他人用）。\[[1](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQF85StOPg0IV-uhvu-AzN8wCdjyP8TV_0TN4m9hUI101m6yhOteBtgcIeJISr8JAlmXZ8cU0RnDpd8Pj1Rkl6uIp7jay0Q7O7Sw2s28kWk-99I6wavD5CBPgKGFj8vZNObWQw0%3D)\]\[[2](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQG7cqzr6hxzRuL40qHYnaKQ8zOXRmBJU0p19d8ItKe5kRimb8ZRUN2x1FhksSbjB1hYka8u5n58o-PoFQM6ly4T4gdb9R7KYgoxP3dR3jDtsAbqLzUSNvu9pGQweRPYiybvNF0eWEs%3D)\]\[[3](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQHW5bNR4YkmUkaIRcKIWOh7BS1bDbniYwRkI-4UgMgLNa-3xq_34R3Tv6v-d0J2BtyOYdkY_fzh-_Aph2bt_pWcgIS8SHoTbj43oXYk5mNaiZcZmMDqi014BmUrnaduyFaLPw%3D%3D)\]  
+在 Web3 语境下，由于“去中心化”和“开源”的特性，公共物品的范围被重新定义和放大：
+
+-   **狭义定义：** 开源软件代码、区块链底层协议、技术标准（如 ERC-20）、公共数据。
+    
+-   **Web3 特色：** 任何能为整个生态系统提供**正外部性**（Positive Externalities，即不仅造福开发者自己，还造福其他人）且不被私有围墙锁定的基础设施。
+    
+-   **对比 Web2：** Web2 公司通过建立护城河（封闭代码、私有数据）获利；Web3 则依赖公共组件（开源合约、共享账本）来构建“免信任”系统。
+    
+
+> **关键金句：** “Web3 的核心是使得‘公共物品’的资助成为一种内生的商业模式，而非单纯的慈善。”
+
+### 2\. 为什么它在 Web3 中至关重要？
+
+-   **安全基石：** 区块链要求“Don't trust, verify”。只有开源（公共物品）的代码才能被验证，因此它是去中心化信任的基础。
+    
+-   **避免重复造轮子：** 像 OpenZeppelin 这样的安全代码库让开发者无需从零编写基础合约，加速了整个行业的创新。
+    
+-   **正向循环：** 生态越繁荣（公共物品越多），在此之上构建的私有应用（DApp）价值越高。
+    
+
+### 3\. 核心挑战：搭便车与可持续性
+
+-   **搭便车问题（The Free Rider Problem）：** 既然代码是开源免费的，每个人都想用，但没人愿意出钱维护。
+    
+-   **公地悲剧：** 开发者因为缺乏激励而停止维护关键基础设施（如著名的 OpenSSL 心脏滴血漏洞在 Web3 复现的风险），导致生态脆弱。
+    
+-   **传统的失灵：** 在传统世界，政府靠税收解决此问题；在去中心化世界，没有单一“政府”强制收税，因此需要新的协调机制。
+    
+
+### 4\. Web3 的创新解决方案（核心考点）
+
+Web3 引入了“程序化”和“博弈论”的方式来解决资金分配问题，这是最精彩的部分：
+
+A. 二次方融资 (Quadratic Funding, QF)\[[4](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQEJfJy0jYIL2Rm9mVFhp3fHPf6D6MH4WM54LyIMfJ5RCdo0qrliEG0GtZt9vDjaOKeMFVNExcljY-S9D7cSNomZ_pLUxSF00awKZvHHLRCV3pnISIR92qs2xv0thjvQy8cVQhXGp7Xbd5I7TVlbFkrinn_P8Gx23siAUtACX8-q)\]
+
+-   **原理：** 由以太坊创始人 Vitalik 和 Glen Weyl 提出。配捐资金池的分配不仅仅看**捐款金额**，更看重**捐款人数**。
+    
+-   **意义：** 100 个人每人捐 $1 比 1 个人捐 $100 能获得更多的配对资金。这防止了富豪垄断话语权，让社区的“广泛共识”决定资金去向。
+    
+-   **代表平台：** **Gitcoin**（被誉为 Web3 公共物品的军火库）。
+    
+
+B. 追溯性公共物品资助 (Retroactive Public Goods Funding, RetroPGF)\[[4](https://www.google.com/url?sa=E&q=https%3A%2F%2Fvertexaisearch.cloud.google.com%2Fgrounding-api-redirect%2FAUZIYQEJfJy0jYIL2Rm9mVFhp3fHPf6D6MH4WM54LyIMfJ5RCdo0qrliEG0GtZt9vDjaOKeMFVNExcljY-S9D7cSNomZ_pLUxSF00awKZvHHLRCV3pnISIR92qs2xv0thjvQy8cVQhXGp7Xbd5I7TVlbFkrinn_P8Gx23siAUtACX8-q)\]
+
+-   **原理：** “预测未来很难，但评估过去很容易”。不再资助 PPT 和承诺，而是给**已经创造了价值**的项目发钱。
+    
+-   **逻辑：** 开发者先自行承担风险开发，一旦产生影响力，DAO 会通过追溯性奖励购买其影响力。这为开发者创造了“退出机制”（Exit）。
+    
+-   **代表案例：** **Optimism (OP)** 的 RetroPGF 轮次，定期分发数千万美元给生态贡献者。
+    
+
+C. 协议收入重定向 (CSR & Protocol Guilds)
+
+-   **Contract Secured Revenue (CSR)：** 允许智能合约开发者从用户与合约交互产生的 Gas 费中抽取一部分作为收入，直接将商业模式写入协议层。
+    
+-   **Protocol Guild：** 如以太坊核心开发者获得的捐赠流，使得维护底层代码成为一份体面的工作。
+    
+
+### 5\. 关键案例分类
+
+为了方便记忆，可以将其分为三类：
+
+| 类别 | 描述 | 典型案例 |
+| 基础设施 (Infrastructure) | 开发者构建应用必须依赖的底层代码和工具 | Ethereum 自身、OpenZeppelin (安全合约库)、Ethers.js (交互库) |
+| 用户端工具 (User Facing) | 普通用户直接使用的公共服务，通常无代币或非盈利 | ENS (域名服务)、Revoke.cash (取消授权工具)、L2BEAT (数据看板) |
+| 知识与教育 (Knowledge) | 降低进入门槛的教育资源 | Ethereum.org、Solidity 文档、WTF Academy |
+
+### 6\. 前沿叙事与趋势
+
+-   **Regenerative Finance (ReFi)：** 可再生金融。利用 DeFi 的工具来资助气候变化、公共物品等具有正外部性的事业。
+    
+-   **Hypercerts (影响力证书)：** 试图将“做过的好事”通过 NFT 标准化。如果你资助了一个公共物品，你获得一个 Hypercert，未来如果该项目获得 RetroPGF 奖励，你可以分润。这试图将“做公益”变成一种可投资的资产。
+    
+-   **绿药丸 (Green Pill)：** Kevin Owocki（Gitcoin 创始人）提出的概念，象征着利用加密经济学为世界创造正外部性，与红药丸（觉醒）和蓝药丸（沉睡）对应。
+    
+
+### 总结一句
+
+**Web3 公共物品不再仅仅是依靠“爱心”的慈善，而是试图通过 QF、RetroPGF 等算法机制，将“利他”行为转化为一种可量化、可持续甚至可获利的经济模型。**
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 * * *
 
 # Web3 社群运营与活动策划课程总结
@@ -212,6 +303,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 这是一份关于 **ERC-7962 (Key Hash Based Tokens)** 分享会的详细笔记总结。
 
 * * *
@@ -325,6 +417,7 @@ ERC-7962 提出了一种 **“基于密钥哈希 (Key Hash)”** 的所有权模
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 **DefiLlama (**[**DefiLlama.com**](http://DefiLlama.com)**)** 是目前加密货币领域最权威、最好用、且**完全免费**的链上数据分析工具。
@@ -461,6 +554,7 @@ ERC-7962 提出了一种 **“基于密钥哈希 (Key Hash)”** 的所有权模
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -674,6 +768,7 @@ Solidity 是为 EVM 专门设计的高级语言，是目前开发智能合约的
 
 
 
+
 **今日学习：Web3合规/Web3安全/Web3AI**  
 **1.Web3合规**
 
@@ -772,6 +867,7 @@ Rick 预测，未来的经济主体将从人类转向 AI Agent。Coinbase 的数
 
 
 
+
 以下是021第三章《账户类型与结构》的详细学习总结：
 
 **一、 以太坊账户的“双轨制”：EOA 与合约账户**  
@@ -831,6 +927,7 @@ Rick 预测，未来的经济主体将从人类转向 AI Agent。Coinbase 的数
 
 
 
+
 **今日学习《021学习以太坊》《Web3实习手册入门导读》《Uniswap v2 核心白皮书》《**[**Day 2: Becoming a Power User - Wallets, Mnemonics, Keypairs》**](https://www.youtube.com/watch?v=_GjPeRLCREA&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=2)
 
 **021 第二章学习笔记：以太坊的骨架与脉络**
@@ -872,6 +969,7 @@ Uniswap v2 本质上是对 v1 版本的全面升级，核心算法依然沿用�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
