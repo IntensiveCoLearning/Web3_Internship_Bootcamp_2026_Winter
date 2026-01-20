@@ -15,8 +15,90 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+Course Note: WTF Academy Solidity 101
+
+\> \[!info\] 课程信息
+
+\> - **来源**: \[WTF Academy\]([https://www.wtf.academy/course/solidity101](https://www.wtf.academy/course/solidity101))
+
+\> - **进度**: Chapter 1-3
+
+\> - **状态**: 进行中
+
+\## 1. Hello Web3
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.4;
+
+contract HelloWeb3 {
+
+string public \_string = "Hello Web3!";
+
+}
+
+\`\`\`
+
+\- **License**: 必须写 `SPDX-License-Identifier`。（这里如果你不写的话，虽然可以编译，但是会报错）
+
+\- **Pragma**: 指定编译器版本。
+
+按住 CTRL +S 进行对应的编译
+
+\## 2. 值类型 (Value Types)
+
+\- **Boolean**: `bool public _bool = true;`
+
+\- **Integer**: `uint` (unsigned, 正整数), `int` (signed, 包含负数)。常用 `uint256`。
+
+\- **Address**: `address` (20字节), `address payable` (可以转账 ETH)。
+
+Solidity 中的整数类型包括有符号整数和无符号整数。它可以存储高达 256 位的整数或数据单元
+
+\- **枚举**（最多256个）：在solidity中的用户自定义数据类型，主要用于给常量赋予名称，从而保持易于阅读
+
+\-使用enum（不是类型还是枚举成员）：用一种固定的名称常量表示有限状态
+
+之后这里联想到我们之前设计的一种状态机的思维，利用我们之前的状态机思维，我们这里使用require（），当满足了require的条件之后，才能再执行的后续的操作，不然会在这里陷入阻塞状态
+
+\## 3. 函数 (Functions)
+
+\- 结构: `function <name>(<params>) <visibility> <stateMutability> returns (<return types>)`
+
+\- **Visibility**:
+
+\- `public`: 内部外部均可调用。
+
+\- `private`: 只能本合约调用。
+
+\- `external`: 只能外部调用 (Gas 略少)。
+
+\- `internal`: 只能本合约及子合约调用。
+
+\- **State Mutability**:
+
+\- `pure`: 不读不写链上状态。
+
+\- `view`: 只读不写链上状态。
+
+\- `payable`: 可以接收 ETH。
+
+\- (默认): 可读可写。
+
+\## 4. 练习记录
+
+\- \[x\] 编写一个 `add` 函数，实现两个 uint 相加。
+
+\- \[x\] 尝试定义一个 `address payable` 变量。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 会议纪要: Web3 社区运营与活动策划实战 SOP
 
 \> \[!info\] 会议档案
@@ -172,6 +254,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # 每日学习日志 - 2026‑01‑18
 
@@ -481,6 +564,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -682,6 +766,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -926,6 +1011,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -1118,6 +1204,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
