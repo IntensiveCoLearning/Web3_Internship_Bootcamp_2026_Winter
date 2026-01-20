@@ -15,13 +15,20 @@ Zoe
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-20-1768906887879-image.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-18-1768750476123-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-19-1768826051753-image.png)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-18-1768750476123-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
@@ -30,11 +37,13 @@ Zoe
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 今日外出，昨日分享会收获，学习和启发笔记整理稍后上传。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -49,6 +58,7 @@ Zoe
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/AureliusZoe/images/2026-01-15-1768478593706-image.png)
 
 今天也来参会啦~
@@ -56,6 +66,7 @@ Zoe
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -76,6 +87,7 @@ Zoe
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
