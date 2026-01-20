@@ -15,8 +15,17 @@ Hi, I'm Yao, a junior developer
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+try to do some coding challenage  
+  
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chenyao0910/images/2026-01-20-1768923759746-image.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 智能合約
 
 運行在以太坊上面的程序合同，只要輸入條件滿足，就會自動執行
@@ -36,6 +45,7 @@ deploy上去之後，如果要更新代碼，必須透過proxy模式
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 一個完整的以太節點，需要包括
 
@@ -62,6 +72,7 @@ b.他們都透過engine api進行溝通
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 偷偷往後看了一些我有興趣的東西
 
 # **為什麼地址都是0x開頭呢**
@@ -84,6 +95,7 @@ b.他們都透過engine api進行溝通
 
 
 
+
 Rollup 是layer2 的主流路線，目的是要幫助L1 擴容，提高吞吐量
 
 Optimistic Rollup → 默認交易正確，只有錯誤的才要提出
@@ -103,6 +115,7 @@ ZK Rollup → 利用零知識證明
 
 
 
+
 Rollup 是layer2 的主流路線，目的是要幫助L1 擴容，提高吞吐量
 
 Optimistic Rollup → 默認交易正確，只有錯誤的才要提出
@@ -117,6 +130,7 @@ ZK Rollup → 利用零知識證明
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
