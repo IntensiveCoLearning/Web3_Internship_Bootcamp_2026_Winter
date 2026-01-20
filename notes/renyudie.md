@@ -17,8 +17,68 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### 运营渠道
+
+1.  telegram
+    
+    Telegram的主要功能是社群运营与管理。通过这个软件可以汇集全世界的用户，信息加密且安全，学习管理telegram群组及频道是运营的必备技能。
+    
+    1.  用Bot做互动统计，例如像@GroupStatsBot这样的第三方工具，可以记录群友的发言频率以及互动情况，需要群主授权
+        
+    2.  自建机器人抓取公开群组数据，需要有基础的编程能力，用Python+telethon监听消息流
+        
+    3.  分析聊天记录导出文件，将csv导入excel进行手动统计，适用于小群复盘
+        
+    
+    建议小范围测试，遵守平台规范。做营销不要只看数据，设计好互动场景，例如限时投票、话题打卡，更容易获得用户痕迹数据。
+    
+2.  discord
+    
+    用户可以创建或加入“服务器”（类似社区频道）来进行文本、语音和视频聊天。因此也适用于作为官方宣传途径或者AMA活动举办。
+    
+    官方新手指南：[\*\*](https://support.discord.com/hc/zh-tw/articles/360045138571-Discord-%E6%96%B0%E6%89%8B%E6%8C%87%E5%8D%97)[https://support.discord.com/hc/zh-tw/articles/360045138571-Discord-新手指南\*\*](https://support.discord.com/hc/zh-tw/articles/360045138571-Discord-新手指南**)
+    
+
+![image.png](attachment:bc81d2b0-cee4-415a-be8a-610a0fdf7369:image.png)
+
+1.  Twitter
+    
+    Twitter 是世界上访问量最高的社交网站之一，区块链和 Web3 相关项目常利用 Twitter 发布最新动态和公告，因此成为生态交流的重要渠道。作为运营，Twitter常被用来：运营官方账号，发布公告信息，联系KOL，通过twitter space举办活动。
+    
+    space 使用步骤：[Twitter Spaces: 开始使用的完整指南](https://www.dealshuo.com/twitter-spaces-kai-shi-shi-yong-de-wan-zheng-zhi-nan/)
+    
+    ![image.png](attachment:adc4dda2-6be3-40b9-a008-ccd7b8396145:image.png)
+
+### 重要指标
+
+1.  线上活动
+    
+    -   首条推文浏览数：
+        
+    -   Space 在线人数峰值：
+        
+    -   小宇宙收听量：
+        
+2.  线下活动
+    
+    -   线下参与人数
+        
+    -   Twitter 增长 / 曝光
+        
+    -   媒体或社区协作数
+        
+    -   潜在项目合作意向
+        
+    -   到场人数 vs 注册人数
+        
+    -   宣发帖曝光量、嘉宾 RT 数、社交媒体互动
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -68,6 +128,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## 闪电贷攻击（flash lown）
 
@@ -173,6 +234,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 <!-- DAILY_CHECKIN_2026-01-15_START -->
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -208,6 +270,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -239,6 +302,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -384,6 +448,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
