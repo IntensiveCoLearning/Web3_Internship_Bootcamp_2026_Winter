@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+-   DAY 9
+    
+-   整理了《Web3 运行原理的笔记》制作了脑图
+    
+    ![Mindmap (Community).jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-20-1768898184359-Mindmap__Community_.jpg)
+-   与Nancy沟通准备弄一个谈话类节目，暂名《踏浪者记》访谈包括不限于WEB3行业和各个新型行业的从业者们，希望能通过对谈，访问，碰撞出新的观点与火花  
+      
+      
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-20-1768898130468-image.png)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 DAY8
 
 忙碌的一天，草草啃了一些手册里的内容 技术部分对文科生来说还是艰涩了点
@@ -26,6 +42,7 @@ DAY8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 DAY7
@@ -98,6 +115,7 @@ DAY7
 
 
 
+
 DAY6
 
 //成都雾霾连续爆表一个月 今天鼻炎终于大爆发，疯狂喷嚏鼻涕，头昏脑胀
@@ -111,6 +129,7 @@ DAY6
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -131,6 +150,7 @@ DAY5
 
 
 
+
 DAY4  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485305863-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485449721-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485466886-image.png)
@@ -138,6 +158,7 @@ DAY4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -162,6 +183,7 @@ DAY3
 
 
 
+
 DAY2  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296425226-image.png)![5256c0f3e7c881eda8158c6049c39b84.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296346499-5256c0f3e7c881eda8158c6049c39b84.jpg)
@@ -169,6 +191,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
