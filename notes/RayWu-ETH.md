@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+![IMG_4383.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-20-1768919638825-IMG_4383.png)
+
+今把共识大会的注册分享资料 post 到两个平台，本来以为小红书在之前笔记流量比较好的情况下，应该会得到不错的反响，但是却没有什么波浪。难道是这次共识大会没有什么热度吗...还是我需要反思一下自己的笔记格式有问题🤔
+
+还有一个问题是，我发现小红书与 x 的笔记风格是不同的。小红书的特点是以图为主，以文为辅。X 的特点是以文为主，或者图片只起到引流的作用，这归因于 X 的图片至少在手机上是无法排序的，只能放在后面。所以在内容上，x 和小红书之间是不能无脑搬运的。在 X 上用 title 来吸引人，在小红书则用首图来吸引人。嗯，多多学习
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-19-1768835897094-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-19-1768835906066-image.png)
 
 今天是非常饱满的一天，白天当大使做任务,下午去上课，晚上回来写推文。
@@ -26,6 +36,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 加入 Web3 Career Build 已经整整一个星期了，这七天personal growth 的速度快到让我自己都震惊——甚至远远超过了我在研究生阶段那半年积累的知识厚度。
 
@@ -42,6 +53,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647773836-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647763202-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647792969-image.png)
 
 今天依旧是一篇推，今天整天围绕着一个全新的课题写，写昏头了，虽然没有任何经验，但是这种从零开始探索的感觉真的特别上瘾。上瘾到我午饭到了都放着没吃，直到手头上的课题暂时搞了一段落了以后才敢放心的拿起筷子。
@@ -51,6 +63,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -69,6 +82,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习完了《021 学习以太坊》的第二章并做笔记发了推文，感觉成就感满满！
 
 ![IMG_4149.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483352442-IMG_4149.jpeg)![IMG_4148.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483381863-IMG_4148.png)![IMG_4150.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483414358-IMG_4150.jpeg)![IMG_4151.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483429069-IMG_4151.jpeg)![IMG_4152.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483444785-IMG_4152.jpeg)
@@ -76,6 +90,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -98,6 +113,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -205,6 +221,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
