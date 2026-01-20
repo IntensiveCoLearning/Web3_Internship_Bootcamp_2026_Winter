@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+1、学习scaffold-eth框架
+
+2、参加co-learning
+
+3、参加Uniswap工作原理解析
+
+4、参加残酷共学 & 休闲黑客松案例拆解
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 1、参加线上co-learning
 
 2、参加Web3 公共物品资金第一节课
@@ -29,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 1、参加以太坊中文周会
 
 2、参加线上Co-Learning
@@ -38,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 1、观看并总结今晚的Key Hash Based Tokens: 从 ERC-721 到 ERC-7962分享会
@@ -50,6 +64,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1、研究了智能合约中多重继承引发的钻石问题，使用C3线性化算法如何解决函数调用顺序的冲突，通过明确指定和避免使用super来避免问题
 
 2、研究了使用GPU碰撞合约hash特定字符的地址，[manuelinfosec/eth-vanity-cuda: CUDA-accelerated Ethereum vanity address generator written in C++, capable of brute-forcing custom prefixes and suffixes for addresses using NVIDIA GPUs.](https://github.com/manuelinfosec/eth-vanity-cuda)
@@ -57,6 +72,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -77,6 +93,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1、学习MPC钱包，发一篇推文
 
 2、参加 AI 及其基础概念分享会
@@ -84,6 +101,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -104,6 +122,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.  进阶hardhat v2框架 [DAPP开发框架之hardhat进阶使用-CSDN博客](https://hua1223.blog.csdn.net/article/details/136885624)
     
 2.  给web3实习手册提交了一个pr，在智能合约开发章节添加了一个完整的现代化 Dapp 示例项目，展示如何使用 Viem、Wagmi 和 RainbowKit 构建链上留言板应用。[https://github.com/ethpanda-org/Web3-Internship-Handbook/pull/30](https://github.com/ethpanda-org/Web3-Internship-Handbook/pull/30)
@@ -111,6 +130,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
