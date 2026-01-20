@@ -20,8 +20,25 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+**今日学习内容：**  
+搭建配置tg社区  
+社区运营基础  
+  
+**内容记录：**  
+**Telegram 社群的基础搭建和运营逻辑**：从建群开始，包括群类型（私密 / 公开）、权限设置、管理员分级，到 分区，核心是如何控制秩序和安全，避免群被乱搞。
+
+**社群数据面板**：可以看到成员增长、活跃度、加入来源和活跃时间，数据主要用来判断社群是否真的有效，以及活动和宣发有没有起作用。
+
+**机器人部分**：以 Rose 为例，学习了基础的关键词屏蔽、防广告等功能。实操中也发现，机器人默认不会处理管理员消息，主要是用来约束普通成员，这本质上是一种社群治理设计。
+
+**TG 社群 + 数据 + 机器人**：适合长期运营和有管理需求的社区，而不是单纯拉人头的群。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 erc-7962更像是在以太坊现有的资产模型之上的一种增强功能，引入了keyhash和密钥轮换的机制，在不依赖地址的情况下实现资产所有权验证，增加隐私性和用户体验，不是基础的替代品，代价就是系统复杂度和gas成本的问题，更适合有明确需求的人群，其整体思想是去中心化和隐私优先的。  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangboki/images/2026-01-19-1768833686014-image.png)
@@ -29,6 +46,7 @@ erc-7962更像是在以太坊现有的资产模型之上的一种增强功能，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 ## **Web3 行业法律合规回放笔记**
 
@@ -58,6 +76,7 @@ KYC 和 KYT 是防范非法资金流动和洗钱的重要手段，是保证项�
 
 
 
+
 # **web3运行原理回放笔记**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jiangboki/images/2026-01-14-1768405482754-image.png)
@@ -65,6 +84,7 @@ KYC 和 KYT 是防范非法资金流动和洗钱的重要手段，是保证项�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -100,6 +120,7 @@ ai很重要！！！！ai很重要！！！！ai很重要！！！！
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
