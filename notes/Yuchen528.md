@@ -38,9 +38,9 @@ Yuchen
 
 -   需求分析：确当功能；选择区块链平台；设计用户体验(UX)
     
--   智能合约开发：**Dapp的核心。**编写智能合约(Solidity)；编写测试用例；审计和优化
+-   智能合约开发：\*\*Dapp的核心。\*\*编写智能合约(Solidity)；编写测试用例；审计和优化
     
--   检索器开发：**获取链上数据的核心。**确定功能需要的数据内容；编写检索器程序(主流:ponder/subgraph.用的都是TypeScript)；部署和运维(一般用Docker)
+-   检索器开发：\*\*获取链上数据的核心。\*\*确定功能需要的数据内容；编写检索器程序(主流:ponder/subgraph.用的都是TypeScript)；部署和运维(一般用Docker)
     
 -   前端开发：选择前端框架(React/Vue)通过JavaScript与智能合约进行交互；连接钱包；显示区块链数据；处理交易签名与确认
     
@@ -73,7 +73,7 @@ Yuchen
 -   [**Chainlink 测试环境**](https://docs.chain.link/resources/link-token-contracts) - 预言机集成指南
     
 
-三、PRC**（Remote Procedure Call，远程过程调用）**
+三、PRC\*\*（Remote Procedure Call，远程过程调用）\*\*
 
 1.  What?
     
@@ -97,14 +97,41 @@ Yuchen
 
 3.  以太坊使用 **JSON-RPC 2.0** 协议作为标准的 RPC 通信格式。所有请求和响应都是 JSON 格式，通过 HTTP 或 WebSocket 传输。
     
-
 4.  主流RPC
     
-5.  How获取（Alchemy）--->使用--->配置
+5.  How获取（Alchemy）—>使用—>配置
+    
+6.  RPC使用最佳实践
+    
+
+-   保护API Key
+    
+-   重试机制；设置合理的超时时间；处理常见的错误码（如 `429` 速率限制、`503` 服务不可用）
+    
+-   速率限制管理
+    
+-   多节点备份
+    
+-   监控和日志
+    
+-   本地节点开发
+    
+
+四、Solidity智能合约编程(((((学到这儿脑子有点疼先算了哈哈哈
+
+Solidity 是一种面向合约的高级编程语言，专门用于在以太坊虚拟机（EVM）上编写智能合约。它具有静态类型、支持继承、库和复杂的用户定义类型等特性。
+
+1.  基础语法与开发范式
+    
+
+pragma solidity ^0.8.0; ---------版本声明
+
+数据类型：bool;
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 岗位概览
 
@@ -130,6 +157,7 @@ Yuchen
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 行业黑话：
@@ -221,6 +249,7 @@ Yuchen
 
 
 
+
 Web3工作方式
 
 1.OKR写法与最佳实践：目标（Objectives）全团队公开可见，关键结果（Key Results）量化可追踪
@@ -260,6 +289,7 @@ Web3工作方式
 
 
 
+
 今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
 
 行业赛道：
@@ -286,6 +316,7 @@ Web3工作方式
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -415,6 +446,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 
 
+
 -   Bitcoin & Ethereum
     
 
@@ -537,6 +569,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
