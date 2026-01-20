@@ -16,8 +16,53 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+**File Explorers 新增文件、管理文件夾**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-20-1768891210785-image.png)
+
+\-
+
+**Solidity Compiler 用來檢查代碼、並翻譯成機器語言**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-20-1768891238313-image.png)
+
+\-
+
+**Deploy & Run 把合約發到鏈上、進行交互**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-20-1768891253301-image.png)
+
+\-
+
+**Compiler** 版本號 > (代碼中=0.8.0) 即可
+
+**Auto compile** 自動檢查錯誤
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-20-1768891277366-image.png)
+
+運行代碼(綠色勾勾出現->可運行
+
+將合約部屬至**Java虛擬機**上，以便我們**測試智能合約**，而非直接部署到以太坊
+
+\-
+
+**Environment**  
+選擇環境，此處選Cancun  
+(在**瀏覽器**裡跑的 ”假區塊鏈” ，速度極快)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-20-1768891337471-image.png)
+
+\-
+
+**Account**  
+系統預設15個測試帳號，提供用戶進行切換並完成交互
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -29,6 +74,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ### 撰寫本週學習總結並發布X，內容如下
@@ -67,6 +113,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -77,6 +124,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -201,6 +249,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -226,6 +275,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -350,6 +400,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -429,6 +480,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
