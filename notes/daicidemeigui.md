@@ -15,8 +15,187 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# Solidity
+
+## EVM组成部分
+
+-   **Virtual ROM**：用于存放代码虚拟只读存储器，在ROM中的code(智能合约)不能更改（只读不写）。
+    
+-   **Machine state**：相当于RAM，一种易失性的存储器。这里的易失的是指当合约代码执行完毕（执行另一个合约代码）内存的变量会被清除。
+    
+-   **World state**：所有合约的状态变量存储的地方，这部分数据是永久存储在区块链上的数据。
+    
+
+![EVM.png](https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/97663290254d497fadd5f4e9d72130e6~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgU2FsYnQ=:q75.awebp?rk3s=f64ab15b&x-expires=1769063525&x-signature=VoLKjsECUnV0KJIhhJxmKWGe2Ug%3D)
+
+## 基础语法
+
+### 数据结构
+
+| 类别 | 类型 | 说明 | 示例 | 存储位置 |
+| --- | --- | --- | --- | --- |
+| 值类型 | 布尔型 | 真/假值 | bool isActive = true; | - |
+|   | 整数 | 有/无符号整数 | uint256 count; int256 temp; | - |
+|   | 地址 | 20字节地址 | address owner; | - |
+|   | 字节 | 固定大小字节 | bytes32 hash; | - |
+|   | 枚举 | 自定义枚举类型 | enum Status { Pending, Active } | - |
+| 引用类型 | 动态数组 | 大小可变的数组 | uint256[] numbers; | storage/memory/calldata |
+|   | 固定数组 | 大小固定的数组 | address[5] owners; | storage/memory/calldata |
+|   | 结构体 | 自定义复合类型 | struct User { address addr; uint balance; } | storage/memory |
+|   | 字节数组 | 动态字节 | bytes data; | storage/memory/calldata |
+|   | 字符串 | UTF-8字符串 | string name = “Token”; | storage/memory/calldata |
+| 映射类型 | 映射 | 键值对存储 | mapping(address => uint) balances; | 仅storage |
+|   | 嵌套映射 | 多层映射 | mapping(address => mapping(uint => bool)) approvals; | 仅storage |
+| 特殊类型 | 函数 | 函数类型 | function(uint) external returns(bool) callback; | - |
+|   | 地址支付 | 可支付地址 | address payable receiver; | - |
+
+### 存储位置区别
+
+| 位置 | 适用类型 | 生命周期 | 是否可修改 | 适用场景 |
+| --- | --- | --- | --- | --- |
+| storage | 所有引用类型 | 永久 | 是 | 状态变量、局部引用存储变量 |
+| memory | 所有引用类型 | 函数执行期间 | 是 | 函数内临时变量、函数参数 |
+| calldata | 数组、结构体、字节 | 函数调用期间 | 否 | 外部函数参数（只读） |
+
+### **可见修饰符**
+
+| 修饰符 | 作用域 | 可否被继承 | Gas成本 | 使用场景 |
+| --- | --- | --- | --- | --- |
+| public | 内外均可访问 | ✓ | 较高 | 外部调用接口 |
+| private | 仅当前合约 | ✗ | 低 | 内部工具函数 |
+| internal | 当前及派生合约 | ✓ | 低 | 合约内部逻辑 |
+| external | 仅外部调用 | ✓ | 最低 | 优化外部调用 |
+
+### 状态修饰符
+
+| 修饰符 | 可读状态 | 可写状态 | 可接收ETH | 使用场景 |
+| --- | --- | --- | --- | --- |
+| view | ✓ | ✗ | ✗ | 读取状态，不修改 |
+| pure | ✗ | ✗ | ✗ | 纯计算，不读写状态 |
+| payable | ✓ | ✓ | ✓ | 接收ETH转账 |
+
+## 合约组成部分案例
+
+```
+// 1. 许可证标识
+// SPDX-License-Identifier: MIT
+
+// 2. 版本声明
+pragma solidity ^0.8.0;
+
+// 3. 导入
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+// 4. 合约声明
+contract MyToken is Ownable {
+    
+    // ============ 状态变量 ============
+    string public name;
+    uint256 public totalSupply;
+    mapping(address => uint256) private balances;
+    
+    // ============ 事件 ============
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Mint(address indexed to, uint256 amount);
+    
+    // ============ 错误 ============
+    error InsufficientBalance(uint256 available, uint256 required);
+    
+    // ============ 结构体/枚举 ============
+    struct Holder {
+        address wallet;
+        uint256 since;
+    }
+    
+    enum TokenState { Active, Paused, Burned }
+    
+    // ============ 修饰器 ============
+    modifier whenActive() {
+        require(state == TokenState.Active, "Token inactive");
+        _;
+    }
+    
+    // ============ 构造函数 ============
+    constructor(string memory _name, uint256 _initialSupply) {
+        name = _name;
+        totalSupply = _initialSupply;
+        balances[msg.sender] = _initialSupply;
+    }
+    
+    // ============ 函数区 ============
+    
+    // 1. 外部函数
+    function transfer(address to, uint256 amount) 
+        external 
+        whenActive 
+        returns (bool) 
+    {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+        emit Transfer(msg.sender, to, amount);
+        return true;
+    }
+    
+    // 2. 视图函数
+    function balanceOf(address account) public view returns (uint256) {
+        return balances[account];
+    }
+    
+    // 3. 纯函数
+    function calculateReward(uint256 amount, uint256 rate) 
+        public 
+        pure 
+        returns (uint256) 
+    {
+        return amount * rate / 100;
+    }
+    
+    // 4. 仅所有者函数
+    function mint(address to, uint256 amount) public onlyOwner {
+        totalSupply += amount;
+        balances[to] += amount;
+        emit Mint(to, amount);
+    }
+    
+    // 5. payable函数
+    function buyTokens() public payable {
+        uint256 tokens = msg.value * 1000; // 假设汇率
+        balances[msg.sender] += tokens;
+    }
+    
+    // ============ 回退函数 ============
+    receive() external payable {
+        // 接收ETH
+    }
+    
+    fallback() external {
+        // 处理未知调用
+    }
+}
+```
+
+## 许可证标识
+
+许可证标识是 Solidity 文件开头的特殊注释，用于声明智能合约的软件许可证。它告诉用户和其他开发者该合约代码的使用权限、复制、修改和分发规则，类似于开源项目的开源协议。
+
+### 许可证类型
+
+| 许可证 | 标识符 | 特点 | 使用场景 |
+| --- | --- | --- | --- |
+| MIT | MIT | 最宽松，允许任意使用 | 大多数开源项目 |
+| GPL-3.0 | GPL-3.0-only | 强制开源，传染性 | 要求衍生作品也开源 |
+| Apache-2.0 | Apache-2.0 | 专利保护条款 | 企业级项目 |
+| Unlicense | Unlicense | 公共领域，无限制 | 完全放弃版权 |
+| 商业许可证 | UNLICENSED | 保留所有权利 | 私有、商业项目 |
+| BSD-3-Clause | BSD-3-Clause | 宽松，需保留声明 | 学术、研究项目 |
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## 一、Dapp 核心定义
 
 去中心化应用（Dapp）是运行在区块链或分布式网络上的全新应用模式，核心特征为**去中心化**—— 应用逻辑和数据不由单一实体控制，由多个参与者共同维护，区别于传统集中式应用。开发需掌握去中心化技术栈、智能合约编程及前端与区块链的交互方式。
@@ -54,6 +233,7 @@ Dapp 架构包含四个核心部分，各组件分工明确、协同工作：
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # Remix IDEA
 
@@ -136,6 +316,7 @@ contract TestToken {
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # 以太坊
 
 ## ERC
@@ -200,6 +381,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 安全与合规
 
 ## 国内相关公告/文件
@@ -260,6 +442,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 以太坊
 
 ## 以太坊的应用场景
@@ -293,6 +476,7 @@ PoS 是一种通过资产持有权达成共识的机制。验证者根据其持�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
