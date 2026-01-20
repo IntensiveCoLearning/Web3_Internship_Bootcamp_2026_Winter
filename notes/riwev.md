@@ -22,10 +22,73 @@ Web3 实习计划 2025 冬季实习生
 我完全懂力！教程非常详细，只是ipfs不好使就按照群里同学换了pinata
 
 ![{521BB8C2-59FC-40D9-846F-9C57CC326C46}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882005193-_521BB8C2-59FC-40D9-846F-9C57CC326C46_.png)![{C80EA707-917B-4A2B-AD7E-FDC55AF7B160}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882045742-_C80EA707-917B-4A2B-AD7E-FDC55AF7B160_.png)![{AEAF3589-FE55-46CA-9EAD-10DF440267F5}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882017120-_AEAF3589-FE55-46CA-9EAD-10DF440267F5_.png)![{575D10C8-461B-43BD-9C76-F5E6E32E3FB8}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882340399-_575D10C8-461B-43BD-9C76-F5E6E32E3FB8_.png)![{A45B1E07-6488-4AF4-BD8E-98C8AAE7D4C6}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768882366020-_A45B1E07-6488-4AF4-BD8E-98C8AAE7D4C6_.png)![{F6D95CC3-B3ED-40EA-B51E-4EB8E0B06C9D}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768887553064-_F6D95CC3-B3ED-40EA-B51E-4EB8E0B06C9D_.png)![{ABCF5070-036C-42B9-AA53-F6AB23793995}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768887654096-_ABCF5070-036C-42B9-AA53-F6AB23793995_.png)![{100F752C-0D70-4A0C-A514-94C630231DE5}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768888676054-_100F752C-0D70-4A0C-A514-94C630231DE5_.png)![{28D61E3D-2BC0-471C-8D84-F8AE8A5A7937}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768888767486-_28D61E3D-2BC0-471C-8D84-F8AE8A5A7937_.png)![{8260F019-F270-43F1-A002-F03B4270BF07}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768889036600-_8260F019-F270-43F1-A002-F03B4270BF07_.png)![{132F4201-28E7-46FF-8CF4-6F88B72C9A23}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768889406598-_132F4201-28E7-46FF-8CF4-6F88B72C9A23_.png)![{17AEDD68-56FC-45F7-8670-270E27515BDF}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768895867604-_17AEDD68-56FC-45F7-8670-270E27515BDF_.png)![{911A8F9B-0767-4416-B53B-EBFC8C9E8970}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-20-1768896990997-_911A8F9B-0767-4416-B53B-EBFC8C9E8970_.png)
+
+# [**Gas 优化**](https://web3intern.xyz/zh/smart-contract-development/#_1-gas-%E4%BC%98%E5%8C%96)
+
+[**常见优化技巧**](https://web3intern.xyz/zh/smart-contract-development/#%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7)
+
+1.  **减少存储操作（Storage Write）**
+    
+    -   读取存储第一次需 2100 gas（后续 100 gas），而内存读取仅 3 gas。推荐多次访问同一存储数据时，将其缓存到内存以减少 SLOAD 次数
+        
+    -   每次写入 `storage` 的成本高达 20,000 gas；优先使用 `memory`。
+        
+    -   示例：
+        
+        ```
+        // ❌ 非优化写法
+        mapping(address => uint256) public balances;
+        function deposit() public payable {
+            balances[msg.sender] += msg.value;
+        }
+        
+        // ✅ 优化写法（一次读，一次写）
+        function deposit() public payable {
+            uint256 current = balances[msg.sender];
+            balances[msg.sender] = current + msg.value;
+        }
+        ```
+        
+2.  **使用位压缩（Bit Packing）**
+    
+    -   将多个变量压缩到一个 `uint256` 中以节省存储空间。
+        
+    -   示例：
+        
+        ```
+        struct Packed {
+            uint128 a;
+            uint128 b;
+        }
+        ```
+        
+3.  **循环优化**
+    
+    -   减少不必要的运算，如 `array.length` 缓存到变量中。
+        
+    -   示例：
+        
+        ```
+        // ❌ 非优化
+        for (uint256 i = 0; i < arr.length; i++) {
+            ...
+        }
+        // ✅ 优化
+        uint256 len = arr.length;
+        for (uint i = 0; i < len; ++i) {
+            ...
+        }
+        ```
+        
+4.  **函数可见性选择** - `external` 比 `public` 更节省 gas，适用于仅被外部调用的函数。
+    
+
+# **web3公共物品资金第一节课**
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -97,6 +160,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -266,6 +330,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -352,6 +417,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -476,6 +542,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -677,6 +744,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -912,6 +980,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1190,6 +1259,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
