@@ -15,8 +15,92 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# FullStack Web3 Engineer Learning Path – Notes  
+
+## Core Skill Areas  
+————————————————
+
+1.  **Blockchain Fundamentals**
+    
+
+-   Blockchain structure: blocks, transactions, consensus
+    
+-   Ethereum and EVM basics
+    
+-   Tokens: ERC20, ERC721, ERC1155
+    
+-   Gas, transaction fees, block confirmation
+    
+-   Wallets and accounts (EOA vs contract accounts)
+    
+
+2.  **Smart Contracts**
+    
+
+-   Solidity basics: contracts, state, functions, modifiers, events
+    
+-   Contract deployment and testing
+    
+-   Security practices: reentrancy, access control, overflow
+    
+-   Interacting with contracts via JS libraries
+    
+
+3.  **Frontend Development (Web3)**
+    
+
+-   Modern frameworks: React, Vue
+    
+-   Web3 libraries: Ethers.js, Viem, Wagmi, Web3.js
+    
+-   Wallet integration: MetaMask, Coinbase Wallet
+    
+-   Handling transactions and signatures
+    
+-   Reading chain data, listening to events
+    
+
+4.  **Backend / Indexing**
+    
+
+-   Indexers for on-chain data (The Graph, Ponder)
+    
+-   Database integration (PostgreSQL, MongoDB)
+    
+-   Server-side handling for notifications, analytics
+    
+-   RPC nodes usage and management (Alchemy, Infura, QuickNode)
+    
+
+5.  **Fullstack Integration**
+    
+
+-   Connect frontend → wallet → smart contract → indexer → frontend
+    
+-   Handle read-only calls vs state-changing transactions
+    
+-   Error handling and UX for slow/blockchain transactions
+    
+-   Testing end-to-end Dapp behavior
+    
+
+6.  **Deployment & DevOps**
+    
+
+-   Smart contract deployment: Hardhat, Foundry
+    
+-   Frontend deployment: IPFS, Arweave, Vercel
+    
+-   CI/CD for Dapps
+    
+-   Environment management: .env files, private key security
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # DApp Development Workflow
 
 ## Requirement Analysis
@@ -110,6 +194,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ## 一、Web3 合规 (Compliance)
 
@@ -237,6 +322,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # SOLIDITY BASIC SYNTAX NOTES
@@ -396,6 +482,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -625,6 +712,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -794,6 +882,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -989,6 +1078,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
