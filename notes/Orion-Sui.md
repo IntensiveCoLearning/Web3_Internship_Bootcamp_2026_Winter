@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+@ETHPanda_Org & @LXDAO_Official第二期Web3实习计划学员丨数字游民丨业余帆船运动员丨
 
 ## Notes
 
