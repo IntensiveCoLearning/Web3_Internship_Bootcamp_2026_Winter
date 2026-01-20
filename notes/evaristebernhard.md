@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+今日主要学习内容为 [ethereum.org](http://ethereum.org) 官方教程《Uniswap V2 Annotated Code》，对 Uniswap V2 合约结构和核心逻辑进行通读与理解。
+
+学习过程中重点梳理了 Uniswap V2 的整体架构，明确了 Core（Factory、Pair）与 Periphery（Router）的职责划分。Pair 合约负责资产托管和核心逻辑执行，Router 主要作为用户交互入口，负责路径计算和多跳交易组织。
+
+阅读了 Pair 合约中 swap 函数的完整流程，理解了其通过“先转出、再根据余额变化反推输入数量”的方式计算真实成交量，并在最后通过常数乘积不变式校验交易合法性。明确了 0.3% 手续费是通过 balance×1000 − amountIn×3 的形式融入不变式检查中完成的。
+
+同时关注了合约中的安全设计，包括 lock 修饰符实现的防重入机制，以及 K 校验作为最终经济安全约束的作用。对 flash swap 的实现方式也有了更清晰的认识，即在 data 不为空时触发回调，只要最终满足不变式即可完成交易。
+
+此外，阅读了 \_update 函数中关于价格累计（priceCumulative）的实现，理解其用于支持 TWAP 计算的设计思路，以及 Router 与 Library 中多跳 swap 和 pair 地址计算（CREATE2）的基本逻辑。
+
+整体完成了对 Uniswap V2 核心交易流程和关键安全机制的初步理解。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### 1）今日学习内容概览
 
 今天主要做了两件事：
@@ -100,6 +116,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 今天继续学 Uniswap V2，但这次重点不是“会用”，而是把“DEX 买入 → CEX 卖出”的套利模型推到一个可算的最优交易量，并理解它为什么能有闭式解、现实里又为什么经常不成立。
 
 ### 1）先把变量用文字说清楚
@@ -181,6 +198,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今天主要学习的问题是：**在考虑滑点和手续费的情况下，如何在 Uniswap V2 买入并去 Binance 卖出，以实现单笔利润最大化？**
@@ -267,6 +285,7 @@ $$\\Pi\_{net} = \[(1-f)P \\cdot y\_{trade}\] - \[\\text{DEX\\\_Cost}(y\_{trade})
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -364,6 +383,7 @@ pair.swap(amount0Out, amount1Out, nextTo, new bytes(0));
 
 
 
+
 ### 一、Uniswap V2（继续学习）
 
 在前两天理解了 Uniswap V2 的 swap 和 LP 机制后，今天主要补了一点 **Router 的作用**，搞清楚用户为什么几乎不直接和 Pair 合约交互。
@@ -436,6 +456,7 @@ function swapExactTokensForTokens(
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -520,6 +541,7 @@ DeFi 表面上是“代码即规则”，但实际问题更多来自：
 
 
 
+
 今天主要学习了 **Uniswap V2 的基础 AMM 机制**，重点放在 **swap 定价公式和 Pair 合约的核心逻辑**，没有深入到全部源码。
 
 ### 1\. AMM 定价公式（今天重点）
@@ -580,6 +602,7 @@ require(balance0Adjusted * balance1Adjusted >= k, "K");
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
