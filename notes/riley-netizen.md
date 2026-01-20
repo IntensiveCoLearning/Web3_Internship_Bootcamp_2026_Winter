@@ -15,8 +15,16 @@ content creator and sales from web2 to web3
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+[https://www.figma.com/design/AyUvEaUc8bAp8Tjd18wlPv/Untitled?node-id=8-76&t=BBQqHhqAHWK1DKcW-1](https://www.figma.com/design/AyUvEaUc8bAp8Tjd18wlPv/Untitled?node-id=8-76&t=BBQqHhqAHWK1DKcW-1)
+
+海报作业
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 [https://www.xiaoyuzhoufm.com/episode/696cfe59ef1cf272a7160c8a](https://www.xiaoyuzhoufm.com/episode/696cfe59ef1cf272a7160c8a)
 
 今天分享会后riley琦琦（我）发布的小宇宙播客，标题为：ERC-7962:透明世界的隐形富豪 欢迎来听
@@ -65,11 +73,13 @@ UX问题 用户只需签名表达意图，无需赤壁，无需理解gas, 无需
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 正所谓见贤思齐焉，见不贤而内自省也，我想在今天的分享会上，贤人辈出，都是我学习的榜样。内容从运营，个人学习，起号，solidity, 法律，RWA等等延展开来，需要时间消化下 所以还是很需要回放和ppt的 😂
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
