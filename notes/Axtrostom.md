@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+这周要完成的目标
+
+联邦学习实验代码
+
+基础和深度技术任务
+
+solidity基础语法
+
+rust刷刷力扣
+
+今天保底把 solidity 基础语法看完
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## Solidity基础语法
 
 ### 基础数据类型
@@ -900,6 +918,7 @@ contract DataLocations {
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
     
 
@@ -998,6 +1017,7 @@ contract DataLocations {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 感觉前两天干别的活有点懈怠了
@@ -1379,6 +1399,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -1485,6 +1506,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1652,6 +1674,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2151,6 +2174,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3093,6 +3117,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
