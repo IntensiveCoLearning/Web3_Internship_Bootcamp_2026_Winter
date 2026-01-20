@@ -15,8 +15,205 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# 📝 Solidity 智能合约开发核心笔记 (v0.8.x)
+
+### 1\. 顶层架构 (The Blueprint)
+
+每个 Solidity 文件通常包含这三个部分。
+
+Solidity
+
+```
+// 1. SPDX 许可证标识 (必须，否则编译器会警告)
+// SPDX-License-Identifier: MIT
+
+// 2. 版本指令 (锁定版本以避免兼容性问题)
+pragma solidity ^0.8.20;
+
+// 3. 合约定义 (类似于面向对象语言中的 Class)
+contract MyFirstContract {
+    // ... 逻辑代码
+}
+```
+
+* * *
+
+### 2\. 数据类型与存储 (Data & Storage)
+
+理解数据在以太坊虚拟机 (EVM) 中存在哪里，比记住有多少种类型更重要。
+
+2.1 核心数据位置 (Data Locations) 🔥 **重点**
+
+Solidity 中引用类型（数组、结构体、映射）必须声明存储位置：
+
+-   `storage`: 永久存储在区块链上（贵，就像写在硬盘里）。状态变量默认是这个。
+    
+-   `memory`: 临时存储，函数执行完即销毁（便宜，就像写在内存里）。
+    
+-   `calldata`: 类似于 memory，但**只读**且不可修改。常用于 `external` 函数的参数，最省 Gas。
+    
+
+2.2 常用值类型 (Value Types)
+
+-   `uint256`: 无符号整数（最常用）。`uint` 默认就是 `uint256`。
+    
+-   `int256`: 有符号整数。
+    
+-   `bool`: `true` / `false`。
+    
+-   `address`: 存储 20 字节的以太坊地址。
+    
+    -   `address payable`: 多了 `transfer` 和 `send` 方法，可以接收 ETH。
+        
+-   `bytes32`: 固定长度字节数组，比 `string` 更省 Gas，适合存哈希值。
+    
+
+2.3 引用类型 (Reference Types)
+
+Solidity
+
+```
+// 1. 数组 (Array)
+uint[] public arr;          // 动态数组
+uint[10] public fixedArr;   // 固定长度数组
+
+// 2. 映射 (Mapping) - 类似哈希表，最常用的存储结构
+// Key 不能是 struct、array 或 mapping
+mapping(address => uint) public balances;
+
+// 3. 结构体 (Struct) - 自定义数据结构
+struct User {
+    string name;
+    uint score;
+}
+User[] public users;
+```
+
+* * *
+
+### 3\. 函数与修饰符 (Functions & Modifiers)
+
+这是合约的“大脑”。
+
+3.1 函数可见性 (Visibility) - 决定谁能调用
+
+-   `public`: 所有人都能调用（内部 + 外部）。会自动生成 Getter 函数。
+    
+-   `private`: 只有**当前合约**能调用。继承的合约都不能调。
+    
+-   `internal`: 当前合约 + **继承的合约**能调用（状态变量默认是这个）。
+    
+-   `external`: 只有**外部**能调用（内部要调用需用 `this.f()`）。数据量大时，用 `calldata` 传参比 `public` 省 Gas。
+    
+
+3.2 状态变更能力 (Mutability)
+
+-   `view`: 只读。读取状态变量，但不修改。不消耗 Gas（除非是被合约内部调用）。
+    
+-   `pure`: 纯函数。**既不读取也不修改**状态变量（例如只做数学计算）。
+    
+-   `payable`: **允许接收 ETH**。如果函数没有这个关键字，转账给它会报错。
+    
+
+3.3 函数修饰符 (Modifiers)
+
+用于在函数执行前/后添加逻辑，常用于权限控制。
+
+Solidity
+
+```
+modifier onlyOwner() {
+    require(msg.sender == owner, "Not owner");
+    _; // 下划线代表“继续执行函数主体代码”
+}
+
+function withdraw() public onlyOwner {
+    // 只有 owner 能运行这行
+}
+```
+
+* * *
+
+### 4\. 核心全局变量 (Global Variables)
+
+你在编写逻辑时离不开这几个变量：
+
+-   `msg.sender` (address): 当前调用者的地址（最重要！）。
+    
+-   `msg.value` (uint): 调用时发送的 ETH 数量（单位是 wei）。
+    
+-   `block.timestamp` (uint): 当前区块的时间戳（注意：矿工可在小范围内操纵，不完全安全）。
+    
+-   `tx.origin` (address): 交易发起的原始地址（**安全警告**：尽量少用，易导致钓鱼攻击）。
+    
+
+* * *
+
+### 5\. 错误处理 (Error Handling)
+
+Solidity 的错误处理采用“回滚（Revert）”机制：一旦报错，之前的所有状态改变全部撤销，且剩余 Gas 返还。
+
+-   `require(condition, "Error Message")`: 最常用。用于检查输入条件、变量是否合法。条件为 `false` 时回滚。
+    
+-   `revert("Error Message")`: 适用于复杂的逻辑判断结构（如嵌套 `if`）。
+    
+-   `assert(condition)`: 用于检查**代码逻辑内部错误**（如除以零、溢出）。正常情况下不应触发，一旦触发会扣光所有 Gas。
+    
+
+* * *
+
+### 6\. 实战代码模板 (Cheat Sheet)
+
+这是一个包含了上述核心概念的众筹合约小样：
+
+Solidity
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract SimpleCrowdfunding {
+    // 状态变量 (存链上)
+    address public owner;
+    mapping(address => uint) public contributions;
+    uint public totalRaised;
+    
+    // 事件 (用于前端监听)
+    event Donated(address indexed contributor, uint amount);
+
+    // 构造函数 (部署时执行一次)
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // 接收 ETH 的函数
+    function donate() external payable {
+        require(msg.value > 0, "Donation must be > 0");
+        
+        contributions[msg.sender] += msg.value;
+        totalRaised += msg.value;
+        
+        emit Donated(msg.sender, msg.value);
+    }
+
+    // 提款函数
+    function withdraw() external {
+        require(msg.sender == owner, "Only owner");
+        
+        uint balance = address(this).balance;
+        // 使用 call 发送 ETH 是目前推荐的做法，比 transfer/send 更安全
+        (bool success, ) = owner.call{value: balance}("");
+        require(success, "Transfer failed");
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## 今天学习了ZK零知识证明  
 链上投票的核心痛点与解决方案
 
@@ -157,6 +354,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 复盘了计算机网络底层，发现很多链上交互的痛点（延迟、丢包、监听失败），本质上都是网络层协议特性的投射。
 
 1\. 交易传播与 Mempool 机制（应用层/传输层）
@@ -242,6 +440,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 昨天例会大家都分享了自己的一些学习中的独到见解，今天周末就想写一写我的学习心得吧。本次实习计划中包含大密度的知识，由于web3的知识广度实在太大，难免遇到自己不擅长的方面。我个人倾向于在学习一个比较陌生的知识面时使用**递归**的方式进行深挖，可能速度上来看会偏慢一些，但是这样带来的理解是更深刻的，我认为这是很值得的一笔交换。作为web3小白，希望能够慢慢用适合自己的方式构建起自己的web3知识网络。下面以NFT为例子来进行说明：
@@ -376,6 +575,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 
 
+
 ### **以太坊核心架构与原理深度研读笔记（第2-4章）**
 
 通过对第2至4章的系统性学习，我从底层的网络拓扑、状态模型以及执行环境三个维度，重新构建了对以太坊基础设施的认知。这不再仅仅是对概念的理解，而是涉及如何构建安全、高效的去中心化应用的工程基础。
@@ -471,6 +671,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -602,6 +803,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 今天参加了web3安全和合规的分享会 收获颇丰 结合Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分 以下是学习内容：
 
 ## 第一部分：法律与合规风险
@@ -707,6 +909,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 ### 1\. 概念辨析：Web3 的认识论 (Epistemology)
 
 -   **Web 3.0 (Semantic Web, 1999)**:
@@ -773,6 +976,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
