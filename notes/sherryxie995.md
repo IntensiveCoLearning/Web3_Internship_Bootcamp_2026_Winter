@@ -15,8 +15,116 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## 一、 环境搭建与首个合约
+
+直接使用浏览器 IDE：[**Remix IDE**](https://www.google.com/search?q=https://remix.ethereum.org/)。
+
+### HelloWorld 示例
+
+Solidity
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20; // 指定编译器版本
+
+contract HelloWorld {
+    string public message = "Hello Web3";
+
+    // 修改状态变量的函数
+    function updateMessage(string memory _newMessage) public {
+        message = _newMessage;
+    }
+}
+```
+
+* * *
+
+## 二、 核心语法要点
+
+### 1\. 变量类型与作用域
+
+-   **状态变量 (State Variables)**：存储在区块链上（Disk），永久保存，极其昂贵。
+    
+-   **局部变量 (Local Variables)**：函数内部定义，执行完即销毁（Stack），便宜。
+    
+-   **全局变量**：如 `msg.sender`（调用者地址）、`block.timestamp`（当前区块时间戳）。
+    
+
+### 2\. 独特的地址类型 (`address`)
+
+作为密码学背景的开发者，你会很熟悉这个：
+
+-   `address`: 20字节的以太坊地址。
+    
+-   `address payable`: 可以接收 ETH 的地址。
+    
+-   **常用方法**：`balance` 查询余额，`transfer()` 发送代币。
+    
+
+### 3\. 数据存储位置 (Storage, Memory, Calldata)
+
+这是 Solidity 的性能优化核心：
+
+-   **storage**: 默认的状态变量位置，写入开销极大。
+    
+-   **memory**: 临时的内存存储，函数调用结束即释放。
+    
+-   **calldata**: 只读的函数参数存储区，比 memory 更省 gas。
+    
+
+### 4\. 权限与可见性
+
+-   **Visibility**: `public` (内部外部均可), `private` (仅限合约内), `internal` (合约及子合约), `external` (仅限外部)。
+    
+-   **Modifier (修饰器)**：用于复用权限逻辑。
+    
+    Solidity
+    
+    ```
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _; // 继续执行原函数体
+    }
+    ```
+    
+
+* * *
+
+## 三、 安全与密码学相关的实践
+
+由于你对密码学感兴趣，这部分是你表现专业性的地方：
+
+### 1\. 哈希函数
+
+Solidity 内置了 **Keccak256**（SHA-3 的变体）。它常用于：
+
+-   生成唯一 ID。
+    
+-   **Commit-Reveal 机制**：防止抢跑交易（Front-running）。
+    
+-   紧凑存储（将长数据哈希后存入 Merkle Tree）。
+    
+
+### 2\. 签名验证 (`ecrecover`)
+
+Solidity 可以验证由私钥生成的 ECDSA 签名。这在“无 Gas 交易”或“离线授权”中非常关键。
+
+> **注意**：你需要处理 `r, s, v` 三个参数来恢复签名者的地址。
+
+### 3\. 常见的安全漏洞
+
+Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
+
+-   **重入攻击 (Re-entrancy)**：利用 `call` 发送代币时的回调机制反复提款。
+    
+-   **整数溢出**：在 0.8.0 版本之前需要用 `SafeMath`，现在编译器已自带检查。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -100,11 +208,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 ## [**一、DeFi：去中心化金融的创新实践**](https://web3intern.xyz/zh/industry-knowledge/#%E4%B8%80%E3%80%81defi-%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E9%87%91%E8%9E%8D%E7%9A%84%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5)
@@ -337,6 +447,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -408,6 +519,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -641,6 +753,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -773,6 +886,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -923,6 +1037,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
