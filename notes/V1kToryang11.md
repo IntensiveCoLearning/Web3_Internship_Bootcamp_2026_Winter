@@ -10,7 +10,7 @@ timezone: UTC+0
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生，懂点经济，金融，政治，还有哲学的小白
+Web3 实习计划 2025 冬季实习生
 
 ## Notes
 
