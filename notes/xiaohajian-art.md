@@ -15,8 +15,117 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## [https://web3intern.xyz/zh/community-intern/](https://web3intern.xyz/zh/community-intern/)
+
+## **1\. 职责**
+
+-   **对内：** 维护秩序、沉淀内容、收集反馈
+    
+-   **对外：** 传播叙事、链接资源（KOL、媒体、其他项目）、扩大共识
+    
+
+1.  **日常内容与社群维护**
+    
+    -   保持活跃度：定期更新社媒（Twitter/WeChat）
+        
+    -   秩序管理：答疑、禁言、清理垃圾信息（FUD/Spam），并设计话题引导讨论
+        
+2.  **内容发布与互动引导**
+    
+    -   宣发节奏：发布 **AMA** 预告、**Twitter Space** 提醒
+        
+    -   流量分发：在多渠道推送与品牌调性相关的内容，引导用户转发（Retweet）
+        
+3.  **活动策划与组织**
+    
+    -   **线上：** Twitter Space、黑客松（Hackathon）、线上课程
+        
+    -   **线下：** Meetup、Workshop、行业峰会周边活动
+        
+    -   **全流程管理：** 涵盖“策划 -> 邀约 -> 执行 -> 复盘”四个阶段
+        
+4.  **对外合作与社区联动**
+    
+    -   BD 与合作：与其他项目联合 AMA，通过 **KOL** 转发扩大影响力
+        
+
+## **2\. 实战执行 SOP**
+
+### **A. 线上活动（以 Twitter Space 为例）**
+
+-   **T-5：** 确定主题与嘉宾（Guest），准备问题库（Question Bank）
+    
+-   **T-2：** 启动宣发，多渠道（TG/WeChat）同步海报
+    
+-   **T-0：** 活动执行，包含开场介绍、嘉宾问答（每题 15 分钟）、观众互动（Giveaway 奖励）
+    
+-   **T+1：** 复盘数据（在线人数、留存率），产出回顾文章（Recap）
+    
+
+### **B. 线下活动（Meetup/Workshop）**
+
+-   **策划期（前 4-5 周）：** 明确目标（开发者交流/品牌曝光）、预算拆解、场地预订
+    
+-   **筹备期（前 2-4 周）：** 嘉宾邀约、视觉设计、周边（Swag）采买、媒体联名
+    
+-   **执行日：** 签到引导、摄影摄像、应急预案（断电/嘉宾迟到）
+    
+-   **复盘期：** 社交媒体返图（Thread）、总结报告
+    
+
+* * *
+
+## 排版
+
+半角符号：宽度为一个英文字符
+
+全角符号：宽度为两个英文字符
+
+### **字符间距**
+
+1.  中文与英文、数字之间加空格，例外：产品名本身特殊，如：豆瓣FM
+    
+2.  数字与单位之间空格，例外：数字与（度数，百分比）不需要
+    
+3.  全角标点与其他字符之间不加空格，如：买了 iPhone，很开心！
+    
+4.  ​链接之间增加空格（半角），如：这是 {链接} 请看
+    
+
+### **引用**
+
+1.  中文句子内夹有英文书籍名、报刊名时，不用中文书名号，应用英文斜体
+    
+2.  中文句子有英文解释词，用中文符号，如：中国（China）
+    
+3.  English 专有名词使用正确的大小写
+    
+4.  简体中文使用直角引号「」『』
+    
+5.  ​不要使用不地道的缩写
+    
+
+### **标点符号**
+
+1.  不要重复标点
+    
+
+* * *
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xiaohajian-art/images/2026-01-20-1768908479406-image.png)
+
+* * *
+
+## [**My First ZKVote**](https://zkvote.0xtmp.xyz/)
+
+![ZK.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xiaohajian-art/images/2026-01-20-1768909622161-ZK.jpg)
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 ## [**Day 5: Stuck Transactions, Gas Limits, Multisigs, L2s, Lending…**](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
 
 ### **交易故障自救**
@@ -77,6 +186,7 @@ n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 ## [**Web3 安全**](https://youtu.be/d4wpNX61QyA?si=3J0BfXHWLE6mibvT)
 
@@ -208,6 +318,7 @@ n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ## [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
@@ -412,6 +523,7 @@ n个钱包地址“捆绑”进一个智能合约里，就可以设置（1——
 
 
 
+
 | 类型 | 比特币（bitcoin） | 以太坊(Ethereum) |
 | --- | --- | --- |
 | 发行 | 总量定2100万，每四年减半一次 | 无上限，但链上活动复杂，烧掉的燃料（ggs）就越多 |
@@ -507,6 +619,7 @@ EVM（Ethereum Virtual Machine）是 **_以太坊的“大脑_”**，是专门�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
