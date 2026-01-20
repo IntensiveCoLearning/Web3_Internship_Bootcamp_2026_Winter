@@ -15,8 +15,17 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
+
+今天主要是学习了关于DAO的治理模式  
+为后续实践打下基础
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ![0f7b48730c97a4f1b0a4cee038670047.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-19-1768838031212-0f7b48730c97a4f1b0a4cee038670047.png)
 
 今天上班任务比较多，比较忙，于是下班之后一个是听了社群运营的直播课，后续也可以和小伙伴们一个属于自己的社群
@@ -32,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 [https://x.com/momoming88/status/2012598977603224052?s=20](https://x.com/momoming88/status/2012598977603224052?s=20)  
 以上链接是开始的web3学习记录扫盲账号的第一个推文
@@ -62,6 +72,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -107,11 +118,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -190,6 +203,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -206,11 +220,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
