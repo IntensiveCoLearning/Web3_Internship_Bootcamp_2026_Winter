@@ -15,8 +15,58 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+### Solidity 基础语法
+
+1.  原始数据类型
+    
+    -   boolean：布尔值
+        
+    -   uint256：无符号整型
+        
+    -   int256：有符号整型
+        
+    -   address：地址
+        
+    -   bytes32：定长字节
+        
+2.  引用类型
+    
+    -   string：字符串
+        
+    -   bytes：动态字节
+        
+    -   uint\[\]：数组
+        
+    -   mapping：映射
+        
+    -   struct：结构体
+        
+3.  Variables
+    
+    -   **local**
+        
+        -   declared inside a function
+            
+        -   not stored on the blockchain
+            
+    -   **state**
+        
+        -   declared outside a function
+            
+        -   stored on the blockchain
+            
+    -   **global** (provides information about the blockchain)
+        
+4.  Constants: variables that cannot be modified.
+    
+5.  Immutable: Values of immutable variables can be set inside the constructor but cannot be modified afterwards.
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -24,6 +74,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 \# 2026-01-16
 
@@ -90,6 +141,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -143,6 +195,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -169,6 +222,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -231,6 +285,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
