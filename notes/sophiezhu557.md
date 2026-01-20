@@ -15,13 +15,92 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-19
+<!-- DAILY_CHECKIN_2026-01-19_START -->
+总结了一下关于RPC接口、高度、canonical chain 的知识：
+
+RPC = 进程之间通过接口通信（本地 / 远程都可以）
+
+RPC 的角色 =「外部（相对执行客户端而言）的东西，来“请求/指挥”执行客户端做事」
+
+Engine API 本质上就是一组特殊用途的 JSON-RPC 接口。
+
+RPC 不只是“连外部”的东西，它本质就是一种进程 / 服务之间的通信方式。
+
+在 canonical chain 上，同一高度只有一个区块”
+
+区块链在运行过程中必然形成一棵区块树；
+
+通过共识规则，绝大多数节点最终只承认其中一条主链，其他分叉通常很短。
+
+交易举例：
+
+交易：用户的任何转账操作
+
+区块：一个区块里完全可以有多个彼此毫不相干的交易
+
+Block X
+
+├─ Tx1: Alice → Bob nonce = 5
+
+├─ Tx2: Charlie → DEX nonce = 18
+
+├─ Tx3: Alice → NFT nonce = 6
+
+├─ Tx4: Eve → Exchange nonce = 2
+
+nonce：某个地址已经“成功执行过”的交易数量。nonce 只属于：交易的 from 地址；不属于区块，不属于交易池，不属于全网
+
+，不属于矿工 / 验证者。
+
+对同一个 from 地址：
+
+交易必须从当前 nonce 开始
+
+严格递增
+
+不允许跳号、不允许重复
+
+如果 Address A 当前 nonce = n
+
+那么：
+
+Tx(n) ✅
+
+Tx(n+1) ✅
+
+Tx(n-1) ❌
+
+Tx(n+2) ❌（除非 n+1 先执行）
+
+作为 proposer，理论上可以选择打包哪些交易。其实在现实中，真实能做的事是👇
+
+“决定用谁的区块”的最终签字权。因为自己研究套利策略是极高成本的，不如选哪些专门研究套利的人提出的区块来赚钱容易
+
+在主流现实路径（如 Flashbots / MEV-Boost）里：用户 → private relay → builder → proposer
+
+proposer 实际看到的是：一个 已经构造好的区块
+
+只包含：
+
+区块 hash
+
+出价（我给你多少钱）
+
+而不是交易明细
+
+很多情况下，proposer 根本“看不到你具体在交易什么”
+<!-- DAILY_CHECKIN_2026-01-19_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天把昨天DApp的那个潦草前端改了，改成用next.js写，最后部署在vercel上。但是还有点地方有问题，暂时上线不了
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 今天开始学solidity，以及用solidity写代码玩了（其实是vibe coding）
 
@@ -83,6 +162,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -161,6 +241,7 @@ EL **理解并操作 trie**
 
 
 
+
 今天看了Bruce讲的web3运行原理。结合前几天看的《021学习以太坊》，稍微整理了一部分知识：
 
 -   私钥、公钥
@@ -229,6 +310,7 @@ proposer和attester都是节点。是proposer在mempool中捞起各种交易打�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
