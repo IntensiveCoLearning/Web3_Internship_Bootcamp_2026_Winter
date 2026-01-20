@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+宏观统计上，2025 年主网平均每笔普通**交易**的**费用**约在 几美元量级（比如 ~$3–4 美 金 ），在 NFT/牛市活动高峰则可能冲到 $5–50 一笔。
+
+平时可以在 不到 1 Gwei（极度清净时甚至 0.1 Gwei 左右）
+
+**在哪条链部署**：L1 与 L2 差异
+
+主网 L1（Ethereum Mainnet）：安全性最高、但费用也最高。
+
+Rollup / L2 （ 如 Arbitrum、Optimism、Base 等）：费用一般比主网低一个数量级以上。
+
+**部署工具**
+
+1.  Remix IDE: 多网络支持
+    
+2.  Hardhat: “专业级”以太坊开发环境：由 Nomic Foundation 维护，定位就是面向专业 Solidity / EVM 开发者。
+    
+3.  Foundry: 基于 Rust 的 Solidity 开发工具链，性能极快，希望测试 / fuzz / invariant 做得很极致、需要高性能本地链 + 主网 fork 的协议开发，或者你本来就更喜欢命令行工作流。
+    
+4.  Truffle Suite（+ Ganache）:本地开发框架 + 区块链模拟器。老牌框架，相比 Hardhat / Foundry，Truffle 本身的更新节奏和生态活跃度已明显放缓，很多新项目更倾向直接用 Hardhat / Foundry 作为起点。
+    
+5.  Tenderly:智能合约开发 / 调试 / 监控平台（SaaS）。部分高级功能需要付费，适合团队或生产项目。
+    
+
+**总结**
+
+1.  刚入门 / 上课 Demo / 小实验 ：Remix 一把锁。
+    
+2.  正式项目开发（中大型） ：Hardhat （工程化 + 插件丰富） 或 Foundry （ 性 能 + 测试 / fuzz / 显式 gas 优化），很多团队两者混用。
+    
+3.  需要命令行 + 高强度测试 / fuzz / invariant ：强烈建议了解 Foundry，配合 anvil/mainnet fork 做真实场景测试。
+    
+4.  维护老项目 / 用到 Ganache / Truffle 老生态 ：继续用 Truffle + Ganache 也没问题，逐步向 Hardhat / Foundry 迁移。
+    
+5.  想做高级调试 / 主网级模拟 / 运维监控： 在上面任意本地工具之上加一层 Tenderly，体验会显著提升。
+    
+
+**自动化工具审计**
+
+Slither：Trail of Bits 维护的静态分析工具（以及与 Hardhat/Foundry 等现代开发框架集成）
+
+Mythril：由 ConsenSys 维护的字节码安全分析工具
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 **Source Map**（源映射）用于调试与审计：例如在 Remix、Hardhat Debugger 中单步调试时，高亮当前执行的源码行，或者在安全工具中精确指出“某条 opcode 对应哪行源代码”。
 
 Yul / IR：：**Yul** 是 Solidity 官方提供的**中间**语言，编译器在内部会先把 Solidity 源代码翻译成 Yul，再从 Yul 生成最终字节码； 对 Yul 做优化可以同时优化所有后端目标；
@@ -46,6 +92,7 @@ fallback()：处理“调用不存在的函数”或合约没有 receive() 时�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 与传统 Web 应用不同，DApp 前端不会直接连接区块链网络，而是通过 **钱包注入**的 Provider **或第三方** **RPC 节点** 与区块链**交互**；
 
@@ -82,6 +129,7 @@ Solidity状态修饰符
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 现在 Ethers.js / Web3.js 已经不怎么使用了，大家现在基本上都是用的 Viem
 
 只有在“创建合约的同一笔交易中”调用时才会真正移除代码，否则只会清空余额而不会删掉合约代码和历史
@@ -110,6 +158,7 @@ Solidity 编译器会默认生成这一文件，并且（默认）把它的 IPFS
 
 
 
+
 **去中心化交易所（DEX）**
 
 **恒定乘积公式**：x \* y = k
@@ -133,6 +182,7 @@ MakerDAO 是一个去中心化的借贷协议，DAI，Sky，USDS。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -219,6 +269,7 @@ SpoonOS：Web3
 
 
 
+
 **世界各势力对加密市场的态度趋势**
 
 -   1\. 美国监管框架
@@ -291,6 +342,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式
 
 
 
+
 C/C++性能好但不安全；
 
 Java/C#拥有GC，安全但性能不行；
@@ -346,6 +398,7 @@ Discovery 协议，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
