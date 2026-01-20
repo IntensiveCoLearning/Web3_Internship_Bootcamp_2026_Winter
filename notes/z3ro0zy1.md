@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# React继续学习
+
+## 找出 UI 精简且完整的 State 表示
+
+**State**是组件的记忆。为了让应用尽可能高效，要遵循 **Don't Repeat Yourself**原则：只保存最核心的变化数据，**能算出来的统统不要存。**
+
+但是在学习react的时候，需要理解数据的流向。父组件的状态更新可以向下传递，但是子组件的变化这么让上层知道？
+
+## 反向数据流
+
+这目前，数据已经可以从顶层通过 Props 流向底层的输入框。但问题是：**用户在底层里打字，顶层的 State 怎么更新？**
+
+### 核心实现：
+
+父组件不仅把 `state` 传给子组件，还要把**修改 state 的函数**也传下去。
+
+子组件（SearchBar）监听浏览器的原生事件（如 `onChange`），在事件触发时，调用父组件传下来的那个函数。
+
+```
+// 父组件 FilterableProductTable
+function FilterableProductTable() {
+  const [filterText, setFilterText] = useState('');
+
+  return (
+    <SearchBar 
+      filterText={filterText} 
+      onFilterTextChange={setFilterText} // 1. 把“改数据的权力”传下去
+    />
+  );
+}
+
+// 子组件 SearchBar
+function SearchBar({ filterText, onFilterTextChange }) {
+  return (
+    <input 
+      value={filterText} 
+      onChange={(e) => onFilterTextChange(e.target.value)} // 2. 用户一打字，就通知父组件
+    />
+  );
+}
+```
+
+今天先写一点，忙于备考IELTS 😭
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ## **_首先继续昨天的阅读，然后搞一下React前端，因为我发现后续有DAPP开发。_**
 
 * * *
@@ -158,6 +206,7 @@ TS 最大的作用是安全
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -223,6 +272,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 最近Prediction Market大火，借此机会也频繁尝试了钱包的交互功能。在使用像 Trust Wallet 或 MetaMask 这样的 Web3 钱包时，我经常会遇到**_确认Confirm_**和**_签名Signature_**这两个操作。虽然它们看起来都是点一下同意，但在底层的技术逻辑和安全影响上有本质区别。
@@ -311,6 +361,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -440,6 +491,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -531,6 +583,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -617,6 +670,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
