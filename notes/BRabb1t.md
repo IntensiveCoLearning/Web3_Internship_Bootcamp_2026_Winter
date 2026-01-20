@@ -15,8 +15,64 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+## 1\. Web3 实习手册 ｜ 智能合约开发
+
+### 架构差异 去中心化应用 DApp
+
+DApp (Decentralized App) 不像我们熟悉的 `Client -> Server -> Database` 架构。它更像是一个由多个分布式组件拼装的系统。
+
+**前端 (Frontend)**：依然是 HTML/React/Vue，但它\*\*不直接请求后端 API\*\*。它通过“钱包”（如 MetaMask）注入的 Provider 或 RPC 节点与区块链交互。
+
+**智能合约 (Smart Contract)**：这就是我们的“后端”。它定义业务逻辑，部署在 EVM（以太坊虚拟机）上。逻辑一旦部署，\*\*不可篡改\*\*。
+
+**数据检索器 (Indexer)**：这是 Web3 特有的。因为直接在链上查询复杂数据（比如“查询某用户所有的 NFT”）非常慢且难，所以我们需要一个“中间件”（如 The Graph/Ponder），监听链上事件 (Events)，把数据同步到传统数据库（PostgreSQL）供前端查询。
+
+**存储 (Storage)**：大文件（图片、文档）不存链上（太贵），而是存去中心化存储（IPFS/Arweave）。
+
+这与我熟悉的 Java 后端的不同：
+
+\- **接口调用**：以前我们写 `Controller` 给前端调接口；现在前端直接调链上的 `Function`。
+
+\- **数据库观念**：以前我们有 CRUD（增删改查）；在区块链上，\*\*Read\*\* 是免费的（通过 RPC），但 **Write**（交易）是要花钱的（Gas 费），而且非常昂贵。所以我们不能像操作 MySQL 那样随意写入数据，必须“省着写”。
+
+### 为什么需要 RPC 网关
+
+区块链本质上是一个由成千上万台计算机（节点）组成的 **P2P 网络**。这些节点之间通过一种复杂的 P2P 协议（Gossip Protocol）同步数据。
+
+前端网页（JS）并不懂这种 P2P 协议。你没办法直接通过 TCP 连接去“加入”这个网络。
+
+你需要一个“中间人”，它既是区块链网络的一员（存了全量数据），又能听懂 HTTP 请求。这个中间人就是 **RPC 节点**。
+
+它有什么作用呢？
+
+• **读取数据 (eth\_call)**： 当你查询余额时，你其实是发了一个 HTTP 请求给 RPC 节点。RPC 节点本地就存了区块链的“账本副本”，所以它\*\*直接查本地数据库\*\*返回给你，不需要去问全网。这也是为什么读数据是\*\*免费\*\*且\*\*快\*\*的。
+
+• **写入数据 (eth\_sendRawTransaction)**： 当你转账时，你把签好名的交易发给 RPC 节点。RPC 节点会把这笔交易\*\*广播\*\*给它相连的其他 P2P 节点，最终被矿工打包进区块。
+
+\### Solidity 编程：更严格的“Java”
+
+Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，但逻辑上更接近 Java 的强类型思维。
+
+• **合约结构**`contract MyContract {}` 类似于 Java 的 `class MyContract {}`。它也有构造函数 `constructor()` 和状态变量。
+
+• **状态变量 (State Variables)**：定义在函数外的变量，\*\*永久存储在区块链上\*\*。修改它们需要消耗 Gas。
+
+• **修饰符 (Modifiers)**：类似 Java 的 AOP（面向切面编程）或注解。例如 `onlyOwner`，在执行函数前先检查权限。
+
+• **事件 (Events)**：这是 Web3 的“日志系统”。合约触发 `emit Event()`，前端或索引器监听这些日志来更新 UI，而不是轮询数据库。
+
+### **Java开发者的思考**
+
+• **Map 的区别**：Solidity 里的 `mapping(address => uint)` 类似于 Java 的 `HashMap`，但它\*\*无法遍历\*\*（没有 `.keys()` 或 `.size()`）。如果你需要遍历数据，必须自己维护一个数组来记录 Key。
+
+• **异常处理**：没有 `try-catch` 这种复杂的捕获机制。主要是 `require(condition, "Error Msg")`，一旦失败，整个交易回滚 (Revert)，就像数据库事务回滚一样。
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -42,6 +98,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ## 1\. **Web2 开发者向 Web3 转型的入门课程介绍**（Day 1 Intro）
 
@@ -72,6 +129,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## 1\. 阅读021 学习以太坊第 3 章
@@ -114,6 +172,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -153,6 +212,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -178,6 +238,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -222,6 +283,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
