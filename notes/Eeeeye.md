@@ -1,5 +1,5 @@
 ---
-timezone: UTC+7
+timezone: UTC
 ---
 
 # Eeeeye
