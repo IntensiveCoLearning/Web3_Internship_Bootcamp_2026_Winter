@@ -15,8 +15,15 @@ Hi, I'm Yao, a junior developer
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今天開始熟悉智能合約的寫法，以及利用[https://ethernaut.openzeppelin.com/](https://ethernaut.openzeppelin.com/)  
+來學習調用合約
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 try to do some coding challenage  
   
 
@@ -25,6 +32,7 @@ try to do some coding challenage
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 智能合約
 
@@ -45,6 +53,7 @@ deploy上去之後，如果要更新代碼，必須透過proxy模式
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 一個完整的以太節點，需要包括
@@ -73,6 +82,7 @@ b.他們都透過engine api進行溝通
 
 
 
+
 偷偷往後看了一些我有興趣的東西
 
 # **為什麼地址都是0x開頭呢**
@@ -92,6 +102,7 @@ b.他們都透過engine api進行溝通
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -116,6 +127,7 @@ ZK Rollup → 利用零知識證明
 
 
 
+
 Rollup 是layer2 的主流路線，目的是要幫助L1 擴容，提高吞吐量
 
 Optimistic Rollup → 默認交易正確，只有錯誤的才要提出
@@ -130,6 +142,7 @@ ZK Rollup → 利用零知識證明
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
