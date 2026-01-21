@@ -15,8 +15,49 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## solidity walkk through
+
+### EVM
+
+以太坊虚拟机（Ethereum Virtual Machine）
+
+> 组成 stack storage 等等
+
+### openzeppelin
+
+核心组成部分
+
+```
+Contracts: 提供了包括代币标准、权限控制（Ownable, Role-based Access Control）、数学运算（SafeCast）及治理逻辑在内的核心模版。
+
+Upgrades: 专门用于处理智能合约“不可篡改性”与“功能迭代”之间矛盾的插件，支持部署可升级合约。
+
+Defender: 一个用于管理和自动化智能合约操作的安全平台。
+```
+
+### Uniswap V2
+
+是去中心化金融（DeFi）领域的里程碑，它是一个基于以太坊的**自动做市商（AMM）** 协议。
+
+-   **任意代币对（ERC-20 / ERC-20）**：V1 强制所有交易必须通过 ETH 桥接（如：DAI ETH USDC）。V2 允许直接创建任意两种代币的交易对，提高了资金效率。
+    
+-   **价格预言机（Price Oracles）**：引入了累积价格（Time Weighted Average Price, TWAP），让其他 DeFi 协议可以安全地引用 V2 的价格，防止被闪电贷操纵。
+    
+-   **闪电互换（Flash Swaps）**：允许用户先“借出”池子里的代币，只要在同一笔交易结束前归还或支付对应的代币，这为套利和清算提供了巨大的便利。
+    
+-   **Core（核心层）**：负责存储代币和维护 逻辑。代码极简且经过严格审计，不可更改。
+    
+-   **Periphery（外围层）**：负责与用户交互，比如计算滑点、多步路由跳转等。
+    
+
+Uniswap V2 经常被作为“流动性深度”和“无常损失（Impermanent Loss）”分析的基准模型。虽然现在有了更复杂的 V3（集中流动性），但 V2 依然是许多长尾资产（新币、小币种）的首选，也是很多新公链（如 BSC 上的 PancakeSwap）最初分叉的代码模板。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## web3公共物品资金分配
 
 public good
@@ -37,6 +78,7 @@ public good
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ## 1.19ethh周会
 
@@ -151,6 +193,7 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 ## Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 ## Key Hash Based Tokens (基于密钥哈希的代币)
@@ -213,11 +256,13 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 qiandao
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -247,6 +292,7 @@ qiandao
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -286,6 +332,7 @@ x402协议
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -415,6 +462,7 @@ UXlink Balancer
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -849,6 +897,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
