@@ -265,10 +265,23 @@ L1 放弃执行权，换来了规模；
 L2 承担复杂性，换来了用户。**
 
 **今天更加深入的了解的L1和L2的生态进程，为周五的分享会做个准备。**
+
+### **wachi老师：**
+
+**1\. 智能合约 - EVM、Solidity（用Foundry、Remix、Hardhat等，这些是等价的）**
+
+**2\. 后端 - SQL、数据库设计、锁、队列、并发、缓存、BackgroundJob等等**
+
+**3\. 前端 - React（Nextjs）、Viem**
+
+**4\. 部署 - Github、Vercel、VPS等等**
+
+**5\. 杂事 - Telemetry、Trace、Alert**
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ![746431e476307961fd417c1d415c6861.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-20-1768924324825-746431e476307961fd417c1d415c6861.png)
@@ -545,6 +558,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -648,6 +662,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -785,6 +800,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1118,6 +1134,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1479,6 +1496,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2127,6 +2145,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -2669,6 +2688,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -3105,6 +3125,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
