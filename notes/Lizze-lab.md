@@ -15,13 +15,91 @@ Hi 大家好，我是 Litchi 🍵。目前计算机专业澳本在读。我是�
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+### 一、 DApp 核心架构与流程
+
+-   **架构组成**：
+    
+    -   **前端**：使用 React/Vue，通过钱包（如 MetaMask）和 RPC 节点与链交互。
+        
+    -   **智能合约**：DApp 的核心逻辑，部署在 EVM（以太坊虚拟机）上。
+        
+    -   **数据检索器 (Indexer)**：如 Subgraph 或 Ponder，负责将链上事件存入传统数据库，方便前端快速查询。
+        
+-   **开发流转**：从需求分析开始，经历合约编写、测试、审计、前端集成，最后部署至测试网或主网。
+    
+
+### 二、 开发环境与 RPC 节点
+
+-   **主流框架**：
+    
+    -   **Foundry**：基于 Rust，执行速度极快，适合硬核开发者（工具包含 `forge`, `anvil`, `cast`）。
+        
+    -   **Hardhat**：基于 Node.js，生态最丰富，适合习惯 JavaScript 的开发者。
+        
+-   **RPC 服务**：作为 DApp 连接区块链的“ATM 机”。
+    
+    -   **服务商**：Alchemy（稳定性高）、Infura（老牌）、QuickNode。
+        
+    -   **最佳实践**：保护 API Key（不上传 GitHub）、实现错误重试机制、配置多节点备份。
+        
+
+### 三、 Solidity 编程与安全
+
+-   **基础语法**：涵盖了状态变量、可见性（`public`/`external` 等）、状态修饰符（`view`/`pure`/`payable`）以及事件（`event`）机制。
+    
+-   **安全防御（重中之重）**：
+    
+    -   **重入攻击 (Reentrancy)**：必须遵循 **CEI 模式**（检查-生效-交互）或使用 `nonReentrant` 锁。
+        
+    -   **访问控制**：确保敏感函数（如提款）受到权限保护（如 `onlyOwner`）。
+        
+    -   **整数溢出**：Solidity 0.8+ 已默认防护，但在 `unchecked` 块中需警惕。
+        
+
+### 四、 部署与实战：链上留言板
+
+-   **部署流程**：
+    
+    1.  使用 **Remix IDE** 编写代码。
+        
+    2.  连接 **MetaMask** 并切换至 **Sepolia 测试网**。
+        
+    3.  通过水龙头（Faucet）领取测试代币作为 Gas。
+        
+    4.  部署合约并通过 **Etherscan** 查看交易记录和事件日志。
+        
+
+### 五、 前端整合（DApp 全栈）
+
+-   **核心库**：推荐使用 **Viem** 和 **Wagmi**（现代化、TS 支持好），传统方案为 Ethersjs 或 Web3.js。
+    
+-   **交互逻辑**：
+    
+    -   **Read (call)**：查询数据，不消耗 Gas，不改动链上状态。
+        
+    -   **Write (send)**：发送交易，消耗 Gas，需用户钱包签名确认。
+        
+
+### 六、 高阶进阶
+
+-   **Gas 优化**：核心是“减少对 Storage 的操作”。通过变量压缩（Bit Packing）、内存缓存、避免循环中写存储来降低成本。
+    
+-   **智能合约审计**：使用 **Slither** 进行静态分析，**Foundry** 进行模糊测试（Fuzzing）。
+    
+-   **Layer 2 方案**：了解 **Optimistic Rollups** (Arbitrum/Base) 与 **ZK Rollups** (zkSync/Starknet) 的差异，以应对高性能场景。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 今天复习了以太坊区块链的概念应用，以及行业赛道全览
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 ## 安全与合规
 
@@ -68,6 +146,7 @@ Hi 大家好，我是 Litchi 🍵。目前计算机专业澳本在读。我是�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 ## Web3 行业赛道全览
 
 ### 一、 DeFi：去中心化金融的创新实践
@@ -112,6 +191,7 @@ DAO 是基于共识而非层级管理的组织。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -227,6 +307,7 @@ DAO 是基于共识而非层级管理的组织。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
