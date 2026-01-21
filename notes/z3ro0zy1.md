@@ -15,8 +15,106 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# Uniswap 入门学习
+
+* * *
+
+## Uniswap V2：恒定乘积公式的数学之美
+
+V2是最纯粹的**AMM自动做市商**模型。
+
+它的核心逻辑是：不管你怎么交易，池子里两种代币数量的**乘积**必须保持不变。
+
+### 举例：ETH/USDC 交易池
+
+假设一个池子里现在有：
+
+**10 ETH** (x)
+
+**20,000 USDC** (y)
+
+**恒定乘积 k**\= $10 X $20,000 = $200,000
+
+**场景：你想从池子里买走 1 个 ETH**
+
+1.  **池子剩下的 ETH**：$10 - 1 = 9$ 个。
+    
+2.  **为了保持 $k$ 不变**：池子里必须有的 USDC 数量 = $200,000 \\div 9 \\approx 22,222.22$ USDC。
+    
+3.  **你需要支付的价格**：$22,222.22 - 20,000 = 2,222.22$ USDC。
+    
+
+**滑点**：显然，虽然当前市场价是 2000 USDC/ETH，但你实际支付了 2222 USDC。这是因为你的交易改变了池子比例。交易量越大，滑点越高。
+
+**无人值守**：整个过程只有x乘y=k，在后面计算。
+
+* * *
+
+V2的问题
+
+由于X✖️Y = K，这是个单侧双曲线，显然其理论上导致X的范围是（0，∞），这意味着，这堆代币构成的曲线在数学上是**延展到无穷远**的。无论 ETH 的价格涨到1亿USD，还是跌到 0.00001USD，V2 的公式都能给出一个对应的X和Y组合。
+
+**本质上是说：你的这部分资金，正在为极低概率的价格点提供理论上的成交可能。**
+
+* * *
+
+## Uniswap V3：集中流动性的效率革命
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-21-1768996238553-image.png)
+
+-   **Xreal和 Yread**：是钱包里真实存入池子的代币数量。
+    
+-   **Xoffset和Yoffset**：是**偏移量**。它们是由区间边界（Pa,Pb）和流动性L决定的常数
+    
+
+### 设定参数：
+
+**当前价格P**：$2500 USDC/ETH , P^1/2 == 50
+
+**价格下限Pa**：$2304 USDC/ETH Pa^1/2 ==48
+
+**价格上限Pb**：$2704 USDC/ETH Pb^1/2 = 52
+
+**设定的流动性L**：1000
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-21-1768996631054-image.png)
+
+由此：
+
+**Xoffset** \== 19.23
+
+**Yoffset ==**48000
+
+Xreal == 0.77ETH
+
+Yreal == 2000USDC
+
+通过这个例子发现一些事情：
+
+**资产耗尽点的控制**：当价格上涨到Pb=52^2 时，此时Xreal == 0。**这意味着：** 恰好在价格到达上限时， ETH 被换光了。偏移量 Xoffset的存在，确保了你不需要无穷多的钱就能撑到价格上限。
+
+**资本效率的来源**：
+
+在 V2 中，要达到同样的交易深度（同样的 L=1000），你需要存入真实的20ETH+ 对应数量的USDC。
+
+但在 V3 的这个区间里，你只需要存入 **0.77 ETH+对应的USDC**。**效率提升：**用 1/26 的资金，就实现了和 V2 一样的抗滑点能力。
+
+* * *
+
+除此之外试了一下用Antigravity 来 vide coding 一个React的学习例子
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-21-1768999045525-image.png)
+
+现在还自带调试功能了，当时用cursor的时候还没有。。 加油熟悉吧～
+
+继续备考英语
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # React继续学习
 
 ## 找出 UI 精简且完整的 State 表示
@@ -64,6 +162,7 @@ function SearchBar({ filterText, onFilterTextChange }) {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ## **_首先继续昨天的阅读，然后搞一下React前端，因为我发现后续有DAPP开发。_**
 
@@ -207,6 +306,7 @@ TS 最大的作用是安全
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -272,6 +372,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -361,6 +462,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -492,6 +594,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -584,6 +687,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -670,6 +774,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
