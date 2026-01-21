@@ -17,13 +17,12 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
-今天的分享会很有意思，老师们组织用狼人杀游戏的方式，让大家模仿DAO里面对项目进行投票，气氛很热闹，期待permissionless的群里能组织起来！
-
-技术向的老师非常有耐心，一步步边写代码边讲解了solidity语法，部署ERC20代币
+今天分享会听了第二个教大家如何组织活动的。听下来休闲黑客松还是很麻烦的哈哈。各个节点的人都把自己的负责部分同步在面板里，比如做海报的做好发上去同步给可能需要的人，这个模式真好！建议平时工作里也用上！ 今天事情太多了！ 明天补补uniswap那场！
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 今天试着mint NFT，卡在领测试币，钱包里找不到测试网络的地址，哭了，明天问问大佬们。
 
@@ -36,6 +35,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 听了学员分享的回放～再提醒自己一下！先去做！执行力第一！行动就已经成功了一半！在过程中寻找反馈形成正向循环。先fake it，till make it！
 
 今晚的分享会是介绍ERC7962 目标客户是web2的用户，设计上从可用性友好出发，方便web2用户参与链上交易。但感觉web3的原生用户是不会愿意信任relayer。对这个项目中零知识证明到底应用在哪些地方还是有点迷糊。。。还有个疑问是听嘉宾的意思是用公钥取哈希的方式来保护公钥的隐私，可我记得地址本来就是公钥经过哈希运算并截取部分来生成的。
@@ -43,6 +43,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -59,6 +60,7 @@ timezone: UTC+8
 
 
 
+
 今天学习了实习手册web3行业知识里的三个单元。运营部分——内容创作工具里还没用过notion，赶紧下载下来。数据与调研工具里后几个都没听过，之前只用过defi llama，后面对比看看。在举办活动上应该是“策划 → 筹备 → 执行 → 复盘”全流程，之前比较忽视复盘阶段，可将嘉宾金句 / 精彩瞬间剪辑为 15s 视频、收集嘉宾的反馈，是我之前没考虑到的。 合规和网络安全部分，感觉很震撼！在大陆好像做什么都可能违法，案例里面即使是做协助工作也会被判刑。监管的趋势和影响总结蛮好的⬇️
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-16-1768536060349-image.png)
@@ -68,6 +70,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -92,6 +95,7 @@ timezone: UTC+8
 
 
 
+
 今天偷偷用上班时间学习了web3实习手册的行业赛道全览、工作方式两个单元。很喜欢2025年新趋势那部分，意图交易是我之前还没接触到的！记录一下。再就是～觉得也可以再介绍下RWA还有稳定币。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366256468-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366570343-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366594056-image.png)
@@ -99,6 +103,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
