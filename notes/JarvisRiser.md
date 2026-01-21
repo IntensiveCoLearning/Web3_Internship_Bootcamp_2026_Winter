@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+20260121 WEB3实习计划DAY10
+
+进一步打磨web3简历并进行投递
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 2026012 WEB3实习计划DAY9
 
 已完成本日学习计划
@@ -26,6 +34,7 @@ timezone: UTC+8
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 20260119 WEB3实习计划Day8
 
@@ -40,6 +49,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 20260118-WEB3实习Day7
 
 今日将对过去一周汲取的web3知识进行复盘，并线下与实习计划的同学进行会面交流，互相交换有效知识
@@ -47,6 +57,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -66,6 +77,7 @@ timezone: UTC+8
 
 
 
+
 20260116 Web3实习计划Day5
 
   
@@ -74,6 +86,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -94,6 +107,7 @@ Web3实习计划 Day4
 
 
 
+
 Web3实习计划-DAY3
 
 1.已完成前日视频回放
@@ -107,6 +121,7 @@ Web3实习计划-DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -137,6 +152,7 @@ web3实习计划Day2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
