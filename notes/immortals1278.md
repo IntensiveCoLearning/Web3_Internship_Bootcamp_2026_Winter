@@ -22,10 +22,35 @@ Web3 实习计划 2025 冬季实习生
 ABI：json格式的接口描述，说明如何调用合约函数（函数名），如何编码或解码数据（参数，返回值）
 
 React 是一个用于构建**用户界面**的 JavaScript 库，next.js是基于react的框架
+
+用脚本部署合约：
+
+写一个继承forge-std/Script的部署合约，写run函数，读取私钥，部署逻辑
+
+配置环境变量：把敏感或可变的信息（如私钥 PRIVATE\_KEY、RPC URL、API Key 等）集中存到一个.env文件里，而不是硬编码到脚本中。
+
+```dotenv
+PRIVATE_KEY=89b55fdaddf4e322ad8dde15baaa2d744c32df597131ebc9eb56652a240a5748
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/285056778b4842a3adba67f8690dc444
+ETHERSCAN_API_KEY=X6Z532599YZIXJCCT84B7EZVGIAHWR414W
+```
+
+控制台运行部署
+
+forge script script/DeployMessageBoard.s.sol:DeployMessageBoard \`
+
+\--rpc-url $Env:SEPOLIA\_RPC\_URL \`
+
+\--broadcast \`
+
+\--verify \`
+
+\--etherscan-api-key $Env:ETHERSCAN\_API\_KEY
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## 社区运营基础&活动策划与执行流程
 
@@ -66,6 +91,7 @@ forge init
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -159,6 +185,7 @@ forge init
 
 
 
+
 **1\. 核心概念**
 
 \- 新一代代币协议，融合零知识证明（ZK）与哈希算法
@@ -226,11 +253,13 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 第一周总结：了解了求职市场，找工作真的很难…不能只学写合约，还要学合约安全的部分，还要学rust。多参与链上活动如投票，贡献开源代码，建立链上声誉。 了解agent上链来帮助用户辨别选择agent，购买agent的部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -297,6 +326,7 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 一、AI的演进与核心
 
 传统AI（如早期ChatGPT）只是“高级复读机”，无状态、无工具、无身份。而未来的AI Agent将具备：
@@ -324,6 +354,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -367,6 +398,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -425,6 +457,7 @@ EIP
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
