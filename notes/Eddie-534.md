@@ -15,8 +15,31 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+26.1.21 今天学习了Solidity的基础部分的部分内容。
+
+-   归纳：
+    
+
+函数结构：function关键字+函数名+参数+可见性+状态修饰符+returns  
+可见性：public（全网可调用）、private（仅合约内部）、internal（继承合约可用）  
+状态修饰符：view（只读不耗Gas）、pure（纯计算）、payable（可收ETH）  
+特殊函数：receive()和fallback()像是合约的“自动回复消息”，处理意外情况很实用
+
+-   特别注意点：写returns时千万别漏s，函数参数记得标明类型，不然remix编译器会疯狂报错……
+    
+
+![屏幕截图 2026-01-21 225532.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-21-1769007457235-_____2026-01-21_225532.png)
+
+![屏幕截图 2026-01-21 225646.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-21-1769007469499-_____2026-01-21_225646.png)
+
+![屏幕截图 2026-01-21 225715.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-21-1769007512849-_____2026-01-21_225715.png)
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 26.1.20 今天学习了Web3实习手册的智能合约开发部分
 
 -   核心概念
@@ -97,6 +120,7 @@ contract.methods.函数名().call()  // 读操作，免费
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 26.1.19 今天学习了021以太坊教材的第四章，了解了智能合约的工作原理与价值。
 
 -   智能合约
@@ -154,6 +178,7 @@ ABI（用于调用合约）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 26.1.18 今天继续跟进B站Chainlink预言机教程，学完了第三章剩下的部分。
@@ -233,6 +258,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.17跟着B站上的Chainlink预言机教程，继续学习Solidity的进阶部分
 
 -   内容梳理：
@@ -287,6 +313,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
 
 -   收获：
@@ -310,6 +337,7 @@ ABI（用于调用合约）
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -455,6 +483,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 
 
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -555,6 +584,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -596,6 +626,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
