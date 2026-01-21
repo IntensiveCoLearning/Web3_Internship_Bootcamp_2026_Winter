@@ -46,24 +46,24 @@ Web3 实习计划 2025 冬季实习生
     constructor() 仅部署时跑 1 次，用来初始化 name/symbol/decimals/totalSupply
     
 7.  Mint 安全模板  
-    function mint(...) external onlyOwner {  
+    function mint(…) external onlyOwner {  
     \_mint(to, amount); // internal 实际铸币  
     }
     
 8.  错误处理  
-    require(条件,"错误信息") ← 最常用  
+    require(条件,“错误信息”) ← 最常用  
     revert() 无消息省 Gas  
     assert() 几乎不用（吞剩余 Gas）
     
 9.  溢出  
-    0.8+ 自动检查；想省 Gas 在确定无溢出块外加 unchecked{ ... }
+    0.8+ 自动检查；想省 Gas 在确定无溢出块外加 unchecked{ … }
     
 10.  Modifier 样板  
      modifier onlyOwner() {  
      require(msg.sender == owner);  
      \_;  
      }  
-     用法：function foo() external onlyOwner { ... }
+     用法：function foo() external onlyOwner { … }
      
 
 ## **modifier 是什么？具体操作逻辑是怎样的？**
@@ -78,7 +78,7 @@ Web3 实习计划 2025 冬季实习生
 
 | 方式 | 代码示例 | 缺点 |
 | --- | --- | --- |
-| 每个函数单独require | 每个函数都写 require(msg.sender ==owner, "...") | 代码重复、部署 Gas 高、维护困难 |
+| 每个函数单独require | 每个函数都写 require(msg.sender ==owner, “…”) | 代码重复、部署 Gas 高、维护困难 |
 | 使用 modifier | 函数后加 onlyOwner 修饰符 | 一次定义，多处复用，Gas 更优 |
 
 3\. 扩展应用场景
@@ -101,11 +101,12 @@ Web3 实习计划 2025 冬季实习生
 
 # **Uniswap 工作原理解析**
 
-![5e5221b845a3a9976faee516f00facca.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-21-1768996117227-5e5221b845a3a9976faee516f00facca.jpg)
+![5e5221b845a3a9976faee516f00facca.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-21-1768996117227-5e5221b845a3a9976faee516f00facca.jpg)![aa1fb98e5b4e982c2107827aa0a96e7a.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-21-1768997600977-aa1fb98e5b4e982c2107827aa0a96e7a.jpg)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -149,6 +150,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -227,6 +229,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -410,6 +413,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -496,6 +500,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -627,6 +632,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -835,6 +841,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1077,6 +1084,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1362,6 +1370,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
