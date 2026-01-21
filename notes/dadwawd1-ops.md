@@ -15,8 +15,188 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+foundry核心概念：
+
+在深入命令之前，先理解 Foundry 的三大支柱：
+
+Forge: 核心工具。用于编译、测试、部署合约。（类似 Hardhat/Truffle）
+
+Cast: 交互工具。用于与链进行 RPC 交互、数据解码、通过命令行发送交易。（类似 Ethers.js 的 CLI 版）
+
+Anvil: 本地节点。启动一个快速的本地测试网。（类似 Ganache/Hardhat Network）
+
+2\. 安装与环境配置
+
+Foundry 的安装非常简洁，使用官方提供的安装器 foundryup。
+
+Linux / macOS / Windows (WSL 或 Git Bash)
+
+Linux / macOS / Windows（WSL 或 Git Bash）
+
+打开终端，运行以下命令下载安装器： 
+
+curl -L [https://foundry.paradigm.xyz](https://foundry.paradigm.xyz) | bash
+
+执行完毕后，重新加载终端配置（或重启终端），然后运行安装命令来下载具体的二进制文件：
+
+foundryup
+
+foundryup 会自动安装 forge, cast, anvil, 和 chisel。如果日后想更新到最新版本，只需再次运行 foundryup。
+
+3\. 项目初始化
+
+新建项目：
+
+forge init my\_project\_name
+
+cd my\_project\_name
+
+项目结构解析
+
+src/: 存放智能合约源文件 (.sol)。
+
+test/: 存放测试文件（也是 .sol 文件，这是 Foundry 的精髓）。
+
+script/: 存放部署和交互脚本。
+
+foundry.toml: 配置文件（类似 hardhat.config.js，配置编译器版本、优化次数、RPC URL 等）。
+
+lib/: 存放依赖库（Foundry 使用 git submodules 管理依赖）。
+
+4\. 核心组件运用：Forge (开发与测试)
+
+依赖管理
+
+Foundry 不使用 npm，而是直接拉取 GitHub 仓库。
+
+安装 OpenZeppelin:：  
+
+forge install OpenZeppelin/openzeppelin-contracts
+
+重映射: Foundry 会自动生成 remappings.txt，让你在代码中可以简写引入路径。
+
+引入示例: import "openzeppelin-contracts/token/ERC20/ERC20.sol";
+
+编译
+
+forge build
+
+测试 (Testing) —— 核心亮点
+
+Foundry 的测试是用 Solidity 编写的。
+
+基本运行: forge test
+
+查看详细日志 (Traces): 这是 Foundry 最强大的功能。
+
+\-vv: 显示 console.log 输出。
+
+\-vvv: 显示失败测试的调用栈。
+
+\-vvvv: 显示所有测试的详细调用栈（调试神技）。
+
+forge test -vvvv
+
+测试特定函数:
+
+forge test --match-test testTransfer
+
+在 Solidity 测试中，你可以控制区块链的状态（时间、区块号、发送者等）。需要通过 vm 实例调用。
+
+vm.prank(address): 伪造下一个调用的发送者（msg.sender）。
+
+[vm.deal](http://vm.deal)(address, uint256): 给某个地址设置余额。
+
+vm.warp(uint256): 修改当前区块时间（测试锁仓逻辑时非常有用）。
+
+vm.expectRevert(): 预期下一行代码会报错（测试异常情况）。
+
+5\. 核心组件运用：Cast (链上交互)
+
+Cast 是一个瑞士军刀式的命令行工具，不需要写脚本即可快速查询数据。
+
+查询数据
+
+获取 ETH 余额:
+
+cast balance 0x...地址... --rpc-url <YOUR\_RPC\_URL>
+
+调用合约视图函数 (Call):
+
+比如查询 USDT 余额
+
+cast call 0xdAC17F958D2ee523a2206206994597C13D831ec7 "balanceOf(address)(uint256)" 0x...你的地址... --rpc-url mainnet
+
+数据转换 (Conversion)
+
+将十六进制转为十进制:
+
+cast --to-dec 0x3e8  # 输出 1000
+
+将字符串转为 bytes32:
+
+cast --format-bytes32-string "hello"
+
+6\. 核心组件运用：Anvil (本地测试网)
+
+启动一个极速的本地节点（类似 Ganache）：
+
+Anvil：
+
+默认监听 127.0.0.1:8545。
+
+提供 10 个预充值了 10,000 ETH 的私钥供测试使用。
+
+分叉主网 (Forking): 在本地模拟主网环境（非常适合测试 DeFi 组合性）：
+
+anvil --fork-url <YOUR\_MAINNET\_RPC\_URL>
+
+7\. 进阶：模糊测试 (Fuzz Testing)
+
+Foundry 原生支持模糊测试。你不需要配置复杂的参数，只需给测试函数添加参数，Foundry 就会自动随机生成各种输入来轰炸你的合约。
+
+普通测试: function testWithdraw() public { ... }
+
+模糊测试: function testWithdraw(uint256 amount) public { ... }
+
+Foundry 会自动尝试 0, MAX\_INT, 随机数等边界情况。
+
+技巧: 使用 vm.assume(amount > 0) 来过滤无效的随机输入。
+
+8\. 部署合约 (Deployment)  8. 部署合约（Deployment）
+
+Foundry 推荐使用 Solidity 脚本 (script/) 进行部署，这样部署逻辑也是可测试的。
+
+编写脚本 (script/Deploy.s.sol):
+
+Solidity  
+
+contract DeployScript is Script {
+
+    function run() external {
+
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE\_KEY");
+
+        vm.startBroadcast(deployerPrivateKey); // 开始广播交易
+
+        new MyContract();
+
+        vm.stopBroadcast();
+
+    }
+
+}
+
+执行部署:
+
+forge script script/Deploy.s.sol --rpc-url
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 目前所接触到的优化Gas的方法：
 
 函数的可见修饰符用external比public省gas，只有外部调用的函数设为 external 而不是 public（如果该函数内部不被调用），因为 external 函数可以直接从 calldata 读取参数
@@ -54,6 +234,7 @@ owner 点击了按钮，向恶意合约发送了一笔交易。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 再网站上去做了关于智能合约被攻击的案例（[https://ethernaut.openzeppelin.com/），](https://ethernaut.openzeppelin.com/），)   了解了智能合约在部署前阶段要做好安全审查，避免遭受到更严重的损失，在这里面我学习到了四个知识点，第一个是整除溢出，在之前的版本会出现整数溢出的情况，如果用小数字减去大数字会得到一个无穷大的数，这就是会整数溢出，第二个tx.origin (交易发起者)：永远是交易链条最顶端的那个人（你的钱包地址）。不管中间经过多少个合约，它永远是你。msg.sender (消息发送者)：是直接调用该函数的那个地址（可以是人，也可以是上一个合约）。第三个是delegatecall和call之间的区别，普通 Call: A 调用 B。B 在 B 的地盘上运行代码，修改 B 的数据。DelegateCall: A 委托 B。B 的代码被拿过来，在 A 的地盘上运行，修改的是 A 的数据。一定要区别好这个情况（2017年，著名的 Parity 多重签名钱包 被黑客攻击，导致 3000万美金（约15万 ETH） 被盗。 原理和这一关几乎一模一样：所有用户的钱包都 delegatecall 到一个共享的“库合约”。库合约里有个初始化函数 initWallet（类似这关的 pwn），可以设置 Owner。黑客直接调用了这个函数，因为库合约本身的疏忽，黑客变成了库合约的 Owner。然后黑客自毁了库合约，导致所有依赖它的用户钱包全部瘫痪（这是第二次攻击，锁死了数亿美金）。）机制上：selfdestruct 是 EVM 层面最霸道的指令，它不经过目标合约的允许，也不触发目标合约的任何代码（包括 receive 或 fallback），直接修改目标地址的余额。安全上：作为开发者，永远不要假设你的合约余额完全由你控制。在写逻辑时，尽量用 >= 代替 ==，或者单独用一个变量（比如 totalDeposited）来记录存入金额，而不要直接读取 address(this).balance；所以我们要尽量避免这样的事情出现，别让我们的资金无缘无故丢失锁死，在部署智能合约之前，一定要做安全审计。
 
@@ -112,6 +293,7 @@ Solidity：荷兰拍卖，基于ERC721的Transferfrom的基础上进行交易，
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 | 特性 | Uniswap V1 | Uniswap V2 | Uniswap V3 |
 | 发布时间 | 2018 年 11 月 | 2020 年 5 月 | 2021 年 5 月 |
 | 核心定位 | 概念验证 (Proof of Concept) | 通用化 DEX (General Purpose) | 资本效率最大化 (Capital Efficiency) |
@@ -143,6 +325,7 @@ EIP-5164：本规范定义了基于EVM的区块链的跨链执行接口。本规
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -200,6 +383,7 @@ FRI（Fast Reed–Solomon IOP of Proximity）协议在后端用以证明复合�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -355,6 +539,7 @@ ERC721处理非同质化代币标准（NFT）
 
 
 
+
 今天看了很有趣的文章，让我在零知识证明的方面了解到了在初期对与隐私的保护，解决了我之前对信息泄露方面的疑惑，现在对于今日知识进行一个总结和理解：零知识证明的概念最早是由 Goldwasser, Micali 和 Rackoff 在 1985年 的论文中提出的。当时的状况： 全是复杂的数学公式，非常晦涩，普通人（甚至很多计算机专家）都很难理解“如何能证明一件事却不告诉你是怎么证明的”，在此之后有了两个经典的故事：
 
 阿里巴巴洞穴 (1989年)： 这是最早期的解释。就在 ZKP 发明仅仅 4 年后，密码学家 Jean-Jacques Quisquater 发表了一篇著名的论文《如何向你的孩子解释零知识协议》。他创造了“阿里巴巴洞穴”这个故事，专门用来向非专业人士解释 ZKP 的核心逻辑（交互式证明）。所以，这是真正的元老级例子。我来简单的阐述一下这个故事的内容：在一个有a,b出口的洞穴里，要讲出密令才能找到出口并出去，但是只有2知道密令是什么，但他不想告诉验证者1，只想证明2知道这个密令，这时候1就要去证实2，过程：1在洞穴外让2按照他的命令从a出或者从b出（不能仅执行几次，会有概率疑惑产生），重复多次，2都可以通过密令从指定的洞口出来，这就验证了2知道这个秘令，但是不知道这个密令是什么，保证了隐私。
@@ -376,6 +561,7 @@ X402协议：一种开放的，互联网原生的支付方式（极低边际成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -437,6 +623,7 @@ Extension Node (扩展节点)：用于“跳过”没有任何分支的长路径
 
 
 
+
 今日基础知识学习记录：
 
 了解了以太坊节点是如何构成网络的，官方知识点：节点node是任何一台运行以太坊客户端软件并连接到其他节点的电脑，就是一个以太坊节点，客户端是对以太坊协议的具体体现，会按照协议规则验证数据，同步区块状态，帮助网络保持完全，在（The Merge）之后，节点由执行客户端和共识客户端两个核心客户端组成外加一个接口（Engine API）这个是基于JSON-RPC的本地接口。下面是在内部网络的流程：
@@ -466,6 +653,7 @@ confirmTransaction（认证），executeTransaction（通过认证执行），re
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
