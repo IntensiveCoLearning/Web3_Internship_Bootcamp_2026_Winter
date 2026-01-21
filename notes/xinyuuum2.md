@@ -17,13 +17,129 @@ Base上海 美本美硕 工作三年DS/DA
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+### EVM 与数据存储 (The "Hard" Parts)
+
+-   **四大存储区域 (EVM Memory Model)**:
+    
+
+-   **Storage (存储)**: **最昂贵**。数据永久保存在链上。
+    
+    -   _成本细节_: 初始化一个新槽位（从 0 到非 0）大约消耗 **20,000 Gas**；修改已有的槽位大约消耗 **5,000 Gas**。
+        
+    -   _优化原则_: 能不存就不存，能用 Event 存就别用 Storage 存。
+        
+-   **Memory (内存)**: **临时**。函数执行期间存在，执行完即销毁。成本随使用量线性（甚至二次方）增长，但远低于 Storage。
+    
+-   **Calldata**: **只读**且**极其廉价**。用于存放函数调用的参数。
+    
+
+-   _技巧_: 如果函数参数只读不改，使用 `calldata` 而非 `memory` 可以节省 Gas。
+    
+
+-   **Stack (栈)**: EVM 是栈式虚拟机，用于运算（如 `1+1`），深度限制 1024 层。
+    
+
+### Solidity 核心语法与陷阱
+
+-   **基础类型**:
+    
+    -   **uint256**: 默认整数类型。Solidity 0.8+ 版本已内置溢出检查（Overflow Protection），不再需要 `SafeMath` 库。
+        
+    -   **Address**: 20 字节。区分 `address` (不可转账) 和 `address payable` (可接收 ETH)。
+        
+-   **Mapping (映射)**:
+    
+    -   `mapping(key => value)`。
+        
+    -   **关键特性**: **无法遍历**。你无法直接获取 mapping 的所有 key。
+        
+    -   _解决方案_: 如果需要遍历（例如“获取所有用户列表”），必须额外维护一个数组来记录 Key。
+        
+-   **函数修饰符 (Modifiers)**:
+    
+    -   用于在函数执行前或后插入逻辑（如权限检查 `onlyOwner`）。
+        
+    -   `_;` 符号代表“继续执行函数体代码”。
+        
+-   **全局变量与上下文**:
+    
+    -   `msg.sender`: **当前**调用者的地址（最常用）。
+        
+    -   `tx.origin`: **交易原始发起人**（EOA）。
+        
+        -   _安全警告_: **禁止**使用 `tx.origin` 做权限验证，这会导致中间人攻击（钓鱼合约攻击）。
+            
+    -   `msg.value`: 随调用发送的 ETH 数量（单位 Wei）。
+        
+
+### 资金处理与安全模式 (Critical)
+
+-   **接收 ETH**:
+    
+    -   `payable` **关键字**: 函数若要接收 ETH，**必须**标记为 `payable`，否则交易会 Revert。
+        
+    -   `receive()` **/** `fallback()`: 合约若要接收直接转账（不调用特定函数），必须实现 `receive() external payable`。
+        
+-   **发送 ETH**:
+    
+    -   **推荐写法**: `(bool success, ) = recipient.call{value: amount}("")`。
+        
+    -   _废弃写法_: 避免使用 `transfer` 或 `send`，因为它们限制了 2300 Gas，可能导致接收方（如果是合约钱包）逻辑执行失败。
+        
+-   **重入攻击 (Reentrancy) 与防御**:
+    
+    -   _原理_: 攻击者合约在接收 ETH 的 `receive()` 函数中回调原合约的 `withdraw()`，在余额扣除前重复提款。
+        
+    -   _防御范式 (CEI)_: **Check (检查)** -> **Effect (生效/扣款)** -> **Interaction (交互/转账)**。必须先扣除余额，再发送 ETH。
+        
+
+### 脚本交互 (Ethers.js & Hardhat)
+
+-   **Provider vs Signer**:
+    
+    -   **Provider**: **只读**连接。用于获取区块号、查询余额、读取合约状态（Call）。不需要私钥。
+        
+    -   **Signer**: **可写**连接。持有私钥，用于签名并发送交易（Transaction）。
+        
+-   **BigNumber (大数处理)**:
+    
+    -   JS 无法处理 18 位精度的数字。
+        
+    -   **User -> Blockchain**: `ethers.utils.parseEther("1.0")` (将 "1.0" 转为 Wei)。
+        
+    -   **Blockchain -> User**: `ethers.utils.formatEther(balance)` (将 Wei 转为 "1.0")。
+        
+-   **ABI (应用二进制接口)**:
+    
+    -   合约的“说明书”。前端通过 ABI 知道如何把数据编码成 EVM 能读懂的字节码（Call Data）。
+        
+
+### 开发工具流
+
+-   **Hardhat**: 本地开发环境。
+    
+    -   `npx hardhat node`: 启动本地虚拟区块链。
+        
+    -   `console.log` (在 Solidity 中): 可以在合约里打印日志到终端，调试神技。
+        
+-   **Scaffold-ETH**: **Tinker (捣鼓) 神器**。
+    
+    -   **Burner Wallet (燃烧钱包)**: 浏览器自动生成临时私钥，无需 MetaMask 频繁弹窗确认，极大加速测试流程。
+        
+    -   **Debug UI**: 部署合约后，前端自动生成所有读写函数的 UI，无需写前端代码即可测试交互。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天听了Solidity的初步介绍，学习了一些语法。因为加班的原因，笔记明天看了回放再补上啊啊啊…还熟悉了一下Remix的环境，尝试了一些简单的代码。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 今天和大佬讨论了一下昨天的课，感觉理解又深了一些。
 
@@ -83,6 +199,7 @@ ERC-7962 的架构天然支持批量交易。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 今天试试notebooklm。
@@ -164,6 +281,7 @@ ERC-7962 是一种新的 NFT 协议，旨在实现“隐私保护”与“极致
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -324,11 +442,13 @@ contract AdvancedStorage {
 
 
 
+
 打算利用周末时间吧这周的内容再熟悉一下。今天没有大课，听了同学们的sharing，发现也有几个和我差不多年龄的朋友们。可能大家之前都是小白，但是现在对于行业的了解已经颇有深度。还是要抓紧练习呀。周末要好好把这周内容总结一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -402,6 +522,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 
 
+
 今天信息量有点大了……内容有点硬核了……
 
 ### 一、 法律合规
@@ -469,6 +590,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -605,6 +727,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
