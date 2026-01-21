@@ -15,8 +15,424 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# 事件
+
+`Solidity`**中的事件（**`event`）是\*\*`EVM`\*\*上日志的抽象，它具有两个特点：
+
+-   响应：应用程序（`ethers.js`）可以通过\*\*`RPC`\*\*接口订阅和监听这些事件，并在前端做响应。
+    
+-   经济：事件是\*\*`EVM`\*\*上比较经济的存储数据的方式，每个大概消耗2,000 `gas`；相比之下，链上存储一个新变量至少需要20,000 `gas`。
+    
+
+# 继承
+
+## **一、多重继承**
+
+**一个合约可以同时继承多个父合约！**
+
+```solidity
+solidity
+
+// 爷爷
+contract Yeye {
+    function hip() public pure virtual returns(string memory) {
+        return "Yeye";
+    }
+}
+
+// 爸爸 继承 爷爷
+contract Baba is Yeye {
+    function hip() public pure virtual override returns(string memory) {
+        return "Baba";
+    }
+
+    function pop() public pure virtual returns(string memory) {
+        return "Baba";
+    }
+}
+
+// 儿子 同时继承 爷爷 和 爸爸
+contract Erzi is Yeye, Baba {
+    // 必须 override 所有父合约中同名的函数
+    function hip() public pure override(Yeye, Baba) returns(string memory) {
+        return "Erzi";
+    }
+
+    function pop() public pure override returns(string memory) {
+        return "Erzi";
+    }
+}
+
+```
+
+* * *
+
+### **⚠️ 关键规则：继承顺序**
+
+**必须按辈分从高到低写！**
+
+```solidity
+solidity
+
+// ✅ 正确：Yeye(爷爷) 在 Baba(爸爸) 前面
+contract Erzi is Yeye, Baba { }
+
+// ❌ 错误：辈分顺序反了
+contract Erzi is Baba, Yeye { }  // 编译报错！
+
+```
+
+### **图解继承顺序**
+
+```
+
+Yeye (辈分最高)
+          ↑
+        Baba (中间)
+          ↑
+        Erzi (辈分最低)
+
+继承声明：contract Erzi is Yeye, Baba
+                           ↑      ↑
+                          高 → → 低
+
+```
+
+* * *
+
+### `virtual` **和** `override` **关键字**
+
+| 关键字 | 作用 | 用在哪 |
+| --- | --- | --- |
+| virtual | "我允许被子合约重写" | 父合约的函数 |
+| override | "我正在重写父合约的函数" | 子合约的函数 |
+
+```solidity
+solidity
+
+contract Yeye {
+    // virtual = 可以被重写
+    function hip() public pure virtual returns(string memory) {
+        return "Yeye";
+    }
+}
+
+contract Baba is Yeye {
+    // override = 我重写了    virtual = 我的子合约也可以重写我
+    function hip() public pure virtual override returns(string memory) {
+        return "Baba";
+    }
+}
+
+contract Erzi is Baba {
+    // override = 我重写了 (没加virtual = 到此为止，不能再被重写)
+    function hip() public pure override returns(string memory) {
+        return "Erzi";
+    }
+}
+
+```
+
+* * *
+
+### **多个父合约有同名函数？**
+
+必须用
+
+```solidity
+override(Parent1, Parent2)
+```
+
+指明重写了谁：
+
+```solidity
+solidity
+
+contract Erzi is Yeye, Baba {
+    // 必须写明 override 了哪些合约
+    function hip() public pure override(Yeye, Baba) returns(string memory) {
+        return "Erzi";
+    }
+}
+
+```
+
+* * *
+
+## **二、修饰器 (Modifier) 继承**
+
+**Modifier 也可以被继承和重写！**
+
+```solidity
+solidity
+
+contract Base {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // 父合约定义 modifier，加 virtual 允许重写
+    modifier onlyOwner() virtual {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    function changeOwner(address newOwner) external onlyOwner {
+        owner = newOwner;
+    }
+}
+
+contract Child is Base {
+    // 重写 modifier：添加额外检查
+    modifier onlyOwner() override {
+        require(msg.sender == owner, "Not owner");
+        require(owner != address(0), "Owner not set");  // 新增检查
+        _;
+    }
+
+    // 这个函数使用的是 Child 版本的 onlyOwner
+    function doSomething() external onlyOwner {
+        // ...
+    }
+}
+
+```
+
+* * *
+
+### **不重写也能直接用**
+
+```solidity
+solidity
+
+contract Base {
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+}
+
+contract Child is Base {
+    // 没有重写 onlyOwner，直接继承使用
+
+    function foo() external onlyOwner {  // ← 直接用父合约的 modifier
+        // ...
+    }
+}
+
+```
+
+* * *
+
+## **什么是菱形继承？**
+
+继承关系形成了一个**菱形**：
+
+```
+
+┌───────┐
+        │  God  │   ← 最顶层的祖先
+        └───┬───┘
+           ╱ ╲
+          ╱   ╲
+    ┌────┴─┐ ┌─┴────┐
+    │ Adam │ │ Eve  │  ← 两个中间层，都继承God
+    └────┬─┘ └─┬────┘
+          ╲   ╱
+           ╲ ╱
+        ┌───┴───┐
+        │ Human │  ← 底层，同时继承Adam和Eve
+        └───────┘
+
+形状像菱形 ◇ 所以叫菱形继承
+
+```
+
+* * *
+
+## **问题在哪？**
+
+假设 `God` 有个函数 `foo()`，`Adam` 和 `Eve` 都重写了它：
+
+```solidity
+contract God {
+    function foo() public pure virtual returns(string memory) {
+        return "God";
+    }
+}
+
+contract Adam is God {
+    function foo() public pure virtual override returns(string memory) {
+        return "Adam";
+    }
+}
+
+contract Eve is God {
+    function foo() public pure virtual override returns(string memory) {
+        return "Eve";
+    }
+}
+
+// Human 继承了 Adam 和 Eve
+// 问题：调用 foo() 时，用 Adam 的还是 Eve 的？
+contract Human is Adam, Eve {
+    function foo() public pure override(Adam, Eve) returns(string memory) {
+        return "Human";
+    }
+}
+
+```
+
+**问题：** 如果 Human 调用`super.foo()`，会调用谁的？Adam？Eve？还是两个都调用？
+
+* * *
+
+## **Solidity 的解决方案：C3 线性化**
+
+Solidity 使用 **C3 线性化算法**，把菱形"拉平"成一条线：
+
+```
+
+继承声明：contract Human is Adam, Eve
+
+线性化顺序（从右到左）：
+Human → Eve → Adam → God
+
+调用 super.foo() 的顺序：
+Human.foo() → super → Eve.foo() → super → Adam.foo() → super → God.foo()
+
+```
+
+* * *
+
+## **代码演示**
+
+```solidity
+solidity
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+
+contract God {
+    event Log(string message);
+
+    function foo() public virtual {
+        emit Log("God.foo");
+    }
+
+    function bar() public virtual {
+        emit Log("God.bar");
+    }
+}
+
+contract Adam is God {
+    function foo() public virtual override {
+        emit Log("Adam.foo");
+        super.foo();  // 调用上一层
+    }
+
+    function bar() public virtual override {
+        emit Log("Adam.bar");
+        super.bar();
+    }
+}
+
+contract Eve is God {
+    function foo() public virtual override {
+        emit Log("Eve.foo");
+        super.foo();  // 调用上一层
+    }
+
+    function bar() public virtual override {
+        emit Log("Eve.bar");
+        super.bar();
+    }
+}
+
+// 注意顺序：Adam, Eve（辈分相同时，按声明顺序）
+contract Human is Adam, Eve {
+    function foo() public override(Adam, Eve) {
+        emit Log("Human.foo");
+        super.foo();  // 调用上一层
+    }
+
+    function bar() public override(Adam, Eve) {
+        emit Log("Human.bar");
+        super.bar();
+    }
+}
+
+```
+
+### **调用** `Human.foo()` **的输出顺序：**
+
+```
+
+1. "Human.foo"   ← Human
+2. "Eve.foo"     ← super 调用 Eve（声明中最右边）
+3. "Adam.foo"    ← super 调用 Adam
+4. "God.foo"     ← super 调用 God
+
+每个合约只被调用一次！不会重复调用 God！
+
+```
+
+* * *
+
+## **图解 C3 线性化**
+
+```
+
+声明: contract Human is Adam, Eve
+
+菱形结构：              线性化后：
+    God                 Human → Eve → Adam → God
+   ╱   ╲                  │       │      │      │
+ Adam   Eve    ───→       ↓       ↓      ↓      ↓
+   ╲   ╱                super   super  super  (结束)
+   Human
+
+调用 super.foo() 时，按线性顺序依次执行
+
+```
+
+* * *
+
+## **关键规则**
+
+| 规则 | 说明 |
+| --- | --- |
+| 继承顺序 | 从辈分高到低： |
+
+`is God, Adam, Eve` ❌
+
+`is Adam, Eve` ✅ | | super 调用顺序 | 按声明**从右到左**：Eve → Adam → God | | 每个合约只调用一次 | God 不会被重复调用！ |
+
+* * *
+
+## **为什么要关心这个？**
+
+1.  **避免重复执行** - God 的代码只执行一次
+    
+2.  **可预测的行为** - 你知道 super 会按什么顺序调用
+    
+3.  **写继承时要小心顺序** - 顺序不同，行为可能不同
+    
+
+* * *
+
+## **一句话总结**
+
+> 菱形继承 = 多个父合约有共同祖先 Solidity 解决方案 = C3 线性化，把菱形拉成一条线，super 按线性顺序调用，每个合约只调用一次
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # 函数
 
 ```solidity
@@ -177,6 +593,7 @@ xStorage[0] = 100;   // 通过指针修改，x 也变了！
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ### 引言：从公开的数字藏品到隐私的会员身份
 
 ERC-721 标准的诞生，开启了数字所有权的新纪元。它使得艺术品、收藏品等独一无二的数字物品，能够作为NFT（非同质化代币）在区块链上拥有不可篡改的所有权记录。我们可以向全世界证明：“这幅数字画作是我的。”
@@ -309,6 +726,7 @@ ERC-7962 的价值远不止于隐私保护。它所带来的“所有权与交�
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 本周，我的学习路径遵循了一个由宏观到微观的逻辑：首先，我从以太坊的宏大愿景出发，试图回答最根本的问题——“它是什么？”；接着，我潜入其底层架构，探索支撑这一切的 **网络结构** 是“如何运作的？”；最后，我将目光聚焦于网络中最核心的交互单元——两种不同的 **账户类型**，探究“谁在其中交互？”。
 
 这次学习对我而言，远不止于理论知识的堆砌，更是一次思维模式的重塑。我深刻体会到，将以太坊的认知从“数字黄金”的单一维度，跃升到“全球可编程平台”即 **世界计算机** 的高度，是理解其所有技术魅力和生态创新的真正起点。
@@ -405,6 +823,7 @@ salt
 
 
 
+
 # **智能合约——以太坊的可编程核心**
 
 智能合约，其核心是**存储在区块链上的程序**。我们可以将其生动地比作一台自动售货机：当投入硬币（支付 Gas）并选择商品（调用合约函数）后，机器会自动执行既定逻辑，交付商品（执行转账或业务逻辑），整个过程无需任何人工干预。这种自动执行、无需中介的特性，正是智能合约的魅力所在。
@@ -471,6 +890,7 @@ salt
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -598,6 +1018,7 @@ EOA为用户提供了直接控制权和发起链上行为的能力，但其功�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -749,6 +1170,7 @@ Gossip协议为以太坊网络带来了三大战略优势：
 
 
 
+
 # Web3安全防护
 
 作为一名Web3新手，在实习和日常操作中面临的风险主要可归为以下三类：
@@ -840,6 +1262,7 @@ Gossip协议为以太坊网络带来了三大战略优势：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1170,6 +1593,7 @@ DAO 是利用智能合约进行管理的链上组织，其规则公开透明，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
