@@ -15,8 +15,56 @@ QS600+金融本硕；Web3初学者
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+-   **布尔型（bool）**
+    
+    -   取值：`true / false`
+        
+    -   展示了默认值行为（未赋值时为 `false`）
+        
+-   **无符号整数（uint）**
+    
+    -   从 `uint8` 到 `uint256`
+        
+    -   强调 `uint` 是 `uint256` 的别名
+        
+    -   说明不同位宽对应的取值范围
+        
+-   **有符号整数（int）**
+    
+    -   从 `int8` 到 `int256`
+        
+    -   展示正负数
+        
+    -   使用 `type(int256).min / max` 演示极值（0.8.x 之后的规范写法）
+        
+-   **地址类型（address）**
+    
+    -   示例中给出一个以太坊地址
+        
+    -   为后续合约交互、转账等内容打基础
+        
+-   **字节类型（bytes / bytes1）**
+    
+    -   区分：
+        
+        -   固定长度字节数组（如 `bytes1`）
+            
+        -   动态字节数组（`bytes`，即 `byte[]` 的简写）
+            
+    -   通过二进制注释帮助理解字节含义
+        
+-   **默认值（Default Values）**
+    
+    -   展示 Solidity 中**未显式初始化的状态变量默认值**
+        
+    -   包括 `bool / uint / int / address`
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## 一、核心目标（一句话版）
 
 > **通过统一中英文混排、标点、数字与专有名词的书写规则，提升中文文案的可读性、专业感与整体审美一致性。**
@@ -191,6 +239,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ## 智能合约开发 —— 知识结构速览
 
@@ -385,6 +434,7 @@ QS600+金融本硕；Web3初学者
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 尝试使用Remix IDE，跑通测试并撰写新的代码完成任务
 
 ![截屏2026-01-17 22.24.38.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-18-1768750752757-__2026-01-17_22.24.38.png)
@@ -395,6 +445,7 @@ QS600+金融本硕；Web3初学者
 
 
 
+
 创建钱包，测试币转账
 
 ![截屏2026-01-16 22.44.20.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-17-1768655912594-__2026-01-16_22.44.20.png)
@@ -402,6 +453,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -551,6 +603,7 @@ EOA 用户通过私钥签名发起外部交易（external transaction），交�
 
 
 
+
 # 一、节点与客户端
 
 ## 节点
@@ -686,6 +739,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 # 一、Web3合规性要求与常见法律风险
 
 ## 核心法律风险梳理
@@ -760,6 +814,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -964,6 +1019,7 @@ DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
