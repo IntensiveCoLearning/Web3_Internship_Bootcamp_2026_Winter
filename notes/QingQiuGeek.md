@@ -15,8 +15,316 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+\## 概念  
+  
+在 Solidity 中，\*\*状态（state）\*\*指合约中所有存储在区块链上的变量（即状态变量，如 uint balance;、address owner;等）  
+  
+solidity 有一些俗成的约定，会使用下划线\\\_区分状态变量和局部变量或者函数是否应该被外部调用，比如构造函数内部；  
+  
+\`\`\`c  
+contract MyContract {  
+uint256 private \_value;  
+  
+constructor(uint256 value) {  
+\_value = value; // 将构造函数参数赋值给状态变量  
+}  
+}  
+\`\`\`  
+  
+\## 数据类型  
+  
+1\. 值类型  
+  
+\- bool：true | false  
+  
+\- int、uint：整数类型，后面可以加数字，步长是 8，从 int8、uint8 到 int256、uint256，省略数字则默认 256。  
+  
+\- address：地址类型，仅能存储 20 字节的地址。  
+  
+\- address payable：可接收 ETH，有 .transfer() 和 .send() 方法  
+  
+\`\`\`c  
+address addr = 0xAbC...;  
+address payable payableAddr = payable(addr); // 转换为 payable  
+  
+addr.balance 该地址的ETH余额，单位是wei  
+  
+addr.code 合约字节码（bytes memory），若为 EOA 则为空  
+  
+addr.code.length 判断是否为合约（>0 表示是合约）  
+  
+addr.codehash 合约代码的 keccak256 哈希（bytes32）  
+\`\`\`  
+  
+\- bytes：定长字节数组，从 bytes1 到 bytes32，支持索引，有长度  
+  
+\- enum：枚举类型，按定义顺序从 0 开始自动分配整数值。  
+  
+\`\`\`c  
+enum Status { Pending, Approved, Rejected }  
+// Pending → 0  
+// Approved → 1  
+// Rejected → 2  
+\`\`\`  
+  
+2\. 引用类型  
+  
+\*\*引用类型使用时都需要加上 storage、memory 或 calldata。\*\*  
+  
+\> storage：持久化存储在区块链上（合约状态变量）  
+\> memory：临时存储在内存，只在函数执行期间存在，函数结束即销毁。适合临时数据，gas 消耗较低。（函数内部使用）  
+\> calldata：只读的调用数据，通常用于外部函数参数，从交易数据中读取，不分配新内存，节省 gas。但构造函数参数不能使用 calldata  
+  
+\- Array：数组，分为定长数组和动态数组，比如 int\[5\]和 int\[\]  
+  
+\- struct：结构体  
+  
+\`\`\`c  
+struct Person {  
+string name;  
+uint age;  
+}  
+\`\`\`  
+  
+\- mapping：映射，也就是哈希 map，仅能声明为 storge，只能声明在合约顶部，不能作为局部变量或函数出入参。key 只能是值类型，value 无限制，key 不存在时默认返回值是 0。mapping 没有长度，无法遍历，也不能作为函数参数传递。  
+  
+\- string：动态长度的字符串，底层是 bytes，不支持索引，但是可以通过 bytes(string)转成 bytes 类型  
+  
+\## 函数  
+  
+\### 构造函数  
+  
+在合约部署时只执行一次，用于初始化状态变量（如设置所有者、初始参数等）。  
+  
+特点：  
+  
+\- 只能有一个构造函数  
+  
+\- 不能有返回值  
+  
+\- 不能被外部调用  
+  
+\- 如果没有显示定义则有一个空的默认构造函数  
+  
+从 Solidity 0.7.0 起，不再使用 function ContractName() 的方式定义构造函数，必须使用 constructor 关键字，如：  
+  
+\`\`\`c  
+pragma solidity ^0.8.0;  
+  
+contract MyToken {  
+address public owner;  
+string public name;  
+  
+// 构造函数  
+constructor(string memory \_name) {  
+owner = msg.sender; // 部署者设为所有者  
+name = \_name; // 初始化代币名称  
+}  
+}  
+\`\`\`  
+  
+\### 普通函数  
+  
+\`\`\`c  
+function transfer(address to, uint amount) public {  
+  
+//require，一般用于外部输入的条件检查，如果不满足condition条件则：  
+//1. 立刻终止当前函数执行  
+//2. 回滚所有状态更改  
+//3. 退还剩余gas，已消耗的不退  
+//4. 最终返回一条错误信息  
+require(condition, "可选的错误消息");  
+  
+//如果assert失败说明代码存在bug  
+//1. 回滚不退gas  
+//2. 抛出操作码  
+assert(condition)  
+  
+//立即回滚 + 退还未用 gas + 返回错误消息  
+if(...){  
+revert("msg");  
+}  
+}  
+\`\`\`  
+  
+\### view 修饰的函数  
+  
+不修改状态，可被外部免费调用（不消耗 gas）  
+  
+\`\`\`c  
+function balanceOf(address user) public view returns (uint) {  
+return balances\[user\];  
+}  
+\`\`\`  
+  
+\### pure 修饰的函数  
+  
+既不读也不写状态，完全依赖参数计算  
+  
+\`\`\`c  
+function add(uint a, uint b) public pure returns (uint) {  
+return a + b;  
+}  
+\`\`\`  
+  
+\### fallback 函数  
+  
+当合约收到无 calldata 的调用或调用了不存在的函数时触发  
+  
+\`\`\`c  
+fallback() external payable {  
+// 可接收 ETH  
+}  
+\`\`\`  
+  
+\### receive 函数  
+  
+仅当合约通过普通转账（非函数调用）收到 ETH 时触发  
+  
+\`\`\`c  
+receive() external payable {  
+// 必须标记为 payable  
+}  
+\`\`\`  
+  
+\### modifier(修饰器)  
+  
+用于复用校验逻辑（如权限控制）  
+  
+\`\`\`c  
+modifier onlyOwner() {  
+require(msg.sender == owner, "Not owner");  
+\_;  
+}  
+  
+function withdraw() public onlyOwner {  
+payable(msg.sender).transfer(address(this).balance);  
+}  
+\`\`\`  
+  
+\## 关键字  
+  
+\- external：函数可见性（visibility）修饰符之一，主要用于声明\*\*这个函数只能从合约外部调用\*\*，比如通过交易、其他合约调用或者 this.functionName()，不能直接 functionName()调用，更省 gas！  
+  
+Solidity 函数调用有两种方式：  
+  
+内部调用（jump）：像普通函数调用，参数用内存指针传递。  
+外部调用（EVM message call）：通过 calldata 传递数据。  
+  
+public 函数必须支持两种调用方式，所以编译器会强制把参数（尤其是数组、string、bytes）拷贝到 memory（即使是从外部调用也拷贝），这会产生 gas 开销。  
+  
+external 函数只支持外部调用，编译器知道参数只来自 calldata，所以可以直接读取 calldata 中的数据，不需要拷贝 → 节省 gas。  
+  
+\- public：可以直接 functionName()调用  
+  
+\## 一些全局变量  
+  
+\- msg：一个内置的全局结构体（struct），由以太坊虚拟机（EVM）在每次外部调用时自动提供，无需声明或初始化，在任何函数中都可以直接访问，它包含了当前函数调用的上下文信息。  
+  
+!\[alt text\](image.png)  
+  
+\- block：提供当前区块的信息  
+  
+!\[alt text\](image-1.png)  
+  
+\## ABI 接口  
+  
+Application Binary Interface，应用二进制接口。相当于接口说明书，java 的 swagger 文档，json 格式，包含了：  
+  
+\- 这个合约有哪些可调用的函数？  
+\- 每个函数的名字、参数类型、返回值类型是什么？  
+\- 还有哪些事件（Events）、错误（Errors）可以被触发或抛出？  
+  
+\### 为什么需要 ABI？  
+  
+智能合约部署到链上后，EVM（以太坊虚拟机）只认识字节码（bytecode），是一串十六进制字符串（人类完全看不懂），ABI 解决了这个问题，可以\*\*编码\*\*把人类可读的函数调用（如 transfer(address to, uint amount)）转成 EVM 能懂的二进制数据，可以\*\*解码\*\*把合约返回的二进制数据转回人类可读的结果。  
+  
+\`\`\`json  
+\[  
+{  
+"inputs": \[  
+{ "internalType": "address", "name": "to", "type": "address" },  
+{ "internalType": "uint256", "name": "amount", "type": "uint256" }  
+\],  
+"name": "transfer",  
+"outputs": \[{ "internalType": "bool", "name": "", "type": "bool" }\],  
+"stateMutability": "nonpayable",  
+"type": "function"  
+},  
+{  
+"anonymous": false,  
+"inputs": \[  
+{  
+"indexed": true,  
+"internalType": "address",  
+"name": "from",  
+"type": "address"  
+},  
+{  
+"indexed": true,  
+"internalType": "address",  
+"name": "to",  
+"type": "address"  
+},  
+{  
+"indexed": false,  
+"internalType": "uint256",  
+"name": "value",  
+"type": "uint256"  
+}  
+\],  
+"name": "Transfer",  
+"type": "event"  
+}  
+\]  
+\`\`\`  
+  
+\---  
+  
+\### 补充说明  
+  
+\- \`storage\`：持久化存储（合约状态）  
+\- \`memory\`：临时内存（函数内使用）  
+\- \`calldata\`：只读外部调用参数（节省 gas）  
+\- \*\*\`string\` 和 \`bytes\`\*\* 虽然行为类似数组，但因用途特殊，通常单独归类。  
+\- \*\*\`address payable\`\*\* 是 \`address\` 的子类型，拥有 \`.transfer()\` 和 \`.send()\` 方法；可通过 \`payable(addr)\` 转换。  
+  
+\---  
+  
+\> ⚠️ 注意：\`mapping\` 不能作为函数参数、返回值或局部变量（只能作为状态变量）。  
+  
+\`\`\`c  
+pragma solidity ^0.8.0;  
+  
+contract DataTypes {  
+bool public isActive = true;  
+uint256 public count = 100;  
+address public owner = msg.sender;  
+bytes32 public hash = keccak256("hello");  
+  
+enum Status { Pending, Approved, Rejected }  
+Status public status = Status.Pending;  
+  
+struct User {  
+string name;  
+uint age;  
+}  
+  
+User\[\] public users; // 动态数组  
+mapping(address => uint) public balances;  
+  
+function addUser(string memory \_name, uint \_age) public {  
+users.push(User(\_name, \_age));  
+}  
+}  
+\`\`\`
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -86,6 +394,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -120,6 +429,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -231,6 +541,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -394,6 +705,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -509,6 +821,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -549,6 +862,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
