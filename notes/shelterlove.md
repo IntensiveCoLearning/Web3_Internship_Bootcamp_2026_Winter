@@ -15,8 +15,76 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 笔记
+
+Uniswap
+
+V2 恒积做市商
+
+liquidity 流动性；iso-price line 等价格线；price impact 价格影响；slippage 滑点；impermanent loss 无常损失；flash loan 闪电借贷；TWAP oracle 时间加权平均价格预言机
+
+x\*y=k p=y/x 保持两个代币数量乘积恒定，比值就是兑换价格
+
+k越大流动性越大，兑换时候带来的移动也会变少
+
+因为交易带来的价格移动，会导致成交价格因为AMM曲线产生偏离被称为Price Impact，可根据流动性预测
+
+Slippage滑点，取决于交易顺序或MEV，不可预测
+
+流动性的添加减少要严格按照比例
+
+无常损失，对于LP（流动性提供者），在价格变动时，本质上是相当于在用一种币沿曲线定投另一种币，价格变动结束时，如果在此时梭哈，“受益”会更高，损失的部分就被成为无常损失
+
+当价格 3,000时，LP价值
+
+6,000 + 2 \* 3,000 = 12,000
+
+当价格 3,200时，LP价值
+
+6,196.77 + 1.9365 \* 3,200
+
+\= 12,393.5467 Nice!
+
+但是，如果不做 LP
+
+6,000 + 2 \* 3,200 = 12,400
+
+TWAP时间加权平均价格预言机，定义了累积价格方便计算
+
+price0CumulativeLast += reserve0 / reserve1 \* timeElapsed
+
+TWAP = (v1 - v0) / (t1 - t0)
+
+本质上是计算面积等价的矩形
+
+V3 集中流动性做市商
+
+LP提供的流动性贡献在一个特定的区间，可以让流动性更大
+
+因为L可能在变化，所及swap中需要轮询
+
+1）记录每个流动性变化的价格点位和变化值
+
+2）计算推到下一个点位消耗的 x或 y
+
+3）根据变化值修改流动性，重复 2）
+
+点位是离散的tick，避免gasFee过高
+
+计算LP的Fee，取决于该区间的Fee在LP加入后增加的单位量乘上LP提供的流动性
+
+## 明日任务
+
+1.  继续Uniswap的学习
+    
+2.  完成深度技术中能看懂的任务
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## 笔记
 
 **remix实操**
@@ -62,6 +130,7 @@ storage：4906
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ## bytes 格式介绍
 
@@ -412,6 +481,7 @@ function changeOwner(address _newOwner)
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ## 今日计划完成情况
 
 1.  完成speed run etheruem challenge 0
@@ -436,6 +506,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -643,6 +714,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -899,6 +971,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日学习任务完成情况
 
 1.  021学习以太坊第三章
@@ -938,6 +1011,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -997,6 +1071,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1099,6 +1174,7 @@ Q：NFT的价值来自什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
