@@ -1,5 +1,5 @@
 ---
-timezone: UTC+8
+timezone: UTC+9
 ---
 
 # JadeTwinkle
@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-The eternity of pain often does not lie in choosing hardship, but in rejecting the choice itself.
+Web3 实习计划 2025 冬季实习生
 
 ## Notes
 
