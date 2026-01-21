@@ -15,8 +15,285 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# ZkVote(**Zero-Knowledge vote)**
+
+## **1.zkvote的性质**
+
+![Public Inputs 与 Witness 的区别](https://zkvote.0xtmp.xyz/images/public-vs-witness.svg)
+
+在投票系统中：
+
+-   完备性保证「合法选民的合法投票不会被无故拒绝」；
+    
+-   可靠性保证「非选民或者试图一人多投的人无法通过验证」；
+    
+-   零知识性保证「验证者无法从证明中推断出你是谁、投了什么票」。
+    
+
+## 2.ZKVote 流程
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tutou2356/images/2026-01-21-1768966333363-image.png)
+
+1.  **生成身份秘密与承诺**
+    
+    -   前端在本地生成 `identitySecret`；
+        
+    -   计算 `identityCommitment` 并发送给后台/注册合约；
+        
+    -   等待该承诺被加入选民 Merkle 树。
+        
+2.  **获取最新的选民集合信息**
+    
+    -   前端从合约读取当前的 Merkle 根 `root`；
+        
+    -   根据你的 `identityCommitment` 计算并存储对应的 Merkle 路径。
+        
+3.  **在本地构造 ZK 证明**
+    
+    -   你在界面中选择「同意 / 反对」等选项；
+        
+    -   浏览器端把以下数据输入到证明电路：
+        
+        -   私有输入：`identitySecret`、Merkle 路径、`vote`；
+            
+        -   公开输入：`root`、`electionId`；
+            
+    -   调用 zk 库，使用 `Proving Key` 生成证明 `proof`，同时计算 `nullifier`。
+        
+4.  **提交投票交易**
+    
+    -   前端将 `proof`、`publicInputs`（包含 `root`、`nullifier`、投票选项等必要字段）打包，调用投票合约；
+        
+    -   你的钱包会弹出签名与发送交易的确认页面，但交易数据中不包含你的身份秘密。
+        
+5.  **链上验证与计票**
+    
+    -   合约调用 Verifier 合约验证 `proof` 是否有效；
+        
+    -   检查 `nullifier` 是否已被使用；
+        
+    -   如果验证通过且 `nullifier` 未出现过，则记录这张票并标记 `nullifier` 为已使用。
+        
+6.  **查看结果与审计**
+    
+    -   任何人都可以在链上查看：
+        
+        -   每一次投票调用时提供的 `publicInputs`；
+            
+        -   以及合约验证通过的事实；
+            
+    -   但没有人可以从这些数据中还原出：
+        
+        -   具体是哪一个 `identitySecret` 参与了某次投票；
+            
+        -   某个真实世界身份在这场投票中选择了什么。
+            
+
+## 3.交互式 vs 非交互式、zk-SNARK 与 zk-STARK
+
+最早的零知识证明是**交互式**的：证明者和验证者要来回多轮问答，才能完成一次证明。
+
+在区块链场景下，这种方式不现实：我们希望证明能以**单个对象**的形式提交到链上，由合约一次性做出判断，因此需要使用 **非交互式零知识证明（NIZK）**。
+
+目前在区块链上常见的两类 NIZK 系统有：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tutou2356/images/2026-01-21-1768966531209-image.png)
+
+-   **zk-SNARK（Zero-Knowledge Succinct Non-Interactive Argument of Knowledge）**
+    
+    -   _Succinct_：证明大小很小，验证开销与原始计算规模无关或几乎无关；
+        
+    -   _Non-Interactive_：证明是单向的，不需要多轮交互；
+        
+    -   已被广泛用于隐私交易、zk-Rollup 等场景。
+        
+-   **zk-STARK（Zero-Knowledge Scalable Transparent Argument of Knowledge）**
+    
+    -   不依赖可信初始化（trusted setup）；
+        
+    -   更适合大规模、复杂计算的场景，但证明大小通常更大。
+        
+
+实际工程中你可以选择不同 proving system（例如 Groth16、PLONK、Halo2 等）
+
+## 4.zk-SNARK 系统的一般工作流程
+
+虽然不同库的实现细节不同，但大多数 zk-SNARK 都可以抽象为以下几个步骤：
+
+### 4.1 编写约束系统 / 电路
+
+首先，需要把我们想要证明的逻辑，转换成一种适合电路计算的形式，比如：
+
+-   R1CS（Rank-1 Constraint System）约束；
+    
+-   或者算术电路（Arithmetic Circuit）形式。
+    
+
+在 ZKVote 场景中，我们想证明的逻辑包括（简化版）：
+
+1.  证明者确实是选民集合中的一员；
+    
+2.  这次投票的选项属于允许的取值集合；
+    
+3.  为当前投票生成的 nullifier（防重复投票标识）是由身份秘密和投票 ID 计算出来的。
+    
+
+这些条件都会被转化为一系列约束，构成一个「需要被证明的程序」。
+
+### 4.2 Setup：生成证明密钥和验证密钥
+
+在 zk-SNARK 中，通常需要先执行一次 **Setup**：
+
+-   输入：约束系统 / 电路描述；
+    
+-   输出：
+    
+    -   **Proving Key（PK）**：用于之后生成证明；
+        
+    -   **Verification Key（VK）**：用于之后验证证明。
+        
+
+在很多实现中，这一步需要一个可信设置（Trusted Setup）阶段，由一组参与者共同执行，多余的秘密参数需要在仪式结束后安全销毁，以避免被滥用。
+
+在本教程的上下文里，我们假设：
+
+-   Setup 已经通过安全的方式离线完成；
+    
+-   合约中已经内置或存储了对应的 `Verification Key`。
+    
+
+### 4.3 证明者本地生成证明
+
+当你准备进行一次 ZK 投票时，浏览器会在本地执行以下操作：
+
+1.  从你的输入中收集**公开输入（public inputs）**：
+    
+    -   如投票所属的 `electionId`；
+        
+    -   当前选民集合的 Merkle 根 `root` 等。
+        
+2.  从本地或钱包中收集**私有输入（witness）**：
+    
+    -   你的身份秘密 `identitySecret`；
+        
+    -   对应的 Merkle 路径；
+        
+    -   你选择的投票选项 `vote`。
+        
+3.  调用 zk 证明库，使用 `Proving Key` 计算出一份证明 `proof`。
+    
+
+生成出的证明通常是一个非常短的结构化二进制数据，可以被序列化为 JSON 再发送给智能合约。
+
+### 4.4 智能合约端验证证明
+
+前端会构造一笔交易，调用投票合约的类似函数：
+
+```
+function vote(
+    Proof proof,
+    PublicInputs publicInputs
+) external {
+    // 1. 调用 Verifier 验证 proof
+    // 2. 检查 nullifier 是否已被使用
+    // 3. 更新计票结果
+}
+```
+
+合约内部会执行以下步骤：
+
+1.  调用内置的 Verifier 合约（或预编译）验证 `proof` 与 `publicInputs` 是否匹配且合法；
+    
+2.  检查 `nullifier` 是否已经被使用（防止一人多投）；
+    
+3.  如果验证通过且 `nullifier` 未使用：
+    
+    -   记录该 `nullifier`；
+        
+    -   更新投票结果（计票）。
+        
+
+所有这些操作都会生成交易记录，保留在链上，任何人都能复查。
+
+思路：root 存链上；Merkle 路径在证明里；nullifier 防止重复投票。
+
+## 五、ZKVote 系统设计：从身份到选票
+
+之前的模拟投票就是基于 zk-SNARK 流程，这里参考包括 Semaphore 在内的多种匿名信号协议的设计思想。
+
+### 5.1 身份注册与选民集合
+
+![身份承诺、Merkle 树与 nullifier 示意](https://zkvote.0xtmp.xyz/images/merkle-nullifier.svg)
+
+root 存链上；Merkle 路径在证明里；nullifier 防止重复投票。
+
+在投票开始前，我们需要确定谁有权投票。一个典型流程是：
+
+1.  每个选民在本地生成一个随机秘密 `identitySecret`；
+    
+2.  计算对应的 **身份承诺（identity commitment）**：
+    
+    ```
+    identityCommitment = Hash(identitySecret)
+    ```
+    
+3.  所有 `identityCommitment` 被组织成一棵 **Merkle 树**，其根节点 `root` 存储在投票合约中；
+    
+4.  选民在本地保存自己的 `identitySecret` 和对应的 Merkle 路径。
+    
+
+在这个模型中：
+
+-   链上只知道「有哪些承诺构成了选民集合」；
+    
+-   不知道每个承诺背后是哪一个具体的钱包地址或现实身份。
+    
+
+### 5.2 Nullifier：防止重复投票
+
+为了防止同一个选民多次投票，我们为每次投票定义一个 **nullifier**：
+
+```
+nullifier = Hash(identitySecret, electionId)
+```
+
+在电路中，我们会强制约束：
+
+-   `nullifier` 是由某个合法 `identitySecret` 与当前投票 ID `electionId` 计算得到的；
+    
+-   但证明中不会泄露 `identitySecret` 本身，也不会暴露你在 Merkle 树中的位置。
+    
+
+合约只需要确保：
+
+-   对同一个 `electionId`，同一个 `nullifier` 只能使用一次；
+    
+-   无论谁提交交易，只要带着一个还没被使用过且证明合法的 `nullifier`，就能完成投票。
+    
+
+### 5.3 投票内容与合法性约束
+
+对于投票选项本身，我们在电路中通常会加入以下约束：
+
+-   `vote` 必须是允许的选项之一（例如只能是 `{0,1}`、或 1~N 之间的整数）；
+    
+-   对于多选题，可以约束票数和在某个范围内；
+    
+-   如果为了进一步保护隐私，也可以在链上只记录密文或承诺，而不直接记录明文票项。
+    
+
+具体如何处理投票内容与计票过程，会与系统的隐私目标与复杂度要求有关。
+
+部分系统会采用「加密选票 + 同态计票」等技术组合，在保持选票密文形式的前提下完成可验证计票。
+
+**链上公开：我提交了一个“有效的证明”。 链上不公开：我是谁、我投了什么。**
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ### **三、RPC 节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。理解 RPC 的工作原理、选择合适的 RPC 服务商，以及正确配置和使用 RPC 节点，是每个 Web3 开发者必须掌握的基础知识。
@@ -64,6 +341,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # **智能合约开发**
 
@@ -153,6 +431,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 今天学习了web3实习手册入门导读中的web3工作方式一章，了解了很多行业黑话，解决了之前的一些困惑。
@@ -267,6 +546,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -399,6 +679,7 @@ MEME 币具有极高的投机性和波动性。价格可能在短时间内暴涨
 
 
 
+
 ## 二、以太坊概览
 
 ### 2.7 **以太坊核心机制：从账户到执行的完整链路**
@@ -524,6 +805,7 @@ Compound 是一个去中心化的借贷平台，允许用户借入或借出加�
 
 
 
+
 二、以太坊概览
 
 \*\*2.4 2022 年 9 月 The merge : PoW(\*\*工作量证明 Proof of Work) \*\*—> PoS(\*\*权益证明 Proof of Stake)
@@ -589,6 +871,7 @@ Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
