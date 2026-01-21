@@ -15,19 +15,73 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+【挖坑+1】Uniswap内容过于干燥，暂且不做笔记分享，日后消化完成后再来填坑。
+
+-   **任务背景**
+    
+
+Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，旨在通过**轻组织、低成本、去商业化、重创意、重体验**的方式，让开发者摆脱传统黑客松的压力，纯粹地享受构建的乐趣和社区的协作氛围。为了将这一理念持续践行，我们需要你作为**本期活动发起人**，从0到1完整地策划并执行一场新的休闲黑客松。
+
+了解休闲黑客松：[The introduction of Casual Hackathon](https://forum.lxdao.io/t/the-introduction-of-casual-hackathon/2827)
+
+-   **任务**
+    
+
+作为本期活动的主要负责人，独立完成一场休闲黑客松的全程策划、组织与发起工作。你需要：
+
+1.  **主题策划:** 确定一个有趣、开放、能激发创造力的活动主题（例如：AI+Web3、链上游戏、公共工具等）。
+    
+2.  **全流程执行:** 负责从活动宣传、报名招募、开题引导、过程协调到最终成果展示的全过程。
+    
+3.  **氛围营造:** 确保活动秉承“休闲”与“开源”的核心精神，营造轻松、包容、有趣的线上协作环境。
+    
+
+-   **核心技能点**
+    
+-   **项目管理:** 能够规划时间线，并高效推动所有环节按时完成。
+    
+-   **社区运营:** 懂得如何撰写吸引人的宣传内容，并在微信/TG 等社区内调动气氛、解答疑问。
+    
+-   **沟通协调:** 能够清晰地与参与者沟通规则，并协调资源。
+    
+-   **执行力:** 强大的动手能力，能将想法快速落地。
+    
+-   **交付成果**
+    
+
+1.  **《第X期休闲黑客松活动方案》:** 一份简洁的活动说明文档，包含主题、时间安排、参与规则、评审标准（如果有）、奖励说明（如果有）等。
+    
+2.  **全套宣传材料:** 包括活动预告海报、招募推文/帖子、活动通知公告等。
+    
+3.  **一场成功发起的活动:**
+    
+    -   成功开启报名通道（可使用 Google Form/Tally 等工具）。
+        
+    -   在微信/TG 创建专属频道并组织开题会。
+        
+    -   活动期间为参与者提供必要的协调和支持。
+        
+4.  **活动总结报告:** 一份简要的复盘，包含报名人数、最终项目数量、活动图文记录、参与者反馈及改进建议。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ![公共物品分配脑图.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-20-1768913558827-________.jpg)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ![运营脑图.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-19-1768830543192-____.jpg)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## 会员身份属于隐私数据，但如果把ZK应用其中，就能够在不暴露隐私的情况下进行数据交易，在现实社会中非常有意义 —— ERC-7962协议分享会
@@ -111,6 +165,7 @@ timezone: UTC+8
 
 
 
+
 ## 通知：
 
 ### 今日轮休
@@ -120,6 +175,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -170,6 +226,7 @@ X平台经常改算法
 
 
 
+
 ## 转变：从“对话”到“行动”—— ai分享会
 
 ![1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487695452-1.jpg)![2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487716965-2.jpg)![3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487733276-3.jpg)![4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487747286-4.jpg)![5.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487762438-5.jpg)![6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487780369-6.jpg)
@@ -205,6 +262,7 @@ validation registry - permissioned的agent标签
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -570,6 +628,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 ## **治理完全有效的基础只能是社会阶段提升，人民综合素质提高才可以。——co-learning1.13**
 
 本次的co-learning环节更像是一场哲思辩论会，evo swift同学与XiaoHai67890、Draken、wachi三位老师展开了关于DAO治理投票权相关的优劣争议。“无限花园的隐喻”和关怀、包容性的适应性领导力立场更有关联，和 目前 资本的攫取主义 呈现出来的是两翻景色，展示了小海老师深厚的哲学功底。
@@ -629,6 +688,7 @@ LXDAO解决方案：从第七季度开始，LXDAO不再追求治理的投票率�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
