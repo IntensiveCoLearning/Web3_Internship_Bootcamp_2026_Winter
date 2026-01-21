@@ -15,8 +15,16 @@ Yuchen
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+学习了社区运营指南
+
+看了一点合规安全
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 智能合约开发
 
 一、Dapp去中心化应用
@@ -133,6 +141,7 @@ pragma solidity ^0.8.0; ---------版本声明
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 岗位概览
 
 1.  技术岗
@@ -157,6 +166,7 @@ pragma solidity ^0.8.0; ---------版本声明
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -250,6 +260,7 @@ pragma solidity ^0.8.0; ---------版本声明
 
 
 
+
 Web3工作方式
 
 1.OKR写法与最佳实践：目标（Objectives）全团队公开可见，关键结果（Key Results）量化可追踪
@@ -290,6 +301,7 @@ Web3工作方式
 
 
 
+
 今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
 
 行业赛道：
@@ -316,6 +328,7 @@ Web3工作方式
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -447,6 +460,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 
 
+
 -   Bitcoin & Ethereum
     
 
@@ -569,6 +583,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
