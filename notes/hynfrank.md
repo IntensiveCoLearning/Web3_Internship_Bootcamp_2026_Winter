@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+Uniswap V2 代码以及 SDK
+
+-   [**V2 Core**](https://github.com/Uniswap/v2-core)
+    
+-   [**V2 Periphery**](https://github.com/Uniswap/v2-periphery?utm_source=chatgpt.com)
+    
+-   [**Uniswap Interface（Web 前端）**](https://github.com/Uniswap/interface)
+    
+-   Uniswap V2 SDK（[文档](https://docs.uniswap.org/sdk/v2/overview?utm_source=chatgpt.com)｜[GitHub](https://github.com/Uniswap/uniswap-v2-sdk)）
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
 
 021 学习以太坊第 5 章
@@ -26,6 +40,7 @@ Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 学习内容：
 
@@ -38,6 +53,7 @@ Web3 实习手册「智能合约开发」部分
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 预习第二周目标
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -46,11 +62,13 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 复习以太坊书籍的前三章
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -73,6 +91,7 @@ Remix 使用教程
 
 
 
+
 工具安装
 
 MetaMask / Rabby 钱包安装 & 创建，并熟悉
@@ -82,6 +101,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -104,6 +124,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 
 
+
 拓展 & 辅助理解材料
 
 Becoming a Power User - Wallets, Mnemonics, Keypairs
@@ -115,6 +136,7 @@ Becoming a Power User - Wallets, Mnemonics, Keypairs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
