@@ -15,8 +15,293 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## Introduction｜今天学到的核心是什么 (Overview)
+
+你今天的学习可以浓缩成一句话：
+
+> 你跑通了 DApp 的最小闭环（minimum viable loop）：
+> 
+> **写合约（Solidity）→ 编译（Compile）→ 部署（Deploy）→ 生成合约地址（Contract Address）→ 用不同账户调用（Call/Tx）→ 理解它和 API/ABI 的差异**
+
+更具体一点，你重点掌握了：
+
+-   Remix 部署面板里 **Environment / Account** 到底在控制什么
+    
+-   “部署会生成合约地址”到底意味着什么（what actually happens)
+    
+-   合约地址与钱包地址虽然长得像（都 `0x...`），但“物种不同”（different entities）
+    
+-   API / ABI 在 Web2 vs Web3 里为什么不一样（why the interface differs）
+    
+
+* * *
+
+## Foundations｜基础篇：今天你在 Remix 里做的到底是什么 (What you actually did)
+
+### 1) 你学的不是“点按钮”，而是“链上执行模型 (on-chain execution model)”
+
+Remix 里看似只是几个按钮：Compile、Deploy、store、retrieve。
+
+但每一步都对应链上真实概念：
+
+-   **Compile（编译）**：Solidity → **Bytecode（字节码）+ ABI（接口说明）**
+    
+-   **Deploy（部署）**：发送一笔 **Transaction（交易）**，把 bytecode 写到链上 → 生成 **Contract Address（合约地址）**
+    
+-   **Interact（交互）**：
+    
+    -   `store()`：写入 → transaction（上链、改状态、花 gas）
+        
+    -   `retrieve()`：读取 → call（通常不改状态、可本地模拟）
+        
+
+> 你今天“主要学习 Remix 的部署原理”，本质就是在理解“代码怎么从编辑器变成链上的可执行实体（from source to on-chain instance）”。
+
+* * *
+
+## Core Concepts｜进阶篇：Remix 部署面板三要素（Environment / Account / Contract）
+
+你提到“部署的环境啊、账号啊”，我把它们按\*\*控制变量（control variables）\*\*来解释：你在 Deploy 面板上其实在选择“谁在什么地方做什么事”。
+
+### 1) Environment（环境）= 你把合约部署到哪里 (Where you deploy)
+
+在 Remix 里常见两类：
+
+### A) Remix VM（JavaScript VM / Remix VM Osaka 等）
+
+-   本质：Remix 在浏览器里模拟的一条“本地区块链（local simulated chain）”
+    
+-   特点：
+    
+    -   快（fast）
+        
+    -   免费（free）
+        
+    -   用假币（fake ETH）
+        
+    -   适合学习与调试（learning/debugging）
+        
+
+你今天学到的“部署原理”用 VM 就足够，因为链上规则是同一套，只是环境不是真实主网。
+
+### B) Injected Provider（MetaMask）
+
+-   本质：连到真实链或测试网（real chain/testnet）
+    
+-   特点：
+    
+    -   真实签名（real signing）
+        
+    -   真实费用（real fee / testnet fee）
+        
+    -   全世界可见（publicly visible）
+        
+
+> 所以 Environment 决定：你在“单机练习模式（offline sandbox）”还是“联网真实世界（live network）”。
+
+* * *
+
+### 2) Account（账号）= 谁来发起部署与调用 (Who initiates)
+
+你提到“账号”，这里的核心是：
+
+-   **在区块链里，只有账户（EOA）能主动发起交易（initiate transactions）**
+    
+-   所以你在 Remix 选 Account，本质是在选“发起者（sender / msg.sender）”
+    
+
+Remix VM 给你很多账户，其目的就是让你模拟多人场景（multi-actor simulation）：
+
+-   账户 A 存
+    
+-   账户 B 再存（可能覆盖/累加）
+    
+-   账户 C 尝试攻击/捣乱（如果合约没权限控制）
+    
+
+* * *
+
+### 3) Deploy（部署）= 这不是“连接”，而是“创建新实例 (create a new instance)”
+
+你今天学到的关键点之一是：
+
+-   **Deploy = 创建一个全新的合约实例（new contract instance）**
+    
+-   **每点一次 Deploy 就会生成一个新的合约地址（new contract address）**
+    
+-   它像“盖一栋新楼”，不是“进旧楼”
+    
+
+这也是你后面理解 **At Address** 的前提：
+
+-   Deploy = create
+    
+-   At Address = connect/load
+    
+
+* * *
+
+## Core Mechanism｜核心原理：部署合约会发生什么 (What happens during Deploy)
+
+你说“部署合约会生成一个合约地址”，这句话背后可以拆成 5 步（这就是你“等等等等”的展开）：
+
+1.  **Compile** 后得到 **Bytecode**
+    
+2.  你点 **Deploy**，Remix 构造一笔 **contract creation transaction（创建合约交易）**
+    
+3.  用你选的 **Account** 对交易签名（sign）并支付 gas（in VM 是假币）
+    
+4.  EVM 执行这笔交易，把 bytecode 写入链的状态（state）
+    
+5.  链返回一个新地址：**Contract Address**（合约地址），你在 Deployed Contracts 区域看到它
+    
+
+> 一句话：Deploy 不是“把代码发给某台服务器”，而是“通过交易把程序写进全网共识状态（write program into consensus state）”。
+
+* * *
+
+## Core Concepts｜进阶篇：合约地址 vs 钱包地址（你今天的关键疑问）
+
+你提到“它跟钱包地转关系”，这里我们把“关系”拆成三层：**外观、能力、生成方式**。
+
+### 1) 外观：长得像 (They look the same)
+
+-   都是 `0x...` 的 20 字节地址（20-byte Ethereum address）
+    
+-   所以初学者最容易误会：“它们是不是一类东西？”
+    
+
+### 2) 能力：完全不同 (Capabilities differ)
+
+### 钱包地址 Wallet Address（EOA, Externally Owned Account）
+
+-   有私钥（private key）
+    
+-   能主动发交易（can initiate transactions）
+    
+-   人的身份（human-controlled account）
+    
+
+### 合约地址 Contract Address
+
+-   没私钥（no private key）
+    
+-   不能主动发交易（cannot initiate on its own）
+    
+-   只能被动响应调用（responds to calls/tx per code）
+    
+
+你今天学到的要点可以浓缩成一句“物种差异”：
+
+> 钱包地址像“人（actor）”，合约地址像“机器（program）”。
+
+### 3) 关系：创造者与被创造者 (Creator relationship)
+
+-   合约地址是由某个钱包地址发起部署交易“创造出来”的（created by a deployment tx)
+    
+-   一旦创建，它就独立存在（independent entity），除非链回滚（通常不会发生）
+    
+
+* * *
+
+## Advanced Applications｜高阶篇：At Address 的意义（为什么你今天会反复提到它）
+
+你今天的理解链路里隐含着一个很重要的能力：**连接已有合约**。
+
+-   **At Address = load/connect existing contract by address**
+    
+-   作用：当你刷新 Remix 或换设备，界面没了，但链上合约还在
+    
+    你不必重新 Deploy（否则地址变了、状态也不是原来的）
+    
+
+并且你学到了一个关键安全直觉（security intuition）：
+
+-   **知道地址 ≠ 能篡改代码**
+    
+-   能不能改状态，取决于合约逻辑是否允许（require / access control）
+    
+
+> 这也是 Web3 的现实：合约是公开的（publicly accessible），权限必须写进代码（permissions are coded, not assumed）。
+
+* * *
+
+## API 是什么？以及它今天为什么会出现在你的学习里 (API vs ABI Bridge)
+
+你最后说“以及 API 是什么东西相关的”。这里我把它和你今天的 Remix 部署串起来讲：
+
+### 1) Web2 的 API（你熟悉的）
+
+-   API（Application Programming Interface）常见形态是 HTTP 接口：
+    
+    -   `GET /users/123`
+        
+    -   `POST /login`
+        
+-   背后有 server（后端）来处理逻辑与数据库
+    
+
+### 2) Web3 里为什么变成 ABI（你今天在 Remix 里隐约学到的）
+
+当你写合约并编译时，会生成 **ABI**：
+
+-   ABI（Application Binary Interface）不是 URL 接口
+    
+-   它是“函数怎么编码进交易数据（calldata）”的说明书
+    
+    让前端（JS）/工具知道：
+    
+    -   合约有哪些函数
+        
+    -   输入参数类型
+        
+    -   返回值怎么解码
+        
+
+> 所以你今天在 Remix 里看到的那些自动生成按钮，其实就是 Remix 读了 ABI 后自动画出来的（ABI-driven UI）。
+
+* * *
+
+## Edge Cases｜边缘案例：你今天“等等”等的那些常见坑（补全）
+
+你提到“等等等等之类的”，在今天这节课里最常出现的坑通常是：
+
+1.  **把 Deploy 当成 connect**：其实 Deploy 会生成新地址，状态全新
+    
+2.  **不知道换 Account 意味着换身份**：同一个合约，换账户调用，`msg.sender` 就变了
+    
+3.  **以为 At Address 能覆盖别人合约**：它只是加载 UI 指向某地址，不会改链上代码
+    
+4.  **函数 public 默认谁都能调用**：如果没权限控制，任何人都能调用写入函数（potentially dangerous）
+    
+
+* * *
+
+## Summary & Vocabulary｜总结与术语表 (Key Terms Review)
+
+### 今日一句话复盘（One-sentence recap）
+
+你今天学到：在 Remix 中选择 **Environment（链）+ Account（身份）**，通过 **Deploy（交易）**把 **Bytecode** 写上链，生成独立的 **Contract Address**，并理解它与 **Wallet Address (EOA)** 的本质区别，同时把 Web2 的 **API** 视角迁移到 Web3 的 **ABI** 视角。
+
+### 关键术语表（Vocabulary）
+
+| 中文 | English | 记忆点 |
+| --- | --- | --- |
+| 环境 | Environment | 部署到哪条链/哪种模拟链 |
+| 账户 | Account / EOA | 有私钥，能主动发交易 |
+| 合约地址 | Contract Address | 没私钥，只能被动执行代码 |
+| 编译 | Compile | 生成 ABI + Bytecode |
+| 字节码 | Bytecode | EVM 执行/部署用机器码 |
+| ABI | Application Binary Interface | 合约调用说明书（前端靠它交互） |
+| API | Application Programming Interface | Web2 HTTP 接口（URL/服务器） |
+| 部署 | Deploy | 发交易创建合约实例/地址 |
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天还在啃remix的compile编译&deploy部署。
 
 * * *
@@ -266,6 +551,7 @@ C3. 读-写-读（验证状态变化）
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -413,6 +699,7 @@ C3. 读-写-读（验证状态变化）
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -437,6 +724,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -450,6 +738,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -505,6 +794,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -607,6 +897,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -645,6 +936,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -661,6 +953,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
