@@ -15,8 +15,14 @@ WHUweb3Club|build in public
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今日复习回顾相关章节
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天生日也在残酷共学。
 
 **youtube看完Speed Run Ethereum: Challenge 1 # Staking App**
@@ -26,6 +32,7 @@ WHUweb3Club|build in public
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 学习Uniswap及SDK
 
@@ -39,11 +46,13 @@ WHUweb3Club|build in public
 
 
 
+
 Day7 学习安全与合规
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -58,11 +67,13 @@ Day6！
 
 
 
+
 Day5！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -83,6 +94,7 @@ Day5！
 
 
 
+
 1.14打卡
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -96,11 +108,13 @@ Day5！
 
 
 
+
 回看开营仪式+一些vibe coding
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
