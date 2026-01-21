@@ -26,10 +26,18 @@ Uniswap V2 代码以及 SDK
 -   [**Uniswap Interface（Web 前端）**](https://github.com/Uniswap/interface)
     
 -   Uniswap V2 SDK（[文档](https://docs.uniswap.org/sdk/v2/overview?utm_source=chatgpt.com)｜[GitHub](https://github.com/Uniswap/uniswap-v2-sdk)）
+    
+
+# 对ERC7962协议的几点看法与疑问
+
+深入了解ERC7962后，我认为这是对ERC721的突破性优化，精准击中了Web3普及的核心痛点。其用公钥哈希替代传统地址，结合零知识证明实现隐私与透明的平衡，再搭配Gas代付、无私钥管理设计，大幅降低了非技术用户的准入门槛，星巴克会员匿名验证等场景也充分展现了商业落地潜力。
+
+不过仍有两点疑问想和大家探讨：一是隐私保护与监管的平衡难题，一次性Key机制虽强化匿名性，是否可能被不法分子滥用，协议在技术层面是否有预留监管协作接口？二是Gas代付依赖可信第三方，若商业主体终止服务，用户资产是否会陷入无法操作的困境？整体而言，ERC7962极具前瞻性，期待后续在风险管控上的进一步完善。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
 
@@ -40,6 +48,7 @@ Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 学习内容：
@@ -54,6 +63,7 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 预习第二周目标
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -63,11 +73,13 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 复习以太坊书籍的前三章
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -92,6 +104,7 @@ Remix 使用教程
 
 
 
+
 工具安装
 
 MetaMask / Rabby 钱包安装 & 创建，并熟悉
@@ -101,6 +114,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -125,6 +139,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 
 
+
 拓展 & 辅助理解材料
 
 Becoming a Power User - Wallets, Mnemonics, Keypairs
@@ -136,6 +151,7 @@ Becoming a Power User - Wallets, Mnemonics, Keypairs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
