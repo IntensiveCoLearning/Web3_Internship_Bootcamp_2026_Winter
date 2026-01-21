@@ -15,8 +15,162 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# 从透明链上投票到 ZK 匿名投票
+
+## 1\. 核心矛盾：透明性 vs. 隐私性
+
+区块链投票系统天然具有**端到端可验证性 (End-to-End Verifiability)**，但也带来了隐私困境。
+
+### 传统的链上投票
+
+-   **机制：** 用户直接使用钱包调用合约（如 `vote(proposalId, optionId)`）。
+    
+-   **优点：**
+    
+    -   **公开透明：** 任何人可查、可复算。
+        
+    -   **不可篡改：** 历史记录无法回滚。
+        
+    -   **自动执行：** 智能合约自动计票。
+        
+-   **缺点（隐私泄露）：**
+    
+    -   **数据裸奔：** 交易的 `Input Data` 直接暴露投票选项。
+        
+    -   **身份关联：** 钱包地址（`msg.sender`）与投票偏好永久绑定。
+        
+    -   **社会工程：** 如果钱包地址关联了现实身份（ENS, 交易所），则实现了实名投票，可能导致胁迫或贿选。
+        
+
+### ZK 匿名投票 (ZKVote)
+
+-   **目标：** 在保持**可验证性**的同时，实现**匿名性**。
+    
+-   **核心逻辑：**
+    
+    > “我向链上证明我有资格投票，且没有投过票，但我绝不透露我是谁，也不透露我具体投了什么（视实现而定）。”
+    
+
+* * *
+
+## 2\. ZK 投票系统架构详解
+
+ZK 投票不再是简单的“签名 -> 发送”，而是一个分阶段的密码学协议。
+
+### 2.1 角色模型 (Prover / Verifier)
+
+-   **Prover (证明者 - 用户):** 拥有秘密（私钥、投票意向），在**浏览器本地**生成证明。
+    
+-   **Verifier (验证者 - 智能合约):** 不知道秘密，只检查证明（Proof）是否合法。
+    
+
+### 2.2 核心数据结构
+
+| 概念 | 作用 | 类比 |
+| Identity Secret | 用户的私有身份密钥，仅存本地。 | 银行卡密码 |
+| Identity Commitment | $Hash(Secret)$，公开上链。 | 银行卡号 |
+| Merkle Tree | 存储所有合法选民 Commitment 的树。 | 选民花名册 |
+| Merkle Path | 证明某个 Commitment 在树上的路径。 | 证明你在这个花名册里的证据 |
+| Nullifier (无效符) | $Hash(Secret, ElectionID)$，用于防重。 | 投票后的墨水标记 (防止一人多投) |
+| Proof | 最终生成的二进制凭证。 | “准考证” |
+
+### 2.3 完整工作流 (Workflow)
+
+第一步：身份注册 (Registration)
+
+1.  用户本地生成随机数 `Identity Secret`。
+    
+2.  计算 `Identity Commitment` 并提交上链。
+    
+3.  合约将其加入 **Merkle Tree**，用户成为合法选民一员。
+    
+
+第二步：本地生成证明 (Local Proving)
+
+这是最耗时的一步（2-5秒），也是隐私保护的关键。
+
+用户在浏览器中，将以下数据输入 ZK 电路：
+
+-   **私有输入 (Private Witness):** `Identity Secret`、`Merkle Path`、真实投票选项。
+    
+-   **公开输入 (Public Inputs):** 当前 Merkle Root、选举 ID (`ElectionId`)。
+    
+
+电路在不泄露私有输入的情况下，生成：
+
+1.  **Proof:** 证明“我知道一个 Secret，它对应树上的一个叶子节点”。
+    
+2.  **Nullifier:** 确定性的防重哈希。
+    
+
+第三步：链上验证与计票 (On-chain Verification)
+
+用户提交交易，包含 `Proof`、`Root`、`Nullifier`（**注意：交易发送者可以是任意地址，甚至是用 Relayer 代付 Gas，从而切断 IP/EOA 关联**）。
+
+合约执行逻辑：
+
+Solidity
+
+```
+function vote(bytes memory proof, bytes32 nullifier, ...) {
+    // 1. 检查 Nullifier 是否已存在 (防止双花/重复投票)
+    require(!nullifierUsed[nullifier], "Already voted");
+    
+    // 2. 验证 ZK Proof (验证资格)
+    require(verifier.verifyProof(proof, root, nullifier), "Invalid proof");
+    
+    // 3. 记录 Nullifier 并计票
+    nullifierUsed[nullifier] = true;
+    _countVote(...); 
+}
+```
+
+* * *
+
+## 3\. 关键技术点与 QA
+
+### 为什么需要 Nullifier (无效符)？
+
+由于 ZK 证明不包含身份信息，合约无法知道“谁”投了票。如果没有 Nullifier，用户可以为同一个 `Secret` 生成无数个合法的 Proof 进行刷票。
+
+-   **原理：** Nullifier 与 `Secret` 和 `ElectionId` 确定性绑定。只要 `Secret` 没变，生成的 Nullifier 永远一样。合约只需记录“该 Nullifier 已使用”，即可阻止二次投票，同时无法反推 `Secret`。
+    
+
+### 链上能看到什么？
+
+-   **能看到：** 谁提交了交易（Relayer 或用户小号）、Merkle Root、Proof 数据、Nullifier。
+    
+-   **看不到：** 这个 Proof 对应 Merkle Tree 里的哪一个叶子节点（即不知道是哪个注册用户）。
+    
+
+### zk-SNARK 性质回顾
+
+-   **完备性 (Completeness):** 真的假不了（只要你是合法的，证明一定能过）。
+    
+-   **可靠性 (Soundness):** 假的真不了（非成员无法伪造证明）。
+    
+-   **零知识性 (Zero-Knowledge):** 啥都不知道（验证者只知道结果为真，不知道任何细节）。
+    
+
+* * *
+
+## 4\. 总结：传统 vs. ZK 投票对比
+
+| 特性 | 传统链上投票 | ZK 匿名投票 |
+| 身份隐私 | ❌ 暴露 (绑定钱包地址) | ✅ 匿名 (仅证明集合成员资格) |
+| 投票内容 | ❌ 公开 (Input Data 可读) | ✅/⚠️ 可选 (可结合同态加密隐藏) |
+| 防刷票机制 | 检查 msg.sender | 检查 Nullifier |
+| 计算成本 | 低 (简单的存储更新) | 高 (链下生成证明，链上验证 Proof) |
+| 用户体验 | 快 (签名即发) | 慢 (需等待本地生成 Proof) |
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 1\. 语言基础与开发范式
 
 Solidity 是面向对象的高级语言，运行于以太坊虚拟机 (EVM) 上，具有静态类型和类继承特性。
@@ -89,6 +243,7 @@ Solidity 是面向对象的高级语言，运行于以太坊虚拟机 (EVM) 上�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 RPC (Remote Procedure Call) 是连接 **前端应用 (DApp)** 与 **区块链网络** 的桥梁。区块链节点本身维护着账本数据，RPC 节点则是允许外部访问这些数据的“网关”。
 
@@ -230,6 +385,7 @@ RPC (Remote Procedure Call) 是连接 **前端应用 (DApp)** 与 **区块链网
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ### 一、 DApp 核心架构
 
 与传统 Web2 应用不同，Web3 应用的后端逻辑运行在去中心化网络上。
@@ -347,6 +503,7 @@ RPC (Remote Procedure Call) 是连接 **前端应用 (DApp)** 与 **区块链网
 
 
 
+
 这是一份纯文字版的 Remix IDE 学习笔记总结：
 
 **Remix IDE 学习笔记**
@@ -406,6 +563,7 @@ Remix 是 Web3 开发的首选入门工具，核心特点是免安装、零配�
 
 
 
+
 ### **1\. 节点的“新架构”：执行层 + 共识层**
 
 自从“合并”（The Merge）以后，一个完整的以太坊节点不再是单一的软件，而是必须由两个配合工作的客户端组成 。书中用了一个很形象的“法院”比喻来解释两者的关系
@@ -433,6 +591,7 @@ Remix 是 Web3 开发的首选入门工具，核心特点是免安装、零配�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -479,6 +638,7 @@ eg：工资法币表述，实际发虚拟币，离职后劳动仲裁，成功，
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -614,6 +774,7 @@ RWA 现实世界资产上链
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
