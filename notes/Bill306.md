@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+打卡：
+
+查看「社区运营基础 & 活动策划与执行」回放
+
+查看「Web3 公共物品资金分配第一节课」回放
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 Day 10:
 
 p观看：“
@@ -28,6 +38,7 @@ p观看：“
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 Day Seven
 
 复习前面的笔记
@@ -35,6 +46,7 @@ Day Seven
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 Day Five:
@@ -52,6 +64,7 @@ Day Five:
 
 
 
+
 Day 4:
 
 -   补档了安全和合规
@@ -61,6 +74,7 @@ Day 4:
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -85,6 +99,7 @@ Day 3:
 
 
 
+
 Day 2:
 
 -   学习了**Web3 行业全局介绍 & 岗位概览**
@@ -97,6 +112,7 @@ Day 2:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
