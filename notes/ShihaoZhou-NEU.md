@@ -28,10 +28,298 @@ Web3 实习计划 2025 冬季实习生
 ## Solidity学习
 
 -   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
+    
+-   \[\[GitHub repository\]\]([https://github.com/ShihaoZhou-NEU/Solidity\_Learning](https://github.com/ShihaoZhou-NEU/Solidity_Learning))
+    
+
+## 三种主要的数据位置对比
+
+| 关键字 | 存储位置 | 生命周期 | 成本 | 主要用途 |
+| --- | --- | --- | --- | --- |
+| storage | 区块链状态（永久存储） | 永久，直到被修改 | 极高 | 存储合约的状态变量（如你代码中的 arr）。 |
+| memory | 函数调用的临时内存 | 仅在函数调用期间 | 中等 | 用于函数内的临时变量、函数参数和返回值。 |
+| calldata | 交易调用数据（只读） | 仅在函数调用期间 | 最低 | 用于不可变的函数外部（external）调用参数。 |
+
+### 函数中的 memory 使用
+
+在函数 `function getArr() public view returns(uint256[] memory)` 中，`memory` 明确了两件事：
+
+NaN.  **返回值的位置**：它告诉编译器，函数返回的 `uint256[]` 数组**不是一个指向永久存储的引用**，而是一个**全新的、独立的副本**，这个副本存放在临时内存中，准备返回给调用者。
+      
+NaN.  **数据复制行为**：当执行 `return arr;` 时，实际发生的是将 `storage` 中的状态数组 `arr` **完整地复制一份**到 `memory` 中，然后返回这个内存中的副本。
+      
+
+### **为什么这里必须用** `memory`**？**
+
+因为函数的返回值需要被外部（如另一个合约或你的前端）接收和使用。外部调用者无法直接访问你的合约的 `storage`（这是每个合约私有且昂贵的永久存储）。因此，必须通过 `memory` 创建一个临时的、独立的副本传递出去。如果尝试将返回类型写成 `uint256[] storage`，编译器会报错。
+
+```
+ // 创建一个放在 memory 的数组，这个数组一定要是固定长度的
+ uint256[] memory a = new uint256[](5);
+ ​
+ uint256[][] memory b = new uint256[][](2);
+ // 禁止的行为：以下操作在 memory 数组中都是不允许的，会导致编译错误
+ // tempArr.push(30);     // 错误：memory数组不能使用push
+ // tempArr.pop();        // 错误：memory数组不能使用pop
+ // tempArr.length = 5;   // 错误：memory数组长度不可变
+ ​
+```
+
+## assert 的使用
+
+`assert` 是 **Solidity 的断言检查函数**，用于**验证内部逻辑**。当条件不满足时，它会**消耗全部交易 Gas 并回滚所有状态更改**，表明合约存在应修复的程序错误。
+
+### 🛠 基本语法与效果
+
+solidity
+
+```
+ assert(bool condition);
+```
+
+-   **条件为** `true`：程序正常执行。
+    
+-   **条件为** `false`：交易会**立刻终止**，触发“Panic”错误（错误码 `0x01`），所有状态变更被撤销，并且**已消耗的 Gas 不予退还**。
+    
+
+### 🔍 `assert` 与 `require` 的核心区别
+
+在 Solidity 中，`assert` 常与另一个检查函数 `require` 对比，理解它们的差异至关重要：
+
+| 特性 | assert | require |
+| --- | --- | --- |
+| 设计目的 | 验证内部不变性（Invariants），捕捉程序 BUG。 | 验证输入和外部条件，确保操作 前提有效。 |
+| Gas 处理 | 消耗所有剩余 Gas，绝不退还。 | 退还所有剩余 Gas（EIP-3298 后）。 |
+| 错误标识 | 触发 Panic 异常（如 0x01）。 | 触发 Error 异常，可附带自定义错误信息。 |
+| 使用场景 | 检查绝不应该发生的、违反合约内部逻辑的情况。 | 检查用户输入、合约状态、调用权限等。 |
+
+### 📝 何时使用 `assert`（最佳实践）
+
+`assert` 应用于那些**理论上永远不应该失败**的条件。如果失败了，意味着智能合约代码本身存在需要修复的错误。
+
+**典型场景包括：**
+
+NaN.  **不变量检查**：例如，在资金转账后，合约的总余额应保持不变。
+      
+      ```
+       uint256 initialBalance = address(this).balance;
+       // ... 一些转账操作 ...
+       assert(address(this).balance == initialBalance); // 检查守恒
+      ```
+      
+      > 在 Solidity 中，`this` 是一个**指向当前合约实例的引用**。`address(this).balance` 这行代码的意思是：**“获取当前合约地址上的以太币（ETH）余额。”**
+      > 
+      > 我们可以分两步来理解：
+      > 
+      > NaN.  `this`：关键字 `this` 代表**当前正在执行的这份智能合约本身**，它是一个合约类型的对象。
+      >       
+      > NaN.  `address(this)`：这是将合约类型显式转换为 `address` 类型。在以太坊中，**每个部署到链上的合约都有一个独一无二的地址**，就像你的银行账户号一样。这个转换让我们能获取到合约的地址。
+      >       
+      > NaN.  `.balance`：这是 `address` 类型的成员属性，表示**该地址所持有的以太币（ETH）数量**，单位是 **wei**（1 ETH = 10^18 wei）。
+      >       
+      
+NaN.  **运算后验证**：在数学运算后（尤其是可能溢出的旧代码中），验证结果在合理范围内。
+      
+      ```
+       uint256 result = a + b;
+       assert(result >= a); // 检查加法未溢出（Solidity 0.8+ 已内置溢出检查）
+      ```
+      
+NaN.  **访问数组后**：验证索引在访问后仍处于边界内（尽管通常在访问前用 `require` 检查）。
+      
+      ```
+       assert(index < array.length); // 确认索引绝对有效
+      ```
+      
+NaN.  **开关状态验证**：确保一个应永远为 `true` 或 `false` 的状态变量没有异常变化。
+      
+      ```
+       assert(isLocked == false); // 此时合约绝不应该被锁定
+      ```
+      
+
+### 🎯 总结与建议
+
+简单来说：
+
+-   **用** `require` **来保护合约免受“外部错误”**（如无效的用户输入）。
+    
+-   **用** `assert` **来发现并杜绝“内部错误”**（即代码逻辑的 BUG）。
+    
+
+由于 `assert` 失败时代价高昂（不退款），且意味着合约存在根本性逻辑问题，因此在实际生产代码中，`assert` 的使用应非常谨慎，且通常远少于 `require`。
+
+## `assembly` 是什么？
+
+`assembly { ... }` 在 Solidity 中称为**内联汇编**。它允许你在智能合约中直接编写 **EVM 的底层操作指令**，从而绕过 Solidity 的高级语法和安全性检查，以追求极致的控制和效率。
+
+| 特性 | 高级 Solidity 代码 | 内联汇编 (assembly) |
+| --- | --- | --- |
+| 抽象层级 | 高级，人类可读 | 低级，接近机器指令 |
+| 安全性 | 有自动的类型、溢出等安全检查 | 无安全网，开发者全权负责 |
+| Gas 效率 | 较好，但编译器可能添加额外操作 | 通常更高，可手动优化掉冗余操作 |
+| 主要用途 | 99% 的常规合约逻辑 | 极致的 Gas 优化、复杂位操作、实现 Solidity 无法表达的特定操作 |
+
+### `:=` 是什么？
+
+在 `assembly` 块内部，`:=` 是**汇编语言的赋值操作符**。
+
+-   **作用**：它将右侧表达式的计算结果**直接赋值**给左侧的变量或栈槽。
+    
+-   **关键区别**：它**不进行任何类型转换或溢出检查**，赋值完全由你编写的指令决定。
+    
+
+**类比理解：**
+
+-   Solidity 中的 `=` 就像**秘书帮你处理文件**：会检查格式、登记备案。
+    
+-   汇编中的 `:=` 就像**你自己直接把文件塞进档案柜**：速度快，但放错地方或放错了文件也没人提醒你。
+    
+
+## 如何使用“用户定义值类型”（User Defined Value Type, UDVT）
+
+**增强代码的类型安全性和可读性**，同时**不牺牲任何 Gas 效率**。
+
+它通过对比“使用 UDVT”和“不使用 UDVT”的两种实现，生动地展示了其核心价值。
+
+### 🎯 核心教学目的
+
+NaN.  **防止低级错误**：利用编译器在**编译阶段**就杜绝 `Duration`（时长）和 `Timestamp`（时间戳）这两种虽然底层都是 `uint64`、但语义完全不同的值被意外混淆使用。
+      
+NaN.  **语义化类型**：让代码“自文档化”。看到 `Duration` 类型，立刻明白它代表一个时间段，而不是一个普通的数字。
+      
+NaN.  **零成本抽象**：在保持底层高效位操作（汇编）的同时，提供高级别的类型安全。
+      
+
+### 🔍 UDVT 到底是什么？有什么用？
+
+**UDVT** 是 Solidity 0.8.8 引入的特性。它允许你为现有的基本值类型（如 `uint256`, `address`）创建一个**具有新名称的别名**。这个新类型在运行时与基础类型完全一致（无额外Gas开销），但在编译时被视为**独立的类型**，无法直接混用。
+
+**核心用途：用编译器强制区分语义。**
+
+| 场景（无 UDVT） | 问题 | 使用 UDVT 的解决方案 |
+| --- | --- | --- |
+| function setLock(uint64 duration, uint64 timestamp) | 容易传参顺序错误：setLock(timestamp, duration)，编译通过，逻辑错误。 | function setLock(Duration duration, Timestamp timestamp)。传参顺序错误会导致编译失败。 |
+| uint64 balance; 和 uint64 tokenId; | 都是 uint64，可能误赋值：balance = tokenId;。 | 定义为 type Balance is uint64; 和 type TokenId is uint64;。误赋值会编译失败。 |
+| address userAddr 和 address contractAddr | 都是 address，可能把用户地址误传给需要合约地址的函数。 | 定义为 type UserAddress is address; 和 type ContractAddress is address;。 |
+
+### 用`wrap`对 UDVT 赋值
+
+当你写下 `type Duration is uint64;` 这行代码时，Solidity 编译器会自动为 `Duration` 类型生成以下两个函数：
+
+| 自动生成的函数 | 作用 | 类比 |
+| --- | --- | --- |
+| Duration.wrap(uint64 value) pure returns (Duration) | “包装”：将一个原始的 uint64 值升级（转换）为安全的 Duration 类型。 | 把散装咖啡豆 封装 进一个贴有“Duration”标签的罐子。 |
+| Duration.unwrap(Duration duration) pure returns (uint64) | “解包”：将一个 Duration 类型降级（转换）回其底层的原始 uint64 值。 | 从“Duration”罐子里 倒出 原始的咖啡豆。 |
+
+### 总结
+
+用UDVT是为了防止人为编程犯错
+
+分类存储到不同的 libraries，让整个项目更有结构
+
+使用 import 和 using 来调用
+
+## Data Locations
+
+### 🍳 厨房比喻：理解三大数据位置
+
+| 数据位置 | 比喻 | 特点 | 类比 |
+| --- | --- | --- | --- |
+| storage | 冰箱里的永久食材 | 保存在区块链上，永久存在，但存取都很贵 | 从冰箱拿/放食材要花更多时间和力气 |
+| memory | 砧板上的临时食材 | 只在做菜时存在，用完就丢，便宜快速 | 切菜、处理食材的工作台 |
+| calldata | 外卖送来的包装食材 | 别人送来给你用的，只能看不能改，最便宜 | 密封的外卖包装，你只能打开吃，不能重新烹饪 |
+
+### 💡 什么时候用什么？快速指南
+
+| 你的需求 | 应该用 | 例子 |
+| --- | --- | --- |
+| 修改状态变量 | storage | myArray[0] = newValue;（永久改变） |
+| 临时处理数据后丢弃 | memory | 计算中间结果、格式化数据 |
+| 函数参数（特别是外部函数） | calldata | function process(string calldata name) |
+| 返回值 | memory | returns (string memory) |
+
+## Transient Storage
+
+### Transient Storage vs Regular Storage：核心区别
+
+| 特性 | 常规 Storage | Transient Storage |
+| --- | --- | --- |
+| 持久性 | 永久保存，直到被更改 | 仅存续于当前交易，交易结束自动归零 |
+| Gas成本 | 写入 (SSTORE) 极昂贵，读取 (SLOAD) 较贵 | 写入 (TSTORE) 便宜约10倍，读取 (TLOAD) 便宜 |
+| 设计目的 | 存储合约的永久状态 | 存储交易内的临时中间状态 |
+| 底层指令 | SSTORE, SLOAD | TSTORE, TLOAD |
+| Solidity 关键字 | 无（默认） | transient |
+
+NaN.  **自动清零机制**：
+      
+      -   交易成功结束 → transient storage **自动归零**
+          
+      -   交易回滚（revert） → transient storage **也会归零**
+          
+      -   下一个交易开始时，所有 transient storage 都是初始零值
+          
+NaN.  **Gas 节省对比**：
+      
+      ```
+       // 永久存储：首次写入 20,000+ Gas，后续修改 5,000 Gas
+       bool permanentLock;
+       permanentLock = true; // 昂贵
+       permanentLock = false; // 仍需要 5,000 Gas
+       ​
+       // 瞬态存储：每次写入约 100 Gas（估算）
+       transient bool transientLock;
+       transientLock = true;  // ~100 Gas
+       transientLock = false; // ~100 Gas（但通常不需要，交易结束自动清零）
+      ```
+      
+
+### **兼容性与支持**：
+
+-   **需要编译器 0.8.24+**
+    
+-   **需要 EVM 支持** `TSTORE`**/**`TLOAD`（Cancun 升级后）
+    
+-   支持的网络：以太坊主网、OP Stack 链（OP Mainnet, Base）、Arbitrum、Polygon PoS 等
+    
+
+### 结论
+
+`transient storage` 是智能合约开发的重大优化，特别适合**重入锁、跨函数临时数据、复杂交易中间状态**等场景。它让“临时但需跨函数共享”的数据存储变得既安全又廉价，是编写高效合约的新利器。
+
+## Remix At address
+
+在开发过程中，可以重复拿出之前部署的合约
+
+### 🆚 “Deploy” 与 “At Address” 对比
+
+| 功能 | Deploy (部署) | At Address (连接地址) |
+| --- | --- | --- |
+| 作用 | 将新合约创建到区块链上。 | 连接一个已存在的合约。 |
+| 结果 | 生成新的合约地址。 | 不产生新地址，加载现有合约。 |
+| 交易 | 需要发送一笔部署交易，消耗Gas。 | 通常不立即产生交易（仅当调用写函数时才需要）。 |
+| 目的 | 首次发布合约。 | 与你自己或他人已部署的合约进行交互 |
+
+### 📝 如何操作（以连接一个已部署合约为例）
+
+NaN.  **获取合约地址和ABI**：你需要知道目标合约的地址，并且在Remix的文件资源管理器中拥有**该合约的源代码**（用于自动生成ABI）或一个独立的ABI文件。
+      
+NaN.  **编译合约**：在Remix中打开并编译该合约的源代码（确保编译器版本等设置匹配）。这一步是为了让Remix知道如何与合约对话（即获得ABI）。
+      
+NaN.  **输入地址并连接**：
+      
+      -   在“部署与运行”面板，找到“At Address”按钮。
+          
+      -   在旁边的输入框中**粘贴目标合约地址**。
+          
+      -   点击 **“At Address”** 按钮。
+          
+NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在“Deployed Contracts”（已部署合约）区域。你可以像操作自己部署的合约一样，查看其状态变量和调用函数。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # 学习计划
 
@@ -187,6 +475,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -226,6 +515,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -539,6 +829,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -843,6 +1134,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1186,6 +1478,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1265,6 +1558,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1523,6 +1817,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -1699,6 +1994,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
