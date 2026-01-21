@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+依旧复习
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 期末复习中
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 预习手册智能合约开发部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 # 备战期末ing
@@ -37,6 +45,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -51,6 +60,7 @@ web3原理分享回访学习
 
 
 
+
 ## 021学习以太坊第一章
 
 ## 下载开发环境remix IDE
@@ -58,6 +68,7 @@ web3原理分享回访学习
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
