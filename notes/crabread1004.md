@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+图片较多，notion链接如下
+
+[https://www.notion.so/1-21-2ea408fac1a68010a19efcb11f69a02f?source=copy\_link](https://www.notion.so/1-21-2ea408fac1a68010a19efcb11f69a02f?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 1.观看并总结分享会
 
 2.继续研究remix中...
@@ -25,11 +33,13 @@ timezone: UTC+8
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 熟悉remix中！......
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 今日任务：
@@ -44,11 +54,13 @@ timezone: UTC+8
 
 
 
+
 今天有两场考试，休息一天~
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -77,6 +89,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -150,6 +163,7 @@ web3行业赛道：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
