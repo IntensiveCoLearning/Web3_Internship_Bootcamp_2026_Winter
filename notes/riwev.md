@@ -17,15 +17,96 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
-# [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分
+## **Solidity**
 
-# **漏洞修复**
+1.  EVM 四块内存（越往后越贵） Stack ➜ 计算临时区  
+    Memory ➜ 函数内临时，不上链  
+    Calldata ➜ 只读输入参数  
+    Storage ➜ 永久上链，省它就是省 Gas
+    
+2.  Gas 口诀  
+    少写 Storage → 缓存变量 → 小位宽(uint96) → external 比 public 省 → ++i 比 i++ 省
+    
+3.  数据类型  
+    值类型（便宜）：bool / uint× / address / bytes32  
+    引用类型（贵）：string / bytes / array / mapping  
+    mapping 只能当「哈希表」用，无法遍历
+    
+4.  ERC20 最小接口  
+    name() symbol() decimals() totalSupply()  
+    balanceOf(owner) transfer(to,amount)  
+    allowance(owner,spender) approve(spender,amount)  
+    Transfer(from,to,amount) Approval(owner,spender,amount)
+    
+5.  函数可见性（从左到右权限递减，Gas 也递减）  
+    external > public > internal > private  
+    只读标记：view（读链）pure（不读链）
+    
+6.  构造函数  
+    constructor() 仅部署时跑 1 次，用来初始化 name/symbol/decimals/totalSupply
+    
+7.  Mint 安全模板  
+    function mint(...) external onlyOwner {  
+    \_mint(to, amount); // internal 实际铸币  
+    }
+    
+8.  错误处理  
+    require(条件,"错误信息") ← 最常用  
+    revert() 无消息省 Gas  
+    assert() 几乎不用（吞剩余 Gas）
+    
+9.  溢出  
+    0.8+ 自动检查；想省 Gas 在确定无溢出块外加 unchecked{ ... }
+    
+10.  Modifier 样板  
+     modifier onlyOwner() {  
+     require(msg.sender == owner);  
+     \_;  
+     }  
+     用法：function foo() external onlyOwner { ... }
+     
+
+## **modifier 是什么？具体操作逻辑是怎样的？**
+
+1\. 基本定义
+
+\- 功能定位：Solidity 中的函数修饰符，用于封装前置条件检查逻辑
+
+\- 核心价值：代码复用、权限统一、Gas 优化
+
+2\. 与传统 require 对比
+
+| 方式 | 代码示例 | 缺点 |
+| --- | --- | --- |
+| 每个函数单独require | 每个函数都写 require(msg.sender ==owner, "...") | 代码重复、部署 Gas 高、维护困难 |
+| 使用 modifier | 函数后加 onlyOwner 修饰符 | 一次定义，多处复用，Gas 更优 |
+
+3\. 扩展应用场景
+
+重入保护：nonReentrant 修饰符防止重入攻击
+
+时间锁：onlyAfter(block.timestamp)限制执行时间
+
+角色权限：onlyAdmin、onlyMinter 等多角色控制
+
+参数校验：validAmount(amount)统一校验参数有效性
+
+4\. Gas 优化原理
+
+部署时：modifier 逻辑只编译一次，减少合约字节码大小
+
+执行时：跳转到统一校验代码，比分散 require 更高效
+
+开发时：减少代码冗余，降低出错概率
 
 # **Uniswap 工作原理解析**
+
+![5e5221b845a3a9976faee516f00facca.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-21-1768996117227-5e5221b845a3a9976faee516f00facca.jpg)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # **Challenge #0 - Tokenization**
@@ -68,6 +149,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -145,6 +227,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -326,6 +409,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -412,6 +496,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -542,6 +627,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -749,6 +835,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -990,6 +1077,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1274,6 +1362,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
