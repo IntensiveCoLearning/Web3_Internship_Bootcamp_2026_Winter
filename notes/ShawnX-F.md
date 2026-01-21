@@ -15,8 +15,90 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+// 基础合约  
+contract Animal {  
+string public name;  
+  
+constructor(string memory \_name) {  
+name = \_name;  
+}  
+  
+function speak() public virtual returns(string memory) {  
+return "Some sound";  
+}  
+}  
+  
+// 继承合约  
+contract Dog is Animal {  
+constructor(string memory \_name) Animal(\_name) {}  
+  
+// 重写父类函数  
+function speak() public pure override returns(string memory) {  
+return "Woof!";  
+}  
+}  
+  
+// 多重继承  
+contract Pet is Animal {  
+address public owner;  
+  
+constructor(string memory \_name, address \_owner) Animal(\_name) {  
+owner = \_owner;  
+}  
+}  
+  
+contract Labrador is Dog, Pet {  
+constructor(string memory \_name, address \_owner)  
+Dog(\_name)  
+Pet(\_name, \_owner) {}  
+}
+
+# 继承与函数重写**（Inheritance and Override）**
+
+这段代码是一个 Solidity 继承示例，涵盖了**单继承、多重继承、构造函数传参**以及**函数重写**的核心逻辑。
+
+### 1\. 基础合约 `Animal`：定义规范
+
+这是继承树的顶端（基类）。
+
+-   **状态变量** `name`：使用了 `public` 修饰符，Solidity 会自动为其生成一个同名的 getter 函数。
+    
+-   **构造函数** `constructor`：要求在部署时必须传入 `_name`。
+    
+-   `virtual` **关键字**：这是关键。在 Solidity 中，只有标记为 `virtual` 的函数才能在子类中被重写（Override）。
+    
+
+## 2\. 单继承 `Dog`：逻辑覆盖
+
+`contract Dog is Animal` 表示 `Dog` 获取了 `Animal` 的所有能力。
+
+-   **构造函数初始化**：`Animal(_name)`。因为父类 `Animal` 的构造函数带参数，子类必须显式调用它来完成初始化。
+    
+-   **函数重写** `override`：
+    
+    -   子类函数必须标记为 `override` 才能修改父类的 `virtual` 函数。
+        
+    -   **注意点**：父类 `speak` 没有 `pure` 修饰符（默认是会读取/写入状态的，虽然示例里没写），但子类改成了 `pure`。Solidity 允许这种“权限收紧”的操作（从读取状态变为不读取状态是安全的）。
+        
+
+## 3\. 多重继承与构造函数：`Pet` 与 `Labrador`
+
+这里是代码最复杂的部分，涉及到了多重继承。
+
+`Pet` 合约同样继承自 `Animal`，并引入了一个新的状态变量 `owner`。
+
+`Labrador` 合约`contract Labrador is Dog, Pet`
+
+1.  **继承顺序**：在 Solidity 中，继承顺序遵循 **“由基类到派生类”**。虽然这里 `Dog` 和 `Pet` 都继承自 `Animal`，但在 `Labrador` 的声明中，顺序会影响 `super` 的调用逻辑。虽然`Labrador` 的构造函数里没写`super` ，但其后的`Dog(_name) Pet(_name, _owner)` 实际上就是 `super` 机制在构造函数中的体现。
+    
+2.  **构造函数传参**：`Labrador` 同时初始化了两个父类的构造函数。有趣的是，由于 `Dog` 和 `Pet` 都依赖 `Animal`，`Animal` **的构造函数实际上只会被执行一次**。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 1.  RPC详解
     
 
@@ -157,6 +239,7 @@ function criticalFunction() public onlyOwner whenNotPaused {
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -242,6 +325,7 @@ _Tips：_
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -300,6 +384,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -336,6 +421,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -386,6 +472,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -400,6 +487,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -438,6 +526,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -539,6 +628,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
