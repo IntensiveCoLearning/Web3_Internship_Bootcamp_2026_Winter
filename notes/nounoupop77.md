@@ -15,8 +15,105 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+-   第 1 行是注释，说明代码所使用的软件许可（license），这里使用的是 MIT 许可。如果不写许可，编译时会出现警告（warning），但程序仍可运行。
+    
+
+Solidity 注释以“//”开头，后面跟注释内容，注释不会被程序执行。
+
+// SPDX-License-Identifier: MIT
+
+-   常用类型：
+    
+
+1.  **值类型(Value Type)** ：包括布尔型，整数型等等，这类变量赋值时候直接传递数值。（短路規則：判斷了一個變量后不判斷另一個變量，存在於and和or中）
+    
+2.  **引用类型(Reference Type)** ：包括数组和结构体，这类变量占空间大，赋值时候直接传递地址（类似指针）。
+    
+3.  **映射类型(Mapping Type)** : Solidity中存储键值对的数据结构，可以理解为哈希表
+    
+
+-   修改链上状态：
+    
+    1.  写入状态变量。
+        
+    2.  释放事件。
+        
+    3.  创建其他合约。
+        
+    4.  使用 `selfdestruct`.
+        
+    5.  通过调用发送以太币。
+        
+    6.  调用任何未标记 `view` 或 `pure` 的函数。
+        
+    7.  使用低级调用（low-level calls）。
+        
+    8.  使用包含某些操作码的内联汇编。
+        
+-   函數：結構為function <function name>(\[parameter types\[, ...\]\]) {internal|external|public|private} \[pure|view|payable\] \[virtual|override\] \[<modifiers>\]
+    
+
+\[returns (<return types>)\]{ <function body> }
+
+`{internal|external|public|private}`：函数可见性说明符，共有4种。
+
+-   `public`：内部和外部均可见。
+    
+-   `private`：只能从本合约内部访问，继承的合约也不能使用。
+    
+-   `external`：只能从合约外部访问（但内部可以通过 `this.f()` 来调用，`f`是函数名）。
+    
+-   `internal`: 只能从合约内部访问，继承的合约可以用。
+    
+
+`[pure|view|payable]`：决定函数权限/功能的关键字，其中，pure不能讀取也不能寫入鏈上狀態；view能讀取但不能寫入狀態變量
+
+如果计算不改变链上状态，就可以不用付 `gas`。包含 `pure` 和 `view` 关键字的函数是不改写链上状态的，因此用户直接调用它们是不需要付 gas 的（注意，合约中非 `pure`/`view` 函数调用 `pure`/`view` 函数时需要付gas）
+
+-   `return`和`returns`。它们的区别在于：
+    
+
+1.  `returns`：跟在函数名后面，用于声明返回的变量类型及变量名。
+    
+2.  `return`：用于函数主体中，返回指定的变量。
+    
+
+// 返回多个变量
+
+function returnMultiple() public pure returns(uint256, bool, uint256\[3\] memory){
+
+return(1, true, \[uint256(1),2,5\]);
+
+}
+
+// 命名式返回
+
+function returnNamed() public pure returns(uint256 _number, bool_ bool, uint256\[3\] memory \_array){
+
+\_number = 2;
+
+\_bool = false;
+
+\_array = \[uint256(3),2,1\];
+
+}
+
+//結構式返回
+
+uint256 \_number;
+
+bool \_bool;
+
+uint256\[3\] memory \_array;
+
+(\_number, _bool,_ array) = returnNamed();/(, \_bool2, ) = returnNamed();
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天學習了零知識證明。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/nounoupop77/images/2026-01-19-1768838798042-image.png)
@@ -114,6 +211,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 今天參加運營分享會。
 
 -   知道了如何在telegram搭建和運營社群。通過對話題進行管理，分類來增加社群活躍度，對數據進行分析為社群製造吸引人的話題，認識到了機器人@MissRose\_bot，通過/help指令可以看到ross的功能
@@ -123,6 +221,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 今天在分享會上學習了標準erc7962。
@@ -139,6 +238,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天有點忙碌所以都是斷斷續續在加入會議，不過也零零碎碎地學到了一些知識！
 
 下午的co-learning，聼助教分享了一些運營經驗，雖然本身并沒有往運營發展的打斷但還是受益匪淺！感覺見了些市面哈哈哈
@@ -148,6 +248,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -166,6 +267,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 -   今天在平臺上mint了一個nft，很有趣地感受到了nft和錢包之間的關聯，每一步都需要錢包的確認。雖説在之前已經mint過nft，也在平臺上上架已經購買過，但還是感嘆mint一個nft這個平臺的簡單通俗易懂。
     
 -   參加了今晚的分享會，在懵懵懂懂的情況下，發現有同學做了會議紀要并且無私地發出，非常感動，想到了web3的很多知識都是開源公開的，由衷感謝這種慷慨的行爲，在web3，至少知識不是私有化。
@@ -175,6 +277,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
