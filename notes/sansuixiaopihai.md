@@ -15,8 +15,152 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## **学习总结day10**
+
+今天主要的学习计划是看solidity的基础语法和联系，今天的这些学习总结主要是记录一些比较难懂的学习点
+
+**_web3开发工具流程：_**
+
+![Web3 开发工具流程](https://web3intern.xyz/assets/web3_development-tools-flow_01-2XDurtQc.jpg)
+
+前端检测并连web3提供者 -> 请求用户与授权访问钱包账户 -> 使用ABI和合约地址创建合约实例->通过合约实例调用智能合约函数->钱包对交易进行数字前面->将签名交易发送到区块链网络->获取交易结果并更新前端页面
+
+**复合数据类型（Composite Types）：**
+
+1、固定长度数组：写法如`uint[5]` (包含5个整数的数组)，
+
+2、动态长度数组：写法如`uint[]` (不写数字),里面包含的方法有`push(x)`: 在末尾追加一个元素。`pop()`: 删掉末尾的一个元素。`length`: 看看现在清单有多长。其语法和js相似不做过多的记录
+
+**结构体 (Structs)：** 结构体就是**自定义的一张表格**，把你需要的不同类型的数据打包在一起，有点像js中的对象一样，先定义，然后来使用
+
+```
+// 1. 定义一张“玩家表格”的样子
+struct Player {
+    string name;   // 名字
+    uint level;    // 等级
+    address wallet;// 钱包地址
+}
+​
+// 2. 使用这张表格(实例化)
+Player public myPlayer; // 创建一个叫 myPlayer 的变量
+​
+function createPlayer() public {
+    // 填写表格
+    myPlayer = Player("SuperMan", 99, msg.sender);
+    
+    // 或者只修改其中一项
+    myPlayer.level = 100;
+}
+```
+
+**映射 (Mappings) ：**核心逻辑`Key` (钥匙)---> `Value` (柜子里的东西)，注意映射的东西是不能遍历的
+
+```
+// 写法：mapping(钥匙类型 => 内容类型) 变量名;
+mapping(address => uint) public balances;
+​
+function update() public {
+    // 这里的逻辑是：
+    // 拿着“我的地址”(key) 去找对应的 “余额”(value)
+    // 把余额设为 100 这里的msg.sender是solidity的全局变量
+    balances[msg.sender] = 100;
+}
+​
+function check() public view returns (uint) {
+    // 拿着地址去查余额
+    return balances[msg.sender];
+}
+```
+
+**引用类型的数据位置 (Data Location):**
+
+当你使用数组、结构体或映射时，Solidity 总是会逼问你：**“这数据存哪儿？”**
+
+**1.**`storage` **(仓库)**
+
+-   **也就是**：区块链硬盘。
+    
+-   **特点**：**永久存储**。即使函数运行完了，数据还在那里。
+    
+-   **花费**：巨贵！就像你在市中心买地皮存东西。
+    
+-   **默认**：合约里的全局变量（状态变量）默认就是 storage。
+    
+
+**2\.** `memory` **(白板)**
+
+-   **也就是**：内存。
+    
+-   **特点**：**临时存储**。函数开始运行时创建，函数结束时销毁。
+    
+-   **花费**：便宜。
+    
+-   **场景**：函数里的临时计算、临时变量。
+    
+
+**3\.** `calldata` **(只读便签)**
+
+-   **也就是**：一种特殊的内存。
+    
+-   **特点**：**只读，不能改**。
+    
+-   **场景**：专门用于函数的**参数输入**（为了省钱）。
+    
+
+**构造函数（constructor）：**
+
+可以理解为出厂设置，**核心作用只跑一次的初始化**它的生命周期很特别：**只执行一次**，当合约被部署的时到链的时候就会执行，**永不再见**，一旦合约完成部署之后，这个函数就消失了，**用于初始化**专门用来设置合约初始化
+
+```
+// 留言事件，便于检索器和区块链浏览器追踪
+    event NewMessage(address indexed sender, string message);
+constructor() {
+    // 1. 定义一个临时字符串
+    string memory initMsg = "Hello ETH Pandas";
+    
+    // 2. 写入数据
+    // 注意：在这里，msg.sender 是“部署者”（也就是你）
+    messages[msg.sender].push(initMsg);
+    
+    // 3. 告诉世界发生了一件事
+    emit NewMessage(msg.sender, initMsg);
+}
+```
+
+**Event（事件）：**
+
+事件用于在链上记录重要状态变化，并可由外部监听器（如检索器或前端应用）捕捉，就想一个大喇叭一样
+
+```
+// 定义大喇叭 indexed值加了索引，方便前端网页进行过滤和搜索
+event NewMessage(address indexed sender, string message);
+​
+// 使用大喇叭，
+function leaveMessage(string memory _msg) public {
+    // 1. 内部记账 (写进硬盘)将接收到的消息放到Storage (状态存储) 里
+    messages[msg.sender].push(_msg); 
+    
+    // 2. 对外广播 (写进日志)
+    emit NewMessage(msg.sender, _msg); 
+}
+```
+
+**常用的变量msg.sender：**
+
+这是 Solidity 里最重要的一个**全局变量**（Magic Variable）。你不用定义它，它永远都在那里 **谁在这个时刻调用了这个函数，谁就是** `msg.sender`
+
+**你 (地址A)** 点击了按钮调用 `deposit()` -->此时代码里的 `msg.sender` 就是 **地址A**。
+
+**你朋友 (地址B)** 点击了按钮调用 `deposit()` -->此时代码里的 `msg.sender` 就自动变成了 **地址B**。
+
+今天完成了web3实习手册中的合约开发发送消息的Dapp功能，感觉到区块链比web2有趣的多，明天开始动手写一些简单的代码和功能
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## **学习总结day09**
 
 今天主要的学习计划还是看智能合约开发的相关基础知识和扩展，
@@ -188,6 +332,7 @@ contract EventExample {
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -265,6 +410,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## 学习总结day07
@@ -349,6 +495,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -412,6 +559,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -523,6 +671,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -684,6 +833,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -875,6 +1025,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -969,6 +1120,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
