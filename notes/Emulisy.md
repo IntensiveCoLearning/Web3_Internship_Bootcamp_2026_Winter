@@ -15,8 +15,134 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# Web3 Frontend Tech Stack
+
+## 1\. What is Web3 Frontend
+
+-   Web3 frontend = **Web2 UI + Blockchain interaction**
+    
+-   Smart contracts are the **source of truth**
+    
+-   Frontend talks to blockchain via **wallet + RPC**
+    
+-   No direct control over blockchain state
+    
+
+* * *
+
+## 2\. Frontend Basics
+
+-   **Languages**: JavaScript / TypeScript
+    
+-   **Frameworks**: React, Next.js
+    
+-   **Styling**: Tailwind CSS, CSS Modules
+    
+
+* * *
+
+## 3\. Wallet Integration
+
+-   **Wallets**: MetaMask, WalletConnect
+    
+-   **Role**:
+    
+    -   Manage private keys
+        
+    -   Sign transactions
+        
+-   **Libraries**:
+    
+    -   ethers.js
+        
+    -   wagmi / viem
+        
+
+* * *
+
+## 4\. Blockchain Interaction
+
+-   **RPC Providers**:
+    
+    -   Infura, Alchemy, QuickNode
+        
+-   **Frontend can**:
+    
+    -   Read on-chain data
+        
+    -   Send signed transactions
+        
+    -   Listen to events
+        
+
+* * *
+
+## 5\. Smart Contract Interaction
+
+-   Required:
+    
+    -   Contract address
+        
+    -   ABI
+        
+-   Two types:
+    
+    -   **Read**: no gas, `call`
+        
+    -   **Write**: needs signature + gas, `transaction`
+        
+
+* * *
+
+## 6\. Off-chain & Backend (Optional)
+
+-   Used for:
+    
+    -   Data indexing (The Graph)
+        
+    -   Caching & performance
+        
+-   Rule:
+    
+    -   Backend is **not** the source of truth
+        
+
+* * *
+
+## 7\. Typical Architecture
+
+```
+Frontend (React / Next)
+   |
+   | Wallet + ethers.js
+   v
+RPC Provider
+   |
+   v
+Smart Contracts (Blockchain)
+```
+
+* * *
+
+## 8\. Key Takeaways
+
+-   Wallet signs, node executes, contract stores state
+    
+-   Frontend orchestrates user interaction
+    
+-   Decentralization depends on **where truth lives**
+    
+
+* * *
+
+如果你愿意，我可以再帮你压成 **「面试速背版」** 或 **「学习路线版」**，哪个你更想要？
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # FullStack Web3 Engineer Learning Path – Notes  
 
 ## Core Skill Areas  
@@ -100,6 +226,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # DApp Development Workflow
 
@@ -194,6 +321,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## 一、Web3 合规 (Compliance)
@@ -322,6 +450,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -482,6 +611,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -713,6 +843,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -882,6 +1013,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1078,6 +1210,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
