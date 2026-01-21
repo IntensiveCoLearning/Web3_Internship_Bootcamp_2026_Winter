@@ -15,8 +15,213 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+### 一份代码的微观结构
+
+-   🔴 ：Solidity 语言规定必须这样写的词（固有用法）。
+    
+-   🔵：变量名、函数名。
+    
+
+Solidity
+
+```
+// 🔴 SPDX-License-Identifier: MIT  <-- 版权声明（固定写法）
+// 🔴 pragma solidity ^0.8.0;       <-- 版本指令（固定写法）
+
+// 🔴 contract 🔵 Bank {            <-- contract 是关键字; Bank 是你起的合约名
+    
+    // 1. 状态变量（存放在链上，类似数据库字段）
+    // 🔴 address 🔴 public 🔵 owner;     <-- 类型(address) 可见性(public) 变量名(owner)
+    // 🔴 mapping(🔴 address => 🔴 uint256) 🔴 public 🔵 balances; 
+    // ^-- 映射类型(mapping) 固有用法(=>) 变量名(balances)
+
+    // 2. 构造函数（部署时只运行一次）
+    // 🔴 constructor() {
+    //     🔵 owner = 🔴 msg.sender;  <-- msg.sender 是全局变量(固有用法)，代表部署者
+    // }
+
+    // 3. 函数定义
+    // 🔴 function 🔵 deposit() 🔴 public 🔴 payable { 
+    // ^-- 关键字   函数名     可见性   可支付(能收钱)
+        
+        // 🔴 require(🔴 msg.value > 0, "Empty"); <-- 错误检查(固有用法)
+        
+        // 逻辑处理
+        🔵 balances[🔴 msg.sender] += 🔴 msg.value; 
+    // }
+// }
+```
+
+* * *
+
+### 函数结构
+
+Solidity 的函数定义就像拼乐高，有 6 个关键部位。
+
+公式：
+
+function + 函数名 + (参数列表) + 可见性 + 状态修饰符 + returns (返回值)
+
+1\. 头部定义（必填 & 自定义）
+
+-   `function`: **\[固定\]** 告诉编译器这里开始定义函数。
+    
+-   `myFunction`: **\[自定义\]** 你给函数起的名字。
+    
+-   `(uint256 _amount)`: **\[自定义\]** 参数名和类型。习惯上参数名前加下划线 `_` 以区分状态变量。
+    
+
+2\. 可见性修饰符 (Visibility) —— **\[固定，4选1\]**
+
+决定了谁能看到、谁能调用这个函数。
+
+-   `public`: **最开放**。所有人（内部、外部、其他合约）都能调。
+    
+-   `private`: **最封闭**。只有**本合约内部**能调，继承的子合约都不能调。
+    
+-   `internal`: **家族通用**。本合约和**继承的子合约**能调，外部不能调。
+    
+-   `external`: **仅限外部**。只有外部用户或其他合约能调，**本合约内部不能直接调**（省 Gas，效率高）。
+    
+
+3\. 状态修饰符 (Mutability) —— **\[固定，3选1\]**
+
+决定了函数对链上数据（状态）的权限。
+
+-   (不写): **默认**。可读、可写链上状态（最贵）。
+    
+-   `view`: **只读**。能看链上数据，但不能改（不消耗 Gas，除非被其他合约调用）。
+    
+    -   _场景：查询余额、查询名字。_
+        
+-   `pure`: **纯净**。**不读也不改**链上数据，纯粹算数学题。
+    
+    -   _场景：计算_ `1+1=2`_。_
+        
+-   `payable`: **可收钱**。**特殊修饰符**，带上它，函数才能接收 ETH，否则发币过来会报错。
+    
+
+4\. 返回值 (Returns) —— **\[固定\]**
+
+-   `returns (uint256)`: 声明返回的数据类型。注意是 `returns` (复数)。
+    
+
+* * *
+
+### 全局变量与函数
+
+**不需要定义，直接用**。
+
+1\. 身份与环境 (Context)
+
+-   `msg.sender` (**最核心**): 当前**调用者**的地址。谁调用的这个函数，值就是谁。
+    
+    -   _用途：权限控制（你是管理员吗？）、记录谁存了钱。_
+        
+-   `msg.value`: 调用时附带发送了多少 **ETH**（单位是 wei）。
+    
+    -   _用途：判断用户付了多少钱。_
+        
+-   `block.timestamp`: 当前区块的**时间戳**（秒级）。
+    
+    -   _用途：锁定时间、倒计时。_
+        
+-   `tx.origin`: 交易的**原始发起人**（一定是一个真人/EOA，不是合约）。
+    
+    -   _警告：安全风险高，尽量少用，一般用_ `msg.sender`_。_
+        
+
+2\. 错误处理 (Error Handling)
+
+Solidity 遇到错误会**回滚（Revert）**，即撤销之前所有的操作，并退还剩余 Gas。
+
+-   `require(条件, "报错信息")`: **最常用**。如果条件不满足，就回滚。
+    
+    -   _例：_`require(balance >= amount, "余额不足");`
+        
+-   `revert("报错信息")`: 直接回滚。常用于复杂的 `if/else` 逻辑中。
+    
+-   `assert(条件)`: 用于检查**不应该发生**的内部错误（如代码逻辑 bug）。消耗所有 Gas，慎用。
+    
+
+3\. 资产发送 (Sending ETH)
+
+假设要把 ETH 转给地址 `addr`：
+
+-   `addr.transfer(amount)`: **老用法，不推荐**。Gas 限制 2300，容易失败。
+    
+-   `addr.send(amount)`: **老用法，不推荐**。失败返回 false，不自动回滚。
+    
+-   `payable(addr).call{value: amount}("")`: **推荐用法**。
+    
+    -   _解释_：最底层的调用方式，防重入攻击需配合 CEI 模式。
+        
+    -   _写法_：`(bool success, ) = payable(receiver).call{value: 1 ether}(""); require(success, "Transfer failed");`
+        
+
+4\. 数学与加密
+
+-   `keccak256(abi.encodePacked("abc"))`: **哈希计算**。生成唯一的 32 字节哈希值。
+    
+    -   _用途：生成随机数（伪随机）、生成唯一 ID、验证签名。_
+        
+-   `abi.encode(...)`: **编码**。将数据打包成字节码。
+    
+
+* * *
+
+### 经典数据结构
+
+1.  **Mapping (映射/哈希表)**
+    
+    -   语法：`mapping(Key类型 => Value类型) 变量名;`
+        
+    -   _例子_：`mapping(address => uint256) public userBalances;`
+        
+    -   _解释_：一本账本，查 `address` (人)，得到 `uint256` (钱)。
+        
+2.  **Struct (结构体)**
+    
+    -   语法：`struct 名字 { ... }`
+        
+    -   _例子_：
+        
+        Solidity
+        
+        ```
+        struct User {       // 固有用法 struct; 自定义名 User
+            uint256 id;     // 成员变量
+            string name;
+        }
+        User public admin;  // 使用结构体定义变量
+        ```
+        
+3.  **Array (数组)**
+    
+    -   `uint256[] public arr;` (动态数组，长度可变)
+        
+    -   `uint256[10] public arrFixed;` (固定数组，长度固定)
+        
+    -   _操作_：`arr.push(1);` (增加), `arr.pop();` (删除最后一个), `arr.length` (查长度)。
+        
+
+### 一张图总结
+
+| 类别 | 关键字 (固有用法) | 含义 |
+| 基础 | contract, interface, library | 定义合约、接口、库 |
+| 存储 | memory, storage, calldata | 临时内存、永久存储、输入数据 |
+| 函数 | public, private, view, payable | 可见性与权限 |
+| 全局 | msg.sender, msg.value | 谁调用的？付了多少钱？ |
+| 全局 | block.timestamp | 现在几点了？ |
+| 控制 | require, revert, emit | 检查错误、触发事件 |
+| 类型 | mapping, struct, uint256, address | 数据类型 |
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 如果把 Dapp 比作一个淘宝网站，智能合约开发就是编写那个“自动处理订单、扣款、发货”且“无法被老板随意篡改”的后台程序。
 
 ### 1\. 核心定义：它是“链上的后端”
@@ -113,6 +318,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
+
 随着以太坊完成“合并”（The Merge）并迈向以 Layer 2 为中心的扩容新阶段，Web3 行业正从早期的草莽探索期，逐步转型为以高性能基础设施和真实应用场景为驱动的成熟生态。对于想要入局的建设者而言，理解技术路线图（Roadmap）不仅是理解行业的未来，更是看清就业机会的“导航图”。
 
 本文将结合以太坊的最新发展，深入探讨 Web3 的行业前景与由此衍生的就业机遇。
@@ -180,6 +386,7 @@ Web3 社区强调“共识”与“协作”，因此非技术岗位同样重要
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 # 智能合约是如何工作的
@@ -268,6 +475,7 @@ D. 资源限制 (Gas Mechanism)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -401,6 +609,7 @@ D. 资源限制 (Gas Mechanism)
 
 
 
+
 # Web3 安全与合规
 
 使用费曼笔记结构。
@@ -446,6 +655,7 @@ D. 资源限制 (Gas Mechanism)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -518,6 +728,7 @@ Web3 的本质是去中心化的价值互联网。它通过区块链技术，将
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
