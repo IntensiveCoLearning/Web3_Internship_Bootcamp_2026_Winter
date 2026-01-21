@@ -15,8 +15,80 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+1\. **EVM 四大执行区**
+
+\- Stack：指令与计算用栈
+
+\- Storage：链上永久数据，最耗 gas
+
+\- Memory：函数执行期间的临时内存
+
+\- Calldata：函数参数区，只读
+
+\- 核心优化思想：\*\*尽量减少 Storage 访问\*\*
+
+2\. **Gas 成本与优化原则**
+
+\- 写入 storage ≈ 20,000 gas
+
+\- 修改 storage ≈ 5,000 gas
+
+\- 原则：少存、少改、避免无意义的链上读写
+
+3\. **Solidity 数据类型**
+
+\- 值类型（uint / bool / address）：更省 gas
+
+\- 引用类型（string / array / mapping）：更费 gas
+
+\- 链上账本设计的核心结构是 **mapping**
+
+4\. **ERC20 基本结构**
+
+\- 两本账：余额账本 + 授权账本
+
+\- transfer：校验 → 更新余额 → 触发事件
+
+\- approve：修改授权账本 + Approval 事件
+
+5\. **函数与可见性**
+
+\- external / public / internal / private
+
+\- view：只读链上数据
+
+\- pure：不读也不改链上状态
+
+6\. **modifier 修饰符**
+
+\- 抽象前置条件（权限、参数校验）
+
+\- 作用：代码复用、统一权限、Gas 优化
+
+\- 常见：onlyOwner、nonReentrant
+
+7\. **安全要点**
+
+\- EVM 无并发，但存在重入风险
+
+\- 防护：检查-生效-交互 + 重入锁
+
+\- Mint 通常设为 internal，防止随意铸币
+
+8\. **开发与调试**
+
+\- Remix 可编译、部署、调试合约
+
+\- 读操作不消耗 gas，写操作必须发交易
+
+\- 错误处理优先级：custom error > revert > require
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天没学多少东西，主要就是试着在remix中写了些东西
 
 这个是进行转账操作
@@ -76,6 +148,7 @@ contract SimpleStorage {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # **Solidity 转账与重入安全**
 
@@ -209,6 +282,7 @@ require(ok);
 
 
 
+
 ## 1 Solidity 是干嘛的
 
 Solidity 不是普通程序语言， 它是用来 **写链上规则的**。
@@ -331,11 +405,13 @@ require(msg.sender == owner);
 
 
 
+
 今天有点事，请假一天
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -477,6 +553,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -726,6 +803,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 
 
+
 # **Web3 安全与合规**
 
 * * *
@@ -843,6 +921,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1023,6 +1102,7 @@ NaN. **将这两个数据结构结合起来就能实现一个良好的数据结�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
