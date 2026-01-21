@@ -15,8 +15,408 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 一、智能合约的概念与功能
+
+### 1智能合约是什么
+
+-   本质：部署在链上的 **“代码（functions）+ 持久状态（state）”**
+    
+-   运行方式：通过交易触发执行，驻留在某个合约地址上
+    
+-   核心特征：**IFTTT（如果…那么…）** + **按代码确定执行**
+    
+-   默认不可变：合约部署后字节码通常不可直接修改（immutable by default）
+    
+-   需要升级时的现实做法：**代理（Proxy）/ UUPS** 等“地址不变、逻辑可换”的方案（状态留在代理，逻辑在实现合约）
+    
+
+> 重要更新点：近年的协议升级中，`SELFDESTRUCT` 的“删除代码/状态”能力被显著限制，**不再推荐依赖 selfdestruct 做升级/回滚**。
+
+### 2概念来源
+
+-   Nick Szabo 在 90 年代提出“智能合约”概念：用密码学与自动化，减少对受信任中介依赖
+    
+-   以太坊把它落地为公链上的执行引擎，支撑 DeFi / NFT / DAO 等
+    
+
+### 3传统合约的信任问题（为什么需要智能合约）
+
+-   传统合约痛点：即使条件满足，也要相信对方会履约
+    
+-   引入中介（托管人/仲裁人）虽能缓解，但又引入：
+    
+    -   中介失职/舞弊/被收买
+        
+    -   中介跑路风险
+        
+
+### 4智能合约能做什么（价值点清单）
+
+-   **自动售货机模型**：条件满足就执行；不满足就 revert（不发生状态变更）
+    
+-   **无需中介、无需等待**：规则写死在链上，满足条件自动结算（如时间锁账户、付完款自动转移所有权 NFT 等）
+    
+-   **确定性**：同样链上环境 + 同样输入 → 同样输出（节点必须一致才能共识）
+    
+-   **公开可审计**：部署、调用、事件日志、资产转移全在链上可查
+    
+-   **隐私：假名制而非匿名**
+    
+    -   地址不强制绑定实名，但链上行为可追踪
+        
+    -   结合链下数据（如交易所 KYC）可能被关联到真实身份
+        
+    -   真隐私通常需要额外方案（混币/隐私池/ZK 等）
+        
+-   **条款可见可审查**：源码验证后可在浏览器直接读/用工具审计；但前提是你看得懂或信任审计/社区共识
+    
+-   **你能写的逻辑基本都能上链**（受状态机与 Gas 约束）：代币、DeFi、NFT、DAO、访问控制、自动清算机器人、ZK 验证逻辑等
+    
+
+* * *
+
+## 二、Solidity 语言特性与优势
+
+### 1为什么是 Solidity
+
+-   **原生契合 EVM**：编译为 EVM 字节码，能直接处理 storage/gas/event 等链上资源
+    
+-   **语法相对友好**：融合 JS/C++/Python 风格；支持静态类型、继承、库、事件、修饰符等
+    
+-   **生态最强**：大量框架、库、审计经验沉淀；EVM 链广泛兼容（Polygon/BSC/Avalanche/Arbitrum/Optimism/Base 等）
+    
+
+### 2工具生态关键词
+
+-   Remix（浏览器 IDE，入门/小 demo）
+    
+-   Hardhat（工程化开发、脚本部署、多网络、fork、调试）
+    
+-   Foundry（速度快，Solidity 原生测试，fuzz/invariant 强）
+    
+-   OpenZeppelin Contracts（标准合约库：ERC20/721/1155、权限、治理等）
+    
+
+### 3推荐学习路线
+
+1.  区块链基础概念（交易、节点、合约等）
+    
+2.  读官方文档 + Remix 写第一个合约（存取变量/转账/事件）
+    
+3.  交互式练习（CryptoZombies / Solidity by Example）
+    
+4.  学工具链（Hardhat/Foundry）+ 学写测试（revert、边界条件）
+    
+5.  学安全与最佳实践（重入、权限、预言机、flash loan 等）+ 静态分析（Slither/Mythril）
+    
+
+### 4安全与成熟度要点
+
+-   Solidity 0.8+ 默认整数溢出检查（溢出自动 revert），显著减少经典溢出漏洞
+    
+-   工具/审计生态完善：Slither、Mythril、Echidna、Foundry fuzz/invariant、审计公司与竞赛审计等
+    
+
+-   **Solidity 之所以成为默认答案：EVM 原生 + 生态最强 + 标准/工具成熟 + 多链兼容 + 安全经验最多。**
+    
+
+* * *
+
+## 三、合约编译会产生什么（编译产物）
+
+### 1字节码（Bytecode）
+
+-   **Creation Bytecode**：部署时执行（含构造逻辑），负责把运行时代码写入链上
+    
+-   **Runtime Bytecode**：部署后存在合约地址上的“真正运行代码”
+    
+-   常见补充：运行时代码末尾会附带 **metadata 哈希（CBOR 编码）**，用于源码验证/检索
+    
+
+### 2ABI（应用二进制接口）
+
+-   JSON 格式：描述可调用函数/事件/参数/返回值等
+    
+-   作用：
+    
+    -   链下程序（前端/脚本/钱包/其他合约）知道怎么调用你
+        
+    -   负责调用数据的编码/解码
+        
+
+### 3Metadata JSON
+
+-   记录编译器版本与配置、源码引用、ABI、NatSpec 等
+    
+-   浏览器/验证服务（Etherscan/Sourcify）依赖它做源码验证与生成交互界面
+    
+
+### 4）调试/审计相关输出
+
+-   AST（抽象语法树）
+    
+-   Source Map（字节码指令 ↔ 源码位置）
+    
+-   Assembly / Yul IR（中间表示与底层可读表示，用于优化/审计/理解执行）
+    
+
+* * *
+
+## 四、部署合约后你会拿到什么（地址与 ABI）
+
+-   部署后获得：
+    
+    -   **合约地址（Contract Address）**
+        
+    -   **部署交易哈希（tx hash）**
+        
+-   ABI 不需要等部署后才有：**ABI 是编译时生成的**
+    
+-   主流流程：
+    
+    1.  本地编译得 bytecode + ABI + metadata
+        
+    2.  部署上链得 address + tx hash
+        
+    3.  去 Etherscan/Sourcify 做源码验证 → 浏览器展示 Read/Write 面板与 ABI
+        
+
+* * *
+
+## 五、部署成本（Gas）怎么核算
+
+### 1Gas Used：钱花在哪里
+
+部署交易的 Gas 通常由：
+
+-   基础交易成本：**21,000 gas**
+    
+-   CREATE 创建合约开销：约 **32,000 gas**
+    
+-   Code deposit：写入 runtime bytecode，约 **200 gas/字节**
+    
+-   构造函数执行：逻辑越复杂越贵
+    
+-   Storage 初始化：首次写入 0→非0 很贵，约 **20,000 gas/槽**
+    
+
+> 结论：**字节码越大、构造逻辑越复杂、初始化写入越多 → 部署越贵**
+
+### 2EIP-1559 后的费用模型
+
+-   **Total Fee = GasUsed × (Base Fee + Priority Fee)**
+    
+-   参数理解：
+    
+    -   Base Fee：协议随拥堵调整，并被销毁（burn）
+        
+    -   Priority Fee：给验证者的小费（tip）
+        
+    -   交易里常设：
+        
+        -   maxFeePerGas（愿付的上限）
+            
+        -   maxPriorityFeePerGas（小费上限）
+            
+
+### 3L1 vs L2
+
+-   L1：最安全也最贵
+    
+-   L2（Rollup）：费用通常低一个数量级；近年的升级引入 blob 数据后，L2 的 L1 数据成本显著下降，部署与交互更便宜
+    
+
+### 4实战控制成本 checklist
+
+-   本地/测试网先部署，看 gasUsed
+    
+-   上线前看实时 gas（BaseFee/建议 tip）
+    
+-   优化：减少字节码、减少构造期写 storage、合理开 optimizer
+    
+-   能在 L2 跑就优先 L2
+    
+
+* * *
+
+## 六、常见安全漏洞与防护
+
+### 1重入（Reentrancy）
+
+-   风险：外部调用在状态更新前发生 → 可反复回调提款
+    
+-   防护：
+    
+    -   **CEI（Checks→Effects→Interactions）**
+        
+    -   **ReentrancyGuard / nonReentrant**
+        
+    -   **Pull Payment**（改“我打给你”为“你来领”）
+        
+
+### 2发送 ETH 的坑：transfer/send 不可靠
+
+-   固定 2300 gas 津贴在一些升级后更容易失败 → DoS/卡钱
+    
+-   防护：用 `call{value: amount}("")` 并检查返回值；优先 Pull Payment
+    
+
+### 3整数溢出
+
+-   0.8+ 默认检查溢出并 revert
+    
+-   `unchecked` 仅在证明安全时用，并写足测试与注释
+    
+
+### 4访问控制错误 / tx.origin 滥用
+
+-   防护：Ownable/AccessControl；关键操作上多签 + Timelock；鉴权只用 msg.sender
+    
+
+### 5外部调用不可信 / ERC20 返回值不规范
+
+-   防护：检查 success 与返回数据；ERC20 用 **SafeERC20** 兼容“非标准代币”
+    
+
+### 6预言机操控 / 闪电贷联动
+
+-   防护：多源预言机（如 Chainlink）、TWAP、滑点/阈值保护、延迟执行或多阶段确认
+    
+
+### 7DoS 与 Gas 攻击
+
+-   风险：无上限循环、循环里外部调用、依赖固定 gas
+    
+-   防护：分页/拆分交易、避免循环主动打款、设计失败策略（跳过/记录）
+    
+
+### 8业务逻辑缺陷（最难但最致命）
+
+-   防护：边界测试 + fuzz + invariant；高价值协议做审计/形式化验证
+    
+
+### 9随机数不安全
+
+-   风险：用区块属性做随机数可被操控
+    
+-   防护：Chainlink VRF 或 commit-reveal
+    
+
+### 10可升级合约风险 & delegatecall 风险
+
+-   风险：存储布局错位、未初始化、升级权限滥用、delegatecall 到不受信目标
+    
+-   防护：
+    
+    -   用 OpenZeppelin upgradeable 模板与插件做 layout check
+        
+    -   initializer/reinitializer + `_disableInitializers()`
+        
+    -   升级权限交给 **多签 + 时间锁**，并配审计流程
+        
+    -   delegatecall 目标白名单，严禁用户可控
+        
+
+### 11授权（approve）竞态
+
+-   防护：increase/decreaseAllowance；或 approve(0)→approve(new)；支持 permit 更好
+    
+
+### 12工具与流程
+
+-   静态分析：Slither、Mythril…
+    
+-   Fuzz/不变式：Echidna、Foundry（forge）
+    
+-   审计：传统审计 + 竞赛审计（Code4rena/Sherlock）+ Bug Bounty
+    
+
+* * *
+
+## 七、部署/开发工具怎么选（场景匹配）
+
+-   **Remix**：入门、课堂 demo、小 PoC、快速调试
+    
+-   **Hardhat**：中大型工程、团队协作、脚本化部署、插件丰富、JS/TS 工作流
+    
+-   **Foundry**：极致测试/性能、fuzz/invariant、命令行工作流、主网 fork 研究
+    
+-   **Truffle + Ganache**：存量项目/老生态还在用，新项目更多迁移到 Hardhat/Foundry
+    
+-   **Tenderly**：高级调试、交易回放、监控告警、虚拟测试网（作为增强层）
+    
+
+* * *
+
+## 八、部署后的公开性与可审计性
+
+-   字节码公开：任何人可查合约 bytecode
+    
+-   交易历史公开：调用、资金转移、事件日志全部可追踪
+    
+-   状态“半公开”：public 变量直接读；private/internal 只是接口不可见，链上数据仍明文可被推导读取
+    
+-   可审计方式：
+    
+    -   源码验证（Etherscan/Polygonscan）与去中心化验证（Sourcify）
+        
+    -   人工审计 + 自动化工具 + 社区赏金
+        
+
+* * *
+
+## 九、合约逻辑修改与升级模式（核心结论：不能直接改，只能“绕着改”）
+
+### 1最直接：重新部署新合约
+
+-   适合：无状态/状态少/可迁移
+    
+-   缺点：地址变更、迁移成本高
+    
+
+### 2行业主流：Proxy 代理升级
+
+-   目标：**地址 + 状态固定**，逻辑可替换
+    
+-   结构：Proxy 存储状态并 delegatecall 到 Implementation
+    
+-   形态：
+    
+    -   Transparent Proxy：管理入口与用户调用隔离
+        
+    -   UUPS：升级逻辑在实现合约里，更轻更省 gas
+        
+-   最佳实践：不要手写，直接用 OpenZeppelin Upgrades；升级权限交给多签+时间锁
+    
+
+### 3更重型：模块化 / Diamond（EIP-2535）
+
+-   多 Facet 挂接、按 selector 路由，适合“协议城市级”复杂系统
+    
+-   代价：实现与审计复杂度高
+    
+
+### 4不再推荐的旧套路
+
+-   依赖 SELFDESTRUCT + CREATE2 “原地换壳”的升级方式：在新规则下已不可靠/不推荐
+    
+
+### 5怎么选
+
+-   Demo：重部署
+    
+-   有资金长期运营：Proxy（Transparent/UUPS）+ 多签 + Timelock
+    
+-   超大型模块：Diamond/模块化（额外审计投入）
+    
+-   永远不要：指望 selfdestruct 兜底、随手写 proxy、不做存储布局检查
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ### **智能合约开发核心总结**
 
 **一、核心理念：Dapp 架构与开发**
@@ -168,6 +568,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 021第三章账户类型
 
@@ -321,6 +722,7 @@ ERC-20/ERC-721等代币**并非独立资产**，而是**智能合约账户内的
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 ### **021第二章**
 
 **一、节点与客户端**
@@ -424,6 +826,7 @@ ERC-20/ERC-721等代币**并非独立资产**，而是**智能合约账户内的
 
 
 
+
 安全合规相关
 
 只装官方软件、面试不轻信他人多渠道确认、不提供提供任何隐私
@@ -457,6 +860,7 @@ ERC-20/ERC-721等代币**并非独立资产**，而是**智能合约账户内的
 
 
 
+
 以太坊是一个去中心化、开源并且具备智能合约功能的公共区块链平台。EVM是一个图灵完备的虚拟机，能够执行智能合约代码，可以运行各类程序和应用。
 
 以太坊具有几个特点：1smart contract 2dapp 3tokens 4PoS 5gas 6Proto-Danksharding与Dencun 7
@@ -485,6 +889,7 @@ MEV与PBS（应对市场力量的集中化压力）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
