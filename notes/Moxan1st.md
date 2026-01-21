@@ -19,11 +19,77 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 # 总览
 
+-   完成挑战 Challenge #0 - Tokenization
+    
+-   通过 Ethernaut 前 3 关
+    
+-   安装 Figma
+    
+-   计划两到三天后的学习内容
+    
+
 # 详情
+
+## 挑战 Challenge #0 - Tokenization
+
+今天往框架里写合约。Gemini 建议我从 ERC-20 开始写，并且避免重复造轮子。我先学会调用吧。
+
+`totalSupply` = 这个 ERC20 代币在链上“一共存在多少个单位”
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-21-1768958350880-image.png)
+
+铸造、转账和销毁都会经过 \_update 函数，这个函数目的是**更新账本中客户的余额以及代币总数。**
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-21-1768961936374-image.png)
+
+虽然销毁的时候，代币转向的是 address(0)，但是
+
+1.  账本并没有记录 balance(address(0))
+    
+2.  **代码路径从来不会给它赋值**
+    
+
+**Scaffold-ETH 2** 有一个核心组件叫 `ContractUI`它会**遍历** ABI 里的每一个函数。如果发现是 `view` 函数，就渲染一个“Read”显示框；如果发现是 `public` 或 `external` 函数，就渲染一个带“Send”按钮的表单。这样的话部署完合约就会有一个可用的前端网页提供测试。
+
+在部署了 ERC-20 后，出现的问题：
+
+-   打开的网页右上角并不是我部署这个合约所使用的EOA的地址。因此如果需要转账，要先去日志里面找到部署者的地址和密钥，通过这个来发起第一笔转账。
+    
+-   转账的时候使用的账户必须有测试 ETH，否则不能满足 Gas 要求。也就是说在这个链上用的依旧是 ETH 作为 Gas 代币。
+    
+
+### 部署到 Sepolia
+
+需要保证钱包密钥是准确的，可以通过查看钱包地址反推密钥是否正确。
+
+在这个前提下保证 sepETH 充足。
+
+部署成功后在 Metamask 中添加合约地址即可查看代币了。
+
+### 前端上网
+
+利用 Vercel 托管项目，可以实现自动化部署，还有免费的域名。
+
+### 挑战提交
+
+需要提交前端网页和合约地址网页
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-21-1768985854906-image.png)
+
+### 周五分享内容
+
+学习方法：双 AI 问答辅助代码学习。
+
+-   回答我们的疑问：帮助我们理解问题，无论是开放性的还是确定性的。
+    
+-   索取建议：学习方向的抉择不定时，学习建议。
+    
+-   辅助目的：帮忙配环境，分析 BUG 。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # 总览
 
@@ -133,6 +199,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 
 
+
 # 总览
 
 ### 提交任务
@@ -153,6 +220,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -274,6 +342,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -296,6 +365,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -334,6 +404,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -456,6 +527,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -692,6 +764,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -800,6 +873,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
