@@ -15,8 +15,238 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+**soildity的深入学习**
+
+**1.HelloWeb3(三行代码)**
+
+-   Solidity 是一种用于编写以太坊虚拟机（EVM）智能合约的编程语言；Remix 是以太坊官方推荐的智能合约集成开发环境（IDE）；
+    
+
+注：Solidity 语句以分号（;）结尾
+
+// SPDX-License-Identifier: MIT //第 1 行是注释，说明代码所使用的软件许可（license）这里指MIT许可，Solidity 注释以“//”开头，后面跟注释内容，注释不会被程序执行。
+
+pragma solidity ^0.8.21; //第 2 行声明源文件所使用的 Solidity 版本，这行代码表示源文件将不允许小于 0.8.21 版本或大于等于 0.9.0 的编译器编译
+
+contract HelloWeb3{
+
+string public \_string = "Hello Web3!"; //第3-4 行是合约部分。第 3 行创建合约（contract），并声明合约名为 HelloWeb3。第 4 行是合约内容，声明了一个 string（字符串）变量 \_string，并赋值为 "Hello Web3!"。
+
+}
+
+-   编译（按住CTRL+S即可）并部署代码：
+    
+
+点击 Deploy（黄色按钮），即可部署我们编写的合约，部署成功后，在下方会看到名为 HelloWeb3 的合约。点击 \_string，即可看到 "Hello Web3!"。
+
+**2.值类型**
+
+-   _值类型_(Value Type) ：包括布尔型，整数型等等，这类变量赋值时候直接传递数值。
+    
+
+1\. 布尔型（bool）：二值变量，取值为 true 或 false；
+
+2\. 整型：整型是 Solidity 中的整数，最常用的包括：
+
+int public \_int = -1; // 整数，包括负数
+
+uint public \_uint = 1; // 无符号整数
+
+uint256 public \_number = 20220330; // 256位无符号整数
+
+3.地址（address）：分成两种：
+
+普通地址（address）: 存储一个 20 字节的值（以太坊地址的大小）。
+
+payable address: 比普通地址多了 transfer 和 send 两个成员方法，用于接收转账；
+
+4\. 定长字节数组：
+
+属于值类型，数组长度在声明之后不能改变。根据字节数组的长度分为 bytes1, bytes8, bytes32 等类型。定长字节数组最多存储 32 bytes 数据，即bytes32；
+
+5\. 枚举 enum（冷门了解）
+
+-   _引用类型_(Reference Type) ：包括数组和结构体，这类变量占空间大，赋值时候直接传递地址（类似指针）。
+    
+-   _映射类型_(Mapping Type) : Solidity中存储键值对的数据结构，可以理解为哈希表
+    
+
+**3.函数**
+
+solidity中的函数的形式：
+
+function <function name>(\[parameter types\[, ...\]\]) {internal|external|public|private} \[pure|view|payable\] \[virtual|override\] \[<modifiers>\]
+
+\[returns (<return types>)\]{ <function body> }
+
+(注：(方括号中的是可写可不 写的关键字))
+
+-   function：声明函数时的固定用法。要编写函数，就需要以 function 关键字开头；
+    
+-   <function name>：函数名；
+    
+-   (\[parameter types\[, ...\]\])：圆括号内写入函数的参数，即输入到函数的变量类型和名称；
+    
+-   {internal|external|public|private}：函数可见性说明符，共有4种：
+    
+
+public：内部和外部均可见；
+
+private：只能从本合约内部访问，继承的合约也不能使用；
+
+external：只能从合约外部访问（但内部可以通过 this.f() 来调用，f是函数名）；
+
+internal: 只能从合约内部访问，继承的合约可以用。
+
+tips：合约中定义的函数需要明确指定可见性，它们没有默认值；public|private|internal 也可用于修饰状态变量(定义可参考WTF Solidity 第5讲的相关内容)。public变量会自动生成同名的getter函数，用于查询数值。未标明可见性类型的状态变量，默认为internal。
+
+-   \[pure|view|payable\]：决定函数权限/功能的关键字。payable（可支付的）很好理解，带着它的函数，运行的时候可以给合约转入 ETH。pure 和 view 的介绍见下一节；
+    
+-   \[virtual|override\]: 方法是否可以被重写，或者是否是重写方法。virtual用在父合约上，标识的方法可以被子合约重写。override用在自合约上，表名方法重写了父合约的方法；
+    
+-   <modifiers>: 自定义的修饰器，可以有0个或多个修饰器；
+    
+-   \[returns ()\]：函数返回的变量类型和名称；
+    
+-   <function body>: 函数体。
+    
+
+pure和view的区别：solidity 引入这两个关键字主要是因为 以太坊交易需要支付气费（gas fee）。合约的状态变量存储在链上，gas fee 很贵，如果计算不改变链上状态，就可以不用付 gas。包含 pure 和 view 关键字的函数是不改写链上状态的，因此用户直接调用它们是不需要付 gas 的（注意，合约中非 pure/view 函数调用 pure/view 函数时需要付gas）。
+
+总结：`view`函数可以读取状态变量，但不能改写；`pure` 函数既不能读取也不能改写状态变量，这是其他语言中没有出现过的。
+
+**4.函数输出**
+
+-   返回值：return 和 returns；
+    
+
+returns：跟在函数名后面，用于声明返回的变量类型及变量名；
+
+return：用于函数主体中，返回指定的变量。
+
+-   命名式返回
+    
+
+我们可以在 returns 中标明返回变量的名称。Solidity 会初始化这些变量，并且自动返回这些变量的值，无需使用 return。
+
+eg：// 命名式返回
+
+function returnNamed() public pure returns(uint256 _number, bool_ bool, uint256\[3\] memory \_array){
+
+\_number = 2;
+
+\_bool = false;
+
+\_array = \[uint256(3),2,1\];
+
+}
+
+当然命名式返回，依然支持return
+
+-   解构式赋值
+    
+
+读取所有返回值：声明变量，然后将要赋值的变量用,隔开，按顺序排列；
+
+读取部分返回值：声明要读取的返回值对应的变量，不读取的留空。
+
+**5.变量数据存储和作用域**
+
+引用类型(Reference Type) ：包括数组（array）和结构体（struct），由于这类变量比较复杂，占用存储空间大，我们在使用时必须要声明数据存储的位置。
+
+-   数据位置：storage：合约里的状态变量默认都是storage，存储在链上，类似计算机的硬盘，**消耗gas多；**
+    
+    memory：函数里的参数和临时变量一般用memory，存储在内存中，不上链。尤其是如果返回数据类型是变长的情况下，必须加memory修饰，例如：string, bytes, array和自定义结构；
+    
+    calldata：和memory类似，存储在内存中，不上链。与memory的不同点在于calldata变量不能修改（immutable），一般用于函数的参数。
+    
+
+**memory 和calldata**均是临时存在内存里，**消耗gas少**，整体消耗gas从多到少依次为：storage > memory > calldata
+
+-   数据位置和赋值规则：
+    
+
+赋值本质上是创建引用指向本体，因此修改本体或者是引用，变化可以被同步：
+
+storage（合约的状态变量）赋值给本地storage（函数里的）时候，会创建引用，改变新变量会影响原变量；
+
+memory赋值给memory，会创建引用，改变新变量会影响原变量。
+
+其他情况下，赋值创建的是本体的副本，即对二者之一的修改，并不会同步到另一方。这有时会涉及到开发中的问题，比如从storage中读取数据，赋值给memory，然后修改memory的数据，但如果没有将memory的数据赋值回storage，那么storage的数据是不会改变的。
+
+-   变量的作用域：
+    
+
+1\. 状态变量：状态变量是数据存储在链上的变量，所有合约内函数都可以访问，gas消耗高。状态变量在合约内、函数外声明；并且可以在函数里更改状态变量的值；
+
+2\. 局部变量：局部变量是仅在函数执行过程中有效的变量，函数退出后，变量无效。局部变量的数据存储在内存里，不上链，gas低。局部变量在函数内声明；
+
+3\. 全局变量：全局变量是全局范围工作的变量，都是solidity预留关键字。他们可以在函数内不声明直接使用；
+
+注：常见的全局变量：msg.sender代表请求发起地址；
+
+block.number代表当前区块高度；
+
+msg.dat代表请求数据；
+
+blockhash(uint blockNumber): (bytes32) 给定区块的哈希值 – 只适用于最近的256个区块, 不包含当前区块。
+
+block.coinbase: (address payable) 当前区块矿工的地址
+
+block.gaslimit: (uint) 当前区块的gaslimit
+
+block.number: (uint) 当前区块的number
+
+block.timestamp: (uint) 当前区块的时间戳，为unix纪元以来的秒
+
+gasleft(): (uint256) 剩余 gas
+
+msg.data:(bytes calldata) 完整call data
+
+msg.sender: (address payable) 消息发送者 (当前 caller)
+
+msg.sig: (bytes4) calldata的前四个字节 (function identifier)
+
+msg.value: (uint) 当前交易发送的 wei 值
+
+block.blobbasefee: (uint) 当前区块的blob基础费用。这是Cancun升级新增的全局变量。
+
+blobhash(uint index): (bytes32) 返回跟当前交易关联的第 index 个blob的版本化哈希（第一个字节为版本号，当前为0x01，后面接KZG承诺的SHA256哈希的最后31个字节）。若当前交易不包含blob，则返回空字节。这是Cancun升级新增的全局变量。
+
+4\. 全局变量-以太单位与时间单位:
+
+-   以太单位
+    
+
+Solidity中不存在小数点，以0代替为小数点，来确保交易的精确度，并且防止精度的损失，利用以太单位可以避免误算的问题，方便程序员在合约中处理货币交易。
+
+wei: 1
+
+gwei: 1e9 = 1000000000
+
+ether: 1e18 = 1000000000000000000
+
+-   时间单位
+    
+
+可以在合约中规定一个操作必须在一周内完成，或者某个事件在一个月后发生。这样就能让合约的执行可以更加精确，不会因为技术上的误差而影响合约的结果。因此，时间单位在Solidity中是一个重要的概念，有助于提高合约的可读性和可维护性。
+
+seconds: 1
+
+minutes: 60 seconds = 60
+
+hours: 60 minutes = 3600
+
+days: 24 hours = 86400
+
+weeks: 7 days = 604800
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -99,6 +329,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 **智能合约开发**
 
@@ -288,6 +519,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -295,6 +527,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -370,6 +603,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -516,6 +750,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -802,6 +1037,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -865,6 +1101,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1020,6 +1257,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
