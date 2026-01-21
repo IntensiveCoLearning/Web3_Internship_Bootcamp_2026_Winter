@@ -10,7 +10,7 @@ timezone: UTC+7
 
 ## Self-introduction
 
-Web3 实习计划 2025 冬季实习生
+The eternity of pain often does not lie in choosing hardship, but in rejecting the choice itself.
 
 ## Notes
 
