@@ -15,8 +15,1044 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+晚上聽了Uniswap分享會再度複習了一遍v2v3v4，剛好下午在學習Intent跟The compact這個也是跟Uniswap發布的新架構，以前Intent跟The compact我都有聽過相關的分享會，但是一直沒有到非常熟悉，我還以為他們兩者間是競爭關係，今天總算弄懂了，也知道兩者怎麼協同運作。**小抱怨一下最近作息已經很亂了都是早上睡覺，好死不死樓上在裝修固定早上9點到下午5點，還在我房間正上方，搞得我整個人心神不寧，這幾天任務也沒什麼解，好在今天的聲音到1點就停了，這應該代表裝修完了吧 ! 對吧 !?** 等等半夜趕快把入門技術向任務補一補，大概看了一下應該很快能搞定。  
+  
+DeFi 交易系統演進：從 AMM 到 Intent-Based 交易
+
+> 學習總結 | 涵蓋 Uniswap V2/V3/V4、Intent 交易、ERC-7683、The Compact
+
+* * *
+
+## 1\. 概覽：交易範式的演進
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        DeFi 交易範式演進                                     │
+│                                                                             │
+│   2018          2020           2021           2023           2024+          │
+│    │             │              │              │              │             │
+│    ▼             ▼              ▼              ▼              ▼             │
+│ ┌──────┐    ┌──────┐       ┌──────┐      ┌──────┐      ┌──────────┐       │
+│ │ V1   │    │ V2   │       │ V3   │      │ V4   │      │ Intent   │       │
+│ │      │    │      │       │      │      │      │      │ Based    │       │
+│ │單一池│    │任意對│       │集中  │      │Hooks │      │          │       │
+│ │      │    │恆定積│       │流動性│      │模組化│      │用戶只說  │       │
+│ │      │    │      │       │      │      │      │      │想要什麼  │       │
+│ └──────┘    └──────┘       └──────┘      └──────┘      └──────────┘       │
+│                                                                             │
+│   資金效率:  1x      →      1x      →    4000x    →   可編程   →   最優執行  │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 核心轉變
+
+| 維度 | 傳統 AMM | Intent-Based |
+| --- | --- | --- |
+| 用戶角色 | 指定「怎麼做」 | 只說「想要什麼」 |
+| 執行方式 | 直接與池子交互 | Solver 競爭最優路徑 |
+| MEV 歸屬 | 被攻擊者提取 | 返還給用戶 |
+| 跨鏈支援 | 需要手動橋接 | 原生整合 |
+| Gas 支付 | 用戶自付 | 可由 Solver 代付 |
+
+* * *
+
+## 2\. Uniswap V2：AMM 基礎
+
+### 2.1 恆定乘積公式
+
+```
+核心公式：x × y = k
+
+其中：
+- x = Token A 的儲備量
+- y = Token B 的儲備量  
+- k = 常數（每次交易後維持不變，僅在添加/移除流動性時改變）
+
+價格關係：
+- Token A 的價格（以 B 計價）：P_A = y / x
+- Token B 的價格（以 A 計價）：P_B = x / y
+```
+
+**圖解：**
+
+```
+y (Token B)
+│
+│  ╲
+│    ╲  x × y = k（雙曲線）
+│      ╲
+│        ╲
+│          ╲___________
+│                       
+└─────────────────────── x (Token A)
+
+交易 = 沿著曲線移動
+價格 = 曲線的切線斜率
+```
+
+### 2.2 交易機制
+
+**買入 Token A（賣出 Token B）：**
+
+```
+交易前：(x, y) 滿足 x × y = k
+用戶投入：Δy
+用戶獲得：Δx
+
+交易後：(x - Δx) × (y + Δy) = k
+
+實際計算（含 0.3% 手續費）：
+Δx = (x × Δy × 997) / (y × 1000 + Δy × 997)
+```
+
+### 2.3 套利機制
+
+```
+場景：CEX 價格 1 ETH = 2000 USDC，Uniswap 價格 1 ETH = 1900 USDC
+
+套利流程：
+┌─────────────────────────────────────────────────────────────┐
+│  1. 套利者在 Uniswap 用 1900 USDC 買入 1 ETH               │
+│  2. 在 CEX 賣出 1 ETH 獲得 2000 USDC                       │
+│  3. 利潤：2000 - 1900 = 100 USDC（扣除手續費和 Gas）       │
+│                                                             │
+│  結果：Uniswap 上 ETH 減少 → ETH 價格上升 → 趨近市場價格   │
+└─────────────────────────────────────────────────────────────┘
+
+這就是 AMM 的價格發現機制：套利者是「免費的勞工」，推動價格對齊
+```
+
+### 2.4 無常損失（Impermanent Loss）
+
+**定義：** LP 因價格變動，相比單純持有資產所產生的相對損失。
+
+```
+初始狀態：
+- 存入 1 ETH + 2000 USDC（假設 1 ETH = 2000 USDC）
+- 總價值：4000 USD
+
+價格變動後（ETH 漲到 4000 USDC）：
+- 如果只是持有：1 ETH × 4000 + 2000 USDC = 6000 USD
+- 作為 LP：根據 x × y = k，池子會再平衡
+  - 新狀態約：0.707 ETH + 2828 USDC = 5656 USD
+
+無常損失：(6000 - 5656) / 6000 ≈ 5.7%
+```
+
+**無常損失速查表：**
+
+| 價格變動 | 無常損失 |
+| --- | --- |
+| 1.25x | 0.6% |
+| 1.50x | 2.0% |
+| 2x | 5.7% |
+| 3x | 13.4% |
+| 4x | 20.0% |
+| 5x | 25.5% |
+
+### 2.5 閃電貸（Flash Loan）
+
+```solidity
+// V2 的 Flash Swap 機制
+function swap(
+    uint amount0Out, 
+    uint amount1Out, 
+    address to, 
+    bytes calldata data  // 如果 data 不為空，觸發回調
+) external {
+    // 1. 先把代幣轉給用戶
+    if (amount0Out > 0) _safeTransfer(token0, to, amount0Out);
+    if (amount1Out > 0) _safeTransfer(token1, to, amount1Out);
+    
+    // 2. 如果有 data，回調用戶合約
+    if (data.length > 0) {
+        IUniswapV2Callee(to).uniswapV2Call(msg.sender, amount0Out, amount1Out, data);
+    }
+    
+    // 3. 檢查還款（必須滿足 k 值不減少）
+    uint balance0 = IERC20(token0).balanceOf(address(this));
+    uint balance1 = IERC20(token1).balanceOf(address(this));
+    require(balance0 * balance1 >= reserve0 * reserve1, 'K');
+}
+```
+
+**應用場景：** 套利、清算、抵押品置換
+
+### 2.6 TWAP 預言機
+
+**Time-Weighted Average Price：** 防止閃電貸操縱價格
+
+```
+原理：
+- 每個區塊記錄「價格 × 時間」的累積值
+- TWAP = (累積值_end - 累積值_start) / (時間_end - 時間_start)
+
+特點：
+- 操縱成本 = 操縱幅度 × 持續時間
+- 時間窗口越長，越難操縱
+```
+
+* * *
+
+## 3\. Uniswap V3：集中流動性
+
+### 3.1 核心創新：自定義價格區間
+
+```
+V2 的問題：
+┌─────────────────────────────────────────────────────────────┐
+│  流動性均勻分佈在 (0, ∞) 的價格範圍                         │
+│  但 99% 的交易發生在很窄的價格區間                          │
+│  大量資金閒置，資金效率極低                                  │
+└─────────────────────────────────────────────────────────────┘
+
+V3 的解法：
+┌─────────────────────────────────────────────────────────────┐
+│  LP 可以選擇只在 [P_low, P_high] 區間提供流動性             │
+│  同樣的資金量，在更窄的區間 = 更深的流動性                  │
+│  理論上可提升最高 4000 倍資金效率                            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**圖解：**
+
+```
+流動性
+  │
+  │     ┌─────┐
+  │     │ V3  │ ← 集中在 [1800, 2200] 區間
+  │     │     │
+  │  ┌──┴─────┴──┐
+  │  │    V2     │ ← 均勻分佈
+  │  │           │
+  └──┴───────────┴────────────────── 價格
+     1000  1800  2200  3000
+```
+
+### 3.2 Tick 系統
+
+**Tick 是什麼？** 價格的離散化表示。
+
+```
+公式：price = 1.0001^tick
+
+常用 Tick 間距：
+- tickSpacing = 1:   適用於 0.01% 手續費池（穩定幣）
+- tickSpacing = 10:  適用於 0.05% 手續費池
+- tickSpacing = 60:  適用於 0.3% 手續費池
+- tickSpacing = 200: 適用於 1% 手續費池
+
+範例：
+- tick = 0      → price = 1.0001^0 = 1
+- tick = 100    → price = 1.0001^100 ≈ 1.01
+- tick = 23027  → price ≈ 10（約 10:1 的價格比）
+```
+
+**為什麼用 Tick？**
+
+```
+優點：
+1. 價格變化是乘法關係，tick 是加法 → 計算更簡單
+2. 流動性只在 tick 邊界變化 → 高效追蹤
+3. 支援任意精度的價格範圍
+```
+
+### 3.3 流動性聚合
+
+```
+場景：三個 LP 在不同區間提供流動性
+
+        LP1: [1800, 2200]  流動性 L1
+        LP2: [1900, 2100]  流動性 L2
+        LP3: [2000, 2400]  流動性 L3
+
+當前價格 = 2050 時：
+
+價格
+  │
+  │                    ┌───────────────┐
+  │           ┌────────┤    L3         │
+  │    ┌──────┤  L2    └───────────────┘
+  │    │ L1   │        │
+  │────┴──────┴────────┴─────────────────
+  │   1800   1900  2000│2100  2200  2400
+  │                    │
+  │               當前價格
+  │
+  └─▶ 有效流動性 = L1 + L2 + L3
+```
+
+### 3.4 √P 與 L 公式
+
+V3 使用 `√P`（價格平方根）而非直接使用價格 P，原因：
+
+```
+傳統公式：x × y = k
+V3 公式：L = √(x × y)，其中 L = 流動性
+
+轉換關係：
+- √P = √(y/x)
+- x = L / √P
+- y = L × √P
+
+為什麼用 √P？
+1. 交易時只需要更新一個變數（√P）
+2. 避免大數乘法溢出
+3. 流動性 L 在區間內是常數，計算更簡單
+```
+
+### 3.5 手續費分配
+
+```
+手續費檔位：0.01%、0.05%、0.3%、1%
+
+分配邏輯：
+1. 手續費按「有效流動性佔比」分配
+2. 只有「在價格範圍內」的流動性才能賺取手續費
+3. 區間越窄 → 佔比越大 → 賺得越多（但風險也越高）
+
+範例：
+- LP_A 在 [1900, 2100] 提供 1000 流動性
+- LP_B 在 [1000, 3000] 提供 1000 流動性
+- 當前價格 2000，交易產生 10 USDC 手續費
+
+LP_A 的有效流動性佔比更高 → LP_A 分到更多手續費
+```
+
+### 3.6 區間設置策略
+
+| 資產類型 | 建議區間 | 手續費檔位 | 原因 |
+| --- | --- | --- | --- |
+| 穩定幣對 (USDC/USDT) | ±0.1% | 0.01% | 價格幾乎不變 |
+| 主流資產 (ETH/USDC) | ±10~20% | 0.3% | 中等波動 |
+| 高波動資產 | ±30~50% | 1% | 需要更寬區間 |
+
+* * *
+
+## 4\. Uniswap V4：Hooks 與模組化
+
+### 4.1 Hooks 機制
+
+**Hook = 在交易生命週期中插入自定義邏輯的鉤子**
+
+```
+交易生命週期中的 Hook 插入點：
+
+  beforeInitialize ──▶ 池子初始化 ──▶ afterInitialize
+          │
+          ▼
+  beforeAddLiquidity ──▶ 添加流動性 ──▶ afterAddLiquidity
+          │
+          ▼
+  beforeRemoveLiquidity ──▶ 移除流動性 ──▶ afterRemoveLiquidity
+          │
+          ▼
+  beforeSwap ──▶ 交易執行 ──▶ afterSwap
+          │
+          ▼
+  beforeDonate ──▶ 捐贈 ──▶ afterDonate
+```
+
+### 4.2 Hook 應用場景
+
+```solidity
+// 範例：動態手續費 Hook
+contract DynamicFeeHook is BaseHook {
+    function beforeSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        bytes calldata hookData
+    ) external override returns (bytes4) {
+        // 根據波動率動態調整手續費
+        uint24 volatility = getVolatility(key);
+        uint24 dynamicFee = calculateFee(volatility);
+        
+        // 設置新的手續費
+        poolManager.updateDynamicLPFee(key, dynamicFee);
+        
+        return BaseHook.beforeSwap.selector;
+    }
+}
+```
+
+**常見 Hook 應用：**
+
+| Hook 類型 | 功能 | 範例 |
+| --- | --- | --- |
+| 動態手續費 | 根據市場條件調整 | 高波動時提高手續費 |
+| 限價單 | 價格觸發自動執行 | 「ETH 到 2500 時賣出」 |
+| TWAMM | 時間加權做市 | 大單拆分執行 |
+| MEV 保護 | 防止三明治攻擊 | 私有訂單流 |
+| 預言機整合 | 自動價格更新 | 結合 Chainlink |
+
+### 4.3 Singleton 架構
+
+```
+V3 架構：每個池子一個合約
+┌──────┐ ┌──────┐ ┌──────┐
+│Pool 1│ │Pool 2│ │Pool 3│  ← 每個都是獨立合約
+└──────┘ └──────┘ └──────┘
+
+V4 架構：所有池子在一個合約
+┌─────────────────────────────────────┐
+│           PoolManager               │
+│  ┌──────┐ ┌──────┐ ┌──────┐       │
+│  │Pool 1│ │Pool 2│ │Pool 3│       │  ← 共享狀態
+│  └──────┘ └──────┘ └──────┘       │
+└─────────────────────────────────────┘
+
+優點：
+- 跨池子操作更高效（閃電記賬）
+- 部署新池子更便宜
+- 更好的可組合性
+```
+
+* * *
+
+## 5\. Intent-Based 交易：新範式
+
+### 5.1 什麼是 Intent？
+
+```
+傳統交易：
+用戶說：「用這個路由，在這個 DEX，用這個 Gas 價格，執行這筆交易」
+        ↓
+      用戶負責一切細節
+
+Intent 交易：
+用戶說：「我想把 1 ETH 換成最多的 USDC」
+        ↓
+      Solver 競爭找最佳方案
+```
+
+### 5.2 Intent 的運作流程
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Intent 交易流程                             │
+│                                                                 │
+│  ① 用戶簽署 Intent                                              │
+│     └─▶ 「我要把 1 ETH 換成至少 2900 USDC」                     │
+│                                                                 │
+│  ② Intent 進入訂單池                                            │
+│     └─▶ 離線廣播，不上鏈                                        │
+│                                                                 │
+│  ③ Solver/Filler 競標                                           │
+│     ├─▶ Solver A: 「我能給 2920 USDC」                         │
+│     ├─▶ Solver B: 「我能給 2935 USDC」                         │
+│     └─▶ Solver C: 「我能給 2950 USDC」 ← 勝出                  │
+│                                                                 │
+│  ④ 執行與結算                                                   │
+│     └─▶ Solver C 執行交易，用戶收到 2950 USDC                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 5.3 Intent 解決的問題
+
+| 問題 | 傳統方式 | Intent 方式 |
+| --- | --- | --- |
+| MEV 攻擊 | 被三明治夾擊 | Solver 競爭，MEV 返還用戶 |
+| 路由複雜 | 用戶選擇 DEX | Solver 找最佳路徑 |
+| Gas 費用 | 用戶支付 | 可由 Solver 代付 |
+| 跨鏈交易 | 手動橋接 | 一次簽名完成 |
+| 失敗交易 | 用戶損失 Gas | 不執行不收費 |
+
+### 5.4 Dutch Auction 機制
+
+大多數 Intent 系統使用荷蘭拍賣決定價格：
+
+```
+價格
+  │
+  │  起始價: 3100 USDC
+  │  ●───────┐
+  │          │
+  │          │ 隨時間衰減
+  │          │
+  │          ●───────┐
+  │                  │
+  │                  ●───── Filler 在此接單
+  │                        （2950 USDC）
+  │
+  │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  最低價: 2800 USDC
+  │
+  └────────────────────────────────▶ 時間
+       0      2min    5min    10min
+
+優點：
+1. 價格發現自動化
+2. Filler 競爭 → 用戶獲得更好價格
+3. 防止 Filler 故意等待壓價
+```
+
+* * *
+
+## 6\. ERC-7683：跨鏈 Intent 標準
+
+### 6.1 為什麼需要標準？
+
+```
+問題：每個 Intent 系統各自為政
+
+UniswapX ──▶ 自己的訂單格式 ──▶ 自己的 Filler 網路
+Across   ──▶ 自己的訂單格式 ──▶ 自己的 Relayer 網路
+CoW      ──▶ 自己的訂單格式 ──▶ 自己的 Solver 網路
+
+結果：
+- Filler 網路碎片化
+- 用戶無法享受最優價格
+- 開發者重複造輪子
+```
+
+### 6.2 ERC-7683 的解決方案
+
+```
+ERC-7683 定義統一標準：
+
+所有 Intent 系統 ──▶ 相同的訂單格式 ──▶ 共享的 Filler 網路
+                         │
+                         ▼
+            ┌────────────────────────┐
+            │   CrossChainOrder      │
+            │   ISettlementContract  │
+            └────────────────────────┘
+```
+
+### 6.3 核心資料結構
+
+```solidity
+// Gasless 版本（用戶離線簽名）
+struct GaslessCrossChainOrder {
+    address originSettler;      // 源鏈結算合約
+    address user;               // 用戶地址
+    uint256 nonce;              // 防重放
+    uint256 originChainId;      // 源鏈 ID
+    uint32 openDeadline;        // 訂單開放截止
+    uint32 fillDeadline;        // 填充截止
+    bytes32 orderDataType;      // 子類型標識
+    bytes orderData;            // 自定義資料（價格、目標鏈等）
+}
+
+// 解析後的標準格式
+struct ResolvedCrossChainOrder {
+    address user;
+    uint256 originChainId;
+    uint32 openDeadline;
+    uint32 fillDeadline;
+    Input[] maxSpent;           // 用戶最多付出
+    Output[] minReceived;       // 用戶最少收到
+    FillInstruction[] fillInstructions;  // 執行指令
+}
+```
+
+### 6.4 Settlement 介面
+
+```solidity
+// 源鏈結算合約
+interface IOriginSettler {
+    // 開啟訂單（鏈上版本）
+    function open(OnchainCrossChainOrder calldata order) external;
+    
+    // 開啟訂單（Gasless 版本）
+    function openFor(
+        GaslessCrossChainOrder calldata order,
+        bytes calldata signature,
+        bytes calldata originFillerData
+    ) external;
+    
+    // 解析訂單
+    function resolve(OnchainCrossChainOrder calldata order) 
+        external view returns (ResolvedCrossChainOrder memory);
+}
+
+// 目標鏈結算合約
+interface IDestinationSettler {
+    // Filler 填充訂單
+    function fill(
+        bytes32 orderId,
+        bytes calldata originData,
+        bytes calldata fillerData
+    ) external;
+}
+```
+
+### 6.5 ERC-7683 的靈活性
+
+```
+ERC-7683 只標準化「介面」，不規定「實現」：
+
+可自定義的部分：
+├── 價格機制（Dutch Auction、固定價格、Oracle）
+├── 結算驗證（Optimistic、ZK Proof、Native Bridge）
+├── Filler 激勵（手續費、MEV 分潤）
+└── 執行順序（先 fill 後 open，或反過來）
+```
+
+* * *
+
+## 7\. The Compact：資源鎖定基礎設施
+
+### 7.1 定位
+
+```
+The Compact ≠ Intent 系統
+The Compact = Intent 系統的「底層基礎設施」
+
+類比：
+- ERC-7683 = HTTP 協議（定義請求格式）
+- The Compact = 資料庫引擎（處理資料儲存）
+```
+
+### 7.2 解決的核心問題
+
+```
+跨鏈交易的根本問題：原子性不可能
+
+源鏈操作 ──────────────────▶ 目標鏈操作
+    │                            │
+    │   不同鏈，異步執行          │
+    │   無法保證同時成功/失敗     │
+    ▼                            ▼
+
+The Compact 的解法：可編程的資源鎖定 + 條件釋放
+```
+
+### 7.3 核心概念
+
+Resource Lock（資源鎖）
+
+```
+用戶存款 ──▶ Resource Lock ──▶ ERC-6909 Token
+                 │
+                 ├── token: WETH
+                 ├── amount: 10 ETH
+                 ├── owner: User（保留所有權）
+                 ├── allocator: 防止雙花
+                 ├── scope: multichain/singlechain
+                 └── resetPeriod: 強制提款等待期
+```
+
+Compact（承諾）
+
+```
+Resource Lock 可以支援多個 Compact：
+
+Lock #42 (10 ETH)
+    │
+    ├── Compact A: 承諾 2 ETH 給訂單 A
+    ├── Compact B: 承諾 3 ETH 給訂單 B
+    └── 剩餘 5 ETH 可用於其他用途
+
+Compact = 「如果條件 X 滿足，則 Y 可以 claim Z」
+```
+
+### 7.4 四大角色
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        The Compact 角色                         │
+│                                                                 │
+│  ┌─────────────┐    ┌─────────────┐                            │
+│  │  Allocator  │    │   Arbiter   │                            │
+│  │             │    │             │                            │
+│  │ • 追蹤承諾額度│    │ • 驗證條件  │                            │
+│  │ • 防止雙花   │    │ • 處理claim │                            │
+│  │ • 授權使用   │    │ • 跨鏈證明  │                            │
+│  └─────────────┘    └─────────────┘                            │
+│                                                                 │
+│  ┌─────────────┐    ┌─────────────┐                            │
+│  │  Tribunal   │    │  Emissary   │                            │
+│  │             │    │             │                            │
+│  │ • 跨鏈swap  │    │ • 智能錢包  │                            │
+│  │   結算引擎   │    │   後備驗證  │                            │
+│  │ • 拍賣機制   │    │ • 簽名恢復  │                            │
+│  └─────────────┘    └─────────────┘                            │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 7.5 The Compact 的應用場景
+
+```
+The Compact 不只用於 Intent，還可用於：
+
+1. 跨鏈條件支付
+   └── 「Bob 在 Polygon 完成交付 → 釋放 Ethereum 上的付款」
+
+2. 去中心化訂閱
+   └── 「每月自動扣款，服務停止則自動停止」
+
+3. 跨鏈借貸抵押
+   └── 「A 鏈借款，B 鏈抵押品，觸發清算時跨鏈執行」
+
+4. DAO 資金管理
+   └── 「同一筆資金，不同場景不同授權規則」
+
+5. 預言機質押
+   └── 「誠實報價 → 領獎勵；作惡 → 被 slash」
+
+通用模式：「如果 X 發生，則 Y 可以獲得 Z」
+```
+
+* * *
+
+## 8\. Intent 與 The Compact 的整合
+
+### 8.1 完整交互流程
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Phase 0: 用戶存款                           │
+│                                                                 │
+│  User ──deposit()──▶ The Compact                                │
+│           │                │                                    │
+│           │                ▼                                    │
+│           │         Resource Lock #42                           │
+│           │         (10 ETH, Allocator: Autocator)              │
+│           │                                                     │
+│           ◀───── ERC-6909 Token ─────                          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  Phase 1: 創建 Intent                           │
+│                                                                 │
+│  User 簽署 ERC-7683 CrossChainOrder:                            │
+│  {                                                              │
+│    originSettler: CompactSettler,                               │
+│    orderData: {                                                 │
+│      resourceLockId: #42,        ← 連接到 The Compact           │
+│      inputAmount: 1 ETH,                                        │
+│      outputToken: USDC,                                         │
+│      minOutputAmount: 2900 USDC,                                │
+│      destinationChain: Arbitrum,                                │
+│      allocatorSignature: <預授權>  ← Allocator 簽名             │
+│    }                                                            │
+│  }                                                              │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  Phase 2: Allocator 授權                        │
+│                                                                 │
+│  Allocator 追蹤 Lock #42 狀態：                                 │
+│  ┌─────────────────────────────────────┐                       │
+│  │ total: 10 ETH                       │                       │
+│  │ committed: 0 → 1 ETH                │                       │
+│  │ available: 10 → 9 ETH               │                       │
+│  └─────────────────────────────────────┘                       │
+│                                                                 │
+│  簽署 allocatorSignature → 放入 orderData                       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  Phase 3: Filler 執行                           │
+│                                                                 │
+│  Filler 在 Arbitrum 墊付:                                       │
+│  ┌─────────────────────────────────────┐                       │
+│  │ DestinationSettler.fill()           │                       │
+│  │   └── 轉 2950 USDC 給 User          │                       │
+│  │   └── emit OrderFilled(...)         │                       │
+│  └─────────────────────────────────────┘                       │
+│                                                                 │
+│  User 收到 2950 USDC ✓                                          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  Phase 4: 跨鏈驗證 + Claim                      │
+│                                                                 │
+│  Filler 提交跨鏈證明到 Ethereum:                                 │
+│  ┌─────────────────────────────────────┐                       │
+│  │ Tribunal (Arbiter) 驗證：           │                       │
+│  │   1. Arbitrum 上的 fill 事件        │                       │
+│  │   2. 金額 >= minOutput              │                       │
+│  │   3. recipient 正確                 │                       │
+│  │   4. 在 deadline 之前               │                       │
+│  └─────────────────────────────────────┘                       │
+│                              │                                  │
+│                              ▼                                  │
+│  ┌─────────────────────────────────────┐                       │
+│  │ The Compact.claim()                 │                       │
+│  │   └── 驗證 Allocator 授權           │                       │
+│  │   └── 從 Lock #42 轉 1 ETH 給 Filler│                       │
+│  │   └── 更新 ERC-6909 餘額            │                       │
+│  └─────────────────────────────────────┘                       │
+│                                                                 │
+│  Filler 收到 1 ETH ✓                                            │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 8.2 資料結構對應
+
+```
+ERC-7683                              The Compact
+════════                              ══════════
+
+CrossChainOrder
+├── originSettler ──────────────────▶ CompactSettler
+│
+├── orderData
+│   ├── resourceLockId ─────────────▶ Resource Lock ID
+│   ├── inputAmount ────────────────▶ Compact 承諾金額
+│   ├── allocatorSignature ─────────▶ Allocator 預授權
+│   └── arbiter ────────────────────▶ Tribunal / Custom Arbiter
+│
+└── fillDeadline ───────────────────▶ Compact expiry
+```
+
+### 8.3 為什麼要這樣分層？
+
+```
+分層的好處：
+
+1. 關注點分離
+   ├── ERC-7683: 專注訂單表達和 Filler 競爭
+   └── The Compact: 專注資金安全和跨鏈驗證
+
+2. 模組化可替換
+   ├── 可以換 Allocator（不同信任假設）
+   ├── 可以換 Arbiter（不同驗證方式）
+   └── 訂單格式可以擴展（不改底層）
+
+3. 安全性
+   ├── The Compact 已審計、不可升級
+   ├── 單次存款可支援多個 Compact
+   └── 強制提款保護用戶最終控制權
+```
+
+* * *
+
+## 9\. 現有 Intent 系統比較
+
+### 9.1 系統對比
+
+| 系統 | 資金鎖定 | 防雙花 | 結算驗證 | 跨鏈 |
+| --- | --- | --- | --- | --- |
+| UniswapX | Permit2（軟鎖定） | Nonce + 簽名 | 即時 | 開發中 |
+| Across | SpokePool（硬鎖定） | depositId | Optimistic Oracle | 原生 |
+| CoW Protocol | VaultRelayer（軟鎖定） | orderUid | Batch 內原子 | 有限 |
+| 1inch Fusion | Permit/Approve | Nonce | 即時 | 有限 |
+| The Compact | ERC-6909 Resource Lock | Allocator | 可插拔 Arbiter | 原生 |
+
+### 9.2 軟鎖定 vs 硬鎖定
+
+```
+軟鎖定（Permit2）            硬鎖定（The Compact）
+══════════════════          ════════════════════
+
+優點：                       優點：
+├── Gas 效率高               ├── 確定性高
+├── 資金靈活                 ├── 支援長期訂單
+└── UX 好                    └── 跨鏈更安全
+
+缺點：                       缺點：
+├── 用戶可「背叛」           ├── 額外 Gas
+├── Filler 承擔風險          ├── 資金鎖定期間無法使用
+└── 不適合長期訂單           └── 複雜度增加
+```
+
+### 9.3 The Compact 的改進
+
+```
+The Compact 結合兩者優點：
+
+1. 資金是「硬鎖定」的 → 安全性
+2. 用 ERC-6909 表示所有權 → 靈活性
+3. 單次存款可支援多個 Compact → 效率
+4. 強制提款機制 → 用戶最終控制權
+```
+
+* * *
+
+## 10\. 常見問題 Q&A
+
+### Uniswap 相關
+
+**Q1：無常損失是否可以避免？**
+
+A：無常損失是 AMM 機制固有的，無法完全避免。主要通過提高手續費收入來補償。V3 的集中流動性可以提高手續費收入，但同時也放大了無常損失。
+
+**Q2：滑點和價格影響是一回事嗎？**
+
+A：不是。
+
+-   **價格影響（Price Impact）**：交易對池子深度的直接結果，可以精確計算
+    
+-   **滑點（Slippage）**：實際成交價與預期價的不可預測偏差（MEV、區塊延遲等）
+    
+
+**Q3：V3 中流動性區間如何設置？**
+
+A：根據資產特性決定：
+
+-   穩定幣：±0.1%，0.01% 手續費
+    
+-   主流資產：±10-20%，0.3% 手續費
+    
+-   高波動資產：±30-50%，1% 手續費
+    
+
+**Q4：如何防止搶跑攻擊？**
+
+A：
+
+-   使用 Flashbots 等隱私交易池
+    
+-   設置合理的滑點容忍度
+    
+-   使用 V4 的 Hooks 機制
+    
+-   使用 Intent-based 交易
+    
+
+**Q5：V4 的 Hooks 能做什麼？**
+
+A：在交易生命週期各節點插入邏輯：
+
+-   動態手續費（根據波動率調整）
+    
+-   限價單（價格觸發執行）
+    
+-   TWAMM（大單時間分散）
+    
+-   MEV 保護
+    
+
+**Q6：流動性池會被掏空嗎？**
+
+A：不會。交易前會檢查儲備量，確保不會超額提取。AMM 的數學特性決定了價格會趨向無窮大/無窮小，但永遠不會歸零。
+
+**Q7：V3 手續費檔位如何選擇？**
+
+A：
+
+-   0.01%：穩定幣對
+    
+-   0.05%：相關性高的資產
+    
+-   0.3%：主流資產對
+    
+-   1%：高波動或長尾資產
+    
+
+### Intent 相關
+
+**Q8：Intent 交易比傳統 AMM 更好嗎？**
+
+A：各有優劣：
+
+-   Intent 優勢：MEV 保護、跨鏈原生、Gas 抽象
+    
+-   AMM 優勢：即時執行、完全去中心化、無需信任 Solver
+    
+
+**Q9：The Compact 和 Intent 是什麼關係？**
+
+A：
+
+-   ERC-7683（Intent 標準）定義「訂單格式」
+    
+-   The Compact 提供「資金鎖定基礎設施」
+    
+-   兩者結合實現安全的跨鏈 Intent
+    
+
+**Q10：Solver/Filler 怎麼賺錢？**
+
+A：
+
+-   用戶預期價格與實際執行價格的差價
+    
+-   批量交易節省的 Gas
+    
+-   MEV 提取（但需返還用戶部分）
+    
+
+**Q11：強制提款是什麼？**
+
+A：如果 Allocator 或 Arbiter 失效，用戶可以等待 resetPeriod 後強制提款，保護資金不會被永久鎖定。
+
+* * *
+
+## 11\. 延伸閱讀與資源
+
+### 官方文檔
+
+-   [Uniswap V2 Whitepaper](https://uniswap.org/whitepaper.pdf)
+    
+-   [Uniswap V3 Whitepaper](https://uniswap.org/whitepaper-v3.pdf)
+    
+-   [Uniswap V4 Documentation](https://docs.uniswap.org/)
+    
+-   [ERC-7683 Specification](https://eips.ethereum.org/EIPS/eip-7683)
+    
+-   [The Compact GitHub](https://github.com/Uniswap/the-compact)
+    
+
+### 技術深入
+
+-   [UniswapX Whitepaper](https://uniswap.org/whitepaper-uniswapx.pdf)
+    
+-   [Across Protocol Documentation](https://docs.across.to/)
+    
+-   [CoW Protocol Documentation](https://docs.cow.fi/)
+    
+
+### 學習資源
+
+-   Uniswap 基金會 Grant Program
+    
+-   Uniswap 孵化器和黑客松
+    
+-   審計補貼計畫
+    
+
+* * *
+
+## 附錄：公式速查
+
+### AMM 公式
+
+```
+恆定乘積：x × y = k
+價格：    P = y / x
+交易：    Δx = (x × Δy × 997) / (y × 1000 + Δy × 997)
+```
+
+### V3 公式
+
+```
+流動性：  L = √(x × y)
+價格：    √P = √(y/x)
+關係：    x = L / √P
+          y = L × √P
+Tick：    price = 1.0001^tick
+```
+
+### 無常損失
+
+```
+IL = 2 × √(price_ratio) / (1 + price_ratio) - 1
+
+price_ratio = 新價格 / 舊價格
+```
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -327,6 +1363,7 @@ unchecked：跳過溢位檢查，慎用
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -338,6 +1375,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -416,6 +1454,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1032,6 +2071,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -1061,6 +2101,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1252,6 +2293,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -1311,6 +2353,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1555,6 +2598,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
