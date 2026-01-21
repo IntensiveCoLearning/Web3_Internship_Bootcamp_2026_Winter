@@ -15,8 +15,359 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# DAY10
+
+\[x\]Uniswap
+
+\[x\]一个Chat APP的合约编写
+
+## uniswap
+
+1.  **学习 Uniswap V2 前需要掌握的知识背景**
+    
+2.  **Uniswap V​​2 的核心机制（AMM、恒定乘积公式等）**
+    
+3.  **Uniswap V2 的核心合约结构**
+    
+4.  **关键合约代码逐行解释（以核心的 Pair 合约为例）**
+    
+5.  **如何与 Uniswap V2 交互（简要开发示例）**
+    
+
+* * *
+
+## 一、学习 Uniswap V2 前需掌握的知识背景
+
+### 1\. Solidity 基础
+
+-   合约结构、状态变量、函数、修饰器（modifier）
+    
+-   `mapping`、`address`、`uint256` 等基本类型
+    
+-   `require`、`revert` 错误处理
+    
+-   `call`、`transfer`、`delegatecall`（尤其是 `call` 调用外部合约）
+    
+
+### 2\. ERC20 标准
+
+-   `transfer`, `transferFrom`, `approve`, `balanceOf`, `totalSupply`
+    
+-   授权机制（allowance）和重入风险（虽然 V2 通过先转账后回调规避了部分问题）
+    
+
+### 3\. 以太坊交易与 Gas 模型
+
+-   外部账户（EOA） vs 合约账户
+    
+-   交易调用 vs 合约内部调用
+    
+-   Gas 成本意识（例如避免在循环中操作）
+    
+
+### 4\. 基础密码学与安全常识
+
+-   整数溢出（Solidity 0.8+ 已内置检查）
+    
+-   重入攻击（Reentrancy）——V2 使用“Checks-Effects-Interactions”模式防御
+    
+-   前端运行（Front-running）与 MEV
+    
+
+* * *
+
+## 二、Uniswap V2 核心机制
+
+### 1\. 自动做市商（AMM）
+
+-   不依赖订单簿，而是通过算法提供流动性
+    
+-   用户与“池子”（Liquidity Pool）交易，而不是与其他用户
+    
+
+### 2\. 恒定乘积公式（x \* y = k）
+
+-   假设池中有两种代币 A 和 B，数量分别为 x 和 y
+    
+-   交易前后满足：x \* y ≥ k（实际因手续费略大于 k）
+    
+-   价格由池中比例决定：price = y / x（B 相对于 A 的价格）
+    
+
+### 3\. 流动性提供者（LP）
+
+-   提供两种代币，获得 LP Token（代表份额）
+    
+-   交易费（0.3%）按比例分配给 LP
+    
+
+### 4\. 闪电贷（Flash Swap）
+
+-   允许先取走资产，只要在同一笔交易结束前归还 + 手续费即可
+    
+-   V2 通过 `swap` 函数 + 回调实现
+    
+
+* * *
+
+## 三、Uniswap V2 核心合约结构
+
+Uniswap V2 主要由三个合约组成：
+
+| 合约 | 功能 |
+| --- | --- |
+| Factory | 创建 Pair（交易对）合约，记录所有 Pair 地址 |
+| Pair | 实际的交易/流动性池逻辑（每个交易对一个实例） |
+| Router | 用户友好的入口，封装复杂逻辑（如添加流动性、多跳交易） |
+
+> 注意：**Pair 合约是核心**，所有交易、流动性操作都在这里发生。
+
+* * *
+
+## 四、Pair 合约代码逐行解析（简化版）
+
+我们以 [UniswapV2Pair.sol](https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Pair.sol) 为例，逐段讲解。
+
+> 注：以下为简化+注释版本，便于理解。实际代码更严谨。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity =0.5.16;
+
+import './interfaces/IUniswapV2Pair.sol';
+import './UniswapV2ERC20.sol'; // LP Token 逻辑
+import './libraries/Math.sol';
+import './libraries/UQ112x112.sol';
+
+contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
+    using SafeMath for uint256;
+    using UQ112x112 for uint224;
+
+    string public constant name = 'Uniswap V2';
+    string public constant symbol = 'UNI-V2';
+
+    uint112 private reserve0;           // 代币0的储备量
+    uint112 private reserve1;           // 代币1的储备量
+    uint32  private blockTimestampLast; // 上次更新时间（用于价格累积）
+
+    uint256 public price0CumulativeLast; // 价格累积器（用于 TWAP）
+    uint256 public price1CumulativeLast;
+
+    uint256 public kLast; // 用于计算 LP 提现时的费用（fee-on-transfer）
+
+    address public factory; // 工厂地址
+    address public token0;  // 代币0地址（较小地址）
+    address public token1;  // 代币1地址（较大地址）
+
+    // 初始化 Pair（只能调用一次）
+    function initialize(address _token0, address _token1) external {
+        require(msg.sender == factory, 'UniswapV2: FORBIDDEN'); // 只能由工厂初始化
+        token0 = _token0;
+        token1 = _token1;
+    }
+```
+
+### 关键点解释：
+
+-   `reserve0` / `reserve1`：池中两种代币的数量（112位足够大）
+    
+-   `blockTimestampLast`：用于时间加权平均价格（TWAP）
+    
+-   `initialize`：由 Factory 调用，设定 token0/token1（按地址大小排序）
+    
+
+* * *
+
+### Mint（添加流动性）
+
+```solidity
+function mint(address to) external lock returns (uint256 liquidity) {
+    uint256 _reserve0 = reserve0;
+    uint256 _reserve1 = reserve1;
+    uint256 balance0 = IERC20(token0).balanceOf(address(this));
+    uint256 balance1 = IERC20(token1).balanceOf(address(this));
+
+    // 计算新存入的代币量
+    uint256 amount0 = balance0.sub(_reserve0);
+    uint256 amount1 = balance1.sub(_reserve1);
+
+    bool feeOn = _mintFee(_reserve0, _reserve1); // 是否开启协议费（默认关闭）
+    uint256 _totalSupply = totalSupply;
+
+    if (_totalSupply == 0) {
+        // 首次添加流动性：LP = sqrt(amount0 * amount1)
+        liquidity = Math.sqrt(amount0.mul(amount1));
+    } else {
+        // 后续添加：按比例 mint LP
+        liquidity = Math.min(
+            amount0.mul(_totalSupply) / _reserve0,
+            amount1.mul(_totalSupply) / _reserve1
+        );
+    }
+
+    require(liquidity > 0, 'UniswapV2: INSUFFICIENT_LIQUIDITY_MINTED');
+
+    _mint(to, liquidity); // 给用户 mint LP token
+
+    _update(balance0, balance1, _reserve0, _reserve1); // 更新储备 & 价格累积
+    emit Mint(msg.sender, amount0, amount1);
+}
+```
+
+重点：
+
+-   **首次添加流动性**：必须按当前市场价格提供，否则会被套利
+    
+-   **LP 数量计算**：确保新 LP 与已有 LP 比例一致
+    
+-   `_update`：更新 reserve 和价格累积器
+    
+
+* * *
+
+### Swap（交易）
+
+```solidity
+function swap(
+    uint256 amount0Out,
+    uint256 amount1Out,
+    address to,
+    bytes calldata data
+) external lock {
+    require(amount0Out > 0 || amount1Out > 0, 'UniswapV2: INSUFFICIENT_OUTPUT_AMOUNT');
+    (uint256 balance0, uint256 balance1) = getReserves();
+    require(amount0Out < balance0 && amount1Out < balance1, 'UniswapV2: INSUFFICIENT_LIQUIDITY');
+
+    uint256 balance0Adjusted = balance0.sub(amount0Out).mul(1000).add(amount0In.mul(3));
+    uint256 balance1Adjusted = balance1.sub(amount1Out).mul(1000).add(amount1In.mul(3));
+
+    require(balance0Adjusted.mul(balance1Adjusted) >= uint256(balance0).mul(balance1).mul(1000**2), 
+           'UniswapV2: K');
+
+    // 转出代币给用户
+    if (amount0Out > 0) _safeTransfer(token0, to, amount0Out);
+    if (amount1Out > 0) _safeTransfer(token1, to, amount1Out);
+
+    // 如果有回调数据，说明可能是闪电贷
+    if (data.length > 0) IUniswapV2Callee(to).uniswapV2Call(msg.sender, amount0Out, amount1Out, data);
+
+    // 更新储备
+    balance0 = IERC20(token0).balanceOf(address(this));
+    balance1 = IERC20(token1).balanceOf(address(this));
+    _update(balance0, balance1, reserve0, reserve1);
+}
+```
+
+> ⚠️ 上面是简化逻辑，实际代码会先判断 `amount0In` / `amount1In`（通过余额变化推断）
+
+重点：
+
+-   **恒定乘积检查**：确保 `x' * y' >= x * y`（含 0.3% 手续费）
+    
+-   **闪电贷支持**：如果 `data.length > 0`，调用接收方的 `uniswapV2Call`
+    
+-   **安全转账**：使用 `_safeTransfer`（内部用 `call` + 返回值检查）
+    
+
+* * *
+
+### `_update` 函数（维护价格累积）
+
+```solidity
+function _update(
+    uint256 balance0,
+    uint256 balance1,
+    uint256 _reserve0,
+    uint256 _reserve1
+) private {
+    require(balance0 <= uint112.max && balance1 <= uint112.max, 'UniswapV2: OVERFLOW');
+    uint32 timeElapsed = uint32(block.timestamp) - blockTimestampLast;
+    if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
+        // 累积价格：price0 = reserve1 / reserve0
+        price0CumulativeLast += uint256(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) * timeElapsed;
+        price1CumulativeLast += uint256(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) * timeElapsed;
+    }
+    reserve0 = uint112(balance0);
+    reserve1 = uint112(balance1);
+    blockTimestampLast = uint32(block.timestamp);
+}
+```
+
+-   使用 **UQ112x112 定点数** 高精度计算价格
+    
+-   用于后续计算 **时间加权平均价格（TWAP）**
+    
+
+* * *
+
+## 五、如何与 Uniswap V2 交互（开发示例）
+
+### 添加流动性（通过 Router）
+
+```solidity
+// 用户先 approve Router
+IERC20(tokenA).approve(address(router), amountA);
+IERC20(tokenB).approve(address(router), amountB);
+
+// 调用 Router
+router.addLiquidity(
+    tokenA,
+    tokenB,
+    amountA,
+    amountB,
+    minAmountA, // 滑点保护
+    minAmountB,
+    msg.sender,
+    block.timestamp + 600
+);
+```
+
+### 交易（Swap）
+
+```solidity
+// 用 tokenA 换 tokenB
+path = [tokenA, tokenB];
+router.swapExactTokensForTokens(
+    amountIn,
+    amountOutMin,
+    path,
+    to,
+    deadline
+);
+```
+
+* * *
+
+## 六、延伸学习建议
+
+1.  **阅读官方代码**：
+    
+    -   [v2-core](https://github.com/Uniswap/v2-core)（Pair + Factory）
+        
+    -   [v2-periphery](https://github.com/Uniswap/v2-periphery)（Router）
+        
+2.  **动手实验**：
+    
+    -   在本地 Hardhat + Foundry 部署 V2
+        
+    -   模拟添加流动性、swap、闪电贷
+        
+3.  **安全审计视角**：
+    
+    -   为什么 V2 不怕重入？（先转账后代币回调）
+        
+    -   如何防止闪电贷滥用？
+        
+4.  **进阶：对比 V3**
+    
+    -   V3 引入集中流动性、tick、多个费率等级
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # DAY9
 
 古法笔记：
@@ -27,6 +378,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 # DAY8
 
 \[\]frontend
@@ -36,6 +388,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 # DAY7
@@ -73,6 +426,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -139,6 +493,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -250,6 +605,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -348,6 +704,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -526,6 +883,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -622,6 +980,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
