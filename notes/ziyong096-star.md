@@ -21,13 +21,46 @@ Web3 实习计划 2025 冬季实习生
 
 -   好像没有太多笔记
     
--   今天重新弄了领英账号，原来电脑才能注册...（有时候谷歌卡，跑去edge)
+-   今天重新弄了领英账号，原来电脑才能注册…（有时候谷歌卡，跑去edge)
     
 -   把运营理论了解了一下，现在更加偏向实操。现在主要任务把作业里面实操操作一遍，结合自己理论。不理解的再跑回去看——自己的SOP
+    
+
+# 运营实践
+
+## figram制作海报
+
+## 文章格式调整
+
+文章格式
+
+1.  中英文/数字之间/数字与单位间＋空格（不要过多）
+    
+    1.  度数与百分比之间不加
+        
+    2.  全形标点（占一个字符宽度）与其他字符不加空格
+        
+2.  标点符号
+    
+    1.  不重复使用
+        
+    2.  全形中文标点，半形数字
+        
+3.  遇到完整英文整句，特殊名词，使用半形
+    
+    ![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=NzE4NWU0YzY2Y2E5NzgwZmY0YmQzMGViNTM0NWQ1ZGFfRzNKcUdzYjY0VGZBb3B4V24xd1hHdTVJbW0ybTNzSUVfVG9rZW46T3dWZWJxWGpEb0VmZGh4V2QwQmNpVmVkbkpjXzE3Njg5OTg5MjQ6MTc2OTAwMjUyNF9WNA)
+    1.  中文句子內夾有英文書籍名、報刊名時——英文斜体表述
+        
+4.  名词
+    
+    1.  专有名词使用正确大小写
+        
+        ![](https://xcn6233xyix9.feishu.cn/space/api/box/stream/download/asynccode/?code=YzIzYTFlMDYwYjcwZDJkMzVlMjcyZDBmN2NjMGYwODFfTUJnYjdYTkxoYXYxbXV3VnNGUGE0c0VKT1U3cmhaY1lfVG9rZW46Q1k0YWJDVDhnb00zUkV4dUcyM2NHVUNJbk1jXzE3Njg5OTg5MjQ6MTc2OTAwMjUyNF9WNA)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # 今日
 
@@ -50,6 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -104,6 +138,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.  今日重新整合一下知识
     
 
@@ -118,6 +153,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -148,6 +184,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 今日web3学习计划
 
 1.  第一周信息理清，重复概括，弄成自己可以输出的体系
@@ -163,6 +200,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -648,6 +686,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # 自我介绍(●'◡'●)
 
 -   Only 04infj/tj 大三在读❤️
@@ -862,6 +901,7 @@ MEME
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1172,6 +1212,7 @@ MEME
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
