@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# ERC20模板
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+import "./IERC20.sol";
+
+contract ERC20 is IERC20 {
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(
+        address indexed owner, address indexed spender, uint256 value
+    );
+
+    uint256 public totalSupply;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+
+    constructor(string memory _name, string memory _symbol, uint8 _decimals) {
+        name = _name;
+        symbol = _symbol;
+        decimals = _decimals;
+    }
+
+    function transfer(address recipient, uint256 amount)
+        external
+        returns (bool)
+    {
+        balanceOf[msg.sender] -= amount;
+        balanceOf[recipient] += amount;
+        emit Transfer(msg.sender, recipient, amount);
+        return true;
+    }
+
+    function approve(address spender, uint256 amount) external returns (bool) {
+        allowance[msg.sender][spender] = amount;
+        emit Approval(msg.sender, spender, amount);
+        return true;
+    }
+
+    function transferFrom(address sender, address recipient, uint256 amount)
+        external
+        returns (bool)
+    {
+        allowance[sender][msg.sender] -= amount;
+        balanceOf[sender] -= amount;
+        balanceOf[recipient] += amount;
+        emit Transfer(sender, recipient, amount);
+        return true;
+    }
+
+    function _mint(address to, uint256 amount) internal {
+        balanceOf[to] += amount;
+        totalSupply += amount;
+        emit Transfer(address(0), to, amount);
+    }
+
+    function _burn(address from, uint256 amount) internal {
+        balanceOf[from] -= amount;
+        totalSupply -= amount;
+        emit Transfer(from, address(0), amount);
+    }
+
+    function mint(address to, uint256 amount) external {
+        _mint(to, amount);
+    }
+
+    function burn(address from, uint256 amount) external {
+        _burn(from, amount);
+    }
+}
+```
+
+# ERC20概念
+
+ERC20 是 **以太坊区块链上创建和发行可互换代币** 的技术标准。它由一系列 **必须实现的函数和可选函数** 组成，确保所有基于此标准发行的代币都能在以太坊生态中（如钱包、去中心化交易所）无缝兼容和交互。
+
+你可以把它理解为代币的 **“通用说明书”或“接口协议”**。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # Solidity
 
 ## EVM组成部分
@@ -196,6 +282,7 @@ contract MyToken is Ownable {
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ## 一、Dapp 核心定义
 
 去中心化应用（Dapp）是运行在区块链或分布式网络上的全新应用模式，核心特征为**去中心化**—— 应用逻辑和数据不由单一实体控制，由多个参与者共同维护，区别于传统集中式应用。开发需掌握去中心化技术栈、智能合约编程及前端与区块链的交互方式。
@@ -233,6 +320,7 @@ Dapp 架构包含四个核心部分，各组件分工明确、协同工作：
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 # Remix IDEA
@@ -317,6 +405,7 @@ contract TestToken {
 
 
 
+
 # 以太坊
 
 ## ERC
@@ -382,6 +471,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 安全与合规
 
 ## 国内相关公告/文件
@@ -443,6 +533,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 以太坊
 
 ## 以太坊的应用场景
@@ -476,6 +567,7 @@ PoS 是一种通过资产持有权达成共识的机制。验证者根据其持�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
