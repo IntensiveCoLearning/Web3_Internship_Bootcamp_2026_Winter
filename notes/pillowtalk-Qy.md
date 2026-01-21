@@ -25,18 +25,18 @@ Web3 实习计划 2025 冬季实习生
 
 Uniswap 最关键的创新是使用了 **恒定乘积做市模型**，其数学表达式为：
 
-x⋅y=k_x_⋅_y_\=_k_
+x⋅y=k\_x\_⋅_y_\=_k_
 
 其中：
 
--   x_x_ 是池中代币 A 的数量（如 ETH）
+-   x\_x\_ 是池中代币 A 的数量（如 ETH）
     
--   y_y_ 是池中代币 B 的数量（如 USDC）
+-   y\_y\_ 是池中代币 B 的数量（如 USDC）
     
--   k_k_ 是一个常数，在没有流动性增减的情况下保持不变
+-   k\_k\_ 是一个常数，在没有流动性增减的情况下保持不变
     
 
-这个公式确保了无论交易如何发生，两种代币数量的乘积始终等于 k_k_ （忽略手续费影响）。当有人用代币 A 换取代币 B 时，A 增加，B 减少，但乘积仍趋近于 k_k_ ，从而自动调整价格。
+这个公式确保了无论交易如何发生，两种代币数量的乘积始终等于 k\_k\_ （忽略手续费影响）。当有人用代币 A 换取代币 B 时，A 增加，B 减少，但乘积仍趋近于 k\_k\_ ，从而自动调整价格。
 
 * * *
 
@@ -44,7 +44,7 @@ x⋅y=k_x_⋅_y_\=_k_
 
 在 Uniswap 中，**资产的即时价格由池中两种代币的比例决定**：
 
-价格=yx价格=_xy_​
+价格=yx价格=\_xy\_​
 
 例如，如果池中有 100 ETH 和 200,000 USDC，则 ETH 的价格为：
 
@@ -60,7 +60,7 @@ x⋅y=k_x_⋅_y_\=_k_
     
 2.  **交易者发起兑换**：比如用 USDC 换 ETH
     
-3.  **智能合约根据 x⋅y=k_x_⋅_y_\=_k_ 计算应返还的 ETH 数量**
+3.  **智能合约根据 x⋅y=k\_x\_⋅_y_\=_k_ 计算应返还的 ETH 数量**
     
 4.  **交易完成后，池中代币比例改变，价格随之更新**
     
@@ -84,7 +84,7 @@ x⋅y=k_x_⋅_y_\=_k_
 
 ### **优点与局限**
 
-✅ **优点**：
+**优点**：
 
 -   无需许可、无需 KYC
     
@@ -93,7 +93,7 @@ x⋅y=k_x_⋅_y_\=_k_
 -   任何人可参与做市
     
 
-⚠️ **局限**：
+**局限**：
 
 -   大额交易滑点高
     
@@ -269,6 +269,7 @@ L2 承担复杂性，换来了用户。**
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ![746431e476307961fd417c1d415c6861.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-20-1768924324825-746431e476307961fd417c1d415c6861.png)
 
@@ -543,6 +544,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -646,6 +648,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -782,6 +785,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1114,6 +1118,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1474,6 +1479,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2120,6 +2126,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -2661,6 +2668,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -3097,6 +3105,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
