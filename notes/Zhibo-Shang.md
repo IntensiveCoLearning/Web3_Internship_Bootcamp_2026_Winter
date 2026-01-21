@@ -15,13 +15,132 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+### 1\. Uniswap V2: Core AMM Mechanism
+
+Uniswap V2 is built on the **constant product formula**:
+
+x⋅y=kx \\cdot y = kx⋅y=k
+
+where `x` and `y` are token reserves and `k` remains constant.
+
+-   **Price** is determined by the ratio p=y/xp = y/xp=y/x.
+    
+-   **Trades** change token reserves, which moves the price.
+    
+-   **Arbitrage traders** exploit price differences between Uniswap and external markets, helping prices converge to market value.
+    
+
+**Liquidity Providers (LPs)** deposit token pairs and earn trading fees, but they face **impermanent loss**, which occurs when token prices change relative to simply holding them. This loss cannot be fully avoided and is usually offset by fee income
+
+Uniswap基础原理
+
+.
+
+Other important mechanisms:
+
+-   **Flash loans**: borrow assets without collateral as long as they are repaid within the same transaction.
+    
+-   **TWAP (Time-Weighted Average Price)**: provides a manipulation-resistant on-chain price oracle.
+    
+
+* * *
+
+### 2\. Uniswap V3: Concentrated Liquidity
+
+Uniswap V3 introduces **capital efficiency improvements** by allowing LPs to provide liquidity only within specific **price ranges**.
+
+Key innovations:
+
+-   **Liquidity ranges**: LPs earn fees only when price stays within their chosen range.
+    
+-   **Tick system**: discretizes price space to manage liquidity changes efficiently.
+    
+-   **Liquidity aggregation**: multiple LP positions combine seamlessly.
+    
+-   **New math model** using liquidity LLL and P\\sqrt{P}P​, reducing computation costs and improving precision.
+    
+
+This design increases potential returns but requires more active management and risk control.
+
+* * *
+
+### 3\. Uniswap V4: Flexibility via Hooks
+
+Uniswap V4 introduces **Hooks**, which allow developers to insert custom logic at key points such as:
+
+-   Before/after swaps
+    
+-   Adding/removing liquidity
+    
+
+This enables advanced features like **dynamic fees, limit orders, MEV protection, and custom liquidity strategies**, significantly increasing protocol flexibility
+
+Uniswap基础原理
+
+.
+
+* * *
+
+### 4\. Risks, Fees, and Design Considerations
+
+-   **Impermanent loss** is inherent to AMMs.
+    
+-   **Price impact** is deterministic and related to pool depth, while **slippage** is unpredictable.
+    
+-   Fee tiers in V3 should match asset volatility:
+    
+    -   Stablecoins: 0.01%–0.05%
+        
+    -   Major assets: 0.3%
+        
+    -   Volatile assets: 1%
+        
+
+MEV risks such as **front-running** can be mitigated using private transaction relays or hook-based logic in V4.
+
+* * *
+
+### 5\. Ecosystem & Developer Support
+
+Uniswap supports developers through:
+
+-   Grants and audit subsidies
+    
+-   Hackathons and incubators
+    
+-   Educational and community programs
+    
+
+There is no official mobile app, but Uniswap can be accessed via web interfaces and third-party wallets.
+
+* * *
+
+### Key Takeaway
+
+Uniswap evolves from a **simple AMM (V2)** to **capital-efficient liquidity (V3)** and finally to a **highly programmable DeFi infrastructure (V4)**. Understanding its mechanics is essential for DeFi traders, LPs, and protocol developers.
+
+If you want, I can also:
+
+-   Rewrite this as **lecture notes**
+    
+-   Make a **1-page cheat sheet**
+    
+-   Simplify it for **non-technical beginners**
+    
+-   Or turn it into an **English learning diary** (like you often do)
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 Today I continued learning about Ethereum by focusing on how blocks are created, how transaction fees work, and how a transaction becomes truly safe on the chain. I learned that a block proposer selects transactions from its mempool, usually choosing ones with higher fees first, and puts them into a block that includes a header, transactions, and execution results. Before a block is accepted, the execution client replays all transactions to make sure the results are correct, while the consensus client checks whether the block follows the rules of the proof-of-stake system. I also studied the EIP-1559 fee model and understood that each block has a base fee that goes up when the network is busy and goes down when it is quiet, and that users can add a priority fee as a tip for the proposer. The base fee is burned, and only the tip becomes a reward, and the block gas limit means that not all pending transactions can fit into one block. I learned that a transaction is first included in a block, then gains confirmations as more blocks are added, and finally becomes finalized after enough validators agree, which makes it extremely hard to reverse. This helped me understand why wallets and block explorers show different states like pending, confirmed, and finalized, and overall I realized that Ethereum uses multiple layers of checks and incentives to keep the network secure and stable.
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 Today I focused on how users and applications actually interact with Ethereum nodes, especially through JSON-RPC, and how a transaction moves through the network from start to finish.
 
@@ -85,6 +204,7 @@ Snap sync allows a node to become usable faster, while still moving toward full 
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ### My Study Notes on Ethereum Nodes and Networking
@@ -221,6 +341,7 @@ These nodes are mainly used by:
 
 
 
+
 Today I learned about the structure of an Ethereum node after The Merge. After The Merge, a full Ethereum node is no longer one single program. Instead, it is built from two main clients, the execution client and the consensus client. If a user only wants to sync the blockchain and check blocks and transactions, running these two clients is enough. However, if someone wants to produce blocks and earn staking rewards, they also need to run a validator client. The validator client works like a plugin of the consensus client and is used for signing messages, voting, and proposing blocks.
 
 The execution client is responsible for executing all transactions in a block. It calculates account balances and smart contract states and then gives the final execution results. In simple words, the execution client does the math but does not decide which block is the official one. The consensus client does not execute transactions by itself. Instead, it checks the execution results from the execution client and runs the Proof of Stake rules to decide which block is valid and which chain should be accepted as the official chain. This means the execution client gives the results, and the consensus client decides whether to accept them.
@@ -234,11 +355,13 @@ The execution client and the consensus client communicate through a special inte
 
 
 
+
 亲爱的助教老师您好，明天上午10点我要考电动力学，这学期的最后一门考试，今天实在是没有时间学习其他的了。之后我会补上今天的内容，谢谢啦！
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -263,6 +386,7 @@ Finally, I deeply understood that **"**compliance" is not just what is written o
 
 
 
+
 Today I reviewed the core structure of blockchain systems. A blockchain consists of a sequence of blocks, each containing transaction records and the hash of the previous block. This chained hash structure ensures data integrity and makes historical records effectively immutable.
 
 Wallet balances on a blockchain are not stored explicitly. Instead, balances are derived by scanning the entire transaction history associated with a given wallet address. Although all transactions are publicly accessible, wallet ownership remains anonymous because addresses are randomly generated and not directly linked to real-world identities.
@@ -278,6 +402,7 @@ Finally, I examined scalability challenges in public blockchains, such as increa
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
