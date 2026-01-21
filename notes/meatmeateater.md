@@ -15,8 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今天提交了我對ERC-7962的想法，以下:  
+Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
+
+**1\. About Gas & State** Since we have to generate new output hashes, aren’t we basically hitting `SSTORE` to initialize a fresh storage slot for every single transfer? Compared to just updating a balance in ERC-20, this feels like it could get super expensive gas-wise. I’m also wondering if this risks bloating the state with a lot of “dust” over time?
+
+**2\. Using this with DeFi** For integration, are you picturing a wrapper (kind of like WETH) so these can interact with things like Uniswap? I’m curious if these are meant to play nice with current DeFi, or if the vision is to keep them totally separate?
+
+Thanks for clarifying!  
+然後今天聽了uniswap的講解感覺很有收穫，大概了解了x\*y=k的uniswap底層邏輯以及它的流動性池是怎麼運作的，覺得jeff老師真的講的很好，有點類似微積分及速度加速度與能量關係的面積講解讓人很容易代入進去，也使得我有興趣去繼續深入研究下去!
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天打算把第0周的任務補齊，目前還差這些
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/meatmeateater/images/2026-01-19-1768852214818-image.png)
@@ -25,6 +39,7 @@ timezone: UTC+8
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -32,11 +47,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -52,12 +69,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -174,6 +193,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -385,6 +405,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -645,6 +666,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
