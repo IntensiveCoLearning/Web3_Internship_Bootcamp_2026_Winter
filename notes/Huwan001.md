@@ -16,8 +16,35 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 今日線上共學環節，聽了Wachi老師給了建議。
+
+### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
+
+比如說告訴AI你想要參與一個黑客松，但目前對於方向沒有想法，希望他以一個小白的角度，搭配去中心化，使用什麼技術為核心，能夠去製作一個可以實際應用的場景，針對上述資訊思考一個主題，像這種方式是一個很好去做的方向，去跟AI溝通並去尋找自己想做的主題。
+
+###   
+2.也分享了在Web3中找技術職的相關內容。
+
+在做中學，小白在學習過程中可能會遇到許多困難導致堅持不下去，可以先學一個概念就好，看想做的應用實際會運用到的東西是什麼語言，再針對其去做較深入的鑽研。
+
+Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠一把抓，後端是JavaScripts，小白不要python入門，可以直接以solidity入門學習基礎，也可以直接去學鏈的開發。
+
+實際建議部分，可以小白先了解solidity語言，去寫套利、量化腳本運用typescript費率套利、期限套利等等，賺錢後
+
+花錢請人做高頻交易、MVE鏈上套利等等，只要告訴他們策略讓他們去開發。
+
+純寫智能合約的工程師較難生存，建議往Web3全端開發的目標去前進，再更進階可以做合約審計工程師。  
+  
+(以下是同學整理的筆記)
+
+![Day3线上共学会议纪要_page-0001.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-21-1769001276236-Day3_________page-0001.jpg)![Day3线上共学会议纪要_page-0002.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-21-1769001303678-Day3_________page-0002.jpg)![Day3线上共学会议纪要_page-0003.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-21-1769001318776-Day3_________page-0003.jpg)
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 **File Explorers 新增文件、管理文件夾**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-20-1768891210785-image.png)
@@ -136,6 +163,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -147,6 +175,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -205,6 +234,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -215,6 +245,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -359,6 +390,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -384,6 +416,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -528,6 +561,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -607,6 +641,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
