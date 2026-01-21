@@ -15,8 +15,44 @@ content creator and sales from web2 to web3
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+uniswap v2: cpmm /恒积做市商
+
+x\*y = k 价格曲线
+
+p = y/x
+
+12000 300
+
+uniswap v3: clmm /集中流动性做市商
+
+uniswap v4: plmm / 可程式化流动性做市商
+
+uniswap v5
+
+以币安的价格为准
+
+uniswap的价格没有跟上
+
+slippage 滑点
+
+期望的价格/数量
+
+和最终实际成交的价格/数量之间的偏差
+
+不可预期（但可设置）
+
+uniswap
+
+v3
+
+那流动性集中在自己指定的，交易活跃的区间
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 [https://www.figma.com/design/AyUvEaUc8bAp8Tjd18wlPv/Untitled?node-id=8-76&t=BBQqHhqAHWK1DKcW-1](https://www.figma.com/design/AyUvEaUc8bAp8Tjd18wlPv/Untitled?node-id=8-76&t=BBQqHhqAHWK1DKcW-1)
 
 海报作业
@@ -24,6 +60,7 @@ content creator and sales from web2 to web3
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 [https://www.xiaoyuzhoufm.com/episode/696cfe59ef1cf272a7160c8a](https://www.xiaoyuzhoufm.com/episode/696cfe59ef1cf272a7160c8a)
 
@@ -74,11 +111,13 @@ UX问题 用户只需签名表达意图，无需赤壁，无需理解gas, 无需
 
 
 
+
 正所谓见贤思齐焉，见不贤而内自省也，我想在今天的分享会上，贤人辈出，都是我学习的榜样。内容从运营，个人学习，起号，solidity, 法律，RWA等等延展开来，需要时间消化下 所以还是很需要回放和ppt的 😂
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
