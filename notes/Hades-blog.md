@@ -15,8 +15,153 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 一、版本演进总览
+
+Uniswap 是 Web3 生态核心 DEX（去中心化交易所），历经三代核心迭代，从基础恒积模型逐步走向可程式化扩展，核心演进逻辑：**提升资金效率 → 增强灵活性与扩展性**
+
+| 版本 | 类型 | 上线时间 | 核心定位 | 核心改进 |
+| --- | --- | --- | --- | --- |
+| v2 | CPMM（恒积做市商） | 2020.05 | 长尾代币主要 DEX | 奠定 AMM 基础框架，引入 TWAP 预言机、闪电借贷 |
+| v3 | CLMM（集中流动性做市商） | 2021.05 | 目前 TVL 最高 DEX | 流动性集中化，引入 tick 机制、多手续费档位 |
+| v4 | PLMM（可程式化流动性做市商） | 2025.01 | 最具扩展性 DEX | 单体合约架构，支持 Hooks 勾子、动态参数 |
+
+## 二、Uniswap v2：CPMM 恒积做市商（基础框架）
+
+### 1\. 核心机制
+
+-   核心公式：`x * y = k`（x、y 为两种代币储备量，k 为恒定乘积）
+    
+-   价格计算：`p = y / x`（如 ETH/USDC 池，p 为 USDC/ETH 价格）
+    
+-   交易逻辑：swap 时储备量变化需满足 `x*y = (x+Δx)*(y-Δy)`，推导得：
+    
+    -   `Δx = x*Δy/(y-Δy)`
+        
+    -   `Δy = Δx*y/(x+Δx)`
+        
+
+### 2\. 关键概念与实践
+
+| 概念 | 定义 / 作用 |
+| --- | --- |
+| 流动性（Liquidity） | LP 按比例（等价格线）添加 / 移除两种代币，维持 k 恒定 |
+| 等价格线（Iso-price line） | 同一价格下 x 与 y 的配比关系，LP 操作需严格遵循该比例 |
+| 价格影响（Price Impact） | 交易对池内价格的推动作用，可预期，取决于池子深度 |
+| 滑点（Slippage） | 期望成交价格与实际价格的偏差，不可预期，与交易顺序 / MEV 相关 |
+| 无常损失（Impermanent Loss） | LP 资产与单纯持有代币的价值差，因价格波动导致，公式：IL = 2√d/(1+d) - 1（d 为价格波动倍数） |
+| 闪电借贷（Flash Loan） | 借助 swap 函数的 data 参数，实现无抵押瞬时借贷（需在交易内归还） |
+| TWAP 预言机 | 时间加权平均价格，公式：TWAP = (v1 - v0)/(t1 - t0)，避免单点价格操纵 |
+
+### 3\. 典型案例：套利逻辑
+
+-   已知：池内 ETH=2、USDC=6000（k=12000，p=3000 USDC/ETH），市场市价 = 3200 USDC/ETH
+    
+-   套利操作：向池内注入 196.77 USDC，换取 0.0635 ETH，平均成交价格 3098.39 USDC/ETH
+    
+-   核心逻辑：通过交易使池内价格向市场价格收敛，赚取差价
+    
+
+## 三、Uniswap v3：CLMM 集中流动性做市商（资金效率提升）
+
+### 1\. 核心改进：集中流动性
+
+-   痛点解决：v2 流动性分散在全价格区间，资金效率低
+    
+-   核心逻辑：LP 可将流动性集中在特定价格区间（如 0.98-1.02 USDC/USDT），该区间内资金利用率大幅提升
+    
+
+### 2\. 关键机制与概念
+
+| 机制 / 概念 | 作用 / 细节 |
+| --- | --- |
+| Tick（价格刻度） | 将价格区间划分为离散刻度（可正可负），如 USDC/USDT 0.98-1.02 对应 tickLower=-203、tickUpper=198 |
+| Tick Bitmap（刻度位图） | 记录流动性变化的点位，通过 wordPos = tick>>8、bitPos = tick%256 定位，优化存储与查询 |
+| Tick Spacing（刻度间距） | 规定 tick 取值步长，与手续费档位绑定（间距越小，价格精度越高） |
+| Fee Tier（手续费档位） | 提供 0.01%/0.05%/0.3%/1.00% 四档，对应 tick spacing 分别为 1/10/60/200 |
+| Fee Growth（手续费累计） | 通过 feeGrowthGlobal（全局累计）和 feeGrowthOutside（tick 外累计）计算 LP 应得手续费：LP fee = feeGrowthGlobal - tickUpper.feeGrowth - tickLower.feeGrowth |
+
+### 3\. 核心优势
+
+-   资金效率：集中流动性使同一资金量下价格影响更小
+    
+-   灵活适配：不同交易对可选择匹配的手续费档位（如稳定币对选 0.01%，高波动币对选 1.00%）
+    
+
+## 四、Uniswap v4：PLMM 可程式化流动性做市商（扩展性革命）
+
+### 1\. 核心架构改进
+
+| 架构 / 机制 | 对比 v2/v3 | 优势 |
+| --- | --- | --- |
+| 单体合约（Singleton） | 原多池合约架构，每个池独立部署 | 降低部署成本，统一管理所有池子 |
+| 闪电记账（Flash Accounting） | 原需先转账再验证 | 先记账后结算，减少 Gas 消耗，支持复杂操作 |
+| 原生 ETH 支持 | 原需通过 WETH 映射 | 直接支持 ETH 作为交易对，简化操作 |
+
+### 2\. 核心功能：Hooks 勾子（可程式化核心）
+
+-   定义：池交易 / 流动性操作的生命周期回调函数，支持自定义逻辑嵌入
+    
+-   核心钩子函数（覆盖全生命周期）：
+    
+    -   初始化：`before/afterInitialize()`
+        
+    -   流动性操作：`before/afterAddLiquidity()`、`before/afterRemoveLiquidity()`
+        
+    -   交易：`before/afterSwap()`
+        
+    -   捐献：`before/afterDonate()`（支持向 LP 捐献代币）
+        
+-   钩子识别：通过勾子地址的低 14 位 flags 标记支持的钩子（如 `BEFORE_SWAP_FLAG = 1<<7`）
+    
+-   钩子地址挖掘：通过 `Hooks Address Miner` 生成符合 flags 要求的地址，确保兼容性
+    
+
+### 3\. 关键特性
+
+-   动态参数：`PoolKey` 结构体包含 `currency0/currency1/fee/tickSpacing/hooks`，fee 和 tickSpacing 支持任意合法值
+    
+-   6909 Claim Token：标准化手续费 / 奖励领取凭证，兼容 ERC6909 接口
+    
+-   Donate 功能：支持向池子捐献代币，补贴 LP 或调整池内储备
+    
+
+## 五、学习与实践资源
+
+### 1\. 官方支持项目
+
+-   Uniswap Hooks Incubator：8 周线上课程 + 黑客松，Uniswap 基金会支持，2026 年 4 月开营（[https://atrium.academy/uniswap](https://atrium.academy/uniswap)）
+    
+-   审计补贴：Areta 运营，最高全免费，每月 7 号截止申请（[https://areta.fillout.com/UFSF](https://areta.fillout.com/UFSF)）
+    
+
+### 2\. 黑客松活动
+
+-   核心赛事：Infinite Hackathon、ETHGlobal 系列、HackMoney 2026（[https://ethglobal.com/events/hackmoney2026](https://ethglobal.com/events/hackmoney2026)）
+    
+
+### 3\. 基金会资源
+
+-   官网：[https://www.uniswapfoundation.org/](https://www.uniswapfoundation.org/)
+    
+-   资助项目：Unichain Retro Grant、Builder Open Call 等
+    
+-   学习渠道：活动日历、Newsletter、DeFi Education Fund
+    
+
+## 六、核心总结
+
+1.  迭代逻辑：Uniswap 从「固定规则」（v2 恒积）→「优化规则」（v3 集中流动性）→「自定义规则」（v4 勾子），本质是逐步释放 DEX 的灵活性与扩展性
+    
+2.  关键权衡：资金效率与操作复杂度正相关（v3/v4 提升效率的同时增加了 LP 策略门槛）
+    
+3.  生态价值：通过开源、补贴、孵化构建开发者生态，Hooks 是未来自定义 DEX 场景的核心入口
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## 一、EVM 与智能合约运行环境
 
 ### 1\. EVM 的本质
@@ -353,6 +498,7 @@ function transfer(address to, uint256 amount) external onlyOwner {
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 # Web3 社区运营 & 活动策划核心笔记
 
 ## 一、Telegram 社群搭建与基础运营
@@ -486,6 +632,7 @@ function transfer(address to, uint256 amount) external onlyOwner {
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ## 一、 协议起源与核心背景
 
 ### 1\. 诞生需求
@@ -584,11 +731,13 @@ ERC-7962 是以太坊生态的 **密钥哈希型代币标准**，由 Alex Tian �
 
 
 
+
 今天主要进行本周笔记的书写发布到推特,整理成小白扫盲的形式,并且准备进行投研报告的书写, 希望能为我们投研社区带来流量
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -684,6 +833,7 @@ ERC-7962 是以太坊生态的 **密钥哈希型代币标准**，由 Alex Tian �
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -785,6 +935,7 @@ AI与Web3融合是刚需，AI提供“自主行动能力”，Web3提供“身�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -895,6 +1046,7 @@ AI与Web3融合是刚需，AI提供“自主行动能力”，Web3提供“身�
 
 
 
+
 ## 交易（Transaction）架构与生命周期
 
 交易是区块链状态改变的原子单位。
@@ -977,6 +1129,7 @@ Gas 不仅是计费单位，更是网络的安全屏障与资源调度器。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
