@@ -15,8 +15,36 @@ note for 2026
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# ZK学习内容
+
+zk的应用大概可以分成两类。一类是"我有，但不给你看"，类似公钥私钥和刚刚的keyhash。另一类是"我能证明两个事物有关系，但我不说是什么关系"，比如3col
+
+在eth里面zk为了证明什么，两个方向，扩容和隐私
+
+ZK是啥鬼啊？
+
+[https://hackmd.io/@zXldgZ6oS8-P9jwxiCi2gQ/rkbANWpEgx](https://hackmd.io/@zXldgZ6oS8-P9jwxiCi2gQ/rkbANWpEgx)
+
+ZKP Interactive Proofs：
+
+[https://hackmd.io/@zXldgZ6oS8-P9jwxiCi2gQ/Bk5Y32d\_eg](https://hackmd.io/@zXldgZ6oS8-P9jwxiCi2gQ/Bk5Y32d_eg)
+
+扩容上可以这么理解：虽然我没有把这就几百笔交易的具体数据全写在以太坊主网上，但我发誓，我已经按照规则正确地执行了它们，并且计算出了正确的新状态
+
+隐私上就这么理解：我在这个资金池里存过一笔钱，我现在要取出来，但我绝对不会告诉你我取的是哪一笔，或者我是谁
+
+zkrollup的进阶就是zkevm：简单来说就是能看懂以太坊智能合约代码，并生成零知识证明的虚拟机
+
+SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
+
+順便推個STARK 101：[https://github.com/starkware-industries/stark101](https://github.com/starkware-industries/stark101)
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 \# 分散资产，规划好钱包用途
 
 \- 日常高频使用的热钱包存放少量资产，不同的钱包使用不同的助记词创建。
@@ -30,6 +58,7 @@ note for 2026
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 \### 第三步：ZK rollup
 
@@ -64,6 +93,7 @@ note for 2026
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## 以太坊如何加速的？
@@ -160,6 +190,7 @@ Blob具体怎么做：
 
 
 
+
 \*\*PoS验证者如何工作\*\*：
 
 \- **准入门槛**：质押 32 ETH 成为验证者
@@ -175,6 +206,7 @@ Blob具体怎么做：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -199,6 +231,7 @@ Blob具体怎么做：
 
 
 
+
 | 维度 | 比特币（Bitcoin） | 以太坊（Ethereum） |
 
 | :-------- | :------------------------------ | :---------------------------------- |
@@ -216,6 +249,7 @@ Blob具体怎么做：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -270,6 +304,7 @@ Blob具体怎么做：
 
 
 
+
 # 今日todo
 
 -   \[ \] 入门导读以太坊概览
@@ -294,6 +329,7 @@ Blob具体怎么做：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
