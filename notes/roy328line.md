@@ -22,10 +22,35 @@ Web3 实习计划 2025 冬季实习生
 2026/01/21 总体学习计划如下：
 
 -   [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分
+    
+
+# [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic
+
+| 主題 | 主軸 | 誤區 |
+| --- | --- | --- |
+| Variables | 分清 local / state / global，決定資料是否上鏈 | 把會變動的資料放 local，結果狀態不會保存 |
+| Constants | constant 編譯期固定，通常更省 Gas | 以為 runtime 能改，實際不可 |
+| Immutable | immutable 只能在 constructor 設一次 | 以為跟 constant 完全一樣（其實設定時機不同） |
+| State Variables | 改狀態要交易；讀狀態可免費 RPC | 把讀寫成本混在一起估 Gas |
+| Ether / Wei | 金額用 Wei，1 ether = 1e18 wei | 用浮點思維處理金額，導致精度錯誤 |
+| Gas | 交易成本與執行路徑、寫入 storage 高度相關 | 在迴圈中寫 storage，Gas 爆炸 |
+| If / Else、Loop | 控制流程都會影響 Gas | 在 on-chain 迴圈做大量計算或遍歷動態陣列 |
+| Mapping | Key → Value 的儲存結構，不可迭代、無長度 | 想「列出所有 key」，做不到 |
+| Array | 動態陣列可 push/pop，刪除要設計策略 | 刪除後元素搬移造成 O(n) |
+| Enum / Struct | enum 表狀態、struct 表資料模型 | 忽略預設值（enum 預設第 0 個） |
+| Data Locations | reference type 必須分清 storage/memory/calldata | 不小心拷貝整個陣列，Gas 變貴 |
+| Function | 回傳可用 named returns、解構、tuple | visibility 預設與呼叫方式搞混 |
+| View / Pure | view 不改狀態；pure 不讀不改 | 在 view 中讀到會變的狀態以為「不耗 Gas」但仍需 RPC |
+| Error | require/revert/assert/custom error 分工不同 | 用 assert 做參數檢查（語意不對） |
+| Modifier | 把前置條件抽象成可重用的「守門」 | modifier 過度複雜，降低可讀性 |
+| Events | 用來留鏈上 log，利於前端/索引器查詢 | indexed 用太多或塞大資料，查詢與成本不佳 |
+| Inheritance | is 多重繼承，super 依線性化呼叫 | state variable shadowing 造成混亂 |
+| Payable / Sending Ether | 收款靠 receive/fallback payable；付款多用 call | 仍用 transfer/send 忽略 Gas 限制與失敗處理 |
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## **Day 9 学习计划**
 
@@ -212,6 +237,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -308,6 +334,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -369,6 +396,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -404,6 +432,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -485,6 +514,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -601,6 +631,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -780,6 +811,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -918,6 +950,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
