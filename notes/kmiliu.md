@@ -15,8 +15,439 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-20
+<!-- DAILY_CHECKIN_2026-01-20_START -->
+# Solidity 智能合约开发入门
+
+**主线**：**EVM 是运行环境 → Gas 决定成本 → Solidity 是控制成本和安全的语言 → ERC20 是最小可复用应用**
+
+* * *
+
+## Part 0：你在写的到底是什么？
+
+### 0.1 智能合约的本质
+
+-   智能合约 = **部署在链上的程序**
+    
+-   特点：
+    
+    -   不可篡改
+        
+    -   永久存在
+        
+    -   每一步执行都要付 Gas
+        
+-   结论：**Solidity 的第一目标不是“优雅”，而是：安全 + 省 Gas**
+    
+
+* * *
+
+## Part 1：EVM —— 一切 Solidity 行为的底层原因
+
+### 1.1 EVM 是什么？
+
+-   EVM = 以太坊虚拟机
+    
+-   **栈式虚拟机（Stack-based VM）**
+    
+-   所有 Solidity 代码最终都会：Solidity → Bytecode → EVM 指令
+    
+
+理解 EVM = 理解为什么某些写法贵、某些危险
+
+* * *
+
+### 1.2 EVM 四大执行区（核心）
+
+1️⃣ Stack（栈）
+
+-   用于计算
+    
+-   只存临时操作数
+    
+-   极快、极便宜
+    
+-   例：`1 + 1`
+    
+
+2️⃣ Memory（内存）
+
+-   函数执行期间的临时空间
+    
+-   不上链
+    
+-   Gas 成本中等
+    
+
+3️⃣ Calldata（调用数据）
+
+-   外部传入参数
+    
+-   **只读**
+    
+-   Gas 成本低
+    
+-   典型：`external` 函数参数
+    
+
+4️⃣ Storage（链上存储）
+
+-   **永久存储**
+    
+-   写一次 ≈ 20,000 gas
+    
+-   修改 ≈ 5,000 gas
+    
+-   **合约优化的核心战场**
+    
+
+📌 类比：
+
+-   Storage = 硬盘
+    
+-   Memory / Calldata = 内存
+    
+-   Stack = CPU 寄存器
+    
+
+* * *
+
+## Part 2：Gas 成本
+
+### 2.1 Gas 决定一切
+
+合约设计只围绕两件事：
+
+1.  安全性
+    
+2.  Gas 成本
+    
+
+### 2.2 Storage 是最贵的
+
+-   能不存就不存
+    
+-   能少改就少改
+    
+-   能算出来就别存
+    
+
+👉 **80% 的 Gas 优化 = Storage 优化**
+
+* * *
+
+## Part 3：Solidity 开发环境（落地工具）
+
+### 3.1 Remix IDE
+
+-   在线 IDE
+    
+-   自带：
+    
+    -   EVM
+        
+    -   私链
+        
+    -   Debug
+        
+-   适合学习 + 原型验证
+    
+
+### 3.2 Solidity 版本意识
+
+-   教学基准：`0.8.20`
+    
+-   `^0.8.20` ≠ 任意版本
+    
+-   **读合约源码第一件事：看版本**
+    
+
+* * *
+
+## Part 4：Solidity 类型系统（直接决定 Gas）
+
+### 4.1 值类型（Value Types）
+
+> **便宜、安全、首选**
+
+-   `bool`
+    
+-   `uint / int`（位宽越小越省）
+    
+-   `address`
+    
+-   `bytes32`
+    
+
+核心原则：能用 uint / address，就不要 string
+
+* * *
+
+### 4.2 引用类型（Reference Types）
+
+> **贵、慎用**
+
+-   `string`
+    
+-   动态数组
+    
+-   `bytes`
+    
+-   `mapping`
+    
+
+### 4.3 Mapping 的地位
+
+-   Solidity 的“账本结构”
+    
+-   常见用途：
+    
+    -   余额
+        
+    -   授权
+        
+    -   状态标记
+        
+
+* * *
+
+## Part 5：ERC20 —— 第一个完整应用模型
+
+### 5.1 为什么从 ERC20 学？
+
+-   最小可用合约系统
+    
+-   覆盖：
+    
+    -   Storage
+        
+    -   权限
+        
+    -   事件
+        
+    -   安全设计
+        
+
+* * *
+
+### 5.2 ERC20 核心链上状态
+
+```
+string name;
+string symbol;
+uint8 decimals;
+uint256 totalSupply;
+address owner;
+mapping(address => uint256) balances;
+mapping(address => mapping(address => uint256)) allowances;
+```
+
+* * *
+
+### 5.3 两本账本 = ERC20 的灵魂
+
+1️⃣ 余额账本  
+2️⃣ 授权账本
+
+* * *
+
+## Part 6：构造函数（部署即初始化）
+
+-   只执行一次
+    
+-   初始化所有 Storage
+    
+-   **部署阶段就要付 Gas**
+    
+
+结论：constructor 里写的每一行，都是永久成本
+
+* * *
+
+## Part 7：函数设计（权限 + 可见性）
+
+### 7.1 可见性
+
+-   `external`（最省 gas）
+    
+-   `public`
+    
+-   `internal`
+    
+-   `private`
+    
+
+### 7.2 状态可变性
+
+-   `view`
+    
+-   `pure`
+    
+
+* * *
+
+## Part 8：ERC20 核心方法逻辑
+
+### 8.1 transfer（最重要）
+
+执行顺序：
+
+1.  校验
+    
+2.  更新余额
+    
+3.  发事件
+    
+
+### 8.2 approve
+
+-   修改授权账本
+    
+-   发 Approval 事件
+    
+-   **DeFi 的入口**
+    
+
+* * *
+
+## Part 9：事件（Event）—— 链上到链下的桥梁
+
+### 9.1 事件是干嘛的？
+
+-   不给链上用
+    
+-   给：
+    
+    -   钱包
+        
+    -   区块浏览器
+        
+    -   Bot
+        
+    -   DApp 后端
+        
+
+### 9.2 indexed 的意义
+
+-   最多 3 个
+    
+-   用于链下高效过滤
+    
+
+* * *
+
+## Part 10：Mint 与安全设计
+
+### 核心模式
+
+```
+external（权限校验）
+   ↓
+internal（状态修改）
+```
+
+* * *
+
+## Part 11：完整 Remix 流程
+
+1.  编译
+    
+2.  部署（constructor 执行）
+    
+3.  调用（读 vs 写）
+    
+
+* * *
+
+## Part 12：错误处理（Gas + 安全）
+
+优先级建议：
+
+1.  自定义 error
+    
+2.  revert
+    
+3.  require
+    
+4.  assert（极少用）
+    
+
+* * *
+
+## Part 13：unchecked（高级优化）
+
+-   0.8+ 默认防溢出
+    
+-   确定安全后才用
+    
+
+* * *
+
+## Part 14：Modifier —— Solidity 的“规则抽象”
+
+### 为什么重要？
+
+-   权限统一
+    
+-   逻辑复用
+    
+-   减少 bug
+    
+
+* * *
+
+## Part 15：认知纠偏 Q&A（安全与生态）
+
+### Q1：助记词骗局是怎么实现的？
+
+-   合约权限锁
+    
+-   或抢跑 Bot（Front-running）
+    
+-   **不是“漏洞”，是机制被利用**
+    
+
+* * *
+
+### Q2：发币要几个合约？
+
+-   一个 ERC20 = 一个合约
+    
+-   参数不可变（除非你写升级）
+    
+
+* * *
+
+### Q3：EVM 有并发吗？
+
+-   没有多线程
+    
+-   有 **重入风险**
+    
+
+* * *
+
+### Q4：新标准是否兼容 ERC20？
+
+-   不兼容
+    
+-   但生态共存
+    
+
+* * *
+
+### Q5：还能用哪些成熟轮子？
+
+-   OpenZeppelin
+    
+-   Proxy
+    
+-   Diamond（EIP-2535）
+<!-- DAILY_CHECKIN_2026-01-20_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -114,6 +545,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ## 1) 总结
 
@@ -282,6 +714,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -389,6 +822,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1287,6 +1721,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -1455,6 +1890,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -1575,6 +2011,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2456,6 +2893,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
