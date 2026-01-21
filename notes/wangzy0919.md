@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今天稍微有点事，没怎么学习就看了一下Solidity Walk Through的回放
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 研究了一下Dapp
 
 1.Dapp 架构
@@ -29,6 +35,7 @@ timezone: UTC+8
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 研究了一下深度技术赛道中的任务
 
 1.部署合约到sepolia测试网
@@ -38,6 +45,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今天预习了一下第一周的任务
@@ -52,11 +60,13 @@ timezone: UTC+8
 
 
 
+
 今天稍微有点摆，听了一个每周例会
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -71,6 +81,7 @@ timezone: UTC+8
 
 
 
+
 1.今天确定了主要进行深度技术方向的学习，因为自己本身就是区块链专业的学生。入门技术都学过，可以快速复习过一遍
 
 2.使用metamask在sepolia测试网上铸造了一个NFT
@@ -80,6 +91,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
