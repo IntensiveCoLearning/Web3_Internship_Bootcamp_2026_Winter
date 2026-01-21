@@ -15,8 +15,85 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+使用view读取状态变量无需花费gas fee
+
+交易使用ether付费，一ether等于10^18wei
+
+1.  Gas
+    
+    ### How much `ether` do you need to pay for a transaction?
+    
+    You pay `gas spent * gas price` amount of `ether`, where
+    
+    -   `gas` is a unit of computation
+        
+    -   `gas spent` is the total amount of `gas` used in a transaction
+        
+    -   `gas price` is how much `ether` you are willing to pay per `gas`
+        
+2.  Solidity supports conditional statements `if`, `else if` and `else`.
+    
+
+```
+contract IfElse {
+    function foo(uint256 x) public pure returns (uint256) {
+        if (x < 10) {
+            return 0;
+        } else if (x < 20) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    function ternary(uint256 _x) public pure returns (uint256) {
+        // if (_x < 10) {
+        //     return 1;
+        // }
+        // return 2;
+
+        // shorthand way to write if / else statement
+        // the "?" operator is called the ternary operator
+        return _x < 10 ? 1 : 2;
+    }
+}
+```
+
+1.  `for`, `while`, and `do while`
+    
+
+```
+contract Loop {
+    function loop() public pure {
+        // for loop
+        for (uint256 i = 0; i < 10; i++) {
+            if (i == 3) {
+                // Skip to next iteration with continue
+                continue;
+            }
+            if (i == 5) {
+                // Exit loop with break
+                break;
+            }
+        }
+
+        // while loop
+        uint256 j;
+        while (j < 10) {
+            j++;
+        }
+    }
+}
+```
+
+1.  mapping
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -67,6 +144,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -74,6 +152,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 \# 2026-01-16
@@ -142,6 +221,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -196,6 +276,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -222,6 +303,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -285,6 +367,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
