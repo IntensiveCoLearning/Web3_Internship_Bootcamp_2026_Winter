@@ -15,8 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今天纠结的点在于，到底是尽量多学Ethpanda上面的内容，还是专精于一个方向
+
+  
+主要学习了基于Dune的链上数据分析：
+
+包括Dune的基本使用、如何使用Dune完成一次简单的链上分析、以及复现历史的真实攻击事件等等。
+
+比如追踪某个黑客攻击的代币流向。
+
+感谢伟大的AI！
+
+除此之外，就是和Web2有关的内容，今天是忙绿的一天。
+
+```
+SELECT 
+    contract_address, -- 代币合约地址（如 USDT 的地址）
+    value,            -- 原始金额
+    evt_tx_hash,      -- 交易哈希
+    block_time
+FROM erc20_ethereum.evt_Transfer
+WHERE "to" = 0xHackerAddress... -- 替换为实际黑客地址
+ORDER BY block_time DESC
+```
+
+明天一定要出一个对应的Dune的文章
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # 学习运营相关知识
 
 Telegram 如何运营？  
@@ -46,6 +76,7 @@ Figma 如何使用？
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # 阅读web3实习计划《智能合约开发》
 
@@ -162,6 +193,7 @@ Arweave：提供“永久存储”服务，一次付费永久保存；
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 # 从 ERC-721 到 ERC-7962
 
 这是我让大模型解析文档得到的：
@@ -261,6 +293,7 @@ ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -401,6 +434,7 @@ SEO + 邮件订阅
 
 
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -462,6 +496,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -625,6 +660,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -638,6 +674,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -689,6 +726,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
