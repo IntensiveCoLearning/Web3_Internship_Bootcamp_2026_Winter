@@ -15,8 +15,120 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# 合约优化记录
+
+## 现有合约概览（Memo.sol）
+
+-   结构体 `Message`：`string text` + `address author` + `uint40 timestamp`
+    
+-   主要常量：`MAX_MESSAGE_LENGTH = 280`、`MAX_PAGE_SIZE = 50`
+    
+-   主要功能：
+    
+    -   `postMessage`：校验长度后写入 `messages` 数组
+        
+    -   `messageCount`：返回总数
+        
+    -   `getMessage`：单条读取
+        
+    -   `getMessages`：分页读取（返回三个并行数组）
+        
+
+> 现有代码位置：`0xMemo/src/Memo.sol`
+
+## 当前存储与读写特征
+
+-   `Message` 中 `string` 为动态类型：仅在结构体槽中保存指针，实际内容在单独的存储区域。
+    
+-   `address` + `uint40` 可以打包进同一个 32 字节槽（节省一槽），但仍需要为 `string` 单独付出存储成本。
+    
+-   `postMessage` 是主要存储写入点；读取函数只读，不写。
+    
+
+## 优化方向与尝试记录
+
+### 1) 减少存储操作（SSTORE 次数）
+
+**目标**：减少 `postMessage` 的存储写入成本或降低写入频率。
+
+可能方案：
+
+-   **事件替代存储（Log 方案）**：
+    
+    -   将消息只写入事件（`emit MessagePosted(...)`），链上不保存 `messages`。
+        
+    -   优点：存储成本大幅降低。
+        
+    -   缺点：链上无法直接分页读取历史消息，需要靠索引服务；不满足链上可查询需求时才可用。
+        
+-   **仅存储摘要/哈希**：
+    
+    -   链上存 `keccak256(text)` + `author` + `timestamp`，原文只存在链下。
+        
+    -   优点：大幅减少存储。
+        
+    -   缺点：链上不可取回原文。
+        
+
+结论：如果必须链上可读全文，无法完全避免 `string` 的存储成本，只能在结构设计上折中。
+
+### 2) 位压缩 / 结构体打包
+
+**目标**：在不改变业务语义的前提下减少存储槽。
+
+当前结构：
+
+-   `string`：独立存储区
+    
+-   `address + uint40`：可打包为 1 槽（已天然满足）
+    
+
+可尝试的结构变体：
+
+-   **短文本内联存储**：
+    
+    -   例如 `bytes32 textShort` + `uint8 textLen`，仅支持 32 字节内短消息。
+        
+    -   若需要更长文本，需额外存储或使用映射，逻辑复杂。
+        
+-   **变体存储（Dual Storage）**：
+    
+    -   `bytes32` 存短文本；超过阈值再走 `string`。
+        
+    -   读取逻辑更复杂，但可显著降低大量短消息的成本。
+        
+
+结论：位压缩在 `address+uint40` 已经完成，收益点主要在文本存储策略。
+
+### 3) 循环与读取优化
+
+**目标**：降低 `getMessages` 的读取 gas（虽为 view，但在链上调用仍计 gas）。
+
+可尝试：
+
+-   **缓存** `messages` **到局部变量**（避免重复 SLOAD）：
+    
+    -   例如 `Message[] storage msgs = messages;` 再读取。
+        
+-   `unchecked` **计数器**：
+    
+    -   在 `for` 中使用 `unchecked { ++i; }`，避免溢出检查。
+        
+-   **避免临时拷贝**：
+    
+    -   当前 `Message memory msgItem = messages[offset + i]` 会触发结构体拷贝；
+        
+    -   可改为按字段读：`Message storage m = messages[offset + i];` 再逐字段赋值。
+        
+
+结论：这些优化对 view 调用收益有限，但在链上调用仍可节省少量 gas。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## Gas 优化
 
 > 本笔记用于记录在 Solidity / EVM 开发实习过程中，对 Gas 成本产生原因、常见优化技巧以及实战案例 的理解与总结。
@@ -278,6 +390,7 @@ contract MessageBoardOptimized {
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -352,6 +465,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 **ERC-8004**是一个关于\*\*信任最小化代理人（Trustless Agent, TA）\*\*的标准，它提出了在以太坊或类似区块链网络中如何定义和实现去中心化代理人。这个标准主要用于为智能合约和区块链上的去中心化应用（dApp）提供可信的代理人架构。ERC-8004定义了如何通过去中心化的方式管理和操作信任最小化代理，确保代理人能够在没有第三方信任的情况下执行任务。
@@ -501,6 +615,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -634,6 +749,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -773,6 +889,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1184,6 +1301,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1293,6 +1411,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1411,6 +1530,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
