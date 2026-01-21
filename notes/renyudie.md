@@ -17,8 +17,153 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+### Figma学习笔记
+
+![Frame 1321317033.jpg](attachment:d98e574b-58d5-451b-9a7a-60f5282a6fdc:Frame_1321317033.jpg)
+
+### 操作步骤（Learning by doing）
+
+1.  Duplicate 整个文件
+    
+    -   打开该 Figma 文件
+        
+    -   左上角文件名旁边点击 **▼**
+        
+    -   选择 **Duplicate**
+        
+    -   Figma 会在你的 Drafts 里生成一个副本
+        
+    -   打开你自己的副本，权限 = 可编辑
+        
+2.  海报模板为一个frame
+    
+    **Frame（框架）** = Figma 里最小的可导出单元
+    
+    -   一个页面里可以有多个 Frame
+        
+    -   每个 Frame 可以单独导出成 PNG / JPG / PDF / SVG
+        
+3.  替换海报里的元素（文字，图片）
+    
+    关于字体：运用AI+Google fonts，查找并安装字体，实在找不到的优先选择类似字体替换。
+    
+    图片：复制并替换
+    
+4.  排版尽量贴近模板，可做少许调整使页面更整洁舒适
+    
+5.  导出（打印）
+    
+    -   选中frame（左侧 **Layers 面板** 找到海报对应的 Frame，点击选中会出现蓝色的框）
+        
+    -   右侧 **Design 面板** → 最下方 **Export**
+        
+    -   点击 **+** 添加导出选项
+        
+
+### Figma寻找模板并使用的方法
+
+### 一、Figma 官方模板（最快捷、稳定）
+
+Figma 官方提供了很多 **免费模板**，直接在 Figma 内就能访问：
+
+**步骤**
+
+1.  打开 Figma Desktop 或网页版
+    
+2.  点击 **"New File" → "Explore Community"**
+    
+3.  在搜索框输入关键词,比如：
+    
+    -   `poster`（海报）
+        
+    -   `social media`
+        
+    -   `UI kit`
+        
+    -   `Web3` / `Crypto`（如果做项目相关）
+        
+4.  选择模板 → 点击 **"Duplicate"**（复制到你的 Drafts）
+    
+5.  你就拥有可编辑的模板副本，可以自由替换文字和图片
+    
+
+> 注意：不要直接修改原作者的模板，一定要 duplicate 副本
+
+* * *
+
+### 二、Figma 社区模板（Community Templates）
+
+Figma Community 是一个共享平台，里面有海量模板、组件、UI kit：
+
+-   网址：[https://www.figma.com/community](https://www.figma.com/community)
+    
+-   搜索方式：
+    
+    1.  按类别筛选（Templates / UI Kits / Icons）
+        
+    2.  搜索具体场景：
+        
+        -   `Poster Template` → 海报模板
+            
+        -   `Banner` → 横幅广告
+            
+        -   `Landing Page` → 网页模板
+            
+        -   `Wallet / Crypto` → Web3 钱包界面
+            
+-   使用方式：
+    
+    1.  打开模板 → **Duplicate**
+        
+    2.  Figma 会把文件复制到你的 Drafts → 可以自由编辑
+        
+
+* * *
+
+### 三、第三方模板资源（可选）
+
+有些专业模板不是 Figma 官方或社区提供的，但可以下载并导入 Figma：
+
+-   **Freepik / Envato Elements**（PSD / Figma 文件）
+    
+-   **Dribbble**（搜索 Figma Template）
+    
+-   **UI8**（付费）
+    
+
+使用方法：
+
+1.  下载 `.fig` / `.figma` 文件或 `.sketch` 文件
+    
+2.  Figma Desktop → **File → Import**
+    
+3.  文件会打开并生成可编辑 Frame
+    
+
+> 优点：视觉更丰富缺点：可能需要自己调整字体、组件和布局
+
+* * *
+
+### 四、搜索模板的关键技巧
+
+1.  **精准关键词**
+    
+    -   中文：`海报模板` → 中文社区模板可能少
+        
+    -   英文：`poster template` / `social media poster` / `event poster`
+        
+2.  **关注文件类型**
+    
+    -   `.fig` 或 Figma 社区模板 → 可直接编辑
+        
+    -   `.psd / .sketch` → 需要导入，可能需要调整字体和组件
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ### 运营渠道
 
 1.  telegram
@@ -79,6 +224,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -128,6 +274,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 ## 闪电贷攻击（flash lown）
@@ -235,6 +382,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -271,6 +419,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -302,6 +451,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -448,6 +598,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
