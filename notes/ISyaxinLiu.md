@@ -15,13 +15,1935 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# Solidity 101 详细知识点讲解
+
+## **1\. Hello Web3 (三行代码)**
+
+### 核心概念
+
+Solidity智能合约的基本结构和开发规范。
+
+### 详细代码示例
+
+```solidity
+// SPDX-License-Identifier: MIT
+// 许可证标识符，告诉他人代码的使用许可（MIT是最宽松的开源许可）
+// 不写会有编译警告，但不影响功能
+
+pragma solidity ^0.8.21;
+// 指定编译器版本
+// ^ 表示兼容 0.8.21 及以上的 0.8.x 版本
+// 也可以写成 >=0.8.0 <0.9.0
+
+// 合约定义：类似 Python 的 class
+contract HelloWeb3 {
+    // 状态变量：存储在区块链上，永久保存
+    string public _string = "Hello Web3!";
+    // public 自动生成 getter 函数
+    
+    // 也可以不初始化，后续赋值
+    uint256 public number;
+    
+    // 构造函数在部署时执行一次
+    constructor() {
+        number = 42;
+    }
+}
+```
+
+### 重要细节
+
+1.  **SPDX标识符**：必须写在文件第一行
+    
+2.  **pragma**：防止不同版本编译器产生不同结果
+    
+3.  **合约 vs 类**：
+    
+    -   Python类在内存中
+        
+    -   Solidity合约部署到区块链，有唯一地址
+        
+
+### 部署流程
+
+```
+编写代码 → 编译成字节码 → 部署到区块链 → 获得合约地址 → 通过地址调用
+```
+
+* * *
+
+## **2\. 值类型 (Value Types)**
+
+### 详细讲解
+
+2.1 布尔型 (bool)
+
+```solidity
+contract BoolExample {
+    bool public _bool = true;
+    
+    // 布尔运算
+    bool public _bool1 = !_bool;        // 取非: false
+    bool public _bool2 = _bool && _bool1; // 与: false
+    bool public _bool3 = _bool || _bool1; // 或: true
+    bool public _bool4 = _bool == _bool1; // 相等: false
+    bool public _bool5 = _bool != _bool1; // 不相等: true
+}
+```
+
+2.2 整数型
+
+```solidity
+contract IntExample {
+    // 整数类型
+    int public _int = -1;          // 整数，包括负数
+    uint public _uint = 1;         // 无符号整数，只能是正数
+    uint256 public _number = 20220330; // 256位无符号整数
+    
+    // uint 和 uint256 是一样的
+    // 还有 uint8, uint16, uint32, ..., uint256（8的倍数）
+    // int 同理：int8, int16, ..., int256
+    
+    // 整数运算
+    uint256 public _number1 = _number + 1;   // 加法: 20220331
+    uint256 public _number2 = 2**2;          // 指数: 4
+    uint256 public _number3 = 7 % 2;         // 取模: 1
+    bool public _numberbool = _number2 > _number3; // 比较: true
+    
+    // 最大值和最小值
+    uint8 public maxUint8 = type(uint8).max;   // 255
+    uint256 public maxUint256 = type(uint256).max; // 2^256 - 1
+    int8 public minInt8 = type(int8).min;      // -128
+    int8 public maxInt8 = type(int8).max;      // 127
+}
+```
+
+**重要：溢出检查**
+
+```solidity
+// Solidity 0.8.0+ 自动检查溢出
+contract OverflowExample {
+    uint8 public x = 255;
+    
+    function overflow() public {
+        x = x + 1;  // ❌ 会 revert，因为 256 > uint8 最大值
+    }
+    
+    // 如果要允许溢出（不推荐），使用 unchecked
+    function unsafeOverflow() public {
+        unchecked {
+            x = x + 1;  // 会变成 0
+        }
+    }
+}
+```
+
+2.3 地址类型
+
+```solidity
+contract AddressExample {
+    // 地址类型：20字节（以太坊地址长度）
+    address public _address = 0x7A58c0Be72BE218B41C608b7Fe7C5bB630736C71;
+    
+    // payable address：可以接收ETH
+    address payable public _address1 = payable(_address);
+    
+    // 地址类型成员
+    uint256 public balance = _address1.balance; // 获取地址余额（单位：wei）
+    
+    function transfer() public {
+        // 向地址转账 1 ETH
+        _address1.transfer(1 ether);
+    }
+    
+    function send() public {
+        // send 返回 bool，需要手动检查
+        bool success = _address1.send(1 ether);
+        require(success, "Send failed");
+    }
+    
+    function call() public {
+        // call 是最灵活的方式（推荐）
+        (bool success, ) = _address1.call{value: 1 ether}("");
+        require(success, "Call failed");
+    }
+}
+```
+
+**地址对比 Python**
+
+```python
+# Python 中地址是字符串
+address = "0x7A58c0Be72BE218B41C608b7Fe7C5bB630736C71"
+
+# Solidity 中地址是类型，有特殊方法
+address.balance  # 获取余额
+address.transfer(amount)  # 转账
+```
+
+2.4 定长字节数组
+
+```solidity
+contract BytesExample {
+    // bytes1 到 bytes32
+    bytes32 public _byte32 = "MiniSolidity";  // 自动右填充0
+    bytes1 public _byte = _byte32[0];  // 0x4d (M的ASCII码)
+    
+    // bytes32 常用于存储 hash
+    bytes32 public hash = keccak256(abi.encodePacked("Hello"));
+}
+```
+
+2.5 枚举 (Enum)
+
+```solidity
+contract EnumExample {
+    // 枚举类型：为 uint 赋予名称
+    enum ActionSet { Buy, Hold, Sell }
+    
+    ActionSet public action = ActionSet.Buy;  // 默认第一个元素，值为 0
+    
+    // 枚举可以与 uint 显式转换
+    function enumToUint() external view returns(uint) {
+        return uint(action);  // Buy = 0, Hold = 1, Sell = 2
+    }
+    
+    function setAction(ActionSet newAction) external {
+        action = newAction;
+    }
+}
+```
+
+* * *
+
+## **3\. 函数**
+
+### 详细语法
+
+```solidity
+function <函数名>(<参数类型> <参数名>) 
+    <可见性> 
+    <状态可变性> 
+    [returns (<返回类型>)]
+{
+    // 函数体
+}
+```
+
+### 3.1 函数可见性
+
+```solidity
+contract FunctionVisibility {
+    uint256 private _x = 10;
+    
+    // 1. public: 内部和外部都可以调用
+    function publicFunc() public pure returns(string memory) {
+        return "public function";
+    }
+    
+    // 2. private: 只能在合约内部调用，继承的合约也不能调用
+    function privateFunc() private pure returns(string memory) {
+        return "private function";
+    }
+    
+    // 3. internal: 合约内部和继承的合约可以调用
+    function internalFunc() internal pure returns(string memory) {
+        return "internal function";
+    }
+    
+    // 4. external: 只能从合约外部调用
+    // 不能在合约内部直接调用，需要用 this.externalFunc()
+    function externalFunc() external pure returns(string memory) {
+        return "external function";
+    }
+    
+    // 测试调用
+    function testVisibility() public view returns(uint256) {
+        publicFunc();      // ✅ 可以
+        privateFunc();     // ✅ 可以
+        internalFunc();    // ✅ 可以
+        // externalFunc(); // ❌ 不能直接调用
+        this.externalFunc(); // ✅ 通过 this 调用
+        return _x;
+    }
+}
+
+// 继承合约
+contract Child is FunctionVisibility {
+    function testInheritance() public pure returns(string memory) {
+        // publicFunc();    // ✅ 可以
+        // privateFunc();   // ❌ 不能访问父合约的 private
+        // internalFunc();  // ✅ 可以
+        return internalFunc();
+    }
+}
+```
+
+**可见性对比表**
+
+| 可见性 | 合约内部 | 继承合约 | 外部调用 | Gas消耗 |
+| --- | --- | --- | --- | --- |
+| public | ✅ | ✅ | ✅ | 较高 |
+| private | ✅ | ❌ | ❌ | 较低 |
+| internal | ✅ | ✅ | ❌ | 较低 |
+| external | ❌ (需this) | ❌ | ✅ | 最低 |
+
+### 3.2 状态可变性
+
+```solidity
+contract StateMutability {
+    uint256 public number = 5;
+    
+    // 1. pure: 不读取也不修改状态变量
+    function addPure(uint256 _x, uint256 _y) public pure returns(uint256) {
+        return _x + _y;
+        // return number; // ❌ 不能读取状态变量
+    }
+    
+    // 2. view: 只读取，不修改状态变量
+    function addView() public view returns(uint256) {
+        return number + 1;  // ✅ 可以读取
+        // number = 10;      // ❌ 不能修改
+    }
+    
+    // 3. 无修饰符: 可以读取和修改状态变量
+    function add() public returns(uint256) {
+        number = number + 1;  // ✅ 可以修改
+        return number;
+    }
+    
+    // 4. payable: 可以接收 ETH
+    function deposit() public payable {
+        // msg.value 是发送的 ETH 数量
+    }
+    
+    // 获取合约余额
+    function getBalance() public view returns(uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+**Gas 消耗对比**
+
+-   `pure` 和 `view` 函数从外部调用时**不消耗 gas**
+    
+-   但如果在其他函数内部调用，仍然消耗 gas
+    
+
+```solidity
+contract GasExample {
+    uint256 public x = 10;
+    
+    function readX() public view returns(uint256) {
+        return x;  // 外部调用不消耗 gas
+    }
+    
+    function updateX() public {
+        x = readX() + 1;  // 这里 readX() 会消耗 gas
+    }
+}
+```
+
+### 3.3 特殊函数
+
+```solidity
+contract SpecialFunctions {
+    // receive: 接收 ETH 时调用（没有数据）
+    receive() external payable {
+        // 接收 ETH 的逻辑
+    }
+    
+    // fallback: 调用不存在的函数时调用
+    fallback() external payable {
+        // 回退逻辑
+    }
+    
+    // 示例：发送 ETH
+    function sendETH(address payable _to) public payable {
+        _to.transfer(msg.value);
+    }
+}
+```
+
+* * *
+
+## **4\. 函数输出**
+
+### 4.1 返回值方式
+
+```solidity
+contract ReturnExample {
+    // 方式1: return 返回
+    function returnMultiple() public pure returns(uint256, bool, uint256[3] memory) {
+        return (1, true, [uint256(1), 2, 5]);
+    }
+    
+    // 方式2: 命名式返回（自动初始化）
+    function returnNamed() public pure returns(uint256 _number, bool _bool, uint256[3] memory _array) {
+        _number = 2;
+        _bool = false;
+        _array = [uint256(3), 2, 1];
+        // 可以省略 return，自动返回命名变量
+    }
+    
+    // 方式3: 命名式返回 + return
+    function returnNamed2() public pure returns(uint256 _number, bool _bool, uint256[3] memory _array) {
+        _number = 2;
+        _bool = false;
+        _array = [uint256(3), 2, 1];
+        return(_number, _bool, _array);  // 也可以显式返回
+    }
+}
+```
+
+### 4.2 解构赋值
+
+```solidity
+contract DestructuringExample {
+    function returnMultiple() public pure returns(uint256, bool, uint256[3] memory) {
+        return (1, true, [uint256(1), 2, 5]);
+    }
+    
+    function readReturn() public pure {
+        // 读取全部返回值
+        (uint256 _number, bool _bool, uint256[3] memory _array) = returnMultiple();
+        
+        // 只读取部分返回值
+        (uint256 _number2, , ) = returnMultiple();  // 只要第一个
+        ( , bool _bool2, ) = returnMultiple();      // 只要第二个
+        ( , , uint256[3] memory _array2) = returnMultiple();  // 只要第三个
+    }
+}
+```
+
+**与 Python 对比**
+
+```python
+# Python 解构
+def return_multiple():
+    return 1, True, [1, 2, 5]
+
+# 接收全部
+number, flag, arr = return_multiple()
+
+# 只接收部分
+number, *_ = return_multiple()
+_, flag, _ = return_multiple()  # Python 不能像 Solidity 这样跳过
+```
+
+* * *
+
+## **5\. 变量数据存储和作用域**
+
+### 5.1 数据位置 (Data Location)
+
+这是 Solidity 最重要的概念之一，直接影响 Gas 消耗。
+
+```solidity
+contract DataLocation {
+    // 状态变量：自动存储在 storage
+    uint256[] public storageArray;
+    
+    function dataLocation() public {
+        // 1. storage: 存储在链上，永久保存，消耗gas多
+        uint256[] storage sArray = storageArray;
+        sArray.push(1);  // 会修改 storageArray
+        
+        // 2. memory: 存储在内存，函数执行后销毁，消耗gas少
+        uint256[] memory mArray = new uint256[](5);
+        mArray[0] = 1;  // 只在函数内有效
+        
+        // 3. calldata: 类似 memory，但不可修改（只读）
+        // 只能用于函数参数，节省 gas
+    }
+    
+    // calldata vs memory
+    function calldataExample(uint256[] calldata _arr) external pure returns(uint256) {
+        // _arr[0] = 1;  // ❌ calldata 不可修改
+        return _arr[0];  // ✅ 只读
+    }
+    
+    function memoryExample(uint256[] memory _arr) public pure returns(uint256) {
+        _arr[0] = 1;  // ✅ memory 可修改
+        return _arr[0];
+    }
+}
+```
+
+**Gas 对比**
+
+```solidity
+contract GasComparison {
+    uint256[] public data;
+    
+    // 使用 memory: gas 约 50000
+    function useMemory(uint256[] memory _arr) public {
+        data = _arr;
+    }
+    
+    // 使用 calldata: gas 约 45000（节省 10%）
+    function useCalldata(uint256[] calldata _arr) external {
+        data = _arr;
+    }
+}
+```
+
+### 5.2 数据位置规则
+
+```solidity
+contract LocationRules {
+    struct Student {
+        uint256 id;
+        uint256 score;
+    }
+    
+    Student public student;
+    
+    function initStudent() external {
+        // storage 引用
+        Student storage _student = student;
+        _student.id = 1;
+        _student.score = 80;
+        // student 也被修改了
+    }
+    
+    function copyStudent() external view returns(uint256) {
+        // memory 拷贝
+        Student memory _student = student;
+        _student.score = 100;
+        // student 不受影响
+        return student.score;  // 仍然是 80
+    }
+}
+```
+
+**关键规则**
+
+1.  **状态变量**默认是 `storage`
+    
+2.  **函数参数**和**返回值**默认是 `memory`
+    
+3.  **局部变量**（引用类型）必须显式指定
+    
+4.  `storage` 赋值给 `storage` → 引用（修改会影响原变量）
+    
+5.  `storage` 赋值给 `memory` → 拷贝（独立）
+    
+
+### 5.3 变量作用域
+
+```solidity
+contract Scope {
+    // 1. 状态变量：合约层级，存储在链上
+    uint256 public stateVar = 10;
+    
+    function test() public view returns(uint256) {
+        // 2. 局部变量：函数内部
+        uint256 localVar = 1;
+        
+        // 3. 全局变量：Solidity 内置
+        address sender = msg.sender;       // 调用者地址
+        uint256 blockNum = block.number;   // 当前区块号
+        uint256 timestamp = block.timestamp; // 当前时间戳
+        uint256 value = msg.value;         // 发送的 ETH 数量（wei）
+        bytes memory data = msg.data;      // 完整的 calldata
+        uint256 gasLeft = gasleft();       // 剩余 gas
+        
+        return localVar + stateVar;
+    }
+    
+    // 4. 全局变量详解
+    function globalVars() public payable returns(bytes memory) {
+        // 交易相关
+        address sender = msg.sender;  // 调用者
+        uint256 value = msg.value;    // 发送的 ETH
+        bytes4 sig = msg.sig;         // 函数选择器（前4字节）
+        
+        // 区块相关
+        uint256 blockNumber = block.number;     // 区块号
+        uint256 timestamp = block.timestamp;    // 时间戳（秒）
+        uint256 difficulty = block.difficulty;  // 难度
+        uint256 gasLimit = block.gaslimit;      // gas 限制
+        address coinbase = block.coinbase;      // 矿工地址
+        
+        // 其他
+        uint256 gasPrice = tx.gasprice;  // gas 价格
+        address origin = tx.origin;      // 交易发起者（原始调用者）
+        
+        return msg.data;
+    }
+}
+```
+
+**msg.sender vs tx.origin**
+
+```solidity
+// 用户 → 合约A → 合约B
+// 在合约B中:
+// msg.sender = 合约A的地址
+// tx.origin = 用户的地址
+
+contract A {
+    function callB(address _b) public {
+        B(_b).whoCallsMe();
+    }
+}
+
+contract B {
+    function whoCallsMe() public view returns(address, address) {
+        return (msg.sender, tx.origin);
+        // (合约A地址, 用户地址)
+    }
+}
+```
+
+* * *
+
+## **6\. 引用类型**
+
+### 6.1 数组 (Array)
+
+```solidity
+contract ArrayExample {
+    // 固定长度数组
+    uint256[5] public fixedArray;
+    
+    // 动态数组
+    uint256[] public dynamicArray;
+    
+    // 初始化
+    uint256[] public arr1 = [1, 2, 3];
+    
+    // memory 数组必须用 new 创建，且长度固定
+    function memoryArray() public pure returns(uint256[] memory) {
+        uint256[] memory arr = new uint256[](5);
+        arr[0] = 1;
+        arr[1] = 2;
+        // arr.push(3);  // ❌ memory 数组不能 push
+        return arr;
+    }
+    
+    // 数组方法
+    function arrayMethods() public {
+        // push: 添加元素到末尾
+        dynamicArray.push(1);
+        dynamicArray.push(2);
+        
+        // pop: 删除最后一个元素
+        dynamicArray.pop();
+        
+        // length: 数组长度
+        uint256 len = dynamicArray.length;
+        
+        // 通过索引访问和修改
+        dynamicArray[0] = 100;
+    }
+    
+    // 创建 memory 数组
+    function createMemoryArray() public pure returns(uint256[] memory) {
+        uint256[] memory arr = new uint256[](3);
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+        return arr;
+    }
+}
+```
+
+**数组特殊用法**
+
+```solidity
+contract AdvancedArray {
+    uint256[] public arr;
+    
+    // 获取整个数组
+    function getArray() public view returns(uint256[] memory) {
+        return arr;
+    }
+    
+    // 删除元素（留下空位）
+    function remove(uint256 index) public {
+        delete arr[index];  // 设为 0，但不改变长度
+    }
+    
+    // 删除元素（移动后面的元素）
+    function removeAndShift(uint256 index) public {
+        require(index < arr.length, "Index out of bounds");
+        
+        // 方法1: 移动所有后续元素
+        for (uint256 i = index; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr.pop();
+        
+        // 方法2: 用最后一个元素替换（改变顺序，但省 gas）
+        // arr[index] = arr[arr.length - 1];
+        // arr.pop();
+    }
+}
+```
+
+### 6.2 结构体 (Struct)
+
+```solidity
+contract StructExample {
+    // 定义结构体
+    struct Student {
+        uint256 id;
+        uint256 score;
+        string name;
+    }
+    
+    // 结构体变量
+    Student public student;
+    
+    // 结构体数组
+    Student[] public students;
+    
+    // 4种初始化方式
+    function initStudent() external {
+        // 方式1: 在函数中创建 storage 引用
+        Student storage _student = student;
+        _student.id = 1;
+        _student.score = 80;
+        _student.name = "Alice";
+        
+        // 方式2: 直接修改状态变量
+        student.id = 2;
+        student.score = 90;
+        student.name = "Bob";
+        
+        // 方式3: 构造函数式（按顺序）
+        students.push(Student(3, 85, "Charlie"));
+        
+        // 方式4: key-value 式
+        students.push(Student({
+            id: 4,
+            score: 95,
+            name: "David"
+        }));
+    }
+    
+    // 修改结构体
+    function updateStudent(uint256 index, uint256 newScore) external {
+        Student storage s = students[index];
+        s.score = newScore;
+    }
+}
+```
+
+### 6.3 字符串 (String)
+
+```solidity
+contract StringExample {
+    string public str = "Hello Web3";
+    
+    // 字符串连接
+    function concat(string memory s1, string memory s2) public pure returns(string memory) {
+        return string(abi.encodePacked(s1, s2));
+    }
+    
+    // 字符串比较（Solidity 不支持直接比较）
+    function compareStrings(string memory s1, string memory s2) public pure returns(bool) {
+        return keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2));
+    }
+    
+    // 获取字符串长度（需要转换为 bytes）
+    function getLength(string memory s) public pure returns(uint256) {
+        return bytes(s).length;
+    }
+}
+```
+
+### 6.4 Bytes
+
+```solidity
+contract BytesExample {
+    // bytes: 动态字节数组
+    bytes public dynamicBytes = "Hello";
+    
+    // bytes32: 定长字节数组
+    bytes32 public fixedBytes = "Hello";
+    
+    function bytesExample() public view returns(bytes1) {
+        // 可以通过索引访问
+        return dynamicBytes[0];  // 0x48 (H)
+    }
+    
+    // bytes 更省 gas（处理原始数据）
+    // string 更易读（处理文本）
+    function gasComparison() public {
+        bytes memory b = "Hello";     // 更省 gas
+        string memory s = "Hello";    // 更易读
+    }
+}
+```
+
+* * *
+
+# Solidity 101 详细讲解（续）
+
+## **7\. 映射类型 (Mapping)**
+
+### 7.1 映射基础
+
+映射是 Solidity 中最重要的数据结构，类似于 Python 的字典 (dict)，但有重要区别。
+
+```solidity
+contract MappingBasic {
+    // 基本语法: mapping(KeyType => ValueType)
+    mapping(uint256 => address) public idToAddress;  // ID -> 地址
+    mapping(address => uint256) public balances;     // 地址 -> 余额
+    mapping(address => bool) public isRegistered;    // 地址 -> 是否注册
+    
+    // 添加数据
+    function set(uint256 _id, address _addr) public {
+        idToAddress[_id] = _addr;
+    }
+    
+    // 读取数据
+    function get(uint256 _id) public view returns(address) {
+        return idToAddress[_id];
+        // 如果 key 不存在，返回默认值（address 的默认值是 0x0）
+    }
+    
+    // 更新数据
+    function update(uint256 _id, address _newAddr) public {
+        idToAddress[_id] = _newAddr;  // 直接覆盖
+    }
+    
+    // 删除数据（重置为默认值）
+    function remove(uint256 _id) public {
+        delete idToAddress[_id];  // 重置为 address(0)
+    }
+}
+```
+
+**Mapping vs Python Dict**
+
+```python
+# Python 字典
+my_dict = {}
+my_dict[1] = "Alice"
+print(my_dict.get(2))  # None（不存在返回 None）
+print(len(my_dict))     # 1（可以获取长度）
+for key in my_dict:     # 可以遍历
+    print(key)
+
+# Solidity mapping 的限制:
+# 1. 不能获取长度
+# 2. 不能遍历所有 key
+# 3. 不存在的 key 返回默认值（不是 null）
+# 4. 只能是 storage，不能是 memory
+```
+
+### 7.2 映射的重要特性
+
+```solidity
+contract MappingFeatures {
+    mapping(address => uint256) public balances;
+    
+    function testMapping() public {
+        // 特性1: 所有可能的 key 都被初始化
+        address randomAddr = address(0x123);
+        uint256 balance = balances[randomAddr];  // 返回 0，不会报错
+        
+        // 特性2: 无法判断 key 是否存在
+        // 0 可能表示: (a) 从未设置, (b) 设置为 0, (c) 被删除
+        
+        // 特性3: 不能获取所有 key
+        // uint256 length = balances.length;  // ❌ 编译错误
+        
+        // 特性4: 不能遍历
+        // for (address addr in balances) { }  // ❌ 不支持
+    }
+    
+    // 解决方案: 使用辅助数组跟踪 key
+    address[] public userList;
+    
+    function addUser(address _user, uint256 _balance) public {
+        if (balances[_user] == 0) {  // 首次添加
+            userList.push(_user);
+        }
+        balances[_user] = _balance;
+    }
+    
+    // 现在可以遍历所有用户
+    function getAllBalances() public view returns(address[] memory, uint256[] memory) {
+        uint256[] memory allBalances = new uint256[](userList.length);
+        for (uint256 i = 0; i < userList.length; i++) {
+            allBalances[i] = balances[userList[i]];
+        }
+        return (userList, allBalances);
+    }
+}
+```
+
+### 7.3 嵌套映射
+
+```solidity
+contract NestedMapping {
+    // 嵌套映射: mapping 的值也是 mapping
+    // 例: ERC20 代币的授权额度
+    mapping(address => mapping(address => uint256)) public allowances;
+    // owner => spender => amount
+    
+    // 设置授权
+    function approve(address _spender, uint256 _amount) public {
+        allowances[msg.sender][_spender] = _amount;
+    }
+    
+    // 查询授权额度
+    function getAllowance(address _owner, address _spender) public view returns(uint256) {
+        return allowances[_owner][_spender];
+    }
+    
+    // 复杂嵌套: 三层映射
+    // 游戏示例: 玩家 => 关卡 => 物品 => 数量
+    mapping(address => mapping(uint256 => mapping(uint256 => uint256))) public inventory;
+    
+    function addItem(uint256 level, uint256 itemId, uint256 amount) public {
+        inventory[msg.sender][level][itemId] += amount;
+    }
+}
+```
+
+### 7.4 映射的高级用法
+
+```solidity
+contract AdvancedMapping {
+    // 1. 映射 + 结构体
+    struct User {
+        string name;
+        uint256 age;
+        bool isActive;
+    }
+    
+    mapping(address => User) public users;
+    
+    function registerUser(string memory _name, uint256 _age) public {
+        users[msg.sender] = User({
+            name: _name,
+            age: _age,
+            isActive: true
+        });
+    }
+    
+    // 2. 映射 + 数组
+    mapping(address => uint256[]) public userScores;
+    
+    function addScore(uint256 _score) public {
+        userScores[msg.sender].push(_score);
+    }
+    
+    function getScores(address _user) public view returns(uint256[] memory) {
+        return userScores[_user];
+    }
+    
+    // 3. 映射存储复杂数据
+    struct Post {
+        string content;
+        uint256 timestamp;
+        uint256 likes;
+        address author;
+    }
+    
+    mapping(uint256 => Post) public posts;  // postId => Post
+    mapping(address => uint256[]) public userPosts;  // 用户的所有帖子ID
+    uint256 public postCount;
+    
+    function createPost(string memory _content) public {
+        uint256 postId = postCount++;
+        posts[postId] = Post({
+            content: _content,
+            timestamp: block.timestamp,
+            likes: 0,
+            author: msg.sender
+        });
+        userPosts[msg.sender].push(postId);
+    }
+    
+    function likePost(uint256 _postId) public {
+        posts[_postId].likes++;
+    }
+}
+```
+
+### 7.5 实际应用：简单的 ERC20 代币
+
+```solidity
+contract SimpleToken {
+    string public name = "MyToken";
+    string public symbol = "MTK";
+    uint8 public decimals = 18;
+    uint256 public totalSupply;
+    
+    // 余额映射
+    mapping(address => uint256) public balanceOf;
+    
+    // 授权映射（嵌套）
+    mapping(address => mapping(address => uint256)) public allowance;
+    
+    constructor(uint256 _initialSupply) {
+        totalSupply = _initialSupply * 10**uint256(decimals);
+        balanceOf[msg.sender] = totalSupply;  // 创建者获得所有代币
+    }
+    
+    // 转账
+    function transfer(address _to, uint256 _value) public returns(bool) {
+        require(balanceOf[msg.sender] >= _value, "Insufficient balance");
+        balanceOf[msg.sender] -= _value;
+        balanceOf[_to] += _value;
+        return true;
+    }
+    
+    // 授权
+    function approve(address _spender, uint256 _value) public returns(bool) {
+        allowance[msg.sender][_spender] = _value;
+        return true;
+    }
+    
+    // 从授权账户转账
+    function transferFrom(address _from, address _to, uint256 _value) public returns(bool) {
+        require(_value <= balanceOf[_from], "Insufficient balance");
+        require(_value <= allowance[_from][msg.sender], "Allowance exceeded");
+        
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+        allowance[_from][msg.sender] -= _value;
+        return true;
+    }
+}
+```
+
+* * *
+
+## **8\. 变量初始值**
+
+### 8.1 值类型的初始值
+
+```solidity
+contract DefaultValues {
+    // 值类型默认值
+    bool public _bool;              // false
+    string public _string;          // ""（空字符串）
+    int public _int;                // 0
+    uint public _uint;              // 0
+    address public _address;        // 0x0000000000000000000000000000000000000000
+    
+    enum ActionSet { Buy, Hold, Sell }
+    ActionSet public _enum;         // 第一个元素 Buy (0)
+    
+    // 查看默认值
+    function test() public view returns(bool, uint, address) {
+        return (_bool, _uint, _address);
+        // 返回: (false, 0, 0x0000000000000000000000000000000000000000)
+    }
+}
+```
+
+**默认值对照表**
+
+| 类型 | 默认值 | 十六进制表示 |
+| --- | --- | --- |
+| bool | false | - |
+| uint/int | 0 | 0x00 |
+| address | 0x0000…0000 | 20字节的0 |
+| bytes32 | 0x0000…0000 | 32字节的0 |
+| string | “” | - |
+| enum | 第一个元素 | 0 |
+
+### 8.2 引用类型的初始值
+
+```solidity
+contract ReferenceDefaults {
+    // 引用类型默认值
+    uint256[] public _array;        // []（空数组）
+    
+    struct Student {
+        uint256 id;
+        string name;
+    }
+    Student public _student;        // Student(0, "")
+    
+    mapping(uint256 => address) public _mapping;  // 所有值为默认值
+    
+    // 测试数组
+    function testArray() public view returns(uint256) {
+        return _array.length;  // 0
+    }
+    
+    // 测试结构体
+    function testStruct() public view returns(uint256, string memory) {
+        return (_student.id, _student.name);  // (0, "")
+    }
+    
+    // 测试映射
+    function testMapping(uint256 key) public view returns(address) {
+        return _mapping[key];  // address(0)
+        // 注意: 任何未设置的 key 都返回默认值
+    }
+}
+```
+
+### 8.3 delete 操作符
+
+`delete` 会将变量重置为初始值，而不是真正删除。
+
+```solidity
+contract DeleteExample {
+    uint256 public number = 10;
+    bool public flag = true;
+    uint256[] public arr = [1, 2, 3];
+    
+    struct Person {
+        string name;
+        uint256 age;
+    }
+    Person public person = Person("Alice", 25);
+    
+    mapping(address => uint256) public balances;
+    
+    function testDelete() public {
+        // 删除值类型
+        delete number;  // number = 0
+        delete flag;    // flag = false
+        
+        // 删除数组（清空整个数组）
+        delete arr;     // arr = []
+        
+        // 删除结构体（所有字段重置）
+        delete person;  // person = Person("", 0)
+        
+        // 删除映射中的某个值
+        balances[msg.sender] = 100;
+        delete balances[msg.sender];  // balances[msg.sender] = 0
+        
+        // 注意: delete 不能删除整个 mapping
+        // delete balances;  // ❌ 编译错误
+    }
+    
+    // delete 数组元素
+    function deleteArrayElement() public {
+        arr = [1, 2, 3, 4, 5];
+        delete arr[2];  // arr = [1, 2, 0, 4, 5]（长度不变）
+        // 删除元素会留下"空洞"，值变为 0
+    }
+}
+```
+
+### 8.4 初始值的实际应用
+
+```solidity
+contract InitialValueUsage {
+    mapping(address => bool) public hasVoted;
+    
+    // 利用默认值 false 判断是否投过票
+    function vote() public {
+        require(!hasVoted[msg.sender], "Already voted");
+        hasVoted[msg.sender] = true;
+        // 投票逻辑
+    }
+    
+    // 问题场景: 无法区分 "未设置" 和 "设置为0"
+    mapping(address => uint256) public scores;
+    
+    function getScore(address _user) public view returns(uint256) {
+        return scores[_user];
+        // 返回 0: 可能是未设置，也可能是真的得了 0 分
+    }
+    
+    // 解决方案1: 使用额外的 bool 映射
+    mapping(address => bool) public hasScore;
+    
+    function setScore(address _user, uint256 _score) public {
+        scores[_user] = _score;
+        hasScore[_user] = true;
+    }
+    
+    function getScoreSafe(address _user) public view returns(bool, uint256) {
+        return (hasScore[_user], scores[_user]);
+    }
+    
+    // 解决方案2: 使用特殊值（如 type(uint256).max）表示"未设置"
+    uint256 constant NOT_SET = type(uint256).max;
+    mapping(address => uint256) public scores2;
+    
+    function initScores2() public {
+        scores2[msg.sender] = NOT_SET;
+    }
+}
+```
+
+* * *
+
+## **9\. 常数**
+
+### 9.1 constant（编译时常量）
+
+```solidity
+contract ConstantExample {
+    // constant: 必须在声明时赋值，编译时确定
+    uint256 public constant MY_UINT = 123;
+    address public constant MY_ADDRESS = 0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
+    
+    // 常见用法: 配置参数
+    uint256 public constant MAX_SUPPLY = 1000000 * 10**18;
+    uint256 public constant DECIMALS = 18;
+    string public constant TOKEN_NAME = "MyToken";
+    
+    // ❌ 不能这样写
+    // uint256 public constant BLOCK_NUM = block.number;  // 运行时才知道
+    // address public constant SENDER = msg.sender;       // 运行时才知道
+    
+    function getConstant() public pure returns(uint256) {
+        return MY_UINT;  // 直接返回值，不读取存储
+    }
+}
+```
+
+### 9.2 immutable（部署时常量）
+
+```solidity
+contract ImmutableExample {
+    // immutable: 可以在构造函数中赋值，部署后不可变
+    address public immutable OWNER;
+    uint256 public immutable DEPLOY_TIMESTAMP;
+    uint256 public immutable INITIAL_SUPPLY;
+    
+    // 也可以声明时赋值
+    uint256 public immutable FIXED_FEE = 100;
+    
+    constructor(uint256 _supply) {
+        OWNER = msg.sender;                    // 部署者地址
+        DEPLOY_TIMESTAMP = block.timestamp;    // 部署时间
+        INITIAL_SUPPLY = _supply;              // 构造参数
+    }
+    
+    // immutable 可以在构造函数中计算
+    uint256 public immutable COMPUTED_VALUE;
+    
+    constructor(uint256 a, uint256 b) {
+        COMPUTED_VALUE = a * b + 1000;
+    }
+}
+```
+
+### 9.3 constant vs immutable vs 普通变量
+
+```solidity
+contract CompareConstants {
+    // 1. 普通状态变量: 可以修改，存储在 storage
+    uint256 public normalVar = 100;
+    
+    // 2. constant: 编译时确定，不占用 storage
+    uint256 public constant CONST_VAR = 100;
+    
+    // 3. immutable: 构造时确定，不占用 storage
+    uint256 public immutable IMMUTABLE_VAR;
+    
+    constructor() {
+        IMMUTABLE_VAR = 100;
+    }
+    
+    // Gas 消耗对比
+    function getNormal() public view returns(uint256) {
+        return normalVar;  // 读取 storage: ~2100 gas
+    }
+    
+    function getConstant() public pure returns(uint256) {
+        return CONST_VAR;  // 直接返回值: ~200 gas
+    }
+    
+    function getImmutable() public view returns(uint256) {
+        return IMMUTABLE_VAR;  // 直接返回值: ~200 gas
+    }
+    
+    // 修改测试
+    function modify() public {
+        normalVar = 200;      // ✅ 可以修改
+        // CONST_VAR = 200;   // ❌ 编译错误
+        // IMMUTABLE_VAR = 200; // ❌ 编译错误
+    }
+}
+```
+
+**对比总结**
+
+| 特性 | constant | immutable | 普通变量 |
+| --- | --- | --- | --- |
+| 赋值时机 | 声明时 | 构造函数 | 任何时候 |
+| 能否修改 | ❌ | ❌ | ✅ |
+| 存储位置 | 字节码中 | 字节码中 | storage |
+| Gas 消耗 | 极低 | 极低 | 高 |
+| 使用场景 | 固定配置 | 部署时配置 | 可变状态 |
+
+### 9.4 实际应用示例
+
+```solidity
+contract RealWorldConstants {
+    // 代币配置（不会改变）
+    string public constant NAME = "MyToken";
+    string public constant SYMBOL = "MTK";
+    uint8 public constant DECIMALS = 18;
+    uint256 public constant MAX_SUPPLY = 21_000_000 * 10**DECIMALS;
+    
+    // 手续费配置
+    uint256 public constant TRANSFER_FEE = 1;  // 0.01% = 1/10000
+    uint256 public constant FEE_DENOMINATOR = 10000;
+    
+    // 时间常量
+    uint256 public constant ONE_DAY = 86400;  // 秒
+    uint256 public constant ONE_WEEK = 7 * ONE_DAY;
+    
+    // 部署时确定的值
+    address public immutable FACTORY;
+    address public immutable OWNER;
+    uint256 public immutable CREATED_AT;
+    
+    constructor(address _factory) {
+        FACTORY = _factory;
+        OWNER = msg.sender;
+        CREATED_AT = block.timestamp;
+    }
+    
+    // 使用常量计算
+    function calculateFee(uint256 amount) public pure returns(uint256) {
+        return amount * TRANSFER_FEE / FEE_DENOMINATOR;
+    }
+    
+    // 检查是否超过最大供应量
+    function checkSupply(uint256 newSupply) public pure returns(bool) {
+        return newSupply <= MAX_SUPPLY;
+    }
+}
+```
+
+* * *
+
+## **10\. 控制流**
+
+### 10.1 if-else 条件语句
+
+```solidity
+contract IfElseExample {
+    function ifElseTest(uint256 _number) public pure returns(string memory) {
+        // 基本 if-else
+        if (_number > 10) {
+            return "Greater than 10";
+        } else if (_number > 5) {
+            return "Greater than 5";
+        } else {
+            return "5 or less";
+        }
+    }
+    
+    // 三元运算符: condition ? trueValue : falseValue
+    function ternaryTest(uint256 x) public pure returns(uint256) {
+        return x >= 10 ? 1 : 2;
+    }
+    
+    // 嵌套 if
+    function nestedIf(uint256 a, uint256 b) public pure returns(string memory) {
+        if (a > 0) {
+            if (b > 0) {
+                return "Both positive";
+            } else {
+                return "Only a positive";
+            }
+        } else {
+            return "a not positive";
+        }
+    }
+    
+    // 实际应用: 权限检查
+    address public owner;
+    
+    function restrictedFunction() public view {
+        if (msg.sender != owner) {
+            revert("Not owner");
+        }
+        // 只有 owner 能执行到这里
+    }
+}
+```
+
+### 10.2 for 循环
+
+```solidity
+contract ForLoopExample {
+    // 基本 for 循环
+    function forLoopTest() public pure returns(uint256) {
+        uint256 sum = 0;
+        for (uint256 i = 0; i < 10; i++) {
+            sum += i;
+        }
+        return sum;  // 0+1+2+...+9 = 45
+    }
+    
+    // 遍历数组
+    function sumArray(uint256[] memory arr) public pure returns(uint256) {
+        uint256 sum = 0;
+        for (uint256 i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+    
+    // 使用 continue（跳过当前循环）
+    function skipEven() public pure returns(uint256) {
+        uint256 sum = 0;
+        for (uint256 i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                continue;  // 跳过偶数
+            }
+            sum += i;
+        }
+        return sum;  // 1+3+5+7+9 = 25
+    }
+    
+    // 使用 break（终止循环）
+    function findFirst() public pure returns(uint256) {
+        for (uint256 i = 0; i < 100; i++) {
+            if (i == 50) {
+                break;  // 找到就停止
+            }
+        }
+        return 50;
+    }
+}
+```
+
+**⚠️ Gas 陷阱：避免无界循环**
+
+```solidity
+contract GasTrap {
+    uint256[] public data;
+    
+    // ❌ 危险: 循环次数不可控
+    function badLoop() public view returns(uint256) {
+        uint256 sum = 0;
+        for (uint256 i = 0; i < data.length; i++) {
+            sum += data[i];
+        }
+        return sum;
+        // 如果 data 有 100,000 个元素，gas 会耗尽，交易失败
+    }
+    
+    // ✅ 安全: 限制循环次数
+    function goodLoop(uint256 start, uint256 end) public view returns(uint256) {
+        require(end - start <= 100, "Too many iterations");
+        uint256 sum = 0;
+        for (uint256 i = start; i < end && i < data.length; i++) {
+            sum += data[i];
+        }
+        return sum;
+    }
+    
+    // ✅ 更好: 分批处理
+    function batchProcess(uint256 batchSize, uint256 batchNumber) public view returns(uint256) {
+        uint256 start = batchSize * batchNumber;
+        uint256 end = start + batchSize;
+        if (end > data.length) {
+            end = data.length;
+        }
+        
+        uint256 sum = 0;
+        for (uint256 i = start; i < end; i++) {
+            sum += data[i];
+        }
+        return sum;
+    }
+}
+```
+
+### 10.3 while 循环
+
+```solidity
+contract WhileLoopExample {
+    // while 循环
+    function whileTest() public pure returns(uint256) {
+        uint256 sum = 0;
+        uint256 i = 0;
+        
+        while (i < 10) {
+            sum += i;
+            i++;
+        }
+        return sum;  // 45
+    }
+    
+    // do-while 循环（至少执行一次）
+    function doWhileTest() public pure returns(uint256) {
+        uint256 sum = 0;
+        uint256 i = 0;
+        
+        do {
+            sum += i;
+            i++;
+        } while (i < 10);
+        
+        return sum;  // 45
+    }
+    
+    // while 的实际应用: 查找
+    function findElement(uint256[] memory arr, uint256 target) public pure returns(bool, uint256) {
+        uint256 i = 0;
+        while (i < arr.length) {
+            if (arr[i] == target) {
+                return (true, i);  // 找到了
+            }
+            i++;
+        }
+        return (false, 0);  // 没找到
+    }
+}
+```
+
+### 10.4 控制流实际应用
+
+```solidity
+contract ControlFlowPractice {
+    struct Proposal {
+        string description;
+        uint256 voteCount;
+        bool executed;
+    }
+    
+    Proposal[] public proposals;
+    mapping(uint256 => mapping(address => bool)) public hasVoted;
+    
+    // 创建提案
+    function createProposal(string memory _description) public {
+        proposals.push(Proposal({
+            description: _description,
+            voteCount: 0,
+            executed: false
+        }));
+    }
+    
+    // 投票（使用 if 判断）
+    function vote(uint256 _proposalId) public {
+        if (_proposalId >= proposals.length) {
+            revert("Invalid proposal");
+        }
+        if (hasVoted[_proposalId][msg.sender]) {
+            revert("Already voted");
+        }
+        
+        proposals[_proposalId].voteCount++;
+        hasVoted[_proposalId][msg.sender] = true;
+    }
+    
+    // 获取所有提案（使用 for 循环）
+    function getAllProposals() public view returns(Proposal[] memory) {
+        Proposal[] memory allProposals = new Proposal[](proposals.length);
+        for (uint256 i = 0; i < proposals.length; i++) {
+            allProposals[i] = proposals[i];
+        }
+        return allProposals;
+    }
+    
+    // 查找最高票数提案（使用 for + if）
+    function findTopProposal() public view returns(uint256) {
+        require(proposals.length > 0, "No proposals");
+        
+        uint256 maxVotes = 0;
+        uint256 topProposalId = 0;
+        
+        for (uint256 i = 0; i < proposals.length; i++) {
+            if (proposals[i].voteCount > maxVotes) {
+                maxVotes = proposals[i].voteCount;
+                topProposalId = i;
+            }
+        }
+        return topProposalId;
+    }
+    
+    // 批量处理（防止 gas 耗尽）
+    function executeProposals(uint256 start, uint256 count) public {
+        uint256 end = start + count;
+        if (end > proposals.length) {
+            end = proposals.length;
+        }
+        
+        for (uint256 i = start; i < end; i++) {
+            // 三元运算符
+            bool shouldExecute = proposals[i].voteCount > 100 ? true : false;
+            if (shouldExecute && !proposals[i].executed) {
+                proposals[i].executed = true;
+                // 执行提案逻辑
+            }
+        }
+    }
+}
+```
+
+* * *
+
+## **11\. 构造函数和修饰器**
+
+### 11.1 构造函数 (Constructor)
+
+构造函数在合约部署时执行一次，用于初始化状态。
+
+```solidity
+contract ConstructorExample {
+    address public owner;
+    uint256 public createdAt;
+    string public name;
+    
+    // 构造函数: 使用 constructor 关键字
+    constructor(string memory _name) {
+        owner = msg.sender;          // 部署者成为 owner
+        createdAt = block.timestamp; // 记录创建时间
+        name = _name;                // 初始化名称
+    }
+    
+    // ❌ 旧版本写法（Solidity 0.4.x，已废弃）
+    // function ConstructorExample() public { }
+}
+```
+
+**构造函数特性**
+
+1.  只在部署时执行一次
+    
+2.  可以有参数（部署时传入）
+    
+3.  可以是 `public` 或 `internal`
+    
+4.  不能有 `returns`
+    
+5.  不能调用 `virtual` 或 `override`
+    
+
+```solidity
+contract ConstructorFeatures {
+    uint256 public value;
+    address public owner;
+    bool public initialized;
+    
+    // 带参数的构造函数
+    constructor(uint256 _initialValue) {
+        require(_initialValue > 0, "Value must be positive");
+        value = _initialValue;
+        owner = msg.sender;
+        initialized = true;
+    }
+    
+    // 部署示例:
+    // new ConstructorFeatures(100);  // value = 100
+}
+```
+
+### 11.2 修饰器 (Modifier)
+
+修饰器用于在函数执行前/后添加条件检查或逻辑。
+
+```solidity
+contract ModifierBasic {
+    address public owner;
+    uint256 public counter;
+    bool public paused;
+    
+    constructor() {
+        owner = msg.sender;
+    }
+    
+    // 1. 基本修饰器: 权限检查
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;  // _ 表示被修饰函数的代码在这里执行
+    }
+    
+    // 2. 带参数的修饰器
+    modifier minValue(uint256 _min) {
+        require(msg.value >= _min, "Insufficient payment");
+        _;
+    }
+    
+    // 3. 多条件修饰器
+    modifier whenNotPaused() {
+        require(!paused, "Contract is paused");
+        _;
+    }
+    
+    // 使用修饰器
+    function changeOwner(address _newOwner) public onlyOwner {
+        owner = _newOwner;
+    }
+    
+    function deposit() public payable minValue(1 ether) {
+        // 只有发送 >= 1 ETH 才能执行
+        counter++;
+    }
+    
+    function increment() public whenNotPaused {
+        counter++;
+    }
+    
+    // 多个修饰器（按顺序执行）
+    function specialFunction() public onlyOwner whenNotPaused {
+        // 先检查 onlyOwner，再检查 whenNotPaused
+        counter += 10;
+    }
+}
+```
+
+### 11.3 修饰器的执行顺序
+
+```solidity
+contract ModifierOrder {
+    uint256 public value;
+    
+    modifier modifier1() {
+        value = 1;
+        _;  // 执行函数
+        value = 10;
+    }
+    
+    modifier modifier2() {
+        value = 2;
+        _;  // 执行函数
+        value = 20;
+    }
+    
+    // 修饰器执行顺序: modifier1 → modifier2 → 函数 → modifier2收尾 → modifier1收尾
+    function test() public modifier1 modifier2 {
+        value = 100;
+    }
+    
+    // 执行流程:
+    // 1. modifier1: value = 1
+    // 2. modifier2: value = 2
+    // 3. test():    value = 100
+    // 4. modifier2: value = 20
+    // 5. modifier1: value = 10
+    // 最终 value = 10
+}
+```
+
+### 11.4 修饰器高级用法
+
+```solidity
+contract AdvancedModifiers {
+    address public owner;
+    mapping(address => bool) public admins;
+    uint256 private lockCounter;
+    
+    constructor() {
+        owner = msg.sender;
+        admins[msg.sender] = true;
+    }
+    
+    // 1. 角色权限修饰器
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner");
+        _;
+    }
+    
+    modifier onlyAdmin() {
+        require(admins[msg.sender], "Only admin");
+        _;
+    }
+    
+    // 2. 防重入修饰器
+    modifier nonReentrant() {
+        lockCounter++;
+        uint256 localCounter = lockCounter;
+        _;
+        require(localCounter == lockCounter, "Reentrant call");
+    }
+    
+    // 3. 时间锁修饰器
+    uint256 public unlockTime;
+    
+    modifier afterUnlock() {
+        require(block.timestamp >= unlockTime, "Still locked");
+        _;
+    }
+    
+    // 4. 值范围检查
+    modifier validAmount(uint256 amount) {
+        require(amount > 0 && amount <= 1000 ether, "Invalid amount");
+        _;
+    }
+    
+    // 5. 地址验证
+    modifier validAddress(address _addr) {
+        require(_addr != address(0), "Zero address");
+        require(_addr != address(this), "Contract address");
+        _;
+    }
+    
+    // 使用示例
+    function setUnlockTime(uint256 _seconds) public onlyOwner {
+        unlockTime = block.timestamp + _seconds;
+    }
+    
+    function withdraw() public onlyOwner afterUnlock nonReentrant {
+        // 安全的提款函数
+        (bool success, ) = msg.sender.call{value: address(this).balance}("");
+        require(success, "Transfer failed");
+    }
+    
+    function addAdmin(address _admin) public onlyOwner validAddress(_admin) {
+        admins[_admin] = true;
+    }
+}
+```
+
+### 11.5 实际应用：完整的访问控制系统
+
+```solidity
+contract AccessControl {
+    // 状态变量
+    address public owner;
+    mapping(address => bool) public blacklist;
+    mapping(address => uint256) public lastActionTime;
+    bool public paused;
+    
+    // 常量
+    uint256 public constant COOLDOWN = 1 minutes;
+    
+    // 事件
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event Paused(address account);
+    event Unpaused(address account);
+    
+    // 构造函数
+    constructor() {
+        owner = msg.sender;
+        emit OwnershipTransferred(address(0), msg.sender);
+    }
+    
+    // 修饰器
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+    
+    modifier notBlacklisted() {
+        require(!blacklist[msg.sender], "Blacklisted");
+        _;
+    }
+    
+    modifier whenNotPaused() {
+        require(!paused, "Paused");
+        _;
+    }
+    
+    modifier whenPaused() {
+        require(paused, "Not paused");
+        _;
+    }
+    
+    modifier cooldown() {
+        require(
+            block.timestamp >= lastActionTime[msg.sender] + COOLDOWN,
+            "Cooldown not finished"
+        );
+        _;
+        lastActionTime[msg.sender] = block.timestamp;
+    }
+    
+    // 管理函数
+    function transferOwnership(address newOwner) public onlyOwner {
+        require(newOwner != address(0), "Zero address");
+        emit OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
+    }
+    
+    function addToBlacklist(address _user) public onlyOwner {
+        blacklist[_user] = true;
+    }
+    
+    function removeFromBlacklist(address _user) public onlyOwner {
+        blacklist[_user] = false;
+    }
+    
+    function pause() public onlyOwner whenNotPaused {
+        paused = true;
+        emit Paused(msg.sender);
+    }
+    
+    function unpause() public onlyOwner whenPaused {
+        paused = false;
+        emit Unpaused(msg.sender);
+    }
+    
+    // 业务函数（带多重保护）
+    function doSomething() public 
+        whenNotPaused 
+        notBlacklisted 
+        cooldown 
+    {
+        // 实际业务逻辑
+        // 只有满足所有条件才能执行
+    }
+}
+```
+
+### 11.6 构造函数 + 修饰器综合示例
+
+```solidity
+contract CompleteExample {
+    // 状态变量
+    string public name;
+    address public owner;
+    uint256 public totalSupply;
+    uint256 public createdAt;
+    mapping(address => uint256) public balances;
+    
+    // 构造函数初始化
+    constructor(string memory _name, uint256 _initialSupply) {
+        name = _name;
+        owner = msg.sender;
+        totalSupply = _initialSupply;
+        createdAt = block.timestamp;
+        balances[msg.sender] = _initialSupply;  // 创建者获得全部代币
+    }
+    
+    // 修饰器
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+    
+    modifier hasBalance(uint256 amount) {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+        _;
+    }
+    
+    // 使用修饰器的函数
+    function transfer(address to, uint256 amount) public hasBalance(amount) {
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+    }
+    
+    function mint(address to, uint256 amount) public onlyOwner {
+        balances[to] += amount;
+        totalSupply += amount;
+    }
+}
+```
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 **写合约需要特殊的语言:Solidity**
 
@@ -937,6 +2859,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1935,6 +3858,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2947,6 +4871,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -3150,6 +5075,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3879,6 +5805,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
