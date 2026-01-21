@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+尝试用figma make直接生成海报。但是总是加载不出来...研究一下问题在哪里
+
+prompt:
+
+> 设计一张 Web3 主题的社交媒体海报。背景要深色、科技感、带有区块链元素。 布局要求：顶部是一个大的活动标题占位符。中间部分并列两个卡片，分别用于展示“主持人”和“嘉宾”。每个卡片内必须包含：一个圆形的头像占位符、名字、推特账号、头衔。海报底部需要一个区域放置日期、时间和直播链接。整体风格要专业且现代。
+
+生成一张充满未来感的 Web3 加密货币活动海报。使用赛博朋克配色，霓虹蓝和紫色调。 内容包括：一个醒目的主标题“运营基础概念与必备技能”。下方有两个演讲者板块，左边是主持人 Quentina，右边是嘉宾 XiaoHai，都需要圆形头像框和两行文字介绍。最下方是“8月8日 19:00”的时间和推特直播链接入口。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 # TVL数据分析
 
 **TVL (Total Value Locked，总锁定价值)** 是 DeFi（去中心化金融）领域最核心的指标，相当于传统金融中的 AUM（资产管理规模）。
@@ -291,6 +303,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
+
 **Day 3: ENS, DEX, Identity, Inventory, Sybil：**[**https://gemini.google.com/share/487d38ce5338**](https://gemini.google.com/share/487d38ce5338)
 
 **Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata：**[**https://gemini.google.com/share/fc9bd615ba37**](https://gemini.google.com/share/fc9bd615ba37)
@@ -300,6 +313,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 今天完成Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分学习以及MetaMask 钱包安装 & 创建。
@@ -479,6 +493,7 @@ C. 市场格局的永久改变
 
 
 
+
 看完了实习手册的【入门导读】，对区块链原理和以太坊机制理解更加深刻了，行业赛道方面希望深入了解AI+DiFi和WEB3+乡建
 
 我将两个Youtube教程视频的transcript交给Gemini进行了摘要总结，方便快速浏览和时间轴上定位复习
@@ -601,6 +616,7 @@ Web3 的去中心化治理目前更像是一个\*\*“虽然混乱但充满活�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
