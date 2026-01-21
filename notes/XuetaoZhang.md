@@ -15,8 +15,29 @@ web2转web3学习者，前端开发
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今日完成：
+
+1.  **分享会 - Web3 公共物品资金分配第一节课回放观看；**
+    
+2.  **查看「Solidity Walk Through」回放观看；**
+    
+3.  **Uniswap 工作原理解析观看；**
+    
+4.  Solidity 挑战初始尝试；
+    
+
+今日思考：
+
+1.  solidity walk through老师讲地深入浅出，一个小时能把ERC20重点讲完不枯燥不无聊，确实厉害，即使我之前跟着敲过ERC20，依旧是吸引我再听一遍；
+    
+2.  Uniswap中V3，V4涉及数学那部分根本听不懂，我应该慢慢拆解相关部分，慢慢理解
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今日完成：
 
 1、[Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分完成50%
@@ -28,6 +49,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 今日完成：
 
@@ -50,6 +72,7 @@ web2转web3学习者，前端开发
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 今日完成：
 
 1：今日完成实习手册智能合约开发solididy智能合约编程部分和智能合约项目学习和实践；
@@ -61,6 +84,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -87,6 +111,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、收看web3全局行业介绍；
@@ -100,6 +125,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -120,6 +146,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -152,6 +179,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、1.13线上co Learning收听学习；
@@ -167,6 +195,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
