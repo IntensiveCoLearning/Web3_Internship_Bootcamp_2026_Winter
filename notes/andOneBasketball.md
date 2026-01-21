@@ -15,8 +15,37 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## 📒 共学营 Day 10 学习笔记
+
+今天继续复盘 Ethernaut 关卡学习，并总结了 Solidity、Hardhat 与 ethers 的实践经验：
+
+-   **接口与函数可见性**：在 `interface` 中只能声明 `external` 函数，即便原合约函数是 `public`，接口中也必须标注 `external`。
+    
+-   **ethers v6 合约部署与调用**：必须使用 `waitForDeployment()` 来等待合约完成部署，否则后续调用会失败。使用 `waitNextBlock` 可以区分本地链和线上链，确保部署与调用不会被打包在同一个区块导致调用失败。
+    
+-   **整数溢出漏洞**：Solidity 0.7.x 及以下版本存在整数溢出/下溢漏洞，需要注意旧版本合约中 `uint` 运算可能导致余额异常或逻辑绕过。
+    
+-   **Hardhat 命名账户**：回顾了 `hardhat.config.js` 中 `namedAccounts` 的配置，并理解了 `getNamedAccounts()` 如何根据网络和 index 返回对应地址或 signer，便于跨网络部署和测试。
+    
+-   **Ethernaut 实战关卡**：完成了 2-Fallout、3-CoinFlip、4-Telephone、5-Token 关卡的练习，学习到：
+    
+    -   **Fallout**：合约构造函数未正确命名导致可被攻击者任意初始化。在 Solidity 0.4.x 及之前版本，构造函数名称必须与合约名称相同，否则会被当作普通 `public` 函数暴露出来。Solidity 0.4.22+ 引入了统一 `constructor` 关键字，从此避免了构造函数命名错误导致的初始化漏洞。
+        
+    -   **CoinFlip**：利用区块哈希预测合约内随机数逻辑，并结合本地链时间/区块控制完成攻击。
+        
+    -   **Telephone**：理解了 `tx.origin` 与 `msg.sender` 的区别，以及如何通过代理调用修改拥有者。
+        
+    -   **Token**：观察 ERC20 转账函数中整数下溢可能导致余额覆盖，巩固了整数溢出/下溢漏洞的实战场景。
+        
+
+今天的学习将 Solidity 的安全漏洞、Hardhat 测试实践和 ethers v6 合约调用结合起来，提升了对链上逻辑和测试环境差异的理解。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # **📒 共学营 Day 9 学习笔记**
 
 **主题**：Ethernaut 合约学习与历史项目排查
@@ -86,6 +115,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # 📒 共学营 Day 8 学习笔记
 
@@ -184,6 +214,7 @@ Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # 📒 共学营 Day 5 学习笔记
@@ -352,6 +383,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 
 
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -467,6 +499,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -591,6 +624,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -678,6 +712,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -828,6 +863,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
