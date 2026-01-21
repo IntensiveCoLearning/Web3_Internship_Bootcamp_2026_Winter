@@ -15,8 +15,88 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+\### 继承与多态
+
+\- 使`is`关键字继承，支持多重继承
+
+\- 继承顺序从"最基础"到"最派生"
+
+\- virtual标记可被重写的函数，override标记重写函数
+
+\- super调用父合约函数，遵循C3线性化规则
+
+\### 接口与抽象合约
+
+\- interface：定义函数签名，不实现逻辑，用于合约间交互
+
+\- abstract：包含未实现函数的合约，不能直接部署
+
+\- 接口函数必须声明为external
+
+\### 可见性与访问控制
+
+\- private变量子合约不可访问
+
+\- internal变量子合约可访问
+
+\- 通过modifier实现权限控制（如onlyOwner）
+
+\### 支付相关
+
+\- receive()：接收纯ETH转账，无calldata时触发
+
+\- fallback()：调用不存在函数或有calldata时触发
+
+\- 转账三种方式：transfer（2300gas，失败revert）、send（2300gas，返回bool）、call（推荐，可设gas）
+
+\### 合约交互
+
+\- 使用接口调用已知ABI的合约
+
+\- call低级调用`address.call{value: amount}(abi.encodeWithSignature("func()"))`
+
+\- delegatecall：在调用者上下文执行，storage布局必须一致
+
+\### 工厂模式
+
+\- 合约可部署其他合约
+
+\- new关键字创建合约实例
+
+\- create2可预计算部署地址，需提供salt值
+
+\### 异常处理
+
+\- require：条件检查，退还剩余gas
+
+\- revert：主动回滚，配合自定义error更省gas
+
+\- assert：检查不变量，用于内部错误
+
+\- try/catch：处理外部调用和合约创建异常
+
+\### 库（Library）
+
+\- 无状态、不能接收ETH
+
+\- 使`using A for B`语法附加到类型
+
+\- internal函数嵌入合约，public函数需单独部署
+
+\### ABI编码
+
+\- abi.encode：标准编码，带填充
+
+\- abi.encodePacked：紧凑编码，节省空间但可能碰撞
+
+\- abi.decode：解码数据
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 ````markdown
 # Day 8 学习笔记：智能合约开发与Solidity基础
 
@@ -136,6 +216,7 @@ contract MyContract {
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -145,6 +226,7 @@ contract MyContract {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 # 学习总结（Day1-6）
@@ -233,6 +315,7 @@ contract MyContract {
 
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -304,6 +387,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -354,6 +438,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -423,6 +508,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
