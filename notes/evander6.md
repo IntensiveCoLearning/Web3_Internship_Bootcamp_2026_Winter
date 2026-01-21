@@ -15,8 +15,48 @@ UIBE FTA cofounder，量化专业，crypto native，也会玩点vibe coding
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+Jeff老师从认知科学专业的大学生到web2码农—MBA—金融码农—web3创业，发行游戏，经历相当丰富，真的好酷！！
+
+### Uniswap v2：CPMM，恒积做市商
+
+价格曲线： x \* y = k ，k为常数
+
+price = y / x
+
+jeff老师带我们做了两道题，感受到了池子兑换的数学逻辑，蛮有意思的
+
+接着又讲了swap()函数，这时候开始有点蒙圈了
+
+Flash Loan闪电借贷：
+
+先打钱，再检查是不是符合恒定积的要求
+
+Liquidity流动性：不同的常数k
+
+Iso-price line等价格线：LP需要严格按比例添加或移除流动性
+
+池子越浅，滑点越大
+
+Price Impact价格影响 vs Slippage
+
+Impermanent Loss无偿损失
+
+TWAP Oracle 时间加权平均价格预言机 ，这里需要对比着区分价格和累计价格
+
+### Uniswap v3：CLMM集中流动性做市商
+
+求解L与根号p
+
+![](https://lcngmu9zt7ix.feishu.cn/space/api/box/stream/download/asynccode/?code=NDZkODllNDMxZTgxOTgyMWMxZmNlNDE5OGMzNzU4ZTVfWHlhcWJDS1czbDI4azRHR2pobThYN0p3SlVBTjhoQXRfVG9rZW46RkE0eWJ5ZXhWbzRhTTN4SklOM2Mwc3BYbkxnXzE3NjkwMDYwNjA6MTc2OTAwOTY2MF9WNA)
+
+已经彻底麻了，想到了我的中级微观经济学hhh，或许代币经济学的底层逻辑就在这里吧
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 EthPanda Web3 实习计划第一周的学习结束，我对“Web3+Al+ 合规 +运营”这一复合型领域有了比以往更为系统和现实的认知。几乎每天一场的知识干货分享会，不仅拓宽了我的技术视野，也让我重新思考金融专业背景在 Web3 生态中的定位与价值。
 
 ### 从传统LLM 到 AlAgent:理解“可执行的智能体”
@@ -44,6 +84,7 @@ EthPanda Web3 实习计划第一周的学习结束，我对“Web3+Al+ 合规 +�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 晚上跟着luna老师学到了很多，尤其是如何去做好活动策划，跑通、跑顺全流程
 
@@ -117,6 +158,7 @@ EthPanda Web3 实习计划第一周的学习结束，我对“Web3+Al+ 合规 +�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -254,6 +296,7 @@ ERC7962 是一种基于哈希的、支持零知识证明思想的代币协议，
 
 
 
+
 今天看了一下sui的主网中断的blog，从中学到了很多
 
 Sui网络主动中断了6小时，因为它发现验证者算账结果对不上了。为了保护所有人的钱绝对安全，它选择了暂停，而不是将错就错。这与我之前单纯的区块链“7x24”的认知不同，原来真正的重点是**“永远不记错账”**。Sui这次选择用“停机”来保证不出错，这比“一直运行但可能出错”要负责任得多。就像银行为确保客户存款100%安全，宁愿以暂停取款服务几个小时的代价来核对账目。
@@ -269,6 +312,7 @@ Sui网络主动中断了6小时，因为它发现验证者算账结果对不上�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -357,6 +401,7 @@ Sui网络主动中断了6小时，因为它发现验证者算账结果对不上�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -564,6 +609,7 @@ Sui网络主动中断了6小时，因为它发现验证者算账结果对不上�
 
 
 
+
 今天复盘了13号晚上的分享会，大致了解了web3的运行机制、原理以及老师们常说的‘社会哲学’
 
 ### 一、 钱包与个人主权 (Personal Sovereignty)
@@ -656,6 +702,7 @@ Web3 在带来主权的同时也伴随着极高的安全挑战
 
 
 
+
 **今天回顾了web3求职现状的分享会的内容，大致梳理清楚了web3求职的整体细节，对以后的道路选择也更加明晰了**
 
 # \- ‘‘web3历史发展情况’’
@@ -732,6 +779,7 @@ DAO，开源社区，投资研究社区
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
