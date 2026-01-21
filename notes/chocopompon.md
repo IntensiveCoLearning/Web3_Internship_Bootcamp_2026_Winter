@@ -15,13 +15,20 @@ Learning Web3 through self-directed study, with a focus on understanding protoco
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+√
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 √
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 √
 <!-- DAILY_CHECKIN_2026-01-17_END -->
@@ -30,11 +37,13 @@ Learning Web3 through self-directed study, with a focus on understanding protoco
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 √
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -47,11 +56,13 @@ Learning Web3 through self-directed study, with a focus on understanding protoco
 
 
 
+
 √
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
