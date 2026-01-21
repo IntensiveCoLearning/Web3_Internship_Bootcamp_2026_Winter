@@ -15,8 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+**Solidity walk through**
+
+**_EVM（Ethereum Virtual Machine）_**
+
+-   一个Sandbox，所有的智能合约都在这个沙盒里运行，彼此隔离，且不直接接触外部硬件。它的核心任务是根据Transaction来更新区块链的“状态”
+    
+-   与solidity的关系：EVM 并不直接读懂 Solidity 语言。它们之间有一个转换过程：
+    
+    1.  **write :** 开发者写 Solidity 源代码
+        
+    2.  **compile:** 使用编译器将 Solidity 翻译成 EVM 字节码 (Bytecode)
+        
+    3.  **run:** 字节码被部署到链上，由 EVM 执行
+        
+-   solidity storage space:
+    
+    -   _Stack:_ 存放临时变量，读写极快，但空间很小（限制 1024 层）。
+        
+    -   _Memory_**:** 临时的、可擦除的空间，函数运行完就清空。
+        
+    -   _Storage:_ 永久保存在区块链上的空间，这是最贵的地方，需要支付大量的 Gas 费。
+        
+-   gas机制
+    
+    -   为了防止有人写死循环代码导致网络瘫痪，EVM 引入了 **Gas 机制**
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 **Web3公共物品资金分配**
 
 1.  _what is public good?_
@@ -52,6 +82,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
@@ -106,6 +137,7 @@ _Gas和交易模型_
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 **Agent跟web3的融合**
 
 _AI agent的结构_：the brain（LLM） --> the memory（RAG流程：抓取数据然后上下文存储） --> the tools(API调用）
@@ -153,6 +185,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **web3安全**
 
 -   精准猎杀
@@ -182,6 +215,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -238,6 +272,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **行业全局介绍&岗位预览**
 
 **_行业概览_**
@@ -282,6 +317,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
