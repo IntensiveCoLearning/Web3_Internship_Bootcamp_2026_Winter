@@ -15,8 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+今天学习了uniswap相关的知识  
+概念：与传统中心化交易所不同，Uniswap运行在以太坊等区块链上，由智能合约管理。您始终通过自己的钱包进行交易，无需注册或托管资产，实现了**无需许可**和**非托管**的交易  
+其中**自动化做市商AMM**：是Uniswap的灵魂。它摒弃了订单簿，转而依靠一个数学公式和资金池来**自动定价并完成交易**。流动性提供者将资金存入池中，系统根据算法为所有交易者提供即时流动性  
+  
+运行依赖于一个精巧的数学模型和激励机制  
+**恒定乘积公式**：即 `x * y = k`。其中 `x`和 `y`代表流动性池中两种代币的数量，`k`是恒定乘积。任何交易都必须确保交易后两种代币数量的乘积不小于 `k`。这个机制决定了代币价格：当您用 `x`代币购买 `y`代币时，池中 `x`增多、`y`减少，导致 `y`的价格上升，从而实现**需求驱动定价**  
+**手续费激励**：每笔交易会收取**0.3%的手续费**（V3等版本费率可调）。这笔费用会直接添加到流动性池中，使得 `k`值缓慢增大。流动性提供者按其份额获得这部分收益，从而激励人们提供流动性  
+  
+生态系统依靠三类角色运转：
+
+-   **交易者**：进行代币兑换，支付手续费。
+    
+-   **流动性提供者**：为池子提供资金，赚取手续费收益，但需承担**无常损失**的风险（因池内代币市价波动导致的价值损失）。
+    
+-   **UNI治理代币**：UNI持有者拥有协议的治理权，可以对协议升级、手续费开关等关键决策进行投票，体现了**社区治理**的理念  
+      
+    其中无偿损失的概念属于uniswap模式中的非常重要的概念，暂时无法通过普通的对冲去解决  
+    自己也尝试过  
+    常损失的本质是**机会成本**的损失，即“涨价时赚得比单纯持有少，降价时亏得比单纯持有多  
+    最大抵消无偿损失可能性：在Uniswap等平台，流动性提供者能从每笔交易中获得手续费（如0.3%）。这部分收益是**补偿无常损失的关键**。如果累积的手续费收入**超过**无常损失，依然盈利
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
 
 今天主要是学习了关于DAO的治理模式  
@@ -25,6 +50,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ![0f7b48730c97a4f1b0a4cee038670047.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-19-1768838031212-0f7b48730c97a4f1b0a4cee038670047.png)
 
@@ -41,6 +67,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 [https://x.com/momoming88/status/2012598977603224052?s=20](https://x.com/momoming88/status/2012598977603224052?s=20)  
@@ -72,6 +99,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -119,11 +147,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -204,6 +234,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -221,11 +252,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
