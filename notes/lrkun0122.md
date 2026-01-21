@@ -15,8 +15,70 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+Web3实习手册
+
+智能合约
+
+基本数据类型：bool、uint、int、address、bytes（num）、bytes、string
+
+其中uint是无符号整数、int是有符号整数，分位数；bytes带数字则为定长字节数组，反之为动字节态数组；string是字符串。
+
+//
+
+复合数据类型：T \[k\]、T \[ \]、mapping (k => v)、struct、enum
+
+其中T \[k\]是定长数组，无数字标注则为可变数组；mapping为键值对存储映射；struct结构体为自定义数据结构、enum为枚举。
+
+//
+
+状态修饰符：pure、view、payable
+
+其中pure不可读不可改，view可读不可改，payable可以接受以太币。
+
+//
+
+基本结构
+
+pragma关键则用于声明solidity源代码所需的编译器版本。
+
+contract关键字声明一个智能合约，语法为 contract 合约名 { ... }。
+
+一个智能合约的基本结构通常由以下三部分组成：状态变量、构造函数和普通函数。
+
+//
+
+状态变量 State Variables
+
+用于记录合约的持久化数据。
+
+函数 Functions
+
+智能合约中执行逻辑操作的核心组成部分，通过函数对状态变量的读取、修改或执行特定业务逻辑。
+
+函数可见性决定了函数在何种上下文可以背被调用，
+
+有Private\\internal\\public \\external；
+
+当前合约\\继承合约\\所有人\\仅外部调用
+
+函数状态修饰符用于指明函数是否修改或读取合约状态。
+
+函数参数和返回值分为多个返回值、命名返回值和调用带多返回值。
+
+修饰符用于权限控制与前置检查
+
+继承与重写，子合约可重写父合约中的函数
+
+接口与抽象合约用于定义规范与继承框架
+
+事件用于记录重要状态变化，可由外部监听器捕捉
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 Navigation Menu
 
 Web3\_Internship\_Bootcamp\_2026\_Winter
@@ -121,6 +183,7 @@ Gas 优化：减少链上存储操作，如合理设置变量类型和长度；�
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 十、生态系统创新：DeFi、NFT 与 DAO
 
 分成三块：
@@ -142,6 +205,7 @@ DAO：组织与治理层
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 Web3 安全
@@ -191,6 +255,7 @@ AI 写代码时代，插件和依赖成了新的后门入口
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1507,6 +1572,7 @@ Key Results :
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
