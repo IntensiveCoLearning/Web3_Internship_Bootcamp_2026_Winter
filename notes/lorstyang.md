@@ -20,10 +20,13 @@ ha
 1.参会Uniswap 工作原理解析
 
 2.参会休闲黑客松
+
+3.完成留言板项目并部署[https://onchainmessageboard.vercel.app/](https://onchainmessageboard.vercel.app/)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 1.参会公共物品资金分配
 
@@ -34,6 +37,7 @@ ha
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # Remix
@@ -106,6 +110,7 @@ contract SimpleStorage {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -306,6 +311,7 @@ L1（以太坊主网）的问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -644,6 +650,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 ## 安全
 
 ### 常见风险
@@ -742,6 +749,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -817,6 +825,7 @@ tokenURI(tokenId) → 一个 URL
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
