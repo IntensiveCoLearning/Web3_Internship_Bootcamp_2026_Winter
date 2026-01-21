@@ -15,8 +15,40 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 深度技术作业：
+
+配置环境变量
+
+```
+$env:SEPOLIA_RPC_URL="https://sepolia.infura.io/v3/YOUR_INFURA_KEY"
+$env:PRIVATE_KEY="your_private_key"
+$env:ETHERSCAN_API_KEY="your_etherscan_key"
+```
+
+直接写死了，不知道为什么用env文件一直好不了
+
+etherscan-api-key在[etherscan.io](http://etherscan.io)的账户 -> api-dashboard -> api-key
+
+在[developer.metamask.io](http://developer.metamask.io)的infura RPC里
+
+```
+ forge script script/DeployMessageBoard.s.sol:DeployMessageBoard `
+>>   --rpc-url $env:SEPOLIA_RPC_URL `
+>>   --private-key $env:PRIVATE_KEY `
+>>   --broadcast `
+>>   --verify `
+>>   --etherscan-api-key $env:ETHERSCAN_API_KEY `
+>>   --chain 11155111
+```
+
+然后运行部署
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 深度技术作业：
 
 ABI：json格式的接口描述，说明如何调用合约函数（函数名），如何编码或解码数据（参数，返回值）
@@ -50,6 +82,7 @@ forge script script/DeployMessageBoard.s.sol:DeployMessageBoard \`
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ## 社区运营基础&活动策划与执行流程
@@ -91,6 +124,7 @@ forge init
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -186,6 +220,7 @@ forge init
 
 
 
+
 **1\. 核心概念**
 
 \- 新一代代币协议，融合零知识证明（ZK）与哈希算法
@@ -254,11 +289,13 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 第一周总结：了解了求职市场，找工作真的很难…不能只学写合约，还要学合约安全的部分，还要学rust。多参与链上活动如投票，贡献开源代码，建立链上声誉。 了解agent上链来帮助用户辨别选择agent，购买agent的部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -327,6 +364,7 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 一、AI的演进与核心
 
 传统AI（如早期ChatGPT）只是“高级复读机”，无状态、无工具、无身份。而未来的AI Agent将具备：
@@ -354,6 +392,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -398,6 +437,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -457,6 +497,7 @@ EIP
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
