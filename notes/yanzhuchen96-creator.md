@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+# 1.21 学习笔记：dApp 留言板实战 + gas 优化
+
+## 一、从“前端在哪跑”开始搞懂 dApp 架构
+
+今天一开始，我照着教程部署了留言板合约到 Sepolia，但我不确定前端代码到底应该在哪里跑。通过折腾之后，我终于搞清楚：合约跑在区块链节点上，而 messageboard.html 这样的前端只是一个普通网页，只要通过 HTTP/HTTPS 在浏览器里打开就行，关键是它要能访问到 MetaMask 暴露的 window.ethereum。
+
+我一开始是直接双击本地文件，用 file:///...messageboard.html 打开的，结果网页怎么都连不上钱包。后来了解到 MetaMask 出于安全原因不会给 file:// 页面注入 provider，只有在 http:// 或 https:// 下才会注入，所以我必须用本地服务器来跑这份 HTML，比如用 VS Code 的 Live Server 或 Python 的简单 HTTP server。
+
+## 二、用 VS Code Live Server 跑起本地前端
+
+接下来我在 VS Code 里一步步配置 Live Server。首先需要用 “File → Open Folder” 打开包含 `messageboard.html` 的整个文件夹，而不是只打开单个文件，这样 Live Server 的右键菜单和右下角 “Go Live” 按钮才会出现。
+
+打开文件夹后，我在资源管理器中双击 messageboard.html，在编辑区右键就能看到 “Open with Live Server”。点了之后浏览器地址变成类似 http://127.0.0.1:5500/messageboard.html，这时 MetaMask 能正常注入，连接钱包弹窗也能弹出来。我也知道了这种 localhost 链接只在我这台电脑上有效，想让别人访问必须部署到 GitHub Pages、Vercel 之类的静态网站托管，或者用 ngrok 把本地端口临时暴露出去。
+
+## 三、理解 storage、SLOAD 和“缓存 length”的 gas 优化
+
+在看教程的 Gas 优化部分时，我碰到了那段示例代码：
+
+```
+// ❌ 非优化写法
+mapping(address => uint256) public balances;
+function deposit() public payable {
+    balances[msg.sender] += msg.value;
+}
+
+// ✅ 优化写法（一次读，一次写）
+function deposit() public payable {
+    uint256 current = balances[msg.sender];
+    balances[msg.sender] = current + msg.value;
+}
+```
+
+一开始我不明白这两段看起来一样的代码为什么说后面更省 gas，后来才知道关键在于 SLOAD。
+
+我学到：合约的持久化状态存在 storage 里，访问像 arr.length、balances\[user\] 这样的 storage 变量时，EVM 会用 SLOAD 指令从链上存储读出 256 位数据；而 SLOAD 是比读内存、读栈贵很多的操作。如果在循环条件里直接写 i < arr.length，每次循环都可能触发一次 SLOAD；而先写 uint256 len = arr.length; 只在循环开始前读一次 storage，后面循环里只是和内存变量 len 做比较，成本就低很多。
+
+我也顺带搞清了 SLOAD 的概念：就是“从合约的 storage 某个 slot 读 256 位数据到栈上”的底层指令，它是 gas 优化里经常被提到的“贵操作”之一。所以教材强调的“缓存 length”本质就是减少重复 SLOAD，把多次读 storage 变成一次读 storage + 多次读内存。
+
+## 四、给 MessageBoard 合约做 gas 优化
+
+然后我用今天学到的东西，对教程里的 MessageBoard 合约做了几处简单优化，目标就是贴合那篇文章里的“入门级 gas 优化”，而不是大改架构。
+
+原来的关键部分是这样的：
+
+```
+// 发送一条留言
+    function leaveMessage(string memory _msg) public {
+        messages[msg.sender].push(_msg);     // 添加到发言记录
+        emit NewMessage(msg.sender, _msg);   // 发出事件
+    }
+```
+
+我做的改动有两点：
+
+改了留言板的合约代码
+
+**改动 1：public → external**
+
+留言板这个场景里，leaveMessage 只会被用户通过交易/前端调用，不会在合约内部调用自己，所以用 external 没问题，gas 费也更低。
+
+**改动 2：memory → calldata**
+
+memory 的写法含义是：
+
+-   先把 calldata 里的参数拷贝一份到内存（多一步拷贝）；
+    
+-   再从内存把字符串写进 storage
+    
+
+把 msg 的数据位置从 memory 改成 calldata，Solidity 就可以在写入 storage 时，直接从 calldata 读取 msg，避免“calldata → memory”的中间拷贝步骤。
+
+于是优化后的版本是：
+
+```
+function leaveMessage(string calldata _msg) external {
+        messages[msg.sender].push(_msg);
+        emit NewMessage(msg.sender, _msg);
+    }
+```
+
+通过这两处改动，我体会到“简单但正确”的 gas 优化：不需要写很花哨的技巧，只要根据函数的真实用途选对可见性（external / public），为大对象参数用 calldata，以及在循环里避免重复 SLOAD，就能在不牺牲可读性的前提下把合约写得更省。
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 今天做入门技术的一个任务，啃完了 Ethernaut 的前三关，花的时间比自己想象中的要久，作为一个 Solidity 初学者，要一行一行读懂智能合约还是有点难度的。通过 Hello Ethernaut、Fallback 和 Fallout 这三关，我从完全没用过浏览器控制台，到能看懂合约逻辑、定位漏洞并写出攻击代码，感觉自己被硬生生推着跨了一小步门槛，过程很痛苦，但进步还挺大。
 
 ## 第 0 关：Hello Ethernaut
@@ -92,6 +178,7 @@ Fallout 这一关让我感受到“一个小小的命名错误，会直接变成
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # 1.19 学习笔记
@@ -213,6 +300,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 
 
+
 ## **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 AI提炼总结**
 
 本次分享围绕一个从 ERC-721 演进出来的新协议 **ERC-7962** 展开，目的是在保持数字藏品（NFT）属性的同时，引入更强的隐私保护和更好的用户体验。讲者首先回顾了传统 NFT 的特点：基于 ERC-721 标准，每个 token 的 owner 是一个公开可查的地址，谁持有什么资产、做过哪些交易都可以在链上被分析。这样带来了两个问题，一是隐私缺失，容易被构建“资产图谱”；二是对普通 Web2 用户不友好，需要自己装钱包、管私钥、付 gas 费，这阻碍了 Web2 用户向 Web3 迁移。
@@ -264,6 +352,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -323,6 +412,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -413,6 +503,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -461,6 +552,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -559,6 +651,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 # 1.13 学习笔记
 
 ## **节点和客户端的关系以及客户端间的协同配合**
@@ -626,6 +719,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
