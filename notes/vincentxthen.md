@@ -15,8 +15,147 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+DAY 10
+
+1.与Nancy沟通构思{踏浪者记}第一期活动
+
+2.整理四周学习计划生成脑图  
+3.wachi老师基于运营和产品方向给出了一些技术栈建议（真实个宝藏wachi，要多挖挖他）
+
+——————————————————————————————————————————————
+
+# wachi 的web3运营/产品技术栈建议
+
+**核心理念**
+
+-   在清楚技术边界的前提下，做出优秀的产品/系统设计。
+    
+-   后续可通过 “vibe coding” 让 AI 快速生成 Solidity 代码（如5分钟内完成）。
+    
+
+* * *
+
+### **对产品人员的要求**
+
+-   必须是深度玩家，例如：
+    
+    -   DeFi 玩家
+        
+    -   钱包产品深度用户
+        
+    -   PvP（博弈/经济模型）玩家
+        
+
+* * *
+
+### **对运营人员的建议**
+
+-   推荐收听播客：
+    
+    [https://www.xiaoyuzhoufm.com/episode/68887b2eedf3fa32d50d086d](https://www.xiaoyuzhoufm.com/episode/68887b2eedf3fa32d50d086d)
+    
+
+* * *
+
+### **Web3 开发技术栈分层建议**
+
+**1\. 智能合约**
+
+-   环境：EVM
+    
+-   语言：Solidity
+    
+-   工具（任选其一）：Foundry、Remix、Hardhat（三者等价）
+    
+
+**2\. 后端**
+
+-   数据库：SQL、数据库设计
+    
+-   系统概念：锁、队列、并发、缓存、Background Job
+    
+
+**3\. 前端**
+
+-   框架：React（推荐 Next.js）
+    
+-   Web3 交互库：Viem
+    
+
+**4\. 部署与运维**
+
+-   代码管理：GitHub
+    
+-   部署平台：Vercel、VPS 等
+    
+
+**5\. 监控与运维杂项**
+
+-   Telemetry、Trace、Alert
+    
+
+* * *
+
+### **关于“性能”与语言选择的提醒**
+
+-   “快”是相对概念，需量化具体场景。
+    
+-   **Rust / C++ 适用场景**：
+    
+    -   高频量化策略，且存在明确性能瓶颈
+        
+    -   愿意为基础设施投入高成本（例如：每月花 8000 美元购买 JUP 节点，或数万美元部署 AWS 东京专有机器与币安服务器相邻）
+        
+-   **否则**：使用 Rust/C++ 属于“过度优化”，类比“上班通勤不需要火箭”。
+    
+
+* * *
+
+### **总结要点**
+
+-   技术选型应匹配实际业务需求，避免过度追求高性能工具。
+    
+-   全栈开发需覆盖智能合约、后端、前端、部署与监控。
+    
+-   产品与运营人员需具备对应的领域体验与知识。
+    
+
+* * *
+
+Web3需要的最核心的技能是在知道技术边界的前提下，做出好的设计。 最后再vibe coding让AI五分钟把Solidity写出来
+
+-   产品的话，需要你是很深入的玩家（Defi玩家、钱包玩家、PvP玩家）
+    
+-   运营类建议听一下这期播客
+    
+
+[https://www.xiaoyuzhoufm.com/episode/68887b2eedf3fa32d50d086d?s=eyJ1IjogIjVmZDEwYjVhZTBmNWU3MjNiYjVlZDc3ZSJ9](https://www.xiaoyuzhoufm.com/episode/68887b2eedf3fa32d50d086d?s=eyJ1IjogIjVmZDEwYjVhZTBmNWU3MjNiYjVlZDc3ZSJ9)
+
+关于web3开发：
+
+最好不要这样切分，要从功能分层上来，你需要会：
+
+1.  智能合约 - EVM、Solidity（用Foundry、Remix、Hardhat等，这些是等价的）
+    
+2.  后端 - SQL、数据库设计、锁、队列、并发、缓存、BackgroundJob等等
+    
+3.  前端 - React（Nextjs）、Viem
+    
+4.  部署 - Github、Vercel、VPS等等
+    
+5.  杂事 - Telemetry、Trace、Alert
+    
+
+-   然后快是一个很相对的概念。 具体量化场景，Rust只适合做高频量化的团队使用：当你很明确的需要每个月花八千刀买jup的节点，或者花几万刀每个月买AWS在东京的专属机器和币安服务器做邻居。那必须要使用Rust
+    
+-   如果策略根本就没有那么敏感，或者瓶颈不在计算。那rust或者c++完全是大材小用。 咱们上班通勤，不需要上火箭的（虽然火箭确实快，马力大
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 -   DAY 9
     
 -   整理了《Web3 运行原理的笔记》制作了脑图
@@ -33,6 +172,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 DAY8
 
 忙碌的一天，草草啃了一些手册里的内容 技术部分对文科生来说还是艰涩了点
@@ -42,6 +182,7 @@ DAY8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -116,6 +257,7 @@ DAY7
 
 
 
+
 DAY6
 
 //成都雾霾连续爆表一个月 今天鼻炎终于大爆发，疯狂喷嚏鼻涕，头昏脑胀
@@ -129,6 +271,7 @@ DAY6
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -151,6 +294,7 @@ DAY5
 
 
 
+
 DAY4  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485305863-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485449721-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485466886-image.png)
@@ -158,6 +302,7 @@ DAY4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -184,6 +329,7 @@ DAY3
 
 
 
+
 DAY2  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296425226-image.png)![5256c0f3e7c881eda8158c6049c39b84.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296346499-5256c0f3e7c881eda8158c6049c39b84.jpg)
@@ -191,6 +337,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
