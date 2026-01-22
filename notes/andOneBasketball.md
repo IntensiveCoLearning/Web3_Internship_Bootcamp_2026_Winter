@@ -15,8 +15,141 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 📚 共学营 Day 11 学习笔记（Ethernaut 6–9）
+
+### ✅ 6. Delegation —— delegatecall 与存储上下文
+
+-   使用 `delegatecall` 时：
+    
+    -   执行的是被调用合约的代码
+        
+    -   但 **读写的是当前合约的 storage**
+        
+-   如果代理合约 fallback 直接 delegatecall 给逻辑合约：
+    
+    -   任何人都可以调用逻辑合约中的函数
+        
+    -   等价于拥有了代理合约的权限
+        
+-   核心认知：
+    
+    -   delegatecall 是升级合约基础
+        
+    -   也是权限漏洞高发点
+        
+
+👉 启示：代理合约必须做函数选择器白名单或权限控制。
+
+* * *
+
+### ✅ 7. Force —— selfdestruct 强制转账
+
+-   `selfdestruct(target)` 可以：
+    
+    -   无视 target 的 payable / fallback
+        
+    -   直接修改 target.balance
+        
+-   合约无法阻止别人给自己打钱
+    
+-   因此：
+    
+    -   不能用 `address(this).balance` 作为业务状态
+        
+    -   必须自己在 storage 中记账
+        
+
+👉 启示：链上余额是外部可变状态，不可信。
+
+* * *
+
+### ✅ 8. Vault —— private ≠ secret
+
+-   `private` 只是 Solidity 语法级限制
+    
+-   链上 storage 对所有人可读
+    
+-   只要知道 slot 位置就能直接读出变量
+    
+
+本关 storage 布局：
+
+-   slot0：bool locked
+    
+-   slot1：bytes32 password
+    
+
+通过 RPC 直接读 slot1 即可解锁。
+
+👉 启示：  
+链上永远不存在真正意义上的“密码”，只能做哈希校验。
+
+* * *
+
+### ✅ 9. King —— transfer 导致的 DoS 攻击
+
+-   合约逻辑依赖：
+    
+
+```
+payable(king).transfer(msg.value);
+```
+
+-   transfer 特点：
+    
+    -   只给 2300 gas
+        
+    -   失败直接 revert
+        
+
+攻击方式：
+
+-   让一个无法接收 ETH 的合约成为 king
+    
+-   后续所有挑战都会在 transfer 时失败
+    
+-   游戏被永久锁死（拒绝服务）
+    
+
+👉 启示：
+
+-   不要在状态更新前做外部转账
+    
+-   应使用 pull-payment 模式（用户自己提钱）
+    
+
+* * *
+
+## 💡 今日额外反思
+
+-   King 关卡原本通关合约里写死了 `1 ETH`，  
+    实际只要 **大于当前 prize 即可**，改小额度就行。
+    
+-   说明：
+    
+    -   攻击思路比具体金额更重要
+        
+    -   不要被示例代码限制住思路
+        
+
+* * *
+
+## 🎯 今日核心能力提升
+
+今天几关集中强化了三个关键底层认知：
+
+1.  **EVM 执行上下文与 storage 归属（delegatecall）**
+    
+2.  **账户余额不可信（selfdestruct 强制注资）**
+    
+3.  **外部调用不可控（transfer DoS）**
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 📒 共学营 Day 10 学习笔记
 
 今天继续复盘 Ethernaut 关卡学习，并总结了 Solidity、Hardhat 与 ethers 的实践经验：
@@ -45,6 +178,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # **📒 共学营 Day 9 学习笔记**
 
@@ -115,6 +249,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # 📒 共学营 Day 8 学习笔记
@@ -214,6 +349,7 @@ Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -384,6 +520,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 
 
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -499,6 +636,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -625,6 +763,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -712,6 +851,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -863,6 +1003,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
