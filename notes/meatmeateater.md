@@ -15,8 +15,81 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今日新增了對良心殺的comment，覺得蠻有趣的，類似一個小型的調研了，以下是我的回覆:
+
+\# 學號:571
+
+大家好，我是golesh。
+
+我想引入一個視角：\*\*資金邊際效用\*\*。LUWANA 目前 Runway 吃緊，我們更需要透過這次分配展現出「專業的資金配置能力」，證明我們懂行，而不僅僅是撒錢。
+
+這 10 萬美金如果是「公共財資金」，那就不該流向「私有商業項目」或「封閉的小圈子」。我花了一點時間對這 5 個項目做了背調，以下是我的分析與分配建議：
+
+\## 1. 項目審計與風險評估
+
+\### **Web3 University (高度存疑)**
+
+\* **背景調查：** 這是 Web3 基礎設施巨頭 **Alchemy** 旗下的教育專案。根據公開數據，Alchemy 在 2022 年就完成了 2 億美金的融資，估值 102 億美金。
+
+\* **審計觀點：** 他們不缺這 10 萬美金。把公共財資金捐給一個有頂級 VC 支持的商業公司行銷漏斗 (Marketing Funnel)，這不符合 Public Goods 的定義（非排他性、非競爭性）。建議 **$0 或極低象徵性金額**。
+
+\### **ShanHaiWoo (山海塢) (可及性存疑)**
+
+\* **性質：** 類似 Zuzalu 的 Pop-up City，線下活動為主。
+
+\* **審計觀點：** 概念很酷，但這類活動通常門檻極高（機票、住宿、時間成本）。如果我們的資金是用來補貼少數精英在新加坡或泰國的聚會，這對無法肉身前往的廣大開發者公平嗎？除非他們能承諾這筆錢專款專用於「線上開源產出」或「平民獎學金」，否則它的 **Publicness (公共性)** 很低。
+
+\### **Bankless Academy (高優先級)**
+
+\* **性質：** 開源、免費、抗女巫攻擊 (Sybil Resistant) 的教育平台。
+
+\* **審計觀點：** 這是最標準的公共財。他們透過 OAT/Badge 系統做鏈上憑證，邊際成本低，覆蓋範圍無限。每一分錢投入這裡，都能轉化為真實的用戶教育，且沒有 VC 變現壓力。
+
+\### **ETHPanda (高優先級)**
+
+\* **性質：** 華語區以太坊建設者社區。
+
+\* **審計觀點：** 考慮到語言隔閡，ETHPanda 是華語開發者連接全球生態的關鍵橋樑 (Bridge)。在英文主導的以太坊世界，支持少數語言族群本身就是一種對抗「中心化」的公共財行為。
+
+\### **ETH Singapore (中立)**
+
+\* **性質：** 地區性活動/組織。
+
+\* **審計觀點：** 新加坡資金充裕，且這類組織通常容易獲得當地交易所或項目贊助。需確認這筆錢的具體用途，如果是辦黑客松 (Hackathon) 尚可，如果是辦酒會則大可不必。
+
+\---
+
+\## 2. 建議分配模型
+
+我不建議平均分配 (20k each)，那是最懶惰且無效的決策。為了防止資金被低效使用，我建議採用 **階梯式分配**：
+
+| 項目 | 建議金額 | 理由 (Rationale) |
+
+| :--- | :--- | :--- |
+
+| **Bankless Academy** | **$45,000** | 最高且長尾的教育覆蓋率，符合 "Scale" |
+
+| **ETHPanda** | **$35,000** | 關鍵的華語區基礎設施，符合 "Diversity" |
+
+| **ETH Singapore** | **$10,000** | 僅支持其黑客松或開發者工坊部分 |
+
+| **ShanHaiWoo** | **$5,000** | 僅作為「開源內容產出」的專項激勵 |
+
+| **Web3 University** | **$5,000** | 象徵性支持，因其背後已有 Alchemy 巨資支持 |
+
+**結論：**
+
+我們應該把錢花在「沒有我們這筆錢就活不下去，但對生態極其重要」的項目上，而不是錦上添花。
+
+期待大家的討論。  
+現在正在啃remix...先提交一下好了，不然感覺會忘記
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -31,6 +104,7 @@ Thanks for clarifying!
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今天打算把第0周的任務補齊，目前還差這些
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/meatmeateater/images/2026-01-19-1768852214818-image.png)
@@ -38,6 +112,7 @@ Thanks for clarifying!
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
@@ -48,11 +123,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -70,12 +147,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -193,6 +272,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -405,6 +485,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -666,6 +747,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
