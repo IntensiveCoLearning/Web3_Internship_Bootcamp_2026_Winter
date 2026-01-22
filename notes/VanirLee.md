@@ -15,8 +15,123 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+Web3 应用的基础设施概览 (Infrastructure Overview)图
+
+A. 用户浏览器端 (User Browser) - 右侧
+
+这是用户直接接触的界面。
+
+-   **前端框架 (Frontend Frameworks)**：
+    
+    -   提及了 **React**, **TanStack Router**, **Next.js**。这是目前构建 dApp（去中心化应用）的主流技术栈。
+        
+-   **Web3 交互库**：
+    
+    -   **viem / wagmi**：这是前端用来连接区块链的核心库。`wagmi` 是一套 React Hooks，基于 `viem` 封装，方便在 React 中管理钱包状态。
+        
+-   **钱包插件 (Wallet Extension)**：
+    
+    -   **OKX / MetaMask**：用户的数字资产管理工具。
+        
+-   **操作流程 (Action Flow)**：
+    
+    -   当用户在前端发起操作（如 `call { command: 'transfer' }`）时，应用会唤起钱包插件。
+        
+    -   钱包插件通过 **JSON-RPC** 直接与区块链节点通信（延迟较高，约 **2,000ms**）。
+        
+
+B. 服务端 (Server) - 中间
+
+这是连接前端与数据库的桥梁，通常托管在 Vercel 等平台上。
+
+-   **框架**：**Next.js** (全栈框架) 或 **Hono** (轻量级 Web 框架)。
+    
+-   **后端逻辑**：
+    
+    -   也包含 `viem/ethers.js`，说明服务端也可以直接读取链上数据或发送交易。
+        
+-   **延迟对比 (Latency)**：
+    
+    -   **读取数据库**：延迟极低 (**100ms**)，提供丝滑的用户体验。
+        
+    -   **读取区块链 (RPC)**：延迟很高 (**2,000ms**)。
+        
+    -   **核心结论**：为了用户体验，**不能**所有数据都直接从链上读，必须要有“链下缓存层”。
+        
+
+C. 数据存储与缓存层 (Off-chain Cache Layer) - 左侧
+
+这是本图的核心知识点，解释了如何处理数据索引（Indexing）。
+
+1.  **Redis (缓存)**
+    
+    -   **用途**：键值对存储 (Key-Value)，用于极速读取。
+        
+    -   **示例**：存储用户 ID 到昵称的映射 (`user:1 -> wachi`, `user:2 -> luna`)。
+        
+    -   **场景**：比如前端需要快速显示“当前用户是谁”，查 Redis 比查数据库或区块链都要快。
+        
+2.  **Relational Database (关系型数据库)**
+    
+    -   **用途**：存储结构化数据，支持复杂查询（SQL）。
+        
+    -   **图中的 SQL 示例**：
+        
+        -   `users` 表包含 `id`, `name`, `group_id`, `balance`。
+            
+        -   演示了一个聚合查询：`select sum(balance)... group by group_id`。
+            
+        -   **关键点**：这种“按组统计总余额”的操作在区块链上**极难实现且极其昂贵**。因此，我们需要将链上数据同步到传统的 SQL 数据库中进行查询。
+            
+    -   **Replica of blockchain storage**：
+        
+        -   数据库被视为区块链存储的“副本 (Replica)”。
+            
+        -   **Indexing (索引)**：图底部的文字解释了这一过程——"prefetch data on blockchain, and populate it into database"（预取链上数据并填充到数据库）。这类似于 **The Graph** 或 **Dune Analytics** 的工作原理。
+            
+
+D. 区块链基础设施 (Blockchain Infra) - 底部
+
+-   **RPC (Remote Procedure Call)**：
+    
+    -   节点服务商：**NodeReal**, **Ankr**, **Infura**。
+        
+    -   作用：前端（钱包）和后端（服务器）都必须通过 RPC 节点才能访问区块链网络。
+        
+-   **Blockchain**：
+    
+    -   被定义为 **Decentralized Database (去中心化数据库)**。
+        
+    -   它是所有数据的“真理来源 (Source of Truth)”，但读取慢、查询能力弱。
+        
+
+E. 代码片段 (右侧边缘)
+
+展示了使用 `viem` 库进行基础交互的代码逻辑：
+
+1.  **Import**：引入 `createPublicClient` 和链信息 (`mainnet`)。
+    
+2.  **Setup**：创建一个客户端，指定链（Mainnet）和传输方式（HTTP）。
+    
+3.  **Action**：`client.transfer(...)`，展示了如何用代码发起一笔转账交易。
+    
+
+* * *
+
+### 3\. 课程总结 (Key Takeaways)
+
+这张图实际上是在教你 **Web3 开发的“读写分离”原则**：
+
+1.  **写 (Write)**：必须走区块链（通过 Wallet -> RPC -> Blockchain），因为需要去中心化的共识和资产安全。这很慢（2000ms+）。
+    
+2.  **读 (Read)**：尽量走链下缓存（Frontend -> Server -> Redis/DB），通过“索引器 (Indexer)”把链上数据同步到本地数据库。这很快（100ms）。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## . 会议概况
 
 -   **时间**：2026年1月21日 19:00 - 20:31 (PST) 111
@@ -144,6 +259,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ### 🔍 第一部分：底层逻辑 —— EVM 与存储布局
 
@@ -294,6 +410,7 @@ Elon 老师开篇并没有直接写代码，而是先讲了以太坊虚拟机（
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 对 **ERC-7962: Key Hash Based Tokens** 的深度总结：
 
 ### 01\. 想法起源 (Idea Origination)
@@ -413,6 +530,7 @@ B. ERC-KeyHash20 (FT/代币)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -599,6 +717,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 
 
+
 智能合约开发学习与个人项目的思考：
 
 我要构建带有激励行为的量化回测平台，如何同时体现worldquant brain这类传统量化基金的玩法和dapp的优势，根据ai所说：
@@ -681,6 +800,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 
 
+
 \### Web3 运营、职业发展与行业经验总结 (Q&A)
 
 \#### Q1: 如何判断 Web3 KOL 或项目流量的真实性？
@@ -742,6 +862,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -825,6 +946,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1009,6 +1131,7 @@ _\[cite\_start\]_\*解决方案\*\*：通过 WalletConnect，用户可以在 Uni
 
 
 
+
 一.交流活动：
 
 1\. 治理即纠错 DAO 不需要完美的决策，只需要死不了。民主虽然吵闹（软故障），但能避免独裁式的一夜崩盘（硬故障）。
@@ -1040,6 +1163,7 @@ _\[cite\_start\]_\*解决方案\*\*：通过 WalletConnect，用户可以在 Uni
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
