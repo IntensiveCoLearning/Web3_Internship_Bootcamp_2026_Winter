@@ -23,7 +23,7 @@ timezone: UTC+8
 
 **在原有基础上加入了适合小白（比如我）的注释**
 
-# **第一个应用**
+# [**第一个应用**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/02%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8.md#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8)
 
 ```remix-solidity
 // SPDX-License-Identifier: MIT
@@ -67,6 +67,70 @@ contract Counter { //contract是智能合约的起点，不可或缺
         // 如果计数为 0，则此函数将失败
         count -= 1;
     }
+}
+```
+
+# **基本数据类型**
+
+[https://github.com/Web3-Club/Solidity-by-example\_Chinese/blob/main/03%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/03%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
+
+代码好像出了点错，我搬运了一下
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Primitives {
+    bool public boo = true;
+
+    /*
+    uint 代表无符号整型，即非负整数
+    不同大小的 uint 可用
+        uint8 范围从 0 到 2 ** 8 - 1
+        uint16 范围从 0 到 2 ** 16 - 1
+        ...
+        uint256 范围从 0 到 2 ** 256 - 1
+    */
+    uint8 public u8 = 1;
+    uint256 public u256 = 456;
+    uint256 public u = 123; // uint 是 uint256 的别名
+
+    /*
+    int 类型允许负数。
+    类似于 uint，不同范围的 int 可用，从 int8 到 int256
+    
+    int256 范围从 -2 ** 255 到 2 ** 255 - 1 
+    int128 范围从 -2 ** 127 到 2 ** 127 - 1
+    */
+    int8 public i8 = -1;
+    int256 public i256 = 456;
+    int256 public i = -123; // int 和 int256 相同
+
+    // int 的最小值和最大值
+    int256 public minInt = type(int256).min;
+    int256 public maxInt = type(int256).max;
+
+    address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;
+
+    /*
+    在 Solidity 中，byte 数据类型表示一系列字节。 
+    Solidity 有两种字节类型：
+
+     - 固定大小的字节数组
+     - 动态大小的字节数组。
+     
+     在 Solidity 中，字节数组的术语代表字节的动态数组
+     这是 byte[] 的简写
+    */
+    bytes1 a = 0xb5; //  [10110101]
+    bytes1 b = 0x56; //  [01010110]
+
+    // 默认值
+    // 未赋值的变量有一个默认值
+    bool public defaultBoo; // false
+    uint256 public defaultUint; // 0
+    int256 public defaultInt; // 0
+    address public defaultAddr; // 0x0000000000000000000000000000000000000000
 }
 ```
 
@@ -144,6 +208,7 @@ uint public constant MY_UINT = 123;
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -151,6 +216,7 @@ uint public constant MY_UINT = 123;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -167,6 +233,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -207,6 +274,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -229,12 +297,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -273,6 +343,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -283,6 +354,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
