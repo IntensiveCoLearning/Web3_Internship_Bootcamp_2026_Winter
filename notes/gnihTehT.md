@@ -15,8 +15,129 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# Day11
+
+今天这个挑战还是没过去😭，但是不是我操作问题是我下错版本了，诶继续加油！总会成功的
+
+以下是 GPT 老师给我总结的雷
+
+1.  **Node 版本过高 / 不稳定**
+    
+    -   **踩点**：Node 24.x
+        
+    -   **症状**：`Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)`
+        
+    -   **原因**：Windows + Node 高版本 + libuv 原生模块崩
+        
+    -   **教训**：Windows 下务必用 **LTS（20.x）**
+        
+    -   **解决办法**：卸掉所有 Node、彻底清理 PATH → 装 Node 20 LTS → 重启
+        
+2.  **Yarn / npm 冲突**
+    
+    -   **踩点**：yarn v1 + node v24 / 内置 corepack
+        
+    -   **症状**：无法找到 `where yarn` 或 `where node`，环境残留
+        
+    -   **原因**：Windows PATH 残留多版本 Node/Yarn
+        
+    -   **解决办法**：彻底卸掉 Node + Yarn → npm 安装 yarn → rebuild 项目依赖
+        
+3.  **PowerShell 执行策略**
+    
+    -   **踩点**：`yarn chain` 报 `无法加载文件 ... 因为在此系统上禁止运行脚本`
+        
+    -   **原因**：PowerShell 默认 ExecutionPolicy 限制
+        
+    -   **解决办法**：`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
+        
+4.  **残留幽灵 Node**
+    
+    -   **踩点**：运行 yarn 脚本能跑，但 verify 直接崩
+        
+    -   **原因**：corepack 或旧 shell 继承了 Node 24 runtime
+        
+    -   **解决办法**：关掉所有终端 → 重启 → 确认 `node -v` & `where node`
+        
+
+* * *
+
+# 🟡 **合约 / Hardhat 雷区**
+
+1.  **部署 vs 验证**
+    
+    -   **踩点**：合约部署成功，但 `yarn verify` 崩
+        
+    -   **原因**：Node / 环境问题，不是 Hardhat
+        
+    -   **教训**：部署和测试成功 ≠ 验证成功，验证依赖原生模块 + 网络
+        
+2.  **测试链 / 钱包**
+    
+    -   **踩点**：生成钱包后余额为 0
+        
+    -   **症状**：mintItem 仍然可以通过 Hardhat 测试
+        
+    -   **教训**：Hardhat 本地链可以测试逻辑，不依赖实际网络 ETH
+        
+3.  **网络连接**
+    
+    -   **踩点**：无法连接 Sepolia / 其他 testnets
+        
+    -   **原因**：网络超时、API Key、Node 异常
+        
+    -   **教训**：网络问题先排除环境再排查合约
+        
+
+* * *
+
+# 🟢 **日常操作雷区 / UX坑**
+
+1.  **残留 lockfile**
+    
+    -   **踩点**：yarn.lock 旧版本 / SWC patch
+        
+    -   **教训**：`rd /s /q node_modules` + `del yarn.lock` + `yarn install` 可以复原
+        
+2.  **合约地址 / Etherscan**
+    
+    -   **踩点**：verify 提示 “Already verified”
+        
+    -   **教训**：只要页面显示源码可见 → ✅ 这步过了
+        
+3.  **虚拟钱包 / 本地测试**
+    
+    -   **踩点**：生成钱包后忘记密码 → 数据加密解密失败
+        
+    -   **解决办法**：务必记住密码，或者重生成钱包
+        
+
+* * *
+
+# 💎 **终极教训总结**
+
+1.  **Node 环境优先于合约 / Web3 逻辑**
+    
+    > 你这几天所有的崩溃，都是 Node + Windows 工具链问题，不是代码问题。
+    
+2.  **测试链和本地 Hardhat 可以先跑**
+    
+    > 不要依赖真实网络去调试合约，先保证本地脚本能跑
+    
+3.  **验证阶段最容易被忽略**
+    
+    > Verify 依赖 Node 原生模块 + 网络，环境干净才安全
+    
+4.  **PowerShell / PATH / Cache 是常见隐形坑**
+    
+    > 每次换 Node 版本 + Yarn 版本，先彻底清理 node\_modules + lockfile + cache
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # Day10
 
 今天正在挑战Tokenization#0，但是我的网络配置有问题，花了我一下午的时间都没解决好TuT，本来想着或许可以在剩下的时间完成，但是发现马上不够记笔记打卡了。
@@ -26,6 +147,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # Day 9
@@ -111,6 +233,7 @@ function Fallout() public { }
 
 
 
+
 # Day 8
 
 ## 运营
@@ -149,6 +272,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # DAY7
 
 做了一周的总结，画成了漫画。
@@ -164,6 +288,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -187,6 +312,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # **Day5**
 
 今天听了co learning和第一次例会，非常拓宽眼界！明天将把今晚的内容整理成一个笔记，今天的干货真的太多了，比在学校的学习知识密度要高很多倍！
@@ -196,6 +322,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -261,6 +388,7 @@ contract Counter{
 
 
 
+
 DAY3
 
 今天准备去学习剩下solidity入门课程，把入门通了一遍。
@@ -270,6 +398,7 @@ DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -304,6 +433,7 @@ DAY3
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
