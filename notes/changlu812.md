@@ -15,8 +15,182 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## **Solidity 基础语法详解**
+
+### **文件结构**
+
+1.1版本声明
+
+// SPDX-License-Identifier: MIT pragma solidity ^0.8.0; // 指定编译器版本
+
+1.2导入其他合约
+
+import "./OtherContract.sol"; import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+### **合约定义**
+
+contract ContractName { // 状态变量 // 构造函数 // 函数 // 事件 // 修饰器 // 结构体 // 枚举 }
+
+### **数据类型**
+
+布尔类型
+
+bool public isActive = true; bool public isCompleted = false;
+
+整数类型
+
+int8 public smallInt = -128; // 8位有符号整数 uint8 public smallUint = 255; // 8位无符号整数 int256 public bigInt; // 256位有符号整数 uint256 public bigUint; // 256位无符号整数
+
+地址类型
+
+address public owner = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4; address payable public payableAddress; // 可支付地址
+
+定长字节数组
+
+bytes1 public a = 0x61; // 1字节 bytes32 public hash; // 32字节
+
+枚举
+
+enum Status { Pending, Approved, Rejected } Status public status = Status.Pending;
+
+固定大小数组
+
+uint\[5\] public fixedArray = \[1, 2, 3, 4, 5\];
+
+动态数组
+
+uint\[\] public dynamicArray; address\[\] public addresses;
+
+映射
+
+mapping(address => uint) public balances; mapping(uint => string) public data;
+
+结构体
+
+struct Person { string name; uint age; address wallet; }
+
+字节数组
+
+bytes public dynamicBytes = "Hello"; string public greeting = "Hello, World!";
+
+### **变量和常量**
+
+状态变量
+
+// 存储位置 uint256 public storageVariable; // 存储在链上
+
+// 内存变量（在函数内声明） function example() public pure { uint256 memoryVariable = 100; // 仅存在于函数执行期间 }
+
+常量
+
+uint256 public constant MAX\_SUPPLY = 1000000; address public constant ADMIN = 0x...;
+
+不可变变量
+
+address public immutable owner; uint256 public immutable creationTime;
+
+constructor() { owner = msg.sender; creationTime = block.timestamp; }
+
+### **函数**
+
+函数声明
+
+// 函数结构 function functionName(parameterType parameterName) visibility stateMutability modifiers returns (returnType) { // 函数体 }
+
+函数可见性
+
+function publicFunction() public { // 任何人都可以调用 }
+
+function privateFunction() private { // 仅当前合约内可调用 }
+
+function internalFunction() internal { // 当前合约和继承合约可调用 }
+
+function externalFunction() external { // 只能从外部调用 }
+
+状态可变性
+
+function viewFunction() public view returns (uint) { // 读取但不修改状态 return someVariable; }
+
+function pureFunction(uint a, uint b) public pure returns (uint) { // 不读取也不修改状态 return a + b; }
+
+function payableFunction() public payable { // 可以接收以太币 // 修改状态 }
+
+### **特殊变量**
+
+全局变量
+
+// 区块信息 block.number; // 当前区块号 block.timestamp; // 当前区块时间戳 block.difficulty; // 当前区块难度 block.coinbase; // 当前区块矿工地址
+
+// 交易信息 msg.sender; // 函数调用者地址 msg.value; // 发送的以太币数量 [msg.data](http://msg.data); // 完整的调用数据 msg.sig; // 函数选择器
+
+// 合约信息 address(this).balance; // 合约余额 this; // 当前合约地址
+
+### **控制结构**
+
+条件语句
+
+// if-else if (condition) { // 代码块 } else if (anotherCondition) { // 代码块 } else { // 代码块 }
+
+// 三元运算符 uint result = condition ? a : b;
+
+循环
+
+// for 循环 for (uint i = 0; i < 10; i++) { // 代码块 }
+
+// while 循环 uint i = 0; while (i < 10) { // 代码块 i++; }
+
+// do-while 循环 uint j = 0; do { // 代码块 j++; } while (j < 10);
+
+### **错误处理**
+
+require：require(condition, "Error message");// 条件不满足时回滚，返回剩余 gas
+
+revert：if (!condition) { revert("Error message"); }
+
+assert：assert(condition); // 用于检查内部错误，消耗所有 gas
+
+### **事件**
+
+// 声明事件 event Transfer(address indexed from, address indexed to, uint256 value); event Approval(address indexed owner, address indexed spender, uint256 value);
+
+// 触发事件 function transfer(address to, uint256 amount) public { // ... 转账逻辑 emit Transfer(msg.sender, to, amount); }
+
+### **修饰器**
+
+// 定义修饰器 modifier onlyOwner() { require(msg.sender == owner, "Not owner"); \_; // 继续执行函数 }
+
+modifier costs(uint price) { require(msg.value >= price, "Insufficient funds"); \_; }
+
+// 使用修饰器 function changeOwner(address newOwner) public onlyOwner { owner = newOwner; }
+
+function buyItem(uint itemId) public payable costs(1 ether) { // 购买逻辑 }
+
+### **继承**
+
+// 父合约 contract Ownable { address public owner;
+
+constructor() { owner = msg.sender; }
+
+modifier onlyOwner() { require(msg.sender == owner, "Not owner"); \_; } }
+
+// 子合约 contract MyContract is Ownable { // 继承 Ownable 的所有功能 function adminFunction() public onlyOwner { // 只有所有者可以调用 } }
+
+### **接口**
+
+// 定义接口 interface IERC20 { function totalSupply() external view returns (uint256); function balanceOf(address account) external view returns (uint256); function transfer(address to, uint256 amount) external returns (bool);
+
+event Transfer(address indexed from, address indexed to, uint256 value);
+
+}
+
+// 实现接口 contract MyToken is IERC20 { // 必须实现所有接口函数 function transfer(address to, uint256 amount) external override returns (bool) { // 实现逻辑 return true; } }
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## **Uniswap工作原理解析**
 
 ### **Uniswap v2：CPMM恒积做市商**
@@ -84,6 +258,7 @@ LP会通过赚取交易手续费来对冲和覆盖无常损失
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ### **前端与合约交互流程**
 
@@ -161,6 +336,7 @@ LP会通过赚取交易手续费来对冲和覆盖无常损失
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ## **智能合约开发**
@@ -409,6 +585,7 @@ LP会通过赚取交易手续费来对冲和覆盖无常损失
 
 
 
+
 ### **节点同步的目标和意义**
 
 节点要同步的内容主要包括两部分：
@@ -451,6 +628,7 @@ ps：今天学的有点少，主要在赶学校的项目了，下周继续加油
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -649,6 +827,7 @@ RPC节点或RPC服务商就提供这些接口和endpoint。应用端只需要知
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -860,6 +1039,7 @@ RPC节点或RPC服务商就提供这些接口和endpoint。应用端只需要知
 
 
 
+
 ## **021学习以太坊笔记**
 
 ### **什么是以太坊节点**
@@ -941,6 +1121,7 @@ RPC节点或RPC服务商就提供这些接口和endpoint。应用端只需要知
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1197,6 +1378,7 @@ RPC节点或RPC服务商就提供这些接口和endpoint。应用端只需要知
 
 
 
+
 ## **DeFi：去中心化金融的创新实践**
 
 ### **DeFi是什么？**
@@ -1384,6 +1566,7 @@ MEME币具有极高投机性和波动性，价格可能短时暴涨暴跌
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
