@@ -15,8 +15,372 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+一、**Workshop 核心目标**
+
+本次 DApp Workshop 的目标是帮助开发者从 **0 → 1** 完整构建一个去中心化应用（Decentralized Application），理解：
+
+• 区块链系统的基本运行机制
+
+• 智能合约与前端交互方式
+
+• 钱包连接、交易签名与状态同步流程
+
+• Web3 产品与 Web2 产品的本质差异
+
+最终目标是掌握：
+
+**“链上逻辑可信 + 链下交互可用 + 用户体验可接受”** 的完整 DApp 架构模型。
+
+⸻
+
+二、**DApp 系统架构全景**
+
+一个标准 DApp 通常由四层组成：
+
+用户界面（Frontend）
+
+        ↓
+
+Web3 Provider（ethers.js / wagmi / viem）
+
+        ↓
+
+区块链节点（RPC / Infura / Alchemy）
+
+        ↓
+
+智能合约（Solidity / Vyper）
+
+1️⃣ **Frontend（前端层）**
+
+• 技术栈：React / Next.js / Vue
+
+• 功能：
+
+• 钱包连接
+
+• 合约调用
+
+• 数据展示
+
+• 交易状态反馈
+
+2️⃣ **Web3 SDK 层**
+
+• 常见库：
+
+• ethers.js
+
+• wagmi + viem
+
+• 作用：
+
+• 封装 JSON-RPC 请求
+
+• 管理钱包连接
+
+• 处理签名与交易广播
+
+3️⃣ **区块链节点层**
+
+• 提供：
+
+• 区块读取
+
+• 交易广播
+
+• 状态同步
+
+4️⃣ **智能合约层**
+
+• 用 Solidity 编写
+
+• 部署在链上
+
+• 负责资产逻辑与业务规则执行
+
+⸻
+
+三、**Workshop 实操流程拆解**
+
+✅ **Step 1：环境搭建**
+
+• Node.js + npm / pnpm
+
+• Hardhat / Foundry / Remix
+
+• MetaMask / Rabby 钱包
+
+• 测试网 ETH（Sepolia / Holesky）
+
+⸻
+
+✅ **Step 2：编写智能合约（Solidity）**
+
+示例：简单存储合约
+
+contract Storage {
+
+    uint public value;
+
+    function set(uint \_v) public {
+
+        value = \_v;
+
+    }
+
+}
+
+关键理解点：
+
+**模块** **含义**
+
+状态变量 永久存储在链上
+
+函数调用 消耗 Gas
+
+public 自动生成 getter
+
+msg.sender 调用者地址
+
+⸻
+
+✅ **Step 3：本地测试与部署**
+
+• 使用 Hardhat 本地链测试合约
+
+• 编写 JS/TS 测试用例
+
+• 部署至测试网
+
+关键命令：
+
+npx hardhat test
+
+npx hardhat run scripts/deploy.ts --network sepolia
+
+⸻
+
+✅ **Step 4：前端连接钱包**
+
+钱包连接流程：
+
+用户点击 Connect Wallet
+
+↓
+
+钱包弹窗授权
+
+↓
+
+前端获取 address + chainId
+
+↓
+
+创建 signer 实例
+
+↓
+
+可调用合约方法
+
+示例：
+
+const provider = new ethers.BrowserProvider(window.ethereum);
+
+const signer = await provider.getSigner();
+
+⸻
+
+✅ **Step 5：调用智能合约**
+
+const contract = new ethers.Contract(address, abi, signer);
+
+await contract.set(123);
+
+交互逻辑：
+
+**操作类型** **是否消耗 Gas** **是否产生交易**
+
+view / pure ❌ ❌
+
+write / state change ✅ ✅
+
+⸻
+
+四、**DApp 运行机制核心原理**
+
+1️⃣ **钱包即身份系统**
+
+• 钱包地址 = 用户身份
+
+• 私钥签名 = 授权凭证
+
+• 无需账号密码系统
+
+⸻
+
+2️⃣ **状态变更即交易**
+
+• 所有写操作都要：
+
+• 签名
+
+• 广播
+
+• 打包进区块
+
+• 确认后生效
+
+⸻
+
+3️⃣ **前端无法信任自身，只能信任链上状态**
+
+• DApp 前端只是 UI
+
+• 真正的逻辑在合约中
+
+• 数据以链上为最终裁决源
+
+⸻
+
+五、**Workshop 中的重要工程知识点**
+
+✅ **1. ABI 的本质**
+
+ABI 是：
+
+前端调用合约函数的接口描述文件
+
+类似于 Web2 的 API 文档 + SDK 绑定层
+
+⸻
+
+✅ **2. Gas 与 UX 设计冲突**
+
+用户体验挑战：
+
+**问题** **影响**
+
+Gas 波动 成本不可预测
+
+确认延迟 UX 中断
+
+失败交易 用户损失资金
+
+常见解决方案：
+
+• Layer2（Arbitrum / Optimism / Base）
+
+• Gas Sponsor / Meta-tx
+
+• 乐观 UI（Optimistic UI）
+
+⸻
+
+✅ **3. 合约不可变性风险**
+
+一旦部署：
+
+• 无法修改代码
+
+• 只能升级代理或部署新版本
+
+• 错误即永久错误
+
+因此必须：
+
+• 代码审计
+
+• 单元测试
+
+• 权限控制设计
+
+七、**DApp 与 Web2 应用的本质对比**
+
+**维度** **Web2** **DApp**
+
+身份系统 账号密码 钱包私钥
+
+数据存储 中心化数据库 区块链
+
+权限系统 平台控制 合约规则
+
+信任基础 公司信誉 数学与共识
+
+升级机制 即时更新 合约不可变
+
+⸻
+
+八、本次 **Workshop 的关键收获总结**
+
+🧠 **技术层面**
+
+• 掌握 Solidity 合约开发与部署流程
+
+• 熟悉 ethers.js / wagmi 的调用模式
+
+• 理解钱包连接、签名与交易确认机制
+
+• 能独立构建最小可用 DApp（MVP）
+
+⸻
+
+🧠 **产品与架构层面**
+
+• 理解 DApp 的 UX 瓶颈来自链上不确定性
+
+• 理解去中心化不是“无服务器”，而是“无信任中介”
+
+• 明确哪些逻辑必须上链，哪些应留在链下
+
+⸻
+
+🧠 **投研 / 战略层面（与你当前方向高度相关）**
+
+• 真正有护城河的 Web3 项目不是 UI，而是：
+
+• 协议设计
+
+• 激励机制
+
+• 状态机结构
+
+• DApp 的竞争力来源于：
+
+• 网络效应
+
+• 流动性深度
+
+• 合约组合性（Composability）
+
+⸻
+
+九、**Workshop 后的进阶建议路径**
+
+结合你目前 Web3 学习节奏，推荐进阶路线：
+
+🔹 **技术线**
+
+1\. ERC20 / ERC721 / ERC4626 合约实战
+
+2\. Subgraph / The Graph 数据索引
+
+3\. Account Abstraction（ERC4337）
+
+4\. Gas 抽象 / Session Key / MPC 钱包
+
+⸻
+
+十、
+
+本次 DApp Workshop 系统性完成了从智能合约开发、测试部署，到前端钱包连接与链上交互的完整闭环实践。我理解了 DApp 的本质是将核心业务逻辑迁移至不可篡改的链上执行环境，通过钱包体系替代传统身份系统，并以交易签名作为权限认证机制。同时也认识到链上确定性与用户体验之间的天然张力，这使得 Layer2、Gas 抽象与账户抽象成为 DApp 规模化落地的关键基础设施。本次 Workshop 不仅提升了我对 Solidity 与 Web3 工程栈的掌握程度，也深化了我对去中心化应用在产品结构与商业模式层面的理解。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 一、**Uniswap 概述**
 
 Uniswap 是基于以太坊的去中心化交易协议（DEX），核心创新是采用 **AMM（Automated Market Maker，自动化做市商）机制**，通过算法而非订单簿实现资产交换。
@@ -252,6 +616,7 @@ V4 Hooks 模块化 可编程流动性与策略层
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 📘 **Web3 公共物品资金分配｜学习笔记**
 
@@ -556,6 +921,7 @@ DAO 投资失败率高 将风险转移给建设者
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 **1**
 
 • [**Web3Buidler.Tech**](http://Web3Buidler.Tech)：合作伙伴，经常参与内容策划与行业研报分享。
@@ -615,6 +981,7 @@ DAO 投资失败率高 将风险转移给建设者
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -721,6 +1088,7 @@ Web3 安全不应被视为“成本”，而是决定行业能否走向大规模
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1106,6 +1474,7 @@ Web3 安全不应被视为“成本”，而是决定行业能否走向大规模
 
 
 
+
 **Agentic AI × Web3：从聊天机器人到自主经济体**
 
 **一、背景与趋势：AI 正在从“对话”走向“行动”**
@@ -1407,6 +1776,7 @@ Web3 是目前唯一能支撑高频、低额、机器交易的基础设施
 
 
 
+
 **Web3 安全与风险趋势学习笔记**
 
 **主题：Web3 安全态势、典型攻击方式与应对策略**
@@ -1510,6 +1880,7 @@ Web3 安全不应被视为“成本”，而是决定行业能否走向大规模
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
