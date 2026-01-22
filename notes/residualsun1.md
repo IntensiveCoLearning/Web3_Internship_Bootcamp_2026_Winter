@@ -15,8 +15,176 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## **1\. Solidity 语法中的基本结构**
+
+在 Solidity 代码中，都必须先指定和声明 Solidity 的编译器版本。
+
+```
+pragma solidity ^0.8.26;
+```
+
+接下来的具体内容以实例来理解 Solidity 语法中的基本结构，以下面三段 Solidity 语法为例。
+
+```
+contract HelloWorld {
+    string public greet = "Hello World!";
+}
+contract Counter {
+    uint256 public count;
+​
+    // Function to get the current count
+    function get() public view returns (uint256) {
+        return count;
+    }
+​
+    // Function to increment count by 1
+    function inc() public {
+        count += 1;
+    }
+​
+    // Function to decrement count by 1
+    function dec() public {
+        // This function will fail if count = 0
+        count -= 1;
+    }
+}
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+​
+contract MyContract {
+    // 状态变量
+    uint256 public myNumber;
+​
+    // 构造函数
+    constructor() {
+        myNumber = 100;
+    }
+​
+    // 函数
+    function setNumber(uint256 _number) public {
+        myNumber = _number;
+    }
+}
+```
+
+### **1.1 合约定义结构**
+
+可以看到三段代码的共通处是都含有 `contract XXX {}` 的结构——**合约定义**（Contract Definition），是智能合约中的基本构件单元，类似于 Java 或者 C++ 中的类（Class）。
+
+-   `contract`：向编译器声明这是一个合约模块。
+    
+-   `XXX`：合约的名称，由开发者来定义，通常用大驼峰命名法——首字母大写——来书写，比如上面例子中的 `HelloWorld` 和 `Counter`。
+    
+-   `{}`: 合约体，里面是合约的具体内容，主要包括**状态变量**和**函数**。
+    
+    -   **状态变量**可以被简单理解为「数据」，相当于合约的「属性」/「肉体」，主要存数据。 如同文档中所定义的：
+        
+    
+    > 状态变量是指在合约中定义的、其值永久存储在区块链上的变量。它们用于记录合约的持久化数据，构成了合约的整体状态。当合约被部署后，这些变量将被写入区块链，并在合约的整个生命周期中保持可访问性和可追踪性。
+    
+    -   **函数**则可以被简单理解为「逻辑」/「行为」，或者说是操作数据的方法。函数是一个统称，可以分出构造函数、普通函数。**构造函数** `constructor` 比较特殊，是初始化逻辑，只在合约部署时执行一次，通常用于给状态变量赋予初始值；**普通函数** `function` 可以被理解为具体的执行或业务逻辑，随时都可以执行，用于日常的交互、数据读取和修改等。
+        
+
+前面讲到了 `contract xxx {}` 这样的基本结构，下面继续对其中的要素进行理解，比如其中的数据存储结构（含状态变量）——可在此[回顾](https://guozheng.rbind.io/project/compile-and-deploy-message-contract/#1%e6%95%b0%e6%8d%ae%e5%ad%98%e5%82%a8%e7%bb%93%e6%9e%84%e9%83%a8%e5%88%86)、构造函数和普通函数。
+
+### **1.2 构造函数结构**
+
+构造函数的基本结构如下：
+
+```
+constructor(参数列表) {
+    // 初始化逻辑
+}
+```
+
+`constructor` 是关键字也是名字，没有自定义的名称，`(参数列表)` 内用接收部署时传入的初始参数。另外，构造函数不需要写可见性，因为默认只能在部署时由系统调用，而且由于其任务是初始化，所以不存在返回结果。
+
+### **1.3 普通函数结构**
+
+普通函数结构我们已经[看过](https://guozheng.rbind.io/project/smart-contract-development/#solidity-%e6%99%ba%e8%83%bd%e5%90%88%e7%ba%a6%e7%bc%96%e7%a8%8b)了，但是没有与智能合约中的其他部分一起进行梳理，在此再次书写一次，以便对比和理解。
+
+```
+function 函数名(参数列表) 可见性 状态可变性 修饰符 返回类型 {
+    // 函数体
+}
+```
+
+-   `function` 固定开头，声明要定义一个函数；
+    
+-   `函数名` 部分可以自定义，且通常采用小驼峰命名法——第一个单词首字母小写，从第二个单词开始每个单词的首字母大写；
+    
+-   `(参数列表)` 内的内容是函数接收的参数，可以为空；
+    
+-   `可见性` 包括 `public`（谁都可以调用参数）、`private`（只有合约自己内部可以调用参数）、`internal`（自己和继承的子合约可以调用参数） 和 `external`（只有外部能调用参数）四种；
+    
+-   `状态可变性` 部分详细可见[此处](https://guozheng.rbind.io/project/compile-and-deploy-message-contract/#4%e6%a0%b8%e5%bf%83%e5%8a%9f%e8%83%bd%e5%87%bd%e6%95%b0);
+    
+-   `返回类型` 是函数返回的结果，如果有——写成 `returns` 而非 `return`——需要告知其返回的数据类型。
+    
+-   `修饰符` 有点复杂，它允许在函数执行前插入额外逻辑，常用于权限控制与前置检查。
+    
+
+理解函数的基本结构，对于理解新的代码很有帮助，还是以一段计数代码为例。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+​
+contract Counter {
+    uint256 public count;
+​
+    // Function to get the current count
+    function get() public view returns (uint256) {
+        return count;
+    }
+​
+    // Function to increment count by 1
+    function inc() public {
+        count += 1;
+    }
+​
+    // Function to decrement count by 1
+    function dec() public {
+        // This function will fail if count = 0
+        count -= 1;
+    }
+}
+```
+
+在上面这段代码中，合约名称直接命名为计数器 `Counter`，合约中的第一行内容即状态变量 `count`，它会被永久存储在区块链上，其数据存储结构是 `uint256`，也就是说 `count` 的类型已经确定为 256 位无符号整数。`public` 表示变量是公开的，外部用户可以直接通过调用 `count()` 来查看值，不需要额外写 `get()` 函数——虽然示例里为了演示还是写了一个。
+
+之后的三段代码都是普通函数，根据加减进行了不同的命名，并基于此在函数体中进行了不同的具体描述。
+
+## **2\. 南塘道分享会**
+
+今晚的南塘 DAO 分享会让我想起了过去在西埠村做田野调查的经历。
+
+或许可以理解为，南塘 DAO 在做的事情是将 Web3 技术和线下的乡村建设与治理结合起来，又或者说是 DAO 理念的一次实践。如同第二位分享者说的，在传统公司模式中，老板决策，全员沉默执行，高效但压抑；不过在南塘 DAO 早期，是人人有权，但没有共识，很凌乱。基于这种情况，引入了「罗伯特议事规则」，似乎在这一规则体系之下，议事不批判人，只完善事，规则首先保护的是提出不成熟想法的人。——「当每个人都感到安全，智慧才会真正开始流动」。换句话说，提出想法的人无法得到有效的保护，感受不到安全，是许多会议失败的原因。感到安全时，智慧才会流动。
+
+在议事之中，我们一开始就不需要诸葛亮，而是通过抚平信息差，让我们这些受过相似教育、底层代码相似的年轻人的个性和差异成为了资源，发挥三个臭皮匠的作用。
+
+第三位分享者富章来自台湾，是上一期的学员，负责议事规则实践，提到了书籍《可操作的民主：罗伯特议事规则下乡群全纪录》。
+
+他还提出，每个人的想法是否可以保留在区块链中？一群人的共识。以某种智能合约的方式来运作，而这个规则是非常程序化的。希望开会不仅人主持，进一步由 ai 主持，由区块链、智能合约执行？
+
+第一位分享者小白说到大家的 Web3 实践如何与官方的沟通：只谈区块链的技术——记事簿，但不涉及法币。
+
+据闻南塘道已经有了一个实践：
+
+> 我们第二期艺术共创营已经过半了，这次的主题是南塘人物志，挖掘的是每一位村民最深刻的故事，并用画作和NFT保存下来。预计2月2日我们会进行线上展览，如果感兴趣的可以持续关注喔
+
+为什么要用去中心化的理念来实践？区块链的技术可以让大家看到自己的贡献？而且这种贡献会一直存在且无法被篡改
+
+基于文档、照片，形成 NFT？
+
+将村民的故事、村庄历史变成区块链上永久的、不可篡改的 NFT，可以成为在西埠村的尝试吗？
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # 开发我的第一个 Web3 Vibe-Coding Demo 项目
 
 ## **1\. 今日想法**
@@ -180,6 +348,7 @@ contract AgentReputation {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## 1\. 理解「链上留言」的合约代码
 
@@ -440,6 +609,7 @@ function getMessageCount(address user)
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 \## Dapp
 
 \* 去中心化应用
@@ -677,6 +847,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **补充梳理：图灵完备与智能合约**
 
 当朋友问起我什么是「以太坊」（Ethereum）时，我总会习惯性地通过其与「比特币」的对比来进行说明。但需要指出的是，这里的比特币并非简单地指「代币」（Token）——一种在去中心化的网络中用于给予维持网络运行的节点/网络服务提供商/「矿工」 的奖励/Gas Fee，如比特币、以太币等。
@@ -750,6 +921,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **1\. LXDAO 周会**
 
 今天早上参加了 LXDAO 的周会，大致了解一下社区的运作模式和每周一会的内容。就社区的运作模式来说，和在实习手册中看到的描述相近，主要是由成员来提出提案，大家进行讨论和反馈，确认对社区有帮助便会支持一起做出来。在LXDAO 的 [notion](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9) 上可以见到其 Dashboard，根据不同主题分出了许多板块，包括教育、资金可持续性还有研究与机制创新等，里面还清晰地罗列着 Not started、In progress、Pending 和 Done 等状态的项目任务。接任务的方式有两种，一种是在周会现场举手加入，然后联系发起人；另一种是在路线图中找到任务并以详细计划进行申请。
@@ -799,6 +971,7 @@ returns (<返回值列表>)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -885,6 +1058,7 @@ Leon 也是通过思维导图的方式来分享自己对 Web3 的学习。如果
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1052,6 +1226,7 @@ AI 与 Web3 的结合—— AI 赚钱？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1339,6 +1514,7 @@ GoPlus 有相关网站可以检测风险。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1640,6 +1816,7 @@ wachi 助教补充了一段信息：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
