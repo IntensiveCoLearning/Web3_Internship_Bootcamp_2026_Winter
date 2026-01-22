@@ -15,8 +15,91 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# Web3 学习笔记 · Week 2
+
+**主题：Scripting & Ethers.js**
+
+* * *
+
+## 一、学习目标
+
+通过脚本直接与区块链交互，为后续智能合约开发打基础。
+
+* * *
+
+## 二、Ethers.js
+
+以太坊 JavaScript SDK，用于：
+
+-   连接区块链
+    
+-   管理钱包与签名
+    
+-   发送交易
+    
+-   处理大数（BigNumber）
+    
+
+* * *
+
+## 三、核心概念
+
+-   **Provider**：只读区块链数据（区块、余额、ENS）
+    
+-   **Signer / Wallet**：持有私钥，可签名、发交易
+    
+-   **读用 Provider，写用 Signer**
+    
+
+* * *
+
+## 四、BigNumber 处理
+
+-   `formatEther`：wei → ETH（展示）
+    
+-   `parseEther`：ETH → wei（输入）
+    
+-   不转普通 number 参与计算
+    
+
+* * *
+
+## 五、ENS 与网络
+
+-   ENS 主要在主网
+    
+-   实际开发常需：
+    
+    -   主网：身份解析
+        
+    -   测试网 / L2：交易执行
+        
+
+* * *
+
+## 六、交易认知
+
+-   `sendTransaction`：交易进入内存池
+    
+-   `tx.wait()`：交易确认
+    
+
+* * *
+
+## 七、关键收获
+
+-   脚本是 Web3 开发的第一步
+    
+-   钱包是身份与权限中心
+    
+-   异步、大数、网络是核心门槛
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 # Web3 学习总结 · Week 2
 
 **主题：脚本编写（Scripting）与 Ethers.js**
@@ -105,6 +188,7 @@ Ethers.js 是一个用于与以太坊交互的 JavaScript 库，主要作用是�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # Web3 学习日志 · Day 7
 
@@ -320,6 +404,7 @@ Web3 项目中：
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # Web3 学习日志 · Day 6
 
 **主题：阶段性复习与结构重建**
@@ -464,6 +549,7 @@ Web3 项目中：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -724,6 +810,7 @@ Web3 很难用，但正因为难，
 
 
 
+
 # Web3 学习日志 · Day 4
 
 **主题：ENS 身份、DEX、钱包与 DApp 交互、Web3 学习路径**
@@ -834,6 +921,7 @@ DApp 是你的应用市场。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -988,6 +1076,7 @@ Web3 的风险主要来自两端：
 
 
 
+
 # Web3 学习日志 · Day 2
 
 **主题：以太坊运行逻辑、DeFi、DApp 与开放网络结构**
@@ -1127,6 +1216,7 @@ EVM 是运行环境，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
