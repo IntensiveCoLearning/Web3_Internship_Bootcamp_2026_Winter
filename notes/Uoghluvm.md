@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+听了xAI员工播客，原来xAI用Tesla车上的FSD算力来快速迭代小模型。那么ETH完全可以做同样的事！
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # 260119以太坊周会
 
 ### 1\. 市场的新规则：告别“四年周期”神话
@@ -102,6 +108,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今天看同学笔记，深入了解了polymarket的机制，一切馈赠都标好了价格。
 
 加了投研群，感觉这才是web3的根基啊。
@@ -111,6 +118,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 1.  入门技术，做Ethernaut前三关，感觉智能合约安全审计还是挺需要斗智斗勇的哈哈哈。感谢解法开源：[https://github.com/Pedrojok01/Ethernaut-Solutions/tree/main](https://github.com/Pedrojok01/Ethernaut-Solutions/tree/main)
@@ -125,6 +133,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 撰写了学习总结，[https://x.com/uogh007/status/2012760845420261510?s=20](https://x.com/uogh007/status/2012760845420261510?s=20)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -134,11 +143,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 研究了polymarket，好多套利项目
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -249,6 +260,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -413,11 +425,13 @@ AI 技术的大规模应用彻底重塑了 Web3 的社交工程学边界。2025 
 
 
 
+
 参加了Billions线下活动
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -592,6 +606,7 @@ Web3被称为“世界上人效杠杆率最高的行业之一”，以下这组�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
