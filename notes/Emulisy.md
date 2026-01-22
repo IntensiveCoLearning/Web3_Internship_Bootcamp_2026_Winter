@@ -15,8 +15,77 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# Hardhat vs Foundry
+
+## 1\. Hardhat
+
+-   JS/TS 生态的智能合约开发框架
+    
+-   核心命令：
+    
+    -   `hardhat compile` → 编译合约
+        
+    -   `hardhat test` → JS/TS 测试
+        
+    -   `hardhat node` → 本地测试链
+        
+    -   `hardhat run scripts/deploy.js` → 部署脚本
+        
+-   特点：
+    
+    -   适合前端/全栈开发者
+        
+    -   插件丰富（gas、coverage、verify 等）
+        
+    -   测试用 JS/TS 编写
+        
+-   用途：写、测试、部署合约；与前端 Dapp 联动
+    
+
+* * *
+
+## 2\. Foundry
+
+-   Rust 写的高性能 Solidity 开发工具链
+    
+-   核心工具：
+    
+    -   `forge` → 编译、测试、部署
+        
+    -   `cast` → CLI 交互、调用交易
+        
+    -   `anvil` → 本地链（类似 Hardhat node）
+        
+-   特点：
+    
+    -   测试用 Solidity 写（更接近合约本身）
+        
+    -   速度快，支持 fuzz 测试、trace、调试
+        
+    -   适合合约开发/安全/审计
+        
+-   用途：专业级合约开发、测试、部署
+    
+
+* * *
+
+## 3\. 对比总结
+
+| 方面 | Hardhat | Foundry |
+| --- | --- | --- |
+| 生态 | JS/TS | Solidity + CLI |
+| 测试语言 | JS/TS | Solidity |
+| 本地链 | hardhat node | anvil |
+| 适合 | 前端/全栈 | 合约开发/审计 |
+| 插件/扩展 | 丰富 | 核心工具强大，插件少 |
+| 速度 | 中等 | 很快 |
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # Web3 Frontend Tech Stack
 
 ## 1\. What is Web3 Frontend
@@ -143,6 +212,7 @@ Smart Contracts (Blockchain)
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 # FullStack Web3 Engineer Learning Path – Notes  
 
 ## Core Skill Areas  
@@ -226,6 +296,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # DApp Development Workflow
@@ -321,6 +392,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -450,6 +522,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -611,6 +684,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -844,6 +918,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -1013,6 +1088,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1210,6 +1286,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
