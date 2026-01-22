@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# pendle协议
+
+我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
+
+一个SY可以拆分成一个PT+一个YT。相应的一个YT+一个PT也能总换成SY（直接合并拆分）
+
+详细介绍
+
+Underlying APY：过去七天里stETH在Lido的实际年化，实际资产能产生的收益 Implied APY:市场认为这个资产的年化是多少(收益多少)
+
+Long Yield APY:因为 Implied APY和Underlying APY的差异，根据这两个差异，协议计算出来的静态收益
+
+解释：你现在买YT，价格可能是年化6.4%，而过去七天实际只有5%，所以意味着买完YT后可能会亏19.17%
+
+Fixed APY：市场认为年化是6.4%，如果你现在买PT，持续到到期日结束会得到5.8的年化
+
+## PT详细信息
+
+Liquidity市场流动性，24h Volume最近成交量，Underlying APY：过去七天里stETH在Lido的的实际年化，实际资产能产生的收益 。Fixed APY：你现在买入PT并持有到到期日能得到的年化(意味着你的PT不在Lido里)
+
+## YT
+
+![截屏2026-01-22 23.42.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-22-1769096554714-__2026-01-22_23.42.13.png)
+
+前三个信息和PT的一样。Implied APY：市场给的定价是14.05%。这里应该还会有一个Long Yield APY:假设目前保持到截止日期underlying APY为6.308%你亏（盈利）多少
+
+### 做市Pools
+
+做市添加流动性
+
+LP是什么
+
+LP是SY和PT之间的交易
+
+会有一丢丢磨损（亏损），可以通过0价格影响磨损进入：可以获得一个LP,和YT
+
+过程：一个eETH放进去 --> 包装成一个SY：然后将一半(具体看汇率)SY留下+（将剩下的SY）拆分成PT+YT --> 再将SY和PT做市混合为LP，YT则自己留在钱包里
+
+如果不以0价格影响进入，意味着直接将eETH直接换成LP（相当于直接把YT直接兑换成LP，所以会有点磨损） ，如果没有YT，[ether.fi](http://ether.fi)协议不会给我们积分
+
+在退出的时候想取出来eEth选择手动Manual退出，再选择Remove Li，并移除流动性（拉最满），之后会给你计算出你的eETH和PT 这个PT再和钱包里的YT合成eEth
+
+选择直接退出不好的原因：因为你要退出的是LP的资产，协议并不知道我们钱包有YT，并且SY也会随着汇率波动，可能根本没有到1eETH，所以最后得到的eEth会变少
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 LIdo
 
 ![截屏2026-01-20 22.31.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-20-1768919519461-__2026-01-20_22.31.50.png)
@@ -38,6 +86,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 # 如何策划twitterspace
 
@@ -140,6 +189,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 # uniswap协议：LP挖矿：AMM恒定乘积做市函数
 
 uniswap协议是以池子的方式进行交易的形式。这是一种做市函数。我们是和资金池做交易，所以Dex里需要引入新角色：LP的提供者，他们维持了整个交易的流动性。LP提供者就是普通用户的对手。
@@ -201,6 +251,7 @@ T0时间是添加流动性的时候，T1,T2分别为两次变化。并且假如y
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -431,6 +482,7 @@ DeFi 的优势与风险：
 
 
 
+
 # 支付摩擦：机器经济需要新货币
 
 -   新需求：
@@ -500,6 +552,7 @@ web3对ai合规的解决方案：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -579,6 +632,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -728,6 +782,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
