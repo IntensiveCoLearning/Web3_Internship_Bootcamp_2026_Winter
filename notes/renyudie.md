@@ -17,8 +17,18 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+[XSpoonAi/spoon-core](https://github.com/XSpoonAi/spoon-core)
+
+Solidity 编译功能
+
+LLM → 生成 Solidity ↓ Tool → solc 编译 ↓ ❌ 报错 ↓ LLM ← 读取 error message ↓ LLM → 修复代码
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ### Figma学习笔记
 
 ![Frame 1321317033.jpg](attachment:d98e574b-58d5-451b-9a7a-60f5282a6fdc:Frame_1321317033.jpg)
@@ -164,6 +174,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ### 运营渠道
 
 1.  telegram
@@ -225,6 +236,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -274,6 +286,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -383,6 +396,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -420,6 +434,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -451,6 +466,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -598,6 +614,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
