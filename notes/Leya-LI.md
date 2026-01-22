@@ -15,8 +15,61 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+【Web3 实习计划（冬季）：AI 及其基础概念】 [https://www.bilibili.com/video/BV1axkwBaEvC/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1axkwBaEvC/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
+  
+这份视频由 Spoon OS 的 Rick 老师主讲，详细探讨了 AI Agent（智能体）与 Web3 技术的深度融合。
+
+以下是视频内容的详细总结：
+
+### 1\. 分享者分享部分：AI 与 Web3 的融合逻辑
+
+Rick 老师从 AI 的演进、当前局限性以及 Web3 如何赋能 AI 三个维度进行了系统分享：
+
+-   **AI 的演进与局限**：
+    
+    -   **大模型（LLM）的本质**：是一个基于概率的 Token 预测器，虽然像“学霸”一样博学，但由于无状态（不记事）、无工具调用能力、无身份，目前更像是一个高级辅助工具而非独立的执行者。
+        
+    -   **AI Agent 的崛起**：2026 年的 AI 不再仅是“嘴替”，而是进化为拥有记忆、能调用工具、具备自主身份的“打工人”，能够自主思考并执行任务。
+        
+-   **AI 经济的“黑户”困境**：
+    
+    -   当前 AI 在互联网环境下难以像人类一样参与经济活动，面临身份不可验证（谁在发请求？）、行为不可审计（决策逻辑不透明）、支付结算难（缺乏银行账户且微支付成本高）等问题。
+        
+-   **Web3 的核心解决方案**：
+    
+    -   **ERC-8004（身份标准）**：为每个 AI 提供一张链上“护照”。基于 NFT 形式，身份全球唯一、可验证且所有权可转移。
+        
+    -   **ERC-402（支付标准）**：原生微支付协议。支持毫秒级、极低金额（如 0.001 美元）的链上结算，无需 KYC 即可让机器自主完成交易支付。
+        
+    -   **可验证审计**：利用区块链不可篡改的特性记录 AI 的决策哈希，确保护照和行为记录真实可信，满足未来严格的合规审计需求。
+        
+-   **Spoon OS 框架**：
+    
+    -   定位为 AI Agent 的“安卓系统”，通过四层架构（输入、核心、协议、输出）封装复杂的钱包、签名和合规逻辑，让开发者能快速构建具备 Web3 能力的智能体。
+        
+
+* * *
+
+### 2\. Q&A 互动部分
+
+Q&A 环节针对 AI 决策责任、技术效率等实战问题进行了深度解答：
+
+-   **AI 交易的必要性**：有学员质疑是否直接托管账户给量化机器人即可。老师回应，Web3 解决的是“可验证性”和“信任”问题，只有具备链上身份，外部资金才能在无需信任项目方的前提下参与 AI 管理的基金。
+    
+-   **Web3 的效率优势**：针对 Web3 效率是否低于 Web2 的提问。老师解释，对于跨国机器间的高频微额支付，传统金融体系存在严苛审计和高额手续费，而 Web3 通过 Layer 2 等技术能实现极速、低成本结算，更适合机器经济。
+    
+-   **Agent 身份的一致性**：关于 Agent 升级后身份是否变化。老师表示，目前协议支持通过 NFT 映射关系维持身份延续，也可以根据具体业务逻辑选择通过新合同替代旧身份，取决于开发者的设计。
+    
+-   **防范女巫攻击**：针对恶意评价的问题，老师指出 ERC-8004 设有信誉系统，用户只有在真正与该 Agent 产生链上交易（支付了成本）后才有权评价，极大地提高了刷分抹黑的门槛。
+    
+-   **决策责任归属**：如果 AI 造成经济损失谁负责？老师强调，通过链上身份可溯源到其部署者。虽然算法能辅助决策，但最终的法律责任仍落在链上所有权（所有者地址）身上。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 [https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
 
 This video focuses on advanced Web3 user skills, covering troubleshooting transactions, utilizing Layer 2 (L2) networks, and managing assets with decentralized financial tools.
@@ -55,6 +108,7 @@ The video highlights the speed and cost advantages of Layer 2 networks, specific
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible Tokens (NFTs)**, explaining their fundamental concepts, technical standards, and how users interact with them in the Ethereum ecosystem. **👩‍💻 Web2 to Web3 🚀 - Week 1 Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata** [**https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
 
@@ -107,6 +161,7 @@ This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 In this video, "Web2 to Web3 - Week 1, Day 3," Austin Griffith and his team demonstrate how to use an Ethereum wallet to interact with various Web3 services, emphasizing how your identity and inventory follow you across the decentralized web.
@@ -166,6 +221,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -230,6 +286,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
