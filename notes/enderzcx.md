@@ -66,10 +66,28 @@ contract Variables {
     }
 }
 ```
+
+更正一下[https://github.com/Web3-Club/Solidity-by-example\_Chinese/blob/main/05%20%E5%B8%B8%E9%87%8F.md](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/05%20%E5%B8%B8%E9%87%8F.md)这里的解释方便小白理解：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Constants {
+// 编码惯例将常量变量大写
+// "Constants" 是这个 "contract" 的名字
+address public constant MY_ADDRESS = 0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
+uint public constant MY_UINT = 123;
+// "constant" 才表示这个变量是一个常量 用法是：常量类型 可见性 constant 常量名字 = 常量值
+// 需要与一般的变量用法区分开，普通变量用法：变量类型 可见性 变量名字 = 变量值
+// "="和"变量值" 可以不写，默认变量值为0
+}
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 收看「Web3 公共物品资金分配第一节课」回放
@@ -82,6 +100,7 @@ contract Variables {
 
 
 
+
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
 **后面学习完智能合约我要试试ERC7962在代码层面和一般的有什么不一样，从代码层面是如何实现的**  
 Solidity学习路线（**021学习以太坊**）：
@@ -91,6 +110,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -123,6 +143,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -141,12 +162,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -177,6 +200,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -187,6 +211,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
