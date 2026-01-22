@@ -21,9 +21,9 @@ timezone: UTC+8
 
 [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分**学习笔记：**
 
-**在原有基础上加入了适合小白（比如我）的注释**
-
 # [**第一个应用**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/02%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8.md#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8)
+
+**在原有基础上加入了适合小白（比如我）的注释**
 
 ```remix-solidity
 // SPDX-License-Identifier: MIT
@@ -55,7 +55,7 @@ contract Counter { // contract 是智能合约的起点，不可或缺
     }
 
     tips：最简函数用法：function 函数名() 可见性 {}
-       
+    // 空括号 () 表示该函数不接受任何参数。   
     注意 1：合约中定义的函数需要明确指定可见性，它们没有默认值
     注意 2：public|private|internal 也可用于修饰状态变量(定义可参考WTF Solidity 第5讲的相关内容)。public变量会自动生成同名的getter函数，用于查询数值。未标明可见性类型的状态变量，默认为internal。
     */
@@ -71,6 +71,8 @@ contract Counter { // contract 是智能合约的起点，不可或缺
     }
 }
 ```
+
+重点解释一下参数：参数是函数在执行时**从外部接收的数据（我将在If/Else板块举例说明）**。
 
 # [**基本数据类型**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/03%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
 
@@ -375,10 +377,19 @@ contract IfElse {
     }
 }
 ```
+
+这是我们遇到第一个有参数的函数，现在介绍一下参数
+
+点击橙色按钮
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/enderzcx/images/2026-01-22-1769091319887-image.png)
+
+部署合约后，点击出现的合约地址
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -417,6 +428,7 @@ contract IfElse {
 
 
 
+
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
 **后面学习完智能合约我要试试ERC7962在代码层面和一般的有什么不一样，从代码层面是如何实现的**  
 Solidity学习路线（**021学习以太坊**）：
@@ -426,6 +438,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -484,6 +497,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -515,12 +529,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -577,6 +593,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -587,6 +604,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
