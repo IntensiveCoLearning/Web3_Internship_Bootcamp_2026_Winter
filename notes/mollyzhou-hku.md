@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+阅读完中文文案排版指南。我发现自己对于使用空格其实不是非常严格遵守规范，中文和英文之间，中文和数字之间原来也要加空格！这样确实会更加美观。全角和半角标点倒是接触过，但是有时候中英文切换的时候不知道用哪种：
+
+“在 ETHPanda，每个人都能快乐学习”
+
+“在 ETHPanda, 每个人都能快乐学习”
+
+Gemini说应该还是要用全角的，因为整句话的句式结构和主要的语义载体是中文。而且这样看也确实全角逗号更加美观。
+
+Figma使用还在探索，其实只是懒得像画ppt图层一样一点一点加上去...最好是能智能生成一部分，但是海报好像还不行，app和web都可以
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 尝试用figma make直接生成海报。但是总是加载不出来...研究一下问题在哪里
 
 prompt:
@@ -28,6 +42,7 @@ prompt:
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 # TVL数据分析
 
@@ -304,6 +319,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 <!-- DAILY_CHECKIN_2026-01-16_START -->
 
 
+
 **Day 3: ENS, DEX, Identity, Inventory, Sybil：**[**https://gemini.google.com/share/487d38ce5338**](https://gemini.google.com/share/487d38ce5338)
 
 **Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata：**[**https://gemini.google.com/share/fc9bd615ba37**](https://gemini.google.com/share/fc9bd615ba37)
@@ -313,6 +329,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -494,6 +511,7 @@ C. 市场格局的永久改变
 
 
 
+
 看完了实习手册的【入门导读】，对区块链原理和以太坊机制理解更加深刻了，行业赛道方面希望深入了解AI+DiFi和WEB3+乡建
 
 我将两个Youtube教程视频的transcript交给Gemini进行了摘要总结，方便快速浏览和时间轴上定位复习
@@ -616,6 +634,7 @@ Web3 的去中心化治理目前更像是一个\*\*“虽然混乱但充满活�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
