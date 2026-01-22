@@ -205,7 +205,7 @@ uint public constant MY_UINT = 123;
 
 这里贴上AI的解释：
 
-### **1\.** `constructor` **是什么？**
+### **1.** `constructor` **是什么？**
 
 -   **构造函数**：合约**部署时自动运行一次**的特殊函数，用于初始化状态变量。
     
@@ -290,10 +290,33 @@ contract MyContract {
 -   **气体效率**：避免后续用 `setter` 函数额外消耗 gas。
     
 -   **不可变性**：结合 `immutable` 关键字（如 `address public immutable OWNER;`），可以节省 gas。
+    
+
+# [**以太币和Wei**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/08%20%E4%BB%A5%E5%A4%AA%E5%B8%81%E5%92%8CWei.md#%E4%BB%A5%E5%A4%AA%E5%B8%81%E5%92%8Cwei)
+
+**可能代码翻译者没删除一些东西，优化了一下，我还加入了一些解释：**
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract EtherUnits {
+uint public oneWei = 1 wei;
+// 1 Wei 等于 1 (记住他)
+bool public isOneWei = 1 wei == 1; // == 是相等比较运算符，用于判断两个值是否相等。它返回一个布尔值（true 或 false）。
+
+uint public oneEther = 1 ether;
+// 1 以太币等于10^18 Wei
+bool public isOneEther = 1 ether == 1e18;
+}
+// wei 和 ether 是 Solidity 的内置单位：可以直接在代码中使用（如 1 wei、0.5 ether）
+
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -324,6 +347,7 @@ contract MyContract {
 
 
 
+
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
 **后面学习完智能合约我要试试ERC7962在代码层面和一般的有什么不一样，从代码层面是如何实现的**  
 Solidity学习路线（**021学习以太坊**）：
@@ -333,6 +357,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -383,6 +408,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -410,12 +436,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -464,6 +492,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -474,6 +503,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
