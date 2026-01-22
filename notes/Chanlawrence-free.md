@@ -15,8 +15,440 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## Introduction｜这张图到底在讲什么 (Overview)
+
+你要理解的核心，你原文已经给了一句非常到位的总结：
+
+> 这不是“一个系统”，而是 两条数据世界同时存在（two data worlds co-exist）：
+> 
+> **Off-chain（链下）**：数据库 + 后端服务
+> 
+> **On-chain（链上）**：区块链状态 + 合约
+
+再用 First Principles（第一性原理）再压缩一句（保留你原意）：
+
+> dApp = Web2 App（前后端 + DB） + Web3 Gateway（Wallet + RPC + Blockchain）
+> 
+> 前端负责 **User Interaction + Wallet Signing**，后端负责 **Business Logic + DB + Verification**，RPC 负责 **forward requests to nodes**。
+
+* * *
+
+## Foundations｜基础篇：先把“图里有哪些东西”一一对上号 (Element Map)
+
+你读图列出的元素我按“从左到右”整理，并保留你给的例子与技术栈：
+
+### 1) 左边：Relational Database（关系型数据库）
+
+-   你图里写的是 **relational database（关系型数据库）**
+    
+-   有 `users(table)`，你举的 SQL 例子是：
+    
+    `select name from users where id=2 => luna`
+    
+
+这告诉我们数据库负责的是典型 Web2 数据：
+
+-   用户系统（users）
+    
+-   配置、偏好（preferences）
+    
+-   任务记录、积分（points）
+    
+-   任何“不想上链/不适合上链”的数据
+    
+
+✅ 关键点（你也强调了）：数据库的优势是 **query 快（fast query）、成本低（low cost）、可修改（mutable）**。
+
+* * *
+
+### 2) 中间：Server（服务器）= Backend（后端服务）
+
+你图里写得很明确：
+
+-   框架：`nextjs / hono`
+    
+-   部署环境：`Vercel / VPS etc.`
+    
+-   服务器里有 **backend（后端）**
+    
+-   后端用 `viem / ethersjs` 去做链上交互（on-chain interaction）
+    
+
+这意味着：你这套 dApp 不只是“前端直连链”，而是一个典型的 **hybrid architecture（混合架构）**。
+
+* * *
+
+### 3) 右边：User Browser（用户浏览器）= Frontend（前端应用）
+
+你图里写：
+
+-   框架：`react / tanstack router / nextjs`
+    
+-   Web3 库：`viem / wagmi` 做钱包连接与链交互（wallet connection + chain interaction）
+    
+
+✅ 关键点：Web3 前端和 Web2 前端技术栈“几乎一样”，区别在于：多了 **Wallet（Signer）** 和链交互 SDK。
+
+* * *
+
+### 4) 中间下方：RPC（JSON-RPC Provider）
+
+你图里标注：
+
+-   `jsonrpc: nodereal/ankr/infura`
+    
+
+这意味着 RPC 在这里特指：
+
+-   以太坊生态最常见的 **JSON-RPC endpoint（节点接口地址）**
+    
+-   这些（NodeReal/Ankr/Infura）是 **RPC Provider（节点服务商）**
+    
+
+* * *
+
+### 5) 最下：Blockchain（区块链）
+
+-   你图里写的 **blockchain**
+    
+-   这是“真正执行 EVM（EVM execution）并维护状态（state）”的地方：
+    
+    -   合约代码（contract code）
+        
+    -   合约状态（contract state）
+        
+    -   交易与事件（transactions & events/logs）
+        
+
+* * *
+
+## Core Concepts｜进阶篇：两条管道（Two Pipelines）= HTTP vs JSON-RPC
+
+你原文有一个非常强的结构：
+
+-   **HTTP 管道**：Browser ⇄ Backend（传统 Web2）
+    
+-   **JSON-RPC 管道**：Frontend/Backend ⇄ RPC ⇄ Blockchain（Web3）
+    
+
+我把它写成“你看图就能复述”的版本：
+
+### Pipeline A：HTTP（Web2 Data Plane）
+
+-   **前端 ↔ 后端**：`http`
+    
+-   典型内容：
+    
+    -   登录、用户信息（auth + user profile）
+        
+    -   读取数据库（SQL/ORM）
+        
+    -   产品业务逻辑（business logic）
+        
+
+### Pipeline B：JSON-RPC（Web3 Chain Plane）
+
+-   **前端/后端 ↔ RPC**：`jsonrpc`
+    
+-   **RPC ↔ blockchain**：节点执行并返回
+    
+-   典型内容：
+    
+    -   读链：`eth_call / eth_getBalance / eth_getLogs ...`
+        
+    -   写链：`eth_sendRawTransaction`（发送已签名交易）
+        
+
+* * *
+
+## Core Mechanism｜核心机制：RPC 到底是什么 (RPC Explained Properly)
+
+你素材里已经给了很准确的定义，我保留并补全它“概念层 + Web3 具体层”：
+
+### 1) RPC 的概念（General RPC）
+
+**RPC = Remote Procedure Call（远程过程调用）**
+
+意思是：你在本地想“调用远程机器上的一个函数（procedure）”，通过 RPC 发请求、拿结果。
+
+### 2) Web3 里常说的 RPC（Ethereum JSON-RPC）
+
+在 Web3，远程机器通常是 **区块链节点 Node**，调用的函数是一套标准方法（methods）：
+
+-   `eth_call`：只读模拟执行（read-only simulation）
+    
+-   `eth_getBalance`：查余额
+    
+-   `eth_getBlockByNumber`：查区块
+    
+-   `eth_getLogs`：查事件 logs
+    
+-   `eth_sendRawTransaction`：发送已签名交易
+    
+-   `eth_getTransactionReceipt`：查回执（receipt）
+    
+
+因此你原文这句话很关键：
+
+> RPC 不是区块链本身（RPC ≠ blockchain），它是“通往链的门（Gateway / Endpoint）”。
+
+### 3) RPC 通常长什么样（What it looks like）
+
+它往往就是一个 URL：
+
+-   `https://...`（HTTP endpoint）
+    
+-   `wss://...`（WebSocket endpoint）
+    
+
+前端或后端拿着这个 URL，通过 JSON-RPC 标准发请求。
+
+### 4) 一个超关键点（你也点到了）
+
+> RPC 不替你签名（RPC doesn’t sign for you）。
+> 
+> 签名（Sign）发生在：
+
+-   用户钱包（MetaMask 等）
+    
+-   或服务器的 signer（如果你做 relayer/admin tx）
+    
+
+RPC 只是：
+
+-   转发（forward）
+    
+-   查询（query）
+    
+-   返回结果（return response）
+    
+
+* * *
+
+## Advanced Applications｜高阶篇：每个盒子“到底负责什么”（Role Map）
+
+你原文已经写了 Role Map，我完整保留并按学习路径做更系统的落地化：
+
+### A) Frontend（浏览器前端）— 用户体验层 (UX Layer)
+
+-   框架：`React / Next.js / TanStack Router`
+    
+-   Web3 库：`wagmi / viem`
+    
+-   职责（你原文关键词 + 英文术语保留）：
+    
+    -   UI/状态管理（**UI State**）
+        
+    -   连接钱包（**Wallet Connection**）
+        
+    -   发起只读查询（**Read Call / eth\_call**）
+        
+    -   发起交易请求（**Send Transaction**）→ 让钱包签名（**Sign**）
+        
+
+✅ 你强调的关键点我原样保留：
+
+**Private Key（私钥）只应该在钱包里**。前端只能“请求签名（request signature）”，不能拿私钥。
+
+* * *
+
+### B) Backend（服务器后端）— 业务与数据层 (Business + Data Layer)
+
+-   框架：`Next.js API routes / Hono`
+    
+-   Web3 库：`ethers.js / viem`
+    
+-   职责（你原文列的我全部保留）：
+    
+    -   业务逻辑（**Business Logic**）
+        
+    -   数据库 CRUD（**CRUD / SQL**）
+        
+    -   服务器侧读链（**Server-side Read**）
+        
+    -   校验（**Verify Tx / Verify Signature**）
+        
+    -   可选：用服务器 key 发系统级交易（**Admin Tx / Relayer**）
+        
+    -   适合存：API keys、RPC keys、DB 密码（secrets）
+        
+    -   适合做：风控/权限/限流（**Rate Limit**）、缓存（**Cache**）
+        
+
+✅ 你那句“很产品”的总结我也保留：
+
+**链负责可信状态（trust），后端负责可用体验（usable product experience）。**
+
+* * *
+
+### C) Relational DB（关系型数据库）— 链下存储 (Off-chain Storage)
+
+你原文强调：
+
+-   不是所有数据都要上链（not everything should be on-chain）
+    
+-   上链贵、慢、不可随意改（expensive/slow/immutable-ish）
+    
+-   DB 便宜、快、灵活（cheap/fast/flexible）
+    
+
+这就是典型的 **On-chain minimalism（链上极简）** 思路：
+
+只把“必须可验证（verifiable）”的放上链，其余留在 off-chain。
+
+* * *
+
+### D) RPC（JSON-RPC Gateway）— 节点入口
+
+你图里例子：`nodereal / ankr / infura`
+
+它提供现成节点能力，你不用自建 full node。
+
+* * *
+
+### E) Blockchain（链）— 状态机与共识执行 (State Machine + Consensus)
+
+-   执行 EVM（EVM Execution）
+    
+-   存合约代码与状态（Contract Code & State）
+    
+-   打包确认交易（Validation / Finality）
+    
+
+* * *
+
+## Advanced Applications｜高阶篇：两条“生命线”用户路径（Read vs Write）
+
+你原文说“读和写是 dApp 的生命线”，我完全同意，也按你的写法保留：
+
+### Path 1：Read / Call（只读查询）—— 通常不花 gas
+
+例子：用户读 `retrieve()` 值：
+
+**Frontend → RPC → Blockchain → RPC → Frontend**
+
+-   前端 `viem` 发 `eth_call`
+    
+-   RPC 去节点模拟执行（simulate）
+    
+-   返回结果给前端显示
+    
+
+📌 你补充的关键点保留：很多 dApp 读链不一定需要后端（frontend can read directly）。
+
+* * *
+
+### Path 2：Write / Transaction（写入交易）—— 签名 + gas
+
+例子：用户执行 `store(123)`：
+
+**Frontend → Wallet（Sign）→ RPC → Blockchain → Receipt → Frontend**
+
+-   wagmi 发起 `writeContract`
+    
+-   钱包弹窗确认（Approve/Confirm）
+    
+-   钱包签名（sign tx）
+    
+-   RPC 发送 signed tx
+    
+-   链执行后返回 tx hash / receipt / events
+    
+
+📌 关键点（你原文保留）：写入必须签名（Sign），通常由用户钱包完成。
+
+* * *
+
+## Why Backend?｜为什么还要后端？（你原文的“很产品答案”）
+
+你写得非常全面，我把它结构化成“链做不了/不适合做的事”：
+
+Backend 适合做（你原文 1~6 全保留）：
+
+1.  用户系统：登录、资料、偏好（DB）
+    
+2.  权限/风控：Auth / RBAC
+    
+3.  聚合数据：链上 + 链下合并（Aggregation）
+    
+4.  验证：
+    
+    -   Signature Verification
+        
+    -   Tx Receipt Check
+        
+5.  性能：缓存 RPC 结果（Cache），降低 RPC 成本
+    
+6.  索引/事件同步：监听 events 写入 DB（Indexing）
+    
+
+✅ 你那句总结非常强：
+
+**链负责可信状态（trust），后端负责可用体验（product usability）。**
+
+* * *
+
+## Libraries｜viem / ethers.js / wagmi 各自做什么（按你图里写法整理）
+
+你原文写：
+
+-   **viem / ethers.js**：链交互 SDK（读写合约、ABI 编码、解析 logs）
+    
+-   可在前端/后端都用（works on both sides）
+    
+-   **wagmi**：更偏前端的钱包交互层（wallet UX layer）
+    
+    -   connect wallet / switch network / sign message / write contract
+        
+-   底层常配合 viem（wagmi + viem pairing）
+    
+
+* * *
+
+## Self-Debug Checklist｜看到任何 dApp 图都能自检的 6 问（你原文保留）
+
+你给的 6 个词自检非常好，我原样保留：
+
+1.  **Where is the User?**（Browser / App）
+    
+2.  **Where is the Wallet?**（Signer 在哪里）
+    
+3.  **Where is the RPC?**（链入口是谁）
+    
+4.  **What is On-chain?**（必须上链的数据/逻辑）
+    
+5.  **What is Off-chain?**（数据库、业务、权限、缓存）
+    
+6.  **Read vs Write**（call 不签名/不改状态；tx 要签名/改状态/花 gas）
+    
+
+* * *
+
+## Summary & Vocabulary｜总结与术语表 (Key Terms Review)
+
+### 一句话总结（One-liner）
+
+这张图告诉你：一个 dApp 同时活在 **Off-chain（DB+Backend）** 和 **On-chain（Contract+State）** 两个世界里，用户既会走 **HTTP** 管道（Web2），也会走 **JSON-RPC** 管道（Web3），而 RPC Provider（NodeReal/Ankr/Infura）是你连接区块链节点的“门”。
+
+### 术语表（Vocabulary）
+
+| 中文 | English | 你在图里对应的位置 |
+| --- | --- | --- |
+| 关系型数据库 | Relational Database | 左侧 users(table), SQL |
+| 服务器 | Server | 中间 nextjs/hono, Vercel/VPS |
+| 后端 | Backend | Server 内部，viem/ethersjs |
+| 浏览器 | User Browser | 右侧，React/TanStack/Next |
+| 钱包连接 | Wallet Connection | 前端 wagmi/viem |
+| 远程过程调用 | RPC (Remote Procedure Call) | 中下，jsonrpc providers |
+| JSON-RPC | JSON-RPC Methods | eth_call / sendRawTx 等 |
+| 区块链 | Blockchain | 最下，EVM 执行与状态 |
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## Introduction｜今天学到的核心是什么 (Overview)
 
 你今天的学习可以浓缩成一句话：
@@ -302,6 +734,7 @@ Remix VM 给你很多账户，其目的就是让你模拟多人场景（multi-ac
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今天还在啃remix的compile编译&deploy部署。
 
 * * *
@@ -552,6 +985,7 @@ C3. 读-写-读（验证状态变化）
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -700,6 +1134,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -725,6 +1160,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -738,6 +1174,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -794,6 +1231,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -898,6 +1336,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -937,6 +1376,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -953,6 +1393,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
