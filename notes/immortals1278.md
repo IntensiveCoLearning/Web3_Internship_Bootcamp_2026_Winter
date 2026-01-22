@@ -19,6 +19,8 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 ## 深度技术作业：
 
+### 部署
+
 配置环境变量
 
 ```
@@ -44,10 +46,47 @@ SEPOLIA\_RPC\_URL在[developer.metamask.io](http://developer.metamask.io)的infu
 ```
 
 然后运行部署
+
+### 编写前端
+
+```
+npx create-next-app@latest .
+```
+
+初始化项目文件夹
+
+```
+npm list wagmi viem @tanstack/react-query @rainbow-me/rainbowkit
+```
+
+判断是否安装这些包
+
+```
+npm install wagmi viem@2.x @tanstack/react-query @rainbow-me/rainbowkit
+```
+
+安装
+
+**WalletConnect** **projectId**：去 [https://cloud.walletconnect.com](https://cloud.walletconnect.com) 注册免费项目，复制 projectId 替换上面代码里的 "YOUR\_WALLET\_CONNECT\_PROJECT\_ID"。
+
+编码
+
+```
+rm -r -fo .next
+```
+
+清理缓存
+
+```
+npm run dev
+```
+
+启动开发服务器，这样就可以在[http://localhost:3000](http://localhost:3000)里看到代码结果
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ## 深度技术作业：
@@ -83,6 +122,7 @@ forge script script/DeployMessageBoard.s.sol:DeployMessageBoard \`
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -126,6 +166,7 @@ forge init
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -225,6 +266,7 @@ forge init
 
 
 
+
 **1\. 核心概念**
 
 \- 新一代代币协议，融合零知识证明（ZK）与哈希算法
@@ -295,11 +337,13 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 第一周总结：了解了求职市场，找工作真的很难…不能只学写合约，还要学合约安全的部分，还要学rust。多参与链上活动如投票，贡献开源代码，建立链上声誉。 了解agent上链来帮助用户辨别选择agent，购买agent的部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -372,6 +416,7 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 一、AI的演进与核心
 
 传统AI（如早期ChatGPT）只是“高级复读机”，无状态、无工具、无身份。而未来的AI Agent将具备：
@@ -399,6 +444,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -445,6 +491,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -506,6 +553,7 @@ EIP
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
