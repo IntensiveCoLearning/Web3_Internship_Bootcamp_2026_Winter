@@ -15,8 +15,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+1、参加Co-Learning
+
+2、参加Dapp Workshop
+
+3、参加南塘 Dao 主题
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 参加Web3 公共物品资金第一节课
 
 参加Solidity Walk Through分享会
@@ -25,11 +35,13 @@ timezone: UTC+8
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 -   今天对策划运营方面的步骤有了更深刻的认识，从准备到执行再到复盘都有非常明确的思路
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 -   听了各位同学的分享，感受到大家学习的热情，同时对我自己也有了更大的激励，更坚定了在行业内的信心
@@ -40,11 +52,13 @@ timezone: UTC+8
 
 
 
+
 -   通过今天的课堂更加深入了解了ai+wbe3的应用，以及x402协议对ai支付的重要性
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -59,11 +73,13 @@ timezone: UTC+8
 
 
 
+
 -   通过今日课程对区块链运行原理有了更清晰的了解
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
