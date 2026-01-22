@@ -15,8 +15,388 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# 用 Solidity + Hardhat + React + Ethers 做一个**NFT 铸造小工具 dapp**，读者跟着抄一遍，就能实现「填几个字段 → 钱包签名 → 铸出一张属于自己的 NFT」。
+
+* * *
+
+## 0\. 先说清楚我们要做什么
+
+这篇教程的目标，是跑通这样一条完整链路：
+
+> 浏览器前端（React） → 连接钱包（MetaMask） → 调用链上的 ERC‑721 合约 → 铸造一张 NFT，并在页面上把它展示出来。
+
+整个项目可以分成三块：
+
+-   智能合约：基于 OpenZeppelin 写一个最小的 ERC‑721，提供 `mintNFT` 之类的方法。
+    
+-   后端 / 链：用 Hardhat 搭本地开发环境，把合约部署到本地链或测试网。
+    
+-   前端：用 React + Ethers，连上 MetaMask，对合约做读写，并给用户一个简单的铸造界面。
+    
+
+选这个例子，是因为它足够“有成就感”：一条交易之后，你就多了一张真正的链上资产，不再只是一个数字在那儿累加。
+
+* * *
+
+## 1\. 环境准备：链、钱包、工具
+
+## 1.1 区块链和钱包
+
+为了降低门槛，全部操作先在本地或测试网完成：
+
+-   区块链：
+    
+    -   用 Hardhat 自带的本地以太坊节点，命令一跑，秒出区块，免费 gas。
+        
+    -   等熟练之后，你可以把同样的合约部署到以太坊测试网（如 Sepolia）。
+        
+-   钱包：
+    
+    -   浏览器装好 MetaMask 扩展，这是主流 dapp 里最常见的钱包入口。
+        
+    -   本地链场景下，可以把 Hardhat 生成的私钥导入 MetaMask，这样你有一堆预置 ETH 可用。
+        
+
+## 1.2 Hardhat 项目初始化
+
+新建一个目录，比如 `nft-minter`，然后：
+
+-   初始化项目：
+    
+    -   `npm init -y`
+        
+    -   `npm install --save-dev hardhat`
+        
+    -   `npx hardhat`，选 “Create a JavaScript project”，一路回车。
+        
+
+Hardhat 会帮你生成基础目录结构（`contracts/`、`scripts/`、`test/` 等），这是当前最主流的以太坊开发脚手架之一。
+
+* * *
+
+## 2\. 写一个最小可用的 NFT 合约
+
+目标是写出一个「能铸造 NFT」的 ERC‑721 合约，不求花活，先保证安全、标准、好用。
+
+## 2.1 引入 OpenZeppelin 合约库
+
+在项目里安装 OpenZeppelin：
+
+-   `npm install @openzeppelin/contracts`。
+    
+
+在 `contracts/` 下新建 `MyNFT.sol`，整体思路是继承标准实现，而不是从零写所有接口。
+
+主体结构大致如下（只讲逻辑，不贴完整源码）：
+
+-   声明 Solidity 版本，比如 `^0.8.20`。
+    
+-   `import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";`
+    
+-   `import "@openzeppelin/contracts/access/Ownable.sol";`
+    
+-   `contract MyNFT is ERC721URIStorage, Ownable { ... }`。
+    
+
+这里用了两个扩展：
+
+-   `ERC721URIStorage`：帮你维护 `tokenId -> tokenURI` 映射，让每个 NFT 都有独立的 metadata 地址。
+    
+-   `Ownable`：让你可以限制只有合约 owner 能执行某些操作（比如受控铸造）。
+    
+
+## 2.2 核心逻辑：mint 函数
+
+在合约里准备几个成员：
+
+-   一个自增计数器：`uint256 private _tokenIds;`。
+    
+-   构造函数设置名称和符号：`ERC721("MyNFT", "MNFT")`。
+    
+
+然后写一个对外暴露的 `mintNFT` 函数，比如：
+
+-   参数：
+    
+    -   `address recipient`：接收者地址（通常是 `msg.sender`）。
+        
+    -   `string memory tokenURI`：NFT 的 metadata 地址（比如一个 IPFS 链接）。
+        
+-   函数内部流程：
+    
+    -   `_tokenIds++` 得到新的 `tokenId`。
+        
+    -   `_safeMint(recipient, newTokenId);`。\[[docs.hedera](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)\]​
+        
+    -   `_setTokenURI(newTokenId, tokenURI);`。\[[web3](https://www.web3.university/article/how-to-mint-an-nft-with-ethers-js)\]​
+        
+    -   返回 `newTokenId` 方便前端展示。[alchemy+1](https://www.alchemy.com/blog/nft-minter-tutorial-how-to-create-a-full-stack-dapp)
+        
+
+你可以选择是否加 `onlyOwner` 限制铸造权限：
+
+-   如果挂 `onlyOwner`，就变成“只有项目方能给别人发 NFT”；[hedera+1](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)
+    
+-   如果不加，任何人都能自己铸造自己的 NFT，更适合教学 demo。[solarpunk+1](https://solarpunk.buzz/a-beginners-guide-to-nft-dapp-creation-and-launching-best-practices/)
+    
+
+## 2.3 编译合约
+
+执行：
+
+-   `npx hardhat compile`。[reactjsexample+1](https://reactjsexample.com/how-to-mint-your-own-nft-token-with-react/)
+    
+
+编译成功后，Hardhat 会在 `artifacts/` 里生成 ABI，前端之后会用到它来实例化合约对象。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+
+* * *
+
+## 3\. 部署合约，把它“丢到”链上
+
+现在要做的是：开一个本地链，把 `MyNFT` 部署上去，拿到一个真实合约地址。[metaschool+1](https://metaschool.so/articles/build-full-stack-nft-minting-dapp/)
+
+## 3.1 写部署脚本
+
+在 `scripts/` 下新建 `deploy.js`，逻辑大致如下：
+
+-   从 Hardhat 的环境里拿到 ethers 和合约工厂：
+    
+    -   `const MyNFT = await ethers.getContractFactory("MyNFT");`。[reactjsexample+1](https://reactjsexample.com/how-to-mint-your-own-nft-token-with-react/)
+        
+-   部署：
+    
+    -   `const myNft = await MyNFT.deploy();`
+        
+    -   `await myNft.deployed();`。[metaschool+1](https://metaschool.so/articles/build-full-stack-nft-minting-dapp/)
+        
+-   打印地址：
+    
+    -   `console.log("MyNFT deployed to:", myNft.address);`。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
+        
+
+写教程时，你可以加一句人话解释：  
+“这一步相当于之前把后端代码部署到服务器上，只不过现在服务器换成了区块链，它返回给你一个合约地址。”
+
+## 3.2 启动本地链并执行部署
+
+-   启动本地节点：
+    
+    -   `npx hardhat node`。[hardhat+1](https://hardhat.org/tutorial)
+        
+-   另起一个终端，运行部署脚本：
+    
+    -   `npx hardhat run scripts/deploy.js --network localhost`。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+        
+
+终端会打印类似 `MyNFT deployed to: 0x1234...abcd` 的信息，把这个地址复制下来，前端马上要用。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
+
+* * *
+
+## 4\. React 前端：做一个 NFT 铸造页面
+
+前端部分，其实就是一个带三个输入框和一个按钮的页面，再加上 MetaMask 连接逻辑。[shardeum+2](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+
+## 4.1 初始化 React 项目
+
+在项目根目录新建一个 `frontend/`，或者单独起一个目录：
+
+-   `npx create-react-app nft-minter-frontend`（或者 `npx create-next-app`，看你偏好）。[metaschool+1](https://metaschool.so/articles/build-full-stack-nft-minting-dapp/)
+    
+-   进入目录后安装 Ethers：
+    
+    -   `npm install ethers`。[shardeum+1](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+        
+
+你也可以把 Hardhat 项目和前端放在同一个 monorepo 里，但教程里建议先分开，方便读者理解角色分工。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+
+## 4.2 准备 ABI 和合约地址
+
+前端需要知道两个东西：
+
+-   合约地址：刚才部署时打印出来的那串 `0x...`。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
+    
+-   合约 ABI：从 Hardhat 的 `artifacts/contracts/MyNFT.sol/MyNFT.json` 里复制 `abi` 字段，或者直接把这个 JSON 文件拷到前端项目中用 `import` 引入。[hardhat+1](https://hardhat.org/tutorial)
+    
+
+推荐写个单独的配置文件，比如 `src/contractConfig.js`，导出：
+
+-   `export const CONTRACT_ADDRESS = "0x..."`
+    
+-   `export const CONTRACT_ABI = [...]`。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+    
+
+* * *
+
+## 5\. 在前端连接钱包 + 合约
+
+下面这部分会在你的 React 组件里完成，可以统一写在 `App.jsx` 里，保持足够“可读”。[shardeum+2](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+
+## 5.1 连接 MetaMask
+
+先处理钱包连接逻辑：
+
+-   几个状态：
+    
+    -   `account`：当前钱包地址。
+        
+    -   `status`：界面提示信息。
+        
+    -   `nftName`、`nftDescription`、`nftUrl`：三个输入字段。[shardeum+1](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+        
+-   `connectWallet` 函数大致流程：
+    
+    -   如果 `window.ethereum` 不存在，提示“请安装 MetaMask”。[metamask+1](https://docs.metamask.io/wallet/tutorials/javascript-dapp-simple/)
+        
+    -   否则调用：
+        
+        -   `const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });`。[metamask+1](https://docs.metamask.io/wallet/tutorials/javascript-dapp-simple/)
+            
+        -   取 `accounts[0]` 写进 `setAccount`。
+            
+    -   状态栏提示“钱包已连接”。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+        
+
+MetaMask 开发文档里对这套流程有非常详细的解释，可以在教程末尾贴个参考链接。[metamask+1](https://support.metamask.io/more-web3/dapps/connecting-to-a-dapp/)
+
+## 5.2 使用 Ethers 构造合约实例
+
+连接成功后，在前端封装一个函数 `getContract()`：
+
+-   `const provider = new ethers.providers.Web3Provider(window.ethereum);`
+    
+-   `const signer = provider.getSigner();`
+    
+-   `const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);`。[shardeum+2](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+    
+
+这三个对象各司其职：
+
+-   provider：连到链的“通道”，负责读数据。
+    
+-   signer：带私钥的账户，负责发交易、签名。
+    
+-   contract：一个代理对象，让你能像调用普通函数一样调用链上的合约方法。[web3+2](https://www.web3.university/article/how-to-mint-an-nft-with-ethers-js)
+    
+
+* * *
+
+## 6\. 实现真正的「铸造」按钮
+
+现在页面上应该有三个输入框 + 一个 “Mint NFT” 按钮，逻辑都围绕前面写好的合约的 `mintNFT` 函数。[reactjsexample+2](https://reactjsexample.com/how-to-mint-your-own-nft-token-with-react/)
+
+## 6.1 前端表单
+
+布局可以简单暴力：
+
+-   输入框 1：NFT 图片 / 媒体链接（可以用随便一张网络图当示例）。
+    
+-   输入框 2：NFT 名字。
+    
+-   输入框 3：描述。
+    
+-   按钮：`Mint NFT`。[alchemy+1](https://www.alchemy.com/blog/nft-minter-tutorial-how-to-create-a-full-stack-dapp)
+    
+
+这里有两个处理方式：
+
+-   简化版：直接把用户输入的链接当作 `tokenURI`。
+    
+-   更正式版：
+    
+    -   前端先把 name / description / image 组装成 metadata JSON。
+        
+    -   把 JSON 传到 IPFS（比如用 Pinata、Web3.Storage），再把 IPFS 链接作为 `tokenURI`。[chain+2](https://chain.link/tutorials/how-to-mint-an-nft)
+        
+
+对于入门教程，完全可以先用简化版，让读者先跑通“合约 + 前端 + 钱包”这一层。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+
+## 6.2 mint 函数调用
+
+在前端写一个 `handleMint`：
+
+-   基本校验：如果有任何一个字段为空，就直接在 `status` 显示“请把信息填完整”。\[[alchemy](https://www.alchemy.com/blog/nft-minter-tutorial-how-to-create-a-full-stack-dapp)\]​
+    
+-   `const contract = getContract();` 拿到实例。
+    
+-   构造参数：
+    
+    -   `const tokenURI = nftUrl;`（简化版本）
+        
+    -   `const recipient = account;`。[shardeum+1](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+        
+-   调用合约：
+    
+    -   `let tx = await contract.mintNFT(recipient, tokenURI);`
+        
+    -   在 `status` 里提示“交易已发出，等待确认…”。
+        
+    -   `let receipt = await tx.wait();` 等链上确认。[hedera+2](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)
+        
+-   解析结果：
+    
+    -   从 `receipt.events` 里可以拿到 `Transfer` 事件，事件里会包含新 `tokenId`。[web3+1](https://www.web3.university/article/how-to-mint-an-nft-with-ethers-js)
+        
+    -   在页面上显示类似 “✅ Mint 成功，tokenId = X，交易哈希：0x...” 的信息。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
+        
+
+在这一步，你可以把“读”和“写”的区别再强调一遍：
+
+-   `mintNFT` 是 **写** 操作，需要签名 + gas + 等打包。[web3+1](https://www.web3.university/article/how-to-mint-an-nft-with-ethers-js)
+    
+-   如果你额外写了一个 `tokenURI(tokenId)` 读函数，那它就只是简单的链上查询，不需要用户确认。[hedera+1](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)
+    
+
+* * *
+
+## 7\. 跑通一次完整体验
+
+把所有环节都接好之后，可以用一个 checklist 帮读者做最后的自检。[shardeum+2](https://shardeum.org/blog/build-an-nft-minter-dapp-on-shardeum/)
+
+1.  Hardhat 本地链已经开着：`npx hardhat node`。
+    
+2.  `MyNFT` 合约成功部署，拿到了一个合约地址，并且前端配置文件里已经用这个地址替换占位符。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
+    
+3.  React 前端已经能正常启动：`npm start`，浏览器访问 `http://localhost:3000`。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+    
+4.  点击 “Connect Wallet”，MetaMask 弹出确认框，确认后页面展示当前钱包地址。[metamask+1](https://docs.metamask.io/wallet/tutorials/javascript-dapp-simple/)
+    
+5.  填好图片链接 / 名字 / 描述，点 “Mint NFT”：
+    
+    -   钱包再次弹出交易确认框，显示你要调用的合约地址和 gas 费用。
+        
+    -   确认后稍等几秒，页面状态变为“Mint 成功”，并显示新 NFT 的 `tokenId`。\[[youtube](https://www.youtube.com/watch?v=67-2vITclyU)\]​[hedera+1](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)
+        
+
+如果你愿意多走一步，可以让读者把合约地址导入 MetaMask 或在区块浏览器里查看，甚至把合约部署到某个测试网，体验一次“链上可查”的感觉。[trustwallet+2](https://trustwallet.com/blog/nft/how-to-mint-nfts-a-beginners-guide)
+
+* * *
+
+## 8\. 从工具小 dapp 到真正的产品
+
+做到这里，你已经有了一个能工作的 NFT 铸造工具雏形，接下来可以做的升级很多，比如：
+
+-   加白名单、限量、价格逻辑，让每次铸造需要支付一定 ETH；[bunzz+1](https://blog.bunzz.dev/build-an-nft-minting-dapp-with-erc-721a/)
+    
+-   把 metadata 正式托管在 IPFS / Arweave 上，避免链接失效；[chain+2](https://chain.link/tutorials/how-to-mint-an-nft)
+    
+-   接入某条更适合 NFT 的链（Flow / Aptos / 侧链等），或者直接按项目需要换成 ERC‑1155。[betterprogramming+2](https://betterprogramming.pub/how-to-build-an-nft-minting-dapp-on-the-flow-blockchain-d331a2404cae)
+    
+
+如果你想要的是「可以直接贴代码让同学照抄」的版本，可以再说一下你现在默认：
+
+-   想用 React 还是 Next，
+    
+-   想跑本地链还是直接上某个测试网，
+    
+
+下一步就可以在这个结构上，帮你把关键合约代码和前端组件写成完整成品稿。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 这次会议听完，整体感觉是：不仅补上了对“残酷共学”和“休闲黑客松”的认识盲区，更重要的是，看清楚了一场线上活动从想法落地到执行闭环的全貌。​
 
 ## 我理解到的核心信息
@@ -57,6 +437,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 跟着 Elon 老师系统过了一遍 Solidity，感觉自己从「只知道链上有合约」到「大致知道合约在里面是怎么活的」跨了一小步。
 
 ## 对 Solidity 的整体感受
@@ -96,6 +477,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ## 一、Telegram 社群搭建与基础设置
@@ -373,6 +755,7 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
 
 
 
+
 # 分享会笔记
 
 从这次分享里，大概把自己理清了几个关键点，就按「为什么要搞 7962、它在做什么、怎么做到的、能用在什么地方」这几个问题来记一下。
@@ -490,6 +873,7 @@ ERC‑7962 就是试图在这个缝里做一层「隐私友好的会员 / 资产
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -662,6 +1046,7 @@ text
 
 
 
+
 # 难忘今宵，误闯天家
 
 周五分享会笔记：
@@ -716,6 +1101,7 @@ Notion、Figma、思维导图基本成了标配：有人用 OKR 把自己当成�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -801,6 +1187,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 
 
+
 # 今天一直在准备明天的考试，不过晚上的分享会内容非常干货，现先依据其他小伙伴的笔记做个总结，19号之后会全部补齐回放：
 
 ## web3安全分享会笔记
@@ -854,6 +1241,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -919,6 +1307,7 @@ Gas 被讲成“油费”这个比喻很形象：Gas price 像油价，Gas usage
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
