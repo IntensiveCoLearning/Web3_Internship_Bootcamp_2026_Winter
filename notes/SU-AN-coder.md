@@ -15,8 +15,105 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 个人DApp（本地部署）介绍
+
+本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
+
+项目可以从我的仓库复刻[SU-AN-coder/my-first-dapp](https://github.com/SU-AN-coder/my-first-dapp)
+
+### 技术栈
+
+-   **Smart Contract:** Solidity
+    
+-   **Development Framework:** Hardhat (JavaScript 模式)
+    
+-   **Frontend:** HTML + Web3.js / Ethers.js
+    
+-   **Wallet:** MetaMask
+    
+-   **Local Blockchain:** Hardhat Network (localhost:8545)
+    
+
+* * *
+
+## 开发过程中遇到的坑与解决方案 (重点)
+
+### 1\. 依赖冲突
+
+-   **问题：** 尝试安装多个不同版本的 `hardhat-ethers` 导致 npm 报错。
+    
+-   **解决：** 保持 `package.json` 精简。在 Hardhat 2.x 中，只需安装 `@nomicfoundation/hardhat-toolbox` 即可，它会自动管理所有必要的插件。
+    
+
+### 2\. 配置文件格式错误
+
+-   **问题：** 错误地使用了 `hardhat.config.json` 或配置了不支持的 `type: "http"` 属性。
+    
+-   **解决：** 必须使用 `.js` 后缀。标准的 `hardhat.config.js` 应包含 `solidity` 版本定义及 `networks` 配置。
+    
+
+### 3\. MetaMask 连接本地链失败
+
+-   **问题：** 页面显示“读取失败”，MetaMask 报错 `execution reverted`。
+    
+-   **原因：** 钱包连接的是 Sepolia 测试网，而合约部署在本地；且本地节点重启后 Nonce 值不匹配。
+    
+-   **解决：** 在 MetaMask 手动添加 `http://127.0.0.1:8545` 网络，Chain ID 设为 `1337`。（不是31337）
+    
+-   **关键：** 使用 MetaMask 的“重置账户/清除活动数据”功能清空旧缓存。
+    
+
+* * *
+
+## 部署与运行流程
+
+### 第一步：编译合约
+
+PowerShell
+
+```
+npx hardhat clean
+npx hardhat compile
+```
+
+### 第二步：启动本地私链
+
+保持此终端窗口不要关闭：
+
+PowerShell
+
+```
+npx hardhat node
+```
+
+### 第三步：部署合约
+
+在另一个终端运行部署脚本：
+
+PowerShell
+
+```
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+_记录下输出的合约地址：_`0x...`
+
+### 第四步：前端交互
+
+1.  启动 Live Server 打开 `index.html`。
+    
+2.  MetaMask 切换至 **Hardhat-Local** 网络。
+    
+3.  导入 Hardhat 终端显示的 **Account #0** 私钥。
+    
+4.  在网页输入合约地址，点击“初始化合约”，即可开始发送留言。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -70,6 +167,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # ZKVote 笔记
 
@@ -399,6 +497,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 # Uniswap v2
@@ -789,6 +888,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1397,6 +1497,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -1463,6 +1564,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1660,6 +1762,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -1805,6 +1908,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -1903,6 +2007,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2034,6 +2139,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
