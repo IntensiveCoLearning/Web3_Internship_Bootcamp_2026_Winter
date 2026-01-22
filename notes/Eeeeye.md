@@ -15,8 +15,104 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+今天了解了一下构建一个完整 DApp（去中心化应用）所需的技术栈，从合约编写到前端交互。
+
+* * *
+
+理解一个 DApp 的数据流向：
+
+1.  **前端 (Frontend)**: 用户界面 (Next.js)。
+    
+2.  **交互层 (SDK)**: 前端与链对话的翻译官 (Wagmi/Viem)。
+    
+3.  **智能合约 (Contract)**: 部署在区块链上的后端逻辑 (Solidity)。
+    
+4.  **节点 (RPC Node)**: 应用通过它连接区块链网络 (Alchemy/Infura)。
+    
+
+* * *
+
+### 二、 智能合约开发框架 (Backend)
+
+DApp 的地基，负责编写、编译、测试和部署合约。
+
+| 框架 | 语言 | 核心特点 | 适用场景 |   |
+| Foundry | Solidity (测试用) | 🚀 极速 (Rust编写)；支持用 Solidity 写测试用例；自带 Fuzzing (模糊测试)。 | 核心合约开发、安全审计 |   |
+| Hardhat | JS / TS | 🏢 生态丰富；插件系统强大；适合写复杂的部署脚本和全栈集成。 | 复杂项目部署、脚本编写 |   |
+| Truffle | JS | 💀 已过时；编译慢，维护少。 | 维护旧项目 |   |
+
+* * *
+
+### 三、 前端交互层 (Middleware)
+
+DApp 开发中最繁琐的部分（处理钱包连接、ABI 解析、交易签名）。
+
+1\. 底层库：Viem vs Ethers.js
+
+-   **Ethers.js (v5/v6)**: 老牌霸主，对象导向 (OOP)。虽然经典，但包体积大，非 TypeScript 原生。
+    
+-   **Viem (新标准)**: 函数式编程，**Tree-shaking 友好 (体积小)**，对 TypeScript 支持极其完美。
+    
+
+2\. React 封装库：Wagmi
+
+-   **定义**: 它是 React Hooks 集合。
+    
+-   **作用**: 把复杂的链上操作变成简单的 Hook。
+    
+-   **代码示例**:
+    
+    TypeScript
+    
+    ```
+    // 读取钱包余额
+    const { address, isConnected } = useAccount();
+    const { data: balance } = useBalance({ address });
+    ```
+    
+
+* * *
+
+### 四、 钱包接入与用户体验 (Onboarding)
+
+如何让用户优雅地连上你的应用？
+
+-   **RainbowKit**: 🌈 目前最好看的 UI 组件库。开箱即用，支持自定义主题。
+    
+-   **Privy**: 📧 **Web2 友好型**。支持邮箱、Twitter 登录并自动生成钱包。做面向大众的 Consumer Crypto 应用必选。
+    
+
+* * *
+
+### 五、 数据索引 (Indexing)
+
+**痛点**: 区块链不适合做复杂的查询（例如：查询某个系列 NFT 成交额最高的 10 笔交易）。
+
+-   **The Graph**: 去中心化索引协议。你需要写 `GraphQL` 架构和 `AssemblyScript` 映射代码。虽然是标准，但稍微有点重。
+    
+-   **Ponder**: 🐎 **后起之秀**。完全用 TypeScript 编写，本地开发体验极佳，速度比 The Graph 快很多。
+    
+-   通常小项目或黑客松用 Ponder，大型去中心化协议用 The Graph。
+    
+
+* * *
+
+### 总结
+
+1.  **合约端**: **Solidity** + **Foundry**
+    
+2.  **Web 框架**: **Next.js** (App Router) + **TypeScript**
+    
+3.  **连接层**: **RainbowKit** + **Wagmi** + **Viem**
+    
+4.  **UI 库**: **Tailwind CSS** + **Shadcn/ui** (Web3 应用通常追求极简风格)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ### 1\. Uniswap v2: 恒积做市商 (CPMM) — AMM 的基石
 
 核心公式 $x \\cdot y = k$：
@@ -81,6 +177,7 @@ Hooks (钩子)：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ### 1\. Uniswap v2: 恒积做市商 (CPMM) — AMM 的基石
 
@@ -148,6 +245,7 @@ Hooks (钩子)：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 每个 Solidity 文件通常包含这三个部分。
@@ -337,6 +435,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 ## 今天学习了ZK零知识证明  
 链上投票的核心痛点与解决方案
 
@@ -482,6 +581,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 复盘了计算机网络底层，发现很多链上交互的痛点（延迟、丢包、监听失败），本质上都是网络层协议特性的投射。
 
 1\. 交易传播与 Mempool 机制（应用层/传输层）
@@ -567,6 +667,7 @@ contract SimpleCrowdfunding {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -711,6 +812,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 
 
+
 ### **以太坊核心架构与原理深度研读笔记（第2-4章）**
 
 通过对第2至4章的系统性学习，我从底层的网络拓扑、状态模型以及执行环境三个维度，重新构建了对以太坊基础设施的认知。这不再仅仅是对概念的理解，而是涉及如何构建安全、高效的去中心化应用的工程基础。
@@ -806,6 +908,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -947,6 +1050,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 今天参加了web3安全和合规的分享会 收获颇丰 结合Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分 以下是学习内容：
 
 ## 第一部分：法律与合规风险
@@ -1057,6 +1161,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 ### 1\. 概念辨析：Web3 的认识论 (Epistemology)
 
 -   **Web 3.0 (Semantic Web, 1999)**:
@@ -1123,6 +1228,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
