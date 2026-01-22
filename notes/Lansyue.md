@@ -128,28 +128,28 @@ Hardhat 会帮你生成基础目录结构（`contracts/`、`scripts/`、`test/` 
     
     -   `_tokenIds++` 得到新的 `tokenId`。
         
-    -   `_safeMint(recipient, newTokenId);`。\[[docs.hedera](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)\]​
+    -   `_safeMint(recipient, newTokenId);`。
         
-    -   `_setTokenURI(newTokenId, tokenURI);`。\[[web3](https://www.web3.university/article/how-to-mint-an-nft-with-ethers-js)\]​
+    -   `_setTokenURI(newTokenId, tokenURI);`。
         
-    -   返回 `newTokenId` 方便前端展示。[alchemy+1](https://www.alchemy.com/blog/nft-minter-tutorial-how-to-create-a-full-stack-dapp)
+    -   返回 `newTokenId` 方便前端展示。
         
 
 你可以选择是否加 `onlyOwner` 限制铸造权限：
 
--   如果挂 `onlyOwner`，就变成“只有项目方能给别人发 NFT”；[hedera+1](https://docs.hedera.com/hedera/tutorials/smart-contracts/how-to-mint-and-burn-an-erc-721-token-using-hardhat-and-ethers-part-1)
+-   如果挂 `onlyOwner`，就变成“只有项目方能给别人发 NFT”；
     
--   如果不加，任何人都能自己铸造自己的 NFT，更适合教学 demo。[solarpunk+1](https://solarpunk.buzz/a-beginners-guide-to-nft-dapp-creation-and-launching-best-practices/)
+-   如果不加，任何人都能自己铸造自己的 NFT，更适合教学 demo。
     
 
 ## 2.3 编译合约
 
 执行：
 
--   `npx hardhat compile`。[reactjsexample+1](https://reactjsexample.com/how-to-mint-your-own-nft-token-with-react/)
+-   `npx hardhat compile`。
     
 
-编译成功后，Hardhat 会在 `artifacts/` 里生成 ABI，前端之后会用到它来实例化合约对象。[cryptojobs+1](https://www.cryptojobs.com/learn/courses/build-web3-nft-website-using-react-ethers-and-hardhat-free-course-61)
+编译成功后，Hardhat 会在 `artifacts/` 里生成 ABI，前端之后会用到它来实例化合约对象。
 
 * * *
 
@@ -338,7 +338,7 @@ MetaMask 开发文档里对这套流程有非常详细的解释，可以在教�
     
     -   从 `receipt.events` 里可以拿到 `Transfer` 事件，事件里会包含新 `tokenId`。[web3+1](https://www.web3.university/article/how-to-mint-an-nft-with-ethers-js)
         
-    -   在页面上显示类似 “✅ Mint 成功，tokenId = X，交易哈希：0x...” 的信息。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
+    -   在页面上显示类似 “✅ Mint 成功，tokenId = X，交易哈希：0x…” 的信息。[filebase+1](https://docs.filebase.com/archive/content-archive/knowledge-base/web3-tutorials/alchemy/alchemy-create-a-full-stack-dapp)
         
 
 在这一步，你可以把“读”和“写”的区别再强调一遍：
@@ -397,6 +397,7 @@ MetaMask 开发文档里对这套流程有非常详细的解释，可以在教�
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 这次会议听完，整体感觉是：不仅补上了对“残酷共学”和“休闲黑客松”的认识盲区，更重要的是，看清楚了一场线上活动从想法落地到执行闭环的全貌。​
 
 ## 我理解到的核心信息
@@ -438,6 +439,7 @@ MetaMask 开发文档里对这套流程有非常详细的解释，可以在教�
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 跟着 Elon 老师系统过了一遍 Solidity，感觉自己从「只知道链上有合约」到「大致知道合约在里面是怎么活的」跨了一小步。
 
 ## 对 Solidity 的整体感受
@@ -477,6 +479,7 @@ MetaMask 开发文档里对这套流程有非常详细的解释，可以在教�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -756,6 +759,7 @@ Rose 属于“全能型群管”，官方文档列出的功能包括：
 
 
 
+
 # 分享会笔记
 
 从这次分享里，大概把自己理清了几个关键点，就按「为什么要搞 7962、它在做什么、怎么做到的、能用在什么地方」这几个问题来记一下。
@@ -873,6 +877,7 @@ ERC‑7962 就是试图在这个缝里做一层「隐私友好的会员 / 资产
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1047,6 +1052,7 @@ text
 
 
 
+
 # 难忘今宵，误闯天家
 
 周五分享会笔记：
@@ -1101,6 +1107,7 @@ Notion、Figma、思维导图基本成了标配：有人用 OKR 把自己当成�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1188,6 +1195,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 
 
+
 # 今天一直在准备明天的考试，不过晚上的分享会内容非常干货，现先依据其他小伙伴的笔记做个总结，19号之后会全部补齐回放：
 
 ## web3安全分享会笔记
@@ -1241,6 +1249,7 @@ Gartner 预测 2028 年 33% 企业核心应用将采用 Agentic AI，2024 年占
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1307,6 +1316,7 @@ Gas 被讲成“油费”这个比喻很形象：Gas price 像油价，Gas usage
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
