@@ -15,13 +15,130 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今天学习的编程内容以及笔记如下：
+
+```remix-solidity
+// Enum 对应的其实就是一个下拉菜单 最多有256个，因为单位是uint8
+// 底层是数字对应的就是01234……，只能定义名字系统会强制从0开始编号，无法改变这个顺序也无法改变值
+// User defined Value Type
+type Duration is uint64;
+//底层是整数，但是在编译器中是完全不同的type
+type Timestamp is uint64;
+
+type Clock is uint128;
+
+library LibClock {
+    function wrap(Duration _duration, Timestamp _timestamp)
+        internal
+        pure
+        returns (Clock clock_)
+    {
+        assembly {
+            // data | Duration | Timestamp
+            // bit  | 0 ... 63 | 64 ... 127
+            clock_ := or(shl(0x40, _duration), _timestamp)
+        }
+        //将两个自定义变量打包成一个Clock Duration占64位，Timestamp占64位 Clock占128位
+    }
+
+    function duration(Clock _clock)
+        internal
+        pure
+        returns (Duration duration_)
+    {
+        assembly {
+            duration_ := shr(0x40, _clock)
+        }//解包，求duration
+    }
+
+    function timestamp(Clock _clock)
+        internal
+        pure
+        returns (Timestamp timestamp_)
+    {
+        assembly {
+            timestamp_ := shr(0xC0, shl(0xC0, _clock))
+        }//解包，求timestamp
+    }
+}
+
+// Clock library without user defined value type
+library LibClockBasic {
+    function wrap(uint64 _duration, uint64 _timestamp)
+        internal
+        pure
+        returns (uint128 clock)
+    {
+        assembly {
+            clock := or(shl(0x40, _duration), _timestamp)
+        }
+    }
+}
+
+contract Examples {
+    function example_no_uvdt() external view {
+        // Without UDVT
+        uint128 clock;
+        uint64 d = 1;
+        uint64 t = uint64(block.timestamp);
+        clock = LibClockBasic.wrap(d, t);
+        // Oops! wrong order of inputs but still compiles
+        clock = LibClockBasic.wrap(t, d);
+    }
+
+    function example_uvdt() external view {
+        // Turn value type into user defined value type
+        Duration d = Duration.wrap(1);
+        Timestamp t = Timestamp.wrap(uint64(block.timestamp));
+        // Turn user defined value type back into primitive value type
+        // uint64 d_u64 = Duration.unwrap(d);
+        // uint64 t_u64 = Timestamp.unwrap(t);
+
+        // LibClock example 编译器会检测参数的顺序，数据类型不对不会编译
+        Clock clock = Clock.wrap(0);
+        clock = LibClock.wrap(d, t);
+        // Oops! wrong order of inputs
+        // This will not compile
+        // clock = LibClock.wrap(t, d);
+    }
+}
+//使用assembly是进行位打包，把两个变量存进一个slot节省存储空间
+// struct Solidty当中只有数据不包含函数与python中的class不同
+// 假设 todos[0] 是 "Run"
+
+// 情况 A: Memory (复印件)
+// Todo memory copy = todos[0];
+// copy.text = "Walk"; 
+// todos[0] 还是 "Run"！因为你只改了复印件。
+
+// 情况 B: Storage (原件指针)
+// Todo storage original = todos[0];
+// original.text = "Walk";
+// todos[0] 变成了 "Walk"
+
+// Data location Solidity当中必须手动指定复杂的数据类型存放在哪里，为了节省Gas费
+// Storage：写入的数据会永远保存在区块链上，即使函数执行结束，数据依旧存在。极其昂贵，可以随时修改里面的内容
+// 所有定义在函数外部的状态变量都默认是storage
+// Memory：只存在当前函数执行期间，比storage便宜得多，可读可写（草稿纸）
+// Calldata：只读，不能改，所以避免了将数据复制到内存的开销，交易结束就会消失，一般只能用于函数的输入参数
+// 当操作不涉及到修改参数，优先考虑calldata
+// Transient Storage：专门为单笔交易存在的存储区域，一旦交易所有数据清空
+```
+
+除此之外还完成了一个漏洞仿真学习案例
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 今天参加了两次分享会并且继续学习Solidity的基础知识，目前已经完成了很多内容的学习，开始着手实践内容
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 主要学习编程内容，基本的知识点都快看完了，这是笔记：
 
@@ -32,11 +149,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 今天正在完成了配置RemixIDE并且上手编程，现在在做**完成挑战 Challenge #0 - Tokenization，但是还没有全部做完，将环境以及第一二步做完了，然后继续学习021以太坊以及实习手册当中智能合约部分**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -47,6 +166,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -76,11 +196,13 @@ timezone: UTC+8
 
 
 
+
 今天是一周的例会了，收听了其他同学讲的PPT以及一些经验分享，这一周比较忙都在忙学业的事情，但已经告一段落了，明天以及之后的笔记会写一些干货的东西。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -103,6 +225,7 @@ AI+Web3,今天参加了分享会讲了AI的一些基础知识，我目前研究�
 
 
 
+
 今天由于学校开组会并没有完成太多任务，还是依照成长手册继续学习，参加了Web3安全和合规两个会议。了解到如今WEB3在国内还并不成熟，有许多风险，例如出入金和冻卡，还没有明确的牌照制度规范。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -116,11 +239,13 @@ AI+Web3,今天参加了分享会讲了AI的一些基础知识，我目前研究�
 
 
 
+
 今天因为忙一些其他的事情耽误了学习，将基础任务中的钓鱼攻防战做完了，以及继续看了实习手册当中的内容，查看了WEB3运行原理，了解一些钱包，助记词，交易的一些gas开支的基本原理，总体来说今天学习时间还不够明天继续努力学习Solidity的相关知识。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
