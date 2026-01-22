@@ -15,8 +15,39 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+完整閱讀並學習了這兩篇在 X 上非常熱門的 Claude Code 指南——  
+[https://x.com/affaanmustafa/status/2014040193557471352?s=20](https://x.com/affaanmustafa/status/2014040193557471352?s=20) 和  
+[https://x.com/affaanmustafa/status/2012378465664745795?s=20，](https://x.com/affaanmustafa/status/2012378465664745795?s=20，)  
+作者是 **Anthropic 黑客松的獲獎者 Affaan Mustafa（@affaanmustafa）**，他也是那套「Everything Claude Code」生產級配置套件的創作者。
+
+我依照文中的說明，大幅調整了自己的 Claude Code 設定檔，花了相當多時間重新組織 agent、skills、rules 和 hooks，過程中學到了很多原本完全不知道的高階功能，例如：
+
+-   用 subagent 做 PLANNING、REVIEW、REFACTOR、TDD、E2E 等專業分工；
+    
+-   用 hooks 在每次 Edit / tool use 時自動觸發 lint、type‑check、安全檢查；
+    
+-   用 rules 撰寫「永遠必須遵守」的 coding style、security、testing 等規則，讓 Claude 在撰寫時自然貼近團隊規範。​
+    
+
+之後打算先用這套配置做一個小專案來實驗，例如從零開始搭一個 Web3 DApp，同時觀察實際開發流程是否真能像文中描述那樣「像 senior engineer 一樣」接管規劃、實現、測試與部署。 看了他的 GitHub（`affaan-m/everything-claude-code`）後，也發現他有開發過 Solana 鏈上分析與 on‑chain data pipeline 的工具，這代表這一整套配置在 Web3 / Solana 類型的鏈上開發上，確實有實務驗證過，穩定性與擴充性都相當可期。
+
+不過畢竟是別人的工作流，後面應該還是需要依照個人習慣，針對：
+
+-   agent 的角色與分工（例如要不要把 security‑reviewer、e2e‑runner 抽離成 subagent）；
+    
+-   rules 的嚴格程度（例如是否強制 80% test coverage、是否強制不用 console.log）；
+    
+-   skills 的領域（例如是否加入 Web3 / Solidity / Sui / Rust / 鏈上 protocol 等專屬 skill）；
+    
+
+做進一步微調。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 晚上聽了Uniswap分享會再度複習了一遍v2v3v4，剛好下午在學習Intent跟The compact這個也是跟Uniswap發布的新架構，以前Intent跟The compact我都有聽過相關的分享會，但是一直沒有到非常熟悉，我還以為他們兩者間是競爭關係，今天總算弄懂了，也知道兩者怎麼協同運作。**小抱怨一下最近作息已經很亂了都是早上睡覺，好死不死樓上在裝修固定早上9點到下午5點，還在我房間正上方，搞得我整個人心神不寧，這幾天任務也沒什麼解，好在今天的聲音到1點就停了，這應該代表裝修完了吧 ! 對吧 !?** 等等半夜趕快把入門技術向任務補一補，大概看了一下應該很快能搞定。  
   
 DeFi 交易系統演進：從 AMM 到 Intent-Based 交易
@@ -1053,6 +1084,7 @@ price_ratio = 新價格 / 舊價格
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -1364,6 +1396,7 @@ unchecked：跳過溢位檢查，慎用
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -1375,6 +1408,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1454,6 +1488,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2072,6 +2107,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -2101,6 +2137,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2294,6 +2331,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -2353,6 +2391,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2598,6 +2637,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
