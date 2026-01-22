@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+**1.22**
+
+昨天答应了bruce老师帮忙review handbook的pr，今天review了5个。
+
+个人感觉这个过程不太像干活，更像在学习、承担责任的过程。
+
+有见到很水的pr，也有见到用心的拓展，自己在review的时候小心谨慎的comment或request changes，担心没有看懂pr表达的意思。我还挺享受这个过程的。
+
+继昨天弄好开发环境后，今天开始熟悉solidity了。做了两个简单的任务，没遇到什么太多的问题，主要是熟悉ide，语法什么的比其他语言还简单点。
+
+时间过的非常快，基本上一天就干了这些。
+
+我还准备把每天总结加入一个wachi专栏
+
+今日wachi老师专栏：
+
+1.关于solidity。我有过一次实战，也是一个很重要的Solidity，但其实是Vibe出来的。一万刀交到审计公司帮忙看，审计的兄弟连夜帮忙看代码，两三天把所有需要处理的包括gas浪费、逻辑不对、以及其他更加有破坏性的bug都修复了。顺利上线。
+
+我们做了我们必要的事情：把我们想要做的业务上的事情给做了。
+
+审计公司做了他应该做的事情：发挥他对Solidity的理解，把AI写的代码好好的拷问了一把。
+
+结果就是我们发扬了自己的创新精神，把智能合约能解决现实问题这件事情上边，又往前推了一点点。审计公司帮我们补充了智能合约上的不足
+
+我没研究怎么写好智能合约，但不妨碍我在这个领域做贡献～ 
+
+个人感悟就是，Solidity还好，大概懂就行了。真正重要的合约会有人帮你把握下限的。
+
+2.做web3设计学rive
+
+3.dapp工程全览（提纲挈领，可以反复咀嚼！）
+
+![wachi架构.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/swen-chan/images/2026-01-22-1769092091037-wachi__.png)
+
+白板原链接：[https://www.tldraw.com/f/MC5\_0uLbubuBe6vMmxlZA?d=v-1004.-365.4539.3304.page](https://www.tldraw.com/f/MC5_0uLbubuBe6vMmxlZA?d=v-1004.-365.4539.3304.page)
+
+solidity学习小笔记：
+
+今天简单看了下solidity的语法，还比较简单。应当在一周左右的时间迅速上手。
+
+对了，solidity比较少写while和do while，因为容易造成无界循环，浪费大量gas
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 昨晚和朋友玩了几局鹅鸭杀，再次复习了对自己的认知。我是那种进入一个新的系统和环境，与一般人反应相差很大的人。
 
 比如鹅鸭杀有很多黑话和专业名词，我在没有搞清楚之前会选择不说话或者坚持用简单的话来发言，后面再慢慢随着熟悉而调整融入；而一般人是尽快地捡起来黑话，再努力迅速融入，但我发现有的老玩家在一些具体的概念拆解上有着明显的逻辑错误。
@@ -204,6 +250,7 @@ await 只能等待一个 **Promise**。
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 **eth最小单位wei的来源**：
 
 1998 年，华裔科学家戴伟（Wei Dai）便提出了匿名分布式电子加密货币 B-Money，中本聪的比特币白皮书参考文献中第一篇就是戴伟（Wei Dai）的文章
@@ -304,6 +351,7 @@ foundry的文档要记一下，方便随时查阅命令：
 
 
 
+
 今天本来想开始技术向的学习的，毕竟之前也没接触过solidity，结果到现在（22:40）仍然没法开始……
 
 因为刚才发现了学习手册的一个错误，准备当下就修改提交PR。所以我先来把总结写一下，免得一不小心就过0点了哈哈
@@ -349,6 +397,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 
 
+
 今天主要是提交了个pr，链接：[https://github.com/lxdao-official/myfirstnft-frontend/pull/20](https://github.com/lxdao-official/myfirstnft-frontend/pull/20)  
 关于myfirstnft网页的这个问题，我第一天也遇到了，但是当时没多想，觉得完成任务就行了。
 
@@ -363,6 +412,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -490,6 +540,7 @@ wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大�
 
 
 
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -525,6 +576,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -579,6 +631,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -755,6 +808,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
