@@ -15,8 +15,254 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 一、Dapp 基础知识：从 Web2 到 Web3 的范式转移
+
+### 1\. 核心定义与本质区别
+
+| 维度 | Web2（传统应用） | Web3（Dapp） |
+| --- | --- | --- |
+| 数据主权 | 平台掌控数据，用户仅享使用权 | 用户拥有数据主权，链上数据不可篡改 |
+| 账号体系 | 注册登录（手机号 / 邮箱） | 钱包即身份，无需注册，连接即用 |
+| 服务保障 | 依赖中心化服务器，可随时停止服务 | 基于区块链，无人能关闭，“Code is Law” |
+| 信任基础 | 信任平台（如腾讯、抖音） | 信任智能合约（代码） |
+
+### 2\. Dapp 核心组件（三驾马车）
+
+-   **智能合约**：核心逻辑载体，一旦部署无法修改，自动执行规则（如打赌、交易清算）。
+    
+-   **区块链**：不可篡改的分布式账本，存储所有交易数据，匿名且透明（可查全球任意交易）。
+    
+-   **钱包**：用户身份凭证与交互入口，负责签名交易、管理资产（私钥 = 资产所有权，丢失不可逆）。
+    
+
+### 3\. 典型应用场景
+
+-   **DeFi**：无银行的金融服务（借贷、兑换、理财），无需 KYC，秒级全球交易。
+    
+-   **NFT/GameFi**：资产真正私有化（可交易、跨游戏使用、兑换法币），区别于 Web2 的 “租赁式资产”。
+    
+-   **DAO**：去中心化自治组织，无 CEO，通过智能合约与投票决策（如众筹竞拍宪法副本）。
+    
+
+### 4\. 避坑指南（黑暗森林法则）
+
+-   贵：以太坊拥堵时 Gas 费可能高达数十美元。
+    
+-   险：私钥丢失 = 资产归零，无 “找回密码” 功能。
+    
+-   乱：代码漏洞与黑客攻击频发，需警惕不安全合约。
+    
+
+## 二、Web3 开发工具：Foundry 与 Hardhat
+
+### （一）Foundry：极客向命令行工具（黑客风格）
+
+1\. 核心定位
+
+-   基于 Rust，CLI 操作，编译 / 测试速度快，适合纯合约开发与底层原理学习。
+    
+
+2\. 核心工具集
+
+-   **Anvil（铁砧）**：本地区块链服务器（开则世界存在，关则消失），默认提供 “上帝账号”（无限 ETH）。
+    
+-   **Forge（锻造）**：合约开发 / 测试 / 部署工具，支持模糊测试（自动生成随机输入覆盖边缘场景）。
+    
+-   **Cast（施法）**：与合约交互的工具（查询数据、发送交易）。
+    
+
+3\. 基础操作流程
+
+1.  安装：`curl -L https://foundry.paradigm.xyz | bash` → `foundryup` → 验证：`forge --version`。
+    
+2.  启动本地链：`anvil`（复制 “上帝账号” 私钥）。
+    
+3.  初始化项目：`forge init my_first_web3` → 进入目录：`cd my_first_web3`。
+    
+4.  部署合约：`forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-key <私钥> --broadcast`。
+    
+5.  交互：
+    
+    -   查数据（免费）：`cast call <合约地址> "number()" --rpc-url http://127.0.0.1:8545 | cast --to-dec`。
+        
+    -   改数据（付费）：`cast send <合约地址> "setNumber(uint256)" 666 --rpc-url http://127.0.0.1:8545 --private-key <私钥>`。
+        
+
+4\. 常见报错
+
+-   Connection refused：Anvil 服务器未启动。
+    
+-   Bad key：私钥复制错误（需 0x 开头）。
+    
+-   Contract not found：目录错误（需在含 foundry.toml 的文件夹操作）。
+    
+
+### （二）Hardhat：工程化全栈工具（JS/TS 驱动）
+
+1\. 核心定位
+
+-   基于 JavaScript/TypeScript，支持自动化脚本、工程化部署，适合全栈开发与前端集成。
+    
+
+2\. 核心组件
+
+-   **Hardhat Network**：本地区块链节点（免费、快速，类似 “私服”）。
+    
+-   **Scripts**：部署脚本（JS/TS 编写，自动执行部署流程）。
+    
+-   **Console**：实时交互终端，用 JS 与区块链对话。
+    
+
+3\. 基础操作流程
+
+1.  搭建项目：`mkdir my_hardhat_project` → `cd my_hardhat_project` → `npm init -y` → `npm install --save-dev hardhat` → `npx hardhat init`（选 JavaScript 项目）。
+    
+2.  启动本地链：`npx hardhat node`（复制测试账号，含 10000 ETH）。
+    
+3.  编译合约：`npx hardhat compile`（合约文件存于 contracts 目录）。
+    
+4.  部署合约：`npx hardhat run scripts/deploy.js --network localhost`（复制合约地址）。
+    
+5.  实时交互：`npx hardhat console --network localhost` → `const counter = await ethers.getContractAt('Counter', '<合约地址>')` → 调用方法（如`await counter.setNumber(99)`）。
+    
+
+4\. 工具选择建议
+
+-   选 Foundry：追求极致速度、纯合约开发、想理解底层原理。
+    
+-   选 Hardhat：全栈开发、熟悉 JS/TS、需要前端集成。
+    
+-   进阶路径：先用 Foundry 理解核心逻辑，再用 Hardhat 做工程化落地。
+    
+
+## 三、Dapp 全栈开发：混合架构实战
+
+### 1\. 技术栈选型（2025 标准混合栈）
+
+-   合约层：Solidity + Foundry（单测 / 模糊测试）+ Hardhat（集成测试 / 部署）。
+    
+-   部署工具：Hardhat Ignition（声明式部署，支持断点续跑、Gas 费管理，替代传统脚本）。
+    
+-   前端层：Next.js + Wagmi v2 + Viem（TypeScript 安全客户端）+ Tailwind/RainbowKit。
+    
+-   数据缓存：TanStack Query。
+    
+
+### 2\. 智能合约开发规范
+
+-   安全模式：Checks-Effects-Interactions（先校验、再更新状态、最后交互，防重入攻击）。
+    
+-   代码优化：使用自定义错误（而非 require 字符串，省 Gas）。
+    
+-   事件设计：关键操作触发事件（如`CheckedIn(uint256 indexed id, address indexed participant)`），方便前端索引。
+    
+-   权限控制：Access Control（如`onlyOrganizer`修饰符）。
+    
+
+### 3\. 测试策略
+
+-   单元测试：Foundry 负责，重点覆盖合约逻辑与边缘场景（模糊测试自动生成随机输入）。
+    
+-   集成测试：Hardhat + Viem 负责，模拟前端数据流与跨合约交互（TypeScript 类型安全）。
+    
+
+### 4\. 前端关键问题解决
+
+-   **Hydration Mismatch**：用 Cookie Storage 替代 LocalStorage，保持 SSR 与客户端状态一致。
+    
+-   **BigInt 序列化错误**：渲染时显式调用`.toString()`（JSON.stringify 无法处理 BigInt）。
+    
+-   **交互流程**：用`useWriteContract`（写入交易）+ `useWaitForTransactionReceipt`（监听交易状态），优化用户体验（Idle→Pending→Mining→Success）。
+    
+
+### 5\. 安全与部署要点
+
+-   密钥安全：用`hardhat keystore set`存储私钥，禁止明文写在.env 文件。
+    
+-   合约验证：部署时加`--verify`参数，自动在 Etherscan 验证合约源码。
+    
+-   生产环境：替换公共 RPC，避免 Rate Limit。
+    
+
+## 四、Aave 协议：从 V3 到 V4 的流动性进化
+
+### （一）Aave 核心哲学与 V3 机制
+
+1\. 核心模型：Peer-to-Pool（池化借贷）
+
+-   优势：统一资金池，消除 P2P 匹配等待，即刻流动性。
+    
+-   核心特性：风控优先（动态利率 + 自动清算）、强可组合性（DeFi 底层基础设施）。
+    
+
+2\. 关键机制
+
+-   **资产代币化**：
+    
+    -   aToken：存款凭证，1:1 锚定底层资产，Rebase 模型（余额随利息自动增加）。
+        
+    -   VariableDebtToken：浮动利率债务，不可转让，利率随资金池利用率波动。
+        
+    -   StableDebtToken：固定利率债务，不可转让，锁定借款时利率。
+        
+-   **动态利率模型**：
+    
+    -   核心逻辑：利率随资金池利用率（U）调整，U\_opt=80%（最佳利用率）。
+        
+    -   公式：U<80% 时，R=R0 + (U/U\_opt)\*Slope1；U>80% 时，触发惩罚性高息，抑制借款、吸引存款，防流动性枯竭。
+        
+-   **风险与清算**：
+    
+    -   健康因子（HF）：`HF=(抵押品ETH价值×清算阈值)/债务ETH价值`，HF<1.0 触发清算。
+        
+    -   清算机制：外部套利者（Liquidator）偿还债务，获得抵押品 + 5%-10% 奖励，协议无需中心化干预。
+        
+-   **高级风控**：
+    
+    -   隔离模式（Isolation Mode）：支持高风险资产，仅能借出特定稳定币，设债务上限（Debt Ceiling）。
+        
+    -   高效模式（E-Mode）：针对价格高度相关资产（如稳定币、ETH/stETH），允许极高 LTV（如 97%），最大化资本效率。
+        
+
+3\. V3 局限：流动性碎片化
+
+-   问题：同一资产（如 USDC）分散在不同市场（Mainnet、Optimism、RWA），流动性无法共享，新市场冷启动困难。
+    
+
+### （二）Aave V4：模块化与统一流动性
+
+1\. 核心架构：Hub-and-Spoke（枢纽 - 分支）
+
+-   **Liquidity Hub（心脏）**：汇聚全协议存款，统一管理资金与全局会计（Total Assets、Interest Indices），提升资本效率。
+    
+-   **Spokes（肢体）**：独立市场 / 功能模块（如 Mainnet Spoke、RWA Spoke、Gnosis Spoke），拥有独立风险配置（LTV、清算逻辑）。
+    
+-   优势：消除流动性孤岛，支持无限业务场景扩展。
+    
+
+2\. V4 新特性
+
+-   **风险定价标准化**：借款利率 = 基础利率 + 风险溢价（基于抵押品质量，高风险抵押品支付更高利息）。
+    
+-   **资产代币化升级**：从 aToken Rebase 模型转向 ERC-4626 标准 Vault Shares，解决会计难题，提升 DeFi 可组合性（用户份额 × 份额价格 = 底层资产价值）。
+    
+-   **仓位管理**：用户通过 Position Manager 与协议交互（而非直接操作 Pool），风险模型模块化，支持自定义策略（不影响 Hub 安全）。
+    
+
+3\. V4 核心优势
+
+-   统一（Unified）：Hub 汇聚所有资本，流动性共享。
+    
+-   模块化（Modular）：Spoke 架构支持灵活扩展（如 RWA、L2 特定逻辑）。
+    
+-   高效（Efficient）：Gas 消耗优化，风险定价更精确。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 一、版本演进总览
 
 Uniswap 是 Web3 生态核心 DEX（去中心化交易所），历经三代核心迭代，从基础恒积模型逐步走向可程式化扩展，核心演进逻辑：**提升资金效率 → 增强灵活性与扩展性**
@@ -161,6 +407,7 @@ Uniswap 是 Web3 生态核心 DEX（去中心化交易所），历经三代核�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## 一、EVM 与智能合约运行环境
 
@@ -499,6 +746,7 @@ function transfer(address to, uint256 amount) external onlyOwner {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # Web3 社区运营 & 活动策划核心笔记
 
 ## 一、Telegram 社群搭建与基础运营
@@ -633,6 +881,7 @@ function transfer(address to, uint256 amount) external onlyOwner {
 
 
 
+
 ## 一、 协议起源与核心背景
 
 ### 1\. 诞生需求
@@ -732,11 +981,13 @@ ERC-7962 是以太坊生态的 **密钥哈希型代币标准**，由 Alex Tian �
 
 
 
+
 今天主要进行本周笔记的书写发布到推特,整理成小白扫盲的形式,并且准备进行投研报告的书写, 希望能为我们投研社区带来流量
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -839,6 +1090,7 @@ ERC-7962 是以太坊生态的 **密钥哈希型代币标准**，由 Alex Tian �
 
 
 
+
 # 一、AI与Web3融合核心逻辑
 
 ## 1\. AI智能体的进化：从“嘴替”到“打工人”
@@ -935,6 +1187,7 @@ AI与Web3融合是刚需，AI提供“自主行动能力”，Web3提供“身�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1047,6 +1300,7 @@ AI与Web3融合是刚需，AI提供“自主行动能力”，Web3提供“身�
 
 
 
+
 ## 交易（Transaction）架构与生命周期
 
 交易是区块链状态改变的原子单位。
@@ -1129,6 +1383,7 @@ Gas 不仅是计费单位，更是网络的安全屏障与资源调度器。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
