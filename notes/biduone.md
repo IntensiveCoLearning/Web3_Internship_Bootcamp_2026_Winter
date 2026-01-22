@@ -28,10 +28,80 @@ timezone: UTC+8
 Dapp架构总览(from. wachi)
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-01-22-1769073534074-image.png)
+
+# DappWorkshop
+
+## ⼯具链混合栈HybridStack
+
+Hardhat Ignition+Foundry+Next.js+Wagmi混合架构
+
+**Hardhat（TypeScript）**
+
+灵活插件⽣态、脚本管理、集成测试
+
+**Hardhat⼯程⼯具箱**
+
+-   HardhatNetwork本地游戏服务器
+    
+
+这就好⽐你⾃⼰的私服。⼀切都在本地发⽣，快速且免费。
+
+-   Scripts⾃动机器⼈
+    
+
+编写JS代码让机器⼈去部署合约。不再⼿动敲命令。
+
+-   Console聊天窗口
+    
+
+⽤JavaScript与区块链实时对话。读写数据就像聊天⼀样简单。
+
+**Foundry(Rust)**
+
+-   毫秒级编译、Solidity单测、模糊测试（Fuzzing test）
+    
+
+**工具箱**
+
+-   Anvil（铁砧）
+    
+    游戏服务器本地启动⼀条区块链。它开着，世界存在；它关了，世界消失。
+    
+-   Forge（锻造）
+    
+
+造物主⼯具⽤来编写和放置合约（⾃动售货机）。
+
+-   Cast（施法）
+    
+
+游戏⼿柄⽤来和合约互动（查询余额、按下按钮）。
+
+**现代前端架构：Next.js+Wagmi**
+
+-   ReactComponents + RainbowKit/Tailwind
+    
+-   Wagmiv2Hooks + TanStackQuery(Caching)
+    
+-   Viem(JSON-RPCInterface)
+    
+-   Ethereum|Sepolia
+    
+
+Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
+
+# 南塘DAO
+
+议事规则
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-01-22-1769087633950-image.png)
+
+南塘豆“解耦代币”与内部经济循环模式试探
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # 共学1月21日
 
@@ -84,6 +154,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -117,6 +188,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -185,6 +257,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -213,6 +286,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -284,6 +358,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -313,6 +388,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -411,6 +487,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -462,6 +539,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -547,6 +625,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
