@@ -15,8 +15,52 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+Jeff Huang老师讲Uniswap工作原理解析
+
+p是x用y表示的价格，也就是曲线的斜率。
+
+![image.png](attachment:79043c2c-977e-4f1a-9a71-a5e28f273bf9:image.png)
+
+根据Δx推导Δy或者根据Δy推导Δx。
+
+![image.png](attachment:8d7ff299-1eb5-4445-97f6-e2fc48e7f8df:image.png)
+
+越深的池子，同样价格波动所需的交易量更大。所以越深的池子越稳定。
+
+![image.png](attachment:d7aeee29-e0b6-40e9-af49-135ba7fdc756:image.png)
+
+![image.png](attachment:e7aad983-928f-45eb-9baa-eabfeaa4647e:image.png)
+
+![image.png](attachment:d2803f8f-3351-4bf9-9bcb-b187054132bf:image.png)
+
+无论ETH价格上涨还是下跌，LP都比持有更亏。不过，这个亏是美元本位视角来说的，以美元计算的确亏了。但是以ETH计算就不亏吗？Jeff老师说是赚的。
+
+> 无偿损失是因为随着价格上涨Lp的资金会被动的卖出并购买token1，等于上涨了的同时你的ETH就被动的被卖掉了，去购买了另一个代币，下跌同理，下跌的时候被动买回了这个代币
+
+![image.png](attachment:eba59958-fb61-4bce-8962-f742e6ae0291:image.png)
+
+流动性是k-p曲线下方的面积。限制p的区间可以集中流动性。
+
+![image.png](attachment:93455a96-aaf3-4d6a-baeb-8d2990a90f15:image.png)
+
+右图的横纵坐标应该是x和y。在某些区域，大家的资金集中，k比较大，所以在计算的时候流动性较大，价格不容易波动。
+
+![image.png](attachment:00c7822b-7487-49d8-aefc-86805ef3bb4a:image.png)
+
+区间设置有最小单位限制，否则查询起来太耗费gas。
+
+![image.png](attachment:418bce1f-584c-40e6-aa8b-0e37dd504df7:image.png)
+
+![image.png](attachment:4a116981-1b7b-4a88-bcf1-b0358c41b6f8:image.png)
+
+BD：Business Development，商务拓展。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## **行业赛道全览**
 
 ### 一、DeFi：去中心化金融的创新实践
@@ -96,6 +140,7 @@ Web3 + 乡村建设：南塘DAO
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数据仍然需要压缩上链。为了进一步提高效率，新的方案不把交易数据上链，只上链交易树的root hash以及ZK证明。这就是**Validium**。
 
 **Volition**进一步改进Validium，运用用户选择是否让交易上L1链。大额交易，对安全性要求高的交易可以选择上L1，其它的和Validium一样。
@@ -111,6 +156,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 ```
 
@@ -170,6 +216,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -318,11 +365,13 @@ SNARK落地更快，STARK前景更好。
 
 
 
+
 今天参加了周会，提了一些问题。其它的没什么进度。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -401,6 +450,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 
 
+
 几个问题
 
 -   web3比web2快？我理解其实不会，只是上去了合规审查的部分，出海更方便了。Ricky也委婉表达了这个观点。
@@ -412,6 +462,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -575,6 +626,7 @@ Gas 费用 = **用多少 × 每单位多少钱**，就像你打车一样：
 
 
 
+
 ## **以太坊概览**
 
 以太坊是区块链2.0，比特币是区块链1.0。
@@ -645,6 +697,7 @@ MetaMask这种钱包App生成私钥后会保存在本地，设置的密码用来
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
