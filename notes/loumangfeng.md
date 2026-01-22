@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 打卡
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日想打打码，时隔俩个月再次拾起[**Patrick Collins**](https://www.youtube.com/@PatrickAlphaC) 老师的课程，温习了一下solidity的基础语法，写了几个demo.remix的ui感觉还是很不应手。然后现在在听第一周例会，希望下周也能上个电视。群里确实卧虎藏虎，感觉各位老师要么是web2OG要么是海外背景，我一双非瑟瑟发抖。期末考试彻底结束，明天开始全力学习web3，日语，然后练练口语
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -57,6 +67,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
