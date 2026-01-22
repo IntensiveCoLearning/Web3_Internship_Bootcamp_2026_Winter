@@ -15,13 +15,27 @@ Web3 实习计划 2025 冬季实习生 哦耶
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+通过ETHPanda Dapp Workshop的分享，我对现代DeFi借贷协议（以Aave V3→V4演进为代表）的全栈开发与架构有了系统认识。核心亮点在于Hub & Spoke（中心辐射）架构：
+
+-   Liquidity Hub统一汇聚全网流动性，消除孤岛，提升资本效率；
+    
+-   Spoke模块化实现不同风险策略、业务场景，用户通过Position Manager间接交互，实现风险隔离与策略定制，而不影响核心Hub安全。
+    
+
+存储优化上，V3使用单一uint256位图（ReserveConfigurationMap）打包30+配置，极大降低SLOAD Gas成本；V4进一步引入风险溢价（Risk Premium）动态定价 + ERC-4626标准化Vault股份模型，解决Rebasing难题并提升组合性。前端采用Next.js + Wagmi + Hardhat Ignition/Foundry混合栈，工程实现模块化、可扩展；交互流程清晰（useWriteContract → useWaitForTransactionReceipt），用户体验友好。总体而言，Aave V4正朝“终极流动性层”方向演进：统一（Unified）+ 模块化（Modular）+ 高效（Efficient），为DeFi带来更强的可组合性与可扩展性。非常值得深入学习与实践。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 11
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 1\. EVM 基础EVM 是以太坊智能合约的栈式虚拟机，所有合约以字节码在 EVM 中执行。理解 EVM 是掌握 Solidity 编写、优化与安全的前提。四大存储区：
 
@@ -75,6 +89,7 @@ Constructor：部署时初始化（名称、符号、精度、owner = msg.sender
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -144,6 +159,7 @@ Constructor：部署时初始化（名称、符号、精度、owner = msg.sender
 
 
 
+
 LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持续发展。周会主要聚焦社区动态、项目进展和工作组更新。
 
 关键内容总结：
@@ -161,6 +177,7 @@ LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -187,6 +204,7 @@ LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -233,6 +251,7 @@ AI能力强但仍是“黑户”：身份不可验证、行为不可审计、支
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -323,6 +342,7 @@ AI能力强但仍是“黑户”：身份不可验证、行为不可审计、支
 
 
 
+
 1\. 安全第一原则
 
 私钥绝对不能截图、完整复制、全文发送或存储在易被监控的地方。剪贴板易被恶意软件窃取，建议分段复制+手动输入。涉及真金白银时，安全意识必须极度严格（曾有学员因授权泄露被黑客快速转走奖金）。
@@ -378,6 +398,7 @@ RPC仍存一定中心化风险（可自选或研究去中心化RPC方案）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
