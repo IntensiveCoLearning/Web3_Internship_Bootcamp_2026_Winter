@@ -35,7 +35,7 @@ contract Counter { // contract 是智能合约的起点，不可或缺
     /* 变量用法：
     变量类型 可见性 变量名字 = 变量值
     变量类型：uint, string, int, bool, address 等
-    可见性： public, private, internal, external
+    可见性： public, private, internal, external。状态变量的默认可见性是 internal
     */
 
     // 函数获取当前计数
@@ -48,8 +48,10 @@ contract Counter { // contract 是智能合约的起点，不可或缺
 [returns (<return types>)]{ <function body> } 方括号中的是可写可不写的关键字
 
     我自己总结的用法：
-    function 函数名(变量类型 变量名称) 可见性 函数状态 returns (返回值的类型）{
-        return 你需要将返回的值赋值到的变量名
+    function 函数名(参数类型 参数名称, 参数类型2 参数名称2, ...) 可见性 函数状态 returns (返回值类型1, 返回值类型2, ...){
+        return (返回值1, 返回值2, ...); // 多返回值时，必须用括号。
+    // 或 return 单个返回值;          // 单返回值时，无需括号。
+    // 如果函数不返回值，可省略 returns
     }
 
     tips：最简函数用法：function 函数名() 可见性 {}
@@ -391,6 +393,7 @@ contract IfElse {
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -398,6 +401,7 @@ contract IfElse {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -422,6 +426,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -478,6 +483,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -508,12 +514,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -568,6 +576,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -578,6 +587,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
