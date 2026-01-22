@@ -48,7 +48,7 @@ contract Counter { // contract 是智能合约的起点，不可或缺
 [returns (<return types>)]{ <function body> } 方括号中的是可写可不写的关键字
 
     我自己总结的用法：
-    function 函数名(变量类型，变量名称) 可见性 函数状态 returns (返回值的类型）{
+    function 函数名(变量类型 变量名称) 可见性 函数状态 returns (返回值的类型）{
         return 你需要将返回的值赋值到的变量名
     }
 
@@ -336,10 +336,48 @@ uint public i = 0;
   } // 状态回滚：交易失败后，所有状态更改撤销（i 不会保留修改后的值）。
 }
 ```
+
+## [If / Else](https://solidity-by-example.org/if-else/)
+
+该部分在简体中文版本缺失，以下为我手动翻译（AI）补充：
+
+**Solidity 支持条件语句** `if`**、**`else if` **和** `else`**。**
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract IfElse {
+    // 函数 foo：根据 x 的值返回不同结果
+    function foo(uint256 x) public pure returns (uint256) {
+        if (x < 10) {          // 如果 x 小于 10
+            return 0;         // 返回 0
+        } else if (x < 20) {   // 否则，如果 x 小于 20
+            return 1;         // 返回 1
+        } else {              // 其他情况
+            return 2;         // 返回 2
+        }
+    }
+
+    // 函数 ternary：示范三元运算符（if/else 的简写）
+    function ternary(uint256 _x) public pure returns (uint256) {
+        // 传统 if/else 写法：
+        // if (_x < 10) {
+        //     return 1;
+        // }
+        // return 2;
+
+        // 三元运算符简写：
+        // 语法：条件 ? 表达式1（true 时返回） : 表达式2（false 时返回）
+        return _x < 10 ? 1 : 2;
+    }
+}
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -374,6 +412,7 @@ uint public i = 0;
 
 
 
+
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
 **后面学习完智能合约我要试试ERC7962在代码层面和一般的有什么不一样，从代码层面是如何实现的**  
 Solidity学习路线（**021学习以太坊**）：
@@ -383,6 +422,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -437,6 +477,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -466,12 +507,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -524,6 +567,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -534,6 +578,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
