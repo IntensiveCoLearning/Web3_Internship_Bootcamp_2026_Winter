@@ -15,8 +15,336 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+**Ii**
+
+Immutable 不可篡改  
+
+区块链数据一旦记录便无法修改的特性
+
+IPFS (InterPlanetary File System) 星际文件系统  
+
+去中心化分布式文件存储协议
+
+Interoperability 互操作性  
+
+不同区块链之间数据和资产的互通能力
+
+Inscriptions 铭文
+
+在比特币交易中嵌入数据的方法
+
+Inflation 通货膨胀
+
+货币购买力下降的现象
+
+Initial Block Download (IBD) 初始区块下载
+
+新节点首次加入网络时下载整个区块链的过程
+
+Intrinsic Value 内在价值
+
+资产本身具有的价值，而非市场定价
+
+**Jj**
+
+JoinMarket 联合市场
+
+增强比特币隐私性的开源市场协议
+
+Just-In-Time (JIT) Mining 即时挖矿
+
+根据当前交易需求调整算力分配的挖矿策略
+
+**Kk**
+
+KYC (Know Your Customer) 客户身份验证  
+
+中心化平台要求用户提交身份信息的合规流程
+
+Keynesian Economics 凯恩斯经济学
+
+主张政府干预以稳定经济的理论
+
+**Ll**
+
+Layer 1 一层网络  
+
+区块链底层主网（如以太坊、比特币网络）
+
+Layer 2 二层网络  
+
+构建在一层之上的扩容解决方案（如Polygon、Arbitrum）
+
+Ledger 账本  
+
+记录区块链所有交易数据的分布式数据库
+
+Liquidity 流动性  
+
+资产在市场中快速变现的能力
+
+Liquidity Pool 流动性池  
+
+DeFi中用户存入资产以提供交易的资金池
+
+Light Node 轻节点
+
+仅存储部分区块链数据、依赖全节点验证的节点
+
+Liquid Staking 流动性质押
+
+质押代币后仍可获得流动性凭证的质押方案
+
+Liquidation 清算
+
+当抵押品价值低于阈值时，平台强制变卖抵押品偿还贷款
+
+Light Client 轻客户端
+
+不下载完整区块链、依赖全节点提供数据的客户端
+
+Lightning Network 闪电网络
+
+比特币的二层支付网络，实现快速廉价交易
+
+Libertarian 自由主义者
+
+主张最大限度个人自由和最小政府干预的人
+
+**Mm**
+
+Memecoin   
+
+基于网络迷因发行、无实际价值支撑的加密代币
+
+Merkle Tree 默克尔树  
+
+用于快速验证区块链数据完整性的哈希二叉树
+
+Metaverse 元宇宙  
+
+融合VR/AR与区块链的沉浸式数字世界
+
+Mining 挖矿  
+
+通过算力维护区块链网络并获得代币奖励的行为
+
+Multisig Wallet 多签钱包  
+
+需要多个私钥签名才能发起交易的钱包
+
+Mining Rig 矿机
+
+专门用于区块链挖矿的硬件设备
+
+Move-to-Earn (M2E) 边动边赚
+
+用户通过运动获取代币奖励的Web3应用模式
+
+Margin Trading 保证金交易
+
+使用借入资金放大交易规模的杠杆交易
+
+Market Depth 市场深度
+
+市场吸收大额交易而不显著影响价格的能力
+
+Medium Of Exchange 交换媒介
+
+被广泛接受用于交换商品和服务的物品
+
+Metal Backups 金属备份
+
+将助记词刻在金属板上以防损坏的备份方式
+
+Mixer 混币器
+
+混合多笔交易以掩盖资金来源的服务
+
+Mt. Gox - 门头沟交易所
+
+曾是最大的比特币交易所，2014年破产
+
+Multisignature 多重签名
+
+需要多个签名才能授权交易的安全机制
+
+mNAV 修正资产净值
+
+调整后的净资产价值
+
+**Nn**
+
+NFT (Non-Fungible Token) 非同质化代币  
+
+具有唯一性的数字资产所有权凭证
+
+Node 节点  
+
+维护区块链网络运行的计算机或服务器
+
+Nakamoto Consensus 中本聪共识
+
+比特币基于工作量证明的共识机制
+
+Nocoiner 无币者
+
+不持有任何加密货币的人
+
+Non Custodial Wallet 非托管钱包
+
+用户完全控制私钥的钱包
+
+Nonce 随机数
+
+用于挖矿和工作量证明的一次性数字
+
+Not Your Keys, Not Your Coins 不是你的私钥，就不是你的币
+
+强调私钥控制权重要性的口号
+
+**Oo**
+
+On-chain 链上  
+
+在区块链网络上发生并被记录的行为或数据
+
+Off-chain 链下  
+
+在区块链网络外发生且未被链上记录的行为
+
+Oracles 预言机  
+
+将现实世界数据输入区块链智能合约的中间件
+
+Optimistic Rollup 乐观汇总
+
+默认交易合法、仅在争议时验证的Layer2方案
+
+Over-Collateralization 超额抵押
+
+DeFi借贷中抵押品价值高于贷款额度的机制
+
+Op\_Return 操作返回
+
+比特币交易中用于嵌入数据的操作码
+
+OPSEC (Operations Security) 操作安全
+
+保护敏感信息和隐私的安全措施
+
+Ordinals 序数理论
+
+在比特币上创建NFT和类似资产的理论
+
+Orphaned Block 孤块
+
+被网络接受但未被包含在主链中的区块
+
+**Pp**
+
+Peer-to-peer (P2P) 点对点  
+
+无需中心服务器、节点直接交互的网络模式
+
+Permissionless 无许可  
+
+任何人可自由加入或离开区块链网络的特性
+
+Play-to-Earn (P2E) 边玩边赚  
+
+玩家通过游戏行为赚取代币奖励的模式
+
+PoS (Proof of Stake) 权益证明  
+
+通过质押代币获得记账权的共识机制
+
+PoW (Proof of Work) 工作量证明  
+
+通过算力竞争获得记账权的共识机制
+
+Privacy Coin 隐私币  
+
+专注于交易隐私的加密货币
+
+Private Key 私钥
+
+访问加密资产的核心保密凭证
+
+Public Key 公钥
+
+与私钥配对，用于接收资产的公开地址
+
+Proposal 提案
+
+DAO中由社区成员发起的治理议案
+
+Paper Wallet 纸钱包
+
+将私钥打印在纸上的钱包形式
+
+Payment Channel 支付通道
+
+允许链下快速、廉价交易的技术
+
+Private Key 私钥
+
+用于访问和控制加密资产的秘密密钥
+
+Proof Of Keys 密钥证明
+
+验证用户真正控制自己私钥的运动
+
+Protocol 协议
+
+网络参与者共同遵守的规则集合
+
+**Qq**
+
+Quorum 法定人数
+
+DAO提案生效所需的最低投票参与比例
+
+Quantum Computing 量子计算
+
+可能威胁传统加密安全的新一代计算技术
+
+**Rr**
+
+Regulatory Compliance 监管合规  
+
+Web3项目遵守相关地区法律法规的行为
+
+Rollup Rollup技术  
+
+Layer2扩容方案，将多笔链下交易打包上链
+
+Rug Pull 跑路  
+
+Web3项目方挪用资金池资产并放弃项目的行为
+
+Really Good Bitcoin (RGB) 优质比特币协议
+
+在比特币上实现智能合约的协议
+
+Recovery Seed Phrase 恢复助记词
+
+用于恢复钱包的一串单词
+
+Rekt 惨败
+
+在交易中遭受重大损失
+
+Runes Protocol 符文协议
+
+在比特币上发行可替代代币的协议
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 **Uniswap V2 基础原理**
 
 \- 恒定乘积公式：x \* y = k，价格 p = y / x
@@ -94,6 +422,7 @@ A：稳定币对可选 0.01% 或 0.05%，主流资产对可选 0.3%，高波动�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 **Solidity 智能合约开发入门**
 
@@ -1084,6 +1413,7 @@ Hyperinflation 恶性通货膨胀
 
 
 
+
 ### **学分管理重要通知**
 
 **邮箱填写要求**：提交活动申请表时，**必须使用与GitHub绑定的邮箱**。（最重要的放开头！）
@@ -1255,6 +1585,7 @@ Space实时在线人数：最核心指标，反映活动真实热度（警惕“
 
 
 
+
 通过学习ETHPanda和LXDAO联合举办的实习营，我也产出一个念头，我能不能试着自己做一个社区，为大家提供一些学习的途径呢？于是我们开始着手做Cryptotalk社区。这次英语角的顺利举办，也给了我很多启发，在这做个简单总结：
 
 **1\. 不怕起点低，怕的是不敢开始。**  
@@ -1306,6 +1637,7 @@ Space实时在线人数：最核心指标，反映活动真实热度（警惕“
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1423,6 +1755,7 @@ Space实时在线人数：最核心指标，反映活动真实热度（警惕“
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1638,6 +1971,7 @@ MetaMask和DApp的用户体验小问题，包括：
 
 
 
+
 ## Week 1, Day 3: ENS, DEX, Identity, Inventory, Sybil
 
 **📍钱包与账户创建**
@@ -1827,6 +2161,7 @@ AI的能力上限取决于策略设计者（人）。AI是实现策略自动化�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2236,6 +2571,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2773,6 +3109,7 @@ EIP基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
