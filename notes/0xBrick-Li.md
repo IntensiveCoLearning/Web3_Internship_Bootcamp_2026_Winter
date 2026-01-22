@@ -24,10 +24,43 @@ Web3 实习计划 2025 冬季实习生
 -   Polymarket架构与链上数据解码
     
 -   Reactive Network
+    
+
+# Note
+
+### 重入攻击 (Reentrancy)
+
+```
+function withdraw() public notCompleted{
+        if (openToWithdraw == false){
+            revert NotOpenToWithdraw();
+        }
+        uint256 refund_amount = balances[msg.sender];
+        balances[msg.sender] = 0;//现改状态
+        (bool success, ) = msg.sender.call{value : refund_amount}("");//转账
+        if (success == false){
+            revert WithdrawTransferFailed(msg.sender, refund_amount);
+        }
+        openToWithdraw == false;
+    }
+```
+
+如果先转账，再扣余额，黑客在收到钱的fallback里再次调用提款函数，此时余额还没扣，导致合约被掏空。
+
+### gas优化
+
+不变的变量声明为immutable，直接嵌入合约字节码中，读取几乎不花钱（类似常量）。
+
+```
+uint256 public  deadline = block.timestamp + 2 hours ;//deadline部署后不变
+//用immutable优化，嵌入合约字节码，读取几乎不消耗gas
+uint256 public immutable deadline = block.timestamp + 2 hours ;
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # To do list
 
@@ -74,6 +107,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 
 
+
 # To do list
 
 -   Uniswap v2 源码
@@ -87,6 +121,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -120,6 +155,7 @@ solidity改复习一下子了，明天抓紧复习，争取优化实习手册
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -288,6 +324,7 @@ ERC-7962的核心创新在于，它通过引入\*\*`密钥哈希 (keyHash)`\*\* 
 
 
 
+
 # To do list
 
 -   参加LXDAO周会 ✅
@@ -322,6 +359,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -373,6 +411,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -459,6 +498,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -567,6 +607,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -624,6 +665,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
