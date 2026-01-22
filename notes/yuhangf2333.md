@@ -15,8 +15,128 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 1\. 基础与变量 (Basics & Variables)
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+contract VariablesAndTypes {
+    // --- 1. 状态变量 (State Variables) ---
+    // 存储在链上 (Storage)，写入消耗 Gas
+    uint256 public myUint = 123;
+    bool public myBool = true;
+    address public myAddress = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+    
+    // --- 2. 常量与不可变变量 (Gas Saving) ---
+    // constant: 编译时确定，不占 Storage 插槽，极其省 Gas
+    uint256 public constant MY_CONSTANT = 100;
+    
+    // immutable: 部署时确定 (在 constructor 中)，之后不可改，比状态变量省 Gas
+    address public immutable i_owner;
+
+    constructor() {
+        i_owner = msg.sender; // 部署者地址
+    }
+
+    // --- 3. 局部变量 (Local Variables) ---
+    function doSomething() public pure {
+        // 仅在函数执行期间存在于内存中
+        uint256 i = 456; 
+        bool f = false;
+        // 甚至更复杂的计算...
+    }
+}
+```
+
+## 2\. 复杂数据结构 (Data Structures)
+
+枚举、结构体、数组和映射。
+
+```
+contract DataStructures {
+    // --- 1. Enum (枚举) ---
+    // 用于表示状态流程
+    enum Status { Pending, Shipped, Completed }
+    Status public currentStatus;
+
+    // --- 2. Struct (结构体) ---
+    // 自定义数据组合
+    struct Todo {
+        string text;
+        bool completed;
+    }
+    // 结构体数组
+    Todo[] public todos;
+
+    // --- 3. Array (数组) ---
+    uint[] public dynamicArray; // 动态长度
+    uint[3] public fixedArray;  // 固定长度
+
+    // --- 4. Mapping (映射) ---
+    // Key => Value (最常用的存储方式)
+    mapping(address => uint256) public balances;
+    // 嵌套映射
+    mapping(address => mapping(string => bool)) public userPermissions;
+
+    function addData() public {
+        // 修改 Enum
+        currentStatus = Status.Shipped;
+
+        // 添加到 Array
+        dynamicArray.push(10);
+        
+        // 修改 Mapping
+        balances[msg.sender] = 999;
+
+        // 添加 Struct
+        todos.push(Todo({text: "Learn Solidity", completed: false}));
+    }
+}
+```
+
+## 3\. 函数类型与数据存储位置 (Functions & Data Locations)
+
+`storage` / `memory` / `calldata` 以及 `view` / `pure`。
+
+```
+contract FunctionsAndLocations {
+    uint256 public x = 1; // 状态变量 (Storage)
+
+    // --- 1. View vs Pure ---
+    
+    // View: 读取了状态变量 x，但没有修改它
+    function addToX(uint256 y) public view returns (uint256) {
+        return x + y;
+    }
+
+    // Pure: 既不读取也不修改状态变量，纯计算
+    function addPure(uint256 i, uint256 j) public pure returns (uint256) {
+        return i + j;
+    }
+
+    // --- 2. Data Locations (引用类型必须指定) ---
+    
+    // 函数参数推荐用 calldata (如果不需要修改)，比 memory 省 Gas
+    function splitData(uint[] calldata _input) external {
+        
+        // Memory: 临时变量，可以修改，函数结束后销毁
+        uint[] memory tempArray = new uint[](_input.length);
+        tempArray[0] = _input[0];
+        
+        // Storage: 引用状态变量
+        // 注意：这里无法直接在函数内定义 storage 变量指向新的空间
+        // 通常用于引用已存在的 Struct/Array 进行修改
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 **1\. 核心概念**
 
 • **什么是质押 (Staking)**：将资金（ETH 或代币）锁定在一个智能合约中，就像把钱放入一台自动售货机。这是一种“去信任化”（Trustless）的机制，用户不需要信任某个人，只需要信任代码规则,。
@@ -41,6 +161,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 这一周主要在划水，准备期末考试复习
 
 等下一周考完后，就轻松不少了
@@ -48,6 +169,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 学了下智能合约的相关内容  
@@ -115,11 +237,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 听了律师的讲解，了解了目前国内的一些情况
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -139,6 +263,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
