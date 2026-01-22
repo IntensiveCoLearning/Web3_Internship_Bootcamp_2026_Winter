@@ -17,7 +17,7 @@ interested in web3
 <!-- Content_START -->
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
-记录一下 Foundry 的代码
+记录一下 Foundry 的代码，参考小海老师的 ppt 和 Foundry 的[官方文档](https://getfoundry.sh/introduction/getting-started)
 
 ```
 curl -L https://foundry.paradigm.xyz | bash //下载
@@ -25,10 +25,42 @@ froundry //安装
 forge --version //检查版本
 Anvil
 ```
+
+另开一个窗口
+
+```
+forge init my_first_web3
+cd my_first_web3
+forge build
+forge test
+export PRIVATE_KEY="<万能密钥>"
+forge script script/Counter.s.sol --rpc-url http://127.0.0.1:8545 --broadcast --private-key $PRIVATE_KEY //部署
+export CONTRACT_ADRS="<合约地址>"
+cast call $CONTRACT_ADRS "number()(uint256)" --rpc-url http://127.0.0.1:8545 //查询, 返回0
+cast send $CONTRACT_ADRS "setNumber(uint256)" 666 --rpc-url http://127.0.0.1:8545 --private-key $PRIVATE_KEY //改写
+cast send $CONTRACT_ADRS "decrement(uint256)" 999 --rpc-url http://127.0.0.1:8545 --private-key $PRIVATE_KEY //减少，报错"error: no enough count"
+cast send $CONTRACT_ADRS "decrement(uint256)" 520 --rpc-url http://127.0.0.1:8545 --private-key $PRIVATE_KEY //减少520
+cast call $CONTRACT_ADRS "number()(uint256)" --rpc-url http://127.0.0.1:8545 //查询, 返回146
+```
+
+作业是decrement函数，下面这两种都可以。上面是实现的第一种。
+
+```
+function decrement(uint256 newNumber) public {
+    require(newNumber <= number, "error: not enough counter");
+    number -= newNumber;
+}
+
+function decrement(uint256 newNumber) public {
+    require(number>0, "error: not enough counter");
+    number--;
+}
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 1.  昨天开始做[Solidity by Example](https://solidity-by-example.org/)
@@ -40,6 +72,7 @@ Anvil
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -101,6 +134,7 @@ Elon 老师的 Solidity 入门课干货满满，介绍了EVM的四大存储区�
 
 
 
+
 拖延了一个星期，安装了REMIX IDE. 完成了learnETH第一个教程。期待后面开始自己写代码实现。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/0xxoo-eth/images/2026-01-19-1768838161668-image.png)
@@ -108,6 +142,7 @@ Elon 老师的 Solidity 入门课干货满满，介绍了EVM的四大存储区�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -132,6 +167,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 
 
+
 今天学习Bruce分享如何成为靠谱的Web3实习生的经验谈。最近我也在远程协作中反思工作能力和工作态度等问题。
 
 按照Bruce对靠谱的分解，包括**可预期**（说到做到，按时交付，不临时变卦）、**可沟通**（遇到问题主动同步，不闷头苦干）和**可复盘**（完成任务后主动思考改进点）。我觉得可预期是很重要的，这其实也需要管理者前期做好沟通，包括项目的计划、各自的分工和交付预期、如果时间非常紧急的项目则需要明确ddl以及各自的休假安排。
@@ -143,6 +179,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -225,6 +262,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 
 
+
 AI及其基础概念（分享会）
 
 1.  AI Agent的演进：从聊天工具到具备执行能力的智能体，通过Function Call、MCP等技术实现从文本交互到实际行动的转变。
@@ -259,6 +297,7 @@ AI及其基础概念（分享会）
 
 
 
+
 # **MiCA 为什么限制算法稳定币？**
 
 2023年4月，欧洲议会正式通过《加密资产市场监管法案》（Markets in Crypto-Assets Regulation, MiCA），这标志着欧盟在加密资产监管领域迈出了里程碑式的一步。该法案对稳定币（stablecoins）的监管尤为严格，特别是对算法稳定币（algorithmic stablecoins）采取了近乎禁止性的立场。
@@ -278,6 +317,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -321,6 +361,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
