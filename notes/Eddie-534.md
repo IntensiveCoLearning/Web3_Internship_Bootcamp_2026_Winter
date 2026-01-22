@@ -15,8 +15,62 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+26.1.22 今天继续学习solidity基础部分剩下内容。
+
+-   归纳整理：
+    
+
+1.  可见性与接口: private/internal/public/external 四件套终于弄清了，Interface 像是合约的“使用说明书”
+    
+2.  式转账操作: transfer/send/call 三种打钱方式：
+    
+
+transfer()：最安全但 gas 固定
+
+send()：返回 bool（可能会默默失败）
+
+call()：功能最强但风险也最大
+
+3.  特殊函数：
+    
+
+receive()：纯收钱入口
+
+fallback()：万能兜底
+
+delegatecall：高级玩法，能让合约“借用”其他合约的代码
+
+4.  安全与优化：
+    
+
+try/catch 终于能优雅处理错误了
+
+用 library 复用代码
+
+ABI 编码解码是合约对话的“翻译官”
+
+unchecked 可以省 Gas 但得自己保证安全
+
+5.  硬核 Assembly：
+    
+
+直接写底层代码，性能拉满但写错一点就炸
+
+-   特别注意：
+    
+
+用 call 转账时差点忘了检查返回值，幸好只是在测试网。
+
+![屏幕截图 2026-01-22 145346.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-22-1769064838564-_____2026-01-22_145346.png)
+
+![屏幕截图 2026-01-22 145101.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-22-1769064850471-_____2026-01-22_145101.png)
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 26.1.21 今天学习了Solidity的基础部分的部分内容。
 
 -   归纳：
@@ -39,6 +93,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 26.1.20 今天学习了Web3实习手册的智能合约开发部分
 
@@ -121,6 +176,7 @@ contract.methods.函数名().call()  // 读操作，免费
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 26.1.19 今天学习了021以太坊教材的第四章，了解了智能合约的工作原理与价值。
 
 -   智能合约
@@ -178,6 +234,7 @@ ABI（用于调用合约）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -259,6 +316,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.17跟着B站上的Chainlink预言机教程，继续学习Solidity的进阶部分
 
 -   内容梳理：
@@ -314,6 +372,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
 
 -   收获：
@@ -337,6 +396,7 @@ ABI（用于调用合约）
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -484,6 +544,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 
 
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -585,6 +646,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -626,6 +688,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
