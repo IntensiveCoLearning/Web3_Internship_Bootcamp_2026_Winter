@@ -17,17 +17,23 @@ WHUweb3Club|build in public
 <!-- Content_START -->
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chimeraHHH/images/2026-01-22-1769066232405-image.png)
+看完了[https://web3intern.xyz/zh/position-introduction/](https://web3intern.xyz/zh/position-introduction/) 实习手册
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/chimeraHHH/images/2026-01-22-1769069918870-image.png)
+
+以及继续vibe coding
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 今日复习回顾相关章节，这几天用完了trae的600额度）工作量爆炸
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -40,6 +46,7 @@ WHUweb3Club|build in public
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -59,11 +66,13 @@ WHUweb3Club|build in public
 
 
 
+
 Day7 学习安全与合规
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -84,11 +93,13 @@ Day6！
 
 
 
+
 Day5！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -115,6 +126,7 @@ Day5！
 
 
 
+
 1.14打卡
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -131,11 +143,13 @@ Day5！
 
 
 
+
 回看开营仪式+一些vibe coding
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
