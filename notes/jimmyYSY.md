@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+感谢小海老师
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 了解uniswap基础逻辑。
 
 黑客松报名以及黑客松分工
@@ -25,11 +31,13 @@ timezone: UTC+8
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 solidity基础语法，应用，合约等
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 TG创建频道，添加rose机器人
@@ -42,11 +50,13 @@ TG创建频道，添加rose机器人
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -64,6 +74,7 @@ TG创建频道，添加rose机器人
 
 
 
+
 课堂学习web3的历史，基础信息等。
 
 钱包的使用以及 钱包 ->助记词 -> 私钥 -> 公钥 之间的关系
@@ -71,6 +82,7 @@ TG创建频道，添加rose机器人
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
