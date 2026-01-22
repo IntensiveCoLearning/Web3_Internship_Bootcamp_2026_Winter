@@ -15,8 +15,326 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+补充昨天内容：
+
+**6.引用类型**
+
+-   数组 array：是Solidity常用的一种变量类型，用来存储一组数据（整数，字节，地址等等）。数组分为固定长度数组和可变长度数组两种： （1）：固定长度数组：在声明时指定数组的长度。用T\[k\]的格式声明，其中T是元素的类型，k是长度；
+    
+
+（2）：可变长度数组（动态数组）：在声明时不指定数组的长度。用T\[\]的格式声明，其中T是元素的类型；
+
+-   bytes比较特殊，是数组，但是不用加\[\]。另外，不能用byte\[\]声明单字节数组，可以使用bytes或bytes1\[\]。bytes 比 bytes1\[\] 省gas。
+    
+-   创建数组的规则：
+    
+
+（1）：对于memory修饰的动态数组，可以用new操作符来创建，但是必须声明长度，并且声明后长度不能改变；
+
+（2)数组字面常数(Array Literals)是写作表达式形式的数组，用方括号包着来初始化array的一种方式，并且里面每一个元素的type是以第一个元素为准的，例如\[1,2,3\]里面所有的元素都是uint8类型，因为在Solidity中，如果一个值没有指定type的话，会根据上下文推断出元素的类型，默认就是最小单位的type，这里默认最小单位类型是uint8。而\[uint(1),2,3\]里面的元素都是uint类型，因为第一个元素指定了是uint类型了，里面每一个元素的type都以第一个元素为准。 下面的例子中，如果没有对传入 g() 函数的数组进行 uint 转换，是会报错的;
+
+(3)如果创建的是动态数组，你需要一个一个元素的赋值。
+
+-   数组成员
+    
+    length: 数组有一个包含元素数量的length成员，memory数组的长度在创建后是固定的。
+    
+    push(): 动态数组拥有push()成员，可以在数组最后添加一个0元素，并返回该元素的引用。
+    
+    push(x): 动态数组拥有push(x)成员，可以在数组最后添加一个x元素。
+    
+    pop(): 动态数组拥有pop()成员，可以移除数组最后一个元素。
+    
+-   结构体 struct
+    
+    Solidity支持通过构造结构体的形式定义新的类型。结构体中的元素可以是原始类型，也可以是引用类型；结构体可以作为数组或映射的元素。创建结构体的方法：
+    
+    // 结构体
+    
+    struct Student{
+    
+    uint256 id;
+    
+    uint256 score;
+    
+    }
+    
+    Student student; // 初始一个student结构体
+    
+-   给结构体赋值
+    
+    方法1:在函数中创建一个storage的struct引用；
+    
+
+方法2:直接引用状态变量的struct；
+
+方法3:构造函数式；
+
+方法4:key value;
+
+**7.映射类型**
+
+-   映射Mapping:在映射中，人们可以通过键（Key）来查询对应的值（Value）
+    
+
+声明映射的格式为mapping(\_KeyType => _ValueType)，其中_ KeyType和\_ValueType分别是Key和Value的变量类型;
+
+-   映射的规则
+    
+    规则1：映射的\_KeyType只能选择Solidity内置的值类型，比如uint，address等，不能用自定义的结构体。而\_ValueType可以使用自定义的类型;
+    
+
+规则2：映射的存储位置必须是storage，因此可以用于合约的状态变量，函数中的storage变量和library函数的参数（见例子）。不能用于public函数的参数或返回结果中，因为mapping记录的是一种关系 (key - value pair);
+
+规则3：如果映射声明为public，那么Solidity会自动给你创建一个getter函数，可以通过Key来查询对应的Value;
+
+规则4：给映射新增的键值对的语法为\_Var\[\_Key\] = _Value，其中_Var是映射变量名，\_Key和\_Value对应新增的键值对。
+
+-   映射的原理
+    
+    原理1: 映射不储存任何键（Key）的资讯，也没有length的资讯;
+    
+    原理2: 对于映射使用keccak256(h(key) . slot)计算存取value的位置。感兴趣的可以去阅读 WTF Solidity 内部规则: 映射存储布局;
+    
+    原理3: 因为Ethereum会定义所有未使用的空间为0，所以未赋值（Value）的键（Key）初始值都是各个type的默认值，如uint的默认值是0。
+    
+
+**8.变量初始值**
+
+-   类型初始值
+    
+    boolean: false
+    
+    string: ""
+    
+    int: 0
+    
+    uint: 0
+    
+    enum: 枚举中的第一个元素
+    
+    address: 0x0000000000000000000000000000000000000000 (或 address(0))
+    
+    function
+    
+    internal: 空白函数
+    
+    external: 空白函数
+    
+-   引用类型初始值
+    
+
+映射mapping: 所有元素都为其默认值的mappin
+
+结构体struct: 所有成员设为其默认值的结构体
+
+数组array
+
+动态数组: \[\]
+
+静态数组（定长）: 所有成员设为其默认值的静态数组
+
+-   delete操作符:delete a会让变量a的值变为初始值。
+    
+
+**9.常数**
+
+Solidity中和常量相关的两个关键字constant（常量）和immutable（不变量）。状态变量声明这两个关键字之后，不能在初始化后更改数值。这样做的好处是提升合约的安全性并节省gas;另外，只有数值变量可以声明constant和immutable；string和bytes可以声明为constant，但不能为immutable。
+
+-   constant:constant变量必须在声明的时候初始化，之后再也不能改变。尝试改变的话，编译不通过。
+    
+-   immutable:immutable变量可以在声明时或构造函数中初始化，因此更加灵活。在Solidity v0.8.21以后，immutable变量不需要显式初始化，未显式初始化的immutable变量将使用数值类型的初始值（见 8. 变量初始值）。反之，则需要显式初始化。 若immutable变量既在声明时初始化，又在constructor中初始化，会使用constructor初始化的值。
+    
+
+**10.控制流**
+
+-   与其他语言类似：if-else；for循环；while循环；do-while循环；三元运算符；另外还有continue（立即进入下一个循环）和break（跳出当前循环）关键字可以使用。
+    
+-   用Solidity实现插入排序
+    
+
+与python不同在于：// 插入排序 正确版
+
+function insertionSort(uint\[\] memory a) public pure returns(uint\[\] memory) {
+
+// note that uint can not take negative value
+
+for (uint i = 1;i < a.length;i++){
+
+uint temp = a\[i\];
+
+uint j=i;
+
+while( (j >= 1) && (temp < a\[j-1\])){
+
+a\[j\] = a\[j-1\];
+
+j--;
+
+}
+
+a\[j\] = temp;
+
+}
+
+return(a);
+
+}
+
+**11.构造函数和修饰器**
+
+-   构造函数（constructor）：是一种特殊的函数，每个合约可以定义一个，并在部署合约的时候自动运行一次。它可以用来初始化合约的一些参数；
+    
+-   注意：构造函数在不同的Solidity版本中的语法并不一致，在Solidity 0.4.22之前，构造函数不使用 constructor 而是使用与合约名同名的函数作为构造函数而使用，由于这种旧写法容易使开发者在书写时发生疏漏（例如合约名叫 Parents，构造函数名写成 parents），使得构造函数变成普通函数，引发漏洞，所以0.4.22版本及之后，采用了全新的 constructor 写法。
+    
+-   修饰器（modifier）：是Solidity特有的语法，类似于面向对象编程中的装饰器（decorator），声明函数拥有的特性，并减少代码冗余。它就像钢铁侠的智能盔甲，穿上它的函数会带有某些特定的行为。modifier的主要使用场景是运行函数前的检查，例如地址，变量，余额等。
+    
+-   OpenZeppelin的Ownable标准实现
+    
+
+**12.事件（用转账ERC20代币为例）**
+
+-   事件：Solidity中的事件（event）是EVM上日志的抽象，它具有两个特点：
+    
+-   响应：应用程序（ethers.js）可以通过RPC接口订阅和监听这些事件，并在前端做响应。
+    
+-   经济：事件是EVM上比较经济的存储数据的方式，每个大概消耗2,000 gas；相比之下，链上存储一个新变量至少需要20,000 gas
+    
+-   声明事件：事件的声明由event关键字开头，接着是事件名称，括号里面写好事件需要记录的变量类型和变量名；
+    
+-   释放事件：我们可以在函数里释放事件。在下面的例子中，每次用\_transfer()函数进行转账操作的时候，都会释放Transfer事件，并记录相应的变量；
+    
+-   EVM日志 ：以太坊虚拟机（EVM）用日志Log来存储Solidity事件，每条日志记录都包含主题topics和数据data两部分；
+    
+-   主题 topics：日志的第一部分是主题数组，用于描述事件，长度不能超过4。它的第一个元素是事件的签名（哈希），除了事件哈希，主题还可以包含至多3个indexed参数，也就是Transfer事件中的from和to；
+    
+-   数据 data：事件中不带 indexed的参数会被存储在 data 部分中，可以理解为事件的“值”。data 部分的变量不能被直接检索，但可以存储任意大小的数据。因此一般 data 部分可以用来存储复杂的数据结构，例如数组和字符串等等，因为这些数据超过了256比特，即使存储在事件的 topics 部分中，也是以哈希的方式存储。另外，data 部分的变量在存储上消耗的gas相比于 topics 更少。
+    
+
+**13：继承**
+
+-   继承：是面向对象编程很重要的组成部分，可以显著减少重复代码。如果把合约看作是对象的话，Solidity也是面向对象的编程，也支持继承；
+    
+-   规则： virtual: 父合约中的函数，如果希望子合约重写，需要加上virtual关键字；
+    
+
+override：子合约重写了父合约中的函数，需要加上override关键字；
+
+注意：用override修饰public变量，会重写与变量同名的getter函数。
+
+-   简单继承：
+    
+-   多重继承：
+    
+    Solidity的合约可以继承多个合约。规则：
+    
+    继承时要按辈分最高到最低的顺序排。比如我们写一个Erzi合约，继承Yeye合约和Baba合约，那么就要写成contract Erzi is Yeye, Baba，而不能写成contract Erzi is Baba, Yeye，不然就会报错；
+    
+    如果某一个函数在多个继承的合约里都存在，比如例子中的hip()和pop()，在子合约里必须重写，不然会报错；
+    
+    重写在多个父合约中都重名的函数时，override关键字后面要加上所有父合约名字，例如override(Yeye, Baba)。
+    
+-   修饰器的继承
+    
+    Solidity中的修饰器（Modifier）同样可以继承，用法与函数继承类似，在相应的地方加virtual和override关键字即可；
+    
+-   构造函数的继承
+    
+    子合约有两种方法继承父合约的构造函数。举个简单的例子，父合约A里面有一个状态变量a，并由构造函数的参数来确定：
+    
+
+在继承时声明父构造函数的参数，例如：contract B is A(1)；
+
+在子合约的构造函数中声明构造函数的参数。
+
+-   调用父合约的函数
+    
+
+子合约有两种方式调用父合约的函数，直接调用和利用super关键字。
+
+（1）直接调用：子合约可以直接用父合约名.函数名()的方式来调用父合约函数
+
+（2）super关键字：子合约可以利用super.函数名()来调用最近的父合约函数。Solidity继承关系按声明时从右到左的顺序是：contract Erzi is Yeye, Baba，那么Baba是最近的父合约，super.pop()将调用Baba.pop()而不是Yeye.pop()。
+
+-   钻石继承：在面向对象编程中，钻石继承（菱形继承）指一个派生类同时有两个或两个以上的基类。
+    
+
+**14.抽象合约和接口(用ERC721的接口合约为例)**
+
+-   抽象合约
+    
+    如果一个智能合约里至少有一个未实现的函数，即某个函数缺少主体{}中的内容，则必须将该合约标为abstract，不然编译会报错；另外，未实现的函数需要加virtual，以便子合约重写。
+    
+-   接口类似于抽象合约，但它不实现任何功能。接口的规则：
+    
+
+不能包含状态变量
+
+不能包含构造函数
+
+不能继承除接口外的其他合约
+
+所有函数都必须是external且不能有函数体
+
+继承接口的非抽象合约必须实现接口定义的所有功能
+
+虽然接口不实现任何功能，但它非常重要。接口是智能合约的骨架，定义了合约的功能以及如何触发它们：如果智能合约实现了某种接口（比如ERC20或ERC721），其他Dapps和智能合约就知道如何与它交互。因为接口提供了两个重要的信息：
+
+(1)合约里每个函数的bytes4选择器，以及函数签名函数名(每个参数类型）。
+
+(2)接口id（更多信息见EIP165）
+
+另外，接口与合约ABI（Application Binary Interface）等价，可以相互转换：编译接口可以得到合约的ABI，利用abi-to-sol工具，也可以将ABI json文件转换为接口sol文件。
+
+-   IERC721包含3个事件，其中Transfer和Approval事件在ERC20中也有。
+    
+
+Transfer事件：在转账时被释放，记录代币的发出地址from，接收地址to和tokenId。
+
+Approval事件：在授权时被释放，记录授权地址owner，被授权地址approved和tokenId。
+
+ApprovalForAll事件：在批量授权时被释放，记录批量授权的发出地址owner，被授权地址operator和授权与否的approved。
+
+-   IERC721函数
+    
+
+balanceOf：返回某地址的NFT持有量balance。
+
+ownerOf：返回某tokenId的主人owner。
+
+transferFrom：普通转账，参数为转出地址from，接收地址to和tokenId。
+
+safeTransferFrom：安全转账（如果接收方是合约地址，会要求实现ERC721Receiver接口）。参数为转出地址from，接收地址to和tokenId。
+
+approve：授权另一个地址使用你的NFT。参数为被授权地址approve和tokenId。
+
+getApproved：查询tokenId被批准给了哪个地址。
+
+setApprovalForAll：将自己持有的该系列NFT批量授权给某个地址operator。
+
+isApprovedForAll：查询某地址的NFT是否批量授权给了另一个operator地址。
+
+safeTransferFrom：安全转账的重载函数，参数里面包含了data。
+
+-   什么时候使用接口:
+    
+
+如果我们知道一个合约实现了IERC721接口，我们不需要知道它具体代码实现，就可以与它交互。
+
+**15.异常**
+
+-   error：是solidity 0.8.4版本新加的内容，方便且高效（省gas）地向用户解释操作失败的原因，同时还可以在抛出异常的同时携带参数，帮助开发者更好地调试。人们可以在contract之外定义异常；
+    
+-   require命令：是solidity 0.8版本之前抛出异常的常用方法，目前很多主流合约仍然还在使用它。它很好用，唯一的缺点就是gas随着描述异常的字符串长度增加，比error命令要高。使用方法：require(检查条件，"异常的描述")，当检查条件不成立的时候，就会抛出异常；
+    
+-   Assert：一般用于程序员写程序debug，因为它不能解释抛出异常的原因（比require少个字符串）。它的用法很简单，assert(检查条件），当检查条件不成立的时候，就会抛出异常。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -247,6 +565,7 @@ weeks: 7 days = 604800
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -329,6 +648,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 **智能合约开发**
@@ -520,6 +840,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -527,6 +848,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -603,6 +925,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -750,6 +1073,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1038,6 +1362,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -1101,6 +1426,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1257,6 +1583,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
