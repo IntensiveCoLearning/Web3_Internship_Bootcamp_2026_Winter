@@ -354,7 +354,9 @@ pragma solidity ^0.8.26;
 contract IfElse {
     // 函数 foo：根据 x 的值返回不同结果
     function foo(uint256 x) public pure returns (uint256) {
-        if (x < 10) {          // 如果 x 小于 10
+        // 这里引入了外部参数 x ，并且规定了他的参数类型：uint256，此时 x 还没有具体数值。
+        // 你可以理解为一句话：foo 这个函数需要别人调用时，给我一个 uint256 类型的数，我把它叫做 x
+        if (x < 10) {          // 如果 x 小于 10 
             return 0;         // 返回 0
         } else if (x < 20) {   // 否则，如果 x 小于 20
             return 1;         // 返回 1
@@ -426,6 +428,7 @@ contract IfElse {
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -433,6 +436,7 @@ contract IfElse {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -462,6 +466,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -528,6 +533,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -563,12 +569,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -633,6 +641,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -643,6 +652,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
