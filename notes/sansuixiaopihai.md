@@ -15,8 +15,274 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+\## 学习总结day11
+
+今天主要的学习计划是看solidity的基础语法和复习前面的学习，并动手写demo，今天主要记录其中的难点
+
+**msg全局变量对象有哪些常用的参数：**
+
+\*`msg.sender`\*\* (地址类型 `address`)，调用当前函数的外部账户或者合约地址 **常用**
+
+\*`msg.value`\*\* (大整数类型 `uint256`)，当前调用发送的以太币（Wei）数量`require(msg.value >= amount, "Insufficient funds");` 检查是否发送了足够金额 **常用**
+
+\*`msg.data`\*\* (字节数组类型 `bytes`)，包含函数选择器和传递给函数的全部参数的原始字节数据，`bytes memory data = msg.data;` 获取完整调用数据
+
+\*`msg.sig`\*\* (字节数组类型 `bytes4`）， 函数选择器`keccak256("functionName(arg1Type,arg2Type)")` 的前4个字节）`bytes4 sig = msg.sig;` 获取函数签名
+
+\*`msg.gas`\*\* (大整数类型 `uint256`)，当前函数执行剩余的Gas数量（从 Solidity 0.5.0 版本起被 `gasleft()` 函数取代，但仍可访问）
+
+**gas常见优化：**
+
+减少存储操作：读取存储第一次需 2100 gas（后续 100 gas），而内存读取仅 3 gas。推荐多次访问同一存储数据时，将其缓存到内存以减少 SLOAD 次数，每次写入\*\*storage\*\*的成本高达 20,000 gas；优先使用 **memory**
+
+\`\`\`
+
+// ❌ 非优化写法
+
+mapping(address => uint256) public balances;
+
+function deposit() public payable {
+
+balances\[msg.sender\] += msg.value;
+
+}
+
+// ✅ 优化写法（一次读，一次写）
+
+function deposit() public payable {
+
+uint256 current = balances\[msg.sender\];
+
+balances\[msg.sender\] = current + msg.value;
+
+}
+
+\`\`\`
+
+**使用位压缩（Bit Packing）**
+
+\- 将多个变量压缩到一个 `uint256` 中以节省存储空间。
+
+\`\`\`solidity
+
+struct Packed {
+
+uint128 a;
+
+uint128 b;
+
+}
+
+\`\`\`
+
+**循环优化**
+
+\- 减少不必要的运算，如 `array.length` 缓存到变量中。
+
+\`\`\`solidity
+
+// ❌ 非优化
+
+for (uint256 i = 0; i < arr.length; i++) {
+
+...
+
+}
+
+// ✅ 优化
+
+uint256 len = arr.length;
+
+for (uint i = 0; i < len; ++i) {
+
+...
+
+}
+
+\`\`\`
+
+**函数可见性选择** `external` 比 `public` 更节省 gas，适用于仅被外部调用的函数。
+
+**权限管理模版：**
+
+如果没有 `Ownable`，你的合约就像是一个\*\*放在广场上的自动提款机\*\*，虽然有提款功能，但如果谁都能按那个按钮，钱早就被取光了。 有了 `Ownable`，这个按钮上就加了个盖子，只有拿着钥匙`owner`）的人才能按。
+
+最简单的权限管理控制
+
+\`\`\`solidity
+
+contract MySafeContract {
+
+address public owner; // 1. 存老板名字的变量
+
+// 2. 构造函数：开业当天，确定老板是你
+
+constructor() {
+
+owner = msg.sender;
+
+}
+
+// 3. 定义一个“保安”（Modifier）
+
+modifier onlyOwner() {
+
+// 检查：调用者必须是老板，否则报错 "Not Owner"
+
+require(msg.sender == owner, "Not Owner");
+
+\_; // 这是一句咒语，意思是：“检查通过了，去执行函数原本的代码吧”
+
+}
+
+// 4. 给函数加上保安
+
+// 注意看这里多加了一个词：onlyOwner
+
+function withdraw() public onlyOwner {
+
+payable(msg.sender).transfer(address(this).balance);
+
+}
+
+}
+
+\`\`\`
+
+**工业标准：OpenZeppelin 的 Ownable**
+
+通常会引入第三方库OpenZeppelin
+
+\`\`\`solidity
+
+// 引入标准库
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+// 继承 Ownable 的能力
+
+contract MyNFT is Ownable {
+
+// 因为继承了 Ownable，你自动拥有了 owner 变量和 onlyOwner 修饰符
+
+function mint() public onlyOwner {
+
+// 只有老板能铸造 NFT
+
+}
+
+}
+
+\`\`\`
+
+// 今日练习功能
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract PointSystem {
+
+// 增加权限
+
+address public owner;
+
+// 定义映射接收每个地址的积分
+
+mapping (address => uint) public points;
+
+// 构造函数
+
+constructor() {
+
+// 确认你是所有权
+
+owner = msg.sender;
+
+}
+
+// 定义一个权限
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "Not Owner");
+
+\_;
+
+}
+
+// 每日签到功能，每日签到加10积分
+
+function checkIn() public {
+
+points\[msg.sender\] += 10;
+
+}
+
+// 积分转账功能
+
+function transferAccount(address \_to, uint256 sum) public {
+
+require(\_to != msg.sender, unicode"不能转账给自己");
+
+// 判断是否有这么多积分
+
+require(sum > 0, unicode"转账金额必须大于0");
+
+require(points\[msg.sender\] >= sum, unicode"没有这么多积分");
+
+// 第二部扣除当前的积分
+
+points\[msg.sender\] -= sum;
+
+// 增加转账人的积分
+
+points\[\_to\] += sum;
+
+}
+
+// 查询当前用户有多少积分
+
+function getUserPoints(address \_add) public view returns(uint256) {
+
+return points\[\_add\];
+
+}
+
+// 销毁积分
+
+function burn(uint256 \_num) public {
+
+require(points\[msg.sender\] >= \_num, unicode"积分不足");
+
+points\[msg.sender\] -= \_num;
+
+}
+
+// 给某个地址打入积分（只有管理员才能打入）
+
+function sendPoint(address \_add, uint256 po) public onlyOwner{
+
+require(po > 0, unicode"积分不能为0");
+
+points\[\_add\] += po;
+
+}
+
+}
+
+\`\`\`
+
+明日练习，看看能不能实现代币生成、转账功能
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## **学习总结day10**
 
 今天主要的学习计划是看solidity的基础语法和联系，今天的这些学习总结主要是记录一些比较难懂的学习点
@@ -160,6 +426,7 @@ function leaveMessage(string memory _msg) public {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## **学习总结day09**
 
@@ -333,6 +600,7 @@ contract EventExample {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -410,6 +678,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -496,6 +765,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -559,6 +829,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -671,6 +942,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -833,6 +1105,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1026,6 +1299,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -1120,6 +1394,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
