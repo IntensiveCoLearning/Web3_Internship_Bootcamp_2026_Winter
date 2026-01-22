@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 智能合约的主要优势：自动触发、减少中介、减少误差
+
+以太坊是匿名的，但是不是真正的匿名，交易记录完全公开、可追踪，通过交易所 KYC 可追溯
+
+专门的隐私协议（混币、隐私池、零知识证明）
+
+## 典型用例包括但不限于：
+
+\- **铸造与管理货币/代币**：
+
+\- ERC-20、ERC-721、ERC-1155 及各种自定义标准；
+
+\- **DeFi 协议**：
+
+\- 借贷、DEX、衍生品、稳定币、收益聚合等；
+
+\- **NFT & 游戏道具**：
+
+\- 铸造、交易、盲盒、链游内经济系统；
+
+\- **DAO & 治理**：
+
+\- 投票合约、国库管理、多签和 Timelock；
+
+\- **数据存储与访问控制**：
+
+\- 白名单、权限控制、访问日志、License 管理；
+
+\- **链上自动结算与清算机器人**：
+
+\- 定时任务、自动再平衡、预言机驱动逻辑；
+
+\- **结合零知识证明的隐私/验证逻辑**：
+
+\- 不泄露具体数据，只证明“满足某个条件”。
+
+## ABI 应用二进制接口 Application Binary Interface
+
+一个 JSON（JavaScript Object Notation）格式的文件，它描述了智能合约的公共接口。它包含了合约中所有公共函数和事件的详细信息，包括它们的名称、参数类型、返回值类型以及它们的可见性（public、external）。
+
+## 合约元数据（Contract Metadata）
+
+定义：这是一个 JSON 文件，包含了关于合约的额外信息，例如：
+
+\- 编译器版本和设置
+
+\- 源代码路径或其 IPFS / Swarm 等去中心化存储的引用
+
+\- ABI
+
+\- NatSpec 文档（如果在代码里写了）
+
+字节码是部署到区块链上的程序本体
+
+ABI 是你的合约如何交互的说明书
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 \## 1. Uniswap v2
 
 会上的材料：[https://docs.google.com/presentation/d/12jWBmU08H8L6961tD6gg28fTBS8y6m9FOzJozWwi4-A/edit?usp=sharing](https://docs.google.com/presentation/d/12jWBmU08H8L6961tD6gg28fTBS8y6m9FOzJozWwi4-A/edit?usp=sharing)
@@ -163,6 +223,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -220,6 +281,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -245,6 +307,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -277,6 +340,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -323,6 +387,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -364,6 +429,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -389,6 +455,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -435,6 +502,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
