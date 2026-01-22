@@ -15,19 +15,27 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今天最主要的收货是学习到了foundry的简单使用 foundry基于rust 速度比hardhat快了不少
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 今天的Uniswap V2感觉挺的还是很明白 到了V3就开始不懂了 还是有待进一步的阅读源码 看下别人的资料
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今天主要是看直播复习了solidity的基本语法 然后youtube的视频还没看完...
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 参加了3个多小时的例会 感觉真的是大佬云集 还是需要更多的努力 定一个小目标 周末研究下uniswap的源码
@@ -38,11 +46,13 @@ timezone: UTC+8
 
 
 
+
 今天主要学习了X402, 利用402状态码，实现agent直接通过区块链链上支付。x402.org
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -57,11 +67,13 @@ timezone: UTC+8
 
 
 
+
 今天最大的是看推荐的Youtube视频 助记词可以生成多个account 对应多个地址 之前一直以为是只能对应一个 也算是刷新了自己的认知
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
