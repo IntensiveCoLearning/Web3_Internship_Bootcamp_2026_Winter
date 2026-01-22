@@ -15,8 +15,96 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
+
+## 目标
+
+-   在项目中内置 Python 运行时（Windows）
+    
+-   准备 PyTorch + torchaudio + [pyannote.audio](http://pyannote.audio) 的离线 wheelhouse
+    
+-   为后续语音转写/说话人分离打底
+    
+
+## 关键步骤
+
+1.  安装 Python 3.10
+    
+    -   `py -3.10` 不存在时，先安装 Python 3.10。
+        
+2.  下载依赖到 wheelhouse（可离线用）
+    
+    -   使用 PyTorch CPU 源：
+        
+    -   典型命令：
+        
+        ```
+        py -3.10 -m pip download --dest wheelhouse --only-binary=:all: ^
+          --index-url <https://pypi.org/simple> ^
+          --extra-index-url <https://download.pytorch.org/whl/cpu> ^
+          "pyannote.audio==3.1.1" torch torchaudio
+        
+        ```
+        
+    -   部分包没有 wheel，需要允许源码包：
+        
+        ```
+        py -3.10 -m pip download --dest wheelhouse --no-binary=:all: docopt
+        py -3.10 -m pip download --dest wheelhouse --no-binary=:all: antlr4-python3-runtime==4.9.3
+        py -3.10 -m pip download --dest wheelhouse --no-binary=:all: julius
+        
+        ```
+        
+3.  离线安装到嵌入式 Python 目录
+    
+    -   目标目录：`src-tauri/lib/python310/Lib/site-packages`
+        
+    -   命令：
+        
+        ```
+        py -3.10 -m pip install --no-index --find-links wheelhouse ^
+          --target src-tauri/lib/python310/Lib/site-packages ^
+          pyannote.audio==3.1.1
+        
+        ```
+        
+4.  Whisper CLI 和模型
+    
+    -   `whisper-cli.exe` 放到 `src-tauri/lib/whisper/`
+        
+    -   复制一份命名为 `w-cli.exe`，作为默认可执行路径
+        
+
+## 遇到的问题与解决
+
+-   `py -3.10` 找不到：安装 Python 3.10 解决
+    
+-   `docopt`/`antlr4-python3-runtime`/`julius` 没有 wheel：允许源码包下载
+    
+-   pip 解析冲突：升级 pip / 约束版本 / 单独下载源码包
+    
+-   Windows 目录删除失败：文件被占用，需要先关闭相关进程再删
+    
+
+## 安全提醒
+
+-   HF\_TOKEN 不应该写进代码或日志，建议只放到环境变量中并定期重置。
+    
+
+## 明日计划
+
+-   完成 Tauri 侧 pipeline 调用联调
+    
+-   测试一条完整音频流程
+    
+-   缩减打包体积（清理旧 Python 目录）
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # 合约优化记录
 
 ## 现有合约概览（Memo.sol）
@@ -128,6 +216,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## Gas 优化
 
@@ -391,6 +480,7 @@ contract MessageBoardOptimized {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -465,6 +555,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -616,6 +707,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -749,6 +841,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -889,6 +982,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1302,6 +1396,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1411,6 +1506,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1530,6 +1626,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
