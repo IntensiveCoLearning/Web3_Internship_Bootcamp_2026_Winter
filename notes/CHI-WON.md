@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# DAY10
+
+周始，观废寝忘食刷榜、寻到offer者甚多，顿觉无力，浑噩踱步，不知所向
+
+\[x\] Javascript
+
+虽然之前有跟教程完整过了一遍Hardhat开发流程，但真到自己独自开发时才觉还有很多知识点需要补充，刚写完两个合约，但是不知道怎么写测试，查阅一会还得从最基本的Javascript语法开始看起。
+
+今日已完成：简单的Javascript语法
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # DAY10
 
 \[x\]Uniswap
@@ -368,6 +382,7 @@ router.swapExactTokensForTokens(
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 # DAY9
 
 古法笔记：
@@ -379,6 +394,7 @@ router.swapExactTokensForTokens(
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # DAY8
 
 \[\]frontend
@@ -388,6 +404,7 @@ router.swapExactTokensForTokens(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -426,6 +443,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -493,6 +511,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -606,6 +625,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -704,6 +724,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -884,6 +905,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -980,6 +1002,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
