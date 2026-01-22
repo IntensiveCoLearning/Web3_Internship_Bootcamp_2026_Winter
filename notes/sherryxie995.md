@@ -15,8 +15,60 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 一、 Web3 为什么需要 ZK？
+
+在区块链上，ZK 主要解决两个核心矛盾：
+
+1.  **隐私 (Privacy)**：如何在不公开交易金额、发送者地址的情况下，证明交易是合法的？（代表项目：Zcash, Aleo）
+    
+2.  **扩容 (Scalability)**：如何在不让每个节点都执行复杂计算的情况下，证明计算结果是正确的？（代表项目：zkSync, Starknet, Scroll）
+    
+    -   _逻辑_：生成证明（Prover）很累，但验证证明（Verifier）极快且开销极低。
+        
+
+* * *
+
+## 二、 技术核心：ZK-SNARKs 流程图解
+
+大多数 Web3 开发者接触的是 **zk-SNARKs**（简洁非交互式零知识知识论证）。
+
+### 1\. 算术化 (Arithmetization)
+
+将逻辑代码转换为数学表达式。
+
+-   **代码 -> 算术电路 (Arithmetic Circuits)**：将程序逻辑拆解为加法门和乘法门。
+    
+-   **R1CS (Rank-1 Constraint System)**：将电路转化为矩阵形式。
+    
+-   **QAP (Quadratic Arithmetic Program)**：利用多项式变换（拉格朗日插值），将矩阵验证转化为多项式整除验证。
+    
+
+### 2\. 核心组件
+
+-   **CRS (Common Reference String)**：初始的可信设置（Trusted Setup）。
+    
+-   **Prover (证明者)**：运行复杂计算，生成证明 $\\pi$。
+    
+-   **Verifier (验证者)**：通常是一个 Solidity 合约，通过双线性映射（Pairing）等数学手段，在毫秒级验证 $\\pi$。
+    
+
+* * *
+
+## 三、 SNARKs vs. STARKs：关键技术对比
+
+| 特性 | zk-SNARKs | zk-STARKs |
+| 可信设置 | 需要 (Trusted Setup) | 不需要 (Transparent) |
+| 抗量子性 | 不抗量子 (基于椭圆曲线) | 抗量子 (基于 Hash 函数) |
+| 证明大小 | 非常小 (~几百字节) | 较大 (几十 KB) |
+| 验证速度 | 恒定且极快 | 随计算规模对数级增长 |
+| 代表项目 | zkSync, Loopring | Starknet, dYdX |
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 一、 Web3 运营的核心逻辑：从“用户”到“成员”
 
 在 Web2 中，用户是流量，是被收割的对象；在 Web3 中，用户往往是**持币者 (Token Holders)** 或 **参与者 (Contributors)**，他们不仅是产品的使用者，更是利益相关的“股东”。
@@ -83,6 +135,7 @@ Web3 运营更关注**链上数据**，因为这是无法作假的：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## 一、 环境搭建与首个合约
 
@@ -193,6 +246,7 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -278,11 +332,13 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -519,6 +575,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -590,6 +647,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -827,6 +885,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -959,6 +1018,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1111,6 +1171,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
