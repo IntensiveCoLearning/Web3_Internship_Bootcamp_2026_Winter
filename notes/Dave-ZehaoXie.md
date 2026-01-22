@@ -15,19 +15,60 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今天听了colearning  
+会议讨论了 Figma 使用问题、活动策划审核流程以及 DFT 架构等相关内容，具体如下：
+
+-   **Figma 使用问题**：
+    
+    -   **复制文字修改问题**：复制内容粘贴到自己项目有全部权限可更改，更改文本框内容需先选中 “test” 再双击编辑；若提示缺少字体，可从谷歌下载并上传到字体库。
+        
+    -   **筹备申请查看问题**：露娜老师同步审核，审核通过会沟通，着急可问陆楠老师审核结果。
+        
+-   **活动策划审核流程**：
+    
+    -   **嘉宾邀请环节**：通常先确定策划案和主题提交选题，通过后一起看能否邀请符合主题嘉宾；若个人渠道提前谈好嘉宾且未用官方名号，会为策划增分；通过审核后可自行或协助邀请嘉宾，后续有助教沟通执行阶段。
+        
+    -   **活动执行条件**：执行关键在于是否用官方名号接触外部事务，未用官方名号可先执行部分准备工作。
+        
+-   **DFT 架构介绍**：
+    
+    -   **前端与后端**：前端运行在用户浏览器，加载 JavaScript、CSS 等文件，定义按钮交互和样式；后端用 next js 或 Hono 等框架编写，部署到 Heroku 或 VPS 等环境，通过 jsonrpc 与 RPC 服务商通信。
+        
+    -   **数据库类型**：包括关系型数据库和 Redis 数据库，关系型数据库以表结构存储数据，通过 SQL 语句读写；Redis 数据库用于缓存，读取速度快但存储格式不同。
+        
+    -   **数据读取优化**：为提高用户体验，可提前将链上数据缓存到数据库，此流程叫 index，如 subgraph 就做此类事情。
+        
+    -   **前端与区块链交互**：前端通过库创建 client 与区块链交互，转账等操作调用钱包插件完成。
+        
+-   **其他问题解答**：
+    
+    -   **Web3 产品经理交流**：需了解拍卖、NFT 等行业知识，熟悉业态，考虑玩家痛点，设计交互流畅、用户体验好的产品，还需懂链上分析，筛选有价值项目。
+        
+    -   **今晚活动预告**：7 点小海老师做 DM 的 workshop，8 点半是梁青道合作伙伴南塘道的主题活动。
+        
+-   **任务**
+    
+    -   **产品体验提升**：体验更多 WEB3 产品，洞察市场和用户需求，达到业界优秀产品经理能让 MMB 市值翻 3 倍、流动性激增等产出标准
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ![屏幕截图 2026-01-21 174155.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010531648-_____2026-01-21_174155.png)![屏幕截图 2026-01-21 174532.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010546716-_____2026-01-21_174532.png)![屏幕截图 2026-01-21 174746.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010561970-_____2026-01-21_174746.png)![屏幕截图 2026-01-21 180041.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010573742-_____2026-01-21_180041.png)![屏幕截图 2026-01-21 230307.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010587049-_____2026-01-21_230307.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今天对象和我闹分手了
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 笔记标题为笔记：以太坊中文周会（2026/01/19）
@@ -75,6 +116,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -135,6 +177,7 @@ Alex 认为，像星巴克这样的大型品牌应用，不需要用户去学习
 
 
 
+
 ![屏幕截图 2026-01-17 210033.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662485478-_____2026-01-17_210033.png)
 
 ![屏幕截图 2026-01-17 210038.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662464045-_____2026-01-17_210038.png)
@@ -142,6 +185,7 @@ Alex 认为，像星巴克这样的大型品牌应用，不需要用户去学习
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -218,6 +262,7 @@ _(1:11:35 - 结尾)_
 
 
 
+
 [unphishable.io](http://unphishable.io)  
 今天主要是在这个网站做了一些钓鱼攻击的安全测试  
   
@@ -229,6 +274,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -252,6 +298,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -299,6 +346,7 @@ answer：web3目前整体网络环境较差，属于混沌的发展阶段，需�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
