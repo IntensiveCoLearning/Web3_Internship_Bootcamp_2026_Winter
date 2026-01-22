@@ -15,8 +15,89 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# Polymarket架构理解
+
+Polymarket是一个基于区块链的预测市场平台，其核心数据模型围绕预测事件的结构化设计，旨在实现链上透明、可验证的预测交易。
+
+### **1\. 事件（Event）与市场（Market）**
+
+事件类似于一个“预测主题”或“话题”，比如“2024年美国大选结果”或“美联储利率调整”。市场是事件下的具体预测单元，通常是二元问题（如“Yes/No”），一个事件可以包含一个或多个互斥或相关的市场，目的是让用户对同一主题下的不同角度进行预测。
+
+当一个事件包含多个互斥市场时，Polymarket引入了NegativeRisk契约，简单来说就是一个市场的NO可以转化为其他市场的YES。例如，美国大选五位候选人，A获胜（YES）和其他人未获胜（NO）是等价的。
+
+### **2\. 条件 (Condition)、问题 (Question)、集合 (Collection) 与头寸 (Position/TokenId)**
+
+条件是市场的链上“身份证”，通过哈希计算生成唯一的conditionId。
+
+```
+conditionId = keccak256(oracle, questionId, outcomeSlotCount)
+```
+
+-   `oracle`是预言机合约地址（Polymarket 目前使用 UMA Optimistic Oracle 预言机）。
+    
+-   `questionId`是问题的标识符（通常由问题内容等信息哈希得到，或UMA Oracle的辅助数据哈希）。
+    
+-   `outcomeSlotCount`是结果选项数量。对于二元市场，该值为2。
+    
+
+条件的作用是绑定市场问题与外部结果来源，是市场从创建到结算的链上锚点。
+
+头寸指的是用户持有的某市场某结果的份额（又称 Outcome Share），表现为ERC-1155代币的形式。每种结果对应一个不同的 TokenId，用于区分 YES 和 NO 两种头寸。
+
+在条件代币框架中，中间引入了集合（CollectionID）的概念，用于表示特定条件下某个结果集合。计算方法为：
+
+```
+collectionId = keccak256(parentCollectionId, conditionId, indexSet)
+```
+
+-   `parentCollectionId` 对于独立的条件通常为 `bytes32(0)`（Polymarket 所有市场都是独立条件，没有嵌套条件，因此 `parentCollectionId` 一律为 0）。
+    
+-   `indexSet` 是一个二进制位掩码，表示选取哪些结果槽位。对于二元市场，有两个可能的 indexSet：
+    
+    -   YES 头寸的 `indexSet = 1` (`0b01`，表示选取第一个结果槽)。
+        
+    -   NO 头寸的 `indexSet = 2` (`0b10`，表示选取第二个结果槽)。
+        
+
+集合本质上是条件的结果“分支”，用于区分不同结局（如胜出或失败）。
+
+总结来说：一个Event可以包含多个Market，形成主题下的多维度预测；每个Market对应一个独立的Condition，作为其链上出生证明；Condition生成多个Collection（通常YES和NO两个），代表结果分支；每个Collection结合抵押品（USDC）生成对应的TokenId，即实际的Position头寸。
+
+在NegativeRisk多市场事件中，关系更紧密：一个市场的NO头寸可以通过适配器合约转换为其他市场的YES头寸，实现跨市场流动性共享，避免资金碎片化。 整体上，这些实体从抽象（Event）到具体（Position），层层哈希计算，确保链上唯一性和可追溯性，形成一个高效的预测生态。
+
+### **3\. Polymarket 的市场从创建到结算，关键的链上步骤和日志事件**
+
+-   **市场创建 (Creation) 阶段– 登记问题**
+    
+
+由市场创建者调用 `ConditionalTokens.prepareCondition` 创建条件。
+
+关键日志：`ConditionPreparation` 事件，包含 `conditionId`、`oracle`、`questionId`、`outcomeSlotCount` 等信息。证明市场问题已被正式注册并绑定预言机。它奠定后续所有操作的基础，没有这个日志，市场就无法合法存在或结算。
+
+-   **交易阶段（包括初始流动性提供与拆分）**
+    
+
+关键日志：
+
+**PositionSplit**：发生在初始流动性注入时，将USDC拆分为YES和NO头寸代币。日志包含 `conditionId`、`collateralToken`（应为 USDC 地址）、`parentCollectionId`（一般为 0）、`partition`（拆分出的 indexSets 列表，如 `[1,2]`）、以及 `amount`（拆分抵押品数量），证明资金已被锁定并生成可交易代币。
+
+**OrderFilled**：发生在买卖双方的订单在链上部分或全部成交时，都会触发该事件，记录每笔交易细节，包括 `maker` 和 `taker` 地址（做市（挂单）方和吃单方地址）、`makerAssetId` 和 `takerAssetId`成交时双方各自支付的资产 ID（0为USDC，非0为TokenId）、成交量`makerAmountFilled` 和 `takerAmountFilled`和费用。交易总是 USDC 与 Outcome Token 之间。
+
+-   **结算阶段**
+    
+
+预言机将把结果提交回 CTF 合约，调用 `reportPayouts(conditionId, payouts[])` 来公布各结果的兑付率。
+
+关键日志：调用 `reportPayouts` 本身通常不会有特殊事件（或有 `ConditionResolution` 事件），但其效果是将相应 `conditionId` 下的头寸标记为可赎回。
+
+从 `ConditionPreparation` 证明市场的存在和参数、`PositionSplit` 证明资金注入和代币铸造、`OrderFilled` 记录交易交换细节、直到 `reportPayouts` 确认结果以供赎回。这些事件串联起来，可以让我们基于链上数据重建出市场发生的一切。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 // 基础合约  
 contract Animal {  
 string public name;  
@@ -98,6 +179,7 @@ Pet(\_name, \_owner) {}
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 1.  RPC详解
     
@@ -240,6 +322,7 @@ function criticalFunction() public onlyOwner whenNotPaused {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -326,6 +409,7 @@ _Tips：_
 
 
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -385,6 +469,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -421,6 +506,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -473,6 +559,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -487,6 +574,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -526,6 +614,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -628,6 +717,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
