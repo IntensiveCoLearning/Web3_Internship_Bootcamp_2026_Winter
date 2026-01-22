@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+![46188042dc8bf31bddb3ce98ecd0c02c.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-22-1769091548342-46188042dc8bf31bddb3ce98ecd0c02c.jpg)![6e7b371927fc512d0b68d4b24f9c116d.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-22-1769091567221-6e7b371927fc512d0b68d4b24f9c116d.jpg)
+
+co-learning  
+南塘 Dao 主题分享会  
+Dapp workshop
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-21-1769003154293-image.png)![aed38865a17f052f0f94d1dbd6ad1440.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-21-1769003203248-aed38865a17f052f0f94d1dbd6ad1440.jpg)
 
 Solidity by Example | 0.8.26 Basic 部分  
@@ -27,6 +37,7 @@ Uniswap 工作原理解析分享会
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ![794d0b6744e32fd71cd3ed74e44aba97.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-20-1768917575078-794d0b6744e32fd71cd3ed74e44aba97.jpg)![4adc12f93e6c4ad7d8b6d6ddbbe31e2c.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-20-1768917585309-4adc12f93e6c4ad7d8b6d6ddbbe31e2c.jpg)
 
 参加了co-learning  
@@ -36,6 +47,7 @@ Uniswap 工作原理解析分享会
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ![bf66fae7291672005dd4623ad4352df9.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830919055-bf66fae7291672005dd4623ad4352df9.jpg)![475d85a82545a2967b25533a8a189044.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830934965-475d85a82545a2967b25533a8a189044.jpg)![316426d83026d5142409a5a6b524eda9.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830970895-316426d83026d5142409a5a6b524eda9.jpg)![ff44489beab3b90ee5691a018dcfd475.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-19-1768830991583-ff44489beab3b90ee5691a018dcfd475.jpg)
@@ -50,6 +62,7 @@ Uniswap 工作原理解析分享会
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-18-1768735198203-image.png)
 
   
@@ -59,6 +72,7 @@ Uniswap 工作原理解析分享会
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -304,6 +318,7 @@ text
 
 
 
+
 ![屏幕截图 2026-01-16 221103.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573694758-_____2026-01-16_221103.png)![屏幕截图 2026-01-16 222134.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573713152-_____2026-01-16_222134.png)![屏幕截图 2026-01-16 222339.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573747267-_____2026-01-16_222339.png)
 
 今天参加了co-learning,了解了很多关于推特运营知识。  
@@ -319,6 +334,7 @@ text
 
 
 
+
 ![a58869e1a7314e3274685058fd6022d6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-15-1768487495398-a58869e1a7314e3274685058fd6022d6.jpg)![35533a7d179db624edf96fc1f96e5248.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-15-1768487508084-35533a7d179db624edf96fc1f96e5248.jpg)
 
 参加了co-learning,了解了一些参与项目时的事项和推特运营方法。  
@@ -328,6 +344,7 @@ text
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -353,6 +370,7 @@ text
 
 
 
+
 ![74c3021506f97df351d6cf647edd713f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317934329-74c3021506f97df351d6cf647edd713f.jpg)![17ab3b4e386b1201205ca0dbedd78906.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317946669-17ab3b4e386b1201205ca0dbedd78906.jpg)![abe735b02cc10522c4b56fb0f046bccb.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317955707-abe735b02cc10522c4b56fb0f046bccb.jpg)![4fdc8074d269deec2fcf2b0f858173fc.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317980780-4fdc8074d269deec2fcf2b0f858173fc.jpg)
 
 今天参加了线上co-learning  
@@ -363,6 +381,7 @@ text
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
