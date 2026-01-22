@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+学习内容：
+
+学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
+
+工具安装与实操
+
+figma、chatgpt 等创作类工具等熟练运用
+
+# ERC7962学习感悟：以技术创新破解Web3发展瓶颈
+
+聆听Alex老师关于ERC7962协议的分享后，我深刻感受到这项技术创新为Web3行业带来的突破性价值。作为ERC721标准的优化升级，ERC7962精准直击传统NFT的隐私泄露与用户体验痛点，以哈希地址、零知识证明等技术为支撑，为Web3的隐私保护与商业落地开辟了新路径。
+
+协议最打动我的，是对隐私保护与区块链透明性矛盾的精妙平衡。传统ERC721通过公开以太坊地址标识所有权，易导致用户资产和交易行为被追踪，而ERC7962采用哈希地址替代传统地址，结合零知识证明技术，让用户在不暴露真实身份的前提下完成身份验证，既坚守了区块链的透明特性，又筑牢了隐私防线，这种创新思路为行业解决同类问题提供了范本。
+
+Gas代付机制与简化私钥管理的设计，更是打破了Web3普及的核心壁垒。长期以来，复杂的钱包操作、Gas费支付门槛让大量Web2用户望而却步，而ERC7962让用户无需持币、无需深究技术细节即可参与，这种“Web2友好型”设计，为传统用户向Web3迁移搭建了平滑桥梁，也让技术落地更具可行性。
+
+星巴克会员验证等商业案例，更让我看到ERC7962的广阔应用前景。它不仅是技术层面的优化，更通过隐私保护与合规需求的兼顾，赢得企业与用户的双重信任。此次学习让我明白，Web3的良性发展，离不开既解决核心痛点、又贴合实际需求的技术创新，ERC7962正是这样的典范，为行业高质量发展注入了新动能。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 Uniswap V2 代码以及 SDK
 
 -   [**V2 Core**](https://github.com/Uniswap/v2-core)
@@ -39,6 +61,7 @@ Uniswap V2 代码以及 SDK
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
 
 021 学习以太坊第 5 章
@@ -48,6 +71,7 @@ Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -64,6 +88,7 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 预习第二周目标
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -74,11 +99,13 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 复习以太坊书籍的前三章
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -105,6 +132,7 @@ Remix 使用教程
 
 
 
+
 工具安装
 
 MetaMask / Rabby 钱包安装 & 创建，并熟悉
@@ -114,6 +142,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -140,6 +169,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 
 
+
 拓展 & 辅助理解材料
 
 Becoming a Power User - Wallets, Mnemonics, Keypairs
@@ -151,6 +181,7 @@ Becoming a Power User - Wallets, Mnemonics, Keypairs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
