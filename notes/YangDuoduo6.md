@@ -15,8 +15,116 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+Web3实习学习笔记
+
+日期：2026-01-22
+
+重点：南唐DAO（DAO概念）、Anchor协议、SPL Token标准
+
+. 南唐DAO（DAO通用概念）
+
+DAO核心定义：去中心化自治组织，通过智能合约实现社区治理，成员以代币投票决策，无中心化管理。
+
+表格
+
+关键点 说明 实习关联
+
+治理机制 - 成员持有治理代币（如DAO Token）→ 投票提案（如资金分配、功能升级）。
+
+\- 工具：Snapshot（链下投票）、Arbitrum（链上执行）。 实习中需理解DAO如何通过代币设计实现去中心化。
+
+常见风险 - 治理被大持有者操控（如“鲸鱼”垄断投票）。
+
+\- 智能合约漏洞（如2022年The DAO攻击事件）。 强调安全设计重要性，避免实习中盲目参与。
+
+案例（Solana生态） - Aave DAO：借贷协议治理。
+
+\- Uniswap DAO：DEX代币治理。 南唐DAO若为内部项目，需确认其治理代币逻辑。
+
+✅ 实习总结：DAO是Web3组织基石，核心是“代币即投票权”。后续需实践：用Phantom钱包参与DAO投票（如通过Snapshot）。
+
+. Anchor入门（Solana DeFi协议）
+
+Anchor是什么？Solana生态的借贷+稳定币协议，提供高APY存款/借款，类似Compound但专为Solana优化（低Gas费、高吞吐）。
+
+核心功能：
+
+存款：存USDC/USDT等稳定币 → 获得利息（如5%～10% APY）。
+
+借款：抵押USDC → 借出稳定币（如USDC）。
+
+稳定币：Anchor发行ANC（协议代币，用于治理/质押）和stUSDC（存款凭证）。
+
+表格
+
+关键操作 步骤/示例 为什么重要
+
+存款（存USDC） 1. 连接Anchor钱包（Phantom）。
+
+. 选择“Deposit” → 输入USDC金额 → 确认交易。
+
+. 获得stUSDC（可赎回本金+利息）。 低风险收益，适合实习中体验DeFi收益逻辑。
+
+借款（抵押借USDC） 1. 用USDC抵押（需>50%抵押率）。
+
+. 选择“Borrow” → 输入借款金额 → 生成stUSDC债务。
+
+. 还款时需付利息。 了解杠杆与风险，避免过度抵押。
+
+APY计算 年化利率 = (利息/本金) × 365/天数
+
+例：存100 USDC，1天得0.05 USDC → APY ≈ 18.25%。 实习中需验证收益，避免高APY陷阱。
+
+✅ 实习重点：
+
+Anchor的API（如anchor.getDeposits()）可集成到DApp。
+
+为什么用Anchor？Solana链上速度极快（<1秒确认），Gas费≈0.00025 SOL，远低于以太坊。
+
+实践建议：在Anchor官网用测试网（Testnet）试操作。
+
+. SPL与Token（Solana代币标准）
+
+SPL：Solana Program Library（Solana程序库），提供标准代币实现（类似以太坊的ERC-20）。
+
+SPL Token：Solana上最通用的代币标准，支持转账、mint、销毁等操作。
+
+表格
+
+概念 说明 实习关联
+
+SPL vs ERC-20 - SPL：更高效（Solana链快，Gas费低），支持可组合性（如与Anchor集成）。
+
+\- ERC-20：以太坊标准，Gas费高。 为何Solana生态偏爱SPL（实习中需理解技术选型）。
+
+SPL Token核心操作 - mint：创建新代币（需授权）。
+
+\- transfer：转账（需签名）。
+
+\- approve：授权第三方代付。
+
+示例代码（Rust）：
+
+rust<br>// Mint 1000 tokens<br>let mint = spl\_token::create\_mint(...);\\nlet mint\_authority = ...;\\nspl\_token::mint\_to(&mint, &mint\_authority, 1000).unwrap();\\n 实习中可能需写简单代币合约（用Anchor框架）。
+
+SPL Token工具 - Solana CLI：spl-token create-token 创建代币。
+
+\- Anchor：通过anchor-lang简化SPL开发（如@solana/spl-token库）。 实习中使用Anchor部署SPL Token（如为南唐DAO发行治理代币）。
+
+✅ 实习关键结论：
+
+SPL是Solana生态的“代币标准”，所有代币（包括Anchor的ANC）均遵循此协议。
+
+与Anchor关联：Anchor的stUSDC是SPL Token，可直接用于借贷/投票。
+
+避坑提示：创建SPL Token需支付0.000000001 SOL（微小Gas费），但需注意mint authority权限管理（避免代币被销毁）。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # **Uniswap工作原理解析学习笔记**
 
 **课程：Web3实习 | 日期：2026-01-21 | 重点：AMM机制与核心逻辑**
@@ -203,6 +311,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ### **Solidity Walk Through 学习笔记**
 
@@ -448,6 +557,7 @@ contract Counter {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # **Web3社区运营与活动策划学习笔记**
 
 ## **一、学分管理重要通知（关键！）**
@@ -631,6 +741,7 @@ contract Counter {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -883,6 +994,7 @@ const keyHash = generateKeyHash(publicKey); // 生成代币 ID
 
 
 
+
 Web3防钓鱼攻防练习学习笔记
 
 日期：2026年1月17日（星期六）
@@ -1027,6 +1139,7 @@ Web3安全 = 人 + 技术：
 
 
 
+
 **NFT铸造实操：My First NFT**
 
 **2024年最新流程（以Mintbase为例，免代码）**：
@@ -1106,6 +1219,7 @@ Web3安全 = 人 + 技术：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1226,6 +1340,7 @@ goplus token 插件
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1424,6 +1539,7 @@ Web3.0 ≠ 仅区块链技术，而是 **“用户拥有数据、去中心化治
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
