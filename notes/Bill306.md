@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+收看「**Uniswap 工作原理解析**」回放
+
+设置开发环境并熟悉
+
+Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分
+
+021 学习以太坊第 4 章
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 打卡：
 
 查看「社区运营基础 & 活动策划与执行」回放
@@ -26,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 Day 10:
 
@@ -39,6 +52,7 @@ p观看：“
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 Day Seven
 
 复习前面的笔记
@@ -46,6 +60,7 @@ Day Seven
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -65,6 +80,7 @@ Day Five:
 
 
 
+
 Day 4:
 
 -   补档了安全和合规
@@ -74,6 +90,7 @@ Day 4:
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -100,6 +117,7 @@ Day 3:
 
 
 
+
 Day 2:
 
 -   学习了**Web3 行业全局介绍 & 岗位概览**
@@ -112,6 +130,7 @@ Day 2:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
