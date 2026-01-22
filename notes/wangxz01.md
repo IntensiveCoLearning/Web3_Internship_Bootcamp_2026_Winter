@@ -15,8 +15,34 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## dapp workshop
+
+去中心化应用
+
+去中心化：不依赖单一服务器，由区块链网络共同维护。 开源透明：代码对所有人开放，规则一旦部署就难以更改。 无需许可：任何人都可以自由参与，不需中介审批。 激励机制：许多 DApp 通过代币激励用户和开发者参与维护。
+
+### 如何迁移的
+
+defi 没有银行的银行 gamefi nft
+
+### 混合栈
+
+hybrid stack
+
+智能合约工程化 构建workshopregistry
+
+### 混合测试策略
+
+foundry单元测试 hardhat+viem集成测试
+
+声明式部署 自动化验证与密钥安全 Aave V4
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## solidity walkk through
 
 ### EVM
@@ -58,6 +84,7 @@ Uniswap V2 经常被作为“流动性深度”和“无常损失（Impermanent 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ## web3公共物品资金分配
 
 public good
@@ -78,6 +105,7 @@ public good
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ## 1.19ethh周会
@@ -194,6 +222,7 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 ## Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 ## Key Hash Based Tokens (基于密钥哈希的代币)
@@ -257,11 +286,13 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 qiandao
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -292,6 +323,7 @@ qiandao
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -332,6 +364,7 @@ x402协议
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -462,6 +495,7 @@ UXlink Balancer
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -897,6 +931,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
