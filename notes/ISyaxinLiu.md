@@ -15,8 +15,1134 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# **稳定币**
+
+稳定币（Stablecoin）是指价值绑定（或锚定）到某个稳定资产，如法定货币、黄金或其他商品的加密货币。稳定币旨在结合加密货币的即时处理、安全性和隐私性与传统法定货币的稳定价值。稳定币是Web3世界中的重要组成部分，因为它们提供了一种在去中心化金融（DeFi）生态系统中避免加密市场波动性的方式。
+
+稳定币大致可以分为以下几类（分类方法多种多样，没有一个标准的分类方法，稍做了解即可）：
+
+1.  **法币抵押稳定币**: 这种类型的稳定币与现实世界的法定货币如美元、欧元等1:1抵押。每发行一个稳定币，就有相应的法定货币在银行账户中作为支持。例如，USDT（Tether）、USDC（USD Coin）和PAX（Paxos Standard）都是法币抵押稳定币。
+    
+2.  **加密货币抵押稳定币**: 这种稳定币是由其他加密资产作为抵押的。为了应对加密资产价格的波动性，这类稳定币通常过度抵押，即抵押的加密资产价值超过稳定币本身的价值。代表性的加密货币抵押稳定币有DAI（由MakerDAO系统发行）。
+    
+3.  **算法稳定币**: 算法稳定币没有实际资产作为抵押，而是通过算法调节供应量来稳定币值。这一类稳定币试图通过扩大或缩减流通供应量，或者通过激励措施来维持与锚定资产相等的价值。
+    
+
+# **合约实现**
+
+接下来我们尝试实现一个**抵押稳定币**
+
+项目地址：[https://github.com/lessurlx/foundry-Defi-StableCoin](https://github.com/lessurlx/foundry-Defi-StableCoin)
+
+## **DecentralizedStableCoin**
+
+实现一个去中心化的稳定币合约`DecentralizedStableCoin.sol`
+
+`forge install openzeppelin/openzeppelin-contracts --no-commit`
+
+在 foundry.toml 中添加 remapping
+
+`remappings = ["@openzeppelin/contracts=lib/openzeppelin-contracts/contracts"]`
+
+我们可以通过 openzeppelin 的模板，快速的完成稳定币的铸造和销毁逻辑，合约代码如下
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import {ERC20Burnable, ERC20} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+
+/**
+ * @title Decentralized Stable Coin
+ * Collateral: Exogenous (ETH & BTC)
+ * Minting: Algorithmic
+ * Relative Stability: Pegged to USD
+ *
+ * This is the contract meant to be governed by DSCEngine. This contract is just the ERC20 implementation of our stablecoin system.
+ */
+contract DecentralizedStableCoin is ERC20Burnable, Ownable {
+    error DecentralizedStableCoin__AmountMustBeMoreThanZero();
+    error DecentralizedStableCoin__BurnAmountExceedsBalance();
+    error DecentralizedStableCoin__NotZeroAddress();
+
+    constructor() ERC20("DecentralizedStableCoin", "DSC") Ownable(msg.sender) {}
+
+    function burn(uint256 _amount) public override onlyOwner {
+        uint256 balance = balanceOf(msg.sender);
+        if (_amount <= 0) {
+            revert DecentralizedStableCoin__AmountMustBeMoreThanZero();
+        }
+
+        if (balance < _amount) {
+            revert DecentralizedStableCoin__BurnAmountExceedsBalance();
+        }
+        super.burn(_amount);
+    }
+
+    function mint(
+        address _to,
+        uint256 _amount
+    ) public onlyOwner returns (bool) {
+        if (_to == address(0)) {
+            revert DecentralizedStableCoin__NotZeroAddress();
+        }
+        if (_amount <= 0) {
+            revert DecentralizedStableCoin__AmountMustBeMoreThanZero();
+        }
+        _mint(_to, _amount);
+        return true;
+    }
+}
+```
+
+## **OracleLib**
+
+在这个稳定币项目中，时刻更新抵押资产的价值是很重要的，如果抵押资产的价值暴跌，就可能会导致我们的稳定币暴雷。其中预言机的作用就是获取资产价值，我们这里用的是 chainlink 的 price feed，链接如下：[https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1#sepolia-testnet](https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1#sepolia-testnet)
+
+chainlink会在每个心跳时间内更新最新的资产价值，以 BTC 为例，它的 HeartBeat 就是3600s
+
+![Sepolia Testnet](https://leapwhale-1258830694.cos.accelerate.myqcloud.com/image-20240402151438160.png?imageSlim)
+
+我们可以自己创建一个库文件，命名为 OracleLib.sol，用于检测这个心跳是否有效。如果上一次心跳时间过长，我们可以理解为 chainlink 失效了，那么此时的资产价值就无法确定，我们就应该停止合约服务
+
+实现细节如下
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
+/*
+ * @title OracleLib
+ * @notice This library is used to check the Chainlink Oracle for stale data
+ * If a price is stale, the function will revert, and render the DSCEngine unusable
+ * We want the DSCEngine to freeze if prices become stale.
+ *
+ * So if the chainlink network explodes and you have a lot of money locked in the protocol, that's too bad
+ */
+library OracleLib {
+    error OracleLib__StalePrice();
+
+    uint256 private constant TIMEOUT = 3 hours;
+
+    function staleCheckLatestRoundData(
+        AggregatorV3Interface priceFeed
+    ) public view returns (uint80, int256, uint256, uint256, uint80) {
+        (
+            uint80 roundId,
+            int256 answer,
+            uint256 startedAt,
+            uint256 updatedAt,
+            uint80 answeredInRound
+        ) = priceFeed.latestRoundData();
+
+        uint256 secondsSince = block.timestamp - updatedAt;
+        if (secondsSince > TIMEOUT) {
+            revert OracleLib__StalePrice();
+        }
+        return (roundId, answer, startedAt, updatedAt, answeredInRound);
+    }
+}
+```
+
+## **DSCEngine**
+
+拥有上面的稳定币DSC的合约代码之后，我们还需要一个 `DSCEngine`，来保证稳定币的稳定性，其目标是保持1 DSC 等于 1 美元的价值。稳定币通过算法稳定，并由外部资产（如ETH和BTC）作为抵押品。这个系统设计得非常简洁，类似于MakerDAO的DAI，但没有治理和费用，仅支持WETH和WBTC作为抵押品。
+
+### **交互流程**
+
+1.  用户将抵押品（ETH, BTC等）存入`DSCEngine`合约。
+    
+2.  根据抵押品的当前市场价值和健康因子，用户可以铸造相应数量的DSC。
+    
+3.  用户可以随时赎回其抵押品，但必须首先燃烧等值的DSC。
+    
+4.  如果用户的健康因子低于最小阈值，其抵押品将面临被清算的风险。
+    
+5.  清算者可以燃烧用户的DSC并以折扣价格接收相应价值的抵押品。
+    
+
+### **稳定性保证**
+
+-   **超额抵押和健康因子:** 要求超额抵押保证了即使市场价格波动，抵押品的价值也会超过所铸造DSC的价值。
+    
+-   **清算机制:** 如果抵押品的价值跌破某个阈值，清算机制会触发，允许其他用户清算不健康的抵押品，保护系统的整体健康。
+    
+-   **价格喂价:** 实时的市场价格喂价确保抵押品价值的准确性，对于抵押品价值的监控和稳定币价值的维持至关重要。
+    
+
+通过这些机制，`DSCEngine`旨在通过算法和市场机制维持DSC的稳定性，尽管没有直接实现价格稳定机制，`DSCEngine`合约通过一系列财务健康检查和激励措施来维护DSC代币的稳定性：
+
+1.  **超额抵押（Over-Collateralization）**: 用户必须存入的抵押品价值超过其想要铸造的DSC数量，这个比率由`LIQUIDATION_THRESHOLD`定义。这意味着如果用户想要铸造价值100的DSC，他们可能需要存入价值100的_DSC_，他们可能需要存入价值200的ETH或BTC。这个过度抵押的要求为价格波动提供了缓冲。
+    
+2.  **实时价格喂价（Real-Time Price Feeds）**: 合约使用Chainlink的`AggregatorV3Interface`来获取抵押品的最新市场价格。这样可以确保抵押品的价值评估与市场价格同步，以实时反映抵押资产的真实价值。
+    
+3.  **健康因子（Health Factor）**: 合约计算并监控每个用户的健康因子，这是用户抵押品价值与其DSC债务的比率。如果用户的健康因子低于`MIN_HEALTH_FACTOR`，他们的抵押品可能会被清算。这个机制保证了用户不能铸造过多的DSC而不增加额外的抵押品。
+    
+4.  **清算机制（Liquidation Mechanism）**: 当用户的健康因子太低，即他们的抵押不足以支持其DSC债务时，其他参与者可以清算这些不健康的抵押品。清算者会以低于市场价的价格（由`LIQUIDATION_BONUS`提供激励）接收抵押品，同时燃烧相应的DSC，减少市场上的DSC供应，帮助维持DSC的价格稳定。
+    
+5.  **交互限制（Non-Reentrancy）**: 合约继承了OpenZeppelin的`ReentrancyGuard`，这防止了重入攻击，这是保护用户资产和维持合约整体稳定性的重要安全措施。
+    
+
+通过这些机制，`DSCEngine`试图保持DSC的稳定价值，使之能在加密货币市场上作为稳定的价值存储和交换媒介。然而，这种稳定性依赖于清算过程的有效执行以及市场对抵押品价格的准确反应。如果市场价格迅速下跌，清算可能无法足够快地发生，从而使系统面临资不抵债的风险。此外，系统的稳定性还依赖于Chainlink价格喂价的准确性和可靠性。
+
+### **函数介绍**
+
+以下是合约中各个函数的作用概述：
+
+**构造函数 (**`constructor`**)**
+
+-   初始化合约，设定了价格喂价（price feeds）地址和可接受的抵押品（collateral）地址，并将这些信息存储在状态变量中。
+    
+-   初始化`DecentralizedStableCoin`合约的引用。
+    
+
+**计算健康因子 (**`_healthFactor`**、**`_calculateHealthFactor`**)**
+
+-   **检查铸币总量**：如果用户没有铸造任何DSC（`totalDscMinted`为0），则健康因子被设定为`type(uint256).max`，这表示用户的健康因子是最大的，因为没有任何债务风险。
+    
+-   **调整抵押品价值**：计算抵押品价值的调整值，将用户的抵押品总价值（`collateralValueInUsd`）乘以清算阈值（`LIQUIDATION_THRESHOLD`）并除以清算精度（`LIQUIDATION_PRECISION`）。阈值通常设置为用户需要超额抵押的比例（例如200%）。
+    
+-   **计算健康因子**：最后，将调整后的抵押品价值乘以一个精度值，然后除以用户铸造的DSC总量。这个结果就是健康因子，它表示用户抵押品价值与其DSC债务的比率。
+    
+
+**存款抵押品 (**`depositCollateral`**)**
+
+-   允许用户存入指定的抵押品。
+    
+-   触发了一个记录抵押品存款的事件（`CollateralDeposited`）。
+    
+-   调用ERC20代币的`transferFrom`方法，将用户的代币转移到合约地址。
+    
+
+**赎回抵押品 (**`redeemCollateral`**)**
+
+-   **更新抵押记录**：减去`from`用户账户下对应`tokenCollateralAddress`的抵押品数量，`s_collateralDeposited`状态变量记录了用户所存入的每种抵押品的总量。
+    
+-   **触发事件**：触发`CollateralRedeemed`事件，记录抵押品从`from`转移到`to`的动作，以及涉及的抵押品地址和数量。
+    
+-   **转移抵押品**：使用`IERC20(tokenCollateralAddress).transfer`函数将抵押品从合约地址转移到`to`账户。
+    
+-   **检查转移结果**：检查`transfer`函数调用是否成功。如果没有成功，合约将使用`DSCEngine__TransferFailed()`错误进行回滚。
+    
+-   **检查健康因子**：如果执行之后健康因子过低，那么回滚所有操作
+    
+
+**铸造DSC (**`mintDsc`**)**
+
+-   允许用户铸造DSC。
+    
+-   检查健康因子，确保用户有足够的抵押品。
+    
+
+**燃烧DSC (**`burnDsc`**)**
+
+-   **更新铸币记录**：减去`onBehalfOf`用户账户下铸造的DSC数量，`s_DSCMinted[onBehalfOf]`状态变量记录了用户所铸造的DSC总量。
+    
+-   **转移代币**：使用`i_dsc.transferFrom`函数从`dscFrom`账户向合约地址转移等同于`amountDscToBurn`的DSC数量。这步骤通常是为了从用户账户中取回代币，以便接下来销毁。
+    
+-   **检查转移结果**：检查`transferFrom`函数调用是否成功。如果没有成功，合约将使用`DSCEngine__TransferFailed()`错误进行回滚。
+    
+-   **销毁代币**：调用`i_dsc.burn`函数销毁从`dscFrom`账户转移过来的DSC数量。这一步是实际减少DSC总供应量的操作。
+    
+-   **检查健康因子**：如果执行之后健康因子过低，那么回滚所有操作
+    
+
+**存款和铸币 (**`depositCollateralAndMintDsc`**)**
+
+-   允许用户存入抵押品并铸造DSC。
+    
+-   调用 `depositCollateral` 和 `mintDsc`
+    
+
+**赎回抵押品 (**`redeemCollateralForDsc`**)**
+
+-   允许用户燃烧DSC并赎回相应数量的抵押品。
+    
+-   调用 `burnDsc` 和 `redeemCollateral`
+    
+
+**清算 (**`liquidate`**)**
+
+-   **检查健康因子**：通过调用`_healthFactor`函数，计算传入的用户(`user`)的当前健康因子。如果该健康因子大于或等于`MIN_HEALTH_FACTOR`，则不允许清算，因为用户的抵押品仍然被认为是健康的，合约将会使用`DSCEngine__HealthFactorOk()`错误进行回滚。
+    
+-   **计算抵押品价值**：调用`getTokenAmountFromUsd`函数来计算清算者将要清算的DSC代表的美元价值等同的抵押品数量。例如，如果`debtToCover`是100 DSC，那么清算者需要获得相当于100美元的抵押品。
+    
+-   **计算清算奖励**：清算者会获得额外的奖励，这是通过`LIQUIDATION_BONUS`和`LIQUIDATION_PRECISION`常量计算出的奖励比例。在这个例子中，奖励是清算的抵押品价值的10%，所以清算者获得的总抵押品价值是他们清算DSC价值的110%。
+    
+-   **赎回抵押品**：清算者将收到总计的抵押品，包括基本的抵押品价值加上清算奖励。这一步似乎引用了一个未在代码中定义的内部函数`_redeemCollateral`。这个函数的目的是将计算出的抵押品数量（包括奖励）从不健康用户的账户转移到清算者的账户。
+    
+-   **燃烧DSC**：清算过程中，代表`debtToCover`的DSC数量将被燃烧，减少系统中的DSC总供应量。这也可能涉及到一个未在代码中定义的内部函数`_burnDsc`。
+    
+-   **检查健康因子改善情况**：在清算后，再次计算用户的健康因子，以确认清算行动确实提高了用户的健康因子。如果清算后用户的健康因子没有提升，合约将使用`DSCEngine__HealthFactorNotImproved()`错误进行回滚。
+    
+-   **检查清算者健康因子**：最后，合约将检查清算者的健康因子是否仍然满足要求，以确保清算行动没有破坏清算者自己的财务健康。
+    
+
+**获取账户信息 (**`_getAccountInformation`**)**
+
+-   返回用户铸造的DSC总量和抵押品的美元价值。
+    
+
+**检查并回滚健康因子 (**`_revertIfHealthFactorIsBroken`**)**
+
+-   检查用户的健康因子是否低于最小值，并在必要时回滚交易。
+    
+
+**从USD获取代币数量 (**`getTokenAmountFromUsd`**)**
+
+-   将美元数额转换为对应的代币数量。
+    
+
+**获取账户抵押品价值 (**`getAccountCollateralValue`**)**
+
+-   计算用户所有抵押品的总价值（以美元计）。
+    
+
+**获取USD价值 (**`getUsdValue`**)**
+
+-   计算给定数量的代币的美元价值。
+    
+
+**获取账户信息 (**`getAccountInformation`**)**
+
+-   外部可调用的函数，返回用户铸造的DSC总量和抵押品的美元价值。
+    
+
+### **常量与变量**
+
+合约还定义了一些错误处理方法和状态变量，以及与抵押品相关的事件。此外，此外，合约还包含了一些重要的常量和状态变量，以及修饰符（modifier）来进行输入检查。以下是对这些组件的简要概述：
+
+**常量**
+
+-   `LIQUIDATION_THRESHOLD`：清算阈值，设为50，意味着用户必须提供至少200%的超额抵押。
+    
+-   `LIQUIDATION_BONUS`：清算奖励，设为10%，即在清算时获得的抵押品折扣。
+    
+-   `LIQUIDATION_PRECISION`：清算精度，用于在清算计算中保持数值精度。
+    
+-   `MIN_HEALTH_FACTOR`：最小健康因子，用于确定账户是否足够健康以防止被清算。
+    
+-   `PRECISION`：用于内部计算的精度，通常是1e18。
+    
+-   `ADDITIONAL_FEED_PRECISION`：用于从价格喂价转换为代币价值的额外精度。
+    
+-   `FEED_PRECISION`：价格喂价的基础精度。
+    
+
+**状态变量**
+
+-   `i_dsc`：`DecentralizedStableCoin`合约的一个不可变私有引用。
+    
+-   `s_priceFeeds`：用于存储每个代币的价格喂价地址的映射。
+    
+-   `s_collateralDeposited`：用于存储每个用户的每种代币的抵押品数量的映射。
+    
+-   `s_DSCMinted`：用于存储每个用户铸造的DSC数量的映射。
+    
+-   `s_collateralTokens`：用于存储可接受的抵押品代币地址的数组。
+    
+
+### **实现细节**
+
+安装 chainlink 库
+
+`forge install smartcontractkit/chainlink-brownie-contracts@0.6.1 --no-commit`
+
+在 remappings 中添加映射
+
+`"@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/"`
+
+实现代码如下
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+import {DecentralizedStableCoin} from "./DecentralizedStableCoin.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import {OracleLib} from "./libraries/OracleLib.sol";
+
+/*
+ * @title DSCEngine
+ *
+ * The system is designed to be as minimal as possible, and have the tokens maintain a 1 token == $1 peg.
+ * This stablecoin has the properties:
+ *  - Exogenous Collateral (ETH & BTC)
+ *  - Dollar Pegged
+ *  - Algoritmically Stable
+ *
+ *  It is similar to DAI had no governance, no fees, and was only backed by WETH and WBTC.
+ */
+contract DSCEngine is ReentrancyGuard {
+    ///////////////////
+    // Errors
+    ///////////////////
+    error DSCEngine__NeedsMoreThanZero();
+    error DSCEngine__TokenAddressesAndPriceFeedAddressesMustBeSameLength();
+    error DSCEngine__NotAllowedToken();
+    error DSCEngine__TransferFailed();
+    error DSCEngine__BreaksHealthFactor(uint256 healthFactor);
+    error DSCEngine__MintFailed();
+    error DSCEngine__HealthFactorOK();
+    error DSCEngine__HealthFactorNotImproved();
+
+    ///////////////////
+    // Type
+    ///////////////////
+    using OracleLib for AggregatorV3Interface;
+
+    ///////////////////
+    // State Variables
+    ///////////////////
+    DecentralizedStableCoin private immutable i_dsc;
+
+    uint256 private constant LIQUIDATION_THRESHOLD = 50; // This means you need to be 200% over-collateralized
+    uint256 private constant LIQUIDATION_BONUS = 10; // This means you get assets at a 10% discount when liquidating
+    uint256 private constant LIQUIDATION_PRECISION = 100;
+    uint256 private constant MIN_HEALTH_FACTOR = 1e18;
+    uint256 private constant PRECISION = 1e18;
+    uint256 private constant ADDITIONAL_FEED_PRECISION = 1e10;
+    uint256 private constant FEED_PRECISION = 1e8;
+
+    mapping(address token => address priceFeed) private s_priceFeeds;
+    mapping(address user => mapping(address token => uint256 amount))
+        private s_collateralDeposited;
+    mapping(address user => uint256 amountDscMinted) private s_DSCMinted;
+    address[] private s_collateralTokens;
+
+    ///////////////////
+    // Events
+    ///////////////////
+    event CollateralDeposited(
+        address indexed user,
+        address indexed token,
+        uint256 indexed amount
+    );
+    event CollateralRedeemed(
+        address indexed redeemFrom,
+        address indexed redeemTo,
+        address token,
+        uint256 amount
+    ); // if redeemFrom != redeemedTo, then it was liquidated
+
+    ///////////////////
+    // Modifiers
+    ///////////////////
+    modifier moreThanZero(uint256 _amount) {
+        if (_amount == 0) {
+            revert DSCEngine__NeedsMoreThanZero();
+        }
+        _;
+    }
+
+    modifier isAllowedToken(address token) {
+        if (s_priceFeeds[token] == address(0)) {
+            revert DSCEngine__NotAllowedToken();
+        }
+        _;
+    }
+
+    ///////////////////
+    // Functions
+    ///////////////////
+    constructor(
+        address[] memory tokenAddresses,
+        address[] memory priceFeedAddress,
+        address dscAddress
+    ) {
+        if (tokenAddresses.length != priceFeedAddress.length) {
+            revert DSCEngine__TokenAddressesAndPriceFeedAddressesMustBeSameLength();
+        }
+        for (uint256 i = 0; i < tokenAddresses.length; i++) {
+            s_priceFeeds[tokenAddresses[i]] = priceFeedAddress[i];
+            s_collateralTokens.push(tokenAddresses[i]);
+        }
+        i_dsc = DecentralizedStableCoin(dscAddress);
+    }
+
+    ///////////////////
+    // External Functions
+    ///////////////////
+    function depositCollateralAndMintDsc(
+        address tokenCollarteralAddress,
+        uint256 amountCollateral,
+        uint256 amountDscToMint
+    ) external {
+        depositCollateral(tokenCollarteralAddress, amountCollateral);
+        mintDsc(amountDscToMint);
+    }
+
+    /*
+     * @notice Deposit collateral to mint DSC
+     * @param tokenCollarteralAddress The address of the collateral token
+     * @param amountCollateral The amount of collateral to deposit
+     */
+    function depositCollateral(
+        address tokenCollarteralAddress,
+        uint256 amountCollateral
+    )
+        public
+        moreThanZero(amountCollateral)
+        isAllowedToken(tokenCollarteralAddress)
+        nonReentrant
+    {
+        s_collateralDeposited[msg.sender][
+            tokenCollarteralAddress
+        ] += amountCollateral;
+        // 更新状态的时候最好触发事件
+        emit CollateralDeposited(
+            msg.sender,
+            tokenCollarteralAddress,
+            amountCollateral
+        );
+        bool success = IERC20(tokenCollarteralAddress).transferFrom(
+            msg.sender,
+            address(this),
+            amountCollateral
+        );
+        if (!success) {
+            revert DSCEngine__TransferFailed();
+        }
+    }
+
+    function redeemCollateralForDsc(
+        address tokenCollateralAddress,
+        uint256 amountCollateral,
+        uint256 amountDscToBurn
+    ) external {
+        burnDsc(amountDscToBurn);
+        redeemCollateral(tokenCollateralAddress, amountCollateral);
+        // redeemCollateral already checks health factor
+    }
+
+    function redeemCollateral(
+        address tokenCollateralAddress,
+        uint256 amountCollateral
+    ) public moreThanZero(amountCollateral) nonReentrant {
+        _redeemCollateral(
+            tokenCollateralAddress,
+            amountCollateral,
+            msg.sender,
+            msg.sender
+        );
+        _revertIfHealthFactorIsBroken(msg.sender);
+    }
+
+    /*
+     * @notice follows CEI
+     * @param amountDscToMint The amount of decentralized stablecoin to mint
+     * @notice they must have more collateral value than the minimum threshold
+     */
+    function mintDsc(
+        uint256 amountDscToMint
+    ) public moreThanZero(amountDscToMint) nonReentrant {
+        s_DSCMinted[msg.sender] += amountDscToMint;
+        // if they minted too much
+        _revertIfHealthFactorIsBroken(msg.sender);
+        bool minted = i_dsc.mint(msg.sender, amountDscToMint);
+        if (!minted) {
+            revert DSCEngine__MintFailed();
+        }
+    }
+
+    function burnDsc(uint256 amount) public moreThanZero(amount) {
+        _burnDsc(amount, msg.sender, msg.sender);
+        // This would never hit...
+        _revertIfHealthFactorIsBroken(msg.sender);
+    }
+
+    /*
+     * @param collateral The erc20 collateral address to liquidate from the user
+     * @param user The user who has broken the health factor. Their _healthFactor should be below MIN_HEALTH_FACTOR
+     * @param debtToCover The amount of DSC you want to burn to improve the users health factor
+     * @notice You can partically liquidate a user
+     * @notice You will get a liquidation bonus for taking the users funds
+     * @notice This function working assumes the protocol will be roughly 200% over-collateralized in order for this to work
+     * @notice A known bug would be if the protocol were 100% or less collateralized, then we wouldn't be able to incentive the liquidators.
+     * For example, if the price of the collateral plummeted before anyone could be liquidated.
+     */
+    function liquidate(
+        address collateral,
+        address user,
+        uint256 debtToCover
+    ) external moreThanZero(debtToCover) nonReentrant {
+        // need to check health factor before liquidating
+        uint256 startingUserHealthFactor = _healthFactor(user);
+        if (startingUserHealthFactor >= MIN_HEALTH_FACTOR) {
+            revert DSCEngine__HealthFactorOK();
+        }
+
+        // We want to burn their DSC "debt"
+        // And take their collateral
+        uint256 tokenAmountFromDebtCovered = getTokenAmountFromUsd(
+            collateral,
+            debtToCover
+        );
+
+        // give them a 10% bonus
+        // we should implement a feature to liquidate in the event the protocol is insolvent
+        // and sweep extra amounts into a treasury
+        uint256 bonusCollateral = (tokenAmountFromDebtCovered *
+            LIQUIDATION_BONUS) / LIQUIDATION_PRECISION;
+
+        _redeemCollateral(
+            collateral,
+            tokenAmountFromDebtCovered + bonusCollateral,
+            user,
+            msg.sender
+        );
+        _burnDsc(debtToCover, user, msg.sender);
+
+        uint256 endingUserHealthFactor = _healthFactor(user);
+        // This conditional should never hit, but just in case
+        if (endingUserHealthFactor <= startingUserHealthFactor) {
+            revert DSCEngine__HealthFactorNotImproved();
+        }
+        _revertIfHealthFactorIsBroken(msg.sender);
+    }
+
+    ///////////////////
+    // Private Functions
+    ///////////////////
+    function _burnDsc(
+        uint256 amountDscToBurn,
+        address onBehalfOf,
+        address dscFrom
+    ) private {
+        s_DSCMinted[onBehalfOf] -= amountDscToBurn;
+
+        bool success = i_dsc.transferFrom(
+            dscFrom,
+            address(this),
+            amountDscToBurn
+        );
+        // This conditional is hypothetically unreachable
+        if (!success) {
+            revert DSCEngine__TransferFailed();
+        }
+        i_dsc.burn(amountDscToBurn);
+    }
+
+    function _redeemCollateral(
+        address tokenCollateralAddress,
+        uint256 amountCollateral,
+        address from,
+        address to
+    ) private {
+        s_collateralDeposited[from][tokenCollateralAddress] -= amountCollateral;
+        emit CollateralRedeemed(
+            from,
+            to,
+            tokenCollateralAddress,
+            amountCollateral
+        );
+        bool success = IERC20(tokenCollateralAddress).transfer(
+            to,
+            amountCollateral
+        );
+        if (!success) {
+            revert DSCEngine__TransferFailed();
+        }
+    }
+
+    function _getAccountInformation(
+        address user
+    )
+        private
+        view
+        returns (uint256 totalDscMinted, uint256 collateralValueInUsd)
+    {
+        totalDscMinted = s_DSCMinted[user];
+        collateralValueInUsd = getAccountCollateralValue(user);
+    }
+
+    /*
+     * Returns how close to liquidation the user is
+     * If a user goes below 1, then they are liquidated
+     */
+    function _healthFactor(address user) private view returns (uint256) {
+        // total DSC minted
+        // total collateral value
+        (
+            uint256 totalDscMinted,
+            uint256 collateralValueInUsd
+        ) = _getAccountInformation(user);
+
+        return _calculateHealthFactor(totalDscMinted, collateralValueInUsd);
+    }
+
+    function _calculateHealthFactor(
+        uint256 totalDscMinted,
+        uint256 collateralValueInUsd
+    ) internal pure returns (uint256) {
+        if (totalDscMinted == 0) return type(uint256).max;
+        uint256 collateralAdjustedForThreshold = (collateralValueInUsd *
+            LIQUIDATION_THRESHOLD) / LIQUIDATION_PRECISION;
+        return (collateralAdjustedForThreshold * PRECISION) / totalDscMinted;
+    }
+
+    // 1. Check health factor (do they have enough collateral?)
+    // 2. Revert if they don't
+    function _revertIfHealthFactorIsBroken(address user) internal view {
+        uint256 userHealthFactor = _healthFactor(user);
+        if (userHealthFactor < MIN_HEALTH_FACTOR) {
+            revert DSCEngine__BreaksHealthFactor(userHealthFactor);
+        }
+    }
+
+    function getTokenAmountFromUsd(
+        address token,
+        uint256 usdAmountInWei
+    ) public view returns (uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(
+            s_priceFeeds[token]
+        );
+        (, int256 price, , , ) = priceFeed.staleCheckLatestRoundData();
+        return
+            (usdAmountInWei * PRECISION) /
+            (uint256(price) * ADDITIONAL_FEED_PRECISION);
+    }
+
+    function getAccountCollateralValue(
+        address user
+    ) public view returns (uint256 totalCollateralValueInUsd) {
+        // loop through each collateral token, get the amount they have deposited, and map it to the price, to get the USD value
+        for (uint256 i = 0; i < s_collateralTokens.length; i++) {
+            address token = s_collateralTokens[i];
+            uint256 amount = s_collateralDeposited[user][token];
+            totalCollateralValueInUsd += getUsdValue(token, amount);
+        }
+
+        return totalCollateralValueInUsd;
+    }
+
+    function getUsdValue(
+        address token,
+        uint256 amount
+    ) public view returns (uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(
+            s_priceFeeds[token]
+        );
+        (, int price, , , ) = priceFeed.staleCheckLatestRoundData();
+        return
+            ((uint256(price) * ADDITIONAL_FEED_PRECISION) * amount) / PRECISION;
+    }
+
+    function getAccountInformation(
+        address user
+    )
+        external
+        view
+        returns (uint256 totalDscMinted, uint256 collateralValueInUsd)
+    {
+        (totalDscMinted, collateralValueInUsd) = _getAccountInformation(user);
+    }
+
+    function getCollateralBalanceOfUser(
+        address user,
+        address token
+    ) external view returns (uint256) {
+        return s_collateralDeposited[user][token];
+    }
+
+    function getPrecision() external pure returns (uint256) {
+        return PRECISION;
+    }
+
+    function getAdditionalFeedPrecision() external pure returns (uint256) {
+        return ADDITIONAL_FEED_PRECISION;
+    }
+
+    function getLiquidationThreshold() external pure returns (uint256) {
+        return LIQUIDATION_THRESHOLD;
+    }
+
+    function getLiquidationBonus() external pure returns (uint256) {
+        return LIQUIDATION_BONUS;
+    }
+
+    function getLiquidationPrecision() external pure returns (uint256) {
+        return LIQUIDATION_PRECISION;
+    }
+
+    function getMinHealthFactor() external pure returns (uint256) {
+        return MIN_HEALTH_FACTOR;
+    }
+
+    function getCollateralTokens() external view returns (address[] memory) {
+        return s_collateralTokens;
+    }
+
+    function getDsc() external view returns (address) {
+        return address(i_dsc);
+    }
+
+    function getCollateralTokenPriceFeed(
+        address token
+    ) external view returns (address) {
+        return s_priceFeeds[token];
+    }
+
+    function getHealthFactor(address user) external view returns (uint256) {
+        return _healthFactor(user);
+    }
+}
+```
+
+# **测试**
+
+## **单元测试**
+
+这里提供一部分单元测试的case，并没有补充完全，只是起个抛砖引玉的作用，读者可根据需求自行扩展
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+import {Test} from "forge-std/Test.sol";
+import {DeployDSC} from "../../script/DeployDSC.s.sol";
+import {DecentralizedStableCoin} from "../../src/DecentralizedStableCoin.sol";
+import {DSCEngine} from "../../src/DSCEngine.sol";
+import {HelperConfig} from "../../script/HelperConfig.s.sol";
+import {ERC20Mock} from "@openzeppelin/contracts/mocks/token/ERC20Mock.sol";
+
+contract DSCEngineTest is Test {
+    DeployDSC deployer;
+    DecentralizedStableCoin dsc;
+    DSCEngine dsce;
+    HelperConfig config;
+    address ethUsdPriceFeed;
+    address btcUsdPriceFeed;
+    address weth;
+
+    address public USER = makeAddr("user");
+    uint256 public constant AMOUNT_COLLATERAL = 10 ether;
+    uint256 public constant STARTING_ERC20_BALANCE = 10 ether;
+
+    function setUp() public {
+        deployer = new DeployDSC();
+        (dsc, dsce, config) = deployer.run();
+        (ethUsdPriceFeed, btcUsdPriceFeed, weth, , ) = config
+            .activeNetworkConfig();
+        ERC20Mock(weth).mint(USER, STARTING_ERC20_BALANCE);
+    }
+
+    address[] public tokenAddresses;
+    address[] public priceFeedAddresses;
+
+    function testRevertsIfTokenLengthDoesntMatchPriceFeeds() public {
+        tokenAddresses.push(weth);
+        priceFeedAddresses.push(ethUsdPriceFeed);
+        priceFeedAddresses.push(btcUsdPriceFeed);
+
+        vm.expectRevert(
+            DSCEngine
+                .DSCEngine__TokenAddressesAndPriceFeedAddressesMustBeSameLength
+                .selector
+        );
+        new DSCEngine(tokenAddresses, priceFeedAddresses, address(dsc));
+    }
+
+    // Price Tests
+    function testGetUsdValue() public view {
+        uint256 ethAmount = 15e18;
+        uint expectedUsd = 30000e18;
+        uint256 actualUsd = dsce.getUsdValue(weth, ethAmount);
+        assertEq(actualUsd, expectedUsd);
+    }
+
+    function testGetTokenAmountFromUsd() public view {
+        uint256 usdAmount = 100 ether;
+        uint256 expectedWeth = 0.05 ether;
+        uint256 actualWeth = dsce.getTokenAmountFromUsd(weth, usdAmount);
+        assertEq(actualWeth, expectedWeth);
+    }
+
+    // depositCollateral Tests
+    function testRevertsIfCollateralZero() public {
+        vm.startPrank(USER);
+        ERC20Mock(weth).approve(address(dsce), AMOUNT_COLLATERAL);
+        vm.expectRevert(DSCEngine.DSCEngine__NeedsMoreThanZero.selector);
+        dsce.depositCollateral(weth, 0);
+        vm.stopPrank();
+    }
+
+    function testRevertsWithUnapprovedCollateral() public {
+        ERC20Mock ranToken = new ERC20Mock();
+        vm.startPrank(USER);
+        vm.expectRevert(DSCEngine.DSCEngine__NotAllowedToken.selector);
+        dsce.depositCollateral(address(ranToken), AMOUNT_COLLATERAL);
+        vm.stopPrank();
+    }
+
+    modifier depositedCollateral() {
+        vm.startPrank(USER);
+        ERC20Mock(weth).approve(address(dsce), AMOUNT_COLLATERAL);
+        dsce.depositCollateral(weth, AMOUNT_COLLATERAL);
+        vm.stopPrank();
+        _;
+    }
+
+    function testCanDepositCollateralAndGetAccountInfo()
+        public
+        depositedCollateral
+    {
+        (uint256 totalDscMinted, uint256 collateralValueInUsd) = dsce
+            .getAccountInformation(USER);
+
+        uint256 expectedTotalDscMinted = 0;
+        uint256 expectedDepositAmount = dsce.getTokenAmountFromUsd(
+            weth,
+            collateralValueInUsd
+        );
+        assertEq(totalDscMinted, expectedTotalDscMinted);
+        assertEq(AMOUNT_COLLATERAL, expectedDepositAmount);
+    }
+}
+```
+
+## **模糊测试**
+
+模糊测试并不像单元测试那样拥有很高的确定性，它会有很高的随机性，会不断的随机调用合约中的函数，并随机发送数据。优点是可以发现开发者未曾想到的边缘情况，并且测试过程高度自动化，能够快速测试大量的输入情况。
+
+我们可以在 foundry.toml 中对模糊测试做一些配置
+
+```ini
+[invariant]
+runs = 128
+depth = 128
+fail_on_revert = false
+```
+
+其中 runs 表示执行多少次测试，depth 表示每次测试的深度是多少（即调用多少次函数），
+
+fail\_on\_revert是指发生 revert 之后要不要立即停止测试
+
+在模糊测试中，最重要的是要找到合约中的**不变量**，比如我们这个稳定币合约，其中一个重要的不变量就是：**抵押品的价值一定会大于等于铸造出来的DSC的价值**
+
+我们就可以基于这个不变量来写一段模糊测试的逻辑 (Invariants.t.sol)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+import {Test, console} from "forge-std/Test.sol";
+import {StdInvariant} from "forge-std/StdInvariant.sol";
+import {DeployDSC} from "../../script/DeployDSC.s.sol";
+import {DSCEngine} from "../../src/DSCEngine.sol";
+import {DecentralizedStableCoin} from "../../src/DecentralizedStableCoin.sol";
+import {HelperConfig} from "../../script/HelperConfig.s.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {Handler} from "./Handler.t.sol";
+
+contract InvariantsTest is StdInvariant, Test {
+    DeployDSC deployer;
+    DSCEngine dsce;
+    DecentralizedStableCoin dsc;
+    HelperConfig config;
+    address weth;
+    address btc;
+    Handler handler;
+
+    function setUp() external {
+        deployer = new DeployDSC();
+        (dsc, dsce, config) = deployer.run();
+        (, , weth, btc, ) = config.activeNetworkConfig();
+
+        handler = new Handler(dsce, dsc);
+        targetContract(address(handler));
+    }
+
+    function invariant_protocolMustHaveMoreValueThanTotalSupply() public view {
+        uint256 totalSupply = dsc.totalSupply();
+        uint256 totalWethDeposited = IERC20(weth).balanceOf(address(dsce));
+        uint256 totalBtcDeposited = IERC20(btc).balanceOf(address(dsce));
+
+        uint256 wethValue = dsce.getUsdValue(weth, totalWethDeposited);
+        uint256 btcValue = dsce.getUsdValue(btc, totalBtcDeposited);
+
+        console.log("wethValue: ", wethValue);
+        console.log("btcValue: ", btcValue);
+        console.log("totalSupply: ", totalSupply);
+        console.log("times mint called: ", handler.timesMintIsCalled());
+        assert(wethValue + btcValue >= totalSupply);
+    }
+}
+```
+
+我们本可以在 setUp 中直接指定当前合约为模糊测试的对象（targetContract），但是这样做没有什么意义，因为它会胡乱调用函数，如果我们不做条件限制，那自然会疯狂 revert
+
+因为我们补充了一个 handler，在 handler 中我们做了如下限制
+
+`mintDsc`
+
+这个函数用于铸造DSC代币。它有以下条件限制：
+
+-   如果没有用户存过抵押品，则函数直接返回，不执行任何铸币操作。
+    
+-   使用一个地址种子(`addressSeed`)来从已存入抵押品的用户列表(`userWithCollateralDeposited`)中选择一个用户地址来执行铸币操作。
+    
+-   计算该用户可以铸造的最大DSC数量，为其抵押品的USD价值的一半减去已经铸造的DSC数量。
+    
+-   如果计算出的最大铸造数量小于0，或者请求铸造的数量(`amount`)为0，则函数直接返回。
+    
+-   实际铸造的DSC数量被限制在0和最大铸造数量之间。
+    
+-   使用`vm.startPrank`和`vm.stopPrank`来模拟特定用户的操作，这意味着铸造操作是以该用户的身份执行的。
+    
+
+`depositCollateral`
+
+这个函数用于存入抵押品。它的条件限制包括：
+
+-   使用种子(`collateralSeed`)来选择存入的抵押品类型（WETH或WBTC）。
+    
+-   存入的抵押品数量(`amountCollateral`)被限制在1和`MAX_DEPOSIT_SIZE`之间。
+    
+-   使用`vm.startPrank`和`vm.stopPrank`来模拟`msg.sender`的操作，允许他们存入抵押品并批准转账到DSCEngine合约。
+    
+-   将`msg.sender`添加到已存入抵押品的用户列表中。
+    
+
+`redeemCollateral`
+
+这个函数用于赎回抵押品。它的条件限制包括：
+
+-   使用种子(`collateralSeed`)来选择赎回的抵押品类型（WETH或WBTC）。
+    
+-   赎回的抵押品数量(`amountCollateral`)被限制在0和用户在DSCEngine合约中的抵押品余额之间。
+    
+-   如果请求赎回的数量为0，则函数直接返回。
+    
+
+具体实现代码如下
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+import {Test} from "forge-std/Test.sol";
+import {StdInvariant} from "forge-std/StdInvariant.sol";
+import {DeployDSC} from "../../script/DeployDSC.s.sol";
+import {DSCEngine} from "../../src/DSCEngine.sol";
+import {DecentralizedStableCoin} from "../../src/DecentralizedStableCoin.sol";
+import {ERC20Mock} from "@openzeppelin/contracts/mocks/token/ERC20Mock.sol";
+import {MockV3Aggregator} from "../mocks/MockV3Aggregator.sol";
+
+contract Handler is Test {
+    DSCEngine dsce;
+    DecentralizedStableCoin dsc;
+
+    ERC20Mock weth;
+    ERC20Mock wbtc;
+    MockV3Aggregator public ethUsdPriceFeed;
+
+    uint256 MAX_DEPOSIT_SIZE = type(uint96).max;
+
+    uint256 public timesMintIsCalled;
+    address[] public userWithCollateralDeposited;
+
+    constructor(DSCEngine _dscEngine, DecentralizedStableCoin _dsc) {
+        dsce = _dscEngine;
+        dsc = _dsc;
+
+        address[] memory collateralTokens = dsce.getCollateralTokens();
+        weth = ERC20Mock(collateralTokens[0]);
+        wbtc = ERC20Mock(collateralTokens[1]);
+
+        ethUsdPriceFeed = MockV3Aggregator(
+            dsce.getCollateralTokenPriceFeed(address(weth))
+        );
+    }
+
+    function mintDsc(uint256 amount, uint256 addressSeed) public {
+        if (userWithCollateralDeposited.length == 0) {
+            return;
+        }
+        address sender = userWithCollateralDeposited[
+            addressSeed % userWithCollateralDeposited.length
+        ];
+        (uint256 totalDscMinted, uint256 collateralValueInUsd) = dsce
+            .getAccountInformation(sender);
+        uint256 maxDscToMint = (collateralValueInUsd / 2) - totalDscMinted;
+        if (maxDscToMint < 0) {
+            return;
+        }
+
+        amount = bound(amount, 0, uint256(maxDscToMint));
+        if (amount == 0) {
+            return;
+        }
+
+        vm.startPrank(sender);
+        dsce.mintDsc(amount);
+        vm.stopPrank();
+        timesMintIsCalled++;
+    }
+
+    // redeem collateral
+    function depositCollateral(
+        uint256 collateralSeed,
+        uint256 amountCollateral
+    ) public {
+        ERC20Mock collateral = _getCollateralFromSeed(collateralSeed);
+        amountCollateral = bound(amountCollateral, 1, MAX_DEPOSIT_SIZE);
+
+        vm.startPrank(msg.sender);
+        collateral.mint(msg.sender, amountCollateral);
+        collateral.approve(address(dsce), amountCollateral);
+        dsce.depositCollateral(address(collateral), amountCollateral);
+        vm.stopPrank();
+
+        userWithCollateralDeposited.push(msg.sender);
+    }
+
+    function redeemCollateral(
+        uint256 collateralSeed,
+        uint256 amountCollateral
+    ) public {
+        ERC20Mock collateral = _getCollateralFromSeed(collateralSeed);
+        uint256 maxCollateralToRedeem = dsce.getCollateralBalanceOfUser(
+            address(collateral),
+            msg.sender
+        );
+        amountCollateral = bound(amountCollateral, 0, maxCollateralToRedeem);
+        if (amountCollateral == 0) {
+            return;
+        }
+        dsce.redeemCollateral(address(collateral), amountCollateral);
+    }
+
+    // This breaks our invariant test suite!!
+    // function updateCollateralPrice(uint96 newPrice) public {
+    //     int256 newPriceInt = int256(uint256(newPrice));
+    //     ethUsdPriceFeed.updateAnswer(newPriceInt);
+    // }
+
+    function _getCollateralFromSeed(
+        uint256 collateralSeed
+    ) private view returns (ERC20Mock) {
+        if (collateralSeed % 2 == 0) {
+            return weth;
+        }
+        return wbtc;
+    }
+}
+```
+
+通过这种方式，`Handler`合约为模糊测试提供了一个受控的环境，防止了测试过程中可能出现的极端情况，如超过逻辑限制的操作,使得测试能够在合理的操作范围内进行，并能够有效地揭示智能合约中的潜在问题。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # Solidity 101 详细知识点讲解
 
 ## **1\. Hello Web3 (三行代码)**
@@ -1938,11 +3064,13 @@ contract CompleteExample {
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 **写合约需要特殊的语言:Solidity**
@@ -2859,6 +3987,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3858,6 +4987,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -4872,6 +6002,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -5075,6 +6206,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -5805,6 +6937,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
