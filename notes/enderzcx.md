@@ -29,12 +29,12 @@ timezone: UTC+8
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-contract Counter { //contract是智能合约的起点，不可或缺
+contract Counter { // contract 是智能合约的起点，不可或缺
     uint public count; // 一个公共的 uint 类型变量 
 
-    /*变量用法：
+    /* 变量用法：
     变量类型 可见性 变量名字 = 变量值
-    变量类型：uint, string, int, bool, address等
+    变量类型：uint, string, int, bool, address 等
     可见性： public, private, internal, external
     */
 
@@ -43,7 +43,7 @@ contract Counter { //contract是智能合约的起点，不可或缺
         return count;
     }
     /*
-    function是声明函数时的固定用法要编写函数，就需要以 function 关键字开头。(来自Solidity 101):
+    function 是声明函数时的固定用法要编写函数，就需要以 function 关键字开头。(来自Solidity 101):
     function <function name>([parameter types[, ...]]) {internal|external|public|private} [pure|view|payable] [virtual|override] [<modifiers>]
 [returns (<return types>)]{ <function body> } 方括号中的是可写可不写的关键字
 
@@ -70,9 +70,7 @@ contract Counter { //contract是智能合约的起点，不可或缺
 }
 ```
 
-# **基本数据类型**
-
-[https://github.com/Web3-Club/Solidity-by-example\_Chinese/blob/main/03%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/03%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
+# [**基本数据类型**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/03%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B)
 
 代码好像出了点错，我搬运了一下
 
@@ -134,10 +132,10 @@ contract Primitives {
 }
 ```
 
-[https://github.com/Web3-Club/Solidity-by-example\_Chinese/blob/main/04%20%E5%8F%98%E9%87%8F.md](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/04%20%E5%8F%98%E9%87%8F.md)这一章直接COPY代码会Warning（REMIX Windows桌面版）  
-以下是我修改后不会报错的版本：
+# [**变量**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/04%20%E5%8F%98%E9%87%8F.md)
 
-# **变量**
+这一章直接COPY代码会Warning（REMIX Windows桌面版）  
+以下是我修改后不会报错的版本：
 
 ```
 // SPDX-License-Identifier: MIT
@@ -163,26 +161,28 @@ contract Variables {
 pragma solidity ^0.8.17;
 
 contract Variables {
-    //Local存在函数内存中 调用的时候才有
-    //state 在函数之外声明 存储在区块链上
-        //blockchain 存在链上 需要消耗GAS 
-    //global是默认的全局变量,提供有关区块链的信息
+    // Local存在函数内存中 调用的时候才有
+    // state 在函数之外声明 存储在区块链上
+    // blockchain 存在链上 需要消耗GAS 
+    // global是默认的全局变量,提供有关区块链的信息
     string public text = "Hello";  //存在区块链上
     uint public num = 123;
 
     function doSomething() public view returns (uint,uint,address){
 
-        uint i = 456;   //内存变量 在调用这个函数的时候才会使用此变量
+        uint i = 456;   // 内存变量 在调用这个函数的时候才会使用此变量
  
 
-        uint times = block.timestamp;  //当前区块的时间戳,全局变量
+        uint times = block.timestamp;  // 当前区块的时间戳,全局变量
         address sender = msg.sender;   
         return (i,times,sender);
     }
 }
 ```
 
-更正一下[https://github.com/Web3-Club/Solidity-by-example\_Chinese/blob/main/05%20%E5%B8%B8%E9%87%8F.md](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/05%20%E5%B8%B8%E9%87%8F.md)这里的解释方便小白（就是我）理解：
+# [**常量**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/05%20%E5%B8%B8%E9%87%8F.md)
+
+更正一下这里的解释方便小白（就是我）理解：
 
 ```
 // SPDX-License-Identifier: MIT
@@ -209,6 +209,7 @@ uint public constant MY_UINT = 123;
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -216,6 +217,7 @@ uint public constant MY_UINT = 123;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -233,6 +235,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -275,6 +278,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -298,12 +302,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -344,6 +350,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -354,6 +361,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
