@@ -15,8 +15,59 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## Tokenomics
+
+Value capture is protocal level
+
+Value accrual is token level
+
+价值捕获是协议层面的收入
+
+只有价值积累才是回报给代币层面的
+
+Web3 领域代码开源程度高，加上技术人才流动，很难建立技术护城河。
+
+web3 项目的护城河主要由下：
+
+1.  网络效应
+    
+2.  Liddy 效应
+    
+3.  Gas efficiency
+    
+4.  社区治理，活跃的开发者，和忠诚的DAO成员
+    
+5.  品牌信任
+    
+
+-   **Opinion的网络效应,注意力和社交变现**
+    
+    -   **“注意力变现”效应：** Opinion（部署在 BNB Chain 和 Mantle 上）利用了更强的**代币激励（Token Incentives）和社交裂变**机制。它不仅仅是让用户“下注”，更强调“发表观点即挖矿”或参与即奖励。
+        
+    -   **飞轮逻辑：** 高额代币/积分奖励 -> 吸引大量散户/撸毛党（Airdrop Hunters） -> 产生巨大的交易笔数和活跃地址数 -> 数据好看吸引更多合作方和散户。
+        
+    -   **壁垒：** 目前更多是\*\*“补贴壁垒”\*\*。如果停止奖励，网络效应可能会迅速衰退（类似于早期的 SushiSwap 攻击 Uniswap）。但它的机会在于将“下注”转化为一种“社交互动”。
+        
+
+**Opinion (BNB Chain/Mantle)：**
+
+-   利用了 BNB Chain 庞大的**散户基础**和低 Gas 费优势。它的网络效应体现在与交易所生态（如 Binance 钱包、OKX 钱包）的强绑定，通过“入口端”的流量优势来弥补“资产端”的不足。
+    
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NTBkMmExZDdkMzNjOTgzYWNjM2ZhMWE0MTIyNGY5OGNfOTBRdEdCQkhHTnQ1Y0JzRFBFTndFN01ROXJlaktMVlBfVG9rZW46U1c0S2J1MERybzNtVXV4bEZVcWN5VWVybnRmXzE3NjkwOTcwMjA6MTc2OTEwMDYyMF9WNA)
+
+Wachi DAPP 架构
+
+后端和数据库与链交互
+
+后端也直接与前端交互
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 二、赛道剖析
 
 1.解决了什么问题？卖什么产品和服务 预测市场到底卖的是什么？人类为什么需要他？ 1.投机需求：人类天性爱好赌博。
@@ -262,6 +313,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 -   YES-Token 的价格：**V(Yes)** 美元
     
 -   NO-Token 的价格：**V(No)** 美元
@@ -282,6 +334,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NjNhYjExNWE4YTRlMDEzNGQ5YmQ4OTExMjA1NTJiZGNfb3BjcWFoUzhQN2pOeWJRZlRTYUxTaEpHbjA1VDJoTkJfVG9rZW46Q3VuM2I3MVJVb1p3YWV4dWR0SWN6R0RTbk1jXzE3Njg4MzAwOTk6MTc2ODgzMzY5OV9WNA)
@@ -318,6 +371,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -454,6 +508,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 
 
+
 ### 按照协议费用排名前10大协议：
 
 泰达，Circle 稳定币 Meteora, solana 链上的Defi
@@ -498,6 +553,7 @@ Axiom Pro 关于 Axiom Pro，这是一个在加密货币交易领域中出现的
 
 
 
+
 ### 数据库的基本概念介绍
 
 **数据库（Database）**：数据库是结构化信息或数据的有序集合，是按照数据结构来组织、存储和管理数据的仓库。Dune平台目前提供了多个数据库，分别支持来自不同区块链的数据。
@@ -529,6 +585,7 @@ limit 返回记录数量
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -574,6 +631,7 @@ limit 返回记录数量
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -672,6 +730,7 @@ limit 返回记录数量
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
