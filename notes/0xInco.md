@@ -15,13 +15,20 @@ X: @0xInco
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+额今天没听课....大概明早的也听不到，周末会把视频丢给 NotebookLM 去学习并总结笔记的
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 打卡了下 uniswap 解析，然后再听了会休闲黑客松的介绍hhhh，继续忙一下自己事去了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 稍微听了会 Marcus 讲的公共物品资金分配，后边主要听的是 Elon 过了遍 Solidity 的基本语法，也是复习了下
 <!-- DAILY_CHECKIN_2026-01-20_END -->
@@ -30,11 +37,13 @@ X: @0xInco
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 今天听了 Luna 老师关于社区运营基础与活动策划的分享，再次复习了下 Telegram 群聊的创建和运营功能等等
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -149,6 +158,7 @@ X: @0xInco
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -420,6 +430,7 @@ Funding 在实践中往往被用作拥挤度 proxy：
 
 
 
+
 今天听了一会儿分享会吧后边有事儿就下了，明天去补听一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -431,11 +442,13 @@ Funding 在实践中往往被用作拥挤度 proxy：
 
 
 
+
 Rick 老师今天分享了一些 AI 概念和 Web3 的应用，比如落实到 agent 和链交互，后续会再研究研究。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -458,11 +471,13 @@ Rick 老师今天分享了一些 AI 概念和 Web3 的应用，比如落实到 a
 
 
 
+
 今天又听了一遍 Web3 基础知识分享吧 hhhh，大致还是记得内容的。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
