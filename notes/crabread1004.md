@@ -15,8 +15,36 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# 1.22共学笔记
+
+notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde133667c47a?source=copy\_link](https://www.notion.so/1-22-2f0408fac1a68098898bde133667c47a?source=copy_link)
+
+1.完成remix教程课后任务
+
+\-应该怎样看到retrive后的结果，在个人钱包里面吗
+
+2.小海老师分享会
+
+3.智能合约开发
+
+4.南塘dao分享会
+
+\-群友笔记整理
+
+-   罗伯特议事规则，全名是罗伯特议事规则（Robert’s Rules of Order），是一套用于会议与集体决策的“标准流程规则”。
+    
+-   罗伯特议事规则 = 一群人不吵架、有效开会、按规则做决定的方法说明书
+    
+-   它解决什么问题？ 当一个组织里有很多人时，常见问题是： 谁先说？ 什么时候该投票？ 少数服从多数，但如何保护少数？ 情绪化争吵 vs 理性决策怎么区分？
+    
+-   罗伯特议事规则就是为“多人协商 + 民主决策”设计的操作系统
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 图片较多，notion链接如下
 
 [https://www.notion.so/1-21-2ea408fac1a68010a19efcb11f69a02f?source=copy\_link](https://www.notion.so/1-21-2ea408fac1a68010a19efcb11f69a02f?source=copy_link)
@@ -24,6 +52,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 1.观看并总结分享会
 
@@ -34,11 +63,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-17_START -->
 
 
+
 熟悉remix中！......
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -55,11 +86,13 @@ timezone: UTC+8
 
 
 
+
 今天有两场考试，休息一天~
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -89,6 +122,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -163,6 +197,7 @@ web3行业赛道：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
