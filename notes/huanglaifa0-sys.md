@@ -329,6 +329,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ## X. 核心审计与可信性架构（Audit & Trust Architecture）
 
 ### X.1 设计目标与边界
@@ -801,6 +802,7 @@ ESRS 强调 **“披露的可验证性与可比性”**，尤其在环境（E）
 
 
 
+
 # 与“数据确权”相关的关键研究议题
 
 任何适合合规研究的数据资产，都要回答以下基础问题：
@@ -1036,6 +1038,7 @@ Overall, the paper argues that a properly designed climate-positive blockchain c
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1375,6 +1378,7 @@ Overall, the paper argues that a properly designed climate-positive blockchain c
 
 
 
+
 # 链上语言翻译为监管语言
 
 ## 一、怎么把“链上行为”翻译成“可监管语言”
@@ -1672,6 +1676,7 @@ Overall, the paper argues that a properly designed climate-positive blockchain c
 
 
 
+
 | 周数区间 | 核心目标 | 核心输出 | | 第 1–2 周 | 坚实理解“链上地址与可审计性” | 5–7 页简报 | | 第 3–6 周 | 构建链上数据与行为分析基础能力 | 3 个分析报告 | | 第 7–10 周 | 对接合规与风险语义建模 | 风险指标体系与模型 | | 第 11–12 周 | 综合实践：完整链上合规方案设计 | 10–15 页方案 |
 
 ⸻
@@ -1935,6 +1940,7 @@ Overall, the paper argues that a properly designed climate-positive blockchain c
 
 
 
+
 主题：数据要素、链上数字资产与合规护城河的底层逻辑
 
 **一、全球监管正在发生的根本变化**
@@ -2154,6 +2160,7 @@ CARF、DAC8 等机制，正在把加密资产正式纳入：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2578,6 +2585,7 @@ CARF 的目标不是限制交易，而是“让税务看得见”。
 
 
 
+
 ### Web3 合规与安全：我们到底在“管”什么？
 
 * * *
@@ -2777,6 +2785,7 @@ CARF 的目标不是限制交易，而是“让税务看得见”。
 
 
 
+
 # 从零到一学习以太坊
 
 相比于昨天的实习手册，今天多了很多详细的东西，确定了之后我想学习的重点主要是在nft和dao方向。
@@ -2794,6 +2803,7 @@ CARF 的目标不是限制交易，而是“让税务看得见”。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
