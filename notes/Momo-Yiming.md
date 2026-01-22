@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今天晚上听了两节关于Web3的直播课，一个是关于DApp的部署讲解是属于技术的，那里面最让我印象深刻的就是代码记法律这句话以及一些DApp的应用，包括向说去中心化的银行机构以及闪电贷的应用  
+  
+个人觉得闪电贷概念非常有意思，由于区块链上的逻辑从发起到结束到整个过程都是完全记录绑定在区块链代码上的，所以按照来说他的每一步都是可追溯透明可观察不可篡改的  
+  
+也就是说，通过闪电带贷款的金融方式，可以短期内使用大量的一个资金去进行套利，如果套利成功则可以得到这部分的收益，若套利不成功，被区块链合约代码所判定到你通过这一步操作，没有办法归还闪电贷的资金，那么这个闪电贷的操作就无法完成，你也无法完成套利动作，整个资金会被完整的退回，你只会损失交互的gas费  
+  
+这样大程度的信任在我们外部世界中是闻所未闻的，因为所有人都害怕给了你大量的一个资金，你没有任何信用抵押，你可能会带着钱就跑了，但是在web3中所有资产锁定在链上，你跑不了，因为代码不允许你跑，**代码既法律，代码既规则**  
+  
+学习区块练一段时间，其实也在思考问题，区块链的去中心化着一个特性，真的是符合人性特点的吗？  
+  
+其实所有人包括动物，生物最最基本的特性，应该是趋利避害  
+  
+所以去中心化这个向往本质上应该是属于一个时代的产物  
+  
+在我们的500人实习生群里大家有讨论这个去中心化的真正含义  
+  
+看wachi老师在群里提到一个三国演义里面非常好的概念，**分久必合合久必分**，我感觉这句话很大程度上说清楚了，区块链发展去中心化发展的趋势，实际上跟时代发展强绑定  
+  
+在我们现在在一个中心化大大的影响了人类群体利益造成不利的状态下，因为趋利避害的本能，我们更多的人更多的时代，更多的技术就会自动的往去中心化的方向去发展，这是时代的进步是人类的本性  
+  
+可能有一天去中心化发展到一个非常非常庞大的阶段，它的弊端和劣势又会体现出来，到时候可能会走向一个新阶段的中心化，那这将是我们不可预期的时代  
+  
+简而言之，每个人在时代的洪流下，只小小的一粒尘埃，要做到逆水行舟迎难而上，只能是依附着时代的洪流符合时代发展的规律缓慢前进，希望我们学习区块链的500人都能成为未来时代中闪闪发光的一缕光
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 今天学习了uniswap相关的知识  
 概念：与传统中心化交易所不同，Uniswap运行在以太坊等区块链上，由智能合约管理。您始终通过自己的钱包进行交易，无需注册或托管资产，实现了**无需许可**和**非托管**的交易  
 其中**自动化做市商AMM**：是Uniswap的灵魂。它摒弃了订单簿，转而依靠一个数学公式和资金池来**自动定价并完成交易**。流动性提供者将资金存入池中，系统根据算法为所有交易者提供即时流动性  
@@ -42,6 +70,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
 
 今天主要是学习了关于DAO的治理模式  
@@ -50,6 +79,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ![0f7b48730c97a4f1b0a4cee038670047.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-19-1768838031212-0f7b48730c97a4f1b0a4cee038670047.png)
@@ -67,6 +97,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -99,6 +130,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -148,11 +180,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -235,6 +269,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -253,11 +288,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
