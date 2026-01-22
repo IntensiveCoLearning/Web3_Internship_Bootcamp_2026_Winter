@@ -31,7 +31,7 @@ $env:ETHERSCAN_API_KEY="your_etherscan_key"
 
 etherscan-api-key在[etherscan.io](http://etherscan.io)的账户 -> api-dashboard -> api-key
 
-在[developer.metamask.io](http://developer.metamask.io)的infura RPC里
+SEPOLIA\_RPC\_URL在[developer.metamask.io](http://developer.metamask.io)的infura RPC里
 
 ```
  forge script script/DeployMessageBoard.s.sol:DeployMessageBoard `
@@ -48,6 +48,7 @@ etherscan-api-key在[etherscan.io](http://etherscan.io)的账户 -> api-dashboar
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## 深度技术作业：
 
@@ -82,6 +83,7 @@ forge script script/DeployMessageBoard.s.sol:DeployMessageBoard \`
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -124,6 +126,7 @@ forge init
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -221,6 +224,7 @@ forge init
 
 
 
+
 **1\. 核心概念**
 
 \- 新一代代币协议，融合零知识证明（ZK）与哈希算法
@@ -290,11 +294,13 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 第一周总结：了解了求职市场，找工作真的很难…不能只学写合约，还要学合约安全的部分，还要学rust。多参与链上活动如投票，贡献开源代码，建立链上声誉。 了解agent上链来帮助用户辨别选择agent，购买agent的部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -365,6 +371,7 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 一、AI的演进与核心
 
 传统AI（如早期ChatGPT）只是“高级复读机”，无状态、无工具、无身份。而未来的AI Agent将具备：
@@ -392,6 +399,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -437,6 +445,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -497,6 +506,7 @@ EIP
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
