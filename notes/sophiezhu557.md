@@ -15,8 +15,82 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-21
+<!-- DAILY_CHECKIN_2026-01-21_START -->
+一些智能合约学习笔记：
+
+Account {
+
+nonce
+
+balance
+
+storageRoot // EOA account（外部账户）中为空，合约账户中很重要
+
+codeHash // ，EOA账户中为空，合约账户中指向合约代码
+
+}
+
+带有storage的智能合约相关操作都比较费gas，因为是要写进区块链里面的。
+
+一些storage相关的术语：
+
+storage slot：智能合约“持久化存储”的最小地址单元。每一个 storage slot，大小固定是 32 bytes。比如说我们创建了某个变量a，这个变量a存储在区块链上，对应的是某个合约storage里的某一个固定slot，这个slot的固定大小是32bytes，这个slot对应的值是当前a的值。
+
+Storage ：storage = 某个合约“所有 storage slot 的集合”
+
+Q：在智能合约里，使用了storage 进行写入意味着什么？
+
+当我们在合约里写 storage（比如改一个余额）或使用storage变量（例如 count）时，意味着：
+
+从这一刻起：所有全节点，现在的、未来的，都必须记住这件事，并且永远不能忘。
+
+| 操作 | 成本 |
+
+| ----------- | ---- |
+
+| 计算（CPU） | 相对便宜 |
+
+| memory（临时） | 很便宜 |
+
+| storage（永久） | 非常贵 |
+
+如果没有 storage：
+
+合约不能记住：余额、所有权、状态。每次调用都是“无记忆函数”。那就意味着：没有 DeFi、NFT、DAO
+
+StorageRoot：storage改变，storageroot改变。是当前合约状态的指纹。
+
+每一次 写 storage 的交易，都会触发这条链：
+
+写 storage slot
+
+→ storage 内容变化
+
+→ storageRoot 变化
+
+→ 合约 Account State 变化
+
+→ state trie 变化
+
+→ stateRoot 变化
+
+→ 写进 block header
+
+那“32 bytes”具体存的是什么？
+
+以 count = 2 为例：
+
+uint256 = 256 bits = 32 bytes
+
+存储形式（简化）：
+
+0x0000000000000000000000000000000000000000000000000000000000000002
+<!-- DAILY_CHECKIN_2026-01-21_END -->
+
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 总结了一下关于RPC接口、高度、canonical chain 的知识：
 
 RPC = 进程之间通过接口通信（本地 / 远程都可以）
@@ -95,11 +169,13 @@ proposer 实际看到的是：一个 已经构造好的区块
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 今天把昨天DApp的那个潦草前端改了，改成用next.js写，最后部署在vercel上。但是还有点地方有问题，暂时上线不了
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 今天开始学solidity，以及用solidity写代码玩了（其实是vibe coding）
@@ -162,6 +238,7 @@ proposer 实际看到的是：一个 已经构造好的区块
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -242,6 +319,7 @@ EL **理解并操作 trie**
 
 
 
+
 今天看了Bruce讲的web3运行原理。结合前几天看的《021学习以太坊》，稍微整理了一部分知识：
 
 -   私钥、公钥
@@ -310,6 +388,7 @@ proposer和attester都是节点。是proposer在mempool中捞起各种交易打�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
