@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+![bf8297ca-dc9f-49f1-a73d-c431c4e98582.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Lemonadeccc/images/2026-01-22-1769088771107-bf8297ca-dc9f-49f1-a73d-c431c4e98582.png)
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 一、智能合约的概念与功能
 
 ### 1智能合约是什么
@@ -417,6 +423,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ### **智能合约开发核心总结**
 
 **一、核心理念：Dapp 架构与开发**
@@ -568,6 +575,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 021第三章账户类型
@@ -723,6 +731,7 @@ ERC-20/ERC-721等代币**并非独立资产**，而是**智能合约账户内的
 
 
 
+
 ### **021第二章**
 
 **一、节点与客户端**
@@ -827,6 +836,7 @@ ERC-20/ERC-721等代币**并非独立资产**，而是**智能合约账户内的
 
 
 
+
 安全合规相关
 
 只装官方软件、面试不轻信他人多渠道确认、不提供提供任何隐私
@@ -861,6 +871,7 @@ ERC-20/ERC-721等代币**并非独立资产**，而是**智能合约账户内的
 
 
 
+
 以太坊是一个去中心化、开源并且具备智能合约功能的公共区块链平台。EVM是一个图灵完备的虚拟机，能够执行智能合约代码，可以运行各类程序和应用。
 
 以太坊具有几个特点：1smart contract 2dapp 3tokens 4PoS 5gas 6Proto-Danksharding与Dencun 7
@@ -889,6 +900,7 @@ MEV与PBS（应对市场力量的集中化压力）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
