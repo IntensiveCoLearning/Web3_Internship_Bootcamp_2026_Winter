@@ -95,13 +95,14 @@ _是將純文字訊息轉換為加密密文的程序。_
 進階部分涉及 **底層公鏈** 與 **基礎設施** ，可以考慮進修**Go、Rust 或 C++**，那涉及**分散式計算**、**共識機制**與 **P2P 消息傳遞**等等電腦科學的「深水區」知識 。  
 (ps.分散式運算是將一套軟體分散在不同電腦或伺服器上執行，透過網路互相連接，達成共同的任務。)
 
-(以下為今日線上共學同學的筆記檔案)
+# (以下為今日線上共學同學的筆記檔案)
 
 ![0122線上共學.PNG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-22-1769096764843-0122____.PNG)![ad8d07eca762b2a8bce8e5ed1535b704.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-22-1769096996237-ad8d07eca762b2a8bce8e5ed1535b704.jpg)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -131,6 +132,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -263,6 +265,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -274,6 +277,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -346,6 +350,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -356,6 +361,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -514,6 +520,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -539,6 +546,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -697,6 +705,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -776,6 +785,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
