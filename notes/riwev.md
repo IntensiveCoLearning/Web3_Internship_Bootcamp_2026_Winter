@@ -26,10 +26,49 @@ Web3 实习计划 2025 冬季实习生
 4、做了拼豆DApp，萌
 
 ![{66BCF939-CDB6-49A1-BFB3-C49609947C16}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-22-1769070031149-_66BCF939-CDB6-49A1-BFB3-C49609947C16_.png)
+
+5、Polymarket架构与链上数据解码
+
+**Market（市场）**：对应具体的 Yes/No 问题，是交易发生的基本单位。一些事件只有一个市场（例如简单的二元事件），而有些事件包含多个市场形成一个多结果事件。
+
+**Condition（条件）**
+
+每个市场在链上的"登记身份"。创建市场时，会调用 CTF 合约的 `prepareCondition` 方法注册一个条件。`ConditionId` 是通过哈希计算得出的唯一标识：
+
+```
+conditionId = keccak256(oracle, questionId, outcomeSlotCount)
+```
+
+**Position（头寸）**
+
+头寸指的是用户持有的某市场某结果的份额（又称 Outcome Share）。Polymarket 将每个头寸实现为一个 ERC-1155 标准的可交易代币（又称 PositionId 或 TokenId）。每种结果对应一个不同的 TokenId，用于区分 YES 和 NO 两种头寸。
+
+**CollectionId（集合 ID）**
+
+在条件代币框架中，中间引入了集合的概念，用于表示特定条件下某个结果集合。计算方法为：
+
+```
+collectionId = keccak256(parentCollectionId, conditionId, indexSet)
+```
+
+**TokenId（PositionId）**
+
+最后，用抵押品代币地址和集合 ID 一起计算得到 ERC-1155 的 Token ID：
+
+```
+tokenId = keccak256(collateralToken, collectionId)
+```
+
+在 Polymarket 中，对于每个条件(市场)，会产生两个 TokenId —— 一个对应 YES 份额，一个对应 NO 份额。这两个 TokenId 是在该市场上交易的标的资产，代表了对同一预测问题的两种相反结果的头寸。
+
+**Collateral（抵押品）**
+
+Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，地址 `0x2791...Aa84174`) 作为抵押品。每份 Outcome Token 背后对应 1 USDC 的抵押，当市场结算时兑现。
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ## **Solidity**
@@ -127,6 +166,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # **Challenge #0 - Tokenization**
 
 我完全懂力！教程非常详细，只是ipfs不好使就按照群里同学换了pinata
@@ -167,6 +207,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -248,6 +289,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -437,6 +479,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -523,6 +566,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -657,6 +701,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -902,6 +947,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 
 
+
 # [Day 3: ENS, DEX, Identity, Inventory, Sybil](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
 ## ETH交易与Gas机制
@@ -1113,6 +1159,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1401,6 +1448,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
