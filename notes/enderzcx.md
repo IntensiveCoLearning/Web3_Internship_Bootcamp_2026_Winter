@@ -18,10 +18,59 @@ timezone: UTC+8
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 # **Uniswap 工作原理解析**
+
+[https://github.com/Web3-Club/Solidity-by-example\_Chinese/blob/main/04%20%E5%8F%98%E9%87%8F.md](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/04%20%E5%8F%98%E9%87%8F.md)这一章直接COPY代码会Warning（REMIX Windows桌面版）  
+以下是我修改后不会报错的版本：
+
+# **变量**
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Variables {
+    string public text = "Hello";
+    uint public num = 123;
+
+    function doSomething() public view returns (uint,uint, address) {
+        uint i = 456;
+        uint timestamp = block.timestamp;
+        address sender = msg.sender;
+        return (i,timestamp, sender);
+    }
+}
+```
+
+## **扩充**
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Variables {
+    //Local存在函数内存中 调用的时候才有
+    //state 在函数之外声明 存储在区块链上
+        //blockchain 存在链上 需要消耗GAS 
+    //global是默认的全局变量,提供有关区块链的信息
+    string public text = "Hello";  //存在区块链上
+    uint public num = 123;
+
+    function doSomething() public view returns (uint,uint,address){
+
+        uint i = 456;   //内存变量 在调用这个函数的时候才会使用此变量
+ 
+
+        uint times = block.timestamp;  //当前区块的时间戳,全局变量
+        address sender = msg.sender;   
+        return (i,times,sender);
+    }
+}
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 收看「Web3 公共物品资金分配第一节课」回放
 
@@ -30,6 +79,7 @@ timezone: UTC+8
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
@@ -41,6 +91,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -71,6 +122,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -88,12 +140,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -122,6 +176,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -132,6 +187,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
