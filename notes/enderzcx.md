@@ -198,10 +198,103 @@ uint public constant MY_UINT = 123;
 // "="和"变量值" 可以不写，默认变量值为0
 }
 ```
+
+# [**不可变**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/06%20%E4%B8%8D%E5%8F%AF%E5%8F%98.md#%E6%89%A9%E5%85%85)
+
+中的 [构造函数（constructor）](https://docs.soliditylang.org/zh/v0.8.17/contracts.html#constructor)404了
+
+这里贴上AI的解释：
+
+### **1\.** `constructor` **是什么？**
+
+-   **构造函数**：合约**部署时自动运行一次**的特殊函数，用于初始化状态变量。
+    
+-   **特点**：
+    
+    -   每个合约**只能有一个** `constructor`。
+        
+    -   不能被显式调用（仅在部署时触发）。
+        
+    -   通常用于设置**初始状态**（如所有者地址、参数等）。
+        
+
+* * *
+
+### **2\. 参数** `uint _myUint`
+
+-   部署合约时，**必须传入一个** `uint` **类型的参数**（如 `_myUint = 100`）。
+    
+-   示例部署调用（Remix IDE）：
+    
+    ```
+    SOLIDITY
+    ```
+    
+    ```solidity
+    // 部署时输入：100（作为 _myUint 的值）
+    ```
+    
+
+* * *
+
+### **3\. 函数体逻辑**
+
+1.  `MY_ADDRESS = msg.sender`
+    
+    -   将**部署者的地址**（`msg.sender`）永久存储在状态变量 `MY_ADDRESS` 中。
+        
+    -   例如：如果 `0x123...` 部署了合约，`MY_ADDRESS` 将永远是 `0x123...`。
+        
+2.  `MY_UINT = _myUint`
+    
+    -   将传入的 `_myUint` 值存储到状态变量 `MY_UINT`。
+        
+    -   例如：部署时传入 `100`，则 `MY_UINT = 100`。
+        
+
+* * *
+
+### **4\. 完整示例**
+
+假设合约定义如下：
+
+```
+SOLIDITY
+```
+
+```solidity
+contract MyContract {
+    address public MY_ADDRESS;  // 存储部署者地址
+    uint public MY_UINT;       // 存储传入的 uint 值
+
+    constructor(uint _myUint) {
+        MY_ADDRESS = msg.sender;
+        MY_UINT = _myUint;
+    }
+}
+```
+
+-   **部署后**：
+    
+    -   调用 `MY_ADDRESS()` 返回部署者地址。
+        
+    -   调用 `MY_UINT()` 返回部署时传入的 `_myUint` 值。
+        
+
+* * *
+
+### **5\. 为什么用** `constructor`**？**
+
+-   **安全性**：确保关键参数（如所有者地址）在部署时正确设置，且**不可篡改**。
+    
+-   **气体效率**：避免后续用 `setter` 函数额外消耗 gas。
+    
+-   **不可变性**：结合 `immutable` 关键字（如 `address public immutable OWNER;`），可以节省 gas。
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -230,6 +323,7 @@ uint public constant MY_UINT = 123;
 
 
 
+
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
 **后面学习完智能合约我要试试ERC7962在代码层面和一般的有什么不一样，从代码层面是如何实现的**  
 Solidity学习路线（**021学习以太坊**）：
@@ -239,6 +333,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -287,6 +382,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -313,12 +409,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -365,6 +463,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -375,6 +474,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
