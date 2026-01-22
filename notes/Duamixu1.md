@@ -15,8 +15,116 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# **任務 A、B 筆記（Rust CLI / 鏈上事件抓取）**
+
+## **1\. 任務概述**
+
+-   任務：A、B
+    
+-   形式：以 Rust 實作 CLI（命令列工具）
+    
+-   目的：抓取鏈上資料 → 整理清理 → 輸出結果
+    
+
+## **2\. 主要想法**
+
+-   任務 A 出現一個有趣的實作點：抓取鏈上資料不一定需要 ABI 來讀合約方法
+    
+-   取而代之的是透過 RPC 的 logs 介面，使用事件過濾（Filter Event / fetch filter event）抓取事件資料
+    
+-   關鍵依據是事件簽名（Event Signature），搭配合約地址與區塊範圍進行篩選
+    
+
+## **3\. 事件抓取方式（核心機制）**
+
+-   事件簽名常數：ORDER\_FILLED\_EVENT\_SIGNATURE = OrderFilled(bytes32,address,address,uint256,uint256,uint256,uint256,uint256)
+    
+-   抓取流程概念：
+    
+    -   建立 Filter
+        
+    -   設定 address = exchange\_address（目標合約地址）
+        
+    -   設定 event = ORDER\_FILLED\_EVENT\_SIGNATURE
+        
+    -   設定 from\_block / to\_block
+        
+    -   透過 provider.get\_logs(filter) 拉取 logs
+        
+    -   將 logs 交由 process\_logs 解析與轉換
+        
+    -   最終回傳結構化輸出（Vec）
+        
+    
+
+## **4\. Pipeline（端到端流程）**
+
+-   Step 1：定位目標合約
+    
+    -   找到要抓取的合約地址（exchange\_address）
+        
+    
+-   Step 2：抓取事件
+    
+    -   依合約地址 + 事件簽名 + 區塊範圍建立 Filter
+        
+    -   取得 logs
+        
+    
+-   Step 3：事件整理與清理
+    
+    -   logs 解析（將鏈上 log 轉成可用欄位）
+        
+    -   資料清洗（型別轉換、欄位正規化、可能的去噪/去重）
+        
+    -   結果映射成輸出資料結構（TradeOutput）
+        
+    
+-   Step 4：輸出
+    
+    -   CLI 輸出（stdout 或檔案）
+        
+    -   輸出內容為整理後的結構化資料
+        
+    
+
+## **5\. 模組規劃（結構定位）**
+
+-   model
+    
+    -   用途：整理資料模型與輸出結構
+        
+    -   內容：事件解析後的中間結構、最終輸出結構（如 TradeOutput）、欄位與型別定義、序列化/反序列化相關
+        
+    
+-   utils
+    
+    -   用途：放置確定性計算（deterministic）
+        
+    -   內容範圍：單位換算、數值精度處理、固定規則的欄位計算、格式化、校驗等
+        
+    
+-   CLI / main（入口）
+    
+    -   用途：解析參數、調用 pipeline、控制輸出目的地與格式
+        
+    
+
+## **6\. 截圖與記錄**
+
+-   Screenshot 2026-01-21 at 9.55.58 PM.png
+    
+
+## **7\. Repo**
+
+-   [https://github.com/Duamixu1/OGBC-Intern-Project](https://github.com/Duamixu1/OGBC-Intern-Project)
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # 第五章：EVM 架构与 Gas 经济机制
 
 ## I. 理论基础：EVM 的定义与属性
@@ -247,6 +355,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 My First ZKVote
@@ -490,6 +599,7 @@ Level 3（Fallout）
 
 
 
+
 這段筆記我幫你「補齊背景＋講清楚做法＋把思路寫得更像可複用的解題模板」，你可以直接貼進你的學習筆記裡。
 
 * * *
@@ -635,6 +745,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -816,6 +927,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1135,6 +1247,7 @@ PoS 的本质是：
 
 
 
+
 ## **课堂后反思笔记：Web3的“去中心化体验”与合规现实**
 
 ### **1) 认知转变：从“自主掌控”到“合规介入”**
@@ -1270,6 +1383,7 @@ PoS 的本质是：
 
 
 
+
 -   上期回顾
     
     -   比特币：《比特币：一种点对点电子货币系统》
@@ -1378,6 +1492,7 @@ PoS 的本质是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
