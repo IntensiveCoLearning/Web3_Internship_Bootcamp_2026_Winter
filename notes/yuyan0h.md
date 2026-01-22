@@ -15,8 +15,170 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+\# Web3 学习笔记 · 第十天
+
+\## 🧠 今日学习内容
+
+1\. **Solidity by Example | 0.8.26 Basic 部分**
+
+2\. **DApp Workshop by 小海老师**（线上工作坊）
+
+3\. **南塘DAO 主题分享**（晚间）
+
+\---
+
+\## 📘 Solidity by Example 基础部分精要
+
+\### 一、示例驱动的语法理解
+
+通过具体合约例子学习核心语法：
+
+\#### 1. **变量与数据类型**
+
+\- `uintaddressboolstringbytes`
+
+\- 状态变量 vs 局部变量
+
+\- `publicprivateinternalexternal` 可见性
+
+\#### 2. **函数与修饰器**
+
+\- 函数声明与调用
+
+\- `viewpurepayable` 关键字
+
+\- 自定义修饰器（如 `onlyOwner`）
+
+\#### 3. **结构体与映射**
+
+\`\`\`solidity
+
+struct User {
+
+uint id;
+
+address wallet;
+
+uint balance;
+
+}
+
+mapping(address => User) public users;
+
+\`\`\`
+
+\#### 4. **事件与日志**
+
+\- 定义 `event`
+
+\- 触发 `emit`
+
+\- 前端监听（如 ethers.js）
+
+\#### 5. **错误处理**
+
+\- `require`：条件检查，失败则回滚
+
+\- `revert`：直接回滚，可带错误信息
+
+\- `assert`：内部错误检查，用于不变性验证
+
+\---
+
+\## 🛠️ DApp Workshop by 小海老师
+
+\### 一、工作坊主题
+
+**从零搭建一个完整的 DApp**（全栈视角）
+
+\### 二、技术栈梳理
+
+\- **前端**：React + Vite + Tailwind CSS
+
+\- **钱包连接**：Wagmi + viem（或 ethers.js）
+
+\- **合约交互**：自动生成 TypeScript 类型（wagmi cli）
+
+\- **状态管理**：Zustand / Jotai（轻量级）
+
+\- **部署**：Vercel / Fleek（前端） + 测试网（合约）
+
+\### 三、核心流程演示
+
+1\. **编写智能合约**（简易投票合约）
+
+2\. **编译与部署**（Hardhat 脚本）
+
+3\. **生成前端类型**（wagmi generate）
+
+4\. **搭建 UI 并连接钱包**
+
+5\. **调用合约函数**（读/写）
+
+6\. **监听事件与状态更新**
+
+\### 四、实用工具推荐
+
+\- **Chainlist**：一键添加测试网络到 MetaMask
+
+\- **ETH Converter**：Wei ↔ ETH 单位转换
+
+\- [**Revoke.cash**](http://Revoke.cash)：检查与撤销合约授权
+
+\- **Tenderly**：交易模拟与调试
+
+\---
+
+\## 🏮 南塘DAO 主题分享（晚间）
+
+\### 一、主题内容
+
+\- **DAO 的治理实践**：提案、投票、资金管理
+
+\- **社区驱动的项目孵化**：如何从想法到上线
+
+\- **文化与身份认同**：DAO 不仅是组织，更是共同体
+
+\### 二、启发点
+
+\- DAO 不是“去中心化公司”，而是“去中心化协作网络”
+
+\- 小规模、高频、透明的协作更容易建立信任
+
+\- 工具重要（Snapshot, Discourse, Coordinape），但文化更重要
+
+\---
+
+\## 💡 今日心得
+
+\> 今天从“语法示例”到“全栈搭建”再到“治理文化”，像是一次从微观到宏观的穿越：
+
+\> - Solidity 示例让我看到\*\*代码如何表达规则\*\*
+
+\> - DApp 工作坊让我看到\*\*规则如何变成产品\*\*
+
+\> - 南塘DAO 让我看到\*\*产品如何融入社区与治理\*\*
+
+\>
+
+\> 越来越感受到，Web3 开发不是“写合约就行”，而是“理解系统，连接人与规则”。
+
+\---
+
+\## 🧭 明日计划
+
+\- 继续学习 Solidity by Example 进阶部分（如 ERC-20/ERC-721 实现）
+
+\- 动手复现工作坊中的 DApp 项目（投票合约 + 前端）
+
+\- 尝试参与一个 DAO 的治理讨论（如论坛发帖或投票）
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 \# Web3 学习笔记 · 第九天
 
 \## 🧠 今日主题：NFT 铸造 + zkVote 初体验 + Uniswap 入门
@@ -169,6 +331,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 \# Web3 学习笔记 · 补充（实习计划概览与任务进展）
 
 \## 📋 实习计划结构与进展概览
@@ -306,6 +469,7 @@ hasClaimed\[leaf\] = true;
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 \# Web3 学习笔记 · 第八天
 
 \## 🧠 今日学习主题：智能合约初体验 + 密钥哈希 Token 理解
@@ -430,6 +594,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 ## **🛡️ 今日学习主题：Web3 安全入门与实践**
 
 （基于 Unphishable 平台引导内容）
@@ -545,6 +710,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -704,6 +870,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -892,6 +1059,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 # **Web3 学习笔记 · 第四天**
 
 ## **📖 今日学习材料**
@@ -920,6 +1088,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1050,6 +1219,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 实习手册学习笔记
 
 \## 📘 入门导读
@@ -1093,6 +1263,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
