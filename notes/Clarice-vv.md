@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+两节课：Dapp workshop 和Dao
+
+第一节主要讲了混合栈hybrid stack,构建workshop registry 去省gas
+
+fuzzing:自动生成数千个随机输入 覆盖边缘情况
+
+TS：可以模拟前端数据流与复杂跨合约交互
+
+不要在.env中明文储存私钥
+
+核心交互：签到 在钱包确认 交易确认 签到成功
+
+第二节课：Dao ，南塘Dao的历史 和对未来的规划 希望大家一起加入
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 今天有两个会议：uniswap 工作原理解析 和休闲黑客松案例解析
 
 第一个主要给我们讲解了uniswap 的运行原理 x·y=k，老师还用数学思维给我们推理了这个公式，还有一些关于流动性池的知识
@@ -27,11 +45,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ![IMG_4924.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-20-1768922559745-IMG_4924.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 不同岗位的能力要求
@@ -106,6 +126,7 @@ Twitter (X) / Farcaster
 
 
 
+
 补昨日笔记：
 
 主要就是一些学员web3的心得和感受
@@ -115,6 +136,7 @@ Twitter (X) / Farcaster
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -130,6 +152,7 @@ SpoonOS架构概览：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -185,6 +208,7 @@ Web3就是：用私钥签名证明你是谁，用共识网络保证账本可信�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
