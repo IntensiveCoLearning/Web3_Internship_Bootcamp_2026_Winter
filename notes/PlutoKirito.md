@@ -15,8 +15,109 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# Ethernaut ：从逻辑推演到实战破解
+
+## 一、 Ethernaut 的通用解题思维（以 Level 1 Fallback 为例）
+
+面对陌生的合约关卡，建议按以下四个维度进行逆向拆解：
+
+### 1\. 寻找终点：我的目标是什么？
+
+通常 CTF 的终极目的只有两个：
+
+-   **夺取最高权限**：成为 `owner`。
+    
+-   **清空合约资金**：让 `address(this).balance` 归零。
+    
+
+> **本关案例**：发现 `withdraw()` 函数带有 `onlyOwner` 修饰符，且功能是提走所有余额。因此目标锁定为：**“将变量** `owner` **修改为我的地址”。**
+
+### 2\. 寻找修改点：谁能改变状态变量？
+
+在代码中搜索所有 `owner =` 的赋值语句，并评估其可行性：
+
+-   **构造函数**：部署时运行，**Pass**（已过期）。
+    
+-   `contribute()` **函数**：需要捐款额超过原 Owner（1000 ETH），**Pass**（成本太高）。
+    
+-   `receive()` **回退函数**：只要触发，就能直接赋值 `owner = msg.sender`。**目标锁定！**
+    
+
+### 3\. 破解门槛：触发逻辑是什么？
+
+查看 `receive()` 的 `require` 条件： `require(msg.value > 0 && contributions[msg.sender] > 0);`
+
+-   **条件 A**：`msg.value > 0` —— 必须带点钱转账（1 wei 即可）。
+    
+-   **条件 B**：`contributions[msg.sender] > 0` —— 我必须在合约里有过捐款记录。
+    
+
+### 4\. 制定攻略：执行动作顺序
+
+1.  **动作 1**：调用 `contribute({value: toWei("0.0001")})`，满足“捐款记录 > 0”。
+    
+2.  **动作 2**：直接向合约地址发送一笔纯转账（1 wei），触发 `receive()`。
+    
+3.  **结果**：你成为新 Owner，最后执行 `withdraw()` 收割资金。
+    
+
+* * *
+
+## 二、 核心漏洞：链上伪随机性
+
+许多关卡涉及到“博弈”或“猜数字”，常见的错误逻辑是利用区块链状态作为随机种子：
+
+Solidity
+
+```
+uint256 blockValue = uint256(blockhash(block.number - 1));
+uint256 coinFlip = blockValue / factor;
+```
+
+### 为什么不可行？
+
+-   **透明性**：区块链上一切皆公开。攻击者合约可以实时读取 `block.number - 1` 的哈希。
+    
+-   **同步性**：如果在同一个区块中，攻击合约先计算出“必胜”结果，再将结果传入目标合约，胜率是 **100%**。
+    
+
+**防御方案**：在 Web3 中获取真随机数，必须使用 **Chainlink VRF** 等预言机方案。
+
+* * *
+
+## 三、 JS 交互必坑指南：`receive` 与 `fallback`
+
+在 Ethernaut 控制台中，`receive()` 或 `fallback()` 函数无法像普通函数那样通过名字调用。
+
+### 1\. 为什么 `contract.receive()` 会报错？
+
+`receive()` 是一个没有名字的“默认备选方案”。它在 ABI 接口中不存在函数名映射，因此 JS 找不到这个方法。
+
+### 2\. 正确触发方式：发送原始交易
+
+要触发没有名字的函数，必须使用 `sendTransaction`，不指定 `data`（即不指定函数签名）时，以太坊会自动寻找 `receive()`。
+
+JavaScript
+
+```
+// 在控制台执行以下代码触发 receive()
+await contract.sendTransaction({
+  value: toWei("0.0001") // 金额必须 > 0
+});
+```
+
+* * *
+
+## 四、 总结：
+
+> **先看目标函数，后找赋值入口。** **拆解门槛条件，顺序步步为营。** **链上无随机，计算皆透明。** **JS 发交易，无名用 sendTx。**
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # Solidity 核心笔记：事件与继承机制
 
 ## 一、 事件 (Events)
@@ -119,6 +220,7 @@ function hip() public pure override(Yeye, Baba) returns(string memory) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # Solidity：函数与数据存储位置
 
@@ -237,6 +339,7 @@ function update() public {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # ERC-7962：从公开所有权到隐私身份凭证
 
 ## 1\. 背景：ERC-721 的隐私困境
@@ -315,6 +418,7 @@ ERC-7962 不仅保护隐私，更彻底革新了用户体验，让 Web3 真正�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -440,6 +544,7 @@ contract MyContract {
 
 
 
+
 # ERC721 存储逻辑与 Gas 权衡 (Enumerable 深度解析)
 
 ## 一、 核心矛盾：Mapping 的“单向盲区”
@@ -514,6 +619,7 @@ mapping(uint256 => address) private \_owners;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -627,6 +733,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 一、 全球主流加密监管框架对比
 
 ### 1\. 欧盟：MiCA (最全、最具示范性)
@@ -734,6 +841,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 不点！不签！不装！不转！
 
 ## 一、 Web3 安全：攻防新态势
@@ -830,6 +938,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 
 
+
 ## 一、核心概念辨析
 
 -   **区块 (Block)**：实际存储交易数据和状态的“账本页”。
@@ -913,6 +1022,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
