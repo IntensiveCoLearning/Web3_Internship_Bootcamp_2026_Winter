@@ -15,8 +15,81 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+## 完成任务
+
+1.  完成了几个技术向的任务
+    
+2.  colearning wachi老师的分享太赞了
+    
+3.  xiaohai老师的分享会真的让人收获满满，最后的鸡汤环节也很动人
+    
+
+## 笔记
+
+### Dapp开发
+
+1.  一个Dapp，核心是和链上的交互，但同样有链下的支撑，主要包括三个部分，智能合约本身，前端（负责网页，和钱包交互，发起交易等），后端（本地的数据库，快速的读取，提高用户体验）
+    
+2.  智能合约方面，solidity和Foundry和Hardhat，Foundry和Hardhat各有侧重，尽可能地都要了解
+    
+3.  前端最常用的框架事React/Next.js wagmi viem
+    
+4.  后端可能会涉及到SQL等数据库
+    
+5.  访问链上需要RPC，链上存储需要IPFS
+    
+6.  部署靠Vercel或者VPS
+    
+7.  感觉要学的有好多
+    
+
+### Reactive Contract
+
+-   因为任务中有这个项目，就花了点时间了解了一下
+    
+-   简单来说，reactive contract提供了一种监控链上状态并自动触发合约的功能
+    
+-   比较核心的内容是双状态的设计，同一份RC代码，会在两个运行环境里运行，存储状态彼此独立，写的时候必须明确在哪里执行，读写哪一份状态
+    
+-   简单来说，Reactive Network接入外部世界，ReactVM处理事件决定是否要发生Callback
+    
+-   两个状态的区分通过判断特定地址上是否有代码， 有代码是RN，无代码是RV
+    
+-   assembly { size := extcodesize(0x0000000000000000000000000000000000fffFfF) } vm = size == 0
+    
+-   这种架构分层，一方面加速了并行处理，另一方面也更安全，让受限的环境做判断，边界更清晰
+    
+-   流程大概如下
+    
+
+1.  事件产生 emit event
+    
+2.  RN会看到匹配订阅的事件，subscribe() 设置过滤条件：链 ID、合约地址、event topics 等
+    
+3.  把事件穿给react，在RV上进行判断
+    
+4.  判断完后，发出一个callback请求给RN
+    
+5.  RN到链上发起交易，同时还有安全检查
+    
+
+-   第一步检查调用者地址符合回调代理地址
+    
+-   第二步RC部署者的地址是否等于合约里记录的授权身份
+    
+
+## 明日计划
+
+1.  继续学习reactive的内容
+    
+2.  看看深度向任务哪些能做
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## 笔记
 
 Uniswap
@@ -85,6 +158,7 @@ LP提供的流动性贡献在一个特定的区间，可以让流动性更大
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ## 笔记
 
 **remix实操**
@@ -130,6 +204,7 @@ storage：4906
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ## bytes 格式介绍
@@ -482,6 +557,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日计划完成情况
 
 1.  完成speed run etheruem challenge 0
@@ -506,6 +582,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -714,6 +791,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -972,6 +1050,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日学习任务完成情况
 
 1.  021学习以太坊第三章
@@ -1011,6 +1090,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1071,6 +1151,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1174,6 +1255,7 @@ Q：NFT的价值来自什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
