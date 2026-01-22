@@ -15,8 +15,65 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+今天不学协议，专门把 **Remix 和 Hardhat** 当成“训练工具”来练，目标是：不是看懂概念，而是把常见流程跑熟、把常见坑踩一遍，最后能稳定产出一套可复用的开发模板。
+
+### 1）Remix：把“写—编译—部署—调试”流程压到肌肉记忆
+
+-   新建一个最小合约（Counter 级别），刻意覆盖：`constructor`、`require`、`event`、`public view` 读状态、`external` 写状态。
+    
+-   反复切换 Solidity 编译版本，确认：同一份代码在版本不一致时会出现哪些编译报错（比如语法/内置 overflow 检查差异），并记录“固定版本”是必须的。
+    
+-   在 Remix VM 部署后，分别用不同账户调用写函数，观察：
+    
+    -   state 变量变化是否符合预期
+        
+    -   event 是否正常 emit
+        
+    -   每次写操作都会生成交易并消耗 gas（读操作不产生交易）
+        
+-   今天特意把 Debugger 点开跑了一次交易，至少看懂：calldata、storage 改动、event log 在哪里出现。
+    
+
+**今日产出**：一个能稳定编译部署、带事件日志的最小合约 + 一次完整调试记录（知道去哪里看 state / log / tx detail）。
+
+* * *
+
+### 2）Hardhat：把“项目化开发”的骨架搭起来（不是只会跑命令）
+
+今天重点不是写复杂业务，而是把 Hardhat 的“工程结构”跑通：
+
+-   初始化项目后把目录结构对齐清楚：
+    
+    -   `contracts/` 放合约
+        
+    -   `scripts/` 放部署脚本
+        
+    -   `test/` 放测试用例
+        
+-   启动本地链（Hardhat Network），跑通一次“脚本化部署”，让流程可复制，而不是像 Remix 那样手动点。
+    
+-   配置并理解最基本的部署脚本结构：拿到合约工厂、deploy、wait、打印地址。
+    
+-   把 Remix 里那个最小合约搬进 Hardhat，验证：
+    
+    -   编译 OK
+        
+    -   部署 OK
+        
+    -   通过脚本调用写函数 OK（并能拿到交易回执）
+        
+-   顺手处理了 2 个典型问题：
+    
+    -   依赖/插件版本冲突导致的报错（知道从 package.json / hardhat.config.js 定位）
+        
+    -   网络配置/私钥环境变量的基本写法（至少能区分本地链和测试网）
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 今天的学习主要围绕 Uniswap 的 AMM 数学模型和其在合约中的实现方式展开，目标是把“公式—机制—代码”三者对应起来，而不是停留在概念层。
 
 首先在数学层面，重点理解了 Uniswap V2 的定价模型来源。从流动性池中两种资产的边际变化关系出发，得到价格变化满足 `dy/dx = -y/x`，由此自然推出恒定乘积关系 `x * y = k`。通过这一模型，进一步理解了交易过程中价格滑点产生的原因，以及为什么交易规模越大，对价格影响越明显。
@@ -33,6 +90,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 今日主要学习内容为 [ethereum.org](http://ethereum.org) 官方教程《Uniswap V2 Annotated Code》，对 Uniswap V2 合约结构和核心逻辑进行通读与理解。
 
 学习过程中重点梳理了 Uniswap V2 的整体架构，明确了 Core（Factory、Pair）与 Periphery（Router）的职责划分。Pair 合约负责资产托管和核心逻辑执行，Router 主要作为用户交互入口，负责路径计算和多跳交易组织。
@@ -48,6 +106,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ### 1）今日学习内容概览
@@ -132,6 +191,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -220,6 +280,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要学习的问题是：**在考虑滑点和手续费的情况下，如何在 Uniswap V2 买入并去 Binance 卖出，以实现单笔利润最大化？**
 
 **1\. 市场环境假设**
@@ -304,6 +365,7 @@ $$\\Pi\_{net} = \[(1-f)P \\cdot y\_{trade}\] - \[\\text{DEX\\\_Cost}(y\_{trade})
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -405,6 +467,7 @@ pair.swap(amount0Out, amount1Out, nextTo, new bytes(0));
 
 
 
+
 ### 一、Uniswap V2（继续学习）
 
 在前两天理解了 Uniswap V2 的 swap 和 LP 机制后，今天主要补了一点 **Router 的作用**，搞清楚用户为什么几乎不直接和 Pair 合约交互。
@@ -477,6 +540,7 @@ function swapExactTokensForTokens(
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -565,6 +629,7 @@ DeFi 表面上是“代码即规则”，但实际问题更多来自：
 
 
 
+
 今天主要学习了 **Uniswap V2 的基础 AMM 机制**，重点放在 **swap 定价公式和 Pair 合约的核心逻辑**，没有深入到全部源码。
 
 ### 1\. AMM 定价公式（今天重点）
@@ -625,6 +690,7 @@ require(balance0Adjusted * balance1Adjusted >= k, "K");
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
