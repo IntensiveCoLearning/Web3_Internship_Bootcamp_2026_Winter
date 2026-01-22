@@ -15,8 +15,141 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## **Web3 工作方式**
+
+使用OKR管理远程协作。所有人能看到其他人，包括上下级的OKR，就能对齐整体目标，避免偏离公司发展路线。
+
+KR的内容要尽可能量化。比如
+
+> 目标：提升产品国际化能力 KR1：完成 3 个语言版本开发（40%） KR2：用户测试通过率 ≥90%（70%） KR3：新市场用户增长 25%（100%）
+
+预约会议，要明确谁必须参加，谁不需要参加，避免耽误大家时间。
+
+布置任务时，要明确哪天几点前需要提交，不要用模棱两可的说法。
+
+基础黑话
+
+| 黑话 | 含义 |
+| --- | --- |
+| DYOR | Do Your Own Research，投资前请自行研究，项目方常用于免责 |
+| FOMO | Fear of Missing Out，害怕错过，指因贪婪而追高的情绪 |
+| FUD | Fear, Uncertainty, Doubt，恐慌、不确定、怀疑，指唱衰情绪或舆论攻击 |
+| WAGMI | We're All Gonna Make It，大家都会发财，社区常用打气口号 |
+| NGMI | Not Gonna Make It，讽刺某人/项目做法不行 |
+| REKT | 被"爆锤"，损失惨重，如投资失败、合约被黑等 |
+| Airdrop | 空投，免费发放代币以激励用户参与项目 |
+| Whale | 加密大户、巨鲸，能影响市场价格的人 |
+| Degen | "投机狗"，不问项目质量只冲高风险高回报机会的人 |
+| Shill | 宣传、推销（常含贬义），如"shill 项目"指恶意安利 |
+| Exit Scam | 项目方跑路，携款失联 |
+
+技术类黑话
+
+| 黑话 | 含义 |
+| --- | --- |
+| L1 / L2 | Layer 1（主链，如以太坊）和 Layer 2（扩容方案，如 Arbitrum、zkSync） |
+| EVM | Ethereum Virtual Machine，以太坊虚拟机，运行智能合约的核心 |
+| Smart Contract | 智能合约，自动执行合约逻辑的链上程序 |
+| Bridge | 跨链桥，用于在多条链之间转移资产 |
+| Oracle | 预言机，用于向链上提供链下数据 |
+| Fork | 分叉，指复制已有代码的项目，或区块链协议分裂 |
+| Mint | 铸造，生成新的 NFT 或代币 |
+| Burn | 销毁代币，减少总量，用于通缩机制 |
+| Rugpull | 抽地毯，项目方卷款跑路（尤其在 DeFi 项目） |
+
+投资类黑话
+
+| 黑话 | 含义 |
+| --- | --- |
+| Pump | 拉盘，代币价格快速上涨 |
+| Dump | 砸盘，代币价格快速下跌 |
+| HODL | 原为"Hold"打错，后来变成文化，意为坚定持币不卖 |
+| Bagholder | "接盘侠"，高位买入亏损后长期持币的人 |
+| Alpha | 内部消息/潜在机会，表示未公开但价值潜力大的信息 |
+| Tokenomics | 代币经济学，研究代币发行、分配、用途等机制 |
+
+社区与文化类黑话
+
+| 黑话 | 含义 |
+| --- | --- |
+| gm / gn | good morning / good night，Web3 社区日常打招呼方式 |
+| Anon | 匿名者，社区中不透露真实身份的成员 |
+| KOL | Key Opinion Leader，意见领袖，影响力人物 |
+| CT | Crypto Twitter，加密行业活跃的信息与讨论来源 |
+| DAO | 去中心化自治组织，社区驱动型的组织管理形式 |
+| NFT PFP | NFT 头像项目，如 CryptoPunks、BAYC，PFP = Profile Picture |
+
+开发类黑话
+
+| 黑话 | 含义 |
+| --- | --- |
+| Hardhat / Foundry | 常用的智能合约开发框架 |
+| RPC | Remote Procedure Call，链上节点访问接口 |
+| Gas | 交易费用，以太坊中以 Gwei 计费 |
+| Etherscan | 区块浏览器，用于查看合约、交易、地址信息 |
+| Viem / Ethers.js / Wagmi | Web3 前端交互库 |
+| ABI | Application Binary Interface，合约调用所需的接口信息 |
+| Mainnet / Testnet | 主网 / 测试网，分别对应正式和测试环境 |
+
+# Web3 行业知识
+
+## **区块链岗位全景图**
+
+前端工程师
+
+```jsx
+# 常用技术栈
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- React / Vue
+- TypeScript
+- Next.js
+- Ethers.js / Web3.js / Viem
+```
+
+后端工程师
+
+```jsx
+# 常用技术栈
+- Node.js / Go / Python
+- Viem / Web3.js / Ethers.js
+- RESTful API / GraphQL
+- MySQL / PostgreSQL
+- Docker / Kubernetes
+```
+
+智能合约工程师
+
+```jsx
+# 常用技术栈
+- Solidity
+- Remix
+- Foundry / Hardhat
+- Phalcon / Tenderly
+- Yul
+```
+
+非技术岗包括
+
+-   产品与运营
+    
+-   社区管理
+    
+-   研究分析
+    
+    -   市场研究
+        
+    -   技术研究
+        
+    -   经济金融研究
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 Jeff Huang老师讲Uniswap工作原理解析
 
 p是x用y表示的价格，也就是曲线的斜率。
@@ -60,6 +193,7 @@ BD：Business Development，商务拓展。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## **行业赛道全览**
 
@@ -141,6 +275,7 @@ Web3 + 乡村建设：南塘DAO
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数据仍然需要压缩上链。为了进一步提高效率，新的方案不把交易数据上链，只上链交易树的root hash以及ZK证明。这就是**Validium**。
 
 **Volition**进一步改进Validium，运用用户选择是否让交易上L1链。大额交易，对安全性要求高的交易可以选择上L1，其它的和Validium一样。
@@ -156,6 +291,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 ```
@@ -216,6 +352,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -366,11 +503,13 @@ SNARK落地更快，STARK前景更好。
 
 
 
+
 今天参加了周会，提了一些问题。其它的没什么进度。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -451,6 +590,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 
 
+
 几个问题
 
 -   web3比web2快？我理解其实不会，只是上去了合规审查的部分，出海更方便了。Ricky也委婉表达了这个观点。
@@ -462,6 +602,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -627,6 +768,7 @@ Gas 费用 = **用多少 × 每单位多少钱**，就像你打车一样：
 
 
 
+
 ## **以太坊概览**
 
 以太坊是区块链2.0，比特币是区块链1.0。
@@ -697,6 +839,7 @@ MetaMask这种钱包App生成私钥后会保存在本地，设置的密码用来
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
