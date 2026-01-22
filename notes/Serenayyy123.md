@@ -15,8 +15,46 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+-   My first Dapp 分享会-Xioahai老师
+    
+
+技术栈：Hardhat Ignition+Foundry+Next.js+Wagami 混合架构
+
+Hardhat 和 Foundry没必要二选一，二者一起用
+
+Events：前端索引的关键
+
+Custom Errors：可以省gas费
+
+Checks-Effect：永远要先改账本再转帐
+
+-   Foundry单元测试：自动生成数千个随机输入，覆盖边缘情况
+    
+-   Hardhat+Viem集成测试：模拟前端与复杂交互流程
+    
+-   Hardhat Ignition声明式部署：自动重试 自动化验证与密钥安全
+    
+-   重点：hardhat keystore 重新加密私钥
+    
+
+前端架构：Next.js+Wagmis
+
+配置Wagmi适配器-
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Serenayyy123/images/2026-01-22-1769081282327-image.png)
+
+Aave V3到V4的分享：
+
+\-传统的P2P匹配效率低
+
+\-Aave效率高
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ### **完成了ethernut三关打卡，笔记如下：**
 
 1.第一关找到漏洞，夺取owner，把钱转走。之前一直卡在成为了contributor，但是一直没有成为owner，其实主要原因是代码最后有一个receive函数，需要再转账一笔才能夺取owner。
@@ -47,6 +85,7 @@ await contract.collectAllocations()
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 -   参加了Web3公共物品资金的风险
     
 -   参加了Elon老师Solidity Walk的分享
@@ -58,6 +97,7 @@ await contract.collectAllocations()
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 -   完成了社群运营基础与活动实操的课程
@@ -208,6 +248,7 @@ await contract.collectAllocations()
 
 
 
+
 -   完成了周日的KeyHash Base Token：从ERC721到ERC7962分享课程
     
 -   研究了polymarket技术机构与逻辑的研究，内容如下：
@@ -282,6 +323,7 @@ AMM 在该体系中主要承担流动性补充与兜底角色。当订单簿深�
 
 
 
+
 -   今天继续研究了下Polymarket的模式，争取明天搞明白**技术的运作模式**加入到投研报告中
     
 -   阅读了021以太坊的第一章
@@ -289,6 +331,7 @@ AMM 在该体系中主要承担流动性补充与兜底角色。当订单簿深�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -449,6 +492,7 @@ NBA总决赛是中文流量王者，中文世界第1体育IP，微博#NBA#日均
 
 
 
+
 今天完成的学习内容：
 
 -   完成了2个章节的安全挑战！
@@ -465,6 +509,7 @@ NBA总决赛是中文流量王者，中文世界第1体育IP，微博#NBA#日均
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -539,6 +584,7 @@ Web3 合规侧重于**业务逻辑是否触犯国家法律**，特别是在大�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -641,6 +687,7 @@ Web3 组织通常是**分布式**的，**远程办公**是其生存法则。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
