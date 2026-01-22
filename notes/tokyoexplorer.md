@@ -15,8 +15,147 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+**mapping**：mapping(keyType => valueType)
+
+The **keyType** can be any built-in value type, bytes, string, or any contract. **ValueType** can be any type including another mapping or an array.
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Mapping {
+    // Mapping from address to uint
+    mapping(address => uint256) public myMap;
+
+    function get(address _addr) public view returns (uint256) {
+        // Mapping always returns a value.
+        // If the value was never set, it will return the default value.
+        return myMap[_addr];
+    }
+
+    function set(address _addr, uint256 _i) public {
+        // Update the value at this address
+        myMap[_addr] = _i;
+    }
+
+    function remove(address _addr) public {
+        // Reset the value to the default value.
+        delete myMap[_addr];
+    }
+}
+```
+
+**Array:** An array can have a compile-time fixed size or a dynamic size.
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Array {
+    // Several ways to initialize an array
+    uint256[] public arr;
+    uint256[] public arr2 = [1, 2, 3];
+    // Fixed sized array, all elements initialize to 0
+    uint256[10] public myFixedSizeArr;
+
+    function setArr(uint256[] calldata _arr) external {
+    // 逐个写入 storage
+    for (uint256 i = 0; i < _arr.length; i++) {
+        arr.push(_arr[i]);
+        }
+    }
+
+    function get(uint256 i) public view returns (uint256) {
+        return arr[i];
+    }
+
+    // Solidity can return the entire array.
+    // But this function should be avoided for
+    // arrays that can grow indefinitely in length.
+    function getArr() public view returns (uint256[] memory) {
+        return arr;
+    }
+
+    function push(uint256 i) public {
+        // Append to array
+        // This will increase the array length by 1.
+        arr.push(i);
+    }
+
+    function pop() public {
+        // Remove last element from array
+        // This will decrease the array length by 1
+        arr.pop();
+    }
+
+    function getLength() public view returns (uint256) {
+        return arr.length;
+    }
+
+    function remove(uint256 index) public {
+        // Delete does not change the array length.
+        // It resets the value at index to it's default value,
+        // in this case 0
+        delete arr[index];
+    }
+
+    function examples() external pure {
+        // create array in memory, only fixed size can be created
+        uint256[] memory a = new uint256[](5);
+
+        // create a nested array in memory
+        // b = [[1, 2, 3], [4, 5, 6]]
+        uint256[][] memory b = new uint256[][](2);
+        for (uint256 i = 0; i < b.length; i++) {
+            b[i] = new uint256[](3);
+        }
+        b[0][0] = 1;
+        b[0][1] = 2;
+        b[0][2] = 3;
+        b[1][0] = 4;
+        b[1][1] = 5;
+        b[1][2] = 6;
+    }
+}
+
+contract ArrayReplaceFromEnd {
+    uint256[] public arr;
+
+    // Deleting an element creates a gap in the array.
+    // One trick to keep the array compact is to
+    // move the last element into the place to delete.
+    function remove(uint256 index) public {
+        // Move the last element into the place to delete
+        arr[index] = arr[arr.length - 1];
+        // Remove the last element
+        arr.pop();
+    }
+
+    function test() public {
+        arr = [1, 2, 3, 4];
+
+        remove(1);
+        // [1, 4, 3]
+        assert(arr.length == 3);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+        assert(arr[2] == 3);
+
+        remove(2);
+        // [1, 4]
+        assert(arr.length == 2);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -94,6 +233,7 @@ contract Loop {
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -145,6 +285,7 @@ contract Loop {
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -152,6 +293,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -222,6 +364,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -277,6 +420,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -303,6 +447,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -367,6 +512,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
