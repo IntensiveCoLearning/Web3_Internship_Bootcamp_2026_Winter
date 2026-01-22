@@ -21,8 +21,18 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+# 共学1月22日
+
+Dapp架构总览(from. wachi)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-01-22-1769073534074-image.png)
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -73,6 +83,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -106,6 +117,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -172,6 +184,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -200,6 +213,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -269,6 +283,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -298,6 +313,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -394,6 +410,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -445,6 +462,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -529,6 +547,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
