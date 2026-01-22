@@ -15,8 +15,322 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+以太坊智能合约开发完整指南
+
+一、账户类型对比
+
+对比维度 外部拥有账户 (EOA) 合约账户 (Contract Account)
+
+地址来源 keccak256(pubKey)\[12:\] (公钥→地址) 创建时由 CREATE/CREATE2 计算
+
+控制方式 私钥签名（用户、钱包） 合约代码（EVM 字节码）
+
+状态字段 nonce、balance nonce、balance、codeHash、storageRoot
+
+能否发起交易 ✅ 必须用私钥签名 ❌ 只能由 EOA 触发或合约内部调用
+
+Gas费用支付 由账户本身 ETH 余额承担 由调用者支付
+
+典型场景 钱包地址、热冷账户 ERC-20/721 Token、DeFi协议、DAO
+
+二、Gas 机制
+
+术语 含义 备注
+
+Gas 执行1条EVM指令的抽象工作量单位 汇编级别价格表见 [evm.codes](http://evm.codes)
+
+Gas Limit (Tx) 发送者愿为本笔交易消耗的Gas上限 防止死循环耗尽余额
+
+Gas Used 实际执行指令花费的Gas总和 多退少不补
+
+Base Fee 随区块动态调整的基础费用（EIP-1559） 全网销毁，抑制拍卖狂飙
+
+Priority Fee / Tip 发送者给出以激励打包者的附加费 给矿工/验证者
+
+Max Fee Per Gas maxFee = baseFee + priorityFee 上限 钱包通常自动估算
+
+三、交易生命周期
+
+1\. 签名构造
+
+· 钱包收集字段：nonce, to, value, data, gasLimit, maxFeePerGas, priorityFeePerGas, chainId
+
+· 使用私钥生成 v, r, s 签名 → 序列化 RLP
+
+2\. 广播到 P2P 网络
+
+· 交易进入本地 & 邻居节点的 mempool
+
+· 节点根据 maxFeePerGas、gasLimit、nonce 做基本筛查
+
+3\. 打包/提议区块
+
+· 验证者（PoS）或矿工（PoW时代）挑选利润最高、合法顺序的交易
+
+· 执行 EVM → 产生交易收据（status, gasUsed, logsBloom, logs\[\]）
+
+4\. 区块传播与共识
+
+· 区块头包含新 stateRoot、receiptsRoot
+
+· 超2⁄3质押者签名后在共识层定案（PoS Finality ≈ 2 Epoch ≈ 64 slot ≈ ~12 min）
+
+5\. 确认数 & Finality
+
+· 客户端/前端常以 n ≥ 12 作"概率足够低"确认
+
+· 完全终结在 PoS 下由 Finality Gadget（Casper FFG）给出
+
+四、部署合约到测试网
+
+1\. 测试网选择
+
+名称 共识机制 状态 主要特点 适用场景
+
+Sepolia PoS 活跃 长期支持，与主网最相似，稳定性高 最终部署前测试，生产环境模拟
+
+Holesky PoS 活跃 专为验证者测试设计，大型网络规模 验证者节点测试，质押协议开发
+
+2\. 领取 Sepolia 代币
+
+· 获取地址：MetaMask 切换至 Sepolia 网络
+
+· 申请测试币：通过水龙头（如 [https://sepolia-faucet.pk910.de/](https://sepolia-faucet.pk910.de/)）
+
+· 注意事项：可能需要真人验证、关闭 VPN
+
+3\. Remix 部署到 Sepolia
+
+· 连接钱包：Environment → Injected Provider - MetaMask
+
+· 编译合约：Solidity Compiler → Compile
+
+· 部署合约：Deploy & Run Transactions → Deploy → MetaMask 确认
+
+· 查看结果：Remix 终端显示交易哈希、合约地址
+
+4\. Etherscan 验证
+
+· 查看交易：通过交易哈希查询部署详情
+
+· 查看合约：通过合约地址查看代码、余额、交互记录
+
+· 查看事件：Events 标签页显示合约触发日志
+
+五、区块链前端整合
+
+1\. 交互流程概览
+
+初始化连接 → 用户授权 → 合约实例化 → 函数调用 → 交易签名 → 广播交易 → 状态更新
+
+2\. 关键技术栈
+
+· 合约语言：Solidity
+
+· 交互库：Web3.js / Ethers.js / Viem / Wagmi
+
+· 钱包连接：RainbowKit, ConnectKit, WalletConnect
+
+· 状态管理：React Context
+
+· 错误处理：网络异常、用户拒绝、Gas不足
+
+3\. 实例操作 - 关键代码
+
+连接钱包
+
+javascript
+
+async function connectWallet() {
+
+const accounts = await window.ethereum.request({
+
+method: 'eth\_requestAccounts',
+
+});
+
+web3 = new Web3(window.ethereum);
+
+account = accounts\[0\];
+
+// 验证网络（Sepolia: 11155111）
+
+const chainId = await web3.eth.getChainId();
+
+if (chainId !== 11155111) {
+
+// 网络错误处理
+
+}
+
+}
+
+\`\`\`
+
+合约实例化
+
+\`\`\`javascript
+
+function setContract() {
+
+const address = document.getElementById('contractAddress').value.trim();
+
+// 地址验证
+
+if (!web3.utils.isAddress(address)) return;
+
+// 创建合约实例
+
+contract = new web3.eth.Contract(contractABI, address);
+
+}
+
+\`\`\`
+
+写入操作（需Gas）
+
+\`\`\`javascript
+
+async function leaveMessage() {
+
+const message = document.getElementById('messageInput').value.trim();
+
+try {
+
+const tx = await contract.methods.leaveMessage(message).send({
+
+from: account,
+
+});
+
+console.log('交易哈希:', tx.transactionHash);
+
+} catch (error) {
+
+// 错误处理
+
+}
+
+}
+
+\`\`\`
+
+只读操作（免费）
+
+\`\`\`javascript
+
+async function queryMessages() {
+
+const address = document.getElementById('queryAddress').value.trim();
+
+try {
+
+const count = await contract.methods.getMessageCount(address).call();
+
+for (let i = 0; i < count; i++) {
+
+const message = await contract.methods.getMessage(address, i).call();
+
+// 处理消息
+
+}
+
+} catch (error) {
+
+// 错误处理
+
+}
+
+}
+
+六、高阶内容
+
+1\. Gas 优化技巧
+
+· 减少存储操作：Storage写入（20k gas）成本高，优先使用memory缓存
+
+· 位压缩：将多个变量压缩到 uint256 节省空间
+
+· 循环优化：缓存 array.length 到变量
+
+· 函数可见性：external 比 public 更节省gas
+
+2\. 合约安全
+
+常见漏洞与防护：
+
+· 重入攻击：先更新状态再转账，使用防重入锁
+
+· 预言机操纵：使用 Chainlink 多源验证，TWAP算法
+
+· 整数溢出：Solidity 0.8+ 自动检查，或使用 SafeMath
+
+· 权限控制缺失：使用 onlyOwner / AccessControl 修饰符
+
+· 前置交易/三明治攻击：设置滑点保护，使用防抢跑机制
+
+3\. 智能合约审计
+
+审计工具：
+
+· Slither：静态分析工具，检测安全漏洞
+
+· MythX：云平台安全分析服务
+
+· Foundry：模糊测试框架
+
+审计流程：
+
+静态分析 → 动态测试 → 人工审查 → 报告生成
+
+知名审计机构：
+
+· 慢雾科技：国内领先，注重攻击复现
+
+· OpenZeppelin：社区信赖度高，基础库作者
+
+· ConsenSys Diligence：精通以太坊底层原理
+
+4\. 开发协作规范
+
+GitHub 工作流：
+
+· 主分支 (main)：始终可部署，需测试审查
+
+· 开发分支 (develop)：日常功能开发
+
+· 功能分支 (feature/xxx)：新功能开发
+
+· 修复分支 (fix/xxx)：bug修复
+
+· 发布分支 (release/xxx)：发布准备
+
+提交信息规范：
+
+· 使用简洁明确的提交信息
+
+· 遵循 Conventional Commits 规范
+
+关键要点总结
+
+1\. 账户区别：EOA由私钥控制，可发起交易；合约由代码控制，需被调用
+
+2\. Gas机制：理解Base Fee、Priority Fee、Gas Limit的关系
+
+3\. 测试网部署：Sepolia为主要测试环境，使用水龙头获取测试币
+
+4\. 前端交互：Web3.js/Ethers.js连接钱包，通过ABI与合约交互
+
+5\. 安全优先：注重Gas优化，防范常见安全漏洞，必要时进行审计
+
+6\. 规范开发：遵循Git工作流，使用标准工具和最佳实践
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -215,6 +529,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -364,6 +679,7 @@ C. 交互
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -411,6 +727,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -495,6 +812,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -508,6 +826,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -824,6 +1143,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
