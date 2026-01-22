@@ -15,8 +15,40 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-22
+<!-- DAILY_CHECKIN_2026-01-22_START -->
+Gas 优化
+
+一、 存储 (Storage) 是金钱
+
+原则：storage 的操作（SLOAD/SSTORE）比 memory 贵 100 倍以上。
+
+减少写操作：不要在循环里更新状态变量。先用局部变量计算，最后一次性更新。
+
+变量包装 (Variable Packing)：在 struct 或全局变量中，将小尺寸类型（如 uint128, uint8）放在一起。Solidity 会尝试将它们压缩进同一个 32 字节的存储槽（Slot）中。
+
+二、 循环与数组
+
+缓存长度：在 for 循环中，i < arr.length 每次都会读取长度。先定义 uint256 len = arr.length 再循环更省钱。
+
+Calldata vs Memory：如果函数参数是只读的，使用 calldata 而不是 memory。calldata 不会拷贝数据，Gas 消耗更低。
+
+Unchecked 自增：Solidity 0.8 之后自带溢出检查。对于循环变量 i++，我们知道它不会溢出，使用 unchecked { i++; } 可以节省大约 30-40 Gas。
+
+三、 数据类型选择
+
+首选 uint256：除了在 struct 中为了变量包装，其他地方尽量使用 uint256。因为 EVM 每次处理 32 字节，处理 uint8 时需要额外的指令来掩码（mask）数据，反而更贵。
+
+常量 (Constant/Immutable)：永远不会改变的变量一定要加 constant 或 immutable。它们直接编译进字节码，不占用存储 Slot。
+
+四、 报错信息处理
+
+Require 字符串：require(condition, "Error Message") 中的字符串越长越费钱。尽量控制在 32 字节以内，或者使用 Solidity 0.8.4+ 的 Custom Error（自定义错误），后者能大幅降低失败交易的 Gas。
+<!-- DAILY_CHECKIN_2026-01-22_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 零知识证明是一种交互或非交互协议，使证明者在不泄露任何除“命题为真”之外信息的情况下，说服验证者。
 
 三大性质：
@@ -34,6 +66,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 **代币化（Tokenization）就像是给任何物品配上一张可以放在钱包里的数字护照**。它能证明所有权，让你一键转让，还能让应用程序自动识别。
 
 现实世界资产（RWA）
@@ -43,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 AI智能体结构：
@@ -72,6 +106,7 @@ SpoonOS：web3 AI时代的操作系统
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -131,6 +166,7 @@ AI能给web3带来什么
 
 
 
+
 第二章 网络的结构与节点类型
 
 ·核心客户端：执行客户端 共识客户端+参与出块、转质押收益的验证者客户端
@@ -172,6 +208,7 @@ C. 验证者客户端：负责：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -222,6 +259,7 @@ EIP-1559之后:gas fee=(base fee +priority fee) X gas used
 
 
 
+
 以太坊
 
 ·提出：vitalik buterin2013，2015上线主网，早期将网络开发划分为四个阶段：边境（Frontier，
@@ -245,6 +283,7 @@ EIP-1559之后:gas fee=(base fee +priority fee) X gas used
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
