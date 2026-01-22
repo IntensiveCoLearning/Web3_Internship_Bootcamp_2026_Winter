@@ -312,10 +312,35 @@ bool public isOneEther = 1 ether == 1e18;
 // wei 和 ether 是 Solidity 的内置单位：可以直接在代码中使用（如 1 wei、0.5 ether）
 
 ```
+
+# [**Gas费**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/09%20Gas%E8%B4%B9.md#gas%E8%B4%B9)
+
+**加入了对while语句和其他解释：**
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Gas {
+uint public i = 0;
+
+  // 使用完你发送的所有 gas 会导致你的交易失败。
+  // 状态更改被撤销。
+  // 花费的 gas 不会被退还。
+  function forever() public {
+      // 在这里，我们运行一个循环直到花费所有的 gas
+      // 交易失败
+      while (true) { // while 循环：只要条件为 true，就重复执行代码块。
+          i += 1; // 循环体
+      } // 每次循环都会消耗 gas（约 20,000 gas/次，因 i += 1 的存储操作。用户调用此函数会损失所有支付的 gas（例如，设置 gasLimit=1,000,000，则全部消耗）。
+  } // 状态回滚：交易失败后，所有状态更改撤销（i 不会保留修改后的值）。
+}
+```
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -348,6 +373,7 @@ bool public isOneEther = 1 ether == 1e18;
 
 
 
+
 **查看「Key Hash Based Tokens: 从 ERC-721 到 ERC-7962」回放**  
 **后面学习完智能合约我要试试ERC7962在代码层面和一般的有什么不一样，从代码层面是如何实现的**  
 Solidity学习路线（**021学习以太坊**）：
@@ -357,6 +383,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -409,6 +436,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -437,12 +465,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -493,6 +523,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -503,6 +534,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
