@@ -45,29 +45,20 @@ Web3 实习计划 2025 冬季实习生
 | --- | --- | --- |
 | ERC-721 合約 | packages/hardhat/contracts/YourCollectible.sol | mint、transfer、ownerOf、approve |
 | 部署腳本 | packages/hardhat/deploy/01_deploy_your_collectible.ts | 部署流程與參數 |
-| 前端頁面 | packages/nextjs/app/...（如 /myNFTs/page.tsx） | UI 與合約互動呼叫 |
+| 前端頁面 | packages/nextjs/app/…（如 /myNFTs/page.tsx） | UI 與合約互動呼叫 |
 
 ### **3)** 開發指令速查表 (CLI Cheatsheet)
 
-| 環境情境 | 指令 (Command) | 功能說明 |
-| 啟動本地鏈 | yarn chain | 啟動 Hardhat 本地虛擬區塊鏈節點。 |
-| 部署合約 | yarn deploy | 將智能合約部署到目前的網路 (預設為 Localhost)。 |
-| 啟動前端 | yarn start | 開啟 Next.js 開發伺服器 (預設 localhost:3000)。 |
-| 生成部署帳號 | yarn generate | 產生一個新的部署用錢包 (Deployer Account) 與私鑰。 |
-| 查看帳號資訊 | yarn account | 查看部署用錢包的地址與 ETH 餘額。 |
-| 合約驗證 | yarn verify --network sepolia | 將合約原始碼上傳至 Etherscan 進行驗證。 |
+| 環境情境 | 指令 (Command) | 功能說明 | | 啟動本地鏈 | yarn chain | 啟動 Hardhat 本地虛擬區塊鏈節點。 | | 部署合約 | yarn deploy | 將智能合約部署到目前的網路 (預設為 Localhost)。 | | 啟動前端 | yarn start | 開啟 Next.js 開發伺服器 (預設 localhost:3000)。 | | 生成部署帳號 | yarn generate | 產生一個新的部署用錢包 (Deployer Account) 與私鑰。 | | 查看帳號資訊 | yarn account | 查看部署用錢包的地址與 ETH 餘額。 | | 合約驗證 | yarn verify --network sepolia | 將合約原始碼上傳至 Etherscan 進行驗證。 |
 
 ### **4)** 關鍵設定檢查表 (Config Checklist)
 
-| 檔案路徑 | 修改參數 | 目的 |
-| packages/hardhat/hardhat.config.ts | defaultNetwork: "sepolia" | 讓 Hardhat 預設指向 Sepolia 測試網，而非本地鏈。 |
-| packages/nextjs/scaffold.config.ts | targetNetwork: [chains.sepolia] | 讓前端 UI 能夠識別並連接到 Sepolia 網路。 |
-| packages/nextjs/scaffold.config.ts | onlyLocalBurnerWallet: false | 解除限制，讓使用者在測試網也能選擇使用 Burner Wallet (或連接 MetaMask)。 |
-| packages/hardhat/.env | ALCHEMY_API_KEY | (建議) 設定自己的 API Key 以避免共用限制。 |
+| 檔案路徑 | 修改參數 | 目的 | | packages/hardhat/hardhat.config.ts | defaultNetwork: “sepolia” | 讓 Hardhat 預設指向 Sepolia 測試網，而非本地鏈。 | | packages/nextjs/scaffold.config.ts | targetNetwork: \[chains.sepolia\] | 讓前端 UI 能夠識別並連接到 Sepolia 網路。 | | packages/nextjs/scaffold.config.ts | onlyLocalBurnerWallet: false | 解除限制，讓使用者在測試網也能選擇使用 Burner Wallet (或連接 MetaMask)。 | | packages/hardhat/.env | ALCHEMY\_API\_KEY | (建議) 設定自己的 API Key 以避免共用限制。 |
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ## **Day 11 学习计划**
@@ -90,6 +81,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -126,6 +118,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -320,6 +313,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -420,6 +414,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -485,6 +480,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -520,6 +516,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -605,6 +602,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -725,6 +723,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -912,6 +911,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1050,6 +1050,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
