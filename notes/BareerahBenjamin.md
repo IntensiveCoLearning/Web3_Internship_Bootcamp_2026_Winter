@@ -18,10 +18,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 啊啊啊啊忘记更新前一天的笔记了，我看了一些 uniswapv2 的在线课程，然后想根据文档写 polymarket 初级代码任务，但是调了半天没弄好花了很多时间，明天再试试，如果不行就问问助教，然后给平台提了建议也提交了pr
+
+今天依旧在学uniswap
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 睡觉了
 <!-- DAILY_CHECKIN_2026-01-22_END -->
@@ -30,11 +33,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天跟着昨天晚上课的回放复现了erc-20，完成了 Challenge#01，找 Tx 找了半天，最后在配置文件找到的，看了一部分 Polymarket 内容（今天睡了懒觉
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -56,6 +61,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要是在学习solidity的语法之类的东西，顺便总结了下昨天晚上直播的内容，完成了 **Ethernaut** 的前两关，[Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分的代码运行到了 Array，做了[Solidity 101](https://www.wtf.academy/zh/course/solidity101)的题，晚上听 Luna 老师讲了关于 TG 社群的设置和运营，也自己尝试建立了一个社群，但是还没设置好。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -69,11 +75,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天白天把入门技术的任务做了，晚上听直播课
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -100,11 +108,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天打算梳理一下前4天老师们的直播，然后学一点rust
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -129,6 +139,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -331,6 +342,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 
 
+
 **dApp（）**
 
 **用智能合约做后端，用以太坊做数据库和结算层”的应用程序**
@@ -355,6 +367,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
