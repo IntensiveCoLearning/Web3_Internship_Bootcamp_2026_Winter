@@ -47,19 +47,27 @@ I am the founder of **Transvivid**, where we integrate **TCM (Traditional Chines
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+今天又看了一些回放
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 这两天在新加坡闲逛，明天回国补进度
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 今天几乎把入门教材看完了，收益颇多。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 昨天没提交成功，今天补一下
@@ -71,11 +79,13 @@ I am the founder of **Transvivid**, where we integrate **TCM (Traditional Chines
 
 
 
+
 今天回看了AI基础，乘车去深圳，后面应该有更多时间
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -92,11 +102,13 @@ I am the founder of **Transvivid**, where we integrate **TCM (Traditional Chines
 
 
 
+
 今天没怎么学习，看了一些回放
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
