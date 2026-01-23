@@ -17,11 +17,12 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
-简单过了一下合约安全漏洞，回看了一些课，今天没什么劲，小歇
+简单过了一下合约安全漏洞，回看了一些课，今天没什么劲，小歇，明天开始做一些深度技术的吧
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 昨天其实还建立了一些GitHub仓库，接下来有准备慢慢完善，今天继续跟着学一会
 
@@ -61,6 +62,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天学习了solidity的DAICO,简单了解合约运行优选以及合约项目筹资
 
 接下来会看一下做一些任务，多看一些技术向，过一些solidity101吧
@@ -75,6 +77,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天要把链上投票相关内容看完，详细看一下手册，会再看看昨天那个Ethernaut，然后再过几关的样子，时间够再按自己的节奏学一些solidity
 
 ![QQ_1768892030560.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-01-20-1768892035405-QQ_1768892030560.png)![QQ_1768893474831.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-01-20-1768893551149-QQ_1768893474831.png)
@@ -82,6 +85,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -95,6 +99,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -115,11 +120,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 时间较少，平板写了一些智能合约的基础代码
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -141,11 +148,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天把钓鱼的基本过完了，推的总结还在思考，看了一些回放，还在思考，得加一点时间，整体看起来有些东西占的时间太长了
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -179,6 +188,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天过了十关多一点的关于诈骗钓鱼的，在GitHub上开了一个自己的小记录，下来可能会在推上也开始记录，不仅仅记录web3了可能就，也会在睡前写一个小日记，看了一些昨天的web3行业岗位，看了一些NFT的东西吧，坚持输出与学习！！！
 
 ![QQ_1768294824119.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-01-13-1768294830637-QQ_1768294824119.png)
@@ -188,6 +198,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
