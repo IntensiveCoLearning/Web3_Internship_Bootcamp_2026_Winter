@@ -15,8 +15,75 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+【Web3 实习计划（冬季）- Web3 运行原理】 [https://www.bilibili.com/video/BV1ZkrHBtEN4/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1ZkrHBtEN4/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)
+
+  
+该视频是 **Web3 实习计划（冬季）** 的第二期分享会，由 Bruce 老师主讲，主题为 **Web3 运行原理**。视频从技术原理出发，深入浅出地讲解了 Web3 的核心组成部分及其运行机制。
+
+以下是视频内容的详细总结笔记：
+
+### **1\. Bruce 老师分享部分：Web3 核心原理拆解**
+
+Bruce 老师将 Web3 的运行原理拆分为钱包、交易、共识、智能合约及协议升级五个核心板块：
+
+-   **钱包、私钥与个人主权**：
+    
+    -   **核心逻辑**：私钥（Private Key）是资产的终极控制权，助记词（Mnemonic）是一组单词序列，可派生出无数私钥。地址则是通过公钥截取并添加 `0x` 前缀生成的公开收款号。
+        
+    -   **社会学意义**：私钥是个人主权的起点。不同于银行账户需要审批，任何人都可以无须许可地创建私钥，拥有自主掌控数字资产的权利。
+        
+-   **交易与签名**：
+    
+    -   **交易本质**：由操作内容、手续费（Gas）和防重放序号（Nonce）组成。
+        
+    -   **数字签名**：钱包使用私钥对交易进行签名。网络节点通过密码学算法验证签名，确认交易确实由该私钥持有者发起，而无须泄露私钥本身。
+        
+    -   **Gas 费机制**：Gas Price（油价）与 Gas Usage（耗油量）决定了交易总费。它既能防止垃圾邮件攻击网络，也是激励节点运行的经济基石。
+        
+-   **区块链网络运行**：
+    
+    -   **生命周期**：一笔交易从钱包发起，通过 RPC 节点广播至网络，经验证者（Validator）排序打包成块，最终通过共识达成一致。
+        
+    -   **不可篡改性**：每个区块包含上一个区块的哈希值，连成链条。在以太坊 POS 机制下，需等待约 12-13 分钟交易才进入“最终确认”（Finalized）状态，几乎不可回滚。
+        
+    -   **共识机制**：POW（如比特币）靠算力竞争记账权，POS（如以太坊）靠质押（Stake）保证金进行随机挑选和投票验证。
+        
+-   **智能合约的本质**：
+    
+    -   **Code is Law**：它是区块链账本里可执行的代码，在虚拟机（EVM）中运行。合约部署后规则公开透明且难以篡改，能消除中介摩差，自动执行复杂的商业逻辑（如 NFT 铸造、去中心化交换）。
+        
+-   **协议升级与节点多向性**：
+    
+    -   **升级流程**：通过 EIP（以太坊改进提案）在社区讨论、评审，最终通过硬分叉实现升级。
+        
+    -   **节点分布**：以太坊拥有全球上万台服务器支持的 P2P 网络，节点软件（客户端）的多样性可以降低因单点 Bug 导致的当机风险。
+        
+
+* * *
+
+### **2\. Q&A 互动部分：实战问题解答**
+
+-   **AI Agent 与支付**：讨论了 ERC-402 和 ERC-8004 标准下 AI 自动管理资产的可能性。Bruce 认为标准已就绪，但大规模应用场景尚需时间明朗。
+    
+-   **强跑（Front-running）原理**：当私钥泄露时，通过支付极高的 Gas 费在黑客交易前将资金转至安全地址的保护机制。
+    
+-   **中心化交易所质押风险**：提醒用户将 ETH 托管在交易所质押存在治理权集中的风险，建议使用 Lido 或运行家庭节点（Home Staking）以增强网络去中心化。
+    
+-   **Web3 是否会颠覆 Web2**：Bruce 认为 Web3 不会彻底取代 Web2，而是作为底层基础设施补充 Web2 在审查、信任、跨境支付等方面的薄弱环节。
+    
+-   **资产被盗追回**：明确指出链上交易具有抗审查性，一旦私钥泄露导致资金被转走，除了寻找安全公司追踪并通知中心化交易所冻结外，技术上很难强制撤回。
+    
+-   **钱包安全管理**：MetaMask 等软件钱包将私钥加密后存放在本地浏览器缓存（Local Storage）中。若忘记导出私钥且重装系统，资产将永久丢失。建议大额资产使用硬件钱包（如 OneKey）并物理隔离。
+    
+
+**💡 专家结语**：Web3 是一场权力的重新分配，通过密码学证明身份，通过共识确信账本，通过合约自动执行。Bruce 鼓励大家思考如何在去中心化协作下解决私钥管理的复杂性以及公共基础设施的长期维护问题。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 【Web3 实习计划（冬季）：AI 及其基础概念】 [https://www.bilibili.com/video/BV1axkwBaEvC/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1axkwBaEvC/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
   
 这份视频由 Spoon OS 的 Rick 老师主讲，详细探讨了 AI Agent（智能体）与 Web3 技术的深度融合。
@@ -70,6 +137,7 @@ Q&A 环节针对 AI 决策责任、技术效率等实战问题进行了深度解
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 [https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
 
 This video focuses on advanced Web3 user skills, covering troubleshooting transactions, utilizing Layer 2 (L2) networks, and managing assets with decentralized financial tools.
@@ -108,6 +176,7 @@ The video highlights the speed and cost advantages of Layer 2 networks, specific
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible Tokens (NFTs)**, explaining their fundamental concepts, technical standards, and how users interact with them in the Ethereum ecosystem. **👩‍💻 Web2 to Web3 🚀 - Week 1 Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata** [**https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5**](https://www.youtube.com/watch?v=NOdrEpnoCiM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=5)
@@ -161,6 +230,7 @@ This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -221,6 +291,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -286,6 +357,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
