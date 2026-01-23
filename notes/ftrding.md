@@ -15,13 +15,20 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+观看昨日回放，学习[Unphishable](https://unphishable.io/) 钓鱼攻防挑战
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 学习中文排版规范并观看直播，了解活动举办需要的流程和人员分工安排
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ## **一、金融相关缩写**
 
@@ -110,12 +117,14 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 观看youtube视频，加深对区域链的印象，了解平台：[https://defillama.com/](https://defillama.com/)  
 [https://x.com/hildaiscute/status/2012494673256857959?s=20](https://x.com/hildaiscute/status/2012494673256857959?s=20)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -130,6 +139,7 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -159,6 +169,7 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -227,6 +238,7 @@ BTC 的突破：第一次在互联网上，实现了“无需信任第三方的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
