@@ -15,8 +15,80 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+notion共学笔记：[https://www.notion.so/1-23-2f1408fac1a68072b437de593158822b?source=copy\_link](https://www.notion.so/1-23-2f1408fac1a68072b437de593158822b?source=copy_link)
+
+完成gas优化任务时和Gemini对话过程重点总结：
+
+### 1\. 核心原则
+
+-   **Storage (存储) 是最贵的**：尽量减少对链上状态变量的读写。
+    
+-   **Memory (内存) 是便宜的**：尽量在内存中处理完逻辑，最后一次性写入 Storage。
+    
+-   **Calldata 是最省的**：对于外部调用，参数尽量放在 calldata 中。
+    
+
+### 2\. 优化技巧清单
+
+### A. 存储优化
+
+-   **读操作 (SLOAD)**：不要在循环中反复读取 Storage 变量。
+    
+    -   _做法_：在函数开始时将 Storage 变量赋值给 Memory 变量（缓存）。
+        
+-   **写操作 (SSTORE)**：这是 Gas 杀手。
+    
+    -   _做法_：**绝对避免在循环中修改 Storage 变量**。在循环中计算中间结果（存在 Memory 变量中），循环结束后再更新 Storage。
+        
+
+### B. 数据结构
+
+-   **原理**：EVM 的 Slot 为 32 字节 (256 bit)。
+    
+-   **做法**：
+    
+    -   使用更小的类型（如 uint128, uint64）代替 uint256。
+        
+    -   将这些小变量**相邻排列**，使其总和 <= 256 bit。
+        
+    -   _示例_：两个 uint128 挨在一起只占 1 个 Slot；如果中间夹了一个 uint256，就会占 3 个 Slot。
+        
+
+### C. 循环黑科技
+
+1.  **缓存 Length**：
+    
+    -   错误：for (uint i=0; i < arr.length; i++) (每次都读长度)
+        
+    -   正确：uint len = arr.length; for (uint i=0; i < len; ++i)
+        
+2.  **前置递增 (++i)**：
+    
+    -   ++i 比 i++ 少 5 gas（不需要返回旧值）。
+        
+3.  **Unchecked (Solidity 0.8+)**：
+    
+    -   循环变量 i 通常不会溢出（因为受限于数组长度）。
+        
+    -   使用 unchecked { ++i; } 包裹递增操作，省去溢出检查的 Gas。
+        
+
+### D. 函数属性
+
+-   **External vs Public**：
+    
+    -   如果函数只被外部调用（UI或合约），**必须用 external**。
+        
+    -   external 函数直接从 calldata 读取参数（无法修改，便宜）。
+        
+    -   public 函数会将参数复制到 memory（贵，尤其是大数组）。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # 1.22共学笔记
 
 notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde133667c47a?source=copy\_link](https://www.notion.so/1-22-2f0408fac1a68098898bde133667c47a?source=copy_link)
@@ -45,6 +117,7 @@ notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 图片较多，notion链接如下
 
 [https://www.notion.so/1-21-2ea408fac1a68010a19efcb11f69a02f?source=copy\_link](https://www.notion.so/1-21-2ea408fac1a68010a19efcb11f69a02f?source=copy_link)
@@ -52,6 +125,7 @@ notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 1.观看并总结分享会
@@ -64,11 +138,13 @@ notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde
 
 
 
+
 熟悉remix中！......
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -87,11 +163,13 @@ notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde
 
 
 
+
 今天有两场考试，休息一天~
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -122,6 +200,7 @@ notion链接和笔记更新：[https://www.notion.so/1-22-2f0408fac1a68098898bde
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -197,6 +276,7 @@ web3行业赛道：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
