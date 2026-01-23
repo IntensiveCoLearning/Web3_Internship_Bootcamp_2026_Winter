@@ -15,8 +15,19 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+![b4a6bf35be158a88ef66699b2d728f7f.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/labilio/images/2026-01-23-1769179507958-b4a6bf35be158a88ef66699b2d728f7f.png)
+
+分享嘉宾主题分享了：  
+Web3求职真的能 AI自动化 吗？
+
+在线阅读PPT：[https://docs.google.com/presentation/d/1bJFdOmN5H0ICQGwBQjLDiVX5EAdm5zexdrxPWqmdjCA/edit?usp=sharing](https://docs.google.com/presentation/d/1bJFdOmN5H0ICQGwBQjLDiVX5EAdm5zexdrxPWqmdjCA/edit?usp=sharing)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ### 🗨️ 核心范式转移：从租赁到拥有:
 
 -   **资产所有权风险**：
@@ -80,6 +91,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ## **Uniswap 工作原理解析**
 
 ### 🗨️ AMM 自动做市商
@@ -125,6 +137,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ## 公共物品如何分配资金？
@@ -202,6 +215,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -324,6 +338,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 -   一些web3求职平台：
     
 -   abetterweb3(TG)
@@ -339,6 +354,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -365,6 +381,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -433,6 +450,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 
 
+
 ​从业风险： 并不是拿着国外的牌照（比如MSB）在国内就绝对安全，远程办公也有法律风险。
 
 ​冻卡问题： 出金最怕收到黑钱，笔记建议要保留好所有的聊天记录和KYC信息，万一警察找上门，这些是证明自己“善意第三人”的关键。
@@ -442,6 +460,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -497,6 +516,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
