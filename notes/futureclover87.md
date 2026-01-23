@@ -32,8 +32,93 @@ INTJ-but 兴趣广泛 皮艇/桨板/网球/书法 喜欢在秋高气爽的天气
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+Solidity 101 2nd half
+
+1, pure/view 函数
+
+pure（纯函数） ：既不读取也不修改状态。完全依赖输入参数来计算结果。
+
+view（视图函数） ：只读取状态（比如查询余额），但不修改状态。
+
+payable ：表示函数可以接收以太币。加法运算不需要接收以太币。
+
+2, Storage/Memory
+
+Storage = 硬盘（更贵、永久、状态变量在此）。
+
+Memory = 内存（更便宜、临时、赋值时常发生拷贝）。
+
+引用：当你将 storage 赋值给本地 storage 指针时，它们指向同一个地址，改一个另一个也变。memory 赋值给 memory 同理。
+
+拷贝：当你在不同的存储位置之间转换时（例如从 storage 到 memory，或者从 memory 到 storage），系统会创建一个独立的副本。修改这个副本（memory）的值，不会影响到原始的状态变量（storage）。
+
+3, 映射
+
+在 Solidity 中，映射（Mapping）只能存在于 storage 中。
+
+原因：因为 Mapping 的实现原理是基于哈希查找的“稀疏存储”，它需要直接操作合约的状态存储空间。它无法在 memory（内存）或 calldata 中创建，因为内存和 calldata 的空间分配是连续的，无法容纳映射这种不确定容量且依赖哈希查找的结构。
+
+4，常量/不变量
+
+| 特性 | constant (常量) | immutable (不变量) |
+| 初始化时间 | 必须在声明时初始化 | 可以在声明时，或在 constructor（构造函数）中初始化 |
+| 确定值的时间 | 编译时 (Compile-time) | 部署时 (Deployment-time) |
+| 支持的类型 | 仅限数值类型、string 和 bytes (字面量) | 仅限值类型 (如 uint, address, bool 等) |
+
+看到 constant ：想它由于是“死”的，定义时必须给值。
+
+看到 immutable ：想到它比较“灵活”，可以在部署时计算（比如存个 msg.sender），但它不喜欢复杂的 string。
+
+看到\*\*“会变”\*\* 的数据：绝对不能加这两个词。
+
+5，bytes长度
+
+bytes1 是固定长度的字节类型，长度为 1 字节（8 位）。
+
+一个字节（8 bits）在十六进制中用两个字符表示。因此，全 0 的 1 字节表示为 0x00
+
+bytes1 →→ 0x00
+
+bytes32 →→ 0x0000...00 (64个0)
+
+6, 事件
+
+Solidity中的事件（event）是EVM上日志的抽象，它具有两个特点：
+
+响应：应用程序（[ethers.js](https://learnblockchain.cn/docs/ethers.js/api-contract.html#id18)）可以通过RPC接口订阅和监听这些事件，并在前端做响应。
+
+经济：事件是EVM上比较经济的存储数据的方式，每个大概消耗2,000 gas；相比之下，链上存储一个新变量至少需要20,000 gas。
+
+很多链上分析工具包括Nansen和Dune Analysis都是基于事件工作的。
+
+7，父合约&子合约
+
+Solidity 中子合约如何调用父合约函数的两种合法语法
+
+| 调用方式 | 语法 | 理解 |
+| 直接调用 | A.pop(); | “我要用 A 合约里的那个 pop 函数。” |
+| super 调用 | super.pop(); | “我要用继承链里我后面那个人的 pop 函数。” |
+
+在 Solidity 中，继承的顺序非常重要，必须遵循一个核心原则：“从基类到派生类” (Most base-like to most derived-like) 。
+
+简单来说，就是 先写“辈分最高”的（父类），再写“辈分较低”的（子类） 
+
+8，error/require/assert 命令
+
+error是solidity 0.8.4版本新加的内容，方便且高效（省gas）地向用户解释操作失败的原因，同时还可以在抛出异常的同时携带参数，帮助开发者更好地调试。
+
+必须搭配 revert ：在逻辑判断中，error 的唯一正确出场方式是配合 revert 语句。
+
+require命令是solidity 0.8版本之前抛出异常的常用方法，目前很多主流合约仍然还在使用它。它很好用，唯一的缺点就是gas随着描述异常的字符串长度增加，比error命令要高。
+
+assert命令一般用于程序员写程序debug，因为它不能解释抛出异常的原因（比require少个字符串）
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 产品经理要做啥
 
 eg产品方向：用bonding curve来拍卖NFT的功能
@@ -91,6 +176,7 @@ KOL/Alpha 社区合作：联系加密货币领域的“喊单员”（Callers）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 Solidity 101-1st half
 
@@ -197,6 +283,7 @@ II, Solidity 的变量类型主要可以分为三类：数值类型（Value Type
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 Ethernaut 测试笔记
 
 Fallback
@@ -269,6 +356,7 @@ await contract.Fal1out({value: toWei("0.0001", "ether")})
 
 
 
+
 0基础程序小白自学笔记-Hardhat/Foundry/Remix 教程案例跑通
 
 1， 窗口调用
@@ -312,6 +400,7 @@ taskkill /F /IM node.exe
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -411,6 +500,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 
 
 
+
 今日学习 交易实践+Remix 环境准备+AI 回放课
 
 交易实践
@@ -432,6 +522,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -468,6 +559,7 @@ b, 你可以在不转移域名所有权的情况下，随时更改反向记录�
 
 
 
+
 核心深挖了区块链钱包原理
 
 a, 核心关联：助记词推导出私钥，私钥推导出公钥（地址），过程不可逆
@@ -491,6 +583,7 @@ e, 助记词原理：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
