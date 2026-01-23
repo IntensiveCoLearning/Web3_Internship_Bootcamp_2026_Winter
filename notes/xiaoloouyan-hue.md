@@ -17,96 +17,369 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
-RWA MAPPING
+## **主题：从 Solidity 基础到真正部署一个 Web3 应用（Speedrun Ethereum · Challenge 0）**
 
-### **📘 书籍**
+### **从“学概念”到“开始真正建 App”**
 
-1.  **《RWA Tokenisation in Web 3.0 Era》（Springer, 2025）**
-    
-    一本系统性介绍 RWA 代币化技术与实践的专业书籍，涵盖 Web3 基础、代币化流程、案例分析、监管与社会影响等，是查阅 RWA 全景的重要文献。 
-    
+讲座一开始明确了**这门课的阶段转折点**：
 
-### **📄 研究论文（Academia）**
+前两周已经完成：
 
-这些是主要的学术性的研究成果，覆盖技术、市场、机制与挑战：
+**Ethereum 使用与 Power User 入门**
 
-2.  **Exploration on Real World Assets and Tokenization** – _Ning Xia 等 (arXiv, 2025)_
-    
-    技术性分析真实世界资产上链的基本机制与案例研究。 
-    
-3.  **Tokenize Everything, But Can You Sell It? RWA Liquidity Challenges and the Road Ahead** – _Rischan Mafrur (arXiv, Aug 2025)_
-    
-    聚焦 RWA 代币化之后在交易流动性与市场可交易性上的挑战分析。 
-    
-4.  **xRWA: A Cross-Chain Framework for Interoperability of Real-World Assets** – _Yihao Guo 等 (arXiv, Sep 2025)_
-    
-    探讨跨链 RWA 资产互操作性模型与身份验证协议的研究框架。 
-    
-5.  **Real World Assets on-Chain Assistance Low-Altitude Computility Networks** – _Haoxiang Luo 等 (arXiv, Aug 2025)_
-    
-    结合 RWA 与计算网络资源代币化的跨场景技术探讨（虽偏应用，但反映 RWA 交叉领域趋势）。 
+-   钱包、交易、ENS、Gas 等基础概念
     
 
-## **📈 行业报告与深度解析（市场／趋势）**
+**脚本与 Solidity Crash Course**
 
-这些资料来自行业研究、深度报告，提供 RWA 市场规模、动因与风险分析：
-
-6.  **“RWA 代币化：关键趋势和 2025 年市场展望”** — 分析 RWA 上链发展历程、资产类别与技术趋势（转载自 Brikken/Cointelegraph Research） 
+-   Hardhat
     
-7.  **2025 年 RWA 行业深度报告** — 系统梳理 RWA 市场现状与产业链（含技术特点与资产分类） 
+-   Solidity 基础语法
     
-8.  **2025 年 RWA 市场规模分析报告** — 指出全球市场规模突破 500 亿美元，以及中国特色路径探索与监管环境分析。 
-    
-9.  **Web3 2025 全景报告** — 提及 RWA 的市场规模与细分资产类别（如私募信贷、美国国债占比等）及其发展趋势。 
-    
-10.  **KuCoin 研究：Unlocking RWA Tokenization in 2025** — 市场趋势、主流资产 & DeFi 集成、法律结构等实操综合视角。 
-     
-
-## **📰 2025 下半年重要行业动态**
-
-这些事件反映 RWA 在产业、合规与创新实践层面的演进：
-
-✔ 香港与中国监管动态：
-
-中国证券监管机构要求部分本地券商暂停 RWA 业务（谨慎监管态度）。 
-
-✔ 持续创新场景：
-
-中国企业正在将茶叶、稀有树木等非常规资产代币化尝试，表明 RWA 场景已延伸到文化与自然资产领域。 
-
-✔ 房地产 & 传统企业涉足：
-
-中国房地产开发商 Seazen 设立数字资产机构探索 RWA 代币化。 
-
-✔ 创新项目合作：
-
-Reental 与 MetaMask 联手，为现实资产 token 投资者提供链上收益到日常消费的桥接解决方案。 
-
-## **💡 关键意见领袖（KOL）与行业人物（Web3 + RWA）**
-
-以下是 2025 年在 RWA、Web3 Tokenization 社区中具行业影响力的个人、团队或机构：
-
-### **🔹 个人影响者 / 领袖**
-
-1.  **Mo Shaikh (Mohammad Shaikh)** – 企业家，曾创立 Meridio（早期地产 RWA 代币化平台），与 Aptos Labs 有深度 Web3 生态经验，对 RWA 语境下的资产上链有长期洞察。 
-    
-2.  **Kingsley Advani** – Allocations 与 Allo 创始人，Allo 平台聚焦股票与现实资产的代币化，在 2025 年继续推动实体资产上链实践。 
+-   简单合约逻辑
     
 
-### **🔹 影响力机构 / 项目帐号**
-
-3.  **IOSG Ventures (@IOSGVC)** – 投资机构在社交媒体上讨论 RWA Tokenization 的价值论述和未来观点。 
+-   **第三周开始的核心目标**：
     
-4.  **Plume Network** – 专注于现实世界资产与 DeFi 整合的 Web3 平台项目，2025 年开展合规资产代币化与 DeFi 激励产品。 
+    👉 **不再只是“理解”，而是开始“真正构建去中心化应用（DApp）”**
     
 
-### **📌 社区意见声音（KOL 辅助参考）**
+> _Now it’s time to take all of that knowledge and start building decentralized apps._
 
-在 Medium 与区块链行业博客中也有专文整理 RWA 相关 **Top RWA Influencers** 的观点，侧重信息解读与市场洞察的博主/作者列表（虽匿名但在链圈具影响力）。
+### **二、为什么选择 Speedrun Ethereum？**
+
+### **1\. Speedrun Ethereum 是什么？**
+
+-   一个经过 **大量 Hackathon 实战验证** 的课程体系
+    
+-   由 Scaffold-ETH 团队整理
+    
+
+总结了：
+
+-   **哪些工具真的重要**
+    
+-   **新手最容易卡在哪**
+    
+-   **怎样最快从 0 → 能跑起来一个 DApp**
+    
+
+👉 **工程实践导向**。官网入口：
+
+[**speedrunethereum.com**](http://speedrunethereum.com)
+
+* * *
+
+### **2\. 学习路径总览（老师给出的 TL;DR）**
+
+**推荐学习顺序：**
+
+1.  拉下 scaffold-eth
+    
+
+通过 Scaffold-ETH：
+
+-   学 Solidity 基础概念
+    
+-   同时配合自动生成的前端
+    
+
+1.  在本地反复 **tinker / poke / break things**
+    
+2.  然后进入 **Speedrun Ethereum Challenge 系列**
+    
+3.  从 **Challenge 0** 开始
+    
+
+### **三、Scaffold-ETH 的核心教学逻辑**
+
+### **1\. Scaffold-ETH 的“教学哲学”**
+
+Scaffold-ETH 的设计目标不是“帮你写代码”，而是：
+
+-   **让你理解合约、前端、部署之间是如何连在一起的**
+    
+-   所有项目结构 **高度一致**
+    
+-   学会一个 → 能快速看懂几千个 fork
+    
+
+老师强调了一点：
+
+> Once you learn one, you can understand thousands of forks.
+
+### **2\. 建议重点理解的 Solidity & Web3 基础模块**
+
+在正式进入 Challenge 之前，建议你在 Scaffold-ETH 中**手动玩一遍**这些概念：
+
+-   Solidity primitives
+    
+-   Global units
+    
+-   Mappings
+    
+-   Structs
+    
+-   Modifiers
+    
+-   Events
+    
+-   Inheritance
+    
+-   Sending ETH
+    
+-   Payable & fallback functions
+    
+
+⚠️ 重点不是“记住”，而是：
+
+> Test your assumptions. Try things out. Break them.
+
+### **四、Challenge 0 的定位与目标**
+
+### **1\. Challenge 0 是什么？**
+
+-   **完全不要求你写 Solidity**
+    
+-   是一个 **“超手把手”的引导**
+    
+
+-   Scaffold-ETH 项目结构
+    
+-   钱包（尤其是 burner wallet）
+    
+-   本地链 vs 公共测试网
+    
+-   合约 + 前端 + 部署之间的关系
+    
+
+Challenge 0 is about understanding the system, not writing code.
+
+### **2\. Challenge 0 做什么？**
+
+核心任务：
+
+👉 **部署一个 NFT 合约，并把它跑在公共测试网（Rinkeby）上**
+
+### **五、Challenge 0 的完整技术流程**
+
+### **1\. 本地环境启动（三件套）**
+
+所有 Scaffold-ETH 项目 **高度统一**：
+
+yarn chain
+
+-   启动本地 Hardhat 链
+    
+-   yarn start
+    
+
+-   启动前端（React）
+    
+
+yarn deploy
+
+-   部署合约（默认本地）
+    
+
+👉 这是 Scaffold-ETH 的“肌肉记忆”
+
+### **2\. 本地 NFT Demo：理解链上资产**
+
+在本地你可以：
+
+-   Mint NFT
+    
+-   查看 Collectibles
+    
+-   使用 burner wallet
+    
+-   在不同钱包间转 NFT
+    
+-   遇到 gas 不足错误
+    
+
+这些操作用来理解：
+
+-   NFT 的所有权
+    
+-   Gas 的存在意义
+    
+-   ENS 地址
+    
+-   钱包与合约的关系
+    
+
+### **3\. IPFS 的引入与理解**
+
+讲座中专门强调了 **IPFS**：
+
+-   IPFS 是 **内容寻址（content-addressed）**
+    
+-   内容 → hash → 地址
+    
+-   内容一变，hash 就变
+    
+-   这带来“准不可变性”
+    
+
+例子：
+
+-   把 “buffalo” 改成 “bison”
+    
+-   hash 会完全不同
+    
+
+### **六、学习建议**
+
+老师明确说了几条**学习 Web3 的“硬性建议”**：
+
+### **✅**
+
+-   打开 App.jsx 看前端怎么读合约
+    
+-   看合约如何继承 ERC721、Ownable
+    
+-   至少 **把项目搞崩一次**
+    
+-   主动修改、实验，而不是只照教程走
+    
+
+推荐挑战：
+
+-   改成 Soulbound NFT（不可转移）
+    
+-   Mint 时收费
+    
+-   使用价格曲线
+    
+-   换成自己的艺术作品
+    
+
+### **七、从本地到公共测试网**
+
+### **1\. 部署到 Rinkeby 的两个关键步骤**
+
+**Step 1：生成部署账户**
+
+-   本地 Hardhat 会“帮你部署”
+    
+-   公共网络不会
+    
+
+你必须：
+
+-   yarn generate
+    
+-   得到一个真实账户
+    
+-   给它打测试 ETH
+    
+
+👉 ：**部署者也是普通账户**
+
+**Step 2：指定部署网络**
+
+推荐方式：
+
+```
+yarn deploy --network rinkeby
+```
+
+而不是改默认配置，避免误部署到主网。
+
+### **2\. 理解多网络部署结构**
+
+Scaffold-ETH 会自动维护：
+
+-   本地
+    
+-   Rinkeby
+    
+-   Goerli
+    
+-   其他网络
+    
+
+前端会根据当前网络，**自动指向对应的合约地址，**这是一个非常重要的工程设计点。
+
+### **八、前端切换到测试网**
+
+关键修改：
+
+-   在 App.jsx 中把 network 指向 Rinkeby
+    
+-   地址跳转自动指向 Rinkeby Etherscan
+    
+-   合约 JSON 文件记录不同网络的部署信息
+    
+
+👉 同一个前端，可以无缝切换多个链
+
+### **九、部署前端 & 分享给世界**
+
+### **1\. 构建前端**
+
+```
+yarn build
+```
+
+生成静态文件，可以部署到：
+
+-   Surge
+    
+-   IPFS
+    
+-   任意静态服务器
+    
+
+### **2\. 最终目标（Challenge 0 的终点）**
+
+> Your goal is to have a URL you can share with your friends.
+
+可以：
+
+-   用 MetaMask 打开
+    
+-   切换到测试网
+    
+-   在你的 App 上 mint NFT
+    
+-   转账、交互
+    
+
+### **十、Side Quest（进阶）**
+
+-   验证合约（Etherscan API）
+    
+-   在 OpenSea 测试网查看 NFT
+    
+-   确认 metadata 是否被正确解析
+    
+
+### **十一、总结**
+
+1.  **Web3 应用的完整生命周期**
+    
+2.  本地 → 测试网 → 公共访问
+    
+3.  合约 / 前端 / 钱包 / IPFS 的协同
+    
+4.  Web3 工程的“真实复杂度”
+    
+
+一句话总结这堂课的精神：
+
+> Don’t just follow the tutorial.
+
+> Go underneath the abstraction.
+
+> Break things. Understand why they break.
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 **为什么很多品牌在 Web3 听起来很 cringe / 失败**
 
@@ -174,6 +447,7 @@ Web3 本质是去中心化文化 + 社群参与，所以：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -291,6 +565,7 @@ Reddit 上最近关于 **Web3 营销失效与进化的讨论**——这已经是
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -473,6 +748,7 @@ Reddit 上最近关于 **Web3 营销失效与进化的讨论**——这已经是
 
 
 
+
 这是以太坊「成为 Power User」第一周的第四天，主题是 **NFT**。这一天的目标不是从技术原理开始，而是像真实用户一样去 **买、铸造（mint）、发送和查看 NFT**，通过实际操作来理解 NFT 在 Web3 中是如何工作的。课程延续了之前的逻辑：钱包（MetaMask）、身份（ENS）、资产（NFT）会在不同 Web3 服务之间自然流动。
 
 课程一开始回顾了已经完成的步骤：安装并使用 MetaMask、进行过 ETH 与 DAI 的兑换、完成过链上交易。这些都是今天操作 NFT 的基础。接着通过 OpenSea 这个 NFT 市场，展示了一个重要概念：**你的 Web3 身份和资产会跨平台存在**。即使是 ENS 域名，本质上也是一个 ERC-721 NFT，它会出现在你的钱包和 OpenSea 的资产列表中。如果把 ENS NFT 转给别人，对方就会真正拥有并控制这个域名，这一点和 Uniswap 的 LP NFT（代表流动性所有权）是同样的逻辑。
@@ -513,6 +789,7 @@ NFT mint 成功后，虽然是在项目官网铸造的，但因为遵循 ERC-721
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -579,6 +856,7 @@ In short:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -701,6 +979,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -919,6 +1198,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -994,6 +1274,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -1005,6 +1286,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
