@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# To do list
+
+-   figma
+    
+-   推特会员开通
+    
+-   spoonOS 研究
+    
+-   阅读 uniswap 源码
+    
+
+# Note
+
+Austin 分享 学习自己写代码过程中尽量关掉AI
+
+### 看了Draken老师推特上关于自己心路历程的文章，Draken老师真的很有勇气和执行力。  
+回顾一下我的时间线
+
+2025.7 我在公司自学Web3的时候看到了第一期实习计划的帖子，但是我真的太忙了，主业在 Web2 中厂做后端实习，副业在做电商，每天回到家还要拆退货包裹，完全没有自己的生活。当时在6月份报了一个openbuild的 web3 数据分析训练营，7月的时候这个数据分析我一点都没空学，我想着这个训练营都没空学，何必再报一个呢，于是我就这样错过了第一期训练营的报名。
+
+在公司实习的时候，我一边做着 Web2 的工作，一边抽空学习 Web3 的知识。那时我虽然错过了报名，但是我偶尔会跟着第一期实习计划“偷学”，在B站上看分享会的回放、看 Web3 实习手册、黑暗森林手册，（差不多能算第一期的permissionless学员？）  
+  
+先写到这，等会儿再写。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # To do list
 
 -   Uniswap V2 实操
@@ -60,6 +88,7 @@ uint256 public immutable deadline = block.timestamp + 2 hours ;
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # To do list
@@ -108,6 +137,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 
 
+
 # To do list
 
 -   Uniswap v2 源码
@@ -121,6 +151,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -155,6 +186,7 @@ solidity改复习一下子了，明天抓紧复习，争取优化实习手册
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -325,6 +357,7 @@ ERC-7962的核心创新在于，它通过引入\*\*`密钥哈希 (keyHash)`\*\* 
 
 
 
+
 # To do list
 
 -   参加LXDAO周会 ✅
@@ -359,6 +392,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -411,6 +445,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -498,6 +533,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -608,6 +644,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -665,6 +702,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
