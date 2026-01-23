@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+\## 1. 复习回顾（补课清单）
+
+\- 数据位置`storage / memory / calldata`
+
+\- 可见性`public / external / internal / private`
+
+\- 函数属性`view / pure / payable`
+
+\- 错误处理`require / revert / assert`，自定义 `error`
+
+\- `event`：链上记录 + 前端监听
+
+\- 数组/映射：删除（置零、swap&pop），映射不可遍历
+
+\- `receive()` vs `fallback()`：触发条件
+
+\- 转账：优先 `call{value: x}("")` 并检查返回值；避免 `tx.origin` 鉴权
+
+\- 安全：重入（CEI、ReentrancyGuard）、权限控制、随机数可预测、delegatecall 存储布局风险
+
+\## 2. 作业实践：Remix 跑 Solidity by Example（0.8.26 Basic）
+
+\- 编译器选 `0.8.26`，环境用 `Remix VM (London)`
+
+\- 每段代码做到：能编译 → 能部署 → 能调用验证结果
+
+\- 重点观察：
+
+\- 默认值（0/false/address(0)）
+
+\- constructor 仅部署时执行
+
+\- `view/pure` 不改状态
+
+\- `payable` 调用需设置 `Value`
+
+\- `require/revert` 失败报错与 gas 差异（自定义 error 更省）
+
+\## 3. Solidity 挑战：Ethernaut
+
+\- 通用解题流程：读源码 → 找通关条件 → 找可控入口（参数/value/fallback）→ 推演攻击 → 写攻击合约/脚本复现 → 写修复建议
+
+\- 常见考点：访问控制、tx.origin、伪随机、重入、delegatecall/代理、自毁/强制转账
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 \## Ethereum Clients & Hardhat
 
 \### 以太坊客户端
@@ -103,6 +151,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 \### 继承与多态
 
 \- 使`is`关键字继承，支持多重继承
@@ -182,6 +231,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ````markdown
@@ -305,6 +355,7 @@ contract MyContract {
 
 
 
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -314,6 +365,7 @@ contract MyContract {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -406,6 +458,7 @@ contract MyContract {
 
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -479,6 +532,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -529,6 +583,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -600,6 +655,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
