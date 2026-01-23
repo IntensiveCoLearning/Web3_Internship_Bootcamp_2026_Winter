@@ -15,8 +15,124 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## 🛠️ 核心工具：MetaMask, Sepolia Testnet, Uniswap, Remix IDE, Etherscan
+
+* * *
+
+## 一、 基础设施建设：数字身份与资产
+
+> **知识点：** Web3 的入口不是账号密码，而是“助记词”和“钱包地址”。
+
+-   **MetaMask 配置**：
+    
+    -   **实操**：安装插件并创建钱包，手动开启“显示测试网络”开关。
+        
+    -   **关键知识**：
+        
+        -   **助记词**：最高控制权，**不可触网**，丢失即丢失资产。
+            
+        -   **Sepolia 测试网**：开发者的演习场，使用的是无价值的模拟币。
+            
+-   **资产获取 (Faucet)**：
+    
+    -   **实操**：通过水龙头（Google/Infura/LearnWeb3）领取了 **0.1 ETH** 测试币。
+        
+    -   **知识点**：在链上进行任何操作都需要支付 **Gas 费（燃油费）**，没有 ETH 将寸步难行。
+        
+    -   ![835d09c51e661ac0ed356ec47139e49e.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/KingStone-Lei/images/2026-01-23-1769179814604-835d09c51e661ac0ed356ec47139e49e.png)
+
+![a58a9d5f69f497e751aef0b967b282c6.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/KingStone-Lei/images/2026-01-23-1769179787320-a58a9d5f69f497e751aef0b967b282c6.png)![bb80926fb243f7e702fe30380db2c51d.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/KingStone-Lei/images/2026-01-23-1769179801626-bb80926fb243f7e702fe30380db2c51d.png)
+
+* * *
+
+## 二、 链上交互实战：资产管理与避坑
+
+> **知识点：** 区块链不看名字，只看“合约地址”。
+
+### 1\. 资产兑换 (Swap)
+
+-   **实操**：在 Uniswap 成功将 ETH 兑换为 USDC。
+    
+-   **踩坑与反思**：
+    
+    -   **现象**：直接搜名字换到的 USDC 余额显示为 0。
+        
+    -   **本质**：遇到了**重名代币陷阱**。在测试网，任何人都能发名为 USDC 的币。
+        
+    -   **解决方案**：必须通过 **合约地址 (Contract Address)** 识别唯一身份。
+        
+    -   **核心地址**：`0x1c7D4B196Cb0234831458a7a85e9a733ec1b9820` (Sepolia USDC)。
+        
+
+### 2\. 资产可见性 (Import Token)
+
+-   **实操**：手动导入代币合约，设置精度（Decimals）为 `6`。
+    
+-   **知识点**：钱包默认只显示主币（ETH），其他代币需要手动“贴标签”才能看见，但这不代表资产不在账本上。
+    
+
+### 3\. 转账原理与锁定
+
+-   **实操**：将 USDC 转入 Account 2 后发现无法转回。
+    
+-   **原理**：Account 2 只有货物（USDC）没有燃料（ETH），导致资产被“锁定”。
+    
+
+* * *
+
+## 三、 技术进阶：智能合约部署 (0 → 0.5)
+
+> **知识点：** 智能合约是自动运行的“代码机器人”。
+
+-   **开发环境**：使用 **Remix IDE** 编写 Solidity 代码。
+    
+-   **编写代码**：
+    
+    Solidity
+    
+    ```
+    string public message = "Hello Web3, I am here!"; // 链上宣言
+    ```
+    
+-   **编译与部署**：
+    
+    -   **编译 (Compile)**：将代码翻译成机器能懂的语言（绿色对勾）。
+        
+    -   **部署 (Deploy)**：将代码发射到 Sepolia 链上，生成唯一的**合约地址**。
+        
+-   **合约地址**：`0x25F37dB5b9741b61390dC64D096C83fF233c088c`
+    
+-   **读写交互**：
+    
+    -   **蓝色按钮 (Read)**：免费查看内容。
+        
+    -   **橘色按钮 (Write)**：修改链上内容，需支付 Gas 费。
+        
+
+![截屏2026-01-23 18.50.22.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/KingStone-Lei/images/2026-01-23-1769179913711-__2026-01-23_18.50.22.png)
+
+* * *
+
+## 四、 成果总结 (Achievements)
+
+1.  **链上资产证书**：拥有了一个包含 ETH 和 USDC 的多资产钱包。
+    
+2.  **永久链上足迹**：在以太坊网络成功部署了第一个属于自己的智能合约。
+    
+3.  **职业素养提升**：
+    
+    -   理解了 Web3 的**透明性**（所有记录在 Etherscan 可查）。
+        
+    -   理解了 **Permissionless（无许可）**：无需任何人批准即可发射代码。
+        
+    -   具备了**排障能力**：能解决代币不显示、转账无 Gas 费等新手常见难题。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ## Remix 智能合约开发实践小结
 
 **日期：** 2026年1月21日 **核心目标：** 掌握从编写、编译到部署智能合约的全流程操作。
@@ -73,6 +189,7 @@ timezone: UTC+8
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ### **Web3 实习实操：从“内容运营”到“系统架构”的思维跃迁**
 
 昨晚深度完成了 TG/Discord 频道配置、数据看板分析及 Notion SOP 搭建后，我最大的感触是：**Web3 的社区运营，本质上是在构建一套自动化的数字社会规则。**
@@ -108,6 +225,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 ### Web3 实习手册社区运营指南部分-学习感受
 
 **1\. 岗位专业性的重塑** 过去对“社区运营”常存在低门槛的误解，但该指南展示了其极高的综合素质要求。运营者需兼具内容创作的敏感度、项目管理的严谨性以及对链上数据的解读能力。这种“全栈”属性要求从业者必须具备快速学习和跨领域整合的素养。
@@ -121,6 +239,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -141,6 +260,7 @@ timezone: UTC+8
 
 
 
+
 阅读Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
 
 在入场之前，读懂法律红线远比研究技术逻辑更救命。
@@ -152,6 +272,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -200,6 +321,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
