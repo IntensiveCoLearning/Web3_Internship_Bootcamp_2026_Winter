@@ -24,18 +24,64 @@ Web3 实习计划 2025 冬季实习生
 
 -   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
     
+    -   [**\[GitHub repository\]**](https://github.com/ShihaoZhou-NEU/Solidity_Learning)
+        
 -   ⭕️SpeedRun
+    
+-   ✅️Ethernaut
     
 
 ## dApp 回顾
 
--   ⭕️Colearning
+-   ✅️Colearning
     
--   ⭕️dApp 分享
+-   ✅️dApp 分享
+    
+
+**Foundry 与 Hardhat 对比**：Foundry 适合高级开发者，支持 Solidity 原生测试；Hardhat 部署流程更友好，拥有更多 TypeScript 测试支持。目前两者均可选择，建议结合 AI 工具进行开发。
+
+部署网络：优先选择 Layer2 网络（如 Arbitrum、Base），部署成本仅需几美分，远低于以太坊主网（曾高达 1500 美元）。
+
+学习路径：先完成 Speedrun Ethereum 挑战，掌握核心概念；再研究 Uniswap、OpenZeppelin 等现有协议的智能合约代码，理解实际应用逻辑。
+
+实践操作：使用 Scaffold-Eth 框架 + AI 工具快速搭建项目（如在 Base 网络部署代币并发送给好友，或在 Uniswap 创建流动性池），通过实践深化理解。
+
+行业动态：关注 Crypto Twitter，跟踪 ERC-804、X402 等支付相关协议趋势，了解 AI 代理在链上经济中的应用。
+
+人工智能与链上经济融合：AI 将加速项目开发，催生 “智能代理经济”，更多高效应用将被快速落地。
+
+机构与国家层面 adoption：谷歌、微软等企业及部分国家可能会采用去中心化区块链作为第三方中介，实现资产上链与合规交易。
+
+技术升级：量子抗性将成为重要研发方向，以应对量子计算对现有加密算法（如 ECDSA）的冲击。
+
+数据主权：铁打的数据，流水的网络
+
+智能合约（裁判）
+
+​ 自动执行，谁也赖不掉
+
+区块链（账本）
+
+​ 公开透明
+
+Token（燃料）
+
+Hardhat Ignition + Foundry + Next.js + Wagmi 混合架构
+
+Hardhat：灵活插件生态，脚本管理，集成测试
+
+​ Hardhat Keystore：存储私钥
+
+Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
+
+混合栈：本地极速编译 + 生产级部署流程
+
+前端架构：Next.js + Wagmi
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # 学习计划
 
@@ -59,6 +105,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # 学习计划
@@ -366,6 +413,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -523,6 +571,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -562,6 +611,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -881,6 +931,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1185,6 +1236,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1534,6 +1586,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1613,6 +1666,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1877,6 +1931,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2053,6 +2108,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
