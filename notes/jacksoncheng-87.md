@@ -15,8 +15,548 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+Solidity Basic 笔记
+
+| 主题 | 说明 | 关键代码示例 | 要点 |
+| --- | --- | --- | --- |
+| 1. Hello World | 简单合同，返回字符串。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract HelloWorld {
+    function helloWorld() external pure returns (string memory) {
+        return "Hello, World";
+    }
+} | 使用 pure 不改状态；pragma 指定版本。 |
+| 2. First App | 计数器示例，状态变量交互。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Counter {
+    uint256 public count;
+
+    function increment() external {
+        count += 1;
+    }
+} | public 自动 getter；external 外部调用。 |
+| 3. Primitive Data Types | 基本类型：bool, uint/int, address, bytes。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Primitives {
+    bool public boo = true;
+
+    uint8 public u8 = 1;
+    uint256 public u256 = 456;
+    uint public u = 123; // uint is alias for uint256
+
+    int8 public i8 = -1;
+    int256 public i256 = 456;
+    int public i = -123; // int is same as int256
+
+    int public minInt = type(int).min;
+    int public maxInt = type(int).max;
+
+    address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;
+
+    bytes1 public a = 0xb5; //  [10110101]
+    bytes1 public b = 0x56; //  [01010110]
+} | uint/int 有大小变体；默认值如 0 或 false。 |
+| 4. Variables | 类型：状态（持久）、本地（临时）、全局（区块链 info）。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Variables {
+    // State variables are stored on the blockchain.
+    string public text = "Hello";
+    uint256 public num = 123;
+
+    function doSomething() public view {
+        // Local variables are not saved to the blockchain.
+        uint256 i = 456;
+        // Here are some global variables
+        uint256 timestamp = block.timestamp; // Current block timestamp
+        address sender = msg.sender; // address of the caller
+    }
+} | 全局如 msg.sender、block.timestamp。 |
+| 5. Constants | 不可改值，节省 gas。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Constants {
+    // coding convention to uppercase constant variables
+    address public constant MY_ADDRESS = 0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
+    uint public constant MY_UINT = 123;
+} | 大写命名惯例；编译时替换。 |
+| 6. Immutable | 部署时赋值，不可改。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Immutable {
+    // coding convention to uppercase constant variables
+    address public immutable MY_ADDRESS;
+    uint public immutable MY_UINT;
+
+    constructor(uint _myUint) {
+        MY_ADDRESS = msg.sender;
+        MY_UINT = _myUint;
+    }
+} | 构造函数赋值；类似常量节省 gas。 |
+| 7. Reading and Writing to a State Variable | 状态变量 getter/setter。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract SimpleStorage {
+    uint public num;
+
+    function set(uint _num) public {
+        num = _num;
+    }
+
+    function get() public view returns (uint) {
+        return num;
+    }
+} | 修改需非-view 函数。 |
+| 8. Ether and Wei | 单位转换：1 ether = 10^18 wei。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract EtherUnits {
+    uint public oneWei = 1 wei;
+    // 1 wei is equal to 1
+    bool public isOneWei = 1 wei == 1;
+
+    uint public oneEther = 1 ether;
+    // 1 ether is equal to 10^18 wei
+    bool public isOneEther = 1 ether == 10**18;
+} | 使用后缀如 wei, ether；防溢出。 |
+| 9. Gas and Gas Price | Gas 是计算单位；示例无限循环耗尽 gas。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Gas {
+    uint public i = 0;
+
+    // Using up all of the gas that you send causes your contract to fail.
+    // State changes are undone.
+    // Gas spent are not refunded.
+    function forever() public {
+        // Here we run a loop until all of the gas are spent
+        // and the transaction fails
+        while (true) {
+            i += 1;
+        }
+    }
+} | solidity<br>function forever() public {<br> while (true) {<br> i += 1;<br> }<br>}<br> |
+| 10. If / Else | 条件语句，支持三元。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract IfElse {
+    function foo(uint x) public pure returns (uint) {
+        if (x < 10) {
+            return 0;
+        } else if (x < 20) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    function ternary(uint _x) public pure returns (uint) {
+        return _x < 10 ? 1 : 2;
+    }
+} | 纯函数中使用。 |
+| 11. For and While Loop | 循环，支持 break/continue。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Loop {
+    function loop() public pure {
+        // for loop
+        for (uint i = 0; i < 10; i++) {
+            if (i == 3) {
+                // Skip to next iteration with continue
+                continue;
+            }
+            if (i == 5) {
+                // Exit loop with break
+                break;
+            }
+        }
+
+        // while loop
+        uint j;
+        while (j < 10) {
+            j++;
+        }
+    }
+} | 循环耗 gas，小心无限循环。 |
+| 12. Mapping | 键值对，默认值 0/false。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Mapping {
+    // Mapping from address to uint
+    mapping(address => uint) public myMap;
+
+    function set(address _addr, uint _i) public {
+        // Update the value at this address
+        myMap[_addr] = _i;
+    }
+
+    function get(address _addr) public view returns (uint) {
+        // Mapping always returns a value.
+        // If the value was never set, it will return the default value.
+        return myMap[_addr];
+    }
+
+    function remove(address _addr) public {
+        // Reset the value to the default value.
+        delete myMap[_addr];
+    }
+}
+
+contract NestedMapping {
+    // Nested mapping (mapping from address to another mapping)
+    mapping(address => mapping(uint => bool)) public nested;
+
+    function set(address _addr1, uint _i, bool _boo) public {
+        nested[_addr1][_i] = _boo;
+    }
+
+    function get(address _addr1, uint _i) public view returns (bool) {
+        return nested[_addr1][_i];
+    }
+
+    function remove(address _addr1, uint _i) public {
+        delete nested[_addr1][_i];
+    }
+} | 支持嵌套；delete 重置默认。 |
+| 13. Array | 动态/固定数组，push/pop。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Array {
+    // Several ways to initialize an array
+    uint[] public arr;
+    uint[] public arr2 = [1, 2, 3];
+    // Fixed sized array, all elements initialize to 0
+    uint[10] public myFixedSizeArr;
+
+    function get(uint i) public view returns (uint) {
+        return arr[i];
+    }
+
+    // Solidity can return the entire array.
+    // But this function should be avoided for
+    // arrays that can grow indefinitely in length.
+    function getArr() public view returns (uint[] memory) {
+        return arr;
+    }
+
+    function push(uint i) public {
+        // Append to array
+        // This will increase the array length by 1.
+        arr.push(i);
+    }
+
+    function pop() public {
+        // Remove last element from array
+        // This will decrease the array length by 1
+        arr.pop();
+    }
+
+    function getLength() public view returns (uint) {
+        return arr.length;
+    }
+
+    function remove(uint index) public {
+        // Delete does not change the array length.
+        // It resets the value at index to it's default value,
+        // in this case 0
+        delete arr[index];
+    }
+
+    function examples() external {
+        // create array in memory, only fixed size can be created
+        uint[] memory a = new uint[](5);
+    }
+} | delete 不变长度，只重置值；内存数组固定。 |
+| 14. Enum | 定义状态，索引从 0。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Enum {
+    // Enum representing shipping status
+    enum Status {
+        Pending,
+        Shipped,
+        Accepted,
+        Rejected,
+        Canceled
+    }
+
+    // Default value is the first element listed in
+    // definition of the type, in this case "Pending"
+    Status public status;
+
+    // Returns uint
+    // Pending  - 0
+    // Shipped  - 1
+    // Accepted - 2
+    // Rejected - 3
+    // Canceled - 4
+    function get() public view returns (Status) {
+        return status;
+    }
+
+    // Update status by passing uint into input
+    function set(Status _status) public {
+        status = _status;
+    }
+
+    // You can update to a specific enum like this
+    function cancel() public {
+        status = Status.Canceled;
+    }
+
+    // delete resets the enum to its first value, 0
+    function reset() public {
+        delete status;
+    }
+} | delete 重置为 0。 |
+| 15. User Defined Value Types | 自定义类型，基于现有。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+type UFixed256x18 is uint256;
+
+library FixedMath {
+    uint constant multiplier = 10**18;
+
+    function mul(UFixed256x18 a, UFixed256x18 b) internal pure returns (UFixed256x18) {
+        return UFixed256x18.wrap(UFixed256x18.unwrap(a) * UFixed256x18.unwrap(b));
+    }
+
+    function floor(UFixed256x18 a) internal pure returns (uint256) {
+        return UFixed256x18.unwrap(a) / multiplier;
+    }
+
+    function toUFixed256x18(uint256 a) internal pure returns (UFixed256x18) {
+        return UFixed256x18.wrap(a * multiplier);
+    }
+}
+
+contract UserDefinedValueTypes {
+    UFixed256x18 public a = FixedMath.toUFixed256x18(5);
+    UFixed256x18 public b = FixedMath.toUFixed256x18(2);
+
+    function multiply() public view returns (uint256) {
+        return FixedMath.floor(FixedMath.mul(a, b));
+    }
+} | 需要库支持操作。 |
+| 16. Structs | 数据分组。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract TodoList {
+    struct TodoItem {
+        string text;
+        bool completed;
+    }
+
+    // An array of 'TodoItem' structs
+    TodoItem[] public todos;
+
+    function create(string memory _text) public {
+        // 3 ways to initialize a struct
+        // - calling it like a function
+        todos.push(TodoItem(_text, false));
+
+        // key value mapping
+        todos.push(TodoItem({text: _text, completed: false}));
+
+        // initialize an empty struct and then update it
+        TodoItem memory todo;
+        todo.text = _text;
+        // todo.completed initialized to false
+
+        todos.push(todo);
+    }
+
+    // Solidity automatically created a getter for 'todos' so
+    // you don't actually need this function.
+    function get(uint _index) public view returns (string memory text, bool completed) {
+        TodoItem storage todo = todos[_index];
+        return (todo.text, todo.completed);
+    }
+
+    // update text
+    function update(uint _index, string memory _text) public {
+        TodoItem storage todo = todos[_index];
+        todo.text = _text;
+    }
+
+    // update completed
+    function toggleCompleted(uint _index) public {
+        TodoItem storage todo = todos[_index];
+        todo.completed = !todo.completed;
+    }
+} | 多初始化方式；storage/memory。 |
+| 17. Data Locations | storage (持久), memory (临时), calldata (只读)。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract DataLocations {
+    uint[] public arr;
+    mapping(uint => address) map;
+    struct MyStruct {
+        uint foo;
+    }
+    mapping(uint => MyStruct) myStructs;
+
+    function f() public {
+        // call _f with state variables
+        _f(arr, map, myStructs[1]);
+
+        // get a struct from a mapping
+        MyStruct storage myStruct = myStructs[1];
+        // create a struct in memory
+        MyStruct memory myMemStruct = MyStruct(0);
+    }
+
+    function _f(
+        uint[] storage _arr,
+        mapping(uint => address) storage _map,
+        MyStruct storage _myStruct
+    ) internal {
+        // do something with storage variables
+    }
+
+    // You can return memory variables
+    function g(uint[] memory _arr) public returns (uint[] memory) {
+        // do something with memory array
+    }
+
+    function h(uint[] calldata _arr) public {
+        // do something with calldata array
+    }
+} | calldata 节省 gas。 |
+| 18. Transient Storage | 交易内存储，assembly 使用。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract TransientStorage {
+    bytes32 constant SLOT = keccak256("some_slot");
+
+    function set(uint256 value) public {
+        assembly {
+            tstore(SLOT, value)
+        }
+    }
+
+    function get() public view returns (uint256 ret) {
+        assembly {
+            ret := tload(SLOT)
+        }
+    }
+} | 仅交易有效，节省 gas。 |
+| 19. Function | 函数参数/返回，多值支持。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Function {
+    // Functions can return multiple values.
+    function returnMany() public pure returns (uint, bool, uint) {
+        return (1, true, 2);
+    }
+
+    // Return values can be named.
+    function named() public pure returns (uint x, bool b, uint y) {
+        return (1, true, 2);
+    }
+
+    // Return values can be assigned to their name.
+    // In this case the return statement can be omitted.
+    function assigned() public pure returns (uint x, bool b, uint y) {
+        x = 1;
+        b = true;
+        y = 2;
+    }
+
+    // Use destructuring assignment when calling another
+    // function that returns multiple values.
+    function destructuringAssignments() public pure {
+        (uint i, bool boo, uint j) = returnMany();
+
+        // Values can be left out.
+        (uint x, , uint y) = (4, 5, 6);
+    }
+
+    // Cannot use map for either input or output
+
+    // Can use array for input
+    function arrayInput(uint[] memory _arr) public {}
+
+    // Can use array for output
+    uint[] public arr;
+
+    function arrayOutput() public view returns (uint[] memory) {
+        return arr;
+    }
+} | 命名返回可省 return；支持数组输入/输出。 |
+| 20. View and Pure Functions | view 读状态，pure 纯计算。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract ViewAndPure {
+    uint256 public x = 1;
+
+    // Promise not to modify the state.
+    function addToX(uint256 y) public view returns (uint256) {
+        return x + y;
+    }
+
+    // Promise not to modify or read from the state.
+    function add(uint256 i, uint256 j) public pure returns (uint256) {
+        return i + j;
+    }
+} | 调用不耗 gas（除非内部调用）。 |
+| 21. Error | 错误处理：require/revert/assert，自定义 error。 | // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Error {
+    function testRequire(uint _i) public pure {
+        // Require should be used to validate conditions such as:
+        // - inputs
+        // - conditions before execution
+        // - return values from calls to other functions
+        require(_i > 10, "Input must be greater than 10");
+    }
+
+    function testRevert(uint _i) public pure {
+        // Revert is useful when the condition to check is complex.
+        // This code does the exact same thing as the above require
+        if (_i <= 10) {
+            revert("Input must be greater than 10");
+        }
+    }
+
+    uint public num;
+
+    function testAssert() public view {
+        // Assert should only be used to test for internal errors,
+        // and to check invariants.
+
+        // Here we assert that num is always equal to 0
+        // since it is impossible to update the value of num
+        assert(num == 0);
+    }
+
+    // custom error
+    error InsufficientBalance(uint balance, uint withdrawAmount);
+
+    function testCustomError(uint _withdrawAmount) public view {
+        if (_withdrawAmount > address(this).balance) {
+            revert InsufficientBalance({
+                balance: address(this).balance,
+                withdrawAmount: _withdrawAmount
+            });
+        }
+    }
+} | require 输入验证；assert 内部；自定义节省 gas。 |
+
+Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hello World"示例入手，逐步引入数据类型（Primitives 如 uint/int、address）、变量管理（状态/本地/全局、Constants/Immutable）、Ether 单位与 Gas 优化；控制结构包括 If/Else、循环（For/While），数据结构有 Mapping（键值对）、Array（动态/固定）、Enum（状态定义）、Structs（自定义分组）和自定义 Value Types；函数方面，强调 View/Pure（不改状态）、多返回值、数据位置（Storage/Memory/Calldata）和 Transient Storage（交易临时），错误处理使用 Require/Revert/Assert 和自定义 Error，提高合约安全性。
+
+整体，这些概念为构建可靠的 Ethereum 合约奠基，强调 Gas 效率和状态管理，避免常见 pitfalls 如无限循环或溢出。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 补充昨天内容：
 
 **6.引用类型**
@@ -335,6 +875,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -566,6 +1107,7 @@ weeks: 7 days = 604800
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -648,6 +1190,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -841,6 +1384,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -848,6 +1392,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -925,6 +1470,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1073,6 +1619,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1363,6 +1910,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -1426,6 +1974,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1583,6 +2132,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
