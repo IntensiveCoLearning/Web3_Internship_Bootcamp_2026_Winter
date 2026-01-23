@@ -17,25 +17,102 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
-## 重入攻击漏洞修复笔记（初学者视角）
+## 漏洞修复笔记
 
-一开始看到那段 `withdraw` 代码，只是知道“这东西有漏洞”，但完全不理解它到底在怕什么。慢慢学下来，我发现所谓重入攻击，本质就是：**合约在给别人转钱时，把控制权交了出去，但还没来得及更新自己的内部状态，结果对方在这个空档又跑回来重复执行提现逻辑，把同一份余额当成多份来用。**
+今天学习了漏洞修复的相关内容，重点学习了重入攻击 Reentrancy。慢慢学下来，我发现所谓重入攻击，本质就是：**合约在给别人转钱时，把控制权交了出去，但还没来得及更新自己的内部状态，结果对方在这个空档又跑回来重复执行提现逻辑，把同一份余额当成多份来用。**
 
-我学习的例子是一个很典型的“存取款”合约。里面有个 `mapping(address => uint256) balances;`，就像一个账本，给每个地址记它在合约里的余额。存款的时候，会调用类似 `balances[msg.sender] += msg.value;` 这样的代码，也就是把这次转进来的 ETH 加到调用者的余额里。 提现的时候，先用 `require(balances[msg.sender] >= _amount, "Not enough balance");` 检查调用者的账面余额够不够，然后用 `msg.sender.call{value: _amount}("")` 把钱转出去，最后再 `balances[msg.sender] -= _amount;` 把余额减掉。刚开始我以为这很自然：先给用户钱，再改账本，结果事实恰好相反——这正是重入攻击的入口。
+我学习的例子是一个很典型的“存取款”合约。
 
-真正搞清楚问题，是把角色拆成合约 A 和合约 B 之后。A 是受害者 Bank 合约，负责记账和存取款；B 是攻击者写的合约。平时用户（或者合约 B）存钱时，A 里会记 `balances[B] += 存入金额`。当 B 调用 A 的 `withdraw` 时，A 先检查 `balances[B] >= _amount`，然后执行 `msg.sender.call{value: _amount}("")` 把钱转给 B。如果 B 是合约，这个转账会触发 B 的 `receive()` 或 `fallback()` 函数，在那个回调里，B 可以再次调用 `A.withdraw()`。关键在于：此时 A 还没执行 `balances[B] -= _amount`，也就是说账本上的余额还没减少，第二次进入 `withdraw` 时，`require` 一样能通过，于是 A 又给 B 转一次钱。这样在一次交易之内，B 可以不停重入，反复用同一条 `balances[B]` 记录，把 A 这个公共资金池里的钱往自己这边拖走， 而其他老老实实存钱的用户就变成了帮 B 垫背的人。
+```
+// ❌ 有漏洞
+function withdraw() public {
+    require(balance[msg.sender] > 0);
+    (bool sent,) = msg.sender.call{value: balance[msg.sender]}("");
+    require(sent);
+    balance[msg.sender] = 0;
+}
 
-我真正理解的一点是：合约里有两个层面的钱。一层是 `address(this).balance`，这是整个合约账户现在实际有多少 ETH，就像一个总资金池；另一层是 `balances[某地址]`，这只是账本上的数字，表示这个人理论上可以提多少。重入攻击的目标不是把 `balances[B]` 改大，而是用同一个 `balances[B]`，在同一笔交易里调用多次提现逻辑，让资金池里的钱一次次流到 B 那边。`require(balances[msg.sender] >= _amount)` 只保证“你至少得有这一份余额”，但它挡不住“你多次利用同一份余额”的问题。
+// ✅ 修复后
+function withdraw() public {
+    uint256 amount = balance[msg.sender];
+    balance[msg.sender] = 0;
+    (bool sent,) = msg.sender.call{value: amount}("");
+    require(sent);
+}
+```
 
-修复这类漏洞的第一件事，就是记住一个很经典的开发模式：**Checks‑Effects‑Interactions（检查‑效果‑交互）**。我把那段不安全的 `withdraw` 改写成三步：第一步先 `require` 检查余额足够；第二步立刻更新状态，把 `balances[msg.sender]` 减掉，甚至直接清零；第三步才调用外部的 `call` 去给 `msg.sender` 转钱。 这样做之后，就算对方在转账回调里重入，第二次进来看到的 `balances[msg.sender]` 已经是更新后的值（通常是 0），在 `require` 那一步就过不去了，自然拿不到第二轮的钱。等于说：**重入还是可能发生，但因为状态已经先动了，所以攻击逻辑失效了。**
+里面有个 mapping(address => uint256) balances;，就像一个账本，给每个地址记它在合约里的余额。存款的时候，会调用类似 balances\[msg.sender\] += msg.value; 这样的代码，也就是把这次转进来的 ETH 加到调用者的余额里。 提现的时候，先用 require(balances\[msg.sender\] >= \_amount, "Not enough balance"); 检查调用者的账面余额够不够，然后用 msg.sender.call{value: \_amount}("") 把钱转出去，最后再 balances\[msg.sender\] -= \_amount; 把余额减掉。刚开始我以为这很自然：先给用户钱，再改账本，结果事实恰好相反，这正是重入攻击的入口。
 
-在理解了状态顺序这件事之后，我开始看一些更“工程化”的防御方式，比如用 OpenZeppelin 提供的 `ReentrancyGuard`。给敏感函数加上 `nonReentrant` 修饰符，相当于加了一把“重入锁”：函数第一次进入时上锁，结束时解锁，如果在执行过程中试图再次进入同一个函数，就会直接 `revert`。 不过我也意识到，这只是第二道保险，真正不能偷懒的是业务逻辑本身——比如提现、清算、发奖励这些地方，一定要遵守 Checks‑Effects‑Interactions，把“改自己状态”和“调用外部合约”明确分开，顺序搞对。
+真正搞清楚问题，是把角色拆成合约 A 和合约 B 之后。A 是受害者 Bank 合约，负责记账和存取款；B 是攻击者写的合约。平时用户（或者合约 B）存钱时，A 里会记 balances\[B\] += 存入金额。当 B 调用 A 的 withdraw 时，A 先检查 balances\[B\] >= \_amount，然后执行 msg.sender.call{value: \_amount}("") 把钱转给 B。如果 B 是合约，这个转账会触发 B 的 receive() 或 fallback() 函数，在那个回调里，B 可以再次调用 A.withdraw()。关键在于：此时 A 还没执行 balances\[B\] -= \_amount，也就是说账本上的余额还没减少，第二次进入 withdraw 时，require 一样能通过，于是 A 又给 B 转一次钱。这样在一次交易之内，B 可以不停重入，反复用同一条 balances\[B\] 记录，把 A 这个公共资金池里的钱往自己这边拖走， 而其他老老实实存钱的用户就变成了帮 B 垫背的人。
 
-作为 Solidity 初学者，这次围绕重入攻击的学习，让我从一开始只会照搬别人写好的 `withdraw`，变成会拿着代码从攻击者视角去审一遍：这里有没有 `call`、`delegatecall`、`transfer` 之类的外部调用？在这些调用之前，我有没有先把余额、状态位、计数器等敏感变量更新好？ 以后每当要写“给别人转钱”的逻辑，无论是简单的提款合约，还是复杂一点的质押、借贷、DEX，我都会先在脑子里问一句自己：**“如果对方是个恶意合约，它在** `fallback` **里立刻再调回来，我现在这段顺序顶得住吗？”**
+还有一点可以帮助理解这个漏洞：合约里有两个层面的钱。一层是 address(this).balance，这是整个合约账户现在实际有多少 ETH，就像一个总资金池；另一层是 balances\[某地址\]，这只是账本上的数字，表示这个人理论上可以提多少。重入攻击的目标不是把 balances\[B\] 改大，而是用同一个 balances\[B\]，在同一笔交易里调用多次提现逻辑，让资金池里的钱一次次流到 B 那边。require(balances\[msg.sender\] >= \_amount) 只保证“你至少得有这一份余额”，但它挡不住“你多次利用同一份余额”的问题。
+
+在弄懂攻击原理之后，我动手做了一个属于自己的漏洞修复练习。先让 ai 写一个有问题的版本（和教程里的类似）：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract MyVulnerableBank {
+    mapping(address => uint256) public balances;
+
+    function deposit() external payable {
+        // 存款：给调用者记账
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw(uint256 _amount) external {
+        // 取款前检查余额够不够
+        require(balances[msg.sender] >= _amount, "Not enough balance");
+
+        // ❌ 有漏洞：先对外转钱
+        (bool success, ) = msg.sender.call{value: _amount}("");
+        require(success, "Transfer failed");
+
+        // ❌ 再改余额
+        balances[msg.sender] -= _amount;
+    }
+}
+```
+
+这个版本的问题已经很清楚：一旦 msg.sender 是合约 B，就可以在收钱时重入 withdraw，利用还没更新的 balances\[msg.sender\] 重复提款。 所以我按照“检查‑效果‑交互”（Checks‑Effects‑Interactions）模式，把它改成安全版：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract MySafeBank {
+    mapping(address => uint256) public balances;
+
+    function deposit() external payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw(uint256 _amount) external {
+        // 1. Checks：检查调用者余额是否足够
+        uint256 userBalance = balances[msg.sender];
+        require(userBalance >= _amount, "Not enough balance");
+
+        // 2. Effects：先更新内部状态
+        balances[msg.sender] = userBalance - _amount;
+
+        // 3. Interactions：最后才对外部地址转账
+        (bool success, ) = msg.sender.call{value: _amount}("");
+        require(success, "Transfer failed");
+    }
+}
+```
+
+在这个修复版里，如果 B 第一次调用 withdraw，在发起转账之前，balances\[B\] 已经先被减去了 \_amount。即便 B 在 fallback 中再次重入 withdraw，第二次进入时读到的 userBalance 已经是减少后的值（可能是 0），require(userBalance >= \_amount) 会直接失败，不再给它发第二笔钱。 对我来说，这个改动让我非常直观地体会到了 CEI 模式的力量：仅仅调整几行代码的顺序，就能把一个典型重入漏洞“掐死在入口”。
+
+总结一下，修复这类漏洞的第一件事，就是记住一个很经典的开发模式：**Checks‑Effects‑Interactions（检查‑效果‑交互）**。把那段不安全的 withdraw 改写成三步：第一步先 require 检查余额足够；第二步立刻更新状态，把 balances\[msg.sender\] 减掉，甚至直接清零；第三步才调用外部的 call 去给 msg.sender 转钱。 这样做之后，就算对方在转账回调里重入，第二次进来看到的 balances\[msg.sender\] 已经是更新后的值（通常是 0），在 require 那一步就过不去了，自然拿不到第二轮的钱。等于说：**重入还是可能发生，但因为状态已经先动了，所以攻击逻辑失效了。**
+
+作为 Solidity 初学者，这次围绕重入攻击的学习，让我从一开始只会照搬别人写好的 withdraw，变成会拿着代码从攻击者视角去审一遍：这里有没有 call、delegatecall、transfer 之类的外部调用？在这些调用之前，我有没有先把余额、状态位、计数器等敏感变量更新好？ 以后每当要写“给别人转钱”的逻辑，无论是简单的提款合约，还是复杂一点的质押、借贷、DEX，我都会先在脑子里问一句自己：“如果对方是个恶意合约，它在 fallback 里立刻再调回来，我现在这段顺序顶得住吗？”
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # DAPP学习笔记
 
@@ -72,6 +149,7 @@ IPFS（星际文件系统）可以看作一个去中心化的文件存储网络�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -166,6 +244,7 @@ function leaveMessage(string calldata _msg) external {
 
 
 
+
 今天做入门技术的一个任务，啃完了 Ethernaut 的前三关，花的时间比自己想象中的要久，作为一个 Solidity 初学者，要一行一行读懂智能合约还是有点难度的。通过 Hello Ethernaut、Fallback 和 Fallout 这三关，我从完全没用过浏览器控制台，到能看懂合约逻辑、定位漏洞并写出攻击代码，感觉自己被硬生生推着跨了一小步门槛，过程很痛苦，但进步还挺大。
 
 ## 第 0 关：Hello Ethernaut
@@ -241,6 +320,7 @@ Fallout 这一关让我感受到“一个小小的命名错误，会直接变成
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -372,6 +452,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 
 
+
 ## **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 AI提炼总结**
 
 本次分享围绕一个从 ERC-721 演进出来的新协议 **ERC-7962** 展开，目的是在保持数字藏品（NFT）属性的同时，引入更强的隐私保护和更好的用户体验。讲者首先回顾了传统 NFT 的特点：基于 ERC-721 标准，每个 token 的 owner 是一个公开可查的地址，谁持有什么资产、做过哪些交易都可以在链上被分析。这样带来了两个问题，一是隐私缺失，容易被构建“资产图谱”；二是对普通 Web2 用户不友好，需要自己装钱包、管私钥、付 gas 费，这阻碍了 Web2 用户向 Web3 迁移。
@@ -423,6 +504,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -487,6 +569,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -587,6 +670,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -635,6 +719,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -743,6 +828,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 # 1.13 学习笔记
 
 ## **节点和客户端的关系以及客户端间的协同配合**
@@ -810,6 +896,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
