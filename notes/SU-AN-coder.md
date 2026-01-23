@@ -170,10 +170,238 @@ B. 数据类型的严谨 (ABI Encoding)
     
 
 ![屏幕截图 2026-01-22 181016.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-23-1769159447788-_____2026-01-22_181016.png)
+
+# SpoonOS Agent 开发项目笔记
+
+## 一、简介
+
+完整的实现代码，请访问我的 GitHub 仓库[SU-AN-coder/-SpoonOS-Sentient-Trading-Agent-Doubao-Edition-](https://github.com/SU-AN-coder/-SpoonOS-Sentient-Trading-Agent-Doubao-Edition-)
+
+-   目标：基于 SpoonOS 框架理念，构建兼容豆包（火山引擎） Agent，实现加密货币实时价格查询、条件触发交易模拟功能。
+    
+-   核心架构：ReAct（Reasoning + Acting）智能循环，包含「感知（价格查询）- 决策（模型推理）- 执行（模拟交易）」三个核心环节。
+    
+-   技术栈：Python 3.12X、OpenAI Python SDK（兼容火山引擎协议）、Pydantic（工具参数校验）、python-dotenv（环境变量管理）。
+    
+
+## 二、开发准备
+
+### 1\. 环境搭建
+
+bash
+
+```
+# 创建虚拟环境
+python -m venv venv
+# Windows激活环境
+.\venv\Scripts\activate
+# 安装核心依赖
+pip install openai pydantic python-dotenv
+```
+
+-   OpenAI SDK 用于对接火山引擎 Ark 接入点；Pydantic 用于定义工具参数 schema，让模型理解工具用法。
+    
+
+### 2\. 配置文件
+
+-   创建 `.env` 文件存储敏感信息
+    
+    env
+    
+    ```
+    OPENAI_API_KEY=你的豆包API密钥（UUID格式）
+    OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+    DOUBAO_ENDPOINT_ID=doubao-seed-1-8-251228
+    ```
+    
+-   创建 `.gitignore` 文件隔离无关文件：
+    
+    plaintext
+    
+    ```
+    venv/
+    .env
+    __pycache__/
+    .vscode/
+    *.pyc
+    ```
+    
+
+## 三、开发过程（问题 - 尝试 - 解决）
+
+### 阶段 1：初始尝试 - 直接使用 SpoonOS SDK
+
+**问题：模型强制回退报错**
+
+代码尝试：直接实例化 SpoonReactAI 类，指定豆包模型 ID 和 API 密钥：
+
+python
+
+```
+from spoon_ai.agents import SpoonReactAI
+agent = SpoonReactAI(
+    tools=[RealTimePriceTool()],
+    model=model_id,
+    api_key=api_key,
+    base_url=base_url
+)
+```
+
+报错信息：`[openai] Model 'gpt-4.1' not found or not available`
+
+原因分析：SpoonOS SDK 内部有硬编码校验，API Key 非 `sk-` 开头（OpenAI 格式）时，会自动回退到默认的 `gpt-4.1` 模型，而该模型不存在。
+
+**尝试 1：猴子补丁（Monkey Patch）强制修改配置**
+
+核心思路：运行时修改 Agent 类的配置属性，替换模型 ID：
+
+python
+
+```
+# 遍历Agent属性，强制修正模型配置
+for attr in dir(agent):
+    if "config" in attr.lower() and isinstance(getattr(agent, attr), dict):
+        getattr(agent, attr)["model"] = model_id
+# 覆盖llm对象的配置
+agent.llm.config["model"] = model_id
+```
+
+结果：依然报错，SDK 底层闭包 / 私有变量未被修改，运行时仍读取默认配置。
+
+尝试 2：修改 API Key 格式（踩坑）
+
+-   错误操作：手动给豆包 API Key 加 `sk-` 前缀，试图骗过 SDK 校验。
+    
+-   新报错：`[openai] Authentication failed - check API key`
+    
+-   原因：豆包鉴权不识别 `sk-` 前缀，原生 UUID 格式才有效，SDK 校验与豆包鉴权规则冲突。
+    
+
+### 阶段 2：破局 - 协议重构，绕过 SDK 封装
+
+核心思路：
+
+放弃 SpoonOS 的高层 `SpoonReactAI` 封装，保留其工具定义规范（Pydantic 驱动），直接通过 OpenAI 兼容协议对接豆包，手动实现 ReAct 循环。
+
+步骤 1：定义工具及参数 Schema
+
+用 Pydantic 定义工具参数，自动生成模型可识别的 JSON Schema：
+
+python
+
+运行
+
+```
+from pydantic import BaseModel, Field
+from tools import RealTimePriceTool, SpoonSwapTool
+
+# 价格查询工具参数定义
+class PriceArgs(BaseModel):
+    symbol: str = Field(description="代币符号，例如 ETH 或 BTC")
+
+# 交易工具参数定义
+class SwapArgs(BaseModel):
+    token_in: str = Field(description="待卖出的代币符号")
+    amount: float = Field(description="卖出数量")
+
+# 初始化工具实例
+price_tool = RealTimePriceTool()
+swap_tool = SpoonSwapTool()
+```
+
+步骤 2：手动构建 ReAct 循环
+
+python
+
+```
+import asyncio
+from openai import AsyncOpenAI
+import json
+
+async def main():
+    # 初始化豆包客户端（兼容OpenAI协议）
+    client = AsyncOpenAI(
+        api_key=os.getenv("OPENAI_API_KEY"),
+        base_url=os.getenv("OPENAI_BASE_URL")
+    )
+
+    # 构建工具描述，让模型理解可用工具
+    tools_definition = [
+        {
+            "type": "function",
+            "function": {
+                "name": price_tool.name,
+                "description": price_tool.description,
+                "parameters": PriceArgs.model_json_schema()
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": swap_tool.name,
+                "description": swap_tool.description,
+                "parameters": SwapArgs.model_json_schema()
+            }
+        }
+    ]
+
+    # 用户指令
+    messages = [
+        {"role": "system", "content": "你是加密货币交易助手，需调用工具完成用户指令"},
+        {"role": "user", "content": "查询ETH当前价格，低于4000美元则模拟买入0.5个"}
+    ]
+
+    # 1. 模型决策：是否调用工具
+    response = await client.chat.completions.create(
+        model=os.getenv("DOUBAO_ENDPOINT_ID"),
+        messages=messages,
+        tools=tools_definition,
+        tool_choice="auto"
+    )
+
+    # 2. 执行工具调用
+    response_message = response.choices[0].message
+    if response_message.tool_calls:
+        for tool_call in response_message.tool_calls:
+            func_name = tool_call.function.name
+            args = json.loads(tool_call.function.arguments)
+            # 工具分发执行
+            if func_name == "get_token_price":
+                result = price_tool.execute(**args)
+            elif func_name == "execute_swap":
+                result = swap_tool.execute(**args)
+            print(f"工具执行结果：{result}")
+```
+
+结果：成功跑通！模型能正确识别工具、传递参数，工具执行后返回结果，实现完整智能循环。
+
+## 四、最终成果
+
+1.  功能实现：
+    
+    -   实时价格查询：调用 `RealTimePriceTool` 获取 ETH/BTC 等代币价格；
+        
+    -   智能决策：豆包模型根据价格判断是否触发交易条件；
+        
+    -   模拟交易：满足条件时执行 `SpoonSwapTool` 模拟买入 / 卖出。
+        
+2.  代码结构：
+    
+    -   `main.py`：核心 ReAct 循环、模型对接、工具调度；
+        
+    -   `tools.py`：价格查询、交易模拟工具实现；
+        
+    -   `.env.example`：环境变量模板（不含密钥）；
+        
+    -   `requirements.txt`：依赖清单（通过 `pip freeze > requirements.txt` 生成）。
+        
+
+![1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-23-1769162886517-1.png)
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ## 个人DApp（本地部署）介绍
@@ -284,6 +512,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -337,6 +566,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -671,6 +901,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1066,6 +1297,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1684,6 +1916,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -1750,6 +1983,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1957,6 +2191,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -2107,6 +2342,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2205,6 +2441,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2341,6 +2578,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
