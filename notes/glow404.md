@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+ERC-20
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 打卡
 <!-- DAILY_CHECKIN_2026-01-20_END -->
@@ -30,11 +37,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 clock on
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -73,11 +82,13 @@ DEPIN：Decentralized Physical Infrastructure Networks，去中心化物理基�
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -152,6 +163,7 @@ IBC：Inter-Blockchain Communication Protocol，跨链通信协议。
 
 
 
+
 在 [My First NFT](https://nft.myfirst.io/) mint 第一个 NFT √
 
 完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战 √
@@ -214,6 +226,7 @@ tele很多矿池质押的群都是诈骗的，
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
