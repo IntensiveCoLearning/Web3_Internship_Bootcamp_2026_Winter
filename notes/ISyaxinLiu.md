@@ -15,8 +15,679 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## **什么是 ERC20?**
+
+[ERC20](https://learnblockchain.cn/docs/eips/EIPS/eip-20) 是 Ethereum 网络上最出名且应用最广的代币标准之一。它提供了一个统一的接口标准，用于创建可互换代币，这些代币可以用来代表任何事物，从货币到积分等。
+
+该标准定义了一组 API（应用程序编程接口），涉及到代币在智能合约中的转移方式，如何获取数据（比如各[账户](https://learnblockchain.cn/tags/%E8%B4%A6%E6%88%B7?map=EVM)的代币余额），以及如何接收、记录和使用这些代币。
+
+### **ERC20 核心方法和事件**
+
+ERC20 标准主要定义了以下几个方法和两个事件：
+
+方法：
+
+-   `name() public view returns (string)`：可选；返回一个字符串值，表示代币的名称
+    
+-   `symbol() public view returns (string)`：可选；返回一个字符串值，表示代币的简写或缩写。
+    
+-   `decimals() public view returns (uint8)`：可选；返回一个 uint8 类型的值，表示代币可以分割到的小数位数。许多代币选择`18`为其小数值，因为这是 Ether(ETH) 使用的小数位数
+    
+-   `totalSupply() public view returns (uint256)`：返回代币的总供应量
+    
+-   `balanceOf(address _owner) public view returns (uint256 balance)`：返回特定地址(\_owner)的代币余额
+    
+-   `transfer(address _to, uint256 _value) public returns (bool success)`：从调用者的地址转移 \_value 量的代币到地址 \_to，成功返回 true
+    
+-   `transferFrom(address _from, address _to, uint256 _value) public returns (bool success)`：允许 \_spender 从 \_from 转移 \_value 量的代币到 \_to
+    
+-   `approve(address _spender, uint256 _value) public returns (bool success)`：允许 \_spender 从调用者的账户多次取回总共 \_value 量的代币
+    
+-   `allowance(address _owner, address _spender) public view returns (uint256 remaining)`：返回 \_spender 仍然被允许从 \_owner 提取的代币数量
+    
+
+事件：
+
+-   `Transfer(address indexed _from, address indexed _to, uint256 _value)`：在代币被转移时触发。
+    
+-   `Approval(address indexed _owner, address indexed _spender, uint256 _value)`：在调用 approve 方法时触发。
+    
+
+## **编写一个简单的 ERC20 代币合约**
+
+下面是一个简单的 ERC20 代币合约的实现
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+
+contract BaseERC20 {
+    string public name; 
+    string public symbol; 
+    uint8 public decimals; 
+
+    uint256 public totalSupply; 
+
+    mapping (address => uint256) balances; 
+
+    mapping (address => mapping (address => uint256)) allowances; 
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+
+    constructor() {
+        name = "MyToken"; 
+        symbol = "MTK"; 
+        decimals = 18; 
+        totalSupply = 100000000 * 10 ** uint256(decimals);
+
+        balances[msg.sender] = totalSupply;  
+    }
+
+    function balanceOf(address _owner) public view returns (uint256 balance) {
+        return balances[_owner];    
+    }
+
+    function transfer(address _to, uint256 _value) public returns (bool success) {
+        require(_to != address(0), "ERC20: transfer to the zero address");
+        require(balances[msg.sender] >= _value, "ERC20: transfer amount exceeds balance");
+
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+
+        emit Transfer(msg.sender, _to, _value);
+        return true;
+    }
+
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+        require(_from != address(0), "ERC20: transfer from the zero address");
+        require(_to != address(0), "ERC20: transfer to the zero address");
+        require(balances[_from] >= _value, "ERC20: transfer amount exceeds balance");
+        require(allowances[_from][msg.sender] >= _value,"ERC20: transfer amount exceeds allowance");
+
+        balances[_from] -= _value;
+        balances[_to] += _value;
+
+        allowances[_from][msg.sender] -= _value;
+
+        emit Transfer(_from, _to, _value);
+        return true;
+    }
+
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        allowances[msg.sender][_spender] = _value; 
+        emit Approval(msg.sender, _spender, _value); 
+        return true; 
+    }
+
+    function allowance(address _owner, address _spender) public view returns (uint256 remaining) {
+        return allowances[_owner][_spender];
+    }
+}
+```
+
+## **使用 OpenZeppelin 创建 ERC20 代币**
+
+[OpenZeppelin](https://docs.openzeppelin.com/contracts/5.x/) 是一个开源的区块链开发框架，它提供了安全的合约模板来简化开发过程。
+
+对于想要创建 ERC20 代币的开发者来说，使用 OpenZeppelin 可以极大地简化开发过程，因为它内置了遵守 ERC20 标准的可复用合约，这些合约经过严格审计，能够减少潜在的安全风险。
+
+安装好 OpenZeppelin 库后（安装方法见前面的 [Hardhat 开发框架](https://learnblockchain.cn/article/22640) 或者 [Foundry 开发框架](https://learnblockchain.cn/article/22641)），你可以开始编写你的 ERC20 代币合约。
+
+OpenZeppelin 提供了一些基础合约，你可以通过继承和扩展这些合约来创建你自己的代币合约。
+
+下面是使用 OpenZeppelin 创建一个简单的 ERC20 代币的示例：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 导入 OpenZeppelin 提供的 ERC20 标准合约
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+// 创建一个新的合约，继承自 OpenZeppelin 的 ERC20 合约
+contract MyToken is ERC20 {
+    // 构造函数将初始化 ERC20 供应量和代币名称
+    constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
+        // 通过 _mint 函数铸造初始供应量的代币到部署合约的地址
+        _mint(msg.sender, initialSupply);
+    }
+}
+```
+
+在这个例子中，我们通过几行代码就可以实现一个 ERC20 合约。
+
+### **常见扩展合约**
+
+在使用 OpenZeppelin 库时，有多种用于扩展功能的合约可用。这些合约经过专门的设计以增加如访问控制、代币经济机制（如燃烧和铸造）以及安全功能（如防止重入攻击）等功能。
+
+常见的扩展合约示例
+
+1.  燃烧代币:
+    
+    ERC20Burnable：允许代币持有者销毁（burn）一定数量的代币，从而从流通中永久移除这些代币。
+    
+2.  暂停合约:
+    
+    ERC20Pausable：允许合约的管理员暂停合约的所有操作，这在遇到安全问题时是一种非常有用的应急措施。
+    
+3.  授权代币使用：
+    
+    ERC20Permit：允许代币持有者通过签署一个允许他人在其帐户上花费特定数量代币的许可，从而通过一次交易执行授权。这种机制使用了 EIP-2612 提案中定义的方法。
+    
+
+### **实现扩展合约**
+
+要实现一个扩展合约，开发者需要根据需求选择合适的 OpenZeppelin 基础合约，并通过 [Solidity](https://learnblockchain.cn/course/93) 的 `is` 关键字来继承它。
+
+下面是一个简单的示例，说明如何创建一个可燃烧的 ERC20 代币：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+
+contract MyToken is ERC20, ERC20Burnable {
+    constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
+        _mint(msg.sender, initialSupply);
+    }
+}
+```
+
+在这个例子中，MyToken 继承了 OpenZeppelin 的 ERC20 和 ERC20Burnable 合约。这样，它就拥有了 ERC20 代币的标准功能，并加上了可以燃烧代币的能力。
+
+在 ERC20Burnable 合约中，`burn` 函数的实现通常如下：
+
+```
+function burn(uint256 amount) public virtual {
+    _burn(_msgSender(), amount);
+}
+```
+
+此函数由代币的持有者调用，并需要一个参数 `amount`，表示要销毁的代币数量。函数调用 `_burn` 方法，此方法定义在 [OpenZeppelin](https://learnblockchain.cn/tags/OpenZeppelin?map=EVM) 的 [ERC20](https://learnblockchain.cn/tags/ERC20?map=EVM) 基础合约中，用于从执行操作的地址中减少相应数量的代币，并相应减少总供应量。
+
+## **总结**
+
+此章节的目的是向你展示如何从零开始创建一个遵循 [ERC20](https://learnblockchain.cn/tags/ERC20?map=EVM) 标准的代币合约，理解其方法的实际应用，以及如何利用 [OpenZeppelin](https://learnblockchain.cn/tags/OpenZeppelin?map=EVM) 合约来简化开发过程。
+
+# **详解 ERC-1363 代币标准**
+
+-   [RareSkills](https://learnblockchain.cn/rareskills)
+    
+-   发布于 2024-06-28 18:31
+    
+-   阅读 3873
+    
+
+ERC-1363 使智能合约能够检测并响应代币的转账。
+
+## **ERC-1363 解决了什么问题？**
+
+假设用户向合约转账 ERC-20 代币。由于没有机制可以查看是谁进行了转账，智能合约无法为转账用户记账。
+
+虽然事件可以跟踪此信息，但只能被链下消费者使用。智能合约无法在没有预言机的情况下读取事件。
+
+### **传统方案：通知接收者的替代方法是接收者使用 transferFrom 将代币转账给自己**
+
+上述问题的典型解决方法是代币发送方批准接收智能合约代表发送方转账代币。
+
+```
+contract ReceivingContract {
+	function deposit(uint256 amount) external {
+		// 如果未经批准或用户余额不足，将会回滚
+		ERC20(token).transferFrom(msg.sender, address.this, amount);
+
+		deposits[msg.sender] += amount;
+	}
+}
+```
+
+然后存款人调用接收智能合约的函数（在上面的示例代码中为 deposit）来从发送方转账代币到合约。由于合约知道它从用户那里转账了代币，因此能够正确记账。
+
+然而，为了批准合约转账代币，需要增加额外的交易费用。
+
+此外，用户在批准合约后应将批准设置为零，否则存在合约被利用的风险，可能导致合约从用户那里提取更多 ERC-20 代币。
+
+## **转账 Hook（钩子）**
+
+转账 Hook 是接收智能合约中的预定义函数，当它接收到代币时将被调用。也就是说，代币合约在接收到转账指令后，会在接收地址上调用预定义函数。
+
+如果函数不存在、回滚或未返回预期的成功值，则转账会回滚。
+
+已经熟悉 [ERC-721](https://learnblockchain.cn/tags/ERC721?map=EVM) 标准中的 onERC721Received 的读者将对转账Hook很熟悉。
+
+### **ERC-1363 扩展了 ERC-20 标准，添加了转账Hook**
+
+要实现该标准，ERC-20 需要额外的函数（稍后会解释）来转账代币以触发接收方的转账Hook，并且接收方必须根据标准实现转账Hook。
+
+### **IERC1363Receiver**
+
+对于希望被通知其已收到 ERC-1363 代币的合约，它们必须实现 IERC1363Receiver（请查看[此处的 OpenZeppelin 实现](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/interfaces/IERC1363Receiver.sol) ），其中包含一个名为 onTransferReceived 的函数：
+
+```
+pragma solidity ^0.8.20;
+
+interface IERC1363Receiver {
+// 成功时返回`bytes4(keccak256("onTransferReceived(address,address,uint256,bytes)"))`
+	function onTransferReceived(
+		address operator,
+		address from,
+		uint256 value,
+		bytes calldata data
+	) external returns (bytes4);
+}
+```
+
+-   operator 是发起转账的地址
+    
+-   from 是从中扣除 ERC-1363 代币的账户
+    
+-   value 是转账的代币数量
+    
+-   data 由**operator**指定以转发给接收方
+    
+
+**在实现此函数时，请始终检查 msg.sender 是否是你希望接收 ERC-1363 代币的代币，因为任何人都可以使用任意值调用 onTransferReceived()。**
+
+以下是一个接受 ERC-1363 代币的最小示例合约：
+
+```
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/interfaces/IERC1363Receiver.sol";
+import "@openzeppelin/contracts/interfaces/IERC1363.sol";
+
+contract TokenReceiver is IERC1363Receiver {
+	address internal erc1363Token;
+
+	constructor(address erc1363Token_) {
+		erc1363Token = erc1363Token_;
+	}
+
+	mapping(address user => uint256 balance) public balances;
+
+	function onTransferReceived(
+		address operator,
+		address from,
+		uint256 value,
+		bytes calldata data
+	) external returns (bytes4) {
+		
+		require(msg.sender == erc1363Token, "not the expected token");
+		balances[from] += value;
+		return this.onTransferReceived.selector;
+	}
+
+	function withdraw(uint256 value) external {
+		require(balances[msg.sender] >= value, "balance too low");
+		balances[msg.sender] -= value;
+	
+		IERC1363(erc1363Token).transfer(msg.sender, value);
+	}
+
+}
+```
+
+合约知道自己收到 ERC-20 代币的传统方式是使用 transferFrom 函数，该函数需要首先进行批准，但是使用 ERC-1363 后，合约能够知道自己已收到代币，并且还能够消除批准步骤，因为 transferAndCall 将代币转账给合约（无需批准）并调用 onTransferReceived 函数。·
+
+## **通过 ERC-20 最大化向后兼容性**
+
+新代币标准的问题在于现有协议无法使用它们，除非它们与先前的标准完全兼容。
+
+为了最大化向后兼容性，**ERC-1363 是一种 ERC-20 代币**，它添加了旧协议不需要使用的额外函数。
+
+所有现有的 ERC-20 函数：name、symbol、decimals、totalSupply、balanceOf、transfer、transferFrom、approve 和 allowance 的行为都与 ERC-20 标准规定的完全一致。
+
+ERC-1363 标准添加了新函数到 ERC-20，以便旧协议仍然可以与 ERC-1363 代币交互，就像与 ERC-20 代币一样。但是，如果需要，新协议可以利用 ERC-1363 上的转账Hook。
+
+要成为符合 ERC-1363 标准的代币，代码还必须实现六个额外的函数：
+
+-   两个版本的 transferAndCall
+    
+-   两个版本的 transferFromAndCall
+    
+-   两个版本的 approveAndCall
+    
+
+顾名思义，这些函数将执行 ERC-20 操作，然后调用接收方的Hook函数。
+
+每个函数都有两个版本，一个带有数据参数，一个不带。数据参数是为了发送方能够将数据转发给接收合约（稍后我们将展示一个示例）。
+
+```
+// 有两个 transferAndCall 函数，
+// 一个带有数据参数，一个不带
+
+function transferAndCall(
+	address to,
+	uint256 value
+) external returns (bool);
+
+function transferAndCall(
+	address to,
+	uint256 value,
+	bytes calldata data
+) external returns (bool);
+
+// 有两个 transferFromAndCall 函数，
+// 一个带有数据参数，一个不带
+
+function transferFromAndCall(
+	address from,
+	address to,
+	uint256 value
+) external returns (bool);
+
+function transferFromAndCall(
+	address from,
+	address to,
+	uint256 value,
+	bytes calldata data
+) external returns (bool);
+
+// 有两个 approveAndCall 函数，// 一个带有数据参数，一个不带```
+function approveAndCall(
+	address spender,
+	uint256 value
+) external returns (bool);
+
+function approveAndCall(
+	address spender,
+	uint256 value,
+	bytes calldata data
+) external returns (bool);
+```
+
+## **ERC-721 inspiration: transferFrom vs safeTransferFrom**
+
+与 ERC-721 标准类似，ERC-1363 中 transferFromAndCall 和 transferFrom 之间的区别与 ERC-721 中 transferFrom 和 safeTransferFrom 之间的区别相同。然而，“safe”不是一个理想的函数名称，因为转账挂钩引入了潜在的重入向量，所以它并不“安全”。ERC-1363 使用的“call”一词的添加使得函数正在做什么更加明确：在转账后调用接收者通知其代币已转移给它。
+
+## **参考实现**
+
+可以在这里找到一个 [ERC-1363 实现](https://github.com/vittominacori/erc1363-payable-token/tree/master) 。我们将使用该示例中的大量代码。逐步解释代码库比一次性粘贴实现更容易。对于实现 ERC-1363 代币的人，请使用上面链接的实现。这里的代码仅供说明目的。
+
+ERC-1363 使用与 ERC-20 相同的余额和批准存储变量。它不存储额外信息。
+
+## **ERC-1363 代码概述**
+
+### **继承 ERC-20**
+
+正如前面强调的，ERC-1363 是一个具有附加功能的 ERC-20 代币。构建 ERC-1363 的第一步是继承 ERC-20：
+
+```
+//SPDX-License-Identifier: MIT
+
+pragma solidity 0.8.24;
+import "@openzeppelin/contracts@5.0.0/token/ERC20/ERC20.sol";
+
+contract ERC1363 is ERC20 {
+	constructor(
+		string memory name,
+		string memory symbol
+	)ERC20(name, symbol) {}
+}
+```
+
+### **transferFromAndCall(address to, uint256 value) external returns (bool)**
+
+仅当接收地址实现 onTransferReceived()并返回 onTransferReceived()的四字节函数选择器时，transferFromAndCall 才成功。
+
+```
+function transferFromAndCall(
+	address from,
+	address to,
+	uint256 value,
+	bytes memory data
+) public virtual returns (bool) {
+
+	// 首先调用父级中的 ERC-20 transferFrom 函数
+	if (!transferFrom(from, to, value)) {
+		revert ERC1363TransferFromFailed(from, to, value);
+	}
+
+	// 然后调用接收者
+	_checkOnTransferReceived(from, to, value, data);
+	return true;
+}
+
+// 此函数没有数据参数，转发空数据
+
+function transferFromAndCall(
+	address from,
+	address to,
+	uint256 value
+) public virtual returns (bool) {
+	// \`data\`为空
+	return transferFromAndCall(from, to, value, "");
+}
+```
+
+### **transferAndCall(address to, uint256 value) external returns (bool)**
+
+这与 transferFromAndCall 非常相似，只是 from 是 msg.sender。
+
+```
+function transferAndCall(
+	address to,
+	uint256 value,
+	bytes memory data
+) public virtual returns (bool) {
+	if (!transfer(to, value)) {
+		revert ERC1363TransferFailed(to, value);
+	}
+	_checkOnTransferReceived(msgSender(), to, value, data);
+	
+	return true;
+}
+
+function transferAndCall(
+	address to,
+	uint256 value
+) public virtual returns (bool) {
+
+	return transferAndCall(to, value, "");
+}
+```
+
+### **\_checkOnTransferReceived()**
+
+此函数检查接收者是否为合约，如果不是则回滚。然后尝试调用 onTransferReceived，如果未收到 _onTransferReceived(address,address,uint256,bytes)_ 的函数选择器 0x88a7ca5c，则回滚。如果 onTransferReceived 回滚，则此函数使用从 onTransferReceived 接收的错误消息回滚。
+
+因为此函数如果发送到 EOA（常规钱包）会回滚，所以将 ERC-1363 转账给 EOA 应使用 ERC-20 函数 transfer 或 transferFrom：
+
+```
+function _checkOnTransferReceived(
+	address from,
+	address to,
+	uint256 value,
+	bytes memory data
+) private {
+	
+	if (to.code.length == 0) { 
+		revert ERC1363EOAReceiver(to); 
+	}           
+
+	try IERC1363Receiver(to).onTransferReceived(_msgSender(), from, value, data) returns (bytes4 retval) {                
+		if (retval != IERC1363Receiver.onTransferReceived.selector) {                    
+			revert ERC1363InvalidReceiver(to);                	
+		}            
+	} catch (bytes memory reason) {                
+		if (reason.length == 0) {                    
+			revert ERC1363InvalidReceiver(to);                
+		} else {                        
+		
+			// 此代码导致 ERC-1363 回滚                        
+			// 与其调用的合约相同的回滚字符串                    
+			assembly {                        
+				revert(add(32, reason), mload(reason))                    
+			}                
+		}            
+	}
+}
+```
+
+### **approveAndCall**
+
+在上述工作流程中，被调用的智能合约是 ERC-1363 代币的接收者。
+
+然而，如果我们希望另一个合约成为我们代币的发送者怎么办？例如，路由器合约，如 [Uniswap V2 Router](https://learnblockchain.cn/article/11270)，不持有代币的保管权。它将它们转发给 Uniswap 进行交易。
+
+传统上，这样的架构使用“先批准再转账”工作流程，但使用 ERC-1363，我们可以在一笔交易中完成这个操作。顾名思义，刚刚获得批准以花费另一个地址的代币的合约会得到一个特殊的挂钩函数调用。
+
+与 transferAndCall 函数一样，根据调用的 approveAndCall，向交易提供附加数据是可选的：
+
+```
+function approveAndCall(        
+	address spender,        
+	uint256 value
+) public virtual returns (bool) {        
+	return approveAndCall(spender, value, "");
+}
+
+function approveAndCall(        
+	address spender,        
+	uint256 value,        
+	bytes memory data
+) public virtual returns (bool) {        
+	if (!approve(spender, value)) {            
+		revert ERC1363ApproveFailed(spender, value);        
+	}        
+	
+	_checkOnApprovalReceived(spender, value, data);        
+	
+	return true;
+}
+
+```
+
+### **IERC1363Spender**
+
+类似于 IERC1363Receiver，当调用 approvalAndCall 时，会触发名为 onApprovalReceived 的函数。
+
+这是 OpenZeppelin 提供的 [IERC1363Spender 接口](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/interfaces/IERC1363Spender.sol) 。下面的代码已删除注释：
+
+```
+interface IERC1363Spender {
+    
+	function onApprovalReceived(            
+		address owner,            
+		uint256 value,            
+		bytes calldata data
+	) external returns (bytes4);
+
+}
+```
+
+只有代币的所有者可以批准另一个地址，因此不需要操作员参数 —— 在批准期间，操作员和所有者必须是相同的地址。value 是批准金额的大小。
+
+以下合约在收到 onApprovalReceived 后将代币转发到数据中指定的地址。
+
+```
+import "@openzeppelin/contracts/interfaces/IERC1363Spender.sol";
+
+contract Router is IERC1363Spender {        
+	// 需要额外的功能，以便批准的钱包将批准的 ERC-1363 代币添加到此映射中        
+
+	mapping(address => bool) isApprovedToken;        
+}
+
+function onApprovalReceived(            
+    address owner,            
+    uint256 value,            
+    bytes calldata data
+) external returns (bytes4) {                
+    require(isApprovedToken[msg.sender], "not an approved token"); 
+               
+    // getTarget is not implemented here,                
+    // see the next section for how to it work                
+    address target = getTarget(data);                
+    bool success = IERC1363(msg.sender).transferFrom(owner, target, value);                
+
+    require(success, "transfer failed");                
+
+    return this.onApprovalReceived.selector; 
+       
+}
+```
+
+此函数应检查`msg.sender`是否为代币合约，因为如果任何人都可以调用它，可能会导致意外行为。
+
+使用 ERC-1363 的示例接收合约
+
+以下示例演示了对`data`参数的用例。
+
+```
+interface ERC1363Receiver {      
+    function onTransferReceived(
+        address operator,                                  
+        address from,                                  
+        uint256 value,                                  
+        bytes memory data
+    ) external returns (bytes4);
+}
+
+contract ReceiverContract is ERC1363Receiver {        
+    mapping(address => uint256) public deposits;        
+    
+    address immutable token;        
+
+    constructor(address token_) {                
+        token = token_;        
+    }        
+
+    event Deposit(
+        address indexed from,                                    
+        address indexed beneficiary,                                    
+        uint256 value
+    );        
+
+    function onTransferReceived(                
+        address, // operator                
+        address from,                
+        uint256 value,                
+        bytes memory data
+    ) external returns (bytes4) {                
+        
+        require(msg.sender == token, "Caller not ERC1363 token");                
+        address beneficiary;                
+        if (data.length == 32) {                        
+            beneficiary = abi.decode(data, (address));                
+        } else {                        
+            beneficiary = from;                
+        }                
+        
+        deposits[from] += value;                
+        
+        emit Deposit(from, beneficiary, value);                
+        return this.onTransferReceived.selector;        
+    }
+}
+```
+
+## **早期尝试解决代币Hook的标准**
+
+ERC-1363 不是第一个向 ERC-20 添加转账挂钩的标准。首先，于 2017 年 5 月提出了 [ERC-223](https://eips.ethereum.org/EIPS/eip-223)，以在 ERC-20 的转账和 transferFrom 中添加转账挂钩。但这意味着智能合约无法接收代币，除非它们实现了转账挂钩。这使得该标准与接受 ERC-20 代币但没有转账挂钩的协议不兼容。
+
+ERC-777 于 2017 年 11 月推出。在此标准中，除非接收方在 [ERC-1820 注册表](https://eips.ethereum.org/EIPS/eip-1820) 中注册了他们的地址，否则接收方不会收到转账挂钩调用。
+
+然而，协议并未设计 ERC-20 的转账或 transferFrom 以调用其他合约。这使得这些合约容易受到重入攻击，因为它们没有预期“ERC-20” 代币会调用其他合约。有关更多信息，请参阅 [Uniswap V1 重入漏洞解析](https://github.com/OpenZeppelin/exploit-uniswap)。
+
+此外，ERC-777 标准在 gas 方面相当昂贵，因为它需要向 ERC-1820 注册表合约发出额外的调用。
+
+ERC-1363 通过完全不改变 ERC-20 标准中的转账和 transferFrom 来解决所有这些问题。所有的转账挂钩都在具有显式调用名称的函数中调用。
+
+## **何时使用 ERC-1363 标准**
+
+ERC-1363 标准可以在任何应用 ERC-20 标准的地方使用。在作者看来，这个标准是 ERC-20 的理想替代品，因为它可以消除 ERC-20 的批准步骤，这导致了大量资金的损失。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # **稳定币**
 
 稳定币（Stablecoin）是指价值绑定（或锚定）到某个稳定资产，如法定货币、黄金或其他商品的加密货币。稳定币旨在结合加密货币的即时处理、安全性和隐私性与传统法定货币的稳定价值。稳定币是Web3世界中的重要组成部分，因为它们提供了一种在去中心化金融（DeFi）生态系统中避免加密市场波动性的方式。
@@ -1142,6 +1813,7 @@ contract Handler is Test {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # Solidity 101 详细知识点讲解
 
@@ -3065,11 +3737,13 @@ contract CompleteExample {
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3987,6 +4661,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -4987,6 +5662,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -6003,6 +6679,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -6206,6 +6883,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -6937,6 +7615,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
