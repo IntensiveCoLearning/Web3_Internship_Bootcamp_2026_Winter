@@ -17,7 +17,11 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
-# Polymarket 学习笔记
+# Polymarket
+
+基于链接[https://github.com/ogalias/OGBC-Intern-Project/tree/master/stage1](https://github.com/ogalias/OGBC-Intern-Project/tree/master/stage1)进行学习
+
+## 一、学习笔记
 
 Polymarket 是基于预测市场的去中心化平台，核心依赖 Gnosis 条件代币框架（CTF）和 ERC-1155 标准实现头寸管理，其核心数据模型围绕事件、市场、条件、集合、头寸展开，各组件通过链上日志串联形成可追溯的证据链。事件代表预测主题（如 “2024 年美国大选”），一个事件可包含多个市场，每个市场对应一个二元（Yes/No）预测问题，多结果事件通过 “负风险（NegativeRisk）” 机制关联，将某市场的 NO 头寸转换为其他市场的 YES 头寸，提升资金与流动性利用率。
 
@@ -26,10 +30,151 @@ Polymarket 是基于预测市场的去中心化平台，核心依赖 Gnosis 条�
 Polymarket 以 USDC（Polygon 上为 USDC.e）作为唯一抵押品，每份头寸代币背后对应 1 USDC 资金，代币价格可理解为市场对该结果发生概率的定价（如 0.6 USDC 即代表 60% 发生概率）。市场完整生命周期包含四个关键链上环节：创建阶段通过调用 prepareCondition 注册条件，触发 ConditionPreparation 事件记录核心参数；初始流动性阶段通过 splitPosition 将 USDC 拆分为 Yes/No 头寸，PositionSplit 事件记录资金锁定与代币生成；交易阶段通过 CTF Exchange 合约撮合订单，OrderFilled 事件记录成交双方、资产数量、手续费等详情，需注意过滤重复日志避免统计偏差；结算阶段由预言机调用 reportPayouts 公布结果，胜出头寸可通过 redeemPositions 赎回 USDC，完成市场闭环。
 
 链上日志是解码 Polymarket 数据的核心，ConditionPreparation 确认市场基础信息，PositionSplit 与 PositionsMerge 记录头寸的生成与销毁，OrderFilled 还原交易详情，这些日志串联形成完整证据链，支持通过交易哈希解析交易细节、通过 conditionId 还原市场参数，实现对市场全流程的追溯与验证。
+
+## 二、任务A：Polymarket 交易解码器
+
+实现一个通用的交易日志解析器，输入交易哈希（在 Polygon 链上），输出该交易中 Polymarket 订单撮合的详情。
+
+完整的实现代码，请访问我的 GitHub 仓库[SU-AN-coder/–A](https://github.com/SU-AN-coder/--A)
+
+### 一、 核心技术挑战与错误分析
+
+**1\. 节点通讯瓶颈：**`ExtraDataLengthError`
+
+-   **遇到的错误**：在使用 `web3.py` 连接 Polygon 节点时，程序频繁抛出“区块头 extraData 长度超标”的异常。
+    
+-   **技术原因**：以太坊标准规定 `extraData` 长度为 32 字节。但 Polygon 采用 **PoA (Proof of Authority)** 共识，为了安全性，验证者的签名被强制塞进了这个字段，导致其长度远超标准。
+    
+-   **解决方案**：通过注入特定的中间件来“劫持”请求，告诉库如何处理非标的区块结构。
+    
+    Python
+    
+    ```
+    # Web3 v7 最新适配写法
+    from web3.middleware import ExtraDataToPOAMiddleware
+    w3.middleware_onion.inject(ExtraDataToPOAMiddleware, layer=0)
+    ```
+    
+
+**2\. 异步数据不同步：**`Transaction Not Found`
+
+-   **遇到的错误**：在区块链浏览器（Polygonscan）上已经确认成交的交易，通过 RPC 接口查询却返回“找不到交易”。
+    
+-   **技术原因**：公共 RPC 节点（如 `drpc`）实际上是一个节点集群。当你发起请求时，可能会被分配到尚未完成最新块同步的服务器上。
+    
+-   **优化策略**：引入了 **备用节点池** 和 **指数退避重试机制**。当主节点返回空值时，脚本会自动轮询其他服务商。
+    
+
+### 二、 关键技术：EVM 日志的“剥离”与“切片”
+
+Polymarket 的成交数据并不是明文，而是存储在 `receipt['logs']` 里的十六进制字节流中。
+
+**1\. Topic 路由过滤**
+
+为了在成千上万的日志中找到那一笔成交，我们使用了 **Event Signature（事件签名）** 技术。
+
+-   `OrderFilled` 事件的唯一标识符（Topic\[0\]）是其函数签名的 Keccak-256 哈希值：`0x3445565da59ada415359f99440a7800906b948a74999f17666f4e7f3e547c133`。
+    
+-   程序只处理命中该哈希且来源于 Polymarket 交易所合约地址（`0x4bFb...`）的日志。
+    
+
+**2\. Data 字段的切片解码 (Hex Slicing)**
+
+这是最硬核的部分。`Data` 字段是一个巨大的十六进制长串，我们必须将其按每 **32 字节（64 个字符）** 进行物理切片：
+
+Python
+
+```
+# 示例：解析 Data 字段的底层逻辑
+data_hex = log['data'].hex().replace('0x', '')
+# 每 64 位截取一个参数
+chunks = [data_hex[i:i+64] for i in range(0, len(data_hex), 64)]
+
+taker = "0x" + chunks[0][-40:]     # 解析吃单人地址
+m_aid = int(chunks[1], 16)         # 解析挂单资产ID (如果是0则是USDC)
+m_amt = int(chunks[3], 16)         # 解析挂单成交数量
+```
+
+### 三、 业务逻辑判定：如何识别“买”与“卖”
+
+在链上，所有的代币都是 ID
+
+-   **判定标准**：Polymarket 规定 USDC 的 `AssetId` 永远为 `0`。
+    
+-   **BUY 逻辑**：如果 `makerAssetId == 0`，代表挂单人提供的是钱，吃单人提供的是 Token。
+    
+-   **价格计算**：通过 `(支付的USDC数量 / 获得的Token数量)` 还原出用户在前端看到的成交单价（例如 0.52 USDC）。
+    
+
+### 四、 成果：标准化的 JSON 输出
+
+最终，我们将复杂的原始字节流转化为了符合任务 A 要求的结构化数据。
+
+![屏幕截图 2026-01-22 164342.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-23-1769158750332-_____2026-01-22_164342.png)
+
+## 三、任务B：市场参数解码 (Market Decoder)
+
+给定链上获取的市场创建相关信息（如 `ConditionPreparation` 日志，或已知的 `conditionId`），提取并计算出该市场的核心链上参数，包括预言机、问题 ID、抵押品地址，以及 YES/NO 两种头寸的 TokenId
+
+完整的实现代码，请访问我的 GitHub 仓库[SU-AN-coder/market-b](https://github.com/SU-AN-coder/market-b)
+
+### 1\. 核心技术原理：条件代币框架 (CTF)
+
+Polymarket 的底层是 **Gnosis Conditional Tokens Framework (CTF)**。其核心逻辑是将现实世界的问题（Oracle + QuestionId）转化为链上可交易的资产。
+
+从技术实现上，这涉及到一个**嵌套哈希**的计算过程：
+
+-   **Collection ID 的生成**：它并不是随机生成的 UUID，而是通过 `keccak256` 哈希计算得出的。技术细节在于它绑定了 `conditionId` 和一个 `indexSet`（位掩码）。
+    
+    -   **技术坑点**：在 Python 实现中，`indexSet` 必须被处理为 `bytes32`（32字节大端序）。如果直接按普通整数处理，算出来的哈希值会完全对不上。
+        
+-   **Position ID (TokenID) 的锚定**：这是最终在 ERC-1155 合约中流转的 ID。它是将 `collateralToken`（抵押品地址）与上述 `Collection ID` 再次进行哈希的结果。
+    
+
+### 2\. 遇到的技术问题
+
+A. 环境变量与操作系统的差异
+
+在 Windows PowerShell 环境下运行 Python 脚本时，Linux 风格的换行符 `\` 会导致解析错误。
+
+-   现象：出现 `MissingExpressionAfterOperator` 报错。
+    
+-   解决方案：这是由于 PowerShell 将 `--` 误认为是减法运算符。在编写跨平台工具时，必须考虑到 Shell 环境对参数解析的敏感性。推荐在文档中提供**单行命令**或使用反引号 `` ` `` 作为换行符。
+    
+
+B. 数据类型的严谨 (ABI Encoding)
+
+在计算哈希之前，必须模拟 EVM 的内存布局。
+
+-   **细节**：抵押品地址（Address）是 20 字节，但在哈希计算中，它通常需要被左补零（Left Padding）至 32 字节。
+    
+-   **代码片段示例**：
+    
+    Python
+    
+    ```
+    # 关键点：将 20 字节地址转换为 32 字节 bytes 格式
+    collateral_bytes = to_bytes(hexstr=address).rjust(32, b'\x00')
+    ```
+    
+    ps：如果不做这个补齐操作，算出来的 `tokenId` 会与链上实际 ID 产生“差之毫厘，谬以千里”的结果
+    
+
+### 3\. 数据一致性校验 (Verification)
+
+一个健壮的解码器不能只顾着算，还得具备**自我验证**的能力。我们引入了两个维度的校验：
+
+1.  **Gamma API 交叉引用**： Polymarket 官方的 Gamma API 会提供 `clobTokenIds`。我们的解码器输出必须与之 100% 匹配。这是验证我们哈希算法是否过时的“金标准”。
+    
+2.  **交易流闭环**： 在解析 `OrderFilled`（订单成交）日志时，我们会提取其中的资产 ID。通过 Market Decoder，我们可以瞬间判定这笔交易是在哪个细分市场（Condition）下发生的，从而实现从“链上噪音”到“结构化信息”的转化。
+    
+
+![屏幕截图 2026-01-22 181016.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-23-1769159447788-_____2026-01-22_181016.png)
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ## 个人DApp（本地部署）介绍
 
@@ -138,6 +283,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -191,6 +337,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -524,6 +671,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -918,6 +1066,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1534,6 +1683,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -1600,6 +1750,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1805,6 +1956,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -1954,6 +2106,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2052,6 +2205,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2187,6 +2341,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
