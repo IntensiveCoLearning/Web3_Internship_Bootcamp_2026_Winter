@@ -15,13 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+今天的主要任务就是做海报和分配筹办黑客松的职位
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-23-1769182465412-image.png)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 今日主要的任务是邀请到了三位助教老师当我们x402专题space的嘉宾，以及学习了figma的基础操作，并且现在正在赶制海报！
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 今天还是补充学习了关于x402协议的相关内容知识，以及提交了我们小组的space策划方案，完成了我们第一阶段的任务目标！
 
@@ -206,6 +215,7 @@ x402 的核心是 **“机器对机器的自动支付”**。这恰恰踩中了�
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 昨天开始和小伙伴们组队准备策划一个关于x402议题的分享会，但之前没有了解过相关的概念，相当于是第一次接触
 
 所以今天的主要任务就是了解x402协议的内容，以及里面涉及到的概念逻辑梳理
@@ -355,6 +365,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今天梳理了一下btc的基本实现逻辑，笔记好像不能打公式，按截图来了那就
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833787688-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833814968-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833834458-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833863761-image.png)
@@ -362,6 +373,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -428,6 +440,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
@@ -439,11 +452,13 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今日补充学习前面内容
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -464,6 +479,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今天的学习内容围绕 Web3 的安全与合规两大核心议题展开，让我对当前生态中的风险和边界有了更清晰的认识。
 
 在安全方面，近期 Web3 领域面临严峻挑战。不仅有境外朝鲜黑客团队针对头部交易所发动的高阶攻击，还有大量针对普通用户的社交工程骗局。我曾多次在社交媒体上看到典型的钓鱼帖：有人声称自己看破红尘，愿将钱包中数万美元“赠予”他人，但提取需要支付一笔 Gas 费。一旦你用自己的钱包向该地址转入 Gas，黑客便能触发预设机制，窃取你的私钥，进而卷走全部资产。此外，还有伪装成正规钱包、交易所或工具的恶意链接，诱导用户输入助记词、授权签名或登录账号，最终导致资产被盗。这些手法看似简单，却极具迷惑性。对此，Adam 老师总结出个人防范的八字箴言：“不点、不签、不装、不转”——陌生链接不点开，不明请求不签名，非官方软件不安装，未经核实的信息不转发。这虽不能解决协议层或生态级的安全漏洞，但却是我们每个人守住资产的第一道防线。
@@ -475,6 +491,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -515,6 +532,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
