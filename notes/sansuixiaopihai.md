@@ -15,8 +15,261 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## **学习总结day12**
+
+今天主要的学习计划是看solidity的基础语法和复习前面的学习，并完善昨天的demo，今天主要记录其中的难点，和使用到的困难点；
+
+昨天的demo有几个bug点
+
+1.没有增加时间判断导致每次点击checkIn方法能获得多个积分，多次打卡，增加每一天打卡一次判断
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract PointSystem {
+    // 增加权限
+    address public owner;
+    // 定义映射接收每个地址的积分
+    mapping (address => uint) public points;
+    // 增加每一个签到时候的时间
+    mapping (address => uint256) public lastCheckInTime;
+​
+    // 构造函数
+    constructor() {
+        // 确认你是所有权
+        owner = msg.sender;
+    }
+    // 定义一个权限
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not Owner"); 
+        _;
+    }
+    // 每日签到功能，每日签到加10积分
+    function checkIn() public {
+        // 判断当前当前签到是否满足一天，如果满足一天就签到，没有就提示不满足时间
+        require(block.timestamp - lastCheckInTime[msg.sender] >= 1 days, unicode"还没到时间，明天再来！");
+        // 打卡之后把打卡的时间存储上，用于判断下次是否能打卡
+        lastCheckInTime[msg.sender] = block.timestamp;
+        points[msg.sender] += 10;
+    }
+​
+    // 积分转账功能
+    function transferAccount(address _to, uint256 sum) public {
+        require(_to != msg.sender, unicode"不能转账给自己");
+        // 判断是否有这么多积分
+        require(sum > 0, unicode"转账金额必须大于0");
+        require(points[msg.sender] >= sum, unicode"没有这么多积分");
+        // 第二部扣除当前的积分
+        points[msg.sender] -= sum;
+        // 增加转账人的积分
+        points[_to] += sum;
+    }
+    // 查询当前用户有多少积分
+    function getUserPoints(address _add) public view returns(uint256) {
+        return points[_add];
+    }
+​
+    // 销毁积分
+    function burn(uint256 _num) public {
+        require(points[msg.sender] >= _num, unicode"积分不足");
+        points[msg.sender] -= _num;
+    }
+    // 给某个地址打入积分（只有管理员才能打入）
+    function sendPoint(address _add, uint256 po) public onlyOwner{
+        require(po > 0, unicode"积分不能为0");
+        points[_add] += po;
+    }
+}
+```
+
+**常见的solidity全局变量：**
+
+`block`: 包含当前区块的元数据。
+
+-   `block.timestamp`: 当前区块的时间戳（uint）当前的**绝对时间戳**。注意在solidity中**时间戳的单位永远是 _秒_**
+    
+-   `block.number`: 当前区块的编号（uint）。
+    
+-   `block.difficulty`: 当前区块的难度（uint）。
+    
+-   `block.gaslimit`: 当前区块的 Gas 上限（uint）。
+    
+-   `block.coinbase`: 当前区块矿工的地址（address payable）
+    
+
+`msg`: 包含当前交易的元数据。
+
+-   `msg.sender`: 消息的发送者（address）。
+    
+-   `msg.value`: 发送的 Ether 数量（uint）。
+    
+-   `msg.data`: 包含函数选择器和参数的完整调用数（bytes）。
+    
+-   `msg.sig`: 调用数据的函数选择器（bytes4）。
+    
+
+`tx`: 包含当前交易的元数据。
+
+-   `tx.origin`: 交易发起者（合约）的地址（address）。
+    
+-   `tx.gasprice`: 交易的 Gas 价格（uint）。
+    
+
+`address(this)` **/** `address(0)`:
+
+-   `address(this)`: 当前合约的地址。
+    
+-   `address(0)`: 地址为零的地址。
+    
+
+mapping (address => uint) public points;
+
+但在实际开发中，可以直接用 public 变量自带的查询功能，省几行代码
+
+```
+mapping (address => uint) public points;
+// 这个函数都可以省略掉因为这个变量points可以直接使用
+function getUserPoints(address _add) public view returns(uint256) {
+    return points[_add];
+}
+```
+
+**错误：**
+
+```
+//之前一直理解错误了require，一直以为是当前面的判断成立，才会走后面的错误提示，实际是反着来的
+// 必须满足这个条件，否则就报错
+require(myDeposit.amount >0, unicode"当前账户没有存钱");
+```
+
+**solidity中的时间单位：**
+
+注意在solidity中**时间戳的单位永远是 _秒_**
+
+你可以直接在代码里写：
+
+-   `1 minutes` 自动等于 `60`
+    
+-   `1 hours` 自动等于 `3600`
+    
+-   `1 days` 自动等于 `86400`
+    
+-   `1 weeks` 自动等于 `604800`
+    
+
+**举个例子：**
+
+如果你想让用户锁仓 **1天**，你的代码可以不用让人手动输入秒数，而是直接写
+
+```
+// 强制锁仓 1 天
+bank[msg.sender] = Deposit({
+    amount: _amount,
+    unlockTime: block.timestamp + 1 days // Solidity 自动帮你把 1 days 换算成 86400
+});
+```
+
+今日demo
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract PointSystem {
+    struct Deposit {
+        uint256 amount;      // 存了多少
+        uint256 unlockTime;  // 什么时候能取（时间戳）
+    }
+    // 增加权限
+    address public owner;
+    // 定义映射接收每个地址的积分
+    mapping (address => uint) public points;
+    // 增加每一个签到时候的时间
+    mapping (address => uint256) public lastCheckInTime;
+    // 增加一个积分存款的功能
+    mapping  (address => Deposit) public bank;
+    // 构造函数
+    constructor() {
+        // 确认你是所有权
+        owner = msg.sender;
+    }
+    // 定义一个权限
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not Owner"); 
+        _;
+    }
+    // 每日签到功能，每日签到加10积分
+    function checkIn() public {
+        // 判断当前当前签到是否满足一天，如果满足一天就签到，没有就提示不满足时间
+        require(block.timestamp - lastCheckInTime[msg.sender] >= 1 days, unicode"还没到时间，明天再来！");
+        // 打卡之后把打卡的时间存储上，用于判断下次是否能打卡
+        lastCheckInTime[msg.sender] = block.timestamp;
+        points[msg.sender] += 10;
+    }
+​
+    // 积分转账功能
+    function transferAccount(address _to, uint256 sum) public {
+        require(_to != msg.sender, unicode"不能转账给自己");
+        // 判断是否有这么多积分
+        require(sum > 0, unicode"转账金额必须大于0");
+        require(points[msg.sender] >= sum, unicode"没有这么多积分");
+        // 第二部扣除当前的积分
+        points[msg.sender] -= sum;
+        // 增加转账人的积分
+        points[_to] += sum;
+    }
+    // 查询当前用户有多少积分
+    function getUserPoints(address _add) public view returns(uint256) {
+        return points[_add];
+    }
+​
+    // 销毁积分
+    function burn(uint256 _num) public {
+        require(points[msg.sender] >= _num, unicode"积分不足");
+        points[msg.sender] -= _num;
+    }
+    // 给某个地址打入积分（只有管理员才能打入）
+    function sendPoint(address _add, uint256 po) public onlyOwner{
+        require(po > 0, unicode"积分不能为0");
+        points[_add] += po;
+    }
+    // 存积分和锁定时间
+    function depositPoints(uint256 _amount, uint256 time) public {
+        // 1. 检查他在 points 里有没有这么多钱？
+        require(points[msg.sender] >= _amount, unicode"您账户现在好像没有那么多钱可用");
+        // 2. 检查他是不是已经在 bank 里存过钱了？(为了简化难度，假设每人只能存一笔，如果有存款就报错)
+        require(bank[msg.sender].amount == 0, unicode"您已经存过钱了，请先取出再存");
+        // require(Deposit[msg.sender].unlockTime - time ==0, unicode"您已经存过钱了，请先取出再存");
+        // 3. 扣除 points 里的余额
+        points[msg.sender] -= _amount;
+        // 4. 写入 bank
+        bank[msg.sender] = Deposit({
+            amount: _amount,
+            unlockTime: block.timestamp + time
+        });
+    }
+    // 取积分
+    function withdrawal() public {
+        Deposit memory myDeposit = bank[msg.sender];
+        // 当前账号是否有存钱
+        require(myDeposit.amount >0, unicode"当前账户没有存钱");
+        // 当前账户的积分是否已经到期了
+        require(block.timestamp >= myDeposit.unlockTime, unicode"当前账户没有到期了");
+        // 计算利息
+        // uint256 interest = myDeposit.amount*2;
+        // 5. 把本金+利息 加回到 points 余额里
+        points[msg.sender] += myDeposit.amount*2;
+        // 删除 bank 里的存款记录
+        delete bank[msg.sender];
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 \## 学习总结day11
 
 今天主要的学习计划是看solidity的基础语法和复习前面的学习，并动手写demo，今天主要记录其中的难点
@@ -283,6 +536,7 @@ points\[\_add\] += po;
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ## **学习总结day10**
 
 今天主要的学习计划是看solidity的基础语法和联系，今天的这些学习总结主要是记录一些比较难懂的学习点
@@ -426,6 +680,7 @@ function leaveMessage(string memory _msg) public {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ## **学习总结day09**
@@ -601,6 +856,7 @@ contract EventExample {
 
 
 
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -678,6 +934,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -766,6 +1023,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -829,6 +1087,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -942,6 +1201,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1105,6 +1365,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1300,6 +1561,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -1394,6 +1656,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
