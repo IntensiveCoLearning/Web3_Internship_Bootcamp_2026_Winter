@@ -15,8 +15,45 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## 📅 Day 12 运营向训练计划
+
+### 🎯 核心目标 (Objective)
+
+备战下周运营任务，今天搬家，好忙好忙，周末更新少
+
+### 📈 关键结果 (Key Results)
+
+-   **KR 1：**
+    
+    撰写周五发言稿
+    
+-   **KR 2：**
+    
+
+完成对推特 space 的活动策划与准备
+
+## 📝 复盘 (Reflection)
+
+**KR 1：**
+
+**完成度：1.0**
+
+![屏幕截图 2026-01-23 191051.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-23-1769166823381-_____2026-01-23_191051.png)
+
+**KR 2：**
+
+**完成度：1.0**
+
+**心得：**
+
+![屏幕截图 2026-01-23 190520.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/EchonetHoward/images/2026-01-23-1769166855757-_____2026-01-23_190520.png)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## 📅 Day 11 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -45,6 +82,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## 📅 Day 10 运营向训练计划
 
@@ -93,6 +131,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -320,6 +359,7 @@ _应对：_ 提前下载好 3 个优质演讲的高清视频文件作为备选�
 
 
 
+
 ## 📅 Day 8 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -378,6 +418,7 @@ _应对：_ 提前下载好 3 个优质演讲的高清视频文件作为备选�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -578,6 +619,7 @@ _在一战前，如果你存了 100 英镑，那等于你存了 732 克黄金。
 
 
 
+
 ## 📅 Day 6运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -611,6 +653,7 @@ _在一战前，如果你存了 100 英镑，那等于你存了 732 克黄金。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -978,6 +1021,7 @@ Adam 针对不同群体提出了具体的防御建议：
 
 
 
+
 ## 📅 Day 4 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -1293,6 +1337,7 @@ Emily 提醒从业者要保持警惕，识别风险项目：
 
 
 
+
 ### 🎯 核心目标 (Objective)
 
 学习[「安全与合规」](https://web3intern.xyz/zh/security/)部分，回顾历史知识
@@ -1585,6 +1630,7 @@ Web3 治理遇到的挑战\*\*「 Sybil 」\*\*：
 
 
 
+
 ## 📅 Day 2 运营向训练计划
 
 ### 🎯 核心目标 (Objective)
@@ -1802,6 +1848,7 @@ Austin Griffith 在创建钱包中，指出去中心化最大的优势：「 恭
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
