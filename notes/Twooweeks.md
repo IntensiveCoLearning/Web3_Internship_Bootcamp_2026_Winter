@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+\- event是log中的一部分，日志的gas消耗很少
+
+\- 构造函数不能被继承，只在部署函数的时候执行一次。父合约的构造函数不会自动执行，需要子类显示调用，即在子合约的构造函数中加入父合约的构造函数。
+
+\- 继承合约中会有一些抽象函数，需要你要子合约中去实现
+
+\- 如何实现随机数，手相向vrfchainlink发送请求，我们集成了随机数合约，随机数合约就能给我们调用函数调用外部chainlink产生随机数
+
+\- 随机单词是chainlink产生的随机数的集合
+
+\- 遵循check-effect-interation的设计模式以防止重入攻击：
+
+**Check**：首先，合约检查所需的条件是否满足（例如，用户是否有足够的余额，是否满足执行条件等）。
+
+**Effect**：然后，合约更新自己的状态（如转账金额、更新状态变量等）。
+
+**Interaction**：最后，合约与外部系统或地址进行交互（如转账或调用外部合约）
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -24,6 +46,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 **V1**
 
@@ -58,6 +81,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 DEX学习
@@ -144,6 +168,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -167,6 +192,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -207,6 +233,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -326,6 +353,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -354,6 +382,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -452,6 +481,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -476,6 +506,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -525,6 +556,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
