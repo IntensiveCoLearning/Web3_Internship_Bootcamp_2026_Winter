@@ -15,8 +15,73 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# 关于Vibe coding的入门与理解
+
+最近用Antigravity做了一个用于入门学习React的前端例子：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-23-1769179779370-image.png)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-23-1769180001107-image.png)
+
+此时我在想关于当下学习一门新语言，只要学习到能看出错误错在哪里似乎就够用了：
+
+**语法降权：** 具体的 API 调用，这些负担交给了Antigravity。
+
+**逻辑加权：** 我的核心能力变成了Debug。你需要理解语言的底层哲学，比如 Python 的异步模型，不是为了写出它，而是为了在 AI 生成的代码逻辑跑偏时，一眼看出这里的状态管理有问题。
+
+但是似乎能看出哪有错误或者不合适也许更难？
+
+* * *
+
+回到Vibe coding出的这个代码中，由于我看完了官方文档的入门教程后，希望通过例子来进一步巩固。
+
+# React学习
+
+## 2.1范型
+
+泛型让代码具有通用性。它不知道你会存什么，但通过 <T>，它可以灵活适配任何类型。
+
+## 2.2 自定义Hook
+
+  
+React 的 Hook 是逻辑复用的利器。当你发现自己多处都在操作 localStorage 时，就应该把它抽离出来。  
+代码实例
+
+```
+
+export function useLocalStorage<T>(key: string, initialValue: T) {
+  // 逻辑：初始化 -> 读取磁盘 -> 监听变化 -> 存回磁盘
+  // 这种复杂的逻辑被封装后，在 App.tsx 中只需要一行代码：
+  // const [tasks, setTasks] = useLocalStorage<Task[]>('tasks-list', []);
+}
+```
+
+## 2.3 全局状态管理
+
+  
+当状态需要在很多毫不相关的组件间共享时，Context 提供了一个广播。  
+
+````
+
+// 创建 Context
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+// 核心：Provider 包装。App 及其所有后代都能直接“收听”这个信号
+export const ThemeProvider = ({ children }) => { ... };
+
+// 消费：子组件通过 useTheme() 勾住这个信号
+const { theme, toggleTheme } = useTheme();
+```
+````
+
+## 依旧在准备IELTS 今日看的比较少 😭
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 # Uniswap 入门学习
 
 * * *
@@ -115,6 +180,7 @@ Yreal == 2000USDC
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 # React继续学习
 
 ## 找出 UI 精简且完整的 State 表示
@@ -162,6 +228,7 @@ function SearchBar({ filterText, onFilterTextChange }) {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ## **_首先继续昨天的阅读，然后搞一下React前端，因为我发现后续有DAPP开发。_**
@@ -307,6 +374,7 @@ TS 最大的作用是安全
 
 
 
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -372,6 +440,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -462,6 +531,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -595,6 +665,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -688,6 +759,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -774,6 +846,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
