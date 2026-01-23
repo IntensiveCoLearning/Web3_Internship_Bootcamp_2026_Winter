@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+### Opinion 目前的一些优势分析：
+
+**币安生态优势：**
+
+Opinion 平台定位为“BNB 链生态系统中首个宏观经济综合预测市场”，由 YZi Labs (原 Binance Labs) 孵化，并得到了 Binance 生态和 Mantle (Bybit 背后支持) 的全力支持。
+
+资本优势：Yzi Labs 领投使得 Opinion 项目短期内不必为商业化着急，可以集中资源去抢占市场。 获客优势：由币安所的支持，其品牌效应与币安背书，降低了用户的决策成本和心理防线。
+
+emm, 其他的护城河，我没想到。。。其他方面，暂且说它有一定的优势吧：
+
+预言机引入了 AI Oracle 技术，AI 作为裁判，判决事情 Yes or No。像之前 Polymarket 的预言机机制 UMA 的 Optimistic Oracle 就对泽连斯基有没有穿西装进行了二次投票，投票权也和 UMA 代币持有量高度相关。相比 UMA 机制，Opinion 的 AI Oracle 降低了人为干预风险。
+
+市场创建模式上，采用无需许可的方式。任何人都能对任何事件开个盘，提高用户的参与感。
+
+Opinion metapool, OP 它建了一个统一的流动性池，普通散户都可以存入资金。这些资金不会存入单个或少个事件的资金池，而是自动作为对手方，通过 AI 算法同时为整个 Opinion 平台上的成百上千个长尾市场提供买卖报价。
+
+这些，以上我都不认为能算得上护城河级别的优势。 AI 预言机技术上没有难度；创建市场无许可，这个在技术上更不成问题；难点是给每个小事件的市场都提供足够的流动性深度，这点 Opinion 采用的方案是采用了 Opinion metapool，但是这个具体的技术机制以及运行效果我没有找到足够的资料和数据，有待我进一步研究。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## Tokenomics
 
 Value capture is protocal level
@@ -67,6 +89,7 @@ Wachi DAPP 架构
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## 二、赛道剖析
 
@@ -314,6 +337,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 -   YES-Token 的价格：**V(Yes)** 美元
     
 -   NO-Token 的价格：**V(No)** 美元
@@ -334,6 +358,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -371,6 +396,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -509,6 +535,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 
 
+
 ### 按照协议费用排名前10大协议：
 
 泰达，Circle 稳定币 Meteora, solana 链上的Defi
@@ -554,6 +581,7 @@ Axiom Pro 关于 Axiom Pro，这是一个在加密货币交易领域中出现的
 
 
 
+
 ### 数据库的基本概念介绍
 
 **数据库（Database）**：数据库是结构化信息或数据的有序集合，是按照数据结构来组织、存储和管理数据的仓库。Dune平台目前提供了多个数据库，分别支持来自不同区块链的数据。
@@ -585,6 +613,7 @@ limit 返回记录数量
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -631,6 +660,7 @@ limit 返回记录数量
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -730,6 +760,7 @@ limit 返回记录数量
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
