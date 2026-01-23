@@ -15,8 +15,104 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+**DApp：去中心化应用&逻辑和未来**
+
+DApp是一个“自动贩卖机”
+
+![截屏2026-01-23 09.28.22.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/cs124jing/images/2026-01-23-1769182105711-__2026-01-23_09.28.22.png)
+
+_智能合约的执行逻辑_
+
+-   api-> smart contract -> web3代码作为中间人
+    
+-   the ledger：可以查看所有人的交易记录
+    
+-   the flue：gas/governance 参与DApp的治理
+    
+
+_DApp工程化架Hybrid Stack_
+
+-   **_Hardhat（TypeScript）_**：负责工程管理、部署流程与集成测试
+    
+-   **_Foundry（Rust）_**：负责合约编译、单元测试与 Fuzzing
+    
+-   混合使用 Hardhat 与 Foundry 是当前主流的 DApp 工程化方案
+    
+
+_how to initialize the project?_  
+recom env：Node.js v20（LTS）+ pnpm
+
+-   通过 Hardhat 初始化并注入 Foundry
+    
+-   Solidity 合约统一放在 contracts 目录，测试与构建流程走 Foundry
+    
+
+_智能合约工程化设计_
+
+-   使用 Custom Errors 替代字符串报错以降低 gas
+    
+-   通过 Events 支持前端状态同步与索引
+    
+-   遵循 Checks–Effects–Interactions 模式以保证安全性
+    
+-   合约设计默认面向前端交互与长期维护
+    
+
+_测试策略（分层）_  
+**Foundry：**
+
+-   使用 Solidity 编写单元测试
+    
+-   通过 Fuzzing 自动生成随机输入，覆盖边界情况
+    
+
+**Hardhat + Viem：**
+
+-   使用 TypeScript 编写集成测试
+    
+-   模拟真实前端对合约的调用流程
+    
+
+_部署方式升级_
+
+-   采用 Hardhat Ignition 进行声明式部署
+    
+-   通过描述目标状态完成部署，支持自动重试、Gas 管理与模块化
+    
+-   避免使用传统命令式脚本
+    
+
+_前端架构_
+
+-   使用 Next.js + Wagmi 构建现代 Web3 前端
+    
+-   解决 SSR 与浏览器状态不一致导致的 Hydration 问题
+    
+
+_Wagmi 配置要点_
+
+-   启用 SSR 模式
+    
+-   使用 Cookie Storage 统一服务端与客户端状态
+    
+-   避免页面刷新闪烁与状态不同步问题
+    
+
+_核心写入交互流程_  
+交易状态流转：
+
+-   Idle → Pending → Mining → Success
+    
+-   使用 useWriteContract 发起交易
+    
+-   使用 useWaitForTransactionReceipt 监听交易确认
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 **Uniswap工作原理解析**
 
 _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
@@ -50,6 +146,7 @@ _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 **Solidity walk through**
 
 **_EVM（Ethereum Virtual Machine）_**
@@ -79,6 +176,7 @@ _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 **Web3公共物品资金分配**
@@ -116,6 +214,7 @@ _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -174,6 +273,7 @@ _Gas和交易模型_
 
 
 
+
 **Agent跟web3的融合**
 
 _AI agent的结构_：the brain（LLM） --> the memory（RAG流程：抓取数据然后上下文存储） --> the tools(API调用）
@@ -223,6 +323,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **web3安全**
 
 -   精准猎杀
@@ -252,6 +353,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -312,6 +414,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **行业全局介绍&岗位预览**
 
 **_行业概览_**
@@ -356,6 +459,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
