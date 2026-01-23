@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## **行动**
+
+-   参与《Dapp Workshop》直播
+    
+-   参与《Speedrun Basic workshop（英）》直播
+    
+-   参与《分享会 - 南塘 Dao 主题》直播
+    
+-   参与co-learning
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## **行动**
 
 -   通过 Ethernaut 前 3 关
@@ -132,6 +146,7 @@ $$
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## **行动**
 
@@ -718,6 +733,7 @@ contract SecureBank {
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ## **行动**
 
 -   观看《分享会 - Web3 公共物品资金分配第一节课》直播
@@ -731,6 +747,7 @@ contract SecureBank {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -782,6 +799,7 @@ remixd -s . -u https://remix.ethereum.org
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -988,6 +1006,7 @@ $$
 
 
 
+
 ## **行动**
 
 -   观看第一周例会直播
@@ -999,6 +1018,7 @@ $$
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1182,6 +1202,7 @@ Stripe最近也推出了针对AI代理的支付接口（Agentic Commerce Protoco
 
 
 
+
 ## **行动**
 
 1.  通读《web3实习手册》，对整体生态以及求职方向有了比较系统的理解
@@ -1268,6 +1289,7 @@ d律分析了具体的业务场景风险，包括发币融资、交易所运营�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1408,6 +1430,7 @@ Gas 不仅仅是费用，它是去中心化网络能持续运行的经济保障�
 
 
 
+
 ## **行动**
 
 -   观看“Web3 行业全局介绍 & 岗位概览“直播
@@ -1532,6 +1555,7 @@ event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, addres
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
