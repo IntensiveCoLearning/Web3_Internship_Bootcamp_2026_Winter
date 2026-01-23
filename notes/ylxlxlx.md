@@ -15,8 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+今天发现被休闲黑客松筹备组录取了（）紧急补一下Notion的基础知识，后面再按需现学吧
+
+### 核心三要素：Block（块）、Page（页面）、Database（数据库）
+
+-   Block（块）：Notion 的最小可操作单元，取代传统顶部菜单；光标悬停任意位置点「+」或直接输入斜杠  / ，即可插入文本、待办、标题、表格、图片、视频、音频、网页嵌入、代码块、数学公式、谷歌地图、Figma 图稿、Sketch 文件、PDF 等全部内容；每个块都支持拖拽排序、多选移动、左右分栏及实时调整栏宽。
+    
+-   Page（页面）：当前所有块组成的界面即为一个页面；页面可无限嵌套——在页面中新建页面，左侧栏自动呈现树状套娃结构，支持点击小三角折叠/展开、拖动重排顺序、甚至跨级拖动形成父子关系；每个页面可独立命名、添加图标（内置或上传）、设置封面图（支持链接自动生成与位置重定位）、开启分享权限（编辑/评论/复制模板），并支持历史版本回溯、评论查看与全屏/字体/导出等深度设置。
+    
+-   Database（数据库）：以六种视图形态存在——表格（Table）、看板（Board）、画廊（Gallery）、列表（List）、日历（Calendar）、时间线（Timeline），既可作为独立页面，也能以内联（inline）方式嵌入任意页面；每条记录（行）都是一个可点击打开的子页面，支持关联属性（如多选、日期、人员、文件、邮箱、电话等），且所有数据全局打通——任务指派、提醒更新、跨页修改均实时同步至「全部更新」侧边栏与客户端推送。
+    
+
+### 斜杠命令与智能格式语法
+
+-   输入  /  后快速键入  todo 、 list 、 image 、 table 、 quote 、 math 、 code  等关键词，通常敲 1–2 字按 Enter 即可生成对应块；
+    
+-   输入  /callout  创建高亮区块， /@  添加提醒或艾特同事， :  + 英文词触发表情， -  （短横+空格）生成项目符号， 1.  （数字+点+空格）生成序号， ---  自动生成分隔线， #  （井号+空格）生成一级标题， ##   /  ###   生成二/三级标题；
+    
+-   在文字后输入  /color  快速改主体色， /background color  改块背景色， /turn  切换块类型；
+    
+-   每个块自带独立链接——点击块前六点 → 「Copy link to block」，即可精准跳转至该块，实现跨页面、跨文档的原子级锚点引用。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 今天主要研究了休闲黑客松报名的相关事宜，主要解决了适配岗位抉择+自荐语撰写两个问题。同时阅读了“良心杀”的公共讨论，在tg也看了一些改进建议，意识到自己的表述还需要精进。
 
 操作路径主要为以下几个方面：
@@ -45,6 +70,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 1.21：[https://share.mubu.com/doc/5n50wur\_S67](https://share.mubu.com/doc/5n50wur_S67)
 
 ![1.21.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-21-1769008293172-1.21.png)
@@ -52,6 +78,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 [https://cyd53.xetslk.com/s/3nYYf5](https://cyd53.xetslk.com/s/3nYYf5)
@@ -68,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.19.：[https://share.mubu.com/doc/1ae7\_ByGOQ7](https://share.mubu.com/doc/1ae7_ByGOQ7)
 
 ![1.19..png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-19-1768835442719-1.19..png)
@@ -75,6 +103,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -95,6 +124,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.17: [https://share.mubu.com/doc/1TgnooGlYc](https://share.mubu.com/doc/1TgnooGlYc)
 
 ![1.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-17-1768660624749-1.17.png)
@@ -102,6 +132,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -152,6 +183,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.15：[https://share.mubu.com/doc/6m79uk4dKs7](https://share.mubu.com/doc/6m79uk4dKs7)
 
 ![1.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-15-1768489745986-1.15.png)
@@ -159,6 +191,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -183,6 +216,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.13：[https://share.mubu.com/doc/msBQpFHRq7](https://share.mubu.com/doc/msBQpFHRq7)
 
 ![1.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-13-1768314188386-1.13.png)
@@ -192,6 +226,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
