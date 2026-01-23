@@ -15,8 +15,189 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+这周学校事情比较忙，进度有点慢。今天继续看了海报制作和DefiLlama的指标。晚上听了同学的分享，大家都很厉害！用ai搭建求职和个人笔记workflow可以之后回顾一下，也上手试一试
+
+# 海报
+
+1.  算是半解决了figma make无法生成的问题，问题在于网络，但在大陆开vpn仍然加载不出。
+    
+2.  试着用figma make, 豆包， gemini都生成了海报。感触是提示词优化可以带来很大改变，但是在字体和细节优化上，ai还不太行。可能可以用ai帮助生成一些海报元素或者做背景，但是文字部分的组件还是要自己来做。
+    
+3.  figma make example
+    
+    ![Screenshot 2026-01-22 at 2.41.54 PM.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mollyzhou-hku/images/2026-01-23-1769179754891-Screenshot_2026-01-22_at_2.41.54_PM.png)
+4.  example: 这是网上找到的例图
+    
+    ![14511769138402_.pic_hd.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mollyzhou-hku/images/2026-01-23-1769179538274-14511769138402_.pic_hd.jpg)
+
+可以用豆包拆解提示词，生成以下元素图片
+
+视觉主体：3D text "WEB3" with transparent crystal texture（透明水晶质感的 3D 文字 “WEB3”），refractive surface（折射表面），iridescent holographic sheen（彩虹全息光泽） 背景元素：futuristic digital cityscape（未来数字都市景观），floating cyberpunk skyscrapers（悬浮的赛博朋克摩天大楼），glass and metallic building fragments（玻璃与金属质感的建筑碎片） 色调与氛围：soft light blue gradient background（柔和的浅蓝渐变背景），subtle lens flare（轻微镜头光晕），minimalist tech aesthetic（极简科技美学） 质感与渲染：Octane render（Octane 渲染），Unreal Engine 5（虚幻引擎 5），high detail（高细节），8K resolution（8K 分辨率）
+
+![14491769138371_.pic.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mollyzhou-hku/images/2026-01-23-1769179625368-14491769138371_.pic.jpg)
+
+然后把海报所需元素和图片提示词结合之后，用新的提示词生成海报（我觉得效果还是差一些
+
+生成一张充满未来感的 Web3 加密货币主题活动海报，摒弃赛博朋克风格，整体围绕透明水晶质感的极简科技美学打造，具体要求如下： 视觉主体 画面核心放置 3D 立体文字 “WEB3”，赋予通透的透明水晶质感，表面带有自然的折射效果，叠加细腻的彩虹全息光泽，文字轮廓清晰、质感高级，成为绝对视觉焦点。 背景元素 背景构建未来数字都市景观，错落分布悬浮的简约科技风摩天大楼（替换赛博朋克风格，采用玻璃与金属的纯净质感建筑碎片点缀），建筑线条流畅简洁；背景底色统一为柔和浅蓝渐变，搭配轻微镜头光晕，营造通透、开阔的科技氛围，无多余杂乱元素。 文字信息排版 主标题：在 “WEB3” 文字下方，用极简科技感无衬线字体，突出显示主标题 “运营基础概念与必备技能”，颜色选用浅银灰搭配淡蓝色描边，与水晶质感呼应，增强辨识度。 演讲者板块：主标题下方左右对称设置两个演讲者区域，各配一个圆形水晶质感头像框（边框带有微弱折射光泽，框内预留人像位置）；每个头像框下方标注两行文字介绍，左侧为 “主持人 Quentina”，右侧为 “嘉宾 XiaoHai”，文字颜色为深灰蓝，字号适中，字体简洁干净。 底部信息：海报最下方居中排列活动时间 “8 月 8 日 19:00” 和推特直播链接入口，时间字体加粗放大，链接文字旁搭配简约推特图标，整体文字风格与主标题统一，颜色选用浅蓝渐变，与背景和谐融合。 质感与渲染 采用 Octane 渲染、Unreal Engine 5 引擎制作，保证画面高细节、8K 分辨率，精准呈现水晶的通透折射效果、全息光泽的柔和渐变，以及建筑的玻璃金属质感，整体画面干净高级，符合 Web3 行业的前沿科技调性。
+
+![14521769138505_.pic.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mollyzhou-hku/images/2026-01-23-1769179700414-14521769138505_.pic.jpg)
+
+# DefiLlama
+
+DeFiLlama 是目前去中心化金融（DeFi）领域最权威的数据聚合器，你可以把它理解为 **“加密货币世界的彭博终端”**。对于金融研究者来说，这里的指标是进行“基本面分析”的核心工具。
+
+要把图中的这些标签页学透，建议将它们分为 **流动性、盈利能力、资产分布、以及风险/代币工程** 四个维度来理解。
+
+* * *
+
+### 1\. 核心流动性指标：市场的“资金池”
+
+这些指标反映了协议的规模和活跃度。
+
+-   **Total Value Locked (TVL/总锁定价值):** \* **作用：** 衡量一个协议锁定了多少资产。这相当于传统金融中的 **AUM（资产管理规模）**。
+    
+    -   **学习重点：** 不要只看绝对值，要看 **TVL/Market Cap（市值）** 的比例，以此判断协议是否被低估。
+        
+-   **Volume (成交量):** \* **作用：** 主要用于 DEX（去中心化交易所）。
+    
+    -   **学习重点：** 高 TVL 但低 Volume 意味着资本效率低下。
+        
+-   **Bridge (桥梁):** \* **作用：** 监控资金在不同区块链（如 Ethereum 到 Solana）之间的流动。资金流向哪里，机会就在哪里。
+    
+
+### 2\. 盈利能力指标：协议的“损益表”
+
+这是判断一个 DeFi 项目是否具有可持续商业模式的关键。
+
+-   **Fees & Revenue (费用与收入):** \* **作用：** **Fees** 是用户支付的总费用，**Revenue** 是留在协议国库或分配给代币持有者的部分。
+    
+    -   **学习重点：** 这是计算 **P/S Ratio（市销率）** 的基础。通过这个指标，你可以像分析美股一样分析 Uniswap 或 Lido 的盈利能力。
+        
+-   **Yields (收益率):** \* **作用：** 实时监控全网的借贷利息、流动性挖矿收益。
+    
+    -   **学习重点：** 观察“真实收益率”（Real Yield），即收益是来自业务收入还是仅仅来自增发代币。
+        
+
+### 3\. 资产与市场细分：市场的“仪表盘”
+
+-   **Stablecoins (稳定币):** \* **作用：** 监测市场上美元流动性的总量。稳定币市值增加通常是牛市的信号。
+    
+-   **ETFs & DATs:** \* **作用：** 追踪链上包装资产和现货 ETF 的数据。
+    
+-   **NFTs:** \* **作用：** 监测 NFT 市场的地板价、成交量和版税情况。
+    
+
+### 4\. 代币工程与风险管理：项目的“体检表”
+
+-   **Unlocks (代币解锁):** \* **作用：** 查看代币什么时候会大量释放到市场。
+    
+    -   **学习重点：** 对二级市场交易者至关重要，大规模解锁通常伴随着抛压。
+        
+-   **Treasury (国库):** \* **作用：** 查看 DAO（去中心化自治组织）手里有多少钱，持仓是什么。这决定了项目长期运营的“命根子”。
+    
+-   **Hacks (黑客攻击):** \* **作用：** 记录 DeFi 历史上的安全事件。
+    
+-   **Raises (融资):** \* **作用：** 追踪一级市场 VC 的投融资情况。
+    
+
+* * *
+
+### 如何系统性地学习？
+
+1.  **查阅官方 Wiki：** DeFiLlama 每一个指标点击进去后，通常会有文档说明其统计口径（例如是否包含双计 Double Counting）。
+    
+2.  **横向对比法：** 尝试对比两个同赛道项目（如 Uniswap vs PancakeSwap）的 **Fees/TVL**，你会很快理解“资本效率”的概念。
+    
+3.  **结合估值模型：** 尝试利用 **Volume** 和 **Fees** 数据，自己动手推导一个协议的 **PE 或 PS 倍数**。
+    
+
+# 如何利用 Fees & Revenue 计算估值
+
+在 DeFi 领域，利用 **Fees（费用）** 和 **Revenue（收入）** 进行估值，逻辑上非常接近传统金融中的 **P/S（市销率）** 和 **P/E（市盈率）** 分析。
+
+对于金融背景的分析者来说，最核心的是要理清 **“钱是谁付的”** 以及 **“钱最后留在了谁手里”**。
+
+* * *
+
+### 1\. 核心概念定义
+
+在 DeFiLlama 的口径中，这两个指标的财务含义如下：
+
+-   **Total Fees (总费用):** 用户在使用协议时支付的总额（如交易手续费、借贷利息）。这相当于企业的 **Gross Sales（总营收）**。
+    
+-   **Protocol Revenue (协议收入):** 在支付给流动性提供者（LP）或分给其他参与方后，归属于协议国库（Treasury）或代币持有者的部分。这相当于 **Net Income（净利润）** 或可分配利润。
+    
+
+* * *
+
+### 2\. 常用估值倍数计算
+
+你可以利用这些数据构建类似二级市场的估值指标：
+
+A. 市销率 (P/S Ratio)
+
+用于衡量协议规模和市场占有率的价值。
+
+$$P/S\\ Ratio = \\frac{Fully\\ Diluted\\ Valuation\\ (FDV)}{Annualized\\ Total\\ Fees}$$
+
+-   **适用场景：** 早期增长型项目，或者像 Uniswap 这种将绝大部分费用分给 LP、协议本身几乎不留收入的协议。
+    
+
+B. 市盈率 (P/S or P/E Ratio for Protocols)
+
+用于衡量协议捕获价值的能力（即“分红”或“回购”潜力）。
+
+$$P/E\\ Ratio = \\frac{Fully\\ Diluted\\ Valuation\\ (FDV)}{Annualized\\ Protocol\\ Revenue}$$
+
+-   **适用场景：** 成熟型、有明确分红或回购销毁机制的项目（如 MakerDAO、GMX、Aave）。
+    
+
+> **注意：** 在计算时，建议使用 **FDV（全稀释估值）** 而非流通市值，因为 DeFi 代币通常存在长期通胀释放，使用 FDV 能更保守、更全面地评估未来的稀释压力。
+
+* * *
+
+### 3\. 计算步骤：从日数据到年化估值
+
+由于 DeFi 数据波动剧烈，直接用单日数据会产生巨大偏差。通常采用 **Run Rate（运行率）** 的方法：
+
+1.  **取平均值：** 提取最近 7 天或 30 天的平均每日 Fees/Revenue。
+    
+2.  **年化 (Annualizing)：** 将日平均值 $\\times 365$。
+    
+3.  **对比：** \* **横向：** 与同赛道竞品对比。例如：如果 Aave 的 P/E 是 20x，而 Compound 是 50x，可能意味着 Aave 被低估。
+    
+    -   **纵向：** 观察该协议历史 P/E 走势。如果当前 P/E 处于历史低位，可能存在均值回归的机会。
+        
+
+* * *
+
+### 4\. 进阶分析：剔除“通胀激励”的真实收益
+
+这是 DeFi 估值中最容易踩坑的地方。很多协议的 Revenue 看起来很高，但其实是靠增发代币（Emissions）强行换来的。
+
+| 指标 | 传统金融类比 | DeFi 含义 |
+| Gross Revenue | 总营收 | DeFiLlama 上的 Protocol Revenue |
+| Token Emissions | 营销费用 / 获客成本 | 为了吸引流动性而增发的代币价值 |
+| Real Revenue | 营业利润 | Protocol Revenue - Token Emissions |
+
+如果一个协议的 `Token Emissions > Protocol Revenue`，说明它还在“烧钱”运营，其实质净利为负。在进行深度分析时，你应该关注 **Real Yield（真实收益）**，即协议收入能否覆盖其代币排放支出。
+
+* * *
+
+### 5\. 常见赛道的估值特征
+
+-   **DEX（交易所）：** 主要看 **Fees**。因为大部分钱分给了 LP，协议收入通常很低，P/S 比 P/E 更有参考价值。
+    
+-   **Lending（借贷）：** 关注 **Protocol Revenue**。要看利差中留给国库的部分，以及是否有坏账风险拨备。
+    
+-   **LSD（流动性质押）：** 如 Lido。其 Revenue 非常稳定（抽成质押收益的 10%），适合用 DCF（现金流折现法）进行精细建模。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 阅读完中文文案排版指南。我发现自己对于使用空格其实不是非常严格遵守规范，中文和英文之间，中文和数字之间原来也要加空格！这样确实会更加美观。全角和半角标点倒是接触过，但是有时候中英文切换的时候不知道用哪种：
 
 “在 ETHPanda，每个人都能快乐学习”
@@ -31,6 +212,7 @@ Figma使用还在探索，其实只是懒得像画ppt图层一样一点一点加
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 尝试用figma make直接生成海报。但是总是加载不出来...研究一下问题在哪里
 
 prompt:
@@ -42,6 +224,7 @@ prompt:
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 # TVL数据分析
@@ -320,6 +503,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 
 
 
+
 **Day 3: ENS, DEX, Identity, Inventory, Sybil：**[**https://gemini.google.com/share/487d38ce5338**](https://gemini.google.com/share/487d38ce5338)
 
 **Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata：**[**https://gemini.google.com/share/fc9bd615ba37**](https://gemini.google.com/share/fc9bd615ba37)
@@ -329,6 +513,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -512,6 +697,7 @@ C. 市场格局的永久改变
 
 
 
+
 看完了实习手册的【入门导读】，对区块链原理和以太坊机制理解更加深刻了，行业赛道方面希望深入了解AI+DiFi和WEB3+乡建
 
 我将两个Youtube教程视频的transcript交给Gemini进行了摘要总结，方便快速浏览和时间轴上定位复习
@@ -634,6 +820,7 @@ Web3 的去中心化治理目前更像是一个\*\*“虽然混乱但充满活�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
