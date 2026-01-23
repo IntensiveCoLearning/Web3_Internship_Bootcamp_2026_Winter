@@ -15,8 +15,122 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+Bitlayer的调研报告
+
+一、 项目概况与背景
+
+Bitlayer 于2023 年创立，是首个基于 BitVM 架构的比特币Layer 2，目
+
+标是成为“比特币世界的 Arbitrum”，愿景是释放 BTC 的 DeFi 潜力，构建
+
+安全、高效、EVM 兼容的 BTC L2 网络。
+
+• 团队成员情况
+
+核心成员来自 Bitmain、Polygon、Polkadot 等头部项目，技术负责人
+
+Kevin 擅长底层架构，联合创始人 Charlie 拥有丰富 BD 与生态拓展背景，团
+
+队整体国际化，专注构建比特币原生 Layer 2。
+
+• 融资信息见图
+
+二、生态版图分析
+
+• 生态阶段：2024 年初上线测试网，2024 年 Q2 上线主网，当前处于生
+
+态冷启动阶段
+
+• 生态项目类型：
+
+o DeFi 协议：BitSwap、LendBTC、BTC Aggregator
+
+o 稳定币项目：BTC 原生稳定币试验项目
+
+o 桥接工具：BitBridge
+
+o 开发工具类：BitScan、Explorer、Wallet 插件类工具
+
+• 龙头项目举例：
+
+o BitSwap：首个在 Bitlayer 上部署的 AMM 协议
+
+o BitBridge：官方主推的跨链桥，承接 BTC 入金出金
+
+三、发展动态
+
+• Hackathon/Grant：
+
+o Bitlayer Foundation 已开启首轮“生态激励计划”，支持早期
+
+项目部署，申请 Grant 或代币预分配
+
+o 举办首期“Bitlayer Global Hackathon”，与 DoraHacks 联合
+
+推出
+
+• 线下活动：
+
+o 在香港、东京、韩国等地参与比特币开发者线下聚会
+
+• 生态增长指标：
+
+o 主网上线 2 个月后 TVL 破 1 亿美金，增长快
+
+o 日活钱包数与交互笔数持续上涨中
+
+四、潜在合作机会点
+
+• DeFi 方向：借贷、衍生品协议（Bitlayer 上尚无成熟的 lending 协
+
+议）
+
+• RWA & 稳定币：可探索 BTC 质押发行稳定币，或结合现实资产进行跨
+
+链锚定
+
+• 基础设施工具：数据分析仪表盘、钱包插件、消息订阅类服务（如
+
+Dune、Zapper 角色）
+
+• 合作方式建议：
+
+o 可申请官方 Grant（开发者基金）
+
+o 联合举办线上黑客松、技术 AMA
+
+o 与 Bitlayer 社区和基金会对接生态资源、技术指导等
+
+五、如果我部署一个项目，我会做什么？
+
+项目设想：
+
+构建一个「BTC L2 的衍生品交易平台」，允许用户基于 BTC 做期权 / 合约交
+
+易。理由如下：
+
+• BTC 资产体量大，但 DeFi 场景稀缺
+
+• Bitlayer 为 BTC 提供 EVM 环境，天然适合部署 ETH 世界的成熟模式
+
+• 衍生品项目门槛高，竞争小，机会窗口尚在早期
+
+所需商务支持：
+
+• 来自 Bitlayer 基金会的技术支持（节点部署、数据同步等）
+
+• 生态 Grant 支持初始开发资金
+
+• 与 Bitlayer 上其他协议（如 AMM、稳定币）协作做初始流动性引导
+
+• 联合市场宣传资源（AMA、Twitter space）
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 Circle Arc生态调研报告
 
 一．项目背景
@@ -145,6 +259,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 编写了一份研究报告
 
 一、 项目概况与背景
@@ -256,6 +371,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等五、如�
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 Web3工具
 
 # 社交工具
@@ -317,6 +433,7 @@ okx，binance钱包
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -453,6 +570,7 @@ Lock = false;
 
 
 
+
 24-25区块链主要进展记录
 
 Ordi开启的BRC20铭文
@@ -512,6 +630,7 @@ ICO合规化（Project Crypto）
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -619,6 +738,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -760,6 +880,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -789,6 +910,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -829,6 +951,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -906,6 +1029,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
