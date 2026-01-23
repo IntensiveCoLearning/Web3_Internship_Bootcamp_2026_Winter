@@ -15,8 +15,498 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# **一句话先把 Gas 优化讲清**
+
+> Gas 优化 = 用更少的计算 + 更少的存储修改，完成同一件事
+
+在以太坊里要记住一句**生存法则**：
+
+> 算不值钱，存才值钱
+
+-   💸 **最贵的是：改链上存储（storage）**
+    
+-   😐 中等贵：写 event / log
+    
+-   😎 便宜：算数学、if 判断、for 循环（相对而言）
+    
+
+* * *
+
+# **为什么 Gas 会贵？**
+
+### **以太坊不是“你的电脑”**
+
+-   每个操作都要 **全网所有节点重复执行**
+    
+-   每个 storage 写入：
+    
+    -   要写磁盘
+        
+    -   要进状态树
+        
+    -   要改变 stateRoot
+        
+
+所以系统必须：
+
+> 对“消耗全网资源的行为”收钱
+
+* * *
+
+# **Gas 优化的 5 个底层直觉**
+
+## **1️⃣ 少改 storage（最重要）**
+
+> storage 一改，gas 直接起飞
+
+### **❌ 坏例子**
+
+```
+count = count + 1;
+```
+
+如果 count 是 storage 变量 → 贵
+
+### **✅ 好思路**
+
+-   能放内存（memory）就别放 storage
+    
+-   能一次性写，就别写多次
+    
+
+* * *
+
+## **2️⃣ 用 memory / calldata，别乱用 storage**
+
+```
+function foo(uint[] calldata arr) external {
+    // calldata 只读，最便宜
+}
+```
+
+**价格直觉**：
+
+```
+calldata < memory <<< storage
+```
+
+* * *
+
+## **3️⃣ 少 for 循环 + 少在循环里改 storage**
+
+### **❌ 非常贵的写法**
+
+```
+for (uint i = 0; i < users.length; i++) {
+    balances[users[i]] += 1;
+}
+```
+
+👉 每次循环都在写 storage
+
+### **✅ 优化思路**
+
+-   批量处理
+    
+-   用事件代替状态
+    
+-   把计算挪到链下
+    
+
+* * *
+
+## **4️⃣ 能用事件（event）就别存状态**
+
+**事件是写日志，不进状态树**
+
+### **❌**
+
+```
+mapping(address => uint) public lastAction;
+lastAction[msg.sender] = block.timestamp;
+```
+
+### **✅**
+
+```
+event Action(address user, uint time);
+emit Action(msg.sender, block.timestamp);
+```
+
+👉 如果只是“给前端/索引器看”，**event 几乎永远更省 gas**
+
+* * *
+
+## **5️⃣ 避免重复读 storage（读一次存起来）**
+
+### **❌**
+
+```
+if (user.balance > 0) {
+    user.balance -= 1;
+}
+if (user.balance == 0) {
+    ...
+}
+```
+
+### **✅**
+
+```
+uint bal = user.balance;
+if (bal > 0) {
+    bal -= 1;
+}
+if (bal == 0) {
+    ...
+}
+user.balance = bal;
+```
+
+* * *
+
+# **真实案例 1：投票合约**
+
+### **❌ 未优化版本**
+
+```
+mapping(address => bool) public voted;
+
+function vote() external {
+    require(!voted[msg.sender]);
+    voted[msg.sender] = true;
+}
+```
+
+👉 每个用户一次 storage 写
+
+### **✅ 优化思路（Bitmap）**
+
+```
+mapping(uint256 => uint256) bitmap;
+
+function vote(uint id) external {
+    uint bucket = id / 256;
+    uint offset = id % 256;
+    bitmap[bucket] |= (1 << offset);
+}
+```
+
+👉 **256 个布尔值 = 1 次 storage**
+
+* * *
+
+# **真实案例 2：空投 / 批量转账**
+
+### **❌ on-chain 批量空投**
+
+```
+for (...) {
+    token.transfer(user, amount);
+}
+```
+
+👉 gas 爆炸，可能直接 out of gas
+
+### **✅ 优化方案**
+
+-   **Merkle Airdrop**
+    
+    -   链下算好 Merkle Tree
+        
+    -   链上只存 root
+        
+    -   用户自己 claim + proof
+        
+
+👉 Uniswap、Optimism、Arbitrum 都用这套
+
+# **Gas 优化和之前学的「状态树」的关系**
+
+记住这条：
+
+> 每一次 storage 写 = 状态树的一次“叶子变更”
+
+-   写得越多
+    
+-   状态树改得越多
+    
+-   gas 越贵
+    
+
+所以 gas 优化的本质就是：
+
+> 少动状态树
+
+# **Solidity 合约漏洞速查地图（Checklist 版）**
+
+> 核心心法：
+> 
+> **攻击者不会“破坏规则”，只会利用你写的规则漏洞，让合约按对他有利的方式执行。**
+
+* * *
+
+## **1) 访问控制（Access Control）**
+
+**典型问题**
+
+-   关键函数缺少 onlyOwner / onlyRole
+    
+-   权限边界不清：谁能 mint / pause / upgrade / setParams
+    
+-   使用 tx.origin 做身份校验（会被钓鱼合约绕过）
+    
+
+**你怎么查**
+
+-   列出所有 external/public 且会改状态的函数
+    
+    → 每个函数问一句：**“谁应该有权调用？”**
+    
+    → 检查是否有正确的权限修饰/校验
+    
+
+* * *
+
+## **2) 重入（Reentrancy）**
+
+**典型问题**
+
+-   在状态还没更新前做外部调用（特别是 call{value:...} 或 token 转账）
+    
+-   外部合约收到钱/收到 token 时回调你，再次进入敏感函数
+    
+
+**你怎么查**
+
+-   找所有外部调用（ETH 转账 / 合约调用 / token 调用）
+    
+-   检查是否满足：**Checks → Effects → Interactions**
+    
+-   对敏感函数加 nonReentrant
+    
+
+* * *
+
+## **3) 数学/精度/单位错误（Math / Precision / Units）**
+
+**典型问题**
+
+-   整数除法精度丢失导致被薅羊毛
+    
+-   单位混用（wei/ether、decimals）
+    
+-   比例计算顺序不当（先除后乘 vs 先乘后除）
+    
+
+**你怎么查**
+
+-   扫所有“价格/利率/兑换/份额/清算/手续费”公式
+    
+-   检查边界输入：0、1、最大值、极小值
+    
+
+* * *
+
+## **4) 可预测性与可操纵输入（Randomness / Timestamp / Block vars）**
+
+**典型问题**
+
+-   用 block.timestamp、blockhash 做随机数
+    
+-   关键逻辑依赖时间戳（可被验证者小幅操纵）
+    
+-   依赖区块相关变量进行分配/结算
+    
+
+**你怎么查**
+
+-   找所有使用 block 变量的地方
+    
+    → 判断是否影响“分钱、开奖、清算、结算、胜负”
+    
+
+* * *
+
+## **5) 抢跑/夹子（MEV / Front-running）**
+
+**典型问题**
+
+-   用户先提交敏感操作，别人插队获利（swap、拍卖、mint）
+    
+-   滑点、deadline 设置不当导致被夹子
+    
+
+**你怎么查**
+
+-   判断交易是否会暴露“可套利信息”
+    
+-   是否有滑点/期限/commit-reveal 等保护机制
+    
+
+* * *
+
+## **6) 外部调用返回值/兼容性（Return Values / Token quirks）**
+
+**典型问题**
+
+-   call 没检查 success
+    
+-   ERC20 调用没用 SafeERC20，遇到不标准 token 可能 silent fail
+    
+
+**你怎么查**
+
+-   所有外部调用必须明确处理返回值
+    
+-   ERC20 全部使用 SafeERC20
+    
+
+* * *
+
+## **7) DoS 与 Gas 陷阱（Denial of Service / Unbounded loops）**
+
+**典型问题**
+
+-   遍历用户数组、遍历存款人列表：用户多了函数永远跑不完
+    
+-   循环里给多人转账，某个地址 revert 让全体失败
+    
+
+**你怎么查**
+
+-   找所有 for 循环：上界是否可被用户放大？
+    
+-   分发场景改为 **pull 提现**（用户自己领）
+    
+
+* * *
+
+## **8) 升级合约/代理（Upgradeable / Proxy pitfalls）**
+
+**典型问题**
+
+-   初始化函数忘记 initializer（可被重新初始化）
+    
+-   升级权限不严（可被接管）
+    
+-   storage layout 冲突导致状态错乱
+    
+
+**你怎么查**
+
+-   是否使用标准代理模式（如 EIP-1967 / UUPS）
+    
+-   初始化是否只能执行一次
+    
+-   升级权限是否严格受控、是否可暂停/紧急处理
+    
+
+* * *
+
+# **外部调用检查重点（Audit Checklist）**
+
+> 外部调用 =
+> 
+> **你把执行权交给外部世界**
+
+## **A) 顺序是否正确（最重要）**
+
+-   ✅ **先改账（Effects）再外部调用（Interactions）**
+    
+-   ❌ 先外部调用再改账（重入高危）
+    
+
+* * *
+
+## **B) 目标地址是否可信？**
+
+把这些都当成“不可信”：
+
+-   msg.sender（可能是合约）
+    
+-   用户传入的 to
+    
+-   可由管理员修改的地址（可能被替换）
+    
+-   任意 token 地址（可能不标准甚至恶意）
+    
+
+* * *
+
+## **C) 是否检查了返回值/失败处理？**
+
+-   ETH 转账用 call 必须检查 ok
+    
+-   ERC20 调用必须用 SafeERC20（避免不标准 token 问题）
+    
+
+* * *
+
+## **D) 外部调用失败会不会导致 DoS？**
+
+-   循环里付款：一个失败 → 全部失败（DoS）
+    
+-   建议：
+    
+    -   分发改为 **pull**（用户自己 withdraw/claim）
+        
+    -   或者记录失败项，分批处理
+        
+
+* * *
+
+## **E) 是否使用了**
+
+## **delegatecall**
+
+## **（超级红灯）**
+
+-   delegatecall = “借别人的代码，改我自己的存储”
+    
+-   检查：
+    
+    -   目标地址是否可控/可替换？
+        
+    -   是否有严格权限？
+        
+    -   是否为标准代理实现？
+        
+
+* * *
+
+## **F) 是否可能触发回调钩子（隐藏重入）**
+
+-   token/协议可能带 hooks（例如 ERC777）
+    
+-   即使是 token.transfer 也当作外部调用处理
+    
+    → 关键函数加 nonReentrant + 正确顺序
+    
+
+* * *
+
+# **重入保护（Reentrancy Guard）要点**
+
+## **核心作用**
+
+-   给敏感函数加“门栓”：函数没执行完，不允许再次进入
+    
+-   常用：OpenZeppelin nonReentrant
+    
+
+## **记忆点**
+
+-   **顺序（CEI）是第一道防线**
+    
+-   **nonReentrant 是第二道保险**
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -254,6 +744,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # **Uniswap V2 & V3 知识点总览**
 
@@ -500,6 +991,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -711,6 +1203,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -903,6 +1396,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -1065,6 +1559,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -1176,6 +1671,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1328,6 +1824,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1647,6 +2144,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -1764,6 +2262,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2116,6 +2615,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
