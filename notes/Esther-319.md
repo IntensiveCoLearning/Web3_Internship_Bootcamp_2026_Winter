@@ -15,8 +15,181 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+今日学习：阅读《**从 Cypherpunks 到比特币：区块链背后的政治理想**》
+
+笔记
+
+## 一、为什么“区块链”这个问题本身是一个政治问题
+
+文章的核心前提是：区块链并非首先是一个“效率工具”，而是一个对既有权力结构的回应。所谓去中心化、不可篡改、透明，并不是中立的工程目标，而是为了解决一个更早出现的问题，即在数字化通信条件下，权力如何集中、信息如何被控制、个人如何失去对自身信息与资产的主权。
+
+这一问题的历史起点并不在 2008 年，而至少可以追溯到 1970—1990 年代围绕密码学展开的政治—法律冲突。
+
+* * *
+
+## 二、Cypherpunks 的世界观：密码学从“国家武器”到“公民工具”
+
+### 1\. 密码学的“去军事化”：从国家垄断到学术公开
+
+在 20 世纪 70 年代之前，密码学在美国长期被视为军事技术，受《International Traffic in Arms Regulations（ITAR）》约束，被列为“军火”（munitions）。这意味着强加密算法的研究、发表和跨境传播都可能触及刑事风险。
+
+这一格局在 1976 年出现断裂点：  
+Whitfield Diffie 与 Martin Hellman 发表论文 _New Directions in Cryptography_，首次系统提出“公钥密码学”思想，使安全通信不再依赖预共享秘密，而可以在开放网络中实现。
+
+-   原始论文：  
+    Diffie & Hellman, _New Directions in Cryptography_ (1976)  
+    [https://ieeexplore.ieee.org/document/1055638](https://ieeexplore.ieee.org/document/1055638)
+    
+
+这一突破的政治意义在于：**安全通信不再需要国家许可**，技术上首次出现“无需信任第三方即可建立信任”的可能性。
+
+* * *
+
+### 2\. 加密战争（Crypto Wars）与“代码是否是言论”的宪法问题
+
+1991 年，Phil Zimmermann 发布 PGP（Pretty Good Privacy），使普通公民能够使用军用级别的加密技术加密电子邮件。美国政府随即以“非法出口军火”为由展开刑事调查。
+
+Zimmermann 的应对方式具有标志性意义：他将 PGP 源代码印刷成书出版，主张代码属于言论，受美国宪法第一修正案保护。这一行为直接触发了关于“代码是否构成言论”的法律与政治争论。
+
+-   背景资料：  
+    Steven Levy, _Crypto: How the Code Rebels Beat the Government_ (2001)  
+    [https://www.amazon.com/Crypto-Code-Rebels-Beat-Government/dp/0140244328](https://www.amazon.com/Crypto-Code-Rebels-Beat-Government/dp/0140244328)
+    
+-   相关宪法讨论：  
+    Bernstein v. United States (1999)，法院承认加密代码具有言论属性
+    
+
+这一阶段确立了 Cypherpunk 的基本判断：**隐私无法依赖法律善意，只能依赖技术结构本身**。
+
+* * *
+
+### 3\. Cypherpunks 运动：对“数字全景监狱”的提前预判
+
+1992 年，Eric Hughes、Timothy C. May 与 John Gilmore 在湾区发起 Cypherpunks 邮件列表，其核心担忧是：数字通信将极大降低监控成本，从而改变权力与个体之间的结构关系。
+
+这一判断在当时被视为偏激，但在以下事实披露后被广泛重新评估：
+
+-   PRISM 计划（2013，Edward Snowden 披露）：  
+    [https://www.theguardian.com/world/prism](https://www.theguardian.com/world/prism)
+    
+-   Cambridge Analytica 数据丑闻（2018）：  
+    [https://www.theguardian.com/news/series/cambridge-analytica-files](https://www.theguardian.com/news/series/cambridge-analytica-files)
+    
+
+Cypherpunks 并非反对“开放社会”，而是认为**没有隐私的开放社会在结构上会退化为自我审查社会**。
+
+* * *
+
+### 4\. 《密码朋克宣言》：隐私作为一种结构性权利
+
+Eric Hughes 于 1993 年发表 _A Cypherpunk’s Manifesto_，提出几个至今仍在支撑区块链叙事的核心命题：
+
+-   隐私不是保密，而是“选择性揭露”（selective disclosure）
+    
+-   隐私是开放社会的前提，而非其对立面
+    
+-   不应期待政府或企业自发给予隐私
+    
+-   保护隐私的手段不是法律请求，而是加密代码
+    
+-   原文链接：  
+    [https://www.activism.net/cypherpunk/manifesto.html](https://www.activism.net/cypherpunk/manifesto.html)
+    
+
+这一宣言直接塑造了后来区块链对“无需许可（permissionless）”与“最小信任（trust minimization）”的执念。
+
+* * *
+
+## 三、比特币并非技术偶然，而是价值观的工程化结果
+
+### 1\. 创世区块：嵌入在代码中的政治声明
+
+比特币创世区块中嵌入的《泰晤士报》标题既是时间戳，也是对 2008 年金融危机中“银行风险社会化”机制的批评。
+
+-   历史背景：  
+    2008–2009 年英国银行业救助  
+    [https://www.theguardian.com/business/2009/jan/03/banks-bailout-government](https://www.theguardian.com/business/2009/jan/03/banks-bailout-government)
+    
+
+这一选择明确了比特币的立场：**拒绝“太大而不能倒”的制度性特权**。
+
+* * *
+
+### 2\. 固定供给与奥地利学派：对货币发行权的政治不信任
+
+比特币 2100 万上限的思想源头可追溯至奥地利学派经济学，尤其是 Hayek 对货币国家垄断的批评。
+
+-   Hayek, _Denationalisation of Money_ (1976)  
+    [https://mises.org/library/denationalisation-money-argument-refined](https://mises.org/library/denationalisation-money-argument-refined)
+    
+
+欧洲央行在 2012 年报告中明确指出比特币思想来源与 Hayek 理论的关联。
+
+-   ECB Report: _Virtual Currency Schemes_  
+    [https://www.ecb.europa.eu/pub/pdf/other/virtualcurrencyschemes201210en.pdf](https://www.ecb.europa.eu/pub/pdf/other/virtualcurrencyschemes201210en.pdf)
+    
+
+比特币以代码方式冻结货币政策裁量权，本质是将货币治理从政治领域转移至数学规则。
+
+* * *
+
+### 3\. 工作量证明（PoW）：用物理成本锚定数字共识
+
+PoW 的核心不是效率，而是将共识建立在不可伪造的现实成本之上，使权力来源于系统外部资源，而非系统内部地位。
+
+-   Adam Back, Hashcash (1997)  
+    [https://www.hashcash.org/papers/hashcash.pdf](https://www.hashcash.org/papers/hashcash.pdf)
+    
+
+与 PoS 相比，PoW 体现的是 Cypherpunk 对“无需许可参与”和“反既得权力积累”的偏好，尽管其本身也不可避免地产生资本集中问题。
+
+* * *
+
+### 4\. UTXO 模型：完全可审计账本与身份层匿名的分离
+
+UTXO 结构使比特币成为一个全历史可追溯的账本，但将隐私问题转移到身份层而非交易层。这正是 Hughes 所强调的“选择性揭露”的工程实现。
+
+-   Bitcoin Developer Guide: UTXO Model  
+    [https://developer.bitcoin.org/devguide/transactions.html](https://developer.bitcoin.org/devguide/transactions.html)
+    
+
+这一设计也解释了为何比特币后来催生了 Monero、Zcash 等“隐私币”，作为对其透明性的补偿性回应。
+
+* * *
+
+### 5\. “低性能”与社会可扩展性（Social Scalability）
+
+Nick Szabo 提出的社会可扩展性概念，为理解比特币为何拒绝高 TPS 提供理论框架。
+
+-   Nick Szabo, _Money, Blockchains, and Social Scalability_ (2017)  
+    [https://nakamotoinstitute.org/money-blockchains-and-social-scalability/](https://nakamotoinstitute.org/money-blockchains-and-social-scalability/)
+    
+
+比特币牺牲计算效率，换取在陌生人规模下仍可运行的最小信任系统，这一取舍决定了它更像“结算层”而非“支付应用”。
+
+* * *
+
+## 四、当代张力：密码朋克理想是否被制度化吸收
+
+从 Amir Taaki 的批评、区块大小之战，到今日围绕合规、ETF、机构入场的争论，本质问题始终是：**比特币是制度外的替代方案，还是制度内的补充工具**。
+
+这一张力并非可以简单裁决，而是构成区块链领域持续分化的根源。
+
+* * *
+
+## 五、方法论结论：代码并非中立，工程即政治
+
+Cypherpunks 的遗产不在于具体技术，而在于一种判断框架：  
+每一次协议设计，都是一次权力分配。
+
+选择什么共识机制、如何处理隐私、是否允许冻结资产，本质上都在回答一个问题：**谁被信任，谁承担成本，谁拥有最终控制权**。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # 1.22
 
 -   **Uniswap 是什么？**  
@@ -429,6 +602,7 @@ V3 允许 LP 说：
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 1.21
 
 # 📘 **Web3 公共物品资金分配 — 课程笔记**
@@ -641,6 +815,7 @@ Web3 公共物品分配常见模型包括：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # 课堂笔记补充｜Telegram 社群运营 & Twitter Space 活动实操
@@ -1029,6 +1204,7 @@ Web3 公共物品分配常见模型包括：
 
 
 
+
 1.19学习ZK vote笔记
 
 # ZK Vote 技术知识整理笔记（法学生友好版）
@@ -1329,6 +1505,7 @@ voteCommitment = Hash(你的选择)
 
 
 
+
 1.18 复习总结youtube视频Week1的主要核心内容
 
 ## 1\. **如何成为以太坊超级用户（Power User）**
@@ -1463,6 +1640,7 @@ L1（以太坊主网）交易费用高且交易速度慢，而 L2（如 Optimism
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1762,6 +1940,7 @@ L1（以太坊主网）交易费用高且交易速度慢，而 L2（如 Optimism
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2192,6 +2371,7 @@ ERC-8004 的改变在于：
 
 
 
+
 法律背景web3小白的合规学习笔记
 
 # Web3 合规分享｜律师实务视角 笔记
@@ -2548,6 +2728,7 @@ ERC-8004 的改变在于：
 
 
 
+
 2026-01-14
 
 从法律角度理解Web3的运行原理。
@@ -2789,6 +2970,7 @@ RPC 是钱包与区块链之间的通信中介。尽管链是去中心化的，�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
