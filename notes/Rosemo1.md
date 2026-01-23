@@ -15,8 +15,16 @@ cooking at solidity
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+完成 The Ethernaut 第二关：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-23-1769183796850-image.png)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 完成basic部分学习：  
 包括
 
@@ -31,6 +39,7 @@ interface，payable，TryCatch，ABI的编码和解码
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 ### 学习了实习手册中的智能合约开发的前七部分：
 
@@ -97,6 +106,7 @@ Gas和Gas Price
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 熟悉了remix并且写了一点solidity
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-18-1768745613218-image.png)
@@ -108,6 +118,7 @@ Gas和Gas Price
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -160,6 +171,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 ## 学习了《021学习以太坊》的四五章 以下是一些概括性笔记
 
 ###   
@@ -208,6 +220,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 完成任务：  
 读完了XiaoHai老师的《021学习以太坊》前三章。以下是个人总结的一些比较重要的概括性笔记。
 
@@ -251,6 +264,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
