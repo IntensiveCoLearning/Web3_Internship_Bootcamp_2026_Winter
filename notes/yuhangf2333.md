@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+继续学习了简单的语法
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## 1\. 基础与变量 (Basics & Variables)
 
 ```
@@ -137,6 +143,7 @@ contract FunctionsAndLocations {
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 **1\. 核心概念**
 
 • **什么是质押 (Staking)**：将资金（ETH 或代币）锁定在一个智能合约中，就像把钱放入一台自动售货机。这是一种“去信任化”（Trustless）的机制，用户不需要信任某个人，只需要信任代码规则,。
@@ -162,6 +169,7 @@ contract FunctionsAndLocations {
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 这一周主要在划水，准备期末考试复习
 
 等下一周考完后，就轻松不少了
@@ -169,6 +177,7 @@ contract FunctionsAndLocations {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -238,11 +247,13 @@ contract FunctionsAndLocations {
 
 
 
+
 听了律师的讲解，了解了目前国内的一些情况
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -263,6 +274,7 @@ contract FunctionsAndLocations {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
