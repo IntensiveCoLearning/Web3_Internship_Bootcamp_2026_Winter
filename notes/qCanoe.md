@@ -15,8 +15,109 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+1.23 补充
+
+### 一、默认值与“看不见的状态”
+
+Solidity 中所有状态变量在未显式赋值前，都具有**确定的默认值**：  
+`uint` 为 0，`bool` 为 false，`address` 为 0x0，struct 中的字段也都会被递归初始化为默认值。
+
+这一点在 mapping 中尤为重要。mapping 中“未写入”的 key 与“已写入但值为默认值”的 key **在读取结果上完全无法区分**。因此，凡是需要判断“是否存在”的逻辑，都必须额外设计标志位，而不能依赖数值本身。这是 Solidity 与传统语言 Map 语义的一个本质差异。
+
+* * *
+
+### 二、delete 的真实语义
+
+`delete` 并不是“删除变量”，而是**将变量重置为默认值**。  
+对于数组，`delete arr[i]` 只会清空该位置的值，不会改变数组长度；  
+对于 struct，`delete user` 会将其所有字段清零；  
+对于 mapping，`delete map[key]` 只是把该 key 映射回默认值。
+
+这意味着：Solidity 中几乎不存在“释放存储”的概念，只有“覆盖”。理解这一点，对后续理解 gas refund、状态膨胀、链上存储不可逆增长非常重要。
+
+* * *
+
+### 三、require / revert / assert 的设计边界
+
+Solidity 中有三种主要的失败机制，但语义并不相同：
+
+-   `require`：用于**校验外部输入或调用前提条件**，失败是“预期内”的
+    
+-   `revert`：用于复杂逻辑中主动中断执行
+    
+-   `assert`：用于检查**永远不应被破坏的不变量**
+    
+
+在实际合约中，`assert` 的存在本身就意味着“如果失败，说明合约设计有 bug”，而不是用户操作错误。这个区分对安全审计和形式化验证非常关键。
+
+* * *
+
+### 四、事件（event）的真实作用
+
+事件不是状态，也不能被合约读取，它们的本质是**写给链下世界看的日志**。  
+事件的作用包括：
+
+-   为前端、索引器、分析工具提供可追踪信息
+    
+-   替代昂贵的链上遍历
+    
+-   构建“可观察性”，而非“可计算性”
+    
+
+一个重要认知是：**事件是状态的投影，而不是状态本身**。你不能依赖事件来恢复合约真实状态，只能用它来“解释发生过什么”。
+
+* * *
+
+### 五、构造函数与部署期状态
+
+构造函数只在合约部署时执行一次，用于初始化状态。部署阶段的 `msg.sender` 是**部署者地址**，而不是未来的调用者。
+
+这一区别在权限设计中非常重要：  
+一旦 owner 在构造函数中被写死，后续所有权限逻辑都会基于这一初始假设展开。因此，构造函数阶段的状态写入，往往是安全审计的第一检查点。
+
+* * *
+
+### 六、address(this) 与 msg.sender 的差异
+
+-   `msg.sender`：当前调用者
+    
+-   `address(this)`：合约自身地址
+    
+
+合约既是代码，也是账户。  
+这意味着合约可以持有 ETH，也可以作为“主体”参与其他合约交互。很多复杂系统（钱包、Agent、DeFi 协议）本质上都是在管理 **“合约作为主体” 的行为边界**。
+
+* * *
+
+### 七、fallback / receive 的边界认知
+
+`receive()` 只在 **空 calldata 且携带 ETH** 时触发；  
+`fallback()` 是兜底入口，在 calldata 不匹配任何函数时触发。
+
+一个非常重要的设计原则是：  
+**fallback 中不应包含复杂逻辑**。  
+因为它可能在你并未预期的情况下被触发，是攻击面最敏感的位置之一。
+
+* * *
+
+### 八、Solidity 中“不可做”的事情
+
+通过 solidity-by-example 的反复示例，其实也在不断强调 Solidity 的限制：
+
+合约不能遍历 mapping  
+合约不能主动访问链下信息  
+合约不能真正删除存储  
+合约不能假设调用顺序  
+合约不能信任外部合约行为
+
+这些“不能做”的事情，恰恰定义了 Solidity 的设计边界，也决定了系统设计必须依赖 **架构补偿**（事件、索引器、前端、off-chain agent 等）。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 **storage**：链上永久存储，读写成本高，生命周期与合约一致。
 
 **memory**：函数执行期间的临时内存，成本较低，执行结束即释放。
@@ -108,6 +209,7 @@ contract Ownable {
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ### **1.21**[**Solidity by Example | 0.8.26**](https://solidity-by-example.org/) **Basic 部分**
 
 **一、Hello World 合约与基础结构**
@@ -175,6 +277,7 @@ function getSum(uint a, uint b) external pure returns(uint) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 \### 1.20
@@ -381,6 +484,7 @@ assert
 
 
 
+
 ### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
 
 A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
@@ -459,6 +563,7 @@ RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取
 
 
 
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -504,6 +609,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -594,6 +700,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -647,6 +754,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -737,6 +845,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -801,6 +910,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -838,6 +948,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
