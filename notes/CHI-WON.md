@@ -15,8 +15,594 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# DAY12
+
+\[x\] Gas优化
+
+\[x\] 漏洞修复
+
+## Gas优化
+
+优化前的合约：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract SimpleToken {
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+    uint256 public totalSupply;
+    
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+    
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    
+    constructor(string memory _name, string memory _symbol, uint8 _decimals, uint256 _initialSupply) {
+        name = _name;
+        symbol = _symbol;
+        decimals = _decimals;
+        totalSupply = _initialSupply * 10 ** _decimals;
+        balanceOf[msg.sender] = totalSupply;
+        emit Transfer(address(0), msg.sender, totalSupply);
+    }
+    
+    function transfer(address to, uint256 amount) public returns (bool) {
+        require(balanceOf[msg.sender] >= amount, "Insufficient balance");
+        
+        balanceOf[msg.sender] -= amount;
+        balanceOf[to] += amount;
+        
+        emit Transfer(msg.sender, to, amount);
+        return true;
+    }
+    
+    function approve(address spender, uint256 amount) public returns (bool) {
+        allowance[msg.sender][spender] = amount;
+        emit Approval(msg.sender, spender, amount);
+        return true;
+    }
+    
+    function transferFrom(address from, address to, uint256 amount) public returns (bool) {
+        require(balanceOf[from] >= amount, "Insufficient balance");
+        require(allowance[from][msg.sender] >= amount, "Allowance exceeded");
+        
+        balanceOf[from] -= amount;
+        balanceOf[to] += amount;
+        allowance[from][msg.sender] -= amount;
+        
+        emit Transfer(from, to, amount);
+        return true;
+    }
+}
+```
+
+优化后的合约：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract OptimizedToken {
+    // 使用 bytes32 替代 string 存储名称和符号（如果可能）
+    bytes32 public immutable name;
+    bytes32 public immutable symbol;
+    uint8 public immutable decimals;
+    uint256 public totalSupply;
+    
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+    
+    // 使用 indexed 参数减少 gas
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    
+    constructor(string memory _name, string memory _symbol, uint8 _decimals, uint256 _initialSupply) {
+        // 转换为 bytes32 节省存储空间
+        name = _toBytes32(_name);
+        symbol = _toBytes32(_symbol);
+        decimals = _decimals;
+        
+        uint256 supply = _initialSupply * 10 ** _decimals;
+        totalSupply = supply;
+        
+        // 直接赋值而非计算
+        balanceOf[msg.sender] = supply;
+        
+        // 使用 address(0) 的预定义值
+        emit Transfer(address(0), msg.sender, supply);
+    }
+    
+    function transfer(address to, uint256 amount) external returns (bool) {
+        // 使用外部函数 (external) 减少 gas
+        _transfer(msg.sender, to, amount);
+        return true;
+    }
+    
+    function approve(address spender, uint256 amount) external returns (bool) {
+        // 避免 front-running 攻击的模式
+        _approve(msg.sender, spender, amount);
+        return true;
+    }
+    
+    function transferFrom(address from, address to, uint256 amount) external returns (bool) {
+        // 先检查授权，使用 unchecked 节省 gas
+        uint256 currentAllowance = allowance[from][msg.sender];
+        require(currentAllowance >= amount, "Allowance exceeded");
+        
+        // unchecked 块：我们知道减法不会下溢
+        unchecked {
+            allowance[from][msg.sender] = currentAllowance - amount;
+        }
+        
+        _transfer(from, to, amount);
+        return true;
+    }
+    
+    // 内部函数，避免重复代码
+    function _transfer(address from, address to, uint256 amount) internal {
+        require(to != address(0), "Transfer to zero address");
+        
+        uint256 fromBalance = balanceOf[from];
+        require(fromBalance >= amount, "Insufficient balance");
+        
+        // unchecked 块：余额检查确保不会下溢，加法使用 SafeMath 模式
+        unchecked {
+            balanceOf[from] = fromBalance - amount;
+            balanceOf[to] += amount; // 假设不会溢出（总供应量限制）
+        }
+        
+        emit Transfer(from, to, amount);
+    }
+    
+    function _approve(address owner, address spender, uint256 amount) internal {
+        require(spender != address(0), "Approve to zero address");
+        
+        allowance[owner][spender] = amount;
+        emit Approval(owner, spender, amount);
+    }
+    
+    // 批量转账，减少交易次数
+    function batchTransfer(address[] calldata recipients, uint256[] calldata amounts) external {
+        require(recipients.length == amounts.length, "Arrays length mismatch");
+        
+        uint256 total = 0;
+        uint256 length = recipients.length;
+        
+        // 预先计算总数，一次性检查余额
+        for (uint256 i = 0; i < length; ) {
+            total += amounts[i];
+            unchecked { i++; }
+        }
+        
+        require(balanceOf[msg.sender] >= total, "Insufficient balance");
+        
+        // 执行转账
+        for (uint256 i = 0; i < length; ) {
+            address recipient = recipients[i];
+            uint256 amount = amounts[i];
+            
+            if (amount > 0 && recipient != address(0)) {
+                unchecked {
+                    balanceOf[msg.sender] -= amount;
+                    balanceOf[recipient] += amount;
+                }
+                emit Transfer(msg.sender, recipient, amount);
+            }
+            
+            unchecked { i++; }
+        }
+    }
+    
+    // 辅助函数：将短字符串转换为 bytes32
+    function _toBytes32(string memory str) private pure returns (bytes32) {
+        bytes memory b = bytes(str);
+        require(b.length <= 32, "String too long");
+        
+        bytes32 result;
+        assembly {
+            result := mload(add(str, 32))
+        }
+        return result;
+    }
+    
+    // Gas优化：增加增量和减量函数
+    function increaseAllowance(address spender, uint256 addedValue) external returns (bool) {
+        _approve(msg.sender, spender, allowance[msg.sender][spender] + addedValue);
+        return true;
+    }
+    
+    function decreaseAllowance(address spender, uint256 subtractedValue) external returns (bool) {
+        uint256 currentAllowance = allowance[msg.sender][spender];
+        require(currentAllowance >= subtractedValue, "Decrease below zero");
+        _approve(msg.sender, spender, currentAllowance - subtractedValue);
+        return true;
+    }
+}
+```
+
+## 漏洞修复
+
+漏洞合约：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// ⚠️ 含有多个安全漏洞的拍卖合约
+contract VulnerableAuction {
+    address public owner;
+    address public highestBidder;
+    uint256 public highestBid;
+    uint256 public auctionEndTime;
+    bool public auctionEnded;
+    
+    mapping(address => uint256) public pendingReturns;
+    
+    event NewHighestBid(address bidder, uint256 amount);
+    event AuctionEnded(address winner, uint256 amount);
+    
+    constructor(uint256 _biddingTime) {
+        owner = msg.sender;
+        auctionEndTime = block.timestamp + _biddingTime;
+    }
+    
+    // 漏洞1：重入漏洞
+    function bid() external payable {
+        require(block.timestamp <= auctionEndTime, "Auction ended");
+        require(msg.value > highestBid, "Bid too low");
+        
+        // 退款时可能触发重入攻击
+        if (highestBidder != address(0)) {
+            pendingReturns[highestBidder] += highestBid;
+        }
+        
+        highestBidder = msg.sender;
+        highestBid = msg.value;
+        
+        emit NewHighestBid(msg.sender, msg.value);
+    }
+    
+    // 漏洞2：不安全的提款函数
+    function withdraw() external {
+        uint256 amount = pendingReturns[msg.sender];
+        if (amount > 0) {
+            // 重入攻击点：状态更新在转账之后
+            pendingReturns[msg.sender] = 0;
+            
+            (bool success, ) = msg.sender.call{value: amount}("");
+            require(success, "Transfer failed");
+        }
+    }
+    
+    // 漏洞3：权限控制不严
+    function endAuction() external {
+        require(block.timestamp >= auctionEndTime, "Auction not ended");
+        require(!auctionEnded, "Auction already ended");
+        
+        auctionEnded = true;
+        
+        // 直接转账，没有使用pull模式
+        (bool success, ) = owner.call{value: highestBid}("");
+        require(success, "Transfer failed");
+        
+        emit AuctionEnded(highestBidder, highestBid);
+    }
+    
+    // 漏洞4：时间戳依赖
+    function extendAuction() external {
+        // 矿工可能操纵时间戳
+        if (block.timestamp >= auctionEndTime - 1 hours) {
+            auctionEndTime += 1 hours;
+        }
+    }
+    
+    // 漏洞5：整数溢出（旧版本）
+    function addBid(uint256 amount) external {
+        // 旧版本Solidity中可能溢出
+        pendingReturns[msg.sender] += amount;
+    }
+    
+    // 漏洞6：缺少输入验证
+    function setNewOwner(address newOwner) external {
+        // 缺少权限检查！
+        owner = newOwner;
+    }
+    
+    // 漏洞7：不安全的随机数生成
+    function selectRandomWinner() external view returns (address) {
+        // 可被矿工操纵
+        uint256 random = uint256(keccak256(abi.encodePacked(block.timestamp, blockhash(block.number - 1))));
+        return highestBidder; // 伪随机选择
+    }
+}
+```
+
+修复合约：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+/**
+ * @title 安全拍卖合约
+ * @dev 修复了所有已知漏洞的安全版本
+ * @notice 采用防重入、权限控制、安全数学等最佳实践
+ */
+contract SecureAuction {
+    using SafeMath for uint256;
+    
+    address public owner;
+    address public highestBidder;
+    uint256 public highestBid;
+    uint256 public auctionEndTime;
+    bool public auctionEnded;
+    
+    // 使用更安全的数据结构
+    struct Bid {
+        address bidder;
+        uint256 amount;
+        uint256 timestamp;
+        bool refunded;
+    }
+    
+    Bid[] public bids;
+    mapping(address => uint256) public pendingReturns;
+    
+    // 重入防护
+    bool private locked;
+    
+    // 自定义错误（更省gas）
+    error AuctionAlreadyEnded();
+    error AuctionNotEnded();
+    error BidTooLow(uint256 currentHighest);
+    error Unauthorized();
+    error ReentrancyGuard();
+    error TransferFailed();
+    error InvalidAddress();
+    
+    event NewHighestBid(address indexed bidder, uint256 amount);
+    event AuctionEnded(address indexed winner, uint256 amount);
+    event Withdrawal(address indexed recipient, uint256 amount);
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    
+    // 修饰器：防重入
+    modifier nonReentrant() {
+        if (locked) revert ReentrancyGuard();
+        locked = true;
+        _;
+        locked = false;
+    }
+    
+    // 修饰器：仅所有者
+    modifier onlyOwner() {
+        if (msg.sender != owner) revert Unauthorized();
+        _;
+    }
+    
+    // 修饰器：拍卖进行中
+    modifier auctionActive() {
+        if (block.timestamp > auctionEndTime) revert AuctionAlreadyEnded();
+        if (auctionEnded) revert AuctionAlreadyEnded();
+        _;
+    }
+    
+    // 修饰器：拍卖已结束
+    modifier auctionEndedOnly() {
+        if (block.timestamp <= auctionEndTime) revert AuctionNotEnded();
+        if (auctionEnded) revert AuctionAlreadyEnded();
+        _;
+    }
+    
+    constructor(uint256 _biddingTime) {
+        if (_biddingTime == 0) revert("Bidding time must be > 0");
+        
+        owner = msg.sender;
+        auctionEndTime = block.timestamp + _biddingTime;
+    }
+    
+    /**
+     * @dev 安全出价函数
+     * @notice 采用Checks-Effects-Interactions模式防止重入
+     */
+    function bid() external payable auctionActive nonReentrant {
+        if (msg.value <= highestBid) {
+            revert BidTooLow(highestBid);
+        }
+        
+        // Checks: 参数验证
+        require(msg.sender != address(0), "Invalid address");
+        
+        // Effects: 先更新状态
+        address previousBidder = highestBidder;
+        uint256 previousBid = highestBid;
+        
+        highestBidder = msg.sender;
+        highestBid = msg.value;
+        
+        // 记录出价历史
+        bids.push(Bid({
+            bidder: msg.sender,
+            amount: msg.value,
+            timestamp: block.timestamp,
+            refunded: false
+        }));
+        
+        // 记录退款（使用SafeMath）
+        if (previousBidder != address(0)) {
+            pendingReturns[previousBidder] = pendingReturns[previousBidder].add(previousBid);
+        }
+        
+        emit NewHighestBid(msg.sender, msg.value);
+        
+        // Interactions: 最后处理外部调用
+        // 这里没有立即转账，使用pull模式
+    }
+    
+    /**
+     * @dev 安全提款函数
+     * @notice 采用pull模式，避免push模式的危险
+     */
+    function withdraw() external nonReentrant {
+        uint256 amount = pendingReturns[msg.sender];
+        
+        if (amount == 0) {
+            revert("No funds to withdraw");
+        }
+        
+        // Effects: 先更新状态
+        pendingReturns[msg.sender] = 0;
+        
+        // Interactions: 后执行转账
+        _safeTransferETH(msg.sender, amount);
+        
+        emit Withdrawal(msg.sender, amount);
+    }
+    
+    /**
+     * @dev 结束拍卖（仅所有者）
+     * @notice 将最高出价转给所有者，采用pull模式
+     */
+    function endAuction() external onlyOwner auctionEndedOnly nonReentrant {
+        // 更新状态
+        auctionEnded = true;
+        
+        emit AuctionEnded(highestBidder, highestBid);
+        
+        // 不立即转账，让所有者自己提取
+        pendingReturns[owner] = pendingReturns[owner].add(highestBid);
+    }
+    
+    /**
+     * @dev 所有者提取拍卖所得
+     */
+    function withdrawProceeds() external onlyOwner nonReentrant {
+        require(auctionEnded, "Auction not ended");
+        
+        uint256 amount = pendingReturns[owner];
+        require(amount > 0, "No proceeds to withdraw");
+        
+        pendingReturns[owner] = 0;
+        _safeTransferETH(owner, amount);
+    }
+    
+    /**
+     * @dev 延长拍卖时间（带限制）
+     * @param additionalTime 延长时间（秒）
+     */
+    function extendAuction(uint256 additionalTime) external onlyOwner auctionActive {
+        require(additionalTime <= 1 days, "Cannot extend more than 1 day");
+        require(additionalTime > 0, "Additional time must be positive");
+        
+        // 最大拍卖时间限制
+        uint256 maxAuctionTime = auctionEndTime + 7 days;
+        uint256 newEndTime = auctionEndTime.add(additionalTime);
+        
+        if (newEndTime > maxAuctionTime) {
+            revert("Auction cannot exceed maximum duration");
+        }
+        
+        auctionEndTime = newEndTime;
+    }
+    
+    /**
+     * @dev 安全的所有权转移
+     * @param newOwner 新的所有者地址
+     */
+    function transferOwnership(address newOwner) external onlyOwner {
+        if (newOwner == address(0)) revert InvalidAddress();
+        
+        emit OwnershipTransferred(owner, newOwner);
+        owner = newOwner;
+    }
+    
+    /**
+     * @dev 紧急停止（Circuit Breaker模式）
+     * @notice 仅在紧急情况下使用
+     */
+    function emergencyStop() external onlyOwner {
+        auctionEnded = true;
+        // 可以添加更多紧急逻辑
+    }
+    
+    /**
+     * @dev 获取合约ETH余额
+     */
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+    
+    /**
+     * @dev 获取出价数量
+     */
+    function getBidCount() external view returns (uint256) {
+        return bids.length;
+    }
+    
+    /**
+     * @dev 安全ETH转账
+     * @param to 收款地址
+     * @param value 转账金额
+     */
+    function _safeTransferETH(address to, uint256 value) internal {
+        (bool success, ) = to.call{value: value}("");
+        if (!success) revert TransferFailed();
+    }
+    
+    /**
+     * @dev 接收ETH（如果需要）
+     */
+    receive() external payable {
+        revert("Direct ETH transfers not allowed");
+    }
+    
+    /**
+     * @dev 回退函数
+     */
+    fallback() external payable {
+        revert("Function not found");
+    }
+}
+
+/**
+ * @title SafeMath库
+ * @dev 安全的数学运算，防止溢出和下溢
+ */
+library SafeMath {
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        require(c >= a, "SafeMath: addition overflow");
+        return c;
+    }
+    
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b <= a, "SafeMath: subtraction overflow");
+        return a - b;
+    }
+    
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        if (a == 0) return 0;
+        uint256 c = a * b;
+        require(c / a == b, "SafeMath: multiplication overflow");
+        return c;
+    }
+    
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b > 0, "SafeMath: division by zero");
+        return a / b;
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # DAY11
 
 周始，观废寝忘食刷榜、寻到offer者甚多，顿觉无力，浑噩踱步，不知所向
@@ -30,6 +616,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # DAY10
@@ -385,6 +972,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY9
 
 古法笔记：
@@ -398,6 +986,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY8
 
 \[\]frontend
@@ -407,6 +996,7 @@ router.swapExactTokensForTokens(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -447,6 +1037,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -516,6 +1107,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -633,6 +1225,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -731,6 +1324,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -915,6 +1509,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -1011,6 +1606,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
