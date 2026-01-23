@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+austin的课上讲agent对eth的影响：
+
+互相信任问题、支付问题；容易在L2搭建
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 **1.22**
 
 昨天答应了bruce老师帮忙review handbook的pr，今天review了5个。
@@ -62,6 +70,7 @@ solidity学习小笔记：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 昨晚和朋友玩了几局鹅鸭杀，再次复习了对自己的认知。我是那种进入一个新的系统和环境，与一般人反应相差很大的人。
 
@@ -251,6 +260,7 @@ await 只能等待一个 **Promise**。
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 **eth最小单位wei的来源**：
 
 1998 年，华裔科学家戴伟（Wei Dai）便提出了匿名分布式电子加密货币 B-Money，中本聪的比特币白皮书参考文献中第一篇就是戴伟（Wei Dai）的文章
@@ -352,6 +362,7 @@ foundry的文档要记一下，方便随时查阅命令：
 
 
 
+
 今天本来想开始技术向的学习的，毕竟之前也没接触过solidity，结果到现在（22:40）仍然没法开始……
 
 因为刚才发现了学习手册的一个错误，准备当下就修改提交PR。所以我先来把总结写一下，免得一不小心就过0点了哈哈
@@ -398,6 +409,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 
 
+
 今天主要是提交了个pr，链接：[https://github.com/lxdao-official/myfirstnft-frontend/pull/20](https://github.com/lxdao-official/myfirstnft-frontend/pull/20)  
 关于myfirstnft网页的这个问题，我第一天也遇到了，但是当时没多想，觉得完成任务就行了。
 
@@ -412,6 +424,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -541,6 +554,7 @@ wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大�
 
 
 
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -576,6 +590,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -631,6 +646,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -808,6 +824,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
