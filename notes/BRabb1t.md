@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+\### Ethers.js 脚本与交互基础
+
+今天视频主要介绍的是 Node.js 环境下来和链上进行交互
+
+主要使用的核心库是 Ethers.js
+
+\#### Providers 提供者
+
+Provider 是你通往区块链的“只读”连接。它类似于 Web2 中的 API 客户端（如 Firebase SDK）。你不需要自己跑节点，可以连接到 Infura, Alchemy 等服务商提供的节点（类似于连接云数据库）
+
+它能够获取区块号、查询余额、解析 ENS 域名、读取合约状态
+
+\#### 大数的处理
+
+以太坊中的数字（Wei）大到 JavaScript 的原生 `number` 类型无法承载（会溢出）。
+
+Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
+
+**转换工具**：
+
+    ◦ `ethers.utils.formatEther(bn)`: 将 BigNumber (Wei) 转换为人类可读的字符串 (Ether)。
+
+    ◦ `ethers.utils.parseEther("1.0")`: 将字符串 (Ether) 转换为 BigNumber (Wei) 用于交易。
+
+• **数学运算**：\*\*绝对不要\*\*把 BigNumber 转成 JS number 去做加减乘除。必须使用 BigNumber 自带的方法，如 `.add()`, `.sub()`, `.mul()`。
+
+\#### 需要注意的地方
+
+**私钥格式**：有些库导出的私钥带 `0x` 前缀，有些不带。如果报错，检查一下是否需要去掉或加上 `0x`。
+
+**网络混淆 (Mainnet vs Testnet)**：
+
+    ◦ **场景**：你想在 Rinkeby 测试网给 "sanfordstout.eth" 转账。
+
+    ◦ **问题**：ENS 注册表通常只部署在 Mainnet 上。如果你只连接了 Rinkeby Provider，你是解析不了 ENS 域名的。
+
+    ◦ **解决**：你需要\*\*两个 Provider\*\*。一个连接 Mainnet 用来解析 ENS 获取地址，另一个连接 Rinkeby 用来发送交易。
+
+**空地址陷阱**：
+
+    ◦ 如果不小心把交易发给了一个 `null` 或空地址，EVM 可能会将其视为\*\*合约部署\*\*操作，这会导致莫名其妙的 Contract Creation。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## 智能合约的主要优势：自动触发、减少中介、减少误差
 
 以太坊是匿名的，但是不是真正的匿名，交易记录完全公开、可追踪，通过交易所 KYC 可追溯
@@ -76,6 +122,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 \## 1. Uniswap v2
 
@@ -224,6 +271,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -282,6 +330,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -307,6 +356,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -340,6 +390,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -388,6 +439,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -430,6 +482,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -455,6 +508,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -502,6 +556,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
