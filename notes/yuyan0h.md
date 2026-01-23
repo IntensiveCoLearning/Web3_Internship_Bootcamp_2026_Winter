@@ -15,8 +15,170 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+\# Web3 学习笔记 · 第十一天
+
+\## 🧠 今日学习内容
+
+1\. **Crowdfunding App Challenge 讲座**
+
+2\. **搭建 Tokenization 挑战环境**
+
+\---
+
+\## 🎯 Crowdfunding App Challenge 解读
+
+\### 一、挑战目标
+
+**构建一个去中心化众筹 DApp**，核心是：
+
+\- 用户可向合约发送 ETH
+
+\- 若达到目标金额，资金转入目标合约
+
+\- 若未达到，用户可撤回资金
+
+\- **用户只需信任代码，无需互信**
+
+\### 二、你将获得的技能
+
+✅ 设计并实现一个\*\*带有状态机的 DApp\*\*
+
+✅ 使用 `payable` 函数处理 ETH
+
+✅ 与外部合约交互
+
+✅ 使用\*\*事件\*\*追踪并前端展示链上活动
+
+\### 三、核心机制理解
+
+1\. **状态机模型**：
+
+\- `Active`：募集中
+
+\- `Successful`：达到目标，资金锁定
+
+\- `Expired`：超时未达标，可退款
+
+\- `PaidOut`：资金已转出
+
+2\. **信任最小化设计**：
+
+\- 资金由合约托管，规则由代码强制执行
+
+\- 失败则全额退款，无中间人风险
+
+\- 成功则自动转账，无需人工干预
+
+3\. **事件驱动前端**：
+
+\- 合约触发 `FundedRefundedPaidOut` 等事件
+
+\- 前端监听并实时更新 UI
+
+\### 四、最终交付物
+
+\- 部署完整的 DApp（合约 + 前端）
+
+\- 使用 `yarn vercel` 部署到公开服务器
+
+\- 在 \[[SpeedrunEthereum.com](http://SpeedrunEthereum.com)\]([https://speedrunethereum.com](https://speedrunethereum.com)) 提交链接
+
+\---
+
+\## ⚙️ 搭建 Tokenization 挑战环境
+
+\### 一、环境准备步骤
+
+1\. **Clone 挑战仓库**（如 `speedrunethereum` 或相关模板）
+
+2\. **安装依赖**：
+
+\`\`\`bash
+
+yarn install
+
+\`\`\`
+
+3\. **配置 Hardhat**：
+
+\- 设置测试网 RPC（如 Sepolia）
+
+\- 配置私钥（环境变量）
+
+4\. **部署合约**：
+
+\`\`\`bash
+
+npx hardhat run scripts/deploy.js --network sepolia
+
+\`\`\`
+
+5\. **启动前端**：
+
+\`\`\`bash
+
+yarn start
+
+\`\`\`
+
+\### 二、遇到的典型问题与解决
+
+\- **Node 版本不兼容** → 使用 nvm 切换至 18+
+
+\- **MetaMask 网络未添加** → 手动添加 Sepolia RPC
+
+\- **测试币不足** → 使用 faucet 领取
+
+\- **合约验证失败** → 检查编译器版本与优化设置
+
+\### 三、工具链确认
+
+\- **开发框架**：Hardhat
+
+\- **前端框架**：React + ethers.js / wagmi
+
+\- **部署**：Vercel（前端）+ 测试网（合约）
+
+\- **测试**：Hardhat 测试脚本 + 前端交互测试
+
+\---
+
+\## 💡 今日心得
+
+\> 这个众筹挑战很像一个“微型 DAO”：
+
+\> - 一群人围绕一个目标协作
+
+\> - 资金由代码托管，规则透明
+
+\> - 成功则自动执行，失败则安全退出
+
+\>
+
+\> 它让我看到智能合约如何成为“可信的中间件”，取代传统众筹平台的中心化角色。
+
+\> 搭建环境的过程也再次提醒我：
+
+\> **Web3 开发是“全栈+链”**，本地开发、测试网部署、前端集成、公开部署——每一步都是实战。
+
+\---
+
+\## 🧭 明日计划
+
+1\. 开始编写众筹合约（状态机 + 支付 + 事件）
+
+2\. 写测试脚本验证合约逻辑
+
+3\. 搭建基础前端页面（连接钱包 + 显示状态）
+
+4\. 尝试部署到测试网并交互
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 \# Web3 学习笔记 · 第十天
 
 \## 🧠 今日学习内容
@@ -179,6 +341,7 @@ mapping(address => User) public users;
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 \# Web3 学习笔记 · 第九天
 
 \## 🧠 今日主题：NFT 铸造 + zkVote 初体验 + Uniswap 入门
@@ -332,6 +495,7 @@ mapping(address => User) public users;
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 \# Web3 学习笔记 · 补充（实习计划概览与任务进展）
 
 \## 📋 实习计划结构与进展概览
@@ -470,6 +634,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 学习笔记 · 第八天
 
 \## 🧠 今日学习主题：智能合约初体验 + 密钥哈希 Token 理解
@@ -595,6 +760,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 ## **🛡️ 今日学习主题：Web3 安全入门与实践**
 
 （基于 Unphishable 平台引导内容）
@@ -710,6 +876,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -870,6 +1037,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1060,6 +1228,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 # **Web3 学习笔记 · 第四天**
 
 ## **📖 今日学习材料**
@@ -1088,6 +1257,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1220,6 +1390,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 实习手册学习笔记
 
 \## 📘 入门导读
@@ -1263,6 +1434,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
