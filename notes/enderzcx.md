@@ -15,8 +15,94 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# [**循环语句**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/11%20%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5.md#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5)
+
+**这里直接复制代码编译会warning，将pure添加进函数状态栏即可成功编译（英文版是有pure的）**
+
+**加入了**for 语句的标准语法和执行顺序
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Loop {
+    function loop() public pure{
+        // for 循环
+        /* for 语句的标准语法
+          for (初始化; 条件; 每次循环后执行) {循环体}*/
+        for (uint i = 0; i < 10; i++) {
+            if (i == 3) {
+                // 使用 continue 跳过当前迭代
+                // 意思就是立即结束当前循环迭代，进入下一次迭代。
+                continue;
+            }
+            if (i == 5) {
+                // 使用 break 退出循环
+                // 意思是立即终止整个循环，跳转到循环后面的代码。
+                break;
+            }
+        }
+
+        // while 循环
+        uint j; // 默认j = 0
+        while (j < 10) {
+            j++; // 等价于 j = j + 1和 j += 1
+        /*执行流程：
+
+        检查 j < 10（0 < 10 → true）→ 进入循环体。
+        执行 j++ → j 变为 1。
+        重新检查 1 < 10 → true → 继续循环。
+        重复直到 j = 10 时，10 < 10 为 false → 循环结束。*/ 
+        }
+    }
+}
+/* 执行顺序:
+   for (uint i = 0; i < 3; i++) {
+    // body
+}
+执行顺序是：
+1️⃣ i = 0
+2️⃣ 判断 i < 3 → true
+3️⃣ 执行 body
+4️⃣ 执行 i++
+5️⃣ 判断 i < 3 → true
+6️⃣ 执行 body
+7️⃣ i++
+8️⃣ 判断 i < 3 → false → 退出循环
+*/
+```
+
+为什么不加pure就会waring？这里需要解释一下状态变量和参数的区别
+
+1.  **状态变量 (**`number`**)**
+    
+    -   存储在\*\*合约存储（Storage）\*\*中，持久化保存。
+        
+    -   修改状态变量会消耗 **Gas** 并改变区块链状态。
+        
+    -   例子：`uint256 public number = 5;`（永久存储在合约中）
+        
+2.  **函数参数 (**`_number`**)**
+    
+    -   临时传入函数的值，存储在\*\*内存（Memory）\*\*中。
+        
+    -   不改变合约状态，仅在函数执行时存在。
+        
+    -   例子：`function addPure(uint256 _number)` 中的 `_number`
+        
+
+`pure`：只能处理**参数/局部变量**，不能碰状态变量
+
+诶？这段代码确实没有碰状态变量啊，这是 Solidity 编译器在**教你写专业合约**：
+
+> “我发现你这个函数很纯，你不标 `pure` 有点不严谨，我提醒你一下。”
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # **查看 Uniswap 工作原理解析 回放**
 
 [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分**学习笔记：**
@@ -429,6 +515,7 @@ contract IfElse {
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -436,6 +523,7 @@ contract IfElse {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -466,6 +554,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -534,6 +623,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -570,12 +660,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -642,6 +734,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -652,6 +745,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
