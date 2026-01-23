@@ -15,8 +15,54 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+**一、课程定位与学习目标**
+
+Speedrun Ethereum 是一个面向 Web3 初学者与开发者的实战型课程体系，通过逐步构建 DApp 来掌握：
+
+-   Solidity 智能合约开发
+    
+-   以太坊交易与账户模型
+    
+-   前端与合约交互（Ethers.js / Wagmi）
+    
+-   本地链、测试网与主网部署流程
+    
+
+Basic Workshop 是入门模块，重点在于 理解合约运行机制 + 建立完整开发闭环认知。
+
+**三、Workshop 核心任务结构**
+
+Speedrun ETH 的 Basic Workshop 通常包含以下类型任务：
+
+1.  本地链部署合约
+    
+2.  与合约交互（读 / 写）
+    
+3.  使用前端组件连接钱包
+    
+4.  理解事件、映射、modifier 等机制
+    
+
+**四、关键技术点总结**
+
+**1\. 本地开发环境**
+
+常用工具链：
+
+-   Hardhat / Foundry
+    
+-   Metamask
+    
+-   [Localhost](http://Localhost) (Hardhat Node)
+    
+-   Ethers.js
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 一、**Workshop 核心目标**
 
 本次 DApp Workshop 的目标是帮助开发者从 **0 → 1** 完整构建一个去中心化应用（Decentralized Application），理解：
@@ -381,6 +427,7 @@ Gas 波动 成本不可预测
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 一、**Uniswap 概述**
 
 Uniswap 是基于以太坊的去中心化交易协议（DEX），核心创新是采用 **AMM（Automated Market Maker，自动化做市商）机制**，通过算法而非订单簿实现资产交换。
@@ -616,6 +663,7 @@ V4 Hooks 模块化 可编程流动性与策略层
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 📘 **Web3 公共物品资金分配｜学习笔记**
@@ -922,6 +970,7 @@ DAO 投资失败率高 将风险转移给建设者
 
 
 
+
 **1**
 
 • [**Web3Buidler.Tech**](http://Web3Buidler.Tech)：合作伙伴，经常参与内容策划与行业研报分享。
@@ -981,6 +1030,7 @@ DAO 投资失败率高 将风险转移给建设者
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1088,6 +1138,7 @@ Web3 安全不应被视为“成本”，而是决定行业能否走向大规模
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1475,6 +1526,7 @@ Web3 安全不应被视为“成本”，而是决定行业能否走向大规模
 
 
 
+
 **Agentic AI × Web3：从聊天机器人到自主经济体**
 
 **一、背景与趋势：AI 正在从“对话”走向“行动”**
@@ -1777,6 +1829,7 @@ Web3 是目前唯一能支撑高频、低额、机器交易的基础设施
 
 
 
+
 **Web3 安全与风险趋势学习笔记**
 
 **主题：Web3 安全态势、典型攻击方式与应对策略**
@@ -1880,6 +1933,7 @@ Web3 安全不应被视为“成本”，而是决定行业能否走向大规模
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
