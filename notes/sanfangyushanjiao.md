@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+1.  复习回顾相关章节，完成未完成课程
+    
+2.  作业与实践挑战
+    
+    1.  在 remix 中运行 [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分的代码
+        
+    2.  Solidity 挑战：[https://ethernaut.openzeppelin.com/](https://ethernaut.openzeppelin.com/)
+        
+3.  参加周五晚例会，分享本周感悟与学习笔记
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 1.  学习内容：
     
     1.  [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分
@@ -37,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 1.  学习内容：
     
     1.  [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分
@@ -56,6 +71,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ### **1.19-20 Solidity 基础语法学习**
@@ -86,6 +102,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.  学习内容：
     
     1.  Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分
@@ -109,6 +126,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -141,11 +159,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.16 实践、回顾与成果展示 1. 复习回顾相关章节，完成未完成课程 2. 行业探索 • 知名开发者 & Builder X 关注清单 3. 实践 & 下周准备 1. 开发环境并熟悉：Remix IDE • Remix 使用教程 4. 参加周五晚例会，分享本周感悟与学习笔记
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -175,6 +195,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -295,6 +316,7 @@ EIP-4844 (Proto-Danksharding)：引入了Blob数据包，专门为L2提供廉价
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
