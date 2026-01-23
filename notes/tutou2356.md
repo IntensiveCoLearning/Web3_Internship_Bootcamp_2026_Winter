@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+今天听了Austin的分享会，对学习路径有了更深的了解
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 今天主要学习了remix,感觉和python不太一样，一是不需要ide,直接在网页上编写运行；二是写完一段代码，需要先compile，然后再部署，才可以看见结果是什么。每一个写好的函数都在部署之后有体现。
 
 ## 变量、存储与单位
@@ -87,6 +93,7 @@ contract CoreConcept {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # ZkVote(**Zero-Knowledge vote)**
 
@@ -366,6 +373,7 @@ nullifier = Hash(identitySecret, electionId)
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ### **三、RPC 节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。理解 RPC 的工作原理、选择合适的 RPC 服务商，以及正确配置和使用 RPC 节点，是每个 Web3 开发者必须掌握的基础知识。
@@ -413,6 +421,7 @@ nullifier = Hash(identitySecret, electionId)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -504,6 +513,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -620,6 +630,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -756,6 +767,7 @@ MEME 币具有极高的投机性和波动性。价格可能在短时间内暴涨
 
 
 
+
 ## 二、以太坊概览
 
 ### 2.7 **以太坊核心机制：从账户到执行的完整链路**
@@ -883,6 +895,7 @@ Compound 是一个去中心化的借贷平台，允许用户借入或借出加�
 
 
 
+
 二、以太坊概览
 
 \*\*2.4 2022 年 9 月 The merge : PoW(\*\*工作量证明 Proof of Work) \*\*—> PoS(\*\*权益证明 Proof of Stake)
@@ -948,6 +961,7 @@ Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
