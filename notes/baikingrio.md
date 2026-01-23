@@ -15,8 +15,40 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## Swap过程的参数传递
+
+问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
+
+```
+// 危险写法
+router.swapExactTokensForTokens(amountIn, 0, path, to, deadline);
+```
+
+后果：MEV bot 或 frontrunner 可 sandwich 攻击，榨取 ~2-5% 利润。
+
+最佳实践：
+
+-   预计算预期输出：amountOutMin = expected \* (100 - slippageTolerance) / 100（通常 0.5%-5%）。
+    
+-   使用 swapExactTokensForTokensSupportingFeeOnTransferTokens 处理有转账费的 token。
+    
+
+问题2：设置 deadline = type(uint).max 或过长，导致交易在 mempool 挂起，价格已变化。
+
+后果：执行时价格不利，损失滑点。
+
+最佳实践：
+
+```
+uint deadline = block.timestamp + 300; // 5 分钟
+```
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## Uniswap V2 Flash Swap（闪电交换）
 
 Flash Swap（也叫 Flash Loan in Uniswap V2 语境）是 Uniswap V2 中最强大且最具创新性的功能之一。它允许用户（通常是智能合约）先借出池子中的任意数量的代币，然后在同一笔交易内执行任意逻辑，最后归还借出的代币（或等值的另一种代币）+ 0.3% 费用。
@@ -119,6 +151,7 @@ interface IUniswapV2Callee {
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -202,6 +235,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 ## Swap 与价格预言机
@@ -329,6 +363,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -436,6 +471,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -472,6 +508,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -487,6 +524,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -529,6 +567,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -540,6 +579,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
