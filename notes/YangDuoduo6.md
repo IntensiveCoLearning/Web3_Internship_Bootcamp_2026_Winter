@@ -15,8 +15,198 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# **以太坊基础学习笔记**
+
+## **一、区块链 & 以太坊基础概念**
+
+### **1\. 区块链基础概念**
+
+-   **区块链**：一种去中心化的分布式数据库，由按时间顺序排列的区块组成，每个区块包含交易数据，通过密码学方法链接。
+    
+-   **去中心化**：系统不依赖单一控制点，数据由网络中的多个节点共同维护。
+    
+-   **共识机制**：网络节点达成一致的算法（如PoW、PoS），确保数据一致性。
+    
+-   **智能合约**：自动执行的程序，运行在区块链上，无需第三方介入。
+    
+
+### **2\. 以太坊核心概念**
+
+-   **以太坊**：一个开源的、支持智能合约的区块链平台，允许开发者构建去中心化应用（DApps）。
+    
+-   **以太币（ETH）**：以太坊网络的原生加密货币，用于支付交易费用和智能合约执行。
+    
+-   **Gas**：以太坊网络中执行操作所需的计算资源单位，以Gwei计费。
+    
+-   **区块浏览器**：如Etherscan，用于查看区块链上的交易、地址和合约信息。
+    
+
+### **3\. 以太坊关键组件**
+
+-   **EVM (Ethereum Virtual Machine)**：以太坊的执行环境，运行智能合约。
+    
+-   **智能合约**：用Solidity等语言编写的程序，部署在以太坊上自动执行。
+    
+-   **钱包**：用于存储私钥和与以太坊网络交互的工具（如MetaMask）。
+    
+-   **地址**：以太坊网络中的唯一标识符，以0x开头的42位字符串。
+    
+
+### **4\. 以太坊生态系统**
+
+-   **Layer 1**：主网（如以太坊主网），提供基础安全和去中心化。
+    
+-   **Layer 2**：在Layer 1之上构建的扩展解决方案（如Arbitrum、Optimism），提高交易速度和降低费用。
+    
+-   **DeFi (去中心化金融)**：基于区块链的金融服务（如Uniswap、Aave）。
+    
+-   **NFTs (非同质化代币)**：代表唯一数字资产的代币（如CryptoPunks、BAYC）。
+    
+
+## **二、工具安装与使用**
+
+### **1\. MetaMask 钱包安装与使用**
+
+**安装指南**：
+
+-   访问MetaMask官网：[https://metamask.io/](https://metamask.io/)
+    
+-   通过Chrome浏览器插件商店安装扩展
+    
+-   安装后创建新钱包，**务必保存好助记词**（12个单词的恢复短语）
+    
+-   首次使用时，选择"以太坊主网"，可切换到"Sepolia测试网"获取测试币
+    
+
+**使用注意事项**：
+
+-   务必通过官网下载，避免钓鱼网站
+    
+-   助记词是唯一恢复钱包的方式，切勿泄露
+    
+-   测试钱包仅用于学习，不要充值真实资金
+    
+
+### **2\. Sepolia 测试网测试币获取**
+
+**获取方式**：
+
+-   访问Sepolia PoW Faucet：[https://sepolia-faucet.pk910.de/](https://sepolia-faucet.pk910.de/)
+    
+-   输入你的Sepolia钱包地址
+    
+-   完成简单的挖矿工作（PoW）后获取测试币
+    
+-   也可以使用其他水龙头：Faucet Trade、Google Cloud、PK910挖矿式等
+    
+
+**为什么需要测试币**：
+
+-   用于测试智能合约、DApp功能，无需使用真实资金
+    
+-   避免在主网上因测试导致的交易费用浪费
+    
+
+## **三、安全与合规**
+
+### **1\. 常见安全威胁**
+
+-   **Phishing (钓鱼)**：伪装成可信来源的欺诈性链接
+    
+-   **Rug Pull (抽地毯)**：项目方卷款跑路
+    
+-   **Wallet Signing Scams**：诱导用户签署恶意交易
+    
+-   **Fake Websites**：伪装成合法DApp的欺诈网站
+    
+
+### **2\. 安全最佳实践**
+
+-   **保管好助记词**：不要保存在任何在线平台，不与任何人分享
+    
+-   **谨慎点击链接**：特别是来自社交媒体的"免费代币"、"高收益"链接
+    
+-   **验证网站真实性**：检查URL、SSL证书，使用官方域名
+    
+-   **不轻易授权**：在钱包中签署交易前，仔细阅读内容
+    
+
+### **3\. 安全挑战平台**
+
+-   **The Phishing Dojo**：[https://phishing.therektgames.com/](https://phishing.therektgames.com/)
+    
+    -   模拟真实钓鱼场景，训练识别安全威胁
+        
+    -   无需安装额外工具，100%在浏览器内完成
+        
+    -   适合初学者提升安全意识
+        
+-   [**unphishable.io**](http://unphishable.io)：类似的安全挑战平台
+    
+
+## **四、行业知识与拓展**
+
+### **1\. 关键概念**
+
+**表格**
+
+| 概念 | 含义 | 用途 |
+| --- | --- | --- |
+| ENS | Ethereum Name Service | 为以太坊地址提供可读名称（如name.eth） |
+| DEX | Decentralized Exchange | 去中心化交易所（如Uniswap） |
+| NFT | Non-Fungible Token | 非同质化代币，代表唯一数字资产 |
+| ERC-20 | 以太坊代币标准 | 用于创建可互换代币（如USDT、DAI） |
+| ERC-721 | 以太坊NFT标准 | 用于创建唯一NFT（如CryptoPunks） |
+| IPFS | InterPlanetary File System | 分布式文件存储系统，常用于NFT元数据 |
+
+### **2\. 实用资源**
+
+-   **Etherscan**：[https://etherscan.io/](https://etherscan.io/) - 以太坊区块浏览器
+    
+-   **CoinGecko**：[https://www.coingecko.com/](https://www.coingecko.com/) - 加密货币数据平台
+    
+-   **DefiLlama**：[https://defillama.com/](https://defillama.com/) - DeFi TVL聚合器
+    
+-   **The Red Guild**：[https://theredguild.org/](https://theredguild.org/) - 区块链安全组织
+    
+
+## **五、实践与准备**
+
+### **1\. Remix IDE 环境搭建**
+
+-   **Remix IDE**：基于浏览器的智能合约开发环境
+    
+-   **访问地址**：[https://remix.ethereum.org/](https://remix.ethereum.org/)
+    
+-   **使用步骤**：
+    
+    1.  创建新文件（.sol后缀）
+        
+    2.  编写智能合约（如简单的ERC-20代币）
+        
+    3.  编译合约
+        
+    4.  部署到Sepolia测试网（需连接MetaMask）
+        
+    5.  测试合约功能
+        
+
+### **2\. 本周学习成果**
+
+-   已成功安装MetaMask钱包
+    
+-   获取Sepolia测试币并熟悉基本操作
+    
+-   完成The Phishing Dojo基础安全挑战
+    
+-   了解以太坊核心概念与生态系统
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 Web3实习学习笔记
 
 日期：2026-01-22
@@ -124,6 +314,7 @@ SPL是Solana生态的“代币标准”，所有代币（包括Anchor的ANC）�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # **Uniswap工作原理解析学习笔记**
 
@@ -311,6 +502,7 @@ SPL是Solana生态的“代币标准”，所有代币（包括Anchor的ANC）�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ### **Solidity Walk Through 学习笔记**
@@ -558,6 +750,7 @@ contract Counter {
 
 
 
+
 # **Web3社区运营与活动策划学习笔记**
 
 ## **一、学分管理重要通知（关键！）**
@@ -741,6 +934,7 @@ contract Counter {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -995,6 +1189,7 @@ const keyHash = generateKeyHash(publicKey); // 生成代币 ID
 
 
 
+
 Web3防钓鱼攻防练习学习笔记
 
 日期：2026年1月17日（星期六）
@@ -1140,6 +1335,7 @@ Web3安全 = 人 + 技术：
 
 
 
+
 **NFT铸造实操：My First NFT**
 
 **2024年最新流程（以Mintbase为例，免代码）**：
@@ -1219,6 +1415,7 @@ Web3安全 = 人 + 技术：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1340,6 +1537,7 @@ goplus token 插件
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1539,6 +1737,7 @@ Web3.0 ≠ 仅区块链技术，而是 **“用户拥有数据、去中心化治
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
