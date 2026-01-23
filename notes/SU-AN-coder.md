@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# Polymarket 学习笔记
+
+Polymarket 是基于预测市场的去中心化平台，核心依赖 Gnosis 条件代币框架（CTF）和 ERC-1155 标准实现头寸管理，其核心数据模型围绕事件、市场、条件、集合、头寸展开，各组件通过链上日志串联形成可追溯的证据链。事件代表预测主题（如 “2024 年美国大选”），一个事件可包含多个市场，每个市场对应一个二元（Yes/No）预测问题，多结果事件通过 “负风险（NegativeRisk）” 机制关联，将某市场的 NO 头寸转换为其他市场的 YES 头寸，提升资金与流动性利用率。
+
+市场的链上身份由 “条件（Condition）” 定义，通过 conditionId 唯一标识，该标识由预言机地址、问题 ID（questionId）和结果槽位数量（二元市场为 2）哈希计算得出，绑定了市场的核心参数与预言机（当前采用 UMA Optimistic Oracle），是后续结算的关键依据。头寸（Position）作为用户持有的预测结果份额，以 ERC-1155 代币（TokenId）形式存在，其生成需经过 “集合（Collection）” 中间层：collectionId 由父集合 ID（Polymarket 统一为 0）、conditionId 和结果槽位掩码（Yes 为 0b01、No 为 0b10）计算得出，最终 TokenId 则通过抵押品地址（USDC/USDC.e）与 collectionId 哈希生成，每个市场对应两个 TokenId，分别代表 Yes 和 No 头寸。
+
+Polymarket 以 USDC（Polygon 上为 USDC.e）作为唯一抵押品，每份头寸代币背后对应 1 USDC 资金，代币价格可理解为市场对该结果发生概率的定价（如 0.6 USDC 即代表 60% 发生概率）。市场完整生命周期包含四个关键链上环节：创建阶段通过调用 prepareCondition 注册条件，触发 ConditionPreparation 事件记录核心参数；初始流动性阶段通过 splitPosition 将 USDC 拆分为 Yes/No 头寸，PositionSplit 事件记录资金锁定与代币生成；交易阶段通过 CTF Exchange 合约撮合订单，OrderFilled 事件记录成交双方、资产数量、手续费等详情，需注意过滤重复日志避免统计偏差；结算阶段由预言机调用 reportPayouts 公布结果，胜出头寸可通过 redeemPositions 赎回 USDC，完成市场闭环。
+
+链上日志是解码 Polymarket 数据的核心，ConditionPreparation 确认市场基础信息，PositionSplit 与 PositionsMerge 记录头寸的生成与销毁，OrderFilled 还原交易详情，这些日志串联形成完整证据链，支持通过交易哈希解析交易细节、通过 conditionId 还原市场参数，实现对市场全流程的追溯与验证。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -123,6 +137,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -176,6 +191,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -508,6 +524,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -901,6 +918,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1515,6 +1533,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -1581,6 +1600,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1784,6 +1804,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -1932,6 +1953,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2030,6 +2052,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2164,6 +2187,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
