@@ -15,8 +15,45 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## **学习笔记**
+
+### **Web3实习手册**
+
+**Gas优化**
+
+1.每个storage变量，一次函数里最多读1次
+
+2.能不写storage就不写
+
+3.一次写别拆分多次
+
+**SLOAD/SSTROE**
+
+SLOAD：从storage读一个slot，gas很贵
+
+-   读状态变量
+    
+-   读mapping/array/struct字段
+    
+-   require/if/运算读取stroage
+    
+-   多次使用同一个storage
+    
+
+SSTORE：向stroage写一个slot，gas极贵
+
+-   直接赋值
+    
+-   运算 +=等
+    
+-   delete
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## **学习笔记**
 
 ### **Web3实习手册**
@@ -74,6 +111,7 @@ Foundry
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## **学习笔记**
 
@@ -142,6 +180,7 @@ contract关键字声明一个智能合约，语法为 contract 合约名 { ... }
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ## **学习笔记**
 
 ### **19:00-22:00参与会议**
@@ -175,6 +214,7 @@ _ERC-20案例_
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -236,6 +276,7 @@ contract bank{
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -313,6 +354,7 @@ contract bank{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -418,6 +460,7 @@ _函数 Functions_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -598,6 +641,7 @@ EIP-7702允许 EOA 在一笔交易中受全球资金表现得像一个合约账�
 
 
 
+
 ## **学习笔记**
 
 ### **从零到一学习以太坊第二章 //P131已结束第二章**
@@ -750,6 +794,7 @@ EOA是由私钥控制的区块链账户，用来发起交易。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1026,6 +1071,7 @@ _轻节点（Light Node）_
 
 
 
+
 # **1.13学习笔记01**
 
 ## **021学习以太坊第一章**
@@ -1185,6 +1231,7 @@ Web3目标所要实现的：权利的重新分配、无许可、抗审查、公�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
