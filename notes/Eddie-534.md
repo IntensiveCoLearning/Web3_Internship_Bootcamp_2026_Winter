@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+26.1.23 今天运行并理解了solidity基础的部分代码
+
+-   第一个合约：DataLocations
+    
+
+功能：教学合约，展示 Solidity 中三种数据位置的区别：
+
+storage：永久存储在区块链上的数据（如硬盘）
+
+memory：临时内存数据（函数执行期间存在）
+
+calldata：只读的函数参数（最省gas）
+
+用途：学习如何正确使用数据位置来节省gas费用。
+
+-   第二个合约：ReceiveEther & SendEther
+    
+
+功能：演示以太币的接收和发送：
+
+ReceiveEther部分：
+
+展示如何接收以太币：使用 receive() 和 fallback() 函数
+
+提供余额查询功能
+
+SendEther部分：
+
+展示三种发送以太币的方法：transfer、send、call
+
+推荐使用 call 方法（现代标准）
+
+用途：学习如何编写能处理以太币转账的合约。
+
+-   第三个合约：AssemblyIf
+    
+
+功能：展示 Solidity 中的内联汇编（Yul） 语法：
+
+在汇编中使用 `if` 条件判断
+
+在汇编中使用 `switch-case` 多条件判断
+
+演示低级代码编写
+
+用途：学习如何用汇编语言写更高效、更省gas的代码（高级话题）。
+
+-   总结：
+    
+
+1\. 数据基础 → 2. 资金操作 → 3. 高级优化
+
+从基础概念（数据存储），到实际应用（以太币转账），再到高级技巧（汇编优化）的学习路径。
+
+![屏幕截图 2026-01-23 232651.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-23-1769182172797-_____2026-01-23_232651.png)![屏幕截图 2026-01-23 233413.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-23-1769182534610-_____2026-01-23_233413.png)![屏幕截图 2026-01-23 233458.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-23-1769182577991-_____2026-01-23_233458.png)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 26.1.22 今天继续学习solidity基础部分剩下内容。
 
 -   归纳整理：
@@ -71,6 +131,7 @@ unchecked 可以省 Gas 但得自己保证安全
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 26.1.21 今天学习了Solidity的基础部分的部分内容。
 
 -   归纳：
@@ -93,6 +154,7 @@ unchecked 可以省 Gas 但得自己保证安全
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 26.1.20 今天学习了Web3实习手册的智能合约开发部分
@@ -177,6 +239,7 @@ contract.methods.函数名().call()  // 读操作，免费
 
 
 
+
 26.1.19 今天学习了021以太坊教材的第四章，了解了智能合约的工作原理与价值。
 
 -   智能合约
@@ -234,6 +297,7 @@ ABI（用于调用合约）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -317,6 +381,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.17跟着B站上的Chainlink预言机教程，继续学习Solidity的进阶部分
 
 -   内容梳理：
@@ -373,6 +438,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
 
 -   收获：
@@ -396,6 +462,7 @@ ABI（用于调用合约）
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -545,6 +612,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 
 
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -647,6 +715,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -688,6 +757,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
