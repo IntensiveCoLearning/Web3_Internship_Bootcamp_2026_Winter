@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # co-learning
 
 wachi老师画的图：[https://www.tldraw.com/](https://www.tldraw.com/)这个网站画图！
@@ -99,6 +105,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -223,6 +230,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -408,6 +416,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -455,6 +464,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -762,6 +772,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -803,6 +814,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1137,6 +1149,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -1421,6 +1434,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -1528,6 +1542,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
