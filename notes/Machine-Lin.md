@@ -15,8 +15,71 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# 一、整个NFT生命周期
+
+## 1.在 OpenSea 上购买 NFT
+
+-   [https://opensea.io](https://opensea.io)
+    
+-   连接 MetaMask，OpenSea 自动显示你的 ENS 头像和持有的 NFT（去中心化身份）
+    
+-   搜索便宜的 NFT（因为 Sanford ——穷人角色很穷），找到地板价 0.01 ETH 左右的项目
+    
+-   在 OpenSea 上“Buy Now”：
+    
+    -   点击 Buy → MetaMask 弹出签名交易（支付 ETH + gas）
+        
+    -   交易确认后，NFT 立刻出现在你的钱包和 OpenSea 个人页面
+        
+
+-   NFT 的所有权完全由链上记录决定，任何支持 ERC721 标准的平台都能看到
+    
+
+## 2.ERC20 vs ERC721 核心区别
+
+| 项目 | ERC20（可互换代币，如 DAI、USDC） | ERC721（非同质化代币，如 NFT） |
+| --- | --- | --- |
+| 存储方式 | mapping(address => uint256) balance | mapping(uint256 => address) ownerOf |
+| 每个代币是否唯一 | 完全相同，可分割 | 每一个 tokenId 都唯一，不可分割 |
+| 转账逻辑 | balanceOf[msg.sender] -= amount balanceOf[to] += amount | 必须先检查 msg.sender 是否是 ownerOf[tokenId] 然后 ownerOf[tokenId] = to |
+| 典型用途 | 货币、稳定币、治理代币 | 艺术品、域名、游戏道具 |
+
+该表格借助AI总结。
+
+Austin 现场写的一个最简 ERC721 合约：
+
+```
+contract SimpleNFT {
+    uint256 public totalSupply = 100;   // 总量限制，制造稀缺性
+    uint256 private currentId = 0;
+    mapping(uint256 => address) public ownerOf;
+
+    function mint() public {
+        require(currentId < totalSupply, "Sold out");
+        currentId++;
+        ownerOf[currentId] = msg.sender;   // 直接记录所有者
+    }
+}
+```
+
+## 3.IPFS 与 NFT 元数据标准——个人没太明白
+
+## 4.在测试网（Rinkeby）免费 Mint + 用 Etherscan 直接调用合约
+
+-   切换 MetaMask 到 Rinkeby 测试网
+    
+-   用水龙头（faucet）领免费 ETH
+    
+-   找一个免费 mint 的测试项目
+    
+-   直接在 Etherscan 的 Contract → Write Contract 页面连接 MetaMask 调用 mint() 或 ownerMint()
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # 一、Web2 to Web3 WEEK1 DAY 3
 
 用钱包真正交互dApp，主要做两件事——注册ENS域名 + 在DEX上把ETH换成DAI
@@ -79,6 +142,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
@@ -143,6 +207,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -270,6 +335,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -524,6 +590,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -639,6 +706,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -812,6 +880,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -924,6 +993,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -993,6 +1063,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1110,6 +1181,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1337,6 +1409,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
