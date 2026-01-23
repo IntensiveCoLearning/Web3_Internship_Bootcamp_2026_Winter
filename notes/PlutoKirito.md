@@ -15,8 +15,115 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# Web3 实战：从所有权理解到 Sepolia 部署
+
+## 一、 理解 ERC-721：链上所有权核心
+
+在区块链世界，所有权由代码定义，具有**清晰、透明、不可篡改**的特性。
+
+| 功能 | 解释 | 核心函数/实现 |
+| 所有权归属 | 返回特定 Token ID 的唯一所有者地址。 | ownerOf(tokenId) |
+| 余额查询 | 查询特定地址拥有的 NFT 总数。 | balanceOf(address) |
+| 转移权限 | 仅所有者或授权地址有权转移资产。 | transferFrom |
+| 授权机制 | 授权第三方（如交易平台）操作你的 NFT。 | approve / setApprovalForAll |
+
+* * *
+
+## 二、 部署至 Sepolia 测试网
+
+将合约从本地环境推向公共测试网是迈向生产环境的第一步。
+
+### 1\. 环境配置
+
+-   **修改网络**：打开 `packages/hardhat/hardhat.config.ts`。
+    
+-   **设置默认网络**：将 `defaultNetwork` 的值更改为 `"sepolia"`。
+    
+
+### 2\. 账号准备
+
+-   **生成钱包**：运行 `yarn generate`。这会创建一个本地部署者钱包。
+    
+-   **安全提醒**：系统提示设置密码时请务必牢记，这用于加密你的私钥。
+    
+-   **检查余额**：运行 `yarn account` 查看部署地址及 ETH 余额。
+    
+
+### 3\. 获取测试币 (Faucet)
+
+部署合约需要消耗 Gas 费。复制你的部署者地址，访问以下“水龙头”领取测试 ETH：
+
+-   [Alchemy Sepolia Faucet](https://sepoliafaucet.com/)
+    
+-   [Infura Sepolia Faucet](https://www.infura.io/faucet/sepolia)
+    
+
+### 4\. 正式部署
+
+确保钱包到账后，执行以下命令将合约发布至 Sepolia：
+
+Bash
+
+```
+yarn deploy --network sepolia
+```
+
+* * *
+
+## 三、 前端应用上线 (Vercel)
+
+合约上线后，需要部署用户界面（DApp），让全球用户通过浏览器访问。
+
+### 1\. 前端网络适配
+
+-   打开 `packages/nextjs/scaffold.config.ts`。
+    
+-   将 `targetNetwork` 设置为 `chains.sepolia`。
+    
+
+### 2\. 钱包连接
+
+-   应用上线后，需连接真实钱包（如 **MetaMask**）切换至 Sepolia 网络进行交互测试。
+    
+
+### 3\. 一键部署
+
+使用 Vercel 托管服务，在终端运行：
+
+Bash
+
+```
+yarn vercel
+```
+
+根据提示操作完成后，你将获得一个公开的访问 URL。
+
+* * *
+
+## 四、 源码验证：在 Etherscan 上建立信任
+
+部署完成后，通过以下命令验证合约逻辑：
+
+Bash
+
+```
+yarn verify --network sepolia
+```
+
+### 为什么要验证合约？
+
+-   **透明度**：将 Solidity 源码与区块链上的机器码（字节码）关联，任何人皆可查看逻辑。
+    
+-   **安全性**：证明合约功能与宣称一致，防止“黑箱操作”。
+    
+-   **信任背书**：经过验证的合约在 Etherscan 上会显示 **绿色对勾**，这是项目正规化的标志。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # Ethernaut ：从逻辑推演到实战破解
 
 ## 一、 Ethernaut 的通用解题思维（以 Level 1 Fallback 为例）
@@ -117,6 +224,7 @@ await contract.sendTransaction({
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # Solidity 核心笔记：事件与继承机制
 
@@ -220,6 +328,7 @@ function hip() public pure override(Yeye, Baba) returns(string memory) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # Solidity：函数与数据存储位置
@@ -340,6 +449,7 @@ function update() public {
 
 
 
+
 # ERC-7962：从公开所有权到隐私身份凭证
 
 ## 1\. 背景：ERC-721 的隐私困境
@@ -418,6 +528,7 @@ ERC-7962 不仅保护隐私，更彻底革新了用户体验，让 Web3 真正�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -545,6 +656,7 @@ contract MyContract {
 
 
 
+
 # ERC721 存储逻辑与 Gas 权衡 (Enumerable 深度解析)
 
 ## 一、 核心矛盾：Mapping 的“单向盲区”
@@ -619,6 +731,7 @@ mapping(uint256 => address) private \_owners;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -734,6 +847,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 一、 全球主流加密监管框架对比
 
 ### 1\. 欧盟：MiCA (最全、最具示范性)
@@ -842,6 +956,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 不点！不签！不装！不转！
 
 ## 一、 Web3 安全：攻防新态势
@@ -939,6 +1054,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 
 
+
 ## 一、核心概念辨析
 
 -   **区块 (Block)**：实际存储交易数据和状态的“账本页”。
@@ -1022,6 +1138,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
