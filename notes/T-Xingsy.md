@@ -16,8 +16,24 @@ web3素人
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# 今日完成
+
+1.Tokenization挑战
+
+2.周五晚上例会
+
+-   obsidian插件用法
+    
+-   web3求职工作流
+    
+-   hardhat部署项目
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # 今日完成
 
 1.  **ethernaut前三关**
@@ -39,6 +55,7 @@ web3素人
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 # 今日完成
 
 1.分享会-uniswap的基本原理
@@ -48,6 +65,7 @@ web3素人
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # 今日完成
@@ -71,6 +89,7 @@ web3素人
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -132,6 +151,7 @@ web3素人
 
 
 
+
 # 今日完成
 
 1.**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -161,6 +181,7 @@ web3素人
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -220,6 +241,7 @@ _这涉及到以太坊的共识机制_
 
 
 
+
 # 今日完成
 
 1.Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
@@ -231,6 +253,7 @@ _这涉及到以太坊的共识机制_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -310,6 +333,7 @@ _这涉及到以太坊的共识机制_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -406,6 +430,7 @@ _这涉及到以太坊的共识机制_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
