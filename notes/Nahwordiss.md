@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-23-1769134854977-exported_image__1_.png)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-22-1769054237856-exported_image__1_.png)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ![exported_image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-21-1768969127095-exported_image.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
@@ -30,11 +37,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ![exported_image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-20-1768889294082-exported_image.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -47,11 +56,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![IMG_5963.JPG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-18-1768700429440-IMG_5963.JPG)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -68,11 +79,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![AI 与 Web3 融合：Agentic AI 操作系统演进路径.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-16-1768555867565-AI___Web3____Agentic_AI_________.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -93,11 +106,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![以太坊技术详解.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-14-1768382894314-_______.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -264,6 +279,7 @@ Web3.0 关注"智能化"，Web3 关注"去中心化"
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
