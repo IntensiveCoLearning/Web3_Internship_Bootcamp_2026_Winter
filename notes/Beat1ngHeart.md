@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+### Uniswap目前的核心优势
+
+-   **流动性深度**：绝大多数主流交易对（尤其是 ETH 系、稳定币、大市值 alt）里，Uniswap（特别是通过 UniswapX 路由 v3+v4）仍然提供链上最深的流动性。
+    
+-   **无许可 + 抗审查**：你随时可以上任何新币、meme、甚至灰色代币，无需申请、无需 KYC、无需担心被下架。
+    
+-   **生态地位 & 组合性**：几乎所有借贷、衍生品、聚合器、钱包、链上 launchpad 都默认集成 Uniswap 作为流动性来源。
+    
+-   **V4 的长期潜力**：2025 年正式大规模上线后，hooks 机制让专业做市商、项目方、甚至机构可以定制非常复杂的池子逻辑（动态费率、on-chain 限价单、MEV 保护、自定义曲线等），理论上限非常高。
+    
+-   **Fee switch 已开启**（2025 年底 UNIfication 提案通过）：协议现在会拿一小部分手续费用来回购销毁 UNI，UNI 终于从纯治理代币开始有了比较明确的“价值捕获”路径。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 ### 1\. 行业地位：无可撼动的生态统治力
 
 Solidity 是 EVM（以太坊虚拟机）的母语。尽管 Solana (Rust) 和 Move 生态（Aptos/Sui）在高性能领域发力，但 Solidity 的地位反而因为 **Layer 2 (L2)** 和 **zkEVM** 的普及而得到了巩固。
@@ -49,6 +65,7 @@ Solidity 的设计深受 JavaScript 和 C++ 的影响，这导致了它具有明
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 今天完成一个项目，使用以下技术
 
 合约：Vyper  Snekmate  Moccasin  
@@ -64,6 +81,7 @@ Wallet: Metamask
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 -   **2026-01-17 ~ 01-18**
@@ -152,6 +170,7 @@ Wallet: Metamask
 
 
 
+
 今天事情比较多
 
 明天补笔记
@@ -159,6 +178,7 @@ Wallet: Metamask
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -299,6 +319,7 @@ Wallet: Metamask
 
 
 
+
 今天的分享会主题是Web3运行原理
 
 大部分之前学过，所以感觉没什么好记录的，都是很重要的基础知识
@@ -338,6 +359,7 @@ Wallet: Metamask
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
