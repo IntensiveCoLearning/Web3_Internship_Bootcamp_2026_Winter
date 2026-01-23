@@ -15,8 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+1.  复习回顾相关章节，完成未完成课程
+    
+2.  作业与实践挑战
+    
+    1.  在 remix 中运行 [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分的代码
+        
+    2.  Solidity 挑战：[https://ethernaut.openzeppelin.com/](https://ethernaut.openzeppelin.com/)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 1.  学习内容：
     
     1.  [Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分
@@ -33,6 +45,7 @@ timezone: UTC+8
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
+
 ### **1.19-20 Solidity 基础语法学习**
 
 1.  学习内容：
@@ -42,6 +55,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 1.  复习回顾相关章节，完成未完成课程
@@ -62,6 +76,7 @@ timezone: UTC+8
 
 
 
+
 拓展 & 辅助理解材料
 
 1.  [**Day 3: ENS, DEX, Identity, Inventory, Sybil**](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
@@ -71,6 +86,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -87,6 +103,7 @@ timezone: UTC+8
 
 
 
+
 拓展 & 辅助理解材料
 
 1.  Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
@@ -98,6 +115,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
