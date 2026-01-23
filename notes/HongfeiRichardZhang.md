@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+继续学习solidity
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 学习Solidity
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 完成学习内容：
 
@@ -41,6 +48,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 今日学习内容：
 
 1.  Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分
@@ -55,6 +63,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 对本周内容进行复习
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -64,11 +73,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 周六休息♨️
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -93,6 +104,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -129,6 +141,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 完成以下任务：
 
 1.  拓展 & 辅助理解材料
@@ -146,6 +159,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
