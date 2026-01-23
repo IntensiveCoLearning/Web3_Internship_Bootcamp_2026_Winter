@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+其实我讲完之后心里是有点空的。不是那种“终于结束了”的轻松，而是一种很清楚地知道：我没有把自己真正想讲的东西讲出来。  
+准备 Fusaka 的时候，我是懂的，我知道 PeerDAS 为什么重要，知道它不是简单的“多一点 Blob”，而是在给以太坊的扩展性续命；我也知道节点分工、采样、50% 重构这些点背后，是在为普通人还能跑节点争一条路。但站在那一刻，我脑子里更多的是“别出错”“别卡住”，而不是“把这件事讲清楚”。
+
+我能感觉到自己在失控，语速变快，其实不是赶时间，是慌。越慌就越依赖已经写好的内容，越依赖，就越不敢停下来加一句自己的话。那些我原本很想说的延展全都被我自己吞回去了。
+
+事后回头看，我反而更清楚了：我并不是没理解 Fusaka，而是还需要更多把复杂协议转译成直觉表达的训练。对我来说，这次分享更像是一次对自己理解深度的压力测试。
+
+这不是失败，是暴露。  
+暴露我还需要更多在压力下把复杂东西讲慢、讲稳的训练。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-22-1769096818855-image.png)
 
 ### 通过下午wachi老师的讲解，更加清晰明白Dapp和app的逻辑区别：
@@ -229,6 +243,7 @@ fetch('/api/transfer', {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # Uniswap
@@ -499,6 +514,7 @@ L2 承担复杂性，换来了用户。**
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -783,6 +799,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -886,6 +903,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1027,6 +1045,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1364,6 +1383,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1729,6 +1749,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2385,6 +2406,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -2931,6 +2953,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -3367,6 +3390,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
