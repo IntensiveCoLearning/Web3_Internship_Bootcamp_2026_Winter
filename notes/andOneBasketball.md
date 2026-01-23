@@ -15,8 +15,126 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# 📚 共学营 Day 12 学习笔记（Ethernaut 10–13）
+
+今天完成了 Ethernaut 的 Level 10 到 Level 13，通过实战进一步加深了对合约安全问题和 EVM 执行机制的理解，覆盖了重入攻击、外部合约信任问题、链上隐私误区以及 gas 精准控制等关键知识点。
+
+* * *
+
+## ✅ Level 10 — Re-entrancy
+
+**核心问题：**  
+合约在转账前未先更新用户余额，导致可重入调用。
+
+**攻击方式：**  
+攻击合约在 `receive / fallback` 中再次调用 `withdraw`，在余额尚未更新前反复提现，直到目标合约余额耗尽。
+
+**学习要点：**
+
+-   必须遵循 **Checks → Effects → Interactions** 编程模式
+    
+-   外部调用放在状态更新之后
+    
+-   可使用 `ReentrancyGuard` 防止重入
+    
+
+* * *
+
+## ✅ Level 11 — Elevator
+
+**核心问题：**  
+合约信任了外部合约返回的逻辑判断结果。
+
+**攻击方式：**  
+攻击合约在 `isLastFloor()` 中通过内部状态控制：
+
+-   第一次返回 `false`
+    
+-   第二次返回 `true`  
+    欺骗目标合约设置 `top = true`。
+    
+
+**学习要点：**
+
+-   外部合约的 view 函数同样不可信
+    
+-   同一函数在一笔交易中可能被多次调用
+    
+-   不应将关键状态判断依赖外部合约
+    
+
+* * *
+
+## ✅ Level 12 — Privacy
+
+**核心问题：**  
+误以为 `private` 变量在链上不可读取。
+
+**攻击方式：**  
+通过 RPC 直接读取 storage slot，提取对应 bytes 数据并构造解锁 key。
+
+**学习要点：**
+
+-   区块链上不存在真正的隐私
+    
+-   `private` 只是 Solidity 级别访问限制
+    
+-   敏感数据应避免上链或进行加密/哈希处理
+    
+
+* * *
+
+## ✅ Level 13 — GatekeeperOne
+
+**核心问题：**  
+通过多重 gate 条件限制调用者和执行路径，其中包含对 `gasleft()` 的精确校验。
+
+**难点分析：**
+
+-   `gasleft() % 8191 == 0` 对 opcode 执行路径极其敏感
+    
+-   internal call 失败通常只显示 `revert without reason`，难以定位失败原因
+    
+
+**优化后的攻击方案：**
+
+-   不在 TS 中多次发送交易 brute force gas
+    
+-   改为在攻击合约内通过循环 + `call{gas: ...}` 尝试不同 gas offset
+    
+-   一笔交易内完成多次尝试，提高成功率
+    
+
+**学习要点：**
+
+-   gas 消耗与具体执行路径强相关
+    
+-   有些校验机制本质是反自动化设计
+    
+-   brute force 不一定非要在链下完成
+    
+
+* * *
+
+## ✅ 今日整体收获
+
+通过这四关的练习，进一步认识到：
+
+-   合约安全问题不仅是语法或权限问题，更是**执行模型和业务假设的问题**
+    
+-   链上数据默认全部公开，隐私必须在设计层面解决
+    
+-   gas 不只是费用参数，也可能参与业务逻辑判断
+    
+
+对 EVM 执行过程和合约安全边界有了更立体的理解。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## 📚 共学营 Day 11 学习笔记（Ethernaut 6–9）
 
 ### ✅ 6. Delegation —— delegatecall 与存储上下文
@@ -150,6 +268,7 @@ payable(king).transfer(msg.value);
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ## 📒 共学营 Day 10 学习笔记
 
 今天继续复盘 Ethernaut 关卡学习，并总结了 Solidity、Hardhat 与 ethers 的实践经验：
@@ -178,6 +297,7 @@ payable(king).transfer(msg.value);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # **📒 共学营 Day 9 学习笔记**
@@ -249,6 +369,7 @@ payable(king).transfer(msg.value);
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -349,6 +470,7 @@ Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -521,6 +643,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 
 
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -636,6 +759,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -764,6 +888,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -851,6 +976,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1003,6 +1129,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
