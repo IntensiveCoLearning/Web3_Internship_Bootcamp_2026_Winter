@@ -15,8 +15,235 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# Polymarket 架构与链上数据解码
+
+## 一、学习目标
+
+-   理解 Polymarket 的核心数据模型：**Event、Market、Condition、Collection、Position(TokenId)**，并能清晰说明它们的层级与关系。
+    
+-   理解链上日志在 **市场创建 → 交易 → 结算** 全生命周期中的作用，以及日志如何串联形成完整证据链。
+    
+-   掌握链上日志解析方法，能够实现：
+    
+    -   **交易解码（Trade Decoder）**：给定交易哈希，还原成交的价格、数量、方向等。
+        
+    -   **市场解码（Market Decoder）**：给定 conditionId 或创建日志，还原市场参数（问题标识、预言机、抵押品、YES/NO TokenId）。
+        
+
+* * *
+
+## 二、核心概念与数据模型
+
+### 1\. Event 与 Market
+
+-   **Event（事件）**：一个预测主题，如“2024 年美国大选”。
+    
+-   **Market（市场）**：事件下的具体预测问题，通常是二元（Yes / No）。
+    
+    -   一个 Event 可以包含多个 Market。
+        
+    -   Market 是实际发生交易的最小单位。
+        
+
+### 2\. NegativeRisk（负风险机制）
+
+-   适用于 **多结果、互斥市场**（赢家通吃）。
+    
+-   通过 **NegRiskAdapter 合约**，将同一事件下的多个 Market 关联起来。
+    
+-   关键思想：
+    
+    -   某一 Market 的 **NO 头寸 ≈ 其他所有 Market 的 YES 头寸**。
+        
+    -   提高资金利用率，避免为每个结果单独提供流动性。
+        
+-   支持 **NO → 多个 YES** 的头寸转换（convert）。
+    
+
+* * *
+
+## 三、CTF（Conditional Token Framework）中的关键对象
+
+### 1\. Condition（条件）
+
+-   市场在链上的唯一登记身份。
+    
+-   创建方式：调用 `prepareCondition`。
+    
+-   **ConditionId 计算公式**：
+    
+    ```text
+    conditionId = keccak256(oracle, questionId, outcomeSlotCount)
+    ```
+    
+-   含义：
+    
+    -   绑定问题、预言机和结果数量，是市场结算的依据。
+        
+
+### 2\. Collection（集合）
+
+-   表示在某个 Condition 下选中的结果集合。
+    
+-   **CollectionId 计算公式**：
+    
+    ```text
+    collectionId = keccak256(parentCollectionId, conditionId, indexSet)
+    ```
+    
+-   Polymarket 中：
+    
+    -   `parentCollectionId = 0`
+        
+    -   二元市场：
+        
+        -   YES → indexSet = 1 (01)
+            
+        -   NO → indexSet = 2 (10)
+            
+
+### 3\. Position / TokenId（头寸）
+
+-   用户实际持有、可交易的资产。
+    
+-   实现为 **ERC-1155 Token**。
+    
+-   **TokenId 计算公式**：
+    
+    ```text
+    tokenId = keccak256(collateralToken, collectionId)
+    ```
+    
+-   每个 Market 对应 **两个 TokenId**：YES 与 NO。
+    
+
+### 4\. Collateral（抵押品）
+
+-   Polymarket 使用 **USDC（Polygon 上为 USDC.e）** 作为唯一抵押品。
+    
+-   每 1 份 Outcome Token 背后对应 **1 USDC 的潜在兑付**。
+    
+
+### 5\. 价格含义
+
+-   YES 价格 = 市场对“事件发生概率”的定价。
+    
+-   例：价格 0.60 USDC
+    
+    -   发生 → 兑付 1 USDC（盈利 0.40）
+        
+    -   不发生 → 价值归零（损失 0.60）
+        
+
+* * *
+
+## 四、市场生命周期与链上证据链
+
+### 1\. 市场创建（Creation）
+
+-   调用：`ConditionalTokens.prepareCondition`
+    
+-   **关键日志**：`ConditionPreparation`
+    
+-   作用：
+    
+    -   确认问题、预言机、结果数量
+        
+    -   标志市场正式存在
+        
+
+### 2\. 初始流动性与拆分（Split）
+
+-   调用：`splitPosition`
+    
+-   **关键日志**：`PositionSplit`
+    
+-   作用：
+    
+    -   锁定 USDC
+        
+    -   铸造等量 YES / NO 头寸
+        
+
+### 3\. 交易撮合（Trading）
+
+-   合约：`CTFExchange` 或 `NegRisk_CTFExchange`
+    
+-   **关键日志**：`OrderFilled`
+    
+-   包含信息：
+    
+    -   maker / taker
+        
+    -   makerAssetId / takerAssetId（0 表示 USDC，其余为 TokenId）
+        
+    -   成交数量、手续费
+        
+-   价格计算：
+    
+    -   由 USDC 与 TokenId 的成交数量比例得出
+        
+
+去重注意
+
+-   一次撮合可能产生多条 `OrderFilled`：
+    
+    -   maker 侧填单
+        
+    -   taker 汇总（taker = exchange）
+        
+-   常见处理方式：
+    
+    -   过滤 `taker == exchange` 的日志
+        
+    -   或使用 `OrdersMatched` 作为唯一成交记录
+        
+
+铸造 / 合并的隐含逻辑
+
+-   YES 买单 + NO 买单 → 锁定 1 USDC → 铸造一对头寸
+    
+-   YES 卖单 + NO 卖单 → 销毁头寸 → 赎回 USDC
+    
+-   对应 `PositionSplit` / `PositionsMerge` + `OrderFilled`
+    
+
+### 4\. 结算（Resolution）
+
+-   预言机调用：`reportPayouts(conditionId, payouts[])`
+    
+-   结果：
+    
+    -   胜出头寸 = 1 USDC
+        
+    -   失败头寸 = 0
+        
+-   用户调用：`redeemPositions`
+    
+-   市场生命周期结束
+    
+
+* * *
+
+## 五、总结：链上可验证的完整证据链
+
+1.  **ConditionPreparation** → 市场参数与预言机绑定
+    
+2.  **PositionSplit** → 资金注入与头寸生成
+    
+3.  **OrderFilled / OrdersMatched** → 交易与价格形成
+    
+4.  **reportPayouts / redeemPositions** → 结果确认与清算
+    
+
+> 通过解析这些链上日志，可以在不依赖 Polymarket 前端或数据库的情况下，**完全基于链上数据重建市场的全部历史行为**。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## Layer 2 笔记
 
 Layer 2 通过将交易执行移至链下、结果提交至以太坊主网（L1），在保证安全性的同时 **显著降低 Gas 成本、提升吞吐量**。
@@ -102,6 +329,7 @@ Layer 2 通过将交易执行移至链下、结果提交至以太坊主网（L1�
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 # 合约审计笔记
 
 ## 审计的必要性
@@ -156,6 +384,7 @@ Layer 2 通过将交易执行移至链下、结果提交至以太坊主网（L1�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ## 智能合约安全总结
@@ -213,6 +442,7 @@ Layer 2 通过将交易执行移至链下、结果提交至以太坊主网（L1�
 
 
 
+
 ### ERC-7962 学习笔记
 
 在学习 ERC-7962 的过程中，我对 **以太坊标准如何围绕账户抽象与钱包交互不断演进**有了更直观的理解。ERC-7962 作为一项改进提案，核心关注点在于**规范化合约账户/钱包在某些交互场景下的能力表达与行为约定**，从而降低 DApp 与不同钱包、账户实现之间的兼容成本。
@@ -234,6 +464,7 @@ Layer 2 通过将交易执行移至链下、结果提交至以太坊主网（L1�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -310,6 +541,7 @@ Gas 优化的本质是**减少 storage 访问、合并计算、避免重复操�
 
 
 
+
 ## 区块链前端整合
 
 区块链前端整合的核心目标，是**让普通用户通过网页与链上智能合约完成交互**，形成完整的“部署 → 使用 → 反馈”闭环。
@@ -345,6 +577,7 @@ Gas 优化的本质是**减少 storage 访问、合并计算、避免重复操�
 
 
 
+
 ## 《021学习以太坊》第二章总结
 
 在了解以太坊节点和客户端软件之后，逐渐意识到“以太坊不是一条链，而是一套协同运行的软件系统”。所谓节点，本质上就是运行以太坊客户端的服务器；而真正维持网络运行的，是**多种客户端软件之间的协作**。
@@ -356,6 +589,7 @@ Gas 优化的本质是**减少 storage 访问、合并计算、避免重复操�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -410,6 +644,7 @@ AI 正在从“只会聊天的 LLM”升级为**能自主行动的 Agentic AI**�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -537,6 +772,7 @@ Web3 合规 ≠ 新东西，本质还是**金融合规**。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -730,6 +966,7 @@ Web3 合规 ≠ 新东西，本质还是**金融合规**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
