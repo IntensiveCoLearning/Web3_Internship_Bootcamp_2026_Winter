@@ -15,8 +15,216 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
+
+* * *
+
+# 🏗️ Scaffold-ETH 入门与 Solidity 实战复习 (Week 2 Day 5)
+
+> **💡 核心目标**：通过 Scaffold-ETH 快速搭建开发环境，利用“Tinkering”（捣鼓/实验）的方式直观地学习 Solidity 基础、合约交互及安全攻防。
+
+* * *
+
+## 🛠️ 1. Scaffold-ETH 环境搭建与工作流
+
+Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合约）和 React（前端），旨在通过快速反馈循环加速智能合约开发。
+
+### **安装与启动**
+
+-   **获取代码**：`git clone` 下载仓库并重命名。
+    
+-   **安装依赖**：进入目录运行 `yarn install`。
+    
+-   **启动三部曲**（建议在三个终端窗口分别运行）：
+    
+    1.  `yarn chain`：启动本地 Hardhat 节点（本地区块链）。
+        
+    2.  `yarn start`：启动 React 前端，默认在 `localhost:3000`。
+        
+    3.  `yarn deploy`：编译并部署合约到本地链。
+        
+
+### **开发迭代循环 (Iteration Loop)**
+
+-   **所见即所得**：Scaffold-ETH 的前端会自动适应合约变化。当你修改 Solidity 代码后，运行 `yarn deploy`（或 `yarn deploy --reset` 强制重部署），前端会立即更新出新的 UI 交互界面。
+    
+-   **Burner Wallets (一次性钱包)**：
+    
+    -   前端会自动为你生成“燃烧钱包”（Burner Wallet），无需每次都连接 MetaMask。
+        
+    -   通过左下角的 "Faucet" 按钮，可以给这些钱包领取本地测试币。
+        
+    -   使用隐身窗口（Incognito）可以模拟多个不同的用户（如“红人”、“绿人”）进行交互测试。
+        
+
+* * *
+
+## 🧱 2. Solidity 基础回顾 (Tinkering 模式)
+
+通过直接修改代码并在前端测试来验证概念，而非单纯写测试脚本。
+
+### **基础数据类型与全局变量**
+
+-   **全局变量**：如 `block.timestamp` (时间戳)、`msg.sender` (调用者地址)。
+    
+-   **基本类型**：`uint256`, `bool`, `address`, `string` 等。修改变量类型后部署，前端会自动生成对应的输入框或展示位。
+    
+-   **Events (事件)**：在合约中 `emit` 事件，前端 UI 会自动监听并在页面右下角显示日志，无需额外写前端代码。
+    
+
+### **Mappings (映射)**
+
+-   用于存储键值对，例如 `mapping(address => uint256) public balances;`。
+    
+-   **特点**：映射无法被遍历（iterate），但在作为存储账本时非常高效。
+    
+-   **可视化**：在 Scaffold-ETH 中，输入地址即可查询该 Mapping 中对应的值。
+    
+
+### **实战：构建简易 Token**
+
+1.  **存储余额**：使用 Mapping 记录每个地址的余额。
+    
+2.  **转账逻辑**：编写 `transfer` 函数。
+    
+    -   减少发送者余额：`balances[msg.sender] -= amount;`
+        
+    -   增加接收者余额：`balances[to] += amount;`
+        
+    -   _注：Solidity 0.8+ 已内置溢出检查，无需 SafeMath_。
+        
+
+* * *
+
+## 👑 3. 权限控制与继承 (Inheritance)
+
+### **手动实现权限**
+
+-   定义 `address public boss;`。
+    
+-   在 `modifier` 或函数中检查 `require(msg.sender == boss, "Not the boss");`。
+    
+
+### **使用 OpenZeppelin (推荐)**
+
+-   **引入库**：`import "@openzeppelin/contracts/access/Ownable.sol";`
+    
+-   **继承**：`contract YourContract is Ownable`。
+    
+-   **使用**：直接使用 `onlyOwner` 修饰符，无需自己维护 `boss` 变量。
+    
+
+### **所有权移交 (Ownership Transfer)**
+
+-   **问题**：默认情况下，本地 Hardhat 账户（Account #0）是部署者和 Owner。前端使用的 Burner Wallet 无法调用 `onlyOwner` 函数。
+    
+-   **解决方案 A (Deploy 脚本)**：在 `deploy/00_deploy_your_contract.js` 中，部署完成后调用 `transferOwnership("你的前端地址")`。
+    
+-   **解决方案 B (构造函数)**：在合约 `constructor` 中直接调用 `transferOwnership`（或 `super.transferOwnership`），这样可以在部署交易内完成，更节省 Gas。
+    
+
+* * *
+
+## 💸 4. 发送 ETH 与 回退函数 (Receive/Fallback)
+
+### **接收 ETH**
+
+-   `receive() external payable`：如果合约没有定义这个函数，直接向合约地址转账会失败。
+    
+-   **用途**：允许用户像普通转账一样向合约存钱，同时可以触发内部逻辑（如更新余额计数器）。
+    
+
+### **发送/提取 ETH**
+
+-   **推荐写法**：使用 `.call` 而不是 `.transfer`，以避免 Gas 限制问题。
+    
+    ```
+    (bool success, ) = msg.sender.call{value: address(this).balance}("");
+    require(success, "Transfer failed");
+    ```
+    
+
+* * *
+
+## 🔄 5. 合约与合约交互 (Contract to Contract)
+
+### **场景模拟**
+
+建立两个合约：**User** (EOA) -> **Middleware** (中间合约) -> **Bank** (银行合约)。
+
+### **交互实现**
+
+1.  **引用接口**：在中间合约中 `import "./Bank.sol";` 或定义 Interface。
+    
+2.  **实例化**：`Bank bankContract = Bank(bankAddress);`。
+    
+3.  **调用**：`bankContract.deposit{value: _amount}()`。
+    
+
+### **关键概念：**`msg.sender` **vs** `tx.origin`
+
+-   `msg.sender` **(直接调用者)**：
+    
+    -   当 Middleware 调用 Bank 时，Bank 看到的 `msg.sender` 是 **Middleware 合约地址**，而不是最初发起交易的用户。
+        
+-   `tx.origin` **(交易发起者)**：
+    
+    -   始终是最初签署交易的 **EOA (外部拥有账户)**。
+        
+-   **安全限制技巧**：
+    
+    -   如果只允许 EOA 调用，禁止合约调用，可以使用 `require(msg.sender == tx.origin);`。
+        
+
+* * *
+
+## 🛡️ 6. 安全攻防：重入攻击 (Reentrancy)
+
+### **攻击原理**
+
+1.  受害者合约（Bank）在 `withdraw` 函数中，**先发送 ETH，后扣除余额**。
+    
+2.  攻击者合约调用 `withdraw`。
+    
+3.  受害者发送 ETH 到攻击者合约。
+    
+4.  攻击者合约的 `receive()` 函数被触发，其中再次调用受害者的 `withdraw`。
+    
+5.  由于受害者合约还没来得及扣除余额，攻击者可以循环提款，直到掏空合约。
+    
+
+### **防御模式：Checks-Effects-Interactions**
+
+必须遵循“检查-生效-交互”的顺序来修复此漏洞：
+
+1.  **Checks**: 检查余额是否充足。
+    
+2.  **Effects**: **先扣除余额**（更新内部状态）。
+    
+    -   `balances[msg.sender] = 0;`
+        
+3.  **Interactions**: **最后发送 ETH**（与外部交互）。
+    
+    -   `msg.sender.call{value: amount}("")`
+        
+
+* * *
+
+## 🔗 资源链接
+
+-   **练习平台**: [Ethernaut (OpenZeppelin)](https://ethernaut.openzeppelin.com/) - 学习 Solidity 攻击向量。
+    
+-   **Scaffold-ETH**: 用于快速实验和构建原型。
+    
+
+> **下周预告**：SpeedRunEthereum，从基础语法转向构建实际应用。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -162,6 +370,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 这是一个为您整理的《智能合约开发 | Web3 实习手册》学习笔记，已调整为 Notion 风格结构。您可以直接复制内容到 Notion 中使用（支持 Markdown 语法）。
 
@@ -428,6 +637,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -648,6 +858,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -764,6 +975,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -895,6 +1107,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1032,6 +1245,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
