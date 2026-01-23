@@ -15,8 +15,60 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+数组分为固定长度数组和可变长度数组两种：
+
+```
+// 固定长度 Array
+uint[8] array1;
+bytes1[5] array2;
+address[100] array3;
+```
+
+可变长度数组（动态数组）：
+
+```
+// 可变长度 Array
+uint[] array4;
+bytes1[] array5;
+address[] array6;
+bytes array7;（不用[],且使用bytes或bytes1[]。bytes 比 bytes1[] 省gas。）
+```
+
+对于`memory`修饰的`动态数组`，可以用`new`操作符来创建，但是必须声明长度，并且声明后长度不能改变。例子：
+
+```
+// memory动态数组
+uint[] memory array8 = new uint[](5);
+bytes memory array9 = new bytes(9);
+```
+
+-   `length`: 数组有一个包含元素数量的`length`成员，`memory`数组的长度在创建后是固定的。
+    
+-   `push()`: `动态数组`拥有`push()`成员，可以在数组最后添加一个`0`元素，并返回该元素的引用。
+    
+-   `push(x)`: `动态数组`拥有`push(x)`成员，可以在数组最后添加一个`x`元素。
+    
+-   `pop()`: `动态数组`拥有`pop()`成员，可以移除数组最后一个元素。
+    
+
+// 结构体
+
+struct Student{
+
+uint256 id;
+
+uint256 score;
+
+}
+
+Student student; // 初始一个student结构体
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 -   第 1 行是注释，说明代码所使用的软件许可（license），这里使用的是 MIT 许可。如果不写许可，编译时会出现警告（warning），但程序仍可运行。
     
 
@@ -113,6 +165,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 今天學習了零知識證明。
 
@@ -212,6 +265,7 @@ uint256\[3\] memory \_array;
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 今天參加運營分享會。
 
 -   知道了如何在telegram搭建和運營社群。通過對話題進行管理，分類來增加社群活躍度，對數據進行分析為社群製造吸引人的話題，認識到了機器人@MissRose\_bot，通過/help指令可以看到ross的功能
@@ -221,6 +275,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -239,6 +294,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 今天有點忙碌所以都是斷斷續續在加入會議，不過也零零碎碎地學到了一些知識！
 
 下午的co-learning，聼助教分享了一些運營經驗，雖然本身并沒有往運營發展的打斷但還是受益匪淺！感覺見了些市面哈哈哈
@@ -248,6 +304,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -268,6 +325,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 -   今天在平臺上mint了一個nft，很有趣地感受到了nft和錢包之間的關聯，每一步都需要錢包的確認。雖説在之前已經mint過nft，也在平臺上上架已經購買過，但還是感嘆mint一個nft這個平臺的簡單通俗易懂。
     
 -   參加了今晚的分享會，在懵懵懂懂的情況下，發現有同學做了會議紀要并且無私地發出，非常感動，想到了web3的很多知識都是開源公開的，由衷感謝這種慷慨的行爲，在web3，至少知識不是私有化。
@@ -277,6 +335,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
