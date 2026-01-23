@@ -15,8 +15,112 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## **zk-SNARK 系统的一般工作流程**
+
+虽然不同库的实现细节不同，但大多数 zk-SNARK 都可以抽象为以下几个步骤：
+
+### **4.1 编写约束系统 / 电路**
+
+首先，需要把我们想要证明的逻辑，转换成一种适合电路计算的形式，比如：
+
+-   R1CS（Rank-1 Constraint System）约束；
+    
+-   或者算术电路（Arithmetic Circuit）形式。
+    
+
+在 ZKVote 场景中，我们想证明的逻辑包括（简化版）：
+
+1.  证明者确实是选民集合中的一员；
+    
+2.  这次投票的选项属于允许的取值集合；
+    
+3.  为当前投票生成的 nullifier（防重复投票标识）是由身份秘密和投票 ID 计算出来的。
+    
+
+这些条件都会被转化为一系列约束，构成一个「需要被证明的程序」。
+
+### **4.2 Setup：生成证明密钥和验证密钥**
+
+在 zk-SNARK 中，通常需要先执行一次 **Setup**：
+
+-   输入：约束系统 / 电路描述；
+    
+-   输出：
+    
+    -   **Proving Key（PK）**：用于之后生成证明；
+        
+    -   **Verification Key（VK）**：用于之后验证证明。
+        
+
+在很多实现中，这一步需要一个可信设置（Trusted Setup）阶段，由一组参与者共同执行，多余的秘密参数需要在仪式结束后安全销毁，以避免被滥用。
+
+在本教程的上下文里，我们假设：
+
+-   Setup 已经通过安全的方式离线完成；
+    
+-   合约中已经内置或存储了对应的 `Verification Key`。
+    
+
+### **4.3 证明者本地生成证明**
+
+当你准备进行一次 ZK 投票时，浏览器会在本地执行以下操作：
+
+1.  从你的输入中收集**公开输入（public inputs）**：
+    
+    -   如投票所属的 `electionId`；
+        
+    -   当前选民集合的 Merkle 根 `root` 等。
+        
+2.  从本地或钱包中收集**私有输入（witness）**：
+    
+    -   你的身份秘密 `identitySecret`；
+        
+    -   对应的 Merkle 路径；
+        
+    -   你选择的投票选项 `vote`。
+        
+3.  调用 zk 证明库，使用 `Proving Key` 计算出一份证明 `proof`。
+    
+
+生成出的证明通常是一个非常短的结构化二进制数据，可以被序列化为 JSON 再发送给智能合约。
+
+### **4.4 智能合约端验证证明**
+
+前端会构造一笔交易，调用投票合约的类似函数：
+
+```
+function vote(
+    Proof proof,
+    PublicInputs publicInputs
+) external {
+    // 1. 调用 Verifier 验证 proof
+    // 2. 检查 nullifier 是否已被使用
+    // 3. 更新计票结果
+}
+
+```
+
+合约内部会执行以下步骤：
+
+1.  调用内置的 Verifier 合约（或预编译）验证 `proof` 与 `publicInputs` 是否匹配且合法；
+    
+2.  检查 `nullifier` 是否已经被使用（防止一人多投）；
+    
+3.  如果验证通过且 `nullifier` 未使用：
+    
+    -   记录该 `nullifier`；
+        
+    -   更新投票结果（计票）。
+        
+
+所有这些操作都会生成交易记录，保留在链上，任何人都能复查。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 Gas 优化
 
 一、 存储 (Storage) 是金钱
@@ -49,6 +153,7 @@ Require 字符串：require(condition, "Error Message") 中的字符串越长越
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 零知识证明是一种交互或非交互协议，使证明者在不泄露任何除“命题为真”之外信息的情况下，说服验证者。
 
 三大性质：
@@ -67,6 +172,7 @@ Require 字符串：require(condition, "Error Message") 中的字符串越长越
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 **代币化（Tokenization）就像是给任何物品配上一张可以放在钱包里的数字护照**。它能证明所有权，让你一键转让，还能让应用程序自动识别。
 
 现实世界资产（RWA）
@@ -76,6 +182,7 @@ Require 字符串：require(condition, "Error Message") 中的字符串越长越
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -106,6 +213,7 @@ SpoonOS：web3 AI时代的操作系统
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -167,6 +275,7 @@ AI能给web3带来什么
 
 
 
+
 第二章 网络的结构与节点类型
 
 ·核心客户端：执行客户端 共识客户端+参与出块、转质押收益的验证者客户端
@@ -208,6 +317,7 @@ C. 验证者客户端：负责：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -260,6 +370,7 @@ EIP-1559之后:gas fee=(base fee +priority fee) X gas used
 
 
 
+
 以太坊
 
 ·提出：vitalik buterin2013，2015上线主网，早期将网络开发划分为四个阶段：边境（Frontier，
@@ -283,6 +394,7 @@ EIP-1559之后:gas fee=(base fee +priority fee) X gas used
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
