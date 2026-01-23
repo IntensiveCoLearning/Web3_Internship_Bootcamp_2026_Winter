@@ -17,309 +17,113 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
-Hardhat 是一个用于以太坊智能合约开发的流行开发环境，提供了编译、测试、部署和调试 Solidity 代码的完整工具链。以下是一个简明的 Hardhat 使用教程，适合初学者快速上手。
+\# Hardhat 使用教程  
+  
+Hardhat 是一个用于以太坊智能合约开发的流行开发环境，提供了编译、测试、部署和调试 Solidity 代码的完整工具链。以下是一个简明的 Hardhat 使用教程，适合初学者快速上手。  
+  
+\---  
+  
+\## 一、安装 Hardhat  
+  
+\### 1. 前提条件  
+\- 安装 \[Node.js\](https://nodejs.org/)（建议 v18 或更高）  
+\- 推荐使用 npm 或 yarn  
+  
+\### 2. 创建项目并安装 Hardhat  
+\`\`\`bash  
+mkdir my-hardhat-project  
+cd my-hardhat-project  
+npm init -y  
+npm install --save-dev hardhat
 
-* * *
-
-## **一、安装 Hardhat**
-
-### **1\. 前提条件**
-
--   安装 [Node.js](https://nodejs.org/)（建议 v18 或更高）
-    
--   推荐使用 npm 或 yarn
-    
-
-### **2\. 创建项目并安装 Hardhat**
-
-```
-bash
-```
-
-1
-
-2
-
-3
-
-4
-
-### **3\. 初始化 Hardhat 项目**
+### **初始化 Hardhat 项目**
 
 ```
-bash
+npx hardhat
 ```
 
-1
-
-选择 “Create a JavaScript project”（或 TypeScript，根据偏好），按提示完成初始化。
-
-* * *
-
-## **二、项目结构说明**
+## **项目结构说明**
 
 初始化后，你会看到如下目录结构：
 
-```
-1
-```
+my-hardhat-project/
 
-2
+├── contracts/ # 存放 Solidity 智能合约
 
-3
+├── scripts/ # 部署脚本
 
-4
+├── test/ # 测试文件
 
-5
+├── hardhat.config.js # 配置文件（如网络、插件等）
 
-6
+└── ...
 
-* * *
-
-## **三、编写一个简单合约**
-
-在 `contracts/` 目录下创建 `Greeter.sol`：
+## **编译合约**
 
 ```
-solidity
+npx hardhat compile
 ```
 
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-13
-
-14
-
-15
-
-16
-
-17
-
-18
-
-* * *
-
-## **四、编译合约**
+## **编写测试**
 
 ```
-bash
+const { expect } = require("chai");
+
+describe("Greeter", function () {
+
+  it("Should return the new greeting once it's changed", async function () {
+
+    const Greeter = await ethers.getContractFactory("Greeter");
+
+    const greeter = await Greeter.deploy("Hello, world!");
+
+    await greeter.waitForDeployment();
+
+    expect(await greeter.greet()).to.equal("Hello, world!");
+
+    await greeter.setGreeting("Hola, mundo!");
+
+    expect(await greeter.greet()).to.equal("Hola, mundo!");
+
+  });
+
+});
 ```
 
-1
+运行测试：npx hardhat test
 
-编译后的产物会存放在 `artifacts/` 目录中。
-
-* * *
-
-## **五、编写测试**
-
-在 `test/` 目录下创建 `greeter.test.js`：
+### **编写部署脚本**
 
 ```
-javascript
+在 scripts/ 目录下创建 deploy.js：
+async function main() {
+  const Greeter = await ethers.getContractFactory("Greeter");
+  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  await greeter.waitForDeployment();
+
+  console.log("Greeter deployed to:", await greeter.getAddress());
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
 ```
 
-1
+### **在本地网络部署（使用 Hardhat 内置节点）**
 
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-13
-
-14
-
-运行测试：
-
-```
-bash
-```
-
-1
-
-* * *
-
-## **六、部署合约**
-
-### **1\. 编写部署脚本**
-
-在 `scripts/` 目录下创建 `deploy.js`：
-
-```
-javascript
-```
-
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-### **2\. 在本地网络部署（使用 Hardhat 内置节点）**
-
-启动本地节点：
-
-```
-bash
-```
-
-1
+启动本地节点：npx hardhat node
 
 在另一个终端中运行部署脚本：
 
 ```
-bash
+npx hardhat run scripts/deploy.js --network localhost
 ```
-
-1
-
-* * *
-
-## **七、连接到测试网或主网（可选）**
-
-### **1\. 安装依赖（如 dotenv 管理私钥）**
-
-```
-bash
-```
-
-1
-
-### **2\. 配置** `.env` **文件**
-
-```
-env
-```
-
-1
-
-2
-
-### **3\. 修改** `hardhat.config.js`
-
-```
-javascript
-```
-
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-### **4\. 部署到 Sepolia 测试网**
-
-```
-bash
-```
-
-1
-
-* * *
-
-## **八、常用插件（可选）**
-
--   `@nomicfoundation/hardhat-toolbox`：包含常用工具（ethers、chai、waffle 等）
-    
--   `hardhat-deploy`：高级部署管理
-    
--   `hardhat-gas-reporter`：查看 gas 消耗
-    
--   `solidity-coverage`：测试覆盖率
-    
-
-* * *
-
-## **九、常见命令汇总**
-
-| 命令 | 说明 |
-| --- | --- |
-| npx hardhat compile | 编译合约 |
-| npx hardhat test | 运行测试 |
-| npx hardhat node | 启动本地以太坊节点 |
-| npx hardhat run scripts/deploy.js | 运行部署脚本 |
-| npx hardhat help | 查看所有命令 |
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 Uniswap 是 Web3 中最著名的\*\*去中心化交易所（DEX）\*\*之一，其核心原理基于一种称为 **自动做市商（Automated Market Maker, AMM）** 的机制，而非传统交易所使用的订单簿（Order Book）模型。
 
@@ -431,6 +235,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 在 Web3（尤其是去中心化金融，DeFi）中，**套利（Arbitrage）** 是指利用不同市场或协议之间资产价格的暂时性差异，通过低买高卖获取无风险或低风险利润的行为。以下是 Web3 中常见的套利方式和操作逻辑：
 
 * * *
@@ -533,6 +338,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 Solidity 中的\*\*事件（Events）\*\*是一种用于在智能合约中记录日志（logs）的机制，主要用于将信息从区块链传递给外部应用程序（如前端 DApp）。事件通过以太坊虚拟机（EVM）的日志功能实现，具有高效、低成本和可被监听的特点。
 
 ### **1\. 事件的定义**
@@ -591,6 +397,7 @@ solidity
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -761,6 +568,7 @@ Gossip 协议（又称“流言协议”或“八卦协议”）在区块链和�
 
 
 
+
 ## **一句话总结 ERC-7962 是什么？**
 
 > **它是一种新的“隐私代币”标准，让你的 NFT 或普通代币（比如类似 USDT 的 Token）在转账时，不再暴露你的钱包地址，从而保护你的身份隐私。**
@@ -899,11 +707,13 @@ ERC-7962 定义了两个标准：
 
 
 
+
 参加了LXDao的周会，初步了解了DAO的治理形式，了解过去一周LXDAO的动态
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -995,6 +805,7 @@ ERC-7962 定义了两个标准：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1216,6 +1027,7 @@ ERC-7962 定义了两个标准：
 
 
 
+
 # **U卡是什么？**
 
 **U卡 = 加密资产账户 + 全球支付卡 + 钱包联动理财入口**
@@ -1299,6 +1111,7 @@ KYC 的核心目的是：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1504,6 +1317,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
