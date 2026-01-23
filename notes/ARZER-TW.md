@@ -15,8 +15,114 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+完整的學習了GAS優化技巧，一步步跟著AI學習，讓AI出題給出未優化合約我在手動修改。  
+Gas 優化技巧總結
+
+* * *
+
+### 1\. Storage → Memory 緩存
+
+**問題**：多次讀寫同一個 storage 位置
+
+```solidity
+// ❌ 每次都戳 storage
+userInfo[msg.sender].balance += 100;
+userInfo[msg.sender].lastUpdate = block.timestamp;
+userInfo[msg.sender].isActive = true;
+
+// ✅ 讀一次，改完，寫一次
+UserInfo memory user = userInfo[msg.sender];
+user.balance += 100;
+user.lastUpdate = block.timestamp;
+user.isActive = true;
+userInfo[msg.sender] = user;
+```
+
+**原理**：Storage 讀寫超貴（2100+ gas），Memory 很便宜（3 gas）
+
+* * *
+
+### 2\. Bit Packing
+
+**問題**：變數類型太大，浪費 storage slot
+
+```solidity
+// ❌ 佔 3 個 slots
+struct UserInfo {
+    uint256 balance;     // 32 bytes → slot 0
+    uint256 lastUpdate;  // 32 bytes → slot 1
+    bool isActive;       // 1 byte   → slot 2（浪費 31 bytes）
+}
+
+// ✅ 佔 1 個 slot
+struct UserInfo {
+    uint128 balance;     // 16 bytes ┐
+    uint64 lastUpdate;   // 8 bytes  ├─ slot 0
+    bool isActive;       // 1 byte   ┘
+}
+```
+
+**原理**：每個 slot 寫入要 20,000 gas，slot 越少越省
+
+* * *
+
+### 3\. 迴圈優化
+
+**問題**：重複讀取 `length` + 溢位檢查
+
+```solidity
+// ❌ 每次都讀 storage 的 length
+for (uint256 i = 0; i < arr.length; i++) { }
+
+// ✅ 緩存 length + unchecked
+uint256 len = arr.length;
+for (uint256 i = 0; i < len;) {
+    // ...
+    unchecked { ++i; }
+}
+```
+
+**原理**：`length` 在 storage，迴圈計數器不可能溢位
+
+* * *
+
+### 4\. external + calldata
+
+**問題**：不必要的參數複製
+
+```solidity
+// ❌ 複製參數到 memory
+function process(uint256[] memory data) public { }
+
+// ✅ 直接讀 calldata
+function process(uint256[] calldata data) external { }
+```
+
+**原理**：`calldata` 是唯讀，不用複製；`external` 函數才能用 `calldata`
+
+* * *
+
+### 5\. Custom Errors
+
+**問題**：錯誤訊息字串存在鏈上
+
+```solidity
+// ❌ 字串要存到 bytecode
+require(amount > 0, "Amount must be positive");
+
+// ✅ 只存 4 bytes
+error ZeroAmount();
+if (amount == 0) revert ZeroAmount();
+```
+
+**原理**：Custom Error 只存 selector（4 bytes），不存完整字串
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 完整閱讀並學習了這兩篇在 X 上非常熱門的 Claude Code 指南——  
 [https://x.com/affaanmustafa/status/2014040193557471352?s=20](https://x.com/affaanmustafa/status/2014040193557471352?s=20) 和  
 [https://x.com/affaanmustafa/status/2012378465664745795?s=20，](https://x.com/affaanmustafa/status/2012378465664745795?s=20，)  
@@ -47,6 +153,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 晚上聽了Uniswap分享會再度複習了一遍v2v3v4，剛好下午在學習Intent跟The compact這個也是跟Uniswap發布的新架構，以前Intent跟The compact我都有聽過相關的分享會，但是一直沒有到非常熟悉，我還以為他們兩者間是競爭關係，今天總算弄懂了，也知道兩者怎麼協同運作。**小抱怨一下最近作息已經很亂了都是早上睡覺，好死不死樓上在裝修固定早上9點到下午5點，還在我房間正上方，搞得我整個人心神不寧，這幾天任務也沒什麼解，好在今天的聲音到1點就停了，這應該代表裝修完了吧 ! 對吧 !?** 等等半夜趕快把入門技術向任務補一補，大概看了一下應該很快能搞定。  
   
@@ -1085,6 +1192,7 @@ price_ratio = 新價格 / 舊價格
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -1397,6 +1505,7 @@ unchecked：跳過溢位檢查，慎用
 
 
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -1408,6 +1517,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1488,6 +1598,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2108,6 +2219,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -2137,6 +2249,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2332,6 +2445,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -2391,6 +2505,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2637,6 +2752,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
