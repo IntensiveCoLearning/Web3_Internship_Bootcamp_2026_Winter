@@ -15,8 +15,84 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+Uniswap v4 (from v3)
+
+\* 数据结构：Singleton (单例)
+
+\* v3: Factory -> Pool Contract (多合约，Deployment 贵)
+
+\* v4: PoolManager.sol (单合约，所有池子都在里面)
+
+\* 关键变量: mapping(PoolId id => Pool.State) public pools
+
+\* 优势: 跨池路径无需多次转账，创建池子成本忽略不计
+
+\* 结算机制：Flash Accounting (闪电记账)
+
+\* 核心: 基于 EIP-1153 瞬态存储
+
+\* 流程:
+
+\* 调用 manager.unlock()
+
+\* 在回调 lockAcquired 里操作 swap/modifyLiquidity
+
+\* 内部修改 currencyDelta（欠款账单）
+
+\* 退出前必须结算 settle（给钱）或 take（拿钱），使 delta 归零
+
+\* 代码:
+
+// 外部不再直接 swap，而是先解锁
+
+manager.unlock(abi.encode(params))
+
+\* 核心扩展：Hooks (挂钩)
+
+\* 原理: 在核心逻辑执行前/后回调外部合约
+
+\* 标识: Hook 地址的 前 14 bits（前缀）决定启用的钩子类型（如 0x8000... 代表开启 beforeInitialize）
+
+\* 生命周期:
+
+\* before/afterInitialize
+
+\* before/afterAddLiquidity / RemoveLiquidity
+
+\* before/afterSwap
+
+\* before/afterDonate (新增：直接捐赠给 LP)
+
+\* 资产表达：Native ETH & ERC-6909
+
+\* Native ETH: 不再强制 WETH，直接存取 address(0)，省去 Wrap Gas
+
+\* ERC-6909: 内部记账标准
+
+\* 交易产生的 delta 可以不提现，转为 6909 额度留在 Manager
+
+\* 下次交易直接消耗额度，实现 0 外部转账 交易
+
+\* 池子标识：PoolKey
+
+\* 定义: (Currency0, Currency1, fee, tickSpacing, hooks)
+
+\* ID: keccak256(PoolKey)
+
+\* 注意: 同一币对如果 Hook 不同，即为不同的池子
+
+\* Gas 优化点总结
+
+\* Transient Storage: 取代 SSTORE，操作结束后自动清空，读写极廉价
+
+\* Multi-hop: 无论路径多深，只有首尾涉及 ERC20.transfer
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 -   特征对象 \[sol中慎用\]
     
     总是通过**引用**: 通过 `&` 引用或者 `Box<T>` 智能指针的方式来创建特征对象
@@ -50,6 +126,7 @@ se major, into crypto
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
@@ -95,6 +172,7 @@ se major, into crypto
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
@@ -145,6 +223,7 @@ se major, into crypto
 
 
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -164,6 +243,7 @@ se major, into crypto
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -248,6 +328,7 @@ se major, into crypto
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -269,6 +350,7 @@ se major, into crypto
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
