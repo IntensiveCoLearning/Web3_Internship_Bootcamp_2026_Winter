@@ -15,8 +15,139 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+## 一、 Solidity 的本质：状态机与 Gas
+
+在学习语法前，必须理解两个物理限制：
+
+1.  **状态机**：以太坊是一个全球共用的状态机。Solidity 的本质是编写修改这个状态的“指令”。
+    
+2.  **Gas 机制**：每一行代码、每一次存储都在消耗真实价值（ETH）。**作为开发者，你的第一目标是逻辑正确，第二目标是节省 Gas。**
+    
+
+* * *
+
+## 二、 合约基础结构
+
+一个标准的 `.sol` 文件通常包含以下部分：
+
+Solidity
+
+```
+// 1. 许可证标识（防止版权纠纷）
+// SPDX-License-Identifier: MIT
+
+// 2. 版本声明（建议使用 ^0.8.0 以上，自带溢出检查）
+pragma solidity ^0.8.20;
+
+// 3. 合约主体
+contract MyFirstContract {
+    // 状态变量：永久存储在链上
+    uint256 public count;
+    address public owner;
+
+    // 构造函数：仅在部署时执行一次
+    constructor() {
+        owner = msg.sender; // msg.sender 是当前调用者的地址
+    }
+
+    // 函数定义
+    function increment() public {
+        count += 1;
+    }
+}
+```
+
+* * *
+
+## 三、 数据类型：精准控制字节
+
+由于内存昂贵，Solidity 提供了非常精细的类型系统。
+
+### 1\. 数值类型
+
+-   **uint / int**: 常用 `uint256`（256位是 EVM 的原生字长）。
+    
+-   **bool**: `true` / `false`。
+    
+-   **address**: 以太坊地址（20字节）。拥有成员属性 `.balance` 和方法 `.transfer()`。
+    
+
+### 2\. 引用类型 (复杂类型)
+
+-   **string**: 字符串，开销较大。
+    
+-   **struct**: 结构体，可以将不同类型组合在一起。
+    
+-   **mapping**: 极其重要的**哈希表**。
+    
+    -   `mapping(address => uint256) public balances;`
+        
+    -   _注意：Mapping 不可遍历，没有长度概念。_
+        
+-   **array**: 动态或定长数组。
+    
+
+* * *
+
+## 四、 函数详解：可见性与状态控制
+
+### 1\. 可见性修饰符 (Visibility)
+
+这是安全的第一道防线：
+
+-   **public**: 内部/外部均可调用。
+    
+-   **private**: 仅当前合约内。
+    
+-   **internal**: 当前合约及继承的子合约。
+    
+-   **external**: 仅外部可调用（Gas 通常比 public 便宜）。
+    
+
+### 2\. 状态修饰符 (State Mutability)
+
+告诉编译器该函数是否修改了链上数据：
+
+-   **view**: 只读状态变量，不产生 Gas 费（除非被另一个写函数调用）。
+    
+-   **pure**: 不读也不写状态变量（例如纯数学计算）。
+    
+-   **payable**: 允许该函数接收 ETH。
+    
+
+* * *
+
+## 五、 全局变量：环境感知
+
+Solidity 提供了一些神奇的全局变量，让你感知区块链的状态：
+
+-   `msg.sender`: 谁在调用这个函数？（身份验证的核心）
+    
+-   `msg.value`: 随交易发送了多少 Wei（1 ETH = $10^{18}$ Wei）。
+    
+-   `block.timestamp`: 当前区块的时间戳（注意：可被矿工微调，不可用于极精确的随机数）。
+    
+-   `block.number`: 当前区块高度。
+    
+
+* * *
+
+## 六、 错误处理：原子性
+
+以太坊的交易是**原子性**的。如果函数执行中途报错，所有状态修改都会回滚（Rollback）。
+
+-   `require(condition, "Error message")`: 最常用，用于检查输入和前提条件。如果失败，退回剩余 Gas。
+    
+-   `revert()`: 直接终止并回滚。
+    
+-   `assert(condition)`: 用于检查绝对不应该发生的内部错误。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 ## 一、 Web3 为什么需要 ZK？
 
 在区块链上，ZK 主要解决两个核心矛盾：
@@ -68,6 +199,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ## 一、 Web3 运营的核心逻辑：从“用户”到“成员”
 
@@ -135,6 +267,7 @@ Web3 运营更关注**链上数据**，因为这是无法作假的：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ## 一、 环境搭建与首个合约
@@ -247,6 +380,7 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -333,11 +467,13 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -576,6 +712,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -647,6 +784,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -886,6 +1024,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -1018,6 +1157,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1171,6 +1311,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
