@@ -15,8 +15,156 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+在 spoonOS 的设计哲学中，Agent 被定义为具备感知（Perception）、记忆（Memory）、规划（Planning）与行动（Action）能力的计算实体。其核心运行机制基于“推理-行动”（Reasoning and Acting, ReAct）范式，即模型通过逻辑推理决定下一步操作，获取环境反馈后再次进行推理，形成闭环。
+
+构建一个标准的 spoonOS Agent 涉及以下四个关键维度的配置与开发：
+
+1\. **推理核心（Inference Engine）**：通常挂载大参数量的 LLM（如 DeepSeek, GPT-4 等），负责处理自然语言理解与逻辑推演。
+
+2\. **指令集（Instruction Set）**：即 System Prompt，用于定义 Agent 的行为边界、角色设定及输出规范。
+
+3\. **能力扩展（Tool/Skill Integration）**：通过定义明确的 API 接口，使 Agent 具备操作文件系统、网络请求及数据库交互的确定性能力。
+
+4\. **记忆模块（Memory Module）**：管理短期对话上下文与长期向量存储，确保多轮交互的逻辑连贯性。
+
+Agent 的实例化首先需要建立与推理后端的连接。在 spoonOS SDK 中，通过 `ModelWrapper` 类实现对底层模型的抽象封装。在此阶段，参数 `temperature` 的设定至关重要：对于工具调用类任务，建议将其设置为 0 或极低值（如 0.1），以降低模型输出的随机性，确保工具参数生成的准确性。
+
+\`\`\`python
+
+import spoon\_os\_sdk as spoon
+
+from spoon.core.llm import DeepSeekModel
+
+\# 初始化推理引擎
+
+\# 采用低温度设定以保证逻辑严密性与工具调用的确定性
+
+inference\_engine = DeepSeekModel(
+
+model\_name="deepseek-v3",
+
+temperature=0.1,
+
+max\_tokens=4096
+
+)
+
+\# 实例化 Agent 对象，配置滑动窗口记忆机制
+
+agent\_instance = spoon.Agent(
+
+name="LogAnalysisBot",
+
+llm=inference\_engine,
+
+memory\_policy=spoon.MemoryPolicy.SlidingWindow(k=10)
+
+)
+
+\`\`\`
+
+系统提示词并非简单的自然语言指令，而是对模型行为空间的约束。在学术定义上，它是为了收敛模型的解空间。编写高效 Prompt 需遵循“立项-约束-示例”的原则（Role-Constraint-FewShot）。
+
+\* **角色定义**：明确 Agent 的功能域。
+
+\* **约束条件**：明确禁止的行为（如禁止编造数据）。
+
+\* **思维链（Chain of Thought, CoT）引导**：要求模型在执行动作前显式输出推理过程，这有助于提高复杂任务的准确率。
+
+\`\`\`python
+
+SYSTEM\_PROMPT = """
+
+你是一个运行在 spoonOS 环境下的日志分析专家。
+
+你的主要职责是解析非结构化的工作日志，提取关键指标，并生成结构化报告。
+
+行为准则：
+
+1\. 在执行任何外部操作前，必须先进行思维链推理（Think step-by-step）。
+
+2\. 对于缺失的关键信息（如日期、项目ID），必须向用户发起追问，严禁进行概率性猜测。
+
+3\. 最终输出格式必须严格遵循 Markdown 规范。
+
+"""
+
+agent\_instance.set\_system\_instruction(SYSTEM\_PROMPT)
+
+\`\`\`
+
+大模型本身是概率性的，而业务逻辑（如读写文件）是确定性的。工具（Tools）是连接两者的桥梁。在 spoonOS 中，利用 Python 的装饰器模式将本地函数注册为 Agent 可感知的工具。
+
+**关键技术点**：必须提供详尽的 Docstring（文档字符串）和类型注解（Type Hinting）。大模型依赖这些元数据来理解工具的语义功能及参数结构。
+
+\`\`\`python
+
+from spoon.decorators import tool
+
+@tool(name="fetch\_system\_logs", description="检索指定日期范围内的系统运行日志")
+
+def fetch\_system\_logs(start\_date: str, end\_date: str) -> str:
+
+"""
+
+Args:
+
+start\_date: ISO 8601 格式的开始日期 (YYYY-MM-DD)
+
+end\_date: ISO 8601 格式的结束日期 (YYYY-MM-DD)
+
+Returns:
+
+包含日志内容的纯文本字符串
+
+"""
+
+\# 实现与操作系统文件系统的交互逻辑
+
+return [spoon.fs.search](http://spoon.fs.search)(path="/var/logs", range=(start\_date, end\_date))
+
+\# 将工具注入 Agent 的执行上下文中
+
+agent\_instance.bind\_tools(\[fetch\_system\_logs\])
+
+\`\`\`
+
+\---
+
+幻觉（Hallucination）与参数虚构
+
+**现象描述**：Agent 在缺乏相关信息时，偶尔会虚构工具的调用参数（如编造不存在的文件名）。
+
+**理论分析**：这是生成式模型的固有特性，模型倾向于补全合理的文本序列而非基于事实查证。
+
+**解决方案**：
+
+1\. **Prompt 强化**：在 System Prompt 中加入“工具调用失败时必须停止并报错”的强约束。
+
+2\. **后处理校验（Post-execution Verification）**：在工具函数内部增加参数合法性校验逻辑，一旦检测到非法参数，抛出特定的错误信息反馈给 LLM，迫使其进行自我修正。
+
+无限循环与任务发散
+
+**现象描述**：Agent 在执行任务时陷入逻辑死循环，反复调用同一工具或无法终止思考过程。
+
+**解决方案**：
+
+1\. **最大迭代阈值（Max Iterations）**：在 SDK 层面设置 ReAct 循环的最大次数（如 10 次），强制终止超长任务。
+
+2\. **停止序列（Stop Sequence）**：配置特定的 Token 作为停止信号，防止模型生成多余的无效文本。
+
+上下文窗口限制（Context Window Constraint）
+
+**现象描述**：随着对话轮数增加，Token 数量超出模型限制，导致早期关键指令丢失。
+
+**解决方案**：采用 spoonOS 提供的 `SummaryMemory` 策略。当上下文达到阈值时，自动触发另一个 LLM 实例对历史对话进行摘要压缩，仅保留关键状态信息，而非原始的逐字记录。
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
 
 ## 目标
@@ -104,6 +252,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 # 合约优化记录
 
@@ -216,6 +365,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ## Gas 优化
@@ -481,6 +631,7 @@ contract MessageBoardOptimized {
 
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -555,6 +706,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -708,6 +860,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -841,6 +994,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -982,6 +1136,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1397,6 +1552,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1506,6 +1662,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1626,6 +1783,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
