@@ -19,9 +19,9 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 # [**循环语句**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/11%20%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5.md#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5)
 
-**这里直接复制代码编译会warning，将pure添加进函数状态栏即可成功编译（英文版是有pure的）**
+**这里直接复制代码编译会warning，将pure添加进函数状态栏即可（英文版是有pure的）**
 
-**加入了**for 语句的标准语法和执行顺序
+**加入了**for和while语句的标准语法和执行顺序；加入了一些的注释。
 
 ```remix-solidity
 // SPDX-License-Identifier: MIT
@@ -46,9 +46,14 @@ contract Loop {
         }
 
         // while 循环
+        /* 基本语法：
+        // while (条件) {
+        // 循环体
+        // 更新条件（避免死循环）
+        }*/   
         uint j; // 默认j = 0
         while (j < 10) {
-            j++; // 等价于 j = j + 1和 j += 1
+            j++; // 更新条件 // 等价于 j = j + 1和 j += 1
         /*执行流程：
 
         检查 j < 10（0 < 10 → true）→ 进入循环体。
@@ -98,10 +103,79 @@ contract Loop {
 诶？这段代码确实没有碰状态变量啊，这是 Solidity 编译器在**教你写专业合约**：
 
 > “我发现你这个函数很纯，你不标 `pure` 有点不严谨，我提醒你一下。”
+
+# [**映射**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/12%E6%98%A0%E5%B0%84.md#%E6%98%A0%E5%B0%84)
+
+直接copy代码会报错，删除了一些乱码，加入了尽可能详细的注释。
+
+当有两个合约的时候，记得点击这里切换合约，以免找不到你需要的函数。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/enderzcx/images/2026-01-23-1769181512905-image.png)
+
+```remix-solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Mapping {
+    // 地址到整数的映射
+    mapping(address => uint) public myMap;
+    // 基本语法：mapping(KeyType => ValueType) [visibility] mappingName;
+    // 映射可以当成Python里的字典  这个映射的意思就是 映射名：myMap，只能接受地址类型的数据输入，输返回uint类型的数据
+    // 在这里所有键默认返回  0（对 uint类型来说），输入的所有地址都会返回0
+    // 映射数据永久存储在区块链上（storage）且不能用于 memory 或函数参数/返回值。，修改需消耗 Gas。
+    // 映射的 Gas 成本（读取 ~200 Gas，写入 ~5000–20000 Gas）。
+    /* 映射的使用
+        // 赋值
+        myMap[msg.sender] = 100;  // 将调用者地址的映射值设为 100
+
+        // 查询
+        uint balance = myMap[address(0x123)];  // 返回 0（如果未赋值）或之前存储的值
+
+        // 修改
+        myMap[msg.sender] += 50;  // 增加 50（需先检查是否足够，避免溢出）
+    */
+    function get(address _addr) public view returns (uint) {
+        // 映射始终返回一个值。
+        // 如果该值从未设置过，它将返回默认值。
+        return myMap[_addr];
+    }
+
+    function set(address _addr, uint _i) public {
+        // 更新此地址的值
+        myMap[_addr] = _i;
+    }
+
+    function remove(address _addr) public {
+        // 将该值重置为默认值。
+        delete myMap[_addr];
+    }
+    }
+
+    contract NestedMapping {
+    // 嵌套映射（从地址到另一个映射）
+    mapping(address => mapping(uint => bool)) public nested;
+    // 嵌套映射最终返回的值类型为最内层(就是最右边)映射的valueType。
+    // 该嵌套映射的赋值方法为nested[地址][无符号整数] = Ture/False
+    
+    function get(address _addr1, uint _i) public view returns (bool) {
+        // 即使未初始化，也可以从嵌套映射中获取值
+        return nested[_addr1][_i];
+    }
+
+    function set(address _addr1, uint _i, bool _boo) public {
+        nested[_addr1][_i] = _boo; // 外部输入布尔型数据时，0 代表 False，1代表 Ture, 不要直接输入 Ture 或 False
+    }
+
+    function remove(address _addr1, uint _i) public {
+        delete nested[_addr1][_i];
+    }
+}
+```
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # **查看 Uniswap 工作原理解析 回放**
 
@@ -516,6 +590,7 @@ contract IfElse {
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -523,6 +598,7 @@ contract IfElse {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -554,6 +630,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -624,6 +701,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -661,12 +739,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -735,6 +815,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -745,6 +826,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
