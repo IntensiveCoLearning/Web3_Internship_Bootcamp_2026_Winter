@@ -15,8 +15,34 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+# 学习使用Remix
+
+Rmeix类似于一个在线IDE使用solidity语言开发智能合约。
+
+进入Remix网站界面十分复杂，我们主要关注workspace这一部分，这里会是我们以后写代码的地方。workspace可以看作是我们常用的类似于vscode之类的编辑器打开了具体项目的界面。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/willamsc/images/2026-01-23-1769137464988-image.png)
+
+点击旁边的create可以创建文件和文件夹等一系列东西，而在它的右边边就是我们具体写代码的地方。我根据教程写了一个简单的智能合约程序，实现存数和读数功能最后添加了一个将读入数据加一的函数。当我们代码编写完成就需要进行编译，点击左边侧边栏第三个按钮，选择正确的编译器版本，一般来说选择版本高一点，等待编译完成。点击编译下方的deploy 按钮把智能合约部署上去。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/willamsc/images/2026-01-23-1769138171440-image.png)
+
+从上到下environment 是指智能合约被部署到了什么环境下运行，一般来说会自动选择编译时的选择。
+
+account 模拟账户每个账户有100ETH，是Remix送给开发者用于测试自己的合约的。
+
+CONTRACT则表示要部署的合约文件。
+
+点击deploy之后就可以在下方的已部署合约中进行交互测试了
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/willamsc/images/2026-01-23-1769138481367-image.png)
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # 合规与安全
 
 ## 几大风险来源
@@ -55,6 +81,7 @@ web3中薪资不像传统行业，是采用人民币发放，它的薪资结构�
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ## NFT
 
 在web2中，一张图片可以被无限的复制，但是它的所有权却只属于一个人。由于它的无限被复制导致它的所有权会被无限模糊，而在web3中通过区块链的技术特点，可以让图片所属权毫无争议。
@@ -76,6 +103,7 @@ CryptoPunks由一万个像素风头像组成，通过区块链可以毫无争议
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
 
+
 # **行业赛道全览**
 
 ## DeFi
@@ -91,6 +119,7 @@ CryptoPunks由一万个像素风头像组成，通过区块链可以毫无争议
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -125,6 +154,7 @@ CryptoPunks由一万个像素风头像组成，通过区块链可以毫无争议
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -164,6 +194,7 @@ web3.0则是针对数据组织的变革，与web3的数据控制权变革并不�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
