@@ -40,13 +40,15 @@ Web3 实习计划 2025 冬季实习生
 
 **Modularity (add features without modifying the original contract)**
 
-  
 构建能够对现有合约中的事件做出反应的“扩展”，而不是升级或分叉它们。  
 这就是止损单（在去中心化交易所交易池中）等模式的工作原理：你无需修改 Uniswap，只需订阅其事件并做出反应即可。（ [https://dev.reactive.network/education/use-cases/use-case-3](https://dev.reactive.network/education/use-cases/use-case-3) ）
+
+努力阅读 RC 中
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 ## uniswap v2 笔记：
@@ -60,6 +62,7 @@ v2 交易对不支持直接使用 ETH ，因此 ETH 与 ERC-20 交易对必须�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -115,6 +118,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -222,6 +226,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 
 
+
 # **Challenge #0 - Tokenization**
 
 我完全懂力！教程非常详细，只是ipfs不好使就按照群里同学换了pinata
@@ -262,6 +267,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -348,6 +354,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -547,6 +554,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -633,6 +641,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -772,6 +781,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1027,6 +1037,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 
 
+
 # [Day 3: ENS, DEX, Identity, Inventory, Sybil](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
 ## ETH交易与Gas机制
@@ -1238,6 +1249,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1531,6 +1543,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
