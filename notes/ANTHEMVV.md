@@ -15,13 +15,155 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+主要学习的Solidity的基本知识，笔记内容如下：
+
+```remix-solidity
+// Error
+
+contract error{
+    // 1.require：输入验证的标准方式
+    function testRequire(uint256 _i) public pure {
+        require(_i > 10, "Input must be greater than 10");
+    }
+    // 2.revert 复杂逻辑处理
+    function testRevert(uint256 _i) public pure {
+        if (_i <= 10) {//嵌套在if else里面用revert
+            revert("Input must be greater than 10");
+        }
+    }
+    // 3. assert 断言num必须等于0，如果不等于0交易回滚rollback
+    // 检查绝对不可能发生的情况，代码有问题
+    uint256 public num; // 默认为 0
+    function testAssert() public view {
+        assert(num == 0);
+    }
+    // 4. custom error
+    // 定义自定义错误，使用error关键字定义一种新的错误类型
+    error InsufficientBalance(uint256 balance, uint256 withdrawAmount);
+
+    function testCustomError(uint256 _withdrawAmount) public view {
+        uint256 bal = address(this).balance;
+        if (bal < _withdrawAmount) {
+        // 使用带参数的 revert
+            revert InsufficientBalance({
+                balance: bal,
+                withdrawAmount: _withdrawAmount
+            });
+        }
+    }
+}
+// modifier主要作用是在执行一个函数之前或者之后，运行一段预定义的逻辑，
+contract FunctionModifier {
+    // We will use these variables to demonstrate how to use
+    // modifiers.
+    address public owner;
+    uint256 public x = 10;
+    bool public locked;
+
+    constructor() {
+        // Set the transaction sender as the owner of the contract.
+        owner = msg.sender;
+    }
+
+    // Modifier to check that the caller is the owner of
+    // the contract.
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        // Underscore is a special character only used inside
+        // a function modifier and it tells Solidity to
+        // execute the rest of the code.
+        _;
+    }
+
+    // Modifiers can take inputs. This modifier checks that the
+    // address passed in is not the zero address.
+    modifier validAddress(address _addr) {
+        require(_addr != address(0), "Not valid address");
+        _;
+    }
+
+    function changeOwner(address _newOwner)
+        public
+        onlyOwner
+        validAddress(_newOwner)
+    {
+        owner = _newOwner;
+    }
+
+    // Modifiers can be called before and / or after a function.
+    // This modifier prevents a function from being called while
+    // it is still executing.
+    modifier noReentrancy() {
+        require(!locked, "No reentrancy");
+
+        locked = true;
+        _;
+        locked = false;
+    }
+
+    function decrement(uint256 i) public noReentrancy {
+        x -= i;
+
+        if (i > 1) {
+            decrement(i - 1);
+        }
+    }
+}
+// event：1. 通知前端；2. 低成本存储，当只需要存一些只需要查看历史而不需要在合约逻辑里计算的数据
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Event {
+    // Event declaration
+    // Up to 3 parameters can be indexed.
+    // Indexed parameters help you filter the logs by the indexed parameter
+    // 定义一个log函数，包含了两个参数
+    // indexed：允许外部应用搜索和过滤这些日志。一个事件最多有3个indexed参数
+    // 比如说你想查所有from是我的钱包的转账记录，那么from就必须带indexed
+    event Log(address indexed sender, string message);
+    event AnotherLog();
+
+    function test() public {
+        // 出发这个事件，向世界广播转账发生了
+        emit Log(msg.sender, "Hello World!");
+        emit Log(msg.sender, "Hello EVM!");
+        emit AnotherLog();
+    }
+}
+
+// 继承以及构造函数的使用
+contract X {
+    string public name;
+    constructor(string memory _name) { name = _name; }
+}
+
+contract Y {
+    string public text;
+    constructor(string memory _text) { text = _text; }
+}
+// 1. 静态初始化
+// 继承顺序只跟contract E is ……这行相关，先X后Y
+contract B is X("Input to X"), Y("Input to Y") {}
+// 2. 动态初始化
+contract C is X, Y {
+    constructor(string memory _name, string memory _text) X(_name) Y(_text) {}
+}
+// 继承顺序
+// 当继承多个合约时，解析顺序遵循从左向右深度优先，在菱形继承当中会合并相同基类
+```
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今天学习了Solidity的基本知识，马上把Solidity by example的basic部分的代码全部理解完了，已经写了大概800行代码的基础知识，还完成了Gas优化的案例，了解了Gas在ETH当中是一个很重要的优化部分
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 今天学习的编程内容以及笔记如下：
 
@@ -140,11 +282,13 @@ contract Examples {
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天参加了两次分享会并且继续学习Solidity的基础知识，目前已经完成了很多内容的学习，开始着手实践内容
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -159,11 +303,13 @@ contract Examples {
 
 
 
+
 今天正在完成了配置RemixIDE并且上手编程，现在在做**完成挑战 Challenge #0 - Tokenization，但是还没有全部做完，将环境以及第一二步做完了，然后继续学习021以太坊以及实习手册当中智能合约部分**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -176,6 +322,7 @@ contract Examples {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -209,11 +356,13 @@ contract Examples {
 
 
 
+
 今天是一周的例会了，收听了其他同学讲的PPT以及一些经验分享，这一周比较忙都在忙学业的事情，但已经告一段落了，明天以及之后的笔记会写一些干货的东西。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -240,6 +389,7 @@ AI+Web3,今天参加了分享会讲了AI的一些基础知识，我目前研究�
 
 
 
+
 今天由于学校开组会并没有完成太多任务，还是依照成长手册继续学习，参加了Web3安全和合规两个会议。了解到如今WEB3在国内还并不成熟，有许多风险，例如出入金和冻卡，还没有明确的牌照制度规范。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -255,11 +405,13 @@ AI+Web3,今天参加了分享会讲了AI的一些基础知识，我目前研究�
 
 
 
+
 今天因为忙一些其他的事情耽误了学习，将基础任务中的钓鱼攻防战做完了，以及继续看了实习手册当中的内容，查看了WEB3运行原理，了解一些钱包，助记词，交易的一些gas开支的基本原理，总体来说今天学习时间还不够明天继续努力学习Solidity的相关知识。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
