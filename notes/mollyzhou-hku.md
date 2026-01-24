@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今天提案投票了。
+
+顺利生成图片
+
+生成一张充满未来感的 Web3 加密货币主题活动海报背景图，尺寸为1200x675，整体围绕透明水晶质感的极简科技美学打造，具体要求如下：
+
+视觉主体
+
+右侧1/3核心放置 3D 立体文字 “WEB3”，赋予通透的透明水晶质感，表面带有自然的折射效果，叠加细腻的彩虹全息光泽，文字轮廓清晰、质感高级，成为绝对视觉焦点。
+
+背景元素
+
+背景构建未来区块链，采用玻璃与金属的纯净质感，建筑线条流畅简洁；背景底色统一为柔和浅蓝渐变，搭配轻微镜头光晕，营造通透、开阔的科技氛围，无多余杂乱元素。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mollyzhou-hku/images/2026-01-24-1769269792848-image.png)
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 这周学校事情比较忙，进度有点慢。今天继续看了海报制作和DefiLlama的指标。晚上听了同学的分享，大家都很厉害！用ai搭建求职和个人笔记workflow可以之后回顾一下，也上手试一试
 
 # 海报
@@ -198,6 +218,7 @@ $$P/E\\ Ratio = \\frac{Fully\\ Diluted\\ Valuation\\ (FDV)}{Annualized\\ Protoco
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 阅读完中文文案排版指南。我发现自己对于使用空格其实不是非常严格遵守规范，中文和英文之间，中文和数字之间原来也要加空格！这样确实会更加美观。全角和半角标点倒是接触过，但是有时候中英文切换的时候不知道用哪种：
 
 “在 ETHPanda，每个人都能快乐学习”
@@ -213,6 +234,7 @@ Figma使用还在探索，其实只是懒得像画ppt图层一样一点一点加
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 尝试用figma make直接生成海报。但是总是加载不出来...研究一下问题在哪里
 
 prompt:
@@ -224,6 +246,7 @@ prompt:
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -504,6 +527,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 
 
 
+
 **Day 3: ENS, DEX, Identity, Inventory, Sybil：**[**https://gemini.google.com/share/487d38ce5338**](https://gemini.google.com/share/487d38ce5338)
 
 **Day 4 - 🎫 NFTs!!! ERC20 vs ERC721, IPFS, Metadata：**[**https://gemini.google.com/share/fc9bd615ba37**](https://gemini.google.com/share/fc9bd615ba37)
@@ -513,6 +537,7 @@ TVL 数据分析的核心心法是：**不看名义上的美元价值，看背�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -698,6 +723,7 @@ C. 市场格局的永久改变
 
 
 
+
 看完了实习手册的【入门导读】，对区块链原理和以太坊机制理解更加深刻了，行业赛道方面希望深入了解AI+DiFi和WEB3+乡建
 
 我将两个Youtube教程视频的transcript交给Gemini进行了摘要总结，方便快速浏览和时间轴上定位复习
@@ -820,6 +846,7 @@ Web3 的去中心化治理目前更像是一个\*\*“虽然混乱但充满活�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
