@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今天做了深度技术的一个任务，搭建本地区块链节点，我的整体流程可以分为三个部分：配置环境、搭建节点和部署合约。
+
+在配置环境阶段，我先在 Windows 上安装了 Node.js 的 LTS 版本，用官方安装包一路点击下一步完成安装，然后在 PowerShell 里用 node -v 和 npm -v 确认版本输出正常，确保运行环境就绪。 接着我在用户目录下创建了一个专门用来练习的文件夹 C:\\Users\\CHEN Yanzhu\\eth-dev，避免在系统目录里操作带来的权限问题。 进入这个目录之后，我执行 npm install --global hardhat 安装 Hardhat，再用 npx hardhat 初始化项目，选择的是 Hardhat 3 提供的 minimal 模板，这样得到一个TypeScript 项目骨架，包含 hardhat.config.ts 和基础目录结构。 我在项目根目录下手动创建了 contracts 和 scripts 两个文件夹，并通过 npm install --save-dev @nomicfoundation/hardhat-ethers 和 npm install ethers 装好了 Hardhat 的 Ethers 插件以及 Ethers.js 本身，然后把 hardhat.config.ts 写成一个极简配置：只指定 solidity: "0.8.28"，并在文件顶部引入 @nomicfoundation/hardhat-ethers，让 Hardhat 在运行脚本时自动在运行时环境中注入 ethers 能力。
+
+在搭建节点阶段，我利用 Hardhat 自带的 Hardhat Network 启动了一条本地以太坊兼容链。我回到项目根目录，直接执行 npx hardhat node，Hardhat 会在 http://127.0.0.1:8545 上监听一个 JSON‑RPC 服务端口，同时在终端打印出一组测试账户和对应的私钥，这些账户默认拥有大量测试 ETH，方便我在开发过程中随意发送交易。 只要这个进程保持运行，本地链就一直存在，我后续在另一终端里使用 --network localhost 参数执行任何 Hardhat 脚本时，都会连到这条本地链，而不是创建新的临时网络。 对于我这次的练习来说，一个终端专门跑 npx hardhat node，另一个终端专门跑脚本，是最清晰也最不容易搞混的方式。
+
+在部署阶段，我先在 contracts 目录下编写了一个最简单的 HelloWorld 合约。合约文件命名为 HelloWorld.sol，采用 Solidity 0.8 版本，内部定义了一个 string public message 状态变量，在构造函数中将其初始化为 "Hello, World!"，并提供 setMessage(string memory \_msg) 函数用来修改内容，以及 getMessage() public view returns (string memory) 函数用来读取当前消息。 由于 Hardhat 会在执行脚本前自动对 contracts 目录进行编译，我不需要单独运行编译命令。在 scripts 目录中，我新建了一个部署脚本 deploy-hello.js，采用 ES Module 写法并且依赖 Hardhat 的运行时环境。在脚本中，我通过 import hre from "hardhat"; 导入 Hardhat Runtime Environment，然后在异步的 main 函数里调用 const HelloWorld = await hre.ethers.getContractFactory("HelloWorld"); 获取合约工厂，接着执行 const hello = await HelloWorld.deploy(); 部署合约，使用 await hello.waitForDeployment(); 等待交易确认，最后通过 console.log("HelloWorld deployed to:", await hello.getAddress()); 打印出合约地址，作为部署完成的标志。 启动好本地节点后，我在另一个终端切换到项目根目录，执行 npx hardhat run scripts/deploy-hello.js --network localhost，脚本会自动编译合约并将它部署到刚才启动的 Hardhat Network 上，当终端输出合约地址时，我就完成了“配置环境、搭建本地节点、部署 HelloWorld 合约”这一整套本地链开发流程。
+
+![屏幕截图 2026-01-24 145849.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yanzhuchen96-creator/images/2026-01-24-1769262904406-_____2026-01-24_145849.png)
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## 漏洞修复笔记
 
 今天学习了漏洞修复的相关内容，重点学习了重入攻击 Reentrancy。慢慢学下来，我发现所谓重入攻击，本质就是：**合约在给别人转钱时，把控制权交了出去，但还没来得及更新自己的内部状态，结果对方在这个空档又跑回来重复执行提现逻辑，把同一份余额当成多份来用。**
@@ -114,6 +128,7 @@ contract MySafeBank {
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 # DAPP学习笔记
 
 ## 基本概念与本质
@@ -149,6 +164,7 @@ IPFS（星际文件系统）可以看作一个去中心化的文件存储网络�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -245,6 +261,7 @@ function leaveMessage(string calldata _msg) external {
 
 
 
+
 今天做入门技术的一个任务，啃完了 Ethernaut 的前三关，花的时间比自己想象中的要久，作为一个 Solidity 初学者，要一行一行读懂智能合约还是有点难度的。通过 Hello Ethernaut、Fallback 和 Fallout 这三关，我从完全没用过浏览器控制台，到能看懂合约逻辑、定位漏洞并写出攻击代码，感觉自己被硬生生推着跨了一小步门槛，过程很痛苦，但进步还挺大。
 
 ## 第 0 关：Hello Ethernaut
@@ -320,6 +337,7 @@ Fallout 这一关让我感受到“一个小小的命名错误，会直接变成
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -453,6 +471,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 
 
+
 ## **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 AI提炼总结**
 
 本次分享围绕一个从 ERC-721 演进出来的新协议 **ERC-7962** 展开，目的是在保持数字藏品（NFT）属性的同时，引入更强的隐私保护和更好的用户体验。讲者首先回顾了传统 NFT 的特点：基于 ERC-721 标准，每个 token 的 owner 是一个公开可查的地址，谁持有什么资产、做过哪些交易都可以在链上被分析。这样带来了两个问题，一是隐私缺失，容易被构建“资产图谱”；二是对普通 Web2 用户不友好，需要自己装钱包、管私钥、付 gas 费，这阻碍了 Web2 用户向 Web3 迁移。
@@ -504,6 +523,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -569,6 +589,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -671,6 +692,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -719,6 +741,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -829,6 +852,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 # 1.13 学习笔记
 
 ## **节点和客户端的关系以及客户端间的协同配合**
@@ -896,6 +920,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
