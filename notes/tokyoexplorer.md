@@ -15,8 +15,70 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+structs
+
+You can define your own type by creating a .`struct`
+
+They are useful for grouping together related data.
+
+Structs can be declared outside of a contract and imported in another contract.
+
+```
+contract Todos {
+    struct Todo {
+        string text;
+        bool completed;
+    }
+
+    // An array of 'Todo' structs
+    Todo[] public todos;
+
+    function create(string calldata _text) public {
+        // 3 ways to initialize a struct
+        // - calling it like a function
+        //todos.push(Todo(_text, false));
+
+        // key value mapping
+        todos.push(Todo({text: _text, completed: false}));
+
+        // initialize an empty struct and then update it
+        // Todo memory todo;
+        // todo.text = _text;
+        // todo.completed initialized to false
+        // todos.push(todo);
+    }
+
+    // Solidity automatically creates a getter for 'todos' so
+    // you don't actually need this function.
+    function get(uint256 _index)
+        public
+        view
+        returns (string memory text, bool completed)
+    {
+        Todo storage todo = todos[_index];
+        return (todo.text, todo.completed);
+    }
+
+    // update text
+    function updateText(uint256 _index, string calldata _text) public {
+        Todo storage todo = todos[_index];
+        todo.text = _text;
+    }
+
+    // update completed
+    function toggleCompleted(uint256 _index) public {
+        Todo storage todo = todos[_index];
+        todo.completed = !todo.completed;
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 **mapping**：mapping(keyType => valueType)
 
 The **keyType** can be any built-in value type, bytes, string, or any contract. **ValueType** can be any type including another mapping or an array.
@@ -156,6 +218,7 @@ contract ArrayReplaceFromEnd {
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -234,6 +297,7 @@ contract Loop {
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -286,6 +350,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -293,6 +358,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -365,6 +431,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -421,6 +488,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -447,6 +515,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -512,6 +581,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
