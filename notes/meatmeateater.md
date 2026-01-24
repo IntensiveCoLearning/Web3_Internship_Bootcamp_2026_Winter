@@ -30,7 +30,7 @@ timezone: UTC+8
 
 \> **\[對這個程式碼的想法\]**
 
-\> \* **做了什麼**: 定義了一個合約 `HelloWorld`，裡面有一個公開的字串變數 `greet` 儲存 "Hello World!"。
+\> \* **做了什麼**: 定義了一個合約 `HelloWorld`，裡面有一個公開的字串變數 `greet` 儲存 “Hello World!”。
 
 \> \* **跟 C++ 相比差在哪**:
 
@@ -40,7 +40,7 @@ timezone: UTC+8
 
 \> \* **License**: 必須要在開頭宣告 `SPDX-License-Identifier`，這在 C++ 專案中通常是寫在 README 或個別檔案的註解，但在 Solidity 裡是語法的一部分，很強調開源合規。
 
-\> \* **學到了什麼**: 區塊鏈上的 "Class"，一旦部署上去，它就永遠存在那裡了。
+\> \* **學到了什麼**: 區塊鏈上的 “Class”，一旦部署上去，它就永遠存在那裡了。
 
 \## First App
 
@@ -68,7 +68,7 @@ timezone: UTC+8
 
 \> \* **Address 類型**: C++ 只有指標 (pointer)，Solidity 有專門的 `address` 類型來存乙太坊地址（20 bytes），這在 C++ 裡可能要用 `std::string` 或 `char array` 來模擬，但在這是原生的。
 
-\> \* **整數大小**: Solidity 分得很細`uint8`, `uint16`... 到 `uint256`。C++ 也有 `uint8_t`，但 Solidity 的計算主要都是為了配合 EVM 的 256 位元架構。
+\> \* **整數大小**: Solidity 分得很細`uint8`, `uint16`… 到 `uint256`。C++ 也有 `uint8_t`，但 Solidity 的計算主要都是為了配合 EVM 的 256 位元架構。
 
 \> \* **學到了什麼**: `address` 是這門語言的核心公民，跟錢包和合約互動都靠它。
 
@@ -425,6 +425,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 今日新增了對良心殺的comment，覺得蠻有趣的，類似一個小型的調研了，以下是我的回覆:
 
 \# 學號:571
@@ -500,6 +501,7 @@ timezone: UTC+8
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -517,6 +519,7 @@ Thanks for clarifying!
 
 
 
+
 今天打算把第0周的任務補齊，目前還差這些
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/meatmeateater/images/2026-01-19-1768852214818-image.png)
@@ -524,6 +527,7 @@ Thanks for clarifying!
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -540,11 +544,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -568,12 +574,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -694,6 +702,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -909,6 +918,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1173,6 +1183,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
