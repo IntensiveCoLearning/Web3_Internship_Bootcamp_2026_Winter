@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+Hi I’m coming
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 ### 1\. 从 Data Structure 到 Social Structure
 
 过去一周我们聊了 **Stacks**、**Queues**、**Merkle Trees**，你可能会觉得这只是程序员的玩具。但本质上，它们在做同一件事：**消除人为干预的空间**。
@@ -66,6 +72,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ### 1\. Merkle Tree: 区块链的“骨架”
 
@@ -122,6 +129,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 ### 1\. AI + Blockchain: 硅基生命的“契约”
 
 这是 2026 年最性感的叙事。
@@ -176,6 +184,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -244,11 +253,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 第四天呢
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -311,6 +322,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -389,6 +401,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 今天我的感悟是关于，它是如何跑起来的：
 
 ### 1\. 交易的生命周期：从 Wallet 到 Blockchain
@@ -437,6 +450,7 @@ Web3 看着高大上，其实拆开了看，架构跟 Web2 完全不同：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
