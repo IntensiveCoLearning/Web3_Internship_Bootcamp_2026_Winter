@@ -15,8 +15,202 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+1.  能用内存（Memory）绝不用存储（Storage）；
+    
+2.  能放在循环外做的，绝不放在循环内。示例：
+    
+    ```jsx
+    // ❌ 非优化
+    for (uint256 i = 0; i < arr.length; i++) {
+        ...
+    }
+    // ✅ 优化
+    uint256 len = arr.length;
+    for (uint i = 0; i < len; ++i) {
+        ...
+    }
+    
+    //使用 ++i 代替 i++。i++ 需要在增加之前创建一个临时变量存储旧值，而 ++i 直接自增。
+    ```
+    
+3.  使用位压缩：简单来说，以太坊的存储空间被划分为一个个 **32 字节（256 位）** 的“插槽”（Storage Slot）。无论你存一个巨大的数字还是一个很小的开关，只要占用了一个插槽，你就要付 **20,000 Gas** 的“地皮费”。
+    
+    **位压缩的意思就是：把好几个小尺寸的变量挤在一个 32 字节的插槽里，只付一份钱。**
+    
+    **❌ 非优化写法（占用 3 个插槽）**
+    
+    Solidity 会按顺序分配插槽。如果变量加起来超过 256 位，就会开新槽。
+    
+    ```jsx
+    uint256 a; // 占用 Slot 0 (256位)
+    uint256 b; // 占用 Slot 1 (256位)
+    uint256 c; // 占用 Slot 2 (256位)
+    // 结论：存这三个数要花约 60,000 Gas
+    ```
+    
+    **✅ 优化写法（占用 1 个插槽）** 通过选择合适的类型（如 `uint128`, `uint64`, `bool`），让它们的总和 ≤ 256位。
+    
+    ```jsx
+    struct Packed {
+        uint128 a; // 128位
+        uint64 b;  // 64位
+        uint32 c;  // 32位
+        uint32 d;  // 32位
+    } 
+    // 总计：128+64+32+32 = 256位 (刚好 1 个 Slot)
+    // 结论：存这四个数只需花约 20,000 Gas，省了 2/3 的钱！
+    ```
+    
+    -   注意：Solidity 编译器是非常“死板”的。它从上到下打包变量。如果你中间穿插了一个大的变量，打包就会失效。
+        
+    
+    ```jsx
+    struct BadPacking {
+        uint128 a; // 128位，开 Slot 0
+        uint256 b; // 256位，Slot 0 放不下，必须新开 Slot 1
+        uint128 c; // 128位，Slot 1 已经被 b 占满了，必须新开 Slot 2
+    }
+    // 结果：这三个变量占用了 3 个插槽，完全没有压缩。
+    ```
+    
+4.  函数可见性选择——**external** 比 **public**更节省gas，适用于仅被外部调用的函数
+    
+
+案例1：
+
+```jsx
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract GasComparison{
+    uint256 public baseReward = 100; //存储变量（storage）
+    mapping(address => uint256) public balances;
+
+    // ❌ 非优化写法：在循环中直接读写存储
+    function Bad(address[] calldata users) external {
+        for(uint256 i = 0; i < users.length; i ++){
+            // 每次循环都在读取存储变量 baseReward
+            // 每次循环都在修改存储变量 balances
+            balances[users[i]] += baseReward;
+        }
+    }
+
+    // ✅ 优化写法：缓存变量 + 循环优化
+    function Good(address[] calldata users) external {
+        uint256 localReward = baseReward; // 1. 将存储变量赋值给局部变量（memory）
+        
+        uint256 len = users.length; //2. 缓存数组长度，避免重复读取calldata
+        for(uint256 i = 0; i < len; ++ i){  //++i 略快于 i++
+            address user = users[i];
+
+            // 3. 这里的操作全部在内存中进行计算，最后只进行一次存储写入
+            uint256 currentBalance = balances[user];
+            balances[user] = currentBalance + localReward;
+        }
+    }
+}
+
+```
+
+> 能看到两个主要指标：
+> 
+> -   **Transaction Cost（交易成本）：** 包含发起的固定费用（21,000 Gas）+ 执行代码的费用。
+>     
+> -   **Execution Cost（执行成本）：** 纯粹是执行你写的那些逻辑扣掉的钱。
+>     
+
+Bad和Good都只输入1个地址。
+
+运行结果：Bad的 Transaction Cost 为**47107**，Good的 Transaction Cost 为**47284**。
+
+为什么差的不是很多？为什么Good比Bad的还要更多？
+
+1.  **破案：为什么 Good 反而贵了？** 在 Gas 优化中，有一条隐藏的规则：**“为了省大钱，有时需要花点小钱。”**
+    
+    -   **Good 写法多做了一步：** 你在循环开始前，增加了一句 `uint256 cachedReward = baseReward;`。这在底层是一次 `mstore`（内存写入）操作。
+        
+    -   **数据量太小：** 你的数组里可能只有 **1 或 2 个** 地址。
+        
+        -   在地址很少的情况下，**“把变量存入内存”** 的这步额外开销，超过了 **“少读一次存储”** 节省下来的开销。
+            
+        -   这就像你为了省钱去批发市场，但如果你只买一根针，来回的公交车费反而让你亏了。
+            
+2.  **实验：什么时候 Good 会反杀？**
+    
+    Gas 优化的优势通常在 **“规模化”** 时体现。请你尝试在 Remix 输入框里输入一个包含 **10 个或更多地址** 的数组： `["0x5B...", "0xAb...", "0x4B...", ...]`（重复粘贴同一个地址 10 次也可以）。
+    
+    **你会发现：**
+    
+    -   **Bad 写法：** 随着地址增加，Gas 消耗呈 **线性暴增**。因为它每多一个人，就要多跑一次昂贵的 `baseReward` 存储读取。
+        
+    -   **Good 写法：** 增加得非常缓慢。因为它无论给多少人发奖，`baseReward` 只在开头读了一次。
+        
+3.  **还有一个隐藏的“大头”：零值 vs 非零值**
+    
+    在以太坊中，**第一次**往一个 `mapping` 里的地址存钱（值从 0 变到 100）是非常贵的（约 20,000 Gas）。
+    
+    -   如果你测试时用的地址是**第一次**运行函数，那么这 20,000 Gas 会掩盖掉所有的微小优化。
+        
+    -   **建议：** 在同一个地址上连续运行两次函数，第二次看到的 Gas 才是去除了“开荒费”后的逻辑执行成本。
+        
+4.  **总结——Gas 优化的边际效应**
+    
+    1.  **数据规模：** 对于简单的操作，如果数组长度很小（如 $N < 3$），内存缓存带来的额外指令开销可能导致 Gas 略微上升。
+        
+    2.  **临界点：** 当循环次数增加时，减少存储访问（SLOAD/SSTORE）节省的 Gas 会迅速抵消掉内存初始化的开销。
+        
+    3.  **结论：** 优化应该针对“高频”或“大数据量”场景。
+        
+
+案例2：
+
+```jsx
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract GasComparison{
+    uint256 public baseReward = 100; //存储变量（storage）
+    mapping(address => uint256) public balances;
+    uint256 public totalDistributed; // 新增一个全局累计变量
+
+// ❌ 差写法：每次循环都去改全局变量（地狱级 Gas 消耗）
+function Bad_Total(address[] calldata users) external {
+    for(uint256 i = 0; i < users.length; i++){
+        balances[users[i]] += 100;
+        totalDistributed += 100; // 重点：每一轮都在 SSTORE
+    }
+}
+
+// ✅ 好写法：在内存里算完，最后改一次全局变量
+function Good_Total(address[] calldata users) external {
+    uint256 tempTotal = totalDistributed; 
+    uint256 len = users.length;
+    for(uint256 i = 0; i < len; ++i){
+        balances[users[i]] += 100;
+        tempTotal += 100; // 重点：只在内存里累加，极快
+    }
+    totalDistributed = tempTotal; // 循环结束，只写一次 SSTORE
+}
+}
+
+```
+
+Bad和Good都输入10个地址。
+
+运行结果：Bad的 Transaction Cost 为**82554**，Good的 Transaction Cost 为**63338**。
+
+总结：**为什么有些优化在测试中不明显？**
+
+-   **编译器优化：** 现代编译器会对简单的状态变量读取进行优化，手动缓存 `uint256` 带来的提升有限。
+    
+-   **存储写入是真凶：** 真正的 Gas 杀手是循环中的 `SSTORE`（写入存储）。
+    
+-   **有效优化场景：** 当我们需要更新一个**全局汇总变量**（如总供应量、总奖励）时，必须使用内存变量先求和，最后再更新到存储。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 1.  合约部署的成本核算
     
 
@@ -272,6 +466,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 1.  智能合约
     
     1.  **智能合约的定义：住在账本里的“代码合同”**
@@ -500,6 +695,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 以太坊中有两种账户——EOA、合约账户
@@ -963,6 +1159,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.  归档节点在数据查询中的优势
     
     1.  **什么是归档节点？——“超级记忆力的大管家”**
@@ -1403,6 +1600,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 tips：今天过生日，浅浅摆一天~
 
 1.  开发者或机构运行全节点的必要性
@@ -1473,6 +1671,7 @@ tips：今天过生日，浅浅摆一天~
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1598,6 +1797,7 @@ tips：今天过生日，浅浅摆一天~
 
 
 
+
 1.  **客户端（client）和节点（node）的区别？**
     
 
@@ -1676,6 +1876,7 @@ Engine API 就是 EL 和 CL 之间的**内线电话**。法官（CL）会打电�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1890,6 +2091,7 @@ Engine API 就是 EL 和 CL 之间的**内线电话**。法官（CL）会打电�
 
 
 
+
 1.  **智能合约和dApps的区别是什么？**
     
 
@@ -2020,6 +2222,7 @@ Proto-Danksharding（也称为 EIP-4844），是 Dencun 升级的核心内容，
 
 
 
+
 -   Rollup：在 Web3 编程中，如果直接在以太坊主网（L1）上执行每一行代码，Gas 费会贵得吓人。Rollup 就像是一个外包公司。它把成百上千笔交易拿到以太坊“外面”去处理（执行运算、修改状态），然后把这些交易的结果“压缩”成一小块数据，定期打包发送回以太坊主网。主网只负责存储最终结果并提供安全保障，不负责中间复杂的运算。
     
 -   Blob：2024 年以太坊进行了一次叫 **EIP-4844** 的升级，专门引入了一种新的数据格式，叫 **Blob。**它就像是在高速公路上专门为 Rollup 的大货车开了一条“快递专线”。普通合约数据是永久存储的，但 Blob 数据在链上只保留约 18 天。因为 Rollup 只需要这些数据来验证交易，验证完就不需要永久占位子了。因为它不参与 EVM 的实时运算，且不是永久存储，所以 Gas 费比传统的 `Calldata` 降低了 90% 以上。
@@ -2060,6 +2263,7 @@ Proto-Danksharding（也称为 EIP-4844），是 Dencun 升级的核心内容，
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2237,6 +2441,7 @@ Proto-Danksharding（也称为 EIP-4844），是 Dencun 升级的核心内容，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
