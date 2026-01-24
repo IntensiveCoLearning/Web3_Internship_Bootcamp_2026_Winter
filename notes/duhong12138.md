@@ -15,19 +15,27 @@ web3链上分析，亿级交易员
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+学习了今天的内容
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 学习了今天的内容
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 学习了今天的内容
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 学习了今天的内容
@@ -39,11 +47,13 @@ web3链上分析，亿级交易员
 
 
 
+
 学习了今天的内容
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -61,11 +71,13 @@ web3链上分析，亿级交易员
 
 
 
+
 学习了今天的内容
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -88,11 +100,13 @@ web3链上分析，亿级交易员
 
 
 
+
 建立了web3的安全知识
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
