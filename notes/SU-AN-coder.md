@@ -17,11 +17,90 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
-先打个卡
+* * *
+
+# Crowdfunding DApp 部署指南（挑战1）
+
+本项目是一个基于 Scaffold-ETH 2 构建的去中心化众筹应用（Crowdfunding DApp）。项目采用 NextJS 作为前端框架，Hardhat 作为智能合约开发环境，并成功部署至 Ethereum Sepolia 测试网。
+
+* * *
+
+### 🚀 操作流程
+
+1\. 合约开发与本地环境准备
+
+在 `packages/hardhat` 目录下完成合约编写后，首先确保本地环境依赖完整。
+
+-   **目录结构：** 合约逻辑位于 `packages/hardhat/contracts`，部署脚本位于 `deploy` 文件夹。
+    
+
+2\. 生成部署者钱包 (Deployer Wallet)
+
+为了在非本地网络（如 Sepolia）进行部署，需要生成一个专用的加密钱包：
+
+PowerShell
+
+```
+yarn generate
+```
+
+-   **注意：** 此时会设置一个本地加密密码。生成的私钥会安全地存储在 `.env` 文件中。
+    
+-   **查看账户：** 运行 `yarn account` 获取钱包地址（Public address）。
+    
+
+3\. 获取测试币 (Faucet)
+
+通过 Sepolia 水龙头（如 Alchemy 或 Infura）向生成的钱包地址转入 Sepolia ETH，作为部署合约的 Gas 费。
+
+4\. 合约部署至 Sepolia 测试网
+
+使用 Hardhat 部署脚本将合约推送到公链：
+
+PowerShell
+
+```
+yarn deploy --network sepolia
+```
+
+-   **关键产出：** \* **FundingRecipient 合约：** `0x61F0...C4D3`
+    
+    -   **CrowdFund 合约：** `0x47880......`
+        
+-   **部署确认：** 部署成功后，`nonce` 值会增加，且在 Etherscan 上可查。
+    
+    ![3.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-24-1769250043797-3.png)
+
+5\. 前端部署 (Vercel)
+
+将前端 NextJS 项目部署至云端，实现全球可访问：
+
+-   **演示地址：** [https://nextjs-two-beryl-23.vercel.app](https://nextjs-two-beryl-23.vercel.app)
+    
+
+ps :第一次部署时间比较长，我花了26min等待，之间因为时间太长cancle了两次，还以为是bug呢
+
+![屏幕截图 2026-01-24 182140.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-24-1769250162928-_____2026-01-24_182140.png)
+
+* * *
+
+### 💡 技术要点与经验总结
+
+-   **环境一致性：** 运行命令时需严格区分目录。合约相关操作（deploy, verify）在 `packages/hardhat` 进行；前端操作在 `packages/nextjs` 进行。
+    
+-   **网络处理：** 在国内环境下，连接以太坊测试网节点或 Etherscan API 时，若遇到超时（Timeout），通过切换手机热点或使用代理可以有效解决网络抖动问题。
+    
+-   **状态重置：** 若部署过程中断，使用 `--reset` 参数（`yarn deploy --network sepolia --reset`）可以确保部署状态的干净和地址的重新确认为最新。
+    
+-   **合约验证：** 部署后通过 `yarn verify --network sepolia` 可以使合约代码在 Etherscan 上开源并获得绿色勾选认证，提升 DApp 的可信度。
+    
+
+![屏幕截图 2026-01-24 181236.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-24-1769250271778-_____2026-01-24_181236.png)
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # Polymarket
 
@@ -411,6 +490,7 @@ async def main():
 
 
 
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -521,6 +601,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -574,6 +655,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -910,6 +992,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1307,6 +1390,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1929,6 +2013,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -1995,6 +2080,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2206,6 +2292,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -2358,6 +2445,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2456,6 +2544,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2594,6 +2683,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
