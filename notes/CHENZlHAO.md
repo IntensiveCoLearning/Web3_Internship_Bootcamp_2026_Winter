@@ -15,8 +15,344 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+这是一个基于您上传的《021学习以太坊》开源教材整理的完整知识点梳理。
+
+为了满足您“覆盖更多知识点”且“Notion 格式”的需求，我按照**层级列表**（Hierarchy）的方式构建了这份大纲。您可以直接将以下 Markdown 内容复制并粘贴到 Notion 页面中，它们会自动渲染为带有层级、标题和折叠效果的笔记结构。
+
+* * *
+
+# 📘 《021学习以太坊》知识体系全景
+
+> **说明**：本文档基于开源教材梳理，涵盖了从以太坊基础概念、网络架构、账户模型到智能合约开发的全方位知识点。
+
+## 第一章：认识以太坊 (Foundations)
+
+-   **以太坊的起源与定义**
+    
+    -   **起源**：2013年由 Vitalik Buterin 提出白皮书，2015年主网（Frontier）上线。
+        
+    -   **核心定位**：去中心化、开源、具备智能合约功能的公共区块链平台。
+        
+    -   **愿景**：从“分布式账本”进化为“世界计算机 (World Computer)”。
+        
+    -   **发展阶段**：Frontier (边境) -> Homestead (家园) -> Metropolis (都会) -> Serenity (宁静/Eth2) -> The Merge & Beyond。
+        
+-   **核心特性 (Features)**
+    
+    -   **智能合约 (Smart Contracts)**：存储在链上的程序，条件满足自动执行（“数字自动售货机”）。
+        
+    -   **dApps (去中心化应用)**：后端逻辑跑在链上，零停机、抗审查。
+        
+    -   **代币标准**：
+        
+        -   **ERC-20**：同质化代币（货币、积分）。
+            
+        -   **ERC-721/1155**：非同质化代币（NFT）。
+            
+    -   **共识机制**：已从 PoW（工作量证明）彻底转向 PoS（权益证明）。
+        
+-   **Ether (ETH) 的三重职能**
+    
+    -   **网络燃料 (Gas)**：支付计算费用，防止资源滥用（EIP-1559: Base Fee + Priority Fee）。
+        
+    -   **质押资产 (Staking)**：维护网络安全的保证金（验证者质押 32 ETH）。
+        
+    -   **价值载体**：DeFi 抵押品、NFT 计价单位、价值存储。
+        
+-   **以太坊 vs 比特币**
+    
+    -   **定位差异**：BTC 是“数字黄金”（货币）；ETH 是“世界计算机”（应用平台）。
+        
+    -   **可编程性**：BTC 脚本有限（图灵不完备）；ETH 图灵完备，支持复杂逻辑。
+        
+    -   **发行机制**：BTC 总量恒定；ETH 无硬顶但有销毁机制（Ultra-sound money）。
+        
+    -   **区块节奏**：BTC ~10分钟；ETH ~12秒 (Slot)。
+        
+-   **去中心化实现机制**
+    
+    -   **节点网络**：全球分布的 P2P 节点，无中心服务器。
+        
+    -   **抗审查性**：任何人可发交易、部署合约，无法被单一实体关停。
+        
+    -   **Rollup 扩容路线**：L1 负责结算与安全，L2 负责执行与扩容。
+        
+-   **生态系统应用**
+    
+    -   **DeFi (金融)**：Uniswap (DEX), Aave (借贷), Stablecoins (DAI/USDC)。
+        
+    -   **NFT (资产)**：数字艺术、游戏道具、DID 身份。
+        
+    -   **DAO (治理)**：代码驱动的组织结构，Gitcoin (公共物品资助)。
+        
+    -   **Layer 2**：Optimism, Arbitrum, Base 等扩容方案。
+        
+
+## 第二章：网络结构与节点类型 (Network & Nodes)
+
+-   **节点与客户端架构 (The Merge 后)**
+    
+    -   **双客户端模型**：
+        
+        -   **执行客户端 (EL)**：Geth, Nethermind, Besu。负责处理交易、运行 EVM、维护状态。
+            
+        -   **共识客户端 (CL)**：Prysm, Lighthouse, Teku。负责 PoS 共识、投票、链头选择。
+            
+    -   **Engine API**：EL 和 CL 之间的通信通道（JWT 验证）。
+        
+-   **节点类型区分**
+    
+    -   **全节点 (Full Node)**：验证所有区块和交易，保存最新状态，修剪历史状态。
+        
+    -   **归档节点 (Archive Node)**：保存从创世块至今的**所有历史状态快照**（用于历史查询、分析）。
+        
+    -   **轻节点 (Light Node)**：只存区块头，依赖全节点获取数据，通过 Merkle 证明验证。
+        
+-   **节点通信与协议**
+    
+    -   **发现协议 (Discovery)**：基于 UDP + Kademlia DHT，寻找邻居节点。
+        
+    -   **传输协议 (RLPx)**：基于 TCP，建立加密连接传输数据。
+        
+    -   **Gossip 协议**：像“传八卦”一样在全网指数级广播交易和区块。
+        
+-   **同步模式 (Sync Modes)**
+    
+    -   **Full Sync**：从头执行所有交易（极慢）。
+        
+    -   **Snap Sync**：下载最新状态快照 + 最近区块（主流、快）。
+        
+    -   **Light Sync**：仅下载区块头。
+        
+-   **为什么运行全节点？**
+    
+    -   **隐私**：不泄露 IP/地址给公共 RPC（如 Infura）。
+        
+    -   **抗审查**：自主广播交易。
+        
+    -   **免信任**："Don't trust, verify"（不要信任，要验证）。
+        
+-   **非节点数据分析方法**
+    
+    -   **SQL 平台**：Dune Analytics, Flipside。
+        
+    -   **数据仓库**：Google BigQuery Public Datasets。
+        
+    -   **API 服务**：Etherscan, Covalent, The Graph。
+        
+
+## 第三章：账户类型与结构 (Accounts)
+
+-   **账户模型：基于账户 (Account-based) vs UTXO**
+    
+-   **两类账户对比**
+    
+    -   **EOA (外部拥有账户)**：
+        
+        -   由**私钥**控制。
+            
+        -   无代码，Nonce 记录交易数。
+            
+        -   **唯一能主动发起交易的主体**。
+            
+    -   **合约账户 (Contract Account)**：
+        
+        -   由**代码**控制（无私钥）。
+            
+        -   有 Code 和 Storage（存储树）。
+            
+        -   只能被调用后响应（被动执行）。
+            
+-   **账户状态四要素 (State Object)**
+    
+    -   `Nonce`：计数器（防重放）。
+        
+    -   `Balance`：余额 (Wei)。
+        
+    -   `StorageRoot`：存储树根哈希（EOA 为空）。
+        
+    -   `CodeHash`：代码哈希（EOA 为空）。
+        
+-   **地址生成规则**
+    
+    -   **EOA**：公钥哈希的后20字节。
+        
+    -   **CREATE**：`Hash(sender, nonce)` （不可预测）。
+        
+    -   **CREATE2**：`Hash(0xff, sender, salt, init_code)` （**可预测地址**，用于反事实部署）。
+        
+-   **钱包与安全**
+    
+    -   **助记词 (SRP)**：BIP-39 标准，派生私钥的种子。
+        
+    -   **私钥管理**：真正的控制权，需离线保存。
+        
+    -   **账户抽象 (AA / ERC-4337)**：让合约拥有 EOA 的体验（Gas 代付、社交恢复）。
+        
+    -   **EIP-7702**：允许 EOA 临时拥有合约代码能力（Pectra 升级）。
+        
+
+## 第四章：智能合约理论基础 (Smart Contracts)
+
+-   **智能合约本质**
+    
+    -   **定义**：驻留在链上的“代码 + 状态”。
+        
+    -   **Code is Law**：代码即法律，执行结果确定性。
+        
+    -   **不可篡改性**：部署后代码无法修改（特定升级模式除外）。
+        
+-   **Solidity 语言**
+    
+    -   **特性**：静态类型、面向对象、EVM 原生语言。
+        
+    -   **生态**：Truffle, Hardhat, Foundry, OpenZeppelin。
+        
+-   **编译与产物**
+    
+    -   **Bytecode**：
+        
+        -   _Creation Code_：部署时运行，生成 Runtime Code。
+            
+        -   _Runtime Code_：永久存在链上。
+            
+    -   **ABI (应用二进制接口)**：前端与合约交互的 JSON 说明书（函数名、参数、返回值）。
+        
+    -   **Metadata**：包含源码哈希、编译器版本等元数据。
+        
+-   **合约部署**
+    
+    -   **流程**：发送一笔 `to` 为空的交易，`data` 为合约 Bytecode。
+        
+    -   **成本**：存储代码非常昂贵（Gas 消耗大）。
+        
+-   **调用机制**
+    
+    -   **External Transaction**：EOA 发起。
+        
+    -   **Internal Transaction (Message Call)**：合约调用合约（`call`, `delegatecall`, `staticcall`）。
+        
+    -   **Delegatecall**：代理模式的核心，使用调用者的 Context（存储、余额）执行目标代码。
+        
+-   **升级与销毁**
+    
+    -   **Proxy Pattern (代理模式)**：通过修改指向逻辑合约的指针实现升级。
+        
+    -   **SELFDESTRUCT**：Dencun 升级后功能被削弱（不再能轻易清除状态），不推荐用于升级。
+        
+
+## 第五章：EVM 与 Gas 机制 (EVM & Gas)
+
+-   **EVM (以太坊虚拟机)**
+    
+    -   **定义**：基于堆栈 (Stack-based) 的虚拟执行环境。
+        
+    -   **沙箱环境**：隔离性，无法访问网络、文件系统。
+        
+    -   **图灵完备**：理论上可计算任何问题（受 Gas 限制）。
+        
+-   **运行机制**
+    
+    -   **OpCode (操作码)**：EVM 的指令集 (PUSH, POP, SSTORE, CALL 等)。
+        
+    -   **Bytecode 执行**：Solidity 编译成 OpCode 序列供 EVM 执行。
+        
+-   **Gas 机制**
+    
+    -   **目的**：防止死循环（停机问题），分配网络资源，防御 DoS 攻击。
+        
+    -   **Gas Cost**：每个 OpCode 都有固定的 Gas 消耗（计算便宜，存储昂贵）。
+        
+    -   **Gas Limit**：交易允许消耗的最大 Gas 量。
+        
+-   **计费模型 (EIP-1559)**
+    
+    -   **Base Fee**：基础费，由协议自动调整，**直接销毁 (Burn)**。
+        
+    -   **Priority Fee (Tip)**：小费，支付给验证者以获得优先打包。
+        
+    -   **公式**：`Fee = (Base Fee + Priority Fee) * Gas Used`。
+        
+-   **Gas 优化**
+    
+    -   **存储优化**：减少 `SSTORE`（写链上存储），多用 `Memory` 或 `Calldata`。
+        
+    -   **变量打包**：利用 Storage Slot 打包机制。
+        
+
+## 第六章：共识机制与生态展望 (Consensus & Future)
+
+-   **共识机制演进**
+    
+    -   **PoW (工作量证明)**：早期机制，依赖算力（已废弃）。
+        
+    -   **PoS (权益证明)**：当前机制，依赖质押 ETH。
+        
+        -   **验证者 (Validator)**：质押 32 ETH，负责提议和证明区块。
+            
+        -   **Slashing (罚没)**：对恶意行为（双签等）的经济惩罚。
+            
+        -   **节能**：能耗降低 99.95%。
+            
+-   **关键升级 (Roadmap)**
+    
+    -   **The Merge**：PoW 转 PoS。
+        
+    -   **The Surge**：扩容（Rollup, EIP-4844/Proto-Danksharding）。
+        
+    -   **The Scourge**：抗审查，解决 MEV 问题（PBS）。
+        
+    -   **The Verge**：无状态客户端（Verkle Trees）。
+        
+    -   **The Purge**：清除历史数据，简化协议。
+        
+    -   **The Splurge**：其他有趣修复（账户抽象等）。
+        
+-   **扩容方案**
+    
+    -   **Sharding (分片)**：
+        
+        -   **Danksharding**：数据分片，为 L2 提供廉价数据可用性 (DA) 空间 (Blobs)。
+            
+    -   **Layer 2 (Rollups)**：
+        
+        -   **Optimistic Rollup**：欺诈证明 (Fraud Proof)。
+            
+        -   **ZK Rollup**：零知识证明 (Validity Proof)。
+            
+-   **生态应用前景**
+    
+    -   **DeFi**：可组合的金融积木。
+        
+    -   **DAO**：去中心化协作。
+        
+    -   **RWA**：现实资产上链。
+        
+
+* * *
+
+### 🔗 知识点关联图谱 (Mind Map Logic)
+
+-   **节点 (Node)** 构成了 **网络 (Network)**。
+    
+-   **网络** 维护了 **区块链 (Blockchain)** 和 **世界状态 (State)**。
+    
+-   **状态** 由 **账户 (Accounts)** 组成（EOA 和 合约）。
+    
+-   **账户** 通过 **交易 (Transactions)** 进行交互。
+    
+-   **交易** 需要支付 **Gas**，并由 **共识机制 (PoS)** 打包确认。
+    
+-   **智能合约 (Smart Contract)** 是存储在账户中的代码，运行在 **EVM** 上。
+    
+-   **EVM** 执行结果改变 **状态**，并通过 **Layer 2** 进行扩容以承载更多应用。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
 
 * * *
@@ -225,6 +561,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -370,6 +707,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 这是一个为您整理的《智能合约开发 | Web3 实习手册》学习笔记，已调整为 Notion 风格结构。您可以直接复制内容到 Notion 中使用（支持 Markdown 语法）。
@@ -638,6 +976,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -859,6 +1198,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -975,6 +1315,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1113,6 +1454,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 
 
+
 # Web3 安全与合规：知识图谱
 
 * * *
@@ -1245,6 +1587,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
