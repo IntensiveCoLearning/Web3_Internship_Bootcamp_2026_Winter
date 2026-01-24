@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+### 读取合约 (Read Contracts)
+
+1\. **核心三要素**： 要与合约交互，你需要：
+
+    ◦ **Contract Address (合约地址)**：合约在链上的位置。
+
+    ◦ **ABI (Application Binary Interface)**：合约的“说明书”。它告诉 Ethers.js 合约有哪些函数、参数类型和返回值。
+
+    ◦ **Provider**：用于发送读取请求。
+
+2\. **获取 ABI**：
+
+    ◦ 通常从 Etherscan 的 "Contract" 标签页下的 "Code" 部分复制。当合约被\*\*验证 (Verified)\*\* 后，Etherscan 会从源码生成 ABI。
+
+    ◦ **Web2 类比**：ABI 就像是 API 的 **Swagger/OpenAPI 文档**。EVM 只能看懂字节码，ABI 则是将人类可读的函数调用（如 `mint()`）转换为 EVM 字节码的接口定义。
+
+### 写入合约 (Write/Transact)
+
+1\. **本质：一切皆交易**：
+
+    ◦ 与合约交互不是“点击 App”，而是构建并发送一笔交易。
+
+    ◦ **Call Data (调用数据)**：当你调用合约函数时，本质上是向合约地址发送一笔交易，并在 `data` 字段中附带了特定数据。
+
+    ◦ **Value (转账金额)**：如果函数是 `payable` 的（如 `mint` 需要付费），需要在调用时通过 `overrides` 对象传入 `value`。
+
+2\. **函数选择器 (Function Selector)**：
+
+    ◦ 在 Etherscan 上查看原始交易数据时，你会看到 `MethodID`（如 `0xa9059cbb`）。
+
+    ◦ 这是函数签名的 Keccak-256 哈希的前 4 个字节。它告诉合约你想调用哪个函数。
+
+3\. **手动控制交易 (Nonce & Gas)**：
+
+    ◦ 手动设置 `nonce` 和 `gasPrice`。
+
+    ◦ **加速交易原理**：如果你发出的交易卡住了，可以发送一笔 **Nonce 相同** 但 **Gas Price 更高** 的新交易。矿工会打包价格高的那笔，旧交易会被丢弃。
+
+### ERC-20 代币转账 (DAI)
+
+1\. **场景**：
+
+    ◦ 发送 ETH 是原生的，只需要设置 `to` 和 `value`。
+
+    ◦ 发送 ERC-20 代币（如 DAI）是\*\*与合约交互\*\*。你实际上是调用 DAI 合约的 `transfer` 函数，改变合约内部的账本状态。
+
+2\. **大数处理 (BigNumber)**：
+
+    ◦ 代币通常有 18 位小数。在脚本中不能直接写 `5`，必须写 `5 * 10^18`。
+
+    ◦ 使用 `ethers.utils.parseEther("5.0")` 来处理这种转换，防止精度丢失。
+
+3\. **读写分离架构**：
+
+    ◦ 演示中使用了 **Mainnet Provider** 来解析 `sanford.eth` 的地址（读取 ENS 注册表），同时使用 **Mainnet Signer** 与 DAI 合约交互（发送代币）。这展示了在复杂应用中如何灵活组合不同的连接源。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -62,6 +122,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ## 智能合约的主要优势：自动触发、减少中介、减少误差
 
@@ -122,6 +183,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 \## 1. Uniswap v2
@@ -272,6 +334,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -331,6 +394,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -356,6 +420,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -390,6 +455,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -440,6 +506,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -483,6 +550,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -508,6 +576,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -556,6 +625,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
