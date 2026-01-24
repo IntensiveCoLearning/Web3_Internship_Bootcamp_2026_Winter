@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+# To do list
+
+-   注册figma
+    
+-   深度技术剩余的3个任务
+    
+-   参加 space
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # To do list
 
 -   figma
@@ -44,6 +56,7 @@ Austin 分享 学习自己写代码过程中尽量关掉AI
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # To do list
 
@@ -88,6 +101,7 @@ uint256 public immutable deadline = block.timestamp + 2 hours ;
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -138,6 +152,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 
 
+
 # To do list
 
 -   Uniswap v2 源码
@@ -151,6 +166,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -186,6 +202,7 @@ solidity改复习一下子了，明天抓紧复习，争取优化实习手册
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -358,6 +375,7 @@ ERC-7962的核心创新在于，它通过引入\*\*`密钥哈希 (keyHash)`\*\* 
 
 
 
+
 # To do list
 
 -   参加LXDAO周会 ✅
@@ -392,6 +410,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -445,6 +464,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -533,6 +553,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -645,6 +666,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -702,6 +724,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
