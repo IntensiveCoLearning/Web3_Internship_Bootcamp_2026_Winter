@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+1.  澳门出差第一天
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 1.  太忙了今天
     
 2.  听了会【共学】
@@ -26,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 1.  看了【以太坊中文周会】的回放
     
@@ -48,6 +55,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 1.  看了【ERC721到ERC7962】的回放
     
 2.  听了一会共学
@@ -62,6 +70,7 @@ timezone: UTC+8
 
 
 
+
 1.  看了【Web3合规】剩下的一半的回放
     
 2.  看了【第一周例会】的回放，真长啊，3个半小时，B站赶紧开发3倍速吧，2倍速不够用啊
@@ -69,6 +78,7 @@ timezone: UTC+8
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -82,6 +92,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -122,6 +133,7 @@ timezone: UTC+8
 
 
 
+
 1.  看了LXDAO的周会，看了后半部分直播，一会找一下全部，重新看一遍
     
     -   属于说是打开新世界大门了
@@ -139,6 +151,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -175,6 +188,7 @@ timezone: UTC+8
 
 
 
+
 1.  听了一会共学
     
 2.  听了AI分享会
@@ -194,6 +208,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -236,6 +251,7 @@ timezone: UTC+8
 
 
 
+
 1.  听了一会共学
     
 2.  晚上听了Bruce老师的Web3运行原理
@@ -261,6 +277,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
