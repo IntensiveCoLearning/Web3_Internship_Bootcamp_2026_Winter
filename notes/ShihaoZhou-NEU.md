@@ -20,18 +20,18 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 # 学习计划
 
-  
-⭕️体验 My first zk vote
+✅️体验 My first zk vote
 
-Solidity学习
+## Solidity学习
 
 -   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
     
--   ⭕️完成挑战 Challenge #0 - Tokenization
+-   ✅️完成挑战 Challenge #0 - Tokenization
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 学习计划
 
@@ -99,6 +99,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 
 
+
 # 学习计划
 
 1.  ✅️[Gas 优化](https://github.com/ShihaoZhou-NEU/Solidity_Learning/tree/main/Homework)
@@ -121,6 +122,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -432,6 +434,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -591,6 +594,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -630,6 +634,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -953,6 +958,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1257,6 +1263,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1610,6 +1617,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1689,6 +1697,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1957,6 +1966,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2133,6 +2143,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
