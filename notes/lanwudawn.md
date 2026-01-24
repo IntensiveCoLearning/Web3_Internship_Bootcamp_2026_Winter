@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+DAY9  
+
+今天补一下落下的进度
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 DAY8
 
 TODOLIST: 1. 学习 Solidity by Example-basic 部分 ×  
@@ -30,6 +38,7 @@ TODOLIST: 1. 学习 Solidity by Example-basic 部分 ×
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 DAY 7
@@ -67,6 +76,7 @@ Deployed Contracts这里面再每次更新后会有新的拓展。
 
 
 
+
 DAY6
 
 TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
@@ -93,6 +103,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 
 
+
 ### **DAY 5**
 
 **今天应该是DAY7的，前两天事情有点多，落下了功课。**  
@@ -109,6 +120,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 
 
+
 **_DAY4_**  
 **_TODOLIST: 1 阅读教程并整理_**  
   
@@ -117,6 +129,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -154,6 +167,7 @@ myfirstNFT
 
 
 
+
 DAY2  
 昨天晚上赶在ddl之前仓促提交笔记。下定决心一定要早些笔记。  
 \------  
@@ -163,6 +177,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
