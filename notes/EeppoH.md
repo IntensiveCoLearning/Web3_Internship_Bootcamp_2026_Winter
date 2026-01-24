@@ -15,8 +15,44 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+2. **智能合约（Smart Contracts）**：
+
+-   智能合约是 Dapp 的核心，它定义了应用的业务逻辑，并部署在区块链上。智能合约通过执行自动化的规则来确保交易和操作的透明性与不可篡改性。
+    
+-   在以太坊平台上，智能合约通常使用 **Solidity** 编程语言编写，并通过 **Ethereum Virtual Machine (EVM)** 执行。
+    
+
+3. **数据检索器（Indexer）**：
+
+-   智能合约通常以 Event 形式释放日志事件，比如释放代表 NFT 转移的 Transfer 事件，数据检索器会检索这些数据并将其写入到 PostgreSQL 等传统数据库中
+    
+-   Dapp 在前端进行数据展示时需要检索器内的数据。
+    
+
+帮助DApp把乱七八糟的链上数据整理成前端一秒能用的数据库。
+
+**Indexer 并非 DApp 的必要组成部分，但在实际生产环境中几乎是必备基础设施。**
+
+**Indexer 是一个链下后端服务，通常使用 TypeScript / JavaScript 编写，通过监听区块链事件并将其结构化存储，为 DApp 提供高效的数据查询能力。**
+
+**Indexer是跟随交易的发生实时更新数据库的嘛？**
+
+**Indexer不处理memepool，不会在交易“还没确认”就写数据库，一旦区块出现很快就能同步。**
+
+**现实生活中的交易pending，confirmed vs Indexed**
+
+**pending等于刷卡中，也就是交易进入mempool**
+
+**confirmed银行入账，上链成功**
+
+**Indexed 银行APP显示账单，Indexer已更新**
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 Dapp架构和开发流程
 
 去中心化应用（Dapp）是与传统集中式应用不同的全新应用模式，通常运行在区块链或分布式网络上。
@@ -47,6 +83,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 **空格**
 
@@ -79,6 +116,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ```remix-solidity
 pragma solidity ^0.8.0;
 
@@ -105,6 +143,7 @@ function addOne() public {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -244,6 +283,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 
 
+
 昨天留下的问题，LP TOKEN证明的不是存入的ETH或者USDC在mempool里的存款，LP TOKEN证明的是自己的存款在CA账户里的比例。
 
 这个比例本身不会变，只要没有新增LP和退出的LP，交易得再多，这个比例也不会变。但是这个比例的资产内容会一直在变，因为有人用ETH换USDC也会有人用USDC换ETH，所以池子里X/Y一直在变化。昨晚把mempool和CA账户的资产概念混淆了，mempool的唯一作用是暂存“还没有被请求的交易”。
@@ -259,6 +299,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -306,6 +347,7 @@ Gas在EOA to EOA时只是记账付费（手续费），在EOA to CA时是计算�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -360,6 +402,7 @@ Scaling layer扩展层 提升性能和降低成本的解决方案。我的理解
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
