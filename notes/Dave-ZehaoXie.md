@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-24-1769266334168-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-24-1769266355416-image.png)
+
+今天完成文章排版的任务，确实细节
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 今天听了colearning  
 会议讨论了 Figma 使用问题、活动策划审核流程以及 DFT 架构等相关内容，具体如下：
 
@@ -56,6 +64,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ![屏幕截图 2026-01-21 174155.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010531648-_____2026-01-21_174155.png)![屏幕截图 2026-01-21 174532.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010546716-_____2026-01-21_174532.png)![屏幕截图 2026-01-21 174746.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010561970-_____2026-01-21_174746.png)![屏幕截图 2026-01-21 180041.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010573742-_____2026-01-21_180041.png)![屏幕截图 2026-01-21 230307.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-21-1769010587049-_____2026-01-21_230307.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
@@ -63,11 +72,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 今天对象和我闹分手了
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -116,6 +127,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -178,6 +190,7 @@ Alex 认为，像星巴克这样的大型品牌应用，不需要用户去学习
 
 
 
+
 ![屏幕截图 2026-01-17 210033.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662485478-_____2026-01-17_210033.png)
 
 ![屏幕截图 2026-01-17 210038.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dave-ZehaoXie/images/2026-01-17-1768662464045-_____2026-01-17_210038.png)
@@ -185,6 +198,7 @@ Alex 认为，像星巴克这样的大型品牌应用，不需要用户去学习
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -263,6 +277,7 @@ _(1:11:35 - 结尾)_
 
 
 
+
 [unphishable.io](http://unphishable.io)  
 今天主要是在这个网站做了一些钓鱼攻击的安全测试  
   
@@ -274,6 +289,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -298,6 +314,7 @@ _(1:11:35 - 结尾)_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -346,6 +363,7 @@ answer：web3目前整体网络环境较差，属于混沌的发展阶段，需�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
