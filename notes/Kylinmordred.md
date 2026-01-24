@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+复习web3对应知识内容
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今天进行安全和合规的学习，入职web3的实习任务
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Kylinmordred/images/2026-01-20-1768923813121-image.png)
 
@@ -30,6 +37,7 @@ web3交易风险的重视
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -128,11 +136,13 @@ web3交易风险的重视
 
 
 
+
 今天，实操了比特币的交易，比想象中的复杂很多，学了很多关于交易的名词，合约，止跌止赢，冰山价
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -153,11 +163,13 @@ web3交易风险的重视
 
 
 
+
 今天我通过课程了解web3在ai方面的应用。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -183,6 +195,7 @@ web3交易风险的重视
 
 
 
+
 -   今天主要在了解web3方向关于以太坊的内容，过去认为它是一种结合技术的虚拟币，感可能对于以太坊的应用落地抱有怀疑。
     
 -   听了co-learning关于加密货币独裁民主-与庄家散户之间的相似情况，加密货币是否真的是去中心话的
@@ -190,6 +203,7 @@ web3交易风险的重视
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
