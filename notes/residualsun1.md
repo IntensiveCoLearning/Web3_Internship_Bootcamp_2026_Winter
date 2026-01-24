@@ -15,8 +15,130 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+Solidity 语法的变量类型包括值类型、引用类型、映射类型和函数类型，上次已经学习过值类型，这一次是引用类型。
+
+引用类型主要包括数组（array）和结构体（struct）。
+
+## **1\. 数组**
+
+数组可以用来存储一组数据，包括整数、字节、地址等，在分类上可以划分为固定长度数组和可变长度数组两种。
+
+固定长度数组会指定数组的长度，如下所示：
+
+```
+uint[8] uint 是元素类型，8 则是长度
+address[100] address 是元素类型，100 则是长度
+```
+
+可变长度数组不指定数组长度，如下所示：
+
+```
+uint[]
+address[]
+bytes1[]
+bytes
+```
+
+`bytes` 是数组，但不用加 `[]`。还不能用 `byte[]` 声明单数组，但可以使用 `bytes` 或 `bytes1[]`，前者比后者更节省 Gas。
+
+如果用 `memory` 修饰动态数组，可以用 `new` 操作符来创建，但是必须声明长度，而且在声明长度以后不能改变。
+
+```
+uint[] memory array8 = new uint[](5);
+```
+
+`memory` 和 `storage` 很不一样，前者存在临时内存，后者存在区块链中。
+
+对于一个数组来说，每一个元素的类型以第一个元素为准，例如 `[1,2,3]` 所有元素都是 `uint8` 类型。这是因为在 Solidity 中，如果一个值没有指定类型的话，会根据上下文来推断元素的类型，默认就是最小单位的类型，这里默认最小单位是 `uint8`。在 `[uint(1),2,3]` 中，元素则都是 `uint` 类型，因为第一个元素就指定了 `uint` 类型，之后的每一个元素类型都以它为准。
+
+## **2\. 结构体**
+
+结构体是一种允许自定义数据类型的方式，比如如果要描述一个「学生」，仅仅用 `uint` 或者 `string` 还不足够，还需要将 `id`（ta 的学号）、`score`（分数）和 `name`（名字）装在一起，而装着这些东西的对象就是所谓结构体，以下列代码为例。
+
+```
+// 定义一个名为 Student 的结构体
+struct Student {
+    uint256 id;
+    uint256 score;
+}
+Student public student; // 初始一个student结构体
+```
+
+假设在合约中已经定义了一个状态变量，基于以上，可以参考四种给 `struct` 赋值的方式。
+
+```
+//  给结构体赋值
+// 方法1:在函数中创建一个 storage 的 struct 引用
+function initStudent1() external{
+    Student storage _student = student; 
+    _student.id = 11;
+    _student.score = 100;
+}
+```
+
+`Student storage _student = student` 创建了一个引用（指针），其中 `_student` 如同 `student` 的一个「替身」，当修改 `student.id` 时，实际上修改的是区块链的状态变量 `student.id`.
+
+{{% notice success "例子" %}}
+
+这里可以以一道题为例。
+
+有如下一段合约代码，执行initStudent方法后，student.id和student.score的值分别为
+
+```
+contract StructTypes {
+    struct Student{
+        uint256 id;
+        uint256 score; 
+    }
+   Student student;
+   function initStudent() external{
+        student.id = 100;
+        student.score = 200;
+        Student storage _student = student;
+        _student.id = 300;
+        _student.score = 400;
+    }
+}
+```
+
+按照我们在方法一中的理解，执行 `initStudent()` 以后，`student.id` 和 `student.score` 的值分别为 300 和 400。
+
+{{% /notice %}}
+
+```
+// 方法2:直接引用状态变量的struct
+function initStudent2() external{
+    student.id = 1;
+    student.score = 80;
+}
+```
+
+第二种方法直接定位到了状态变量 `student` 的成员进行修改，但在本质上和方法一一样，都是直接对 Storage 进行操作。
+
+```
+// 方法3:构造函数式
+function initStudent3() external {
+    student = Student(3, 90);
+}
+```
+
+这里是创建一个临时的 `Student` 结构体，通常位于内存或者栈中，然后将其整体覆盖写入 `student` 的 Storage 位置之中。但是参数的顺序必须严格按照 Struct 的顺序，即先 `id` 后 `score`。
+
+```
+// 方法4:key value
+function initStudent4() external {
+    student = Student({id: 4, score: 60});
+}
+```
+
+这种方法是整体重写，但是可以不受顺序影响，而且可以更直观地看出哪个数字是 id，哪个是 score。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## **1\. 对** `pure` **和** `view` **的细碎理解**
 
 今天在对 `pure` 和 `view` 两个状态可变性修饰符进行辨析时，进一步理解了智能约合中的结构——用我自己的话来概括，就是包括「对状态变量保持敏感」、「什么时候该用 `pure` 或 `view`」，以及「函数参数列表何时填入内容，填入什么」。
@@ -188,6 +310,7 @@ contract ReturnDemo{
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 Solidity 语法的变量类型包括**值类型、引用类型、映射类型和函数类型**，这次先来介绍其中的值类型。
 
@@ -405,6 +528,7 @@ function enumToUint() external view returns(uint){
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 ## **1\. Solidity 语法中的基本结构**
 
 在 Solidity 代码中，都必须先指定和声明 Solidity 的编译器版本。
@@ -575,6 +699,7 @@ contract Counter {
 
 
 
+
 # 开发我的第一个 Web3 Vibe-Coding Demo 项目
 
 ## **1\. 今日想法**
@@ -738,6 +863,7 @@ contract AgentReputation {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1004,6 +1130,7 @@ function getMessageCount(address user)
 
 
 
+
 \## Dapp
 
 \* 去中心化应用
@@ -1244,6 +1371,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **补充梳理：图灵完备与智能合约**
 
 当朋友问起我什么是「以太坊」（Ethereum）时，我总会习惯性地通过其与「比特币」的对比来进行说明。但需要指出的是，这里的比特币并非简单地指「代币」（Token）——一种在去中心化的网络中用于给予维持网络运行的节点/网络服务提供商/「矿工」 的奖励/Gas Fee，如比特币、以太币等。
@@ -1320,6 +1448,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **1\. LXDAO 周会**
 
 今天早上参加了 LXDAO 的周会，大致了解一下社区的运作模式和每周一会的内容。就社区的运作模式来说，和在实习手册中看到的描述相近，主要是由成员来提出提案，大家进行讨论和反馈，确认对社区有帮助便会支持一起做出来。在LXDAO 的 [notion](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9) 上可以见到其 Dashboard，根据不同主题分出了许多板块，包括教育、资金可持续性还有研究与机制创新等，里面还清晰地罗列着 Not started、In progress、Pending 和 Done 等状态的项目任务。接任务的方式有两种，一种是在周会现场举手加入，然后联系发起人；另一种是在路线图中找到任务并以详细计划进行申请。
@@ -1369,6 +1498,7 @@ returns (<返回值列表>)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1458,6 +1588,7 @@ Leon 也是通过思维导图的方式来分享自己对 Web3 的学习。如果
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1628,6 +1759,7 @@ AI 与 Web3 的结合—— AI 赚钱？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1918,6 +2050,7 @@ GoPlus 有相关网站可以检测风险。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2222,6 +2355,7 @@ wachi 助教补充了一段信息：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
