@@ -15,8 +15,185 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## **ERC721笔记**
+
+NaN.  对于实例化的差异，
+      
+      ```
+      IERC20 public token;
+      ERC721 public nft;
+      ```
+      
+      -   **ERC20 接口：** ERC20 标准非常简单，包含 transfer、approve、`transferFrom` 等基本方法。大多数情况下，我们只需要这些标准方法，因此直接用 IERC20 接口就足够了。接口（interface）只定义函数签名，不包含具体实现，这样可以与任何符合 ERC20 标准的合约进行交互，而不关心其内部实现细节。
+          
+      -   **ERC721 实现：** 对于 ERC721 来说，虽然也有对应的接口（如 IERC721），但在实际开发中，我们往往需要调用一些额外的功能（例如 `tokenURI`、metadata 扩展函数等），这些功能通常是在`OpenZeppelin` 提供的 ERC721 实现中定义的。
+          
+          -   如果你只需要最基本的 NFT 功能（比如`transferFrom、ownerOf`等），使用 IERC721 接口也是可以的。
+              
+          -   但在很多案例中，开发者倾向于直接使用 ERC721 实现，因为这样可以直接访问例如`tokenURI`这样的扩展方法，而不必额外编写代码去处理。
+              
+          -   ERC20合约中\_totalSupply是对应铸造给所有代币的合约
+              
+          -   对于ERC20的授权代币和对应的铸造代币
+              
+      
+      总结来说，使用 IERC20 接口是因为 ERC20 的功能非常标准且简单，而对 ERC721 而言，直接使用具体实现（如 `OpenZeppelin`的 ERC721 合约）能让你利用更多附加功能和扩展（比如元数据处理），从而更好地满足 NFT 市场等应用的需求。
+      
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+​
+contract NFTmarket  {
+// 引入对应的NFT合约
+    ERC721 public nft;
+    // 引入对应的ERC20合约
+    IERC20 public token;
+    // 创造对应NFT信息，储存对应的上架是否和价格
+    // 其中对应的tokenID为key，对应的上架状态和价格为value
+    // 其中的value为一个结构体，储存对应的上架状态和价格
+    struct NFTinfo{
+        bool isOnsale;
+        uint256 price;
+    }
+    // 创造一个mapping，储存对应的NFT信息
+    mapping(uint256 => NFTinfo) public nftinfo;
+    // 创造一个mapping，储存对应的NFT的主人
+    mapping(uint256 => address) public nftowner;
+    // 创建对应上架的事件,记录对应的NFT的ID和价格
+    event Onsale(uint256 indexed tokenID,uint256 price);
+    // 创建对应下架的事件,记录对应的NFT的ID
+    event Offsale(uint256 indexed tokenID);
+    // 创建对应购买的事件,NFT的卖家和买家，以及对应的价格
+    event Buy(address indexed seller,address indexed buyer,uint256 price);
+    // 创建对应的构造函数，引入对应的NFT合约和ERC20合约
+    constructor(address _nft,address _token){
+        // 引入对应的NFT合约
+        nft = ERC721(_nft);
+        // 引入对应的ERC20合约
+        token = IERC20(_token);
+    }
+    // 创建对应上架的方法，其中传入的参数因为对应的NFT的ID和价格
+    function onsale(uint256 tokenID,uint256 price)external{
+        // 首先判断对应的NFT是否存在
+        require(nft._exists(tokenID),"NFT does not exist");
+        // 然后判断对应的NFT是否已经被上架
+        require(!nftinfo[tokenID].isOnsale,"NFT is already on sale"); 
+        // 然后判断对应的NFT是否是对应的主人
+        require(nft.ownerOf(tokenID) == msg.sender,"You are not the owner"); 
+        // 然后判断对应的价格是否大于0
+        require(price > 0,"Price must be greater than 0");
+// 将合约转移至市场合约
+        nft.transferFrom(msg.sender, address(this), tokenID);
+        // 然后将对应的NFT的信息储存到对应的mapping中
+        nftinfo[tokenID] = NFTinfo(true,price);
+        // 设置对应的NFT的主人
+        nftowner[tokenID] = msg.sender;
+        // 然后发出对应的事件
+        emit Onsale(tokenID,price);
+    }
+    // 创建对应下架的方法，其中传入的参数为对应的NFT的ID
+    function offsale(uint256 tokenID)external{
+        // 首先判断对应的NFT是否存在D),"NFT does not exist");
+        // 然后判断对应的NFT是否已经被上架
+        require(nftinfo[tokenID].isOnsale,"NFT is not on sale");
+        // 然后判断对应的NFT是否是对应的主人
+        require(nft.ownerOf(tokenID) == msg.sender,"You are not the owner");
+        // 然后将NFT转移至对应的主人
+        nft.transferFrom(address(this), msg.sender, tokenID);
+        // 然后将对应的NFT的信息储存到对应的mapping中
+        nftinfo[tokenID] = NFTinfo(false,0);
+        require(nft._exists(tokenI  
+        // 然后将对应的NFT的主人设置为0
+        nftowner[tokenID] = address(0);、
+        // 然后发出对应的事件
+        emit Offsale(tokenID);
+    }
+    // 创建对应购买的方法，其中传入的参数为对应的NFT的ID
+    function buy(uint256 tokenID)external{
+        // 首先判断对应的NFT是否存在
+        require(nft._exists(tokenID),"NFT does not exist"); 
+        // 然后判断对应的NFT是否已经被上架
+        require(nftinfo[tokenID].isOnsale,"NFT is not on sale"); 
+        // 然后判断对应的NFT是否是对应的主人
+        require(nft.ownerOf(tokenID) != msg.sender,"You are the owner"); 
+        // 然后判断对应的价格是否大于0
+        require(nftinfo[tokenID].price > 0,"Price must be greater than 0");
+        // 然后判断对应的授权的代币是否足够
+        require(token.allowance(msg.sender, address(this)) >= nftinfo[tokenID].price,"You do not have enough allowance");
+        // 先将代币转移给给卖家
+        token.transferFrom(msg.sender, nftowner[tokenID], nftinfo[tokenID].price);
+        // 然后将NFT转移给对应的买家
+        // 此时市场合约是对应的NFT的主人
+        nft.transferFrom(address(this), msg.sender, tokenID);
+//        // 然后将对应的NFT的信息储存到对应的mapping中
+        nftinfo[tokenID] = NFTinfo(false,0);
+        // 然后将对应的NFT的主人设置为对应的买家
+        nftowner[tokenID] = msg.sender;
+        // 然后发出对应的事件
+        emit Buy(nftowner[tokenID],msg.sender,nftinfo[tokenID].price);
+​
+    }
+​
+}
+```
+
+### **1\. 关于 NFT 上架时为何选择转移 NFT 而不是仅仅授权**
+
+**使用授权（Approval）方案：**
+
+-   如果采用 ERC721 的授权方法（例如调用 `setApprovalForAll` 或 `approve`），NFT 实际上依然保留在卖家钱包中，而市场合约只是获得了操作该 NFT 的权限。
+    
+-   这种方式要求在 NFT 交易达成时，市场合约再通过调用 `transferFrom` 将 NFT 从卖家转移给买家。
+    
+
+**直接转移 NFT 的好处：**
+
+-   **托管（Escrow）机制：** 将 NFT 转移到市场合约中后，市场就持有该 NFT。这确保了在 NFT 上架期间，卖家无法把 NFT 转给其他人，也避免了卖家撤销授权的风险。买家在交易时更有信心，因为 NFT 已经由合约托管，确保交易过程的顺利进行。
+    
+-   **简化逻辑：** 一旦 NFT 被转移到合约，后续交易（买家购买或卖家取消上架）只需要在合约内部操作 NFT，而不需要担心授权撤销或外部干预的问题。
+    
+-   **安全性：** 托管的方式防止了卖家在 NFT 上架后再私下转移 NFT，从而导致交易无法完成的情况。
+    
+
+**总结：** 虽然通过授权也能让市场合约操作 NFT，但直接转移 NFT 到合约中（即采用托管方式）能更好地保证交易双方的安全性和交易的确定性。这是很多 NFT 市场设计中常见的一种模式。
+
+* * *
+
+### **2\. 关于购买 NFT 时为何检查买家的代币授权而非仅检测余额**
+
+**ERC20 代币转账机制：**
+
+-   ERC20 标准中，转账函数 `transfer` 是直接从调用者余额中扣除；而 `transferFrom` 则需要先由用户通过 `approve` 授权给调用者一定额度的代币，才能由调用者从用户账户中扣除对应金额。
+    
+-   当市场合约调用 `token.transferFrom(msg.sender, seller, price)` 时，除了确保买家余额足够外，还必须确保买家已通过 `approve` 授权市场合约能够扣除至少 `price` 数量的代币。
+    
+
+**为什么不能只检测余额：**
+
+-   **授权机制是必需的：** 即使买家的余额足够，如果买家没有调用 `approve` 给予市场合约足够的支出额度，`transferFrom` 操作也会失败。ERC20 设计的核心就在于分离“余额”和“授权额度”，从而确保用户明确许可第三方可以支配他们账户中的资金。
+    
+-   **安全性与控制：** 通过检查 `allowance`（授权额度），合约可以提前拒绝交易，提示买家先执行授权操作。这样可以避免因余额充足但未授权而导致交易失败的情况，同时让用户更清楚地了解他们已经同意让合约扣款的具体额度。
+    
+
+**总结：** 检测买家的代币授权额度是 ERC20 标准操作流程中的必要步骤，因为只有授权了相应额度，市场合约才能安全调用 `transferFrom` 执行转账操作。仅检测余额无法保证合约有权限支配买家的代币，因此授权检查是必不可少的。
+
+* * *
+
+总体来说，这两种设计选择都出于安全和交易流程可控的考虑：
+
+-   **托管 NFT** 保证了 NFT 在上架期间不会被其他途径转走。
+    
+-   **授权检查** 确保市场合约在扣款时有足够的权限，从而使交易流程更加顺畅和安全。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -30,6 +207,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 -   figma实际操作过程中一些状态栏和对应的导航栏始终没有变化，我们直接从原生拿过来锁死即可，锁死的时候，在右侧选择对应的元素
     
@@ -50,6 +228,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ## 字体的设置
@@ -90,6 +269,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -112,6 +292,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -159,6 +340,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -232,6 +414,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -325,6 +508,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -398,6 +582,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -440,6 +625,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -518,6 +704,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -580,6 +767,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
