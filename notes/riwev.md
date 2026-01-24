@@ -43,11 +43,20 @@ Web3 实习计划 2025 冬季实习生
 构建能够对现有合约中的事件做出反应的“扩展”，而不是升级或分叉它们。  
 这就是止损单（在去中心化交易所交易池中）等模式的工作原理：你无需修改 Uniswap，只需订阅其事件并做出反应即可。（ [https://dev.reactive.network/education/use-cases/use-case-3](https://dev.reactive.network/education/use-cases/use-case-3) ）
 
-努力阅读 RC 中
+**反应式合约与传统合约：** 与传统的智能合约不同，反应式合约能够自主监控区块链事件并执行操作，无需用户干预，从而提供更动态、响应更迅速的系统。
+
+**控制反转：** RC 合约通过允许合约本身根据预定义的事件决定何时执行，从而颠覆了传统的执行模型，消除了对机器人或用户等外部触发器的需求。
+
+**去中心化自动化：** RC 实现完全去中心化的运营，无需中心化的中介机构即可自动执行数据收集、DEX 交易和流动性管理等流程。
+
+**跨链交互：** RC 可以与多个区块链和数据源进行交互，从而实现复杂的用例，例如跨链套利和多预言机数据聚合。
+
+**实际应用：** RC 有多种应用，包括从预言机收集数据、实施 UniSwap 止损单、执行 DEX 套利以及自动在交易所之间重新平衡资金池。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -62,6 +71,7 @@ v2 交易对不支持直接使用 ETH ，因此 ETH 与 ERC-20 交易对必须�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -118,6 +128,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -227,6 +238,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 
 
+
 # **Challenge #0 - Tokenization**
 
 我完全懂力！教程非常详细，只是ipfs不好使就按照群里同学换了pinata
@@ -267,6 +279,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -354,6 +367,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -555,6 +569,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -641,6 +656,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -781,6 +797,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1038,6 +1055,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 
 
+
 # [Day 3: ENS, DEX, Identity, Inventory, Sybil](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
 ## ETH交易与Gas机制
@@ -1249,6 +1267,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1543,6 +1562,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
