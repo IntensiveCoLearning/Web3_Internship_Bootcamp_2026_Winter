@@ -17,13 +17,93 @@ Base上海 美本美硕 工作三年DS/DA
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+明白了 👍  
+你要的是：**不照抄原例子 → 提炼知识点 → 自己的一套简单案例 → 再做一次优化**，而且整体能当 **Gas 优化学习笔记** 来用。
+
+我按「**先总结思想 → 再给原创合约 → 再优化 → 最后总结**」来。
+
+* * *
+
+## Gas 优化
+
+在以太坊中，Gas 是衡量 EVM 执行计算和状态变更成本的单位。合约的每一次执行，都会因为指令类型不同而消耗不同数量的 gas。
+
+在所有操作中，storage（链上存储）是最昂贵的：
+
+-   读取 storage 成本高
+    
+-   写入 storage 成本更高
+    
+-   memory 和 calldata 的读写成本则低得多
+    
+
+尽量减少对 storage 的访问次数，把能在 memory 中完成的计算留在 memory 中完成。
+
+在实际开发中，Gas 优化通常体现在：
+
+-   减少重复的 storage 读取
+    
+-   合并 storage 写入
+    
+-   合理选择函数可见性（external / public）
+    
+-   在循环和批量操作中避免隐式的重复计算
+    
+
+* * *
+
+## 举例
+
+合约记录用户的操作次数，每次调用 `ping`，该用户的计数加一。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract CounterBad {
+    mapping(address => uint256) public counter;
+
+    function ping() public {
+        counter[msg.sender] = counter[msg.sender] + 1;
+    }
+}
+```
+
+-   `counter[msg.sender]` 被访问了两次
+    
+-   每一次访问都会触发一次 storage 读取
+    
+-   随着函数被高频调用，gas 消耗会不断累积
+    
+
+优化后：
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract CounterOptimized {
+    mapping(address => uint256) public counter;
+
+    function ping() external {
+        uint256 current = counter[msg.sender];
+        counter[msg.sender] = current + 1;
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 大家都好厉害哈哈哈…打算周末review一下这周的内容，把技术方向的做一下。这两天太忙了，周末努力补补课。
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ## DAPP
 
@@ -101,6 +181,7 @@ Base上海 美本美硕 工作三年DS/DA
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ### EVM 与数据存储 (The "Hard" Parts)
@@ -220,11 +301,13 @@ Base上海 美本美硕 工作三年DS/DA
 
 
 
+
 今天听了Solidity的初步介绍，学习了一些语法。因为加班的原因，笔记明天看了回放再补上啊啊啊…还熟悉了一下Remix的环境，尝试了一些简单的代码。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -287,6 +370,7 @@ ERC-7962 的架构天然支持批量交易。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -371,6 +455,7 @@ ERC-7962 是一种新的 NFT 协议，旨在实现“隐私保护”与“极致
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -537,11 +622,13 @@ contract AdvancedStorage {
 
 
 
+
 打算利用周末时间吧这周的内容再熟悉一下。今天没有大课，听了同学们的sharing，发现也有几个和我差不多年龄的朋友们。可能大家之前都是小白，但是现在对于行业的了解已经颇有深度。还是要抓紧练习呀。周末要好好把这周内容总结一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -621,6 +708,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 
 
+
 今天信息量有点大了……内容有点硬核了……
 
 ### 一、 法律合规
@@ -688,6 +776,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -827,6 +916,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
