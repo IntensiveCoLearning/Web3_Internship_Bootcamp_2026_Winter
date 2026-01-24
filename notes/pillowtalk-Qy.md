@@ -17,6 +17,8 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心杀的投票方式以及投票。
+
 ![50f3afa290170b0227ace82562cdb5ad.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-24-1769271388269-50f3afa290170b0227ace82562cdb5ad.png)
 
 ## 关于本次「良心杀」分配与 DAO 治理权认定的说明
@@ -110,6 +112,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 其实我讲完分享会之后心里是有点空的。不是那种“终于结束了”的轻松，而是一种很清楚地知道：我没有把自己真正想讲的东西讲出来。  
 准备 Fusaka 的时候，我是懂的，我知道 PeerDAS 为什么重要，知道它不是简单的“多一点 Blob”，而是在给以太坊的扩展性续命；我也知道节点分工、采样、50% 重构这些点背后，是在为普通人还能跑节点争一条路。但站在那一刻，我脑子里更多的是“别出错”“别卡住”，而不是“把这件事讲清楚”。
 
@@ -123,6 +126,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -339,6 +343,7 @@ fetch('/api/transfer', {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -613,6 +618,7 @@ L2 承担复杂性，换来了用户。**
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -905,6 +911,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -1008,6 +1015,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1153,6 +1161,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1494,6 +1503,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1863,6 +1873,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2527,6 +2538,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -3077,6 +3089,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -3513,6 +3526,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
