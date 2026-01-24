@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+1.24
+
+1.完成了ehternaut前三关，学会了一些console命令与简单的攻击思路
+
+2.看了一部分solidity语法，期待练手
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## 尝试一下markdown
 
 |   | calldata | storage | memory |
@@ -59,6 +69,7 @@ function create(string calldata _text) public{
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 1.22
 
 一点对于南塘DAO的思考：
@@ -76,6 +87,7 @@ DAO乡村振兴与当前主流振兴方式不同：他没有显式解放生产�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 1.21 note:uniswap：主流分布式交易平台，完全开源的项目
@@ -102,6 +114,7 @@ tick:价格区间离散化
 
 
 
+
 1.20note
 
 1，简单学习了erc20标准
@@ -117,6 +130,7 @@ ABI给人的感觉有点像public的应用接口
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -143,6 +157,7 @@ ZK匿名投票：资格证明、不可篡改、公开透明（几乎无隐私）
 
 
 
+
 1.18 note
 
 NFT数字藏品：链上唯一
@@ -164,6 +179,7 @@ ZK:proof，证明无法反推，最终得到证明真值而不是value
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -202,6 +218,7 @@ DAG:有向无环图
 
 
 
+
 ```ini
 1.16 今天明天都有事
 
@@ -231,6 +248,7 @@ RPC: Remote Procedure Call 远程过程调用 ， client 向节点中的服务�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -289,6 +307,7 @@ SpoonOS: AI operating system ; AI container ; AI marketplace
 
 
 
+
 期末周终于考完了。。。这两天慢慢投入到学习web3及一些别的我感兴趣的方向
 
 今天再看一下ETH概论类的，明天开始学习语法，先从solidty学吧
@@ -338,6 +357,7 @@ DEX交易：verified;问号或感叹号的token
 
 
 
+
 1.13 期末周倒数day2 忙
 
 基本完成了unpinshable的beginner部分
@@ -357,6 +377,7 @@ DEX交易：verified;问号或感叹号的token
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
