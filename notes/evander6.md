@@ -69,19 +69,90 @@ contract GasOptimizationDemo
 
 2、内存复制优化：将存储的数组复制到内存中，避免循环中反复读取存储，内存读取只需要3 gas，能够大幅降低成本。
 
-**批量计算：**所有计算在内存中完成，避免频繁的存储读写操作。
+\*\*批量计算：\*\*所有计算在内存中完成，避免频繁的存储读写操作。
 
-**无溢出检查的递增：**使用 `unchecked { ++i }` 跳过溢出检查，前提是确保 `i` 不会溢出
+\*\*无溢出检查的递增：\*\*使用 `unchecked { ++i }` 跳过溢出检查，前提是确保 `i` 不会溢出
 
-**单次存储写入：**循环结束后**一次性**更新 `totalSum`
+**单次存储写入：循环结束后一次性**更新 `totalSum`
 
-**前缀递增：**使用 `++i` 代替 `i++`
+\*\*前缀递增：\*\*使用 `++i` 代替 `i++`
 
 **适用大数组**，内存复制的一次性成本会被后续的存储读取节省所抵消
+
+# 晚上又学习了关于漏洞怎么去修补
+
+合约安全原则：最小权限原则（Least Privilege）、模块化结构便于审计、显式错误处理与事件记录
+
+常见漏洞类型有：重入攻击、预言机操纵、整数溢出、权限控制缺失、未初始化代理、三明治攻击
+
+下面是我让ai生成的一段整数溢出的代码：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract TokenUnderflow 
+{
+    mapping(address => uint256) public balances;
+    constructor() 
+    {
+        balances[msg.sender] = 100; // 给部署者 100 个代币
+    }
+    function transfer(address _to, uint256 _amount) public 
+    {
+        // 使用 unchecked 绕过了 Solidity 0.8 的默认溢出检查
+        unchecked 
+        {
+            // 漏洞：如果 balances[msg.sender] 是 100，而 _amount 是 101
+            // 100 - 101 会导致下溢，结果变成 2^256 - 1 
+            require(balances[msg.sender] - _amount >= 0, "Insufficient balance");
+
+            balances[msg.sender] -= _amount;
+            balances[_to] += _amount;
+        }
+    }
+}
+```
+
+在这段代码中，使用 `unchecked` 块绕过 Solidity 0.8+ 的默认溢出检查；在 `require(balances[msg.sender] - _amount >= 0, "Insufficient balance")` 中，先计算 `balances[msg.sender] - _amount`，再检查结果是否非负。
+
+如果 `balances[msg.sender] < _amount`（像 `100 - 101`），会触发下溢，导致 `balances[msg.sender] - _amount` 变成 `2^256 - 1`**（这是个天文数字！！）**，从而绕过了 `require` 检查。
+
+利用这个漏洞，攻击者可以将 `balances[msg.sender]` 设置为极大值（如 `2^256 - 1`），然后转移任意数量的代币，导致攻击者可以凭空生成代币，合约余额的逻辑也会完全失效。
+
+debug了一晚上，在ai帮助下好不容易才跑通、成功修改
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract TokenUnderflow 
+{
+    mapping(address => uint256) public balances;
+    constructor() 
+    {
+        balances[msg.sender] = 100; // 给部署者 100 个代币
+    }
+   function transferOptimized(address _to, uint256 _amount) public 
+   {
+    uint256 balance = balances[msg.sender];
+    
+    //先验证逻辑，再进行运算
+    require(balance >= _amount, "Insufficient balance");
+    unchecked {
+        balances[msg.sender] = balance - _amount;
+        balances[_to] += _amount; // 总供应量受限，加法不会溢出
+    }
+}
+}
+```
+
+先检查余额再执行减法，确保 `balance >= _amount`，避免了下溢，使用 `unchecked` 优化减法
+
+`require(balance >= _amount)` 也确保了减法结果是非负的
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 1、体验了一把zkvote全流程
 
@@ -114,6 +185,7 @@ typography可以调节字号、字体
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 今天学习了资产上链rwa的技术逻辑，终于能看明白了呜呜呜
@@ -165,6 +237,7 @@ typography可以调节字号、字体
 
 
 
+
 Jeff老师从认知科学专业的大学生到web2码农—MBA—金融码农—web3创业，发行游戏，经历相当丰富，真的好酷！！
 
 ### Uniswap v2：CPMM，恒积做市商
@@ -208,6 +281,7 @@ TWAP Oracle 时间加权平均价格预言机 ，这里需要对比着区分价�
 
 
 
+
 EthPanda Web3 实习计划第一周的学习结束，我对“Web3+Al+ 合规 +运营”这一复合型领域有了比以往更为系统和现实的认知。几乎每天一场的知识干货分享会，不仅拓宽了我的技术视野，也让我重新思考金融专业背景在 Web3 生态中的定位与价值。
 
 ### 从传统LLM 到 AlAgent:理解“可执行的智能体”
@@ -235,6 +309,7 @@ EthPanda Web3 实习计划第一周的学习结束，我对“Web3+Al+ 合规 +�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -312,6 +387,7 @@ EthPanda Web3 实习计划第一周的学习结束，我对“Web3+Al+ 合规 +�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -457,6 +533,7 @@ ERC7962 是一种基于哈希的、支持零知识证明思想的代币协议，
 
 
 
+
 今天看了一下sui的主网中断的blog，从中学到了很多
 
 Sui网络主动中断了6小时，因为它发现验证者算账结果对不上了。为了保护所有人的钱绝对安全，它选择了暂停，而不是将错就错。这与我之前单纯的区块链“7x24”的认知不同，原来真正的重点是**“永远不记错账”**。Sui这次选择用“停机”来保证不出错，这比“一直运行但可能出错”要负责任得多。就像银行为确保客户存款100%安全，宁愿以暂停取款服务几个小时的代价来核对账目。
@@ -472,6 +549,7 @@ Sui网络主动中断了6小时，因为它发现验证者算账结果对不上�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -564,6 +642,7 @@ Sui网络主动中断了6小时，因为它发现验证者算账结果对不上�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -779,6 +858,7 @@ Sui网络主动中断了6小时，因为它发现验证者算账结果对不上�
 
 
 
+
 今天复盘了13号晚上的分享会，大致了解了web3的运行机制、原理以及老师们常说的‘社会哲学’
 
 ### 一、 钱包与个人主权 (Personal Sovereignty)
@@ -875,6 +955,7 @@ Web3 在带来主权的同时也伴随着极高的安全挑战
 
 
 
+
 **今天回顾了web3求职现状的分享会的内容，大致梳理清楚了web3求职的整体细节，对以后的道路选择也更加明晰了**
 
 # \- ‘‘web3历史发展情况’’
@@ -951,6 +1032,7 @@ DAO，开源社区，投资研究社区
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
