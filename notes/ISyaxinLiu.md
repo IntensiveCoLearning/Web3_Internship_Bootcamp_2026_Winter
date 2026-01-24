@@ -15,8 +15,803 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+在传统的 [ERC20](https://learnblockchain.cn/tags/ERC20?map=EVM) 代币交互中，用户如果想让第三方合约使用自己的代币，需要先调用 `approve` 函数进行授权，这会消耗 [Gas](https://learnblockchain.cn/tags/Gas?map=EVM) 费用。ERC20 Permit 标准（[EIP-2612](https://learnblockchain.cn/docs/eips/EIPS/eip-2612/)）通过引入链下签名机制，允许用户使用签名来授权代币使用权，从而实现"无 Gas"授权。
+
+## **什么是 ERC20 Permit？**
+
+ERC20 Permit 是 ERC20 的扩展标准，它添加了一个 `permit` 函数，允许用户通过签名来批准代币支出，而不需要发送交易。
+
+### **传统方式 vs Permit 方式**
+
+**传统方式（两笔交易）**：
+
+```
+// 交易 1：用户授权（消耗 Gas）
+token.approve(spender, amount);
+
+// 交易 2：spender 使用授权
+token.transferFrom(user, recipient, amount);
+```
+
+**Permit 方式（一笔交易）**：
+
+```
+// 链下：用户创建签名（不消耗 Gas）
+const signature = await user.signPermit(...);
+
+// 链上：spender 使用签名完成授权和转账
+token.permit(user, spender, amount, deadline, v, r, s);
+token.transferFrom(user, recipient, amount);
+```
+
+![](https://img.learnblockchain.cn/pics/20251227184925.png)
+
+使用 Permit 后，用户无需单独为授权支付 Gas，还将两笔交易减少到一笔。
+
+## **工作原理**
+
+ERC20 Permit 背后的核心机制是 **链下签名 + 链上验证**：
+
+1.  **用户在链下**使用私钥对授权信息进行签名（不消耗 Gas）
+    
+2.  **签名被提交给**第三方或合约
+    
+3.  **合约在链上**验证签名的有效性并执行授权
+    
+
+在以太坊中，每笔交易都需要用私钥签名，网络通过密码学验证来识别 `msg.sender`。Permit 利用了同样的原理，但将签名用于授权而不是交易本身。
+
+### **approve vs permit 函数对比**
+
+传统的 `approve` 函数：
+
+```
+// 传统的 approve 函数
+function approve(address spender, uint256 amount) external returns (bool) {
+    allowance[msg.sender][spender] = amount;
+    emit Approval(msg.sender, spender, amount);
+    return true;
+}
+```
+
+而 `permit` 函数与 `approve` 功能相同，但通过签名验证来实现授权：
+
+```
+// permit 函数：通过签名授权（EIP-2612 标准）
+function permit(
+    address owner,       // 代币持有者
+    address spender,     // 被授权者
+    uint256 value,       // 授权额度
+    uint256 deadline,    // 签名过期时间
+    uint8 v,            // 签名参数
+    bytes32 r,          // 签名参数
+    bytes32 s           // 签名参数
+) external {
+    // 验证签名和过期时间...
+    allowance[owner][spender] = value;
+    emit Approval(owner, spender, value);
+}
+```
+
+**关键区别**：
+
+-   `approve`：通过 `msg.sender` 直接授权，需要用户支付 Gas
+    
+-   `permit`：通过签名验证 `owner` 身份，任何人都可以提交签名（代付 Gas）
+    
+
+本质上，Permit 是一种 **授权委托模式**：用户创建授权签名，其他人可以使用这个签名来执行授权操作。
+
+Permit 基于 EIP-712 结构化数据签名，[EIP-712](https://learnblockchain.cn/article/22662) 定义了一种标准化的方式来对结构化数据进行签名。
+
+> 深入了解 EIP-712： [https://learnblockchain.cn/article/22662](https://learnblockchain.cn/article/22662)
+
+### **EIP-2612 标准**
+
+[EIP-2612](https://learnblockchain.cn/docs/eips/EIPS/eip-2612/) 将 EIP-712 应用到 ERC20 代币上，定义了标准的 `permit` 函数接口。
+
+**接口定义**：
+
+```
+interface IERC20Permit {
+    function permit(
+        address owner,
+        address spender,
+        uint256 value,
+        uint256 deadline,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external;
+
+    function nonces(address owner) external view returns (uint256);
+    function DOMAIN_SEPARATOR() external view returns (bytes32);
+}
+```
+
+**历史背景**：  
+Permit 最早由 MakerDAO 的 [Dai 稳定币](https://github.com/makerdao/dss/blob/master/src/dai.sol)实现，后来被标准化为 EIP-2612。现在推荐使用 [OpenZeppelin](https://learnblockchain.cn/tags/OpenZeppelin?map=EVM) 的 `ERC20Permit` 实现，它完全符合 EIP-2612 标准。
+
+## **Permit 实现剖析**
+
+让我们深入了解 Permit 的实现细节。一个完整的 Permit 实现包含以下核心组件：
+
+1.  `DOMAIN_SEPARATOR`：域分隔符，唯一标识合约
+    
+2.  `PERMIT_TYPEHASH`：许可类型哈希，标识函数签名
+    
+3.  `nonces`：防重放攻击的计数器
+    
+4.  `permit` **函数**：验证签名并执行授权
+    
+
+### **1\. DOMAIN\_SEPARATOR（域分隔符）**
+
+`DOMAIN_SEPARATOR` 是一个唯一标识智能合约的哈希值，确保签名只在特定合约上有效。
+
+```
+// EIP-712 域分隔符
+bytes32 private immutable _CACHED_DOMAIN_SEPARATOR;
+uint256 private immutable _CACHED_CHAIN_ID;
+address private immutable _CACHED_THIS;
+
+bytes32 private immutable _HASHED_NAME;
+bytes32 private immutable _HASHED_VERSION;
+bytes32 private immutable _TYPE_HASH;
+
+constructor(string memory name, string memory version) {
+    bytes32 hashedName = keccak256(bytes(name));
+    bytes32 hashedVersion = keccak256(bytes(version));
+    bytes32 typeHash = keccak256(
+        "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
+    );
+
+    _HASHED_NAME = hashedName;
+    _HASHED_VERSION = hashedVersion;
+    _CACHED_CHAIN_ID = block.chainid;
+    _CACHED_DOMAIN_SEPARATOR = _buildDomainSeparator(typeHash, hashedName, hashedVersion);
+    _CACHED_THIS = address(this);
+    _TYPE_HASH = typeHash;
+}
+
+function DOMAIN_SEPARATOR() public view returns (bytes32) {
+    if (address(this) == _CACHED_THIS && block.chainid == _CACHED_CHAIN_ID) {
+        return _CACHED_DOMAIN_SEPARATOR;
+    } else {
+        return _buildDomainSeparator(_TYPE_HASH, _HASHED_NAME, _HASHED_VERSION);
+    }
+}
+
+function _buildDomainSeparator(
+    bytes32 typeHash,
+    bytes32 nameHash,
+    bytes32 versionHash
+) private view returns (bytes32) {
+    return keccak256(abi.encode(typeHash, nameHash, versionHash, block.chainid, address(this)));
+}
+```
+
+**组成要素**：
+
+-   `name`：代币名称
+    
+-   `version`：合约版本（通常为 "1"）
+    
+-   `chainId`：链 ID（防止跨链重放）
+    
+-   `verifyingContract`：合约地址
+    
+
+**作用**：
+
+-   确保签名只能在特定合约上使用
+    
+-   防止签名在不同链或不同版本的合约上被重用
+    
+-   支持链分叉后自动更新（通过动态检查 chainId）
+    
+
+### **2\. PERMIT\_TYPEHASH（许可类型哈希）**
+
+`PERMIT_TYPEHASH` 是函数签名的哈希值，明确标识签名用于哪个函数。
+
+```
+// EIP-2612 标准 Permit 类型哈希
+bytes32 public constant PERMIT_TYPEHASH = keccak256(
+    "Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)"
+);
+```
+
+**作用**：
+
+-   明确签名的目标函数
+    
+-   包含函数名和所有参数类型及名称
+    
+-   验证时如果 `PERMIT_TYPEHASH` 不匹配，交易会回滚
+    
+-   确保签名只能用于预期的功能
+    
+
+### **3\. nonces（防重放计数器）**
+
+`nonces` 映射记录每个地址已使用的签名次数，防止签名被重复使用。
+
+```
+mapping(address => uint256) public nonces;
+```
+
+**工作机制**：
+
+1.  创建签名时，必须包含当前的 `nonce` 值
+    
+2.  执行 `permit` 时，合约验证提供的 `nonce` 是否与链上记录匹配
+    
+3.  验证通过后，`nonce` 自动递增
+    
+4.  这确保每个签名只能使用一次
+    
+
+**三重防护**：
+
+通过 `DOMAIN_SEPARATOR`、`PERMIT_TYPEHASH` 和 `nonce` 三个要素，确保签名：
+
+1.  ✅ 只能在指定的合约上使用（`DOMAIN_SEPARATOR`）
+    
+2.  ✅ 只能用于指定的函数（`PERMIT_TYPEHASH`）
+    
+3.  ✅ 只能使用一次（`nonce`）
+    
+
+### **4\. permit 函数实现**
+
+`permit` 函数是整个机制的核心，它验证签名并执行授权。
+
+```
+// EIP-2612 标准 permit 函数
+function permit(
+    address owner,       // 代币持有者
+    address spender,     // 被授权使用代币的地址
+    uint256 value,       // 授权额度
+    uint256 deadline,    // 签名过期时间戳
+    uint8 v,            // 签名的 v 值
+    bytes32 r,          // 签名的 r 值
+    bytes32 s           // 签名的 s 值
+) external;
+```
+
+**参数说明**：
+
+-   前 4 个参数：授权信息（owner、spender、value、deadline）
+    
+-   后 3 个参数：签名数据（v、r、s）
+    
+
+你可能会疑惑：为什么签名时需要包含这些参数，验证时又要传一遍？这是因为：
+
+-   签名本身只能恢复出**签名者的地址**
+    
+-   我们需要用这些参数来**验证签名的内容**是否与提交的参数一致
+    
+
+**验证步骤 1：检查过期时间**
+
+首先检查签名是否在有效期内：
+
+```
+// 检查签名是否过期
+require(block.timestamp <= deadline, "ERC20Permit: expired deadline");
+```
+
+**说明**：
+
+-   使用 `deadline` 时间戳防止过期签名被使用
+    
+-   与 Dai 不同，EIP-2612 不支持 deadline=0 的永不过期选项
+    
+
+**验证步骤 2：使用和更新 nonce**
+
+获取并递增用户的 nonce：
+
+```
+// 获取当前 nonce 并递增
+uint256 currentNonce = nonces[owner]++;
+```
+
+**工作机制**：
+
+-   读取 owner 的当前 `nonce` 值
+    
+-   立即将 `nonce` 加 1
+    
+-   确保每个签名只能使用一次
+    
+
+**验证步骤 3：计算 digest**
+
+计算消息摘要（digest），必须与用户在链下签名时计算的完全一致：
+
+```
+// 计算 EIP-712 结构化数据哈希
+bytes32 structHash = keccak256(
+    abi.encode(
+        PERMIT_TYPEHASH,
+        owner,
+        spender,
+        value,
+        currentNonce,
+        deadline
+    )
+);
+
+// 计算最终的消息摘要
+bytes32 digest = keccak256(
+    abi.encodePacked(
+        "\x19\x01",           // EIP-191 前缀
+        DOMAIN_SEPARATOR(),   // 域分隔符
+        structHash            // 结构化数据哈希
+    )
+);
+```
+
+**关键点**：
+
+-   `\x19\x01`：EIP-191 标准前缀，防止签名被用作交易
+    
+-   所有参数都参与哈希计算
+    
+-   链下签名和链上验证必须使用完全相同的数据
+    
+
+**验证步骤 4：恢复并验证签名者**
+
+使用 `ecrecover` 从签名中恢复地址，并验证是否为 `owner`：
+
+```
+// 从签名恢复地址
+address signer = ecrecover(digest, v, r, s);
+
+// 验证签名者
+require(signer != address(0), "ERC20Permit: invalid signature");
+require(signer == owner, "ERC20Permit: invalid signature");
+```
+
+**工作原理**：
+
+-   如果 digest、v、r、s 任何一个不正确，恢复出的地址就不会匹配
+    
+-   这意味着任何参数（包括 `DOMAIN_SEPARATOR` 中的 `chainId`）不匹配都会导致验证失败
+    
+
+**调试提示**⚠️：  
+签名验证失败时，所有错误都会显示相同的错误信息，这使得调试变得困难。需要仔细检查：
+
+-   `chainId` 是否正确
+    
+-   `nonce` 是否是最新的
+    
+-   `DOMAIN_SEPARATOR` 是否匹配
+    
+-   参数顺序和类型是否正确
+    
+
+**验证步骤 5：执行授权**
+
+所有检查通过后，更新 `allowance` 并触发事件：
+
+```
+// 执行授权
+_approve(owner, spender, value);
+```
+
+内部 `_approve` 函数：
+
+```
+function _approve(address owner, address spender, uint256 amount) internal {
+    require(owner != address(0), "ERC20: approve from the zero address");
+    require(spender != address(0), "ERC20: approve to the zero address");
+
+    allowance[owner][spender] = amount;
+    emit Approval(owner, spender, amount);
+}
+```
+
+**优势**：
+
+-   支持指定具体的授权金额（不像早期 Dai 只能全部或零）
+    
+-   复用 ERC20 的 `_approve` 逻辑，保持一致性
+    
+
+## **创建链下签名（TypeScript）**
+
+现在让我们看看如何在链下创建 Permit 签名。推荐使用现代化的 [viem](https://viem.sh/) 库，它提供了更简洁、类型安全的 API。
+
+Viem 提供了内置的 EIP-712 签名支持，可以非常方便地创建 Permit 签名。
+
+```
+import { createWalletClient, createPublicClient, http, parseEther } from 'viem';
+import { privateKeyToAccount } from 'viem/accounts';
+import { mainnet } from 'viem/chains';
+
+// ERC20 Permit ABI（只需要用到的函数）
+const permitABI = [
+  {
+    name: 'permit',
+    type: 'function',
+    inputs: [
+      { name: 'owner', type: 'address' },
+      { name: 'spender', type: 'address' },
+      { name: 'value', type: 'uint256' },
+      { name: 'deadline', type: 'uint256' },
+      { name: 'v', type: 'uint8' },
+      { name: 'r', type: 'bytes32' },
+      { name: 's', type: 'bytes32' },
+    ],
+  },
+  {
+    name: 'nonces',
+    type: 'function',
+    inputs: [{ name: 'owner', type: 'address' }],
+    outputs: [{ name: '', type: 'uint256' }],
+  },
+  {
+    name: 'name',
+    type: 'function',
+    inputs: [],
+    outputs: [{ name: '', type: 'string' }],
+  },
+] as const;
+
+async function createPermitSignature() {
+  // 1. 创建账户（user1 - 签名者）
+  const user1Account = privateKeyToAccount('0x...' as `0x${string}`);
+
+  // 2. 创建客户端
+  const publicClient = createPublicClient({
+    chain: mainnet,
+    transport: http(),
+  });
+
+  const walletClient = createWalletClient({
+    account: user1Account,
+    chain: mainnet,
+    transport: http(),
+  });
+
+  // 3. 合约信息
+  const tokenAddress = '0x...' as `0x${string}`;
+  const spenderAddress = '0x...' as `0x${string}`;
+  const amount = parseEther('100'); // 授权 100 个代币
+
+  // 4. 读取代币名称和当前 nonce
+  const [name, nonce] = await Promise.all([
+    publicClient.readContract({
+      address: tokenAddress,
+      abi: permitABI,
+      functionName: 'name',
+    }),
+    publicClient.readContract({
+      address: tokenAddress,
+      abi: permitABI,
+      functionName: 'nonces',
+      args: [user1Account.address],
+    }),
+  ]);
+
+  // 5. 设置过期时间（当前时间 + 1 小时）
+  const deadline = BigInt(Math.floor(Date.now() / 1000) + 3600);
+
+  // 6. 使用 signTypedData 创建 EIP-712 签名
+  const signature = await walletClient.signTypedData({
+    account: user1Account,
+    domain: {
+      name: name,
+      version: '1',
+      chainId: mainnet.id,
+      verifyingContract: tokenAddress,
+    },
+    types: {
+      Permit: [
+        { name: 'owner', type: 'address' },
+        { name: 'spender', type: 'address' },
+        { name: 'value', type: 'uint256' },
+        { name: 'nonce', type: 'uint256' },
+        { name: 'deadline', type: 'uint256' },
+      ],
+    },
+    primaryType: 'Permit',
+    message: {
+      owner: user1Account.address,
+      spender: spenderAddress,
+      value: amount,
+      nonce: nonce,
+      deadline: deadline,
+    },
+  });
+
+  // 7. 分解签名为 v, r, s
+  const r = signature.slice(0, 66) as `0x${string}`;
+  const s = `0x${signature.slice(66, 130)}` as `0x${string}`;
+  const v = parseInt(signature.slice(130, 132), 16);
+
+  console.log('签名完成！');
+  console.log('Signature:', signature);
+  console.log('v:', v);
+  console.log('r:', r);
+  console.log('s:', s);
+
+  return {
+    owner: user1Account.address,
+    spender: spenderAddress,
+    value: amount,
+    deadline: deadline,
+    v,
+    r,
+    s,
+  };
+}
+
+// 使用示例
+createPermitSignature().then(console.log);
+```
+
+**提交签名并执行 Permit**
+
+```
+import { createWalletClient, createPublicClient, http } from 'viem';
+import { privateKeyToAccount } from 'viem/accounts';
+import { mainnet } from 'viem/chains';
+
+async function executePermit(permitData: {
+  owner: `0x${string}`;
+  spender: `0x${string}`;
+  value: bigint;
+  deadline: bigint;
+  v: number;
+  r: `0x${string}`;
+  s: `0x${string}`;
+}) {
+  // user2 账户（支付 Gas 的人）
+  const user2Account = privateKeyToAccount('0x...' as `0x${string}`);
+
+  const publicClient = createPublicClient({
+    chain: mainnet,
+    transport: http(),
+  });
+
+  const walletClient = createWalletClient({
+    account: user2Account,
+    chain: mainnet,
+    transport: http(),
+  });
+
+  const tokenAddress = '0x...' as `0x${string}`;
+
+  // 调用 permit 函数（由 user2 支付 Gas）
+  const hash = await walletClient.writeContract({
+    address: tokenAddress,
+    abi: permitABI,
+    functionName: 'permit',
+    args: [
+      permitData.owner,
+      permitData.spender,
+      permitData.value,
+      permitData.deadline,
+      permitData.v,
+      permitData.r,
+      permitData.s,
+    ],
+  });
+
+  console.log('Permit 交易已提交:', hash);
+
+  // 等待交易确认
+  const receipt = await publicClient.waitForTransactionReceipt({ hash });
+  console.log('Permit 已确认:', receipt.status);
+
+  return receipt;
+}
+```
+
+**关键点**：
+
+-   ✅ **user1** 使用 `signTypedData` 创建签名（链下，免费）
+    
+-   ✅ **user2** 提交签名并调用 `permit`（链上，支付 Gas）
+    
+-   ✅ Viem 自动处理 EIP-712 编码和签名
+    
+-   ✅ 类型安全，减少错误
+    
+
+### **在浏览器中使用（配合钱包）**
+
+如果你在前端使用，可以配合用户的钱包（如 MetaMask）：
+
+```
+import { createWalletClient, createPublicClient, custom, parseEther } from 'viem';
+import { mainnet } from 'viem/chains';
+
+async function requestPermitSignature() {
+  // 连接用户的钱包
+  const walletClient = createWalletClient({
+    chain: mainnet,
+    transport: custom(window.ethereum),
+  });
+
+  const [address] = await walletClient.getAddresses();
+  const tokenAddress = '0x...' as `0x${string}`;
+  const spenderAddress = '0x...' as `0x${string}`;
+
+  // 读取 nonce
+  const publicClient = createPublicClient({
+    chain: mainnet,
+    transport: custom(window.ethereum),
+  });
+
+  const nonce = await publicClient.readContract({
+    address: tokenAddress,
+    abi: permitABI,
+    functionName: 'nonces',
+    args: [address],
+  });
+
+  const deadline = BigInt(Math.floor(Date.now() / 1000) + 3600);
+
+  // 请求用户签名
+  const signature = await walletClient.signTypedData({
+    account: address,
+    domain: {
+      name: 'MyToken',
+      version: '1',
+      chainId: mainnet.id,
+      verifyingContract: tokenAddress,
+    },
+    types: {
+      Permit: [
+        { name: 'owner', type: 'address' },
+        { name: 'spender', type: 'address' },
+        { name: 'value', type: 'uint256' },
+        { name: 'nonce', type: 'uint256' },
+        { name: 'deadline', type: 'uint256' },
+      ],
+    },
+    primaryType: 'Permit',
+    message: {
+      owner: address,
+      spender: spenderAddress,
+      value: parseEther('100'),
+      nonce: nonce,
+      deadline: deadline,
+    },
+  });
+
+  // 返回签名数据
+  return {
+    signature,
+    v: parseInt(signature.slice(130, 132), 16),
+    r: signature.slice(0, 66) as `0x${string}`,
+    s: `0x${signature.slice(66, 130)}` as `0x${string}`,
+  };
+}
+```
+
+## **实现 ERC20 Permit 合约**
+
+如果你想实现自己的支持 Permit 的 ERC20 代币，推荐使用 [OpenZeppelin](https://learnblockchain.cn/tags/OpenZeppelin?map=EVM) 的实现：
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+
+contract MyToken is ERC20, ERC20Permit {
+    constructor() ERC20("MyToken", "MTK") ERC20Permit("MyToken") {
+        _mint(msg.sender, 1000000 * 10**decimals());
+    }
+}
+```
+
+**就这么简单！** `ERC20Permit` 扩展会自动为你的代币添加：
+
+-   `permit` 函数
+    
+-   `nonces` 映射
+    
+-   `DOMAIN_SEPARATOR` 计算
+    
+-   所有必要的签名验证逻辑
+    
+
+## **ERC20 Permit 应用场景**
+
+### **1\. DeFi 协议中的一键交易**
+
+```
+// 传统方式：用户需要两笔交易
+// 交易 1：approve
+token.approve(dex, amount);
+// 交易 2：swap
+dex.swap(token, amount);
+
+// 使用 Permit：只需一笔交易
+// 用户在前端签名（免费）
+// 在合约封装包装两个调用：
+token.permit(user, dex, amount, deadline, v, r, s);
+dex.swap(token, amount);
+```
+
+### **2\. Gasless 交易（元交易）**
+
+允许新用户无需持有 ETH 就能使用 [DApp](https://learnblockchain.cn/tags/DApp)：
+
+```
+contract GaslessTransfer {
+    function transferWithPermit(
+        IERC20Permit token,
+        address from,
+        address to,
+        uint256 amount,
+        uint256 deadline,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external {
+        // 使用用户的签名授权
+        token.permit(from, address(this), amount, deadline, v, r, s);
+
+        // 执行转账
+        token.transferFrom(from, to, amount);
+    }
+}
+```
+
+用户只需要签名，Gas 费用由服务提供方承担。
+
+### **3\. 批量操作**
+
+结合 [Multicall](https://learnblockchain.cn/article/22679) 实现更复杂的操作：
+
+```
+// 在一笔交易中完成：授权 + 质押 + 领取奖励
+function permitAndStake(
+    uint256 amount,
+    uint256 deadline,
+    uint8 v, bytes32 r, bytes32 s
+) external {
+    // 1. 使用 permit 授权
+    token.permit(msg.sender, address(this), amount, deadline, v, r, s);
+
+    // 2. 质押代币
+    token.transferFrom(msg.sender, address(this), amount);
+    stakes[msg.sender] += amount;
+
+    // 3. 领取之前的奖励
+    _claimRewards(msg.sender);
+}
+```
+
+## **总结**
+
+ERC20 Permit 通过引入链下签名机制，为代币授权带来了革命性的改进：
+
+-   消除了授权步骤的 [Gas](https://learnblockchain.cn/tags/Gas?map=EVM) 成本
+    
+-   简化交互流程：从两笔交易减少到一笔
+    
+
+推荐所有的新发行代币使用 ERC20 Permit，利用 Permit 机制，能够构建更友好、更高效的代币交互体验！
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## **什么是 ERC20?**
 
 [ERC20](https://learnblockchain.cn/docs/eips/EIPS/eip-20) 是 Ethereum 网络上最出名且应用最广的代币标准之一。它提供了一个统一的接口标准，用于创建可互换代币，这些代币可以用来代表任何事物，从货币到积分等。
@@ -687,6 +1482,7 @@ ERC-1363 标准可以在任何应用 ERC-20 标准的地方使用。在作者看
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # **稳定币**
 
@@ -1813,6 +2609,7 @@ contract Handler is Test {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # Solidity 101 详细知识点讲解
@@ -3738,11 +4535,13 @@ contract CompleteExample {
 
 
 
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -4661,6 +5460,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -5662,6 +6462,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -6680,6 +7481,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -6883,6 +7685,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -7615,6 +8418,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
