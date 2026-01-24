@@ -19,10 +19,411 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 今天做這個任務"**在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码。"**  
 應該會講一下我對這些代碼的感想
+
+\# Solidity 學習筆記 (Basic)
+
+這份筆記記錄了學習 [https://solidity-by-example.org/](https://solidity-by-example.org/) BASIC部分的程式碼心得。
+
+視角：熟悉 C++ 的資工系學生 vs. Solidity 新手。
+
+\## Hello World
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 定義了一個合約 `HelloWorld`，裡面有一個公開的字串變數 `greet` 儲存 "Hello World!"。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **合約 vs 類別**: Solidity 的 `contract` 關鍵字看起來很像 C++ 的 `class`。都有變數 (state variables) 和函式。
+
+\> \* **Pragma**: 第一行的 `pragma solidity` 很像 C++ 的 `#include` 或編譯器指令，用來鎖定編譯器版本，避免版本相容性問題。
+
+\> \* **License**: 必須要在開頭宣告 `SPDX-License-Identifier`，這在 C++ 專案中通常是寫在 README 或個別檔案的註解，但在 Solidity 裡是語法的一部分，很強調開源合規。
+
+\> \* **學到了什麼**: 區塊鏈上的 "Class"，一旦部署上去，它就永遠存在那裡了。
+
+\## First App
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 一個簡單的計數器，有 `get()inc()` (加1)`dec()` (減1)。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **持久化 (Persistence)**: 這是我覺得最大的衝擊。在 C++ 裡，程式跑完變數就消失了（存在 RAM）。但在 Solidity`count` 是寫在區塊鏈上的（Storage），下次呼叫時它還記得上次的值！這就像 C++ 的變數自動連線到了資料庫。
+
+\> \* **Public Getter**: 宣告 `uint256 public count` 後，Solidity 自動幫我生成了一個 `count()` 的 getter 函式。在 C++ 我得自己寫 `int getCount() { return count; }`。
+
+\> \* **uint**: C++ 通常用 `int` 或 `unsigned int` (32/64 bit)，這裡預設就是 `uint256`。
+
+\> \* **學到了什麼**: 寫合約就是在寫「狀態機」，而且狀態是永久儲存的。
+
+\## Primitive Data Types
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 介紹 `bool`, `uint`, `int`, `address`, `bytes`。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **Address 類型**: C++ 只有指標 (pointer)，Solidity 有專門的 `address` 類型來存乙太坊地址（20 bytes），這在 C++ 裡可能要用 `std::string` 或 `char array` 來模擬，但在這是原生的。
+
+\> \* **整數大小**: Solidity 分得很細`uint8`, `uint16`... 到 `uint256`。C++ 也有 `uint8_t`，但 Solidity 的計算主要都是為了配合 EVM 的 256 位元架構。
+
+\> \* **學到了什麼**: `address` 是這門語言的核心公民，跟錢包和合約互動都靠它。
+
+\## Variables
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 展示了 State Variables (狀態變數), Local Variables (區域變數), Global Variables (全域變數)。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **State Variables**: 就像 C++ 的成員變數 (Member Variables)，但它們是存於區塊鏈上的（硬碟級別）。
+
+\> \* **Global Variables**: 這裡的 Global 是指 `msg.sender` (呼叫者), `block.timestamp` (區塊時間) 這種環境變數，而不是 C++ 那種全域宣告的變數。
+
+\> \* **學到了什麼**: 在 Solidity 寫變數要很小心「它存哪裡」，因為存 State 很貴（要付 Gas）。
+
+\## Constants
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 定義常數。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 跟 C++ 的 `const` 幾乎一樣，編譯期就決定數值，不佔用 Storage 空間，這點對於節省 Gas 很有幫助。
+
+\> \* **學到了什麼**: 習慣用 `MY_CONSTANT` 大寫命名，這點跟 C++ 風格一致。
+
+\## Immutable
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 定義可以在 `constructor` 裡賦值一次，之後就不能改的變數。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 很像 C++ 類別中的 `const` 成員變數（可以在建構子初始化列表 `Initializer List` 中賦值）。
+
+\> \* 比 `constant` 靈活，因為可以在部署時決定數值，但比一般變數省 Gas。
+
+\> \* **學到了什麼**: 如果數值是在部署時才確定（例如依賴部署參數），就用 `immutable`。
+
+\## Reading and Writing to a State Variable
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 讀寫狀態變數。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **成本概念**: 在 C++ 裡`x = y` 幾乎沒成本。但在 Solidity，寫入狀態變數 `setter`) 是要付 Gas 的交易 (Transaction)，而讀取 `getter` via `view`) 如果是外部呼叫通常不用付 Gas。這改變了程式設計的思維：儘量少寫入。
+
+\> \* **學到了什麼**: 寫入操作很昂貴，不要像寫 C++ 一樣隨意更動成員變數。
+
+\## Ether and Wei
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 介紹幣值單位。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* C++ 沒有內建貨幣單位。Solidity 直接能在程式碼裡寫 `1 ether` 或 `1 gwei`，編譯器會自動轉成 `uint` (10^18 wei)。這感覺很酷，語言層級支援金融單位。
+
+\> \* **學到了什麼**: 所有的金額運算最後都是變成 `wei` (最小單位) 來算，避免浮點數誤差（Solidity 根本不支援浮點數！）。
+
+\## Gas and Gas Price
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 解釋 Gas 限制。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **無窮迴圈**: C++ 寫無窮迴圈只會卡死程式或耗盡 CPU。Solidity 寫無窮迴圈會把你的錢 (Gas) 燒光，然後交易失敗 revert。這是一個強制的停機問題 (Halting Problem) 解決方案。
+
+\> \* **學到了什麼**: 寫程式要考慮「複雜度」，不是為了效能，而是為了不要讓使用者付太多手續費。
+
+\## If / Else
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **跟 C++ 相比差在哪**: 語法一模一樣 `if (x > y) { ... } else { ... }`。
+
+\> \* **學到了什麼**: 這裡沒有學習門檻，可以直接上手。
+
+\## For and While Loop
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **跟 C++ 相比差在哪**: 語法跟 C++ 一樣。
+
+\> \* **重要差異**: 在 Solidity 裡要極力避免對一個長度未知的陣列跑迴圈。因為如果陣列太大，Gas 會超過區塊上限，導致合約卡死永遠無法執行。C++ 裡大迴圈頂多跑慢點，這裡會直接壞掉。
+
+\> \* **學到了什麼**: 盡量不要用 Loop，或者要限制 Loop 次數。
+
+\## Mapping
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `mapping(address => uint) public balances;`
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 類似 C++ 的 `std::unordered_map` 或 `std::map`。
+
+\> \* **差異**: Solidity 的 Mapping 無法遍歷 (Iterable)！沒有 `begin()` 或 `end()`，也不能取得 `size`。如果你不知道 Key，你就找不到 Value。
+
+\> \* **預設值**: 存取不存在的 Key 不會噴 Error，會回傳預設值 (0 或 false)，這點跟 C++ `map[]` 運算子行為類似（會自動建立 default constructed object），但這裡更安全一點。
+
+\> \* **學到了什麼**: 如果需要遍歷資料，得自己額外維護一個 Array 存 Keys。
+
+\## Array
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 動態與靜態陣列。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* `push()` 像 C++ `std::vector` 的 `push_back()`。
+
+\> \* `pop()` 像 C++ `std::vector` 的 `pop_back()`。
+
+\> \* **刪除**: `delete arr[index]` 不會改變陣列長度，只是把那個位置的值重置為 0。這跟 C++ `vector::erase` 會移動後續元素不同。
+
+\> \* **學到了什麼**: 如果要像 C++ 那樣移除並縮短陣列，要自己把最後一個元素搬到被刪除的位置，然後 `pop()`。
+
+\## Structs
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 類似 C++ 的 `struct`。
+
+\> \* 但不能在裡面定義 Member Functions (方法)，純粹是資料結構 (POD - Plain Old Data)。
+
+\> \* **學到了什麼**: 用來打包複雜的參數傳遞很有用。
+
+\## Data Locations - Storage, Memory and Calldata
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 解釋資料存在哪。\*\*這是這部分最重要的一課\*\*。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **Storage**: 類似硬碟/資料庫，永久存檔。賦值給 Storage 變數是指標操作還是深拷貝 (Deep Copy) 要看情況。
+
+\> \* **Memory**: 類似 C++ 的 Heap (雖然名字叫 Memory，但在函式結束後會清空)，但它不完全像 Stack，因為是可變長度的。
+
+\> \* **Calldata**: 類似 C++ 的 `const reference` `const T&`)，唯讀且直接指向交易輸入數據，最省 Gas。
+
+\> \* **學到了什麼**: 參數盡量用 `calldata`。搞錯 Location (例如把 Storage 指派給 Memory) 會產生隱含的 Copy，浪費大量 Gas。
+
+\## Function
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **多重回傳值**: Solidity 支援 `return (x, y, z);`，C++ 要用 `std::tuple` 或 `std::pair` 才能做到，這裡語法原生支援。
+
+\> \* **Named Returns**: 可以在宣告時就定義回傳變數名稱 `returns (uint res)`，函式內直接操作 `res` 就好，不用寫 `return`。
+
+\> \* **學到了什麼**: 回傳多個值在處理查詢合約狀態時很方便。
+
+\## View and Pure Functions
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 定義不改狀態的函式。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* `view`: 類似 C++ 的 `const` 成員函式 `int get() const;`)，讀取但不修改成員變數。
+
+\> \* `pure`: 類似 C++ 的 `static` 函式或是 `constexpr`，完全不讀取也不修改成員變數（狀態），只做純運算。
+
+\> \* **學到了什麼**: 標記清楚可以讓編譯器優化，而且 `view` 和 `pure` 函式若從外部呼叫是不花 Gas 的！
+
+\## Error
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `require`, `revert`, `assert`。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* **交易回滾**: C++ `throw exception` 只是中斷程式流程，要自己處理資源釋放。Solidity 的 `revert` 會把這筆交易的所有狀態改變全部「倒帶」(Rollback) 回原點，就像什麼都沒發生過，這在 C++ 很難實作。
+
+\> \* `require`: 像 Assert 但用於輸入檢查，失敗會退還剩餘 Gas。
+
+\> \* **學到了什麼**: 這是合約安全的守門員，把所有檢查寫在最前面 (Check-Effects-Interactions 模式)。
+
+\## Function Modifier
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `modifier onlyOwner { ...; _; }`。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* C++ 沒有這種東西！這比較像 Python 的 Decorator `@decorator`)。
+
+\> \* 那個 `_;` 代表「插入原本函式的程式碼」，這是一種 AOP (Aspect Oriented Programming) 的概念。
+
+\> \* **學到了什麼**: 用來做權限檢查 `onlyOwner`) 或是防重入鎖 `ReentrancyGuard`) 超級方便，程式碼會變很乾淨。
+
+\## Events
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `emit Log("message");`
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* C++ 的 Log 通常是寫到檔案 `std::cout` 或 log file)。
+
+\> \* Solidity 的 Event 是寫到區塊鏈的 Log 區域，它是給「前端網頁」或「後端服務」監聽用的，合約自己讀不到 Event！
+
+\> \* **學到了什麼**: 這是合約跟外界溝通的唯一低成本方式。
+
+\## Constructor
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 概念一樣，物件（合約）建立時執行一次。
+
+\> \* 但合約的 Constructor 執行完後，部署的程式碼 (Runtime Bytecode) 就不包含 Constructor 的部分了，為了省空間。
+
+\> \* **學到了什麼**: 初始化邏輯放這裡。
+
+\## Inheritance
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `contract A is B`
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 語法像 C++ 的 `class A : public B`。
+
+\> \* 支援多重繼承 (Multiple Inheritance)，這點跟 C++ 一樣強大（也一樣容易搞混），Solidity 使用 C3 Linearization 來解決菱形繼承問題。
+
+\> \* 關鍵字是 `virtual` 和 `override`，這點跟現代 C++ (C++11) 的關鍵字完全一樣。
+
+\> \* **學到了什麼**: 寫法很親切，C++ 開發者無痛轉移。
+
+\## Visibility
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `public`, `private`, `internal`, `external`。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* `publicprivate`: 跟 C++ 類似。
+
+\> \* `internal`: 相當於 C++ 的 `protected`（繼承者可用）。
+
+\> \* `external`: C++ 沒有。這是指「只能從合約外部呼叫」，合約內部要呼叫自己得用 `this.func()external` 在處理大陣列參數時比 `public` 省 Gas，因為它直接從 Calldata 讀取資料而不 copy 到 Memory。
+
+\> \* **學到了什麼**: 對外接口優先用 `external`。
+
+\## Interface
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 相當於 C++ 的「純虛擬類別」 (Pure Virtual Class / Abstract Class with only pure virtual functions)。
+
+\> \* 也就是只有 `.h` 標頭檔宣告，沒有實作 `.cpp`。
+
+\> \* **學到了什麼**: 要呼叫別人的合約（例如 Uniswap），只要有 Interface 就可以，不用知道對方實作細節。
+
+\## Payable
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 讓函式可以接收 ETH。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 這完全是區塊鏈特有的。C++ 的函式只能收參數，不能收「錢」。
+
+\> \* 如果一個函式沒寫 `payable`，有人轉帳進來會直接噴錯失敗。這是一種語言層級的資產保護。
+
+\> \* **學到了什麼**: 紅色的按鈕（Remix 裡 payable 是紅的），牽涉到錢都要很謹慎。
+
+\## Sending Ether
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `transfer`, `send`, `call`。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 沒得比，C++ 不處理轉帳。
+
+\> \* **重點**: `call` 是現在推薦的寫法 `(bool sent, ) = _to.call{value: msg.value}("");`，雖然看起來很醜（像是在呼叫底層 API），但它可以避免 Gas 限制問題。
+
+\> \* **學到了什麼**: 不要用 `transfer` 或 `send`，因為它們限制 2300 Gas，現在用 `call` 才是標準做法，但要記得檢查回傳值 `bool success`。
+
+\## Fallback
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: 當呼叫了不存在的函式，或是單純轉錢進來時觸發。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 類似 C++ 的某些元程式設計 (Meta-programming) 或者動態語言的 `method_missing` 鉤子。
+
+\> \* 它可以捕捉所有未定義的呼叫。
+
+\> \* **學到了什麼**: 這是寫「代理合約 (Proxy Contract)」的核心，讓合約可以升級。
+
+\## Library
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: `using SafeMath for uint;`
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* 類似 C++ 的 `static` 工具類別。
+
+\> \* `using A for B` 語法很像 C# 的 Extension Methods，可以讓原本的型別 `uint` 像是多出了新方法 `x.add(y)`。
+
+\> \* **學到了什麼**: 可以用來擴充基本型別的功能，程式碼可讀性變高。
+
+\## Keccak256
+
+\> **\[對這個程式碼的想法\]**
+
+\> \* **做了什麼**: Hash 函數。
+
+\> \* **跟 C++ 相比差在哪**:
+
+\> \* C++ 標準庫沒有內建這麼方便的 SHA3/Keccak，通常要引入 OpenSSL。Solidity 內建 `keccak256`。
+
+\> \* **字串比較**: Solidity 不能直接 `str1 == str2`，必須 hash 後比較 `keccak256(str1) == keccak256(str2)`。這點跟 C++ `std::string` 運算子過載不同，比較麻煩。
+
+\> \* **學到了什麼**: 生成唯一 ID 或簽名驗證都靠它。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 今日新增了對良心殺的comment，覺得蠻有趣的，類似一個小型的調研了，以下是我的回覆:
 
@@ -98,6 +499,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -114,6 +516,7 @@ Thanks for clarifying!
 
 
 
+
 今天打算把第0周的任務補齊，目前還差這些
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/meatmeateater/images/2026-01-19-1768852214818-image.png)
@@ -121,6 +524,7 @@ Thanks for clarifying!
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -135,11 +539,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -161,12 +567,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -286,6 +694,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -500,6 +909,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -763,6 +1173,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
