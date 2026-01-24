@@ -15,8 +15,61 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+回味了一下那一段纯英文的分享，今天家里有事还没回味完，姑且先把总结贴上来哈哈
+
+1.  **AI in Blockchain Development**:
+    
+
+-   **Increased Use**: With the advancement of AI, it's recommended to use AI tools like Claude and Cursor more often to build projects faster, such as having them generate code for challenges.
+    
+-   **Shift in Learning Approach**: The traditional way of learning every line of code is changing. Now, learning by building projects with AI assistance is more effective.
+    
+
+2.  **Tokenization Challenge**:
+    
+
+-   **NFT Creation**: The challenge involves creating an NFT, likely an ERC - 721 token. There are links to basic knowledge and a video for beginners.
+    
+-   **Deployment**: It's suggested to deploy on real networks like Ethereum or L2s (e.g., Arbitrum, Base, Optimism) as they are cost - effective.
+    
+
+3.  **Crowdfunding Challenge**:
+    
+
+-   **Smart Contracts as State Machines**: Smart contracts in crowdfunding act as state machines, starting in a deposit state. They help manage contributions from multiple people and move to different states (success or failure) based on predefined conditions.
+    
+-   **Incentive Mechanisms**: To move the state machine to the next state, an incentive needs to be provided as there's no automatic process on the Ethereum network.
+    
+
+4.  **Token Vendor and Sales**:
+    
+
+-   **Token Selling Process**: A token vendor helps sell tokens. Sellers set a price, receive ETH, and send tokens in return.
+    
+-   **Approval and Transaction Pattern**: There's a unique approval and transaction pattern where users first approve the vendor to take tokens and then the vendor makes calls to the token contract.
+    
+
+5.  **Dice Game and Token Swapping**:
+    
+
+-   **Game Mechanism**: The dice game uses the previous block cache. It involves a constant product concept based on the ratio of tokens to ETH in reserves.
+    
+-   **Swapping**: Tokens and ETH can be swapped based on the ratio of the two assets in the reserves.
+    
+
+6.  **Advice for New Builders**:
+    
+
+-   **Concept Understanding**: Understand core blockchain concepts through the challenges and study existing smart contracts.
+    
+-   **Practical Building**: Use AI and Cursor to build projects on real networks, engage in activities like adding tokens to liquidity pools.
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## 基于罗伯特议事规则的动议栈（LIFO）机制会议实操步骤清单动
 
 ### 步骤 1：会前准备
@@ -76,6 +129,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 要理解 Web3 中以 Uniswap 为代表的 “恒积交易商”（本质是**自动做市商 AMM 的一种**），要从 “对比传统交易所” 入手：
 
@@ -629,6 +683,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 -   **Web3 公共物品建设**：
     
     -   **基础设施构成**：包括开源代码、地块协议、开发者文档或 API 文档等，这些构建了 Web3 技术开发的底层，让基础设施更牢固。
@@ -675,6 +730,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 
 
 
+
 今天精神莫名很差，可能等下学习要请假了，先把下午co-learning的内容发上来吧：
 
 -   **活动运营 SOP 区别**：
@@ -706,6 +762,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -822,6 +879,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 
 
 
+
 今天算是第一个……或者第0.5个休息日吧，上午是听了LXDAO的周会，概括来说就是知道这个任务是怎么领的了，以及第一次见到一个DAO运行起来的样子，顺便也知道了其他小伙伴能有多卷😂
 
 -   **LXDAO核心路线图**：
@@ -853,6 +911,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -896,6 +955,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -966,6 +1026,7 @@ k 本身不决定价格（价格由 x 和 y 的比例决定），但它能反映
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1404,11 +1465,13 @@ AI技术在攻击中的应用
 
 
 
+
 关于区块链治理：1.不要将用户默认为政治家的角色，需要转入算法治理（也就是治理工程化），将主动批判转为被动防御，将重点放在冷漠上的正常运作；2.用户的冷漠不是坏事，是金钱政治（token=金钱）的副作用，治理过程中会导致巨鲸垄断话语权；3.所以治理权不应该只与资本挂钩，应该标记用户的贡献和行为，以确定声望，从而确定身份，进而提升用户参与度；4.治理基于不完全信息，哈耶克治理在此会很适用。民主其实更像是分布式系统，通过选举、媒体等制造摩擦，投票就像重启的按钮，缺点是决策慢且充满噪音。区块链的特色是代码的确定性
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
