@@ -17,13 +17,37 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
-uniswap-v2 slippage
+## uniswap-v2 slippage
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-24-1769224978730-image.png)![slippage.png](https://github.com/Cyfrin/advanced-defi-2024/blob/main/excalidraw/amm/slippage.png?raw=true)
+
+## RC 解锁哪些内容（3 个支柱）
+
+**Cross-chain execution  跨链执行**
+
+-   Listen to events on one chain, execute logic, and trigger callbacks on another chain.  
+    监听一条链上的事件，执行逻辑，并触发另一条链上的回调。
+    
+
+**On-chain automation  链上自动化**
+
+-   Automate smart contract workflows without relying on an off-chain bot being “online”.  
+    无需依赖链下机器人“在线”，即可自动执行智能合约工作流程。
+    
+-   例如：  
+    自动收取多个资金池的费用；链上止损单；清算保护；定期重新平衡/清扫/家务
+    
+
+**Modularity (add features without modifying the original contract)**
+
+  
+构建能够对现有合约中的事件做出反应的“扩展”，而不是升级或分叉它们。  
+这就是止损单（在去中心化交易所交易池中）等模式的工作原理：你无需修改 Uniswap，只需订阅其事件并做出反应即可。（ [https://dev.reactive.network/education/use-cases/use-case-3](https://dev.reactive.network/education/use-cases/use-case-3) ）
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ## uniswap v2 笔记：
 
@@ -36,6 +60,7 @@ v2 交易对不支持直接使用 ETH ，因此 ETH 与 ERC-20 交易对必须�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -90,6 +115,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -195,6 +221,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 
 
+
 # **Challenge #0 - Tokenization**
 
 我完全懂力！教程非常详细，只是ipfs不好使就按照群里同学换了pinata
@@ -235,6 +262,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -320,6 +348,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -517,6 +546,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -603,6 +633,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -741,6 +772,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -994,6 +1026,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 
 
+
 # [Day 3: ENS, DEX, Identity, Inventory, Sybil](https://www.youtube.com/watch?v=wYSMNdIRoII&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=3)
 
 ## ETH交易与Gas机制
@@ -1205,6 +1238,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1497,6 +1531,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
