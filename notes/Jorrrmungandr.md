@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今天继续完成了几个Ethernaut的挑战，收听了同学组织的Web303播客。
+
+-   `tx.origin` 是一个全局变量，它指向**发起当前交易的最初始EOA**，无论调用栈有多深。攻击者可以利用 `tx.origin` 来欺骗合约，使其认为攻击者是合约的拥有者
+    
+-   `msg.sender` 表示当前调用智能合约函数的**直接发送者**。和 `tx.origin` 不同，它是动态的，如果用户直接调用，它是用户钱包地址；如果合约A调用合约B，在合约B中 `msg.sender` 为合约A的地址，但 `tx.origin` 仍然为用户地址。
+    
+-   `delegatecall` 是低级调用，可以调用另一个合约的代码，它允许合约 A 执行合约 B 的代码，但使用 A 的存储上下文。换句话说，合约 B 的逻辑会影响合约 A 的状态。攻击者可以利用 `delegatecall` 来调用合约的代码，从而获取合约的所有权
+    
+-   \`selfdestruct\` 用于销毁合约并将其所有余额发送给指定的目标地址。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今天完成了3个Ethernaut上的挑战并听了周会同学们的分享，对智能合约有了进一步的了解  
 
 -   receive函数在合约接收ETH时调用；fallback函数在调用不存在的函数时执行
@@ -30,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 今天在xiaohai老师的分享会上学习了foundry和hardhat的用法，并自己跑了demo尝试  
 
 -   foundry是由rust编写的，性能好，提供了强大的命令行工具，比如 anvil 提供本地的以太坊测试网节点，模拟真实区块链环境；forge 用于编译、测试和部署智能合约；cast 用于调用智能合约与链上交互  
@@ -41,12 +56,14 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天在solidity-by-example网站上体验了一下demo，学习了智能合约的事件系统的用法，了解智能合约的内存模型，主要包括`storage` 和 `memory` 。`storage` 用于永久存储状态变量（如区块链上的数据），访问慢成本高；而 `memory` 是临时存储，用于函数执行过程中的数据（如函数参数），访问快成本低，函数结束即清空。类似于其他语言中堆内存和栈内存的区别。  
 此外，对web3-career-build网站提出了若干issue，加入了dev小组，准备这两天本地部署并提几个pr
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -69,6 +86,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习了 Solidity 的基本用法和 Remix IDE 的基本操作  
 1、Solidity 中常见的数据类型和函数修饰符  
 2、仿照 demo 写了个简单的数据存储合约  
@@ -79,6 +97,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -100,6 +119,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -144,6 +164,7 @@ ZK投票的过程是:
 
 
 
+
 今天主要实践了一下Wagmi框架
 
 Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户变化”、“错误处理”等逻辑封装成了方便调用的hooks，比如 useReadContract 类似于 useQuery，用于读取合约数据，并且同样具有缓存功能；还有 useWriteContract，类似 useMutation，需要用户手动触发签名交易。
@@ -153,6 +174,7 @@ Wagmi 相当于 Web3 的 React Query，将“连接钱包”、“监听账户�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -209,6 +231,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 
 
+
 计划：
 
 1、继续学习ethereum基本概念  
@@ -217,6 +240,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -240,6 +264,7 @@ _​_\*Metadata URI\*\*​（元数据链接，通常是一个指向 IPFS 或服
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
