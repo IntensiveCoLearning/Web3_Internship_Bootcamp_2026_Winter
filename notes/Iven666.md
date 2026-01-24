@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## **二、运营数据分析**
+
+### **1\. 协议收入：**
+
+![opinion_2026-01-23.png](attachment:1ee390b0-b7b6-4ce7-abc5-deb9aa438fc9:opinion_2026-01-23.png)
+
+Opinion 近三月以来，协议收入呈现上涨趋势，最近30天，平均单日收入在 20 万美元左右，预测 2026年收入在 7000万美元以上。
+
+![image.png](attachment:408b87cd-e5e6-48ec-b626-434e9d1bd03b:image.png)
+
+截至 2026 年 1 月 23 日，Opinion 平台的名义成交量（ Notional Volume ) 达到了 175.6 亿美元。近30 日平均单日成交量在 200 万美元左右。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ### Opinion 目前的一些优势分析：
 
 **币安生态优势：**
@@ -38,6 +54,7 @@ Opinion metapool, OP 它建了一个统一的流动性池，普通散户都可�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ## Tokenomics
 
@@ -89,6 +106,7 @@ Wachi DAPP 架构
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ## 二、赛道剖析
@@ -338,6 +356,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 
 
 
+
 -   YES-Token 的价格：**V(Yes)** 美元
     
 -   NO-Token 的价格：**V(No)** 美元
@@ -358,6 +377,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -396,6 +416,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -536,6 +557,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 
 
+
 ### 按照协议费用排名前10大协议：
 
 泰达，Circle 稳定币 Meteora, solana 链上的Defi
@@ -582,6 +604,7 @@ Axiom Pro 关于 Axiom Pro，这是一个在加密货币交易领域中出现的
 
 
 
+
 ### 数据库的基本概念介绍
 
 **数据库（Database）**：数据库是结构化信息或数据的有序集合，是按照数据结构来组织、存储和管理数据的仓库。Dune平台目前提供了多个数据库，分别支持来自不同区块链的数据。
@@ -613,6 +636,7 @@ limit 返回记录数量
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -660,6 +684,7 @@ limit 返回记录数量
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -760,6 +785,7 @@ limit 返回记录数量
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
