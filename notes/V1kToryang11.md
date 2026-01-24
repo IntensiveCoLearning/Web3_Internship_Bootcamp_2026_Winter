@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+# 今日学习内容与总结
+
+## Challenge 0
+
+## 1\. 环境搭建要求 (Development Environment)
+
+学员需在本地机器上安装以下基础工具，以支撑后续的 DApp 开发任务：
+
+·       **Git**：用于版本控制和代码提交。
+
+·       **Node.js (建议 v20+)**：JavaScript 运行时环境。
+
+·       **pnpm**：高效的包管理工具（ETHPanda 项目通常首选）。
+
+·       **编辑器**：推荐使用 VS Code。
+
+## 2\. 自我介绍与身份注册 (Self-Introduction)
+
+这是任务的核心输出物。学员需在 GitHub 仓库中创建属于自己的“身份卡片”：
+
+·       **操作流程**：
+
+1.  **Fork** 官方仓库：`IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter`。
+
+2.  **创建文件**：在 `participants/` 目录下，根据模板创建名为 `[您的GitHub账户名].md` 的文件。
+
+3.  **完善信息**：
+
+§  **基本信息**：姓名/昵称、背景描述。
+
+§  **目标与愿景**：为什么参加 Web3 实习计划、本次 Bootcamp 的学习目标。
+
+§  **社交联系**：提供 Telegram、Twitter/X、Wallet 地址（用于后续发放证明或奖励）。
+
+## 3\. Git 协作实战 (Pull Request Workflow)
+
+通过该任务练习标准的开源贡献流程：
+
+·       **本地开发**：将 Fork 的仓库 Clone 到本地，修改文件并 Commit。
+
+·       **提交 PR**：将本地修改 Push 到自己的 GitHub 仓库，并向官方主仓库发起 **Pull Request (PR)**。
+
+·       **规范化命名**：PR 标题通常要求包含任务编号（如 `Challenge 0: Viktor Young Introduction`）。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # 今日学习内容与总结：  
 
 ## 简易代币合约（Subcurrency）
@@ -123,6 +171,7 @@ o   **Getter 函数**：`public` 关键字会为映射生成一个特殊的�
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 # 今日学习内容与总结
 
 ## **Web3 底层范式转移与 DApp 基础**
@@ -208,6 +257,7 @@ o   **Cast**：用于与合约进行交互（如查询分数、发送交易）
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 # 今日学习内容与总结
 
 ## **1\. 合约代码修改**
@@ -255,6 +305,7 @@ o  Account B 调用‘get’函数，可以查看到 Account A 存入的 100�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -308,6 +359,7 @@ Level 2 展示了即使代码逻辑看起来正确，一个字母的偏差也是
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -391,6 +443,7 @@ o   将证明提交给合约，合约验证成功后，自动为选项票数 +
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -493,6 +546,7 @@ o   **靠谱度验证**：能否闭环交付任务（Bruce 的核心观点）�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -605,6 +659,7 @@ o   “如何甄别 Discord 里的机器人和真实贡献者？”
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -754,6 +809,7 @@ Reference list:
 
 
 
+
 # 今日学习内容与总结
 
 ##   
@@ -888,6 +944,7 @@ Web3 社区运营与 Web2 的最大区别在于：**用户即股东，共识即�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1076,6 +1133,7 @@ dApp（去中心化应用）是以太坊的灵魂，它打破了传统 App 后�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
