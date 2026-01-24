@@ -15,8 +15,73 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+> link: [Rust Course-圣经](https://course.rs/basic/intro.html)
+
+-   错误处理 (Error Handling)
+    
+    Rust 不使用异常，而是通过 `Result<T, E>` 枚举强制处理预期内的错误
+    
+    **Panic**: 不可恢复错误，程序直接崩溃退出。常用于数组越界或致命逻辑错误
+    
+    **? 操作符**: 传播错误的快捷方式。如果结果是 `Err`，则提前返回该错误
+    
+    ```
+    fn read_file() -> Result<String, io::Error> {
+        let mut f = File::open("hello.txt")?; // 报错则直接 return Err
+        let mut s = String::new();
+        f.read_to_string(&mut s)?;
+        Ok(s)
+    }
+    ```
+    
+-   集合类型 (Collections)
+    
+    **Vector**: `Vec<T>` 动态数组，存放在堆上
+    
+    **String**: `String` 是堆上分配的可增长 UTF-8 字符序列；`&str` 是切片（引用）
+    
+    **HashMap**: 键值对存储，需要实现 `Hash` 和 `Eq` 特征
+    
+-   生命周期 (Lifetime)
+    
+    避免**悬垂引用**：确保引用的存活时间不长于它指向的数据
+    
+    编译器通常能自动推导，但在引用作为函数返回值且有多个输入引用时，需要手动标注 `'a`
+    
+    ```
+    // 标注 x, y 和返回值具有相同的生命周期周期 'a
+    fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+        if x.len() > y.len() { x } else { y }
+    }
+    ```
+    
+-   智能指针 (Smart Pointers)
+    
+    `Box<T>`: 在堆上分配内存，具有所有权
+    
+    `Rc<T>`: 引用计数，允许多个所有者（仅限只读）
+    
+    `Arc<T>`: 原子引用计数，线程安全版本的 `Rc`
+    
+    `RefCell<T>`: 内部可变性，在运行时而非编译时检查借用规则
+    
+-   闭包 (Closures)
+    
+    可以捕获环境的匿名函数
+    
+    ```
+    let x = 4;
+    let equal_to_x = |z| z == x; // 捕获了上下文变量 x
+    ```
+    
+    根据对环境的捕获方式分为：`Fn` (不可变借用), `FnMut` (可变借用), `FnOnce` (转移所有权)
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 Uniswap v4 (from v3)
 
 \* 数据结构：Singleton (单例)
@@ -93,6 +158,7 @@ manager.unlock(abi.encode(params))
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 -   特征对象 \[sol中慎用\]
     
     总是通过**引用**: 通过 `&` 引用或者 `Box<T>` 智能指针的方式来创建特征对象
@@ -126,6 +192,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
@@ -172,6 +239,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -224,6 +292,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -243,6 +312,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -329,6 +399,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -350,6 +421,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
