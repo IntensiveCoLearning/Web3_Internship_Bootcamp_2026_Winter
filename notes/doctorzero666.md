@@ -15,8 +15,293 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+# **ERC-7962 笔记：**
+
+## **0\. 一句话总结**
+
+ERC-7962 的核心是：**把“资产归属”从 address 改成 keyHash（公钥哈希）**，并通过 **EIP-712 签名** 来授权转账，因此可以做到：
+
+-   **更难把资产和某个地址绑定（隐私更强）**
+    
+-   **任何人都能代你发交易/付 gas（relayer sponsor）**，但无法盗用资产（没有你的签名就不能动）
+    
+
+* * *
+
+## **1\. 为什么需要 ERC-7962**
+
+传统 ERC-20 / ERC-721：资产归属是 address -> balance/owner
+
+地址公开 ⇒ 交易行为与资产很容易被追踪关联。
+
+ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
+
+链上只看到 keyHash 的流转，不直接看到 owner address。
+
+* * *
+
+## **2\. 核心名词**
+
+### **Key（公钥）**
+
+-   用户持有一把 secp256k1 的 **未压缩公钥 key（65 bytes，以 0x04 开头）**
+    
+-   这把 key 对应的私钥在用户手里（签名用）
+    
+
+### **keyHash（链上身份）**
+
+-   keyHash = keccak256(key)（bytes32）
+    
+-   合约用 keyHash 作为“账户标识”来存余额/NFT owner
+    
+
+### **signature（授权凭证）**
+
+-   使用 **EIP-712 结构化签名**对“转账意图”签名
+    
+-   合约验证签名 ⇒ 确认你确实掌握该 key 的私钥
+    
+
+### **nonce + deadline（防重放）**
+
+-   每笔签名包含 nonce（一次性）和 deadline（过期时间）
+    
+-   防止别人复制你旧签名重复花钱
+    
+
+* * *
+
+## **3\. ERC-7962 两套接口（20 + 721）**
+
+### **A) ERC-KeyHash721（NFT）**
+
+-   ownerOf(tokenId) -> bytes32 keyHash
+    
+-   transfer(tokenId, toKeyHash, key, signature, deadline)
+    
+    -   用 key+signature 证明你是当前 owner（ownerKeyHash）
+        
+    -   把 token 转给 toKeyHash
+        
+
+### **B) ERC-KeyHash20（同质化 Token）**
+
+它的转账像“UTXO 找零”：
+
+-   transfer(fromKeyHash, toKeyHash, amount, key, signature, deadline, leftKeyHash)
+    
+
+含义：
+
+-   fromKeyHash：你现在余额所在的 keyHash（旧身份）
+    
+-   toKeyHash：收款方 keyHash
+    
+-   leftKeyHash：你的“找零” keyHash（建议每次换新，提高隐私）
+    
+-   执行效果（概念上）：
+    
+    -   balance\[fromKeyHash\] 被“花掉”
+        
+    -   balance\[toKeyHash\] += amount
+        
+    -   balance\[leftKeyHash\] += (原余额 - amount)
+        
+    -   并且规范鼓励 leftKeyHash 不等于 from/to（鼓励换身份）
+        
+
+* * *
+
+## **4\. 使用方式总流程（用户视角）**
+
+> 你可以把它当成：
+> 
+> **“链上账户不是地址，而是 keyHash；地址只用来付 gas”**
+
+### **Step 1：生成 key & keyHash**
+
+-   用户本地生成一对密钥（私钥/公钥 key）
+    
+-   计算 keyHash = keccak256(key)
+    
+-   这个 keyHash 就是“你的链上身份”（类似地址，但不会直接暴露 address）
+    
+
+### **Step 2：收款（最简单）**
+
+别人要给你转账/转 NFT：
+
+-   你只需要把 **keyHash** 给对方
+    
+-   对方在合约里把资产转到你的 keyHash
+    
+
+### **Step 3：付款（需要签名）**
+
+你要转出资产：
+
+-   你构造“转账意图”数据（包含 toKeyHash、amount、leftKeyHash、nonce、deadline 等）
+    
+-   用私钥对这份结构化数据做 EIP-712 签名
+    
+-   把 key + signature 给 relayer 或自己广播
+    
+
+### **Step 4：relayer 代发（可选但常见）**
+
+-   relayer 用**自己的地址**发起链上交易并付 gas
+    
+-   合约只看签名，不在乎交易是谁发的
+    
+-   relayer 不能盗币，因为没有你私钥就伪造不了 signature
+    
+
+* * *
+
+## **5\. 开发/产品落地：需要实现的组件**
+
+### **(1) 智能合约（ERC-7962 Token / NFT）**
+
+合约需实现：
+
+-   balanceOf(keyHash) / ownerOf(tokenId) -> keyHash
+    
+-   nonces\[keyHash\] 管理
+    
+-   transfer(...)：
+    
+    -   验证 keccak256(key) == fromKeyHash / ownerKeyHash
+        
+    -   验证 signature（EIP-712）
+        
+    -   检查 deadline 未过期
+        
+    -   校验 nonce 并自增
+        
+    -   更新余额/owner
+        
+
+### **(2) 前端/钱包侧：Key 管理 + 签名**
+
+你要做：
+
+-   生成/保存 key（建议支持导出/恢复）
+    
+-   支持“轮换 keyHash”（每次找零生成新 keyHash）
+    
+-   EIP-712 签名弹窗（让用户确认：给谁、多少、找零去哪里、手续费策略等）
+    
+
+### **(3) Relayer 服务（强烈建议配套）**
+
+作用：
+
+-   帮用户付 gas、批量提交交易、优化 UX
+    
+-   可做商业模式：收手续费/订阅/项目方补贴
+    
+
+安全要点：
+
+-   relayer 只负责广播交易，不接触用户私钥
+    
+-   需要防滥用（rate limit / 黑名单 / 支付策略）
+    
+
+* * *
+
+## **6\. 一个完整示例（KeyHash20）**
+
+假设：
+
+-   你现在 100 Token 在 fromKeyHash = H(keyA)
+    
+-   你要给朋友 30 Token，朋友 keyHash 是 toKeyHash = H(keyB)
+    
+-   你想把剩下 70 换到新身份 leftKeyHash = H(keyA2)
+    
+
+你做的事：
+
+1.  本地构造 Transfer 数据：toKeyHash=H(keyB), amount=30, leftKeyHash=H(keyA2), nonce, deadline
+    
+2.  用 keyA 的私钥签名 ⇒ 得到 signature
+    
+3.  把 {keyA, signature} 给 relayer
+    
+4.  relayer 发交易上链
+    
+5.  合约验证通过后：
+    
+    -   balance\[H(keyB)\] += 30
+        
+    -   balance\[H(keyA2)\] += 70
+        
+    -   balance\[H(keyA)\] = 0
+        
+
+链上观察者看到的是 keyHash 的流转，不直接看到你的 address。
+
+* * *
+
+## **7\. 常见坑 & 注意事项（很重要）**
+
+### **兼容性**
+
+-   生态默认认 address（DEX、钱包、工具）
+    
+-   ERC-7962 用 keyHash ⇒ 通常需要：
+    
+    -   **包装器/适配器合约**
+        
+    -   或 dApp 自己一套 UI/查询逻辑
+        
+
+### **Gas 成本**
+
+-   每次转账都要验签（ECDSA + EIP-712）⇒ 比传统 transfer 贵
+    
+
+### **不支持 approve（设计选择）**
+
+-   规范倾向：每次签名授权，配合 keyHash 轮换减少关联
+    
+-   所以 DeFi “授权+拉取”范式很难直接复用
+    
+
+### **密钥管理风险**
+
+-   你不再只管理一个地址，而是管理 key（甚至一堆轮换 key）
+    
+-   建议策略：
+    
+    -   用 HD 派生管理（类似钱包派生路径）
+        
+    -   做好备份/恢复机制
+        
+
+* * *
+
+## **8\. 它适合什么场景**
+
+-   **Gas 代付 onboarding**：新用户无需 ETH 就能用 dApp
+    
+-   **隐私要求高的转账/NFT**：减少地址关联
+    
+-   **批量交易/赞助型产品**：项目方补贴 gas，用户只签名
+    
+
+不太适合：
+
+-   强依赖 ERC-20 approve/allowance 的老 DeFi 生态（除非做适配层）
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # **一句话先把 Gas 优化讲清**
 
 > Gas 优化 = 用更少的计算 + 更少的存储修改，完成同一件事
@@ -507,6 +792,7 @@ for (...) {
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -744,6 +1030,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # **Uniswap V2 & V3 知识点总览**
@@ -992,6 +1279,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -1204,6 +1492,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -1397,6 +1686,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -1560,6 +1850,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -1671,6 +1962,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1824,6 +2116,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2145,6 +2438,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -2262,6 +2556,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2615,6 +2910,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
