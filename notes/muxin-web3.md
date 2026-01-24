@@ -15,14 +15,6 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-# 2026-01-24
-<!-- DAILY_CHECKIN_2026-01-24_START -->
-# 测试
-
-0alkdf
-
-kajdslfka
-<!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
