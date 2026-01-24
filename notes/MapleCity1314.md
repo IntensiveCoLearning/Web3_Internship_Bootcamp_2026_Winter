@@ -15,8 +15,136 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## 002
+
+原合约：
+
+```bash
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Fallback {
+    mapping(address => uint256) public contributions;
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+        contributions[msg.sender] = 1000 * (1 ether);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "caller is not the owner");
+        _;
+    }
+
+    function contribute() public payable {
+        require(msg.value < 0.001 ether);
+        contributions[msg.sender] += msg.value;
+        if (contributions[msg.sender] > contributions[owner]) {
+            owner = msg.sender;
+        }
+    }
+
+    function getContribution() public view returns (uint256) {
+        return contributions[msg.sender];
+    }
+
+    function withdraw() public onlyOwner {
+        payable(owner).transfer(address(this).balance);
+    }
+
+    receive() external payable {
+        require(msg.value > 0 && contributions[msg.sender] > 0);
+        owner = msg.sender;
+    }
+}
+```
+
+### 问题：
+
+这个合约的核心漏洞在 `receive()`：
+
+```solidity
+receive() external payable {
+    require(msg.value > 0 && contributions[msg.sender] > 0);
+    owner = msg.sender;
+}
+
+```
+
+攻击者只需要：
+
+1.  先调用 `contribute()` 发送一笔很小的金额（< 0.001 ETH），让 `contributions[msg.sender] > 0` 成立
+    
+2.  然后**直接给合约地址转账**触发 `receive()`，就会把 `owner` 改成攻击者
+    
+3.  接着调用 `withdraw()` 把合约余额全部转走
+    
+
+### fix：
+
+每次 `contribute()` 后，如果你的累计贡献超过当前 owner（或超过最高贡献），就成为 owner
+
+```bash
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract FallbackDynamicOwner {
+    mapping(address => uint256) public contributions;
+    address public owner;
+
+    uint256 public constant MIN_DELTA = 0.0001 ether;
+
+    event Contributed(address indexed user, uint256 amount);
+    event OwnershipChanged(address indexed oldOwner, address indexed newOwner);
+    event Withdraw(address indexed to, uint256 amount);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "caller is not the owner");
+        _;
+    }
+
+    function contribute() external payable {
+        require(msg.value > 0, "no value");
+        require(msg.value < 0.001 ether, "too much");
+
+        contributions[msg.sender] += msg.value;
+        emit Contributed(msg.sender, msg.value);
+
+       
+        if (contributions[msg.sender] >= contributions[owner] + MIN_DELTA) {
+            address old = owner;
+            owner = msg.sender;
+            emit OwnershipChanged(old, msg.sender);
+        }
+    }
+
+    function withdraw() external onlyOwner {
+        uint256 bal = address(this).balance;
+        (bool ok, ) = payable(owner).call{value: bal}("");
+        require(ok, "withdraw failed");
+        emit Withdraw(owner, bal);
+    }
+
+    // ✅ 修复点：receive 不允许改 owner
+    receive() external payable {
+        contributions[msg.sender] += msg.value;
+        emit Contributed(msg.sender, msg.value);
+    }
+}
+
+```
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 在 spoonOS 的设计哲学中，Agent 被定义为具备感知（Perception）、记忆（Memory）、规划（Planning）与行动（Action）能力的计算实体。其核心运行机制基于“推理-行动”（Reasoning and Acting, ReAct）范式，即模型通过逻辑推理决定下一步操作，获取环境反馈后再次进行推理，形成闭环。
 
 构建一个标准的 spoonOS Agent 涉及以下四个关键维度的配置与开发：
@@ -165,6 +293,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
 
 ## 目标
@@ -252,6 +381,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # 合约优化记录
@@ -365,6 +495,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -632,6 +763,7 @@ contract MessageBoardOptimized {
 
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -706,6 +838,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -861,6 +994,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -994,6 +1128,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1136,6 +1271,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1553,6 +1689,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1662,6 +1799,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1783,6 +1921,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
