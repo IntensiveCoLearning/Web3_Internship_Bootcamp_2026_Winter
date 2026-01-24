@@ -10,7 +10,7 @@ timezone: UTC+8
 
 ## Self-introduction
 
-小白一枚，求带
+努力将https://solidity-by-example.org/简体中文版本优化成纯小白能看得懂的知识！并且将没有翻译的部分也补全
 
 ## Notes
 
