@@ -15,8 +15,148 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+**gas 优化**
+
+基本原理与计量单位：Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
+
+优化目标是减少交易所需的总 gas，提高用户体验并降低成本。
+
+常见优化技巧：
+
+1.  减少存储操作（Storage Write）
+    
+
+读取存储第一次需 2100 gas（后续 100 gas），而内存读取仅 3 gas。推荐多次访问同一存储数据时，将其缓存到内存以减少 SLOAD 次数
+
+每次写入 storage 的成本高达 20,000 gas；优先使用 memory。
+
+优化写法（一次读，一次写）
+
+function deposit() public payable {
+
+uint256 current = balances\[msg.sender\];
+
+balances\[msg.sender\] = current + msg.value;
+
+}
+
+2.使用位压缩（Bit Packing）
+
+将多个变量压缩到一个 uint256 中以节省存储空间。
+
+示例：
+
+struct Packed {
+
+uint128 a;
+
+uint128 b;
+
+}
+
+3.循环优化
+
+减少不必要的运算，如 array.length 缓存到变量中。
+
+// 优化
+
+uint256 len = arr.length;
+
+for (uint i = 0; i < len; ++i) {
+
+...
+
+}
+
+4.函数可见性选择 - external 比 public 更节省 gas，适用于仅被外部调用的函数
+
+合约安全：
+
+安全设计原则:最小权限原则（Least Privilege）;模块化结构便于审计;显式错误处理与事件记录
+
+常见漏洞类型与防护
+
+1.  重入攻击 Reentrancy
+    
+
+利用外部合约在 fallback 中重新调用原函数。历史上最著名的 The DAO 事件便因重入漏洞导致约 6000 万美元 ETH 被盗，最终造成以太坊社区分裂（形成 ETH/ETC 链）。
+
+防护方法：先更新状态，再转账。
+
+示例：
+
+// ❌ 有漏洞
+
+function withdraw() public {
+
+require(balance\[msg.sender\] > 0);
+
+(bool sent,) = [msg.sender.call](http://msg.sender.call){value: balance\[msg.sender\]}("");
+
+require(sent);
+
+balance\[msg.sender\] = 0;
+
+}
+
+// ✅ 修复后
+
+function withdraw() public {
+
+uint256 amount = balance\[msg.sender\];
+
+balance\[msg.sender\] = 0;
+
+(bool sent,) = [msg.sender.call](http://msg.sender.call){value: amount}("");
+
+require(sent);
+
+}
+
+2.预言机操纵 Oracle Manipulation
+
+依赖外部价格源的不可信更新。
+
+解决方法：
+
+-   使用 Chainlink 等权威价格源。
+    
+-   增加时序约束和多源验证。
+    
+-   使用 TWAP 等加权算法。
+    
+
+3.整数溢出/下溢
+
+-   使用 unchecked {} 时需确保逻辑安全。
+    
+-   推荐使用Solidity 0.8+ 的内建溢出检查或 SafeMath。
+    
+
+4.权限控制缺失
+
+-   所有管理函数应使用 onlyOwner 或 AccessControl 修饰符保护。
+    
+
+5.未初始化代理
+
+-   基于代理模式的合约若未正确执行初始化函数，可能被任意人初始化并接管合约。
+    
+-   著名的例子包括 Harvest Finance 其在使用 Uniswap V3 做市策略的 Vault 合约中存在未初始化漏洞，如果被利用攻击者可销毁实现合约。该团队曾为此漏洞支付高额赏金修复。
+    
+
+6.前置交易/三明治攻击
+
+-   攻击者在交易执行前后分别发送交易，以不利滑点或套利为目的。
+    
+-   例如 2025 年 3 月，一名用户在 Uniswap V3 的稳定币兑换中遭遇三明治攻击，约 21.5 万美元的 USDC 兑换几乎被抢跑，损失了 98% 的资金
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 Solidity Basic 笔记
 
 | 主题 | 说明 | 关键代码示例 | 要点 |
@@ -557,6 +697,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -876,6 +1017,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -1108,6 +1250,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -1190,6 +1333,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1385,6 +1529,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -1392,6 +1537,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1470,6 +1616,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1619,6 +1766,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1911,6 +2059,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -1974,6 +2123,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2132,6 +2282,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
