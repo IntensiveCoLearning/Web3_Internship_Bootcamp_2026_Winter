@@ -15,8 +15,23 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+开启了筹划黑客松活动的生涯！
+
+-   宣发组在稳步进行中，1.25下午我们会过一下进度
+    
+-   1.26上午跟老师交稿
+    
+-   Openday人员已经敲定
+    
+
+笔记有点水~~~~
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 -   My first Dapp 分享会-Xioahai老师
     
 
@@ -55,6 +70,7 @@ Aave V3到V4的分享：
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 ### **完成了ethernut三关打卡，笔记如下：**
 
 1.第一关找到漏洞，夺取owner，把钱转走。之前一直卡在成为了contributor，但是一直没有成为owner，其实主要原因是代码最后有一个receive函数，需要再转账一笔才能夺取owner。
@@ -86,6 +102,7 @@ await contract.collectAllocations()
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 -   参加了Web3公共物品资金的风险
     
 -   参加了Elon老师Solidity Walk的分享
@@ -97,6 +114,7 @@ await contract.collectAllocations()
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -249,6 +267,7 @@ await contract.collectAllocations()
 
 
 
+
 -   完成了周日的KeyHash Base Token：从ERC721到ERC7962分享课程
     
 -   研究了polymarket技术机构与逻辑的研究，内容如下：
@@ -324,6 +343,7 @@ AMM 在该体系中主要承担流动性补充与兜底角色。当订单簿深�
 
 
 
+
 -   今天继续研究了下Polymarket的模式，争取明天搞明白**技术的运作模式**加入到投研报告中
     
 -   阅读了021以太坊的第一章
@@ -331,6 +351,7 @@ AMM 在该体系中主要承担流动性补充与兜底角色。当订单簿深�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -493,6 +514,7 @@ NBA总决赛是中文流量王者，中文世界第1体育IP，微博#NBA#日均
 
 
 
+
 今天完成的学习内容：
 
 -   完成了2个章节的安全挑战！
@@ -509,6 +531,7 @@ NBA总决赛是中文流量王者，中文世界第1体育IP，微博#NBA#日均
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -584,6 +607,7 @@ Web3 合规侧重于**业务逻辑是否触犯国家法律**，特别是在大�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -687,6 +711,7 @@ Web3 组织通常是**分布式**的，**远程办公**是其生存法则。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
