@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+一直在优化网站UI
+
+然后调试设备
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ### Uniswap目前的核心优势
 
 -   **流动性深度**：绝大多数主流交易对（尤其是 ETH 系、稳定币、大市值 alt）里，Uniswap（特别是通过 UniswapX 路由 v3+v4）仍然提供链上最深的流动性。
@@ -32,6 +40,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 ### 1\. 行业地位：无可撼动的生态统治力
 
@@ -66,6 +75,7 @@ Solidity 的设计深受 JavaScript 和 C++ 的影响，这导致了它具有明
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 今天完成一个项目，使用以下技术
 
 合约：Vyper  Snekmate  Moccasin  
@@ -81,6 +91,7 @@ Wallet: Metamask
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -171,6 +182,7 @@ Wallet: Metamask
 
 
 
+
 今天事情比较多
 
 明天补笔记
@@ -178,6 +190,7 @@ Wallet: Metamask
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -320,6 +333,7 @@ Wallet: Metamask
 
 
 
+
 今天的分享会主题是Web3运行原理
 
 大部分之前学过，所以感觉没什么好记录的，都是很重要的基础知识
@@ -359,6 +373,7 @@ Wallet: Metamask
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
