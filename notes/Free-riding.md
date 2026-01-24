@@ -15,8 +15,99 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+对于 **应届生**（无全职工作经验）申请 Web3 前端岗位，简历的核心策略是：**用高质量项目、开源贡献、黑客松经历和扎实的技术细节弥补经验短板**
+
+**例如：**“用 wagmi 实现多链钱包连接，并处理网络切换异常” → 具体可验证
+
+### **1\. 个人信息（简洁专业）**
+
+```
+姓名 | Web3 前端开发者  
+ENS: yourname.eth（如有）  
+GitHub: github.com/yourname（⭐️ 必填）  
+邮箱 / 手机  
+LinkedIn / Twitter（可选，但建议有）
+```
+
+### **技术栈（Skills）—— 聚焦 Web3 前端**
+
+分类列出，只写你真正用过的：
+
+```
+- **前端**：React, TypeScript, Next.js, Tailwind CSS, Zustand
+- **Web3**：wagmi, viem, RainbowKit, ethers.js, WalletConnect
+- **工具**：Hardhat（测试合约调用）、Foundry（本地部署）、Vite
+- **链 & 协议**：Ethereum, Base, ERC-721/1155, ENS, SIWE
+- **其他**：Git, GitHub Actions, Figma（基础）
+```
+
+### **项目经验（核心板块！）**
+
+**✅ 写法公式：**
+
+> **项目名 | 技术栈**
+> 
+> -   用 **动词+技术+解决什么问题** 描述（避免“参与”“协助”）
+>     
+> -   强调 **Web3 特有挑战**（如交易状态、网络切换、Gas 估算）
+>     
+> -   附 **可点击链接**（GitHub + 在线 Demo）
+>     
+
+**🎯 推荐做 2–3 个高质量项目（比 5 个半成品强）：**
+
+**项目示例 1：NFT Gallery（适合入门）**
+
+> **Multi-chain NFT Gallery | React + wagmi + Alchemy**
+> 
+> -   使用 **wagmi** 连接 MetaMask/WalletConnect，支持 Ethereum 与 Base 网络自动切换
+>     
+> -   调用 **Alchemy NFT API** 获取用户资产，避免直接读链提升性能
+>     
+> -   实现 **交易反馈 UI**：Pending 时显示进度条，失败时解析 revert 原因（如余额不足）
+>     
+> -   部署到 Vercel，支持 ENS 地址访问（如 `gallery.yourname.eth`）
+>     
+
+**项目示例 2：Token Swap 界面（展示深度）**
+
+> **Mini DEX Frontend | React + viem + Uniswap V2 SDK**
+> 
+> -   集成 **Uniswap V2 路由合约**，实现 ETH ↔ ERC-20 交换
+>     
+> -   使用 **viem** 模拟交易（`simulateContract`），预览滑点与 Gas 成本
+>     
+> -   处理 **授权（approve）流程**：检测 allowance，引导用户先授权再交易
+>     
+> -   错误处理：捕获“insufficient liquidity”等常见 revert 并提示用户
+>     
+
+**项目示例 3：DAO 投票看板（展示社区理解）**
+
+> **Snapshot Voting Dashboard | Next.js + SIWE + The Graph**
+> 
+> -   使用 **Sign-In with Ethereum (SIWE)** 实现去中心化登录
+>     
+> -   通过 **The Graph** 查询用户投票权与历史提案
+>     
+> -   设计响应式时间线，高亮“投票中”“已执行”状态
+>     
+
+> 💡 小技巧：在项目中加入 **“应届生也能做的亮点”**：
+> 
+> -   支持深色模式（Tailwind）
+>     
+> -   Lighthouse 性能评分 > 90
+>     
+> -   写单元测试（Jest + React Testing Library）
+>
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 \# Hardhat 使用教程  
   
 Hardhat 是一个用于以太坊智能合约开发的流行开发环境，提供了编译、测试、部署和调试 Solidity 代码的完整工具链。以下是一个简明的 Hardhat 使用教程，适合初学者快速上手。  
@@ -123,6 +214,7 @@ npx hardhat run scripts/deploy.js --network localhost
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 Uniswap 是 Web3 中最著名的\*\*去中心化交易所（DEX）\*\*之一，其核心原理基于一种称为 **自动做市商（Automated Market Maker, AMM）** 的机制，而非传统交易所使用的订单簿（Order Book）模型。
@@ -236,6 +328,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 在 Web3（尤其是去中心化金融，DeFi）中，**套利（Arbitrage）** 是指利用不同市场或协议之间资产价格的暂时性差异，通过低买高卖获取无风险或低风险利润的行为。以下是 Web3 中常见的套利方式和操作逻辑：
 
 * * *
@@ -339,6 +432,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 Solidity 中的\*\*事件（Events）\*\*是一种用于在智能合约中记录日志（logs）的机制，主要用于将信息从区块链传递给外部应用程序（如前端 DApp）。事件通过以太坊虚拟机（EVM）的日志功能实现，具有高效、低成本和可被监听的特点。
 
 ### **1\. 事件的定义**
@@ -397,6 +491,7 @@ solidity
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -569,6 +664,7 @@ Gossip 协议（又称“流言协议”或“八卦协议”）在区块链和�
 
 
 
+
 ## **一句话总结 ERC-7962 是什么？**
 
 > **它是一种新的“隐私代币”标准，让你的 NFT 或普通代币（比如类似 USDT 的 Token）在转账时，不再暴露你的钱包地址，从而保护你的身份隐私。**
@@ -708,11 +804,13 @@ ERC-7962 定义了两个标准：
 
 
 
+
 参加了LXDao的周会，初步了解了DAO的治理形式，了解过去一周LXDAO的动态
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -805,6 +903,7 @@ ERC-7962 定义了两个标准：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1028,6 +1127,7 @@ ERC-7962 定义了两个标准：
 
 
 
+
 # **U卡是什么？**
 
 **U卡 = 加密资产账户 + 全球支付卡 + 钱包联动理财入口**
@@ -1111,6 +1211,7 @@ KYC 的核心目的是：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1317,6 +1418,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
