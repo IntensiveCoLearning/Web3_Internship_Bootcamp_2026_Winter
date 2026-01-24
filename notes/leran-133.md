@@ -15,8 +15,296 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+Solidity 智能合约基础语法笔记
+
+一、基础结构
+
+1\. 许可证声明
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+· 作用：指定合约的开源许可证类型
+
+· 必须项：所有Solidity文件的第一行都应该是SPDX许可证标识符
+
+2\. 版本声明
+
+\`\`\`solidity
+
+pragma solidity ^0.8.26;
+
+· pragma：编译指示指令
+
+· ^0.8.26：兼容0.8.26及以上版本，但低于0.9.0
+
+· 版本规则：
+
+· ^0.8.26 = >=0.8.26 <0.9.0
+
+· 0.8.26 = 必须是0.8.26版本
+
+· >=0.8.0 <0.9.0 = 指定范围
+
+二、合约定义
+
+\`\`\`solidity
+
+contract Counter {
+
+// 状态变量和函数定义
+
+}
+
+· contract：声明智能合约的关键字
+
+· Counter：合约名称（遵循帕斯卡命名法）
+
+三、状态变量
+
+\`\`\`solidity
+
+uint256 public count;
+
+\`\`\`
+
+变量类型：
+
+· uint256：无符号整数，256位（0 到 2²⁵⁶-1）
+
+· 其他整数类型：
+
+· uint8, uint16, uint32, ..., uint256（8的倍数）
+
+· int8, int16, ..., int256（有符号整数）
+
+· 访问权限：
+
+· public：自动生成getter函数，可在合约内外访问
+
+· private：仅当前合约内可访问
+
+· internal：当前合约及继承合约可访问（默认）
+
+变量默认值：
+
+· uint：0
+
+· bool：false
+
+· address：0x000...（20字节零地址）
+
+四、函数定义
+
+1\. 视图函数（View Function）
+
+\`\`\`solidity
+
+function get() public view returns (uint256) {
+
+return count;
+
+}
+
+\`\`\`
+
+· 特点：
+
+· view：承诺不修改状态（只读取）
+
+· 不消耗gas（如果由外部账户调用）
+
+· 有返回值：returns (uint256)
+
+· 调用方式：可在链下调用，无需交易
+
+2\. 状态修改函数
+
+\`\`\`solidity
+
+function inc() public {
+
+count += 1;
+
+}
+
+· 特点：
+
+· 没有view或pure修饰符
+
+· 修改区块链状态
+
+· 需要交易，消耗gas
+
+· 操作符：+= 是 count = count + 1 的简写
+
+3\. 带有条件检查的函数
+
+\`\`\`solidity
+
+function dec() public {
+
+count -= 1;
+
+}
+
+· 潜在问题：当count = 0时，count -= 1会导致下溢（underflow）
+
+· 解决方案（现代Solidity ≥0.8.0）：
+
+\`\`\`solidity
+
+function dec() public {
+
+require(count > 0, "Counter: cannot decrement below zero");
+
+count -= 1;
+
+}
+
+· 从Solidity 0.8.0开始，算术运算默认检查溢出/下溢
+
+· require()：条件检查，失败则回滚交易
+
+五、函数修饰符详解
+
+1\. 可见性修饰符
+
+· public：任意账户或合约可调用
+
+· private：仅当前合约内部
+
+· internal：当前合约及继承合约
+
+· external：仅能从合约外部调用（this.func()形式可在内部调用）
+
+2\. 状态修饰符
+
+· view：承诺不修改状态
+
+· pure：承诺不读取也不修改状态（只使用参数和局部变量）
+
+· payable：函数可以接收ETH
+
+3\. 示例组合
+
+function get() public view returns (uint256) {
+
+// public: 可外部调用
+
+// view: 不修改状态
+
+// returns: 指定返回值类型
+
+}
+
+六、完整改进版合约示例
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.26;
+
+contract Counter {
+
+// 状态变量
+
+uint256 private \_count;
+
+address public owner;
+
+// 件：记录重要状态变化
+
+event CountChanged(uint256 newCount, address changer);
+
+// 构造函数
+
+constructor() {
+
+owner = msg.sender;
+
+\_count = 0;
+
+}
+
+// 修饰器：仅所有者可调用
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "Not owner");
+
+\_; // 继续执行函数体
+
+}
+
+// 获取当前值
+
+function get() public view returns (uint256) {
+
+return \_count;
+
+}
+
+// 增加计数
+
+function inc() public {
+
+\_count += 1;
+
+emit CountChanged(\_count, msg.sender);
+
+}
+
+// 减少计数（带安全检查）
+
+function dec() public {
+
+require(\_count > 0, "Cannot decrement below zero");
+
+\_count -= 1;
+
+emit CountChanged(\_count, msg.sender);
+
+}
+
+// 重置计数（仅所有者）
+
+function reset() public onlyOwner {
+
+\_count = 0;
+
+emit CountChanged(\_count, msg.sender);
+
+}
+
+}
+
+\`\`\`
+
+七、关键概念总结
+
+1\. Gas消耗
+
+· 存储操作 > 计算操作 > 读取操作
+
+· view/pure函数在外部调用时不消耗gas
+
+· 状态修改需要交易，消耗gas
+
+2\. 交易与调用
+
+· 交易（Transaction）：改变状态，需要签名，上链
+
+· 调用（Call）：只读操作，立即返回，不上链
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 以太坊智能合约开发完整指南
 
 一、账户类型对比
@@ -331,6 +619,7 @@ GitHub 工作流：
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -530,6 +819,7 @@ GitHub 工作流：
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -680,6 +970,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -727,6 +1018,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -813,6 +1105,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -826,6 +1119,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1143,6 +1437,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
