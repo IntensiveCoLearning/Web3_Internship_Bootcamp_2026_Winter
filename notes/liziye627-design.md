@@ -15,8 +15,242 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今日学习目标 (Learning Goals)
+
+\### 核心目标
+
+1\. **Solidity进阶语法**: 掌握继承 (Inheritance)、接口 (Interfaces)、库 (Libraries)。
+
+2\. **标准协议实现**: 深入理解并实现 **ERC20** 代币标准。
+
+3\. **合约安全基础**: 学习防范 **重入攻击 (Reentrancy)** 和 **整数溢出**。
+
+4\. **工程化实践**: 编写可复用、模块化的智能合约代码。
+
+\---
+
+\## 📖 核心知识点详解
+
+\### 1. 面向对象特性 (OOP Features)
+
+\#### 继承 (Inheritance)
+
+Solidity 支持多重继承，使用 `is` 关键字。
+
+\- \*`virtual`\*\*: 父合约中允许被重写的函数。
+
+\- \*`override`\*\*: 子合约中重写父合约函数。
+
+\- \*`super`\*\*: 调用父合约的逻辑。
+
+\`\`\`solidity
+
+contract Ownable {
+
+address public owner;
+
+constructor() { owner = msg.sender; }
+
+}
+
+// Token 继承自 Ownable
+
+contract Token is Ownable {
+
+function burn() public {
+
+require(msg.sender == owner, "Only owner"); // 使用继承的变量
+
+}
+
+}
+
+\`\`\`
+
+\#### 接口 (Interfaces)
+
+接口是合约之间交互的标准。
+
+\- 只有函数声明，没有实现。
+
+\- 函数必须是 `external`。
+
+\- 不能包含状态变量或构造函数。
+
+\#### 库 (Libraries)
+
+用于提取通用逻辑（如数学运算），减少 Gas 消耗。
+
+\- 使用 `using Lib for type` 语法。
+
+\- 常用库`SafeMath` (Solidity 0.8+ 已内置溢出检查，但了解其原理很重要)。
+
+\### 2. ERC20 代币标准
+
+ERC20 是以太坊上最通用的代币标准，必须实现以下核心接口：
+
+| 函数 | 说明 |
+
+|------|------|
+
+| `totalSupply()` | 代币总供应量 |
+
+| `balanceOf(account)` | 查询余额 |
+
+| `transfer(to, amount)` | 转账 |
+
+| `approve(spender, amount)` | 授权转账 |
+
+| `transferFrom(from, to, amount)` | 代理转账（需先授权） |
+
+\### 3. 合约安全基础
+
+\- **Checks-Effects-Interactions 模式**:
+
+1\. **Check**: 检查条件 (require)。
+
+2\. **Effect**: 更新状态变量。
+
+3\. **Interaction**: 与其他合约交互 (转账等)。
+
+_这能有效防止重入攻击。_
+
+\---
+
+\## 💻 实战练习: AdvancedToken
+
+编写一个包含安全机制和权限控制的 ERC20 代币合约。
+
+\### 合约代码结构
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+import "./IERC20.sol"; // 标准接口
+
+contract AdvancedToken is IERC20 {
+
+// 状态变量
+
+mapping(address => uint256) private \_balances;
+
+mapping(address => mapping(address => uint256)) private \_allowances;
+
+uint256 private \_totalSupply;
+
+string public name = "Advanced Learning Token";
+
+string public symbol = "ALT";
+
+uint8 public decimals = 18;
+
+address public owner;
+
+bool private \_paused; // 紧急暂停开关
+
+// 事件
+
+event Paused();
+
+event Unpaused();
+
+// 修饰符
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "Not owner");
+
+\_;
+
+}
+
+modifier whenNotPaused() {
+
+require(!\_paused, "Contract paused");
+
+\_;
+
+}
+
+constructor(uint256 initialSupply) {
+
+owner = msg.sender;
+
+\_mint(msg.sender, initialSupply);
+
+}
+
+// 铸造函数 (内部)
+
+function \_mint(address account, uint256 amount) internal {
+
+\_totalSupply += amount;
+
+\_balances\[account\] += amount;
+
+emit Transfer(address(0), account, amount);
+
+}
+
+// 转账实现 (带暂停检查)
+
+function transfer(address to, uint256 amount) public override whenNotPaused returns (bool) {
+
+require(\_balances\[msg.sender\] >= amount, "Insufficient balance");
+
+\_balances\[msg.sender\] -= amount;
+
+\_balances\[to\] += amount;
+
+emit Transfer(msg.sender, to, amount);
+
+return true;
+
+}
+
+// ... 其他ERC20函数实现 (approve, transferFrom 等)
+
+// 管理功能
+
+function pause() public onlyOwner { \_paused = true; emit Paused(); }
+
+function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
+
+}
+
+\`\`\`
+
+\---
+
+\## 📝 学习心得与遇到的问题
+
+\### 遇到的挑战
+
+1\. **接口与抽象合约的区别**:
+
+\- 接口更纯粹，只能定义行为；抽象合约可以包含部分实现。
+
+\- 在跨合约调用时，接口非常有用（如调用 Uniswap）。
+
+2\. \*`transferFrom` 的理解\*\*:
+
+\- 需要理解 `approve` 和 `allowance` 的机制。这是 DeFi 协议扣款的基础。
+
+\### 关键收获
+
+\- 理解了为什么 Solidity 0.8.0 之后不再强制需要 SafeMath（内置了溢出检查）。
+
+\- 掌握了 Solidity 的继承顺序（C3 Linearization）在多重继承中的重要性。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -249,6 +483,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -330,6 +565,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 会议纪要: Web3 社区运营与活动策划实战 SOP
@@ -487,6 +723,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -800,6 +1037,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -1001,6 +1239,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1249,6 +1488,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -1441,6 +1681,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
