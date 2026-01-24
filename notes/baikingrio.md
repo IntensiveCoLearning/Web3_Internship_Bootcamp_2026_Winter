@@ -15,8 +15,150 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## Uniswap V2 Router常用函数
+
+### 1、Router 作用
+
+UniswapV2Router02 是用户最常交互的入口合约，提供安全、便捷的接口封装 Pair 操作：
+
+-   处理多跳路径（path）
+    
+-   滑点保护（amountOutMin / amountInMax）
+    
+-   截止时间（deadline）
+    
+-   支持 ETH ↔ ERC20 自动 wrap/unwrap
+    
+-   简化添加/移除流动性
+    
+
+核心原则：Router 不持有资金，所有操作直接与 Pair 交互。
+
+### 2、Swap 函数
+
+```
+// 精确输入 → 获得至少 amountOutMin
+function swapExactTokensForTokens(
+    uint amountIn,
+    uint amountOutMin,
+    address[] calldata path,
+    address to,
+    uint deadline
+) external returns (uint[] memory amounts);
+
+// 精确输出 → 最多支付 amountInMax
+function swapTokensForExactTokens(
+    uint amountOut,
+    uint amountInMax,
+    address[] calldata path,
+    address to,
+    uint deadline
+) external returns (uint[] memory amounts);
+
+// 支持 fee-on-transfer token 的版本
+function swapExactTokensForTokensSupportingFeeOnTransferTokens(...)
+```
+
+-   path：token 交换路径，例如 \[WETH, USDC, DAI\]
+    
+-   deadline：推荐 block.timestamp + 300～1800 秒
+    
+-   amountOutMin：防滑点 / sandwich 攻击，必设 > 0
+    
+
+### 3、ETH 相关 Swap
+
+```
+// ETH → Token
+function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
+    external payable returns (uint[] memory amounts);
+
+// Token → ETH
+function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
+    external returns (uint[] memory amounts);
+```
+
+### 4、添加流动性
+
+```
+// Token + Token
+function addLiquidity(
+    address tokenA, address tokenB,
+    uint amountADesired, uint amountBDesired,
+    uint amountAMin, uint amountBMin,
+    address to,
+    uint deadline
+) external returns (uint amountA, uint amountB, uint liquidity);
+
+// ETH + Token
+function addLiquidityETH(
+    address token,
+    uint amountTokenDesired,
+    uint amountTokenMin,
+    uint amountETHMin,
+    address to,
+    uint deadline
+) external payable returns (uint amountToken, uint amountETH, uint liquidity);
+```
+
+-   amountXMin：防价格变动导致添加失败
+    
+
+### 5、移除流动性
+
+```
+// Token + Token
+function removeLiquidity(
+    address tokenA, address tokenB,
+    uint liquidity,
+    uint amountAMin, uint amountBMin,
+    address to,
+    uint deadline
+) external returns (uint amountA, uint amountB);
+
+// ETH + Token
+function removeLiquidityETH(
+    address token,
+    uint liquidity,
+    uint amountTokenMin,
+    uint amountETHMin,
+    address to,
+    uint deadline
+) external returns (uint amountToken, uint amountETH);
+```
+
+### 6、获取最优路径 & 报价
+
+```
+// 计算输入给定输出时的最少输入量
+function getAmountsIn(uint amountOut, address[] calldata path)
+    external view returns (uint[] memory amounts);
+
+// 计算给定输入能得到的最多输出
+function getAmountsOut(uint amountIn, address[] calldata path)
+    external view returns (uint[] memory amounts);
+```
+
+### 7、注意点
+
+-   永远设置 amountOutMin / amountInMax（至少 0.5%～3% 容差）
+    
+-   deadline = block.timestamp + 20分钟以内（防 mempool 滞留）
+    
+-   path 必须正确排序（不需手动 sort，Router 内部处理）
+    
+-   使用 getAmountsOut 预估，再设置 amountOutMin = 估算值 × (1 - slippage)
+    
+-   支持 fee-on-transfer token 时必须用 SupportingFeeOnTransfer 版本
+    
+-   优先使用 Router 而非直接调用 Pair.swap（更安全）
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -48,6 +190,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ## Uniswap V2 Flash Swap（闪电交换）
 
@@ -152,6 +295,7 @@ interface IUniswapV2Callee {
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -235,6 +379,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -364,6 +509,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -472,6 +618,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -509,6 +656,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -524,6 +672,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -568,6 +717,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -579,6 +729,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
