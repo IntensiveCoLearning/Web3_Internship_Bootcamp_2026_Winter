@@ -15,8 +15,173 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+### **核心哲学** 以太坊解决了比特币仅能作为“数字账本”的局限，通过引入图灵完备的虚拟机（EVM），成为了一个\*\*“全球可编程的去中心化结算与应用平台”\*\* 。
+
+**基础语法 (The Basics)**
+
+合约结构：`pragma` 版本声明、`contract` 定义
+
+状态变量：永久存储在区块链上的数据
+
+核心数据类型：`uint`、`address`、`bool`、`bytes`
+
+函数可见性：`public`、`external`、`internal`、`private`
+
+⚠️ **难点：** `storage` vs `memory` 的数据位置与 Gas 消耗差异 。
+
+**核心机制 (Core Mechanics)**
+
+账户模型：EOA (外部账户) 与 合约账户的区别
+
+Gas 机制：Base Fee (销毁) 与 Priority Fee (小费)
+
+异常处理：`require`、`revert` 与 `assert` 的逻辑回滚
+
+⚠️ **难点：** EVM 内存模型与堆栈限制 (Stack too deep) 。
+
+**高级特性 (Advanced Features)**
+
+继承与多重继承：使用 `virtual` 与 `override`
+
+接口 (Interface)：实现跨合约调用与标准适配
+
+代理模式：UUPS 与 Transparent 代理实现合约“升级”
+
+⚠️ **难点：** `delegatecall` 的存储上下文与安全风险 。
+
+**安全与生态 (Security & Ecosystem)**
+
+代币标准：ERC-20 (同质化) 与 ERC-721/1155 (NFT)
+
+安全漏洞：重入攻击 (Reentrancy)、整数溢出 (0.8.0后自动处理)
+
+工具链：Foundry、Hardhat 与 Remix IDE
+
+* * *
+
+**重入攻击 (Reentrancy)**
+
+**类比：**
+
+就像你去ATM机取钱：你提交取款申请 -> 机器把钱吐给你 -> 机器扣除你账户余额。
+
+**重入攻击**就像你在机器吐钱的瞬间，利用某种“瞬移”技能，在机器还没来得及扣你余额之前，再次按下了取款按钮。你反复这样做，就可以在余额扣除前把机器里的钱全部取光 。
+
+**定义：** 它解决了合约在与外部合约交互（如转账）时，被外部合约通过 `fallback` 或 `receive` 函数恶意再次调用原函数，导致业务逻辑被跳过的问题 。如果不防范，合约内的资金可能被瞬间掏空。
+
+**代码示例：**
+
+Solidity
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleBank {
+    mapping(address => uint256) public balances;
+
+    // 存款函数
+    function deposit() public payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    // ❌ 不安全的提款函数 (新手写法)
+    function withdraw() public {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0);
+        
+        // 外部转账：这里会触发对方合约的逻辑
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success);
+        
+        // 状态更新：转账后才清零，容易被重入
+        balances[msg.sender] = 0;
+    }
+}
+```
+
+**状态修饰符**
+
+| 操作目的 | 代码片段 | 注意点 |
+| 只读不改 | function get() public view returns(uint) | 仅读取状态变量，不消耗 Gas (链下调用) |
+| 纯计算 | function add(uint a) public pure | 不读取也不修改任何链上数据 |
+| 接收以太 | function buy() public payable | 必须标记方可接收 msg.value |
+| 写操作 | function set(uint x) public | 修改状态变量，必须支付 Gas |
+
+**常用标准库函数：**
+
+`keccak256(...)`: 生成数据的哈希值
+
+`abi.encodePacked(...)`: 对参数进行紧凑编码
+
+`address(this).balance`: 查询当前合约的余额
+
+* * *
+
+**JavaScript vs Solidity**
+
+**概念映射：**
+
+**异步 vs 同步**：JS 里习惯用 `async/await`；Solidity 所有执行都是**同步且原子**的，一笔交易里的所有步骤要么全部成功，要么全部回滚 。
+
+**对象 vs 合约**：JS 对象存储在内存中；Solidity 的合约状态变量存储在\*\*磁盘（Storage）\*\*中，读写成本极高 。
+
+**语法对比：**
+
+| 特性 | JavaScript | Solidity |
+| 定义变量 | let x = 1; | uint256 x = 1; (强类型) |
+| 循环 | for (let i=0; i<n; i++) | for (uint256 i=0; i<n; i++) (小心 Gas) |
+| 错误处理 | try...catch | require(cond, "msg") (回滚状态) |
+
+**思维转变：**
+
+**改掉“遍历一切”的习惯**：在 JS 里遍历几千个数据没问题；在 Solidity 里遍历会导致 Gas 耗尽。应尽量使用 `mapping` 直接查找 。
+
+**安全第一**：JS 写错可能只是页面崩溃；Solidity 写错意味着**真金白银**的损失 。
+
+* * *
+
+**CEI 模式**
+
+**新手写法：** 先转账，后改账单（见上面的 `withdraw` 示例）。
+
+**专家写法：** **Checks-Effects-Interactions (CEI)**。
+
+Solidity
+
+```
+function safeWithdraw() public {
+    // 1. Checks: 检查权限和余额
+    uint256 amount = balances[msg.sender];
+    require(amount > 0);
+
+    // 2. Effects: 先修改内部账本
+    balances[msg.sender] = 0;
+
+    // 3. Interactions: 最后进行外部转账
+    (bool success, ) = msg.sender.call{value: amount}("");
+    require(success);
+}
+```
+
+**理由：** 即使对方在第3步尝试重入，因为第2步已经将余额清零，重入调用的第1步检查就会失败 。
+
+**EVM 存储插槽 (Storage Slots)**
+
+**内存模型：** EVM 的 **Storage** 是一个键值对数据库，被划分为一个个 **32 字节 (256位)** 的插槽 (Slot) 。
+
+如果你定义了两个 `uint128`，它们会被“挤”在同一个 Slot 里以节省空间（这叫 **Variable Packing**） 。
+
+读写 Slot 是最耗 Gas 的操作（写入一个新值需 20,000 Gas） 。
+
+**Memory** 则是临时的、线性的字节数组，交易结束即清空，价格便宜 。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 深入探讨 Solidity 中的 **“合约 (Contract)”** 与 Python/C++ 中的 **“类 (Class)”** 之间的异同
 
 1\. 核心概念映射表
@@ -164,6 +329,7 @@ contract Counter {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ### 一份代码的微观结构
 
@@ -371,6 +537,7 @@ Solidity 遇到错误会**回滚（Revert）**，即撤销之前所有的操作�
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 如果把 Dapp 比作一个淘宝网站，智能合约开发就是编写那个“自动处理订单、扣款、发货”且“无法被老板随意篡改”的后台程序。
 
 ### 1\. 核心定义：它是“链上的后端”
@@ -469,6 +636,7 @@ Solidity 遇到错误会**回滚（Revert）**，即撤销之前所有的操作�
 
 
 
+
 随着以太坊完成“合并”（The Merge）并迈向以 Layer 2 为中心的扩容新阶段，Web3 行业正从早期的草莽探索期，逐步转型为以高性能基础设施和真实应用场景为驱动的成熟生态。对于想要入局的建设者而言，理解技术路线图（Roadmap）不仅是理解行业的未来，更是看清就业机会的“导航图”。
 
 本文将结合以太坊的最新发展，深入探讨 Web3 的行业前景与由此衍生的就业机遇。
@@ -536,6 +704,7 @@ Web3 社区强调“共识”与“协作”，因此非技术岗位同样重要
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -626,6 +795,7 @@ D. 资源限制 (Gas Mechanism)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -763,6 +933,7 @@ D. 资源限制 (Gas Mechanism)
 
 
 
+
 # Web3 安全与合规
 
 使用费曼笔记结构。
@@ -808,6 +979,7 @@ D. 资源限制 (Gas Mechanism)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -882,6 +1054,7 @@ Web3 的本质是去中心化的价值互联网。它通过区块链技术，将
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
