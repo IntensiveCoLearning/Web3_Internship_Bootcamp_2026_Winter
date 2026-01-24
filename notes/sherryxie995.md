@@ -15,8 +15,90 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## 第一章：Web3 概论——从信任中介到数学主权
+
+### 1\. Web 演进的技术逻辑
+
+Web3 的核心不仅是“去中心化”，而是**价值所有权**（Value Ownership）的回归。
+
+| 阶段 | 核心特征 | 交互模式 | 信任基础 |
+| Web 1.0 | 只读 (Read) | 门户网站 (Yahoo, 新浪) | 机构信誉 |
+| Web 2.0 | 可读可写 (Read/Write) | 社交媒体 (Facebook, 微信) | 平台中心化审计 |
+| Web 3.0 | 可拥有 (Read/Write/Own) | 去中心化应用 (DApp) | 密码学证明 (Proof) |
+
+> **深入理解：** 在 Web2 中，你的身份和数据是存储在 Google 或腾讯服务器上的逻辑记录；在 Web3 中，这些资产是通过你掌握的**私钥**（基于椭圆曲线密码学，如 ECDSA）在分布式账本上进行的签名授权。
+
+* * *
+
+### 2\. Web3 的核心技术栈 (The Tech Stack)
+
+对于有密码学背景的你，可以将 Web3 的架构自底向上划分为以下几层：
+
+A. 结算层 (Settlement Layer / Layer 1)
+
+这是整个体系的“信任根”。
+
+-   **区块链 (Blockchain)：** 一个由 Hash 链条连接的不可篡改账本。
+    
+-   **共识机制：** 解决分布式系统中的拜占庭将军问题（Byzantine Fault Tolerance）。
+    
+    -   **PoW (Proof of Work):** 基于算力竞争（SHA-256 / Ethash）。
+        
+    -   **PoS (Proof of Stake):** 基于经济激励与博弈论（目前 Ethereum 的主流）。
+        
+
+B. 交互层 (Interaction Layer)
+
+-   **智能合约 (Smart Contracts)：** 运行在虚拟机（如 EVM）上的准图灵完备代码。
+    
+-   **钱包 (Wallets)：** 非托管的密钥管理器。它不存储资产，只存储能操作资产的**私钥**。
+    
+
+C. 数据与通信层
+
+-   **IPFS：** 内容寻址存储（Content-addressing），通过数据的 Hash 值而非 URL 定位文件，解决中心化存储的单点故障。
+    
+
+* * *
+
+### 3\. Web3 的核心命题：消除“中介代理成本”
+
+在传统金融（CeFi）中，转账需要银行背书；在 Web3 中，这种背书被转化为数学计算。
+
+-   **去信任化 (Trustless):** 并非不需要信任，而是将对“人/组织”的信任转移到了对“代码/数学”的信任。
+    
+-   **抗审查性 (Censorship Resistance):** 只要你有私钥，且网络中存在活跃节点，你的交易就无法被第三方拦截。
+    
+
+* * *
+
+### 4\. 关键概念速览
+
+1.  **Gas Fee:** 网络资源的定价机制。由于区块空间是稀缺的，你需要支付费用来补偿节点消耗的算力/带宽。
+    
+2.  **DAO (Decentralized Autonomous Organization):** 基于智能合约实现的组织形式，其治理规则写入代码。
+    
+3.  **NFT (Non-Fungible Token):** 借用密码学中的唯一性证明，实现链上资产的稀缺性和不可分割性。
+    
+
+* * *
+
+### 💡 密码学视角的小思考
+
+Web3 的整个大厦几乎全由以下三个支柱支撑：
+
+1.  **哈希函数 (Hash Functions):** 用于数据完整性、区块链接和 Merkle Tree 状态压缩。
+    
+2.  **数字签名 (Digital Signatures):** 用于身份验证和授权。
+    
+3.  **零知识证明 (Zero-Knowledge Proofs):** 这是目前 Web3 的前沿（Layer 2 扩容和隐私保护的核心），你应该会对此非常感兴趣。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## 一、 Solidity 的本质：状态机与 Gas
 
 在学习语法前，必须理解两个物理限制：
@@ -148,6 +230,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 ## 一、 Web3 为什么需要 ZK？
 
 在区块链上，ZK 主要解决两个核心矛盾：
@@ -199,6 +282,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ## 一、 Web3 运营的核心逻辑：从“用户”到“成员”
@@ -267,6 +351,7 @@ Web3 运营更关注**链上数据**，因为这是无法作假的：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -381,6 +466,7 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -468,11 +554,13 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -713,6 +801,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -784,6 +873,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1025,6 +1115,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -1157,6 +1248,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1311,6 +1403,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
