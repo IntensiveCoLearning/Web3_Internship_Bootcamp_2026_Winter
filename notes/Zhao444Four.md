@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+1.ERC-7962
+
+2.Speed run
+
+——————
+
+入门技术学习+任务
+
+————————
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今天完成了两个任务（防钓鱼和zk投票），阅读了《021》第一章，参加了晚上的分享会。
 
 回答关于x402的问题：
@@ -30,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 # dapp workshop
@@ -278,6 +293,7 @@ foundry：用命令行（文字RPG）玩转区块链
 
 
 
+
 【UNiswap原理】
 
 曾经浅尝试过做LP，听了这节课最大的收获不是听懂了（一点都听不懂），而是终于明白了自己有哪些不懂 ，与理解DEFI的差距到底有多大（一个银河系这么大）。
@@ -337,6 +353,7 @@ price vs liquidity
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -423,6 +440,7 @@ price vs liquidity
 
 
 
+
 # eth周会
 
 ## 【新闻环节】
@@ -464,6 +482,7 @@ the costs of traditional cross-border payouts
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -585,6 +604,7 @@ gas问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -768,6 +788,7 @@ EVM（Ethereum Virtual Machine）=**以太坊的“大脑”=专门用来运行�
 
 
 
+
 # web3安全
 
 **GoPlus token安全检测官网**
@@ -859,6 +880,7 @@ trust wallet被插入恶意后门
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1066,6 +1088,7 @@ _开始构建你的自主智能体：为感知经济打造的agentic操作系统
 
 
 
+
 web3合规
 
 **合规风险1：金融与赌博混同**
@@ -1148,6 +1171,7 @@ web3合规
 
 
 
+
 web3运行原理
 
 **1.web3运行的起点是链上钱包，通过区块链技术进行交易，交易的过程叫出块，规制交易的方式叫合约。**
@@ -1171,6 +1195,7 @@ web3运行原理
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
