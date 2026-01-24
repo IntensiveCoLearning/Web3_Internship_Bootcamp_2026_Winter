@@ -15,8 +15,180 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## **1\. 对** `pure` **和** `view` **的细碎理解**
+
+今天在对 `pure` 和 `view` 两个状态可变性修饰符进行辨析时，进一步理解了智能约合中的结构——用我自己的话来概括，就是包括「对状态变量保持敏感」、「什么时候该用 `pure` 或 `view`」，以及「函数参数列表何时填入内容，填入什么」。
+
+首先是一段基础代码。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+​
+contract FunctionTypes{
+    // 状态变量
+    uint256 public number = 5;
+​
+    // 普通函数
+    function add() external{
+        number = number + 1;
+  }
+​
+}
+```
+
+在《[理解 Solidity 语法的基本结构](https://guozheng.rbind.io/project/learn-solidity-1/)》的博文里，我已经详细写过了区别，这里想简要复现部分内容以整理知识。
+
+结论先上，对状态变量的敏感有助于我快速判断什么时候该用 `pure` 或 `view` 可变性修饰符，以下面的代码为例。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+​
+contract FunctionTypes{
+    // 状态变量
+    uint256 public number = 5;
+    
+    // 普通函数
+    function add() external pure{
+        number = number + 1;
+    }
+​
+    function add() external view{
+        number = number + 1;
+    }
+}
+```
+
+从代码开头便可以清楚地知道状态变量是 `number`，数据存储结构是 `uint256`，因而两个普通函数的写法显然都是错误的——函数体中都直接读取和修改了状态变量 `number`，但 `pure` 既无法读取也无法修改，`view` 则是只能读取但无法修改。
+
+如果要正确改写，可以如下所示。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+​
+contract FunctionTypes{
+    // 状态变量
+    uint256 public number = 5;
+​
+    // 普通函数
+    function addPure(uint256 _number) external pure returns(uint256 new_number1){
+        new_number1 = _number + 1;
+    }
+  
+    function addView() external view returns(uint256 new_number2) {
+        new_number2 = number + 1;
+    }
+}
+```
+
+这里可以阐述两点，其一是 `pure` 和 `view` 的具体非读取与读取功能的表现，其二是我过去一直不理解的——**函数的参数列表中啥时候该填入内容，又该填入什么**？
+
+第一，可以看到含 `pure` 的函数在函数体中是完全没有涉及状态变量 `number`，而是给函数 `addPure()` 传递了一个参数 `_number`，并规定好数据类型是 `uint256`，接着再在函数体中创造了一个局部变量 `new_number1`，并赋值为 `_number + 1`，最后返回。
+
+这里我们可以理解，如果要在函数体中加入新的参数，不涉及状态变量，可以在函数的参数列表里声明加入的参数名称（如`_number`），并指定其类型（如 `uint256`）。
+
+第二，可以看到含 `view` 的函数在函数体里涉及了状态变量 `number`，但是并没有改变 `number` 本身，而是读取了 `number`，在此基础上创建了局部变量 `new_number2`，并赋值为 `number + 1`，最后返回。
+
+这部分没有在函数的参数列表中加入新的参数，而是直接读取状态变量。
+
+## **2\. 函数输出**
+
+### **2.1 函数返回值**
+
+Solidity 中的函数输出相关的关键词是 `returns` 和 `return`。
+
+`returns` 跟在函数名之后，用于声明返回的变量类型与变量名。
+
+`return` 则是指定具体的变量值。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+​
+contract ReturnDemo{
+    
+    function returnDemo() public pure returns(uint256, bool, uint256[3] memory){
+        return(1, true, [uint256(1),2,3] );
+    }
+}
+```
+
+在 Remix IDE 中编译和部署上述代码后，查看左下角的 `returnDemo`，会显示如下信息：
+
+```
+0:uint256: 1
+1:bool: true
+2:uint256[3]: 1,2,3
+```
+
+总结起来就是通过 `returns` 的关键字来声明有多个返回值以及返回值类型的 `returnDemo()` 函数，然后在函数主体再通过 `return()` 来确定具体的返回值。uint256\[3\] 声明了长度为 3 而且类型为 `uint256` 的数组作为返回值，而由于 `[1,2,3]` 会被默认为 `uint8(3)`，因此 `[uint256(1),2,3]` 中的首个元素必须强制转换为 `uint256` 来声明该数组内的元素都是这种类型。另外，数组类型返回值默认必须用 `memory` 来进行修饰。
+
+### **2.2 命名式返回**
+
+在函数返回值一节中已说到 `returns` 可以声明返回的变量名，如果这么做，Solidity 会初始化这些变量，自动返回变量值而无需再使用 `return`。上一节的做法是只声明了变量类型，这节我们就同时声明变量名和变量类型，这样在函数主体中为几个变量赋值就可以了。
+
+```
+function returnNamed() public pure returns(uint256 _number, bool _bool, uint256[3] memory _array){
+    _number = 1;
+    _bool = true;
+    _array = [uint256(1),2,3];
+}
+```
+
+在 Remix IDE 中编译和部署后运行返回结果如下：
+
+```
+0:uint256: _number 1
+1:bool: _bool true
+2:uint256[3]: _array 1,2,3
+```
+
+但在命名式返回中仍然可以使用 `return`。
+
+```
+// 命名式返回，依然支持return
+function returnNamed2() public pure returns(uint256 _number, bool _bool, uint256[3] memory _array){
+    return(1, true, [uint256(1),2,5]);
+}
+```
+
+### **2.3 解构式赋值**
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
+​
+contract ReturnDemo{
+​
+    function returnNamed() public pure returns(uint256 _number, bool _bool, uint256[3] memory _array){
+    _number = 1;
+    _bool = true;
+    _array = [uint256(1),2,3];
+}
+​
+    function readReturn() public pure{
+        uint256 _number;
+        bool _bool;
+        uint256[3] memory _array;
+        (_number, _bool, _array) = returnNamed();
+​
+        // 读取部分返回值
+        (, _bool, ) = returnNamed();
+​
+    }
+}
+```
+
+其实解构式没有看懂，但是不想一直卡在一个地方，等后续碰到相关题目或者代码时再结合具体语境搞清楚……
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 Solidity 语法的变量类型包括**值类型、引用类型、映射类型和函数类型**，这次先来介绍其中的值类型。
 
 值类型（Value Type）主要包括布尔型、整数型、定长字节数组型、地址型和枚举型。
@@ -232,6 +404,7 @@ function enumToUint() external view returns(uint){
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 ## **1\. Solidity 语法中的基本结构**
 
 在 Solidity 代码中，都必须先指定和声明 Solidity 的编译器版本。
@@ -401,6 +574,7 @@ contract Counter {
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 # 开发我的第一个 Web3 Vibe-Coding Demo 项目
 
 ## **1\. 今日想法**
@@ -564,6 +738,7 @@ contract AgentReputation {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -828,6 +1003,7 @@ function getMessageCount(address user)
 
 
 
+
 \## Dapp
 
 \* 去中心化应用
@@ -1067,6 +1243,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **补充梳理：图灵完备与智能合约**
 
 当朋友问起我什么是「以太坊」（Ethereum）时，我总会习惯性地通过其与「比特币」的对比来进行说明。但需要指出的是，这里的比特币并非简单地指「代币」（Token）——一种在去中心化的网络中用于给予维持网络运行的节点/网络服务提供商/「矿工」 的奖励/Gas Fee，如比特币、以太币等。
@@ -1142,6 +1319,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **1\. LXDAO 周会**
 
 今天早上参加了 LXDAO 的周会，大致了解一下社区的运作模式和每周一会的内容。就社区的运作模式来说，和在实习手册中看到的描述相近，主要是由成员来提出提案，大家进行讨论和反馈，确认对社区有帮助便会支持一起做出来。在LXDAO 的 [notion](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9) 上可以见到其 Dashboard，根据不同主题分出了许多板块，包括教育、资金可持续性还有研究与机制创新等，里面还清晰地罗列着 Not started、In progress、Pending 和 Done 等状态的项目任务。接任务的方式有两种，一种是在周会现场举手加入，然后联系发起人；另一种是在路线图中找到任务并以详细计划进行申请。
@@ -1191,6 +1369,7 @@ returns (<返回值列表>)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1279,6 +1458,7 @@ Leon 也是通过思维导图的方式来分享自己对 Web3 的学习。如果
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1448,6 +1628,7 @@ AI 与 Web3 的结合—— AI 赚钱？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1737,6 +1918,7 @@ GoPlus 有相关网站可以检测风险。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2040,6 +2222,7 @@ wachi 助教补充了一段信息：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
