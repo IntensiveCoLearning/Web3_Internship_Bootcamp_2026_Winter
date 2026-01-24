@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+# Scaffold-ETH + Solidity 实践总结
+
+## 1️⃣ Scaffold-ETH 是什么
+
+一套 **合约 + 前端联动开发环境**  
+改合约 → 重新部署 → 前端立刻更新  
+👉 专门用来“边改边试”的学习工具
+
+**命令：**
+
+-   `yarn chain` 本地链
+    
+-   `yarn deploy` 部署
+    
+-   `yarn start` 前端
+    
+
+* * *
+
+## 2️⃣ Payable 与经济逻辑
+
+合约 = 自动售货机
+
+```
+require(msg.value >= price);
+```
+
+-   金额单位：Wei
+    
+-   可写价格曲线：
+    
+
+```
+price = (price * 101) / 100; // 每次涨1%
+```
+
+* * *
+
+## 3️⃣ Mapping = 链上账户系统
+
+```
+mapping(address => uint) public data;
+```
+
+记录“每个地址自己的状态”
+
+* * *
+
+## 4️⃣ Events = 前端通信方式
+
+链上存储贵 → 用事件给前端传数据
+
+* * *
+
+## 5️⃣ 权限控制标准做法
+
+```
+contract A is Ownable
+```
+
+直接用 OpenZeppelin，不手写权限逻辑
+
+* * *
+
+## 6️⃣ msg.sender vs tx.origin
+
+-   `msg.sender` = 当前调用者（用于权限判断）
+    
+-   `tx.origin` ❌ 不用于安全判断
+    
+
+* * *
+
+## 7️⃣ 重入攻击核心
+
+❌ 错误顺序：检查 → 转账 → 改状态  
+✅ 正确顺序：
+
+```
+余额清零 → 再转账
+```
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # Web3 学习笔记 · Week 2 Day 2
 
 **主题：脚本与智能合约交互**
@@ -108,6 +194,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 # Web3 学习笔记 · Week 2
 
 **主题：Scripting & Ethers.js**
@@ -190,6 +277,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # Web3 学习总结 · Week 2
@@ -280,6 +368,7 @@ Ethers.js 是一个用于与以太坊交互的 JavaScript 库，主要作用是�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -499,6 +588,7 @@ Web3 项目中：
 
 
 
+
 # Web3 学习日志 · Day 6
 
 **主题：阶段性复习与结构重建**
@@ -643,6 +733,7 @@ Web3 项目中：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -907,6 +998,7 @@ Web3 很难用，但正因为难，
 
 
 
+
 # Web3 学习日志 · Day 4
 
 **主题：ENS 身份、DEX、钱包与 DApp 交互、Web3 学习路径**
@@ -1017,6 +1109,7 @@ DApp 是你的应用市场。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1175,6 +1268,7 @@ Web3 的风险主要来自两端：
 
 
 
+
 # Web3 学习日志 · Day 2
 
 **主题：以太坊运行逻辑、DeFi、DApp 与开放网络结构**
@@ -1314,6 +1408,7 @@ EVM 是运行环境，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
