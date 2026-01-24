@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今天研究了很久水龙头滴水的问题，因为昨天将合约部署到sepolia测试网的任务卡在了gas不足
+
+今天研究了很多水龙头最后也是成功获取到了一些测试币，并将合约部署到sepolia测试网上
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 1.完成了“链上留言板”这个合约的开发
 
 2.学习了很多新的知识，比如hardhat和一些solidity的基础
@@ -27,11 +35,13 @@ timezone: UTC+8
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 今天稍微有点事，没怎么学习就看了一下Solidity Walk Through的回放
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 研究了一下Dapp
@@ -48,6 +58,7 @@ timezone: UTC+8
 
 
 
+
 研究了一下深度技术赛道中的任务
 
 1.部署合约到sepolia测试网
@@ -57,6 +68,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -75,11 +87,13 @@ timezone: UTC+8
 
 
 
+
 今天稍微有点摆，听了一个每周例会
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -98,6 +112,7 @@ timezone: UTC+8
 
 
 
+
 1.今天确定了主要进行深度技术方向的学习，因为自己本身就是区块链专业的学生。入门技术都学过，可以快速复习过一遍
 
 2.使用metamask在sepolia测试网上铸造了一个NFT
@@ -107,6 +122,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
