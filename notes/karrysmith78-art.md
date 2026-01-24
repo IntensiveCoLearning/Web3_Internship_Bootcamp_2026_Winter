@@ -15,8 +15,68 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+### **1\. 矿工**
+
+-   角色：负责通过算力进行“挖矿”，打包交易、生成新区块，并维护网络安全。
+    
+-   收益：区块奖励（新发行的比特币）+ 交易手续费。
+    
+-   作用：保障比特币网络的去中心化与安全性，是生态最底层的“守护者”。
+    
+
+* * *
+
+### **2\. 比特币核心开发者（比特币基金会）**
+
+-   核心开发者：主要负责维护 **Bitcoin Core** 客户端代码，推动协议升级。
+    
+-   比特币基金会：是早期推动比特币发展的组织之一，帮助协调社区、推广比特币。
+    
+-   作用：通过 **BIP（Bitcoin Improvement Proposal，比特币改进提案）** 机制，引导比特币的技术演进，比如 SegWit、Taproot 升级。
+    
+
+* * *
+
+### **3\. Hodler（持币人）**
+
+-   “Hodl” 源自早期比特币社区的一个拼写错误，后来演变成 **长期持有比特币** 的文化。
+    
+-   Hodler 的角色：减少市场抛压，把比特币作为“数字黄金”来储值。
+    
+-   作用：强化比特币作为抗通胀资产的属性，推动价值共识。
+    
+
+* * *
+
+### **4\. 监管方**
+
+-   各国政府、金融监管机构。
+    
+-   作用：制定法律框架，打击洗钱、非法融资，同时规范交易所、支付场景。
+    
+-   特点：各国态度不一，有些（如美国、欧盟）选择监管合规化，有些（如中国）禁止交易与挖矿。
+    
+
+* * *
+
+### **5\. 相关生态**
+
+比特币不仅是一个“货币”，还形成了庞大的产业链和研究圈：
+
+-   **交易所**：提供买卖 BTC 的渠道（中心化的 Binance、Coinbase；去中心化的 Bisq）。
+    
+-   **科研人员**：研究区块链底层技术、密码学算法、安全问题。
+    
+-   **炒币者**：通过短期交易、投机行为推动市场活跃度。
+    
+-   **第三方生态**：钱包（Ledger、Trezor）、支付网关（BTCPay Server）、二层网络（闪电网络）、衍生品（期货、ETF）等。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # **比特币生态的基本构成**
 
 ## **1\. 基础层（Layer 1：比特币主网）**
@@ -113,6 +173,7 @@ timezone: UTC+8
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
 
+
 ### **1\. The Myth of the "Expert"**
 
 Everyone in the UX group thought becoming a KOL was hard. That’s the first lie you need to unlearn. Technical principles? Top-tier insights? Most of it is just content that can be mastered in two weeks with Google and AI.
@@ -140,6 +201,7 @@ A resume is a static piece of paper; your personal brand is a dynamic leverage t
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 ![屏幕截图 2026-01-14 222507.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/karrysmith78-art/images/2026-01-14-1768400735775-_____2026-01-14_222507.png)
@@ -170,11 +232,13 @@ A resume is a static piece of paper; your personal brand is a dynamic leverage t
 
 
 
+
 听了各位老师的web3实习计划关于web3职业分享会和各位同学的分享,我也收获颇深。首先是技术岗主要看项目经验和掌握的技术栈，对于正准备进入web3行业的人可以多去开源网站di bug,为社区作贡献，多去参加黑客松比赛，同时也能精进自己的技术。其次是非技术岗，比如运营、bd、产品经理等，主要是积累人脉资源，web3社区氛围都是很友好的，可以多去参加一些社区(TinTinLand、水分子、Polkdot生态社区等等），也可以多去参加黑客松。多去了解一些海外市场、web3热词，培养自己的网感。在推特、ins、facebook等各大媒体上发表一些自己的文章（紧跟时代热点），提升用户点赞，反正多去写，或许一开始是比较艰难。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
