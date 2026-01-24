@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+26.1.24 今天完成了 Solidity ethernaut 的部分挑战，对 Solidity 代码有了更深的理解，明天计划完成全部挑战。
+
+![屏幕截图 2026-01-24 231701.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-24-1769269307128-_____2026-01-24_231701.png)![屏幕截图 2026-01-24 234710.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-24-1769269638605-_____2026-01-24_234710.png)
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 26.1.23 今天运行并理解了solidity基础的部分代码
 
 -   第一个合约：DataLocations
@@ -77,6 +85,7 @@ SendEther部分：
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 26.1.22 今天继续学习solidity基础部分剩下内容。
 
 -   归纳整理：
@@ -132,6 +141,7 @@ unchecked 可以省 Gas 但得自己保证安全
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 26.1.21 今天学习了Solidity的基础部分的部分内容。
 
 -   归纳：
@@ -154,6 +164,7 @@ unchecked 可以省 Gas 但得自己保证安全
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -240,6 +251,7 @@ contract.methods.函数名().call()  // 读操作，免费
 
 
 
+
 26.1.19 今天学习了021以太坊教材的第四章，了解了智能合约的工作原理与价值。
 
 -   智能合约
@@ -297,6 +309,7 @@ ABI（用于调用合约）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -382,6 +395,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.17跟着B站上的Chainlink预言机教程，继续学习Solidity的进阶部分
 
 -   内容梳理：
@@ -439,6 +453,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
 
 -   收获：
@@ -462,6 +477,7 @@ ABI（用于调用合约）
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -613,6 +629,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 
 
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -716,6 +733,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -757,6 +775,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
