@@ -15,13 +15,361 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+又配失败了遂放弃。学习了一点gas优化
+
+### **gas 优化技巧**
+
+**注意事项**：
+
+-   gas 优化技巧并不总是有效
+    
+    -   例如在if else判断时，和条件取正相比，条件取反会消耗额外的操作码。令人意外的是，有很多情况下，这种优化实际上会增加交易的成本。Solidity编译器有时是不可预测的。
+        
+    -   因此，在选择特定算法之前，你应该实际测量替代方案的效果。考虑这些技巧可以认识到编译器一些可能会让人惊讶的地方。Gas 优化技巧有时取决于编译器在本地的操作。通常应同时测试代码的最优版本和非最优版本，以查看是否真正获得了改进。我们将记录一些令人惊讶的情况，即本应导致优化的情况实际上导致了更高的成本。
+        
+-   注意复杂性和可读性
+    
+    -   gas优化通常会使代码变得更难度和更复杂，我们需要在主观上去进行权衡这部分的gas优化是否是值得的。
+        
+    
+
+**1\. 最重要的是：尽可能避免零到一的存储写入**
+
+初始化存储变量是合约可以执行的最昂贵的操作之一。
+
+当存储变量从零变为非零时，用户必须支付总共22,100 gas（20,000 gas 用于从零到非零的写入，2,100 gas 用于冷存储访问）。
+
+这就是为什么 Openzeppelin 的重入保护使用1和2来注册函数的活动状态，而不是0和1。将存储变量从非零更改为非零只需花费5,000 gas。
+
+**2\. 缓存存储变量：仅写入和读取存储变量一次**
+
+在高效的 Solidity 代码中，你经常会看到以下模式。从存储变量读取至少需要2,100 gas，写入 20,000gas（新写） / 2,900（改为非零） / 100（改为零），因为 Solidity 不会缓存存储读取。写入要昂贵得多。因此，你应该手动缓存变量，以便仅进行一次存储读取和一次存储写入。比如下面的这两个合约，前者的函数读取了两次计数器，而后者只读取了一次。
+
+```
+ // SPDX-License-Identifier: MIT
+ pragma solidity 0.8.20;
+ ​
+ contract Counter1 {
+     uint256 public number;
+ ​
+     function increment() public {
+         require(number < 10);
+         number = number + 1;
+     }
+ }
+ // 区别: 一个是直接读取全局变量对全局变量进行赋值，一个是通过定义一个局部变量对全局变量进行赋值。后者调用完函数即释放内存（节省gas）
+ contract Counter2 {
+     uint256 public number;
+ ​
+     function increment() public {
+         uint256 _number = number;
+         require(_number < 10);
+         number = _number + 1;
+     }
+ }
+```
+
+**3\. 打包相关变量**
+
+将相关变量打包到同一个槽位中可以通过最小化昂贵的存储相关操作来减少 gas 成本。
+
+**手动打包是最高效的**
+
+我们通过位移操作将两个 uint80 值存储在一个变量（uint160）中。这样只使用一个存储槽位，在单个事务中存储或读取各个值时更便宜。
+
+```
+ // SPDX-License-Identifier: MIT
+ pragma solidity 0.8.20;
+ ​
+ contract GasSavingExample {
+     uint160 public packedVariables;
+ ​
+     function packVariables(uint80 x, uint80 y) external {
+         packedVariables = uint160(x) << 80 | uint160(y);
+     }
+ ​
+     function unpackVariables() external view returns (uint80, uint80) {
+         uint80 x = uint80(packedVariables >> 80);
+         uint80 y = uint80(packedVariables);
+         return (x, y);
+     }
+ }
+```
+
+**EVM 打包略微低效**
+
+这个示例与上面的示例一样使用了一个槽位，但在单个事务中存储或读取值时可能稍微昂贵。 这是因为 EVM 会自行进行位移操作。
+
+```
+ contract GasSavingExample2 {
+     uint80 public var1;
+     uint80 public var2;
+ ​
+     function updateVars(uint80 x, uint80 y) external {
+         var1 = x;
+         var2 = y;
+     }
+ ​
+     function loadVars() external view returns (uint80, uint80) {
+         return (var1, var2);
+     }
+ }
+```
+
+**不打包是最低效的**
+
+这种方式没有使用任何优化，在存储或读取值时更昂贵。
+
+与其它示例不同，这里使用了两个存储槽位来存储变量。
+
+```
+ contract NonGasSavingExample {
+     uint256 public var1;
+     uint256 public var2;
+ ​
+     function updateVars(uint256 x, uint256 y) external {
+         var1 = x;
+         var2 = y;
+     }
+ ​
+     function loadVars() external view returns (uint256, uint256) {
+         return (var1, var2);
+     }
+ }    
+```
+
+**4\. 打包结构体**
+
+像打包相关状态变量一样，打包结构体成员可以帮助节省 gas 。（需要注意的是，在 Solidity 中，结构体成员按顺序存储在合约的存储中，从它们初始化的槽位位置开始）。
+
+考虑以下示例：
+
+**未打包的结构体**
+
+未打包的结构体 unpackedStruct 有三个成员，它们将存储在三个单独的槽位中。然而，如果这些成员被打包，只会使用两个槽位，这将使读取和写入结构体成员更便宜。
+
+```
+ // SPDX-License-Identifier: MIT
+ pragma solidity 0.8.20;
+ ​
+ contract Unpacked_Struct {
+     struct unpackedStruct {
+         uint64 time; // Takes one slot - although it  only uses 64 bits (8 bytes) out of 256 bits (32 bytes).
+         uint256 money; // This will take a new slot because it is a complete 256 bits (32 bytes) value and thus cannot be packed with the previous value.
+         address person; // An address occupies only 160 bits (20 bytes).
+     }
+ ​
+     // Starts at slot 0
+     unpackedStruct details = unpackedStruct(53_000, 21_000, address(0xdeadbeef));
+ ​
+     function unpack() external view returns (unpackedStruct memory) {
+         return details;
+     }
+ }
+```
+
+**打包的结构体**
+
+我们可以通过打包结构体成员来减少上面示例的 gas 消耗，如下所示。
+
+```
+ contract Packed_Struct {
+     struct packedStruct {
+         uint64 time; // In this case, both `time` (64 bits) and `person` (160 bits) are packed in the same slot since they can both fit into 256 bits (32 bytes)
+         address person; // Same slot as `time`. Together they occupy 224 bits (28 bytes) out of 256 bits (32 bytes).
+         uint256 money; // This will take a new slot because it is a complete 256 bits (32 bytes) value and thus cannot be packed with the previous value.
+     }
+     
+     // Starts at slot 0
+     packedStruct details = packedStruct(53_000, address(0xdeadbeef), 21_000);
+ ​
+     function unpack() external view returns (packedStruct memory) {
+         return details;
+     }
+ }
+```
+
+**5\. 保持字符串长度小于32字节**
+
+在 Solidity 中，字符串是可变长度的动态数据类型，意味着它们的长度可以根据需要进行更改和增长。
+
+如果长度为32字节或更长，它们定义的槽位中存储的是字符串长度 \* 2 + 1，而实际数据存储在其它位置（该槽位的 keccak 哈希值）。
+
+然而，如果字符串长度小于32字节，长度 \* 2 存储在其存储槽位的最低有效字节中，并且字符串的实际数据从定义它的槽位的最高有效字节开始存储。
+
+**6\. 从不更新的变量应为不可变的或常量**
+
+在 Solidity 中，不打算更新的变量应该是常量或不可变的。
+
+这是因为常量和不可变值直接嵌入到它们所定义的合约的字节码中，不使用存储空间。
+
+这样可以节省大量的 gas，因为我们不进行任何昂贵的存储读取操作。
+
+**7\. 使用映射而不是数组以避免长度检查**
+
+当存储你希望按特定顺序组织并使用固定键/索引检索的项目列表或组时，通常使用数组数据结构是常见的做法。这种方法很有效，但你知道可以实现一个技巧，每次读取时可以节省2000多个 gas 吗？
+
+请参考下面的示例
+
+```
+ /// get(0) gas cost: 4860 
+ contract Array {
+     uint256[] a;
+ ​
+     constructor() {
+         a.push() = 1;
+         a.push() = 2;
+         a.push() = 3;
+     }
+ ​
+     function get(uint256 index) external view returns(uint256) {
+         return a[index];
+     }
+ }
+ ​
+ /// get(0) gas cost: 2758
+ contract Mapping {
+     mapping(uint256 => uint256) a;
+ ​
+     constructor() {
+         a[0] = 1;
+         a[1] = 2;
+         a[2] = 3;
+     }
+ ​
+     function get(uint256 index) external view returns(uint256) {
+         return a[index];
+     }
+ }
+```
+
+仅仅通过使用映射，我们就可以节省2102个 gas。为什么？在底层，当你读取数组的索引值时，Solidity 会添加字节码来检查你是否正在读取有效的索引（即索引严格小于数组的长度），否则会回滚并显示恐慌错误（具体为 Panic(0x32)）。这样可以防止读取未分配或更糟糕的已分配存储/内存位置。
+
+由于映射的方式是（简单的键=>值对），不需要进行这样的检查，我们可以直接从存储槽中读取。重要的是要注意，当以这种方式使用映射时，你的代码应确保不要读取超出规范数组索引的位置。
+
+**8\. 使用 unsafeAccess 在数组上避免冗余的长度检查**
+
+使用映射来避免 Solidity 在读取数组时进行的长度检查（同时仍然使用数组）的另一种方法是使用 Openzeppelin 的 `Arrays.sol`库中的 `unsafeAccess` 函数。这使开发人员可以直接访问数组中任意给定索引的值，同时跳过长度溢出检查。但是，仅在确保传递给函数的索引不会超过传递的数组的长度时才使用此方法。
+
+**_\####_ 9\. 在使用大量布尔值时，使用位图而不是布尔值**
+
+一个常见的模式，特别是在空投中，是在领取空投或 NFT 时将地址标记为“已使用”。
+
+然而，由于只需要一个位来存储这些信息，而每个存储槽是 256 位，这意味着可以使用一个存储槽存储 256 个标志/布尔值。
+
+Solidity **支持紧凑存储（Storage Packing）**，但只有当多个变量可以打包到同一个存储槽时才有效。即使 `bool` 变量可以紧凑存储，使用位图仍然可以提供更大的优化空间，特别是在 **大量布尔值** 的情况下。Solidity 在 `struct` 或 `mapping` 中 **按 32 字节（256 位）对齐存储变量**。如果多个 `bool` 或 `uint8` 变量在同一个 `struct` 里，编译器会**自动打包**到一个存储槽中，从而提高存储效率。
+
+**示例：bool 变量的紧凑存储**
+
+```
+ solidity复制编辑pragma solidity ^0.8.0;
+ ​
+ contract PackedStorage {
+     struct UserData {
+         bool isRegistered;  // 1 bit
+         bool hasClaimed;    // 1 bit
+         uint8 age;          // 8 bits
+         uint16 score;       // 16 bits
+     }
+ ​
+     mapping(address => UserData) public users;
+ }
+```
+
+在这个 `UserData` 结构体中：
+
+-   `isRegistered` **占 1 bit**
+    
+-   `hasClaimed` **占 1 bit**
+    
+-   `age` **占 8 bits**
+    
+-   `score` **占 16 bits**
+    
+-   这些字段会被**自动打包到一个 32 字节的存储槽**，而不会浪费 32 字节存储槽。
+    
+
+**紧凑存储的限制**
+
+1.  **不同类型的变量不能自动打包**
+    
+    -   例如 `bool` 和 `uint256` 不能共享同一个存储槽，`uint256` 仍然会占用完整的 32 字节。
+        
+2.  **单个** `bool` **仍然浪费 32 字节**
+    
+    -   如果 `mapping(address => bool)`, 每个 `bool` 仍然占 **一个完整的存储槽**（256 bits）。
+        
+
+* * *
+
+**为什么仍然推荐位图？**
+
+即使 Solidity 支持紧凑存储，**位图（BitMap）仍然更高效**，因为：
+
+-   **紧凑存储仍然无法避免** `bool` **在** `mapping` **里的高开销**。
+    
+-   **位图可以存 256 个布尔值在一个** `uint256` **变量里**，更节省存储。
+    
+-   **Gas 成本更低**，减少 `SSTORE` 操作次数（每次 `SSTORE` 操作都很昂贵）。
+    
+
+**位图 vs 紧凑存储**
+
+| 方案 | 存储槽利用率 | 读取 Gas | 写入 Gas | 适用场景 |
+| --- | --- | --- | --- | --- |
+| mapping(address => bool) | 1/256 | 低 | 高 | 小量布尔值 |
+| struct + 紧凑存储 | 高 | 低 | 低 | struct 内小量布尔值 |
+| mapping(address => uint256) (位图) | 100% | 低 | 低 | 大量布尔值 |
+
+* * *
+
+**位图的实际应用**
+
+对于像 **空投领取、DAO 投票、NFT 领取** 这样的情况，位图比 `bool` **更节省 Gas**。
+
+**示例：使用** `mapping(address => uint256)` **作为位图**
+
+```
+ solidity复制编辑pragma solidity ^0.8.0;
+ ​
+ contract AirdropBitmap {
+     mapping(address => uint256) private claimedBitMap;
+ ​
+     function isClaimed(address user, uint8 index) public view returns (bool) {
+         return (claimedBitMap[user] & (1 << index)) != 0;
+     }
+ ​
+     function claim(address user, uint8 index) external {
+         require(index < 256, "Index out of bounds");
+         require(!isClaimed(user, index), "Already claimed");
+ ​
+         claimedBitMap[user] |= (1 << index);  // 设置索引位置为 1
+     }
+ }
+```
+
+* * *
+
+**结论**
+
+-   **少量布尔值（<8 个）**：紧凑存储（`struct`）是合理的。
+    
+-   **大量布尔值（>256 个）**：位图 **显著节省存储和 Gas**。
+    
+-   **如果** `SimpleDEX` **使用** `mapping(address => bool)` **来存储状态，可以用位图优化 Gas 成本！**
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今天在搭SpoonOS ing，闹麻了。明天继续配
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 被反应式智能合约Uniswap V2 止损订单折磨麻了，环境变量给的不明确，只能去尝试。到现在也没有完成demo
 <!-- DAILY_CHECKIN_2026-01-22_END -->
@@ -30,11 +378,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天完成挑战 Challenge - Tokenization，然后回顾了gas优化和合约安全方面的知识。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -49,6 +399,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **1.19**
 
 今天把Crowdfunding挑战完成了，也算是第一次利用hardhat框架去完成项目了。
@@ -56,6 +407,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -136,6 +488,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **1.17**
 
 ### **数据存储**
@@ -197,11 +550,13 @@ Solidity合约数据存储采用的为合约的每项数据指定一个可计算
 
 
 
+
 把这周的笔记汇总整理了一下。然后做钓鱼攻防任务ing。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1158,6 +1513,7 @@ AA 可以：
 
 
 
+
 \## 1.14
 
 \### 合规
@@ -1447,6 +1803,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1859,6 +2216,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
