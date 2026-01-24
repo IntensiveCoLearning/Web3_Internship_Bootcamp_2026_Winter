@@ -15,8 +15,406 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+Remix IDE 超详细使用教程（Web3智能合约开发必备）
+
+Remix是\*\*以太坊官方推荐\*\*的基于浏览器的智能合约集成开发环境(IDE)，被誉为"Solidity世界的游乐场"。它无需本地安装，打开浏览器即可开始智能合约开发，集成了编写、编译、部署、调试、测试等全套功能，是Web3开发者必备工具，尤其适合新手快速入门。
+
+一、快速入门：打开与界面熟悉
+
+1\. 访问Remix IDE
+
+\- 官方网址：[https://remix.ethereum.org/（国际版）](https://remix.ethereum.org/（国际版）)
+
+\- 国内加速版：[http://remix.hubwiz.com（适合国内用户）](http://remix.hubwiz.com（适合国内用户）)
+
+\- 无需注册登录，直接使用，所有文件存储在浏览器本地或可连接GitHub等云存储
+
+2\. 界面核心布局（四大区域）
+
+区域 位置 功能
+
+**文件管理器** 左侧边栏 管理.sol文件、创建项目、导入外部文件
+
+**功能插件区** 左侧边栏 包含编译器、部署器、调试器等核心功能
+
+**代码编辑器** 中间 编写Solidity代码，支持语法高亮、自动补全、实时错误检查
+
+**终端/交互区** 底部 显示编译结果、交易日志、与部署合约交互 |
+
+3\. 初始设置（新手必看）
+
+1\. 首次打开会显示欢迎页面，点击"Start coding"进入主界面
+
+2\. 在Plugin Manager（插件管理器）中确保启用核心插件：
+
+\- Solidity Compiler（Solidity编译器）
+
+\- Deploy & Run Transactions（部署与运行交易）
+
+\- Debugger（调试器）
+
+\- File Explorer（文件管理器）
+
+3\. 创建第一个工作区：点击"Workspaces" → "Create Workspace" → 命名（如"MyFirstProject"）→ 选择模板（推荐Basic）
+
+\---
+
+二、核心流程：编写→编译→部署→交互
+
+1\. 创建与编写智能合约
+
+1\. **新建文件**：
+
+\- 在File Explorer中点击"+"号图标
+
+\- 输入文件名（`SimpleStorage.sol`），Remix会自动添`.sol`扩展名
+
+2\. **编写基础合约（示例）**：
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT // 许可证声明（必填）
+
+pragma solidity ^0.8.20; // Solidity版本声明（^表示兼容该版本及以上）
+
+contract SimpleStorage {
+
+uint256 private \_favoriteNumber; // 私有状态变量
+
+// 存储数字
+
+function store(uint256 favoriteNumber) public {
+
+\_favoriteNumber = favoriteNumber;
+
+}
+
+// 读取数字（view函数，不消耗Gas）
+
+function retrieve() public view returns (uint256) {
+
+return \_favoriteNumber;
+
+}
+
+}
+
+\`\`\`
+
+3\. **编辑器实用功能**：
+
+\- **语法高亮**：不同元素用不同颜色标注，提高可读性
+
+\- **自动补全**：输入时智能提示函数、变量、关键字
+
+\- **实时错误检查**：语法错误会立即显示红色波浪线
+
+\- **Gas估算**：显示函数执行所需Gas消耗（底部状态栏）
+
+\- **快捷键**：Ctrl+S保存、Ctrl+F查找、Ctrl+/注释、F1显示帮助
+
+2\. 编译智能合约（关键步骤）
+
+1\. **打开Solidity Compiler**：点击左侧边栏的锤子图标
+
+2\. **配置编译参数**（新手推荐默认值）：
+
+| 参数 | 推荐设置 | 说明 |
+
+| Compiler Version | 0.8.20+ | 必须与合约中的pragma声明兼容 |
+
+| EVM Version | Shanghai | 最新稳定版EVM |
+
+| Optimization | 200 | 开启优化，降低部署和执行成本 |
+
+3\. **开始编译**：
+
+\- 点击"Compile SimpleStorage.sol"按钮
+
+\- 成功：显示绿色对勾，生成ABI和字节码
+
+\- 失败：显示红色叉号，在底部终端查看错误信息（通常是语法错误或版本不匹配）
+
+4\. **编译技巧**：
+
+\- 自动编译：开启"Auto compile"选项，保存文件时自动编译
+
+\- 批量编译：右键点击文件夹选择"Compile All"编译所有合约
+
+\- 查看ABI：编译成功后点击"ABI"按钮复制，用于前端开发
+
+3\. 部署智能合约（核心操作）
+
+1\. **打开Deploy & Run Transactions**：点击左侧边栏的火箭图标
+
+2\. **选择部署环境**（根据开发阶段选择）：
+
+| 环境 | 适用场景 | 特点 |
+
+|------|----------|------|
+
+| **Remix VM (Shanghai)** | 本地测试 | 内置模拟区块链，提供100 ETH测试币，无需MetaMask |
+
+| **Injected Provider - MetaMask** | 测试网/主网 | 连接本地MetaMask钱包，可部署到Sepolia测试网或以太坊主网 |
+
+| **Hardhat Provider** | 本地开发 | 连接本地Hardhat节点 |
+
+3\. **部署前准备**：
+
+\- 选择账户：Remix VM自动提供5个测试账户；MetaMask环境需确保账户有足够测试币（Sepolia测试网可通过水龙头获取）
+
+\- 选择合约：在"Contract"下拉菜单中选择要部署的合约（`SimpleStorage`）
+
+\- 构造函数参数：如果合约有构造函数，在此处输入参数值
+
+4\. **部署合约**：
+
+\- 点击橙色"Deploy"按钮
+
+\- 部署成功后，在"Deployed Contracts"区域会显示合约实例
+
+\- 记录合约地址（后续交互和前端开发需要）
+
+4\. 与智能合约交互
+
+1\. **调用函数**：
+
+\- 在部署的合约实例下找到函数按钮
+
+\- 对`store`函数：输入数字（如42）→ 点击"transact"（会消耗Gas）
+
+\- 对`retrieve`函数：点击"call"（不消耗Gas，仅读取数据）
+
+2\. **查看交易详情**：
+
+\- 底部终端会显示交易哈希、Gas消耗、区块号等信息
+
+\- 点击交易哈希可在调试器中查看详细执行过程
+
+三、高级功能：调试→测试→安全审计
+
+1\. 智能合约调试（解决问题的关键）
+
+当合约执行不符合预期或抛出错误时，使用Debugger定位问题：
+
+1\. **启动调试**：
+
+\- 执行交易后，在终端中找到对应交易，复制交易哈希
+
+\- 打开Debugger（bug图标），粘贴交易哈希→点击"Start Debugging"
+
+2\. **调试核心功能**：
+
+\- **单步执行**：使用"Step Over"（F6）、"Step Into"（F7）、"Step Out"（Shift+F7）控制执行流程
+
+\- **状态查看**：实时显示变量值、堆栈、内存、存储数据
+
+\- **断点设置**：在代码行号旁点击设置断点，快速定位问题区域
+
+\- **Gas分析**：查看每步操作的Gas消耗，优化合约性能
+
+2\. 智能合约测试（保障代码质量）
+
+Remix支持多种测试方式，确保合约功能正确：
+
+1\. **Solidity单元测试**（推荐）：
+
+\- 创建测试文件（`SimpleStorage.test.sol`）
+
+\- 使用Remix内置的测试框架或第三方库（如ds-test）
+
+\`\`\`solidity
+
+import "remix\_tests.sol"; // 导入Remix测试库
+
+import "./SimpleStorage.sol";
+
+contract SimpleStorageTest {
+
+SimpleStorage storageContract;
+
+function beforeAll() public {
+
+storageContract = new SimpleStorage(); // 测试前部署合约
+
+}
+
+function testStoreAndRetrieve() public {
+
+[storageContract.store](http://storageContract.store)(42);
+
+Assert.equal(storageContract.retrieve(), 42, "Stored value should be 42");
+
+}
+
+}
+
+\`\`\`
+
+\- 运行测试：在Solidity Compiler中编译测试文件→在Deploy & Run中选择测试合约→点击"run"按钮
+
+2\. **JavaScript测试（Mocha+Chai）**：
+
+\- 创`.js`测试文件（`SimpleStorage.test.js`）
+
+\- 使用Remix内置的Mocha和Chai库编写测试脚本
+
+\- 运行测试：在Remix中右键点击测试文件→选择"Run Tests"
+
+3\. 安全审计工具（规避漏洞）
+
+Remix内置多种安全分析工具，帮助发现常见漏洞：
+
+1\. **Static Analysis**（静态分析）：
+
+\- 打开"Static Analysis"插件
+
+\- 点击"Run Analysis"，会检测：
+
+\- 整数溢出/下溢（使用SafeMath或Solidity 0.8+内置检查）
+
+\- 重入攻击风险
+
+\- 权限控制问题
+
+\- 未初始化变量等常见漏洞
+
+2\. **Gas Profiler**（Gas分析器）：
+
+\- 分析合约函数的Gas消耗
+
+\- 找出高Gas消耗的代码段，进行优化（如减少存储操作、使用calldata代替memory）
+
+四、进阶技巧：提升开发效率
+
+1\. 工作区与文件管理
+
+\- **导入外部文件**：
+
+\- 本地文件：点击File Explorer中的"Import" → 选择文件
+
+\- GitHub文件：使`import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/token/ERC20/ERC20.sol";`
+
+\- npm包：使`import "@openzeppelin/contracts/token/ERC20/ERC20.sol";`（Remix会自动下载）
+
+\- **版本控制**：连接GitHub账户，直接在Remix中提交、拉取代码
+
+2\. 高级部署技巧
+
+1\. **部署带库合约**：
+
+\- 先部署库合约，获取库地址
+
+\- 在编译时指定库地址：Solidity Compiler → "Libraries" → 输入库名称和地址
+
+\- 再部署主合约
+
+2\. **代理合约部署**：
+
+\- 适合需要升级的合约
+
+\- 使用OpenZeppelin的Proxy模式
+
+\- Remix支持直接部署TransparentUpgradeableProxy等代理合约
+
+3\. **合约验证**：
+
+\- 部署到主网/测试网后，在Remix中直接验证合约源码
+
+\- 选择"Contract Verification"插件 → 输入合约地址和编译器参数 → 提交验证
+
+3\. 脚本自动化
+
+使用Remix的\*\*Scripts\*\*功能自动化重复操作：
+
+\`\`\`javascript
+
+// 部署并测试SimpleStorage合约的脚本
+
+async function main() {
+
+// 编译合约
+
+await [remix.call](http://remix.call)('solidity', 'compile', 'contracts/SimpleStorage.sol');
+
+// 获取合约工厂
+
+const SimpleStorage = await ethers.getContractFactory('SimpleStorage');
+
+// 部署合约
+
+const storage = await SimpleStorage.deploy();
+
+await storage.deployed();
+
+console.log('SimpleStorage deployed to:', storage.address);
+
+// 交互测试
+
+await [storage.store](http://storage.store)(42);
+
+const value = await storage.retrieve();
+
+console.log('Stored value:', value.toString());
+
+}
+
+main()
+
+.then(() => process.exit(0))
+
+.catch(error => {
+
+console.error(error);
+
+process.exit(1);
+
+});
+
+\`\`\`
+
+\- 运行脚本：在Deploy & Run中选择"Scripts" → 选择脚本文件 → 点击"Run"
+
+\---
+
+\### 五、常见问题与解决方案
+
+| 问题 | 原因 | 解决方案 |
+
+|------|------|----------|
+
+| 编译失败，显示版本不匹配 | 编译器版本与pragma声明不一致 | 在Solidity Compiler中选择匹配的版本 |
+
+| 部署时提示"Insufficient funds" | 账户余额不足 | 切换到Remix VM获取测试币，或在测试网水龙头领取代币 |
+
+| 函数调用无响应 | 可能是交易未确认或合约地址错误 | 检查交易哈希是否成功上链，确认合约地址正确 |
+
+| 调试器无法启动 | 未找到交易哈希或环境不支持 | 确保在支持调试的环境中执行交易，复制正确的交易哈希 |
+
+\---
+
+六、学习资源与下一步
+
+1\. **官方文档**：[https://remix-ide.readthedocs.io（包含中文文档）](https://remix-ide.readthedocs.io（包含中文文档）)
+
+2\. **内置教程**：在LearnEth插件中获取交互式教程，适合新手系统学习
+
+3\. **进阶方向**：
+
+\- 学习OpenZeppelin合约库，提升合约安全性
+
+\- 尝试开发ERC20/ERC721代币合约
+
+\- 学习使用Hardhat/Truffle与Remix结合开发
+
+\- 探索Remix的高级插件生态
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # Remix 超详细使用教程（Web3 智能合约开发必备）
 
 Remix IDE 是以太坊生态最主流的**在线 / 本地智能合约开发工具**，无需复杂环境配置，支持 Solidity 合约的编写、编译、部署、测试、调试全流程，是 Web3 新手入门和快速开发的首选工具，以下从**核心功能、操作步骤、实用技巧**三方面讲解，零基础也能快速上手。
@@ -50,6 +448,7 @@ Remix IDE 是以太坊生态最主流的**在线 / 本地智能合约开发工�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 -   **Web3 基础概念**：
@@ -105,6 +504,7 @@ Remix IDE 是以太坊生态最主流的**在线 / 本地智能合约开发工�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -305,6 +705,7 @@ ABI decode：把链上的二进制 “说明书” 翻译回来，让钱包、DA
 
 
 
+
 EVM 基础介绍：
 
 运行环境：EVM 是以太坊合约运行和编译的环境，所有以太坊或其生态的合约都在此运行。
@@ -357,6 +758,7 @@ gas 优化：少用链上存储，使用 onchange 节省 gas，但要确保无�
 
 
 
+
 今日工作打卡总结 组队 建立社群 微信群
 
 一、今日核心完成事项
@@ -388,6 +790,7 @@ gas 优化：少用链上存储，使用 onchange 节省 gas，但要确保无�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -465,6 +868,7 @@ Gas 费承担主体
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -601,6 +1005,7 @@ RWA既保留了传统资产的稳定收益（比如债券利息、房租），�
 
 
 
+
 **Web3 治理问题**：
 
 -   **现存问题**：存在巨鲸垄断和治理冷漠问题，导致想赚钱的持币者控制方向，真正干活的开发者失语。
@@ -693,6 +1098,7 @@ RWA既保留了传统资产的稳定收益（比如债券利息、房租），�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1012,6 +1418,7 @@ Web3 的 AI 不是 “所有场景都效率高”，但在跨境支付、小额�
 
 
 
+
 Web3大陆合规分享笔记
 
 核心前提
@@ -1104,6 +1511,7 @@ Web3大陆合规分享笔记
 
 
 
+
 Web3运行原理：
 
 1\. **安全核心**：私钥是资产控制权的关键，严禁截图、转发或完整复制，粘贴板存在被监控风险，建议分段复制+手动补全。
@@ -1133,6 +1541,7 @@ Web3运行原理：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
