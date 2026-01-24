@@ -22,10 +22,64 @@ Web3 实习计划 2025 冬季实习生
 2026/01/24 总体学习计划如下：
 
 -   [Solidity 101](https://www.wtf.academy/zh/course/solidity101)
+    
+
+# Solidity 101
+
+### **1）课程地图**
+
+| 主题 | 要掌握的产出物 |
+| --- | --- |
+| HelloWeb3（3 行合约） | 会在 Remix 新建合约、编译、部署，并通过 public 变量 getter 读到返回值 |
+| Value Types（值类型） | 能区分 value / reference / mapping / function；会用 bool、int/uint、address、bytesN、enum |
+| Function（函数） | 会写 visibility（public/private/internal/external）与 pure/view/payable；理解哪些操作算“改状态” |
+| Function Output（返回） | 会 returns/return、多返回值、具名返回、解构赋值（取全部或部分） |
+| Data Storage and Scope | 会选 storage/memory/calldata；理解赋值是“引用”还是“拷贝”；会分辨状态变量与局部变量 |
+| Array & Struct | 会静态数组、动态数组、bytes；会 push/pop/length；会 4 种 struct 初始化方式 |
+| Mapping | 会声明 mapping；理解 key 类型限制；理解 mapping 只能在 storage；会写入与读取 |
+| Initial Value | 记住常见类型默认值；会用 public getter 验证默认值 |
+| Constant and Immutable | 会区分 constant 与 immutable 初始化时机；知道哪些类型可用 immutable |
+| Control Flow | 会 if/for/while/do-while/三元；能读懂插入排序逻辑与常见坑 |
+| constructor and modifier | 会用 constructor 初始化 owner；会写 onlyOwner modifier 做访问控制 |
+| Events | 会声明 event、emit；理解 indexed 与 topics/data；会在交易详情里查日志 |
+| Inheritance | 会写 is 继承、virtual/override；理解多重继承下 super 调用顺序 |
+| Abstract and Interface | 会区分 abstract contract 与 interface；知道 interface 的限制与用途 |
+| Errors | 会用 require/revert/assert 与自定义 error；理解自定义 error 的 gas 优势方向 |
+
+### **2）类型、数据结构、数据位置速查表**
+
+| 模块 | 关键点 | 典型坑 | 自测方式（Remix） |
+| --- | --- | --- | --- |
+| 值类型（Value Types） | bool、int/uint、address 与 address payable、bytesN、enum | bytesN 是值类型，bytes 是动态字节数组（引用类型) | 部署后直接点 public 变量按钮查看值 |
+| 地址（address） | address payable 才有 transfer/send 成员，且可查 balance | 把 address 当成可转账地址用会报错或写不出代码 | 声明 address payable，读取 balance，必要时在 payable 函数里收 ETH |
+| 数组（array） | 静态 T[k] 与动态 T[]；dynamic 才能 push/pop；memory 动态数组可 new，但长度固定 | memory 动态数组 new 完不能再变长；bytes 推荐胜过 bytes1[]，且不要用 byte[] | 写一个函数返回 length，或对 storage 动态数组 push/pop 看变化 |
+| 结构体（struct） | struct 可含值类型与引用类型；可作为 array 或 mapping 的 value；4 种赋值方式（storage 引用、直接赋值、构造器、键值） | 方法 1 是 storage 引用，改它会影响原 struct（这是特性，不是 bug） | 分别调用 4 种 init 方法，读 student.id/score |
+| 映射（mapping） | 格式 mapping(Key => Value)；Key 只能用内置类型（如 uint、address），不能用自定义 struct；mapping 必须在 storage；public mapping 自动生成 getter | 试图把 mapping 放进函数参数或返回值（尤其 public）会报错 | 调用写入函数后，用 getter 用 Key 读 Value |
+| 数据位置（storage/memory/calldata） | storage 上链、gas 贵；memory 与 calldata 临时；calldata 只读，常用于函数参数 | storage → storage 通常是引用；storage ↔ memory 通常是拷贝；搞错会引起“改了副本没生效”或“意外改到原数据” | 写两组函数：一组用 storage 引用改数组，一组用 memory 拷贝改数组，对比结果 |
+
+### **3）函数、返回、控制流速查表**
+
+| 模块 | 关键点 | 你要记住的规则 | 自测方式（Remix） |
+| --- | --- | --- | --- |
+| 函数签名 | function name(params) visibility pure/view/payable returns(...) | visibility 必须写；pure 不能读写状态；view 只能读不能写；payable 才能收 ETH；“改状态”的行为包含写状态变量、emit 事件、创建合约、转 ETH 等 | 写 add / addView / addPure 三个版本，对照编译器报错与运行结果 |
+| 函数返回 | returns 声明返回类型与变量名；return 在函数体返回值；支持多返回值、具名返回；支持解构赋值取全部或部分 | 解构赋值可以留空位，但数量要对齐；具名返回可以不写 return 也会自动返回 | 写 returnNamed，再用 (_a,_b,_c)=returnNamed 与 (, _b, )=returnNamed |
+| 控制流 | if-else、for/while/do-while、三元；continue/break | 循环在链上有 gas 风险，复杂逻辑更易出错；课程用插入排序举例说明“看似简单但容易写错” | 跑插入排序示例，自己改一版并用多组数组测试边界情况 |
+
+### **4）合约组织、可维护性与链上可观测性**
+
+| 模块 | 核心用途 | 关键语法点 | 常见坑 |
+| --- | --- | --- | --- |
+| constructor | 部署时执行一次，用于初始化（如 owner = msg.sender） | 新版用 constructor 关键字；旧版曾用“同名函数”做构造器，容易写错导致安全问题 | 忘记初始化关键参数，或把部署者权限逻辑写反 |
+| modifier | 抽离重复校验逻辑，常用于访问控制（onlyOwner） | modifier 内用 require 校验，_; 表示继续执行函数体 | require 不带错误信息不利排查；修饰器叠加顺序要可预测 |
+| events | 把关键行为写入 EVM 日志，前端或分析工具可订阅；存事件通常比存新状态变量便宜 | event 可 indexed 参数进入 topics；其余进 data；topics 最多 4 个，通常第 1 个是事件签名哈希 | 把大数据放 indexed（会变成哈希或不易直接读）；忘记 emit 导致链上不可观测 |
+| inheritance | 复用逻辑与扩展能力；多重继承时需要显式 override，理解 super 调用链 | virtual/override；多重继承下 super 依据线性化顺序向上调用 | override 写漏或继承顺序不当导致行为与预期不同 |
+| abstract / interface | interface 用来定义标准化能力边界；abstract 可留未实现函数给子合约实现 | interface 通常只含函数声明与事件；实现方按接口签名实现 | 误把 interface 当成可部署合约；函数签名不一致导致无法编译 |
+| errors | require/revert/assert 与自定义 error；自定义 error 往往更省 gas | error Name(params); revert Name(params) | 断言与前置条件混用；错误信息设计不利于定位问题 |
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ## **Day 12 学习计划**
 
@@ -72,6 +126,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -92,6 +147,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -130,6 +186,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -328,6 +385,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -430,6 +488,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -497,6 +556,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -532,6 +592,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -619,6 +680,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -741,6 +803,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -932,6 +995,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1070,6 +1134,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
