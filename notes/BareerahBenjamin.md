@@ -15,13 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+周六在香港刚参加完一场关于区块链与金融应用的对谈，信息量很大，整理出几条核心笔记：
+
+以太坊基金会的 Mo 分享了一个观点：隐私技术（如 ZK、FHE）在过去几年更像极客的实验，但现在它是机构资产上链的先决条件。没有隐私保护，正规军就不可能把核心交易数据放在公链上。隐私不是为了隐藏，而是为了安全合规。
+
+Chainlink 的 Wally 提到了他们与 SWIFT、瑞银的合作。最让我印象深刻的是，现在的重点不再是让 Web2 顺从 Web3，而是 Web3 基础设施在主动适配银行和资本市场。这种转变很务实：金融机构要的是效率和合规，而不是改变底层逻辑。
+
+现场 Taiko 的 Adele 说得很直白，现在一键发链技术太成熟，未来 L2 会泛滥。但对于开发者和用户来说，大家只认“心智”。只有能真正沉淀资产、搞定实际支付或者承接 RWA 业务的链才能活下来。L2 赛道已经过了“讲技术故事”的阶段，现在拼的是谁能像金融路由器一样解决实际问题。
+
+Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大金主，现在正通过 Morpho 这种更灵活的基础设施去提高资金效率。甚至现场还讨论了如何让 DeFi 用户参与香港的 IPO 基金产品，这种通过 RWA 把链上流动性引向本地金融红利的尝试，比单纯的空气币借贷有意义得多。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今天去参加了 Ethereum Hong Kong Meetup。这是我第一次线下参加 Web3 相关的活动，一共有三轮，一个是对隐私的讨论，主要在说 ZK；第二个主要说 FinTech，RWA之类的；最后一个说的是关于 FinTech 的协议和 L2 创新。信息量很大，我会整理一下再发
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 啊啊啊啊忘记更新前一天的笔记了，我看了一些 uniswapv2 的在线课程，然后想根据文档写 polymarket 初级代码任务，但是调了半天没弄好花了很多时间，明天再试试，如果不行就问问助教，然后给平台提了建议也提交了pr
@@ -31,6 +46,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -45,11 +61,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天跟着昨天晚上课的回放复现了erc-20，完成了 Challenge#01，找 Tx 找了半天，最后在配置文件找到的，看了一部分 Polymarket 内容（今天睡了懒觉
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -77,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要是在学习solidity的语法之类的东西，顺便总结了下昨天晚上直播的内容，完成了 **Ethernaut** 的前两关，[Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分的代码运行到了 Array，做了[Solidity 101](https://www.wtf.academy/zh/course/solidity101)的题，晚上听 Luna 老师讲了关于 TG 社群的设置和运营，也自己尝试建立了一个社群，但是还没设置好。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -93,11 +112,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天白天把入门技术的任务做了，晚上听直播课
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -130,11 +151,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天打算梳理一下前4天老师们的直播，然后学一点rust
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -162,6 +185,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -370,6 +394,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 
 
+
 **dApp（）**
 
 **用智能合约做后端，用以太坊做数据库和结算层”的应用程序**
@@ -394,6 +419,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
