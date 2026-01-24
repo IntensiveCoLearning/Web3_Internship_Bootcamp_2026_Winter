@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今天的主要任务还是继续深度任务的学习和实践
+
+1.  听了几个分享会，同学们都好有热情，能力和学习热情都狠棒，向大家学习
+    
+2.  听了LXDAO周会，感受下去中心治理的魅力，对LXDAO的好感又加深了
+    
+3.  终于完成了Reactive的任务，花了好久，明天整理一个学习流程发到X上
+    
+4.  任务中对Uniswap V2中函数的直接调用让我的理解更深刻了
+    
+5.  和yuxuan老哥线下面基了，离得这么近实在是太巧了，还有base厦门的同学欢迎找我玩
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今天完成任务+听分享会，感觉没有太多时间做详细笔记了，跟huahua老师学习，简单记录一下，周六日复盘再整理下
 
 1.  上午Austin的分享相当友好了，带大家过了一下SpeedRun，他真的很有激情，想他学习，比较关键的点是随机数的问题
@@ -30,6 +46,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ## 完成任务
 
@@ -105,6 +122,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 ## 笔记
 
 Uniswap
@@ -175,6 +193,7 @@ LP提供的流动性贡献在一个特定的区间，可以让流动性更大
 
 
 
+
 ## 笔记
 
 **remix实操**
@@ -220,6 +239,7 @@ storage：4906
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -576,6 +596,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日计划完成情况
 
 1.  完成speed run etheruem challenge 0
@@ -600,6 +621,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -810,6 +832,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1072,6 +1095,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日学习任务完成情况
 
 1.  021学习以太坊第三章
@@ -1111,6 +1135,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1173,6 +1198,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1278,6 +1304,7 @@ Q：NFT的价值来自什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
