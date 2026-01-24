@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+今天主要进行了 Solidity 的应用学习（Applications），重点体验了以下功能的实现：
+
+1\. Ether Wallet
+
+2\. Multi-Sig Wallet
+
+3\. Merkle Tree
+
+4\. Iterable Mapping
+
+5\. ERC20
+
+然后重温了上一次 Assembly 从 Reveal 到 Loop、Error 的一些复杂的嵌套逻辑和错误。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 1.23 补充
 
 ### 一、默认值与“看不见的状态”
@@ -118,6 +136,7 @@ Solidity 中有三种主要的失败机制，但语义并不相同：
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 **storage**：链上永久存储，读写成本高，生命周期与合约一致。
 
 **memory**：函数执行期间的临时内存，成本较低，执行结束即释放。
@@ -210,6 +229,7 @@ contract Ownable {
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 ### **1.21**[**Solidity by Example | 0.8.26**](https://solidity-by-example.org/) **Basic 部分**
 
 **一、Hello World 合约与基础结构**
@@ -277,6 +297,7 @@ function getSum(uint a, uint b) external pure returns(uint) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -485,6 +506,7 @@ assert
 
 
 
+
 ### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
 
 A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
@@ -564,6 +586,7 @@ RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取
 
 
 
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -609,6 +632,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -701,6 +725,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -754,6 +779,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -846,6 +872,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -911,6 +938,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -948,6 +976,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
