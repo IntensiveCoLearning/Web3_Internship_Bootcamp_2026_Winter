@@ -15,8 +15,172 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+扫盲词汇
+
+To the moon——价格持续暴涨
+
+LFG——Let’s Fucking Go，冲冲冲
+
+Whitelist——白名单
+
+Pre-sale——预售
+
+Bonus——额外奖励
+
+BTC——比特币
+
+ETH——以太坊
+
+Crypto——加密货币
+
+Meme——迷因币
+
+NFT——非同质化代币
+
+FOMO——错失恐惧
+
+FUD——恐惧、不确定、怀疑
+
+GM——早安
+
+HODL——长期持有
+
+Bull Market——牛市
+
+Bear Market——熊市
+
+DeFi——去中心化金融
+
+Staking——质押
+
+Mining——挖矿
+
+Liquidity Pool（LP）——流动性池
+
+Yield Farming——流动性挖矿
+
+ICO——首次代币发行
+
+IDO——首次数字资产发行
+
+IEO——首次交易所发行
+
+DEX——去中心化交易所
+
+CEX——中心化交易所
+
+Fiat——法币
+
+Wallet——钱包
+
+Private Key——私钥
+
+Public Key——公钥
+
+Smart Contract——智能合约
+
+Gas Fee——燃料费
+
+Rug Pull——跑路诈骗
+
+DYOR——自行研究
+
+APY——年化收益率
+
+TVL——总锁仓价值
+
+KYC——了解你的客户
+
+DAO——去中心化自治组织
+
+Layer 1（L1）——基础区块链
+
+Layer 2（L2）——二层扩容方案
+
+BSC——币安智能链
+
+Cross chain——跨链
+
+Bridge——跨链桥
+
+Oracle——预言机
+
+Airdrop——空投
+
+Soft Fork——软分叉
+
+Hard Fork——硬分叉
+
+Block Reward——区块奖励
+
+Hash Rate——算力
+
+Satoshi（SATS）——比特币最小单位
+
+Gwei——以太坊手续费单位
+
+Seed Phrase——助记词
+
+POS——权益证明
+
+POW——工作量证明
+
+GameFi——链游金融
+
+SocialFi——社交金融
+
+Binance——币安
+
+OKX——欧易
+
+CZ——币安创始人
+
+AMA——问答活动
+
+DM——私信
+
+VC——风险投资
+
+MC——流通市值
+
+KOL——关键意见领袖
+
+Paper hand——纸手
+
+Diamond hand——钻石手
+
+Metamask——小狐狸钱包
+
+U——稳定币
+
+CMC——CoinMarketCap
+
+Mn——百万
+
+Bn——十亿
+
+ATH——历史最高价
+
+ATL——历史最低价
+
+Whale——鲸鱼
+
+Pump and Dump——拉盘砸盘
+
+Shill——站台喊单
+
+Rekt——巨亏
+
+BTD / BTFD——逢低买入
+
+AML——反洗钱
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 今日学习：
 
 今天胡老师开小灶教大家打磨简历！
@@ -87,6 +251,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 今日学习：
 
@@ -265,6 +430,7 @@ Grok 是由 X（推特）官方推出的内置 AI 助手，用来在推特内直
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 今日学习：
 
 ### 一、通证经济（Tokenomics）
@@ -347,6 +513,7 @@ Grok 是由 X（推特）官方推出的内置 AI 助手，用来在推特内直
 
 
 
+
 今日学习：
 
 ### 一、注册了figma的账号
@@ -417,6 +584,7 @@ Grok 是由 X（推特）官方推出的内置 AI 助手，用来在推特内直
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -595,6 +763,7 @@ Grok 是由 X（推特）官方推出的内置 AI 助手，用来在推特内直
 
 
 
+
 Web3打卡D4｜终于搞懂智能合约的核心逻辑啦💻
 
 📌今日打卡清单：
@@ -618,6 +787,7 @@ Web3打卡D4｜终于搞懂智能合约的核心逻辑啦💻
 
 
 
+
 **实习日记 Day 3 - 发烧插曲🤒**
 
 **打卡内容：** 今天发烧病倒，脑部运行处于晕眩状态，无法保持专注学习。
@@ -627,6 +797,7 @@ Web3打卡D4｜终于搞懂智能合约的核心逻辑啦💻
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -647,6 +818,7 @@ Web3打卡D4｜终于搞懂智能合约的核心逻辑啦💻
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
