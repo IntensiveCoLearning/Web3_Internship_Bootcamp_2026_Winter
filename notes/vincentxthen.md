@@ -89,7 +89,7 @@ DAY13
         
     -   **流程优化**：直播前与嘉宾进行简短沟通，对齐预期，建立信任感，减少正式感。
         
-    -   **时长调整：**考虑延长到1个小时。
+    -   \*\*时长调整：\*\*考虑延长到1个小时。
         
 3.  **优化运营配置**：
     
@@ -110,11 +110,14 @@ DAY13
 
 **报告归档：** 2023年10月27日
 
-**归档人**：《踏浪者记》Vincent Xthen | Nancy Yang
+**归档人**：《踏浪者记》Vincent Xthen | Nancy Yang  
+
+![poster2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-24-1769247084980-poster2.jpg)![微信图片_20260121083516_8620_157.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-24-1769247084980-_____20260121083516_8620_157.png)
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 DAY12  
 1.入选了黑客松筹备组  
@@ -130,6 +133,7 @@ DAY12
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 DAY11  
 今日主要围绕小组发活动的筹备展开学习  
 1.Figma的海报设计：尝试了Figma除脑图外的在平面设计上的更多用法，确实是很高效的工具，就是字库问题暂时没时间去研究。好像没法调用本地字库。  
@@ -142,6 +146,7 @@ DAY11
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -287,6 +292,7 @@ Web3需要的最核心的技能是在知道技术边界的前提下，做出好�
 
 
 
+
 -   DAY 9
     
 -   整理了《Web3 运行原理的笔记》制作了脑图
@@ -307,6 +313,7 @@ Web3需要的最核心的技能是在知道技术边界的前提下，做出好�
 
 
 
+
 DAY8
 
 忙碌的一天，草草啃了一些手册里的内容 技术部分对文科生来说还是艰涩了点
@@ -316,6 +323,7 @@ DAY8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -398,6 +406,7 @@ DAY7
 
 
 
+
 DAY6
 
 //成都雾霾连续爆表一个月 今天鼻炎终于大爆发，疯狂喷嚏鼻涕，头昏脑胀
@@ -411,6 +420,7 @@ DAY6
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -441,6 +451,7 @@ DAY5
 
 
 
+
 DAY4  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485305863-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485449721-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485466886-image.png)
@@ -448,6 +459,7 @@ DAY4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -482,6 +494,7 @@ DAY3
 
 
 
+
 DAY2  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296425226-image.png)![5256c0f3e7c881eda8158c6049c39b84.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296346499-5256c0f3e7c881eda8158c6049c39b84.jpg)
@@ -489,6 +502,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
