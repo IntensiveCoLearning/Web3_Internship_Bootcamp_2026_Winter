@@ -17,6 +17,10 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+**推特写了个文章**
+
+[https://x.com/0xMax2557/status/2014938927061471348](https://x.com/0xMax2557/status/2014938927061471348)
+
 ### \[B-4\]JIT Attack
 
 **Description:** `JIT`指`Just In Time`，攻击者在某个关键状态即将生效前或刚生效时，瞬时介入（进入 / 退出 / 修改状态），从而获得不成比例的收益或特权，且几乎不承担对应风险或成本。本质是收益与风险的不对称。下面我举几个例子：
@@ -37,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 今天坐了一天高铁，准备明天开始赶进度，好多分享会都错过了。这几天实在忙，今天就讲一讲最近在审计的VII-Finance。这是一个Uniswap生态的衍生Defi，用来将Uniswap V3和V4的token接入Euler借贷系统，通过将NFT转化成ERC6909 (ERC20的组合)，解决Uniswap V3和V4 用来代表LP的NFT不能被传统借贷Defi接收的问题。Euler的`Etherium Vault Connection`架构允许了LP Tokne作为抵押，借贷任何Euler体系中的代币。
 
 为什么Euler借贷不兼容ERC721，也就是非同质化代币。我认为主要的原因在于相比于ERC20，ERC721是非同质化的，如果计算ERC20 Vault一个address的代币"价值" (比如用美元为标准的价值) 的时间复杂度是O(1)，那么ERC721就是O(n)，二者的差别很大。
@@ -48,6 +53,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 ### \[T-2\] 1/21/2026
 
 这三天一直在做`VII-Finance`的audit，一共差不多花了八小时，现在应该是进行到了1/2，还剩几个合约没有review。这算我第一次的审计，很激动的，希望我的Finding都能通过。但是这几天还要加急"复习"数字电路，其实这学期这个课我一节没听，有些难！这两件事叠加在一起导致实习计划的很多colearning和分享会没听到。。。23号回家重新看录播吧
@@ -55,6 +61,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -73,6 +80,7 @@ ISO 4217 is the international standard defining three-letter alphabetic and thre
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -125,6 +133,7 @@ Tempo链稳定币支付
 
 
 
+
 ### \[N-4\] Just jotting down some thoughts in 1/18/2026
 
 昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
@@ -140,6 +149,7 @@ Tempo链稳定币支付
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -302,6 +312,7 @@ contract UniswapV3SwapTest is Test {
 
 
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -325,6 +336,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -525,6 +537,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -544,6 +557,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -780,6 +794,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
