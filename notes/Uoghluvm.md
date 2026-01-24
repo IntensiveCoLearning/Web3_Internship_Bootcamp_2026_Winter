@@ -23,7 +23,7 @@ Web3 实习计划 2025 冬季实习生
 
 曾几何时，学习以太坊开发被视为一场“苦行”。你不仅要面对 Solidity 严苛的语法，还得在本地环境配置中反复挣扎。最令人沮丧的是，早期的开发试错成本极高——Austin Griffith 曾分享过，过去在主网部署一个简单的 NFT 合约竟然要花费 1500 美元。这种高昂的代价，加上在测试网（Testnet）领水时的繁琐体验，足以劝退大多数充满好奇心的开发者。
 
-然而， Austin 告诉我们：时代变了。现在的 Web3 开发环境已经发生了范式移转。如果你还停留在“死记硬背语法”的旧路子上，那你可能正在错过这场技术革命最迷人的部分。
+然而，Austin 告诉我们：时代变了。现在的 Web3 开发环境已经发生了范式移转。如果你还停留在“死记硬背语法”的旧路子上，那你可能正在错过这场技术革命最迷人的部分。
 
 \--------------------------------------------------------------------------------
 
@@ -114,6 +114,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 完成了Twitter Space策划方案，希望能过。  
 开发黑客松项目中。
 
@@ -126,11 +127,13 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 听了xAI员工播客，原来xAI用Tesla车上的FSD算力来快速迭代小模型。那么ETH完全可以做同样的事！
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -222,6 +225,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 今天看同学笔记，深入了解了polymarket的机制，一切馈赠都标好了价格。
 
 加了投研群，感觉这才是web3的根基啊。
@@ -231,6 +235,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -251,6 +256,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 撰写了学习总结，[https://x.com/uogh007/status/2012760845420261510?s=20](https://x.com/uogh007/status/2012760845420261510?s=20)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -263,11 +269,13 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 研究了polymarket，好多套利项目
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -381,6 +389,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -551,11 +560,13 @@ AI 技术的大规模应用彻底重塑了 Web3 的社交工程学边界。2025 
 
 
 
+
 参加了Billions线下活动
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -733,6 +744,7 @@ Web3被称为“世界上人效杠杆率最高的行业之一”，以下这组�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
