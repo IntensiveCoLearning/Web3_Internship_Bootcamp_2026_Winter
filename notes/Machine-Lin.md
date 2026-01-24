@@ -15,8 +15,53 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+# 一、Web2 to Web3 Week 1 Day 5
+
+## 1.Stuck Transactions/交易停滞
+
+-   现象：交易发出后长时间 pending（卡在内存池）
+    
+-   原因：Gas Price 太低、Nonce 错误、Gas Limit 不够等
+    
+-   解决方案：
+    
+    1.  Speed Up（提高 Gas 重新提交）
+        
+    2.  Cancel（发送 0 ETH 同 nonce + 高 gas 的交易来取消）
+        
+    3.  实际演示 MetaMask 的 cancel / speedup 按钮（经常不灵敏或行为奇怪）
+        
+
+## 2.Mainnet vs L2
+
+-   在以太坊主网做小额交易 → Gas 极贵（有时 80% 手续费）
+    
+-   桥接资产到 L2（eg: Optimism）
+    
+-   在 L2 上重复相同操作 → 几乎免费、秒确认
+    
+
+## 3.ENS使用与缺陷
+
+-   有些Dapp由于多地址解析、过期风险，而不支持ENS
+    
+-   ENS + MetaMask 在 L2 上的兼容性问题
+    
+
+## 4.Multisig 钱包
+
+使用 Gnosis Safe（现 Safe{Wallet}）创建多签钱包。
+
+## 5.Lending 借贷协议实操
+
+本期具体以实操为主，没啥笔记可以做的似乎。
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # 一、整个NFT生命周期
 
 ## 1.在 OpenSea 上购买 NFT
@@ -79,6 +124,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # 一、Web2 to Web3 WEEK1 DAY 3
 
@@ -144,6 +190,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -207,6 +254,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -335,6 +383,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -591,6 +640,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -706,6 +756,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -881,6 +932,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -994,6 +1046,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -1063,6 +1116,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1181,6 +1235,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1409,6 +1464,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
