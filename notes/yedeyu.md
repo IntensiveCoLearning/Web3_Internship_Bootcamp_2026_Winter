@@ -15,8 +15,14 @@ timezone: UTC-8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+-   参加 LXDAO 周会
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 -   观看「[南塘 DAO 主题](https://youtu.be/xFi-TcaC2Ks)」回放
     
 -   观看「[Web3 公共物品资金分配第一节课](https://youtu.be/rC0f634JrVI)」回放
@@ -24,6 +30,7 @@ timezone: UTC-8
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 -   观看 [残酷共学 & 休闲黑客松案例拆解](https://youtu.be/GeSm59CCddY) 回放
@@ -34,11 +41,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 021 学习以太坊第 4 章
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -53,11 +62,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 021 学习以太坊第 3 章
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -79,6 +90,7 @@ timezone: UTC-8
 
 
 
+
 -   参加 LXDAO 周会 [260118](https://x.com/lxdao_official/status/2012360045485580478?s=46)
     
 -   继续阅读 [021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -86,6 +98,7 @@ timezone: UTC-8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -121,11 +134,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -162,6 +177,7 @@ timezone: UTC-8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
