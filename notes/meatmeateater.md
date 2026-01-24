@@ -70,7 +70,7 @@ timezone: UTC+8
 
 \> \* **整數大小**: Solidity 分得很細`uint8`, `uint16`… 到 `uint256`。C++ 也有 `uint8_t`，但 Solidity 的計算主要都是為了配合 EVM 的 256 位元架構。
 
-\> \* **學到了什麼**: `address` 是這門語言的核心公民，跟錢包和合約互動都靠它。
+\> \* **學到了什麼**: `address` 是這門語言的核心，跟錢包和合約互動都靠它。
 
 \## Variables
 
@@ -426,6 +426,7 @@ timezone: UTC+8
 
 
 
+
 今日新增了對良心殺的comment，覺得蠻有趣的，類似一個小型的調研了，以下是我的回覆:
 
 \# 學號:571
@@ -502,6 +503,7 @@ timezone: UTC+8
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -520,6 +522,7 @@ Thanks for clarifying!
 
 
 
+
 今天打算把第0周的任務補齊，目前還差這些
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/meatmeateater/images/2026-01-19-1768852214818-image.png)
@@ -527,6 +530,7 @@ Thanks for clarifying!
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -545,11 +549,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -575,12 +581,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -702,6 +710,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -918,6 +927,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1183,6 +1193,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
