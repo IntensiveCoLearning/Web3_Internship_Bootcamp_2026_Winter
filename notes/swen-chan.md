@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+今天在LXDAO做了自我介绍。bruce老师戏称这是丐帮，昨天会议wachi老师也这么调侃，哈哈可能是因为比较穷吧。但无论如何，我很欣赏LXDAO在做的事情——开源、公共产品、可循环，或者总的来说——良心。这些都是让这个世界变得更好的事情。
+
+今天也特别开心，接到了bruce老师的邀请，加入了web3 career的dev团队成为开发实习生！这是我第一份技术工作，我一定会珍惜这个机会的！
+
+今天学习情况的话，还是在死磕challenge0这个问题。昨晚搞到4点钟也没弄完。一直到今天23:22死磕成功。还发了X分享：[https://x.com/SwenChan/status/2015089314418536637?s=20](https://x.com/SwenChan/status/2015089314418536637?s=20)
+
+总结一下：要按照教程通过挑战有两个关键的地方：
+
+1.进行部署的时候一定要加上—network sepolia。这个地方在教程中是没有特别强调，只是说可以改config文件的defaultNetwork，但是我亲测没用！事实上就是只能yarn deploy —network sepolia才能部署到sepolia，否则只会部署到本地网络，得到一个教学用的合约地址！这个0aa3结尾的合约地址在很多论坛都被讨论过，他就是一个“教学地址”！
+
+所以这个地方建议教程修改一下
+
+2.如果部署的时候遇到hearders network error，那就是RPC连接的问题！建议可以修改hardhat.config.ts 中sepolia的rpc url为"[https://ethereum-sepolia-rpc.publicnode.com”（这是我运行成功的rpc），而不是用代码里默认的url](https://ethereum-sepolia-rpc.publicnode.com”（这是我运行成功的rpc），而不是用代码里默认的url)
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 **【专栏】wachi老师今日发言重点**
 
 **关于用AI写代码：**
@@ -51,6 +69,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 人对自己的认知非常重要。比如我对自己的定位就是：一个转行者；虽然努力重补了全套cs科班课程，但没有在真正cs氛围环境中学习工作过，很多东西都摸过但大抵是闭门造车；优点是跨学科思维，经济金融财务都懂，社会学政治学也有涉猎，社交能力在自己的理性逼迫下正在颠覆性突变；自驱力、好奇心和学习意愿强，对web3和去中心化有稳定的热情；有过工作经验，沟通协作、甚至领导能力比一般同学强；对意义感要求很高，无法做重复枯燥、自我欺骗的工作。
 
 因此目标也应该基于定位——第一份岗位需要寻找实习岗位，才能充分发挥学习、热情而非cs传统路径的定位；其次不能找运营和市场（内耗、损耗精力），但可以做数据和分析；最后是不必专精技术，先广涉猎，再针对求职重点的几个点深挖。
@@ -68,6 +87,7 @@ austin的课上讲agent对eth的影响：
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -116,6 +136,7 @@ solidity学习小笔记：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -311,6 +332,7 @@ await 只能等待一个 **Promise**。
 
 
 
+
 **eth最小单位wei的来源**：
 
 1998 年，华裔科学家戴伟（Wei Dai）便提出了匿名分布式电子加密货币 B-Money，中本聪的比特币白皮书参考文献中第一篇就是戴伟（Wei Dai）的文章
@@ -415,6 +437,7 @@ foundry的文档要记一下，方便随时查阅命令：
 
 
 
+
 今天本来想开始技术向的学习的，毕竟之前也没接触过solidity，结果到现在（22:40）仍然没法开始……
 
 因为刚才发现了学习手册的一个错误，准备当下就修改提交PR。所以我先来把总结写一下，免得一不小心就过0点了哈哈
@@ -464,6 +487,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 
 
+
 今天主要是提交了个pr，链接：[https://github.com/lxdao-official/myfirstnft-frontend/pull/20](https://github.com/lxdao-official/myfirstnft-frontend/pull/20)  
 关于myfirstnft网页的这个问题，我第一天也遇到了，但是当时没多想，觉得完成任务就行了。
 
@@ -478,6 +502,7 @@ ZK投票流程：generate identitySecret(store locally) -> Compute identityCommi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -613,6 +638,7 @@ wachi老师说他觉得对于pm这种，一个市场毕竟有多方参与，大�
 
 
 
+
 打卡的同时，分享会仍在进行中。刚才有事送朋友下楼去车站，第7个之后的同学都没有听到，现在听到了最后两个同学。
 
 我今天在晚上的分享会进行了学习分享。
@@ -648,6 +674,7 @@ but anyway，很开心，也很感谢平台的机会，真心希望我的分享�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -706,6 +733,7 @@ n：生成的回复数量，会在response.choices中返回
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -886,6 +914,7 @@ EIP-4844 引入一种新交易类型（常被称为 blob-carrying transactions�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
