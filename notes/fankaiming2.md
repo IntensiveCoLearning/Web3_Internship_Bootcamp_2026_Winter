@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+第一笔交易；并理解交易信息
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 英语很重要
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 dapp workshop
 <!-- DAILY_CHECKIN_2026-01-22_END -->
@@ -30,11 +37,13 @@ dapp workshop
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 测试水龙头
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -47,11 +56,13 @@ dapp workshop
 
 
 
+
 **从 ERC-721 到 ERC-7962**
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -70,11 +81,13 @@ dapp workshop
 
 
 
+
 安全运营
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -97,6 +110,7 @@ dapp workshop
 
 
 
+
 NFT是什么  
 创建新代币有啥用  
 以太坊中的mint是啥意思
@@ -104,6 +118,7 @@ NFT是什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
