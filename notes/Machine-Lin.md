@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# 一、Web2 to Web3 Week 2 Day 1
+
+由于本期几乎全程live coding，可能笔记不多。
+
+JavaScript + ethers.js 与以太坊区块链交互。
+
+## 1.ethers.js
+
+ethers.js 是由 Richard Moore 开发的一套完整、轻量级的以太坊（EVM 兼容链）开发库，相比 web3.js 更轻量、模块化更强、API 设计更简洁，是目前以太坊前端 / Node.js 开发的主流选择。
+
+项目初始化：
+
+-   创建 Node 项目`npm init -y`
+    
+-   "type": "module"（允许使用 ESM import 语法，避免到处写 async function main()）
+    
+-   `npm install ethers dotenv --save`
+    
+
+2.Providers
+
+Provider 是区块链的“只读接口”。
+
+-   用 Infura / Alchemy 连接主网或测试网
+    
+-   .env 文件存储密钥（INFURA\_PROJECT\_ID）+ .gitignore 保护
+    
+
+## 3.读取区块链数据
+
+-   获取最新区块号：provider.getBlockNumber()
+    
+-   ENS 解析（主网/测试网）：provider.resolveName("vitalik.eth")
+    
+-   查询余额：provider.getBalance(address)
+    
+-   单位转换：ethers.formatEther(wei)、ethers.parseEther("1.5")
+    
+
+## 4.Wallets & Signers（可签名）
+
+**Wallet = 私钥 + 地址**
+
+**Signer = 可以签名的 Provider + Wallet**
+
+创建方式：
+
+-   随机：ethers.Wallet.createRandom()
+    
+-   从助记词：ethers.HDNodeWallet.fromMnemonic(mnemonic)
+    
+-   连接 provider：wallet.connect(provider)
+    
+
+其他的几乎都是实操，结合其GitHub仓库，代码食用更佳，虽然代码方面有点整不明白，但还是加油。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -61,6 +121,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 一、整个NFT生命周期
 
@@ -124,6 +185,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 # 一、Web2 to Web3 WEEK1 DAY 3
@@ -191,6 +253,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -254,6 +317,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -383,6 +447,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -641,6 +706,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -756,6 +822,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -933,6 +1000,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -1047,6 +1115,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -1116,6 +1185,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1235,6 +1305,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1464,6 +1535,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
