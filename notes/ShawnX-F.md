@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+学习了森老师的agent笔记
+
+学习了优秀同学的RC笔记
+
+明天实践一下
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 1.  学习了Reactive Contracts的基础内容
     
 2.  补充了一下预言机的基本知识
@@ -24,6 +34,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 有关ERC-7962的思考
 
@@ -40,6 +51,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 # Polymarket架构理解
@@ -125,6 +137,7 @@ collectionId = keccak256(parentCollectionId, conditionId, indexSet)
 
 
 
+
 // 基础合约  
 contract Animal {  
 string public name;  
@@ -206,6 +219,7 @@ Pet(\_name, \_owner) {}
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -354,6 +368,7 @@ function criticalFunction() public onlyOwner whenNotPaused {
 
 
 
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -443,6 +458,7 @@ _Tips：_
 
 
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -505,6 +521,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -541,6 +558,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -599,6 +617,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -613,6 +632,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -655,6 +675,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -760,6 +781,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
