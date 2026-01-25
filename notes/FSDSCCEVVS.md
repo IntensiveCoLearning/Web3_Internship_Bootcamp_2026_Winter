@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+学习solidity基础语法
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今天我也学到了 Uniswap，以及它的智能合約是如何运作的
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 学习solidity基础语法
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 实习手册智能合约完成学习
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 实习手册智能合约完成80%部分学习
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -124,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 实习手册智能合约完成50%部分学习
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -135,11 +146,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 实习手册智能合约完成20%部分学习
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -199,11 +212,13 @@ Gas Limit
 
 
 
+
 请假一天
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -232,6 +247,7 @@ DAO 和智能合约在法律层面同样存在灰色地带。DAO 通常不具备
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -281,6 +297,7 @@ DAO 是用智能合约和投票规则运行的组织。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
