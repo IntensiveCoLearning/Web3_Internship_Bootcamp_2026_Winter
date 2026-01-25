@@ -15,8 +15,66 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+## \## Web3 实习计划：Dapp Workshop 核心总结
+
+该 Workshop 旨在引导实习生从零开始，通过实战掌握去中心化应用（Dapp）的全栈开发流程。
+
+### \### 1. 基础理论与架构
+
+-   **Web3 概念理解：** 学习区块链基础、节点原理、以及 Dapp 与传统 Web2 应用在架构上的本质区别。
+    
+-   **开发环境配置：** 搭建开发必备工具链（如 Node.js, Git, 以及主流的 IDE 插件）。
+    
+
+* * *
+
+### \### 2. 智能合约开发 (Smart Contracts)
+
+这是 Dapp 的核心逻辑层，主要涵盖：
+
+-   **Solidity 语言：** 掌握语法、数据类型、函数修饰符及安全最佳实践。
+    
+-   **开发框架：** 学习使用 **Hardhat** 或 **Foundry** 进行合约的编写、编译与本地部署。
+    
+-   **OpenZeppelin：** 利用标准库实现 ERC-20（代币）或 ERC-721（NFT）标准。
+    
+
+* * *
+
+### \### 3. 合约测试与调试
+
+-   **单元测试：** 使用 Waffle/Chai 或 Forge 编写测试用例，确保合约逻辑的严密性。
+    
+-   **Gas 优化：** 学习如何通过代码优化降低链上交互成本。
+    
+
+* * *
+
+### \### 4. 前端交互与集成
+
+-   **Provider & Signer：** 理解如何通过 **ethers.js** 或 **viem** 连接区块链。
+    
+-   **钱包连接：** 集成 **WalletConnect** 或 **RainbowKit**，实现用户登录与授权。
+    
+-   **Hooks 状态管理：** 使用 **wagmi** 等库简化前端与合约的实时数据同步。
+    
+
+* * *
+
+### \### 5. 项目实战与部署
+
+-   **测试网部署：** 将合约部署至 Sepolia 或 Goerli 等以太坊测试网。
+    
+-   **全栈联调：** 完成从前端 UI 触发交易到后端合约执行的完整闭环。
+    
+-   **前端托管：** 学习使用 Vercel 或 IPFS 部署 Dapp 前端。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 Speedrun Ethereum 发起人 Austin Griffith 主讲。该工作坊旨在帮助 Web3 实习计划的学生快速掌握以太坊开发的核心概念。
 
 ​以下是内容的详细总结（已按要求去掉时间戳）：
@@ -54,6 +112,7 @@ Speedrun Ethereum 发起人 Austin Griffith 主讲。该工作坊旨在帮助 We
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 ### 一、 残酷共学 (Cruel Co-learning)
 
@@ -125,6 +184,7 @@ Speedrun Ethereum 发起人 Austin Griffith 主讲。该工作坊旨在帮助 We
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 ### Uniswap V2：DeFi 夏季的基石
 
 -   **优点：**
@@ -178,6 +238,7 @@ Speedrun Ethereum 发起人 Austin Griffith 主讲。该工作坊旨在帮助 We
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -261,6 +322,7 @@ Web3 活动强调**互动性**与**链上激励**，主要涵盖以下流程：
 
 
 
+
 Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 ### 1\. 设计初衷与背景
@@ -313,6 +375,7 @@ Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 
 
+
 ### 1\. Web3 核心运行原理
 
 -   **底层机制：** 深入探讨了私钥管理、Gas 费定价逻辑以及智能合约的执行环境。理解这些机制是进入 Web3 行业的技术基石。
@@ -345,6 +408,7 @@ Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -425,6 +489,7 @@ Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 
 
+
 1\. Web3 合规的背景与现状
 
 -   **合规的必要性**：合规是进入 Web3 行业的关键一步。由于法律具有滞后性，而 Web3 业务形态极其前卫，两者之间存在天然冲突。
@@ -479,6 +544,7 @@ Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 
 
+
 Web3 安全入门与实践
 
 1\. 课程背景与目标 该视频是 Web3 实习计划（WTP）的一部分，重点在于向学员普及 Web3 安全领域的基础知识、现状以及从业建议。
@@ -510,6 +576,7 @@ Web3 安全入门与实践
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -583,6 +650,7 @@ Web3 行业正处于高速增长轨道，年复合增长率接近 50%。其发�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
