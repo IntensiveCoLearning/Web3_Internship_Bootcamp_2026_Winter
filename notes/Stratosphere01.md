@@ -15,8 +15,24 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+**三三复制模式：**核心理念是通过招募三名下级用户来实现用户数量的几何级增长。具体来说，每个用户通过推荐三名新用户，形成一个不断扩展的网络。
+
+**全球公排一条线模式：**核心理念是按照报单时间的先后顺序直线自动排列，适用于各类公排场景。该模式在会员投单和升级方面有着明确规定，初级会员投单一定金额后进入一条线公排，后续升级可收钱出局并进入更高排队阶段。
+
+**拆分、极差、花落**
+
+**花火机制：**虚拟货币领域通过高额生息承诺以骗取本金的资金盘。
+
+**权健传销事件：**涉及的烧伤事故频发，权健公司因其推广的火疗服务而引发的事故，导致多名参与者受伤。这些事故不仅影响了参与者的健康，也对权健公司的声誉造成了严重损害。
+
+**对碰：**Tiktok在线拆盲盒博彩。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## **通知：**
 
 ### **今日轮休**
@@ -28,6 +44,7 @@ timezone: UTC+8
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ### 今日分享会受益良多
 
@@ -52,6 +69,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 【挖坑+1】小孩老师你忍一下~我先把昨天的坑填了
 
 ## AMM做市商理论详解
@@ -61,6 +79,7 @@ timezone: UTC+8
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -119,6 +138,7 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 
 
+
 ![公共物品分配脑图.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-20-1768913558827-________.jpg)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
@@ -129,11 +149,13 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 
 
+
 ![运营脑图.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-19-1768830543192-____.jpg)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -225,6 +247,7 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 
 
+
 ## 通知：
 
 ### 今日轮休
@@ -234,6 +257,7 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -292,6 +316,7 @@ X平台经常改算法
 
 
 
+
 ## 转变：从“对话”到“行动”—— ai分享会
 
 ![1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487695452-1.jpg)![2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487716965-2.jpg)![3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487733276-3.jpg)![4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487747286-4.jpg)![5.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487762438-5.jpg)![6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487780369-6.jpg)
@@ -327,6 +352,7 @@ validation registry - permissioned的agent标签
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -700,6 +726,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 ## **治理完全有效的基础只能是社会阶段提升，人民综合素质提高才可以。——co-learning1.13**
 
 本次的co-learning环节更像是一场哲思辩论会，evo swift同学与XiaoHai67890、Draken、wachi三位老师展开了关于DAO治理投票权相关的优劣争议。“无限花园的隐喻”和关怀、包容性的适应性领导力立场更有关联，和 目前 资本的攫取主义 呈现出来的是两翻景色，展示了小海老师深厚的哲学功底。
@@ -759,6 +786,7 @@ LXDAO解决方案：从第七季度开始，LXDAO不再追求治理的投票率�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
