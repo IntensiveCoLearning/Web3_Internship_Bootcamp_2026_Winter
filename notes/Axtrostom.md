@@ -15,19 +15,303 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+前面这几天感觉没干什么活
+
+虽然说没学东西吧
+
+但是也没玩
+
+天天在跟linux搏斗
+
+早知道不折腾这archlinux
+
+早知道还是ubuntu
+
+唉唉
+
+开始好好学吧
+
+打算先把线上留言板整了
+
+* * *
+
+留言板应该是怎么样的？
+
+合约持有者即该留言板的主人
+
+所有人都可以给这个主人留言，然后会发送给主人message
+
+owner可以对合约的信息增删改查
+
+考虑到区块链的特性，存储的东西不能太大
+
+应该限制每个合约的留言内容的大小，直接设计成只保留最近多少条的留言
+
+双指针确定最新留言和最后留言的位置
+
+然后基础需求就是
+
+需要有一个 address 存储owner
+
+创建时绑定 owner
+
+每一条留言struct
+
+String content
+
+算了算了
+
+先写个最最最基础的吧
+
+再多想就没头了
+
+增删改查
+
+查看最新
+
+然后基础的代码就这样了
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract gustbook {
+    address public owner;
+    Message[] public messages;
+    uint private messages_num;
+
+    event GotMsg(address indexed from, string message);
+
+    constructor() {
+        owner = msg.sender;
+        messages_num = 0;
+    }
+
+    //向链上发送留言
+    function push_msg(string memory content) public {
+        messages.push(Message(content, msg.sender, block.timestamp, true));
+        ++messages_num;
+        emit GotMsg(msg.sender, content);
+    }
+
+    //非 onwer 获取最近的 count 条留言
+    function get_msg(uint32 count) public view returns (Message[] memory) {
+        require(messages.length > 0, "no message now");
+        uint res_length = count > messages_num ? count : messages_num;
+        Message[] memory res = new Message[](res_length);
+        uint i = 0;
+        uint j = 0;
+        while (j  < res_length) {
+            if (messages[messages.length - i - 1].isActive) {
+                res[j] = messages[messages.length - i - 1];
+                ++j;
+            }
+            ++i;
+            if (i == messages.length) {
+                break;
+            }
+        }
+        return res;
+    }
+
+    //用于判断是否为 owner 的修饰器
+    modifier onlyOwner() {
+        require(msg.sender == owner, "You are not the owner!");
+        _;
+    }
+
+    // owner 获取最近的 count 条消息，带有 index ，包括被隐藏的消息
+    function get_msg_with_inactive(
+        uint32 count
+    ) public view onlyOwner returns (uint start_index, Message[] memory) {
+        require(messages.length > 0, "no message now");
+        uint res_length = count > messages.length ? count : messages.length;
+        if (res_length == messages.length) {
+            return (0, messages);
+        }
+        Message[] memory res = new Message[](res_length);
+
+        for (uint i = 0; i < res_length; i++) {
+            res[i] = messages[messages.length - res_length + i];
+        }
+        return (messages.length - res_length, res);
+    }
+
+    // owner 改变某一个消息的隐藏状态
+    function change_active_state(uint index) public onlyOwner {
+        require(messages.length > index, "index out of bounds");
+        messages[index].isActive = !messages[index].isActive;
+        if(messages[index].isActive){
+            ++messages_num;
+        }
+        else{
+            --messages_num;
+        }
+    }
+}
+
+struct Message {
+    string content;
+    address sender;
+    uint256 time;
+    bool isActive;
+}
+```
+
+然后交给ai检查一下漏洞
+
+**无限循环风险 (DoS)**：`get_msg` 中的 `while` 循环随着留言增加会逐渐逼近节点限制，最终导致无法读取数据。
+
+> 意思是说消息数量可能太多了，直接跟下面一起解决
+
+**垃圾信息泛滥 (Spam)**：`push_msg` 没有任何门槛（时间或费用），容易被脚本恶意刷屏攻击。
+
+> 改成付费留言
+
+**内存拷贝浪费 (Data Location)**：`push_msg` 的参数使用 `memory` 而非 `calldata`，增加了不必要的数据复制成本。
+
+> 改！
+
+**报错成本过高 (Require Strings)**：使用 `require` 配合长字符串会增加合约部署和运行时的 Gas。
+
+> 改成自定义报错类型 + revert
+
+**存储空间浪费 (Struct Packing)**：`Message` 结构体成员排列松散，未能充分利用 32 字节存储槽。
+
+> 缩小 time 时间戳的大小
+
+**高频读取存储 (Storage Cache)**：在循环中反复读取 `messages.length` 属于昂贵的 `SLOAD` 操作。
+
+> 临时存储
+
+最终的代码
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract gustbook {
+    address public owner;
+    Message[] public messages;
+    uint private messages_num;
+    uint immutable private message_fee;
+
+    event GotMsg(address indexed from, string message);
+
+    error NotOwner();
+    error NotEnoughFee();
+    error NoMessages();
+    error IndexOutOfBounds();
+    error WithdrawFailed();
+    
+
+    constructor(uint _message_fee) {
+        owner = msg.sender;
+        messages_num = 0;
+        message_fee =_message_fee;
+    }
+
+    //向链上发送留言
+    function push_msg(string calldata content) public payable {
+        if (msg.value < message_fee) revert NotEnoughFee();
+        messages.push(Message({
+            sender: msg.sender,
+            time: uint40(block.timestamp),
+            isActive: true,
+            content: content
+        }));
+        ++messages_num;
+        emit GotMsg(msg.sender, content);
+    }
+
+    //非 onwer 获取最近的 count 条留言
+    function get_msg(uint32 count) public view returns (Message[] memory) {
+        uint256 messages_length = messages.length;
+        if (messages_length == 0) {revert NoMessages();}
+        uint res_length = count > messages_num ? count : messages_num;
+        Message[] memory res = new Message[](res_length);
+        uint i = 0;
+        uint j = 0;
+        while (j  < res_length) {
+            if (messages[messages_length - i - 1].isActive) {
+                res[j] = messages[messages_length - i - 1];
+                ++j;
+            }
+            ++i;
+        }
+        return res;
+    }
+
+    //用于判断是否为 owner 的修饰器
+    modifier onlyOwner() {
+        require(msg.sender == owner, "You are not the owner!");
+        _;
+    }
+
+    // owner 获取最近的 count 条消息，带有 index ，包括被隐藏的消息
+    function get_msg_with_inactive(
+        uint32 count
+    ) public view onlyOwner returns (uint start_index, Message[] memory) {
+        require(messages.length > 0, "no message now");
+        uint res_length = count > messages.length ? count : messages.length;
+        if (res_length == messages.length) {
+            return (0, messages);
+        }
+        Message[] memory res = new Message[](res_length);
+
+        for (uint i = 0; i < res_length; i++) {
+            res[i] = messages[messages.length - res_length + i];
+        }
+        return (messages.length - res_length, res);
+    }
+
+    // owner 改变某一个消息的隐藏状态
+    function change_active_state(uint index) public onlyOwner {
+        require(messages.length > index, "index out of bounds");
+        messages[index].isActive = !messages[index].isActive;
+        if(messages[index].isActive){
+            ++messages_num;
+        }
+        else{
+            --messages_num;
+        }
+    }
+
+    //提钱
+    function withdraw() public onlyOwner{
+        // 将合约里的所有钱转给主人
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success, "Withdrawal failed");
+    }
+}
+
+struct Message {
+    string content;
+    address sender;
+    uint40 time;
+    bool isActive;
+}
+```
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 打算先试着做一个链上留言板的Dapp
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 今天还在跟 linux 打架
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 昨天  
@@ -60,6 +344,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天的任务是完成 Challenge: 🎟 Tokenization
 
 * * *
@@ -67,6 +352,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2691,6 +2977,7 @@ contract GasGolf {
 
 
 
+
 ## Solidity基础语法
 
 ### 基础数据类型
@@ -3580,6 +3867,7 @@ contract DataLocations {
 
 
 
+
 1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
     
 
@@ -3678,6 +3966,7 @@ contract DataLocations {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -4071,6 +4360,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -4177,6 +4467,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4350,6 +4641,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4855,6 +5147,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -5803,6 +6096,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
