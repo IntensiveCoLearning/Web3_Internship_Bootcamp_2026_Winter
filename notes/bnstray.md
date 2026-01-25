@@ -15,8 +15,106 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+## Part I. 核心技术：Reactive Smart Contracts (从 0 到 1)
+
+这部分内容主要解决了智能合约无法在没有外部指令（Transaction）的情况下自动执行的问题。
+
+### 1\. 什么是 Reactive 合约？
+
+-   **痛点**：传统合约必须由用户发起调用才能执行，无法自动响应外部变化（被动触发）。
+    
+-   **核心功能**：Reactive 可以去中心化地“监听”某个合约的 `event`（事件），一旦发生，就自动触发预设的 `callback`（回调）合约执行。支持跨链操作（监听 A 链，操作 B 链）。
+    
+-   **架构原理**：
+    
+    -   **双实例运行**：合约代码一份，但运行在两个地方：
+        
+        1.  **Reactive Network**：负责监听和调度 。
+            
+        2.  **ReactVM**：受限的虚拟机，处理逻辑并向网络发起请求 。
+            
+    -   **工作流**：源合约发出 Event $\\rightarrow$ Reactive Network 捕获 $\\rightarrow$ ReactVM 处理 $\\rightarrow$ 发起交易调用目标 Callback 合约 。
+        
+
+### 2\. 关键技术细节
+
+-   **Event 监听原理**：
+    
+    -   核心在于监听日志中的 `topics`。
+        
+    -   `topics[0]`：事件签名的哈希（例如 `keccak256("Received(...)")`）。
+        
+    -   `topics[1-3]`：`indexed` 参数（如发送方地址）。
+        
+    -   `data`：非 `indexed` 的参数（如转账金额）。
+        
+-   **部署配置 (.env)**：
+    
+    -   部署极其依赖环境变量配置，包括源链/目标链的 RPC、Chain ID、私钥以及 Reactive 网络的系统合约地址 。
+        
+
+### 3\. 实战案例：Uniswap V2 止损单
+
+-   **场景**：监控代币对价格，当价格触及阈值时自动卖出止损 。
+    
+-   **逻辑**：
+    
+    1.  监控 Uniswap Pair 的 `Sync` 或 `Swap` 事件。
+        
+    2.  Reactive 合约检查储备金（Reserves）比率。
+        
+    3.  设定阈值：例如 `EXCHANGE_RATE_NUMERATOR` / `EXCHANGE_RATE_DENOMINATOR` 。
+        
+    4.  如果 $Token\_0$ 价格低于设定值（如 0.9 $Token\_1$），触发 Callback 合约执行 `swap` 操作 。
+        
+
+* * *
+
+## Part II. 实战避坑指南 (SpeedRunEthereum)
+
+在进行 `Tokenization` 挑战时，记录了以下关键的部署与网络调试经验：
+
+### 🛑 常见报错与解决方案
+
+1.  **部署无效 (本地 vs 测试网)**
+    
+    -   **问题**：如果只修改 Config 文件而不加命令行参数，合约只会部署在本地临时网络，导致获得无效地址。
+        
+    -   **解决**：部署命令必须显式加上 `--network sepolia`。
+        
+    
+    > _引用_: "若按教程的不加或仅改config... 必没用。最后只部署到本地。"
+    
+2.  **RPC 节点超时/网络错误**
+    
+    -   **问题**：默认 RPC 不稳定，导致 Deploy 失败。
+        
+    -   **解决**：更换公共 RPC 节点。
+        
+    -   **推荐节点**：`https://ethereum-sepolia-rpc.publicnode.com`
+        
+
+* * *
+
+## Part 3. Web3 工具箱大全 (Toolbox)
+
+整理了开发全生命周期的必备工具，分类如下：
+
+| 分类 | 推荐工具 | 核心用途 |
+| 👝 钱包 | MetaMask, Phantom, OKX | 交互基础，Phantom 优选 Solana 生态。 |
+| 🔍 浏览器 | Etherscan, Blockchair | 链上交易查询，合约验证。 |
+| 💻 开发环境 | Remix, Foundry, Hardhat | Remix 适合新手/测试；Foundry 适合由于测试驱动开发 (Fuzzing)。 |
+| 🛡️ 安全审计 | Slither, Phalcon, Tenderly | Slither 做静态分析；Phalcon/Tenderly 做交易堆栈分析与 Debug。 |
+| 📊 链上数据 | Dune, Nansen, Sentio | Dune 写 SQL 查数据；Nansen 追踪“聪明钱”；Sentio 做多链索引。 |
+| 📈 DeFi/NFT | DefiLlama, NFTScan | TVL 分析，NFT 资产索引。 |
+| 🗳️ DAO 治理 | Snapshot, Tally | 链下投票与链上执行管理。 |
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 ## Part I. AI Agent + Obsidian 打造“第二大脑”
 
 **核心理念**：从“笔记搬运工”转型为“知识策展人”，像管理代码一样管理知识。
@@ -145,6 +243,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 ## Part 1. Aave V4 架构演进：终极流动性层
 
 Aave V4 从 V3 的“网状”结构进化为“Hub-and-Spoke”架构，旨在统一流动性并解决碎片化问题。
@@ -262,6 +361,7 @@ Foundry 将区块链开发类比为 RPG 游戏，通过三个核心组件进行�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 ## Part I. Web3 职业发展与技术栈建议
@@ -395,6 +495,7 @@ Foundry 将区块链开发类比为 RPG 游戏，通过三个核心组件进行�
 
 
 
+
 ### 🎙️ Part 1：播客笔记 - AI Agent 的进化
 
 **主题：** 从“动嘴”到“动手”，AI Agent 的数字员工革命
@@ -515,6 +616,7 @@ Foundry 将区块链开发类比为 RPG 游戏，通过三个核心组件进行�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -664,6 +766,7 @@ Solidity 的三种报错机制及其应用场景：
 
 
 
+
 ### 👨‍🏫Part I: 核心课程 - ERC-7962 详解
 
 **1\. 背景与痛点 (Why ERC-7962?)**
@@ -793,6 +896,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -938,6 +1042,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 
 
+
 ## Part I. Web3 运营与职业发展
 
 > **核心观点**：Web3 运营不仅是发推特，更懂人性、懂流量、懂“蹭”的艺术。技术与金融的结合是职业发展的王炸。
@@ -1049,6 +1154,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1213,6 +1319,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1413,6 +1520,7 @@ Web3 曾信奉 "Code is Law"，但在大陆合规语境下，**"Law is Law"** �
 
 
 
+
 ## Part I. 以太坊的起源与发展
 
 ### 🌱 起源背景
@@ -1506,6 +1614,7 @@ _未来展望_：通过 Dencun (2024)、Pectra (2025) 等升级，持续提升�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
