@@ -15,8 +15,128 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+**Transient Storage:** Data stored in transient storage is cleared out after transaction.
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+// Make sure EVM version and VM set to Cancun
+
+// Storage - data is stored on the blockchain
+// Memory - data is cleared out after a function call
+// Transient storage - data is cleared out after a transaction
+
+interface ITest {
+    function val() external view returns (uint256);
+    function test() external;
+}
+
+// Contract for testing TestStorage and TestTransientStorage
+// Shows the difference between normal storage and transient storage
+contract Callback {
+    uint256 public val;
+
+    fallback() external {
+        val = ITest(msg.sender).val();
+    }
+
+    function test(address target) external {
+        ITest(target).test();
+    }
+}
+
+contract TestStorage {
+    uint256 public val;
+
+    function test() public {
+        val = 123;
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
+
+contract TestTransientStorage {
+    bytes32 constant SLOT = 0;
+
+    function test() public {
+        assembly {
+            tstore(SLOT, 321)
+        }
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+
+    function val() public view returns (uint256 v) {
+        assembly {
+            v := tload(SLOT)
+        }
+    }
+}
+
+// Contract for testing reentrancy protection
+contract MaliciousCallback {
+    uint256 public count = 0;
+
+    // Try to reenter the target contract multiple times
+    fallback() external {
+        ITest(msg.sender).test();
+    }
+
+    // Test function to initiate reentrance attack
+    function attack(address _target) external {
+        // First call to test()
+        ITest(_target).test();
+    }
+}
+
+contract ReentrancyGuard {
+    bool private locked;
+
+    modifier lock() {
+        require(!locked);
+        locked = true;
+        _;
+        locked = false;
+    }
+
+    // 27587 gas
+    function test() public lock {
+        // Ignore call error
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
+
+contract ReentrancyGuardTransient {
+    bytes32 constant SLOT = 0;
+
+    modifier lock() {
+        assembly {
+            if tload(SLOT) { revert(0, 0) }
+            tstore(SLOT, 1)
+        }
+        _;
+        assembly {
+            tstore(SLOT, 0)
+        }
+    }
+
+    // 4909 gas
+    function test() external lock {
+        // Ignore call error
+        bytes memory b = "";
+        msg.sender.call(b);
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 structs
 
 You can define your own type by creating a .`struct`
@@ -78,6 +198,7 @@ contract Todos {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 **mapping**：mapping(keyType => valueType)
 
@@ -219,6 +340,7 @@ contract ArrayReplaceFromEnd {
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -298,6 +420,7 @@ contract Loop {
 
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -351,6 +474,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -358,6 +482,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -432,6 +557,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -489,6 +615,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -515,6 +642,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -581,6 +709,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
