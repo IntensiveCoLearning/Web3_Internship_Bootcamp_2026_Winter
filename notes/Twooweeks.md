@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
+
+-   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
+    
+-   calldata 优先、mapping+索引、storage 缓存到 memory、constant/immutable、减少循环与 unchecked 等常见优化。
+    
+-   PoS 共识与 The Merge 的执行/共识客户端协作流程，梳理长程攻击、惰性问题与 slashing 经济惩罚；
+    
+-   理解 Rollup 从 calldata 到 blob 的数据分层：链上永久保留 commitment/stateRoot 等“元信息”，大载荷作为可用性数据存放。
+    
+-   流动质押/再质押与审查风险（PBS、MEV-burn 等）。并进一步用通俗案例掌握零知识证明核心。
+    
+-   完成 Foundry 初始化、依赖与 remapping、编写测试/部署；复习 Solidity 可见性、view/pure、继承与 override、event、VRF 随机数与自动化流程，以及 mock 外部合约用于本地测试。最后补齐 DEX 交易解析/构造的链路与 Uniswap V1-V4 演进。整体上从“懂原理”走向“能落地”，也提醒自己保持练习，把基础打牢继续深入。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 中期总结：合约继承VRFComsumerBaseV2Plus,里面有一个s\_vrfCoordinator变量，变量中里面有requestRandomWords函数来与chainklinkVRF交互获得随机单词产生随机数，fulfillRandomWords接收产生的随机数，并采用自动化的方法，让整个合约可以自己发生
 
 \- checkupkeep来定时检查，performupkekp到点执行
@@ -40,6 +58,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 \- event是log中的一部分，日志的gas消耗很少
@@ -66,6 +85,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -73,6 +93,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -110,6 +131,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -202,6 +224,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -225,6 +248,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -268,6 +292,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -393,6 +418,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -421,6 +447,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -525,6 +552,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -549,6 +577,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -601,6 +630,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
