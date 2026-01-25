@@ -15,8 +15,223 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# 15 Web3.js/Ethers.js/Viem/Wagmi 对比及代码示例
+
+# 一、核心定位与差异总览
+
+四大工具分属两个层级：Web3.js、Ethers.js、Viem 是底层以太坊交互库（负责与链节点通信、签名交易等核心能力）；Wagmi 是基于 Viem 封装的 React 工具库（专注 React 项目的链上状态管理、钱包集成），并非独立底层库。
+
+## 1.1 各工具核心特点
+
+-   **Web3.js**：最早的以太坊 JS 库，API 设计偏传统，兼容性强但体积大、部分 API 冗余，适合需要兼容老项目的场景。
+    
+-   **Ethers.js**：目前最主流的底层库，API 设计清晰、功能完善，签名逻辑、Provider 封装更优雅，社区生态最成熟，适合绝大多数项目。
+    
+-   **Viem**：轻量级现代底层库，基于 Ethers.js 理念重构，体积更小（约 Ethers.js 的 1/3），API 更简洁，支持 Tree Shaking，适合对体积敏感的项目（如移动端、轻应用）。
+    
+-   **Wagmi**：React 专属工具库，封装了 Viem 的底层能力，提供 Hooks 化 API（如 useAccount、useBalance），简化钱包连接、状态管理，适合 React/Next.js 项目快速开发。
+    
+
+## 1.2 关键维度对比表
+
+| 维度 | Web3.js | Ethers.js | Viem | Wagmi |
+| 定位 | 底层交互库 | 底层交互库 | 底层交互库 | React 工具库（基于 Viem） |
+| 体积（gzip） | ~45KB | ~30KB | ~10KB | ~15KB（含部分 Viem 依赖） |
+| API 风格 | 回调/异步混合，偏冗余 | Promise 优先，设计优雅 | 函数式，简洁直观，支持链式 | Hooks 化，React 风格 |
+| 签名能力 | 支持但 API 繁琐 | 完善（离线签名、EIP-712 等） | 完善，API 更简洁 | 封装 Viem 能力，Hooks 调用 |
+| 生态适配 | 老项目兼容好，新生态支持一般 | 全生态支持（钱包、框架、工具） | 新兴生态适配快，兼容 Ethers 部分 API | React 生态无缝对接（Next.js、Remix 等） |
+| 学习成本 | 中（API 冗余易混淆） | 中（文档全，逻辑清晰） | 低（API 简洁，无冗余概念） | 低（React 开发者易上手，无需深入底层） |
+
+# 二、代码示例对比（核心功能）
+
+以下示例统一实现 3 个核心功能：1. 连接钱包（MetaMask）；2. 获取账户余额；3. 发送 ETH 交易。
+
+## 2.1 Web3.js 示例
+
+```
+// 1. 初始化 Web3（连接 MetaMask）
+import Web3 from 'web3';
+
+let web3;
+if (window.ethereum) {
+  web3 = new Web3(window.ethereum);
+  // 连接钱包
+  await window.ethereum.request({ method: 'eth_requestAccounts' });
+} else {
+  alert('请安装 MetaMask');
+}
+
+// 2. 获取账户余额（ETH 格式转换）
+const account = (await web3.eth.getAccounts())[0];
+const balanceWei = await web3.eth.getBalance(account);
+const balanceEth = web3.utils.fromWei(balanceWei, 'ether');
+console.log(`账户余额：${balanceEth} ETH`);
+
+// 3. 发送 ETH 交易
+const txParams = {
+  from: account,
+  to: '0x1234567890123456789012345678901234567890',
+  value: web3.utils.toWei('0.01', 'ether'), // 转换为 Wei
+  gas: web3.utils.toHex(21000), // 基础燃气费
+  gasPrice: web3.utils.toHex(await web3.eth.getGasPrice())
+};
+
+const txHash = await web3.eth.sendTransaction(txParams);
+console.log(`交易哈希：${txHash.transactionHash}`);
+```
+
+## 2.2 Ethers.js 示例
+
+```
+// 1. 初始化 Provider（连接 MetaMask）
+import { ethers } from 'ethers';
+
+let provider;
+if (window.ethereum) {
+  provider = new ethers.BrowserProvider(window.ethereum);
+  const signer = await provider.getSigner(); // 获取签名者（已连接钱包）
+  const account = await signer.getAddress();
+} else {
+  alert('请安装 MetaMask');
+}
+
+// 2. 获取账户余额（自动格式转换）
+const balance = await provider.getBalance(account);
+const balanceEth = ethers.formatEther(balance);
+console.log(`账户余额：${balanceEth} ETH`);
+
+// 3. 发送 ETH 交易
+const signer = await provider.getSigner();
+const tx = await signer.sendTransaction({
+  to: '0x1234567890123456789012345678901234567890',
+  value: ethers.parseEther('0.01'), // 转换为 Wei
+  gasLimit: 21000 // 基础燃气费
+});
+
+await tx.wait(); // 等待交易上链
+console.log(`交易哈希：${tx.hash}`);
+```
+
+## 2.3 Viem 示例
+
+```
+// 1. 初始化 Client（连接 MetaMask）
+import { createPublicClient, createWalletClient, custom, parseEther, formatEther } from 'viem';
+import { mainnet } from 'viem/chains';
+
+// 钱包客户端（负责签名、交易）
+const walletClient = createWalletClient({
+  chain: mainnet,
+  transport: custom(window.ethereum)
+});
+// 连接钱包
+const [account] = await walletClient.requestAddresses();
+
+// 公共客户端（负责读取链上数据）
+const publicClient = createPublicClient({
+  chain: mainnet,
+  transport: custom(window.ethereum)
+});
+
+// 2. 获取账户余额
+const balance = await publicClient.getBalance({ address: account });
+const balanceEth = formatEther(balance);
+console.log(`账户余额：${balanceEth} ETH`);
+
+// 3. 发送 ETH 交易
+const txHash = await walletClient.sendTransaction({
+  account,
+  to: '0x1234567890123456789012345678901234567890',
+  value: parseEther('0.01'),
+  gas: 21000
+});
+
+// 等待交易上链
+const txReceipt = await publicClient.waitForTransactionReceipt({ hash: txHash });
+console.log(`交易哈希：${txHash}`);
+```
+
+## 2.4 Wagmi 示例（React 组件内）
+
+```
+// 1. 全局初始化 Wagmi（_app.js/ts）
+import { WagmiProvider, createConfig, defaultChains } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { metaMask } from 'wagmi/connectors/metaMask';
+
+const config = createConfig({
+  connectors: [metaMask()], // 集成 MetaMask
+  providers: [publicProvider()],
+  chains: defaultChains
+});
+
+function App({ Component, pageProps }) {
+  return (
+    <WagmiProvider config={config}>
+      <Component {...pageProps} />
+    </WagmiProvider>
+  );
+}
+
+// 2. 组件内使用（实现余额查询、交易发送）
+import { useAccount, useBalance, useSendTransaction, useWaitForTransaction } from 'wagmi';
+import { parseEther } from 'viem';
+
+function WalletComponent() {
+  const { address, isConnected, connect, connector } = useAccount();
+  const { data: balance } = useBalance({ address }); // 获取余额
+  const { sendTransaction, data: txHash } = useSendTransaction();
+  const { isLoading: isTxLoading } = useWaitForTransaction({ hash: txHash });
+
+  // 连接钱包
+  const handleConnect = () => connect({ connector: connector });
+
+  // 发送交易
+  const handleSendTx = () => {
+    sendTransaction({
+      to: '0x1234567890123456789012345678901234567890',
+      value: parseEther('0.01'),
+      gas: 21000
+    });
+  };
+
+  return (
+    <div>
+      {!isConnected ? (
+        <button onClick={handleConnect}>连接 MetaMask</button>
+      ) : (
+        <div>
+          <p>账户：{address}</p>
+          <p>余额：{balance?.formatted} ETH</p>
+          <button onClick={handleSendTx} disabled={isTxLoading}>
+            {isTxLoading ? '交易中...' : '发送 0.01 ETH'}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+# 三、适用场景总结
+
+-   **Web3.js**：维护老项目、需要兼容早期以太坊生态组件时使用，新项目不推荐优先选择。
+    
+-   **Ethers.js**：通用场景首选，尤其是对稳定性、生态兼容性要求高的项目（如 DeFi、NFT 平台），文档和社区支持最完善。
+    
+-   **Viem**：轻量级项目、移动端应用、对包体积敏感的场景，或希望使用简洁 API 的新项目，可替代 Ethers.js。
+    
+-   **Wagmi**：React/Next.js 项目必备，无需手动封装底层逻辑，快速实现钱包连接、状态管理，大幅提升开发效率。
+    
+
+注意：Wagmi 必须依赖 Viem（或 Ethers.js v6+），无法单独使用；Viem 和 Ethers.js 功能重叠，新项目可根据体积需求二选一。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -110,6 +325,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 13 DeFi流动性核心知识
 
@@ -469,6 +685,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 # 12 智能合约安全准则、常见漏洞类型与防护
@@ -882,6 +1099,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1349,6 +1567,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -1645,6 +1864,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2754,6 +2974,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -3125,6 +3346,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -3455,6 +3677,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -3616,6 +3839,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3899,6 +4123,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4208,6 +4433,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -4436,6 +4662,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
