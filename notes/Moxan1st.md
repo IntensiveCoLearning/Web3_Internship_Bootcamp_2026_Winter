@@ -17,13 +17,44 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
-### 总览
+# 总览
 
-### 详情
+学习一下dAPP开发——今天学了一会前端
+
+# 详情
+
+学了一下如何利用 rainbowkit 调用钱包
+
+rainbowkit 前一层是wagmi再前一层是viem
+
+利用如下命令在目标项目配置环境
+
+```
+npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
+```
+
+```
+// 伪代码：这就是 Next.js 渲染时的逻辑
+<_app.tsx>
+  {/* 这里是公共配置，比如 RainbowKit */}
+  
+  <index.tsx>
+    {/* 这里是首页的具体内容 */}
+    <Header />
+    <main>欢迎来到我的第一个 DApp</main>
+  </index.tsx>
+
+</_app.tsx>
+```
+
+\_app.tsx 是配置类，index 也就是一般说的首页，可以在首页里放置我需要的某个部件，比如页面的 Title ，或者是链接钱包的按钮。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-01-25-1769351545043-image.png)
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 # 总览
 
@@ -34,6 +65,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -71,6 +103,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -138,6 +171,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -220,6 +254,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -351,6 +386,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 
 
+
 # 总览
 
 ### 提交任务
@@ -371,6 +407,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -514,6 +551,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -536,6 +574,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -585,6 +624,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -718,6 +758,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -976,6 +1017,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -1084,6 +1126,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
