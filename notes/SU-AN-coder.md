@@ -17,11 +17,112 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
-打卡1
+# 📘 Reactive Network 开发学习笔记：从 0 到 1 实战指南
+
+## 1\. 核心概念：什么是 Reactive 合约？
+
+Reactive 合约是一种**去中心化的跨链中继器**。它打破了传统智能合约“不点不动”的局限性：
+
+-   **监听 (Monitor)**：持续关注特定链（如 Sepolia）上的事件（Events）。
+    
+-   **反应 (React)**：在 ReactVM 隔离环境中根据逻辑判断是否需要操作。
+    
+-   **执行 (Execute)**：自动在目标链发起回调交易，无需中心化脚本（Bot）参与。
+    
+
+* * *
+
+## 2\. 实验架构：Basic Demo 闭环
+
+本次实验成功实现了一个典型的自动化链路：
+
+1.  **L1 源合约 (BasicDemoL1Contract)**：部署在 Sepolia，负责发出 `Received` 信号。
+    
+2.  **Reactive 合约 (BasicDemoReactiveContract)**：部署在 Lasna，负责过滤并发送跨链指令。
+    
+3.  **L1 回调合约 (BasicDemoL1Callback)**：部署在 Sepolia，负责接收指令并执行最终动作。
+    
+
+* * *
+
+## 3\. 实战部署手册 (Foundry 环境)
+
+### Step 1. 环境初始化
+
+克隆仓库并加载依赖：
+
+Bash
+
+```
+git clone https://github.com/Reactive-Network/reactive-smart-contract-demos.git
+cd reactive-smart-contract-demos
+git submodule update --init --recursive
+forge install
+```
+
+### Step 2. 关键环境变量配置 (`.env`)
+
+> **注意**：由于 Lasna 网络升级，必须使用最新的 `rnk.dev` 域名。
+
+| 变量名 | 推荐值/说明 |
+| ORIGIN_RPC | Sepolia Infura/Alchemy URL |
+| REACTIVE_RPC | https://lasna-rpc.rnk.dev/ |
+| SYSTEM_CONTRACT_ADDR | 0x0000000000000000000000000000000000fffFfF |
+| DESTINATION_CALLBACK_PROXY_ADDR | 0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA |
+
+### Step 3. 部署流程命令
+
+1.  **源合约**：`forge create --rpc-url $ORIGIN_RPC --private-key $PRIVATE_KEY src/demos/basic/BasicDemoL1Contract.sol:BasicDemoL1Contract`
+    
+2.  **回调合约**：`forge create --rpc-url $DESTINATION_RPC --private-key $PRIVATE_KEY src/demos/basic/BasicDemoL1Callback.sol:BasicDemoL1Callback --value 0.02ether --constructor-args $DESTINATION_CALLBACK_PROXY_ADDR`
+    
+3.  **Reactive 合约**：使用 `11155111` (Sepolia ID) 和 `0x8cab...` (Event Hash) 作为构造参数。
+    
+
+* * *
+
+## 4\. 疑难杂症排查 (Debug Logs)
+
+在本次实战中，我们克服了两个重大网络技术障碍：
+
+### ❌ 问题 1：TLS Handshake EOF / OS Error 10053
+
+-   **现象**：江西地区访问 `kopernikus.reactive.network` 时报错，握手被强制中断。
+    
+-   **对策**：
+    
+    -   **更换 RPC**：使用了最新的 Lasna 官方 RPC `https://lasna-rpc.rnk.dev/`。
+        
+    -   **网络切换**：切换到手机热点绕过宽带防火墙限制。
+        
+    -   **Cast 测试**：先用 `cast block-number` 验证连通性，再进行部署。
+        
+
+### ❌ 问题 2：Chain ID 不匹配
+
+-   **现象**：由于 Lasna 节点升级，原有的 Chain ID 和域名失效。
+    
+-   **对策**：确认为最新的 Lasna 测试网，Chain ID 为 `5318007`。
+    
+
+* * *
+
+## 5\. 任务提交信息 (Evidence)
+
+-   **源合约地址**: `0xD45545460D0fCbBF03ed8c845Be6906C1B586900`
+    
+-   **回调合约地址**: `0xc67d482e1Fd21a241d67E33271127D98D6634F72`
+    
+-   **Reactive 合约地址**: `0xcde92F471FC8Ae8AdA24d72398Dc61fcEbd02d31`
+    
+-   **触发交易哈希 (Sepolia)**: `0x0a655e8e459b149729444926d9fb0c360b0a2bc1b23f3bd0d725faa2a23016ad`
+    
+-   **验证状态**: `status: 1 (success)`。
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 * * *
 
@@ -106,6 +207,7 @@ ps :第一次部署时间比较长，我花了26min等待，之间因为时间�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -499,6 +601,7 @@ async def main():
 
 
 
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -611,6 +714,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -664,6 +768,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1002,6 +1107,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1401,6 +1507,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2027,6 +2134,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -2093,6 +2201,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2308,6 +2417,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -2462,6 +2572,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2560,6 +2671,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2700,6 +2812,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
