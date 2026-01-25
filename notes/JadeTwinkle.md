@@ -39,9 +39,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 -   **简历修饰共识**：实习生在简历中可以进行“适当的编造/修饰”（Embellish），但不允许过火（如声称全能），需保持逻辑自洽。
     
 
-**详细讨论内容**
-
-### 议题一：简历优化与 AI 工具的应用
+### 简历优化与 AI 工具的应用
 
 -   **核心观点及依据**：
     
@@ -85,6 +83,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 # TODO
 
 1.  今天完成了播客首播，进展顺利非常开心~尝试从不同角度看待行业与数字游民的关系，总结复盘工作安排在明天做完第二期播客后进行
@@ -94,6 +93,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -112,6 +112,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 
 
+
 # TODO
 
 1.  在以PM的身份参与Vibe Coding中文线上黑客松，今天整理项目的prd
@@ -123,6 +124,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -149,6 +151,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 
 
+
 # TODO：
 
 1.  Web3 公共物品资金第一节课，看一下【良心杀】的规则
@@ -164,6 +167,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -207,6 +211,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 
 
+
 # TODO
 
 1.  制作今天的播客——有关于web3安全和合规部分
@@ -218,6 +223,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -264,6 +270,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 
 
+
 今天做了很多杂七杂八的事情，没有特别规范的整理，就简单叙述一下：
 
 很神奇的就像是命运的推背感一样，就开始了投研相关的运营工作，还被赋予了leader的责任和任务，所以今天简要了解了一些有关于拆解投研笔记的流程，感觉慢慢开始学习一些金融相关的知识
@@ -279,6 +286,7 @@ The eternity of pain often does not lie in choosing hardship, but in rejecting t
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -354,6 +362,7 @@ ENS 不止是收款地址，它还是跨平台的“通用账户”，在 Uniswa
 
 
 
+
 # 1\. 安全核心：从“精准猎杀”到“AI 降维打击”
 
 安全态势：2025 年安全事件超 1200 起，呈现出精准猎杀机构（如 Bybit 损失 15 亿美元）与广撒网诈骗并行的特点
@@ -383,6 +392,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -468,6 +478,7 @@ AI 威胁：黑客开始利用 Deepfake（深伪）实时换脸进行社工攻�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
