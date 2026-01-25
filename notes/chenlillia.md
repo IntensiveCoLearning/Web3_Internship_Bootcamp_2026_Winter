@@ -15,8 +15,141 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+概述
+
+-   Solidity：以太坊智能合约主流语言，静态类型、受合约驱动、类 JS/Java 风格语法。
+    
+-   文件头常见：SPDX 许可标识 + pragma 指定编译器版本。 示例： // SPDX-License-Identifier: MIT pragma solidity ^0.8.0;
+    
+
+合约结构
+
+-   contract：定义合约，相当于类。
+    
+-   constructor：合约部署时执行的构造函数（仅执行一次）。
+    
+-   fallback / receive：接收 ETH 的回退函数。
+    
+    -   receive() external payable {} 用于接收纯 ETH（无 data）。
+        
+    -   fallback() external payable {} 在没有 receive 或 data 存在时调用。
+        
+
+数据类型
+
+-   值类型：bool、int/uint（例如 uint256）、address、bytes1..32、enum。
+    
+-   引用类型：string、bytes、arrays、struct、mapping。
+    
+-   special：address payable（可发送 ETH）、contract 类型（合约地址）。
+    
+
+变量与存储
+
+-   存储位置：storage（链上，持久）、memory（函数内临时）、calldata（外部调用的只读参数）。
+    
+-   state variables（状态变量）保存在 storage，函数局部变量可在 memory。
+    
+
+可见性（function / state）
+
+-   public：可被合约内外访问，外部可调用生成 ABI。
+    
+-   external：只能外部调用（节省 gas，适用于大数组参数）。
+    
+-   internal：合约内及继承合约可访问。
+    
+-   private：仅当前合约可访问。
+    
+
+函数修饰
+
+-   view：只读，不修改状态（可从链外调用）。
+    
+-   pure：不读写区块链状态。
+    
+-   payable：函数可接收 ETH。
+    
+-   returns(...)：声明返回值。
+    
+
+错误处理
+
+-   require(condition, "msg")：参数校验/外部条件失败时 revert 并返还剩余 gas。
+    
+-   revert("msg")：手动回退并返还剩余 gas，常用于复杂逻辑。
+    
+-   assert(condition)：用于不变量检查，失败会消耗所有剩余 gas（0.8+ 触发 Panic）。
+    
+
+事件（Events）
+
+-   event Transfer(address indexed from, address indexed to, uint256 value);
+    
+-   emit Transfer(...);
+    
+-   用于日志与索引，可被链下监听。
+    
+
+常见数据结构
+
+-   mapping(keyType => valueType)：键值存储，常用 mapping(address => uint256) balances;
+    
+-   arrays：动态或定长数组，类型 T\[\]。
+    
+-   struct：自定义类型集合。
+    
+
+继承与接口
+
+-   合约支持多继承（C3 线性化）。
+    
+-   interface：声明外部合约的函数签名（无实现）。
+    
+-   abstract contract：包含未实现函数的合约。
+    
+
+库（library）
+
+-   library 用于复用代码，不可有 state（部分版本可），可用 delegatecall。
+    
+-   常用 SafeMath（0.8 之后溢出已内建检查，较少需要）。
+    
+
+ABI 与编码
+
+-   ABI（应用二进制接口）：合约方法/事件的编码规则，供外部调用和解析。
+    
+
+安全性与最佳实践（要点）
+
+-   避免重入攻击：使用 “checks-effects-interactions” 模式或 ReentrancyGuard。
+    
+-   使用最新的 Solidity 版本及启用编译器溢出检查（>=0.8.0）。
+    
+-   使用合约拥有权（Ownable）模式进行权限管理。
+    
+-   谨慎处理外部调用（call、delegatecall、transfer、send）与 gas 限制。
+    
+-   使用 events 记录重要操作；不要把敏感信息明文写入链上。
+    
+-   对外可支付函数做防护（限制接收者、校验 msg.value）。
+    
+-   尽量使用 immutable / constant 优化 gas。
+    
+
+常用全局变量与函数
+
+-   msg.sender、msg.value、[msg.data](http://msg.data)、tx.origin（慎用）、block.timestamp、block.number、gasleft()。
+    
+-   keccak256(abi.encodePacked(...)) 用于哈希。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 # 中文文案排版干货笔记
 
 ## 一、 空格规范
@@ -93,6 +226,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 **Telegram Web3 项目运营技术与工具笔记**
 
@@ -173,6 +307,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 **Web3 治理与资助机制概述**
 
 Web3 治理的核心目标是通过新的机制捕获公共物品的价值，确保对生态系统有价值的事物能够持续生存，解决纯粹市场无法为公共物品定价的问题。
@@ -220,6 +355,7 @@ Web3 治理的核心目标是通过新的机制捕获公共物品的价值，确
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -354,6 +490,7 @@ Web3 治理的核心目标是通过新的机制捕获公共物品的价值，确
 
 
 
+
 今天实在是事情太多，错过了周会，没有回放，真的超级遗憾！
 
 # 一、例会整理
@@ -369,6 +506,7 @@ Web3 治理的核心目标是通过新的机制捕获公共物品的价值，确
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -393,6 +531,7 @@ Echo 老师真的很实诚，让我对当前KOL的生态环境有了十分震惊
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -458,6 +597,7 @@ d)      原生安全：协议层升级
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -691,6 +831,7 @@ Surf AI:也是很好的工具,推荐使用
 
 
 
+
 今日感想：发现web3是一个越了解越让人激动的领域，在这里没有局内人和局外人的界限，没有所谓的社会阶层、地位和资源设置的严格门槛，是真正的permissionless。Colearning时小海老师讲到了很多关于以太坊的理念、未来发展的内容，他所提到的不承诺和指向任何目标，将未来的发展交给时间，不是追求效率的最大化，而是像一个物种的生存那样追求容错能力的时候，我感觉很多纠结在内心的对自己的执念和对世界的愤怒都得到了答案，如释重负。
 
 # 一、收看「Web3 行业全局介绍 & 岗位概览」回放。
@@ -871,6 +1012,7 @@ Surf AI:也是很好的工具,推荐使用
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
