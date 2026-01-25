@@ -15,8 +15,103 @@ Web3 实习计划 2025 冬季实习生 哦耶
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+Speedrun Ethereum 基础工作坊回放
+
+-   核心目标：通过 Speedrun Ethereum 挑战赛快速上手以太坊开发，强调“做中学”、AI 辅助、“vibe coding”
+    
+-   建议开发环境：直接部署到 L2（如 Base、Arbitrum），不要用 Sepolia 等测试网（gas 费已极低）
+    
+-   现代开发哲学：用 Claude / Cursor 等 AI 工具大幅加速原型开发，传统一行一行手写 Solidity 的时代已过
+    
+
+1.  Token（ERC-721 NFT）
+    
+    -   最基础但最重要的起点
+        
+    -   直接在 L2 主网上 mint，不要怕花钱
+        
+    -   学会基础：mint、ownerOf、tokenURI 等
+        
+2.  Crowdfunding（众筹合约）
+    
+    -   核心：状态机（State Machine）
+        
+    -   典型状态：Collecting → Success / Failure
+        
+    -   关键设计点：需要有人主动“poke”（调用函数）来推进状态 → 必须设计激励机制让别人愿意调用
+        
+    -   必须做对抗性设计（adversarial thinking）：防止别人偷钱、作恶、griefing
+        
+    -   经典问题：如果没人调用怎么办？→ 需要经济激励
+        
+3.  DEX / AMM（自动做市商）
+    
+    -   核心公式：x \* y = k（恒定乘积）
+        
+    -   流动性池（LP）、手续费（fee to LP）
+        
+    -   approve + transferFrom 模式（为什么需要两步）
+        
+    -   理解滑点（slippage）、无常损失（IL）产生原因
+        
+4.  随机数与链上游戏
+    
+    -   千万不要用 blockhash / block.timestamp 做随机数（矿工可操控）
+        
+    -   推荐方案：commit-reveal 机制（两阶段提交）
+        
+    -   或者用 Chainlink VRF（但有成本）
+        
+5.  借贷协议基础
+    
+    -   超额抵押（over-collateralized）
+        
+    -   清算（liquidation）机制：价格下跌时谁来触发清算？
+        
+    -   同样需要激励：清算者获得 bonus（清算奖励）
+        
+    -   经典设计：健康因子（health factor）< 1 时可被清算
+        
+
+Austin 强烈推荐的学习与实践方法
+
+-   第一原则：先把东西做出来，再理解为什么
+    
+-   AI 使用建议：
+    
+    -   Cursor + Claude 3.5 / o1 可以极大加速
+        
+    -   先让 AI 写 v1 版本 → 自己读懂 → 修改 → 再问 AI 解释
+        
+-   部署建议：直接上主网/L2（Base gas 费几分钱而已）
+    
+-   学习路径：
+    
+    1.  Speedrun Ethereum 挑战赛逐个做
+        
+    2.  看懂 OpenZeppelin 代码
+        
+    3.  看懂 Uniswap v2/v3、Aave、Compound 等真实协议
+        
+    4.  自己 fork + 修改再部署
+        
+-   心态：vibe coding > perfect code（先有 working prototype 最重要）
+    
+
+未来趋势
+
+-   Agentic Economy（代理经济）正在到来
+    
+-   机构资金大规模进场（2025–2026 已明显加速）
+    
+-   量子抗性（post-quantum cryptography）会逐渐成为重要话题
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 休闲黑客松案例拆解
 
 -   区别于传统48/72小时高强度黑客松，强调低压力、兴趣驱动、可持续参与。
@@ -39,6 +134,7 @@ Web3 实习计划 2025 冬季实习生 哦耶
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 以太坊生态周报学习笔记 (2026年1月)Aztec Network TGE提案
 
@@ -79,6 +175,7 @@ Ben Edgington加入以太坊基金会
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 通过ETHPanda Dapp Workshop的分享，我对现代DeFi借贷协议（以Aave V3→V4演进为代表）的全栈开发与架构有了系统认识。核心亮点在于Hub & Spoke（中心辐射）架构：
 
 -   Liquidity Hub统一汇聚全网流动性，消除孤岛，提升资本效率；
@@ -94,11 +191,13 @@ Ben Edgington加入以太坊基金会
 
 
 
+
 11
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -155,6 +254,7 @@ Constructor：部署时初始化（名称、符号、精度、owner = msg.sender
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -230,6 +330,7 @@ Constructor：部署时初始化（名称、符号、精度、owner = msg.sender
 
 
 
+
 LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持续发展。周会主要聚焦社区动态、项目进展和工作组更新。
 
 关键内容总结：
@@ -247,6 +348,7 @@ LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -276,6 +378,7 @@ LXDAO 致力于构建无限循环，支持开源项目和公共物品的可持�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -325,6 +428,7 @@ AI能力强但仍是“黑户”：身份不可验证、行为不可审计、支
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -421,6 +525,7 @@ AI能力强但仍是“黑户”：身份不可验证、行为不可审计、支
 
 
 
+
 1\. 安全第一原则
 
 私钥绝对不能截图、完整复制、全文发送或存储在易被监控的地方。剪贴板易被恶意软件窃取，建议分段复制+手动输入。涉及真金白银时，安全意识必须极度严格（曾有学员因授权泄露被黑客快速转走奖金）。
@@ -476,6 +581,7 @@ RPC仍存一定中心化风险（可自选或研究去中心化RPC方案）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
