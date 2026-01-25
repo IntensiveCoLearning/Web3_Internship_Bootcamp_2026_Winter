@@ -15,8 +15,236 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+\## 1. Foundry
+
+\- 以 **Rust** 实现的以太坊开发工具链，主打：\*\*编译快、测试快、脚本部署强\*\*。
+
+\- 核心组件：
+
+\- **forge**：编译、测试、安装依赖、构建项目
+
+\- **cast**：命令行与链交互（查数据/发交易/调用合约）
+
+\- **anvil**：本地 EVM 节点（类似本地链）
+
+\- **chisel**：Solidity REPL（可选）
+
+\---
+
+\## 2. 安装与环境
+
+\- 安装`foundryup`（安装后可升级）
+
+\- 常用环境变量（放 `.env`）：
+
+\- `RPC_URL=...`
+
+\- `PRIVATE_KEY=...`（仅用于测试/脚本，注意保密）
+
+\- `ETHERSCAN_API_KEY=...`（验证合约可用）
+
+\---
+
+\## 3. 创建项目与目录结构
+
+\- 创建：
+
+\- `forge init my-project`
+
+\- 常见目录：
+
+\- `src/` 合约源码
+
+\- `test/` 测试代码（Solidity 测试为主）
+
+\- `script/` 部署/交互脚本（Solidity Script）
+
+\- `lib/` 依赖`forge install` 拉取）
+
+\- `foundry.toml` 配置文件
+
+\---
+
+\## 4. Forge 常用命令
+
+\- 编译`forge build`
+
+\- 运行测试`forge test`
+
+\- 显示更详细日志`forge test -vvv`
+
+\- 指定测试合约/函数：
+
+\- `forge test --match-contract MyTest`
+
+\- `forge test --match-test testTransfer`
+
+\- Gas 报告`forge test --gas-report`
+
+\- 格式化`forge fmt`
+
+\- 静态分析/检查`forge lint`（视版本/插件而定）
+
+\- 安装依赖：
+
+\- `forge install openzeppelin/openzeppelin-contracts`
+
+\- 更新`forge update`
+
+\---
+
+\## 5. 测试基础（Solidity 测试）
+
+\### 5.1 Test 合约写法
+
+\- 测试合约一般继承：
+
+\- `import "forge-std/Test.sol";`
+
+\- `contract MyTest is Test { ... }`
+
+\- 测试函数命名：
+
+\- `test...()` 会被自动识别为测试
+
+\- `setUp()` 在每个 test 前运行
+
+\### 5.2 常用断言
+
+\- `assertEq(a, b)`
+
+\- `assertTrue(x)`
+
+\- `assertFalse(x)`
+
+\- `assertGt / assertLt`
+
+\### 5.3 作弊码（Cheatcodes）核心
+
+Foundry 最大优势之一：在测试里“控制环境”。
+
+常用（通过 `vm`）：
+
+\- **改调用者/交易发起者**
+
+\- `vm.prank(addr)`：下一次调用 `msg.sender=addr`
+
+\- `vm.startPrank(addr)` / `vm.stopPrank()`：多次调用持续生效
+
+\- **给地址打钱**
+
+\- `vm.deal(addr, amount)`
+
+\- **时间/区块**
+
+\- `vm.warp(timestamp)`：改 `block.timestamp`
+
+\- `vm.roll(blockNumber)`：改 `block.number`
+
+\- **预期 revert**
+
+\- `vm.expectRevert()` 或 `vm.expectRevert(bytes("msg"))`
+
+\- `vm.expectRevert(Selector)`（适配自定义 error）
+
+\- **事件**
+
+\- `vm.expectEmit(...)`
+
+\- **外部调用模拟**
+
+\- `vm.mockCall(target, calldata, returndata)`
+
+\- **读写存储**
+
+\- `vm.load` / `vm.store`（调试/攻防场景常用）
+
+\---
+
+\## 6. Fuzz / Invariant 测试
+
+\### 6.1 Fuzz（模糊测试）
+
+\- 直接在 `test` 函数里加参数即可自动 fuzz：
+
+\- `function testFoo(uint256 x) public { ... }`
+
+\- 常配合：
+
+\- `vm.assume(x > 0)` 限制输入范围
+
+\- 优点：比手写用例覆盖更广，容易发现边界 bug。
+
+\### 6.2 Invariant（不变量测试）
+
+\- 目标：无论怎么调用，某个性质始终成立（如“总余额守恒”）。
+
+\- 写法通常：
+
+\- 一个 Handler 合约负责随机调用目标合约方法
+
+\- 测试合约写 `invariant_...()` 校验性质
+
+\- 适合：DeFi、资金流、权限系统等复杂状态机。
+
+\---
+
+\## 7. Script（部署与链上交互）
+
+\- 写在 `script/`，继承 `Script`：
+
+\- `import "forge-std/Script.sol";`
+
+\- 广播交易常用：
+
+\- `vm.startBroadcast(privateKey)` / `vm.stopBroadcast()`
+
+\- 或 CLI `--private-key` + `--broadcast`
+
+\- 运行示例：
+
+\- `forge script script/Deploy.s.sol:Deploy --rpc-url $RPC_URL --broadcast -vvv`
+
+\---
+
+\## 8. Cast（命令行交互）
+
+常用：
+
+\- 查区块号`cast block-number --rpc-url $RPC_URL`
+
+\- 查余额`cast balance <addr> --rpc-url $RPC_URL`
+
+\- 调用只读函数：
+
+\- `cast call <contract> "balanceOf(address)(uint256)" <addr> --rpc-url $RPC_URL`
+
+\- 发交易（写链）：
+
+\- `cast send <contract> "transfer(address,uint256)" <to> <amt> --rpc-url $RPC_URL --private-key $PRIVATE_KEY`
+
+\- 编码/解码工具：
+
+\- `cast abi-encode "f(uint256)" 1`
+
+\- `cast keccak "Transfer(address,address,uint256)"`
+
+\---
+
+\## 9. Anvil（本地链）
+
+\- 启动`anvil`
+
+\- 默认提供一组测试私钥/地址，适合本地快速验证：
+
+\- 结合 `forge testforge script --rpc-url http://127.0.0.1:8545`
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 \## 1. 复习回顾（补课清单）
 
 \- 数据位置`storage / memory / calldata`
@@ -64,6 +292,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 \## Ethereum Clients & Hardhat
 
@@ -152,6 +381,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 \### 继承与多态
 
 \- 使`is`关键字继承，支持多重继承
@@ -231,6 +461,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -356,6 +587,7 @@ contract MyContract {
 
 
 
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -365,6 +597,7 @@ contract MyContract {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -459,6 +692,7 @@ contract MyContract {
 
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -533,6 +767,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -583,6 +818,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -655,6 +891,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
