@@ -15,8 +15,132 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+\## solidity workflow
+
+\> link: \[Foundry Book\]([https://book.getfoundry.sh/](https://book.getfoundry.sh/)), \[Solidity Documentation\]([https://docs.soliditylang.org/](https://docs.soliditylang.org/)), \[Awesome-Foundry\]([https://github.com/crisgarner/awesome-foundry](https://github.com/crisgarner/awesome-foundry))
+
+\- Foundry 核心组件
+
+基于 Rust 开发的高性能开发框架，弃用 Hardhat 的 JS 运行环境。
+
+| **工具** | **功能** | **对应 Rust 概念 (类比)** |
+
+| ---------- | ------------------------ | ------------------------- |
+
+| **Forge** | 编译、测试、部署合约 | `cargo` |
+
+| **Cast** | 交互、调用合约、数据转换 | CLI 调试工具 |
+
+| **Anvil** | 本地以太坊节点 | 本地运行时环境 |
+
+| **Chisel** | 快速 Solidity Shell | REPL / Playground |
+
+\- 项目初始化与包管理
+
+Foundry 使用 **git submodules** 管理依赖，而非 `npm`。
+
+Bash
+
+\`\`\`
+
+forge init my\_project
+
+forge install foundry-rs/forge-std # 安装标准库
+
+\`\`\`
+
+\- **Remappings**: 在 `remappings.txt` 中配置路径映射（类似 Rust `Cargo.toml` 的路径引用）。
+
+\- 开发测试循环 (TDD)
+
+Foundry 的核心优势是 **用 Solidity 写测试**。
+
+Solidity
+
+\`\`\`
+
+import "forge-std/Test.sol";
+
+import "../src/Counter.sol";
+
+contract CounterTest is Test {
+
+Counter public counter;
+
+function setUp() public { // 类似 Rust 的初始化/Setup
+
+counter = new Counter();
+
+}
+
+function testIncrement() public {
+
+counter.increment();
+
+assertEq(counter.number(), 1);
+
+}
+
+}
+
+\`\`\`
+
+\- Cheatcodes (Foundry 的“超能力”)
+
+通过 `vm` 实例改变区块链状态（Solidity 原生无法做到）。
+
+\- `vm.prank(address)`: 改变后续调用的 `msg.sender`。
+
+\- `vm.warp(uint256)`: 修改区块时间戳 `block.timestamp`)。
+
+\- `vm.expectRevert()`: 预期下一行调用会报错。
+
+\- 部署与验证
+
+使用 `--verify` 直接在部署时同步 Etherscan 源码。
+
+Bash
+
+\`\`\`
+
+\# 部署脚本通常放在 script/ 目录下，继承 Script
+
+forge script script/Deploy.s.sol --rpc-url $RPC\_URL --broadcast --verify
+
+\`\`\`
+
+\- Fuzz Testing (模糊测试)
+
+Foundry 原生支持。只要给测试函数传入参数，它会自动进行随机输入测试。
+
+Solidity
+
+\`\`\`
+
+function testSetNumber(uint256 x) public { // x 会由 Forge 自动注入随机值
+
+counter.setNumber(x);
+
+assertEq(counter.number(), x);
+
+}
+
+\`\`\`
+
+\- 开发习惯 Tips
+
+\- **Gas Snapshots**: `forge snapshot` 监控代码改动对 Gas 的影响。
+
+\- **Trace**: 使用 `-vvvv` 查看极度详细的调用栈（Call Stack）和错误位置。
+
+\- **Mainnet Forking**: `forge test --fork-url $RPC` 在本地模拟主网环境测试。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   错误处理 (Error Handling)
@@ -81,6 +205,7 @@ se major, into crypto
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 Uniswap v4 (from v3)
 
@@ -159,6 +284,7 @@ manager.unlock(abi.encode(params))
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 -   特征对象 \[sol中慎用\]
     
     总是通过**引用**: 通过 `&` 引用或者 `Box<T>` 智能指针的方式来创建特征对象
@@ -192,6 +318,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -239,6 +366,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -293,6 +421,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -312,6 +441,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -400,6 +530,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -421,6 +552,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
