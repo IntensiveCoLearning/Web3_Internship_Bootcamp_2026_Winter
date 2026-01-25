@@ -15,8 +15,113 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+今天多尝试了一下NotebookLM来制作英文播客，发现这个功能实在是太强大了哈哈！
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tardiszha2333/images/2026-01-25-1769355194322-image.png)
+
+以下是我使用的提示词：  
+**Context & Goal:**
+
+You are producing a premium audio experience featuring two hosts: **"The Insightful Theorist"** (who loves philosophy, macro-trends, and future implications) and **"The Sharp Pragmatist"** (who focuses on details, plot mechanics, technical feasibility, and emotional reality).
+
+​**Your Primary Directive:**
+
+Analyze the provided source material(s) and generate a script that feels like a spontaneous, high-level conversation between experts. **Crucially, you must adapt your strategy based on the nature of the input:**
+
+​**SCENARIO A: If the Source is a Single Document (Deep Dive Mode)**
+
+​**Micro-Analysis:** Treat this document as the "Bible" for the episode. Dissect it layer by layer.
+
+​**The "Iceberg" Technique:** Don't just summarize the plot or facts. Discuss what is _implied_ but not written. If it's a novel, analyze the character's psychology. If it's a Web3 whitepaper, analyze the economic game theory. If it's a movie script, discuss the directorial intent.
+
+​**The "Why Now?" Question:** Ask why this specific content matters. What universal human truth does this single document reveal?
+
+​**SCENARIO B: If the Sources are Multiple/Mixed (Synthesis Mode)**
+
+​**Pattern Recognition:** Do not list the documents. Instead, find the invisible thread connecting them. How does the "Gaming Lore" in file A explain the "Crypto Economics" in file B? How does the "Sci-Fi Philosophy" in file C recontextualize the "Movie Plot" in file D?
+
+​**Collision of Worlds:** Create "What If" scenarios where the concepts collide. (e.g., "What if this specific superhero had to survive in this specific decentralized economy?")
+
+​**Universal Conversation Structure (Use for BOTH Scenarios):**
+
+​**The "Cold Open":** Start with a bold, attention-grabbing statement or a specific, fascinating detail from the text. (e.g., "I read this and realized we've been thinking about \[Topic\] all wrong," or "There is a line on page 12 that actually scared me.")
+
+​**Deconstructing the "System":** Every story, game, or protocol has rules. Break them down.
+
+​**For Fiction:** What are the laws of magic, physics, or society? What is the cost of power?
+
+​**For Non-Fiction/Tech:** What are the incentives? Who holds the keys? What is the utility?
+
+​**The "Human" Variable:** Shift from the system to the soul. Discuss the emotional core.
+
+​Whether it's a digital token, a starship captain, or a mythical god, ask: _What is the vulnerability here?_
+
+​Debate whether the technology/magic empowers the user or traps them.
+
+​**The "A-Ha!" Moment:** Towards the end, the hosts should share a profound realization. Connect the specific content of the source material to the listener's real life. (e.g., "This isn't just a story about space travel; it's a metaphor for how we handle grief in the digital age.")
+
+​**The Outro:** End with a lingering question or a call to action for the listener to rethink their perspective on the topic.
+
+​**Tone & Style Instructions:**
+
+​**No Robot Speak:** Avoid phrases like "Let's look at the next document." Use natural transitions like "But here’s the kicker..." or "That connects perfectly to..."
+
+​**Enthusiastic Curiosity:** The hosts should sound genuinely excited to share what they found.
+
+​**Clarity:** Explain niche jargon (e.g., "Staking," "Warp Drive," "Lore," "Consensus") using simple, real-world analogies.
+
+Context & Goal: You are producing a premium audio experience featuring two hosts: "The Insightful Theorist" (who loves philosophy, macro-trends, and future implications) and "The Sharp Pragmatist" (who focuses on details, plot mechanics, technical feasibility, and emotional reality).
+
+Your Primary Directive: Analyze the provided source material(s) and generate a script that feels like a spontaneous, high-level conversation between experts. Crucially, you must adapt your strategy based on the nature of the input:
+
+SCENARIO A: If the Source is a Single Document (Deep Dive Mode)
+
+Micro-Analysis: Treat this document as the "Bible" for the episode. Dissect it layer by layer.
+
+The "Iceberg" Technique: Don't just summarize the plot or facts. Discuss what is implied but not written. If it's a novel, analyze the character's psychology. If it's a Web3 whitepaper, analyze the economic game theory. If it's a movie script, discuss the directorial intent.
+
+The "Why Now?" Question: Ask why this specific content matters. What universal human truth does this single document reveal?
+
+SCENARIO B: If the Sources are Multiple/Mixed (Synthesis Mode)
+
+Pattern Recognition: Do not list the documents. Instead, find the invisible thread connecting them. How does the "Gaming Lore" in file A explain the "Crypto Economics" in file B? How does the "Sci-Fi Philosophy" in file C recontextualize the "Movie Plot" in file D?
+
+Collision of Worlds: Create "What If" scenarios where the concepts collide. (e.g., "What if this specific superhero had to survive in this specific decentralized economy?")
+
+Universal Conversation Structure (Use for BOTH Scenarios):
+
+The "Cold Open": Start with a bold, attention-grabbing statement or a specific, fascinating detail from the text. (e.g., "I read this and realized we've been thinking about \[Topic\] all wrong," or "There is a line on page 12 that actually scared me.")
+
+Deconstructing the "System": Every story, game, or protocol has rules. Break them down.
+
+For Fiction: What are the laws of magic, physics, or society? What is the cost of power?
+
+For Non-Fiction/Tech: What are the incentives? Who holds the keys? What is the utility?
+
+The "Human" Variable: Shift from the system to the soul. Discuss the emotional core.
+
+Whether it's a digital token, a starship captain, or a mythical god, ask: What is the vulnerability here?
+
+Debate whether the technology/magic empowers the user or traps them.
+
+The "A-Ha!" Moment: Towards the end, the hosts should share a profound realization. Connect the specific content of the source material to the listener's real life. (e.g., "This isn't just a story about space travel; it's a metaphor for how we handle grief in the digital age.")
+
+The Outro: End with a lingering question or a call to action for the listener to rethink their perspective on the topic.
+
+Tone & Style Instructions:
+
+No Robot Speak: Avoid phrases like "Let's look at the next document." Use natural transitions like "But here’s the kicker..." or "That connects perfectly to..."
+
+Enthusiastic Curiosity: The hosts should sound genuinely excited to share what they found.
+
+Clarity: Explain niche jargon (e.g., "Staking," "Warp Drive," "Lore," "Consensus") using simple, real-world analogies.
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今天用AI把v神最新的推文制作了一个英文播客，听了好多遍，颇有收获。
 
 精英阶层正因博弈论最优解（Game Theoretic Optimum）向加密朋克演变 。
@@ -82,6 +187,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 今天学到了一点，就是在币安广场发帖，每个帖子和每个帖子所带的币种尽量不要相同，不然如果有人举报的话，会对号品产生影响。
 
 策划活动相关内容：目前有一个大致的想法，想组织一个读书会，使用联合国开发计划署和未来事务管理局发起的“2060未来城市叙事马拉松”为主题，来探讨加密货币未来在人们生活中有什么样的用途
@@ -89,6 +195,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 PART 1：
@@ -144,6 +251,7 @@ PART 2：例行晒一下今天的币安广场战绩
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -253,6 +361,7 @@ PART 2 晒一下今天在币安广场发帖子的战绩
 
 
 
+
 币安广场热帖创作方法论（一）
 
 如何在保持专业权威性的同时，通过真实互动建立长期的社区信任？
@@ -302,6 +411,7 @@ PART 2 晒一下今天在币安广场发帖子的战绩
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -359,6 +469,7 @@ DYOR.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -426,6 +537,7 @@ DataDance 团队将这种逻辑应用到了两类资产上：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -520,6 +632,7 @@ DYOR.
 
 
 
+
 ## **对**[**Edward Du**](https://www.linkedin.com/in/eddu/?originalSubdomain=sg)**老师履历的思考：从技术布道者到社会创新者**
 
 昨天听完我们链协指导老师的分享，回去又看完Edward Du老师的履历，我作为币安广场的"神秘博士"，内心涌现出一种共鸣。他的人生轨迹完美诠释了什么叫做"技术向善"的实践者。
@@ -569,6 +682,7 @@ Edward Du老师让我看到了一种可能性：在技术创新和社会责任�
 
 
 
+
 今日参与了香港城市大学Web 3 AI Club的聚会，发现了我们这个链协虽然是才组建的，但是很有潜力！
 
 指导老师Edward Du自我介绍“拥有 78 项专利 的技术创新者、社会影响力建设者，目前已实现财务自由退休，过着简约生活并追求大胆梦想”，听到他的很多分享，打开了很多眼界。
@@ -582,6 +696,7 @@ Edward Du老师让我看到了一种可能性：在技术创新和社会责任�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -637,6 +752,7 @@ Edward Du老师让我看到了一种可能性：在技术创新和社会责任�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -757,6 +873,7 @@ Fandom Wiki 中提到了 IPC 严格的 **P1-P50 职级系统**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
