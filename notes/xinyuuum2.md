@@ -17,8 +17,14 @@ Base上海 美本美硕 工作三年DS/DA
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+今天复习了Solidity的内容，完成了几个Solidity101的Test，然后晚上完成了Ethereum的Tokenization Challenge. 果然技术方面的内容还是需要自己上手操作运行结合阅读，学习的才能更快。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## Gas 优化
 
 在以太坊中，Gas 是衡量 EVM 执行计算和状态变更成本的单位。合约的每一次执行，都会因为指令类型不同而消耗不同数量的 gas。
@@ -92,11 +98,13 @@ contract CounterOptimized {
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 大家都好厉害哈哈哈…打算周末review一下这周的内容，把技术方向的做一下。这两天太忙了，周末努力补补课。
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -176,6 +184,7 @@ contract CounterOptimized {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -299,11 +308,13 @@ contract CounterOptimized {
 
 
 
+
 今天听了Solidity的初步介绍，学习了一些语法。因为加班的原因，笔记明天看了回放再补上啊啊啊…还熟悉了一下Remix的环境，尝试了一些简单的代码。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -368,6 +379,7 @@ ERC-7962 的架构天然支持批量交易。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -454,6 +466,7 @@ ERC-7962 是一种新的 NFT 协议，旨在实现“隐私保护”与“极致
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -624,11 +637,13 @@ contract AdvancedStorage {
 
 
 
+
 打算利用周末时间吧这周的内容再熟悉一下。今天没有大课，听了同学们的sharing，发现也有几个和我差不多年龄的朋友们。可能大家之前都是小白，但是现在对于行业的了解已经颇有深度。还是要抓紧练习呀。周末要好好把这周内容总结一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -712,6 +727,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 
 
+
 今天信息量有点大了……内容有点硬核了……
 
 ### 一、 法律合规
@@ -779,6 +795,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -920,6 +937,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
