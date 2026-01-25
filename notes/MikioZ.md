@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+同昨天
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 补回放
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 回顾之前的视频回放
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 参加1.21co-learn和分享会，有点迷茫，不知道该学什么了，思考一下
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 参加1.20co-learn、两个分享会，完成了一些入门技术任务
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 铸造SPL token
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -80,11 +92,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 参加1.15co-learn，参加web3AI分享会，复习solidity语法
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -108,11 +122,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 参加1.13co-learn学习会，学习021学习以太坊开源教材，学习rust，参加web3运行原理分享会
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
