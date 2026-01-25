@@ -15,13 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+### 技术架构核心对比
+
+| 维度 | Web2 技术路线 | Web3 技术路线 |
+| 底层基础设施 | 云计算服务器 (AWS, Azure, 阿里云) | 区块链网络 (Ethereum, Solana, L2) |
+| 数据存储 | 中心化数据库 (MySQL, MongoDB, Redis) | 分布式存储 (IPFS, Arweave) + 链上状态 |
+| 身份验证 (Auth) | OAuth2, 邮箱/手机号密码, JWT | 钱包签名 (EVM 钱包, Solana 钱包), 公私钥对 |
+| 业务逻辑执行 | 后端 API (Node.js, Go, Python, Java) | 智能合约 (Solidity, Rust, Move) |
+| 前端交互 | 调用 RESTful 或 GraphQL API | 通过 Provider (如 Ethers.js) 与节点交互 |
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-24-1769221141289-image.png)
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 每个 Solidity 文件必须以 **SPDX 许可证标识符**和 **Pragma** 开头。// SPDX-License-Identifier: MIT
 
@@ -147,6 +161,7 @@ string public greeting = "Hello, Web3!";
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-22-1769053508623-image.png)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
@@ -155,11 +170,13 @@ string public greeting = "Hello, Web3!";
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-21-1768974994477-image.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -174,11 +191,13 @@ Solidity基础语法学习
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-19-1768793761701-image.png)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -197,11 +216,13 @@ Dapp 架构由前端，智能合约，数据检索器，区块链和去中心化
 
 
 
+
 周六休息
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -226,6 +247,7 @@ Dapp 架构由前端，智能合约，数据检索器，区块链和去中心化
 
 
 
+
 AI机器基础概念
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
@@ -241,11 +263,13 @@ AI机器基础概念
 
 
 
+
 Web3 已从野蛮生长转向合规化，了解各国监管政策的同时注意安全反诈，警惕钓鱼链接，冒充官方，凡是助记词，账号密码等敏感信息谨慎输入，插件软件从官方下，面试只用Zoom/腾讯会议等主流平台，绝不下“专门面试平台”
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -298,6 +322,7 @@ Web3: 私钥（一串乱码）。千万不能丢！ 丢了谁也帮不了你，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
