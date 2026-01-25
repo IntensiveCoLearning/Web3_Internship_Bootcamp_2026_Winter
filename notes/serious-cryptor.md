@@ -15,8 +15,25 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+Date: 2026/1/25
+
+-   学习内容：复盘运营向space + 《021以太坊》第三章第七节-第八节+ 钓鱼攻防任务
+    
+-   进展：完成了钓鱼攻防挑战前两章，有一个trezor的官网好坑，后缀是.io不是.com，整理了每天的学习笔记
+    
+-   感悟：看着群里一群群大佬，已经逐渐感觉自己不适合做技术了（悲）
+    
+-   疑惑：
+    
+
+notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy\_link](https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 Date: 2026/1/23
 
 -   学习内容：分享会议 + 《021以太坊》EOA与合约直接调用
@@ -34,6 +51,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 Date: 2026/1/201
 
 -   学习内容：会议x3 + 《021以太坊》第三章账户类型与结构
@@ -50,6 +68,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 Date: 2026/1/20
@@ -71,6 +90,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 
 
+
 Date: 2026/1/19
 
 -   学习内容：web3运营会议 + 实习手册Sodility
@@ -87,6 +107,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -112,6 +133,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 
 
+
 Date: 2026/1/17
 
 -   学习内容：《021以太坊》网络结构与节点类型
@@ -128,6 +150,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -157,6 +180,7 @@ notion笔记同步更新：[还在整理中ing...](https://www.notion.so/web3-2e
 
 
 
+
 Date: 2026/1/15
 
 -   学习内容：web3与ai会议 + 《021以太坊》第一章
@@ -173,6 +197,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -206,6 +231,7 @@ notion笔记同步更新：[https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14
 
 
 
+
 Date: 2026/1/13
 
 -   学习内容：实习手册-智能合约开发 +《021以太坊》DAPP部分 + 20:00的web3运行原理 + 我的第一个NFT
@@ -225,6 +251,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8029a48cf359223ea4
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
