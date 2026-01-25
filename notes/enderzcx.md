@@ -17,18 +17,23 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
-# **Fork了Solidity-by-example 中文翻译**  
+# **Fork了Solidity-by-example 中文翻译**
+
 后续会在这个学习仓库更新[https://github.com/enderzcx/Solidity-by-example\_Chinese-by-enderzcx/tree/main](https://github.com/enderzcx/Solidity-by-example_Chinese-by-enderzcx/tree/main)
+
+**优化个人简历 & 职业规划**
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 今日复习了Python 准备投测试实习生的简历
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 # [**循环语句**](https://github.com/Web3-Club/Solidity-by-example_Chinese/blob/main/11%20%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5.md#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5)
@@ -189,6 +194,7 @@ contract Mapping {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -609,6 +615,7 @@ contract IfElse {
 
 
 
+
 收看「Web3 公共物品资金分配第一节课」回放
 
 我也想参与！我也想当坏人！
@@ -616,6 +623,7 @@ contract IfElse {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -650,6 +658,7 @@ Solidity学习路线（**021学习以太坊**）：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -726,6 +735,7 @@ Solidity 审计流程
 
 
 
+
 Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-contract-development/)部分  
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)  
 学习AI 及其基础概念
@@ -766,12 +776,14 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 已完成 [Unphishable](https://unphishable.io/) 钓鱼攻防挑战  
 Trezor的域名到底是什么 试了很多都不对。。。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -846,6 +858,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 
 
+
 学习了Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分  
 开发环境并熟悉：  
 [Remix IDE](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.30+commit.73712a01.js)
@@ -856,6 +869,7 @@ Trezor的域名到底是什么 试了很多都不对。。。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
