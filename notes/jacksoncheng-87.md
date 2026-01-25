@@ -15,8 +15,113 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# Solidity 基础学习与 Gas 优化总结
+
+> 💡 这周我主要学习了 Solidity 的基础语法以及 Gas 的优化技巧，为智能合约开发打下了扎实的基础。
+
+## Solidity 语法学习
+
+Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以下是我重点掌握的核心内容：
+
+### 1️⃣ 数据类型与变量
+
+**基本类型与复合类型**
+
+-   **基本类型**：`uint`、`int`、`bool`、`address`、`bytes`
+    
+-   **复合类型**：`struct`、`enum`、`mapping`、`array`
+    
+
+**关键要点**
+
+-   `uint256` 是常用整数类型，用于处理大数
+    
+-   `address` 用于存储钱包地址
+    
+-   变量默认私有，需要用 `public`/`external` 等修饰符控制可见性
+    
+
+### 2️⃣ 函数与修饰符
+
+**函数定义要素**
+
+-   **可见性**（Visibility）：`public`、`private`、`internal`、`external`
+    
+-   **状态可变性**（State Mutability）：`pure`、`view`、`payable`
+    
+
+**特殊函数**
+
+-   `constructor`：初始化合约
+    
+-   `fallback`/`receive`：处理 ETH 转账
+    
+
+**访问控制**
+
+-   修饰符如 `onlyOwner` 用于实现权限管理
+    
+
+### 3️⃣ 合约结构
+
+**核心概念**
+
+-   一个合约文件可包含多个合约
+    
+-   使用 `interface`/`abstract` 实现继承
+    
+-   **事件**（`event`）用于日志记录
+    
+-   **错误处理**：`require`、`revert`、`assert`
+    
+
+### 4️⃣ 实践经验
+
+**项目实战**
+
+-   编写了一个简单的 **ERC-20 代币合约**
+    
+-   测试了变量存储和函数调用
+    
+
+**遇到的问题**
+
+-   类型转换（如 `bytes` 到 `string`）需小心，避免数据丢失
+    
+
+* * *
+
+## Gas 优化技巧
+
+### 1\. 减少存储操作（Storage Write）
+
+存储操作是最昂贵的 Gas 消耗来源，应尽量减少对状态变量的写入次数。
+
+### 2\. 使用位压缩（Bit Packing）
+
+将多个小变量打包到同一个存储槽中，可以显著降低存储成本。
+
+### 3\. 循环优化
+
+-   避免在循环中进行存储操作
+    
+-   缓存数组长度，减少重复读取
+    
+
+### 4\. 函数可见性选择
+
+选择合适的函数可见性修饰符（如 `external` vs `public`），可以节省 Gas。
+
+* * *
+
+**学习收获**：通过本周的学习，我不仅掌握了 Solidity 的核心语法，还了解了智能合约开发中的 Gas 优化最佳实践，为后续的项目开发奠定了良好基础。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 **gas 优化**
 
 基本原理与计量单位：Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
@@ -156,6 +261,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 Solidity Basic 笔记
 
@@ -698,6 +804,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -1018,6 +1125,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -1251,6 +1359,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -1333,6 +1442,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1530,6 +1640,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -1537,6 +1648,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1616,6 +1728,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1766,6 +1879,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2060,6 +2174,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -2123,6 +2238,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2282,6 +2398,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
