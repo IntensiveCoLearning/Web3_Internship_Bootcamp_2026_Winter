@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+## 学习总结day13
+
+今天主要的学习计划是看solidity的基础语法和复习前面的学习，并完善昨天的demo，今天主要记录其中的难点，和使用到的困难点；
+
+**常见攻击方式** 1、重入攻击：（最经典的案例The DAO，导致ETH分叉为ETH和ETC）利用外部合约在 fallback 中重新调用原函数 防护方法：先更新状态，再转账 // ❌ 有漏洞 function withdraw() public { require(balance\[msg.sender\] > 0); (bool sent,) = msg.sender.call{value: balance\[msg.sender\]}(“”); require(sent); balance\[msg.sender\] = 0; }
+
+// ✅ 修复后 function withdraw() public { uint256 amount = balance\[msg.sender\]; balance\[msg.sender\] = 0; (bool sent,) = msg.sender.call{value: amount}(“”); require(sent); } 2、预言机操纵 Oracle Manipulation，依赖外部价格源的不可信更新，防护方法：使用多个预言机如：chainlink等权威机构。 3、整数溢出/下溢：使用 unchecked {} 时需确保逻辑安全。 4、权限控制缺失：所有管理函数应使用 onlyOwner 或 AccessControl 修饰符保护。 5、未初始化代理：基于代理模式的合约若未正确执行初始化函数，可能被任意人初始化并接管合约 6、前置交易/三明治攻击：攻击者在交易执行前后分别发送交易，以不利滑点或套利为目的（夹子机器人）
+
+(bool sent,) = msg.sender.call{value: amount}(“”); // 低级转账 // 使用 低级 call 方法向 msg.sender（调用合约的地址）发送以太币 call 是 Solidity 提供的 通用交互方法，可用于： 转账 ETH（通过 value 参数）。 调用其他合约的函数（通过传入 calldata）。 {value: amount} 指定随 call 一起转账的 ETH 数量（单位：wei）。 例如：如果 amount = 1 ether，则转账 1 ETH。 (“”)
+
+call 的第二个参数是 calldata（字节码），用于调用目标合约的函数。 这里传入空字符串 “”，表示 仅转账 ETH，不调用任何函数。 (bool sent,)
+
+call 返回两个值： bool sent：转账或调用是否成功（true = 成功，false = 失败）。 bytes memory data：目标合约返回的数据（这里忽略，用 , 跳过）。 通过 (bool sent,) 只捕获第一个返回值（成功/失败）。 require(sent, “Transfer failed”); // 确保转账成功 缺点： 需要手动检查 sent（否则转账失败时无法知晓）。 有 重入风险（如果接收方是恶意合约）。
+
+今日练习demo： 把之前写过的发送留言的demo发布到spider上，并且嵌套入Dapp中的练习题在手动敲一遍： 每次习惯把字符串敲成’'，solidity的""才算是字符串，否则会有警告
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 \## 学习总结day13
 
 今天主要的学习计划是看solidity的基础语法和复习前面的学习，并完善昨天的demo，今天主要记录其中的难点，和使用到的困难点；
@@ -82,6 +102,7 @@ i++ (后自增)：会多产生一个临时变量。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ## **学习总结day12**
 
@@ -335,6 +356,7 @@ contract PointSystem {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 \## 学习总结day11
@@ -605,6 +627,7 @@ points\[\_add\] += po;
 
 
 
+
 ## **学习总结day10**
 
 今天主要的学习计划是看solidity的基础语法和联系，今天的这些学习总结主要是记录一些比较难懂的学习点
@@ -748,6 +771,7 @@ function leaveMessage(string memory _msg) public {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -927,6 +951,7 @@ contract EventExample {
 
 
 
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -1004,6 +1029,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1096,6 +1122,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -1159,6 +1186,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1274,6 +1302,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1439,6 +1468,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1638,6 +1668,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -1732,6 +1763,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
