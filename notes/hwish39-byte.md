@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+## 继续学习uniswap.......
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## 今天开始学习uniswap，了解了一些基础的概念
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 ## 今天听了有关**Speedrun Basic workshop的分享会，参加了第二周例会，完成了入门技术完挑战 Challenge #0 - Tokenization**
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ## 今天完成了入门技术中的任务，针对ethernaut前三关做了一份攻略
@@ -207,6 +215,7 @@ await contract.owner()
 
 
 
+
 ## 今天首先完成了漏洞修复案例任务，完成了重入攻击漏洞修复，并编写了attack代码验证结果。
 
 ### 有漏洞代码，先转账再更新状态：
@@ -341,6 +350,7 @@ contract Attacker {
 
 
 
+
 ## 今天最重要的就是听了有关web3公共物品资金分配的分享会，受益良多，总结了一些内容。
 
 **在经济学中，公共物品具有两个核心特征：**
@@ -389,11 +399,13 @@ contract Attacker {
 
 
 
+
 ## 今天主要**完成挑战 Challenge #0 - Tokenization和通过了 Ethernaut 前 3 关，对nft有了更深的理解**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -454,11 +466,13 @@ contract Attacker {
 
 
 
+
 # 今天虽然没看什么，但是还是坚持打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -552,11 +566,13 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要听了rick老师的智能体AI与web3融合的分享会。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -616,6 +632,7 @@ Solidity 采用“全有或全无”机制：
 
 
 
+
 ## 今天主要阅读了021 学习以太坊第 2&3 章，了解了web3领域中合规与网络安全相关的内容。
 
 ## 以及铸造了第一个NFT
@@ -625,6 +642,7 @@ Solidity 采用“全有或全无”机制：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
