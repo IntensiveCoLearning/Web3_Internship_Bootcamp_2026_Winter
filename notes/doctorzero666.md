@@ -15,8 +15,151 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# **Ethernaut 前三关学习要点总结（Hello / Fallback / Fallout）**
+
+## **关卡 1：Hello Ethernaut（熟悉 Console + 合约交互）**
+
+### **通关目标**
+
+-   跟着合约的提示链条一步步调用函数，最终拿到 password 并 authenticate()，再提交实例。
+    
+
+### **核心学习点**
+
+-   **Console 里输入的是 JavaScript（web3.js）**，不是命令行。
+    
+-   许多链上调用是异步的，常见现象：
+    
+    -   Promise <pending>：说明在等链上返回
+        
+    -   解决：用 await 或 .then()
+        
+-   **合约函数必须通过合约对象调用**：
+    
+    -   ✅ await contract.info1()
+        
+    -   ❌ info1()
+        
+-   **字符串参数必须加引号**：
+    
+    -   ✅ await contract.info2("hello")
+        
+    -   ❌ await contract.info2(hello)（hello 会被当成变量）
+        
+
+### **最重要的安全结论**
+
+-   **链上没有真正的“秘密”**
+    
+    -   即使变量是 private，只要写进 storage，就能被读取（例如 getStorageAt）
+        
+    -   private 只是“代码层面不生成 getter / 不让别的合约直接读”，不是加密。
+        
+
+* * *
+
+## **关卡 2：Fallback（用 receive/fallback 拿 Owner + withdraw 提空余额）**
+
+### **通关目标**
+
+1.  让你成为 owner
+    
+2.  把合约余额变为 0（withdraw 提空）
+    
+
+### **代码关键点（漏洞位置）**
+
+-   contribute()：
+    
+    -   限制 msg.value < 0.001 ether（每次只能小额）
+        
+    -   并且只有当你的 contributions > 原 owner 的 contributions 才会改 owner（几乎不可能）
+        
+-   **真正的漏洞在 receive()：**
+    
+
+```
+require(msg.value > 0 && contributions[msg.sender] > 0);
+owner = msg.sender;
+```
+
+-   只要你之前贡献过（contributions > 0），再直接转账触发 receive，就能抢 owner。
+    
+
+### **通关策略（大白话）**
+
+-   **第一次**：通过 contribute() “刷存在感”（让 contributions > 0）
+    
+-   **第二次**：直接给合约地址转账（触发 receive）→ owner 变成你
+    
+-   **第三步**：withdraw() 提空余额 → balance=0
+    
+
+### **常用验证方法**
+
+-   查合约余额：await getBalance(instance) 或 await web3.eth.getBalance(instance)
+    
+-   查 owner 是否是你：await contract.owner()（应等于 player）
+    
+
+### **关键踩坑提醒**
+
+-   必须先创建实例（instance 不能是 undefined）
+    
+-   contract.address 为 undefined 说明你还没拿到实例合约对象
+    
+-   “直接转账触发 receive”要用 sendTransaction（而不是再次调用 contribute）
+    
+
+* * *
+
+## **关卡 3：Fallout（构造函数写错导致任意人可夺权）**
+
+### **通关目标**
+
+-   “Claim ownership” → 让 owner 变成你（不要求清零余额）
+    
+
+### **核心漏洞点**
+
+代码里把构造函数写成了：
+
+```
+/* constructor */
+function Fallout() public payable {
+  owner = msg.sender;
+}
+```
+
+在新版本 Solidity 里，构造函数必须用 constructor()。
+
+因此这个 Fallout() 会被当成 **普通 public 函数**，任何人都能调用。
+
+### **通关策略**
+
+-   直接调用 Fallout()，你就会被设置为 owner：
+    
+    -   await contract.Fallout({ value: toWei("0") })
+        
+-   验证：
+    
+    -   await contract.owner() 应等于 player
+        
+-   提交实例通关。
+    
+
+### **安全结论**
+
+-   **构造函数/初始化写错 = 把“设 owner 的权限”暴露给所有人**
+    
+-   真项目里属于严重权限漏洞（可直接接管合约）。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # **ERC-7962 笔记：**
 
 ## **0\. 一句话总结**
@@ -301,6 +444,7 @@ ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # **一句话先把 Gas 优化讲清**
 
@@ -793,6 +937,7 @@ for (...) {
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -1030,6 +1175,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1280,6 +1426,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -1493,6 +1640,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -1687,6 +1835,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -1851,6 +2000,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -1962,6 +2112,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2116,6 +2267,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2439,6 +2591,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -2556,6 +2709,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2910,6 +3064,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
