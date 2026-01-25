@@ -15,8 +15,358 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+* * *
+
+# 一、Storage Slot 是如何分配的
+
+## 1️⃣ 什么是 storage slot
+
+**以太坊合约的 storage 本质是：**
+
+> 一个  
+> `mapping(uint256 => uint256)` **的巨大键值数据库**
+
+-   每个 slot = **32 字节**
+    
+-   key = slot index（uint256）
+    
+-   value = 32 字节数据
+    
+
+你在 Solidity 里看到的：
+
+```
+uint x;
+address y;
+```
+
+在 EVM 眼里只是：
+
+```
+storage[0] = x
+storage[1] = y
+```
+
+* * *
+
+## 2️⃣ 普通变量的 slot 分配规则（非常重要）
+
+### 示例
+
+```
+contract A {
+    uint256 a;      // slot 0
+    uint256 b;      // slot 1
+    address c;      // slot 2
+}
+```
+
+**规则：**
+
+-   从 slot `0` 开始
+    
+-   **声明顺序决定 slot**
+    
+-   每个 slot 32 字节
+    
+-   能塞进同一个 slot 的，会尝试打包（packing）
+    
+
+### packing 示例
+
+```
+contract B {
+    uint128 a;  // 16 bytes
+    uint128 b;  // 16 bytes → 和 a 共用 slot 0
+    uint256 c;  // slot 1
+}
+```
+
+👉 **这就是 gas 优化的第一步**
+
+* * *
+
+## 3️⃣ dynamic array 的 slot 规则（很多新手死在这）
+
+```
+uint[] arr; // 假设 arr 在 slot 2
+```
+
+### 实际存储方式
+
+-   `storage[2]`：存的是 **数组长度**
+    
+-   元素存储位置：
+    
+
+```
+keccak256(2) + index
+```
+
+### 举例
+
+```
+arr.push(100);
+```
+
+EVM 实际写入的是：
+
+```
+storage[2] = 1
+storage[keccak256(2) + 0] = 100
+```
+
+⚠️ **数组元素不是连续 slot**
+
+* * *
+
+## 4️⃣ mapping 的 slot 规则（最核心、最容易出错）
+
+```
+mapping(address => uint256) balance; // slot 5
+```
+
+### 元素存储位置计算公式（你必须记住）
+
+```
+slot = keccak256(abi.encode(key, baseSlot))
+```
+
+也就是：
+
+```
+keccak256(address || 5)
+```
+
+### 为什么这样设计？
+
+-   mapping 是 **无限大**
+    
+-   不可能线性分配 slot
+    
+-   只能用 hash 来“随机映射”
+    
+
+📌 **结论一句话：**
+
+> mapping 没有“遍历”的概念  
+> 因为你根本不知道用了哪些 slot
+
+* * *
+
+## 5️⃣ struct 的 slot 分配（= 内嵌变量规则）
+
+```
+struct User {
+    uint256 id;
+    address addr;
+}
+
+mapping(address => User) users; // slot 3
+```
+
+### users\[x\].id 的 slot
+
+```
+base = keccak256(x, 3)
+id   = base + 0
+addr = base + 1
+```
+
+👉 **struct 只是 slot 的偏移组合**
+
+* * *
+
+# 二、一次 storage 写入，在 EVM 层面发生了什么？
+
+这是你理解 **gas / 性能 / Uniswap 优化** 的关键。
+
+* * *
+
+## 1️⃣ Solidity 代码
+
+```
+balance[msg.sender] += amount;
+```
+
+你以为是“一行代码”，  
+但 EVM 做的是：
+
+* * *
+
+## 2️⃣ EVM 实际步骤（非常重要）
+
+### Step 1：计算 storage slot
+
+```
+slot = keccak256(msg.sender, balance.slot)
+```
+
+👉 opcode：`KECCAK256`
+
+* * *
+
+### Step 2：从 storage 读旧值
+
+```
+old = SLOAD(slot)
+```
+
+👉 opcode：`SLOAD`
+
+-   冷读：≈ 2100 gas
+    
+-   热读：≈ 100 gas
+    
+
+* * *
+
+### Step 3：在内存里计算新值
+
+```
+new = old + amount
+```
+
+👉 普通算术（便宜）
+
+* * *
+
+### Step 4：写回 storage
+
+```
+SSTORE(slot, new)
+```
+
+👉 **最贵的操作之一**
+
+* * *
+
+## 3️⃣ SSTORE 有多贵？（关键）
+
+| 情况 | gas |
+| --- | --- |
+| 0 → 非 0 | ~20,000 |
+| 非 0 → 非 0 | ~5,000 |
+| 非 0 → 0 | ~5,000（有 refund） |
+
+📌 **一句话总结：**
+
+> storage 写入 = 合约里最昂贵的行为
+
+* * *
+
+## 4️⃣ 为什么 view / pure 几乎不要 gas？
+
+-   view：只有 `SLOAD`
+    
+-   pure：连 storage 都不碰
+    
+-   不上链执行 → 免费
+    
+
+* * *
+
+# 三、为什么 Uniswap / ERC20 极度克制 storage 写入？
+
+这是你从“写 Demo 合约”到“协议级思维”的跃迁点。
+
+* * *
+
+## 1️⃣ ERC20 最核心的 storage 只有这些
+
+```
+mapping(address => uint256) balanceOf;
+mapping(address => mapping(address => uint256)) allowance;
+uint256 totalSupply;
+```
+
+👉 **极度克制**
+
+* * *
+
+## 2️⃣ transfer 实际发生了什么？
+
+```
+balanceOf[from] -= amount;  // SLOAD + SSTORE
+balanceOf[to]   += amount;  // SLOAD + SSTORE
+```
+
+👉 **已经 4 次 storage 操作**
+
+所以：
+
+-   ERC20 不会：
+    
+    -   存历史记录
+        
+    -   存转账列表
+        
+    -   存时间戳
+        
+
+### 那数据去哪了？
+
+➡️ **Event（日志）**
+
+* * *
+
+## 3️⃣ Event vs Storage（这是设计哲学）
+
+| 对比 | Storage | Event |
+| --- | --- | --- |
+| 上链成本 | 高 | 低 |
+| 合约可读 | 是 | 否 |
+| 前端可读 | 是 | 是 |
+| 可遍历 | 否 | 是 |
+
+📌 **协议设计原则：**
+
+> **状态用 storage，历史用 event**
+
+* * *
+
+## 4️⃣ Uniswap 为什么用最少状态？
+
+Uniswap V2 每个 Pair 的 storage 核心只有：
+
+```
+uint112 reserve0;
+uint112 reserve1;
+uint32  blockTimestampLast;
+```
+
+**原因：**
+
+-   每次 swap 都写 storage
+    
+-   写多了 → gas 爆炸
+    
+-   gas 爆炸 → 用户不用
+    
+
+👉 所以你看到：
+
+-   没有存 swap 历史
+    
+-   没有存价格曲线
+    
+-   没有存用户列表
+    
+
+**一切交给：**
+
+-   Event
+    
+-   Subgraph
+    
+-   Indexer
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -274,6 +624,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 一、**钱包 ≠ 账号**
 
@@ -634,6 +985,7 @@ UI 更新 = 链上状态确认**
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -952,6 +1304,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -1198,6 +1551,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1484,6 +1838,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -1632,6 +1987,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1984,6 +2340,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -2314,6 +2671,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -2417,6 +2775,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2568,6 +2927,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2895,6 +3255,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -2997,6 +3358,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
