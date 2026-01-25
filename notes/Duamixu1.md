@@ -15,8 +15,107 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+今天抄马老师 作业  
+整體而言跟平常設置 ai agent 很像
+
+是用範例搞的，deepwiki 讀取 repo 來回答問題
+
+先搞個 DeepWikiAgent 的 class
+
+```
+class DeepWikiAgent(SpoonReactMCP):
+    """Agent that can analyze GitHub repositories via DeepWiki MCP"""
+    name: str = "DeepWikiAgent"
+    system_prompt: str = """You are a helpful assistant that can analyze GitHub repositories using DeepWiki.
+When asked about a repository, use the read_wiki_structure tool with the repoName parameter.
+For example, if asked about "XSpoonAi/spoon-core", call read_wiki_structure with repoName="XSpoonAi/spoon-core".
+Always use the tool to get information about repositories before answering questions."""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Initialize with empty tool manager, will load in initialize()
+        self.available_tools = ToolManager([])
+
+    async def initialize(self):
+        # Create MCP tool for DeepWiki (no API key needed!)
+        # Important: Use the actual tool name from the server: "read_wiki_structure"
+        print("Connecting to DeepWiki MCP server...")
+        try:
+            deepwiki_tool = MCPTool(
+                name="read_wiki_structure",  # Use actual tool name, not "deepwiki"
+                description="Analyze GitHub repositories and get their structure and documentation",
+                mcp_config={
+                    "url": "https://mcp.deepwiki.com/sse",
+                    "transport": "sse",
+                    "connection_timeout": 30, # Explicit timeout key for MCPTool
+                    "timeout": 30,
+                }
+            )
+            # Pre-load parameters so LLM can see the correct schema
+            await deepwiki_tool.ensure_parameters_loaded()
+            self.available_tools = ToolManager([deepwiki_tool])
+            print("Successfully connected and loaded DeepWiki tools.")
+        except Exception as e:
+            print(f"Failed to connect to DeepWiki MCP: {e}")
+            print("Continuing with no tools...")
+```
+
+會`self.available_tools = ToolManager([])` 來接入tools
+
+`initialize` 這邊設定too
+
+```
+deepwiki_tool = MCPTool(
+                name="read_wiki_structure",  # Use actual tool name, not "deepwiki"
+                description="Analyze GitHub repositories and get their structure and documentation",
+                mcp_config={
+                    "url": "https://mcp.deepwiki.com/sse",
+                    "transport": "sse",
+                    "connection_timeout": 30, # Explicit timeout key for MCPTool
+                    "timeout": 30,
+                }
+            )
+```
+
+然後 `await deepwiki_tool.ensure_parameters_loaded()` 先預載入，起到了「同步元資料」的作用。簡單來說，它是為了讓 Agent 在正式運作之前，先搞清楚這個工具（Tool）到底需要哪些參數
+
+再來 `self.available_tools = ToolManager([deepwiki_tool])` 來放入管理的tools中
+
+最後在main 中呼叫這個class並，並run
+
+```
+ agent = DeepWikiAgent(
+        llm=ChatBot(
+            llm_provider=provider, 
+            model_name=model  
+        )
+    )
+    
+    print("Initializing agent and loading MCP tool...")
+    await agent.initialize()
+    
+    # Query the agent with a clear request
+    query = "What is XSpoonAi/spoon-core about? Please analyze the repository and summarize its purpose."
+    print(f"\nQuery: {query}")
+    
+    try:
+        response = await agent.run(query)
+        print("\nResponse:")
+        print(response)
+    except Exception as e:
+        print(f"\nAgent execution failed: {e}")
+```
+
+成果：
+
+![Screenshot 2026-01-25 at 12.15.06 AM.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Toby1009/images/2026-01-24-1769271615155-Screenshot_2026-01-25_at_12.15.06_AM.png)
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 -   以 **pigeons** 作為通訊層，串接 **Trust Wallet**（對應的原生能力/介面），完成錢包相關核心流程：
     
     -   **金鑰生成**（key generation）
@@ -54,6 +153,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 今天做运营复盘：下面给你一份“最终版”的 **掉粉归因分析 + 解决方案**（结合你前面两轮信息：账号目前偏快讯/中英翻译风格；但你实际是“体育预测市场项目官号”）。
 
@@ -227,6 +327,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 # **任務 A、B 筆記（Rust CLI / 鏈上事件抓取）**
 
 ## **1\. 任務概述**
@@ -334,6 +435,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -567,6 +669,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -816,6 +919,7 @@ Level 3（Fallout）
 
 
 
+
 這段筆記我幫你「補齊背景＋講清楚做法＋把思路寫得更像可複用的解題模板」，你可以直接貼進你的學習筆記裡。
 
 * * *
@@ -961,6 +1065,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1145,6 +1250,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1470,6 +1576,7 @@ PoS 的本质是：
 
 
 
+
 ## **课堂后反思笔记：Web3的“去中心化体验”与合规现实**
 
 ### **1) 认知转变：从“自主掌控”到“合规介入”**
@@ -1608,6 +1715,7 @@ PoS 的本质是：
 
 
 
+
 -   上期回顾
     
     -   比特币：《比特币：一种点对点电子货币系统》
@@ -1716,6 +1824,7 @@ PoS 的本质是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
