@@ -15,8 +15,100 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+### **\[S-1\] Use BytesMask for more efficient storage**
+
+**Description:** `BytesMasking` is a technique to pack multiple values into a single storage slot (usually taking uint256 -> 32 bytes == 256 bits) to save gas, instead of using separate storage slots for each variable (such as struct)
+
+💹Example in Panoptic
+
+```js
+PACKING RULES FOR A MARKETSTATE:
+From the LSB to the MSB:
+(0) borrowIndex          80 bits : Global borrow index in WAD (starts at 1e18). 2**80 = 1.75 years at 800% interest
+(1) marketEpoch          32 bits : Last interaction epoch for that market (1 epoch = block.timestamp/4)
+(2) rateAtTarget         38 bits : The rateAtTarget value in WAD (2**38 = 800% interest rate)
+(3) unrealizedInterest   106 bits : Accumulated unrealized interest that hasn't been distributed (max deposit is 2**104)
+Total                    256 bits  : Total bits used by a MarketState.
+```
+
+The `MarketState` packs 4 values into 1 storage slot:
+
+|<--0-79-->|<--80-111-->|<--112-149-->|<--150-155-->|
+
+| 80 Bits | 32 Bits | 32 Bits | 106 Bits |
+
+💹How to use this powerful skill?
+
+Example: The `MarketState` packs 4 values into 1 storage slot:
+
+|<--0-79-->|<--80-111-->|<--112-149-->|<--150-155-->|
+
+| 80 Bits | 32 Bits | 38 Bits | 106 Bits |
+
+First, define the mask we need. In this case, rateAtTarget is required
+
+```js
+TARGET_RATE_MASK = ((1 << 38) - 1) << 112;
+// creates: 111...111(38 ones) at position 112-149
+// 0x...3FFFFFFFFF000000000000000000000000000
+```
+
+Then, we use Yul to load specific storage
+
+-   Write Value by mask
+    
+
+```js
+MarketState self,
+uint40 newRate
+
+assembly{
+    //clear bits 112-149
+    let cleared := and(self, not(TARGET_RATE_MASK));
+    // ...000..000 (38 zeros in position)
+
+    //2. Mask the input to ensure it fits 38 bits
+    // uint40 -> we have to ignore the top 2 bits
+    // 0011 1111 1111 ....  1111 1111
+    let safeRate := and(newRate, 0x3FFFFFFFFF);
+
+
+    let result := or(cleared,shl(112, safeRate));
+}
+
+```
+
+-   Read Value by mask
+    
+
+```js
+MarketState self
+
+assembly{
+    // push->[xxx ...|         RATE          |]
+    //               0011 1111 .... 1111 1111
+    //               &&&& &&&& &&&& &&&& &&&&
+    let result := and(shr(112,self), 0x3FFFFFFF);
+}
+
+```
+
+  
+
+**Benefits:**
+
+1.  Gas Savings: SSTORE (~20k gas) vs multiple SSTORE
+    
+2.  Atomic Update: All values update together
+    
+3.  Cache Efficiency: Reading multiple values costs less
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 **推特写了个文章**
 
 [https://x.com/0xMax2557/status/2014938927061471348](https://x.com/0xMax2557/status/2014938927061471348)
@@ -42,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 今天坐了一天高铁，准备明天开始赶进度，好多分享会都错过了。这几天实在忙，今天就讲一讲最近在审计的VII-Finance。这是一个Uniswap生态的衍生Defi，用来将Uniswap V3和V4的token接入Euler借贷系统，通过将NFT转化成ERC6909 (ERC20的组合)，解决Uniswap V3和V4 用来代表LP的NFT不能被传统借贷Defi接收的问题。Euler的`Etherium Vault Connection`架构允许了LP Tokne作为抵押，借贷任何Euler体系中的代币。
 
 为什么Euler借贷不兼容ERC721，也就是非同质化代币。我认为主要的原因在于相比于ERC20，ERC721是非同质化的，如果计算ERC20 Vault一个address的代币"价值" (比如用美元为标准的价值) 的时间复杂度是O(1)，那么ERC721就是O(n)，二者的差别很大。
@@ -54,6 +147,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ### \[T-2\] 1/21/2026
 
 这三天一直在做`VII-Finance`的audit，一共差不多花了八小时，现在应该是进行到了1/2，还剩几个合约没有review。这算我第一次的审计，很激动的，希望我的Finding都能通过。但是这几天还要加急"复习"数字电路，其实这学期这个课我一节没听，有些难！这两件事叠加在一起导致实习计划的很多colearning和分享会没听到。。。23号回家重新看录播吧
@@ -61,6 +155,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -80,6 +175,7 @@ ISO 4217 is the international standard defining three-letter alphabetic and thre
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -134,6 +230,7 @@ Tempo链稳定币支付
 
 
 
+
 ### \[N-4\] Just jotting down some thoughts in 1/18/2026
 
 昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
@@ -149,6 +246,7 @@ Tempo链稳定币支付
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -313,6 +411,7 @@ contract UniswapV3SwapTest is Test {
 
 
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -336,6 +435,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -538,6 +638,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -557,6 +658,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -794,6 +896,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
