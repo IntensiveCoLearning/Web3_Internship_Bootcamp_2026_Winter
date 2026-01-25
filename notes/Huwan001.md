@@ -16,8 +16,67 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+小挑戰合約內容
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    // 這個變量用來存一個數字
+    uint256 public myNumber;
+
+    // 寫入函數：把數字存進去 (需要發送交易，消耗 Gas)
+    function store(uint256 _num) public {
+        myNumber = _num;
+    }
+
+    // 新增：把數字 +1 的函數 (同樣會修改狀態，消耗 Gas)
+    function increment() public {
+        myNumber = myNumber + 1;
+    }
+
+    // 讀取函數：把數字讀出來 (view 函數，不消耗 Gas)
+    function retrieve() public view returns (uint256) {
+        return myNumber;
+    }
+}
+```
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-25-1769351538211-image.png)
+
+-   **第一個版本 (**`SimpleStorage`**)：** 函數名稱叫 `store`。
+    
+-   **第二個版本 (**`SimpleCounter`**)：** 為了配合計數器邏輯，函數改名成了 `setNumber`。
+    
+-   ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-25-1769351712364-image.png)
+
+這邊顯示的兩個合約
+
+主要原因有
+
+1.  區塊鏈的「不可竄改性」(Immutability)
+    
+2.  你部署了兩個不同的合約類別
+    
+
+## 重新佈署
+
+-   在傳統開發（Web2）中，如果你發現程式碼有錯，你只需修改程式碼並「存檔/重啟」，原本的網頁就會直接更新。
+    
+-   在區塊鏈（Web3）中，因為  
+    1.不可篡改性 (Immutability) -> 合約一旦部署到鏈上，它的程式碼（邏輯）就**永遠無法更改**。  
+    2.**新合約 = 新地址**：當修改了程式碼，就必須將這份「新邏輯」重新發送到區塊鏈上。這會產生一個**全新的合約地址**，而舊的合約會帶著舊的邏輯繼續存在於原地址，互不干擾。(就等於是兩者是獨立的概念，因為已經產生，具有不可串改性，他會一直存在區塊練上面，包含刪除都無法)
+    
+
+重新佈署 = 發布一個全新的合約 (取代舊的**功能**
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今日稍微休息了一下 沒怎麼念書  
 把前幾天學到的東西簡單整理了一下  
 還有聽了兩場同學們舉辦的AMA
@@ -25,6 +84,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 今日參與線上共學 聽了 evo Swift、ECHO兩位老師分享了許多行業八卦，吃了一些瓜 哈哈  
 提到了在找崗位時需要注意什麼事情，分享了老師們自身或是身邊友人的例子。  
@@ -51,6 +111,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -148,6 +209,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -173,6 +235,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -315,6 +378,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -326,6 +390,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -408,6 +473,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -418,6 +484,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -586,6 +653,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -611,6 +679,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -779,6 +848,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -858,6 +928,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
