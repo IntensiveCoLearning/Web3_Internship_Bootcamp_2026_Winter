@@ -74,17 +74,50 @@ contract SimpleStorage {
 重新佈署 = 發布一個全新的合約 (取代舊的**功能**
 
 1.  修改代碼並編譯 (Compile)  
-    儲存修改後的代碼，點擊 **Solidity Compiler(**將人類讀得懂的代碼轉成機器讀得懂的字節碼 (Bytecode)**) ，**
+    儲存修改後的代碼，點擊 **Solidity Compiler(將人類讀得懂的代碼轉成機器讀得懂的字節碼 (Bytecode)) ，**
     
 2.  發送部署交易 (Deploy)  
     檢查環境跟帳戶是否為你要使用的，點擊 Deploy 部署新合約，下方的 **Deployed Contracts** 列表會有一個**新出現的欄位。**
     
 3.  清理與切換 (Cleanup)  
     把之前舊的那個打叉叉，通常會在上面，新的會在下面
+    
+
+## 更改帳戶練習
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-25-1769354271542-image.png)
+
+將 Account 欄位清單點選其他的帳戶後再點擊
+
+-   **使用 Account A（清單第 1 個）**：
+    
+    -   選好它後，點擊橘色的 `store` 或 `setNumber` 按鈕。
+        
+    -   這時發起交易的人（`msg.sender`）就是 Account A。
+        
+-   **切換到 Account B（選擇清單第 2 個或任何其他地址）**：
+    
+    -   點開下拉選單，點選另一個地址。
+        
+    -   這時你會發現上方顯示的地址變了。
+        
+-   **進行讀取**：
+    
+    -   現在你點擊藍色的 `retrieve` 或 `myNumber`。
+        
+    -   你會發現**依然能讀到 Account A 剛才存進去的數字**。
+        
+
+## 切帳戶->權限測試
+
+-   **公開資訊測試**：確認 A 存的資料是不是全世界（包括 B）都看得到。
+    
+-   **權限控制測試 (加分題預告)**： 未來會學到 `require(msg.sender == owner)`。如果到時候用 Account A 部署，卻切換到 Account B 點擊橘色按鈕（修改資料），交易就會**報錯失敗**。這就是切換帳戶最重要的用途——測試合約是否有正確保護資料 (這邊存著，目前看不懂，無法實際操作測試)
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 今日稍微休息了一下 沒怎麼念書  
@@ -94,6 +127,7 @@ contract SimpleStorage {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -122,6 +156,7 @@ contract SimpleStorage {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -223,6 +258,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -248,6 +284,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -394,6 +431,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -405,6 +443,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -491,6 +530,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -501,6 +541,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -673,6 +714,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -698,6 +740,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -870,6 +913,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -949,6 +993,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
