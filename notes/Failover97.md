@@ -15,8 +15,139 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+### **Signature—related attacks**
+
+攻击者利用签名验证机制的漏洞来实现未授权攻击。
+
+**缺少验证攻击**
+
+```jsx
+function recover(uint8 v, bytes32 r, bytes32 s, bytes32 hash) external {
+    address signer = ecrecover(hash, v, r, s);
+    //Do more stuff with the hash
+}
+```
+
+-   攻击者故意提交**无效的签名参数**（比如全是0的 v, r, s）
+    
+-   `ecrecover` 无法恢复出有效地址，返回 `address(0)`（零地址）
+    
+-   如果 `owner` 恰好也没有初始化或被设置为 `address(0)`
+    
+-   那么 `address(0) == address(0)` 验证通过！
+    
+-   攻击者成功盗取资金
+    
+
+解决方法
+
+```jsx
+require(signer != address(0), "invalid signature");//检查攻击者信息
+```
+
+用OpenZeppelin库是好的
+
+**回放攻击**
+
+```jsx
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+
+contract OwnerAction {
+    using ECDSA for bytes32;//toEthSignedMessageHash()：把 32-byte 的消息哈希转成以太坊钱包常见的“个人签名”格式
+		//recover(signature)：从签名里恢复出签名者地址。
+    address public owner;
+
+    constructor() payable {
+        owner = msg.sender;
+    }
+
+    function action(uint256 _param1, bytes32 _param2, bytes memory _sig) external {
+        bytes32 hash = keccak256(abi.encodePacked(_param1, _param2));//第一次哈希，虽然用了abi.encodePacked（），但_param1,_param2是固定字节的所以不会产生
+        bytes32 signedHash = hash.toEthSignedMessageHash();//第二次哈希加前缀
+        address signer = signedHash.recover(_sig);
+
+        require(signer == owner, "Invalid signature");
+
+        // use `param1` and `param2` to perform authorized action
+    }
+}
+```
+
+应该多加一个\_nounce防止签名重放
+
+**Cross-Chain Replay attack(跨链重放攻击）**
+
+```jsx
+pragma solidity ^0.8.17;
+
+import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+
+contract OwnerAction {
+    using ECDSA for bytes32;
+
+    address public owner;
+    mapping(bytes32 => bool) public seenSignatures;
+
+    constructor() payable {
+        owner = msg.sender;
+    }
+
+    function action(uint256 _param1, bytes32 _param2, uint256 _nonce, uint256 _chainId, bytes memory _sig) external {
+        require(_chainId == block.chainid, "Invalid chain ID");
+
+        bytes32 hash = keccak256(abi.encodePacked(_param1, _param2, _nonce, _chainId));
+        require(!seenSignatures[hash], "Signature has been used");
+
+        bytes32 signedHash = hash.toEthSignedMessageHash();
+        address signer = signedHash.recover(_sig);
+        require(signer == owner, "Invalid signature");
+
+        seenSignatures[hash] = true;
+
+        // use `param1` and `param2` to perform authorized action
+    }
+}
+```
+
+为了防止一个签名在不同链上被使用，所以加了一个签名中链ID的验证
+
+**签名可塑性**
+
+关于ECDSA签名的特殊性
+
+![image.png](attachment:71eb4836-148a-4f74-8a36-124d60ab130d:image.png)
+
+由于圆锥曲线的对称性，签名可以被修改但不会失效，OpenZeppelin的ECDSA库包含代码防止签名可塑性攻击
+
+```jsx
+if (uint256(s) > 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0) {
+    return (address(0), RecoverError.InvalidSignatureS);
+}
+```
+
+**Frontrunning**
+
+另一个常见问题是抢先交易。攻击者可以监控内存池中某些系统（例如那些奖励第三方执行恶意载荷的系统）中使用的 ECDSA 签名交易。根据签名有效载荷中的信息，攻击者可以抢先执行原始交易、操纵特定参数并利用系统漏洞。 这是合约验证签名的漏洞
+
+```jsx
+bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名对transfer的完整信息没有保护
+```
+
+**紧凑型签名**
+
+![image.png](attachment:5eeb976e-ff90-40b4-95c6-131e6ea4008e:image.png)
+
+两种格式可以互相转换
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -99,11 +230,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ### **参数顺序错误**
@@ -141,6 +274,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -186,6 +320,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -352,6 +487,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -541,6 +677,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -558,6 +695,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -798,6 +936,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -934,6 +1073,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
