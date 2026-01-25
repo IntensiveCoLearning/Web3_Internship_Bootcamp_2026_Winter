@@ -15,8 +15,369 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-24
+<!-- DAILY_CHECKIN_2026-01-24_START -->
+## Scaffold-ETH + Solidity 深度实操笔记
+
+* * *
+
+## 一、今天在干什么（总体目标）
+
+**核心目标：**
+
+> 用 **Scaffold-ETH** 代替纯 Hardhat，进入一个  
+> **“写 Solidity → 立刻部署 → 前端直接交互 → 快速验证想法”**  
+> 的高频迭代开发模式。
+
+**为什么不用一开始就写测试？**
+
+-   Hardhat = Test Driven（慢但严谨）
+    
+-   Scaffold-ETH = Idea Driven（快、直观、适合学习 & 原型）
+    
+-   推荐流程：
+    
+    1.  Scaffold-ETH 中「乱试 + 理解机制」
+        
+    2.  确定逻辑后 → 再回 Hardhat 写测试
+        
+
+* * *
+
+## 二、Scaffold-ETH 基本工作流（一定要记住）
+
+### 1️⃣ 安装 & 启动流程
+
+```
+git clone https://github.com/scaffold-eth/scaffold-eth
+cd scaffold-eth
+yarn install      # 很慢，耐心
+yarn chain        # 启动本地 Hardhat 节点
+yarn start        # 启动前端
+yarn deploy       # 部署合约
+```
+
+> ⚠️ 合约改了但没更新？  
+> 👉 用：
+
+```
+yarn deploy --reset
+```
+
+* * *
+
+### 2️⃣ Scaffold-ETH 的核心优势
+
+-   自动前端 UI（函数、变量直接显示）
+    
+-   自动 Burner Wallet（无需 MetaMask）
+    
+-   合约热更新
+    
+-   Events 自动监听
+    
+-   极适合 **tinker / debug / learn**
+    
+
+* * *
+
+## 三、Solidity 基础回顾（结合 Scaffold-ETH）
+
+### 1️⃣ Globals（全局变量）
+
+常用：
+
+```
+msg.sender
+msg.value
+block.timestamp
+tx.origin
+```
+
+示例：
+
+```
+function time() public view returns (uint256) {
+    return block.timestamp;
+}
+```
+
+* * *
+
+### 2️⃣ 基本数据类型
+
+```
+bool flag;
+uint256 number;
+address owner;
+```
+
+简单函数：
+
+```
+function toggle() public {
+    flag = !flag;
+}
+```
+
+* * *
+
+### 3️⃣ Ether / Wei
+
+-   Solidity 中**所有金额默认是 Wei**
+    
+-   推荐写法：
+    
+
+```
+uint256 public price = 0.001 ether;
+```
+
+前端测试时要：
+
+```
+0.001 * 10^18
+```
+
+* * *
+
+## 四、Scaffold-ETH Wallet 机制（非常重要）
+
+### Burner Wallet
+
+-   每个浏览器 / incognito 都是一个新账户
+    
+-   自动生成、自动管理
+    
+-   Faucet 一键给钱
+    
+-   极适合测试权限 / 攻击 / 多账户交互
+    
+
+* * *
+
+## 五、Ownership & OpenZeppelin（重点）
+
+### ❌ 不推荐自己写 owner
+
+```
+address boss;
+modifier onlyBoss { ... }
+```
+
+### ✅ 推荐：继承 OpenZeppelin
+
+```
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyContract is Ownable {
+    function foo() public onlyOwner {}
+}
+```
+
+* * *
+
+### Ownership 转移的两种方式
+
+方式 1：deploy script 中转移
+
+```
+await contract.transferOwnership(frontendAddress);
+```
+
+（多一次交易，gas 多）
+
+方式 2（推荐）：constructor 中转移
+
+```
+constructor() {
+    transferOwnership(0xYourAddress);
+}
+```
+
+（**一次交易完成，gas 更低**）
+
+* * *
+
+## 六、Events & 前端监听
+
+### Solidity
+
+```
+event SetPurpose(address sender, string purpose);
+
+emit SetPurpose(msg.sender, purpose);
+```
+
+### Scaffold-ETH
+
+-   前端自动监听
+    
+-   Events 直接显示在 UI
+    
+-   **比 storage 便宜，适合日志 & UI 状态**
+    
+
+* * *
+
+## 七、Mapping & Token 简化实现
+
+### 基础 Token 最小实现
+
+```
+mapping(address => uint256) public balances;
+
+function transfer(address to, uint256 amount) public {
+    balances[msg.sender] -= amount;
+    balances[to] += amount;
+}
+```
+
+-   Solidity ^0.8 自动防溢出
+    
+-   Mapping：
+    
+    -   ❌ 不能遍历
+        
+    -   ✅ 查余额极快
+        
+
+* * *
+
+## 八、Receive / Fallback（送钱相关）
+
+### 没有 receive → 不能直接收钱
+
+```
+receive() external payable {}
+```
+
+### 高级玩法：自动转发
+
+```
+receive() external payable {
+    deposit();
+}
+```
+
+👉 用户 **直接给合约转账 ≈ 调用 deposit()**
+
+* * *
+
+## 九、Withdraw：⚠️ 最容易写错的地方
+
+### ❌ 错误写法（易被攻击）
+
+```
+msg.sender.call{value: balance}("");
+balances[msg.sender] = 0;
+```
+
+### ✅ 正确写法（防重入）
+
+```
+uint256 amount = balances[msg.sender];
+balances[msg.sender] = 0;
+(bool ok, ) = msg.sender.call{value: amount}("");
+require(ok);
+```
+
+📌 原则：
+
+> **先更新状态 → 再外部调用**
+
+* * *
+
+## 十、Contract → Contract 交互（核心难点）
+
+### 1️⃣ 部署顺序
+
+1.  Bank 合约
+    
+2.  YourContract(bankAddress)
+    
+
+### 2️⃣ Solidity 绑定方式
+
+```
+Bank public bank;
+
+constructor(address bankAddr) {
+    bank = Bank(bankAddr);
+}
+```
+
+### 3️⃣ 调用方式
+
+```
+bank.deposit{value: msg.value}();
+```
+
+* * *
+
+## 十一、msg.sender vs tx.origin（必考点）
+
+### 场景图
+
+```
+EOA → Middleware → Bank
+```
+
+| 变量 | 在 Bank 里是谁 |
+| --- | --- |
+| msg.sender | Middleware 合约 |
+| tx.origin | 最初 EOA |
+
+### 限制只允许 EOA
+
+```
+require(tx.origin == msg.sender);
+```
+
+⚠️ **生产环境慎用 tx.origin**（容易被钓鱼）
+
+* * *
+
+## 十二、重入攻击（Re-entrancy）完整演示
+
+### 攻击原理
+
+1.  Bank 调用 attacker.withdraw()
+    
+2.  attacker.receive() 中再次调用 withdraw()
+    
+3.  balance 还没清零 → 钱被反复拿
+    
+
+### 防御核心一句话
+
+> **Checks → Effects → Interactions**
+
+* * *
+
+## 十三、学习路径建议（非常重要）
+
+### 短期
+
+-   Scaffold-ETH 疯狂 tinker
+    
+-   Solidity by Example
+    
+-   Ethernaut（OpenZeppelin）
+    
+
+### 中期
+
+-   回 Hardhat
+    
+-   写测试
+    
+-   Audit mindset
+<!-- DAILY_CHECKIN_2026-01-24_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -272,6 +633,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 # Solidity 智能合约开发入门
 
@@ -705,6 +1067,7 @@ internal（状态修改）
 <!-- DAILY_CHECKIN_2026-01-19_START -->
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -802,6 +1165,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -974,6 +1338,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -1081,6 +1446,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1983,6 +2349,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -2153,6 +2520,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -2273,6 +2641,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3156,6 +3525,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
