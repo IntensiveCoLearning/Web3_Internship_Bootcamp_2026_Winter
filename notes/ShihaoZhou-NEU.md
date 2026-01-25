@@ -24,6 +24,8 @@ Web3 实习计划 2025 冬季实习生
 
 -   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
     
+    -   [**\[GitHub repository\]**](https://github.com/ShihaoZhou-NEU/Solidity_Learning)
+        
 
 ## 零知识证明基础：证明什么、向谁证明？
 
@@ -90,10 +92,145 @@ Web3 实习计划 2025 冬季实习生
 \- 不依赖可信初始化（trusted setup）；
 
 \- 更适合大规模、复杂计算的场景，但证明大小通常更大。
+
+\## Error
+
+| 特性 | `require` | `revert` | `assert` |
+
+| :----------- | :----------------- | :--------------------- | :--------------------- |
+
+| **主要用途** | 输入验证和前置条件 | 复杂的条件检查 | 内部一致性和不变量 |
+
+| **Gas 处理** | 退回剩余 Gas | 退回剩余 Gas | **不退回** Gas |
+
+| **错误消息** | 支持字符串 | 支持字符串或自定义错误 | 无错误消息 |
+
+| **使用时机** | 函数开始时 | 代码任何位置 | 函数结束时或不变量检查 |
+
+| **失败含义** | 外部输入错误 | 执行条件不满足 | **合约存在 bug** |
+
+\## 什么是事件（Event）？
+
+事件是智能合约存储在区块链上的日志，可以被外部监听但无法被合约直接读取。它们就像是合约发出的"广播通知"。
+
+\- **Gas 成本低**：比存储数据便宜得多
+
+\- **外部可监听**：DApp 前端可以实时监听
+
+\- **历史可查询**：可以查询过去的事件
+
+\- **数据不可变**：一旦记录，无法修改
+
+\### `indexed` 参数
+
+\- 最多可以有 **3 个** `indexed` 参数
+
+\- `indexed` 参数可以被高效地过滤/搜索
+
+\- 非 `indexed` 参数存储在日志数据中，查询较慢
+
+\`\`\`solidity
+
+// indexed vs 非 indexed 的区别
+
+event OrderPlaced(
+
+address indexed buyer, // 可高效过滤：所有 buyer = X 的订单
+
+uint256 orderId, // 不可高效过滤
+
+uint256 amount, // 不可高效过滤
+
+uint256 indexed timestamp // 可高效过滤：特定时间段的订单
+
+);
+
+\`\`\`
+
+\### 最佳实践
+
+\`\`\`Solidity
+
+// 遵循 ERC 标准
+
+contract ERC20Compliant {
+
+// ERC20 标准事件
+
+event Transfer(address indexed from, address indexed to, uint256 value);
+
+event Approval(address indexed owner, address indexed spender, uint256 value);
+
+// 可选：额外的自定义事件
+
+event TokensMinted(address indexed to, uint256 amount);
+
+event TokensBurned(address indexed from, uint256 amount);
+
+}
+
+\`\`\`
+
+\## 接口遵循标准规范（ERC标准）
+
+接口是实现和遵循ERC标准的关键：
+
+\`\`\`solidity
+
+// ERC20接口
+
+interface IERC20 {
+
+// 必需函数
+
+function totalSupply() external view returns (uint256);
+
+function balanceOf(address account) external view returns (uint256);
+
+function transfer(address to, uint256 amount) external returns (bool);
+
+function allowance(address owner, address spender) external view returns (uint256);
+
+function approve(address spender, uint256 amount) external returns (bool);
+
+function transferFrom(address from, address to, uint256 amount) external returns (bool);
+
+// 事件
+
+event Transfer(address indexed from, address indexed to, uint256 value);
+
+event Approval(address indexed owner, address indexed spender, uint256 value);
+
+}
+
+// ERC721接口（NFT标准）
+
+interface IERC721 {
+
+function balanceOf(address owner) external view returns (uint256 balance);
+
+function ownerOf(uint256 tokenId) external view returns (address owner);
+
+function safeTransferFrom(address from, address to, uint256 tokenId) external;
+
+function transferFrom(address from, address to, uint256 tokenId) external;
+
+function approve(address to, uint256 tokenId) external;
+
+function getApproved(uint256 tokenId) external view returns (address operator);
+
+function setApprovalForAll(address operator, bool approved) external;
+
+function isApprovedForAll(address owner, address operator) external view returns (bool);
+
+}
+
+\`\`\`
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 # 学习计划
@@ -109,6 +246,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -182,6 +320,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 
 
+
 # 学习计划
 
 1.  ✅️[Gas 优化](https://github.com/ShihaoZhou-NEU/Solidity_Learning/tree/main/Homework)
@@ -204,6 +343,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -521,6 +661,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -683,6 +824,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -722,6 +864,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1051,6 +1194,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1355,6 +1499,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1714,6 +1859,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1793,6 +1939,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2067,6 +2214,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2243,6 +2391,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
