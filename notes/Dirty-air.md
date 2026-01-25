@@ -15,8 +15,157 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# Remix IDE 与 Gas 优化实战
+
+## 1\. 开发环境：为什么选 Remix？
+
+刚开始学 Python 的时候，我得先装 Python 解释器，再装 PyCharm 或 VS Code，还得配环境变量，环境没配好代码都跑不起来。
+
+Web3 开发虽然也有类似的本地工具（比如 Hardhat 或 Foundry），但对新手太不友好了。所以今天我用的是 **Remix IDE**。
+
+-   **这是什么？** 它就是一个跑在浏览器里的编译器 + 虚拟机。
+    
+-   **对比 PyCharm**：
+    
+    -   **PyCharm**：本地软件，代码跑在我的电脑 CPU 上。
+        
+    -   **Remix**：网页版（类似 Google Docs），代码跑在浏览器模拟的“假区块链”环境里，甚至可以直接连钱包去蹭测试网。无需安装，打开即用。
+        
+
+### Remix 核心面板详解（手把手版）
+
+界面左侧有四个关键图标，我挨个摸索了一遍：
+
+**A. File Explorer (文件管理)**
+
+-   用来写 .sol (Solidity) 代码的地方。
+    
+-   **大坑注意**：Remix 默认把代码存在浏览器的**缓存**里。如果我手贱清除了浏览器缓存，或者换了台电脑，代码就全没了。所以写重要代码一定要点那个连接 "[Localhost](http://Localhost)" 或者关联 GitHub，这跟 PyCharm 自动存本地硬盘不一样。
+    
+
+**B. Solidity Compiler (编译器)**
+
+-   **作用**：把只有人类看得懂的 Solidity 代码，翻译成机器（EVM 虚拟机）能读懂的“字节码”。
+    
+-   **关键产出**：点击 Compile 后，会生成两个很重要的东西：
+    
+    1.  **Bytecode**：一堆乱码，部署到链上真正运行的就是这玩意。
+        
+    2.  **ABI (Application Binary Interface)**：这个太重要了。以前写 Python 后端，我得给前端写个 API 文档（接口名、参数类型）。在 Web3 里，**ABI 就是那个 API 文档**。前端（JS）只有拿到 ABI，才知道怎么跟我的合约交互。
+        
+
+**C. Deploy & Run Transactions (部署与交互)**  
+这是 Web3 开发和传统开发**逻辑差异最大**的地方。
+
+-   **Web2 (Python)**：点击 "Run"，脚本跑完就结束了，进程销毁。
+    
+-   **Web3**：点击 "Deploy"（部署）。合约一旦部署，就像把一个服务器发射到了太空，它会**永久在线**，有一个唯一的地址。我可以在右下角看到部署后的合约实例，随时点按钮去调用它的函数。
+    
+-   **Environment (环境选择)**：
+    
+    -   Remix VM：Remix 自带的“单机游戏模式”。它给我分配了 10 个账号，每个账号有 100 个假 ETH。转账、部署都是秒到，非常适合测试逻辑。刷新网页，一切重置。
+        
+    -   Injected Provider - MetaMask：这就是“联机模式”了。Remix 会唤起我的小狐狸钱包，连接到 Sepolia 测试网或以太坊主网。这时候花的 Gas 就是真金白银（或测试币）了。
+        
+
+**D. Terminal (控制台)**
+
+-   类似 PyCharm 下面的输出窗口。每一笔交易的 Hash、执行状态、Gas 消耗明细都在这里看。绿勾代表成功，红叉代表报错。
+    
+
+* * *
+
+## 2\. 编写并部署第一个合约
+
+**codeSolidity**
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    // 这个变量叫“状态变量”。
+    // 在 Python 里，变量存在内存里，脚本停了就没了。
+    // 在 Solidity 里，这行代码相当于在区块链这个“大数据库”里建了一列，数据是永久刻在链上的。
+    uint256 public number;
+
+    // 写入数据：需要花钱 (Gas)
+    function store(uint256 _num) public {
+        number = _num;
+    }
+
+    // 读取数据：不花钱
+    // view 代表只读，不修改链上数据，所以不需要矿工打包，免费！
+    function retrieve() public view returns (uint256){
+        return number;
+    }
+}
+```
+
+**操作体验**：
+
+1.  写完代码 -> Ctrl+S (自动编译)。
+    
+2.  点 Deploy -> 下方出现合约实例。
+    
+3.  点 store 输入 100 -> 控制台显示扣了 Gas。
+    
+4.  点 retrieve -> 瞬间返回 100，控制台显示 Gas 为 0。
+    
+
+* * *
+
+## 3\. Gas 优化实战
+
+每一行修改链上数据的代码，都要按字节给矿工付 Gas。**案例目标**：计算 1 到 100 的总和。
+
+### 高 Gas败家写法（高 Gas）
+
+**codeSolidity**
+
+```
+uint256 public total; // 状态变量，存在链上（Storage）
+
+function sumBad() public {
+    for(uint256 i = 0; i < 100; i++) {
+        // 致命错误：每一次循环，都在修改链上的 total 变量
+        // 相当于你每写一个字，都要向区块链发起一次“保存交易”
+        total += i; 
+    }
+}
+```
+
+### 低 Gas写法
+
+**codeSolidity**
+
+```
+uint256 public total;
+
+function sumGood() public {
+    uint256 _temp = 0; // 临时变量，存在内存里（Memory）
+    
+    for(uint256 i = 0; i < 100; ++i) {
+        // 在内存里计算，这就像在草稿纸上算数，免费且快
+        _temp += i; 
+    }
+    
+    // 算完最后结果，一次性写入链上
+    // 只付一次修改存储的钱
+    total = _temp; 
+}
+```
+
+**核心结论**：  
+在 Solidity 里，**Storage（链上存储）** 是寸土寸金的黄金地段，而 **Memory（内存）** 是用完即扔的草稿纸。  
+能用临时变量算的，绝不要碰状态变量。这就是 Web3 开发和 Web2 开发最大的思维转变——为了省钱，我们要抠门到极致。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # Web3 基础概念学习总结：ENS、DEX 与身份体系
 
 ## 1\. ENS (以太坊域名服务)
@@ -118,6 +267,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 2026-01-23 | Web3 境内监管政策与合规实务学习总结
 
@@ -275,6 +425,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 ### **链上取证与内幕钱包追踪技术**
 
 **1\. 是什么？**
@@ -430,6 +581,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ### X402：是什么？尝试解决什么问题？解决了么？如何实现了 Agent2Agent 之间的付款？
 
 **1\. X402 是什么？**
@@ -572,6 +724,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 
 
+
 ## 第一部分：NFT —— Web3 的资产证明
 
 ### 1\. 什么是 NFT (Non-Fungible Token)？
@@ -657,6 +810,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -763,6 +917,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -887,6 +1042,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1038,6 +1194,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
