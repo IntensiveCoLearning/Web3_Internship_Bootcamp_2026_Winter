@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+X402 主题space
+
+如此沉睡三十年，直到x402!你不能错过的下一个万亿级市场之Agentic Economy
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 重点学习了
 
 ## **ERC-7962（Key Hash Based Tokens）**
@@ -105,6 +113,7 @@ balanceOf(keyHash) 返回数量
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 **链上交互与调试**
 
 Mint NFT、zkVote 相关交互 Scaffold-ETH / Speedrun-Ethereum 任务操作
@@ -141,6 +150,7 @@ Mint NFT、zkVote 相关交互 Scaffold-ETH / Speedrun-Ethereum 任务操作
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ### 18:00 co-learning wachi老师
@@ -201,6 +211,7 @@ RPC 节点连接区块链，真正读取 balances\[address\]。由于 RPC 调用
 
 
 
+
 ## co-learning
 
 wachi老师 **谈技术岗位与天花板：**
@@ -227,6 +238,7 @@ Web3 常见需求仍集中在前端、后端、全栈；没有嵌入式类岗位
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -381,6 +393,7 @@ Solidity / EVM 基础与 ERC20 合约全览
 
 
 
+
 学习 智能合约开发  
   
   
@@ -411,6 +424,7 @@ Dapp = “业务逻辑上链 + 用户用钱包签名交互”的应用形态。
 
 
 
+
 完成本周遗留任务
 
 -   Sepolia 测试币领取与转账
@@ -429,6 +443,7 @@ Dapp = “业务逻辑上链 + 用户用钱包签名交互”的应用形态。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -607,6 +622,7 @@ TVL 是规模指标，不是安全指标。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -920,6 +936,7 @@ address = keccak256(
 
 
 
+
 ### SpoonOS ：
 
 **让开发者不用自己实现身份、支付、私钥、验证、审计这些底层能力。**
@@ -1119,6 +1136,7 @@ AI 正在从“工具调用者”，变成“连续做决定并承担后果的�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1445,6 +1463,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 
 
+
 笔记：
 
 -   解释了私钥、助记词、公钥和地址之间的关系
@@ -1470,6 +1489,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
