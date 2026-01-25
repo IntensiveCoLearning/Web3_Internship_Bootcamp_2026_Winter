@@ -15,8 +15,80 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# ZK Vote 学习笔记
+
+## 1\. 投票方式对比
+
+| 方式 | 优点 | 缺点 |
+| --- | --- | --- |
+| 传统链上投票 | 公开透明、不可篡改、智能合约自动计票、端到端可验证 | 隐私缺失，投票记录与钱包地址永久绑定，容易关联真实身份 |
+| ZK 投票 | 可验证且匿名，保护隐私，防止重复投票 | 技术复杂度高，Proof 生成耗时，需本地计算 |
+
+## 2\. 零知识证明 基础
+
+-   **核心矛盾**：既要保证投票可验证，又要保护投票者匿名。
+    
+-   **模型**：
+    
+    -   Prover（证明者）
+        
+    -   Verifier（验证者）
+        
+    -   Statement（语句）
+        
+    -   Witness（见证）
+        
+-   **三大性质**：
+    
+    -   完备性：合法投票不会被拒绝
+        
+    -   可靠性：无法作弊
+        
+    -   零知识性：不泄露身份与投票内容
+        
+
+## 3\. ZK 投票流程
+
+1.  本地生成身份秘密 `identitySecret` 与承诺 `identityCommitment`
+    
+2.  加入提案，将承诺写入选民集合的 Merkle 树
+    
+3.  本地生成零知识证明（约 2–5 秒）
+    
+4.  提交投票交易，合约验证 proof 与 nullifier
+    
+5.  链上记录结果，可审计但不泄露身份与选票
+    
+
+## 4\. 技术细节
+
+-   **zk-SNARK**：常用证明系统（Groth16、PLONK、Halo2）
+    
+-   **Merkle 树**：存储选民集合
+    
+-   **Nullifier**：防止重复投票
+    
+-   **电路约束**：定义投票逻辑
+    
+-   **Setup 阶段**：生成证明/验证密钥
+    
+-   **Proof 验证**：合约验证 proof 与 nullifier
+    
+
+## 5\. 工程实践与常见的问题
+
+-   Proof 生成较慢，需本地计算
+    
+-   交易 pending：可能因网络拥堵或 Gas 不足
+    
+-   Proof 失败：可能因身份丢失、数据不同步或设备性能不足
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## **ERC721笔记**
 
 NaN.  对于实例化的差异，
@@ -194,6 +266,7 @@ contract NFTmarket  {
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -207,6 +280,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 -   figma实际操作过程中一些状态栏和对应的导航栏始终没有变化，我们直接从原生拿过来锁死即可，锁死的时候，在右侧选择对应的元素
@@ -228,6 +302,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -270,6 +345,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -292,6 +368,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -340,6 +417,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -414,6 +492,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -509,6 +588,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -583,6 +663,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -625,6 +706,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -705,6 +787,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -767,6 +850,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
