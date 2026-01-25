@@ -15,8 +15,157 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# Hardhat 学习笔记
+
+### 1\. 核心定位
+
+-   **语言：** 基于 **JavaScript/TypeScript**。
+    
+-   **核心逻辑：**
+    
+    1.  **Network:** 本地游戏服务器（对应 Foundry 的 Anvil）。
+        
+    2.  **Scripts:** 自动化机器人（写 JS 脚本去部署）。
+        
+    3.  **Console:** 交互控制台（用 JS 代码与合约实时对话）。
+        
+
+* * *
+
+### 2\. 环境搭建 (Setup)
+
+-   **前提：** 必须安装 Node.js (`node -v` 检查)。
+    
+-   **初始化命令：**
+    
+    Bash
+    
+    ```
+    mkdir my_hardhat_project
+    cd my_hardhat_project
+    npm init -y
+    npm install --save-dev hardhat
+    npx hardhat init  # 选择 "Create a JavaScript project" -> 一路回车
+    ```
+    
+
+* * *
+
+### 3\. 实战流程 (双窗口模式)
+
+🪟 窗口 1：服务器端 (保持开启)
+
+-   **启动本地链：**
+    
+    Bash
+    
+    ```
+    npx hardhat node
+    ```
+    
+    -   _现象：_ 生成 20 个测试账户，监听 `127.0.0.1:8545`。
+        
+    -   _注意：_ **千万别关！** 这是你的区块链世界。
+        
+
+🪟 窗口 2：操作端 (写代码 & 交互)
+
+**Step A: 写合约 (Make)**
+
+-   文件路径：`contracts/Counter.sol`
+    
+-   **编译命令：**
+    
+    Bash
+    
+    ```
+    npx hardhat compile
+    ```
+    
+
+**Step B: 写部署脚本 (Deploy Script)**
+
+-   Hardhat 需要写 JS 脚本来部署，不能一行命令搞定。
+    
+-   文件路径：`scripts/deploy.js`
+    
+-   **关键代码逻辑：**
+    
+    1.  拿图纸 (`getContractFactory`)
+        
+    2.  造车 (`deploy()`)
+        
+    3.  等车造好 (`waitForDeployment()`)
+        
+-   **运行部署命令 (重要)：**
+    
+    Bash
+    
+    ```
+    npx hardhat run scripts/deploy.js --network localhost
+    ```
+    
+    -   _关键点：_ 必须加 `--network localhost`，否则只是在临时内存里跑一次就没了。
+        
+    -   _结果：_ 复制输出的合约地址 (例如 `0x5Fb...`)。
+        
+
+**Step C: 控制台交互 (Console)**
+
+-   **进入控制台：**
+    
+    Bash
+    
+    ```
+    npx hardhat console --network localhost
+    ```
+    
+-   **交互指令 (JS语法)：**
+    
+    1.  **连接合约 (拿到遥控器)：**
+        
+        JavaScript
+        
+        ```
+        const counter = await ethers.getContractAt("Counter", "你的合约地址")
+        ```
+        
+    2.  **查数据 (Call)：**
+        
+        JavaScript
+        
+        ```
+        await counter.number()
+        // 输出：0n (n代表BigInt)
+        ```
+        
+    3.  **改数据 (Send/Transaction)：**
+        
+        JavaScript
+        
+        ```
+        await counter.setNumber(99)
+        // 现象：输出交易Hash，窗口1的服务器会刷屏
+        ```
+        
+
+* * *
+
+### 4\. 常见报错 (Troubleshooting)
+
+| 报错信息 | 原因 | 解决方案 |
+| Network localhost doesn't exist | 没配置网络或拼写错误 | 检查命令是否拼写正确；检查 hardhat.config.js |
+| ECONNREFUSED 127.0.0.1:8545 | 节点没开 | 去 窗口 1 运行 npx hardhat node |
+| ReferenceError: ethers is not defined | 进错模式 | 必须通过 npx hardhat console 进入，不能直接用 node |
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 **Figma 运营设计速成笔记**
 
 **1\. 快速起步：建立画布 (Frame)**
@@ -110,6 +259,7 @@ Web3 海报通常需要放 4-5 个圆形的嘉宾头像，**不要**去截圆形
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # **Figma 学习笔记**
 
@@ -242,6 +392,7 @@ Figma 是基于浏览器的云端设计工具，实时协作是其最大优势�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # 从透明链上投票到 ZK 匿名投票
@@ -400,6 +551,7 @@ function vote(bytes memory proof, bytes32 nullifier, ...) {
 
 
 
+
 1\. 语言基础与开发范式
 
 Solidity 是面向对象的高级语言，运行于以太坊虚拟机 (EVM) 上，具有静态类型和类继承特性。
@@ -472,6 +624,7 @@ Solidity 是面向对象的高级语言，运行于以太坊虚拟机 (EVM) 上�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -619,6 +772,7 @@ RPC (Remote Procedure Call) 是连接 **前端应用 (DApp)** 与 **区块链网
 
 
 
+
 ### 一、 DApp 核心架构
 
 与传统 Web2 应用不同，Web3 应用的后端逻辑运行在去中心化网络上。
@@ -739,6 +893,7 @@ RPC (Remote Procedure Call) 是连接 **前端应用 (DApp)** 与 **区块链网
 
 
 
+
 这是一份纯文字版的 Remix IDE 学习笔记总结：
 
 **Remix IDE 学习笔记**
@@ -801,6 +956,7 @@ Remix 是 Web3 开发的首选入门工具，核心特点是免安装、零配�
 
 
 
+
 ### **1\. 节点的“新架构”：执行层 + 共识层**
 
 自从“合并”（The Merge）以后，一个完整的以太坊节点不再是单一的软件，而是必须由两个配合工作的客户端组成 。书中用了一个很形象的“法院”比喻来解释两者的关系
@@ -828,6 +984,7 @@ Remix 是 Web3 开发的首选入门工具，核心特点是免安装、零配�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -877,6 +1034,7 @@ eg：工资法币表述，实际发虚拟币，离职后劳动仲裁，成功，
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1015,6 +1173,7 @@ RWA 现实世界资产上链
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
