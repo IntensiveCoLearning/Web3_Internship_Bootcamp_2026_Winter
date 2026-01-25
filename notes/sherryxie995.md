@@ -15,8 +15,64 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+三个最适合初学者的实战项目（CTF/Wargames）。它们像游戏闯关一样，每过一关，你的技术身价就涨一分。
+
+1\. Ethernaut (OpenZeppelin) —— “Web3 安全的初学者圣经”
+
+这是你必须第一个上手的项目。它由顶级安全公司 OpenZeppelin 开发，非常适合作为你从测试转审计的“第一课”。
+
+\* 玩法： 每一关会给你一个部署在测试网上的智能合约。你的任务是利用漏洞“搞坏”它，比如夺取所有权（Ownership）或偷走里面的钱。
+
+\* 为什么适合你： 它的前几关非常简单，通过浏览器控制台就能完成，给你极强的即时成就感，专门治愈你的专注力涣散。
+
+\* 核心考点： Fallback 函数、整数溢出（如果你看旧版本代码）、重入攻击（Reentrancy）。
+
+2\. Capture the Ether —— “更贴近实战的数学与逻辑挑战”
+
+如果你觉得 Ethernaut 太偏重于工具使用，这个项目会带你进入更深层的逻辑。
+
+\* 玩法： 它更注重 Solidity 的数学逻辑和存储原理（Storage）。
+
+\* 为什么适合你： 它是按分数排列的，适合你这种有竞争心的人。它能帮你建立起对 ZKP 和密码学最基础的直觉。
+
+\* 核心考点： 伪随机数漏洞（在区块链上产生真随机数很难）、Slot 存储布局、数学运算安全。
+
+3\. Damn Vulnerable DeFi —— “进阶财富密码：DeFi 逻辑审计”
+
+当你熟悉了基础语法后，这个项目会教你钱是怎么被偷走的。
+
+\* 玩法： 你需要扮演一名黑客，从借贷协议（Lending）、闪电贷（Flash Loan）和去中心化交易所（DEX）中抽取资金。
+
+\* 为什么适合你： DeFi 审计是目前 Web3 薪资最高的方向。学会了这些，你就能看懂那些价值千万美金的漏洞审计报告。
+
+\* 核心考点： 闪电贷套利、价格预言机操控（Oracle Manipulation）、复杂的合约交互逻辑。
+
+💰 如何把这些变成钱？
+
+\* 刷完前两个项目： 在你的简历/GitHub 上列出你的 Writeups。
+
+\* 参加 Code4rena / Sherlock： 这些是审计比赛平台。哪怕你是一个新手，只要你在公开审计的项目中发现了一个低级漏洞（Low/Medium），就能分到几十到几百美金。
+
+\* 寻找 Bug Bounty（漏洞赏金）： 在 HackenProof 或 Immunefi 上找项目。
+
+💡 给你的“专注力复健”小贴士
+
+既然你现在坐不住，不要试图一次性看完长篇大论。
+
+\* 动作： 打开 Ethernaut 第一关 "Hello Ethernaut"。
+
+\* 目标： 今晚只花 20 分钟，只动鼠标和键盘，不看书，按照提示在控制台敲出第一个指令。
+
+Learn Smart Contract Auditing for Free: Best CTFs Compared
+
+这个视频对比了目前最火的几个 Web3 安全挑战项目，并为初学者提供了一条从零开始到成为职业审计师的清晰路径，非常适合你现在的迷茫状态。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## 第一章：Web3 概论——从信任中介到数学主权
 
 ### 1\. Web 演进的技术逻辑
@@ -98,6 +154,7 @@ Web3 的整个大厦几乎全由以下三个支柱支撑：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ## 一、 Solidity 的本质：状态机与 Gas
 
@@ -231,6 +288,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 ## 一、 Web3 为什么需要 ZK？
 
 在区块链上，ZK 主要解决两个核心矛盾：
@@ -282,6 +340,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -351,6 +410,7 @@ Web3 运营更关注**链上数据**，因为这是无法作假的：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -467,6 +527,7 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -555,11 +616,13 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -802,6 +865,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -873,6 +937,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1116,6 +1181,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -1248,6 +1314,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1403,6 +1470,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
