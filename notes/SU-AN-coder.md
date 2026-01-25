@@ -17,9 +17,9 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
-# 📘 Reactive Network 开发学习笔记：从 0 到 1 实战指南
+# Reactive Network 学习笔记
 
-## 1\. 核心概念：什么是 Reactive 合约？
+## 1\. 什么是 Reactive 合约？
 
 Reactive 合约是一种**去中心化的跨链中继器**。它打破了传统智能合约“不点不动”的局限性：
 
@@ -32,7 +32,7 @@ Reactive 合约是一种**去中心化的跨链中继器**。它打破了传统�
 
 * * *
 
-## 2\. 实验架构：Basic Demo 闭环
+## 2\. Basic Demo 闭环
 
 本次实验成功实现了一个典型的自动化链路：
 
@@ -43,9 +43,11 @@ Reactive 合约是一种**去中心化的跨链中继器**。它打破了传统�
 3.  **L1 回调合约 (BasicDemoL1Callback)**：部署在 Sepolia，负责接收指令并执行最终动作。
     
 
+![屏幕截图 2026-01-25 205204.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-25-1769346248321-_____2026-01-25_205204.png)
+
 * * *
 
-## 3\. 实战部署手册 (Foundry 环境)
+## 3\. 实战部署 (Foundry 环境)
 
 ### Step 1. 环境初始化
 
@@ -64,11 +66,7 @@ forge install
 
 > **注意**：由于 Lasna 网络升级，必须使用最新的 `rnk.dev` 域名。
 
-| 变量名 | 推荐值/说明 |
-| ORIGIN_RPC | Sepolia Infura/Alchemy URL |
-| REACTIVE_RPC | https://lasna-rpc.rnk.dev/ |
-| SYSTEM_CONTRACT_ADDR | 0x0000000000000000000000000000000000fffFfF |
-| DESTINATION_CALLBACK_PROXY_ADDR | 0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA |
+| 变量名 | 推荐值/说明 | | ORIGIN\_RPC | Sepolia Infura/Alchemy URL | | REACTIVE\_RPC | [https://lasna-rpc.rnk.dev/](https://lasna-rpc.rnk.dev/) | | SYSTEM\_CONTRACT\_ADDR | 0x0000000000000000000000000000000000fffFfF | | DESTINATION\_CALLBACK\_PROXY\_ADDR | 0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA |
 
 ### Step 3. 部署流程命令
 
@@ -81,13 +79,13 @@ forge install
 
 * * *
 
-## 4\. 疑难杂症排查 (Debug Logs)
+## 4\. Debug Logs
 
-在本次实战中，我们克服了两个重大网络技术障碍：
+在本次实战中，两个重大网络技术障碍：
 
-### ❌ 问题 1：TLS Handshake EOF / OS Error 10053
+### 问题 1：TLS Handshake EOF / OS Error 10053
 
--   **现象**：江西地区访问 `kopernikus.reactive.network` 时报错，握手被强制中断。
+-   **现象**：访问 `kopernikus.reactive.network` 时报错，握手被强制中断。
     
 -   **对策**：
     
@@ -98,7 +96,7 @@ forge install
     -   **Cast 测试**：先用 `cast block-number` 验证连通性，再进行部署。
         
 
-### ❌ 问题 2：Chain ID 不匹配
+### 问题 2：Chain ID 不匹配
 
 -   **现象**：由于 Lasna 节点升级，原有的 Chain ID 和域名失效。
     
@@ -118,10 +116,14 @@ forge install
 -   **触发交易哈希 (Sepolia)**: `0x0a655e8e459b149729444926d9fb0c360b0a2bc1b23f3bd0d725faa2a23016ad`
     
 -   **验证状态**: `status: 1 (success)`。
+    
+
+![屏幕截图 2026-01-25 210029.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/SU-AN-coder/images/2026-01-25-1769346354918-_____2026-01-25_210029.png)
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 * * *
@@ -207,6 +209,7 @@ ps :第一次部署时间比较长，我花了26min等待，之间因为时间�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -602,6 +605,7 @@ async def main():
 
 
 
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -715,6 +719,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -768,6 +773,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1107,6 +1113,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1507,6 +1514,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2135,6 +2143,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -2201,6 +2210,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2418,6 +2428,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -2573,6 +2584,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2671,6 +2683,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2812,6 +2825,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
