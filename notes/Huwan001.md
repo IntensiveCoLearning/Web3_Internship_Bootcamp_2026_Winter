@@ -72,10 +72,20 @@ contract SimpleStorage {
     
 
 重新佈署 = 發布一個全新的合約 (取代舊的**功能**
+
+1.  修改代碼並編譯 (Compile)  
+    儲存修改後的代碼，點擊 **Solidity Compiler(**將人類讀得懂的代碼轉成機器讀得懂的字節碼 (Bytecode)**) ，**
+    
+2.  發送部署交易 (Deploy)  
+    檢查環境跟帳戶是否為你要使用的，點擊 Deploy 部署新合約，下方的 **Deployed Contracts** 列表會有一個**新出現的欄位。**
+    
+3.  清理與切換 (Cleanup)  
+    把之前舊的那個打叉叉，通常會在上面，新的會在下面
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 今日稍微休息了一下 沒怎麼念書  
 把前幾天學到的東西簡單整理了一下  
@@ -84,6 +94,7 @@ contract SimpleStorage {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 今日參與線上共學 聽了 evo Swift、ECHO兩位老師分享了許多行業八卦，吃了一些瓜 哈哈  
@@ -111,6 +122,7 @@ contract SimpleStorage {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -210,6 +222,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -235,6 +248,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -379,6 +393,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -390,6 +405,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -474,6 +490,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -484,6 +501,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -654,6 +672,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -679,6 +698,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -849,6 +869,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -928,6 +949,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
