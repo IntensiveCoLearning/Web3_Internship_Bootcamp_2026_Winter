@@ -15,8 +15,74 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+Speedrun Ethereum
+
+核心目标
+
+把 合约 + 前端 做成一个真正在线可用的 NFT DApp。
+
+基础环境（固定流程）
+
+复制代码
+
+yarn chain 本地链
+
+yarn deploy 部署合约
+
+yarn start 前端运行
+
+改合约 → 重新部署 → 前端自动更新。
+
+挑战内容
+
+使用 ERC-721 NFT 合约
+
+铸造 NFT
+
+转移 NFT
+
+用 Faucet 获取 Gas
+
+NFT 数据来自 IPFS
+
+上线到测试网
+
+生成账户
+
+复制代码
+
+yarn generate
+
+获取测试币
+
+部署到测试网
+
+复制代码
+
+yarn deploy --network rinkeby
+
+前端发布
+
+复制代码
+
+yarn build
+
+yarn surge
+
+得到公网网址 → 别人可直接用你做的 DApp。
+
+本质收获
+
+你完成了 完整 DApp 开发流程：
+
+本地开发 → 合约上链 → 前端上线 → 用户可访问。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # Scaffold-ETH + Solidity 实践总结
 
 ## 1️⃣ Scaffold-ETH 是什么
@@ -102,6 +168,7 @@ contract A is Ownable
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # Web3 学习笔记 · Week 2 Day 2
 
@@ -195,6 +262,7 @@ contract A is Ownable
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 # Web3 学习笔记 · Week 2
 
 **主题：Scripting & Ethers.js**
@@ -277,6 +345,7 @@ contract A is Ownable
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -368,6 +437,7 @@ Ethers.js 是一个用于与以太坊交互的 JavaScript 库，主要作用是�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -589,6 +659,7 @@ Web3 项目中：
 
 
 
+
 # Web3 学习日志 · Day 6
 
 **主题：阶段性复习与结构重建**
@@ -733,6 +804,7 @@ Web3 项目中：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -999,6 +1071,7 @@ Web3 很难用，但正因为难，
 
 
 
+
 # Web3 学习日志 · Day 4
 
 **主题：ENS 身份、DEX、钱包与 DApp 交互、Web3 学习路径**
@@ -1109,6 +1182,7 @@ DApp 是你的应用市场。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1269,6 +1343,7 @@ Web3 的风险主要来自两端：
 
 
 
+
 # Web3 学习日志 · Day 2
 
 **主题：以太坊运行逻辑、DeFi、DApp 与开放网络结构**
@@ -1408,6 +1483,7 @@ EVM 是运行环境，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
