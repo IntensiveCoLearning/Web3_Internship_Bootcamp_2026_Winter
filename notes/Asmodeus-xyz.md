@@ -15,8 +15,16 @@ QS600+金融本硕；Web3初学者
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+完成WTF中solidity101所有学习与测试
+
+![截屏2026-01-25 20.33.39.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-25-1769344430987-__2026-01-25_20.33.39.png)
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 继续solidity语法学习
 
 ![截屏2026-01-24 23.33.24.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-24-1769268841276-__2026-01-24_23.33.24.png)
@@ -25,6 +33,7 @@ QS600+金融本硕；Web3初学者
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 学习solidity/查看basic示例
 
 ![截屏2026-01-23 23.05.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-23-1769180810998-__2026-01-23_23.05.13.png)
@@ -32,6 +41,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 # 第四章：智能合约理论基础 · 阅读笔记
@@ -148,6 +158,7 @@ QS600+金融本硕；Web3初学者
 
 
 
+
 -   **布尔型（bool）**
     
     -   取值：`true / false`
@@ -195,6 +206,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -373,6 +385,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -575,6 +588,7 @@ QS600+金融本硕；Web3初学者
 
 
 
+
 尝试使用Remix IDE，跑通测试并撰写新的代码完成任务
 
 ![截屏2026-01-17 22.24.38.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-18-1768750752757-__2026-01-17_22.24.38.png)
@@ -589,6 +603,7 @@ QS600+金融本硕；Web3初学者
 
 
 
+
 创建钱包，测试币转账
 
 ![截屏2026-01-16 22.44.20.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-17-1768655912594-__2026-01-16_22.44.20.png)
@@ -596,6 +611,7 @@ QS600+金融本硕；Web3初学者
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -753,6 +769,7 @@ EOA 用户通过私钥签名发起外部交易（external transaction），交�
 
 
 
+
 # 一、节点与客户端
 
 ## 节点
@@ -892,6 +909,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 # 一、Web3合规性要求与常见法律风险
 
 ## 核心法律风险梳理
@@ -966,6 +984,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1174,6 +1193,7 @@ DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
