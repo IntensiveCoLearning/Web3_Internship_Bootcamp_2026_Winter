@@ -15,8 +15,110 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+\### Scaffold-Eth 介绍
+
+**核心理念：可视化迭代 (Tinkering)**
+
+• **对比 Hardhat**：之前学习的 Hardhat 侧重于 TDD（测试驱动开发），写测试 -> 跑测试，适合逻辑严密的开发。
+
+• **Scaffold-Eth 优势**：侧重于“所见即所得”。它提供了一个自动生成的 React 前端，让你修改 Solidity 代码后，能够立即在网页上点击按钮与合约交互。这种反馈循环更直观（Visceral），适合快速实验和学习。
+
+**特性亮点**
+
+• **燃烧钱包 (Burner Wallets)**：打开隐身窗口就会自动生成一个新的钱包和私钥（各种颜色的头像代表不同账户）。本地水龙头 (Faucet) 可以一键给这些钱包发测试币，无需复杂的 MetaMask 配置，极大地加速了多用户场景的测试（如“坏人”与“好人”的博弈）
+
+\### Solidity 基础
+
+**1\. 全局变量与状态**
+
+• **block.timestamp**: 只有在出块时才会更新。可以通过写一个小函数在前端观察时间戳的变化。
+
+• \*\*msg.value\*\* **与 Payable**:
+
+    ◦ 如果函数涉及接收 ETH，必须标记为 `payable`。
+
+    ◦ 前端需要处理单位转换：用户输入 0.001 ETH，代码需转换为 Wei `x * 10^18`)。
+
+**2\. 继承 (Inheritance) - OpenZeppelin**
+
+• **不要造轮子**：与其自己手写 `boss` 变量和 `onlyBoss` 修饰符，不如直接继承 OpenZeppelin 的 `Ownable` 合约。
+
+• **用法**：
+
+    ◦ `contract MyContract is Ownable`。
+
+    ◦ 直接使用 `onlyOwner` 修饰符。
+
+    ◦ 利用 `transferOwnership` 移交权限。
+
+• **部署技巧**：可以在构造函数中直接调用 `transferOwnership` 将权限移交给前端钱包地址，省去部署后再发交易的 Gas 费。
+
+**3\. 接收资金 (Receive & Fallback)**
+
+• 如果有人直接向合约地址转账（不调用任何函数），合约必须有 `receive() external payable {}` 函数，否则交易会失败,。
+
+• 这对于构建“存款”类应用至关重要，提升用户体验。
+
+1\. **本质：一切皆交易**：
+
+    ◦ 与合约交互不是“点击 App”，而是构建并发送一笔交易。
+
+    ◦ **Call Data (调用数据)**：当你调用合约函数时，本质上是向合约地址发送一笔交易，并在 `data` 字段中附带了特定数据。
+
+    ◦ **Value (转账金额)**：如果函数是 `payable` 的（如 `mint` 需要付费），需要在调用时通过 `overrides` 对象传入 `value`。
+
+2\. **函数选择器 (Function Selector)**：
+
+    ◦ 在 Etherscan 上查看原始交易数据时，你会看到 `MethodID`（如 `0xa9059cbb`）。
+
+    ◦ 这是函数签名的 Keccak-256 哈希的前 4 个字节。它告诉合约你想调用哪个函数。
+
+3\. **手动控制交易 (Nonce & Gas)**：
+
+    ◦ 手动设置 `nonce` 和 `gasPrice`。
+
+    ◦ **加速交易原理**：如果你发出的交易卡住了，可以发送一笔 **Nonce 相同** 但 **Gas Price 更高** 的新交易。矿工会打包价格高的那笔，旧交易会被丢弃。
+
+\### 重入攻击 (Reentrancy Attack)
+
+如何通过递归调用掏空一个银行合约。
+
+**1\. 漏洞场景 (The Bug)** 一个朴素的提款函数 `withdraw()`：
+
+1\. 检查余额。
+
+2\. **发送 ETH** `msg.sender.call{value: amount}("")`)。
+
+3\. **扣除余额** `balance[msg.sender] = 0`)。
+
+• _问题：_ 在步骤 2 发送 ETH 时，如果接收方是一个恶意合约，它会触发恶意合约的 `receive()` 函数。
+
+**2\. 攻击流程 (The Attack)**
+
+• **恶意合约**在 `receive()` 函数中写了一行代码：再次调用 Bank 的 `withdraw()`。
+
+• **循环发生**：
+
+    ◦ Bank 发钱 -> 触发恶意合约 `receive` -> 恶意合约再次调 `withdraw` -> Bank 还没来得及扣余额（步骤3还没执行），以为它还有钱 -> Bank 再次发钱...
+
+• 结果：恶意合约用一份存款，循环取出了银行里所有的钱。
+
+**3\. 修复方案 (The Fix)** 遵循 **Checks-Effects-Interactions** 模式：
+
+1\. **Checks**: 检查余额。
+
+2\. **Effects (更新状态)**: 先把余额清零 `balance[msg.sender] = 0`)。
+
+3\. **Interactions (外部交互)**: 最后再发送 ETH。
+
+这样即使攻击者再次重入，读取到的余额已经是 0，攻击失败。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ### 读取合约 (Read Contracts)
 
 1\. **核心三要素**： 要与合约交互，你需要：
@@ -77,6 +179,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -122,6 +225,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ## 智能合约的主要优势：自动触发、减少中介、减少误差
@@ -183,6 +287,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -335,6 +440,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -395,6 +501,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -420,6 +527,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -455,6 +563,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -507,6 +616,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -551,6 +661,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -576,6 +687,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -625,6 +737,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
