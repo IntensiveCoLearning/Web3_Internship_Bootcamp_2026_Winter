@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-25-1769351837396-image.png)
+
+发了一篇自己的进入web3时的感受，感慨万千。。。
+
+一方面是对某些方面的失望，这份失望的力量转化为渴求其他知识与未来的能量
+
+不断汲取、不断深入
+
+我又踏上了一个岔路口，面前的是两条路，两个选择。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今天依旧发了推文以及小红书，看着同学们都如火如荼的准备自己的作业与功课，完善自己的经验，感觉渐渐的有些脱节了。。
 
 不过认准目标吧，只要结果导向是正确的，没问题的，那么向前走就是进步！
@@ -24,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 今天坎坎坷坷，重新搭建了一下自己的电脑平台，但是发现笔记本电脑还是很是舒服的嘿嘿
 
@@ -42,6 +57,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 今天连续两个平台都被标记了警告。小红书发出去的图文直接就是0曝光，在其他账号上搜索根本搜不到，然后在X上直接被封禁，还好解开的只是人机验证，感觉这已经是警告了。。。。账号究竟出啥问题，我蓝v都冲了总不能好端端给我封号了把。。
 
 今天梳理了一下内容，现在要学习的工具有Notion、notebooklm、vibe coding、figma，现阶段先一个一个把这些学会，这些工具学会以后会极大地提高我的效率
@@ -52,6 +68,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天需要再努力一些，计划需要学习figma工具使用但是并没有完成，有事情出门了、、
 
 今天依旧完成了大使的工作，我还需要更加细致一些。胡老师已经演示了一边标准的筛选方式，我需要捕捉关键词，对照关键词进行筛选。ai只是一个初步的筛选，不能作为绝对的判断。我才是最后的决断层。
@@ -59,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -77,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-19-1768835897094-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-19-1768835906066-image.png)
 
 今天是非常饱满的一天，白天当大使做任务,下午去上课，晚上回来写推文。
@@ -86,6 +105,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -112,6 +132,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647773836-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647763202-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-17-1768647792969-image.png)
 
 今天依旧是一篇推，今天整天围绕着一个全新的课题写，写昏头了，虽然没有任何经验，但是这种从零开始探索的感觉真的特别上瘾。上瘾到我午饭到了都放着没吃，直到手头上的课题暂时搞了一段落了以后才敢放心的拿起筷子。
@@ -121,6 +142,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -149,6 +171,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习完了《021 学习以太坊》的第二章并做笔记发了推文，感觉成就感满满！
 
 ![IMG_4149.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483352442-IMG_4149.jpeg)![IMG_4148.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483381863-IMG_4148.png)![IMG_4150.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483414358-IMG_4150.jpeg)![IMG_4151.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483429069-IMG_4151.jpeg)![IMG_4152.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/RayWu-ETH/images/2026-01-15-1768483444785-IMG_4152.jpeg)
@@ -156,6 +179,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -183,6 +207,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -295,6 +320,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
