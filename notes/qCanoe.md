@@ -15,8 +15,49 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约束环境下描述可验证状态转移规则**而存在。其语法、类型系统与限制并非偶然，而是直接服务于以下目标：确定性执行、状态可复现、最小信任假设以及经济成本可计量。
+
+因此，在 Solidity 中追求“代码优雅”或“抽象完备性”往往是错误方向，更重要的是**行为可预期性与边界清晰度**。
+
+与传统软件系统不同，Solidity 合约的核心不是函数，而是状态结构。函数只是状态迁移的触发器，真正长期存在、可以被攻击、被审计、被索引的，是状态本身。
+
+由此可以得出一个重要结论：  
+**设计合约时，应当先设计状态模型，再设计函数接口，而不是反过来。**
+
+任何复杂逻辑如果无法自然映射为清晰、有限的状态变化，就不适合上链实现。
+
+通过大量示例可以观察到，Solidity 的安全设计高度依赖“显式”：
+
+权限需要显式判断  
+失败需要显式 revert  
+存储写入需要显式声明  
+函数对状态的依赖需要显式标注
+
+这种显式性并非冗余，而是为了在**不可撤销、不可补丁的执行环境中最大限度减少歧义**。在 Solidity 中，任何看起来可以省略的东西，往往正是风险来源。
+
+合理的默认假设应当是：
+
+外部输入是恶意的  
+调用顺序是不可预测的  
+外部合约行为是不可信的  
+用户可能误操作
+
+在设计接口时，应当像设计法律条款一样谨慎：  
+是否真的需要对外暴露？  
+是否允许任意地址调用？  
+是否存在被组合、被滥用的可能？
+
+从代码 → 执行行为  
+从示例 → 设计模式  
+从功能 → 风险  
+从能用 → 不易出错
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今天主要进行了 Solidity 的应用学习（Applications），重点体验了以下功能的实现：
 
 1\. Ether Wallet
@@ -34,6 +75,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 1.23 补充
 
@@ -137,6 +179,7 @@ Solidity 中有三种主要的失败机制，但语义并不相同：
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 **storage**：链上永久存储，读写成本高，生命周期与合约一致。
 
 **memory**：函数执行期间的临时内存，成本较低，执行结束即释放。
@@ -230,6 +273,7 @@ contract Ownable {
 
 
 
+
 ### **1.21**[**Solidity by Example | 0.8.26**](https://solidity-by-example.org/) **Basic 部分**
 
 **一、Hello World 合约与基础结构**
@@ -297,6 +341,7 @@ function getSum(uint a, uint b) external pure returns(uint) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -507,6 +552,7 @@ assert
 
 
 
+
 ### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
 
 A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
@@ -587,6 +633,7 @@ RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取
 
 
 
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -632,6 +679,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -726,6 +774,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -779,6 +828,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -873,6 +923,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -939,6 +990,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -976,6 +1028,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
