@@ -15,8 +15,94 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# Web3 学习笔记 Day 13：实战 Remix 与 智能合约 Hello World
+
+## 1\. 开发环境：Remix IDE
+
+-   **地址**：[remix.ethereum.org](http://remix.ethereum.org)
+    
+-   **定位**：以太坊开发的“瑞士军刀”。无需本地配置环境（Node.js/Hardhat），云端直接编译部署。
+    
+-   **核心模块**：
+    
+    -   **Compiler**：将 `.sol` 代码编译为 **Bytecode** (给 EVM 跑的机器码) 和 **ABI** (给前端调用的接口描述)。
+        
+    -   **Deploy & Run**：提供 `Remix VM` (内存模拟链) 用于快速测试，也支持 `Injected Provider` 连接 MetaMask 上主网。
+        
+
+## 2\. 第一个合约：SimpleStorage (存储)
+
+区块链本质上是一个**状态机**。在这个 Hello World 中，我们学习了如何读写链上状态。
+
+Solidity
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    // 状态变量：数据永久刻在区块链“硬盘”上
+    uint256 private storedData; 
+
+    // 写入函数：修改状态 -> 消耗 Gas -> 需要发交易
+    function set(uint256 x) public {
+        storedData = x;
+    }
+
+    // 读取函数：只读状态 -> 免费 (View) -> 本地节点直接返回
+    function get() public view returns (uint256) {
+        return storedData;
+    }
+}
+```
+
+### 关键 CS 概念：
+
+-   **状态变量 (State Variable)**：与普通程序的内存变量不同，它会被永久持久化在 Merkle Patricia Trie 中。
+    
+-   **View 关键字**：承诺函数是“只读”的，不修改状态，因此不消耗 Gas。
+    
+
+## 3\. 核心误区纠正：数据的持久性
+
+-   **场景**：Account A 调用 `set(100)` 写入 `owner = A`。然后 Account B 调用 `get()`。
+    
+-   **误区**：以为 B 调用 `get` 时，返回的 owner 会变成 B。
+    
+-   **真相**：**涂鸦墙理论**。A 把名字喷在了墙上（上链）。B 路过看墙（Read），墙上的名字依然是 A。读取操作永远不会改变数据本身。
+    
+
+## 4\. 进阶实战：一键发币 (ERC-20)
+
+利用 **可组合性 (Composability)**，通过继承 **OpenZeppelin** 标准库，10 行代码实现发币。
+
+Solidity
+
+```
+import "https://github.com/OpenZeppelin/.../ERC20.sol";
+
+contract MyToken is ERC20 {
+    // 构造函数：部署时执行一次
+    constructor() ERC20("CS Coin", "CSC") {
+        // 给部署者印 1000 个币
+        // 10**18 是因为以太坊不支持小数，最小单位是 Wei
+        _mint(msg.sender, 1000 * 10**18);
+    }
+}
+```
+
+### 关键技术点：
+
+-   **Inheritance (继承)**：`is ERC20` 让你的合约直接拥有了 `transfer`, `approve`, `balanceOf` 等几十个标准方法。
+    
+-   **Decimals (精度)**：以太坊代币标准精度通常为 18 位。前端显示的 `1.0` 在合约里其实是 `1000000000000000000`。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # 🎓 12 天全栈 Web3 毕业典礼
 
 同学，恭喜你！坚持 12 天并不容易。 这 12 天里，我们从 0 到 1 构建了一个完整的 **Web3 计算机科学知识图谱**。让我们最后回顾一下这栋大楼的结构：
@@ -53,6 +139,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # Web3 学习笔记 Day 11：智能合约安全
 
@@ -93,6 +180,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # Web3 学习笔记 Day 10：Layer 2 扩容与 Rollup
 
 ## 1\. Rollup 的本质
@@ -117,6 +205,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -172,6 +261,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # Web3 学习笔记 Day 9+：NFT 进阶开发
 
 ## 1\. ERC-1155 (多代币标准)
@@ -220,6 +310,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # Web3 学习笔记 Day 8：区块链架构分级
 
 ## 1\. 核心权衡 (The Trade-off)
@@ -244,6 +335,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -453,6 +545,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 学习笔记 Day 6：DeFi 的代码原语
 
 ## 1\. 代币标准：ERC-20 的本质
@@ -518,6 +611,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -642,6 +736,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 & AI 学习笔记 Day 4：智能的本质
 
 ## 1\. 人工智能的分级：专才 vs 通才
@@ -701,6 +796,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -802,6 +898,7 @@ Step 3: 交易红线 (非实名必拒)
 
 
 
+
 # Web3 学习笔记 Day 2：成为高级用户
 
 ## 1\. 核心概念：钱包的本质
@@ -856,6 +953,7 @@ Step 3: 交易红线 (非实名必拒)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
