@@ -15,8 +15,98 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# Uniswap The Compact：用“可信承诺”解决跨链非原子性
+
+## 1) 它要解决的问题：跨链天然“不原子”
+
+跨链操作是**异步环境**：A 链执行成功 ≠ B 链一定同步成功，所以很难做到像单链那样“一步到位、全成全败”的 **atomic transaction**。  
+The Compact 的定位就是：给跨链 swap / action 一个通用的**可信承诺框架**，让你可以在多链环境里“先锁钱→再完成条件→再释放/领取”。
+
+* * *
+
+## 2) 核心概念：Resource Lock（资源锁）
+
+你可以把 The Compact 理解成一个 **ownerless 的锁仓合约**（基于 ERC-6909），把“可花的钱”先锁进去，变成可复用的资源锁。
+
+每个资源锁有 4 个关键属性：
+
+-   **Underlying token**：锁的是什么资产（ERC20 或原生币）
+    
+-   **Allocator**：分配器（防止重复花 / 双花）
+    
+-   **Scope**：作用域（单链 or 多链）
+    
+-   **Reset period**：强制退出周期（兜底取回资产）
+    
+
+* * *
+
+## 3) “Compact” 是什么？
+
+**Compact = Sponsor（赞助者）签署/注册的一份协议**：  
+允许别人（claimant）在满足条件时，从资源锁里把资产“领走”。
+
+它用 **EIP-712 typed data** 来做签名与验证，并支持多种 payload（例如单链、批量、多锁等）。
+
+* * *
+
+## 4) 一条典型跨链流程（理解它怎么“补原子性”）
+
+Uniswap 官方给的典型跨链例子大概是：
+
+1.  **Deposit → Lock**：Sponsor 把资产存入 The Compact，生成资源锁
+    
+2.  **Commit（Create a Compact）**：Sponsor 创建/签署 compact（写清：要换什么、条件是什么、过期时间等）
+    
+3.  **Fill / Execute（跨链执行动作）**：执行者在目标链完成指定动作（swap / call / message 等）
+    
+4.  **Claim**：满足条件后，执行者拿“证明”去领取锁里的资产
+    
+5.  **Fallback（Reset period）**：如果长期没完成，Sponsor 可按 reset 机制撤回资金（降低资金永久卡死风险）
+    
+
+> 关键点：它不是把跨链变成“真原子”，而是用 **“先锁定资金 + 条件满足后才能领取”** 来获得接近原子的经济结果（credible commitment）。
+
+* * *
+
+## 5) 模块化组件（记住 4 个角色）
+
+官方文档把系统拆成可组合模块：
+
+-   **Allocator**：分配资源、防双花（你可以做纯链上或混合链下版本）
+    
+-   **Arbiter / Tribunal**：判断“条件是否满足”（例如跨链证明是否有效）
+    
+-   **Court**：结算引擎（协调 claim / settlement）
+    
+-   **Messenger**：给智能合约钱包等场景提供兜底验证路径（容错能力）
+    
+
+* * *
+
+## 6) 表格对比：它和常见跨链方案差在哪？
+
+| 方案 | 核心机制 | 原子性怎么处理 | 风险点 |
+| --- | --- | --- | --- |
+| The Compact | 资源锁 + 条件领取（可信承诺） | 不追求“同步原子”，用锁仓确保“完成才领钱” | 条件/仲裁器设计要强；reset 参数要合理 |
+| 传统桥（Lock & Mint） | 锁/铸 + 消息验证 | 多数是异步，靠桥安全性 | 桥被攻击风险高 |
+| 意图（Intents）系统 | 用户表达“我想要结果”，由 solver 执行 | 依赖结算和担保机制 | solver 信用/担保设计复杂 |
+
+> 简单理解：**Compact 更像“跨链结算层的积木”**，让 intents / solver 能做“可验证结算”。
+
+* * *
+
+## 7) 一句话总结
+
+**The Compact = 一个开源的跨链“可信承诺”合约系统：**  
+用 **Resource Lock（先锁钱）+ Compact（签条件）+ Arbiter/Allocator（防双花+验条件）**，在跨链异步环境里做出“近似原子”的交换与执行体验。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # ERC-7984 vs ZEC vs DASH
 
 链上默认**全透明**（余额、金额、交易关系都可追踪），因此出现了三种典型隐私路线：  
@@ -67,6 +157,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 1、参加Speedrun Basic workshop、Co-Learning、第二周例会
 
 2、准备例会分享内容
@@ -74,6 +165,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 1、参加Co-Learning
@@ -90,6 +182,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、学习scaffold-eth框架
 
 2、参加co-learning
@@ -101,6 +194,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -121,6 +215,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、参加以太坊中文周会
 
 2、参加线上Co-Learning
@@ -130,6 +225,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -150,6 +246,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、研究了智能合约中多重继承引发的钻石问题，使用C3线性化算法如何解决函数调用顺序的冲突，通过明确指定和避免使用super来避免问题
 
 2、研究了使用GPU碰撞合约hash特定字符的地址，[manuelinfosec/eth-vanity-cuda: CUDA-accelerated Ethereum vanity address generator written in C++, capable of brute-forcing custom prefixes and suffixes for addresses using NVIDIA GPUs.](https://github.com/manuelinfosec/eth-vanity-cuda)
@@ -157,6 +254,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -185,6 +283,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、学习MPC钱包，发一篇推文
 
 2、参加 AI 及其基础概念分享会
@@ -192,6 +291,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -220,6 +320,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1.  进阶hardhat v2框架 [DAPP开发框架之hardhat进阶使用-CSDN博客](https://hua1223.blog.csdn.net/article/details/136885624)
     
 2.  给web3实习手册提交了一个pr，在智能合约开发章节添加了一个完整的现代化 Dapp 示例项目，展示如何使用 Viem、Wagmi 和 RainbowKit 构建链上留言板应用。[https://github.com/ethpanda-org/Web3-Internship-Handbook/pull/30](https://github.com/ethpanda-org/Web3-Internship-Handbook/pull/30)
@@ -227,6 +328,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
