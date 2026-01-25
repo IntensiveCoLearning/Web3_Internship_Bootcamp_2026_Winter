@@ -15,8 +15,416 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+这是一片充满矛盾的赛道。一面是全球数万亿美元的非上市股权“围城”，另一面是链上实际可流转规模仅千万美元的早期现实。市场叙事宏大，但落地仍处极早期。 行业探索出三条路径，并非你死我活，而是各司其职：合成资产如同“流量先锋”，用高杠杆吸引投机资金，完成市场教育；SPV间接持有是当前“主流过渡”，架构灵活但游走在合规边缘；原生协作（TaaS） 则是“终极基建”，以合规牌照实现真股上链，是承载大规模机构资金的未来正道。当前核心挑战并非技术，而在于 “流动性悖论”——上链不等于有深度，薄型市场导致定价失效。同时，面临监管与标的公司法务的双重挤压，单边发行的套利模式难以为继。 未来破局关键在于 “转向协同” ：从争夺头部独角兽的流量，下沉至服务有真实流动性需求的长尾企业；从绕过公司的套利，转向为企业提供 TaaS（代币化即哦服务） 基础设施。最终，行业将形成多层次莫生态，从早期的概念炒作，走向真正提升实体经济资本效率的合规金融设施。 简言之，赛道想象空间巨大，但已从“讲故事”进入“拼合规、建生态、造深度”的硬核攻坚阶段。真正的爆发，将始于基础设施成熟与企业端主动协同之时。
+
+一、Gas到底是什么？
+
+简单比喻
+
+· 汽油（Gas）：让你的汽车（交易）跑起来的燃料
+
+· Gas Price：每升汽油的价格（Gwei）
+
+· Gas Limit：你的油箱最大容量
+
+· 总费用 = 消耗的Gas量 × Gas单价
+
+技术定义
+
+Gas是EVM（以太坊虚拟机）执行操作的计算工作量单位。
+
+· 每个OPCODE（操作码）都有固定的Gas成本
+
+· 越复杂的操作，消耗Gas越多
+
+· 目标：用合理的成本完成计算，防止无限循环攻击
+
+二、Gas为什么重要？
+
+1\. 直接影响用户体验
+
+\`\`\`solidity
+
+// 一个简单的转账
+
+// 优化前：可能需要 50,000 Gas
+
+// 优化后：可能只需 21,000 Gas（基础转账费）
+
+// 假设Gas Price = 20 Gwei (0.00000002 ETH)
+
+// 优化前：50,000 × 20 = 1,000,000 Gwei = 0.001 ETH
+
+// 优化后：21,000 × 20 = 420,000 Gwei = 0.00042 ETH
+
+// 节省：0.00058 ETH（约$1-2，根据ETH价格
+
+2\. 决定合约是否可用
+
+某些操作太贵，用户根本用不起：
+
+· 一个循环处理1000个用户：可能超过区块Gas Limit
+
+· 复杂的数学计算：用户可能选择不用你的DApp
+
+三、Gas消耗的“重灾区”
+
+按消耗量排序（从高到低）：
+
+1\. Storage操作（最贵！）
+
+\`\`\`solidity
+
+// SLOAD：读取storage变量 - 800 Gas（冷读取）或100 Gas（热读取）
+
+// SSTORE：写入新值 - 20,000 Gas（从零到非零）
+
+// SSTORE：修改已有值 - 5,000 Gas
+
+// SSTORE：清零 - 返还Gas！
+
+uint256 public data; // storage变量
+
+function expensiveWrite() public {
+
+data = 123; // 消耗 20,000 Gas（首次写入）
+
+}
+
+function cheapRead() public view returns(uint256) {
+
+return data; // 消耗 800 Gas（第一次读）或 100 Gas（之后读）
+
+}
+
+2\. 合约创建和调用
+
+\`\`\`solidity
+
+// 创建合约：32,000 Gas起跳
+
+// CALL：调用外部合约 - 至少 2,600 Gas
+
+// CREATE2：更贵的合约创建方式
+
+\`\`\`
+
+3\. 内存和计算
+
+\`\`\`solidity
+
+// 内存扩展：每32字节需要Gas
+
+// Keccak256哈希：30-60 Gas（根据输入大小）
+
+// 循环：每次迭代都有成本
+
+function memoryExpensive(uint256\[\] calldata arr) public {
+
+// ❌ 差：复制到内存
+
+uint256\[\] memory copy = arr; // 消耗大量Gas扩展内存
+
+// ✅ 好：直接用calldata
+
+for(uint i = 0; i < arr.length; i++) {
+
+// 处理arr\[i\]
+
+}
+
+}
+
+四、实战优化技巧（从大到小）
+
+技巧1：减少Storage写入次数
+
+\`\`\`solidity
+
+// ❌ 差：多次写入storage
+
+function updateUser(address user, uint256 score, bool active) public {
+
+scores\[user\] = score; // SSTORE: 5,000-20,000 Gas
+
+isActive\[user\] = active; // SSTORE: 5,000-20,000 Gas
+
+lastUpdate\[user\] = block.timestamp; // SSTORE: 5,000-20,000 Gas
+
+}
+
+// ✅ 好：使用结构体打包（如果可能）
+
+struct UserData {
+
+uint64 score; // 8字节
+
+uint32 lastUpdate; // 4字节
+
+bool active; // 1字节
+
+// 总共13字节，可打包在一个32字节槽中
+
+}
+
+mapping(address => UserData) public users;
+
+function updateUser(address user, uint64 score, bool active) public {
+
+UserData storage userData = users\[user\];
+
+userData.score = score; // 可能只需修改部分字节
+
+userData.active = active; // 几乎不增加额外成本
+
+userData.lastUpdate = uint32(block.timestamp);
+
+// 三个修改可能只消耗1次SSTOREGas（如果都在同一槽）
+
+}
+
+技巧2：使用常量、固定值
+
+\`\`\`solidity
+
+// ❌ 差：每次计算
+
+function calculate(uint256 a) public pure returns(uint256) {
+
+return a \* 10000 / 100; // 每次执行都计算乘除法
+
+}
+
+// ✅ 好：预计算或使用常量
+
+uint256 public constant MULTIPLIER = 100; // 编译时确定，不占storage
+
+uint256 public constant DIVISOR = 100;
+
+function calculate(uint256 a) public pure returns(uint256) {
+
+return a \* MULTIPLIER / DIVISOR;
+
+}
+
+// ⭐ 更好：如果结果是固定的
+
+uint256 public constant FIXED\_RATIO = 100; // 直接是结果
+
+技巧3：批量操作
+
+\`\`\`solidity
+
+// ❌ 差：多次单独转账
+
+function payUsers(address\[\] memory users, uint256 amount) public {
+
+for(uint i = 0; i < users.length; i++) {
+
+payable(users\[i\]).transfer(amount); // 每次至少21,000 Gas
+
+}
+
+// 10个用户 = 210,000 Gas + 循环开销
+
+}
+
+// ✅ 好：使用pull payment模式（用户自己提取）
+
+mapping(address => uint256) public pendingPayments;
+
+function batchAddPayment(address\[\] memory users, uint256 amount) public {
+
+for(uint i = 0; i < users.length; i++) {
+
+pendingPayments\[users\[i\]\] += amount; // 只写一次storage
+
+}
+
+// 总共可能只需10次SSTORE
+
+}
+
+function withdrawPayment() public {
+
+uint256 amount = pendingPayments\[msg.sender\];
+
+require(amount > 0, “No payment pending”);
+
+pendingPayments\[msg.sender\] = 0; // 清零（可能返还Gas）
+
+payable(msg.sender).transfer(amount);
+
+}
+
+技巧4：内存管理
+
+\`\`\`solidity
+
+// ❌ 差：不必要的内存分配
+
+function getData(uint256\[\] memory ids) public view returns(uint256\[\] memory) {
+
+uint256\[\] memory result = new uint256\[\](ids.length); // 分配内存
+
+for(uint i = 0; i < ids.length; i++) {
+
+result\[i\] = data\[ids\[i\]\]; // 写内存
+
+}
+
+return result; // 返回时还要复制到返回内存
+
+}
+
+// ✅ 好：直接返回或最小化内存使用
+
+function getData(uint256\[\] calldata ids) public view returns(uint256\[\] memory) {
+
+// 尽量使用calldata
+
+uint256\[\] memory result = new uint256\[\](ids.length);
+
+// 如果数组很大，考虑分页
+
+// 或者让前端多次调用，每次取一部分
+
+}
+
+技巧5：循环优化
+
+\`\`\`solidity
+
+function processArray(uint256\[\] calldata arr) public {
+
+// ❌ 差：每次循环都读取length
+
+for(uint i = 0; i < arr.length; i++) {
+
+// …
+
+}
+
+// ✅ 好：缓存length
+
+uint256 length = arr.length;
+
+for(uint i =
+
+uint256 i = 0;
+
+while(i < length) {
+
+// 处理arr\[i\]
+
+unchecked { i++; } // 不检查溢出（确定不会溢出时）
+
+}
+
+}
+
+五、高级优化策略
+
+1\. 使用unchecked块（Solidity 0.8.0+）
+
+\`\`\`solidity
+
+function safeIncrement(uint256 x) public pure returns(uint256) {
+
+// 正常情况：编译器自动检查溢出
+
+return x + 1; // 有溢出检查，消耗更多Gas
+
+}
+
+function optimizedIncrement(uint256 x) public pure returns(uint256) {
+
+// 使用unchecked：我们知道不会溢出
+
+unchecked {
+
+return x + 1; // 无溢出检查，节省Gas
+
+}
+
+}
+
+2\. 最小代理（ERC-1167）
+
+\`\`\`solidity
+
+// 传统：每次部署新合约实例
+
+// Gas成本：~500,000 - 1,000,000 Gas
+
+// 最小代理：只部署一次逻辑合约，然后用轻量代理
+
+// 部署代理成本：~50,000 - 100,000 Gas
+
+// 节省90%部署成本！
+
+// 实现方式：
+
+address immutable logicContract;
+
+constructor(address \_logic) {
+
+logicContract = \_logic;
+
+}
+
+fallback() external {
+
+address impl = logicContract;
+
+assembly {
+
+calldatacopy(0, 0, calldatasize())
+
+let result := delegatecall(gas(), impl, 0, calldatasize(), 0, 0)
+
+returndatacopy(0, 0, returndatasize())
+
+switch result
+
+case 0 { revert(0, returndatasize()) }
+
+default { return(0, returndatasize()) }
+
+}
+
+}
+
+3\. 使用内联汇编（谨慎使用）
+
+\`\`\`solidity
+
+// 普通Solidity
+
+function getBalance(address addr) public view returns(uint256) {
+
+return addr.balance;
+
+}
+
+// 内联汇编（节省一点点Gas）
+
+function getBalanceAsm(address addr) public view returns(uint256 balance) {
+
+assembly {
+
+balance := balance(addr)
+
+}
+
+}
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -304,6 +712,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 以太坊智能合约开发完整指南
 
@@ -620,6 +1029,7 @@ GitHub 工作流：
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -820,6 +1230,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -971,6 +1382,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -1018,6 +1430,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1106,6 +1519,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -1119,6 +1533,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1437,6 +1852,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
