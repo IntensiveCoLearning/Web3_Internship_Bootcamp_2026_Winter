@@ -15,8 +15,138 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+今天來做gas優化的作業，我優化的是[Solidity by Example](https://solidity-by-example.org/loop/) 的For and While Loop程式碼
+
+原代碼:
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.26;
+
+contract Loop {
+
+function loop() public pure {
+
+// for loop
+
+for (uint256 i = 0; i < 10; i++) {
+
+if (i == 3) {
+
+// Skip to next iteration with continue
+
+continue;
+
+}
+
+if (i == 5) {
+
+// Exit loop with break
+
+break;
+
+}
+
+}
+
+// while loop
+
+uint256 j;
+
+while (j < 10) {
+
+j++;
+
+}
+
+}
+
+}
+
+修改後程式碼:
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.26;
+
+contract Loop {
+
+function loop() public pure {
+
+// 優化後的 For Loop
+
+// 1. 移除 '= 0' (節省初始化 Gas)
+
+// 2. 移除迴圈宣告中的遞增 (i++)，移至迴圈內部以利用 unchecked
+
+for (uint256 i; i < 10; ) {
+
+if (i == 3) {
+
+// 在使用 continue 跳過之前，必須先遞增 i,否則 i 永遠停在 3,導致無限迴圈
+
+unchecked { ++i; }
+
+continue;
+
+}
+
+if (i == 5) {
+
+break;
+
+}
+
+// 將遞增放在迴圈最後，並使用 unchecked 包裹
+
+unchecked {
+
+++i;
+
+}
+
+}
+
+// 優化後的 While Loop
+
+uint256 j;
+
+while (j < 10) {
+
+// 使用 unchecked 包裹遞增邏輯
+
+unchecked {
+
+++j;
+
+}
+
+}
+
+}
+
+}
+
+整體優化思路:
+
+1\. `unchecked { ++i; }` (最主要的 Gas 節省來源)
+
+在 Solidity 0.8.0+，所有算術運算預設都會檢查是否溢位（例如 `255 + 1` 在 `uint8` 會報錯）。這在迴圈中每次執行 `i++` 時都會消耗額外的 opcode。 由於我們知道 `i` 只會從 0 跑到 10，絕對不會達到 `2^256 - 1`，所以我們可以用 `unchecked` 告訴編譯器不需要檢查安全，這能顯著降低 Gas。
+
+2\. 關於 `continue` 的陷阱
+
+在標準的 `for (init; condition; increment)` 語法中，當你執行 `continue` 時，程式會自動跳去執行 `increment` 部分。 但是，為了優化 Gas，我們把 `increment` 移到了迴圈區塊的**內部結尾**（為了包在 `unchecked` 裡）。這時候如果執行 `continue`，程式會直接跳回 `condition` 檢查，導致 `i` 沒有被加 1。因此，必須在 `continue` 前手動寫一次 `unchecked { ++i; }`。
+
+3\. 變數初始化 (`uint256 i;` vs `uint256 i = 0;`)
+
+在 Solidity 中，宣告 `uint256 i` 時，記憶體已經被清零。如果你寫 `i = 0;`，EVM 會額外執行指令去「將 0 寫入已經是 0 的變數」，這雖然花費不多，但確實是多餘的 Gas 消耗。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 今天做這個任務"**在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码。"**  
 應該會講一下我對這些代碼的感想
 
@@ -427,6 +557,7 @@ timezone: UTC+8
 
 
 
+
 今日新增了對良心殺的comment，覺得蠻有趣的，類似一個小型的調研了，以下是我的回覆:
 
 \# 學號:571
@@ -504,6 +635,7 @@ timezone: UTC+8
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -517,6 +649,7 @@ Thanks for clarifying!
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -537,6 +670,7 @@ Thanks for clarifying!
 
 
 
+
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -550,11 +684,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -582,12 +718,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -710,6 +848,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -927,6 +1066,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1193,6 +1333,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
