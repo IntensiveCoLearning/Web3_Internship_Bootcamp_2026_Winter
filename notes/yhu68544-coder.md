@@ -15,8 +15,52 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+今天目标：尝试测试网，体验协议，理解用户流程，并写复盘反馈。有空的话尝试Defi总结。下一步要干看网课，攻击向量及防护措施（简单体验协议后先看防攻击课程）。
+
+\### 1.岗位：
+
+!\[\[Pasted image 20260125103801.png\]\]!\[\[Pasted image 20260125173707.png\]\]
+
+常用技术栈
+
+\- Node.js / Go / Python
+
+\- Viem / Web3.js / Ethers.js
+
+\- RESTful API / GraphQL
+
+\- MySQL / PostgreSQL
+
+\- Docker / Kubernetes
+
+!\[\[Pasted image 20260125173820.png\]\]
+
+!\[\[Pasted image 20260125173835.png\]\]
+
+!\[\[Pasted image 20260125173916.png\]\]
+
+!\[\[Pasted image 20260125173937.png\]\]
+
+常用工具
+
+\- Excel
+
+\- SPSS
+
+\- Python
+
+\- Glassnode
+
+\- Token Terminal
+
+!\[\[Pasted image 20260125174023.png\]\]
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 \#### 12.Web3工作方式
 
 [https://web3intern.xyz/zh/remote-work-guide/](https://web3intern.xyz/zh/remote-work-guide/)
@@ -30,6 +74,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 创新创业＋非遗+区块链，真正做到落地。辅导员＋背书＋演讲，演说讲故事＋技术＋拉资源-----项目，有使命感的项目。要做，就做好它。
 
@@ -159,6 +204,7 @@ DeFi（去中心化金融）核心是利用区块链与智能合约，打造开�
 
 
 
+
 \#### 11.行业赛道全览
 
 一、DeFi:Uniswap、Compound、MakerDAO
@@ -176,6 +222,7 @@ DeFi（去中心化金融）核心是利用区块链与智能合约，打造开�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -468,6 +515,7 @@ _问自己：如果我要创建一个志同道合的学习小组DAO，_\*我们�
 
 
 
+
 \#### AI问答笔记总结：# Web3 核心概念与开发架构全景笔记
 
 \##### 一、核心理念：从“平台租用”到“用户拥有”
@@ -704,6 +752,7 @@ IPFS (存储/检索)
 
 
 
+
 \#### 7.NFT（非同质化代币）理解：
 
 同质化代币（FT，全称 Fungible Token）是可以被任意交换的代币，就像钱一样。比如ETH,BTC
@@ -727,6 +776,7 @@ NFT 市场处于非常早期的阶段，作品质量参差不齐鱼龙混杂。�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -800,6 +850,7 @@ Layer 2（L2）是什么意思？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
