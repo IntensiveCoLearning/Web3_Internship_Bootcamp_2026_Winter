@@ -15,8 +15,152 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# 智能合约 Gas 优化
+
+## 核心原则
+
+1.  **减少昂贵的存储写入**：SSTORE（写存储）是 Gas 消耗大户，原则是“读多写少”。
+    
+2.  **善用临时空间**：多用 `calldata` 和 `memory` 进行临时计算，减少对 `storage` 的依赖。
+    
+3.  **链下计算，链上验证**：复杂的遍历、统计、排序放到链下，链上只验证结果。
+    
+4.  **量化优化结果**：使用工具（如 Hardhat Gas Reporter、Foundry）量化每一次改动的 Gas 影响。
+    
+
+* * *
+
+## 1\. 存储（Storage）优化：最贵的一环
+
+### 减少 SSTORE 次数（先算后写）
+
+-   **反模式**：在循环或函数中多次写入状态变量。
+    
+-   **优化**：在 `memory`（内存）或栈中完成计算，最后一次性写入 `storage`。
+    
+
+```
+// ❌ 差写法：多次 SSTORE，费钱
+function bad(uint256 x) external {
+    total += x;         // 写一次
+    total += 1;         // 再写一次
+}
+
+// ✅ 推荐写法：只写一次
+function good(uint256 x) external {
+    uint256 newTotal = total + x + 1; // 在 memory/stack 算完
+    total = newTotal;                 // 单次 SSTORE，省钱
+}
+```
+
+### 变量打包（Storage Packing）
+
+-   **原理**：将多个小变量（如 `uint128`, `uint64`, `bool`）紧挨着声明，Solidity 会尝试将它们打包进同一个 32 字节的 Slot 中。
+    
+-   **注意**：只有在同一个 Slot 被多个变量共享时才有意义；在 `memory` 或 `stack` 中使用小整数并不会更省 Gas。
+    
+
+### 用事件（Events）替代存储
+
+-   **场景**：对于只用于查历史记录、不参与合约逻辑计算的数据（如充值记录、操作日志）。
+    
+-   **做法**：将数据发出 Event 而不是写入 Storage，成本大幅降低。
+    
+
+* * *
+
+## 2\. 数据位置与类型策略
+
+### 优先使用 Calldata
+
+-   **外部函数参数**：对于外部函数（external）的只读参数（数组、字符串、bytes），优先使用 `calldata`。它不会像 `memory` 那样复制数据，成本更低。
+    
+
+### 缓存 Storage 到 Memory
+
+-   **场景**：在函数生命周期内需要多次读取同一个状态变量（特别是结构体或循环中）。
+    
+-   **做法**：先将状态变量赋值给一个 `memory` 变量（副本），后续逻辑读取副本，必要时最后写回。
+    
+
+### 常量优化（Constant & Immutable）
+
+-   **Constant**：编译期确定的值，直接写入字节码，不占 Storage Slot。
+    
+-   **Immutable**：部署时（构造函数中）确定一次，之后只读。适合配置地址、治理角色等，比读取 Storage 便宜。
+    
+
+* * *
+
+## 3\. 逻辑与控制流微优化
+
+### Unchecked 代码块
+
+-   **背景**：Solidity ≥0.8 默认开启溢出检查。
+    
+-   **优化**：如果能确保数学运算（如循环计数器 `i++`）绝对不会溢出，使用 `unchecked { ... }` 包裹可节省 Gas。
+    
+
+### 短路逻辑（Short-circuiting）
+
+-   **做法**：在 `if (cheap && expensive)` 中，将计算便宜的判断放在前面。如果前一个条件失败，后续昂贵的判断将不会执行。
+    
+
+### 位运算代替 Bool 组
+
+-   **做法**：使用位掩码（bitmask）在一个 `uint256` 中存储一组布尔标志，配合位运算（`&`, `|`），比多个独立的 bool slot 更省 Gas。
+    
+
+* * *
+
+## 4\. 架构级优化
+
+### 瞬态存储（Transient Storage, EIP-1153）
+
+-   **定义**：Dencun 升级引入的 `TSTORE`/`TLOAD`，数据只在单笔交易内有效，交易结束即丢弃。
+    
+-   **场景**：重入锁（Reentrancy Guard）、单笔交易内的临时计算。比写入永久 Storage 便宜得多。
+    
+
+### 链下计算 + 链上验证
+
+-   **避免**：不要在链上进行不受控制长度的循环（如遍历所有用户发空投）。
+    
+-   **替代**：使用 Merkle Tree（默克尔树）或签名证明。链下生成数据和证明，链上只验证 Proof，避免大循环。
+    
+
+### 模块化与代理
+
+-   **Minimal Proxy (EIP-1167)**：对于需要部署多个相同逻辑合约（如 Vaults）的场景，使用克隆模式，大幅降低部署 Gas。
+    
+
+* * *
+
+## 5\. 扩容视角
+
+-   **移至 L2**：能搬到 Layer 2（Rollup）的逻辑尽量迁移。随着 Dencun 升级（Blob 交易），L2 的成本已大幅下降，这是最直接的省钱方式。
+    
+
+## ✅ 优化 Checklist
+
+1.  **能不写 Storage 就不写**，能合并写就合并写。
+    
+2.  **External 参数**优先用 `calldata`。
+    
+3.  **循环中**不要重复读写 Storage，先缓存到 Memory。
+    
+4.  **死变量**用 `constant`/`immutable`。
+    
+5.  **循环计数**在安全前提下用 `unchecked`。
+    
+6.  **大批量处理**改用 Merkle Proof 或分页处理。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 \# 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 \### 1. 什么是 ENS？
@@ -243,6 +387,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -321,6 +466,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 以太航员  
@@ -609,6 +755,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -654,6 +801,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -768,6 +916,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -853,6 +1002,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -952,6 +1102,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1086,6 +1237,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -1187,6 +1339,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1345,6 +1498,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
