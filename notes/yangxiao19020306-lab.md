@@ -15,8 +15,14 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+打卡占位
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## 📒 Web3 全栈开发与 DeFi 协议深度学习笔记
 
 ### 一、 核心范式转移：从租客到房东 (Ownership)
@@ -113,11 +119,13 @@ AAVE 从 V3 到 V4 的演进代表了从单体应用向**轮辐式架构 (Hub-an
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 11
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ## Web3 公共物品与资助机制学习笔记
@@ -298,6 +306,7 @@ mapping(address => mapping(address => uint256)) public allowance; // 授权账�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -495,6 +504,7 @@ Twitter Space（推特空间）是 Web3 领域最主流的线上语音直播形�
 
 
 
+
 1\. 核心背景与痛点：为什么需要 ERC-7962？
 
 ERC-7962 的诞生源于 **Data Dance** 项目的实际业务需求，主要解决 ERC-721（标准 NFT）在商业场景中的两个致命缺陷：**隐私泄露** 和 **用户门槛**。
@@ -647,6 +657,7 @@ Q4: 安全性与女巫攻击（卓翔 提问）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -881,6 +892,7 @@ Q4: 安全性与女巫攻击（卓翔 提问）
 
 
 
+
 ## 一、 AI 的演进：从“嘴替”到“打工人”
 
 ### 1\. 2023年：大语言模型 (LLM) 时期
@@ -1036,6 +1048,7 @@ Spoon OS 是一个中间件框架，旨在降低开发者门槛，让开发者�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1228,6 +1241,7 @@ Spoon OS 是一个中间件框架，旨在降低开发者门槛，让开发者�
 
 
 
+
 **WEB3的运行原理**
 
 **1.钱包、私钥、个人主权**
@@ -1285,6 +1299,7 @@ wallet-> RPC/Nod(传播）-> mempool(排队)-> builder (挑选）-> block(落盘
 
 
 
+
 **WEB3 行业全局介绍与行业概览**
 
 smart deer web3 求职招聘app
@@ -1329,6 +1344,7 @@ web3垂直平台：smart deer，web3.career，remote3
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
