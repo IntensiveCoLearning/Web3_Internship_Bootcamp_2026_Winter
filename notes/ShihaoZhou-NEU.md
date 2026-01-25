@@ -16,8 +16,85 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# 学习计划
+
+## Solidity学习
+
+-   ⭕️在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码
+    
+
+## 零知识证明基础：证明什么、向谁证明？
+
+\### 1. Prover / Verifier 模型
+
+零知识证明通常用两个角色来描述：
+
+\- **证明者（Prover）**：掌握某个秘密信息，希望向他人证明自己「确实知道」这个秘密；
+
+\- **验证者（Verifier）**：希望确认某个断言是真的，但不想（或不允许）知道该秘密本身。
+
+\### 2. Statement / Witness：你在“证明”什么？
+
+我们把「要被证明的陈述」称为 **语句（statement）**，把证明者掌握的秘密称为 **见证（witness）**。
+
+在投票场景中，一个典型的语句会是：“我确实是这场投票中被授权的选民之一，并且我投出的票是一个合法选项。”
+
+而见证则包括：
+
+\- 你的私有身份秘密（如某个随机生成的 `identitySecret`）；
+
+\- 证明你是选民集合成员所需的 Merkle 路径；
+
+\- 你选择的具体投票选项等私密数据
+
+\### 3. 零知识证明必须满足的三个性质
+
+形式上，一个零知识证明系统需要同时满足三个核心性质：
+
+1\. **完备性（Completeness）**
+
+如果语句是真的，并且证明者与验证者都按照协议诚实地执行，那么验证者最终一定会被说服。
+
+2\. **可靠性（Soundness）**
+
+如果语句是假的，那么任何试图伪造证明的「作弊」证明者，都几乎不可能骗过诚实的验证者。
+
+3\. **零知识性（Zero-Knowledge）**
+
+验证者在整个证明过程中，除了“语句是真的”这一事实之外\*\*不会获得任何额外信息\*\*。
+
+换句话说，验证者无法从证明内容中，还原出证明者所掌握的秘密。
+
+在投票系统中：
+
+\- 完备性保证「合法选民的合法投票不会被无故拒绝」；
+
+\- 可靠性保证「非选民或者试图一人多投的人无法通过验证」；
+
+\- 零知识性保证「验证者无法从证明中推断出你是谁、投了什么票」。
+
+\### 交互式 vs 非交互式、zk-SNARK 与 zk-STARK
+
+\- **zk-SNARK（Zero-Knowledge Succinct Non-Interactive Argument of Knowledge）**
+
+\- _Succinct_：证明大小很小，验证开销与原始计算规模无关或几乎无关；
+
+\- _Non-Interactive_：证明是单向的，不需要多轮交互；
+
+\- 已被广泛用于隐私交易、zk-Rollup 等场景。
+
+\- **zk-STARK（Zero-Knowledge Scalable Transparent Argument of Knowledge）**
+
+\- 不依赖可信初始化（trusted setup）；
+
+\- 更适合大规模、复杂计算的场景，但证明大小通常更大。
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 # 学习计划
 
 ✅️体验 My first zk vote
@@ -31,6 +108,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 # 学习计划
@@ -100,6 +178,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 
 
+
 # 学习计划
 
 1.  ✅️[Gas 优化](https://github.com/ShihaoZhou-NEU/Solidity_Learning/tree/main/Homework)
@@ -122,6 +201,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -435,6 +515,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -595,6 +676,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -634,6 +716,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -959,6 +1042,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1263,6 +1347,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1618,6 +1703,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -1697,6 +1783,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1967,6 +2054,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2143,6 +2231,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
