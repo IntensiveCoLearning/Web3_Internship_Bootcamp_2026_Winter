@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+第二周周日打卡
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 \### Summary
 
 In this detailed workshop, Austin Griffith, a key figure in the Ethereum and web3 developer community, guides participants through foundational concepts and practical challenges of building on Ethereum, specifically using the Speedrun Ethereum curriculum. The session emphasizes a shift in learning approach—from painstakingly understanding every line of Solidity code to embracing AI-assisted "vibe coding" with tools like Claude and Cursor that accelerate development while still grasping key ideas. Austin walks through core concepts such as tokenization (ERC-721 NFTs), decentralized crowdfunding as a state machine, decentralized exchanges (DEXs) with liquidity provision incentives, randomness on-chain with commit-reveal schemes, and overcollateralized lending with liquidation mechanics. The workshop also covers practical advice on using real Layer 2 networks instead of testnets, custody solutions like multisig wallets (e.g., Gnosis Safe), and the importance of designing smart contracts for adversarial behavior. Austin highlights the philosophical and legal complexities of "code is law" in smart contracts, stressing the need for compliance and human-in-the-loop mechanisms in certain contexts. Finally, he provides three key recommendations for new builders: complete Speedrun Ethereum to understand concepts, study existing protocols like Uniswap and OpenZeppelin, and start building real projects using AI tools and deploying on live networks. The session concludes with a forward-looking outlook on the intersection of AI, institutional adoption, and Ethereum’s role in a trustless, agentic economy.
@@ -72,11 +78,13 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 第二周周五打卡
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -89,6 +97,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 第二周周三打卡
 
 ![image.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yolllk0926-art/images/2026-01-21-1769003572189-image.jpg)
@@ -96,6 +105,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -114,11 +124,13 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 第二周打卡
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -141,6 +153,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 1.17 复盘学习
 
 ![IMG_2783.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yolllk0926-art/images/2026-01-17-1768644808338-IMG_2783.png)
@@ -148,6 +161,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -178,11 +192,13 @@ ai与基础概念
 
 
 
+
 1.15 先打卡
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -213,6 +229,7 @@ ai与基础概念
 
 
 
+
 工作行业黑话
 
 ![IMG_5387.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yolllk0926-art/images/2026-01-13-1768275983965-IMG_5387.jpeg)
@@ -220,6 +237,7 @@ ai与基础概念
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
