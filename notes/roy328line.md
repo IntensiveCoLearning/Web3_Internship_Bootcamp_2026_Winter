@@ -20,10 +20,117 @@ Web3 实习计划 2025 冬季实习生
 ## **Day 14 学习计划**
 
 2026/01/25 总体学习计划如下：
+
+-   ERC-7962
+    
+
+# TL;DR：ERC-7962 是什麼
+
+ERC-7962（Key Hash Based Tokens）是一個仍在 **Draft** 階段的 ERC，核心想法是把「資產歸屬」從 **以太坊地址（address）** 改成 **公鑰雜湊（keyHash）**：
+
+-   **鏈上只存 keyHash = keccak256(key)**，而不是 owner address。
+    
+-   真正的擁有者用對應私鑰產生 **EIP-712 簽名**，任何人（例如 relayer、商家、App）都能代付 Gas 把交易送上鏈，但 **不能竄改資產控制權**。
+    
+
+它提出兩個介面：
+
+-   **ERC-KeyHash721**：NFT（類 ERC-721）
+    
+-   **ERC-KeyHash20**：FT（類 ERC-20），並刻意做成「類 UTXO」的輸出與找零（leftKeyHash），強制 key rotation 以提高不可關聯性。
+    
+
+# 為什麼要做 ERC-7962
+
+論壇作者給的動機：
+
+-   **隱私**：ERC-20 / ERC-721 的 owner 與 balance 都綁地址，地址很容易被鏈上行為與現實身份關聯。ERC-7962 讓鏈上呈現的是 keyHash，降低「地址中心」的可追蹤性。
+    
+-   **Gas 分離與 Web2 友善 UX**：讓「簽名者＝資產控制者」與「交易送出者＝付 Gas 的人」分離，適合商家代付、批次發放、遊戲與會員場景。
+    
+
+明確把它定位成 **ERC-20 / ERC-721 的補充，而非取代**，特別偏向「會員身份驗證」這類隱私敏感用例。
+
+# 核心名詞與資料結構
+
+| 名詞 | 內容 | 為什麼重要 |
+| --- | --- | --- |
+| key | 65 bytes 未壓縮 secp256k1 公鑰：`0x04 |   |
+| keyHash | keccak256(key)（bytes32） | 鏈上歸屬識別子：ownerOf / balanceOf 回傳的就是它 |
+| signer address | address(uint160(uint256(keccak256(key[1:]))))) | 用公鑰推回 signer，用來驗證簽名真的來自該 key 的私鑰 |
+| nonce + deadline | 每個 keyHash 都有 nonce，且簽名帶 deadline | 防重放、限制簽名有效期 |
+
+# ERC-KeyHash721（NFT）怎麼運作
+
+**介面重點**：`ownerOf(uint256 tokenId)` 回傳 `bytes32 keyHash`，不是 address。
+
+**transfer**（概念流程）：
+
+1.  合約取出 tokenId 當前的 `fromKeyHash`。
+    
+2.  呼叫者帶入 `key`，合約檢查 `keccak256(key) == fromKeyHash`。
+    
+3.  用 EIP-712 結構化資料計算 digest，`ecrecover` 出 signer，並比對 signer 是否等於由 `key` 推導出的地址。
+    
+4.  nonce 遞增、deadline 檢查通過後，把 owner keyHash 更新為 `toKeyHash`，並 emit `KeyHashTransfer721`。
+    
+
+# ERC-KeyHash20（FT）為什麼要「類 UTXO」：leftKeyHash 找零
+
+ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型，而是：
+
+-   從 `fromKeyHash` 轉出 `amount` 到 `toKeyHash`
+    
+-   **剩餘餘額必須一次搬到 leftKeyHash**
+    
+-   且規範要求 strict：`leftKeyHash != fromKeyHash` 且 `leftKeyHash != toKeyHash`，用制度逼你做 key rotation，降低餘額與地址的長期關聯。
+    
+
+狀態更新:
+
+| 轉帳前 | 轉帳後（ERC-KeyHash20） |
+| --- | --- |
+| balanceOf[fromKeyHash] = B | balanceOf[fromKeyHash] = 0(GitHub) |
+|   | balanceOf[toKeyHash] += amount(GitHub) |
+|   | balanceOf[leftKeyHash] += (B - amount)(GitHub) |
+
+# 為什麼拿掉 approve / allowance
+
+作者在更新帖裡寫得很明確：因為 transfer 等操作會在 calldata 暴露完整 public key，而 key 被視為一次性，標準因此 **刻意移除 approve / allowance**，並鼓勵每次操作後把資產遷移到新的 keyHash。
+
+這點也引發大量討論：沒有 approve 意味著與現有 DEX / NFT 市場的 `approve + transferFrom` 工作流不相容，可能需要 wrapper / adapter 或新一套以「簽名授權」為核心的 DeFi 介面。
+
+# 這個標準「能提供的隱私」與「做不到的隱私」
+
+### 它能改善的部分
+
+-   鏈上狀態（ownerOf / balanceOf）不再直接暴露 address，而是 bytes32 keyHash，降低「地址＝身份」的直接關聯。
+    
+-   keyHash 是不可逆雜湊，作者主張這會讓「歷史地址被反推」更困難；即使未來暴露 key，也不像地址那樣天然可反查。
+    
+
+### 它做不到、或高度依賴實作與使用習慣的部分
+
+-   **public key 仍會出現在 calldata**，所以鏈上分析者仍可能把同一把 key 相關操作做關聯；隱私增益很大程度取決於錢包是否嚴格做到 one-time key / rotation。
+    
+-   **鏈下網路層隱私**：如果使用者把簽名 payload 直接丟給中心化 relayer，relayer 可能用 IP、裝置指紋把「某個人」與 keyHash 綁在一起。有人因此建議把 intent propagation 標準化到 Waku 這類去中心化 gossip。
+    
+
+# 論壇討論的主線問題
+
+| 議題 | 討論焦點 | 對你理解 ERC-7962 的意義 |
+| --- | --- | --- |
+| DeFi 可組合性 | 沒 approve，怎麼進 AMM、借貸、NFT 市場？是否需要 canonical wrapper / adapter？ | 代表它短期很難「直接接入既有 DeFi」，更像新賽道或需橋接層 |
+| Gas overhead 與 batching | EIP-712 + ecrecover 每次 transfer 都有成本；是否要標準化 batch transfer？ | 代表「批次」可能是推廣 UX 的關鍵配套 |
+| AA 是否重複造輪子 | 4337 / EIP-7702 也在做 gas sponsorship 與 signer 分離，token 層再做一遍是否多餘？ | 你要理解它的定位：token 自帶模型 vs account 層通用能力 |
+| 錢包 UX 與 key 管理風險 | 一直換 keyHash，使用者是否會搞丟找零 key？需要 HD、key pool、rollback 設計 | 代表「錢包實作」決定它能不能落地 |
+| relayer 安全與濫用 | 生成 keyHash 幾乎零成本，可能被用來 Sybil 攻擊、消耗 relayer 代付 Gas | 代表很多風險要在「應用層 / relayer 策略」解決，不是標準本身 |
+| 隱私強度的邊界 | calldata 暴露公鑰、rotation 不嚴格就會被關聯；它更像「降低可關聯性」，不是 ZK 級隱私 | 代表別把它當成完整匿名方案 |
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 ## **Day 13 学习计划**
 
@@ -90,6 +197,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 12 学习计划**
 
 2026/01/23 总体学习计划如下：
@@ -137,6 +245,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -157,6 +266,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -197,6 +307,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -399,6 +510,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -503,6 +615,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -572,6 +685,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -607,6 +721,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -696,6 +811,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -820,6 +936,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1015,6 +1132,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1153,6 +1271,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
