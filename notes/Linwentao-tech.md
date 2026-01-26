@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+今天看了入门级 Web2 to Web3 中的 Week 3, Day 3 - token vendor：[**Speed Run Ethereum: Challenge 2 - Token Vendor，**](https://www.youtube.com/watch?v=OvBrInI5VbM&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=13)主要是 ERC-20 的资产模型以及合约之间是如何协作的。ERC-20 代币并不实际存放在钱包中，而是记录在代币合约内部的映射结构里，钱包只是对应地址的控制权。这也决定了合约无法在被动接收代币时自动执行逻辑。
+
+代币买入流程相对简单，用户向 Vendor 合约发送 ETH，合约根据固定价格直接将 token 转给用户。卖出流程则必须通过 Approve 机制完成，用户需要先在代币合约中授权 Vendor 使用一定数量的 token，再由 Vendor 主动调用 transferFrom 将 token 转入合约并返还 ETH。这一设计虽然增加了步骤，但明确划分了资产控制与执行权限。
+
+同时，强调了部署和编排的重要性。除了部署 ERC-20 和 Vendor 合约之外，还需要为 Vendor 注入初始 token 流动性，并在测试阶段移交合约的所有权，整个系统才能完整运转。理解这些流程后，ERC-20 合约的可组合性以及 DeFi 协议的运行方式会更加清晰。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 今天补了一下youtube的Solidity Walk Through，老师先讲了一下evm的底层架构的stack和storage概念，stack通常用来执行opcode，比如算数或者比较和跳转条件，类似汇编语言。其次是storage，是合约的永久状态，保存的数据永久存在链上。
 
 然后老师讲了一下数值类型，有bool，uint，address ，string，array还有struct等等，然后老师写了一个简单的erc20 token的合约，虽然对我来说不是很新的内容了，然后老师展示了如何提交合约到链上进行部署，然后进行了erc20的合约交互，比如说转账。
@@ -29,6 +39,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天看了 `Uniswap/interface`，了解了它作为一个产品级前端工程是怎么被组织和发布的。整个repo通过 `apps / packages / config` 把页面层和通用能力层彻底拆开，链交互、业务计算和组件复用都下沉到 packages 中，应用本身只负责组合和展示。同时这个 repo 是对外发布的稳定版本镜像，而不是日常开发现场，配合打 tag 和 IPFS 发布，前端被当成一个可验证的静态产物来看待。整体给我的感受是，当 Web3 前端复杂到一定程度后，真正决定可维护性的不是 React 写法，而是工程结构、复用边界以及发布方式。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
@@ -38,11 +49,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 前半周系统复习了 Web2 到 Web3 的开发流程，重新梳理了 provider、signer、wallet 的职责划分，以及使用 ethers.js 与合约交互和通过 Hardhat 进行测试的整体结构。结合 Staking App 的实践，将用户操作、合约状态变化与前端读写串联成完整流程，对链上与链下职责边界有了更清晰的认识。后半周集中学习 Uniswap V2，从 Core 与 Periphery 的设计出发，再次理解 Factory、Pair、Router 各自承担的功能，以及协议在自动做市中的运行逻辑。
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -63,11 +76,13 @@ SDK 则把链上的这套逻辑原样搬到链下，使用同一套公式提前�
 
 
 
+
 今天略微看了一下入门级 Web2 to Web3 中的 Week 2 Day 1-5 内容。通过区分 Provider、Signer 和 Wallet，我更清楚地理解了链上读写在本质上的不同：读取状态只是访问节点数据，而写入状态必须由私钥签名并参与共识，这也直接决定了成本和风险。使用 ethers.js 调用合约时，逐步建立起对交易生命周期的认知，明白链上交互并不是即时返回结果，而是一个需要提交、等待确认的过程。Hardhat 和以太坊客户端的介绍，让我对合约开发环境有了更整体的认识，合约可以在本地链中部署、调试和测试，大部分问题应当在本地被发现，而不是依赖测试网反复试错。后续通过 Solidity 测试和 scaffold-eth，把合约放入一个完整应用中观察，进一步理解到合约并不是孤立存在的代码，而是需要和前端、部署流程以及交互逻辑共同构成一个完整系统。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -97,11 +112,13 @@ Gas 的概念在这里终于变得具体了。Gas 本身不是钱，而是计算
 
 
 
+
 今天做了一下链上留言板合约这个项目，对我来说是很基础的任务，主要是把以太坊里一些基础但容易被忽略的点重新走了一遍。通过在 Remix 编写并部署合约到 Sepolia，再配合 Etherscan 查看交易和事件，明确了合约部署本质上就是一笔交易，构造函数的状态写入和事件都会在部署阶段一次性完成。留言通过 `mapping(address => string[])` 存储，每次调用都会真实修改链上状态，而事件更多是为了链下读取和追踪，而不是合约内部逻辑使用。整个过程中也再次对 EOA 与合约账户的分工、Gas 的实际消耗位置，以及交易从发起到被确认的流程有了更清晰的整体感知。这类简单合约本身不复杂，但作为基础机制的复盘很有价值。因为今天一直在花时间做自己的项目所以计划明天看一下youtube视频。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -136,6 +153,7 @@ Gas 的概念在这里终于变得具体了。Gas 本身不是钱，而是计算
 
 
 
+
 虽然之前已经接触并使用过 NFT，但通过这次重新实现一个最小化的 ERC-721 合约，我对 NFT 的核心结构和设计边界进行了更系统的梳理。
 
 在实现过程中，我再次确认 NFT 的本质并不是图片或内容本身，而是一条链上的所有权记录。合约真正负责的是tokenId的唯一性、NFT 与钱包地址之间的归属关系，以及通过tokenURL关联到链下的元数据。图片、音频等内容只是被引用的外部资源，而不是 NFT 的核心。
@@ -145,6 +163,7 @@ Gas 的概念在这里终于变得具体了。Gas 本身不是钱，而是计算
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -194,6 +213,7 @@ Day 5 更偏“实战体验”。我理解了 Gas、Nonce，以及 MetaMask 的 
 
 
 
+
 ### **Day 3 — ENS、身份与 Uniswap**
 
 这一节通过创建新钱包账户、注册 ENS 和在 Uniswap 上换币，让我第一次真正理解了 Web3 的“身份”和“资产跟随性”。ENS 不只是一个好记的名字，而是一个链上 NFT，它把人类可读的身份（如 sanfordstout.eth）和钱包地址绑定在一起，并且在 Uniswap、Zapper 等不同应用中自动被识别。用 Uniswap 把 ETH 换成 DAI 时，我也理解了去中心化交易所并不是订单簿，而是由智能合约和流动性池自动定价运行的，这让我对 DeFi 的运作方式有了更直观的认识。
@@ -213,6 +233,7 @@ Day 5 更偏“实战体验”。我理解了 Gas、Nonce，以及 MetaMask 的 
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -303,6 +324,7 @@ ERC20、NFT 本质都是合约里的**记账表**，没有“币”，只有数�
 
 
 
+
 在day1的视频里比较抓住我眼球的是，视频首先介绍了blockchain的概念.What is blockchain from high level? It’s a system set up without any central control ad thousands of people from the world can communicate p2p. And of course it has many issues like gas and wallet issues. It’s kinda like linked list but its more about the network where all the nodes are participating together. If any of nodes got knocked out the whole network still continues working.
 
 其次介绍了blockchain中trust的概念，然后引用到了escrow这个term。首先提出了一个问题。How to to make a transaction for two parties if they don’t trust or don’t like each other. So in web3 the concept of escrow is executed by smart contract like a middle layer.
@@ -326,6 +348,7 @@ Factory不参与交易，不存Liquidity，不计算价格。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
