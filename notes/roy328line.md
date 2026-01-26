@@ -26,28 +26,52 @@ Web3 实习计划 2025 冬季实习生
 
 # Applications 核心應用
 
-| 分類 | 應用名稱 (Application) | 核心功能 | 學習重點與技術細節 |
-| 錢包與支付 | Ether Wallet (以太幣錢包) | 最基礎的存取款功能 | • receive() 與 fallback() 的使用• msg.sender 權限控制 (Only Owner) |
-|   | Multi Sig Wallet(多簽錢包) | 需多數人同意才能執行交易 | • 權限管理：M-of-N 簽章機制• 交易狀態的追蹤與執行邏輯 |
-|   | Payment Channel(支付通道) | 鏈下多次交易，鏈上一次結算 | • 簽章驗證：ecrecover 的使用• Layer 2 擴容的基礎概念• 防止重放攻擊 (Replay Attack) |
-|   | Dividend(分紅機制) | 依比例分配收益給代幣持有者 | • 數學計算：如何處理精度問題• 避免 Gas Limit 超出的分配策略 |
-| 代幣標準 | ERC20 | 同質化代幣 (如 USDT) | • 標準介面實作：transfer, approve, transferFrom• 代幣授權機制 |
-|   | ERC721 | 非同質化代幣 (NFT) | • 唯一性：tokenId 的管理• 擁有權轉移與 Metadata 處理 |
-|   | ERC1155 | 多重代幣標準 | • Gas 優化：單一合約管理多種資產• 批量轉帳 (Batch Transfer) |
-| DeFi(去中心化金融) | DeFi AMM(自動做市商) | 代幣交換 (Uniswap V2 簡化版) | • 恆定乘積公式：x * y = k• 流動性池 (Liquidity Pool) 的添加與移除• 手續費計算 |
-|   | Staking Rewards(質押獎勵) | 質押代幣賺取收益 | • 演算法：計算每秒獎勵 (Reward Per Token)• 時間戳記 (block.timestamp) 的應用 |
-|   | Vault(金庫) | 存入資產換取份額 (Shares) | • 防止通膨攻擊 (Inflation Attack)• 匯率計算：資產與份額的轉換邏輯 |
-| 拍賣與募資 | English Auction(英式拍賣) | 價高者得，結束時結算 | • 退款邏輯：當新高價出現時，如何安全退款給前一位• 狀態變數鎖定 (避免重入攻擊) |
-|   | Dutch Auction(荷蘭式拍賣) | 價格隨時間遞減，先買先得 | • 定價模型：利用時間經過計算當前價格• 常用於 NFT Mint 以避免 Gas War |
-|   | Crowd Fund(眾籌) | 設定目標金額與截止日期 | • 條件判斷：達標提款 vs 失敗退款• ERC20 代幣的轉移操作 |
-| 進階工具 | Multi Call(多重呼叫) | 一次交易查詢多個數據 | • 前端優化：減少 RPC 請求次數• staticcall 的使用 |
-|   | Merkle Tree(梅克爾樹) | 驗證大量數據 (如白名單) | • Gas 節省神器：無需儲存所有地址，僅存 Root Hash• 密碼學驗證邏輯 |
-|   | Create2 | 預測合約地址 | • 在合約部署前計算出地址• 用於交易所充值地址或工廠模式 (Factory Pattern) |
-|   | Time Lock(時間鎖) | 延遲交易執行 | • DAO 治理必備：將交易放入隊列，需等待一段時間才能執行• 防止惡意操作的緩衝機制 |
+# 錢包與支付
+
+| 應用名稱（Application） | 核心功能 | 學習重點與技術細節 |
+| --- | --- | --- |
+| Ether Wallet（以太幣錢包） | 最基礎的存取款功能 | receive() 與 fallback() 的使用；msg.sender 權限控制（Only Owner） |
+| Multi Sig Wallet（多簽錢包） | 需多數人同意才能執行交易 | 權限管理：M-of-N 簽章機制；交易狀態的追蹤與執行邏輯 |
+| Payment Channel（支付通道） | 鏈下多次交易，鏈上一次結算 | 簽章驗證：ecrecover 的使用；Layer 2 擴容的基礎概念；防止重放攻擊（Replay Attack） |
+| Dividend（分紅機制） | 依比例分配收益給代幣持有者 | 數學計算：如何處理精度問題；避免 Gas Limit 超出的分配策略 |
+
+# 代幣標準
+
+| 應用名稱（Application） | 核心功能 | 學習重點與技術細節 |
+| --- | --- | --- |
+| ERC20 | 同質化代幣（如 USDT） | 標準介面實作：transfer / approve / transferFrom；代幣授權機制 |
+| ERC721 | 非同質化代幣（NFT） | 唯一性：tokenId 的管理；擁有權轉移與 Metadata 處理 |
+| ERC1155 | 多重代幣標準 | Gas 優化：單一合約管理多種資產；批量轉帳（Batch Transfer） |
+
+# DeFi（去中心化金融）
+
+| 應用名稱（Application） | 核心功能 | 學習重點與技術細節 |
+| --- | --- | --- |
+| DeFi AMM（自動做市商） | 代幣交換（Uniswap V2 簡化版） | 恆定乘積公式：x * y = k；流動性池（Liquidity Pool）的添加與移除；手續費計算 |
+| Staking Rewards（質押獎勵） | 質押代幣賺取收益 | 演算法：計算每秒獎勵（Reward Per Token）；時間戳記（block.timestamp）的應用 |
+| Vault（金庫） | 存入資產換取份額（Shares） | 防止通膨攻擊（Inflation Attack）；匯率計算：資產與份額的轉換邏輯 |
+
+# 拍賣與募資
+
+| 應用名稱（Application） | 核心功能 | 學習重點與技術細節 |
+| --- | --- | --- |
+| English Auction（英式拍賣） | 價高者得，結束時結算 | 退款邏輯：新高價出現時安全退款給前一位；狀態變數鎖定（避免重入攻擊） |
+| Dutch Auction（荷蘭式拍賣） | 價格隨時間遞減，先買先得 | 定價模型：利用時間經過計算當前價格；常用於 NFT Mint 以避免 Gas War |
+| Crowd Fund（眾籌） | 設定目標金額與截止日期 | 條件判斷：達標提款 vs 失敗退款；ERC20 代幣的轉移操作 |
+
+# 進階工具
+
+| 應用名稱（Application） | 核心功能 | 學習重點與技術細節 |
+| --- | --- | --- |
+| Multi Call（多重呼叫） | 一次交易查詢多個數據 | 前端優化：減少 RPC 請求次數；staticcall 的使用 |
+| Merkle Tree（梅克爾樹） | 驗證大量數據（如白名單） | Gas 節省神器：無需儲存所有地址，僅存 Root Hash；密碼學驗證邏輯 |
+| Create2 | 預測合約地址 | 在合約部署前計算出地址；用於交易所充值地址或工廠模式（Factory Pattern） |
+| Time Lock（時間鎖） | 延遲交易執行 | DAO 治理必備：交易入隊列並等待後執行；防止惡意操作的緩衝機制 |
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 ## **Day 14 学习计划**
 
@@ -165,6 +189,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 13 学习计划**
 
 2026/01/24 总体学习计划如下：
@@ -232,6 +257,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 12 学习计划**
 
 2026/01/23 总体学习计划如下：
@@ -281,6 +307,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -301,6 +328,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -343,6 +371,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -549,6 +578,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -655,6 +685,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -726,6 +757,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -761,6 +793,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -852,6 +885,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -978,6 +1012,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1177,6 +1212,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1315,6 +1351,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
