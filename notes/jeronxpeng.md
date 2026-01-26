@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+參與以太坊中文周會、Vibe Coding + 黑客松經驗分享、投研基礎框架建立分享會
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 完成公共物品資金分配提案及參與良心殺遊戲
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 參與LXDAO週會
@@ -33,11 +40,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 參加Speedrun Basic workshop、Web3 實習計畫（冬季）第二周例會
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -54,11 +63,13 @@ Dapp Workshop、南塘 Dao 學習
 
 
 
+
 學習內容：Uniswap 工作原理解析、殘酷共學 & 休閒黑客松案例拆解
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -81,11 +92,13 @@ Dapp Workshop、南塘 Dao 學習
 
 
 
+
 學習TG群建立、機器人設置、及基礎運營、及Twitter Space 活動策劃及執行細節
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -124,11 +137,13 @@ Key Hash Based Tokens: 从 ERC-721 到 ERC-7962：
 
 
 
+
 初次參加 LXDAO 周會，了解開源生態核心路線及其治理
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -168,6 +183,7 @@ Key Hash Based Tokens: 从 ERC-721 到 ERC-7962：
 
 
 
+
 ## AI 及其基础概念
 
 ### 從 Agentic AI 的發展理解 AI × Web3
@@ -189,6 +205,7 @@ Web3 的角色，為 AI 提供一套可驗證身份、可追溯行為、可直�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -272,6 +289,7 @@ _套講者原話：安全不再是事後補救的成本，而是 Web3 能否承�
 
 
 
+
 ### Web3 運行原理
 
 Web3 是一套用密碼學與共識機制，重新定義：信任如何被建立、權力如何被分配的數位基礎建設。
@@ -285,6 +303,7 @@ Web3 是一套用密碼學與共識機制，重新定義：信任如何被建立
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
