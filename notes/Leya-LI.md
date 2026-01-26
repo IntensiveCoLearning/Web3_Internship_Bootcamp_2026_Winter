@@ -72,11 +72,65 @@ timezone: UTC+8
 -   **前端细节**：JS 的数字精度（53位）远低于以太坊的 `int256`（256位），必须显式转换为 `BigInt` 并以字符串形式显示，否则会导致资产计算错误。
     
 
-**💡 总结**：视频强调开发者应从掌握本地开发工具（Foundry/Hardhat）开始，通过理解 EVM 原理，最终成为能够平衡“安全代码”与“丝滑 UI”的全栈建设者。
+**💡 总结**：视频强调开发者应从掌握本地开发工具（Foundry/Hardhat）开始，通过理解 EVM 原理，最终成为能够平衡“安全代码”与“丝滑 UI”的全栈建设者。  
+  
+  
+【Web3 实习计划（冬季）：南塘 DAO 主题分享】 [https://www.bilibili.com/video/BV14NBfBBEt8/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV14NBfBBEt8/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)
+
+该视频是 **Web3 实习计划（冬季）** 期间的一场主题分享，主题为\*\*“南塘 DAO：Web3 技术在乡村振兴中的实践”\*\*。由南塘 DAO 的三位核心成员（小白、燕人、富章）共同分享，重点探讨了如何利用区块链和 DAO 的理念解决乡村建设中“人才留不住”和“协作不透明”的痛点。
+
+以下是视频内容的详细总结笔记：
+
+### **一、 核心背景：南塘 DAO 是什么？**
+
+-   **地理位置**：扎根于安徽省阜阳市南塘村。
+    
+-   **核心使命**：通过 Web3 工具（区块链账本、DAO 治理）将乡村建设中的“情怀”量化为“可被记录的贡献”，解决传统乡村项目中决策不透明、价值分配不公的问题。
+    
+-   **发展阶段**：经历了早期的“无序自由探索”，目前已进入“有序发展阶段”，重点探索生态农业、社群组建和链上开发。
+    
+
+### **二、 关键实践：Web3 如何赋能乡村？**
+
+1.  **南塘豆 (Token) 激励体系**：
+    
+    -   **作用**：作为社区内部的流转凭证，记录村民和志愿者的情感劳动、陪伴与沟通。
+        
+    -   **应用场景**：参与农务、打扫公共区域可获得“南塘豆”，用于兑换基地的食宿或购买村民生产的生态农产品（如花生、生姜酒）。
+        
+2.  **链上“故事账本”**：
+    
+    -   每一次兑换都要求附带“备注”，将枯燥的交易变成可追溯的乡村建设故事，记录个人的成长与连接。
+        
+3.  **数字身份与任务平台**：
+    
+    -   开发了支持手机号注册的“网页包”，降低村民参与 Web3 的技术门槛。任务平台公开展示社区所需的各种服务（如咖啡店帮忙、艺术共创），实现劳动力与资源的精准对接。
+        
+
+### **三、 治理核心：罗伯特议事规则 (Robert's Rules of Order)**
+
+-   **引入原因**：早期的南塘 DAO 常因“人人都有麦克风”而陷入无止尽的争执。
+    
+-   **运行机制**：在富章老师的指导下，通过严谨的动议、讨论、修正案和表决流程，保护“不成熟的想法”不被批判，将决策过程从“独断”或“大混战”变为高效的共识构建。
+    
+-   **社会学意义**：将冲突控制在规则层面，确保存款人（贡献者）和管理者在安全、公平的环境下协作。
+    
+
+### **四、 Q&A 实战问答总结**
+
+-   **与官方的态度**：目前与当地政府保持报备合作，强调区块链仅作为“故事账本”记录贡献，不涉及真实的人民币兑换，切断金融风险。
+    
+-   **NFT 的画像功能**：NFT 不仅仅是一张画，更是一个包含项目经历、文本和灵感来源的综合载体，用于保存参与者的完整历史。
+    
+-   **经济可持续性**：坦承目前仍依赖资助人，但正尝试通过艺术共创营、营队服务（输出治理经验）以及土地租赁等方式产生独立收入。
+    
+
+**💡 专家观点**：Web3 在南塘不是追求技术潮流，而是解决乡村生存问题的工具。它让原本模糊的付出变得清晰可见，通过“代码+规则”重构了乡村的信任关系。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 【Web3 实习计划（冬季）- Web3 运行原理】 [https://www.bilibili.com/video/BV1ZkrHBtEN4/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1ZkrHBtEN4/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)
 
@@ -146,6 +200,7 @@ Bruce 老师将 Web3 的运行原理拆分为钱包、交易、共识、智能�
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 【Web3 实习计划（冬季）：AI 及其基础概念】 [https://www.bilibili.com/video/BV1axkwBaEvC/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1axkwBaEvC/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
   
 这份视频由 Spoon OS 的 Rick 老师主讲，详细探讨了 AI Agent（智能体）与 Web3 技术的深度融合。
@@ -201,6 +256,7 @@ Q&A 环节针对 AI 决策责任、技术效率等实战问题进行了深度解
 
 
 
+
 [https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
 
 This video focuses on advanced Web3 user skills, covering troubleshooting transactions, utilizing Layer 2 (L2) networks, and managing assets with decentralized financial tools.
@@ -239,6 +295,7 @@ The video highlights the speed and cost advantages of Layer 2 networks, specific
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -294,6 +351,7 @@ This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -362,6 +420,7 @@ Here are the key points about Sybil from the video:
 
 
 
+
 ### **1\. Getting Started with MetaMask**
 
 -   **Official Installation:** Go to [**metamask.io**](http://metamask.io) and install the Chrome extension \[[01:21](http://www.youtube.com/watch?v=_GjPeRLCREA&t=81)\]. Be extremely cautious of phishing sites with similar URLs \[[01:52](http://www.youtube.com/watch?v=_GjPeRLCREA&t=112)\].
@@ -423,6 +482,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
