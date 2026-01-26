@@ -15,8 +15,162 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# Solidity 智能合约示例笔记
+
+三个经典的 Solidity 合约模式：基础以太坊钱包 (Ether Wallet)、多重签名钱包 (Multi-Sig Wallet) 以及 默克尔树 (Merkle Tree) 验证。
+
+## 1\. 基础以太坊钱包 (Ether Wallet)
+
+这是一个最基础的钱包合约，演示了如何接收和发送 ETH，以及如何进行简单的权限控制。
+
+### 主要功能
+
+-   **接收 ETH**: 任何人都可以向该合约发送以太币。
+    
+-   **提取 ETH**: 只有合约的所有者 (Owner) 可以提取资金。
+    
+
+### 核心代码解析
+
+Solidity
+
+```
+contract EtherWallet {
+    address payable public owner;
+
+    constructor() {
+        owner = payable(msg.sender); // 部署者被设定为 owner
+    }
+
+    // 允许合约接收 ETH
+    receive() external payable {}
+
+    // 只有 owner 可以调用
+    function withdraw(uint256 _amount) external {
+        require(msg.sender == owner, "caller is not owner");
+        payable(msg.sender).transfer(_amount); // 发送 ETH
+    }
+
+    // 查看合约余额
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+* * *
+
+## 2\. 多重签名钱包 (Multi-Sig Wallet)
+
+多重签名钱包要求在执行交易前，必须获得指定数量的所有者确认。这大大提高了资金的安全性。
+
+### 核心概念
+
+-   **Owners**: 一组拥有钱包控制权的地址。
+    
+-   **Confirmations Required**: 执行交易所需的最小确认数。
+    
+-   **流程**: 提交交易 -> 等待所有者确认 -> 达到确认数 -> 执行交易。
+    
+
+### 关键数据结构
+
+**Transaction 结构体**:
+
+用于存储每笔待执行交易的详情。
+
+Solidity
+
+```
+struct Transaction {
+    address to;           // 目标地址
+    uint256 value;        // 发送金额
+    bytes data;           // 交易数据（用于调用其他合约）
+    bool executed;        // 是否已执行
+    uint256 numConfirmations; // 当前获得的确认数
+}
+```
+
+### 主要函数逻辑
+
+1.  **构造函数 (**`constructor`**)**: 初始化所有者列表和所需的确认数，进行基本的校验（如 owner 不为空、不重复）。
+    
+2.  **提交交易 (**`submitTransaction`**)**: 任何 owner 都可以创建一个新的交易提案。
+    
+3.  **确认交易 (**`confirmTransaction`**)**: 其他 owner 对提案进行批准。
+    
+    -   修饰符检查：交易必须存在、未执行、且调用者尚未确认过。
+        
+4.  **执行交易 (**`executeTransaction`**)**: 当确认数 `>= numConfirmationsRequired` 时，触发交易执行。
+    
+    -   使用 `call` 进行低级调用以支持发送数据和 ETH。
+        
+5.  **撤销确认 (**`revokeConfirmation`**)**: owner 可以撤回之前的批准。
+    
+
+### 测试辅助
+
+合约中还包含了一个 `TestContract`，用于测试多签钱包调用外部合约函数的能力（如 `callMe`）。
+
+* * *
+
+## 3\. 默克尔树 (Merkle Tree)
+
+默克尔树用于在不通过区块链传输整个数据集的情况下，加密地证明某个元素包含在一个集合中。这在白名单验证（Airdrop）等场景中非常常见且节省 Gas。
+
+### 工作原理
+
+1.  **叶子节点**: 数据的哈希值。
+    
+2.  **非叶子节点**: 两个子节点哈希值的哈希。
+    
+3.  **根 (Root)**: 树的顶端哈希，代表整个数据集。
+    
+4.  **证明 (Proof)**: 从叶子到根的路径上所需的兄弟节点哈希列表。
+    
+
+### 验证逻辑 (`verify` 函数)
+
+该函数通过重新计算哈希路径来验证 `leaf` 是否属于 `root` 代表的树。
+
+Solidity
+
+```
+function verify(
+    bytes32[] memory proof,
+    bytes32 root,
+    bytes32 leaf,
+    uint256 index
+) public pure returns (bool) {
+    bytes32 hash = leaf;
+
+    for (uint256 i = 0; i < proof.length; i++) {
+        bytes32 proofElement = proof[i];
+
+        // 根据索引判断当前哈希是在左边还是右边
+        if (index % 2 == 0) {
+            hash = keccak256(abi.encodePacked(hash, proofElement));
+        } else {
+            hash = keccak256(abi.encodePacked(proofElement, hash));
+        }
+
+        index = index / 2;
+    }
+
+    return hash == root;
+}
+```
+
+### 示例构建 (`TestMerkleProof`)
+
+示例代码在构造函数中演示了如何从一组字符串交易数据（如 "alice -> bob"）构建一棵默克尔树，并计算出根哈希。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # Remix 快速上手笔记
 
 ## 一、核心区域
@@ -245,6 +399,7 @@ Gas：默认3000000
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 # 智能合约开发与部署工具
 
@@ -1122,6 +1277,7 @@ monitors:
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 # 智能合约升级与修改模式
 
 ## 1\. 核心原则：合约不可直接修改
@@ -1800,6 +1956,7 @@ function test_FullUpgradePath() public {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2668,6 +2825,7 @@ echidna-test . --contract MyContract
 
 
 
+
 # 智能合约开发高级：Gas 优化、安全、审计与协作规范
 
 ## 1\. Gas 优化
@@ -3008,6 +3166,7 @@ function withdraw() public {
 
 
 
+
 # 智能合约编译产物详解
 
 ## 1\. 字节码（Bytecode）
@@ -3109,6 +3268,7 @@ function withdraw() public {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3405,6 +3565,7 @@ contract MessageBoard {
 
 
 
+
 # 以太坊节点连接通信与类型笔记
 
 ## 一、节点间连接与通信的三步流程
@@ -3580,6 +3741,7 @@ contract MessageBoard {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3791,6 +3953,7 @@ contract MessageBoard {
 
 
 
+
 Web3 行业充满机遇，但也伴随复杂的法律风险。理解并规避这些风险，是保护自身职业发展和财产安全的前提。下面梳理核心风险点
 
 ### 国内政策红线与刑事风险
@@ -3872,6 +4035,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3973,6 +4137,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4581,6 +4746,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 
 
+
 ### **以太坊学习笔记**
 
 **一、 核心定位：不止是加密货币，更是可编程平台**
@@ -4653,6 +4819,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
