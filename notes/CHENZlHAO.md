@@ -15,8 +15,293 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+这是一个详细展开的 Notion 风格知识点讲解，基于 _Web2 to Web3 - Week 2_ 的课程内容整理。
+
+* * *
+
+# 📘 Web2 to Web3 Week 2：核心知识点详解
+
+本周课程从脚本编写（Scripting）过渡到智能合约开发，涵盖了 Ethers.js 的使用、Hardhat 开发环境搭建以及 Solidity 核心语法与安全机制。
+
+* * *
+
+## 1\. Ethers.js 核心概念 (Core Concepts)
+
+Ethers.js 是一个轻量级的 JavaScript 库，用于连接以太坊网络。理解它需要区分“只读”和“写入”的组件。
+
+### 🔹 Provider (提供者)
+
+-   **定义**：Provider 是与区块链节点的连接桥梁，类似于 Web2 中的 API 客户端。它负责与区块链进行通信（如 Infura, Alchemy 或本地节点）。
+    
+-   **功能**：**只读**。它可以获取区块号、读取账户余额、解析 ENS 域名、读取合约状态，但**不能**签名交易或消耗 Gas,,。
+    
+-   **使用场景**：当你的应用只需要展示数据（如“当前区块高度”或“查询 Vitalik 的余额”）时使用,。
+    
+
+### 🔹 Signer (签名者)
+
+-   **定义**：Signer 代表一个拥有私钥的以太坊账户（EOA）。
+    
+-   **功能**：**写入与签名**。它可以对消息进行签名（证明身份）或对交易进行签名（发送 ETH、改变合约状态）。Signer 通常需要连接到一个 Provider 才能将签名的交易广播到网络中,,。
+    
+-   **抽象理解**：Provider 是电话线，Signer 是拿着电话说话的人。
+    
+
+### 🔹 BigNumber (大数处理)
+
+-   **背景**：以太坊中的数字（如 Wei）通常非常大（256位整数），超出了 JavaScript `number` 类型的安全范围（会出现溢出或精度丢失）,。
+    
+-   **核心单位**：
+    
+    -   **Wei**：最小单位。
+        
+    -   **Ether**：1 Ether = $10^{18}$ Wei。
+        
+-   **转换工具**：
+    
+    -   `ethers.utils.formatEther(bn)`：将 BigNumber (Wei) 转换为人类可读的字符串 (Ether)，用于展示。
+        
+    -   `ethers.utils.parseEther("1.0")`：将字符串 (Ether) 转换为 BigNumber (Wei)，用于发送交易。
+        
+-   **运算**：必须使用 BigNumber 的内置方法（如 `.add()`, `.sub()`, `.mul()`）进行数学运算，不能直接使用 JS 的 `+` 或 `-`,。
+    
+
+### 🔹 Wallet 与 OpSec (操作安全)
+
+-   **私钥管理**：
+    
+    -   **严禁硬编码**：永远不要将私钥直接写在代码里并提交到 GitHub。这会导致资产瞬间被盗,。
+        
+    -   **环境变量**：使用 `dotenv` 库，将私钥存储在 `.env` 文件中，并确保 `.gitignore` 文件包含了 `.env`，防止其被上传,。
+        
+    -   **开发隔离**：开发用的钱包（Metamask Account）应与存有真实资产的钱包隔离。不要在开发环境中使用存有大量资金的主网账户,。
+        
+    -   **生成方式**：可以使用 `ethers.Wallet.createRandom()` 生成临时的助记词和私钥用于测试。
+        
+
+* * *
+
+## 2\. 合约交互基础 (Contract Interaction)
+
+### 🔹 ABI (Application Binary Interface)
+
+-   **定义**：ABI 是智能合约的“接口说明书”。它告诉前端或脚本，合约里有哪些函数、这些函数接受什么类型的参数（如 `uint256`, `address`）以及返回什么数据。
+    
+-   **作用**：Ethers.js 需要 ABI 才能将人类可读的函数调用（如 `transfer`）编码成 EVM 能读懂的 Bytecode,。
+    
+-   **获取方式**：合约编译后会生成 ABI，或者从 Etherscan 验证过的合约页面获取。
+    
+
+### 🔹 读写操作的区别
+
+-   **读取 (Read)**：
+    
+    -   使用 `Provider` 连接合约。
+        
+    -   **免费**：不消耗 Gas，不改变链上状态，仅从节点读取数据（如 `balanceOf`）,。
+        
+-   **写入 (Write)**：
+    
+    -   使用 `Signer` 连接合约。
+        
+    -   **付费**：需要消耗 Gas，会改变链上状态（如 `transfer`）。
+        
+    -   **流程**：发送交易 -> 进入 Mempool (内存池) -> 矿工打包 -> 区块确认,。
+        
+    -   **等待**：写入操作是异步的，通常需要调用 `.wait()` 等待交易被矿工打包确认,。
+        
+
+### 🔹 交易的本质 (Transaction Anatomy)
+
+-   任何对合约的写入本质上都是一笔交易，包含三个核心字段：
+    
+    -   `to`：合约地址。
+        
+    -   `value`：随交易发送的 ETH 数量（Wei）。
+        
+    -   `data`：函数选择器（Function Selector）+ 编码后的参数。这是告诉合约“我要调用哪个函数”的关键,,。
+        
+
+* * *
+
+## 3\. 开发环境与工具 (Hardhat & Nodes)
+
+### 🔹 以太坊节点 (Nodes)
+
+-   **客户端**：Geth (Go Ethereum) 是最常用的客户端实现。运行节点意味着你成为了网络的一部分，可以直接与对等网络（P2P）通信。
+    
+-   **节点类型**：
+    
+    -   **Light Node (轻节点)**：同步快，不存储完整历史，依赖全节点。
+        
+    -   **Full Node (全节点)**：存储并验证区块数据。
+        
+    -   **本地运行**：运行自己的节点（如 Geth, Nethermind）比依赖 Infura 更快，且不仅限于请求限制,。
+        
+
+### 🔹 Hardhat 框架
+
+-   **定义**：Hardhat 是一个以太坊开发环境，用于编译、部署、测试和调试软件。
+    
+-   **核心功能**：
+    
+    -   **编译**：将 Solidity 代码编译为 Bytecode 和 ABI。
+        
+    -   **控制台日志**：支持在 Solidity 合约中使用 `console.log` 进行调试，这是传统开发中很难做到的。
+        
+-   **网络类型**：
+    
+    -   **Hardhat Network (Ephemeral)**：默认网络。它是临时的、内存中的区块链。每次运行脚本或测试时启动，结束后销毁。状态（余额、合约）不会保存,。
+        
+    -   **Localhost**：通过 `npx hardhat node` 启动的持久化本地区块链。它模拟真实网络，但在你手动关闭前状态一直保留。部署到这里可以让你通过前端进行持续交互,。
+        
+
+* * *
+
+## 4\. Solidity 基础语法 (Solidity Basics)
+
+### 🔹 基础结构与变量
+
+-   **Constructor (构造函数)**：合约部署时仅执行一次，用于初始化状态（如设定 Owner）,。
+    
+-   **State Variables (状态变量)**：存储在链上（Storage），所有节点同步，修改成本高。例如 `uint256 public count;`,。
+    
+-   **Mapping (映射)**：类似于哈希表 (`key => value`)。
+    
+    -   _特点_：无法遍历（不能 loop 所有的 key），必须知道 key 才能获取 value。常用于存储余额 `mapping(address => uint256) public balances;`。
+        
+
+### 🔹 全局变量 (Global Units)
+
+在合约执行过程中，EVM 提供的上下文变量：
+
+-   `msg.sender`：调用当前函数的地址（人或合约）,。
+    
+-   `msg.value`：随当前调用发送的 ETH 数量 (Wei),。
+    
+-   `block.timestamp`：当前区块的时间戳。
+    
+
+### 🔹 Modifiers (函数修饰符)
+
+-   **作用**：封装可重用的逻辑检查，减少代码重复。
+    
+-   **语法**：使用 `_;` 占位符表示“执行原函数的代码”。
+    
+-   **示例**：`onlyOwner` 修饰符，确保只有合约拥有者才能调用该函数。
+    
+    ```
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not Owner");
+        _; // 继续执行函数体
+    }
+    ```
+    
+
+,.
+
+### 🔹 资金的接收与发送
+
+-   **接收 ETH**：
+    
+    -   合约必须有 `receive() external payable {}` 或 `fallback()` 函数才能接收直接转账，否则交易会回滚 (Revert),。
+        
+    -   普通函数若需接收 ETH，必须标记为 `payable`,。
+        
+-   **发送 ETH**：
+    
+    -   ❌ `transfer` / `send`：有 Gas 限制（2300 Gas），可能导致接收方合约逻辑执行失败。
+        
+    -   ✅ `call`：推荐方式。语法略显繁琐但更灵活。
+        
+        ```
+        (bool sent, ) = _to.call{value: amount}("");
+        require(sent, "Failed to send Ether");
+        ```
+        
+
+,.
+
+* * *
+
+## 5\. 测试与安全 (Testing & Security)
+
+### 🔹 单元测试 (Unit Testing)
+
+使用 Hardhat + Waffle + Chai 进行测试。
+
+-   **重要性**：智能合约一旦部署无法修改（Immutable），因此测试至关重要。
+    
+-   **断言**：
+    
+    -   `expect(value).to.equal(...)`：检查状态变更。
+        
+    -   `expect(tx).to.be.revertedWith("Reason")`：测试异常情况（如非 Owner 调用是否被拒绝）,。
+        
+-   **Fixtures**：利用 `beforeEach` 在每个测试用例前重新部署合约，确保测试环境干净隔离,。
+    
+
+### 🔹 Scaffold-ETH & Tinkering
+
+-   **Tinkering (捣鼓/迭代)**：通过快速反馈循环学习。修改 Solidity -> 自动部署 -> 前端 UI 自动更新 -> 点击按钮测试。
+    
+-   **Burner Wallet (一次性钱包)**：浏览器生成的临时私钥，无需 MetaMask 弹窗确认，极大加速开发调试过程。
+    
+
+### 🔹 常见攻击与防护
+
+-   **重入攻击 (Reentrancy)**：
+    
+    -   _原理_：攻击者合约在接收 ETH 的回调函数中，递归调用受害合约的 `withdraw` 函数，在受害合约更新余额之前耗尽资金。
+        
+    -   _防御_：**Checks-Effects-Interactions** 模式。必须先更新状态（将余额置零），**最后**再发送 ETH。
+        
+-   **tx.origin vs msg.sender**：
+    
+    -   `msg.sender`：直接调用者。如果通过中间合约调用，`msg.sender` 是中间合约。
+        
+    -   `tx.origin`：交易发起的源头（必须是外部账户 EOA）。
+        
+    -   _风险_：使用 `tx.origin` 进行鉴权是不安全的，因为攻击者可以诱导用户调用恶意合约，恶意合约再利用用户的 `tx.origin` 身份调用受害合约（钓鱼攻击）,。
+        
+
+* * *
+
+## 6\. 关键代码模式示例 (Patterns)
+
+### 提款模式 (Withdraw Pattern)
+
+为了防止资金被锁死，需要提供提款功能。
+
+```
+// 只有 Owner 能提款
+function withdraw() public onlyOwner {
+    // 获取合约当前所有余额
+    uint256 balance = address(this).balance;
+    // 使用 call 发送
+    (bool sent, ) = msg.sender.call{value: balance}("");
+    require(sent, "Failed to send Ether");
+}
+```
+
+,.
+
+### 继承 (Inheritance)
+
+不要重复造轮子。使用 OpenZeppelin 的标准合约。
+
+-   `import "@openzeppelin/contracts/access/Ownable.sol";`
+    
+-   `contract MyContract is Ownable { ... }`
+    
+-   这样就直接获得了 `onlyOwner` 修饰符和所有权转移功能，且经过了社区审计，更安全,。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 这份《中文文案排版指北》非常实用，它能显著提升文档的专业感和可读性。我已经为你将核心知识点整理成了 **Notion 友好的 Markdown 格式**。
 
 你可以直接复制下方内容，在 Notion 中新建页面后粘贴，它会自动识别标题、列表、表格和引用块。
@@ -158,6 +443,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 这是一个基于您上传的《021学习以太坊》开源教材整理的完整知识点梳理。
 
@@ -496,6 +782,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
 
 * * *
@@ -706,6 +993,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -851,6 +1139,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1123,6 +1412,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -1346,6 +1636,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -1462,6 +1753,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1604,6 +1896,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 
 
+
 # Web3 安全与合规：知识图谱
 
 * * *
@@ -1736,6 +2029,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
