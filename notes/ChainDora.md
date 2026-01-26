@@ -15,8 +15,60 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+## ptimistic Rollup 核心机制
+
+-   **基本原理**：假设大多数参与者是可信的。
+    
+-   **角色分工**：
+    
+    -   **验证者（Validators）**：收集、排序并验证交易。
+        
+    -   **挑战者（Challengers）**：负责检查验证者提交的数据是否正确。
+        
+-   **数据上传**：定期向以太坊主网上传两类数据：
+    
+    -   **状态根（State Root）**：快速验证 Layer2 账本完整性。
+        
+    -   **压缩交易数据**：包含用户签名等细节，主网仅公开展示，不直接验证安全与验证
+        
+
+-   **Merkle 树结构**：保存 Layer2 的“迷你账本”，记录所有账户余额。
+    
+-   **验证方式**：
+    
+    -   若信任验证者，状态根即可快速验证账本是否被篡改。
+        
+    -   若不信任，可独立验证交易并与账本交叉比对。
+        
+-   **欺诈证明（Fraud Proofs）**：
+    
+    -   挑战者可在 Layer1 提交欺诈证明。
+        
+    -   验证成功后：惩罚不诚实验证者、奖励挑战者，并对相关交易进行回滚和重新验证。
+        
+-   **安全保障**：只需一个诚实的挑战者即可确保整个 Layer2 的安全。
+    
+
+## 优缺点与权衡
+
+-   **优点**：
+    
+    -   逻辑简单，易于理解。
+        
+    -   与 EVM 高度兼容，便于实现。
+        
+-   **缺点**：
+    
+    -   **退出等待期较长**：通常需要 7–14 天，给挑战者留出提交欺诈证明的时间。
+        
+    -   用户体验上可能显得繁琐。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # ZK Vote 学习笔记
 
 ## 1\. 投票方式对比
@@ -88,6 +140,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 ## **ERC721笔记**
 
@@ -267,6 +320,7 @@ contract NFTmarket  {
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -280,6 +334,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -302,6 +357,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -346,6 +402,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -368,6 +425,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -417,6 +475,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -492,6 +551,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -589,6 +649,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -664,6 +725,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -706,6 +768,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -788,6 +851,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -850,6 +914,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
