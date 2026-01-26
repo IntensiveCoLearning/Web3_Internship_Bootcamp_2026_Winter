@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+组队黑客松
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 复习solidity语法
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 1\. 概念理解：数据透明度和可追溯性区块链技术通过其分布式账本特性提高了全球供应链中的数据透明度和可追溯性。TradeLens 平台基于 Hyperledger Fabric，使所有贸易参与者（如航运公司、海关、银行）能够共享一个不可篡改的、实时的记录副本，打破了传统纸质文件流带来的信息孤岛。这种共享的单一事实来源允许各方实时访问货物运输和文件数据。数据的不可篡改性减少了欺诈，并确保了更高的问责制，因为所有记录的运输事件都是经多方验证且无法追溯修改的。
 
@@ -36,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 ## **zk-SNARK 系统的一般工作流程**
@@ -144,6 +152,7 @@ function vote(
 
 
 
+
 Gas 优化
 
 一、 存储 (Storage) 是金钱
@@ -179,6 +188,7 @@ Require 字符串：require(condition, "Error Message") 中的字符串越长越
 
 
 
+
 零知识证明是一种交互或非交互协议，使证明者在不泄露任何除“命题为真”之外信息的情况下，说服验证者。
 
 三大性质：
@@ -200,6 +210,7 @@ Require 字符串：require(condition, "Error Message") 中的字符串越长越
 
 
 
+
 **代币化（Tokenization）就像是给任何物品配上一张可以放在钱包里的数字护照**。它能证明所有权，让你一键转让，还能让应用程序自动识别。
 
 现实世界资产（RWA）
@@ -209,6 +220,7 @@ Require 字符串：require(condition, "Error Message") 中的字符串越长越
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -242,6 +254,7 @@ SpoonOS：web3 AI时代的操作系统
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -309,6 +322,7 @@ AI能给web3带来什么
 
 
 
+
 第二章 网络的结构与节点类型
 
 ·核心客户端：执行客户端 共识客户端+参与出块、转质押收益的验证者客户端
@@ -350,6 +364,7 @@ C. 验证者客户端：负责：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -408,6 +423,7 @@ EIP-1559之后:gas fee=(base fee +priority fee) X gas used
 
 
 
+
 以太坊
 
 ·提出：vitalik buterin2013，2015上线主网，早期将网络开发划分为四个阶段：边境（Frontier，
@@ -431,6 +447,7 @@ EIP-1559之后:gas fee=(base fee +priority fee) X gas used
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
