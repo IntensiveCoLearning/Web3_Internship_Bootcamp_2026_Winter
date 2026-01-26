@@ -15,8 +15,270 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+1) ERC-20：同质化代币（Fungible Token）
+
+用途：最常见的代币标准（积分、治理代币、稳定币等）。
+
+核心接口：
+
+totalSupply()
+
+balanceOf(address)
+
+transfer(to, amount)
+
+approve(spender, amount)
+
+transferFrom(from, to, amount)
+
+allowance(owner, spender) 事件：Transfer、Approval
+
+要点/坑：
+
+approve 存在经典“授权抢跑”问题（先把 allowance 设为 0 再设新值，或用 increase/decreaseAllowance）。
+
+代币小数：decimals() 是展示用，不影响合约内部精度。
+
+场景：DEX、借贷、支付、治理、空投等。
+
+2) ERC-721：NFT（Non-Fungible Token）
+
+用途：唯一资产（头像、门票、收藏品）。
+
+核心接口：
+
+ownerOf(tokenId)
+
+safeTransferFrom(from,to,tokenId\[,data\])
+
+approve / setApprovalForAll
+
+tokenURI(tokenId) 事件：Transfer、Approval、ApprovalForAll
+
+要点/坑：
+
+推荐使用 safeTransferFrom，接收方是合约时必须实现 onERC721Received。
+
+元数据 URI 可链下（IPFS/HTTP），也可链上（成本高）。
+
+场景：NFT 市场、链游资产、门票凭证。
+
+3) ERC-1155：多代币标准（Multi-Token）
+
+用途：同一合约同时支持 FT/NFT/半同质化（SFT），并支持批量转账。
+
+核心接口：
+
+balanceOf(account, id)
+
+safeTransferFrom
+
+safeBatchTransferFrom
+
+setApprovalForAll 事件：TransferSingle、TransferBatch、ApprovalForAll
+
+要点：
+
+批量操作更省 gas，适合链游道具、装备、材料等。
+
+接收方合约需实现 onERC1155Received/onERC1155BatchReceived。
+
+场景：链游、道具系统、批量空投。
+
+4) ERC-165：接口检测标准
+
+用途：让合约“声明”自己支持哪些接口，便于外部合约或应用判断兼容性。
+
+核心接口：
+
+supportsInterface(bytes4 interfaceId)
+
+要点：
+
+ERC-721 / ERC-1155 等很多标准都依赖 ERC-165。
+
+interfaceId 通常为函数选择器 XOR 结果。
+
+场景：合约互操作、插件化模块。
+
+5) ERC-173：合约所有权（Ownership Standard）
+
+用途：标准化 owner() 与 transferOwnership()，便于工具识别“管理者”。
+
+核心接口：
+
+owner()
+
+transferOwnership(newOwner) 事件：OwnershipTransferred
+
+要点：
+
+常用于权限管理（类似 OpenZeppelin Ownable 的接口规范化版本）。
+
+建议搭配多签（Gnosis Safe）作为 owner。
+
+场景：可升级/可配置协议的管理权限。
+
+6) ERC-2981：NFT 版税（Royalty Standard）
+
+用途：为 NFT 定义统一的版税查询接口。
+
+核心接口：
+
+royaltyInfo(tokenId, salePrice) -> (receiver, royaltyAmount)
+
+要点/坑：
+
+标准只定义“查询”，市场是否执行版税取决于平台策略。
+
+版税计算要注意精度与上限（常用 basis points）。
+
+场景：NFT 创作者分成。
+
+7) ERC-2612：ERC-20 Permit（离线签名授权）
+
+用途：用签名完成 approve，省一次链上授权交易（减少摩擦）。
+
+核心接口：
+
+permit(owner, spender, value, deadline, v, r, s)
+
+nonces(owner)
+
+DOMAIN\_SEPARATOR()
+
+要点/坑：
+
+依赖 EIP-712 结构化签名；要正确处理 nonce 防重放。
+
+对前端体验提升明显：一次签名 + 一次交易即可完成“授权+操作”。
+
+场景：DEX/借贷/聚合器的一键操作。
+
+8) ERC-3156：闪电贷标准（Flash Loans）
+
+用途：标准化闪电贷接口，便于借贷方与出借方通用集成。
+
+核心接口：
+
+出借方：flashLoan(receiver, token, amount, data)
+
+接收方回调：onFlashLoan(initiator, token, amount, fee, data)
+
+要点/坑：
+
+回调必须在同一交易内归还 amount + fee，否则 revert。
+
+注意重入、防止恶意 receiver。
+
+场景：套利、清算、抵押品置换、复杂多步操作。
+
+9) ERC-4337：账户抽象（Account Abstraction）
+
+用途：把“账户”变成可编程合约钱包，实现免 gas、批量操作、社交恢复等。
+
+关键概念（不是传统接口）：
+
+UserOperation、EntryPoint、Bundler、Paymaster
+
+合约账户验证逻辑在链上执行
+
+要点：
+
+不改共识层，通过 EntryPoint 合约实现 AA。
+
+适合改善新手体验（赞助 gas、Web2 登录式体验）。
+
+场景：智能钱包、游戏/社交应用的低门槛上链。
+
+10) ERC-2771：元交易 / 可信转发（Meta-Transactions）
+
+用途：用户签名，转发者代付 gas；合约通过 \_msgSender() 获取真实用户。
+
+核心接口/约定：
+
+isTrustedForwarder(address)
+
+Forwarder 把原始 sender 附加到 calldata
+
+要点/坑：
+
+必须只信任指定 forwarder，否则可被伪造 sender。
+
+适合“免 gas”与更好的 UX（与 ERC-4337 是不同路线）。
+
+场景：新用户免 gas、活动铸造、链上任务系统。
+
+11) ERC-4626：代币化金库（Tokenized Vault）
+
+用途：标准化收益金库（存入资产 -> 获得份额 share，份额可转让）。
+
+核心接口：
+
+asset() / totalAssets()
+
+deposit(assets, receiver) / mint(shares, receiver)
+
+withdraw(assets, receiver, owner) / redeem(shares, receiver, owner)
+
+convertToShares / convertToAssets
+
+要点/坑：
+
+需考虑精度、舍入方向、手续费、价格变动。
+
+安全上关注：价格操纵、捐赠攻击（donation/inflation attack）、初始份额设置。
+
+场景：收益聚合、借贷策略金库、再质押封装。
+
+12) ERC-6909：极简多代币（Minimal Multi-Token）
+
+用途：一种更轻量的多代币思路（社区使用逐渐增多）。
+
+特点（概念层面）：
+
+同一合约管理多种 id 的余额
+
+比 ERC-1155 更“简单/直接”，事件与接口也更简化（实现取舍不同）
+
+要点：
+
+生态兼容性不如 1155 成熟，适合协议内部资产或新项目自用。
+
+若面向主流市场/钱包，仍需考虑兼容层。
+
+横向对比（怎么选）
+
+发币/积分/治理：ERC-20（想省授权用 ERC-2612）
+
+唯一资产：ERC-721（需要版税加 ERC-2981）
+
+大量道具/批量转账：ERC-1155（或探索 ERC-6909）
+
+收益金库/DeFi 封装：ERC-4626
+
+免 gas / 体验优化：ERC-2771（转发）或 ERC-4337（AA）
+
+协议间互操作：ERC-165（接口识别）
+
+权限治理标准化：ERC-173
+
+闪电贷集成：ERC-3156
+
+我学到的关键结论
+
+ERC 的价值在于“可组合性”：你的合约遵循标准，就能直接接入钱包/市场/DeFi。
+
+开发时不仅要“实现接口”，更要实现“语义与安全边界”（例如 safeTransfer、permit nonce、vault 的舍入）。
+
+新标准（4337/6909）更多是“范式变化”，需要结合生态支持程度决定是否上生产。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 \## 1. Foundry
 
 \- 以 **Rust** 实现的以太坊开发工具链，主打：\*\*编译快、测试快、脚本部署强\*\*。
@@ -245,6 +507,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 \## 1. 复习回顾（补课清单）
 
 \- 数据位置`storage / memory / calldata`
@@ -292,6 +555,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 \## Ethereum Clients & Hardhat
@@ -382,6 +646,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 
 
+
 \### 继承与多态
 
 \- 使`is`关键字继承，支持多重继承
@@ -461,6 +726,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -588,6 +854,7 @@ contract MyContract {
 
 
 
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -597,6 +864,7 @@ contract MyContract {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -693,6 +961,7 @@ contract MyContract {
 
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -768,6 +1037,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -818,6 +1088,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -891,6 +1162,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
