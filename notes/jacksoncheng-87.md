@@ -15,8 +15,48 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+**黑客松和 Vibe Coding（AI 辅助编程）**
+
+-   团队配置建议：3-4人团队（2个开发+1个产品+1个PM），PM在演示时非常重要
+    
+-   项目方向：迁移重构、乐高拼接（组合赞助商SDK）、关注在地化问题、关注少数群体等
+    
+-   关键提醒：
+    
+
+1.  不要踩点提交，提前交不完整版本再补全；
+    
+2.  注意区分12pm和12am，注意时间；
+    
+3.  不要抱着创业心态打黑客松，重点是完整呈现想法而非功能完善；
+    
+4.  一定要提交，哪怕只是视频demo；
+    
+
+-   推荐赛事：ETHGlobal系列（加纳、NYC、里斯本等）、地区黑客松（上海、北京、广州）、Lianxin DAO休闲黑客松
+    
+-   Vibe Coding（AI辅助编程）部分：上下文管理和表达能力最重要；工具实践：Claude Code为主（代码能力强），GPT适合复杂逻辑
+    
+-   关键技巧：
+    
+
+1.  使用Plan模式拆解问题
+    
+2.  定期检查context占用情况
+    
+3.  利用Agent分离上下文
+    
+4.  维护project.md文档
+    
+
+-   UI开发：从优秀模板"抄"起，使用ASCII布局图辅助
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # Solidity 基础学习与 Gas 优化总结
 
 > 💡 这周我主要学习了 Solidity 的基础语法以及 Gas 的优化技巧，为智能合约开发打下了扎实的基础。
@@ -121,6 +161,7 @@ Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 **gas 优化**
 
@@ -261,6 +302,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 Solidity Basic 笔记
@@ -805,6 +847,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -1126,6 +1169,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -1360,6 +1404,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -1442,6 +1487,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1641,6 +1687,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -1648,6 +1695,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1728,6 +1776,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1879,6 +1928,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2175,6 +2225,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -2238,6 +2289,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2398,6 +2450,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
