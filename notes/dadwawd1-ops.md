@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+![微信图片_20260126191522.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/dadwawd1-ops/images/2026-01-26-1769426222333-_____20260126191522.jpg)![微信图片_20260126191509.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/dadwawd1-ops/images/2026-01-26-1769426236758-_____20260126191509.jpg)![微信图片_20260126191535.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/dadwawd1-ops/images/2026-01-26-1769426252531-_____20260126191535.jpg)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 起来补笔记
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 参加了LXDAO的周例会
 
@@ -32,11 +39,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 审计：模糊测试：是一种通过向智能合约输入大量随机、非预期或无效的数据，试图诱发合约异常、崩溃或违反安全规则的自动化测试技术，模糊测试分为无状态模糊测试和有状态模糊测试，无状态模糊测试：每次测试都是独立的。Fuzzer 生成一组参数调用一个函数，检查结果，然后重置状态，但是无法发现无法发现由于多次交互导致的状态累积错误（例如：先存钱，再转账，最后取钱时的漏洞）。**有状态模糊测试**：Fuzzer 生成一个交易序列。它会随机调用合约中的不同函数，并且保留合约的状态。这是 Web3 审计的核心。大多数高危漏洞（如重入攻击、记账错误）只有在特定的操作顺序下才会暴露（很重要）
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -57,6 +66,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -245,6 +255,7 @@ forge script script/Deploy.s.sol --rpc-url
 
 
 
+
 目前所接触到的优化Gas的方法：
 
 函数的可见修饰符用external比public省gas，只有外部调用的函数设为 external 而不是 public（如果该函数内部不被调用），因为 external 函数可以直接从 calldata 读取参数
@@ -282,6 +293,7 @@ owner 点击了按钮，向恶意合约发送了一笔交易。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -350,6 +362,7 @@ Solidity：荷兰拍卖，基于ERC721的Transferfrom的基础上进行交易，
 
 
 
+
 | 特性 | Uniswap V1 | Uniswap V2 | Uniswap V3 |
 | 发布时间 | 2018 年 11 月 | 2020 年 5 月 | 2021 年 5 月 |
 | 核心定位 | 概念验证 (Proof of Concept) | 通用化 DEX (General Purpose) | 资本效率最大化 (Capital Efficiency) |
@@ -381,6 +394,7 @@ EIP-5164：本规范定义了基于EVM的区块链的跨链执行接口。本规
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -443,6 +457,7 @@ FRI（Fast Reed–Solomon IOP of Proximity）协议在后端用以证明复合�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -608,6 +623,7 @@ ERC721处理非同质化代币标准（NFT）
 
 
 
+
 今天看了很有趣的文章，让我在零知识证明的方面了解到了在初期对与隐私的保护，解决了我之前对信息泄露方面的疑惑，现在对于今日知识进行一个总结和理解：零知识证明的概念最早是由 Goldwasser, Micali 和 Rackoff 在 1985年 的论文中提出的。当时的状况： 全是复杂的数学公式，非常晦涩，普通人（甚至很多计算机专家）都很难理解“如何能证明一件事却不告诉你是怎么证明的”，在此之后有了两个经典的故事：
 
 阿里巴巴洞穴 (1989年)： 这是最早期的解释。就在 ZKP 发明仅仅 4 年后，密码学家 Jean-Jacques Quisquater 发表了一篇著名的论文《如何向你的孩子解释零知识协议》。他创造了“阿里巴巴洞穴”这个故事，专门用来向非专业人士解释 ZKP 的核心逻辑（交互式证明）。所以，这是真正的元老级例子。我来简单的阐述一下这个故事的内容：在一个有a,b出口的洞穴里，要讲出密令才能找到出口并出去，但是只有2知道密令是什么，但他不想告诉验证者1，只想证明2知道这个密令，这时候1就要去证实2，过程：1在洞穴外让2按照他的命令从a出或者从b出（不能仅执行几次，会有概率疑惑产生），重复多次，2都可以通过密令从指定的洞口出来，这就验证了2知道这个秘令，但是不知道这个密令是什么，保证了隐私。
@@ -629,6 +645,7 @@ X402协议：一种开放的，互联网原生的支付方式（极低边际成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -700,6 +717,7 @@ Extension Node (扩展节点)：用于“跳过”没有任何分支的长路径
 
 
 
+
 今日基础知识学习记录：
 
 了解了以太坊节点是如何构成网络的，官方知识点：节点node是任何一台运行以太坊客户端软件并连接到其他节点的电脑，就是一个以太坊节点，客户端是对以太坊协议的具体体现，会按照协议规则验证数据，同步区块状态，帮助网络保持完全，在（The Merge）之后，节点由执行客户端和共识客户端两个核心客户端组成外加一个接口（Engine API）这个是基于JSON-RPC的本地接口。下面是在内部网络的流程：
@@ -729,6 +747,7 @@ confirmTransaction（认证），executeTransaction（通过认证执行），re
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
