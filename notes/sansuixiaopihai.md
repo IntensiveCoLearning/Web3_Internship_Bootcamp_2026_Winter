@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+## **学习总结day15**
+
+今天主要的学习计划是看solidity的基础语法和复习前面的学习，写一些demo，学习前端框架的react和next.js
+
+Next.js 使用**_\*基于文件系统的路由\*_**，这意味着：
+
+\- **_文件夹结构就是路由结构_**
+
+\- **_不需要单独的路由配置文件_**
+
+所有路由文件都在 `app/` 目录下：
+
+app/
+
+├── page.jsx → 对应路由: /
+
+├── layout.jsx → 根布局（所有页面共享）
+
+├── globals.css → 全局样式
+
+├── login/
+
+│ └── page.jsx → 对应路由: /login
+
+├── dashboard/
+
+│ └── page.jsx → 对应路由: /dashboard
+
+└── admin/
+
+└── llm/
+
+└── page.jsx → 对应路由: /admin/llm
+
+next.js每个文件前面为什么都需要增加一个use client
+
+`use client` 是 Next.js (React) 中一个模块指令，表示 **将此文件及其导入的模块标记为客户端组件 (Client Component)**，让它们能够在用户浏览器中运行，支持 useState、useEffect 等交互性钩子和 `window`、`document` 等浏览器 API，与之相对的是默认的服务器组件 (Server Component)。它指示 React 在客户端打包并执行这部分代码，以实现动态交互，而不需要在服务器上渲染，创建了服务器与客户端的边界
+
+**枚举 enum类型：**
+
+枚举（`enum`）是 Solidity 中用户定义的数据类型。它主要用于为 `uint` 分配名称，使程序易于阅读和维护
+
+枚举使用类型使用有点像结构体 (Structs),`enum` 是一个比较冷门的数据类型，几乎没什么人用，枚举可以显式地和 `uint` 相互转换
+
+```
+// 用enum将uint 0， 1， 2表示为Buy, Hold, Sell
+enum ActionSet { Buy, Hold, Sell }
+// 创建enum变量 action
+ActionSet action = ActionSet.Buy;
+// enum可以和uint显式的转换
+function enumToUint() external view returns(uint){
+    return uint(action);
+}// 这个时候会返回0，不支持直接将枚举类型转换为string类型
+​
+```
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 ## 学习总结day13
 
 今天主要的学习计划是看solidity的基础语法和复习前面的学习，并完善昨天的demo，今天主要记录其中的难点，和使用到的困难点；
@@ -36,6 +96,7 @@ call 返回两个值： bool sent：转账或调用是否成功（true = 成功�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 \## 学习总结day13
 
@@ -102,6 +163,7 @@ i++ (后自增)：会多产生一个临时变量。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 ## **学习总结day12**
@@ -356,6 +418,7 @@ contract PointSystem {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -628,6 +691,7 @@ points\[\_add\] += po;
 
 
 
+
 ## **学习总结day10**
 
 今天主要的学习计划是看solidity的基础语法和联系，今天的这些学习总结主要是记录一些比较难懂的学习点
@@ -771,6 +835,7 @@ function leaveMessage(string memory _msg) public {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -952,6 +1017,7 @@ contract EventExample {
 
 
 
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -1029,6 +1095,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1123,6 +1190,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -1186,6 +1254,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1302,6 +1371,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1468,6 +1538,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1669,6 +1740,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -1763,6 +1835,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
