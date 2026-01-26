@@ -15,8 +15,203 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# 一、Event 设计原则
+
+## 1️⃣ Event 是“行为日志”，不是“状态快照”
+
+### ❌ 错误设计
+
+```
+event BalanceUpdated(address user, uint256 balance);
+```
+
+问题：
+
+-   balance 本来就在 storage
+    
+-   每次更新都发完整状态，冗余
+    
+
+### ✅ 正确设计
+
+```
+event Transfer(address indexed from, address indexed to, uint256 value);
+```
+
+Event 应该表达的是：
+
+> **发生了什么行为**
+
+* * *
+
+## 2️⃣ 一个“对外可感知”的动作，必须有 Event
+
+你可以用这条规则自检：
+
+> 如果这个函数对用户有意义 → 必须有 Event
+
+### 常见必须发 Event 的场景
+
+| 场景 | 是否需要 |
+| --- | --- |
+| 转账 | 必须 |
+| mint / burn | 必须 |
+| 授权 | 必须 |
+| 下单 / 撤单 | 必须 |
+| 状态变更 | 基本必须 |
+| 管理员操作 | 必须 |
+
+* * *
+
+## 3️⃣ Event 命名 = 协议 API 设计
+
+事件名是 **给前端和数据分析用的 API**。
+
+### 好的事件名
+
+```
+event OrderCreated(uint256 orderId, address indexed user);
+event OrderFilled(uint256 orderId, address indexed taker);
+event OrderCancelled(uint256 orderId);
+```
+
+### 坏的事件名
+
+```
+event Log1(...);
+event DoSomething(...);
+```
+
+* * *
+
+# 二、indexed 的真正意义
+
+这是一个**很多人理解错误的点**。
+
+* * *
+
+## 1️⃣ indexed 是“可搜索字段”，不是“优化字段”
+
+Event 在底层会变成：
+
+-   topic0：事件签名
+    
+-   topic1~3：indexed 参数
+    
+-   data：非 indexed 参数
+    
+
+👉 **只有 indexed 才能被高效过滤**
+
+* * *
+
+## 2️⃣ indexed 最适合放什么？
+
+### 标准答案（直接记）
+
+| 类型 | 是否 indexed |
+| --- | --- |
+| address | ✅ 强烈建议 |
+| uint256 id | ✅ |
+| enum / status | ⚠️ 视情况 |
+| string | ❌（会被 hash） |
+| 大 struct | ❌ |
+
+### 标准写法
+
+```
+event Deposit(
+    address indexed user,
+    uint256 indexed poolId,
+    uint256 amount
+);
+```
+
+这样你可以：
+
+-   查某个用户的所有操作
+    
+-   查某个池子的所有历史记录
+    
+
+* * *
+
+## 3️⃣ indexed 有数量限制（非常重要）
+
+> **最多 3 个 indexed 参数**
+
+第 4 个会直接报错。
+
+* * *
+
+# 三、前端如何监听 Event（DApp 实战核心）
+
+这里是 **合约 → 前端** 的关键桥梁。
+
+* * *
+
+## 1️⃣ ethers.js 监听实时事件
+
+```
+contract.on("Transfer", (from, to, value, event) => {
+  console.log("转账发生");
+});
+```
+
+适合：
+
+-   实时 UI 更新
+    
+-   Toast / 弹窗
+    
+-   pending → success 状态
+    
+
+⚠️ 注意：
+
+-   页面刷新会丢失监听
+    
+-   不适合历史数据
+    
+
+* * *
+
+## 2️⃣ 查询历史事件（非常常用）
+
+```
+const events = await contract.queryFilter(
+  contract.filters.Transfer(userAddress),
+  fromBlock,
+  toBlock
+);
+```
+
+用途：
+
+-   用户历史记录
+    
+-   交易列表
+    
+-   初始化页面数据
+    
+
+* * *
+
+## 3️⃣ 前端典型架构模式
+
+```
+1. 页面加载
+2. queryFilter 拉历史
+3. contract.on 监听新事件
+4. 本地状态更新 UI
+```
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 * * *
 
 # 一、Storage Slot 是如何分配的
@@ -367,6 +562,7 @@ uint32  blockTimestampLast;
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -624,6 +820,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 # 一、**钱包 ≠ 账号**
@@ -986,6 +1183,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -1305,6 +1503,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -1551,6 +1750,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1839,6 +2039,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -1987,6 +2188,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2341,6 +2543,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -2672,6 +2875,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -2775,6 +2979,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2927,6 +3132,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -3256,6 +3462,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -3358,6 +3565,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
