@@ -70,15 +70,15 @@ A TypeScript Hardhat project using Mocha and Ethers.js
 因為我選擇第三個 較基本的 Minimal 模式，所以不會有默认复杂的合约contracts 文件夹里的 Lock.sol，  
 因為**A minimal Hardhat project** 的特點是簡易版，連資料夾都要自己建立，沒有 `contracts`、`test` 或 `ignition` 資料夾。
 
-原本的終端機維持開啟  
-  
-今日課程紀錄  
+原本的終端機維持開啟
+
+今日課程紀錄
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441400540-image.png)
 
 這幾日已經聽到好多老師提到，能學前後端都能寫的就夠了，不用一次學那麼多，上次小海老師也是這樣說  
 最近許多AI的東西一直在推出，這個學完了又有新的，  
-今日又增加一個知識點，先將基礎的東西撿起來了，每個都學一點學一點，到時候點就會變成面了  
+今日又增加一個知識點，先將基礎的東西撿起來了，每個都學一點學一點，到時候點就會變成面了
 
 ![](image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441545509-image.png)
 
@@ -86,17 +86,16 @@ A TypeScript Hardhat project using Mocha and Ethers.js
 2.勤看context  
 3./compact (先compact一下再給AI寫，不要一股腦灌給他  
 4.多相AI請教 EX：我有什麼沒想全的 / 有什麼要補充的 大大增加AI準確性  
-上下文管理練習 問題拆解，大問題拆解成小問題，一步步丟給AI去產生解決方法，自己做總結  
-  
-找好看模板截圖丟給AI分析修改 nanobanana 讓AI生成一個 ascii 佈局圖 [https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false)  
+上下文管理練習 問題拆解，大問題拆解成小問題，一步步丟給AI去產生解決方法，自己做總結
+
+找好看模板截圖丟給AI分析修改 nanobanana 讓AI生成一個 ascii 佈局圖 [https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false)
 
 ![](image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441597987-image.png)
 
-  
 代幣經濟模型可以刷掉90% 藉由流通量、代幣總量去判斷是否可投
 
 -   大概知道web3有哪些賽道  
-    ex: defi三件套 去中心化交易所 去中心化借貸...  
+    ex: defi三件套 去中心化交易所 去中心化借貸…
     
 -   找個一兩條吃透 怎麼起來到怎麼消亡，  
     代幣經濟模型是怎麼樣的，  
@@ -115,10 +114,68 @@ A TypeScript Hardhat project using Mocha and Ethers.js
 # (以下為同學做的課堂紀錄)
 
 ![0126投研基礎建立 重點整理.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441982551-0126___________.jpg)
+
+## from 豆包
+
+  
+会议讨论了 WEB3 投研基础框架，分析当前投研面临的问题，并给出 WEB3 行业从业建议，具体如下：
+
+-   **WEB3 工作吸引力与讲师经历**：
+    
+    -   **工作吸引力**：WEB3 工作具有远程工作自由、工资相对高、有暴富机会三个特点，吸引众多人关注。
+        
+    -   **讲师经历**：讲师在研二通过姐姐进入公链项目做产品实习生，后联合创立技术媒体品牌，通过写文章翻译项目白皮书赚钱，25 年 1 月将资产换成 USDT，之后开展其他业务，资产达到 7 位数。
+        
+-   **投研的定义与内容**：
+    
+    -   **基本面研究**：包括了解项目底层技术，如 OP、ZKOP 等二层技术原理，逃生舱机制，以及哈希碰撞、非对称加密等密码学知识；研究项目背景，如创业团队背景、毕业院校、投资机构等。
+        
+    -   **代币经济模型研究**：通过分析代币流通量和总量占比等简单方法，可筛选掉大部分不值得投资的项目，讲师写过相关万字分析文章。
+        
+-   **市场币种分类与投研对象**：
+    
+    -   **币种分类**：分为主流币（如比特币、以太坊）、山寨币（背后有项目主体，如 UNISSOL、hyperliquid）、稳定币（如 USDE）、MEME 币（如狗狗币、屎币）。
+        
+    -   **投研对象**：主流币无需投研，稳定币和 MEME 币也不是投研对象，投研主要针对山寨币，但当前山寨币市场没落，原投研方法论效果不佳。
+        
+-   **山寨币没落原因**：
+    
+    -   **流动性不足**：全球经济处于周期波谷，流动性不佳；行业存在问题，交易所上的代币质量差；川普利用影响力收割，导致市场流动性几乎耗尽。
+        
+    -   **市场发展规律**：流动性从主流币外溢到山寨币、NFT、GAMEFI 等，最终市场崩塌，当前无流动性外溢机会。
+        
+-   **投研有价值的条件**：
+    
+    -   **充足流动性**：放水是必要条件，但目前流动性仍不充足。
+        
+    -   **新叙事出现**：如 ICO、Defi summer、铭文等新事物带动赛道发展，此时投研才有意义。
+        
+-   **WEB3 行业从业建议**：
+    
+    -   **学习历史好项目**：通过学习行业历史上的好项目，如 uniswap、AAVE 等，塑造行业价值观和知识体系，便于在行业找工作。
+        
+    -   **建立知识体系**：了解 WEB3 赛道，研究各赛道龙头项目，由点到面建立知识框架，可提升在行业的认知和竞争力。
+        
+    -   **保持学习心态**：WEB3 行业门槛低但精通难，要保持对新兴行业（如 AI、云原生等）的学习心态，拓展自身发展领域。
+        
+-   **问答环节要点**：
+    
+    -   **撸空投投产比**：撸空投难以计算投产比，其本质是项目方拉新道具，依赖项目方，大量投入此方向可能走偏。
+        
+    -   **VC 币投资**：项目未达表现可能不是好项目，不能仅因主观判断而投资，应多参考多方面信息。
+        
+    -   **RWA 方向**：RWA 是将现实资产上链交易，是未来发展方向，从业者应兼顾传统金融知识和区块链技术，成为两栖人才。
+        
+    -   **项目研究方法**：除看白皮书，还可利用 ChatGPT 专家版生成研报、参考 Youtube 博主视频、阅读 WEB3 媒体深度文章，初期可先看可视化视频和用 AI 辅助。
+        
+    -   **项目历史梳理**：目前市面上没有完善梳理 WEB3 项目历史的资料，可参考灯链社区的 Web3 图谱。
+        
+    -   **判断项目是否零和博弈**：先学习基础的 WEB3 知识，掌握足够多的知识点后再考虑判断项目是否零和博弈；投资可调整思路，不局限于价值投资。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -294,6 +351,7 @@ increment 翻譯為"遞增"
 
 
 
+
 今日稍微休息了一下 沒怎麼念書  
 把前幾天學到的東西簡單整理了一下  
 還有聽了兩場同學們舉辦的AMA
@@ -301,6 +359,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -341,6 +400,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -466,6 +526,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -491,6 +552,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -661,6 +723,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -672,6 +735,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -782,6 +846,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -792,6 +857,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -988,6 +1054,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -1013,6 +1080,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1209,6 +1277,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -1288,6 +1357,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
