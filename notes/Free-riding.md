@@ -15,8 +15,162 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+web3前端用的框架和使用教程
+
+框架/库类别 推荐选项 核心特点与适用场景
+
+智能合约开发 Hardhat67 功能强大、高度可定制的以太坊开发环境，内置本地网络，支持插件，是目前最流行的框架之一6。
+
+Truffle67 历史悠久的成熟框架，提供从开发、测试到部署的一整套工具，生态庞大16。
+
+前端主框架 React / Next.js245 React生态庞大，组件化开发高效。Next.js支持服务端渲染(SSR)，对SEO友好，是构建生产级应用的热门选择5。
+
+Vue135 渐进式框架，学习曲线平缓，易于集成，非常适合需要快速开发的中小型项目57。
+
+区块链交互库 Ethers.js68 更现代、轻量，API设计简洁且安全性好，被许多现代DApp前端项目推荐使用6。
+
+npx create-react-app my-web3-dapp --template typescript
+
+cd my-web3-dapp
+
+npm install ethers
+
+npm install @types/react # 如果使用TypeScript
+
+Web3.js134 以太坊官方库，功能全面，是许多早期项目的基础16。
+
+React专属工具 Wagmi / RainbowKit6 Wagmi提供了一系列强大的React Hooks来简化钱包连接、合约读取等操作。RainbowKit则在此基础上提供了开箱即用的美观钱包连接按钮组件，能极大提升开发效率6。
+
+```
+import { useState, useEffect } from 'react';
+```
+
+```
+import { ethers } from 'ethers';
+```
+
+```
+function App() {
+```
+
+```
+  const [account, setAccount] = useState('');
+```
+
+```
+  // 请求连接钱包
+```
+
+```
+  const connectWallet = async () => {
+```
+
+```
+    if (window.ethereum) {
+```
+
+```
+      try {
+```
+
+```
+        // 创建Provider对象，连接MetaMask提供的以太坊节点
+```
+
+```
+        const provider = new ethers.BrowserProvider(window.ethereum);
+```
+
+```
+        // 请求用户授权
+```
+
+```
+        const signer = await provider.getSigner();
+```
+
+```
+        // 获取用户账户地址
+```
+
+```
+        const address = await signer.getAddress();
+```
+
+```
+        setAccount(address);
+```
+
+```
+      } catch (error) {
+```
+
+```
+        console.error("用户拒绝连接或连接失败", error);
+```
+
+```
+      }
+```
+
+```
+    } else {
+```
+
+```
+      alert('请安装MetaMask!');
+```
+
+```
+    }
+```
+
+```
+  };
+```
+
+```
+  return (
+```
+
+```
+    <div>
+```
+
+```
+      <button onClick={connectWallet}>
+```
+
+```
+        {account ? `已连接: ${account.substring(0, 6)}...` : '连接钱包'}
+```
+
+```
+      </button>
+```
+
+```
+    </div>
+```
+
+```
+  );
+```
+
+```
+}
+```
+
+```
+export default App;
+```
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 Foundry 是一个用于以太坊智能合约开发的流行工具链，由 Paradigm 开发，以高性能、模块化和开发者友好著称。它使用 Rust 编写，主要包括以下核心组件：
 
 -   **Forge**：用于编译、测试、部署和验证智能合约（类似 Hardhat 或 Truffle）。
@@ -138,6 +292,7 @@ cast send <CONTRACT_ADDRESS> "increment()" \
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 对于 **应届生**（无全职工作经验）申请 Web3 前端岗位，简历的核心策略是：**用高质量项目、开源贡献、黑客松经历和扎实的技术细节弥补经验短板**
 
 **例如：**“用 wagmi 实现多链钱包连接，并处理网络切换异常” → 具体可验证
@@ -228,6 +383,7 @@ LinkedIn / Twitter（可选，但建议有）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 \# Hardhat 使用教程  
@@ -336,6 +492,7 @@ npx hardhat run scripts/deploy.js --network localhost
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -453,6 +610,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 在 Web3（尤其是去中心化金融，DeFi）中，**套利（Arbitrage）** 是指利用不同市场或协议之间资产价格的暂时性差异，通过低买高卖获取无风险或低风险利润的行为。以下是 Web3 中常见的套利方式和操作逻辑：
 
 * * *
@@ -558,6 +716,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 Solidity 中的\*\*事件（Events）\*\*是一种用于在智能合约中记录日志（logs）的机制，主要用于将信息从区块链传递给外部应用程序（如前端 DApp）。事件通过以太坊虚拟机（EVM）的日志功能实现，具有高效、低成本和可被监听的特点。
 
 ### **1\. 事件的定义**
@@ -616,6 +775,7 @@ solidity
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -792,6 +952,7 @@ Gossip 协议（又称“流言协议”或“八卦协议”）在区块链和�
 
 
 
+
 ## **一句话总结 ERC-7962 是什么？**
 
 > **它是一种新的“隐私代币”标准，让你的 NFT 或普通代币（比如类似 USDT 的 Token）在转账时，不再暴露你的钱包地址，从而保护你的身份隐私。**
@@ -933,11 +1094,13 @@ ERC-7962 定义了两个标准：
 
 
 
+
 参加了LXDao的周会，初步了解了DAO的治理形式，了解过去一周LXDAO的动态
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1032,6 +1195,7 @@ ERC-7962 定义了两个标准：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1259,6 +1423,7 @@ ERC-7962 定义了两个标准：
 
 
 
+
 # **U卡是什么？**
 
 **U卡 = 加密资产账户 + 全球支付卡 + 钱包联动理财入口**
@@ -1342,6 +1507,7 @@ KYC 的核心目的是：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1550,6 +1716,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
