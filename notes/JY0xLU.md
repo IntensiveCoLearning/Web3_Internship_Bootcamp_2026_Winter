@@ -15,19 +15,44 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+今日学习入门hardhat v2合约框架
+
+-   编译合约`npx hardhat compile`
+    
+-   测试合约`npx hardhat test`
+    
+-   部署合约`npx hardhat ignition deploy ./ignition/modules/Lock.js`
+    
+-   连接钱包到hardhat network
+    
+
+启动hardhat所带的链，它将 公开一个 JSON-RPC 接口。
+
+`npx hardhat node`
+
+如果要针对hardhat network部署合约的话，还要在后面加上--network [localhost](http://localhost/)
+
+`npx hardhat ignition deploy ./ignition/modules/Lock.js --network localhost`
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 今日在外，车上看了一下reactive，不会，遂歇息
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 今日放假歇息
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 ## 🛠️ 第一章：数字世界的“极简主义”
@@ -122,6 +147,7 @@ AI 时代，文字创作的门槛降低了，但“好文字”的门槛反而�
 
 
 
+
 ## 一、 Uniswap V2：AMM 界的“极简主义者”
 
 V2 是所有自动做市商（AMM）的鼻祖，它的逻辑简单到一张纸就能写完。
@@ -178,6 +204,7 @@ V4 还没完全普及，但它是未来的大趋势，核心就是一个字：**
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -284,6 +311,7 @@ solidity笔记最后那个 Q&A 揭露了 Web3 的暗黑面：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -403,6 +431,7 @@ solidity笔记最后那个 Q&A 揭露了 Web3 的暗黑面：
 
 
 
+
 今天的分享会核心围绕 **ERC-7962** 协议展开，探讨了从 ERC-721 向更具隐私性和易用性的数字资产协议演进的路径
 
 ## 一、 核心课题：ERC-7962 的起源与初衷
@@ -458,6 +487,7 @@ solidity笔记最后那个 Q&A 揭露了 Web3 的暗黑面：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -595,6 +625,7 @@ Karen 等同学分享了在 Web3 社区建立个人品牌的“厚脸皮”起�
 
 
 
+
 * * *
 
 ## 🤖 AI 智能体的范式演进：从“对话框”走向“劳动力”
@@ -705,6 +736,7 @@ Web3 通过三层架构完美填补了上述挑战：
 
 
 
+
 这期内容确实非常硬核，特别是对于我们这些正在 2026 冬季 Web3 实习计划中“摸爬滚打”的开发者来说，合规就是我们的“保命符”。
 
 * * *
@@ -777,6 +809,7 @@ Web3 通过三层架构完美填补了上述挑战：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
