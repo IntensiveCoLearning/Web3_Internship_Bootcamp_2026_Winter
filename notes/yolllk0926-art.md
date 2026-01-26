@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+第三周周一，今天在对接黑客松co building部分的嘉宾
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 第二周周日打卡
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 \### Summary
 
@@ -79,11 +86,13 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 第二周周五打卡
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -98,6 +107,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 第二周周三打卡
 
 ![image.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yolllk0926-art/images/2026-01-21-1769003572189-image.jpg)
@@ -105,6 +115,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -125,11 +136,13 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 第二周打卡
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -154,6 +167,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 
 
+
 1.17 复盘学习
 
 ![IMG_2783.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yolllk0926-art/images/2026-01-17-1768644808338-IMG_2783.png)
@@ -161,6 +175,7 @@ This workshop offers a comprehensive and practical foundation for anyone serious
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -193,11 +208,13 @@ ai与基础概念
 
 
 
+
 1.15 先打卡
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -230,6 +247,7 @@ ai与基础概念
 
 
 
+
 工作行业黑话
 
 ![IMG_5387.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/yolllk0926-art/images/2026-01-13-1768275983965-IMG_5387.jpeg)
@@ -237,6 +255,7 @@ ai与基础概念
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
