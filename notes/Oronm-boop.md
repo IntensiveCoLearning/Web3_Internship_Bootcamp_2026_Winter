@@ -15,19 +15,27 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 今天准备把黑客松项目部署上线
@@ -38,11 +46,13 @@ timezone: UTC+8
 
 
 
+
 今天学习anchor框架
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -59,11 +69,13 @@ timezone: UTC+8
 
 
 
+
 做了一个solana前后端交互小demo：[Create Next App](https://solanacounter-iota.vercel.app/)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -86,11 +98,13 @@ timezone: UTC+8
 
 
 
+
 学习质押项目
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -309,6 +323,7 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -326,11 +341,13 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 今天了解一下solana公链，学习rust语言
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -440,11 +457,13 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 今日学习go-eth链下交互，学习使用foundry框架
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
