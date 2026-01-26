@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+作为黑客松活动运营筹备组-BD协调员
+
+1.  协调活动期间所有workshop/ama/cobuilding时间节点
+    
+2.  协调活动策划输出嘉宾画像+嘉宾要求
+    
+3.  对接bd触达话术
+    
+4.  基本确立邀请嘉宾
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 本周热点分析pt.2
 
 [Fight.ID](http://Fight.ID) 通过Web3重塑格斗粉丝经济
@@ -67,6 +81,7 @@ VS.传统Fan Token
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 本周热点分析
 
 周一开始加密货币市场出现大幅波动，BTC瞬间跌回过去一周涨幅，最直接的导火索，是近期川川又又又大胆发言关于美国关税政策的变动，进而改变了市场的核心宏观预期。
@@ -108,6 +123,7 @@ VS.传统Fan Token
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 根据社区运营指南中的活动策划SOP，完成了 X Space活动策划
@@ -247,6 +263,7 @@ Twitter Space：北京时间：1/28 18:30 （UTC+8）
 
 
 
+
 # Jan. Perp DEX（去中心化合约交易所）
 
 **热点聚焦：Lighter 空投是 2025 年底 Perp DEX 赛道最轰动的财富效应事件，不仅通过海量激励将自身推向市场中心，也深刻影响了整个赛道的竞争格局。**
@@ -361,6 +378,7 @@ Perp DEX赛道正从野蛮生长进入以效率、透明度和可持续性为核
 
 
 
+
 # 0121 - Crypto MKT播客分享
 
 ## Vs. Web2 MKT
@@ -451,6 +469,7 @@ Web3 投放预期 Eg：要上一个 tier1 交易所/非常大的VC加入/非常�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -757,6 +776,7 @@ DeFi 借贷是一种点对点的金融服务，它通过区块链上的智能合
 
 
 
+
 # 0119 社群运营分享会
 
 ## **搭建TG社群**
@@ -872,6 +892,7 @@ Pre2-3天：宣发预热 首次公告
 
 
 
+
 延续周末vibe，分析一下热点，这周叙事比较火热的infofi
 
 近期，从创作者晒马斯克给发的工资，何一下场喊话币安广场，CZbinance广场开直播，Infofi（社交化金融）赛道热度攀升。其核心逻辑很清晰：传统金融冰冷，社交充满粘性。将两者结合，是希望让用户的社交影响力、内容创作和社区活动能直接转化为可衡量的经济收益。
@@ -903,6 +924,7 @@ Kaito的历程清晰展现了Infofi赛道的核心考验：如何在理想（去
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -989,6 +1011,7 @@ BTC近期趋势分析：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1520,6 +1543,7 @@ RWA是加密经济与万亿美元传统资产的关键连接桥。它为DeFi带�
 
 
 
+
 将最近学习到的知识构建一个体系化的知识库
 
 ![Web3：新手入门.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/victoria0980/images/2026-01-15-1768472918608-Web3_____.png)
@@ -1854,6 +1878,7 @@ RWA是加密经济与万亿美元传统资产的关键连接桥。它为DeFi带�
 
 
 
+
 # **Web3运行原理**
 
 **资产安全与钱包原理**
@@ -2038,6 +2063,7 @@ trust wallet - 供应链攻击/恶意软件植入
 
 
 
+
 1.  行业全局及岗位概览学习
     
     ![0113 行业岗位概述.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/victoria0980/images/2026-01-13-1768288371227-0113_______.png)
@@ -2146,6 +2172,7 @@ Web2 到 Web3 学习笔记：Intro
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
