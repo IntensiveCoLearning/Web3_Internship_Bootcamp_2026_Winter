@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+今天一直在跑来跑去面试，没怎么看课。
+
+1.  今天看了一些rwa相关的内容。以下是从知乎复制粘贴来的：RWA即现实世界资产，是指通过[区块链技术](https://zhida.zhihu.com/search?content_id=258246743&content_type=Article&match_order=1&q=%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF&zhida_source=entity)，将现实中的实体资产，如房产、设备、债券、新能源设施等，转化为链上可交易的[数字通证](https://zhida.zhihu.com/search?content_id=258246743&content_type=Article&match_order=1&q=%E6%95%B0%E5%AD%97%E9%80%9A%E8%AF%81&zhida_source=entity)。其本质是一种[资产证券化](https://zhida.zhihu.com/search?content_id=258246743&content_type=Article&match_order=1&q=%E8%B5%84%E4%BA%A7%E8%AF%81%E5%88%B8%E5%8C%96&zhida_source=entity)，但借助区块链技术实现了更广泛的参与和更高效的交易。后面跟了一串好处：提升流动性降低交易成本……
+    
+2.  我看到了这样一个数据：Archax利用XRPL代币[**化了abrdn价值38亿英镑的美元流动性基金（Lux）**](https://medium.com/ripplexdev/potential-applications-of-blockchain-technology-in-real-world-asset-rwa-management-39e843dd1b98)的一部分。这些低风险投资工具有望获得比稳定币更高的收益，使投资者能够在最大化投资组合风险的同时获得回报。这意味着rwa目前在什么深度上应用呢？还是不太能理解
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 经过一个星期的努力，终于看完了b站最终剪辑版v神演讲系列，可喜可贺。我应该写一个观后总结来着，但是我的实操提案还没写完，所以又要往后拖延了。。。
 
 这两天一直在拖沓地找实操的资料，发现今天要截止了，于是乎……
@@ -27,11 +37,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 今天在找素材，看了一些关于离网生活的内容。很惊讶去中心化社区居然在阿根廷等第三世界国家，街头随处可见的加密货币兑换点，以太坊和Solidity课程进入阿根廷高中教育系统
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 今天又看了一些021学习以太坊，主要是第四到第五部份。
@@ -46,11 +58,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天开始玩Remix ，但是才做了使用教程的部份。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -62,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -82,6 +97,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 我今天看了b站的30分钟精简版演讲，这个演讲主要展现了以太坊的发展方向。我对layer1和layer2理解多加入了分工和保障的部份。
 
 此外我看了部份p2共享宣言资源的部份章节。书中提到它运用了区块链技术来形成一个全球性的账本
@@ -89,6 +105,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -113,6 +130,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天我去了解了些关于法币和代币的基础概念。我从知乎看到的文章认为法币是国家以法律形式赋予其强制流通使用的货币。**代币（Token）** 是区块链上的 **数字资产**，具有一定的价值、功能或权益。它与 **区块链原生币（如 ETH、BTC）** 不同，通常是在现有区块链（如以太坊、BSC、Solana）上发行的。（复制来的）
 
 文章中所例举的代币类型就不一一赘述了……
@@ -122,6 +140,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
