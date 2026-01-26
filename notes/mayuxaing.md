@@ -15,8 +15,422 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+\# Scaffold-ETH 2
+
+Scaffold-ETH 2 (SE-2) 是目前以太坊生态中最主流、最高效的\*\*全栈开发脚手架（Boilerplate）\*\*。
+
+对于开发者，尤其是刚入门 Web3 的工程师，它解决了最大的痛点：\*\*如何在本地快速搭建一套包含“前端 UI + 智能合约 + 本地测试链 + 钱包连接”的完整环境。\*\*
+
+\---
+
+\### 1. 核心架构：由什么组成？
+
+SE-2 并不是单一的工具，而是一套经过严选的技术栈组合。它将前后端打通，让你只需关注业务逻辑。
+
+| 组件层级 | 技术选型 | 作用 |
+
+| --- | --- | --- |
+
+| \*\*前端框架\*\* | \*\*Next.js\*\* (React) + TypeScript | 构建用户界面，处理页面逻辑。 |
+
+| \*\*合约框架\*\* | \*\*Foundry\*\* 或 \*\*Hardhat\*\* | 编写、编译、部署、测试智能合约。 |
+
+| \*\*交互库\*\* | \*\*Wagmi\*\* + \*\*Viem\*\* | React Hooks 集合，负责前端与区块链通信（读写合约）。 |
+
+| \*\*钱包组件\*\* | \*\*RainbowKit\*\* | 处理钱包连接（MetaMask, WalletConnect 等）的 UI 和逻辑。 |
+
+| \*\*样式\*\* | \*\*Tailwind CSS\*\* | 快速构建现代化的前端样式。 |
+
+\### 2. 核心功能：为什么它是“神器”？
+
+对于初学者，SE-2 提供了三个极具价值的功能，能够大幅缩短“编写代码”到“看到效果”的反馈周期。
+
+\#### A. 燃烧钱包 (Burner Wallet)
+
+\* \*\*痛点\*\*：每次本地测试都要在 MetaMask 里切换网络、导入私钥、点击确认，非常繁琐。
+
+\* \*\*SE-2 方案\*\*：它会在浏览器本地自动生成一个“一次性钱包”并预充值。你刷新页面，钱包就自动连上了。这使得开发调试极其流畅，无需手动签名确认每一笔交易。
+
+\#### B. 调试合约页面 (Debug Contracts Page)
+
+\* \*\*痛点\*\*：写完 Solidity 合约后，通常需要写脚本或做前端 UI 才能测试函数。
+
+\* \*\*SE-2 方案\*\*：它会根据你的合约 ABI \*\*自动生成图形化 UI\*\*。
+
+\* 读取函数（Read）：直接显示当前值。
+
+\* 写入函数（Write）：提供输入框和按钮，点击即可发起交易。
+
+\* \*\*价值\*\*：这是 SE-2 的杀手级功能。你只需修改 Solidity 代码，前端调试页面会自动更新，让你立即验证逻辑。
+
+\#### C. 更加紧密的反馈循环
+
+\* 在 `packages/hardhat` (或 foundry) 中修改合约 -> `yarn deploy` -> 前端自动感知合约地址和 ABI 的变化 -> 页面 UI 更新。
+
+\### 3. 如何上手 (Quick Start)
+
+作为工程师，直接看命令是最快的理解方式。确保本地已安装 Node.js (v18+) 和 Yarn。
+
+1\. \*\*初始化项目\*\*
+
+\`\`\`bash
+
+npx create-eth@latest 项目名
+
+\`\`\`
+
+2\. \*\*启动本地链 (Terminal 1)\*\*
+
+启动一个本地的以太坊节点（类似 Ganache，但更轻量）。
+
+\`\`\`bash
+
+yarn chain
+
+\`\`\`
+
+3\. \*\*部署合约 (Terminal 2)\*\*
+
+将 `YourContract.sol` 部署到本地链。
+
+\`\`\`bash
+
+yarn deploy
+
+\`\`\`
+
+4\. \*\*启动前端 (Terminal 3)\*\*
+
+启动 Next.js 前端，访问 `http://localhost:3000`[。](http://localhost:3000`。)
+
+\`\`\`bash
+
+yarn start
+
+\`\`\`
+
+\# Foundry + create-wagmi
+
+这是一个 \*\*“分离式全栈开发标准作业程序 (SOP)”\*\*。
+
+\### 第一步：目录结构规划 (WSL 磁盘救星)
+
+不要把它们混在一起，建立两个独立的文件夹。
+
+Bash
+
+\`\`\`
+
+mkdir ~/web3\_project
+
+cd ~/web3\_project
+
+\# 1. 后端（合约）
+
+mkdir contracts
+
+\# 2. 前端（UI）
+
+mkdir frontend
+
+\`\`\`
+
+\---
+
+\### 第二步：后端 (Foundry) - 极速部署
+
+我们需要一个合约，并拿到 \*\*ABI\*\* 和 \*\*地址\*\*。
+
+\*\*1. 初始化与启动本地链\*\*
+
+Bash
+
+\`\`\`
+
+cd ~/web3\_project/contracts
+
+forge init --no-git
+
+\# 启动本地测试链 (新开一个终端保持运行)
+
+anvil
+
+\`\`\`
+
+\*\*2. 写一个最简单的测试合约\*\*
+
+修改 `src/Counter.sol` (或者你自己的审计合约)：
+
+Solidity
+
+\`\`\`
+
+// src/Counter.sol
+
+contract Counter {
+
+uint256 public number;
+
+function setNumber(uint256 newNumber) public { number = newNumber; }
+
+function increment() public { number++; }
+
+}
+
+\`\`\`
+
+\*\*3. 部署并获取关键信息\*\*
+
+在 `contracts` 目录下执行：
+
+Bash
+
+\`\`\`
+
+\# 部署到本地 Anvil 链 (默认端口 8545)
+
+\# 私钥用的是 Anvil 默认的第一个测试账户
+
+forge create src/Counter.sol:Counter \\
+
+\--rpc-url [http://127.0.0.1:8545](http://127.0.0.1:8545) \\
+
+\--private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+\`\`\`
+
+🚨 \*\*记录下终端输出的 `Deployed to: 0x...` 地址！\*\*
+
+\*\*4. 导出 ABI\*\*
+
+Foundry 编译后的 ABI 在 `out/Counter.sol/Counter.json` 里。你需要把这个 JSON 里的 `abi` 部分复制出来。
+
+\---
+
+\### 第三步：前端 (create-wagmi) - 极速搭建
+
+\*\*1. 初始化\*\*
+
+Bash
+
+\`\`\`
+
+cd ~/web3\_project/frontend
+
+npm create wagmi@latest
+
+\# 交互选择：React -> Vite -> Injected (或者 RainbowKit) -> TypeScript
+
+npm install
+
+\`\`\`
+
+\*\*2. 配置链 (wagmi.config.ts 或 App.tsx)\*\*
+
+打开 `src/wagmi.ts` (或 `config.ts`)，确保包含了 `foundry` 链（对应本地 Anvil）。
+
+TypeScript
+
+\`\`\`
+
+import { http, createConfig } from 'wagmi'
+
+import { foundry } from 'wagmi/chains' // <--- 关键：导入 foundry 链
+
+import { injected } from 'wagmi/connectors'
+
+export const config = createConfig({
+
+chains: \[foundry\], // <--- 确保这里有 foundry
+
+connectors: \[injected()\],
+
+transports: {
+
+\[[foundry.id](http://foundry.id)\]: http(),
+
+},
+
+})
+
+\`\`\`
+
+\---
+
+\### 第四步：万能交互模板 (核心代码)
+
+这是你要的“方案”。我在 `src` 下新建一个组件 `ContractDemo.tsx`。
+
+这个组件封装了\*\*读取\*\*和\*\*写入\*\*的最简逻辑。你只需要把你的 `ABI` 和 `ADDRESS` 填进去。
+
+TypeScript
+
+\`\`\`
+
+import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+
+import { useState } from 'react'
+
+// 1. 在这里填入你刚才部署的合约地址
+
+const CONTRACT\_ADDRESS = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+
+// 2. 在这里粘贴你的 ABI (从 foundry out 文件夹里复制)
+
+const CONTRACT\_ABI = \[
+
+{ "type": "function", "name": "number", "inputs": \[\], "outputs": \[{ "name": "", "type": "uint256", "internalType": "uint256" }\], "stateMutability": "view" },
+
+{ "type": "function", "name": "increment", "inputs": \[\], "outputs": \[\], "stateMutability": "nonpayable" },
+
+{ "type": "function", "name": "setNumber", "inputs": \[{ "name": "newNumber", "type": "uint256", "internalType": "uint256" }\], "outputs": \[\], "stateMutability": "nonpayable" }
+
+\] as const;
+
+export function ContractDemo() {
+
+const \[value, setValue\] = useState('')
+
+const { data: hash, writeContract, isPending } = useWriteContract()
+
+// A. 读取数据 (Read)
+
+const { data: currentNumber, refetch } = useReadContract({
+
+address: CONTRACT\_ADDRESS,
+
+abi: CONTRACT\_ABI,
+
+functionName: 'number',
+
+})
+
+// B. 等待交易确认 (Wait for Tx)
+
+const { isLoading: isConfirming, isSuccess: isConfirmed } =
+
+useWaitForTransactionReceipt({ hash })
+
+// C. 写入操作 (Write)
+
+const handleSetNumber = async () => {
+
+writeContract({
+
+address: CONTRACT\_ADDRESS,
+
+abi: CONTRACT\_ABI,
+
+functionName: 'setNumber',
+
+args: \[BigInt(value)\], // 注意：Wagmi 处理数字通常需要 BigInt
+
+})
+
+}
+
+return (
+
+<div style={{ padding: '20px', border: '1px solid #333', borderRadius: '8px', maxWidth: '400px' }}>
+
+<h2>Foundry + Wagmi 控制台</h2>
+
+{/\* 显示读取的数据 \*/}
+
+<div style={{ marginBottom: '20px' }}>
+
+<strong>链上当前值: </strong>
+
+<span style={{ fontSize: '24px', color: '#61dafbaa' }}>
+
+{currentNumber?.toString() ?? '加载中...'}
+
+</span>
+
+<button onClick={() => refetch()} style={{ marginLeft: '10px' }}>刷新</button>
+
+</div>
+
+{/\* 写入操作区域 \*/}
+
+<div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+
+<input
+
+type="number"
+
+placeholder="输入新数字"
+
+value={value}
+
+onChange={(e) => setValue([e.target](http://e.target).value)}
+
+style={{ padding: '8px' }}
+
+/>
+
+<button
+
+disabled={isPending || isConfirming}
+
+onClick={handleSetNumber}
+
+\>
+
+{isPending ? '请在钱包签名...' : isConfirming ? '交易确认中...' : '写入数据 (Set Number)'}
+
+</button>
+
+{/\* 交易状态反馈 \*/}
+
+{hash && <div style={{ fontSize: '12px', wordBreak: 'break-all' }}>Tx Hash: {hash}</div>}
+
+{isConfirmed && <div style={{ color: 'green' }}>✅ 交易成功！</div>}
+
+</div>
+
+</div>
+
+)
+
+}
+
+\`\`\`
+
+\*\*最后一步\*\*：在 `App.tsx` 里引入这个组件即可。
+
+TypeScript
+
+\`\`\`
+
+import { ContractDemo } from './ContractDemo'
+
+// ... inside App return ...
+
+<ContractDemo />
+
+\`\`\`
+
+\---
+
+\### 这套方案对安全审计的价值
+
+1\. \*\*透明性\*\*`useWriteContract` 让你清楚地看到前端是如何构造 Transaction Data 的。如果你想测试前端注入攻击，你可以直接修改 `args` 参数。
+
+2\. \*\*轻量级\*\*：整个前端只有 200MB，你可以随时 zip 打包发给别人，或者传到 Vercel。
+
+3\. \*\*零魔法\*\*：相比 Scaffold-ETH 2 的自动挂钩，这里每一步（地址、ABI、调用）都是你手动控制的，非常适合理解底层交互。
+
+\# 我的合约
+
+messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5259512cdC6b5C#code](https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5259512cdC6b5C#code)
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -160,6 +574,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 \# 📝 ENS (Ethereum Name Service) 核心概念笔记
 
@@ -388,6 +803,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -466,6 +882,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -756,6 +1173,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -801,6 +1219,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -917,6 +1336,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -1002,6 +1422,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1102,6 +1523,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1238,6 +1660,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -1339,6 +1762,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1498,6 +1922,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
