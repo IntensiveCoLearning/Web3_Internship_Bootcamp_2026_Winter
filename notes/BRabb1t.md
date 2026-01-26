@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+\### 黑客松
+
+重要的还是前端和剪辑，哈哈哈
+
+\### Vibe Coding
+
+关注 0xhardman
+
+写代码就是说出你的需求即可
+
+VibeCoding的核心能力就是上下文管理能力
+
+1\. 切换 plan mode
+
+2\. 勤看 context
+
+3\. /compact 让它先压缩 再进行下一个功能的编写
+
+4\. 还可以给 tui 添加官方的 plugin 来管理开发项目（多跟 ai 请教，也要询问 ai 有什么地方是不清楚的）
+
+5\. /skills 其实就是 预制的 prompt 加上脚本，来实现可重复的功能
+
+6\. LSP 插件还是很重要的，可以让 AI 直接找到相关的代码，而不是 find 这种暴力的搜索
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 \### Scaffold-Eth 介绍
 
 **核心理念：可视化迭代 (Tinkering)**
@@ -119,6 +147,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 ### 读取合约 (Read Contracts)
 
 1\. **核心三要素**： 要与合约交互，你需要：
@@ -180,6 +209,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -225,6 +255,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -287,6 +318,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -441,6 +473,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -502,6 +535,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -527,6 +561,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -563,6 +598,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -617,6 +653,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -662,6 +699,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -687,6 +725,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -737,6 +776,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
