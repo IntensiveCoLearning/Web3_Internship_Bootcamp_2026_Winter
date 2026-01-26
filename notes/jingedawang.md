@@ -15,8 +15,339 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+Solidity编程语言
+
+静态类型，支持继承，支持用户定义类型。
+
+以版本声明开始
+
+```jsx
+pragma solidity ^0.8.0;
+```
+
+基本数据类型
+
+-   bool
+    
+-   uint8/uint16/uint256/uint
+    
+-   int8/int16/int256/int
+    
+-   address
+    
+-   bytes1/bytes32
+    
+-   bytes memory
+    
+    -   bytes memory data = "Hello World”
+        
+-   string
+    
+    -   string name = "Alice”
+        
+
+复合数据类型
+
+-   数组：T\[k\]
+    
+    -   uint\[5\] numbers
+        
+-   动态数组T\[\]
+    
+    -   uint\[\] memory list
+        
+-   映射 mapping(K ⇒ V)
+    
+    -   mapping(address => uint256) balances
+        
+-   结构体 struct
+    
+    -   struct Person { string name; uint age; }
+        
+-   枚举 enum
+    
+    -   enum Status { Pending, Active, Inactive }
+        
+
+函数可见性修饰符
+
+| 修饰符 | 可见范围 | 描述 | 使用场景 |
+| --- | --- | --- | --- |
+| public | 内部 + 外部 | 任何地方都可以调用 | 对外提供的公共接口 |
+| external | 仅外部 | 只能从合约外部调用 | 外部用户接口，gas 效率更高 |
+| internal | 内部 + 继承 | 当前合约和子合约可调用 | 内部逻辑函数，需要被继承 |
+| private | 仅内部 | 只有当前合约可调用 | 私有实现细节 |
+
+函数状态修饰符
+
+| 修饰符 | 状态读取 | 状态修改 | Gas 消耗 | 描述 |
+| --- | --- | --- | --- | --- |
+| pure | ❌ | ❌ | 低 | 不读取也不修改状态的函数 |
+| view | ✅ | ❌ | 低 | 只读取状态，不修改状态 |
+| payable | ✅ | ✅ | 正常 | 可以接收以太币的函数 |
+| 无修饰符 | ✅ | ✅ | 正常 | 可以读取和修改状态 |
+
+智能合约本质上是一个状态机，通过交易改变合约状态。这个状态是不是指的是合约的成员变量？
+
+使用事件Event记录重要的状态变化，便于前端监听和日志记录。
+
+一段简单的合约代码
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    /*
+    * 可以通过内部与外部函数更改变量
+    * public可以通过前端代码访问
+    */
+    uint256 public totalSupply;
+    mapping(address => uint256) private balances;
+    address public owner;
+
+    // 常量
+    uint256 public constant MAX_SUPPLY = 1000000;
+
+    // 不可变量（构造函数中设置一次）
+    uint256 public immutable deploymentTime;
+
+    constructor() {
+        owner = msg.sender;
+        deploymentTime = block.timestamp;
+        totalSupply = 0;
+    }
+}
+```
+
+函数声明格式
+
+```solidity
+function <函数名>(<参数列表>)
+    <可见性>
+    <状态可变性>
+    <修饰符列表>
+    <虚拟/重写关键字>
+    returns (<返回值列表>)
+{
+    // 函数体
+}
+```
+
+各部分含义如下：
+
+-   `<函数名>`：函数的名称；
+    
+-   `<参数列表>`：传入函数的参数；
+    
+-   `<可见性修饰符>`：如 `public`、`private`、`internal`、`external`；
+    
+-   `<状态可变性修饰符>`：如 `view`、`pure`、`payable`；
+    
+-   `<函数修饰符>`：如 `onlyOwner` 等自定义逻辑控制；
+    
+-   `virtual/override`：用于支持继承与函数重写；
+    
+-   `returns`：定义返回值及其类型。
+    
+
+函数可见性的用例
+
+```solidity
+contract VisibilityExample {
+    // 仅当前合约可访问
+    function privateFunc() private pure returns(uint256) { return 1; }
+    // 当前合约和继承合约可访问
+    function internalFunc() internal pure returns(uint256) { return 2; }
+    // 所有人可访问
+    function publicFunc() public pure returns(uint256) { return 3; }
+    // 仅外部调用
+    function externalFunc() external pure returns(uint256) { return 4; }
+}
+```
+
+函数状态修饰符的用例
+
+```solidity
+contract StateModifiers {
+    uint256 public count = 0;
+
+    // view: 只读函数，不修改状态
+    function getCount() public view returns(uint256) {
+        return count;
+    }
+
+    // pure: 纯函数，不读取也不修改状态
+    function add(uint256 a, uint256 b) public pure returns(uint256) {
+        return a + b;
+    }
+
+    // payable: 可接收以太币
+    function deposit() public payable {
+        // msg.value 是发送的以太币数量
+    }
+
+    // 默认：可修改状态
+    function increment() public {
+        count++;
+    }
+}
+```
+
+函数参数和返回值的用例
+
+```solidity
+// 多个返回值
+function getPersonInfo() public pure returns(string memory name, uint256 age) {
+    name = "Alice";
+    age = 25;
+}
+
+// 命名返回值
+function calculate(uint256 a, uint256 b) public pure returns(uint256 sum, uint256 product) {
+    sum = a + b;
+    product = a * b;
+    // 自动返回命名变量
+}
+
+// 调用带多返回值的函数
+function callExample() public pure {
+    (string memory name, uint256 age) = getPersonInfo();
+    // 或者忽略某些返回值
+    (, uint256 productOnly) = calculate(5, 3);
+}
+```
+
+函数修饰符的用例
+
+```solidity
+contract ModifierExample {
+    address public owner;
+    bool public paused = false;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // 自定义修饰符
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not the owner");
+        _;  // 继续执行被修饰的函数
+    }
+
+    modifier whenNotPaused() {
+        require(!paused, "Contract is paused");
+        _;
+    }
+
+    function togglePause() public onlyOwner {
+        paused = !paused;
+    }
+
+    // 使用多个修饰符
+    function criticalFunction() public onlyOwner whenNotPaused {
+        // 函数逻辑
+    }
+}
+```
+
+继承与函数重写
+
+```solidity
+// 基础合约
+contract Animal {
+    string public name;
+
+    constructor(string memory _name) {
+        name = _name;
+    }
+
+    function speak() public virtual returns(string memory) {
+        return "Some sound";
+    }
+}
+
+// 继承合约
+contract Dog is Animal {
+    constructor(string memory _name) Animal(_name) {}
+
+    // 重写父类函数
+    function speak() public pure override returns(string memory) {
+        return "Woof!";
+    }
+}
+
+// 多重继承
+contract Pet is Animal {
+    address public owner;
+
+    constructor(string memory _name, address _owner) Animal(_name) {
+        owner = _owner;
+    }
+}
+
+contract Labrador is Dog, Pet {
+    constructor(string memory _name, address _owner)
+        Dog(_name)
+        Pet(_name, _owner) {}
+}
+```
+
+接口与抽象合约
+
+```solidity
+// 接口定义
+interface IERC20 {
+    function transfer(address to, uint256 amount) external returns (bool);
+    function balanceOf(address account) external view returns (uint256);
+}
+
+// 抽象合约
+abstract contract AbstractToken {
+    string public name;
+
+    // 没有函数体的抽象函数，必须被子类使用 override 关键词重载实现
+    function totalSupply() public virtual returns (uint256);
+
+    // 有函数体实现的抽象函数，子类可以不使用 override 关键词重载直接继承已有的实现，也可以选择使用 override 关键词重载实现
+    function decimals() public view virtual returns (uint8) {
+        return 18;
+    }
+}
+```
+
+和Java的接口、抽象类比较像？
+
+事件机制
+
+```solidity
+contract EventExample {
+    // 定义事件
+    event Transfer(address indexed from, address indexed to, uint256 amount);
+    event Approval(address indexed owner, address indexed spender, uint256 amount);
+
+    mapping(address => uint256) public balances;
+
+    function transfer(address to, uint256 amount) public {
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+
+        // 触发事件
+        // 可以在区块链浏览器查找到当前事件记录
+        emit Transfer(msg.sender, to, amount);
+    }
+}
+```
+
+类似于C#中的delegate回调机制。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 Hardhat需要用JS编写部署的代码。感觉文档写的不是特别容易理解。Web3实习手册里面也没说清楚。
 
 Web3的前端一般通过调用RPC节点的服务实现查询余额、发起交易等功能。
@@ -51,6 +382,7 @@ Web3的前端一般通过调用RPC节点的服务实现查询余额、发起交�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ## **Web3 工作方式**
 
@@ -186,6 +518,7 @@ KR的内容要尽可能量化。比如
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 Jeff Huang老师讲Uniswap工作原理解析
 
 p是x用y表示的价格，也就是曲线的斜率。
@@ -229,6 +562,7 @@ BD：Business Development，商务拓展。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -314,6 +648,7 @@ Web3 + 乡村建设：南塘DAO
 
 
 
+
 ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数据仍然需要压缩上链。为了进一步提高效率，新的方案不把交易数据上链，只上链交易树的root hash以及ZK证明。这就是**Validium**。
 
 **Volition**进一步改进Validium，运用用户选择是否让交易上L1链。大额交易，对安全性要求高的交易可以选择上L1，其它的和Validium一样。
@@ -329,6 +664,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -391,6 +727,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -545,11 +882,13 @@ SNARK落地更快，STARK前景更好。
 
 
 
+
 今天参加了周会，提了一些问题。其它的没什么进度。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -634,6 +973,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 
 
+
 几个问题
 
 -   web3比web2快？我理解其实不会，只是上去了合规审查的部分，出海更方便了。Ricky也委婉表达了这个观点。
@@ -645,6 +985,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -814,6 +1155,7 @@ Gas 费用 = **用多少 × 每单位多少钱**，就像你打车一样：
 
 
 
+
 ## **以太坊概览**
 
 以太坊是区块链2.0，比特币是区块链1.0。
@@ -884,6 +1226,7 @@ MetaMask这种钱包App生成私钥后会保存在本地，设置的密码用来
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
