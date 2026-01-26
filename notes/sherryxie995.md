@@ -15,8 +15,68 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+### 1.1 从 Web1 到 Web3：互联网权利的回归
+
+Web3 并非一个孤立的技术名词，它是互联网架构从“中心化”向“去中心化”演进的第三阶段。
+
+| 维度 | Web1 (1990-2004) | Web2 (2004-至今) | Web3 (正在发生) |
+| 核心特征 | Read (只读) | Read + Write (交互) | Read + Write + Own (所有权) |
+| 交互模式 | 静态网页、单向传递 | 社交媒体、平台经济 | 去中心化网络、点对点交易 |
+| 数据所有权 | 网站主所有 | 平台巨头垄断 | 用户个人所有 (Self-Sovereignty) |
+| 信任机制 | 内容可信度低 | 信任第三方中介 (如支付宝/银行) | Trustless (去信任，信任算法) |
+
+* * *
+
+### 1.2 Web3 的核心定义
+
+**Web3 是一个基于区块链技术的、由用户构建并拥有的去中心化网络。**
+
+在你的专业视角下，Web3 可以被看作是：
+
+> 一个由**密码学原语**（哈希、签名等）构建出的**全网共识状态机**。
+
+### 1.3 Web3 的三大支柱
+
+A. 区块链 (Blockchain) — 信任底座
+
+区块链是 Web3 的物理/逻辑载体。它通过**默克尔树 (Merkle Tree)** 和**链式结构**确保数据的不可篡改性。
+
+-   **Layer 1 (结算层)：** 如以太坊 (Ethereum)、Solana。
+    
+-   **Layer 2 (扩容层)：** 通过计算外包（如 ZK-Rollups）来提升效率，这其中涉及大量的 **Succinct Non-Interactive Arguments of Knowledge (SNARKs)**。
+    
+
+B. 数字钱包 (Wallet) — 身份与交互入口
+
+在 Web3 中，你的“账号”不再是存储在公司数据库里的 `username/password`，而是密码学中的**私钥 (Private Key)**。
+
+-   **私钥即权力：** 钱包本质上是一个**密钥管理工具**。
+    
+-   **DID (去中心化身份)：** 利用公私钥对生成的地址作为全球唯一的身份标识。
+    
+
+C. 智能合约 (Smart Contract) — 自动化的法律
+
+智能合约是运行在区块链上的程序（如以太坊的 EVM）。它将“法律协议”转化为“代码”，通过密码学签名确保合约执行的真实意图。
+
+* * *
+
+### 1.4 密码学在 Web3 中的关键位置
+
+作为本科阶段学过密码学的你，会发现 Web3 的进阶之路其实就是**应用密码学**的深度实践：
+
+1.  **哈希函数 (SHA-256/Keccak-256)：** 用于工作量证明 (PoW) 和数据完整性校验。
+    
+2.  **椭圆曲线数字签名 (ECDSA/EdDSA)：** 用于交易授权和身份验证（例如以太坊使用的 `secp256k1`）。
+    
+3.  **同态加密与零知识证明 (ZKP)：** 这是进阶 Web3 的分水岭。如何证明你“拥有某种资产”或“符合某种条件”却不泄露具体数值？这正是 **zk-SNARKs** 等协议在隐私计算和扩容方案中的核心应用。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 三个最适合初学者的实战项目（CTF/Wargames）。它们像游戏闯关一样，每过一关，你的技术身价就涨一分。
 
 1\. Ethernaut (OpenZeppelin) —— “Web3 安全的初学者圣经”
@@ -72,6 +132,7 @@ Learn Smart Contract Auditing for Free: Best CTFs Compared
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 ## 第一章：Web3 概论——从信任中介到数学主权
 
@@ -154,6 +215,7 @@ Web3 的整个大厦几乎全由以下三个支柱支撑：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 ## 一、 Solidity 的本质：状态机与 Gas
@@ -289,6 +351,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 
 
 
+
 ## 一、 Web3 为什么需要 ZK？
 
 在区块链上，ZK 主要解决两个核心矛盾：
@@ -340,6 +403,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -410,6 +474,7 @@ Web3 运营更关注**链上数据**，因为这是无法作假的：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -528,6 +593,7 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -617,11 +683,13 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -866,6 +934,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -937,6 +1006,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1182,6 +1252,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -1314,6 +1385,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1470,6 +1542,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
