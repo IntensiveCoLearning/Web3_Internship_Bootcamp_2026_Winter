@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+hi
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 Hi I’m coming
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 ### 1\. 从 Data Structure 到 Social Structure
 
@@ -72,6 +79,7 @@ Hi I’m coming
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 ### 1\. Merkle Tree: 区块链的“骨架”
@@ -130,6 +138,7 @@ Hi I’m coming
 
 
 
+
 ### 1\. AI + Blockchain: 硅基生命的“契约”
 
 这是 2026 年最性感的叙事。
@@ -184,6 +193,7 @@ Hi I’m coming
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -254,11 +264,13 @@ Hi I’m coming
 
 
 
+
 第四天呢
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -322,6 +334,7 @@ Hi I’m coming
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -402,6 +415,7 @@ Hi I’m coming
 
 
 
+
 # 今天我的感悟是关于，它是如何跑起来的：
 
 ### 1\. 交易的生命周期：从 Wallet 到 Blockchain
@@ -450,6 +464,7 @@ Web3 看着高大上，其实拆开了看，架构跟 Web2 完全不同：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
