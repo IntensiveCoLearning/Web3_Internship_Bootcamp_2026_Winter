@@ -15,8 +15,93 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# Bun + Hardhat 快速开发
+
+用 Bun 替代 npm/yarn 作为包管理器，大幅提升 Hardhat 构建、部署的运行效能，开发流程更轻快。
+
+## 一、快速搭建步骤
+
+1.  新建项目目录并初始化
+    
+
+bash
+
+```
+mkdir hardhat-bun-demo && cd hardhat-bun-demo
+bun init -y  # 快速生成基础项目配置
+```
+
+2.  安装 Hardhat 核心依赖
+    
+
+bash
+
+```
+bun add -D hardhat @nomicfoundation/hardhat-ignition  # 开发依赖安装
+```
+
+3.  初始化 Hardhat 开发环境
+    
+
+bash
+
+```
+bunx hardhat init  # 按交互提示完成配置（推荐创建基础示例项目）
+```
+
+## 二、部署模块编写（Ignition 方式）
+
+在 `ignition/modules/` 目录下新建 `DemoDeploy.ts`，定义合约部署逻辑：
+
+typescript
+
+运行
+
+```
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
+
+// 定义部署模块，包含合约部署+初始化调用
+export default buildModule("DemoDeployModule", (module) => {
+  // 部署Demo合约（需提前在contracts目录创建对应合约）
+  const demoContract = module.contract("Demo");
+  
+  // 部署后立即调用合约初始化方法（示例：设置初始值为10）
+  module.call(demoContract, "initialize", [10n]);
+
+  return { demoContract }; // 暴露部署后的合约实例
+});
+```
+
+## 三、本地部署与运行
+
+1.  启动 Hardhat 本地节点
+    
+
+bash
+
+运行
+
+```
+bunx hardhat node  # 启动本地测试节点，生成测试账户
+```
+
+2.  执行合约部署
+    
+
+bash
+
+运行
+
+```
+bunx hardhat ignition deploy ignition/modules/DemoDeploy.ts --network localhost
+```
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # Reactive Network 学习笔记
 
 ## 1\. 什么是 Reactive 合约？
@@ -126,6 +211,7 @@ forge install
 
 
 
+
 * * *
 
 # Crowdfunding DApp 部署指南（挑战1）
@@ -209,6 +295,7 @@ ps :第一次部署时间比较长，我花了26min等待，之间因为时间�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -606,6 +693,7 @@ async def main():
 
 
 
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -720,6 +808,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -773,6 +862,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1113,6 +1203,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1514,6 +1605,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2144,6 +2236,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -2210,6 +2303,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2429,6 +2523,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -2585,6 +2680,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2683,6 +2779,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2825,6 +2922,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
