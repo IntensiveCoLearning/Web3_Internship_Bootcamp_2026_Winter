@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+分享会打卡 笔记链接[https://www.notion.so/vibe-coding-2f41dfdccdc180d7a35ffc94daa3f73b?source=copy\_link](https://www.notion.so/vibe-coding-2f41dfdccdc180d7a35ffc94daa3f73b?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 1.25周末听space打卡 大家想法好有意思 很受启发
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 124打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
@@ -30,11 +37,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 第二周例会打卡
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -47,11 +56,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 Uniswap原理分享会
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -68,11 +79,13 @@ Uniswap原理分享会
 
 
 
+
 Web3社区运营分享会
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -104,6 +117,7 @@ ERC - 7962 分享会
 
 
 
+
 LXDAO 周会
 
 ![1484fc74b0f717955696f5d8dbe1a846.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Jiiiiiiiiil/images/2026-01-17-1768620811913-1484fc74b0f717955696f5d8dbe1a846.png)
@@ -121,11 +135,13 @@ LXDAO 周会
 
 
 
+
 第一周例会打卡
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -154,6 +170,7 @@ Web3 AI agent分享会学习打卡
 
 
 
+
 Web3安全&合规分享会打卡
 
 今日加班周末补课
@@ -161,6 +178,7 @@ Web3安全&合规分享会打卡
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -204,6 +222,7 @@ Priority Fee：用户自愿支付的小费，用于激励验证者优先打包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
