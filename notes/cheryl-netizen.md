@@ -15,8 +15,84 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# Web3 简历优化与求职思维复盘笔记
+
+一、 核心定位：构建“差异化竞争优势” (Unique Selling Proposition)
+
+在众多的运营/实习生候选人中，你的核心竞争力不是单一维度的，而是“复合型”的。
+
+-   **人设公式：** **名校合规背景 (Trust)** + **Web3 原生技能 (Native)** + **苏黎世地理优势 (Global)**。
+    
+-   **具体打法：**
+    
+
+在简历中不仅要列出学校，更要通过“FinTech”、“Financial Law”等课程，证明你懂 RealFi/RWA 的底层资产逻辑 。
+
+**“线上+线下”全能：**
+
+**线上：** DeShare Finance 经历证明你会玩流量、懂 AIGC、能做增长 。
+
+**线下：** 苏黎世学联 (CSSA) 经历证明你能搞定供应商、场地和现场控场 (Logistics & Execution)。
+
+二、 简历内容重构：从“做任务”到“扛指标”
+
+简历不应是任务清单 (Task List)，而应该是成就清单 (Achievement List)。
+
+| 原始经历 (Action) | 优化后的叙事 (Narrative) | 简历体现关键词 |
+| 大使任务： 发推特、点赞、@好友 | 增长运营： 策划低成本内容活动，通过 Narratives 连接项目与用户。 | Orchestrated community activation, Bridged the gap |
+| 作图： 用 AI 做表情包 | 内容策略： 利用 AIGC 工具降本增效，输出高转化率视觉素材。 | Leveraged AI tools (Midjourney), High-quality visual assets |
+| 领测试币： 操作 Sepolia 水龙头 | 产品体感： 理解链上交互闭环 (Gas, RPC, Hash)，具备用户痛点洞察力。 | On-chain Interaction, Dune Analytics |
+| 看数据： 看 Dune 看板 | 数据驱动： 基于链上数据分析用户行为，辅助运营决策。 | Synthesized key market insights, Strategy optimization |
+
+三、 针对性面试策略：场景化答题 (STAR法则)
+
+**1\. 针对 Pharos (Layer 1 / RWA):**
+
+**核心痛点：** 生态建设、黑客松落地、RWA 叙事。
+
+**你的回答侧重：**
+
+**学术结合：** 强调在 UZH 学到的金融法知识，如何帮助理解 Pharos 的资产上链合规性 。
+
+**线下执行：** 用“学联跨年晚会”的案例，证明自己在苏黎世本地的活动落地能力（搞定场地、物料）。
+
+**2\. 针对 MEXC (交易所 / 增长):**
+
+-   **核心痛点：** 拉新 (User Acquisition)、合规 (MiCA)、快节奏 (Speed)。
+    
+-   **你的回答侧重：**
+    
+
+**交易经历包装：** 将“交易少”包装为“重风控”和“重产品体验”。强调懂 Web3 交互流程（Faucet -> Transaction）比单纯炒币更重要。
+
+**狼性运营：** 用 DeShare 的数据说话（互动率提升、社群增长），证明能为交易所带来流量 。
+
+四、 避坑与防守 (Defensive Preparation)
+
+**1\. 技能防爆 (Skill Check):**
+
+**Dune Analytics:** 既然写了 SQL，就要准备一句简单的逻辑（如 `SELECT * FROM transactions`），或者诚实地说是“使用现成看板分析数据” 。
+
+**AIGC Tools:** 准备好常用的 Prompt 结构（角色+任务+风格+参数），以备现场测试 。
+
+**2\. 逻辑漏洞修补:**
+
+**时间线：** 务必确认简历上的年份是 **2024/2025**，而不是误写成未来的 2026 。
+
+**排版细节：** 彻底删除 Skills 栏目中残留的模板符号（如 `.....`），保证专业度 。
+
+**3\. 交易经验不足的应对:**
+
+-   不要编造盈利数据。
+    
+-   **话术：** “Web2 讲究宏观配置与风控（央财背景），Web3 讲究链上交互与产品体验（测试网经历）。”
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # 本周学习总结
 
 * * *
@@ -99,6 +175,7 @@ Web3 正在构建一套新的**信任与协作操作系统**——它让 AI 拥�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 # **第二周例会**
 
@@ -265,6 +342,7 @@ Web3 正在构建一套新的**信任与协作操作系统**——它让 AI 拥�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 # **Speedrun Ethereum Basic Workshop**
@@ -662,6 +740,7 @@ Austin 快速过了一遍 Speedrun Ethereum 的经典挑战，重点讲解了每
 
 
 
+
 # **Uniswap 工作原理与生态资源**
 
 **讲师：** JF (Developer / Ex-Tencent, ByteDance)
@@ -952,6 +1031,7 @@ JF 老师重点介绍了 Uniswap 基金会提供的资源，适合想在 Web3 �
 
 
 
+
 # 《Web3 实习计划（冬季）：Solidity Walk Through》
 
 **时间**：1.20
@@ -1206,6 +1286,7 @@ D. 函数修饰符 (Modifiers)-
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1470,6 +1551,7 @@ ERC-7962 天生支持“代付 Gas”和“中继器 (Relayer)”模式，极大
 
 
 
+
 #   
 **Web3 实习计划（冬季）：第一周例会**
 
@@ -1616,6 +1698,7 @@ ERC-7962 天生支持“代付 Gas”和“中继器 (Relayer)”模式，极大
 
 
 
+
 # Agentic AI 与 Web3 操作系统 (SpoonOS)
 
 **讲师：** Rick (SpoonOS)
@@ -1721,6 +1804,7 @@ SpoonOS 被定位为连接 Web2 开发能力与 Web3 基础设施的桥梁 。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1966,6 +2050,7 @@ Web3.0 创业者在中国面临的刑事风险主要源于监管政策的“负�
 
 
 
+
 * * *
 
 # Web3 运行原理
@@ -2100,6 +2185,7 @@ _学习笔记：_ 就像银行排队的号码牌。第一笔交易是 1 号，�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2441,6 +2527,7 @@ witter 上有持续的行业思考输出，获得一定的互动。
 
 
 
+
 Web3 行业与运营岗位学习笔记
 
 整理人： cheryl
@@ -2526,6 +2613,7 @@ Web3 行业与运营岗位学习笔记
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
