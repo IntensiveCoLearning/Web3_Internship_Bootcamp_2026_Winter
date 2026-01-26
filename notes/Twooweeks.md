@@ -15,8 +15,156 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# 如何读源码
+
+\- 短期记忆
+
+\- 长期记忆
+
+\- 问题的外部复杂性
+
+问题的因素太多，我们不知道怎么去分解因素
+
+\- 问题的内部复杂性
+
+问题很短，但是我们没有经验，一时无法下手
+
+\- where you are going(desitination/goal/problem )
+
+\- final problem: what external /internal complexity are?
+
+\- sub-problem: what source code consisits of?
+
+\-
+
+# 问题:是否需要深入的搞懂所有项目代码?
+
+不需要;
+
+\[原因:从面试官的需求角度出发:1.你能准确清晰的表达出你所做的核心业务逻辑和实现原理2.常见的八股文和代码题\]
+
+推荐流程:
+
+1.第一遍理解原理 (不需要很细致的写出所有代码)
+
+2.第二遍重点业务逻辑代码，自己敲一遍(看着视频/代码，自己敲一遍，加深印象)
+
+# go 单测注意事项
+
+第一个测试文件中函数 要以Test 开头，文件名以杠 test结尾，mod文件中必须要有一个mudule ，然后后面随便加一个名称
+
+\# 怎么更好的用ai
+
+1）可参考的prompt:限定工具的使用场景(项目) 比如说：你想要查看下 redis在限价单中的应用，它的应用场景？它的作用？它是如何去帮助实现(限价单)的？
+
+2）写一些单元测试去理解概念和业务逻辑 a: prompt 基于需求，生成单元测试。 要求：
+
+1\. 单测数量：遵循认知负载理论，仅生成一个测试文件，包含一个测试函数（#\[test\]），将所有知识点整合在这一个测试函数中
+
+2\. 代码规模：单个测试函数代码控制在 80-120 行以内，确保认知负载可控
+
+3\. 目标：通过设计单元测试，帮助理解 XXXXXXXXXXXXX
+
+4\. 结构要求：每次仅仅生成用户需要的最简单测示例，不要拓展，不要拓展，不要拓展内容
+
+5\. 类比：关于概念的解释，采用类比的方式来帮助学生快速和已有生活经验建立认知，避免因为解释太过抽象而导致认知阻碍
+
+6\. 具体化示例：提供一个具体的示例，帮助理解概念 单测存储位置：放置在 /home/ubuntu/dex\_full/web3fun-Dex/5.核心业务 目录下
+
+3）从错误中学习 a: prompt: 如何充分利用AI,从错误中学习 prompt: 目标：通过错误来复盘来学习。 请总结我们对话中，我暴露出来的问题，及解决方案。 按照结构化的输出方式输出一个迭代文档: 文档存储路径：存放在lessons/errors 目录中,注意不要影响目录中的其它文档，而是新生成一个同层级文档 文档名称：基于对话总结出一个概括性的名称 文档内容：背景 + 错误 + 错误原因 + 解决方案 内容格式：\[以markdown格式输出，同时确保可读性\] 错误1： 背景：【总结在什么场景下，在做什么事】 错误：【在做事的过程中，发生了什么问题】 原因：【给出错误发生的原因】 方案：【解释问题是如何解决的】
+
+错误2： 背景：【总结在什么场景下，在做什么事】 错误：【在做事的过程中，发生了什么问题】 原因：【给出错误发生的原因】 方案：【解释问题是如何解决的】
+
+错误3： ...
+
+# go语言学习
+
+\# lesson1 变量
+
+\- 变量的两种声明方法
+
+var a = "initial"
+
+f := "apple"
+
+go的编译器会自动识别变量的类型
+
+测试函数的命名：Test后面的字母必须要大写
+
+\# lesson2 常量
+
+\- 常量可以是字符串，数字，布尔值
+
+\# lesson3 type
+
+\- 什么是类型
+
+类型和int、bool、string一样，我们用type生命了一个结构体person，那么person就是一个类型
+
+\- 怎么样去声明一个结构体
+
+type 结构体名称 struct {}
+
+\- 怎么样去声明一个接口
+
+像正常结构体一样声明
+
+type Animal interface{
+
+     genre() string
+
+      color() string
+
+    }
+
+\# lesson4 函数声明
+
+\- func 函数名（）（返回值的类型）{}
+
+\# lesson5 函数多返回值
+
+\- func 函数名（）（[int.int](http://int.int)）{}
+
+\# lesson6 if/else
+
+\- espression没有括号
+
+\# lesson7 switch
+
+\-
+
+\`\`\`go
+
+switch expression {
+
+case condition1:
+
+\*\*\*
+
+case condition2:
+
+\*\*\*
+
+}
+
+switch {
+
+case condition:
+
+\*\*\*
+
+defult:
+
+\*\*\*
+
+}
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -34,6 +182,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 中期总结：合约继承VRFComsumerBaseV2Plus,里面有一个s\_vrfCoordinator变量，变量中里面有requestRandomWords函数来与chainklinkVRF交互获得随机单词产生随机数，fulfillRandomWords接收产生的随机数，并采用自动化的方法，让整个合约可以自己发生
 
@@ -58,6 +207,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -86,6 +236,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -93,6 +244,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -131,6 +283,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -225,6 +378,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -248,6 +402,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -292,6 +447,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -419,6 +575,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -447,6 +604,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -553,6 +711,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -577,6 +736,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -630,6 +790,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
