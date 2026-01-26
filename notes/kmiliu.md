@@ -15,8 +15,359 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-25
+<!-- DAILY_CHECKIN_2026-01-25_START -->
+# 🧱 Scaffold-ETH & Solidity 实战 Notes（Week 2 Day 5）
+
+> 核心目标：  
+> **用 Scaffold-ETH 快速「看见 Solidity 在跑」**，用 UI + Burner Wallet 形成高频反馈循环，而不是一上来就 Hardhat + Tests。
+
+* * *
+
+## 一、为什么用 Scaffold-ETH（而不是一开始就 Hardhat）
+
+### Hardhat 的特点
+
+-   **Test-driven**：写测试 → 写合约 → 跑测试
+    
+-   非常严谨，但**学习曲线陡**
+    
+-   初学时很难「感受到合约在干嘛」
+    
+
+### Scaffold-ETH 的优势
+
+-   **所见即所得**
+    
+-   自动生成：
+    
+    -   前端 UI
+        
+    -   Burner Wallet
+        
+    -   Faucet
+        
+    -   合约交互界面
+        
+-   **极快迭代循环**：
+    
+    ```
+    改 Solidity → yarn deploy → UI 立刻更新
+    ```
+    
+
+👉 结论：  
+**学习 / 原型阶段 → Scaffold-ETH**  
+**稳定版本 / 上链前 → Hardhat + Tests**
+
+* * *
+
+## 二、Scaffold-ETH 基本工作流（必背）
+
+```
+git clone scaffold-eth
+cd scaffold-eth
+yarn install       # 一次性，慢
+yarn chain         # 启动本地 Hardhat 节点
+yarn start         # 启动前端
+yarn deploy        # 部署合约
+```
+
+### 核心概念
+
+-   **yarn chain**：本地链
+    
+-   **yarn deploy**：部署合约（可 reset）
+    
+-   **yarn start**：React 前端
+    
+-   **Burner Wallet**：自动生成的钱包（incognito）
+    
+
+* * *
+
+## 三、Solidity 基础（用 Scaffold-ETH 玩）
+
+### 1️⃣ 全局变量（Globals）
+
+```
+block.timestamp
+msg.sender
+msg.value
+tx.origin
+```
+
+示例：
+
+```
+function timey() public view returns (uint256) {
+    return block.timestamp;
+}
+```
+
+* * *
+
+### 2️⃣ 基础类型（Primitives）
+
+-   `bool`
+    
+-   `uint256`
+    
+-   `address`
+    
+-   `string`
+    
+
+示例：
+
+```
+bool public flag = true;
+
+function toggle() public {
+    flag = !flag;
+}
+```
+
+* * *
+
+### 3️⃣ Ether vs Wei（超重要）
+
+-   Solidity **默认单位是 wei**
+    
+-   `1 ether = 10^18 wei`
+    
+
+```
+uint256 public price = 0.001 ether;
+```
+
+UI 中要手动输入：
+
+```
+0.001 * 10^18
+```
+
+👉 Scaffold-ETH **强制你意识到单位换算**
+
+* * *
+
+## 四、Mapping（不能遍历！）
+
+```
+mapping(address => uint256) public count;
+
+function inc() public {
+    count[msg.sender] += 1;
+}
+```
+
+特点：
+
+-   默认值是 `0`
+    
+-   **不能遍历**
+    
+-   非常适合余额 / 计数器
+    
+
+* * *
+
+## 五、Events（前端的生命线）
+
+```
+event PurposeSet(address sender, string purpose);
+
+emit PurposeSet(msg.sender, purpose);
+```
+
+作用：
+
+-   便宜（比 storage 便宜）
+    
+-   前端监听用
+    
+-   Scaffold-ETH UI 会自动显示
+    
+
+* * *
+
+## 六、Ownership（不要自己写！）
+
+❌ 自己写 `boss + modifier`
+
+```
+require(msg.sender == boss);
+```
+
+✅ 正确方式：**OpenZeppelin Ownable**
+
+```
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyContract is Ownable {
+    function onlyBoss() public onlyOwner {}
+}
+```
+
+### Owner 初始化
+
+-   默认：部署者（Hardhat 的 `f39...`）
+    
+-   解决方式：
+    
+    1.  deploy script 里 `transferOwnership`
+        
+    2.  或 constructor 中 `super.transferOwnership(addr)`
+        
+
+* * *
+
+## 七、Payable / Receive / Withdraw（资金流）
+
+### Receive（直接转账）
+
+```
+receive() external payable {}
+```
+
+如果没有：
+
+-   ❌ 直接转 ETH 会失败
+    
+
+* * *
+
+### Withdraw（⚠️正确写法）
+
+❌ 错误（transfer，2300 gas）
+
+```
+payable(msg.sender).transfer(address(this).balance);
+```
+
+✅ 正确（call）
+
+```
+(bool ok,) = msg.sender.call{value: amount}("");
+require(ok);
+```
+
+* * *
+
+## 八、msg.sender vs tx.origin（面试必考）
+
+### 场景
+
+```
+EOA → 合约 A → 合约 B
+```
+
+| 变量 | 在 B 中的值 |
+| --- | --- |
+| msg.sender | 合约 A |
+| tx.origin | EOA |
+
+### 限制 EOA
+
+```
+require(tx.origin == msg.sender);
+```
+
+⚠️ 实际生产中 **慎用 tx.origin**
+
+* * *
+
+## 九、合约与合约交互（Contract → Contract）
+
+### Bank 合约（示例）
+
+```
+mapping(address => uint256) public balance;
+
+function deposit() public payable {
+    balance[msg.sender] += msg.value;
+}
+
+function withdraw() public {
+    uint256 amt = balance[msg.sender];
+    balance[msg.sender] = 0;
+    (bool ok,) = msg.sender.call{value: amt}("");
+    require(ok);
+}
+```
+
+* * *
+
+### 另一个合约调用 Bank
+
+```
+import "./Bank.sol";
+
+Bank public bank;
+
+constructor(address bankAddr) {
+    bank = Bank(bankAddr);
+}
+
+function myBalance() public view returns (uint256) {
+    return bank.balance(address(this));
+}
+```
+
+* * *
+
+## 十、Reentrancy（⚠️重点安全）
+
+### ❌ 漏洞写法
+
+```
+function withdraw() public {
+    (bool ok,) = msg.sender.call{value: balance[msg.sender]}("");
+    balance[msg.sender] = 0;
+}
+```
+
+### ✅ 正确顺序（CEI）
+
+```
+uint256 amt = balance[msg.sender];
+balance[msg.sender] = 0;
+(bool ok,) = msg.sender.call{value: amt}("");
+require(ok);
+```
+
+* * *
+
+### Reentrancy 攻击本质
+
+-   外部合约在 `receive()` 中 **再次调用 withdraw**
+    
+-   状态尚未更新 → 无限提款
+    
+
+* * *
+
+## 十一、学习路线建议（非常重要）
+
+### 学习顺序
+
+1.  Scaffold-ETH → 玩
+    
+2.  Solidity by Example
+    
+3.  攻击案例（Reentrancy、Overflow）
+    
+4.  Ethernaut（强烈推荐）
+    
+
+🔗 Ethernaut：
+
+> OpenZeppelin 官方 Solidity 安全挑战
+<!-- DAILY_CHECKIN_2026-01-25_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## Scaffold-ETH + Solidity 深度实操笔记
 
 * * *
@@ -378,6 +729,7 @@ require(tx.origin == msg.sender);
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -633,6 +985,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 # Solidity 智能合约开发入门
@@ -1068,6 +1421,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -1165,6 +1519,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1339,6 +1694,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -1446,6 +1802,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2350,6 +2707,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -2521,6 +2879,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -2641,6 +3000,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3525,6 +3885,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
