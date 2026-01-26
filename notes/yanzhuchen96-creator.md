@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+## 今天主要弄懂了什么是 Reactive 合约
+
+Reactive 合约本质还是智能合约，但不是“等别人来调”，而是“自己长期监听链上事件，有事就自动反应”。同一份 Reactive 合约代码会在两处各跑一个实例：一份在 Reactive Network 链上（vm == true），一份在外部链的 ReactVM 沙盒里（vm == false）。通过检查固定地址 0x0000...fffFfF 是否有代码，合约在运行时可以判断“我现在是在 Reactive Network，还是在外部链”。
+
+## 源合约、Reactive 合约、目标合约和 callback 的角色关系
+
+源合约（origin contract）是被监听的那份合约，比如 demo 里的 BasicDemoL1Contract，它只管发事件，不知道 Reactive 的存在。Reactive 合约是你写的“监听+决策”的逻辑，比如 BasicDemoReactiveContract：在 ReactVM 实例中订阅源合约事件，在 react(LogRecord log) 里判断是否要触发后续动作。目标合约（callback 合约）是被跨链调用的那一方，比如 BasicDemoL1Callback，里面的 callback(...) 函数就是最终被 Reactive Network 在目标链上调用的函数。
+
+## callback 的发起和落地过程
+
+真正“发起 callback”的是 Reactive 合约本身：在 react() 中如果判断需要行动，就组装好目标链 ID、目标合约地址和调用数据 payload，然后 emit Callback(chain\_id, target, gas\_limit, payload)。Reactive Network 监控到这个 Callback 事件后，会在指定的 chain\_id 上，通过官方 Callback Proxy 给 target 合约发一笔交易，data 就是 payload，于是目标合约里的 callback 函数被执行，这整个过程就叫“一次 callback”。
+
+## demo 里的订阅参数和 REACTIVE\_IGNORE
+
+在 Basic Demo 里，订阅调用大致是：service.subscribe(originChainId, \_contract, \_topic\_0, REACTIVE\_IGNORE, REACTIVE\_IGNORE, REACTIVE\_IGNORE)。originChainId 是源链 ID，\_contract 是源合约地址，\_topic\_0 是要监听的事件签名哈希；后三个 REACTIVE\_IGNORE 分别对应 topic\_1~3，表示“这个位置不做过滤，任意值都匹配”，看起来写了三次一样的常量，其实是对三个不同 topic 槽位都设置成“通配符”。这样就实现了“只看某个事件类型，不挑 indexed 参数值”的订阅模式。
+
+## Basic Demo L1 的整体动线
+
+Basic Demo 的目标是：你往源合约转 0.001 ETH，最后能在目标合约上看到 CallbackReceived 事件被自动触发。操作顺序是：先在项目里建 .env 配好三条链的 RPC、私钥、System Contract 地址和 Callback Proxy 地址；在源链部署 BasicDemoL1Contract；在目标链部署 BasicDemoL1Callback 并把官方 Callback Proxy 地址作为构造参数；再在 Reactive Network 部署 BasicDemoReactiveContract，构造参数里塞入 System Contract、源链/目标链 ID、源合约地址和事件 topic\_0。完成后你给源合约转 0.001 ETH：源合约发事件→Reactive 合约在 ReactVM 收到 log 并发 Callback 事件→Reactive Network 在目标链通过 Callback Proxy 调用 BasicDemoL1Callback.callback(...)→目标合约发 CallbackReceived 事件，你可以在浏览器里查看这条日志。
+
+## callback 合约上两个 modifier 的安全含义
+
+BasicDemoL1Callback.callback(address sender) 上有两个关键 modifier：authorizedSenderOnly 和 rvmIdOnly(sender)。authorizedSenderOnly 确保 msg.sender 必须是官方指定的 Callback Proxy 地址，保证“通道是官方中继，而不是谁都能直接调这个函数”。rvmIdOnly(sender) 用来校验“这笔 callback 是来自哪一个 ReactVM/Reactive 合约实例”，只有和部署时登记的 rvm\_id 一致的 sender 才被接受，这样可以防止别的 Reactive 实例冒充你来调用这个 callback 合约。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 这周把自己从“Solidity 初学者”往“能动手、懂安全、知道隐私为何重要”的方向又推进了一步。
 
 本周主要做了几件事：
@@ -44,6 +72,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 今天做了深度技术的一个任务，搭建本地区块链节点，我的整体流程可以分为三个部分：配置环境、搭建节点和部署合约。
 
 在配置环境阶段，我先在 Windows 上安装了 Node.js 的 LTS 版本，用官方安装包一路点击下一步完成安装，然后在 PowerShell 里用 node -v 和 npm -v 确认版本输出正常，确保运行环境就绪。 接着我在用户目录下创建了一个专门用来练习的文件夹 C:\\Users\\CHEN Yanzhu\\eth-dev，避免在系统目录里操作带来的权限问题。 进入这个目录之后，我执行 npm install --global hardhat 安装 Hardhat，再用 npx hardhat 初始化项目，选择的是 Hardhat 3 提供的 minimal 模板，这样得到一个TypeScript 项目骨架，包含 hardhat.config.ts 和基础目录结构。 我在项目根目录下手动创建了 contracts 和 scripts 两个文件夹，并通过 npm install --save-dev @nomicfoundation/hardhat-ethers 和 npm install ethers 装好了 Hardhat 的 Ethers 插件以及 Ethers.js 本身，然后把 hardhat.config.ts 写成一个极简配置：只指定 solidity: "0.8.28"，并在文件顶部引入 @nomicfoundation/hardhat-ethers，让 Hardhat 在运行脚本时自动在运行时环境中注入 ethers 能力。
@@ -57,6 +86,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -160,6 +190,7 @@ contract MySafeBank {
 
 
 
+
 # DAPP学习笔记
 
 ## 基本概念与本质
@@ -195,6 +226,7 @@ IPFS（星际文件系统）可以看作一个去中心化的文件存储网络�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -297,6 +329,7 @@ function leaveMessage(string calldata _msg) external {
 
 
 
+
 今天做入门技术的一个任务，啃完了 Ethernaut 的前三关，花的时间比自己想象中的要久，作为一个 Solidity 初学者，要一行一行读懂智能合约还是有点难度的。通过 Hello Ethernaut、Fallback 和 Fallout 这三关，我从完全没用过浏览器控制台，到能看懂合约逻辑、定位漏洞并写出攻击代码，感觉自己被硬生生推着跨了一小步门槛，过程很痛苦，但进步还挺大。
 
 ## 第 0 关：Hello Ethernaut
@@ -372,6 +405,7 @@ Fallout 这一关让我感受到“一个小小的命名错误，会直接变成
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -511,6 +545,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 
 
+
 ## **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 AI提炼总结**
 
 本次分享围绕一个从 ERC-721 演进出来的新协议 **ERC-7962** 展开，目的是在保持数字藏品（NFT）属性的同时，引入更强的隐私保护和更好的用户体验。讲者首先回顾了传统 NFT 的特点：基于 ERC-721 标准，每个 token 的 owner 是一个公开可查的地址，谁持有什么资产、做过哪些交易都可以在链上被分析。这样带来了两个问题，一是隐私缺失，容易被构建“资产图谱”；二是对普通 Web2 用户不友好，需要自己装钱包、管私钥、付 gas 费，这阻碍了 Web2 用户向 Web3 迁移。
@@ -562,6 +597,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -630,6 +666,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -738,6 +775,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -786,6 +824,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -902,6 +941,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 # 1.13 学习笔记
 
 ## **节点和客户端的关系以及客户端间的协同配合**
@@ -969,6 +1009,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
