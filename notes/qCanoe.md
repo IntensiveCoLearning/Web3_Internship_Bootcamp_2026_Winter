@@ -15,8 +15,36 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+### Multi-Signature Wallet（多签钱包）
+
+多签钱包是 Application 部分最具代表性的合约应用之一，其核心目标是在链上实现多方共同控制资产与行为执行的机制。合约通过维护一组所有者地址（owners）以及所需的最小确认数量（required confirmations），将交易执行过程拆解为提交、确认、撤销和最终执行等多个阶段。
+
+在设计层面，该合约体现了典型的**状态机模型**：交易在被执行前处于“待确认”状态，确认行为是累积且可逆的，而执行仅在满足阈值条件后发生。这种设计避免了单点控制风险，并通过事件记录确保链上可审计性。多签钱包展示了 Solidity 中权限控制从“静态访问限制”向“流程化授权逻辑”的转变，为 DAO 金库、治理执行模块和企业级合约提供了基础原型。
+
+### Time Lock / Escrow（时间锁与托管机制）
+
+时间锁与托管类合约关注的是**延迟执行与条件释放**问题，其核心思想是利用区块时间戳将资产或行为的可执行性限定在未来某一时间点之后。合约通常在部署或初始化阶段设定释放条件，并在条件满足前拒绝任何提前执行的请求。
+
+该类应用的关键意义在于，它将“信任约束”从人为承诺转化为代码规则，从而减少对第三方中介的依赖。时间锁机制广泛应用于代币解锁（vesting）、治理提案延迟执行以及安全缓冲窗口等场景，是去中心化系统中实现“可预期但不可随意绕过”的重要工具。
+
+### Crowdfunding / Auction（众筹或拍卖）
+
+众筹与拍卖类合约代表了**多参与者交互型应用**的典型模式。这类合约通常需要同时处理参与者集合、资金累计、状态判断以及成功与失败两种不同的结算路径。合约逻辑围绕目标条件（如筹资额度或拍卖截止时间）展开，并在终态阶段根据结果执行资金转移或退款。
+
+从系统角度看，这类案例展示了 Solidity 如何在链上协调多用户行为，并通过明确的终止条件保证合约状态的确定性。其设计强调对异常路径的处理，例如众筹失败后的退款机制，从而避免资金被永久锁定。这一模式在实际 dApp 中广泛存在，是理解链上业务闭环的重要参考。
+
+### Ether Wallet（基础以太钱包）
+
+基础以太钱包是一个结构相对简单但概念上极为重要的应用示例。该合约将自身视为一个可接收和持有 ETH 的账户，并通过明确的访问控制规则限制资金提取行为。合约通常依赖 `receive` 或 `fallback` 函数处理转入的以太，并通过受限函数完成转出操作。
+
+该案例的价值在于清晰展示了“合约即账户”的基本模型，以及以太转移在合约语义下的实现方式。尽管逻辑简单，但其设计思想构成了更复杂钱包系统和资产管理合约的基础。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约束环境下描述可验证状态转移规则**而存在。其语法、类型系统与限制并非偶然，而是直接服务于以下目标：确定性执行、状态可复现、最小信任假设以及经济成本可计量。
 
 因此，在 Solidity 中追求“代码优雅”或“抽象完备性”往往是错误方向，更重要的是**行为可预期性与边界清晰度**。
@@ -58,6 +86,7 @@ Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 今天主要进行了 Solidity 的应用学习（Applications），重点体验了以下功能的实现：
 
 1\. Ether Wallet
@@ -75,6 +104,7 @@ Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 1.23 补充
@@ -180,6 +210,7 @@ Solidity 中有三种主要的失败机制，但语义并不相同：
 
 
 
+
 **storage**：链上永久存储，读写成本高，生命周期与合约一致。
 
 **memory**：函数执行期间的临时内存，成本较低，执行结束即释放。
@@ -274,6 +305,7 @@ contract Ownable {
 
 
 
+
 ### **1.21**[**Solidity by Example | 0.8.26**](https://solidity-by-example.org/) **Basic 部分**
 
 **一、Hello World 合约与基础结构**
@@ -341,6 +373,7 @@ function getSum(uint a, uint b) external pure returns(uint) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -553,6 +586,7 @@ assert
 
 
 
+
 ### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
 
 A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
@@ -634,6 +668,7 @@ RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取
 
 
 
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -679,6 +714,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -775,6 +811,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -828,6 +865,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -924,6 +962,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -991,6 +1030,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -1028,6 +1068,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
