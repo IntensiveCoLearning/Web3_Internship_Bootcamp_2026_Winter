@@ -15,8 +15,78 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+## Uniswap V2 价格累积与 TWAP 预言机
+
+### 1、核心目的
+
+Uniswap V2 内置 **TWAP**（时间加权平均价格）预言机，提供去中心化、抗操纵的价格数据。 主要用于：
+
+-   借贷协议喂价
+    
+-   清算触发
+    
+-   套利检测
+    
+-   治理决策
+    
+
+### 2、关键变量（Pair 合约）
+
+-   uint public price0CumulativeLast：token1 / token0 的累积价格
+    
+-   uint public price1CumulativeLast：token0 / token1 的累积价格
+    
+-   uint32 public blockTimestampLast：上次更新时间戳
+    
+-   储备：reserve0, reserve1（uint112）
+    
+
+### 3、更新逻辑（\_update 函数）
+
+每次 mint / burn / swap / sync 调用 \_update：
+
+```
+uint32 timeElapsed = block.timestamp - blockTimestampLast;
+
+if (timeElapsed > 0 && reserve0 != 0 && reserve1 != 0) {
+    // UQ112x112 格式：reserve1 / reserve0 × timeElapsed
+    price0CumulativeLast += uint(UQ112x112.encode(reserve1).uqdiv(reserve0)) * timeElapsed;
+    price1CumulativeLast += uint(UQ112x112.encode(reserve0).uqdiv(reserve1)) * timeElapsed;
+}
+
+reserve0 = uint112(balance0);
+reserve1 = uint112(balance1);
+blockTimestampLast = uint32(block.timestamp % 2**32);
+```
+
+-   累积：价格 × 时间增量（固定点数编码，防溢出）
+    
+-   仅当时间流逝且池非空时累加
+    
+-   每笔交易后自动更新（无需额外调用）
+    
+
+### 4、如何计算 TWAP
+
+在外部合约查询：
+
+```
+(uint price0CumNow, uint price1CumNow, uint32 tsNow) = pair.price*CumulativeLast + 当前增量（若需即时）;
+
+uint deltaTime = tsNow - tsOld;
+uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / token0
+```
+
+-   建议窗口：≥10–30 分钟（抗 flash loan 操纵）
+    
+-   越长越安全，但响应越慢
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ## Uniswap V2 Router常用函数
 
 ### 1、Router 作用
@@ -159,6 +229,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -190,6 +261,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 ## Uniswap V2 Flash Swap（闪电交换）
@@ -296,6 +368,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -379,6 +452,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -510,6 +584,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -619,6 +694,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -657,6 +733,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -672,6 +749,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -718,6 +796,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -729,6 +808,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
