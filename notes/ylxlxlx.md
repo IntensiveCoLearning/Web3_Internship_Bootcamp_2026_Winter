@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+1.26：[https://share.mubu.com/doc/K1s7DGRqg7](https://share.mubu.com/doc/K1s7DGRqg7)
+
+![1.26.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-26-1769441297945-1.26.png)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 今天写了良心杀的总结报告，算是第一次完整研究点东西并有所输出。姑且也算是投研第一步吧！其实投票阶段也有想过要提出方案的，不过是在没法衡量各板块的重要程度，提案那种正式的语言也不太会，所以最后水掉了……
 
 相较而言写总结报告就要轻松些，毕竟可以在前辈的思考中继续延伸。共计七组方案，思路有整有散，这种情况下好像很难做出归纳总结，以前写议论文时，那种通过现象看本质的单线程思维好像也不太适用了。几乎是灵机一动用AI来统计数据，不仅得到了各活动的平均占比，中位数、标准差等数据也统计得一目了然，很快便能分析出大家的共同偏好、思维差异，最终结论的得出也更加有迹可循（统计学魅力时刻.jpg）其实这也是我第一次运用统计知识解决实际问题吧，有种课本上的死知识突然活过来的感觉。
@@ -29,6 +37,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 主要在筹备休闲黑客松。
 
 -   参加了两场会议，明确了任务
@@ -40,6 +49,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 今天发现被休闲黑客松筹备组录取了（）紧急补一下Notion的基础知识，后面再按需现学吧
@@ -66,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -100,6 +111,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.21：[https://share.mubu.com/doc/5n50wur\_S67](https://share.mubu.com/doc/5n50wur_S67)
 
 ![1.21.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-21-1769008293172-1.21.png)
@@ -107,6 +119,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -129,6 +142,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.19.：[https://share.mubu.com/doc/1ae7\_ByGOQ7](https://share.mubu.com/doc/1ae7_ByGOQ7)
 
 ![1.19..png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-19-1768835442719-1.19..png)
@@ -136,6 +150,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -162,6 +177,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.17: [https://share.mubu.com/doc/1TgnooGlYc](https://share.mubu.com/doc/1TgnooGlYc)
 
 ![1.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-17-1768660624749-1.17.png)
@@ -169,6 +185,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -225,6 +242,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.15：[https://share.mubu.com/doc/6m79uk4dKs7](https://share.mubu.com/doc/6m79uk4dKs7)
 
 ![1.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-15-1768489745986-1.15.png)
@@ -232,6 +250,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -262,6 +281,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.13：[https://share.mubu.com/doc/msBQpFHRq7](https://share.mubu.com/doc/msBQpFHRq7)
 
 ![1.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-13-1768314188386-1.13.png)
@@ -271,6 +291,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
