@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+Monday, January 26, 2026
+
+写了一个教学用碰撞器，主要目的学习加密安全性。
+
+![code.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NoPanaceaPanda/images/2026-01-26-1769430943727-code.png)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 Sunday, January 25, 2026
 
 ### 一、DApp 核心定义
@@ -215,6 +225,7 @@ Sunday, January 25, 2026
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 Saturday, January 24, 2026
 
   
@@ -241,6 +252,7 @@ Saturday, January 24, 2026
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 Friday, January 23, 2026
@@ -275,6 +287,7 @@ Web3 常被称为 **下一代互联网**，其核心理念是构建一个 **“�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -339,6 +352,7 @@ Thursday, January 22, 2026
 
 
 
+
 Wednesday, January 21, 2026
 
 ## **Uniswap 与无常损失：一次价值重分配的切身体会**
@@ -376,6 +390,7 @@ Wednesday, January 21, 2026
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -443,6 +458,7 @@ Tuesday, January 20, 2026
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -520,6 +536,7 @@ Monday, January 19, 2026
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -622,6 +639,7 @@ ERC-7962 是一种**以公钥哈希代表所有权**的隐私代币标准，通�
 
 
 
+
 Saturday, January 17
 
 今天学习Remix IDE通识课程的时候发现了一位宝藏UP主
@@ -670,6 +688,7 @@ Saturday, January 17
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -754,6 +773,7 @@ Friday, January 16, 2026, 20:00-21:00 CST
 
 
 
+
 Thursday, January 15, 2026, 20:00-21:00 CST
 
 “AI及其基础概念分享会”
@@ -767,6 +787,7 @@ Thursday, January 15, 2026, 20:00-21:00 CST
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -857,6 +878,7 @@ Wednesday, January 14, 2026, 19:00-20:30 CST
 
 
 
+
 Tuesday, January 13, 2026, 20:00-21:00 CST
 
 **“Web3运行原理”笔记与思考：**
@@ -884,6 +906,7 @@ Tuesday, January 13, 2026, 20:00-21:00 CST
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
