@@ -15,8 +15,69 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+【Web3 实习计划（冬季）：Dapp Workshop】 [https://www.bilibili.com/video/BV1YRBZBLET5/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1YRBZBLET5/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
+该视频是 **Web3 实习计划（冬季）** 的一场技术实战分享，主题为 **Dapp Workshop**。视频由银老师主讲，从 Web3 的核心定义、Dapp 开发实战工具链，到顶级 DeFi 协议 Aave 的演进进行了全方位的拆解。
+
+以下是视频内容的详细总结笔记：
+
+### **一、 Web3 与 Dapp 的核心革命：所有权 (Ownership)**
+
+-   **从租客到房东**：Web2 的资产（如游戏皮肤、视频账号）本质上存储在中心化服务器，随时可能因平台倒闭或封号而消失。Web3 则通过区块链实现了数据和资产的真正私有。
+    
+-   **信任机器**：Dapp（去中心化应用）消除了中介，将对人的信任转向对代码的信任（Code is Law）。连接钱包即登录，退出即带走数据。
+    
+-   **三驾马车**：智能合约（裁判执行逻辑）、区块链（不可篡改账本）、代币（系统燃料）。
+    
+
+### **二、 现代 Dapp 全栈开发实战：混合架构 (Hybrid Stack)**
+
+银老师推荐了一套目前行业领先的开发组合，旨在兼顾效率、安全与交互体验：
+
+1.  **Foundry (锻造)**：基于 Rust 编写，编译速度极快（是传统工具的 20 倍），支持模糊测试（Fuzzing），适合编写核心逻辑和单元测试。
+    
+2.  **Hardhat (正规军)**：拥有最丰富的插件生态和 JS 支持，适合编写部署脚本、集成测试及前端对接。
+    
+3.  **Next.js + Wagmi + Viem**：
+    
+    -   **Next.js**：提供最佳的服务器端渲染（SSR）和 SEO 友好环境。
+        
+    -   **Wagmi/Viem**：极大简化了钱包连接和合约交互代码（如 `useConnect`），并解决了前端渲染时的“Hydration 闪烁”问题。
+        
+
+### **三、 DeFi 心脏：Aave 从 V3 到 V4 的演进**
+
+-   **V3 的极致优化**：
+    
+    -   **位运算压缩 (Bitmap)**：将 30 多个配置压缩进一个 `int256` 变量，大幅降低 Gas 消耗。
+        
+    -   **惰性计算 (Lazy Calculation)**：通过“流动性指数”将每秒更新余额的计算转变为仅在交互时计算，提升效率。
+        
+    -   **高效模式 (E-mode)**：允许高度相关的资产（如 USDT/USDC）质押率高达 97%，最大化资本效率。
+        
+-   **V4 的架构范式转移**：
+    
+    -   **统一流动性层 (Liquidity Hub)**：消除流动性碎片化，所有资产集中管理，具体业务（如 RWA、借贷）通过模组化的 **Spoke** 实现，确保安全且易扩展。
+        
+    -   **仓位管理架构**：在用户与池子间加入自定义层，支持单笔交易内完成闪电贷+还款等复杂策略。
+        
+
+### **四、 核心避坑指南与安全建议**
+
+-   **Gas 是王道**：在 Web3 开发中，每一行代码都应具备成本意识。即使 100 Gas 的浪费也可能导致协议在竞争中被淘汰。
+    
+-   **安全第一**：严禁将私钥明文写入 `.env` 文件，建议使用系统级的 **Key Store** 加密存储。必须重视“重入攻击”防范，遵循“检查-修改状态-外部交互”的黄金法则。
+    
+-   **前端细节**：JS 的数字精度（53位）远低于以太坊的 `int256`（256位），必须显式转换为 `BigInt` 并以字符串形式显示，否则会导致资产计算错误。
+    
+
+**💡 总结**：视频强调开发者应从掌握本地开发工具（Foundry/Hardhat）开始，通过理解 EVM 原理，最终成为能够平衡“安全代码”与“丝滑 UI”的全栈建设者。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 【Web3 实习计划（冬季）- Web3 运行原理】 [https://www.bilibili.com/video/BV1ZkrHBtEN4/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1ZkrHBtEN4/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)
 
   
@@ -84,6 +145,7 @@ Bruce 老师将 Web3 的运行原理拆分为钱包、交易、共识、智能�
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
+
 【Web3 实习计划（冬季）：AI 及其基础概念】 [https://www.bilibili.com/video/BV1axkwBaEvC/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1axkwBaEvC/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
   
 这份视频由 Spoon OS 的 Rick 老师主讲，详细探讨了 AI Agent（智能体）与 Web3 技术的深度融合。
@@ -138,6 +200,7 @@ Q&A 环节针对 AI 决策责任、技术效率等实战问题进行了深度解
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 [https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
 
 This video focuses on advanced Web3 user skills, covering troubleshooting transactions, utilizing Layer 2 (L2) networks, and managing assets with decentralized financial tools.
@@ -176,6 +239,7 @@ The video highlights the speed and cost advantages of Layer 2 networks, specific
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -230,6 +294,7 @@ This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -296,6 +361,7 @@ Here are the key points about Sybil from the video:
 
 
 
+
 ### **1\. Getting Started with MetaMask**
 
 -   **Official Installation:** Go to [**metamask.io**](http://metamask.io) and install the Chrome extension \[[01:21](http://www.youtube.com/watch?v=_GjPeRLCREA&t=81)\]. Be extremely cautious of phishing sites with similar URLs \[[01:52](http://www.youtube.com/watch?v=_GjPeRLCREA&t=112)\].
@@ -357,6 +423,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
