@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+![IMG_5177.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-26-1769435358174-IMG_5177.png)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 今天主要和其他组对接 把海报kick off 部分完成了 （今天自己的事比较多没时间听课了 我后续补听呜呜呜）
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 今天加入了黑客松筹备组 我负责设计和运营策划
 
@@ -30,6 +37,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 两节课：Dapp workshop 和Dao
@@ -52,6 +60,7 @@ TS：可以模拟前端数据流与复杂跨合约交互
 
 
 
+
 今天有两个会议：uniswap 工作原理解析 和休闲黑客松案例解析
 
 第一个主要给我们讲解了uniswap 的运行原理 x·y=k，老师还用数学思维给我们推理了这个公式，还有一些关于流动性池的知识
@@ -65,11 +74,13 @@ TS：可以模拟前端数据流与复杂跨合约交互
 
 
 
+
 ![IMG_4924.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-20-1768922559745-IMG_4924.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -150,6 +161,7 @@ Twitter (X) / Farcaster
 
 
 
+
 补昨日笔记：
 
 主要就是一些学员web3的心得和感受
@@ -159,6 +171,7 @@ Twitter (X) / Farcaster
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -177,6 +190,7 @@ SpoonOS架构概览：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -235,6 +249,7 @@ Web3就是：用私钥签名证明你是谁，用共识网络保证账本可信�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
