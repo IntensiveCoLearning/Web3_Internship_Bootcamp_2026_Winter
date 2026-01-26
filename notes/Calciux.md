@@ -15,8 +15,175 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+**1\. 合约基础结构**
+
+一个 Solidity 合约通常由状态变量、函数、修改器和事件组成。
+
+• **状态变量 (State Variables)**：永久存储在区块链上的数据。
+
+    ◦ `public`：自动生成读取器（getter）函数。
+
+    ◦ `private`：仅限当前合约内部访问。
+
+    ◦ `internal`：仅限当前合约及其继承合约访问。
+
+• **常量关键字**：
+
+    ◦ `constant`：编译时确定值，不占存储位，非常节省 Gas。
+
+    ◦ `immutable`：构造时设置一次值，之后不可变，读取成本极低。
+
+**2\. 函数语法与修饰符**
+
+函数是合约的执行单元，通过不同的关键字定义其访问权限和对状态的影响。
+
+• **可见性 (Visibility)**：
+
+    ◦ `external`：只能从外部调用，通常比 `public` 更省 Gas。
+
+    ◦ `public`：内部外部均可调用。
+
+    ◦ `internal` / `private`：合约内部使用。
+
+• **状态可变性 (Mutability)**：
+
+    ◦ `view`：只读状态，不修改数据。
+
+    ◦ `pure`：既不读取也不修改状态，仅进行纯计算。
+
+    ◦ `payable`：允许函数接收 ETH。
+
+• **特殊函数**：
+
+    ◦ `constructor`：构造函数，仅在部署时执行一次。
+
+    ◦ `receive()`：处理不带数据的 ETH 转账。
+
+    ◦ `fallback()`：调用不存在的函数或接收带数据的 ETH 时触发。
+
+**3\. 数据类型与结构**
+
+• **基础类型**：`uint` (无符号整型)、`int` (整型)、`bool`、`address` (20 字节地址)。
+
+• **复杂结构**：
+
+    ◦ `mapping`：键值对映射，常用于存储账户余额。
+
+    ◦ `struct`：自定义结构体，用于组织复杂数据。
+
+    ◦ `enum`：枚举类型，定义有限的常量集合。
+
+• **存储位置**：
+
+    ◦ `storage`：永久存储，最昂贵。
+
+    ◦ `memory`：函数调用期间的临时内存。
+
+    ◦ `calldata`：外部函数参数的只读区域，最省 Gas。
+
+**4\. 逻辑控制与安全**
+
+• **错误处理**：
+
+    ◦ `require(bool, string)`：检查条件，不满足则回滚并报错。
+
+    ◦ `revert()`：手动触发回滚。
+
+    ◦ `error`：自 0.8.4 引入的自定义错误，比字符串报错更省 Gas。
+
+• **全局变量**：
+
+    ◦ `msg.sender`：当前调用者的地址。
+
+    ◦ `msg.value`：随调用发送的 ETH 数量。
+
+    ◦ `block.timestamp`：当前区块的时间戳。
+
+\--------------------------------------------------------------------------------
+
+**Solidity 语法总结 Markdown 源码**
+
+````
+# Solidity 核心语法速查表
+
+## 1. 合约声明与版本
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20; // 声明编译器版本
+
+contract MyToken {
+    // 合约内容
+}
+````
+
+**2\. 状态变量**
+
+• **可见性**: `public`, `private`, `internal`
+
+• **常量**:
+
+    ◦ `constant`: 编译期常量
+
+    ◦ `immutable`: 部署期常量（节省 Gas）
+
+**3\. 函数修饰符**
+
+• **可见性**:
+
+    ◦ `external`: 仅外部访问
+
+    ◦ `public`: 内部/外部访问
+
+    ◦ `internal`: 继承可用
+
+    ◦ `private`: 仅当前合约
+
+• **状态修饰**:
+
+    ◦ `view`: 只读
+
+    ◦ `pure`: 不读不写
+
+    ◦ `payable`: 可接收 ETH
+
+**4\. 常用数据结构**
+
+```
+// 映射：地址 => 余额
+mapping(address => uint256) public balances;
+
+// 结构体
+struct User {
+    uint256 id;
+    string name;
+}
+
+// 枚举
+enum Status { Pending, Active, Inactive }
+```
+
+**5\. 错误处理与安全**
+
+• `require(condition, "error message")`: 常用逻辑检查
+
+• `revert CustomError(arg)`: 高效错误处理
+
+• `modifier`: 提取通用检查逻辑（如 `onlyOwner`）
+
+• **安全实践**: 遵循 **CEI (Checks-Effects-Interactions)** 模式，先检查，再改状态，最后交互。
+
+**6\. 全职变量与位置**
+
+• **全局**: `msg.sender`, `msg.value`, `block.timestamp`
+
+• **位置**: `storage` (持久), `memory` (临时), `calldata` (只读参数)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 **1\. 从 PoW 到 PoS**
 
 • **早期 PoW 的角色**：以太坊初期选择 PoW 是为了利用其成熟的安全性和低门槛特性（显卡矿工）安全启动网络。它被视为“起飞用的助推火箭”，在生态成熟后再切换到 PoS。
@@ -95,6 +262,7 @@ Verkle 树通过以下方式让“无状态”成为可能：
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 **1\. EVM：以太坊的“大脑”**
 
 **EVM (Ethereum Virtual Machine)** 是一台运行在所有以太坊节点上的虚拟计算机，它将合约代码（字节码）转变为链上的状态更新。
@@ -142,6 +310,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 01-21 忘记上传补充
@@ -194,11 +363,13 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 
 
+
 忘记上传笔记,放在第二天
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -248,6 +419,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -497,6 +669,7 @@ Web3 中大量应用依赖隐私计算：如 DeFi 中的隐私订单簿、DAO �
 
 
 
+
 ## Web3 安全与合规
 
 ### 常规法律风险
@@ -523,6 +696,7 @@ MiCA禁止了算法稳定币,要求稳定币发行商必须持有等值储备资
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -630,6 +804,7 @@ Patricia Trie
 
 
 
+
 ## 分享会 web3安全
 
 **CeFi成为主要的黑客攻击靶机**：管理层私钥被盗、热钱包私钥被盗是主要的原因，暴露了显著的风险。
@@ -686,6 +861,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -882,6 +1058,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
