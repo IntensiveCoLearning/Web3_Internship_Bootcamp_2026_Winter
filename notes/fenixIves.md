@@ -15,8 +15,274 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# 16 Foundry 初学：从安装到合约交互
+
+本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
+
+## 一、Foundry 安装配置
+
+### （一）适用环境
+
+支持 macOS、Linux、Windows（推荐通过 WSL2 运行），需提前安装 Git 工具（[下载地址](https://git-scm.com/downloads)）。
+
+### （二）安装步骤
+
+1\. Mac / Linux / Windows（WSL2）
+
+打开终端，按以下命令依次执行：
+
+1.  下载官方安装脚本：
+    
+
+```
+curl -L https://foundry.paradigm.xyz | bash
+```
+
+2.  配置环境变量（确保工具命令全局可用）：
+    
+
+```
+# zsh 终端（Mac 默认）
+source ~/.zshrc
+# bash 终端（Linux 常见）
+source ~/.bashrc
+# 执行后建议重启终端以确保配置生效
+```
+
+3.  安装最新工具套件（含 forge、cast、anvil 核心组件）：
+    
+
+```
+foundryup
+```
+
+4.  验证安装结果（显示版本号即为安装成功）：
+    
+
+```
+forge --version
+```
+
+2\. Windows 原生环境（不推荐）
+
+需先安装 [Visual Studio 构建工具](https://visualstudio.microsoft.com/visual-cpp-build-tools/)（勾选“C++ 构建工具”组件），再通过 Git Bash 执行上述 Mac/Linux 安装命令，部分功能需额外调试兼容性。
+
+## 二、项目初始化
+
+### （一）创建项目目录
+
+打开终端，执行以下命令创建项目并进入工作目录：
+
+```
+forge init my_foundry_project && cd my_foundry_project
+```
+
+### （二）项目结构说明
+
+-   `src/`：智能合约存储目录，默认包含 `Counter.sol` 示例合约，后缀为 `.sol`；
+    
+-   `test/`：测试用例目录，用于验证合约功能正确性；
+    
+-   `script/`：部署脚本目录，支持批量部署合约；
+    
+-   `foundry.toml`：项目配置文件，默认配置可满足基础开发需求，无需额外修改。
+    
+
+## 三、核心组件说明
+
+在开展实践操作前，需明确 Foundry 三大核心组件的功能定位：
+
+-   **Anvil**：本地区块链节点工具，用于模拟以太坊网络环境，仅在运行期间保留数据，适用于开发测试；
+    
+-   **Forge**：合约开发与部署工具，支持合约编译、测试、部署全流程，核心用于将合约部署至目标网络；
+    
+-   **Cast**：合约交互工具，用于调用合约方法（读取数据、修改数据），实现与链上合约的通信。
+    
+
+## 四、全流程实战操作
+
+### （一）前置准备
+
+需同时开启两个终端窗口，分别用于运行本地节点和执行核心操作，避免进程冲突。
+
+### （二）步骤 1：启动本地区块链节点（Anvil）
+
+1.  在第一个终端中执行以下命令，启动 Anvil 本地节点：
+    
+
+```
+anvil
+```
+
+2.  节点启动后，将输出节点信息、测试账户地址及私钥。重点记录 `Private Keys` 列表中第一组私钥（以 `0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80` 开头），该私钥对应测试账户拥有足额虚拟 ETH，用于后续交易支付；
+    
+3.  保持该终端运行，关闭节点将导致本地区块链环境终止。
+    
+
+### （三）步骤 2：合约开发与编译
+
+1.  编辑合约文件：打开项目目录下 `src/Counter.sol` 文件，替换为以下增强版计数器合约（新增减法功能及参数校验）：
+    
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.24;
+
+contract Counter {
+    uint256 public number; // 计数状态变量
+
+    // 构造函数：初始化计数为 0
+    constructor() {
+        number = 0;
+    }
+
+    // 计数递增函数
+    function increment() public {
+        number += 1;
+    }
+
+    // 计数递减函数（添加下溢校验）
+    function decrement() public {
+        require(number > 0, "Counter: cannot decrement below zero");
+        number -= 1;
+    }
+
+    // 直接设置计数函数
+    function setNumber(uint256 newNumber) public {
+        number = newNumber;
+    }
+}
+```
+
+2.  合约编译：回到第二个终端，执行以下命令编译合约，验证代码语法正确性：
+    
+
+```
+forge build
+```
+
+-   编译成功：生成 `out/` 目录，包含合约字节码、ABI 等文件；
+    
+-   编译失败：检查合约语法（如括号、分号完整性）及 Solidity 版本兼容性（合约声明版本需与 `foundry.toml` 配置一致）。
+    
+
+### （四）步骤 3：合约部署
+
+将编译后的合约部署至 Anvil 本地节点，执行以下命令（替换私钥为步骤 2 记录的测试账户私钥）：
+
+```
+forge create src/Counter.sol:Counter \
+--rpc-url http://127.0.0.1:8545 \
+--private-key 记录的测试账户私钥 \
+--broadcast
+```
+
+-   关键参数说明：
+    
+
+-   `--rpc-url`：指定本地节点地址（Anvil 默认端口 8545）；
+    
+-   `--private-key`：部署者账户私钥，用于签名交易；
+    
+-   `--broadcast`：确认广播交易至目标网络。
+    
+
+-   部署成功标识：终端输出 `Deployed to: 0x...`，记录该合约地址（后续交互需使用）。
+    
+
+### （五）步骤 4：合约交互操作
+
+通过 Cast 工具实现合约方法调用，分为“读取数据”（免费，无需交易）和“修改数据”（需支付 Gas 费，需私钥签名）两类操作。
+
+1\. 读取计数（view 方法调用）
+
+执行以下命令查询当前计数（替换 `<合约地址>` 为部署成功后的合约地址）：
+
+```
+cast call <合约地址> "number()" --rpc-url http://127.0.0.1:8545
+```
+
+-   输出格式说明：默认返回 16 进制数据，通过以下命令转换为十进制：
+    
+
+```
+cast call <合约地址> "number()" --rpc-url http://127.0.0.1:8545 | cast --to-dec
+```
+
+-   预期结果：初始计数为 0。
+    
+
+2\. 修改计数（state-changing 方法调用）
+
+（1）设置固定计数
+
+将计数设置为 888，执行以下命令（替换私钥和合约地址）：
+
+```
+cast send <合约地址> "setNumber(uint256)" 888 \
+--rpc-url http://127.0.0.1:8545 \
+--private-key 记录的测试账户私钥
+```
+
+-   操作验证：节点终端将输出交易处理日志，执行读取计数命令可确认结果为 888。
+    
+
+（2）计数递增
+
+调用 `increment()` 方法实现计数 +1：
+
+```
+cast send <合约地址> "increment()" \
+--rpc-url http://127.0.0.1:8545 \
+--private-key 记录的测试账户私钥
+```
+
+-   预期结果：计数从 888 变为 889。
+    
+
+（3）计数递减
+
+调用 `decrement()` 方法实现计数 -1：
+
+```
+cast send <合约地址> "decrement()" \
+--rpc-url http://127.0.0.1:8545 \
+--private-key 记录的测试账户私钥
+```
+
+-   预期结果：计数从 889 变为 888；若计数为 0 时调用，将触发 `require` 校验报错。
+    
+
+## 五、核心原理总结
+
+1.  Anvil 作为本地测试网络，模拟了以太坊主网的运行环境，无需消耗真实 ETH，适用于开发阶段的功能验证；
+    
+2.  Forge 工具集成了合约编译、部署能力，`forge create` 命令本质是发起合约创建交易，通过私钥签名后广播至目标网络；
+    
+3.  Cast 工具封装了以太坊 RPC 调用逻辑，`cast call` 对应 `eth_call` 方法（读取数据），`cast send`对应 `eth_sendTransaction` 方法（修改数据），与主流钱包的交易发起逻辑一致。
+    
+
+## 六、常见问题排查
+
+1.  报错 `Connection refused`：Anvil 本地节点未启动或端口占用，需确保节点正常运行，且端口 8545 未被其他进程占用；
+    
+2.  报错 `Error: Contract not found`：当前工作目录非项目根目录，执行 `cd my_foundry_project` 切换至项目目录；
+    
+3.  报错 `Bad key`：私钥格式错误，需使用 Anvil 生成的完整私钥（以 `0x` 开头）；
+    
+4.  合约执行报错：检查方法参数合法性（如递减操作时计数是否为 0）及合约语法逻辑。
+    
+
+* * *
+
+通过本指南的操作，可系统掌握 Foundry 工具链的核心使用方法，为后续复杂智能合约开发、测试与部署奠定基础。如需深入学习，可参考 [Foundry 官方文档](https://book.getfoundry.sh/)。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -206,6 +472,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 # 15 Web3.js/Ethers.js/Viem/Wagmi 对比及代码示例
 
@@ -423,6 +690,7 @@ function WalletComponent() {
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -516,6 +784,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -877,6 +1146,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1292,6 +1562,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1763,6 +2034,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -2059,6 +2331,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3172,6 +3445,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -3545,6 +3819,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -3877,6 +4152,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -4038,6 +4314,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4323,6 +4600,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4636,6 +4914,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -4864,6 +5143,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
