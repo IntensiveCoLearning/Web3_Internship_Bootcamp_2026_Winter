@@ -15,8 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+今天复习一下transformer 准备选LLM+agent方向
+
+-   当两个向量指向同一个方向时，点积为正
+    
+-   垂直方向时，点积为零
+    
+-   相反方向时，点积是负的
+    
+
+Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Unembedding
+
+**Embedding** 决定了每一个单词转换成什么向量矩阵，且embedding matrix是会改变的。
+
+在chatgpt中每一个word的维度就高达12288 coordination(维），机器通过不断调整词向量的表示，找到一组嵌入使得空间中的方向含有特定的语义意义。
+
+训练后的embedding层的参数是固定的，这意味着每个token都可以用唯一的向量表示，但这时候的向量不包含上下文，我们的目标就是让向量通过网络传递，使得每个向量都获得比单个词更加丰富和具体的含义。
+
+每个网络都只能处理一定数量的上下文，这被我们称为context size
+
+**Unembedding** 为单词表里的每一个单词都分配了一行。最后的向量通过softmax的处理会把每一行变为概率分布（softmax是为了满足概率分布和加起来为1的概念）
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 ### **Signature—related attacks**
 
 攻击者利用签名验证机制的漏洞来实现未授权攻击。
@@ -148,6 +173,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -231,11 +257,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -274,6 +302,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -320,6 +349,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -487,6 +517,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -678,6 +709,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -695,6 +727,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -937,6 +970,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -1073,6 +1107,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
