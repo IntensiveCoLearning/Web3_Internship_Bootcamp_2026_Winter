@@ -15,8 +15,177 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+## 3\. 前端使用 ethers.js 的三大核心对象 ⭐⭐⭐
+
+### 3.1 Provider（只读）
+
+**作用：连接区块链，读取数据**
+
+```
+import { ethers } from "ethers"
+
+const provider = new ethers.BrowserProvider(window.ethereum)
+```
+
+能干什么：
+
+-   查余额
+    
+-   查区块
+    
+-   调用合约的 `view / pure` 方法
+    
+
+不能干什么：
+
+-   ❌ 发交易
+    
+-   ❌ 改状态
+    
+
+* * *
+
+### 3.2 Signer（签名者）
+
+**作用：代表“用户身份”，可以发交易**
+
+```
+const signer = await provider.getSigner()
+```
+
+本质：
+
+-   来自 MetaMask
+    
+-   背后是用户私钥（你永远拿不到）
+    
+
+能干什么：
+
+-   转账
+    
+-   调用合约写方法
+    
+-   签名消息
+    
+
+* * *
+
+### 3.3 Contract（合约 JS 映射）
+
+**作用：把 Solidity 合约变成 JS 对象**
+
+```
+const contract = new ethers.Contract(
+  contractAddress,
+  abi,
+  signer // 或 provider
+)
+```
+
+-   用 `provider`：只能读
+    
+-   用 `signer`：能写
+    
+
+* * *
+
+## 4\. 前端最常见的 5 个使用场景
+
+* * *
+
+## 4.1 连接 MetaMask（前端第一步）
+
+```
+await window.ethereum.request({
+  method: "eth_requestAccounts"
+})
+```
+
+⚠️ 必须用户手动触发（按钮）
+
+* * *
+
+## 4.2 获取用户地址 & 余额
+
+```
+const signer = await provider.getSigner()
+const address = await signer.getAddress()
+
+const balance = await provider.getBalance(address)
+console.log(ethers.formatEther(balance))
+```
+
+👉 **典型“钱包信息展示”功能**
+
+* * *
+
+## 4.3 普通转账（不经过合约）
+
+```
+await signer.sendTransaction({
+  to: "0xabc...",
+  value: ethers.parseEther("0.01")
+})
+```
+
+-   会弹 MetaMask
+    
+-   会产生交易
+    
+-   会进新区块
+    
+
+* * *
+
+## 4.4 调用智能合约（前端最核心）
+
+### 读合约（不花 gas）
+
+```
+const total = await contract.totalSupply()
+```
+
+### 写合约（要 gas）
+
+```
+const tx = await contract.transfer(to, amount)
+await tx.wait()
+```
+
+👉 前端要处理：
+
+-   pending 状态
+    
+-   成功 / 失败
+    
+-   loading UI
+    
+
+* * *
+
+## 4.5 监听链上事件（实时 UI）
+
+```
+contract.on("Transfer", (from, to, value) => {
+  console.log("Transfer happened")
+})
+```
+
+常用于：
+
+-   NFT mint 成功提示
+    
+-   DeFi 状态更新
+    
+-   DAO 投票变化
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 -   创建新节点的方法：
     
     -   `document.createElement(tag)` —— 用给定的标签创建一个元素节点，
@@ -78,6 +247,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # Hardhat vs Foundry
 
@@ -147,6 +317,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # Web3 Frontend Tech Stack
@@ -277,6 +448,7 @@ Smart Contracts (Blockchain)
 
 
 
+
 # FullStack Web3 Engineer Learning Path – Notes  
 
 ## Core Skill Areas  
@@ -360,6 +532,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -457,6 +630,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -588,6 +762,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -751,6 +926,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -988,6 +1164,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -1157,6 +1334,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1356,6 +1534,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
