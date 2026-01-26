@@ -15,8 +15,204 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+\`\`\`
+
+contract test {
+
+string public text;
+
+function set(string calldata \_text) external {
+
+text = \_text;
+
+// transaction cost(44689 gas) execution cost(23181 gas)
+
+}
+
+function set2(string memory \_text2) external {
+
+text = \_text2;
+
+// transaction cost(25274 gas) execution cost(3766 gas)
+
+}
+
+}
+
+\`\`\`
+
+刚刚测试了一下，calldata 和 memory 之间的 Gas 消耗差距还是挺大的。
+
+这也就是说，在一些场景中，使用 calldata 这种只读关键字，比存在内存里的 memory 消耗的 Gas 会更少。如果能用 calldata，就不要用 memory 和 storage。
+
+在编写智能合约的过程中，我们主要关心的是执行 Gas。
+
+交易 Gas 通常包含以下几个部分：
+
+1\. 固定基础 Gas
+
+2\. 执行 Gas
+
+3\. 向智能合约传输数据（Calldata）的 Gas
+
+我们编写智能合约的核心目标是优化逻辑，从而节省执行 Gas。具体的优化手段包括：
+
+1\. 减少循环操作
+
+2\. 减少 SSTORE（存储写入）的操作
+
+3\. 优化代码逻辑
+
+之所以强调执行 Gas，是因为固定 Gas 是不可变的。当我们讨论某种操作比另一种操作更节省 Gas 时，本质上指的都是执行层面的优化。
+
+当然，如果要评估用户最终实际支付的总额，还是需要关注交易 Gas，因为这才是用户的最终成本。但在智能合约的编码阶段，我们应当专注于如何优化执行 Gas，以实现更好的性能和更低的消耗。
+
+**关于显式声明和隐式声明**
+
+\`\`\`
+
+// 显式声明
+
+function updateTodo(uint _index, string calldata_ text, bool \_completed) external {
+
+Todo storage todo = todos\[\_index\]; // 这里是从 storage 状态变量里面复制了一份出来给 todo ，实例化一个对象
+
+todo.text = _text; // 这里的_ text 没有被修改，所以还是 只读 状态
+
+todo.completed = \_completed;
+
+}
+
+// 隐式声明
+
+function updateTodo2(uint _index, string calldata_ text) external {
+
+todos\[\_index\].text = \_text;
+
+}
+
+function get(uint \_index) external view returns (string memory, bool) {
+
+Todo memory todo = todos\[\_index\];
+
+return (todo.text, todo.completed);
+
+// 也可以下面这样写，更简洁的隐式写法
+
+// return (todos\[\_index\].text, todos\[\_index\].completed);
+
+}
+
+function toggleCompleted(uint \_index) external {
+
+// 这里没写 view、 pure、 reutrns ，就是修改了状态变量且没有返回值，在函数调用的时候就是 只修改，但看不到修改之后的状态，要用 get() 方法去查看
+
+return todos\[\_index\].completed = !todos\[\_index\].completed;
+
+}
+
+\`\`\`
+
+**存、读、取** 万能模板
+
+1、存数据（新增）：向容器中添加元素
+
+\- 容器是数组：\*\*数组名.push(结构体实例)\*\* 和上面的 create 函数一样
+
+\- 容器是mapping：\*\*mapping名\[键\] = 结构体实例\*\*
+
+比如 mapping(address => Todo) userTodos;
+
+userTodos\[msg.sender\] = Todo(\_text, false);
+
+\- 关键：创建结构体实例用 **结构体名(值1，值2)** 或 **结构体名({字段名1: 值1，字段名2: 值2})**
+
+2、读数据（查询）：通过 ”定位符“ 获取字段
+
+\- 定位符：数组用 ”索引“ **(数组名\[索引\])** ，mapping 用 “键” **(mapping名\[键\])**
+
+\- 读单个字段：\*\*定位符.字段名\*\* （如 todos\[\_index\].text\]
+
+\- 读多个字段：返回(定位符.字段1, 定位符.字段2)，引用类型返回要加 memory
+
+\- 关键：读数据用 view 修饰符，不消耗 gas
+
+3、改数据（更新）：通过 “定位符” 修改字段
+
+\- 定位符：和读数据一致（数组索引 / mapping键）
+
+\- 修改单个字段：\*\*定位符.字段名 = 新值\*\* 如 todos\[\_index\].text = \_text;
+
+\- 修改布尔字段（切换）：\*\*定位符.字段名 = !定位符.字段名\*\* 如 toggleCompleted 函数）
+
+\- 关键：修改的是 storage 中的原始数据，不需要额外声明 storage （除非要复用定位符）
+
+\`\`\`
+
+function Del(uint \_index) external {
+
+Todo storage todo = todos\[\_index\];
+
+delete todo.text;
+
+}
+
+function Del2(uint \_index) external {
+
+delete todos\[\_index\];
+
+}
+
+\`\`\`
+
+写函数三步法：
+
+\- 明确函数目标：是“ 存、读、取”中的哪一种？（“新增”是存，“查询”是读）
+
+\- 确定参数：需要哪些参数来 “定位数据”（索引 / 键）和“传递数据”（新值）
+
+\- 套用模板：按 存 / 读 / 改 的模板写核心逻辑，引用类型注意 calldata / memory ，返回值注意 memory 和 view 修饰符
+
+可以用加工厂的角度来解读函数工作原理，加工厂需要有原材料（参数），原料需要通过各种运输渠道送到工厂（函数 () 里面的东西），这里就是传递原料的路径，用什么方式传（传参），重货用大卡车（引用类型，如 string 、 struct 、 uint\[\]等），轻货小三轮就可以（uint 、 bool 、 address等），送到工厂之后，就会进入生产车间，生产线上（函数定义后的内部逻辑），最后经历一系列工序，产出成品（函数结果），成品有两种处理方式，一种是输出给外部（return 返回结果），一种是自己消化（没有 return值）
+
+一个个函数就是一条条流水线，很多函数组合起来就是一个巨大的生产车间，一个最终的成品，需要经过很多道工序，也许这条流水线生产出来的东西，会是另一条流水线上的原材料，这也是函数的返回值传到另一个函数当参数，有些没有返回值的，就是已经没有下一首工序的成品或者材料，直到最后所有半成品生产好，再组合到一起去拼装成品，成品就是整个代码展现出的一种功能或者多种功能。
+
+\`\`\`
+
+// 复制待办：把 fromIndex 的待办文本，复制到 toIndex 的待办中
+
+function copyTodo(uint fromIndex, uint toIndex) external {
+
+// 1.调用 get 函数，获取 fromIndex 的待办文本（返回值是 (text, completed)
+
+(string memory copyText, ) = get(fromIndex); // 只取第一个返回值 text ，第二个用 忽略
+
+// 2.把 get 的返回值 copyText ，传给 updateText 当参数
+
+updateText(toIndex, copyText);
+
+}
+
+\`\`\`
+
+**这里有一个要注意的点：** 比如 `get` 函数返回的 `string memorymemory` 类型），可以直接传给 `updateText` 的 `string calldata _textcalldata` 类型）—— 因为两者都是 “函数级生命周期” 的临时数据，编译器会自动兼容。
+
+但如果是 `storage` 类型的返回值（很少见，一般不推荐），就不能直接传给 `calldata` 或 `memory` 参数 —— 因为 `storage` 是永久数据，临时参数接不住
+
+重点：
+
+\- 我需要给函数传什么数据？
+
+\- 函数要返回什么数据给我？
+
+\- 先想这两个问题，再套 ”存读改模板“
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 Figma 设计界面这节，看完之后，对这个工具的印象明显变了。
 
 刚进文件的时候，第一感觉还是有点被信息量压住。左边一大串图层名字，中间一堆画板，右边一排参数，像是刚打开一个别人写的巨大项目，不知道从哪看起。不过慢慢跟着讲解挨个看，界面好像没那么吓人了，只是规则比较多。
@@ -32,6 +228,7 @@ Figma 设计界面这节，看完之后，对这个工具的印象明显变了�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 this：我自己这个合约
 
@@ -80,6 +277,7 @@ address 的默认值是 0x0000000000000000000000000000000000000000 （40个0）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 Gas 优化：才知道原来可以这样去优化Gas，之前从来没这么考虑过，但我觉得这应该要对底层架构有很深的了解才能去优化，或者已经很熟悉最优的路径，不过确实提升了一个视角
@@ -151,6 +349,7 @@ balances\[msg.sender\] = 0; // 5行
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -227,6 +426,7 @@ return result; // 返回结构体 result，还有一个 result1 没返回
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -561,6 +761,7 @@ memory 和 storage 在什么情况下用？在什么情况下又不用？在什�
 
 
 
+
 关于ZK证明，又比之前更了解了一些，之前只知道零知识证明，是在验证者只知道结果正确的情况下，从而得到整个事件正确，但现在对于传统投票和零知识证明投票之间的优劣性有了更深的认识，链上传统投票，有点像是记名投票，在一些无关紧要的公众调研活动中无所谓，不用过于复杂的去考虑隐私性，但在一些比较敏感的场合下还运用这类“记名式投票”难免对一些人不方便，例如选举或者任何关于利益分配方面的事件，这个时候，零知识证明就派上了用场，三个特性决定了它未来的巨大应用场景，完备性、可靠性、零知识性，除了知道这个地址做了投票这个动作，其它一概不知道，在确认这个地址是否具备投票权，以及限制一个地址只能投票一次上都做了充分的技术保证，从Markle根确权到Nullifier防重复，再到最后的本地生成零证明，已经算是把无记名投票方式的概念充分在链上体现出来了，写到这里，我突然又想到刚刚看到的ERC-7962这个提案，它也是在链上隐私上面下工夫，它的核心就是把链上事件从绑定地址转移到绑定Hash上，那零知识证明可不可以和这个ERC-7962嵌套一下呢，先零知识再ERC-7962，这个最后一个公开信息（address）也被隐藏起来了，虽然说不是真的强隐私，无法追踪，但起码对一些专业技能不够强的人来说，这已经是很难去通过常规链上方法去追踪了，我想应该是会有人这样做的。  
   
 映射--之前就一直看到合约里面有 => 这个符号，一直没懂是什么意思，刷课的时候第一遍完全没听懂，问了AI才知道，原来就是个字典，映射本身只负责【“键类型” -> “值类型”的关联存储】，业务含义是开发者通过 【变量名 + 代码逻辑】赋予的，和映射本身无关！
@@ -600,6 +801,7 @@ isFriedn\[msg.sender\]\[address(this)\] = true; // 当前调用者和本合约�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -651,6 +853,7 @@ assert(arr\[2\] == 3);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -733,6 +936,7 @@ assert(arr.length == 0);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -889,6 +1093,7 @@ return nums; // 通过函数来返回数组的全部内容
 
 
 
+
 函数修饰器 **modifier** ：这是个关键字，它的主要作用是把重复的代码弄到一块去，这样其它函数需要使用的时候直接修饰一下就可以了，还可以弄三明治形式，插到中间，总的来说，就是可以不用写太多重复代码，跟函数一样，我觉得应该可以算是函数里面的函数，叫函函算了。
 
 \`\`\`
@@ -990,6 +1195,7 @@ x = \_x; // 这个就是在部署合约时需要用户输入的一个值，也�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1154,6 +1360,7 @@ revert MyError(msg.sender, \_i); // msg.sender(调用者的地址) i(传入的�
 
 
 
+
 public 代表公开
 
 \## 类型和值
@@ -1201,6 +1408,7 @@ pure、view和无修饰符，是强制约束 + gas优化，我还以为可以从
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
