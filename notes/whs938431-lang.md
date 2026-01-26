@@ -15,6 +15,8 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
-
-
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+ERC-8004:智能体的链上护照
+<!-- DAILY_CHECKIN_2026-01-26_END -->
 <!-- Content_END -->
