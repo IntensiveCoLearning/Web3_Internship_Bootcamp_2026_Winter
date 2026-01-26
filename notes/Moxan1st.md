@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# 总览
+
+完成入门技术的3个任务：
+
+Hardhat
+
+Foundry
+
+ERC标准10个，并且总结成笔记。
+
+# 详情
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 # 总览
 
 学习一下dAPP开发——今天学了一会前端
@@ -56,6 +72,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 # 总览
 
 开了个会，尝试加入LXDAO。
@@ -65,6 +82,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -103,6 +121,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -171,6 +190,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -254,6 +274,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -387,6 +408,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 
 
+
 # 总览
 
 ### 提交任务
@@ -407,6 +429,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -552,6 +575,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -574,6 +598,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -624,6 +649,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -758,6 +784,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1018,6 +1045,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -1126,6 +1154,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
