@@ -15,13 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+奶奶的又忘记更新打卡了  
+昨天的份：
+
+**草履虫也能听懂的10个基础ERC标准**  
+[https://x.com/compose/articles/edit/2015777597989502976](https://x.com/compose/articles/edit/2015777597989502976)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Ser4nu11EN7/images/2026-01-26-1769444083937-image.png)
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 1
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 本周总结，四篇教程，两篇文章：
 
@@ -42,6 +55,7 @@ ERC7962：Web3 理想主义的退让 [https://x.com/compose/articles/edit/201534
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -973,6 +987,7 @@ what about Skill and Workflow?
 
 
 
+
 我草我忘更新笔记里的教程了
 
 what can i say？
@@ -1210,11 +1225,13 @@ status: draft difficulty: 初级/中级/高级 source: \[\[资料/xxx\]\]（可�
 
 
 
+
 请输入文本
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1241,6 +1258,7 @@ status: draft difficulty: 初级/中级/高级 source: \[\[资料/xxx\]\]（可�
 
 
 
+
 [零基础？带你十分钟速通零基础智能合约和Dapp开发（合约部署篇）](https://x.com/Ser4nu11EN7/status/2013630741423497618)  
   
 排版把我搞崩溃了，累了  
@@ -1250,6 +1268,7 @@ status: draft difficulty: 初级/中级/高级 source: \[\[资料/xxx\]\]（可�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1336,6 +1355,7 @@ Web3是一个高度依赖个人品牌和声誉的圈子。你怎么定义自己�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1935,6 +1955,7 @@ Web3 领域有大量的讨论，关于技术架构、代币经济、治理模型
 
 
 
+
 拖了好久，终于决定对这块硬骨头发起挑战了，我有预感，这篇文章写出来会是对我思考深度和逻辑能力的一个巨大挑战  
 先来点开胃小菜和知识预备，完善的文章可能要明天了：
 
@@ -2125,6 +2146,7 @@ Web3 领域有大量的讨论，关于技术架构、代币经济、治理模型
 
 
 
+
 ## 以太坊是如何实现图灵完备的
 
 首先我们要知道图灵完备的**定义**：“图灵完备”意味着一个系统**具备处理任何逻辑计算的能力**，只要有足够的时间和资源（奇迹行者还在打野）
@@ -2179,6 +2201,7 @@ Web3 领域有大量的讨论，关于技术架构、代币经济、治理模型
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2264,6 +2287,7 @@ Web3 领域有大量的讨论，关于技术架构、代币经济、治理模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2368,6 +2392,7 @@ Gas是整个web3运行的底层逻辑之一，Gas激励矿工，确保以太坊�
 
 
 
+
 看到XiaoHai老师的一篇推文：  
 **被误解的民主**  
 [https://x.com/XiaoHai67890/status/2010021423734243537](https://x.com/XiaoHai67890/status/2010021423734243537)  
@@ -2403,6 +2428,7 @@ Gas是整个web3运行的底层逻辑之一，Gas激励矿工，确保以太坊�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
