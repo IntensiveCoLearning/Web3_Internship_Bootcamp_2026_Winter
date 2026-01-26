@@ -70,11 +70,56 @@ A TypeScript Hardhat project using Mocha and Ethers.js
 因為我選擇第三個 較基本的 Minimal 模式，所以不會有默认复杂的合约contracts 文件夹里的 Lock.sol，  
 因為**A minimal Hardhat project** 的特點是簡易版，連資料夾都要自己建立，沒有 `contracts`、`test` 或 `ignition` 資料夾。
 
-原本的終端機維持開啟
+原本的終端機維持開啟  
+  
+今日課程紀錄  
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441400540-image.png)
+
+這幾日已經聽到好多老師提到，能學前後端都能寫的就夠了，不用一次學那麼多，上次小海老師也是這樣說  
+最近許多AI的東西一直在推出，這個學完了又有新的，  
+今日又增加一個知識點，先將基礎的東西撿起來了，每個都學一點學一點，到時候點就會變成面了  
+
+![](image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441545509-image.png)
+
+1.plan mode  
+2.勤看context  
+3./compact (先compact一下再給AI寫，不要一股腦灌給他  
+4.多相AI請教 EX：我有什麼沒想全的 / 有什麼要補充的 大大增加AI準確性  
+上下文管理練習 問題拆解，大問題拆解成小問題，一步步丟給AI去產生解決方法，自己做總結  
+  
+找好看模板截圖丟給AI分析修改 nanobanana 讓AI生成一個 ascii 佈局圖 [https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type+Something+&x=none&v=4&h=4&w=80&we=false)  
+
+![](image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441597987-image.png)
+
+  
+代幣經濟模型可以刷掉90% 藉由流通量、代幣總量去判斷是否可投
+
+-   大概知道web3有哪些賽道  
+    ex: defi三件套 去中心化交易所 去中心化借貸...  
+    
+-   找個一兩條吃透 怎麼起來到怎麼消亡，  
+    代幣經濟模型是怎麼樣的，  
+    在哪些地區經營，  
+    如何做的
+    
+-   算法穩定幣 暴雷的 luna
+    
+-   以太方系列有哪些 什麼叫零知識證明 樂觀證明 側鏈
+    
+-   一個個賽道先去研究龍頭 先建立淺層知識框架，一點一點就會連成面
+    
+
+## 永遠要保持學習的心態
+
+# (以下為同學做的課堂紀錄)
+
+![0126投研基礎建立 重點整理.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Huwan001/images/2026-01-26-1769441982551-0126___________.jpg)
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -248,6 +293,7 @@ increment 翻譯為"遞增"
 
 
 
+
 今日稍微休息了一下 沒怎麼念書  
 把前幾天學到的東西簡單整理了一下  
 還有聽了兩場同學們舉辦的AMA
@@ -255,6 +301,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -294,6 +341,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -417,6 +465,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -442,6 +491,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -610,6 +660,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -621,6 +672,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -729,6 +781,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -739,6 +792,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -933,6 +987,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -958,6 +1013,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1152,6 +1208,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -1231,6 +1288,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
