@@ -15,8 +15,144 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+### 本地节点交互教程 Hardhat 篇
+
+跑不动
+
+```TypeScript
+$ npx hardhat run scripts/deploy.js --network localhost
+
+An unexpected error occurred:
+
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at file:///home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/scripts/deploy.js:1:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async runScriptWithHardhat (/home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/node_modules/hardhat/dist/src/internal/builtin-plugins/run/task-action.js:14:5)
+    at async Promise.all (index 0)
+    at async main (/home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/node_modules/hardhat/src/internal/cli/main.ts:220:5)
+    at async file:///home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/node_modules/hardhat/dist/src/cli.js:21:1
+
+If you think this is a bug in Hardhat, please report it here: https://hardhat.org/report-bug
+```
+
+把 require 换成 import
+
+```Solidity
+[YayoiNana@Mirai my_hardhat_project]$ npx hardhat run scripts/deploy.js --network localhost
+
+TypeError: Cannot read properties of undefined (reading 'getContractFactory')
+    at main (file:///home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/scripts/deploy.js:5:38)
+    at file:///home/YayoiNana/Learn/code/first_dapp/hardhat/my_hardhat_project/scripts/deploy.js:17:1
+```
+
+还是跑不动
+
+捯饬半天说 hardhat 版本太新了
+
+先去捯饬 foundry 去吧
+
+```Solidity
+[YayoiNana@Mirai foundry]$ curl -L <https://foundry.paradigm.xyz> | bash
+bash: 未预期的记号 "|" 附近有语法错误
+[YayoiNana@Mirai foundry]$ curl -L <https://foundry.paradigm.xyz>
+bash: 未预期的记号 "newline" 附近有语法错误
+[YayoiNana@Mirai foundry]$ curl -L "https://foundry.paradigm.xyz" | bash
+```
+
+```Solidity
+forge create src/Counter.sol:Counter \   --rpc-url <http://127.0.0.1:8545> \   --private-key <0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80> \   --broadcast
+```
+
+对，对吗？
+
+```Solidity
+[YayoiNana@Mirai my_first_web3]$ forge create src/Counter.sol:Counter \                                                   --rpc-url <http://127.0.0.1:8545> \
+  --private-key <0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80> \
+  --broadcast
+bash: http://127.0.0.1:8545: 没有那个文件或目录
+[YayoiNana@Mirai my_first_web3]$ forge create src/Counter.sol:Counter   --rpc-url "http://127.0.0.1:8545"   --private-ke
+y "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"   --broadcast
+[⠊] Compiling...
+[⠒] Compiling 1 files with Solc 0.8.33
+[⠢] Solc 0.8.33 finished in 30.96ms
+Compiler run successful!
+Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Transaction hash: 0x35d44e1efeeb16d55dd50c3828dd94400e8f164cf2e503d14486ee1b13e77373
+```
+
+私钥 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+合约 0x5FbDB2315678afecb367f032d93F642f64180aa3
+
+cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()" --rpc-url [http://127.0.0.1:85450.1:8545](http://127.0.0.1:85450.1:8545)
+
+cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "setNumber(uint256)" 666 --rpc-url [http://127.0.0.1:8545](http://127.0.0.1:8545) --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=OGI1NTA4YTFjNTQ0OTM0ZTVjNDRhNmE0NGU4YzMxM2RfTkdJYWVNRGRwMjRHOTZLTnZUNTllTlk1U25SM0U5cXhfVG9rZW46SjdEbGJZZXhBb3RmSUR4ZTRFYWNVdzQ2bm9kXzE3Njk0Mzk3NzQ6MTc2OTQ0MzM3NF9WNA)
+
+给之前的留言板写一个部署的脚本
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+import {Script} from "forge-std/Script.sol";
+import {gustbook} from "../src/gustbook.sol";
+
+contract gustbookScript is Script {
+    function run() public {
+        // 从环境变量或硬编码中获取私钥（本地测试可以直接写）
+        uint256 deployerPrivateKey = 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
+
+        vm.startBroadcast(deployerPrivateKey);
+
+        // 在这里设置初始费用，比如 0.01 ether
+        // 使用 0.01 ether 这种语法比写那一串 0 要清晰得多
+        new gustbook(0.0001 ether);
+
+        vm.stopBroadcast();
+    }
+}
+```
+
+> ### `vm` 是什么？
+> 
+> 在标准的以太坊虚拟机（EVM）里，合约的权限是非常受限的。但 Foundry 为了方便我们测试和部署，创造了一个虚拟的“超级管理员”对象，这就是 `vm`。
+> 
+> 你可以把它想象成**游戏里的“控制台终端”**：
+> 
+> -   **普通 Solidity 代码**：是在遵守游戏规则（不能改时间、不能随便给别人钱）。
+>     
+> -   `vm` **操作**：是在修改游戏规则（我可以跳过时间、我可以瞬间给自己 100 个 ETH、我可以录制我的操作）。
+>     
+> 
+> **它是从哪来的？** 当你执行 `import {Script} from "forge-std/Script.sol";` 时，你的脚本继承了 `Script` 类，而 `vm` 就是这个类里内置的一个特殊变量。
+
+```Solidity
+forge create src/Gustbook.sol:gustbook --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast
+```
+
+不对，写了部署脚本的话直接用部署脚本部署就行了
+
+```Solidity
+forge script script/Gustbook.s.sol --rpc-url http://127.0.0.1:8545 --broadcast
+```
+
+合约部署在
+
+0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+剩下一些怕来不及打卡，先把这部分笔记拿着打卡吧
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 前面这几天感觉没干什么活
 
 虽然说没学东西吧
@@ -299,6 +435,7 @@ struct Message {
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 打算先试着做一个链上留言板的Dapp
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
@@ -306,11 +443,13 @@ struct Message {
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 今天还在跟 linux 打架
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -345,6 +484,7 @@ struct Message {
 
 
 
+
 今天的任务是完成 Challenge: 🎟 Tokenization
 
 * * *
@@ -352,6 +492,7 @@ struct Message {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2978,6 +3119,7 @@ contract GasGolf {
 
 
 
+
 ## Solidity基础语法
 
 ### 基础数据类型
@@ -3868,6 +4010,7 @@ contract DataLocations {
 
 
 
+
 1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
     
 
@@ -3966,6 +4109,7 @@ contract DataLocations {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -4361,6 +4505,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -4467,6 +4612,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4641,6 +4787,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5147,6 +5294,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -6096,6 +6244,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
