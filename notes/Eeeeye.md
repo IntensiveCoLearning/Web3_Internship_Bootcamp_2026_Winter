@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+🛡️ **Web3 安全实战笔记：重入攻击 (Reentrancy) 与 The DAO 的教训**
+
+Gas 优化决定你的利润，而安全性决定你的生死。 今天复现了以太坊历史上最著名的漏洞——重入攻击（导致以太坊硬分叉的元凶）。
+
+**1\. 漏洞本质：信任了不该信任的人** 在 Solidity 中，给合约转账 (`call{value: ...}`) 不仅仅是资产转移，它还会**移交控制权**。 接收方合约可以通过 `receive()` 或 `fallback()` 函数立刻执行代码。 如果此时你的合约状态（余额）还没有更新，攻击者就可以回头调用你的函数。
+
+**🏦 通俗比喻：故障的 ATM**
+
+1.  坏人插卡取 100 块。
+    
+2.  ATM 吐出钞票（但还没来得及扣账）。
+    
+3.  坏人拿到钱的瞬间，大喊：“我再取 100 块！”
+    
+4.  ATM 查账本：“余额没扣，确实还有钱”，于是又吐钱。
+    
+5.  循环直到 ATM 被掏空。
+    
+
+**2\. 致命代码模式 (The Anti-Pattern)** ❌ **先转账，后扣款**
+
+Solidity
+
+```
+// 危险！
+msg.sender.call{value: balance}(""); // 1. 交互：控制权交出去了
+balances[msg.sender] = 0;            // 2. 生效：太晚了，攻击者已经递归进来了
+```
+
+**3\. 黄金防御法则：CEI 模式** **C**hecks (检查) -> **E**ffects (生效) -> **I**nteractions (交互)
+
+这是所有智能合约开发者的生存法则。必须先修改这一笔交易的所有状态，最后再和外部世界交互。
+
+✅ **安全写法**
+
+Solidity
+
+```
+// 1. Checks
+require(balances[msg.sender] > 0);
+
+// 2. Effects (关键！先扣款/清零)
+uint256 amount = balances[msg.sender];
+balances[msg.sender] = 0; 
+
+// 3. Interactions (最后转账)
+(bool success, ) = msg.sender.call{value: amount}("");
+```
+
+_原理：当攻击者试图递归调用 withdraw 时，他在步骤 1 的检查中就会失败（因为步骤 2 已经把余额清零了）。_
+
+**4\. 双重保险：互斥锁 (Mutex)** 除了 CEI，工业界标准做法是加上 OpenZeppelin 的 `ReentrancyGuard`。 它就像给 ATM 加了个旋转门，只要里面有人（交易未结束），外面的人绝对进不来。
+
+Solidity
+
+```
+modifier nonReentrant() {
+    require(_status != ENTERED, "ReentrancyGuard: reentrant call");
+    _status = ENTERED;
+    _;
+    _status = NOT_ENTERED;
+}
+```
+
+**💡 总结** 不要假设外部调用是安全的。每一次 `call` 都是在把自家的钥匙交给陌生人。 记住：**先改账本，再给钱。**
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 ⛽️ **Solidity Gas 优化实战笔记：如何将 Gas 消耗降低 77%？**
 
 今天用 Foundry 对一个经典的“批量空投”合约进行了极致的 Gas 审计和优化。数据很真实，分享几个核心的底层逻辑。
@@ -36,6 +106,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 ### 📋 Vibe Coding：新时代的编程范式笔记
@@ -73,6 +144,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -175,6 +247,7 @@ DApp 开发中最繁琐的部分（处理钱包连接、ABI 解析、交易签�
 
 
 
+
 ### 1\. Uniswap v2: 恒积做市商 (CPMM) — AMM 的基石
 
 核心公式 $x \\cdot y = k$：
@@ -239,6 +312,7 @@ Hooks (钩子)：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -310,6 +384,7 @@ Hooks (钩子)：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -507,6 +582,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 ## 今天学习了ZK零知识证明  
 链上投票的核心痛点与解决方案
 
@@ -656,6 +732,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 复盘了计算机网络底层，发现很多链上交互的痛点（延迟、丢包、监听失败），本质上都是网络层协议特性的投射。
 
 1\. 交易传播与 Mempool 机制（应用层/传输层）
@@ -741,6 +818,7 @@ contract SimpleCrowdfunding {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -893,6 +971,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 
 
+
 ### **以太坊核心架构与原理深度研读笔记（第2-4章）**
 
 通过对第2至4章的系统性学习，我从底层的网络拓扑、状态模型以及执行环境三个维度，重新构建了对以太坊基础设施的认知。这不再仅仅是对概念的理解，而是涉及如何构建安全、高效的去中心化应用的工程基础。
@@ -988,6 +1067,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1137,6 +1217,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 今天参加了web3安全和合规的分享会 收获颇丰 结合Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分 以下是学习内容：
 
 ## 第一部分：法律与合规风险
@@ -1251,6 +1332,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 ### 1\. 概念辨析：Web3 的认识论 (Epistemology)
 
 -   **Web 3.0 (Semantic Web, 1999)**:
@@ -1317,6 +1399,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
