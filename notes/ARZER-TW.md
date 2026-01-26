@@ -15,8 +15,352 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+# 重入攻擊漏洞修復案例 - 學習筆記
+
+> Web3 實習手冊 - 合約安全章節作業
+> 
+> 作者：James 日期：2026-01-26
+
+## 1\. 漏洞概述
+
+### 什麼是重入攻擊（Reentrancy Attack）？
+
+重入攻擊是智能合約安全中最經典也最危險的漏洞之一。其核心原理是：
+
+**當合約 A 調用外部合約 B 時，B 可以在 A 完成狀態更新之前「重新進入」A 的函數，反覆提取資金。**
+
+這就像 ATM 機在扣款之前就先吐錢，而攻擊者可以在扣款發生前反覆按「提款」按鈕。
+
+### 歷史背景：The DAO 事件
+
+2016 年 6 月，The DAO（一個去中心化自治組織）遭受重入攻擊，約 **6000 萬美元** ETH 被盜。這次事件直接導致：
+
+-   以太坊社區分裂
+    
+-   硬分叉產生 ETH（主鏈）和 ETC（經典鏈）
+    
+-   智能合約安全意識的覺醒
+    
+
+## 2\. 漏洞原理分析
+
+### 2.1 問題代碼模式（Checks-Effects-Interactions 違反）
+
+```
+❌ 有漏洞的順序：
+1. 檢查條件 (Checks)
+2. 執行外部調用 (Interactions) ← 危險！
+3. 更新狀態 (Effects)
+```
+
+當外部調用發生時，控制權暫時轉移到外部合約。如果狀態還沒更新，外部合約可以利用這個窗口再次調用原函數。
+
+### 2.2 攻擊流程圖
+
+```
+攻擊者                     有漏洞的合約
+   │                            │
+   │──── deposit 1 ETH ────────>│
+   │                            │ balance[attacker] = 1 ETH
+   │                            │
+   │──── withdraw() ───────────>│
+   │                            │ 1. check: balance > 0 ✓
+   │                            │ 2. send 1 ETH ─────────┐
+   │<───────────────────────────│                        │
+   │                            │                        │
+   │  receive() {               │                        │
+   │    withdraw() ─────────────────────────────────────>│
+   │  }                         │ 1. check: balance > 0 ✓ (還沒更新！)
+   │                            │ 2. send 1 ETH ─────────┐
+   │<───────────────────────────│                        │
+   │                            │                        │
+   │  receive() {               │                        │
+   │    withdraw() ─────────────────────────────────────>│
+   │  }                         │ ... (重複直到合約餘額歸零)
+   │                            │
+   │                            │ 3. balance[attacker] = 0 (太晚了！)
+```
+
+### 2.3 為什麼 `call` 特別危險？
+
+```solidity
+// 這三種轉帳方式的 gas 限制不同：
+msg.sender.transfer(amount);  // 固定 2300 gas，無法重入
+msg.sender.send(amount);      // 固定 2300 gas，無法重入
+msg.sender.call{value: amount}(""); // 轉發所有 gas，可以重入！
+```
+
+`call` 是目前推薦的轉帳方式（因為 gas 成本變化），但它會轉發所有剩餘 gas，讓接收方有足夠 gas 執行複雜邏輯，包括重入攻擊。
+
+## 3\. 案例實作
+
+### 3.1 有漏洞的合約 (`VulnerableVault.sol`)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract VulnerableVault {
+    mapping(address => uint256) public balances;
+    
+    function deposit() external payable {
+        balances[msg.sender] += msg.value;
+    }
+    
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "No balance");
+        
+        // ❌ 危險：先轉帳，後更新狀態
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+        
+        balances[msg.sender] = 0;  // 太晚了！
+    }
+    
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+### 3.2 攻擊合約 (`Attacker.sol`)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "./VulnerableVault.sol";
+
+contract Attacker {
+    VulnerableVault public vault;
+    address public owner;
+    uint256 public attackCount;
+    
+    constructor(address _vault) {
+        vault = VulnerableVault(_vault);
+        owner = msg.sender;
+    }
+    
+    // 發起攻擊
+    function attack() external payable {
+        require(msg.value >= 1 ether, "Need at least 1 ETH");
+        
+        // 先存入一些 ETH 作為提款憑證
+        vault.deposit{value: msg.value}();
+        
+        // 觸發第一次提款，開始重入循環
+        vault.withdraw();
+    }
+    
+    // 接收 ETH 時自動觸發重入
+    receive() external payable {
+        if (address(vault).balance >= 1 ether) {
+            attackCount++;
+            vault.withdraw();  // 重入！
+        }
+    }
+    
+    // 提取偷來的資金
+    function withdraw() external {
+        require(msg.sender == owner, "Not owner");
+        payable(owner).transfer(address(this).balance);
+    }
+    
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+### 3.3 修復後的合約 (`SecureVault.sol`)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+
+contract SecureVault is ReentrancyGuard {
+    mapping(address => uint256) public balances;
+    
+    event Deposit(address indexed user, uint256 amount);
+    event Withdrawal(address indexed user, uint256 amount);
+    
+    function deposit() external payable {
+        balances[msg.sender] += msg.value;
+        emit Deposit(msg.sender, msg.value);
+    }
+    
+    // ✅ 修復方案 1: Checks-Effects-Interactions 模式
+    function withdraw() external nonReentrant {  // ✅ 修復方案 2: 重入鎖
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "No balance");
+        
+        // ✅ 先更新狀態（Effects）
+        balances[msg.sender] = 0;
+        
+        // ✅ 最後才執行外部調用（Interactions）
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+        
+        emit Withdrawal(msg.sender, amount);
+    }
+    
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+```
+
+## 4\. 修復方案詳解
+
+### 方案 1：Checks-Effects-Interactions (CEI) 模式
+
+這是最基本也最重要的防護原則：
+
+```
+✅ 正確的順序：
+1. Checks   - 檢查所有條件
+2. Effects  - 更新所有狀態變數
+3. Interactions - 最後才執行外部調用
+```
+
+**原理**：即使攻擊者重入，狀態已經更新，條件檢查會失敗。
+
+### 方案 2：重入鎖（Reentrancy Guard）
+
+OpenZeppelin 的 `ReentrancyGuard` 使用一個狀態變數作為鎖：
+
+```solidity
+abstract contract ReentrancyGuard {
+    uint256 private constant NOT_ENTERED = 1;
+    uint256 private constant ENTERED = 2;
+    uint256 private _status = NOT_ENTERED;
+    
+    modifier nonReentrant() {
+        require(_status != ENTERED, "ReentrancyGuard: reentrant call");
+        _status = ENTERED;
+        _;
+        _status = NOT_ENTERED;
+    }
+}
+```
+
+**原理**：第一次進入時上鎖，重入時檢測到已上鎖就 revert。
+
+### 方案 3：Pull Payment 模式
+
+不主動推送資金，讓用戶自己來提取：
+
+```solidity
+mapping(address => uint256) public pendingWithdrawals;
+
+function requestWithdrawal() external {
+    uint256 amount = balances[msg.sender];
+    balances[msg.sender] = 0;
+    pendingWithdrawals[msg.sender] += amount;
+}
+
+function claimWithdrawal() external {
+    uint256 amount = pendingWithdrawals[msg.sender];
+    pendingWithdrawals[msg.sender] = 0;
+    payable(msg.sender).transfer(amount);
+}
+```
+
+## 5\. 測試驗證
+
+使用 Foundry 進行測試，驗證：
+
+1.  **攻擊成功**：對有漏洞合約的重入攻擊能夠竊取資金
+    
+2.  **防護有效**：對修復後合約的攻擊會失敗
+    
+
+詳見 `test/ReentrancyTest.t.sol`
+
+## 6\. 進階思考
+
+### 6.1 跨函數重入（Cross-function Reentrancy）
+
+重入不只發生在同一個函數，也可能跨函數：
+
+```solidity
+contract CrossFunctionVulnerable {
+    mapping(address => uint256) public balances;
+    
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success);
+        balances[msg.sender] = 0;
+    }
+    
+    function transfer(address to, uint256 amount) external {
+        require(balances[msg.sender] >= amount);
+        balances[msg.sender] -= amount;
+        balances[to] += amount;
+    }
+}
+```
+
+攻擊者可以在 `withdraw` 的回調中調用 `transfer`，因為 balance 還沒清零。
+
+### 6.2 跨合約重入（Cross-contract Reentrancy）
+
+當多個合約共享狀態時，攻擊者可能通過合約 A 的回調來操作合約 B。
+
+### 6.3 Read-only Reentrancy
+
+即使沒有狀態修改，讀取過時的狀態也可能造成問題（常見於 DeFi 協議的價格計算）。
+
+## 7\. 最佳實踐清單
+
+-   \[ \] 遵循 Checks-Effects-Interactions 模式
+    
+-   \[ \] 對涉及 ETH/Token 轉移的函數加上 `nonReentrant` 修飾符
+    
+-   \[ \] 使用 OpenZeppelin 的 `ReentrancyGuard`
+    
+-   \[ \] 審計時特別關注 `call`、`delegatecall`、`transfer`、`send`
+    
+-   \[ \] 考慮使用 Pull Payment 模式處理批量支付
+    
+-   \[ \] 注意跨函數和跨合約的重入風險
+    
+
+## 8\. 參考資料
+
+-   [The DAO Hack Explained](https://www.gemini.com/cryptopedia/the-dao-hack-makerdao)
+    
+-   [OpenZeppelin ReentrancyGuard](https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard)
+    
+-   [SWC-107: Reentrancy](https://swcregistry.io/docs/SWC-107)
+    
+-   [Damn Vulnerable DeFi - Reentrancy Challenges](https://www.damnvulnerabledefi.xyz/)
+    
+
+* * *
+
+## 總結
+
+重入攻擊的本質是**狀態更新的時序問題**。理解這個漏洞不僅需要知道「怎麼修」，更重要的是理解「為什麼會發生」。
+
+核心教訓：
+
+1.  **永遠假設外部調用會嘗試重入**
+    
+2.  **狀態更新必須在外部調用之前**
+    
+3.  **多重防護優於單一防護**（CEI + ReentrancyGuard）
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 實習計畫第二周結束，本周最讓我印象深刻的是「與人合作」這個課題。
 
   
@@ -50,6 +394,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 * * *
 
@@ -99,6 +444,7 @@ ZK 是一個**選擇性隱藏**的工具，設計者決定保護什麼、公開�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 完整的學習了GAS優化技巧，一步步跟著AI學習，讓AI出題給出未優化合約我在手動修改。  
@@ -209,6 +555,7 @@ if (amount == 0) revert ZeroAmount();
 
 
 
+
 完整閱讀並學習了這兩篇在 X 上非常熱門的 Claude Code 指南——  
 [https://x.com/affaanmustafa/status/2014040193557471352?s=20](https://x.com/affaanmustafa/status/2014040193557471352?s=20) 和  
 [https://x.com/affaanmustafa/status/2012378465664745795?s=20，](https://x.com/affaanmustafa/status/2012378465664745795?s=20，)  
@@ -239,6 +586,7 @@ if (amount == 0) revert ZeroAmount();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1283,6 +1631,7 @@ price_ratio = 新價格 / 舊價格
 
 
 
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -1598,6 +1947,7 @@ unchecked：跳過溢位檢查，慎用
 
 
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -1609,6 +1959,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1692,6 +2043,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2318,6 +2670,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -2347,6 +2700,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2548,6 +2902,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -2607,6 +2962,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2856,6 +3212,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
