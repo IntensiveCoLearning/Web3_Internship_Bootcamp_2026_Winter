@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+今日在WTF上重新学习solidity，这里的教程比 [Solidity by Example](https://solidity-by-example.org/) 更好懂一点，目前完成了solidity101前五关。
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 **Transient Storage:** Data stored in transient storage is cleared out after transaction.
 
 ```
@@ -137,6 +143,7 @@ contract ReentrancyGuardTransient {
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 structs
 
 You can define your own type by creating a .`struct`
@@ -198,6 +205,7 @@ contract Todos {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 **mapping**：mapping(keyType => valueType)
@@ -341,6 +349,7 @@ contract ArrayReplaceFromEnd {
 
 
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -421,6 +430,7 @@ contract Loop {
 
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -475,6 +485,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -482,6 +493,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -558,6 +570,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -616,6 +629,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -642,6 +656,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -709,6 +724,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
