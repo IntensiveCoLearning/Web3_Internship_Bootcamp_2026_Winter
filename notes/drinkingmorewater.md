@@ -57,11 +57,90 @@ GPT是逻辑专家；gemini不好用；
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769428251500-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769428293218-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769428453378-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769428808498-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769428961456-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769429194981-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769429211287-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769429231326-image.png)
 
-![ad026706b6f6dd1a4776b7810262f7bb.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769410552892-ad026706b6f6dd1a4776b7810262f7bb.jpg)
+![ad026706b6f6dd1a4776b7810262f7bb.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769410552892-ad026706b6f6dd1a4776b7810262f7bb.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769430646299-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769430695301-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769431136468-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769431359921-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769431550427-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769431722010-image.png)
+
+Ethna
+
+defi summer
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769432274983-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769432286303-image.png)
+
+流动性溢出
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769432545864-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769432560611-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769432957023-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769433285737-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769434425685-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435327405-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435410647-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435486970-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435558868-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435661621-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435732869-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435770198-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435818146-image.png)
+
+对RWA架构感兴趣的同学可以看一下我这篇文章：[https://x.com/itsalexfan/status/2012105772075991500?s=46](https://x.com/itsalexfan/status/2012105772075991500?s=46)
+
+登链社区的知识图谱
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769435966654-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769436200644-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769436220091-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769436268367-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769436331106-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769436344794-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769436435801-image.png)
+
+真行，咱可以填补一个没有的赛道，可以想想，Akasha这词本身就有包含过去现在未来之一切信息之象。
+
+## 投研讲座总结
+
+会议讨论了 WEB3 投研相关话题，包括投研现状、市场情况、项目分析以及对从业者的建议等内容，具体如下：
+
+-   **个人经历分享**：
+    
+    -   **入职契机**：演讲者一开始进入北京公链 LAELF 做产品实习生，从而进入 WEB3 行业。
+        
+    -   **业务发展**：入职后每天花超 10 小时学习行业底层逻辑和市场，后联合创立技术媒体品牌，先叫极客 WEB3，后叫鲜橙，通过为项目方翻译技术白皮书等文章赚钱。
+        
+    -   **资产配置**：25 年 1 月 1 日左右，因对市场熟悉，将资产基本换成 USDT，减少加密货币投资，转向现实中的其他业务。
+        
+-   **投研的定义与内容**：
+    
+    -   **基本面研究**：包括了解项目底层技术（如 OP、ZK 等二层技术及相关机制）、项目团队背景（毕业院校、过往经历等）、投资机构情况等，需前期大量学习。
+        
+    -   **代币经济模型研究**：通过分析代币流通量和总量占比及解锁情况，可快速筛选掉大部分不值得投资的项目，如流通量占比较低且后续大量解锁的代币，难以维持币价。
+        
+-   **投研对象分析**：
+    
+    -   **主流币**：如比特币、以太坊，无需过多投研，比特币收益长期较稳定，但很多人因等待时间长而放弃。
+        
+    -   **山寨币**：背后有项目主体的币，如 Uniswap、Hyperliquid 等，曾是投研获利的主要对象，2020 - 2022 年出现很多有价值的项目，如 Defi 领域的项目有大幅涨幅。
+        
+    -   **稳定币**：如 USDE，按经济学说是交换媒介或价值尺度，一般收益固定，如能提供 6% 年化，但人们通常不将其作为投资对象。
+        
+    -   **命币**：无项目主体的币，如狗狗币、屎币等，涨跌无逻辑，不适合作为投研对象。
+        
+-   **山寨币没落原因**：
+    
+    -   **流动性不足**：全球经济处于周期波谷，流动性降低，且行业本身存在问题，如大量代币经济模型不佳仍能上线交易所，此外川普利用个人影响力收割市场，导致行业内流动性几乎耗尽。
+        
+    -   **市场演变**：此前山寨币发展是因主流币获利后资金溢出寻找潜力股，从 Defi 到 Gamefi、NFT 再到命币，市场泡沫不断膨胀，最终崩塌。
+        
+-   **投研有价值的条件**：
+    
+    -   **充足流动性**：放水是必要条件，但不是充要条件，目前虽已放了一部分水，但流动性仍不充足。
+        
+    -   **新叙事出现**：如 ICO、Defi summer、铭文等，新的技术或概念出现会带动相关赛道发展，此时投研才有意义。
+        
+-   **对 Web3 从业者的建议**：
+    
+    -   **学习行业历史**：了解行业内各赛道优秀项目，如去中心化交易所的 Uniswap、去中心化借贷的 Aave 等，看过大量好项目后能提升对项目好坏的判断能力。
+        
+    -   **建立知识体系**：从各赛道龙头项目入手，研究其发展历程、代币经济模型等，由点到面构建行业知识体系，达到六七十的认知度入行可能没问题。
+        
+    -   **保持学习心态**：新兴行业不断发展，如 AI、云原生、芯片等，要对新兴行业保持学习热情，拓展自身能力。
+        
+-   **问答交流环节**：
+    
+    -   **撸空投问题**：撸空投难计算投入产出比，其本质是项目方拉新道具，依赖项目方决策，大量投入此方向可能偏离进入 WEB3 行业的初衷。
+        
+    -   **VC 投资项目**：项目获 VC 融资后可能有变现压力，币价未达预期表现的项目可能不是好的投资对象，需综合多方面判断。
+        
+    -   **RWA 方向**：将现实资产上链交易的 RWA 方向值得投入时间和精力研究，从业者应成为两栖人才，结合传统金融知识和区块链技术。
+        
+    -   **研究方法**：除看白皮书外，可利用 ChatGPT 专家版生成研报，参考 YouTube 博主视频，阅读 WEB3 媒体深度文章，但需注意其主观性。
+        
+    -   **判断零和游戏项目**：先学习 WEB3 基础知识，积累足够多的知识点后再判断项目是否为零和游戏，同时可调整投资思路，不必完全依赖价值投资。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 1.  学习了文章排版
@@ -71,6 +150,7 @@ GPT是逻辑专家；gemini不好用；
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -88,6 +168,7 @@ GPT是逻辑专家；gemini不好用；
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -97,6 +178,7 @@ GPT是逻辑专家；gemini不好用；
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -187,6 +269,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -319,6 +402,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -520,6 +604,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -567,6 +652,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -890,6 +976,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -931,6 +1018,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1281,6 +1369,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -1573,6 +1662,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -1680,6 +1770,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
