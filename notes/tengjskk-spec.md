@@ -17,8 +17,6 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
-![截屏2026-01-26 23.21.57.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-26-1769440924348-__2026-01-26_23.21.57.png)
-
 休闲黑客松复盘
 
 1.现象：lynn反映有人误删了notion上的重要资料，建议大家不要动文件的位置，复制和处理源文件都放在主面板上；参赛群里有人有同学说技术文档点开看不见，遂发现notion 上被误删了，后BD同学从其他页面找回链接。
@@ -32,10 +30,13 @@ timezone: UTC+8
 3.现象：为了梳理自己对于demo day的流程把控，今天做了一个可视化的任务追踪面板和策划大纲，结果刚好赶上了小组长与助教check 整个demo day的细节会议，带着这两样一并参与会议，小组长说帮助很大。
 
 建议：对于也是头一次参与黑客松的小组长们，每日需要同步考虑工作量过大，可在每一策划环节增设（或自愿认领）一位任务追踪员，列出执行动作列表，需要完成的所有东西。并在组长为该环节参与者统筹任务分配之前完成，能帮到组长减负。
+
+![截屏2026-01-26 23.26.20.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-26-1769441206049-__2026-01-26_23.26.20.png)
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 **休闲黑客松复盘：**
@@ -61,6 +62,7 @@ timezone: UTC+8
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -170,6 +172,7 @@ _（优化 FAQ、安抚用户情绪、反馈产品需求）_
 
 
 
+
 看完残酷共学与休闲黑客松案例回放的几点思考：
 
 1.在没有目标中心和KPI的世界里，**自律是极其昂贵的资源**。通过严格的社区规则（残酷打卡）来建立“自律”，实际上是一种 **“强制自由，**通过强制的手段跨越了学习的初始门槛，你才能获得真正的自由。
@@ -181,6 +184,7 @@ _（优化 FAQ、安抚用户情绪、反馈产品需求）_
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -228,6 +232,7 @@ ERC-7962 标准，做到了两件事：**彻底的隐私** 和 **像 Web2 一样
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -312,6 +317,7 @@ ERC-7962 标准，做到了两件事：**彻底的隐私** 和 **像 Web2 一样
 
 
 
+
 完成钓鱼测试
 
 ![截屏2026-01-18 21.20.09.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-18-1768742510562-__2026-01-18_21.20.09.png)
@@ -328,11 +334,13 @@ ERC-7962 标准，做到了两件事：**彻底的隐私** 和 **像 Web2 一样
 
 
 
+
 ![Web3 学实习计划第一周例会.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tengjskk-spec/images/2026-01-17-1768655707138-Web3___________.jpg)
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -406,6 +414,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 
 
+
 今日计划
 
 -   查看web3安全和合规回放
@@ -417,6 +426,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -457,6 +467,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 
 
+
 # **目标计划：**
 
 -   **「Web3 行业全局介绍 & 岗位概览」回放，利用AI工具整理内容，今日同步更新Twitter和小红书**
@@ -471,6 +482,7 @@ AI 的链上护照：为每个 Agent 铸造一个 NFT (ERC-721) 作为唯一身�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
