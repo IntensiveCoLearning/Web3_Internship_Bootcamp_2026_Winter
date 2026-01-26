@@ -15,8 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+* * *
+
+### 正好今天有Vibe Coding 的Zoom会议，借此机会配置一下Gemini Cli和Antigravity的Skills
+
+一开始位置安装错了
+
+本应该直接 git clone xxx .gemini/ \\ #就行了
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-26-1769426796812-image.png)
+
+在GUI中安装：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-26-1769428335481-image.png)
+
+antigravity测试
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-26-1769430997568-image.png)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-26-1769431308920-image.png)
+
+gemini测试
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-26-1769431138882-image.png)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-26-1769431371931-image.png)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 ## 学习使用yt-dlp下载视频，以及压缩与分离音频
 
 最新想下载一些会员视频到本地于是
@@ -68,6 +98,7 @@ This learning note is completed by me using voice input.
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 # 关于Vibe coding的入门与理解
 
@@ -133,6 +164,7 @@ const { theme, toggleTheme } = useTheme();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 # Uniswap 入门学习
@@ -235,6 +267,7 @@ Yreal == 2000USDC
 
 
 
+
 # React继续学习
 
 ## 找出 UI 精简且完整的 State 表示
@@ -282,6 +315,7 @@ function SearchBar({ filterText, onFilterTextChange }) {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -431,6 +465,7 @@ TS 最大的作用是安全
 
 
 
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -496,6 +531,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -588,6 +624,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -725,6 +762,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -820,6 +858,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -906,6 +945,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
