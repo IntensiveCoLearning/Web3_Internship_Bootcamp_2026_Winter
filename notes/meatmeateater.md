@@ -20,49 +20,139 @@ timezone: UTC+8
 今天來撰寫漏洞的修復案例，我想新增的例子是關於未初始化代理的，以下是範例的程式碼:  
 修改前:
 
-contract LogicContract is Initializable {
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract VulnerableLogic {
+
+// 模擬 OpenZeppelin 的 Initializable 模式
+
+bool public initialized;
 
 address public owner;
 
-// 這是給 Proxy 用的初始化函數
+// 這是給 Proxy 調用的初始化函數
 
-function initialize() public initializer {
+// 漏洞：邏輯合約部署後，這個變數在邏輯合約的 Storage 中預設是 false
 
-owner = msg.sender;
+function initialize() public {
+
+require(!initialized, "Already initialized");
+
+initialized = true;
+
+owner = msg.sender; // 第一個呼叫的人成為 owner
 
 }
 
-// 漏洞：沒有constructor()來鎖定邏輯合約本身
+// 一個只有 owner 能呼叫的破壞性函數
 
-// 攻擊者可以直接呼叫 LogicContract.initialize() 變成 owner
+function destroy() public {
+
+require(msg.sender == owner, "Only owner can destroy");
+
+// 模擬攻擊者銷毀合約 (注意：Dencun 升級後 selfdestruct 行為有變，但在舊版本或特定條件下仍會清除代碼)
+
+selfdestruct(payable(msg.sender));
 
 }
+
+// 輔助函數：確認合約是否還活著
+
+function isAlive() public pure returns (bool) {
+
+return true;
+
+}
+
+}
+
+在 Remix 中的攻擊步驟：
+
+1.  部署 `VulnerableLogic` 合約。
+    
+2.  觀察 `owner` 是 `0x000...`，`initialized` 是 `false`。
+    
+3.  **攻擊開始**：直接點擊 `initialize` 按鈕。
+    
+4.  再次查看 `owner`，變成了你的地址（攻擊者接管了邏輯合約）。
+    
+5.  點擊 `destroy` 按鈕。
+    
+6.  再次點擊 `isAlive` 或其他函數，你會發現交易失敗或回傳預設值（因為合約代碼已被清除）。
+    
+    -   _後果：所有依賴此邏輯合約的 Proxy 現在都指向一個空地址，全部癱瘓_
+        
 
 修改後:
 
-contract LogicContract is Initializable {
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract FixedLogic {
+
+bool public initialized;
 
 address public owner;
 
-// constructor()：確保邏輯合約部署時，初始化器被禁用
+// 修復關鍵：構造函數只在部署時執行一次
+
+// 它會將「邏輯合約本身」的 storage 鎖定
 
 constructor() {
 
-\_disableInitializers();
+initialized = true; // 相當於 OpenZeppelin 的 \_disableInitializers()
 
 }
 
-function initialize() public initializer {
+// 這是給 Proxy 調用的初始化函數
+
+// 當 Proxy 透過 delegatecall 呼叫這裡時，讀取的是 Proxy 的 storage (初始為 false)，所以 Proxy 仍可正常初始化
+
+function initialize() public {
+
+require(!initialized, "Already initialized");
+
+initialized = true;
 
 owner = msg.sender;
 
 }
 
+function destroy() public {
+
+require(msg.sender == owner, "Only owner can destroy");
+
+selfdestruct(payable(msg.sender));
+
 }
+
+function isAlive() public pure returns (bool) {
+
+return true;
+
+}
+
+}
+
+在 Remix 中的驗證步驟：
+
+1.  部署 `FixedLogic` 合約。
+    
+2.  觀察 `initialized`，你會發現它**預設已經是** `true`（因為 constructor 執行了）。
+    
+3.  **嘗試攻擊**：點擊 `initialize` 按鈕。
+    
+4.  **結果**：交易會 Revert (失敗)，錯誤訊息為 `"Already initialized"`。
+    
+5.  攻擊者無法成為 `owner`，也就無法呼叫 `destroy`。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 今天來做gas優化的作業，我優化的是[Solidity by Example](https://solidity-by-example.org/loop/) 的For and While Loop程式碼
 
@@ -187,6 +277,7 @@ unchecked {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -603,6 +694,7 @@ unchecked {
 
 
 
+
 今日新增了對良心殺的comment，覺得蠻有趣的，類似一個小型的調研了，以下是我的回覆:
 
 \# 學號:571
@@ -683,6 +775,7 @@ unchecked {
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -696,6 +789,7 @@ Thanks for clarifying!
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -722,6 +816,7 @@ Thanks for clarifying!
 
 
 
+
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -738,11 +833,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -776,12 +873,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -907,6 +1006,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1127,6 +1227,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1396,6 +1497,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
