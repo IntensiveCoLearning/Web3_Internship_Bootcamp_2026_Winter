@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-26
+<!-- DAILY_CHECKIN_2026-01-26_START -->
+![ReAct Agent.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-26-1769436080658-ReAct_Agent.png)
+<!-- DAILY_CHECKIN_2026-01-26_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 ![合约安全.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-24-1769267824197-____.png)
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 ![Gas优化.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-23-1769180449447-Gas__.png)
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 今天主要学习了TypeScript的基本语法
@@ -40,11 +48,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![Uniswap工作原理0121.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-21-1769009851233-Uniswap____0121.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -421,6 +431,7 @@ modifier 用于抽象前置条件：
 
 
 
+
 # Solidity 学习笔记
 
 ## **一、基础语法与核心概念**
@@ -605,6 +616,7 @@ revert MyError(msg.sender, _i);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -800,6 +812,7 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 
 
+
 ![第一次例会.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-16-1768578807139-_____.jpg)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -813,11 +826,13 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 
 
+
 ![AI及其基础概念.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/skelitalynn/images/2026-01-15-1768491304447-AI______.jpg)
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -852,6 +867,7 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 
 
+
 今天的学习让我对 Web3 的运行原理有了一个更清晰、也更现实的认识。相比之前停留在概念层面的理解，这次更多是在理解“它到底是怎么跑起来的”。从钱包生成、私钥和助记词开始，我第一次真正意识到安全并不是一句口号，而是使用 Web3 的前提条件。私钥一旦泄露，资产几乎不可追回，这种“完全自我负责”的模式既赋权，也极度考验个人的安全意识。
 
 在交易和签名部分，我逐渐理解了为什么区块链交易不可篡改却又需要等待确认时间。交易不是发出去就立刻“绝对安全”，而是要经过广播、打包、共识，直到区块被最终确认。这让我意识到，Web3 在设计上更追求系统整体的可信，而不是单次操作的即时性。Gas 机制和抢跑原理也让我看到，所谓“去中心化”，依然是一个用经济激励来约束行为的系统。
@@ -863,6 +879,7 @@ NaN.  安全 / 基础设施 / 工具链方向（偏中高级）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
