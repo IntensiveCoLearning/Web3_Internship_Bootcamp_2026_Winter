@@ -42,6 +42,7 @@ interested in web3
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 1.  学习021第三章。
     
 2.  继续看 Solidity by Example | Basics.
@@ -52,6 +53,7 @@ interested in web3
 
 
 
+
 1.  学习021第一、第二章。
     
 2.  继续看 Solidity by Example | Basics.
@@ -59,6 +61,7 @@ interested in web3
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -88,6 +91,7 @@ interested in web3
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -146,6 +150,7 @@ function decrement(uint256 newNumber) public {
 
 
 
+
 1.  昨天开始做[Solidity by Example](https://solidity-by-example.org/)
     
 2.  参与公共物品资助的讨论
@@ -155,6 +160,7 @@ function decrement(uint256 newNumber) public {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -230,6 +236,7 @@ Elon 老师的 Solidity 入门课干货满满，介绍了EVM的四大存储区�
 
 
 
+
 拖延了一个星期，安装了REMIX IDE. 完成了learnETH第一个教程。期待后面开始自己写代码实现。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/0xxoo-eth/images/2026-01-19-1768838161668-image.png)
@@ -237,6 +244,7 @@ Elon 老师的 Solidity 入门课干货满满，介绍了EVM的四大存储区�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -275,6 +283,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 
 
+
 今天学习Bruce分享如何成为靠谱的Web3实习生的经验谈。最近我也在远程协作中反思工作能力和工作态度等问题。
 
 按照Bruce对靠谱的分解，包括**可预期**（说到做到，按时交付，不临时变卦）、**可沟通**（遇到问题主动同步，不闷头苦干）和**可复盘**（完成任务后主动思考改进点）。我觉得可预期是很重要的，这其实也需要管理者前期做好沟通，包括项目的计划、各自的分工和交付预期、如果时间非常紧急的项目则需要明确ddl以及各自的休假安排。
@@ -286,6 +295,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -382,6 +392,7 @@ Alex老师用星巴克会员和机场的例子说明应用场景：星巴克希�
 
 
 
+
 AI及其基础概念（分享会）
 
 1.  AI Agent的演进：从聊天工具到具备执行能力的智能体，通过Function Call、MCP等技术实现从文本交互到实际行动的转变。
@@ -405,6 +416,7 @@ AI及其基础概念（分享会）
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -461,6 +473,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 
 
+
 1.  钱包、助记词、地址
     
     -   助记词—1-N—私钥—>—公钥—(hash)—钱包地址
@@ -492,6 +505,7 @@ MiCA 第三部分（Title III）规定了资产参考代币（Asset-Referenced T
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
