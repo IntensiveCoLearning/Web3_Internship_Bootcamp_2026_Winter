@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+-   今天完成了一些大使的工作
+    
+-   对于BD的内容经过初步的工作尝试发现还是有很多不足
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 -   今天开组会和准备phd面试
     
 -   BD工作还没有完成
@@ -29,11 +37,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 占位，明天开组会还在刷论文，开完组会一定更新笔记！
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 占位等补档 刚交完chi的论文
@@ -44,11 +54,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 刚写完论文，站位，这周把笔记都补齐
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -63,11 +75,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 占位 明天更新一个工作流
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -86,11 +100,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 先占位打卡，晚点总结一下这周的进展和收获。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -117,6 +133,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 课程outline的plugin上线了：[https://web3internship-plugin.pages.dev/](https://web3internship-plugin.pages.dev/)  
   
 晚上的分享会有种罗翔说刑法的web3专版
@@ -134,6 +151,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天听Bruce老师的分享会很有收获，highlevel宏观的介绍了web3。
 
 另外正在vibe coding时间表。
@@ -141,6 +159,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
