@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+昨天做了技术向的两个小任务，听了晚上的分享会，其他时候都在赶作业
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 1
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 周六在香港刚参加完一场关于区块链与金融应用的对谈，信息量很大，整理出几条核心笔记：
 
@@ -38,11 +45,13 @@ Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大�
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 今天去参加了 Ethereum Hong Kong Meetup。这是我第一次线下参加 Web3 相关的活动，一共有三轮，一个是对隐私的讨论，主要在说 ZK；第二个主要说 FinTech，RWA之类的；最后一个说的是关于 FinTech 的协议和 L2 创新。信息量很大，我会整理一下再发
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -54,6 +63,7 @@ Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -72,11 +82,13 @@ Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大�
 
 
 
+
 今天跟着昨天晚上课的回放复现了erc-20，完成了 Challenge#01，找 Tx 找了半天，最后在配置文件找到的，看了一部分 Polymarket 内容（今天睡了懒觉
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -108,6 +120,7 @@ Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大�
 
 
 
+
 今天主要是在学习solidity的语法之类的东西，顺便总结了下昨天晚上直播的内容，完成了 **Ethernaut** 的前两关，[Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分的代码运行到了 Array，做了[Solidity 101](https://www.wtf.academy/zh/course/solidity101)的题，晚上听 Luna 老师讲了关于 TG 社群的设置和运营，也自己尝试建立了一个社群，但是还没设置好。
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -126,11 +139,13 @@ Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大�
 
 
 
+
 今天白天把入门技术的任务做了，晚上听直播课
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -167,11 +182,13 @@ Cap.Money 和 Morpho 的合作模式很有趣。Cap.Money 已经是 Aave 的大�
 
 
 
+
 今天打算梳理一下前4天老师们的直播，然后学一点rust
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -201,6 +218,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -413,6 +431,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 
 
+
 **dApp（）**
 
 **用智能合约做后端，用以太坊做数据库和结算层”的应用程序**
@@ -437,6 +456,7 @@ Testnet contract URL**：**[**https://sepolia.etherscan.io/address/0x15efbfb8D3C
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
