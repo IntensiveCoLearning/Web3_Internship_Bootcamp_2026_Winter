@@ -15,8 +15,100 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+IAO (Initial Asset Offering)
+
+\[释义\] 首次资产发行
+
+ILO (Initial Liquidity Offering)
+
+\[释义\] 首次流动性发行，指在去中心化交易所（DEX）提供初始流动性来发行代币。
+
+ID0 (Initial DEX Offering)
+
+\[释义\] 指“首次去中心化交易所发行”，是目前最主流的发行方式之一。
+
+ISO (Initial Stake Pool Offering)
+
+\[释义\] 首次权益池发行，常见于Cardano生态，用户通过质押代币来获取新项目的奖励.
+
+IDO
+
+\[释义\] IDO（首次资产通证要约回购式发行）最大的意义在于发行数字资产的发行方以要约回购的方式保证首次发行的投资本金安全。项目方直接用项目token 置换大家的技能、资源，不仅跳过了先换钱、钱再换资源这样的曲折步骤，而且 token 所直接置换回来的必定是对项目本身有更多关涉的资源。
+
+IEO
+
+\[释义\] initial exchange offering 平台币的首次发行，比如 okex, ht，就是交易所自己的 ICO。必须用交易所的平台币或 U 进行购买。
+
+IFO
+
+\[释义\] 分叉团队可以将预挖的新分叉币保存住，在分叉后上线交易所，用预挖币筹集资金的方式称之为IFO。
+
+IGO
+
+\[释义\] initial game offering 首次游戏资产发售。
+
+INO
+
+\[释义\] Initial NFT Offering 首次 NFT 公开发售。
+
+IPFS
+
+\[释义\] 一种去中心化分布式储存协议
+
+IRL
+
+\[释义\] “In real life” 的缩写，“真实世界”的意思。也就是Twitter及Discord以外的现实世界。
+
+ITO
+
+\[释义\] initial twitter offering 首次推特发售。
+
+ICO
+
+\[释义\] ICO 是首次代币发售（Initial Coin Offering）的缩写
+
+Interoperability 互操作性
+
+\[释义\] 指不同区块链之间相互通信、交换数据或资产的能力。
+
+Immutable 不可篡改性
+
+\[释义\]区块链的核心特征，指数据一旦录入就无法更改或删除。
+
+IP (Intellectual Property) 知识产权
+
+\[释义\] 在 NFT 领域经常提到，比如持有某个 NFT 是否拥有其商业版权。
+
+Index 指数
+
+\[释义\] 如加密货币指数基金，追踪一组资产的表现。
+
+Incentive 激励机制
+
+\[释义\] 通过代币奖励鼓励用户参与网络建设（如挖矿、质押）。
+
+Inflation 通货膨胀
+
+\[释义\] 指代币供应量的增加过程。
+
+Impermanent Loss 无常损失
+
+\[释义\] 流动性提供者（LP）在自动化做市商（AMM）中提供资金时，因资产价格波动而面临的潜在损失。
+
+In-the-money (ITM) 价内/实值
+
+\[释义\] 期权交易术语。
+
+Instant Finality 即时终局性
+
+\[释义\] 指交易被确认后立即不可逆转的特性。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 **基本概念**
 
 Gas
@@ -134,6 +226,7 @@ Gemini
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 **基本概念**
 
@@ -254,6 +347,7 @@ Gemini
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 **基础概念**
 
 **市场机制与财务估值 (Market & Finance)**
@@ -275,6 +369,7 @@ Gemini
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -329,6 +424,7 @@ Gemini
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -413,6 +509,7 @@ Gemini
 
 
 
+
 ### Uniswap 进化史：从“傻瓜式”到“全能型”
 
 1\. Uniswap v2：经典老大哥 (CPMM)
@@ -470,6 +567,7 @@ v2 虽然简单，但资金效率极低，因为流动性是平摊在 0 到正�
 
 
 
+
 -   **Advanced Analytics (数据分析)**：查看成员增长趋势、活跃度和报名转化率，帮助优化活动。
     
 -   **Mailchimp integration (邮件系统集成)**：支持直接同步成员名单到邮件营销工具。
@@ -479,6 +577,7 @@ v2 虽然简单，但资金效率极低，因为流动性是平摊在 0 到正�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -575,6 +674,7 @@ Tune-in(进入次数)：参考数据，但较易作假（重复进入会累计�
 
 
 
+
 ERC-7962协议（Cash-basedTokens）
 
 一、协议背景：从721到7962的演进
@@ -642,6 +742,7 @@ ERC-7962不仅仅是一个技术标准，它代表了Web3的一种新思路：�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -736,6 +837,7 @@ DeJob官网（[https://dejob.ai）及官方Telegram频道。](https://dejob.ai�
 
 
 
+
 **Web3生存与成长指南**
 
 **今天听了三位大佬（奕铭、karen、AlexFAN）的分享，信息量很大。从个人的“自我迭代”，到社交媒体的“起号破圈”，再到对“DAO治理”的深度反思，感觉整个人被重塑了。**
@@ -811,6 +913,7 @@ DeJob官网（[https://dejob.ai）及官方Telegram频道。](https://dejob.ai�
 
 
 
+
 AgenticAI与Web3的融合
 
 1.行业趋势：从“聊天”向“行动”的范式转移
@@ -868,6 +971,7 @@ DeFi资产管理：拥有链上声誉、可自动执行套利策略的交易代�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -976,6 +1080,7 @@ DeFi资产管理：拥有链上声誉、可自动执行套利策略的交易代�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
