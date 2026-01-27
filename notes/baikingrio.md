@@ -15,8 +15,87 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## Uniswap V2 数学与不变量
+
+### 1、核心不变量：x × y = k
+
+-   x、y：两种代币储备量（reserve0, reserve1）。
+    
+-   k：常量乘积（忽略费用时保持不变）。
+    
+-   首次流动性提供决定初始 k，后续交易使 k 增长（因 0.3% 费用加入池子）。
+    
+
+### 2、Swap 数学推导
+
+### 正向：给定 amountIn，求 amountOut（最常用）
+
+输入 token0 的 amountIn，输出 token1 的 amountOut：
+
+1.  费用后实际输入：amountInWithFee = amountIn × 997 / 1000
+    
+2.  新储备： x\_new = reserve0 + amountInWithFee y\_new = reserve1 - amountOut
+    
+3.  不变量：x\_new × y\_new = reserve0 × reserve1
+    
+4.  解出 amountOut： amountOut = reserve1 - (reserve0 × reserve1) / x\_new = reserve1 - (reserve0 × reserve1) / (reserve0 + amountInWithFee)
+    
+
+**最常用简化公式**（直接计算）： amountOut = (amountIn × 997 × reserve1) / (reserve0 × 1000 + amountIn × 997)
+
+### 反向：给定 amountOut，求 amountIn（精确输出方向）
+
+输出 token1 的 amountOut，求需要输入 token0 的 amountIn：
+
+1.  目标：输出 amountOut 后，y\_new = reserve1 - amountOut
+    
+2.  不变量：x\_new × y\_new = reserve0 × reserve1
+    
+3.  x\_new = (reserve0 × reserve1) / y\_new = (reserve0 × reserve1) / (reserve1 - amountOut)
+    
+4.  输入增量（含费用）：amountInWithFee = x\_new - reserve0 = (reserve0 × reserve1) / (reserve1 - amountOut) - reserve0 = reserve0 × \[reserve1 / (reserve1 - amountOut) - 1\] = reserve0 × amountOut / (reserve1 - amountOut)
+    
+5.  实际输入 amountIn（考虑 0.3% 费用）： amountIn = amountInWithFee × 1000 / 997
+    
+
+**最常用简化公式**： amountIn = (reserve0 × amountOut × 1000) / (reserve1 - amountOut) / 997 + 1 （+1 为向上取整，避免精度丢失导致 revert）
+
+完整精确公式（合约中使用）： amountIn = ceil( (reserve0 × amountOut × 1000) / ((reserve1 - amountOut) × 997) )
+
+### 3、流动性份额计算
+
+-   总 LP 供应：totalSupply
+    
+-   份额 ∝ √(x × y) = √k
+    
+-   添加流动性（非首次）： liquidity = min( amountA × totalSupply / reserveA, amountB × totalSupply / reserveB )
+    
+-   首次添加：liquidity = √(amountA × amountB) - MINIMUM\_LIQUIDITY (1000 锁定防除零)
+    
+
+### 4、协议费用数学（当 feeOn = true）
+
+-   累积费用导致 k 增长：Δ√k = √k\_new - √k\_last
+    
+-   额外铸造给 feeTo 的 LP： liquidity = totalSupply × Δ√k / (5 × √k\_new + √k\_last)
+    
+-   解释：协议拿增长价值的 1/6（分母 5+1），LP 得 5/6。
+    
+
+### 5、TWAP 价格数学
+
+-   累积价格：priceCumulative += (reserve1 / reserve0) × Δt （UQ112x112 固定点）
+    
+-   TWAP = (priceCumulative\_now - priceCumulative\_old) / Δt
+    
+-   单位：token1 / token0 的平均价格（固定点数）。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -86,6 +165,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 ## Uniswap V2 Router常用函数
 
@@ -230,6 +310,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -261,6 +342,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -369,6 +451,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -452,6 +535,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -585,6 +669,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -695,6 +780,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -734,6 +820,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -749,6 +836,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -797,6 +885,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -808,6 +897,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
