@@ -15,8 +15,63 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+学习马老师的学习day3  
+**練習 hardhat**
+
+使用 bun，效能更好
+
+```
+mkdir my-hardhat-project
+cd my-hardhat-project
+bun init -y
+```
+
+安裝 hardhat
+
+```
+bun add --dev hardhat
+```
+
+初始化
+
+```
+bunx hardhat --init
+```
+
+在 ignition那邊可以部署
+
+ignition/modules/Counter.ts
+
+```
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
+
+export default buildModule("CounterModule", (m) => {
+  const counter = m.contract("Counter");
+
+  m.call(counter, "incBy", [5n]);
+
+  return { counter };
+});
+```
+
+然後開啟 node
+
+```
+bunx hardhat node
+```
+
+部署
+
+```
+npx hardhat ignition deploy ignition/modules/Counter.ts --network localhost
+```
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 🚀 本周Web3修炼手册：技术、乡村与未来
 
 **💡 认知刷新**
@@ -61,6 +116,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 今天抄马老师 作业  
 整體而言跟平常設置 ai agent 很像
@@ -162,6 +218,7 @@ deepwiki_tool = MCPTool(
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 -   以 **pigeons** 作為通訊層，串接 **Trust Wallet**（對應的原生能力/介面），完成錢包相關核心流程：
     
     -   **金鑰生成**（key generation）
@@ -199,6 +256,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -376,6 +434,7 @@ deepwiki_tool = MCPTool(
 
 
 
+
 # **任務 A、B 筆記（Rust CLI / 鏈上事件抓取）**
 
 ## **1\. 任務概述**
@@ -483,6 +542,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -718,6 +778,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -971,6 +1032,7 @@ Level 3（Fallout）
 
 
 
+
 這段筆記我幫你「補齊背景＋講清楚做法＋把思路寫得更像可複用的解題模板」，你可以直接貼進你的學習筆記裡。
 
 * * *
@@ -1116,6 +1178,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1302,6 +1365,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1631,6 +1695,7 @@ PoS 的本质是：
 
 
 
+
 ## **课堂后反思笔记：Web3的“去中心化体验”与合规现实**
 
 ### **1) 认知转变：从“自主掌控”到“合规介入”**
@@ -1771,6 +1836,7 @@ PoS 的本质是：
 
 
 
+
 -   上期回顾
     
     -   比特币：《比特币：一种点对点电子货币系统》
@@ -1879,6 +1945,7 @@ PoS 的本质是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
