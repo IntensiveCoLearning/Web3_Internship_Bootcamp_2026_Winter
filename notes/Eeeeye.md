@@ -71,11 +71,7 @@ Web3 实习计划 2025 冬季实习生
     -   **批量操作**: 支持 `safeBatchTransferFrom`，一次交易转移 10 种不同的道具，极大节省 Gas。
         
 
-| 特性 | ERC-20 | ERC-721 | ERC-1155 |
-| 资产性质 | 同质化 (货币) | 非同质化 (唯一物品) | 混合 (半同质化/混合) |
-| ID 管理 | 无 ID (只有余额) | 唯一 ID | ID + 数量 (Balance) |
-| 元数据 | 合约级 | 基于 Token ID | 基于 Token ID |
-| 典型场景 | 稳定币, 治理代币 | PFP, 域名 | 游戏道具, 现实资产(RWA) |
+| 特性 | ERC-20 | ERC-721 | ERC-1155 | | 资产性质 | 同质化 (货币) | 非同质化 (唯一物品) | 混合 (半同质化/混合) | | ID 管理 | 无 ID (只有余额) | 唯一 ID | ID + 数量 (Balance) | | 元数据 | 合约级 | 基于 Token ID | 基于 Token ID | | 典型场景 | 稳定币, 治理代币 | PFP, 域名 | 游戏道具, 现实资产(RWA) |
 
 * * *
 
@@ -124,59 +120,11 @@ Web3 实习计划 2025 冬季实习生
     
 
 * * *
-
-## 5\. 实战操作：在 Foundry 中使用标准库
-
-在实际开发中，我们绝不会从零手写 ERC-20，而是使用经过审计的库（如 OpenZeppelin）。
-
-由于你在使用 Manjaro 且正在学习 Foundry，以下是如何将 OpenZeppelin 引入你的项目：
-
-### 安装 OpenZeppelin 库
-
-在你的 Foundry 项目根目录下运行：
-
-Bash
-
-```
-forge install OpenZeppelin/openzeppelin-contracts --no-commit
-```
-
-**命令解析：**
-
--   `forge install`: Foundry 的包管理命令，用于安装第三方依赖。
-    
--   `OpenZeppelin/openzeppelin-contracts`: 这是一个 GitHub 仓库路径（User/Repo），Foundry 会去拉取源码。
-    
--   `--no-commit`: **关键参数**。默认情况下，`forge` 会把安装的库作为 git submodule 并试图提交一次 git commit。如果你的项目还没有 git init，或者你不想让 forge 自动污染你的 commit 历史，加上这个参数。
-    
-
-### 代码引用示例
-
-Solidity
-
-```
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-
-// 直接导入库，就像使用本地文件一样
-import {ERC20} from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
-import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
-
-contract MyToken is ERC20, Ownable {
-    constructor() ERC20("MyToken", "MTK") Ownable(msg.sender) {
-        // 铸造 1000 个代币给部署者
-        _mint(msg.sender, 1000 * 10**decimals());
-    }
-
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
-    }
-}
-```
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 🛡️ **Web3 安全实战笔记：重入攻击 (Reentrancy) 与 The DAO 的教训**
 
@@ -250,6 +198,7 @@ modifier nonReentrant() {
 
 
 
+
 ⛽️ **Solidity Gas 优化实战笔记：如何将 Gas 消耗降低 77%？**
 
 今天用 Foundry 对一个经典的“批量空投”合约进行了极致的 Gas 审计和优化。数据很真实，分享几个核心的底层逻辑。
@@ -269,6 +218,7 @@ modifier nonReentrant() {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -309,6 +259,7 @@ modifier nonReentrant() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -417,6 +368,7 @@ DApp 开发中最繁琐的部分（处理钱包连接、ABI 解析、交易签�
 
 
 
+
 ### 1\. Uniswap v2: 恒积做市商 (CPMM) — AMM 的基石
 
 核心公式 $x \\cdot y = k$：
@@ -481,6 +433,7 @@ Hooks (钩子)：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -555,6 +508,7 @@ Hooks (钩子)：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -758,6 +712,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 ## 今天学习了ZK零知识证明  
 链上投票的核心痛点与解决方案
 
@@ -910,6 +865,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 复盘了计算机网络底层，发现很多链上交互的痛点（延迟、丢包、监听失败），本质上都是网络层协议特性的投射。
 
 1\. 交易传播与 Mempool 机制（应用层/传输层）
@@ -995,6 +951,7 @@ contract SimpleCrowdfunding {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1153,6 +1110,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 
 
+
 ### **以太坊核心架构与原理深度研读笔记（第2-4章）**
 
 通过对第2至4章的系统性学习，我从底层的网络拓扑、状态模型以及执行环境三个维度，重新构建了对以太坊基础设施的认知。这不再仅仅是对概念的理解，而是涉及如何构建安全、高效的去中心化应用的工程基础。
@@ -1248,6 +1206,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1403,6 +1362,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 今天参加了web3安全和合规的分享会 收获颇丰 结合Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分 以下是学习内容：
 
 ## 第一部分：法律与合规风险
@@ -1520,6 +1480,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 ### 1\. 概念辨析：Web3 的认识论 (Epistemology)
 
 -   **Web 3.0 (Semantic Web, 1999)**:
@@ -1586,6 +1547,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
