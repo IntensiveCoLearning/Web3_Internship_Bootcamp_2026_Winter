@@ -15,8 +15,51 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## **Day 16 学习计划**
+
+2026/01/27 总体学习计划如下：
+
+-   以太坊近半年活動調研
+    
+
+## **EF／Devcon Team 主辦的實體活動**
+
+| 活動 | 主辦 | 形式 | 時間 | 地點 | 重點 |
+| --- | --- | --- | --- | --- | --- |
+| Devconnect Argentina 2025「Ethereum World’s Fair」 | EF 活動團隊／Devconnect | 實體＋城市型活動週 | 2025-11-17 至 2025-11-22 | Buenos Aires，La Rural | Devconnect 官方回顧提到超過 14,000+ 名參與、80+ 展出團隊、場館內 40+ 場活動，城市內 500+ 社群活動。(Devconnect Argentina) |
+| ETHDay Devconnect Argentina | Devconnect（EF 活動週內） | 實體單日活動 | 2025-11-17 09:00–19:00（當地） | La Rural | Devconnect 週的開場日，偏「總覽＋入門＋聚合」型活動。(ethday.devconnect.org) |
+| ETHCon（西語導向、偏新手） | Devconnect（EF 活動週內） | 實體單日活動 | 2025-11-18 | La Rural | 介紹以太坊基礎與生態入門，面向西語社群。 |
+
+## **EF／相近單位的「持續型」活動**
+
+| 活動 | 主辦 | 形式 | 近半年內狀態 | 入口與用途 |
+| --- | --- | --- | --- | --- |
+| ESP Office Hours | EF Ecosystem Support Program | 線上 20 分鐘視訊諮詢 | 持續開放 | 適合拿「專案方向、路線圖、如何對齊以太坊生態」來做快速校準與資源導航。(Ethereum Foundation ESP) |
+| Ethereum Community Hubs（含 Co-working） | ethereum.org 彙整的社群據點 | 多為實體＋社群活動 | 持續進行 | 可用來找「線下聚會、co-working、讀書會」類型活動；例如 Berlin 的 Co-working Wednesdays 等。 |
+| EF Protocol AMA（Reddit） | EF Protocol 團隊 | 線上 AMA | 2025-08-29（Pt. 14） | 偏「研究／路線圖／設計取捨」的問答，可用來抓近況與爭議點。(Reddit) |
+
+## **以太坊核心研發線上會議**
+
+| 活動 | 系列 | 形式 | 近半年樣本場次（非穷尽） | 主要看點 |
+| --- | --- | --- | --- | --- |
+| All Core Devs – Execution（ACDE） | 執行層核心開發 | 線上會議 | 2025-11-06（#224）(GitHub)、2026-01-05（#227）(GitHub)、2026-01-15（#228）(GitHub)、2025-12-18（#226）(YouTube) | EIP 排程、硬分叉範圍、客戶端落地、風險與測試進度 |
+| All Core Devs – Consensus（ACDC） | 共識層核心開發 | 線上會議 | 2025-10-30（#168）(GitHub)、2026-01-08（#172）(GitHub)、2026-01-22（#173）(GitHub) | 共識層升級、驗證者與網路層設計、規格協調 |
+| All Core Devs – Testing（ACDT） | 測試與協調 | 線上會議 | 2025-10-13（#57）(GitHub)、2025-10-20（#58）(GitHub) | 測試網節點協作、測試計畫、風險回歸與發布節奏 |
+
+## **相近機構活動**
+
+| 活動 | 主辦 | 形式 | 時間 | 地點 | 備註 |
+| --- | --- | --- | --- | --- | --- |
+| ETHGlobal Demo Day Buenos Aires | ETHGlobal | 實體活動 | 2025-11-19 | Buenos Aires | Devconnect 週內活動之一。 |
+| ETHGlobal Pragma Buenos Aires | ETHGlobal | 實體活動 | 2025-11-20 | Buenos Aires | 通常偏「技術內容＋生態聚合」。 |
+| ETHGlobal Buenos Aires Hackathon | ETHGlobal | 實體黑客松 | 2025-11-21 至 2025-11-23（部分頁面標到 11-24） | Buenos Aires | 同週期的大型 builder 活動。(Fellowship of Ethereum Magicians) |
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## **Day 15 学习计划**
 
 2026/01/26 总体学习计划如下：
@@ -71,6 +114,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 ## **Day 14 学习计划**
@@ -190,6 +234,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 13 学习计划**
 
 2026/01/24 总体学习计划如下：
@@ -258,6 +303,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 12 学习计划**
 
 2026/01/23 总体学习计划如下：
@@ -308,6 +354,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -328,6 +375,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -371,6 +419,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -579,6 +628,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -686,6 +736,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -758,6 +809,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -793,6 +845,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -885,6 +938,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1012,6 +1066,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1213,6 +1268,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1351,6 +1407,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
