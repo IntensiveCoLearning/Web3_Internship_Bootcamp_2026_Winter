@@ -15,8 +15,95 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+【Web3 实习计划（冬季）：Vibe Coding + 黑客松经验分享】 [https://www.bilibili.com/video/BV1t8zeBMEKh/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1t8zeBMEKh/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)
+
+### 一、 黑客松 (Hackathon) 专题：从入门到拿奖
+
+1\. 核心价值与心态
+
+-   **不仅仅是奖金**：黑客松是学生进入 Web3 最好的跳板，简历上的黑客松奖项比零碎的实习更有说服力。
+    
+-   **社交是最高权重**：奖金会花光，但在肝代码时认识的“战友”会成为你在这个行业长期呆下去的支撑。
+    
+-   **拒绝“创业执念”**：黑客松不是创业大赛，不要追求逻辑完美和功能堆砌，重点是把核心创意（Idea）通过视觉手段完整呈现。
+    
+
+2\. 团队组建与角色
+
+-   **黄金配置 (3-4人)**：2个开发（前端+合于/后端）、1个产品经理（PM）、1个专门负责路演的 Pitchman。
+    
+-   **Pitchman 的重要性**：开发到后期通常神志不清，需要一个精力充沛的人去向评委推销产品。
+    
+-   **团队多样性 (Diversity)**：团队中有女性、不同国籍或少数群体成员，在一些国际赛事（如 ETHGlobal）中可能对得奖有隐形加成。
+    
+
+3\. 选题与开发技巧
+
+-   **乐高拼接法**：利用黑客松赞助商提供的 SDK 进行组合，做出有趣且符合赞助商利益的“小玩具”。
+    
+-   **迁移重构法**：将成熟链上的项目（如交易所、NFT市场）搬到刚出的 Layer 2 链上，这种“补齐生态”的项目很受官方欢迎。
+    
+-   **前端即正义**：如果要在角色里排重要性，前端第一。因为评委看不见你的合约逻辑，只能通过前端交互来感受你的产品进度。
+    
+
+* * *
+
+### 二、 Vibe Coding 专题：AI 时代的工程化开发
+
+1\. 什么是 Vibe Coding？
+
+-   **定义**：一种通过“自然语言”而非直接操作代码的编程方式，它像 20 年前程序员掌握搜索引擎一样，是当下的必备技能。
+    
+-   **门槛误区**：完全不懂代码的人号称几天撸出产品多是营销噱头，处理 Bug 依然需要基本的工程直觉。
+    
+
+2\. 上下文管理 (Context Management)
+
+-   **核心痛点**：AI 变笨通常是因为上下文太乱。不要一次性塞给它所有不相关的代码。
+    
+-   **管理技巧**：
+    
+    -   **定期清理**：使用 `compact` 命令，确保 AI 不会因为过期的讨论而产生幻觉。
+        
+    -   **Plan Mode**：在执行前让 AI 先出方案，作为 PM 你要负责“编测”和“修正方向”，不能让 AI 像脱缰野马一样乱跑。
+        
+    -   **维护项目文档**：写好 `claud.md` 或利用 `init` 命令同步项目全局状态。
+        
+
+3\. 工具链组合
+
+-   **Claude Code**：推荐作为核心基座，它全点代码技能，比通用模型更专注。
+    
+-   **MCP (Model Context Protocol)**：方便 AI 调用外部服务（如读文档、调 API）的标准化封印。
+    
+-   **Agent 分身**：主 Agent 像指挥官，可以创建子 Agent 专门负责读 Log、分析数据或写代码，从而节省主上下文空间。
+    
+
+* * *
+
+### 三、 交互与技巧：黑客松“生存指南”
+
+-   **硬件防寒**：通宵时由于气血不足和场馆空调，会感到极冷，建议自带厚衣服甚至被子。
+    
+-   **Demo 视频制作**：使用简映（CapCut）等轻量软件，加速慢动作，剪掉 Bug 段落。配音推荐用 OpenAI 的 TTS 模型或 TTSMaker。
+    
+-   **提前布局**：在黑客松正式开始前，虽然不能写代码，但可以先想好 Idea 并调研好赞助商的 SDK，正式开赛后直接上手写。
+    
+-   **多刷脸**：在场地上找官方摄影师多表现，留下的高质量照片是以后宣传和社交的资本。
+    
+
+* * *
+
+**下一步建议：**
+
+你现在的项目 **“ZK-Aegis”** 完美契合视频中提到的 **“乐高拼接（Kite AI + ZKP）”** 和 **“前端展示优先（v0 看板）”** 策略。你想让我帮你把视频里提到的 `claud.md` 文档模板针对你的项目写出来吗？
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 【Web3 实习计划（冬季）：Dapp Workshop】 [https://www.bilibili.com/video/BV1YRBZBLET5/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1YRBZBLET5/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
 该视频是 **Web3 实习计划（冬季）** 的一场技术实战分享，主题为 **Dapp Workshop**。视频由银老师主讲，从 Web3 的核心定义、Dapp 开发实战工具链，到顶级 DeFi 协议 Aave 的演进进行了全方位的拆解。
 
@@ -157,6 +244,7 @@ timezone: UTC+8
 
 
 
+
 【Web3 实习计划（冬季）- Web3 运行原理】 [https://www.bilibili.com/video/BV1ZkrHBtEN4/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1ZkrHBtEN4/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)
 
   
@@ -227,6 +315,7 @@ Bruce 老师将 Web3 的运行原理拆分为钱包、交易、共识、智能�
 
 
 
+
 【Web3 实习计划（冬季）：AI 及其基础概念】 [https://www.bilibili.com/video/BV1axkwBaEvC/?share\_source=copy\_web&vd\_source=39c8c4bb14001aa820309560be10ccdd](https://www.bilibili.com/video/BV1axkwBaEvC/?share_source=copy_web&vd_source=39c8c4bb14001aa820309560be10ccdd)  
   
 这份视频由 Spoon OS 的 Rick 老师主讲，详细探讨了 AI Agent（智能体）与 Web3 技术的深度融合。
@@ -284,6 +373,7 @@ Q&A 环节针对 AI 决策责任、技术效率等实战问题进行了深度解
 
 
 
+
 [https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6](https://www.youtube.com/watch?v=11QTT6BK5j0&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=6)
 
 This video focuses on advanced Web3 user skills, covering troubleshooting transactions, utilizing Layer 2 (L2) networks, and managing assets with decentralized financial tools.
@@ -322,6 +412,7 @@ The video highlights the speed and cost advantages of Layer 2 networks, specific
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -379,6 +470,7 @@ This video from the **Web2 to Web3** curriculum series focuses on **Non-Fungible
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -451,6 +543,7 @@ Here are the key points about Sybil from the video:
 
 
 
+
 ### **1\. Getting Started with MetaMask**
 
 -   **Official Installation:** Go to [**metamask.io**](http://metamask.io) and install the Chrome extension \[[01:21](http://www.youtube.com/watch?v=_GjPeRLCREA&t=81)\]. Be extremely cautious of phishing sites with similar URLs \[[01:52](http://www.youtube.com/watch?v=_GjPeRLCREA&t=112)\].
@@ -512,6 +605,7 @@ Here are the key points about Sybil from the video:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
