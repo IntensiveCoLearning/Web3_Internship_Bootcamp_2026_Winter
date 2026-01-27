@@ -15,8 +15,169 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## 1\. 概念辨析：EIP vs ERC
+
+在深入代码前，需厘清两个概念：
+
+-   **EIP (Ethereum Improvement Proposal)**: 以太坊改进提案。包括核心协议修改（如由 PoW 转 PoS）、网络层改动等。
+    
+-   **ERC (Ethereum Request for Comments)**: EIP 的一个子类，专门针对**应用层标准**。
+    
+    -   **本质**: 约定好的接口定义 (Interface)。
+        
+    -   **目的**: 让钱包、交易所、DeFi 协议能无缝调用你的合约，无需知道你内部怎么写的。
+        
+
+* * *
+
+## 2\. 资产类标准 (Token Standards)
+
+这是构建经济模型的基础积木。
+
+### ERC-20: 同质化代币 (Fungible Token)
+
+-   **类比**: 货币。你手里的一张 100 元和我手里的一张 100 元没有任何区别。
+    
+-   **核心功能**: 转账 (`transfer`)、授权 (`approve`)、通过授权转账 (`transferFrom`)。
+    
+-   **安全痛点 (非常重要)**:
+    
+    -   **授权机制**: `approve(spender, amount)` 模式是 DeFi 的基石，但也是风险之源。用户习惯无限授权 (`type(uint256).max`)，一旦协议被黑，用户钱包会被清空。
+        
+    -   **假充值**: 某些恶意代币在 `transfer` 失败时不会 Revert 而是返回 `false`，如果合约没检查返回值，会导致记账错误（USDT 就曾有此问题，这也是为什么我们要用 `SafeERC20` 库）。
+        
+
+### ERC-721: 非同质化代币 (NFT)
+
+-   **类比**: 房产证、身份证、艺术品。每个 Token 都有唯一的 `tokenId`。
+    
+-   **核心差异**:
+    
+    -   引入了 `ownerOf(tokenId)`。
+        
+    -   `safeTransferFrom`: 这是一个极其重要的改进。它会检查接收方如果是一个合约，是否实现了 `onERC721Received` 接口。如果接收方合约没实现（说明它无法处理 NFT），交易会 Revert。防止 NFT 永久锁死在不兼容的合约里。
+        
+
+### ERC-1155: 多重代币标准 (Multi-Token)
+
+-   **类比**: 游戏道具库。一个合约里既有“金币”（同质化），又有“屠龙刀”（非同质化）。
+    
+-   **痛点解决**:
+    
+    -   **Gas 优化**: ERC-20 和 ERC-721 都是“一个合约一种资产”。如果你要发 10 种装备，得部署 10 个 ERC-721 合约。ERC-1155 允许在一个合约里管理无数种 ID 的资产。
+        
+    -   **批量操作**: 支持 `safeBatchTransferFrom`，一次交易转移 10 种不同的道具，极大节省 Gas。
+        
+
+| 特性 | ERC-20 | ERC-721 | ERC-1155 |
+| 资产性质 | 同质化 (货币) | 非同质化 (唯一物品) | 混合 (半同质化/混合) |
+| ID 管理 | 无 ID (只有余额) | 唯一 ID | ID + 数量 (Balance) |
+| 元数据 | 合约级 | 基于 Token ID | 基于 Token ID |
+| 典型场景 | 稳定币, 治理代币 | PFP, 域名 | 游戏道具, 现实资产(RWA) |
+
+* * *
+
+## 3\. DeFi 增强标准 (DeFi Legos)
+
+随着 DeFi 的发展，基础的 ERC-20 已经不够用了，以下是目前最实用的进阶标准。
+
+### ERC-2612: 带有签名的代币 (Permit)
+
+-   **背景**: 在传统 ERC-20 中，用户想把币存入 Uniswap，必须发两笔交易：1. `approve` (花 Gas)，2. `deposit` (花 Gas)。体验极差。
+    
+-   **解决方案**: 引入 `permit` 函数。用户在链下对“授权”这个行为签名（不花 Gas）。任何人（通常是中继器或目标合约）拿着这个签名上链调用 `permit`，就完成了授权。
+    
+-   **结果**: **Gasless Transaction**（无 Gas 交易）的基础，实现了“一键存款”。
+    
+
+### ERC-4626: 代币化金库标准 (Tokenized Vaults)
+
+-   **背景**: 以前每个 DeFi 协议（Compound, Aave, Yearn）都有自己的生息代币逻辑（cToken, aToken, yToken），开发者想做一个聚合器，得给每个协议写适配器。
+    
+-   **解决方案**: 定义了一套标准的接口：存入资产 (Asset) -> 获得份额 (Share)。
+    
+-   **核心公式**: `assets = shares * totalAssets() / totalSupply()`
+    
+-   **地位**: 现在的 DeFi 开发必修课。如果你在写 Yield Farming（流动性挖矿）或借贷协议，**必须**遵循此标准。
+    
+
+* * *
+
+## 4\. 账户与安全标准
+
+### ERC-4337: 账户抽象 (Account Abstraction)
+
+-   **颠覆性**: 这是一个不需要硬分叉协议层的标准。
+    
+-   **核心**: 将外部账户 (EOA, 你的 MetaMask 地址) 和 合约账户 (CA) 的界限模糊化。
+    
+-   **能力**: 社交恢复钱包（丢了私钥能找回）、代付 Gas、指纹/面容支付。这是 Web3 走向 Mass Adoption 的关键。
+    
+
+### ERC-165: 接口检测
+
+-   **功能**: 一个非常底层但常用的标准。它允许智能合约“自省”。
+    
+-   **用途**: “你支持 ERC-721 吗？” 合约回答：“支持”。这样调用者就知道可以安全地跟你交互了。
+    
+
+* * *
+
+## 5\. 实战操作：在 Foundry 中使用标准库
+
+在实际开发中，我们绝不会从零手写 ERC-20，而是使用经过审计的库（如 OpenZeppelin）。
+
+由于你在使用 Manjaro 且正在学习 Foundry，以下是如何将 OpenZeppelin 引入你的项目：
+
+### 安装 OpenZeppelin 库
+
+在你的 Foundry 项目根目录下运行：
+
+Bash
+
+```
+forge install OpenZeppelin/openzeppelin-contracts --no-commit
+```
+
+**命令解析：**
+
+-   `forge install`: Foundry 的包管理命令，用于安装第三方依赖。
+    
+-   `OpenZeppelin/openzeppelin-contracts`: 这是一个 GitHub 仓库路径（User/Repo），Foundry 会去拉取源码。
+    
+-   `--no-commit`: **关键参数**。默认情况下，`forge` 会把安装的库作为 git submodule 并试图提交一次 git commit。如果你的项目还没有 git init，或者你不想让 forge 自动污染你的 commit 历史，加上这个参数。
+    
+
+### 代码引用示例
+
+Solidity
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// 直接导入库，就像使用本地文件一样
+import {ERC20} from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
+import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
+
+contract MyToken is ERC20, Ownable {
+    constructor() ERC20("MyToken", "MTK") Ownable(msg.sender) {
+        // 铸造 1000 个代币给部署者
+        _mint(msg.sender, 1000 * 10**decimals());
+    }
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 🛡️ **Web3 安全实战笔记：重入攻击 (Reentrancy) 与 The DAO 的教训**
 
 Gas 优化决定你的利润，而安全性决定你的生死。 今天复现了以太坊历史上最著名的漏洞——重入攻击（导致以太坊硬分叉的元凶）。
@@ -88,6 +249,7 @@ modifier nonReentrant() {
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 ⛽️ **Solidity Gas 优化实战笔记：如何将 Gas 消耗降低 77%？**
 
 今天用 Foundry 对一个经典的“批量空投”合约进行了极致的 Gas 审计和优化。数据很真实，分享几个核心的底层逻辑。
@@ -107,6 +269,7 @@ modifier nonReentrant() {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -146,6 +309,7 @@ modifier nonReentrant() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -252,6 +416,7 @@ DApp 开发中最繁琐的部分（处理钱包连接、ABI 解析、交易签�
 
 
 
+
 ### 1\. Uniswap v2: 恒积做市商 (CPMM) — AMM 的基石
 
 核心公式 $x \\cdot y = k$：
@@ -316,6 +481,7 @@ Hooks (钩子)：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -389,6 +555,7 @@ Hooks (钩子)：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -590,6 +757,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 ## 今天学习了ZK零知识证明  
 链上投票的核心痛点与解决方案
 
@@ -741,6 +909,7 @@ contract SimpleCrowdfunding {
 
 
 
+
 复盘了计算机网络底层，发现很多链上交互的痛点（延迟、丢包、监听失败），本质上都是网络层协议特性的投射。
 
 1\. 交易传播与 Mempool 机制（应用层/传输层）
@@ -826,6 +995,7 @@ contract SimpleCrowdfunding {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -982,6 +1152,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 
 
+
 ### **以太坊核心架构与原理深度研读笔记（第2-4章）**
 
 通过对第2至4章的系统性学习，我从底层的网络拓扑、状态模型以及执行环境三个维度，重新构建了对以太坊基础设施的认知。这不再仅仅是对概念的理解，而是涉及如何构建安全、高效的去中心化应用的工程基础。
@@ -1077,6 +1248,7 @@ Web2 是我们要去“房东”（服务器）家里拿东西；Web3 是我们�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1230,6 +1402,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 今天参加了web3安全和合规的分享会 收获颇丰 结合Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分 以下是学习内容：
 
 ## 第一部分：法律与合规风险
@@ -1346,6 +1519,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 
 
+
 ### 1\. 概念辨析：Web3 的认识论 (Epistemology)
 
 -   **Web 3.0 (Semantic Web, 1999)**:
@@ -1412,6 +1586,7 @@ NFT 并不是把图片存在链上，而是存了一个“指针”。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
