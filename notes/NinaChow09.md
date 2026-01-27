@@ -15,13 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+今天听了投研分享会的回放，老师很棒！推荐了肖臻男神的公开课。建议我们梳理每个生态，并挨个研究下有哪些代表项目，我很认可！也推荐了登链，结合着做个自己的导图。提问环节有同学也是传统金融想研究RWA，老师给予了肯定，举了翻译的例子，了解两国文化的翻译是好翻译，加油！！！另外听的时候记了只有自己看得懂的笔记，记性太差了😆
+
+![IMG_2898.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-27-1769527534801-IMG_2898.jpeg)
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 分享下昨晚听做个人账号的space的一些心得。账号要有活人感，纯科普干货之外可以讲些日常体验心路历程，能引起共鸣感觉更亲切。可以适当蹭下热点话题，可以讲meme之类能引起讨论的东西。标题选择上要吸引人，比如那种u can fix life in 1 day哈哈哈哈哈。可以的话可以尝试多渠道宣发，做个比较。有同学提出可以把一个渠道的内容截图直接在另个渠道发。另外小红书之类的境内账号需要注意下敏感词。更推荐twitter，因为是个既能学习又能分享的好平台。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 白天比较忙，跑去办HK的签注了，好多人排队😭，打算下个月去参加下consensus大会～
 
@@ -32,6 +41,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 听了uniswap的回放，老师讲解了v2和v3两个版本的运作模式，包含amm机制和升级版，涉及到了具体数字运算，作为金融狗停下来觉得讲得有点复杂了😅不是很好理解。
 
 今晚的分享会很充实！有位朋友介绍他做了个结合了ai的辅助求职应用，节省筛选靠谱招聘信息 一位大厂大佬分享了区块链与电力能源结合的想法，使电力更稳定。 有两位学员分享了foundry和hardhat开发工具。还有推荐typeless语音转文字工具 更有技术大佬分享了合约代码安全。 一位朋友聊了隐私问题。 还有紧跟实事聊了钱志敏案，由此谈到加密资产法律保护问题，比较下来在欧洲资产地位最高，其次是香港。
@@ -39,6 +49,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -57,11 +68,13 @@ timezone: UTC+8
 
 
 
+
 今天分享会听了第二个教大家如何组织活动的。听下来休闲黑客松还是很麻烦的哈哈。各个节点的人都把自己的负责部分同步在面板里，比如做海报的做好发上去同步给可能需要的人，这个模式真好！建议平时工作里也用上！ 今天事情太多了！ 明天补补uniswap那场！
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -84,6 +97,7 @@ timezone: UTC+8
 
 
 
+
 听了学员分享的回放～再提醒自己一下！先去做！执行力第一！行动就已经成功了一半！在过程中寻找反馈形成正向循环。先fake it，till make it！
 
 今晚的分享会是介绍ERC7962 目标客户是web2的用户，设计上从可用性友好出发，方便web2用户参与链上交易。但感觉web3的原生用户是不会愿意信任relayer。对这个项目中零知识证明到底应用在哪些地方还是有点迷糊。。。还有个疑问是听嘉宾的意思是用公钥取哈希的方式来保护公钥的隐私，可我记得地址本来就是公钥经过哈希运算并截取部分来生成的。
@@ -91,6 +105,7 @@ timezone: UTC+8
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -117,6 +132,7 @@ timezone: UTC+8
 
 
 
+
 今天学习了实习手册web3行业知识里的三个单元。运营部分——内容创作工具里还没用过notion，赶紧下载下来。数据与调研工具里后几个都没听过，之前只用过defi llama，后面对比看看。在举办活动上应该是“策划 → 筹备 → 执行 → 复盘”全流程，之前比较忽视复盘阶段，可将嘉宾金句 / 精彩瞬间剪辑为 15s 视频、收集嘉宾的反馈，是我之前没考虑到的。 合规和网络安全部分，感觉很震撼！在大陆好像做什么都可能违法，案例里面即使是做协助工作也会被判刑。监管的趋势和影响总结蛮好的⬇️
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-16-1768536060349-image.png)
@@ -126,6 +142,7 @@ timezone: UTC+8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -160,6 +177,7 @@ timezone: UTC+8
 
 
 
+
 今天偷偷用上班时间学习了web3实习手册的行业赛道全览、工作方式两个单元。很喜欢2025年新趋势那部分，意图交易是我之前还没接触到的！记录一下。再就是～觉得也可以再介绍下RWA还有稳定币。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366256468-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366570343-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/NinaChow09/images/2026-01-14-1768366594056-image.png)
@@ -167,6 +185,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
