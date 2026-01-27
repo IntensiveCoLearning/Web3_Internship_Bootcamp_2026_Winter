@@ -15,8 +15,192 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# **Hardhat 学习笔记**
+
+## **1）Hardhat 是什么？解决什么问题？**
+
+-   **一句话**：Hardhat 是一个以太坊智能合约的“工程化开发框架”。
+    
+-   它帮你把合约开发从“在 Remix 点点点”升级成“像写软件一样有项目结构、测试、脚本、部署流程”。
+    
+
+你用 Hardhat 主要是为了：
+
+-   写合约（Solidity）
+    
+-   本地起链调试（Hardhat Network）
+    
+-   写测试（Mocha/Chai）
+    
+-   写部署脚本（deploy scripts）
+    
+-   管理多网络（[localhost](http://localhost) / sepolia / mainnet 等）
+    
+-   和前端对接（导出 ABI、地址）
+    
+
+* * *
+
+## **2）Hardhat 项目一般长什么样？**
+
+常见目录结构（记住这个就够用）：
+
+-   contracts/：Solidity 合约
+    
+-   scripts/：部署/交互脚本（deploy、mint、transfer…）
+    
+-   test/：测试用例
+    
+-   hardhat.config.js/ts：全局配置（编译器版本、网络、插件、Etherscan 验证等）
+    
+-   artifacts/：编译产物（ABI、bytecode）
+    
+-   cache/：编译缓存
+    
+
+* * *
+
+## **3）你今天应该掌握的核心工作流（从 0 到 1）**
+
+### **Step 1：初始化项目**
+
+-   安装 Hardhat（一般用 npm/yarn/pnpm）
+    
+-   npx hardhat 创建模板项目（会生成示例合约+测试+配置）
+    
+
+### **Step 2：写合约**
+
+-   在 contracts/ 新建 .sol
+    
+-   注意 Solidity 版本和 config 一致
+    
+
+### **Step 3：编译**
+
+-   编译会生成 ABI/bytecode（在 artifacts/）
+    
+-   前端要用的 ABI 就在这里
+    
+
+### **Step 4：本地起链（调试超爽）**
+
+-   Hardhat Network = 本地模拟以太坊
+    
+-   你可以：
+    
+    -   秒出块
+        
+    -   有一堆自带测试账户（带 ETH）
+        
+    -   随时重置状态（调试很快）
+        
+
+### **Step 5：写测试（非常重要）**
+
+测试基本结构：
+
+-   部署合约
+    
+-   调用函数
+    
+-   expect 断言结果
+    
+-   常测点：
+    
+    -   正常流程
+        
+    -   revert（错误是否按预期抛出）
+        
+    -   权限控制
+        
+    -   事件是否触发
+        
+
+### **Step 6：写脚本（部署/交互）**
+
+-   scripts/deploy.js：部署合约
+    
+-   交互脚本：mint、transfer、setXXX 等
+    
+-   脚本和测试差别：
+    
+    -   测试要断言
+        
+    -   脚本更像“真实运行一次”的自动化操作
+        
+
+### **Step 7：部署到测试网（Sepolia）**
+
+核心要素：
+
+-   RPC（Infura/Alchemy 或自己节点）
+    
+-   私钥（放 .env，别写死在代码）
+    
+-   网络配置写进 hardhat.config
+    
+-   然后运行部署脚本，把合约地址记下来
+    
+
+* * *
+
+## **4）Hardhat 里最常见的“概念点”**
+
+### **网络（Networks）**
+
+-   [localhost](http://localhost)：本地链
+    
+-   sepolia：测试网
+    
+-   mainnet：主网
+    
+    每个网络都需要：
+    
+-   url（RPC 地址）
+    
+-   accounts（部署者私钥）
+    
+
+### **Signer / Provider（用 ethers.js）**
+
+-   provider：连接网络，负责读链
+    
+-   signer：能签名发交易（写链）
+    
+    部署合约通常用 signer
+    
+
+* * *
+
+## **5）Hardhat 最容易踩的坑**
+
+1.  **Solidity 版本不匹配**
+    
+    合约 pragma 和 hardhat.config 的 compiler 版本要对上。
+    
+2.  **没加载 .env**
+    
+    部署时找不到私钥/RPC，或者变量是空的。
+    
+3.  **部署到错的网络**
+    
+    本地部署成功但测试网没合约地址；记得 --network sepolia。
+    
+4.  **合约地址没保存**
+    
+    前端找不到合约；建议写一个 deployments.json 自动记录地址。
+    
+5.  **gas/nonce 报错**
+    
+    RPC 不稳定、账户余额不足、或者重复发交易导致 nonce 混乱。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 # **Vibe Coding 学习笔记**
 
 ## **1）Vibe Coding 是什么？**
@@ -205,6 +389,7 @@ Vibe coding：先出一个能跑的 demo → 边用边改 → 逐步加规则/�
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 # **Ethernaut 前三关学习要点总结（Hello / Fallback / Fallout）**
 
 ## **关卡 1：Hello Ethernaut（熟悉 Console + 合约交互）**
@@ -347,6 +532,7 @@ function Fallout() public payable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 # **ERC-7962 笔记：**
@@ -633,6 +819,7 @@ ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1129,6 +1316,7 @@ for (...) {
 
 
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -1366,6 +1554,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1620,6 +1809,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -1835,6 +2025,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -2031,6 +2222,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -2197,6 +2389,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -2308,6 +2501,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2464,6 +2658,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2791,6 +2986,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -2908,6 +3104,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3264,6 +3461,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
