@@ -15,8 +15,486 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# 17 Hardhat + Viem 初学流程
+
+## 一、核心变更说明
+
+1.  **技术栈替换**：ethers.js → Viem（轻量、类型安全、原生支持 ES模块）；
+    
+2.  **语法规范**：CommonJS（require）→ ES模块（import/export）；
+    
+3.  **插件适配**：`@nomicfoundation/hardhat-ethers` → `@nomicfoundation/hardhat-viem`（Hardhat 官方 Viem 集成插件）；
+    
+
+## 二、Hardhat + Viem 安装配置
+
+### （一）前置依赖
+
+1.  Node.js：v18.x / v20.x（[下载地址](https://nodejs.org/zh-cn/download/)），需启用 ES模块支持（默认支持）；
+    
+2.  Git：版本控制工具（[下载地址](https://git-scm.com/downloads)）；
+    
+3.  包管理器：npm / yarn（本文以 npm 为例）。
+    
+
+### （二）项目初始化与依赖安装
+
+1\. 创建项目并初始化
+
+```
+mkdir hardhat-viem-demo && cd hardhat-viem-demo
+npm init -y
+```
+
+2\. 配置 ES模块（关键）
+
+编辑 `package.json`，添加 `type: "module"` 以启用 ES模块：
+
+```
+{
+  "name": "hardhat-viem-demo",
+  "version": "1.0.0",
+  "type": "module", // 启用 ES模块
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network hardhat",
+    "interact:local": "npx hardhat run scripts/interact.js --network hardhat",
+    "console": "npx hardhat console --network hardhat"
+  }
+}
+```
+
+3\. 安装核心依赖
+
+```
+# 安装 Hardhat 及 Viem 集成插件
+npm install --save-dev hardhat @nomicfoundation/hardhat-viem viem dotenv
+# 安装 Solidity 编译器（Hardhat 依赖）
+npm install --save-dev @nomicfoundation/hardhat-solidity
+```
+
+4\. 初始化 Hardhat 项目
+
+```
+pnpm dlx hardhat --init
+```
+
+-   选择项目模板（三选一）
+    
+
+### （三）Hardhat 核心配置（ES模块格式）
+
+创建/编辑 `hardhat.config.js`（ES模块语法，使用 import）：
+
+```
+import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
+import { configVariable, defineConfig } from "hardhat/config";
+
+export default defineConfig({
+  plugins: [hardhatToolboxViemPlugin],
+  solidity: {
+    profiles: {
+      default: {
+        version: "0.8.28",
+      },
+      production: {
+        version: "0.8.28",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    },
+  },
+  networks: {
+    hardhatMainnet: {
+      type: "edr-simulated",
+      chainType: "l1",
+    },
+    hardhatOp: {
+      type: "edr-simulated",
+      chainType: "op",
+    },
+    sepolia: {
+      type: "http",
+      chainType: "l1",
+      url: configVariable("SEPOLIA_RPC_URL"),
+      accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
+    },
+  },
+});
+```
+
+### （四）环境变量配置
+
+创建 `.env` 文件（存储敏感信息，添加到 `.gitignore`）：
+
+```
+# 测试网私钥（0x开头，切勿用主网私钥）
+PRIVATE_KEY=0x你的测试账户私钥
+# Sepolia RPC URL（Infura/Alchemy 获取）
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/你的API密钥
+# Etherscan API Key（https://etherscan.io/myapikey 获取）
+ETHERSCAN_API_KEY=你的Etherscan API密钥
+```
+
+## 三、核心组件说明（Viem 重点）
+
+| 组件 | 功能说明 |
+| Hardhat Network | 内置本地节点，无需手动启动，支持分叉主网/测试网，数据临时存储 |
+| @nomicfoundation/hardhat-viem | Hardhat 与 Viem 桥接插件，提供合约工厂、部署、交互等核心能力 |
+| Viem | 轻量级以太坊客户端库，支持账户管理、交易签名、合约交互，原生 ES模块支持 |
+| dotenv | 加载环境变量，避免敏感信息硬编码 |
+
+## 四、全流程实战操作（Viem 纯原生语法）
+
+### （一）步骤 1：编写智能合约
+
+在项目根目录创建 `contracts/` 文件夹，新建 `Counter.sol` 合约：
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.28;
+
+contract Counter {
+  uint public x;
+
+  event Increment(uint by);
+
+  function inc() public {
+    x++;
+    emit Increment(1);
+  }
+
+  function incBy(uint by) public {
+    require(by > 0, "incBy: increment should be positive");
+    x += by;
+    emit Increment(by);
+  }
+}
+```
+
+### （二）步骤 2：编译合约
+
+执行编译命令（ES模块配置下正常兼容）：
+
+```
+pnpm hardhat compile    # 等价于 pnpm hardhat build
+```
+
+-   编译成功：生成 `artifacts/` 目录（包含合约 ABI、字节码），Viem 交互需依赖 ABI；
+    
+-   编译失败：检查 Solidity 版本匹配、合约语法错误。
+    
+
+### （三）步骤 3：合约部署（Viem 原生脚本）
+
+在项目根目录创建 `scripts/` 文件夹，新建 `deploy.js`（ES模块+Viem 语法）：
+
+```
+import { network, artifacts } from "hardhat";
+
+async function main() {
+    // 1. 连接到本地 Hardhat node（L1）
+    const { viem } = await network.connect({
+        network: "localhost",
+        chainType: "l1",
+    });
+
+    // 2. 取第一个本地账户（Hardhat 自动解锁）
+    const walletClient = (await viem.getWalletClients())[0];
+    const publicClient = await viem.getPublicClient();
+
+    // 3. 读取合约 artifact（≈ v2 的 getContractFactory）
+    const artifact = await artifacts.readArtifact("Counter");
+
+    // 4. 部署合约
+    const hash = await walletClient.deployContract({
+        abi: artifact.abi,
+        bytecode: artifact.bytecode,
+        args: [], // 构造函数参数
+    });
+
+    // 5. 等待部署完成
+    const receipt = await publicClient.waitForTransactionReceipt({ hash });
+
+    // 6. 打印地址
+    console.log("合约已部署到:", receipt.contractAddress);
+}
+
+main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});
+```
+
+原生一点的写法：
+
+```
+import { ethers } from "hardhat"; // Hardhat 暴露的 Viem 兼容 API
+import { parseEther } from "viem";
+
+async function main() {
+  // 1. 获取合约工厂（Viem 原生适配，无需额外转换）
+  const Counter = await ethers.getContractFactory("Counter");
+  
+  // 2. 部署合约（构造函数无参数，直接调用 deploy）
+  console.log("正在部署 Counter 合约...");
+  const counter = await Counter.deploy();
+  
+  // 3. 等待部署完成（Hardhat v2.22+ 统一使用 waitForDeployment）
+  await counter.waitForDeployment();
+  
+  // 4. 获取合约地址（Viem 风格，通过 getAddress() 获取）
+  const contractAddress = await counter.getAddress();
+  console.log(`Counter 合约已部署至：${contractAddress}`);
+}
+
+// 执行部署并捕获错误
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error("部署失败：", error);
+    process.exit(1);
+  });
+```
+
+部署执行（本地网络）
+
+```
+ pnpm hardhat run scripts/deploy.ts --network localhost  
+```
+
+-   成功标识：终端输出合约地址（如 `0x5FbDB2315678afecb367f032d93F642f64180aa3`），记录地址用于后续交互。
+    
+
+测试网部署（Sepolia）
+
+```
+npx hardhat run scripts/deploy.js --network sepolia
+```
+
+-   前置准备：测试账户需有 Sepolia ETH（通过 [水龙头](https://sepolia-faucet.pk910.de/) 领取）；
+    
+-   合约验证（可选）：
+    
+
+```
+npx hardhat verify --network sepolia <合约地址>
+```
+
+### （四）步骤 4：合约交互（Viem 纯原生语法）
+
+创建 `scripts/interact.js`（ES模块，使用 Viem 核心 API 交互）：
+
+```
+import {network} from "hardhat";
+
+async function main() {
+
+    const { viem } = await network.connect({
+        network: "localhost",
+        chainType: "l1",
+    });
+
+    const contract = await viem.getContractAt(
+        "Counter",
+        "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    );
+
+    // 写函数要用 write
+    const hash = await contract.write.incBy([7]);
+    console.log("Transaction hash:", hash);
+
+    // 等待交易确认
+    const publicClient = await viem.getPublicClient();
+    await publicClient.waitForTransactionReceipt({ hash });
+    console.log("Transaction confirmed!");
+
+    // 读取新的值
+    const newNumber = await contract.read.x();
+    console.log("New number:", newNumber);
+}
+
+main().catch(console.error);
+```
+
+比较原生的写法：
+
+```
+import { ethers } from "hardhat";
+import { formatEther, parseEther } from "viem";
+
+async function main() {
+  // 1. 配置合约地址（替换为部署后的实际地址）
+  const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+  
+  // 2. 获取合约实例（Viem 原生适配，直接通过 ABI 绑定）
+  const Counter = await ethers.getContractFactory("Counter");
+  const counter = Counter.attach(CONTRACT_ADDRESS);
+
+  // ------------------------------
+  // 3. 读取数据（view 方法，无需交易，Viem 自动调用 eth_call）
+  // ------------------------------
+  const initialNumber = await counter.number();
+  console.log(`初始计数：${initialNumber.toString()}`);
+
+  // ------------------------------
+  // 4. 修改数据（state-changing 方法，需签名交易，Viem 自动处理签名）
+  // ------------------------------
+  // 4.1 设置计数为 888
+  console.log("正在设置计数为 888...");
+  const setTx = await counter.setNumber(888);
+  await setTx.wait(); // 等待交易上链
+  let currentNumber = await counter.number();
+  console.log(`设置后计数：${currentNumber.toString()}`);
+
+  // 4.2 计数递增（+1）
+  console.log("正在执行递增操作...");
+  const incrementTx = await counter.increment();
+  await incrementTx.wait();
+  currentNumber = await counter.number();
+  console.log(`递增后计数：${currentNumber.toString()}`);
+
+  // 4.3 计数递减（-1）
+  console.log("正在执行递减操作...");
+  const decrementTx = await counter.decrement();
+  await decrementTx.wait();
+  currentNumber = await counter.number();
+  console.log(`递减后计数：${currentNumber.toString()}`);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error("交互失败：", error);
+    process.exit(1);
+  });
+```
+
+执行交互脚本
+
+```
+pnpm hardhat run scripts/interact.js --network localhost 
+```
+
+-   预期输出：
+    
+
+```
+Transaction hash: 0x1b5f8d63ff997bf68d358e4bb0b0e38dcd9bd8bbb289703cec7b8b2b69ac7085
+Transaction confirmed!
+New number: 39n
+```
+
+```
+初始计数：0
+正在设置计数为 888...
+设置后计数：888
+正在执行递增操作...
+递增后计数：889
+正在执行递减操作...
+递减后计数：888
+```
+
+### （五）Viem 实时交互（Hardhat Console）
+
+启动 Hardhat 控制台（ES模块+Viem 支持）：
+
+```
+npm run console # 等价于 npx hardhat console --network hardhat
+```
+
+在控制台中使用 Viem 原生语法交互：
+
+```
+const { viem } = await network.connect({
+        network: "localhost",
+        chainType: "l1",
+    });
+
+    const contract = await viem.getContractAt(
+        "Counter",
+        "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    );
+
+    // 写函数要用 write
+    const hash = await contract.write.incBy([7]);
+    console.log("Transaction hash:", hash);
+
+    // 等待交易确认
+    const publicClient = await viem.getPublicClient();
+    await publicClient.waitForTransactionReceipt({ hash });
+    console.log("Transaction confirmed!");
+
+    // 读取新的值
+    const newNumber = await contract.read.x();
+    console.log("New number:", newNumber);
+```
+
+原生语法交互：
+
+```
+// 1. 获取合约实例（替换为部署地址）
+const Counter = await ethers.getContractFactory("Counter");
+const counter = Counter.attach("0x5FbDB2315678afecb367f032d93F642f64180aa3");
+
+// 2. 读取计数（Viem 自动解析 BigInt）
+await counter.number(); // 输出 BigInt(0)
+
+// 3. 修改计数（Viem 自动签名交易）
+await counter.setNumber(100);
+await counter.number(); // 输出 BigInt(100)
+
+// 4. 递增/递减
+await counter.increment();
+await counter.number(); // 输出 BigInt(101)
+await counter.decrement();
+await counter.number(); // 输出 BigInt(100)
+```
+
+-   退出控制台：输入 `exit` 或 `Ctrl+C`。
+    
+
+## 五、Viem 核心 API 总结
+
+| 功能 | Viem 原生 API 代码示例 |
+| 初始化签名客户端 | createWalletClient({ chain, transport: http(rpcUrl), account: privateKey }) |
+| 初始化只读客户端 | createPublicClient({ chain, transport: http(rpcUrl) }) |
+| 部署合约 | walletClient.deployContract({ abi, bytecode, args }) |
+| 读取合约数据 | publicClient.readContract({ address, abi, functionName, args }) |
+| 写入合约数据 | walletClient.writeContract({ address, abi, functionName, args }) |
+| 等待交易确认 | publicClient.waitForTransactionReceipt({ hash }) |
+
+## 六、常见问题排查
+
+-   **字节码错误** `Invalid bytecode`：部署时未取 `bytecode.object` 字段，需确保 `bytecode: CounterArtifact.bytecode.object`（而非直接用 `CounterArtifact.bytecode`）；
+    
+-   **ABI 导入错误** `Cannot find module ... assert { type: "json" }`：Node.js 版本低于 17 不支持 JSON 导入断言，需升级 Node.js 到 v18+，或改用 `fs.readFileSync` 读取 JSON；
+    
+-   **私钥错误** `Invalid account address or private key`：私钥格式错误，需确保以 `0x` 开头，长度为 64 位十六进制字符；
+    
+-   **连接失败** `Failed to connect to RPC URL`：本地节点未启动，或 RPC 地址错误，需确认`LOCAL_RPC_URL` 为 `http://127.0.0.1:8545`；
+    
+-   **合约交互报错** `Function "xxx" does not exist on ABI`：ABI 不匹配，重新编译合约（`npm run compile`），确保导入的 `CounterArtifact` 是最新的。
+    
+
+## 七、参考资料
+
+-   [Hardhat 官方 Viem 插件文档](https://hardhat.org/docs/guides/testing/using-viem#setup)
+    
+-   [Viem 官方文档](https://viem.sh/docs/migration-guide)
+    
+-   [Solidity 官方文档](https://docs.soliditylang.org/)
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -283,6 +761,7 @@ cast send <合约地址> "decrement()" \
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -472,6 +951,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 # 15 Web3.js/Ethers.js/Viem/Wagmi 对比及代码示例
@@ -691,6 +1171,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -784,6 +1265,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1146,6 +1628,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1562,6 +2045,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2035,6 +2519,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -2331,6 +2816,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3446,6 +3932,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -3820,6 +4307,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -4153,6 +4641,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -4314,6 +4803,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4600,6 +5090,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4915,6 +5406,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -5143,6 +5635,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
