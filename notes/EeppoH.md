@@ -15,8 +15,74 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+**JSON-RPC协议**
+
+**以太坊使用JSON-RPC2.0协议作为标准的RPC通信格式。**
+
+**RPC（Remote Procedure Call）远程调用函数，JSON是一种数据格式**
+
+**常用 JSON-RPC 方法**：
+
+| 方法名 | 功能 | 示例 |
+| eth_getBalance | 查询账户余额 | eth_getBalance(address, block) |
+| eth_blockNumber | 获取最新区块号 | eth_blockNumber() |
+| eth_sendTransaction | 发送交易 | eth_sendTransaction(txObject) |
+| eth_call | 调用合约（只读） | eth_call(callObject, block) |
+| eth_getTransactionReceipt | 获取交易收据 | eth_getTransactionReceipt(txHash) |
+| eth_getLogs | 查询事件日志 | eth_getLogs(filterObject) |
+
+| 类型 | 会不会上链 | 花不花钱 |
+| eth_call | ❌ 不上链 | ❌ 不花 gas |
+| eth_sendTransaction | ✅ 上链 | ✅ 要 gas |
+
+Alchemy以太坊节点服务商
+
+**createPublicClient**
+
+👉 **创建一个“公共 / 只读”的区块链客户端**
+
+• 只能：
+
+• 查余额
+
+• 查区块
+
+• 读合约（eth\_call）
+
+• ❌ 不能签名
+
+• ❌ 不能发交易
+
+⸻
+
+**mainnet**
+
+👉 **以太坊主网的“配置说明书”**
+
+里面包括：
+
+• chainId = 1
+
+• 原生币 = ETH
+
+• 区块浏览器 = Etherscan
+
+• 各种默认参数
+
+**const = 声明一个“不能被重新赋值”的变量**
+
+const client = createPublicClient(...)
+
+从现在开始，client 这个名字
+
+**永远指向这个 PublicClient 对象**
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 **RPC节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。
@@ -72,6 +138,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 2. **智能合约（Smart Contracts）**：
 
 -   智能合约是 Dapp 的核心，它定义了应用的业务逻辑，并部署在区块链上。智能合约通过执行自动化的规则来确保交易和操作的透明性与不可篡改性。
@@ -109,6 +176,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 Dapp架构和开发流程
 
 去中心化应用（Dapp）是与传统集中式应用不同的全新应用模式，通常运行在区块链或分布式网络上。
@@ -139,6 +207,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -175,6 +244,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 
 
+
 ```remix-solidity
 pragma solidity ^0.8.0;
 
@@ -201,6 +271,7 @@ function addOne() public {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -344,6 +415,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 
 
+
 昨天留下的问题，LP TOKEN证明的不是存入的ETH或者USDC在mempool里的存款，LP TOKEN证明的是自己的存款在CA账户里的比例。
 
 这个比例本身不会变，只要没有新增LP和退出的LP，交易得再多，这个比例也不会变。但是这个比例的资产内容会一直在变，因为有人用ETH换USDC也会有人用USDC换ETH，所以池子里X/Y一直在变化。昨晚把mempool和CA账户的资产概念混淆了，mempool的唯一作用是暂存“还没有被请求的交易”。
@@ -359,6 +431,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -416,6 +489,7 @@ Gas在EOA to EOA时只是记账付费（手续费），在EOA to CA时是计算�
 
 
 
+
 23:30 Tue 13 Jan 2026 因为工作原因今天晚上的闲暇时间不是很多，继续在阅读入门导读。
 
 今晚就只在钻研一个问题，什么是Layer1, Layer2,Sidechains?什么是Application Layer应用层、Protocol Layer协议层、Scaling Layer扩展层？
@@ -464,6 +538,7 @@ Scaling layer扩展层 提升性能和降低成本的解决方案。我的理解
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
