@@ -15,8 +15,114 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# **访问私有数据 (Accessing Private Data)**
+
+### **核心概念：链上无秘密**
+
+在 Solidity 中，`private` 关键字**仅仅**意味着其他智能合约无法直接读取该变量。它**并不代表**数据对外部世界是保密的。由于区块链是一个公开的账本，任何人都可以通过连接到节点的客户端（如 web3.js 或 ethers.js）读取合约的原始存储（Storage）。
+
+* * *
+
+### **1\. 理解 Solidity 的存储机制 (Storage)**
+
+要读取私有数据，首先需要理解 Solidity 如何将数据映射到存储槽（Slot）中。
+
+-   **存储空间：** 合约拥有 $2^{256}$ 个存储槽。
+    
+-   **槽位大小：** 每个插槽为 32 字节 (256位)。
+    
+-   **顺序存储：** 变量按照声明的顺序依次存储。
+    
+-   **变量打包 (Packing)：** 为了节省 Gas，如果相邻的多个变量大小总和不超过 32 字节，Solidity 会将它们打包进同一个插槽中（从右向左填充）。
+    
+
+`Vault.sol` **的存储布局分析**
+
+| 槽位 (Slot) | 变量名 | 类型 | 说明 |
+| Slot 0 | count | uint256 | 占用完整的 32 字节。 |
+| Slot 1 | u16, isTrue, owner | uint16, bool, address | 被打包。地址(20字节)+布尔(1字节)+整型(2字节) < 32字节。 |
+| Slot 2 | password | bytes32 | 这就是我们的目标 (Private)。 |
+| Slot 3-5 | data | bytes32[3] | 定长数组，每个元素占用一个槽位。 |
+| Slot 6 | users | User[] (动态数组) | 这里存储的是数组的长度。 |
+| Slot 7 | idToUser | mapping | 槽位本身为空，用作哈希计算的盐 (salt)。 |
+
+* * *
+
+### **2\. 如何利用漏洞（读取数据）**
+
+我们可以使用 `web3.eth.getStorageAt(contractAddress, slotNumber)` 来读取指定槽位的原始十六进制数据。
+
+**A. 读取简单变量**
+
+读取 `password` 非常简单，直接读取其所在的 Slot 2。
+
+JavaScript
+
+```
+// 读取 Slot 2 的数据
+web3.eth.getStorageAt("0x534E...合约地址...", 2, console.log)
+```
+
+**B. 读取动态数组 (**`User[]`**)**
+
+动态数组的数据并不直接存储在 Slot 6 中，Slot 6 仅存储数组长度。
+
+1.  **确定起始位置：** 数据存储在槽位编号的哈希值位置。
+    
+    $$StartLocation = \\text{keccak256}(SlotNumber)$$
+    
+2.  **计算特定元素位置：**
+    
+    $$TargetLocation = \\text{keccak256}(SlotNumber) + (index \\times elementSize)$$
+    
+
+JavaScript
+
+```
+// 获取数组数据存储的起始位置 (假设 Slot 为 6)
+const arrayStart = web3.utils.soliditySha3({ type: "uint", value: 6 });
+// 读取该位置的数据
+web3.eth.getStorageAt(contractAddress, arrayStart, console.log);
+```
+
+**C. 读取映射 (**`idToUser`**)**
+
+映射 (Mapping) 的位置取决于 **Key** 和 **声明时的 Slot**。
+
+$$Location = \\text{keccak256}(Key + Slot)$$
+
+JavaScript
+
+```
+// 计算位置：Key=1, Mapping 声明在 Slot 7
+const mapLocation = web3.utils.soliditySha3(
+    { type: "uint", value: 1 }, // 键 (Key)
+    { type: "uint", value: 7 }  // 槽位 (Slot)
+);
+web3.eth.getStorageAt(contractAddress, mapLocation, console.log);
+```
+
+* * *
+
+### **3\. 防御措施**
+
+既然 `private` 无法保护数据，应该如何做？
+
+-   **不要在链上存储敏感数据：** 永远不要将密码、API 密钥或用户隐私数据直接存放在智能合约中。
+    
+-   **存储哈希值：** 如果必须验证密码，只存储密码的哈希值（如 `keccak256(password)`），并在链下进行验证。
+    
+-   **链下加密：** 在数据上链前进行加密（但这涉及到复杂的密钥管理问题）。
+    
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 # Solidity 智能合约示例笔记
 
 三个经典的 Solidity 合约模式：基础以太坊钱包 (Ether Wallet)、多重签名钱包 (Multi-Sig Wallet) 以及 默克尔树 (Merkle Tree) 验证。
@@ -170,6 +276,7 @@ function verify(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 # Remix 快速上手笔记
 
@@ -399,6 +506,7 @@ Gas：默认3000000
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 # 智能合约开发与部署工具
@@ -1278,6 +1386,7 @@ monitors:
 
 
 
+
 # 智能合约升级与修改模式
 
 ## 1\. 核心原则：合约不可直接修改
@@ -1956,6 +2065,7 @@ function test_FullUpgradePath() public {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2826,6 +2936,7 @@ echidna-test . --contract MyContract
 
 
 
+
 # 智能合约开发高级：Gas 优化、安全、审计与协作规范
 
 ## 1\. Gas 优化
@@ -3167,6 +3278,7 @@ function withdraw() public {
 
 
 
+
 # 智能合约编译产物详解
 
 ## 1\. 字节码（Bytecode）
@@ -3268,6 +3380,7 @@ function withdraw() public {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3566,6 +3679,7 @@ contract MessageBoard {
 
 
 
+
 # 以太坊节点连接通信与类型笔记
 
 ## 一、节点间连接与通信的三步流程
@@ -3741,6 +3855,7 @@ contract MessageBoard {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3954,6 +4069,7 @@ contract MessageBoard {
 
 
 
+
 Web3 行业充满机遇，但也伴随复杂的法律风险。理解并规避这些风险，是保护自身职业发展和财产安全的前提。下面梳理核心风险点
 
 ### 国内政策红线与刑事风险
@@ -4035,6 +4151,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4137,6 +4254,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4747,6 +4865,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 
 
+
 ### **以太坊学习笔记**
 
 **一、 核心定位：不止是加密货币，更是可编程平台**
@@ -4819,6 +4938,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
