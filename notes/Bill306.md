@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# **投研基础框架建立+vibe coding 视频回放**
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 **完成 2 章 Unphishable 钓鱼攻防挑战**
 
 在 [My first ZK vote](https://zkvote.myfirst.io/) 体验不同的投票方式并思考。
@@ -25,6 +31,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 观看第二周例会
 
 完成Ethernaut zero
@@ -32,6 +39,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 收看「**Uniswap 工作原理解析**」回放
@@ -48,6 +56,7 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 
 
+
 打卡：
 
 查看「社区运营基础 & 活动策划与执行」回放
@@ -57,6 +66,7 @@ Web3 实习手册[「智能合约开发」](https://web3intern.xyz/zh/smart-cont
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -76,6 +86,7 @@ p观看：“
 
 
 
+
 Day Seven
 
 复习前面的笔记
@@ -83,6 +94,7 @@ Day Seven
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -108,6 +120,7 @@ Day Five:
 
 
 
+
 Day 4:
 
 -   补档了安全和合规
@@ -117,6 +130,7 @@ Day 4:
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -149,6 +163,7 @@ Day 3:
 
 
 
+
 Day 2:
 
 -   学习了**Web3 行业全局介绍 & 岗位概览**
@@ -161,6 +176,7 @@ Day 2:
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
