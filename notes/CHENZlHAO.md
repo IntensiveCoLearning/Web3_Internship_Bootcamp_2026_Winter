@@ -15,8 +15,140 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+这份总结专为 **Notion** 优化，你可以直接复制以下内容并粘贴到 Notion 页面中，它会自动识别标题、列表、代码块和表格。
+
+* * *
+
+# 🚀 Solidity & Foundry 核心知识点速查（面向 C++/Python 开发者）
+
+## 1\. 合约基础结构 (Contract Basics)
+
+Solidity 的 `contract` 与 C++/Python 的 `class` 非常相似，但它一旦部署就是**单例**且**持久化**的。
+
+-   **文件头**：
+    
+    -   `// SPDX-License-Identifier: MIT`：版权声明（必须）。
+        
+    -   `pragma solidity 0.8.26;`：编译器版本锁定。
+        
+-   **状态变量 (State Variables)**：
+    
+    -   `uint256 public count;`
+        
+    -   **C++ 视角**：类似类成员变量，但它存储在 **磁盘（区块链账本）** 上而非内存。
+        
+    -   **Python 视角**：类似 `self.count`，但它是强类型的。
+        
+    -   **特性**：`public` 会自动生成一个同名的 `getter` 函数。
+        
+
+* * *
+
+## 2\. 数据类型对照表
+
+Solidity 是静态强类型语言，对内存管理极度敏感。
+
+| 特性 | Solidity | C++ | Python |
+| 无符号整数 | uint256 (256 bits) | unsigned __int128 (最大) | int (自动处理大小) |
+| 整型溢出 | 0.8+ 默认报错回滚 | 溢出绕回 (Wrap around) | 自动扩容 |
+| 可见性 | external, public, private, internal | public, private, protected | 约定前缀 _ |
+
+* * *
+
+## 3\. 函数可见性与权限 (Visibility)
+
+Solidity 引入了更细粒度的函数访问控制，以节省 **Gas (手续费)**。
+
+-   **external**: 只能从合约外部调用（最省 Gas）。
+    
+-   **public**: 内部外部均可调用。
+    
+-   **private**: 仅限当前合约内部。
+    
+-   **internal**: 类似 `protected`，允许子类访问。
+    
+
+* * *
+
+## 4\. Foundry 测试框架 (Testing)
+
+Foundry 允许你用 Solidity 编写测试脚本，这比 Truffle/Hardhat (JS) 更符合原生思维。
+
+### 🔹 测试生命周期
+
+-   **继承** `Test` **合约**：`contract CounterTest is Test`。
+    
+-   `setUp()` **函数**：
+    
+    -   **类比**：Python 的 `setUp(self)` 或 C++ GTest 的 `SetUp()`。
+        
+    -   **逻辑**：每个 `test` 函数运行前，都会先执行一次 `setUp`。
+        
+
+### 🔹 断言 (Assertions)
+
+来自 `forge-std/Test.sol` 的标准库：
+
+-   `assertEq(a, b)`：断言 $a = b$。
+    
+-   `assertTrue(condition)`：断言为真。
+    
+
+### 🔹 作弊码 (Cheatcodes)
+
+这是 Foundry 的杀手锏，通过 `vm` 对象直接操控 EVM。
+
+-   `vm.expectRevert()`：
+    
+    -   **逻辑**：声明接下来的那行调用**必须失败**。
+        
+    -   **类比**：Python 的 `with pytest.raises(Error):`。
+        
+    -   **用法**：用于测试边界条件（如：溢出、权限越权）。
+        
+
+* * *
+
+## 5\. 异常处理：Revert 机制
+
+这是区块链开发与传统开发最大的不同点。
+
+> 💡 **核心逻辑：原子性 (Atomicity)**
+> 
+> 在执行过程中只要发生 `revert`（如：`assert` 失败、`expectRevert` 捕获到错误、手动触发报错），**当前交易产生的所有状态更改都会被撤销**，就像这笔交易从未发生过一样。
+
+-   **标准错误类型**：`stdError.arithmeticError` 对应 0.8 版本后的溢出/下溢错误。
+    
+
+* * *
+
+## 6\. 代码示例笔记 (Notion Block)
+
+Solidity
+
+```
+// Solidity 的加法：0.8.0 之后自带安全检查
+function inc() external {
+    count += 1; // 如果 count 是最大值，这里会直接 revert
+}
+
+// 测试代码：预期下溢报错
+function testDecUnderflow() public {
+    // 1. 告诉 VM：接下来的操作会报 arithmeticError
+    vm.expectRevert(stdError.arithmeticError);
+    // 2. 执行会触发错误的逻辑 (0 - 1)
+    counter.dec();
+}
+```
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 这是一个详细展开的 Notion 风格知识点讲解，基于 _Web2 to Web3 - Week 2_ 的课程内容整理。
 
 * * *
@@ -302,6 +434,7 @@ function withdraw() public onlyOwner {
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 这份《中文文案排版指北》非常实用，它能显著提升文档的专业感和可读性。我已经为你将核心知识点整理成了 **Notion 友好的 Markdown 格式**。
 
 你可以直接复制下方内容，在 Notion 中新建页面后粘贴，它会自动识别标题、列表、表格和引用块。
@@ -443,6 +576,7 @@ function withdraw() public onlyOwner {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 这是一个基于您上传的《021学习以太坊》开源教材整理的完整知识点梳理。
@@ -783,6 +917,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
 
 * * *
@@ -994,6 +1129,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -1139,6 +1275,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1413,6 +1550,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -1637,6 +1775,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -1753,6 +1892,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1897,6 +2037,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 
 
+
 # Web3 安全与合规：知识图谱
 
 * * *
@@ -2029,6 +2170,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
