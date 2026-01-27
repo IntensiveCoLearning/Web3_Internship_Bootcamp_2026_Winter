@@ -15,8 +15,204 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+**本地节点交互学习笔记**
+
+**Foundry & Hardhat 篇（学习笔记版）**
+
+* * *
+
+## 一、核心目标
+
+-   理解什么是 **本地区块链节点**
+    
+-   掌握 **合约部署 → 合约交互** 的完整流程
+    
+-   分清 **Foundry** 与 **Hardhat** 的定位与使用场景
+    
+
+* * *
+
+## 二、核心概念总览（先记住）
+
+-   **区块链 ≈ 状态机 + RPC 服务**
+    
+-   **合约部署 = 一笔交易**
+    
+-   **读取状态（call）≠ 修改状态（send）**
+    
+-   **私钥 = 交易签名权**
+    
+
+* * *
+
+## 三、Foundry 学习笔记
+
+### 1️⃣ Foundry 工具链结构
+
+| 工具 | 本质 | 作用 |
+| --- | --- | --- |
+| Anvil | 本地节点 | 启动本地区块链 |
+| Forge | 构建工具 | 编译 / 部署合约 |
+| Cast | 交互工具 | 直接与合约通信 |
+
+一句话理解：  
+👉 **Foundry = 命令行直连区块链底层**
+
+* * *
+
+### 2️⃣ Foundry 项目结构速记
+
+-   `src/`：Solidity 合约
+    
+-   `test/`：合约测试
+    
+-   `script/`：部署脚本
+    
+-   `foundry.toml`：项目配置核心
+    
+
+* * *
+
+### 3️⃣ 本地链交互流程（Foundry）
+
+**标准流程：**
+
+1.  `anvil`
+    
+    -   启动本地链
+        
+    -   自动生成高余额账号 + 私钥
+        
+2.  `forge create`
+    
+    -   使用私钥签名
+        
+    -   把合约部署到本地链
+        
+3.  `cast call / cast send`
+    
+    -   与合约进行读 / 写交互
+        
+
+* * *
+
+### 4️⃣ Call vs Send（重点）
+
+| 操作 | 命令 | 是否上链 | 是否需要私钥 |
+| --- | --- | --- | --- |
+| 读状态 | cast call | ❌ | ❌ |
+| 写状态 | cast send | ✅ | ✅ |
+
+记忆口诀：
+
+> **只读不花钱，写链要签名**
+
+* * *
+
+### 5️⃣ Foundry 的价值总结
+
+-   非常贴近以太坊底层
+    
+-   强制你理解：
+    
+    -   交易
+        
+    -   Gas
+        
+    -   私钥
+        
+    -   RPC
+        
+-   适合：
+    
+    -   合约开发
+        
+    -   安全研究
+        
+    -   原理学习
+        
+
+* * *
+
+## 四、Hardhat 学习笔记
+
+### 1️⃣ Hardhat 定位
+
+-   基于 **JavaScript**
+    
+-   偏工程化、偏 DApp 项目
+    
+-   与前端技术栈（ethers.js）高度一致
+    
+
+一句话：  
+👉 **Hardhat = 用 JS 操作区块链**
+
+* * *
+
+### 2️⃣ Hardhat 三大组件
+
+| 组件 | 作用 |
+| --- | --- |
+| Hardhat Network | 本地节点 |
+| Scripts | JS 自动化部署 |
+| Console | JS 实时交互 |
+
+* * *
+
+### 3️⃣ Hardhat 标准流程
+
+1.  `npx hardhat node`  
+    → 启动本地链
+    
+2.  编写 Solidity 合约
+    
+3.  `npx hardhat compile`  
+    → 编译
+    
+4.  运行 JS 部署脚本  
+    → 部署到本地链
+    
+5.  `npx hardhat console`  
+    → JS 方式交互合约
+    
+
+* * *
+
+### 4️⃣ Console 的核心意义
+
+-   可直接 `await 合约函数`
+    
+-   返回值为 JS 可处理对象（BigInt）
+    
+-   与前端调用方式几乎一致
+    
+
+👉 本质上是 **前端调用合约的预演环境**
+
+* * *
+
+## 五、Foundry vs Hardhat 对比速记
+
+| 维度 | Foundry | Hardhat |
+| --- | --- | --- |
+| 使用语言 | Solidity / CLI | JavaScript |
+| 风格 | 极客 / 底层 | 工程 / 产品 |
+| 交互方式 | 命令行 | JS 脚本 |
+| 适合人群 | 合约 / 安全 | 前端 / 全 |
+
+> **先 Foundry，后 Hardhat**
+
+-   Foundry：理解链的运行逻辑
+    
+-   Hardhat：理解项目如何工程化落地
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 **黑客松和 Vibe Coding（AI 辅助编程）**
 
 -   团队配置建议：3-4人团队（2个开发+1个产品+1个PM），PM在演示时非常重要
@@ -56,6 +252,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 # Solidity 基础学习与 Gas 优化总结
 
@@ -161,6 +358,7 @@ Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 **gas 优化**
@@ -302,6 +500,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -848,6 +1047,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -1170,6 +1370,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -1405,6 +1606,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -1487,6 +1689,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1688,6 +1891,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -1695,6 +1899,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1776,6 +1981,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1928,6 +2134,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2226,6 +2433,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -2289,6 +2497,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2450,6 +2659,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
