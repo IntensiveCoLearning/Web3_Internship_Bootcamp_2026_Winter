@@ -15,8 +15,199 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+````markdown
+
+Hardhat 和 Foundry 是当前最主流的两个智能合约开发框架,都致力于简化从编码、测试到部署的完整开发流程。
+
+Hardhat 基于 JavaScript/TypeScript 生态，用 js 或 ts 写测试，依赖 nodejs 环境，需要配置驱动 hardhat.config.js，将 Solidity 开发无缝融入 JavaScript 生态，特别适合全栈开发者（前端+合约）。。
+
+Foundry 基于 Rust（性能相对 nodejs 快很多），可用 Solidity 写测试，测试即合约，消除语言边界，并且约定优于配置：目录结构即配置（src/ → 合约, test/ → 测试）。
+
+## Foundry
+
+```
+┌─────────────────────────────────────────────────────┐
+│           Foundry 四大核心组件（Rust 实现）          │
+├───────────┬───────────┬───────────┬─────────────────┤
+│  forge    │   cast    │  anvil    │    chisel       │
+│ (编译/测试)│ (链交互)  │ (本地链)  │  (REPL 调试)    │
+└─────┬─────┴─────┬─────┴─────┬─────┴────────┬────────┘
+      │           │           │              │
+      ▼           ▼           ▼              ▼
+  编译合约    读写链状态   提供测试环境   快速验证逻辑
+  运行测试    发送交易     分叉主网       实时计算
+  部署合约    解码事件     模拟攻击        调试 Gas
+```
+
+### forge
+
+test/ 目录下的 .t.sol 文件本质是继承 Test.sol 的合约，控制台执行 forge test 命令会：
+
+- 编译所有合约（含测试合约）
+- 部署测试合约到本地 EVM
+- 调用以 test 开头的函数（如 testIncrement）进行测试
+- 捕获断言失败/Gas 消耗/覆盖率
+
+同时还有模糊测试内置，函数参数带 (uint256 x) 会自动运行 256 次随机输入，无需额外配置。
+
+```c
+test/Counter.t.sol
+
+pragma solidity ^0.8.20;
+import "forge-std/Test.sol";
+import "../src/Counter.sol";
+
+// 测试合约本质是普通合约 + 特殊断言库
+contract CounterTest is Test {  // Test 来自 forge-std
+    function testFuzz_Increment(uint256 start) public {
+        Counter c = new Counter();
+        c.setNumber(start);
+        c.increment();
+        assertEq(c.number(), start + 1); // 断言在 EVM 中执行
+    }
+}
+```
+
+### cast
+
+cast 无需写脚本就可以和任意 EVM 链交互
+
+```shell
+# 查询指定地址在以太坊主网上的 ETH 余额（单位：wei）
+cast balance 0x... --rpc-url https://eth.llamarpc.com
+# 调用某个合约地址的只读函数（view/pure），无需支付 Gas，不改变链上状态
+cast call 0x... "name()" --rpc-url sepolia
+# 广播交易到区块链，调用可修改状态的函数（如转账），需支付 Gas，--private-key $PK是发送方私钥（极度敏感！）
+cast send 0x... "transfer(address,uint256)" 0x... 100 --private-key $PK --rpc-url sepolia
+```
+
+cast 本质是 命令行版的 Web3.js，但用 Rust 实现，速度极快且无 JS 依赖。
+
+### anvil
+
+快速启动本地以太坊节点
+
+- anvil --fork-url https://eth.llamarpc.com 瞬间复制主网状态，测试真实合约交互
+- 启动即提供 10 个带 10,000 ETH 的测试账户（私钥固定，方便调试）
+- 测试中用 vm.warp(timestamp) 操控区块时间（无需重启节点）
+
+### chisel
+
+REPL（Read-Eval-Print Loop）环境，实时验证 Solidity 逻辑
+
+```shell
+chisel
+>> uint256 x = 100
+>> x * 2
+200
+>> address(this).balance  # 查看当前合约余额
+0
+```
+
+## hardhat
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│          Hardhat 核心架构（Node.js + 插件系统）               │
+├──────────────┬──────────────┬──────────────┬─────────────────┤
+│  Hardhat     │ Hardhat      │  插件系统     │  开发者工具链    │
+│  Core        │  Network     │ (Plugins)    │ (VS Code etc.)  │
+│ (任务调度)    │ (本地EVM)     │              │                 │
+└──────┬───────┴──────┬───────┴──────┬───────┴────────┬────────┘
+       │              │              │                │
+       ▼              ▼              ▼                ▼
+   编译合约      模拟区块链     扩展功能：        深度集成：
+   运行测试      捕获堆栈       部署/验证/        调试器/测试覆盖率
+   执行脚本      时间旅行       类型生成          实时错误提示
+```
+
+### Hardhat 测试（TypeScript）
+
+foundry 使用 solidity 编写测试，而 hardhat 使用 js/ts 编写测试，如：
+
+```js
+it('should transfer tokens', async () => {
+	await token.transfer(user.address, amount);
+	expect(await token.balanceOf(user.address)).to.equal(amount);
+
+	// 复杂逻辑示例：循环测试 100 次不同金额
+	for (let i = 0; i < 100; i++) {
+		await token.transfer(user.address, ethers.utils.parseEther(i.toString()));
+		// ... 验证逻辑
+	}
+});
+```
+
+### hardhat.config.ts 配置中心
+
+```js
+import { HardhatUserConfig } from 'hardhat/config';
+import '@nomicfoundation/hardhat-toolbox';
+
+const config: HardhatUserConfig = {
+	solidity: {
+		version: '0.8.20',
+		settings: {
+			optimizer: {
+				enabled: true,
+				runs: 200, // Windows 编译速度优化关键参数
+			},
+		},
+	},
+	networks: {
+		// Windows 路径注意事项：使用正斜杠避免转义问题
+		hardhat: {
+			chainId: 1337,
+			// 预设账户（Windows 开发常用）
+			accounts: [
+				{
+					privateKey:
+						'0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
+					balance: '10000000000000000000000', // 10,000 ETH
+				},
+			],
+		},
+		sepolia: {
+			url: process.env.SEPOLIA_RPC_URL || '',
+			accounts: [process.env.PRIVATE_KEY || ''],
+		},
+	},
+	// Windows 路径安全：输出目录使用正斜杠
+	paths: {
+		sources: './contracts',
+		tests: './test',
+		cache: './cache',
+		artifacts: './artifacts', // 生成的 ABI/字节码存放处
+	},
+};
+
+export default config;
+```
+
+```
+# 1. Core 编译合约（触发 solidity 任务）
+npx hardhat compile
+
+# 2. Network 启动本地链（自动触发）
+npx hardhat test  # 内部自动启动 hardhat network
+
+# 3. 插件提供能力
+- hardhat-ethers: 部署合约
+- typechain: 生成 TS 类型
+- chai-matchers: 断言事件
+- hardhat-gas-reporter: 测试时显示 Gas 消耗
+- hardhat-deploy: 部署脚本管理 + 多网络配置
+
+
+```
+````
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -128,6 +319,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -156,11 +348,13 @@ timezone: UTC+8
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -237,6 +431,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -250,6 +445,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -579,6 +775,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -660,6 +857,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -694,6 +892,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -817,6 +1016,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1004,6 +1204,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -1131,6 +1332,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -1171,6 +1373,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
