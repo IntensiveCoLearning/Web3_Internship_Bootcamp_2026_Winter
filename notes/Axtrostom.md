@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+今天在捯饬小论文实验
+
+应该是完成了吧
+
+明天再努力吧
+
+![7a16f9a07bab15a8327c196d9f8fa455.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Axtrostom/images/2026-01-27-1769520833354-7a16f9a07bab15a8327c196d9f8fa455.png)
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ### 本地节点交互教程 Hardhat 篇
 
 跑不动
@@ -152,6 +164,7 @@ forge script script/Gustbook.s.sol --rpc-url http://127.0.0.1:8545 --broadcast
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 前面这几天感觉没干什么活
 
@@ -436,6 +449,7 @@ struct Message {
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 打算先试着做一个链上留言板的Dapp
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
@@ -444,11 +458,13 @@ struct Message {
 
 
 
+
 今天还在跟 linux 打架
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -485,6 +501,7 @@ struct Message {
 
 
 
+
 今天的任务是完成 Challenge: 🎟 Tokenization
 
 * * *
@@ -492,6 +509,7 @@ struct Message {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3120,6 +3138,7 @@ contract GasGolf {
 
 
 
+
 ## Solidity基础语法
 
 ### 基础数据类型
@@ -4011,6 +4030,7 @@ contract DataLocations {
 
 
 
+
 1.  ### 基础交易与 Gas 费机制 (Basic Transactions & Gas)
     
 
@@ -4109,6 +4129,7 @@ contract DataLocations {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -4506,6 +4527,7 @@ Austin 展示了极简版的 Solidity 代码，对比了同质化代币（Fungib
 
 
 
+
 ## Unphishable 钓鱼攻防挑战
 
 第一章测试是安装小狐狸
@@ -4612,6 +4634,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4787,6 +4810,7 @@ For 8,888 ERC-20: [app.un1swap.org](http://app.un1swap.org) (UNI)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5294,6 +5318,7 @@ impl<'a> ImportantExcerpt<'a> {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -6244,6 +6269,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
