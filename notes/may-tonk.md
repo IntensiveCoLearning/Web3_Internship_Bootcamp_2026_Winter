@@ -15,8 +15,297 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# 一、为什么不用 Subgraph 会崩
+
+我们先假设一个**非常真实的 DApp 场景**：
+
+> 你做了一个 NFT / DeFi / 订单类 DApp  
+> 前端要展示：
+> 
+> -   用户历史操作
+>     
+> -   最近 50 笔交易
+>     
+> -   某个池子的 TVL 变化
+>     
+> -   排行榜 / 统计数据
+>     
+
+* * *
+
+## 1️⃣ 不用 Subgraph，你只能怎么做？
+
+### 方式 A：疯狂 call 合约（❌）
+
+```
+for (let i = 0; i < orderCount; i++) {
+  const order = await contract.orders(i);
+}
+```
+
+问题：
+
+-   ❌ 只能顺序读
+    
+-   ❌ Gas 贵（链下也慢）
+    
+-   ❌ orderCount 一大直接爆炸
+    
+-   ❌ RPC 很容易 rate limit
+    
+
+> **链不是数据库，不能遍历**
+
+* * *
+
+### 方式 B：扫区块 + 解析 Event（半死不活）
+
+```
+provider.getLogs({
+  address: contractAddress,
+  topics: [...]
+});
+```
+
+问题：
+
+-   要自己维护 fromBlock
+    
+-   页面加载慢
+    
+-   RPC 压力极大
+    
+-   不同 RPC 返回结果不稳定
+    
+-   前端代码极其复杂
+    
+
+👉 **这是“用浏览器当数据库”**
+
+* * *
+
+## 2️⃣ 现实后果（你迟早会遇到）
+
+-   页面加载 10 秒+
+    
+-   用户刷新就丢状态
+    
+-   RPC 被封
+    
+-   无法做统计 / 排行
+    
+-   你自己都调不下去
+    
+
+* * *
+
+# 二、Subgraph 本质是什么？
+
+## 一句话本质
+
+> **Subgraph = 把链上 Event 变成「可查询数据库」**
+
+* * *
+
+## Subgraph 在系统里的位置
+
+```
+用户操作
+   ↓
+智能合约
+   ↓
+Event（日志）
+   ↓
+Subgraph Indexer（索引）
+   ↓
+结构化数据（Entity）
+   ↓
+GraphQL 查询
+   ↓
+前端
+```
+
+⚠️ 注意一句非常关键的话：
+
+> **Subgraph 不读 storage，只吃 Event**
+
+* * *
+
+# 三、Subgraph 是怎么“工作的”
+
+这里是**理解 Subgraph 的关键**。
+
+* * *
+
+## 1️⃣ Event 是输入源（必须）
+
+你的合约里必须有：
+
+```
+event OrderCreated(
+  uint256 indexed orderId,
+  address indexed user,
+  uint256 price
+);
+```
+
+否则：
+
+-   ❌ Subgraph 无法索引
+    
+-   ❌ 数据无法重建
+    
+-   ❌ 历史无法追溯
+    
+
+* * *
+
+## 2️⃣ Indexer 在做什么？
+
+Indexer 本质是一个**持续运行的监听程序**：
+
+-   从起始区块开始
+    
+-   顺序处理每一个区块
+    
+-   找到匹配的 Event
+    
+-   调用你写的 `mapping.ts`
+    
+-   把数据写入数据库
+    
+
+⚠️ 注意：
+
+-   **它是确定性的**
+    
+-   **不是实时 WebSocket，而是“区块级处理”**
+    
+
+* * *
+
+## 3️⃣ mapping.ts 是“翻译器”
+
+这是 Subgraph 的灵魂。
+
+### 示例（概念级）
+
+```
+export function handleOrderCreated(event: OrderCreated): void {
+  let order = new Order(event.params.orderId.toString());
+  order.user = event.params.user;
+  order.price = event.params.price;
+  order.timestamp = event.block.timestamp;
+  order.save();
+}
+```
+
+这段代码的意思是：
+
+> “当监听到 OrderCreated 事件，就在数据库里存一条 Order”
+
+* * *
+
+## 4️⃣ Entity = 数据表
+
+```
+type Order @entity {
+  id: ID!
+  user: Bytes!
+  price: BigInt!
+  timestamp: BigInt!
+}
+```
+
+你可以把它 **100% 当成数据库表结构**。
+
+* * *
+
+# 四、GraphQL：为什么 Subgraph 查询这么爽
+
+## 1️⃣ GraphQL ≠ SQL，但思想一致
+
+### 示例查询
+
+```
+{
+  orders(
+    where: { user: "0xabc..." }
+    orderBy: timestamp
+    orderDirection: desc
+    first: 10
+  ) {
+    price
+    timestamp
+  }
+}
+```
+
+你立刻能做到：
+
+-   条件过滤
+    
+-   排序
+    
+-   分页
+    
+-   关联查询
+    
+
+👉 **这些用 RPC 几乎不可能优雅完成**
+
+* * *
+
+## 2️⃣ Subgraph 是“为前端而生”的
+
+前端只关心：
+
+-   我要什么字段
+    
+-   我要多少条
+    
+-   我要什么顺序
+    
+
+Subgraph 刚好完美匹配。
+
+* * *
+
+# 五、Subgraph 能做，而 RPC 做不了的事情
+
+| 能力 | RPC | Subgraph |
+| --- | --- | --- |
+| 历史数据 | ❌ | ✅ |
+| 排序 | ❌ | ✅ |
+| 分页 | ❌ | ✅ |
+| 统计 | ❌ | ✅ |
+| 关系查询 | ❌ | ✅ |
+| 稳定性 | ❌ | ✅ |
+
+一句话总结：
+
+> **RPC 是“执行合约”，Subgraph 是“读业务数据”**
+
+* * *
+
+# 六、你在 DApp 中的正确分工
+
+：
+
+| 层 | 用什么 |
+| --- | --- |
+| 合约判断 | storage |
+| 合约行为 | event |
+| 历史 / 列表 | Subgraph |
+| UI 展示 | GraphQL |
+| 实时提示 | event.on |
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -211,6 +500,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 * * *
 
@@ -563,6 +853,7 @@ uint32  blockTimestampLast;
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -820,6 +1111,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1184,6 +1476,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -1504,6 +1797,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -1750,6 +2044,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2040,6 +2335,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -2188,6 +2484,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2544,6 +2841,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -2876,6 +3174,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -2979,6 +3278,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3132,6 +3432,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -3463,6 +3764,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -3565,6 +3867,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
