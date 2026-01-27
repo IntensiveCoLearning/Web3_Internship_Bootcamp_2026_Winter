@@ -15,8 +15,179 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+### Unexpected Ether Transfer (Forcing Feeding)
+
+一个合约被转ETH的时候，EVM会按固定优先级决定先调用receive（）还是fallback(),否则直接revert
+
+![image.png](attachment:7cf058ed-e26a-46c9-8d07-edea0efdb0fe:image.png)
+
+被攻击的案例
+
+```jsx
+pragma solidity ^0.8.13;
+
+contract Vulnerable {
+    receive() external payable {
+        revert();
+    }
+
+    function somethingBad() external {
+        require(address(this).balance > 0);
+        // Do something bad
+    }
+}
+```
+
+**自毁**
+
+Solidity 层的“收款控制”≠ EVM 层的“余额控制”
+
+`SELFDESTRUCT` 是一种 EVM 级的强制转账机制，它可以在不执行任何 Solidity 接收逻辑的情况下改变合约余额，因此所有“基于余额的安全假设”都是不可靠的。
+
+**Pre-calculated Deployment**
+
+用 `CREATE` 部署合约时，合约地址 = 由部署者地址 + 当时的 nonce 决定的确定性结果，所以在合约真正部署之前，这个地址就已经是“已知的”
+
+攻击者可以在部署完成之前向地址发送资金
+
+**总结：**
+
+上述结果表明，仅仅依靠与合约中以太币余额的精确比较是不可靠的。智能合约的业务逻辑必须考虑到，与其相关的实际余额可能高于内部会计记录的值。
+
+**一般来说，不建议使用合约余额作为保障措施。**
+
+![image.png](attachment:b48d7e8f-c37d-4076-b07c-19cb3856097e:image.png)
+
+### Unprotected Swaps
+
+```jsx
+IUniswapRouterV2(ROUTER).swapExactTokensForTokens(
+    toSwap,
+    0,
+    path,
+    address(this),
+    now
+);
+```
+
+在此代码片段中，第二个参数 `<output_token>` amountOutMin `指定交易者预期收到的最小输出代币数量。当 <output_token>amountOutMin设置为 0时0`，无论输出数量多少，交易都可以继续进行，从而有效地容忍无限滑点.
+
+**对于滑点的理解**
+
+前端根据当前池子价格算出「预计能拿到多少 token」，用户设置“可接受滑点 %”，前端把它换算成amountOutMin，合约只保证：最终收到的数量 ≥ 这个最小值。
+
+当amountOutMin = 0时，你放弃了对“最差成交结果”的任何保护，合约允许你用既定输入金额，换取任意少的输出数量（趋近于 0）,等价于“以无限差的成交价格完成交易”。
+
+```jsx
+ISwapRouter.ExactInputSingleParams memory params = ISwapRouter.ExactInputSingleParams({
+ tokenIn: inToken,//换钱的token
+ tokenOut: getTokenisedAddr(_outToken),//目标token
+ fee: 3000,//Uniswap V3特有概念 3000=0.3% fee pool
+ recipient: address(this),
+ deadline: block.timestamp + 60,
+ amountIn: _amount - swapFee,
+ amountOutMinimum: 0 //最小接受的swaptoken
+ });
+```
+
+这个是在Uniswap V3中的一个严重的风险
+
+因为V3：
+
+-   集中流动性
+    
+-   非连续价格区间
+    
+-   可以被推到极端tick
+    
+
+**漏洞利用场景**
+
+前情提要：
+
+**Uniswap 的核心公式：恒定乘积**
+
+Uniswap 使用 **x × y = k** 公式（恒定乘积做市商模型）
+
+x = 池中 A 代币数量
+
+y = 池中 Y 代币数量
+
+k = 常数（池子创建时确定）
+
+**关键理解：池子里某个币越少，它就越贵**
+
+以下示例说明了攻击者如何利用在两个代币 A 和 Y 之间交换抵押品的协议：
+
+攻击者可以通过以下步骤利用协议漏洞：首先，使用 10 个 A 代币作为抵押品开设一个抵押债务头寸 (CDP)，并铸造 100 个 Y 代币。然后，攻击者利用协议缺乏滑点保护的漏洞，触发协议在 A/Y 池中执行人为操纵的互换操作，从而实现价格的无限波动。攻击者利用闪电贷和其他价格操纵手段，人为地抬高或压低 A 代币的价格，最终耗尽 A 代币池的流动性。结果，由于无法收回足够的抵押品，协议将背负大量坏账；而攻击者则出售铸造的 Y 代币获利，协议及其用户则承担损失。
+
+这种攻击会对协议造成严重损害，直接给协议或其用户带来损失
+
+**实际：质押并不会出现这种情况**
+
+真实的DeFi协议如何解决?
+
+方案1: 时间加权平均价格 (TWAP)
+
+不用瞬时价格,而是用过去一段时间的平均价格
+
+\`例如:
+
+-   不看"现在这一秒" A=50Y
+    
+-   而看"过去1小时平均" A=10Y
+    
+
+攻击者用闪电贷瞬间拉高价格 → 但平均价格只变化一点点 → 攻击失败\`
+
+代表项目: Uniswap V2/V3 的 TWAP 预言机
+
+方案2: 多数据源聚合预言机
+
+从多个地方获取价格,取中位数
+
+\`Chainlink 预言机:
+
+-   从 Binance 获取价格: 1A = 10Y
+    
+-   从 Coinbase 获取: 1A = 10.1Y
+    
+-   从 Uniswap 获取: 1A = 50Y (被操纵)
+    
+-   取中位数: 1A ≈ 10Y
+    
+
+攻击者只操纵了一个池子 → 中位数不受影响 → 攻击失败\`
+
+代表项目: Chainlink, Band Protocol
+
+方案3: 深度检查 + 滑点限制
+
+设置交易的最大价格波动范围
+
+\`协议规则: "如果价格变动超过5%,交易失败"
+
+攻击者拉高价格50倍 → 协议拒绝执行 → 攻击失败\`
+
+**缓解措施**
+
+一个稳健的解决方案涉及一个两步交易流程，即提交-显示方案：
+
+1.  提交阶段：用户提交对其交易详情（例如，资产对、金额和滑点容忍度）的加密承诺。这可以保护关键信息免受攻击者的侵害。
+    
+2.  揭示阶段：在提交阶段完成后，用户披露交易详情，交易执行。
+    
+
+这种机制使得攻击者更难预测和利用交易，从而缓解了基于夹层和滑点的攻击。
+
+此外，协议还可以实施进一步的缓解措施来增强安全性。**动态滑点限制**可以根据市场状况和交易规模调整容忍度，从而降低波动市场中的脆弱性。使用**时间加权平均价格 (TWAP)数据有助于抵消短期价格操纵，确保更准确的定价。通过 MEV 保护的内存池等解决方案实现的私密交易**，可以在交易被打包到区块之前隐藏交易详情，防止攻击者提前锁定交易。最后，**流动性分析**可确保交易池保持充足的流动性，最大限度地减少大额交易对价格的影响，并降低操纵风险。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -41,6 +212,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 ### **Signature—related attacks**
 
@@ -174,6 +346,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -258,11 +431,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -302,6 +477,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -349,6 +525,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -517,6 +694,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -710,6 +888,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -727,6 +906,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -971,6 +1151,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -1107,6 +1288,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
