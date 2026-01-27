@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+學習如何創建NFT
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 學習了NFT
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 繼續學習我的第二層
 <!-- DAILY_CHECKIN_2026-01-23_END -->
@@ -30,11 +37,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 繼續學習歡迎來到我的第二層
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -47,11 +56,13 @@ timezone: UTC+8
 
 
 
+
 學習了**歡迎來到我的第二層**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -68,11 +79,13 @@ timezone: UTC+8
 
 
 
+
 學習了**行业前辈访谈录**
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -93,11 +106,13 @@ timezone: UTC+8
 
 
 
+
 學習了智能合約開發
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -122,11 +137,13 @@ timezone: UTC+8
 
 
 
+
 讀了行業賽道全覽，最讓我震驚的是DAO(去中心化自治組織)，沒想到可以集結全世界各地人籌資，去購買一份美國憲法副本，展現了區塊鏈背後的核心，不會受限於地區、人種、是否有資格，只要有一個錢包將資產發給DAO，就可以參與這起事件；不再是由中心化組織因各種理由拒絕你交易等
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
