@@ -15,8 +15,51 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+**投研基础框架建立**
+
+_什么是投研？_
+
+-   研究项目的基本面：技术/团队/社区
+    
+-   研究项目背景：了解行业/赛道/竞争格局
+    
+-   研究经济模型：分析代币供应/分配/效用
+    
+
+_投研的本质_
+
+主流币不需要投研，只针对山寨币以下的资产需要（流动性外溢效应）
+
+-   深度挖掘
+    
+-   精准评估
+    
+-   时机把握
+    
+
+_当前市场的现状_：山寨币市场市值越来越低，其根本原因在于流动性不足
+
+_流动性不足的原因_
+
+-   资金谨慎
+    
+-   市场存量信心受挫
+    
+-   资金避险情绪浓厚
+    
+
+_未来的机会_
+
+-   量化宽松
+    
+-   技术创新
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 **Speedrun Basic workshop**
 
 _如何设计智能合约以应对潜在的恶意行为，并确保参与者的资金安全？_
@@ -64,6 +107,7 @@ _以太坊协议中如何管理借贷的抵押品以确保资金安全？_
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 **DApp：去中心化应用&逻辑和未来**
 
@@ -162,6 +206,7 @@ _核心写入交互流程_
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
 
+
 **Uniswap工作原理解析**
 
 _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
@@ -197,6 +242,7 @@ _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
 
 
 
+
 **Solidity walk through**
 
 **_EVM（Ethereum Virtual Machine）_**
@@ -226,6 +272,7 @@ _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -265,6 +312,7 @@ _Uniswap v2: CPMM（Constant Product Market Maker—）/恒积做市商_
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -327,6 +375,7 @@ _Gas和交易模型_
 
 
 
+
 **Agent跟web3的融合**
 
 _AI agent的结构_：the brain（LLM） --> the memory（RAG流程：抓取数据然后上下文存储） --> the tools(API调用）
@@ -378,6 +427,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **web3安全**
 
 -   精准猎杀
@@ -407,6 +457,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -471,6 +522,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 
 
+
 **行业全局介绍&岗位预览**
 
 **_行业概览_**
@@ -515,6 +567,7 @@ web3是唯一能承载高频，低频机器交易的基础设施
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
