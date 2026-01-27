@@ -15,8 +15,187 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# 一、Web2 to Web3 Week 2 Day 3
+
+本地开发环境 + 智能合约编写。
+
+## 1.以太坊客户端 & GETH 节点
+
+**以太坊客户端多样性：**
+
+GETH (Go)、Nethermind (C#)、Besu (Java)、Erigon (Rust) 等。
+
+**GETH 节点的好处：**
+
+隐私、更快读数据、无限查询、不依赖第三方 RPC。
+
+**安装 GETH:**
+
+`brew install ethereum` (macOS)
+
+Windows可以直接傻瓜式安装
+
+**启动命令：**
+
+```
+geth --http --syncmode light   # 轻节点，快速启动，几GB存储
+# 或
+geth --http --syncmode full    # 全节点，完整状态，数百GB，资源消耗大
+```
+
+**启用 HTTP RPC**：
+
+默认端口 8545
+
+## 2.本地节点
+
+Infura 等公共 RPC 有限制（rate limit），本地节点无限制。
+
+## 3.Hardhat ⭐
+
+现代 Solidity 开发框架（类似 Truffle，但更强大）。
+
+安装 & 初始化项目：
+
+```
+mkdir hardhat-greeter && cd hardhat-greeter
+npm init -y
+npx hardhat    
+```
+
+启动本地 Hardhat 节点：
+
+```
+npx hardhat node
+```
+
+开始会有点流水账~
+
+## 4.用 ethers.js 连接本地 Hardhat 节点 & 发送 ETH
+
+修改 utils.js 或新建脚本：
+
+```
+const localProvider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545");
+const signer = localProvider.getSigner(0);  
+```
+
+## 5.编写 Solidity 合约
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Greeter {
+    string private greeting;
+
+    constructor(string memory _greeting) {
+        greeting = _greeting;
+    }
+
+    function greet() public view returns (string memory) {
+        return greeting;
+    }
+
+    function setGreeting(string memory _greeting) public {
+        greeting = _greeting;
+    }
+}
+```
+
+```
+编译：
+npx hardhat compile
+```
+
+部署脚本：
+
+```
+async function main() {
+  const Greeter = await hre.ethers.getContractFactory("Greeter");
+  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  await greeter.deployed();
+  console.log("Greeter deployed to:", greeter.address);
+
+  console.log("Greeting:", await greeter.greet());
+  await greeter.setGreeting("Hola!");
+  console.log("New Greeting:", await greeter.greet());
+}
+
+main().catch(console.error);
+```
+
+运行：
+
+```
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+编写 & 运行 Hardhat 测试：
+
+```
+const { expect } = require("chai");
+
+describe("Greeter", function () {
+  it("Should return the new greeting once it's changed", async function () {
+    const Greeter = await ethers.getContractFactory("Greeter");
+    const greeter = await Greeter.deploy("Hello, world!");
+    await greeter.deployed();
+
+    expect(await greeter.greet()).to.equal("Hello, world!");
+
+    const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
+    await setGreetingTx.wait();
+
+    expect(await greeter.greet()).to.equal("Hola, mundo!");
+  });
+});
+```
+
+运行测试：
+
+```
+npx hardhat test
+```
+
+配置 hardhat.config.js：
+
+```
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
+
+module.exports = {
+  solidity: "0.8.20",
+  networks: {
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.INFURA_KEY}`,
+      accounts: [process.env.PRIVATE_KEY]
+    }
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_KEY
+  }
+};
+```
+
+部署:
+
+```
+npx hardhat run scripts/deploy.js --network sepolia
+```
+
+验证合约：
+
+```
+npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
+```
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -89,6 +268,7 @@ async function mintNFT() {
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 # 一、Web2 to Web3 Week 2 Day 1
 
 由于本期几乎全程live coding，可能笔记不多。
@@ -150,6 +330,7 @@ Provider 是区块链的“只读接口”。
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -194,6 +375,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -259,6 +441,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -330,6 +513,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -393,6 +577,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -524,6 +709,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -786,6 +972,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -901,6 +1088,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1082,6 +1270,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -1198,6 +1387,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -1267,6 +1457,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1388,6 +1579,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1619,6 +1811,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
