@@ -19,13 +19,31 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+### [**对于初学者：**](https://web3intern.xyz/zh/industry-knowledge/#%E5%AF%B9%E4%BA%8E%E5%88%9D%E5%AD%A6%E8%80%85)
+
+1.  **基础优先**：深入理解 DeFi 核心概念，而非追逐最新热点
+    
+2.  **实践学习**：在测试网上体验各种协议，理解用户流程
+    
+3.  **安全意识**：了解常见攻击向量和防护措施
+    
+
+-   **研究报告**：Messari、The Block、Delphi Digital
+    
+-   **播客节目**：Bankless、ETHPanda Talk
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 补
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 补
 
@@ -36,11 +54,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-20_START -->
 
 
+
 补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -65,6 +85,7 @@ timezone: UTC+8
 
 
 
+
 **AI 及其基础概念**
 
 **基础设施缺口：身份与信任的危机**
@@ -78,6 +99,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -162,6 +184,7 @@ goplus 安全社区
 
 
 
+
 **「Web3 运行原理」**
 
 **智能合约 = 区块链账本里的“可执行代码”**
@@ -181,6 +204,7 @@ goplus 安全社区
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
