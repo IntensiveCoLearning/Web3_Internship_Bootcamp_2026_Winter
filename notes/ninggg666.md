@@ -15,13 +15,22 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+再次更深入了解以太坊！
+
+![Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ninggg666/images/2026-01-27-1769529116868-Map.png)
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 補漏！
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 # DAO
 
@@ -68,6 +77,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 -   繼續複習上一週影片
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
@@ -76,11 +86,13 @@ timezone: UTC+8
 
 
 
+
 繼續學習熟悉運營內容，複習影片
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -113,6 +125,7 @@ Twitter Space SOP：T-5 定主題+邀嘉賓+做宣傳 → 當天控場 → 活�
 
 
 
+
 複習本週所輸入的相關資訊和知識，開始對於 Web3 的概念更清晰，什麼是「錢包」、「公鑰」、「私鑰」，等等名詞有了真正的認識與理解！
 
 接下來會想多一些實際操作，例如創建錢包...等等，希望透過這樣的方式加深目前吸收的內容，另外聽了 Karen 老師的分享也想開始練習輸出內容到 twitter～雖然很難但I人會努力突破自己！
@@ -128,6 +141,7 @@ Twitter Space SOP：T-5 定主題+邀嘉賓+做宣傳 → 當天控場 → 活�
 
 
 
+
 -   **安全與合規**
     
 
@@ -136,6 +150,7 @@ Twitter Space SOP：T-5 定主題+邀嘉賓+做宣傳 → 當天控場 → 活�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -192,6 +207,7 @@ Twitter Space SOP：T-5 定主題+邀嘉賓+做宣傳 → 當天控場 → 活�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -272,6 +288,7 @@ Twitter Space SOP：T-5 定主題+邀嘉賓+做宣傳 → 當天控場 → 活�
 
 
 
+
 ## **▵ 以太坊概覽**
 
 1.  以太坊是什麼？跟比特幣差在哪？
@@ -311,6 +328,7 @@ Twitter Space SOP：T-5 定主題+邀嘉賓+做宣傳 → 當天控場 → 活�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
