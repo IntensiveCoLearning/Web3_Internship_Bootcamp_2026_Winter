@@ -21,8 +21,86 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# 合约安全
+
+## **重入攻击 Reentrancy**
+
+**原因：**利用外部合约在 fallback 中重新调用原函数。
+
+**解决：**防护方法：先更新状态，再转账。
+
+```
+// ❌ 有漏洞
+function withdraw() public {
+    require(balance[msg.sender] > 0);
+    (bool sent,) = msg.sender.call{value: balance[msg.sender]}("");
+    require(sent);
+    balance[msg.sender] = 0;
+}
+
+// ✅ 修复后
+function withdraw() public {
+    uint256 amount = balance[msg.sender];
+    balance[msg.sender] = 0; // 先更新状态
+    (bool sent,) = msg.sender.call{value: amount}("");
+    require(sent);
+}
+```
+
+## **预言机操纵 Oracle Manipulation**
+
+**原因：** 依赖外部价格源的不可信更新。
+
+**解决：**
+
+-   使用 Chainlink 等权威价格源。
+    
+-   增加时序约束和多源验证。
+    
+-   使用 TWAP 等加权算法。
+    
+
+## **整数溢出/下溢**
+
+-   使用 `unchecked {}` 时需确保逻辑安全。
+    
+
+```
+// 这个减法将在下溢时被包起来。
+ unchecked { return a - b; }
+```
+
+-   推荐使用Solidity 0.8+ 的内建溢出检查或 `SafeMath`。
+    
+
+```
+using SafeMath for uint256;
+```
+
+## **权限控制缺失**
+
+-   所有管理函数应使用 `onlyOwner` 或 `AccessControl` 修饰符保护。
+    
+
+## **未初始化代理**
+
+-   基于代理模式的合约若未正确执行初始化函数，可能被任意人初始化并接管合约。
+    
+-   著名的例子包括 Harvest Finance 其在使用 Uniswap V3 做市策略的 Vault 合约中存在未初始化漏洞，如果被利用攻击者可销毁实现合约。该团队曾为此漏洞支付高额赏金修复。
+    
+
+## **前置交易/三明治攻击**
+
+-   攻击者在交易执行前后分别发送交易，以不利滑点或套利为目的。
+    
+-   例如 2025 年 3 月，一名用户在 Uniswap V3 的稳定币兑换中遭遇三明治攻击，约 21.5 万美元的 USDC 兑换几乎被抢跑，损失了 98% 的资金
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## 什么是投研？
 
 -   研究项目基本面
@@ -80,6 +158,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 # Foundry
 
 以命令行为主的Web3开发神器
@@ -123,6 +202,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -172,6 +252,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 
 
+
 # **零知识证明**
 
 ## **区块链投票**
@@ -216,6 +297,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -306,6 +388,7 @@ Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
 
 
 
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -363,6 +446,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -396,6 +480,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -476,6 +561,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -504,6 +590,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -587,6 +674,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -616,6 +704,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -726,6 +815,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -777,6 +867,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -868,6 +959,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
