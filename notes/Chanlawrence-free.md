@@ -15,8 +15,268 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## Introduction｜今天完成了什么 (Overview)
+
+你今天的成果可以拆成 3 条主线（three tracks）：
+
+1.  **宣发海报设计（Promo Poster Design）**：完成了活动/项目宣发海报的视觉输出。
+    
+2.  **小组讨论赛道与方向（Track Ideation Discussion）**：围绕黑客松三个指定赛道，讨论最基础但可落地的项目想法。
+    
+3.  **写出一个“极强可执行的 Prompt”（Execution-ready Prompt）**：核心目标是让 AI 输出 **2–3 天内可做出 Demo 的项目 idea**，并且每个 idea 必须有完整**逻辑闭环（logic loop）+ 产品闭环（growth loop）**，哪怕是“伪需求（pseudo-demand）”也没问题，只要**评委一眼懂、能演示、能交付**。
+    
+
+此外，你还补充了一条现实进展：
+
+-   你用 **Google AI Studio** 做了一个小 demo（mini demo / prototype），说明你们具备最小 AI 工作流跑通的能力（minimum AI workflow capability）。
+    
+
+* * *
+
+## Foundations｜基础篇：你的团队背景与目标边界 (Team Context & Constraints)
+
+你写得非常明确：团队不是“高端开发者（advanced devs）”，时间也很紧（tight timeline）。因此你要的不是“改变世界的刚需”，而是：
+
+-   **低门槛（low barrier）**
+    
+-   **技术难度低（low technical complexity）**
+    
+-   **2–3 天能做出可演示 Demo（demo-able in 2–3 days）**
+    
+-   **有逻辑闭环 + 产品闭环（logic loop + product loop）**
+    
+-   **创意新颖（novelty / wow factor），评委眼前一亮（judge-friendly）**
+    
+-   **即使是好玩/伪需求也可（fun / pseudo-demand acceptable）**
+    
+
+这其实是一种非常成熟的黑客松策略（Hackathon strategy）：
+
+> **宁愿做小而完整（small but complete），不要大而空（big but vague）。**
+
+* * *
+
+## Core Concepts｜进阶篇：你这段 Prompt 的“核心要求”拆解 (Core Requirements)
+
+你列了 5 条重点要求（must-have requirements），每条都很“可验收（testable）”。
+
+### 1) 不追求完美真实需求（Don’t chase “real-world perfection”）
+
+-   你明确拒绝“我们普通人根本解决不了”的大需求（huge hard problems）。
+    
+-   要求 **想法新颖（novel）**、**年轻人脑洞（youthful creativity）**、评委看了“哇”（wow moment）。
+    
+
+### 2) 必须是完整可落地产品（Must be shippable）
+
+-   必须“看得见摸得着”（tangible）
+    
+-   有明确意义（clear meaning）
+    
+-   有完整使用逻辑和操作流程（clear user journey / flow）
+    
+-   不能做一半卡壳（no half-baked / stuck mid-way）
+    
+
+### 3) 拒绝不切实际的宏大叙事（No “save the world” fantasies）
+
+-   低门槛、易实现（easy to build）
+    
+-   普通团队短时间能搞定（small team, short time）
+    
+
+### 4) 贴合 Web3 核心特性 + 紧扣赛道（Web3-native + track-aligned）
+
+-   Web3 功能要 **简单易懂（simple & explainable）**
+    
+-   合约尽量简化（minimal smart contract）
+    
+-   必须紧扣主办方赛道要求（track compliance）
+    
+
+### 5) 每个 idea 必须“完善到可直接开工”（Detailed, actionable)
+
+你要求每个 idea 必须写清楚：
+
+-   **产品核心玩法（core gameplay / flow）**
+    
+-   **Web3 结合点（Web3 integration point）**
+    
+-   **逻辑闭环（logic loop）**
+    
+-   **产品闭环（product loop / growth loop）**
+    
+-   **实现步骤（implementation steps）**
+    
+-   **所需技术（tech stack）**
+    
+-   **演示亮点（demo highlights）**
+    
+-   **MVP 范围（MVP scope）**
+    
+-   **风险与备选方案（risks & fallback plan）**
+    
+
+这等于把“灵感”强制落到“交付工程（delivery engineering）”。
+
+* * *
+
+## Core Concepts｜进阶篇：指定赛道（Tracks）你要 AI 结合生成
+
+你要求 AI 输出时必须结合这 3 个指定赛道（specified tracks）：
+
+1.  **Kite AI - 支付（Payment Track）**
+    
+    -   核心关键词：payment / stablecoin / checkout / 收款支付 / on-chain settlement
+        
+2.  **SpoonOS - LLM 应用（LLM Application Track）**
+    
+    -   核心关键词：LLM workflow / agent / tool use / prompt pipeline / 应用链路跑通
+        
+3.  **OGBC × ScalingX - 预测市场（Prediction Market Track）**
+    
+    -   核心关键词：prediction / market / odds / outcome / 结算 / 可视化 / 轻索引
+        
+
+你同时强调：
+
+-   Web3 部分要“最小上链（minimum on-chain proof）”
+    
+-   AI 部分要“最小可用（minimum viable AI）”，只要能跑通一个 workflow/agent 链路即可。
+    
+
+* * *
+
+## Advanced Applications｜高阶篇：你规定的“输出格式模板”其实是任务拆解器 (Output Format as Task Decomposer)
+
+你要求输出**必须严格按这个格式**，这点非常关键，因为它让 AI 输出可以直接变成你们的 team task board（任务板 / backlog）。
+
+### A) 先给一个总览表（Overview Table）
+
+字段必须包含：
+
+-   **idea名称｜适配赛道｜一句话亮点｜预计完成时间（1天/2天/3天）**
+    
+
+这个表的作用是：先做 **scope estimation（范围评估）** 与优先级排序（prioritization）。
+
+### B) 每个 idea 必须包含 9 个小标题（9 Required Sections）
+
+你要求“一个都不能少”，我按你的原意列出并补充英文对照（中英穿插）：
+
+1.  **产品核心玩法（Core Gameplay）**
+    
+    -   用户打开后怎么玩，**3–6 步**写清楚（clear steps）
+        
+2.  **Web3 结合点（Minimal Web3 Hook）**
+    
+    -   最小链上功能：发 NFT / 链上记录 / 链上支付 / 查询链上数据等
+        
+    -   要求：越简单越好（keep it simple）
+        
+3.  **逻辑闭环（Logic Loop）**
+    
+    -   为什么用户会一直玩/一直用（why repeat usage happens）
+        
+4.  **产品闭环（Product Loop / Growth Loop）**
+    
+    -   从获客 → 使用 → 留存/分享 → 再回来（acquisition → activation → retention/sharing → return）
+        
+5.  **实现步骤（Implementation Checklist）**
+    
+    -   按模块拆：**前端/后端/链上/数据源/AI 模块**
+        
+    -   给到可执行清单（actionable checklist）
+        
+6.  **所需技术（Tech Stack, beginner-friendly）**
+    
+    -   你倾向：Next.js/React、钱包连接、现成 SDK、测试网、托管平台
+        
+    -   目标：新手友好（beginner-friendly）
+        
+7.  **演示亮点（Demo Highlights）**
+    
+    -   Demo Day 5 分钟怎么秀
+        
+    -   最抓眼球的 1–3 个镜头（1–3 wow shots）
+        
+8.  **最小可行版本 MVP 范围（MVP Scope）**
+    
+    -   必须做什么 / 可以不做什么（must-have vs nice-to-have）
+        
+    -   目的：避免踩坑（avoid scope creep）
+        
+9.  **风险与备选方案（Risks & Fallback Plan）**
+    
+    -   链上/支付/数据源卡住如何降级（degrade gracefully）
+        
+
+* * *
+
+## Advanced Applications｜高阶篇：额外限制（Hard Constraints）= 你们的“生存策略”
+
+你写的额外限制非常像“交付护城河（delivery guardrails）”，我逐条保留：
+
+-   每个 idea 保证 **2–3 天内能做出可演示 Demo**
+    
+-   链上部分尽量 **最小上链**：能证明用到 Web3 即可（proof-of-web3）
+    
+-   AI 部分 **最小可用**：能跑通一个 workflow/Agent 链路即可（no training / no heavy infra）
+    
+-   要“年轻人脑洞 + 可见可摸 + 有趣 + 评委一眼懂”
+    
+-   禁止抽象空谈，必须给“照着做就能做”的落地细节（no hand-wavy ideas）
+    
+
+* * *
+
+## Practical Note｜你已经做出的进展：Google AI Studio 小 Demo
+
+你最后补了一句：“用 Google AI studio 做了一个小 demo”。这句信息很重要，因为它意味着：
+
+-   你们已经完成至少一次 **prompt → model output** 的最小闭环（minimum inference loop）
+    
+-   后续只需要把这个能力“嵌入产品流程（embed into product workflow）”，就能满足 SpoonOS/LLM Track 的“最小可用 AI”要求
+    
+-   对你们这种时间紧的团队来说，这是非常关键的“确定性（certainty）”
+    
+
+* * *
+
+## Summary & Vocabulary｜关键术语回顾（中英穿插）
+
+### 一句话总结（One-liner）
+
+你今天把黑客松最关键的一步做对了：不是先做大，而是先把“**可交付的 idea 输出模板（deliverable idea template）**”写出来，强制每个想法具备 **闭环（loop）+ 可落地（buildable）+ 可演示（demo-able）**。
+
+### Vocabulary（你这段素材里的高频词）
+
+-   宣发海报：Promo Poster
+    
+-   赛道：Track
+    
+-   想法：Idea / Concept
+    
+-   可落地：Shippable / Buildable
+    
+-   逻辑闭环：Logic Loop
+    
+-   产品闭环：Product Loop / Growth Loop
+    
+-   最小上链：Minimum On-chain Proof
+    
+-   最小可用 AI：Minimum Viable AI (MVA)
+    
+-   任务拆解：Task Breakdown / Checklist
+    
+-   风险降级：Fallback / Degradation Plan
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 一、今日完成核心任务
 
 1\. 小组海报设计：成功完成组内海报设计工作，成果获得认可，个人收获强烈的成就感，进一步激发了学习与实践的动力。
@@ -48,6 +308,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 今天忙着搬家特别忙碌，没来得及好好静下心学习，晚上7点多忙完回来，第一时间跟进同步了设计相关进度，目前已经完成了GitHub头图（banner图）的设计，还有kick off的海报设计也顺利搞定。
 
 今天也有特别深的感悟和收获，选定一个行业之前一定要看清楚、了解透彻，一旦做出选择就要坚定坚守、深耕下去，不能因为累了就轻易放弃或者换来换去，既然我选择了Web3这条赛道，今后就会坚定的一直走下去。
@@ -57,6 +318,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -95,6 +357,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1:今天主要学习了figma；然后做了两个海报，
 
 2:听了Speedrun Basic wrokshop
@@ -104,6 +367,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -546,6 +810,7 @@ Backend 适合做（你原文 1~6 全保留）：
 
 
 
+
 ## Introduction｜今天学到的核心是什么 (Overview)
 
 你今天的学习可以浓缩成一句话：
@@ -837,6 +1102,7 @@ Remix VM 给你很多账户，其目的就是让你模拟多人场景（multi-ac
 
 
 
+
 今天还在啃remix的compile编译&deploy部署。
 
 * * *
@@ -1093,6 +1359,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -1247,6 +1514,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -1278,6 +1546,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -1291,6 +1560,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1353,6 +1623,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1469,6 +1740,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -1514,6 +1786,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -1530,6 +1803,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
