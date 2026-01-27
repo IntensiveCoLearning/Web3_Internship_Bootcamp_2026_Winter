@@ -15,8 +15,157 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+# 阶段二：Polymarket 链上市场与交易索引器 学习笔记
+
+## 一、目标
+
+1.  理解 Polymarket 链上日志与应用层市场的映射关系，设计链上数据定期同步流程；
+    
+2.  实现最小可用索引服务，完成 Polygon 链 Polymarket 合约数据扫描、本地存储与查询接口开发；
+    
+3.  落地工程健壮性机制，保障索引器长期稳定运行（断点续传、幂等写入、数据校验等）。
+    
+
+## 二、架构
+
+整体分为**数据源、索引流程、数据存储 / 查询层**三层，核心是实现链上原始数据到业务语义层数据的对齐转换：
+
+1.  **数据源**：主数据为 Polygon 链上 Polymarket 合约事件（OrderFilled/PositionsSplit 等），通过 RPC 接口获取；辅数据为 Polymarket Gamma API 的市场元数据，用于补充语义、简化解析，需与链上数据交叉校验；
+    
+2.  **索引流程**：市场发现→历史数据同步→日志解码处理→数据持久化，形成闭环；
+    
+3.  **查询层**：基于数据库构建 REST API，提供市场和交易的便捷查询能力。
+    
+
+## 三、核心开发任务拆解
+
+### 任务 A：Market Discovery 市场发现服务
+
+核心是从 Gamma API 拉取并校验市场信息，完成库内登记 / 更新，为交易索引做准备：
+
+1.  调用 Gamma API（/markets 或 /events/{slug}/markets）获取目标市场列表；
+    
+2.  解析提取 slug、conditionId、clobTokenIds 等核心链上参数，以及状态、描述等元数据；
+    
+3.  校验：用阶段一的算法重新计算 yes/no TokenId，核对与 API 返回的 clobTokenIds 是否一致；
+    
+4.  存储：以 conditionId 为唯一键，对 markets 表做**增改同步**（新市场插入、旧市场更新状态）；
+    
+5.  调度：设置周期任务（如每小时），定期拉取以捕获新上线市场。
+    
+
+### 任务 B：Trades Indexer 交易索引核心实现
+
+核心是实现`run_indexer(from_block, to_block)`函数，完成指定区块的交易日志解析与存储：
+
+1.  拉取日志：通过 RPC 的`eth_getLogs`，按 Polymarket Exchange 合约地址 + OrderFilled 事件签名过滤指定区块日志；
+    
+2.  解码匹配：用阶段一 TradeDecoder 解析日志，通过 tokenId 匹配数据库 markets 表，确定所属 market\_id 和 outcome（YES/NO）；遇未知 tokenId 则触发**动态市场发现**补录；
+    
+3.  数据补全：批量查询区块时间戳，补全交易时间维度信息；
+    
+4.  幂等写入：按`(tx_hash, log_index)`唯一索引，将交易数据写入 trades 表（支持批量插入、事务保证原子性）；
+    
+5.  循环同步：更新 sync\_state 表的 last\_block，从上次处理位置继续推进，实现历史数据回填 + 实时数据同步。
+    
+
+### 任务 C：查询 API 服务
+
+基于 FastAPI/Flask 等轻量框架开发，提供 2 个核心接口，做好性能与安全优化：
+
+1.  `GET /markets/{slug}`：根据市场 slug 返回详情（关联 markets 表），无匹配则返回 404；
+    
+2.  `GET /markets/{slug}/trades?limit=100&offset=0`：分页查询指定市场交易记录（关联 trades 表），支持按区块 / 时间过滤；
+    
+3.  优化：为 trades 表建立`market_id+timestamp`索引，校验入参防止 SQL 注入，可选增加热点数据缓存。
+    
+
+## 四、工程健壮性核心要点
+
+1.  **断点续传**：通过 sync\_state 表记录 last\_block，启动时从`last_block+1`开始扫描，批次处理完成后再更新同步点，避免中途失败丢失进度；
+    
+2.  **错误重试**：对 RPC 请求封装**指数退避重试**，处理超时 / 限频 / 服务端错误，合理控制请求节奏；
+    
+3.  **数据一致性**：永远以链上数据为权威，Gamma API 数据仅做补充；解析交易时动态发现未知市场，市场状态需结合链上结算事件与 API 更新交叉验证；
+    
+4.  **幂等写入**：markets 表以 conditionId 为唯一键，trades 表以`(tx_hash, log_index)`为唯一索引，避免重复处理导致数据冗余；
+    
+5.  **性能优化**：日志拉取按 10000 区块为批次拆分，交易写入采用批量插入，数据库建立查询索引，可选异步 I/O 处理多任务。
+    
+
+## 五、数据库表结构
+
+采用关系型数据库，核心设计 3 张表，字段兼顾唯一性、关联性和查询效率：
+
+1.  **markets**：存储市场基础信息，主键 id，唯一键 conditionId，核心字段 slug/yes\_token\_id/no\_token\_id/oracle/status；
+    
+2.  **trades**：存储交易记录，主键 id，外键 market\_id 关联 markets，唯一索引`(tx_hash, log_index)`，核心字段 side/outcome/price/size/timestamp；
+    
+3.  **sync\_state**：存储同步进度，主键 key（如 global\_indexer），核心字段 last\_block/updated\_at，记录最新处理区块高度。
+    
+
+## 六、验证验收规范
+
+bash
+
+```
+# 配置环境变量
+cp .env.example .env  # 填入有效RPC_URL/DB_PATH
+# 安装依赖
+pip install -r requirements.txt
+```
+
+### 分任务验证
+
+1.  **任务 A（市场发现）**：运行 demo 自动执行，验证数据库市场数据
+    
+    bash
+    
+    ```
+    python -m src.demo --tx-hash 示例交易哈希 --event-slug 目标事件slug --reset-db
+    sqlite3 ./data/demo_indexer.db "SELECT slug, condition_id FROM markets LIMIT 5;"
+    ```
+    
+2.  **任务 B（交易索引）**：指定区块 / 交易哈希索引，验证交易数据写入
+    
+    bash
+    
+    ```
+    python -m src.demo --tx-hash 0x916cad96dd5c219997638133512fd17fe7c1ce72b830157e4fd5323cf4f19946 --event-slug will-there-be-another-us-government-shutdown-by-january-31 --output ./data/demo_output.json
+    sqlite3 ./data/demo_indexer.db "SELECT tx_hash, price, size FROM trades LIMIT 10;"
+    ```
+    
+3.  **任务 C（查询 API）**：启动服务并通过 curl 测试接口
+    
+    bash
+    
+    ```
+    # 启动API服务
+    python -m src.api.server --db ./data/demo_indexer.db --port 8000
+    # 测试接口
+    curl http://127.0.0.1:8000/markets/目标市场slug
+    curl "http://127.0.0.1:8000/markets/目标市场slug/trades?limit=10&cursor=0"
+    ```
+    
+
+### 验证
+
+bash
+
+```
+# 1. 重置并索引数据
+python -m src.demo --tx-hash 示例交易哈希 --event-slug 目标事件slug --reset-db --db ./data/demo_indexer.db
+# 2. 验证库内数据量
+sqlite3 ./data/demo_indexer.db "SELECT COUNT(*) FROM markets; SELECT COUNT(*) FROM trades;"
+# 3. 启动API并测试，验证接口响应
+```
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 # Bun + Hardhat 快速开发
 
 用 Bun 替代 npm/yarn 作为包管理器，大幅提升 Hardhat 构建、部署的运行效能，开发流程更轻快。
@@ -101,6 +250,7 @@ bunx hardhat ignition deploy ignition/modules/DemoDeploy.ts --network localhost
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 # Reactive Network 学习笔记
 
@@ -212,6 +362,7 @@ forge install
 
 
 
+
 * * *
 
 # Crowdfunding DApp 部署指南（挑战1）
@@ -295,6 +446,7 @@ ps :第一次部署时间比较长，我花了26min等待，之间因为时间�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -694,6 +846,7 @@ async def main():
 
 
 
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -809,6 +962,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -862,6 +1016,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1203,6 +1358,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1605,6 +1761,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2237,6 +2394,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -2303,6 +2461,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2524,6 +2683,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -2681,6 +2841,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -2779,6 +2940,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2922,6 +3084,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
