@@ -15,8 +15,104 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## **行动**
+
+-   完成 [OGBC-Intern-Project](https://github.com/ogalias/OGBC-Intern-Project/tree/master) 的 stage 1 、stage 2
+    
+-   参与黑客松选题圆桌：怎么选题做得完、讲得清、好展示
+    
+
+## **内容**
+
+**区块链事件索引的本质问题**
+
+做完这两个项目最核心的认知是：区块链上的数据不是为查询设计的。以太坊及其兼容链（如 Polygon）的数据结构是为共识和验证优化的，而不是为业务查询优化的。这就是为什么需要索引器——把链上的事件流转换成可查询的关系型数据。
+
+Polymarket 的交易数据存储在 CTF Exchange 合约的 OrderFilled 事件中。这个事件包含 8 个参数：orderHash、maker、taker、makerAssetId、takerAssetId、makerAmountFilled、takerAmountFilled、fee。但这些原始数据对业务查询来说是不够的，你需要知道这笔交易是买 YES 还是 NO，价格是多少，对应哪个市场。
+
+**事件签名计算的细节**
+
+OrderFilled 事件的签名是 keccak256("OrderFilled(bytes32,address,address,uint256,uint256,uint256,uint256,uint256)")，结果是 0xd0a08e8c493f9c94f29311604c9de1b4e8c8d4c06bd0c789af57f2d65bfec0f6。这个签名会作为 log 的第一个 topic 出现。
+
+这里有个容易踩的坑：Solidity 的事件签名计算不包含参数名，只包含类型。而且类型必须是规范形式——uint256 不能写成 uint，bytes32 不能简写。我在验收时发现配置文件里的签名实际上是 ERC20 Approval 事件的签名（0x8c5be1e5...），这导致完全扫描不到交易。
+
+**Token ID 的语义映射**
+
+Polymarket 使用 Conditional Tokens Framework (CTF)，每个市场有两个 token：YES token 和 NO token。这两个 token 的 ID 是 256 位整数，由 collectionId 和 positionId 通过特定算法生成。
+
+关键在于：OrderFilled 事件里的 makerAssetId 和 takerAssetId 就是这些 token ID。要判断一笔交易是买 YES 还是 NO，需要：
+
+NaN.  从 Gamma API 获取市场的 yes\_token\_id 和 no\_token\_id
+      
+NaN.  将事件中的 token ID 与市场的 token ID 匹配
+      
+NaN.  根据交易方向（maker/taker）和匹配结果确定 outcome
+      
+
+这个映射关系是整个索引器的核心逻辑。如果映射错了，所有的交易数据都会标记错误的 outcome。
+
+**Polygon 的 POA 共识特殊性**
+
+Polygon 使用 Proof of Authority (POA) 共识，这导致区块头的 extraData 字段长度不是标准的 32 字节，而是 521 字节（包含验证者签名）。[Web3.py](http://Web3.py) 默认会对这个字段做严格校验，导致 web3.eth.get\_block() 调用失败。
+
+解决方案是注入 geth\_poa\_middleware：w3.middleware\_onion.inject(geth\_poa\_middleware, layer=0)
+
+这个中间件会在解析区块数据前处理 extraData 字段，使其符合标准格式。注意这个中间件的名称在不同版本的 [web3.py](http://web3.py) 中有变化——旧版本叫 ExtraDataToPOAMiddleware，新版本叫 geth\_poa\_middleware。
+
+价格计算的精度问题
+
+OrderFilled 事件中的 makerAmountFilled 和 takerAmountFilled 都是以 wei 为单位的整数（USDC 使用 6 位小数）。计算价格时需要：
+
+NaN.  将金额除以 10^6 转换为 USDC
+      
+NaN.  计算 price = takerAmount / (makerAmount + takerAmount)
+      
+NaN.  使用 Python 的 Decimal 类型避免浮点数精度问题
+      
+
+这里有个反直觉的地方：在 Polymarket 的语义中，price 表示的是 YES token 的价格。如果交易的是 NO token，需要用 1 - price 来表示 NO 的价格。但在存储时，我们直接存储计算出的原始价格，outcome 字段已经标明了是 YES 还是 NO。
+
+**Pydantic v2 的类型强制转换**
+
+FastAPI 使用 Pydantic 做数据验证。Pydantic v2 相比 v1 在类型检查上更严格——不再自动进行类型强制转换。
+
+SQLite 返回的 price 和 size 字段是 float 和 int 类型，但 API 响应模型定义的是 str 类型（为了保持精度）。Pydantic v2 会直接拒绝这种类型不匹配，抛出 validation error。
+
+解决方案是使用 field\_validator 装饰器。
+
+**Gamma API 的接口设计**
+
+Gamma API 的 /events 端点设计有个不太直观的地方：它不是 RESTful 风格的 /events/{slug}，而是 /events?slug={slug} 查询参数形式。而且返回的是数组而不是单个对象，即使 slug 是唯一的。
+
+这种设计可能是为了支持批量查询或者模糊匹配，但对于单个 slug 查询来说，需要额外处理：
+
+**数据库设计的权衡**
+
+索引器的数据库设计需要在规范化和查询性能之间权衡。我采用的方案是：
+
+-   events 表存储事件元数据（title、description）
+    
+-   markets 表存储市场配置（token IDs、oracle 地址）
+    
+-   trades 表存储交易记录，通过 market\_id 外键关联
+    
+
+trades 表上建立了多个索引：market\_id、tx\_hash、token\_id、timestamp、block\_number。这些索引覆盖了常见的查询模式：按市场查询、按交易哈希查询、按 token 查询、按时间范围查询。
+
+但这也意味着每次插入交易时都需要更新 5 个索引，写入性能会受影响。对于高频交易的市场，可能需要考虑批量插入或者异步写入。
+
+**幂等性设计**
+
+索引器需要支持重复运行而不产生重复数据。我使用 UNIQUE(tx\_hash, log\_index) 约束来保证幂等性。tx\_hash 标识交易，log\_index 标识交易中的第几个事件。这个组合在区块链上是唯一的。
+
+SQLite 的 INSERT OR IGNORE 语句可以优雅地处理重复插入，但这会静默忽略错误。更好的做法是先查询是否存在，如果存在则跳过，这样可以记录日志便于调试。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## **行动**
 
 -   完成hardhat跟练
@@ -30,6 +126,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 ## **行动**
 
@@ -149,6 +246,7 @@ Reactive Network 采用"后付费"模式——先执行，后扣费。这意味�
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 ## **行动**
 
 -   完成挑战 Challenge #0 - Tokenization
@@ -216,6 +314,7 @@ require(to != address(0)) 防止代币被转移到零地址。零地址是一个
 
 
 
+
 ## **行动**
 
 -   参与《Dapp Workshop》直播
@@ -229,6 +328,7 @@ require(to != address(0)) 防止代币被转移到零地址。零地址是一个
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -348,6 +448,7 @@ $$
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -942,6 +1043,7 @@ contract SecureBank {
 
 
 
+
 ## **行动**
 
 -   观看《分享会 - Web3 公共物品资金分配第一节课》直播
@@ -955,6 +1057,7 @@ contract SecureBank {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1010,6 +1113,7 @@ remixd -s . -u https://remix.ethereum.org
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1224,6 +1328,7 @@ $$
 
 
 
+
 ## **行动**
 
 -   观看第一周例会直播
@@ -1235,6 +1340,7 @@ $$
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1426,6 +1532,7 @@ Stripe最近也推出了针对AI代理的支付接口（Agentic Commerce Protoco
 
 
 
+
 ## **行动**
 
 1.  通读《web3实习手册》，对整体生态以及求职方向有了比较系统的理解
@@ -1512,6 +1619,7 @@ d律分析了具体的业务场景风险，包括发币融资、交易所运营�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1660,6 +1768,7 @@ Gas 不仅仅是费用，它是去中心化网络能持续运行的经济保障�
 
 
 
+
 ## **行动**
 
 -   观看“Web3 行业全局介绍 & 岗位概览“直播
@@ -1784,6 +1893,7 @@ event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, addres
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
