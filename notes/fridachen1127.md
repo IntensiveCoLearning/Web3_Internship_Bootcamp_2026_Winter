@@ -15,19 +15,29 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+了解黑客松打法
+
+做一些交易
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 测试币余额不足
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 补作业
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -40,11 +50,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 Uniswap
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -61,11 +73,13 @@ Uniswap
 
 
 
+
 在忙游戏作业
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -88,11 +102,13 @@ Uniswap
 
 
 
+
 旅游回来，狂睡，补回放，打卡
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -117,11 +133,13 @@ Uniswap
 
 
 
+
 没学，明日回归
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -154,6 +172,7 @@ ai agent视频+小宇宙牛油果烤面包ai agebt播客
 
 
 
+
 -   学习vibe coding，加入另一个训练实操
     
 -   合规直播
@@ -174,11 +193,13 @@ ai agent视频+小宇宙牛油果烤面包ai agebt播客
 
 
 
+
 ![1113notes.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fridachen1127/images/2026-01-13-1768341952160-1113notes.jpg)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
