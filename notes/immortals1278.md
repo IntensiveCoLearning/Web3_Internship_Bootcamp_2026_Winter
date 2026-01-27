@@ -15,8 +15,34 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## 合约技术
+
+### 枚举类型
+
+enum A { B, C }//用enum声明一个枚举，A是枚举的名称，他有B,C两个可能的值
+
+.pop()删除数组的最后一个元素
+
+pseudoRandom()伪随机数生成
+
+```
+function pseudoRandom() private view returns (uint256) {
+        return uint256(keccak256(abi.encodePacked(
+            block.prevrandao,
+            block.timestamp,
+            block.number,
+            msg.sender,
+            orderCounter
+        )));
+    }
+```
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## 黑客松经验分享会
 
 意义：奖金，工作经验，认识朋友，学习不同生态的技术
@@ -63,6 +89,7 @@ next.js框架前后端都能写
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 第二周总结
 
 了解了Aave-V4，去中心化借贷协议，用户可以在里面存币赚息或借贷。
@@ -76,11 +103,13 @@ next.js框架前后端都能写
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 可重入攻击源于以太坊合约调用外部合约时，状态更新与资金转出的时序错位。攻击者构造的恶意合约会在收到以太币的回调函数中，再次调用受害合约的提款函数。由于受害合约在首次转账后才更新账户余额状态，第二次调用仍会通过余额检查，导致资金被反复盗取。最有效的防御方法是使用“检查-生效-交互”模式，并在所有外部调用前完成自身状态更新。直接引入防重入锁（如OpenZeppelin的ReentrancyGuard）是简单可靠的选择，它能确保函数执行期间不被重入。同时，应谨慎使用低级别的call进行转账。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -121,6 +150,7 @@ anvil：启动本地区块链 forge：编译和部署合约 cast：和合约互�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -205,6 +235,7 @@ npm run dev
 
 
 
+
 ## 深度技术作业：
 
 ABI：json格式的接口描述，说明如何调用合约函数（函数名），如何编码或解码数据（参数，返回值）
@@ -238,6 +269,7 @@ forge script script/DeployMessageBoard.s.sol:DeployMessageBoard \`
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -288,6 +320,7 @@ forge init
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -401,6 +434,7 @@ forge init
 
 
 
+
 **1\. 核心概念**
 
 \- 新一代代币协议，融合零知识证明（ZK）与哈希算法
@@ -478,11 +512,13 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 第一周总结：了解了求职市场，找工作真的很难…不能只学写合约，还要学合约安全的部分，还要学rust。多参与链上活动如投票，贡献开源代码，建立链上声誉。 了解agent上链来帮助用户辨别选择agent，购买agent的部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -569,6 +605,7 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 一、AI的演进与核心
 
 传统AI（如早期ChatGPT）只是“高级复读机”，无状态、无工具、无身份。而未来的AI Agent将具备：
@@ -596,6 +633,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -670,6 +708,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 
 
+
 # web3运行原理
 
 ## 基础概念
@@ -717,6 +756,7 @@ EIP
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
