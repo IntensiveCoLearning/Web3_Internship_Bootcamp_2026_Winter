@@ -15,8 +15,135 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+今日重点研究了”无常损失Impermanent loss“，为正在撰写的新文章做框架规划。
+
+### 无常损失的本质，是在去中心化市场中，用确定性的算法，换取不确定性的价格风险。 —— 无常损失的自然选择
+
+**一、研究背景**
+
+在 Web3 语境下，DeFi 试图通过智能合约取代传统金融中介。AMM（如 Uniswap、Curve、Balancer）作为 DeFi 的核心基础设施，解决了去中心化交易所（DEX）的流动性问题，但其代价是将“做市风险”转移给普通用户——即 LP。
+
+无常损失正是这一风险的集中体现，也是 Web3 金融实验中“风险民主化”的典型案例。
+
+**二、无常损失的定义**
+
+**无常损失**是指：
+
+当 LP 向 AMM 资金池提供资产后，由于池内资产价格相对外部市场发生变化，导致其资产价值 **低于简单持有（HODL）同等资产的价值** 的那部分损失。
+
+关键要点：
+
+-   “无常”并非不存在，而是**在价格回到初始比例前是未实现的**
+    
+-   一旦 LP 退出池子，损失即被“实现”
+    
+-   无常损失不考虑交易手续费与额外激励
+    
+
+**本质解释（Web3 视角）**：
+
+LP 在 AMM 中扮演的是一种“自动化、无判断力、持续再平衡的做市商”。
+
+**三、数学原理与量化分析**
+
+在 50/50 AMM 中，无常损失可表示为：
+
+IL = 2 \* √P / (1 + P) - 1
+
+其中 P 为价格变化倍数。
+
+| 价格变化 | 无常损失 |
+| 1.25x | -0.6% |
+| 1.5x | -2.0% |
+| 2x | -5.7% |
+| 3x | -13.4% |
+| 5x | -25.5% |
+
+**结论**：
+
+-   价格波动越大，无常损失越严重
+    
+-   趋势性资产（ETH、SOL）天然不适合传统 AMM
+    
+
+**四、无常损失的“相对性”认知**
+
+在 Web3 实践中，无常损失并非绝对亏损，而是：
+
+**相对于“什么都不做直接持有”的机会成本损失**
+
+综合收益公式：
+
+LP 实际收益 = 交易手续费 + 激励补贴 - 无常损失
+
+因此：
+
+-   在高交易量、高手续费池中，IL 可被完全覆盖
+    
+-   在低交易量、高波动池中，IL 是主要风险来源
+    
+
+**五、行业中的主要缓解方案**
+
+**1\. 协议层创新**
+
+-   **稳定币 AMM（Curve）**：价格波动小，IL 极低
+    
+-   **集中流动性（Uniswap V3）**：提高资金效率，但引入主动管理风险
+    
+-   **动态权重池（Balancer）**：降低单边波动影响
+    
+-   **新型曲线（CLMM、DLMM）**：试图重构 IL 与效率的权衡
+    
+
+**2\. 风险对冲机制**
+
+-   IL Insurance（如 Bancor v2.1）
+    
+-   LP Token + 永续合约对冲
+    
+-   主动再平衡策略（Vault、Strategy Protocol）
+    
+
+**3\. 经济激励掩盖**
+
+-   高额 Token 激励（但存在通胀与抛压问题）
+    
+-   短期补贴换取 TVL 的“冷启动模型”
+    
+
+**八、无常损失的行业意义（Web3 宏观视角）**
+
+**1\. 对用户教育的启示**
+
+无常损失揭示了：
+
+-   DeFi 并非“无风险收益”
+    
+-   Web3 的去中心化 ≠ 风险消失，而是风险再分配
+    
+
+**2\. 对协议设计的启示**
+
+-   AMM 是“机制设计博弈”，不是金融魔法
+    
+-   未来趋势：
+    
+    -   更接近传统做市的主动化
+        
+    -   更强的风险分层与产品分级
+        
+
+**3\. 对 Web3 叙事的反思**
+
+无常损失是 DeFi 从「理想主义」走向「金融工程现实主义」的重要标志。
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ### 感谢小白老师非常掏心掏肺的投研经历分享，这对我日后的学习及求职定位起到了很大的作用。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-26-1769440441665-image.png)
@@ -24,6 +151,7 @@ timezone: UTC+8
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 **三三复制模式：**核心理念是通过招募三名下级用户来实现用户数量的几何级增长。具体来说，每个用户通过推荐三名新用户，形成一个不断扩展的网络。
@@ -44,6 +172,7 @@ timezone: UTC+8
 
 
 
+
 ## **通知：**
 
 ### **今日轮休**
@@ -55,6 +184,7 @@ timezone: UTC+8
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -85,6 +215,7 @@ timezone: UTC+8
 
 
 
+
 【挖坑+1】小孩老师你忍一下~我先把昨天的坑填了
 
 ## AMM做市商理论详解
@@ -94,6 +225,7 @@ timezone: UTC+8
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -158,6 +290,7 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 
 
+
 ![公共物品分配脑图.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-20-1768913558827-________.jpg)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
@@ -171,11 +304,13 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 
 
+
 ![运营脑图.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-19-1768830543192-____.jpg)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -273,6 +408,7 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 
 
+
 ## 通知：
 
 ### 今日轮休
@@ -282,6 +418,7 @@ Casual Hackathon（休闲黑客松）是LXDAO发起的创新型开源活动，�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -346,6 +483,7 @@ X平台经常改算法
 
 
 
+
 ## 转变：从“对话”到“行动”—— ai分享会
 
 ![1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487695452-1.jpg)![2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487716965-2.jpg)![3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487733276-3.jpg)![4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487747286-4.jpg)![5.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487762438-5.jpg)![6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Stratosphere01/images/2026-01-15-1768487780369-6.jpg)
@@ -381,6 +519,7 @@ validation registry - permissioned的agent标签
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -760,6 +899,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 ## **治理完全有效的基础只能是社会阶段提升，人民综合素质提高才可以。——co-learning1.13**
 
 本次的co-learning环节更像是一场哲思辩论会，evo swift同学与XiaoHai67890、Draken、wachi三位老师展开了关于DAO治理投票权相关的优劣争议。“无限花园的隐喻”和关怀、包容性的适应性领导力立场更有关联，和 目前 资本的攫取主义 呈现出来的是两翻景色，展示了小海老师深厚的哲学功底。
@@ -819,6 +959,7 @@ LXDAO解决方案：从第七季度开始，LXDAO不再追求治理的投票率�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
