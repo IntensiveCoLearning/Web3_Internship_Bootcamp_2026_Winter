@@ -36,11 +36,44 @@ Web3 实习计划 2025 冬季实习生
     -   **商业价值考量**：应用级别的 Demo 可提及商业规划增加商业价值；偏向技术性的项目（如对算法精进）则更多描述技术价值，不必强调商业价值。
         
 
-![4728a8795a5b2a87009fe2510bdc8e46.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769517175839-4728a8795a5b2a87009fe2510bdc8e46.jpg)
+![4728a8795a5b2a87009fe2510bdc8e46.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769517175839-4728a8795a5b2a87009fe2510bdc8e46.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769518295758-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769518541077-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769518794799-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769519005441-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769519345353-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-27-1769519415641-image.png)
+
+-   **公共物品资金分配思考问题**：
+    
+    -   **成熟项目分配问题**：具有成熟 VC 投资或商业化价值过高的项目，如 Web3 university 背后公司估值高，是否应分配公共物品资金，如 Optimism23 年分配时，Ave 不差钱也获资助，后研究决定匹配少量资金。
+        
+    -   **二选一决策问题**：面临二选一决策，是均分还是抛硬币，可参考凹型和凸型决策，如军事策略、加密技术选择、新冠防控适合凹型决策（选其一），司法决策、公共物品资助、税率调整适合凸型决策（取中间值），公共物品资金分配会考虑二者。
+        
+    -   **治理攻击防范问题**：治理攻击常见，如 2025 年 3 月 Polymarket 案例，大户操纵预言机投票篡改结果获利，因 UMA 机制时间锁周期短、作恶成本低。应让更多人基于提案专业内容表达真实感受，使结果趋于最优解，避免老好人心态、偏向 KOL、基于猜忌投票。
+        
+-   **二次方资助介绍**：
+    
+    -   **Gitcoin 问题**：二次方资助考虑群体智慧，但 Gitcoin 出现大量女巫号刷票问题，后推出 Gitcoin Passport，准入门槛高，导致参与度降低、匹配资金减少。
+        
+    -   **Octant 模式**：通过质押 GLM 判定真实人，质押时间越长投票权重越大，防范女巫效果好，成本可控，基金会有 10 万个以太坊，质押生息拿出部分作匹配捐赠池，采用二次方捐赠模型，下一轮投票需提前质押 gem 代币。
+        
+    -   **Authentic 优化**：在二次方资助基础上优化，防范女巫，通过上周期质押参与下周期投票，减少准入门槛，是凸型决策，让项目雨露均沾获资金，成本可控。
+        
+-   **任务布置**：
+    
+    -   **调研 Octant**：从用户体验、分配机制、治理攻击防范、女巫防范等方面调研 Octant 的二次方资助模式。
+        
+    -   **体验投票**：参与 Octant 下一轮投票周期，提前质押 gem 代币体验分配方式。
+        
+-   **问答环节**：
+    
+    -   **资金来源**：Octant 资金来自基金会的 10 万个以太坊，每年做节点产生收益用于公共物品资助。
+        
+    -   **接受捐赠历史**：Ethpanda 和良心道在 Octant 接受过捐赠，良心道预计第 11 周期参与。
+        
+    -   **国内监管问题**：WEB3 里接受捐赠无监管，捐赠目的无政治倾向；国内做区块链项目不涉及发币和募资即可，发 NFT 在一定法律程序上允许；交税方面，公民日常消费已交税，可通过注册公司以人民币形式发钱交税；线下活动可个人形式走报销流程。
+        
+    -   **申请流程**：刚开始做项目，可先建社群，按要求填写申请表，经审查通过进入下一周期投票。
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 ![0aa28da5b5b74b94032f5edfc4a9a096.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-26-1769410567433-0aa28da5b5b74b94032f5edfc4a9a096.jpg)
@@ -175,6 +208,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -182,6 +216,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -207,6 +242,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -216,6 +252,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -310,6 +347,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -446,6 +484,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -655,6 +694,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -702,6 +742,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1033,6 +1074,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1074,6 +1116,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1432,6 +1475,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -1728,6 +1772,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -1835,6 +1880,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
