@@ -52,6 +52,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 # Web3 学习笔记 Day 14：部署到公网 (Testnet)
 
 ## 1\. 测试网 (Testnet) 的意义
@@ -87,6 +88,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -179,6 +181,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # 🎓 12 天全栈 Web3 毕业典礼
 
 同学，恭喜你！坚持 12 天并不容易。 这 12 天里，我们从 0 到 1 构建了一个完整的 **Web3 计算机科学知识图谱**。让我们最后回顾一下这栋大楼的结构：
@@ -215,6 +218,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -263,6 +267,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 10：Layer 2 扩容与 Rollup
 
 ## 1\. Rollup 的本质
@@ -287,6 +292,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -350,6 +356,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 9+：NFT 进阶开发
 
 ## 1\. ERC-1155 (多代币标准)
@@ -402,6 +409,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 8：区块链架构分级
 
 ## 1\. 核心权衡 (The Trade-off)
@@ -426,6 +434,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -643,6 +652,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 学习笔记 Day 6：DeFi 的代码原语
 
 ## 1\. 代币标准：ERC-20 的本质
@@ -708,6 +718,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -840,6 +851,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 & AI 学习笔记 Day 4：智能的本质
 
 ## 1\. 人工智能的分级：专才 vs 通才
@@ -899,6 +911,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1008,6 +1021,7 @@ Step 3: 交易红线 (非实名必拒)
 
 
 
+
 # Web3 学习笔记 Day 2：成为高级用户
 
 ## 1\. 核心概念：钱包的本质
@@ -1062,6 +1076,7 @@ Step 3: 交易红线 (非实名必拒)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
