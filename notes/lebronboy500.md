@@ -15,8 +15,108 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+一个 NBA 预测市场工具，我为你梳理了一个“数据驱动型交易助手”的产品框架。它的核心逻辑是：利用实时数据差（比分 vs 赔率）寻找交易机会，并确保链上结算的安全性。
+
+一、 产品逻辑闭环框架 (Product Logic Loop)
+
+这个闭环旨在解决用户“投什么、怎么投、稳不稳”的问题。
+
+1\. 市场情报层 (Market Intelligence)
+
+\* 目标： 发现被低估的 NBA 赔率。
+
+_功能：_ 实时看板： 聚合 Polymarket 上所有 NBA 比赛的 Yes/No 价格。
+
+\* 异动提醒： 监测“巨鲸”大单。例如，某个地址突然买入 5 万美金湖人赢，系统秒级推送。
+
+\* 比分锚定： 引入第三方体育 API（如 Sportradar），对比“当前比分”与“盘口价格”的偏差（Arbitrage Opportunity）。
+
+2\. 决策执行层 (Precision Execution)
+
+\* 目标： 极速下单，捕捉稍纵即逝的获利机会。
+
+_功能：_ 一键模拟交易： 在正式下单前，计算扣除手续费后的预期 PnL（盈亏）。
+
+\* 快捷下单： 调用 Polymarket CLOB API，实现比亚平太网页端更快的限价单投放。
+
+3\. 持仓监控层 (Position & Safety)
+
+\* 目标： 确保资产安全，实时跟踪盈亏。
+
+_功能：_ 动态 PnL： 基于实时买卖盘深度（Orderbook Depth）计算当前仓位的真实退出价值。
+
+\* 重组预警： 监控 Polygon 链状态，若发生深度重组且影响到交易确认，及时通知用户。
+
+4\. 结算与声誉层 (Settlement & Feedback)
+
+\* 目标： 确认最终盈利并建立用户画像。
+
+_功能：_ 争议追踪： 监控 UMA 预言机的提案状态，确认 NBA 比赛结果是否已上链。
+
+\* 战绩排行榜： 记录用户预测准确率，形成链上社交声誉。
+
+二、 技术实现路径框架 (Technical Path)
+
+为了支撑上述逻辑，技术架构需要分为四个模块，重点解决你提到的“重组、实时性、工程化”。
+
+模块 1：多源数据接入 (Data Ingestion)
+
+_链上数据 (Slow Path)：_ 技术： 使用 viem 或 ethers.js 监听 Polygon 节点的 LogOrderFilled 事件。
+
+\* 作用： 确保交易的最终真实性。
+
+_链下数据 (Fast Path)：_ 技术： WebSocket 连接 Polymarket CLOB API (wss://clob.polymarket.com/ws)。
+
+\* 作用： 获取毫秒级的 NBA 盘口变化。
+
+_外部 API：_ 技术： HTTP 轮询体育数据接口，获取比赛剩余时间、伤病、比分。
+
+模块 2：稳定性加工层 (Processing & Stability)
+
+\* 防重组逻辑 (Reorg Handling)：
+
+\* 策略： 引入 Confirmation Height（确认高度）。
+
+\* 实现： 数据库设置 status 字段：unconfirmed -> confirmed (64个块后) -> finalized。
+
+_高性能缓存：_ 技术： Redis。
+
+\* 实现： 将 NBA 实时比分和最新买卖一档价格存入 Redis，前端不再直接请求链上，响应速度提升 10 倍以上。
+
+3\. 业务逻辑层 (Business Logic / Backend)
+
+_PnL 计算引擎：_ 公式： PnL = (CurrentPrice - AverageEntryPrice) \\times PositionSize - Fees。
+
+_预警推送：_ 技术： Node.js + [Socket.io](http://Socket.io)。当监测到大额成交或比分突变时，主动推送到前端。
+
+4\. 交付与工程化 (DevOps)
+
+\* 环境隔离： 提供 .env.example，区分 Mainnet 和 Amoy Testnet。
+
+_容器化：_ Docker-compose： 一键拉起 PostgreSQL（持久化历史数据）、Redis（实时缓存）和 App（逻辑层）。
+
+三、 结构化对比表：你的项目 vs 优化后
+
+| 维度 | 基础项目 (OGBC-Intern) | 你针对 NBA 市场的优化方向 |
+
+|---|---|---|
+
+| 数据源 | 单一 RPC 轮询 | RPC (链上) + WebSocket (链下) + 体育 API |
+
+| 实时性 | 15秒+ (区块时间) | < 1秒 (WS 推送) |
+
+| 数据可靠性 | 假设链不回滚 | 基于 Block Hash 校验的重组回滚机制 |
+
+| 用户体验 | 简单的历史查看 | 带 PnL 模拟和异动提醒的交易工作台 |
+
+| 部署方式 | 本地运行脚本 | Docker-compose 一键交付生产环境 |
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ### **Twitter Spaces 主持人详细主持流程**
 
 整个流程可以分为三大阶段：**会前准备**、**会中执行**和**会后跟进**。
@@ -189,6 +289,7 @@ Space的结束不代表工作的终止，会后跟进能最大化一场Space的�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 RWA 详解：将现实世界带入区块链
 
@@ -370,6 +471,7 @@ _为了合规，RWA 严重依赖链下的法律实体（SPV）和托管人。这
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 在“Web3 公共物品资金分配”的背景下有多种资助与分配机制。这些机制试图解决传统市场在公共物品定价上的失灵，通过技术和治理创新实现更公平、更高效的价值捕获。
 
 具体分配机制及其特点：
@@ -488,6 +590,7 @@ RPGF 遵循“**先创造价值，后获得奖励**”的逻辑，是目前 Web3
 
 
 
+
 uniswapV2
 
 问题：
@@ -511,6 +614,7 @@ uniswapV2
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -877,6 +981,7 @@ Oracle / UMA 投票者：决定争议市场结果（dispute 时 UMA token holder
 
 
 
+
 从 ERC-721 演进到 ERC-7962，展示了以太坊代币所有权设计从简单的“资产映射”向**高度可编程化**与**安全性增强**的核心变革。
 
 以下是基于来源及相关背景分析的代币所有权设计核心变革：
@@ -912,6 +1017,7 @@ Oracle / UMA 投票者：决定争议市场结果（dispute 时 UMA token holder
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -955,6 +1061,7 @@ Oracle / UMA 投票者：决定争议市场结果（dispute 时 UMA token holder
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1025,6 +1132,7 @@ DEX（如 Uniswap）是 Web3 的“杀手级应用”，它彻底改变了资产
 
 
 
+
 学习DeFi 核心组成部分：
 
 **1\. 去中心化交易所（DEX）与“自动售货机”模型**
@@ -1080,6 +1188,7 @@ DEX（如 Uniswap）是 Web3 的“杀手级应用”，它彻底改变了资产
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1216,6 +1325,7 @@ DEX（如 Uniswap）是 Web3 的“杀手级应用”，它彻底改变了资产
 
 
 
+
 ## 1\. 资产自托管：安全性与易用性的博弈
 
 **挑战：** 传统私钥（助记词）极难记忆且一旦丢失无法找回，用户进入 Web3 的最大障碍。
@@ -1286,6 +1396,7 @@ Web3 正在尝试构建一种基于协议原生逻辑的“公共财政”体系
 
 
 
+
 ### **投研：X402**
 
 每一笔 x402 交易都与四个经济参与者进行交互：
@@ -1312,6 +1423,7 @@ Web3 正在尝试构建一种基于协议原生逻辑的“公共财政”体系
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
