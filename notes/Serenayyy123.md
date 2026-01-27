@@ -15,8 +15,73 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+用会议记录水笔记
+
+-   AMA进度预告-Serena
+    
+    今日时间：1月27日 Deadline：1月29日 正式时间：1.30 18:30-19:30
+    
+    分享嘉宾- **Ray & Cooder**
+    
+    主持人：Nancy
+    
+    策划-Loh, Nancy Damia
+    
+    BD：北七beilql & BD协调：Victoria
+    
+    **X space链接：**[**https://x.com/i/broadcasts/1zqKVdPPLOlJB**](https://x.com/i/broadcasts/1zqKVdPPLOlJB**)
+    
+    待办事项
+    
+    方向：1. 策划文案初稿-2.老师review后嘉宾对接-3.更改文案找老师嘉宾敲定(海报同步进行 -4.敲好BD介入-5提前一天宣发-6⚠️ **记录最高参与人数并截图保存**
+    
+    **当前进度：1.27日对接嘉宾看初稿**
+    
+    To do list
+    
+    -   \[ \] 策划文案（问题库）[https://www.notion.so/ethpanda/AMA-2f5bbd63be8780159d58e73f171394a1?source=copy\_link](https://www.notion.so/ethpanda/AMA-2f5bbd63be8780159d58e73f171394a1?source=copy_link)
+        
+    -   \[x\] 主持人-Nancy
+        
+    -   \[ \] 海报
+        
+    -   \[ \] 参与人数记录
+        
+-   Cobuilding进度-Serena
+    
+    今日时间：1月27日 Deadline：1月29日 正式时间：Co-building 1.29 19:00-20:00 / 1.30 14:00-15:00 / 1.31 18:30-19:30 √zoom
+    
+    1/29 cobuilding 19:00-20:00 Sue老师 1/30 cobuilding 14:00-15:00 Xiaohai老师 1/31 cobuilding 18:30-19:30 Jintol老师
+    
+    | Cobuilding(驻场） | Wiener |
+    | --- | --- |
+    | Cobuilding(驻场） | 来财 |
+    | Cobuilding(驻场） | tree |
+    |   |   |
+    
+    todolist
+    
+    -   \[ \] 主持大纲-正在找老师review
+        
+    -   \[ \] 横板海报和宣发文案
+        
+    -   \[ \] BD端对接人物头像和X信息
+        
+    -   \[ \] 当天场观记录
+        
+    
+    1/20 cobuilding进度优先事项： 1.策划文案修改 ddl 1/28 早上 @啊超
+    
+    2.宣发文案-Sam 1/28 上午 @Sam
+    
+    3.Q&A收集和预告-Loh运营同学-1/28号预告开始收集 @Loh
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 黑客松运营筹划组的第三天-又得水笔记了
 
 -   1.26日艰难完成了黑客松宣发-Github上的小问题需要解决
@@ -31,6 +96,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 参与黑客松筹划的第二天复盘
 
 -   群多人多的是时候，会发生任务需求不明确的问题
@@ -42,6 +108,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 开启了筹划黑客松活动的生涯！
@@ -58,6 +125,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -102,6 +170,7 @@ Aave V3到V4的分享：
 
 
 
+
 ### **完成了ethernut三关打卡，笔记如下：**
 
 1.第一关找到漏洞，夺取owner，把钱转走。之前一直卡在成为了contributor，但是一直没有成为owner，其实主要原因是代码最后有一个receive函数，需要再转账一笔才能夺取owner。
@@ -136,6 +205,7 @@ await contract.collectAllocations()
 
 
 
+
 -   参加了Web3公共物品资金的风险
     
 -   参加了Elon老师Solidity Walk的分享
@@ -147,6 +217,7 @@ await contract.collectAllocations()
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -305,6 +376,7 @@ await contract.collectAllocations()
 
 
 
+
 -   完成了周日的KeyHash Base Token：从ERC721到ERC7962分享课程
     
 -   研究了polymarket技术机构与逻辑的研究，内容如下：
@@ -383,6 +455,7 @@ AMM 在该体系中主要承担流动性补充与兜底角色。当订单簿深�
 
 
 
+
 -   今天继续研究了下Polymarket的模式，争取明天搞明白**技术的运作模式**加入到投研报告中
     
 -   阅读了021以太坊的第一章
@@ -390,6 +463,7 @@ AMM 在该体系中主要承担流动性补充与兜底角色。当订单簿深�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -558,6 +632,7 @@ NBA总决赛是中文流量王者，中文世界第1体育IP，微博#NBA#日均
 
 
 
+
 今天完成的学习内容：
 
 -   完成了2个章节的安全挑战！
@@ -574,6 +649,7 @@ NBA总决赛是中文流量王者，中文世界第1体育IP，微博#NBA#日均
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -652,6 +728,7 @@ Web3 合规侧重于**业务逻辑是否触犯国家法律**，特别是在大�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -758,6 +835,7 @@ Web3 组织通常是**分布式**的，**远程办公**是其生存法则。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
