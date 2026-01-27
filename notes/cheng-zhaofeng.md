@@ -15,8 +15,59 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+## 七、EOA 与合约账户的互相调用机制
+
+### 从 EOA 发起调用到合约账户
+
+术语对应：
+
+• 从 EOA 发起的“带 to/data 的交易”是 交易（transaction）； • 在 EVM 执行过程中合约之间互相调用，是 消息调用（message call / internal transaction）。
+
+### 合约账户之间的调用（合约互调用链路）
+
+delegatecall：本地执行远程代码，状态修改在本地
+
+不会产生transaction记录
+
+外部交易由 EOA 发起，合约间调用被称为 internal transactions / message calls，由 EVM 执行引擎在同一条交易上下文中完成。
+
+![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MzkzMzBjZWFmYjliMTY2YzQ0ZjAwN2M3ZDAxYmNlMmFfYXhaNFBQUWdoUVMxbEdxeUV6blo1eENqQ1FhaENmRFlfVG9rZW46V3NjWWJsZWZab3c0OXJ4TEc1NWNYZ2kzbktXXzE3Njk1MzM4OTQ6MTc2OTUzNzQ5NF9WNA)
+
+**外部交易永远是 EOA → 合约（或 EOA），之后在同一笔交易里才会出 现合约 → 合约 / 合约 → EOA 的内部调用链。**
+
+## 八、MetaMask 钱包对 EOA 的管理
+
+### 私钥与助记词
+
+12个单词的SRP（助记词）
+
+### EOA 的生成与切换
+
+### 交易签名流程（MetaMask 如何用 EOA 发交易）
+
+-   确认交易后，钱包在本地用当前 EOA 的私钥对这笔交易做 ECDSA 签名；
+    
+-   钱包再通过你配置的 RPC 节点（官方默认或自定义，如 Infura、自建节 点等）把签名后的交易广播到链上。
+    
+
+### 支持智能账户拓展（Account Abstraction）
+
+EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层，用一 种可授权、可撤销、带 nonce 防重放的新交易类型来做；钱包（包括 MetaMask）可以在此基础上继续构建更上层的智能账户体验。
+
+### 备份与安全防诈骗（与现在官方建议对齐）
+
+**MetaMask 这类钱包管理 EOA 的核心依然是：本地生成 / 加密保存 SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。**
+
+**• 账户抽象（ERC-4337）+ EIP-7702 只是把“这个 EOA 能做什么”变 得更灵活，而不是改变“私钥归谁所有”这件底层事实**
+
+记好助记词、管好私钥、看清每一次签名弹窗， 其余的“智能账户”“批量交易”“gas 赞助”“7702 高速通道”，都只 是你之上的“外挂”和“外骨骼”。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ## 五、可主动发起交易的账户类型
 
 能发起交易的只有EOA
@@ -47,6 +98,7 @@ storageRoot和codeHash只有在合约账户中才存在，EOA中为空
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 ## 三、以太坊地址“0x”开头的由来
 
 160 bit字符，40个hex字符
@@ -70,6 +122,7 @@ storageRoot和codeHash只有在合约账户中才存在，EOA中为空
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 1.  学习了DApp从编译，部署，前端部署上线的全流程
     
 2.  获得了Monad Blitz黑客松大赛第一名，项目地址：[https://mojo.devnads.com/projects/131](https://mojo.devnads.com/projects/131)
@@ -77,6 +130,7 @@ storageRoot和codeHash只有在合约账户中才存在，EOA中为空
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -180,6 +234,7 @@ EOA可以发起交易，合约只能被动等待调用
 
 
 
+
 ## 九、节点间交换的数据类型
 
 -   **交易信息**
@@ -224,6 +279,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -295,6 +351,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 
 
+
 ## 五、归档节点在数据查询中的优势
 
 **归档节点 = “国家档案馆 + 时间机器”：**
@@ -312,6 +369,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -354,6 +412,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -424,6 +483,7 @@ Gossip模式：随机告诉几个不知道的邻居完成传输
 
 
 
+
 # 第二章 网路结构与节点类型
 
 ## 一、以太坊节点与客户端软件
@@ -461,6 +521,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -574,6 +635,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、 集
 
 
 
+
 ## 八、网络结构的开放性与参与机制
 
 permissionless：任何人都可以运行节点、发送交易、部署合约，网络本身不设“准入门槛” 或白名单
@@ -664,6 +726,7 @@ Rollup又分为Optimistic和ZK Rollup
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -806,6 +869,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了安全分享会
 
 # 1\. 安全事故规模
@@ -858,6 +922,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了web3的运行原理
 
 # 1.钱包，私钥，和个人主权
@@ -879,6 +944,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
