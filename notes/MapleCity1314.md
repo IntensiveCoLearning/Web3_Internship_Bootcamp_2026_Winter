@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+今天做了reactive的任务
+
+-   reactive合约部署总结笔记
+    
+-   黑客松组队
+    
+-   初始想法和idea完成
+    
+-   研究ai web3 ui设计中
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 昨天在准备科目三忘打卡了...今天刚考完试 简单偷偷懒
 
 ## 基本小计划：
@@ -40,6 +54,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 1月25这天太忙了，主要在肝x402和新的合约
 
 然后和好朋友大老板交流了AI时代程序员何去何从的发展
@@ -58,6 +73,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 ## 002
@@ -187,6 +203,7 @@ contract FallbackDynamicOwner {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -341,6 +358,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 
 
+
 今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
 
 ## 目标
@@ -428,6 +446,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -544,6 +563,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -817,6 +837,7 @@ contract MessageBoardOptimized {
 
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -891,6 +912,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1052,6 +1074,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -1185,6 +1208,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1330,6 +1354,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1753,6 +1778,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1862,6 +1888,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1986,6 +2013,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
