@@ -16,8 +16,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# 准备黑客松
+
+构思文档：[https://www.notion.so/EIP-Playground-2f54c40d9a9d804fac34fbbbd8da8180?source=copy\_link](https://www.notion.so/EIP-Playground-2f54c40d9a9d804fac34fbbbd8da8180?source=copy_link)
+
+GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.com/ShihaoZhou-NEU/web3-eip-playground)
+
+**持续迭代项目思路**
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ## 准备黑客松
 
 1.  团队组建
@@ -32,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 # 学习计划
 
@@ -86,6 +99,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 # 学习计划
@@ -305,6 +319,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 
 
+
 # 学习计划
 
 ✅️体验 My first zk vote
@@ -318,6 +333,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -397,6 +413,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 
 
+
 # 学习计划
 
 1.  ✅️[Gas 优化](https://github.com/ShihaoZhou-NEU/Solidity_Learning/tree/main/Homework)
@@ -419,6 +436,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -742,6 +760,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -907,6 +926,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -946,6 +966,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1281,6 +1302,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1585,6 +1607,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1950,6 +1973,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -2029,6 +2053,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2309,6 +2334,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2485,6 +2511,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
