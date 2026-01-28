@@ -15,8 +15,175 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+## **一、全局滚动属性（window 级别）**
+
+这些属性用于 **获取或控制整个页面的滚动状态**。
+
+| 属性/方法 | 作用 | 示例 |
+| --- | --- | --- |
+| window.scrollX | 页面水平滚动距离（单位 px） | console.log(scrollX) |
+| window.scrollY | 页面垂直滚动距离（单位 px） | console.log(scrollY) |
+| window.pageXOffset | 同 scrollX（旧写法） | ✅ 向后兼容 |
+| window.pageYOffset | 同 scrollY（旧写法） | ✅ 向后兼容 |
+| window.scrollTo(x, y) | 跳转到页面指定位置 | window.scrollTo(0, 0) |
+| window.scrollBy(x, y) | 相对当前位置滚动 | window.scrollBy(0, 500) |
+| window.scroll() | 等价于 scrollTo()（支持对象参数） | window.scroll({ top: 500, behavior: 'smooth' }) |
+
+* * *
+
+## **二、元素级滚动属性（Element）**
+
+控制 **某个可滚动容器** 的滚动。
+
+| 属性/方法 | 作用 | 示例 |
+| --- | --- | --- |
+| element.scrollTop | 元素内容向上滚动的距离 | div.scrollTop = 0 |
+| element.scrollLeft | 元素内容向左滚动的距离 | div.scrollLeft += 100 |
+| element.scrollWidth | 元素内容的总宽度（包括不可见部分） | 用于计算滚动区域宽度 |
+| element.scrollHeight | 元素内容的总高度（包括不可见部分） |   |
+| element.clientWidth | 元素可视区域宽度（不含滚动条） |   |
+| element.clientHeight | 元素可视区域高度（不含滚动条） |   |
+| element.offsetWidth | 元素的实际显示宽度（含内边距和滚动条） |   |
+| element.offsetHeight | 元素的实际显示高度 |   |
+| element.offsetTop | 元素相对于 offsetParent 顶部的距离 |   |
+| element.offsetLeft | 元素相对于 offsetParent 左侧的距离 |   |
+
+* * *
+
+## **三、元素位置与尺寸获取**
+
+| 方法 | 作用 | 返回值 |
+| --- | --- | --- |
+| element.getBoundingClientRect() | 获取元素相对于视口的位置和尺寸 | { top, left, right, bottom, width, height, x, y } |
+| element.getClientRects() | 获取元素内各个“矩形块”的位置（例如多行文字） | DOMRectList |
+| element.scrollIntoView(options) | 滚动容器或页面让该元素进入视口 | { behavior, block, inline } |
+| element.scrollTo(x, y) | 滚动容器到指定位置 | 仅容器有效 |
+| element.scrollBy(x, y) | 容器内相对滚动 |   |
+
+* * *
+
+## **四、文档与视口尺寸**
+
+| 属性 | 说明 | 示例 |
+| --- | --- | --- |
+| document.documentElement.scrollTop | 页面滚动的垂直距离（现代写法） | 常用于监听滚动 |
+| document.body.scrollTop | 某些旧浏览器中使用（不推荐） |   |
+| document.documentElement.scrollHeight | 页面总高度 |   |
+| document.documentElement.clientHeight | 视口高度（浏览器可见区域） |   |
+| window.innerHeight | 浏览器视口内部高度（含滚动条） |   |
+| window.innerWidth | 浏览器视口内部宽度 |   |
+| window.outerHeight | 整个浏览器窗口高度（含工具栏） |   |
+| window.outerWidth | 整个浏览器窗口宽度 |   |
+| window.visualViewport.height | 移动端可视区域高度（支持缩放时使用） |   |
+
+* * *
+
+## **五、滚动事件监听**
+
+| 事件 | 说明 |
+| --- | --- |
+| scroll | 当页面或元素滚动时触发（可用于懒加载、导航高亮） |
+| wheel | 用户滚动鼠标滚轮时触发 |
+| resize | 视口大小变化（可能影响 scroll 计算） |
+
+示例：
+
+![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+
+`window.addEventListener('scroll',()=>{ console.log(window.scrollY);});`
+
+* * *
+
+## **六、CSS 滚动控制**
+
+| 属性 | 说明 | 示例 |
+| --- | --- | --- |
+| overflow | 控制是否出现滚动条 | overflow: hidden / scroll / auto; |
+| scroll-behavior | 控制滚动是否平滑 | scroll-behavior: smooth; |
+| scroll-snap-type | 启用滚动吸附效果 | scroll-snap-type: y mandatory; |
+| scroll-snap-align | 元素在吸附时的对齐方式 | scroll-snap-align: start; |
+
+* * *
+
+## **七、常见滚动操作示例**
+
+### **1️⃣ 平滑滚动到页面底部**
+
+![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+
+`window.scrollTo({ top: document.body.scrollHeight, behavior:'smooth'});`
+
+### **2️⃣ 判断是否滚动到底部**
+
+![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+
+`if(window.innerHeight + window.scrollY >= document.body.offsetHeight){ console.log("到底了！");}`
+
+### **3️⃣ 获取元素在文档中的绝对位置**
+
+![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+
+`const rect = el.getBoundingClientRect();const absoluteTop = rect.top + window.scrollY;const absoluteLeft = rect.left + window.scrollX;`
+
+### **4️⃣ 禁止页面滚动**
+
+![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+
+`body{overflow:hidden;}`
+
+或：
+
+![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+
+`document.body.style.overflow ='hidden';`
+
+* * *
+
+## **八、进阶与扩展（移动端与高级 API）**
+
+| API | 用途 |
+| --- | --- |
+| IntersectionObserver | 监听页面元素是否进入视口（替代滚动监听） |
+| visualViewport | 获取手机上缩放、软键盘导致的视口变化 |
+| scrollRestoration | 控制浏览器前进/后退时是否自动恢复滚动位置 |
+
+* * *
+
+## **九、易混淆点总结**
+
+-   `scrollTop` → 只读/可写，用于容器内部。
+    
+-   `scrollY` → 只读，全局滚动。
+    
+-   `getBoundingClientRect()` 返回的是相对视口的坐标，不是文档。
+    
+-   `scrollIntoView()` 会自动滚动外层容器，默认是平滑的。
+    
+-   禁止滚动不仅要 `overflow: hidden`，还要防止内容高度变化导致布局闪动。
+    
+
+* * *
+
+## **十、实用技巧**
+
+-   **平滑回到顶部**
+    
+    ![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+    
+    `window.scrollTo({ top: 0, behavior: 'smooth' });`
+    
+-   **带动画的锚点跳转**
+    
+    ![](http://localhost:63342/markdownPreview/80686930/source/_posts?_ijt=lqbuojff42clj85lnc1giplvef)
+    
+    `document.querySelector('#target').scrollIntoView({ behavio`
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## 3\. 前端使用 ethers.js 的三大核心对象 ⭐⭐⭐
 
 ### 3.1 Provider（只读）
@@ -186,6 +353,7 @@ contract.on("Transfer", (from, to, value) => {
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
+
 -   创建新节点的方法：
     
     -   `document.createElement(tag)` —— 用给定的标签创建一个元素节点，
@@ -247,6 +415,7 @@ contract.on("Transfer", (from, to, value) => {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 # Hardhat vs Foundry
@@ -317,6 +486,7 @@ contract.on("Transfer", (from, to, value) => {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -449,6 +619,7 @@ Smart Contracts (Blockchain)
 
 
 
+
 # FullStack Web3 Engineer Learning Path – Notes  
 
 ## Core Skill Areas  
@@ -532,6 +703,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -630,6 +802,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -762,6 +935,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -926,6 +1100,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1165,6 +1340,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -1334,6 +1510,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1534,6 +1711,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
