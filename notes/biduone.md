@@ -21,8 +21,75 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# Uniswap
+
+## core - **Factory**
+
+-   **createPool：创建交易对池子.** v3支持不同手续费等级，此一个交易对合约由`tokenA`、`tokenB`和`fee`（手续费）唯一确定。
+    
+
+```
+/// @inheritdoc IUniswapV3Factory
+function createPool(
+    address tokenA,
+    address tokenB,
+    uint24 fee
+) external override noDelegateCall returns (address pool) {
+    xxxxxx
+}
+```
+
+-   **setOwner：设置工厂合约Owner**，owner具有以下权限
+    
+    -   setOwner：修改owner
+        
+    -   enableFeeAmount：添加手续费等级
+        
+    -   setFeeProtocol：修改某个交易对的协议手续费比例
+        
+    -   collectProtocol：收集某个交易对的协议手续费
+        
+
+```
+/// @inheritdoc IUniswapV3Factory
+function setOwner(address _owner) external override {
+    require(msg.sender == owner);
+    emit OwnerChanged(owner, _owner);
+    owner = _owner;
+}
+```
+
+-   **enableFeeAmount：添加手续费等级**
+    
+
+v3默认支持三种手续费等级：0.05%、0.30%和1.00%，对应的fee值分别为500、3000和10000；
+
+手续费百分比计算公式为：_feeRatio_ ​= _fee_​ / 1,000,000  
+
+## core - **Pool**
+
+-   **initialize：初始化交易对**
+    
+-   **mint：添加流动性**
+    
+-   **burn：移除流动性**
+    
+-   **swap：交换代币**
+    
+-   **flash：闪电贷**
+    
+-   **collect：取回代币**
+    
+-   **increaseObservationCardinalityNext：扩展预言机空间**
+    
+-   **observe：获取预言机数据**
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # 合约安全
 
 ## **重入攻击 Reentrancy**
@@ -101,6 +168,7 @@ using SafeMath for uint256;
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 ## 什么是投研？
 
 -   研究项目基本面
@@ -159,6 +227,7 @@ using SafeMath for uint256;
 
 
 
+
 # Foundry
 
 以命令行为主的Web3开发神器
@@ -202,6 +271,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -253,6 +323,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 
 
+
 # **零知识证明**
 
 ## **区块链投票**
@@ -297,6 +368,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -389,6 +461,7 @@ Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
 
 
 
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -447,6 +520,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -480,6 +554,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -562,6 +637,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -590,6 +666,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -675,6 +752,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -704,6 +782,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -816,6 +895,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -867,6 +947,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -959,6 +1040,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
