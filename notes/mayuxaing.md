@@ -15,8 +15,100 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+Uniswp是一个去中心化交易所，所谓去中心化，可以从以下两个方面理解：
+
+●交易全部是由开源的代码来控制，没有任何人为的因素
+
+●交易所无实际的掌控机构，规则不能够被随便修改
+
+Uniswap V2 是以太坊上最经典的\*\*去中心化交易所 (DEX)\*\* 协议之一。它的核心在于彻底抛弃了传统金融的“订单薄” (Order Book) 模式，转而使用了 **自动做市商 (AMM)** 机制。
+
+简单来说，Uniswap V2 就像一个始终在线的\*\*自动机器人\*\*或\*\*自动售货机\*\*：
+
+\- **没有买家和卖家**：你不是在和另一个人交易。
+
+\- **只有资金池**：你是在和一个装满代币的智能合约（资金池）进行交换。
+
+\- **数学定价**：价格不是由人喊出来的，而是由一个简洁的数学公式 $x \\cdot y = k$ 自动计算出来的。
+
+\## AMM (自动做市商) 基础模型
+
+Uniswap V2 的核心就是一个简单的数学公式，它强制规定了合约内两种资产余额的关系。
+
+\### 1. 核心公式：恒定乘积 (The Constant Product)
+
+在传统金融（TradFi）中，价格是由人（买单和卖单）决定的。在 Uniswap V2 中，价格是由状态余额决定的。
+
+公式：
+
+$$x \\cdot y = k$$
+
+\- $x$: 资金池中 Token A 的余额 (reserve0)
+
+\- $y$: 资金池中 Token B 的余额 (reserve1)
+
+\- $k$: 恒定常数 (Invariant)，也是流动性。在交易过程中（不考虑手续费时），$k$ 必须保持不变。
+
+**无手续费的理想状态：** 根据恒定乘积公式 x⋅y=k，如果不考虑手续费，输出量 dy 的计算公式为：
+
+$$
+
+dy = \\frac{y \\cdot dx }{x + dx }
+
+$$
+
+有手续费
+
+!\[\[图库/b1e9ee16713b81c63742f95404da1aa3\_MD5.jpg\]\]
+
+\> 🤖 架构师类比：
+
+\> 把 Uniswap 想象成一个\*\*“死脑筋的自动售货机”。它不管外面世界 ETH 卖多少钱，它只死守一条规矩：“有人拿走 Token A，就必须放入足够多的 Token B，保证我肚子里的 $A \\times B$ 总量不变。”\*\*
+
+\---
+
+\### 2. 代码锚点`swap()` 的数学推演
+
+这是你作为审计员必须烂熟于心的逻辑。我们来看当用户进行一笔交易时，数值是如何流动的。
+
+假设：
+
+\- 用户\*\*输入\*\* $\\Delta x$ 个 Token A。
+
+\- 用户\*\*获得\*\* $\\Delta y$ 个 Token B。
+
+\- 手续费为 $0.3\\%$ (这意味着只有 $99.7\\%$ 的 $\\Delta x$ 真正进入了池子参与计算)。
+
+**推演步骤：**
+
+1\. **交易前状态：** $x \\cdot y = k$
+
+2\. 交易后状态： 池子里多了 $\\Delta x$ (扣费后)，少了 $\\Delta y$。为了保持 $k$ 不变：
+
+$$(x + \\Delta x\_{with\\\_fee}) \\cdot (y - \\Delta y) = k$$
+
+3\. 求解 $\\Delta y$ (用户能拿走多少钱)：
+
+$$\\Delta y = y - \\frac{k}{x + \\Delta x\_{with\\\_fee}}$$
+
+代入 $k=x \\cdot y$，简化后得到 Web3 开发者最眼熟的公式：
+
+$$\\Delta y = \\frac{y \\cdot \\Delta x\_{with\\\_fee}}{x + \\Delta x\_{with\\\_fee}}$$
+
+\> ⚠️ 安全警示 (Integer Arithmetic)：
+
+\> 在 Solidity 中没有小数。上述除法如果除不尽，会向下取整。
+
+\>
+
+\> Uniswap 的铁律： 所有的取整误差都必须有利于协议（LPs），而不利于交易者。这意味着用户总是少拿哪怕 1 wei 的 Token。如果代码逻辑导致向上取整，可能被攻击者利用“粉尘攻击”逐渐掏空池子。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 \# Scaffold-ETH 2
 
 Scaffold-ETH 2 (SE-2) 是目前以太坊生态中最主流、最高效的\*\*全栈开发脚手架（Boilerplate）\*\*。
@@ -431,6 +523,7 @@ messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -574,6 +667,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 \# 📝 ENS (Ethereum Name Service) 核心概念笔记
@@ -804,6 +898,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -882,6 +977,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1174,6 +1270,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -1219,6 +1316,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1337,6 +1435,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -1422,6 +1521,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1523,6 +1623,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1661,6 +1762,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -1762,6 +1864,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1922,6 +2025,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
