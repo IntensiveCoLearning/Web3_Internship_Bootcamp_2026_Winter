@@ -15,8 +15,36 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+## **Getting Started**
+
+📌 **Foundry 是什么？**  
+它是一个用于 **Ethereum 智能合约开发** 的开发工具套件，由 Rust 语言开发，设计目标是 _快速、模块化、便携_。Foundry 提供一套完整的工具，让你可以从写合约、测试、调试到部署、与区块链交互的整个流程都在命令行里搞定
+
+📌 **Foundry 的核心组成工具：**  
+这个页面主要介绍了 Foundry 安装后你会得到的几个核心 CLI（命令行）工具，以及它们的用途：
+
+1.  **forge** — 📦 核心开发工具
+    
+    -   用于初始化项目、编译合约、运行测试、部署合约，还支持更高级的测试方式（比如 fuzz 测试、属性测试、Invariant 测试等）。
+        
+2.  **anvil** — 🛠 本地测试链
+    
+    -   启动一个本地兼容 Ethereum 的节点，预置账号和可选主网 Fork。方便在本地测试合约逻辑。
+        
+3.  **cast** — 🔗 区块链交互工具
+    
+    -   从命令行读写链上数据、发送交易、调用合约或执行任意 JSON-RPC 调用。
+        
+4.  **chisel** — 💡 Solidity REPL 环境
+    
+    -   一个快速的交互式 Solidity 环境，用来实验代码片段、测试行为等。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -25,6 +53,7 @@ timezone: UTC+8
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -32,6 +61,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 ## Reading and Writing to a State Variable
@@ -44,6 +74,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -51,6 +82,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -71,6 +103,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -82,6 +115,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -131,6 +165,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -234,6 +269,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -283,6 +319,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 
 
+
 # 十一、Gossip 协议在节点传输中的作用
 
 Gossip 协议就是以太坊的“八卦广播系统”：
@@ -310,6 +347,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -349,6 +387,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -463,6 +502,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -506,6 +546,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -647,6 +688,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
