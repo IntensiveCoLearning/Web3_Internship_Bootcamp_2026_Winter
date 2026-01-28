@@ -139,6 +139,7 @@ ERC-1271 定义了一个标准化的函数 isValidSignature(bytes32 \_messageHas
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 ````markdown
 
 Hardhat 和 Foundry 是当前最主流的两个智能合约开发框架,都致力于简化从编码、测试到部署的完整开发流程。
@@ -332,6 +333,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -446,6 +448,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -477,11 +480,13 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -564,6 +569,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -577,6 +583,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -912,6 +919,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -996,6 +1004,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -1030,6 +1039,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1156,6 +1166,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1349,6 +1360,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -1479,6 +1491,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -1519,6 +1532,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
