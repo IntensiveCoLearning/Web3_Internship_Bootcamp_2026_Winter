@@ -15,8 +15,154 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+安全实践
+
+| 风险点 | 攻击机理 | 典型防护措施 |
+| --- | --- | --- |
+| Reentrancy | 恶意合约在 transfer / call 回调中再次进入受害函数，导致重复提款 | 1. Checks-Effects-Interactions2. ReentrancyGuard（OpenZeppelin）3. 使用 transfer/send 或限制 gas（已不推荐，仅旧代码） |
+| 访问控制 (Access Control) | 未受保护的管理函数可被任何人调用 | 1. Ownable：onlyOwner 修饰符2. AccessControl：基于角色的权限（DEFAULT_ADMIN_ROLE, MINTER_ROLE 等）3. 及时转移 / 多签管理 |
+| 整数溢出 (Integer Overflow / Underflow) | 旧版本 <0.8 加法/减法越界产生错误数值 | 1. Solidity 0.8+ 默认内置溢出检查2. 对老版本使用 SafeMath 库 |
+
+重入攻击的原理是，如果合约像下面代码一样，先在内部调用了外部的另一个合约，然后再更新自己的状态，在调用合约后，更新状态前，被调用的合约可以再次调用withdraw这个函数，实现重入攻击。
+
+```solidity
+contract VulnerableContract {
+    mapping(address => uint256) public balances;
+
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "No balance");
+
+        // 危险：先转账，后更新状态
+        (bool success,) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+
+        balances[msg.sender] = 0; // 状态更新在转账之后
+    }
+}
+```
+
+解决方案是先更新状态再调用，或者加锁。
+
+```solidity
+contract SecureContract {
+    mapping(address => uint256) public balances;
+
+    function withdraw() external {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "No balance");
+
+        // 先更新状态
+        balances[msg.sender] = 0;
+
+        // 后进行外部调用
+        (bool success,) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+}
+```
+
+```solidity
+contract ReentrancyGuard {
+    bool private locked;
+
+    modifier noReentrant() {
+        require(!locked, "Reentrant call");
+        locked = true;
+        _;
+        locked = false;
+    }
+}
+
+contract SecureWithGuard is ReentrancyGuard {
+    mapping(address => uint256) public balances;
+
+    function withdraw() external noReentrant {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0, "No balance");
+
+        balances[msg.sender] = 0;
+        (bool success,) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+}
+```
+
+如果没有访问控制，比如下面这个合约，任何人都可以取走所有资金。
+
+```solidity
+/**
+* @title BadVault
+* @dev 缺少访问控制，任何人都能调用 withdraw() 取走全部 ETH
+*/
+contract BadVault {
+    mapping(address => uint256) public balance;
+
+    // 用户存钱
+    function deposit() external payable {
+        balance[msg.sender] += msg.value;
+    }
+
+    // ❌ anyone can withdraw ALL funds!
+    function withdraw() public {
+        payable(msg.sender).transfer(address(this).balance);
+    }
+}
+```
+
+注意，上面代码两处用到payable。函数签名上的payable意思是这个函数可以接收ETH转账。payable(msg.sender)则是把普通地址转换为可执行ETH转账的地址。不带payable标记则不能进行ETH收款或转账。不过，其它ERC-20代币不受此限制。payable只约束ETH原生代币。
+
+address(this)这个代码说明合约对象可以转换成地址，这表明了合约本质上是地址类型的扩展，所有合约都有地址，这是在部署的时候就产生的。
+
+合约通过一次交易部署到链上，同时产生一个地址。这个地址本质上是公钥的哈希摘要。在部署时，合约代码的字节码也进入block body。但是后续所有对合约的调用，只产生一个包含storageRoot的header。这个storageRoot存状态变量构成的merkle tree的hash。这个hash可以用来验证各个节点的State DB中维护的状态变量是否正确。所以，代码、状态都是在节点的State DB里面存，代码在EVM里面运行，链上记录这些数据和代码的摘要。
+
+节点必须运行真实的代码，不能造假。如果节点篡改代码，并试图用假代码运行后生成的状态量上链，其它节点可以尝试复现这个结果，如果不一致，就拒绝上链。不过，可复现就意味着不能使用真随机数。但可以用伪随机数，或链下产生随机数。
+
+以上参考自：[https://www.kimi.com/share/19c0304c-8cd2-8909-8000-000021c11ccc](https://www.kimi.com/share/19c0304c-8cd2-8909-8000-000021c11ccc)
+
+解决方案是判断调用者是否是owner
+
+```solidity
+/**
+* @title SafeVault
+* @dev 仅部署者 (owner) 可以提取资金，简单显式访问控制
+*/
+contract SafeVault {
+    address public immutable owner;           // 部署者地址
+    mapping(address => uint256) public balance;
+
+    // 构造函数：在部署时确定所有者地址
+    constructor(address owner_) {
+        owner = owner_;
+    }
+
+    // 存款函数：允许所有用户调用
+    function deposit() external payable {
+        balance[msg.sender] += msg.value;
+    }
+
+    // ✔️ 提款函数：仅限所有者调用
+    function withdraw() external {
+        // 进行访问权限判断
+        require(msg.sender == owner, "Not owner");
+        uint256 amount = address(this).balance;
+        require(amount > 0, "Nothing to withdraw");
+
+        // 注意 Checks-Effects-Interactions 顺序
+        (bool ok, ) = owner.call{value: amount}("");
+        require(ok, "Transfer failed");
+    }
+}
+```
+
+Solidity 0.8之前不检测算数溢出，如果有个计数器达到最大值，继续增加就会回到最小值，导致逻辑混乱。所以要用最新版的Solidity，而且手动添加限制条件。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 Solidity编程语言
 
 静态类型，支持继承，支持用户定义类型。
@@ -348,6 +494,7 @@ contract EventExample {
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 Hardhat需要用JS编写部署的代码。感觉文档写的不是特别容易理解。Web3实习手册里面也没说清楚。
 
 Web3的前端一般通过调用RPC节点的服务实现查询余额、发起交易等功能。
@@ -382,6 +529,7 @@ Web3的前端一般通过调用RPC节点的服务实现查询余额、发起交�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 ## **Web3 工作方式**
@@ -519,6 +667,7 @@ KR的内容要尽可能量化。比如
 
 
 
+
 Jeff Huang老师讲Uniswap工作原理解析
 
 p是x用y表示的价格，也就是曲线的斜率。
@@ -562,6 +711,7 @@ BD：Business Development，商务拓展。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -649,6 +799,7 @@ Web3 + 乡村建设：南塘DAO
 
 
 
+
 ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数据仍然需要压缩上链。为了进一步提高效率，新的方案不把交易数据上链，只上链交易树的root hash以及ZK证明。这就是**Validium**。
 
 **Volition**进一步改进Validium，运用用户选择是否让交易上L1链。大额交易，对安全性要求高的交易可以选择上L1，其它的和Validium一样。
@@ -664,6 +815,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -727,6 +879,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -883,11 +1036,13 @@ SNARK落地更快，STARK前景更好。
 
 
 
+
 今天参加了周会，提了一些问题。其它的没什么进度。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -974,6 +1129,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 
 
+
 几个问题
 
 -   web3比web2快？我理解其实不会，只是上去了合规审查的部分，出海更方便了。Ricky也委婉表达了这个观点。
@@ -985,6 +1141,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1156,6 +1313,7 @@ Gas 费用 = **用多少 × 每单位多少钱**，就像你打车一样：
 
 
 
+
 ## **以太坊概览**
 
 以太坊是区块链2.0，比特币是区块链1.0。
@@ -1226,6 +1384,7 @@ MetaMask这种钱包App生成私钥后会保存在本地，设置的密码用来
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
