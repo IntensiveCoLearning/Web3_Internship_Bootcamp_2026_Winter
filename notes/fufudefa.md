@@ -23,11 +23,13 @@ timezone: UTC+8
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 学习erc标准
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 done
@@ -37,6 +39,7 @@ done
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -51,6 +54,7 @@ done
 
 
 
+
 钓鱼攻防
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-24-1769269585872-image.png)
@@ -58,6 +62,7 @@ done
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -76,6 +81,7 @@ done
 
 
 
+
 今天主要完成运营作业，组好了一起做x space的小伙伴们
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-22-1769095726784-image.png)
@@ -83,6 +89,7 @@ done
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -105,6 +112,7 @@ studying！
 
 
 
+
 studying！
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-20-1768881065500-image.png)
@@ -112,6 +120,7 @@ studying！
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -138,6 +147,7 @@ studying!
 
 
 
+
 期末周赶due太忙了实在是，但创建了钱包转了同学水，也算今天干了活儿吧
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-18-1768731556683-image.png)
@@ -145,6 +155,7 @@ studying!
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -179,6 +190,7 @@ mint了第一个nft
 
 
 
+
 done
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-16-1768532548873-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-16-1768532620506-image.png)
@@ -186,6 +198,7 @@ done
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -208,6 +221,7 @@ done
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -245,6 +259,7 @@ done
 
 
 
+
 注册推特，关注重要官推账号：done
 
 完成工具安装与账号创建，并完成以下两项子任务（详见描述）：done
@@ -262,6 +277,7 @@ done
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
