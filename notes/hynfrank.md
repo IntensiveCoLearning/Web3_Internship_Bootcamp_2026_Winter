@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+学习内容：
+
+1.  Web3 实习手册[「行业前辈访谈录」](https://web3intern.xyz/zh/logic-frontend-journey/)部分
+    
+2.  Web3 实习手册[「面试准备与行业岗位推荐」](https://web3intern.xyz/zh/job-platform/)部分
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 学习内容：
 
 个人品牌账号调研，输出调研目标的调性、运营与塑造方式、自己可以借鉴的地方
@@ -37,6 +47,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 学习内容：
 
 1.  [Solidity by Example | 0.8.26](https://solidity-by-example.org/) **Applications 部分**
@@ -50,11 +61,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -67,6 +80,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 figma、chatgpt 等创作类工具等熟练运用
 
 [Figma 作业](https://www.figma.com/design/4Dft5CxHGgsaluxZtzy9vD/Figma-%E4%BD%9C%E4%B8%9A?node-id=0-1&p=f&t=hCQLyP6BdBF8XvFm-0)：根据给定内容替换调整、二维码生成，等等 → 作业提交
@@ -74,6 +88,7 @@ figma、chatgpt 等创作类工具等熟练运用
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -100,6 +115,7 @@ Gas代付机制与简化私钥管理的设计，更是打破了Web3普及的核�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -134,6 +150,7 @@ Uniswap V2 代码以及 SDK
 
 
 
+
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
 
 021 学习以太坊第 5 章
@@ -143,6 +160,7 @@ Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -171,6 +189,7 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 预习第二周目标
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -187,11 +206,13 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 复习以太坊书籍的前三章
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -230,6 +251,7 @@ Remix 使用教程
 
 
 
+
 工具安装
 
 MetaMask / Rabby 钱包安装 & 创建，并熟悉
@@ -239,6 +261,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -277,6 +300,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 
 
+
 拓展 & 辅助理解材料
 
 Becoming a Power User - Wallets, Mnemonics, Keypairs
@@ -288,6 +312,7 @@ Becoming a Power User - Wallets, Mnemonics, Keypairs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
