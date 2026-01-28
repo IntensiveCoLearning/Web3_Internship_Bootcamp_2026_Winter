@@ -15,19 +15,27 @@ Web3 Just in
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+继续补课
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 🤣
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 补课
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 补课中
@@ -38,11 +46,13 @@ Web3 Just in
 
 
 
+
 运营
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Web3 Just in
 
 
 
+
 web3 赋能Ai
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -80,11 +92,13 @@ Go
 
 
 
+
 rest
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -107,11 +121,13 @@ Ai
 
 
 
+
 合规似乎无解
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -138,6 +154,7 @@ Ai
 
 
 
+
 keep going
 
 i
@@ -145,6 +162,7 @@ i
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
