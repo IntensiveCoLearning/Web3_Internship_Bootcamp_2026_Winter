@@ -19,11 +19,54 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-28-1769615670005-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-28-1769615692010-image.png)
 
-今日学习链上数据的思维导图
+今日学习链上数据的思维导图  
+文字版总结：  
+今天的学习主题是“链上数据分析”，感觉一下子接触了好多硬核的概念，像是打开了新世界的大门！虽然有些名词听起来很高大上，但我试着用自己的话理解了一遍，收获还是挺大的。
+
+### 一、区块链就像一本公开的“公共账本”
+
+这是我最大的一个收获。原来区块链上所有的操作，比如转账、和DeFi协议交互，都是一笔笔的“链上交易”。每一笔交易都有非常详细的信息，比如：
+
+-   **交易哈希**：就像这笔交易的唯一身份证号。
+    
+-   **收发地址**：谁给谁转的钱。
+    
+-   **Gas费**：为了让交易能上链，需要付给矿工或验证者的“手续费”，相当于快递费。
+    
+-   **Nonce**：这个挺有意思，它是我账户的一个交易计数器，能防止同一笔钱被重复花掉。
+    
+
+我以前只知道转账，现在才明白背后有这么一套严谨的流程：创建 -> 广播到网络让节点验证 -> 矿工打包确认上链。理解了这些，才算真正懂了区块链在干嘛。
+
+### 二、学了几个衡量项目好坏的关键指标
+
+文档里介绍了好几个数据分析师常用的指标，我记下了几个最核心的：
+
+1.  **总锁仓量（TVL）**：这是衡量一个DeFi协议有多火的关键指标！它代表了锁在协议里的所有资产的总价值。TVL越高，说明大家越信任这个协议，愿意把钱放里面。可以把它想象成一个商场的“总客流量”或“总销售额”。
+    
+2.  **活跃地址数**：这个就好比互联网的“月活跃用户”，能看出一个区块链或者一个应用到底有多少真实用户在玩。用户越多，生态就越健康。
+    
+3.  **交易数和交易量**：交易数看的是“忙不忙”（交易频率），交易量看的是“生意大不大”（涉及的资金规模）。这两个指标高了，说明这个链上经济活动很活跃。
+    
+4.  **协议收入**：这个指标太关键了！它就像看一家公司赚不赚钱。协议通过提供服务（比如交易、借贷）收的手续费，扣掉给用户的激励后，剩下的就是协议自己的收入。一个有持续收入的项目，才更可能长期发展下去。  
+      
+    三、发现了实用的数据分析工具“地图”
+    
+    分成了三类：
+    
+    -   **数据源（Data Source）**：比如 **The Graph**，它们是“矿工”，负责从区块链上把最原始的数据挖出来。
+        
+    -   **数据开发工具（DataDev）**：比如大名鼎鼎的 **Dune**，它是“厨房”，高手们可以用SQL在这里把原始数据“烹饪”成一道道可口的分析菜肴（各种图表和数据看板）。自由度很高，但需要技术。
+        
+    -   **数据应用（Data App）**：比如 **DeFiLlama**, **RootData**，它们是“餐厅”，直接把做好的菜（分析好的数据结果）用漂亮的看板端到我面前。我这种小白可以直接看，很容易理解，但没法自己定制。
+        
+    
+    这下终于搞懂了为什么别人能做出数据看板，背后是有这套工具链支持的。我打算先从“餐厅”级别的 **DeFiLlama**​ 和 **RootData**​ 开始玩起，先学着看数据，等以后有基础了再去挑战 **Dune**​ 这个“厨房”。
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 ![1668e81c8c61bf26b3bbd5311c80dc1f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-27-1769528916143-1668e81c8c61bf26b3bbd5311c80dc1f.jpg)
 
@@ -38,6 +81,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 今天听读了白丁前辈的Web3投研分享，感觉信息量好大，但也帮我理清了很多模糊的概念。作为一个刚入门的小白，我把自己的理解和收获记录下来，方便以后回顾。
@@ -97,6 +141,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天web3 的收获是关于同学们的分享会  
   
 第一个：web3 英语多重要
@@ -152,6 +197,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天不用上班niec  
 创作日 决定周末把下周日更的X文7篇都写好  
 如下图是我的第二篇X文框架 完善ing
@@ -161,6 +207,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -187,6 +234,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -229,6 +277,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习了uniswap相关的知识  
 概念：与传统中心化交易所不同，Uniswap运行在以太坊等区块链上，由智能合约管理。您始终通过自己的钱包进行交易，无需注册或托管资产，实现了**无需许可**和**非托管**的交易  
 其中**自动化做市商AMM**：是Uniswap的灵魂。它摒弃了订单簿，转而依靠一个数学公式和资金池来**自动定价并完成交易**。流动性提供者将资金存入池中，系统根据算法为所有交易者提供即时流动性  
@@ -262,6 +311,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
 
 今天主要是学习了关于DAO的治理模式  
@@ -270,6 +320,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -295,6 +346,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -335,6 +387,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -400,11 +453,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -503,6 +558,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -529,11 +585,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
