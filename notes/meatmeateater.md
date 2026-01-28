@@ -695,6 +695,20 @@ unchecked {
 \> \* **學到了什麼**: 生成唯一 ID 或簽名驗證都靠它。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
+# 2026-01-23
+<!-- DAILY_CHECKIN_2026-01-23_START -->
+
+Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
+
+<img width="865" height="486" alt="image" src="https://github.com/user-attachments/assets/82b49f19-fe91-44b1-80f3-2990ef10f508" />
+
+<img width="865" height="486" alt="image" src="https://github.com/user-attachments/assets/3cfc3c93-5e58-4224-a0fb-b8f195828187" />
+
+<img width="865" height="486" alt="image" src="https://github.com/user-attachments/assets/bffd15dc-6b39-4a27-9519-dccf938631de" />
+
+
+<!-- DAILY_CHECKIN_2026-01-23_END -->
+
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
 
