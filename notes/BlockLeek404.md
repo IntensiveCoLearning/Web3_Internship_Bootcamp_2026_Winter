@@ -15,8 +15,105 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+## Solidity Types
+
+Solidity 支持多种**基本数据类型（elementary types）**，这些类型可以组合成更复杂的类型。  
+你可以在 Solidity 官方文档中阅读更多内容。
+
+🕵️‍♂️ **现在先关注最常用的几种：**
+
+-   **Boolean（bool）**：`true` 或 `false`
+    
+-   **Unsigned Integer（uint）**：无符号整数（只能是正数或 0）
+    
+-   **Integer（int）**：有符号整数（可以是正数或负数）
+    
+-   **Address（address）**：20 字节的值，一个地址的例子可以在你的 MetaMask 账户中找到
+    
+-   **Bytes（bytes）**：底层原始字节数据
+    
+
+* * *
+
+## Variables definition（变量的定义）
+
+变量只是**值的占位符**。  
+一个值可以是上面列出的任意一种数据类型。
+
+例如，我们可以创建一个名为 `hasFavoriteNumber` 的布尔变量，用来表示某人是否有一个最喜欢的数字（恒为 true 或 false）。
+
+```
+bool hasFavoriteNumber = true; // 变量 hasFavoriteNumber 表示 true 这个值
+```
+
+可以为 `uint` 和 `int` 指定所使用的位数。  
+例如：`uint256` 表示该变量使用 256 位。  
+`uint` 是 `uint256` 的简写形式。
+
+🗒️ **注意：**  
+在指定数据类型时，**明确写出长度**通常是更推荐的做法。
+
+每一行末尾的分号 `;` 表示一条语句结束。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.19;
+
+contract SimpleStorage {
+    // 基本类型
+    bool hasFavoriteNumber = true;
+    uint256 favoriteNumber = 88;
+    string favoriteNumberInText = "eighty-eight";
+    int256 favoriteInt = -88;
+    address myAddress = 0xaB1B7206AA6840C795aB7A6AE8b15417b7E63a8d;
+    bytes32 favoriteBytes32 = "cat";
+}
+```
+
+* * *
+
+## Bytes 和 strings
+
+Bytes 是用**十六进制表示的字符集合**。
+
+```
+bytes1 minBytes = "I am a fixed size byte array of 1 byte";
+bytes32 maxBytes = "I am a fixed size byte array of 32 bytes";
+bytes dynamicBytes = "I am a dynamic array, so you can manipulate my size";
+```
+
+Bytes 可以分配固定大小（最多到 `bytes32`）。  
+但是，`bytes` 和 `bytes32` 是**不同的数据类型**。
+
+字符串（`string`）在内部表示为**动态字节数组（bytes 类型）**，并专门用于处理文本。  
+因此，`string` 可以很容易地转换成 `bytes`。
+
+* * *
+
+## 合约逻辑（The contract logic）
+
+📋 假设有一个场景：  
+我们要完成一个“存储最喜欢的数字”的任务。  
+为此，我们可以先声明一个 `uint` 类型的变量 `favoriteNumber`：
+
+```
+uint256 favoriteNumber;
+```
+
+👀❗**重要：**  
+Solidity 中的每个变量都有**默认值**。  
+例如：
+
+-   未初始化的 `uint256` 默认值是 `0`
+    
+-   未初始化的 `bool` 默认值是 `false`
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 以太坊等区块链并不是静止不变的；它们会通过升级不断演进，引入新功能、增强安全性、提升性能。但一个没有中央权威的去中心化网络，如何就“修改自身规则”这种根本性变化达成一致并实施？答案在于一种强有力的机制：硬分叉。
 
 ## 去中心化世界里的区块链如何升级
@@ -223,6 +320,7 @@ Gas 是用于衡量在以太坊上执行某项操作所需计算工作量的单�
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 **工作量证明区块链如何运作**
 
 在探讨权益证明（Proof of Stake，PoS）之前，有必要先理解它的前身——工作量证明（Proof of Work，PoW）。以比特币等早期区块链为代表，PoW 是一种共识机制，它依赖一种称为“挖矿”的过程来验证交易并将新区块加入链中。
@@ -303,6 +401,7 @@ PoS 网络的安全性并不依赖算力，而是建立在强有力的经济模�
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 工作量证明（PoW）是支撑比特币等开创性区块链的基础共识机制。要真正理解这些网络如何运作，必须掌握挖矿、计算能力以及确保其安全性的密码学原理等关键概念。
 
 ### 密码学基础：什么是哈希？
@@ -360,6 +459,7 @@ PoS 网络的安全性并不依赖算力，而是建立在强有力的经济模�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -443,6 +543,7 @@ PoS 网络的安全性并不依赖算力，而是建立在强有力的经济模�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -604,6 +705,7 @@ Sybil 抵抗确保只有真实投入成本的参与者，才能提议和验证�
 
 
 
+
 ## 以太坊虚拟机（EVM）导论
 
 如果你学过一点以太坊，大概率已经见过 **Ethereum Virtual Machine（以太坊虚拟机，EVM）** 这个词。它听起来像某种高深玄学，但从宏观层面理解 EVM，其实是理解以太坊怎么运转的必修课。本文会把 EVM 讲清楚：它是什么、为什么关键、它和整个以太坊生态的关系是什么。目标不是把你训练成编译器工程师，而是让你有一个扎实的“底层常识”。
@@ -676,6 +778,7 @@ EVM 的成功让很多其他链，尤其是各种 **Layer 2 Rollup**，也采用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -948,6 +1051,7 @@ Gas Fee 就是他们的**经济激励**。
 
 
 
+
 # 什么是区块链预言机问题？
 
 在探讨 Web3 中最根本的挑战之一之前，我们先快速回顾两个核心概念。
@@ -1062,6 +1166,7 @@ Chainlink 是当前行业标准级的、模块化的去中心化预言机网络�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1197,6 +1302,7 @@ L2 会以极低成本在“链下”处理大量交易，把这些交易打包�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
