@@ -15,8 +15,207 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+## 学习笔记｜Polymarket 为什么这么火：它不只是“零和赌博”，更像一个实时概率引擎（Real-time Probability Engine）
+
+Charlie 你这个直觉很正常：prediction market（预测市场）在**金钱结算层面**确实接近 **zero-sum game（零和博弈）**——赢家赚的钱大多来自输家（再扣平台费）。但 Polymarket 之所以爆火，是因为它在“产品层”和“信息层”提供了很多 **正和（positive-sum）价值：把全网分散信息压缩成一个随时更新的概率（live probability）**，同时做到了**上手快、成本低、可传播**，还踩中了 2024–2026 的热点内容周期（政治/体育/宏观/娱乐）。
+
+* * *
+
+## Foundations｜基础篇：Polymarket 到底是什么（What it is）
+
+### 1) 一句话定义（Definition）
+
+**Polymarket = 一个用真钱（通常用稳定币 USDC）交易“事件结果合约（event contracts）”的平台**：比如 “X 会发生吗？” Yes/No 两边，价格会像“概率”一样波动。([Polymarket](https://polymarket.com/?utm_source=chatgpt.com))
+
+### 2) 你说的“零和”对不对？
+
+-   **资金层面（P&L）**：接近零和（净额还会被费用/滑点等影响）。一些研究/报道也指出大多数交易者未必能赚钱，赚钱集中在少数人身上。([雅虎财务](https://finance.yahoo.com/news/70-polymarket-traders-lost-money-192327162.html?utm_source=chatgpt.com))
+    
+-   **信息层面（Information value）**：可能是正和——因为市场价格把分散信息聚合成一个“可用的预测信号（forecast signal）”，对旁观者也有价值（even if they don’t trade）。这也是媒体与用户反复引用它的原因之一。([福布斯](https://www.forbes.com/sites/jasonwingard/2025/11/19/the-polymarket-effect-how-prediction-markets-are-beating-the-experts/?utm_source=chatgpt.com))
+    
+
+> 关键区分：Money is (near) zero-sum；Information can be positive-sum.
+> 
+> 你一开始把它等同“纯零和赌博”，就容易漏掉它最强的产品价值：**price-as-probability（价格即概率）**。
+
+* * *
+
+## Core Concepts｜进阶篇：它为什么能火（Why it became huge）
+
+下面按“产品-机制-传播-周期-合规”拆开（全面拆解）。
+
+### 1) 它把“预测”变成一种极易消费的内容形态（Prediction as Content）
+
+Polymarket 的页面不是论文、不是长分析，而是一张张“问题卡片（market cards）”：
+
+**一句话问题 + 一个百分比 + Yes/No**，天然适配短内容平台与社交传播（shareable / meme-able）。([Polymarket](https://polymarket.com/?utm_source=chatgpt.com))
+
+为什么这很强？
+
+-   比专家评论更“像结论”（feels decisive）
+    
+-   比民调更“实时”（real-time updates）
+    
+-   比新闻更“可互动”（interactive）
+    
+
+### 2) 它给用户一个“对冲/表达观点”的工具（Hedging + Taking a View）
+
+很多人参与不完全是为了“赢”，而是：
+
+-   **表达立场（express a view）**：我认为某事发生概率更大
+    
+-   **对冲风险（hedge）**：如果某个结果会伤害我，我用另一边盈利来对冲
+    
+    这种“金融化表达（financialized expression）”让用户粘性更强。([The Washington Post](https://www.washingtonpost.com/technology/2026/01/28/polymarket-kalshi-trump-prediction-markets/?utm_source=chatgpt.com))
+    
+
+### 3) Web3 让它“快 + 便宜 + 可验证”（Fast, Cheap, Verifiable）
+
+Polymarket 的关键 Web3 组合拳常见是：
+
+-   以 **USDC** 这类稳定币作为计价与结算媒介（stable, simple mental model）([Gate.com](http://Gate.com))
+    
+-   依托 Polygon 等链带来低费用与更顺滑体验（low cost transactions）([Polygon Labs](https://polygon.technology/blog/what-is-polymarket-how-a-polygon-early-adopter-became-the-official-prediction-market-on-x?utm_source=chatgpt.com))
+    
+-   链上数据可核验（verifiable onchain），更容易建立“不是后台改数据”的信任感（trust surface）([Polygon Labs](https://polygon.technology/blog/what-is-polymarket-how-a-polygon-early-adopter-became-the-official-prediction-market-on-x?utm_source=chatgpt.com))
+    
+
+### 4) “如何判定结果”这件事被工程化了（Resolution as a System）
+
+预测市场最容易被质疑的点是：**谁说了算（who decides outcome）？**
+
+Polymarket 官方文档给出的核心机制是：**用 UMA Optimistic Oracle（乐观预言机）来做市场结算（resolution）**，并且存在质疑/争议流程（dispute/escalation）。([Polymarket](https://docs.polymarket.com/polymarket-learn/markets/how-are-markets-resolved?utm_source=chatgpt.com))
+
+这让它能覆盖大量“现实世界问题”，而不需要每个市场都靠平台人工裁决（centralized admin）。
+
+### 5) 热点周期驱动：政治/体育/宏观事件给了它“永动机”（News Cycle Flywheel）
+
+近两年（尤其 2025–2026）预测市场整体热度与交易量上升，Polymarket 常被和 Kalshi 一起讨论为头部平台，媒体频繁报道其在政治/社会热点上的交易与影响力。([The Block](https://www.theblock.co/post/383733/prediction-markets-kalshi-polymarket-duopoly-2025?utm_source=chatgpt.com))
+
+当热点越密集，市场越活跃；市场越活跃，越容易反向成为“新闻素材”（the market becomes part of the story）。
+
+### 6) 规模与流动性上来了：人多 → 价格更可信 → 更多人看（Liquidity Network Effect）
+
+你会在很多平台看到一个规律：**Liquidity begets liquidity（流动性带来流动性）**。
+
+交易量与活跃度上升会让：
+
+-   价格更稳定、更接近“群体共识概率”（better price discovery）
+    
+-   交易体验更好（lower slippage）
+    
+-   旁观者更愿意把它当“参考信号”（a credible signal）
+    
+
+一些行业报道显示 Polymarket 近年交易量与活跃交易者增长显著，这种规模效应是“火”的基础。([The Block](https://www.theblock.co/post/333050/polymarkets-huge-year-9-billion-in-volume-and-314000-active-traders-redefine-prediction-markets?utm_source=chatgpt.com))
+
+* * *
+
+## Advanced Applications｜高阶篇：Polymarket 的“产品闭环”和“逻辑闭环”是什么？
+
+### 1) 逻辑闭环（Why users keep coming back）
+
+一个典型循环（loop）是：
+
+1.  看到一个热点问题（Hot question）
+    
+2.  看概率（Probability）→ 觉得“不对劲”（mispriced）
+    
+3.  下场交易（trade）
+    
+4.  等事件进展（news updates）→ 概率跳动带来反馈（feedback / dopamine）
+    
+5.  结算（resolution）→ 赢/输形成强记忆（reinforcement）
+    
+6.  回到下一个热点（next market）
+    
+
+这其实是 **实时反馈系统（real-time feedback system）**，非常上瘾。
+
+### 2) 产品闭环（Growth loop）
+
+获客→使用→分享→再获客 的路径通常长这样：
+
+-   **获客（Acquisition）**：新闻/社媒引用 “Polymarket says X%”
+    
+-   **激活（Activation）**：点进去就能看懂（cards + %）
+    
+-   **留存（Retention）**：热点持续更新、仓位盈亏波动
+    
+-   **分享（Sharing）**：截图概率、晒预测、讨论“你站哪边”
+    
+-   **再回来（Return）**：下一个更刺激的新问题出现
+    
+
+* * *
+
+## Reality Check｜你必须知道的争议与风险（Why it’s also controversial）
+
+Polymarket 之所以“火”，也因为它处在争议中心：
+
+1.  **合规与监管（Regulation）**
+    
+    Polymarket 曾因合规问题与美国 CFTC 有过执法与和解，相关公开材料显示其涉及未注册衍生品/事件合约等问题。([商品期货交易委员会](https://www.cftc.gov/PressRoom/PressReleases/8478-22?utm_source=chatgpt.com))
+    
+    后续也有媒体报道其在美国市场的监管状态出现变化与讨论。([Reuters](https://www.reuters.com/sustainability/boards-policy-regulation/polymarket-receives-green-signal-cftc-us-return-2025-09-03/?utm_source=chatgpt.com))
+    
+2.  **操纵与内幕信息担忧（Manipulation / Insider info concerns）**
+    
+    近期媒体也在讨论 prediction markets 的 insider trading、操纵等风险，Polymarket 被频繁提及。([Business Insider](https://www.businessinsider.com/coalition-prediction-markets-kalshi-robinhood-coinbase-washington-post-insider-trading-2026-1?utm_source=chatgpt.com))
+    
+3.  **“它是不是只是博彩？”（Is it just gambling?）**
+    
+    金融时报等评论提到：若平台主要依赖娱乐性市场吸引“更不专业的参与者”，可能更像“博彩交易所（bookmaker-like exchange）”，其社会价值与商业模式之间会有张力。([金融时报](https://www.ft.com/content/463b10b2-21ce-4ed8-abff-7839e35306f3?utm_source=chatgpt.com))
+    
+
+* * *
+
+## 给你一个更精准的结论（Answer your original confusion）
+
+你以为它只是零和，是因为你盯着“输赢的资金流”。
+
+但它爆火通常来自这 4 件事叠加：
+
+-   **信息产品化（Information → Product）**：概率成为内容
+    
+-   **社交传播（Social distribution）**：截图就能传播
+    
+-   **低摩擦交易（Low-friction trading）**：USDC + 低费链 + 顺滑 UI
+    
+-   **热点永动机（Hot events flywheel）**：政治/体育/宏观事件持续供给
+    
+
+* * *
+
+## Vocabulary｜关键术语表（中英对照）
+
+-   预测市场：Prediction Market
+    
+-   事件合约：Event Contract
+    
+-   零和博弈：Zero-sum Game
+    
+-   价格发现：Price Discovery
+    
+-   流动性：Liquidity
+    
+-   结算：Resolution / Settlement
+    
+-   预言机：Oracle（UMA Optimistic Oracle）([Polymarket](https://docs.polymarket.com/polymarket-learn/markets/how-are-markets-resolved?utm_source=chatgpt.com))
+    
+-   操纵：Manipulation
+    
+-   内幕信息：Insider Information / Insider Trading
+    
+-   合规：Compliance / Regulation（CFTC）([商品期货交易委员会](https://www.cftc.gov/PressRoom/PressReleases/8478-22?utm_source=chatgpt.com))
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ## Introduction｜今天完成了什么 (Overview)
 
 你今天的成果可以拆成 3 条主线（three tracks）：
@@ -277,6 +476,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 一、今日完成核心任务
 
 1\. 小组海报设计：成功完成组内海报设计工作，成果获得认可，个人收获强烈的成就感，进一步激发了学习与实践的动力。
@@ -309,6 +509,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天忙着搬家特别忙碌，没来得及好好静下心学习，晚上7点多忙完回来，第一时间跟进同步了设计相关进度，目前已经完成了GitHub头图（banner图）的设计，还有kick off的海报设计也顺利搞定。
 
 今天也有特别深的感悟和收获，选定一个行业之前一定要看清楚、了解透彻，一旦做出选择就要坚定坚守、深耕下去，不能因为累了就轻易放弃或者换来换去，既然我选择了Web3这条赛道，今后就会坚定的一直走下去。
@@ -318,6 +519,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -358,6 +560,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1:今天主要学习了figma；然后做了两个海报，
 
 2:听了Speedrun Basic wrokshop
@@ -367,6 +570,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -811,6 +1015,7 @@ Backend 适合做（你原文 1~6 全保留）：
 
 
 
+
 ## Introduction｜今天学到的核心是什么 (Overview)
 
 你今天的学习可以浓缩成一句话：
@@ -1103,6 +1308,7 @@ Remix VM 给你很多账户，其目的就是让你模拟多人场景（multi-ac
 
 
 
+
 今天还在啃remix的compile编译&deploy部署。
 
 * * *
@@ -1360,6 +1566,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -1515,6 +1722,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -1547,6 +1755,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -1560,6 +1769,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1623,6 +1833,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1741,6 +1952,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -1787,6 +1999,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -1803,6 +2016,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
