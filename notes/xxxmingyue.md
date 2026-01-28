@@ -15,8 +15,114 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+Polymarket 的数据架构建立在 Polygon 区块链和 **Gnosis 条件代币框架 (Conditional Token Framework, CTF)** 之上，采用了一种分层级、确定性的链上数据模型。
+
+完整数据架构的清晰说明，分为 **核心实体模型** 、 **标识符派生逻辑** 、 **链上生命周期** 以及 **索引器存储架构** 四个部分。
+
+### 1\. 核心实体模型 (Core Entity Model)
+
+Polymarket 的业务逻辑从上至下分为五个核心层级，构成了其静态数据骨架：
+
+-   **事件 (Event)** ：最顶层的聚合概念，代表一个预测主题（如“2024年美国大选”）。一个事件可以包含一个或多个市场。
+    
+-   **市场 (Market)** ：交易的基本单位，对应一个具体的预测问题（通常是二元的 Yes/No）。
+    
+    -   **独立二元市场** ：简单的单一问题。
+        
+    -   **负风险 (Negative Risk) 市场** ：当一个事件包含多个互斥结果（如多位候选人选一个）时，系统引入 **NegRiskAdapter** 。在该机制下，持有某结果的 NO 头寸等同于持有其他所有结果的 YES 头寸，从而聚合流动性并提高资本效率。
+        
+-   **条件 (Condition)** ：市场在链上的“出生证明”和登记身份。它由预言机 (Oracle)、问题标识 (QuestionId) 和结果槽位数量 (通常为2) 共同定义。
+    
+-   **集合 (Collection)** ：CTF 框架中的中间层，表示特定条件下的结果组合。对于二元市场，存在代表 YES 的集合（IndexSet=1）和代表 NO 的集合（IndexSet=2）。
+    
+-   **头寸/代币 (Position/Token)** ：最底层的可交易资产，符合 **ERC-1155** 标准。每个市场都会派生出两个核心 TokenId：**YES Token** 和 **NO Token** 。它们以 USDC 为抵押品，1份代币对应1 USDC 的潜在兑付权。
+    
+
+### 2\. 标识符派生逻辑 (Identifier Derivation)
+
+Polymarket 的数据一致性依赖于 **哈希派生** ，即链上 ID 是由基础参数计算得出的，而非随机生成。这使得我们可以仅凭少量信息推导出整个市场的资产地址：
+
+1.  **ConditionId (条件ID)** ： `keccak256(oracle, questionId, outcomeSlotCount)` _确定了问题的唯一性与裁判（预言机）的绑定关系。_
+    
+2.  **CollectionId (集合ID)** ： `keccak256(parentCollectionId, conditionId, indexSet)` _Polymarket 无嵌套条件，parentCollectionId 恒为 0。IndexSet 区分了是 YES 集合还是 NO 集合。_
+    
+3.  **TokenId (头寸ID)** ： `keccak256(collateralToken, collectionId)` _由于抵押品固定为 USDC，TokenId 实际上由 ConditionId 和方向（YES/NO）唯一决定。这是交易日志中识别资产归属的关键键值。_
+    
+
+### 3\. 链上生命周期与数据流 (Data Lifecycle)
+
+Polymarket 的动态数据通过一系列链上事件（Logs）串联成完整的证据链：
+
+-   **创建 (Creation)** ：
+    
+    -   关键事件：`ConditionPreparation`
+        
+    -   数据：记录了 Oracle 和 QuestionId 的绑定，标志着市场的建立。
+        
+-   **流动性注入 (Minting/Split)** ：
+    
+    -   关键事件：`PositionSplit`
+        
+    -   数据：记录 USDC 被锁定并拆分为等量的 YES 和 NO 代币。这是代币供应量的来源。
+        
+-   **交易 (Trading)** ：
+    
+    -   核心引擎：**CLOB (中心限价订单簿)** 对应的链上合约（`CTF Exchange` 或 `NegRisk_CTFExchange`）。
+        
+    -   关键事件：`OrderFilled`
+        
+    -   数据架构：每笔交易记录了 `maker`、`taker`、`assetId`（0代表USDC，非0代表头寸TokenId）、`amount`（数量）。
+        
+    -   **解析逻辑** ：通过判断 `makerAssetId` 是否为 0，可以确定交易方向（BUY/SELL）；通过 `amount` 的比值计算成交价格。
+        
+-   **结算 (Resolution)** ：
+    
+    -   流程：预言机确认结果 -> 调用 `reportPayouts`。
+        
+    -   数据变化：获胜结果的 Token 价值变为 1 USDC，失败方归零，用户可赎回抵押品。
+        
+
+### 4\. 索引器存储架构 (Indexer & Storage)
+
+为了构建可用的数据服务，通常采用 **混合数据源架构** 将链上数据转化为关系型数据库结构：
+
+**数据源层：**
+
+-   **Primary (链上)** ：通过 RPC 抓取 `OrderFilled`、`PositionSplit` 等日志，作为不可篡改的事实依据。
+    
+-   **Secondary (Gamma API)** ：获取市场的元数据（Slug、标题、描述），用于丰富业务语义。
+    
+
+**数据库 Schema 设计推荐：**
+
+1.  **Markets 表 (市场维度)** ：
+    
+    -   主键：`id` / `condition_id`
+        
+    -   核心字段：`slug`, `question_id`, `yes_token_id`, `no_token_id`, `oracle`, `status`。
+        
+    -   作用：建立 TokenId 到市场语义的映射。
+        
+2.  **Trades 表 (交易维度)** ：
+    
+    -   索引：`(tx_hash, log_index)` 唯一索引以防重复。
+        
+    -   核心字段：`market_id` (外键), `price`, `size`, `side` (BUY/SELL), `outcome` (YES/NO), `maker`, `taker`。
+        
+    -   作用：记录每一笔撮合细节，支持K线和交易量分析。
+        
+3.  **Sync\_State 表** ：
+    
+    -   字段：`last_block`。
+        
+    -   作用：记录同步进度，支持断点续传。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # 体验了 MyFirstZKVote
 
 ### 1\. 核心目标：我们要解决什么问题？
@@ -97,6 +203,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 今天学习到了最重要的是如何做好投研？  
 一个好的投研需要包含：技术背景、团队背景、代币经济学、宏观政策和叙事  
   
@@ -148,6 +255,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 最近这段时间，不管是运营端还是技术端的深挖，体感上收获都挺大的。复盘了一下，大概分为这两个板块：
 
 1\. 运营实战：
@@ -171,6 +279,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -217,6 +326,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 
 
+
 一次性将之前创作的链上安全的文章都更新上去了
 
 今天Secret同学的分享对我来说很有感悟：
@@ -228,6 +338,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -268,6 +379,7 @@ ORDER BY block_time DESC
 
 
 
+
 # 学习运营相关知识
 
 Telegram 如何运营？  
@@ -297,6 +409,7 @@ Figma 如何使用？
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -425,6 +538,7 @@ Arweave：提供“永久存储”服务，一次付费永久保存；
 
 
 
+
 # 从 ERC-721 到 ERC-7962
 
 这是我让大模型解析文档得到的：
@@ -524,6 +638,7 @@ ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -676,6 +791,7 @@ SEO + 邮件订阅
 
 
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -737,6 +853,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -912,6 +1029,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -925,6 +1043,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -982,6 +1101,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
