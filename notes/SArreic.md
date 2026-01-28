@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+For hackathon use, I learned the concepts of Kite AI deeply today.
+
+GoKite AI introduces **Kite**, a Layer-1 blockchain fundamentally architected for a future **Agentic Economy**, where autonomous AI agents are primary economic participants. The core problem it addresses is the unsuitability of traditional financial systems and even current blockchains for machine-driven activity, which requires **high-frequency, machine-to-machine (M2M) micropayments** and verifiable autonomy. Kite's foundational design rests on three pillars: **Agent-First Design**, which assumes the user is an AI from the ground up; **Hierarchical Key Management**, providing a cryptographically secure, revocable authorization chain from a human owner to agent identities to short-lived session keys; and **Native Stablecoin Payments**, optimized for low-cost, predictable microtransactions.
+
+Technically, Kite is an **EVM-compatible blockchain** (supporting Solidity, Hardhat, and standard wallets), but reimagines the account model. Every entity is a smart contract account with programmable spending rules, session keys, and permissions, moving beyond simple EOAs. The system allows for the creation of **Agent Identities**—on-chain accounts with embedded logic for daily limits, allowed services, and key expiration. This enables secure, constrained autonomy where agents can perform tasks, call APIs, and settle payments without ever holding a user's root private key. For developers, Kite provides a familiar EVM toolset alongside specialized SDKs to easily build, deploy, and manage these agentic systems and their governance rules. In essence, Kite is not merely adding an AI layer to a blockchain; it is building an **AI-native economic operating system** from first principles.
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 **The current market presents a stark divergence between asset classes, driven by their differing responses to risk.** Bitcoin is trending downwards, having broken key support levels after a failed breakout attempt from an ascending triangle pattern. Key short-term factors include the market moving to fill the **CME Bitcoin futures gap** around the $93,000 level and significant open interest around the $90,000 mark for a major options expiry. From a longer-term technical perspective, bearish signals are strengthening: a **monthly MACD death cross** has appeared—a historically reliable indicator of further decline—and the weekly chart suggests the potential for a multi-wave downward structure. A critical support level to watch is **Bitcoin's aggregate production cost**, estimated near **$65,000**, which has historically acted as a major floor. The overall outlook suggests the current bearish trend is likely a continuation, with the potential for a sharp decline later in the year, though a short-term rebound to fill the CME gap is possible first.
 
 Conversely, **precious metals, particularly gold and silver, are experiencing a powerful surge.** This is fundamentally driven by a flight to traditional safe-haven assets amid elevated geopolitical tensions (e.g., Greenland sovereignty disputes, Middle East conflicts) and growing concerns over **the stability of the US dollar credit system**, evidenced by record-high federal debt and sustained central bank gold buying. Technically, the rally is supported by the completion of massive, long-term **"cup-and-handle" patterns**—a 15-year pattern for silver and a multi-year one for gold—which are high-probability bullish indicators. While the momentum is strong, analysis suggests gold may be nearing its near-term price target, making it less advisable to chase the rally at current highs. Silver, despite its significant breakout, remains a historically volatile asset where caution is warranted.
@@ -26,6 +36,7 @@ Conversely, **precious metals, particularly gold and silver, are experiencing a 
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 **Today's review centered on critical perspectives regarding the current state and future of the Web3 industry.** A major trend is the **migration of traditional finance onto blockchains**, where assets like stocks and bonds, along with their real-time market data, are being tokenized as Real-World Assets (RWA). This moves the technology beyond speculative "crypto trading" toward building new financial infrastructure, with Ethereum increasingly seen as a **"trusted ledger" for institutional activity**.
 
@@ -38,6 +49,7 @@ However, significant challenges persist. The industry faces a **"complexity cris
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 I've just completed the foundational EVM development learning and today, I **minted my first NFT** and successfully added it to my personal wallet. This wasn't just a technical exercise, but a crucial first step in demystifying the process of creating and managing tokenized assets on-chain.
 
 The real significance of this experiment lies in its connection to my ongoing university-industry collaboration project, where we are exploring a groundbreaking application: **Non-Fungible Digital Twins of Real-world Assets (RWA)**. The concept involves using a uniquely designed NFT not to represent digital art, but to serve as a **dynamic, on-chain twin** for physical assets like stocks, bonds, or real estate. By updating the NFT's metadata (like ownership records, valuation reports, or compliance certificates), the token's on-chain state can be synchronized with the real-world status of the underlying asset, serving as a single source of verifiable truth for all stakeholders.
@@ -47,6 +59,7 @@ This process naturally leads to a deeper reflection on the intersection of **RWA
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -63,6 +76,7 @@ Internally, LXDAO acts as a living lab to address common DAO challenges. Its Res
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -87,6 +101,7 @@ For beginners, Austin recommends starting with core concepts rather than memoriz
 
 
 
+
 Today's learning material focuses on the **architecture of a Decentralized Application (DApp)**, illustrating the critical components and data flow that differentiate it from a traditional Web2 application.
 
 The core concept is the **separation between on-chain and off-chain operations**. At the heart lies the **Blockchain**, serving as the decentralized, immutable source of truth (like `balances[address] = 123`). However, reading data directly from the blockchain via an RPC provider is slow, with latencies in the thousands of milliseconds. Therefore, a robust off-chain infrastructure is essential for performance. A **Server** (built with frameworks like Next.js) hosts the application logic. It interacts with a **relational database** (e.g., for user profiles) and crucially, employs an **off-chain cache layer** to efficiently serve blockchain data. This cache is populated by **indexing** services like Dune or The Graph, which prefetch and transform on-chain data into a queryable format, enabling fast queries that would be impossible directly from the RPC.
@@ -96,6 +111,7 @@ On the client side, the **User Browser** runs the **Frontend**. It connects to t
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -120,6 +136,7 @@ Finally, the material addresses practical development and security. It recommend
 
 
 
+
 Today's learning material focused on practical Web3 community operation skills, particularly on building and managing **Telegram groups** and organizing **Twitter Spaces**. The process for Telegram involves creating a group, configuring basic settings, utilizing management bots like **@MissRose\_bot** for moderation, and monitoring group statistics. It's crucial to verify bot authenticity to avoid phishing scams.
 
 Organizing a Twitter Space follows a structured lifecycle: **Preparation, Promotion, Execution, and Review**. The preparation phase requires defining the topic, building a question bank, and inviting suitable guests with clear communication. Promotion involves creating materials (graphics, copy, the Space link) and distributing them across channels with a planned timeline. During execution, the host should manage the flow: introduction, guest Q&A, and audience interaction. Finally, the review stage involves analyzing key metrics like viewership and peak listeners to identify areas for improvement in future events.
@@ -136,6 +153,7 @@ Organizing a Twitter Space follows a structured lifecycle: **Preparation, Promot
 
 
 
+
 Today's Ethereum Chinese weekly meeting covered the latest dynamics in the blockchain ecosystem and emerging technical proposals. Key updates included Ethereum's clarified future focus on decentralization, self-sovereignty, and privacy, with plans to integrate ZK-EVM and BAL for node simplification, and to leverage ORAM and PIR technologies for privacy protection. The core developers' meeting also ratified four new EIPs to address gas refund vulnerabilities, enhance ETH transfer logs, and improve developer experience. Significant progress was noted in other ecosystems: BSC completed a chain upgrade, boosting block production speed by 40% and reducing finality to seconds; Klaytn reduced the max supply of its K token; and Tron achieved integration with MetaMask, facilitating cross-chain asset swaps.
 
 Several new technical solutions were introduced. The **Base Rollup hybrid scheme** by Retailink combines the strengths of Base and Sequencer Rollups, using a "slot-ending block" mechanism to ensure low latency while maintaining synchronous composability with L1. An improvement to **Data Sampling (DS)** algorithms was discussed, proposing a shift from fixed-rate coding to more efficient **"Rateless Coding,"** which could significantly lower client-side network sampling and bandwidth requirements. Additionally, the MAGAIS team open-sourced three projects: **Tiny Merkle Authenticated Trie**, a new data structure designed to replace Merkle Patricia Tries and reduce I/O and memory overhead; **Staylist Validator**, a lightweight validator built on this structure; and **MAGAIS EVM**, a supporting virtual machine that allows for larger contract code sizes and employs a multi-dimensional gas model. Market analysis highlighted the current policy-driven phase, with 2025 seeing a peak in crypto regulation and significant growth in scam cases, while Bitcoin ETFs attracted approximately $31 billion in net inflows, becoming a major institutional investment vehicle.
@@ -143,6 +161,7 @@ Several new technical solutions were introduced. The **Base Rollup hybrid scheme
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -173,6 +192,7 @@ However, these benefits come with trade-offs. The gas cost is higher than tradit
 
 
 
+
 In today's reading of "Ze’s Crypto Journal: From Underground Gambling in Texas to the Monad Airdrop—The Unchanging Law of the Jungle," a profound parallel is drawn between the opaque power structures of the gray economy and the seemingly decentralized yet deeply manipulated crypto space. The narrative follows the author's former boss attempting to lure a debt-ridden young woman into running an illegal Texas Hold’em club—a high-risk endeavor where legal consequences would fall entirely on her, while the orchestrator remained shielded. This mirrors the recent controversy surrounding the Monad airdrop, where early contributors were excluded, fake links proliferated, and insiders enjoyed preferential treatment. In both cases, rules are designed not to ensure fairness, but to serve those who control them.
 
 The reflection extends to the mechanisms of exploitation prevalent in crypto trading. On platforms like Hyperliquid, vulnerabilities such as flash squeezes and wick manipulation allow large players to liquidate retail traders with surgical precision—events that have led to millions in losses within hours. These are not merely technical failures but systemic features that benefit the powerful. Just as the gray economy preys on the desperate with promises of quick wealth, the crypto market often operates under a facade of decentralization while enabling centralized control and selective enforcement.
@@ -182,6 +202,7 @@ At its core, the essay challenges the original promise of blockchain—transpare
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -220,6 +241,7 @@ From a regulatory perspective, immutable on-chain logs offer transparent and aud
 
 
 
+
 Today’s learning focused on the evolving threat landscape in Web3, highlighted by key data, attack methodologies, and emerging challenges. In 2025 alone, the ecosystem suffered over $3.5 billion in losses across more than 1,200 major security incidents, reflecting a trend toward both highly targeted attacks and widespread automated threats. High-profile breaches—such as the multi-signature compromise at Bybit, AI-driven deepfake social engineering at ULXINK, and complex DeFi contract exploits like Balancer—illustrate how attackers are leveraging advanced techniques, supply chain vulnerabilities, and AI to execute sophisticated and damaging campaigns.
 
 Notably, attack vectors have diversified. “Precision hunting” tactics, often linked to state-sponsored actors like North Korea’s Lazarus Group, accounted for the majority of high-value institutional thefts. Meanwhile, “spray-and-pray” methods such as phishing, private key theft, and rug pulls remained pervasive, increasingly enhanced by AI-generated content and automated tooling. Emerging threats also include novel phishing schemes exploiting EIP-7702 delegation features, self-propagating supply chain worms like Shai-Huud, and AI-aided smart contract vulnerability discovery—marking a shift toward more automated, scalable, and stealthy attacks.
@@ -231,6 +253,7 @@ Overall, today’s review underscores that security in Web3 is no longer merely 
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -272,6 +295,7 @@ Finally, the discussion touched on blockchain fundamentals such as 51% attacks, 
 
 
 
+
 Today, I installed the MetaMask and Solflare wallet extensions on my Edge browser, enabling me to manage transactions on both Ethereum and Solana networks directly through supported websites. I also acquired Sepolia ETH via a Proof-of-Work faucet using my Ethereum testnet wallet address, allowing me to begin interacting with testnet applications.
 
 During today’s learning session, I reviewed the foundational principles of Web3 and blockchain technology, covering core functions and underlying architectural logic—such as how transactions are executed and how smart contracts operate on Ethereum and other blockchain platforms. This refreshed my understanding of the technical groundwork that supports decentralized applications and ecosystems.
@@ -283,6 +307,7 @@ Overall, today’s hands-on setup and conceptual review strengthened my practica
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
