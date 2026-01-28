@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+通过在本地启动一条独立的区块链网络，并借助命令行工具完成合约部署与状态读写，系统理解了 Web3 应用中“节点—合约—用户交互”之间的底层关系。
+
+Foundry 提供了一组高度模块化的开发工具，其中 Anvil、Forge 与 Cast 分别承担不同但互补的功能。Anvil 用于在本地启动以太坊兼容节点，负责区块生成、账户管理与交易执行，其本质是一个可控、瞬时存在的区块链运行环境。只要 Anvil 进程运行，本地区块链即持续存在；一旦终止，链上状态将被完全清空。这一特性使我能够在无需真实成本的前提下反复实验合约部署与交易行为。Anvil 在启动时自动生成多组账户及其私钥，并为其分配大量测试以太币，这一设计直观体现了私钥在账户控制与交易签名中的核心作用。
+
+在此基础上，我使用 Forge 初始化智能合约项目并完成合约部署流程。Forge 负责合约的编译、测试与链上部署，是 Foundry 中面向开发阶段的核心工具。通过 `forge init` 创建项目后，合约源码、测试代码与部署脚本被清晰地组织在不同目录中，这种工程结构与主流以太坊开发框架保持一致，有助于后续扩展与维护。在部署阶段，Forge 通过指定 RPC 地址将交易发送至 Anvil 所提供的本地节点，并使用私钥对部署交易进行签名，从而在本地区块链上生成合约实例。部署成功后返回的合约地址，成为后续所有链上交互的唯一定位标识。
+
+完成合约部署后，我通过 Cast 与已部署合约进行交互。Cast 作为链上交互工具，区分了只读调用（call）与状态修改交易（send）两类操作。只读调用不会改变链上状态，也不消耗 Gas，本质上对应以太坊中的 `eth_call`；而状态修改操作需要构造并签名交易，其执行过程会触发区块生成并更新全局状态。通过这一对比，我明确理解了区块链系统中“查询状态”与“提交交易”在执行路径和成本模型上的根本差异。同时，Cast 返回的数据默认以十六进制形式呈现，这一细节进一步强化了我对 EVM 底层数据表示方式的认识，也促使我借助工具完成从机器表示到人类可读结果的转换。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 Hardhat 是一个面向以太坊及兼容区块链的智能合约开发环境，旨在为开发者提供从合约编写、编译、测试、调试到部署的一体化工具链。其设计理念强调模块化与可扩展性，通过插件机制支持多样化的开发需求，并逐渐发展为以太坊生态中事实上的主流本地开发框架之一。Hardhat 不仅关注合约本身的正确性，也重视开发过程中的可调试性与工程可维护性。
 
 在环境准备方面，Hardhat 对运行环境提出了明确要求。其核心依赖于现代 JavaScript 运行时，因此需要 Node.js 22 或更高版本，同时依赖 npm、pnpm 或 yarn 等包管理工具完成依赖解析与脚本执行。开发过程中通常结合代码编辑器（如 VS Code）以获得更好的类型提示、语法高亮与调试体验。这一前置条件反映了 Hardhat 在工程实践上对现代 Web 开发生态的深度依赖。
@@ -32,6 +44,7 @@ Hardhat 是一个面向以太坊及兼容区块链的智能合约开发环境，
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 ### Multi-Signature Wallet（多签钱包）
 
@@ -60,6 +73,7 @@ Hardhat 是一个面向以太坊及兼容区块链的智能合约开发环境，
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约束环境下描述可验证状态转移规则**而存在。其语法、类型系统与限制并非偶然，而是直接服务于以下目标：确定性执行、状态可复现、最小信任假设以及经济成本可计量。
@@ -105,6 +119,7 @@ Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约
 
 
 
+
 今天主要进行了 Solidity 的应用学习（Applications），重点体验了以下功能的实现：
 
 1\. Ether Wallet
@@ -122,6 +137,7 @@ Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -231,6 +247,7 @@ Solidity 中有三种主要的失败机制，但语义并不相同：
 
 
 
+
 **storage**：链上永久存储，读写成本高，生命周期与合约一致。
 
 **memory**：函数执行期间的临时内存，成本较低，执行结束即释放。
@@ -327,6 +344,7 @@ contract Ownable {
 
 
 
+
 ### **1.21**[**Solidity by Example | 0.8.26**](https://solidity-by-example.org/) **Basic 部分**
 
 **一、Hello World 合约与基础结构**
@@ -394,6 +412,7 @@ function getSum(uint a, uint b) external pure returns(uint) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -610,6 +629,7 @@ assert
 
 
 
+
 ### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
 
 A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
@@ -693,6 +713,7 @@ RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取
 
 
 
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -738,6 +759,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -838,6 +860,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -891,6 +914,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -991,6 +1015,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -1060,6 +1085,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -1097,6 +1123,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
