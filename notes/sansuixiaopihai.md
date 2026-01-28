@@ -15,8 +15,164 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+\## 学习总结day17
+
+休闲黑客松已经了我们的开始选题ReflectTrade (反思交易)，基于LLm和Kite AI支付的，我主要负责的部分就是Kite AI支付，实现支付0.1usdc或者链上存在的功能，刚好也是我最想做的功能，今天的任务就是开始弄黑客松的，记录其中的难点
+
+今天主要写的也是智能合约，虽然很大一部分是ai写的，但现在也算是比较能看到大半的代码了
+
+\`\`\`
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+// --- 1. 手写一个接口，确保包含 decimals() ---
+
+// 不要引用外部 OpenZeppelin，直接用这个精简版接口
+
+interface IERC20Minimal {
+
+function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+
+function transfer(address recipient, uint256 amount) external returns (bool);
+
+function balanceOf(address account) external view returns (uint256);
+
+// 显式声明 decimals，无论对方是 public 变量还是函数，在 Solidity 外部调用时都是用 .decimals()
+
+function decimals() external view returns (uint8);
+
+}
+
+contract TradeAgentCore {
+
+// --- 状态变量 ---
+
+address public agentWallet; // AI Agent 钱包
+
+IERC20Minimal public paymentToken; // 使用刚才定义的接口
+
+uint256 public auditPrice; // 0.1 个代币
+
+uint256 public betAmount; // 1.0 个代币
+
+mapping(address => bool) public hasActiveBet;
+
+// --- 事件 ---
+
+event AuditRequested(address indexed user, string tradeLogic, uint256 timestamp);
+
+event BetPlaced(address indexed user, uint256 amount, uint256 timestamp);
+
+event BetSettled(address indexed user, bool isWin, string reason);
+
+modifier onlyAgent() {
+
+require(msg.sender == agentWallet, "Only Agent");
+
+\_;
+
+}
+
+// --- 构造函数 ---
+
+constructor(address _paymentToken, address_ agentWallet) {
+
+// 强制转换地址为我们要的接口类型
+
+paymentToken = IERC20Minimal(\_paymentToken);
+
+agentWallet = \_agentWallet;
+
+// 这里的 try/catch 是为了防止某些极其不标准的代币报错
+
+// 但大部分 Testnet USDC/USDT 都支持 decimals()
+
+try paymentToken.decimals() returns (uint8 d) {
+
+// 动态计算精度
+
+auditPrice = 1 _(10_ \* d) / 10; // 0.1
+
+betAmount = 1 _(10_ \* d); // 1.0
+
+} catch {
+
+// 如果获取失败，默认按 18 位精度处理（兜底方案）
+
+auditPrice = 0.1 ether;
+
+betAmount = 1 ether;
+
+}
+
+}
+
+// --- 功能 1: 审计 (0.1) ---
+
+function requestAudit(string memory tradeLogic) external {
+
+bool success = paymentToken.transferFrom(msg.sender, agentWallet, auditPrice);
+
+require(success, "Transfer failed");
+
+emit AuditRequested(msg.sender, tradeLogic, block.timestamp);
+
+}
+
+// --- 功能 2: 下注 (1.0) ---
+
+function placeBet() external {
+
+require(!hasActiveBet\[msg.sender\], "Bet active");
+
+bool success = paymentToken.transferFrom(msg.sender, address(this), betAmount);
+
+require(success, "Transfer failed");
+
+hasActiveBet\[msg.sender\] = true;
+
+emit BetPlaced(msg.sender, betAmount, block.timestamp);
+
+}
+
+// --- 功能 3: 结算 ---
+
+function settleBet(address user, bool isWin) external onlyAgent {
+
+require(hasActiveBet\[user\], "No bet");
+
+hasActiveBet\[user\] = false;
+
+if (isWin) {
+
+paymentToken.transfer(user, betAmount);
+
+emit BetSettled(user, true, "Won");
+
+} else {
+
+paymentToken.transfer(agentWallet, betAmount);
+
+emit BetSettled(user, false, "Lost");
+
+}
+
+}
+
+}
+
+\`\`\`
+
+现在的困难有点在用kity的sdk的地方，还需要到时候慢慢研磨慢慢找问题
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 \## 学习总结day16
 
 今天主要的学习计划是看solidity的基础语法和复习前面的学习，准备休闲黑客松组队和选题
@@ -54,6 +210,7 @@ block.gaslimit：gas限制
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 ## **学习总结day15**
 
@@ -116,6 +273,7 @@ function enumToUint() external view returns(uint){
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 ## 学习总结day13
 
 今天主要的学习计划是看solidity的基础语法和复习前面的学习，并完善昨天的demo，今天主要记录其中的难点，和使用到的困难点；
@@ -135,6 +293,7 @@ call 返回两个值： bool sent：转账或调用是否成功（true = 成功�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -203,6 +362,7 @@ i++ (后自增)：会多产生一个临时变量。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -459,6 +619,7 @@ contract PointSystem {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -735,6 +896,7 @@ points\[\_add\] += po;
 
 
 
+
 ## **学习总结day10**
 
 今天主要的学习计划是看solidity的基础语法和联系，今天的这些学习总结主要是记录一些比较难懂的学习点
@@ -878,6 +1040,7 @@ function leaveMessage(string memory _msg) public {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1063,6 +1226,7 @@ contract EventExample {
 
 
 
+
 ## **学习总结day08**
 
 ### **理解 ERC-7962：**
@@ -1140,6 +1304,7 @@ contract : 合约，后面接函数名，把它理解成一个python的类 funct
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1238,6 +1403,7 @@ Dapp全称去**中心化应用**，是与**传统集中式应用不同的全新�
 
 
 
+
 ## **学习总结day06**
 
 今天看一些其他的扩展阅读，这些笔记是扩展阅读的记录
@@ -1301,6 +1467,7 @@ OP-Rollup 会定期向以太坊主网上传两种类型的数据：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1419,6 +1586,7 @@ Gas不仅是手续费，更是以太坊的\*\*安全防线和资源配额系统\
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1587,6 +1755,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1792,6 +1961,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 ## **学习总结day02**
 
 今天的学习主要是021学习以太坊第一章，同时也是按照自身工作经验来安排后续的到岗位意向
@@ -1886,6 +2056,7 @@ Defi（金融）、NFT（资产）、DAO（治理）、基础建设
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
