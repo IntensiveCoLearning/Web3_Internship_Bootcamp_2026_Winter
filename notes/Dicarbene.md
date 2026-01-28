@@ -15,8 +15,49 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# **Ethernaut 前 3 关**
+
+## **Level 0 — Hello Ethernaut**
+
+-   目的：熟悉控制台交互与提交实例。
+    
+-   做法：按提示依次调用 `info...()`，拿到 `password()`，执行  
+    `authenticate(password)`。
+    
+
+* * *
+
+## **Level 1 — Fallback**
+
+-   漏洞：`receive/fallback` 在 `contributions[msg.sender] > 0` 时会把 `owner` 改成 `msg.sender`。
+    
+-   通关步骤：
+    
+    1.  先贡献一点点：`contribute({value: 1})`
+        
+    2.  再直接给合约转 1 wei 触发 receive：`sendTransaction({to: instance, value: 1})`
+        
+    3.  成为 owner 后提现：`withdraw()`
+        
+
+* * *
+
+## **Level 2 — Fallout**
+
+-   漏洞：构造函数拼写错误（如 `Fal1out()`）变成了 public 普通函数，任何人可设置 owner。
+    
+-   通关步骤：
+    
+    1.  直接调用“伪构造函数”：`Fal1out()`
+        
+    2.  验证 `owner()` 。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 1) ERC-20：同质化代币（Fungible Token）
 
 用途：最常见的代币标准（积分、治理代币、稳定币等）。
@@ -279,6 +320,7 @@ ERC 的价值在于“可组合性”：你的合约遵循标准，就能直接�
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
+
 \## 1. Foundry
 
 \- 以 **Rust** 实现的以太坊开发工具链，主打：\*\*编译快、测试快、脚本部署强\*\*。
@@ -508,6 +550,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 \## 1. 复习回顾（补课清单）
 
 \- 数据位置`storage / memory / calldata`
@@ -555,6 +598,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -647,6 +691,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 
 
+
 \### 继承与多态
 
 \- 使`is`关键字继承，支持多重继承
@@ -726,6 +771,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -855,6 +901,7 @@ contract MyContract {
 
 
 
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -864,6 +911,7 @@ contract MyContract {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -962,6 +1010,7 @@ contract MyContract {
 
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -1038,6 +1087,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -1088,6 +1138,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1162,6 +1213,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
