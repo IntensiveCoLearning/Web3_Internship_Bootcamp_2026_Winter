@@ -15,8 +15,416 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+1.2 项目结构
+
+\`\`\`
+
+hardhat-project/
+
+├── contracts/ # Solidity 合约
+
+├── scripts/ # 部署脚本
+
+├── test/ # 测试文件
+
+├── hardhat.config.ts # Hardhat 配置文件
+
+├── package.json
+
+└── tsconfig.json # TypeScript 配置（如果选择TS）
+
+\`\`\`
+
+二、配置文件详解
+
+2.1 基础配置
+
+\`\`\`typescript
+
+// hardhat.config.ts
+
+import { HardhatUserConfig } from "hardhat/config";
+
+import "@nomicfoundation/hardhat-toolbox";
+
+import "@nomicfoundation/hardhat-verify";
+
+const config: HardhatUserConfig = {
+
+solidity: {
+
+version: "0.8.20",
+
+settings: {
+
+optimizer: {
+
+enabled: true,
+
+runs: 200,
+
+},
+
+viaIR: true, // 启用 IR 优化器（高级特性）
+
+},
+
+},
+
+networks: {
+
+hardhat: {
+
+chainId: 1337,
+
+// 本地网络配置
+
+mining: {
+
+auto: true,
+
+interval: \[3000, 6000\] // 随机间隔挖矿
+
+}
+
+},
+
+sepolia: {
+
+url: process.env.SEPOLIA\_RPC\_URL || "",
+
+accounts: process.env.PRIVATE\_KEY ? \[process.env.PRIVATE\_KEY\] : \[\],
+
+},
+
+mainnet: {
+
+url: process.env.MAINNET\_RPC\_URL || "",
+
+accounts: process.env.PRIVATE\_KEY ? \[process.env.PRIVATE\_KEY\] : \[\],
+
+}
+
+},
+
+etherscan: {
+
+apiKey: {
+
+sepolia: process.env.ETHERSCAN\_API\_KEY || "",
+
+mainnet: process.env.ETHERSCAN\_API\_KEY || "",
+
+}
+
+},
+
+gasReporter: {
+
+enabled: [process.env.REPORT](http://process.env.REPORT)\_GAS === "true",
+
+currency: "USD",
+
+coinmarketcap: process.env.COINMARKETCAP\_API\_KEY,
+
+},
+
+paths: {
+
+sources: "./contracts",
+
+tests: "./test",
+
+cache: "./cache",
+
+artifacts: "./artifacts",
+
+},
+
+mocha: {
+
+timeout: 40000 // 测试超时时间
+
+}
+
+};
+
+export default config;
+
+\`\`\`
+
+2.2 多版本 Solidity 配置
+
+\`\`\`typescript
+
+solidity: {
+
+compilers: \[
+
+{
+
+version: "0.8.20",
+
+settings: {
+
+optimizer: { enabled: true, runs: 200 }
+
+}
+
+},
+
+{
+
+version: "0.7.6",
+
+settings: {
+
+optimizer: { enabled: true, runs: 200 }
+
+}
+
+}
+
+\]
+
+}
+
+\`\`\`
+
+三、合约开发与测试
+
+3.1 编写合约
+
+\`\`\`solidity
+
+// contracts/Token.sol
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MyToken is ERC20, Ownable {
+
+uint256 public constant MAX\_SUPPLY = 1\_000\_000 _10_ \* 18;
+
+constructor() ERC20("MyToken", "MTK") Ownable(msg.sender) {
+
+_mint(msg.sender, MAX_SUPPLY);
+
+}
+
+function mint(address to, uint256 amount) public onlyOwner {
+
+require(totalSupply() + amount <= MAX\_SUPPLY, "Exceeds max supply");
+
+\_mint(to, amount);
+
+}
+
+}
+
+\`\`\`
+
+3.2 进阶测试模式
+
+\`\`\`typescript
+
+// test/Token.test.ts
+
+import { expect } from "chai";
+
+import { ethers, network, upgrades } from "hardhat";
+
+import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
+
+import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
+
+import { MyToken } from "../typechain-types";
+
+describe("MyToken", function () {
+
+// 使用 fixture 优化测试性能
+
+async function deployTokenFixture() {
+
+const \[owner, addr1, addr2\] = await ethers.getSigners();
+
+const Token = await ethers.getContractFactory("MyToken");
+
+const token = await Token.deploy();
+
+await token.waitForDeployment();
+
+return { token, owner, addr1, addr2 };
+
+}
+
+describe("Deployment", function () {
+
+it("Should set the right owner", async function () {
+
+const { token, owner } = await loadFixture(deployTokenFixture);
+
+expect(await token.owner()).to.equal(owner.address);
+
+});
+
+it("Should assign the total supply to owner", async function () {
+
+const { token, owner } = await loadFixture(deployTokenFixture);
+
+const ownerBalance = await token.balanceOf(owner.address);
+
+expect(await token.totalSupply()).to.equal(ownerBalance);
+
+});
+
+});
+
+describe("Transactions", function () {
+
+it("Should transfer tokens between accounts", async function () {
+
+const { token, owner, addr1, addr2 } = await loadFixture(deployTokenFixture);
+
+// 测试交易
+
+await token.transfer(addr1.address, 100);
+
+expect(await token.balanceOf(addr1.address)).to.equal(100);
+
+// 使用 connect 切换账户调用
+
+await token.connect(addr1).transfer(addr2.address, 50);
+
+expect(await token.balanceOf(addr2.address)).to.equal(50);
+
+});
+
+it("Should fail if sender doesn't have enough tokens", async function () {
+
+const { token, owner, addr1 } = await loadFixture(deployTokenFixture);
+
+const initialOwnerBalance = await token.balanceOf(owner.address);
+
+// 使用 expect...[to.be](http://to.be).revertedWith 测试失败情况
+
+await expect(
+
+token.connect(addr1).transfer(owner.address, 1)
+
+).[to.be](http://to.be).revertedWith("ERC20: insufficient balance");
+
+});
+
+});
+
+describe("Minting", function () {
+
+it("Should allow owner to mint tokens", async function () {
+
+const { token, owner, addr1 } = await loadFixture(deployTokenFixture);
+
+const initialSupply = await token.totalSupply();
+
+await [token.mint](http://token.mint)(addr1.address, 1000);
+
+expect(await token.totalSupply()).to.equal(initialSupply + 1000n);
+
+});
+
+it("Should not allow non-owner to mint", async function () {
+
+const { token, addr1 } = await loadFixture(deployTokenFixture);
+
+await expect(
+
+token.connect(addr1).mint(addr1.address, 1000)
+
+).[to.be](http://to.be).revertedWithCustomError(token, "OwnableUnauthorizedAccount");
+
+});
+
+});
+
+// 快照测试
+
+describe("Snapshot", function () {
+
+it("Should revert to snapshot", async function () {
+
+const { token, owner, addr1 } = await loadFixture(deployTokenFixture);
+
+// 创建快照
+
+const snapshotId = await network.provider.request({
+
+method: "evm\_snapshot",
+
+params: \[\],
+
+});
+
+// 修改状态
+
+await token.transfer(addr1.address, 100);
+
+const balance1 = await token.balanceOf(addr1.address);
+
+// 恢复快照
+
+await network.provider.request({
+
+method: "evm\_revert",
+
+params: \[snapshotId\],
+
+});
+
+// 验证状态已恢复
+
+const balance2 = await token.balanceOf(addr1.address);
+
+expect(balance2).to.equal(0);
+
+});
+
+});
+
+// 时间测试
+
+describe("Time manipulation", function () {
+
+it("Should advance time", async function () {
+
+const { token } = await loadFixture(deployTokenFixture);
+
+const block1 = await ethers.provider.getBlock("latest");
+
+// 前进 100 秒
+
+await time.increase(100);
+
+const block2 = await ethers.provider.getBlock("latest");
+
+expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
+
+});
+
+});
+
+});
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 智能合约实践关键注意事项：最后一天进行系统性学习，明天开始实践
 
 一、安全优先
@@ -72,6 +480,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 这是一片充满矛盾的赛道。一面是全球数万亿美元的非上市股权“围城”，另一面是链上实际可流转规模仅千万美元的早期现实。市场叙事宏大，但落地仍处极早期。 行业探索出三条路径，并非你死我活，而是各司其职：合成资产如同“流量先锋”，用高杠杆吸引投机资金，完成市场教育；SPV间接持有是当前“主流过渡”，架构灵活但游走在合规边缘；原生协作（TaaS） 则是“终极基建”，以合规牌照实现真股上链，是承载大规模机构资金的未来正道。当前核心挑战并非技术，而在于 “流动性悖论”——上链不等于有深度，薄型市场导致定价失效。同时，面临监管与标的公司法务的双重挤压，单边发行的套利模式难以为继。 未来破局关键在于 “转向协同” ：从争夺头部独角兽的流量，下沉至服务有真实流动性需求的长尾企业；从绕过公司的套利，转向为企业提供 TaaS（代币化即哦服务） 基础设施。最终，行业将形成多层次莫生态，从早期的概念炒作，走向真正提升实体经济资本效率的合规金融设施。 简言之，赛道想象空间巨大，但已从“讲故事”进入“拼合规、建生态、造深度”的硬核攻坚阶段。真正的爆发，将始于基础设施成熟与企业端主动协同之时。
 
@@ -482,6 +891,7 @@ balance := balance(addr)
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -769,6 +1179,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1089,6 +1500,7 @@ GitHub 工作流：
 
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -1291,6 +1703,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -1444,6 +1857,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -1491,6 +1905,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1583,6 +1998,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -1596,6 +2012,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1916,6 +2333,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
