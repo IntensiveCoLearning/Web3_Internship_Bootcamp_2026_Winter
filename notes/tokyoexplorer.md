@@ -15,8 +15,167 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+### 变量初始值
+
+-   `boolean`: `false`
+    
+-   `string`: `""`
+    
+-   `int`: `0`
+    
+-   `uint`: `0`
+    
+-   `enum`: 枚举中的第一个元素
+    
+-   `address`: `0x0000000000000000000000000000000000000000` (或 `address(0)`)
+    
+-   `function`
+    
+    -   `internal`: 空白函数
+        
+    -   `external`: 空白函数
+        
+-   映射`mapping`: 所有元素都为其默认值的`mapping`
+    
+-   结构体`struct`: 所有成员设为其默认值的结构体
+    
+-   数组`array`
+    
+    -   动态数组: `[]`
+        
+    -   静态数组（定长）: 所有成员设为其默认值的静态数组
+        
+
+### `delete`**操作符**
+
+`delete a`会让变量`a`的值变为初始值。
+
+### 常数
+
+Solidity中和常量相关的两个关键字，`constant`（常量）和`immutable`（不变量）。状态变量声明这两个关键字之后，不能在初始化后更改数值。这样做的好处是提升合约的安全性并节省`gas`。
+
+另外，只有**数值变量**可以声明`constant`和`immutable`；`string`和`bytes`可以声明为`constant`，但不能为`immutable`。
+
+### **constant**
+
+`constant`变量必须在声明的时候初始化，之后再也不能改变。尝试改变的话，编译不通过。
+
+```
+// constant变量必须在声明的时候初始化，之后不能改变
+uint256 constant CONSTANT_NUM = 10;
+string constant CONSTANT_STRING = "0xAA";
+bytes constant CONSTANT_BYTES = "WTF";
+address constant CONSTANT_ADDRESS = 0x0000000000000000000000000000000000000000;
+```
+
+### **immutable**
+
+`immutable`变量可以在声明时或构造函数中初始化，因此更加灵活。在`Solidity v0.8.21`以后，`immutable`变量不需要显式初始化，未显式初始化的`immutable`变量将使用数值类型的初始值（见 [8\. 变量初始值](https://github.com/AmazingAng/WTF-Solidity/blob/main/08_InitialValue/readme.md#%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%80%BC)）。反之，则需要显式初始化。 若`immutable`变量既在声明时初始化，又在constructor中初始化，会使用constructor初始化的值。
+
+```
+// immutable变量可以在constructor里初始化，之后不能改变
+uint256 public immutable IMMUTABLE_NUM = 9999999999;
+// 在`Solidity v8.0.21`以后,下列变量数值暂为初始值
+address public immutable IMMUTABLE_ADDRESS; 
+uint256 public immutable IMMUTABLE_BLOCK;
+uint256 public immutable IMMUTABLE_TEST;
+```
+
+你可以使用全局变量例如`address(this)`，`block.number` 或者自定义的函数给`immutable`变量初始化。在下面这个例子，我们利用了`test()`函数给`IMMUTABLE_TEST`初始化为`9`：
+
+```
+// 利用constructor初始化immutable变量，因此可以利用
+constructor(){
+    IMMUTABLE_ADDRESS = address(this);
+    IMMUTABLE_NUM = 1118;
+    IMMUTABLE_TEST = test();
+}
+
+function test() public pure returns(uint256){
+    uint256 what = 9;
+    return(what);
+}
+```
+
+### **控制流**
+
+-   **if-else**
+    
+
+```
+function ifElseTest(uint256 _number) public pure returns(bool){
+    if(_number == 0){
+        return(true);
+    }else{
+        return(false);
+    }
+}
+```
+
+-   **for循环**
+    
+
+```
+function forLoopTest() public pure returns(uint256){
+    uint sum = 0;
+    for(uint i = 0; i < 10; i++){
+        sum += i;
+    }
+    return(sum);
+}
+```
+
+-   **while循环**
+    
+
+```
+function whileTest() public pure returns(uint256){
+    uint sum = 0;
+    uint i = 0;
+    while(i < 10){
+        sum += i;
+        i++;
+    }
+    return(sum);
+}
+```
+
+-   **do-while循环**
+    
+
+```
+function doWhileTest() public pure returns(uint256){
+    uint sum = 0;
+    uint i = 0;
+    do{
+        sum += i;
+        i++;
+    }while(i < 10);
+    return(sum);
+}
+```
+
+-   **三元运算符**
+    
+
+三元运算符是`Solidity`中唯一一个接受三个操作数的运算符，规则`条件? 条件为真的表达式:条件为假的表达式`。此运算符经常用作`if`语句的快捷方式。
+
+```
+// 三元运算符 ternary/conditional operator
+function ternaryTest(uint256 x, uint256 y) public pure returns(uint256){
+    // return the max of x and y
+    return x >= y ? x: y; 
+}
+```
+
+另外还有`continue`（立即进入下一个循环）和`break`（跳出当前循环）关键字可以使用。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ### array、struct
 
 -   固定长度数组：在声明时指定数组的长度。用`T[k]`的格式声明，其中`T`是元素的类型，`k`是长度
@@ -144,11 +303,13 @@ function writeMap (uint _Key, address _Value) public{
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 今日在WTF上重新学习solidity，这里的教程比 [Solidity by Example](https://solidity-by-example.org/) 更好懂一点，目前完成了solidity101前五关。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 **Transient Storage:** Data stored in transient storage is cleared out after transaction.
@@ -273,6 +434,7 @@ contract ReentrancyGuardTransient {
 
 
 
+
 structs
 
 You can define your own type by creating a .`struct`
@@ -334,6 +496,7 @@ contract Todos {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -481,6 +644,7 @@ contract ArrayReplaceFromEnd {
 
 
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -563,6 +727,7 @@ contract Loop {
 
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -619,6 +784,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -626,6 +792,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -706,6 +873,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -766,6 +934,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -792,6 +961,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -861,6 +1031,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
