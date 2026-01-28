@@ -15,8 +15,74 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+【Day 17】学习笔记
+
+观看并学习**Speedrun Basic workshop**
+
+**有些看不太懂，但基于之前的学习和铺垫，已经可以理解很多。**
+
+**1\. 工具与方法：AI & "Vibe Coding"**
+
+-   **拥抱 AI**: Austin 强调现在的开发方式已经改变，鼓励使用 Claude 和 Cursor 等 AI 工具进行辅助编程（"Vibe Coding"）。
+    
+-   **学习重点**: 不要死记硬背 Solidity 语法，而是将挑战描述复制给 AI，让它生成代码，重点在于理解背后的核心概念和逻辑。
+    
+
+**2\. 核心挑战与技术要点**
+
+-   **Challenge 0: Tokenization (NFT)**
+    
+    -   Test in Prod: 建议直接在 L2 (Base, Arbitrum, Optimism) 上部署 NFT，因为费用极低。不再推荐使用测试网 (Goerli/Sepolia)，直接在主网环境测试更有意义。
+        
+-   **Challenge 1: Crowdfunding (众筹)**
+    
+    -   状态机 (State Machine): 智能合约本质是状态机，状态不会自动改变。
+        
+    -   激励机制: 必须有人发送交易（"poke it"）来触发状态变更（如众筹结束）。由于需要支付 Gas，必须设计激励机制（如给予调用者奖励）来确保系统按预期运转。
+        
+-   **Challenge 2: Token Vendor (代币售卖机)**
+    
+    -   Approve 模式: 讲解了 ERC20 中反直觉的 `approve` -> `transferFrom` 流程。
+        
+    -   精度: EVM 不支持浮点数，需理解 18 位小数 (Wei) 的计算方式。
+        
+-   **Challenge 3: Dice Game (随机数)**
+    
+    -   伪随机数风险: 链上随机数很难实现。直接使用 `block.prevrandao` (或旧的 blockhash) 是不安全的，容易被矿工/验证者操控。
+        
+    -   解决方案: 推荐使用 Commit-Reveal (提交-揭示) 机制或 Chainlink VRF 来获取安全的随机数。
+        
+-   **Challenge 4: DEX (去中心化交易所)**
+    
+    -   理解 常数乘积公式 (x \* y = k)。
+        
+    -   LP 激励: 流动性提供者 (LP) 通过捕获交易手续费来获得提供流动性的动力。
+        
+-   **Challenge 5: Lending (超额抵押借贷)**
+    
+    -   清算 (Liquidation): 这是借贷协议中最关键的安全机制。
+        
+    -   机制: 当抵押品价值下跌导致抵押率不足（例如低于 120%）时，必须允许任何人调用清算函数出售抵押品偿还债务。
+        
+    -   激励: 必须给予清算人折扣或奖励，以确保在市场暴跌时有人即使执行清算，防止协议产生坏账。
+        
+
+**3\. 建议总结**
+
+-   **Speedrun Ethereum**: 完整过一遍教程以掌握基础概念。
+    
+-   **阅读源码**: 阅读 OpenZeppelin、Uniswap 等成熟协议的代码。
+    
+-   **实战构建**: 使用 Scaffold-ETH + AI 工具，并在 L2 上构建和部署真实的 DApp。
+    
+-   **关注趋势**: 关注 Crypto Twitter，了解 AI Agents、ERC-8004 等前沿动态。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 【Day 15】学习笔记
 
 已完成
@@ -48,6 +114,7 @@ intp，金融咨询搬砖人，对web3技术感兴趣
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 【Day 14】学习笔记
 
@@ -87,6 +154,7 @@ Solidity 是一种静态类型的合约语言。其核心在于利用 `address` 
 
 
 
+
 【Day 12】学习笔记
 
 已完成
@@ -116,6 +184,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -162,6 +231,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 
 
+
 【Day 9】学习笔记
 
 已完成
@@ -181,6 +251,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -252,6 +323,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 
 
+
 【Day 7】学习笔记
 
 已完成
@@ -307,6 +379,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -413,6 +486,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 
 
+
 【Day 3】今日学习进度
 
 ## 一、已完成
@@ -492,6 +566,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 
 
+
 【Day 3】又是出差开会的一天QAQ
 
 1.  完成
@@ -522,6 +597,7 @@ V2改进V1，支持直接代币交易和permit签名；V3引入集中流动性�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
