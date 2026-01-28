@@ -15,8 +15,216 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# **Foundry 学习笔记**
+
+## **1）Foundry 是什么？为啥大家爱用它？**
+
+-   **一句话**：Foundry 是一套用 Rust 写的以太坊开发工具链，主打 **快、测试强、全程命令行**。
+    
+-   它特别适合：
+    
+    -   写 Solidity 合约
+        
+    -   写“像写代码一样”的合约测试（Solidity 写测试）
+        
+    -   快速部署/交互脚本（script）
+        
+    -   调试（trace/日志）和分叉主网（fork）
+        
+
+> 你可以把它理解成：更偏
+> 
+> **开发者效率**
+
+* * *
+
+## **2）Foundry 的四个核心工具（一定要记住）**
+
+1.  **forge**：编译 / 测试 / 部署 / 生成覆盖率 / fuzz 测试（主力）
+    
+2.  **cast**：命令行直接和链交互（查余额、发交易、调用合约函数）
+    
+3.  **anvil**：本地以太坊节点（类似 Hardhat Network）
+    
+4.  **chisel**：Solidity 的 REPL（交互式小实验，非必须但很爽）
+    
+
+* * *
+
+## **3）项目结构（Foundry 默认长这样）**
+
+-   src/：合约代码（Solidity）
+    
+-   test/：测试代码（Solidity 测试为主）
+    
+-   script/：部署/交互脚本（Solidity 脚本）
+    
+-   lib/：依赖库（比如 forge install 的 OpenZeppelin）
+    
+-   foundry.toml：配置文件（编译器版本、rpc、输出、profile 等）
+    
+
+* * *
+
+## **4）今天应该掌握的基本工作流（从 0 到 1）**
+
+### **Step 1：创建项目**
+
+-   forge init → 自动生成模板结构
+    
+
+### **Step 2：写合约**
+
+-   放在 src/
+    
+-   pragma 版本和配置一致
+    
+
+### **Step 3：编译**
+
+-   forge build
+    
+
+### **Step 4：写测试（Foundry 的强项）**
+
+-   测试写在 test/，也是 Solidity
+    
+-   测试逻辑通常是：
+    
+    -   setUp() 部署合约
+        
+    -   写多个 testXXX() 函数断言结果
+        
+
+### **Step 5：跑测试（速度很快）**
+
+-   forge test
+    
+-   可以加参数看更详细的失败原因（trace、verbosity）
+    
+
+### **Step 6：本地链/分叉链调试**
+
+-   anvil 起本地链
+    
+-   或者 fork 主网/测试网做“在真实状态上模拟交易”（非常适合 DeFi 学习）
+    
+
+### **Step 7：脚本部署/交互**
+
+-   script/ 里写 Script
+    
+-   forge script ... --broadcast 发送交易上链
+    
+-   也可以只跑不广播（先本地模拟）
+    
+
+* * *
+
+## **5）Foundry 测试体系：它为什么强？**
+
+### **5.1 Solidity 写测试的好处**
+
+-   你能直接在同一种语言里测试合约行为
+    
+-   更容易写“底层状态验证”
+    
+-   更容易做 fuzz/property-based testing
+    
+
+### **5.2 Cheatcodes（作弊码）= Foundry 的灵魂**
+
+Cheatcodes 让你在测试里“操控链环境”，非常关键：
+
+常见的（大白话记法）：
+
+-   vm.prank(addr)：下一次调用假装是某个地址发起（模拟不同用户）
+    
+-   vm.startPrank(addr) / vm.stopPrank()：连续模拟某个地址
+    
+-   [vm.deal](http://vm.deal)(addr, amount)：直接给某地址塞 ETH（模拟余额）
+    
+-   vm.warp(time)：改时间戳（测试时间相关逻辑）
+    
+-   vm.roll(blockNumber)：改区块高度
+    
+-   vm.expectRevert()：预期会失败（revert），不失败就算测试挂了
+    
+-   vm.expectEmit()：检查事件是否正确发出
+    
+
+> 记住一句：
+> 
+> **Hardhat 测试像“写 JS 测试合约”；Foundry 测试像“掌控整条链的实验室”。**
+
+### **5.3 Fuzz 测试（Foundry 的杀手锏）**
+
+-   你写一个带参数的测试函数，Foundry 会自动塞很多随机值去撞
+    
+-   用来抓：
+    
+    -   边界值 bug
+        
+    -   溢出/下溢
+        
+    -   奇怪输入导致的 revert
+        
+-   适合写“性质测试”（比如：转账前后总余额守恒）
+    
+
+* * *
+
+## **6）调试能力（以后会反复用）**
+
+-   forge test -vvvv：输出更详细执行过程
+    
+-   trace：能看到每一步 call 的栈和 gas
+    
+-   合约里 console.log（Foundry 提供的 debug 输出）也很常用
+    
+
+* * *
+
+## **7）cast：命令行交互非常实用**
+
+你可以用 cast 做这些事（适合快速验证）：
+
+-   查区块/查余额/查交易
+    
+-   直接调用合约的 view 函数
+    
+-   发交易调用写函数（签名+广播）
+    
+-   编码/解码 ABI 参数
+    
+
+> 大白话：
+> 
+> **cast = “链上 curl”**
+
+* * *
+
+## **8）Foundry vs Hardhat（可以这样记）**
+
+-   Foundry：快、测试强（fuzz+cheatcodes）、命令行极爽、适合 solidity heavy
+    
+-   Hardhat：生态插件多、前端/JS 工程融合自然、适合全栈团队
+    
+
+实务建议：
+
+-   合约研发/安全测试强需求 → Foundry
+    
+-   DApp 全栈/脚本/插件生态需求 → Hardhat
+    
+    很多团队：**Foundry 写测试 + Hardhat 做部署/集成**（混合流很常见）
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # **Hardhat 学习笔记**
 
 ## **1）Hardhat 是什么？解决什么问题？**
@@ -200,6 +408,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 # **Vibe Coding 学习笔记**
 
@@ -390,6 +599,7 @@ Vibe coding：先出一个能跑的 demo → 边用边改 → 逐步加规则/�
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 # **Ethernaut 前三关学习要点总结（Hello / Fallback / Fallout）**
 
 ## **关卡 1：Hello Ethernaut（熟悉 Console + 合约交互）**
@@ -532,6 +742,7 @@ function Fallout() public payable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -819,6 +1030,7 @@ ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1317,6 +1529,7 @@ for (...) {
 
 
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -1554,6 +1767,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1810,6 +2024,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -2026,6 +2241,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -2223,6 +2439,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -2390,6 +2607,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -2501,6 +2719,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2658,6 +2877,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2987,6 +3207,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -3104,6 +3325,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3461,6 +3683,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
