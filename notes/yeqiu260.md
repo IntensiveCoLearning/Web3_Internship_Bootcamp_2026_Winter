@@ -15,8 +15,53 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# Web3 学习笔记 Day 16：去中心化前端与 IPFS
+
+## 1\. 核心痛点：Web3 的阿喀琉斯之踵
+
+-   **现状**：智能合约在链上（去中心化），但前端网页通常在 AWS/阿里云（中心化）。
+    
+-   **风险**：如果服务器宕机或被审查，DApp 就无法访问。
+    
+-   **目标**：**Unstoppable Application**（永不宕机的应用）。
+    
+
+## 2\. IPFS vs HTTP：寻址方式的革命
+
+| 特性 | HTTP (Web2) | IPFS (Web3) |
+| 寻址方式 | 基于位置 (Location-based) | 基于内容 (Content-based) |
+| 指令 | 去 192.168.1.1 找 index.html | 全网谁有哈希为 QmXyZ... 的文件？ |
+| 中心化 | 高 (依赖特定服务器) | 低 (P2P 网络，多点存储) |
+| 抗审查性 | 弱 | 强 |
+
+-   **CID (Content Identifier)**：文件的唯一指纹。只要文件内容变了一个字节，CID 就会彻底改变。
+    
+
+## 3\. 实战部署：Pinata
+
+-   **Pinning Service**：类似 Web3 版的 GitHub Pages。它负责在 IPFS 网络中“钉住”你的文件，防止因没人下载而被垃圾回收。
+    
+-   **流程**：本地构建 HTML/JS -> 上传 Pinata -> 生成 CID -> 通过网关 (`ipfs.io/ipfs/CID`) 访问。
+    
+
+## 4\. 解决“不可变”难题：ENS 与 指针
+
+-   **问题**：IPFS CID 是不可变的。每次修 Bug 重新部署，CID 都会变，用户找不到新地址。
+    
+-   **CS 解决方案**：**指针 (Pointer)**。
+    
+    -   **IPFS CID** = 不可变数据 (Immutable Data)。
+        
+    -   **ENS (域名)** / **IPNS** = 可变指针 (Mutable Pointer)。
+        
+-   **实现**：将 `my-dapp.eth` 解析指向最新的 CID。用户只需记住域名。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # Web3 学习笔记 Day 15：构建 DApp 前端
 
 ## 1\. Web3 交互架构
@@ -51,6 +96,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 # Web3 学习笔记 Day 14：部署到公网 (Testnet)
@@ -88,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -182,6 +229,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # 🎓 12 天全栈 Web3 毕业典礼
 
 同学，恭喜你！坚持 12 天并不容易。 这 12 天里，我们从 0 到 1 构建了一个完整的 **Web3 计算机科学知识图谱**。让我们最后回顾一下这栋大楼的结构：
@@ -218,6 +266,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -268,6 +317,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 10：Layer 2 扩容与 Rollup
 
 ## 1\. Rollup 的本质
@@ -292,6 +342,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -357,6 +408,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 9+：NFT 进阶开发
 
 ## 1\. ERC-1155 (多代币标准)
@@ -410,6 +462,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 8：区块链架构分级
 
 ## 1\. 核心权衡 (The Trade-off)
@@ -434,6 +487,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -653,6 +707,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 学习笔记 Day 6：DeFi 的代码原语
 
 ## 1\. 代币标准：ERC-20 的本质
@@ -718,6 +773,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -852,6 +908,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 & AI 学习笔记 Day 4：智能的本质
 
 ## 1\. 人工智能的分级：专才 vs 通才
@@ -911,6 +968,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1022,6 +1080,7 @@ Step 3: 交易红线 (非实名必拒)
 
 
 
+
 # Web3 学习笔记 Day 2：成为高级用户
 
 ## 1\. 核心概念：钱包的本质
@@ -1076,6 +1135,7 @@ Step 3: 交易红线 (非实名必拒)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
