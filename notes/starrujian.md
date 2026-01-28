@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+![88327273cc95907006afc228e8c3aa04.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-28-1769610764796-88327273cc95907006afc228e8c3aa04.jpg)![80056a27a98a19655c2a441802c1c23b.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-28-1769610773624-80056a27a98a19655c2a441802c1c23b.jpg)
+
+colearning  
+两场会议  
+黑客松demo制作
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 参加co-learning  
 参加space和公开课  
 分析黑客松选题  
@@ -28,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 参加co-learning  
 参加两场会议  
 完成部分学习任务
@@ -37,6 +48,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 复习本周所学  
@@ -73,6 +85,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -147,6 +160,7 @@ Uniswap和AAVE是DeFi（去中心化金融）领域两个基石项目，它们�
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-23-1769179527183-image.png)
 
 学习TypeScript基础语法。  
@@ -155,6 +169,7 @@ Uniswap和AAVE是DeFi（去中心化金融）领域两个基石项目，它们�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -169,6 +184,7 @@ Dapp workshop
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -191,6 +207,7 @@ Uniswap 工作原理解析分享会
 
 
 
+
 ![794d0b6744e32fd71cd3ed74e44aba97.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-20-1768917575078-794d0b6744e32fd71cd3ed74e44aba97.jpg)![4adc12f93e6c4ad7d8b6d6ddbbe31e2c.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-20-1768917585309-4adc12f93e6c4ad7d8b6d6ddbbe31e2c.jpg)
 
 参加了co-learning  
@@ -200,6 +217,7 @@ Uniswap 工作原理解析分享会
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -226,6 +244,7 @@ Uniswap 工作原理解析分享会
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-18-1768735198203-image.png)
 
   
@@ -235,6 +254,7 @@ Uniswap 工作原理解析分享会
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -492,6 +512,7 @@ text
 
 
 
+
 ![屏幕截图 2026-01-16 221103.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573694758-_____2026-01-16_221103.png)![屏幕截图 2026-01-16 222134.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573713152-_____2026-01-16_222134.png)![屏幕截图 2026-01-16 222339.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-16-1768573747267-_____2026-01-16_222339.png)
 
 今天参加了co-learning,了解了很多关于推特运营知识。  
@@ -513,6 +534,7 @@ text
 
 
 
+
 ![a58869e1a7314e3274685058fd6022d6.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-15-1768487495398-a58869e1a7314e3274685058fd6022d6.jpg)![35533a7d179db624edf96fc1f96e5248.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-15-1768487508084-35533a7d179db624edf96fc1f96e5248.jpg)
 
 参加了co-learning,了解了一些参与项目时的事项和推特运营方法。  
@@ -522,6 +544,7 @@ text
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -559,6 +582,7 @@ text
 
 
 
+
 ![74c3021506f97df351d6cf647edd713f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317934329-74c3021506f97df351d6cf647edd713f.jpg)![17ab3b4e386b1201205ca0dbedd78906.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317946669-17ab3b4e386b1201205ca0dbedd78906.jpg)![abe735b02cc10522c4b56fb0f046bccb.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317955707-abe735b02cc10522c4b56fb0f046bccb.jpg)![4fdc8074d269deec2fcf2b0f858173fc.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/starrujian/images/2026-01-13-1768317980780-4fdc8074d269deec2fcf2b0f858173fc.jpg)
 
 今天参加了线上co-learning  
@@ -569,6 +593,7 @@ text
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
