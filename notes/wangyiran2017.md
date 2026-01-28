@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+👀 **分享会 - 投研基础框架建立**
+
+![微信图片_20260128203215_31_97.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/wangyiran2017/images/2026-01-28-1769612336828-_____20260128203215_31_97.png)
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 👀**分享会 - Web3 公共物品资金分配第二节课**
 
 ![微信图片_20260127204108_29_97.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/wangyiran2017/images/2026-01-27-1769520543915-_____20260127204108_29_97.png)
@@ -24,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 👀 全程参与今日两场分享会
 
