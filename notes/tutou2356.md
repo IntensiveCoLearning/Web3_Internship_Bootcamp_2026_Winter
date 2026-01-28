@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+今天听了老师的web3数据分析课程，了解到数据分析中比较重要的一些相关数据，比如（总锁仓量(TVL)、活跃地址数、交易量、Gas 费用、协议收入），数据分析工作流（提取(extract) -> 转换 (transform) -> 加载 (load）），常见 Web3 数据分析工具（Etherscan, Dune, RootData, DefiLlama, Token Terminal）
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 1
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 今天听了Oxhardman老师分享的黑客松分享，了解到了黑客松的比赛内容和相关的注意事项，收获很多。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 1
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天听了Austin的分享会，对学习路径有了更深的了解
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -117,6 +127,7 @@ contract CoreConcept {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -404,6 +415,7 @@ nullifier = Hash(identitySecret, electionId)
 
 
 
+
 ### **三、RPC 节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。理解 RPC 的工作原理、选择合适的 RPC 服务商，以及正确配置和使用 RPC 节点，是每个 Web3 开发者必须掌握的基础知识。
@@ -451,6 +463,7 @@ nullifier = Hash(identitySecret, electionId)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -546,6 +559,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -666,6 +680,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -810,6 +825,7 @@ MEME 币具有极高的投机性和波动性。价格可能在短时间内暴涨
 
 
 
+
 ## 二、以太坊概览
 
 ### 2.7 **以太坊核心机制：从账户到执行的完整链路**
@@ -941,6 +957,7 @@ Compound 是一个去中心化的借贷平台，允许用户借入或借出加�
 
 
 
+
 二、以太坊概览
 
 \*\*2.4 2022 年 9 月 The merge : PoW(\*\*工作量证明 Proof of Work) \*\*—> PoS(\*\*权益证明 Proof of Stake)
@@ -1006,6 +1023,7 @@ Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
