@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+以写一个完整项目为目标学习，参加分享会，1.28colearn
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 参加colearn，分享会，补视频
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 <!-- DAILY_CHECKIN_2026-01-26_END -->
@@ -30,11 +37,13 @@ rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 同昨天
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -47,11 +56,13 @@ rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 
 
 
+
 回顾之前的视频回放
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -68,11 +79,13 @@ rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 
 
 
+
 参加1.20co-learn、两个分享会，完成了一些入门技术任务
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -93,11 +106,13 @@ rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 
 
 
+
 铸造SPL token
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -122,11 +137,13 @@ rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 
 
 
+
 参加1.15co-learn，参加web3AI分享会，复习solidity语法
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -156,11 +173,13 @@ rust基本掌握，复习solidity，参加1.26分享会，回顾视频
 
 
 
+
 参加1.13co-learn学习会，学习021学习以太坊开源教材，学习rust，参加web3运行原理分享会
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
