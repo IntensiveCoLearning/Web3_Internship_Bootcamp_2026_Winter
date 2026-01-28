@@ -15,8 +15,45 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+**RPC使用最佳实践**  
+· 保护API Key — 使用环境变量存储RPC URL和API Key
+
+RPC key泄露不等于资产立刻被偷，会导致免费额度被刷爆，账号被封，项目直接挂掉。
+
+-   不要将敏感信息提交到 Git 仓库
+    
+
+http('[https://eth-mainnet.g.alchemy.com/v2/MY\_SECRET\_KEY](https://eth-mainnet.g.alchemy.com/v2/MY_SECRET_KEY)') ❌
+
+-   使用 .gitignore 忽略 .env 文件
+    
+
+正确版本✅
+
+import 'dotenv/config'
+
+const client = createPublicClient({
+
+  chain: mainnet,
+
+  transport: http(process.env.ALCHEMY\_RPC\_URL!)
+
+})
+
+什么是.gitignore,什么是.env文件
+
+• **.gitignore**：👉 告诉 Git「**这些文件别帮我存档、别上传**」
+
+• **.env**：👉 专门用来放「**不能公开的配置**」的文件
+
+定期轮换 API key — 发现异常流量，Github不小心push了，同事/合作者离职，立刻废掉旧Key，生成新Key
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 **JSON-RPC协议**
 
 **以太坊使用JSON-RPC2.0协议作为标准的RPC通信格式。**
@@ -83,6 +120,7 @@ const client = createPublicClient(...)
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 **RPC节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。
@@ -139,6 +177,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 2. **智能合约（Smart Contracts）**：
 
 -   智能合约是 Dapp 的核心，它定义了应用的业务逻辑，并部署在区块链上。智能合约通过执行自动化的规则来确保交易和操作的透明性与不可篡改性。
@@ -177,6 +216,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 
 
 
+
 Dapp架构和开发流程
 
 去中心化应用（Dapp）是与传统集中式应用不同的全新应用模式，通常运行在区块链或分布式网络上。
@@ -207,6 +247,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -245,6 +286,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 
 
+
 ```remix-solidity
 pragma solidity ^0.8.0;
 
@@ -271,6 +313,7 @@ function addOne() public {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -416,6 +459,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 
 
+
 昨天留下的问题，LP TOKEN证明的不是存入的ETH或者USDC在mempool里的存款，LP TOKEN证明的是自己的存款在CA账户里的比例。
 
 这个比例本身不会变，只要没有新增LP和退出的LP，交易得再多，这个比例也不会变。但是这个比例的资产内容会一直在变，因为有人用ETH换USDC也会有人用USDC换ETH，所以池子里X/Y一直在变化。昨晚把mempool和CA账户的资产概念混淆了，mempool的唯一作用是暂存“还没有被请求的交易”。
@@ -431,6 +475,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -490,6 +535,7 @@ Gas在EOA to EOA时只是记账付费（手续费），在EOA to CA时是计算�
 
 
 
+
 23:30 Tue 13 Jan 2026 因为工作原因今天晚上的闲暇时间不是很多，继续在阅读入门导读。
 
 今晚就只在钻研一个问题，什么是Layer1, Layer2,Sidechains?什么是Application Layer应用层、Protocol Layer协议层、Scaling Layer扩展层？
@@ -538,6 +584,7 @@ Scaling layer扩展层 提升性能和降低成本的解决方案。我的理解
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
