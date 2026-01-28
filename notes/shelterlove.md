@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+1.  参加space，老师们讲的真的太好了，理想主义者的对谈
+    
+2.  听了黑客松的开营仪式，激动激动，希望能学到东西
+    
+3.  学习了几个ERC标准，感觉有点迷惑，很多ERC的理念很简单，但涉及到细节技术很多还是有很多难点，但没有那种教程，感觉之后可以写一下
+    
+4.  和组员们讨论了一下选题和赛道，基本敲定了，明天开始加油
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 1.  今天上午被导师追杀了，催我快点把论文初稿给他，还给我的年终组会安排了任务，干了大半天科研任务
     
 2.  今天主要还是参加了两个小分享会，黑客松选题的分享会受益匪浅啊
@@ -29,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 1.  参加各种分享会，回头好好研究下hardman老师的Twitter分享
     
 2.  完成了poly market的任务，但还没上传github，对github的使用还不熟悉，要好好补补课
@@ -40,6 +53,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 1.  今天最有成就感的事是把reactive合约的部署分享给了同学们
     
 2.  晚上开始研究PolyMarket的任务，第一个任务还可以，第二个有点难，一直连不上api，明天再想想办法吧
@@ -49,6 +63,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -71,6 +86,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天完成任务+听分享会，感觉没有太多时间做详细笔记了，跟huahua老师学习，简单记录一下，周六日复盘再整理下
 
 1.  上午Austin的分享相当友好了，带大家过了一下SpeedRun，他真的很有激情，想他学习，比较关键的点是随机数的问题
@@ -84,6 +100,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -167,6 +184,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## 笔记
 
 Uniswap
@@ -241,6 +259,7 @@ LP提供的流动性贡献在一个特定的区间，可以让流动性更大
 
 
 
+
 ## 笔记
 
 **remix实操**
@@ -286,6 +305,7 @@ storage：4906
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -650,6 +670,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日计划完成情况
 
 1.  完成speed run etheruem challenge 0
@@ -674,6 +695,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -888,6 +910,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1158,6 +1181,7 @@ function changeOwner(address _newOwner)
 
 
 
+
 ## 今日学习任务完成情况
 
 1.  021学习以太坊第三章
@@ -1197,6 +1221,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1263,6 +1288,7 @@ function changeOwner(address _newOwner)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1372,6 +1398,7 @@ Q：NFT的价值来自什么
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
