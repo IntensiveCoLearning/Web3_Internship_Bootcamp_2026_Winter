@@ -15,8 +15,140 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+\## 为什么用 Hardhat
+
+\- 做 dApp 更顺：写合约 + 写部署脚本 + 写测试（JS/TS）一套下来。
+
+\- 以后接前端（ethers.js）也方便。
+
+\---
+
+\## Solidity 算不算面向对象？
+
+\- 不算那种传统 OOP（Java/C++）的完整体系。
+
+\- 但写法很像`contract`≈类，能继承`is`），能重写`virtual/override`），有可见性（public/private/internal/external）。
+
+\---
+
+\## `immutable`（不可变变量）
+
+\- 类似常量，但\*\*值可以在构造函数里确定\*\*（部署时确定），之后就不能改。
+
+例子理解：
+
+\`\`\`solidity
+
+address public immutable myAddr;
+
+uint256 public immutable myUint;
+
+constructor(uint256 \_myUint) {
+
+myAddr = msg.sender; // 谁部署的就记住谁
+
+myUint = \_myUint; // 部署时传的参数
+
+}
+
+\`\`\`
+
+对比：
+
+\- `constant`：编译期就写死，不能用 `msg.sender` / 部署参数。
+
+\- `immutable`：部署时定死，部署后不能改。
+
+\---
+
+\## Gas / Gas price / gas spent
+
+\- 交易费用大概就是`gasUsed * gasPrice`
+
+\- gas 是计算单位；gasUsed 是实际用掉的量；gasPrice 是每单位 gas 愿意出多少钱（出价高通常更容易被打包）。
+
+\- **没用完的 gas 会退**（所以不是按我设置的上限全扣）。
+
+\---
+
+\## `gas limit` 是啥
+
+\- 我给这笔交易设的“最多允许烧多少 gas”（计算预算上限）。
+
+\- 两种结果：
+
+1\. gas limit 够：交易成功，只扣实际用掉的，剩下退回
+
+2\. gas limit 不够：Out of Gas，交易失败、状态回滚，但\*\*已经烧掉的 gas 不退\*\*
+
+那个无限循环例子：
+
+\`\`\`solidity
+
+while (true) { i += 1; }
+
+\`\`\`
+
+\- 会一直执行直到 gas 用完 → 失败回滚，但 gas 已经花了。
+
+顺便记一下：还有个 **block gas limit**（一个区块最多容纳多少 gas，是网络层面的上限）。
+
+\---
+
+\## UDVT（User Defined Value Types，用户自定义值类型）
+
+写法：
+
+solidity
+
+\`\`\`solidity
+
+type Duration is uint64;
+
+type Timestamp is uint64;
+
+\`\`\`
+
+用途：同样是 `uint64`，但语义不同，就强制区分开，避免传参传反还编译通过。
+
+常用：
+
+\- `Duration.wrap(1)`：把基础类型包成自定义类型
+
+\- `Duration.unwrap(d)`：拆回基础类型
+
+效果对比：
+
+\- `wrap(uint64,uint64)`：传反顺序也能编译（坑）
+
+\- `wrap(Duration, Timestamp)`：传反直接编译不过（更安全）
+
+\---
+
+\## `library` 是什么意思
+
+\- 就是“工具函数集合”（复用代码用的）。
+
+\- 常放位运算/编码解码/数学之类的函数。
+
+\- 这份代码里用 library 做打包/拆包，把两个 `uint64` 拼成一个 `uint128`（Clock），以及再拆出来。
+
+\---
+
+\## 一个 `.sol` 文件能写几个 `contract`？
+
+\- 可以写多个，没有硬性数量限制。
+
+\- 但部署时每个合约有代码大小等限制（太大可能部署不了）。
+
+\- 在 Hardhat/Remix 里部署时要选你要部署的那个合约。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 工程师的思考 (Reflections)
 
 1\. **开发体验的进化 (DX)**：
@@ -40,6 +172,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 \### 黑客松
 
@@ -68,6 +201,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 \### Scaffold-Eth 介绍
@@ -174,6 +308,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 ### 读取合约 (Read Contracts)
 
 1\. **核心三要素**： 要与合约交互，你需要：
@@ -237,6 +372,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -282,6 +418,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -346,6 +483,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -504,6 +642,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -567,6 +706,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -592,6 +732,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -630,6 +771,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -688,6 +830,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -735,6 +878,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读 Web3 实习手册「安全与合规」部分
 
 把这篇文章阅读下来之后，也就理解了为什么国内接触这方面内容为什么会比较难，主要还是合规方面的问题比较多
@@ -760,6 +904,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -812,6 +957,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
