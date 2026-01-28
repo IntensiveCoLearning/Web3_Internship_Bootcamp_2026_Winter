@@ -15,8 +15,162 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+# Hyperledger Fabric External Builders (外部建構器) 詳解筆記
+
+## 1\. 背景與演進 (Background & Evolution)
+
+### Fabric 2.0 之前的限制 (Peer-Centric Model)
+
+在 Hyperledger Fabric 2.0 版本之前，Chaincode 的生命週期（構建、啟動）與 Peer 節點緊密耦合。其運作邏輯如下：
+
+-   **硬編碼流程**：Chaincode 的構建邏輯被寫死在 Peer 的程式碼中，僅支援特定的語言（Go, Java, Node.js）。
+    
+-   **Docker 依賴**：Peer 必須訪問 Docker Daemon 才能創建並啟動 Chaincode 容器。這導致了「Docker-in-Docker」的部署複雜度，且在 Kubernetes 等環境中需要較高的權限（通常需 Root 權限），存在安全隱患。
+    
+-   **靈活性不足**：開發者難以自訂構建環境（例如需特殊依賴庫），且 Chaincode 必須隨 Peer 一起部署，無法作為獨立的長期服務運行。
+    
+
+### Fabric 2.0 之後的解決方案 (External Builder Model)
+
+Fabric 2.0 引入了 **External Builders and Launchers** 機制，將 Chaincode 的生命週期管理從 Peer 核心中解耦。
+
+-   **自訂構建環境**：允許維運人員透過編寫腳本（Buildpacks）來定義如何編譯和打包 Chaincode。
+    
+-   **去 Docker 化**：不再強制 Peer 直接操作 Docker Daemon。Chaincode 可以運行在任何地方（Pod、虛擬機、裸機），只要 Peer 能透過網路連接即可。
+    
+-   **Chaincode as a Service (CaaS)**：這是此功能帶來的最大變革，Chaincode 可作為獨立的伺服器程序運行，大幅提升部署彈性。
+    
+
+* * *
+
+## 2\. 核心運作機制 (Core Mechanism)
+
+External Builder 的設計靈感源自 Heroku Buildpacks。其本質是一組位於 Peer 節點文件系統中的可執行腳本。當 Peer 接收到安裝或啟動 Chaincode 的請求時，會依序呼叫這些腳本。
+
+一個完整的 External Builder 必須包含以下四個標準腳本（通常位於 `bin/` 目錄下）：
+
+### A. `bin/detect` (偵測)
+
+-   **功能**：判斷此 Builder 是否適用於當前安裝的 Chaincode Package。
+    
+-   **輸入**：Chaincode 源代碼元數據（Metadata）。
+    
+-   **輸出**：
+    
+    -   Exit code `0`：表示適用，Peer 將使用此 Builder。
+        
+    -   Exit code `1`：表示不適用，Peer 將嘗試下一個 Builder。
+        
+
+### B. `bin/build` (建構)
+
+-   **功能**：將 Chaincode 源碼轉換為可執行的產物（Artifact）。
+    
+-   **輸入**：源代碼路徑、輸出路徑。
+    
+-   **行為**：在此階段可以執行編譯（如 `go build`）、依賴安裝（如 `npm install`），或僅僅是準備連接資訊（針對 CaaS 模式）。
+    
+
+### C. `bin/release` (釋出 - Optional)
+
+-   **功能**：提供關於 Chaincode 的元數據給 Peer（通常用於 Docker 容器環境）。
+    
+-   **重點**：在「Chaincode as a Service」模式下，此步驟通常較少使用或僅返回空結構。
+    
+
+### D. `bin/run` (執行)
+
+-   **功能**：啟動 Chaincode。
+    
+-   **行為**：在標準模式下，此腳本會啟動 Chaincode 流程。但在 CaaS 模式下，此腳本僅需將 Chaincode 的連接端點（Endpoint）及 TLS 憑證回傳給 Peer，告知 Peer 如何連接已在外部運行的 Chaincode 服務。
+    
+
+* * *
+
+## 3\. 配置實作 (Configuration Implementation)
+
+要啟用此功能，需在 Peer 的配置文件 `core.yaml` 中定義 `externalBuilders` 區塊。
+
+### 配置範例 (`core.yaml`)
+
+YAML
+
+```
+chaincode:
+  externalBuilders:
+    - path: /opt/hyperledger/builders/golang  # Builder 腳本所在路徑
+      name: external-go-builder               # Builder 名稱
+      propagateEnvironment:
+        - GOPROXY                             # 需要傳遞給 Builder 的環境變數
+```
+
+### 部署流程小結
+
+1.  **準備 Builder**：編寫 `detect`, `build`, `run` 等腳本。
+    
+2.  **配置 Peer**：修改 `core.yaml` 指向腳本路徑。
+    
+3.  **重啟 Peer**：載入新的配置。
+    
+4.  **安裝 Chaincode**：Peer 會自動遍歷配置的 Builders，直到 `detect` 返回 `0`。
+    
+
+* * *
+
+## 4\. 應用場景與優勢 (Scenarios & Benefits)
+
+### 1\. Chaincode as a Service (CaaS)
+
+這是 External Builder 最強大的應用。
+
+-   **運作方式**：Chaincode 不由 Peer 啟動，而是由維運人員（或 K8s Operator）手動部署為一個獨立的 Deployment/Service。
+    
+-   **流程**：`bin/run` 腳本不啟動程式，而是回傳 `connection.json`（包含 Chaincode 的 IP 和 Port）。
+    
+-   **優點**：Peer 變成了單純的 gRPC 客戶端，Chaincode 變成了伺服器端。
+    
+
+### 2\. Kubernetes 原生整合
+
+-   **解決痛點**：移除了 Peer 對 Docker Socket 的依賴，避免了特權容器（Privileged Containers）的安全風險。
+    
+-   **架構優化**：Chaincode 可以是獨立的 Pod，與 Peer Pod 分離，便於資源管理與監控。
+    
+
+### 3\. 開發效率提升 (Hot Reload)
+
+-   **傳統模式**：修改代碼 -> 重新打包 -> 重新安裝 -> 重新實例化 (耗時數分鐘)。
+    
+-   **外部構建模式**：
+    
+    -   在本地或開發伺服器啟動 Chaincode。
+        
+    -   修改代碼後，僅需重啟 Chaincode 進程（秒級）。
+        
+    -   Peer 透過固定的地址連接，無需重新執行鏈上的 Lifecycle 交易。
+        
+
+* * *
+
+## 5\. 總結 (Summary)
+
+| 特性 | 傳統 Peer 構建 (Pre-2.0) | 外部構建器 (External Builder) |
+| 依賴性 | 強依賴 Docker Daemon | 無特定依賴，可視需求自訂 |
+| 靈活性 | 僅限特定語言 (Go/Java/Node) | 支援任意可執行二進制文件 |
+| 安全性 | 需 Docker Socket 權限 (高風險) | 無需特殊權限，符合最小權限原則 |
+| 維運模式 | Chaincode 隨 Peer 啟動 | Chaincode 可作為獨立服務 (CaaS) |
+| 主要用途 | 簡單測試、非容器化環境 | K8s 生產環境、複雜 CI/CD、本地快速除錯 |
+
+**一句話總結：**
+
+External Builder 透過將 Chaincode 的編譯與執行權限從 Peer 剝離，實現了 Chaincode 的「微服務化」，徹底解決了 Fabric 在 Kubernetes 上部署的架構痛點，並大幅提升了開發迭代速度。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 学习马老师的学习day3  
 **練習 hardhat**
 
@@ -72,6 +226,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts --network localhost
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 🚀 本周Web3修炼手册：技术、乡村与未来
 
 **💡 认知刷新**
@@ -116,6 +271,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts --network localhost
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 今天抄马老师 作业  
@@ -219,6 +375,7 @@ deepwiki_tool = MCPTool(
 
 
 
+
 -   以 **pigeons** 作為通訊層，串接 **Trust Wallet**（對應的原生能力/介面），完成錢包相關核心流程：
     
     -   **金鑰生成**（key generation）
@@ -256,6 +413,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -435,6 +593,7 @@ deepwiki_tool = MCPTool(
 
 
 
+
 # **任務 A、B 筆記（Rust CLI / 鏈上事件抓取）**
 
 ## **1\. 任務概述**
@@ -542,6 +701,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -778,6 +938,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1033,6 +1194,7 @@ Level 3（Fallout）
 
 
 
+
 這段筆記我幫你「補齊背景＋講清楚做法＋把思路寫得更像可複用的解題模板」，你可以直接貼進你的學習筆記裡。
 
 * * *
@@ -1178,6 +1340,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1365,6 +1528,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1696,6 +1860,7 @@ PoS 的本质是：
 
 
 
+
 ## **课堂后反思笔记：Web3的“去中心化体验”与合规现实**
 
 ### **1) 认知转变：从“自主掌控”到“合规介入”**
@@ -1837,6 +2002,7 @@ PoS 的本质是：
 
 
 
+
 -   上期回顾
     
     -   比特币：《比特币：一种点对点电子货币系统》
@@ -1945,6 +2111,7 @@ PoS 的本质是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
