@@ -15,8 +15,109 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+### 📘 知识点：ECDSA 签名与 ecrecover —— “不花钱也能证明你是你”
+
+**1\. 场景引入：OpenSea 挂单为什么不花 Gas？**  
+你在 OpenSea 上卖 NFT，点击“上架”的时候，只需要在钱包点一下“签名”，不用付 Gas 费，这是为什么？
+
+-   **传统逻辑：** 你发一笔交易告诉合约“我要卖”，这需要 Gas。
+    
+-   **签名逻辑：** 你在链下（Off-chain）签了一张“条子”，上面写着“我同意卖”。这张条子只是一串加密数据，没上链，所以**免费**。等有人来买的时候，买家把这张“条子”带上链，合约验证条子是你签的，交易成交。
+    
+
+**2\. 核心原理：椭圆曲线数字签名 (ECDSA)**  
+这是区块链的基石。
+
+-   **私钥 + 消息 => 签名** (由 Go 后端或前端钱包完成)
+    
+-   **消息 + 签名 => 恢复出公钥/地址** (由 Solidity 合约完成)
+    
+
+在 Solidity 中，有一个内置函数叫 **ecrecover**，它的作用就是：**“给我一个签名，我告诉你这是谁签的。”**
+
+**3\. 代码实战 (Solidity 侧)**
+
+code Solidity
+
+downloadcontent\_copy
+
+expand\_less
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SignatureVerifier {
+    
+    // 验证函数
+    // _hash: 签名的内容（比如“转账100块”）的哈希值
+    // _signature: 用户签出来的乱码
+    function verify(bytes32 _hash, bytes memory _signature) public pure returns (address) {
+        // 1. 将签名拆解为 r, s, v 三个部分 (这是椭圆曲线数学参数)
+        (bytes32 r, bytes32 s, uint8 v) = splitSignature(_signature);
+        
+        // 2. 核心函数 ecrecover
+        // 它会返回：在这个 hash 上签名的那个人的地址
+        address signer = ecrecover(_hash, v, r, s);
+        
+        return signer;
+    }
+
+    // 辅助函数：拆解签名 
+    function splitSignature(bytes memory sig) public pure returns (bytes32 r, bytes32 s, uint8 v) {
+        require(sig.length == 65, "Invalid signature length");
+        assembly {
+            // 读取内存中的前32字节给r
+            r := mload(add(sig, 32))
+            // 读取接下来的32字节给s
+            s := mload(add(sig, 64))
+            // 读取最后1字节给v
+            v := byte(0, mload(add(sig, 96)))
+        }
+    }
+}
+```
+
+**4\. 为什么对Go 后端很重要？**
+
+以后你经常会遇到这种需求：
+
+-   **“钱包登录”**：用户在前端签名，把签名发给你的 Go 后端。你的 **Go 代码** 需要验证这个签名是不是该地址签的（Go 语言的 crypto/ecdsa 包或者 go-ethereum/crypto 包就是干这个的）。验证通过，颁发 JWT Token。
+    
+-   **“白名单 Mint”**：你的 **Go 后端** 作为管理员，用私钥给用户签发一个“白名单凭证”。用户拿着这个凭证去合约 Mint。合约用 ecrecover 验证“这确实是官方后端签发的”，然后放行。
+    
+
+**5\. 安全大坑：重放攻击 (Replay Attack)**  
+如果我签了一个“给 Bob 转 10 ETH”的条子。
+
+-   **风险：** Bob 可以拿着这张条子，去合约调用 10 次 verify，把我的钱转走 10 次。因为签名本身是有效的。
+    
+-   **解决：** 必须在签名内容里加一个 **Nonce (随机数/计数器)**。
+    
+    -   第一次转账：签名内容 = "给Bob转10个, nonce=1"
+        
+    -   第二次转账：合约记录 nonce 1 已使用，Bob 再提交就会失败。
+        
+
+* * *
+
+### 📝 笔记心得：
+
+之前认为签名就是“交易确认”，现在才明白签名可以**脱离交易**单独存在。
+
+-   **Go 后端** 可以用它来做鉴权（证明你是账号主人）。
+    
+-   **Solidity** 可以用它来做免 Gas 授权（Meta-transaction）或白名单验证。
+    
+
+ecrecover 是连接链下意图（Off-chain Intent）和链上执行（On-chain Execution）的魔法门。对于想做交易所或 Web3 基建的人来说，**玩转签名是必修课**。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ### 📘 知识点：整数溢出与 0.8.x 的自动保护
 
 **1\. 核心问题：0 减 1 等于几？**  
@@ -85,6 +186,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 ### 📘 知识点：constant 与 immutable —— 变量里的“钉子户”
 
@@ -155,6 +257,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ### 📘 知识点：unchecked 代码块与溢出检查
 
 **1\. 背景：SafeMath 的消亡**  
@@ -211,6 +314,7 @@ for (uint i = 0; i < array.length;) {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -282,6 +386,7 @@ require(msg.sender == owner, "Only owner can withdraw");
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -370,6 +475,7 @@ function mintItem(address to, string memory uri) public returns (uint256)
 
 
 
+
 **Ethernaut Level 0 核心知识点：**
 
 1.  **Web3 交互：** 我们不仅可以通过网页按钮（前端）跟区块链交互，还可以直接在控制台使用 JavaScript（通过 Web3.js 或 Ethers.js 库）直接调用合约函数。
@@ -412,6 +518,7 @@ function mintItem(address to, string memory uri) public returns (uint256)
 
 
 
+
 ### 📘 知识点：为什么卖币要签两次字？(Approve & TransferFrom)
 
 **1\. 现象：**  
@@ -440,6 +547,7 @@ ERC20 标准：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -489,6 +597,7 @@ require(msg.value >= 0.1 ether, "Not enough money!");
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -559,6 +668,7 @@ NFT 的合约只是个“收据”，而 Metadata（那个 JSON 文件）才是�
 
 
 
+
 ### 知识点：Events (事件) —— 链上最便宜的“广播系统”
 
 **1\. 核心机制：链上发声，链下听**
@@ -595,6 +705,7 @@ NFT 的合约只是个“收据”，而 Metadata（那个 JSON 文件）才是�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -664,6 +775,7 @@ NFT 的合约只是个“收据”，而 Metadata（那个 JSON 文件）才是�
 
 
 
+
 今天开始挑战这个 Challenge 0，最多的感觉就是终于把“网页”和“区块链”给连起来了，以前看智能合约代码觉得挺枯燥的，然后当我真的启动了前端页面，点击按钮，看着小狐狸钱包弹出来让我签名，接着过了一会儿页面上真的刷出来一张我的 NFT 卡片，我才突然反应过来，原来 DApp 的逻辑是这样跑通的，普通网站点个按钮可能就是改改数据库，而在这里每一次点击其实都是在向区块链发号施令，只有亲眼看到那个交互流程跑通了，才明白为什么 Web3 的开发需要把前端和合约结合得这么紧密。做完之后我就在想，我现在是在这个练习自带的网页上看到我的 NFT，那如果我把它部署到真正的公链上，像手机钱包能自动识别出来我刚发的这个币吗，还是说我得去钱包里手动添加合约地址，它才知道这里有个新资产？还有就是，我现在在本地测试，代码写错了可以随便改并重新部署，可是如果我真的把它发布到主网上去了，突然发现 NFT 的名字拼错了或者逻辑写得不对，那还能像平时做网站那样在后台修一下 Bug 吗，还是说一旦上链，这个错误就永远刻在那儿改不了了？
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -684,11 +796,13 @@ NFT 的合约只是个“收据”，而 Metadata（那个 JSON 文件）才是�
 
 
 
+
 今天跟着做 Simple NFT 的挑战，感觉真的挺不一样的。以前总觉得发 NFT 是个很复杂的技术活，然后自己真的去 import 了代码库，写了那个 mint 函数，才发现原来就是在搭积木，只要符合标准，几行代码就能把东西造出来。接着我在控制台看到那个交易成功的哈希值，还有 Gas 费扣掉的过程，有点明白之前书里说的“代码即资产”是啥意思。原来就是我看得到摸得着的一段逻辑。做完这些操作之后，我就在想两个问题：一个是，我现在发的这个 NFT，图片虽然能显示，但要是存图片的那个普通网站挂了，这 NFT 岂不是就废了？这才让我明白为什么得用 IPFS。另一个是，现在的代码是谁都能免费领，那如果我想搞个限量版或者收钱才能领，是不是就得在代码里加个“如果不满足条件就报错”的命令？
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -733,11 +847,13 @@ NFT 的合约只是个“收据”，而 Metadata（那个 JSON 文件）才是�
 
 
 
+
 通过《安全与合规》的学习让我弄明白了 Web3 这种“自己负责自己资产”的核心逻辑，特别是知道了私钥保护和授权管理是防范风险的第一步。了解到了以太坊上不同标准的作用，就像 ENS 是为了让地址好记，ERC20 和 ERC721 区分了普通代币和独一无二的 NFT，而 IPFS 则是为了保证这些资产的数据不丢失。比较实用的是学会了怎么看 Gas 费和处理交易卡死的问题，然后明白了多签钱包是团队管理的保险，而 L2 和借贷协议则是提高资金效率的进阶，这些知识让我知道链上操作的每一步底层在发生什么、风险在哪里都有了大概的理解。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
