@@ -16,8 +16,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+參與Space 線上共學 黑客松open day
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 參與線上共學，聽取各位老師的分享  
 感覺比較大的重點有:  
 能展示得出來最重要，不需要去追求完成度多高、多精細  
@@ -127,6 +133,7 @@ AI會議記錄摘要
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -288,6 +295,7 @@ A TypeScript Hardhat project using Mocha and Ethers.js
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -473,6 +481,7 @@ increment 翻譯為"遞增"
 
 
 
+
 今日稍微休息了一下 沒怎麼念書  
 把前幾天學到的東西簡單整理了一下  
 還有聽了兩場同學們舉辦的AMA
@@ -480,6 +489,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -525,6 +535,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -660,6 +671,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -685,6 +697,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -865,6 +878,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -876,6 +890,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -996,6 +1011,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -1006,6 +1022,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1212,6 +1229,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -1237,6 +1255,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1443,6 +1462,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -1522,6 +1542,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
