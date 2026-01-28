@@ -15,8 +15,62 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+## Uniswap V2 与 V3 关键差异
+
+### 1\. 流动性模型
+
+-   **V2**：均匀分布（Uniform Liquidity） 流动性均匀覆盖整个价格范围（0 ~ ∞），资本效率低。 适合长尾、低波动代币。
+    
+-   **V3**：集中流动性（Concentrated Liquidity） LP 指定价格区间（tick range），资本效率可提升 4000x+。 但引入无常损失放大风险 + 活跃管理需求。
+    
+
+### 2\. LP Token 类型
+
+-   **V2**：ERC-20 标准化、可互换（fungible）。 简单、易集成（借贷、质押等）。
+    
+-   **V3**：ERC-721 非同质化（NFT）。 每个位置（position）独立，包含具体范围 + 流动性量。 更灵活，但集成复杂。
+    
+
+### 3\. 费用结构
+
+-   **V2**：固定 0.30%（997/1000），全池统一。 0.25% 给 LP，0.05% 可选给协议（延迟收取）。
+    
+-   **V3**：多费率池（0.05%、0.30%、1.00%）。 LP 可选择费率，匹配波动性（高波动 → 高费率）。 协议费更灵活（可动态调整）。
+    
+
+### 4\. 价格范围与滑点
+
+-   **V2**：无限范围 → 大额交易滑点线性增加，但永不“跳出”。
+    
+-   **V3**：有限范围 → 价格超出区间时，流动性为 0，滑点极高（甚至无限）。 需 LP 主动调整范围。
+    
+
+### 5\. 预言机
+
+-   **V2**：内置 TWAP（累积价格 + 时间加权），简单、抗短期操纵。 窗口可自定义（建议 ≥10-30min）。
+    
+-   **V3**：更高效 TWAP（观察数组 + 历史快照），支持更精确 + 更长窗口。 但实现更复杂。
+    
+
+### 6\. Gas 与复杂度
+
+-   **V2**：极简设计，gas 低，合约小，fork 容易。 核心合约 immutable，安全记录优秀。
+    
+-   **V3**：更复杂（tick bitmap、position NFT），gas 高（尤其添加/移除流动性）。 但 swap gas 优化更好。
+    
+
+### 7\. 适用场景对比
+
+-   **V2**：长尾资产、稳定币对、低维护 LP、简单集成、fork 项目首选。
+    
+-   **V3**：主流资产、高波动对、资本效率优先、专业 LP（需主动管理）。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ## Uniswap V2 数学与不变量
 
 ### 1、核心不变量：x × y = k
@@ -96,6 +150,7 @@ timezone: UTC+8
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -165,6 +220,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 ## Uniswap V2 Router常用函数
@@ -311,6 +367,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -342,6 +399,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -452,6 +510,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -535,6 +594,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -670,6 +730,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -781,6 +842,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -821,6 +883,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -836,6 +899,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -886,6 +950,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -897,6 +962,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
