@@ -15,8 +15,108 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+lesson 8 array
+
+目标：
+
+1.  掌握数组的声明
+    
+2.  掌握数组的赋值
+    
+3.  掌握在声明的同时进行赋值
+    
+
+内容：
+
+Q1: 如何声明一个数组？ var 数组名称 \[固定值\]int  
+举例： var a \[5\]int
+
+Q2: 如何给数组赋值？ a\[4\] = 100
+
+Q3:如何在声明的同时进行赋值？ var b = \[5\]{1,2,3,4,5} b := \[5\]{1,2,3,4,5}
+
+lesson 9 slice
+
+目标：
+
+1.  掌握切片和数组的区别
+    
+2.  切片的声明
+    
+3.  切片的特殊用法
+    
+
+内容：
+
+Q1: 区别 数组len是固定； 切片是动态；
+
+Q2: 声明 var s \[\]string
+
+var s = make(\[\]string, len,cap)
+
+Q3：append s1 = append(s,"new")
+
+lesson 10 map
+
+目标：
+
+1.  掌握映射结构
+    
+2.  初始化一个map
+    
+3.  如何给map中的key赋值
+    
+4.  如何查询某个key的值
+    
+5.  如何删除某个key
+    
+6.  如何清空map
+    
+
+内容： Q1: (key,value)
+
+Q2： make(map\[key\]value) 举例： map := make(map\[string\]int)
+
+Q3：map\["key1"\] = 2
+
+Q4：var value = map\["key1"\]
+
+Q5：delete(map,"key1")
+
+Q6: clear(map)
+
+lesson 11 struct
+
+目标： 1.掌握结构体的初始化 2.结构体的赋值
+
+内容：
+
+Q1: type 结构体名称 struct{
+
+}
+
+Q2： 结构体名称{ name : name, }
+
+[结构体名称.name](http://结构体名称.name) = "wang"
+
+lesson 12 pointer
+
+目标： 1.理解指针定义 2.指针的作用 3.& / _int /_ ptr = 2
+
+内容：
+
+1.  数据结构
+    
+2.  指向所引用的变量的存储地址
+    
+3.  & 取地址符 ： &i 取变量i所在的地址 _int : int类型的指针_ ptr: 解引用，指向指针对应的值
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # 状态树
 
 \- 状态树包含所有账户的状态，交易树和收据树是由当前这个区块的交易组织起来的
@@ -48,6 +148,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 # 如何读源码
 
@@ -195,6 +296,7 @@ switch {
 
 
 
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -212,6 +314,7 @@ switch {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -239,6 +342,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -273,6 +377,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -280,6 +385,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -321,6 +427,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -421,6 +528,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -444,6 +552,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -491,6 +600,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -624,6 +734,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -652,6 +763,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -764,6 +876,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -788,6 +901,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -844,6 +958,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
