@@ -15,8 +15,34 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+昨天报名参加了休闲黑客松，今天和组员开会确定选择了 kite 支付的赛道，于是去研究了下 kite 的官方说明文档，以下是总结
+
+## 初识 Kite：一条为 AI 设计的支付链
+
+今天系统接触 Kite最大的认知是：它不是“一条普通公链”，而是专门给 AI / Agent 做支付和结算的基础设施。官方的定位是 AI payment blockchain，目标是让各种智能体可以带着身份、预算、权限，在链上用稳定币完成真实的支付和结算，而不只是做推理和聊天。 对我来说，一个简单的理解是：如果传统 EVM 链更像“通用操作系统”，那 Kite 更像是给 AI 经济体准备的“支付铁路”和规则引擎，专门解决“Agent 怎么安全花钱、怎么被追责、怎么被限制”的问题。
+
+## 三层身份：User / Agent / Session 的脑回路
+
+让我印象最深的是 Kite 的三层身份体系：User、Agent、Session。User 是真实拥有资产的人，比如一个普通用户的钱包；Agent 是被授权可以代用户做事、发起支付或调用合约的智能体身份；Session 则是每次具体操作时，用来执行某个任务的临时身份，有时间和额度限制。 这套设计直接对应了现实里“老板 → 授权员工 → 员工手上的工作卡”的关系：老板有钱，员工被授权可以在某些范围内花钱，而单次消费又可以通过限额卡来控制风险。在 Kite 里，这意味着我可以给某个 AI Agent 授权：它可以帮我支付，但必须通过 Session 这种一次性的“手套”执行，每次能花多少钱、能调哪些合约都可以在链上写死，既方便自动化，又不会把主账户完全暴露给模型。
+
+## 可编程支付与 Escrow：资金先锁定，再按证明释放
+
+Kite 的另一个核心概念是可编程支付约束和链上 Escrow。文档和白皮书里反复强调：资金不会直接打给对方，而是先进入 on-chain escrow，只有在有完成证明（proof of completion）、满足服务合约（SLA）条件时，才按规则释放部分或全部资金。 这种模式对 AI 场景非常重要，因为它把“是否完成任务”的判断，从单纯信任对方，变成由合约和验证机制共同控制。对我来说，这里的关键信息是：Kite 原生支持把资金锁定在可编程 Escrow 合约里，在那里可以实现授权、扣款、退款、冻结、撤销等完整生命周期；而 Agent 只是其中的一个参与方，通过被授权才能动这笔钱。
+
+## 为什么 Kite 适合 AI 驱动的支付场景
+
+站在应用设计的角度，我慢慢理解了为什么要选 Kite，而不是随便找一条 EVM 链来做支付。传统链也能做 Escrow 和多签，但 Kite 把“AI 作为一等公民”这件事做进了协议层：有 Agent Passport（身份）、可编程预算/权限控制、对 Agent-to-Agent 支付和退款/撤销流程的专门设计。 官方在用例和技术支柱里明确写了三块：Agent Passport、Programmable Escrow/SLA Contracts、Agent Payments，强调的是 AI 代理之间的支付轨道，而不是单纯人对人的转账。 对我个人的启发是：今后设计任何“AI 触发支付”的系统，都可以优先考虑 Kite，因为它天然提供了“谁花钱、能花多少、在什么条件下花”的链上保护层，少了很多自己造轮子的风控工作。
+
+## 从文档到实现：我需要掌握的最低技术门槛
+
+回顾这段学习，我对自己需要掌握的“最低技术门槛”也更清晰了。第一是理解 Kite 的网络层，知道它是 EVM 兼容链，有自己的 testnet、RPC、chainId，可以像在其他 EVM 上一样写 Solidity 合约和用工具部署。 第二是搞懂 Kite 的 SDK 和 Account Abstraction 思路：SDK 帮我封装了账户管理、交易构造和发送 UserOperation 等操作，我只要提供目标合约地址、调用数据，就可以用 Agent 或 Session 身份发起交易。 第三是学会把云端 LLM 服务接进后端：选一个有官方 API 的大模型（比如 OpenAI 或国内模型），用 API Key 调一次简单的文本判断，把结果封装成统一的 `{ passed: boolean, reason: string }` 格式，再用它来驱动链上合约里的放款逻辑。 只要这三块打通，我就能在 Kite 上实现一个由 AI 驱动、带有 Escrow 和可编程支付约束的完整 demo，而不必从零造一个“AI+支付”的基础设施。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 # 关于黑客松的经验分享
 
 ## 一、选题与整体目标
@@ -164,6 +190,7 @@ PPT 小技巧：
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 ## 今天主要弄懂了什么是 Reactive 合约
 
 Reactive 合约本质还是智能合约，但不是“等别人来调”，而是“自己长期监听链上事件，有事就自动反应”。同一份 Reactive 合约代码会在两处各跑一个实例：一份在 Reactive Network 链上（vm == true），一份在外部链的 ReactVM 沙盒里（vm == false）。通过检查固定地址 0x0000...fffFfF 是否有代码，合约在运行时可以判断“我现在是在 Reactive Network，还是在外部链”。
@@ -191,6 +218,7 @@ BasicDemoL1Callback.callback(address sender) 上有两个关键 modifier：autho
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 这周把自己从“Solidity 初学者”往“能动手、懂安全、知道隐私为何重要”的方向又推进了一步。
@@ -222,6 +250,7 @@ BasicDemoL1Callback.callback(address sender) 上有两个关键 modifier：autho
 
 
 
+
 今天做了深度技术的一个任务，搭建本地区块链节点，我的整体流程可以分为三个部分：配置环境、搭建节点和部署合约。
 
 在配置环境阶段，我先在 Windows 上安装了 Node.js 的 LTS 版本，用官方安装包一路点击下一步完成安装，然后在 PowerShell 里用 node -v 和 npm -v 确认版本输出正常，确保运行环境就绪。 接着我在用户目录下创建了一个专门用来练习的文件夹 C:\\Users\\CHEN Yanzhu\\eth-dev，避免在系统目录里操作带来的权限问题。 进入这个目录之后，我执行 npm install --global hardhat 安装 Hardhat，再用 npx hardhat 初始化项目，选择的是 Hardhat 3 提供的 minimal 模板，这样得到一个TypeScript 项目骨架，包含 hardhat.config.ts 和基础目录结构。 我在项目根目录下手动创建了 contracts 和 scripts 两个文件夹，并通过 npm install --save-dev @nomicfoundation/hardhat-ethers 和 npm install ethers 装好了 Hardhat 的 Ethers 插件以及 Ethers.js 本身，然后把 hardhat.config.ts 写成一个极简配置：只指定 solidity: "0.8.28"，并在文件顶部引入 @nomicfoundation/hardhat-ethers，让 Hardhat 在运行脚本时自动在运行时环境中注入 ethers 能力。
@@ -235,6 +264,7 @@ BasicDemoL1Callback.callback(address sender) 上有两个关键 modifier：autho
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -342,6 +372,7 @@ contract MySafeBank {
 
 
 
+
 # DAPP学习笔记
 
 ## 基本概念与本质
@@ -377,6 +408,7 @@ IPFS（星际文件系统）可以看作一个去中心化的文件存储网络�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -483,6 +515,7 @@ function leaveMessage(string calldata _msg) external {
 
 
 
+
 今天做入门技术的一个任务，啃完了 Ethernaut 的前三关，花的时间比自己想象中的要久，作为一个 Solidity 初学者，要一行一行读懂智能合约还是有点难度的。通过 Hello Ethernaut、Fallback 和 Fallout 这三关，我从完全没用过浏览器控制台，到能看懂合约逻辑、定位漏洞并写出攻击代码，感觉自己被硬生生推着跨了一小步门槛，过程很痛苦，但进步还挺大。
 
 ## 第 0 关：Hello Ethernaut
@@ -558,6 +591,7 @@ Fallout 这一关让我感受到“一个小小的命名错误，会直接变成
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -701,6 +735,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 
 
+
 ## **分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 AI提炼总结**
 
 本次分享围绕一个从 ERC-721 演进出来的新协议 **ERC-7962** 展开，目的是在保持数字藏品（NFT）属性的同时，引入更强的隐私保护和更好的用户体验。讲者首先回顾了传统 NFT 的特点：基于 ERC-721 标准，每个 token 的 owner 是一个公开可查的地址，谁持有什么资产、做过哪些交易都可以在链上被分析。这样带来了两个问题，一是隐私缺失，容易被构建“资产图谱”；二是对普通 Web2 用户不友好，需要自己装钱包、管私钥、付 gas 费，这阻碍了 Web2 用户向 Web3 迁移。
@@ -752,6 +787,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -822,6 +858,7 @@ identityCommitment 是对 identitySecret 进行哈希计算得到的承诺值，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -934,6 +971,7 @@ Solidity 的整数是有上限和下限的，比如 uint8 只能在 0～255 之�
 
 
 
+
 # 1.15 学习笔记
 
 今天在学校上了一天学，没有进行阅读，不过听了“AI及其基础概念”的分享会，以下是整理的笔记。
@@ -982,6 +1020,7 @@ ERC8004 基于 ERC721，为每个 AI agent 铸造唯一 NFT 身份，元数据�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1102,6 +1141,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 # 1.13 学习笔记
 
 ## **节点和客户端的关系以及客户端间的协同配合**
@@ -1169,6 +1209,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
