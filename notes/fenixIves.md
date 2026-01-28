@@ -15,8 +15,225 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+# 18 Viem 初步学习
+
+## 1 Viem 是什么？
+
+Viem 是一个现代化的 TypeScript 以太坊库，是 ethers.js 和 web3.js 的替代品。
+
+**核心特点：**
+
+-   🚀 更快、更轻量
+    
+-   💪 完整的 TypeScript 支持
+    
+-   🎯 模块化设计
+    
+-   🔒 类型安全
+    
+
+## 2 Viem 基本用法
+
+### 1\. 创建客户端
+
+```
+import { createPublicClient, createWalletClient, http } from 'viem';
+import { mainnet, sepolia } from 'viem/chains';
+import { privateKeyToAccount } from 'viem/accounts';
+
+// Public Client（只读操作）
+const publicClient = createPublicClient({
+  chain: mainnet,
+  transport: http()
+});
+
+// Wallet Client（写操作）
+const account = privateKeyToAccount('0x...');
+const walletClient = createWalletClient({
+  account,
+  chain: sepolia,
+  transport: http()
+});
+```
+
+### 2\. 读取合约
+
+```
+// 读取合约数据
+const balance = await publicClient.readContract({
+  address: '0x...',
+  abi: contractABI,
+  functionName: 'balanceOf',
+  args: ['0x...']
+});
+
+// 读取区块
+const block = await publicClient.getBlock();
+
+// 读取余额
+const balance = await publicClient.getBalance({
+  address: '0x...'
+});
+```
+
+### 3\. 写入合约
+
+```
+// 发送交易
+const hash = await walletClient.writeContract({
+  address: '0x...',
+  abi: contractABI,
+  functionName: 'transfer',
+  args: ['0xRecipient', 1000000000000000000n]
+});
+
+// 等待确认
+const receipt = await publicClient.waitForTransactionReceipt({ hash });
+```
+
+### 4\. 使用 getContractAt（类似 Hardhat）
+
+```
+import { getContract } from 'viem';
+
+const contract = getContract({
+  address: '0x...',
+  abi: contractABI,
+  client: { public: publicClient, wallet: walletClient }
+});
+
+// 读取
+const value = await contract.read.balanceOf(['0x...']);
+
+// 写入
+const hash = await contract.write.transfer(['0x...', 100n]);
+```
+
+## 3 Hardhat + Viem 集成
+
+```
+import hre from "hardhat";
+
+async function main() {
+  // 获取 Public Client
+  const publicClient = await hre.viem.getPublicClient();
+  
+  // 获取 Wallet Clients
+  const [deployer, user1] = await hre.viem.getWalletClients();
+  
+  // 部署合约
+  const counter = await hre.viem.deployContract("Counter");
+  
+  // 获取已部署的合约
+  const contract = await hre.viem.getContractAt(
+    "Counter",
+    "0x..."
+  );
+  
+  // 读取
+  const num = await contract.read.number();
+  
+  // 写入
+  const hash = await contract.write.setNumber([42n]);
+  
+  // 等待确认
+  await publicClient.waitForTransactionReceipt({ hash });
+}
+```
+
+## 4 Viem vs Ethers.js
+
+| 功能 | Viem | Ethers.js |
+| 大小 | ~30KB | ~200KB |
+| TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| 性能 | 更快 | 较慢 |
+| API 设计 | 函数式 | 面向对象 |
+| 学习曲线 | 稍陡 | 平缓 |
+
+## 5 常用操作对比
+
+```
+// ===== Ethers.js =====
+const provider = new ethers.JsonRpcProvider(rpcUrl);
+const signer = new ethers.Wallet(privateKey, provider);
+const contract = new ethers.Contract(address, abi, signer);
+const tx = await contract.transfer(to, amount);
+await tx.wait();
+
+// ===== Viem =====
+const publicClient = createPublicClient({ chain, transport: http() });
+const account = privateKeyToAccount(privateKey);
+const walletClient = createWalletClient({ account, chain, transport: http() });
+const hash = await walletClient.writeContract({
+  address,
+  abi,
+  functionName: 'transfer',
+  args: [to, amount]
+});
+await publicClient.waitForTransactionReceipt({ hash });
+```
+
+## 6 重要注意事项
+
+### BigInt 类型
+
+Viem 使用原生 BigInt：
+
+```
+// ✅ 正确
+await contract.write.setNumber([666n]);
+await contract.write.transfer(['0x...', 1000000000000000000n]);
+
+// ❌ 错误
+await contract.write.setNumber([666]);  // 需要 BigInt
+```
+
+### 地址格式
+
+```
+import { getAddress, isAddress } from 'viem';
+
+// 校验地址
+if (isAddress(address)) {
+  // 格式化为 checksum 地址
+  const checksummed = getAddress(address);
+}
+```
+
+## 7 实用工具
+
+```
+import { 
+  parseEther, 
+  formatEther,
+  parseUnits,
+  formatUnits,
+  encodeFunctionData,
+  decodeFunctionResult
+} from 'viem';
+
+// ETH 转换
+const wei = parseEther('1.5');  // 1500000000000000000n
+const eth = formatEther(wei);    // '1.5'
+
+// 自定义单位
+const amount = parseUnits('100', 6);  // USDC (6 decimals)
+const formatted = formatUnits(amount, 6);
+
+// 编码函数调用
+const data = encodeFunctionData({
+  abi: contractABI,
+  functionName: 'transfer',
+  args: ['0x...', 100n]
+});
+```
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # 17 Hardhat + Viem 初学流程
 
 ## 一、核心变更说明
@@ -495,6 +712,7 @@ await counter.number(); // 输出 BigInt(100)
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -762,6 +980,7 @@ cast send <合约地址> "decrement()" \
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -951,6 +1170,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1172,6 +1392,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -1265,6 +1486,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1628,6 +1850,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2045,6 +2268,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2520,6 +2744,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -2816,6 +3041,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3933,6 +4159,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -4308,6 +4535,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -4642,6 +4870,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -4803,6 +5032,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5090,6 +5320,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5407,6 +5638,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -5635,6 +5867,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
