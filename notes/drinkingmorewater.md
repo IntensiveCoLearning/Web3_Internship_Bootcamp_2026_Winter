@@ -26,10 +26,31 @@ Web3 实习计划 2025 冬季实习生
 真金白银的民意调研
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-28-1769601261501-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-28-1769601274157-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-28-1769601393320-image.png)
+
+-   **技术与开发建议**：
+    
+    -   **代码畏难心理**：AI 时代代码会变得简单，不懂代码也可参与，重要的是想法和解决问题的思路。
+        
+    -   **ZK 项目开发**：要明确项目和隐私部分，可参考 Magic Wallet 项目。
+        
+    -   **代码问题处理**：时间短某代码片段解决不了可跳过，可用 mock 数据，关键是讲清思路。
+        
+    -   **MCP 创新点判断**：在赛道 3 做 MCP，若只是试验技术无创新，需看实现功能。
+        
+    -   **技术栈推荐**：推荐 T3 技术栈，一体化且 AI 识别精准，可参考 Forceline 新版。
+        
+-   **预测市场分析**：
+    
+    -   **现状总结**：经美国大选验证，在寻找大选外叙事；存在流动性悖论，基础设施成熟但内容供给和常态化流动性匮乏。
+        
+    -   **未来趋势**：人机共生，AI agent 成主要流动性提供者；大事件到超本地化，Lom 作廉价裁判引爆长尾市场；预测功能嵌入互联网各角落，成基础服务。
+        
+    -   **合规注意事项**：写代码造协议技术自由，但前端页面要屏蔽敏感地区 IP；先使用积分预测或交易，不碰法币；做大后不碰用户钱，用智能合约驱动。
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -90,6 +111,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -234,6 +256,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -241,6 +264,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -276,6 +300,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -285,6 +310,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -384,6 +410,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -525,6 +552,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -744,6 +772,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -791,6 +820,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1132,6 +1162,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1173,6 +1204,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1541,6 +1573,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -1842,6 +1875,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -1949,6 +1983,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
