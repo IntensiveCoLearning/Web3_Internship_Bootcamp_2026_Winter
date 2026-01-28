@@ -15,8 +15,82 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+\## Polymarket 核心机制笔记
+
+\> link: \[Polymarket Docs\]([https://docs.polymarket.com/](https://docs.polymarket.com/)), \[CTF 合约\]([https://github.com/gnosis/conditional-tokens-contracts](https://github.com/gnosis/conditional-tokens-contracts))
+
+\- 资产架构: CTF 与 ERC-1155
+
+Polymarket 基于 **Conditional Token Framework (CTF)** 构建，所有仓位均为 **ERC-1155** 代币
+
+**USDC (Collateral):** 底层质押资产，1 USDC 可拆分为 1 YES + 1 NO
+
+**PositionID:** 基于 `conditionId` 和 `collateralToken` 生成的唯一代币 ID
+
+\- 核心操作: Split / Merge
+
+资产在“质押品”与“预测份额”之间转换的唯一路径
+
+模式匹配：操作逻辑
+
+\`\`\`
+
+enum MarketAction {
+
+Split, // 1 USDC -> 1 YES + 1 NO (注入流动性)
+
+Merge, // 1 YES + 1 NO -> 1 USDC (提取质押品)
+
+Redeem, // 胜出份额 -> 1 USDC (结果结算)
+
+}
+
+\`\`\`
+
+\- 交易系统: CLOB (订单簿)
+
+不同于 Uniswap 的 AMM，使用中央限价订单簿进行价格发现
+
+**Price:** 价格即概率，$0.6$ USDC 代表市场预期胜率为 $60\\%$
+
+**Maker/Taker:** 基于订单深度撮合，非资金池交易
+
+\- 效率指标: 评分维度
+
+量化市场质量与寻找套利空间的硬指标
+
+**Spread:** 买卖价差，$BestAsk - BestBid$，越小越有效
+
+**Oracle Gap:** $|(Price\_{YES} + Price\_{NO}) - 1|$，偏离越大套利空间越大
+
+**Liquidity Density:** 中间价附近的挂单厚度，决定大单承载力
+
+\- 市场状态: 状态机
+
+处理从事件开始到结果判定的全生命周期
+
+\`\`\`
+
+enum MarketStatus {
+
+Active, // 交易中
+
+Closed, // 停止下单，等待结果
+
+Resolved, // UMA 已判定结果
+
+Disputed, // 结果遭挑战，进入争议期
+
+}
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 \## solidity workflow
 
 \> link: \[Foundry Book\]([https://book.getfoundry.sh/](https://book.getfoundry.sh/)), \[Solidity Documentation\]([https://docs.soliditylang.org/](https://docs.soliditylang.org/)), \[Awesome-Foundry\]([https://github.com/crisgarner/awesome-foundry](https://github.com/crisgarner/awesome-foundry))
@@ -141,6 +215,7 @@ assertEq(counter.number(), x);
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   错误处理 (Error Handling)
@@ -205,6 +280,7 @@ assertEq(counter.number(), x);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 Uniswap v4 (from v3)
@@ -285,6 +361,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 -   特征对象 \[sol中慎用\]
     
     总是通过**引用**: 通过 `&` 引用或者 `Box<T>` 智能指针的方式来创建特征对象
@@ -318,6 +395,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -366,6 +444,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -422,6 +501,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -441,6 +521,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -531,6 +612,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -552,6 +634,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
