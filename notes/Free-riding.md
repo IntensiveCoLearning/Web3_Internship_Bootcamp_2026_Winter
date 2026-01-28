@@ -15,8 +15,180 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+JS
+
+```javascript
+//操作 HTML 元素
+let a = "使用变量进行修改";
+document.getElementById("demo") ///是使用 id 属性来查找 HTML 元素的 JavaScript 代码 
+document.getElementById("demo").innerHTML = "段落已修改。";//对指定元素进行修改刷新
+document.getElementById("demo").innerHTML = a;
+// document.write() 可以向文档写入内容。如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖。
+
+/*基本数据类型:String，Number,undefined,null,Boolean，Symbol(symbol是 ES6 引入了一种新的原始数据类型，表示独一无二的值)
+  引用数据类型：Object,Array,Function,Date,RegExp(正则),引用数据类型不能重复定义
+  使用typeof + 变量,可以查看变量的数据类型
+*/
+let b = 999+"hello" //
+console.log(typeof a);
+console.log(a);
+//JavaScript 是脚本语言，浏览器会在读取代码时，逐行地执行脚本代码。而对于传统编程来说，会在执行前对所有代码进行编译。
+
+//对代码行进行折行
+document.write("你好 \
+世界!");
+/** JavaScript 多行注释
+ *  JavaScript 多行注释
+ *  JavaScript 多行注释
+*/
+
+
+/**
+ * 声明变量可以使用：var let const
+ * var：ES5 引入的变量声明方式，具有函数作用域。
+ * let：ES6 引入的变量声明方式，具有块级作用域。
+ * const：ES6 引入的常量声明方式，具有块级作用域，且值不可变。
+ */
+
+
+//声明数组的方法1
+let cars1 = new Array();
+cars1[0] = "Saab";
+cars1[1] = "Volvo";
+cars1[2] = "BMW";
+//声明数组的方法2
+var cars2 = new Array("Saab", "Volvo", "BMW");
+//声明数组的方法3
+var cars3 = ["Saab", "Volvo", "BMW"];
+//数组下标是基于零的，所以第一个项目是 [0]，第二个是 [1]，以此类推。
+
+//对象
+let person1 = {name:"Jhon",age:12,sex:"male"};
+//或者
+let person2 = {
+  firstname: "John",
+  lastname: "Doe",
+  id: 5566
+};
+
+//对象属性有两种寻址方式
+name = person2.lastname;
+name = person2["lastname"];
+console.log(name);
+name2 = person1.name; /*此时没有声明在严格模式下会报错"use strict";。
+没有用 var/let/const 声明，但由于赋值操作（myVar = ...），
+JavaScript 引擎会自动在 全局作用域 中创建一个名为 name2 的变量，并将其附加到全局对象，浏览器中是 window。
+Node.js 中是 global。
+*/
+name2 = person1["name"];
+console.log(name2)
+
+console.log(name2 === window.name2); //输出为true
+
+// 函数语法
+//函数就是包裹在花括号中的代码块，前面使用了关键词 function：
+function myFunction(var1, var2) {
+  //代码
+}
+//JavaScript 变量
+/** 
+ * 在 JavaScript 函数内部声明的变量是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。
+ * 您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。
+ * 只要函数运行完毕，本地变量就会被删除。
+ * 在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它 
+ * JavaScript 变量的生命期从它们被声明的时间开始，局部变量会在函数运行以后被删除。全局变量会在页面关闭后被删除。
+*/
+
+//JavaScript 作用域
+/**
+ * 作用域是可访问变量的集合。
+ * 在 JavaScript 中, 对象和函数同样也是变量
+ * JavaScript 局部作用域：变量在函数内声明，变量为局部变量，具有局部作用域。局部变量：只能在函数内部访问。
+ * JavaScript 全局变量：变量在函数外定义，即为全局变量，全局变量有 全局作用域: 网页中所有脚本和函数均可使用。 
+ * 如果变量在函数内没有声明（没有使用关键字），该变量为全局变量。需要先使用函数
+ */
+function abc(){
+  color = "red";
+}
+abc();  
+console.log(color);
+//所有全局变量都属于 window 对象。
+console.log(color === window.color); //输出为true
+
+
+//JavaScript 闭包
+
+//HTML事件
+/**
+HTML 事件是发生在 HTML 元素上的事情。
+当在 HTML 页面中使用 JavaScript 时， JavaScript 可以触发这些事件。
+HTML 事件可以是浏览器行为，也可以是用户行为。
+以下是 HTML 事件的实例：
+HTML 页面完成加载
+HTML input 字段改变时
+HTML 按钮被点击
+HTML 元素中可以添加事件属性，使用 JavaScript 代码来添加 HTML 元素。
+常见的HTML事件:
+
+onchange	HTML 元素改变
+onclick	用户点击 HTML 元素
+onmouseover	鼠标指针移动到指定的元素上时发生
+onmouseout	用户从一个 HTML 元素上移开鼠标时发生
+onkeydown	用户按下键盘按键
+onload	浏览器已完成页面的加载
+*/
+
+//JavaScript 字符串
+/**
+ * 使用索引位置来访问字符串中的每个字符：const name = "RUNOOB";let letter = name[2];
+ * 在字符串中使用引号，字符串中的引号不要与字符串的引号相同:let answer = "He is called 'Johnny'";也可以在字符串添加转义字符来使用引号：var x = 'It\'s alright';
+ * 使用 new 关键字将字符串定义为一个对象： var firstName = new String("John")	不要创建 String 对象。它会拖慢执行速度，并可能产生其他副作用：
+ * charAt()	返回指定索引位置的字符
+charCodeAt()	返回指定索引位置字符的 Unicode 值
+concat()	连接两个或多个字符串，返回连接后的字符串
+fromCharCode()	将 Unicode 转换为字符串
+indexOf()	返回字符串中检索指定字符第一次出现的位置
+lastIndexOf()	返回字符串中检索指定字符最后一次出现的位置
+localeCompare()	用本地特定的顺序来比较两个字符串
+match()	找到一个或多个正则表达式的匹配
+replace()	替换与正则表达式匹配的子串
+search()	检索与正则表达式相匹配的值
+slice()	提取字符串的片断，并在新的字符串中返回被提取的部分
+split()	把字符串分割为子字符串数组
+substr()	从起始索引号提取字符串中指定数目的字符
+substring()	提取字符串中两个指定的索引号之间的字符
+toLocaleLowerCase()	根据主机的语言环境把字符串转换为小写，只有几种语言（如土耳其语）具有地方特有的大小写映射
+toLocaleUpperCase()	根据主机的语言环境把字符串转换为大写，只有几种语言（如土耳其语）具有地方特有的大小写映射
+toLowerCase()	把字符串转换为小写
+toString()	返回字符串对象值
+toUpperCase()	把字符串转换为大写
+trim()	移除字符串首尾空白
+valueOf()	返回某个字符串对象的原始值
+ */
+
+
+//JavaScript switch 语句
+/*
+switch (n) {
+  case 1:
+        执行代码块 1
+    break;
+  case 2:
+        执行代码块 2
+    break;
+  default:
+        与 case 1 和 case 2 不同时执行的代码
+}
+*/
+//JavaScript 类型转换:Number() 转换为数字， String() 转换为字符串， Boolean() 转换为布尔值。
+```
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 web3DAO中的公共资金分配和投票策略
 
 Web3 DAO中的公共资金分配和投票策略是DAO治理的核心机制，涉及资金管理、决策流程和权力分配等多个维度。以下是系统性的解析：
@@ -191,6 +363,7 @@ Web3 DAO的公共资金分配和投票策略设计需根据具体场景权衡：
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 web3前端用的框架和使用教程
 
 框架/库类别 推荐选项 核心特点与适用场景
@@ -346,6 +519,7 @@ export default App;
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 Foundry 是一个用于以太坊智能合约开发的流行工具链，由 Paradigm 开发，以高性能、模块化和开发者友好著称。它使用 Rust 编写，主要包括以下核心组件：
 
 -   **Forge**：用于编译、测试、部署和验证智能合约（类似 Hardhat 或 Truffle）。
@@ -469,6 +643,7 @@ cast send <CONTRACT_ADDRESS> "increment()" \
 
 
 
+
 对于 **应届生**（无全职工作经验）申请 Web3 前端岗位，简历的核心策略是：**用高质量项目、开源贡献、黑客松经历和扎实的技术细节弥补经验短板**
 
 **例如：**“用 wagmi 实现多链钱包连接，并处理网络切换异常” → 具体可验证
@@ -559,6 +734,7 @@ LinkedIn / Twitter（可选，但建议有）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -669,6 +845,7 @@ npx hardhat run scripts/deploy.js --network localhost
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -790,6 +967,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 在 Web3（尤其是去中心化金融，DeFi）中，**套利（Arbitrage）** 是指利用不同市场或协议之间资产价格的暂时性差异，通过低买高卖获取无风险或低风险利润的行为。以下是 Web3 中常见的套利方式和操作逻辑：
 
 * * *
@@ -897,6 +1075,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 Solidity 中的\*\*事件（Events）\*\*是一种用于在智能合约中记录日志（logs）的机制，主要用于将信息从区块链传递给外部应用程序（如前端 DApp）。事件通过以太坊虚拟机（EVM）的日志功能实现，具有高效、低成本和可被监听的特点。
 
 ### **1\. 事件的定义**
@@ -955,6 +1134,7 @@ solidity
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1135,6 +1315,7 @@ Gossip 协议（又称“流言协议”或“八卦协议”）在区块链和�
 
 
 
+
 ## **一句话总结 ERC-7962 是什么？**
 
 > **它是一种新的“隐私代币”标准，让你的 NFT 或普通代币（比如类似 USDT 的 Token）在转账时，不再暴露你的钱包地址，从而保护你的身份隐私。**
@@ -1278,11 +1459,13 @@ ERC-7962 定义了两个标准：
 
 
 
+
 参加了LXDao的周会，初步了解了DAO的治理形式，了解过去一周LXDAO的动态
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1379,6 +1562,7 @@ ERC-7962 定义了两个标准：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1610,6 +1794,7 @@ ERC-7962 定义了两个标准：
 
 
 
+
 # **U卡是什么？**
 
 **U卡 = 加密资产账户 + 全球支付卡 + 钱包联动理财入口**
@@ -1693,6 +1878,7 @@ KYC 的核心目的是：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1903,6 +2089,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
