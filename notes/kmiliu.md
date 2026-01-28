@@ -15,8 +15,226 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-27
+<!-- DAILY_CHECKIN_2026-01-27_START -->
+## 一、Foundry 是什么（一句话）
+
+**Foundry = 用 Rust 写的以 CLI 为核心的以太坊开发工具链**  
+👉 速度快、测试强、偏工程与研究型开发者（你会很适应）
+
+* * *
+
+## 二、Foundry 四大核心工具（一定要分清）
+
+### 1️⃣ Forge（最重要）
+
+👉 **写、测、部署 Solidity 合约的主力工具**
+
+用途：
+
+-   编译合约
+    
+-   写 & 跑测试（单元 / fuzz / invariant）
+    
+-   部署合约
+    
+-   Gas 分析、coverage
+    
+
+常用命令：
+
+```
+forge init Counter     # 新建项目
+forge build            # 编译
+forge test             # 跑测试
+forge test --fork-url <RPC>   # 在 fork 的主网状态上测试
+```
+
+部署（用 script）：
+
+```
+forge script script/Counter.s.sol \
+  --rpc-url http://127.0.0.1:8545 \
+  --broadcast \
+  --private-key $PRIVATE_KEY
+```
+
+🧠 **核心理解**：
+
+-   `src/` → 合约
+    
+-   `test/` → Solidity 写的测试
+    
+-   `script/` → 部署 & 批量交互脚本
+    
+-   **测试和部署都是 Solidity 写的，不是 JS**
+    
+
+* * *
+
+### 2️⃣ Anvil
+
+👉 **本地以太坊节点（= Hardhat node + fork 能力）**
+
+用途：
+
+-   本地链
+    
+-   fork 主网 / 测试网状态
+    
+-   调试复杂交互
+    
+
+启动：
+
+```
+anvil
+```
+
+Fork 主网：
+
+```
+anvil --fork-url https://reth-ethereum.ithaca.xyz/rpc
+```
+
+🧠 你要记住：
+
+-   Anvil 启动后 = 一个 RPC endpoint
+    
+-   Forge / Cast 都可以连它
+    
+-   自带 **预置账户 + 钱**
+    
+
+* * *
+
+### 3️⃣ Cast
+
+👉 **命令行版 Web3 Swiss Army Knife**
+
+用途：
+
+-   查余额
+    
+-   调合约 view 函数
+    
+-   发交易
+    
+-   直接调 JSON-RPC
+    
+
+常见操作：
+
+```
+cast balance vitalik.eth --ether
+cast call <contract> "balanceOf(address)" <addr>
+cast send <to> --value <wei>
+cast block-number
+```
+
+🧠 类比：
+
+-   `cast` ≈ curl + ethers.js + RPC inspector
+    
+
+* * *
+
+### 4️⃣ Chisel
+
+👉 **Solidity REPL（即时交互解释器）**
+
+用途：
+
+-   测 Solidity 语法
+    
+-   快速验证想法
+    
+-   Debug 小逻辑
+    
+
+示例：
+
+```
+uint256 a = 123;
+a;
+
+function add(uint256 x, uint256 y) public pure returns (uint256) {
+  return x + y;
+}
+add(5, 10);
+```
+
+🧠 你会在：
+
+-   学 Solidity
+    
+-   写复杂数学 / encoding
+    
+-   不想开完整项目时  
+    **非常有用**
+    
+
+* * *
+
+## 三、Forge 的高级能力（你之后一定会用到）
+
+### ✅ 测试类型
+
+-   **Table testing**：表格式测试用例
+    
+-   **Fuzz testing**：随机输入，找边界 bug
+    
+-   **Invariant testing**：系统级不变量（DeFi 必备）
+    
+
+### ✅ 性能 & 质量
+
+-   `forge coverage` → 覆盖率
+    
+-   Gas tracking → 优化 gas
+    
+-   Trace / Debugger → 调失败交易
+    
+
+* * *
+
+## 四、典型开发工作流（强烈建议你记住）
+
+```
+forge init
+↓
+写合约（src）
+↓
+写测试（test）
+↓
+forge test
+↓
+anvil（本地链 / fork）
+↓
+forge script 部署
+↓
+cast 交互 & 调试
+```
+
+这是 **Foundry 原生 workflow**。
+
+* * *
+
+## 五、和你现在在学的 Scaffold-ETH 的关系
+
+| Scaffold-ETH | Foundry |
+| --- | --- |
+| 偏前端 + 全栈 | 偏底层合约 + 工程 |
+| Hardhat | Forge |
+| JS/TS 测试 | Solidity 测试 |
+| Demo 快 | 研究 & 严肃开发更强 |
+
+👉 **你现在学 Scaffold-ETH + 同时理解 Foundry = 非常正确路线**
+<!-- DAILY_CHECKIN_2026-01-27_END -->
+
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 ## 1) Scaffold-ETH 是什么（核心卖点）
 
 -   **一句话**：Scaffold-ETH 是一个“本地链 + 合约开发 + 前端自动生成/适配”的全套 dApp 模板
@@ -228,6 +446,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 # 🧱 Scaffold-ETH & Solidity 实战 Notes（Week 2 Day 5）
 
@@ -579,6 +798,7 @@ require(ok);
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 ## Scaffold-ETH + Solidity 深度实操笔记
@@ -944,6 +1164,7 @@ require(tx.origin == msg.sender);
 
 
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -1199,6 +1420,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1638,6 +1860,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -1735,6 +1958,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1913,6 +2137,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -2020,6 +2245,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2928,6 +3154,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -3101,6 +3328,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -3221,6 +3449,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4107,6 +4336,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
