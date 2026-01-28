@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+DAY13
+
+黑客松马上开始了，我大概是个人参赛吧。
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 DAY12
 
 构思黑客松 参加！
@@ -26,6 +34,7 @@ DAY12
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 ### DAY11
 
@@ -41,6 +50,7 @@ TO DO LIST ：
 
 
 
+
 DAY10
 
 完成 solidity 101 挑战， 突然发现WTF Solidity 课程很不错
@@ -53,6 +63,7 @@ DAY10
 
 
 
+
 DAY9  
 
 今天补一下落下的进度
@@ -60,6 +71,7 @@ DAY9
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -79,6 +91,7 @@ TODOLIST: 1. 学习 Solidity by Example-basic 部分 ×
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -128,6 +141,7 @@ Deployed Contracts这里面再每次更新后会有新的拓展。
 
 
 
+
 DAY6
 
 TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
@@ -148,6 +162,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -182,6 +197,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 
 
+
 **_DAY4_**  
 **_TODOLIST: 1 阅读教程并整理_**  
   
@@ -190,6 +206,7 @@ TODOLIST: 1 手册 智能合约 部分 2 熟悉安装开发环境
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -239,6 +256,7 @@ myfirstNFT
 
 
 
+
 DAY2  
 昨天晚上赶在ddl之前仓促提交笔记。下定决心一定要早些笔记。  
 \------  
@@ -248,6 +266,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
