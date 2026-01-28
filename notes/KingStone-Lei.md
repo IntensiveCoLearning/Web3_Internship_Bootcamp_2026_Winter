@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 打卡一下，今天复盘了一下各个视频的回放
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 ## 🛠️ 核心工具：MetaMask, Sepolia Testnet, Uniswap, Remix IDE, Etherscan
 
@@ -140,6 +147,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-21_START -->
 
 
+
 ## Remix 智能合约开发实践小结
 
 **日期：** 2026年1月21日 **核心目标：** 掌握从编写、编译到部署智能合约的全流程操作。
@@ -198,6 +206,7 @@ timezone: UTC+8
 
 
 
+
 ### **Web3 实习实操：从“内容运营”到“系统架构”的思维跃迁**
 
 昨晚深度完成了 TG/Discord 频道配置、数据看板分析及 Notion SOP 搭建后，我最大的感触是：**Web3 的社区运营，本质上是在构建一套自动化的数字社会规则。**
@@ -235,6 +244,7 @@ timezone: UTC+8
 
 
 
+
 ### Web3 实习手册社区运营指南部分-学习感受
 
 **1\. 岗位专业性的重塑** 过去对“社区运营”常存在低门槛的误解，但该指南展示了其极高的综合素质要求。运营者需兼具内容创作的敏感度、项目管理的严谨性以及对链上数据的解读能力。这种“全栈”属性要求从业者必须具备快速学习和跨领域整合的素养。
@@ -248,6 +258,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -272,6 +283,7 @@ timezone: UTC+8
 
 
 
+
 阅读Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)部分
 
 在入场之前，读懂法律红线远比研究技术逻辑更救命。
@@ -283,6 +295,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -333,6 +346,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
