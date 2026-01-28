@@ -15,8 +15,133 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+最近学习 Web3 与 AI 时都会用到 CMD（命令提示符）和 PowerShell，但是一直没能搞懂两者各自的意思，今天决定完成 Foundry 和 Hardhat 的学习，在这里先借助 Claude Sonnet 4.5 搞清楚 CMD 和 PowerShell 的区别。
+
+## **CMD**
+
+-   全称 Command Prompt
+    
+-   默认提示符是 `C:\Users\用户名>`
+    
+-   Windows 的老式命令行工具
+    
+-   功能基础
+    
+
+## **PowerShell**
+
+-   全称 Windows PowerShell
+    
+-   默认提示符是 `PS C:\Users\用户名>`
+    
+-   微软开发的现代命令行工具
+    
+-   功能强大，编程语言，可运行大部分 CMD 命令，支持脚本和自动化
+    
+
+Sonnet 4.5 将前者比作老爷车，后者比作现代汽车。换句话说，直接上手用 PowerShell 吧。
+
+这里也顺手补充一些在 PowerShell 中的基本命令。
+
+-   `pwd`：显示当前目录
+    
+-   `D:`：切换到 D 盘
+    
+-   `mkdir`：创建文件夹，后面跟的是文件夹的名称
+    
+    -   假设此时在 D 盘，`mkdir Project` 就会在 D 盘下创建一个名为 Project 的文件夹
+        
+-   `cd`：切换到指定目录，后面跟的是目录的名称
+    
+    -   假设此时在 D 盘，`cd Project` 就会切换到 D 盘下的 Project 文件夹
+        
+    -   如果此时在 Project 文件夹，且 Project 文件夹中创建好了 foundry 文件，那么 `cd foundry` 就会切换到 foundry 文件
+        
+    -   如果此时在 D 盘，直接 `cd 03_Project\foundry` 可以直接切换到 foundry 文件夹
+        
+    -   如果此时在 C 盘，直接 `cd D:\03_Project\foundry` 可以直接切换到 foundry 文件夹
+        
+-   `\``：`\`\`用于表示续行。
+    
+    -   如：
+        
+        ```
+        forge create src/Counter.sol:Counter `
+          --rpc-url http://127.0.0.1:8545 `
+          --private-key <私钥> `
+          --broadcast
+        ```
+        
+        也可以一行写完。
+        
+        ```
+        forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-key <私钥> --broadcast
+        ```
+        
+-   `<>`：是占位符标记，不要输入，只需要占位符内说明的内容即可。比如 `<私钥>` 直接完整地替换为私钥地址即可。
+    
+
+为了在终端运行 ardhat，根据 Sonnet 4.5 的建议以管理员身份运行将 PowerShell 的执行策略修改了。
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+执行以后选择 `Y`，信任脚本的运行，不知道这样会不会有什么风险，但总归可以用上 `npm`。
+
+```
+PS C:\Users\用户名> node --version
+v24.13.0
+PS C:\Users\用户名> npm --version
+11.6.2
+```
+
+## **Foundry**
+
+我要到 GitHub 上找到 Foundry 的安装包并下载，为了节省 C 盘便安装到 D 盘，但还需要添加到系统的 PATH 环境变量中——在系统变量中找到 `Path` 并点击编辑，然后新建，添加 `D:\Tool\foundary`，最后确定，然后重启 PowerShell 即可。
+
+通过以下代码测试。
+
+```
+forge --version
+cast --version
+anvil --version
+chisel --version
+```
+
+如果显示版本号便说明安装成功。
+
+[教程](https://www.notion.so/Foundry-2bb1a400ef94800a9451d299c7f8d778)中的指示都只适用于 Mac。
+
+```
+# Mac 用 \ 来进行续行
+forge create src/Counter.sol:Counter \
+  --rpc-url <http://127.0.0.1:8545> \
+  --private-key <你的私钥> \
+  --broadcast
+# Windows 用 ` 来进行续行
+forge create src/Counter.sol:Counter `
+  --rpc-url http://127.0.0.1:8545 `
+  --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 `
+  --broadcast
+
+
+# Mac
+cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()" --rpc-url <http://127.0.0.1:8545> | cast --to-dec
+# Windows
+# 第一步：获取原始结果
+$result = cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()" --rpc-url http://127.0.0.1:8545
+​
+# 第二步：转换为十进制
+cast --to-dec $result
+```
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 我们小组今天开始黑客松了，以小白的提案为主，但我们不清楚应该怎么分工，最后还是小白决定自己先 Vibe 一个 Demo 出来，然后大家再一起讨论看看怎么优化。
 
 虽然小白先 Vibe 了一个 Demo，但我还是让 Claude Opus 分析了小白的提案，以给出一个便于分工的设计方案，提示词如下：
@@ -106,6 +231,7 @@ Echo：
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 今天花了很长时间设置开发环境，找到了[中转站](https://0011.ai/)，终于可以在内地付费购买大模型的限额额度。由于之前使用 Antigravity IDE 时基本总让 AI 全程接管，从提出想法到创建文件，再到调试，消耗的 Token 太多，限额一下子便被用光，不得不寻找替代方案——在本地命令行中使用 Claude Code CLI 和 Codex CLI。
 
 但也是安装 CLI，才让我发现自己不过是刚走到 Vibe Coding 的大门前，或许连迈都没有迈进去。另外，我发现许多博主都是在 Cursor 上使用 AI，但我还不知道如何解决海外充值的问题，或许这也是我的路径依赖吧。
@@ -152,6 +278,7 @@ Echo：
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 Solidity 语法的变量类型包括值类型、引用类型、映射类型和函数类型，上次已经学习过值类型，这一次是引用类型。
@@ -275,6 +402,7 @@ function initStudent4() external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -449,6 +577,7 @@ contract ReturnDemo{
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -672,6 +801,7 @@ function enumToUint() external view returns(uint){
 
 
 
+
 ## **1\. Solidity 语法中的基本结构**
 
 在 Solidity 代码中，都必须先指定和声明 Solidity 的编译器版本。
@@ -845,6 +975,7 @@ contract Counter {
 
 
 
+
 # 开发我的第一个 Web3 Vibe-Coding Demo 项目
 
 ## **1\. 今日想法**
@@ -1008,6 +1139,7 @@ contract AgentReputation {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1280,6 +1412,7 @@ function getMessageCount(address user)
 
 
 
+
 \## Dapp
 
 \* 去中心化应用
@@ -1523,6 +1656,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **补充梳理：图灵完备与智能合约**
 
 当朋友问起我什么是「以太坊」（Ethereum）时，我总会习惯性地通过其与「比特币」的对比来进行说明。但需要指出的是，这里的比特币并非简单地指「代币」（Token）——一种在去中心化的网络中用于给予维持网络运行的节点/网络服务提供商/「矿工」 的奖励/Gas Fee，如比特币、以太币等。
@@ -1602,6 +1736,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **1\. LXDAO 周会**
 
 今天早上参加了 LXDAO 的周会，大致了解一下社区的运作模式和每周一会的内容。就社区的运作模式来说，和在实习手册中看到的描述相近，主要是由成员来提出提案，大家进行讨论和反馈，确认对社区有帮助便会支持一起做出来。在LXDAO 的 [notion](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9) 上可以见到其 Dashboard，根据不同主题分出了许多板块，包括教育、资金可持续性还有研究与机制创新等，里面还清晰地罗列着 Not started、In progress、Pending 和 Done 等状态的项目任务。接任务的方式有两种，一种是在周会现场举手加入，然后联系发起人；另一种是在路线图中找到任务并以详细计划进行申请。
@@ -1651,6 +1786,7 @@ returns (<返回值列表>)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1743,6 +1879,7 @@ Leon 也是通过思维导图的方式来分享自己对 Web3 的学习。如果
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1916,6 +2053,7 @@ AI 与 Web3 的结合—— AI 赚钱？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2223,6 +2361,7 @@ GoPlus 有相关网站可以检测风险。
 
 
 
+
 今日思绪：或许是因为早上将最后一份课程论文完成，我好像多出了不少干劲，中午睡了个午觉，下午全程学习 Web3。我的进度应该算是比较慢了，实习手册的阅读进度还停留在「入门导读」部分，今天一个下午的时间都用于理解「以太坊」，包括以太坊的具体含义、内容、结构、核心机制、发展演变以及价值观。但我感受到了一些专注和享受的感觉，可能有一点像是慢慢吸取知识的感觉，至少我真的开始对以太坊有了感性的认识。可能知识的积累真的需要一个过程，这才第二天。
 
 群里的小伙伴们都很活跃，求币、提问题、相互答疑、分享自己整理的资料和输出创作的内容，这些似乎在慢慢影响我——我也想多一些参与到大家的互动之中，但无奈于自己还有很多知识不懂，但昨晚给一个忘记保存笔记的小伙伴分享了用 Typora 记录和迁移笔记的建议，今天下午为一个小伙伴解答了如何查看测试币交易记录的问题。
@@ -2516,6 +2655,7 @@ wachi 助教补充了一段信息：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
