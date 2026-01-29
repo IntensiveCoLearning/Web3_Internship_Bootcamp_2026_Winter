@@ -15,8 +15,51 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+## **构造函数和修饰器**
+
+## **构造函数**
+
+构造函数（`constructor`）是一种特殊的函数，每个合约可以定义一个，并在部署合约的时候自动运行一次。它可以用来初始化合约的一些参数，例如初始化合约的`owner`地址：
+
+```
+address owner; // 定义owner变量
+
+// 构造函数
+constructor(address initialOwner) {
+    owner = initialOwner; // 在部署合约的时候，将owner设置为传入的initialOwner地址
+}
+```
+
+## **修饰器**
+
+修饰器（`modifier`）是`Solidity`特有的语法，类似于面向对象编程中的装饰器（`decorator`），声明函数拥有的特性，并减少代码冗余。它就像钢铁侠的智能盔甲，穿上它的函数会带有某些特定的行为。`modifier`的主要使用场景是运行函数前的检查，例如地址，变量，余额等。
+
+我们来定义一个叫做onlyOwner的modifier：
+
+```
+// 定义modifier
+modifier onlyOwner {
+   require(msg.sender == owner); // 检查调用者是否为owner地址
+   _; // 如果是的话，继续运行函数主体；否则报错并revert交易
+}
+```
+
+带有`onlyOwner`修饰符的函数只能被`owner`地址调用，比如下面这个例子：
+
+```
+function changeOwner(address _newOwner) external onlyOwner{
+   owner = _newOwner; // 只有owner地址运行这个函数，并改变owner
+}
+```
+
+我们定义了一个`changeOwner`函数，运行它可以改变合约的`owner`，但是由于`onlyOwner`修饰符的存在，只有原先的`owner`可以调用，别人调用就会报错。这也是最常用的控制智能合约权限的方法。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 ### 变量初始值
 
 -   `boolean`: `false`
@@ -176,6 +219,7 @@ function ternaryTest(uint256 x, uint256 y) public pure returns(uint256){
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 ### array、struct
 
 -   固定长度数组：在声明时指定数组的长度。用`T[k]`的格式声明，其中`T`是元素的类型，`k`是长度
@@ -304,11 +348,13 @@ function writeMap (uint _Key, address _Value) public{
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 今日在WTF上重新学习solidity，这里的教程比 [Solidity by Example](https://solidity-by-example.org/) 更好懂一点，目前完成了solidity101前五关。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -435,6 +481,7 @@ contract ReentrancyGuardTransient {
 
 
 
+
 structs
 
 You can define your own type by creating a .`struct`
@@ -496,6 +543,7 @@ contract Todos {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -645,6 +693,7 @@ contract ArrayReplaceFromEnd {
 
 
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -728,6 +777,7 @@ contract Loop {
 
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -785,6 +835,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -792,6 +843,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -874,6 +926,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -935,6 +988,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -961,6 +1015,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1031,6 +1086,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
