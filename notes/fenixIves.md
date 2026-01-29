@@ -15,8 +15,341 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+# 19 Wagmi初步学习
+
+**Wagmi** 是基于 Viem 的 React Hooks 库！
+
+## Wagmi 是什么？
+
+Wagmi 是用于以太坊的 React Hooks 库，让你在前端 dApp 中轻松连接钱包和调用合约。
+
+**核心特点：**
+
+-   🎣 React Hooks 风格
+    
+-   🔌 支持多种钱包（MetaMask、WalletConnect、Coinbase 等）
+    
+-   💪 基于 Viem，类型安全
+    
+-   ⚡ 自动缓存和请求去重
+    
+
+## 基本用法
+
+### 1\. 安装和配置
+
+```
+pnpm install wagmi viem @tanstack/react-query
+```
+
+```
+// app.jsx
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { injected, walletConnect } from 'wagmi/connectors';
+
+// 配置
+const config = createConfig({
+  chains: [mainnet, sepolia],
+  connectors: [
+    injected(),
+    walletConnect({ projectId: 'YOUR_PROJECT_ID' }),
+  ],
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+  },
+});
+
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <YourApp />
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+### 2\. 连接钱包
+
+```
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+
+function ConnectWallet() {
+  const { address, isConnected } = useAccount();
+  const { connect, connectors } = useConnect();
+  const { disconnect } = useDisconnect();
+
+  if (isConnected) {
+    return (
+      <div>
+        <p>Connected: {address}</p>
+        <button onClick={() => disconnect()}>Disconnect</button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {connectors.map((connector) => (
+        <button
+          key={connector.id}
+          onClick={() => connect({ connector })}
+        >
+          Connect {connector.name}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
+
+### 3\. 读取合约
+
+```
+import { useReadContract } from 'wagmi';
+
+function TokenBalance() {
+  const { data: balance, isLoading } = useReadContract({
+    address: '0x...',
+    abi: tokenABI,
+    functionName: 'balanceOf',
+    args: ['0xUserAddress'],
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  
+  return <div>Balance: {balance?.toString()}</div>;
+}
+```
+
+### 4\. 写入合约
+
+```
+import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+
+function Transfer() {
+  const { 
+    data: hash, 
+    writeContract, 
+    isPending 
+  } = useWriteContract();
+
+  const { isLoading: isConfirming, isSuccess } = 
+    useWaitForTransactionReceipt({ hash });
+
+  const handleTransfer = () => {
+    writeContract({
+      address: '0x...',
+      abi: tokenABI,
+      functionName: 'transfer',
+      args: ['0xRecipient', 1000000000000000000n],
+    });
+  };
+
+  return (
+    <div>
+      <button 
+        onClick={handleTransfer} 
+        disabled={isPending || isConfirming}
+      >
+        {isPending ? 'Confirming...' : 'Transfer'}
+      </button>
+      {isSuccess && <div>Transaction successful!</div>}
+    </div>
+  );
+}
+```
+
+### 5\. 监听事件
+
+```
+import { useWatchContractEvent } from 'wagmi';
+
+function TransferListener() {
+  useWatchContractEvent({
+    address: '0x...',
+    abi: tokenABI,
+    eventName: 'Transfer',
+    onLogs(logs) {
+      console.log('New transfers:', logs);
+    },
+  });
+
+  return <div>Listening for transfers...</div>;
+}
+```
+
+## 常用 Hooks
+
+```
+import {
+  useAccount,           // 获取连接的账户
+  useBalance,           // 获取 ETH 余额
+  useBlockNumber,       // 获取当前区块号
+  useChainId,           // 获取当前链 ID
+  useConnect,           // 连接钱包
+  useDisconnect,        // 断开连接
+  useReadContract,      // 读取合约
+  useReadContracts,     // 批量读取合约
+  useWriteContract,     // 写入合约
+  useSimulateContract,  // 模拟交易
+  useWaitForTransactionReceipt, // 等待交易确认
+  useSendTransaction,   // 发送 ETH
+  useSignMessage,       // 签名消息
+  useSwitchChain,       // 切换链
+  useWatchContractEvent, // 监听事件
+} from 'wagmi';
+```
+
+## 完整示例：Counter dApp
+
+```
+import { useReadContract, useWriteContract, useAccount } from 'wagmi';
+
+const counterABI = [
+  {
+    inputs: [],
+    name: 'number',
+    outputs: [{ type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'inc',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+];
+
+function Counter() {
+  const { address } = useAccount();
+  
+  // 读取当前值
+  const { data: number, refetch } = useReadContract({
+    address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    abi: counterABI,
+    functionName: 'number',
+  });
+
+  // 写入
+  const { writeContract, isPending } = useWriteContract();
+
+  const increment = async () => {
+    writeContract({
+      address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+      abi: counterABI,
+      functionName: 'inc',
+    }, {
+      onSuccess: () => {
+        refetch(); // 刷新数据
+      }
+    });
+  };
+
+  if (!address) {
+    return <div>Please connect wallet</div>;
+  }
+
+  return (
+    <div>
+      <h1>Counter: {number?.toString()}</h1>
+      <button onClick={increment} disabled={isPending}>
+        {isPending ? 'Incrementing...' : 'Increment'}
+      </button>
+    </div>
+  );
+}
+```
+
+## Viem vs Wagmi vs Ethers 对比
+
+| 用途 | 库 | 适用场景 |
+| 后端/脚本 | Viem | Hardhat 脚本、Node.js |
+| 前端 dApp | Wagmi | React 应用 |
+| 传统方案 | Ethers.js | 两者都可 |
+
+```
+// 后端脚本 - 用 Viem
+import { createPublicClient } from 'viem';
+const client = createPublicClient(...);
+
+// React 前端 - 用 Wagmi
+import { useReadContract } from 'wagmi';
+function Component() {
+  const { data } = useReadContract(...);
+}
+```
+
+## Wagmi 生态
+
+-   **@wagmi/core** - 不依赖 React 的核心库
+    
+-   **@wagmi/cli** - 从 ABI 生成 TypeScript 类型
+    
+-   **ConnectKit** - 美观的钱包连接 UI
+    
+-   **RainbowKit** - 另一个流行的钱包 UI 库
+    
+
+## 使用 Wagmi CLI 生成类型
+
+```
+pnpm install --save-dev @wagmi/cli
+
+# wagmi.config.ts
+import { defineConfig } from '@wagmi/cli';
+import { react } from '@wagmi/cli/plugins';
+
+export default defineConfig({
+  out: 'src/generated.ts',
+  contracts: [
+    {
+      name: 'Counter',
+      abi: [...], // 你的 ABI
+      address: '0x...',
+    },
+  ],
+  plugins: [react()],
+});
+```
+
+运行 `pnpm wagmi generate` 后会生成类型安全的 hooks：
+
+```
+import { useCounterNumber, useCounterInc } from './generated';
+
+function Counter() {
+  const { data: number } = useCounterNumber();
+  const { write: increment } = useCounterInc();
+  
+  return <button onClick={() => increment()}>Count: {number}</button>;
+}
+```
+
+## 总结
+
+-   **Viem** = 底层库（像 ethers.js）
+    
+-   **Wagmi** = React Hooks（基于 Viem）
+    
+-   Hardhat 脚本 → 用 Viem
+    
+-   React dApp → 用 Wagmi
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 # 18 Viem 初步学习
 
 ## 1 Viem 是什么？
@@ -233,6 +566,7 @@ const data = encodeFunctionData({
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 # 17 Hardhat + Viem 初学流程
 
@@ -713,6 +1047,7 @@ await counter.number(); // 输出 BigInt(100)
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -981,6 +1316,7 @@ cast send <合约地址> "decrement()" \
 
 
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -1170,6 +1506,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1393,6 +1730,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -1486,6 +1824,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1850,6 +2189,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2268,6 +2608,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2745,6 +3086,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -3041,6 +3383,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -4160,6 +4503,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -4536,6 +4880,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -4871,6 +5216,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -5032,6 +5378,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5320,6 +5667,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5639,6 +5987,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -5867,6 +6216,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
