@@ -26,15 +26,43 @@ Web3 实习计划 2025 冬季实习生
 
 ## **產品核心架構 (Product Architecture)**
 
-| 核心模組 (Modules) | 功能細節 (Key Features) | 用戶/機構價值 (Value Proposition) |
-| 項目數據庫(Project Database) | • 精細化標籤： 區分極細顆粒度賽道 (如: Modular, RWA, Intent-centric)• 生態歸屬： 標記項目所屬的 L1/L2 網絡 | 市場認知地圖： 幫助研究員快速建立對特定賽道的全景認知，進行競品對比。 |
-| 投融資數據(Fundraising Data) | • 全生命週期： 涵蓋 Pre-Seed 至 IPO/Token Generation• Cap Table 可視化： 清晰展示領投 (Lead) 與跟投 (Follow) 關係 | 盡職調查 (DD) 基準： 核實項目融資真實性，通過投資方背景判斷項目質量與潛在風險。 |
-| 投資方圖譜(Investor Portfolio) | • 持倉追蹤： 反向查詢 VC (如 Paradigm, a16z) 的投資組合• 聰明錢流向： 分析頂級機構近期的賽道偏好 | 趨勢捕捉： 散戶可跟隨機構視角尋找 Alpha；機構可用於監控競爭對手佈局。 |
-| 動態量化指標(Quant Metrics) | • 熱度指數： 基於搜索量與點擊量的真實關注度• 影響力指數： 綜合社群 (Twitter/Discord) 活躍數據 | 去噪指標： 在幣價之外，提供另一維度來評估項目的真實市場熱度與營銷能力。 |
+| 核心模組（Modules） | 功能細節（Key Features） | 用戶／機構價值（Value Proposition） |
+| --- | --- | --- |
+| 項目數據庫（Project Database） | • 精細化標籤：支援更細顆粒度賽道（如 Modular、RWA、Intent-centric）• 生態歸屬：標記項目所屬的 L1／L2 網路與生態系 | 市場認知地圖：幫助研究員快速建立特定賽道全景，完成競品對比與定位。 |
+| 投融資數據（Fundraising Data） | • 全生命週期覆蓋：Pre-Seed 至 IPO／TGE（Token Generation Event）• Cap Table 視覺化：清晰展示 Lead／Follow 關係與輪次結構 | 盡職調查（DD）基準：核實融資真實性，透過投資方背景評估項目品質與潛在風險。 |
+| 投資方圖譜（Investor Portfolio） | • 持倉追蹤：反向查詢 VC（如 Paradigm、a16z）的投資組合• 聰明錢流向：分析頂級機構近期賽道偏好與配置變化 | 趨勢捕捉：散戶可借鏡機構視角找 Alpha；機構可用於監控同業／競爭對手佈局。 |
+| 動態量化指標（Quant Metrics） | • 熱度指數：基於搜尋量、點擊量等行為數據衡量關注度• 影響力指數：綜合社群（X／Discord）活躍與互動數據 | 去噪評估：在幣價之外提供第二維度，用於衡量真實市場熱度、敘事擴散與行銷效率。 |
+
+## **運營邏輯：數據飛輪 (Operational Logic: The Data Flywheel)**
+
+| 階段與策略 | 運作機制（Mechanism） | 邏輯分析（Analysis） |
+| --- | --- | --- |
+| 數據冷啟動（Cold Start） | 被動收錄（Passive Aggregation）：透過爬蟲與分析師團隊，從新聞、公告、鏈上數據等來源清洗與結構化基礎資料。 | 建立「人無我有」的底層數據庫，解決資訊碎片化與不可比的痛點，先抓到首批研究者與交易者流量。 |
+| 生態自生長（Growth & Maintenance） | 主動認領機制（Claim & Verify）：開放項目方與 VC 官方認領頁面，允許其自行更新介紹、融資、里程碑與動態。 | 成本轉移與質量提升：將數據維護成本部分轉嫁給項目方（UGC），同時提升一手資訊的即時性與準確性；再透過審核／驗證降低造假風險。 |
+| 正向循環（Feedback Loop） | 流量反哺數據平台：流量越大 → 項目方越有動力維護頁面 → 數據越準 → 吸引更多用戶查詢與引用。 | 形成網路效應（Network Effect），平台逐步從「查資料的工具」升級為「行業標準」與「信用背書」的基礎設施。 |
+
+## **商業模式分析 (Business Model)**
+
+| 客戶群體 | 產品／服務（Offering） | 獲利邏輯（Revenue Stream） |
+| --- | --- | --- |
+| B 端：機構／項目方（Projects & Institutions） | • API 數據授權：為錢包、交易所、媒體提供標籤與簡介數據• 品牌推廣：熱搜榜單、Banner、生態專題頁• SaaS 工具：競品監控、數據導出 | 流量與基礎設施變現：以高精度標籤與結構化資料成為 Web3 應用的底層數據源（訂閱／授權）；同時利用流量優勢做精準廣告投放（廣告／贊助）。 |
+| C 端：專業投資者（Pro Investors／Analysts） | • Pro 會員功能：早期項目提醒、深度資金流向分析、無限次數據查詢 | 信息差變現：用更早、更深的研究與監測能力提升決策效率，採會員訂閱（分級定價）與增值功能收費。 |
+| 一級市場撮合（Deal Flow） | • 投融資對接（FA）：基於平台數據撮合融資項目與尋找標的的 VC | 交易佣金：切入類投行／FA 業務，以信息優勢與匹配效率收取成功費／佣金（可搭配 Retainer + Success Fee）。 |
+
+## **市場定位對比 (Market Positioning)**
+
+| 比較維度 | RootData | Dune／Nansen／Arkham |
+| --- | --- | --- |
+| 數據屬性 | 鏈下數據（Off-chain Data） | 鏈上數據（On-chain Data） |
+| 核心實體 | 公司、團隊、VC、機構 | 錢包地址、智能合約、Tx Hash |
+| 解決問題 | 「這個項目背景是什麼？誰支持的？」（基本面分析／盡職調查） | 「資金流向哪裡？大戶在做什麼？」（籌碼分析／鏈上行為） |
+| 定位類比 | Web3 的 Crunchbase／企查查 | Web3 的銀行對帳單／審計工具 |
+| 互補關係 | 兩者互補，共同構成完整的投資決策閉環：通常先用 RootData 建立背景與假設，再用 Dune／Nansen／Arkham 做鏈上驗證與持續追蹤。 | 同左（鏈上工具提供驗證與監控，反過來也能為鏈下敘事提供證據與預警）。 |
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 ## **Day 17 学习计划**
 
@@ -55,6 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -100,6 +129,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -159,6 +189,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -288,6 +319,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 13 学习计划**
 
 2026/01/24 总体学习计划如下：
@@ -361,6 +393,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 12 学习计划**
 
 2026/01/23 总体学习计划如下：
@@ -416,6 +449,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -436,6 +470,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -484,6 +519,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -702,6 +738,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -814,6 +851,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -891,6 +929,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -926,6 +965,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1023,6 +1063,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1155,6 +1196,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1366,6 +1408,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1504,6 +1547,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
