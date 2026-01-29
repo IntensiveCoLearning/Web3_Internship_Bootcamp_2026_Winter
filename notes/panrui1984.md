@@ -15,8 +15,37 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+本次尝试使用viem前端库
+
+以下记录一些简要记录
+
+-   **Ethers.js (v5/v6):** **面向对象 (OOP)**。你有 Provider、Wallet、Contract 等**类**实例，方法都挂载在实例上。
+    
+-   **Viem:** **函数式 (Functional)**。你创建 Client，然后把 Client 作为参数传给一个个独立的**函数**
+    
+
+### . 核心概念映射 (术语对照)
+
+| Ethers.js | Viem | 说明 |
+| Provider | Public Client | 用于读取链上数据 (区块、读合约) |
+| Signer / Wallet | Wallet Client (+ Account) | 用于发送交易、签名消息 |
+| BigNumber | BigInt (原生) | Viem 直接使用 JS 原生 BigInt |
+| utils | 顶级导出函数 | 如 parseEther 直接从 viem 引入 |
+
+### 为什么用 Viem？(优点速记)
+
+1.  **包体积极小**
+    
+2.  **TypeScript 推导**
+    
+3.  **原生 BigInt**：
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 Polymarket 链上数据解析与索引器学习笔记
 
 ## 一、概念
@@ -66,6 +95,7 @@ Polymarket 链上数据解析与索引器学习笔记
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 # Uniswap V2 源代码学习笔记
 
 _x_×_y_\=_k_
@@ -107,6 +137,7 @@ V1 必须用 ETH 做中介 (TokenA -> ETH -> TokenB)，V2 允许任意 Token 对
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 # Polymarket 技术向精简学习笔记
 
 Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依托**智能合约**、**AMM 机制**、**预言机**实现事件概率代币化交易与自动结算，底层部署于 Polygon 二层网络。
@@ -146,6 +177,7 @@ Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -262,6 +294,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -398,6 +431,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 编写了一份研究报告
 
 一、 项目概况与背景
@@ -513,6 +547,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等五、如�
 
 
 
+
 Web3工具
 
 # 社交工具
@@ -574,6 +609,7 @@ okx，binance钱包
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -718,6 +754,7 @@ Lock = false;
 
 
 
+
 24-25区块链主要进展记录
 
 Ordi开启的BRC20铭文
@@ -777,6 +814,7 @@ ICO合规化（Project Crypto）
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -888,6 +926,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1037,6 +1076,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -1066,6 +1106,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1110,6 +1151,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1191,6 +1233,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
