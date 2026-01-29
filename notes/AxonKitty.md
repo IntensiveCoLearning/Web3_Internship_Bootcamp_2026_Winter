@@ -194,7 +194,7 @@ Sue 老师讲 VibeCoding：
 
 !\[\[Pasted image 20260129192339.png\]\]
 
-[康威定律](https://www.google.com/search?q=%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B&oq=%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDUxN2owajE1qAIIsAIB8QUT601yieJYTA&sourceid=chrome&ie=UTF-8&mstk=AUtExfDIN3Pm4cOEe2dLrhsw9xPiUOHlhiCIpJ6OCPc66cUEMCDA-awp1glHBWJt_xmWSmu4YEigJ3Pw1--SYkGJ6nQbznYtWIUKYr1Rd6rrZjPvv_MB4umxqlVeJ3jG9wLFf4kW8UZYjiU31suWQrecY_9leJyeBWAglvn4-_68makgoJw&csui=3&ved=2ahUKEwjOlMq10rCSAxWq6qACHe81JKUQgK4QegQIARAB)（Conway's Law）是**由计算机科学家梅尔文·康威（Melvin Conway）于1967年提出的一种系统设计经验法则**。其核心观点是：**设计系统的组织，其产生的设计等同于该组织内部的沟通结构**。简而言之，软件系统的架构直接反映了开发该系统的团队的结构与沟通方式，组织如何协作，系统就会如何构建。
+[康威定律](https://www.google.com/search?q=%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B&oq=%E5%BA%B7%E5%A8%81%E5%AE%9A%E5%BE%8B&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDUxN2owajE1qAIIsAIB8QUT601yieJYTA&sourceid=chrome&ie=UTF-8&mstk=AUtExfDIN3Pm4cOEe2dLrhsw9xPiUOHlhiCIpJ6OCPc66cUEMCDA-awp1glHBWJt_xmWSmu4YEigJ3Pw1--SYkGJ6nQbznYtWIUKYr1Rd6rrZjPvv_MB4umxqlVeJ3jG9wLFf4kW8UZYjiU31suWQrecY_9leJyeBWAglvn4-_68makgoJw&csui=3&ved=2ahUKEwjOlMq10rCSAxWq6qACHe81JKUQgK4QegQIARAB)（Conway’s Law）是**由计算机科学家梅尔文·康威（Melvin Conway）于1967年提出的一种系统设计经验法则**。其核心观点是：**设计系统的组织，其产生的设计等同于该组织内部的沟通结构**。简而言之，软件系统的架构直接反映了开发该系统的团队的结构与沟通方式，组织如何协作，系统就会如何构建。
 
 康威定律:一个组织设计出来的系统，其架构会“长得像”这个组织的沟通结构。
 <!-- DAILY_CHECKIN_2026-01-29_END -->
@@ -203,11 +203,13 @@ Sue 老师讲 VibeCoding：
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 开始准备黑客松，方向预测市场。
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -452,6 +454,7 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -702,6 +705,7 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 
 
+
 学习 Dapp 开发
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
@@ -713,11 +717,13 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 
 
+
 今天参加了 Monad 成都的黑客松，新的经历，挺好的。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -746,11 +752,13 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 
 
+
 昨天和今天两个老师分别讲了 solidity 的基础开发和 uniswap 的技术细节，我还在研究哈哈，就不写总结了。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -874,6 +882,7 @@ Day 2 最后一波操作真的秀到我了。
 
 
 
+
 作为一个最近刚开始卷 Web3 智能合约开发的新手，我把这两天跟着教程学习的心得总结一下。
 
 ### 1\. 环境搭建：Web2 的习惯，Web3 的命门
@@ -939,6 +948,7 @@ Day 2 最后一波操作真的秀到我了。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1080,6 +1090,7 @@ Day 2 最后一波操作真的秀到我了。
 
 
 
+
 主题：Ethers.js 基础与交易脚本
 
 背景：有 Java/Python 后端经验，熟悉常规 API 调用，初次接触区块链脚本开发。
@@ -1189,6 +1200,7 @@ Day 2 最后一波操作真的秀到我了。
 
 
 
+
 # 脚本编写与智能合约交互
 
 * * *
@@ -1269,6 +1281,7 @@ Day 2 最后一波操作真的秀到我了。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1538,6 +1551,7 @@ NFT 并不是将图片直接“塞”进区块链，通常有以下两种方式�
 
 
 
+
 ### Todo List:
 
 -   学习以太坊第一章上下的混淆概念
@@ -1711,6 +1725,7 @@ A：
 
 
 
+
 ## 1 理论学习
 
 src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -1769,6 +1784,7 @@ src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
