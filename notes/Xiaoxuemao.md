@@ -15,8 +15,42 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+**The Merge**（合并）— 2022 年 9 月 15 日
+
+从 PoW → PoS
+
+安全模型转变：引入 Slashing 等经济惩罚机制，作恶节点会直接损失质押 ETH。
+
+The Merge 本身 并没有直接提升 TPS 或降低 Gas，但它是后面所有扩容设计的前提。
+
+\-
+
+**Shanghai / Capella**（上海 / 卡佩拉）— 2023 年 4 月（合称 **Shapella**）
+
+解锁质押 ETH 提款
+
+从 Shapella 开始，「质押 ETH」从 “ 单向票”正式变成可进可出的长期参与机制。
+
+\-
+
+**Dencun**（坎昆 / Deneb + Cancun）— 2024 年 3 月
+
+L2 成本大幅下降的关键升级，引入 blob 交易和 proto-danksharding。
+
+proto-danksharding 是「半成品分片」，主要解决数据可用性；未来完整 danksharding 会在此基础上扩展。
+
+\-
+
+**Pectra**（Prague + Electra）— 2025 年
+
+执行层的 Prague 升级 + 共识层的 Electra 升级
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 **Constantinople & St.Petersburg**（君士坦丁堡 & 圣彼得堡）— 2019 年 2 月
 
 ​继续延迟难度炸弹。
@@ -70,6 +104,7 @@ St. Petersburg 主要任务是 “紧急拆雷”——禁用一个在测试中�
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 以太坊几次主网升级，历次升级对系统的改进
 
 时间线
@@ -107,6 +142,7 @@ EVM 诞生：引入以太坊虚拟机（EVM），让链上可以运行通用的�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 PoS为可扩展性奠定基础
@@ -154,6 +190,7 @@ PoW机制下的分片实现非常复杂，而PoS设计与**分片**技术天然�
 
 
 
+
 以太坊在设计之初就没打算“永远 PoW”。
 
 • 早期白皮书和官方资料中多次提到：PoW 只是过渡方案，长期目标是切换到 PoS（Casper），以降低能耗、提升经济安全性。
@@ -185,6 +222,7 @@ The Merge → Shanghai/Capella （ 开放取款）→ Dencun （ EIP-4844）→ 
 
 
 
+
 Tip（Priority Fee）小费
 
 实际支付单价 = BaseFee + priorityFee
@@ -212,6 +250,7 @@ priorityFee 归出块者（矿工/验证者）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -252,6 +291,7 @@ EIP-1559 之后：只有 Tip（优先费） + 区块奖励 归矿工 / 验证者
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -312,6 +352,7 @@ _想让合约“读外部世界的数据”，要靠 oracle 把数据先写进�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -394,6 +435,7 @@ _直角引号「『』」_
 
 
 
+
 宏观统计上，2025 年主网平均每笔普通**交易**的**费用**约在 几美元量级（比如 ~$3–4 美 金 ），在 NFT/牛市活动高峰则可能冲到 $5–50 一笔。
 
 平时可以在 不到 1 Gwei（极度清净时甚至 0.1 Gwei 左右）
@@ -448,6 +490,7 @@ Mythril：由 ConsenSys 维护的字节码安全分析工具
 
 
 
+
 **Source Map**（源映射）用于调试与审计：例如在 Remix、Hardhat Debugger 中单步调试时，高亮当前执行的源码行，或者在安全工具中精确指出“某条 opcode 对应哪行源代码”。
 
 Yul / IR：：**Yul** 是 Solidity 官方提供的**中间**语言，编译器在内部会先把 Solidity 源代码翻译成 Yul，再从 Yul 生成最终字节码； 对 Yul 做优化可以同时优化所有后端目标；
@@ -477,6 +520,7 @@ fallback()：处理“调用不存在的函数”或合约没有 receive() 时�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -531,6 +575,7 @@ Solidity状态修饰符
 
 
 
+
 现在 Ethers.js / Web3.js 已经不怎么使用了，大家现在基本上都是用的 Viem
 
 只有在“创建合约的同一笔交易中”调用时才会真正移除代码，否则只会清空余额而不会删掉合约代码和历史
@@ -568,6 +613,7 @@ Solidity 编译器会默认生成这一文件，并且（默认）把它的 IPFS
 
 
 
+
 **去中心化交易所（DEX）**
 
 **恒定乘积公式**：x \* y = k
@@ -591,6 +637,7 @@ MakerDAO 是一个去中心化的借贷协议，DAI，Sky，USDS。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -695,6 +742,7 @@ SpoonOS：Web3
 
 
 
+
 **世界各势力对加密市场的态度趋势**
 
 -   1\. 美国监管框架
@@ -776,6 +824,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式
 
 
 
+
 C/C++性能好但不安全；
 
 Java/C#拥有GC，安全但性能不行；
@@ -831,6 +880,7 @@ Discovery 协议，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
