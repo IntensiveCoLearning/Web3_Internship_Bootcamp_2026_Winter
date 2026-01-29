@@ -15,8 +15,88 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-28
+<!-- DAILY_CHECKIN_2026-01-28_START -->
+\# 今日打卡（Web3 Portfolio建立）
+
+\## ✅ Web3 结构与路由
+
+\- 搭建了 Web3 页面（Desktop + Mobile）并接入 HashRouter 子路由 `/web3/:section`
+
+\- 左侧导航支持跳转子页面（About / Projects / Blog / Experience / Research / Contact）
+
+\- Web3 页面取消外层白边（抵消 `App` 的全局 padding）
+
+\## ✅ Web3 数据拆分
+
+\- `public/web3/web3-data.json`：主页文案 + 导航 + section 配置
+
+\- `public/web3/projects.json`：项目数据独立
+
+\- `public/web3/blog.json`：博客列表独立
+
+\- `public/web3/blog/*.md`：博客正文 Markdown 独立
+
+\- `public/web3/experience.json`：经历数据独立（study/work + start/end）
+
+\## ✅ Blog 模块
+
+\- Blog 支持 Markdown 渲染（标题、链接、代码块、图片）
+
+\- Blog 列表为竖向 summary；点击后右侧展开全文
+
+\- 未点击时不显示全文
+
+\- title / titleLeft 拆分逻辑：未展开显示 title，展开后列表显示 titleLeft
+
+\- 修复了重复标题显示问题
+
+\## ✅ Experience 时间轴
+
+\- 改成严格数据驱动的时间轴（startDate / endDate）
+
+\- 时间支持到“天”精度
+
+\- 支持 `present` / `now`
+
+\- 体验演进多次：竖向 → 插针 → 横向 → 彩色条形 → 文字脱离框
+
+\- 现在最终效果：
+
+\- 时间轴居中
+
+\- 左侧 study / 右侧 work
+
+\- 每条经历为彩色长方形（不显示文字）
+
+\- endDate 处拉水平线，线末端圆点，文字在外侧
+
+\## ✅ 视觉调整 & 微调
+
+\- 彩色条形变窄
+
+\- 线和条形同色
+
+\- 线从条形上边中点出发
+
+\- 小圆点位置调整
+
+\- 时间轴长度调长、单位时间拉长
+
+\- 上方留白与轴长度多次调节
+
+\## ✅ Debug / 修复
+
+\- 修复 `experience.json` 格式错误导致的解析失败
+
+\- 修复乱码字符（· 符号）
+
+\- 修复 `present` 无法解析的问题
+<!-- DAILY_CHECKIN_2026-01-28_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 Solidity 基础语法学习笔记
 
 1\. Solidity 是什么
@@ -259,6 +339,7 @@ assert
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 黑客松经验分享
 
 一、什么是黑客松（Hackathon）
@@ -432,6 +513,7 @@ Demo
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 # 安全与合规
@@ -754,6 +836,7 @@ Demo
 
 
 
+
 # AI 辅助搭建 Obsidian 个人知识库
 
 ## 一、为什么我们总是「收藏了不看」
@@ -1073,6 +1156,7 @@ Demo
 
 
 
+
 # DApp
 
 ## 一、DApp 的实用定义
@@ -1327,6 +1411,7 @@ Demo
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1702,6 +1787,7 @@ Demo
 
 
 
+
 ## 社区运营基础 & 活动策划与执行
 
 ### 一、前置规则与合规要求
@@ -1900,6 +1986,7 @@ Demo
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2111,6 +2198,7 @@ AI 是放大器，不是方向盘
 
 
 
+
 # 不同pre和会议记录总结
 
 ## 一、区块链金融 / On-Chain IPO（金融研究类材料）
@@ -2256,6 +2344,7 @@ AI 是放大器，不是方向盘
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2457,6 +2546,7 @@ SpoonOS 降低开发门槛，加速落地
 
 
 
+
 ## Web3 安全与刑事风险
 
 ### 一、Web3 当前整体安全形势
@@ -2534,6 +2624,7 @@ KOL 荐币、带单；
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2809,6 +2900,7 @@ Wallet（签名）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
