@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-29-1769701877625-image.png)
+
+由于今天上直播课学习内容大部分是跟简历和Coding相关的，自己在这方面其实并没有代码的基础以及数据分析基础，所以说自己学习还是比较吃力，今天的收获相对来说会更少一些  
+不过看到群里发的这个投递简历tips，我个人感觉还是有很多关于求职简历方面可以优化的空间  
+  
+原文：  
+  
+几个小建议，希望实习计划的同学们在投递简历的时候需要有意识一些哈
+
+1.JD里已经写清楚要求了，邮件&简历的命名格式是运营实习生-姓名-就读专业-每周可实习X天，但很多同学发的简历可能就是直接一个空白邮件&没有简历就发送过来了2.投递的时候发件人姓名最好用真实姓名，英文名也可以。
+
+3.如果没有求职信，邮件中可以简单写一下对这个岗位的理解和匹配，可能100字也比空白会好很多
+
+从面试官的体感来说,如果本身投递人数不多的话可能会打开简历,但在本身竞争可能比较激烈的情况下,上面几种3种(1.未按法学博士要求命名简历;2.姓名未知;3.没有任何邮件正文，只有简历)会大概率被直接通过，因为如果连求职时都不在乎这几百字的投递要求，那如何让面试官信任你会在工作时认真按要求执行呢  
+  
+思考：实际上论努力的程度，可能做到后面大家的努力程度并不会相差太多。但是对于一件事，比如说找工作而言，每一步把它切分清楚，并且在每一个细分的步骤比别人好上一个1%，那可能总的加起来就可以超过别人，超过你同等同等级同能力的人拥有更多的机会。我觉得这也是我在看完这个tip之后的感想  
+那自己由于这个上班时间关系，所以第一份的这个web3相关的工作只能找一些兼职的工作，希望自己经过针对性简历优化，更高效的投递，能够尽快实现第一个目标
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-28-1769615670005-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-28-1769615692010-image.png)
 
 今日学习链上数据的思维导图  
@@ -68,6 +90,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 ![1668e81c8c61bf26b3bbd5311c80dc1f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-27-1769528916143-1668e81c8c61bf26b3bbd5311c80dc1f.jpg)
 
 今天主要学习收获是关于黑客松选题  
@@ -81,6 +104,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -142,6 +166,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天web3 的收获是关于同学们的分享会  
   
 第一个：web3 英语多重要
@@ -198,6 +223,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天不用上班niec  
 创作日 决定周末把下周日更的X文7篇都写好  
 如下图是我的第二篇X文框架 完善ing
@@ -207,6 +233,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -234,6 +261,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -278,6 +306,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习了uniswap相关的知识  
 概念：与传统中心化交易所不同，Uniswap运行在以太坊等区块链上，由智能合约管理。您始终通过自己的钱包进行交易，无需注册或托管资产，实现了**无需许可**和**非托管**的交易  
 其中**自动化做市商AMM**：是Uniswap的灵魂。它摒弃了订单簿，转而依靠一个数学公式和资金池来**自动定价并完成交易**。流动性提供者将资金存入池中，系统根据算法为所有交易者提供即时流动性  
@@ -312,6 +341,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
 
 今天主要是学习了关于DAO的治理模式  
@@ -320,6 +350,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -346,6 +377,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -387,6 +419,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -454,11 +487,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -559,6 +594,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -586,11 +622,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
