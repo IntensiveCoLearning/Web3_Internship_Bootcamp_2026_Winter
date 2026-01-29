@@ -15,19 +15,27 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+**查看「链上数据及分析基础」课程**
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 **查看「Web3 公共物品资金分配第二节课」回放**
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 **查看「投研基础框架建立」回放**
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 ## **学习基础语法，上手尝试基本的智能合约，Solidity 基础语法学习，深入学习**
@@ -38,11 +46,13 @@ timezone: UTC+8
 
 
 
+
 ### **收听：我们为什么被 Web3 吸引，但又不敢全跳进去?，英语角**
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -57,11 +67,13 @@ timezone: UTC+8
 
 
 
+
 **查看「残酷共学 & 休闲黑客松案例拆解」回放**
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -80,11 +92,13 @@ timezone: UTC+8
 
 
 
+
 观看**分享会 - Solidity Walk Through**
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -107,11 +121,13 @@ timezone: UTC+8
 
 
 
+
 **观看Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -138,11 +154,13 @@ timezone: UTC+8
 
 
 
+
 今天学习**「AI 及其基础概念」分享会回放**
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -173,6 +191,7 @@ timezone: UTC+8
 
 
 
+
 今日任务：
 
 查看开营仪式，搞清楚主要模式和时间
@@ -184,6 +203,7 @@ timezone: UTC+8
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
