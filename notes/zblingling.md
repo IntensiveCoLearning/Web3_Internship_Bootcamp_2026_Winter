@@ -15,8 +15,83 @@ se major, into crypto
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+## **Polymarket**
+
+> link: [Polymarket API Docs](https://docs.polymarket.com/)
+
+-   **Event vs. Market: 数据层级**
+    
+    一个 **Event**（事件）是高层话题，一个 **Market**（市场）是具体的交易对。
+    
+    -   **Event**: "2026 World Cup Winner" (只有展示信息)
+        
+    -   **Market**: "Will Argentina win the 2026 World Cup?" (包含具体的 `question`, `tokenAddress`, `price`)
+        
+    
+    > **黑客松 Tip**: AI Agent 应该先根据 RAG 检索 **Event**，锁定话题后，再深入 **Market** 寻找最优价格。
+    
+-   **Orderbook 结构：流动性核心**
+    
+    Polymarket 使用 CLOB (Central Limit Order Book)。
+    
+    Rust
+    
+    ```
+    struct Order {
+        price: f64,      // 0.0 到 1.0 之间
+        side: Side,       // enum: Buy / Sell
+        size: f64,       // 数量
+        outcome: Outcome, // enum: Yes / No
+    }
+    ```
+    
+-   **Kite AI 治理逻辑的“Rust 化”思考**
+    
+    在 Kite 的 **Identity & Trust** 框架下，你可以把 **Verifiable Credentials (VC)** 想象成 Rust 里的 `Trait`：
+    
+    Rust
+    
+    ```
+    // 只有实现了 Compliance 特征的 Agent 才能调用执行
+    pub trait Compliance {
+        fn verify_spending_limit(&self, amount: u64) -> bool;
+        fn is_authorized(&self, identity: &KitePassport) -> bool;
+    }
+    ​
+    impl Compliance for PolyFlowAgent {
+        fn verify_spending_limit(&self, amount: u64) -> bool {
+            amount < 1000 // 这里的规则由 Kite 链上动态下发
+        }
+    }
+    ```
+    
+-   **Proof of AI (存证结构)**
+    
+    每一笔交易需要挂载一个不可篡改的日志。在 Rust 侧，这通常被打包成一个 `struct` 并哈希化：
+    
+    Rust
+    
+    ```
+    struct ProofOfAI {
+        agent_id: DID,             // did:kite:alice...
+        market_id: String,         // Polymarket 市场 ID
+        reasoning_hash: [u8; 32],  // AI 决策路径的 SHA-256
+        timestamp: u64,
+    }
+    ```
+    
+-   **模式匹配 (Match) 在交易信号中的应用**
+    
+    在处理 Polymarket 的 `Gamma API` 返回值时，用 `match` 过滤极值：
+    
+    Rust
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 \## Polymarket 核心机制笔记
 
 \> link: \[Polymarket Docs\]([https://docs.polymarket.com/](https://docs.polymarket.com/)), \[CTF 合约\]([https://github.com/gnosis/conditional-tokens-contracts](https://github.com/gnosis/conditional-tokens-contracts))
@@ -90,6 +165,7 @@ Disputed, // 结果遭挑战，进入争议期
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 \## solidity workflow
 
@@ -216,6 +292,7 @@ assertEq(counter.number(), x);
 <!-- DAILY_CHECKIN_2026-01-24_START -->
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   错误处理 (Error Handling)
@@ -280,6 +357,7 @@ assertEq(counter.number(), x);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -362,6 +440,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 -   特征对象 \[sol中慎用\]
     
     总是通过**引用**: 通过 `&` 引用或者 `Box<T>` 智能指针的方式来创建特征对象
@@ -395,6 +474,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -444,6 +524,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -502,6 +583,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Solana basics](https://solana.com/docs)
 
 -   concepts
@@ -521,6 +603,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -613,6 +696,7 @@ manager.unlock(abi.encode(params))
 
 
 
+
 > link: [Rust Course-圣经](https://course.rs/basic/intro.html)
 
 -   variable blindings
@@ -634,6 +718,7 @@ manager.unlock(abi.encode(params))
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
