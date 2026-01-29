@@ -15,8 +15,69 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+-   **初始化项目** 用最核心的命令创建新项目：
+    
+    Bash
+    
+    ```
+    forge init hello_foundry
+    ```
+    
+    -   这会自动创建一个叫 hello\_foundry 的文件夹
+        
+    -   从 Foundry 默认模板生成项目结构
+        
+    -   同时初始化一个 git 仓库
+        
+-   **进入项目目录**
+    
+    Bash
+    
+    ```
+    cd hello_foundry
+    ```
+    
+-   **看看默认生成的文件结构**（用 tree 命令查看）
+    
+    text
+    
+    ```
+    .
+    ├── lib          # 依赖库目录
+    │   └── forge-std   # 默认自带 Foundry 的标准测试库
+    ├── script       # 部署/脚本文件夹
+    ├── src          # 放你的 Solidity 合约代码
+    └── test         # 测试文件
+    ```
+    
+    （运行 forge build 或 forge test 后还会多出 out 和 cache 两个目录）
+    
+-   **编译合约**
+    
+    Bash
+    
+    ```
+    forge build
+    ```
+    
+    会编译 src 里的 Solidity 文件，成功后显示编译时间等信息。
+    
+-   **运行测试**
+    
+    Bash
+    
+    ```
+    forge test
+    ```
+    
+    默认模板自带一个简单 Counter 合约 + 两个测试（一个普通测试 + 一个 fuzz 测试），会显示全部通过、gas 消耗等信息。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 ## **Getting Started**
 
 📌 **Foundry 是什么？**  
@@ -45,6 +106,7 @@ timezone: UTC+8
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -54,6 +116,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -61,6 +124,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -75,6 +139,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -82,6 +147,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -104,6 +170,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -115,6 +182,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -165,6 +233,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -270,6 +339,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -320,6 +390,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 
 
+
 # 十一、Gossip 协议在节点传输中的作用
 
 Gossip 协议就是以太坊的“八卦广播系统”：
@@ -347,6 +418,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -387,6 +459,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -503,6 +576,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -546,6 +620,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -688,6 +763,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
