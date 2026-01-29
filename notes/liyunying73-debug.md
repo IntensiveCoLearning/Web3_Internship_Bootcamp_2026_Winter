@@ -15,19 +15,27 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 打卡！
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -43,11 +51,13 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 
 
+
 打卡！
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -73,11 +83,13 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 
 
+
 打卡！
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -108,11 +120,13 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -147,11 +161,13 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -190,11 +206,13 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -240,6 +258,7 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 
 
+
 观看了day two 的线上视频
 
 看了这个[Learn How to Create an NFT in Solidity | Speedrun Ethereum](https://speedrunethereum.com/challenge/tokenization)代币挑战及其他相关视频，但是铸造和转让NFT，包括以太坊语境下**的所有权**仍存在疑问
@@ -247,6 +266,7 @@ linette，大三金融科技专业，希望能了解到web3的知识，拓展自
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
