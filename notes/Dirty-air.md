@@ -113,10 +113,13 @@ vAMM 需要双边交易平衡才能维持价格稳定和赚取手续费。
     -   机器人看到单边买入太多，**主动去买反向**对冲，或者**提高报价**。
         
     -   **核心价值**：用**主动管理 (Active Management)** 替代 **被动算法 (Passive Algorithm)**，这是保护 LP 唯一的出路。
+        
+    -   注：但是这个成本很高
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 ### Web3 预测市场机制架构与技术实务学习总结
@@ -256,6 +259,7 @@ Polymarket 基于 Gnosis Conditional Token Framework (CTF) 标准，采用“混
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -408,6 +412,7 @@ function sumGood() public {
 
 
 
+
 # Web3 基础概念学习总结：ENS、DEX 与身份体系
 
 ## 1\. ENS (以太坊域名服务)
@@ -509,6 +514,7 @@ function sumGood() public {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -676,6 +682,7 @@ function sumGood() public {
 
 
 
+
 ### **链上取证与内幕钱包追踪技术**
 
 **1\. 是什么？**
@@ -836,6 +843,7 @@ function sumGood() public {
 
 
 
+
 ### X402：是什么？尝试解决什么问题？解决了么？如何实现了 Agent2Agent 之间的付款？
 
 **1\. X402 是什么？**
@@ -983,6 +991,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 
 
+
 ## 第一部分：NFT —— Web3 的资产证明
 
 ### 1\. 什么是 NFT (Non-Fungible Token)？
@@ -1068,6 +1077,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1179,6 +1189,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1308,6 +1319,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1464,6 +1476,7 @@ Polymarket 的底层并非只是简单地在合约里记录“张三拥有 100 �
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
