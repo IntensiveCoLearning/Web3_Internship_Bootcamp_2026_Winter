@@ -55,10 +55,57 @@ Web3 实习计划 2025 冬季实习生
         
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769690109998-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769690136664-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769690197322-image.png)
+
+讨论了 Spoon OS 框架、MCP 协议及 Skill 技术的相关内容，并解答了参会者的疑问，具体如下：
+
+-   **MCP 协议介绍**：
+    
+    -   **传输方式**：支持 JSON 和事件流（SSE）格式的 HTTP 传输，适用于云端服务和公共 API，SSE 对长任务友好，是实时推送方式。
+        
+    -   **代码演示**：在 spoon 框架的 example 中打开 MCP 文件夹的 deepwiki Demo，导入 Spoon react MCP、MCP tool、chatbot 三个核心组件，创建 SSE 传输配置，配置 MCP 工具并置入 agent，agent 首次调用时连接 Server 加载工具列表以避免启动网络延迟，接收用户问题后大模型思考调用工具，最终生成答案。
+        
+-   **Skill 技术讲解**：
+    
+    -   **概念定义**：让 agent 拥有内部专业能力，类似员工的专业技能证书。
+        
+    -   **组成部分**：[skill.md](http://skill.md) 存储元数据（名字、触发器、scripts）和提示词，script 包含可执行脚本。
+        
+    -   **实际示例**：以 data Processor 为例，展示 [skill.md](http://skill.md) 的元数据、触发器（关键词和正则表达式激活）、脚本（[analyze.py](http://analyze.py) 和 [transform.py](http://transform.py)）及提示词。
+        
+    -   **代码使用**：scale\_test 文件导入核心组件，scale manager 管理技能激活，get active context 返回激活技能的 Markdown 内容注入 agent，可进行触发器匹配测试和脚本执行测试。
+        
+-   **Spoon OS 框架问答**：
+    
+    -   **工具分析**：Spoon OS 框架核心库集成 Turkey（钱包交易签名、管理、活动审计）、NEOFS（分布式存储对象上传下载）、X402（区块链支付处理）工具，仓库还有更多 Crypto 数据分析工具。
+        
+    -   **react 功能使用**：导入 Spoon react MCP，核心类继承关系为基类 react agent，tool call agent 让 reaction agent 调用工具，Spoon react agent 支持 X402、MCP 和 scale 系统集成。
+        
+    -   **API 申请**：开源框架不需要 API，但大模型 apikey 等服务配置需在运维环境变量文件中设置，可直接 fork 代码库。
+        
+    -   **Turkin 集成 X402 支付**：导入 X402 支付工具和服务，初始化服务后使用工具处理付费需求，运行 example 需在环境变量文件中提前配置。
+        
+-   **其他问题解答**：
+    
+    -   **Spoon OS 用途**：是类似 Lang chain、Lang graph 的大模型框架，用于回答问题和完成具体任务。
+        
+    -   **Skill 匹配方式**：采用关键字和正则表达式匹配，目的是精准匹配，减少无用 TOKEN 消耗。
+        
+    -   **框架优势**：是基于 Web3 原生的开源 agent 框架，适配 Neon 链，集成 X402 支付协议，考虑私钥安全性，支持不同大模型服务，有流程编排和 scale callbacks 等功能。
+        
+    -   **数据源支持**：spoon to KIDS 仓库的 data platforms 目录目前原生支持 4 个数据源，可参考已有平台适配其他数据源并提 PR。
+        
+    -   **MCP 示例配置**：演示的 MCP example 已提前配置好 API key。
+        
+-   **后续安排**：
+    
+    -   **开源贡献**：鼓励大家在 sponge awesome key skill 库提交自定义 skill，提交截图上传到实习计划页面可获学分。
+        
+    -   **Demo 提交**：2 月 1 日本周末是 Demo day 最后提交期限，需在 GitHub 提交项目并确保 readme 描述清晰完整。
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -178,6 +225,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -234,6 +282,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -392,6 +441,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -399,6 +449,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -448,6 +499,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -457,6 +509,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -563,6 +616,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -711,6 +765,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -944,6 +999,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -991,6 +1047,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1346,6 +1403,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1387,6 +1445,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1769,6 +1828,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -2077,6 +2137,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -2184,6 +2245,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
