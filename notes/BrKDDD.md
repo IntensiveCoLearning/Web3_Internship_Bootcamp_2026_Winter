@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 打卡
 
@@ -32,6 +39,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
@@ -40,11 +48,13 @@ timezone: UTC+8
 
 
 
+
 周一打卡，学习了Reactive合约
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -59,11 +69,13 @@ timezone: UTC+8
 
 
 
+
 周六打卡今天参加了周会
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -82,11 +94,13 @@ timezone: UTC+8
 
 
 
+
 打卡周四
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -111,6 +125,7 @@ timezone: UTC+8
 
 
 
+
 周二打卡
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
@@ -126,11 +141,13 @@ timezone: UTC+8
 
 
 
+
 新一周第一天的打卡
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -159,11 +176,13 @@ timezone: UTC+8
 
 
 
+
 今天休息打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -196,6 +215,7 @@ timezone: UTC+8
 
 
 
+
 第三天打卡
 
 今晚参加了知识会分享
@@ -203,6 +223,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -244,6 +265,7 @@ timezone: UTC+8
 
 
 
+
 第二天打卡
 
 参加了今晚的bruce老师的知识分享会
@@ -253,6 +275,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
