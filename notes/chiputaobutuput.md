@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+**常见的运营类正式职位包括：**
+
+-   **社区经理（Community Manager）：** 负责社区的整体运营策略、用户增长、活动策划、危机公关等，是项目与社区之间的桥梁。
+    
+-   **市场经理（Marketing Manager）：** 负责制定和执行市场推广策略，包括品牌建设、内容营销、社交媒体运营、合作拓展等。
+    
+-   **商务拓展（Business Development，BD）：** 负责寻找和建立与外部项目、机构、KOL 的合作关系，推动项目生态发展。
+    
+-   **产品运营（Product Operations）：** 关注产品上线后的用户反馈、数据分析，优化产品体验，提升用户活跃度。
+    
+-   **内容创作（Content Creator）：** 负责制定项目的内容方向和风格，确保所有对外输出内容的一致性和高质量。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 **I. 让币圈脱离横盘的真正推手**
 
 当以下三者同时失灵时，停滞便发生了：
@@ -182,6 +198,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 深挖代币分配、解锁周期、流动性需求
 
 学习如何计算一个项目的抛压与拉盘所需的流动性。如果一个项目的运营活动不能带来超过其解锁速度的新增资金，那么它的币价下跌是必然的。
@@ -213,6 +230,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 什么是三盘理论
 
 分红盘Mining，互助盘Pooling，拆分盘Splitting
@@ -236,6 +254,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -274,6 +293,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 
 
+
 -   熟悉频道管理、bot 功能、权限设置
     
 -   了解群数据面板与运营指标（活跃用户数、参与率等）
@@ -281,6 +301,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -339,6 +360,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -581,6 +603,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 
 
+
 ### 1.什么是公共物品
 
 -   非排他性
@@ -623,6 +646,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1373,6 +1397,7 @@ all, zalgo, album, anonchannel, audio, bot, botlink, button, cjk, command, comme
 
 
 
+
 ### 零知识证明：
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。如提供Proof（X，Y），向第三方证明X+Y=Z，但Proof（X，Y）无法反推出X和Y的具体值。
@@ -1410,6 +1435,7 @@ deadline控制签名有效性
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1480,6 +1506,7 @@ deadline控制签名有效性
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1657,6 +1684,7 @@ Dune 有大量免费的社区 Dashboard 和 Query，可用于学习和灵感获�
 
 
 
+
 ## SpoonOS是一个让AI Agent能够真正工作的操作系统
 
 ### 1\. 输入层（相当于 “原材料仓库”）
@@ -1737,6 +1765,7 @@ Dune 有大量免费的社区 Dashboard 和 Query，可用于学习和灵感获�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1975,6 +2004,7 @@ FATF（金融行动特别工作组）
 
 
 
+
 1\. **认识以太坊**
 
 -   以太坊是一个支持图灵完备代码执行的开源区块链平台，用于构建 DApp 和智能合约。
@@ -2047,6 +2077,7 @@ FATF（金融行动特别工作组）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
