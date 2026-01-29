@@ -15,8 +15,108 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+链上数据分析（On-Chain Analysis）是指通过分析区块链上公开可查的交易、地址、资金流向等原始数据，来评估网络健康度、市场情绪和资产价值的方法。以下是该领域的主要术语分类整理：
+
+一、基础概念术语
+
+链上（On-Chain）：直接记录在区块链上的交易和活动，具有透明、不可篡改的特性
+
+[www.binance.com](http://www.binance.com)
+
+链下（Off-Chain）：在主链之外进行的交易或流程，通常用于提升可扩展性
+
+[www.binance.com](http://www.binance.com)
+
+活跃地址（Active Addresses）：在特定时间段内发生交易的地址数量，反映网络参与度
+
+[www.osl.com](http://www.osl.com)
+
+交易笔数/交易量（Transaction Count/Volume）：衡量链上转账活跃度的基础指标
+
+CSDN - 专业开发者社区
+
+二、核心估值指标
+
+NVT Ratio（Network Value to Transaction Ratio）：网络市值与链上转账价值的比率，类似传统金融的"市盈率"，用于评估资产是否被高估或低估
+
+[docs.glassnode.com](http://docs.glassnode.com)
+
+MVRV Ratio（Market Value to Realized Value）：市值与实现价值的比值，当比值>3.7时可能预示市场顶部，<1时可能处于底部
+
+[medium.com](http://medium.com)
+
+SOPR（Spent Output Profit Ratio）：已花费输出的利润比率，反映市场整体盈亏状态，>1表示多数持有者盈利
+
+知乎
+
+NUPL（Net Unrealized Profit/Loss）：未实现净利润/亏损，衡量市场整体浮盈浮亏情况
+
+[collectiveshift.io](http://collectiveshift.io)
+
+三、供应与持仓分析
+
+长期持有者（LTH, Long-Term Holders）：持有资产超过155天的地址，其行为反映信心
+
+[chainexposed.com](http://chainexposed.com)
+
+短期持有者（STH, Short-Term Holders）：持有资产少于155天的地址
+
+[chainexposed.com](http://chainexposed.com)
+
+供应分布（Supply Distribution）：不同余额区间的地址持有量分布，识别巨鲸集中度
+
+[www.babypips.com](http://www.babypips.com)
+
+休眠币（Dormant Coins）：长期未移动的代币，重新激活可能预示市场变化
+
+[collectiveshift.io](http://collectiveshift.io)
+
+四、资金流向指标
+
+交易所流入/流出（Exchange Inflows/Outflows）：资金进出交易所的量，流入增加可能预示抛售压力
+
+[collectiveshift.io](http://collectiveshift.io)
+
+矿工流出（Miner Outflows）：矿工向交易所转移资产的行为，反映抛售意愿
+
+[collectiveshift.io](http://collectiveshift.io)
+
+巨鲸监控（Whale Watching）：追踪大额地址的交易行为
+
+[www.gate.com](http://www.gate.com)
+
+五、网络健康指标
+
+哈希率（Hash Rate）：衡量网络算力和安全性
+
+[www.osl.com](http://www.osl.com)
+
+节点数（Node Count）：网络去中心化程度的指标
+
+Gas费用：以太坊等智能合约平台的交易成本，反映网络拥堵程度
+
+六、分析方法术语
+
+聚类分析（Clustering Analysis）：将可能属于同一实体的地址进行分组，基于交易模式识别
+
+[www.rpubs.com](http://www.rpubs.com)
+
+网络分析（Network Analysis）：分析地址间关系图谱，识别资金流动路径
+
+[www.rpubs.com](http://www.rpubs.com)
+
+UTXO分析（Unspent Transaction Output）：比特币特有的未花费交易输出模型分析
+
+七、常用数据工具平台
+
+主流链上数据分析平台包括：Glassnode、CryptoQuant、Nansen、Dune Analytics、Token Terminal、Messari、OKLink等
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 JS
 
 ```javascript
@@ -188,6 +288,7 @@ switch (n) {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 web3DAO中的公共资金分配和投票策略
 
@@ -364,6 +465,7 @@ Web3 DAO的公共资金分配和投票策略设计需根据具体场景权衡：
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 web3前端用的框架和使用教程
 
 框架/库类别 推荐选项 核心特点与适用场景
@@ -520,6 +622,7 @@ export default App;
 
 
 
+
 Foundry 是一个用于以太坊智能合约开发的流行工具链，由 Paradigm 开发，以高性能、模块化和开发者友好著称。它使用 Rust 编写，主要包括以下核心组件：
 
 -   **Forge**：用于编译、测试、部署和验证智能合约（类似 Hardhat 或 Truffle）。
@@ -644,6 +747,7 @@ cast send <CONTRACT_ADDRESS> "increment()" \
 
 
 
+
 对于 **应届生**（无全职工作经验）申请 Web3 前端岗位，简历的核心策略是：**用高质量项目、开源贡献、黑客松经历和扎实的技术细节弥补经验短板**
 
 **例如：**“用 wagmi 实现多链钱包连接，并处理网络切换异常” → 具体可验证
@@ -734,6 +838,7 @@ LinkedIn / Twitter（可选，但建议有）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -845,6 +950,7 @@ npx hardhat run scripts/deploy.js --network localhost
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -968,6 +1074,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 在 Web3（尤其是去中心化金融，DeFi）中，**套利（Arbitrage）** 是指利用不同市场或协议之间资产价格的暂时性差异，通过低买高卖获取无风险或低风险利润的行为。以下是 Web3 中常见的套利方式和操作逻辑：
 
 * * *
@@ -1076,6 +1183,7 @@ Uniswap 使用一个简单的数学公式来决定资产价格和交易执行：
 
 
 
+
 Solidity 中的\*\*事件（Events）\*\*是一种用于在智能合约中记录日志（logs）的机制，主要用于将信息从区块链传递给外部应用程序（如前端 DApp）。事件通过以太坊虚拟机（EVM）的日志功能实现，具有高效、低成本和可被监听的特点。
 
 ### **1\. 事件的定义**
@@ -1134,6 +1242,7 @@ solidity
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1316,6 +1425,7 @@ Gossip 协议（又称“流言协议”或“八卦协议”）在区块链和�
 
 
 
+
 ## **一句话总结 ERC-7962 是什么？**
 
 > **它是一种新的“隐私代币”标准，让你的 NFT 或普通代币（比如类似 USDT 的 Token）在转账时，不再暴露你的钱包地址，从而保护你的身份隐私。**
@@ -1460,11 +1570,13 @@ ERC-7962 定义了两个标准：
 
 
 
+
 参加了LXDao的周会，初步了解了DAO的治理形式，了解过去一周LXDAO的动态
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1562,6 +1674,7 @@ ERC-7962 定义了两个标准：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1795,6 +1908,7 @@ ERC-7962 定义了两个标准：
 
 
 
+
 # **U卡是什么？**
 
 **U卡 = 加密资产账户 + 全球支付卡 + 钱包联动理财入口**
@@ -1878,6 +1992,7 @@ KYC 的核心目的是：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2089,6 +2204,7 @@ KYC 的核心目的是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
