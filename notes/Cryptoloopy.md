@@ -15,19 +15,27 @@ goodday
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+There's more improvement today!
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 I was just wondering if I can try another way, I mean , my project.
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 Starting to work on the project！
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 Just like the days before, enjoying the learning process.
@@ -38,11 +46,13 @@ Just like the days before, enjoying the learning process.
 
 
 
+
 Just keep going!
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Just a day as usual, keep going!
 
 
 
+
 I need to find a way to summarize what I’ve already learned.
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -83,11 +95,13 @@ Great improvement！ Woo-Hoo！
 
 
 
+
 Working hard on new stuff, just carry on!
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -114,11 +128,13 @@ New stuff on operation,carry on！
 
 
 
+
 This is the week for operation stuff. A new starting point!
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -149,11 +165,13 @@ More programming stuff today. Keep going！
 
 
 
+
 learned some Solidity today. Fun experience !
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -188,11 +206,13 @@ Today, I learned more about Web3, but I think I need to revise what I have learn
 
 
 
+
 Learned a lot today, I think I need to use the space well. I'll try to find a way to do that.
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -231,11 +251,13 @@ Just the past 2 days. There's some improvement, but I think I need to work harde
 
 
 
+
 I got the picture of the field of Web3. Everything went well today. I think I can try speeding up.Anyway, keep going!
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
