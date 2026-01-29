@@ -21,8 +21,91 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+## **Uniswap-v3-periphery**
+
+### **NonfungiblePositionManager**
+
+-   createAndInitializePoolIfNecessary：创建并初始化合约
+    
+-   mint：创建头寸
+    
+-   increaseLiquidity：添加流动性
+    
+-   decreaseLiquidity：减少流动性
+    
+-   burn：销毁头寸
+    
+-   collect：取回代币
+    
+
+### **SwapRouter**
+
+-   exactInputSingle：单步交换，指定输入代币数量，尽可能多地获得输出代币
+    
+-   exactInput：多步交换，指定输入代币数量，尽可能多地获得输出代币
+    
+-   exactOutputSingle：单步交换，指定输出代币数量，尽可能少地提供输入代币
+    
+-   exactOutput：多步交换，指定输出代币数量，尽可能少地提供输入代币
+    
+
+另外，该合约也实现了：
+
+-   uniswapV3SwapCallback：交换回调方法
+    
+-   exactInputInternal：单步交换，内部方法，指定输入代币数量，尽可能多地获得输出代币
+    
+-   exactOutputInternal：单步交换，内部方法，指定输出代币数量，尽可能少地提供输入代币
+    
+
+### **LiquidityManagement**
+
+-   **uniswapV3MintCallback** 添加流动性的回调方法。
+    
+-   **addLiquidity** 给已初始化的交易对（池子）添加流动性。
+    
+
+### **LiquidityAmounts**
+
+-   **getLiquidityForAmount0** 根据`amount0`和价格区间计算流动性。
+    
+-   **getLiquidityForAmount1** 根据`amount1`和价格区间计算流动性。
+    
+-   **getLiquidityForAmounts** 根据当前价格，计算能够返回的最大流动性。
+    
+
+### **Path**
+
+-   **hasMultiplePools** 判断交易路径是否经过多个池子（2个及以上）
+    
+-   **numPools** 计算路径中的池子数量。
+    
+-   **decodeFirstPool** 解析第一个path的信息，包括`token0`，`token1`和`fee`。
+    
+-   **getFirstPool** 返回第一个池子的路径，即返回前43（即20+3+20）个字符组成的子字符串。
+    
+-   **skipToken** 跳过当前路径上的第一个`token+fee`，即跳过前20+3个字符。
+    
+
+### **BytesLib**
+
+-   **toAddress** 从字符串的指定序号起，读取一个地址（20个字符）
+    
+-   **toUint24** 从字符串的指定序号起，读取一个`uint24`（24位，即3个字符）：
+    
+
+### **OracleLibrary**
+
+-   **consult** 查询从一段时间前到现在的几何平均价格（以`tick`形式）。
+    
+-   **getQuoteAtTick** Given a tick and a token amount, calculates the amount of token received in exchange
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # Uniswap
 
 ## core - **Factory**
@@ -89,6 +172,7 @@ v3默认支持三种手续费等级：0.05%、0.30%和1.00%，对应的fee值分
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 # 合约安全
 
@@ -169,6 +253,7 @@ using SafeMath for uint256;
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 ## 什么是投研？
 
 -   研究项目基本面
@@ -228,6 +313,7 @@ using SafeMath for uint256;
 
 
 
+
 # Foundry
 
 以命令行为主的Web3开发神器
@@ -271,6 +357,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -324,6 +411,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 
 
+
 # **零知识证明**
 
 ## **区块链投票**
@@ -368,6 +456,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -462,6 +551,7 @@ Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
 
 
 
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -521,6 +611,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -554,6 +645,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -638,6 +730,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -666,6 +759,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -753,6 +847,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -782,6 +877,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -896,6 +992,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -947,6 +1044,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1040,6 +1138,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
