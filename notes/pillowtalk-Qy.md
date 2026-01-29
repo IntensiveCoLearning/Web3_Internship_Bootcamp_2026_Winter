@@ -98,7 +98,7 @@ DeFi 并非单一产品，而是一个**乐高式可组合的协议栈**。以�
 
 -   **代表**：Nexus Mutual、InsurAce
     
--   为智能合约漏洞、黑客攻击等提供保障（类似“DeFi 版 Lloyd's”）
+-   为智能合约漏洞、黑客攻击等提供保障（类似“DeFi 版 Lloyd’s”）
     
 
 ## **DeFi 如何运作？—— 以“存 DAI 赚利息”为例**
@@ -136,7 +136,7 @@ DeFi 并非单一产品，而是一个**乐高式可组合的协议栈**。以�
     -   再将 Convex 凭证存入 Yearn → 自动复投
         
 
-> 🔗 这种“货币乐高”催生了复杂的**收益耕作（Yield Farming）**策略。
+> 🔗 这种“货币乐高”催生了复杂的\*\*收益耕作（Yield Farming）\*\*策略。
 
 ### **3\. 透明与可审计**
 
@@ -222,10 +222,16 @@ DeFi 并非单一产品，而是一个**乐高式可组合的协议栈**。以�
 -   工具：[Etherscan](https://etherscan.io/)（查交易）、[Zapper](https://zapper.fi/)（资产管理）
     
 -   课程：Bankless、Finematics（YouTube）
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-29-1769704102942-image.png)
+
+黑客松Demo\_第一版
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 **Web3 数据分析，本质不是看行情，而是在解构链上激励如何驱动行为，以及这些行为是否能形成可持续的经济系统。**  
 它研究的不是“用户喜欢什么”，而是“在给定规则下，理性参与者会做什么”。
@@ -264,6 +270,7 @@ Web3 数据分析的底层由三类数据构成：
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 ## 一、Octant 二次方资助机制简介
@@ -387,6 +394,7 @@ Octant 在这方面的做法如下：
 
 
 
+
 # DAO 治理是否需要“非理性”成分？
 
 ### **一、“非理性”不是混乱，而是对“理性暴政”的制衡**
@@ -453,6 +461,7 @@ DAO 若试图用代码彻底剔除这些“非理性因素”，等于在建造�
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -554,6 +563,7 @@ DAO 的治理权威，究竟来自“人”，还是来自“机制”？
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -668,6 +678,7 @@ wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心
 
 
 
+
 其实我讲完分享会之后心里是有点空的。不是那种“终于结束了”的轻松，而是一种很清楚地知道：我没有把自己真正想讲的东西讲出来。  
 准备 Fusaka 的时候，我是懂的，我知道 PeerDAS 为什么重要，知道它不是简单的“多一点 Blob”，而是在给以太坊的扩展性续命；我也知道节点分工、采样、50% 重构这些点背后，是在为普通人还能跑节点争一条路。但站在那一刻，我脑子里更多的是“别出错”“别卡住”，而不是“把这件事讲清楚”。
 
@@ -681,6 +692,7 @@ wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -907,6 +919,7 @@ fetch('/api/transfer', {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1191,6 +1204,7 @@ L2 承担复杂性，换来了用户。**
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1503,6 +1517,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -1606,6 +1621,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1761,6 +1777,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2112,6 +2129,7 @@ contract AIGPL {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2491,6 +2509,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3175,6 +3194,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -3735,6 +3755,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -4171,6 +4192,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
