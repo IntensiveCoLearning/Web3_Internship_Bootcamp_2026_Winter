@@ -15,8 +15,2283 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+# Uniswap V4 学习笔记
+
+## 1\. 概述
+
+Uniswap V4 于 2023 年 6 月首次公开，2024 年正式发布，是 Uniswap 协议的又一次重大革新。V4 引入了**Hooks（钩子）系统**，允许开发者在交易生命周期的关键节点注入自定义逻辑，同时采用**Singleton 架构**大幅降低 Gas 成本。
+
+### 核心创新
+
+-   **🎣 Hooks（钩子）系统** - 可插拔的自定义逻辑
+    
+-   **🏛️ Singleton 架构** - 所有池子在单一合约中
+    
+-   **⚡ Flash Accounting** - 瞬态存储优化
+    
+-   **💰 原生 ETH 支持** - 无需包装为 WETH
+    
+-   **🔧 自定义费率** - 动态费率和捐赠机制
+    
+-   **🔐 更强的治理控制** - 协议费用的灵活管理
+    
+
+### V4 vs V3 核心差异
+
+| 特性 | V3 | V4 |
+| --- | --- | --- |
+| 架构 | 每个池子独立合约 | Singleton（单例） |
+| 扩展性 | 固定功能 | Hooks 可定制 |
+| Gas 成本 | 基准 | -99% (多跳交易) |
+| 费率 | 4 个固定档位 | 完全可定制 + 动态 |
+| ETH | 需要 WETH | 原生支持 |
+| LP Token | ERC-721 NFT | 灵活（可自定义） |
+
+* * *
+
+## 2\. Singleton 架构
+
+### 2.1 架构变革
+
+**V3 的问题：**
+
+```
+Pool A 合约 ─── 独立存储和逻辑
+Pool B 合约 ─── 独立存储和逻辑  
+Pool C 合约 ─── 独立存储和逻辑
+  ⋮
+```
+
+-   每个池子部署独立合约
+    
+-   跨池交易需要多次转账
+    
+-   高昂的部署和交互成本
+    
+
+**V4 的解决方案：**
+
+```
+┌─────────────────────────────────┐
+│   PoolManager (Singleton)       │
+│  ┌──────────────────────────┐   │
+│  │  Pool A | Pool B | Pool C │   │
+│  │  ...所有池子共享存储...   │   │
+│  └──────────────────────────┘   │
+└─────────────────────────────────┘
+```
+
+-   单一 `PoolManager` 合约
+    
+-   所有池子共享同一个合约
+    
+-   统一的资金管理
+    
+
+### 2.2 Gas 优化效果
+
+**单跳交易：**
+
+```
+V3: ~120,000 gas
+V4: ~115,000 gas
+节省: ~4%
+```
+
+**多跳交易（3 跳）：**
+
+```
+V3: ~300,000 gas
+V4: ~180,000 gas
+节省: ~40%
+```
+
+**复杂路径（5+ 跳）：**
+
+```
+V3: ~500,000 gas
+V4: ~150,000 gas
+节省: ~70%
+```
+
+### 2.3 Flash Accounting
+
+V4 引入了**瞬态存储**（Transient Storage）优化：
+
+```solidity
+// V3 方式：实际转账
+token.transfer(pool1, amount);
+pool1.swap();
+token.transfer(pool2, amount);
+pool2.swap();
+
+// V4 方式：记账系统
+poolManager.recordDebt(pool1, amount);
+poolManager.recordDebt(pool2, amount);
+// 只在交易结束时结算净差额
+poolManager.settle();
+```
+
+**优势：**
+
+-   减少实际代币转账次数
+    
+-   只结算净差额
+    
+-   大幅降低多跳交易成本
+    
+
+* * *
+
+## 3\. Hooks 系统（核心创新）
+
+### 3.1 什么是 Hooks
+
+Hooks 是可以在池子生命周期的特定时刻执行的**自定义合约**。
+
+**可用的 Hook 时机：**
+
+```
+流动性操作：
+├─ beforeInitialize    - 初始化池子之前
+├─ afterInitialize     - 初始化池子之后
+├─ beforeAddLiquidity  - 添加流动性之前
+├─ afterAddLiquidity   - 添加流动性之后
+├─ beforeRemoveLiquidity - 移除流动性之前
+└─ afterRemoveLiquidity  - 移除流动性之后
+
+交易操作：
+├─ beforeSwap          - 执行交易之前
+└─ afterSwap           - 执行交易之后
+
+其他：
+└─ beforeDonate        - 捐赠手续费之前
+```
+
+### 3.2 Hook 地址编码
+
+Hook 的功能通过**合约地址的前缀**编码：
+
+```
+Hook 地址格式：
+0x[权限标志位][实际地址]
+
+权限标志位（前 10 bits）：
+bit 0: beforeInitialize
+bit 1: afterInitialize
+bit 2: beforeAddLiquidity
+bit 3: afterAddLiquidity
+bit 4: beforeRemoveLiquidity
+bit 5: afterRemoveLiquidity
+bit 6: beforeSwap
+bit 7: afterSwap
+bit 8: beforeDonate
+bit 9: afterDonate
+```
+
+**示例：**
+
+```
+地址：0x8000000000000000000000000000000000000123
+二进制：1000 0000 0000 ...
+含义：只实现 beforeInitialize hook
+```
+
+这种设计允许在链上**零成本检查** hook 的权限。
+
+### 3.3 创建 Hook 示例
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import {BaseHook} from "v4-periphery/BaseHook.sol";
+import {Hooks} from "v4-core/libraries/Hooks.sol";
+import {IPoolManager} from "v4-core/interfaces/IPoolManager.sol";
+import {PoolKey} from "v4-core/types/PoolKey.sol";
+import {BalanceDelta} from "v4-core/types/BalanceDelta.sol";
+
+contract MyCustomHook is BaseHook {
+    constructor(IPoolManager _poolManager) BaseHook(_poolManager) {}
+
+    // 定义 hook 权限
+    function getHookPermissions() public pure override returns (Hooks.Permissions memory) {
+        return Hooks.Permissions({
+            beforeInitialize: false,
+            afterInitialize: false,
+            beforeAddLiquidity: false,
+            afterAddLiquidity: false,
+            beforeRemoveLiquidity: false,
+            afterRemoveLiquidity: false,
+            beforeSwap: true,      // 启用
+            afterSwap: true,       // 启用
+            beforeDonate: false,
+            afterDonate: false
+        });
+    }
+
+    // 实现 beforeSwap hook
+    function beforeSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        bytes calldata hookData
+    ) external override returns (bytes4) {
+        // 自定义逻辑：例如检查交易时间、白名单等
+        require(block.timestamp % 2 == 0, "Only even timestamps!");
+        
+        return BaseHook.beforeSwap.selector;
+    }
+
+    // 实现 afterSwap hook
+    function afterSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        BalanceDelta delta,
+        bytes calldata hookData
+    ) external override returns (bytes4) {
+        // 自定义逻辑：例如奖励、统计等
+        // ... 你的代码
+        
+        return BaseHook.afterSwap.selector;
+    }
+}
+```
+
+### 3.4 部署 Hook
+
+由于地址需要特定前缀，需要使用 **CREATE2** 挖矿：
+
+```solidity
+// 使用 CREATE2 生成符合要求的地址
+function mine(bytes memory bytecode, uint256 salt) public view returns (address) {
+    return address(uint160(uint256(keccak256(abi.encodePacked(
+        bytes1(0xff),
+        address(this),
+        salt,
+        keccak256(bytecode)
+    )))));
+}
+
+// 暴力搜索合适的 salt
+function findSalt(bytes memory bytecode, uint160 prefix) public view returns (uint256) {
+    for (uint256 salt = 0; salt < type(uint256).max; salt++) {
+        address addr = mine(bytecode, salt);
+        if (uint160(addr) >> 150 == prefix) {
+            return salt;
+        }
+    }
+    revert("Salt not found");
+}
+```
+
+* * *
+
+## 4\. Hook 应用场景
+
+### 4.1 时间加权平均做市商 (TWAMM)
+
+**概念：** 将大额订单分散到长时间执行，减少价格影响。
+
+**实现：**
+
+```solidity
+contract TWAMMHook is BaseHook {
+    struct Order {
+        address owner;
+        uint256 amountIn;
+        uint256 startTime;
+        uint256 endTime;
+        uint256 lastExecuteTime;
+    }
+    
+    mapping(bytes32 => Order[]) public orders;
+    
+    function submitOrder(
+        PoolKey calldata key,
+        uint256 amountIn,
+        uint256 duration
+    ) external {
+        orders[getPoolId(key)].push(Order({
+            owner: msg.sender,
+            amountIn: amountIn,
+            startTime: block.timestamp,
+            endTime: block.timestamp + duration,
+            lastExecuteTime: block.timestamp
+        }));
+    }
+    
+    function beforeSwap(...) external override returns (bytes4) {
+        // 执行部分订单
+        executeOrders(key);
+        return BaseHook.beforeSwap.selector;
+    }
+    
+    function executeOrders(PoolKey calldata key) internal {
+        bytes32 poolId = getPoolId(key);
+        for (uint i = 0; i < orders[poolId].length; i++) {
+            Order storage order = orders[poolId][i];
+            if (block.timestamp > order.lastExecuteTime) {
+                uint256 timeElapsed = block.timestamp - order.lastExecuteTime;
+                uint256 totalDuration = order.endTime - order.startTime;
+                uint256 amountToSwap = order.amountIn * timeElapsed / totalDuration;
+                
+                // 执行交易
+                poolManager.swap(...);
+                
+                order.lastExecuteTime = block.timestamp;
+            }
+        }
+    }
+}
+```
+
+### 4.2 动态费率 Hook
+
+根据波动性或其他因素动态调整费率：
+
+```solidity
+contract DynamicFeeHook is BaseHook {
+    using FixedPoint96 for uint256;
+    
+    uint24 public constant BASE_FEE = 3000;  // 0.3%
+    uint24 public constant MAX_FEE = 10000;  // 1.0%
+    
+    mapping(bytes32 => uint256) public lastPrice;
+    mapping(bytes32 => uint256) public lastUpdateTime;
+    
+    function beforeSwap(
+        address,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata,
+        bytes calldata
+    ) external override returns (bytes4) {
+        bytes32 poolId = getPoolId(key);
+        
+        // 获取当前价格
+        (uint160 sqrtPriceX96,,) = poolManager.getSlot0(poolId);
+        uint256 currentPrice = uint256(sqrtPriceX96) ** 2;
+        
+        // 计算波动率
+        uint256 volatility = calculateVolatility(
+            poolId,
+            currentPrice,
+            lastPrice[poolId],
+            block.timestamp - lastUpdateTime[poolId]
+        );
+        
+        // 根据波动率调整费率
+        uint24 newFee = BASE_FEE + uint24(volatility * (MAX_FEE - BASE_FEE) / 1e18);
+        poolManager.updateDynamicSwapFee(key, newFee);
+        
+        lastPrice[poolId] = currentPrice;
+        lastUpdateTime[poolId] = block.timestamp;
+        
+        return BaseHook.beforeSwap.selector;
+    }
+    
+    function calculateVolatility(
+        bytes32 poolId,
+        uint256 currentPrice,
+        uint256 lastPrice,
+        uint256 timeElapsed
+    ) internal pure returns (uint256) {
+        if (lastPrice == 0 || timeElapsed == 0) return 0;
+        
+        uint256 priceChange = currentPrice > lastPrice 
+            ? currentPrice - lastPrice 
+            : lastPrice - currentPrice;
+            
+        return priceChange * 1e18 / lastPrice / timeElapsed;
+    }
+}
+```
+
+### 4.3 限价单 Hook
+
+实现真正的链上限价单：
+
+```solidity
+contract LimitOrderHook is BaseHook {
+    struct LimitOrder {
+        address owner;
+        int24 tickThreshold;
+        bool zeroForOne;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+    }
+    
+    mapping(bytes32 => mapping(int24 => LimitOrder[])) public orders;
+    
+    function placeLimitOrder(
+        PoolKey calldata key,
+        int24 tickThreshold,
+        bool zeroForOne,
+        uint256 amountIn,
+        uint256 amountOutMinimum
+    ) external returns (uint256 orderId) {
+        bytes32 poolId = getPoolId(key);
+        
+        orders[poolId][tickThreshold].push(LimitOrder({
+            owner: msg.sender,
+            tickThreshold: tickThreshold,
+            zeroForOne: zeroForOne,
+            amountIn: amountIn,
+            amountOutMinimum: amountOutMinimum
+        }));
+        
+        return orders[poolId][tickThreshold].length - 1;
+    }
+    
+    function afterSwap(
+        address,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata,
+        BalanceDelta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        bytes32 poolId = getPoolId(key);
+        (, int24 tick,) = poolManager.getSlot0(poolId);
+        
+        // 检查是否有可执行的限价单
+        executeLimitOrders(poolId, tick);
+        
+        return BaseHook.afterSwap.selector;
+    }
+    
+    function executeLimitOrders(bytes32 poolId, int24 currentTick) internal {
+        // 遍历并执行符合条件的订单
+        // 实现细节...
+    }
+}
+```
+
+### 4.4 MEV 保护 Hook
+
+保护用户免受三明治攻击：
+
+```solidity
+contract MEVProtectionHook is BaseHook {
+    uint256 public constant MAX_PRICE_IMPACT = 50; // 0.5%
+    
+    mapping(address => uint256) public lastSwapBlock;
+    
+    function beforeSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        bytes calldata
+    ) external override returns (bytes4) {
+        // 防止同一区块内重复交易
+        require(
+            lastSwapBlock[sender] != block.number,
+            "Multiple swaps in same block"
+        );
+        lastSwapBlock[sender] = block.number;
+        
+        // 计算预期价格影响
+        uint256 priceImpact = calculatePriceImpact(key, params);
+        require(
+            priceImpact <= MAX_PRICE_IMPACT,
+            "Price impact too high"
+        );
+        
+        return BaseHook.beforeSwap.selector;
+    }
+    
+    function calculatePriceImpact(
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params
+    ) internal view returns (uint256) {
+        // 实现价格影响计算
+        // ...
+    }
+}
+```
+
+### 4.5 自动复利 Hook
+
+自动将手续费收入复投：
+
+```solidity
+contract AutoCompoundHook is BaseHook {
+    struct Position {
+        address owner;
+        uint128 liquidity;
+        uint256 fees0;
+        uint256 fees1;
+    }
+    
+    mapping(bytes32 => mapping(address => Position)) public positions;
+    
+    function afterSwap(
+        address,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata,
+        BalanceDelta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        // 收集所有 LP 的手续费
+        bytes32 poolId = getPoolId(key);
+        
+        // 定期复投
+        if (shouldCompound(poolId)) {
+            compoundAllPositions(key, poolId);
+        }
+        
+        return BaseHook.afterSwap.selector;
+    }
+    
+    function compoundAllPositions(PoolKey calldata key, bytes32 poolId) internal {
+        // 遍历所有持仓
+        // 将手续费重新投入流动性
+        // ...
+    }
+}
+```
+
+### 4.6 白名单/KYC Hook
+
+实现合规交易池：
+
+```solidity
+contract KYCHook is BaseHook {
+    mapping(address => bool) public whitelisted;
+    address public admin;
+    
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Not admin");
+        _;
+    }
+    
+    function addToWhitelist(address user) external onlyAdmin {
+        whitelisted[user] = true;
+    }
+    
+    function beforeSwap(
+        address sender,
+        PoolKey calldata,
+        IPoolManager.SwapParams calldata,
+        bytes calldata
+    ) external override returns (bytes4) {
+        require(whitelisted[sender], "Not whitelisted");
+        return BaseHook.beforeSwap.selector;
+    }
+    
+    function beforeAddLiquidity(
+        address sender,
+        PoolKey calldata,
+        IPoolManager.ModifyLiquidityParams calldata,
+        bytes calldata
+    ) external override returns (bytes4) {
+        require(whitelisted[sender], "Not whitelisted");
+        return BaseHook.beforeAddLiquidity.selector;
+    }
+}
+```
+
+### 4.7 点数/奖励系统 Hook
+
+为交易者或 LP 提供积分奖励：
+
+```solidity
+contract PointsRewardHook is BaseHook {
+    mapping(address => uint256) public points;
+    
+    uint256 public constant POINTS_PER_DOLLAR = 10;
+    
+    function afterSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        BalanceDelta delta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        // 计算交易量（以美元计）
+        uint256 volumeUSD = calculateVolumeUSD(key, delta);
+        
+        // 奖励积分
+        points[sender] += volumeUSD * POINTS_PER_DOLLAR;
+        
+        emit PointsEarned(sender, volumeUSD * POINTS_PER_DOLLAR);
+        
+        return BaseHook.afterSwap.selector;
+    }
+    
+    function redeemPoints(uint256 amount) external {
+        require(points[msg.sender] >= amount, "Insufficient points");
+        points[msg.sender] -= amount;
+        
+        // 发送奖励代币
+        // ...
+    }
+}
+```
+
+* * *
+
+## 5\. 核心合约架构
+
+### 5.1 PoolManager（核心合约）
+
+```solidity
+contract PoolManager is IPoolManager {
+    using Pool for Pool.State;
+    
+    // 所有池子的状态
+    mapping(PoolId => Pool.State) public pools;
+    
+    // 用户余额（Flash Accounting）
+    mapping(address => mapping(Currency => int256)) public currencyDelta;
+    
+    // 初始化池子
+    function initialize(
+        PoolKey memory key,
+        uint160 sqrtPriceX96,
+        bytes calldata hookData
+    ) external returns (int24 tick) {
+        // 调用 beforeInitialize hook
+        if (key.hooks.beforeInitialize.isValidHookAddress()) {
+            key.hooks.beforeInitialize(msg.sender, key, sqrtPriceX96, hookData);
+        }
+        
+        // 创建池子
+        PoolId id = key.toId();
+        (, tick) = pools[id].initialize(sqrtPriceX96, protocolFee);
+        
+        // 调用 afterInitialize hook
+        if (key.hooks.afterInitialize.isValidHookAddress()) {
+            key.hooks.afterInitialize(msg.sender, key, sqrtPriceX96, tick, hookData);
+        }
+        
+        emit Initialize(id, key.currency0, key.currency1, key.fee, key.tickSpacing, key.hooks);
+    }
+    
+    // 执行交易
+    function swap(
+        PoolKey memory key,
+        IPoolManager.SwapParams memory params,
+        bytes calldata hookData
+    ) external returns (BalanceDelta delta) {
+        // 调用 beforeSwap hook
+        if (key.hooks.beforeSwap.isValidHookAddress()) {
+            key.hooks.beforeSwap(msg.sender, key, params, hookData);
+        }
+        
+        PoolId id = key.toId();
+        delta = pools[id].swap(params);
+        
+        // 更新账户余额（Flash Accounting）
+        _accountDelta(key.currency0, delta.amount0());
+        _accountDelta(key.currency1, delta.amount1());
+        
+        // 调用 afterSwap hook
+        if (key.hooks.afterSwap.isValidHookAddress()) {
+            key.hooks.afterSwap(msg.sender, key, params, delta, hookData);
+        }
+        
+        emit Swap(id, msg.sender, delta.amount0(), delta.amount1(), ...);
+    }
+    
+    // 添加流动性
+    function modifyLiquidity(
+        PoolKey memory key,
+        IPoolManager.ModifyLiquidityParams memory params,
+        bytes calldata hookData
+    ) external returns (BalanceDelta delta) {
+        // 类似的 hook 调用模式
+        // ...
+    }
+    
+    // Flash Accounting 结算
+    function settle(Currency currency) external payable returns (uint256 paid) {
+        int256 delta = currencyDelta[msg.sender][currency];
+        
+        if (delta > 0) {
+            // 用户欠池子
+            paid = uint256(delta);
+            currency.settle(msg.sender, address(this), paid);
+        }
+        
+        currencyDelta[msg.sender][currency] = 0;
+    }
+    
+    function take(Currency currency, address to, uint256 amount) external {
+        int256 delta = currencyDelta[msg.sender][currency];
+        
+        require(delta < 0 && uint256(-delta) >= amount, "Insufficient credit");
+        
+        currency.transfer(to, amount);
+        currencyDelta[msg.sender][currency] += int256(amount);
+    }
+}
+```
+
+### 5.2 PoolKey 结构
+
+```solidity
+struct PoolKey {
+    Currency currency0;       // 代币 0（可以是 ETH）
+    Currency currency1;       // 代币 1
+    uint24 fee;              // 手续费（可以动态）
+    int24 tickSpacing;       // Tick 间隔
+    IHooks hooks;            // Hook 合约地址
+}
+
+// 通过 hash 获得唯一的 PoolId
+function toId(PoolKey memory key) internal pure returns (PoolId) {
+    return PoolId.wrap(keccak256(abi.encode(key)));
+}
+```
+
+### 5.3 Currency 类型
+
+V4 引入原生 ETH 支持：
+
+```solidity
+type Currency is address;
+
+Currency constant NATIVE = Currency.wrap(address(0));
+
+library CurrencyLibrary {
+    function isNative(Currency currency) internal pure returns (bool) {
+        return Currency.unwrap(currency) == address(0);
+    }
+    
+    function transfer(Currency currency, address to, uint256 amount) internal {
+        if (currency.isNative()) {
+            payable(to).transfer(amount);
+        } else {
+            IERC20(Currency.unwrap(currency)).transfer(to, amount);
+        }
+    }
+}
+```
+
+* * *
+
+## 6\. 费率系统增强
+
+### 6.1 动态费率
+
+V4 允许通过 Hook 动态设置费率：
+
+```solidity
+// 启用动态费率的池子
+PoolKey memory key = PoolKey({
+    currency0: currency0,
+    currency1: currency1,
+    fee: FeeLibrary.DYNAMIC_FEE_FLAG,  // 特殊标志
+    tickSpacing: 60,
+    hooks: dynamicFeeHook
+});
+
+// 在 Hook 中更新费率
+function beforeSwap(...) external override returns (bytes4) {
+    uint24 newFee = calculateFee();  // 自定义逻辑
+    poolManager.updateDynamicSwapFee(key, newFee);
+    return BaseHook.beforeSwap.selector;
+}
+```
+
+### 6.2 费率捐赠 (Donate)
+
+允许任何人向 LP 捐赠手续费：
+
+```solidity
+function donate(
+    PoolKey memory key,
+    uint256 amount0,
+    uint256 amount1,
+    bytes calldata hookData
+) external returns (BalanceDelta delta) {
+    // 调用 beforeDonate hook
+    if (key.hooks.beforeDonate.isValidHookAddress()) {
+        key.hooks.beforeDonate(msg.sender, key, amount0, amount1, hookData);
+    }
+    
+    // 将代币添加到池子中，作为手续费分配给 LP
+    PoolId id = key.toId();
+    delta = pools[id].donate(amount0, amount1);
+    
+    // 调用 afterDonate hook
+    if (key.hooks.afterDonate.isValidHookAddress()) {
+        key.hooks.afterDonate(msg.sender, key, amount0, amount1, hookData);
+    }
+}
+```
+
+**应用场景：**
+
+-   协议向池子返还费用
+    
+-   激励特定池子的流动性
+    
+-   实现创新的费用分配机制
+    
+
+### 6.3 协议费用
+
+V4 提供更灵活的协议费用管理：
+
+```solidity
+// 每个池子可以设置不同的协议费率
+function setProtocolFee(PoolKey memory key, uint24 protocolFee) external onlyGovernance {
+    require(protocolFee <= MAX_PROTOCOL_FEE, "Fee too high");
+    pools[key.toId()].setProtocolFee(protocolFee);
+}
+
+// 收集协议费用
+function collectProtocolFees(
+    address recipient,
+    Currency currency,
+    uint256 amount
+) external onlyGovernance {
+    currency.transfer(recipient, amount);
+}
+```
+
+* * *
+
+## 7\. 原生 ETH 支持
+
+### 7.1 为什么重要
+
+**V3 的问题：**
+
+```solidity
+// 用户必须先包装 ETH
+WETH.deposit{value: 1 ether}();
+WETH.approve(router, 1 ether);
+router.swap(...);
+
+// Gas 成本：
+// 1. WETH.deposit: ~45,000 gas
+// 2. WETH.approve: ~45,000 gas  
+// 3. Actual swap: ~120,000 gas
+// 总计: ~210,000 gas
+```
+
+**V4 的解决方案：**
+
+```solidity
+// 直接使用 ETH
+poolManager.swap{value: 1 ether}(...);
+
+// Gas 成本：
+// 1. Actual swap: ~115,000 gas
+// 总计: ~115,000 gas
+// 节省: ~45%
+```
+
+### 7.2 实现细节
+
+```solidity
+// Currency 类型可以是 ETH 或 ERC20
+Currency constant ETH = Currency.wrap(address(0));
+
+// 在 swap 中使用
+function swap(
+    PoolKey memory key,
+    SwapParams memory params
+) external payable {
+    if (key.currency0 == ETH || key.currency1 == ETH) {
+        require(msg.value > 0, "Must send ETH");
+    }
+    
+    // 正常执行交易
+    // ...
+}
+
+// 结算时处理 ETH
+function settle(Currency currency) external payable {
+    if (currency == ETH) {
+        require(msg.value == amountOwed, "Incorrect ETH amount");
+    } else {
+        IERC20(Currency.unwrap(currency)).transferFrom(
+            msg.sender,
+            address(this),
+            amountOwed
+        );
+    }
+}
+```
+
+* * *
+
+## 8\. 实战指南
+
+### 8.1 创建自定义池子
+
+```javascript
+const { ethers } = require("ethers");
+
+const POOL_MANAGER_ADDRESS = "0x...";
+const poolManager = new ethers.Contract(
+    POOL_MANAGER_ADDRESS,
+    POOL_MANAGER_ABI,
+    signer
+);
+
+// 部署你的 Hook 合约
+const HookFactory = await ethers.getContractFactory("MyCustomHook");
+const hook = await HookFactory.deploy(POOL_MANAGER_ADDRESS);
+await hook.deployed();
+
+console.log("Hook deployed at:", hook.address);
+
+// 验证 Hook 地址的前缀是否正确
+const permissions = await hook.getHookPermissions();
+console.log("Hook permissions:", permissions);
+
+// 初始化池子
+const poolKey = {
+    currency0: TOKEN0_ADDRESS,
+    currency1: TOKEN1_ADDRESS,
+    fee: 3000,  // 0.3% 或 DYNAMIC_FEE_FLAG
+    tickSpacing: 60,
+    hooks: hook.address
+};
+
+const sqrtPriceX96 = encodeSqrtPrice(1, 1);  // 初始价格 1:1
+
+const tx = await poolManager.initialize(
+    poolKey,
+    sqrtPriceX96,
+    "0x"  // hookData
+);
+
+await tx.wait();
+console.log("Pool initialized!");
+```
+
+### 8.2 添加流动性
+
+```javascript
+// 批准代币
+await token0.approve(POOL_MANAGER_ADDRESS, amount0);
+await token1.approve(POOL_MANAGER_ADDRESS, amount1);
+
+// 准备参数
+const modifyLiquidityParams = {
+    tickLower: -887220,
+    tickUpper: 887220,
+    liquidityDelta: ethers.utils.parseEther("100")  // 添加的流动性
+};
+
+// 添加流动性
+const tx = await poolManager.modifyLiquidity(
+    poolKey,
+    modifyLiquidityParams,
+    "0x"  // hookData
+);
+
+const receipt = await tx.wait();
+
+// 结算余额
+await poolManager.settle(poolKey.currency0);
+await poolManager.settle(poolKey.currency1);
+```
+
+### 8.3 执行交易
+
+```javascript
+// 交易参数
+const swapParams = {
+    zeroForOne: true,  // token0 -> token1
+    amountSpecified: ethers.utils.parseEther("1"),
+    sqrtPriceLimitX96: 0  // 无限制
+};
+
+// 批准代币（如果不是 ETH）
+if (poolKey.currency0 !== ETH_ADDRESS) {
+    await token0.approve(POOL_MANAGER_ADDRESS, swapParams.amountSpecified);
+}
+
+// 执行交易
+const tx = await poolManager.swap(
+    poolKey,
+    swapParams,
+    "0x",  // hookData
+    { value: poolKey.currency0 === ETH_ADDRESS ? swapParams.amountSpecified : 0 }
+);
+
+await tx.wait();
+
+// 结算余额
+await poolManager.settle(poolKey.currency0);
+await poolManager.take(poolKey.currency1, signerAddress, expectedOutput);
+```
+
+### 8.4 使用 Hook Data
+
+许多 Hook 支持传递自定义数据：
+
+```javascript
+// 编码自定义数据
+const hookData = ethers.utils.defaultAbiCoder.encode(
+    ["uint256", "address", "bool"],
+    [slippageTolerance, referrer, useSpecialLogic]
+);
+
+// 在交易时传递
+await poolManager.swap(poolKey, swapParams, hookData);
+
+// 在 Hook 合约中解码
+function beforeSwap(
+    address sender,
+    PoolKey calldata key,
+    SwapParams calldata params,
+    bytes calldata hookData
+) external override returns (bytes4) {
+    if (hookData.length > 0) {
+        (uint256 slippage, address referrer, bool special) = 
+            abi.decode(hookData, (uint256, address, bool));
+        
+        // 使用自定义数据
+        // ...
+    }
+    
+    return BaseHook.beforeSwap.selector;
+}
+```
+
+* * *
+
+## 9\. 高级特性
+
+### 9.1 跨链池子（未来）
+
+虽然 V4 本身不是跨链协议，但 Hooks 使跨链功能成为可能：
+
+```solidity
+contract CrossChainHook is BaseHook {
+    // 与跨链桥集成
+    IBridge public bridge;
+    
+    function afterSwap(
+        address sender,
+        PoolKey calldata key,
+        SwapParams calldata params,
+        BalanceDelta delta,
+        bytes calldata hookData
+    ) external override returns (bytes4) {
+        // 解析目标链
+        (uint256 targetChainId, address recipient) = 
+            abi.decode(hookData, (uint256, address));
+        
+        if (targetChainId != block.chainid) {
+            // 将代币桥接到目标链
+            bridge.sendToChain(
+                targetChainId,
+                key.currency1,
+                recipient,
+                uint256(-delta.amount1())
+            );
+        }
+        
+        return BaseHook.afterSwap.selector;
+    }
+}
+```
+
+### 9.2 LP 代币定制
+
+V4 允许自定义 LP 代币实现：
+
+```solidity
+contract CustomLPToken is ERC20, BaseHook {
+    // 可以是 ERC20、ERC721、或任何自定义实现
+    
+    function afterAddLiquidity(
+        address sender,
+        PoolKey calldata key,
+        ModifyLiquidityParams calldata params,
+        BalanceDelta delta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        // 铸造自定义 LP 代币
+        _mint(sender, calculateLPTokens(delta));
+        
+        return BaseHook.afterAddLiquidity.selector;
+    }
+    
+    function beforeRemoveLiquidity(
+        address sender,
+        PoolKey calldata key,
+        ModifyLiquidityParams calldata params,
+        bytes calldata
+    ) external override returns (bytes4) {
+        // 销毁 LP 代币
+        uint256 lpAmount = calculateLPTokensToburn(params);
+        _burn(sender, lpAmount);
+        
+        return BaseHook.beforeRemoveLiquidity.selector;
+    }
+}
+```
+
+### 9.3 Geomean Oracle（几何平均预言机）
+
+V4 继续支持并改进了预言机功能：
+
+```solidity
+contract GeomeanOracle {
+    struct Observation {
+        uint32 blockTimestamp;
+        int56 tickCumulative;
+    }
+    
+    Observation[65535] public observations;
+    
+    function observe(uint32[] calldata secondsAgos)
+        external
+        view
+        returns (int56[] memory tickCumulatives)
+    {
+        // 从环形缓冲区读取观察值
+        // ...
+    }
+    
+    function getQuote(
+        uint128 baseAmount,
+        address baseToken,
+        address quoteToken,
+        uint32 secondsAgo
+    ) external view returns (uint256 quoteAmount) {
+        // 使用 TWAP 计算报价
+        // ...
+    }
+}
+```
+
+### 9.4 批量操作
+
+V4 的 Singleton 架构使批量操作更高效：
+
+```solidity
+function batchSwap(
+    PoolKey[] calldata keys,
+    SwapParams[] calldata params
+) external {
+    require(keys.length == params.length, "Length mismatch");
+    
+    for (uint i = 0; i < keys.length; i++) {
+        poolManager.swap(keys[i], params[i], "");
+    }
+    
+    // 只需要最后结算一次
+    // Flash Accounting 自动优化了中间步骤
+}
+```
+
+* * *
+
+## 10\. Gas 优化最佳实践
+
+### 10.1 利用 Flash Accounting
+
+```solidity
+// ❌ 不好的做法：每步都转账
+function multiHopSwap() external {
+    token0.transferFrom(msg.sender, address(this), amount0);
+    poolManager.swap(pool1, params1, "");
+    poolManager.swap(pool2, params2, "");
+    poolManager.swap(pool3, params3, "");
+    token3.transfer(msg.sender, finalAmount);
+}
+// Gas: ~400,000
+
+// ✅ 好的做法：使用 Flash Accounting
+function multiHopSwap() external {
+    // 只在开始和结束时转账
+    poolManager.swap(pool1, params1, "");
+    poolManager.swap(pool2, params2, "");
+    poolManager.swap(pool3, params3, "");
+    
+    // 结算净差额
+    poolManager.settle(currency0);
+    poolManager.take(currency3, msg.sender, finalAmount);
+}
+// Gas: ~180,000
+```
+
+### 10.2 Hook 优化
+
+```solidity
+// ❌ 每次都执行复杂计算
+function beforeSwap(...) external override returns (bytes4) {
+    uint256 expensiveCalculation = doComplexMath();
+    // 每笔交易都计算
+    return BaseHook.beforeSwap.selector;
+}
+
+// ✅ 缓存和批处理
+mapping(bytes32 => CachedData) public cache;
+uint256 public lastUpdateBlock;
+
+function beforeSwap(...) external override returns (bytes4) {
+    bytes32 poolId = getPoolId(key);
+    
+    // 只在新区块时更新
+    if (block.number > lastUpdateBlock) {
+        cache[poolId] = doComplexMath();
+        lastUpdateBlock = block.number;
+    }
+    
+    // 使用缓存数据
+    useCache(cache[poolId]);
+    
+    return BaseHook.beforeSwap.selector;
+}
+```
+
+### 10.3 原生 ETH 优先
+
+```solidity
+// ❌ 使用 WETH
+PoolKey({
+    currency0: WETH,
+    currency1: USDC,
+    // ...
+})
+// Gas: ~210,000 (含 wrap/unwrap)
+
+// ✅ 使用原生 ETH
+PoolKey({
+    currency0: address(0),  // Native ETH
+    currency1: USDC,
+    // ...
+})
+// Gas: ~115,000
+```
+
+* * *
+
+## 11\. 安全考虑
+
+### 11.1 Hook 安全
+
+**重入攻击：**
+
+```solidity
+// ❌ 容易受到重入攻击
+function beforeSwap(...) external override returns (bytes4) {
+    // 外部调用可能触发重入
+    externalContract.call(data);
+    
+    return BaseHook.beforeSwap.selector;
+}
+
+// ✅ 使用重入锁
+bool private locked;
+
+modifier noReentrant() {
+    require(!locked, "Reentrant call");
+    locked = true;
+    _;
+    locked = false;
+}
+
+function beforeSwap(...) external override noReentrant returns (bytes4) {
+    externalContract.call(data);
+    return BaseHook.beforeSwap.selector;
+}
+```
+
+**权限控制：**
+
+```solidity
+// ❌ 没有权限检查
+function beforeSwap(...) external override returns (bytes4) {
+    // 任何人都可以触发的操作
+    criticalOperation();
+    return BaseHook.beforeSwap.selector;
+}
+
+// ✅ 严格的权限检查
+function beforeSwap(...) external override returns (bytes4) {
+    // 验证调用者
+    require(msg.sender == address(poolManager), "Only PoolManager");
+    
+    // 验证池子
+    require(isAuthorizedPool(key), "Unauthorized pool");
+    
+    criticalOperation();
+    return BaseHook.beforeSwap.selector;
+}
+```
+
+### 11.2 地址验证
+
+```solidity
+// 验证 Hook 地址确实具有声明的权限
+function validateHookAddress(address hook) internal view {
+    Hooks.Permissions memory permissions = IHooks(hook).getHookPermissions();
+    
+    // 检查地址前缀是否匹配权限
+    uint160 prefix = uint160(hook) >> 150;
+    uint160 expectedPrefix = getExpectedPrefix(permissions);
+    
+    require(prefix == expectedPrefix, "Invalid hook address");
+}
+```
+
+### 11.3 测试策略
+
+```solidity
+// 使用 Foundry 测试
+contract MyHookTest is Test {
+    PoolManager poolManager;
+    MyCustomHook hook;
+    
+    function setUp() public {
+        poolManager = new PoolManager(...);
+        hook = deployHookWithCorrectPrefix();
+    }
+    
+    function testBeforeSwap() public {
+        // 测试正常流程
+        poolManager.swap(...);
+        
+        // 测试边界情况
+        vm.expectRevert();
+        poolManager.swap(...);
+        
+        // 测试重入保护
+        // ...
+    }
+    
+    function testGasUsage() public {
+        uint256 gasBefore = gasleft();
+        poolManager.swap(...);
+        uint256 gasUsed = gasBefore - gasleft();
+        
+        assertLt(gasUsed, 200000, "Gas usage too high");
+    }
+}
+```
+
+* * *
+
+## 12\. 实际应用案例
+
+### 12.1 Volatility Oracle Hook
+
+创建一个实时波动率预言机：
+
+```solidity
+contract VolatilityOracleHook is BaseHook {
+    struct VolatilityData {
+        uint256 sumSquaredReturns;
+        uint256 numObservations;
+        uint256 lastPrice;
+        uint256 lastTimestamp;
+    }
+    
+    mapping(bytes32 => VolatilityData) public volatilityData;
+    
+    function afterSwap(
+        address,
+        PoolKey calldata key,
+        SwapParams calldata,
+        BalanceDelta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        bytes32 poolId = getPoolId(key);
+        VolatilityData storage data = volatilityData[poolId];
+        
+        // 获取当前价格
+        (uint160 sqrtPriceX96,,) = poolManager.getSlot0(poolId);
+        uint256 currentPrice = uint256(sqrtPriceX96) ** 2;
+        
+        if (data.lastPrice > 0) {
+            // 计算收益率
+            int256 return_ = int256(currentPrice) - int256(data.lastPrice);
+            
+            // 累加平方收益率
+            data.sumSquaredReturns += uint256(return_ * return_);
+            data.numObservations++;
+        }
+        
+        data.lastPrice = currentPrice;
+        data.lastTimestamp = block.timestamp;
+        
+        return BaseHook.afterSwap.selector;
+    }
+    
+    function getVolatility(PoolKey calldata key) external view returns (uint256) {
+        bytes32 poolId = getPoolId(key);
+        VolatilityData memory data = volatilityData[poolId];
+        
+        if (data.numObservations == 0) return 0;
+        
+        // 计算标准差（波动率）
+        uint256 variance = data.sumSquaredReturns / data.numObservations;
+        return sqrt(variance);
+    }
+}
+```
+
+### 12.2 Liquidity Mining Hook
+
+自动化流动性挖矿：
+
+```solidity
+contract LiquidityMiningHook is BaseHook {
+    IERC20 public rewardToken;
+    uint256 public rewardRate;  // 每秒每单位流动性的奖励
+    
+    struct UserInfo {
+        uint128 liquidity;
+        uint256 rewardDebt;
+        uint256 lastUpdateTime;
+    }
+    
+    mapping(bytes32 => mapping(address => UserInfo)) public users;
+    mapping(bytes32 => uint256) public accRewardPerShare;
+    
+    function afterAddLiquidity(
+        address sender,
+        PoolKey calldata key,
+        ModifyLiquidityParams calldata params,
+        BalanceDelta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        bytes32 poolId = getPoolId(key);
+        updatePool(poolId);
+        
+        UserInfo storage user = users[poolId][sender];
+        
+        // 发放累积奖励
+        if (user.liquidity > 0) {
+            uint256 pending = user.liquidity * accRewardPerShare[poolId] / 1e12 - user.rewardDebt;
+            rewardToken.transfer(sender, pending);
+        }
+        
+        // 更新用户信息
+        user.liquidity += uint128(params.liquidityDelta);
+        user.rewardDebt = user.liquidity * accRewardPerShare[poolId] / 1e12;
+        user.lastUpdateTime = block.timestamp;
+        
+        return BaseHook.afterAddLiquidity.selector;
+    }
+    
+    function afterRemoveLiquidity(
+        address sender,
+        PoolKey calldata key,
+        ModifyLiquidityParams calldata params,
+        BalanceDelta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        bytes32 poolId = getPoolId(key);
+        updatePool(poolId);
+        
+        UserInfo storage user = users[poolId][sender];
+        
+        // 发放累积奖励
+        uint256 pending = user.liquidity * accRewardPerShare[poolId] / 1e12 - user.rewardDebt;
+        rewardToken.transfer(sender, pending);
+        
+        // 更新用户信息
+        user.liquidity -= uint128(-params.liquidityDelta);
+        user.rewardDebt = user.liquidity * accRewardPerShare[poolId] / 1e12;
+        
+        return BaseHook.afterRemoveLiquidity.selector;
+    }
+    
+    function updatePool(bytes32 poolId) internal {
+        uint256 timeElapsed = block.timestamp - lastUpdateTime[poolId];
+        if (timeElapsed == 0) return;
+        
+        uint256 totalLiquidity = getTotalLiquidity(poolId);
+        if (totalLiquidity == 0) return;
+        
+        uint256 reward = timeElapsed * rewardRate;
+        accRewardPerShare[poolId] += reward * 1e12 / totalLiquidity;
+        lastUpdateTime[poolId] = block.timestamp;
+    }
+}
+```
+
+### 12.3 Stop Loss Hook
+
+实现自动止损功能：
+
+```solidity
+contract StopLossHook is BaseHook {
+    struct StopLossOrder {
+        address owner;
+        int24 triggerTick;
+        uint128 liquidity;
+        bool active;
+    }
+    
+    mapping(bytes32 => mapping(uint256 => StopLossOrder)) public stopLossOrders;
+    mapping(bytes32 => uint256) public orderCount;
+    
+    function placeStopLoss(
+        PoolKey calldata key,
+        int24 triggerTick,
+        uint128 liquidity
+    ) external returns (uint256 orderId) {
+        bytes32 poolId = getPoolId(key);
+        orderId = orderCount[poolId]++;
+        
+        stopLossOrders[poolId][orderId] = StopLossOrder({
+            owner: msg.sender,
+            triggerTick: triggerTick,
+            liquidity: liquidity,
+            active: true
+        });
+        
+        emit StopLossPlaced(poolId, orderId, triggerTick, liquidity);
+    }
+    
+    function afterSwap(
+        address,
+        PoolKey calldata key,
+        SwapParams calldata,
+        BalanceDelta,
+        bytes calldata
+    ) external override returns (bytes4) {
+        bytes32 poolId = getPoolId(key);
+        (, int24 tick,) = poolManager.getSlot0(poolId);
+        
+        // 检查是否触发任何止损单
+        executeTriggeredStopLoss(poolId, tick, key);
+        
+        return BaseHook.afterSwap.selector;
+    }
+    
+    function executeTriggeredStopLoss(
+        bytes32 poolId,
+        int24 currentTick,
+        PoolKey calldata key
+    ) internal {
+        for (uint256 i = 0; i < orderCount[poolId]; i++) {
+            StopLossOrder storage order = stopLossOrders[poolId][i];
+            
+            if (order.active && currentTick <= order.triggerTick) {
+                // 移除流动性
+                poolManager.modifyLiquidity(
+                    key,
+                    ModifyLiquidityParams({
+                        tickLower: /* ... */,
+                        tickUpper: /* ... */,
+                        liquidityDelta: -int256(uint256(order.liquidity))
+                    }),
+                    ""
+                );
+                
+                order.active = false;
+                emit StopLossExecuted(poolId, i);
+            }
+        }
+    }
+}
+```
+
+* * *
+
+## 13\. 开发工具和框架
+
+### 13.1 v4-template
+
+Uniswap 官方提供的 Hook 开发模板：
+
+```bash
+git clone https://github.com/Uniswap/v4-template
+cd v4-template
+forge install
+forge test
+```
+
+### 13.2 v4-periphery
+
+外围合约库，包含常用的 Hook 实现：
+
+```bash
+forge install Uniswap/v4-periphery
+```
+
+常用组件：
+
+-   `BaseHook.sol` - Hook 基类
+    
+-   `PoolModifyLiquidityTest.sol` - 测试辅助
+    
+-   `PoolSwapTest.sol` - 交易测试辅助
+    
+
+### 13.3 Foundry 测试框架
+
+```solidity
+// test/MyHook.t.sol
+import {Test} from "forge-std/Test.sol";
+import {PoolManager} from "v4-core/PoolManager.sol";
+import {MyHook} from "../src/MyHook.sol";
+
+contract MyHookTest is Test {
+    PoolManager manager;
+    MyHook hook;
+    
+    function setUp() public {
+        // 部署 PoolManager
+        manager = new PoolManager(500000);
+        
+        // 挖矿正确的 Hook 地址
+        address hookAddress = address(
+            uint160(
+                Hooks.BEFORE_SWAP_FLAG | Hooks.AFTER_SWAP_FLAG
+            ) << 150
+        );
+        
+        // 使用 CREATE2 部署到指定地址
+        deployCodeTo("MyHook.sol", abi.encode(manager), hookAddress);
+        hook = MyHook(hookAddress);
+    }
+    
+    function testSwapWithHook() public {
+        // 初始化池子
+        PoolKey memory key = PoolKey({
+            currency0: Currency.wrap(address(token0)),
+            currency1: Currency.wrap(address(token1)),
+            fee: 3000,
+            tickSpacing: 60,
+            hooks: IHooks(address(hook))
+        });
+        
+        manager.initialize(key, SQRT_RATIO_1_1, "");
+        
+        // 执行交易测试
+        // ...
+    }
+}
+```
+
+### 13.4 部署脚本
+
+```solidity
+// script/DeployHook.s.sol
+import {Script} from "forge-std/Script.sol";
+import {HookMiner} from "./HookMiner.sol";
+
+contract DeployHook is Script {
+    function run() external {
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        address poolManager = vm.envAddress("POOL_MANAGER");
+        
+        vm.startBroadcast(deployerPrivateKey);
+        
+        // 挖矿正确的地址
+        (address hookAddress, bytes32 salt) = HookMiner.find(
+            CREATE2_DEPLOYER,
+            flags,
+            type(MyHook).creationCode,
+            abi.encode(poolManager)
+        );
+        
+        // 部署 Hook
+        MyHook hook = new MyHook{salt: salt}(poolManager);
+        require(address(hook) == hookAddress, "Hook address mismatch");
+        
+        vm.stopBroadcast();
+        
+        console.log("Hook deployed at:", address(hook));
+    }
+}
+```
+
+* * *
+
+## 14\. 性能对比
+
+### 14.1 Gas 成本对比表
+
+| 操作 | V2 | V3 | V4 | V4 优化 |
+| --- | --- | --- | --- | --- |
+| 简单 Swap | 100k | 120k | 115k | -4% vs V3 |
+| 2-hop Swap | 200k | 240k | 140k | -42% vs V3 |
+| 3-hop Swap | 300k | 360k | 180k | -50% vs V3 |
+| 添加流动性 | 120k | 180k | 160k | -11% vs V3 |
+| ETH Swap | 210k | 240k | 115k | -52% vs V3 |
+
+### 14.2 性能优化建议
+
+**对于交易者：**
+
+-   优先使用包含原生 ETH 的池子
+    
+-   多跳交易在 V4 中优势明显
+    
+-   利用 Hook 提供的额外功能（如 MEV 保护）
+    
+
+**对于 LP：**
+
+-   评估 Hook 带来的额外价值
+    
+-   考虑 Gas 成本与收益的平衡
+    
+-   使用自动化工具管理复杂策略
+    
+
+**对于开发者：**
+
+-   Hook 逻辑保持简洁
+    
+-   利用缓存减少计算
+    
+-   批量操作优于单独操作
+    
+
+* * *
+
+## 15\. 迁移指南
+
+### 15.1 从 V3 迁移到 V4
+
+**合约层面：**
+
+```solidity
+// V3
+UniswapV3Pool pool = factory.getPool(token0, token1, fee);
+pool.swap(...);
+
+// V4
+PoolKey memory key = PoolKey({
+    currency0: Currency.wrap(token0),
+    currency1: Currency.wrap(token1),
+    fee: fee,
+    tickSpacing: tickSpacing,
+    hooks: IHooks(hookAddress)
+});
+poolManager.swap(key, params, hookData);
+```
+
+**前端层面：**
+
+```javascript
+// V3 SDK
+import { Pool, Route, Trade } from '@uniswap/v3-sdk'
+
+// V4 SDK (开发中)
+import { Pool, Route, Trade } from '@uniswap/v4-sdk'
+
+// 主要差异：
+// 1. 需要指定 Hook 地址
+// 2. 支持原生 ETH
+// 3. hookData 参数
+```
+
+### 15.2 兼容性考虑
+
+-   V4 与 V3 可以并存
+    
+-   某些功能（如特定 Hook）仅 V4 支持
+    
+-   V3 池子不会自动迁移到 V4
+    
+-   需要评估是否值得迁移（考虑流动性分散）
+    
+
+* * *
+
+## 16\. 未来展望
+
+### 16.1 可能的 Hook 创新
+
+**预测市场集成：**
+
+```solidity
+contract PredictionMarketHook is BaseHook {
+    // 将交易活动与预测市场结合
+    // 根据市场预测调整费率或流动性
+}
+```
+
+**社交交易：**
+
+```solidity
+contract SocialTradingHook is BaseHook {
+    // 跟单功能
+    // 交易排行榜
+    // 社区投票决定池子参数
+}
+```
+
+**GameFi 集成：**
+
+```solidity
+contract GameFiHook is BaseHook {
+    // 交易获得游戏道具
+    // 流动性提供者获得 NFT
+    // 游戏内货币兑换
+}
+```
+
+### 16.2 生态系统发展
+
+预计会出现：
+
+-   **Hook 市场** - 交易和购买 Hook
+    
+-   **Hook 聚合器** - 组合多个 Hook
+    
+-   **Hook 审计服务** - 专门的安全审计
+    
+-   **Hook 分析工具** - 性能和收益分析
+    
+
+### 16.3 多链部署
+
+V4 计划部署到：
+
+-   Ethereum Mainnet ✅
+    
+-   Arbitrum
+    
+-   Optimism
+    
+-   Base
+    
+-   Polygon
+    
+-   BNB Chain
+    
+-   其他 EVM 兼容链
+    
+
+* * *
+
+## 17\. 常见问题 (FAQ)
+
+### Q1: Hook 会增加交易失败的风险吗？
+
+A: 是的，如果 Hook 代码有 bug 或逻辑错误，可能导致交易回滚。因此：
+
+-   选择经过审计的 Hook
+    
+-   查看 Hook 的源代码
+    
+-   了解 Hook 的功能和限制
+    
+
+### Q2: 如何找到好的 Hook？
+
+A:
+
+-   官方文档的 Hook 示例
+    
+-   Uniswap 社区推荐
+    
+-   Hook 排行榜（基于使用量）
+    
+-   审计报告
+    
+-   开源代码质量
+    
+
+### Q3: V4 会取代 V3 吗？
+
+A: 不会立即取代。V3 和 V4 会共存：
+
+-   V3 更简单、更成熟
+    
+-   V4 更灵活、更创新
+    
+-   用户可以选择最适合的版本
+    
+
+### Q4: 部署 Hook 需要多少成本？
+
+A:
+
+-   Hook 合约部署：~200-500k gas
+    
+-   地址挖矿：免费但耗时（可能需要几分钟到几小时）
+    
+-   初始化池子：~100-150k gas
+    
+-   总成本取决于 Gas 价格和网络
+    
+
+### Q5: Hook 可以升级吗？
+
+A:
+
+-   Hook 合约本身通常不可升级（安全性）
+    
+-   但可以使用代理模式实现升级
+    
+-   或者部署新版本 Hook，创建新池子
+    
+
+* * *
+
+## 18\. 学习资源
+
+### 18.1 官方资源
+
+-   **文档**: [https://docs.uniswap.org/contracts/v4/overview](https://docs.uniswap.org/contracts/v4/overview)
+    
+-   **代码库**: [https://github.com/Uniswap/v4-core](https://github.com/Uniswap/v4-core)
+    
+-   **白皮书**: [https://github.com/Uniswap/v4-core/blob/main/whitepaper-v4-draft.pdf](https://github.com/Uniswap/v4-core/blob/main/whitepaper-v4-draft.pdf)
+    
+-   **Hook 示例**: [https://github.com/Uniswap/v4-periphery](https://github.com/Uniswap/v4-periphery)
+    
+
+### 18.2 社区资源
+
+-   **Discord**: Uniswap 官方频道
+    
+-   **论坛**: [https://gov.uniswap.org](https://gov.uniswap.org)
+    
+-   **Hook 库**: 社区贡献的 Hook 集合
+    
+-   **教程**: YouTube、Medium 上的开发教程
+    
+
+### 18.3 开发工具
+
+-   **Foundry**: 测试和部署框架
+    
+-   **v4-template**: 快速开始模板
+    
+-   **Hook 挖矿工具**: 地址生成工具
+    
+-   **Gas 分析器**: 优化 Gas 使用
+    
+
+* * *
+
+## 19\. 总结
+
+### 核心优势
+
+✅ **极致灵活性**
+
+-   Hooks 系统支持无限可能
+    
+-   可以实现任何自定义逻辑
+    
+-   真正的可编程 AMM
+    
+
+✅ **显著的 Gas 优化**
+
+-   Singleton 架构节省部署成本
+    
+-   Flash Accounting 优化多跳交易
+    
+-   原生 ETH 支持减少包装成本
+    
+
+✅ **创新的费率机制**
+
+-   动态费率适应市场变化
+    
+-   捐赠机制激励生态发展
+    
+-   灵活的协议费用管理
+    
+
+✅ **强大的扩展性**
+
+-   任何人都可以创建 Hook
+    
+-   不需要修改核心协议
+    
+-   保持核心简洁和安全
+    
+
+### 挑战
+
+⚠️ **复杂性增加**
+
+-   Hook 开发需要深厚的技术背景
+    
+-   地址挖矿流程复杂
+    
+-   安全审计要求更高
+    
+
+⚠️ **生态建设需要时间**
+
+-   需要开发者创建各种 Hook
+    
+-   用户教育成本
+    
+-   工具和基础设施完善
+    
+
+⚠️ **审计和安全**
+
+-   每个 Hook 都需要独立审计
+    
+-   恶意 Hook 的风险
+    
+-   需要建立信任机制
+    
+
+### 适用场景
+
+**V4 特别适合：**
+
+-   需要定制化功能的专业团队
+    
+-   创新的 DeFi 协议
+    
+-   大规模的套利者（多跳交易）
+    
+-   原生 ETH 交易者
+    
+
+**V3 可能更适合：**
+
+-   普通散户（简单直接）
+    
+-   已有成熟流动性的交易对
+    
+-   偏好稳定性和简单性的用户
+    
+
+* * *
+
+## 20\. 快速参考
+
+### 常用代码片段
+
+```solidity
+// 初始化池子
+poolManager.initialize(poolKey, sqrtPriceX96, hookData);
+
+// 添加流动性
+poolManager.modifyLiquidity(poolKey, params, hookData);
+
+// 执行交易
+poolManager.swap(poolKey, swapParams, hookData);
+
+// 结算
+poolManager.settle(currency);
+poolManager.take(currency, recipient, amount);
+
+// Hook 模板
+contract MyHook is BaseHook {
+    function getHookPermissions() 
+        public pure override 
+        returns (Hooks.Permissions memory) 
+    {
+        return Hooks.Permissions({
+            beforeSwap: true,
+            afterSwap: true,
+            // ... other permissions
+        });
+    }
+    
+    function beforeSwap(...) external override returns (bytes4) {
+        // Your logic here
+        return BaseHook.beforeSwap.selector;
+    }
+}
+```
+
+### 重要常量
+
+```solidity
+// 最小/最大 Tick
+int24 constant MIN_TICK = -887272;
+int24 constant MAX_TICK = 887272;
+
+// 动态费率标志
+uint24 constant DYNAMIC_FEE_FLAG = 0x800000;
+
+// 原生 ETH
+Currency constant NATIVE = Currency.wrap(address(0));
+```
+
+* * *
+
+_最后更新：2026年1月_
+
+* * *
+
+## 附录：完整 Hook 示例
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import {BaseHook} from "v4-periphery/BaseHook.sol";
+import {Hooks} from "v4-core/libraries/Hooks.sol";
+import {IPoolManager} from "v4-core/interfaces/IPoolManager.sol";
+import {PoolKey} from "v4-core/types/PoolKey.sol";
+import {PoolId, PoolIdLibrary} from "v4-core/types/PoolId.sol";
+import {BalanceDelta} from "v4-core/types/BalanceDelta.sol";
+import {Currency} from "v4-core/types/Currency.sol";
+
+/**
+ * @title Complete Hook Example
+ * @notice 展示所有可用 Hook 的完整示例
+ */
+contract CompleteHookExample is BaseHook {
+    using PoolIdLibrary for PoolKey;
+    
+    // 事件
+    event BeforeInitializeHook(PoolId indexed poolId);
+    event AfterInitializeHook(PoolId indexed poolId);
+    event BeforeSwapHook(PoolId indexed poolId, address sender);
+    event AfterSwapHook(PoolId indexed poolId, int256 amount0, int256 amount1);
+    
+    // 构造函数
+    constructor(IPoolManager _poolManager) BaseHook(_poolManager) {}
+    
+    // 定义启用的 Hooks
+    function getHookPermissions() 
+        public 
+        pure 
+        override 
+        returns (Hooks.Permissions memory) 
+    {
+        return Hooks.Permissions({
+            beforeInitialize: true,
+            afterInitialize: true,
+            beforeAddLiquidity: true,
+            afterAddLiquidity: true,
+            beforeRemoveLiquidity: true,
+            afterRemoveLiquidity: true,
+            beforeSwap: true,
+            afterSwap: true,
+            beforeDonate: true,
+            afterDonate: true
+        });
+    }
+    
+    // 初始化前
+    function beforeInitialize(
+        address sender,
+        PoolKey calldata key,
+        uint160 sqrtPriceX96,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        emit BeforeInitializeHook(key.toId());
+        return BaseHook.beforeInitialize.selector;
+    }
+    
+    // 初始化后
+    function afterInitialize(
+        address sender,
+        PoolKey calldata key,
+        uint160 sqrtPriceX96,
+        int24 tick,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        emit AfterInitializeHook(key.toId());
+        return BaseHook.afterInitialize.selector;
+    }
+    
+    // 交易前
+    function beforeSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        emit BeforeSwapHook(key.toId(), sender);
+        return BaseHook.beforeSwap.selector;
+    }
+    
+    // 交易后
+    function afterSwap(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.SwapParams calldata params,
+        BalanceDelta delta,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        emit AfterSwapHook(
+            key.toId(), 
+            delta.amount0(), 
+            delta.amount1()
+        );
+        return BaseHook.afterSwap.selector;
+    }
+    
+    // 添加流动性前
+    function beforeAddLiquidity(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.ModifyLiquidityParams calldata params,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        return BaseHook.beforeAddLiquidity.selector;
+    }
+    
+    // 添加流动性后
+    function afterAddLiquidity(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.ModifyLiquidityParams calldata params,
+        BalanceDelta delta,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        return BaseHook.afterAddLiquidity.selector;
+    }
+    
+    // 移除流动性前
+    function beforeRemoveLiquidity(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.ModifyLiquidityParams calldata params,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        return BaseHook.beforeRemoveLiquidity.selector;
+    }
+    
+    // 移除流动性后
+    function afterRemoveLiquidity(
+        address sender,
+        PoolKey calldata key,
+        IPoolManager.ModifyLiquidityParams calldata params,
+        BalanceDelta delta,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        return BaseHook.afterRemoveLiquidity.selector;
+    }
+    
+    // 捐赠前
+    function beforeDonate(
+        address sender,
+        PoolKey calldata key,
+        uint256 amount0,
+        uint256 amount1,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        return BaseHook.beforeDonate.selector;
+    }
+    
+    // 捐赠后
+    function afterDonate(
+        address sender,
+        PoolKey calldata key,
+        uint256 amount0,
+        uint256 amount1,
+        bytes calldata hookData
+    ) external override onlyPoolManager returns (bytes4) {
+        return BaseHook.afterDonate.selector;
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # Uniswap V3 学习笔记
 
 ## 1\. 概述
@@ -1674,6 +3949,7 @@ y = L * (√P - √P_a)
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 # day16
 
 \[x\] Finish Challenge0 -Tokenization
@@ -1683,6 +3959,7 @@ y = L * (√P - √P_a)
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 # day15
@@ -2405,6 +4682,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day14
 
 \[x\] Uniswap V2 Factory合约代码解读
@@ -2420,6 +4698,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day13
 
 \[x\]搭建了本地区块链节点
@@ -2429,6 +4708,7 @@ _最后更新：2026年1月_
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -3029,6 +5309,7 @@ library SafeMath {
 
 
 
+
 # DAY11
 
 周始，观废寝忘食刷榜、寻到offer者甚多，顿觉无力，浑噩踱步，不知所向
@@ -3042,6 +5323,7 @@ library SafeMath {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -3413,6 +5695,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY9
 
 古法笔记：
@@ -3434,6 +5717,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY8
 
 \[\]frontend
@@ -3443,6 +5727,7 @@ router.swapExactTokensForTokens(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3491,6 +5776,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3568,6 +5854,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3701,6 +5988,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -3799,6 +6087,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -3999,6 +6288,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -4095,6 +6385,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
