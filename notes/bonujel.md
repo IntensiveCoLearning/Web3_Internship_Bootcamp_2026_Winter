@@ -15,8 +15,18 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+# 行动
+
+-   准备hackason
+    
+-   参加《主题 workshop - SpoonOS 框架从 0-1 搭建 MCP 和 Skill 的 Agent》直播
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # 行动
 
 -   完成黑客松组队，报名
@@ -28,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 ## **行动**
 
@@ -126,6 +137,7 @@ SQLite 的 INSERT OR IGNORE 语句可以优雅地处理重复插入，但这会�
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 ## **行动**
 
 -   完成hardhat跟练
@@ -139,6 +151,7 @@ SQLite 的 INSERT OR IGNORE 语句可以优雅地处理重复插入，但这会�
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -262,6 +275,7 @@ Reactive Network 采用"后付费"模式——先执行，后扣费。这意味�
 
 
 
+
 ## **行动**
 
 -   完成挑战 Challenge #0 - Tokenization
@@ -331,6 +345,7 @@ require(to != address(0)) 防止代币被转移到零地址。零地址是一个
 
 
 
+
 ## **行动**
 
 -   参与《Dapp Workshop》直播
@@ -344,6 +359,7 @@ require(to != address(0)) 防止代币被转移到零地址。零地址是一个
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -465,6 +481,7 @@ $$
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1063,6 +1080,7 @@ contract SecureBank {
 
 
 
+
 ## **行动**
 
 -   观看《分享会 - Web3 公共物品资金分配第一节课》直播
@@ -1076,6 +1094,7 @@ contract SecureBank {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1133,6 +1152,7 @@ remixd -s . -u https://remix.ethereum.org
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1351,6 +1371,7 @@ $$
 
 
 
+
 ## **行动**
 
 -   观看第一周例会直播
@@ -1362,6 +1383,7 @@ $$
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1557,6 +1579,7 @@ Stripe最近也推出了针对AI代理的支付接口（Agentic Commerce Protoco
 
 
 
+
 ## **行动**
 
 1.  通读《web3实习手册》，对整体生态以及求职方向有了比较系统的理解
@@ -1643,6 +1666,7 @@ d律分析了具体的业务场景风险，包括发币融资、交易所运营�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1795,6 +1819,7 @@ Gas 不仅仅是费用，它是去中心化网络能持续运行的经济保障�
 
 
 
+
 ## **行动**
 
 -   观看“Web3 行业全局介绍 & 岗位概览“直播
@@ -1919,6 +1944,7 @@ event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, addres
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
