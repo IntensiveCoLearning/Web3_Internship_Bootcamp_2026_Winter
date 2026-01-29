@@ -15,8 +15,81 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+# Hardhat
+
+### **核心特性与功能：**
+
+1.  **本地以太坊网络**
+    
+    -   内置一个本地以太坊网络节点（Hardhat Network），专为开发设计。
+        
+    -   提供极快的交易确认和详细的错误信息，非常适合调试。
+        
+    -   可以分叉主网或测试网，方便进行复杂测试。
+        
+2.  **强大的任务运行器**
+    
+    -   通过命令行工具 `npx hardhat <task>` 执行预定义或自定义的任务。
+        
+    -   内置常用任务：编译 (`compile`)、测试 (`test`)、运行本地节点 (`node`)、部署 (`run`) 等。
+        
+3.  **一流的智能合约测试**
+    
+    -   与 **Mocha** 和 **Chai** 等流行测试框架深度集成。
+        
+    -   提供 **Hardhat Chai Matchers** 库，增加针对以太坊的断言（如检查事件发射、余额变化等），让测试代码更简洁易读。
+        
+    -   支持并行测试和测试失败时的快速排查。
+        
+4.  **灵活的部署脚本**
+    
+    -   使用 JavaScript/TypeScript 编写部署脚本，可以管理复杂的部署流程和依赖。
+        
+5.  **丰富的插件生态系统**
+    
+    -   核心功能通过插件扩展。例如：
+        
+        -   `@nomicfoundation/hardhat-toolbox`：集合了最常用的插件（以太坊钱包、Etherscan验证等）。
+            
+        -   `@nomicfoundation/hardhat-verify`：用于验证合约源代码。
+            
+        -   `hardhat-deploy`：专业的部署管理插件。
+            
+    -   社区提供了大量其他插件，用于与各种工具和服务集成。
+        
+6.  **优秀的调试与日志**
+    
+    -   `console.log` **功能**：在Solidity合约中直接插入 `console.log` 语句打印调试信息，就像在JavaScript中一样，这是Hardhat最具标志性的功能之一。
+        
+    -   Hardhat Network 提供详细的交易执行回溯和堆栈跟踪。
+        
+7.  **TypeScript 原生支持**
+    
+    -   从配置文件到脚本和测试，全面支持TypeScript，提供更好的开发体验和代码提示。
+        
+
+### **基本工作流程：**
+
+1.  **初始化项目**：`npx hardhat init` 创建一个新项目。
+    
+2.  **编写合约**：在 `contracts/` 目录下编写Solidity智能合约。
+    
+3.  **编译合约**：`npx hardhat compile` 将Solidity代码编译成字节码和ABI（保存在 `artifacts/` 目录）。
+    
+4.  **编写测试**：在 `test/` 目录下使用JavaScript/TypeScript编写测试用例。
+    
+5.  **运行测试**：`npx hardhat test` 在本地网络上执行测试。
+    
+6.  **部署合约**：编写部署脚本在 `scripts/` 目录，使用 `npx hardhat run scripts/deploy.js --network <network_name>` 进行部署。
+    
+7.  **交互与调试**：使用Hardhat Console (`npx hardhat console`) 或编写脚本与合约交互。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # Uniswap
 
 **Uniswap** 是一个运行在以太坊等区块链上的**去中心化交易协议（DEX）**，它允许用户无需中介即可交易加密货币。其核心特点是采用**自动化做市商（AMM）模型**，通过智能合约提供流动性，而不是传统的订单簿模式。
@@ -54,6 +127,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 # Vibe Coding
 
@@ -102,6 +176,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 本周末比较忙，所以没有具体完成什么新的学习方面的东西，目前正在努力追赶Solidity101网站的基础学习计划，目前进度是第三章，争取下周能跟上进度早日完成：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-25-1769352218638-image.png)
@@ -109,6 +184,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -263,6 +339,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # ERC20模板
 
 ```
@@ -348,6 +425,7 @@ ERC20 是 **以太坊区块链上创建和发行可互换代币** 的技术标�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -537,6 +615,7 @@ contract MyToken is Ownable {
 
 
 
+
 ## 一、Dapp 核心定义
 
 去中心化应用（Dapp）是运行在区块链或分布式网络上的全新应用模式，核心特征为**去中心化**—— 应用逻辑和数据不由单一实体控制，由多个参与者共同维护，区别于传统集中式应用。开发需掌握去中心化技术栈、智能合约编程及前端与区块链的交互方式。
@@ -574,6 +653,7 @@ Dapp 架构包含四个核心部分，各组件分工明确、协同工作：
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -668,6 +748,7 @@ contract TestToken {
 
 
 
+
 # 以太坊
 
 ## ERC
@@ -729,6 +810,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -804,6 +886,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 以太坊
 
 ## 以太坊的应用场景
@@ -837,6 +920,7 @@ PoS 是一种通过资产持有权达成共识的机制。验证者根据其持�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
