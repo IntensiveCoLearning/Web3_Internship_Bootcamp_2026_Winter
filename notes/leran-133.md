@@ -15,8 +15,292 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+5.1 自定义任务
+
+\`\`\`typescript
+
+// tasks/accounts.ts
+
+import { task } from "hardhat/config";
+
+import "@nomicfoundation/hardhat-toolbox";
+
+task("accounts", "Prints the list of accounts")
+
+.setAction(async (taskArgs, hre) => {
+
+const accounts = await hre.ethers.getSigners();
+
+for (const account of accounts) {
+
+const balance = await hre.ethers.provider.getBalance(account.address);
+
+console.log(
+
+`${account.address} (${hre.ethers.formatEther(balance)} ETH)`
+
+);
+
+}
+
+});
+
+task("balance", "Prints an account's balance")
+
+.addParam("account", "The account's address")
+
+.setAction(async (taskArgs, hre) => {
+
+const balance = await hre.ethers.provider.getBalance(taskArgs.account);
+
+console.log`${hre.ethers.formatEther(balance)} ETH`);
+
+});
+
+// 注册任务到配置文件
+
+// hardhat.config.ts
+
+import "./tasks/accounts";
+
+\`\`\`
+
+5.2 复杂任务示例
+
+\`\`\`typescript
+
+// tasks/deploy-with-params.ts
+
+import { task, types } from "hardhat/config";
+
+task("deploy:token", "Deploys a token with custom parameters")
+
+.addParam("name", "Token name")
+
+.addParam("symbol", "Token symbol")
+
+.addOptionalParam("supply", "Initial supply", "[1000000](tel:1000000)", types.string)
+
+.setAction(async ({ name, symbol, supply }, hre) => {
+
+const \[deployer\] = await hre.ethers.getSigners();
+
+console.log`Deploying ${name} (${symbol}) with supply ${supply}...`);
+
+const Token = await hre.ethers.getContractFactory("MyToken");
+
+const token = await Token.deploy(name, symbol, hre.ethers.parseEther(supply));
+
+await token.waitForDeployment();
+
+const address = await token.getAddress();
+
+console.log`Token deployed to: ${address}`);
+
+console.log`Explorer: https://sepolia.etherscan.io/address/${address}`);
+
+return address;
+
+});
+
+\`\`\`
+
+六、插件系统进阶
+
+6.1 常用插件安装
+
+\`\`\`bash
+
+\# 工具集合
+
+npm install --save-dev @nomicfoundation/hardhat-toolbox
+
+\# 测试相关
+
+npm install --save-dev @nomicfoundation/hardhat-chai-matchers
+
+npm install --save-dev @nomicfoundation/hardhat-network-helpers
+
+\# 部署与验证
+
+npm install --save-dev @openzeppelin/hardhat-upgrades
+
+npm install --save-dev @nomicfoundation/hardhat-verify
+
+\# 其他工具
+
+npm install --save-dev hardhat-gas-reporter
+
+npm install --save-dev solidity-coverage
+
+npm install --save-dev hardhat-contract-sizer
+
+\`\`\`
+
+6.2 插件配置示例
+
+\`\`\`typescript
+
+// hardhat.config.ts
+
+import "@openzeppelin/hardhat-upgrades";
+
+import "hardhat-gas-reporter";
+
+import "solidity-coverage";
+
+import "hardhat-contract-sizer";
+
+const config: HardhatUserConfig = {
+
+// ... 其他配置
+
+contractSizer: {
+
+alphaSort: true,
+
+disambiguatePaths: false,
+
+runOnCompile: true,
+
+strict: true,
+
+},
+
+// 覆盖率配置
+
+coverage: {
+
+enabled: process.env.COVERAGE === "true",
+
+exclude: \["test/", "node\_modules/", "coverage/"\],
+
+},
+
+};
+
+\`\`\`
+
+七、调试与优化
+
+7.1 调试技巧
+
+\`\`\`bash
+
+\# 启用详细日志
+
+DEBUG=hardhat:\* npx hardhat test
+
+\# 运行特定测试
+
+npx hardhat test --grep "Minting"
+
+\# 运行单个测试文件
+
+npx hardhat test test/Token.test.ts
+
+\# 显示 Gas 报告
+
+REPORT\_GAS=true npx hardhat test
+
+\`\`\`
+
+7.2 性能优化
+
+\`\`\`typescript
+
+// 使用 BDD 缓存
+
+import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
+
+// 并行运行测试
+
+describe.parallel("Parallel tests", function () {
+
+it("Test 1", async function () { /\* ... \*/ });
+
+it("Test 2", async function () { /\* ... \*/ });
+
+});
+
+// 跳过耗时测试
+
+describe.skip("Slow tests", function () {
+
+// 这些测试会被跳过
+
+});
+
+// 只运行特定测试
+
+describe.only("Critical tests", function () {
+
+// 只运行这些测试
+
+});
+
+\`\`\`
+
+八、与前端集成
+
+8.1 TypeScript 类型生成
+
+\`\`\`typescript
+
+// scripts/generate-types.ts
+
+import { runTypeChain } from "typechain";
+
+import { glob } from "glob";
+
+import \* as fs from "fs";
+
+async function main() {
+
+const cwd = process.cwd();
+
+const allFiles = glob.sync("artifacts/contracts/\*\*/\*.json");
+
+await runTypeChain({
+
+cwd,
+
+filesToProcess: allFiles,
+
+allFiles,
+
+outDir: "typechain-types",
+
+target: "ethers-v6",
+
+});
+
+console.log("TypeChain types generated!");
+
+}
+
+main();
+
+\`\`\`
+
+8.2 Hardhat Runtime Environment (HRE)
+
+\`\`\`typescript
+
+// scripts/interact.ts
+
+import { ethers } from "hardhat";
+
+async function interact() {
+
+// 通过 HRE 访问所有功能
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 1.2 项目结构
 
 \`\`\`
@@ -425,6 +709,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 智能合约实践关键注意事项：最后一天进行系统性学习，明天开始实践
 
 一、安全优先
@@ -480,6 +765,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 这是一片充满矛盾的赛道。一面是全球数万亿美元的非上市股权“围城”，另一面是链上实际可流转规模仅千万美元的早期现实。市场叙事宏大，但落地仍处极早期。 行业探索出三条路径，并非你死我活，而是各司其职：合成资产如同“流量先锋”，用高杠杆吸引投机资金，完成市场教育；SPV间接持有是当前“主流过渡”，架构灵活但游走在合规边缘；原生协作（TaaS） 则是“终极基建”，以合规牌照实现真股上链，是承载大规模机构资金的未来正道。当前核心挑战并非技术，而在于 “流动性悖论”——上链不等于有深度，薄型市场导致定价失效。同时，面临监管与标的公司法务的双重挤压，单边发行的套利模式难以为继。 未来破局关键在于 “转向协同” ：从争夺头部独角兽的流量，下沉至服务有真实流动性需求的长尾企业；从绕过公司的套利，转向为企业提供 TaaS（代币化即哦服务） 基础设施。最终，行业将形成多层次莫生态，从早期的概念炒作，走向真正提升实体经济资本效率的合规金融设施。 简言之，赛道想象空间巨大，但已从“讲故事”进入“拼合规、建生态、造深度”的硬核攻坚阶段。真正的爆发，将始于基础设施成熟与企业端主动协同之时。
@@ -892,6 +1178,7 @@ balance := balance(addr)
 
 
 
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -1179,6 +1466,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1501,6 +1789,7 @@ GitHub 工作流：
 
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -1704,6 +1993,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -1858,6 +2148,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -1905,6 +2196,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1999,6 +2291,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -2012,6 +2305,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2333,6 +2627,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
