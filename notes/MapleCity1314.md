@@ -15,8 +15,46 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+## 总结了大大的AI相关的ERC学习
+
+**AI 相关 ERC 标准**
+
+-   **ERC-8004**：**自主 AI 代理的信任与发现标准** (2026年1月上线主网)👉 为 AI 代理提供去中心化的“护照”，通过身份、声誉和验证三大注册表，解决 AI 之间的跨组织信任与发现问题。
+    
+-   **ERC-6551**：\*\*代币绑定账户 (TBA)\*\*👉 让 AI 代理（以 NFT 形式存在）拥有自己的链上钱包，使其能够自主持有资产、签署交易并记录行为历史。
+    
+-   [**ERC-7007**](https://crypto.news/intelligence-on-chain-ai-must-become-a-tokenized-asset/)：**AI 生成内容的真实性证明**👉 让 AI 生成的内容（图像、文本、音频）上链并绑定唯一 ID，利用零知识证明 (zkML) 等技术防止伪造。
+    
+-   [**ERC-8028**](https://ethereum-magicians.org/t/erc-8028-data-anchoring-token-dat/25512)：**数据锚定代币 (DAT) 标准**👉 专为 AI 资产设计的半同质化标准，将模型所有权、使用配额和收入分成绑定在一起，推动 AI 资产化。
+    
+-   [**ERC-725**](https://medium.com/lukso/erc725-and-the-future-of-digital-identities-83ab2a99c3f9)：**通用身份标准**👉 为 AI 代理或组织提供可扩展的代理合约，使其能够像人类一样管理密钥、权限和元数据。
+    
+-   [**ERC-7662**](https://ethereum-magicians.org/t/erc-7662-ai-agent-nfts/19371) (提案中)：**AI 代理 NFT 标准**👉 专门用于定义 AI 代理的 NFT 结构，支持将 Prompt（提示词）和训练数据安全地存储在去中心化存储中并实现私有化。
+    
+-   **ERC-7016**：**资产评估与定价接口**👉 用于 AI 算力资产或数据资产的标准化评估，使不同 AI 模型的价值能在链上进行实时对比与定价。
+    
+-   **ERC-7504**：**去中心化计算资源共享标准**👉 定义了 AI 训练和推理所需的计算资源（GPU/CPU）在链上流转与租赁的标准化接口。
+    
+-   **ERC-7535**：**资产池代币化标准**👉 适用于 AI 模型训练的众筹或流动性池，让投资者能够通过质押代币共享 AI 模型的收益。
+    
+-   **ERC-7512**：**智能合约审计链上记录标准**👉 在 AI 自动生成代码或合约的场景下，用于记录 AI 审计结果，确保生成的 AI 逻辑符合安全标准。
+    
+-   **ERC-7500**：**NFT 动态数据元标准**👉 允许 AI 代理根据环境交互或学习结果，动态更新其关联 NFT 的属性和状态。
+    
+-   **ERC-6960**：\*\*双层分级代币标准 (DLT)\*\*👉 适用于复杂的 AI 算力分发，将底层物理算力与上层应用权利通过主次代币结构进行解耦。
+    
+-   **ERC-7575**：**多重收益金库标准**👉 针对 AI 驱动的收益优化策略（AI Vaults），提供统一的存取和收益分配接口。
+    
+-   **ERC-7386**：**链上意图 (Intent) 表达标准**👉 定义 AI 代理如何理解并执行用户的“意图”而非具体指令，是意图导向 AI 交互的核心标准。
+    
+-   **ERC-7641**：**内生收入分成代币标准**👉 确保存储在链上的 AI 知识产权（如数据集或微调模型）在被使用时，能自动向贡献者分发版税。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 今天做了reactive的任务
 
 -   reactive合约部署总结笔记
@@ -30,6 +68,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 昨天在准备科目三忘打卡了...今天刚考完试 简单偷偷懒
 
@@ -55,6 +94,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 1月25这天太忙了，主要在肝x402和新的合约
 
 然后和好朋友大老板交流了AI时代程序员何去何从的发展
@@ -73,6 +113,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -203,6 +244,7 @@ contract FallbackDynamicOwner {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -359,6 +401,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 
 
+
 今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
 
 ## 目标
@@ -446,6 +489,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -563,6 +607,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -838,6 +883,7 @@ contract MessageBoardOptimized {
 
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -912,6 +958,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1075,6 +1122,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -1208,6 +1256,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1354,6 +1403,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1779,6 +1829,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -1888,6 +1939,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2013,6 +2065,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
