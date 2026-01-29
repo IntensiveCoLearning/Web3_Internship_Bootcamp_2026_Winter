@@ -15,8 +15,28 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+打卡todo list
+
+# 1.29todo
+
+✅1.1.30的AMA&1.30的Co building海报
+
+1.设计badge
+
+2.再修改简历（量化经验，prefer的点都要写上去， 快速起号：发钱，互关，抄内容抄骨架，ai，信息差，贩卖总结可复制的产品，知识付费——投root data的实习
+
+**6.入门**[**‘’公共物品项目可持续性‘’研究报告**](https://forum.lxdao.io/t/topic/3393) **做一个开始计划**
+
+3.推进实习计划学习的内容
+
+3.写冲刺型人格的文章
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 继续完成黑客松需要的海报和nft设计
 
 ![截屏2026-01-28 23.25.07.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-28-1769613910166-__2026-01-28_23.25.07.png)![WechatIMG261.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-28-1769613956485-WechatIMG261.jpg)
@@ -24,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 继续完成筹备黑客松内容，完成open day 海报，推进demo day活动策划
 
@@ -34,6 +55,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 今天继续筹备完成open day的海报
 
 ![截屏2026-01-26 23.48.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-26-1769442534634-__2026-01-26_23.48.50.png)
@@ -41,6 +63,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -60,6 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天在根据老师建议修改简历，也在积极投递岗位，学习面试岗位
 
 ![截屏2026-01-23 23.51.01.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-23-1769183464742-__2026-01-23_23.51.01.png)
@@ -67,6 +91,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -151,6 +176,7 @@ CryptoJobsList官网
 
 
 
+
 今天主要研究了web3 marketing ，成果如下
 
 web3 marketing 可以简单分为以下三个框架，以@SentientAGI的例子穿插论证：
@@ -211,6 +237,7 @@ web3 marketing 可以简单分为以下三个框架，以@SentientAGI的例子�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -356,6 +383,7 @@ web3 marketing 可以简单分为以下三个框架，以@SentientAGI的例子�
 
 
 
+
 今天alex老师对**erc-7962**的分享让我觉得很有意思，尤其是其中，对于其商业化应用的拓展，对web2世界问题的解决，让我觉得这才是web3高效的创新性，遵循一个道理：web3不是对web2，的颠覆，而是的原有的基础上拓展创新
 
 以下是我对**erc-7962**能够实现的商业化场景的思考
@@ -394,6 +422,7 @@ ERC 7962 允许，证明我持有，却不暴露我是谁，却不暴露我还�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -528,6 +557,7 @@ CryptoJobsList | Web3 Jobs
 
 
 
+
 今天晚上的分享例会对我帮助很大，因为这周的学习成果过于碎片了，看到同学们都产出了很不错的总结，我没有很好的学习总结体系，导致没有什么成果
 
 今天复盘一下过去一周的问题：
@@ -553,6 +583,7 @@ CryptoJobsList | Web3 Jobs
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -602,6 +633,7 @@ CryptoJobsList | Web3 Jobs
 
 
 
+
 今天邓律的分享让我收获颇丰，我打算将其中的知识点消化输出为推文，先来打卡，稍后来补充输出的内容
 
 以下是今天输出的推特链接：https://x.com/0xjAc3/status/2011488065123205326?s=20
@@ -612,6 +644,7 @@ CryptoJobsList | Web3 Jobs
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -646,6 +679,7 @@ CryptoJobsList | Web3 Jobs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
