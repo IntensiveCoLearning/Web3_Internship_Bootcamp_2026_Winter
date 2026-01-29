@@ -15,19 +15,39 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+**（一）MCP 相关内容**
+
+介绍 MCP 作为 Agent 与外部工具之间的标准通信协议，支持运行时动态加载工具，避免传统方式下工具与 Agent 强耦合的问题。MCP 支持不同开发者提供的 MCP Server（如 DeepWiki MCP、TeaVM MCP），实现工具生态共享与独立升级。
+
+在通信方式上，说明了 STDIO 与 HTTP 两种模式，其中 HTTP 支持远程调用及 JSON / 事件流（SSE）返回形式，适用于云端及长任务场景。
+
+实操环节以 sponcon 示例项目中 MCP 目录下的 DeepWiki Demo 为例，演示 MCP 工具配置、Agent 调用流程及流式返回效果。
+
+**（二）Skill 相关内容**
+
+介绍 Skill 作为 Agent 内部能力扩展模块，通过配置 [skill.md](http://skill.md) 文件即可赋予 Agent 专业能力，无需额外编写代码。
+
+说明了 Skill 的基本组成，包括元数据、触发器、脚本及提示词，并演示了多 Skill 匹配时的优先级机制及脚本执行流程。实操部分以 sponge 库中的 data Processor Skill 为例，展示 Skill 的激活、执行及调用效果。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 今天参加了openday 主要介绍了我们黑客松spark ai 的玩法 赛道 奖励机制等 看到自己的作品被展示出来时自豪感满满 也有老师分享心得 受益匪浅
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 ![IMG_5177.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-26-1769435358174-IMG_5177.png)
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 今天主要和其他组对接 把海报kick off 部分完成了 （今天自己的事比较多没时间听课了 我后续补听呜呜呜）
@@ -38,6 +58,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天加入了黑客松筹备组 我负责设计和运营策划
 
 会议主要先破冰 讲述各个组长的优势和分工 然后讲了后面一周的任务安排 怎么去合理完成任务
@@ -45,6 +66,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -71,6 +93,7 @@ TS：可以模拟前端数据流与复杂跨合约交互
 
 
 
+
 今天有两个会议：uniswap 工作原理解析 和休闲黑客松案例解析
 
 第一个主要给我们讲解了uniswap 的运行原理 x·y=k，老师还用数学思维给我们推理了这个公式，还有一些关于流动性池的知识
@@ -86,11 +109,13 @@ TS：可以模拟前端数据流与复杂跨合约交互
 
 
 
+
 ![IMG_4924.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-20-1768922559745-IMG_4924.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -175,6 +200,7 @@ Twitter (X) / Farcaster
 
 
 
+
 补昨日笔记：
 
 主要就是一些学员web3的心得和感受
@@ -184,6 +210,7 @@ Twitter (X) / Farcaster
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -204,6 +231,7 @@ SpoonOS架构概览：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -264,6 +292,7 @@ Web3就是：用私钥签名证明你是谁，用共识网络保证账本可信�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
