@@ -15,8 +15,16 @@ QS600+金融本硕；Web3初学者
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+foundry完成中文指引，设置为666
+
+![截屏2026-01-29 23.31.48.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-29-1769700741612-__2026-01-29_23.31.48.png)
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # 零、准备工作
 
 -   Node.js：能在浏览器之外运行JavaScript的运行时环境（_node -v_）
@@ -125,6 +133,7 @@ npx hardhat test
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 探索hardhat在本地console中的交互模式
 
 ![截屏2026-01-27 21.39.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-27-1769521160558-__2026-01-27_21.39.15.png)
@@ -132,6 +141,7 @@ npx hardhat test
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 学习部署hardhat
@@ -144,6 +154,7 @@ npx hardhat test
 
 
 
+
 完成WTF中solidity101所有学习与测试
 
 ![截屏2026-01-25 20.33.39.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-25-1769344430987-__2026-01-25_20.33.39.png)
@@ -151,6 +162,7 @@ npx hardhat test
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -167,6 +179,7 @@ npx hardhat test
 
 
 
+
 学习solidity/查看basic示例
 
 ![截屏2026-01-23 23.05.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-23-1769180810998-__2026-01-23_23.05.13.png)
@@ -174,6 +187,7 @@ npx hardhat test
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -298,6 +312,7 @@ npx hardhat test
 
 
 
+
 -   **布尔型（bool）**
     
     -   取值：`true / false`
@@ -345,6 +360,7 @@ npx hardhat test
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -527,6 +543,7 @@ npx hardhat test
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -737,6 +754,7 @@ npx hardhat test
 
 
 
+
 尝试使用Remix IDE，跑通测试并撰写新的代码完成任务
 
 ![截屏2026-01-17 22.24.38.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-18-1768750752757-__2026-01-17_22.24.38.png)
@@ -755,6 +773,7 @@ npx hardhat test
 
 
 
+
 创建钱包，测试币转账
 
 ![截屏2026-01-16 22.44.20.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Asmodeus-xyz/images/2026-01-17-1768655912594-__2026-01-16_22.44.20.png)
@@ -762,6 +781,7 @@ npx hardhat test
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -927,6 +947,7 @@ EOA 用户通过私钥签名发起外部交易（external transaction），交�
 
 
 
+
 # 一、节点与客户端
 
 ## 节点
@@ -1070,6 +1091,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 
 
+
 # 一、Web3合规性要求与常见法律风险
 
 ## 核心法律风险梳理
@@ -1144,6 +1166,7 @@ Gossip 协议相当于以太坊的“去中心化广播系统”： 它让每个
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1356,6 +1379,7 @@ DeFi（去中心化金融）、NFT（非同质化代币）、DAO（去中心化�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
