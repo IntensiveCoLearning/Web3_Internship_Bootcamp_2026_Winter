@@ -15,8 +15,62 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+Solidity智能合约
+
+Solidity 是一种面向合约的高级编程语言，专门用于在以太坊虚拟机（EVM）上编写智能合约。它具有静态类型、支持继承、库和复杂的用户定义类型等特性。
+
+静态类型，变量的类型在编译时就确定，不能随便换。
+
+例子： uint256 age=18
+
+age 永远是整数，不能变成字符串、地址等
+
+为什么Solidity要静态类型。因为合约一旦上链不可修改，钱是真钱且必须在部署前就发现错误。
+
+静态类型=安全➕可预测
+
+什么是「支持继承」
+
+一个合约可以‘继承’另一个合约的代码
+
+contract Animal {
+
+    function speak() public pure returns (string memory) {
+
+        return "???";
+
+    }
+
+}
+
+contract Dog is Animal {
+
+    function bark() public pure returns (string memory) {
+
+        return "woof";
+
+    }
+
+}
+
+Dog自动拥有speak（）和bark（）
+
+什么是“库”。库=不存钱、不存状态的工具箱
+
+Library的特点
+
+| 特点 | 说明 |
+| 不存状态 | 没变量 |
+| 不能收 ETH | 不接钱 |
+| 复用 | 多合约共用 |
+| 省 Gas | 编译期内联 |
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 **RPC使用最佳实践**  
 · 保护API Key — 使用环境变量存储RPC URL和API Key
 
@@ -53,6 +107,7 @@ const client = createPublicClient({
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 **JSON-RPC协议**
 
@@ -121,6 +176,7 @@ const client = createPublicClient(...)
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 **RPC节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。
@@ -178,6 +234,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 
 
 
+
 2. **智能合约（Smart Contracts）**：
 
 -   智能合约是 Dapp 的核心，它定义了应用的业务逻辑，并部署在区块链上。智能合约通过执行自动化的规则来确保交易和操作的透明性与不可篡改性。
@@ -217,6 +274,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 
 
 
+
 Dapp架构和开发流程
 
 去中心化应用（Dapp）是与传统集中式应用不同的全新应用模式，通常运行在区块链或分布式网络上。
@@ -247,6 +305,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -287,6 +346,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 
 
+
 ```remix-solidity
 pragma solidity ^0.8.0;
 
@@ -313,6 +373,7 @@ function addOne() public {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -460,6 +521,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 
 
+
 昨天留下的问题，LP TOKEN证明的不是存入的ETH或者USDC在mempool里的存款，LP TOKEN证明的是自己的存款在CA账户里的比例。
 
 这个比例本身不会变，只要没有新增LP和退出的LP，交易得再多，这个比例也不会变。但是这个比例的资产内容会一直在变，因为有人用ETH换USDC也会有人用USDC换ETH，所以池子里X/Y一直在变化。昨晚把mempool和CA账户的资产概念混淆了，mempool的唯一作用是暂存“还没有被请求的交易”。
@@ -475,6 +537,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -536,6 +599,7 @@ Gas在EOA to EOA时只是记账付费（手续费），在EOA to CA时是计算�
 
 
 
+
 23:30 Tue 13 Jan 2026 因为工作原因今天晚上的闲暇时间不是很多，继续在阅读入门导读。
 
 今晚就只在钻研一个问题，什么是Layer1, Layer2,Sidechains?什么是Application Layer应用层、Protocol Layer协议层、Scaling Layer扩展层？
@@ -584,6 +648,7 @@ Scaling layer扩展层 提升性能和降低成本的解决方案。我的理解
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
