@@ -15,8 +15,70 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+## Uniswap V2 的设计细节
+
+### 1\. Core / Periphery 架构的深层意图
+
+-   **Core**（Factory + Pair）：极致最小化、immutable、只含必要逻辑。 目的：最小攻击面，保护流动性资金。 所有关键状态（储备、k、累积价格）都在 Pair 内，永不升级。
+    
+-   **Periphery**（Router02 等）：用户层、可替换、可升级。 处理安全检查（滑点、deadline）、多跳路由、ETH wrap/unwrap。 设计哲学：核心安全第一，用户体验第二。
+    
+
+### 2\. CREATE2 地址确定性
+
+-   Factory 使用 CREATE2 部署 Pair： keccak256(0xff + factory + keccak256(abi.encode(token0, token1)) + hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f')
+    
+-   好处：地址可预测，前端/合约无需查询即可计算 Pair 地址。 极大简化集成（如 Router 的 pairFor）。
+    
+
+### 3\. UQ112x112 固定点编码（预言机核心）
+
+-   价格累积用 uint256，但单个价格用 112 位整数 + 112 位小数（UQ112x112）。
+    
+-   为什么 112？平衡精度与溢出风险（2^112 ≈ 5.19e33，足够大）。
+    
+-   累积时：priceCumulative += (reserveOut << 112) / reserveIn \* Δtime → 精确、无浮点、gas 友好。
+    
+
+### 4\. “Missing return” ERC-20 兼容
+
+-   V1 要求 ERC-20 transfer/transferFrom 返回 bool，USDT 等不返回 → 失败。
+    
+-   V2 使用低级 call + 检查 success + balance 变化。 → 支持几乎所有 ERC-20（包括 non-standard 如 USDT、OMG）。
+    
+
+### 5\. 每个块开始测量价格（抗操纵关键）
+
+-   累积价格在 \_update 中基于**上一个交易后的储备**计算。
+    
+-   块开始价格 = 前一块末尾交易设定的价格。
+    
+-   操纵成本高：攻击者需在前一块末尾做坏交易（亏钱），且下一块不一定能套利回本。
+    
+
+### 6\. MINIMUM\_LIQUIDITY = 1000 的巧妙设计
+
+-   首次添加流动性时，燃烧 1000 LP Token（发送到 0x0）。
+    
+-   防止 totalSupply = 0 时的除零错误。
+    
+-   也轻微“抽税”初始 LP，保护后续 LP 免于极端价格波动下的精度损失。
+    
+
+### 7\. lock 修饰符（mutex）防重入
+
+-   Pair 合约顶部：uint private unlocked = 1;
+    
+-   modifier lock { require(unlocked == 1); unlocked = 0; \_; unlocked = 1; }
+    
+-   简单高效，防重入（尤其支持 ERC-777 hooks）。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 ## Uniswap V2 与 V3 关键差异
 
 ### 1\. 流动性模型
@@ -70,6 +132,7 @@ timezone: UTC+8
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 ## Uniswap V2 数学与不变量
 
@@ -151,6 +214,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -220,6 +284,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -368,6 +433,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -399,6 +465,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -511,6 +578,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -594,6 +662,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -731,6 +800,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -843,6 +913,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -884,6 +955,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -899,6 +971,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -951,6 +1024,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -962,6 +1036,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
