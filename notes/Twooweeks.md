@@ -15,8 +15,131 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+lesson 14 结构体方法
+
+目标： 1.如何创建结构体方法?
+
+内容： Q1: type person struct{
+
+}
+
+func (p person) age(name string) int{
+
+}
+
+func (p \*person) age(name string) int{
+
+}
+
+lesson 15 值接收者和和指针接收者
+
+目标： 1.理解值接收者和指针接收者的区别
+
+内容： Q1: 值接收者不能修改原值； 指针接收者可以修改原值 func (p person) age(name string) int{
+
+}
+
+func (p \*person) age(name string) int{
+
+}
+
+lesson 16 接口
+
+目标：
+
+1.  接口的定义
+    
+2.  接口的声明
+    
+3.  接口如何被实现
+    
+
+内容：
+
+1.  函数签名集合
+    
+2.  type 接口名称 interface{
+    
+
+}
+
+3.  任何类型都可以实现接口，只要该类型实现了接口中的所有方法，就认为该接口被该类型实现
+    
+
+lesson 17 组合
+
+目标：
+
+1.  如何通过组合来实现代码复用
+    
+
+内容： Q1: type A struct{ B }
+
+func (a A) method1(){
+
+}
+
+type B struct{
+
+}
+
+func (b B) method2(){
+
+}
+
+lesson 18 携程
+
+目标： 1.理解什么是goroutine? 2.如何创建一个goroutine?
+
+内容：
+
+1.  是一个轻量级的线程
+    
+2.  go func()
+    
+
+  
+22 lines (15 loc) · 315 Bytes
+
+lesson 19 channel
+
+目标：
+
+1.  channel定义
+    
+2.  分类
+    
+3.  用法
+    
+
+内容：
+
+1.  用于协程之间通信的一个管道
+    
+2.  有缓冲区 没有缓冲区
+    
+
+3.  实例化： ch := make(chan int, 10) / make(chan int) 赋值 ch <- 1 取值 <- ch
+    
+
+lesson 19 select
+
+目标：
+
+1.  select是如何与goroutine,channel组合使用，达到多路复用以及超时控制等效果的？
+    
+
+视频： golang基础20\_select://meeting.tencent.com/crm/2ORwpdA735
+
+内容： Q1:  
+for { select { case message1 <-ch1: ... case message2 <-ch2: ... } }
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 lesson 8 array
 
 目标：
@@ -117,6 +240,7 @@ lesson 12 pointer
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 # 状态树
 
 \- 状态树包含所有账户的状态，交易树和收据树是由当前这个区块的交易组织起来的
@@ -148,6 +272,7 @@ lesson 12 pointer
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 # 如何读源码
@@ -297,6 +422,7 @@ switch {
 
 
 
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -314,6 +440,7 @@ switch {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -342,6 +469,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -378,6 +506,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -385,6 +514,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -427,6 +557,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -529,6 +660,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -552,6 +684,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -600,6 +733,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -735,6 +869,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -763,6 +898,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -877,6 +1013,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -901,6 +1038,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -958,6 +1096,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
