@@ -15,8 +15,138 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+今天在学校学到了三峡国际独立董事周志伟教授的Venture Development Path创新企业流程，发现这个路径也可以套用到Web3的项目上，以下针对Web3行业项目的变体：
+
+### Web3 项目开发路径（Web3 Venture Development Path）
+
+**起始阶段（Idea → Theory → Experiment → Application → Product Design）** 保持高度相似，但内容变为：
+
+-   **Idea（创意/点子）** 解决某个区块链痛点的想法（如更快的跨链桥、去中心化社交、收益聚合器、Play-to-Earn 游戏等）
+    
+-   **Theory（理论/白皮书）** 撰写 Whitepaper/Litepaper，阐述技术架构、代币经济模型（Tokenomics）、治理机制
+    
+-   **Experiment（实验/POC）** 搭建 Proof of Concept、在本地或私有链测试核心机制（如新型共识算法、AMM 模型）
+    
+-   **Application（应用开发）** 开发核心智能合约、协议逻辑（Solidity / Rust / Move 等）
+    
+-   **Product Design（产品设计）** 前端 DApp UI/UX、钱包集成、跨链支持设计
+    
+
+**中间阶段（并行分支）**
+
+原图中从这里开始分多条支线，Web3 对应调整为：
+
+1.  **社区与营销（对应原图 Marketing）**
+    
+    -   Discord/Telegram/Telegram 社区建设
+        
+    -   Twitter 空间、KOL 合作、Meme 营销
+        
+    -   Airdrop、Ambassador 计划
+        
+2.  **安全审计与合规（对应原图 Authorities Approval）**
+    
+    -   聘请 PeckShield、Certik、Trail of Bits 等第三方审计
+        
+    -   Bug Bounty 计划
+        
+    -   KYC/AML（如需要中心化部分）
+        
+3.  **测试网阶段（对应原图 Small Scale Production）**
+    
+    -   部署 Testnet
+        
+    -   Incentive Testnet（发测试币奖励用户参与）
+        
+    -   收集反馈、修复漏洞
+        
+4.  **市场初步反应（对应原图 Market Sourcing）**
+    
+    -   Fair Launch 或 Pre-sale（IDO on Launchpad 如 Seedify、DAO Maker）
+        
+    -   初期社区反馈、TVL/用户数观察
+        
+5.  **原型迭代（对应原图 Prototype + Modifications）**
+    
+    -   主网前最终智能合约版本
+        
+    -   根据审计和测试网反馈进行多次迭代、升级（使用代理合约模式）
+        
+
+**生产与规模化阶段**
+
+-   **主网部署（对应原图 Medium → Industrial Scale Production）**
+    
+    -   Mainnet Launch
+        
+    -   添加流动性（Uniswap、Curve 等）
+        
+    -   多链扩展（Layer 2、跨链桥）
+        
+-   **原材料供应 & 工业生产流程（无直接对应，改为基础设施依赖）**
+    
+    -   节点/验证者招募
+        
+    -   Oracle（如 Chainlink）、索引器（如 The Graph）集成
+        
+    -   基础设施合作伙伴（Infura、Alchemy、RPC 提供商）
+        
+-   **大规模分发（对应原图 Volume Distribution）**
+    
+    -   上中心化交易所（CEX Listing：Binance、Coinbase）
+        
+    -   去中心化交易所深度优化
+        
+    -   全球社区扩张、地方化（多语言）
+        
+
+**财务与持续运营阶段**
+
+-   **资金管理（对应原图 Working Capital Management）**
+    
+    -   国库管理（Multisig 或 DAO Treasury）
+        
+    -   社区金库（通过协议费、治理提案分配）
+        
+-   **资金回收（对应原图 Cash Collection）**
+    
+    -   协议收入（交易费、手续费、Staking 奖励等）
+        
+    -   代币增值与社区回购/销毁机制
+        
+-   **售后服务（对应原图 After-sales Service）**
+    
+    -   社区支持、Discord 帮助台
+        
+    -   持续迭代升级（硬分叉/治理提案）
+        
+    -   用户教育、文档维护
+        
+-   **“上市”/退出（对应原图 IPO）**
+    
+    -   代币上 Tier-1 交易所（实现高流动性）
+        
+    -   项目被大链/协议收购（如并购）
+        
+    -   或长期演变为成熟的去中心化协议（类似 Uniswap、Aave）
+        
+
+| 原图阶段 | Web3 对应阶段 | 主要区别 |
+| --- | --- | --- |
+| 政府审批 | 安全审计 + Bug Bounty | 去中心化下更注重代码透明与第三方审计 |
+| 小/中/大量生产 | Testnet → Mainnet → 多链扩展 | 无物理生产，规模化靠用户采用和 TVL 增长 |
+| 原材料/工业生产 | 基础设施与节点 | 依赖区块链底层而非实体供应链 |
+| 现金流管理 | DAO Treasury 管理 | 社区治理决定资金使用 |
+| IPO | 代币上 CEX | 流动性事件而非传统股权上市 |
+
+这个映射后的流程是 Web3 行业目前最常见的开发路径（2022-2025 年间的大多数项目都大致遵循）。当然，不同子赛道（如 GameFi、SocialFi、AI+Web3）会在某些环节有侧重或额外步骤，但整体框架高度一致。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 Vitalik 对 2025 年预测市场的反思集中于投机行为的低社会价值、Web2 预言机的安全脆弱性及去中心化治理博弈缺陷；对社交应用的反思则聚焦于金融化过度导致的内容反噬及技术红利向应用爆发转化的失败。
 
 ## 2025 年预测市场 (Prediction Markets) 的反思
@@ -50,6 +180,7 @@ Vitalik 对 2025 年预测市场的反思集中于投机行为的低社会价值
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 V神今日推文学习笔记：
 
@@ -100,6 +231,7 @@ V神今日推文学习笔记：
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 针对V神今天推文的学习笔记回答以下问题：ZK-SNARKs如何化解区块链扩容与去中心化的核心矛盾？
 
 ZK-SNARKs 通过消除“验证成本”与“系统容量”之间的正相关关系，化解了区块链扩容与去中心化的核心矛盾。
@@ -129,6 +261,7 @@ ZK-SNARKs 通过消除“验证成本”与“系统容量”之间的正相关�
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -240,6 +373,7 @@ Clarity: Explain niche jargon (e.g., "Staking," "Warp Drive," "Lore," "Consensus
 
 
 
+
 今天用AI把v神最新的推文制作了一个英文播客，听了好多遍，颇有收获。
 
 精英阶层正因博弈论最优解（Game Theoretic Optimum）向加密朋克演变 。
@@ -309,6 +443,7 @@ Clarity: Explain niche jargon (e.g., "Staking," "Warp Drive," "Lore," "Consensus
 
 
 
+
 今天学到了一点，就是在币安广场发帖，每个帖子和每个帖子所带的币种尽量不要相同，不然如果有人举报的话，会对号品产生影响。
 
 策划活动相关内容：目前有一个大致的想法，想组织一个读书会，使用联合国开发计划署和未来事务管理局发起的“2060未来城市叙事马拉松”为主题，来探讨加密货币未来在人们生活中有什么样的用途
@@ -316,6 +451,7 @@ Clarity: Explain niche jargon (e.g., "Staking," "Warp Drive," "Lore," "Consensus
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -375,6 +511,7 @@ PART 2：例行晒一下今天的币安广场战绩
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -492,6 +629,7 @@ PART 2 晒一下今天在币安广场发帖子的战绩
 
 
 
+
 币安广场热帖创作方法论（一）
 
 如何在保持专业权威性的同时，通过真实互动建立长期的社区信任？
@@ -541,6 +679,7 @@ PART 2 晒一下今天在币安广场发帖子的战绩
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -612,6 +751,7 @@ DYOR.
 
 
 
+
 **💃 学习笔记：ERC-7962——当资产学会了“数据之舞”**
 
 1\. 缘起：透明世界的尴尬
@@ -673,6 +813,7 @@ DataDance 团队将这种逻辑应用到了两类资产上：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -775,6 +916,7 @@ DYOR.
 
 
 
+
 ## **对**[**Edward Du**](https://www.linkedin.com/in/eddu/?originalSubdomain=sg)**老师履历的思考：从技术布道者到社会创新者**
 
 昨天听完我们链协指导老师的分享，回去又看完Edward Du老师的履历，我作为币安广场的"神秘博士"，内心涌现出一种共鸣。他的人生轨迹完美诠释了什么叫做"技术向善"的实践者。
@@ -828,6 +970,7 @@ Edward Du老师让我看到了一种可能性：在技术创新和社会责任�
 
 
 
+
 今日参与了香港城市大学Web 3 AI Club的聚会，发现了我们这个链协虽然是才组建的，但是很有潜力！
 
 指导老师Edward Du自我介绍“拥有 78 项专利 的技术创新者、社会影响力建设者，目前已实现财务自由退休，过着简约生活并追求大胆梦想”，听到他的很多分享，打开了很多眼界。
@@ -841,6 +984,7 @@ Edward Du老师让我看到了一种可能性：在技术创新和社会责任�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -900,6 +1044,7 @@ Edward Du老师让我看到了一种可能性：在技术创新和社会责任�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1024,6 +1169,7 @@ Fandom Wiki 中提到了 IPC 严格的 **P1-P50 职级系统**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
