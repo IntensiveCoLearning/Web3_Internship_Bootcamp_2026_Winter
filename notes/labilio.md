@@ -15,8 +15,45 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+-   **利用“逆康威定律”红利**
+    
+    -   **原理：** 系统架构受限于沟通结构。大厂因部门墙导致系统臃肿，而“一人团队”拥有零沟通成本的先天优势。
+        
+    -   **实战：** 作为独立开发者，你的大脑直接统管前端、后端与合约层，这能让你的代码架构展现出极高的一致性和紧凑性，非常适合快速构建 MVP（最小可行性产品）参加黑客松。
+        
+-   **角色重定义：从执行者 (Coder) 转变为管理者 (Leader)**
+    
+    -   **核心职能：** 你的工作不再是纠结语法细节，而是 `理解需求 -> 宏观规划 -> 任务分发 -> 方案评审`。
+        
+    -   **决策机制：** 遇到复杂问题时，负责将模糊的想法（Idea）拆解为具体的模块（Module），就像把商业战略拆解为部门KPI。
+        
+-   **建立“人机协作”的质检双保险**
+    
+    -   **AI 自检 (Self-Check)：** 强制 AI 在输出代码前进行自我反思（类似“审稿”），过滤掉因概率生成的幻觉和低级语法错误，作为第一道防线。
+        
+    -   **人工复核 (Double Check)：** 由你（Leader）进行逻辑审计。在 Web3 开发中，这特指检查智能合约的业务逻辑漏洞（如资产安全），这是防止“单点失败”的最后一道防线。
+        
+-   **将技术资源视为“人力资源”**
+    
+    -   **模型即员工：** 将不同的 AI 模型视为具有不同特长的员工（如 DeepSeek 擅长深度逻辑，Gemini 擅长快速处理长文本），根据任务类型灵活“派单”。
+        
+    -   **提示词即岗位说明书 (JD)：** 写 Prompt 的本质是下达清晰的指令。你需要明确定义 AI 在当前任务中的角色，而不是漫无目的地闲聊。
+        
+-   **模块化架构思维**
+    
+    -   **拆解策略：** 无论系统多复杂，都必须拆解为独立的积木。在 Web3 语境下，应明确划分为：`用户模块`、`支付模块`、`结算模块`、`AI Agent 模块`。
+        
+    -   **目的：** 模块化不仅降低了 AI 理解任务的难度，也方便你在某个模块出错时，快速进行单独替换或调试，而不影响全局。
+        
+
+![所上传图片的预览图](https://lh3.googleusercontent.com/gg/AMW1TPqvlcA3N4wd9xWKZG3PRKoNQzpNn-ZDSOTgp2UT-WSBUE911NwOttKjnUpxQzIhJO6pD2FuIVMeVNowq1SXilVnyKcrfM6TC77XOd8c_dJpY7MHF_38o1IFvvRhK4jhPX-EHJlqKPTpvtqbt90TxrRCF00-P6YRyrlt-71syv6UbL8wkjvDZL2YYGz5IyaO5_MNL2fb3BcvNkd07FJ2X19Tjh-wt3ngg1xrGflshqYvoD0n_ovJq_ZM4kxh3oy3Z1xg9eH4zATSSoZGrb8nJwJmKGXiESr991o)
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 我的笔记：[https://ia6y6ng7mqs.feishu.cn/wiki/UExmwer9Pits4mkOzZEcRWKrnWg?from=from\_copylink](https://ia6y6ng7mqs.feishu.cn/wiki/UExmwer9Pits4mkOzZEcRWKrnWg?from=from_copylink)
 
 -   **数据结构**：链上数据类型有交易数据、区块数据和合约数据，介绍了其包含信息及作用。
@@ -38,6 +75,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 **公共物品资金分配问题**：
 
 -   **成熟项目分配资金争议**：具有成熟 VC 投资或商业化价值过高的项目是否分配公共物品资金存在争议，如 Uni swap、AVE 等项目申请资金引发讨论，Open team 后续方案对成熟项目匹配少量资金。
@@ -58,6 +96,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 ## **黑客松本质不是比赛，是高密度成长场景**
@@ -113,6 +152,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 **去中心化金融（DeFi）的核心机制**  
 **AMM（自动做市商）**：
 
@@ -134,6 +174,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -182,6 +223,7 @@ WEEK 对我来说最重要的三个必学的事情：
 
 
 
+
 ![b4a6bf35be158a88ef66699b2d728f7f.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/labilio/images/2026-01-23-1769179507958-b4a6bf35be158a88ef66699b2d728f7f.png)
 
 分享嘉宾主题分享了：  
@@ -192,6 +234,7 @@ Web3求职真的能 AI自动化 吗？
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -267,6 +310,7 @@ Web3求职真的能 AI自动化 吗？
 
 
 
+
 ## **Uniswap 工作原理解析**
 
 ### 🗨️ AMM 自动做市商
@@ -312,6 +356,7 @@ Web3求职真的能 AI自动化 吗？
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -395,6 +440,7 @@ Web3求职真的能 AI自动化 吗？
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -529,6 +575,7 @@ Web3求职真的能 AI自动化 吗？
 
 
 
+
 -   一些web3求职平台：
     
 -   abetterweb3(TG)
@@ -544,6 +591,7 @@ Web3求职真的能 AI自动化 吗？
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -576,6 +624,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -656,6 +705,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 
 
+
 ​从业风险： 并不是拿着国外的牌照（比如MSB）在国内就绝对安全，远程办公也有法律风险。
 
 ​冻卡问题： 出金最怕收到黑钱，笔记建议要保留好所有的聊天记录和KYC信息，万一警察找上门，这些是证明自己“善意第三人”的关键。
@@ -665,6 +715,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -726,6 +777,7 @@ _客户端APP产品要安装，网页产品轻巧但操作不方便(比如:不�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
