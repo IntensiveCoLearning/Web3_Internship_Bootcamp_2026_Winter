@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+休闲黑客松
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 Space  
 周会  
 Reactive
@@ -24,6 +30,7 @@ Reactive
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 休闲黑客松组队  
 黑客松主题的 Space
@@ -33,11 +40,13 @@ Reactive
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 打卡，打的就是卡，必须打
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -50,11 +59,13 @@ X402 Space
 
 
 
+
 X402 相关的知识
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -71,11 +82,13 @@ X402 相关的知识
 
 
 
+
 分享会，累瘫了。。。
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -96,6 +109,7 @@ dApp 相关的知识
 
 
 
+
 公共物品分享会，solidity分享会，有意思
 
 终于写完了一篇文章
@@ -103,6 +117,7 @@ dApp 相关的知识
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -128,12 +143,14 @@ co- learning
 
 
 
+
 答疑  
 周末愉快
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -162,11 +179,13 @@ co- learning
 
 
 
+
 今天在旅行，据说错过了非常牛的分享会，等会放出来了，去好好学习一下
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -235,12 +254,14 @@ co- learning
 
 
 
+
 co- learning  
 听布老师的分享会，重温基础知识
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
