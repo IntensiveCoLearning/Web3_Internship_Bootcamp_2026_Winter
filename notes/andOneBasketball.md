@@ -15,8 +15,189 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+# **📚 共学营 Day 17学习笔记（Ethernaut 22）**
+
+## 🎯 关卡目标
+
+-   玩家初始拥有：10 token1 + 10 token2
+    
+-   Dex 池子初始拥有：100 token1 + 100 token2
+    
+-   目标：通过价格操纵，掏空 Dex 中至少一种代币
+    
+
+* * *
+
+## 🧠 核心漏洞分析
+
+Dex 定价公式：
+
+```
+amount * reserveOut / reserveIn
+```
+
+这是**线性定价模型**，不是 Uniswap 的常数乘积模型：
+
+```
+x * y = k
+```
+
+因此可以通过来回 swap：
+
+-   不断放大自己资产比例
+    
+-   最终把 Dex 中某一种代币完全掏空
+    
+
+👉 本质是：**price manipulation + pool draining**
+
+* * *
+
+## 🛠 攻击方案设计
+
+### 思路
+
+使用攻击合约自动完成：
+
+1.  从玩家 EOA 拉取 token1 / token2
+    
+2.  不断在 Dex 中来回 swap
+    
+3.  每次根据 Dex 当前储备计算可安全 swap 的最大数量
+    
+4.  直到 Dex 中某个 token 为 0
+    
+5.  将所有代币转回玩家 EOA
+    
+
+攻击合约只需要一个 `attack()` 函数即可完成全部过程。
+
+* * *
+
+## ⚠️ 授权逻辑关键点（最容易踩坑）
+
+Dex 提供了特殊 approve 方法：
+
+```
+function approve(address spender, uint256 amount) public {
+    SwappableToken(token1).approve(msg.sender, spender, amount);
+    SwappableToken(token2).approve(msg.sender, spender, amount);
+}
+```
+
+含义是：
+
+> 给 msg.sender 的 token1 / token2 授权给 spender
+
+所以必须满足：
+
+```
+player → 调用 → dex.approve(attacker)
+```
+
+如果不是 player 调用，授权对象就会出错。
+
+* * *
+
+## ❗ 实战踩坑：approve 后必须等待交易确认
+
+在 Hardhat 测试脚本中，曾出现报错：
+
+```
+ERC20: insufficient allowance
+```
+
+原因不是逻辑错，而是：
+
+### ❌ 错误写法
+
+```
+await dex.connect(player).approve(attacker.target, MaxUint256);
+await attacker.attack();   // 立刻执行
+```
+
+这两笔交易可能：
+
+-   被打包进同一个区块
+    
+-   allowance 在 attack 执行时还未生效
+    
+-   transferFrom 直接 revert
+    
+
+* * *
+
+### ✅ 正确写法
+
+```
+const tx = await dex.connect(player).approve(attacker.target, MaxUint256);
+await tx.wait();   // ✅ 等待授权上链
+
+const atk = await attacker.attack();
+await atk.wait();
+```
+
+这是非常重要的链上工程实践经验：
+
+> 状态依赖的交易，一定要等前一笔确认后再发下一笔。
+
+* * *
+
+## 🧪 Remix 与 Hardhat 行为差异
+
+为什么 Remix 上没问题？
+
+因为 Remix 是：
+
+-   人工一步步点击
+    
+-   每笔交易都会等确认
+    
+
+而 Hardhat 脚本是：
+
+-   连续发送交易
+    
+-   如果不手动 wait，很容易出现状态未更新的问题
+    
+
+* * *
+
+## 🧩 本关总结
+
+### 技术点
+
+-   ❗ Dex 价格模型缺陷（非 x\*y=k）
+    
+-   ✅ 可通过来回 swap 操纵价格
+    
+-   ✅ 攻击合约自动化执行套利
+    
+-   ❗ ERC20 授权必须来自正确 owner
+    
+-   ❗ 状态依赖交易必须等待确认
+    
+
+### 工程能力提升
+
+-   开始理解：
+    
+    -   allowance 生效时机
+        
+    -   区块内多交易顺序问题
+        
+-   不再只看合约逻辑，也开始关注：
+    
+    -   交易打包
+        
+    -   链上状态同步
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # **📚 共学营 Day 17学习笔记（Ethernaut 19–21）**
 
 ## 19\. AlienCodex
@@ -113,6 +294,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 # **📚 共学营 Day 15 学习笔记（Ethernaut 17–18）**
 
@@ -308,6 +490,7 @@ RETURN(runtime)
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 # 📚 共学营 Day 14 学习笔记（Ethernaut 14–16）
@@ -551,6 +734,7 @@ slot2 → owner 被成功覆盖
 
 
 
+
 # 📚 共学营 Day 12 学习笔记（Ethernaut 10–13）
 
 今天完成了 Ethernaut 的 Level 10 到 Level 13，通过实战进一步加深了对合约安全问题和 EVM 执行机制的理解，覆盖了重入攻击、外部合约信任问题、链上隐私误区以及 gas 精准控制等关键知识点。
@@ -668,6 +852,7 @@ slot2 → owner 被成功覆盖
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -809,6 +994,7 @@ payable(king).transfer(msg.value);
 
 
 
+
 ## 📒 共学营 Day 10 学习笔记
 
 今天继续复盘 Ethernaut 关卡学习，并总结了 Solidity、Hardhat 与 ethers 的实践经验：
@@ -837,6 +1023,7 @@ payable(king).transfer(msg.value);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -912,6 +1099,7 @@ payable(king).transfer(msg.value);
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1016,6 +1204,7 @@ Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1196,6 +1385,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 
 
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -1311,6 +1501,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1447,6 +1638,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -1534,6 +1726,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1690,6 +1883,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
