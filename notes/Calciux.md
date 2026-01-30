@@ -15,13 +15,246 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+1-30笔记,昨天因为时间忘记上传,补上,今天的在后面
+
+\# ERC-7962：Key Hash Based Tokens 核心概念总结
+
+\## 1. 标准定位
+
+ERC-7962 是一个增强隐私与可编程性的代币标准，通过将传统的以太坊地址替换为密钥哈希`keyHash = keccak256(pubkey)`）来表示所有权。
+
+它扩展了：
+
+\- ERC-20（可替代代币）
+
+\- ERC-721（不可替代代币）
+
+并引入两个新接口（命名示意）：
+
+\- KeyHash20：可替代代币接口
+
+\- KeyHash721：不可替代代币接口
+
+\---
+
+\## 2. 核心思想
+
+\### 2.1 所有权由地址 → 密钥哈希
+
+传统 ERC-20 / ERC-721：
+
+\`\`\`solidity
+
+mapping(address => uint256) balances;
+
+\`\`\`
+
+ERC-7962 思路：
+
+\`\`\`solidity
+
+mapping(bytes32 => uint256) keyHashBalances;
+
+\`\`\`
+
+关键变化：
+
+\- 所有权标识：从 `address` 变为 `bytes32 keyHash`
+
+\- keyHash 定义：通常为 `keccak256(pubkey)` 或等价的公钥承诺
+
+\- 隐私性：链上不直接暴露具体地址或公钥
+
+\---
+
+\## 3. 转账与签名机制
+
+\### 3.1 基于公钥 / keyHash 的转账
+
+转账时，发送方不再直接指定 `to` 地址，而是指定：
+
+\- 接收方的 keyHash（或可恢复出 keyHash 的公钥信息）
+
+\- 发送方对结构化数据的签名（通常基于 EIP-712）
+
+示意接口（伪代码）：
+
+\`\`\`solidity
+
+interface IKeyHash20 {
+
+function transfer(
+
+bytes32 toKeyHash,
+
+uint256 amount,
+
+bytes calldata signature
+
+) external returns (bool);
+
+function balanceOf(bytes32 keyHash)
+
+external
+
+view
+
+returns (uint256);
+
+}
+
+\`\`\`
+
+要点：
+
+\- 支持链下签名 + 链上验证的转账流程
+
+\- 接收方可以是“隐身”的——只要其事先公布或私下告知公钥 / keyHash
+
+\- 便于与元交易（meta-tx）、账户抽象等机制组合
+
+\---
+
+\## 4. 相关与依赖标准（概念层面）
+
+在设计上，ERC-7962 通常会与以下标准理念协同：
+
+\- ERC-20 / ERC-721：基础代币与 NFT 接口
+
+\- EIP-712：结构化数据签名（用于离线签名 + 链上验证）
+
+\- ERC-2612（Permit 模式）：基于签名的授权
+
+\- 隐私通知 / 隐身地址类提案：为接收方提供隐私友好的地址发现与通知机制
+
+这些标准并非都在 ERC-7962 中强制要求，但其思想高度契合：
+
+“用结构化签名和公钥承诺来驱动资产流转，而不是直接暴露地址。”
+
+\---
+
+\## 5. KeyHash20 / KeyHash721 接口示意
+
+\### 5.1 KeyHash20（类 ERC-20）
+
+\`\`\`solidity
+
+interface IKeyHash20 {
+
+event Transfer(bytes32 indexed fromKeyHash, bytes32 indexed toKeyHash, uint256 value);
+
+function totalSupply() external view returns (uint256);
+
+function balanceOf(bytes32 keyHash) external view returns (uint256);
+
+function transfer(
+
+bytes32 toKeyHash,
+
+uint256 amount,
+
+bytes calldata signature
+
+) external returns (bool);
+
+}
+
+\`\`\`
+
+\### 5.2 KeyHash721（类 ERC-721）
+
+\`\`\`solidity
+
+interface IKeyHash721 {
+
+event Transfer(bytes32 indexed fromKeyHash, bytes32 indexed toKeyHash, uint256 indexed tokenId);
+
+function ownerOf(uint256 tokenId) external view returns (bytes32 keyHash);
+
+function transferFrom(
+
+bytes32 fromKeyHash,
+
+bytes32 toKeyHash,
+
+uint256 tokenId,
+
+bytes calldata signature
+
+) external;
+
+}
+
+\`\`\`
+
+\---
+
+\## 6. 设计优势
+
+\### 6.1 隐私增强
+
+\- 链上只看到 `bytes32 keyHash`，而非具体 `address`
+
+\- 公钥与真实控制者可以在链下管理与轮换
+
+\- 适合隐私资产、匿名凭证、隐身身份等场景
+
+\### 6.2 可编程所有权
+
+\- 所有权不再绑定单一地址，而是绑定公钥承诺
+
+\- 可以在合约层面实现：
+
+\- 多密钥控制
+
+\- 密钥轮换
+
+\- 社交恢复
+
+\- 多重签名等高级逻辑
+
+\### 6.3 原生适配链下签名与元交易
+
+\- 依赖 EIP-712 的结构化数据签名
+
+\- 用户可以离线签名，由第三方代付 gas
+
+\- 便于与账户抽象结合
+
+\### 6.4 抗审查性
+
+\- 黑名单难以直接基于地址实施
+
+\- 更适合对抗地址级别审查的资产与应用
+
+\---
+
+\## 7. 典型应用场景
+
+\- 隐私 NFT（匿名身份、匿名凭证）
+
+\- 零知识资产转移与隐私支付
+
+\- 链下授权 + 链上验证的资产系统
+
+\- 去中心化社交中的隐名资产与声誉
+
+\- 可编程密钥控制的资产管理（多签、轮换、托管）
+
+\---
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 因为忘记上传,笔记放在第二天
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 这是个含有公式的md
 
@@ -444,6 +677,7 @@ Uniswap 的价格可以被其他合约用作 **去中心化预言机**，但单�
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 **1\. 合约基础结构**
 
 一个 Solidity 合约通常由状态变量、函数、修改器和事件组成。
@@ -613,6 +847,7 @@ enum Status { Pending, Active, Inactive }
 
 
 
+
 **1\. 从 PoW 到 PoS**
 
 • **早期 PoW 的角色**：以太坊初期选择 PoW 是为了利用其成熟的安全性和低门槛特性（显卡矿工）安全启动网络。它被视为“起飞用的助推火箭”，在生态成熟后再切换到 PoS。
@@ -694,6 +929,7 @@ Verkle 树通过以下方式让“无状态”成为可能：
 
 
 
+
 **1\. EVM：以太坊的“大脑”**
 
 **EVM (Ethereum Virtual Machine)** 是一台运行在所有以太坊节点上的虚拟计算机，它将合约代码（字节码）转变为链上的状态更新。
@@ -741,6 +977,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -799,11 +1036,13 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 
 
+
 忘记上传笔记,放在第二天
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -856,6 +1095,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1111,6 +1351,7 @@ Web3 中大量应用依赖隐私计算：如 DeFi 中的隐私订单簿、DAO �
 
 
 
+
 ## Web3 安全与合规
 
 ### 常规法律风险
@@ -1137,6 +1378,7 @@ MiCA禁止了算法稳定币,要求稳定币发行商必须持有等值储备资
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1250,6 +1492,7 @@ Patricia Trie
 
 
 
+
 ## 分享会 web3安全
 
 **CeFi成为主要的黑客攻击靶机**：管理层私钥被盗、热钱包私钥被盗是主要的原因，暴露了显著的风险。
@@ -1306,6 +1549,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1505,6 +1749,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
