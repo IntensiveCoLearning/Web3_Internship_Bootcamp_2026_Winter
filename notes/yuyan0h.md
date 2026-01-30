@@ -15,8 +15,210 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+\# Web3 学习笔记 · 第十六天
+
+\## 🧠 今日学习内容：黑客松前端代码实战
+
+\---
+
+\## 🎯 今日进度：Web3 教育平台前端开发启动
+
+\### 一、项目初始化
+
+\- **技术栈确认**：
+
+\- Next.js 14（App Router）
+
+\- Tailwind CSS + shadcn/ui 组件库
+
+\- Wagmi + Viem 连接钱包与合约交互
+
+\- TypeScript 严格模式
+
+\- **仓库初始化**：
+
+\`\`\`bash
+
+npx create-next-app@latest learnweb3-platform --typescript --tailwind --app
+
+cd learnweb3-platform
+
+npm install wagmi viem @tanstack/react-query
+
+npm install -D @types/node
+
+\`\`\`
+
+\### 二、核心页面结构搭建
+
+\#### 1. **布局文件** `app/layout.tsx`)
+
+\- 集成 Wagmi Provider 与 QueryClient
+
+\- 设置全局字体（Inter）
+
+\- 添加导航栏与页脚框架
+
+\#### 2. **首页** `app/page.tsx`)
+
+\- Hero 区域：项目介绍 + 连接钱包按钮
+
+\- 特色功能展示（学习路径、链上凭证、社区治理）
+
+\- 热门课程/学习路径卡片
+
+\#### 3. **学习路径详情页** `app/path/[id]/page.tsx`)
+
+\- 路径进度展示（进度条）
+
+\- 课程列表（可展开/折叠）
+
+\- 完成按钮 → 触发 mint 凭证 NFT
+
+\#### 4. **个人学习仪表盘** `app/dashboard/page.tsx`)
+
+\- 显示已获得的学习凭证 NFT（使用 `wagmi` 读取合约）
+
+\- 学习统计（完成课程数、学习时长、链上凭证）
+
+\- 可分享的学习简历（生成图片或页面）
+
+\### 三、钱包连接与合约交互组件
+
+\#### 1. **连接钱包按钮组件** `components/ConnectButton.tsx`)
+
+\`\`\`tsx
+
+'use client';
+
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+
+import { injected } from 'wagmi/connectors';
+
+export default function ConnectButton() {
+
+const { address, isConnected } = useAccount();
+
+const { connect } = useConnect();
+
+const { disconnect } = useDisconnect();
+
+// 简化的连接/断开逻辑
+
+return (
+
+<button
+
+onClick={() => isConnected ? disconnect() : connect({ connector: injected() })}
+
+className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+
+\>
+
+{isConnected ? `${address?.slice(0,6)}...${address?.slice(-4)}` : 'Connect Wallet'}
+
+</button>
+
+);
+
+}
+
+\`\`\`
+
+\#### 2. **合约读取示例**：获取用户凭证 NFT
+
+\`\`\`tsx
+
+const { data: balance } = useReadContract({
+
+address: '0x...', // 凭证合约地址
+
+abi: ERC721\_ABI,
+
+functionName: 'balanceOf',
+
+args: \[address\],
+
+});
+
+\`\`\`
+
+\### 四、样式与组件库
+
+\- 使用 `shadcn/ui` 快速搭建：
+
+\`\`\`bash
+
+npx shadcn-ui@latest add button card progress
+
+\`\`\`
+
+\- 自定义主题颜色（教育蓝 + 科技紫）
+
+\- 响应式设计：移动端优先
+
+\---
+
+\## 🔧 遇到的问题与解决
+
+\### 问题一：Next.js App Router 与 Wagmi 的 Hydration 错误
+
+\- **现象**：服务器端渲染时钱包状态不一致
+
+\- **解决**：将钱包相关组件标记为 `'use client'`，并使用动态导入或条件渲染
+
+\### 问题二：合约 ABI 管理
+
+\- 创建 `lib/contracts.ts` 集中管理合约地址与 ABI
+
+\- 使用 TypeChain 生成类型安全的合约调用（后续集成）
+
+\### 问题三：测试网切换提示
+
+\- 添加网络切换提醒组件，当用户不在目标网络时友好提示
+
+\---
+
+\## 🧭 明日计划
+
+1\. **完善合约交互**：
+
+\- 编写并部署学习凭证 NFT 合约（ERC-721）
+
+\- 实现完成课程后 mint 凭证的功能
+
+\- 添加前端调用逻辑
+
+2\. **丰富页面内容**：
+
+\- 添加示例课程数据
+
+\- 实现课程完成状态持久化（本地存储 + 链上凭证）
+
+\- 设计学习凭证 NFT 的展示卡片
+
+3\. **部署测试**：
+
+\- 部署到 Vercel
+
+\- 在测试网进行端到端测试
+
+\- 邀请小组成员体验反馈
+
+\---
+
+\> 今天从零搭建了前端框架，感受到 Next.js + Wagmi 的流畅开发体验。
+
+\> 虽然只是静态页面阶段，但已经能看到产品的雏形。
+
+\> 明天将进入“合约集成”的关键环节，让前端真正与链上交互。
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 \# Web3 学习笔记 · 第十五天
 
 \## 🧠 今日学习内容：参与 OfferLock 项目前端与交互设计规划
@@ -152,6 +354,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 \# Web3 学习笔记 · 第十四天
 
@@ -296,6 +499,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 \# Web3 学习笔记 · 第十三天
@@ -451,6 +655,7 @@ await contract.Fal1out()
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -619,6 +824,7 @@ await contract.withdraw()
 
 
 
+
 \# Web3 学习笔记 · 第十一天
 
 \## 🧠 今日学习内容
@@ -780,6 +986,7 @@ yarn start
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -952,6 +1159,7 @@ mapping(address => User) public users;
 
 
 
+
 \# Web3 学习笔记 · 第九天
 
 \## 🧠 今日主题：NFT 铸造 + zkVote 初体验 + Uniswap 入门
@@ -1110,6 +1318,7 @@ mapping(address => User) public users;
 
 
 
+
 \# Web3 学习笔记 · 补充（实习计划概览与任务进展）
 
 \## 📋 实习计划结构与进展概览
@@ -1253,6 +1462,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 学习笔记 · 第八天
 
 \## 🧠 今日学习主题：智能合约初体验 + 密钥哈希 Token 理解
@@ -1383,6 +1593,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 ## **🛡️ 今日学习主题：Web3 安全入门与实践**
 
 （基于 Unphishable 平台引导内容）
@@ -1498,6 +1709,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1663,6 +1875,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1863,6 +2076,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 # **Web3 学习笔记 · 第四天**
 
 ## **📖 今日学习材料**
@@ -1891,6 +2105,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2033,6 +2248,7 @@ hasClaimed\[leaf\] = true;
 
 
 
+
 \# Web3 实习手册学习笔记
 
 \## 📘 入门导读
@@ -2076,6 +2292,7 @@ hasClaimed\[leaf\] = true;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
