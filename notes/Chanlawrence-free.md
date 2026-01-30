@@ -15,8 +15,229 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+《Remix 的 Value 是什么：payable 许可决定“能不能收钱”（Deploy vs deposit 的 Revert 真相）》
+
+## Introduction｜本次笔记主题 (Overview)
+
+你今天学会的是：在 Remix 的 **Deploy & Run Transactions** 面板里，**Value 输入框**并不是“随便填着玩”的，它代表一次交易（transaction）中**附带转入的 ETH（native token value）**。
+
+是否能成功转入，完全取决于：**当前被调用的入口是否允许收款（payable）**。
+
+* * *
+
+## Foundations｜基础篇：Value 输入框到底是什么 (What is “Value” in Remix?)
+
+### 1) 用你自己的比喻来理解（你写得很清楚）
+
+你把它类比成“发快递”：
+
+-   你点击按钮（Deploy / deposit / 其他函数）= **寄出一个包裹（send a request）**
+    
+-   **Value** 输入框 = 你在包裹里“夹带的现金”（cash attached to the request）
+    
+
+所以当你在 Value 里填 `10 Ether` 时，你表达的是：
+
+> 我不仅要执行这个操作（execute this action），
+> 
+> 还要在同一次操作里 **顺便转 10 ETH 过去（attach 10 ETH as msg.value）**。
+
+### 2) 更精准的技术说法（补充解释）
+
+-   Value 对应以太坊交易里的字段：`value`
+    
+-   在合约里你会通过：`msg.value` 读取这笔“随交易附带的 ETH”
+    
+-   单位常见：Wei / Gwei / Ether（Remix 会帮你换算）
+    
+
+✅ 小结：**Value = transaction value = msg.value（本次交易附带的原生币金额）**
+
+* * *
+
+## Core Concepts｜进阶篇：为什么 Deploy 填 10 ETH 会报错？(Why Deploy with 10 ETH reverts)
+
+你给的核心原因非常关键，我保留并强化它：
+
+### 1) Deploy 是“出生时刻”（Contract Creation）
+
+-   **Deploy（部署）** = 合约的“出生（birth）”
+    
+-   这一步是一笔 **创建合约交易（contract creation transaction）**
+    
+-   你在 Deploy 时填 Value，意思是：**合约一出生就要收到这笔 ETH（fund on creation）**
+    
+
+### 2) 关键规则：创建时要收钱，必须有“收钱许可”
+
+你原话是“没有被赋予收钱的能力”，对应 Solidity 的机制就是：
+
+-   如果你希望“创建合约时就能收 ETH”，必须让 **constructor（构造函数）**可收款：
+    
+    -   `constructor() payable { ... }`
+        
+
+否则 EVM 会拒绝这笔“带钱出生”的创建交易，常见表现是 **Revert（回退）** → Remix 红叉。
+
+> 你说的“刚出生没口袋装钱”是一个很好的直觉模型：
+> 
+> **没有 payable 的入口 = 不能接收 msg.value**。
+
+### 3) 为什么填 0 就能 Deploy 成功？
+
+-   因为填 0 表示：这笔创建交易 **不附带 ETH（msg.value = 0）**
+    
+-   不涉及资金转移，就不会触发“收款许可检查”，所以部署通过。
+    
+
+✅ 结论（非常好记）：
+
+-   **Deploy + Value > 0** → 必须 `constructor payable`（或可接收 ETH 的机制）
+    
+-   **Deploy + Value = 0** → 基本都能部署（只要代码本身没错）
+    
+
+* * *
+
+## Core Concepts｜进阶篇：为什么 deposit 填 10 ETH 却成功？(Why deposit works with Value)
+
+你写的第二个关键点是：
+
+> deposit 函数有 “收银台”标志（payable）
+
+这对应 Solidity 里的一个**硬规则**：
+
+### 1) 只有 `payable` 才能收 ETH（Only payable can receive ETH）
+
+当你调用：
+
+```solidity
+function deposit() public payable { ... }
+
+```
+
+意味着：
+
+-   这个函数允许接收 ETH
+    
+-   EVM 看到你 `msg.value > 0` 时不会拒绝
+    
+
+### 2) 你描述的扣款流程是对的（我用术语补全）
+
+1.  你填 `Value = 10 ETH`
+    
+2.  你点 `deposit`
+    
+3.  钱包账户（Account / EOA）发起交易（send tx）
+    
+4.  EVM 检查：函数是否 `payable`
+    
+5.  ✅ 通过 → 执行转账：**EOA → 合约地址（contract address）**
+    
+6.  所以你的账户余额变少，合约余额变多
+    
+
+这里可以补一句很重要的精确表达：
+
+-   合约余额查询通常是：`address(this).balance`
+    
+
+* * *
+
+## Advanced Applications｜高阶篇：Value 的正确用法（你总结得很棒，我整理成规则表）
+
+### 1) 什么时候 Value 必须填 0？(When Value should be 0)
+
+-   部署时（Deploy）**通常填 0**（除非你明确要创建时注资）
+    
+-   调用普通函数（non-payable functions）要填 0
+    
+-   只读查询（view/pure）更要填 0，例如 `getBalance` / `retrieve`
+    
+
+> 你写的很对：查数据不需要花钱，也不应该附带转账。
+
+### 2) 什么时候 Value 可以填数字？(When Value can be > 0)
+
+-   仅当你调用的入口允许收款：
+    
+    -   `payable` function（如 `deposit()`）
+        
+    -   或 `constructor payable`（创建时收钱）
+        
+    -   或 `receive()` / `fallback()`（后面扩展会讲）
+        
+
+✅ 关键判断句（你可以背下来）：
+
+**“Value 不是 ‘gas’，Value 是 ‘转账金额’。”**
+
+Gas（手续费）你无论填不填 Value 都可能消耗；Value 是你主动要转给对方的 ETH。
+
+* * *
+
+## Advanced Applications｜实验：让合约“含着金汤匙出生”（Deploy 时也能收钱）
+
+你提出了一个很好的实验：加一个 `payable constructor`。
+
+```solidity
+contract MyWallet {
+
+    // 构造函数：部署时执行（runs once at deployment）
+    constructor() payable {
+        // 不写逻辑也行，只要 payable 就能收 msg.value
+    }
+
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+
+    function deposit() public payable {
+    }
+}
+
+```
+
+### 实验步骤（你写的我保留并优化成 checklist）
+
+1.  覆盖代码 → Compile（编译）
+    
+2.  在 Value 填 `5 Ether`
+    
+3.  点击 Deploy
+    
+4.  打开合约面板，点 `getBalance`
+    
+5.  你会看到合约余额已包含 `5 Ether`
+    
+
+这验证了一个核心事实：
+
+> 只要入口是 payable，该入口就能接收 Value（msg.value）里的 ETH。
+
+* * *
+
+## Summary & Vocabulary｜术语回顾（Key Terms）
+
+-   **Value**：交易附带金额（transaction value），合约里读作 `msg.value`
+    
+-   **payable**：允许接收 ETH 的“许可标记”（payment permission）
+    
+-   **Deploy**：部署/创建合约（contract creation）
+    
+-   **constructor**：构造函数，部署时执行一次（runs once on deployment）
+    
+-   **Revert**：交易回退/失败（execution reverted）
+    
+-   **address(this).balance**：当前合约地址余额（contract balance）
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 今日学习笔记总结
 
 1\. 学习内容：掌握MCP、AI相关MCP，同步梳理对应核心Skills技能；
@@ -30,6 +251,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 ## 学习笔记｜Polymarket 为什么这么火：它不只是“零和赌博”，更像一个实时概率引擎（Real-time Probability Engine）
 
@@ -229,6 +451,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 ## Introduction｜今天完成了什么 (Overview)
@@ -493,6 +716,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 
 
+
 一、今日完成核心任务
 
 1\. 小组海报设计：成功完成组内海报设计工作，成果获得认可，个人收获强烈的成就感，进一步激发了学习与实践的动力。
@@ -527,6 +751,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 
 
+
 今天忙着搬家特别忙碌，没来得及好好静下心学习，晚上7点多忙完回来，第一时间跟进同步了设计相关进度，目前已经完成了GitHub头图（banner图）的设计，还有kick off的海报设计也顺利搞定。
 
 今天也有特别深的感悟和收获，选定一个行业之前一定要看清楚、了解透彻，一旦做出选择就要坚定坚守、深耕下去，不能因为累了就轻易放弃或者换来换去，既然我选择了Web3这条赛道，今后就会坚定的一直走下去。
@@ -536,6 +761,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -580,6 +806,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 
 
+
 1:今天主要学习了figma；然后做了两个海报，
 
 2:听了Speedrun Basic wrokshop
@@ -589,6 +816,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1037,6 +1265,7 @@ Backend 适合做（你原文 1~6 全保留）：
 
 
 
+
 ## Introduction｜今天学到的核心是什么 (Overview)
 
 你今天的学习可以浓缩成一句话：
@@ -1331,6 +1560,7 @@ Remix VM 给你很多账户，其目的就是让你模拟多人场景（multi-ac
 
 
 
+
 今天还在啃remix的compile编译&deploy部署。
 
 * * *
@@ -1590,6 +1820,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -1747,6 +1978,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -1781,6 +2013,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -1794,6 +2027,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1859,6 +2093,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1981,6 +2216,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -2029,6 +2265,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -2045,6 +2282,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
