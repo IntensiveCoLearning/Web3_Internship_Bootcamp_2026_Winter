@@ -36,10 +36,7 @@ Web3 实习计划 2025 冬季实习生
 
 ## 2\. 账户模型：思维重构
 
-| 特性 | Ethereum (EVM) | Solana (SVM) |
-| 合约状态 | Stateful (有状态) | Stateless (无状态) |
-| 数据存储 | 存放在合约内部 (storage) | 存放在外部独立的 Account |
-| 比喻 | Word 软件 (自带文档) | CPU 指令 (需外挂内存条) |
+| 特性 | Ethereum (EVM) | Solana (SVM) | | 合约状态 | Stateful (有状态) | Stateless (无状态) | | 数据存储 | 存放在合约内部 (storage) | 存放在外部独立的 Account | | 比喻 | Word 软件 (自带文档) | CPU 指令 (需外挂内存条) |
 
 ## 3\. 并行的代价：热点账户 (Hotspot)
 
@@ -63,6 +60,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 # Web3 学习笔记 Day 17：跨链桥与互操作性
 
@@ -127,6 +125,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 # Web3 学习笔记 Day 16：去中心化前端与 IPFS
 
 ## 1\. 核心痛点：Web3 的阿喀琉斯之踵
@@ -174,6 +173,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # Web3 学习笔记 Day 15：构建 DApp 前端
 
 ## 1\. Web3 交互架构
@@ -208,6 +208,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -248,6 +249,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -348,6 +350,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # 🎓 12 天全栈 Web3 毕业典礼
 
 同学，恭喜你！坚持 12 天并不容易。 这 12 天里，我们从 0 到 1 构建了一个完整的 **Web3 计算机科学知识图谱**。让我们最后回顾一下这栋大楼的结构：
@@ -384,6 +387,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -440,6 +444,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 10：Layer 2 扩容与 Rollup
 
 ## 1\. Rollup 的本质
@@ -464,6 +469,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -535,6 +541,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 9+：NFT 进阶开发
 
 ## 1\. ERC-1155 (多代币标准)
@@ -591,6 +598,7 @@ contract MyToken is ERC20 {
 
 
 
+
 # Web3 学习笔记 Day 8：区块链架构分级
 
 ## 1\. 核心权衡 (The Trade-off)
@@ -615,6 +623,7 @@ contract MyToken is ERC20 {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -840,6 +849,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 学习笔记 Day 6：DeFi 的代码原语
 
 ## 1\. 代币标准：ERC-20 的本质
@@ -905,6 +915,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1045,6 +1056,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 
 
+
 # Web3 & AI 学习笔记 Day 4：智能的本质
 
 ## 1\. 人工智能的分级：专才 vs 通才
@@ -1104,6 +1116,7 @@ Web3 应用正在经历一场 UX（用户体验）革命。通过“账户抽象
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1221,6 +1234,7 @@ Step 3: 交易红线 (非实名必拒)
 
 
 
+
 # Web3 学习笔记 Day 2：成为高级用户
 
 ## 1\. 核心概念：钱包的本质
@@ -1275,6 +1289,7 @@ Step 3: 交易红线 (非实名必拒)
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
