@@ -15,8 +15,302 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+📚 Hardhat 学习笔记
+
+🎯 核心定位
+
+· Foundry："极客特种兵"的首选 - 命令行驱动，追求极致速度
+
+· Hardhat："工程正规军"的标配 - JavaScript驱动，工程化友好
+
+🌟 Hardhat 核心特点
+
+1\. 使用 JavaScript/TypeScript - 对前端开发者友好
+
+2\. 工程化工具链 - 更适合团队协作和大型项目
+
+3\. 丰富的插件生态 - 可扩展性强
+
+📋 基础概念
+
+三大核心组件
+
+1\. Hardhat Network - 本地开发网络（类似 Anvil）
+
+2\. Scripts - 自动化脚本（部署机器人）
+
+3\. Console - 交互式控制台（实时对话窗口）
+
+🚀 快速开始指南
+
+1\. 环境准备
+
+\`\`\`bash
+
+\# 检查 Node.js 是否安装
+
+node -v
+
+\# 需要 Node.js 环境才能运行 Hardhat
+
+\`\`\`
+
+2\. 项目初始化流程
+
+\`\`\`bash
+
+\# 1. 创建项目目录
+
+mkdir my\_hardhat\_project
+
+cd my\_hardhat\_project
+
+\# 2. 初始化 npm 项目
+
+npm init -y
+
+\# 3. 安装 Hardhat
+
+npm install --save-dev hardhat
+
+\# 4. 启动 Hardhat 向导
+
+npx hardhat init
+
+\# 选择 "Create a JavaScript project"
+
+\`\`\`
+
+3\. 基础文件结构
+
+\`\`\`
+
+my\_hardhat\_project/
+
+├── contracts/ # Solidity 合约目录
+
+├── scripts/ # 部署脚本目录
+
+├── test/ # 测试文件目录
+
+├── hardhat.config.js # 配置文件
+
+└── package.json
+
+\`\`\`
+
+🛠️ 实战操作流程
+
+第1步：启动本地网络
+
+\`\`\`bash
+
+\# 窗口1：启动 Hardhat Network
+
+npx hardhat node
+
+\# 保持窗口运行，不要关闭！
+
+\`\`\`
+
+第2步：编写简单合约
+
+\`\`\`solidity
+
+// contracts/Counter.sol
+
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity ^0.8.0;
+
+contract Counter {
+
+uint256 public number;
+
+function setNumber(uint256 newNumber) public {
+
+number = newNumber;
+
+}
+
+function increment() public {
+
+number++;
+
+}
+
+}
+
+\`\`\`
+
+第3步：编译合约
+
+\`\`\`bash
+
+npx hardhat compile
+
+\`\`\`
+
+第4步：编写部署脚本
+
+\`\`\`javascript
+
+// scripts/deploy.js
+
+const hre = require("hardhat");
+
+async function main() {
+
+// 1. 获取合约工厂
+
+const Counter = await hre.ethers.getContractFactory("Counter");
+
+// 2. 部署合约
+
+const counter = await Counter.deploy();
+
+// 3. 等待部署完成
+
+await counter.waitForDeployment();
+
+// 4. 获取并打印合约地址
+
+console.log("合约已部署到:", await counter.getAddress());
+
+}
+
+main().catch((error) => {
+
+console.error(error);
+
+process.exitCode = 1;
+
+});
+
+\`\`\`
+
+第5步：部署合约
+
+\`\`\`bash
+
+\# 必须指定网络为 [localhost](http://localhost)
+
+npx hardhat run scripts/deploy.js --network [localhost](http://localhost)
+
+\`\`\`
+
+第6步：使用控制台交互
+
+\`\`\`bash
+
+\# 进入控制台
+
+npx hardhat console --network [localhost](http://localhost)
+
+\# 控制台内操作
+
+\> const counter = await ethers.getContractAt("Counter", "合约地址")
+
+\> await counter.number() // 读取数据
+
+\> await counter.setNumber(99) // 发送交易
+
+\> await counter.increment() // 调用函数
+
+\`\`\`
+
+🔍 核心命令总结
+
+命令 用途 注意
+
+npx hardhat node 启动本地开发网络 保持运行
+
+npx hardhat compile 编译合约
+
+npx hardhat run scripts/deploy.js --network [localhost](http://localhost) 部署脚本 必须指定网络
+
+npx hardhat console --network [localhost](http://localhost) 进入交互式控制台
+
+npx hardhat test 运行测试
+
+⚠️ 常见错误及解决
+
+错误1：HH100: Network [localhost](http://localhost) doesn't exist
+
+原因：忘记在命令后添加 --network [localhost](http://localhost)
+
+解决：确保部署和交互时都指定网络
+
+错误2：connect ECONNREFUSED 127.0.0.1:8545
+
+原因：本地网络未启动
+
+解决：先运行 npx hardhat node
+
+错误3：ReferenceError: ethers is not defined
+
+原因：没有通过正确方式进入控制台
+
+解决：使用 npx hardhat console --network [localhost](http://localhost)
+
+🤔 Foundry vs Hardhat 选择指南
+
+选 Hardhat 如果：
+
+· ✅ 熟悉 JavaScript/TypeScript
+
+· ✅ 要做全栈开发（需要前后端集成）
+
+· ✅ 喜欢工程化的开发流程
+
+· ✅ 需要丰富的插件生态
+
+选 Foundry 如果：
+
+· ✅ 专注纯合约开发
+
+· ✅ 追求极致的开发速度和效率
+
+· ✅ 喜欢命令行操作
+
+· ✅ 需要更底层的控制和调试能力
+
+💡 学习建议
+
+1\. 新手入门：先用 Foundry 理解基础概念（更简单直接）
+
+2\. 进阶开发：学习 Hardhat 进行工程化开发
+
+3\. 全栈路线：必须掌握 Hardhat（前端集成必备）
+
+📌 关键要点
+
+· Hardhat 使用 JavaScript/TypeScript，对前端开发者更友好
+
+· 控制台是 Hardhat 的强大功能，可以实时交互
+
+· 部署时一定要指定 --network [localhost](http://localhost)
+
+· Hardhat 更适合团队协作和大型项目开发
+
+🎓 最佳实践
+
+1\. 保持节点运行：交互式操作需要本地网络一直运行
+
+2\. 使用 async/await：所有区块链操作都是异步的
+
+3\. 记录合约地址：部署后保存合约地址用于后续交互
+
+4\. 充分利用控制台：快速测试合约功能
+
+这个笔记涵盖了 Hardhat 的核心概念、实战步骤、常见问题和对比分析，可以作为学习和教学的参考资料。
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 5.1 自定义任务
 
 \`\`\`typescript
@@ -300,6 +594,7 @@ async function interact() {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 1.2 项目结构
 
@@ -710,6 +1005,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 智能合约实践关键注意事项：最后一天进行系统性学习，明天开始实践
 
 一、安全优先
@@ -765,6 +1061,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1179,6 +1476,7 @@ balance := balance(addr)
 
 
 
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -1466,6 +1764,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1790,6 +2089,7 @@ GitHub 工作流：
 
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -1994,6 +2294,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -2149,6 +2450,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -2196,6 +2498,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2292,6 +2595,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -2305,6 +2609,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2627,6 +2932,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
