@@ -15,13 +15,352 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+````markdown
+# Gaia Link v2.0 Implementation Plan
+
+> **Implementation plan for SpoonOS Hackathon** - MCP + Skills + Proposal System
+
+---
+
+## Current Status
+
+| Phase | Status | Tests | Coverage |
+|-------|--------|-------|----------|
+| Phase 0: MCP + Skills | DONE | 342 | 84.50% |
+| Phase 1-2: Proposal System | DONE | 425 | 82.50% |
+| Phase 3: x402 Payment | DONE | 461 | 83.53% |
+
+**Last Updated**: 2026-01-30
+
+---
+
+## Architecture Overview
+
+```
++-------------------------------------------------------------------------+
+|                         Gaia Link Architecture v2.0                      |
++-------------------------------------------------------------------------+
+
+External Services     MCP Layer              Skills Layer        Agent Layer
++-------------+    +---------------+    +------------------+   +----------+
+| Polymarket  |--->| MCP Server    |    | crisis-response  |   | AgentV2  |
+| News APIs   |    | (FastMCP)     |<-->| donation-advisor |<->| SpoonAI  |
+| Weather API |    +---------------+    | pool-manager     |   +----------+
++-------------+           |              +------------------+        |
+                          v                                          v
+                   +--------------+                          +-------------+
+                   | MCP Client   |------------------------->| 13 Tools    |
+                   | (MCPTool)    |                          | (BaseTool)  |
+                   +--------------+                          +-------------+
+```
+
+### Service Layer
+
+| Service | Mock | Real | Switch |
+|---------|------|------|--------|
+| Blockchain | MockBlockchainService | SepoliaBlockchainService | `BLOCKCHAIN_NETWORK` |
+| Polymarket | MockPolymarketService | RealPolymarketService | `POLYMARKET_MODE` |
+| Sentiment | MockSentimentService | HuggingFaceSentimentService | `SENTIMENT_MODE` |
+| RateLimit | InMemoryRateLimiter | - | `RATE_LIMIT_ENABLED` |
+| Audit | InMemoryAuditLogger | - | `AUDIT_LOGGING_ENABLED` |
+| Proposal | MockProposalService | (TODO) | `PROPOSAL_MODE` |
+| Whitelist | MockWhitelistService | (TODO) | - |
+| X402 | MockX402Service | GaiaX402Service | `X402_ENABLED` |
+
+---
+
+## Phase 0: MCP + Skills (DONE)
+
+### Files
+
+| Component | File |
+|-----------|------|
+| MCP Server | `gaia_link/mcp_server.py` |
+| Agent V2 | `gaia_link/agent_v2.py` |
+| Skills | `gaia_link/skills/{crisis-response,donation-advisor,pool-manager}/SKILL.md` |
+| Phase 0 Tools | `gaia_link/tools/{verify_crisis,analyze_sentiment,execute_donation}.py` |
+
+### Key Decisions
+
+- SDK 0.3.6 lacks `SpoonReactSkill`, use `SpoonReactAI` + custom `SimpleSkillManager`
+- Skills defined via YAML frontmatter in SKILL.md files
+- MCP Server uses FastMCP with stdio/SSE transport
+
+---
+
+## Phase 1-2: Proposal System MVP (DONE)
+
+### State Machine
+
+```
+                                    +-----------+
+                                    | CANCELLED |
+                                    +-----------+
+                                          ^
+                                          | reject() / timeout (3 days)
+                                          |
++----------+  target reached   +--------+ |
+| FUNDING  | ----------------> | FUNDED |-+
++----------+                   +--------+
+     |                              |
+     | deadline passed             | activate()
+     | (target NOT reached)        v
+     v                        +-----------+
++---------+                   | ACTIVATED |
+| EXPIRED |                   +-----------+
++---------+                        |
+     |                             | funds transferred to institution
+     v                             v
+  [refund]                    [complete]
+```
+
+| Status | Value | Description |
+|--------|-------|-------------|
+| FUNDING | 0 | Accepting contributions |
+| FUNDED | 1 | Target reached, awaiting institution (3-day window) |
+| ACTIVATED | 2 | Institution confirmed, funds transferred |
+| EXPIRED | 3 | Deadline passed without reaching target |
+| CANCELLED | 4 | Institution rejected or timed out |
+
+### Files
+
+| Component | File |
+|-----------|------|
+| Models | `gaia_link/services/proposal/models.py` |
+| Service ABC | `gaia_link/services/proposal/base.py` |
+| Mock Proposal | `gaia_link/services/proposal/mock_proposal.py` |
+| Mock Whitelist | `gaia_link/services/proposal/mock_whitelist.py` |
+| Factory | `gaia_link/services/proposal/__init__.py` |
+
+### Tools (6 new)
+
+| Tool | File | Description |
+|------|------|-------------|
+| create_proposal | `gaia_link/tools/create_proposal.py` | Create proposal for whitelisted institution |
+| contribute_proposal | `gaia_link/tools/contribute_proposal.py` | Contribute to FUNDING proposal |
+| activate_proposal | `gaia_link/tools/activate_proposal.py` | Institution activates FUNDED proposal |
+| withdraw_contribution | `gaia_link/tools/withdraw_contribution.py` | Refund from EXPIRED/CANCELLED |
+| query_proposals | `gaia_link/tools/query_proposals.py` | List proposals with filters |
+| list_institutions | `gaia_link/tools/list_institutions.py` | List whitelisted institutions |
+
+### Tests
+
+| Test File | Count |
+|-----------|-------|
+| `tests/test_proposal_models.py` | 17 |
+| `tests/test_whitelist_service.py` | 18 |
+| `tests/test_proposal_service.py` | 31 |
+| `tests/test_proposal_tools.py` | 17 |
+
+### Default Institutions (Mock)
+
+- International Red Cross (Global)
+- UNICEF (Global)
+- MSF (Global)
+- Taiwan Red Cross (Asia)
+- WFP (Global)
+
+---
+
+## Phase 3: x402 Payment (DONE)
+
+### Objective
+
+HTTP 402 Payment Required support for paywalled resources.
+
+### Files
+
+| Component | File |
+|-----------|------|
+| Models | `gaia_link/services/x402/models.py` |
+| Service ABC | `gaia_link/services/x402/base.py` |
+| Mock Service | `gaia_link/services/x402/mock_x402.py` |
+| Factory | `gaia_link/services/x402/__init__.py` |
+
+### Tools (4 new)
+
+| Tool | File | Description |
+|------|------|-------------|
+| x402_payment | `gaia_link/tools/x402_payment.py` | Build signed X-PAYMENT header |
+| x402_verify_payment | `gaia_link/tools/x402_payment.py` | Verify X-PAYMENT header |
+| x402_settle_payment | `gaia_link/tools/x402_payment.py` | Settle verified payment |
+| x402_decode_receipt | `gaia_link/tools/x402_payment.py` | Decode X-PAYMENT-RESPONSE |
+
+### Tests
+
+| Test File | Count |
+|-----------|-------|
+| `tests/test_x402_service.py` | 25 |
+| `tests/test_x402_tools.py` | 11 |
+
+### Notes
+
+- MockX402Service for testing without blockchain interaction
+- GaiaX402Service wraps spoon-core X402PaymentService (for production)
+- Supports EIP-712 signature verification pattern
+
+---
+
+## Future: Solidity Contracts (NOT MVP)
+
+> These are NOT required for MVP. Python Mock implementations are sufficient.
+
+### Planned Interfaces
+
+```solidity
+// contracts/interfaces/IProposal.sol
+enum ProposalStatus { FUNDING, FUNDED, ACTIVATED, EXPIRED, CANCELLED }
+
+interface IProposal {
+    function contribute() external payable;
+    function activate() external;    // institution only
+    function reject() external;      // institution only
+    function checkExpiry() external;
+    function withdraw() external;    // contributors
+}
+
+interface IProposalFactory {
+    function createProposal(...) external returns (address);
+    function addInstitution(address, string, string) external;
+    function isWhitelisted(address) external view returns (bool);
+}
+```
+
+---
+
+## Risk Mitigation
+
+| Risk | Severity | Mitigation |
+|------|----------|------------|
+| Fund security logic error | HIGH | Mock-first validation, state machine tests |
+| Whitelist bypass | HIGH | Strict validation in create_proposal |
+| Intent parsing failure | MEDIUM | Clear examples + fallback patterns |
+
+---
+
+## Success Criteria
+
+### Phase 0 (DONE)
+- [x] MCP Server runs (`python -m gaia_link.mcp_server`)
+- [x] 3 SKILL.md files load correctly
+- [x] Agent inherits SpoonReactAI + SimpleSkillManager
+- [x] 342 tests passing, 84.50% coverage
+
+### Phase 1-2 (DONE)
+- [x] 5-state machine implemented and tested
+- [x] MockProposalService with full lifecycle
+- [x] MockWhitelistService with 5 default institutions
+- [x] 6 proposal tools implemented
+- [x] 425 tests passing, 82.50% coverage
+
+### Phase 3 (DONE)
+- [x] MockX402Service with full payment flow
+- [x] 4 X402 tools implemented
+- [x] 461 tests passing, 83.53% coverage
+
+---
+
+## Quick Reference
+
+### Run Tests
+```bash
+cd python_agent
+source .venv/bin/activate
+python -m pytest tests/ -v --tb=short
+```
+
+### Run MCP Server
+```bash
+python -m gaia_link.mcp_server        # stdio
+python -m gaia_link.mcp_server --sse  # SSE on :8000
+```
+
+### Key Imports
+```python
+# Services
+from gaia_link.services import (
+    get_proposal_service, get_whitelist_service,
+    MockProposalService, MockWhitelistService,
+    ProposalStatus, ProposalInfo, ContributionInfo, InstitutionInfo,
+    get_x402_service, X402Config, PaymentRequest,
+)
+
+# Tools
+from gaia_link.tools import (
+    CreateProposalTool, ContributeProposalTool, ActivateProposalTool,
+    WithdrawContributionTool, QueryProposalsTool, ListInstitutionsTool,
+    X402PaymentTool, X402VerifyPaymentTool, X402SettlePaymentTool,
+)
+```
+
+---
+
+## Project Structure
+
+```
+python_agent/gaia_link/
+├── agent.py              # v1.0 Agent (backward compat)
+├── agent_v2.py           # v2.0 Agent (MCP + Skills)
+├── mcp_server.py         # FastMCP Server
+├── schemas.py            # Pydantic models
+├── config.py             # Configuration
+├── skills/
+│   ├── crisis-response/SKILL.md
+│   ├── donation-advisor/SKILL.md
+│   └── pool-manager/SKILL.md
+├── tools/
+│   ├── verify_crisis.py          # Phase 0
+│   ├── analyze_sentiment.py      # Phase 0
+│   ├── execute_donation.py       # Phase 0
+│   ├── create_proposal.py        # Phase 1-2
+│   ├── contribute_proposal.py    # Phase 1-2
+│   ├── activate_proposal.py      # Phase 1-2
+│   ├── withdraw_contribution.py  # Phase 1-2
+│   ├── query_proposals.py        # Phase 1-2
+│   ├── list_institutions.py      # Phase 1-2
+│   └── x402_payment.py           # Phase 3
+└── services/
+    ├── base.py
+    ├── mock_blockchain.py
+    ├── polymarket/
+    ├── sentiment/
+    ├── ratelimit/
+    ├── audit/
+    ├── proposal/
+    │   ├── __init__.py           # Factory functions
+    │   ├── models.py             # ProposalStatus, etc.
+    │   ├── base.py               # ABC definitions
+    │   ├── mock_proposal.py      # State machine impl
+    │   └── mock_whitelist.py     # 5 default institutions
+    └── x402/
+        ├── __init__.py           # Factory functions
+        ├── models.py             # PaymentRequest, etc.
+        ├── base.py               # ABC definitions
+        └── mock_x402.py          # Mock payment service
+```
+
+---
+
+## Dependency Graph
+
+```
+Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
+        DONE                          DONE                        DONE
+```
+````
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 沒什麼好多說，搞黑客松!
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 今天最大的收穫就是完成了SPACE活動，第一次主持 Space，緊張是一定的。
 
@@ -36,6 +375,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 跟同學們進行了腦爆PT2，正式確定了題目。
 
 完成了漏洞修復，也完成了運行**Solidity by Example。**
@@ -43,6 +383,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -395,6 +736,7 @@ contract CrossFunctionVulnerable {
 
 
 
+
 實習計畫第二周結束，本周最讓我印象深刻的是「與人合作」這個課題。
 
   
@@ -428,6 +770,7 @@ contract CrossFunctionVulnerable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -482,6 +825,7 @@ ZK 是一個**選擇性隱藏**的工具，設計者決定保護什麼、公開�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -602,6 +946,7 @@ if (amount == 0) revert ZeroAmount();
 
 
 
+
 完整閱讀並學習了這兩篇在 X 上非常熱門的 Claude Code 指南——  
 [https://x.com/affaanmustafa/status/2014040193557471352?s=20](https://x.com/affaanmustafa/status/2014040193557471352?s=20) 和  
 [https://x.com/affaanmustafa/status/2012378465664745795?s=20，](https://x.com/affaanmustafa/status/2012378465664745795?s=20，)  
@@ -632,6 +977,7 @@ if (amount == 0) revert ZeroAmount();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1686,6 +2032,7 @@ price_ratio = 新價格 / 舊價格
 
 
 
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -2006,6 +2353,7 @@ unchecked：跳過溢位檢查，慎用
 
 
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -2017,6 +2365,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2105,6 +2454,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2741,6 +3091,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -2770,6 +3121,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2981,6 +3333,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -3040,6 +3393,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3294,6 +3648,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
