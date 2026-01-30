@@ -15,8 +15,99 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+## Uniswap V2 闪电交换（Flash Swap）
+
+### 1\. 核心机制
+
+-   Pair 先乐观转出 amount0Out / amount1Out 给 to
+    
+-   若 data 非空 → 调用 to.uniswapV2Call(sender, amount0, amount1, data)
+    
+-   回调结束 → 检查输入量 + 0.3% 费用是否满足调整后 K 值
+    
+-   原子性：成功归还 → 交易通过；否则 revert，一切回滚
+    
+
+### 2\. 使用场景
+
+-   **经典套利**：借大量 tokenA → 在其他 DEX/CEX 卖出获利 → 归还 tokenA + 费用（或等值 tokenB）
+    
+-   **清算循环**：借出抵押品 → 清算欠款头寸 → 获得清算奖金 → 归还借出 + 费用
+    
+-   **抵押品无滑点切换**：借出 A → 换成 B → 归还 A（实际用 B 支付），完成 A → B 抵押品转换
+    
+-   **价格操纵测试**：借大额 → 扭曲 spot price → 测试其他协议 oracle 鲁棒性
+    
+-   **杠杆 LP 再平衡**：借出一种代币 → 添加流动性 → 借出另一种 → 调整仓位
+    
+-   **原子多池路由**：在回调中调用其他 AMM 完成复杂路径交换
+    
+
+### 3\. 一个伪代码实现模板
+
+```
+contract FlashArbitrage is IUniswapV2Callee {
+    address public uniswapPair;
+    address public token0;
+    address public token1;
+
+    function executeFlashSwap(uint amount0, uint amount1, bytes calldata data) external {
+        // 发起 flash swap
+        IUniswapV2Pair(uniswapPair).swap(amount0, amount1, address(this), data);
+    }
+
+    function uniswapV2Call(
+        address sender,
+        uint amount0,
+        uint amount1,
+        bytes calldata data
+    ) external {
+        // 验证调用者是 Pair
+        require(msg.sender == uniswapPair, "not pair");
+
+        uint amountBorrowed = amount0 > 0 ? amount0 : amount1;
+        address borrowedToken = amount0 > 0 ? token0 : token1;
+
+        // 计算需归还（+0.3%）
+        uint fee = amountBorrowed * 3 / 997 + 1;  // 向上取整
+        uint repay = amountBorrowed + fee;
+
+        // 执行业务逻辑：e.g. 套利
+        // ... 调用其他 DEX swap, 获利 ...
+
+        // 归还（假设用 borrowedToken 归还）
+        IERC20(borrowedToken).transfer(uniswapPair, repay);
+
+        // 若有利润 → 转给 caller 或保留
+    }
+}
+```
+
+### 4\. 关键计算点和技巧
+
+-   精确归还：repay = amountBorrowed \* 1000 / 997 + 1（ceil 防精度丢失）
+    
+-   多方向归还：可归还另一种代币（相当于反向 swap）
+    
+-   gas 优化：在回调中避免不必要存储/事件
+    
+
+### 5\. 风险与防御
+
+-   **MEV**：sandwich 你的 flash swap → 用 private RPC 或 flashbots bundle
+    
+-   **流动性不足**：大额借出失败 → 检查 reserve 前预估
+    
+-   **回调漏洞**：reentrancy / 外部调用顺序 → 严格 Checks-Effects-Interactions
+    
+-   **费用累积**：多次 flash swap 会推高无常损失（对 LP）
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 ## Uniswap V2 的设计细节
 
 ### 1\. Core / Periphery 架构的深层意图
@@ -79,6 +170,7 @@ timezone: UTC+8
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 ## Uniswap V2 与 V3 关键差异
 
 ### 1\. 流动性模型
@@ -132,6 +224,7 @@ timezone: UTC+8
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 ## Uniswap V2 数学与不变量
@@ -215,6 +308,7 @@ timezone: UTC+8
 
 
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -284,6 +378,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -434,6 +529,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -465,6 +561,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -579,6 +676,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -662,6 +760,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -801,6 +900,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -914,6 +1014,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -956,6 +1057,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -971,6 +1073,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1025,6 +1128,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -1036,6 +1140,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
