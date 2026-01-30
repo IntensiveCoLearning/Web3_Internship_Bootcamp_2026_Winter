@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 ### Unexpected Ether Transfer (Forcing Feeding)
 
 一个合约被转ETH的时候，EVM会按固定优先级决定先调用receive（）还是fallback(),否则直接revert
@@ -188,6 +194,7 @@ k = 常数（池子创建时确定）
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -212,6 +219,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 ### **Signature—related attacks**
@@ -347,6 +355,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -432,11 +441,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -477,6 +488,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -525,6 +537,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -694,6 +707,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -889,6 +903,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -906,6 +921,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1152,6 +1168,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -1288,6 +1305,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
