@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+学习了solidity foundry的basic到send部分
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 今天没有学，一直在处理签证的问题，好烦啊，希望快点投入学习
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 多签钱包是指一个账户由多个所有者（Owners）共同管理。只有达到预设的确认数量（比如 3 人中的 2 人同意），交易才会真正执行。
 
@@ -50,6 +57,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 今天继续学习了有关solidity语法的有关知识，把官网上给的几个demo都给跑了一下
 
 学习agent的基本概念，了解了ReAct和一些模式，看了一下langgraph的文档
@@ -57,6 +65,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -69,11 +78,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 继续学习了简单的语法
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -204,6 +215,7 @@ contract FunctionsAndLocations {
 
 
 
+
 **1\. 核心概念**
 
 • **什么是质押 (Staking)**：将资金（ETH 或代币）锁定在一个智能合约中，就像把钱放入一台自动售货机。这是一种“去信任化”（Trustless）的机制，用户不需要信任某个人，只需要信任代码规则,。
@@ -234,6 +246,7 @@ contract FunctionsAndLocations {
 
 
 
+
 这一周主要在划水，准备期末考试复习
 
 等下一周考完后，就轻松不少了
@@ -241,6 +254,7 @@ contract FunctionsAndLocations {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -320,11 +334,13 @@ contract FunctionsAndLocations {
 
 
 
+
 听了律师的讲解，了解了目前国内的一些情况
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -350,6 +366,7 @@ contract FunctionsAndLocations {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
