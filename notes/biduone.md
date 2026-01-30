@@ -21,8 +21,77 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+# Hardhat实操
+
+## **启动服务节点**
+
+`pnpm hardhat node`
+
+## **编写合约**
+
+contracts/Counter.sol
+
+## **编译合约**
+
+`npx hardhat compile`
+
+## **部署合约**
+
+> **\--network localhost** 指部署在本地网络节点，也是上面启动的服务节点
+
+### **执行部署**
+
+-   用ignition部署 `pnpm hardhat ignition deploy ignition/modules/Counter.ts --network localhost`  
+    **\--OR--**
+    
+-   用script部署 `pnpm hardhat run scripts/deploy-counter.ts --build-profile production --network localhost`
+    
+
+### **部署结果**
+
+如果成功，在`服务节点`启动界面会显示`sendTransaction`\->`Contract deployment`
+
+```
+eth_sendTransaction
+  Contract deployment: Counter
+  Contract address:    0x5fbdb2315678afecb367f032d93f642f64180aa3
+  Transaction:         0x189fde1950feeb98be7a6153cd59a2b56da7a8a7b943290bf63ff044ff1ce5f3
+  From:                0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+  Value:               0 ETH
+  Gas used:            163811 of 163811
+  Block #1:            0x7678d6c4f7d6d7161c5191cd28dfb0947bd9d384f1c2808cb219b67cda4437cd
+```
+
+## **Hardhat Console**
+
+启动 console : `pnpm hardhat console --network localhost`
+
+### **验证合约部署状态**
+
+在 console 中**一行** \` **一行**的执行正面的代码, 最后会根据合约**输出5n**
+
+```
+const { ethers } = await network.connect();
+
+const counter = await ethers.getContractAt("Counter", "0x5FbDB2315678afecb367f032d93F642f64180aa3");
+
+await counter.number();
+```
+
+然后再执行正面的代码, 会**输出6n**
+
+```
+await connter.inc()
+
+await counter.number();
+```
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 **ERC-20** – 可替代代币标准
 
 **ERC-721** – NFT 标准
@@ -46,6 +115,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 ## **Uniswap-v3-periphery**
 
@@ -131,6 +201,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 # Uniswap
 
 ## core - **Factory**
@@ -197,6 +268,7 @@ v3默认支持三种手续费等级：0.05%、0.30%和1.00%，对应的fee值分
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -281,6 +353,7 @@ using SafeMath for uint256;
 
 
 
+
 ## 什么是投研？
 
 -   研究项目基本面
@@ -342,6 +415,7 @@ using SafeMath for uint256;
 
 
 
+
 # Foundry
 
 以命令行为主的Web3开发神器
@@ -385,6 +459,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -442,6 +517,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 
 
+
 # **零知识证明**
 
 ## **区块链投票**
@@ -486,6 +562,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -584,6 +661,7 @@ Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
 
 
 
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -645,6 +723,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -678,6 +757,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -766,6 +846,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -794,6 +875,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -885,6 +967,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -914,6 +997,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1032,6 +1116,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -1083,6 +1168,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1178,6 +1264,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
