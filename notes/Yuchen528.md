@@ -15,13 +15,20 @@ Yuchen
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+听了第三周例会~
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 听了今天两场会~
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 看了岗位hhh
 <!-- DAILY_CHECKIN_2026-01-27_END -->
@@ -30,11 +37,13 @@ Yuchen
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 今天学点啥呢~~~
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -49,6 +58,7 @@ Yuchen
 
 
 
+
 嘟嘟嘟嘟啦啦啦啦啦啊
 
 今天干嘛了呢，听了直播，没看别的了2333
@@ -56,6 +66,7 @@ Yuchen
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -76,6 +87,7 @@ Yuchen
 
 
 
+
 学习了社区运营指南
 
 看了一点合规安全
@@ -83,6 +95,7 @@ Yuchen
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -215,6 +228,7 @@ pragma solidity ^0.8.0; ---------版本声明
 
 
 
+
 岗位概览
 
 1.  技术岗
@@ -239,6 +253,7 @@ pragma solidity ^0.8.0; ---------版本声明
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -348,6 +363,7 @@ pragma solidity ^0.8.0; ---------版本声明
 
 
 
+
 Web3工作方式
 
 1.OKR写法与最佳实践：目标（Objectives）全团队公开可见，关键结果（Key Results）量化可追踪
@@ -396,6 +412,7 @@ Web3工作方式
 
 
 
+
 今天学习了以太坊核从账户到执行的完整链路，下载了钱包~
 
 行业赛道：
@@ -422,6 +439,7 @@ Web3工作方式
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -569,6 +587,7 @@ tips: 很迟的听了开营仪式hhh然后记录了一下emmmm
 
 
 
+
 -   Bitcoin & Ethereum
     
 
@@ -691,6 +710,7 @@ tips: 今天在实习没能完整的听完视频，只能先自己卡看文档�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
