@@ -31,13 +31,18 @@ Web3 实习计划 2025 冬季实习生
 
 应用的定位：商业盈利、基础设施
 
-用户人物画像，市场大小——》使用场景——》功能——》子功能（前端、后端和合约）——》功能开发——》
+开发：用户人物画像，市场大小——》使用场景——》功能——》子功能（前端、后端和合约）——》功能开发和验证
+
+演示视频：使用场景——》视频脚本（视频内容+字幕）——视频制作（拍摄和生成）——》后期
+
+演示PPT：背景——》内容（解决怎么样的痛点痒点问题、解决得怎么样）——》总结和期许
 
 ## 制作黑客松项目的PPT
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 # 总览
 
@@ -54,6 +59,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 # 总览
 
 把黑客松项目做完——  
@@ -64,6 +70,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -93,6 +100,7 @@ Vibe coding 一个DApp——Done
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -135,6 +143,7 @@ JS：交互方面的，input和output等。
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -196,6 +205,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 
 
+
 # 总览
 
 开了个会，尝试加入LXDAO。
@@ -205,6 +215,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -254,6 +265,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -355,6 +367,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 
 
+
 # 总览
 
 -   完成挑战 Challenge #0 - Tokenization
@@ -427,6 +440,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -582,6 +596,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 
 
+
 # 总览
 
 ### 提交任务
@@ -602,6 +617,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -769,6 +785,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -791,6 +808,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -852,6 +870,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -997,6 +1016,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1279,6 +1299,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -1387,6 +1408,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
