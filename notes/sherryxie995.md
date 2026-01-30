@@ -15,8 +15,85 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+## 1\. 区块链“不可能三角” (The Blockchain Trilemma)
+
+要理解扩容，首先要明白限制。以太坊等 Layer 1 (L1) 链始终在三个维度间权衡：
+
+-   **去中心化 (Decentralization)**：节点准入门槛低。
+    
+-   **安全性 (Security)**：共识机制难以被攻破。
+    
+-   **可扩展性 (Scalability)**：高 TPS（每秒交易数）。
+    
+
+目前主流 L1 倾向于牺牲“可扩展性”来保证前两者，因此我们需要 **Layer 2 (L2)**。
+
+* * *
+
+## 2\. Layer 2 核心机制：Rollups
+
+Rollup 的核心思想是：**链下计算交易，链上压缩存储**。它将成百上千笔交易“打包”成一个批次（Batch），只将最终的状态根（State Root）和必要数据上传到 L1。
+
+目前主要分为两大流派：
+
+### 1) Optimistic Rollups (乐观汇总)
+
+-   **原理**：默认所有交易都是合法的。
+    
+-   **安全保障**：设有“挑战期”（通常为 7 天）。任何人发现数据造假，可以提交 **欺诈证明 (Fraud Proof)**。
+    
+-   **代表作**：Optimism, Arbitrum。
+    
+
+### 2) ZK-Rollups (零知识汇总) —— 密码学者的主战场
+
+-   **原理**：每一批交易都附带一个**有效性证明 (Validity Proof)**。
+    
+-   **安全保障**：利用数学（而非博弈论）确保状态更新的正确性。L1 验证证明的时间复杂度远低于重新执行交易。
+    
+-   **代表作**：zkSync, Starknet, Scroll。
+    
+
+* * *
+
+## 3\. 零知识证明 (ZKP) 深度解析
+
+作为密码学专业的学生，你会发现 Web3 是 ZKP 最大的实验场。ZKP 允许“证明者”（Prover）向“验证者”（Verifier）证明某个命题为真，而不泄露任何额外信息。
+
+### ZKP 的三大特性
+
+1.  **完备性 (Completeness)**：如果命题为真，诚实的证明者一定能说服验证者。
+    
+2.  **可靠性 (Soundness)**：如果命题为假，欺骗性的证明者无法说服验证者。
+    
+3.  **零知识性 (Zero-knowledge)**：验证者除了知道命题为真外，学不到任何关于秘密（Witness）的信息。
+    
+
+### 核心技术对比：SNARKs vs. STARKs
+
+$$\\begin{array}{|l|l|l|} \\hline \\textbf{特性} & \\textbf{zk-SNARKs} & \\textbf{zk-STARKs} \\\\ \\hline \\text{全称} & \\text{Succinct Non-interactive Argument of Knowledge} & \\text{Scalable Transparent Argument of Knowledge} \\\\ \\hline \\text{可信设置 (Trusted Setup)} & \\text{需要（初始化参数）} & \\text{不需要（抗量子）} \\\\ \\hline \\text{证明大小} & \\text{极小 (约 288 bytes)} & \\text{较大 (约 100 KB)} \\\\ \\hline \\text{密码学原语} & \\text{椭圆曲线、双线性映射} & \\text{哈希函数 (Hash-based)} \\\\ \\hline \\end{array}$$
+
+* * *
+
+## 4\. 模块化区块链 (Modular Blockchain)
+
+Web3 的未来正从“单片链”（如旧版以太坊）转向模块化。
+
+-   **执行层 (Execution)**：处理交易（如 Arbitrum, zkSync）。
+    
+-   **结算层 (Settlement)**：解决争议、确定状态（如 Ethereum L1）。
+    
+-   **共识/数据可用性 (Consensus & DA)**：确保历史数据可查（如 Celestia, EigenDA）。
+    
+
+> **笔记总结**：Layer 2 是 Web3 走向大规模应用（Mass Adoption）的关键。而 ZKP 不仅仅是扩容手段，更是 Web3 实现隐私保护（Privacy）的终极武器。
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 ### 1\. Web3 的技术架构：它是怎么“跑”起来的？
 
 在 Web2 中，你的浏览器直接与中心化服务器（如 AWS）通信。在 Web3 中，架构变成了**前端 + 节点提供商 + 智能合约**。
@@ -100,6 +177,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 ### 1\. 核心引擎：智能合约 (Smart Contracts)
 
@@ -220,6 +298,7 @@ Web3 是“黑暗森林”，自由的代价是责任。请牢记：
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 ### 1.1 从 Web1 到 Web3：互联网权利的回归
 
 Web3 并非一个孤立的技术名词，它是互联网架构从“中心化”向“去中心化”演进的第三阶段。
@@ -282,6 +361,7 @@ C. 智能合约 (Smart Contract) — 自动化的法律
 
 
 
+
 三个最适合初学者的实战项目（CTF/Wargames）。它们像游戏闯关一样，每过一关，你的技术身价就涨一分。
 
 1\. Ethernaut (OpenZeppelin) —— “Web3 安全的初学者圣经”
@@ -337,6 +417,7 @@ Learn Smart Contract Auditing for Free: Best CTFs Compared
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -422,6 +503,7 @@ Web3 的整个大厦几乎全由以下三个支柱支撑：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -563,6 +645,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 
 
 
+
 ## 一、 Web3 为什么需要 ZK？
 
 在区块链上，ZK 主要解决两个核心矛盾：
@@ -614,6 +697,7 @@ Solidity 提供了一些神奇的全局变量，让你感知区块链的状态�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -687,6 +771,7 @@ Web3 运营更关注**链上数据**，因为这是无法作假的：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -811,6 +896,7 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ## 一、 Web3 的核心哲学
 
 与 Web1（Read）和 Web2（Read-Write）不同，Web3 的关键词是 **Read-Write-Own（读-写-拥有）**。
@@ -903,11 +989,13 @@ Web3 领域的“黑客攻击”大多源于逻辑漏洞而非算法破解：
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742959404-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768742991638-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sherryxie995/images/2026-01-18-1768743013349-image.png)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1158,6 +1246,7 @@ ConstitutionDAO 发起众筹
 
 
 
+
 ### 1.智能合约
 
 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期 的“矿工（PoW）”时代完全过渡到“验证者（PoS）”时代，这些验证者负责打 包并执行合约。任何想要执行合约的人，都需要支付 Gas 作为手续费。
@@ -1229,6 +1318,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1480,6 +1570,7 @@ Proto-Danksharding （原型丹克分片，EIP-4844）已 在 2024 年 3 月 13 
 
 
 
+
 # **区块链的演变**
 
 每个主要的区块链都代表了不同的工程决策和权衡，这些决策和权衡受我们所了解的基本约束所影响。
@@ -1612,6 +1703,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1771,6 +1863,7 @@ Solana 的结果是能够处理每秒超过 5,000 笔交易（TPS），而以太
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
