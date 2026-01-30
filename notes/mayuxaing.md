@@ -15,8 +15,168 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+\## 滑点与价格冲击
+
+**滑点**就是：\*\*“你预期的价格”\*\* 和 **“实际成交的更差价格”** 之间的差额。
+
+**“价格冲击” (Price Impact)**：因为你交易量太大、导致价格向你不利方向移动的现象 。
+
+!\[\[图库/48ba090c547fa957826d56cf1be95028\_MD5.jpg\]\]
+
+这就是传说中的 **Uniswap V2 联合曲线 (Bonding Curve)**。这张图不仅仅是一条数学曲线，它是 DeFi 世界的“物理定律”。
+
+\- 绿点 (Start)：
+
+这是我们的初始状态。池子里有 10 ETH 和 20,000 USDT。
+
+($10 \\times 20,000 = 200,000$)
+
+\- 红点 (End)：
+
+这是你刚才“大额买入 5 ETH”后的状态。
+
+你看，为了维持 $k$ 不变，当你把 ETH 的库存从 10 买到剩 5 时，USDT 的库存被迫从 20,000 飙升到了 40,000（你需要支付 20,000 USDT！）。
+
+\- 红色的箭头：
+
+这就是“交易”。
+
+在 Uniswap 里，交易不是握手，而是滑滑梯。
+
+你只是推动池子的状态点，沿着这条光滑的曲线移动。
+
+\- **买入 ETH** = 向左上方移动（ETH 变少，USDT 变多）。
+
+\- **卖出 ETH** = 向右下方移动（ETH 变多，USDT 变少）。
+
+\---
+
+\### 实战算账：深池 vs. 浅池的数值推演
+
+根据你的 Checklist，我们要计算在不同 TVL (Total Value Locked) 下，购买等量资产的惨烈对比。
+
+**场景设定：**
+
+\- **你的任务：** 购买 **10,000 USDT** 等值的 ETH。
+
+\- **当前价格：** 1 ETH = 2,000 USDT。
+
+\#### 🦈 场景 A：浅池子 (Shallow Pool)
+
+\- **池子状态：** 10 ETH + 20,000 USDT ($k = 200,000$)。
+
+\- **池子总价值：** $40,000 (Very Low)
+
+\- **你的行为：** 投入 **10,000 USDT** 购买 ETH。
+
+**计算：**
+
+1\. **投入前：** $y = 20,000$。
+
+2\. **投入后：** $y\_{new} = 30,000$。
+
+3\. **新的 ETH 余额：** $x\_{new} = k / 30,000 = 200,000 / 30,000 = 6.66$ ETH。
+
+4\. **你买到的 ETH：** $10 - 6.66 = \\mathbf{3.33\\ ETH}$。
+
+5\. **实际成交价：** $10,000 / 3.33 = \\mathbf{3,003\\ USDT/ETH}$。
+
+6\. **价格冲击：** $(3003 - 2000) / 2000 \\approx \\mathbf{50\\%}$。
+
+\- _你直接把价格买崩了 50%！亏损一半本金。_
+
+\#### 🐋 场景 B：深池子 (Deep Pool)
+
+\- **池子状态：** 10,000 ETH + 20,000,000 USDT ($k = 2 \\times 10^{11}$)。
+
+\- **池子总价值：** $40,000,000 (High)
+
+\- **你的行为：** 投入 **10,000 USDT** 购买 ETH。
+
+**计算：**
+
+1\. **投入前：** $y = 20,000,000$。
+
+2\. **投入后：** $y\_{new} = 20,010,000$。
+
+3\. **新的 ETH 余额：** $x\_{new} = k / 20,010,000 \\approx 9,995.002$ ETH。
+
+4\. **你买到的 ETH：** $10,000 - 9,995.002 = \\mathbf{4.998\\ ETH}$。
+
+5\. **实际成交价：** $10,000 / 4.998 \\approx \\mathbf{2,000.8\\ USDT/ETH}$。
+
+6\. **价格冲击：** $(2000.8 - 2000) / 2000 = \\mathbf{0.04\\%}$。
+
+\- _几乎无感。_
+
+\---
+
+\### 安全工程师的“黑暗森林”视角
+
+为什么要特意算这个？因为 **Flash Loan (闪电贷)**。
+
+黑客没有几千万美金的本金，但他可以借。
+
+如果黑客借来 1 亿美金，对着一个中等深度的池子（比如某个山寨币池子）砸进去：
+
+1\. **制造价格冲击：** 瞬间把价格从 $1 拉升到 $100。
+
+2\. **外部获利：** 在另一个借贷协议（比如 Aave 的分叉版）里，用这个山寨币做抵押。
+
+3\. **借贷协议的预言机**看到了 Uniswap 的价格 $100，误以为这个币很值钱。
+
+4\. **借空资金：** 允许黑客借出巨额的 ETH/USDT。
+
+5\. **跑路：** 黑客还掉闪电贷，带着借出来的真金白银消失。
+
+这就是 **Oracle Manipulation Attack** 的核心原理：\*\*利用资金量制造 Price Impact，扭曲现实。\*\*  
+  
+\### Code Anchor: `getAmountsOut`
+
+在代码里，Router 合约会帮你计算这笔账。作为开发者，你必须知道这个函数。
+
+\`\`\`Solidity
+
+// UniswapV2Router02.sol
+
+function getAmountsOut(uint amountIn, address\[\] memory path)
+
+public
+
+view
+
+returns (uint\[\] memory amounts)
+
+{
+
+// ... 前置逻辑 ...
+
+// 这里就是核心：根据输入金额，递归计算能换出多少钱
+
+// 它使用的是 getAmountOut 函数（基于 xy=k）
+
+for (uint i; i < path.length - 1; i++) {
+
+(uint reserveIn, uint reserveOut) = getReserves(path\[i\], path\[i + 1\]);
+
+amounts\[i + 1\] = getAmountOut(amounts\[i\], reserveIn, reserveOut);
+
+}
+
+}
+
+\`\`\`
+
+安全审计点：
+
+如果一个 DeFi 协议直接依赖 getAmountsOut 的返回值作为“价格预言机”，那么它100% 会被黑掉。因为 getAmountsOut 反映的是当前瞬间的价格，极易被闪电贷操纵。
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 \### 3.实战模拟
 
 **场景设定：**
@@ -171,6 +331,7 @@ ETH 涨了，你虽然赚了（从 4万 变成了 5.6万），但你跑输了大
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 Uniswp是一个去中心化交易所，所谓去中心化，可以从以下两个方面理解：
 
 ●交易全部是由开源的代码来控制，没有任何人为的因素
@@ -262,6 +423,7 @@ $$\\Delta y = \\frac{y \\cdot \\Delta x\_{with\\\_fee}}{x + \\Delta x\_{with\\\_
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 \# Scaffold-ETH 2
@@ -680,6 +842,7 @@ messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5
 
 
 
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -823,6 +986,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1057,6 +1221,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -1135,6 +1300,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1431,6 +1597,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -1476,6 +1643,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1598,6 +1766,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -1683,6 +1852,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1786,6 +1956,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1928,6 +2099,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -2029,6 +2201,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2191,6 +2364,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
