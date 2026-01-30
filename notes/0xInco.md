@@ -17,17 +17,19 @@ X: @0xInco
 <!-- Content_START -->
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
-in case 忘记...
+周会打个卡……经历了忙碌的一周，感觉第二期共学能学的好多啊但是没空了...生不逢时
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 昨天忘记了…其实昨天也听了 Ye 老师讲的内容，今天倒是没听但也没准备做黑客松...
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -46,11 +48,13 @@ in case 忘记...
 
 
 
+
 系统梳理了一遍 vibe coding 和投研框架，还是有些收获的，争取尽量挤时间搞作业吧
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -337,6 +341,7 @@ in case 忘记...
 
 
 
+
 听了会儿 CryptoTalk 晚上也刷了下 X 看到 USD1 的事，继续捣鼓 LOB 去了
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
@@ -349,11 +354,13 @@ in case 忘记...
 
 
 
+
 稍微听了会周会，有关 AI workflow 的内容，明天得去做作业了hhh好多天没弄了
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -376,11 +383,13 @@ in case 忘记...
 
 
 
+
 打卡了下 uniswap 解析，然后再听了会休闲黑客松的介绍hhhh，继续忙一下自己事去了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -407,11 +416,13 @@ in case 忘记...
 
 
 
+
 今天听了 Luna 老师关于社区运营基础与活动策划的分享，再次复习了下 Telegram 群聊的创建和运营功能等等
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -535,6 +546,7 @@ in case 忘记...
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -824,6 +836,7 @@ Funding 在实践中往往被用作拥挤度 proxy：
 
 
 
+
 今天听了一会儿分享会吧后边有事儿就下了，明天去补听一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -844,11 +857,13 @@ Funding 在实践中往往被用作拥挤度 proxy：
 
 
 
+
 Rick 老师今天分享了一些 AI 概念和 Web3 的应用，比如落实到 agent 和链交互，后续会再研究研究。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -889,11 +904,13 @@ Rick 老师今天分享了一些 AI 概念和 Web3 的应用，比如落实到 a
 
 
 
+
 今天又听了一遍 Web3 基础知识分享吧 hhhh，大致还是记得内容的。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
