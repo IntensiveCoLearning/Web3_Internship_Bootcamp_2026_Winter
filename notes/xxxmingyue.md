@@ -15,8 +15,188 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+\# level1
+
+这里主要是对于相关操作的教程，照着做就可以了
+
+\# Fallback
+
+这关主要考验的是对于内部和外部函数的调用以及fallback函数的认识
+
+目标：将自己变为owner
+
+消耗完对应的balance
+
+合约代码
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract Fallback {
+
+mapping(address => uint256) public contributions;
+
+address public owner;
+
+constructor() {
+
+owner = msg.sender;
+
+contributions\[msg.sender\] = 1000 \* (1 ether);
+
+}
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "caller is not the owner");
+
+\_;
+
+}
+
+function contribute() public payable {
+
+require(msg.value < 0.001 ether);
+
+contributions\[msg.sender\] += msg.value;
+
+if (contributions\[msg.sender\] > contributions\[owner\]) {
+
+owner = msg.sender;
+
+}
+
+}
+
+function getContribution() public view returns (uint256) {
+
+return contributions\[msg.sender\];
+
+}
+
+function withdraw() public onlyOwner {
+
+payable(owner).transfer(address(this).balance);
+
+}
+
+receive() external payable {
+
+require(msg.value > 0 && contributions\[msg.sender\] > 0);
+
+owner = msg.sender;
+
+}
+
+}
+
+\`\`\`
+
+关键点在于：
+
+1\. 通过contribute函数存入一点的金额
+
+2\. 通过外部调用receive，将owner改为自己，然后提走存款
+
+原理：
+
+当发起外部调用，并且没有指定任何函数时，默认接受函数为receive，如果没有receive的话，则到fallback
+
+\>tips:外部转账直接通过钱包向该合约地址发起一笔交易即可
+
+然后查看owner，可以看到变成了自己
+
+再调用withdraw函数，提走所有的余额
+
+\# fallout
+
+目标：
+
+拿到合约的控制权
+
+查看合约代码：
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.6.0;
+
+import "openzeppelin-contracts-06/math/SafeMath.sol";
+
+contract Fallout {
+
+using SafeMath for uint256;
+
+mapping(address => uint256) allocations;
+
+address payable public owner;
+
+/\* constructor \*/
+
+function Fal1out() public payable {
+
+owner = msg.sender;
+
+allocations\[owner\] = msg.value;
+
+}
+
+modifier onlyOwner() {
+
+require(msg.sender == owner, "caller is not the owner");
+
+\_;
+
+}
+
+function allocate() public payable {
+
+allocations\[msg.sender\] = allocations\[msg.sender\].add(msg.value);
+
+}
+
+function sendAllocation(address payable allocator) public {
+
+require(allocations\[allocator\] > 0);
+
+allocator.transfer(allocations\[allocator\]);
+
+}
+
+function collectAllocations() public onlyOwner {
+
+msg.sender.transfer(address(this).balance);
+
+}
+
+function allocatorBalance(address allocator) public view returns (uint256) {
+
+return allocations\[allocator\];
+
+}
+
+}
+
+\`\`\`
+
+这道题的关键点在于定义了构造函数，但是命名为Fal\*\*1\*\*out，导致无法正确调用且没用修饰符限定只能调用一次
+
+导致任何人都可以调用这个fallout函数，修改对应的所有权
+
+如下过程所示：
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/xxxmingyue/images/2026-01-30-1769782828334-image.png)
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 今天主要学习了Polymarket的数据结构：  
   
   
@@ -117,6 +297,7 @@ orderfilled
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 Polymarket 的数据架构建立在 Polygon 区块链和 **Gnosis 条件代币框架 (Conditional Token Framework, CTF)** 之上，采用了一种分层级、确定性的链上数据模型。
 
@@ -225,6 +406,7 @@ Polymarket 的动态数据通过一系列链上事件（Logs）串联成完整�
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 # 体验了 MyFirstZKVote
 
 ### 1\. 核心目标：我们要解决什么问题？
@@ -307,6 +489,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 
 
 
+
 今天学习到了最重要的是如何做好投研？  
 一个好的投研需要包含：技术背景、团队背景、代币经济学、宏观政策和叙事  
   
@@ -360,6 +543,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 
 
 
+
 最近这段时间，不管是运营端还是技术端的深挖，体感上收获都挺大的。复盘了一下，大概分为这两个板块：
 
 1\. 运营实战：
@@ -383,6 +567,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -433,6 +618,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 
 
+
 一次性将之前创作的链上安全的文章都更新上去了
 
 今天Secret同学的分享对我来说很有感悟：
@@ -444,6 +630,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -488,6 +675,7 @@ ORDER BY block_time DESC
 
 
 
+
 # 学习运营相关知识
 
 Telegram 如何运营？  
@@ -517,6 +705,7 @@ Figma 如何使用？
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -649,6 +838,7 @@ Arweave：提供“永久存储”服务，一次付费永久保存；
 
 
 
+
 # 从 ERC-721 到 ERC-7962
 
 这是我让大模型解析文档得到的：
@@ -748,6 +938,7 @@ ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -904,6 +1095,7 @@ SEO + 邮件订阅
 
 
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -965,6 +1157,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1144,6 +1337,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -1157,6 +1351,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1216,6 +1411,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
