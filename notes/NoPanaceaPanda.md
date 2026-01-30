@@ -15,8 +15,100 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+黑客松（Hackathon）是技术、创意与协作的极限挑战。以下是核心知识点和备赛指南，助你高效备赛：
+
+**一、核心技能矩阵**
+
+1\. **技术栈（根据主题选择）**
+
+\- **Web开发**：React/Vue + Node.js/Express + 数据库（PostgreSQL/MongoDB）
+
+\- **移动端**：Flutter/React Native（跨平台）或 Swift/Kotlin（原生）
+
+\- **AI/数据科学**：Python + Pandas/Scikit-learn + TensorFlow/PyTorch + 可视化（Matplotlib/D3.js）
+
+\- **区块链**：Solidity + Web3.js + 智能合约开发框架（Hardhat）
+
+\- **硬件/IoT**：Arduino/Raspberry Pi + 传感器集成 + 基础电路知识
+
+2\. **工具链必备**
+
+\- **协作工具**：GitHub/GitLab（分支管理）、Figma（原型设计）
+
+\- **部署与云服务**：Vercel/Netlify（前端）、Railway/AWS（后端）、Docker（环境容器化）
+
+\- **API与数据源**：公开API列表（如 government open data）、爬虫技巧（Python requests/BeautifulSoup）
+
+\---
+
+\### **二、备赛流程拆解**
+
+1\. **赛前准备（1-2周）**
+
+\- 组队平衡（开发/设计/演讲者）
+
+\- 技术栈统一和环境预配置
+
+\- 往届获奖项目分析（Devpost等平台）
+
+2\. **比赛阶段（24-48小时）**
+
+\- **前2小时**：明确问题 → 头脑风暴 → 确定MVP范围
+
+\- **开发周期**：敏捷开发（每4小时同步进度）、版本控制（每日至少2次合并）
+
+\- **最后4小时**：整合测试 → 准备演示稿 → 录制演示视频备胎
+
+3\. **评审关键点**
+
+\- **创新性**：解决真实痛点的独特角度
+
+\- **技术实现**：代码结构、技术难度、完整性
+
+\- **用户体验**：界面交互流畅度
+
+\- **商业潜力**：落地可行性、市场价值
+
+\---
+
+**三、常见陷阱与对策**
+
+1\. **范围蔓延**：坚持MVP原则，用“需求优先级矩阵”过滤功能
+
+2\. **技术债堆积**：早期制定代码规范，避免最后一小时重构
+
+3\. **演示失误**：准备3分钟精简版演讲，重点展示用户场景
+
+\---
+
+\### **四、资源加速包**
+
+\- **创意灵感**：联合国可持续发展目标、GitHub热门开源问题
+
+\- **开发模板**：全栈Starter Kit（如Next.js + Tailwind模板）
+
+\- **免费资源**：Figma社区UI套件、AWS Educate云额度、Twilio免费API额度
+
+\---
+
+**五、赛后进阶**
+
+\- 项目持续迭代（开源或申请孵化器）
+
+\- 技术复盘文档（团队知识沉淀）
+
+\- 建立黑客松作品集（技术博客+GitHub归档）
+
+**关键要诀**：黑客松本质是“用技术讲故事”，清晰的问题定义和流畅的演示比复杂技术更重要。保持灵活、快速验证，享受创造过程！
+
+根据你的技术方向或具体需求，我可以进一步深入某个领域的备赛策略。
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 Wednesday, January 28, 2026
 
 \# **BIP-39 知识点详解笔记**
@@ -203,6 +295,7 @@ Wednesday, January 28, 2026
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 Tuesday, January 27, 2026, 20:00-21:00 CST
 
 ### **1\. 使用密码管理器**
@@ -280,6 +373,7 @@ Tuesday, January 27, 2026, 20:00-21:00 CST
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 Monday, January 26, 2026
 
 写了一个教学用碰撞器，主要目的学习加密安全性。
@@ -289,6 +383,7 @@ Monday, January 26, 2026
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -493,6 +588,7 @@ Sunday, January 25, 2026
 
 
 
+
 Saturday, January 24, 2026
 
   
@@ -519,6 +615,7 @@ Saturday, January 24, 2026
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -556,6 +653,7 @@ Web3 常被称为 **下一代互联网**，其核心理念是构建一个 **“�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -626,6 +724,7 @@ Thursday, January 22, 2026
 
 
 
+
 Wednesday, January 21, 2026
 
 ## **Uniswap 与无常损失：一次价值重分配的切身体会**
@@ -663,6 +762,7 @@ Wednesday, January 21, 2026
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -733,6 +833,7 @@ Tuesday, January 20, 2026
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -813,6 +914,7 @@ Monday, January 19, 2026
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -921,6 +1023,7 @@ ERC-7962 是一种**以公钥哈希代表所有权**的隐私代币标准，通�
 
 
 
+
 Saturday, January 17
 
 今天学习Remix IDE通识课程的时候发现了一位宝藏UP主
@@ -969,6 +1072,7 @@ Saturday, January 17
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1059,6 +1163,7 @@ Friday, January 16, 2026, 20:00-21:00 CST
 
 
 
+
 Thursday, January 15, 2026, 20:00-21:00 CST
 
 “AI及其基础概念分享会”
@@ -1072,6 +1177,7 @@ Thursday, January 15, 2026, 20:00-21:00 CST
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1168,6 +1274,7 @@ Wednesday, January 14, 2026, 19:00-20:30 CST
 
 
 
+
 Tuesday, January 13, 2026, 20:00-21:00 CST
 
 **“Web3运行原理”笔记与思考：**
@@ -1195,6 +1302,7 @@ Tuesday, January 13, 2026, 20:00-21:00 CST
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
