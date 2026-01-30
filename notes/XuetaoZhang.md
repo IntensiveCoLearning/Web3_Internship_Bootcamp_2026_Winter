@@ -15,8 +15,22 @@ web2转web3学习者，前端开发
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+今日完成：
+
+1、solidity-by-example，application部分跟敲20%；
+
+2、黑客松组队，分工和时间线；  
+今日思考：
+
+1、黑客松组队队友很重要，跟着大佬能喝汤，即使先涨videcoding已成为主流，那也需要懂技术的去解决问题；  
+2、下次抓一个合约技术大佬，补一下自己短板；
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 今日完成：
 
 1、solidity-by-example跟敲完成20%；
@@ -30,6 +44,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 今日完成：
 
@@ -46,6 +61,7 @@ web2转web3学习者，前端开发
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 今日完成：
 
 1、solidity-by-example，在remix跟敲basic部分完成100%；
@@ -57,6 +73,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -77,6 +94,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、**在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码，完成60%；**  
@@ -91,6 +109,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -122,6 +141,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、[Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分完成50%
@@ -133,6 +153,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -167,6 +188,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1：今日完成实习手册智能合约开发solididy智能合约编程部分和智能合约项目学习和实践；
@@ -178,6 +200,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -216,6 +239,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、收看web3全局行业介绍；
@@ -229,6 +253,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -255,6 +280,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -299,6 +325,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、1.13线上co Learning收听学习；
@@ -314,6 +341,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
