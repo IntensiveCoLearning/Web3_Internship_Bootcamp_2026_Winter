@@ -15,8 +15,229 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-29
+<!-- DAILY_CHECKIN_2026-01-29_START -->
+## 1) 为什么要跑自己的 L1 节点（GETH / Nethermind 等）
+
+### 核心动机
+
+-   **Infura 是“API 服务”**：方便但可能有 **延迟、限流、额外校验**（所以有时会比你自己的节点慢）。
+    
+-   **自建节点 = 更去中心化 + 更快读链 + 更多权限**（如 mempool 观察）。
+    
+-   **Client diversity（客户端多样性）**：如果全网都跑同一客户端，出现 bug 会“全网一起崩”。所以 Geth / Nethermind / Erigon 等多客户端很重要。
+    
+
+### 同步模式概念（记大方向就行）
+
+-   **Archive node**：存历史所有状态（最重，TB 级）。
+    
+-   **Full node**：验证全网状态，但不保留每个历史状态快照（比 archive 轻很多）。
+    
+-   **Light sync**：更快上手，但信息/验证更有限（适合入门演示、轻量查询）。
+    
+
+### 你看到的现象说明什么
+
+-   日志里 **peer count 从 0→1→2**：说明开始连到 P2P 网络。
+    
+-   当节点同步好后，会变成 **“一次一个新块”**的节奏（这才像“同步完成后在跟随最新链”）。
+    
+
+* * *
+
+## 2) 用本地节点读链更快：RPC 切换
+
+### 关键点
+
+-   你原来脚本调用 Infura：`https://...infura...`
+    
+-   换成自己的节点：`http://localhost:8545`
+    
+
+### 为什么会出现“本地节点比 Infura 先看到新块”
+
+-   P2P 广播你可能更快接到块
+    
+-   Infura 可能等多个节点确认或做额外处理再返回
+    
+
+* * *
+
+## 3) Indexer 是什么（为什么很多东西不能直接“问链”）
+
+你提到的“想看某地址全部交易”这类需求：
+
+-   区块链数据按 **区块→交易列表**存储
+    
+-   要拿某用户所有交易，你得 **扫很多块并过滤 to/from**
+    
+-   所以现实里会有 **Indexer（索引服务）**：提前爬链、建索引，给你“像数据库一样好查”的接口  
+    但很多 indexer 又是中心化服务（可靠性/攻击面）。
+    
+
+* * *
+
+## 4) Hardhat 是什么（不只是本地链）
+
+Hardhat = **本地链 + 编译 + 部署 + 测试 + 脚本编排** 的一整套开发工具链。
+
+你们强调了：
+
+-   不只是“跑链”，还负责 **把 Solidity 编译成 bytecode、部署、运行测试**。
+    
+-   很多框架会把 Hardhat 藏在更高层（比如 Scaffold-ETH），但理解底层很重要。
+    
+
+* * *
+
+## 5) Hardhat 两个网络：最容易搞混的坑
+
+### ① `hardhat`（默认网络 / ephemeral）
+
+-   **命令一跑就临时起链**，脚本/测试结束就没了
+    
+-   适合 **测试（每次干净环境）**
+    
+
+### ② `localhost`（你手动 `npx hardhat node` 跑起来的持久链）
+
+-   你开着 node，它就一直在
+    
+-   适合 **手动调试、复制合约地址反复交互**
+    
+
+### 你们的“aha moment”
+
+-   你直接 `node scripts/xxx.js` 跑脚本时，它未必连到你想要的网络
+    
+-   `npx hardhat run --network localhost scripts/xxx.js` 才明确连到你开的本地链
+    
+
+✅ 结论：**脚本/测试跑到哪条链，完全取决于 hardhat 的 network 配置或命令参数。**
+
+* * *
+
+## 6) Hardhat 预置账户（超级重要的安全点）
+
+Hardhat node 会给出一组 **固定、人人都一样** 的账户和私钥：
+
+-   本地用没问题（反正是假链）
+    
+-   **绝对不要**把这些账户拿去测试网/主网收钱或部署  
+    因为私钥是公开的，会被机器人秒抢
+    
+
+你们还提到：
+
+-   真的有人把钱打到这些“众所周知”的私钥地址 → 会被 bot 抽干
+    
+
+* * *
+
+## 7) Solidity 合约入门：状态变量不是“内存变量”
+
+以 Greeter 合约为例：
+
+-   `string greeting;` 是 **状态变量（storage）**
+    
+-   写入它（`setGreeting`）是 **链上状态改变** → 必须发交易、要 gas
+    
+-   读取它（`greet()`）是 **读链** → 一般是 call，不花 gas（本地模拟）
+    
+
+关键理解：
+
+> 合约代码 + 状态 = 全网每个节点都保存一份，你改一次状态等于全网一起改。
+
+* * *
+
+## 8) 部署与 artifacts：ABI + Bytecode
+
+编译/部署后会生成 `artifacts/.../Greeter.json`，里面最关键两块：
+
+-   **ABI**：告诉前端/脚本“有哪些函数、怎么调用、参数是什么”
+    
+-   **Bytecode**：真正上链的“机器码”
+    
+
+你们看到了 bytecode 开头 `0x6080...` 这种典型 EVM 字节码格式。
+
+* * *
+
+## 9) console.log 调试：本地爽，但上公链别依赖
+
+Hardhat 支持 Solidity 里 `console.log`（非常方便调试）。  
+但上测试网/主网时：
+
+-   这东西不是“链原生标准”，依赖开发环境注入
+    
+-   一般部署前要去掉（否则会不合适/带来额外开销或无法工作）
+    
+
+* * *
+
+## 10) 自动挖矿 automine：为什么本地“你发交易才出块”
+
+Hardhat 默认 **automine=true**：
+
+-   你一发交易 → 立刻挖一个块把它打包
+    
+-   所以时间戳/区块高度的变化会跟交易节奏绑定
+    
+
+如果要模拟真实网络（例如每 15 秒一个块），可以改配置让它定时挖矿。
+
+* * *
+
+## 11) 测试：为什么要用 ephemeral 网络
+
+你们用 `npx hardhat test`：
+
+-   它会在 **ephemeral hardhat network** 上自动部署、跑断言、跑完销毁
+    
+-   好处：每次测试都干净，不被你本地“乱部署”的状态污染
+    
+
+你们还演示了：
+
+-   加了 `locked` + `require(unlocked, "...")` 后测试失败
+    
+-   通过新增 `toggleUnlock()` 修复逻辑，再更新测试通过
+    
+
+### require 的本质
+
+-   类似断言/守卫条件（像 `assert`）
+    
+-   不满足就 **revert**（交易失败，状态回滚）
+    
+
+* * *
+
+## 12) 部署到测试网 + 验证（Etherscan Verify）
+
+你们讲了部署到 Rinkeby（注意：这段视频可能是旧时期背景）的大流程概念：
+
+1.  hardhat.config.js 里配 network（RPC url + accounts 私钥/助记词）
+    
+2.  `npx hardhat run --network <testnet> scripts/deploy.js`
+    
+3.  Etherscan 上能看到合约地址，但默认只显示 bytecode
+    
+4.  **Verify** 后，Etherscan 才显示 Solidity 源码、可读 ABI、可直接在网页交互
+    
+
+也强调了两点安全常识：
+
+-   **security through obscurity 不成立**：不 verify 也能被反编译分析
+    
+-   `private` 变量不是“链上私密”，只是 Solidity 访问控制层面的“对其他合约/继承不可见”，链上存储依然可读（通过 storage slot 等方式）。
+<!-- DAILY_CHECKIN_2026-01-29_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 ## 1) 这一节的核心目标：学会 “tinkering”
 
 **tinkering = 小步迭代**：写一点 Solidity → 部署 → 点点/跑脚本/写测试 → 看结果 → 再改。  
@@ -275,6 +496,7 @@ emit Buy(msg.sender, 1);
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
+
 ## 一、Foundry 是什么（一句话）
 
 **Foundry = 用 Rust 写的以 CLI 为核心的以太坊开发工具链**  
@@ -494,6 +716,7 @@ cast 交互 & 调试
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 ## 1) Scaffold-ETH 是什么（核心卖点）
 
 -   **一句话**：Scaffold-ETH 是一个“本地链 + 合约开发 + 前端自动生成/适配”的全套 dApp 模板
@@ -705,6 +928,7 @@ cast 交互 & 调试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1058,6 +1282,7 @@ require(ok);
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1427,6 +1652,7 @@ require(tx.origin == msg.sender);
 
 
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -1682,6 +1908,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2125,6 +2352,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -2222,6 +2450,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2404,6 +2633,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -2511,6 +2741,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3423,6 +3654,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -3598,6 +3830,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -3718,6 +3951,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4606,6 +4840,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
