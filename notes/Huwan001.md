@@ -16,14 +16,182 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+今日參與分享會，前面有一段沒有參與到，後面的總結
+
+### 1.Chainlink VRF 真隨機數實作
+
+-   使用 **BSC 測試網** 示範 Chainlink VRF（隨機數預言機）
+    
+-   合約流程：
+    
+    -   部署合約 → 設定 VRF Wrapper 與 LINK Token 地址
+        
+    -   合約需先持有 LINK 才能請求隨機數
+        
+    -   `requestRandomWords` 發送請求 → callback 回傳隨機數
+        
+    -   透過 mapping 紀錄 requestId 與狀態（fulfilled / result）
+        
+-   支援 **LINK 支付** 或 **BNB 原生代幣支付**
+    
+
+**重點價值**
+
+-   解決鏈上「假隨機數」問題
+    
+-   提升專案公平性與專業度
+    
+-   適用於抽獎、遊戲、NFT mint 等場景
+    
+
+### 2\. Multicall 心智模型與安全設計
+
+**核心概念**
+
+-   Multicall 分為兩類：
+    
+    -   **讀聚合（Read Aggregation）**
+        
+        -   解決 RPC 多次請求慢、資料不一致
+            
+        -   不省 gas（因為 call 本來不花 gas），省的是「網路往返時間」
+            
+    -   **寫聚合（Write Aggregation）**
+        
+        -   多步交易一次完成
+            
+        -   強調「**原子性**」：一步失敗，全部回滾
+            
+
+**call vs delegatecall**
+
+-   `call`：改「被呼叫合約」的 storage
+    
+-   `delegatecall`：用別人的 code，改「自己合約」的 storage（高風險）
+    
+
+**重要安全提醒**
+
+-   Multicall 中 **不可盲信** `msg.value`
+    
+-   delegatecall 僅適合「完全可控的邏輯邊界」
+    
+-   歷史上曾因 ERC2771 context 誤用造成漏洞
+    
+
+### 3\. Foundry（Forge / Cast）實戰分享
+
+**為何選 Foundry**
+
+-   Rust 編寫，效能佳、無 GC
+    
+-   CLI 操作，部署與測試更直接
+    
+-   相較 Hardhat（Node.js + JS 腳本）更輕量
+    
+
+**實作內容**
+
+-   使用 `anvil` 啟動本地鏈（10 組帳號）
+    
+-   `forge create` 部署 Counter 合約
+    
+-   `cast` 工具用途：
+    
+    -   查交易（tx）
+        
+    -   查餘額（balance）
+        
+    -   call 讀資料（不發交易）
+        
+    -   send 寫資料（需私鑰）
+        
+
+**適合族群**
+
+-   合約新手
+    
+-   偏後端 / CLI 操作取向開發者
+    
+
+### 4.Web3 專題思考分享
+
+**主題一：去中心化 AI**
+
+-   以 **Bittensor / Bitmonk** 為例
+    
+-   Subnet 機制：任何人可建立子網、參與訓練或驗證
+    
+-   關注「去中心化 vs AI 寡頭化」的結構性問題
+    
+
+**主題二：RWA + 卡牌 / IP 商業**
+
+-   Web2 卡牌產業痛點（供應、審查、流通）
+    
+-   Web3（RWA）可精準解決部分結構問題
+    
+-   重點不在發幣，而在商業模式是否被優化
+    
+
+**主題三：音樂 × Web3**
+
+-   音樂作為「非物質資產」天然適合 Web3
+    
+-   探討音樂代幣化、可交易衍生品的可能性
+    
+-   提及 BeetSwap、Auro Proto 等新嘗試（高風險、早期）
+    
+
+### 本週與下週安排
+
+-   **本週：崗位對接週**
+    
+    -   提交：履歷 / 作品集 / 職涯規劃
+        
+    -   導師將以「招聘官視角」給回饋
+        
+-   **後天開始 Demo**
+    
+-   **下週**
+    
+    -   技術學習量較少
+        
+    -   重點轉向：履歷優化、求職指導
+        
+
+### 求職建議
+
+-   履歷命名、內容打磨完成後「大膽投」
+    
+-   多關注群內老師發布的職缺（部分截止很快）
+    
+
+### 社群與良心道（DAO）
+
+-   可自由選擇是否加入
+    
+-   參與週會可累積：
+    
+    -   專案經驗
+        
+    -   開源 / DAO 合作機會
+        
+-   不強制、不綁定，自由進出
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 白天都在學習代碼  
 下午參與線上共學 看老師分享馬爾地夫 有動力掙錢出去玩了 哈哈
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 今日參與Space、黑克松open day，鏈上數據分析課堂  
 這次黑克松最後就沒打算參與了，這幾天時間上排不出空閒，加上這次學習進度太慢，感覺沒有能力做出內容，組隊也怕拖累其他隊友，雖然多次聽老師們說一定有能做的事情、也不需太要求完程度，志在參與，但最後還是下了這樣的決定，這次也是第一次(半)參加黑克松，過幾天看看其他同學們發表的Demo來當作我第一次的經驗。  
@@ -238,6 +406,7 @@ _工具會一直換，但會問對問題的人永遠有價值_。
 
 
 
+
 參與線上共學，聽取各位老師的分享  
 感覺比較大的重點有:  
 能展示得出來最重要，不需要去追求完成度多高、多精細  
@@ -347,6 +516,7 @@ AI會議記錄摘要
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -513,6 +683,7 @@ A TypeScript Hardhat project using Mocha and Ethers.js
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -708,6 +879,7 @@ increment 翻譯為"遞增"
 
 
 
+
 今日稍微休息了一下 沒怎麼念書  
 把前幾天學到的東西簡單整理了一下  
 還有聽了兩場同學們舉辦的AMA
@@ -715,6 +887,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -765,6 +938,7 @@ increment 翻譯為"遞增"
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -910,6 +1084,7 @@ _是將純文字訊息轉換為加密密文的程序。_
 
 
 
+
 ## 今日線上共學環節，聽了Wachi老師給了建議。
 
 ### 1.關於小白要如何在黑客松中找到idea，去進行實作，如何給予AI下指令。
@@ -935,6 +1110,7 @@ Wachi老師建議不要直接學go，舉例可以學Typescript，前後端能夠
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1125,6 +1301,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 ## 今日學習 Remix 的使用教程
 
 ## 下午參與Colearning
@@ -1136,6 +1313,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1266,6 +1444,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今日看見TG有同學需要轉測試幣，於是轉了一點測試幣給對方  
 這兩天因為要搬家，學習進度可能稍微停滯，周一恢復  
 但這 Web3的新知是不斷的，希望能夠找到即使沒有時間也能夠做到的事，  
@@ -1276,6 +1455,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1492,6 +1672,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 今天參加了線上共學 Co-learning 時，有同學提出了對於目前感到焦慮的心理狀態，內容剛好與我目前的狀態契合，
 
 看著別人撰寫的筆記內容嘎嘎豐富，許多同學的強度合我差了不只是一兩個檔次而已，好像是小學生在看著研究員的感覺，我緊緊追趕著的進度也沒法寫出多有內容的筆記。
@@ -1517,6 +1698,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1733,6 +1915,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 
 
+
 # 以太坊的起源
 
 以太坊是由 Vitalik Buterin 在**2013年**提出，在**2015**/07/30上線主網
@@ -1812,6 +1995,7 @@ pragma solidity ^0.7.5;contract HelloWorld {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
