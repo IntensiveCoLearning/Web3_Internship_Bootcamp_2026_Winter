@@ -15,8 +15,200 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+use std::env;
+
+use std::fs;
+
+use std::path::Path;
+
+#\[derive(Debug, Clone)\]
+
+struct Task {
+
+id: usize,
+
+title: String,
+
+done: bool,
+
+}
+
+fn load\_tasks(path: &str) -> Vec<Task> {
+
+if !Path::new(path).exists() {
+
+return vec!\[\];
+
+}
+
+let content = fs::read\_to\_string(path).unwrap\_or\_default();
+
+content
+
+.lines()
+
+.filter\_map(|line| {
+
+let parts: Vec<&str> = line.split('|').collect();
+
+if parts.len() != 3 { return None; }
+
+Some(Task {
+
+id: parts\[0\].parse().ok()?,
+
+title: parts\[1\].to\_string(),
+
+done: parts\[2\] == "1",
+
+})
+
+})
+
+.collect()
+
+}
+
+fn save\_tasks(path: &str, tasks: &\[Task\]) {
+
+let data = tasks
+
+.iter()
+
+.map(|t| format!("{}|{}|{}", [t.id](http://t.id), t.title, if t.done { "1" } else { "0" }))
+
+.collect::<Vec<String>>()
+
+.join("\\n");
+
+let \_ = fs::write(path, data);
+
+}
+
+fn main() {
+
+let args: Vec<String> = env::args().collect();
+
+let db = "tasks.db";
+
+let mut tasks = load\_tasks(db);
+
+if args.len() < 2 {
+
+println!("用法: add/list/done/del <内容或ID>");
+
+return;
+
+}
+
+match args\[1\].as\_str() {
+
+"add" => {
+
+let title = args.get(2).cloned().unwrap\_or("未命名任务".into());
+
+let id = tasks.len() + 1;
+
+tasks.push(Task { id, title, done: false });
+
+save\_tasks(db, &tasks);
+
+println!("已添加任务 {}", id);
+
+}
+
+"list" => {
+
+for t in &tasks {
+
+let status = if t.done { "✓" } else { " " };
+
+println!("\[{}\] {} - {}", status, [t.id](http://t.id), t.title);
+
+}
+
+}
+
+"done" => {
+
+if let Some(id) = args.get(2).and\_then(|v| v.parse::<usize>().ok()) {
+
+if let Some(t) = tasks.iter\_mut().find(|t| [t.id](http://t.id) == id) {
+
+t.done = true;
+
+}
+
+save\_tasks(db, &tasks);
+
+println!("已完成任务 {}", id);
+
+}
+
+}
+
+"del" => {
+
+if let Some(id) = args.get(2).and\_then(|v| v.parse::<usize>().ok()) {
+
+tasks.retain(|t| [t.id](http://t.id) != id);
+
+save\_tasks(db, &tasks);
+
+println!("已删除任务 {}", id);
+
+}
+
+}
+
+\_ => println!("未知命令"),
+
+}
+
+}
+
+\`\`\`
+
+\## 运行方式
+
+\`\`\`bash
+
+cargo new mini\_todo
+
+cd mini\_todo
+
+\# 将 [main.rs](http://main.rs) 替换为上面的代码
+
+cargo run -- add "买菜"
+
+cargo run -- list
+
+cargo run -- done 1
+
+cargo run -- del 1
+
+\`\`\`
+
+\## 简单改进方向
+
+\- 使用 `serde` + `json` 存储
+
+\- 增加任务优先级
+
+\- 支持批量导入导出
+
+\## 今日小结
+
+\- 完成了一个最小可用的 CLI 项目
+
+\- 熟悉了 Rust 的结构体、集合、文件读写与参数解析
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 \# 每日学习日志 - 2026-01-29
 
 \## 学习信息
@@ -258,6 +450,7 @@ r1.push\_str("def");
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 \# 每日学习日志 - 2026-01-28
 
@@ -528,6 +721,7 @@ a + b // 表达式作为返回值
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 \# 2026-01-25 Rust入门学习
 
 \## 📅 日期
@@ -729,6 +923,7 @@ Ok(content)
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -969,6 +1164,7 @@ function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
 
 
 
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -1205,6 +1401,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 
 
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -1286,6 +1483,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1447,6 +1645,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1768,6 +1967,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -1969,6 +2169,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2225,6 +2426,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -2417,6 +2619,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
