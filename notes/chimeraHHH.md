@@ -15,19 +15,66 @@ WHUweb3Club|build in public
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+TVL
+
+-   **定义**：衡量 DeFi 协议中锁定的资金规模。
+    
+-   **意义**：类似银行的“存款余额”，是衡量 DeFi 项目安全性和受信任度的最重要指标之一。
+    
+-   **注意**：TVL 高不代表用户多，可能只是几个大户 (Whales) 存入的。
+    
+
+活跃地址数
+
+-   **定义**：在特定时间内（如 24h）发起或接收过交易的独立钱包地址数量。
+    
+-   **意义**：衡量网络或协议的**真实用户基数**和活跃度。
+    
+-   **陷阱**：一个人可以控制成千上万个地址（女巫攻击/刷单），单纯看地址数可能会被误导。
+    
+-   交易数 vs. 交易量
+    
+
+-   **Transaction Count**
+    
+    -   指交互的**次数**。
+        
+    -   _例子_：Alice 转账给 Bob 1 次，Bob 转给 Alice 1 次，Count = 2。
+        
+    -   _用途_：衡量系统的高频使用程度。
+        
+-   **Transaction Volume**：
+    
+    -   指交易涉及的**资金价值** (通常以 USD 计)。
+        
+    -   _例子_：Alice 转账 $100，Bob 转账 $50，Volume = $150。
+        
+    -   _用途_：衡量经济活动的规模。
+        
+
+Gas 费用
+
+反映区块空间的供需关系。Gas 飙升通常意味着网络极度拥堵，需求旺盛（如热门 NFT 发售或行情剧烈波动时）。
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 听例会，整理这周所学
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 学习space搭建MCP与Skills，正好也是自己最近在做的事情
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 公共物品资金分配与治理机制：引入了 Vitalik 的“凸型”与“凹型”决策模型。这是一个非常有用的思维工具，用来判断何时该“全押”，何时该“平分”。
@@ -39,6 +86,7 @@ WHUweb3Club|build in public
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -62,6 +110,7 @@ WHUweb3Club|build in public
 
 
 
+
 晚间回顾今日workshop；
 
 **在web3工作，英语有多重要？**
@@ -78,11 +127,13 @@ WHUweb3Club|build in public
 
 
 
+
 总结一周工作，整理下周vibe coding与学习的计划。尝试每天固定时间参与这项计划...
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -107,11 +158,13 @@ WHUweb3Club|build in public
 
 
 
+
 研究open-notebook与zotero的结合
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -147,11 +200,13 @@ WHUweb3Club|build in public
 
 
 
+
 今日复习回顾相关章节，这几天用完了trae的600额度）工作量爆炸
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -177,6 +232,7 @@ WHUweb3Club|build in public
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -222,11 +278,13 @@ WHUweb3Club|build in public
 
 
 
+
 Day7 学习安全与合规
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -273,11 +331,13 @@ Day6！
 
 
 
+
 Day5！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -330,6 +390,7 @@ Day5！
 
 
 
+
 1.14打卡
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -359,11 +420,13 @@ Day5！
 
 
 
+
 回看开营仪式+一些vibe coding
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
