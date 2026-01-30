@@ -82,11 +82,30 @@ AMA火热预备中
 
 # 例会
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775091099-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775309904-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775500663-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775539358-image.png)
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775091099-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775309904-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775500663-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775539358-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775702435-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775834171-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775860243-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775877878-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775896192-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775937702-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775953373-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769776002781-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769776011490-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769776052611-image.png)
+
+-   **大语言模型编程实验**：
+    
+    -   **实验设计**：在编程语言方面，截取 TOBIE 榜单去年六七月份数据，选取 8 种不同流行程度语言，爬取力扣 3000 多道题，用 9 种语言调用 5 种大语言模型 API 生成解题文档并返回力扣获取结果；在前后端框架方面，设计包含 CRUD、高并发等项目题目，使用 cursor、copilot、腾讯 codebuddy 等 AI 助手。
+        
+    -   **实验结果**：高流行度语言通过率高，冷门语言如 Erlang 和 racket 通过率仅 20% 左右；热门语言错误大多为逻辑错误，冷门语言多为编译错误；简单问题上热门语言比冷门语言通过率高 45% - 82%，困难问题上差距扩大到 90%；流行框架如 react 加 express，一到两轮可实现可运行代码，冷门框架可能需 5 - 10 轮甚至人工干预。
+        
+    -   **马太效应因果链**：主流生态公开代码和教程多，GitHub 语料库丰富，大语言模型学习充分，生成代码更稳健；开发者依赖 AI，AI 会优先生成流行语言代码，导致小众生态语言或框架面临 AI 生产力税。
+        
+-   **区块链理想与现实共生**：
+    
+    -   **两类玩家对立**：理想主义者（player a）任务是改变世界，核心价值是去中心化；投机者任务是财富自由，核心价值是收益率。理想主义者认为投机者只看重收益不在乎去中心化理念，投机者认为理想主义者不切实际。
+        
+    -   **历史教训与变局**：1990 年代密码朋克运动缺资金，类似电子前哨基金会仅能勉强生存。区块链通过代币发行捐赠计划改变资助模式，理想主义者获得大规模资源，财富源头部分来自市场投机行为。
+        
+    -   **共生关系**：投机为建设提供资金，没有建设投机市场会崩盘；以以太坊为例，其安全性依赖验证者质押有价格的 ETH，投机构建了系统防御预算。
+        
+    -   **现状与结论**：目前共生模式并非完全健康，投机声音大可能扭曲技术路线图，但这是唯一可行模式，需在理想与现实冲突中找到平衡点。会议还分享了 space 活动中嘉宾的金句，如 “挖矿不妨碍技术研究，但要当一个玩家” 等。
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -179,6 +198,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -308,6 +328,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -364,6 +385,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -532,6 +554,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -539,6 +562,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -598,6 +622,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -607,6 +632,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -718,6 +744,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -871,6 +898,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1114,6 +1142,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -1161,6 +1190,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1526,6 +1556,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1567,6 +1598,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1959,6 +1991,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -2272,6 +2305,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -2379,6 +2413,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
