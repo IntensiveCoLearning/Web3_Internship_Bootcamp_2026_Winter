@@ -15,8 +15,86 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+day 19
+
+1.昨日复盘会后，两位助教老师很听劝地开始收手，放权，整个黑客松统筹大计落在了三个组长和我这个总协调身上，按照我的建议，组长也克制自着不再越过协调者去对接职能，协调者成为了推进项目进展的重要纽带。拿任务管理推进做得最好的vv的方法打板，今天的工作流明显跑起来了，顺了很多。
+
+2，观察了大家开会的习惯，补充了一些关于开会的建议：如果时间紧张，主持人可以在会前明确秩序：我先全部过一遍，然后各位重要角色请记想讨论的地方，轮流补充发言。发言一圈以后主持人围绕重点做总结，这个秩序类似狼人杀的发言秩序，能有效控制时长和效率。
+
+3 让deepseek 老师帮我设计的vibe coding 学习计划备忘录（希望不要吃灰
+
+📓学习备忘录：零基础“感觉式编程”三部曲
+
+核心理念：先建立感觉和信心，再接触代码；通过完成具体项目来学习。
+
+\---
+
+🎯 第一阶段：感知与破冰（1-2周）
+
+· 目标：理解编程就是“与计算机对话”。
+
+· 行动：
+
+1\. 玩游戏：体验《Human Resource Machine》或《7 Billion Humans》，理解基础逻辑。
+
+2\. 对话AI：用ChatGPT等，尝试通过多次、具体的指令让它生成一首诗或一个计划表，练习“提需求”。
+
+· 达标标志：能向别人解释“编程就是一步步的指令”。
+
+\---
+
+🛠️ 第二阶段：无代码创造（2-4周）
+
+· 目标：不写代码，亲手做出东西，获得正反馈。
+
+· 行动（三选一或全试）：
+
+1\. 建网站：用 Wix/Webflow 拖拽制作一个个人主页。
+
+2\. 做互动：用 Scratch 积木块编一个小动画或故事。
+
+3\. 自动化：用 Zapier/简道云 设置一个自动整理邮件的规则。
+
+· 达标标志：拥有一个可展示、可交互的成果。
+
+\---
+
+🚀 第三阶段：AI辅助与探索（3周起）
+
+· 目标：让AI帮忙，接触代码结构，按兴趣探索。
+
+· 行动：
+
+1\. 用AI工具：在 Cursor 或 GitHub Copilot 中，用中文注释描述功能（如“//画一个红色圆圈”），看它生成代码并运行。
+
+2\. 选方向浅尝：
+
+· 喜欢视觉/艺术：玩 Processing 或 p5.js，改数字和颜色看效果。
+
+· 喜欢实用/效率：用 Python 写几行代码处理Excel或下载图片。
+
+· 喜欢网页：学最基础的 HTML/CSS “画”出一个简单页面。
+
+· 达标标志：能借助AI完成一个有代码的小项目。
+
+\---
+
+💡 核心心法（务必记住）
+
+1\. 从项目倒推学习：先想“我要做什么”，再为了完成它去学“我需要什么”。
+
+2\. AI是你最好的伙伴：向AI提问时，说清背景、具体目标、已尝试步骤和错误。
+
+3\. 复制、修改、理解：在GitHub、CodePen等平台找类似项目，复用并修改代码是完全正当的学习路径。
+
+4\. 记录与分享：哪怕只记录一个小成功，也能积累信心和轨迹。
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 DAY 18
 
 1.一边上班开会一边留一只耳朵听。休闲黑客松的co-building，sue老师分享了vibe coding的思路。我感觉我又行了。周末把回放翻出来好好做做笔记。产品全能王指日可待。（不是
@@ -108,6 +186,7 @@ DAY 18
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 DAY 17  
 1.黑客松OpenDay 成功落地。最高人数174人。目前黑客松报名人数102人，看上去不错  
 2.Uniswap原理笔记  
@@ -187,6 +266,7 @@ DAY 17
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 DAY 16
 
 1.精疲力竭的一天，交易所BD团队的管理工作存在大量的沟通障碍，事情推进得异常缓慢。  
@@ -198,6 +278,7 @@ DAY 16
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -220,6 +301,7 @@ DAY 15
 
 
 
+
 DAY 14  
 今日的学习围绕着黑客松的筹备工作展开，我担任的是统筹协调工作，对接协调者成员推进各个职能板块按节点完成工作，确保各关键工作节点如期交付，收获了以下知识和感想  
 1.了解了github的基本概念和库的结构  
@@ -230,6 +312,7 @@ DAY 14
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -344,6 +427,7 @@ DAY13
 
 
 
+
 DAY12  
 1.入选了黑客松筹备组  
 2.厚着脸皮挤进了统筹组席位  
@@ -365,6 +449,7 @@ DAY12
 
 
 
+
 DAY11  
 今日主要围绕小组发活动的筹备展开学习  
 1.Figma的海报设计：尝试了Figma除脑图外的在平面设计上的更多用法，确实是很高效的工具，就是字库问题暂时没时间去研究。好像没法调用本地字库。  
@@ -377,6 +462,7 @@ DAY11
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -536,6 +622,7 @@ Web3需要的最核心的技能是在知道技术边界的前提下，做出好�
 
 
 
+
 -   DAY 9
     
 -   整理了《Web3 运行原理的笔记》制作了脑图
@@ -563,6 +650,7 @@ Web3需要的最核心的技能是在知道技术边界的前提下，做出好�
 
 
 
+
 DAY8
 
 忙碌的一天，草草啃了一些手册里的内容 技术部分对文科生来说还是艰涩了点
@@ -572,6 +660,7 @@ DAY8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -668,6 +757,7 @@ DAY7
 
 
 
+
 DAY6
 
 //成都雾霾连续爆表一个月 今天鼻炎终于大爆发，疯狂喷嚏鼻涕，头昏脑胀
@@ -681,6 +771,7 @@ DAY6
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -725,6 +816,7 @@ DAY5
 
 
 
+
 DAY4  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485305863-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485449721-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485466886-image.png)
@@ -732,6 +824,7 @@ DAY4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -780,6 +873,7 @@ DAY3
 
 
 
+
 DAY2  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296425226-image.png)![5256c0f3e7c881eda8158c6049c39b84.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296346499-5256c0f3e7c881eda8158c6049c39b84.jpg)
@@ -787,6 +881,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
