@@ -15,13 +15,226 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+今天在为了项目要设计几个agent；怎么调校不同的agent;agent之间用什么pattern；agent\\MCP server\\skills\\tools到底是什么关系 狂补这些知识
+
+### 主流的Agent在做什么
+
+**1、信息—→行动型Agent**
+
+典型特征：非结构化信息，转化为结构化信息；只做提案，不做决策
+
+典型例子
+
+-   从一堆消息中判断哪些是“会议/任务/截止日期”
+    
+-   自动整理成 Todo / Calendar / CRM / Project task
+    
+-   给出“建议行动方案”，而不是直接拍脑袋执行
+    
+
+**2、流程自动化Agent( Workflow / Orchestration Agent )**
+
+典型特征：用户目标很清楚；Agent 负责 **拆步骤 + 调工具 + 兜底**
+
+典型例子
+
+-   报名 / 填表 / 拉数据 / 批量操作
+    
+-   跨系统同步（Notion ↔ Calendar ↔ Slack）
+    
+
+3、决策辅助型Agent（**规则+推理混合**）
+
+典型特征：输入复杂、帮助压缩决策空间
+
+典型例子：
+
+-   排优先级（邮件 / 需求 / 工单）
+    
+-   判断哪些事情“现在不该做”
+    
+-   给出 next-best-action
+    
+
+**4、探索/调研型AI**
+
+## **5、Multi-Agent**
+
+[https://www.youtube.com/shorts/hdZwwSF\_p5U?feature=share](https://www.youtube.com/shorts/hdZwwSF_p5U?feature=share)
+
+**结构**：
+
+用户 → Meta-Agent → 多个子 Agent → 汇总 → 输出
+
+**关键点**
+
+-   Meta-Agent 不干活，**只做调度和决策**
+    
+-   子 Agent 各自有明确职责（搜索、检索、分析）
+    
+
+**为什么会出现**
+
+> 当一个 Agent 同时承担「找信息 + 判断 + 反驳 + 总结」时，质量会急剧下降。
+
+### Design Patterns（设计模式）
+
+1.  Sequential（顺序模式）
+    
+
+-   **工作流程**：查询 → 智能体1 → 智能体2 → ... → 智能体n → 输出
+    
+-   **特点**：
+    
+    -   线性处理流程
+        
+    -   每个智能体按顺序执行特定任务
+        
+    -   前一个智能体的输出作为下一个的输入
+        
+-   **适用场景**：需要多步骤处理的任务
+    
+
+2.  Router（路由模式）
+    
+
+-   **工作流程**：查询 → 根据需求路由到不同专门智能体
+    
+-   **包含的智能体**：
+    
+    -   Flight Agent（航班智能体）
+        
+    -   Travel Agent（旅行智能体）
+        
+    -   Hotel Agent（酒店智能体）
+        
+-   **特点**：
+    
+    -   根据查询类型智能分发
+        
+    -   不同智能体并行工作
+        
+    -   各自产生独立输出
+        
+-   **适用场景**：多类别任务分类处理
+    
+
+3.  Parallel（并行模式）
+    
+
+-   **工作流程**：查询 → Divisor（分发器）→ 多个智能体并行执行 → 输出
+    
+-   **包含的智能体**：
+    
+    -   Web Search（网络搜索）
+        
+    -   Database Search（数据库搜索）
+        
+-   **特点**：
+    
+    -   同时执行多个任务
+        
+    -   提高处理效率
+        
+    -   结果汇总输出
+        
+-   **适用场景**：需要从多个数据源获取信息
+    
+
+4.  Generator（生成器模式）
+    
+
+-   **工作流程**：查询 → 多个智能体循环协作 → 输出
+    
+-   **包含的智能体**：
+    
+    -   Coding（编码）
+        
+    -   Testing（测试）
+        
+    -   Debugging（调试）
+        
+-   **特点**：
+    
+    -   迭代式工作流程
+        
+    -   持续优化和改进
+        
+    -   循环反馈机制
+        
+-   **适用场景**：需要迭代优化的任务（如代码开发）
+    
+
+5.  Network（网络模式）
+    
+
+-   **工作流程**：查询 → Meta Agent（元智能体）→ 多个智能体相互通信 → 输出
+    
+-   **包含的智能体**：
+    
+    -   Coding（编码）
+        
+    -   Debugging（调试）
+        
+    -   其他协作智能体
+        
+-   **特点**：
+    
+    -   智能体之间可以相互通信
+        
+    -   动态协作网络
+        
+    -   复杂的交互关系
+        
+-   **适用场景**：需要多智能体深度协作的复杂任务
+    
+
+6.  Autonomous Agents（自主智能体模式）
+    
+
+-   **工作流程**：
+    
+    -   Agent 1 处理查询
+        
+    -   Agent 2 处理输出
+        
+    -   两者独立运作但相互协调
+        
+-   **特点**：
+    
+    -   高度自主性
+        
+    -   智能体独立决策
+        
+    -   松耦合协作
+        
+-   **适用场景**：需要独立决策和行动的场景
+    
+
+### 关键要点总结
+
+1.  **选择合适的模式**：根据任务复杂度和需求选择对应的设计模式
+    
+2.  **MCP Server**：为智能体提供工具和数据支持
+    
+3.  **Memory（记忆）**：智能体需要记忆功能来保持上下文
+    
+4.  **协作机制**：多智能体系统的核心是协作和任务分配
+    
+5.  **可扩展性**：设计模式支持系统的灵活扩展
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 ### Unexpected Ether Transfer (Forcing Feeding)
 
@@ -195,6 +408,7 @@ k = 常数（池子创建时确定）
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -219,6 +433,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -356,6 +571,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -442,11 +658,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -488,6 +706,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -537,6 +756,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -707,6 +927,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -904,6 +1125,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -921,6 +1143,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1169,6 +1392,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -1305,6 +1529,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
