@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+准备休闲黑客松中 ……
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 锁定黑客松赛道 确定idea
 
 参加sue老师co-building
@@ -24,6 +30,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 # 链上数据分析会议
 
@@ -75,6 +82,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 # Web3 公共物品资金分配｜第二节课
 
 ##   
@@ -98,6 +106,7 @@ DAO 资金分配的真实运行特征
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -181,6 +190,7 @@ DAO 资金分配的真实运行特征
 
 
 
+
 X402 主题space
 
 如此沉睡三十年，直到x402!你不能错过的下一个万亿级市场之Agentic Economy
@@ -188,6 +198,7 @@ X402 主题space
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -286,6 +297,7 @@ balanceOf(keyHash) 返回数量
 
 
 
+
 **链上交互与调试**
 
 Mint NFT、zkVote 相关交互 Scaffold-ETH / Speedrun-Ethereum 任务操作
@@ -322,6 +334,7 @@ Mint NFT、zkVote 相关交互 Scaffold-ETH / Speedrun-Ethereum 任务操作
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -392,6 +405,7 @@ RPC 节点连接区块链，真正读取 balances\[address\]。由于 RPC 调用
 
 
 
+
 ## co-learning
 
 wachi老师 **谈技术岗位与天花板：**
@@ -418,6 +432,7 @@ Web3 常见需求仍集中在前端、后端、全栈；没有嵌入式类岗位
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -582,6 +597,7 @@ Solidity / EVM 基础与 ERC20 合约全览
 
 
 
+
 学习 智能合约开发  
   
   
@@ -617,6 +633,7 @@ Dapp = “业务逻辑上链 + 用户用钱包签名交互”的应用形态。
 
 
 
+
 完成本周遗留任务
 
 -   Sepolia 测试币领取与转账
@@ -635,6 +652,7 @@ Dapp = “业务逻辑上链 + 用户用钱包签名交互”的应用形态。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -818,6 +836,7 @@ TVL 是规模指标，不是安全指标。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1141,6 +1160,7 @@ address = keccak256(
 
 
 
+
 ### SpoonOS ：
 
 **让开发者不用自己实现身份、支付、私钥、验证、审计这些底层能力。**
@@ -1340,6 +1360,7 @@ AI 正在从“工具调用者”，变成“连续做决定并承担后果的�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1676,6 +1697,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 
 
+
 笔记：
 
 -   解释了私钥、助记词、公钥和地址之间的关系
@@ -1701,6 +1723,7 @@ E. 地址污染/剪贴板劫持（Clipper/Scanning）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
