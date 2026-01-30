@@ -15,8 +15,54 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+### 核心功能（Core）
+
+-   **Solidity 测试** 原生支持 **Foundry 风格** 的 Solidity 测试（速度快，支持 fuzzing 和 invariant 测试） TypeScript 测试依然完全支持
+    
+-   **多链支持** 不再局限于模拟以太坊主网 可配置多个不同链类型的网络（Ethereum Mainnet、OP Mainnet、Arbitrum 等） 提供通用链类型（generic）作为兜底
+    
+-   **ESM 优先** 配置文件（hardhat.config）**必须**使用 ECMAScript Modules（ESM）语法 脚本和测试文件仍可使用 CommonJS
+    
+-   **网络管理器（Network Manager）** 任务可以显式管理多个网络连接，不再依赖单一固定连接
+    
+-   **声明式配置** 配置完全声明式，不再允许插件导入或配置函数（如 task()）产生副作用
+    
+-   **配置变量（Configuration Variables）** 支持惰性加载、可扩展的配置变量系统 默认从环境变量读取，可被插件自定义（如加密存储）
+    
+-   **构建配置（Build Profiles）** 支持为不同工作流定义不同的编译设置
+    
+-   **完整的 npm 支持** 构建系统完全兼容所有 npm 功能
+    
+-   **全新插件系统** 引入基于 **hook** 的扩展机制，插件可更深度地介入 Hardhat 核心
+    
+-   **类型化 Artifact** 默认生成 TypeScript 类型声明文件 无需额外代码生成即可获得合约的强类型支持
+    
+-   **可编程 HRE 初始化** 支持在代码中创建多个独立的 Hardhat Runtime Environment 实例
+    
+
+### 插件相关改进（Plugins）
+
+-   **测试运行器插件化** 测试运行器变成可替换的插件 推荐使用 **Node.js 内置 test runner**（速度更快、无额外依赖） 仍然支持 Mocha
+    
+-   **内置 Solidity 覆盖率** 原生支持 Solidity 代码覆盖率（同时支持 Solidity 和 TS 测试） 只需运行 --coverage 即可开启
+    
+
+### 重大破坏性变更 & 迁移注意事项
+
+-   配置文件必须改为 **ESM** 语法（.mjs 或 "type": "module"）
+    
+-   网络连接管理方式彻底改变（不再是单一固定连接）
+    
+-   插件和配置函数不再允许产生副作用（不能在配置里直接调用 task() 等）
+    
+-   部分旧插件可能需要更新以适配新的 hook 系统
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 -   **初始化项目** 用最核心的命令创建新项目：
     
     Bash
@@ -78,6 +124,7 @@ timezone: UTC+8
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 ## **Getting Started**
 
 📌 **Foundry 是什么？**  
@@ -107,6 +154,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -117,6 +165,7 @@ timezone: UTC+8
 
 
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -124,6 +173,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -140,6 +190,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -147,6 +198,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -171,6 +223,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -182,6 +235,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -233,6 +287,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -340,6 +395,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -391,6 +447,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 
 
+
 # 十一、Gossip 协议在节点传输中的作用
 
 Gossip 协议就是以太坊的“八卦广播系统”：
@@ -418,6 +475,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -459,6 +517,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -577,6 +636,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -620,6 +680,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -763,6 +824,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
