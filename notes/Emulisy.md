@@ -15,8 +15,220 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+```
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
+import "./App.css";
+
+export default function App() {
+  const [hasMetaMask, setHasMetaMask] = useState(false);
+  const [account, setAccount] = useState("");
+  const [balance, setBalance] = useState("");
+  const [chainId, setChainId] = useState("");
+
+  const [to, setTo] = useState("");
+  const [amount, setAmount] = useState("");
+
+  const [status, setStatus] = useState("");
+
+  // 检查是否有 MetaMask
+  useEffect(() => {
+    if (window.ethereum) {
+      setHasMetaMask(true);
+    } else {
+      setHasMetaMask(false);
+    }
+  }, []);
+
+  // 连接钱包
+  const connectWallet = async () => {
+    try {
+      setStatus("Connecting wallet...");
+
+      if (!window.ethereum) {
+        setStatus("MetaMask not found.");
+        return;
+      }
+
+      // 1) 请求用户授权连接
+      await window.ethereum.request({ method: "eth_requestAccounts" });
+
+      // 2) ethers v6: BrowserProvider
+      const provider = new ethers.BrowserProvider(window.ethereum);
+
+      // 3) 获取 signer（用户身份）
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+
+      // 4) 获取链信息
+      const network = await provider.getNetwork();
+
+      // 5) 获取余额
+      const bal = await provider.getBalance(address);
+
+      setAccount(address);
+      setChainId(network.chainId.toString());
+      setBalance(ethers.formatEther(bal));
+
+      setStatus("Wallet connected.");
+    } catch (err) {
+      console.error(err);
+      setStatus("Connection failed.");
+    }
+  };
+
+  // 刷新余额
+  const refreshBalance = async () => {
+    try {
+      setStatus("Refreshing balance...");
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const bal = await provider.getBalance(account);
+
+      setBalance(ethers.formatEther(bal));
+      setStatus("Balance updated.");
+    } catch (err) {
+      console.error(err);
+      setStatus("Failed to refresh balance.");
+    }
+  };
+
+  // 发送 ETH（交易）
+  const sendEth = async () => {
+    try {
+      if (!to || !amount) {
+        setStatus("Please enter receiver address and amount.");
+        return;
+      }
+
+      setStatus("Sending transaction...");
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+
+      const tx = await signer.sendTransaction({
+        to,
+        value: ethers.parseEther(amount),
+      });
+
+      setStatus(`Tx sent. Waiting for confirmation... Hash: ${tx.hash}`);
+
+      // 等待链上确认（进区块）
+      await tx.wait();
+
+      setStatus("Transaction confirmed!");
+      await refreshBalance();
+    } catch (err) {
+      console.error(err);
+
+      // 用户拒绝签名时常见
+      if (err?.code === 4001) {
+        setStatus("User rejected the transaction.");
+        return;
+      }
+
+      setStatus("Transaction failed.");
+    }
+  };
+
+  // 监听 MetaMask 账户变化 / 网络变化（非常重要）
+  useEffect(() => {
+    if (!window.ethereum) return;
+
+    const handleAccountsChanged = (accounts) => {
+      if (accounts.length === 0) {
+        setAccount("");
+        setBalance("");
+        setStatus("Wallet disconnected.");
+      } else {
+        setAccount(accounts[0]);
+        setStatus("Account changed. Please refresh balance.");
+      }
+    };
+
+    const handleChainChanged = () => {
+      // MetaMask 官方建议：链切换直接刷新页面
+      window.location.reload();
+    };
+
+    window.ethereum.on("accountsChanged", handleAccountsChanged);
+    window.ethereum.on("chainChanged", handleChainChanged);
+
+    return () => {
+      window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+      window.ethereum.removeListener("chainChanged", handleChainChanged);
+    };
+  }, []);
+
+  return (
+    <div style={{ maxWidth: 720, margin: "40px auto", padding: 16 }}>
+      <h1>React + ethers + MetaMask</h1>
+
+      {!hasMetaMask && (
+        <p style={{ color: "red" }}>
+          MetaMask not detected. Please install MetaMask.
+        </p>
+      )}
+
+      <button onClick={connectWallet} disabled={!hasMetaMask}>
+        Connect Wallet
+      </button>
+
+      <div style={{ marginTop: 16, padding: 12, border: "1px solid #333" }}>
+        <h3>Wallet Info</h3>
+        <p>
+          <b>Account:</b> {account || "(not connected)"}
+        </p>
+        <p>
+          <b>ChainId:</b> {chainId || "(unknown)"}
+        </p>
+        <p>
+          <b>Balance:</b> {balance ? `${balance} ETH` : "(unknown)"}
+        </p>
+
+        <button onClick={refreshBalance} disabled={!account}>
+          Refresh Balance
+        </button>
+      </div>
+
+      <div style={{ marginTop: 16, padding: 12, border: "1px solid #333" }}>
+        <h3>Send Sepolia ETH</h3>
+
+        <input
+          placeholder="To address (0x...)"
+          value={to}
+          onChange={(e) => setTo(e.target.value)}
+          style={{ width: "100%", marginBottom: 8 }}
+        />
+
+        <input
+          placeholder="Amount (e.g. 0.01)"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          style={{ width: "100%", marginBottom: 8 }}
+        />
+
+        <button onClick={sendEth} disabled={!account}>
+          Send
+        </button>
+      </div>
+
+      <p style={{ marginTop: 16 }}>
+        <b>Status:</b> {status}
+      </p>
+    </div>
+  );
+}
+```
+
+一个react加ether.js的查看metamask余额以及发送交易的Dapp
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 ## **一、全局滚动属性（window 级别）**
 
 这些属性用于 **获取或控制整个页面的滚动状态**。
@@ -183,6 +395,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 ## 3\. 前端使用 ethers.js 的三大核心对象 ⭐⭐⭐
 
@@ -354,6 +567,7 @@ contract.on("Transfer", (from, to, value) => {
 <!-- DAILY_CHECKIN_2026-01-23_START -->
 
 
+
 -   创建新节点的方法：
     
     -   `document.createElement(tag)` —— 用给定的标签创建一个元素节点，
@@ -415,6 +629,7 @@ contract.on("Transfer", (from, to, value) => {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -486,6 +701,7 @@ contract.on("Transfer", (from, to, value) => {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -620,6 +836,7 @@ Smart Contracts (Blockchain)
 
 
 
+
 # FullStack Web3 Engineer Learning Path – Notes  
 
 ## Core Skill Areas  
@@ -703,6 +920,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -802,6 +1020,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -935,6 +1154,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1100,6 +1320,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1341,6 +1562,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -1510,6 +1732,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1711,6 +1934,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
