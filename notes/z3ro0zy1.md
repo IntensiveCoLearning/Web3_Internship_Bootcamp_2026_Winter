@@ -15,8 +15,198 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+# Solidity 智能合约入门学习笔记
+
+## 一、 智能合约与 Solidity 概述
+
+### 1.1 什么是 Solidity？
+
+Solidity 是一门面向对象、为编写以太坊虚拟机（EVM）上的智能合约而设计的高级编程语言。它的语法受到了 C++、Python 和 JavaScript 的影响，但其运行逻辑与传统后端开发有本质区别。
+
+### 1.2 核心特性
+
+**静态类型**：编译时必须确定变量类型。
+
+**图灵完备**：可以实现任何逻辑计算。
+
+**确定性**：同样的输入在同样的区块链状态下，输出永远一致。
+
+**Gas 机制**：每一行修改状态的代码都需要支付手续费，这决定了 Solidity 编写必须追求“极简”和“高效”。
+
+* * *
+
+## 二、 基础语法与数据类型
+
+### 2.1 编译指令与版权声明
+
+每个 Solidity 文件必须以 `SPDX-License-Identifier` 开头，以避免版权纠纷。紧接着是 `pragma` 指令，规定代码适用的编译器版本。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+```
+
+### 2.2 变量类型
+
+1.  **数值类型**:`uint` / `int`: 无符号和有符号整数。`uint256` 是最常用的类型。`bool`: 布尔值（true/false）。`address`: 存储 20 字节的以太坊地址。`address payable` 允许转账。`bytes1` 到 `bytes32`: 定长字节数组。
+    
+2.  **引用类型**:
+    
+
+`string`: 字符串。
+
+`struct`: 结构体，用于自定义复杂数据。
+
+`mapping`: 键值对映射（如 `mapping(address => uint) balance`），它是存储账本数据的核心。
+
+**数组**: 包含定长数组和动态数组。
+
+### 2.3 作用域与存储位置 (Storage, Memory, Calldata)
+
+这是 Solidity 最难也最重要的概念之一：
+
+**Storage**: 永久存储在区块链上，极其昂贵（写操作消耗大量 Gas）。
+
+**Memory**: 临时存储在内存中，函数运行结束即释放，费用较低。
+
+**Calldata**: 不可修改的临时存储，通常用于存储外部函数的输入参数。
+
+* * *
+
+## 三、 函数与控制权限
+
+### 3.1 函数结构
+
+```
+function 函数名(参数类型 参数名) [visibility] [mutability] returns (返回类型) { ... }
+```
+
+### 3.2 可见性修饰符 (Visibility)
+
+**public**: 合约内外均可调用。
+
+**private**: 仅当前合约内部可调用。
+
+**external**: 只能从外部调用（Gas 效率通常比 public 高）。
+
+**internal**: 当前合约及派生合约可调用。
+
+### 3.3 状态修饰符 (Mutability)
+
+**view**: 只读，不修改区块链上的状态变量。
+
+**pure**: 既不读取也不修改状态变量（例如纯数学计算）。
+
+**payable**: 允许函数接收以太币（ETH）。
+
+* * *
+
+## 四、 核心高级特性
+
+### 4.1 构造函数 (Constructor)
+
+构造函数在合约部署时仅执行一次，通常用于初始化参数（如设定合约所有者）。
+
+### 4.2 函数修改器 (Modifier)
+
+修改器用于在执行函数前进行检查。最常见的例子是 `onlyOwner`：
+
+```
+modifier onlyOwner() {
+    require(msg.sender == owner, "You are not the owner");
+    _; // 继续执行函数主体
+}
+```
+
+### 4.3 错误处理
+
+**require**: 用于检查输入或外部条件，不满足则回滚交易并退还剩余 Gas。
+
+**revert**: 主动触发错误。
+
+**assert**: 用于检查严重的内部错误（如溢出）。
+
+**Custom Errors (0.8.4+)**: 使用 `error` 关键字，比字符串报错更省 Gas。
+
+* * *
+
+## 五、 以太坊虚拟机 (EVM) 与转账逻辑
+
+### 5.1 全局变量
+
+`msg.sender`: 当前调用者的地址。
+
+`msg.value`: 随交易发送的以太币数量（以 wei 为单位）。
+
+`block.timestamp`: 当前区块的时间戳（注意：可被矿工微调）。
+
+### 5.2 三种转账方式
+
+**transfer**: 限额 2300 Gas，失败时自动抛出异常（已不推荐使用）。
+
+**send**: 限额 2300 Gas，失败返回 false。
+
+**call**: **目前最推荐的方式**。没有 Gas 限制，返回布尔值和数据，能够有效防止重入攻击风险（配合逻辑）。
+
+```
+(bool success, ) = recipient.call{value: amount}("");
+require(success, "Transfer failed");
+```
+
+* * *
+
+## 六、 合约间的交互与继承
+
+### 6.1 继承 (Inheritance)
+
+Solidity 支持多重继承。子合约使用 `is` 关键字继承父合约。
+
+```
+contract Robot is Machine, AI { ... }
+```
+
+### 6.2 接口 (Interface)
+
+接口用于定义合约的标准（如 ERC20）。接口不实现逻辑，只定义函数原型。
+
+* * *
+
+## 七、 安全性 (Security) - 重中之重
+
+编写 Solidity 时，安全是第一位的。
+
+1.  **重入攻击 (Reentrancy)**: 攻击者在合约余额更新前反复通过回调函数提现。
+    
+    -   _对策_：遵循“检查-影响-交互” (Checks-Effects-Interactions) 模式，先修改余额，再发送资金。
+        
+2.  **整数溢出**: 在 0.8.0 之后，Solidity 已内置溢出检查。
+    
+3.  **权限控制**: 核心功能必须加 `onlyOwner` 或权限管理。
+    
+
+* * *
+
+## 八、 开发工具链
+
+1.  **Remix IDE**: 浏览器端开发环境，适合初学者快速原型设计。
+    
+2.  **Hardhat**: 目前最主流的专业开发框架，支持本地环境模拟、自动化测试和部署。
+    
+3.  **Foundry**: 基于 Rust 的高性能工具链，测试速度极快。
+    
+4.  **OpenZeppelin**: 工业级的标准库，提供了经过审计的 ERC20、ERC721（NFT）和权限合约模板。
+    
+
+* * *
+
+最后10天备考一下IELTS， 争取2月能拿offer 😭
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 # 今天重新回顾了一下Cos的黑暗森林手册
 
 * * *
@@ -114,6 +304,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
+
 * * *
 
 ### 正好今天有Vibe Coding 的Zoom会议，借此机会配置一下Gemini Cli和Antigravity的Skills
@@ -143,6 +334,7 @@ gemini测试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 ## 学习使用yt-dlp下载视频，以及压缩与分离音频
@@ -196,6 +388,7 @@ This learning note is completed by me using voice input.
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -263,6 +456,7 @@ const { theme, toggleTheme } = useTheme();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -369,6 +563,7 @@ Yreal == 2000USDC
 
 
 
+
 # React继续学习
 
 ## 找出 UI 精简且完整的 State 表示
@@ -416,6 +611,7 @@ function SearchBar({ filterText, onFilterTextChange }) {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -569,6 +765,7 @@ TS 最大的作用是安全
 
 
 
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -634,6 +831,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -728,6 +926,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -869,6 +1068,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -966,6 +1166,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -1052,6 +1253,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
