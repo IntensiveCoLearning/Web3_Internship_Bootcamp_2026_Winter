@@ -15,8 +15,110 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+一、DApp 一次操作的本质流程
+
+复制代码
+
+点击前端按钮
+
+→ 调用合约函数
+
+→ 生成 Call Data
+
+→ 组成交易（Transaction）
+
+→ 发送到区块链
+
+→ EVM 执行
+
+→ 状态改变
+
+📌 关键认知：
+
+区块链只认识“交易数据”，不认识前端、不认识按钮
+
+🧩 二、合约函数 = 一笔交易的组成
+
+合约概念
+
+在交易里的对应字段
+
+合约地址
+
+to
+
+函数名
+
+编码进 data
+
+函数参数
+
+编码进 data
+
+msg.value
+
+value
+
+调用者
+
+msg.sender
+
+🧪 三、实践示例：Counter 合约
+
+复制代码
+
+Solidity
+
+contract Counter {
+
+uint public number;
+
+function setNumber(uint \_num) public {
+
+number = \_num;
+
+}
+
+}
+
+1️⃣ 写操作（发送交易）
+
+复制代码
+
+Bash
+
+cast send 合约地址 "setNumber(uint256)" 5 --private-key 私钥 --rpc-url 本地链
+
+特点：
+
+是一笔交易
+
+需要 Gas
+
+改变链上状态
+
+2️⃣ 读操作（本地查询）
+
+复制代码
+
+Bash
+
+cast call 合约地址 "number()" --rpc-url 本地链
+
+特点：
+
+不是交易
+
+不花 Gas
+
+不改变状态
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 # 一、本地链（Anvil）
 
 启动：
@@ -115,6 +217,7 @@ forge test
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 一、核心思想
 
@@ -277,6 +380,7 @@ actionCount\[msg.sender\] += 1;
 <!-- DAILY_CHECKIN_2026-01-25_START -->
 
 
+
 Speedrun Ethereum
 
 核心目标
@@ -342,6 +446,7 @@ yarn surge
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -430,6 +535,7 @@ contract A is Ownable
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -529,6 +635,7 @@ contract A is Ownable
 
 
 
+
 # Web3 学习笔记 · Week 2
 
 **主题：Scripting & Ethers.js**
@@ -611,6 +718,7 @@ contract A is Ownable
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -705,6 +813,7 @@ Ethers.js 是一个用于与以太坊交互的 JavaScript 库，主要作用是�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -932,6 +1041,7 @@ Web3 项目中：
 
 
 
+
 # Web3 学习日志 · Day 6
 
 **主题：阶段性复习与结构重建**
@@ -1076,6 +1186,7 @@ Web3 项目中：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1348,6 +1459,7 @@ Web3 很难用，但正因为难，
 
 
 
+
 # Web3 学习日志 · Day 4
 
 **主题：ENS 身份、DEX、钱包与 DApp 交互、Web3 学习路径**
@@ -1458,6 +1570,7 @@ DApp 是你的应用市场。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1624,6 +1737,7 @@ Web3 的风险主要来自两端：
 
 
 
+
 # Web3 学习日志 · Day 2
 
 **主题：以太坊运行逻辑、DeFi、DApp 与开放网络结构**
@@ -1763,6 +1877,7 @@ EVM 是运行环境，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
