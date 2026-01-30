@@ -21,8 +21,32 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+**ERC-20** – 可替代代币标准
+
+**ERC-721** – NFT 标准
+
+**ERC-1155** – 多代币标准（FT+NFT）
+
+**ERC-165** – 接口检测标准
+
+**ERC-223** – ERC-20 改进，防止代币误转到合约丢失
+
+**ERC-827** – ERC-20 扩展，支持授权调用第三方合约
+
+**ERC-1046** – 可扩展元数据的代币标准
+
+**ERC-6093** – 统一代币错误代码标准
+
+**ERC-1363** – 可支付型代币（转账 + 自动调用逻辑）
+
+**ERC-3643（前身 T-REX）** – 合规型代币标准（常用于 RWA）
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 ## **Uniswap-v3-periphery**
 
 ### **NonfungiblePositionManager**
@@ -106,6 +130,7 @@ timezone: UTC+8
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 # Uniswap
 
 ## core - **Factory**
@@ -172,6 +197,7 @@ v3默认支持三种手续费等级：0.05%、0.30%和1.00%，对应的fee值分
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 # 合约安全
@@ -254,6 +280,7 @@ using SafeMath for uint256;
 
 
 
+
 ## 什么是投研？
 
 -   研究项目基本面
@@ -314,6 +341,7 @@ using SafeMath for uint256;
 
 
 
+
 # Foundry
 
 以命令行为主的Web3开发神器
@@ -357,6 +385,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -412,6 +441,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 
 
+
 # **零知识证明**
 
 ## **区块链投票**
@@ -456,6 +486,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -552,6 +583,7 @@ Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
 
 
 
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -612,6 +644,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -645,6 +678,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -731,6 +765,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -759,6 +794,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -848,6 +884,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -877,6 +914,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -993,6 +1031,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -1044,6 +1083,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1138,6 +1178,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
