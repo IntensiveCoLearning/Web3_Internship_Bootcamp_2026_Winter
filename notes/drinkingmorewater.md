@@ -18,10 +18,76 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 AMA火热预备中
+
+# AMA
+
+## 活动总结
+
+-   **赛道潜力分析**：
+    
+    -   **Ray 老师看好赛道**：最看好 Spoon OS LLM 应用赛道，认为 AI 发展使工作 agent 化趋势明显，该赛道想象空间大，如以太坊上线的 ERC8004 可能推动 AI 使用 agent 化。
+        
+    -   **Coooder 老师看好赛道**：更关注 OGBC scaling x 的预测市场赛道，预测市场是有价值的创新，但结算存在预言机成本高的问题，与 AI 结合有望改善此问题，且可利用 AI 对市场信息进行分析。
+        
+-   **商业化前景与创意构思**：
+    
+    -   **Ray 老师观点**：考虑 idea 时，核心是看加 AI 后能否自动化、安全地完成流程。如支付场景中，若 AI 加持能安全解决流程问题则有价值，但支付流程可能被囊括在 AI agent 范围内，易被替代。可参考 AI 编码流程，用 agent 替代人工完成多环节工作。
+        
+    -   **Coooder 老师观点**：最初希望看到 AI 与 Web3 更底层结合，现认为随着 AI 发展，Web3 可作为分布式游戏规则制衡中心化的 AI，是有意思的方向。
+        
+    -   **补充观点**：不必硬凑 AI 与 Web3 结合点，应做自己擅长的事，看能否解决彼此问题，如 ERC8004 解决了 agent 间相互信任问题。
+        
+-   **完美黑客松团队特点**：
+    
+    -   **Ray 老师总结**：一是要有创意，团队成员能对 idea 达成共识并顺畅沟通；二是分工合理，成员能承担不同分工工作，如机制设计、UI 设计、编码等；三是成员靠谱，能按时完成工作。
+        
+    -   **Coooder 老师总结**：创意最重要，同时团队要学会取舍，聚焦创意核心点，做好 MVP 版本落地；Demo day 需派擅长展示的同学展示项目，简洁表达核心想法。
+        
+-   **找队友注意事项**：
+    
+    -   **Ray 老师观点**：最关注能否与对方良好沟通，因有效沟通比技能更重要，沟通不畅会导致共识难达成，浪费时间，而技能缺点可用 AI 补足。
+        
+    -   **Coooder 老师观点**：强调靠谱和提前沟通对找队友的重要性。若临时组队，要互相坦白对黑客松的期待，避免时间和精力投入不匹配。
+        
+-   **团队分工模式**：
+    
+    -   **Coooder 老师观点**：推荐模块化分工，可按前端、后端、智能合约、产品等模块分组，每人负责擅长部分。若团队成员技能单一，也可用 AI 辅助。还可安排专人负责开发和准备 Demo day。
+        
+    -   **Ray 老师观点**：强调分工明确，避免因分工不明产生问题和不愉快，让成员专注自身工作。
+        
+-   **选题策略**：
+    
+    -   **Ray 老师观点**：黑客松类似命题作文，要做出让主办方或赞助方满意的项目。如 datachain 黑客松，赞助方认可预测市场项目是因其能为新链带来新客户。对于 AI agent 赛道，需用其框架完成项目并注册到 ERC8004。
+        
+    -   **Coooder 老师观点**：赞同命题作文说法，可研究赞助商需求针对性选题。也可做有意思的项目，如堵车博彩与区块链结合、保证二维码有奖的项目，此类项目在展示时更轻松，但可能难获项目方强力支持。
+        
+-   **Demo day 演示窍门**：
+    
+    -   **Ray 老师观点**：答辩要把握重点，用最短时间和最好例子证明项目创意和实现效果，可通过直接演示或提前录制视频展示项目亮点，吸引评委注意力。
+        
+    -   **Coooder 老师观点**：项目核心创意最重要，可用 what、why、how 逻辑编排 PPT 讲解项目。Demo 展示可录制视频并剪辑加速，配合讲解。还可讲与项目相关的小故事吸引评委。
+        
+-   **非技术背景参赛建议**：
+    
+    -   **Ray 老师建议**：AI 降低了编程门槛，无技术背景不再是参加黑客松的阻碍。可边做边找队友，也可单独参赛。学设计的同学可思考设计流程中可 agent 化的部分，让 AI 完成重复工作。
+        
+-   **48 小时时间安排**：
+    
+    -   **Coooder 老师建议**：48 小时时间充裕，先衡量进度，若想法不成熟可打磨。确定想法后，优先跑通 MVP 版本，后续准备 demo 和录制视频。跑出 MVP 是重要时间节点，黑客松项目展示想法即可，无需过于复杂。
+        
+-   **团队矛盾化解**：
+    
+    -   **Ray 老师观点**：团队成员吵架后，若能冷静沟通则问题不大；若无法沟通，分歧可能过大，合作可能难以为继。
+        
+
+# 例会
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-30-1769775091099-image.png)
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
@@ -111,6 +177,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -234,6 +301,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -290,6 +358,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -452,6 +521,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -459,6 +529,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -512,6 +583,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -521,6 +593,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -629,6 +702,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -779,6 +853,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1016,6 +1091,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -1063,6 +1139,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1422,6 +1499,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1463,6 +1541,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1849,6 +1928,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -2159,6 +2239,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -2266,6 +2347,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
