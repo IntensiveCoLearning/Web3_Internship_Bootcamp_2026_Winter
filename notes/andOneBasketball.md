@@ -15,8 +15,172 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+# **📚 共学营 Day 18学习笔记（**EVM 钱包 Nonce 管理与交易 Bump**）**
+
+### 背景场景
+
+-   平台钱包接收用户提现请求，向用户钱包转账。
+    
+-   高并发情况下：
+    
+    -   多笔提现请求同时触发
+        
+    -   交易在 pending 中未打包
+        
+    -   后续提现请求可能因 nonce 重复或 future tx 失败
+        
+
+* * *
+
+### 2️⃣ Nonce 基础知识
+
+-   Nonce = 账户发起交易计数器
+    
+-   链上 nonce 严格递增
+    
+-   错误使用 nonce 的结果：
+    
+    -   **小于链上 nonce** → 无效交易
+        
+    -   **大于链上 nonce** → future tx，等待前面交易打包
+        
+
+获取方式
+
+-   **NonceAt(address, nil)** → 链上最新已确认 nonce
+    
+-   **PendingNonceAt(address)** → 包含 pending 交易的 nonce
+    
+
+* * *
+
+### 3️⃣ 本地管理策略
+
+-   使用 Redis 保存钱包状态，key/value 示例：
+    
+
+```
+Key: <env>:withdraw:<wallet_address>
+Value (JSON):
+{
+  "latest_nonce": 63,
+  "pending_tx": [
+    {"nonce":61, "tx_hash":"0xabc...", "submit_time":1670000000},
+    {"nonce":62, "tx_hash":"0xdef...", "submit_time":1670000060}
+  ],
+  "last_update": 1670000100
+}
+```
+
+-   **Value 中存储**：
+    
+    -   `pending_tx`：交易哈希 + nonce + 提交时间
+        
+    -   `latest_nonce`：最新使用的 nonce
+        
+    -   `last_update`：Redis 最近更新时间，辅助清理/监控
+        
+-   **Key**：
+    
+    -   运行环境 + 钱包地址即可，保持简短
+        
+
+* * *
+
+### 4️⃣ 多笔交易 bump 与限制
+
+-   支持同一钱包 **多笔交易同时 bump**
+    
+-   控制逻辑：
+    
+    1.  获取链上 NonceAt
+        
+    2.  与 Redis `latest_nonce` 对比：
+        
+        -   如果 Redis 最新 nonce 大 → 使用 `redis_nonce + 1`
+            
+    3.  将交易添加到 Redis `pending_tx` 中
+        
+    4.  限制 pending 交易数量：
+        
+        -   超过最大允许 pending 数量 → 拒绝新交易 / 提示用户稍后再试
+            
+-   Bump 时参考 `submit_time` + `last_update` 计算是否需要增加 gas
+    
+
+* * *
+
+### 5️⃣ 交易 Bump 策略
+
+-   **膨胀比例**：每次增加 10%~20% 的 gas
+    
+-   **膨胀次数**：最多 3~5 次
+    
+-   **时间间隔**：交易 pending 超过 30~60 秒再 bump
+    
+-   **失败处理**：超过膨胀次数仍未打包 → 标记交易失败 / 返回平台钱包
+    
+
+* * *
+
+### 6️⃣ 风险与注意事项
+
+-   避免使用本地 nonce 作为唯一标准，否则出现大量 future tx
+    
+-   Redis 辅助管理 pending\_tx + last\_update
+    
+    -   用于监控 stuck 交易
+        
+    -   避免 pending 队列无限膨胀
+        
+-   保持 pending\_tx 数量上限，防止同一钱包发起过多交易
+    
+
+* * *
+
+### 7️⃣ 总结实践要点
+
+1.  **链上 NonceAt + Redis 辅助管理**
+    
+2.  **Redis key** = `<env>:withdraw:<wallet_address>`
+    
+    -   Value 保存 pending\_tx、latest\_nonce、last\_update
+        
+3.  **Bump 策略**：
+    
+    -   时间间隔：30~60 秒
+        
+    -   膨胀比例：10%~20%
+        
+    -   膨胀次数：3~5 次
+        
+4.  **Pending 交易限制**：
+    
+    -   同一钱包可同时有多笔交易在 bump
+        
+    -   超过 pending 数量上限 → 拒绝新交易
+        
+5.  **监控 & 清理**：
+    
+    -   last\_update + pending\_tx 用于判断 stuck 交易和告警
+        
+
+* * *
+
+✅ **收获**：
+
+-   支持同一钱包多笔交易同时 bump
+    
+-   保持 pending 交易数量上限，避免 future tx 堆积
+    
+-   Redis value 结构合理，可监控、清理和控制风险
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 # **📚 共学营 Day 17学习笔记（Ethernaut 22）**
 
 ## 🎯 关卡目标
@@ -198,6 +362,7 @@ await atk.wait();
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 # **📚 共学营 Day 17学习笔记（Ethernaut 19–21）**
 
 ## 19\. AlienCodex
@@ -294,6 +459,7 @@ await atk.wait();
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 # **📚 共学营 Day 15 学习笔记（Ethernaut 17–18）**
@@ -490,6 +656,7 @@ RETURN(runtime)
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -735,6 +902,7 @@ slot2 → owner 被成功覆盖
 
 
 
+
 # 📚 共学营 Day 12 学习笔记（Ethernaut 10–13）
 
 今天完成了 Ethernaut 的 Level 10 到 Level 13，通过实战进一步加深了对合约安全问题和 EVM 执行机制的理解，覆盖了重入攻击、外部合约信任问题、链上隐私误区以及 gas 精准控制等关键知识点。
@@ -852,6 +1020,7 @@ slot2 → owner 被成功覆盖
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -995,6 +1164,7 @@ payable(king).transfer(msg.value);
 
 
 
+
 ## 📒 共学营 Day 10 学习笔记
 
 今天继续复盘 Ethernaut 关卡学习，并总结了 Solidity、Hardhat 与 ethers 的实践经验：
@@ -1023,6 +1193,7 @@ payable(king).transfer(msg.value);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1099,6 +1270,7 @@ payable(king).transfer(msg.value);
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1204,6 +1376,7 @@ Uniswap V2 中 LP Token 的本质是什么？它如何表示你在池子中所�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1386,6 +1559,7 @@ price1CumulativeLast += (reserve0 / reserve1) * timeElapsed
 
 
 
+
 # 📒 共学营 Day 5 学习笔记
 
 今天我继续让 ChatGPT 模拟面试官，针对 **Uniswap V2 的高级机制** 进行了面试式问答训练。重点关注 **流动性添加规则、AMM 定价以及 Pair 合约的状态同步机制**。通过答题 + 讲解，我对协议设计与安全逻辑有了更深入的理解。
@@ -1501,6 +1675,7 @@ UniswapV2Pair 合约中存在 `skim()` 和 `sync()` 函数，但在 Router 中�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1639,6 +1814,7 @@ liquidity = min(
 
 
 
+
 # 📝 Uniswap V2 学习记录（实习第 3 天）
 
 今天主要复习了 Uniswap V2 的整体架构与核心交易机制，加深了对 AMM 型 DEX 工作原理的理解。
@@ -1726,6 +1902,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1883,6 +2060,7 @@ Uniswap V2 的核心在于：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
