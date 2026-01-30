@@ -15,8 +15,70 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-30
+<!-- DAILY_CHECKIN_2026-01-30_START -->
+GoLang
+
+-   实操 [project.md](http://project.md) ，1h
+    
+
+输入提示词让 AI 生成的基于 Go 的后端项目，
+
+搞懂不清晰的概念：✅
+
+JWT（JSON Web Token），常用于微服务、RESTful API，像是互联网世界的数字通行证。组成部分，Header (头部)，声明类型和所使用的签名算法；Payload (负载)：存放实际的数据；Signature (签名)：防止数据被篡改的核心。库 `golang-jwt/jwt` 。
+
+Redis（Remote Dictionary Server），常用于处理高并发请求，后端加速器，基于内存的键值型（Key-Value）数据库。用途，缓存层，减轻关系型数据库（如 MySQL）的压力；分布式锁，`SETNX` 指令，在多实例部署的 Go 服务中保证逻辑的原子性；消息队列，`List` 或 `Pub` / `Sub` 甚至 `Stream` 机制实现轻量级消息解耦；计数器/排行榜，`INCR` 和 `ZSet` 实现点赞数或实时排名。库，`redis/go-redis` 。
+
+Worker Pool（工作池），Goroutine 是 Go 并发的“原子”，那么工作池就是管理这些原子的“调度室”，是一种并发设计模式，维护固定数量的 Goroutine 集合来处理一系列任务。为什么需要工作池，虽然 Go 的 Goroutine 很轻量，但在极端高并发下，会造成内存耗尽、调度开销（过多的上下文切换）、资源过载。则成，Jobs Channel（一般带缓冲），存放待处理任务的队列；Workers，一组运行中的 Goroutine，监听 Jobs 管道；Results Channel 用于接收 Workers 处理完后的返回结果。避免重复造轮子，`ants` 开源库。
+
+| 并发设计模式对比 | 核心区别 | 适用场景 |
+| --- | --- | --- |
+| Worker Pool | 固定数量的协程，任务排队 | 保护下游资源（如数据库连接）、控制 CPU 占用 |
+| Goroutine per Request | 按需创建，一个请求/任务一个协程 | 绝大多数普通的 I/O 密集型 Web 服务 |
+| Semaphore (信号量) | 不限制协程总数，但限制同时运行的任务数 | 简单的限流，不需要复用协程，只需要限流 |
+| Thread Pool (线程池) | Java/C++ 的概念，管理昂贵的操作系统线程。 | 解决线程创建成本高的问题（Go 原生已解决此问题） |
+
+Middleware（中间件），是一种代码逻辑，在 Request(请求) 到达业务逻辑之前执行，或者Response（响应）返回给客户端之后执行。用途，身份认证；日志记录；错误处理；跨域处理；限流。在 Go 中，本质是一个接收 `http.Handler` 并返回 `http.Handler` 的函数。库，`net/http` 。
+
+Viper，用途，帮你“读取和管理程序配置”的一站式工具。在结构体加上 `mapstructure` 标签，而不是普通 `json` 标签或 `gorm` 标签。在 Go 中可以对结构体字段写多个标签。在项目中，将从文件中读配置和与数据库对接这两个功能分开，分为两个结构体存储。
+
+Zap，专门为高性能设计的日志组件，替代 Go 标准库 `log` 。
+
+Validator，在处理用户提交的表单、API 请求的 JSON 数据时，先进行校验。库，`go-playground/validator`。通过“扫描”结构体 `validate` 标签来运行，将结构体实例作为参数传入 `Validate.Struct()` 。
+
+Testify，代替Go 标准库 `test` 。
+
+* * *
+
+Gorm
+
+-   B 站课程，1h ✅
+    
+
+完成“一对一”关系的学习，
+
+正在学习“一对多”关系的学习
+
+* * *
+
+Web3 实习计划（冬季）
+
+-   Solidity by Example
+    
+    -   完成 Basic ，1h ✅
+        
+    -   开始 Applications ，1h ❌
+        
+
+* * *
+
+Vibe Coding ，1h ✅
+<!-- DAILY_CHECKIN_2026-01-30_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 GoLang
 
 -   [整理笔记](https://www.notion.so/Go-2eb730847f49808e9581ce95f0432eb6?pvs=21)，1h ✅
@@ -41,6 +103,7 @@ Gorm
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 ### Gorm
 
 ### Solidity by example
@@ -50,6 +113,7 @@ Gorm
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 ### Solidity by Example
 
 ### Gorm
@@ -57,6 +121,7 @@ Gorm
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -75,6 +140,7 @@ Gorm
 
 
 
+
 ### 学习并总结当前我能接触到的智能合约安全漏洞
 
 [笔记链接](https://joyous-stamp-b17.notion.site/2f2730847f4980fbae5bdaa84faea19f)
@@ -86,6 +152,7 @@ Gorm
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -120,11 +187,13 @@ Gorm
 
 
 
+
 ### Web2 to Web3 Week2 Day2 Reading and Writing
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -157,6 +226,7 @@ Gorm
 
 
 
+
 ### 继续补web2-to-web3第一周的课，已经补上，笔记如下链接：
 
 [week1主要是教如何在Ethereum上交互的](https://joyous-stamp-b17.notion.site/web2-to-web3-2ed730847f4980d98b3fc8c8f671f54a?pvs=74)
@@ -172,6 +242,7 @@ Gorm
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -218,6 +289,7 @@ Gorm
 
 
 
+
 # 总结过去的一周
 
 在web3实习计划的第一周已经结束了，遇到了很多实力强劲、深耕多年和见解不凡的老师，也有很多勤勉、有趣、积极和热心的同好。这一周学习了很多知识，也改变了许多之前的见解，同时对加密行业的认识更进一步。从基本的工具使用，如社群类的X、tg，会议类的Zoom，笔记类的Notion和Figma，日程规划类的Calendar，以及钱包插件MetaMask等；到对以太坊系统的详尽认识，[《从021学习以太坊》](https://github.com/XiaoHai67890/021Ethereum)这本书是在是太适合投喂小白了，娓娓道来，让人百读不倦；再到对个人在加密行业中的规划，有了更加清晰的认识，未来几年里最主要的任务是在基于GoLang的backend engineer职务上深耕。感谢这次活动，刚过1/4就让我收获匪浅，增长了见识，有vibe coding非常厉害的实例，有刚运营个媒体账户就很成果的大佬，也有来自各行各业，五湖四海的人，我个人非常有幸与参加这次活动。既然明确了未来的发展路线，那还有什么可以好说的呢？哦不～，最后送一句话给大家
@@ -231,6 +303,7 @@ Gorm
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -269,6 +342,7 @@ Gorm
 
 
 
+
 《021学习以太坊》第5章，了解EVM以及ta在以太坊生态中的意义，也深刻理解了为什么以太坊虚拟机能被称为真正意义上的世界计算机了，也学习了一笔交易的Gas是如何组成的，以及在编写智能合约时，如何让Gas是合理的。
 
 《021学习以太坊》第6章，这章主要讲述了以太坊是如何以及为什么从最初的PoW共识转移到PoS共识机制、以太坊目前PoS共识机制的核心组成和机理、以太坊系统的历史以及一些重要的升级。
@@ -276,6 +350,7 @@ Gorm
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -301,6 +376,7 @@ Gorm
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -349,6 +425,7 @@ Gorm
 
 
 
+
 2026-1-13：
 
 目标：确定在本次学习中，具体专研学习的方向。
@@ -364,6 +441,7 @@ Gorm
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
