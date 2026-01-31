@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+这两天在开发黑客松，忘记打卡两天了  
+差点就要前功尽弃了  
+汗流浃背了
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 暂时的黑客松思路
 
 ## 1) 定义聪明钱（先定标准）
@@ -78,6 +86,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 \## 为什么用 Hardhat
 
@@ -212,6 +221,7 @@ type Timestamp is uint64;
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 工程师的思考 (Reflections)
 
 1\. **开发体验的进化 (DX)**：
@@ -235,6 +245,7 @@ type Timestamp is uint64;
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -265,6 +276,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -375,6 +387,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 ### 读取合约 (Read Contracts)
 
 1\. **核心三要素**： 要与合约交互，你需要：
@@ -440,6 +453,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -485,6 +499,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -551,6 +566,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -713,6 +729,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -778,6 +795,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -803,6 +821,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -843,6 +862,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -905,6 +925,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -940,6 +961,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -994,6 +1016,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 1 章
 
 \- 什么是以太坊？一个**去中心化、开源、支持智能合约**的公共区块链平台。
@@ -1033,6 +1056,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
