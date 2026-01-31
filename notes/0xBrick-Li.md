@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+今天只有一件事：全力冲刺黑客松，为我的Heartlink Vault而战
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 今天把论文搞完，准备黑客松
 
 然后规划一下下周的事情
@@ -24,6 +30,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 # To do list
 
@@ -34,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -58,6 +66,7 @@ spoonOS框架怎么这么多bug要搞，kiteai的文档怎么还不完整，麻�
 
 
 
+
 # To do list
 
 -   学习如何制作简历
@@ -71,6 +80,7 @@ spoonOS框架怎么这么多bug要搞，kiteai的文档怎么还不完整，麻�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -107,6 +117,7 @@ spoonOS框架怎么这么多bug要搞，kiteai的文档怎么还不完整，麻�
 
 
 
+
 # To do list
 
 -   推特上发布学习总结 ✅
@@ -123,6 +134,7 @@ Note
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -164,6 +176,7 @@ Note
 
 
 
+
 # To do list
 
 -   figma
@@ -191,6 +204,7 @@ Austin 分享 学习自己写代码过程中尽量关掉AI
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -247,6 +261,7 @@ uint256 public immutable deadline = block.timestamp + 2 hours ;
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -321,6 +336,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 
 
+
 # To do list
 
 -   Uniswap v2 源码
@@ -334,6 +350,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -381,6 +398,7 @@ solidity改复习一下子了，明天抓紧复习，争取优化实习手册
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -577,6 +595,7 @@ ERC-7962的核心创新在于，它通过引入\*\*`密钥哈希 (keyHash)`\*\* 
 
 
 
+
 # To do list
 
 -   参加LXDAO周会 ✅
@@ -611,6 +630,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -676,6 +696,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -776,6 +797,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -912,6 +934,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -969,6 +992,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
