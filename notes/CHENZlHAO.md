@@ -48,7 +48,7 @@ Web3 实习计划 2025 冬季实习生
 
 * * *
 
-### 二、 以太坊核心叙事与 Vitalik 的新主张 (Vitalik's Vision)
+### 二、 以太坊核心叙事与 Vitalik 的新主张 (Vitalik’s Vision)
 
 Vitalik Buterin 近期在 X 上发布了一系列长文，风格变得坚定且密集，试图重塑以太坊的发展方向。
 
@@ -143,6 +143,7 @@ Vitalik Buterin 近期在 X 上发布了一系列长文，风格变得坚定且�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 这份资料主要围绕 **以太坊（Ethereum）开发入门** 展开，由 Austin Griffith 讲解。内容涵盖了开发工具的选择、智能合约的基础语法、代币逻辑的实现、部署流程以及进阶的学习路线（Speed Run）。
 
@@ -284,6 +285,7 @@ Austin Griffith 推荐了一个从入门到精通的挑战路径（Speed Run）�
 
 
 
+
 这份总结专为 **Notion** 优化，你可以直接复制以下内容并粘贴到 Notion 页面中，它会自动识别标题、列表、代码块和表格。
 
 * * *
@@ -415,6 +417,7 @@ function testDecUnderflow() public {
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -708,6 +711,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这份《中文文案排版指北》非常实用，它能显著提升文档的专业感和可读性。我已经为你将核心知识点整理成了 **Notion 友好的 Markdown 格式**。
 
 你可以直接复制下方内容，在 Notion 中新建页面后粘贴，它会自动识别标题、列表、表格和引用块。
@@ -849,6 +853,7 @@ function withdraw() public onlyOwner {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1197,6 +1202,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
 
 * * *
@@ -1412,6 +1418,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -1557,6 +1564,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1839,6 +1847,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -2067,6 +2076,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -2183,6 +2193,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2335,6 +2346,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 
 
+
 # Web3 安全与合规：知识图谱
 
 * * *
@@ -2467,6 +2479,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
