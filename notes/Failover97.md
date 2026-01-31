@@ -15,8 +15,258 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+## 一、核心术语对照表
+
+| 术语 | 中文理解 | 含义 |
+| --- | --- | --- |
+| Repository (Repo) | 仓库 | 项目的所有文件和历史记录的存储位置 |
+| Clone | 克隆 | 把远程仓库完整复制到本地电脑 |
+| Fork | 派生/复刻 | 把别人的仓库复制一份到你的 GitHub 账号下 |
+| Commit | 提交 | 保存一次代码修改的快照（本地操作） |
+| Push | 推送 | 把本地的 commit 上传到远程仓库 |
+| Pull | 拉取 | 把远程仓库的最新代码下载到本地 |
+| Branch | 分支 | 代码的平行版本，用于独立开发功能 |
+| Merge | 合并 | 把一个分支的改动合并到另一个分支 |
+| Pull Request (PR) | 拉取请求 | 请求把你的代码合并到主仓库 |
+| Issue | 议题 | 用于讨论 bug、功能请求等 |
+| Main/Master | 主分支 | 项目的主要代码分支 |
+| Remote | 远程仓库 | 托管在 GitHub 上的仓库 |
+| Local | 本地仓库 | 你电脑上的仓库副本 |
+
+## 二、工作流程对比
+
+### 个人项目流程
+
+`修改代码 → Commit (保存) → Push (上传)`
+
+### 团队协作流程
+
+`1. Clone/Pull (获取最新代码) 2. 创建新分支 (Branch) 3. 修改代码 4. Commit (本地保存) 5. Push (推送到远程) 6. 发起 Pull Request 7. 代码审查 (Code Review) 8. 合并 (Merge)`
+
+* * *
+
+## 三、团队协作实战指南
+
+### 场景 1：你是团队成员（有写权限）
+
+### 第一次参与项目
+
+bash
+
+\`# 1. 克隆团队仓库到本地 git clone [https://github.com/团队名/项目名.git](https://github.com/团队名/项目名.git) cd 项目名
+
+# 2\. 查看当前分支
+
+git branch\`
+
+### 日常开发流程
+
+bash
+
+\`# 1. 确保在主分支，拉取最新代码 git checkout main git pull origin main
+
+# 2\. 创建新分支（命名规范：feature/功能名 或 fix/bug名）
+
+git checkout -b feature/add-login
+
+# 3\. 修改代码...
+
+# 4\. 查看改动
+
+git status
+
+# 5\. 添加改动到暂存区
+
+git add . # 添加所有文件
+
+# 或
+
+git add [文件名.py](http://文件名.py) # 只添加特定文件
+
+# 6\. 提交改动（写清楚做了什么）
+
+git commit -m "添加用户登录功能"
+
+# 7\. 推送到远程
+
+git push origin feature/add-login
+
+# 8\. 在 GitHub 网页上发起 Pull Request
+
+# 请求把你的分支合并到 main\`
+
+### 其他常用命令
+
+bash
+
+\`# 切换分支 git checkout 分支名
+
+# 查看提交历史
+
+git log --oneline
+
+# 撤销未提交的修改
+
+git checkout -- 文件名
+
+# 更新当前分支（同步主分支的最新改动）
+
+git checkout main git pull origin main git checkout feature/add-login git merge main\`
+
+* * *
+
+### 场景 2：你是外部贡献者（没有写权限）
+
+### 使用 Fork 工作流
+
+bash
+
+\`# 1. 在 GitHub 网页上点击 "Fork" 按钮
+
+# 这会把项目复制到你的账号下
+
+# 2\. 克隆你 Fork 的仓库
+
+git clone [https://github.com/你的用户名/项目名.git](https://github.com/你的用户名/项目名.git) cd 项目名
+
+# 3\. 添加原始仓库为上游（upstream）
+
+git remote add upstream [https://github.com/原作者/项目名.git](https://github.com/原作者/项目名.git)
+
+# 4\. 创建新分支并开发
+
+git checkout -b fix/typo-in-readme
+
+# 5\. 修改代码...
+
+# 6\. 提交并推送到你的 Fork
+
+git add . git commit -m "修复 README 中的拼写错误" git push origin fix/typo-in-readme
+
+# 7\. 在 GitHub 上发起 Pull Request
+
+# 从你的 Fork 请求合并到原始仓库
+
+# 8\. 同步原始仓库的最新改动（定期执行）
+
+git fetch upstream git checkout main git merge upstream/main git push origin main\`
+
+## 四、解决冲突
+
+### 什么是冲突？
+
+当你和别人修改了同一个文件的同一行，Git 无法自动合并时会产生冲突。
+
+### 解决步骤
+
+bash
+
+\`# 1. 拉取最新代码时出现冲突 git pull origin main
+
+# 提示：CONFLICT (content): Merge conflict in [文件名.py](http://文件名.py)
+
+# 2\. 打开冲突文件，会看到：
+
+# <<<<<<< HEAD 你的代码
+
+别人的代码
+
+> > > > > > > branch-name
+
+# 3\. 手动编辑，保留正确的代码，删除标记符
+
+# 4\. 标记冲突已解决
+
+git add [文件名.py](http://文件名.py)
+
+# 5\. 完成合并
+
+git commit -m "解决合并冲突"\`
+
+* * *
+
+## 五、常用 Git 命令速查
+
+bash
+
+\`# 配置用户信息（第一次使用） git config --global [user.name](http://user.name) "你的名字" git config --global [user.email](http://user.email) "你的邮箱"
+
+# 查看状态
+
+git status
+
+# 查看改动
+
+git diff
+
+# 查看远程仓库
+
+git remote -v
+
+# 删除分支
+
+git branch -d 分支名 # 本地删除 git push origin --delete 分支名 # 远程删除
+
+# 暂存当前工作（临时切换分支）
+
+git stash # 暂存 git stash pop # 恢复
+
+# 回退到某个版本
+
+git reset --hard commit-id # 危险操作！\`
+
+* * *
+
+## 六、团队协作流程图
+
+`你的本地电脑 GitHub 远程仓库 ┌─────────────┐ ┌─────────────┐ │ │ git clone │ │ │ 工作目录 │ ◄──────────────│ 项目仓库 │ │ │ │ │ └─────────────┘ └─────────────┘ │ ▲ │ git add │ ▼ │ ┌─────────────┐ │ │ 暂存区 │ │ │ (Stage) │ │ └─────────────┘ │ │ │ │ git commit │ ▼ │ ┌─────────────┐ git push │ │ 本地仓库 │ ────────────────────┘ │ (Repository)│ └─────────────┘ ▲ │ git pull └────────────────────────────┘`
+
+* * *
+
+## 七、GitHub 网页操作
+
+### 发起 Pull Request
+
+1.  Push 代码后，访问 GitHub 仓库页面
+    
+2.  点击 "Compare & pull request" 绿色按钮
+    
+3.  填写 PR 标题和描述（说明做了什么改动）
+    
+4.  选择审查者（Reviewers）
+    
+5.  点击 "Create pull request"
+    
+
+### 代码审查
+
+-   查看 "Files changed" 标签页
+    
+-   在代码行旁边添加评论
+    
+-   批准（Approve）或请求修改（Request changes）
+    
+
+### 合并 PR
+
+-   确保所有检查通过（CI/CD）
+    
+-   点击 "Merge pull request"
+    
+-   选择合并方式：
+    
+    -   **Merge commit**：保留所有提交历史
+        
+    -   **Squash and merge**：合并为一个提交（推荐）
+        
+    -   **Rebase and merge**：线性历史
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 今天在为了项目要设计几个agent；怎么调校不同的agent;agent之间用什么pattern；agent\\MCP server\\skills\\tools到底是什么关系 狂补这些知识
 
 ### 主流的Agent在做什么
@@ -229,11 +479,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 ### Unexpected Ether Transfer (Forcing Feeding)
@@ -409,6 +661,7 @@ k = 常数（池子创建时确定）
 
 
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -433,6 +686,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -572,6 +826,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -659,11 +914,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -714,6 +971,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 
 
+
 ### Rag
 
 RAG（检索增强生成）—Retrieval-Augmented Generation
@@ -756,6 +1014,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -927,6 +1186,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1126,6 +1386,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -1143,6 +1404,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1393,6 +1655,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -1529,6 +1792,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
