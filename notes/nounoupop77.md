@@ -15,8 +15,77 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+學習一些erc標準，可在openzeppplin調用
+
+1.  **ERC-20 – 可替代代币标准**
+    
+
+-   **核心定位**：以太坊**同质化代币（FT）** 的基础标准，所有稳定币（USDT/USDC）、平台币（BNB/ETH）都基于此。
+    
+-   **解决痛点**：早期代币没有统一接口，不同代币的转账、查询逻辑不兼容，钱包 / DApp 无法通用。
+    
+-   **核心功能**：定义了代币的发行、转账、授权三大核心能力，必须实现的 6 个强制接口：
+    
+    solidity
+    
+    ```
+    function totalSupply() external view returns (uint256); // 总发行量
+    function balanceOf(address account) external view returns (uint256); // 账户余额
+    function transfer(address recipient, uint256 amount) external returns (bool); // 直接转账
+    function approve(address spender, uint256 amount) external returns (bool); // 授权第三方花费
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool); // 授权转账
+    function allowance(address owner, address spender) external view returns (uint256); // 查询授权额度
+    ```
+    
+-   **适用场景**：稳定币、平台币、项目代币等**同质化资产**。
+    
+-   **缺点**：转账到合约地址时，若合约没有代币接收逻辑，代币会直接丢失（后续被 ERC-223 改进）。
+    
+
+**2\. ERC-721 – NFT 标准**
+
+-   **核心定位**：以太坊**非同质化代币（NFT）** 的基础标准，每个代币独一无二，不可分割。
+    
+-   **解决痛点**：数字藏品、虚拟资产没有唯一标识的标准，无法证明所有权和稀缺性。
+    
+-   **核心功能**：为每个代币分配唯一`tokenId`，记录所有权，核心接口：
+    
+    solidity
+    
+    ```
+    function balanceOf(address owner) external view returns (uint256); // 持有NFT数量
+    function ownerOf(uint256 tokenId) external view returns (address); // 查询tokenId的所有者
+    function safeTransferFrom(address from, address to, uint256 tokenId) external; // 安全转账（检查接收方是否支持NFT）
+    function transferFrom(address from, address to, uint256 tokenId) external; // 普通转账
+    function approve(address to, uint256 tokenId) external; // 授权单个NFT
+    ```
+    
+
+### **3\. ERC-1155 – 多代币标准（FT+NFT）**
+
+-   **核心定位**：**兼容 FT 和 NFT 的复合型代币标准**，一个合约可以发行多种代币，大幅节省 Gas 成本。
+    
+-   **解决痛点**：ERC-20 和 ERC-721 需要分别部署合约，发行多种资产时成本高、管理复杂；游戏中既有同质化金币，又有非同质化装备，需要两套标准。
+    
+-   **核心功能**：
+    
+    -   用同一个合约管理**多种代币**，每种代币用`id`区分；
+        
+    -   支持**批量转账**（`safeBatchTransferFrom`），一次转多种代币，降低 Gas；
+        
+    -   单一代币`id`的供应量为 1 时就是 NFT，供应量 > 1 时就是 FT。
+        
+
+ERC-1155 提供 `safeBatchTransferFrom` 接口，**一笔交易就能批量转账多种资产。**支持 FT 和 NFT 的查询、转账
+
+在RWA上有很廣的適用場景
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 今天系統性學習了合約安全
 
 **安全设计原则**
@@ -80,6 +149,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 系統地學習了一下gas費。
 
 Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
@@ -115,6 +185,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 今天依舊是運營部分的學習内容。
 
 在社群再次進行了宣發，得到了一些回饋，也進行了一些解答，吸引了一些注意。（創造互動更能引起路人的注意）
@@ -129,6 +200,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 
 
+
 今天处理了运营方面的任务
 
 用figma制作海报，想吸引人的文案，联系嘉宾以及多平台宣发，初步熟悉了运营工作的其中一个环节！
@@ -136,6 +208,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -151,6 +224,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -207,6 +281,7 @@ Student student; // 初始一个student结构体
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -309,6 +384,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -420,6 +496,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 今天參加運營分享會。
 
 -   知道了如何在telegram搭建和運營社群。通過對話題進行管理，分類來增加社群活躍度，對數據進行分析為社群製造吸引人的話題，認識到了機器人@MissRose\_bot，通過/help指令可以看到ross的功能
@@ -429,6 +506,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -459,6 +537,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 今天有點忙碌所以都是斷斷續續在加入會議，不過也零零碎碎地學到了一些知識！
 
 下午的co-learning，聼助教分享了一些運營經驗，雖然本身并沒有往運營發展的打斷但還是受益匪淺！感覺見了些市面哈哈哈
@@ -468,6 +547,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -500,6 +580,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 -   今天在平臺上mint了一個nft，很有趣地感受到了nft和錢包之間的關聯，每一步都需要錢包的確認。雖説在之前已經mint過nft，也在平臺上上架已經購買過，但還是感嘆mint一個nft這個平臺的簡單通俗易懂。
     
 -   參加了今晚的分享會，在懵懵懂懂的情況下，發現有同學做了會議紀要并且無私地發出，非常感動，想到了web3的很多知識都是開源公開的，由衷感謝這種慷慨的行爲，在web3，至少知識不是私有化。
@@ -509,6 +590,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
