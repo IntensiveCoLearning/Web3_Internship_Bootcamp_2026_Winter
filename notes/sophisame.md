@@ -15,8 +15,124 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+#   
+solidity
+
+-   solidity值类型
+    
+    -   bytes:为定长字节数组，（bytes1=>bytes32）16进制
+        
+        -   10为a，11为b，12为c以此类推（推到哪就不知道了）
+            
+    -   bool：为8进制，可能的取值为字符常量值true 或false
+        
+    -   uint:为2进制？
+        
+        -   其数据类型指无符号整数，意味着为非负数
+            
+        -   是uint256的别名，是一个256位无符号整数。您可以声明具有较少位的 uint — uint8、uint16、uint32 等
+            
+    -   int/uint ：（我记得int是可以为负的，而uint是非负）表示有符号和无符号的不同位数的整形变量，支持uint8=>uint 256(int同理）
+        
+    -   定长浮点型（fixed/ufixed)表示各种大小的有符号和无符号的定长浮点型，写为ufixed MxN（M表示占用的位数，N表示可用的小数位数）
+        
+-   存储有组织数据的方法
+    
+    -   两种数组
+        
+        -   固定数组
+            
+            -   uint\[x\]
+                
+                -   uint\[2\]\[3\]=\[(0,1),(1,2),(2,3)\]指由3个uint动态数组组成的数组
+                    
+                    -   要访问第三个动态数组中第二个uint，可以使用x\[2\]\[1\]
+                        
+            -   string\[x\]#x
+                
+            -   .length属性返回数组长度（只读）
+                
+        -   动态数组
+            
+            -   string\[\] 括号内无数字
+                
+    -   结构体struct
+        
+    -   映射Mapping（此函数默认为external）
+        
+        -   定义：在映射中，人们可以通过键（`Key`）来查询对应的值（`Value`），比如：通过一个人的`id`来查询他的钱包地址。
+            
+            -   1.mapping (address => uint) public accountBalance;（指将用户的余额保存在一个uint类型的变量中
+                
+            -   mapping (uint => string) userIdToName;（用来查找/存储的用户名）
+                
+        -   格式为`mapping(_KeyType => _ValueType)`，其中`_KeyType`和`_ValueType`分别是`Key`和`Value`的变量类型
+            
+        -   mapping是存储在链上的
+            
+    -   如果要添加新元素，则必须使用.push()（bytes，storage类型可以）或将.length增大（但要考虑是不是storage类型，只有storage类型才可以改变）
+        
+-   函数的修饰符
+    
+    -   view：意味着它只能读取数据不能更改数据
+        
+    -   pure：这个函数甚至都不访问应用里的数据
+        
+-   地址类型
+    
+    -   address
+        
+        -   payable address可以到address的隐式转化，而address到payable address的转换，需要通过uint160来进行中间转化
+            
+    -   address payable（5.0引入）：合约不再是从地址类型派生而来。但如果有payable的回退函数，则同样可以显示转化为address或者address payable类型
+        
+    -   成员变量
+        
+        -   address.balance(uint256):该地址的ether余额，以wei为单位
+            
+        -   .transfer(uint 256 amount)：向指定地址发送数量为amount的either ，失败，时发出异常，送出的2300gas矿工费用不可调节（与send相比更推荐transfer）
+            
+            -   如msg.sender.transfer(amount),值的是向msg.sender传送amount的either
+                
+        -   .send(uint 256 amount) returns（bool），失败时返回false，送出的2300gas矿工费用不可调节（send是transfer的低级版本）
+            
+        
+-   函数
+    
+    -   msg.sender： 此函数可以被调用，指的是当前调用者（或智能合约）的addres
+        
+        -   特点：使用 `msg.sender` 很安全，因为它具有以太坊区块链的安全保障 —— 除非窃取与以太坊地址相关联的私钥，否则是没有办法修改其他人的数据的。
+            
+    -   msg.value指调用函数的地址给出的余额
+        
+    -   require: 可做判断
+        
+    -   private不能够在函数外部被调用，但可以在函数内部被调用
+        
+    -   internal 可以在内部调用，但不能被内部调用，同时可以被函数继承（只有这个合约或者继承它的合约可以读取）
+        
+    -   external 不能够被内部调用，只能够在外部调用，且可以被继承。如果想强行调用需要用this.某函数名的方式来调用
+        
+    -   public 权限最大，可以在函数的外部内部被调用，也可以被继承
+        
+    -   pure:不会读取全局变量，更不会修改全局变量，一个固定的输入就会有固定的输出，不消耗gas
+        
+    -   constant。在函数中和view相同，在全局变量中，只能用于bytes1-bytes32，uint，int，string 代表数据不能被修改
+        
+    -   view 只读区全局变量的值，而不修改 不消耗gas#消耗gas的情况
+        
+    -   payable转账时必须要加的关键字
+        
+    -   函数可以有多返回值
+        
+    -   命名参数{value 2,name"hzy'}
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 # 区块链数据结构
 
 ## 链上数据基本类型
@@ -105,6 +221,7 @@ value：转账的费用
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 # **plume质押与流动性项目**
 
 ## Nest
@@ -166,6 +283,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 ## 哈希指针
 
 ![截屏2026-01-27 22.05.06.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-27-1769522717205-__2026-01-27_22.05.06.png)
@@ -185,6 +303,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -283,6 +402,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 # Hooked Protocol 代币经济模型
 
 Hooked Protocol采用了创新的单一代币（HOOK）结构，并辅以生态圈内部的的实用代币HGT（Hooked Gold Token）。其HOOK作为生态系统治理代币，具有社区活动和独家NFT访问功能，质押奖励与平台盈利，未来将用于Hooked基础设施的燃气费代币。
@@ -343,6 +463,7 @@ Gas 抵扣：在 Hooked Rollup 上的链上操作，使用 HOOK 可享手续费�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -416,6 +537,7 @@ retro funding是通过ai模型对项目先进行判断，产出方案，再结�
 
 
 
+
 # pendle协议
 
 我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
@@ -472,6 +594,7 @@ LP是SY和PT之间的交易
 
 
 
+
 LIdo
 
 ![截屏2026-01-20 22.31.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-20-1768919519461-__2026-01-20_22.31.50.png)
@@ -493,6 +616,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -613,6 +737,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 
 
+
 # uniswap协议：LP挖矿：AMM恒定乘积做市函数
 
 uniswap协议是以池子的方式进行交易的形式。这是一种做市函数。我们是和资金池做交易，所以Dex里需要引入新角色：LP的提供者，他们维持了整个交易的流动性。LP提供者就是普通用户的对手。
@@ -674,6 +799,7 @@ T0时间是添加流动性的时候，T1,T2分别为两次变化。并且假如y
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -922,6 +1048,7 @@ DeFi 的优势与风险：
 
 
 
+
 # 支付摩擦：机器经济需要新货币
 
 -   新需求：
@@ -991,6 +1118,7 @@ web3对ai合规的解决方案：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1079,6 +1207,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1237,6 +1366,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
