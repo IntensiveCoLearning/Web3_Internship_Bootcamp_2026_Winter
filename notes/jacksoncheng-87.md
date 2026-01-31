@@ -15,8 +15,149 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+# 智能合约开发全体系笔记
+
+## 一、 DApp 核心架构图景
+
+去中心化应用（DApp）与传统 Web 应用最大的区别在于后端逻辑的去中心化。
+
+| 组成部分 | 核心作用 | 交互方式 |
+| 前端 (UI) | 用户交互界面 | 通过 Viem 或 Ethers.js 调用钱包（如 MetaMask）提供的 RPC 节点进行通信。 |
+| 智能合约 | 业务逻辑核心 | 部署在 EVM（以太坊虚拟机）上，定义资产处理、投票、存储等规则。 |
+| 数据检索器 (Indexer) | 链上数据优化 | 监听合约 Event（事件），将非结构化数据存入 SQL 数据库，解决区块链查询慢的问题。 |
+| 去中心化存储 | 大文件存储 | 用于存储图片（NFT）、文档等大体量数据（如 IPFS、Arweave）。 |
+
+## 二、 Solidity 编程精要 🧪
+
+Solidity 是面向合约的高级语言，其核心在于对状态和资产的管理。
+
+### 1\. 基础数据类型
+
+-   `address`: 以太坊账户地址。
+    
+-   `uint256`: 256 位无符号整数，链上处理数字最常用的类型。
+    
+-   `mapping`: 键值对映射，常用于存储账本（地址 => 余额）。
+    
+
+### 2\. 函数权限与可见性
+
+-   **可见性修饰符**：
+    
+    -   `public`: 内部/外部均可调用。;
+        
+    -   `external`: 仅外部调用（更省 Gas）;
+        
+    -   `internal`: 仅合约及继承合约可用;
+        
+-   **状态修饰符**：
+    
+    -   `view`: 只读不写（不消耗 Gas）；
+        
+    -   `pure`: 不读不写，纯计算（不消耗 Gas）:
+        
+    -   `payable`: 允许函数接收 ETH。
+        
+
+## 三、 合约安全与优化 🛡️
+
+区块链代码不可篡改，安全性是开发者的第一准则。
+
+### 1\. 安全黄金准则：CEI 模式
+
+为了防止**重入攻击（Reentrancy）**，必须遵循以下顺序：
+
+1.  **Check（检查）**: 验证 `require` 条件。
+    
+2.  **Effect（生效）**: 先修改内部状态（如减掉余额）。
+    
+3.  **Interaction（交互）**: 最后执行外部转账（如 `call`）。
+    
+
+### 2\. Gas 优化策略 ⛽
+
+-   **减少存储操作**: `storage`（硬盘）读写极贵，`memory`（内存）极便宜。
+    
+-   **变量压缩**: 多个小变量（如 `uint128`）排在一起可以节省空间。
+    
+
+* * *
+
+## 四、 开发实战
+
+一个完整的合约开发流程通常包含以下工具链：
+
+1.  **开发框架**：**Foundry**（基于 Rust，快且支持 Solidity 测试）或 **Hardhat**;
+    
+2.  **本地测试**：在本地运行 `Anvil` 或 `Hardhat Node` 模拟链;
+    
+3.  **测试网部署**：在 **Sepolia** 上领取测试币，进行真实环境模拟;
+    
+4.  **浏览器验证**：在 **Etherscan** 上查看交易记录和合约源码。
+    
+
+### **链上留言板中合约代码：**
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract MessageBoard {
+
+// 保存所有人的留言记录
+
+mapping(address => string\[\]) public messages;
+
+// 留言事件，便于检索器和区块链浏览器追踪
+
+event NewMessage(address indexed sender, string message);
+
+// 构造函数，在部署时留言一条欢迎词
+
+constructor() {
+
+string memory initMsg = "Hello ETH Pandas";
+
+messages\[msg.sender\].push(initMsg);
+
+emit NewMessage(msg.sender, initMsg);
+
+}
+
+// 发送一条留言
+
+function leaveMessage(string memory \_msg) public {
+
+messages\[msg.sender\].push(\_msg); // 添加到发言记录
+
+emit NewMessage(msg.sender, \_msg); // 发出事件
+
+}
+
+// 查询某人第 n 条留言（从 0 开始）
+
+function getMessage(address user, uint256 index) public view returns (string memory) {
+
+return messages\[user\]\[index\];
+
+}
+
+// 查询某人一共发了多少条
+
+function getMessageCount(address user) public view returns (uint256) {
+
+return messages\[user\].length;
+
+}
+
+}
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 ### 学习ERC的标准
 
 ### 1\. 基础资产 (生态基石)
@@ -87,6 +228,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 Octant 是由 Golem 基金会发起的实验性公共资助平台，旨在利用ETH 质押收益创建了一个可持续的 Web3 项目公共资助模型。
 
 1\. 核心运行逻辑与分配机制
@@ -140,6 +282,7 @@ Octant成功展示了如何通过存量资产项目的利息（收益率）除�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 # **Web3的数据分析基础**
@@ -206,6 +349,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -408,6 +552,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 
 
+
 **黑客松和 Vibe Coding（AI 辅助编程）**
 
 -   团队配置建议：3-4人团队（2个开发+1个产品+1个PM），PM在演示时非常重要
@@ -447,6 +592,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -556,6 +702,7 @@ Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -701,6 +848,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1255,6 +1403,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -1581,6 +1730,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -1820,6 +1970,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -1902,6 +2053,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2111,6 +2263,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -2118,6 +2271,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2203,6 +2357,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2359,6 +2514,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2665,6 +2821,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -2728,6 +2885,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2893,6 +3051,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
