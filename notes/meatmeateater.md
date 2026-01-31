@@ -15,8 +15,21 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+今天也在弄黑客松
+
+1.  把代碼更新到新框架中
+    
+    ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/meatmeateater/images/2026-01-31-1769868405068-image.png)
+
+2.構想ptt框架  
+[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/ryj0\_Ki8be](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/ryj0_Ki8be)
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 今天把黑客松我要做的模塊寫出了一個初版:
 
 [https://github.com/MapleCity1314/spark-ai-demo/pull/1](https://github.com/MapleCity1314/spark-ai-demo/pull/1)
@@ -24,6 +37,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 今天在弄關於黑客松的東西，已完成
 
@@ -34,6 +48,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 -   **进行 Hardhat 跟练**
     
 -   **進行foundry跟練**
@@ -41,6 +56,7 @@ timezone: UTC+8
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -184,6 +200,7 @@ return true;
 
 
 
+
 今天來做gas優化的作業，我優化的是[Solidity by Example](https://solidity-by-example.org/loop/) 的For and While Loop程式碼
 
 原代碼:
@@ -307,6 +324,7 @@ unchecked {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -723,6 +741,7 @@ unchecked {
 
 
 
+
 Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 <img width="865" height="486" alt="image" src="https://github.com/user-attachments/assets/82b49f19-fe91-44b1-80f3-2990ef10f508" />
@@ -734,6 +753,7 @@ Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -829,6 +849,7 @@ Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -842,6 +863,7 @@ Thanks for clarifying!
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -876,6 +898,7 @@ Thanks for clarifying!
 
 
 
+
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -896,11 +919,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -942,12 +967,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1077,6 +1104,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1301,6 +1329,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1574,6 +1603,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
