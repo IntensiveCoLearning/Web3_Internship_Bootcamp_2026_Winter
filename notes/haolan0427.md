@@ -15,8 +15,43 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+GoLang
+
+-   [project.md](http://project.md) ，1h ✅
+    
+
+初始化了本地仓库，并创建 `.gitignore` 文件；
+
+搭建好了项目架构，并初始化 `Go Modules` ；
+
+在 `./task-management-system/configs/config.yaml` 中设置 `server` 、 `database` 、 `redis` 、 `jwt` 、 `rate_limit` 等配置；
+
+在根目录下创建 `.env` 和 `.env.example` ，分别用于存储私密信息（不上传到 github）和供其他开发者参考配置信息；
+
+创建 Go 语言的配置管理模块， `./task-management-system/internal/config/config.go` ，用于从 `.env` 和 `config.yaml` 加载配置信息并替换环境变量。并安装好需要的包， `go get github.com/joho/godotenv github.com/spf13/viper` ；
+
+上传到 github 上，提交信息为 `“完成配置信息设置”` 。
+
+* * *
+
+Gorm ，1h ✅
+
+一对多关系完成；
+
+正在学习多对多关系
+
+* * *
+
+Solidity by Example
+
+-   完成 Basic ，1h ✅
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 GoLang
 
 -   实操 [project.md](http://project.md) ，1h
@@ -79,6 +114,7 @@ Vibe Coding ，1h ✅
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 GoLang
 
 -   [整理笔记](https://www.notion.so/Go-2eb730847f49808e9581ce95f0432eb6?pvs=21)，1h ✅
@@ -104,6 +140,7 @@ Gorm
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 ### Gorm
 
 ### Solidity by example
@@ -114,6 +151,7 @@ Gorm
 
 
 
+
 ### Solidity by Example
 
 ### Gorm
@@ -121,6 +159,7 @@ Gorm
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -141,6 +180,7 @@ Gorm
 
 
 
+
 ### 学习并总结当前我能接触到的智能合约安全漏洞
 
 [笔记链接](https://joyous-stamp-b17.notion.site/2f2730847f4980fbae5bdaa84faea19f)
@@ -152,6 +192,7 @@ Gorm
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -188,11 +229,13 @@ Gorm
 
 
 
+
 ### Web2 to Web3 Week2 Day2 Reading and Writing
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -227,6 +270,7 @@ Gorm
 
 
 
+
 ### 继续补web2-to-web3第一周的课，已经补上，笔记如下链接：
 
 [week1主要是教如何在Ethereum上交互的](https://joyous-stamp-b17.notion.site/web2-to-web3-2ed730847f4980d98b3fc8c8f671f54a?pvs=74)
@@ -242,6 +286,7 @@ Gorm
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -290,6 +335,7 @@ Gorm
 
 
 
+
 # 总结过去的一周
 
 在web3实习计划的第一周已经结束了，遇到了很多实力强劲、深耕多年和见解不凡的老师，也有很多勤勉、有趣、积极和热心的同好。这一周学习了很多知识，也改变了许多之前的见解，同时对加密行业的认识更进一步。从基本的工具使用，如社群类的X、tg，会议类的Zoom，笔记类的Notion和Figma，日程规划类的Calendar，以及钱包插件MetaMask等；到对以太坊系统的详尽认识，[《从021学习以太坊》](https://github.com/XiaoHai67890/021Ethereum)这本书是在是太适合投喂小白了，娓娓道来，让人百读不倦；再到对个人在加密行业中的规划，有了更加清晰的认识，未来几年里最主要的任务是在基于GoLang的backend engineer职务上深耕。感谢这次活动，刚过1/4就让我收获匪浅，增长了见识，有vibe coding非常厉害的实例，有刚运营个媒体账户就很成果的大佬，也有来自各行各业，五湖四海的人，我个人非常有幸与参加这次活动。既然明确了未来的发展路线，那还有什么可以好说的呢？哦不～，最后送一句话给大家
@@ -303,6 +349,7 @@ Gorm
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -343,6 +390,7 @@ Gorm
 
 
 
+
 《021学习以太坊》第5章，了解EVM以及ta在以太坊生态中的意义，也深刻理解了为什么以太坊虚拟机能被称为真正意义上的世界计算机了，也学习了一笔交易的Gas是如何组成的，以及在编写智能合约时，如何让Gas是合理的。
 
 《021学习以太坊》第6章，这章主要讲述了以太坊是如何以及为什么从最初的PoW共识转移到PoS共识机制、以太坊目前PoS共识机制的核心组成和机理、以太坊系统的历史以及一些重要的升级。
@@ -350,6 +398,7 @@ Gorm
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -376,6 +425,7 @@ Gorm
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -426,6 +476,7 @@ Gorm
 
 
 
+
 2026-1-13：
 
 目标：确定在本次学习中，具体专研学习的方向。
@@ -441,6 +492,7 @@ Gorm
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
