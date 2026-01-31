@@ -15,8 +15,186 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+// 简易投票合约示例
+
+contract SimpleVoting {
+
+// 结构体：提案
+
+struct Proposal {
+
+string description; // 提案描述
+
+uint256 voteCount; // 得票数
+
+bool executed; // 是否已执行
+
+}
+
+// 状态变量
+
+address public chairperson;
+
+mapping(uint256 => Proposal) public proposals;
+
+mapping(address => mapping(uint256 => bool)) public hasVoted;
+
+uint256 public proposalCount;
+
+// 修饰符：仅主席
+
+modifier onlyChairperson() {
+
+require(msg.sender == chairperson, "Only chairperson can call");
+
+\_;
+
+}
+
+// 构造函数
+
+constructor() {
+
+chairperson = msg.sender;
+
+}
+
+// 创建提案（仅主席）
+
+function createProposal(string memory description)
+
+external
+
+onlyChairperson
+
+{
+
+proposals\[proposalCount\] = Proposal({
+
+description: description,
+
+voteCount: 0,
+
+executed: false
+
+});
+
+proposalCount++;
+
+}
+
+// 投票
+
+function vote(uint256 proposalId) external {
+
+require(proposalId < proposalCount, "Invalid proposal");
+
+require(!hasVoted\[msg.sender\]\[proposalId\], "Already voted");
+
+proposals\[proposalId\].voteCount++;
+
+hasVoted\[msg.sender\]\[proposalId\] = true;
+
+}
+
+// 查询提案
+
+function getProposal(uint256 proposalId)
+
+external
+
+view
+
+returns (string memory, uint256, bool)
+
+{
+
+Proposal memory p = proposals\[proposalId\];
+
+return (p.description, p.voteCount, p.executed);
+
+}
+
+}
+
+\`\`\`
+
+\### 数据结构对比表
+
+| 数据结构 | 特点 | Gas 成本 | 适用场景 |
+
+|---------|------|---------|---------|
+
+| mapping | 键值对，不可遍历 | 低 | 地址余额、用户权限 |
+
+| array | 可遍历，有顺序 | 中-高 | 需要遍历的列表 |
+
+| struct | 自定义复合类型 | 取决于字段 | 实体对象 |
+
+\### 遇到的问题
+
+\#### 问题1
+
+**问题描述**: mapping 为什么不支持遍历？如何获取所有键？
+
+**解决方案**:
+
+\- mapping 在 EVM 中是完全散列的，不存储键列表
+
+\- 需要遍历时，可额外维护一个 address\[\] 数组记录所有键
+
+\- 或使用 EnumerableMap（OpenZeppelin 库）
+
+**参考资料**:
+
+\- Solidity Docs - Mapping Types
+
+\- OpenZeppelin EnumerableMap
+
+**状态**: ✅ 已解决
+
+\#### 问题2
+
+**问题描述**: modifier 中的 `_;` 是什么意思？
+
+**解决方案**:
+
+\- `_;` 是占位符，表示被修饰函数的原始代码执行位置
+
+\- modifier 在 `_;` 前的代码为前置检查
+
+\- `_;` 后的代码为后置处理
+
+**参考资料**: Solidity Docs - Function Modifiers
+
+**状态**: ✅ 已解决
+
+\#### 问题3
+
+**问题描述**: UTXO 模型与 Account 模型的具体区别？
+
+**解决方案**:
+
+\- UTXO: 交易输入消费旧 UTXO，输出创建新 UTXO（类似纸币找零）
+
+\- Account: 直接修改账户余额（类似银行转账）
+
+\- 以太坊选择 Account 是为了支持智能合约的复杂状态
+
+**参考资料**: Bitcoin Whitepaper, Ethereum Whitepaper
+
+**状态**: 📖 理解中
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 use std::env;
 
 use std::fs;
@@ -208,6 +386,7 @@ cargo run -- del 1
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 \# 每日学习日志 - 2026-01-29
 
@@ -450,6 +629,7 @@ r1.push\_str("def");
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 \# 每日学习日志 - 2026-01-28
@@ -722,6 +902,7 @@ a + b // 表达式作为返回值
 
 
 
+
 \# 2026-01-25 Rust入门学习
 
 \## 📅 日期
@@ -923,6 +1104,7 @@ Ok(content)
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1165,6 +1347,7 @@ function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
 
 
 
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -1402,6 +1585,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 
 
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -1483,6 +1667,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1645,6 +1830,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1968,6 +2154,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -2169,6 +2356,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2427,6 +2615,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -2619,6 +2808,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
