@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+学习复习回顾相关章节，完成未完成作业与实践挑战,准备web3简历~
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 学习foundry和hardhat，了解黑客松，准备web3简历~
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 # **Ethernaut 前 3 关**
 
@@ -63,6 +70,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 1) ERC-20：同质化代币（Fungible Token）
@@ -329,6 +337,7 @@ ERC 的价值在于“可组合性”：你的合约遵循标准，就能直接�
 
 
 
+
 \## 1. Foundry
 
 \- 以 **Rust** 实现的以太坊开发工具链，主打：\*\*编译快、测试快、脚本部署强\*\*。
@@ -560,6 +569,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 
 
+
 \## 1. 复习回顾（补课清单）
 
 \- 数据位置`storage / memory / calldata`
@@ -607,6 +617,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -703,6 +714,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 
 
+
 \### 继承与多态
 
 \- 使`is`关键字继承，支持多重继承
@@ -782,6 +794,7 @@ Foundry 最大优势之一：在测试里“控制环境”。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -915,6 +928,7 @@ contract MyContract {
 
 
 
+
 [https://x.com/palytoxin5/status/2012876581187067984?s=20](https://x.com/palytoxin5/status/2012876581187067984?s=20)
 
 今天发了推文，还听了分享会：**分享会 - Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
@@ -924,6 +938,7 @@ contract MyContract {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1026,6 +1041,7 @@ contract MyContract {
 
 
 
+
 ````markdown
 # Day 5 学习笔记：Remix IDE开发环境
 
@@ -1104,6 +1120,7 @@ Remix IDE作为浏览器基开发环境，无需安装即可快速上手，适�
 
 
 
+
 # Day 3 学习笔记：安全合规与ENS
 
 ## Web3安全与合规
@@ -1154,6 +1171,7 @@ Web3中的身份管理很重要，但也要防范Sybil攻击（一个人创建�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1230,6 +1248,7 @@ Uniswap V2是一个去中心化交易协议，采用自动做市商（AMM）机�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
