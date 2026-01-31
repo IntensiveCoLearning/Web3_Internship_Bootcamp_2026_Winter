@@ -15,8 +15,26 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+Date: 2026/1/31
+
+-   学习内容：《021以太坊》+ offer space
+    
+-   进展：尝试部署合约练习，不知道为什么连接钱包的时候连不到测试网，还在调试中
+    
+-   感悟：
+    
+-   疑惑：
+    
+    ![54dbd9a18b2df5543b637db56185cff4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/serious-cryptor/images/2026-01-31-1769874433932-54dbd9a18b2df5543b637db56185cff4.png)
+
+notion笔记：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy\_link](https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8b1de10bd61?source=copy_link)
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 Date: 2026/1/30
 
 -   学习内容：cobuilding + solidity
@@ -36,6 +54,7 @@ Date: 2026/1/30
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 Date: 2026/1/29
 
 -   学习内容：cobuilding + solidity
@@ -52,6 +71,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8009a1b5e5961139c2
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 Date: 2026/1/28
@@ -73,6 +93,7 @@ notion笔记同步更新：[https://www.notion.so/KiteCompute-Agent-GPU-2e4bd99c
 
 
 
+
 Date: 2026/1/25
 
 -   学习内容：复盘运营向space + 《021以太坊》第三章第七节-第八节+ 钓鱼攻防任务
@@ -89,6 +110,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -114,6 +136,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 
 
+
 Date: 2026/1/201
 
 -   学习内容：会议x3 + 《021以太坊》第三章账户类型与结构
@@ -130,6 +153,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -159,6 +183,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 
 
+
 Date: 2026/1/19
 
 -   学习内容：web3运营会议 + 实习手册Sodility
@@ -175,6 +200,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -208,6 +234,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 
 
+
 Date: 2026/1/17
 
 -   学习内容：《021以太坊》网络结构与节点类型
@@ -224,6 +251,7 @@ notion笔记同步更新：[https://www.notion.so/0-1-ETH-2e4bd99c2d3e80b8bd3cc8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -261,6 +289,7 @@ notion笔记同步更新：[还在整理中ing...](https://www.notion.so/web3-2e
 
 
 
+
 Date: 2026/1/15
 
 -   学习内容：web3与ai会议 + 《021以太坊》第一章
@@ -277,6 +306,7 @@ notion笔记同步更新：[https://www.notion.so/web3-2e6bd99c2d3e80d2b53dc33e9
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -318,6 +348,7 @@ notion笔记同步更新：[https://www.notion.so/2e6bd99c2d3e80d2b53dc33e918f14
 
 
 
+
 Date: 2026/1/13
 
 -   学习内容：实习手册-智能合约开发 +《021以太坊》DAPP部分 + 20:00的web3运行原理 + 我的第一个NFT
@@ -337,6 +368,7 @@ notion笔记同步更新：[https://www.notion.so/2e4bd99c2d3e8029a48cf359223ea4
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
