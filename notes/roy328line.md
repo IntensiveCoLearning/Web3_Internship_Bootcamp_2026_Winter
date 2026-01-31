@@ -15,8 +15,30 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+## **Day 20 学习计划**
+
+2026/01/31 总体学习计划如下：
+
+-   **学习** [**ERC 标准**](https://ethpanda.notion.site/ERC-2debbd63be8781e49eb3eaf5e75fb1c1)
+    
+
+| 類別 | 標準 | 解決的核心問題 |
+| --- | --- | --- |
+| FT（可替代代幣） | ERC-20 | 讓錢包、DEX、借貸協議都能用同一套介面操作代幣轉帳/授權 |
+| NFT（不可替代） | ERC-721 | 讓 NFT 的所有權、轉移、授權有統一介面 |
+| 多資產 | ERC-1155 | 用同一合約同時管理 FT + NFT，支援批次操作，省 gas |
+| 介面宣告 | ERC-165 | 用 supportsInterface 讓外部知道合約支援哪些介面 |
+| 轉帳回呼 | ERC-223 / ERC-1363 / ERC-827 | 嘗試把「付款 + 執行」做成單筆交易，改善 ERC-20 的 UX 缺口 |
+| 元資料 | ERC-1046 | 把 tokenURI 從 NFT 擴到 ERC-20，做跨標準的 metadata 互通 |
+| 錯誤碼 | ERC-6093 | 統一 ERC-20/721/1155 的 custom errors，讓錯誤更可解碼、更省 gas |
+| 合規代幣 | ERC-3643（T-REX） | 把「身份/合規/轉讓限制/凍結/追回」納入標準化框架，常見於 RWA |
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 ## **Day 19 学习计划**
 
 2026/01/30 总体学习计划如下：
@@ -58,6 +80,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 ## **Day 18 学习计划**
@@ -109,6 +132,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 17 学习计划**
 
 2026/01/28 总体学习计划如下：
@@ -128,6 +152,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -176,6 +201,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -238,6 +264,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -373,6 +400,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 13 学习计划**
 
 2026/01/24 总体学习计划如下：
@@ -449,6 +477,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 12 学习计划**
 
 2026/01/23 总体学习计划如下：
@@ -507,6 +536,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -527,6 +557,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -578,6 +609,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -802,6 +834,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -917,6 +950,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -997,6 +1031,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -1032,6 +1067,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1168,6 +1204,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 4 学习计划**
 
 2026/01/15 总体学习计划如下：
@@ -1267,6 +1304,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1484,6 +1522,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1622,6 +1661,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
