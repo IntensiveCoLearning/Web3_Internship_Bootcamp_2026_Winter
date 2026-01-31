@@ -15,8 +15,320 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+\- **Hardhat**：如果你喜欢 **JavaScript**，以后想做全栈开发（写前端网页跟合约交互），Hardhat 是必经之路。因为它的测试代码和前端代码很像。
+
+\- **Foundry**：如果你想做\*\*纯合约开发\*\*，追求极致的速度和像黑客一样的快感，Foundry 是现在的行业新标准。
+
+\# Foundry（偏向合约测试）
+
+理解这三个角色的关系：
+
+1\. **Anvil（铁砧）**：它是游戏服务器。它会在你电脑本地启动一条区块链。只要它开着，你的世界就存在；它关了，世界就消失。
+
+2\. **Forge（锻造）**：它是造物主工具。用来编写和把合约（比如一个自动售货机）放到服务器里。
+
+3\. **Cast（施法）**：它是游戏手柄。用来和合约互动（比如查询余额、按下按钮）。
+
+\## forge
+
+\### 初始化一个项目
+
+\`\`\`plain
+
+forge init my-contract
+
+cd my-contract
+
+\`\`\`
+
+\### 写一个合约
+
+在 `src/` 目录下创建合约
+
+\### 编译合约
+
+\`\`\`solidity
+
+forge build
+
+\`\`\`
+
+\### 启动本地节点
+
+\`\`\`solidity
+
+myx@cs:/mnt/e/Foundry/myproj$ anvil
+
+Available Accounts
+
+\==================
+
+(0) 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000.000000000000000000 ETH)
+
+(1) 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000.000000000000000000 ETH)
+
+(2) 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC (10000.000000000000000000 ETH)
+
+(3) 0x90F79bf6EB2c4f870365E785982E1f101E93b906 (10000.000000000000000000 ETH)
+
+(4) 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65 (10000.000000000000000000 ETH)
+
+(5) 0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc (10000.000000000000000000 ETH)
+
+(6) 0x976EA74026E726554dB657fA54763abd0C3a0aa9 (10000.000000000000000000 ETH)
+
+(7) 0x14dC79964da2C08b23698B3D3cc7Ca32193d9955 (10000.000000000000000000 ETH)
+
+(8) 0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f (10000.000000000000000000 ETH)
+
+(9) 0xa0Ee7A142d267C1f36714E4a8F75612F20a79720 (10000.000000000000000000 ETH)
+
+Private Keys
+
+\==================
+
+(0) 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+(1) 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
+
+(2) 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+
+(3) 0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6
+
+(4) 0x47e179ec197488593b187f80a00eb0da91f1b9d0b13f8733639f19c30a34926a
+
+(5) 0x8b3a350cf5c34c9194ca85829a2df0ec3153be0318b5e2d3348e872092edffba
+
+(6) 0x92db14e403b83dfe3df233f83dfa3a0d7096f21ca9b0d6d6b8d88b2b4ec1564e
+
+(7) 0x4bbbf85ce3377467afe5d46f804f221813b2bb87f24d81f60f1fcdbf7cbf4356
+
+(8) 0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97
+
+(9) 0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6
+
+\`\`\`
+
+\### 设置环境变量，部署合约上链
+
+**RPC 就是让程序（Foundry、脚本、工具）连接区块链节点的 URL**。
+
+你要和 Sepolia testnet 通信，就必须有 Sepolia 的 RPC。 用它才能部署合约、发送交易、读区块
+
+\`\`\`bash
+
+//用自己钱包部署到sepolia测试网
+
+export PRIVATE\_KEY=你的私钥
+
+export RPC\_URL=[https://eth-sepolia.g.alchemy.com/v2/你的APIKEY](https://eth-sepolia.g.alchemy.com/v2/你的APIKEY)
+
+forge script ./script/DeploySimpleStorage.s.sol --broadcast --rpc-url $RPC\_URL --private-key $PRIVATE\_KEY
+
+//anvil本地链模板如下
+
+export PRIVATE\_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+export RPC\_URL=[http://127.0.0.1:8545](http://127.0.0.1:8545)
+
+forge script ./script/DeploySimpleStorage.s.sol --broadcast --rpc-url $RPC\_URL --private-key $PRIVATE\_KEY
+
+\`\`\`
+
+\### 测试
+
+\`\`\`solidity
+
+forge test --match-path ./test/unstoppable/Unstoppable.t.sol -vv //运行指定测试合约
+
+forge test -vv //只有一个测试文件直接
+
+forge test --match-test 函数 -vv //测试单个函数
+
+\`\`\`
+
+因为 **Foundry 的测试会自动读取 test 中的脚本，但所有合约逻辑仍然来自 src 文件夹。**
+
+换句话说：
+
+\+ **src/** 里是你要审计 / 攻击 / 部署的真实合约
+
+\+ **test/** 里是 Foundry 自动部署 src 合约、构建攻击场景、执行 exploit 的脚本
+
+代码干的事是：
+
+1\. 执行 `test/unstoppable/*.t.sol` 文件
+
+2\. 测试脚本内部
+
+\- 使用 **src 里的 UnstoppableLender.sol / DamnValuableToken.sol**
+
+\- 然后自动部署它们
+
+\- 自动设置初始状态
+
+\- 自动运行 exploit
+
+3\. 最后验证 challenge 是否被解掉
+
+\#### 测试模式
+
+\##### Fork Test（分叉测试）
+
+**Fork Test = 基于真实链状态的本地 EVM 沙箱。**
+
+Foundry 允许你从主网/测试网某个区块高度创建一份“链状态快照”，然后在本地执行交易。
+
+换句话说：
+
+\+ **代码在本地跑**
+
+\+ **状态从链上来**
+
+\+ **读是真实的，写是本地的，不影响链上**
+
+\###### 使用
+
+1\. 在 foundry.toml 里写 RPC
+
+\`\`\`solidity
+
+\[rpc\_endpoints\]
+
+sepolianet = "[https://eth-sepolia.g.alchemy.com/v2/DPuDLu\_tUJwkWFmyEsT7x](https://eth-sepolia.g.alchemy.com/v2/DPuDLu_tUJwkWFmyEsT7x)"
+
+\`\`\`
+
+2\. 测试代码中这样调用（注意选择的区块要高最好是最近的，否则有些调用合约不在链上）
+
+\`\`\`solidity
+
+contract FundMeTest is Test {
+
+FundMe fundme;
+
+address constant SEPOLIA\_ETH\_USD = 0x694AA1769357215DE4FAC081bf1f309aDC325306;
+
+function setUp() external { //部署合约
+
+//fork测试
+
+vm.createSelectFork("sepolianet", 9\_000\_000); //fork 到 Sepolia（会从 foundry.toml 里读 rpc\_endpoints.sepolia）
+
+fundme = new FundMe(SEPOLIA\_ETH\_USD);// 2. 用真实的 priceFeed 地址部署 FundMe
+
+}
+
+}
+
+\`\`\`
+
+\#### monk
+
+**Mock = 在测试环境中，用合约模拟真实外部依赖的行为**
+
+特点：
+
+\+ 不访问链上真实合约
+
+\+ 不依赖预言机、治理、多签等外部状态
+
+\+ 可控（返回值可随时设定）
+
+\+ 可预测（不随链上状态变化）
+
+\+ 允许边界条件/攻击场景测试
+
+Web3 测试中常 mock 的组件：
+
+\+ Price Feed（Chainlink AggregatorV3Interface）
+
+\+ ERC20 token
+
+\+ 外部协议接口（Uniswap、Aave、Lido）
+
+\+ Oracle 和跨链模块
+
+适用场景：
+
+**你需要测试自己写的逻辑，而外部依赖本身不是测试重点。**
+
+\## cast
+
+\### cast call 查操作（显示变量值）
+
+\`\`\`bash
+
+调用函数
+
+cast call 合约地址 "变量名()" --rpc-url $RPC\_URL
+
+//可选参数，把数值转化为十进制
+
+cast call 合约地址 "变量名()" --rpc-url $RPC\_URL | cast --to-dec
+
+\`\`\`
+
+\### cast send 调用操作
+
+\`\`\`bash
+
+cast send 合约地址 "函数名(uint256)" 参数 --rpc-url $RPC\_URL --private-key $PRIVATE\_KEY
+
+\`\`\`
+
+\### 例子
+
+\`\`\`bash
+
+myx@cs:~/web3开发/test$ cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "setNumber(uint256)" 666 --rpc-url $RPC\_URL --private-key $PRIVATE\_KEY
+
+blockHash 0x1544600ae1151a5f5e2b51fbda1ccc19a9b51877a3b973404b4682d71ed0be28
+
+blockNumber 4
+
+contractAddress
+
+cumulativeGasUsed 23808
+
+effectiveGasPrice 671353850
+
+from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+gasUsed 23808
+
+logs \[\]
+
+logsBloom 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+root
+
+status 1 (success)
+
+transactionHash 0xe78928c25a291baf8d195df78480172a0359551005f46ccdf001995a4dc60dae
+
+transactionIndex 0
+
+type 2
+
+blobGasPrice 1
+
+blobGasUsed
+
+to 0x5FbDB2315678afecb367f032d93F642f64180aa3
+
+myx@cs:~/web3开发/test$ cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()" --rpc-url $RPC\_URL | cast --to-dec
+
+666
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 \## 滑点与价格冲击
 
 **滑点**就是：\*\*“你预期的价格”\*\* 和 **“实际成交的更差价格”** 之间的差额。
@@ -177,6 +489,7 @@ amounts\[i + 1\] = getAmountOut(amounts\[i\], reserveIn, reserveOut);
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 \### 3.实战模拟
 
 **场景设定：**
@@ -332,6 +645,7 @@ ETH 涨了，你虽然赚了（从 4万 变成了 5.6万），但你跑输了大
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 Uniswp是一个去中心化交易所，所谓去中心化，可以从以下两个方面理解：
 
 ●交易全部是由开源的代码来控制，没有任何人为的因素
@@ -423,6 +737,7 @@ $$\\Delta y = \\frac{y \\cdot \\Delta x\_{with\\\_fee}}{x + \\Delta x\_{with\\\_
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -843,6 +1158,7 @@ messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5
 
 
 
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -986,6 +1302,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1222,6 +1539,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -1300,6 +1618,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1598,6 +1917,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -1643,6 +1963,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1767,6 +2088,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -1852,6 +2174,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1956,6 +2279,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2100,6 +2424,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -2201,6 +2526,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2364,6 +2690,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
