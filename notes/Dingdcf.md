@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+今天听了web3数据分析基础这一节课，对web3的数据结构有了大概的了解：同时也考虑积累一些数据分析方面的技能以便开学之后去投相关的实习
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-31-1769874112290-image.png)
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 完成了dao的治理会议，并撰写了一份研报
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-30-1769775891629-image.png)
@@ -24,6 +32,7 @@ timezone: UTC+8
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 今天听完了投研方面的回放，感觉对投研这个领域有了基本的了解，也对于我做lxdao的新手任务有了很大的帮助，我也知道了一些传统的撸毛以及投研和web3工作的联系
 
@@ -34,11 +43,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 今天观看了web3运行原理的视频，对web3的技术的更加细节的部分（如我在打新humidfi过程中用到的rpc服务器）有了更进一步的了解
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -53,6 +64,7 @@ timezone: UTC+8
 
 
 
+
 在朋友的推荐下关注了不少web3的优质博主，大概翻了翻，了解了不少撸空投或者是套利的机会
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-24-1769270284573-image.png)
@@ -60,6 +72,7 @@ timezone: UTC+8
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -78,6 +91,7 @@ timezone: UTC+8
 
 
 
+
 参加了lxdao的公共物品的募资模式的线上会议，对web3的生态有了更加全面的了解，同时也大概感受到了web3的投研方面所需要的知识
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-22-1769096922813-image.png)
@@ -85,6 +99,7 @@ timezone: UTC+8
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -107,6 +122,7 @@ timezone: UTC+8
 
 
 
+
 今天做了英语方面的提升的规划：大致规划好了接下来半年要参加的考试和比赛，同时参与了web3英语角的活动。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-20-1768919100918-image.png)
@@ -114,6 +130,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -140,6 +157,7 @@ timezone: UTC+8
 
 
 
+
 今天参与了lxdao的周会并且在会议上面做了自我介绍加入了lxdao，对dao整体的组织结构有了更加深入的了解，并打算报名参加其中的一个项目。然后学习了用u卡套壳google pay以及paypal支付gpt。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-17-1768665054168-image.png)
@@ -147,6 +165,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -182,6 +201,7 @@ timezone: UTC+8
 
 
 
+
 今天主要完成了实习计划中的相对实践的任务：测试网代币、nft铸造和防钓鱼攻击演练。对我来说比较重要的主要还是钱包安全这一点，后面要玩的不少撸毛项目都与钱包安全相关，而钱包安全直接与本金安全相关，因此我格外重视。今天最主要的收获还是学习到了区块链浏览器的使用的方法
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-15-1768491400511-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Dingdcf/images/2026-01-15-1768491279844-image.png)
@@ -189,6 +209,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
