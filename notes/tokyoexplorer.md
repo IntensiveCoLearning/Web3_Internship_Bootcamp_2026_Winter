@@ -15,8 +15,126 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+## **事件**
+
+`Solidity`中的事件（`event`）是`EVM`上日志的抽象，它具有两个特点：
+
+-   响应：应用程序（`ethers.js`）可以通过`RPC`接口订阅和监听这些事件，并在前端做响应。
+    
+-   经济：事件是`EVM`上比较经济的存储数据的方式，每个大概消耗2,000 `gas`；相比之下，链上存储一个新变量至少需要20,000 `gas`。
+    
+
+### **声明事件**
+
+事件的声明由`event`关键字开头，接着是事件名称，括号里面写好事件需要记录的变量类型和变量名。以`ERC20`代币合约的`Transfer`事件为例：
+
+```
+event Transfer(address indexed from, address indexed to, uint256 value);
+```
+
+我们可以看到，`Transfer`事件共记录了3个变量`from`，`to`和`value`，分别对应代币的转账地址，接收地址和转账数量，其中`from`和`to`前面带有`indexed`关键字，他们会保存在以太坊虚拟机日志的`topics`中，方便之后检索。
+
+### **释放事件**
+
+我们可以在函数里释放事件。在下面的例子中，每次用`_transfer()`函数进行转账操作的时候，都会释放`Transfer`事件，并记录相应的变量。
+
+```
+// 定义_transfer函数，执行转账逻辑
+function _transfer(
+    address from,
+    address to,
+    uint256 amount
+) external {
+
+    _balances[from] = 10000000; // 给转账地址一些初始代币
+
+    _balances[from] -=  amount; // from地址减去转账数量
+    _balances[to] += amount; // to地址加上转账数量
+
+    // 释放事件
+    emit Transfer(from, to, amount);
+}
+```
+
+## **继承**
+
+继承是面向对象编程很重要的组成部分，可以显著减少重复代码。如果把合约看作是对象的话，`Solidity`也是面向对象的编程，也支持继承。
+
+### **规则**
+
+-   `virtual`: 父合约中的函数，如果希望子合约重写，需要加上`virtual`关键字。
+    
+-   `override`：子合约重写了父合约中的函数，需要加上`override`关键字。
+    
+
+**注意**：用`override`修饰`public`变量，会重写与变量同名的`getter`函数，例如：
+
+```
+mapping(address => uint256) public override balanceOf;
+```
+
+### **多重继承**
+
+`Solidity`的合约可以继承多个合约。规则：
+
+1.  继承时要按辈分最高到最低的顺序排。比如我们写一个`Erzi`合约，继承`Yeye`合约和`Baba`合约，那么就要写成`contract Erzi is Yeye, Baba`，而不能写成`contract Erzi is Baba, Yeye`，不然就会报错。
+    
+2.  如果某一个函数在多个继承的合约里都存在，比如例子中的`hip()`和`pop()`，在子合约里必须重写，不然会报错。
+    
+3.  重写在多个父合约中都重名的函数时，`override`关键字后面要加上所有父合约名字，例如`override(Yeye, Baba)`。
+    
+
+```
+contract Yeye {
+    event Log(string msg);
+
+    // 定义3个function: hip(), pop(), yeye()，Log值为Yeye。
+    function hip() public virtual{
+        emit Log("Yeye");
+    }
+
+    function pop() public virtual{
+        emit Log("Yeye");
+    }
+
+    function yeye() public virtual {
+        emit Log("Yeye");
+    }
+}
+
+contract Baba is Yeye{
+    // 继承两个function: hip()和pop()，输出改为Baba。
+    function hip() public virtual override{
+        emit Log("Baba");
+    }
+
+    function pop() public virtual override{
+        emit Log("Baba");
+    }
+
+    function baba() public virtual{
+        emit Log("Baba");
+    }
+}
+
+contract Erzi is Yeye, Baba{
+    // 继承两个function: hip()和pop()，输出值为Erzi。
+    function hip() public virtual override(Yeye, Baba){
+        emit Log("Erzi");
+    }
+
+    function pop() public virtual override(Yeye, Baba) {
+        emit Log("Erzi");
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 ## **构造函数和修饰器**
 
 ## **构造函数**
@@ -59,6 +177,7 @@ function changeOwner(address _newOwner) external onlyOwner{
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 ### 变量初始值
 
@@ -220,6 +339,7 @@ function ternaryTest(uint256 x, uint256 y) public pure returns(uint256){
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 ### array、struct
 
 -   固定长度数组：在声明时指定数组的长度。用`T[k]`的格式声明，其中`T`是元素的类型，`k`是长度
@@ -349,11 +469,13 @@ function writeMap (uint _Key, address _Value) public{
 
 
 
+
 今日在WTF上重新学习solidity，这里的教程比 [Solidity by Example](https://solidity-by-example.org/) 更好懂一点，目前完成了solidity101前五关。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -482,6 +604,7 @@ contract ReentrancyGuardTransient {
 
 
 
+
 structs
 
 You can define your own type by creating a .`struct`
@@ -543,6 +666,7 @@ contract Todos {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -694,6 +818,7 @@ contract ArrayReplaceFromEnd {
 
 
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -778,6 +903,7 @@ contract Loop {
 
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -836,6 +962,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -843,6 +970,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -927,6 +1055,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -989,6 +1118,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -1015,6 +1145,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1086,6 +1217,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
