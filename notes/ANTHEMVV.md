@@ -15,8 +15,33 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+从代码层面上学习了Uniswap V2:
+
+Uniswap的核心思想是： A \* B = K 在不考虑手续费的情况下, 交易前后 两个代币数量乘积不变。任何人都可以向池子注入等比例的代币对（TokenA + TokenB），成为 **流动性提供者（LP）**。
+
+Uniswap-V2-core是核心合约的实现，主要有三个合约文件：
+
+-   **UniswapV2Factory.sol**：工厂合约
+    
+-   **UniswapV2Pair.sol**：配对合约
+    
+-   **UniswapV2ERC20.sol**：LP Token 合约
+    
+
+配对合约管理着流动性资金池，不同币对有着不同的配对合约实例，比如 USDT-WETH 这一个币对，就对应一个配对合约实例，DAI-WETH 又对应另一个配对合约实例。
+
+**LP Token** 则是用户往资金池里注入流动性的一种凭证，也称为流动性代币，本质上和 **Compound 的 cToken** 类似。当用户往某个币对的配对合约里转入两种币，即添加流动性，就可以得到配对合约返回的 LP Token，享受手续费分成收益。
+
+每个配对合约都有对应的一种 LP Token 与之绑定。其实，**UniswapV2Pair** 继承了 **UniswapV2ERC20**，所以配对合约本身其实也是 LP Token 合约。
+
+**工厂合约**则是用来部署配对合约的，通过工厂合约的 **createPair()** 函数来创建新的配对合约实例。
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 今天学习了ERC标准以及Polymarket的概念还有实现方法。
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ANTHEMVV/images/2026-01-29-1769700510486-image.png)
@@ -25,6 +50,7 @@ timezone: UTC+8
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 今天除了收听两个会议，一直在做CrowdFunding部分，这个challenge主要就是讲的一个dApp的开发，用户可以协调团队资金支持，如果用户配合，资金会被收集到第二个Contrac当中，如果叛逃最坏的结果是所有人都能拿回钱。而这个contract里面的function都是自己编写的，学会如何让合约收钱和发钱，中间还有防止重写入的代码段，也是我自己第一个自己从头到尾完成的一个dApp demo教程。
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
@@ -32,11 +58,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 今天主要的任务是看了很多的回放然后基础技术基本上做完了开始准备把深度技术的内容补上，笔记都已经在学习面板的任务当中提交了
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -65,6 +93,7 @@ timezone: UTC+8
 
 
 
+
 今天暂时没有学习任何内容，休息日，下面对这一周的学习做一个总结：
 
 完成了Solidity的基础知识的学习，写了大概有1500行代码+笔记，下周会进行代码的实践，继续加油
@@ -72,6 +101,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -225,11 +255,13 @@ contract C is X, Y {
 
 
 
+
 今天学习了Solidity的基本知识，马上把Solidity by example的basic部分的代码全部理解完了，已经写了大概800行代码的基础知识，还完成了Gas优化的案例，了解了Gas在ETH当中是一个很重要的优化部分
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -362,11 +394,13 @@ contract Examples {
 
 
 
+
 今天参加了两次分享会并且继续学习Solidity的基础知识，目前已经完成了很多内容的学习，开始着手实践内容
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -395,11 +429,13 @@ contract Examples {
 
 
 
+
 今天正在完成了配置RemixIDE并且上手编程，现在在做**完成挑战 Challenge #0 - Tokenization，但是还没有全部做完，将环境以及第一二步做完了，然后继续学习021以太坊以及实习手册当中智能合约部分**
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -419,6 +455,7 @@ contract Examples {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -466,11 +503,13 @@ contract Examples {
 
 
 
+
 今天是一周的例会了，收听了其他同学讲的PPT以及一些经验分享，这一周比较忙都在忙学业的事情，但已经告一段落了，明天以及之后的笔记会写一些干货的东西。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -511,6 +550,7 @@ AI+Web3,今天参加了分享会讲了AI的一些基础知识，我目前研究�
 
 
 
+
 今天由于学校开组会并没有完成太多任务，还是依照成长手册继续学习，参加了Web3安全和合规两个会议。了解到如今WEB3在国内还并不成熟，有许多风险，例如出入金和冻卡，还没有明确的牌照制度规范。
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -533,11 +573,13 @@ AI+Web3,今天参加了分享会讲了AI的一些基础知识，我目前研究�
 
 
 
+
 今天因为忙一些其他的事情耽误了学习，将基础任务中的钓鱼攻防战做完了，以及继续看了实习手册当中的内容，查看了WEB3运行原理，了解一些钱包，助记词，交易的一些gas开支的基本原理，总体来说今天学习时间还不够明天继续努力学习Solidity的相关知识。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
