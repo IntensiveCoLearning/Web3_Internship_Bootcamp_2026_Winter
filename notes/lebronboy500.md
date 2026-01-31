@@ -15,8 +15,1222 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+Plan to implement │
+
+│ │
+
+│ NBA Integrity Guard - MVP 实现计划 │
+
+│ │
+
+│ 项目: NBA Integrity Guard (NIG) - 预测市场自动化对冲平台 │
+
+│ 目标: 构建 MVP，优先级为数据采集和 Polymarket 链上数据解码 │
+
+│ 时间范围: 黑客松（建议 2-3 周） │
+
+│ 技术栈: Node.js/TypeScript, Python, PostgreSQL, Polygon, DataDance SDK │
+
+│ │
+
+│ --- │
+
+│ 📋 执行摘要 │
+
+│ │
+
+│ 本计划基于已有的 OGBC-Intern-Project 和项目现状，设计一个可落地的 MVP。 │
+
+│ │
+
+│ 已有资源 │
+
+│ │
+
+│ - ✅ Trade Decoder (OrderFilled 事件解码) │
+
+│ - ✅ Market Decoder (TokenId 计算) │
+
+│ - ✅ Polymarket Indexer 框架 │
+
+│ - ✅ Database Schema (events, markets, pm\_trades) │
+
+│ - ✅ Docker Compose 容器化 │
+
+│ │
+
+│ 核心任务（优先级排序） │
+
+│ ┌──────┬────────────────────────────┬────────┬────────┬───────────────────────────┐ │
+
+│ │ 序号 │ 任务 │ 工作量 │ 优先级 │ 关键文件 │ │
+
+│ ├──────┼────────────────────────────┼────────┼────────┼───────────────────────────┤ │
+
+│ │ 1 │ 完善 API 服务层 (10+ 端点) │ 4-5h │ P0 │ server.ts │ │
+
+│ ├──────┼────────────────────────────┼────────┼────────┼───────────────────────────┤ │
+
+│ │ 2 │ 实现市场发现服务 │ 3-4h │ P0 │ marketDiscoveryService.ts │ │
+
+│ ├──────┼────────────────────────────┼────────┼────────┼───────────────────────────┤ │
+
+│ │ 3 │ 异常检测与告警 │ 3-4h │ P1 │ anomaly.ts │ │
+
+│ ├──────┼────────────────────────────┼────────┼────────┼───────────────────────────┤ │
+
+│ │ 4 │ DataDance SDK 集成设计 │ 2-3h │ P1 │ paymentAdapter.ts (新) │ │
+
+│ ├──────┼────────────────────────────┼────────┼────────┼───────────────────────────┤ │
+
+│ │ 5 │ 部署与文档 │ 2-3h │ P0 │ .env.example, 部署指南 │ │
+
+│ └──────┴────────────────────────────┴────────┴────────┴───────────────────────────┘ │
+
+│ 总工作量: 14-19 小时 (2-3 个开发者全职完成) │
+
+│ │
+
+│ --- │
+
+│ 🎯 Phase 1: API 服务层完善 (P0) │
+
+│ │
+
+│ 目标 │
+
+│ │
+
+│ 完成 MVP 所需的核心 REST API 端点，支持市场查询、交易历史、索引统计。 │
+
+│ │
+
+│ 实现文件 │
+
+│ │
+
+│ 主文件: /backend/polymarket-indexer/src/api/server.ts │
+
+│ │
+
+│ 需要实现的 API 端点 │
+
+│ │
+
+│ // 1. 健康检查 │
+
+│ GET /health │
+
+│ Response: { status: 'ok', timestamp, version, dbConnection, indexingStatus } │
+
+│ │
+
+│ // 2. 市场列表查询 │
+
+│ GET /markets?skip=0&limit=100&status=active&search=nba │
+
+│ Response: { │
+
+│ data: Market\[\], │
+
+│ total: number, │
+
+│ skip: number, │
+
+│ limit: number, │
+
+│ timestamp: string │
+
+│ } │
+
+│ │
+
+│ // 3. 单个市场详情 │
+
+│ GET /markets/:marketId │
+
+│ Response: { │
+
+│ market: Market, │
+
+│ stats: { totalTrades, totalVolume, uniqueTraders, lastTradeAt, averagePrice }, │
+
+│ recentTrades: Trade\[\] │
+
+│ } │
+
+│ │
+
+│ // 4. 市场交易历史（分页） │
+
+│ GET /markets/:marketId/trades?skip=0&limit=50&side=BUY │
+
+│ Response: { │
+
+│ data: Trade\[\], │
+
+│ total: number, │
+
+│ market: Market │
+
+│ } │
+
+│ │
+
+│ // 5. 按交易哈希查询 │
+
+│ GET /trades/:txHash │
+
+│ Response: { │
+
+│ txHash: string, │
+
+│ market: Market, │
+
+│ trades: OrderFilled\[\], │
+
+│ blockNumber: number, │
+
+│ timestamp: string │
+
+│ } │
+
+│ │
+
+│ // 6. 索引统计信息 │
+
+│ GET /indexer/stats │
+
+│ Response: { │
+
+│ totalMarkets: number, │
+
+│ totalTrades: number, │
+
+│ syncState: { marketSync: {}, tradeSyncState: {} }, │
+
+│ lagBlocks: number, │
+
+│ uptime: number │
+
+│ } │
+
+│ │
+
+│ // 7. 价格历史（时序数据） │
+
+│ GET /markets/:marketId/price-history?interval=1h&start=...&end=... │
+
+│ Response: { │
+
+│ data: PriceCandle\[\], │
+
+│ market: Market │
+
+│ } │
+
+│ │
+
+│ // 8. 地址交易查询 │
+
+│ GET /addresses/:address/trades?side=BUY │
+
+│ Response: { │
+
+│ address: string, │
+
+│ trades: Trade\[\], │
+
+│ stats: { totalTrades, totalProfit, winRate } │
+
+│ } │
+
+│ │
+
+│ // 9. 异常交易检测 │
+
+│ GET /anomalies?type=high\_frequency&start=...&end=... │
+
+│ Response: { │
+
+│ anomalies: Anomaly\[\], │
+
+│ totalCount: number │
+
+│ } │
+
+│ │
+
+│ // 10. 索引控制接口（仅管理员） │
+
+│ POST /indexer/start │
+
+│ POST /indexer/stop │
+
+│ POST /indexer/scan?fromBlock=...&toBlock=... │
+
+│ GET /indexer/status │
+
+│ │
+
+│ 实现关键点 │
+
+│ │
+
+│ 1. 错误处理标准化 │
+
+│ // 统一的错误响应格式 │
+
+│ { │
+
+│ error: { code, message, details }, │
+
+│ timestamp: string │
+
+│ } │
+
+│ 2. 分页支持 │
+
+│ - 所有列表接口支持 skip 和 limit │
+
+│ - 默认 limit: 50，最大 500 │
+
+│ 3. 时间范围查询 │
+
+│ - 支持 startDate 和 endDate 参数 │
+
+│ - 格式: ISO 8601 │
+
+│ 4. 性能优化 │
+
+│ - 使用数据库索引 (已在 schema.sql 定义) │
+
+│ - 实现结果缓存（Redis） │
+
+│ - 返回结果包含时间戳 │
+
+│ │
+
+│ --- │
+
+│ 🎯 Phase 2: 市场发现服务 (P0) │
+
+│ │
+
+│ 目标 │
+
+│ │
+
+│ 从 Gamma API 定期发现新市场，计算 TokenId，存储到数据库。 │
+
+│ │
+
+│ 实现文件 │
+
+│ │
+
+│ 主文件: /backend/polymarket-indexer/src/services/marketDiscoveryService.ts │
+
+│ │
+
+│ 核心功能 │
+
+│ │
+
+│ class MarketDiscoveryService { │
+
+│ // 定期发现新市场（每小时一次） │
+
+│ async discoverNewMarkets(): Promise<DiscoveryResult> │
+
+│ │
+
+│ // 同步市场元数据（状态、标题等） │
+
+│ async syncMarketMetadata(): Promise<void> │
+
+│ │
+
+│ // 计算并验证 TokenId │
+
+│ async validateTokenIds(market: GammaMarket): Promise<TokenIds> │
+
+│ │
+
+│ // 处理 negRisk 市场 │
+
+│ async handleNegRiskMarket(market: GammaMarket): Promise<void> │
+
+│ } │
+
+│ │
+
+│ 实现流程 │
+
+│ │
+
+│ 1. Gamma API 集成 │
+
+│ GET [https://gamma-api.polymarket.com/events](https://gamma-api.polymarket.com/events) │
+
+│ ├─ 分页查询所有事件 │
+
+│ ├─ 提取 market 列表 │
+
+│ └─ 计算每个市场的 condition\_id 和 token\_ids │
+
+│ 2. Database 存储 │
+
+│ -- 检查市场是否已存在 │
+
+│ SELECT \* FROM markets WHERE condition\_id = ? │
+
+│ │
+
+│ -- 不存在则插入 │
+
+│ INSERT INTO markets ( │
+
+│ condition\_id, yes\_token\_id, no\_token\_id, slug, ... │
+
+│ ) VALUES (...) │
+
+│ │
+
+│ -- 更新 sync\_state │
+
+│ UPDATE sync\_state SET last\_block = ? WHERE key = 'market\_sync' │
+
+│ 3. TokenId 验证 │
+
+│ - 计算的 TokenId 与 Gamma API 对比 │
+
+│ - 不匹配时记录警告 │
+
+│ - 缓存验证结果 │
+
+│ │
+
+│ 数据更新策略 │
+
+│ │
+
+│ - 市场发现: 每小时运行一次（可配置） │
+
+│ - 元数据同步: 每 6 小时更新一次市场状态 │
+
+│ - negRisk 处理: 自动检测并标记 │
+
+│ - 数据去重: 使用 condition\_id 作为唯一键 │
+
+│ │
+
+│ --- │
+
+│ 🎯 Phase 3: 异常检测与告警 (P1) │
+
+│ │
+
+│ 目标 │
+
+│ │
+
+│ 识别链上异常交易模式，记录告警。 │
+
+│ │
+
+│ 实现文件 │
+
+│ │
+
+│ 主文件: /backend/market-watcher/src/anomaly.ts (已有框架) │
+
+│ │
+
+│ 异常类型 │
+
+│ │
+
+│ 1. 高频交易 │
+
+│ - 同一地址 1 分钟内 >10 笔交易 → 异常分数 +0.8 │
+
+│ - 记录地址、交易数、时间窗口 │
+
+│ 2. 自成交 │
+
+│ - maker == taker → 异常分数 +0.6 │
+
+│ - 可能是流动性操纵 │
+
+│ 3. 价格操纵 │
+
+│ - 价格波动 >20% 在 1 分钟内 → 异常分数 +0.5 │
+
+│ - 记录价格变化和时间 │
+
+│ 4. 流动性干涸 │
+
+│ - 流动性 <$5000 → 异常分数 +0.3 │
+
+│ - 可能影响市场质量 │
+
+│ │
+
+│ 实现逻辑 │
+
+│ │
+
+│ async function detectAnomalies(trade: Trade): Promise<AnomalyScore> { │
+
+│ let score = 0; │
+
+│ const reasons: string\[\] = \[\]; │
+
+│ │
+
+│ // 检查交易频率 │
+
+│ const freqScore = await checkHighFrequency(trade.maker); │
+
+│ │
+
+│ // 检查自成交 │
+
+│ if (trade.maker === trade.taker) { │
+
+│ score += 0.6; │
+
+│ reasons.push("Self-trade detected"); │
+
+│ } │
+
+│ │
+
+│ // 检查价格异常 │
+
+│ const priceScore = await checkPriceAnomaly(trade); │
+
+│ │
+
+│ // 检查流动性 │
+
+│ const liquidityScore = await checkLiquidity(trade.marketId); │
+
+│ │
+
+│ // 记录异常 │
+
+│ if (score > 0.5) { │
+
+│ await saveAnomaly({ │
+
+│ tradeId: [trade.id](http://trade.id), │
+
+│ score, │
+
+│ reasons, │
+
+│ severity: score > 0.8 ? 'HIGH' : 'MEDIUM' │
+
+│ }); │
+
+│ } │
+
+│ │
+
+│ return score; │
+
+│ } │
+
+│ │
+
+│ 数据库表 │
+
+│ │
+
+│ -- 新增表: anomalies │
+
+│ CREATE TABLE IF NOT EXISTS anomalies ( │
+
+│ id SERIAL PRIMARY KEY, │
+
+│ market\_id INTEGER REFERENCES markets(id), │
+
+│ tx\_hash VARCHAR(66), │
+
+│ trade\_id INTEGER REFERENCES pm\_trades(id), │
+
+│ │
+
+│ type VARCHAR(50), -- 'high\_frequency', 'self\_trade', 'price\_manipulation' │
+
+│ score DECIMAL(5,4), │
+
+│ severity VARCHAR(20), -- 'LOW', 'MEDIUM', 'HIGH' │
+
+│ │
+
+│ reasons JSONB, -- 具体原因数组 │
+
+│ metadata JSONB, -- 额外信息 │
+
+│ │
+
+│ created\_at TIMESTAMP DEFAULT NOW() │
+
+│ ); │
+
+│ │
+
+│ --- │
+
+│ 🎯 Phase 4: DataDance SDK 集成设计 (P1) │
+
+│ │
+
+│ 目标 │
+
+│ │
+
+│ 为后续的隐私支付功能预留接口，支持 ERC-7962 标准。 │
+
+│ │
+
+│ 实现文件 │
+
+│ │
+
+│ 新文件: /backend/datadance-integration/src/paymentAdapter.ts │
+
+│ │
+
+│ 设计（不在 MVP 中完全实现，仅架构设计） │
+
+│ │
+
+│ // PaymentAdapter 接口定义 │
+
+│ interface IPaymentAdapter { │
+
+│ // 生成一次性地址 │
+
+│ generateOneTimeAddress(userAddress: string): Promise<{ │
+
+│ address: string; │
+
+│ salt: string; │
+
+│ expiry: number; │
+
+│ }>; │
+
+│ │
+
+│ // 验证支付 │
+
+│ verifyPayment(txHash: string): Promise<boolean>; │
+
+│ │
+
+│ // 对账 │
+
+│ reconcilePayment(txHash: string): Promise<ReconciliationResult>; │
+
+│ │
+
+│ // 奖励分发 │
+
+│ distributeReward(address: string, amount: string): Promise<string>; │
+
+│ } │
+
+│ │
+
+│ // MVP 阶段的实现 │
+
+│ class DataDancePaymentAdapter implements IPaymentAdapter { │
+
+│ constructor(private sdkClient: DDCMarketClient) {} │
+
+│ │
+
+│ async generateOneTimeAddress(userAddress: string) { │
+
+│ // Step 1: 调用 DataDance SDK 生成一次性地址 │
+
+│ // Step 2: 存储到 privacy\_addresses 表 │
+
+│ // Step 3: 设置 24 小时过期时间 │
+
+│ } │
+
+│ │
+
+│ async reconcilePayment(txHash: string) { │
+
+│ // Step 1: 查询区块链验证交易 │
+
+│ // Step 2: 匹配到对应支付记录 │
+
+│ // Step 3: 更新支付状态 │
+
+│ // Step 4: 触发后续逻辑（激活订阅/发放奖励） │
+
+│ } │
+
+│ } │
+
+│ │
+
+│ MVP 中的集成点 │
+
+│ │
+
+│ 1. 用户奖励 │
+
+│ - 高信誉交易者可通过一次性地址领取奖励 │
+
+│ - 实现示例: /payment/reward 端点 │
+
+│ 2. 订阅支付 │
+
+│ - API 调用费用支付 │
+
+│ - 订阅计划管理 │
+
+│ 3. 收益分发 │
+
+│ - 自动对冲利润分配 │
+
+│ - 50% 反腐基金 + 5% 运营 + 45% 返还 │
+
+│ │
+
+│ 后续阶段（非 MVP） │
+
+│ │
+
+│ - 完整的支付处理管道 │
+
+│ - WebSocket 支付推送 │
+
+│ - 多币种支持 (USDC, USDT, DAI) │
+
+│ │
+
+│ --- │
+
+│ 📊 工作量分解 │
+
+│ │
+
+│ Task 1: API 服务层 (4-5 小时) │
+
+│ │
+
+│ 实现内容: │
+
+│ - 10+ REST API 端点 │
+
+│ - 错误处理和验证 │
+
+│ - 分页和过滤支持 │
+
+│ - 结果缓存 │
+
+│ │
+
+│ 验收标准: │
+
+│ - ✅ 所有端点可在 Postman/curl 中成功调用 │
+
+│ - ✅ 返回正确的数据结构 │
+
+│ - ✅ 错误响应符合标准格式 │
+
+│ - ✅ 响应时间 <100ms (p95) │
+
+│ │
+
+│ --- │
+
+│ Task 2: 市场发现服务 (3-4 小时) │
+
+│ │
+
+│ 实现内容: │
+
+│ - Gamma API 集成 │
+
+│ - TokenId 计算和验证 │
+
+│ - 市场元数据同步 │
+
+│ - negRisk 市场处理 │
+
+│ │
+
+│ 验收标准: │
+
+│ - ✅ 能发现所有 Polymarket 市场 (>5000) │
+
+│ - ✅ TokenId 计算与官方一致 │
+
+│ - ✅ 定期同步市场状态 │
+
+│ - ✅ 处理 API 限流和网络错误 │
+
+│ │
+
+│ --- │
+
+│ Task 3: 异常检测 (3-4 小时) │
+
+│ │
+
+│ 实现内容: │
+
+│ - 4+ 异常类型检测 │
+
+│ - 异常评分系统 │
+
+│ - 告警记录和查询 │
+
+│ │
+
+│ 验收标准: │
+
+│ - ✅ 能检测高频交易、自成交等异常 │
+
+│ - ✅ 异常分数准确 │
+
+│ - ✅ 查询接口工作正常 │
+
+│ - ✅ 日志记录清晰 │
+
+│ │
+
+│ --- │
+
+│ Task 4: DataDance SDK 集成设计 (2-3 小时) │
+
+│ │
+
+│ 实现内容: │
+
+│ - PaymentAdapter 接口定义 │
+
+│ - 一次性地址生成逻辑 │
+
+│ - 对账流程设计 │
+
+│ - 数据库表和索引 │
+
+│ │
+
+│ 验收标准: │
+
+│ - ✅ 接口定义完整 │
+
+│ - ✅ 集成点明确 │
+
+│ - ✅ 文档清晰 │
+
+│ - ✅ 后续可轻松扩展 │
+
+│ │
+
+│ --- │
+
+│ Task 5: 部署与文档 (2-3 小时) │
+
+│ │
+
+│ 实现内容: │
+
+│ - .env.example 模板 │
+
+│ - 部署指南文档 │
+
+│ - API 使用示例 │
+
+│ - 故障排查指南 │
+
+│ │
+
+│ 验收标准: │
+
+│ - ✅ 新用户能按文档快速启动 │
+
+│ - ✅ 所有服务通过 Docker Compose 运行 │
+
+│ - ✅ 提供 curl 示例 │
+
+│ - ✅ 包含常见问题解答 │
+
+│ │
+
+│ --- │
+
+│ 🗄️ 数据库补充设计 │
+
+│ │
+
+│ 新增表: anomalies │
+
+│ │
+
+│ CREATE TABLE IF NOT EXISTS anomalies ( │
+
+│ id SERIAL PRIMARY KEY, │
+
+│ market\_id INTEGER REFERENCES markets(id), │
+
+│ tx\_hash VARCHAR(66), │
+
+│ trade\_id INTEGER REFERENCES pm\_trades(id), │
+
+│ │
+
+│ type VARCHAR(50) NOT NULL, │
+
+│ score DECIMAL(5,4) NOT NULL, │
+
+│ severity VARCHAR(20), -- 'LOW', 'MEDIUM', 'HIGH' │
+
+│ │
+
+│ reasons JSONB, │
+
+│ metadata JSONB, │
+
+│ │
+
+│ created\_at TIMESTAMP DEFAULT NOW() │
+
+│ ); │
+
+│ │
+
+│ CREATE INDEX idx\_anomalies\_market ON anomalies(market\_id); │
+
+│ CREATE INDEX idx\_anomalies\_timestamp ON anomalies(created\_at); │
+
+│ CREATE INDEX idx\_anomalies\_severity ON anomalies(severity); │
+
+│ │
+
+│ 新增表: privacy\_addresses (用于 DataDance 集成) │
+
+│ │
+
+│ CREATE TABLE IF NOT EXISTS privacy\_addresses ( │
+
+│ id SERIAL PRIMARY KEY, │
+
+│ one\_time\_address VARCHAR(42) UNIQUE NOT NULL, │
+
+│ │
+
+│ purpose VARCHAR(50), -- 'reward', 'subscription', 'fee' │
+
+│ user\_address VARCHAR(42), │
+
+│ │
+
+│ salt VARCHAR(66), │
+
+│ expires\_at TIMESTAMP NOT NULL, │
+
+│ used BOOLEAN DEFAULT FALSE, │
+
+│ │
+
+│ tx\_hash VARCHAR(66), │
+
+│ used\_at TIMESTAMP, │
+
+│ │
+
+│ created\_at TIMESTAMP DEFAULT NOW() │
+
+│ ); │
+
+│ │
+
+│ CREATE INDEX idx\_privacy\_addresses\_expires ON privacy\_addresses(expires\_at); │
+
+│ CREATE INDEX idx\_privacy\_addresses\_user ON privacy\_addresses(user\_address); │
+
+│ │
+
+│ --- │
+
+│ 📋 关键文件修改清单 │
+
+│ ┌─────────────────────────────────────────────────┬─────────────────┬────────┬────────┐ │
+
+│ │ 文件 │ 操作 │ 优先级 │ 工作量 │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ src/api/server.ts │ 完善 API 端点 │ P0 │ 4-5h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ src/services/marketDiscoveryService.ts │ 实现市场发现 │ P0 │ 3-4h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ src/market-watcher/src/anomaly.ts │ 实现异常检测 │ P1 │ 3-4h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ src/datadance-integration/src/paymentAdapter.ts │ 创建 + 架构设计 │ P1 │ 2-3h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ backend/database/schema.sql │ 添加新表和索引 │ P0 │ 1h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ .env.example │ 创建模板 │ P0 │ 30m │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ IMPLEMENTATION\_[GUIDE.md](http://GUIDE.md) │ 编写实现指南 │ P0 │ 1h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ DEPLOYMENT\_[GUIDE.md](http://GUIDE.md) │ 编写部署指南 │ P0 │ 1h │ │
+
+│ ├─────────────────────────────────────────────────┼─────────────────┼────────┼────────┤ │
+
+│ │ API\_[REFERENCE.md](http://REFERENCE.md) │ 编写 API 文档 │ P0 │ 1h │ │
+
+│ └─────────────────────────────────────────────────┴─────────────────┴────────┴────────┘ │
+
+│ 总计: 14-19 小时 │
+
+│ │
+
+│ --- │
+
+│ 🚀 部署计划 │
+
+│ │
+
+│ 本地开发环境 │
+
+│ │
+
+│ # 1. 启动基础服务 │
+
+│ docker-compose up -d postgres redis │
+
+│ │
+
+│ # 2. 初始化数据库 │
+
+│ docker-compose exec postgres psql -U admin -d nba\_integrity < backend/database/schema.sql │
+
+│ │
+
+│ # 3. 安装依赖 │
+
+│ cd backend/polymarket-indexer && npm install │
+
+│ │
+
+│ # 4. 配置环境变量 │
+
+│ cp .env.example .env │
+
+│ # 编辑 .env，配置： │
+
+│ # - POLYGON\_RPC\_URL │
+
+│ # - GAMMA\_API\_URL │
+
+│ # - DATABASE\_URL │
+
+│ # - PORT=3001 │
+
+│ │
+
+│ # 5. 启动索引器 │
+
+│ npm run dev │
+
+│ │
+
+│ # 6. 验证 API │
+
+│ curl [http://localhost:3001/health](http://localhost:3001/health) │
+
+│ │
+
+│ Docker 部署 │
+
+│ │
+
+│ # docker-compose.yml 中新增: │
+
+│ │
+
+│ polymarket-indexer: │
+
+│ build: │
+
+│ context: ./backend/polymarket-indexer │
+
+│ environment: │
+
+│ DATABASE\_URL: postgresql://admin:pass@postgres:5432/nba\_integrity │
+
+│ POLYGON\_RPC\_URL: ${POLYGON\_RPC\_URL} │
+
+│ GAMMA\_API\_URL: [https://gamma-api.polymarket.com](https://gamma-api.polymarket.com) │
+
+│ PORT: 3001 │
+
+│ AUTO\_START\_INDEXER: 'true' │
+
+│ depends\_on: │
+
+│ postgres: │
+
+│ condition: service\_healthy │
+
+│ ports: │
+
+│ - "3001:3001" │
+
+│ │
+
+│ --- │
+
+│ 📈 MVP 验收清单 │
+
+│ │
+
+│ 完成以下检查确认 MVP 就绪： │
+
+│ │
+
+│ 数据采集层 (50%) │
+
+│ - ✅ Trade Decoder 正确解码 OrderFilled 事件 │
+
+│ - ✅ Market Decoder 计算正确的 TokenId │
+
+│ - ✅ 数据库存储交易数据（10万+ 条） │
+
+│ - ✅ 支持断点续传（sync\_state） │
+
+│ │
+
+│ API 服务层 (30%) │
+
+│ - ✅ GET /health 返回 200 │
+
+│ - ✅ GET /markets 返回正确的市场列表 │
+
+│ - ✅ GET /markets/:id/trades 返回交易历史 │
+
+│ - ✅ GET /indexer/stats 返回同步统计 │
+
+│ - ✅ 所有端点有完整错误处理 │
+
+│ │
+
+│ 异常检测 (10%) │
+
+│ - ✅ 能识别高频交易、自成交等异常 │
+
+│ - ✅ 异常查询接口工作正常 │
+
+│ - ✅ 日志记录清晰 │
+
+│ │
+
+│ 数据库 (5%) │
+
+│ - ✅ schema.sql 能成功执行 │
+
+│ - ✅ 索引覆盖主要查询路径 │
+
+│ - ✅ 支持大规模数据查询 │
+
+│ │
+
+│ 部署 (5%) │
+
+│ - ✅ Docker Compose 一键启动 │
+
+│ - ✅ 环境变量正确注入 │
+
+│ - ✅ 健康检查通过 │
+
+│ - ✅ 文档完整清晰 │
+
+│ │
+
+│ --- │
+
+│ 🔄 下一步扩展方向（非 MVP） │
+
+│ │
+
+│ Phase 2 (后续 1-2 周): │
+
+│ - DataDance SDK 完整集成 │
+
+│ - WebSocket 实时推送 │
+
+│ - Web Dashboard (React) │
+
+│ - 性能优化和压力测试 │
+
+│ │
+
+│ Phase 3 (后续 2-4 周): │
+
+│ - ML 信号优化（AdaptiveThreshold） │
+
+│ - 回测系统 │
+
+│ - 链上激励机制 │
+
+│ - 用户系统和认证 │
+
+│ │
+
+│ --- │
+
+│ 📝 相关文档 │
+
+│ │
+
+│ 完成后需要生成的文档： │
+
+│ │
+
+│ 1. IMPLEMENTATION\_[GUIDE.md](http://GUIDE.md) - 详细实现步骤 │
+
+│ 2. DEPLOYMENT\_[GUIDE.md](http://GUIDE.md) - 部署指南 │
+
+│ 3. API\_[REFERENCE.md](http://REFERENCE.md) - API 文档 │
+
+│ 4. [ARCHITECTURE.md](http://ARCHITECTURE.md) - 系统架构说明
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 ## gemini头脑风暴
 
 -   **起步阶段：** 先用 **Flash** 快速堆料，把想到的都写下来。
@@ -74,6 +1288,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 -   黑客松
     
@@ -797,6 +2012,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 一个 NBA 预测市场工具，我为你梳理了一个“数据驱动型交易助手”的产品框架。它的核心逻辑是：利用实时数据差（比分 vs 赔率）寻找交易机会，并确保链上结算的安全性。
 
 一、 产品逻辑闭环框架 (Product Logic Loop)
@@ -896,6 +2112,7 @@ _容器化：_ Docker-compose： 一键拉起 PostgreSQL（持久化历史数据
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1071,6 +2288,7 @@ Space的结束不代表工作的终止，会后跟进能最大化一场Space的�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1258,6 +2476,7 @@ _为了合规，RWA 严重依赖链下的法律实体（SPV）和托管人。这
 
 
 
+
 在“Web3 公共物品资金分配”的背景下有多种资助与分配机制。这些机制试图解决传统市场在公共物品定价上的失灵，通过技术和治理创新实现更公平、更高效的价值捕获。
 
 具体分配机制及其特点：
@@ -1379,6 +2598,7 @@ RPGF 遵循“**先创造价值，后获得奖励**”的逻辑，是目前 Web3
 
 
 
+
 uniswapV2
 
 问题：
@@ -1402,6 +2622,7 @@ uniswapV2
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1774,6 +2995,7 @@ Oracle / UMA 投票者：决定争议市场结果（dispute 时 UMA token holder
 
 
 
+
 从 ERC-721 演进到 ERC-7962，展示了以太坊代币所有权设计从简单的“资产映射”向**高度可编程化**与**安全性增强**的核心变革。
 
 以下是基于来源及相关背景分析的代币所有权设计核心变革：
@@ -1809,6 +3031,7 @@ Oracle / UMA 投票者：决定争议市场结果（dispute 时 UMA token holder
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1855,6 +3078,7 @@ Oracle / UMA 投票者：决定争议市场结果（dispute 时 UMA token holder
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1931,6 +3155,7 @@ DEX（如 Uniswap）是 Web3 的“杀手级应用”，它彻底改变了资产
 
 
 
+
 学习DeFi 核心组成部分：
 
 **1\. 去中心化交易所（DEX）与“自动售货机”模型**
@@ -1986,6 +3211,7 @@ DEX（如 Uniswap）是 Web3 的“杀手级应用”，它彻底改变了资产
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2128,6 +3354,7 @@ DEX（如 Uniswap）是 Web3 的“杀手级应用”，它彻底改变了资产
 
 
 
+
 ## 1\. 资产自托管：安全性与易用性的博弈
 
 **挑战：** 传统私钥（助记词）极难记忆且一旦丢失无法找回，用户进入 Web3 的最大障碍。
@@ -2201,6 +3428,7 @@ Web3 正在尝试构建一种基于协议原生逻辑的“公共财政”体系
 
 
 
+
 ### **投研：X402**
 
 每一笔 x402 交易都与四个经济参与者进行交互：
@@ -2227,6 +3455,7 @@ Web3 正在尝试构建一种基于协议原生逻辑的“公共财政”体系
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
