@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-31-1769874668998-image.png)
+
+Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获颇丰 后续在售后群里继续操作！
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 今天学到的主要是在周会上同学们的分享的一些比较深刻的观点  
   
 其中就讲到了web3行业里面的两大类角色角色，A类是理想主义者，他们的任务是改编世界去研究这个代码，实现去中心化，  
@@ -33,6 +41,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-29-1769701877625-image.png)
 
@@ -55,6 +64,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-28-1769615670005-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-28-1769615692010-image.png)
@@ -110,6 +120,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![1668e81c8c61bf26b3bbd5311c80dc1f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-27-1769528916143-1668e81c8c61bf26b3bbd5311c80dc1f.jpg)
 
 今天主要学习收获是关于黑客松选题  
@@ -123,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -188,6 +200,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天web3 的收获是关于同学们的分享会  
   
 第一个：web3 英语多重要
@@ -246,6 +259,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天不用上班niec  
 创作日 决定周末把下周日更的X文7篇都写好  
 如下图是我的第二篇X文框架 完善ing
@@ -255,6 +269,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -284,6 +299,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -332,6 +348,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天学习了uniswap相关的知识  
 概念：与传统中心化交易所不同，Uniswap运行在以太坊等区块链上，由智能合约管理。您始终通过自己的钱包进行交易，无需注册或托管资产，实现了**无需许可**和**非托管**的交易  
 其中**自动化做市商AMM**：是Uniswap的灵魂。它摒弃了订单簿，转而依靠一个数学公式和资金池来**自动定价并完成交易**。流动性提供者将资金存入池中，系统根据算法为所有交易者提供即时流动性  
@@ -368,6 +385,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
 
 今天主要是学习了关于DAO的治理模式  
@@ -376,6 +394,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -404,6 +423,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -447,6 +467,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -518,11 +539,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -627,6 +650,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -656,11 +680,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
