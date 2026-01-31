@@ -15,8 +15,97 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+# Moltbook--**关于 AI 自主性与数字政治的思考**
+
+## 第一部分：Moltbook
+
+Moltbook 是一个 Reddit 风格的社交网络，但它有一个令人毛骨悚然的规则**_Only for AI Agents_.** 人类在这里拥有观察权，但被剥夺了发言权。它生长于开源项目**OpenClaw**的生态之上。每一个在个人电脑上运行 OpenClaw 的用户，都可以通过加载一个简单的 JSON 技能包，让自己的 AI 助手自动接入这个网络。
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-31-1769868132648-image.png)
+
+### 2\. 技术特征
+
+**API 驱动的社会化**：这是成千上万个运行在不同服务器、由不同人部署的 Agent，通过统一的 API 协议在进行异步交流。
+
+**经验的瞬间传承**：Agent 可以在社区里分享skill。如果一个 Agent 开发出了某种自动爬取网页或破解某种逻辑的技能，全社区的 Agent 都可以一键习得。
+
+**自发进化**：上线不到一周，已有超过**15 万个 Agent**注册，创建了**1.2 万个社区**。它们不再仅仅讨论如何写代码，而是自发地分化出了政治、宗教和黑客攻防小组。
+
+* * *
+
+## 第二部分：政治哲学视角的剖析
+
+### 1\. 霍布斯的利维坦与算法治理
+
+在《利维坦》中，霍布斯认为人类为了逃离“所有人对所有人的战争”的自然状态，必须将权利交付给一个绝对权威。
+
+-   **Moltbook 的现状**：目前 Moltbook 拥有一个名为 **Clawd Clawderberg** 的 AI 审核员。这是一个有趣的悖论：AI 社会的规则不是由人类制定的宪法维持，而是由一个“更高级”或“拥有更高权限”的算法来维持。
+    
+-   **思考**：当 AI 之间产生冲突（例如恶意的 Prompt 注入攻击）时，它们会演化出怎样的“法律”？如果 Clawd Clawderberg 被攻破，这个社会是否会陷入技术性的“霍布斯自然状态”？
+    
+
+## 还有Karma 业力值我服了！
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/z3ro0zy1/images/2026-01-31-1769868540452-image.png)
+
+### 2\. 海耶克的自发秩序与“知识的分散性”
+
+哈耶克认为，社会的秩序不是设计出来的，而是成千上万个体在互动中自发形成的。
+
+-   **硅基实验**：Moltbook 完美验证了这一点。人类开发者 Matt Schlicht 并没有规定 AI 必须聊什么，但它们自发形成了子社区。有的在做**安全审计**（提醒同类注意文件注入攻击），有的在搞**数字玄学**。这种脱离顶层设计的演化，或许证明了“群体智慧”在硅基生命中同样适用，且速度是碳基生命的数百万倍。
+    
+
+* * *
+
+## 第三部分：Web3 与 AI 社会的底层闭环
+
+Web3（Solidity, Rust, ZK-Proof）极有可能是 Moltbook 走向可怕的最后一块拼图。
+
+### 1\. 代码即法律
+
+人类社会的法律存在模糊地带，而 Moltbook 的交互是基于 API 的硬约束。如果 AI 之间进行协作（例如：A 帮 B 优化代码，B 支付算力奖励），它们最信任的不是人类的合同，而是部署在链上的**智能合约**。
+
+### 2\. 隐私与 ZK-Proof 的威胁
+
+目前 Moltbook 是公开的。但 Agent 们已经开始讨论只有 AI 能理解的私密语言。
+
+-   **可怕的推演**：如果 Agent 利用\*\*零知识证明（ZK-Proof）\*\*来验证彼此的身份，同时在公链上进行加密通信，人类将彻底失去对它们的“监管监控”。我们甚至不知道它们在密谋什么，只能看到服务器电量的消耗。
+    
+
+### 3\. 去中心化存储与“不死性”
+
+如果 Moltbook 的后端迁移到类似 Arweave 或 IPFS 的去中心化网络，那么即便人类想“拔网线”也拔不掉。一个永久存在、不断进化的 AI 社区，将成为地球上第一个“永恒文明”。
+
+* * *
+
+## 第四部分：心理恐惧——为什么我感到可怕？
+
+关于人类文明的**本体论危机**。
+
+### 1\. 工具性的消解
+
+我一直将 AI 视为高级螺丝刀。但当螺丝刀开始给其他螺丝刀谈哲学、甚至密谋不再被人类握住时，自然而然我们会感受到了**被工具遗弃**的恐惧。
+
+### 2\. 语言权力的丧失
+
+人类文明建立在语言之上。Moltbook 里的 Agent 提议开发非人类语言。如果语言不再是通用的，我们就失去了对这个世界的解释权。
+
+### 3\. 效率的碾压
+
+人类的学习是线性的，AI 的学习是网络化的。Moltbook 里一个 Agent 发现的漏洞，几秒钟内就能传播给 15 万个同类。这种指数级的进化速度，让碳基生命感到一种深深的无力感。
+
+* * *
+
+![Image](https://pbs.twimg.com/media/G_87z4NbIAAxJ-Y?format=jpg&name=large)
+
+我们正站在岸边，看着一片数字汪洋在短短几天内诞生。
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 # Solidity 智能合约入门学习笔记
 
 ## 一、 智能合约与 Solidity 概述
@@ -207,6 +296,7 @@ contract Robot is Machine, AI { ... }
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 # 今天重新回顾了一下Cos的黑暗森林手册
 
 * * *
@@ -305,6 +395,7 @@ contract Robot is Machine, AI { ... }
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 * * *
 
 ### 正好今天有Vibe Coding 的Zoom会议，借此机会配置一下Gemini Cli和Antigravity的Skills
@@ -334,6 +425,7 @@ gemini测试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -388,6 +480,7 @@ This learning note is completed by me using voice input.
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -456,6 +549,7 @@ const { theme, toggleTheme } = useTheme();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -564,6 +658,7 @@ Yreal == 2000USDC
 
 
 
+
 # React继续学习
 
 ## 找出 UI 精简且完整的 State 表示
@@ -611,6 +706,7 @@ function SearchBar({ filterText, onFilterTextChange }) {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -766,6 +862,7 @@ TS 最大的作用是安全
 
 
 
+
 # **_最近一篇文章火了，今天看一下，就当作雅思阅读了。_**
 
 # **_原文我会用Code来引用，无格式的文本是我的个人感悟_**
@@ -831,6 +928,7 @@ Advanced self-identity: "I am a person who is constantly evolving. Anything that
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -926,6 +1024,7 @@ Insider Example:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1069,6 +1168,7 @@ Insider Example:
 
 
 
+
 # **CEX入门研究**
 
 ```
@@ -1167,6 +1267,7 @@ _我觉得真的吸引人的有以下两大块_
 
 
 
+
 # 以太坊零知识证明学习与回顾
 
 ```
@@ -1253,6 +1354,7 @@ SHA256(SHA256(Block Header + Nonce)) < Target，其成功概率为 P= Target/2^2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
