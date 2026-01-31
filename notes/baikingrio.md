@@ -15,8 +15,82 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+## Uniswap V2 事件与日志
+
+Uniswap V2 使用事件（Events）记录关键状态变化，便于 off-chain 索引、监听与历史查询。 所有事件在 Factory / Pair 合约中定义，遵循 EIP-20 / EIP-721 风格。 前端 / subgraph（如 The Graph）依赖这些事件构建索引。
+
+### 1、Factory 事件
+
+PairCreated：新 Pair 创建时触发
+
+```
+event PairCreated(address indexed token0, address indexed token1, address pair, uint);
+```
+
+indexed：token0/token1/pair，便于过滤查询。
+
+uint：当前 allPairs.length（Pair 序号）。
+
+### 2、Pair 事件
+
+Mint：添加流动性
+
+```
+event Mint(address indexed sender, uint amount0, uint amount1);
+```
+
+Burn：移除流动性
+
+```
+event Burn(address indexed sender, uint amount0, uint amount1, address indexed to);
+```
+
+Swap：交换发生
+
+```
+event Swap(
+    address indexed sender,
+    uint amount0In, uint amount1In,
+    uint amount0Out, uint amount1Out,
+    address indexed to
+);
+```
+
+In/Out：输入/输出量，便于追踪交易流向
+
+Sync：储备更新（mint/burn/swap/sync 后）
+
+```
+event Sync(uint112 reserve0, uint112 reserve1);
+```
+
+实时储备快照，用于前端显示价格/流动性
+
+### 3、ERC-20 继承事件（LP Token）
+
+Pair 继承 UniswapV2ERC20，触发标准事件：
+
+-   **Transfer**：LP Token 转移。
+    
+-   **Approval**：授权 spender。
+    
+
+### 4、监听与使用场景
+
+-   **实时监控**：用 Web3.js / ethers.js 订阅 Swap / Sync 事件，构建实时价格 ticker。
+    
+-   **历史查询**：The Graph subgraph 索引所有事件，查询用户交易历史 / LP 收益。
+    
+-   **分析**：聚合 Swap 事件计算 TVL / 交易量 / 费用收入。
+    
+-   **调试**：事件日志含 indexed 参数，便于 Etherscan 过滤。
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 ## Uniswap V2 闪电交换（Flash Swap）
 
 ### 1\. 核心机制
@@ -108,6 +182,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 ## Uniswap V2 的设计细节
 
 ### 1\. Core / Periphery 架构的深层意图
@@ -171,6 +246,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 ## Uniswap V2 与 V3 关键差异
 
 ### 1\. 流动性模型
@@ -224,6 +300,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -309,6 +386,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -378,6 +456,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -530,6 +609,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -561,6 +641,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -677,6 +758,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -760,6 +842,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -901,6 +984,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -1015,6 +1099,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -1058,6 +1143,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -1073,6 +1159,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1129,6 +1216,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -1140,6 +1228,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
