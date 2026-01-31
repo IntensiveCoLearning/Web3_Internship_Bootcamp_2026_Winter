@@ -15,19 +15,207 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+Web3黑客松全流程学习笔记
+
+一、基础定义
+
+Web3黑客松是围绕区块链、DeFi、NFT、ZK、AI+Web3、跨链、预言机等赛道，在限定时间内完成项目构思、组队、开发、原型交付、路演、评审的密集型创作与竞技活动，是Web3行业最核心的Builder实战场景、人才筛选与早期项目孵化载体。
+
+二、完整标准流程（通用线上/线下通用）
+
+阶段1：赛前筹备（Pre-event）
+
+• 报名与资质核验：填写个人/团队信息，部分赛事要求提前提交项目提案、赛道选择
+
+• 赛前宣讲与工作坊：主办方/公链/协议方讲解主题、赛道规则、SDK/API使用、开发文档、评审标准
+
+• 自由组队：线上社群/线下会场匹配产品、开发、设计、运营角色，补全团队能力缺口
+
+• 资源对接：领取测试网代币、开发工具包、节点权限、导师预约通道
+
+阶段2：正式开赛（Build Period，通常24–72小时）
+
+1\. 开幕式：主题解读、赛道说明、赞助商与评审介绍、时间节点重申
+
+2\. 项目立项与方案定稿：确定赛道、痛点、解决方案、技术架构、核心功能范围
+
+3\. 密集开发：智能合约、前端交互、后端逻辑、链上数据对接、Demo交互闭环
+
+4\. 导师问诊：中期进度检查、技术问题答疑、产品逻辑修正、路演结构建议
+
+5\. 内部联调：代码合并、Bug修复、流程跑通、演示视频录制、文档撰写
+
+6\. 截止提交：按要求上传GitHub仓库、产品文档、Demo视频、项目介绍页、团队信息
+
+阶段3：路演与评审（Demo Day）
+
+• 初筛：评审团按创新度、技术难度、实用性、完整性、合规性打分筛选入围团队
+
+• 现场/线上路演：3–5分钟项目演示+2–3分钟问答，核心讲清痛点、方案、技术、价值、下一步
+
+• 终审打分：综合技术实现、产品完整性、商业潜力、用户价值、赛道契合度评定名次
+
+• 颁奖与公示：公布获奖名单、奖金/权益说明、孵化对接、投资/合作意向沟通
+
+阶段4：赛后跟进
+
+• 项目反馈收集：评审意见、用户建议、导师优化方向整理
+
+• 原型迭代：从Demo打磨为MVP，完善合约安全、交互体验、文档与测试用例
+
+• 资源对接：入驻加速器、申请 grants、对接VC、加入生态共建、社区运营启动
+
+• 经验沉淀：流程复盘、问题总结、能力短板梳理、下次参赛优化方案
+
+三、核心目的（个人/团队/主办方三维）
+
+个人视角
+
+• 快速验证技术能力：在高压环境下完成链上开发、合约编写、工具集成，补齐实战短板
+
+• 搭建行业人脉：结识开发者、产品、设计师、投资人、协议方核心成员，积累Web3核心人脉
+
+• 获得可见成果：产出可展示的Demo、GitHub仓库、路演视频，作为作品集与求职背书
+
+• 争取激励与机会：获取奖金、测试网权益、 Grants、内推、孵化名额、全职offer
+
+团队/项目视角
+
+• 低成本验证产品可行性：在短周期内完成最小闭环，验证用户痛点与技术落地边界
+
+• 快速获得专业反馈：从资深评审、生态导师处获得产品、技术、安全、商业化的直接建议
+
+• 早期曝光与冷启动：面向行业社区、资方、用户展示项目，获取早期关注与潜在合作
+
+• 团队磨合与分工验证：检验协作效率、角色匹配度、时间管理与风险应对能力
+
+主办方/生态方视角
+
+• 生态开发者招募：挖掘优质Builder，扩充公链/协议/应用的开发社区
+
+• 技术场景落地：推动基础设施（公链、预言机、钱包、SDK）在真实场景的应用
+
+• 早期项目筛选：发现高潜力初创项目，为投资、孵化、生态合作储备标的
+
+• 行业影响力构建：聚集人才、输出案例、建立赛道标准与行业口碑
+
+四、项目常见问题与反思要点
+
+1\. 立项与规划类问题
+
+• 问题：需求泛化、功能贪多、脱离赛道、未结合评审标准，导致时间严重不足
+
+• 反思：必须做最小可行功能闭环，优先完成可演示的核心链路，砍掉非必要装饰性功能
+
+• 优化：立项前对照评审维度（创新、技术、实用、完整、合规）做权重匹配，锁定1个核心痛点
+
+2\. 团队与分工类问题
+
+• 问题：角色缺失、沟通低效、任务边界模糊、开发进度不同步、后期无人负责路演
+
+• 反思：明确前端/合约/产品/设计/路演专人负责，设置小时级里程碑，每日同步进度
+
+• 优化：赛前1小时定分工清单、沟通频率、代码合并规则、紧急问题升级机制
+
+3\. 技术与开发类问题
+
+• 问题：合约安全漏洞、测试网环境异常、第三方SDK不稳定、跨模块联调Bug、文档缺失
+
+• 反思：优先使用成熟工具链（Foundry/Hardhat/Ethers.js），避免现场啃全新语言/框架
+
+• 优化：提前跑通基础demo、预留20%时间处理意外、只做现场可稳定复现的功能
+
+4\. 路演与呈现类问题
+
+• 问题：逻辑混乱、重点不清、演示卡顿、无法回答技术/产品问题、未突出赛道契合点
+
+• 反思：路演严格遵循“痛点→方案→技术→价值→下一步”结构，Demo提前录制备用视频
+
+• 优化：准备3分钟精简版、5分钟完整版，提前模拟问答，突出与赛事主题/协议的结合点
+
+5\. 时间与风险管理问题
+
+• 问题：前期构思过久、中期开发拖沓、后期仓促提交、缺少文档与演示材料
+
+• 反思：以“提交物完整”为第一目标，而非功能完美，时间分配严格按阶段切割
+
+• 优化：固定里程碑——立项10%、开发60%、联调15%、文档与路演15%
+
+五、标准化复盘框架
+
+1\. 基础信息
+
+• 赛事名称/赛道/时长/团队角色/最终结果
+
+• 核心功能与技术栈：合约语言、开发框架、链环境、第三方协议、前端工具
+
+2\. 成果总结
+
+• 完成模块：合约、前端、交互、数据、文档、演示视频
+
+• 可量化产出：代码提交量、接口数、合约功能点、演示流程数、评审得分项
+
+3\. 问题与根因
+
+• 立项问题：需求边界、赛道匹配、评审理解偏差
+
+• 协作问题：沟通、分工、进度同步、风险响应
+
+• 技术问题：工具选型、环境、安全、联调、兼容性
+
+• 呈现问题：路演结构、Demo稳定性、材料完整性
+
+4\. 改进措施（可执行）
+
+• 下次立项：先做最小闭环、对照评审标准倒推功能
+
+• 团队协作：固定分工、小时里程碑、备用方案
+
+• 技术准备：提前预跑基础Demo、锁定成熟工具、预留缓冲时间
+
+• 路演准备：固定结构、双版本演示材料、问答题库
+
+5\. 能力沉淀
+
+• 新增技能：合约开发、链上交互、SDK集成、产品设计、路演表达
+
+• 行业认知：赛道趋势、评审逻辑、生态合作方式、项目落地边界
+
+• 人脉资源：导师、同期团队、主办方、生态方联系人清单
+
+六、关键经验与通用建议
+
+1\. 不追求完美Demo，追求可稳定演示的完整闭环，这是评审核心评分点
+
+2\. 优先贴合赛事主题与协议方需求，更容易获得高分与资源倾斜
+
+3\. 文档与提交物完整度同等重要，代码、说明、视频缺一不可
+
+4\. 路演少讲技术细节，多讲用户价值与场景，评委更关注落地意义
+
+5\. 赛后及时整理反馈并迭代Demo，是从参赛走向真实项目的关键一步
+
+6\. 把黑客松产出全部归档，作为Web3投研/开发/运营岗位的核心作品集
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 ![截屏2026-01-30 12.32.29.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-30-1769747595586-__2026-01-30_12.32.29.png)
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 ![exported_image (1) 11.08.59.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-29-1769656184677-exported_image__1__11.08.59.png)
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 ![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-28-1769583525700-exported_image__1_.png)
@@ -38,11 +226,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![截屏2026-01-27 11.59.08.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-27-1769486408130-__2026-01-27_11.59.08.png)
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -59,6 +249,7 @@ x402笔记
 
 
 
+
 总结制作了区块链结构图
 
 ![截屏2026-01-25 09.40.47.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-25-1769305249395-__2026-01-25_09.40.47.png)
@@ -66,6 +257,7 @@ x402笔记
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -88,6 +280,7 @@ x402笔记
 
 
 
+
 ![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-23-1769134854977-exported_image__1_.png)
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
@@ -101,11 +294,13 @@ x402笔记
 
 
 
+
 ![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-22-1769054237856-exported_image__1_.png)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -130,11 +325,13 @@ x402笔记
 
 
 
+
 ![exported_image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-20-1768889294082-exported_image.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -163,11 +360,13 @@ x402笔记
 
 
 
+
 ![IMG_5963.JPG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-18-1768700429440-IMG_5963.JPG)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -200,11 +399,13 @@ x402笔记
 
 
 
+
 ![AI 与 Web3 融合：Agentic AI 操作系统演进路径.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-16-1768555867565-AI___Web3____Agentic_AI_________.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -241,11 +442,13 @@ x402笔记
 
 
 
+
 ![以太坊技术详解.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-14-1768382894314-_______.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -420,6 +623,7 @@ Web3.0 关注"智能化"，Web3 关注"去中心化"
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
