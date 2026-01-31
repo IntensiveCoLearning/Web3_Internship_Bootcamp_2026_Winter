@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+加急修后端中。。
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 黑客松准备中...
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 kite-ai的AA账户测试，规则的编写
 
@@ -30,6 +37,7 @@ Uniswap V3 实操
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 Uniswap V3笔记
@@ -42,6 +50,7 @@ Kite AI思考
 
 
 
+
 [ERC标准笔记](https://www.notion.so/Web3-ERC-2f53f040067280f6a7b6f461bfbcd8c5)
 
 ![{9BD54979-8148-4A5E-8927-6BE5059D516E}.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/riwev/images/2026-01-27-1769485890391-_9BD54979-8148-4A5E-8927-6BE5059D516E_.png)
@@ -51,6 +60,7 @@ foundry跟练
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -76,6 +86,7 @@ foundry跟练
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -113,6 +124,7 @@ Uniswap - V2 : **swapTokensForExactTokens**
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -170,6 +182,7 @@ Uniswap - V2 : **swapTokensForExactTokens**
 
 
 
+
 ## uniswap v2 笔记：
 
 在调用任何需要代币的方法之前，必须先将代币转移到交易对（ Flash Swaps 是唯一的例外）
@@ -181,6 +194,7 @@ v2 交易对不支持直接使用 ETH ，因此 ETH 与 ERC-20 交易对必须�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -245,6 +259,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -370,6 +385,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 
 
+
 # **Challenge #0 - Tokenization**
 
 我完全懂力！教程非常详细，只是ipfs不好使就按照群里同学换了pinata
@@ -410,6 +426,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -505,6 +522,7 @@ Polymarket 市场的押注资金均以稳定币 USDC (Polygon 上为 USDC.e，�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -722,6 +740,7 @@ ZK：零知识证明
 
 
 
+
 # 准备以太坊开发环境
 
 ## [Foundry安装](https://getfoundry.sh/introduction/installation)
@@ -808,6 +827,7 @@ cargo install --path ./crates/chisel --profile release --force --locked
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -956,6 +976,7 @@ MetaMask的“重置账户”功能：只清除交易历史，不涉及私钥或
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1181,6 +1202,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1489,6 +1511,7 @@ _ERC-8004是AIAgent生态的身份层协议_
 
 
 
+
 # Ethereum 官网 [Overview](https://ethereum.org/learn/) 基础内容学习
 
 这是一个官方的社区，所有基础的问题都可以得到解答。而且可以通过小测试来看自己的基础知识熟练程度。能复习到很多想不起来的知识）
@@ -1742,6 +1765,7 @@ _本质：区块链账本里的“可执行代码”_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
