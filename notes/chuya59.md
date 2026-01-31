@@ -15,8 +15,224 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+# Foundry 工具链笔记
+
+## 核心工具
+
+| 工具 | 功能描述 | 核心用途 |
+| --- | --- | --- |
+| forge​ | 智能合约开发框架 | 构建、测试、部署合约 |
+| anvil​ | 本地以太坊节点 | 本地开发环境与主网分叉 |
+| cast​ | 区块链交互工具 | 合约调用、交易发送、数据查询 |
+| chisel​ | Solidity REPL | 快速原型与交互式调试 |
+
+* * *
+
+## Forge - 合约开发框架
+
+### 基础工作流
+
+```
+# 创建新项目
+forge init MyProject
+cd MyProject
+
+# 编译合约
+forge build
+
+# 运行测试
+forge test
+
+# 部署合约 (本地anvil)
+forge script script/Deploy.s.sol --rpc-url http://localhost:8545 --broadcast
+```
+
+### 高级功能
+
+-   **分叉测试**：`forge test --fork-url <RPC_URL>`
+    
+-   **模糊测试**：`forge test --match-test <TEST_NAME> -vvv`
+    
+-   **Gas报告**：`forge test --gas-report`
+    
+-   **覆盖率分析**：`forge coverage`
+    
+
+* * *
+
+## Anvil - 本地开发节点
+
+### 基本使用
+
+```
+# 启动本地节点 (10个预注资账户)
+anvil
+
+# 分叉主网
+anvil --fork-url https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
+```
+
+### 关键特性
+
+-   实时日志输出
+    
+-   账户管理（私钥显示）
+    
+-   JSON-RPC 端点：`http://localhost:8545`
+    
+-   主网状态分叉（用于测试）
+    
+
+* * *
+
+## Cast - 区块链交互工具
+
+### 常用命令
+
+```
+# 查询余额
+cast balance vitalik.eth --rpc-url <RPC_URL>
+
+# 调用合约
+cast call <CONTRACT_ADDRESS> "functionName(type)" <ARGS> --rpc-url <RPC_URL>
+
+# 发送交易
+cast send <ADDRESS> --value <AMOUNT> --private-key <PK>
+
+# 获取区块号
+cast block-number --rpc-url <RPC_URL>
+```
+
+### 实用技巧
+
+-   地址格式转换：`cast --to-checksum-address`
+    
+-   数据解码：`cast 4byte-decode <DATA>`
+    
+-   ABI编码：`cast abi-encode "func(uint256)" 123`
+    
+
+* * *
+
+## Chisel - Solidity REPL
+
+### 交互式开发
+
+```
+# 启动REPL
+chisel
+
+# 示例会话
+➜ uint256 x = 10;
+➜ x * 2; // 返回20
+➜ address myAddr = 0x...;
+➜ myAddr.balance;
+```
+
+### 核心功能
+
+-   即时Solidity代码执行
+    
+-   变量检查与类型推导
+    
+-   合约函数快速测试
+    
+-   历史命令记录（↑/↓键）
+    
+
+* * *
+
+## 完整工作流示例
+
+### 1\. 启动开发环境
+
+```
+# 终端1: 启动anvil
+anvil
+
+# 终端2: 进入项目
+cd MyProject
+```
+
+### 2\. 开发与测试
+
+```
+# 编写合约代码
+code src/MyContract.sol
+
+# 编译和测试
+forge build
+forge test
+```
+
+### 3\. 部署与交互
+
+```
+# 部署到本地节点
+forge script script/Deploy.s.sol --rpc-url http://localhost:8545 --broadcast
+
+# 与合约交互
+cast send <DEPLOYED_ADDRESS> "myFunction()" --private-key <ANVIL_PRIVATE_KEY>
+```
+
+### 4\. 调试与探索
+
+```
+# 快速测试代码片段
+chisel
+➜ uint256 result = MyContract.myFunction();
+➜ result
+```
+
+* * *
+
+## 最佳实践提示
+
+1.  **环境变量管理**：
+    
+    ```
+    # 设置.env文件
+    echo "RPC_URL=https://..." >> .env
+    echo "PRIVATE_KEY=0x..." >> .env
+    
+    # 在脚本中使用
+    source .env
+    ```
+    
+2.  **主网分叉测试**：
+    
+    ```
+    # 测试时使用主网状态
+    forge test --fork-url $RPC_URL
+    ```
+    
+3.  **脚本参数化**：
+    
+    ```
+    // Deploy.s.sol
+    function run() external {
+        uint256 param = vm.envUint("PARAM");
+        new MyContract(param);
+    }
+    ```
+    
+4.  **REPL快速原型**：
+    
+    ```
+    chisel
+    ➜ function add(uint a, uint b) pure returns (uint) { return a + b; }
+    ➜ add(5, 7) // 返回12
+    ```
+    
+
+* * *
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 # Crowd Fund 众筹合约笔记
 
 ## 📋 合约概述
@@ -388,6 +604,7 @@ function claim(uint256 _id) external {
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 * * *
 
 ## **无 Gas 代币转移 (Meta Transactions)**
@@ -568,6 +785,7 @@ function deploy() external {
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 # **访问私有数据 (Accessing Private Data)**
 
 ### **核心概念：链上无秘密**
@@ -673,6 +891,7 @@ web3.eth.getStorageAt(contractAddress, mapLocation, console.log);
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -829,6 +1048,7 @@ function verify(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1061,6 +1281,7 @@ Gas：默认3000000
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1946,6 +2167,7 @@ monitors:
 
 
 
+
 # 智能合约升级与修改模式
 
 ## 1\. 核心原则：合约不可直接修改
@@ -2624,6 +2846,7 @@ function test_FullUpgradePath() public {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -3500,6 +3723,7 @@ echidna-test . --contract MyContract
 
 
 
+
 # 智能合约开发高级：Gas 优化、安全、审计与协作规范
 
 ## 1\. Gas 优化
@@ -3844,6 +4068,7 @@ function withdraw() public {
 
 
 
+
 # 智能合约编译产物详解
 
 ## 1\. 字节码（Bytecode）
@@ -3945,6 +4170,7 @@ function withdraw() public {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -4249,6 +4475,7 @@ contract MessageBoard {
 
 
 
+
 # 以太坊节点连接通信与类型笔记
 
 ## 一、节点间连接与通信的三步流程
@@ -4424,6 +4651,7 @@ contract MessageBoard {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -4643,6 +4871,7 @@ contract MessageBoard {
 
 
 
+
 Web3 行业充满机遇，但也伴随复杂的法律风险。理解并规避这些风险，是保护自身职业发展和财产安全的前提。下面梳理核心风险点
 
 ### 国内政策红线与刑事风险
@@ -4724,6 +4953,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4829,6 +5059,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5445,6 +5676,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 
 
+
 ### **以太坊学习笔记**
 
 **一、 核心定位：不止是加密货币，更是可编程平台**
@@ -5517,6 +5749,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
