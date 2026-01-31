@@ -17,17 +17,22 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
-项目LOGO  
+黑客松项目LOGO
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-31-1769875319856-image.png)
 
-全新前端页面  
+黑客松全新前端页面
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-31-1769875373174-image.png)
+
+黑客松PPT  
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-31-1769875498309-image.png)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 DeFi 里的 Aave 和 Compound，本质上都在做同一件事：**把“借贷”这件在传统金融里高度依赖信用、机构和人工风控的事情，抽象成一套可以在链上自动运行的规则系统**。它们解决的不是“怎么放贷”，而是“在没有信任的前提下，如何让资金在时间中产生价格”。
 
@@ -54,6 +59,7 @@ Aave 则恰恰相反。它是在同一个借贷共识之上，向“金融产品
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -276,6 +282,7 @@ DeFi 并非单一产品，而是一个**乐高式可组合的协议栈**。以�
 
 
 
+
 **Web3 数据分析，本质不是看行情，而是在解构链上激励如何驱动行为，以及这些行为是否能形成可持续的经济系统。**  
 它研究的不是“用户喜欢什么”，而是“在给定规则下，理性参与者会做什么”。
 
@@ -313,6 +320,7 @@ Web3 数据分析的底层由三类数据构成：
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -444,6 +452,7 @@ Octant 在这方面的做法如下：
 
 
 
+
 # DAO 治理是否需要“非理性”成分？
 
 ### **一、“非理性”不是混乱，而是对“理性暴政”的制衡**
@@ -510,6 +519,7 @@ DAO 若试图用代码彻底剔除这些“非理性因素”，等于在建造�
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -615,6 +625,7 @@ DAO 的治理权威，究竟来自“人”，还是来自“机制”？
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -737,6 +748,7 @@ wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心
 
 
 
+
 其实我讲完分享会之后心里是有点空的。不是那种“终于结束了”的轻松，而是一种很清楚地知道：我没有把自己真正想讲的东西讲出来。  
 准备 Fusaka 的时候，我是懂的，我知道 PeerDAS 为什么重要，知道它不是简单的“多一点 Blob”，而是在给以太坊的扩展性续命；我也知道节点分工、采样、50% 重构这些点背后，是在为普通人还能跑节点争一条路。但站在那一刻，我脑子里更多的是“别出错”“别卡住”，而不是“把这件事讲清楚”。
 
@@ -750,6 +762,7 @@ wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -980,6 +993,7 @@ fetch('/api/transfer', {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1268,6 +1282,7 @@ L2 承担复杂性，换来了用户。**
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1588,6 +1603,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -1691,6 +1707,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1850,6 +1867,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2236,6 +2254,7 @@ contract AIGPL {
 
 
 
+
 # 今天跟ai探讨学习了个小问题
 
 ## 问：假设我现在在opensea上买了个NFT，钱包已经显示交易成功，我也获得了NFT，那我在区块链游览器中查看是否已经成功上链了，如果是还在处理中，那我去取消这次交易，那不就白嫖了个NFT了么，还是NFT会原路返回，还是说我收到NFT其实就已经是交易上链成功了，这个假设是不存在的，还是说这个接收与发送的处理顺序是怎么样的，是有优先顺序还是同步进行的
@@ -2588,6 +2607,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3280,6 +3300,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -3844,6 +3865,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -4280,6 +4302,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
