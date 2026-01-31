@@ -15,8 +15,151 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+````markdown
+# 🦄 AlphaHorse (马力全开) - Hackathon Kit
+
+> **Track:** SpoonOS - LLM Application / Future of Work  
+> **Tagline:** A gamified, decentralized quantitative hedge fund powered by crowdsourced AI agents.  
+> **核心理念:** 交策略、得马币、享真实收益 (Submit Strategy, Earn MaCoin, Share Real Yield).
+
+---
+
+## 1. 📖 项目简介 (Project Description)
+
+**AlphaHorse** 是一个去中心化的 AI 量化对冲基金众包平台。它打破了传统量化基金的黑盒与高门槛，通过 **AI Agent** 辅助普通用户生成量化因子，并利用 **Proof of Alpha (PoA)** 机制验证策略有效性。
+
+用户不再是单纯的“投资者”，而是“通过 AI 增强的量化研究员”。通过提交高质量的因子（Python 代码），用户通过链下验证后获得 `$HORSE` 代币奖励。代币持有者不仅拥有平台治理权，还能自动获得平台自营中性策略基金（Vault）的真实收益回购与空投。
+
+### 核心痛点 (Problem)
+*   **门槛过高**: 顶级 Alpha 因子被大机构垄断，普通人无法参与。
+*   **算力与数据缺失**: 个人研究者难以获得清洗好的 Crypto 历史数据和回测算力。
+*   **收益不透明**: 传统基金的收益来源和分配机制是黑盒。
+
+### 解决方案 (Solution)
+*   **AI 众包**: 内置 SpoonOS Agent，通过自然语言生成 Pandas/Alphalens 兼容的策略代码。
+*   **PoA 验证**: 链下后端（Backend）运行严密的回测（IC/Sharpe），达标后通过 ECDSA 签名授权链上铸币。
+*   **真实收益 (Real Yield)**: 结合链上金库，将自营策略利润的 20% 用于回购销毁和分红。
+
+---
+
+## 2. 🛠️ 核心功能与架构 (Features & Architecture)
+
+### A. 前端交互 (The Brain & The Vault)
+*   **Brain (左侧 - 生产端)**:
+    *   **AI 助手**: 接入 OpenAI/SpoonOS，用户输入 "帮我写一个基于成交量波动的反转因子"，自动生成代码。
+    *   **赛马动画**: 点击回测后，展示马匹奔跑动画（模拟计算过程）。
+    *   **铸造 (Mint)**: 回测达标（Sharpe > 1.5），钱包弹窗签名，领取 `$HORSE`。
+*   **Vault (右侧 - 消费端)**:
+    *   **质押**: 存入 USDT 或 `$HORSE`。
+    *   **数据看板**: 展示中性策略的模拟 APR 和历史回购记录。
+*   **等级系统**:
+    *   持有代币越多，解锁越高级的数据字段（Level 1: 价格 -> Level 3: 资金费率/持仓量）。
+
+### B. 技术栈 (Tech Stack)
+*   **Blockchain**: Ethereum Sepolia (Solidity, Foundry).
+*   **Backend**: Python (FastAPI, Pandas, **Alphalens**).
+*   **Frontend**: Next.js, Tailwind CSS, RainbowKit, **Framer Motion**.
+*   **AI Agent**: **SpoonOS Framework** (Core Orchestration).
+
+### C. SpoonOS 集成点 (关键加分项)
+我们严格遵循 SpoonOS 架构，构建了核心的 **QuantAgent**：
+1.  **Custom Tool**: `BacktestTool` - 将底层的 Pandas/Alphalens 量化引擎封装为 SpoonOS 标准工具。
+2.  **SpoonOS Agent**: `QuantAgent` - 负责接收用户自然语言指令，自主规划任务（生成代码 -> 调用 BacktestTool -> 分析结果）。
+3.  **Workflow**: 
+    - Input: "帮我找一个成交量放大的反转因子"
+    - Agent Thinking: "用户需要反转因子... 我应该生成 `rank(-1 * ts_delta(close, 5) * volume)`... 然后调用回测工具验证。"
+    - Agent Action: 调用 `BacktestTool.execute(...)`
+    - Output: Agent 根据回测结果（Sharpe > 1.5），自主决定是否调用 `MintTool` 发放奖励。
+
+---
+
+## 3. 🤖 大师级开发提示词 (Master Prompt)
+
+**复制以下内容给 Cursor / ChatGPT，开始自动写代码：**
+
+```markdown
+# Role
+You are a senior Quantitative Architect at WorldQuant and a Web3 Full-Stack Developer. We are building "AlphaHorse", a decentralized AI quant platform for the SPARK AI Hackathon.
+
+# Project Goal
+Build a "Submit Strategy, Earn Token" DApp. 
+Backend runs Python backtests (Alphalens). Frontend handles Wallet connection, AI strategy generation, and gamified minting.
+
+# Tech Stack
+- Frontend: Next.js + Tailwind CSS + RainbowKit (Wallet) + Framer Motion (Animation)
+- Backend: Python FastAPI + Pandas + Alphalens (for IC/Sharpe calculation)
+- Blockchain: Solidity (Foundry)
+- AI: OpenAI API (simulating SpoonOS Agent behavior)
+
+# Core Tasks
+
+## 1. Smart Contracts (Solidity)
+- Create `MaCoin.sol` (ERC20):
+  - Must include `mintWithSignature(address user, uint256 amount, bytes memory signature)`.
+  - Verify ECDSA signature from the backend "Oracle" address before minting.
+- Create `AlphaVault.sol`:
+  - Allow users to stake USDT/MaCoin.
+  - `distributeProfit()`: Function to split profit (10% buyback-burn, 10% airdrop to stakers).
+
+## 2. Quant Backend (Python)
+- **Data**: Use static CSV/Pickle files for BTC/ETH hourly data (last 3 months) to ensure speed.
+- **Engine**: 
+  - Receive Python code string from frontend.
+  - Exec() safely in a sandbox environment.
+  - Use `alphalens` logic (calculate factor returns, IC, Sharpe).
+  - **Constraint**: Apply Z-Score standardization before testing.
+- **Signer**: If Sharpe > 1.5, sign the payload (user_address, amount) with backend private key.
+
+## 3. Frontend (Next.js)
+- **Layout**: Split screen. Left = "Brain" (AI Chat + Code Editor). Right = "Vault" (Staking).
+- **Animation**: When user clicks "Test Factor", show a "Horse Racing" animation.
+- **AI Integration**: A simple chat input that sends a prompt to OpenAI and fills the code editor with the result.
+
+# Implementation Plan
+1. Please first output the **Folder Structure**.
+2. Then provide the **Solidity Contracts**.
+3. Then provide the **Python Backend (main.py)**.
+4. Finally, provide the **Frontend Components**.
+
+Let's build this MVP!
+```
+
+---
+
+## 4. 📅 48小时冲刺计划 (Execution Plan)
+
+### Day 1: 核心逻辑 (Backbone)
+1.  **合约部署**: 完成 `MaCoin` 和 `AlphaVault`，部署到 Sepolia 测试网。
+2.  **后端回测**: 
+    *   整理课程 Week 9 的数据和代码。
+    *   搭建 FastAPI，实现 "接收代码 -> 跑 Alphalens -> 返回结果" 的接口。
+    *   实现后端私钥签名逻辑 (Web3.py)。
+
+### Day 2: 前端与串联 (Frontend & Integration)
+1.  **UI 搭建**: Next.js 左右分栏布局。
+2.  **AI 接入**: 写死几个 Prompt 模板，或者接通 OpenAI API。
+3.  **动画**: 搞定“赛马”动画，这是黑客松演示的视觉亮点。
+4.  **视频录制**: 录制一个完整流程：AI 生成策略 -> 回测通过 -> 钱包签名 -> 代币到账。
+
+---
+
+## 5. 📄 提交说明 (Submission Details)
+
+*   **Repo**: GitHub 仓库应包含 `contracts/`, `backend/`, `frontend/` 三个目录。
+*   **Video**: 1-2 分钟演示视频。
+*   **Demo**: 部署在 Vercel 上的前端链接（如果后端无法部署，就用本地录屏）。
+
+---
+
+> *Created by Gemini for the SPARK AI Hackathon.*
+````
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 这是一个关于 **Web3 实习计划第三周周五例会（2026年1月30日）** 的详细会议总结。会议由 **ETHPanda** 主持，主要包含行政事务通告、七位学员的深度分享以及社群互动环节。
 
 以下是会议内容的充分总结：
@@ -171,6 +314,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 * * *
 
 ### **第一部分：Vibe Coding —— 从“写代码”到“管 AI” (基于 18.2)**
@@ -311,6 +455,7 @@ MCP 是连接 AI 与外部工具的标准化协议，解决了“加一个工具
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 收到。这次我将严格基于\*\*Ye Wang（RootData CPO）\*\*在课程中的具体讲解和PPT内容，为你梳理Web3数据分析的核心逻辑。
@@ -490,6 +635,7 @@ MCP 是连接 AI 与外部工具的标准化协议，解决了“加一个工具
 
 
 
+
 # Web3 实习计划深度学习总结：从市场认知到技术实战
 
 今天的学习内容密度极高，跨越了宏观的市场趋势研判、微观的黑客松生存指南、前沿的AI编程范式以及对传统“投研”逻辑的深刻反思。这不仅是一次知识的输入，更是一次对Web3从业者职业观和方法论的重塑。
@@ -607,6 +753,7 @@ Joe Zhang老师带来了极具实操价值的黑客松生存指南。对于实�
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -731,6 +878,7 @@ Joe Zhang老师带来了极具实操价值的黑客松生存指南。对于实�
 
 
 
+
 本周小结（1）
 
 ### 1\. 智能合約開發與安全進階
@@ -801,6 +949,7 @@ Joe Zhang老师带来了极具实操价值的黑客松生存指南。对于实�
 
 
 
+
 Q1: 在 Web3 领域求职和工作中，有哪些常见的诈骗套路和风险？
 
 会议中分享了多种针对从业者的诈骗手段和风险，主要包括：
@@ -850,6 +999,7 @@ Q5: LXDAO 是一个什么样的组织？
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -973,6 +1123,7 @@ E. 代码片段 (右侧边缘)
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1110,6 +1261,7 @@ E. 代码片段 (右侧边缘)
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1280,6 +1432,7 @@ Elon 老师开篇并没有直接写代码，而是先讲了以太坊虚拟机（
 
 
 
+
 对 **ERC-7962: Key Hash Based Tokens** 的深度总结：
 
 ### 01\. 想法起源 (Idea Origination)
@@ -1399,6 +1552,7 @@ B. ERC-KeyHash20 (FT/代币)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1605,6 +1759,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 
 
+
 智能合约开发学习与个人项目的思考：
 
 我要构建带有激励行为的量化回测平台，如何同时体现worldquant brain这类传统量化基金的玩法和dapp的优势，根据ai所说：
@@ -1697,6 +1852,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 
 
+
 \### Web3 运营、职业发展与行业经验总结 (Q&A)
 
 \#### Q1: 如何判断 Web3 KOL 或项目流量的真实性？
@@ -1758,6 +1914,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1851,6 +2008,7 @@ A： 链上代码不可篡改，漏洞会导致资金永久丢失。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2055,6 +2213,7 @@ _\[cite\_start\]_\*解决方案\*\*：通过 WalletConnect，用户可以在 Uni
 
 
 
+
 一.交流活动：
 
 1\. 治理即纠错 DAO 不需要完美的决策，只需要死不了。民主虽然吵闹（软故障），但能避免独裁式的一夜崩盘（硬故障）。
@@ -2086,6 +2245,7 @@ _\[cite\_start\]_\*解决方案\*\*：通过 WalletConnect，用户可以在 Uni
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
