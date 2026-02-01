@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+1.  ERC-165 – 接口检测标准
+    
+
+• 核心定位：辅助型标准，不是代币标准，但几乎所有主流代币标准（ERC-721/1155/223）都依赖它。
+
+• 解决痛点：合约之间交互时，无法判断对方是否实现了自己需要的接口，容易调用失败。
+
+• 核心功能：定义了一个标准函数，让合约可以声明自己支持的接口。
+
+• 适用场景：所有需要跨合约交互的场景，是以太坊合约的「接口身份证」。
+
+2.  ERC-223 – ERC-20 改进，防止代币误转丢失
+    
+    • 核心定位：ERC-20的升级版，解决ERC-20代币转合约丢失的问题。
+    
+    • 解决痛点：ERC-20的transfer函数没有回调机制，用户误将代币转到不支持接收的合约地址，代币会永久锁定。
+    
+    • 核心功能：
+    
+    ◦ 重写transfer函数，增加bytes data参数；
+    
+    ◦ 转账到合约地址时，会触发合约的tokenFallback回调函数；
+    
+    ◦ 若合约没有实现tokenFallback，转账会直接失败，避免代币丢失。
+    
+    • 适用场景：需要更高安全性的代币发行，替代ERC-20。与 ERC-20 不兼容，主流平台对于ERC-20更支持维护，由此普及度不如ERC-20。
+    
+3.  ERC-827 – ERC-20 扩展，支持授权调用第三方合约
+    
+    • 核心定位：ERC-20的功能扩展版，允许代币转账/授权的同时，调用第三方合约的函数。
+    
+    • 解决痛点：ERC-20需要「授权→调用合约」两步操作，ERC-827将其合并为一步，提升效率。
+    
+    • 核心功能：在ERC-20基础上新增3个函数：
+    
+
+function transferAndCall(address to, uint256 value, bytes calldata data) external returns (bool);
+
+function approveAndCall(address spender, uint256 value, bytes calldata data) external returns (bool);
+
+function transferFromAndCall(address from, address to, uint256 value, bytes calldata data) external returns (bool);
+
+需要代币转账触发业务逻辑的场景（如去中心化交易所、支付系统）。
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 學習一些erc標準，可在openzeppplin調用
 
 1.  **ERC-20 – 可替代代币标准**
@@ -86,6 +134,7 @@ ERC-1155 提供 `safeBatchTransferFrom` 接口，**一笔交易就能批量转�
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 今天系統性學習了合約安全
 
 **安全设计原则**
@@ -150,6 +199,7 @@ ERC-1155 提供 `safeBatchTransferFrom` 接口，**一笔交易就能批量转�
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 系統地學習了一下gas費。
 
 Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
@@ -186,6 +236,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 
 
+
 今天依舊是運營部分的學習内容。
 
 在社群再次進行了宣發，得到了一些回饋，也進行了一些解答，吸引了一些注意。（創造互動更能引起路人的注意）
@@ -197,6 +248,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -213,6 +265,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 
 
+
 今天在和虫虫忙比赛，完全没时间学习，不过也是在踏浪者记的会议上，学到了一些关于黑客松的技巧。
 
 -   注意时间分配
@@ -224,6 +277,7 @@ Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -281,6 +335,7 @@ Student student; // 初始一个student结构体
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -384,6 +439,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -497,6 +553,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 今天參加運營分享會。
 
 -   知道了如何在telegram搭建和運營社群。通過對話題進行管理，分類來增加社群活躍度，對數據進行分析為社群製造吸引人的話題，認識到了機器人@MissRose\_bot，通過/help指令可以看到ross的功能
@@ -506,6 +563,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -538,6 +596,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 今天有點忙碌所以都是斷斷續續在加入會議，不過也零零碎碎地學到了一些知識！
 
 下午的co-learning，聼助教分享了一些運營經驗，雖然本身并沒有往運營發展的打斷但還是受益匪淺！感覺見了些市面哈哈哈
@@ -547,6 +606,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -581,6 +641,7 @@ uint256\[3\] memory \_array;
 
 
 
+
 -   今天在平臺上mint了一個nft，很有趣地感受到了nft和錢包之間的關聯，每一步都需要錢包的確認。雖説在之前已經mint過nft，也在平臺上上架已經購買過，但還是感嘆mint一個nft這個平臺的簡單通俗易懂。
     
 -   參加了今晚的分享會，在懵懵懂懂的情況下，發現有同學做了會議紀要并且無私地發出，非常感動，想到了web3的很多知識都是開源公開的，由衷感謝這種慷慨的行爲，在web3，至少知識不是私有化。
@@ -590,6 +651,7 @@ uint256\[3\] memory \_array;
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
