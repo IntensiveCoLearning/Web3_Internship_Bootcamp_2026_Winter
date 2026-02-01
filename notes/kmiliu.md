@@ -15,8 +15,222 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-01-31
+<!-- DAILY_CHECKIN_2026-01-31_START -->
+## 1) Foundry Basic：`Counter` + `CounterTest`
+
+### 合约逻辑
+
+-   `count` 是 `uint256 public`，Solidity 会自动生成 getter：`count()`。
+    
+-   `inc()`：`count += 1`
+    
+-   `dec()`：`count -= 1`
+    
+    -   在 **Solidity 0.8+** 默认开启算术检查：`0 - 1` 会 **underflow 自动 revert**（不是 wrap-around）。
+        
+
+### 测试逻辑
+
+-   `setUp()`：每个 test 之前都会跑一次，确保 test 间互不影响（fresh deployment）。
+    
+-   `testInc()`：调用一次 `inc()`，断言 `count == 1`。
+    
+-   `testFailDec()`：**testFail 前缀**表示“这个 test 预期会失败（revert）才算通过”。
+    
+    -   这里直接 `dec()`（从 0 到 -1）会 underflow revert，所以 test pass。
+        
+-   `testDecUnderflow()`：更显式的写法
+    
+    -   `vm.expectRevert(stdError.arithmeticError);`
+        
+    -   然后 `dec()`，确认 revert 类型是算术错误。
+        
+-   `testDec()`：先 inc 两次再 dec 一次，最后应该是 1。
+    
+
+### 记忆点
+
+-   ✅ **testFailXxx**：用来写“应该 revert”的用例（但不够精确：只要 revert 就算过）。
+    
+-   ✅ **expectRevert**：更精确（可以匹配 selector / error bytes / 标准错误）。
+    
+-   ✅ `stdError.arithmeticError`：Foundry 里对 0.8+ under/overflow 的标准错误匹配。
+    
+
+* * *
+
+## 2) Foundry Authorization：`Auth` + `AuthTest`
+
+### 合约逻辑
+
+-   `owner` 在 constructor 里设置为 `msg.sender`（部署者）。
+    
+-   `setOwner`：
+    
+    -   `require(msg.sender == owner, "not authorized");`
+        
+    -   通过后更新 `owner = _owner`
+        
+
+### 测试逻辑
+
+-   `setUp()`：`auth = new Auth();`
+    
+    -   注意：在测试里部署合约时，**msg.sender 是测试合约本身（address(this))**，所以初始 owner 是 `address(this)`。
+        
+-   `testSetOwner()`：直接调用 `setOwner(address(1))` 能成功，因为当前 caller 是 `address(this)`，即 owner。
+    
+-   `testFailNotOwner()`：
+    
+    -   `vm.prank(address(1));`：**下一次**外部调用的 `msg.sender` 临时变成 address(1)。
+        
+    -   然后 `auth.setOwner(address(1))`：因为不是 owner，所以 revert，符合 testFail 预期。
+        
+    -   `vm.startPrank(address(1)); ... vm.stopPrank();`：在这段期间 **所有调用** sender 都是 address(1)。
+        
+
+### 记忆点
+
+-   ✅ `vm.prank(x)`：只影响**下一次** call。
+    
+-   ✅ `vm.startPrank(x)` / `vm.stopPrank()`：影响一段连续 calls。
+    
+-   ✅ 常见 access control test：
+    
+    1.  owner 能调用成功
+        
+    2.  非 owner 必须 revert（最好用 `expectRevert(bytes("not authorized"))` 精确匹配）
+        
+
+* * *
+
+## 3) Foundry Error：revert 匹配的几种方式
+
+### 合约逻辑
+
+-   自定义错误：`error NotAuthorized();`
+    
+-   `throwError()`：`require(false, "not authorized");` → revert with string
+    
+-   `throwCustomError()`：`revert NotAuthorized();` → revert with custom error（更省 gas）
+    
+
+### 测试逻辑（重点：expectRevert 的多种形态）
+
+-   `testFail()`：调用 `throwError()`，只要 revert 就通过（不管原因）。
+    
+-   `testRevert()`：
+    
+    -   `vm.expectRevert();`：只检查“会 revert”，不检查原因/内容。
+        
+-   `testRequireMessage()`：
+    
+    -   `vm.expectRevert(bytes("not authorized"));`：匹配 revert string 的 bytes。
+        
+-   `testCustomError()`：
+    
+    -   `vm.expectRevert(Error.NotAuthorized.selector);`
+        
+    -   selector 是自定义 error 的标识（最稳、最常用）。
+        
+
+### 记忆点
+
+-   ✅ **自定义 error**：更便宜、更好匹配（selector）。
+    
+-   ✅ `expectRevert()` 三档精度：
+    
+    1.  不带参数：只要 revert
+        
+    2.  `bytes("...")`：匹配 require string
+        
+    3.  `SomeError.selector`：匹配自定义 error（推荐）
+        
+
+* * *
+
+## 4) Foundry Event：`expectEmit` 怎么用
+
+### 合约逻辑
+
+-   `event Transfer(address indexed from, address indexed to, uint256 amount);`
+    
+    -   `from` 和 `to` 是 indexed → 会进 topics（topic1/topic2）
+        
+    -   `amount` 非 indexed → 在 data
+        
+-   `transfer()`：emit 一次
+    
+-   `transferMany()`：for loop emit 多次（每个收款地址一次）
+    
+
+### 测试逻辑：`vm.expectEmit(...)`
+
+Foundry 的思路是：**先告诉它你要检查哪些字段** → **发出你期望的事件** → **调用目标函数**。
+
+-   `vm.expectEmit(true, true, false, true);`
+    
+    -   这四个 bool 的意思是：
+        
+        1.  checkTopic1（第一个 indexed 参数）
+            
+        2.  checkTopic2（第二个 indexed 参数）
+            
+        3.  checkTopic3（第三个 indexed 参数，如果事件有第三个 indexed 才有意义）
+            
+        4.  checkData（非 indexed data）
+            
+-   然后 `emit Transfer(...)` 作为“期望事件”
+    
+-   再执行 `e.transfer(...)`，Foundry 会对照检查
+    
+
+第二段例子：
+
+-   `vm.expectEmit(true, false, false, false);`
+    
+    -   只检查 topic1（from），其他都不检查，所以即便 to/amount 不一致也能通过。
+        
+
+多次事件：
+
+-   在循环里对每一笔先 `expectEmit` + `emit expected`
+    
+-   最后调用一次 `transferMany`，它会依序 emit 多条，Foundry 逐条对照。
+    
+
+### 记忆点
+
+-   ✅ 事件测试的“顺序三连”：`expectEmit` → `emit expected` → `call function`
+    
+-   ✅ indexed 参数对应 topics；非 indexed 对应 data
+    
+-   ✅ 只检查你关心的字段（减少脆弱性），但别过度放松导致测试失去意义
+    
+
+* * *
+
+## 一页速记 Cheat Sheet（你写测试时最常用的）
+
+-   **setUp()**：每个 test 前重置状态（推荐）
+    
+-   **testFailX**：预期 revert（粗粒度）
+    
+-   **vm.expectRevert()**：预期 revert（可精确到 message/selector）
+    
+-   **vm.prank(a)**：下一次 call 的 `msg.sender = a`
+    
+-   **vm.startPrank(a)**：之后所有 call 的 sender 都是 a，直到 stop
+    
+-   **vm.expectEmit(...) + emit ...**：事件匹配（topics/data 开关）
+    
+-   **assertEq(a,b)**：常用断言（还可加 label string）
+<!-- DAILY_CHECKIN_2026-01-31_END -->
+
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 ## 1) 为什么要跑自己的 L1 节点（GETH / Nethermind 等）
 
 ### 核心动机
@@ -237,6 +451,7 @@ Hardhat 默认 **automine=true**：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 ## 1) 这一节的核心目标：学会 “tinkering”
 
@@ -497,6 +712,7 @@ emit Buy(msg.sender, 1);
 <!-- DAILY_CHECKIN_2026-01-27_START -->
 
 
+
 ## 一、Foundry 是什么（一句话）
 
 **Foundry = 用 Rust 写的以 CLI 为核心的以太坊开发工具链**  
@@ -717,6 +933,7 @@ cast 交互 & 调试
 
 
 
+
 ## 1) Scaffold-ETH 是什么（核心卖点）
 
 -   **一句话**：Scaffold-ETH 是一个“本地链 + 合约开发 + 前端自动生成/适配”的全套 dApp 模板
@@ -928,6 +1145,7 @@ cast 交互 & 调试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1282,6 +1500,7 @@ require(ok);
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1653,6 +1872,7 @@ require(tx.origin == msg.sender);
 
 
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -1908,6 +2128,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2353,6 +2574,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -2450,6 +2672,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2634,6 +2857,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -2741,6 +2965,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3655,6 +3880,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -3831,6 +4057,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -3951,6 +4178,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4840,6 +5068,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
