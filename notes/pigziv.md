@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+打卡，demo没做完
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 做黑客松
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 卡。。
@@ -32,11 +39,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 打卡，听了黑客松周二space，感觉学到很多
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -51,6 +60,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 [Notion](https://east-drizzle-be3.notion.site/Solidity-Walk-Through-2f2ec4f8802580cf81e5c5e22b756a35?pvs=74)
 
 今天学习了很多solidity的语法知识和用法，具体见网站。
@@ -60,6 +70,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -90,6 +101,7 @@ contract PigCoin is ERC20 {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -144,6 +156,7 @@ contract PigCoin is ERC20 {
 
 
 
+
 今天补充了一下之前学习的笔记
 
 [Web3社区运营基础&活动策划与执行流程](https://east-drizzle-be3.notion.site/Web3-2f0ec4f880258071b22cdff09adb328c)
@@ -155,6 +168,7 @@ contract PigCoin is ERC20 {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -288,6 +302,7 @@ contract PigCoin is ERC20 {
 
 
 
+
 打卡,今天在学习的途中，也关心到了以区块链技术为基础的虚拟货币金融市场的变化，特朗普通过施加关税压力企图让欧洲各国妥协承认美国在格陵兰岛的合法权益。
 
 学习了021学以太坊第四章，下面是部分笔记：
@@ -391,6 +406,7 @@ contract PigCoin is ERC20 {
 
 
 
+
 ### **Web3 DApp 开发核心笔记**
 
 **1\. DApp 架构解析** 去中心化应用（DApp）与传统应用的核心区别在于其逻辑和数据由分布式网络维护，而非单一实体控制。DApp 的架构主要包含四个部分：
@@ -443,6 +459,7 @@ contract PigCoin is ERC20 {
 
 
 
+
 打卡，今天周日，好好休息了一下，准备晚上的会议
 
 今天小小复盘一下吧，完成了钓鱼网络攻防任务。今晚会议听了好多不可思议的名词，准备看看回放问问gemini，提前初学了一点下周的技术向知识，提交了一个web3实习手册的pr，感觉这周很忙但好像也不知在忙什么，但好在把所有任务都完成了，还参与了一下分享，小白的进步始终是要缓慢且持久的。希望终有一天也能从小白蒟蒻变大牛。现在给自己的目标就是能把实习计划里的任务全做完就已经很不错了。除此之外多接触一下各位大佬。日拱一卒，功不唐捐。靡不有初 鲜克有终
@@ -450,6 +467,7 @@ contract PigCoin is ERC20 {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -490,6 +508,7 @@ contract PigCoin is ERC20 {
 
 
 
+
 今天听分享会学到了很多。
 
 1.  [Home - AnyGen 】](https://www.anygen.io/home?invitation_code=1O0MI11YE75VYNV) 来自Howard 同学，做ppt网站，先用gemini生成markdown文本，来后进来这个类似ai a’gent的网站制作ppt
@@ -512,6 +531,7 @@ contract PigCoin is ERC20 {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -630,6 +650,7 @@ B. 广撒网 (针对普通用户)
 
 
 
+
 打卡，补充一下昨天bruce分享的完整版笔记
 
 [https://east-drizzle-be3.notion.site/Web3-2e8ec4f8802580068955e171247899c1?pvs=74](https://east-drizzle-be3.notion.site/Web3-2e8ec4f8802580068955e171247899c1?pvs=74)哈哈，应该能看到点进网站，里面有我对bruce课后小习题的思考
@@ -639,6 +660,7 @@ B. 广撒网 (针对普通用户)
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -687,6 +709,7 @@ code is the law，我觉得智能合约可以提供一个比较好的工具。�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
