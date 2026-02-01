@@ -15,19 +15,27 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+学习基本语法
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 **完成专业文章排版**
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 继续学习erc标准、写研报
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 完成挑战：Challenge #0 - Tokenization
@@ -39,11 +47,13 @@ timezone: UTC+8
 
 
 
+
 **通过 Ethernaut前三关**
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -62,6 +72,7 @@ timezone: UTC+8
 
 
 
+
 done
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-26-1769443006825-image.png)
@@ -69,6 +80,7 @@ done
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -93,6 +105,7 @@ done
 
 
 
+
 钓鱼攻防
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-24-1769269585872-image.png)
@@ -100,6 +113,7 @@ done
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -128,6 +142,7 @@ done
 
 
 
+
 今天主要完成运营作业，组好了一起做x space的小伙伴们
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-22-1769095726784-image.png)
@@ -135,6 +150,7 @@ done
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -167,6 +183,7 @@ studying！
 
 
 
+
 studying！
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-20-1768881065500-image.png)
@@ -174,6 +191,7 @@ studying！
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -210,6 +228,7 @@ studying!
 
 
 
+
 期末周赶due太忙了实在是，但创建了钱包转了同学水，也算今天干了活儿吧
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-18-1768731556683-image.png)
@@ -217,6 +236,7 @@ studying!
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -261,6 +281,7 @@ mint了第一个nft
 
 
 
+
 done
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-16-1768532548873-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/fufudefa/images/2026-01-16-1768532620506-image.png)
@@ -268,6 +289,7 @@ done
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -295,6 +317,7 @@ done
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -342,6 +365,7 @@ done
 
 
 
+
 注册推特，关注重要官推账号：done
 
 完成工具安装与账号创建，并完成以下两项子任务（详见描述）：done
@@ -359,6 +383,7 @@ done
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
