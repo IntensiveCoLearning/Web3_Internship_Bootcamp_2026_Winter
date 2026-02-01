@@ -15,8 +15,79 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# **今日学习：Skills 相关内容（复盘笔记）**
+
+## **1）我今天理解的“Skills”是什么？**
+
+-   **Skills 不是“我学过什么”，而是“我能稳定产出什么结果”。**
+    
+-   好的 skill 需要具备 3 个要素：
+    
+    1.  **输入**：我拿到什么信息/数据/需求
+        
+    2.  **过程**：我用什么方法/工具做
+        
+    3.  **输出**：我能交付什么可验证的成果（代码、文档、demo、数据、报告）
+        
+
+* * *
+
+## **2）我把 skills 分成 4 类**
+
+### **A. 基础能力（Fundamentals）**
+
+-   以太坊基础：账户/合约、交易、gas、节点、L2、DAO
+    
+-   目标：能用自己的话解释概念，并能举例、能落到真实操作
+    
+
+### **B. 工程能力（Engineering / Builder Skills）**
+
+-   DApp 开发流程：合约 → 测试 → 部署 → 前端对接 → 事件索引
+    
+-   工具链：Hardhat / Foundry / Ethers.js（或 viem）/ RPC / Etherscan
+    
+-   目标：能从 0 到 1 做一个能跑的 demo，并可复现（README + 脚本）
+    
+
+### **C. 产品与沟通能力（Product / Collaboration Skills）**
+
+-   把需求写清楚：PRD、用户流程、边界条件、验收标准
+    
+-   会做“技术翻译”：把链上流程讲成人话（用户能懂）
+    
+-   会做“输出”：Notion 笔记、推特线程、Demo 讲解
+    
+
+### **D. 安全与合规意识（Security / Compliance Mindset）**
+
+-   钱包安全：签名/授权/钓鱼/权限
+    
+-   合规视角：KYC/AML、风险提示、资产托管责任边界
+    
+-   目标：知道“哪些地方最容易出事”，能提前设计保护措施
+    
+
+* * *
+
+## **3）我今天学到的“技能表达方式”**
+
+把 skill 写成：**动词 + 工具/方法 + 结果**
+
+例子（模板）：
+
+-   “使用 Foundry 编写 fuzz 测试，覆盖核心路径并捕捉边界条件 bug”
+    
+-   “用 Hardhat + Sepolia 完成合约部署与验证，并对接前端完成交易确认流程”
+    
+-   “基于 Uniswap v4 文档梳理 hooks/singleton/flash accounting 心智模型，并做成可复用笔记”
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # **Web3 的自治方式（DAO / 治理 / 自治机制）学习笔记**
 
 ## **1）一句话理解“自治”**
@@ -195,6 +266,7 @@ Web3 自治：代码定规则 +（投票/多签）触发执行
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 # **今日笔记：如何构建一个 DApp（从 0 到 1）**
 
@@ -392,6 +464,7 @@ Web3 自治：代码定规则 +（投票/多签）触发执行
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 # **Uniswap v4 学习笔记**
 
 ## **1）一句话总结**
@@ -539,6 +612,7 @@ PoolManager 会做类似这几步：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -753,6 +827,7 @@ Cheatcodes 让你在测试里“操控链环境”，非常关键：
 
 
 
+
 # **Hardhat 学习笔记**
 
 ## **1）Hardhat 是什么？解决什么问题？**
@@ -936,6 +1011,7 @@ Cheatcodes 让你在测试里“操控链环境”，非常关键：
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1134,6 +1210,7 @@ Vibe coding：先出一个能跑的 demo → 边用边改 → 逐步加规则/�
 
 
 
+
 # **Ethernaut 前三关学习要点总结（Hello / Fallback / Fallout）**
 
 ## **关卡 1：Hello Ethernaut（熟悉 Console + 合约交互）**
@@ -1276,6 +1353,7 @@ function Fallout() public payable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1567,6 +1645,7 @@ ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2073,6 +2152,7 @@ for (...) {
 
 
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -2310,6 +2390,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2574,6 +2655,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -2794,6 +2876,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -2995,6 +3078,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -3166,6 +3250,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -3277,6 +3362,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3438,6 +3524,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3775,6 +3862,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -3892,6 +3980,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4253,6 +4342,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
