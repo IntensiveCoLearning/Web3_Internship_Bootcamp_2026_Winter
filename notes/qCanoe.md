@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+本周的学习围绕以太坊智能合约开发的**语言层—工具层—工程实践层**逐步展开，整体目标是建立对 Solidity 合约语义、主流开发框架以及本地链交互机制的系统性理解，并通过实践形成完整的开发闭环。
+
+在 1.26–1.27 的阶段，我重点放在 Solidity 语言本身及 Hardhat 框架的入门使用上。通过研读 _Solidity by Example_ 中的 Applications 部分，我系统梳理了常见合约应用模式，包括状态变量管理、函数调用语义、权限控制以及合约作为“应用组件”的整体设计思路。这一阶段的重点不再是语法细节，而是理解 Solidity 如何映射到 EVM 的执行模型，以及合约在链上作为状态机的本质。在此基础上，我学习并实践了 Hardhat 3 的 Getting Started 文档，理解了 Hardhat 在工程层面所提供的能力，包括项目初始化、配置文件结构、本地节点运行方式以及测试与脚本的组织逻辑。通过本地节点交互的简单实践，我明确了 Hardhat 在开发流程中所承担的“工程协调器”角色，即对编译、部署、测试等步骤进行统一调度。
+
+在拓展阅读方面，我补充学习了以太坊开发的整体技术图景，并开始接触 Uniswap V2 的核心代码结构。这一部分的学习重点在于从真实协议中观察合约模块化设计、状态变量布局以及函数之间的调用关系，从而将前一阶段的 Solidity 抽象知识与实际 DeFi 系统的工程实现相联系。
+
+在 1.28–1.29 的阶段，学习重心转向 Foundry 工具链，并通过本地节点完成合约交互实践。我系统理解了 Foundry 中各组件的分工关系：Anvil 作为本地链环境，Forge 作为合约构建与部署工具，Cast 作为链上交互接口。通过在本地启动节点、部署示例合约并执行只读调用与状态修改交易，我完整经历了从私钥签名、交易广播到状态更新与结果验证的全过程。这一实践显著加深了我对“调用（call）”与“交易（send）”在执行路径、成本模型和状态影响上的本质差异的理解。同时，通过查阅 OpenZeppelin 的代码结构，我进一步认识到工业级合约在继承体系、模块拆分以及安全模式上的设计原则，为后续自行编写标准化合约奠定了参考范式。
+
+在 1.30 的总结与实践阶段，我对前述内容进行了整体回顾，并以 ERC-20 相关题目作为综合练习，尝试将语言理解、框架使用与合约设计原则结合起来。这一阶段的重点在于查漏补缺与知识内化，而非引入新的工具或概念。同时，通过对本周学习内容的整理与分享，我对自身在智能合约开发路径上的阶段性进展形成了更清晰的认知。
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 Foundry 是一个用 Rust 编写的、针对以太坊兼容区块链应用开发的高性能、模块化工具链。其核心目标是通过命令行接口提供**合约构建、测试、部署以及链上交互**的一体化开发体验，从而支持智能合约开发生命周期中各阶段的工程活动。
 
 Foundry 工具链由四个互补组件组成，其中各组件的功能划分如下：
@@ -44,6 +58,7 @@ Foundry 工具链由四个互补组件组成，其中各组件的功能划分如
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 通过在本地启动一条独立的区块链网络，并借助命令行工具完成合约部署与状态读写，系统理解了 Web3 应用中“节点—合约—用户交互”之间的底层关系。
 
 Foundry 提供了一组高度模块化的开发工具，其中 Anvil、Forge 与 Cast 分别承担不同但互补的功能。Anvil 用于在本地启动以太坊兼容节点，负责区块生成、账户管理与交易执行，其本质是一个可控、瞬时存在的区块链运行环境。只要 Anvil 进程运行，本地区块链即持续存在；一旦终止，链上状态将被完全清空。这一特性使我能够在无需真实成本的前提下反复实验合约部署与交易行为。Anvil 在启动时自动生成多组账户及其私钥，并为其分配大量测试以太币，这一设计直观体现了私钥在账户控制与交易签名中的核心作用。
@@ -55,6 +70,7 @@ Foundry 提供了一组高度模块化的开发工具，其中 Anvil、Forge 与
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 Hardhat 是一个面向以太坊及兼容区块链的智能合约开发环境，旨在为开发者提供从合约编写、编译、测试、调试到部署的一体化工具链。其设计理念强调模块化与可扩展性，通过插件机制支持多样化的开发需求，并逐渐发展为以太坊生态中事实上的主流本地开发框架之一。Hardhat 不仅关注合约本身的正确性，也重视开发过程中的可调试性与工程可维护性。
@@ -72,6 +88,7 @@ Hardhat 是一个面向以太坊及兼容区块链的智能合约开发环境，
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -102,6 +119,7 @@ Hardhat 是一个面向以太坊及兼容区块链的智能合约开发环境，
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -151,6 +169,7 @@ Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约
 
 
 
+
 今天主要进行了 Solidity 的应用学习（Applications），重点体验了以下功能的实现：
 
 1\. Ether Wallet
@@ -168,6 +187,7 @@ Solidity 并不是为表达复杂算法而设计的语言，而是为**在强约
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -281,6 +301,7 @@ Solidity 中有三种主要的失败机制，但语义并不相同：
 
 
 
+
 **storage**：链上永久存储，读写成本高，生命周期与合约一致。
 
 **memory**：函数执行期间的临时内存，成本较低，执行结束即释放。
@@ -379,6 +400,7 @@ contract Ownable {
 
 
 
+
 ### **1.21**[**Solidity by Example | 0.8.26**](https://solidity-by-example.org/) **Basic 部分**
 
 **一、Hello World 合约与基础结构**
@@ -446,6 +468,7 @@ function getSum(uint a, uint b) external pure returns(uint) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -666,6 +689,7 @@ assert
 
 
 
+
 ### **1.19 Web3 实习手册**[**「智能合约开发」**](https://web3intern.xyz/zh/smart-contract-development/)**部分**
 
 A Smart Contract (or cryptocontract) is a computer program that directly and automatically controls the transfer of digital assets between the parties under certain conditions. A smart contract works in the same way as a traditional contract while also automatically enforcing the contract. Smart contracts are programs that execute exactly as they are set up(coded, programmed) by their creators. Just like a traditional contract is enforceable by law, smart contracts are enforceable by code. 
@@ -751,6 +775,7 @@ RPC 是 Dapp 与链通信的核心桥梁，通过 JSON-RPC 与节点交互读取
 
 
 
+
 ### **1.18 以太坊账户与节点机制的关键细节理解**
 
 **一、执行客户端与共识客户端的真实分工**
@@ -796,6 +821,7 @@ ERC-20 等代币的余额，本质上是存储在**代币合约的 storage mappi
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -900,6 +926,7 @@ ETH 并不是附属于以太坊的“奖励代币”，而是系统运转的核�
 
 
 
+
 ### **1.16 思考与扩展**
 
 **一、从“一笔交易”重新理解以太坊系统的因果链**
@@ -953,6 +980,7 @@ EIP-1559 试图解决的是“资源定价混乱与用户体验不确定性”�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1057,6 +1085,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.14** [**021 学习以太坊第 2 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、章节目标与整体视角**
@@ -1128,6 +1157,7 @@ EOA 负责表达意图（我想做什么）； 合约账户负责执行规则（
 
 
 
+
 ### **1.13** [**021 学习以太坊第 1 章**](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
 
 **一、学习目标与章节定位**
@@ -1165,6 +1195,7 @@ ETH 是以太坊的原生资产，其设计目标并非单一的“货币”，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
