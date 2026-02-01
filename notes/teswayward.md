@@ -15,8 +15,331 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# 第三章：合约调用与执行上下文
+
+## —— 从 `msg.sender` 到 `delegatecall`，再到重入（Reentrancy）
+
+> 本章是 **Solidity / 安全 / DeFi 的分水岭**。  
+> 理解这一章，你才算“会写合约，而不是只会抄合约”。
+
+* * *
+
+## 3.0 本章你要建立的“核心认知模型”
+
+你要牢牢记住一句话：
+
+> **合约调用 ≠ 函数调用，而是“状态机之间的消息传递”。**
+
+因此每一次调用，都会伴随一个**执行上下文（Execution Context）**：
+
+-   谁在调用？
+    
+-   用谁的 storage？
+    
+-   ETH 从哪来、到哪去？
+    
+-   gas 怎么传递？
+    
+-   控制权有没有交出去？
+    
+
+* * *
+
+## 3.1 执行上下文（Execution Context）是什么
+
+当 EVM 执行一段合约代码时，它必须知道以下“上下文信息”：
+
+### 3.1.1 核心上下文字段（你必须熟）
+
+-   `msg.sender`：**当前这一步调用的直接调用者**
+    
+-   `msg.value`：这次调用附带的 ETH 数量
+    
+-   `address(this)`：当前正在执行代码的合约地址
+    
+-   `tx.origin`：最初发起整笔交易的 EOA（⚠️危险字段）
+    
+-   `gasleft()`：当前还剩多少 gas
+    
+
+> ⚠️ 重点：  
+> **msg.sender 是“上一跳”，不是“最初的人”。**
+
+* * *
+
+## 3.2 一次“简单调用”背后发生了什么
+
+### 3.2.1 从 EOA 到合约（第一跳）
+
+用户（EOA）发交易调用合约 A：
+
+-   `msg.sender = 用户地址`
+    
+-   `tx.origin = 用户地址`
+    
+-   storage：用的是 **合约 A 的 storage**
+    
+
+这一步**通常是安全的**。
+
+* * *
+
+### 3.2.2 合约调用合约（第二跳）
+
+合约 A 调用合约 B（`call`）：
+
+-   在 B 里：
+    
+    -   `msg.sender = 合约 A`
+        
+    -   `tx.origin = 用户地址`（仍然不变）
+        
+-   storage：用的是 **合约 B 的 storage**
+    
+
+这一步开始，**复杂性出现了**。
+
+* * *
+
+## 3.3 `call`：最常见、也是最危险的调用方式
+
+### 3.3.1 `call` 的本质
+
+`call` 做三件事：
+
+1.  切换执行代码到目标合约
+    
+2.  使用 **目标合约的 storage**
+    
+3.  把**控制权交出去**
+    
+
+一句话记忆：
+
+> **call = “我跳到你那执行，用你的状态，你说了算。”**
+
+* * *
+
+### 3.3.2 ETH 转账其实也是 `call`
+
+你以为你在做“转账”，实际上 EVM 在做：
+
+```
+(bool success, ) = recipient.call{value: amount}("");
+```
+
+这意味着：
+
+-   对方合约的 `fallback / receive` 会被执行
+    
+-   如果对方是恶意合约，它可以在这一步“反咬一口”
+    
+
+👉 这就是 **重入攻击的起点**。
+
+* * *
+
+## 3.4 重入（Reentrancy）——从执行层看，为什么会发生
+
+### 3.4.1 经典错误代码（从执行顺序理解）
+
+```
+function withdraw(uint amount) public {
+    require(balance[msg.sender] >= amount);
+
+    // ① 先转账（call）
+    (bool ok, ) = msg.sender.call{value: amount}("");
+    require(ok);
+
+    // ② 再更新状态
+    balance[msg.sender] -= amount;
+}
+```
+
+### 3.4.2 执行层发生了什么（这是关键）
+
+执行顺序是：
+
+1.  合约检查余额 ✔️
+    
+2.  `call` 把 ETH 转给 `msg.sender`
+    
+3.  **控制权交给 msg.sender（如果它是合约）**
+    
+4.  对方合约在 fallback 里**再次调用 withdraw**
+    
+5.  第二次调用时：
+    
+    -   `balance[msg.sender]` 还没减少
+        
+    -   再次通过 `require`
+        
+6.  重复多次 → 资金被掏空
+    
+
+👉 **不是“Solidity 有 bug”，而是你把执行权交出去了。**
+
+* * *
+
+## 3.5 防重入的本质（不是“加个修饰符”）
+
+### 3.5.1 Checks–Effects–Interactions（CEI）3.5.1 检查–效果–相互作用（CEI）
+
+这是**执行顺序原则**，不是语法：
+
+1.  **Checks**：检查条件
+    
+2.  **Effects**：更新自身状态
+    
+3.  **Interactions**：最后再和外部合约交互（call）
+    
+
+改成：
+
+```
+balance[msg.sender] -= amount;
+(bool ok, ) = msg.sender.call{value: amount}("");
+```
+
+本质是：
+
+> **在交出控制权之前，把自己“锁好”。**
+
+* * *
+
+### 3.5.2 Reentrancy Guard 的执行层意义
+
+`nonReentrant` 本质不是魔法，而是：
+
+-   在 storage 里放一个“锁位”
+    
+-   进入函数时上锁
+    
+-   函数结束时解锁
+    
+-   重入时发现锁已占用 → revert
+    
+
+* * *
+
+## 3.6 `delegatecall`：最容易被误用、但极其强大的指令
+
+### 3.6.1 `delegatecall` 和 `call` 的根本区别
+
+一句话对比：
+
+| 维度 | call | delegatecall |
+| --- | --- | --- |
+| 执行代码 | 被调用合约 | 被调用合约 |
+| 使用 storage | 被调用者的 | 调用者的 |
+| msg.sender | 调用者 | 原始调用者 |
+
+一句话记忆：
+
+> **delegatecall = “用你的代码，改我的状态。”**
+
+* * *
+
+### 3.6.2 为什么升级合约必须用 delegatecall
+
+代理合约（Proxy）模式：
+
+-   Proxy 合约：
+    
+    -   保存状态（storage）
+        
+    -   地址不变
+        
+-   Logic 合约：
+    
+    -   保存逻辑代码
+        
+    -   可替换
+        
+
+Proxy 在 fallback 里用 `delegatecall` 调 Logic：
+
+-   用户调用 Proxy
+    
+-   Logic 的代码在 **Proxy 的 storage** 上执行
+    
+-   升级 = 换 Logic 地址
+    
+
+👉 **delegatecall 是“可升级合约”的技术基础。**
+
+* * *
+
+### 3.6.3 delegatecall 的巨大风险
+
+因为它：
+
+-   用你的 storage
+    
+-   用你的余额
+    
+-   用你的权限上下文
+    
+
+如果 delegatecall 的目标代码不可信：
+
+-   它可以随意改你的 storage
+    
+-   比 reentrancy 更致命
+    
+
+* * *
+
+## 3.7 `msg.sender` vs `tx.origin`（经典陷阱）
+
+### 3.7.1 为什么 `tx.origin` 危险
+
+`tx.origin` 永远是最初发交易的 EOA。
+
+如果你用它做权限判断：
+
+```
+require(tx.origin == owner);
+```
+
+攻击方式是：
+
+1.  攻击者诱导 owner 调用恶意合约
+    
+2.  恶意合约再调用你的合约
+    
+3.  `tx.origin` 仍然是 owner
+    
+4.  权限绕过成功
+    
+
+👉 **安全合约几乎永远不用 tx.origin 做鉴权。**
+
+* * *
+
+## 3.8 Gas 与调用深度（执行层现实约束）
+
+-   每次 `call` 会带着一部分 gas
+    
+-   如果 gas 不够：
+    
+    -   子调用 revert
+        
+    -   父调用可能被迫 revert
+        
+-   历史上 `transfer` 被认为安全，是因为它只给 2300 gas
+    
+-   但 EIP-1884 后，2300 gas 不再可靠 → `call` 成为主流
+    
+
+👉 **Gas 规则变化，也会影响安全假设。**
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # 第二章：以太坊交易执行与 EVM（执行层全景）
 
 ## 2.0 这一章你要建立的“核心闭环”
@@ -378,6 +701,7 @@ Solidity 的 `event Transfer(address indexed from, address indexed to, uint256 v
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 # 第一章：密码学与区块链基础（Ethereum 的地基）
 
@@ -780,6 +1104,7 @@ MPT 同时满足：
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 ## Speed Run Ethereum 学习笔记：DEX + Multisig + SVG NFT
 
 ### 1）⚖️ DEX：去中心化交易的核心逻辑
@@ -877,6 +1202,7 @@ SVG NFT 的亮点是：**把 NFT 的图片直接用代码在链上生成（SVG�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1089,6 +1415,7 @@ Token Vendor 通常运行在 **Ethereum** 上，
 
 
 
+
 ## Staking App 学习笔记
 
 ### 一、什么是 Staking App
@@ -1253,6 +1580,7 @@ Staking 看起来“稳”，但并非无风险：
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1495,6 +1823,7 @@ Events 是合约向链外“发信号”的方式：
 
 
 
+
 ## Intro to Ethereum Clients & Hardhat 学习笔记
 
 ### 一、什么是 Ethereum Clients（以太坊客户端）
@@ -1697,6 +2026,7 @@ Hardhat 自带一个**本地虚拟以太坊网络**：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1916,6 +2246,7 @@ Hardhat 自带一个**本地虚拟以太坊网络**：
 
 
 
+
 Web3 公共物品发放安排 学习笔记
 
 一、什么是 Web3 公共物品
@@ -2081,6 +2412,7 @@ Web3 的公共物品发放安排，本质是在回答一个问题：
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2300,6 +2632,7 @@ Web3 世界里：
 
 
 
+
 ## NFTs 学习笔记（标准、存储与数据结构）
 
 ### 一、NFTs 是什么
@@ -2495,6 +2828,7 @@ Metadata 是一个 **JSON 文件**，描述 NFT 的具体信息。
 
 
 
+
 ## Web3 核心概念学习笔记
 
 ### 一、ENS（Ethereum Name Service）
@@ -2678,6 +3012,7 @@ Web3 的核心不只是“交易”，
 
 
 
+
 ### 一、钱包是什么（Wallet）
 
 在 Web3 里，钱包**不是用来存币的工具**，而是一个**管理密钥、帮你与区块链交互的工具**。  
@@ -2821,6 +3156,7 @@ Web3 安全的第一道防线，永远是**对密钥和签名的理解**。
 
 
 
+
 ## 智能合约开发学习笔记
 
 ### **一、DApp 开发架构总览**
@@ -2941,6 +3277,7 @@ Web3 应用（DApp）与传统 Web 应用最大的不同是：**逻辑和状态�
 
 
 
+
 ## **Web3 岗位全景图 笔记**
 
 ### 一、技术类岗位（Tech Roles）
@@ -3024,6 +3361,7 @@ Web3 不只有写代码的工作，还有很多面向业务与生态建设的岗
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3144,6 +3482,7 @@ Web3 不只有写代码的工作，还有很多面向业务与生态建设的岗
 
 
 
+
 ## Web3 安全学习笔记
 
 -   **Web3 安全在保护什么**  
@@ -3239,6 +3578,7 @@ Web3 不只有写代码的工作，还有很多面向业务与生态建设的岗
 
 
 
+
 ## NFT（Non-Fungible Token）学习笔记
 
 -   **NFT 是什么**  
@@ -3296,6 +3636,7 @@ Web3 不只有写代码的工作，还有很多面向业务与生态建设的岗
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
