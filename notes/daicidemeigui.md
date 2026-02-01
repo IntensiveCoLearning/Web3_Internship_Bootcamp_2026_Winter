@@ -15,8 +15,188 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# Wagmi案例
+
+### **步骤 1: 安装依赖**
+
+bash
+
+```
+npm install wagmi viem @tanstack/react-query
+# 或
+yarn add wagmi viem @tanstack/react-query
+# 或
+pnpm add wagmi viem @tanstack/react-query
+```
+
+### **步骤 2: 基础配置**
+
+tsx
+
+```
+// App.tsx 或 main.tsx
+import React from 'react'
+import { createConfig, WagmiProvider } from 'wagmi'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { http } from 'viem'
+import { mainnet, sepolia } from 'wagmi/chains'
+
+// 1. 创建查询客户端（用于缓存）
+const queryClient = new QueryClient()
+
+// 2. 配置 Wagmi
+const config = createConfig({
+  chains: [mainnet, sepolia], // 支持的链
+  transports: {
+    [mainnet.id]: http(), // 默认 RPC
+    [sepolia.id]: http('https://sepolia.infura.io/v3/YOUR_API_KEY'),
+  },
+  // 连接器（钱包）
+  connectors: [
+    injected(), // 自动检测 MetaMask 等注入式钱包
+    walletConnect({ projectId: 'YOUR_PROJECT_ID' }),
+    coinbaseWallet({ appName: 'My DApp' }),
+  ],
+})
+
+function App() {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <YourApp />
+      </QueryClientProvider>
+    </WagmiProvider>
+  )
+}
+```
+
+### **步骤 3: 连接钱包**
+
+tsx
+
+```
+// components/ConnectButton.tsx
+import { useConnect, useAccount, useDisconnect } from 'wagmi'
+
+export function ConnectButton() {
+  const { connect, connectors, error } = useConnect()
+  const { address, isConnected } = useAccount()
+  const { disconnect } = useDisconnect()
+
+  if (isConnected) {
+    return (
+      <div>
+        <p>Connected: {address?.slice(0, 6)}...{address?.slice(-4)}</p>
+        <button onClick={() => disconnect()}>Disconnect</button>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      {connectors.map((connector) => (
+        <button
+          key={connector.uid}
+          onClick={() => connect({ connector })}
+          disabled={!connector.ready}
+        >
+          Connect with {connector.name}
+        </button>
+      ))}
+      {error && <p>{error.message}</p>}
+    </div>
+  )
+}
+```
+
+### **步骤 4: 读取链上数据**
+
+tsx
+
+```
+// components/Balance.tsx
+import { useAccount, useBalance, useBlockNumber } from 'wagmi'
+
+export function Balance() {
+  const { address } = useAccount()
+  const { data: balance } = useBalance({ address })
+  const { data: blockNumber } = useBlockNumber({ watch: true })
+
+  return (
+    <div>
+      <h3>Account Information</h3>
+      <p>Address: {address}</p>
+      <p>Balance: {balance?.formatted} {balance?.symbol}</p>
+      <p>Current Block: {blockNumber?.toString()}</p>
+    </div>
+  )
+}
+```
+
+### **步骤 5: 与智能合约交互**
+
+tsx
+
+```
+// components/TokenInteraction.tsx
+import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { abi } from './abi' // 你的合约 ABI
+import { parseEther } from 'viem'
+
+const CONTRACT_ADDRESS = '0x...'
+
+export function TokenInteraction() {
+  // 1. 读取合约数据
+  const { data: totalSupply } = useReadContract({
+    abi,
+    address: CONTRACT_ADDRESS,
+    functionName: 'totalSupply',
+  })
+
+  // 2. 写入合约（发送交易）
+  const { 
+    writeContract, 
+    data: hash, 
+    isPending 
+  } = useWriteContract()
+
+  // 3. 等待交易确认
+  const { isLoading: isConfirming, isSuccess: isConfirmed } = 
+    useWaitForTransactionReceipt({ hash })
+
+  const mintToken = () => {
+    writeContract({
+      abi,
+      address: CONTRACT_ADDRESS,
+      functionName: 'mint',
+      args: [address, parseEther('1')],
+    })
+  }
+
+  return (
+    <div>
+      <p>Total Supply: {totalSupply?.toString()}</p>
+      <button 
+        onClick={mintToken} 
+        disabled={isPending || isConfirming}
+      >
+        {isPending ? 'Confirming...' : 'Mint 1 Token'}
+      </button>
+      
+      {hash && <p>Tx Hash: {hash}</p>}
+      {isConfirming && <p>Waiting for confirmation...</p>}
+      {isConfirmed && <p>Transaction confirmed!</p>}
+    </div>
+  )
+}
+```
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 ## dApp 组件
 
 dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）和数据存储。
@@ -38,6 +218,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 # Hardhat
 
@@ -113,6 +294,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 # Uniswap
 
 **Uniswap** 是一个运行在以太坊等区块链上的**去中心化交易协议（DEX）**，它允许用户无需中介即可交易加密货币。其核心特点是采用**自动化做市商（AMM）模型**，通过智能合约提供流动性，而不是传统的订单簿模式。
@@ -150,6 +332,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -202,6 +385,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 
 
+
 本周末比较忙，所以没有具体完成什么新的学习方面的东西，目前正在努力追赶Solidity101网站的基础学习计划，目前进度是第三章，争取下周能跟上进度早日完成：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-25-1769352218638-image.png)
@@ -209,6 +393,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -367,6 +552,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 
 
+
 # ERC20模板
 
 ```
@@ -452,6 +638,7 @@ ERC20 是 **以太坊区块链上创建和发行可互换代币** 的技术标�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -645,6 +832,7 @@ contract MyToken is Ownable {
 
 
 
+
 ## 一、Dapp 核心定义
 
 去中心化应用（Dapp）是运行在区块链或分布式网络上的全新应用模式，核心特征为**去中心化**—— 应用逻辑和数据不由单一实体控制，由多个参与者共同维护，区别于传统集中式应用。开发需掌握去中心化技术栈、智能合约编程及前端与区块链的交互方式。
@@ -682,6 +870,7 @@ Dapp 架构包含四个核心部分，各组件分工明确、协同工作：
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -780,6 +969,7 @@ contract TestToken {
 
 
 
+
 # 以太坊
 
 ## ERC
@@ -841,6 +1031,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -920,6 +1111,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 以太坊
 
 ## 以太坊的应用场景
@@ -953,6 +1145,7 @@ PoS 是一种通过资产持有权达成共识的机制。验证者根据其持�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
