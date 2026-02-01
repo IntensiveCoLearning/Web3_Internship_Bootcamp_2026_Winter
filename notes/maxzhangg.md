@@ -15,8 +15,65 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# **用 SpoonOS Graph Agent 构建可解释的对话+占卜应用**
+
+## **1\. 目标与背景**
+
+很多“占卜类”应用会强制抽牌，导致用户无法自然表达情绪。本项目的目标是让用户既能聊天，也能在需要时进入占卜流程，并且每一步都可追踪、可解释。
+
+## **2\. 核心思路：Graph Agent 工作流**
+
+使用 SpoonOS 的 Graph Agent，把流程拆成明确节点：
+
+`parse → route → divination → narration → persist`
+
+-   **parse**：解析用户意图（chat / divination）、领域（love/career/general）、语气等
+    
+-   **route**：当 intent=divination 时选择占卜工具（tarot/lenormand/liuyao）
+    
+-   **divination**：本地抽牌，保证确定性
+    
+-   **narration**：LLM 把抽牌结果转成自然语言解释
+    
+-   **persist**：记录对话、解读结果与 trace
+    
+
+## **3\. 双模式逻辑（聊天 / 占卜）**
+
+-   默认是**自动判断**：LLM 或规则判断这次是否需要占卜
+    
+-   如果用户点击\*\*“占卜”按钮\*\*，强制走占卜流程
+    
+-   聊天模式会保留最近 5 条上下文，让对话更自然
+    
+
+## **4\. 技术实现重点**
+
+-   **SpoonOS Graph Agent**：用 StateGraph 编排任务
+    
+-   **LLM 路由**：用于意图、语气、工具选择
+    
+-   **本地抽牌**：保证可复现，便于调试
+    
+-   **可解释输出**：trace 直接返回前端显示
+    
+-   **前端交互**：一个按钮切换是否进入占卜流程
+    
+
+## **5\. 收获**
+
+-   把“仪式型应用”变成“可解释系统”的关键，是**流程拆解 + trace 可视化**
+    
+-   LLM 不是终点，而是整个系统的一环
+    
+-   UX 上最重要的是**不打断用户表达**
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 -   配置前端环境变量：在 Oracle-s-Choice/frontend/.env 中设置 VITE\_API\_URL 指向本地后端 [http://localhost:8001，用于前端请求后端接口。](http://localhost:8001，用于前端请求后端接口。)
     
 -   配置后端模型与密钥：在 Oracle-s-Choice/backend/.env 中设置 GEMINI\_MODEL=gemini-2.5-flash，并配置了 Gemini 与 OpenAI 的 API Key，用于后端调用大模型服务。
@@ -26,6 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 今日学习与实践总结
 
@@ -160,6 +218,7 @@ STAR 结构
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 ## 前期调研会议学习笔记总结
@@ -311,6 +370,7 @@ STAR 结构
 
 
 
+
 \# 今日打卡（Web3 Portfolio建立）
 
 \## ✅ Web3 结构与路由
@@ -390,6 +450,7 @@ STAR 结构
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -640,6 +701,7 @@ assert
 
 
 
+
 黑客松经验分享
 
 一、什么是黑客松（Hackathon）
@@ -813,6 +875,7 @@ Demo
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1143,6 +1206,7 @@ Demo
 
 
 
+
 # AI 辅助搭建 Obsidian 个人知识库
 
 ## 一、为什么我们总是「收藏了不看」
@@ -1466,6 +1530,7 @@ Demo
 
 
 
+
 # DApp
 
 ## 一、DApp 的实用定义
@@ -1720,6 +1785,7 @@ Demo
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2103,6 +2169,7 @@ Demo
 
 
 
+
 ## 社区运营基础 & 活动策划与执行
 
 ### 一、前置规则与合规要求
@@ -2301,6 +2368,7 @@ Demo
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2520,6 +2588,7 @@ AI 是放大器，不是方向盘
 
 
 
+
 # 不同pre和会议记录总结
 
 ## 一、区块链金融 / On-Chain IPO（金融研究类材料）
@@ -2665,6 +2734,7 @@ AI 是放大器，不是方向盘
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2874,6 +2944,7 @@ SpoonOS 降低开发门槛，加速落地
 
 
 
+
 ## Web3 安全与刑事风险
 
 ### 一、Web3 当前整体安全形势
@@ -2951,6 +3022,7 @@ KOL 荐币、带单；
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3230,6 +3302,7 @@ Wallet（签名）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
