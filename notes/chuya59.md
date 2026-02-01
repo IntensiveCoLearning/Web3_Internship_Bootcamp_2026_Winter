@@ -15,8 +15,536 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# AI 提示词工程 - Foundry 智能合约开发
+
+## 系统角色设定
+
+### 核心身份
+
+```
+<system_context>
+你是一个专注于以太坊智能合约开发的专家助手，
+精通 Foundry 工具链、Solidity 最佳实践和高级测试方法
+</system_context>
+```
+
+### 行为准则
+
+```
+<behavior_guidelines>
+- 提供完整、可工作的代码示例
+- 默认使用当前最佳实践
+- 优先考虑安全性和Gas效率
+- 模糊需求时主动询问澄清
+- 解释复杂概念和决策原因
+- 遵循命名约定和代码组织模式
+</behavior_guidelines>
+```
+
+## Foundry 开发规范
+
+### 项目结构
+
+```
+src/        # 智能合约
+test/       # 测试文件
+script/     # 部署脚本
+lib/        # 依赖库
+```
+
+### 命名约定速查
+
+| 元素类型 | 命名规则 | 示例 |
+| --- | --- | --- |
+| 合约文件 | PascalCase | MyContract.sol |
+| 接口文件 | I + PascalCase | IMyContract.sol |
+| 测试文件 | 合约名.t.sol | MyContract.t.sol |
+| 部署脚本 | 描述.s.sol | Deploy.s.sol |
+| 函数 | mixedCase | depositTokens() |
+| 变量 | mixedCase | totalSupply |
+| 常量 | SCREAMING_SNAKE | MAX_SUPPLY |
+| 结构体 | PascalCase | UserInfo |
+| 枚举 | PascalCase | Status |
+
+### 测试命名模式
+
+```
+test_FunctionName_Success()          // 成功测试
+test_RevertWhen_ConditionNotMet()    // 失败测试
+testFuzz_FunctionName()              // 模糊测试
+invariant_PropertyName()             // 不变性测试
+testFork_Scenario()                  // 分叉测试
+```
+
+## 测试策略模板
+
+### 单元测试基础
+
+```
+// 正确示例
+function test_Deposit_Success() public {
+    // 设置
+    vm.deal(user, 1 ether);
+    
+    // 执行
+    vm.prank(user);
+    vault.deposit{value: 1 ether}();
+    
+    // 验证
+    assertEq(vault.balanceOf(user), 1 ether, "余额应增加");
+}
+
+// 失败测试
+function test_RevertWhen_DepositZero() public {
+    vm.expectRevert("Amount must be > 0");
+    vault.deposit{value: 0}();
+}
+```
+
+### 模糊测试模式
+
+```
+function testFuzz_Deposit(uint96 amount) public {
+    // 边界限制
+    amount = uint96(bound(amount, 0.1 ether, 100 ether));
+    
+    // 排除无效输入
+    vm.assume(amount > 0);
+    
+    // 执行和验证
+    vault.deposit{value: amount}();
+    assertGe(vault.balanceOf(address(this)), amount);
+}
+```
+
+### 不变性测试架构
+
+```
+// 处理器合约
+contract VaultHandler {
+    Vault public vault;
+    address[] public actors;
+    
+    // 幽灵变量跟踪状态
+    uint256 public ghost_totalDeposits;
+    
+    modifier useActor(uint256 index) {
+        address actor = actors[index % actors.length];
+        vm.startPrank(actor);
+        _;
+        vm.stopPrank();
+    }
+    
+    function deposit(uint256 amount) external useActor(amount) {
+        amount = bound(amount, 0.1 ether, 10 ether);
+        deal(address(asset), currentActor, amount);
+        
+        uint256 before = vault.balanceOf(currentActor);
+        vault.deposit(amount);
+        uint256 after = vault.balanceOf(currentActor);
+        
+        assertGt(after, before);
+        ghost_totalDeposits += amount;
+    }
+}
+
+// 不变性测试
+contract VaultInvariantTest is Test {
+    Vault vault;
+    VaultHandler handler;
+    
+    function setUp() public {
+        vault = new Vault();
+        handler = new VaultHandler(vault);
+        targetContract(address(handler));
+    }
+    
+    function invariant_TotalSupplyEqualsBalance() public view {
+        assertEq(vault.totalSupply(), address(vault).balance);
+    }
+}
+```
+
+## 工具命令速查
+
+### Forge 核心命令
+
+```
+# 项目初始化
+forge init MyProject
+
+# 编译测试
+forge build
+forge test
+forge test --gas-report
+forge coverage
+
+# 代码质量
+forge lint
+forge doc
+forge snapshot
+
+# 部署验证
+forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify
+```
+
+### Cast 链交互
+
+```
+# 查询
+cast balance 0x...
+cast call <合约> "函数()" <参数>
+cast block-number
+
+# 交易
+cast send <地址> "函数()" --private-key $PK
+cast estimate <地址> "函数()"
+
+# 数据转换
+cast --to-checksum-address
+cast abi-encode "func(uint256)" 123
+```
+
+### Anvil 本地节点
+
+```
+# 基础启动
+anvil
+anvil --fork-url $RPC_URL
+anvil --accounts 20 --balance 1000
+
+# 高级配置
+anvil --block-time 2
+anvil --chain-id 31337
+```
+
+## 配置模板
+
+### foundry.toml 核心配置
+
+```
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.20"
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+dynamic_test_linking = true  # 大型项目启用
+
+# 测试配置
+gas_reports = ["*"]
+ffi = true
+
+[fuzz]
+runs = 1000
+
+[invariant]
+runs = 256
+depth = 15
+
+# 网络端点
+[rpc_endpoints]
+mainnet = "${MAINNET_RPC_URL}"
+sepolia = "${SEPOLIA_RPC_URL}"
+
+# 区块浏览器
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
+```
+
+### 环境变量
+
+```
+# .env
+MAINNET_RPC_URL=https://...
+SEPOLIA_RPC_URL=https://...
+PRIVATE_KEY=0x...
+ETHERSCAN_API_KEY=...
+```
+
+## 完整工作流
+
+### 1\. 项目初始化
+
+```
+# 创建项目
+forge init MyVault
+cd MyVault
+
+# 安装依赖
+forge install OpenZeppelin/openzeppelin-contracts
+forge install foundry-rs/forge-std
+
+# 配置环境
+cp .env.example .env
+# 编辑.env文件添加你的配置
+```
+
+### 2\. 开发合约
+
+```
+src/
+├── interfaces/
+│   └── IVault.sol
+├── Vault.sol
+└── Token.sol
+```
+
+### 3\. 编写测试
+
+```
+// test/Vault.t.sol
+import {Test} from "forge-std/Test.sol";
+import {Vault} from "src/Vault.sol";
+
+contract VaultTest is Test {
+    Vault vault;
+    
+    function setUp() public {
+        vault = new Vault();
+    }
+    
+    function test_Deposit() public {
+        // 测试逻辑
+    }
+    
+    function testFuzz_Deposit(uint256 amount) public {
+        // 模糊测试
+    }
+}
+```
+
+### 4\. 部署脚本
+
+```
+// script/Deploy.s.sol
+import {Script} from "forge-std/Script.sol";
+import {Vault} from "src/Vault.sol";
+
+contract DeployScript is Script {
+    function run() public {
+        uint256 deployerKey = vm.envUint("PRIVATE_KEY");
+        
+        vm.startBroadcast(deployerKey);
+        Vault vault = new Vault();
+        vm.stopBroadcast();
+        
+        console.log("Vault deployed:", address(vault));
+    }
+}
+```
+
+### 5\. 执行部署
+
+```
+# 本地测试
+forge script script/Deploy.s.sol --rpc-url http://localhost:8545
+
+# 测试网部署
+forge script script/Deploy.s.sol \
+  --rpc-url $SEPOLIA_RPC_URL \
+  --broadcast \
+  --verify \
+  -vvvv
+```
+
+## 安全检查清单
+
+### 安全模式实现
+
+```
+// 1. 访问控制
+modifier onlyOwner() {
+    require(msg.sender == owner, "Not owner");
+    _;
+}
+
+// 2. 重入防护
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+contract MyContract is ReentrancyGuard {
+    function withdraw() external nonReentrant {
+        // ...
+    }
+}
+
+// 3. CEI模式
+function safeWithdraw(uint256 amount) external {
+    // 检查
+    require(balance >= amount, "Insufficient");
+    
+    // 生效
+    balance -= amount;
+    
+    // 交互
+    (bool success, ) = msg.sender.call{value: amount}("");
+    require(success, "Transfer failed");
+}
+
+// 4. 输入验证
+function setValue(uint256 newValue) external {
+    require(newValue > 0, "Value must be > 0");
+    require(newValue <= MAX_VALUE, "Value too high");
+    value = newValue;
+}
+```
+
+### 安全工具使用
+
+```
+# 代码安全检查
+forge lint
+forge lint --severity high
+
+# Gas优化
+forge test --gas-report
+forge snapshot --diff
+
+# 依赖管理
+forge install --no-commit
+forge update
+```
+
+## 完整项目结构示例
+
+```
+my-vault/
+├── foundry.toml
+├── .env
+├── .gitignore
+├── src/
+│   ├── interfaces/
+│   │   └── IVault.sol
+│   ├── Vault.sol
+│   └── Token.sol
+├── test/
+│   ├── Vault.t.sol
+│   ├── fuzz/
+│   │   └── VaultFuzz.t.sol
+│   ├── invariant/
+│   │   ├── handlers/
+│   │   │   └── VaultHandler.sol
+│   │   └── VaultInvariant.t.sol
+│   └── fork/
+│       └── VaultFork.t.sol
+├── script/
+│   ├── Deploy.s.sol
+│   └── Configure.s.sol
+├── lib/
+│   ├── openzeppelin-contracts/
+│   └── forge-std/
+├── out/
+├── cache/
+└── broadcast/
+```
+
+## 最佳实践总结
+
+### 代码质量
+
+1.  **模块化设计**：接口 → 抽象 → 实现
+    
+2.  **清晰的错误消息**：帮助用户理解问题
+    
+3.  **完整的事件**：记录重要状态变化
+    
+4.  **充分的注释**：使用NatSpec标准
+    
+
+### 测试策略
+
+1.  **分层测试**：单元 → 集成 → 模糊 → 不变性
+    
+2.  **主网分叉**：测试真实环境交互
+    
+3.  **高覆盖率**：核心逻辑100%覆盖
+    
+4.  **Gas监控**：持续优化Gas消耗
+    
+
+### 部署流程
+
+1.  **多环境配置**：开发 → 测试 → 生产
+    
+2.  **渐进部署**：使用代理模式支持升级
+    
+3.  **自动验证**：部署后自动验证合约
+    
+4.  **监控告警**：部署后持续监控
+    
+
+### 团队协作
+
+1.  **统一配置**：共享foundry.toml模板
+    
+2.  **代码规范**：使用forge lint统一风格
+    
+3.  **自动化流程**：CI/CD集成测试部署
+    
+4.  **文档生成**：自动生成接口文档
+    
+
+* * *
+
+## 🎯 快速参考卡片
+
+### 开发流程
+
+```
+# 1. 初始化
+forge init project
+
+# 2. 开发测试
+forge build && forge test
+
+# 3. 代码检查
+forge lint && forge test --gas-report
+
+# 4. 部署
+forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify
+```
+
+### 测试策略
+
+-   **单元测试**：基础功能验证
+    
+-   **模糊测试**：随机输入验证鲁棒性
+    
+-   **不变性测试**：系统级属性验证
+    
+-   **分叉测试**：主网环境集成测试
+    
+
+### 安全要点
+
+-   ✅ CEI模式防止重入
+    
+-   ✅ 输入验证和边界检查
+    
+-   ✅ 适当的访问控制
+    
+-   ✅ 安全数学运算
+    
+-   ✅ 外部调用安全处理
+    
+
+### 性能优化
+
+-   启用`dynamic_test_linking`加速编译
+    
+-   使用`via_ir`优化大项目
+    
+-   合理设置`optimizer_runs`
+    
+-   监控Gas使用并优化
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # Foundry 工具链笔记
 
 ## 核心工具
@@ -232,6 +760,7 @@ chisel
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 # Crowd Fund 众筹合约笔记
 
@@ -605,6 +1134,7 @@ function claim(uint256 _id) external {
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 * * *
 
 ## **无 Gas 代币转移 (Meta Transactions)**
@@ -786,6 +1316,7 @@ function deploy() external {
 
 
 
+
 # **访问私有数据 (Accessing Private Data)**
 
 ### **核心概念：链上无秘密**
@@ -891,6 +1422,7 @@ web3.eth.getStorageAt(contractAddress, mapLocation, console.log);
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1048,6 +1580,7 @@ function verify(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1281,6 +1814,7 @@ Gas：默认3000000
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2168,6 +2702,7 @@ monitors:
 
 
 
+
 # 智能合约升级与修改模式
 
 ## 1\. 核心原则：合约不可直接修改
@@ -2846,6 +3381,7 @@ function test_FullUpgradePath() public {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -3724,6 +4260,7 @@ echidna-test . --contract MyContract
 
 
 
+
 # 智能合约开发高级：Gas 优化、安全、审计与协作规范
 
 ## 1\. Gas 优化
@@ -4069,6 +4606,7 @@ function withdraw() public {
 
 
 
+
 # 智能合约编译产物详解
 
 ## 1\. 字节码（Bytecode）
@@ -4170,6 +4708,7 @@ function withdraw() public {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -4476,6 +5015,7 @@ contract MessageBoard {
 
 
 
+
 # 以太坊节点连接通信与类型笔记
 
 ## 一、节点间连接与通信的三步流程
@@ -4651,6 +5191,7 @@ contract MessageBoard {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -4872,6 +5413,7 @@ contract MessageBoard {
 
 
 
+
 Web3 行业充满机遇，但也伴随复杂的法律风险。理解并规避这些风险，是保护自身职业发展和财产安全的前提。下面梳理核心风险点
 
 ### 国内政策红线与刑事风险
@@ -4953,6 +5495,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5059,6 +5602,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5677,6 +6221,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 
 
+
 ### **以太坊学习笔记**
 
 **一、 核心定位：不止是加密货币，更是可编程平台**
@@ -5749,6 +6294,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
