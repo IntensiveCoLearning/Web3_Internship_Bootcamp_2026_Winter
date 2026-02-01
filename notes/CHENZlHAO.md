@@ -15,8 +15,137 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+这是一个关于 **Web3 本地开发** 的详细知识点总结，涵盖了 **Foundry** (命令行流派) 和 **Hardhat** (JavaScript 流派) 两种核心工具的安装、概念及实战流程。
+
+以下是详细的知识点归纳：
+
+### 🛠️ 工具一：Foundry (极客特种兵篇)
+
+Foundry 是 Web3 开发的“神器”，特点是使用命令行操作，适合追求速度和底层原理理解的开发者。
+
+1\. 核心概念 (RPG 游戏比喻)
+
+在 Foundry 中，三个核心组件分别对应游戏中的不同角色：
+
+-   **Anvil (铁砧)**：**游戏服务器**。在本地启动一条区块链，它开启世界才存在。
+    
+-   **Forge (锻造)**：**造物主工具**。用于编写、编译和部署智能合约。
+    
+-   **Cast (施法)**：**游戏手柄**。用于与链上的合约进行交互（查询或修改数据）。
+    
+
+2\. 环境搭建与初始化
+
+-   **安装**：通过 `curl -L | bash` 下载脚本，然后运行 `foundryup` 下载二进制文件。
+    
+-   **检查**：运行 `forge --version` 验证安装。
+    
+-   **初始化项目**：使用 `forge init <项目名>` 创建目录。
+    
+    -   `src/`：存放合约 (.sol)。
+        
+    -   `test/`：存放测试文件。
+        
+    -   `script/`：存放部署脚本。
+        
+
+3\. 实战工作流 (双窗口模式)
+
+为了操作顺畅，建议开启两个终端窗口。
+
+| 步骤 | 窗口 | 操作指令/要点 | 备注 |
+| --- | --- | --- | --- |
+| 1. 启动节点 | 窗口 1 | 输入 anvil | 复制 Private Keys 下的第一行私钥 (0xac09...)，保持窗口运行。 |
+| 2. 创建项目 | 窗口 2 | forge init | 默认生成一个 Counter 计数器合约。 |
+| 3. 部署合约 | 窗口 2 | forge create ... --rpc-url ... --private-key ... --broadcast | 成功后会返回 Deployed to: 0x... (合约地址)，务必复制。 |
+| 4. 读数据 (Call) | 窗口 2 | `cast call "number()" ... | cast --to-dec` |
+| 5. 写数据 (Send) | 窗口 2 | cast send "setNumber(uint256)" 666 ... --private-key ... | 修改数据需要消耗 Gas，必须提供私钥进行签名。 |
+
+* * *
+
+### 👷 工具二：Hardhat (工程正规军篇)
+
+Hardhat 是基于 **JavaScript/Node.js** 的开发框架，适合前端开发者或全栈工程师，便于与网页前端对接。
+
+1\. 核心概念
+
+-   **Hardhat Network**：本地游戏服务器 (类似 Anvil)。
+    
+-   **Scripts (脚本)**：自动机器人。编写 JS 代码来自动化部署合约。
+    
+-   **Console (控制台)**：交互式聊天窗口。使用 JS 代码与合约实时对话。
+    
+
+2\. 环境搭建与初始化
+
+-   **前置条件**：必须安装 Node.js。
+    
+-   **初始化**：
+    
+    1.  `npm install --save-dev hardhat` 安装库。
+        
+    2.  `npx hardhat init` 启动向导，选择 "Create a JavaScript project"。
+        
+-   **目录结构**：合约放在 `contracts/`，脚本放在 `ignition/modules/` 或 `scripts/`。
+    
+
+3\. 实战工作流 (双窗口模式)
+
+| 步骤 | 窗口 | 操作指令/要点 | 备注 |
+| --- | --- | --- | --- |
+| 1. 启动节点 | 窗口 1 | npx hardhat node | 保持运行，会看到 20 个测试账号。 |
+| 2. 编译合约 | 窗口 2 | npx hardhat compile | 确认看到 Compiled ... file。 |
+| 3. 部署脚本 | 窗口 2 | 编写 deploy.js 并运行 npx hardhat run ... --network localhost | 关键点：必须加 --network localhost，否则只在内存中运行。 |
+| 4. 开启控制台 | 窗口 2 | npx hardhat console --network localhost | 进入交互式 JS 环境。 |
+| 5. 交互操作 | 窗口 2 | 连接：ethers.getContractAt(...)查询：await counter.number()修改：await counter.setNumber(99) | 使用 await 异步等待结果；返回的数字带 n (BigInt)。 |
+
+* * *
+
+### ⚖️ 总结与对比：我该学哪个？
+
+-   **Foundry**：适合**纯合约开发**。
+    
+    -   优势：速度快，无需编写复杂 JS 脚本，命令行操作像黑客一样酷。
+        
+    -   原理掌握：`Cast` 命令对应了 Metamask 确认交易 (Send) 和网页读取数据 (Call) 的底层原理。
+        
+-   **Hardhat**：适合**全栈/前端开发**。
+    
+    -   优势：使用 JavaScript，测试代码与前端逻辑相似，生态成熟。
+        
+    -   特点：通过编写脚本（Script）派“机器人”干活，通过控制台（Console）实时调试。
+        
+
+### 🆘 常见报错与排查
+
+1.  **Connection refused (连接被拒绝)**
+    
+    -   **原因**：本地节点（Anvil 或 Hardhat Node）没开或被关闭了。
+        
+    -   **解决**：去“窗口 1”启动节点。
+        
+2.  **Error: Contract not found**
+    
+    -   **原因**：运行命令的目录不对。
+        
+    -   **解决**：检查是否在项目根目录下（看有没有 `foundry.toml` 或 `hardhat.config.js`）。
+        
+3.  **Bad key / Private Key 错误**
+    
+    -   **原因**：私钥复制错误。
+        
+    -   **解决**：必须复制节点启动时提供的 `0x` 开头的完整私钥。
+        
+4.  **Network localhost doesn't exist (Hardhat)**
+    
+    -   **原因**：忘记在命令后加 `--network localhost`。
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 这份知识清单基于 **Web3BuidlerTech** 的《以太坊中文周会（2026/01/26期）》内容整理。本期周会涵盖了从具体项目动态到宏观资产（BTC、ETH、SOL）的深度分析，以及对2026年加密市场的全景展望。
 
 以下是详细的核心知识点清单：
@@ -1512,6 +1641,7 @@ Uniswap 的演进是从**简单优美 (V2)** 到**极致效率 (V3/V4)** 的过�
 
 
 
+
 这份资料主要围绕 **以太坊（Ethereum）开发入门** 展开，由 Austin Griffith 讲解。内容涵盖了开发工具的选择、智能合约的基础语法、代币逻辑的实现、部署流程以及进阶的学习路线（Speed Run）。
 
 以下是基于资料总结的详细知识点：
@@ -1657,6 +1787,7 @@ Austin Griffith 推荐了一个从入门到精通的挑战路径（Speed Run）�
 
 
 
+
 这份总结专为 **Notion** 优化，你可以直接复制以下内容并粘贴到 Notion 页面中，它会自动识别标题、列表、代码块和表格。
 
 * * *
@@ -1788,6 +1919,7 @@ function testDecUnderflow() public {
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -2091,6 +2223,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这份《中文文案排版指北》非常实用，它能显著提升文档的专业感和可读性。我已经为你将核心知识点整理成了 **Notion 友好的 Markdown 格式**。
 
 你可以直接复制下方内容，在 Notion 中新建页面后粘贴，它会自动识别标题、列表、表格和引用块。
@@ -2232,6 +2365,7 @@ function withdraw() public onlyOwner {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2590,6 +2724,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
 
 * * *
@@ -2810,6 +2945,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -2955,6 +3091,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3247,6 +3384,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -3480,6 +3618,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -3596,6 +3735,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3758,6 +3898,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 
 
+
 # Web3 安全与合规：知识图谱
 
 * * *
@@ -3890,6 +4031,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
