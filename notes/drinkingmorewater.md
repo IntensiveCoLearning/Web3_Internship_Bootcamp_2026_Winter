@@ -21,11 +21,21 @@ Web3 实习计划 2025 冬季实习生
 
 # 平台、社会、经济：去中心化之后如何了？
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926072439-image.png)
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926072439-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926187024-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926322735-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926402629-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926605395-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926673680-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926703842-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926727177-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769926815425-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769927194914-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769927303842-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769927422807-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769927602818-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769927847048-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769928141625-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769928380680-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769928759746-image.png)![5BE99A6E-E031-4052-A77B-DADC6F1F6AAA.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769928906863-5BE99A6E-E031-4052-A77B-DADC6F1F6AAA.jpg)
+
+《全球概览》（_Whole Earth Catalog_）是由斯图尔特·布兰德（Stewart Brand）于1968年创办的一本反主流文化杂志，它不仅是一份产品目录，更是一种思想启蒙工具，被誉为“嬉皮士时代的互联网”。该刊物强调自给自足、生态意识、系统思维与技术赋能，对20世纪后期的科技、文化、环保乃至创业精神产生了深远影响。**明确公开表示受《全球概览》深刻影响的名人有：史蒂夫·乔布斯（Steve Jobs）、杰夫·贝佐斯（Jeff Bezos）、凯文·凯利（Kevin Kelly）、马克·扎克伯格（Mark Zuckerberg）、日本出版界人士（如石川次郎、木滑良久）。**《全球概览》不仅影响了科技领袖，还深刻塑造了**环保运动、DIY文化、开源软件精神、可持续生活理念**等社会思潮。其核心思想——“**个体通过合适的工具可以改变世界**”——成为硅谷创新文化的底层逻辑之一。
+
+**Plancker** （有时也被叫作 _Planck DAO / Plancker Research DAO_）本质上是一个 **以太坊生态里的研究型 DAO**，核心定位是：  
+
+> **把“高质量协议研究、治理分析、机制设计”变成一种可持续的 DAO 协作模式。**
+
+  
+[https://forum.plancker.org/latest](https://forum.plancker.org/latest)
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -206,6 +216,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -306,6 +317,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -394,6 +406,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -539,6 +552,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -595,6 +609,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -779,6 +794,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -786,6 +802,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -861,6 +878,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -870,6 +888,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -989,6 +1008,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1150,6 +1170,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1409,6 +1430,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -1456,6 +1478,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1837,6 +1860,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1878,6 +1902,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2286,6 +2311,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -2607,6 +2633,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -2714,6 +2741,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
