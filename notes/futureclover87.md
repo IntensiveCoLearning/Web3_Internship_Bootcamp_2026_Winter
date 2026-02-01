@@ -32,19 +32,27 @@ INTJ-but 兴趣广泛 皮艇/桨板/网球/书法 喜欢在秋高气爽的天气
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+赶PPT
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 参加黑客松 第一学会剪视频 也是没想到
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 研究V0做前端&做demo中
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 今天听了两个Session
@@ -56,6 +64,7 @@ X Space 为什么需要Web3
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -74,6 +83,7 @@ Practice
 
 
 
+
 Practice
 
 1，Redmix Basic 一些些
@@ -88,6 +98,7 @@ Practice
 
 
 
+
 周末水卡
 
 1，投研分享会
@@ -97,6 +108,7 @@ Practice
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -194,6 +206,7 @@ assert命令一般用于程序员写程序debug，因为它不能解释抛出异
 
 
 
+
 产品经理要做啥
 
 eg产品方向：用bonding curve来拍卖NFT的功能
@@ -251,6 +264,7 @@ KOL/Alpha 社区合作：联系加密货币领域的“喊单员”（Callers）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -371,6 +385,7 @@ II, Solidity 的变量类型主要可以分为三类：数值类型（Value Type
 
 
 
+
 Ethernaut 测试笔记
 
 Fallback
@@ -450,6 +465,7 @@ await contract.Fal1out({value: toWei("0.0001", "ether")})
 
 
 
+
 0基础程序小白自学笔记-Hardhat/Foundry/Remix 教程案例跑通
 
 1， 窗口调用
@@ -493,6 +509,7 @@ taskkill /F /IM node.exe
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -606,6 +623,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 
 
 
+
 今日学习 交易实践+Remix 环境准备+AI 回放课
 
 交易实践
@@ -627,6 +645,7 @@ FHE允许对加密后的数据（密文）直接进行任意复杂的代数运�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -677,6 +696,7 @@ b, 你可以在不转移域名所有权的情况下，随时更改反向记录�
 
 
 
+
 核心深挖了区块链钱包原理
 
 a, 核心关联：助记词推导出私钥，私钥推导出公钥（地址），过程不可逆
@@ -700,6 +720,7 @@ e, 助记词原理：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
