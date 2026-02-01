@@ -15,8 +15,16 @@ cooking at solidity
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+完成solidity zombie ：  
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-02-01-1769960376749-image.png)
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 完成cryptozombies 前三关：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-30-1769786151582-image.png)
@@ -25,6 +33,7 @@ cooking at solidity
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 通关了solidity cryptozombie第一关，以及完成了foundry的相关课程：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-29-1769699764446-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-29-1769699806420-image.png)
@@ -32,6 +41,7 @@ cooking at solidity
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 学习了solidity by example中 application部分：  
@@ -56,6 +66,7 @@ cooking at solidity
 
 
 
+
 完成hardhat交互：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-26-1769440749526-image.png)
@@ -67,6 +78,7 @@ cooking at solidity
 
 
 
+
 完成任务：看完了 [**scaffold-eth Introduction and Solidity Recap**](https://www.youtube.com/watch?v=7pIzfm7hxQk&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=10)
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-25-1769356187783-image.png)
@@ -74,6 +86,7 @@ cooking at solidity
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -96,6 +109,7 @@ cooking at solidity
 
 
 
+
 完成 The Ethernaut 第二关：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-23-1769183796850-image.png)
@@ -103,6 +117,7 @@ cooking at solidity
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -124,6 +139,7 @@ interface，payable，TryCatch，ABI的编码和解码
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -204,6 +220,7 @@ Gas和Gas Price
 
 
 
+
 熟悉了remix并且写了一点solidity
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-18-1768745613218-image.png)
@@ -215,6 +232,7 @@ Gas和Gas Price
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -281,6 +299,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 ## 学习了《021学习以太坊》的四五章 以下是一些概括性笔记
 
 ###   
@@ -336,6 +355,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 完成任务：  
 读完了XiaoHai老师的《021学习以太坊》前三章。以下是个人总结的一些比较重要的概括性笔记。
 
@@ -379,6 +399,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
