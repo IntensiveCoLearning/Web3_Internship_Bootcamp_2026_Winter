@@ -15,8 +15,96 @@ note for 2026
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# ZK-learning 笔记
+
+Class 1 提问：
+
+What does the verifier have to do?
+
+After this inter action, what does the verifier really know?
+
+He knows the primes themselves is actually more than what was necessary, in order to convince himself the N is a product of 2 primes, or is it?
+
+Is there some ohter way to do that?
+
+What does it mean by quadratic residue mod N?
+
+And what would be the proof of that?
+
+How hard is it?
+
+What happens after this interaction?
+
+So how hard is it to describe how long is pi?
+
+Is is the polynomial size, the size of graph?
+
+And how much time does it take the verifier to check it?
+
+We are more interested in this problem more generally.
+
+What does it mean by completeness hold?
+
+But rather we are asking, is there some other way to prove this type of theroems?
+
+Can the prover, for example, convince the verifier that y is a quadratic residue mod N without sending the square root of N? (Motivation)
+
+Of course, we will need to define what it means to be zero-knowledge precisely.
+
+What is inherent in the fact that the verifier's tosses randomness is that we are also gonna be willing to accept small probability of error.
+
+What does that mean?
+
+Informally what that will mean?
+
+How?
+
+Since the prover can distinguish colors, he can tell the coin lands on heads or tails, right?
+
+Say what? I'm gona
+
+So what happened here?
+
+So what is the probability I asked him to solve the equation that he knows how to solve?
+
+So what happened here? What made it possible?
+
+Interestly, if you step back and you think to yourself is this reasonable to call this an interactive proof?
+
+All right. We have defined what the interactive proof is, but what about zero-knowledge? How do we define zero-knoledge? What is even the intuition of what should be zero-knoledge?
+
+This slide is an intuition. How do we mathmatically capture this?
+
+What is a simulation paradigm?
+
+What is the simulation paradigm idea?
+
+And what has to be true about simulate view in terms of real view is that ?
+
+What does it mean that two distribution are ci?
+
+How does this capture the intuition that the verifier can learn from this interaction doesn't add any computational power?
+
+How do we simulate that?
+
+But what about when the verifier is not honest?
+
+一个疑惑：合数都是两个素数的乘积吗？
+
+2个疑惑：这边应该是y to 1 minus b吧
+
+3个疑惑：random times square root of y is random when it reduces it to mod n.
+
+4个疑问：什么叫做exponentially small
+
+5个疑问：为什么是essentially the same
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # 同步
 
 节点要同步的内容主要包括两部分:  
@@ -27,6 +115,7 @@ note for 2026
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 # solidity
 
 Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 它能直接编译为 EVM 字节码,天然适配以太坊架构,能够高效操作存储、Gas 计算、事件等链上资源。官方也明确把它定义为“为 EVM 开发智能合约的高阶、 静态类型、面向对象语言”。 截至 2025 年,Solidity 编译器已经发展到 0.8.30,持续跟进上海 / Dencun (EIP-4844)、Pectra 等升级,引入了诸如算术溢出自动回滚、transient storage (EIP-1153)、EOF 实验支持等一系列改进,让合约在安全性和 gas 成本上都有 更好表现。 更关键的是:绝大多数 EVM 兼容链(如 Polygon、BSC、Avalanche C-Chain、 Arbitrum、Optimism、Base 等),都沿用 EVM,因此学会 Solidity,基本就能“通 吃”整个 EVM 链生态。
@@ -36,6 +125,7 @@ Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 # 区块链的可审计
 
 和传统合同一样,你可以在“签署”(调用)之前审查智能合约内容:  源码开源的合约(尤其是经过 Etherscan / Sourcify 验证的)可以直接 阅读、审计;  工具如 Slither、Mythril、Foundry + formal verification 框架可以自动化 发现一些安全问题;  大型协议通常会公布多轮审计报告。  这带来一个很重要的现实:  用户有能力在交互前知道“我在跟什么代码打交道”;  但前提是:你要么自己看得懂,要么相信专业审计团队给出的报告和 社区共识。
@@ -43,6 +133,7 @@ Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -57,6 +148,7 @@ Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 
 
 
 
+
 # EVM的隔离和安全
 
 EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合约的 代码执行被隔离开来,一个合约被写错或被攻击,不易影响到整个网络。 使用 gas 模型防止无限循环 / 资源滥用攻击,因为每一步运算都要付 gas, 交易发起者承担运算资源成本。可以防止恶意攻击或不必要浪费。
@@ -64,6 +156,7 @@ EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -88,6 +181,7 @@ EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合
 
 
 
+
 每一条 EVM 指令都有一个固定的 Gas 价格,比如算术运算、读写 storage、 log 事件等,复杂操作如存储写入、创建合约会特别贵。 Gas 机制带来的好处: • 防止无限循环、恶意脚本把节点“算死” • 让复杂运算、写入操作“谁用谁付钱” • 给打包者(验证者)定价空间(优先打包高 Gas Price 交易)
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
@@ -100,11 +194,13 @@ EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合
 
 
 
+
 零知识证明（ZK）是身份栈中的隐私增强层，它通过“可验证却不可见”的密码学机制，确保身份声明（如“我年满18岁”）的真实性无需以暴露全部数据（如出生日期）为代价。尽管ZK本身是密码学原语，但其在身份领域的应用正由诸如ERC-5833（灵魂绑定令牌的隐私合规组合） 等探索性提案所推动，旨在解决SBT在合规与隐私方面的挑战
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -127,6 +223,7 @@ EVM(Ethereum Virtual Machine)是一台运行在每个以太坊节点上的虚拟
 
 
 
+
 zk最近比较火的项目是brevis，也上线币安了。
 
 现在说到扩容，其实主要思路都是：以太坊主链别干活，相信我就对了。
@@ -138,6 +235,7 @@ zk是通过数学方式，生成一个证明给以太坊。但是算这个证明
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -186,6 +284,7 @@ SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
 
 
 
+
 \# 分散资产，规划好钱包用途
 
 \- 日常高频使用的热钱包存放少量资产，不同的钱包使用不同的助记词创建。
@@ -199,6 +298,7 @@ SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -244,6 +344,7 @@ SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -362,6 +463,7 @@ Blob具体怎么做：
 
 
 
+
 \*\*PoS验证者如何工作\*\*：
 
 \- **准入门槛**：质押 32 ETH 成为验证者
@@ -377,6 +479,7 @@ Blob具体怎么做：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -423,6 +526,7 @@ Blob具体怎么做：
 
 
 
+
 | 维度 | 比特币（Bitcoin） | 以太坊（Ethereum） |
 
 | :-------- | :------------------------------ | :---------------------------------- |
@@ -440,6 +544,7 @@ Blob具体怎么做：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -516,6 +621,7 @@ Blob具体怎么做：
 
 
 
+
 # 今日todo
 
 -   \[ \] 入门导读以太坊概览
@@ -540,6 +646,7 @@ Blob具体怎么做：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
