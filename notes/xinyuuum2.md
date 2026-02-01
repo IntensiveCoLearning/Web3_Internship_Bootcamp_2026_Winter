@@ -17,19 +17,27 @@ Base上海 美本美硕 工作三年DS/DA
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+大家的项目真的都太厉害了…solo果然还是比较难，完成度不理想的情况下最后没有提交项目，但是没关系，做了尝试，并且看到了这么多有趣的内容，也是在参加和build的过程中学到了很多。
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 solo手搓黑客松ing
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 太悲伤了忘记打卡了…………
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 今天的课是关于链上数据分析和黑客松的，感谢yeeeh老师分享了很多基础知识以及可以学习的渠道和网站。不管在web2还是web3，数据分析都只是一个技能，知道别人需要什么，对于行业有insight本身才是最重要的，这才是我最需要攻克的难关。
@@ -40,11 +48,13 @@ solo手搓黑客松ing
 
 
 
+
 今天听了各位老师关于黑客松的分享和Tips，看了大家在群里接龙的各种想法，没想好自己要做什么。明天的课程是数据分析，是我一开始想要用来进入web3的敲门砖，不知道听完会不会有什么新的感触和想法。
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -59,11 +69,13 @@ solo手搓黑客松ing
 
 
 
+
 今天复习了Solidity的内容，完成了几个Solidity101的Test，然后晚上完成了Ethereum的Tokenization Challenge. 果然技术方面的内容还是需要自己上手操作运行结合阅读，学习的才能更快。
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -149,11 +161,13 @@ contract CounterOptimized {
 
 
 
+
 大家都好厉害哈哈哈…打算周末review一下这周的内容，把技术方向的做一下。这两天太忙了，周末努力补补课。
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -239,6 +253,7 @@ contract CounterOptimized {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -374,11 +389,13 @@ contract CounterOptimized {
 
 
 
+
 今天听了Solidity的初步介绍，学习了一些语法。因为加班的原因，笔记明天看了回放再补上啊啊啊…还熟悉了一下Remix的环境，尝试了一些简单的代码。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -449,6 +466,7 @@ ERC-7962 的架构天然支持批量交易。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -541,6 +559,7 @@ ERC-7962 是一种新的 NFT 协议，旨在实现“隐私保护”与“极致
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -723,11 +742,13 @@ contract AdvancedStorage {
 
 
 
+
 打算利用周末时间吧这周的内容再熟悉一下。今天没有大课，听了同学们的sharing，发现也有几个和我差不多年龄的朋友们。可能大家之前都是小白，但是现在对于行业的了解已经颇有深度。还是要抓紧练习呀。周末要好好把这周内容总结一下。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -823,6 +844,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 
 
+
 今天信息量有点大了……内容有点硬核了……
 
 ### 一、 法律合规
@@ -890,6 +912,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1037,6 +1060,7 @@ AI Agent 的未来在于感知经济（Sense Economy）。Web3 为其提供了�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
