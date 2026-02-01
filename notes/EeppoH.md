@@ -15,8 +15,78 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+举例一个非完整生产级（没做权限/安全细节）的ERC-20的‘账本结构’
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+contract MiniERC20 {
+
+    // ===== 1) 基础信息（简单变量）=====
+
+    string public name = "Mini Token";
+
+    string public symbol = "MINI";
+
+    uint8  public decimals = 18;
+
+    // 总发行量（一个数字）
+
+    uint256 public totalSupply;
+
+简单变量的作用：存“单个值”。比如总供应量、代币名、符号、精度。
+
+uint256 public totalSupply;
+
+string public name;
+
+    // ===== 2) 余额账本（mapping：地址 -> 余额）=====
+
+    mapping(address => uint256) public balanceOf;
+
+•查余额：balanceOf\[addr\]
+
+•更新余额：转账时减一个、加一个
+
+ERC-20 本质上就是：**维护一张“地址 -> 余额”的映射表**。
+
+    // ===== 3) 授权账本（嵌套 mapping：owner -> spender -> 额度）=====
+
+    mapping(address => mapping(address => uint256)) public allowance;
+
+ERC-20 的第二张账本：**授权账本**（谁允许谁花多少钱）。
+
+对应三种操作：
+
+• approve(spender, value)：写入/覆盖 allowance\[我\]\[spender\]
+
+• transferFrom(owner, to, value)：先检查额度，再扣额度，再转账
+
+    // ===== 4) 事件（Event：日志，不是存储结构，但非常重要）=====
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+
+事件不是“数据结构存储”（不占合约 storage 的那种表），但它是：
+
+• 前端 / indexer 追踪交易的关键
+
+• 区块浏览器展示转账记录的来源
+
+可以把它理解成**流水打印条**：
+
+• 账本（mapping）记录“当前余额”
+
+• 流水（event）记录“发生过什么转账/授权”
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 什么是「复杂的用户定义类型」
 
 可以自己定义‘数据结构’
@@ -91,6 +161,7 @@ mapping(address => uint256) balances;
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 Solidity智能合约
 
 Solidity 是一种面向合约的高级编程语言，专门用于在以太坊虚拟机（EVM）上编写智能合约。它具有静态类型、支持继承、库和复杂的用户定义类型等特性。
@@ -146,6 +217,7 @@ Library的特点
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 **RPC使用最佳实践**  
 · 保护API Key — 使用环境变量存储RPC URL和API Key
 
@@ -182,6 +254,7 @@ const client = createPublicClient({
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -254,6 +327,7 @@ const client = createPublicClient(...)
 
 
 
+
 **RPC节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。
@@ -313,6 +387,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 
 
 
+
 2. **智能合约（Smart Contracts）**：
 
 -   智能合约是 Dapp 的核心，它定义了应用的业务逻辑，并部署在区块链上。智能合约通过执行自动化的规则来确保交易和操作的透明性与不可篡改性。
@@ -354,6 +429,7 @@ RPC协议是区块链标准，有点像银行清算规则，RPC是web3中最容�
 
 
 
+
 Dapp架构和开发流程
 
 去中心化应用（Dapp）是与传统集中式应用不同的全新应用模式，通常运行在区块链或分布式网络上。
@@ -384,6 +460,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -428,6 +505,7 @@ Dapp架构主要由三个核心部分组成：前端（User Interface）智能�
 
 
 
+
 ```remix-solidity
 pragma solidity ^0.8.0;
 
@@ -454,6 +532,7 @@ function addOne() public {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -605,6 +684,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 
 
+
 昨天留下的问题，LP TOKEN证明的不是存入的ETH或者USDC在mempool里的存款，LP TOKEN证明的是自己的存款在CA账户里的比例。
 
 这个比例本身不会变，只要没有新增LP和退出的LP，交易得再多，这个比例也不会变。但是这个比例的资产内容会一直在变，因为有人用ETH换USDC也会有人用USDC换ETH，所以池子里X/Y一直在变化。昨晚把mempool和CA账户的资产概念混淆了，mempool的唯一作用是暂存“还没有被请求的交易”。
@@ -620,6 +700,7 @@ Sat 17 Jan 复习了一遍过去一周所有的概念
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -685,6 +766,7 @@ Gas在EOA to EOA时只是记账付费（手续费），在EOA to CA时是计算�
 
 
 
+
 23:30 Tue 13 Jan 2026 因为工作原因今天晚上的闲暇时间不是很多，继续在阅读入门导读。
 
 今晚就只在钻研一个问题，什么是Layer1, Layer2,Sidechains?什么是Application Layer应用层、Protocol Layer协议层、Scaling Layer扩展层？
@@ -733,6 +815,7 @@ Scaling layer扩展层 提升性能和降低成本的解决方案。我的理解
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
