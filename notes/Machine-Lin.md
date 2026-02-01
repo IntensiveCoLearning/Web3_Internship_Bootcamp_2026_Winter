@@ -15,8 +15,160 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# 一、以太币和Wei
+
+一个以太币等于10^18 Wei。
+
+```
+pragma solidity ^0.8.17;
+
+contract EtherUnits {
+    // 1. 定义 wei 单位相关变量
+    uint public oneWei = 1 wei;
+    // 验证：1 wei 是否等于 1（Solidity 中，未指定单位的以太数值默认就是 wei）
+    bool public isOneWei = 1 wei == 1;
+
+    // 2. 定义 ether 单位相关变量
+    uint public oneEther = 1 ether;
+    // 验证：1 ether 是否等于 10^18 wei（ether 和 wei 的核心换算关系）
+    bool public isOneEther = 1 ether == 1e18;
+}
+```
+
+## **以太币（Ether**）
+
+以太币是以太坊网络的本地加密货币，用于支付交易费用和奖励矿工。
+
+## **Wei**
+
+Wei是以太币的最小单位，是以太币的十八个数量级（10的18次方）。
+
+# 二、Gas费
+
+交易花费的以太币为需要支付gas消耗量\*gas价格
+
+具有更高 gas 价格的交易具有更高的优先级被包含在区块中。未使用的 gas 将被退还。
+
+## 燃气限制
+
+-   gas 限制（你为交易设置的最大 gas 量）
+    
+-   区块 gas 限制（网络设置的区块中允许的最大 gas 量）
+    
+
+```
+pragma solidity ^0.8.17;
+
+contract Gas {
+uint public i = 0;
+  function forever() public {
+      while (true) {
+          i += 1;
+      }
+  }
+}
+```
+
+# 三、循环语句
+
+for、while、do while循环。
+
+无界限制的循环语句，可能超出gas限制，会导致交易失败。
+
+所以，while、do while循环很少使用。
+
+```
+pragma solidity ^0.8.17;
+
+contract Loop {
+    function loop() public {
+        // for 循环
+        for (uint i = 0; i < 10; i++) {
+            if (i == 3) {
+                // 使用 continue 跳过当前迭代
+                continue;
+            }
+            if (i == 5) {
+                // 使用 break 退出循环
+                break;
+            }
+        }
+
+        // while 循环
+        uint j;
+        while (j < 10) {
+            j++;
+        }
+    }
+}
+```
+
+具体与JavaScript语句差不多。
+
+## 补充：
+
+if/else：
+
+```
+pragma solidity ^0.8.17;
+
+contract IfElse {
+    function foo(uint x) public pure returns (uint) {
+        if (x < 10) {
+            return 0;
+        } else if (x < 20) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    function ternary(uint _x) public pure returns (uint) {
+        return _x < 10 ? 1 : 2;
+        //三元运算符
+    }
+}
+```
+
+for/while：
+
+```
+pragma solidity ^0.8.17;
+
+contract Loops {
+  uint[] public numbers;
+  constructor() {
+    numbers.push(1);
+    numbers.push(2);
+    numbers.push(3);
+    //往数组里加入push数字
+  }
+
+  function loopWithFor() public {
+    uint len = numbers.length;  
+    for(uint i = 0; i < len; i++) {
+      numbers[i] *= 2;
+    }
+  }
+  
+  function loopWithWhile() public {
+    uint j = 0;
+    uint len = numbers.length; 
+    while(j < len) {
+      numbers[j] *= 3;
+      j++;
+    }
+  }
+
+}
+```
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # 一、常量
 
 常量是无法修改的变量。
@@ -125,6 +277,7 @@ contract SimpleStorage {
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 Solidity
 
 # 一、Hello World
@@ -223,6 +376,7 @@ contract Variables {
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -383,6 +537,7 @@ describe("StanfordToken", function () {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 4
 
 Solidity 语法 + 测试
@@ -467,6 +622,7 @@ function doSomething() public onlyOwner { ... }
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -656,6 +812,7 @@ npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -734,6 +891,7 @@ async function mintNFT() {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 1
 
 由于本期几乎全程live coding，可能笔记不多。
@@ -801,6 +959,7 @@ Provider 是区块链的“只读接口”。
 
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -845,6 +1004,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -916,6 +1076,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -999,6 +1160,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -1062,6 +1224,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1199,6 +1362,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1473,6 +1637,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -1588,6 +1753,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1781,6 +1947,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -1903,6 +2070,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -1972,6 +2140,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2099,6 +2268,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2336,6 +2506,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
