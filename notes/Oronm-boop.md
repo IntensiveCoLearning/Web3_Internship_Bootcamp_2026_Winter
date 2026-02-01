@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+今天休闲黑客松路演
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 今天优化前端，并将前后端合约部署上线
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 今天完成AI Agent功能
 <!-- DAILY_CHECKIN_2026-01-29_END -->
@@ -30,11 +37,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
 
+
 今天将前端与合约进行集成
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -47,11 +56,13 @@ timezone: UTC+8
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -68,11 +79,13 @@ timezone: UTC+8
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -93,11 +106,13 @@ timezone: UTC+8
 
 
 
+
 今天学习anchor框架
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -124,11 +139,13 @@ timezone: UTC+8
 
 
 
+
 做了一个solana前后端交互小demo：[Create Next App](https://solanacounter-iota.vercel.app/)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -161,11 +178,13 @@ timezone: UTC+8
 
 
 
+
 学习质押项目
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -394,6 +413,7 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
@@ -416,11 +436,13 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 今天了解一下solana公链，学习rust语言
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -540,11 +562,13 @@ Pinocchio 虽然写起来繁琐，但它赋予了你对每一个字节、每一�
 
 
 
+
 今日学习go-eth链下交互，学习使用foundry框架
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
