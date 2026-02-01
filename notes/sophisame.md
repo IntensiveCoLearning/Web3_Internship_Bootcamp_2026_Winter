@@ -15,8 +15,50 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+-   内存，引用与持久化存储
+    
+    -   EVM数据存储类型
+        
+        -   memory类型相当于存储在内存里（所以函数基本上都是存储在内存里），消耗的gas比较小
+            
+            -   元素类型不能是映射mapping类型，结构struct，arry（如uint）
+                
+            -   可被修改的临时变量
+                
+            -   映射mapping·，结构体struct，数组（除uint，可以是string）在作为参数被添加在不同的函数时，需要给定义一个memory或calldata
+                
+    -   calldata 与memory一样意味着这个变量暂时存在。与memory不同分是，定义了一个calldata后，不能再将变量改名，如：在定义函数时，也定义了一个string calldata name，则在函数内部不能再将name更改name=“cat”。 ps：不可被修改的临时变量
+        
+    -   storage类型称之为存储空间，是将256位字映射到256位字的key-value存储区，可以理解为合约的数据库
+        
+        -   永久存储在区块链上的，其消耗的gas比较大
+            
+        -   元素类型可以是任意的
+            
+    -   stack(栈），存放部分局部值类型变量。几乎是免费使用的内存，但数量有限（存储空间比较小）
+        
+-   函数外定义一个uint是存储在区块链网络中，且无法修改，但能将内存里的值赋予给它
+    
+-   可变长度数组（如uint【】arry）一般存储在storage中，所以如果函数要定义可变长度数组的值时，可变长度数组时要标明storage
+    
+-   struct是个结构体，且内部不能再定义一个相同名的结构体，但是可以定义一个可变长度数组，以及mapping
+    
+-   添加external，相当于此为外部函数，即所有人都可以调用
+    
+
+-   revert
+    
+
+![](assets:///Users/a1234/Downloads/logseq/assets/%E6%88%AA%E5%B1%8F2024-02-16_21.15.05_1708089363947_0.png)
+
+如果无法满足require中的要求，则函数内的条件（如number=5）无法做，报出“Didn‘t send…“并将余额（无满足条件的余额）返回原地址
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 #   
 solidity
 
@@ -133,6 +175,7 @@ solidity
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 # 区块链数据结构
 
 ## 链上数据基本类型
@@ -222,6 +265,7 @@ value：转账的费用
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 # **plume质押与流动性项目**
 
 ## Nest
@@ -284,6 +328,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 ## 哈希指针
 
 ![截屏2026-01-27 22.05.06.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-27-1769522717205-__2026-01-27_22.05.06.png)
@@ -303,6 +348,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -403,6 +449,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 # Hooked Protocol 代币经济模型
 
 Hooked Protocol采用了创新的单一代币（HOOK）结构，并辅以生态圈内部的的实用代币HGT（Hooked Gold Token）。其HOOK作为生态系统治理代币，具有社区活动和独家NFT访问功能，质押奖励与平台盈利，未来将用于Hooked基础设施的燃气费代币。
@@ -463,6 +510,7 @@ Gas 抵扣：在 Hooked Rollup 上的链上操作，使用 HOOK 可享手续费�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -538,6 +586,7 @@ retro funding是通过ai模型对项目先进行判断，产出方案，再结�
 
 
 
+
 # pendle协议
 
 我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
@@ -595,6 +644,7 @@ LP是SY和PT之间的交易
 
 
 
+
 LIdo
 
 ![截屏2026-01-20 22.31.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-20-1768919519461-__2026-01-20_22.31.50.png)
@@ -616,6 +666,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -738,6 +789,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 
 
+
 # uniswap协议：LP挖矿：AMM恒定乘积做市函数
 
 uniswap协议是以池子的方式进行交易的形式。这是一种做市函数。我们是和资金池做交易，所以Dex里需要引入新角色：LP的提供者，他们维持了整个交易的流动性。LP提供者就是普通用户的对手。
@@ -799,6 +851,7 @@ T0时间是添加流动性的时候，T1,T2分别为两次变化。并且假如y
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1049,6 +1102,7 @@ DeFi 的优势与风险：
 
 
 
+
 # 支付摩擦：机器经济需要新货币
 
 -   新需求：
@@ -1118,6 +1172,7 @@ web3对ai合规的解决方案：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1207,6 +1262,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1366,6 +1422,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
