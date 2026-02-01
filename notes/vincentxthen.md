@@ -15,8 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+DAY 21
+
+今天demoday
+
+报名项目多达48个
+
+是否要海选、是否要分赛场、是否要缩减时间、跟评委沟通控制点评时长……
+
+转眼黑客松就推成这样了，不可思议。
+
+BTW，这些项目真有意思呀，作为一个理想是成为web3产品经理的地产产品老登，跃跃欲试，下次我也要参加
+
+\-——--------
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 DAY 20  
 1.最后一场colearning  
 2.Demoday彩排  
@@ -125,6 +143,7 @@ DAY 20
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 day 19
 
 1.昨日复盘会后，两位助教老师很听劝地开始收手，放权，整个黑客松统筹大计落在了三个组长和我这个总协调身上，按照我的建议，组长也克制自着不再越过协调者去对接职能，协调者成为了推进项目进展的重要纽带。拿任务管理推进做得最好的vv的方法打板，今天的工作流明显跑起来了，顺了很多。
@@ -202,6 +221,7 @@ day 19
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 DAY 18
@@ -297,6 +317,7 @@ DAY 18
 
 
 
+
 DAY 17  
 1.黑客松OpenDay 成功落地。最高人数174人。目前黑客松报名人数102人，看上去不错  
 2.Uniswap原理笔记  
@@ -378,6 +399,7 @@ DAY 17
 
 
 
+
 DAY 16
 
 1.精疲力竭的一天，交易所BD团队的管理工作存在大量的沟通障碍，事情推进得异常缓慢。  
@@ -389,6 +411,7 @@ DAY 16
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -415,6 +438,7 @@ DAY 15
 
 
 
+
 DAY 14  
 今日的学习围绕着黑客松的筹备工作展开，我担任的是统筹协调工作，对接协调者成员推进各个职能板块按节点完成工作，确保各关键工作节点如期交付，收获了以下知识和感想  
 1.了解了github的基本概念和库的结构  
@@ -425,6 +449,7 @@ DAY 14
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -543,6 +568,7 @@ DAY13
 
 
 
+
 DAY12  
 1.入选了黑客松筹备组  
 2.厚着脸皮挤进了统筹组席位  
@@ -566,6 +592,7 @@ DAY12
 
 
 
+
 DAY11  
 今日主要围绕小组发活动的筹备展开学习  
 1.Figma的海报设计：尝试了Figma除脑图外的在平面设计上的更多用法，确实是很高效的工具，就是字库问题暂时没时间去研究。好像没法调用本地字库。  
@@ -578,6 +605,7 @@ DAY11
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -741,6 +769,7 @@ Web3需要的最核心的技能是在知道技术边界的前提下，做出好�
 
 
 
+
 -   DAY 9
     
 -   整理了《Web3 运行原理的笔记》制作了脑图
@@ -770,6 +799,7 @@ Web3需要的最核心的技能是在知道技术边界的前提下，做出好�
 
 
 
+
 DAY8
 
 忙碌的一天，草草啃了一些手册里的内容 技术部分对文科生来说还是艰涩了点
@@ -779,6 +809,7 @@ DAY8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -879,6 +910,7 @@ DAY7
 
 
 
+
 DAY6
 
 //成都雾霾连续爆表一个月 今天鼻炎终于大爆发，疯狂喷嚏鼻涕，头昏脑胀
@@ -892,6 +924,7 @@ DAY6
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -940,6 +973,7 @@ DAY5
 
 
 
+
 DAY4  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485305863-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485449721-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-15-1768485466886-image.png)
@@ -947,6 +981,7 @@ DAY4
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -999,6 +1034,7 @@ DAY3
 
 
 
+
 DAY2  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296425226-image.png)![5256c0f3e7c881eda8158c6049c39b84.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/vincentxthen/images/2026-01-13-1768296346499-5256c0f3e7c881eda8158c6049c39b84.jpg)
@@ -1006,6 +1042,7 @@ DAY2
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
