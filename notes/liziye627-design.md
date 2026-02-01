@@ -15,8 +15,190 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+今日主线（项目）
+
+**项目**: \[\[SimpleVoting-投票合约\]\]
+
+**一句话目标**: 把“能跑的 demo”升级成“可测试、可扩展、可上线”的最小合约版本。
+
+\### 今日交付物（Project Deliverables）
+
+\- \[ \] 合约 v0.1：提案/投票/统计 + 基础权限控制
+
+\- \[ \] 单元测试：覆盖关键路径 + 失败路径（revert）
+
+\- \[ \] README：写清楚接口、部署方式、测试命令
+
+\## 需求梳理（MVP）
+
+\### 角色
+
+\- **Chairperson（管理员）**：创建提案、设置投票期限、结束投票
+
+\- **Voter（投票者）**：对提案投票（每人每提案最多 1 票）
+
+\### 功能清单
+
+\- \[ \] createProposal(description)
+
+\- \[ \] vote(proposalId)
+
+\- \[ \] getProposal(proposalId) -> (description, voteCount, executed)
+
+\- \[ \] proposalCount()
+
+\### 规则与边界
+
+\- \[ \] 不能对不存在的提案投票
+
+\- \[ \] 防重复投票（per voter + per proposal）
+
+\- \[ \] 可选：投票截止时间（deadline）
+
+\- \[ \] 可选：提案状态（Open/Closed/Executed）
+
+\## 合约设计（Design Notes）
+
+\### 数据结构
+
+\- `Proposal { string description; uint256 voteCount; bool executed; }`
+
+\- `mapping(uint256 => Proposal) proposals`
+
+\- `mapping(address => mapping(uint256 => bool)) hasVoted`
+
+\- `address chairperson`
+
+\### 事件（Events）
+
+\- \[ \] `event ProposalCreated(uint256 indexed proposalId, string description)`
+
+\- \[ \] `event Voted(address indexed voter, uint256 indexed proposalId)`
+
+\- \[ \] `event ProposalClosed(uint256 indexed proposalId)`（如果做 deadline/close）
+
+\### 权限策略
+
+\- MVP 用 `onlyChairperson`（手写 modifier）
+
+\- 下一步可迁移到 OpenZeppelin`Ownable` 或 `AccessControl`
+
+\### 安全检查清单（最小版）
+
+\- \[ \] 输入校验`proposalId < proposalCount`
+
+\- \[ \] 状态校验：投票是否已截止/提案是否可投
+
+\- \[ \] 重复投票校验`!hasVoted[msg.sender][proposalId]`
+
+\- \[ \] 事件：关键状态变化要 emit
+
+\## 今日实现要点（Implementation）
+
+\### Solidity 代码骨架（v0.1）
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.20;
+
+contract SimpleVoting {
+
+struct Proposal {
+
+string description;
+
+uint256 voteCount;
+
+bool executed;
+
+}
+
+address public chairperson;
+
+mapping(uint256 => Proposal) public proposals;
+
+mapping(address => mapping(uint256 => bool)) public hasVoted;
+
+uint256 public proposalCount;
+
+event ProposalCreated(uint256 indexed proposalId, string description);
+
+event Voted(address indexed voter, uint256 indexed proposalId);
+
+modifier onlyChairperson() {
+
+require(msg.sender == chairperson, "Only chairperson");
+
+\_;
+
+}
+
+constructor() {
+
+chairperson = msg.sender;
+
+}
+
+function createProposal(string memory description) external onlyChairperson {
+
+proposals\[proposalCount\] = Proposal({
+
+description: description,
+
+voteCount: 0,
+
+executed: false
+
+});
+
+emit ProposalCreated(proposalCount, description);
+
+proposalCount++;
+
+}
+
+function vote(uint256 proposalId) external {
+
+require(proposalId < proposalCount, "Invalid proposal");
+
+require(!hasVoted\[msg.sender\]\[proposalId\], "Already voted");
+
+hasVoted\[msg.sender\]\[proposalId\] = true;
+
+proposals\[proposalId\].voteCount++;
+
+emit Voted(msg.sender, proposalId);
+
+}
+
+function getProposal(uint256 proposalId)
+
+external
+
+view
+
+returns (string memory description, uint256 voteCount, bool executed)
+
+{
+
+Proposal memory p = proposals\[proposalId\];
+
+return (p.description, p.voteCount, p.executed);
+
+}
+
+}
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.20;
@@ -194,6 +376,7 @@ return (p.description, p.voteCount, p.executed);
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 use std::env;
 
@@ -386,6 +569,7 @@ cargo run -- del 1
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 \# 每日学习日志 - 2026-01-29
@@ -629,6 +813,7 @@ r1.push\_str("def");
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -903,6 +1088,7 @@ a + b // 表达式作为返回值
 
 
 
+
 \# 2026-01-25 Rust入门学习
 
 \## 📅 日期
@@ -1104,6 +1290,7 @@ Ok(content)
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1348,6 +1535,7 @@ function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
 
 
 
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -1586,6 +1774,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 
 
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -1667,6 +1856,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1830,6 +2020,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2155,6 +2346,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -2356,6 +2548,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2616,6 +2809,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -2808,6 +3002,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
