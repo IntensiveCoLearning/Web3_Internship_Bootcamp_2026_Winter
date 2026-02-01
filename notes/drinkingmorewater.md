@@ -25,16 +25,66 @@ Web3 实习计划 2025 冬季实习生
 
 《全球概览》（_Whole Earth Catalog_）是由斯图尔特·布兰德（Stewart Brand）于1968年创办的一本反主流文化杂志，它不仅是一份产品目录，更是一种思想启蒙工具，被誉为“嬉皮士时代的互联网”。该刊物强调自给自足、生态意识、系统思维与技术赋能，对20世纪后期的科技、文化、环保乃至创业精神产生了深远影响。**明确公开表示受《全球概览》深刻影响的名人有：史蒂夫·乔布斯（Steve Jobs）、杰夫·贝佐斯（Jeff Bezos）、凯文·凯利（Kevin Kelly）、马克·扎克伯格（Mark Zuckerberg）、日本出版界人士（如石川次郎、木滑良久）。**《全球概览》不仅影响了科技领袖，还深刻塑造了**环保运动、DIY文化、开源软件精神、可持续生活理念**等社会思潮。其核心思想——“**个体通过合适的工具可以改变世界**”——成为硅谷创新文化的底层逻辑之一。
 
-**Plancker** （有时也被叫作 _Planck DAO / Plancker Research DAO_）本质上是一个 **以太坊生态里的研究型 DAO**，核心定位是：  
+**Plancker** （有时也被叫作 _Planck DAO / Plancker Research DAO_）本质上是一个 **以太坊生态里的研究型 DAO**，核心定位是：
 
 > **把“高质量协议研究、治理分析、机制设计”变成一种可持续的 DAO 协作模式。**
 
-  
 [https://forum.plancker.org/latest](https://forum.plancker.org/latest)
+
+加密人文项目中 Web3 的概念、特性、经济模式，以及 DAO 的发展、治理等相关问题，具体如下：
+
+-   **Web3 概念与发展历程** ：
+    
+    -   **Web3.0 提出者** ：世界上第一位提出 Web3 的是万维网创始人 Tim Berners Lee，他提出的 Web3.0 指语义网，构想让机器能处理网络内容，实现网络自动化运转，这一设想基本被人工智能实现。
+        
+    -   **基于区块链的 Web3** ：2014 年 Gavin Wood 提出基于区块链的 Web3 概念，包括可编程区块链、去中心化文件储存系统、去中心化的 p to p 信息传递系统，这为互联网发展提供新的技术基础。
+        
+    -   **Web3 与 Web3.0 融合** ：现在 Web3 和 Web3.0 概念融合，成为区块链行业别称，中国政府对区块链态度模糊，既有支持文件，也有反对加密货币发币、炒币的文件。
+        
+-   **Web3 与 Web2 对比及特性** ：
+    
+    -   **Web2 不足** ：Web3 叙事针对 Web2 的不足，如平台经济剥削用户、威胁隐私安全、平台服务 “垃圾化”，但 Web2 并不一定完全等同于平台互联网。
+        
+    -   **Web3 的去中心化程度** ：Web3 并非完全去中心化，而是一个有不同程度去中心化或分布式的轴，区块链网络更符合分布式网络形式；Web2 的核心特性是可编程，Web3 的去中心化互联网基于可编程互联网，且与 Web1、Web2 共存。
+        
+    -   **区块链发展限制** ：以缅甸为例，区块链扩展性会受基础网络连接问题限制，这并非加密货币或区块链行业能解决。
+        
+-   **Web3 经济模式与公共物品** ：
+    
+    -   **公共物品定义** ：Web3 的公共物品与经济学上的共有资源 Commons 有关，还具有边际回报递增和正外部性两个特点，正外部性指在自身受益的同时尽量让外部受益。
+        
+    -   **DAO 模式** ：DAO 概念最早由以太坊基金会提出，虽曾因黑客攻击名存实亡，但模式仍存在，如以太坊生态中的 Gocoin 采用二次方投票，还有用人工智能改善投票过程的尝试。
+        
+    -   **加密货币层级与模式** ：从经济学理论看加密货币在经济层级中的位置，有数字金属主义和基础设施中立主义两种观点；加密货币有与法币结合、形成独立生态等几种发展可能，以太坊呈现多中心模式，也有将区块链技术用于解决实际问题的项目。
+        
+-   **Web3 的社会形态与 DAO 实践观察** ：
+    
+    -   **Web3 的社会形态** ：Web3 逐渐成为社会形态代名词，其灵魂是去中心化社会，以以太坊为例，道（DAO）从最初的去中心化自治公司（DAC）演变为去中心化自治社区，具有平等主义和自动化信任的特点。
+        
+    -   **DAO 在不同地区特点** ：在东南亚特别是华语生态圈，国内因不准发币，很多道是非盈利的，致力于构建公共社会或公共领域。
+        
+    -   **历史借鉴与现实案例** ：回顾互联网早期反文化运动对互联网诞生的影响，如《全球概览》和嬉皮士公社运动；还介绍了缅甸罗兴亚计划，尝试用区块链保存难民身份。
+        
+-   **Web3 现状与密码朋克在中国情况** ：
+    
+    -   **Web3 现状** ：目前 Web3 主要在加密领域讨论，主流社会提及较少，去中心化社交是 Web3 除金融外较大赛道，但一些去中心化社交产品与 Web3 关系不大。
+        
+    -   **密码朋克** ：密码朋克运动成气候于 90 年代，其意识形态不固定，有 libertarian 和左翼等不同倾向；中国互联网历史上有早期密码朋克活动，如抵制绿坝、反对互联网实名制等，但受社会环境限制，在中国发展较难。
+        
+-   **DAO 观察与问题讨论** ：
+    
+    -   **DAO 生命周期** ：观察到不同的 DAO 生命周期大多为两到三年、三到五年，完成使命后会收缩或分裂，新的 DAO 会不断产生。
+        
+    -   **影响 DAO 发展因素** ：DAO 面临激励困难、所有权不明确等问题，如普朗克 DAO 因成员心力不足、产品孵化以道的形式效率不高等原因，活跃度降低。
+        
+    -   **技术与价值主张** ：比特币和以太坊在价值主张和升级方式上有差异，比特币坚持软分叉，以太坊多硬分叉；新的价值主张可能需要新公链支撑。
+        
+    -   **其他问题讨论** ：讨论了把价值写进系统、技术门槛制造新精英、是否允许牺牲去中心化等问题，认为加密领域可编程使其更灵活，但也有危险；区块链技术门槛制造了新精英，但这些精英与传统精英关系有张力；impact DAO 应警惕过度治理。
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -217,6 +267,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -318,6 +369,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -406,6 +458,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -553,6 +606,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -609,6 +663,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -795,6 +850,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -802,6 +858,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -879,6 +936,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -888,6 +946,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1008,6 +1067,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1170,6 +1230,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1431,6 +1492,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -1478,6 +1540,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1861,6 +1924,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -1902,6 +1966,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2312,6 +2377,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -2634,6 +2700,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -2741,6 +2808,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
