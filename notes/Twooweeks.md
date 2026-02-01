@@ -15,8 +15,239 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+Q1: 定时器的作用？
+
+Go语言中的定时器（Timer）和打点器（Ticker）是用于在指定时间间隔执行任务的工具。
+
+## **定时器类型**
+
+### **1\. Timer（定时器）**
+
+-   **作用**：在指定的时间后执行一次操作
+    
+-   **创建方式**：`time.NewTimer(duration)` 或 `time.After(duration)`
+    
+-   **特点**：只触发一次
+    
+
+### **2\. Ticker（打点器）**
+
+-   **作用**：每隔指定的时间间隔重复执行操作
+    
+-   **创建方式**：`time.NewTicker(duration)`
+    
+-   **特点**：周期性触发，直到调用 `Stop()` 停止
+    
+
+## **主要作用**
+
+1.  **定时执行任务**：在指定时间后执行某个操作
+    
+2.  **周期性轮询**：定期检查状态、同步数据等
+    
+3.  **超时控制**：配合 `select` 语句实现超时机制
+    
+4.  **限流控制**：控制操作频率，避免过于频繁的操作
+    
+
+## **注意事项**
+
+-   **必须调用 Stop()**：使用 `NewTicker` 或 `NewTimer` 后，必须调用 `Stop()` 释放资源，通常使用 `defer` 确保释放
+    
+-   **通道关闭**：`Stop()` 后，通道不会关闭，但不会再发送新的值
+    
+-   **内存泄漏**：如果不停止定时器，可能导致内存泄漏
+    
+
+* * *
+
+Q2: 在项目中的应用场景
+
+## **代码示例分析**
+
+在 `not_complete.go` 中的实际应用：
+
+```
+// 创建两个打点器
+var checkTicker = time.NewTicker(time.Millisecond * 5000)  // 每5秒检查一次
+var sendTicker = time.NewTicker(time.Millisecond * 1000)   // 每1秒发送一次
+defer checkTicker.Stop()  // 确保资源释放
+defer sendTicker.Stop()
+
+for {
+    select {
+    case <-s.ctx.Done():
+        return
+    case <-checkTicker.C:  // 每5秒触发一次
+        // 查询处理中的区块
+        slots, err := s.sc.BlockModel.FindProcessingSlots(...)
+        // ... 处理逻辑
+        
+        for _, slot := range slots {
+            select {
+            case <-s.ctx.Done():
+                return
+            case <-sendTicker.C:  // 每1秒发送一个失败的区块
+                s.errorCh <- uint64(slot.Slot)
+            }
+        }
+    }
+}
+```
+
+## **应用场景说明**
+
+### **1\. checkTicker（5秒间隔）**
+
+-   **作用**：定期检查数据库中是否有处理中的区块
+    
+-   **目的**：避免频繁查询数据库，降低系统负载
+    
+-   **频率**：每5秒检查一次
+    
+
+### **2\. sendTicker（1秒间隔）**
+
+-   **作用**：控制失败区块的发送频率
+    
+-   **目的**：限流控制，避免一次性发送太多数据导致下游处理压力过大
+    
+-   **频率**：每1秒发送一个失败的区块到错误通道
+    
+
+## **设计优势**
+
+1.  **资源保护**：通过定时器控制操作频率，保护数据库和下游服务
+    
+2.  **优雅退出**：配合 `context.Done()` 实现优雅的退出机制
+    
+3.  **双重限流**：
+    
+    -   外层：控制查询频率（5秒）
+        
+    -   内层：控制发送频率（1秒）
+        
+
+## **常见应用场景**
+
+1.  **心跳检测**：定期发送心跳包
+    
+2.  **数据同步**：定期同步数据
+    
+3.  **状态检查**：定期检查服务状态
+    
+4.  **限流控制**：控制API调用频率
+    
+5.  **超时处理**：实现请求超时机制
+    
+
+* * *
+
+Q3: Ticker 单测示例
+
+详细的单测示例代码位于：`experiments/ticker_test.go`
+
+## **单测覆盖的场景**
+
+### **1\. 基本用法 (**`TestTickerBasicUsage`**)**
+
+演示如何创建和使用 Ticker，以及如何正确停止它。
+
+```
+ticker := time.NewTicker(100 * time.Millisecond)
+defer ticker.Stop() // 必须调用 Stop()
+
+var count int
+for i := 0; i < 5; i++ {
+    <-ticker.C
+    count++
+}
+```
+
+### **2\. 配合 select 使用 (**`TestTickerWithSelect`**)**
+
+展示如何将 Ticker 与 context 和 select 结合，实现超时控制。
+
+```
+select {
+case <-ctx.Done():
+    // 超时退出
+case <-ticker.C:
+    // 处理定时任务
+}
+```
+
+### **3\. 停止 Ticker (**`TestTickerStop`**)**
+
+演示停止 Ticker 后不再触发事件。
+
+### **4\. 限流控制 (**`TestTickerRateLimiting`**)**
+
+使用 Ticker 实现限流，控制任务处理频率。
+
+```
+for task := range tasks {
+    <-ticker.C // 等待 ticker 触发，实现限流
+    processTask(task)
+}
+```
+
+### **5\. 周期性检查 (**`TestTickerPeriodicCheck`**)**
+
+模拟项目中的实际场景：双重 Ticker 实现周期性检查和限流发送。
+
+```
+checkTicker := time.NewTicker(100 * time.Millisecond)
+sendTicker := time.NewTicker(50 * time.Millisecond)
+
+for {
+    select {
+    case <-checkTicker.C:
+        // 周期性检查
+        for _, item := range items {
+            <-sendTicker.C // 限流发送
+            send(item)
+        }
+    }
+}
+```
+
+### **6\. 多 goroutine 共享 (**`TestTickerWithGoroutine`**)**
+
+演示多个 goroutine 可以安全地共享同一个 Ticker。
+
+### **7\. Ticker vs Timer (**`TestTickerVsTimer`**)**
+
+对比 Ticker 和 Timer 的区别：
+
+-   **Timer**：只触发一次
+    
+-   **Ticker**：周期性触发
+    
+
+### **8\. 资源管理 (**`TestTickerMemoryLeak`**)**
+
+强调必须使用 `defer ticker.Stop()` 避免内存泄漏。
+
+## **运行单测**
+
+```
+# 运行所有 Ticker 相关测试
+go test -v ./experiments -run TestTicker
+
+# 运行特定测试
+go test -v ./experiments -run TestTickerBasicUsage
+
+# 查看测试覆盖率
+go test -cover ./experiments -run TestTicker
+```
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 lesson 21 互斥锁
 
 目标：
@@ -75,6 +306,7 @@ lesson 23 context
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 今日休息一天，接下来几天进行冲刺，看看自己能上到第几名
 
 ![ama.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-30-1769773996757-ama.png)
@@ -82,6 +314,7 @@ lesson 23 context
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 lesson 14 结构体方法
@@ -209,6 +442,7 @@ for { select { case message1 <-ch1: ... case message2 <-ch2: ... } }
 
 
 
+
 lesson 8 array
 
 目标：
@@ -312,6 +546,7 @@ lesson 12 pointer
 
 
 
+
 # 状态树
 
 \- 状态树包含所有账户的状态，交易树和收据树是由当前这个区块的交易组织起来的
@@ -343,6 +578,7 @@ lesson 12 pointer
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -498,6 +734,7 @@ switch {
 
 
 
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -515,6 +752,7 @@ switch {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -546,6 +784,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -588,6 +827,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -595,6 +835,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -640,6 +881,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -748,6 +990,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -771,6 +1014,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -822,6 +1066,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -963,6 +1208,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -991,6 +1237,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1111,6 +1358,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -1135,6 +1383,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1195,6 +1444,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
