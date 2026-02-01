@@ -60,10 +60,31 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
     struct({string;uint})
     
 4.  mapping:适用于一一对应的映射关系，例如用户地址对应余额
+    
+5.  智能合约部署
+    
+    ### ethers can: 监听部署的智能合约事件
+    
+    ### mint方法：一般设置成internal，但需要对外接口，才能铸造
+    
+    情况 1️⃣：在构造函数里铸造（最常见） constructor() ERC20("MyToken", "MTK") { _mint(msg.sender, 1_000\_000 _10_ \* decimals()); }
+    
+    情况 2️⃣：通过你自己写的外部 mint 接口 function mint(address to, uint256 amount) external onlyOwner { \_mint(to, amount); }
+    
+    ### gas fee优化
+    
+    -   避免不必要的存储操作
+        
+    -   错误回滚：revert代替require
+        
+        error InvalidX(uint256 x);
+        
+        function f(uint256 x) external { if (x <= 0) revert InvalidX(x); // ... }
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 ### 本周感悟
 
@@ -112,6 +133,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 ## 职业路径与学习规划
 
 ### 产品经理
@@ -156,6 +178,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ```
 Context:
 This is an existing project using <tech stack>.
@@ -178,6 +201,7 @@ Process:
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -330,6 +354,7 @@ Web3第一语言类Space，累计超千万播放量。
 
 
 
+
 第二周结束，本周思考与复盘。
 
 Typeless
@@ -383,6 +408,7 @@ TG社群运营SOP
 
 
 
+
 [XSpoonAi/spoon-core](https://github.com/XSpoonAi/spoon-core)
 
 Solidity 编译功能
@@ -392,6 +418,7 @@ LLM → 生成 Solidity ↓ Tool → solc 编译 ↓ ❌ 报错 ↓ LLM ← 读�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -551,6 +578,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 ### 运营渠道
 
 1.  telegram
@@ -619,6 +647,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -668,6 +697,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -791,6 +821,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -835,6 +866,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -866,6 +898,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1020,6 +1053,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
