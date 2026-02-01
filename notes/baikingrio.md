@@ -15,8 +15,119 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+## Uniswap V2 常见开发陷阱与防御
+
+### 1\. 滑点与前端运行（Sandwich）陷阱
+
+-   问题：amountOutMin / amountInMax = 0 或过松
+    
+-   后果：被 MEV bot 前插 / 后插，损失数 %
+    
+-   防御：
+    
+    -   预调用 getAmountsOut / getAmountsIn 计算预期值
+        
+    -   设置 0.5%–3% 容差（视池深度）
+        
+    -   deadline = block.timestamp + 300–1200 秒
+        
+
+### 2\. Deadline 滥用
+
+-   问题：deadline = type(uint).max 或超长
+    
+-   后果：交易在 mempool 挂起很久，执行时价格已大幅变化
+    
+-   防御：固定 5–20 分钟窗口
+    
+
+### 3\. fee-on-transfer / deflationary token 未兼容
+
+-   问题：假设 transfer 后余额 = amount，但实际收到更少
+    
+-   后果：流动性添加失败、swap 后储备不匹配、K 值验证失败
+    
+-   防御：
+    
+    -   使用 balanceOf(this) - balanceBefore 测量实际收到量
+        
+    -   必须调用 SupportingFeeOnTransferTokens 系列函数
+        
+
+## 4\. ERC-777 / hooks 重入风险
+
+-   问题：回调中 transfer 到有 hook 的 token（如 ERC-777）触发重入
+    
+-   后果：可能绕过 lock 修饰符或状态不一致
+    
+-   防御：
+    
+    -   回调中尽量避免外部 transfer
+        
+    -   或使用 ReentrancyGuard 额外保护
+        
+    -   测试时加入 mock ERC-777
+        
+
+### 5\. Oracle 操纵（TWAP 误用）
+
+-   问题：使用短窗口（<5–10 分钟）或低流动性池 TWAP
+    
+-   后果：flash loan 短暂扭曲价格 → 清算 / 借贷漏洞
+    
+-   防御：
+    
+    -   最低 15–60 分钟 TWAP
+        
+    -   加流动性阈值检查（reserve > X）
+        
+    -   结合 Chainlink 或多源验证
+        
+
+## 6\. 直接调用 Pair 而非 Router
+
+-   问题：绕过 Router 的安全检查（滑点、deadline、path 验证）
+    
+-   后果：易出错、被 sandwich、无 ETH 自动 wrap
+    
+-   防御：生产环境一律走 Router02
+    
+
+### 7\. Fork 时改费用逻辑错误
+
+-   问题：在 \_update 前扣协议费 / dev fee → 破坏 x×y=k
+    
+-   后果：无限铸币、LP 被抽干、swap 失败
+    
+-   防御：
+    
+    -   费用只在 \_mintFee 中处理
+        
+    -   保持 \_update 和 K 验证原样
+        
+
+### 8\. 快速检查清单（开发前必过）
+
+-   amountOutMin / amountInMax 是否合理设置
+    
+-   deadline 是否短且合理
+    
+-   是否支持 fee-on-transfer token
+    
+-   flash swap 回调是否严格 Checks-Effects-Interactions
+    
+-   oracle 窗口是否 ≥15 分钟 + 流动性检查
+    
+-   是否直接操作 Pair 而非 Router
+    
+-   是否有重入风险点（ERC-777、回调）
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 ## Uniswap V2 事件与日志
 
 Uniswap V2 使用事件（Events）记录关键状态变化，便于 off-chain 索引、监听与历史查询。 所有事件在 Factory / Pair 合约中定义，遵循 EIP-20 / EIP-721 风格。 前端 / subgraph（如 The Graph）依赖这些事件构建索引。
@@ -90,6 +201,7 @@ Pair 继承 UniswapV2ERC20，触发标准事件：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 ## Uniswap V2 闪电交换（Flash Swap）
 
@@ -183,6 +295,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 ## Uniswap V2 的设计细节
 
 ### 1\. Core / Periphery 架构的深层意图
@@ -247,6 +360,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 与 V3 关键差异
 
 ### 1\. 流动性模型
@@ -300,6 +414,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -387,6 +502,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -456,6 +572,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -610,6 +727,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -641,6 +759,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -759,6 +878,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -842,6 +962,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -985,6 +1106,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -1100,6 +1222,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -1144,6 +1267,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -1159,6 +1283,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1217,6 +1342,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -1228,6 +1354,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
