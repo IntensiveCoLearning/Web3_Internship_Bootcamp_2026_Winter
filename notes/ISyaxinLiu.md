@@ -49,11 +49,75 @@ PoS 与 PoW 对比
 
 惩罚机制 存在质押削减机制，违规者可能失去质押币 无直接经济惩罚，矿工仅浪费电力
 
-通过这个对比表，可以更清晰地看到PoS和PoW各自的优缺点。
+通过这个对比表，可以更清晰地看到PoS和PoW各自的优缺点。分享百科
+
+# **DApp**
+
+-   [百科](https://learnblockchain.cn/map/DApp/details)
+    
+-   [文章](https://learnblockchain.cn/map/DApp/articles)
+    
+-   [视频](https://learnblockchain.cn/map/DApp/videos)
+    
+-   [课程](https://learnblockchain.cn/map/DApp/courses)
+    
+-   [相关标签](https://learnblockchain.cn/map/DApp/relationtags)
+    
+
+### **去中心化应用 - DApp（Decentralized Application）**
+
+去中心化应用是指一类运行在分布式网络上的应用程序，而不是依赖于单个中央服务器。通常DApp 的核心逻辑由区块链上的[智能合约](https://learnblockchain.cn/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6)负责，理想情况下 DApp 的前端也托管在去中心化存储网络中。
+
+DApp 前端界面需要集成[钱包](https://learnblockchain.cn/tags/%E9%92%B1%E5%8C%85)（或与钱包链接），当用户需要调用合约程序时，用用户钱包获取程序调用的签名，实现真正有用户自己控制自己的数据所有权。
+
+下面是一个简单的 DApp 的架构图：
+
+![DApp架构](https://img.learnblockchain.cn/pics/20240620170012.png!/scale/50)
+
+复杂一些的DApp 还需要通过[预言机](https://learnblockchain.cn/tags/%E9%A2%84%E8%A8%80%E6%9C%BA)来获取链外的数据
+
+部分DApp 也有提供自己的后端程序，但通常是用来做链上数据的缓存，方便用户快速访问链上数据。
+
+### **DApp 的主要特征：**
+
+-   **去中心化:** 与依赖集中式服务器的传统应用程序不同，DApp 在去中心化网络上运行，确保没有单点故障，降低了审查风险。
+    
+-   **开源:** DApp的源代码通常对任何人开放，以检查，验证和贡献，促进社区内的信任和协作。
+    
+-   **区块链集成:** DApp通常与区块链上的智能合约交互。智能合约是自动执行的合约，协议条款直接写入代码，促进无需信任和自动化的交易。
+    
+-   **代币化:** 许多DApp使用加密货币或代币(tokens) 作为应用程序内价值转移的手段。这些代币可用于如治理、访问服务或奖励用户等各种目的。
+    
+-   **不可变性:** 区块链上的数据是不可变的，一旦交易或数据记录下来，就不能被更改或删除。这确保了数据的完整性和透明性。
+    
+
+### **常见应用领域**
+
+由于 DApp 具有去中心化、抗审查、透明、安全和全球可访问等优势，展示了巨大的潜力和发展前景：
+
+1.  **去中心化金融（DeFi）**：包括去中心化交易所（DEX）、借贷平台、稳定币、衍生品交易等。DeFi dApp 通过智能合约提供金融服务，消除了对传统金融中介的依赖。例如[Uniswap](https://uniswap.org/)、[Aave](https://aave.com/)和[Compound](https://compound.finance/)。
+    
+2.  **游戏和娱乐**：去中心化游戏和虚拟世界（如 [Decentraland](https://decentraland.org/)）允许玩家拥有和交易游戏内资产（如 NFT），并参与去中心化的游戏治理。例如[Axie Infinity](https://axieinfinity.com/)。
+    
+3.  **社交媒体**: 去中心化社交平台旨在让用户控制他们的数据和内容，[例如friend.tech](http://例如friend.tech)和[Mastodon](https://joinmastodon.org/)。
+    
+4.  **去中心化自治组织（DAO）**：DAO 是通过智能合约运行的组织，成员可以通过代币投票来决策组织的运营和发展。
+    
+5.  **数字身份和认证**：利用区块链的不可篡改性和透明性，dApps 可以用于管理和验证数字身份，提供去中心化的身份认证服务。
+    
+6.  **供应链管理**：通过区块链记录产品的生产、运输和销售过程，dApp 可以提供更透明和可追溯的供应链管理系统，例如[VeChain](https://vechain.org/)。
+    
+7.  **内容版权和分发**：创作者可以通过 dApps 直接发布和出售内容，确保版权保护，并直接获得收益。
+    
+
+DApp 在大规模采用上，也面临一些问题，dApps 的用户体验通常不如传统应用，主要因为钱包交互不够便利及区块链交易的等待时间较长，一些应用还面临法律和监管上的挑战。
+
+不过相信随着技术的进步和法律框架的完善，DApp 有望在更多领域得到广泛应用和普及。
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 分享百科
 
@@ -125,6 +189,7 @@ POW工作量证明的主要流程为：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 # **DEX (去中心化交易所)**
@@ -205,6 +270,7 @@ DEX 主要采用以下几种交易模型：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -803,6 +869,7 @@ function setState(State newState) internal {
 
 
 
+
 ### [**1\. Gas 优化**](https://web3intern.xyz/zh/smart-contract-development/#_1-gas-%E4%BC%98%E5%8C%96)
 
 **基本原理与计量单位**
@@ -1142,6 +1209,7 @@ function setState(State newState) internal {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1949,6 +2017,7 @@ ERC20 Permit 通过引入链下签名机制，为代币授权带来了革命性�
 
 
 
+
 ## **什么是 ERC20?**
 
 [ERC20](https://learnblockchain.cn/docs/eips/EIPS/eip-20) 是 Ethereum 网络上最出名且应用最广的代币标准之一。它提供了一个统一的接口标准，用于创建可互换代币，这些代币可以用来代表任何事物，从货币到积分等。
@@ -2619,6 +2688,7 @@ ERC-1363 标准可以在任何应用 ERC-20 标准的地方使用。在作者看
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -3752,6 +3822,7 @@ contract Handler is Test {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -5691,11 +5762,13 @@ contract CompleteExample {
 
 
 
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -6621,6 +6694,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -7629,6 +7703,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -8661,6 +8736,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -8864,6 +8940,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -9603,6 +9680,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
