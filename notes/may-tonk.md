@@ -15,8 +15,211 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+# 一、 EIP-1967
+
+Proxy 是可升级合约的核心技术，理解这一点是协议级开发必须掌握的。
+
+* * *
+
+## 1️⃣ Proxy 的基本概念
+
+在 Solidity / EVM 中：
+
+-   **Proxy 合约**：存储状态，不存逻辑；负责接收调用并转发给逻辑合约
+    
+-   **Logic（Implementation）合约**：存储逻辑，实现函数；不存用户状态
+    
+
+调用流程：
+
+```
+用户 -> Proxy -> delegatecall -> Logic
+```
+
+⚠️ **注意**：
+
+-   `delegatecall` 执行的是 Logic 合约的代码，但**存储在 Proxy 合约里**
+    
+-   这意味着 storage layout 必须一致，否则用户数据会被覆盖
+    
+
+* * *
+
+## 2️⃣ 为什么需要标准化存储位置
+
+Proxy 合约必须存储几个关键变量：
+
+-   `implementation`（逻辑合约地址）
+    
+-   `admin`（谁可以升级合约）
+    
+
+问题来了：
+
+-   如果随意选择 storage slot，可能和 Logic 合约的 storage 冲突
+    
+-   冲突会导致**用户数据被覆盖**，甚至合约永久失效
+    
+
+* * *
+
+## 3️⃣ EIP-1967 的解决方案
+
+EIP-1967 标准规定：
+
+-   `implementation` slot = `bytes32(uint256(keccak256('eip1967.proxy.implementation')) - 1)`
+    
+-   `admin` slot = `bytes32(uint256(keccak256('eip1967.proxy.admin')) - 1)`
+    
+
+特点：
+
+1.  **超低概率冲突**：  
+    用哈希 + 减 1，生成一个几乎不会与普通 storage slot 重叠的 slot
+    
+2.  **所有工具统一识别**：
+    
+    -   OpenZeppelin 的 Transparent Proxy
+        
+    -   Hardhat / Foundry / Etherscan 都能识别这个 slot
+        
+
+* * *
+
+## 4️⃣ 总结 Proxy + EIP-1967 的要点
+
+-   Proxy 本质：状态存储 + 调用转发
+    
+-   EIP-1967 提供 **固定 slot** 避免 storage 冲突
+    
+-   **delegatecall 下 storage 安全是第一要务**
+    
+-   这是升级合约设计的标准做法，几乎所有工业级可升级合约都遵循
+    
+
+* * *
+
+# 二、一次 swap 在 EVM 里的完整执行路径
+
+以 **Uniswap V2** 为例，我们把“前端操作 → 用户钱包 → 链上 swap”拆成底层步骤。
+
+* * *
+
+## 1️⃣ 前端发起 swap
+
+-   用户在 DApp 输入：  
+    `swapExactTokensForTokens(amountIn, amountOutMin, path, to, deadline)`
+    
+-   前端构建交易数据，发送给钱包签名
+    
+
+* * *
+
+## 2️⃣ 钱包签名 & 广播交易
+
+-   钱包弹窗，用户确认
+    
+-   私钥生成签名，附加 nonce / gas / chainId
+    
+-   交易广播到节点 → 进入 mempool
+    
+
+* * *
+
+## 3️⃣ EVM 执行交易
+
+### Step 1：检查权限 & allowance
+
+```
+ERC20(tokenIn).transferFrom(msg.sender, pair, amountIn)
+```
+
+-   触发 ERC20 `transferFrom`：
+    
+    1.  SLOAD 查询 allowance
+        
+    2.  SLOAD 查询 balance
+        
+    3.  检查是否足够
+        
+    4.  SSTORE 更新 allowance / balance
+        
+-   **核心成本**：2~4 次 storage 访问 + 1 次 SSTORE
+    
+
+* * *
+
+### Step 2：调用 Pair 合约 swap 函数
+
+```
+function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
+```
+
+内部流程：
+
+1.  **计算输出 token 数量**（按公式 `x * y = k`）
+    
+2.  **检查 reserve 是否充足**
+    
+3.  **更新储备量**（SSTORE）
+    
+4.  **把 token 转给用户**（ERC20 `transfer`)
+    
+5.  **触发事件**（Swap event）
+    
+
+* * *
+
+### Step 3：delegatecall / 回调处理（可选）
+
+-   如果 data 不为空，调用回调
+    
+-   允许 flash swap / flash loan
+    
+
+* * *
+
+### Step 4：更新状态树 & event
+
+-   每一次 SSTORE 都修改状态树
+    
+-   Swap event 写入日志
+    
+-   全网节点同步更新 state root
+    
+
+* * *
+
+## 4️⃣ Gas 消耗分析
+
+| 步骤 | 类型 | 消耗特点 |
+| --- | --- | --- |
+| transferFrom | storage 操作 | 读旧值 + 写新值，最贵 |
+| swap reserves | storage 操作 | 2 次 SLOAD + 2 次 SSTORE |
+| transfer output | storage 操作 | 再次 SLOAD / SSTORE |
+| flash swap callback | optional | 额外逻辑可能复杂 |
+| emit event | log | cheaper than storage，但上链可查询 |
+
+> 一次简单 swap ≈ 60,000~100,000 gas（ERC20 token 复杂度不同）
+
+* * *
+
+## 5️⃣ 核心工程点
+
+-   **storage 写入成本最高**
+    
+-   **计算（x\*y=k）非常便宜**
+    
+-   **事件 event 用来记录历史，不增加存储压力**
+    
+-   **delegatecall / callback 需要严格检查安全性**（重入攻击）
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # 一、Subgraph ≠ 传统数据库写入
 
 这是 90% 人理解错的地方。
@@ -221,6 +424,7 @@ Indexer 会：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 # 一、结论
 
@@ -544,6 +748,7 @@ Indexer 会：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 * * *
@@ -920,6 +1125,7 @@ event.on 实时提示
 
 
 
+
 # 一、为什么不用 Subgraph 会崩
 
 我们先假设一个**非常真实的 DApp 场景**：
@@ -1212,6 +1418,7 @@ Subgraph 刚好完美匹配。
 
 
 
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -1406,6 +1613,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1766,6 +1974,7 @@ uint32  blockTimestampLast;
 
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -2023,6 +2232,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2395,6 +2605,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -2719,6 +2930,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -2965,6 +3177,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3263,6 +3476,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -3411,6 +3625,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3775,6 +3990,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -4111,6 +4327,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -4214,6 +4431,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4371,6 +4589,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4710,6 +4929,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -4812,6 +5032,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
