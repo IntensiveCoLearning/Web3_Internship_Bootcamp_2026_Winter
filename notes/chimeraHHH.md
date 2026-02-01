@@ -15,8 +15,14 @@ WHUweb3Club|build in public
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+落地伦敦，开始共学
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 TVL
 
 -   **定义**：衡量 DeFi 协议中锁定的资金规模。
@@ -62,6 +68,7 @@ Gas 费用
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 听例会，整理这周所学
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
@@ -69,11 +76,13 @@ Gas 费用
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 学习space搭建MCP与Skills，正好也是自己最近在做的事情
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -86,6 +95,7 @@ Gas 费用
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -111,6 +121,7 @@ Gas 费用
 
 
 
+
 晚间回顾今日workshop；
 
 **在web3工作，英语有多重要？**
@@ -128,11 +139,13 @@ Gas 费用
 
 
 
+
 总结一周工作，整理下周vibe coding与学习的计划。尝试每天固定时间参与这项计划...
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -159,11 +172,13 @@ Gas 费用
 
 
 
+
 研究open-notebook与zotero的结合
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -201,11 +216,13 @@ Gas 费用
 
 
 
+
 今日复习回顾相关章节，这几天用完了trae的600额度）工作量爆炸
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -232,6 +249,7 @@ Gas 费用
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -279,11 +297,13 @@ Gas 费用
 
 
 
+
 Day7 学习安全与合规
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -332,11 +352,13 @@ Day6！
 
 
 
+
 Day5！
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -391,6 +413,7 @@ Day5！
 
 
 
+
 1.14打卡
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -421,11 +444,13 @@ Day5！
 
 
 
+
 回看开营仪式+一些vibe coding
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
