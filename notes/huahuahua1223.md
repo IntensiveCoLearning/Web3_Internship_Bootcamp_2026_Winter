@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+参加demo day
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 1、参加LXDAO的周会新成员自我介绍
 
 2、收听【学员 Space】Web3 新人如何独立看研报、写研报，【学员 space】NFT 价值流向｜买一个 NFT，我的钱去哪了？【学员 Mini 活动】主流 Code Agent 工具操作 60 mins Step by Step，【学员 Space】令人心动的 Offer：Web3 职场生存指北，
@@ -28,6 +34,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 1、学习mutilcall调用  
 2、参加co-learning、休闲黑客松「SPARK 生存指北」AMA、第三周例会
@@ -41,6 +48,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 参加co-learning，co-building，SpoonOS 框架从 0-1 搭建 MCP 和 Skill 的 Agent
 
 学习ERC4337 AA
@@ -52,11 +60,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1、参加co-learning、休闲黑客松openday，Web3 数据及分析基础
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -77,6 +87,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1、学习SpoonOS
 
 2、参加以太坊中文周会，co-learning，vibe-coding + 黑客松经验分享，投研基础框架建立
@@ -84,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -188,6 +200,7 @@ Uniswap 官方给的典型跨链例子大概是：
 
 
 
+
 # ERC-7984 vs ZEC vs DASH
 
 链上默认**全透明**（余额、金额、交易关系都可追踪），因此出现了三种典型隐私路线：  
@@ -246,6 +259,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、参加Speedrun Basic workshop、Co-Learning、第二周例会
 
 2、准备例会分享内容
@@ -253,6 +267,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -285,6 +300,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、学习scaffold-eth框架
 
 2、参加co-learning
@@ -296,6 +312,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -332,6 +349,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、参加以太坊中文周会
 
 2、参加线上Co-Learning
@@ -341,6 +359,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -377,6 +396,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、研究了智能合约中多重继承引发的钻石问题，使用C3线性化算法如何解决函数调用顺序的冲突，通过明确指定和避免使用super来避免问题
 
 2、研究了使用GPU碰撞合约hash特定字符的地址，[manuelinfosec/eth-vanity-cuda: CUDA-accelerated Ethereum vanity address generator written in C++, capable of brute-forcing custom prefixes and suffixes for addresses using NVIDIA GPUs.](https://github.com/manuelinfosec/eth-vanity-cuda)
@@ -384,6 +404,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -428,6 +449,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1、学习MPC钱包，发一篇推文
 
 2、参加 AI 及其基础概念分享会
@@ -435,6 +457,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -479,6 +502,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 
 
+
 1.  进阶hardhat v2框架 [DAPP开发框架之hardhat进阶使用-CSDN博客](https://hua1223.blog.csdn.net/article/details/136885624)
     
 2.  给web3实习手册提交了一个pr，在智能合约开发章节添加了一个完整的现代化 Dapp 示例项目，展示如何使用 Viem、Wagmi 和 RainbowKit 构建链上留言板应用。[https://github.com/ethpanda-org/Web3-Internship-Handbook/pull/30](https://github.com/ethpanda-org/Web3-Internship-Handbook/pull/30)
@@ -486,6 +510,7 @@ Dash 文档直接把该功能称为 CoinJoin（历史上称 PrivateSend）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
