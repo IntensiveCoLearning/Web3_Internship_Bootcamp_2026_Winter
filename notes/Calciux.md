@@ -15,8 +15,275 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+一个小的合约练习
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+
+contract MinimalERC20 {
+    string public name;
+    string public symbol;
+    uint8 public immutable decimals = 18;
+
+    uint256 public totalSupply;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+
+    constructor(string memory _name, string memory _symbol) {
+        name = _name;
+        symbol = _symbol;
+    }
+
+    function _mint(address to, uint256 amount) internal {
+        totalSupply += amount;
+        balanceOf[to] += amount;
+        emit Transfer(address(0), to, amount);
+    }
+
+    function _burn(address from, uint256 amount) internal {
+        balanceOf[from] -= amount;
+        totalSupply -= amount;
+        emit Transfer(from, address(0), amount);
+    }
+
+    function approve(address spender, uint256 amount) external returns (bool) {
+        allowance[msg.sender][spender] = amount;
+        emit Approval(msg.sender, spender, amount);
+        return true;
+    }
+
+    function transfer(address to, uint256 amount) external returns (bool) {
+        balanceOf[msg.sender] -= amount;
+        balanceOf[to] += amount;
+        emit Transfer(msg.sender, to, amount);
+        return true;
+    }
+
+    function transferFrom(address from, address to, uint256 amount) external returns (bool) {
+        uint256 allowed = allowance[from][msg.sender];
+        require(allowed >= amount, "NOT_ALLOWED");
+        if (allowed != type(uint256).max) {
+            allowance[from][msg.sender] = allowed - amount;
+        }
+        balanceOf[from] -= amount;
+        balanceOf[to] += amount;
+        emit Transfer(from, to, amount);
+        return true;
+    }
+}
+
+/// @notice 简化版 Uniswap V2 风格池：token0 <-> token1
+interface IERC20 {
+    function balanceOf(address) external view returns (uint256);
+    function transfer(address to, uint256 amount) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
+}
+
+contract SimpleUniswapPool is MinimalERC20 {
+    IERC20 public immutable token0;
+    IERC20 public immutable token1;
+
+    uint112 public reserve0; // 当前池子中 token0 数量
+    uint112 public reserve1; // 当前池子中 token1 数量
+    uint32  public blockTimestampLast; // 这里简单存一下时间戳，可扩展做 TWAP
+
+    uint256 public constant FEE_NUMERATOR = 997;  // 0.3% 手续费
+    uint256 public constant FEE_DENOMINATOR = 1000;
+
+    event Mint(address indexed sender, uint256 amount0, uint256 amount1, uint256 liquidity);
+    event Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to);
+    event Swap(
+        address indexed sender,
+        uint256 amount0In,
+        uint256 amount1In,
+        uint256 amount0Out,
+        uint256 amount1Out,
+        address indexed to
+    );
+    event Sync(uint112 reserve0, uint112 reserve1);
+
+    constructor(address _token0, address _token1)
+        MinimalERC20("LP Token", "LPT")
+    {
+        token0 = IERC20(_token0);
+        token1 = IERC20(_token1);
+    }
+
+ 
+
+    function _update(uint256 balance0, uint256 balance1) private {
+        require(balance0 <= type(uint112).max && balance1 <= type(uint112).max, "OVERFLOW");
+        reserve0 = uint112(balance0);
+        reserve1 = uint112(balance1);
+        blockTimestampLast = uint32(block.timestamp);
+        emit Sync(reserve0, reserve1);
+    }
+
+    function getReserves() public view returns (uint112, uint112) {
+        return (reserve0, reserve1);
+    }
+
+    // ---------------- 添加流动性 ----------------
+
+    /// @notice 添加流动性，需提前对本合约 approve token0 和 token1
+    function addLiquidity(uint256 amount0Desired, uint256 amount1Desired)
+        external
+        returns (uint256 liquidity, uint256 amount0, uint256 amount1)
+    {
+        (uint112 _reserve0, uint112 _reserve1) = getReserves();
+
+        if (_reserve0 == 0 && _reserve1 == 0) {
+            // 首次注入，直接按给定比例
+            amount0 = amount0Desired;
+            amount1 = amount1Desired;
+            liquidity = _sqrt(amount0 * amount1);
+        } else {
+            // 按当前池子比例匹配
+            uint256 amount1Optimal = (amount0Desired * _reserve1) / _reserve0;
+            if (amount1Optimal <= amount1Desired) {
+                amount0 = amount0Desired;
+                amount1 = amount1Optimal;
+            } else {
+                uint256 amount0Optimal = (amount1Desired * _reserve0) / _reserve1;
+                require(amount0Optimal <= amount0Desired, "INSUFFICIENT_A");
+                amount0 = amount0Optimal;
+                amount1 = amount1Desired;
+            }
+            liquidity = _min(
+                (amount0 * totalSupply) / _reserve0,
+                (amount1 * totalSupply) / _reserve1
+            );
+        }
+
+        require(liquidity > 0, "INSUFFICIENT_LIQUIDITY_MINTED");
+
+        // 转入代币
+        require(token0.transferFrom(msg.sender, address(this), amount0), "T0_TRANSFER_FAIL");
+        require(token1.transferFrom(msg.sender, address(this), amount1), "T1_TRANSFER_FAIL");
+
+        // 更新储备
+        uint256 balance0 = token0.balanceOf(address(this));
+        uint256 balance1 = token1.balanceOf(address(this));
+        _update(balance0, balance1);
+
+        // 铸造 LP 份额
+        _mint(msg.sender, liquidity);
+
+        emit Mint(msg.sender, amount0, amount1, liquidity);
+    }
+
+    // ---------------- 移除流动性 ----------------
+
+    function removeLiquidity(uint256 liquidity, address to)
+        external
+        returns (uint256 amount0, uint256 amount1)
+    {
+        require(liquidity > 0, "ZERO_LIQUIDITY");
+
+        (uint112 _reserve0, uint112 _reserve1) = getReserves();
+        uint256 _totalSupply = totalSupply;
+
+        // 按份额比例退还
+        amount0 = (liquidity * _reserve0) / _totalSupply;
+        amount1 = (liquidity * _reserve1) / _totalSupply;
+        require(amount0 > 0 && amount1 > 0, "INSUFFICIENT_LIQUIDITY_BURNED");
+
+        _burn(msg.sender, liquidity);
+
+        require(token0.transfer(to, amount0), "T0_TRANSFER_FAIL");
+        require(token1.transfer(to, amount1), "T1_TRANSFER_FAIL");
+
+        uint256 balance0 = token0.balanceOf(address(this));
+        uint256 balance1 = token1.balanceOf(address(this));
+        _update(balance0, balance1);
+
+        emit Burn(msg.sender, amount0, amount1, to);
+    }
+
+
+
+    /// @notice 从 token0 换 token1
+    function swapToken0ForToken1(uint256 amount0In, uint256 minAmount1Out, address to)
+        external
+        returns (uint256 amount1Out)
+    {
+        require(amount0In > 0, "ZERO_IN");
+        (uint112 _reserve0, uint112 _reserve1) = getReserves();
+        require(_reserve0 > 0 && _reserve1 > 0, "NO_LIQUIDITY");
+
+        // 转入 token0
+        require(token0.transferFrom(msg.sender, address(this), amount0In), "T0_TRANSFER_FAIL");
+
+        // 扣除手续费后的有效输入
+        uint256 amountInWithFee = amount0In * FEE_NUMERATOR / FEE_DENOMINATOR;
+        amount1Out = (amountInWithFee * _reserve1) / (_reserve0 + amountInWithFee);
+        require(amount1Out >= minAmount1Out, "SLIPPAGE");
+
+        require(token1.transfer(to, amount1Out), "T1_TRANSFER_FAIL");
+
+        uint256 balance0 = token0.balanceOf(address(this));
+        uint256 balance1 = token1.balanceOf(address(this));
+        _update(balance0, balance1);
+
+        emit Swap(msg.sender, amount0In, 0, 0, amount1Out, to);
+    }
+
+    /// @notice 从 token1 换 token0
+    function swapToken1ForToken0(uint256 amount1In, uint256 minAmount0Out, address to)
+        external
+        returns (uint256 amount0Out)
+    {
+        require(amount1In > 0, "ZERO_IN");
+        (uint112 _reserve0, uint112 _reserve1) = getReserves();
+        require(_reserve0 > 0 && _reserve1 > 0, "NO_LIQUIDITY");
+
+        require(token1.transferFrom(msg.sender, address(this), amount1In), "T1_TRANSFER_FAIL");
+
+        uint256 amountInWithFee = amount1In * FEE_NUMERATOR / FEE_DENOMINATOR;
+        amount0Out = (amountInWithFee * _reserve0) / (_reserve1 + amountInWithFee);
+        require(amount0Out >= minAmount0Out, "SLIPPAGE");
+
+        require(token0.transfer(to, amount0Out), "T0_TRANSFER_FAIL");
+
+        uint256 balance0 = token0.balanceOf(address(this));
+        uint256 balance1 = token1.balanceOf(address(this));
+        _update(balance0, balance1);
+
+        emit Swap(msg.sender, 0, amount1In, amount0Out, 0, to);
+    }
+
+ 
+
+    function _min(uint256 x, uint256 y) private pure returns (uint256) {
+        return x < y ? x : y;
+    }
+
+    function _sqrt(uint256 y) private pure returns (uint256 z) {
+        if (y > 3) {
+            z = y;
+            uint256 x = y / 2 + 1;
+            while (x < z) {
+                z = x;
+                x = (y / x + x) / 2;
+            }
+        } else if (y != 0) {
+            z = 1;
+        }
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 1-30笔记,昨天因为时间忘记上传,补上,今天的在后面
 
 \# ERC-7962：Key Hash Based Tokens 核心概念总结
@@ -249,11 +516,13 @@ bytes calldata signature
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 因为忘记上传,笔记放在第二天
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 这是个含有公式的md
@@ -678,6 +947,7 @@ Uniswap 的价格可以被其他合约用作 **去中心化预言机**，但单�
 
 
 
+
 **1\. 合约基础结构**
 
 一个 Solidity 合约通常由状态变量、函数、修改器和事件组成。
@@ -848,6 +1118,7 @@ enum Status { Pending, Active, Inactive }
 
 
 
+
 **1\. 从 PoW 到 PoS**
 
 • **早期 PoW 的角色**：以太坊初期选择 PoW 是为了利用其成熟的安全性和低门槛特性（显卡矿工）安全启动网络。它被视为“起飞用的助推火箭”，在生态成熟后再切换到 PoS。
@@ -930,6 +1201,7 @@ Verkle 树通过以下方式让“无状态”成为可能：
 
 
 
+
 **1\. EVM：以太坊的“大脑”**
 
 **EVM (Ethereum Virtual Machine)** 是一台运行在所有以太坊节点上的虚拟计算机，它将合约代码（字节码）转变为链上的状态更新。
@@ -977,6 +1249,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1037,11 +1310,13 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 
 
+
 忘记上传笔记,放在第二天
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1095,6 +1370,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1352,6 +1628,7 @@ Web3 中大量应用依赖隐私计算：如 DeFi 中的隐私订单簿、DAO �
 
 
 
+
 ## Web3 安全与合规
 
 ### 常规法律风险
@@ -1378,6 +1655,7 @@ MiCA禁止了算法稳定币,要求稳定币发行商必须持有等值储备资
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1493,6 +1771,7 @@ Patricia Trie
 
 
 
+
 ## 分享会 web3安全
 
 **CeFi成为主要的黑客攻击靶机**：管理层私钥被盗、热钱包私钥被盗是主要的原因，暴露了显著的风险。
@@ -1549,6 +1828,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1749,6 +2029,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
