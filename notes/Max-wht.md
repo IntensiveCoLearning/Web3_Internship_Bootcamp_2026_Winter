@@ -23,6 +23,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 今天也是coding的一天。顺便找了一个competitive audit去做一下，感觉越来越顺手了
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
@@ -30,11 +31,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 头脑风暴中。多人协作很吃交流啊
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -47,6 +50,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 **time:** 2026:: 01/26 -> 02/01
 
 **Description:** 我打算做一个Solidity Contests的汇总网站，类似于 [DailyWarden](https://www.dailywarden.com/) 。列出当前正在进行的Competitive Audit和即将到来的Audit的同时，我打算让AI综合对应项目的SLOC和对应推特帖子的数量和讨论度，给出一个全面评价，主要涉及的方面有 1.难度 2.类型 3.参与热度 \[我觉得这是一个创新点，目前市场上是没有同类型的产品的\]。这个项目的目的是为了方便合约安全审计工程师合理安排比赛时间和任务，节约时间，成为所有安全审计人员的必备工具。
@@ -54,6 +58,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -156,6 +161,7 @@ assembly{
 
 
 
+
 **推特写了个文章**
 
 [https://x.com/0xMax2557/status/2014938927061471348](https://x.com/0xMax2557/status/2014938927061471348)
@@ -187,6 +193,7 @@ assembly{
 
 
 
+
 今天坐了一天高铁，准备明天开始赶进度，好多分享会都错过了。这几天实在忙，今天就讲一讲最近在审计的VII-Finance。这是一个Uniswap生态的衍生Defi，用来将Uniswap V3和V4的token接入Euler借贷系统，通过将NFT转化成ERC6909 (ERC20的组合)，解决Uniswap V3和V4 用来代表LP的NFT不能被传统借贷Defi接收的问题。Euler的`Etherium Vault Connection`架构允许了LP Tokne作为抵押，借贷任何Euler体系中的代币。
 
 为什么Euler借贷不兼容ERC721，也就是非同质化代币。我认为主要的原因在于相比于ERC20，ERC721是非同质化的，如果计算ERC20 Vault一个address的代币"价值" (比如用美元为标准的价值) 的时间复杂度是O(1)，那么ERC721就是O(n)，二者的差别很大。
@@ -196,6 +203,7 @@ assembly{
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -222,6 +230,7 @@ assembly{
 
 
 
+
 ### \[B-3\] ISO-4217
 
 ISO 4217 is the international standard defining three-letter alphabetic and three-digit numeric codes for representing currencies, funds, and precious metals, used globally in banking, trade, and finance to avoid ambiguity (e.g., USD for US Dollar, EUR for Euro). It provides clarity by linking countries (first two letters, often from [ISO 3166](https://www.google.com/search?q=ISO+3166&oq=ISO+4217&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBwgHEAAYgAQyBwgIEAAYgAQyBwgJEAAYgATSAQc3MzJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&mstk=AUtExfB1DwnqVHHfWw032QSB61ys9eh0hnigvB9s_iOFVn2ar_kZXd8aLrIkYLd7Khmko-tn25KR7sLmbTCwm0xoCc671fEBfRv3PA0CNQ4bWEWTlJ_hKRBT8_LHbxnDec4NxOkRoiUqQXonByOe4UkxZJlPxArzbObyrPaQXsZ18XT-2dY&csui=3&ved=2ahUKEwia1qfkvJmSAxU-ho4IHXyLAxcQgK4QegQIARAB)) with their specific currency (third letter), and also details minor currency units and gold (XAU) or silver (XAG).
@@ -237,6 +246,7 @@ ISO 4217 is the international standard defining three-letter alphabetic and thre
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -303,6 +313,7 @@ Tempo链稳定币支付
 
 
 
+
 ### \[N-4\] Just jotting down some thoughts in 1/18/2026
 
 昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
@@ -318,6 +329,7 @@ Tempo链稳定币支付
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -494,6 +506,7 @@ contract UniswapV3SwapTest is Test {
 
 
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -517,6 +530,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -731,6 +745,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -750,6 +765,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -993,6 +1009,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
