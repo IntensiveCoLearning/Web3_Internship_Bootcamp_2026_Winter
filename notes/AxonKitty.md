@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+休闲黑客松项目：
+
+[https://nancy-alpha-poly-v3.vercel.app](https://nancy-alpha-poly-v3.vercel.app)
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 1.  黑客松继续改
     
 2.  完成了 mini 活动
@@ -24,6 +32,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 \# 阶段三：Polymarket 生态黑客松挑战
 
@@ -512,6 +521,7 @@ curl [http://localhost:8000/whales?limit=10](http://localhost:8000/whales?limit=
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 # 市场生命周期
 
 能量守恒：抵押 100 USDC，会被 Split 成 YES 和 NO，最终一边值 1 美元，另一边值 0 美元。
@@ -701,11 +711,13 @@ Sue 老师讲 VibeCoding：
 
 
 
+
 开始准备黑客松，方向预测市场。
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -953,6 +965,7 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1209,6 +1222,7 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 
 
+
 学习 Dapp 开发
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
@@ -1223,11 +1237,13 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 
 
+
 今天参加了 Monad 成都的黑客松，新的经历，挺好的。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1262,11 +1278,13 @@ ERC-7962 实际上是用“执行的中心化”**（为了效率和隐私）换
 
 
 
+
 昨天和今天两个老师分别讲了 solidity 的基础开发和 uniswap 的技术细节，我还在研究哈哈，就不写总结了。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1396,6 +1414,7 @@ Day 2 最后一波操作真的秀到我了。
 
 
 
+
 作为一个最近刚开始卷 Web3 智能合约开发的新手，我把这两天跟着教程学习的心得总结一下。
 
 ### 1\. 环境搭建：Web2 的习惯，Web3 的命门
@@ -1461,6 +1480,7 @@ Day 2 最后一波操作真的秀到我了。
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1608,6 +1628,7 @@ Day 2 最后一波操作真的秀到我了。
 
 
 
+
 主题：Ethers.js 基础与交易脚本
 
 背景：有 Java/Python 后端经验，熟悉常规 API 调用，初次接触区块链脚本开发。
@@ -1720,6 +1741,7 @@ Day 2 最后一波操作真的秀到我了。
 
 
 
+
 # 脚本编写与智能合约交互
 
 * * *
@@ -1800,6 +1822,7 @@ Day 2 最后一波操作真的秀到我了。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2075,6 +2098,7 @@ NFT 并不是将图片直接“塞”进区块链，通常有以下两种方式�
 
 
 
+
 ### Todo List:
 
 -   学习以太坊第一章上下的混淆概念
@@ -2251,6 +2275,7 @@ A：
 
 
 
+
 ## 1 理论学习
 
 src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -2309,6 +2334,7 @@ src：[021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
