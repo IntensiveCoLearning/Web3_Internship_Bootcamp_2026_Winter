@@ -15,8 +15,80 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+吃瓜日，根据律动的新闻整理了更详细的吃瓜帖子
+
+**「1011 暴跌」事件舆论战陷入白热化**
+
+**晋西北乱成一锅粥了，带你补课吃完整个瓜**
+
+首先一张图了解整个过程
+
+[https://x.com/Levantlynette/status/2017524376539959429?s=20](https://x.com/Levantlynette/status/2017524376539959429?s=20)
+
+借鉴律动文章的基础上添加了链接，以便观众老爷们更详细清楚的吃瓜。
+
+1 月 26 日：「木头姐」Cathie Wood 炮轰司令部
+
+木头姐作为**一线传统金融意见领袖，在主流媒体中将矛头明确指向 Binanc**e直指1011 暴跌的直接诱因是 Binance 的软件故障。
+
+[https://x.com/CryptoWesearch/status/2016734494724935903?s=20](https://x.com/CryptoWesearch/status/2016734494724935903?s=20)
+
+1 月 28 日：排头兵参战
+
+**英文社区情绪发酵，大量 KOL、交易员开始集中声讨 Binance 与 C**Z，，质疑其系统稳定性、风控能力以及对市场连锁反应的影响，舆论进入第一轮高峰。
+
+[@cz\_binance](https://x.com/cz_binance)
+
+1 月 30 日：CZ 参战回应：**大规模负面舆论，本质是竞争对手雇佣「水军」有组织地制造 FUD**。
+
+CZ 举办英文 AMA，正面回应近期所有争议与 FUD。
+
+他直接针对「1011暴跌」相关争议表态：
+
+-   暴跌并非Binance系统问题引发：称10月10日崩盘由特朗普关税公告等宏观突发事件触发，全市场高交易量导致波动；Binance作为合规平台（受ADGM等监管），不可能操纵或砸盘。BTC是2万亿美元级市场，单一平台无力主导。
+    
+-   已尽最大努力赔付与风险处置：峰值时有少量账户余额更新延迟/技术小问题（行业常见，无技术100%零故障），但所有受影响用户已足额补偿（此前报道Binance完成约6亿美元补偿计划）。强调平台100%储备证明、可追踪冷钱包，扛住了“银行挤兑”级压力。
+    
+-   大规模负面舆论本质是竞对水军FUD：称FUD从Day1开始，不是第一次也不会是最后一次；多为“自感知竞对”雇佣水军、亏损甩锅者或施压求赔者组织性攻击。FUD反而增加曝光，让真正支持者更忠诚。建议大家“DYOR”（自己研究），对自己的交易决策负责。
+    
+-   个人财富是福布斯估算，非实际现金；不持大量法币/稳定币，不靠卖用户资产赚钱。
+    
+-   投资逻辑保守：只持BTC、BNB等，不推荐复杂策略。
+    
+
+官方/媒体回顾，链接如下
+
+-   Binance Square AMA Recap（官方总结）：[https://www.binance.com/en-AE/square/post/01-30-2026-binance-square-ama-recap-cz-addresses-market-fud-bitcoin-outlook-and-platform-transparency-35789933403586](https://www.binance.com/en-AE/square/post/01-30-2026-binance-square-ama-recap-cz-addresses-market-fud-bitcoin-outlook-and-platform-transparency-35789933403586)
+    
+-   BlockBeats/CoinTech2u关键记录：[https://www.cointech2u.com/czs-response-to-fud-ama-key-takeaways-the-1011-crash-was-not-caused-by-an-issue-with-binances-system-and-the-platform-has-done-its-best-to-compensate-for-the-losses](https://www.cointech2u.com/czs-response-to-fud-ama-key-takeaways-the-1011-crash-was-not-caused-by-an-issue-with-binances-system-and-the-platform-has-done-its-best-to-compensate-for-the-losses) （直接引用CZ对1011的回应）
+    
+-   Bloomberg报道：[https://www.bloomberg.com/news/articles/2026-01-30/binance-founder-zhao-fends-off-crypto-market-crash-accusations](https://www.bloomberg.com/news/articles/2026-01-30/binance-founder-zhao-fends-off-crypto-market-crash-accusations) （CZ称指责“far-fetched”，否认Binance是关键驱动）
+    
+
+1 月 31 日（也就是今天）：正面战场打响，头部交易所直接对线，多位行业大佬下场站队发言，已从交易所层面的责任之争，全面升级为行业级舆论事件。
+
+**OKX 创始人 S**tar发文[https://x.com/star\_okx/status/2017411129501426064?s=20](https://x.com/star_okx/status/2017411129501426064?s=20)
+
+**首次公开点名 Binance，认为其应为 1011 暴跌承担相应责任，这是头部交易所之间罕见的直接对线。**
+
+随后，一姐[@heyibinance](https://x.com/heyibinance)迅速晒出与 Star 的合照予以回应并反击，火药味拉满。
+
+此外，多位重量级人物也相继下场表态：
+
+Wintermute 创始人 Evgeny Gaevoy站队币安[https://x.com/EvgenyGaevoy/status/2017359502522323158?s=20](https://x.com/EvgenyGaevoy/status/2017359502522323158?s=20)
+
+根据市场行业人员分析做市商的立场，不敢得罪币安，他表态：10/10显然不是一个“软件故障”。那是在一个流动性不足的周五晚上，由宏观新闻驱动的超级杠杆市场的闪电崩盘。
+
+Solana 联合创始人 Toly 取关CZ，转发star推文
+
+Strategy 创始人 Michael Saylor，转发币安推文
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 吃瓜日，根据律动的新闻整理了更详细的吃瓜帖子
 
 **「1011 暴跌」事件舆论战陷入白热化**
@@ -89,6 +161,7 @@ Strategy 创始人 Michael Saylor，转发币安推文
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 今天有些关于运营社群和休闲黑客松的思考
 
@@ -225,6 +298,7 @@ Strategy 创始人 Michael Saylor，转发币安推文
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 花时间研究写了一篇长文[https://x.com/Levantlynette/status/2016788400205136061?s=20](https://x.com/Levantlynette/status/2016788400205136061?s=20)
@@ -575,6 +649,7 @@ To B: 卖广告、卖时间、投资
 
 
 
+
 # 我学到的链上分析方法：
 
 ## 真正有价值的不是数据，而是“行为结构”
@@ -814,6 +889,7 @@ To B: 卖广告、卖时间、投资
 
 
 
+
 比较忙，报名了没有找到黑客松的入口  
 今天把uniswap原理学习了，结合之前的视频。
 
@@ -870,6 +946,7 @@ Gas：失败不是免费的只要交易被执行：即使回滚，**gas 依然�
 
 
 
+
 了解DAI和defi。看了DAI的白皮书  
 介绍了通过名为担保债仓（Collateralized Debt Position, CDP）的独特智能合约 来质押以太币（ETH）生成 Dai 的系统。鉴于以太币是该系统唯一接受的担保资产，生成的 Dai 被称为单担保 Dai （Single-Collateral DAI, SCD），现又称 Sai 。该白皮书还提到了升级该系统的计划，支持包括以太币在内的多种担保资产。  
 Dai 稳定币系统，现称 Maker 协议，目前接受所有基于以太坊、且经过 MKR 持有者批准的资产作为担保物，MKR 持有者还有权投票决定每种担保物的风险参数（Risk Parameter）。投票机制是 Maker 去中心化治理流程的关键一环。  
@@ -889,6 +966,7 @@ DSR 调整流程：MKR 持有者首先评估并讨论市场参与者提供的公
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -927,6 +1005,7 @@ DAI 本质是“有抵押的债务凭证”
 
 
 
+
 找到了运营休闲黑客松的小伙伴
 
 推特号涨粉100人
@@ -938,6 +1017,7 @@ DAI 本质是“有抵押的债务凭证”
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -978,6 +1058,7 @@ figma始终改不了字体，呜呜呜太难了
 
 
 
+
 除了完成工具类的熟悉，也找到了同组小伙伴  
 discord的频道搭建好了，但是bot的设置和使用还卡住的，暂时放一下，有点沮丧。改天调整好了继续设置bot。各类面板监控暂时没有做到，bot设置好，再设置监控
 
@@ -1005,6 +1086,7 @@ discord的频道搭建好了，但是bot的设置和使用还卡住的，暂时�
 
 
 
+
 每天要学习的东西很多，非常充实。工具类了解了 TG & Discord，同时看了运营指南。听了直播课，决定不组队，自己独立完成space运营。
 
 同时，今天针对运营和AI深入思考，产出了两篇长文，自豪  
@@ -1013,6 +1095,7 @@ discord的频道搭建好了，但是bot的设置和使用还卡住的，暂时�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1120,6 +1203,7 @@ Twitter 的个人主页是你的访客空间，你的名字、头像、twitter h
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1304,6 +1388,7 @@ Spoon OS 让开发者能以最低门槛使用这两张王牌，
 
 
 
+
 链上认知矫正：
 
 ERC20：不是一种币，而是智能合约，是链上代币的标准（一套 “代币该怎么写、怎么转、怎么查余额”的标准）  
@@ -1327,6 +1412,7 @@ EIP-1559 gas=Base Fee（系统调节）+Priority Fee（给矿工的小费）
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1412,6 +1498,7 @@ DAI 低于一美元时，套利者会用便宜的 DAI，去还 Vault 的债，�
 
 
 
+
 今天做了两件事：学习合规安全、看v神推特。这两件事都总结并且发了推特。晚一点群里和同学们互动
 
 首先是合规安全，依据相关内容总结，在链上需要注意这几点：  
@@ -1428,6 +1515,7 @@ web3的世界就是黑暗森林，为自己的安全负责
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
