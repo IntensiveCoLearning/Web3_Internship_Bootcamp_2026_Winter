@@ -15,8 +15,212 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+Foundry 开发工具包学习笔记
+
+概述
+
+Foundry 是一个基于 Rust 编写的极速、可移植、模块化的以太坊应用开发工具包。包含四个核心工具，满足区块链开发者的所有需求。
+
+核心工具矩阵
+
+工具 功能定位 主要用途
+
+Forge 智能合约开发框架 构建、测试、调试、部署和验证合约
+
+Anvil 本地以太坊开发节点 带分叉功能的本地测试环境
+
+Cast 链交互瑞士军刀 合约调用、交易发送、链数据查询
+
+Chisel Solidity REPL 快速原型开发和交互式调试
+
+\---
+
+1\. Forge - 智能合约开发框架
+
+基础工作流
+
+\`\`\`bash
+
+\# 初始化新项目
+
+forge init Counter
+
+cd Counter
+
+\# 编译合约
+
+forge build
+
+\# 运行测试
+
+forge test
+
+\# 使用主网分叉测试
+
+forge test --fork-url [https://ethereum.reth.rs/rpc](https://ethereum.reth.rs/rpc)
+
+\`\`\`
+
+合约部署
+
+\`\`\`bash
+
+\# 设置私钥环境变量
+
+export PRIVATE\_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+
+\# 部署到本地 Anvil
+
+forge script script/Counter.s.sol --rpc-url [http://127.0.0.1:8545](http://127.0.0.1:8545) --broadcast --private-key $PRIVATE\_KEY
+
+\`\`\`
+
+高级功能
+
+· 表格测试：基于属性的测试，测试用例以表格形式组织
+
+· 模糊测试：随机输入测试
+
+· 不变性测试：跨函数调用序列测试系统级属性
+
+· Gas 追踪：监控和优化合约 Gas 消耗
+
+· 覆盖率报告：生成详细的测试覆盖率分析 forge coverage
+
+\---
+
+2\. Anvil - 本地开发节点
+
+基础使用
+
+\`\`\`bash
+
+\# 启动本地节点（默认创建10个预充值账户）
+
+anvil
+
+\# 分叉主网状态
+
+anvil --fork-url [https://ethereum.reth.rs/rpc](https://ethereum.reth.rs/rpc)
+
+\`\`\`
+
+高级功能
+
+· 自定义 anvil\_ 方法：高级节点控制，包括账户模拟、状态操作和挖矿控制
+
+· 分叉功能：从其他链分叉状态
+
+· 完全兼容：符合以太坊 JSON-RPC 规范
+
+\---
+
+3\. Cast - 链交互工具
+
+读取链数据
+
+\`\`\`bash
+
+\# 查询 ETH 余额
+
+cast balance vitalik.eth --ether --rpc-url [https://ethereum.reth.rs/rpc](https://ethereum.reth.rs/rpc)
+
+\# 调用合约只读函数
+
+cast call 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 \\
+
+"balanceOf(address)" 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 \\
+
+\--rpc-url [https://ethereum.reth.rs/rpc](https://ethereum.reth.rs/rpc)
+
+\`\`\`
+
+发送交易
+
+\`\`\`bash
+
+\# 发送 ETH
+
+cast send 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 \\
+
+\--value 10000000 --private-key $PRIVATE\_KEY
+
+\`\`\`
+
+JSON-RPC 交互
+
+\`\`\`bash
+
+\# 直接调用 JSON-RPC 方法
+
+cast rpc eth\_getHeaderByNumber $(cast 2h 22539851) \\
+
+\--rpc-url [https://ethereum.reth.rs/rpc](https://ethereum.reth.rs/rpc)
+
+\# 获取最新区块号
+
+cast block-number --rpc-url [https://ethereum.reth.rs/rpc](https://ethereum.reth.rs/rpc)
+
+\`\`\`
+
+\---
+
+4\. Chisel - Solidity REPL
+
+交互式开发环境
+
+\`\`\`bash
+
+\# 启动 REPL
+
+chisel
+
+\`\`\`
+
+REPL 内操作示例
+
+\`\`\`solidity
+
+// 创建变量
+
+➜ uint256 a = 123;
+
+➜ a
+
+// 输出变量详细信息
+
+// 定义和测试函数
+
+➜ function add(uint256 x, uint256 y) public pure returns (uint256) { return x + y; }
+
+➜ add(5, 10)
+
+// 返回：15
+
+\`\`\`
+
+\---
+
+通用帮助命令
+
+· 任何命令添加 --help 后缀查看详细帮助文档
+
+· 示例：forge --help、forge test --help
+
+关键特点总结
+
+1\. 极速：基于 Rust 编译，执行速度快
+
+2\. 一体化：四个工具覆盖完整开发流程
+
+3\. 分叉测试：支持主网状态分叉，实现真实环境
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 📚 Hardhat 学习笔记
 
 🎯 核心定位
@@ -311,6 +515,7 @@ npx hardhat test 运行测试
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 5.1 自定义任务
 
 \`\`\`typescript
@@ -594,6 +799,7 @@ async function interact() {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 1.2 项目结构
@@ -1006,6 +1212,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 
 
+
 智能合约实践关键注意事项：最后一天进行系统性学习，明天开始实践
 
 一、安全优先
@@ -1061,6 +1268,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1477,6 +1685,7 @@ balance := balance(addr)
 
 
 
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -1764,6 +1973,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2090,6 +2300,7 @@ GitHub 工作流：
 
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -2295,6 +2506,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -2451,6 +2663,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -2498,6 +2711,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2596,6 +2810,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -2609,6 +2824,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2932,6 +3148,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
