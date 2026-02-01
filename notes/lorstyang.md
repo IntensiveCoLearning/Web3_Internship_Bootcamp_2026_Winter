@@ -17,17 +17,21 @@ ha
 <!-- Content_START -->
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
-1.黑客松本来一个人做了个东西，结果做着做着好像偏离主题了，最后还是没有上交，说服不了自己
+1.黑客松本来一个人做了个东西，结果做着做着好像偏离主题了，这几天出了趟门，完成度差的也有点多，最后还是没上交，回头整理一下传到github
+
+2.回到主线，学习**hardhat和Foundry**，顺便听一下demo day
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 1.再优化下之前的留言板代码[https://github.com/lorstyang/messageboard-frontend](https://github.com/lorstyang/messageboard-frontend)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 1.「SPARK 生存指北」AMA。
@@ -40,6 +44,7 @@ ha
 
 
 
+
 -   workshop参会
     
 -   黑客松cobuilding
@@ -47,6 +52,7 @@ ha
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -63,6 +69,7 @@ ha
 
 
 
+
 1.投研基础框架分享录播
 
 2.SPARK AI Hackathon 休闲黑客松
@@ -70,6 +77,7 @@ ha
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -126,6 +134,7 @@ ha
 
 
 
+
 1.继续solidy101，复习一下
 
 2.昨天分享了解了RainbowKit，hardhat，wagmi，今天实践尝试一下
@@ -133,6 +142,7 @@ ha
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -164,6 +174,7 @@ ha
 
 
 
+
 1.参会 Dapp Workshop
 
 2.参会南塘 DAO
@@ -175,6 +186,7 @@ ha
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -214,6 +226,7 @@ ha
 
 
 
+
 1.参会公共物品资金分配
 
 2.参会「Solidity Walk Through」
@@ -223,6 +236,7 @@ ha
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -310,6 +324,7 @@ contract SimpleStorage {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -525,6 +540,7 @@ L1（以太坊主网）的问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -893,6 +909,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 ## 安全
 
 ### 常见风险
@@ -1006,6 +1023,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -1081,6 +1099,7 @@ tokenURI(tokenId) → 一个 URL
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
