@@ -15,8 +15,45 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+今天学了会mysql 趁年轻多去做多去争取吧
+
+# 表创建
+
+-   `CREATE TABLE` 语法
+    
+-   字段定义：字段名、数据类型、约束
+    
+-   `NOT NULL` 约束
+    
+-   `DEFAULT` 默认值设置
+    
+-   `COMMENT` 字段注释
+    
+
+# 索引查询
+
+目标： 1.查看什么样的查询才会命中索引
+
+内容： 1.规则
+
+1）leftmost prefix of the index （最左匹配原则） Match the full value： Cuba Allen who was born on 1960-01-01 select \* from People where last\_name = "Allen" and first\_name = "Cuba" and bod = "1960-01-01"
+
+Match a leftmost prefix: Allen select \* from People where last\_name = "Allen"
+
+Match a column prefix select \* from People where last\_name = "J"
+
+Match a range of values select \* from People where last\_name Between "Allen" and "Barrymore"
+
+Match one part exactly and match a range on another part select \* from People where last\_name = "Allen" and first\_name = "K"
+
+2.  字段不会命中索引的场景 a: 没有遵寻最左匹配原则 b: 跳过中间的索引字段： select _from People where last\_name = "Allen" and bod = "1960-01-01" c: 范围查询后的字段 select_ from People where last\_name = "Allen" and first\_name like "K" and bod = "1960-01-01
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 # timer
 
 Q1: 定时器的作用？
@@ -251,6 +288,7 @@ go test -cover ./experiments -run TestTicker
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 lesson 21 互斥锁
 
 目标：
@@ -311,6 +349,7 @@ lesson 23 context
 
 
 
+
 今日休息一天，接下来几天进行冲刺，看看自己能上到第几名
 
 ![ama.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-30-1769773996757-ama.png)
@@ -318,6 +357,7 @@ lesson 23 context
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -449,6 +489,7 @@ for { select { case message1 <-ch1: ... case message2 <-ch2: ... } }
 
 
 
+
 lesson 8 array
 
 目标：
@@ -554,6 +595,7 @@ lesson 12 pointer
 
 
 
+
 # 状态树
 
 \- 状态树包含所有账户的状态，交易树和收据树是由当前这个区块的交易组织起来的
@@ -585,6 +627,7 @@ lesson 12 pointer
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -744,6 +787,7 @@ switch {
 
 
 
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -761,6 +805,7 @@ switch {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -794,6 +839,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -840,6 +886,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -847,6 +894,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -894,6 +942,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1006,6 +1055,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -1029,6 +1079,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1082,6 +1133,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1227,6 +1279,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -1255,6 +1308,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1379,6 +1433,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -1403,6 +1458,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1465,6 +1521,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
