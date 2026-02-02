@@ -15,8 +15,542 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+Foundry 进阶开发指南
+
+一、Forge 高级工作流
+
+1.1 优化构建与测试
+
+\`\`\`bash
+
+\# 并行测试加速（使用多核CPU）
+
+forge test --mt <pattern> --parallel
+
+\# 使用缓存优化构建
+
+forge build --via-ir --optimize --optimizer-runs 200
+
+\# 增量编译（仅重新编译修改的文件）
+
+forge build --sizes --via-ir
+
+\# 指定 Solidity 版本
+
+forge build --use solc:0.8.20
+
+\`\`\`
+
+1.2 高级测试模式
+
+\`\`\`bash
+
+\# 模糊测试配置
+
+forge test --fuzz-runs 10000 --fuzz-seed 12345
+
+\# 不变性测试（Invariant Testing）
+
+forge test --match-test "invariant\_\*" --invariant-runs 1000
+
+\# 压力测试 - 高负载测试
+
+forge test --gas-limit 30000000 --match-contract StressTest
+
+\# 带 Gas 报告测试
+
+forge test --gas-report --match-test "testHighGas\*"
+
+\`\`\`
+
+1.3 部署与验证高级技巧
+
+\`\`\`bash
+
+\# 多网络部署脚本
+
+forge script DeployScript \\
+
+\--rpc-url mainnet \\
+
+\--rpc-url optimism \\
+
+\--rpc-url polygon \\
+
+\--broadcast \\
+
+\--verify \\
+
+\--slow \\
+
+\--private-key $PRIVATE\_KEY
+
+\# EIP-1559 交易配置
+
+forge script DeployScript \\
+
+\--rpc-url $RPC\_URL \\
+
+\--broadcast \\
+
+\--max-fee 100 \\
+
+\--max-priority-fee 2 \\
+
+\--legacy # 如需使用传统交易
+
+\# 条件性验证
+
+forge verify-contract <address> <contract> \\
+
+\--constructor-args $(cast abi-encode "constructor(uint256)" 42) \\
+
+\--verifier-url [https://api.etherscan.io/api](https://api.etherscan.io/api) \\
+
+\--verifier etherscan \\
+
+\--chain-id 1
+
+\`\`\`
+
+1.4 自定义 Foundry.toml 配置
+
+\`\`\`toml
+
+\[profile.default\]
+
+src = 'src'
+
+out = 'out'
+
+libs = \['lib'\]
+
+optimizer = true
+
+optimizer\_runs = [1000000](tel:1000000)
+
+via\_ir = true
+
+evm\_version = "paris"
+
+\# 测试配置
+
+\[profile.default.test\]
+
+fuzz\_runs = 10000
+
+invariant\_runs = 5000
+
+gas\_reports = \["\*"\]
+
+\# 部署配置
+
+\[profile.deploy\]
+
+optimizer\_runs = 200
+
+extra\_output = \["metadata", "storageLayout"\]
+
+\# RPC 端点配置
+
+\[rpc\_endpoints\]
+
+mainnet = "${MAINNET\_RPC\_URL}"
+
+optimism = "[https://mainnet.optimism.io](https://mainnet.optimism.io)"
+
+polygon = "[https://polygon-rpc.com](https://polygon-rpc.com)"
+
+\# 外部库重映射
+
+\[remappings\]
+
+"@openzeppelin/=lib/openzeppelin-contracts/"
+
+"@chainlink/=lib/chainlink/contracts/"
+
+\`\`\`
+
+二、Anvil 高级功能
+
+2.1 高级节点配置
+
+\`\`\`bash
+
+\# 自定义矿工设置
+
+anvil \\
+
+\--block-time 2 \\
+
+\--gas-limit 30000000 \\
+
+\--base-fee 15 \\
+
+\--priority-fee 2 \\
+
+\--chain-id 31337 \\
+
+\--timestamp [1678883200](tel:1678883200)
+
+\# 预设状态快照
+
+anvil --state state.json --dump-state state-dump.json
+
+\# 可重现的测试环境
+
+anvil --seed 42 \\
+
+\--accounts 20 \\
+
+\--balance 1000 \\
+
+\--steps-tracing
+
+\# 高级分叉模式
+
+anvil --fork-url $MAINNET\_RPC\_URL \\
+
+\--fork-block-number 18462730 \\
+
+\--fork-chain-id 1 \\
+
+\--compute-units-per-second 500
+
+\`\`\`
+
+2.2 使用 Anvil 的 JSON-RPC 方法
+
+\`\`\`bash
+
+\# 账户模拟
+
+cast rpc anvil\_impersonateAccount 0x123... --rpc-url [localhost](http://localhost)
+
+\# 操作时间戳
+
+cast rpc evm\_increaseTime 86400 --rpc-url [localhost](http://localhost)
+
+cast rpc evm\_mine --rpc-url [localhost](http://localhost)
+
+\# 设置特定区块的 Gas 限制
+
+cast rpc anvil\_setBlockGasLimit 30000000 --rpc-url [localhost](http://localhost)
+
+\# 快照和恢复
+
+SNAPSHOT\_ID=$(cast rpc evm\_snapshot --rpc-url [localhost](http://localhost))
+
+cast rpc evm\_revert $SNAPSHOT\_ID --rpc-url [localhost](http://localhost)
+
+\`\`\`
+
+三、Cast 高级用法
+
+3.1 批量操作与脚本
+
+\`\`\`bash
+
+\# 批量查询余额
+
+cast balance --ether \\
+
+vitalik.eth \\
+
+0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 \\
+
+0xBE0eB53F46cd790Cd13851d5EFf43D12404d33E8 \\
+
+\--rpc-url $RPC\_URL
+
+\# 交易解码与分析
+
+cast tx 0x123... --rpc-url $RPC\_URL
+
+cast receipt 0x123... --rpc-url $RPC\_URL
+
+\# 合约存储分析
+
+cast storage 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 0 \\
+
+\--rpc-url $RPC\_URL
+
+cast proof 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 \[0,1,2\] \\
+
+\--rpc-url $RPC\_URL
+
+\`\`\`
+
+3.2 复杂数据处理
+
+\`\`\`bash
+
+\# ABI 编码/解码
+
+cast abi-encode "func(uint256,address)" 42 0x123...
+
+cast abi-decode "func(uint256)" 0x000...
+
+\# 签名验证
+
+cast sig "transfer(address,uint256)"
+
+cast keccak "hello world"
+
+cast ecrecover <hash> <v> <r> <s>
+
+\# 数据格式转换
+
+cast --to-unit 1000000000000000000 ether
+
+cast --from-unit 1.5 ether
+
+cast --to-hexdata "hello"
+
+cast --from-fixed 1.5e18
+
+\`\`\`
+
+四、Chisel 高级特性
+
+4.1 脚本模式与导入
+
+\`\`\`bash
+
+\# 执行外部脚本
+
+chisel run script.chisel
+
+\# 加载预设环境
+
+chisel --prelude "lib/prelude.chisel"
+
+\# 带参数的 REPL
+
+chisel --verbosity 3 --color always
+
+\`\`\`
+
+4.2 REPL 内高级操作
+
+\`\`\`solidity
+
+// 导入和使用外部合约
+
+➜ import "forge-std/Test.sol";
+
+➜ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+➜ Test std = new Test();
+
+// 部署测试合约
+
+➜ contract Counter { uint256 public count; function inc() public { count++; } }
+
+➜ Counter c = new Counter();
+
+➜ [c.inc](http://c.inc)();
+
+➜ c.count();
+
+// 调试交易
+
+➜ vm.startBroadcast();
+
+➜ [c.inc](http://c.inc)();
+
+➜ vm.stopBroadcast();
+
+\`\`\`
+
+五、集成与自动化
+
+5.1 GitHub Actions 工作流
+
+\`\`\`yaml
+
+name: Foundry CI
+
+on: \[push, pull\_request\]
+
+jobs:
+
+test:
+
+runs-on: ubuntu-latest
+
+steps:
+
+\- uses: actions/checkout@v3
+
+\- uses: foundry-rs/foundry-toolchain@v1
+
+with:
+
+version: nightly
+
+\- run: forge install
+
+\- run: forge build
+
+\- run: forge test --match-test "test\*" --fuzz-runs 10000
+
+\- run: forge coverage --report lcov
+
+\- run: forge snapshot
+
+deploy:
+
+needs: test
+
+runs-on: ubuntu-latest
+
+if: github.ref == 'refs/heads/main'
+
+steps:
+
+\- uses: actions/checkout@v3
+
+\- uses: foundry-rs/foundry-toolchain@v1
+
+\- run: forge script DeployScript --broadcast --verify
+
+env:
+
+PRIVATE\_KEY: ${{ secrets.PRIVATE\_KEY }}
+
+ETHERSCAN\_API\_KEY: ${{ secrets.ETHERSCAN\_API\_KEY }}
+
+\`\`\`
+
+5.2 自定义脚本示例
+
+\`\`\`solidity
+
+// script/AdvancedDeploy.s.sol
+
+contract AdvancedDeploy is Script {
+
+function run() external {
+
+uint256 deployerPrivateKey = vm.envUint("PRIVATE\_KEY");
+
+vm.startBroadcast(deployerPrivateKey);
+
+// 条件性部署
+
+if (block.chainid == 1) {
+
+// 主网部署逻辑
+
+MyContract instance = new MyContract{salt: bytes32(uint256(42))}();
+
+console.log("Deployed to mainnet:", address(instance));
+
+} else {
+
+// 测试网部署逻辑
+
+MyContract instance = new MyContract();
+
+}
+
+vm.stopBroadcast();
+
+}
+
+}
+
+\`\`\`
+
+六、性能优化
+
+6.1 构建优化
+
+\`\`\`bash
+
+\# 使用本地 solc 缓存
+
+export FOUNDRY\_SOLC\_CACHE=true
+
+\# 指定 solc 版本下载源
+
+export SOLC\_VERSION=0.8.20
+
+export SOLC\_DIR="$HOME/.svm/$SOLC\_VERSION"
+
+\# 并行构建
+
+export FOUNDRY\_BUILD\_PARALLEL=true
+
+export NUM\_JOBS=$(nproc)
+
+\`\`\`
+
+6.2 测试优化
+
+\`\`\`toml
+
+\# foundry.toml
+
+\[[profile.ci](http://profile.ci)\]
+
+ffi = false # 禁用 ffi 以加速测试
+
+fuzz\_runs = 5000
+
+invariant\_runs = 1000
+
+gas\_reports = false
+
+\`\`\`
+
+七、安全最佳实践
+
+7.1 安全测试
+
+\`\`\`bash
+
+\# 运行 Slither 安全分析
+
+slither . --foundry-project
+
+\# 使用 Echidna 进行安全测试
+
+echidna-test . --contract TestContract --config echidna.yaml
+
+\# 组合测试
+
+forge test --match-contract SecurityTest \\
+
+\--fuzz-runs 50000 \\
+
+\--invariant-runs 10000
+
+\`\`\`
+
+7.2 监控与警报
+
+\`\`\`bash
+
+\# Gas 使用监控
+
+forge test --gas-report --match-test "test\*" > [gas-report.md](http://gas-report.md)
+
+\# 状态变化检查
+
+forge snapshot --check
+
+\# 依赖安全检查
+
+forge geiger # 检查不安全操作
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 Foundry 开发工具包学习笔记
 
 概述
@@ -220,6 +754,7 @@ REPL 内操作示例
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 📚 Hardhat 学习笔记
 
@@ -516,6 +1051,7 @@ npx hardhat test 运行测试
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 5.1 自定义任务
 
 \`\`\`typescript
@@ -799,6 +1335,7 @@ async function interact() {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1213,6 +1750,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 
 
+
 智能合约实践关键注意事项：最后一天进行系统性学习，明天开始实践
 
 一、安全优先
@@ -1268,6 +1806,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1686,6 +2225,7 @@ balance := balance(addr)
 
 
 
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -1973,6 +2513,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2301,6 +2842,7 @@ GitHub 工作流：
 
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -2507,6 +3049,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -2664,6 +3207,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -2711,6 +3255,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2811,6 +3356,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -2824,6 +3370,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -3148,6 +3695,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
