@@ -15,8 +15,16 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+收听了web3实习指导线上会，加深了对行业的认知
+
+![c2f2c833c908c111adbf3fbace522f7b.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-02-02-1770037040127-c2f2c833c908c111adbf3fbace522f7b.jpeg)
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 收听了space：令人心动的 Offer：Web3 职场生存指北
 
 ![IMG_5241.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-02-01-1769954615455-IMG_5241.png)
@@ -25,11 +33,13 @@ timezone: UTC+8
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 今日休息
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 收听了第三周例会
@@ -39,6 +49,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -53,6 +64,7 @@ timezone: UTC+8
 
 
 
+
 收听了web3 数据分析基础线上会，信息量较大，将重听两遍
 
 ![fd14a235c3bda2ffff5a184b26735f14.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-28-1769606038826-fd14a235c3bda2ffff5a184b26735f14.jpeg)
@@ -60,6 +72,7 @@ timezone: UTC+8
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -78,6 +91,7 @@ timezone: UTC+8
 
 
 
+
 ![bd14441e0ee594fc02e381e545f14a1f.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-26-1769436807558-bd14441e0ee594fc02e381e545f14a1f.jpeg)
 
 收听了投研基础框架线上会，分享会解答了本人参加本次实习计划需要解决的问题
@@ -85,6 +99,7 @@ timezone: UTC+8
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -107,6 +122,7 @@ timezone: UTC+8
 
 
 
+
 今天继续参加年会，周日补听周六其他机构线上会
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
@@ -121,11 +137,13 @@ timezone: UTC+8
 
 
 
+
 今天参加公司年会，周日补看周例会
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -154,6 +172,7 @@ timezone: UTC+8
 
 
 
+
 ![4fd9a043091f19c3cf452a8210e4a3d4.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-21-1769004738655-4fd9a043091f19c3cf452a8210e4a3d4.jpeg)
 
 已收听运营向实操案例拆解线上会，内容较多，将重听两遍
@@ -161,6 +180,7 @@ timezone: UTC+8
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -193,6 +213,7 @@ timezone: UTC+8
 
 
 
+
 参加了ETH Panda中文周会和运营基础知识分享会
 
 ![b995e680b191ccb80b4991d509fd4f8e.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-19-1768830279375-b995e680b191ccb80b4991d509fd4f8e.png)![1adadf4c9f0280b3d8762bdb33f6eeb7.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-19-1768830264199-1adadf4c9f0280b3d8762bdb33f6eeb7.jpeg)
@@ -200,6 +221,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -236,6 +258,7 @@ timezone: UTC+8
 
 
 
+
 回看LXDAO例会
 
 ![IMG_4937.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-17-1768650603954-IMG_4937.png)
@@ -243,6 +266,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -283,6 +307,7 @@ timezone: UTC+8
 
 
 
+
 ![da4a118f61cac12067ce9c2f1fc0a409.jpeg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-15-1768482606486-da4a118f61cac12067ce9c2f1fc0a409.jpeg)
 
 已观看AI与web3融合线上会
@@ -290,6 +315,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -334,6 +360,7 @@ timezone: UTC+8
 
 
 
+
 今天外出，路上信号不好，明天补看
 
 ![IMG_4872.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/oliver917-boop/images/2026-01-13-1768310212807-IMG_4872.png)
@@ -341,6 +368,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
