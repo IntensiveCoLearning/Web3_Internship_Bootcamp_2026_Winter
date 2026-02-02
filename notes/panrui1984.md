@@ -15,8 +15,134 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# 去中心化交易（DEX）学习笔记
+
+## 一、挑战概述
+
+核心目标：基于 Scaffold-Eth 2 开发支持 ETH 与 ERC20（$BAL）交易的 DEX，实现 AMM 机制，部署到测试网并上线前端。
+
+## 二、检查点核心知识点（精简）
+
+### 检查点 0：环境配置
+
+1\. 必备工具
+
+略
+
+2\. 核心命令
+
+```bash
+略，包含创建，部署和运行
+```
+
+### 检查点 1：整体架构
+
+-   Balloons.sol：标准ERC20，部署者获1000 $BAL（18位小数）。
+    
+-   DEX.sol：核心AMM合约（重点开发），实现流动性、定价、交易功能。
+    
+
+### 检查点 2：资金储备（流动性初始化）
+
+1\. 核心变量
+
+```solidity
+uint256 public totalLiquidity; // 总流动性（ETH计价）
+mapping (address => uint256) public liquidity; // 地址-流动性份额映射
+```
+
+2\. 核心函数（init()）
+
+```solidity
+function init(uint256 tokens) public payable returns (uint256) {
+    require(totalLiquidity == 0, "已初始化");
+    totalLiquidity = address(this).balance;
+    liquidity[msg.sender] = totalLiquidity;
+    require(token.transferFrom(msg.sender, address(this), tokens), "转账失败");
+    return totalLiquidity;
+}
+```
+
+3\. 关键步骤
+
+1.  本地账户领ETH → 部署脚本转10 $BAL给前端 → 授权DEX使用$BAL → 调用init()注入ETH和$BAL。
+    
+
+检查目标：DEX需有5 ETH+5 $BAL储备，流动性映射正常。
+
+### 检查点 3：价格计算（AMM核心）
+
+1\. 定价模型：x\*y=k（ETH储备x，$BAL储备y，k恒定，交易不变）
+
+2\. 手续费：0.3%，Solidity用997/1000计算（扣手续费后参与定价）。
+
+3\. 核心函数（price()）
+
+关键：交换规模越大、储备越不均衡，滑点越明显。
+
+### 检查点 4：交易功能（ETH↔$BAL）
+
+1\. 核心函数（ethToToken()）
+
+2\. tokenToEth()
+
+逻辑相反：授权→计算ETH产出→转账→发事件。
+
+关键注意
+
+-   用$BAL交易需先approve()授权；注意18位小数（wei单位转换）。
+    
+
+### 检查点 5：流动性管理（存提）
+
+1\. 核心逻辑：按储备比率存/提ETH+$BAL，按份额分配收益/资产。
+
+2\. 核心函数（withdraw()）
+
+3\. deposit()
+
+逻辑相反，存入资产→新增流动性份额→更新映射。
+
+### 检查点 6：前端交互
+
+核心功能：钱包连接、余额/交换/存提、价格可视化；支线：监听approve()事件。
+
+测试：运行yarn test，确保核心功能通过。
+
+### 检查点 7-10：部署与上线
+
+1\. 合约部署（测试网）
+
+-   配置hardhat.config.ts→yarn generate生成部署地址→领测试ETH→yarn deploy --network 目标网。
+    
+
+2\. 前端上线（Vercel）
+
+-   配置scaffold.config.ts→yarn vercel:login→yarn vercel（预览）/--prod（正式）。
+    
+
+3\. 合约验证
+
+运行yarn verify --network 目标网，在Etherscan验证合约。
+
+## 三、核心重点与易错点
+
+### 1\. 核心重点
+
+-   AMM：x\*y=k，手续费997/1000；
+    
+-   授权：ERC20交易/存提需先approve()；
+    
+-   单位：18位小数，注意wei转换；
+    
+-   流动性：按储备比率存提，份额对应资产比例。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 提交休闲黑客松代码
 
 [panrui1984/polymarket-hackathon: 基于 Next.js 15、Prisma 7 和 Gemini 2.0 构建的 Polymarket 全生命周期数据索引器。通过解码链上原始日志（OrderFilled, PositionSplit 等）还原市场动态，结合 Gemini AI 实现交易意图深度翻译、Smart Money 行为画像及市场情绪智能诊断。集成了专业级金融看板、大额交易实时监测（Whale Watcher）以及标准的 Swagger API 聚合服务。](https://github.com/panrui1984/polymarket-hackathon)
@@ -26,6 +152,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 # DEFI项目ETH开发概要设计
 
@@ -58,6 +185,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 今天再浏览网站时候记录了一条Web3 进阶学习路线图，我将其摘要并细化如下，作为本次实习计划后，个人的计划单
@@ -118,6 +246,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 本次尝试使用viem前端库
 
 以下记录一些简要记录
@@ -146,6 +275,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -203,6 +333,7 @@ Polymarket 链上数据解析与索引器学习笔记
 
 
 
+
 # Uniswap V2 源代码学习笔记
 
 _x_×_y_\=_k_
@@ -248,6 +379,7 @@ V1 必须用 ETH 做中介 (TokenA -> ETH -> TokenB)，V2 允许任意 Token 对
 
 
 
+
 # Polymarket 技术向精简学习笔记
 
 Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依托**智能合约**、**AMM 机制**、**预言机**实现事件概率代币化交易与自动结算，底层部署于 Polygon 二层网络。
@@ -287,6 +419,7 @@ Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -407,6 +540,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -551,6 +685,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 编写了一份研究报告
 
 一、 项目概况与背景
@@ -670,6 +805,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等五、如�
 
 
 
+
 Web3工具
 
 # 社交工具
@@ -731,6 +867,7 @@ okx，binance钱包
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -883,6 +1020,7 @@ Lock = false;
 
 
 
+
 24-25区块链主要进展记录
 
 Ordi开启的BRC20铭文
@@ -942,6 +1080,7 @@ ICO合规化（Project Crypto）
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1057,6 +1196,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1214,6 +1354,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -1243,6 +1384,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1291,6 +1433,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1376,6 +1519,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
