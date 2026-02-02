@@ -15,8 +15,165 @@ M.S. (CityU)
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# Polymarket 架构与链上数据解码
+
+## 1\. 本阶段目标与我对 Polymarket 的整体理解
+
+这阶段的核心是把 Polymarket 当成一个“链上可审计的预测市场系统”来理解：市场不是网页上的一条问题，而是由一组链上合约与日志共同定义出来的状态机。我要做的是通过链上交易回执与事件日志，把“市场创建 → 交易撮合 → 结算”这条证据链拆解并复原成结构化数据（JSON），从而为后续索引器/数据分析打基础。
+
+## 2\. 核心数据模型（我用自己的话梳理）
+
+-   **Event（事件）**：一个预测主题/大事件（例如“美国政府会不会在某个日期前再次关门”）。一个事件下可能包含多个市场。
+    
+-   **Market（市场）**：一个具体问题，通常是二元（Yes/No）。交易撮合发生在 market 对应的头寸代币上。
+    
+-   **Condition（条件）**：市场在 CTF（Conditional Tokens Framework）里的“链上身份”。  
+    `conditionId = keccak256(oracle, questionId, outcomeSlotCount)`  
+    对二元市场 outcomeSlotCount=2。
+    
+-   **QuestionId（问题标识）**：通常是对问题文本/UMA ancillary data 的哈希，作为预言机查询与结算的 key。
+    
+-   **CollectionId（集合）**：CTF 用于表达“某条件下某结果组合”的中间层。二元市场里：YES 对应 indexSet=1（0b01），NO 对应 indexSet=2（0b10）。
+    
+-   **Position / TokenId（头寸代币）**：最终可交易的 ERC-1155 tokenId。  
+    `tokenId = keccak256(collateralToken, collectionId)`  
+    因为抵押品几乎固定为 Polygon 上 USDC.e，所以 tokenId 由 conditionId 与 indexSet 基本决定。
+    
+-   **NegativeRisk（负风险）**：当一个事件有多个互斥市场时，引入 NegRiskAdapter 把不同 market 的流动性联通，提高资金效率。它的关键直觉是“某候选人的 NO 等价于其他候选人的 YES 组合”。
+    
+
+## 3\. 链上“证据链”是怎么串起来的
+
+我把市场生命周期拆成四段，每段都有对应关键日志：
+
+1.  **创建**：`ConditionPreparation`（CTF.prepareCondition）  
+    证明 oracle 与 questionId 的绑定，得到 conditionId。
+    
+2.  **拆分/初始流动性**：`PositionSplit`（CTF.splitPosition）  
+    证明 USDC 被锁定并拆分出 YES/NO 头寸代币。
+    
+3.  **交易撮合**：`OrderFilled`（CTF Exchange 或 NegRisk\_CTFExchange）  
+    记录 maker/taker、资产ID（USDC=0 / tokenId≠0）、成交数量与手续费。
+    
+4.  **结算**：`reportPayouts`/相关 resolution 事件（有时有 ConditionResolution）  
+    最终把胜出头寸价值定为 1 USDC、失败为 0；用户用 redeemPositions 赎回。
+    
+
+这四类事件合起来，就是可审计的“从问题出生到资金结算”的全链条证据。
+
+* * *
+
+## 4\. 任务 A：Trade Decoder（我做了什么）
+
+### 4.1 目标
+
+输入 Polygon 上一笔交易哈希，解析交易回执中的 `OrderFilled` 日志，输出标准化 JSON 列表（每条日志一条成交）。
+
+### 4.2 核心实现思路
+
+-   通过 `eth_getTransactionReceipt` 拿到 receipt logs。
+    
+-   过滤出交易所合约上的 `OrderFilled` 事件（两类 exchange：普通二元 / NegRisk）。
+    
+-   提取字段：maker、taker、makerAssetId/takerAssetId、makerAmount/takerAmount、logIndex 等。
+    
+-   **识别 tokenId 与 side**：
+    
+    -   约定：USDC 资产 ID 为 `0`；非零为 Outcome tokenId。
+        
+    -   若 `makerAssetId == 0`：maker 出 USDC 买 token → `side="BUY"`，`token_id=takerAssetId`
+        
+    -   否则：maker 出 token 换 USDC → `side="SELL"`，`token_id=makerAssetId`
+        
+-   **计算价格 price**：
+    
+    -   由于两边通常都按 1e6（USDC 最小单位）记账，价格可直接用整数比值：
+        
+    -   BUY：`price = makerAmount / takerAmount`
+        
+    -   SELL：`price = takerAmount / makerAmount`
+        
+-   输出 JSON 中把数值转成字符串，避免精度问题。
+    
+
+### 4.3 实测结果与收获
+
+我用样例交易哈希跑通了解码输出，确认：
+
+-   `token_id` 为非零的 tokenId；
+    
+-   `side` 根据 makerAssetId 是否为 0 判定；
+    
+-   `price` 与成交数量比值一致；  
+    并成功将结果输出到 `data/trades.json`。
+    
+
+* * *
+
+## 5\. 任务 B：Market Decoder（我理解的难点与处理方式）
+
+### 5.1 目标
+
+给定 market 的链上身份（conditionId 或创建日志），恢复市场关键参数：  
+oracle、questionId、collateralToken、yesTokenId、noTokenId，并与 Gamma API 的 clobTokenIds 校验一致。
+
+### 5.2 核心计算
+
+-   `collectionId_yes = keccak256(0x0, conditionId, 1)`
+    
+-   `collectionId_no = keccak256(0x0, conditionId, 2)`
+    
+-   `yesTokenId = keccak256(USDC, collectionId_yes)`
+    
+-   `noTokenId = keccak256(USDC, collectionId_no)`
+    
+
+### 5.3 我遇到的现实问题（RPC & 数据源不完美）
+
+-   Gamma API 返回了 `conditionId / questionID / clobTokenIds`，但这个市场 **缺失 oracle 字段**。
+    
+-   为补 oracle，需要从链上拿 `ConditionPreparation` 日志（包含 oracle）。
+    
+-   过程中遇到的工程问题：
+    
+    -   部分公共 RPC **历史裁剪（pruned）**：无法查询旧区块 logs；
+        
+    -   部分 RPC/Alchemy 对 `eth_getLogs` 范围/频率敏感，触发 **400 / rate limit**；
+        
+    -   Polygon 使用 POA ExtraData，需要 web3 注入 `geth_poa_middleware` 才能正常读 block。
+        
+
+### 5.4 我的解决思路总结
+
+-   优先从 Gamma 返回结构里递归查找 oracle（有时在 events 中）。
+    
+-   如必须链上查 logs：
+    
+    -   使用支持历史 logs 的 provider（Alchemy/Infura/QuickNode 等）
+        
+    -   限制查询窗口、缩小 step，必要时加 backoff/retry
+        
+    -   用 `topics=[eventSig, conditionId]` 精确过滤，减少返回量与触发风控概率。
+        
+
+* * *
+
+## 6\. 工程化习惯：Fixtures 与验收导向
+
+这个阶段我意识到“可复现”很重要：
+
+-   把 Gamma 返回的 market JSON 保存为 `data/gamma_market_raw.json`，便于离线检查字段结构。
+    
+-   把交易解析结果固化到 `data/trades.json`，便于后续比对。
+    
+-   命令行参数、输出字段命名必须严格对齐验收脚本（大小写/字段名不能改）。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 # **Kite-Drive 黑客松展示整合说明**
 
 > 目标：仅做**可演示的前端界面 + 后端交互链路**，突出“自动驾驶车辆自动预约车位 + 自动支付”的端到端体验。
@@ -178,6 +335,7 @@ M.S. (CityU)
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 ## Kite-Drive 产品总结
 
 ### 一句话
@@ -312,6 +470,7 @@ Kite-Drive 把车抽象成一个具备资金与决策能力的 **Agent（自主�
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 (1) 钱包与链环境验证
 
 -   使用 **MetaMask** 添加 KiteAI Testnet，成功通过 Faucet 领取测试币 KITE
@@ -380,6 +539,7 @@ Kite-Drive 把车抽象成一个具备资金与决策能力的 **Agent（自主�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -467,6 +627,7 @@ x402 是由 Coinbase 等机构推动的、专为智能体原生支付设计的�
 
 
 
+
 **Kite AI 的技术架构、账户抽象、以及如何通过 x402 等协议构建自治商业网络**  
 **智能体经济的崛起与基础设施错配分析**
 
@@ -506,6 +667,7 @@ Kite 网络采用了名为 SPACE 的框架来构建其技术底座。该框架�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -643,6 +805,7 @@ Node >= 20 没问题，Yarn 最后用 Corepack 启用 v4 搞定。工具链对�
 
 
 
+
 ## 从 Web3 到 AI Agent，再到 ICLR：
 
 一方面，我在 Web3 实习计划中系统学习了区块链运行机制、安全、合规、社区与工具；另一方面，今晚 ICLR 的录取结果出来，我意识到自己正在研究的问题，和这一周学到的内容，其实在讨论**同一件事**。
@@ -774,6 +937,7 @@ Web3 的很多问题，本质上并不是“技术能不能做到”，而是**�
 
 
 
+
 这一周参加 Web3 实习计划的学习，对我来说是一次从“概念理解”走向“系统认知”的过程，也让我逐渐意识到：Web3 并不是某一门技术或某一个岗位，而是一套高度现实、对个人负责能力要求极高的系统。
 
 在技术层面，我重新夯实了区块链的底层认知。从比特币与以太坊的运行原理出发，理解了交易从签名、广播、打包到最终确认的完整生命周期，也更清楚了共识机制、Gas、分叉与最终性这些概念在真实网络中的意义。这让我意识到，Web3 的“信任”并不来自机构，而是来自密码学与共识设计，但代价是：安全责任被完全交还给个人。
@@ -801,6 +965,7 @@ Web3 的很多问题，本质上并不是“技术能不能做到”，而是**�
 
 
 
+
 今天的学习内容集中在 **Figma 的基础使用与设计协作逻辑** 上。相比最初把 Figma 当成一个“画 UI 的工具”，这次学习让我开始意识到，它更像是一个**把产品想法可视化、并让团队对齐认知的协作平台**。
 
 在具体操作上，我熟悉了 Frame、Auto Layout、组件（Component）和样式（Color / Text Style）的基本用法。这些功能本身并不复杂，但真正用起来之后，我才理解它们存在的意义：不是为了“画得快”，而是为了**降低后期修改成本**。例如通过组件和样式统一管理按钮、文字和颜色，当需求发生变化时，只需要在一个地方修改，就可以同步影响所有相关页面。
@@ -814,6 +979,7 @@ Auto Layout 给我的感受尤其明显。它强迫我在设计时就考虑内�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -845,6 +1011,7 @@ Auto Layout 给我的感受尤其明显。它强迫我在设计时就考虑内�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -907,6 +1074,7 @@ Web3 用合约、链上行为和历史记录构建声誉。
 
 
 
+
 今天开始系统学习 Rust，最大的感受是：**Rust 不是在帮你写得更快，而是在强迫你一开始就写对**。它并不追求语法上的“好写”，而是通过编译期约束，把大量原本应该在运行期才暴露的问题，提前拦截在代码阶段。
 
 从定位上看，Rust 是一门**系统级语言**，目标是在接近 C/C++ 性能的前提下，尽量避免内存安全问题。这一点让我立刻理解了它为什么会被大量用在区块链客户端、加密库、底层协议和安全敏感场景中。
@@ -926,6 +1094,7 @@ Rust 给我带来的第一个冲击是**所有权（Ownership）模型**。在 R
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -978,6 +1147,7 @@ Rust 给我带来的第一个冲击是**所有权（Ownership）模型**。在 R
 
 
 
+
 今晚这场分享让我第一次比较系统地理解了「社区运营」到底在做什么。之前我对社区的理解偏向于“拉群 + 发公告 + 偶尔搞活动”，但听完之后才意识到，真正成熟的社区运营更像是一套**持续运转、可监控、可复盘的系统**。
 
 在社区搭建层面，讲师强调的并不是“人数越多越好”，而是**结构设计**。包括社区是 public 还是 private、是否需要设置不同权限、管理员如何分工，这些并不是形式问题，而是直接关系到后期的信息秩序与风险控制。比如 topic 的数量并非越多越好，如果活跃度不足，反而会稀释讨论、降低参与感，需要根据社区阶段动态调整。
@@ -997,6 +1167,7 @@ Rust 给我带来的第一个冲击是**所有权（Ownership）模型**。在 R
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1074,6 +1245,7 @@ Anonymization (like k-anonymity) modifies data to obscure individuals but has kn
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1190,6 +1362,7 @@ General Considerations (Both MPC & ZKP) 局限性①Complexity: Implementing and
 
 
 
+
 **今天参加了echo老师的colearing会议**
 
 ## 1) 我今天对 “QL / KOL / BD / 运营” 的理解更现实了
@@ -1233,6 +1406,7 @@ ps:晚上的学员分享实在是太强了 大为震撼
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1395,6 +1569,7 @@ Rick 的回答让我更清楚：
 
 
 
+
 今天连续参加了三场会议，分别是 Co-learning 讨论、Web3 安全主题分享以及 Web3 合规主题分享。整体感受是：**今天的内容比技术更“现实”**，让我开始真正思考在 Web3 中“如何活得久”，而不仅是“如何入行”。
 
 ## 一、Co-learning：自由的另一面是责任
@@ -1435,6 +1610,7 @@ Rick 的回答让我更清楚：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1674,6 +1850,7 @@ per computational step (gas)• Special gas fees also apply to storage operation
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
