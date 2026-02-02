@@ -15,8 +15,154 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+## 1) ERC-7962 想解决的核心痛点
+
+传统 ERC-20 / ERC-721 的“所有权”都直接挂在 **以太坊地址 address** 上：`balanceOf(address)`、`ownerOf(tokenId) -> address`。地址是公开可追踪的，交易行为、资金路径、身份线索很容易被串起来，隐私弱。
+
+ERC-7962 的核心思路是：  
+把“谁拥有代币”的锚点从 **address** 换成 **keyHash = keccak256(publicKey)**（一个 `bytes32` 指纹），链上只看到指纹在流转，而不是某个地址在持有。
+
+同时它还强调“**所有权**”与“**谁来发交易/付 gas**”分离：  
+任何人都可以把交易发到链上（比如 relayer/代付方），但是否能转走资产由 **持有私钥的人签名**决定。
+
+* * *
+
+## 2) 关键机制：用“公钥 + EIP-712 签名”证明所有权，而不是 msg.sender
+
+### 2.1 链上存的是什么？
+
+-   **ERC-KeyHash721（NFT）**：`tokenId -> keyHash(bytes32)`
+    
+-   **ERC-KeyHash20（FT）**：`keyHash(bytes32) -> balance(uint256)`
+    
+
+### 2.2 转账时怎么验证“你就是 owner”？
+
+在 `transfer` 里，调用方需要提供：
+
+-   `key`：65 字节 **未压缩 secp256k1 公钥**（以 `0x04` 开头）
+    
+-   `signature`：对一段 **EIP-712 结构化数据**签出的 ECDSA 签名（带 nonce、deadline 等关键参数）
+    
+
+合约检查两件事（非常关键）：
+
+1.  `keccak256(key) == fromKeyHash`（即你提供的公钥哈希必须等于当前 owner 的 keyHash）
+    
+2.  `ecrecover(digest, signature)` 恢复出的签名者地址，必须等于该公钥推导出的地址（用 `keccak256(key[1:])` 取后 20 字节那套传统推导方式）
+    
+
+这样做的效果是：
+
+-   **谁发交易无所谓**（relayer 也行）
+    
+-   **谁签名才是 owner**（掌握私钥的人才有控制权）
+    
+
+* * *
+
+## 3) 两套接口分别长什么样、语义有什么不一样
+
+ERC-7962 实际定义了两类“keyHash-based”代币接口：
+
+-   `IERCKeyHash721`（NFT）
+    
+-   `IERCKeyHash20`（FT）
+    
+
+### 3.1 ERC-KeyHash721（NFT）：ownerOf 返回 bytes32
+
+接口要点（简化理解）：
+
+-   `ownerOf(tokenId) -> bytes32`（返回 keyHash，不再返回 address）
+    
+-   `transfer(tokenId, toKeyHash, key, signature, deadline)`
+    
+-   事件：`KeyHashTransfer721(tokenId, fromKeyHash, toKeyHash)`
+    
+
+EIP-712 里签名的结构体（721）大意是：  
+`{ tokenId, toKeyHash, nonce, deadline }`
+
+### 3.2 ERC-KeyHash20（FT）：引入 leftKeyHash，模拟 UTXO 的“找零”
+
+KeyHash20 的 `transfer` 设计很不一样：它要求你把“找零”指定到一个新的 keyHash：  
+`transfer(fromKeyHash, toKeyHash, amount, key, signature, deadline, leftKeyHash)`
+
+并且标准要求 **strict mode**：`leftKeyHash` **不能等于** `fromKeyHash` 或 `toKeyHash`，强制做 key rotation，降低可关联性。
+
+余额更新语义（很“UTXO”）：
+
+-   `fromKeyHash` 的余额被清零
+    
+-   `toKeyHash += amount`
+    
+-   `leftKeyHash += (原余额 - amount)`
+    
+
+EIP-712 结构体（20）会把这些字段都签进去：  
+`{ fromKeyHash, toKeyHash, amount, nonce, deadline, leftKeyHash }`
+
+* * *
+
+## 4) 为什么它刻意“没有 approve/allowance”？
+
+草案里明确说 **approve 被有意省略**：  
+因为这里的 key 设计偏向“一次性使用”，在转移时才暴露公钥；一旦暴露，理想做法是把资产迁移到新的 keyHash（或者实现方甚至可以禁止复用已经暴露过的 keyHash）。
+
+换句话说，它鼓励的授权模型不是“长期授权给某个 spender”，而是“每次操作都签一次、签名里把参数锁死”。
+
+* * *
+
+## 5) 它带来的隐私收益与边界（别把它当成 ZK 隐私）
+
+### 5.1 收益：链上不再直接出现“这个地址持有这个资产”
+
+-   `ownerOf/balanceOf` 查到的是 `bytes32 keyHash`，不是地址
+    
+-   用户可以为不同资产/不同场景用不同 keyHash，降低地址层面的直接关联
+    
+
+### 5.2 明确边界：不是强隐私
+
+安全考虑里写得很直白：  
+**转账时公钥会出现在 calldata 里**，链下可以从公钥推导出对应地址，因此仍然可能被关联分析；建议用 `toKeyHash / leftKeyHash` 不断换新 key 来降低关联。
+
+此外，金额与转移路径依旧公开（它没有隐藏 amount、也没有隐藏交易图谱），所以它更像“弱化 address 标签”，而非“完全匿名”。
+
+* * *
+
+## 6) 安全设计重点（实现时最容易踩坑的地方）
+
+草案在 Security Considerations 里强调了这些点：
+
+-   **重放攻击**：每个 keyHash 维护 nonce（`mapping(bytes32=>uint256)`），签名验过后自增；类比 EIP-2612 的 nonce 思路。
+    
+-   **防篡改**：用 EIP-712 把关键参数都签进去（tokenId/toKeyHash/amount/leftKeyHash 等），防 relayer 偷改参数。
+    
+-   **deadline**：签名过期机制减少泄露签名长期可用的风险。
+    
+-   **签名可塑性（malleability）**：实现必须拒绝可塑签名（low-S、v∈{27,28}），OpenZeppelin ECDSA 工具默认会处理。
+    
+
+* * *
+
+## 7) 典型应用场景（它最“值”的地方）
+
+结合提案动机与设计特性，它特别适合：
+
+-   **Gas 代付/拉新空投/批量发放**：用户只需要离线签名，不需要先有 ETH；平台/relayer 代付 gas。
+    
+-   **“不想暴露主地址”的会员/门票/NFT 领取与转赠**：链上显示 keyHash 流转，减少把资产和主地址绑定的直观暴露。
+    
+-   **更偏隐私友好的资产抽象**：与 ERC-5564（Stealth Addresses）的隐私理念对齐，把“隐身”扩展到 token 所有权表达。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ## 1) Uniswap v4 是什么？和 v2/v3 最大的区别
 
 **Uniswap v4** 是 Uniswap 协议的新一代 AMM（自动做市）核心协议：
@@ -143,6 +289,7 @@ Uniswap v4 使用 **BSL 1.1（Business Source License）**：代码可读、可�
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 ## Uniswap V3 是什么
 
 Uniswap V3 是运行在 EVM（以太坊虚拟机）上的非托管自动做市商（AMM）协议。它相对 V1/V2 的核心目标是：**提高资金效率**、让 LP（流动性提供者）对资金使用范围有更细粒度控制、并改进价格预言机与手续费结构。
@@ -219,6 +366,7 @@ Uniswap 文档也明确：**所有 Uniswap v3 池都能作为预言机**，提�
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 **什么是真正的“投研”？——构建你的分析三支柱**
@@ -303,6 +451,7 @@ Uniswap 文档也明确：**所有 Uniswap v3 池都能作为预言机**，提�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -443,6 +592,7 @@ Gas费可以理解为用户为了在链上执行操作（如转账、与合约�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -598,6 +748,7 @@ Octant的模型被认为是对传统QF机制的一次重要迭代和改进，其
 
 
 
+
 ## 1\. 什么是 Uniswap V2
 
 **Uniswap V2** 是运行在以太坊区块链上的开源去中心化交易协议，属于自动化做市商（AMM）模型的一种实现。它允许用户无需传统订单簿，就可以自动交换 ERC-20 代币，并通过流动性池实现交易和做市。
@@ -746,6 +897,7 @@ Uniswap V2 是去中心化交换协议的核心基础之一，通过 **自动做
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1023,6 +1175,7 @@ safeBatchTransferFrom(
 
 
 
+
 # **核心理念与设计哲学**
 
 SpoonOS 的每一个架构决策都源于一套清晰且坚定的设计哲学。这套哲学不仅是技术实现的指导方针，更是我们对未来 AI 智能体在自主性、协作性和经济性方面核心需求的深刻回应。我们认为，一个卓越的操作系统必须拥有一个强大的理念内核。SpoonOS 的设计哲学，正是围绕以下三大不可动摇的核心原则构建而成。
@@ -1084,6 +1237,7 @@ SpoonOS 的核心吸引力在于其高度的模块化和可扩展性，而这一
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1227,6 +1381,7 @@ Reactive Network填补了区块链“无法主动发起请求”的空白，让�
 
 
 
+
 **链上所有权**
 
 理解所有权是理解 NFT 的关键。在区块链的世界里，所有权是由代码严格定义的，清晰、透明且不可篡改。
@@ -1289,6 +1444,7 @@ yarn verify --network sepolia
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1432,6 +1588,7 @@ await contract.sendTransaction({
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1870,6 +2027,7 @@ contract Human is Adam, Eve {
 
 
 
+
 # 函数
 
 ```solidity
@@ -2042,6 +2200,7 @@ xStorage[0] = 100;   // 通过指针修改，x 也变了！
 
 
 
+
 ### 引言：从公开的数字藏品到隐私的会员身份
 
 ERC-721 标准的诞生，开启了数字所有权的新纪元。它使得艺术品、收藏品等独一无二的数字物品，能够作为NFT（非同质化代币）在区块链上拥有不可篡改的所有权记录。我们可以向全世界证明：“这幅数字画作是我的。”
@@ -2186,6 +2345,7 @@ ERC-7962 的价值远不止于隐私保护。它所带来的“所有权与交�
 
 
 
+
 本周，我的学习路径遵循了一个由宏观到微观的逻辑：首先，我从以太坊的宏大愿景出发，试图回答最根本的问题——“它是什么？”；接着，我潜入其底层架构，探索支撑这一切的 **网络结构** 是“如何运作的？”；最后，我将目光聚焦于网络中最核心的交互单元——两种不同的 **账户类型**，探究“谁在其中交互？”。
 
 这次学习对我而言，远不止于理论知识的堆砌，更是一次思维模式的重塑。我深刻体会到，将以太坊的认知从“数字黄金”的单一维度，跃升到“全球可编程平台”即 **世界计算机** 的高度，是理解其所有技术魅力和生态创新的真正起点。
@@ -2294,6 +2454,7 @@ salt
 
 
 
+
 # **智能合约——以太坊的可编程核心**
 
 智能合约，其核心是**存储在区块链上的程序**。我们可以将其生动地比作一台自动售货机：当投入硬币（支付 Gas）并选择商品（调用合约函数）后，机器会自动执行既定逻辑，交付商品（执行转账或业务逻辑），整个过程无需任何人工干预。这种自动执行、无需中介的特性，正是智能合约的魅力所在。
@@ -2360,6 +2521,7 @@ salt
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2499,6 +2661,7 @@ EOA为用户提供了直接控制权和发起链上行为的能力，但其功�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2674,6 +2837,7 @@ Gossip协议为以太坊网络带来了三大战略优势：
 
 
 
+
 # Web3安全防护
 
 作为一名Web3新手，在实习和日常操作中面临的风险主要可归为以下三类：
@@ -2765,6 +2929,7 @@ Gossip协议为以太坊网络带来了三大战略优势：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3107,6 +3272,7 @@ DAO 是利用智能合约进行管理的链上组织，其规则公开透明，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
