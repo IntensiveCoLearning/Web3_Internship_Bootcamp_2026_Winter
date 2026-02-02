@@ -15,8 +15,41 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+总结一下即将开始的求职需要注意的
+
+### 简历打磨
+
+1.  **视觉风格回归专业**：采用白底黑字的极简排版。请使用思源黑体或平方等清晰的字体，避免使用过多的颜色或复杂的图形设计。
+    
+2.  **精心撰写个人简介（Bio）**：在简历顶部用 300 到 500 字概括你的核心竞争力。这部分应根据不同岗位的需求动态调整，直接告诉雇主你能为他们解决什么问题。
+    
+3.  **量化过往成果**：
+    
+    -   **非技术岗**：通过具体数字展示你的影响力，例如运营过的社群人数、内容的阅读量或活动的转化率。
+        
+    -   **技术岗**：清晰列出你的技术栈，并附上 GitHub 链接或参与过的项目 Demo。
+        
+4.  **体现 Web3 参与度**：如果你参与过链上交互、加入过 DAO（去中心化自治组织）或参加过黑客松，详细描述你在其中的角色和贡献。这种原生经验比传统的实习更有说服力。
+    
+
+### 合理的求职路径规划
+
+1.  **第一步：建立认知地图** 建议先通过 CoinMarketCap 或 RootData 等平台研究行业排名前 50 的公司。了解公链、交易所、VC、媒体等不同赛道的运作模式，明确自己感兴趣的方向。
+    
+2.  **第二步：从信息源头切入** 如果你是非技术专业，媒体或基础运营岗是极佳的起点。这些岗位能让你快速接触大量行业资讯，抹平你与行业老人之间的信息差。
+    
+3.  **第三步：深耕垂直赛道** 在积累一定经验后，可以向更有技术壁垒或资金更上游的领域靠拢。技术同学可以关注安全公司或公链项目；非技术同学可以尝试进入交易所或成熟的项目方。
+    
+4.  **第四步：利用线下活动突破** 积极参加行业内的线下交流会或黑客松。在 Web3 领域，面对面的交流往往能直接获得宝贵的内推机会，这比在招聘网站上漫无目的地投递要有效得多。
+    
+5.  **第五步：带着方案去面试** 在面试前深入体验目标公司的产品。你可以撰写一份简短的竞品分析或产品改进建议书。这种主动展示专业性的行为，能极大地提升你的录用概率。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 一周的黑客松活动筹备的感想打卡
 
 [https://x.com/0xjAc3/status/2017990537354371518?s=20](https://x.com/0xjAc3/status/2017990537354371518?s=20)
@@ -24,6 +57,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 在老师同学们的帮助下修改demoday海报
 
@@ -34,6 +68,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 制作了demo day海报，以及badge的设计
 
 ![截屏2026-01-30 14.26.12.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-30-1769787827975-__2026-01-30_14.26.12.png)![截屏2026-01-30 23.46.25.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-30-1769788070698-__2026-01-30_23.46.25.png)
@@ -41,6 +76,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -74,6 +110,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 继续完成黑客松需要的海报和nft设计
 
 ![截屏2026-01-28 23.25.07.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-28-1769613910166-__2026-01-28_23.25.07.png)![WechatIMG261.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-28-1769613956485-WechatIMG261.jpg)
@@ -81,6 +118,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -101,6 +139,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天继续筹备完成open day的海报
 
 ![截屏2026-01-26 23.48.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-26-1769442534634-__2026-01-26_23.48.50.png)
@@ -108,6 +147,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -137,6 +177,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天在根据老师建议修改简历，也在积极投递岗位，学习面试岗位
 
 ![截屏2026-01-23 23.51.01.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/jacezhou777/images/2026-01-23-1769183464742-__2026-01-23_23.51.01.png)
@@ -144,6 +185,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -238,6 +280,7 @@ CryptoJobsList官网
 
 
 
+
 今天主要研究了web3 marketing ，成果如下
 
 web3 marketing 可以简单分为以下三个框架，以@SentientAGI的例子穿插论证：
@@ -298,6 +341,7 @@ web3 marketing 可以简单分为以下三个框架，以@SentientAGI的例子�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -453,6 +497,7 @@ web3 marketing 可以简单分为以下三个框架，以@SentientAGI的例子�
 
 
 
+
 今天alex老师对**erc-7962**的分享让我觉得很有意思，尤其是其中，对于其商业化应用的拓展，对web2世界问题的解决，让我觉得这才是web3高效的创新性，遵循一个道理：web3不是对web2，的颠覆，而是的原有的基础上拓展创新
 
 以下是我对**erc-7962**能够实现的商业化场景的思考
@@ -491,6 +536,7 @@ ERC 7962 允许，证明我持有，却不暴露我是谁，却不暴露我还�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -635,6 +681,7 @@ CryptoJobsList | Web3 Jobs
 
 
 
+
 今天晚上的分享例会对我帮助很大，因为这周的学习成果过于碎片了，看到同学们都产出了很不错的总结，我没有很好的学习总结体系，导致没有什么成果
 
 今天复盘一下过去一周的问题：
@@ -660,6 +707,7 @@ CryptoJobsList | Web3 Jobs
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -719,6 +767,7 @@ CryptoJobsList | Web3 Jobs
 
 
 
+
 今天邓律的分享让我收获颇丰，我打算将其中的知识点消化输出为推文，先来打卡，稍后来补充输出的内容
 
 以下是今天输出的推特链接：https://x.com/0xjAc3/status/2011488065123205326?s=20
@@ -729,6 +778,7 @@ CryptoJobsList | Web3 Jobs
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -768,6 +818,7 @@ CryptoJobsList | Web3 Jobs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
