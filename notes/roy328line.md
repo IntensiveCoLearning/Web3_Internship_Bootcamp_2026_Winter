@@ -22,10 +22,118 @@ Web3 实习计划 2025 冬季实习生
 2026/02/02 总体学习计划如下：
 
 -   **学习** [Gas 优化](https://web3intern.xyz/zh/smart-contract-development/#_1-gas-%E4%BC%98%E5%8C%96)
+    
+
+## 原文 4 個優化抓手
+
+### 1) 減少 Storage 讀寫（SLOAD/SSTORE）
+
+-   **做法**：把會重複用到的 storage 值先讀到局部變數，或用 `storage` 引用一次抓住再操作。
+    
+-   **原因**：Storage 讀寫昂貴，重複讀同一個 key 會浪費 gas。
+    
+
+**典型寫法**
+
+-   不佳：同一輪邏輯裡多次 `mapping[a]` 讀/寫
+    
+-   較佳：`T storage x = mapping[a];`，並用 `newValue` 暫存中間值，最後一次性寫回
+    
+
+* * *
+
+### 2) Bit Packing（位壓縮 / 打包到同一個 slot）
+
+-   **做法**：把多個小型欄位（例如 `uint128`、`uint64`、`bool/uint8`）放進同一個 `struct`，讓它們能打包進 **同一個 256-bit storage slot**。
+    
+-   **原因**：slot 數量越少，通常意味著需要觸達的 storage 位置更少，整體 gas 更省。
+    
+
+**重點**
+
+-   欄位宣告順序會影響打包效果（小的放一起）。
+    
+-   `bool` 常被改用 `uint8 flags` 以 bit 方式管理狀態（例如 bit0 表示 VIP）。
+    
+
+* * *
+
+### 3) 迴圈優化（Loop Optimization）
+
+-   **做法**：把 `arr.length` 緩存成 `len`，避免每輪迴圈重複讀取長度。
+    
+-   **原因**：迴圈內的重複運算會被放大。
+    
+
+常見模板：
+
+-   `uint256 len = arr.length; for (uint256 i = 0; i < len; i++) { ... }`
+    
+
+（進階：`unchecked { ++i; }` 可少掉溢位檢查成本，但要確保不會溢位。）
+
+* * *
+
+### 4) `external` 優於 `public`
+
+-   **做法**：只給外部呼叫的函式用 `external`。
+    
+-   **原因**：`external` 在參數處理上通常更省 gas；搭配 `calldata` 尤其適合大量陣列參數。
+    
+
+* * *
+
+## 案例速記：批量加分 + VIP 標記（優化前後對照）
+
+### V1（常見浪費點）
+
+-   多個 mapping 分散狀態：`points / lastUpdated / isVip` → 觸達多個 slot
+    
+-   同一輪邏輯內重複讀 `points[a]`（一次加分、一次判斷 VIP）
+    
+-   迴圈內每輪都取 `addrs.length`
+    
+-   `public` + `memory` 陣列：外部呼叫會拷貝到 memory（成本更高）
+    
+
+### V2（對應原文做法）
+
+-   用 `struct UserState` + 小型別欄位 → 盡量打包到同一 slot（Bit Packing）
+    
+-   `UserState storage u = user[a];` 一次抓住 storage 引用
+    
+-   用 `newPoints` 暫存中間值，避免二次 `SLOAD`
+    
+-   `len = addrs.length` 緩存長度
+    
+-   `external` + `calldata` 陣列，降低拷貝成本
+    
+
+* * *
+
+## 做了什麼 → 為什麼省
+
+| 技巧 | 要做的改動 | 省 gas 的原因 |
+| --- | --- | --- |
+| 減少 Storage 操作 | 重複讀的 mapping 值先緩存、用局部變數承接中間值 | Storage 讀寫昂貴，減少 SLOAD 次數更穩定有效 |
+| Bit Packing | 多個小欄位打包到同一個 struct slot（例如 uint128 + uint64 + uint8） | 減少 storage slot 觸達與維護成本 |
+| 迴圈優化 | len = arr.length 緩存 | 迴圈內重複運算會被放大，搬到迴圈外更省 |
+| external | 僅外部呼叫的函式改 external，參數用 calldata | 原文指出 external 通常更省，尤其搭配 calldata 陣列 |
+
+* * *
+
+## 落地建議：可以怎麼驗證
+
+-   **Foundry**：`forge test --gas-report`  
+    同一筆測試呼叫 V1 / V2，直接比較 `batchAddPoints` 的 gas。
+    
+-   **Hardhat**：`hardhat-gas-reporter`  
+    在測試跑完後輸出每個函式的 gas 使用量，適合做 CI 對比。
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 ## **Day 21 学习计划**
 
@@ -110,6 +218,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 
 
+
 ## **Day 20 学习计划**
 
 2026/01/31 总体学习计划如下：
@@ -131,6 +240,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -177,6 +287,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -238,6 +349,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 
 
+
 ## **Day 17 学习计划**
 
 2026/01/28 总体学习计划如下：
@@ -257,6 +369,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -310,6 +423,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -377,6 +491,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -522,6 +637,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 13 学习计划**
 
 2026/01/24 总体学习计划如下：
@@ -584,6 +700,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -666,6 +783,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -686,6 +804,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -742,6 +861,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -976,6 +1096,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -1096,6 +1217,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -1181,6 +1303,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -1216,6 +1339,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1362,6 +1486,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 4 学习计划**
 
 2026/01/15 总体学习计划如下：
@@ -1461,6 +1586,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1688,6 +1814,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -1826,6 +1953,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
