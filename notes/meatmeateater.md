@@ -15,14 +15,198 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+今日學習關於erc標準相關知識
+
+### 第一組：基石標準 (The Fundamentals)
+
+所有 DApp 生態的基礎
+
+1\. ERC-20 – 可替代代币标准 (Fungible Token)
+
+-   **PM 視角（應用與市場）：**
+    
+    -   **核心價值：** 貨幣屬性。每一顆代幣價值相等（1 ETH = 1 ETH）。
+        
+    -   **痛點：** 用戶在 DApp 使用代幣時，通常需要兩步操作：先 `Approve` (授權)，再 `TransferFrom` (轉移)。這導致了糟糕的 UX（兩次簽名、兩筆 Gas）。
+        
+    -   **決策：** 雖然有 UX 缺陷，但它是 DeFi 的絕對通用語言，任何交易所、錢包都原生支持。除非有特殊需求，否則發幣首選仍是它。
+        
+-   **工程師視角（實作與安全）：**
+    
+    -   **關鍵機制：** `allowance` 機制是雙刃劍。
+        
+    -   **安全風險：** 著名的「無限授權」風險。若合約被駭，用戶授權的額度會被轉空。開發前端時，應讓用戶選擇「僅授權本次交易金額」還是「無限授權」。
+        
+    -   **開發習慣：** 務必使用 OpenZeppelin 的標準庫，不要手寫。
+        
+
+2\. ERC-721 – 非同質化代幣標準 (NFT)
+
+-   **PM 視角：**
+    
+    -   **核心價值：** 獨特性與所有權錨定（ID）。適用於藝術品、會員卡、房產證。
+        
+    -   **盲點：** 流動性差。不像 ERC-20 可以隨意分割（雖然有碎片化協議，但那是另一回事）。
+        
+-   **工程師視角：**
+    
+    -   **關鍵函數：** `ownerOf(tokenId)` 是核心。
+        
+    -   **元數據 (Metadata)：** `tokenURI` 是靈魂。你需要決定 metadata 是存放在 IPFS/Arweave (去中心化) 還是 AWS (中心化但可變更)。這決定了 NFT 的「永續性」。
+        
+    -   **擴展：** 常常配合 `ERC721Enumerable` 使用，以便前端能列出「某用戶持有的所有 NFT」，但這會大幅增加 Mint 的 Gas 費用，需在功能與成本間取捨。
+        
+
+3\. ERC-1155 – 多代币标准 (Multi-Token)
+
+-   **PM 視角：**
+    
+    -   **核心價值：** 「批量處理」與「混合資產」。適合 GameFi（遊戲道具）。
+        
+    -   **場景：** 遊戲裡有金幣 (Fungible) 和 屠龍刀 (Non-Fungible)。用 ERC-20 + 721 需要部署兩個合約，用 1155 只要一個合約就能管理 ID 1 (金幣) 和 ID 2 (屠龍刀)。
+        
+    -   **優勢：** 轉帳時可以「一次打包」多個道具，大幅節省 Gas。
+        
+-   **工程師視角：**
+    
+    -   **實作差異：** 只有一個 `balanceOf(account, id)`。
+        
+    -   **安全回調：** 具有 `onERC1155Received` 鉤子函數，這意味著接收方如果是合約，必須實作此接口，否則轉帳會失敗（這比 ERC-20 安全，防止代幣轉入黑洞）。
+        
+
+* * *
+
+### 第二組：接口與開發者體驗 (Developer Experience)
+
+這組標準解決的是「系統如何溝通」與「除錯」的問題。
+
+4\. ERC-165 – 接口检测标准 (Interface Detection)
+
+-   **PM 視角：**
+    
+    -   **意義：** 這是合約之間的「自我介紹」。你的合約能告訴別人「我是不是一個 NFT 合約」。這對於錢包和交易所自動識別資產至關重要。
+        
+-   **工程師視角：**
+    
+    -   **必備：** 幾乎所有的現代標準（721, 1155 等）都繼承了 ERC-165。
+        
+    -   **原理：** 通過 `supportsInterface(bytes4 interfaceId)` 返回 `true/false`。在寫複雜合約交互時，先檢查對方是否支援特定接口，能避免交易失敗浪費 Gas。
+        
+
+8\. ERC-6093 – 统一代币错误代码标准 (Custom Errors)
+
+-   **PM 視角：**
+    
+    -   **意義：** 當交易失敗時，用戶看到的不再是莫名其妙的亂碼，而是標準化的錯誤提示。提升除錯效率和用戶體驗。
+        
+-   **工程師視角：**
+    
+    -   **省 Gas：** 這是 Solidity 0.8.4+ 的特性。以前我們用 `require(balance > amount, "ERC20: transfer amount exceeds balance")`，那串字串很貴。
+        
+    -   **新寫法：** 現在定義 `error InsufficientBalance(uint256 available, uint256 required);`，然後 `revert InsufficientBalance(...)`。既省 Gas，鏈下又能解析出具體參數。強烈建議在新專案中使用。
+        
+
+* * *
+
+### 第三組：支付與交互優化 (Smart Payments)
+
+這組是為了改良 ERC-20 的「轉帳+執行」流程。
+
+5\. ERC-223 – 防止代幣丟失
+
+-   **PM 視角：**
+    
+    -   **歷史背景：** 早期很多小白把 ERC-20 轉到合約地址（而不是調用合約），結果幣卡在裡面拿不出來。ERC-223 試圖解決這個問題：如果接收方是合約且沒準備好接收，交易會自動回滾。
+        
+    -   **現狀：** **採用率低**。因為它與 ERC-20 不完全兼容，交易所支持度不高。
+        
+-   **工程師視角：**
+    
+    -   **機制：** 引入 `tokenFallback` 函數。
+        
+    -   **建議：** 除非你是做封閉生態，否則不建議單獨使用。現在更多人傾向用 ERC-1363 或 ERC-777（雖然 777 也有重入攻擊疑慮）來解決類似問題。
+        
+
+6\. ERC-827 – (已廢棄/不推薦) 授權調用
+
+-   **資深工程師的嚴正警告：**
+    
+    -   **現狀：** **請勿使用。** 这是一个早期的嘗試，允許在轉帳的同時調用接收方的方法。
+        
+    -   **原因：** 它存在嚴重的安全漏洞，極易受到「重入攻擊」(Reentrancy Attack) 和授權濫用。它的設計初衷被後來的 ERC-1363 和 Permit (ERC-2612) 更好且更安全地取代了。
+        
+-   **PM 視角：** 看到這個標準直接跳過，這是歷史的眼淚。
+    
+
+9\. ERC-1363 – 可支付型代币 (Payable Token)
+
+-   **PM 視角：**
+    
+    -   **殺手級應用：** 這是目前「代幣支付」的最佳實踐之一。
+        
+    -   **場景：** 用戶想用代幣買 NFT。
+        
+        -   **ERC-20 舊法：** 1. Approve (付 Gas) -> 2. Buy (付 Gas)。
+            
+        -   **ERC-1363：** 1. `transferAndCall` (一筆交易完成轉帳+購買)。
+            
+    -   **體驗：** 絲滑，像原生 ETH 轉帳一樣可以觸發邏輯。
+        
+-   **工程師視角：**
+    
+    -   **兼容性：** 它是 ERC-20 的擴展（繼承），所以完全兼容舊設施。
+        
+    -   **實作：** 增加了 `transferAndCall` 和 `approveAndCall`。接收方合約需要實作 `onTransferReceived`。這是取代 ERC-223 和 ERC-677 的現代化標準。
+        
+
+* * *
+
+### 第四組：元數據與合規 (Advanced Metadata & RWA)
+
+這組針對特定垂直領域：動態顯示與金融合規。
+
+7\. ERC-1046 – 可扩展元数据的代币标准 (Extended Metadata)
+
+-   **PM 視角：**
+    
+    -   **目的：** 讓 ERC-20 代幣也能像 NFT 一樣擁有豐富的圖片、描述等元數據。
+        
+    -   **場景：** 錢包顯示代幣時，不再只是寫死的 Logo，可以是動態的媒體。
+        
+-   **工程師視角：**
+    
+    -   **現狀：** 處於 Draft 或停滯狀態，並未廣泛流行。大多數錢包還是習慣讀取中心化的 Token List (如 CoinGecko API) 來顯示代幣圖標。了解即可，實戰少用。
+        
+
+10\. ERC-3643 (T-REX) – 合規型代幣標準 (RWA / Security Tokens)
+
+-   **PM 視角：**
+    
+    -   **關鍵字：** **RWA (現實世界資產)**、**STO (證券型代幣)**。
+        
+    -   **核心邏輯：** 這是「帶著手銬跳舞」。與 DeFi 的無許可 (Permissionless) 相反，ERC-3643 要求「許可制」。只有通過 KYC (實名認證) 且在白名單上的錢包才能持有或接收代幣。
+        
+    -   **場景：** 代幣化股票、房地產、債券。如果用戶私鑰丟了，發行方甚至有權力「強制轉移/銷毀」以恢復資產（符合法律要求）。
+        
+-   **工程師視角：**
+    
+    -   **架構：** 非常複雜。包含 `Identity Registry` (身份註冊表)、`Compliance Modules` (合規模組)。
+        
+    -   **檢查機制：** 每一次 `transfer` 都會去鏈上查詢 Identity Registry，檢查接收方是否合規（例如：是否是美國合格投資人？是否還在鎖倉期？）。如果不合規，交易直接 Revert。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 今天黑客松Demoday阿阿阿阿，修了一天的bug  
 最後錄了個逆轉人格的小demo(累
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 今天也在弄黑客松
 
@@ -38,6 +222,7 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 今天把黑客松我要做的模塊寫出了一個初版:
 
 [https://github.com/MapleCity1314/spark-ai-demo/pull/1](https://github.com/MapleCity1314/spark-ai-demo/pull/1)
@@ -45,6 +230,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -59,6 +245,7 @@ timezone: UTC+8
 
 
 
+
 -   **进行 Hardhat 跟练**
     
 -   **進行foundry跟練**
@@ -66,6 +253,7 @@ timezone: UTC+8
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -213,6 +401,7 @@ return true;
 
 
 
+
 今天來做gas優化的作業，我優化的是[Solidity by Example](https://solidity-by-example.org/loop/) 的For and While Loop程式碼
 
 原代碼:
@@ -336,6 +525,7 @@ unchecked {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -756,6 +946,7 @@ unchecked {
 
 
 
+
 Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 <img width="865" height="486" alt="image" src="https://github.com/user-attachments/assets/82b49f19-fe91-44b1-80f3-2990ef10f508" />
@@ -767,6 +958,7 @@ Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -866,6 +1058,7 @@ Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -879,6 +1072,7 @@ Thanks for clarifying!
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -917,6 +1111,7 @@ Thanks for clarifying!
 
 
 
+
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -939,11 +1134,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -989,12 +1186,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1126,6 +1325,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1352,6 +1552,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1627,6 +1828,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
