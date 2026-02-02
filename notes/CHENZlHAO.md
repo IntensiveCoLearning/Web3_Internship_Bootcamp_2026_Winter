@@ -15,8 +15,135 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+这是基于 **Speedrun Ethereum (Scaffold-ETH 2)** 的 "Tokenization" (代币化/NFT) 挑战的详细知识点总结。本教程侧重于使用 **Hardhat** (合约端) 和 **Next.js** (前端) 进行全栈开发。
+
+以下是按照开发生命周期梳理的核心知识点：
+
+### 1\. 核心理论：什么是代币化 (Tokenization)？
+
+-   **定义**：代币化就像给物品发放一个可以放入数字钱包的“数字护照”。它证明了所有权 (Ownership)，允许瞬间转移，并能被应用程序自动识别。
+    
+-   **资产分类**：
+    
+    -   **原生资产 (Blockchain-native)**：如艺术品、ENS 域名、游戏道具。它们“生于链上”，Token 本身就是资产，具有全球流通性和无许可性。
+        
+    -   **现实世界资产 (RWAs)**：如股票、黄金、房地产。Token 只是链下的索赔权或记录，必须有法律框架将链上转移与链下权利挂钩，否则只是“无效的粉丝创作”。
+        
+-   **ERC-721 vs ERC-20**：
+    
+    -   **ERC-721 (NFT)**：非同质化代币。每个 Token 都是唯一的 (Unique)，适用于身份、艺术品、位置证明等。
+        
+    -   **ERC-20**：同质化代币。每个 Token 都是一样的，功能和价值相同（如货币）。
+        
+-   **不仅仅是图片**：NFT 的核心价值在于**可组合性 (Composability)**。例如，ENS 域名不仅是名字，还可以解析地址；Uniswap V3 使用 NFT 追踪流动性仓位,。
+    
+
+### 2\. 开发环境搭建 (Environment)
+
+本教程基于 Scaffold-ETH 2 框架，需要开启**三个终端窗口**协同工作：
+
+-   **前置工具**：Node (>= v20.18.3), Yarn, Git。
+    
+-   **三窗口工作流**：
+    
+    1.  **区块链模拟器**：运行 `yarn chain` 启动本地测试链 (Localhost network)。
+        
+    2.  **合约部署**：运行 `yarn deploy` 编译并部署合约到本地链。
+        
+    3.  **前端启动**：运行 `yarn start` 启动 Next.js 前端，访问 `http://localhost:3000`。
+        
+-   **AI 辅助建议**：教程建议**禁用 AI** (Cursor/VSCode) 以便真正理解代码逻辑；如果你只是想体验流程 ("vibe-coder")，可以开启 AI。
+    
+
+### 3\. 智能合约与所有权逻辑 (Smart Contracts)
+
+你的合约代码位于 `packages/hardhat/contracts` (如 `YourCollectible.sol`)。
+
+-   **核心函数 (Onchain Ownership)**：
+    
+    -   `ownerOf(tokenId)`：返回某个特定 Token ID 的持有者地址,。
+        
+    -   `transfer`：原子化地移动所有权，只有所有者或被授权者可以调用。
+        
+    -   `approve` / `setApprovalForAll`：授权他人（如交易市场合约）转移你的资产。
+        
+    -   `balanceOf(address)`：查询某地址拥有的 NFT 数量。
+        
+
+### 4\. 本地开发实战 (Local Development)
+
+在本地环境中，重点是理解交互流程和调试：
+
+-   **Gas (汽油费)**：驱动区块链交易的手续费。本地测试需要从 Faucet (水龙头) 获取测试币。
+    
+-   **Burner Wallets (一次性钱包)**：
+    
+    -   本地开发**不要**连接 MetaMask。
+        
+    -   使用框架自带的 Burner Wallet，它们会自动签名交易，方便快速开发。
+        
+    -   **技巧**：打开浏览器的“无痕模式”窗口，会生成一个新的 Burner Wallet，可用于测试账号间的转账,。
+        
+-   **铸造 (Minting)**：创建新的 NFT。元数据 (Metadata) 通常存储在 IPFS 上。
+    
+-   **调试**：使用前端的 `Debug Contracts` 选项卡，可以查看合约状态（如查 `ownerOf`）。
+    
+
+### 5\. 部署到公网测试网 (Sepolia Deployment)
+
+当本地测试完成后，需将应用发布到 Sepolia 测试网。
+
+-   **生成部署账号**：
+    
+    -   运行 `yarn generate` 生成一个新的部署者地址 (Deployer Address)。
+        
+    -   **安全提示**：私钥会被加密存储在本地，你需要记住设置的密码。
+        
+    -   **资金**：使用 Alchemy 或 Infura 的水龙头 (Faucet) 给这个新地址充值 Sepolia ETH。
+        
+-   **修改配置**：
+    
+    -   **Hardhat**：在 `hardhat.config.ts` 中将 `defaultNetwork` 改为 `sepolia`，或使用 `yarn deploy --network sepolia`,。
+        
+    -   **前端**：在 `scaffold.config.ts` 中将 `targetNetwork` 改为 `chains.sepolia`。
+        
+-   **发布前端**：使用 `yarn vercel` 将 Next.js 应用部署到公共网络服务器。
+    
+
+### 6\. 验证与交付 (Verification & Delivery)
+
+-   **合约验证**：
+    
+    -   运行 `yarn verify --network sepolia`。
+        
+    -   作用：在 Etherscan 上公开源码，证明合约不是骗局，增加可信度。
+        
+-   **生产环境配置**：
+    
+    -   为了避免速率限制 (Rate Limiting)，应在 `.env` 文件中配置自己的 **Alchemy** 和 **Etherscan** API Keys。
+        
+-   **钱包可见性**：
+    
+    -   部署到公网后，可在 MetaMask 的 "NFTs" 标签页查看铸造的 NFT。如果未自动显示，需点击 "Import NFT" 并输入合约地址和 ID 手动添加。
+        
+
+### 📚 总结速查表
+
+| 步骤 | 命令 / 操作 | 关键点 |
+| --- | --- | --- |
+| 1. 启动链 | yarn chain | 保持运行，不要关闭 |
+| 2. 部署(本地) | yarn deploy | 修改合约后需重新运行 |
+| 3. 启动前端 | yarn start | 访问 localhost:3000 |
+| 4. 部署(公网) | yarn generate -> yarn deploy --network sepolia | 需先去水龙头领测试币 |
+| 5. 验证合约 | yarn verify --network sepolia | 让代码在区块链浏览器上开源可见 |
+| 6. 发布网页 | yarn vercel | 生成可分享的公开 URL |
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 这是一个关于 **Web3 本地开发** 的详细知识点总结，涵盖了 **Foundry** (命令行流派) 和 **Hardhat** (JavaScript 流派) 两种核心工具的安装、概念及实战流程。
 
 以下是详细的知识点归纳：
@@ -145,6 +272,7 @@ Hardhat 是基于 **JavaScript/Node.js** 的开发框架，适合前端开发者
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 这份知识清单基于 **Web3BuidlerTech** 的《以太坊中文周会（2026/01/26期）》内容整理。本期周会涵盖了从具体项目动态到宏观资产（BTC、ETH、SOL）的深度分析，以及对2026年加密市场的全景展望。
 
@@ -1642,6 +1770,7 @@ Uniswap 的演进是从**简单优美 (V2)** 到**极致效率 (V3/V4)** 的过�
 
 
 
+
 这份资料主要围绕 **以太坊（Ethereum）开发入门** 展开，由 Austin Griffith 讲解。内容涵盖了开发工具的选择、智能合约的基础语法、代币逻辑的实现、部署流程以及进阶的学习路线（Speed Run）。
 
 以下是基于资料总结的详细知识点：
@@ -1788,6 +1917,7 @@ Austin Griffith 推荐了一个从入门到精通的挑战路径（Speed Run）�
 
 
 
+
 这份总结专为 **Notion** 优化，你可以直接复制以下内容并粘贴到 Notion 页面中，它会自动识别标题、列表、代码块和表格。
 
 * * *
@@ -1919,6 +2049,7 @@ function testDecUnderflow() public {
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -2224,6 +2355,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这份《中文文案排版指北》非常实用，它能显著提升文档的专业感和可读性。我已经为你将核心知识点整理成了 **Notion 友好的 Markdown 格式**。
 
 你可以直接复制下方内容，在 Notion 中新建页面后粘贴，它会自动识别标题、列表、表格和引用块。
@@ -2365,6 +2497,7 @@ function withdraw() public onlyOwner {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2725,6 +2858,7 @@ function withdraw() public onlyOwner {
 
 
 
+
 这是一个基于 Austin Griffith 的 Scaffold-ETH 介绍与 Solidity 复习视频整理的 Notion 风格笔记。
 
 * * *
@@ -2946,6 +3080,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是基于视频内容总结的 **Notion 风格** 笔记。
 
 * * *
@@ -3091,6 +3226,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3385,6 +3521,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于 **Web3 实习计划（冬季）：第一周例会** 视频内容整理的精华笔记，采用 **Notion** 风格排版，旨在帮助你快速回顾各学员分享的核心观点、学习方法及技术干货。
 
 * * *
@@ -3619,6 +3756,7 @@ Scaffold-ETH 是一个以太坊开发脚手架，集成了 Hardhat（后端/合�
 
 
 
+
 这是一份基于提供的课程视频脚本整理的 **Web3 核心知识点总结**。内容涵盖了从身份标识、代币标准到去中心化金融（DeFi）和交易安全的进阶操作。
 
 * * *
@@ -3735,6 +3873,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3899,6 +4038,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 
 
+
 # Web3 安全与合规：知识图谱
 
 * * *
@@ -4031,6 +4171,7 @@ NFT 的核心价值在于其\*\*真实性（Provenance）\*\*和链上可验证�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
