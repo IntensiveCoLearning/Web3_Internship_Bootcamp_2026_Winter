@@ -1,5 +1,5 @@
 ---
-timezone: UTC+1
+timezone: UTC+2
 ---
 
 # lyx-27
