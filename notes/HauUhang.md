@@ -15,13 +15,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-02-02-1770011921802-image.png)
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-31-1769863208245-image.png)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 ### 核心功能（Core）
 
@@ -68,6 +75,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 -   **初始化项目** 用最核心的命令创建新项目：
@@ -133,6 +141,7 @@ timezone: UTC+8
 
 
 
+
 ## **Getting Started**
 
 📌 **Foundry 是什么？**  
@@ -164,6 +173,7 @@ timezone: UTC+8
 
 
 
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -176,6 +186,7 @@ timezone: UTC+8
 
 
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -183,6 +194,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -203,6 +215,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -210,6 +223,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -238,6 +252,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -249,6 +264,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -302,6 +318,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -413,6 +430,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -453,6 +471,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -507,6 +526,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 
 
+
 # 七、执行与共识客户端的协同配合
 
 1\. 一个节点 = 执行客户端 + 共识客户端 + Engine API
@@ -536,6 +556,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -658,6 +679,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -701,6 +723,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -846,6 +869,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
