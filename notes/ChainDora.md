@@ -15,8 +15,364 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+## **IPFS NFT**
+
+**什么是 IPFS？**
+
+IPFS (InterPlanetary File System) 是一个**去中心化的分布式存储网络**，旨在取代传统的 HTTP 协议，构建一个更加开放、安全和高效的网络。 你可以把它想象成一个全球范围内的、点对点的文件共享系统，但它不仅仅是文件共享，更是一个内容分发网络 (CDN)。
+
+### **IPFS 的核心概念：**
+
+NaN.  **内容寻址 (Content Addressing):**
+      
+      -   **传统的位置寻址 (Location Addressing):** HTTP 使用 URL 来定位资源，URL 指定了服务器的地址和文件名。 如果服务器宕机或文件被移动，URL 将失效。
+          
+      -   **IPFS 的内容寻址:** IPFS 使用内容的哈希值 (Content Identifier, CID) 来唯一标识文件。 CID 是基于文件内容的加密哈希值。 这意味着如果文件内容发生任何变化，CID 也会随之改变。
+          
+      -   **优势:** 只要文件内容不变，就可以通过 CID 永久访问文件，无需关心文件存储在哪个服务器上。
+          
+NaN.  **CID (Content Identifier):**
+      
+      -   CID 是 IPFS 中用于标识文件的唯一哈希值。 它由多部分组成，包括哈希算法、哈希长度和哈希值本身。
+          
+      -   示例: `QmZm5Uzj2VbW7Kj93HtgEeqLjhQ9ZnWtXnypQf7oYsyN5u`
+          
+      -   CID 可以确保文件的完整性和唯一性。
+          
+NaN.  **分布式哈希表 (DHT):**
+      
+      -   DHT 是一个分布式数据库，用于存储 IPFS 网络中所有文件的 CID 及其存储位置。
+          
+      -   当你想访问一个文件时，IPFS 会先在 DHT 中查找该文件的 CID，找到存储该文件的节点，然后从该节点下载文件。
+          
+      -   DHT 使得 IPFS 能够高效地定位和检索文件。
+          
+NaN.  **BitSwap 协议:**
+      
+      -   BitSwap 是一种点对点的文件交换协议，用于在 IPFS 网络中高效地分发文件。
+          
+      -   当一个节点需要下载一个文件时，它会向其他节点发送一个 "wantlist"，列出它需要的文件 CID。
+          
+      -   其他节点如果拥有这些文件，就会将它们发送给请求节点。
+          
+      -   BitSwap 协议使用激励机制，鼓励节点共享文件，从而提高网络的效率。
+          
+NaN.  **IPFS 节点:**
+      
+      -   IPFS 网络由许多节点组成，每个节点都可以存储和提供文件。
+          
+      -   你可以运行自己的 IPFS 节点，也可以使用公共的 IPFS 节点。
+          
+      -   IPFS 节点之间通过 P2P 协议进行通信。
+          
+NaN.  **IPFS 网关 (Gateway):**
+      
+      -   IPFS 网关是一个 HTTP 服务器，允许你通过 HTTP 协议访问 IPFS 上的文件。
+          
+      -   例如，你可以使用 `https://ipfs.io/ipfs/<CID>` 来访问 IPFS 上的文件。
+          
+      -   IPFS 网关使得即使没有安装 IPFS 客户端的用户也可以访问 IPFS 上的文件。
+          
+
+**IPFS 的工作原理：**
+
+NaN.  **添加文件到 IPFS:** 当你将一个文件添加到 IPFS 时，IPFS 会将文件分割成多个小的块，并为每个块计算一个 CID。
+      
+NaN.  **构建 Merkle DAG:** IPFS 将这些块组织成一个 Merkle DAG (有向无环图)。 Merkle DAG 的根节点就是整个文件的 CID。
+      
+NaN.  **分发文件块:** IPFS 将这些文件块分发到网络中的多个节点上。
+      
+NaN.  **查找文件:** 当你需要访问一个文件时，IPFS 会首先在 DHT 中查找该文件的 CID。
+      
+NaN.  **下载文件块:** 找到存储该文件的节点后，IPFS 会从这些节点下载文件块，并将它们重新组装成完整的文件。
+      
+
+**IPFS 的优势：**
+
+-   **去中心化:** 没有单点故障，更加可靠和安全。
+    
+-   **内容寻址:** 确保文件的完整性和永久性。
+    
+-   **高效:** BitSwap 协议使得文件分发更加高效。
+    
+-   **版本控制:** IPFS 可以轻松地跟踪文件的版本历史。
+    
+-   **节省带宽:** 避免重复存储相同的文件。
+    
+
+**IPFS 的应用场景：**
+
+-   **NFT 元数据存储:** 确保 NFT 元数据的长期可用性和防篡改。
+    
+-   **网站托管:** 托管去中心化的网站。
+    
+-   **文件共享:** 安全地共享文件。
+    
+-   **版本控制:** 构建去中心化的版本控制系统。
+    
+-   **数据备份:** 备份重要数据。
+    
+-   **内容分发网络 (CDN):** 构建去中心化的 CDN。
+    
+
+**如何使用 IPFS：**
+
+NaN.  **安装 IPFS 客户端:** 下载并安装 IPFS Desktop 或 IPFS CLI。
+      
+NaN.  **初始化 IPFS:** 运行 `ipfs init` 命令初始化 IPFS。
+      
+NaN.  **添加文件到 IPFS:** 运行 `ipfs add <filename>` 命令将文件添加到 IPFS。 该命令会返回文件的 CID。
+      
+NaN.  **访问 IPFS 上的文件:** 可以使用 `ipfs cat <CID>` 命令查看文件内容，也可以使用 IPFS 网关通过 HTTP 协议访问文件。
+      
+
+**示例：**
+
+NaN.  **添加一个名为** `hello.txt` **的文件到 IPFS:**
+      
+      ```
+      ipfs add hello.txt
+      added QmZm5Uzj2VbW7Kj93HtgEeqLjhQ9ZnWtXnypQf7oYsyN5u hello.txt
+      ```
+      
+NaN.  **使用 IPFS 网关访问该文件:**
+      
+      ```
+      https://ipfs.io/ipfs/QmZm5Uzj2VbW7Kj93HtgEeqLjhQ9ZnWtXnypQf7oYsyN5u
+      ```
+      
+
+**IPFS Pinning Services:**
+
+-   为了确保你的文件在 IPFS 网络中长期可用，你需要将文件 "Pin" 到至少一个 IPFS 节点上。 Pinning 意味着告诉 IPFS 节点存储该文件，即使该节点不再需要它。
+    
+-   你可以运行自己的 IPFS 节点并 Pin 文件，也可以使用 IPFS Pinning 服务，例如：
+    
+    -   **Pinata:** 一个流行的 IPFS Pinning 服务，提供易于使用的 API 和 UI。
+        
+    -   **Infura:** 提供 IPFS 和以太坊基础设施服务。
+        
+    -   **Web3.Storage:** 由 Protocol Labs (IPFS 的创建者) 提供的免费 IPFS Pinning 服务，专注于存储 Web3 内容。
+        
+
+**总结：**
+
+IPFS 是一个非常有前景的去中心化存储网络，可以用于各种应用场景。 作为一名区块链开发者，了解 IPFS 的原理和使用方法是非常重要的。 尤其是在 NFT 领域，IPFS 已经成为存储 NFT 元数据的标准解决方案。 通过学习和使用 IPFS，你可以构建更加开放、安全和高效的去中心化应用。
+
+### **IPFS与NFT相关**
+
+发布 NFT 与 IPFS 的相关内容，包括：
+
+NaN.  **NFT 发布流程中 IPFS 的作用**
+      
+NaN.  **如何准备 NFT 元数据并在 IPFS 上存储**
+      
+NaN.  **智能合约与 IPFS 的集成**
+      
+NaN.  **选择合适的 IPFS Pinning 服务**
+      
+NaN.  **优化 NFT 的 IPFS 存储**
+      
+NaN.  **常见问题及解决方案**
+      
+
+**1\. NFT 发布流程中 IPFS 的作用**
+
+在 NFT 的发布流程中，IPFS 主要用于存储 NFT 的**元数据 (metadata)**。 元数据描述了 NFT 的属性，例如名称、描述、图像/视频 URL、创作者信息等。
+
+发布 NFT 的大致流程如下：
+
+-   **准备 NFT 资源:** 创建 NFT 代表的数字资产，例如图像、音乐、视频或 3D 模型。
+    
+-   **创建 NFT 元数据:** 创建一个 JSON 文件，描述 NFT 的属性，并包含指向 NFT 资源的 IPFS CID 或 URL。
+    
+-   **将 NFT 元数据上传到 IPFS:** 使用 IPFS 客户端或 Pinning 服务将元数据 JSON 文件上传到 IPFS。
+    
+-   **部署 ERC721 合约:** 部署一个实现了 ERC721 标准的智能合约。
+    
+-   **铸造 (Mint) NFT:** 调用智能合约的 `mint` 函数，将 NFT 铸造到指定的地址。 在铸造过程中，你需要提供 NFT 元数据的 IPFS CID。
+    
+-   **在市场上架 NFT:** 将 NFT 在 NFT 交易市场上架，例如 OpenSea、Rarible 或 LooksRare。
+    
+
+**2\. 如何准备 NFT 元数据并在 IPFS 上存储**
+
+NFT 元数据通常以 JSON 格式存储，并遵循一定的规范。 以下是一个 NFT 元数据的示例：
+
+```
+{
+  "name": "My Awesome NFT",
+  "description": "This is a unique and amazing NFT.",
+  "image": "ipfs://QmYBNKkhP57x38wWjqp4jFn8Y4jXeqcp7xe7wW2w4M6L44/my-nft.png",
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Robot"
+    }
+  ],
+  "external_url": "https://example.com/my-nft"
+}
+```
+
+-   `name`**:** NFT 的名称。
+    
+-   `description`**:** NFT 的描述。
+    
+-   `image`**:** 指向 NFT 图像的 IPFS CID 或 URL。 推荐使用 IPFS CID，以确保图像的长期可用性。
+    
+-   `attributes`**:** NFT 的属性列表。 每个属性包含 `trait_type` (属性类型) 和 `value` (属性值)。
+    
+-   `external_url`**:** 指向包含 NFT 更多信息的外部网站的 URL。
+    
+
+**存储 NFT 元数据到 IPFS 的步骤：**
+
+NaN.  **选择 IPFS 客户端或 Pinning 服务:** 可以选择使用 IPFS Desktop 客户端、命令行工具，或者使用 Pinata、Infura、Web3.Storage 等 IPFS Pinning 服务。
+      
+NaN.  **创建 NFT 元数据 JSON 文件:** 将 NFT 元数据保存为 JSON 文件，例如 `metadata.json`。
+      
+NaN.  **将元数据上传到 IPFS:**
+      
+      -   **使用 IPFS Desktop:** 将 `metadata.json` 文件拖放到 IPFS Desktop 客户端中，它会自动将文件添加到 IPFS 并返回 CID。
+          
+      -   **使用命令行工具:** 运行 `ipfs add metadata.json` 命令，它会返回文件的 CID。
+          
+      -   **使用 Pinning 服务:** 按照 Pinning 服务的文档上传 `metadata.json` 文件，并获取 CID。
+          
+NaN.  **确保 pinning:** 确保上传的元数据被 pinning，以便长期可用。
+      
+
+**3\. 智能合约与 IPFS 的集成**
+
+ERC721 合约需要一个 `tokenURI(uint256 tokenId)` 函数，用于返回指定 NFT 的元数据 URI。 这个 URI 通常是一个指向 IPFS 上的元数据 JSON 文件的 URL。
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+​
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+​
+contract MyNFT is ERC721 {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
+​
+    string private _baseURI; // 用于存储 IPFS 网关前缀 + 基本路径
+​
+    constructor(string memory baseURI) ERC721("MyNFT", "MNFT") {
+        _baseURI = baseURI;
+    }
+​
+    function setBaseURI(string memory baseURI) public {
+        _baseURI = baseURI;
+    }
+​
+    function _baseURI() internal view virtual override returns (string memory) {
+        return _baseURI;
+    }
+​
+    function mintNFT(address recipient) public returns (uint256) {
+        _tokenIds.increment();
+        uint256 newItemId = _tokenIds.current();
+        _mint(recipient, newItemId);
+        return newItemId;
+    }
+​
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+​
+        // 构造完整的 token URI
+        string memory base = _baseURI();
+        return string(abi.encodePacked(base, Strings.toString(tokenId), ".json"));
+    }
+}
+```
+
+**代码解释:**
+
+-   `_baseURI`**:** 存储 IPFS 网关前缀和基本路径，例如 `ipfs://YOUR_CID/` 或 `https://YOUR_GATEWAY.com/metadata/`。
+    
+-   `tokenURI`**:** 拼接 `_baseURI` 和 `tokenId`，生成完整的元数据 URI。 例如，如果 `_baseURI` 是 `ipfs://YOUR_CID/`，`tokenId` 是 1，则 `tokenURI` 返回 `ipfs://YOUR_CID/1.json`。
+    
+
+**部署合约时，需要将** `_baseURI` **设置为正确的 IPFS CID 前缀。 例如，如果你将所有元数据文件存储在 IPFS 上的** `YOUR_CID` **目录下，则可以将** `_baseURI` **设置为** `ipfs://YOUR_CID/` **或** `https://YOUR_GATEWAY.com/metadata/`**。**
+
+**4\. 选择合适的 IPFS Pinning 服务**
+
+选择 IPFS Pinning 服务时，需要考虑以下因素：
+
+-   **价格:** 不同的 Pinning 服务提供不同的定价方案。
+    
+-   **可靠性:** 选择具有高可用性和良好声誉的 Pinning 服务。
+    
+-   **存储容量:** 确保 Pinning 服务提供足够的存储容量来存储你的 NFT 元数据。
+    
+-   **带宽:** 确保 Pinning 服务提供足够的带宽来支持 NFT 用户的访问。
+    
+-   **API:** 选择提供易于使用的 API 的 Pinning 服务，以便你可以自动化 NFT 发布流程。
+    
+-   **额外功能：** 一些 Pinning 服务提供额外的功能，例如文件管理、分析和 CDN 集成。
+    
+
+一些流行的 IPFS Pinning 服务包括：
+
+-   **Pinata:** 易于使用，提供免费套餐和付费套餐。
+    
+-   **Infura:** 提供 IPFS 和以太坊基础设施服务，适合大型项目。
+    
+-   **Web3.Storage:** 由 Protocol Labs 提供的免费 IPFS Pinning 服务，专注于存储 Web3 内容。
+    
+-   **Filebase:** 提供多云存储解决方案，包括 IPFS 支持。
+    
+
+**5\. 优化 NFT 的 IPFS 存储**
+
+-   **使用内容寻址:** 使用 IPFS CID 代替传统的 URL，以确保 NFT 元数据的长期可用性和防篡改。
+    
+-   **选择合适的 IPFS 网关:** 可以使用公共 IPFS 网关，也可以搭建自己的 IPFS 网关。 如果使用公共 IPFS 网关，请选择可靠且速度快的网关。
+    
+-   **优化图像大小:** 优化 NFT 图像的大小，以减少存储成本和提高加载速度。
+    
+-   **使用 IPFS Companion 浏览器扩展:** IPFS Companion 可以将浏览器配置为使用本地 IPFS 节点或公共 IPFS 网关来访问 IPFS 上的文件。
+    
+
+**6\. 常见问题及解决方案**
+
+-   **NFT 元数据无法加载:**
+    
+    -   确保 NFT 元数据的 IPFS CID 正确。
+        
+    -   检查 IPFS 网关是否可用。
+        
+    -   检查 IPFS pinning 服务是否正常工作。
+        
+-   **IPFS CID 泄露了真实 IP 地址:**
+    
+    -   使用 VPN 或 Tor 等工具隐藏真实 IP 地址。
+        
+    -   使用 IPFS Pinning 服务，避免直接运行 IPFS 节点。
+        
+-   **NFT 图像加载速度慢:**
+    
+    -   优化图像大小。
+        
+    -   选择速度快的 IPFS 网关。
+        
+    -   使用 CDN 加速 IPFS 文件的访问。
+        
+
+通过以上步骤，可以成功地将 NFT 发布到 IPFS 上，并确保 NFT 元数据的长期可用性和防篡改。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ## **Twitter Space 线上活动策划总结**
 
 ### **（一）全流程框架：准备 - 执行 - 复盘**
@@ -48,6 +404,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 ## **一、Uniswap V2 核心内容总结**
 
@@ -86,6 +443,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 ## **数据分析总结**
 
 ### **（一）区块链数据结构基础**
@@ -122,6 +480,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -222,6 +581,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 侧链 (Sidechain) 笔记
 
 ## 1\. 背景与动机
@@ -298,6 +658,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## ptimistic Rollup 核心机制
 
 -   **基本原理**：假设大多数参与者是可信的。
@@ -349,6 +710,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -426,6 +788,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -617,6 +980,7 @@ contract NFTmarket  {
 
 
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -630,6 +994,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -658,6 +1023,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -714,6 +1080,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -736,6 +1103,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -791,6 +1159,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -872,6 +1241,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -981,6 +1351,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -1062,6 +1433,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -1104,6 +1476,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1198,6 +1571,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -1260,6 +1634,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
