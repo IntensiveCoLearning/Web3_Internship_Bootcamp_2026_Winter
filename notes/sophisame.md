@@ -15,8 +15,87 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# 简历基本结构
+
+视觉上：白底黑字，不要用黑体（难阅读的字体）
+
+第一排profils基本信息介绍：自己和目标岗位的联系和重合面
+
+-   技术：要具体到产品功能
+    
+-   非技术：具体到每个环节的marketing做法和结果
+    
+
+实习经历
+
+skills
+
+# 重要要素
+
+排版清楚
+
+项目经验：学生会，社团里单独抗项目，或者自己做的项目，有项目管理和推进能力
+
+-   体现协作能力，责任心，抗风险能力等
+    
+
+链上经验
+
+技术：side project；公共项目的参与维护，积极的github提交纪录，对口的实习经历
+
+非技术：创立组织，活动，有b站小红书，抖音，tiktok，ins账户运营尝试，对口的实习经历
+
+进阶：对资金，热点，情绪的感知能力
+
+# 面试相关
+
+web3面试流程与互联网相比相对简短。大公司需要口语英语好，也非看重跨语言时区交流能力
+
+面试准备：试着找该公司会问啥，我的话会如何解决
+
+团队面和hr面的区别：团队更看重即插即用，hr更看重贪图，逻辑，你是否能融入团队的综合素质，比如自驱力，学习力，适应能力等
+
+有人做背书非常重要，内推！
+
+参与活动拓展人脉
+
+# 新人如何选择第一份工作
+
+-   vc>交易所>媒体>其他任何（vc几乎靠人脉）
+    
+    -   交易所：参考coinmarketcap上的所
+        
+    -   媒体：coindesk，cointelgraph，blockworks，decrypt等
+        
+        -   在媒体公司会更快得到新信息
+            
+-   技术成长：安全>lay1/2>交易所>节点商/矿池>其他
+    
+-   运营/商务：交易所>比较看周期和老板
+    
+-   谨慎去：小社区=什么都干+可能拿不到工资
+    
+
+## 如何判断工作是否靠谱
+
+[https://t.me/abetterweb3\_cn/3747](https://t.me/abetterweb3_cn/3747)
+
+警惕热门叙事套壳公司（元宇宙，raw）
+
+## 去哪儿实习
+
+广而范：vc，媒体，钱包
+
+精而专：项目方（某个生态）
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-02-02-1770032822612-image.png)
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 -   内存，引用与持久化存储
     
     -   EVM数据存储类型
@@ -58,6 +137,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 #   
 solidity
@@ -176,6 +256,7 @@ solidity
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 # 区块链数据结构
 
 ## 链上数据基本类型
@@ -266,6 +347,7 @@ value：转账的费用
 
 
 
+
 # **plume质押与流动性项目**
 
 ## Nest
@@ -329,6 +411,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 ## 哈希指针
 
 ![截屏2026-01-27 22.05.06.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-27-1769522717205-__2026-01-27_22.05.06.png)
@@ -348,6 +431,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -450,6 +534,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 # Hooked Protocol 代币经济模型
 
 Hooked Protocol采用了创新的单一代币（HOOK）结构，并辅以生态圈内部的的实用代币HGT（Hooked Gold Token）。其HOOK作为生态系统治理代币，具有社区活动和独家NFT访问功能，质押奖励与平台盈利，未来将用于Hooked基础设施的燃气费代币。
@@ -510,6 +595,7 @@ Gas 抵扣：在 Hooked Rollup 上的链上操作，使用 HOOK 可享手续费�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -587,6 +673,7 @@ retro funding是通过ai模型对项目先进行判断，产出方案，再结�
 
 
 
+
 # pendle协议
 
 我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
@@ -645,6 +732,7 @@ LP是SY和PT之间的交易
 
 
 
+
 LIdo
 
 ![截屏2026-01-20 22.31.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-20-1768919519461-__2026-01-20_22.31.50.png)
@@ -666,6 +754,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -790,6 +879,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 
 
+
 # uniswap协议：LP挖矿：AMM恒定乘积做市函数
 
 uniswap协议是以池子的方式进行交易的形式。这是一种做市函数。我们是和资金池做交易，所以Dex里需要引入新角色：LP的提供者，他们维持了整个交易的流动性。LP提供者就是普通用户的对手。
@@ -851,6 +941,7 @@ T0时间是添加流动性的时候，T1,T2分别为两次变化。并且假如y
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1103,6 +1194,7 @@ DeFi 的优势与风险：
 
 
 
+
 # 支付摩擦：机器经济需要新货币
 
 -   新需求：
@@ -1172,6 +1264,7 @@ web3对ai合规的解决方案：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1262,6 +1355,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1422,6 +1516,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
