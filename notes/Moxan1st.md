@@ -19,11 +19,68 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 # 总览
 
+-   学Uniswap V2——
+    
+-   浅浅研究一下硬件的开放性和可验证性——
+    
+-   完成Octanct实操——
+    
+
 # 详情
+
+## Uniswap V1 核心概念
+
+Uniswap 像是一个“全自动无人贩卖机”，相对的在币安（CEX）买币时，对手是另一个卖币的人（Peer-to-Peer）。
+
+### 核心公式：x · y = k
+
+乘积初始不为 0 情况下，可以保证池子里 x 和 y 永远不清零。
+
+**LP**：把大量的 Token A 和 Token B 按照 1:1 的价值存入合约。目的是赚取手续费。承担无常损失。
+
+**手续费0.3%**：拍脑袋决定的，比 CEX 略高。在 V3 变化。
+
+**流动性代币 (LP Tokens)**：当往池子里存钱时，协议会给 LP 发一个凭证，代表 LP 占这个池子的百分之几 。感觉 LP 是股东，LP Tokens 是股份。
+
+**闪电贷攻击**：黑客利用闪电贷平台借钱砸盘，用刚刚在 uniswap 换取的 ETH 去简单借贷平台兑换货币，借贷平台输在信息差。
+
+**有关闪电贷攻击的防御**：整体思路就是提高冗余，拉长时间窗口；增加判定参照：chainlink 预言机
+
+## Uniswap V2
+
+如果说 V1 是为了证明“AMM 这玩意儿真的能跑通”，那么 V2 就是为了证明“AMM 可以成为去中心化金融的基础设施”。
+
+### 1\. 解除 ETH 的“霸权”：ERC20 对 ERC20 直接交易
+
+V1 的痛点：必须由 ETH 中转
+
+**这带来了三个恶果：**
+
+-   **双重手续费**：你要付两遍 0.3%，总共 **0.6%** 的成本。
+    
+-   **双重滑点**：你承受了两次价格波动的风险。
+    
+-   **依赖 ETH 波动**：即使 DAI 和 USDC 都是稳定币，中间那个 ETH 如果价格剧烈波动，也会影响用户的交易体验。
+    
+
+V2 的解决方案：任意匹配；x · y = k，不再强制一个是 ETH，它们可以是任何两个代币。
+
+### 2\. 价格预言机的进化：TWAP (Time-Weighted Average Price)
+
+### 3\. Flash Swaps (闪电换)
+
+在 V1 和普通交易中，逻辑是：**“一手交钱，一手交货”**。你必须先转入 Token A，合约才会给你 Token B。
+
+V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
+
+## 参加以太坊中文周会
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Moxan1st/images/2026-02-02-1770012549606-image.png)
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 # 总览
 
@@ -43,6 +100,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 # 总览
 
 制作 LOGO——Done
@@ -58,6 +116,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -152,6 +211,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 总览
 
 项目跑通——Done，准备提交第一版
@@ -173,6 +233,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # 总览
 
 把黑客松项目做完——  
@@ -183,6 +244,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -231,6 +293,7 @@ Vibe coding 一个DApp——Done
 
 
 
+
 # 总览
 
 完成入门技术的3个任务：
@@ -266,6 +329,7 @@ JS：交互方面的，input和output等。
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -339,6 +403,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 
 
+
 # 总览
 
 开了个会，尝试加入LXDAO。
@@ -348,6 +413,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -403,6 +469,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -516,6 +583,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 
 
+
 # 总览
 
 -   完成挑战 Challenge #0 - Tokenization
@@ -588,6 +656,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -755,6 +824,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 
 
+
 # 总览
 
 ### 提交任务
@@ -775,6 +845,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -954,6 +1025,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -976,6 +1048,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1043,6 +1116,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1194,6 +1268,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1488,6 +1563,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -1596,6 +1672,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
