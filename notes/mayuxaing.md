@@ -15,13 +15,224 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+\## 前端需要显示"所有贡献者的列表"，2种方式：
+
+\### 方式 1：使用事件 + 前端监听（推荐）⭐
+
+你已经有了：
+
+\`\`\`solidity
+
+event Contribution(address indexed contributor, uint256 amount);
+
+emit Contribution(msg.sender, msg.value);
+
+\`\`\`
+
+\*\*前端可以\*\*：
+
+\- 监听所有Contribution事件
+
+\- 从事件日志中提取所有贡献者信息
+
+\- 在前端构建列表
+
+\*\*优点\*\*：不增加合约复杂度和 gas 消耗 \*\*缺点\*\*：依赖前端处理
+
+\### 方式 2：在合约中维护贡献者数组
+
+添加一个数组来跟踪所有贡献者：
+
+solidity
+
+address\[\] public contributors; // 存储所有贡献者地址
+
+然后在 contribute()中：
+
+solidity
+
+\`\`\`solidity
+
+// 如果是首次贡献，加入数组
+
+if (contributions\[msg.sender\] == 0) {
+
+contributors.push(msg.sender);
+
+}
+
+contributions\[msg.sender\] += msg.value;
+
+\`\`\`
+
+\*\*优点\*\*：合约端就能提供完整列表 \*\*缺点\*\*：消耗更多 gas
+
+\## `{value: ...}` 语法：发送 ETH 的方式
+
+\### 基本语法
+
+\`\`\`solidity
+
+接收方.函数名{value: 金额, gas: gas限制}(函数参数)
+
+\`\`\`
+
+\### 📝 实际例子
+
+\`\`\`solidity
+
+fundingRecipient.complete{value: address(this).balance}();
+
+\`\`\`
+
+\*\*解读\*\*：
+
+fundingRecipient- 接收方合约
+
+.complete- 要调用的函数
+
+{value: address(this).balance}
+
+\- () - 函数参数（这里是空的）
+
+\### 🔍 为什么需要 
+
+\`\`\`
+
+{value: ...}
+
+\`\`\`
+
+在 Solidity 中，如果你要调用另一个合约的payable函数
+
+\## 异常处理
+
+\### 为什么是require不是if else
+
+这是一个非常深刻的问题，触及了\*\*区块链与传统编程最大的逻辑区别\*\*。
+
+在传统编程（如 C++、Java、Python）中`if-else` 是用来控制流程的。
+
+但在 Solidity 中`require` 不仅仅是控制流程，它是一个\*\*“带有时间倒流功能的断路器”\*\*。
+
+主要有三个核心原因：\*\*状态回滚（Atomicity）\*\*、\*\*Gas 退款\*\*、\*\*代码防御性\*\*。
+
+\---
+
+\#### 核心原因：原子性与“时间倒流” (State Reversion)
+
+这是最关键的一点。区块链交易必须是\*\*原子的（Atomic）\*\*——要么全成功，要么全失败（什么都没发生）。
+
+\* \*\*使用 `if-else` (软失败)\*\*：
+
+如果你用 `if` 发现条件不对并 `return`，程序停止了，但\*\*之前已经发生的修改\*\*会被保留。
+
+\* _危险场景_：你先扣了用户的钱，然后用 `if` 检查库存，发现没货了，于是 `return`。
+
+\* _结果_：钱扣了，货没给，函数结束了。这是灾难。
+
+\* \*\*使用 `require` (硬回滚)\*\*：
+
+一旦 `require` 失败，EVM 会触发 `REVERT` 操作码。
+
+\* _结果_：它会像按下“Ctrl+Z”一样，\*\*撤销\*\*这笔交易中做过的所有状态修改（包括余额变动、变量赋值）。就像这笔交易从未发生过一样。
+
+\### erro revert为什么比传统的 require String 好
+
+\#### A. 极致的 Gas 节省（最重要原因）
+
+这是核心差异。
+
+\- \*\*传统的写法\*\*：
+
+\`\`\`solidity
+
+// 这种写法很昂贵！
+
+require(block.timestamp >= deadline, "Wait until the deadline has passed");
+
+\`\`\`
+
+\- \*\*原理\*\*：EVM 需要把 `"Wait until the deadline has passed"` 这串长字符串存储在字节码中，并且在报错时通过内存返回。
+
+\- \*\*成本\*\*：字符串越长，Gas 越贵。哪怕是一个字母，都要占空间。
+
+\- \*\*你的写法（Custom Error）\*\*：
+
+\`\`\`solidity
+
+// 定义错误（类似定义一个函数签名）
+
+error TooEarly();
+
+if (block.timestamp < deadline) {
+
+revert TooEarly(); // 这种写法非常便宜！
+
+}
+
+\`\`\`
+
+\- \*\*原理\*\*：EVM 不存字符串。它只存 `TooEarly()` 的哈希值前 4 个字节（Selector）。
+
+\- \*\*成本\*\*：无论错误名字叫 `A()` 还是 `ThisIsAVeryLongErrorName()`，它在运行时只占 \*\*4 个字节\*\*。\*\*这是固定成本，极其便宜。\*\*
+
+\#### B. 支持动态参数（调试神器）
+
+如果你用字符串 `require`，想告诉用户“还要等多久”，你得疯狂拼接字符串（Solidity 拼接字符串非常痛苦且费 Gas）。
+
+但在 `revert` 中，你可以像传函数参数一样传值：
+
+Solidity
+
+\`\`\`
+
+// 定义带参数的错误
+
+error TooEarly(uint256 currentTime, uint256 deadline);
+
+if (block.timestamp < deadline) {
+
+// 直接把数据抛出去，前端能收到具体数值！
+
+revert TooEarly(block.timestamp, deadline);
+
+}
+
+\`\`\`
+
+前端或者区块链浏览器会收到`TooEarly(1700000000, 1800000000)`。用户瞬间明白：“哦，还要等一亿秒”。
+
+\---
+
+\### 2. 进化史：从 require 到 revert
+
+为了让你更清楚 Web3 开发的演进，请看这个对比：
+
+| \*\*阶段\*\* | \*\*写法\*\* | \*\*评价\*\* | \*\*典型场景\*\* |
+
+| --------------------------- | --------------------------------- | --------- | --------------------------- |
+
+| \*\*石器时代\*\* | `require(cond, "Error String")` | \*\*耗气、笨重\*\* | 快速原型开发、老旧合约 |
+
+| \*\*青铜时代\*\* | `revert("Error String")` | \*\*同上\*\* | 复杂的逻辑分支中手动触发 |
+
+| \*\*黄金时代 \*\* | `if (!cond) revert CustomError()` | \*\*省气、专业\*\* | \*\*当前的行业标准\*\* |
+
+| \*\*未来时代 (Solidity 0.8.26+)\*\* | `require(cond, CustomError())` | \*\*完美\*\* | 最新版编译器支持直接在 require 里用自定义错误 |
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 了解mcp skill
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 \# ai辅助思路
 
@@ -140,6 +351,7 @@ Authropic 的实验是让 52 位初级程序员一起学习一个新的 Python �
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 \- **Hardhat**：如果你喜欢 **JavaScript**，以后想做全栈开发（写前端网页跟合约交互），Hardhat 是必经之路。因为它的测试代码和前端代码很像。
@@ -456,6 +668,7 @@ myx@cs:~/web3开发/test$ cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "
 
 
 
+
 \## 滑点与价格冲击
 
 **滑点**就是：\*\*“你预期的价格”\*\* 和 **“实际成交的更差价格”** 之间的差额。
@@ -619,6 +832,7 @@ amounts\[i + 1\] = getAmountOut(amounts\[i\], reserveIn, reserveOut);
 
 
 
+
 \### 3.实战模拟
 
 **场景设定：**
@@ -777,6 +991,7 @@ ETH 涨了，你虽然赚了（从 4万 变成了 5.6万），但你跑输了大
 
 
 
+
 Uniswp是一个去中心化交易所，所谓去中心化，可以从以下两个方面理解：
 
 ●交易全部是由开源的代码来控制，没有任何人为的因素
@@ -868,6 +1083,7 @@ $$\\Delta y = \\frac{y \\cdot \\Delta x\_{with\\\_fee}}{x + \\Delta x\_{with\\\_
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1294,6 +1510,7 @@ messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5
 
 
 
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -1437,6 +1654,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1679,6 +1897,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -1757,6 +1976,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2061,6 +2281,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -2106,6 +2327,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2236,6 +2458,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -2321,6 +2544,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2428,6 +2652,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2578,6 +2803,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -2679,6 +2905,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2845,6 +3072,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
