@@ -23,11 +23,256 @@ Web3 实习计划 2025 冬季实习生
 
 非技术向：
 
-![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030431796-image.png)
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030431796-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030476885-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030507847-image.png)
+
+**链上经验**很重要：
+
+-   鲁棒性究竟是什么；
+    
+-   共识、禁锢、创新究竟是空话还是真的存在，要去思考；
+    
+-   链上的东西才是未来的方向和形态；
+    
+-   可以进步和改变，UI和UX
+    
+-   很多东西都有窗口期，例如公链窗口期已经过了
+    
+
+项目经验：
+
+-   考察综合特质，能否负责、抗风险
+    
+-   协作能力
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030994198-image.png)
+
+面试相关：
+
+-   面试会很短
+    
+-   英语要好，因为产品面向海外
+    
+-   尝试找你要面试公司存在什么问题，如果是你会怎么解决
+    
+-   solid projects results 提前准备好自己的东西
+    
+
+团队vsHR
+
+-   团队：体现你的学习能力
+    
+-   HR：可以看谈吐、逻辑、是否聪明
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770031457270-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770031776953-image.png)
+
+### 新人如何选择第一份工作?
+
+-   视野起点:VC>交易所>媒体>其他任何
+    
+    -   VC:搜一下topcryptoVC(但是基本只靠人脉，或者你本身属于那个圈层)
+        
+    -   交易所:公开招聘渠道+交易所官网(参考 CoinMarketCap CEX ranking
+        
+        -   目前唯一被验证的商业模式，所以很热
+            
+    -   媒体
+        
+        -   国际 Coindesk Cointelgraph Blockworks Decrypt
+            
+        -   中文 深潮 吴说 律动 星球 foresight PANews
+            
+            -   之前的币圈三大马车——交易所、矿机、媒体
+                
+    -   技术成长：安全>layer1/2>交易所>节点商/矿池>其他任何
+        
+    -   运营/商务：\*\*交易所＞\*\*比较看周期和你遇到的老板
+        
+    -   谨慎去：小社区=什么都干+可能拿不到工资(看老板
+        
+
+[https://t.me/abetterweb3\_cn/3747](https://t.me/abetterweb3_cn/3747)
+
+如何判断这份工作是否靠谱?
+
+-   频道视频:[https://t.me/abetterweb3\_cn/3747](https://t.me/abetterweb3_cn/3747)
+    
+-   自己学习了解最根本的技术栈以后，问一下那个公司在哪个链上做事，基本能区分盘子和正经web3公司
+    
+-   警惕热门叙事套壳公司(元宇宙、RWA
+    
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770032047798-image.png)
+
+要不要来币圈/web3实习
+
+1.  你是什么国家什么城市什么学校能收到什么样的offer再考虑要不要来币圈
+    
+    1.  城市>公司(更进一步，所在小组)>行业>具体做什么
+        
+    2.  就目前而言的币圈的公司更适合你收不到其他行业好offer的情况下再考虑
+        
+    3.  如果你对赚钱有强烈的渴望，可以无脑来（这个地方是世界最大的赌场
+        
+    4.  _目前合规以后，金融和web3更加贴近（上一波是web2_
+        
+
+能不能来
+
+1.英语好(至少书面阅读能力
+
+2.需要感兴趣，需要有自学能力
+
+3.多接触链上
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770032180510-image.png)
+
+### 来了以后做什么
+
+1.非技术(运营/商务)：跟互联网/游戏/电商一致
+
+2.技术：多一个智能合约语言solidity/rust，其他也基本一致
+
+### 以“实习”形式进入币圈，和自己野生进入币圈的区别
+
+1.工具（压缩学东西的时间
+
+2.信息差
+
+3.圈子（看人品和因缘际会hhh，很多发财路径就来源于这个，经xxx介绍……，好圈子一般来源于工作而非野生
+
+### 去哪儿实习
+
+1.广而泛：vc、媒体、钱包（钱包些许式微
+
+2.精而专：项目方(layer1、infra
+
+-   ERC-20方向和Solana方向
+    
+
+3.跟web2差不多：CEX
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770032479623-image.png)
+
+好处
+
+1.远程的工作多而且大多对于kpi要求不高
+
+2.有概率直接发财这辈子都不用工作
+
+坏处
+
+1.加密经历其他地方不认(但是年轻可以弥补这条
+
+2.可能什么也学不到，极少有面相应届生的稳定培养计划(如管培生(因为行业不稳定
+
+3.链上收入是灰色的；社会身份也很灰色
+
+4.没有秋招(因为行业不稳定
+
+推荐阅读
+
+黄瓜猫《赚快钱思维会毁掉你》
+
+[https://x.com/0xPickleCati/status/2016059049729458207](https://x.com/0xPickleCati/status/2016059049729458207%E6%89%93%E5%B7%A5%E7%9C%8B%E8%B5%B7%E6%9D%A5%E6%98%AF%E4%B8%80%E7%A7%8D%E2%80%9C%E6%85%A2%E9%92%B1%22%EF%BC%8C%E5%AE%9E%E9%99%85%E4%B8%8Aslow)
+
+[打工看起来是一种“慢钱"，实际上slow is fast](https://x.com/0xPickleCati/status/2016059049729458207)
+
+[Pickle Cat on X: “Your fast money brain will make you lose everything” / X](https://x.com/0xPickleCati/status/2016059049729458207)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770032882162-image.png)
+
+### Antonia老师的文章地址
+
+[https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl](https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033032831-image.png)
+
+### [md.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl](https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033239223-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033305637-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033401015-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033498544-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033542500-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033604939-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033674370-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033855573-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770033881992-image.png)
+
+VC本质是眼光的变现
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034046824-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034075986-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034108269-image.png)![152C25BC-12AC-4EF9-9FA0-2F9F1CBAD549.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034253152-152C25BC-12AC-4EF9-9FA0-2F9F1CBAD549.jpg)
+
+老师采访HR的文章：
+
+[https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl](https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034171133-image.png)
+
+[https://www.techflowpost.com/zh-CN/article/29702](https://www.techflowpost.com/zh-CN/article/29702)
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034230493-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034328360-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034395819-image.png)
+
+目前的强验证场景的需求不是那么高
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034560330-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034598782-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034614235-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034680225-image.png)
+
+solidity+fast+solang
+
+快速上手比学得快学得精重要
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034753223-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034803652-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034820981-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770034891095-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035062798-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035127488-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035286778-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035299586-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035382471-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035417214-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035654290-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035687084-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035837998-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035965149-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770035983956-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770036145308-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770036203972-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770036270948-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770036383632-image.png)
+
+Web3 行业的求职、发展、行业现状及未来等相关内容，具体如下：
+
+-   **简历准备**：
+    
+    -   **简历格式**：采用白底黑字，推荐黑体字体，避免使用其他颜色和字体。第一排写三五百字的 Bio，介绍与目标职位核心重合点。
+        
+    -   **内容排序**：将与工作相关的经历和技能放在前面，教育经历可往后放，技能可放在 profile 下面或工作经历旁边。
+        
+    -   **针对性设计**：为每个岗位单独设计和排版简历，提高与岗位的匹配度，体现对职业生涯的尊重。
+        
+    -   **内容具体性**：技术岗位要针对目标公司和岗位的需求，非技术岗位要详细说明工作成果和具体数据。
+        
+-   **面试环节**：
+    
+    -   **面试流程**：Web3 行业面试通常一到两轮，比互联网简短，大部分公司规模小，无 HR 部门，创始人或成员直接参与招聘。
+        
+    -   **语言能力**：大公司需要口语能力，面向海外的公司要求英语的口语和书面能力。
+        
+    -   **面试准备**：面试前思考公司产品可能存在的问题及解决办法，体现用户导向；准备好之前的工作成果。
+        
+    -   **面试表现**：非 HR 人员更看重即插即用能力和学习能力，HR 更关注综合素质；有人背书很重要，应拓展人脉。
+        
+-   **职业选择**：
+    
+    -   **不同类型公司**：VC 处于资金、人才和技术上游，但难进入；交易所商业模式成熟，规模和用户量大，但要避免小交易所；媒体信息覆盖面广，是不错的起点。
+        
+    -   **技术成长序列**：追求技术成长可选择安全公司、公链、大型产品类交易所、节点商等。
+        
+    -   **运营和商务**：运营和商务岗位优先选择交易所，能接触多种活动品类，但进入难度大。
+        
+    -   **社区工作**：社区工作需谨慎，可能遇到老板资金问题或拉新困难等情况。
+        
+-   **行业现状与未来**：
+    
+    -   **行业现状**：Web3 行业还处于早期，产品粗糙，用户少，目前靠炒币吸引用户，但也有团队在建设。
+        
+    -   **未来发展**：行业有发展潜力，金融机构开始接入链上操作，只是未大众化，发展路径可能较曲折。
+        
+-   **个人发展建议**：
+    
+    -   **学习提升**：技术人员可学习 solidity 和 rust 等语言，多参加黑客松；了解行业历史和本质，补足链上经验。
+        
+    -   **建立人脉**：多参加圈内活动，拓展人脉，有人背书可增加进入公司的机会。
+        
+    -   **创业准备**：想创业要多结交人，打造个人 IP，提前建设个人影响力。
+        
+    -   **职业心态**：保持自信，创造自己的背景，不过分焦虑，关注当下的学习和工作成果。
+        
+-   **任务**
+    
+    -   **文档发送**：将 Coinmarketcap 网站的文档发送到 room 会议聊天室，供大家参考交易所排名
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -98,6 +343,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -288,6 +534,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -393,6 +640,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -481,6 +729,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -636,6 +885,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -692,6 +942,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -886,6 +1137,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -893,6 +1145,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -978,6 +1231,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -987,6 +1241,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1156,6 +1411,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -1277,6 +1533,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1546,6 +1803,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -1593,6 +1851,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1984,6 +2243,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -2025,6 +2285,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2443,6 +2704,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -2769,6 +3031,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -2876,6 +3139,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
