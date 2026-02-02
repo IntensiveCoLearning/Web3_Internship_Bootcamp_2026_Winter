@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+待补充
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 进行黑客松项目收尾
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 vibecoding中
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 黑客松头脑风暴中
@@ -47,6 +55,7 @@ vibecoding中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -126,11 +135,13 @@ vibecoding中
 
 
 
+
 筹备黑客松
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -211,11 +222,13 @@ vibecoding中
 
 
 
+
 今天主要进行了投研分析会的演讲, 并进行本周笔记(工具总结)的产出, 以及2026展望加密的文章
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -302,6 +315,7 @@ Foundry与Hardhat各有优势，可结合需求选择：Foundry适合高级开�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -566,6 +580,7 @@ Foundry与Hardhat各有优势，可结合需求选择：Foundry适合高级开�
 
 
 
+
 ## 一、版本演进总览
 
 Uniswap 是 Web3 生态核心 DEX（去中心化交易所），历经三代核心迭代，从基础恒积模型逐步走向可程式化扩展，核心演进逻辑：**提升资金效率 → 增强灵活性与扩展性**
@@ -710,6 +725,7 @@ Uniswap 是 Web3 生态核心 DEX（去中心化交易所），历经三代核�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1068,6 +1084,7 @@ function transfer(address to, uint256 amount) external onlyOwner {
 
 
 
+
 # Web3 社区运营 & 活动策划核心笔记
 
 ## 一、Telegram 社群搭建与基础运营
@@ -1212,6 +1229,7 @@ function transfer(address to, uint256 amount) external onlyOwner {
 
 
 
+
 ## 一、 协议起源与核心背景
 
 ### 1\. 诞生需求
@@ -1321,11 +1339,13 @@ ERC-7962 是以太坊生态的 **密钥哈希型代币标准**，由 Alex Tian �
 
 
 
+
 今天主要进行本周笔记的书写发布到推特,整理成小白扫盲的形式,并且准备进行投研报告的书写, 希望能为我们投研社区带来流量
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1448,6 +1468,7 @@ ERC-7962 是以太坊生态的 **密钥哈希型代币标准**，由 Alex Tian �
 
 
 
+
 # 一、AI与Web3融合核心逻辑
 
 ## 1\. AI智能体的进化：从“嘴替”到“打工人”
@@ -1544,6 +1565,7 @@ AI与Web3融合是刚需，AI提供“自主行动能力”，Web3提供“身�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1676,6 +1698,7 @@ AI与Web3融合是刚需，AI提供“自主行动能力”，Web3提供“身�
 
 
 
+
 ## 交易（Transaction）架构与生命周期
 
 交易是区块链状态改变的原子单位。
@@ -1758,6 +1781,7 @@ Gas 不仅是计费单位，更是网络的安全屏障与资源调度器。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
