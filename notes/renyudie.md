@@ -17,8 +17,28 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+以太坊活动调研：**EthCC**
+
+举办时间：30/03-02/04
+
+举办地点：Cannes，France
+
+活动主题：The Ethereum Community Conference (EthCC) is the largest and longest-running annual **European**Ethereum event focused on **technology and community**. Four intense days of conferences, networking and learning.
+
+报名方式：[https://ethcc.io/tickets](https://ethcc.io/tickets)
+
+参与方式：作为项目方/公司，可以以赞助或speaker的身份参与。如果作为共创者或者KOL，可以争取speaker的身份，或是买票到场。作为行业经验明显不足的小白，主办方也有准备供学生申请的免费票（大部分此类活动都会有这样的名额，限量申请，先到先得）。此外，如果能申请作为此次活动的志愿者，将是很有价值的一份工作，对想通过运营或其他赛道进入行业的同学是非常好的一次机会，既能积累行业经验，丰富履历，又能认识一些人脉。确定是可能会比较卡语言能力，也会卡地理位置，对身处国内的同学比较不友好。
+
+信息来源及宣传渠道：我自己是在ethereum官网看到的，
+
+规模及价值：四月初在Cannes举办的一共两场活动，先是**EthCC**，后是**ETHGlobal黑客松**。来参加这个活动的一般会连续参加两场，来参加黑客松的也非常建议先参加这个活动，这样可以在这个活动认识新的朋友，顺便组队。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ### 本周感悟
 
 本周是web3实习计划的第二周，本周继续学习运营的方法及技巧，熟悉运营工具，与此同时也开始了一些solidity智能合约的学习。
@@ -88,6 +108,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ### 本周感悟
 
 本周是web3实习计划的第二周，本周继续学习运营的方法及技巧，熟悉运营工具，与此同时也开始了一些solidity智能合约的学习。
@@ -133,6 +154,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -185,6 +207,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ```
 Context:
 This is an existing project using <tech stack>.
@@ -207,6 +230,7 @@ Process:
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -365,6 +389,7 @@ Web3第一语言类Space，累计超千万播放量。
 
 
 
+
 第二周结束，本周思考与复盘。
 
 Typeless
@@ -421,6 +446,7 @@ TG社群运营SOP
 
 
 
+
 [XSpoonAi/spoon-core](https://github.com/XSpoonAi/spoon-core)
 
 Solidity 编译功能
@@ -430,6 +456,7 @@ LLM → 生成 Solidity ↓ Tool → solc 编译 ↓ ❌ 报错 ↓ LLM ← 读�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -595,6 +622,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 ### 运营渠道
 
 1.  telegram
@@ -666,6 +694,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -715,6 +744,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -844,6 +874,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -891,6 +922,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -922,6 +954,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1079,6 +1112,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
