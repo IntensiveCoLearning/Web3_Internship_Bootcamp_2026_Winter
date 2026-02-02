@@ -15,8 +15,194 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# 一、前端 → 钱包 → 交易 → EVM
+
+很多人把这句话当流程图看，其实它是 **四个完全不同的系统**。
+
+* * *
+
+## 1️⃣ 前端：只负责“组装指令”，不执行任何逻辑
+
+前端（React / Vue / Next）**不参与 swap 计算**，它只做三件事：
+
+### ① 计算参数（本地）
+
+```
+amountOutMin
+path
+deadline
+```
+
+这些计算：
+
+-   用的是 **链下 RPC call**
+    
+-   调的是 `getAmountsOut`
+    
+-   **不写链、不花 gas**
+    
+
+⚠️ 注意
+
+> 前端计算的价格 **不具备最终性**  
+> 真正决定结果的是链上执行
+
+* * *
+
+### ② 编码 calldata
+
+前端最终生成的是一段 **ABI 编码后的 bytes**
+
+```
+0x38ed1739
++ amountIn
++ amountOutMin
++ path
++ to
++ deadline
+```
+
+这一步本质是：
+
+```
+abi.encodeWithSelector(...)
+```
+
+* * *
+
+### ③ 请求钱包签名
+
+前端只是“请求”，**钱包才是权力中心**。
+
+* * *
+
+## 2️⃣ 钱包：签名机器 + 风险隔离层
+
+钱包做的事情非常关键：
+
+### ① 生成交易结构
+
+```
+to      = Router 地址
+data    = swap calldata
+gas     = 估算值
+nonce   = 当前账户 nonce
+```
+
+### ② 用私钥签名
+
+```
+sig = sign(tx, privateKey)
+```
+
+⚠️ 一旦签名：
+
+-   前端无法修改
+    
+-   节点无法修改
+    
+-   合约无法修改
+    
+
+* * *
+
+## 3️⃣ 交易进入 mempool（不是立刻上链）
+
+此时交易：
+
+-   **还没执行**
+    
+-   **还没消耗 gas**
+    
+-   **还可能被夹子 / MEV 修改顺序**
+    
+
+这也是为什么有：
+
+-   滑点
+    
+-   sandwich attack
+    
+-   MEV bot
+    
+
+* * *
+
+## 4️⃣ EVM：真正的执行才从这里开始
+
+**只有被打包进区块后，EVM 才开始跑代码。**
+
+* * *
+
+# 二、每个 ERC20 转账 = SLOAD + SSTORE（展开到 opcode）
+
+你看到的 Solidity：
+
+```
+token.transferFrom(from, to, amount);
+```
+
+在 EVM 里是 **一组昂贵操作**。
+
+* * *
+
+## 1️⃣ allowance 检查（mapping）
+
+```
+allowance[from][spender]
+```
+
+### 实际发生：
+
+1.  计算 slot
+    
+
+```
+slot = keccak256(spender, keccak256(from, allowance.slot))
+```
+
+2.  `SLOAD(slot)`
+    
+3.  判断是否 ≥ amount
+    
+4.  `SSTORE(slot, allowance - amount)`
+    
+
+👉 **至少 1 次 SLOAD + 1 次 SSTORE**
+
+* * *
+
+## 2️⃣ balance 扣减（from）
+
+```
+balanceOf[from] -= amount;
+```
+
+-   计算 slot
+    
+-   SLOAD
+    
+-   SSTORE
+    
+
+* * *
+
+## 3️⃣ balance 增加（to）
+
+```
+balanceOf[to] += amount;
+```
+
+-   再来一次 SLOAD
+    
+-   再来一次 SSTORE
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 # 一、 EIP-1967
 
 Proxy 是可升级合约的核心技术，理解这一点是协议级开发必须掌握的。
@@ -219,6 +405,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 # 一、Subgraph ≠ 传统数据库写入
 
@@ -424,6 +611,7 @@ Indexer 会：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 # 一、结论
@@ -748,6 +936,7 @@ Indexer 会：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1126,6 +1315,7 @@ event.on 实时提示
 
 
 
+
 # 一、为什么不用 Subgraph 会崩
 
 我们先假设一个**非常真实的 DApp 场景**：
@@ -1419,6 +1609,7 @@ Subgraph 刚好完美匹配。
 
 
 
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -1613,6 +1804,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1975,6 +2167,7 @@ uint32  blockTimestampLast;
 
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -2232,6 +2425,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2606,6 +2800,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -2931,6 +3126,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -3177,6 +3373,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3477,6 +3674,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -3625,6 +3823,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3991,6 +4190,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -4328,6 +4528,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -4431,6 +4632,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4589,6 +4791,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -4930,6 +5133,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -5032,6 +5236,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
