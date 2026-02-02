@@ -15,8 +15,96 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+### **修饰器的继承**
+
+`Solidity`中的修饰器（`Modifier`）同样可以继承，用法与函数继承类似，在相应的地方加`virtual`和`override`关键字即可。
+
+```
+contract Base1 {
+    modifier exactDividedBy2And3(uint _a) virtual {
+        require(_a % 2 == 0 && _a % 3 == 0);
+        _;
+    }
+}
+
+contract Identifier is Base1 {
+
+    //计算一个数分别被2除和被3除的值，但是传入的参数必须是2和3的倍数
+    function getExactDividedBy2And3(uint _dividend) public exactDividedBy2And3(_dividend) pure returns(uint, uint) {
+        return getExactDividedBy2And3WithoutModifier(_dividend);
+    }
+
+    //计算一个数分别被2除和被3除的值
+    function getExactDividedBy2And3WithoutModifier(uint _dividend) public pure returns(uint, uint){
+        uint div2 = _dividend / 2;
+        uint div3 = _dividend / 3;
+        return (div2, div3);
+    }
+}
+```
+
+`Identifier`合约可以直接在代码中使用父合约中的`exactDividedBy2And3`修饰器，也可以利用`override`关键字重写修饰器：
+
+```
+modifier exactDividedBy2And3(uint _a) override {
+    _;
+    require(_a % 2 == 0 && _a % 3 == 0);
+}
+```
+
+### **构造函数的继承**
+
+子合约有两种方法继承父合约的构造函数。举个简单的例子，父合约`A`里面有一个状态变量`a`，并由构造函数的参数来确定：
+
+```
+// 构造函数的继承
+abstract contract A {
+    uint public a;
+
+    constructor(uint _a) {
+        a = _a;
+    }
+}
+```
+
+1.  在继承时声明父构造函数的参数，例如：`contract B is A(1)`
+    
+2.  在子合约的构造函数中声明构造函数的参数，例如：
+    
+    ```
+    contract C is A {
+        constructor(uint _c) A(_c * _c) {}
+    }
+    ```
+    
+
+### **调用父合约的函数**
+
+子合约有两种方式调用父合约的函数，直接调用和利用`super`关键字。
+
+1.  直接调用：子合约可以直接用`父合约名.函数名()`的方式来调用父合约函数，例如`Yeye.pop()`
+    
+    ```
+    function callParent() public{
+        Yeye.pop();
+    }
+    ```
+    
+2.  `super`关键字：子合约可以利用`super.函数名()`来调用最近的父合约函数。`Solidity`继承关系按声明时从右到左的顺序是：`contract Erzi is Yeye, Baba`，那么`Baba`是最近的父合约，`super.pop()`将调用`Baba.pop()`而不是`Yeye.pop()`：
+    
+    ```
+    function callParentSuper() public{
+        // 将调用最近的父合约函数，Baba.pop()
+        super.pop();
+    }
+    ```
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 ## **事件**
 
 `Solidity`中的事件（`event`）是`EVM`上日志的抽象，它具有两个特点：
@@ -135,6 +223,7 @@ contract Erzi is Yeye, Baba{
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
+
 ## **构造函数和修饰器**
 
 ## **构造函数**
@@ -177,6 +266,7 @@ function changeOwner(address _newOwner) external onlyOwner{
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 ### 变量初始值
@@ -340,6 +430,7 @@ function ternaryTest(uint256 x, uint256 y) public pure returns(uint256){
 
 
 
+
 ### array、struct
 
 -   固定长度数组：在声明时指定数组的长度。用`T[k]`的格式声明，其中`T`是元素的类型，`k`是长度
@@ -470,11 +561,13 @@ function writeMap (uint _Key, address _Value) public{
 
 
 
+
 今日在WTF上重新学习solidity，这里的教程比 [Solidity by Example](https://solidity-by-example.org/) 更好懂一点，目前完成了solidity101前五关。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -605,6 +698,7 @@ contract ReentrancyGuardTransient {
 
 
 
+
 structs
 
 You can define your own type by creating a .`struct`
@@ -666,6 +760,7 @@ contract Todos {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -819,6 +914,7 @@ contract ArrayReplaceFromEnd {
 
 
 
+
 使用view读取状态变量无需花费gas fee
 
 交易使用ether付费，一ether等于10^18wei
@@ -904,6 +1000,7 @@ contract Loop {
 
 
 
+
 ### Solidity 基础语法
 
 1.  原始数据类型
@@ -963,6 +1060,7 @@ contract Loop {
 
 
 
+
 今天按照draken老师的教程一步步进行了remix的设置开发环境和熟悉~
 
 ![daf12249-a599-4b10-9e74-d4633af2c037.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/tokyoexplorer/images/2026-01-19-1768814261433-daf12249-a599-4b10-9e74-d4633af2c037.png)
@@ -970,6 +1068,7 @@ contract Loop {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1056,6 +1155,7 @@ contract Loop {
 
 
 
+
 ### 第二章 以太坊网络结构与节点类型
 
 一、以太坊节点与客户端软件
@@ -1119,6 +1219,7 @@ contract Loop {
 
 
 
+
 ### 以太坊的特点
 
 **1\. 智能合约(Smart Contracts)** 智能合约是存储在区块链上的程序，由网络节点执行。现在以太坊已从早期的“矿工(PoW)”时代完全过渡到“验证者(PoS)”时代,这些验证者负责打包并执行合约。
@@ -1145,6 +1246,7 @@ contract Loop {
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1217,6 +1319,7 @@ contract Loop {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
