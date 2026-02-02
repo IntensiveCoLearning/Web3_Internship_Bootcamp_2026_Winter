@@ -15,8 +15,496 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# Introduction｜这场分享会在回答什么问题（Overview）
+
+这场分享会的核心其实是一个“钱去哪了（Where does the money go?）+ 值从哪来（Where does value come from?）”的双问题：
+
+-   **资金流（Cash Flow）**：Mint/交易过程中，钱分别被谁拿走？平台抽成、版税、gas、套利者分别怎么分？
+    
+-   **价值流（Value Flow）**：NFT 为何能值钱？是图片吗？是共识吗？叙事如何衰退又如何重构？
+    
+-   **约束条件（Constraints）**：合规怎么管？产权边界在哪里？技术实现链路是什么？现实难点有哪些？
+    
+
+> 你这份笔记的一个亮点是：没有把 NFT 只当“图片”，而是把它当 **可编程资产（programmable asset）**与 **权属凭证（proof of ownership）**来讨论。
+
+* * *
+
+# Foundations｜基础篇：NFT 价值流向与交易机制（Value Flow & Mechanics）
+
+## 1）发行模式（Issuance / Minting Models）
+
+你记录了一级市场（primary market）两种核心发行路径：
+
+### A. 低定价售卖（Low-price primary sale）
+
+-   项目方在 **一级市场**以较低定价出售（fixed price / whitelist price）
+    
+-   早期常见目标：**制造稀缺 + 形成地板价预期（floor price expectation）**
+    
+
+### B. 免费 Mint 后自由交易（Free mint → Secondary trading）
+
+-   先让用户 **free mint（免费铸造）**获得筹码
+    
+-   然后在 **二级市场（secondary market）**自由买卖
+    
+-   早期多偏向炒作升值（speculation / flip），也有项目会和自身生态绑定（ecosystem utility）
+    
+
+✅ **补充理解（Why 两种都常见）**
+
+-   低价售卖：项目方更早获得现金流（early cash inflow）
+    
+-   免费 mint：更容易冷启动（lower friction onboarding），把“付费”推迟到二级市场交易环节
+    
+
+* * *
+
+## 2）交易平台：以 OpenSea / Blur 为代表（Marketplaces）
+
+你写得非常关键：平台策略改变，会直接改变“价值流向”。
+
+-   **OpenSea**：早期倾向自动执行版税（royalty enforcement as default）
+    
+-   **Blur**：主打 **0 版税（zero royalty）+ 积分空投（points airdrop）**，对市场结构造成冲击（market structure shift）
+    
+
+✅ **补充理解（What Blur 改变了什么）**
+
+Blur 的做法本质上是把用户激励从“给创作者（royalties）”改成“给交易者（traders incentives）”，于是：
+
+-   交易者更愿意频繁交易（high-frequency trading / farming）
+    
+-   项目方/创作者的持续收入变不稳定（royalty uncertainty）
+    
+-   “平台竞争”变成对流动性（liquidity）的争夺，而不只是 UI/品牌
+    
+
+* * *
+
+## 3）费用构成：平台抽成 + 创作者版税 + gas（Fee Stack）
+
+你给出了最核心的费用拆分：
+
+### A. 平台抽成（Platform fee）
+
+-   平台收入来源之一（platform revenue）
+    
+-   通常来自每笔交易额（GMV-based take rate）
+    
+
+### B. 创作者版税（Creator royalty）
+
+-   你记录：通常 **5%** 左右，按交易 GMV 计提（percentage of GMV）
+    
+-   关键点：版税依赖平台是否遵守 **ERC2981（royalty standard）**
+    
+-   但 **ERC2981 不是强制执行（non-enforceable by default）**：它“描述了版税信息”，但不保证“你一定付”
+    
+
+> 很重要的区分：
+> 
+> **ERC2981 更像“版税声明（royalty metadata）”，不是“强制扣款器（royalty enforcer）”。**
+
+### C. Gas 费（gas fee）
+
+-   Mint / transfer / approve / trade 都可能产生链上操作（on-chain ops）
+    
+-   对用户来说属于真实成本（real cost），且会影响交易意愿（behavioral friction）
+    
+
+✅ **补充一个“资金流向小图”（帮你形成直觉）**
+
+一笔二级市场交易（secondary sale）大概会发生：
+
+1.  买家支付（buyer pays）
+    
+2.  资金拆分（fee split）：
+    
+    -   平台抽成 → 平台
+        
+    -   版税（如果执行）→ 创作者/项目方
+        
+    -   其余 → 卖家
+        
+3.  链上执行（on-chain settle）+ gas → 验证者/矿工（validator/miner）
+    
+
+* * *
+
+# Core Concepts｜进阶篇：NFT 叙事与项目价值判断（Narrative & Valuation）
+
+## 1）过往叙事：元宇宙宏大叙事降温（Metaverse narrative cooled down）
+
+你记录的典型案例：**无聊猿（Bored Ape Yacht Club）**
+
+-   早期与“元宇宙（metaverse）”绑定
+    
+-   你笔记里写到其初始 Mint 价格为 **0.008 ETH**（以你记录为准）
+    
+-   通过 **IP 衍生（IP derivatives）+ 生态打造（ecosystem building）**推高价值
+    
+-   现在整体叙事降温（narrative cooling / hype decay）
+    
+
+✅ **补充理解（Why 叙事会降温）**
+
+当叙事只靠“宏大故事”而缺少可持续的产品/权益兑现（utility delivery），市场会进入：
+
+-   热度衰减（attention decay）
+    
+-   流动性下降（liquidity drop）
+    
+-   地板价回归（mean reversion of floor）
+    
+
+* * *
+
+## 2）有效叙事特征：NFT 不能单独自洽（NFT narrative rarely self-sustains）
+
+你提出的核心结论非常成熟：
+
+-   **单一 NFT 叙事难持续（single NFT narrative is fragile）**
+    
+-   更可持续的方式是让 NFT 依附具体项目（attached to a project）
+    
+-   NFT 作为配套属性存在，例如：
+    
+    -   早期成员凭证（early member credential / access pass）
+        
+    -   贡献者标识（contributor badge）
+        
+    -   社群通行证（community pass）
+        
+
+> 这就是从 “JPEG speculation” 转向 “membership + rights + identity” 的叙事迁移。
+
+* * *
+
+## 3）新趋势：NFT + Token 释放流动性（NFT + Token for liquidity）
+
+你记录了一个重要趋势：头部 NFT 项目倾向配套发行 Token（tokenization）：
+
+-   **Moonbirds**：筹备发 Token（你笔记提及）
+    
+-   **CryptoPunks**：Punk 社区发行相关 Token（你笔记提及）
+    
+
+✅ **补充理解（Why Token 会出现）**
+
+Token 往往承担：
+
+-   更高流动性（higher liquidity than NFTs）
+    
+-   更细颗粒度的价格发现（finer price discovery）
+    
+-   社群激励与治理（incentives & governance）
+    
+
+但也会带来合规与证券属性讨论（regulatory/security-like debate），这正好衔接到你下一部分的合规笔记。
+
+* * *
+
+# Core Concepts｜进阶篇：法律合规与产权问题（Compliance & Ownership Boundaries）
+
+> 这里属于法律话题，我会以“学习笔记/一般信息（general info）”形式整理，不构成具体法律意见（not legal advice）。
+
+## 1）香港监管（香港证监会（SFC）\*\*）：按“基因”分类（Genetic classification）
+
+你记录的结构是：
+
+-   **证券型（security-like）**：若承诺分红（profit sharing / dividend promise）
+    
+    -   需 **1/9 号牌照**（你笔记提及）
+        
+-   **虚拟资产（virtual asset）**：若具支付用途（payment use case）
+    
+    -   需 **VSP 牌照**（你笔记提及）
+        
+-   **纯数字藏品（collectible / commodity-like）**：无金融属性
+    
+    -   可视作普通商品（general goods）
+        
+
+✅ **补充理解（Why 叫“基因”）**
+
+监管看的是：你这个 NFT/产品“像什么”（what it behaves like），而不是你叫它什么（what you call it）。
+
+* * *
+
+## 2）大陆监管：财产保护 + 严禁金融化炒作（Property recognized, financialization restricted）
+
+你记录了两条关键事实：
+
+-   _温州_\*判例：NFT 被确立为合法财产权益，受法律保护（property interest recognized）
+    
+-   同时严格禁止二级市场炒作、匿名交易、金融化操作：
+    
+    -   质押融资（pledge lending）
+        
+    -   承诺回购（guaranteed buyback）
+        
+    -   各类变相证券化（disguised securitization）
+        
+
+✅ **“镜像监管”特征（你总结得很妙）**
+
+-   香港：核心问“是否证券”（security test）→ 合规下可金融化
+    
+-   大陆：核心问“是否财产”（property protection）→ 保护所有权但压制炒作
+    
+
+* * *
+
+## 3）产权边界：物权与版权分离（Ownership ≠ Copyright）
+
+你记录的关键点非常重要，很多新手会踩坑：
+
+-   拿到 NFT（token ownership）≠ 自动拥有商用版权（commercial rights）
+    
+-   除非：
+    
+    -   标注 **CC0（public domain-like license）**
+        
+    -   或合约/条款明确约定商业使用权（explicit license grant）
+        
+
+### AI 生成 NFT 的版权争议（AI-generated copyright uncertainty）
+
+你写到：纯 AI 生成 NFT 可能不受著作权法保护（copyright protection uncertain）。
+
+✅ 这意味着实际争议里常见的问题会变成：
+
+-   谁是作者（authorship）
+    
+-   是否有人类创作贡献（human authorship threshold）
+    
+-   平台/项目方条款怎么写（terms & licensing)
+    
+
+* * *
+
+## 4）常见纠纷点（Common disputes）
+
+你列的纠纷点我全部保留，并补上“会怎么发生”：
+
+-   平台单方面变更规则（platform unilateral changes）
+    
+    → 影响版税/交易展示/下架等
+    
+-   项目承诺未兑现（promise not delivered）
+    
+    → 可能涉及违约（breach of contract）
+    
+-   产权界定模糊（unclear licensing scope）
+    
+    → “我能不能商用？”“我能不能做衍生品？”
+    
+-   AI 生成 NFT 版权争议（AI copyright disputes）
+    
+    → 容易引发侵权/归属不明
+    
+
+* * *
+
+# Core Concepts｜进阶篇：技术原理与实践（Tech Fundamentals & Practice)
+
+## 1）核心标准（Key Standards）
+
+你记录的标准体系完整且准确：
+
+-   **ERC721**：单一资产（non-fungible, 1-of-1 per tokenId）
+    
+-   **ERC1155**：半同质/批量资产（multi-token standard，适合游戏道具等）
+    
+-   **ERC2981**：版税标准（royalty info standard），但非强制执行（not enforceable)
+    
+
+✅ **补充一句你可以直接背的**
+
+-   ERC721/1155 解决“**我是什么（what the token is）**”
+    
+-   ERC2981 解决“**建议给谁分版税（who should receive royalties）**”，但不解决“**必须给吗（must pay）**”。
+    
+
+* * *
+
+## 2）技术价值本质：可编程、可组合资产（Programmable & Composable Lego）
+
+你写的“乐高（Lego）”比喻非常好：
+
+-   可编程（programmable）：规则写进合约（smart contract rules）
+    
+-   可组合（composable）：跨应用调用（cross-app integration）
+    
+-   典型用法：
+    
+    -   社群通行证（access pass）
+        
+    -   贡献证明（proof of contribution）
+        
+    -   权益凭证（rights token）
+        
+
+* * *
+
+## 3）项目上线关键组件（Launch Pipeline）
+
+你记录的链路我按工程顺序补全成“端到端（end-to-end）”流程：
+
+1.  用 Solidity 写合约（write smart contract）
+    
+2.  部署上链（deploy on-chain）
+    
+3.  上传元数据（metadata JSON）
+    
+    -   图片/音频通常放在中心化存储或 IPFS（视项目选择）
+        
+4.  铸造 Mint（链上状态变更，需要 gas）
+    
+5.  进入钱包（stored in wallet）
+    
+6.  平台识别与展示（marketplace indexing，例如 OpenSea 的抓取/识别）
+    
+7.  二级交易（secondary trading）
+    
+
+* * *
+
+## 4）现存问题（Current Pain Points）
+
+你列的痛点我全部保留，并补上它们会导致什么：
+
+-   标准化不足（lack of standardization）
+    
+    → 不同平台解析不一致（inconsistent indexing）
+    
+-   元数据格式不一（metadata fragmentation）
+    
+    → 展示错乱/跨平台兼容差
+    
+-   跨链兼容差（poor cross-chain compatibility）
+    
+    → 资产迁移麻烦（bridging friction）
+    
+-   以太坊 gas 费高（high gas cost）
+    
+    → 小额交易不划算（uneconomical micro-trades）
+    
+-   多数 NFT 仍仅为图片形式（JPEG dominance）
+    
+    → 容易被质疑“价值空心化（hollow value）”
+    
+
+* * *
+
+# Advanced Applications｜高阶篇：延伸问题答疑（Extended Q&A）
+
+## 1）非图片类 NFT（Non-image NFTs）
+
+你写得很关键：音乐片段、房产映射等都可以做 NFT。
+
+✅ 这里“能不能值钱”的核心不是媒介，而是：
+
+-   是否形成共识（consensus）
+    
+-   是否有实际用途/权益（utility/rights）
+    
+-   是否能被验证与结算（verifiable & enforceable)
+    
+
+* * *
+
+## 2）NFT 价值本质：数字权属凭证（Proof of Ownership）
+
+你用了“信封（envelope）”比喻，很准确：
+
+-   NFT 本身像一个“权属凭证/信封（ownership envelope）”
+    
+-   真正价值来自信封里“背后的资产/权益（underlying asset/rights）”，例如：
+    
+    -   文化认同（cultural identity）
+        
+    -   RWA 映射（real-world asset mapping）
+        
+    -   会员权益（membership perks）
+        
+    -   社群资源（community capital）
+        
+
+* * *
+
+## 3）遗产继承（Inheritance）
+
+你记录：NFT 可作为遗产继承，遗嘱需明确范围。
+
+我把“怎么写才不容易扯皮”补成可操作清单：
+
+遗嘱/协议里最好明确：
+
+-   继承的是 **token 所有权（token ownership）**还是包含 **商业授权（commercial license）**
+    
+-   NFT 对应的底层资产是什么（underlying asset reference）
+    
+-   访问方式：钱包/多签/托管安排（access plan: wallet, multisig, custody）
+    
+-   元数据位置与关联信息（metadata links）
+    
+
+* * *
+
+# Summary｜总结：这场分享会的“可迁移框架”（Reusable Framework）
+
+你总结的四大维度非常稳，我把它升级成一句“框架口诀”：
+
+> Mechanics（钱怎么流）→ Narrative（值靠什么讲）→ Compliance（能不能这么玩）→ Tech（能不能这么做）
+> 
+> 这四个维度一起看，才能避免只看价格波动（price-only trap）。
+
+你的市场判断也很清晰：
+
+-   NFT 已从早期炒作降温（hype cooldown）
+    
+-   从元宇宙单一叙事 → 转向 **资产绑定（asset-backed）+ 场景落地（use-case anchored）**
+    
+-   价值依赖实际资产支撑与共识构建（asset + consensus）
+    
+
+* * *
+
+# Vocabulary｜关键术语回顾（Key Terms Review）
+
+-   一级市场：Primary market
+    
+-   二级市场：Secondary market
+    
+-   铸造：Mint
+    
+-   交易额：GMV (Gross Merchandise Value)
+    
+-   平台抽成：Platform fee / take rate
+    
+-   版税：Royalty
+    
+-   可组合性：Composability
+    
+-   可编程资产：Programmable asset
+    
+-   元数据：Metadata (JSON)
+    
+-   预言机：Oracle（如果未来涉及 RWA/结算会常见）
+    
+-   CC0：Public-domain-like license
+    
+-   物权与版权分离：Ownership vs Copyright separation
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 **本周高强度输入：彻底重构了对 Web2 vs Web3 产品经理的认知 🧠**
 
 过去一周啃完了关于 Web3 产品全景地图的硬核内容，最大的体感是：**不要用 Web2 的“旧地图”去发现 Web3 的“新大陆”。**
@@ -36,6 +524,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 **Web2 与 Web3：产品、商业模式与产品经理的全景地图**
 
@@ -1387,6 +1876,7 @@ Web2 与 Web3 的根本差异可以收敛为四个关键词：**所有权、信�
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 《Remix 的 Value 是什么：payable 许可决定“能不能收钱”（Deploy vs deposit 的 Revert 真相）》
 
 ## Introduction｜本次笔记主题 (Overview)
@@ -1610,6 +2100,7 @@ contract MyWallet {
 
 
 
+
 今日学习笔记总结
 
 1\. 学习内容：掌握MCP、AI相关MCP，同步梳理对应核心Skills技能；
@@ -1623,6 +2114,7 @@ contract MyWallet {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1825,6 +2317,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -2095,6 +2588,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 
 
+
 一、今日完成核心任务
 
 1\. 小组海报设计：成功完成组内海报设计工作，成果获得认可，个人收获强烈的成就感，进一步激发了学习与实践的动力。
@@ -2132,6 +2626,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 
 
+
 今天忙着搬家特别忙碌，没来得及好好静下心学习，晚上7点多忙完回来，第一时间跟进同步了设计相关进度，目前已经完成了GitHub头图（banner图）的设计，还有kick off的海报设计也顺利搞定。
 
 今天也有特别深的感悟和收获，选定一个行业之前一定要看清楚、了解透彻，一旦做出选择就要坚定坚守、深耕下去，不能因为累了就轻易放弃或者换来换去，既然我选择了Web3这条赛道，今后就会坚定的一直走下去。
@@ -2141,6 +2636,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2191,6 +2687,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 
 
+
 1:今天主要学习了figma；然后做了两个海报，
 
 2:听了Speedrun Basic wrokshop
@@ -2200,6 +2697,7 @@ Polymarket 之所以“火”，也因为它处在争议中心：
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2654,6 +3152,7 @@ Backend 适合做（你原文 1~6 全保留）：
 
 
 
+
 ## Introduction｜今天学到的核心是什么 (Overview)
 
 你今天的学习可以浓缩成一句话：
@@ -2951,6 +3450,7 @@ Remix VM 给你很多账户，其目的就是让你模拟多人场景（multi-ac
 
 
 
+
 今天还在啃remix的compile编译&deploy部署。
 
 * * *
@@ -3213,6 +3713,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 ## 1/19 学习笔记
 
 今天主要做了两件事：  
@@ -3373,6 +3874,7 @@ C3. 读-写-读（验证状态变化）
 
 
 
+
 这周 Web3 实习营给我最大的感受是：Web3 真的很开放、包容、多元。老师们的分享很真诚，不是那种“讲完就结束”的输出，而是会把自己踩过的坑、理解的路径、甚至一些判断依据都摊开来聊。对一个刚系统入门的人来说，这种氛围特别珍贵。
 
 同时我也意识到一个很现实的问题：我这周主要在“输入”，但“输出”明显不够。于是就出现了很尴尬的情况——我听了很多、记了很多，但朋友问我“Web3 到底是什么？”我脑子里是一堆点，却很难在短时间内讲清楚。归根结底是我缺少把信息重新组织成“自己的表达”。所以接下来我会刻意逼自己多输出，也会多看看朋友们是怎么写总结、怎么讲概念的，把输入转成稳定的理解。
@@ -3410,6 +3912,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 今天基本没怎么产出学习笔记，更多是在做“整理与进入状态”的事情。
 
 我先把自己的个人空间重新梳理了一遍：推特账号、小红书账号都做了统一调整。包括头像和背景封面的选择、整体风格的对齐、以及标签的补全。这个过程看起来是“外部包装”，但对我来说其实是在确认我接下来想以什么样的形象和关键词被别人认识，也是在给自己做一个更清晰的定位——我希望表达的是更稳定、更长期的方向，而不是零散的碎片更新。
@@ -3423,6 +3926,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3491,6 +3995,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3619,6 +4124,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 ### Web3 安全 & 合规（简要笔记）
 
 **安全**
@@ -3670,6 +4176,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 
 
+
 最近这几天事情有点多，我先把这四块用“提纲式”记一下占个坑，后面空下来我再补细节/案例。
 
 -   **区块链基础概念**：去中心化记账；地址/私钥/钱包；交易+区块+状态；Gas 手续费；合约=链上程序；安全第一（别乱签名/别乱授权）。
@@ -3686,6 +4193,7 @@ DeFi 这周也算把几个高频词对上了号：TVL（锁仓总价值）是衡
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
