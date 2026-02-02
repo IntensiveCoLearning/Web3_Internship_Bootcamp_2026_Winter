@@ -15,8 +15,313 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# Foundry 智能合约测试学习笔记
+
+## Foundry Basic (基础测试)
+
+### 合约代码
+
+```
+// Counter.sol
+contract Counter {
+    uint256 public count;
+
+    function inc() external {
+        count += 1;
+    }
+
+    function dec() external {
+        count -= 1;
+    }
+}
+```
+
+### 测试代码解析
+
+测试结构
+
+```
+contract CounterTest is Test {
+    Counter public counter;
+    
+    // 每个测试前执行
+    function setUp() public {
+        counter = new Counter();
+    }
+}
+```
+
+测试用例详解
+
+**1\. 基础功能测试 (testInc)**
+
+```
+function testInc() public {
+    counter.inc();
+    assertEq(counter.count(), 1);
+}
+```
+
+-   测试`inc()`函数的基本功能
+    
+-   使用`assertEq()`断言值相等
+    
+-   验证计数器从0增加到1
+    
+
+**2\. 失败测试 - 旧方法 (testFailDec)**
+
+```
+function testFailDec() public {
+    // 这会因下溢而失败
+    counter.dec();
+}
+```
+
+-   使用`testFail`前缀表示预期失败的测试
+    
+-   当计数器为0时，`dec()`会触发下溢错误
+    
+-   如果测试通过（即确实失败），则符合预期
+    
+
+**3\. 失败测试 - 新方法 (testDecUnderflow)**
+
+```
+function testDecUnderflow() public {
+    vm.expectRevert(stdError.arithmeticError);
+    counter.dec();
+}
+```
+
+-   使用`vm.expectRevert()`明确预期特定错误
+    
+-   `stdError.arithmeticError`：算术错误（下溢/上溢）
+    
+-   更精确的测试方法，推荐使用
+    
+
+**4\. 正常递减测试 (testDec)**
+
+```
+function testDec() public {
+    counter.inc();
+    counter.inc();
+    counter.dec();
+    assertEq(counter.count(), 1);
+}
+```
+
+-   先增加两次，再减少一次
+    
+-   验证正常情况下的递减功能
+    
+-   最终值应为1
+    
+
+### 关键知识点
+
+1.  **测试生命周期**
+    
+    -   `setUp()`：每个测试前重置环境
+        
+    -   每个测试函数独立运行
+        
+2.  **断言方法**
+    
+    -   `assertEq(a, b)`：断言a等于b
+        
+    -   来自`forge-std/Test.sol`库
+        
+3.  **异常测试**
+    
+    -   旧方法：`testFail`前缀
+        
+    -   新方法：`vm.expectRevert()`\+ 错误类型
+        
+    -   推荐新方法，更精确
+        
+4.  **标准错误**
+    
+    -   `stdError.arithmeticError`：算术运算错误
+        
+    -   其他常见错误可在`stdError`中找到
+        
+
+* * *
+
+## Foundry Authorization (权限测试)
+
+### 合约代码
+
+```
+// Auth.sol
+contract Auth {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function setOwner(address _owner) external {
+        require(msg.sender == owner, "not authorized");
+        owner = _owner;
+    }
+}
+```
+
+### 测试代码解析
+
+测试结构
+
+```
+contract AuthTest is Test {
+    Auth private auth;
+
+    function setUp() public {
+        // 部署者（本合约）成为owner
+        auth = new Auth();
+    }
+}
+```
+
+测试用例详解
+
+**1\. 权限测试 (testSetOwner)**
+
+```
+function testSetOwner() public {
+    auth.setOwner(address(1));
+    assertEq(auth.owner(), address(1));
+}
+```
+
+-   测试合约部署者（测试合约本身）可以更改所有者
+    
+-   验证权限功能正常工作
+    
+
+**2\. 无权限测试 (testFailNotOwner)**
+
+```
+function testFailNotOwner() public {
+    // 下个调用将由address(1)执行
+    vm.prank(address(1));
+    auth.setOwner(address(1));
+
+    vm.startPrank(address(1));
+    // 直到stopPrank，所有调用都由address(1)执行
+    auth.setOwner(address(1));
+    auth.setOwner(address(1));
+    auth.setOwner(address(1));
+    vm.stopPrank();
+}
+```
+
+### 关键知识点
+
+1.  **作弊码 (Cheatcodes)**
+    
+    -   `vm.prank(address)`：下一个调用使用指定地址
+        
+    -   `vm.startPrank(address)`：开始持续使用指定地址
+        
+    -   `vm.stopPrank()`：停止持续prank
+        
+2.  **权限测试模式**
+    
+    -   测试正常授权操作
+        
+    -   测试未授权操作应失败
+        
+    -   使用`testFail`或`vm.expectRevert()`
+        
+3.  **地址常量**
+    
+    -   `address(1)`：常用的测试地址
+        
+    -   其他：`address(0)`, `address(this)`
+        
+4.  **Prank使用场景**
+    
+    -   单次调用：`vm.prank()`
+        
+    -   多次调用：`vm.startPrank()`\+ `vm.stopPrank()`
+        
+    -   避免忘记`stopPrank()`导致测试污染
+        
+
+* * *
+
+## 综合总结
+
+### Foundry测试框架特点
+
+1.  **继承结构**
+    
+    -   测试合约继承自`Test`合约
+        
+    -   自动获得测试工具和断言库
+        
+2.  **测试命名**
+    
+    -   正常测试：`test`前缀
+        
+    -   预期失败：`testFail`前缀（旧）或`vm.expectRevert()`（新）
+        
+3.  **常用导入**
+    
+    ```
+    import {Test, console2, stdError} from "forge-std/Test.sol";
+    ```
+    
+    -   `Test`：基础测试功能
+        
+    -   `console2`：调试输出
+        
+    -   `stdError`：标准错误类型
+        
+4.  **测试命令**
+    
+    -   运行测试：`forge test`
+        
+    -   查看详情：`forge test -vvv`
+        
+    -   指定合约：`forge test --match-contract CounterTest`
+        
+
+### 最佳实践
+
+1.  每个测试前使用`setUp()`重置状态
+    
+2.  使用明确的错误预期而非`testFail`前缀
+    
+3.  合理使用prank模拟不同调用者
+    
+4.  保持测试独立，不相互依赖
+    
+5.  测试正常情况和所有异常情况
+    
+
+### 常见错误类型
+
+-   算术错误：`stdError.arithmeticError`
+    
+-   数组越界：`stdError.indexOOBError`
+    
+-   零除错误：`stdError.divisionError`
+    
+-   枚举溢出：`stdError.enumConversionError`
+    
+
+通过这两个示例，可以掌握Foundry测试的基本写法和权限测试的特殊技巧，为智能合约开发提供可靠的测试保障。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 # AI 提示词工程 - Foundry 智能合约开发
 
 ## 系统角色设定
@@ -545,6 +850,7 @@ forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 # Foundry 工具链笔记
 
 ## 核心工具
@@ -760,6 +1066,7 @@ chisel
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 # Crowd Fund 众筹合约笔记
@@ -1135,6 +1442,7 @@ function claim(uint256 _id) external {
 
 
 
+
 * * *
 
 ## **无 Gas 代币转移 (Meta Transactions)**
@@ -1317,6 +1625,7 @@ function deploy() external {
 
 
 
+
 # **访问私有数据 (Accessing Private Data)**
 
 ### **核心概念：链上无秘密**
@@ -1422,6 +1731,7 @@ web3.eth.getStorageAt(contractAddress, mapLocation, console.log);
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1580,6 +1890,7 @@ function verify(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1814,6 +2125,7 @@ Gas：默认3000000
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2703,6 +3015,7 @@ monitors:
 
 
 
+
 # 智能合约升级与修改模式
 
 ## 1\. 核心原则：合约不可直接修改
@@ -3381,6 +3694,7 @@ function test_FullUpgradePath() public {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -4261,6 +4575,7 @@ echidna-test . --contract MyContract
 
 
 
+
 # 智能合约开发高级：Gas 优化、安全、审计与协作规范
 
 ## 1\. Gas 优化
@@ -4607,6 +4922,7 @@ function withdraw() public {
 
 
 
+
 # 智能合约编译产物详解
 
 ## 1\. 字节码（Bytecode）
@@ -4708,6 +5024,7 @@ function withdraw() public {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -5016,6 +5333,7 @@ contract MessageBoard {
 
 
 
+
 # 以太坊节点连接通信与类型笔记
 
 ## 一、节点间连接与通信的三步流程
@@ -5191,6 +5509,7 @@ contract MessageBoard {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -5414,6 +5733,7 @@ contract MessageBoard {
 
 
 
+
 Web3 行业充满机遇，但也伴随复杂的法律风险。理解并规避这些风险，是保护自身职业发展和财产安全的前提。下面梳理核心风险点
 
 ### 国内政策红线与刑事风险
@@ -5495,6 +5815,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5602,6 +5923,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -6222,6 +6544,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 
 
+
 ### **以太坊学习笔记**
 
 **一、 核心定位：不止是加密货币，更是可编程平台**
@@ -6294,6 +6617,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
