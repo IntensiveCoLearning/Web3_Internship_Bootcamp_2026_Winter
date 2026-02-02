@@ -15,8 +15,116 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# ERC-7962 (基于 KeyHash 的资产所有权标准)
+
+## 1\. 核心范式转移：从 Address 到 KeyHash
+
+ERC-7962 的本质是将资产的所有权锚点从**公开地址 (Address)** 切换为**公钥哈希 (KeyHash)**，实现“持有权”与“支付权”的彻底分离。
+
+| 特性 | 传统 ERC-20 / 721 | ERC-7962 (KeyHash) |
+| 所有权标识 | address (20 bytes) | keyHash = keccak256(publicKey) (32 bytes) |
+| 验证方式 | msg.sender 或 allowance | EIP-712 签名 + 公钥匹配 |
+| Gas 支付 | 通常由所有者支付 | 支持由 Relayer 代付 (无感接入) |
+| 隐私性 | 强绑定，易追踪 | 弱绑定，通过 Key Rotation 降低关联 |
+
+* * *
+
+## 2\. 验证逻辑：如何证明“我是主人”？
+
+在执行 `transfer` 时，合约不再检查 `msg.sender`，而是验证用户提供的 `key` (公钥) 和 `signature` (签名)。
+
+### 验证步骤：
+
+1.  **身份匹配**：确认提供的公钥哈希与链上记录一致。
+    
+    $$keccak256(key) == fromKeyHash$$
+    
+2.  **签名有效性**：验证签名是由该公钥对应的私钥签署。
+    
+    $$ecrecover(digest, signature) == address(keccak256(key\[1:\]) \\text{ last 20 bytes})$$
+    
+3.  **防重放**：验证 `nonce` 并在执行后自增。
+    
+
+* * *
+
+## 3\. 接口实现详析
+
+### 3.1 ERC-KeyHash721 (NFT)
+
+-   **查询**：`ownerOf(tokenId) -> bytes32` (返回 KeyHash)。
+    
+-   **转移**：`transfer(tokenId, toKeyHash, key, signature, deadline)`。
+    
+-   **EIP-712 结构**：`{ tokenId, toKeyHash, nonce, deadline }`。
+    
+
+### 3.2 ERC-KeyHash20 (FT) —— UTXO 模拟
+
+为了增强隐私，ERC-20 版本的转账引入了“找零”机制（UTXO 模式）：
+
+-   **强制 Key Rotation**：转账时必须指定 `leftKeyHash` 用于接收余额，且要求：
+    
+    > `leftKeyHash` $\\neq$ `fromKeyHash` 且 `leftKeyHash` $\\neq$ `toKeyHash`
+    
+-   **余额更新逻辑**：
+    
+    1.  `fromKeyHash` 余额清零（该 KeyHash 作废/进入冷却）。
+        
+    2.  `toKeyHash` 增加 `amount`。
+        
+    3.  `leftKeyHash` 增加 `(原余额 - amount)`。
+        
+
+* * *
+
+## 4\. 设计哲学：为什么没有 Approve？
+
+ERC-7962 刻意省略了 `approve/allowance` 机制，理由如下：
+
+-   **安全防线**：KeyHash 设计鼓励“一次性使用”。一旦在 `transfer` 中暴露了公钥（存在于 calldata 中），该 KeyHash 的安全性在理论上较未暴露前有所下降。
+    
+-   **授权模型**：通过 EIP-712 签名实现“单次精准授权”，比长期的 allowance 授权更安全。
+    
+
+* * *
+
+## 5\. 隐私、安全与局限性
+
+### 5.1 隐私边界 (Pseudonymity vs. Privacy)
+
+-   **收益**：链上余额不再直接关联到用户的公开交易地址。
+    
+-   **风险**：公钥在转账时会出现在 **calldata** 中。虽然链上只存哈希，但扫描器可以提取公钥并推导出对应的以太坊地址。
+    
+-   **对策**：必须配合 **Key Rotation**，每次交易都换新 KeyHash。
+    
+
+### 5.2 安全要点
+
+-   **防篡改**：所有关键字段（`amount`, `to`, `nonce`, `deadline`）均包含在签名内。
+    
+-   **签名可塑性**：必须检查 `s` 值范围（Low-S）防止签名重放。
+    
+-   **Relayer 风险**：虽然 Relayer 不能偷钱，但可以扣留交易（审查风险），需通过 `deadline` 机制规避。
+    
+
+* * *
+
+## 6\. 典型应用场景
+
+1.  **完全无 Gas 环境**：新用户无需持有 ETH 即可接收并转让资产，由项目方 Relayer 承载 Gas。
+    
+2.  **资产隐身领取**：配合 ERC-5564 (Stealth Addresses)，实现资产发送到用户尚未生成的 KeyHash 中。
+    
+3.  **高频账户安全**：资产存在 KeyHash 下，即便主地址私钥泄露，只要 KeyHash 对应的私钥安全，资产依然受控。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 # Uniswap v4：从“交易对”进化为“流动性操作系统”
 
 ## 1\. 核心定位：DEX 变平台
@@ -124,6 +232,7 @@ Uniswap v4 采用 **Business Source License 1.1**。
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 # Web3 投研
 
 ## 一、 投研三支柱：构建全维度分析模型
@@ -214,6 +323,7 @@ Uniswap v4 采用 **Business Source License 1.1**。
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 # 链上数据：
 
 ## 一、 链上数据的三大基石
@@ -296,6 +406,7 @@ Uniswap v4 采用 **Business Source License 1.1**。
 
 
 
+
 # Uniswap V2 ：自动化做市商 (AMM)
 
 ## 1\. 协议定义
@@ -370,6 +481,7 @@ V2 的系统由三个核心组件协作完成：
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -469,6 +581,7 @@ ERC-20 的强大源于其 **Approve（授权）** 设计，这是所有 DEX（�
 
 
 
+
 # SpoonOS：核心理念与系统架构
 
 ## 一、 三大设计哲学 (Design Philosophy)
@@ -539,6 +652,7 @@ SpoonOS 的“乐高”地基。
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -647,6 +761,7 @@ Reactive Network 补齐了区块链基础设施中“主动权”的拼图。它
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -768,6 +883,7 @@ yarn verify --network sepolia
 
 
 
+
 # Ethernaut ：从逻辑推演到实战破解
 
 ## 一、 Ethernaut 的通用解题思维（以 Level 1 Fallback 为例）
@@ -868,6 +984,7 @@ await contract.sendTransaction({
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -979,6 +1096,7 @@ function hip() public pure override(Yeye, Baba) returns(string memory) {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1115,6 +1233,7 @@ function update() public {
 
 
 
+
 # ERC-7962：从公开所有权到隐私身份凭证
 
 ## 1\. 背景：ERC-721 的隐私困境
@@ -1193,6 +1312,7 @@ ERC-7962 不仅保护隐私，更彻底革新了用户体验，让 Web3 真正�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1336,6 +1456,7 @@ contract MyContract {
 
 
 
+
 # ERC721 存储逻辑与 Gas 权衡 (Enumerable 深度解析)
 
 ## 一、 核心矛盾：Mapping 的“单向盲区”
@@ -1410,6 +1531,7 @@ mapping(uint256 => address) private \_owners;
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1541,6 +1663,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 
 
+
 ## 一、 全球主流加密监管框架对比
 
 ### 1\. 欧盟：MiCA (最全、最具示范性)
@@ -1641,6 +1764,7 @@ Solidity 遵循**原子性**：一旦触发回滚，所有状态更改都会撤�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1762,6 +1886,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 
 
+
 ## 一、核心概念辨析
 
 -   **区块 (Block)**：实际存储交易数据和状态的“账本页”。
@@ -1845,6 +1970,7 @@ Web3 合规不是新学科，其核心依然是 **金融合规**。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
