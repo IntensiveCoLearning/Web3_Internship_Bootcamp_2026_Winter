@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+看了看简历如何制作，改了一下自己的简历。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 整理笔记上传博客。
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 今天整理了一下ERC标准，然后继续干hackathon！！！！
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 继续hackathon ！！！！今天继续学习了一点UniswapV4
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 学习Uniswap V4 ing + hackathon！！！！
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 整理Uniswap V2 V3的学习笔记。
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -80,11 +92,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 终于整完了反应式智能合约Uniswap V2 止损订单，还是昨天的Recat agent ing
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -448,11 +462,13 @@ Solidity **支持紧凑存储（Storage Packing）**，但只有当多个变量�
 
 
 
+
 今天在搭SpoonOS ing，闹麻了。明天继续配
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -479,11 +495,13 @@ Solidity **支持紧凑存储（Storage Packing）**，但只有当多个变量�
 
 
 
+
 今天完成挑战 Challenge - Tokenization，然后回顾了gas优化和合约安全方面的知识。
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -516,6 +534,7 @@ Solidity **支持紧凑存储（Storage Packing）**，但只有当多个变量�
 
 
 
+
 ## **1.19**
 
 今天把Crowdfunding挑战完成了，也算是第一次利用hardhat框架去完成项目了。
@@ -523,6 +542,7 @@ Solidity **支持紧凑存储（Storage Packing）**，但只有当多个变量�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -621,6 +641,7 @@ Solidity **支持紧凑存储（Storage Packing）**，但只有当多个变量�
 
 
 
+
 ## **1.17**
 
 ### **数据存储**
@@ -691,11 +712,13 @@ Solidity合约数据存储采用的为合约的每项数据指定一个可计算
 
 
 
+
 把这周的笔记汇总整理了一下。然后做钓鱼攻防任务ing。
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1670,6 +1693,7 @@ AA 可以：
 
 
 
+
 \## 1.14
 
 \### 合规
@@ -1959,6 +1983,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2380,6 +2405,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
