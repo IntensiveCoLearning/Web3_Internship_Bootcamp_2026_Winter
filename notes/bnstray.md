@@ -15,8 +15,117 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+## Part 1: Web3 叙事与产品哲学 (观点来源: Echo\_BL)
+
+### 核心论点：去信任化的成本与收益
+
+-   **价值公式：** 如果产品的“去信任化”（Trustlessness）带来的收益，无法覆盖它因此引入的“复杂性与成本”，那么该产品极可能只是一个资本游戏。
+    
+-   **下一周期的赢家：** 将彻底证明区块链作为“后端”**的价值，远大于它作为**“前端”噱头的价值。
+    
+
+### 演进方向 (未来3-5年)
+
+1.  **叙事转变：** 从“重建一切”（Rebuild Everything）转向“嵌入一切”（Embed into Everything）。
+    
+2.  **AI 与 Crypto 的关系：**
+    
+    -   _彼得·蒂尔名言：_ “加密技术是自由主义，人工智能是共产主义。”
+        
+    -   **深度融合：** AI Agent 将成为链上新的经济活动主体（资金管理、交易结算）。
+        
+3.  **价值审视标准：**
+    
+    -   你的应用是否真正受益于“去信任化”？
+        
+    -   价值应来自：解决真实需求、提升效率、创造新体验（而非单纯的代币激励）。
+        
+4.  **Web 2.5 的平衡：** 在“便利性”与“去信任化”之间找到平衡点，向去中心化进行渐进式体验过渡。
+    
+
+* * *
+
+## Part 2: 实操技能 - OpenCode 配置 Claude 第三方中转
+
+**目标：** 将宣称兼容 Claude Code 的第三方中转服务（Relay），接入到 `OpenCode` 开发环境中。
+
+### 🔧 核心配置步骤
+
+1\. 准备工作
+
+-   获取 **baseURL**（通常需补全 `/v1`，如 `https://url.com/v1`）。
+    
+-   获取 **API Key**（以 `k-` 开头）。
+    
+
+2\. 修改配置文件 (`opencode.json`)
+
+在 `~/.config/opencode/opencode.json` 中添加独立的 provider。
+
+-   **关键点：** 必须指定 `"npm": "@ai-sdk/anthropic"` 以确保协议兼容。
+    
+-   **建议：** 不要直接修改原生的 `provider.anthropic`，而是新建一个 ID（如 `claudecode-relay`）以防污染配置。
+    
+
+JSON
+
+```
+{
+  "provider": {
+    "claudecode-relay": {
+      "npm": "@ai-sdk/anthropic",
+      "options": {
+        "baseURL": "https://url.com/v1"
+      },
+      "models": {
+        "claude-opus-4-5-20251101": {
+          "name": "中转站 Opus 4.5",
+          "limit": { "context": 200000, "output": 64000 }
+        }
+      }
+    }
+  }
+}
+```
+
+3\. 配置 API Key (二选一)
+
+-   **方案 A (简单)：** 直接写在 `opencode.json` 的 `options` 里（`"apiKey": "sk-..."`）。
+    
+-   **方案 B (安全)：** 使用环境变量或运行 `opencode auth login` 存入 `auth.json`。
+    
+    -   _注意：_ 不要两处都写，配置文件里的优先级更高。
+        
+
+4\. 验证与避坑
+
+-   **验证命令：** 运行 `opencode` -> 输入 `/models` -> 选择新配置的模型 -> 发送测试语。
+    
+-   **常见报错：**
+    
+    -   `404`：通常是 baseURL 没写对（少了 `/v1`）。
+        
+    -   `401`：Key 无效。
+        
+    -   选模型报错：配置的 Model ID 必须与中转商提供的模型名完全一致。
+        
+
+* * *
+
+## Part 3: 推荐内容
+
+-   **播客推荐：** "解构 Web3" —— 7k (媒介研究/人类学背景) 与 Pablo 老师的对谈。
+    
+-   **话题：** 密码朋克、AI Agent 治理、Web3 文化研究。
+    
+-   **链接：** [Substack Article](https://www.google.com/search?q=https://open.substack.com/pub/web3culturestew/p/web3)
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ## Part I 、 Bittensor 与去中心化 AI (DeAI)
 
 Bittensor 是一个去中心化的 AI 协议，旨在通过区块链技术打破中心化巨头的垄断，构建“AI 互联网” 。
@@ -105,6 +214,7 @@ Bittensor 仿照比特币的竞争机制，建立了一个达尔文式的机器�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 ## Exit-First与AI时代的文明分叉
 
@@ -206,6 +316,7 @@ $$R\\uparrow\\uparrow = \\text{物质冗余} \\times \\text{智力冗余}$$
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 ## Part I：硬技能 - Web3 数据分析基础
@@ -328,6 +439,7 @@ $$R\\uparrow\\uparrow = \\text{物质冗余} \\times \\text{智力冗余}$$
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -463,6 +575,7 @@ $$R\\uparrow\\uparrow = \\text{物质冗余} \\times \\text{智力冗余}$$
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -605,6 +718,7 @@ Vitalik 承认之前的观点在现实世界的脆弱性面前站不住脚（例
 
 
 
+
 ## Part I. 核心技术：Reactive Smart Contracts (从 0 到 1)
 
 这部分内容主要解决了智能合约无法在没有外部指令（Transaction）的情况下自动执行的问题。
@@ -702,6 +816,7 @@ Vitalik 承认之前的观点在现实世界的脆弱性面前站不住脚（例
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -842,6 +957,7 @@ Vitalik 承认之前的观点在现实世界的脆弱性面前站不住脚（例
 
 
 
+
 ## Part 1. Aave V4 架构演进：终极流动性层
 
 Aave V4 从 V3 的“网状”结构进化为“Hub-and-Spoke”架构，旨在统一流动性并解决碎片化问题。
@@ -959,6 +1075,7 @@ Foundry 将区块链开发类比为 RPG 游戏，通过三个核心组件进行�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1104,6 +1221,7 @@ Foundry 将区块链开发类比为 RPG 游戏，通过三个核心组件进行�
 
 
 
+
 ### 🎙️ Part 1：播客笔记 - AI Agent 的进化
 
 **主题：** 从“动嘴”到“动手”，AI Agent 的数字员工革命
@@ -1224,6 +1342,7 @@ Foundry 将区块链开发类比为 RPG 游戏，通过三个核心组件进行�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1385,6 +1504,7 @@ Solidity 的三种报错机制及其应用场景：
 
 
 
+
 ### 👨‍🏫Part I: 核心课程 - ERC-7962 详解
 
 **1\. 背景与痛点 (Why ERC-7962?)**
@@ -1514,6 +1634,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1671,6 +1792,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 
 
+
 ## Part I. Web3 运营与职业发展
 
 > **核心观点**：Web3 运营不仅是发推特，更懂人性、懂流量、懂“蹭”的艺术。技术与金融的结合是职业发展的王炸。
@@ -1782,6 +1904,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1952,6 +2075,7 @@ ERC-7962 提出了一种新的资产所有权标识方式，将“地址”从�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2164,6 +2288,7 @@ Web3 曾信奉 "Code is Law"，但在大陆合规语境下，**"Law is Law"** �
 
 
 
+
 ## Part I. 以太坊的起源与发展
 
 ### 🌱 起源背景
@@ -2257,6 +2382,7 @@ _未来展望_：通过 Dencun (2024)、Pectra (2025) 等升级，持续提升�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
