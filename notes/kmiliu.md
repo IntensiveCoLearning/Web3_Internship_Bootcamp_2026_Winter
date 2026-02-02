@@ -15,8 +15,308 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-01
+<!-- DAILY_CHECKIN_2026-02-01_START -->
+## 1) 核心心智模型：链上交互 = 交易（Transaction）
+
+-   **跟合约交互不是“点按钮”**，而是：
+    
+    -   你**构造一笔交易**（to / value / data / gas…）
+        
+    -   广播进 mempool
+        
+    -   被打包进区块后，“交易”才真正**触发合约执行**
+        
+-   所以一句话：
+    
+    -   **Everything is a transaction.**
+        
+    -   合约调用只是“交易的 data 字段不同”。
+        
+
+* * *
+
+## 2) Provider vs Signer：读/写的分工
+
+### Provider（读）
+
+-   “连接某条链的网络入口”
+    
+-   用来：查区块号、查余额、查 ENS、读合约 view/pure 方法
+    
+-   不签名、不发交易（只读）
+    
+
+### Signer（写）
+
+-   “握着私钥的人（能签名）”
+    
+-   用来：签名并发送交易（写操作）
+    
+-   Signer 必须连接一个 provider 才能把交易发到链上
+    
+
+> 记忆法：  
+> Provider = 网络；Signer = 身份/私钥（授权/签名）
+
+* * *
+
+## 3) 项目结构化：做一个 `utils.js` 复用
+
+目标：避免每个脚本都重复写“创建 provider / wallet / signer”。
+
+`utils.js` 里做三件事：
+
+1.  `getProvider(mainnet=false)`
+    
+    -   默认用测试网（视频里是 Rinkeby），需要 mainnet 则传 `true`
+        
+2.  `generateWallet()`
+    
+    -   `ethers.Wallet.createRandom()` 生成新钱包（**不要把私钥打印到直播画面**）
+        
+3.  `getSigner(mainnet=false)`
+    
+    -   从 `.env` 读私钥 + 连接 provider，得到 signer
+        
+
+并且导出（ESM）：
+
+-   `export { getProvider, generateWallet, getSigner }`
+    
+
+* * *
+
+## 4) `.env` 与 opsec（私钥安全）
+
+他们强调很多次：
+
+-   用 `.env` 存私钥 / Infura key
+    
+-   `.gitignore` 必须忽略 `.env`
+    
+-   **每个项目/脚本都生成一个新的私钥/助记词**，只给它“够用的钱”
+    
+-   不要把常用/主钱包私钥塞到脚本里
+    
+-   提交前检查：
+    
+    -   `git status`
+        
+    -   `git diff --cached`（看 staged 里有没有敏感信息）
+        
+
+* * *
+
+## 5) 脚本 1：发送 ETH（EOA → EOA）
+
+复刻他们做的：
+
+-   mainnet provider 用来 `resolveName("sanfordstout.eth")`（ENS 解析通常靠 mainnet）
+    
+-   rinkeby signer 用来真正发交易（测试网发钱）
+    
+
+交易结构（EOA 转账）：
+
+-   `to`: 收款地址
+    
+-   `value`: 要转的 ETH（BigNumber）
+    
+-   `data`: 空
+    
+
+并且他们演示了：
+
+-   `tx.hash`：进 mempool 就有 hash（可预测/可复现和 nonce 有关）
+    
+-   `await tx.wait()`：等上链
+    
+
+* * *
+
+## 6) ABI 是什么：为什么能“像调用函数一样”调合约
+
+### ABI（他们口里叫 API/ABI）
+
+-   是合约函数的“接口描述”
+    
+-   告诉你：
+    
+    -   有哪些函数
+        
+    -   参数类型、返回值类型
+        
+-   ethers.js 用 ABI 来：
+    
+    -   帮你生成 calldata
+        
+    -   帮你 decode 返回值
+        
+
+### 从 Etherscan 拿 ABI
+
+-   合约 “Verify” 后，Etherscan 会显示源码 + ABI
+    
+-   你可以复制整个 ABI 放到 `api/xxx_abi.js`，导出给脚本用
+    
+
+* * *
+
+## 7) 脚本 2：合约读（provider + 合约实例）
+
+示例：读 NFT 合约的 `mintPrice()`
+
+关键点：
+
+-   读操作免费（不发交易）
+    
+-   返回常是 BigNumber
+    
+    -   `ethers.utils.formatEther(bn)` 转成人能读的 ETH
+        
+
+* * *
+
+## 8) 脚本 3：合约写（signer + 合约实例）
+
+示例：调用 NFT 合约的 `mint()`（payable）
+
+### 为什么第一次失败？
+
+-   `mint()` 是 payable，需要带钱
+    
+-   没带 `value` 会触发合约里的 `require(msg.value >= mintPrice, "...")`
+    
+-   ethers 报错常见：`cannot estimate gas`，但真正原因在 revert reason 里（如 “insufficient eth amount”）
+    
+
+### 正确写法
+
+-   `contract.mint({ value: mintPrice })`
+    
+-   或手动 `value: ethers.utils.parseEther("0.01")`
+    
+
+* * *
+
+## 9) calldata：把“函数调用”还原成“交易 data”
+
+### 交易调用合约的本质
+
+合约调用交易结构：
+
+-   `to`: 合约地址
+    
+-   `value`: （可选）发送 ETH（payable 用）
+    
+-   `data`: **函数选择器 + 编码后的参数**
+    
+
+### 函数选择器（method id）
+
+-   `selector = keccak256("mint()")` 的前 4 bytes
+    
+-   例：mint 的 selector 是 `0x1249c58b`（他们在 Etherscan 里看到）
+    
+
+* * *
+
+## 10) 直接用“原始交易”调用合约（不创建 Contract 实例）
+
+他们做了一个很重要的升级：
+
+-   不用 `new ethers.Contract(...)`
+    
+-   直接 `signer.sendTransaction({ to, value, data })`
+    
+
+例（逻辑）：
+
+-   `to = NFT 合约地址`
+    
+-   `value = mintPrice`
+    
+-   `data = mint() selector`
+    
+
+这再次证明：
+
+-   **合约交互 = 交易 + calldata**
+    
+
+* * *
+
+## 11) nonce & gas：手动 “speed up”
+
+他们模拟了 MetaMask 的 speed up：
+
+-   同一个账户的交易有递增 nonce
+    
+-   如果你发了一个很低 gas 的交易卡住：
+    
+    -   用**相同 nonce** + 更高 gas 重新发一笔
+        
+    -   矿工/节点会用新的替换旧的（replacement）
+        
+
+要点：
+
+-   nonce 不对（比如跳到 5）会导致后面的交易都“排队卡死”，因为 4 没确认
+    
+
+* * *
+
+## 12) DAI（ERC-20）转账：不是 value，是合约 transfer
+
+他们后面最关键的例子：**转 DAI**
+
+-   DAI 是 token，不是 ETH
+    
+-   你不能靠 `value` 给别人“转 DAI”
+    
+-   你必须调用 **DAI 合约** 的 `transfer(to, amount)`
+    
+
+### 读余额
+
+-   `balanceOf(myAddress)`
+    
+-   仍然是 BigNumber
+    
+-   DAI 是 18 decimals，所以也能用：
+    
+    -   `formatEther(balance)`（本质是按 1e18 转）
+        
+
+### 写转账（transfer）
+
+-   `transfer(to, amount)`
+    
+-   `amount = parseEther("5")`（5 DAI）
+    
+
+### 你在 Etherscan 看到什么？
+
+-   交易本身显示为调用 DAI 合约方法
+    
+-   收款人的“余额变化”在 **ERC-20 Token Transfers** 里，不一定在普通交易列表里直观看见
+    
+
+### calldata 长什么样？
+
+-   `a9059cbb` 是 `transfer(address,uint256)` 的 selector
+    
+-   后面跟：
+    
+    -   参数 1：地址（32 bytes padded）
+        
+    -   参数 2：金额（uint256，32 bytes）
+<!-- DAILY_CHECKIN_2026-02-01_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 ## 1) Foundry Basic：`Counter` + `CounterTest`
 
 ### 合约逻辑
@@ -230,6 +530,7 @@ Foundry 的思路是：**先告诉它你要检查哪些字段** → **发出你�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 ## 1) 为什么要跑自己的 L1 节点（GETH / Nethermind 等）
 
@@ -451,6 +752,7 @@ Hardhat 默认 **automine=true**：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 ## 1) 这一节的核心目标：学会 “tinkering”
@@ -713,6 +1015,7 @@ emit Buy(msg.sender, 1);
 
 
 
+
 ## 一、Foundry 是什么（一句话）
 
 **Foundry = 用 Rust 写的以 CLI 为核心的以太坊开发工具链**  
@@ -934,6 +1237,7 @@ cast 交互 & 调试
 
 
 
+
 ## 1) Scaffold-ETH 是什么（核心卖点）
 
 -   **一句话**：Scaffold-ETH 是一个“本地链 + 合约开发 + 前端自动生成/适配”的全套 dApp 模板
@@ -1145,6 +1449,7 @@ cast 交互 & 调试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1500,6 +1805,7 @@ require(ok);
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1873,6 +2179,7 @@ require(tx.origin == msg.sender);
 
 
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -2128,6 +2435,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2575,6 +2883,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -2672,6 +2981,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2858,6 +3168,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -2965,6 +3276,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3881,6 +4193,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -4058,6 +4371,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -4178,6 +4492,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -5068,6 +5383,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
