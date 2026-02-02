@@ -15,8 +15,73 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+# 一、映射
+
+语法：
+
+```
+mapping(keyType=>valueType)
+```
+
+keyType 可以是任何内置值类型、字节数组、字符串或任何合约。
+
+valueType 可以是任何类型，包括另一个映射或数组。
+
+映射不可迭代。
+
+```
+pragma solidity ^0.8.17;
+
+contract Mapping {
+    // 地址到整数的映射
+    mapping(address => uint) public myMap;
+
+    scss
+    Copy code
+    function get(address _addr) public view returns (uint) {
+        // 映射始终返回一个值。
+        // 如果该值从未设置过，它将返回默认值。
+        return myMap[_addr];
+    }
+
+    function set(address _addr, uint _i) public {
+        // 更新此地址的值
+        myMap[_addr] = _i;
+    }
+
+    function remove(address _addr) public {
+        // 将该值重置为默认值。
+        delete myMap[_addr];
+    }
+    }
+
+    contract NestedMapping {
+    // 嵌套映射（从地址到另一个映射）
+    mapping(address => mapping(uint => bool)) public nested;
+
+    scss
+    Copy code
+    function get(address _addr1, uint _i) public view returns (bool) {
+        // 即使未初始化，也可以从嵌套映射中获取值
+        return nested[_addr1][_i];
+    }
+
+    function set(address _addr1, uint _i, bool _boo) public {
+        nested[_addr1][_i] = _boo;
+    }
+
+    function remove(address _addr1, uint _i) public {
+        delete nested[_addr1][_i];
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 # 一、以太币和Wei
 
 一个以太币等于10^18 Wei。
@@ -169,6 +234,7 @@ contract Loops {
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 # 一、常量
 
 常量是无法修改的变量。
@@ -278,6 +344,7 @@ contract SimpleStorage {
 
 
 
+
 Solidity
 
 # 一、Hello World
@@ -376,6 +443,7 @@ contract Variables {
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -538,6 +606,7 @@ describe("StanfordToken", function () {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 4
 
 Solidity 语法 + 测试
@@ -622,6 +691,7 @@ function doSomething() public onlyOwner { ... }
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -813,6 +883,7 @@ npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -892,6 +963,7 @@ async function mintNFT() {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 1
 
 由于本期几乎全程live coding，可能笔记不多。
@@ -960,6 +1032,7 @@ Provider 是区块链的“只读接口”。
 
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -1004,6 +1077,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1076,6 +1150,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1161,6 +1236,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -1224,6 +1300,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1362,6 +1439,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1638,6 +1716,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -1753,6 +1832,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1948,6 +2028,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -2071,6 +2152,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -2140,6 +2222,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2268,6 +2351,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2506,6 +2590,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
