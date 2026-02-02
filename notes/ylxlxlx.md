@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+2.2：[https://share.mubu.com/doc/6gRv6soyFnn](https://share.mubu.com/doc/6gRv6soyFnn)
+
+![2.2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-02-02-1770046676445-2.2.png)
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 在忙大学生返校宣讲的事……缺席了大半天总之
 
 爬楼才看到这次黑客松报名人数太多，助教老师临时更换策略。总结一下大概是
@@ -36,6 +44,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 疑似有点生病，胃疼一整天了TT
 
 又一次收集信息，这次要求一口气提完所以效果好了一些，但是面对一些艾特+私聊依然不回的友友还是比较麻烦，除了反复提醒也想不出什么更好的点了…
@@ -47,6 +56,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 X Space 一直在针对我（爆哭）
@@ -76,6 +86,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 今天进行了黑客松的半程复盘，又有了一些心得。
 
 同样强调了全局观的重要性，看得出来大家对于这一点的重视（也算是一个共性的问题了）。对于“执行”和“策划”两种工作的不同，也达成了共识，鼓励大家踊跃参与“策划”任务而不是单独被动等待领活，这是很重要的一点。
@@ -102,6 +113,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.28：[https://share.mubu.com/doc/7aG5ZoXcgx7](https://share.mubu.com/doc/7aG5ZoXcgx7)
 
 ![1.28.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-28-1769611784966-1.28.png)
@@ -109,6 +121,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -161,6 +174,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.26：[https://share.mubu.com/doc/K1s7DGRqg7](https://share.mubu.com/doc/K1s7DGRqg7)
 
 ![1.26.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-26-1769441297945-1.26.png)
@@ -168,6 +182,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -194,6 +209,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 主要在筹备休闲黑客松。
 
 -   参加了两场会议，明确了任务
@@ -205,6 +221,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -238,6 +255,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -286,6 +304,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.21：[https://share.mubu.com/doc/5n50wur\_S67](https://share.mubu.com/doc/5n50wur_S67)
 
 ![1.21.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-21-1769008293172-1.21.png)
@@ -293,6 +312,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -329,6 +349,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.19.：[https://share.mubu.com/doc/1ae7\_ByGOQ7](https://share.mubu.com/doc/1ae7_ByGOQ7)
 
 ![1.19..png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-19-1768835442719-1.19..png)
@@ -336,6 +357,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -376,6 +398,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.17: [https://share.mubu.com/doc/1TgnooGlYc](https://share.mubu.com/doc/1TgnooGlYc)
 
 ![1.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-17-1768660624749-1.17.png)
@@ -383,6 +406,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -453,6 +477,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.15：[https://share.mubu.com/doc/6m79uk4dKs7](https://share.mubu.com/doc/6m79uk4dKs7)
 
 ![1.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-15-1768489745986-1.15.png)
@@ -460,6 +485,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -504,6 +530,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.13：[https://share.mubu.com/doc/msBQpFHRq7](https://share.mubu.com/doc/msBQpFHRq7)
 
 ![1.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-13-1768314188386-1.13.png)
@@ -513,6 +540,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
