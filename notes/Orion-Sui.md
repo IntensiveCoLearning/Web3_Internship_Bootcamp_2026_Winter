@@ -15,19 +15,27 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+1.  菲律宾出差第二天
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 1.  Cebu出差第一天
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 1.  香港出差第一天
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 1.  广州出差第四天
@@ -38,11 +46,13 @@ timezone: UTC+8
 
 
 
+
 1.  广州出差第三天
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -57,6 +67,7 @@ timezone: UTC+8
 
 
 
+
 1.  苦逼上班，广州出差第一天
     
 2.  X平台账号再次装修，关注了一些行业推荐官，第一次尝试引用转帖
@@ -64,6 +75,7 @@ timezone: UTC+8
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -86,11 +98,13 @@ timezone: UTC+8
 
 
 
+
 1.  澳门出差第二天
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -113,6 +127,7 @@ timezone: UTC+8
 
 
 
+
 1.  太忙了今天
     
 2.  听了会【共学】
@@ -122,6 +137,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -162,6 +178,7 @@ timezone: UTC+8
 
 
 
+
 1.  看了【ERC721到ERC7962】的回放
     
 2.  听了一会共学
@@ -173,6 +190,7 @@ timezone: UTC+8
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -205,6 +223,7 @@ timezone: UTC+8
 
 
 
+
 1.  和学姐出去吃饭去了，休息一天
     
 2.  Web3合规
@@ -214,6 +233,7 @@ timezone: UTC+8
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -272,6 +292,7 @@ timezone: UTC+8
 
 
 
+
 1.  看了LXDAO的周会，看了后半部分直播，一会找一下全部，重新看一遍
     
     -   属于说是打开新世界大门了
@@ -289,6 +310,7 @@ timezone: UTC+8
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -343,6 +365,7 @@ timezone: UTC+8
 
 
 
+
 1.  听了一会共学
     
 2.  听了AI分享会
@@ -362,6 +385,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -422,6 +446,7 @@ timezone: UTC+8
 
 
 
+
 1.  听了一会共学
     
 2.  晚上听了Bruce老师的Web3运行原理
@@ -447,6 +472,7 @@ timezone: UTC+8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
