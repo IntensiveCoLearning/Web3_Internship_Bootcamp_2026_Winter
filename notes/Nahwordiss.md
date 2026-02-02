@@ -15,13 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-02
+<!-- DAILY_CHECKIN_2026-02-02_START -->
+2026年2月区块链&DeFi全球经济动向
+
+2026年开年二月，全球区块链与DeFi行业迎来剧烈震荡，宏观环境、二级市场、生态运行与全球监管同步发生关键变化，整体呈现去泡沫、强合规、重基建、严风控的核心发展基调，行业进入结构性调整与价值重塑阶段。
+
+二级市场在本月出现大幅回调，比特币接连跌破关键价位，最低触及7.5万美元区间，创下2025年4月以来的新低；以太坊、SOL等主流公链代币同步深度下挫，全市场24小时内市值蒸发规模超1110亿美元。高杠杆合约出现集中踩踏式爆仓，涉及用户数量超40万，总爆仓金额约25.6亿美元，极端行情下的杠杆风险集中释放，市场投机泡沫快速出清。
+
+DeFi生态在行情波动中暴露出阶段性风控短板，头部借贷协议Aave V3因极端行情下清算引擎响应延迟，出现约3.2亿美元抵押资产异常清算事件，引发行业对链上风控机制、极端行情适配能力的集中讨论与升级需求。与此同时，RWA现实资产代币化、链上贵金属衍生品交易展现出较强韧性，Hyperliquid等平台相关合约成交量逆势走高，成为波动行情中少数具备资金吸引力的细分赛道，也印证了真实资产锚定、落地场景支撑的DeFi模块具备更强抗风险能力。
+
+全球加密资产与DeFi监管进入密集落地期，合规化成为不可逆转的行业趋势。美国CLARITY法案推进遇阻，稳定币监管相关条款争议持续发酵，立法进程不及市场预期；中国香港地区上调无担保加密资产风险权重，进一步抬高机构参与门槛，强化风险隔离；巴西于本月正式落地拉美地区最严格的加密资产监管规则，明确交易限额、持牌经营要求与反洗钱合规标准，对虚拟资产服务商实施全流程监管。全球主要经济体均从“探索包容”转向“规则落地”，野蛮生长的行业阶段正式结束。
+
+宏观层面，美联储降息预期下调，全球美元流动性收紧，高风险资产估值承压，机构资金从比特币现货ETF等产品持续流出，市场驱动逻辑从投机情绪转向基本面与合规资质双重筛选。中小无落地项目、低效矿企与不合规交易平台加速出清，行业资源持续向头部合规平台、技术基建方与具备真实应用场景的项目集中，行业集中度稳步提升。
+
+从长期发展视角来看，2026年2月的行业调整属于去杠杆、去泡沫的结构性洗牌，并非行业基本面的根本性逆转。跨链互操作、ZK隐私计算、RWA规模化落地等核心技术方向仍在稳步推进，DeFi行业的竞争重心从流量博弈、代币炒作，转向应用价值落地、风控体系完善与合规资质搭建。随着全球监管框架逐步完善、市场杠杆风险充分释放，区块链与DeFi行业将告别非理性繁荣，进入更稳健、更可持续、更贴近实体经济的长期发展周期。
+<!-- DAILY_CHECKIN_2026-02-02_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ![截屏2026-02-01 09.05.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-02-01-1769907929413-__2026-02-01_09.05.17.png)
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 Web3黑客松全流程学习笔记
 
@@ -210,6 +229,7 @@ Web3黑客松是围绕区块链、DeFi、NFT、ZK、AI+Web3、跨链、预言机
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 ![截屏2026-01-30 12.32.29.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-30-1769747595586-__2026-01-30_12.32.29.png)
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
@@ -218,11 +238,13 @@ Web3黑客松是围绕区块链、DeFi、NFT、ZK、AI+Web3、跨链、预言机
 
 
 
+
 ![exported_image (1) 11.08.59.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-29-1769656184677-exported_image__1__11.08.59.png)
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -237,11 +259,13 @@ Web3黑客松是围绕区块链、DeFi、NFT、ZK、AI+Web3、跨链、预言机
 
 
 
+
 ![截屏2026-01-27 11.59.08.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-27-1769486408130-__2026-01-27_11.59.08.png)
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -262,6 +286,7 @@ x402笔记
 
 
 
+
 总结制作了区块链结构图
 
 ![截屏2026-01-25 09.40.47.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-25-1769305249395-__2026-01-25_09.40.47.png)
@@ -269,6 +294,7 @@ x402笔记
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -295,6 +321,7 @@ x402笔记
 
 
 
+
 ![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-23-1769134854977-exported_image__1_.png)
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
@@ -310,11 +337,13 @@ x402笔记
 
 
 
+
 ![exported_image (1).png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-22-1769054237856-exported_image__1_.png)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -343,11 +372,13 @@ x402笔记
 
 
 
+
 ![exported_image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-20-1768889294082-exported_image.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -380,11 +411,13 @@ x402笔记
 
 
 
+
 ![IMG_5963.JPG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-18-1768700429440-IMG_5963.JPG)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -421,11 +454,13 @@ x402笔记
 
 
 
+
 ![AI 与 Web3 融合：Agentic AI 操作系统演进路径.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-16-1768555867565-AI___Web3____Agentic_AI_________.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -466,11 +501,13 @@ x402笔记
 
 
 
+
 ![以太坊技术详解.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Nahwordiss/images/2026-01-14-1768382894314-_______.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -647,6 +684,7 @@ Web3.0 关注"智能化"，Web3 关注"去中心化"
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
