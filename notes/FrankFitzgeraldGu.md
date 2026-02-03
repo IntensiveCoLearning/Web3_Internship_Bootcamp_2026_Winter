@@ -15,8 +15,20 @@ M.S. (CityU)
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+今天把 SpeedrunEthereum Challenge #1（Crowdfunding）从本地跑通到上线了。
+
+一开始就踩坑：`create-eth` 提示目录已存在，干脆直接用现成项目继续。依赖安装一堆 peer warning，但不影响跑。然后按“三终端”启动：`yarn chain` 起本地链、`yarn deploy` 部署、`yarn start` 起前端。
+
+合约部分按 checkpoint 逐个做：先写 `balances` + `Contribution` 事件 + `contribute()`；再加 `openToWithdraw` 和 `withdraw()`（先清零再转账防重入）；接着做 `deadline/threshold`、`execute()` 和 `timeLeft()` 状态机；最后加 `receive()` 让直接转 ETH 也算贡献。中间因为我手快写重复了 `modifier notCompleted` 和 `receive()`，编译直接炸，删到只留一份就好了。再加上 `notCompleted` 保护，防止完成后还有人转钱导致资金卡死。
+
+上线阶段也踩坑：前端 SSR 报 `targetNetworks[0] undefined`，发现 `scaffold.config.ts` 写成了 `targetNetwork`，改成 `targetNetworks: [sepolia]` 并清 `.next` 后恢复。Vercel 登录又遇到旧认证方式被弃用，改用 `npx vercel@latest login` 的 device flow 才成功部署。最后合约部署到 Sepolia、`yarn verify --network sepolia` 验证通过，Vercel 也拿到了 production URL，整个挑战算是闭环了。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 # Polymarket 架构与链上数据解码
 
 ## 1\. 本阶段目标与我对 Polymarket 的整体理解
@@ -173,6 +185,7 @@ oracle、questionId、collateralToken、yesTokenId、noTokenId，并与 Gamma AP
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 # **Kite-Drive 黑客松展示整合说明**
 
@@ -336,6 +349,7 @@ oracle、questionId、collateralToken、yesTokenId、noTokenId，并与 Gamma AP
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 ## Kite-Drive 产品总结
 
 ### 一句话
@@ -471,6 +485,7 @@ Kite-Drive 把车抽象成一个具备资金与决策能力的 **Agent（自主�
 
 
 
+
 (1) 钱包与链环境验证
 
 -   使用 **MetaMask** 添加 KiteAI Testnet，成功通过 Faucet 领取测试币 KITE
@@ -539,6 +554,7 @@ Kite-Drive 把车抽象成一个具备资金与决策能力的 **Agent（自主�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -628,6 +644,7 @@ x402 是由 Coinbase 等机构推动的、专为智能体原生支付设计的�
 
 
 
+
 **Kite AI 的技术架构、账户抽象、以及如何通过 x402 等协议构建自治商业网络**  
 **智能体经济的崛起与基础设施错配分析**
 
@@ -667,6 +684,7 @@ Kite 网络采用了名为 SPACE 的框架来构建其技术底座。该框架�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -806,6 +824,7 @@ Node >= 20 没问题，Yarn 最后用 Corepack 启用 v4 搞定。工具链对�
 
 
 
+
 ## 从 Web3 到 AI Agent，再到 ICLR：
 
 一方面，我在 Web3 实习计划中系统学习了区块链运行机制、安全、合规、社区与工具；另一方面，今晚 ICLR 的录取结果出来，我意识到自己正在研究的问题，和这一周学到的内容，其实在讨论**同一件事**。
@@ -938,6 +957,7 @@ Web3 的很多问题，本质上并不是“技术能不能做到”，而是**�
 
 
 
+
 这一周参加 Web3 实习计划的学习，对我来说是一次从“概念理解”走向“系统认知”的过程，也让我逐渐意识到：Web3 并不是某一门技术或某一个岗位，而是一套高度现实、对个人负责能力要求极高的系统。
 
 在技术层面，我重新夯实了区块链的底层认知。从比特币与以太坊的运行原理出发，理解了交易从签名、广播、打包到最终确认的完整生命周期，也更清楚了共识机制、Gas、分叉与最终性这些概念在真实网络中的意义。这让我意识到，Web3 的“信任”并不来自机构，而是来自密码学与共识设计，但代价是：安全责任被完全交还给个人。
@@ -957,6 +977,7 @@ Web3 的很多问题，本质上并不是“技术能不能做到”，而是**�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -989,6 +1010,7 @@ Auto Layout 给我的感受尤其明显。它强迫我在设计时就考虑内�
 
 
 
+
 今天的学习重点放在 **Remix IDE** 上，这是我第一次在不搭建本地环境的情况下，完整跑通一次“写合约 → 编译 → 部署 → 交互”的链上开发流程。相比单纯学 Solidity 语法，Remix 更像是把抽象概念落到实际操作中的一座“桥”。
 
 一开始我对 Remix 的理解只是“网页版编辑器”，但真正用下来才发现，它几乎覆盖了智能合约开发的最小闭环：代码编写、编译版本控制、部署网络选择、账户切换、函数调用和交易记录查看。对初学者来说，这种“所见即所得”的反馈非常重要。
@@ -1011,6 +1033,7 @@ Auto Layout 给我的感受尤其明显。它强迫我在设计时就考虑内�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1075,6 +1098,7 @@ Web3 用合约、链上行为和历史记录构建声誉。
 
 
 
+
 今天开始系统学习 Rust，最大的感受是：**Rust 不是在帮你写得更快，而是在强迫你一开始就写对**。它并不追求语法上的“好写”，而是通过编译期约束，把大量原本应该在运行期才暴露的问题，提前拦截在代码阶段。
 
 从定位上看，Rust 是一门**系统级语言**，目标是在接近 C/C++ 性能的前提下，尽量避免内存安全问题。这一点让我立刻理解了它为什么会被大量用在区块链客户端、加密库、底层协议和安全敏感场景中。
@@ -1094,6 +1118,7 @@ Rust 给我带来的第一个冲击是**所有权（Ownership）模型**。在 R
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1148,6 +1173,7 @@ Rust 给我带来的第一个冲击是**所有权（Ownership）模型**。在 R
 
 
 
+
 今晚这场分享让我第一次比较系统地理解了「社区运营」到底在做什么。之前我对社区的理解偏向于“拉群 + 发公告 + 偶尔搞活动”，但听完之后才意识到，真正成熟的社区运营更像是一套**持续运转、可监控、可复盘的系统**。
 
 在社区搭建层面，讲师强调的并不是“人数越多越好”，而是**结构设计**。包括社区是 public 还是 private、是否需要设置不同权限、管理员如何分工，这些并不是形式问题，而是直接关系到后期的信息秩序与风险控制。比如 topic 的数量并非越多越好，如果活跃度不足，反而会稀释讨论、降低参与感，需要根据社区阶段动态调整。
@@ -1167,6 +1193,7 @@ Rust 给我带来的第一个冲击是**所有权（Ownership）模型**。在 R
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1245,6 +1272,7 @@ Anonymization (like k-anonymity) modifies data to obscure individuals but has kn
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1363,6 +1391,7 @@ General Considerations (Both MPC & ZKP) 局限性①Complexity: Implementing and
 
 
 
+
 **今天参加了echo老师的colearing会议**
 
 ## 1) 我今天对 “QL / KOL / BD / 运营” 的理解更现实了
@@ -1406,6 +1435,7 @@ ps:晚上的学员分享实在是太强了 大为震撼
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1570,6 +1600,7 @@ Rick 的回答让我更清楚：
 
 
 
+
 今天连续参加了三场会议，分别是 Co-learning 讨论、Web3 安全主题分享以及 Web3 合规主题分享。整体感受是：**今天的内容比技术更“现实”**，让我开始真正思考在 Web3 中“如何活得久”，而不仅是“如何入行”。
 
 ## 一、Co-learning：自由的另一面是责任
@@ -1610,6 +1641,7 @@ Rick 的回答让我更清楚：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1850,6 +1882,7 @@ per computational step (gas)• Special gas fees also apply to storage operation
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
