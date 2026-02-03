@@ -16,8 +16,44 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# ERC 标准
+
+不得不说，AI 一定是目前对有效接触一个未知领域的帮手，要好好使用，今天在没有阅读官方文档的情况下，我基本对 8 个 ERC 都略懂了，至少知道干了什么事情。
+
+1\. **ERC-20** – 可替代代币标准
+
+2\. **ERC-721** – NFT 标准
+
+3\. **ERC-1155** – 多代币标准（FT+NFT）
+
+4\. **ERC-165** – 接口检测标准
+
+5\. **ERC-223** – ERC-20 改进，防止代币误转到合约丢失
+
+6\. **ERC-827** – ERC-20 扩展，支持授权调用第三方合约
+
+7\. **ERC-1046** – 可扩展元数据的代币标准
+
+8\. **ERC-6093** – 统一代币错误代码标准
+
+今天学了几个 ERC 文档。不得不说，AI 一定是目前对有效接触一个未知领域的帮手，要好好使用，今天在没有阅读官方文档的情况下，我基本对 8 个 ERC 都略懂了，至少知道干了什么事情。
+
+了解了这些技术文档之后，再反过来想想，当时没有这些文档的时候，前辈们是如何摸着石头过河的，在如此混沌的环境中，走出来了一条不得了的路。这种“前人栽树，后人乘凉”的体感，在区块链世界里尤为明显。回顾这些标准诞生的历程，每一个 ERC 编号的背后，其实都是一次对“共识”的艰难凝聚。在 ERC-20 尚未问世前，开发者们像是在各自的孤岛上搭建巴别塔，账本逻辑千奇百怪。正是因为有了这些标准，碎片化的创意才得以在统一的框架下无缝协作，最终催生了 DeFi 的乐高积木和 NFT 的艺术浪潮。
+
+这些看似冰冷的协议，本质上是开发者社区的“通用语言”：
+
+\- 如果没有 ERC-165，合约之间的对话就像是盲人摸象；
+
+\- 如果没有 ERC-6093，开发者可能还要在成百上千种错误代码中“猜谜”。 前辈们不仅是在写代码，他们是在这种混沌中制定法律，在荒野上修筑铁路。
+
+在略懂了这些 ERC 标准后，接下来的挑战在于如何从“知道”跨越到“实践”。标准不是用来背诵的教条，而是解决问题的工具箱。站在巨人的肩膀上，我们确实看得更远。但最重要的是，不能只满足于“登高远眺”，更要学会如何接过他们手中的铁锹，在这些标准之上，继续挖掘出属于这个时代的可能性。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 黑客松项目的长期发展，在黑客松做出了这个项目，我觉得是可以长期发展的，这或许会成为进入 Web3 的一个踏板，哈哈哈，或许几年以后回顾今天，也会有怀念的感觉吧。
 
 回归学习，开始真的看 EIP 和 ERC 的技术文档，果然觉得如果有人能帮我嚼碎了喂给我吃多是一件美事。这个项目应该有搞头。接下去把别的任务也补上，再跳一跳拿点小奖品，留点小纪念。
@@ -27,6 +63,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 # **黑客松 Demo Day**
@@ -43,6 +80,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # **黑客松 Day3**
 
 Live Demo: [https://eip-playground-spark.vercel.app/](https://eip-playground-spark.vercel.app/)
@@ -52,6 +90,7 @@ GitHub: [https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.c
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -73,6 +112,7 @@ GitHub: [https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.c
 
 
 
+
 # 黑客松 Day1
 
 Live Demo: [https://eip-playground-spark.vercel.app/](https://eip-playground-spark.vercel.app/)
@@ -82,6 +122,7 @@ GitHub: [https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.c
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -108,6 +149,7 @@ GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://
 
 
 
+
 ## 准备黑客松
 
 1.  团队组建
@@ -122,6 +164,7 @@ GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -184,6 +227,7 @@ GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -419,6 +463,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 
 
+
 # 学习计划
 
 ✅️体验 My first zk vote
@@ -432,6 +477,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -527,6 +573,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 
 
+
 # 学习计划
 
 1.  ✅️[Gas 优化](https://github.com/ShihaoZhou-NEU/Solidity_Learning/tree/main/Homework)
@@ -549,6 +596,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -888,6 +936,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -1061,6 +1110,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -1100,6 +1150,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1451,6 +1502,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1755,6 +1807,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2136,6 +2189,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -2215,6 +2269,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2511,6 +2566,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2687,6 +2743,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
