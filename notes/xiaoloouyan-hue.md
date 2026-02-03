@@ -15,8 +15,40 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+### **The Role of Web3 Media Practitioners in the Ecosystem**
+
+**1\. Information Distributors**
+
+This role is relatively straightforward. Media aggregates the most up-to-date information in the market, including frontline news, opinions, and perspectives from industry leaders. After aggregation, our core task is distribution.
+
+Compared to other market participants—whether investors, traders, or people who are simply curious about Web3 and crypto—media represents one of the **lowest-barrier entry points** into the ecosystem. In this sense, media functions as a **traffic gateway**.
+
+For people outside the space, media serves as a learning platform. For those involved in investment and trading, media often relays market signals such as capital flows, “smart money” movements, KOL opinions, and exchange-related asset trends. Fundamentally, this role helps **reduce information asymmetry** in the market.
+
+**2\. Market Educators**
+
+As I mentioned earlier, for many newcomers, media is the **first point of contact** with the Web3 ecosystem. This naturally gives media a strong educational role, especially for beginners.
+
+On the other hand, even for participants who are already in the market, there is often a lack of deep understanding. For example, when people first enter Web3, they may not fully understand DeFi. Media can help by breaking down protocols, interpreting data, and explaining the causes and potential consequences behind major events.
+
+People may be active in the market, but not fully aware of the background or logic behind what is happening. This is another area where media plays a critical role.
+
+**3\. Value Discovery**
+
+Many people might assume that value discovery is mainly the job of exchanges. However, I believe exchanges focus more on **price discovery**, rather than value discovery.
+
+Value discovery can take multiple forms—both in terms of content and assets. In the market, assets range from large ones like BTC and ETH to smaller ones such as meme coins. What media can contribute is different from what exchanges do.
+
+Exchanges are largely off-chain channels where information is not always fully transparent. Media, by contrast, can provide insights into smart money flows and behavioral signals. For smaller assets or meme coins, media can also highlight where attention and narratives are forming.
+
+In addition, across more conventional projects—whether in DeFi or other sectors—different narratives and sectors rotate over time. Media can help identify where current narrative momentum is, which protocols are attracting the most attention, and which sectors may have stronger future potential. This allows participants to gain early signals and position themselves ahead of broader market movements.
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ‘解构’这个词，可能在非人文背景的听众听起来，会觉得特别像人文学者常用的一个词。但其实我们自己在本科毕业之后，基本就很少再用这个词了。不是因为不用做解构，而是因为它已经变成了人文学科里的一个默认前提。就算没有人再提‘解构’，我们做的事情，还是在解构研究对象、解构理论，也在解构日常生活的方方面面。
 
 今天我想把这种思路分享给大家。希望在分享结束之后，大家能试着用一个更大的视角，去看你们现在正在做的事情——不管是工作，还是正在学习的技术。它都可以被扩展到很多其他方面，并且有很多人在用各种方式尝试去扩展它。
@@ -221,6 +253,7 @@ Tim Berners-Lee 在提出 Web 3.0 的时候，给它起了一个名字，叫“�
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 SPace 嘉宾演讲稿整理：[https://www.notion.so/x-2fac601441eb8072b496fa1ce838d74a?source=copy\_link](https://www.notion.so/x-2fac601441eb8072b496fa1ce838d74a?source=copy_link)
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
@@ -228,11 +261,13 @@ SPace 嘉宾演讲稿整理：[https://www.notion.so/x-2fac601441eb8072b496fa1ce
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 youtube greenpills视频观看
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -265,6 +300,7 @@ youtube greenpills视频观看
 
 
 
+
 **Green Pill Podcast / Ethereum Localism × Bioregionalism**
 
 [https://www.youtube.com/watch?v=JpHakNy0-EQ&list=PLF5CNzrKS9sol3VJ6515dXmuPObhRC-pr&index=5](https://www.youtube.com/watch?v=JpHakNy0-EQ&list=PLF5CNzrKS9sol3VJ6515dXmuPObhRC-pr&index=5)
@@ -290,6 +326,7 @@ youtube greenpills视频观看
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -332,6 +369,7 @@ Alchemy「Road to Web3」第二周的导入与实操核心，主题是 **DeFi（
 
 
 
+
 听jessica pratt一整天
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
@@ -344,11 +382,13 @@ Alchemy「Road to Web3」第二周的导入与实操核心，主题是 **DeFi（
 
 
 
+
 黑客松笔记整理+投研笔记📓
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -386,6 +426,7 @@ Vít 认为，一个主权国家就应该拥有主权软件，因此他们没有
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -454,6 +495,7 @@ Vít 认为，一个主权国家就应该拥有主权软件，因此他们没有
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -724,6 +766,7 @@ SVG 动态生成示例：
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1112,6 +1155,7 @@ yarn build
 
 
 
+
 **为什么很多品牌在 Web3 听起来很 cringe / 失败**
 
 **📌 核心观点资源与讨论**
@@ -1178,6 +1222,7 @@ Web3 本质是去中心化文化 + 社群参与，所以：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1308,6 +1353,7 @@ Reddit 上最近关于 **Web3 营销失效与进化的讨论**——这已经是
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1516,6 +1562,7 @@ Reddit 上最近关于 **Web3 营销失效与进化的讨论**——这已经是
 
 
 
+
 这是以太坊「成为 Power User」第一周的第四天，主题是 **NFT**。这一天的目标不是从技术原理开始，而是像真实用户一样去 **买、铸造（mint）、发送和查看 NFT**，通过实际操作来理解 NFT 在 Web3 中是如何工作的。课程延续了之前的逻辑：钱包（MetaMask）、身份（ENS）、资产（NFT）会在不同 Web3 服务之间自然流动。
 
 课程一开始回顾了已经完成的步骤：安装并使用 MetaMask、进行过 ETH 与 DAI 的兑换、完成过链上交易。这些都是今天操作 NFT 的基础。接着通过 OpenSea 这个 NFT 市场，展示了一个重要概念：**你的 Web3 身份和资产会跨平台存在**。即使是 ENS 域名，本质上也是一个 ERC-721 NFT，它会出现在你的钱包和 OpenSea 的资产列表中。如果把 ENS NFT 转给别人，对方就会真正拥有并控制这个域名，这一点和 Uniswap 的 LP NFT（代表流动性所有权）是同样的逻辑。
@@ -1556,6 +1603,7 @@ NFT mint 成功后，虽然是在项目官网铸造的，但因为遵循 ERC-721
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1635,6 +1683,7 @@ In short:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1770,6 +1819,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2014,6 +2064,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -2102,6 +2153,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -2113,6 +2165,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
