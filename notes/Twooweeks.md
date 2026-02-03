@@ -15,8 +15,158 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# 增删改查
+
+索引
+
+目标：
+
+1.索引的概念
+
+2.索引类型
+
+3.索引作用
+
+4.索引数据结构
+
+内容：
+
+1.索引
+
+他本质就是一个数据结构
+
+3.作用：
+
+1）索引
+
+它本质上就是一个数据结构
+
+2）类型
+
+B+Tree索引
+
+自适应hash索引
+
+3）作用
+
+存储引擎用索引来加速数据结构；
+
+\- 它随着数据量增大，作用就越大
+
+4.B+tree的数据结构
+
+\- 存什么数据？
+
+存储被索引的字段
+
+\- 怎么存数据
+
+Q1：数据是按照怎么样的顺序存储的？
+
+示例：
+
+CREATE TABLE `people` (
+
+`last_name` varchar(50) NOT NULL,
+
+`first_name` varchar(50) NOT NULL,
+
+`dob` date NOT NULL,
+
+KEY `last_name` `last_namefirst_namedob`)
+
+) ；
+
+在这个表中，我们创建一个索引（last\_name,first\_name,dob）
+
+排序规则：
+
+按照字母序，在名字相同的情况下，按照下一个字段的字母序来排/日期来排
+
+核心要点：
+
+a:节点插入：小于当前节点，存放在左边，大于当前节点，存放在右边；
+
+b:时间复杂度：全局扫描（n），B+tree（logMn） n是数据集大小，m是每个节点子节点的数量（B+tree平衡树）
+
+\- 怎么就能够帮助我们快速查询数据
+
+要点1：使用索引以后，不需要全表扫描来查找数据；
+
+相关概念：
+
+1）根节点
+
+2）子节点
+
+3）指针
+
+4）叶子节点
+
+5）树的深度
+
+6）被索引的字段
+
+区别：
+
+1）叶子节点和子节点的区别
+
+叶子节点包含了指向被索引数据的指针，中间的子节点仅包含指针（不指向被索引的数据），
+
+指向它的子节点
+
+关系：
+
+1）树的深度和表大小的关系
+
+\# 索引的最左匹配原则
+
+内容：
+
+# 最左匹配原则
+
+1.可以查询从左到右查询（last\_name、first\_name、date）
+
+2.可以查询last\_name为Allen的人
+
+3.可以查询last\_name为A开头的人，但是不能查询last\_name为a结尾的人（左匹配）
+
+4.可以同时查询last\_name为A开头的人和last\_name为Allen的人
+
+5.可以同时查询last\_name为Allen的人，first\_name为Herry的人
+
+字段不会命中索引的场景
+
+1.不能跳过第二个字段，同时查询第一和第三字段
+
+2.范围查询的字段后面的命令不会走索引
+
+3.没有遵循最左匹配原则
+
+关键字段说明：
+
+\- \`key：使用的索引名称，如果为NULL则表示未使用索引
+
+\- \`type:访问类型
+
+\- `ref或`range:使用索引进行高效查找
+
+\- `index`:全索引扫描（比全表扫描好，但不如ref/range) 数据已经是在改索引里面了
+
+\- `ALL`:全表扫描（最差）·
+
+\- `rows`:扫描的行数，越少越好
+
+\- `Extra`:额外信息
+
+`Using index`:覆盖索引(Covering Index),所有需要的数据都在索引中，无需回`Using where`:使用WHERE条件过滤
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 今天学了会mysql 趁年轻多去做多去争取吧
 
 # 表创建
@@ -53,6 +203,7 @@ Match one part exactly and match a range on another part select \* from People w
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 # timer
 
@@ -289,6 +440,7 @@ go test -cover ./experiments -run TestTicker
 
 
 
+
 lesson 21 互斥锁
 
 目标：
@@ -350,6 +502,7 @@ lesson 23 context
 
 
 
+
 今日休息一天，接下来几天进行冲刺，看看自己能上到第几名
 
 ![ama.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-30-1769773996757-ama.png)
@@ -357,6 +510,7 @@ lesson 23 context
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -490,6 +644,7 @@ for { select { case message1 <-ch1: ... case message2 <-ch2: ... } }
 
 
 
+
 lesson 8 array
 
 目标：
@@ -596,6 +751,7 @@ lesson 12 pointer
 
 
 
+
 # 状态树
 
 \- 状态树包含所有账户的状态，交易树和收据树是由当前这个区块的交易组织起来的
@@ -627,6 +783,7 @@ lesson 12 pointer
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -788,6 +945,7 @@ switch {
 
 
 
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -805,6 +963,7 @@ switch {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -839,6 +998,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -887,6 +1047,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -894,6 +1055,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -942,6 +1104,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1056,6 +1219,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -1079,6 +1243,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1133,6 +1298,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1280,6 +1446,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -1308,6 +1475,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1434,6 +1602,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -1458,6 +1627,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1521,6 +1691,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
