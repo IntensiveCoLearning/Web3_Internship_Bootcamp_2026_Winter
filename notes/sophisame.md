@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# **什么是以太坊2.0**
+
+**共识机制升级：以太坊2.0将把以前依靠高耗能的PoW工作量证明改为PoS。在PoS中，用户通过质押（staking）自己的ETH来参与网络的共识，成为验证者，从而获得奖励。这种方式不仅能大幅降低能源消耗（可减少99.95%的能耗），还能提高网络扩展性和交易处理速度。**
+
+**多阶段升级：以太坊2.0的升级分为几个阶段，主要包括信标链（Beacon Chain）的上线、主网与信标链的合并（The Merge）以及未来可能的分片链（Shard Chain）来进一步提升网络吞吐量。**
+
+**​所以如果想要在以太坊2.0上进行质押需要满足一定条件，而Lido则可以帮助我们解决这些条件。针比如对第三个问题**
+
+**因为如果将eth存入新标链中是无法提取出来的。而Lido创建了一种锚定资产，就是stETH，将我们的eth在lido中去stake，就可以获得stETH。stETH就是一种代表你在Lido中质押的ETH的衍生凭证。并且是具有流动性的。stETH代币会随着质押奖励的累积而自动增值。**
+
+**等以太坊2.0上线后，可启用提现功能，允许用户将stETH兑换回原始的ETH和累计的质押奖励**。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 # 简历基本结构
 
 视觉上：白底黑字，不要用黑体（难阅读的字体）
@@ -96,6 +112,7 @@ web3面试流程与互联网相比相对简短。大公司需要口语英语好�
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 -   内存，引用与持久化存储
     
     -   EVM数据存储类型
@@ -137,6 +154,7 @@ web3面试流程与互联网相比相对简短。大公司需要口语英语好�
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 #   
@@ -257,6 +275,7 @@ solidity
 
 
 
+
 # 区块链数据结构
 
 ## 链上数据基本类型
@@ -348,6 +367,7 @@ value：转账的费用
 
 
 
+
 # **plume质押与流动性项目**
 
 ## Nest
@@ -412,6 +432,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 ## 哈希指针
 
 ![截屏2026-01-27 22.05.06.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-27-1769522717205-__2026-01-27_22.05.06.png)
@@ -431,6 +452,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -535,6 +557,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 # Hooked Protocol 代币经济模型
 
 Hooked Protocol采用了创新的单一代币（HOOK）结构，并辅以生态圈内部的的实用代币HGT（Hooked Gold Token）。其HOOK作为生态系统治理代币，具有社区活动和独家NFT访问功能，质押奖励与平台盈利，未来将用于Hooked基础设施的燃气费代币。
@@ -595,6 +618,7 @@ Gas 抵扣：在 Hooked Rollup 上的链上操作，使用 HOOK 可享手续费�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -674,6 +698,7 @@ retro funding是通过ai模型对项目先进行判断，产出方案，再结�
 
 
 
+
 # pendle协议
 
 我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
@@ -733,6 +758,7 @@ LP是SY和PT之间的交易
 
 
 
+
 LIdo
 
 ![截屏2026-01-20 22.31.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-20-1768919519461-__2026-01-20_22.31.50.png)
@@ -754,6 +780,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -880,6 +907,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 
 
+
 # uniswap协议：LP挖矿：AMM恒定乘积做市函数
 
 uniswap协议是以池子的方式进行交易的形式。这是一种做市函数。我们是和资金池做交易，所以Dex里需要引入新角色：LP的提供者，他们维持了整个交易的流动性。LP提供者就是普通用户的对手。
@@ -941,6 +969,7 @@ T0时间是添加流动性的时候，T1,T2分别为两次变化。并且假如y
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1195,6 +1224,7 @@ DeFi 的优势与风险：
 
 
 
+
 # 支付摩擦：机器经济需要新货币
 
 -   新需求：
@@ -1264,6 +1294,7 @@ web3对ai合规的解决方案：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1355,6 +1386,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1516,6 +1548,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
