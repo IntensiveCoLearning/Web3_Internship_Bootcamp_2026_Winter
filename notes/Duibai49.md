@@ -15,19 +15,35 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+-   **主流库：**
+    
+    -   **Viem & Wagmi：** 2026 年的首选组合。Viem 相比 Ethers.js 更轻量、类型安全且性能更高；Wagmi 则为 React 提供了强大的 Hook 支持。
+        
+    -   **Ethers.js：** 仍然需要掌握，因为许多老项目和教程仍在使用它。
+        
+-   **钱包集成：** 熟练使用 **RainbowKit** 或 **ConnectKit** 实现一键连接钱包（MetaMask, WalletConnect, Coinbase Wallet 等）。
+    
+-   **ABI 调用：** 理解如何通过 **ABI (Application Binary Interface)** 调用合约函数、监听事件以及处理复杂的 `BigInt` 数值。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-02-02-1770000553523-image.png)
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 看了前辈入职Bybit的访谈，受益良多，不用刷八股，要Github项目，要懂钱包连接
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 读一份项目研报时，不要顺着读，要跳着看这三个关键点：
@@ -44,11 +60,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-29-1769730682834-image.png)
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -63,11 +81,13 @@ Foundry本地部署节点教程
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-28-1769566104422-image.png)
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -86,11 +106,13 @@ Foundry本地部署节点教程
 
 
 
+
 Hardhat 有点像JS
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -120,11 +142,13 @@ Hardhat 有点像JS
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-24-1769221141289-image.png)
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -268,6 +292,7 @@ string public greeting = "Hello, Web3!";
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-22-1769053508623-image.png)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
@@ -285,11 +310,13 @@ string public greeting = "Hello, Web3!";
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-21-1768974994477-image.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -322,11 +349,13 @@ Solidity基础语法学习
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-19-1768793761701-image.png)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -363,11 +392,13 @@ Dapp 架构由前端，智能合约，数据检索器，区块链和去中心化
 
 
 
+
 周六休息
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -410,6 +441,7 @@ Dapp 架构由前端，智能合约，数据检索器，区块链和去中心化
 
 
 
+
 AI机器基础概念
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
@@ -434,11 +466,13 @@ AI机器基础概念
 
 
 
+
 Web3 已从野蛮生长转向合规化，了解各国监管政策的同时注意安全反诈，警惕钓鱼链接，冒充官方，凡是助记词，账号密码等敏感信息谨慎输入，插件软件从官方下，面试只用Zoom/腾讯会议等主流平台，绝不下“专门面试平台”
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -500,6 +534,7 @@ Web3: 私钥（一串乱码）。千万不能丢！ 丢了谁也帮不了你，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
