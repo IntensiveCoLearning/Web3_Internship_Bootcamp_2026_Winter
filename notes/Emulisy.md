@@ -15,8 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+```
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+
+const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}
+```
+
+React Router用法 - createBrowserRouter
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 ```
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
@@ -229,6 +248,7 @@ export default function App() {
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
 
+
 ## **一、全局滚动属性（window 级别）**
 
 这些属性用于 **获取或控制整个页面的滚动状态**。
@@ -395,6 +415,7 @@ export default function App() {
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 ## 3\. 前端使用 ethers.js 的三大核心对象 ⭐⭐⭐
@@ -568,6 +589,7 @@ contract.on("Transfer", (from, to, value) => {
 
 
 
+
 -   创建新节点的方法：
     
     -   `document.createElement(tag)` —— 用给定的标签创建一个元素节点，
@@ -629,6 +651,7 @@ contract.on("Transfer", (from, to, value) => {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -701,6 +724,7 @@ contract.on("Transfer", (from, to, value) => {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -837,6 +861,7 @@ Smart Contracts (Blockchain)
 
 
 
+
 # FullStack Web3 Engineer Learning Path – Notes  
 
 ## Core Skill Areas  
@@ -920,6 +945,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1020,6 +1046,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1154,6 +1181,7 @@ Smart Contracts (Blockchain)
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1320,6 +1348,7 @@ function sendMoney(address _to, uint_ amount) public { emit Transfer(msg.sender,
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1563,6 +1592,7 @@ RPC Providers
 
 
 
+
 # From Wallet Transaction to Block Confirmation: Complete Flow
 
 ## 1\. Transaction Creation (Wallet Side)
@@ -1732,6 +1762,7 @@ Block appended to blockchain, transaction complete
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1934,6 +1965,7 @@ Ethereum’s community and philosophy are shaped by the **cypherpunk ethos**, em
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
