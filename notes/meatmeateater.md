@@ -15,8 +15,90 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+在研究Kite-Drive的專案邏輯
+
+#   
+系統架構總覽 (System Architecture)
+
+該項目採用了典型的 **Serverless Micro-Monolith (無伺服器微單體)** 架構，並結合了 **Hybrid AI (混合人工智能)** 的決策模式。
+
+-   **前端** : 純靜態 HTML/JS (`public/`), 負責演示與狀態輪詢。
+    
+-   **後端**: Vercel Serverless Function (`api/reserve.js`), 作為核心編排器。
+    
+-   **核心模組**:
+    
+    1.  `agent.js` —— 負責硬指標計算與篩選。
+        
+    2.  `llm.js` —— 負責解釋決策與自然語言交互。
+        
+    3.  `pay.js` —— 負責區塊鏈上的價值轉移。
+        
+
+* * *
+
+### 2\. 詳細代碼邏輯與「為什麼這樣寫」的分析
+
+A. `api/reserve.js`
+
+**邏輯：** 接收前端請求，按順序執行：
+
+1.  調用 `agent.js` 獲取推薦車位。
+    
+2.  (可選) 調用 `llm.js` 獲取解釋或進行二次確認。
+    
+3.  調用 `pay.js` 執行鏈上支付。
+    
+4.  將所有結果打包返回給前端。
+    
+
+B. `agent.js`
+
+**函數：** `decideParkingWithScenarios` **邏輯：**
+
+1.  **硬過濾** ：先篩除非 Kite 認證 (`kiteCertified`) 和不滿足充電需求 (`needCharging`) 的車位。
+    
+2.  **數據增強**：計算 ETA (預計到達時間) 和 Total Cost (停車費+充電費)。
+    
+    -   _PS_：使用了 `travelTimeMin` 函數，裡面是一個 Hardcoded Matrix (硬編碼矩陣)。
+        
+3.  **評分 (Scoring)**：基於 `urgency` (緊急程度) 動態調整權重 (時間 vs 金錢)，計算得分並排序。
+    
+
+C.`llm.js` (Trust Layer)
+
+**函數：** `askLLM` **邏輯：** 將 `agent.js` 算出的 Top 候選列表和場景描述 (Prompt) 發送給 DeepSeek-V3 模型，要求返回 JSON 格式的解釋。
+
+D. 支付執行：`pay.js` (Execution Layer)
+
+**函數：** `pay` **邏輯：** 使用 `gokite-aa-sdk` (帳戶抽象 SDK)。
+
+1.  讀取私鑰 (`EOA`)。
+    
+2.  計算 AA 錢包地址。
+    
+3.  發送 `UserOperation` 到 Bundler 進行交易上鏈。
+    
+
+E. 演示前端：`public/main.js` (The Showman)
+
+**邏輯：** 一個高度腳本化的模擬器。
+
+-   `vehicleState` 模擬速度、電池波動。
+    
+-   `runAgentFlow` 模擬 AI 的 "思考過程" (打字機效果)。
+    
+-   `runPaymentFlow` 模擬支付步驟 (檢查餘額 -> 簽名 -> 上鏈)。
+    
+
+結論：若要商業化，後端需要重寫以接入真實地圖與即時競價系統。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 今日學習關於erc標準相關知識
 
 ### 第一組：基石標準 (The Fundamentals)
@@ -200,12 +282,14 @@ timezone: UTC+8
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 今天黑客松Demoday阿阿阿阿，修了一天的bug  
 最後錄了個逆轉人格的小demo(累
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 今天也在弄黑客松
@@ -223,6 +307,7 @@ timezone: UTC+8
 
 
 
+
 今天把黑客松我要做的模塊寫出了一個初版:
 
 [https://github.com/MapleCity1314/spark-ai-demo/pull/1](https://github.com/MapleCity1314/spark-ai-demo/pull/1)
@@ -230,6 +315,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -246,6 +332,7 @@ timezone: UTC+8
 
 
 
+
 -   **进行 Hardhat 跟练**
     
 -   **進行foundry跟練**
@@ -253,6 +340,7 @@ timezone: UTC+8
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -402,6 +490,7 @@ return true;
 
 
 
+
 今天來做gas優化的作業，我優化的是[Solidity by Example](https://solidity-by-example.org/loop/) 的For and While Loop程式碼
 
 原代碼:
@@ -525,6 +614,7 @@ unchecked {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -947,6 +1037,7 @@ unchecked {
 
 
 
+
 Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 <img width="865" height="486" alt="image" src="https://github.com/user-attachments/assets/82b49f19-fe91-44b1-80f3-2990ef10f508" />
@@ -958,6 +1049,7 @@ Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1059,6 +1151,7 @@ Challenge #0 挑戰vercel已部署成功，正在做etherscan的驗證。
 
 
 
+
 今天提交了我對ERC-7962的想法，以下:  
 Really cool to see UTXO-style privacy logic getting baked right into the token itself. I’ve been digging into the mechanics of it, but just wanted to double check my understanding on a couple of points:
 
@@ -1072,6 +1165,7 @@ Thanks for clarifying!
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1112,6 +1206,7 @@ Thanks for clarifying!
 
 
 
+
 今天mint了人生第一個nft [https://x.com/Golesh212/status/2013272971071402075?s=20](https://x.com/Golesh212/status/2013272971071402075?s=20)，挺好玩的。然後加入了一個gamefi的小組，目前打算發起一個gamejam，明天開始會更新有關的進度
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -1135,11 +1230,13 @@ Thanks for clarifying!
 
 
 
+
 **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962的筆記:**[**https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/S1eCWF9H**](https://hackmd.io/@aFCN5W6RRziFmAoTz_00kw/S1eCWF9Hbe)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1187,12 +1284,14 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 
 
+
 今天聽分享會到23:32忘記要弄筆記了阿阿阿阿阿  
 簡單說一下今天聽了同學分享的心得好了，其中我覺得說法規的那個同學的論點是目前web3拿到傳統金融資金至關重要的一環，雖然目前有點一知半解感覺要再補一下錄影檔再繼續思考hh ，感覺可以把今天同學們分享的內容也做成筆記哀哀，明天遊玩結束感覺每天要花八小時在這些東西上面了
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1325,6 +1424,7 @@ hackmd連結:[https://hackmd.io/@aFCN5W6RRziFmAoTz\_00kw/rkQ8PQKHbg](https://hac
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1552,6 +1652,7 @@ Web3 透過 **Cryptographic Truth（密碼學真相）** 重構了信任：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1828,6 +1929,7 @@ Web3 是一個\*\*看重結果 (Result-oriented)\*\* 的行業。學歷和大廠
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
