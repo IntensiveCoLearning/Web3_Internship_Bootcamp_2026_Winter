@@ -15,8 +15,23 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+今天听了一个关于Web3行业里面媒体人的一个分享会个人的收获主要有两个方面，第一个可以说就是再次增强了，说对于做一个所谓个人IP及输出高质量深度思考内容，的一个重要性的提升。我觉得真的是非常非常非常重要的，特别是在一个web3这样一个偏金融且抽象的行业当中，而且我又不是有具有技术背景的情况下，这是一定一定非常有必要去做的事情。  
+  
+其次就是对于一些行业大趋势，如何快速去理解，以及在众多杂乱的信息当中如何去获取到属于自己的一些核心观点和思考的一些途径。  
+  
+第一个就选平台，比如说web3的主战场，现在主要就是推特，这个毫无疑问，第二个就是除了像这些主要的平台知道以外如何去筛选这种众多杂乱的信息，其实有时候去看一些所谓的web3的一些媒体账号，不管是用AI总结还是人工去多方面的去看，这都是一个比较有效率的一个途径，因为这些媒体已经把一些重要的一些事件节点也梳理好了，这个其实是更加有利于去树立整一个思维框架.  
+第三，就是一定要多去运用AI这个方面，我觉得非常非常非常重要，比如说现在的推特平台上面的grok就非常非常的重要，因为他直接打通了推特以及现在的一些没有门槛的使用方式，也可以帮助快速处理解除媒体好，再加上可能有自动的工作流程，我还有一些小龙虾之类的都要去深入的尝试思考  
+  
+平时要上班，有时候也感觉自己经历不够深度思考的时间有限，自己想进微菩萨行业不仅缺时间，还得学英语，还得补足各种行业知识，真的是一种挑战。希望说最近的一个期待就是说能不能在不久的共识会议上去认识一下一些更有意思的，打破自己偏见的一些朋友和圈子知识，同时也要好好利用一些老师助教的资源好好的好好的，好好地好好去面试，哪怕是找一份part time工作也是很很很好。  
+  
+甚至有想法说 我需不需要再去成为一次学生 读个研？这会有利于我更多的思考和尝试时间和机会吗？待评估
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 今天在这个简历和求职优化的分享会上认识到了一个我非常非常喜欢的一位INTP老师Antonia  
   
 用自己的话说就是 希望成为Antonia老师这样真的有实力说“拉jb倒”的intp，而不是拉倒就真的成垃圾了  
@@ -32,6 +47,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 今天是黑客松的demo day  
   
@@ -52,6 +68,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-31-1769874668998-image.png)
 
 Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获颇丰 后续在售后群里继续操作！
@@ -59,6 +76,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -86,6 +104,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-29-1769701877625-image.png)
 
 由于今天上直播课学习内容大部分是跟简历和Coding相关的，自己在这方面其实并没有代码的基础以及数据分析基础，所以说自己学习还是比较吃力，今天的收获相对来说会更少一些  
@@ -107,6 +126,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -172,6 +192,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 ![1668e81c8c61bf26b3bbd5311c80dc1f.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-27-1769528916143-1668e81c8c61bf26b3bbd5311c80dc1f.jpg)
 
 今天主要学习收获是关于黑客松选题  
@@ -185,6 +206,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -260,6 +282,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 今天web3 的收获是关于同学们的分享会  
   
 第一个：web3 英语多重要
@@ -323,6 +346,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 今天不用上班niec  
 创作日 决定周末把下周日更的X文7篇都写好  
 如下图是我的第二篇X文框架 完善ing
@@ -332,6 +356,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -366,6 +391,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -424,6 +450,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 今天学习了uniswap相关的知识  
 概念：与传统中心化交易所不同，Uniswap运行在以太坊等区块链上，由智能合约管理。您始终通过自己的钱包进行交易，无需注册或托管资产，实现了**无需许可**和**非托管**的交易  
 其中**自动化做市商AMM**：是Uniswap的灵魂。它摒弃了订单簿，转而依靠一个数学公式和资金池来**自动定价并完成交易**。流动性提供者将资金存入池中，系统根据算法为所有交易者提供即时流动性  
@@ -465,6 +492,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-20-1768922426510-image.png)
 
 今天主要是学习了关于DAO的治理模式  
@@ -473,6 +501,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -525,6 +554,7 @@ Axon老师space的从0到1构建属于自己的agent分享 手把手教学收获
 
 
 
+
 [https://x.com/momoming88/status/2012598977603224052?s=20](https://x.com/momoming88/status/2012598977603224052?s=20)  
 以上链接是开始的web3学习记录扫盲账号的第一个推文
 
@@ -554,6 +584,7 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -635,11 +666,13 @@ ERC-7962 在ERC-721的基础上结合ZK原理——给第三方证明归属而�
 
 
 
+
 ![IMG_2414.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-16-1768577526820-IMG_2414.png)
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -754,6 +787,7 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2286.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768405995943-IMG_2286.png)![IMG_2285.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406024100-IMG_2285.png)![IMG_2284.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-14-1768406046422-IMG_2284.png)
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
@@ -788,11 +822,13 @@ AI与Web3的融合，远非概念炒作。它是AI智能体规模化进入社会
 
 
 
+
 ![IMG_2216.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Momo-Yiming/images/2026-01-13-1768319937404-IMG_2216.png)
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
