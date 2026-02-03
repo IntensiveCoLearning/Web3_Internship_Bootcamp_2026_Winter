@@ -15,13 +15,38 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ARZER-TW/images/2026-02-03-1770129799680-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ARZER-TW/images/2026-02-03-1770129822926-image.png)
+
+1\. Call vs Send
+
+-   Call：只讀取，不改變狀態，免費
+    
+-   Send：寫入交易，改變狀態，消耗 Gas
+    
+
+2\. 測試環境安全
+
+-   本地節點的私鑰是公開的測試用私鑰
+    
+-   所有 ETH 都是假的，節點關閉即消失
+    
+
+3\. 開發流程
+
+-   編寫合約 → 編譯 → 部署到本地節點 → 交互測試
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 作息變得好亂哈哈，快要12點才起床，等下預計把入門的學習任務補完，之前有發現wsl會黨檔foundry的本地區塊鏈的連結，等等嘗試解決
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 這禮拜的重頭戲就是參加了實習計畫的休閒黑客松，雖然取名叫做『休閒』黑客松但是看了看大家的專案都非常不休閒啊
 
@@ -38,11 +63,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 忙黑客松，發現前端的AI會自動幫分析一些請求錯誤，非常好玩哈哈。
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -387,11 +414,13 @@ Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
 
 
 
+
 沒什麼好多說，搞黑客松!
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -414,6 +443,7 @@ Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
 
 
 
+
 跟同學們進行了腦爆PT2，正式確定了題目。
 
 完成了漏洞修復，也完成了運行**Solidity by Example。**
@@ -421,6 +451,7 @@ Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -781,6 +812,7 @@ contract CrossFunctionVulnerable {
 
 
 
+
 實習計畫第二周結束，本周最讓我印象深刻的是「與人合作」這個課題。
 
   
@@ -814,6 +846,7 @@ contract CrossFunctionVulnerable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -872,6 +905,7 @@ ZK 是一個**選擇性隱藏**的工具，設計者決定保護什麼、公開�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1000,6 +1034,7 @@ if (amount == 0) revert ZeroAmount();
 
 
 
+
 完整閱讀並學習了這兩篇在 X 上非常熱門的 Claude Code 指南——  
 [https://x.com/affaanmustafa/status/2014040193557471352?s=20](https://x.com/affaanmustafa/status/2014040193557471352?s=20) 和  
 [https://x.com/affaanmustafa/status/2012378465664745795?s=20，](https://x.com/affaanmustafa/status/2012378465664745795?s=20，)  
@@ -1030,6 +1065,7 @@ if (amount == 0) revert ZeroAmount();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2092,6 +2128,7 @@ price_ratio = 新價格 / 舊價格
 
 
 
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -2416,6 +2453,7 @@ unchecked：跳過溢位檢查，慎用
 
 
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -2427,6 +2465,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2519,6 +2558,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3163,6 +3203,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -3192,6 +3233,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3411,6 +3453,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -3470,6 +3513,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3728,6 +3772,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
