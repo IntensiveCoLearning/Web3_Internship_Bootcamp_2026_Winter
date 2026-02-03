@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+320
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 10
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 \# Web3学习全栈：从协议创新到链上研究
 
@@ -213,6 +220,7 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 121212
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
@@ -222,11 +230,13 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 3
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -243,11 +253,13 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 2
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -268,11 +280,13 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 1
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -378,6 +392,7 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 参与 cryptotalk,x space 会议
 
 参加LXDAO周会
@@ -398,11 +413,13 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 今天太忙了,没学但是卡一定要打
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -442,6 +459,7 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 ![7274bef1-f130-4ae9-b7f4-071d40cc8b2d.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/mengchenxin/images/2026-01-21-1769001449300-7274bef1-f130-4ae9-b7f4-071d40cc8b2d.png)
 
 坦白说今天啥也没干,主要是去搞这些活动了
@@ -449,6 +467,7 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -729,6 +748,7 @@ Web3不再是边缘的试验场，它正在成为主流金融和互联网的重�
 
 
 
+
 # [https://www.wtf.academy/zh/course/solidity101/Function](https://www.wtf.academy/zh/course/solidity101/Function)的二三章
 
 Solidity中的变量类型主要分为值类型、引用类型和映射类型，其中值类型在赋值时直接传递数值，是合约开发的基础。常见值类型包括五大类，各有其特性与适用场景。
@@ -742,6 +762,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -796,6 +817,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 
 
+
 # 区块链核心基础与关键原理
 
 1.  区块链的诞生源于对分布式系统难题的突破。CAP 定理指出，分布式系统需在一致性、可用性、分区容错性中三选二，而区块链需优先保障分区容错性。同时，拜占庭将军问题揭示了恶意参与者存在时的共识困境，而中本聪 2008 年推出的比特币，通过创新组合技术，首次实现了拜占庭容错、无许可、去中心化的系统。
@@ -807,6 +829,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -909,6 +932,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 
 
+
 [https://www.bilibili.com/video/BV1gCJ8zNELv/?spm\_id\_from=333.788.top\_right\_bar\_window\_history.content.click&vd\_source=b65fb6471899fe6858fba22e46841906](https://www.bilibili.com/video/BV1gCJ8zNELv/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=b65fb6471899fe6858fba22e46841906)
 
 今天看了ETHpanda Talk,原来都是布老师的系列阿.布老师可以的,一个人撑着一个系列
@@ -952,6 +976,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 
 
+
 # unphishable
 
 今天主要是刷题
@@ -961,6 +986,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1025,6 +1051,7 @@ Solidity中的变量类型主要分为值类型、引用类型和映射类型，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
