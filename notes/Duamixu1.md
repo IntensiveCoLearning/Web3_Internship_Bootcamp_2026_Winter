@@ -15,13 +15,26 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+提案背景與目標：
+
+-   核心目的： 建立統一標準，讓所有代幣（Coin）都能與錢包（Wallet）和交易所（Exchange）相容。
+    
+-   基本共識： 所有代幣至少應具備「簡單轉帳（Simple Send）」與「查詢餘額（Get Balance）」的功能。
+    
+-   重要性： 避免每個人用不同的方式處理代幣，確保互操作性。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ![f550d68a1a140dc51532790ed418eaf1.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duamixu1/images/2026-02-01-1769958425795-f550d68a1a140dc51532790ed418eaf1.png)
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 黑客松again
 <!-- DAILY_CHECKIN_2026-01-31_END -->
@@ -30,11 +43,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 准备黑客松ing
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -191,6 +206,7 @@ External Builder 透過將 Chaincode 的編譯與執行權限從 Peer 剝離，�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -353,6 +369,7 @@ External Builder 透過將 Chaincode 的編譯與執行權限從 Peer 剝離，�
 
 
 
+
 学习马老师的学习day3  
 **練習 hardhat**
 
@@ -413,6 +430,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts --network localhost
 
 
 
+
 🚀 本周Web3修炼手册：技术、乡村与未来
 
 **💡 认知刷新**
@@ -457,6 +475,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts --network localhost
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -570,6 +589,7 @@ deepwiki_tool = MCPTool(
 
 
 
+
 -   以 **pigeons** 作為通訊層，串接 **Trust Wallet**（對應的原生能力/介面），完成錢包相關核心流程：
     
     -   **金鑰生成**（key generation）
@@ -607,6 +627,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -796,6 +817,7 @@ deepwiki_tool = MCPTool(
 
 
 
+
 # **任務 A、B 筆記（Rust CLI / 鏈上事件抓取）**
 
 ## **1\. 任務概述**
@@ -903,6 +925,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1144,6 +1167,7 @@ deepwiki_tool = MCPTool(
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1409,6 +1433,7 @@ Level 3（Fallout）
 
 
 
+
 這段筆記我幫你「補齊背景＋講清楚做法＋把思路寫得更像可複用的解題模板」，你可以直接貼進你的學習筆記裡。
 
 * * *
@@ -1554,6 +1579,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1746,6 +1772,7 @@ Boom，Bingo，任務完成。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2087,6 +2114,7 @@ PoS 的本质是：
 
 
 
+
 ## **课堂后反思笔记：Web3的“去中心化体验”与合规现实**
 
 ### **1) 认知转变：从“自主掌控”到“合规介入”**
@@ -2233,6 +2261,7 @@ PoS 的本质是：
 
 
 
+
 -   上期回顾
     
     -   比特币：《比特币：一种点对点电子货币系统》
@@ -2341,6 +2370,7 @@ PoS 的本质是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
