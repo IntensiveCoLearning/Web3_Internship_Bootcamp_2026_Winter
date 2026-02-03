@@ -15,8 +15,96 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# **021ETH 第五章 EVM 与 Gas 机制**
+
+## 一个非常形象的比喻
+
+\- Solidity 源码 = 菜谱；编译 = 把菜谱翻成“机器步骤卡”（bytecode）。
+
+\- 部署 = 把这张步骤卡钉在某个厨房工位（合约地址），并把食材／锅具准备好（初始 storage）。
+
+\- 每次有人调用函数 = 点菜；EVM 厨师按步骤卡执行，过程中用临时案板（memory）、工具台（stack）和大仓库（storage）。
+
+\- 出锅前如果中途炸厨房（revert / out-of-gas），就把这次做菜的改动全部擦掉，但燃料钱（gas）已经烧掉了。
+
+\- 做 dApp 更顺：写合约 + 写部署脚本 + 写测试（JS/TS）一套下来。
+
+\- 以后接前端（ethers.js）也方便。
+
+## 合约在 EVM 上如何跑
+
+1\. 写合约（Solidity/Vyper）
+
+2\. 编译 → **创建字节码 + 运行时代码 + ABI**
+
+3\. 发部署交易（to 为空，data 放创建字节码+参数）
+
+4\. 执行创建代码 → 返回 runtime bytecode → 写入合约地址 code
+
+5\. 调用合约（交易/CALL 带 calldata）→ EVM逐条执行 opcode
+
+6\. 失败处理：require/revert/非法指令/OOG → **回滚状态**
+
+7\. 区块共识：所有节点按同样顺序执行交易 → 得到同样 state root
+
+\## Gas、Gwei、ETH 的关系
+
+\- **Gas**：工作量单位（资源消耗）
+
+\- **ETH**：最终支付的币种
+
+\- **Wei**：最小单位`1 ETH = 10^18 wei`
+
+\- **Gwei (giga-wei)**：常用计价单位`1 Gwei = 10^9 wei = 10^-9 ETH`
+
+\- 因而`1 ETH = 10^9 Gwei`
+
+## London（EIP-1559）带来的手续费结构变化
+
+1\. **BaseFee（基础费）**：协议按拥堵自动调节；每块最多 ±12.5% 调整
+
+2\. **BaseFee 被销毁（burn）**：不归验证者 → ETH 与使用量绑定
+
+3\. **Tip / PriorityFee（小费）**：用户给验证者的激励，决定优先级
+
+交易参数从“单一 gasPrice”变成：
+
+\- `maxFeePerGas`（你愿意支付的上限）
+
+\- `maxPriorityFeePerGas`（小费上限）
+
+\- 实际支付单价 ≈ `baseFee + priorityFee`，且不超过 `maxFeePerGas`
+
+## 写合约如何降低 Gas
+
+最高优先级原则：\*\*少写 storage、少做链上大循环、能链下算就链下算，主网只做结算。\*\*
+
+具体手段（从效果 好 => 坏）：
+
+\- **减少 SSTORE 次数**：先在 memory/局部变量算完，最后一次写回
+
+\- **缓存 SLOAD**：循环里别反复读 storage
+
+\- **参数尽量用 calldata**（external 函数）
+
+\- **避免不受控长度循环**：分页、分批、用户自助 claim
+
+\- **用事件替代“只为记录历史”的 storage**
+
+\- **storage 打包**：多个小类型挤进同一 32 bytes slot
+
+\- **constant / immutable**：不变配置别占 storage
+
+\- **必要时用位运算/短路逻辑**`unchecked` 仅在能证明安全时用
+
+\- **把重逻辑放 L2**（Rollup），L1 做结算/验证
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 这两天在开发黑客松，忘记打卡两天了  
 差点就要前功尽弃了  
 汗流浃背了
@@ -24,6 +112,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 暂时的黑客松思路
 
@@ -86,6 +175,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 \## 为什么用 Hardhat
@@ -222,6 +312,7 @@ type Timestamp is uint64;
 
 
 
+
 工程师的思考 (Reflections)
 
 1\. **开发体验的进化 (DX)**：
@@ -245,6 +336,7 @@ type Timestamp is uint64;
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -276,6 +368,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -388,6 +481,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 ### 读取合约 (Read Contracts)
 
 1\. **核心三要素**： 要与合约交互，你需要：
@@ -454,6 +548,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -499,6 +594,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -566,6 +662,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -730,6 +827,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -796,6 +894,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -821,6 +920,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -862,6 +962,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -926,6 +1027,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -961,6 +1063,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1017,6 +1120,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 1 章
 
 \- 什么是以太坊？一个**去中心化、开源、支持智能合约**的公共区块链平台。
@@ -1056,6 +1160,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
