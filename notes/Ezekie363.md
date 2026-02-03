@@ -15,8 +15,96 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+### Scaffold-ETH Challenge: Tokenization 学习笔记
+
+前端网络配置
+
+\- 修改 `packages/nextjs/scaffold.config.ts` 中的 `targetNetworks` 为 `[chains.sepolia]`。
+
+\- 注意：修改配置后前端显示 Hardhat 是因为 SSR 阶段前端访问 `localStorage` 导致初始化失败，而不是配置没生效。
+
+localStorage 报错修复
+
+\- 报错信息`TypeError: localStorage.getItem is not a function`。
+
+\- 原因：Next.js 15 默认使用 SSR`localStorage` 只在浏览器端存在，服务端访问会报错。
+
+\- 解决方法：
+
+1\. 在 `page.tsx` 顶部加 `"use client";`，让页面仅在浏览器端执行。
+
+2\. 在 `layout.tsx` 顶部加 `"use client";`，防止父组件 SSR 报错。
+
+3\. 在 `ScaffoldEthApp.tsx` 顶部加 `"use client";`，确保 RainbowKit 和 WagmiProvider 只在浏览器执行。
+
+\- 清理浏览器缓存：在控制台执行 `localStorage.clear()`。
+
+本地前端运行
+
+\- 使用命令 `yarn start` 启动本地前端。
+
+\- 本地访问地址：
+
+\- [http://localhost:3000](http://localhost:3000)
+
+\- 或者终端显示的 Network 地址，例如 `http://192.168.101.201:3000`[。](http://192.168.101.201:3000`。)
+
+\- 页面应该显示 Sepolia 网络，而不再是 Hardhat。
+
+合约测试
+
+\- 使用命令 `yarn test` 进行本地测试。
+
+\- 输出结果显示：
+
+\- Contract `YourCollectible` 已部署到本地 Hardhat 地址。
+
+\- NFT Mint 测试成功，余额变化符合预期。
+
+\- 注意：Node.js v25.4.0 不被 Hardhat 官方支持，推荐 Node 18~20 以避免潜在问题。
+
+合约验证
+
+\- 使用命令 `yarn verify --network sepolia` 验证合约（警告可暂时忽略 Node 版本）。
+
+\- 验证通过后，合约即可在 Sepolia 测试网络使用。
+
+Vercel 部署
+
+\- 部署命令`yarn vercel`。
+
+\- 部署时注意：
+
+\- 项目名称必须 **小写**，允许字母、数字`-_.`，不能超过 100 个字符。
+
+\- 建议使用 `ezekiel-tokenization` 作为项目名。
+
+\- 部署成功后，Vercel 会生成一个 URL，例如 `https://ezekiel-tokenization.vercel.app`[。](https://ezekiel-tokenization.vercel.app`。)
+
+\- 如果网站显示 `is building`：
+
+\- 可能是 Node 版本不兼容，建议切换到 Node 18 或 20。
+
+\- 本地先执行 `yarn build` 确认能构建成功，再重新部署。
+
+\- 查看 Vercel Dashboard 的 Build Logs 获取详细信息。
+
+总结经验
+
+\- Next.js 15 SSR 与浏览器端 localStorage 的冲突。
+
+\- `"use client";` 是解决 SSR 报错的关键，需加在 page、layout、ScaffoldEthApp 等涉及钱包和 RainbowKit 的组件。
+
+\- Vercel 部署时注意 Node 版本和项目名规则。
+
+\- 本地测试 NFT 合约和前端集成后，再进行部署和验证，保证流程顺畅。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ## **学习笔记**
 
 ### **ERC‑8004 学习笔记（Trustless Agents）**
@@ -253,6 +341,7 @@ ERC‑8004 让信任本身变成可组合的基础设施。
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 ## **学习笔记**
 
 ### **以太坊中文周会回顾\*AI时代的编程语言的马太效应**
@@ -272,6 +361,7 @@ _Matthew effect = 强者更强_
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 ## **学习笔记**
@@ -377,6 +467,7 @@ Cursor 基于 VS Code 内核，界面与使用逻辑与 VS Code 基本一致，�
 
 
 
+
 ## **学习笔记**
 
 ### **代币经济模型Tokennomics 初步认知**
@@ -466,6 +557,7 @@ Token参与协议运作-用户有理由长期持有-钱来自真实使用者
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -624,6 +716,7 @@ _Vitalik Buterin 的博客（_[_https://vitalik.ca_](https://vitalik.ca)_）_
 
 
 
+
 ## **学习笔记**
 
 ### **休闲黑客松概况**
@@ -754,6 +847,7 @@ Total Value Locked：某一协议或整个区块链生态系统中被锁定的�
 
 
 
+
 ## **学习笔记**
 
 ### **投研分享会议纪要**
@@ -793,6 +887,7 @@ Web3媒体 深潮
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -984,6 +1079,7 @@ ClaudeCode专精代码、Codex基于GPT、gemini-cli
 
 
 
+
 ## **学习笔记**
 
 ### **X402讨论会Q&A**
@@ -1045,6 +1141,7 @@ _“生态大模型垄断靠订阅制收益，AI经济是否还有别的商业�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1270,6 +1367,7 @@ _“生态大模型垄断靠订阅制收益，AI经济是否还有别的商业�
 
 
 
+
 ## **学习笔记**
 
 ### **Web3实习手册**
@@ -1306,6 +1404,7 @@ SSTORE：向stroage写一个slot，gas极贵
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1374,6 +1473,7 @@ Foundry
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1464,6 +1564,7 @@ contract关键字声明一个智能合约，语法为 contract 合约名 { ... }
 
 
 
+
 ## **学习笔记**
 
 ### **19:00-22:00参与会议**
@@ -1497,6 +1598,7 @@ _ERC-20案例_
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1569,6 +1671,7 @@ contract bank{
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1657,6 +1760,7 @@ contract bank{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1773,6 +1877,7 @@ _函数 Functions_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1975,6 +2080,7 @@ EIP-7702允许 EOA 在一笔交易中受全球资金表现得像一个合约账�
 
 
 
+
 ## **学习笔记**
 
 ### **从零到一学习以太坊第二章 //P131已结束第二章**
@@ -2127,6 +2233,7 @@ EOA是由私钥控制的区块链账户，用来发起交易。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2425,6 +2532,7 @@ _轻节点（Light Node）_
 
 
 
+
 # **1.13学习笔记01**
 
 ## **021学习以太坊第一章**
@@ -2584,6 +2692,7 @@ Web3目标所要实现的：权利的重新分配、无许可、抗审查、公�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
