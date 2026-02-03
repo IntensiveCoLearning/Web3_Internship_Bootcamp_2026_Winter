@@ -15,8 +15,129 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# 一、数组
+
+数组有编译时固定大小或动态大小两个方式。
+
+基本与一般编程语言差不多。
+
+```
+pragma solidity ^0.8.17;
+
+contract Array {
+    // 初始化数组的几种方式
+    uint[] public arr;
+    uint[] public arr2 = [1, 2, 3];
+    // 固定大小的数组，所有元素都初始化为 0
+    uint[10] public myFixedSizeArr;
+
+    //遍历数组？
+    function get(uint i) public view returns (uint) {
+        return arr[i];
+    }
+
+    // Solidity 可以返回整个数组。
+    // 但是，对于可以无限增长长度的数组，应该避免使用此函数。
+    function getArr() public view returns (uint[] memory) {
+        return arr;
+    }
+
+    function push(uint i) public {
+        // 追加元素到数组
+        // 这将使数组长度增加 1。
+        arr.push(i);
+    }
+
+    function pop() public {
+        // 从数组中删除最后一个元素
+        // 这将使数组长度减少 1。
+        arr.pop();
+    }
+
+    function getLength() public view returns (uint) {
+        return arr.length;
+    }
+
+    function remove(uint index) public {
+        // delete 不会改变数组长度。
+        // 它会将索引处的值重置为其默认值，
+        // 在本例中为 0。
+        delete arr[index];
+    }
+
+    function examples() external {
+        // 在内存中创建数组，只能创建固定大小的数组
+        uint[] memory a = new uint[](5);
+    }
+}
+```
+
+-   arr 是一个动态数组，因为它没有指定固定的大小。
+    
+-   push 函数从后面追加数组元素。
+    
+-   pop函数从后面删除元素。
+    
+-   remove函数删除指定索引的元素，delete是将元素值重置为默认值。
+    
+-   examples 函数演示了如何在内存中创建数组，只能创建具有固定大小的数组。
+    
+
+补充：
+
+### **require 语句**
+
+Solidity 中的一个内置函数，用于在函数中检查条件，如果条件不满足，则抛出异常。
+
+pop()通常和push()一起使用,实现类似栈的后进先出结构。
+
+```
+uint[] public stack = [1, 2, 3]; 
+
+// 移除并返回最后一个元素  
+uint removed = stack.pop(); 
+
+// 添加一个新元素
+stack.push(5);
+//需要注意的是：pop()会消耗gas,因为它写入了状态变化。如果数组为空,调用pop()会触发错误。返回的值popped是被移除元素的一个副本,对它的修改不会影响原数组。
+```
+
+注意：
+
+solidity中没有删除数组的方法，需要一段逻辑？
+
+```
+pragma solidity ^0.8.17;
+
+contract ArrayRemoveByShifting {
+    // [1, 2, 3] -- remove(1) --> [1, 3, 3] --> [1, 3]
+    // [1, 2, 3, 4, 5, 6] -- remove(2) --> [1, 2, 4, 5, 6, 6] --> [1, 2, 4, 5, 6]
+    // [1, 2, 3, 4, 5, 6] -- remove(0) --> [2, 3, 4, 5, 6, 6] --> [2, 3, 4, 5, 6]
+    // [1] -- remove(0) --> [1] --> []
+
+    uint[] public arr = [1,2,3,4,5,6,7,8,9];
+
+    function remove(uint _index) public {
+        require(_index < arr.length, "index out of bound");
+
+        for (uint i = _index; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr.pop();
+    }
+
+    function get() public view returns(uint[] memory ) {
+        return arr;
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 # 一、映射
 
 语法：
@@ -85,6 +206,7 @@ contract Mapping {
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 # 一、以太币和Wei
@@ -241,6 +363,7 @@ contract Loops {
 
 
 
+
 # 一、常量
 
 常量是无法修改的变量。
@@ -352,6 +475,7 @@ contract SimpleStorage {
 
 
 
+
 Solidity
 
 # 一、Hello World
@@ -450,6 +574,7 @@ contract Variables {
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -616,6 +741,7 @@ describe("StanfordToken", function () {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 4
 
 Solidity 语法 + 测试
@@ -700,6 +826,7 @@ function doSomething() public onlyOwner { ... }
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -895,6 +1022,7 @@ npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -976,6 +1104,7 @@ async function mintNFT() {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 1
 
 由于本期几乎全程live coding，可能笔记不多。
@@ -1046,6 +1175,7 @@ Provider 是区块链的“只读接口”。
 
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -1090,6 +1220,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1164,6 +1295,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1253,6 +1385,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -1316,6 +1449,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1456,6 +1590,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1736,6 +1871,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -1851,6 +1987,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2050,6 +2187,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -2175,6 +2313,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -2244,6 +2383,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2374,6 +2514,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2614,6 +2755,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
