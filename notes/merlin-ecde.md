@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+今日又是什么都没干
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 今日又是水水的一天，明天正式开始
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 本周主要的事情是参与了黑客松的筹备，倍感煎熬但收获颇多，遇见了非常多优秀的朋友，高效率且高质量的任务完成令人印象深刻。本来报着bd组的协调但发现自己帮不上很多忙于是转战帮助设计组完任务，今天是demo day，看着小伙伴们交上了自己的答卷心里也是非常的开心，明天进行复盘总结，开始写简历
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 今日任务：学习了一点投研的基础思路，复习了一下前几天学的协议
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日任务：听了课程，总结复盘了区块链的基础知识，锻炼了身体
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -57,6 +67,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 主要完成了openday的PPT制作
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-28-1769601458475-image.png)
@@ -64,6 +75,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -84,6 +96,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要的任务是做了黑客松openday的ppt部分
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-26-1769442780888-image.png)
@@ -91,6 +104,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -115,6 +129,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要制作一次space的海报和编辑文案，并且协调黑客松筹备活动
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-24-1769268635558-image.png)
@@ -122,6 +137,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -150,11 +166,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日主要的任务是邀请到了三位助教老师当我们x402专题space的嘉宾，以及学习了figma的基础操作，并且现在正在赶制海报！
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -361,6 +379,7 @@ x402 的核心是 **“机器对机器的自动支付”**。这恰恰踩中了�
 
 
 
+
 昨天开始和小伙伴们组队准备策划一个关于x402议题的分享会，但之前没有了解过相关的概念，相当于是第一次接触
 
 所以今天的主要任务就是了解x402协议的内容，以及里面涉及到的概念逻辑梳理
@@ -521,6 +540,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今天梳理了一下btc的基本实现逻辑，笔记好像不能打公式，按截图来了那就
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833787688-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833814968-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833834458-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833863761-image.png)
@@ -528,6 +548,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -616,6 +637,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
@@ -638,11 +660,13 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今日补充学习前面内容
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -685,6 +709,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今天的学习内容围绕 Web3 的安全与合规两大核心议题展开，让我对当前生态中的风险和边界有了更清晰的认识。
 
 在安全方面，近期 Web3 领域面临严峻挑战。不仅有境外朝鲜黑客团队针对头部交易所发动的高阶攻击，还有大量针对普通用户的社交工程骗局。我曾多次在社交媒体上看到典型的钓鱼帖：有人声称自己看破红尘，愿将钱包中数万美元“赠予”他人，但提取需要支付一笔 Gas 费。一旦你用自己的钱包向该地址转入 Gas，黑客便能触发预设机制，窃取你的私钥，进而卷走全部资产。此外，还有伪装成正规钱包、交易所或工具的恶意链接，诱导用户输入助记词、授权签名或登录账号，最终导致资产被盗。这些手法看似简单，却极具迷惑性。对此，Adam 老师总结出个人防范的八字箴言：“不点、不签、不装、不转”——陌生链接不点开，不明请求不签名，非官方软件不安装，未经核实的信息不转发。这虽不能解决协议层或生态级的安全漏洞，但却是我们每个人守住资产的第一道防线。
@@ -696,6 +721,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -747,6 +773,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
