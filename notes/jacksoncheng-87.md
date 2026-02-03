@@ -15,8 +15,153 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+## **RPC节点服务**
+
+在 Web3 开发中，RPC（Remote Procedure Call，远程过程调用） 是连接**前端应用**与**区块链网络**的**关键桥梁**。
+
+### **1\. RPC 是什么？**
+
+RPC 是一种**通信协议**，**允许应用程序通过网络调用远程服务器上的函数或方法**。在区块链开发中，RPC 节点是运行区块链客户端软件的服务器，它们维护完整的**区块链数据副本**，并提供 **API 接口**供开发者**查询链上数据**、**发送交易**等操作。可以类比：银行的 ATM 机：ATM 机（RPC 节点）连接着银行的核心系统（区块链网络），可以通过 ATM 机（调用 RPC API）可以查询余额（读取链上数据）、转账（发送交易），不同的 ATM 机可能由不同的银行或服务商提供（不同的 RPC 服务商）。
+
+### **2\. RPC 在 Web3 开发中的作用：**
+
+在 Dapp 开发中，RPC 节点承担着以下关键职责：
+
+**1.读取链上数据**
+
+-   查询账户余额、交易历史；
+    
+-   读取智能合约的状态变量；
+    
+-   获取区块信息、Gas 价格等；
+    
+
+**2.发送交易**
+
+-   将用户签名的交易广播到区块链网络;
+    
+-   查询交易状态和确认数;
+    
+-   估算交易所需的 Gas 费用;
+    
+
+**3.事件监听**
+
+-   监听智能合约事件（Events）;
+    
+-   实时获取链上状态变化;
+    
+-   支持 WebSocket 长连接推送;
+    
+
+**4.网络管理**
+
+-   切换不同的区块链网络（主网、测试网）;
+    
+-   获取网络信息和链 ID;
+    
+-   管理节点连接状态;
+    
+
+**3\. JSON-RPC 协议**
+
+以太坊使用 JSON-RPC 2.0 协议作为标准的 RPC 通信格式。所有请求和响应都是 JSON 格式，通过 HTTP 或 WebSocket 传输。
+
+常用 JSON-RPC 方法：
+
+方法名 功能 示例
+
+eth\_getBalance 查询账户余额 eth\_getBalance(address, block)
+
+eth\_blockNumber 获取最新区块号 eth\_blockNumber()
+
+eth\_sendTransaction 发送交易 eth\_sendTransaction(txObject)
+
+eth\_call 调用合约（只读） eth\_call(callObject, block)
+
+eth\_getTransactionReceipt 获取交易收据 eth\_getTransactionReceipt(txHash)
+
+eth\_getLogs 查询事件 eth\_getLogs(filterObject)
+
+**4\. 主流 RPC 服务商对比**
+
+**5\. 如何获取和使用 RPC 端点**
+
+5.1 获取 RPC URL
+
+重要：妥善保管 API Key，不要提交到公开仓库
+
+5.2 在代码中使用 RPC
+
+使用 Viem（推荐）：
+
+import { createPublicClient, http } from 'viem'
+
+import { mainnet } from 'viem/chains'
+
+const client = createPublicClient({
+
+chain: mainnet,
+
+transport: http('[https://eth-mainnet.g.alchemy.com/v2/YOUR\_API\_KEY](https://eth-mainnet.g.alchemy.com/v2/YOUR_API_KEY)')
+
+})
+
+// 查询余额
+
+const balance = await client.getBalance({
+
+address: '0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb'
+
+})
+
+使用 Ethers.js：
+
+const { ethers } = require('ethers')
+
+const provider = new ethers.JsonRpcProvider(
+
+'[https://eth-mainnet.g.alchemy.com/v2/YOUR\_API\_KEY](https://eth-mainnet.g.alchemy.com/v2/YOUR_API_KEY)'
+
+)
+
+// 查询余额
+
+const balance = await provider.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb')
+
+使用 Web3.js：
+
+const { Web3 } = require('web3')
+
+const web3 = new Web3('[https://eth-mainnet.g.alchemy.com/v2/YOUR\_API\_KEY](https://eth-mainnet.g.alchemy.com/v2/YOUR_API_KEY)')
+
+// 查询余额
+
+const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb')
+
+5.3 在 Hardhat 中配置 RPC
+
+**6\. RPC 使用最佳实践**
+
+-   保护 API Key,使用环境变量存储 RPC URL 和 API Key,不要将敏感信息提交到 Git 仓库,使用 .gitignore 忽略 .env 文件,定期轮换 API Key，特别是发现泄露时错误处理和重试;
+    
+-   RPC 调用可能因网络问题失败，需要实现重试机制,设置合理的超时时间,处理常见的错误码（如 429 速率限制、503 服务不可用）；
+    
+-   速率限制管理:了解服务商的速率限制（Rate Limit）、实现请求队列或节流（Throttling）、对于高频请求，考虑使用 WebSocket 连接、多节点备份、不要依赖单一 RPC 节点、配置多个 RPC 端点作为备用、实现故障转移（Failover）机制；
+    
+-   监控和日志：记录 RPC 调用的成功率和延迟监控、 API 使用量，避免超出免费额度、设置告警，及时发现服务异常
+    
+-   本地节点开发：开发测试时优先使用本地节点（如 Hardhat Node、Anvil）、本地节点响应快，不受速率限制、可以重置状态，方便测试
+    
+
+自建节点 没用限速限制而且数据完全隐私
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ### 就业简历指导&面经分享
 
 一、简历要求：
@@ -132,6 +277,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 **本周总结：**
 
 本周主要是和三个小伙伴完成我们的黑客松项目，叫“Time Gambler(时间赌徒)”。这个项目我们给他的定义是是一个 **赌注驱动 (Stake-Driven)** 的去中心化行为矫正协议。 我们致力于解决现代人最大的痛点：**拖延 (Procrastination)** 与 **注意力涣散 (ADHD)**。引入 **“真金白银的抵押 (Staking)”** + **“SpoonOS 的严格审计 (AI Audit)”。**为了实现这个目标，我们试着做减法把UI界面做的尽可能地简洁，让人更容易去集中注意力去做一件事情，而不是跟现在市面上大部分app一样“偏养成系",我们的技术架构是这样的：
@@ -191,6 +337,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 # 智能合约开发全体系笔记
@@ -336,6 +483,7 @@ return messages\[user\].length;
 
 
 
+
 ### 学习ERC的标准
 
 ### 1\. 基础资产 (生态基石)
@@ -409,6 +557,7 @@ return messages\[user\].length;
 
 
 
+
 Octant 是由 Golem 基金会发起的实验性公共资助平台，旨在利用ETH 质押收益创建了一个可持续的 Web3 项目公共资助模型。
 
 1\. 核心运行逻辑与分配机制
@@ -462,6 +611,7 @@ Octant成功展示了如何通过存量资产项目的利息（收益率）除�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -531,6 +681,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -739,6 +890,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 
 
+
 **黑客松和 Vibe Coding（AI 辅助编程）**
 
 -   团队配置建议：3-4人团队（2个开发+1个产品+1个PM），PM在演示时非常重要
@@ -778,6 +930,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -890,6 +1043,7 @@ Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1038,6 +1192,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1598,6 +1753,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -1927,6 +2083,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -2169,6 +2326,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -2251,6 +2409,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2466,6 +2625,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -2473,6 +2633,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2561,6 +2722,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2720,6 +2882,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3032,6 +3195,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -3095,6 +3259,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3263,6 +3428,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
