@@ -15,8 +15,93 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas，具体可以看\[以太坊 操作码\](https://ethereum.org/zh/developers/docs/evm/opcodes/)，gas 优化目标是减少交易所需的总 gas，提高用户体验并降低成本。  
+  
+\*\*区块链数据存储位置有三种：storage（存储，也就是磁盘）、memory（内存，临时的）、calldata（只读数据）\*\*  
+  
+\## 常见优化技巧  
+  
+\### 减少对 storage 操作  
+  
+\- 首次读取 \`storage\` 需 2100 gas（后续是热读取需 100 gas），而读取 \`memory\` 仅 3 gas。推荐多次访问同一存储数据时，将其缓存到 \`memory\` 以减少 SLOAD 次数。  
+  
+\- 首次初始化写入 \`storage\` 的成本高达 20,000 gas，修改 \`storage\` 中已有的存储值成本是 2,900 - 5,000；\`storage\`成本远高于\`memory\`，所以能用 \`memory\` 就不要用 \`storage\`。  
+  
+!\[\](image.png)  
+  
+示例：  
+  
+\`\`\`c  
+// 公共状态变量，存储在storage中  
+uint256 public totalScore;  
+  
+// ❌ 非优化写法  
+function updateScore(uint256\[\] memory scores) public {  
+for (uint256 i = 0; i < scores.length; i++) {  
+// 每一轮循环都在读写storage  
+totalScore += scores\[i\];  
+}  
+}  
+  
+// ✅ 优化写法  
+function updateScore(uint256\[\] memory scores) public {  
+// 1. 仅读取一次storage到内存 (SLOAD)  
+uint256 tempScore = totalScore;  
+for (uint256 i = 0; i < scores.length; i++) {  
+// 2. 在内存中操作 (MLOAD/MSTORE)，每次仅需 3 Gas  
+tempScore += scores\[i\];  
+}  
+// 3. 将最终结果写回storage (SSTORE)，仅需一次写存储  
+totalScore = tempScore;  
+}  
+\`\`\`  
+  
+\### 使用位压缩（Bit Packing）  
+  
+EVM 存储是以 32 字节（256 位）为基本单位的。定义一个 uint256 会占满一整个插槽；定义一个 uint8，它只需要 1 字节，但如果不进行压缩，剩下的 31 字节就会被浪费掉。位压缩的目的就是通过多个连续小尺寸变量，让它们在物理上存储在同一个插槽内。  
+  
+示例：  
+  
+\`\`\`c  
+struct Packed {  
+//占1字节  
+uint8 a;  
+//占3字节  
+uint24 b;  
+}  
+\`\`\`  
+  
+\### 循环优化  
+  
+减少不必要的运算，如 \`array.length\` 缓存到变量中定义在循环外，而非每次都在循环中反复定义。  
+  
+示例：  
+  
+\`\`\`c  
+// ❌ 非优化  
+for (uint256 i = 0; i < arr.length; i++) {  
+uint256 len = arr.length;  
+...  
+}  
+// ✅ 优化  
+uint256 len = arr.length;  
+for (uint i = 0; i < len; ++i) {  
+...  
+}  
+\`\`\`  
+  
+\### 函数可见性选择  
+  
+\`external\` 比 \`public\` 更节省 gas，适用于仅被外部调用的函数。  
+  
+由于 public 函数既可以被外部调用，也可以被合约内部函数调用。为了兼容内部调用，Solidity 编译器通常会将 calldata 中的参数\*\*拷贝到内存（Memory）\*\*中，这样就会消耗 gas。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 [参考 bitget UEX](https://www.bitget.com/zh-CN/blog/articles/bitget-universal-exchange-uex-whitepaper)
 
 UEX 全称 Universal Exchange **全场景交易所**，由 Bitget 首席执行官 Gracy Chen 提出，目前**已经应用在 bitget**。UEX 将 CEX、DEX 融合，用户可以**从单一账户中交易多种资产，包括加密货币、股票、ETF、外汇、黄金和现实世界资产 (RWAs)，如房地产、商品和知识产权**。如下图分别是币安、okx、bitget 的应用首页，可以发现 bitget 已经可以进行股票交易了，而币安、okx 还不行！
@@ -131,6 +216,7 @@ UEX 全称 Universal Exchange **全场景交易所**，由 Bitget 首席执行�
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 \## 漏洞
 
 \### 重入攻击 Reentrancy
@@ -230,6 +316,7 @@ require(sent);
 
 
 
+
 [x402](https://www.x402.org/)
 
 [链技术](https://www.eoje.cn/qkljs/11406.html)
@@ -310,6 +397,7 @@ v2 在 v1 基础上，实现了：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -439,6 +527,7 @@ ERC-1271 定义了一个标准化的函数 isValidSignature(bytes32 \_messageHas
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -651,6 +740,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -774,6 +864,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -814,11 +905,13 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -919,6 +1012,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -932,6 +1026,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1285,6 +1380,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -1378,6 +1474,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -1412,6 +1509,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1547,6 +1645,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1758,6 +1857,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -1897,6 +1997,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -1937,6 +2038,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
