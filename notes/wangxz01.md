@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+今天看番
+
+![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/wangxz01/images/2026-02-03-1770123602063-image.png)
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 今日比赛
 
 无心学习
@@ -24,6 +32,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 **老师莫怪我**
 
@@ -36,11 +45,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
 
+
 今日比赛 暂停学习
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -77,11 +88,13 @@ turnkey工具 neofs工具 x402支付
 
 
 
+
 DAKA
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -98,11 +111,13 @@ DAKA
 
 
 
+
 今天收听了一系列学员workshop感觉收获颇多
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -123,6 +138,7 @@ DAKA
 
 
 
+
 ### 两周总结
 
 今天的课程完整的听完了 一遍 不过我感觉最近两周并没有完整的学会很多有用的东西 因为并没有专心的投入到学习中去 精力的有限也让我老是容易在听课的过程中突然陷入沉睡中去 不过中的来说 我还是又一些收获的 听到各位大佬的分享 感觉确实在认知上已经有所提升 今天不纠结于记笔记了 下周继续努力 下周努力！
@@ -130,6 +146,7 @@ DAKA
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -164,6 +181,7 @@ foundry单元测试 hardhat+viem集成测试
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -225,6 +243,7 @@ Uniswap V2 经常被作为“流动性深度”和“无常损失（Impermanent 
 
 
 
+
 ## web3公共物品资金分配
 
 public good
@@ -245,6 +264,7 @@ public good
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -381,6 +401,7 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 ## Key Hash Based Tokens: 从 ERC-721 到 ERC-7962
 
 ## Key Hash Based Tokens (基于密钥哈希的代币)
@@ -454,11 +475,13 @@ MegaETH 目标是实现 sub-millisecond（亚毫秒）延迟和 10 万+ TPS。�
 
 
 
+
 qiandao
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -516,6 +539,7 @@ qiandao
 
 
 
+
 ## 继续昨天的web3安全
 
 攻击方式演变与新技术骗局
@@ -549,6 +573,7 @@ x402协议
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -689,6 +714,7 @@ UXlink Balancer
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1134,6 +1160,7 @@ _(这是一个简化的概念公式，表示随着确认数增加，回滚概率
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
