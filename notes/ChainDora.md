@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+**ZK-Rollups (Zero-Knowledge Rollups)**
+
+-   **核心理念：** “有效性证明” (你必须用数学方法立刻证明自己是好人)。
+    
+-   **代表项目：** zkSync Era, Polygon zkEVM, Starknet。
+    
+-   **产品启示：** 安全性更高，提款到L1几乎瞬时完成，长期看成本更低。但技术复杂，与EVM的兼容性（zkEVM）仍在发展中。
+    
+
+**默克尔树在两种Rollup中的不同作用**
+
+这是理解两种Rollup本质区别的关键。虽然都用默克尔树，但用法和目的完全不同。
+
+| 特性 | Optimistic Rollup 中的默克尔树 | ZK-Rollup 中的默克尔树 |
+| --- | --- | --- |
+| 主要作用 | 作为欺诈证明的数据结构，用于发起挑战。 | 作为零知识证明的输入，用于证明状态转换。 |
+| 核心机制 | 防御性工具：用于在挑战期内，向L1证明某笔交易是无效的。 | 证明性工具：用于生成一个数学证明，直接向L1证明整个批次的状态转换都是有效的。 |
+| 验证方式 | 任何人都可以通过默克尔证明来发起挑战，L1合约会重新执行有争议的交易来裁决。 | 主链智能合约通过验证零知识证明来确认有效性，无需重新执行交易。 |
+| 最终确认 | 需等待挑战期结束（约7天）。 | 证明被验证后，立即确认。 |
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ## **IPFS NFT**
 
 **什么是 IPFS？**
@@ -373,6 +397,7 @@ contract MyNFT is ERC721 {
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 ## **Twitter Space 线上活动策划总结**
 
 ### **（一）全流程框架：准备 - 执行 - 复盘**
@@ -404,6 +429,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 ## **一、Uniswap V2 核心内容总结**
@@ -444,6 +470,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## **数据分析总结**
 
 ### **（一）区块链数据结构基础**
@@ -480,6 +507,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -582,6 +610,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 # 侧链 (Sidechain) 笔记
 
 ## 1\. 背景与动机
@@ -659,6 +688,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## ptimistic Rollup 核心机制
 
 -   **基本原理**：假设大多数参与者是可信的。
@@ -710,6 +740,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -788,6 +819,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -981,6 +1013,7 @@ contract NFTmarket  {
 
 
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -994,6 +1027,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1023,6 +1057,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1081,6 +1116,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -1103,6 +1139,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1159,6 +1196,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1241,6 +1279,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1352,6 +1391,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -1434,6 +1474,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -1476,6 +1517,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1572,6 +1614,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -1634,6 +1677,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
