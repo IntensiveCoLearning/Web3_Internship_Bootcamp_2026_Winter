@@ -15,8 +15,114 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+## Uniswap V3中的Tick 系统、价格区间与虚拟储备（Virtual Reserves）
+
+### 1\. Tick 是什么？
+
+V3 把整个价格空间离散化为一个个 **tick**（刻度）：
+
+-   每个 tick 是一个整数，范围大约：-887272 ∼ +887272
+    
+-   价格与 tick 的关系（核心公式）：
+    
+
+```
+price = 1.0001 ^ tick
+```
+
+反过来：
+
+```
+tick = log₁.₀₀₀₁(price) = ln(price) / ln(1.0001)
+```
+
+-   相邻 tick 之间价格差 ≈ 0.01%（这就是 V3 的最小价格变动单位）
+    
+
+### 2\. Tick 的重要性质
+
+| 特性 | 说明 |
+| --- | --- |
+| tick 间距固定 | 每 1 tick ≈ 0.01% 价格变化 |
+| tick 总是整数 | 所有价格区间边界（tickLower / tickUpper）必须是整数 tick |
+| tick 0 的意义 | tick = 0 时，price = 1.0001⁰ = 1（token1 / token0 = 1:1） |
+| 价格范围极值 | tick ≈ -887272 → price ≈ 2⁻¹²⁸（极小） tick ≈ +887272 → price ≈ 2¹²⁸（极大） |
+
+### 3\. 价格区间（Price Range）
+
+一个 Position（仓位）由三个要素定义：
+
+-   **tickLower**：价格区间的下界（包含）
+    
+-   **tickUpper**：价格区间的上界（不包含）
+    
+-   **liquidity L**：在这个区间内提供的流动性量
+    
+
+**关键规则**：
+
+-   当前价格（current tick）在 \[tickLower, tickUpper) 内时，该 Position 提供流动性
+    
+-   当前价格 < tickLower → 该 Position 全是 token0（y=0）
+    
+-   当前价格 ≥ tickUpper → 该 Position 全是 token1（x=0）
+    
+
+### 4\. 虚拟储备（Virtual Reserves）概念
+
+V3 引入了非常重要的“虚拟储备”思想，这是理解集中流动性的关键。
+
+在某个价格区间 \[√P\_a, √P\_b\] 内，流动性 L 表现为：
+
+-   **虚拟 token0 储备**：L / √P\_b
+    
+-   **虚拟 token1 储备**：L × √P\_a
+    
+
+当当前价格在区间内移动时，真实储备（实际持有的 token0 和 token1）会变化，但 **虚拟储备之积保持不变**：
+
+```
+virtual_x × virtual_y = L²
+```
+
+这正是 V2 中 x × y = k 的延续，只不过 V3 把 k 变成了 L²，并且只在特定价格区间内有效。
+
+### 5\. 真实储备 vs 虚拟储备
+
+| 项目 | 真实储备（实际持有） | 虚拟储备（用于计算） |
+| --- | --- | --- |
+| 含义 | 合约实际持有的 token0 和 token1 | 用于做市计算的“假想”储备 |
+| 是否恒定 | 随价格移动而变化 | 在区间内恒定（virtual_x × virtual_y = L²） |
+| 作用 | 最终结算时使用 | 决定当前价格下的可交易量和滑点 |
+| 计算方式 | 根据当前价格在区间的位置动态计算 | 由 L 和区间边界决定 |
+
+### 6\. 价格移动时发生了什么？
+
+假设当前价格在区间 \[tickLower, tickUpper\] 内向上移动：
+
+1.  交易者用 token0 买入 token1
+    
+2.  真实 token0 增加，真实 token1 减少
+    
+3.  但虚拟储备保持不变（因为 L 不变）
+    
+4.  当价格到达 tickUpper 时：
+    
+    -   真实 token1 变为 0
+        
+    -   该 Position 的流动性“用尽”，不再提供做市能力
+        
+    -   价格继续上涨时，需要其他更高区间的 Position 接力
+        
+
+V3 通过 tick 系统把价格离散化，用虚拟储备（virtual reserves）延续了 x×y=k 的不变式，但只在 LP 指定的有限价格区间内有效——这正是集中流动性能够极大提升资本效率的数学基础。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ## Uniswap V3基础概念
 
 ### 1\. 为什么要有集中流动性？
@@ -128,6 +234,7 @@ V3 把价格离散化为 **tick**（刻度）：
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 ## Uniswap V2 常见开发陷阱与防御
 
@@ -241,6 +348,7 @@ V3 把价格离散化为 **tick**（刻度）：
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 ## Uniswap V2 事件与日志
 
 Uniswap V2 使用事件（Events）记录关键状态变化，便于 off-chain 索引、监听与历史查询。 所有事件在 Factory / Pair 合约中定义，遵循 EIP-20 / EIP-721 风格。 前端 / subgraph（如 The Graph）依赖这些事件构建索引。
@@ -314,6 +422,7 @@ Pair 继承 UniswapV2ERC20，触发标准事件：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -411,6 +520,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 的设计细节
 
 ### 1\. Core / Periphery 架构的深层意图
@@ -477,6 +587,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 与 V3 关键差异
 
 ### 1\. 流动性模型
@@ -530,6 +641,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -621,6 +733,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -690,6 +803,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -848,6 +962,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -879,6 +994,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1001,6 +1117,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -1084,6 +1201,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1231,6 +1349,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -1348,6 +1467,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -1394,6 +1514,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -1409,6 +1530,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1471,6 +1593,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -1482,6 +1605,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
