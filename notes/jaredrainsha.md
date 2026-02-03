@@ -15,19 +15,27 @@ Web3 Builder
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+预习今天的上课内容
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 复习之前上课内容
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 复习之前记录
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 复习之前上课内容
@@ -38,11 +46,13 @@ Web3 Builder
 
 
 
+
 学习昨天内容，预习今天的课程
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Web3 Builder
 
 
 
+
 预习今天晚上课程
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -80,11 +92,13 @@ Web3 Builder
 
 
 
+
 回看昨天上课视频
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -107,11 +121,13 @@ Web3 Builder
 
 
 
+
 复习之前内容
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -138,11 +154,13 @@ Web3 Builder
 
 
 
+
 参与一周的总结会
 <!-- DAILY_CHECKIN_2026-01-16_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -173,11 +191,13 @@ Web3 Builder
 
 
 
+
 听取晚上上课内容，复习昨天上课内容
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
