@@ -21,8 +21,37 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# Foundry 实操
+
+## 启动节点服务
+
+-   `执行anvil` 启动服务, 获得可用账`Available Accounts`列表`Private Keys`私钥列表
+    
+
+## 部署合约上线(本地节点)
+
+-   执行部署`forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-key 08cc31111f5d036fb462c99093e8fe9ba355f75963f77fc655dc7037e3e17118 --broadcast`
+    
+-   节点部署结果
+    
+-   ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-02-03-1770133818382-image.png)
+
+## 调用合约
+
+-   执行获得合约数据 `cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "number()" --rpc-url http://127.0.0.1:8545 | cast --to-dec`
+    
+-   更新合约 `cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "setNumber(uint256)" 666 --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`
+    
+-   两次获得合约结果
+    
+-   ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/biduone/images/2026-02-03-1770134175461-image.png)
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 # Hardhat实操
 
 ## **启动服务节点**
@@ -92,6 +121,7 @@ await counter.number();
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
 
+
 **ERC-20** – 可替代代币标准
 
 **ERC-721** – NFT 标准
@@ -115,6 +145,7 @@ await counter.number();
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 ## **Uniswap-v3-periphery**
@@ -202,6 +233,7 @@ await counter.number();
 
 
 
+
 # Uniswap
 
 ## core - **Factory**
@@ -268,6 +300,7 @@ v3默认支持三种手续费等级：0.05%、0.30%和1.00%，对应的fee值分
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -354,6 +387,7 @@ using SafeMath for uint256;
 
 
 
+
 ## 什么是投研？
 
 -   研究项目基本面
@@ -416,6 +450,7 @@ using SafeMath for uint256;
 
 
 
+
 # Foundry
 
 以命令行为主的Web3开发神器
@@ -459,6 +494,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -518,6 +554,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 
 
+
 # **零知识证明**
 
 ## **区块链投票**
@@ -562,6 +599,7 @@ forge create src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-k
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -662,6 +700,7 @@ Q：解决SSR（服务端）与LocalStorage（客户端）的状态同步
 
 
 
+
 # 共学1月21日
 
 wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.js（typescript），算是很契合typescript全栈方向。
@@ -724,6 +763,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # Solidity分享
 
 -   EVM是栈执行虚拟机，任务以栈方式执行先进后出，256为块
@@ -757,6 +797,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -847,6 +888,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 零知识证明(ZK)
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。  
@@ -875,6 +917,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -968,6 +1011,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 
 
+
 # 智能合约与代码机制
 
 ## 基础概念
@@ -997,6 +1041,7 @@ wachi老师聊未来的发展方向，我本人原来也写前端和一些Node.j
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1117,6 +1162,7 @@ The Merge 之后：
 
 
 
+
 # Web3攻防安全
 
 ### 社会工程类诈骗
@@ -1168,6 +1214,7 @@ The Merge 之后：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1264,6 +1311,7 @@ MetaMask密码是只在本设备本次安装有效，私钥和助记词都是存
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
