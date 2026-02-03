@@ -15,8 +15,67 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+## **Day 23 学习计划**
+
+2026/02/03 总体学习计划如下：
+
+-   **学习** [**合约安全**](https://web3intern.xyz/zh/smart-contract-development/#_2-%E5%90%88%E7%BA%A6%E5%AE%89%E5%85%A8)
+    
+
+## 常見攻擊面與防護對照表
+
+| 風險點 | 攻擊機理（一句話） | 典型防護措施（可落地） |
+| --- | --- | --- |
+| Reentrancy（重入） | 外部呼叫（call 等）觸發回呼，趁狀態未更新前重複進入提款邏輯 | CEI（Checks-Effects-Interactions）、重入鎖（Reentrancy Guard） |
+| Access Control（存取控制） | 管理／提款等敏感函式沒限制呼叫者，任何人都能改狀態或搬錢 | onlyOwner / 角色權限（RBAC）、多簽管理、及時轉移管理權 |
+| Integer Overflow/Underflow（整數溢出／下溢） | 舊版 < 0.8 算術不檢查溢出，數值 wrap around 造成條件繞過 | 升級 Solidity 0.8+（預設溢出檢查）、舊版用 SafeMath、加上邏輯上限 |
+
+## 重入攻擊（Reentrancy）重點
+
+### 攻擊流程
+
+典型流程是：**合約先把 ETH 轉出去 → 對方在 fallback/receive 回呼中再呼叫 withdraw → 因為你還沒更新餘額，所以又能再提一次**。
+
+| 防護手段 | 核心精神 | 實作落點 |
+| --- | --- | --- |
+| CEI Pattern | 先做檢查，再更新狀態，最後才外部互動 | balances[msg.sender] = 0; 必須在 call 前 |
+| Reentrancy Guard | 同一筆執行路徑禁止再次進入 | nonReentrant modifier 鎖住臨界區 |
+
+## 存取控制（Access Control）重點
+
+### 要避免的反面模式
+
+「提款函式任何人都能呼叫」，結果就是**任何地址都能把合約內全部資金提走**。
+
+| 層級 | 作法 | 適用場景 |
+| --- | --- | --- |
+| 最小版 | require(msg.sender == owner) | 小專案、教學 Demo、低複雜度金庫 |
+| 工程化 | Ownable / AccessControl（RBAC） | 多角色（鑄幣、暫停、治理）與可擴展權限模型 |
+| 操作面 | 多簽 + 權限轉移流程 | 真實資金、團隊協作、降低單點風險 |
+
+## 整數溢出（Integer Overflow）重點
+
+### 版本差異
+
+-   Solidity `0.8.0` 起，算術運算**預設啟用溢出／下溢檢查**，溢出會直接 `revert`。
+    
+-   舊版 `< 0.8` 需要 SafeMath，或透過**邏輯上限**避免逼近邊界
+    
+
+## Remix 用安全檢查清單
+
+| 檢查點 | 快速判斷問題 | 典型修法 |
+| --- | --- | --- |
+| 外部呼叫（call／呼叫其他合約） | 是不是在狀態更新前就把錢轉出去了？ | 套 CEI；必要時加 nonReentrant |
+| 敏感函式（提款、鑄幣、升級、設定參數） | 任何人能不能直接呼叫？ | onlyOwner / RBAC；管理權交多簽 |
+| 算術邏輯（上限、配額、累加） | 會不會因溢出導致「上限檢查失效」？ | 用 0.8+；不要用 unchecked；加上限與型別提升 |
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 ## **Day 22 学习计划**
 
 2026/02/02 总体学习计划如下：
@@ -200,6 +259,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ## **Day 21 学习计划**
 
 2026/01/31 总体学习计划如下：
@@ -285,6 +345,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 
 
+
 ## **Day 20 学习计划**
 
 2026/01/31 总体学习计划如下：
@@ -306,6 +367,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -354,6 +416,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -419,6 +482,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 
 
+
 ## **Day 17 学习计划**
 
 2026/01/28 总体学习计划如下：
@@ -438,6 +502,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -508,6 +573,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 
 
+
 ## **Day 15 学习计划**
 
 2026/01/26 总体学习计划如下：
@@ -562,6 +628,7 @@ RWA 與合規轉讓：ERC-3643（T-REX）
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -711,6 +778,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 13 学习计划**
 
 2026/01/24 总体学习计划如下：
@@ -773,6 +841,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -859,6 +928,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 11 学习计划**
 
 2026/01/22 总体学习计划如下：
@@ -879,6 +949,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -937,6 +1008,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1175,6 +1247,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 2026/01/19 总体学习计划如下：
 
 -   021 学习以太坊第 4 章
@@ -1297,6 +1370,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 7 学习计划**
 
 2026/01/18 总体学习计划如下：
@@ -1384,6 +1458,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 6 学习计划**
 
 2026/01/17 总体学习计划如下：
@@ -1419,6 +1494,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1569,6 +1645,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 4 学习计划**
 
 2026/01/15 总体学习计划如下：
@@ -1668,6 +1745,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1899,6 +1977,7 @@ ERC-KeyHash20 的 transfer 不是「balance -= amount」那種傳統帳戶模型
 
 
 
+
 ## **Day 2 学习计划**
 
 2026/01/13 总体学习计划如下：
@@ -2037,6 +2116,7 @@ Austin 提出了 Web3 开发者的三个成长阶段：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
