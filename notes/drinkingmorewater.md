@@ -17,15 +17,94 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
-![126d63a3b7b28824e599567b05c214e7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770116484529-126d63a3b7b28824e599567b05c214e7.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770116638855-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770116773713-image.png)
+![126d63a3b7b28824e599567b05c214e7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770121142122-126d63a3b7b28824e599567b05c214e7.jpg)
 
-## 1.媒体的定位
+Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，具体如下：
 
-1.  信息分发者：流量承担者
+-   **Web3 媒体行业定位** ：
+    
+    -   **信息分发者** ：聚合市场前沿资讯、观点及大佬想法，为市场参与者提供信息，减少信息差，同时进行内部内容创作并分发。
+        
+    -   **市场教育者** ：作为圈外人接触 Web3 生态的入口，对新人起到教育作用，也为市场内玩家做协议拆解、数据解读等。
+        
+    -   **价值发现者** ：提供巨鲸资金流向、资产热点动态、赛道前景及协议潜力等信息，降低投资者错过机会的概率。
+        
+-   **Web3 媒体与传统金融媒体区别** ：
+    
+    -   **信息来源** ：传统媒体依赖官方文件、公告和监管文件，Web3 媒体主要看链上数据、社区治理情况和相关事件。
+        
+    -   **信息特点** ：Crypto 市场 7×24 小时无间断、无国界，信息碎片化、实时性强，挑战在于从海量数据和噪声中剥离真相。
+        
+-   **PA news 记者工作流程** ：
+    
+    -   **晨会** ：早上 9 点半团队晨会，分享全球 Web3 新闻及信息，摘选有价值内容做成快讯发布。
+        
+    -   **选题** ：晨会结束后记者安排选题，与主编讨论，市场热点少时选题较难，平时平均 4 小时定选题。
+        
+    -   **撰写** ：基于事实、事件、线索和采访进行研究，验证数据准确性，写作约 8 小时，风格求简洁。
+        
+    -   **审核发布** ：稿件完成后交主编或副主编审核 1 - 3 小时，审核修订后发布并关注反馈，一篇报道从选题到上线约两天。
+        
+-   **信息入口与选题灵感** ：
+    
+    -   **信息入口** ：行业从业者和想进入 Web3 行业的同学，第一个信息入口是推特，其次是 TG、DISCORD 和合作媒体。
+        
+    -   **选题灵感** ：多刷推特可培养对行业和市场的感觉，找到关注度高、有价值的选题方向。
+        
+-   **新闻真实性验证** ：
+    
+    -   **验证原则** ：遵循 “Don't trust verify” 原则，进行多信源交叉验证，包括项目方官方渠道、链上交易记录、KOL 或机构评论等。
+        
+    -   **常见陷阱** ：AI 存在幻觉，可能过度解读或拼接信息；推特上有假号，可能发布虚假消息、搞虚假合并融资等。
+        
+-   **常用工具** ：
+    
+    -   **信息聚合** ：推特、电报群、theblock 等。
+        
+    -   **链上数据** ：免费的有 doin、artemis 等，收费的有 nansen、coinmetrics、sentiment 等。
+        
+    -   **市场数据** ：CMC、Coin Gecko、Defillama。
+        
+    -   **团队协作** ：TG、notion、Google doc。
+        
+    -   **AI 工具** ：chatgpt、GROK 等。
+        
+-   **写作风格要求** ：
+    
+    -   **客观中立** ：不能有明显偏向性，平衡优势和风险。
+        
+    -   **兼顾故事性和可读性** ：善用类比、分层解释、举例说明等手法，加入可视化图表，降低阅读壁垒。
+        
+-   **采访要点** ：
+    
+    -   **前期准备** ：深入研究项目背景、团队和技术架构。
+        
+    -   **提问方向** ：朝技术优势、效果、作用等读者能听懂的点提问，结合项目近期动态，准备有挑战性问题，挖掘独家洞见。
+        
+-   **AI 与人类能力对比** ：
+    
+    -   **人类优势** ：人类有直觉，能发现市场有价值事件背后的结构性变化；能构建人际网络和信任，写的内容有人味。
+        
+    -   **AI 局限** ：AI 目前在直觉和审美上欠缺，无法替代人类的人际交流和信任构建。
+        
+-   **进入 Web3 媒体必备技能** ：
+    
+    -   **快速学习适应** ：跟进技术、市场和政策变化，关注合规动态。
+        
+    -   **建立个人 IP** ：在推特上发布内容，积累沉淀，提高影响力和粉丝量，但要耐得住寂寞。
+        
+    -   **数据解读和信息甄别** ：具备数据解读、信息甄别和事实核查能力，了解基础概念。
+        
+    -   **语言能力** ：英语要达到熟练程度，能搬运英文优质内容。
+        
+    -   **内容创作和叙事表达** ：有内容创作和叙事表达能力，可通过阅读和练习提升。
+        
+    -   **金融和合规知识** ：掌握基本金融和合规知识，有技术背景更佳。
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 ![屏幕截图 2026-02-02 174916.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770025814498-_____2026-02-02_174916.png)![cde1ab06b64d4d02b536ecbebda7e943.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030337917-cde1ab06b64d4d02b536ecbebda7e943.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030217774-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030317892-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-02-1770030370666-image.png)
@@ -289,6 +368,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 
 
+
 ![fb690b004721cbabaf0c655243e4e3b1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769920110109-fb690b004721cbabaf0c655243e4e3b1.jpg)
 
 # 平台、社会、经济：去中心化之后如何了？
@@ -356,6 +436,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -552,6 +633,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -660,6 +742,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -748,6 +831,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -909,6 +993,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -965,6 +1050,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1165,6 +1251,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -1172,6 +1259,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1263,6 +1351,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -1272,6 +1361,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1447,6 +1537,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -1568,6 +1659,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1843,6 +1935,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -1890,6 +1983,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2287,6 +2381,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -2328,6 +2423,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2752,6 +2848,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -3081,6 +3178,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -3188,6 +3286,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
