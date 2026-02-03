@@ -15,8 +15,235 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-03
+<!-- DAILY_CHECKIN_2026-02-03_START -->
+# Foundry 测试工具详解：Send 与 Time
+
+## 概述
+
+Foundry 是一套以太坊智能合约开发工具链，其中包含强大的测试功能。本文档详细解析 Foundry 测试框架中的两个核心功能模块：资产处理（Send）和时间控制（Time）。
+
+## 一、Foundry Send（资产处理）
+
+### 核心功能
+
+在测试环境中模拟和操纵地址的资产余额，包括 ETH 和 ERC20 代币。
+
+### 关键函数说明
+
+1\. `deal(address, uint256)`
+
+-   **功能**：设置指定地址的 ETH 余额
+    
+-   **参数**：
+    
+    -   `address`：目标地址
+        
+    -   `uint256`：要设置的 ETH 余额（以 wei 为单位）
+        
+-   **注意**：此函数仅在测试环境中有效，不会影响主网或测试网
+    
+
+2\. `deal(address token, address account, uint256 amount)`
+
+-   **功能**：设置指定地址的 ERC20 代币余额
+    
+-   **参数**：
+    
+    -   `address token`：代币合约地址
+        
+    -   `address account`：目标账户地址
+        
+    -   `uint256 amount`：要设置的代币余额
+        
+-   **特点**：适用于大多数符合标准接口的 ERC20 代币
+    
+
+3\. `hoax(address, uint256)`
+
+-   **功能**：组合函数 = `deal`\+ `prank`
+    
+-   **作用**：
+    
+    1.  使用 `deal`为地址设置 ETH 余额
+        
+    2.  使用 `prank`将后续调用的 `msg.sender`设置为该地址
+        
+-   **应用场景**：测试从特定地址发起交易，该地址需要有足够的余额支付 gas 费
+    
+
+### 代码解析
+
+```
+contract SendTest is Test {
+    // 创建测试用的 ERC20 代币实例
+    ERC20 token = new ERC20();
+
+    function testSendEth() public {
+        // 设置地址 0x1 的 ETH 余额为 100 wei
+        deal(address(1), 100);
+        // 验证设置是否成功
+        assertEq(address(1).balance, 100);
+
+        // 设置地址 0x1 的 ERC20 代币余额为 10
+        // 第一个 address(token) 参数是代币合约地址
+        // 第二个 address(1) 参数是目标账户地址
+        deal(address(token), address(1), 10);
+        // 验证代币余额设置是否成功
+        assertEq(token.balanceOf(address(1)), 10);
+    }
+}
+```
+
+### 要点说明
+
+1.  `address(1)`是 Solidity 中地址字面量的写法，表示地址 `0x0000000000000000000000000000000000000001`
+    
+2.  在测试中，`deal`函数会直接修改存储状态，绕过正常的转账逻辑
+    
+3.  这些函数只能用于测试环境，由 Foundry 的作弊码（cheatcode）系统提供支持
+    
+
+## 二、Foundry Time（时间控制）
+
+### 核心功能
+
+在测试环境中操纵区块时间戳和区块编号，用于测试时间相关的合约逻辑。
+
+### 关键函数说明
+
+1\. `vm.warp(uint256)`
+
+-   **功能**：将 `block.timestamp`设置为指定的时间戳
+    
+-   **参数**：目标时间戳（Unix 时间戳，秒为单位）
+    
+-   **特点**：绝对时间设置
+    
+
+2\. `vm.roll(uint256)`
+
+-   **功能**：将 `block.number`设置为指定的区块编号
+    
+-   **参数**：目标区块编号
+    
+
+3\. `skip(uint256)`
+
+-   **功能**：将当前时间戳向前递增指定的秒数
+    
+-   **参数**：要跳过的秒数
+    
+-   **特点**：相对时间增加
+    
+
+4\. `rewind(uint256)`
+
+-   **功能**：将当前时间戳向后递减指定的秒数
+    
+-   **参数**：要回退的秒数
+    
+-   **注意**：谨慎使用，某些合约可能不接受时间回退
+    
+
+### 代码解析
+
+```
+contract TimeTest is Test {
+    function test() public {
+        // 记录当前时间戳
+        console.log("timestamp", block.timestamp);
+        // 记录当前区块号
+        console.log("block number", block.number);
+
+        // 使用 warp 将时间戳增加 10 秒
+        console.log("warp");
+        vm.warp(block.timestamp + 10);
+        console.log("timestamp", block.timestamp);
+
+        // 使用 skip 跳过 10 秒
+        console.log("skip");
+        skip(10);
+        console.log("timestamp", block.timestamp);
+
+        // 使用 roll 设置区块号为 10
+        console.log("roll");
+        vm.roll(10);
+        console.log("block number", block.number);
+
+        // 使用 rewind 将时间戳回退 10 秒
+        console.log("rewind");
+        rewind(10);
+        console.log("timestamp", block.timestamp);
+    }
+}
+```
+
+### 函数对比
+
+| 函数 | 类型 | 操作对象 | 特点 |
+| --- | --- | --- | --- |
+| vm.warp() | 绝对设置 | block.timestamp | 直接跳转到指定时间点 |
+| skip() | 相对增加 | block.timestamp | 从当前时间向前推进 |
+| vm.roll() | 绝对设置 | block.number | 直接设置区块高度 |
+| rewind() | 相对减少 | block.timestamp | 从当前时间向后回退 |
+
+### 应用场景
+
+1.  **测试时间锁**：验证资金在锁定期内无法提取
+    
+2.  **测试质押奖励**：模拟不同时间段质押收益计算
+    
+3.  **测试合约过期**：验证合约在特定时间后的行为
+    
+4.  **测试时间窗口**：验证限时操作的功能
+    
+
+## 三、核心依赖
+
+两个测试合约都继承自 `Test`合约，该合约由 `forge-std/Test.sol`提供：
+
+```
+import "forge-std/Test.sol";
+```
+
+`Test`合约包含了：
+
+-   Foundry 的作弊码接口（通过 `vm`对象）
+    
+-   断言函数（如 `assertEq`）
+    
+-   控制台输出函数（`console.log`）
+    
+-   其他测试工具函数
+    
+
+## 四、使用要点
+
+1.  **测试环境专用**：这些函数只能用于测试环境，通过 Foundry 的作弊码实现
+    
+2.  **状态隔离**：每个测试函数运行在独立的环境中，状态修改不会影响其他测试
+    
+3.  **灵活性**：允许模拟各种边界情况，如零余额、大额余额、特定时间点等
+    
+4.  **组合使用**：可以结合多个函数创建复杂的测试场景
+    
+
+## 五、总结
+
+Foundry 的 Send 和 Time 测试工具为智能合约测试提供了强大支持：
+
+-   **Send 模块**：使得测试各种资产交互场景变得简单，无需实际转移资产
+    
+-   **Time 模块**：使得时间相关的合约逻辑可以全面测试，覆盖各种时间边界情况
+    
+
+这两个模块共同解决了智能合约测试中的两个关键挑战：资产状态控制和时间依赖测试，显著提高了测试的覆盖率和效率。
+<!-- DAILY_CHECKIN_2026-02-03_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 # Foundry 智能合约测试学习笔记
 
 ## Foundry Basic (基础测试)
@@ -321,6 +548,7 @@ function testFailNotOwner() public {
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 # AI 提示词工程 - Foundry 智能合约开发
 
@@ -851,6 +1079,7 @@ forge script script/Deploy.s.sol --rpc-url sepolia --broadcast --verify
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 # Foundry 工具链笔记
 
 ## 核心工具
@@ -1066,6 +1295,7 @@ chisel
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1443,6 +1673,7 @@ function claim(uint256 _id) external {
 
 
 
+
 * * *
 
 ## **无 Gas 代币转移 (Meta Transactions)**
@@ -1626,6 +1857,7 @@ function deploy() external {
 
 
 
+
 # **访问私有数据 (Accessing Private Data)**
 
 ### **核心概念：链上无秘密**
@@ -1731,6 +1963,7 @@ web3.eth.getStorageAt(contractAddress, mapLocation, console.log);
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1890,6 +2123,7 @@ function verify(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2125,6 +2359,7 @@ Gas：默认3000000
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -3016,6 +3251,7 @@ monitors:
 
 
 
+
 # 智能合约升级与修改模式
 
 ## 1\. 核心原则：合约不可直接修改
@@ -3694,6 +3930,7 @@ function test_FullUpgradePath() public {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -4576,6 +4813,7 @@ echidna-test . --contract MyContract
 
 
 
+
 # 智能合约开发高级：Gas 优化、安全、审计与协作规范
 
 ## 1\. Gas 优化
@@ -4923,6 +5161,7 @@ function withdraw() public {
 
 
 
+
 # 智能合约编译产物详解
 
 ## 1\. 字节码（Bytecode）
@@ -5024,6 +5263,7 @@ function withdraw() public {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -5334,6 +5574,7 @@ contract MessageBoard {
 
 
 
+
 # 以太坊节点连接通信与类型笔记
 
 ## 一、节点间连接与通信的三步流程
@@ -5509,6 +5750,7 @@ contract MessageBoard {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -5734,6 +5976,7 @@ contract MessageBoard {
 
 
 
+
 Web3 行业充满机遇，但也伴随复杂的法律风险。理解并规避这些风险，是保护自身职业发展和财产安全的前提。下面梳理核心风险点
 
 ### 国内政策红线与刑事风险
@@ -5815,6 +6058,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5923,6 +6167,7 @@ Web3 领域常见的远程办公、自由职业等模式，在带来灵活性的
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -6545,6 +6790,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 
 
+
 ### **以太坊学习笔记**
 
 **一、 核心定位：不止是加密货币，更是可编程平台**
@@ -6617,6 +6863,7 @@ L1 图书馆虽然把 Blob（那一箱子数据）扔了，但它永久保留了
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
