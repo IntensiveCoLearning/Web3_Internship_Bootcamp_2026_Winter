@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+今天和马老师一起做了开源项目商业化的方案研究
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 今天准备 rootdata 的面试
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 **第一，提高自己能辨别“组织性狙击事件”的概率**，否则永远逃不出当接盘侠的命运。学会熟练查看钱包历史、持仓分布、捆绑交易、资金来源于流向，并能嗅出那些不对劲的链上猫腻。
 
@@ -36,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 ### 一个资金盘可以怎么分析呢？
@@ -80,11 +88,13 @@ ETF 的净申购和净赎回 造成了对短期价格的买入或卖出压力
 
 
 
+
 ![ea5f23bd993a3ffa07ec06cf0101df34.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Iven666/images/2026-01-31-1769865837142-ea5f23bd993a3ffa07ec06cf0101df34.jpg)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -99,12 +109,14 @@ ETF 的净申购和净赎回 造成了对短期价格的买入或卖出压力
 
 
 
+
 今天和 wachi 老师聊了聊投研的项目，又和白丁老师聊了聊投研的经验，又听了 ye wang 老师的课程。  
 对自己在职业路径更加清晰了
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -196,6 +208,7 @@ l 其他社区工作人员薪资。
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -381,6 +394,7 @@ OK，客官坐好，我们具体来看一下 Opinion 技术栈的 一，四 层�
 
 
 
+
 ## **二、运营数据分析**
 
 ### **1\. 协议收入：**
@@ -396,6 +410,7 @@ Opinion 近三月以来，协议收入呈现上涨趋势，最近30天，平均�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -426,6 +441,7 @@ Opinion metapool, OP 它建了一个统一的流动性池，普通散户都可�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -486,6 +502,7 @@ Wachi DAPP 架构
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -753,6 +770,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 
 
 
+
 -   YES-Token 的价格：**V(Yes)** 美元
     
 -   NO-Token 的价格：**V(No)** 美元
@@ -773,6 +791,7 @@ Opinion 基于 Mantle/Monad 等高性能网络构建，但通过链抽象技术�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -820,6 +839,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -978,6 +998,7 @@ Figma 初步接触，了解figma 有design buzz figmajam slides make site 六大
 
 
 
+
 ### 按照协议费用排名前10大协议：
 
 泰达，Circle 稳定币 Meteora, solana 链上的Defi
@@ -1017,6 +1038,7 @@ Axiom Pro 关于 Axiom Pro，这是一个在加密货币交易领域中出现的
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1081,6 +1103,7 @@ limit 返回记录数量
 
 
 
+
 ## 个人（我）可能触及的法律边缘
 
 1.  个人C2C 换汇成美元，欧元。根据《外汇管理条例》和刑法，未经许可反复组织撮合人民币与外币的虚拟币交易，可能构成非法经营外汇业务。
@@ -1120,6 +1143,7 @@ limit 返回记录数量
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1229,6 +1253,7 @@ limit 返回记录数量
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
