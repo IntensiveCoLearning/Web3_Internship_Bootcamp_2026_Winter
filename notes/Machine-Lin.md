@@ -15,8 +15,212 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+# 一、结构体
+
+用户可以自定义结构体类型。
+
+什么是结构体：
+
+```
+pragma solidity ^0.8.4;
+
+contract Bank {
+ struct Account {
+ address owner;
+        uint256 balance;
+    }
+ function createAccount() public {
+        Account memory newAccount = Account(msg.sender, 0);
+    }
+    
+}
+```
+
+在 `createAccount` 函数中，我们使用`Account` 类型创建了一个名为`newAccount`的新变量。
+
+### **结构体初始化**
+
+```
+pragma solidity ^0.8.4;
+
+contract Bank {
+ struct Account {
+        address owner;
+        uint256 balance;
+    }
+ function createAccount() public {
+        Account memory newAccount = Account({
+            owner: msg.sender,
+            balance: 0
+        });
+ }
+    
+}
+```
+
+### **结构体作为参数**
+
+```
+pragma solidity ^0.8.4;
+
+contract Bank {
+    
+    struct Account {
+        address owner;
+        uint256 balance;
+    }
+    
+    function deposit(Account storage account, uint256 amount) public {
+        account.balance += amount;
+    }  
+}
+```
+
+传递了一个指向`Account`类型的指针，并在函数内部修改了结构的成员。
+
+### **结构体数组**
+
+```
+pragma solidity ^0.8.4;
+
+contract Bank {
+    
+    struct Account {
+        address owner;
+        uint256 balance;
+    }
+    
+    Account[] accounts;
+ function createAccount() public {
+        accounts.push(Account({
+            owner: msg.sender,
+            balance: 0 }));
+    }  
+}
+```
+
+补充：
+
+不大理解说实话
+
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Todo{
+    
+    struct students{string name;uint grade;bool pass;}
+
+    students [] stud;     //如果加了public 相当于一个get函数
+
+    function set(string calldata _name,uint _grade,bool _pass) public {        //传参数的3种方法↓
+        //stud.push(students(_name,_grade,_pass));                             //1 往数组里面传元素
+        //stud.push(students({name: _name,grade: _grade,pass: _pass}));        //2 通过关键字往里面传参数
+
+        students memory Mystu;          //3 通过memory建立一个空的变量
+        Mystu.name = _name;
+        Mystu.grade = _grade;
+        Mystu.pass= _pass;
+        stud.push(Mystu);
+    }
+
+    function get(uint _index) public view returns(string memory,uint,bool){     //上述public相当于这样一个get的方法
+        return(stud[_index].name,stud[_index].grade,stud[_index].pass);
+    }
+
+    function updateName(uint _indexx,string calldata _Newname) public {
+        students storage newstudName = stud[_indexx];
+        newstudName.name = _Newname; 
+        //stud[_indexx].name= _Newname;        
+    }
+}
+```
+
+# 二、数据位置
+
+在Solidity中，数据位置非常重要，因为它可以影响变量、函数参数和返回值的行为。
+
+## 1.**Storage**
+
+Storage是永久性存储位置，存储在以太坊区块链上。
+
+对storage的访问是最昂贵的，并且只能使用整数类型、地址类型、定长数组和结构体。
+
+在合同中定义的变量、在结构体和数组中的元素及其映射键/值对都在storage中存储。
+
+存储和读取变量：
+
+```
+pragma solidity ^0.8.0;
+
+contract Storage {
+    uint256 number; // stored in storage
+    function setNumber(uint256 _number) public {
+        number = _number;
+    }
+
+    function getNumber() public view returns (uint256) {
+        return number;
+    }
+}
+```
+
+## 2.**Memory**
+
+Memory是临时性存储位置，它不会持久化在以太坊区块链中。
+
+在函数调用期间，函数参数和局部变量都存储在memory中。对memory的访问较便宜，但是只能使用整数类型、地址类型、定长数组、结构体、枚举和字符串。
+
+存储和读取数据：
+
+```
+pragma solidity ^0.8.0;
+
+contract Memory {
+ function doSomething(uint256[] memory values) public pure returns (uint256) {
+ uint256 sum;
+
+ for (uint256 i =0; i < values.length; i++) {
+ sum += values[i];
+        }
+
+        return sum;
+    }
+}
+```
+
+## **3.Calldata**
+
+Calldata是一种特殊的存储位置，它用于存储在函数调用期间传递给合同的参数和数据。
+
+与memory相似，calldata的访问较便宜，但是**只能使用定长字节数组**。
+
+读取数据：
+
+```
+pragma solidity ^0.8.0;
+
+contract Calldata {
+    function doSomething(bytes memory data) public pure returns (bytes memory) {
+        return data;
+    }
+}
+```
+
+总结：
+
+-   **Storage - 永久存储,存储状态变量**
+    
+-   **Memory - 临时存储,函数局部变量**
+    
+-   **Calldata - 临时只读存储,外部函数调用参数**
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 # 一、数组
 
 数组有编译时固定大小或动态大小两个方式。
@@ -187,6 +391,7 @@ assert(false == e.isActive());
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 # 一、映射
 
 语法：
@@ -255,6 +460,7 @@ contract Mapping {
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -415,6 +621,7 @@ contract Loops {
 
 
 
+
 # 一、常量
 
 常量是无法修改的变量。
@@ -528,6 +735,7 @@ contract SimpleStorage {
 
 
 
+
 Solidity
 
 # 一、Hello World
@@ -626,6 +834,7 @@ contract Variables {
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -796,6 +1005,7 @@ describe("StanfordToken", function () {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 4
 
 Solidity 语法 + 测试
@@ -880,6 +1090,7 @@ function doSomething() public onlyOwner { ... }
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1079,6 +1290,7 @@ npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -1150,6 +1362,7 @@ async function mintNFT() {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1234,6 +1447,7 @@ Provider 是区块链的“只读接口”。
 
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -1278,6 +1492,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1354,6 +1569,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1447,6 +1663,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -1510,6 +1727,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1652,6 +1870,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1936,6 +2155,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -2051,6 +2271,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2254,6 +2475,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -2381,6 +2603,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -2450,6 +2673,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2582,6 +2806,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2824,6 +3049,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
