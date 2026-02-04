@@ -22,10 +22,99 @@ Web3 实习计划 2025 冬季实习生
 # 走进 Web3 DevRel 一线 😉
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770203155019-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770203238900-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770203472122-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770203836436-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770203980521-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770204520755-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770204627070-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770204914390-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770205044430-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770205489228-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770205886854-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-04-1770205988030-image.png)
+
+Web3 DevRel 岗位的工作内容、技能要求、岗位情况以及 Monad 公链相关信息和黑客松活动等，具体如下：
+
+-   **DevRel 岗位概述** ：
+    
+    -   **岗位目的** ：连接产品、工程师和外部开发者，以生态增长为核心，帮助外部开发者更好理解和使用产品。
+        
+    -   **部门性质** ：理论上是独立工程部门，但在 Web3 中可能只有一两人，是体系岗位统称。
+        
+    -   **与研发团队区别** ：研发团队构建产品底层，DevRel 团队负责研发团队没时间做的事，如教开发者使用产品。
+        
+-   **Web3 岗位分割** ：
+    
+    -   **技术布道师** ：对外输出内容，阐述产品功能、目的和痛点。
+        
+    -   **社区经理** ：负责和社区沟通，在社区对接产品时帮助用户解决问题。
+        
+    -   **技术写作** ：负责文档编写和构建。
+        
+    -   **Web engineer** ：开发体验工程师，负责 SDK 或工具开发。
+        
+    -   **解决方案架构师和生态伙伴工程师** ：在 Web2 常见，下派到合作公司帮其构建程序架构。
+        
+    -   **生态增长负责人** ：为 Ecosystem 工作，将开发者产品转化为面向 VC 的产品。
+        
+    -   **Web 项目经理** ：调配任务和人员职责，与其他部门联动沟通。
+        
+    -   **develop marketing** ：做 SEO、投放和广告等，在 Web3 少见。
+        
+    -   **AXON leader** ：负责创办和计划黑客松，有 KPI 指标。
+        
+    -   **Web data analytics** ：分析 KPI 指标，如文档有效转化人数、新项目初审模板出现数量。
+        
+-   **Web3 职责内容** ：
+    
+    -   **倾听和反馈** ：收集开发者对产品文档、模板等的意见。
+        
+    -   **赋能与教育** ：去学校宣讲、举办 workshop、构建文档帮助开发者。
+        
+    -   **生态与连接** ：与合作伙伴举办活动，连接开发者社区，孵化有潜力产品。
+        
+    -   **影响与增长** ：举办大型活动吸引开发者，增强生态，产出项目投入生态。
+        
+-   **最小技术栈** ：
+    
+    -   **quick start** ：提供能快速跑起来的模板，展示核心产品，适配主流框架，带错误指引。
+        
+    -   **示例仓库** ：集成网络配置、测试 RPC 等，方便开发者构建产品。
+        
+    -   **FAQ** ：整理常见问题，帮助用户自查。
+        
+    -   **架构与安全** ：考虑产品安全风险，提供高可用、高并发参考设计，保障私钥安全等。
+        
+    -   **集成与迁移** ：帮助产品从类似产品迁移，提供迁移方法和注意事项。
+        
+    -   **SDK** ：复杂产品需要完善的 SDK。
+        
+-   **DevRel 技能要求** ：
+    
+    -   **硬性技能** ：理解 SDK 用法，能跑通示例模板；具备 debug 常见错误的能力；理解底层原理；有写作能力，将复杂内容讲简单；有逻辑表达能力，根据目标用户解释问题；有 PPT 能力，展开核心内容。
+        
+    -   **软性技能** ：有同理心，理解用户需求，以建议方式沟通；具备跨部门协作能力，联合多部门解决问题；有项目管理能力，合理调配任务。
+        
+-   **Monad 公链信息** ：
+    
+    -   **特点** ：从零开始设计，保留以太坊接口，等效于 EVM 的 layer one 公链，出块速度快，有单 slot 最终性，支持 128KB 合约大小，与以太坊 RPC 完全兼容。
+        
+    -   **开发者机会** ：有 blasts、event AXON 等活动，本周末在深圳举办 Rebel in Paradise 的 AI 黑客松。
+        
+-   **岗位情况及建议** ：
+    
+    -   **岗位数量** ：消费级产品岗位少，面向开发者或企业端产品岗位多，中国开发产品岗位少，建议从大使做起或先做小项目积累经验。
+        
+    -   **技术要求** ：以前需了解底层知识，现在 AI 发展后要求稍宽松，但仍需具备工程师基础素质。
+        
+-   **问答环节** ：
+    
+    -   **岗位选择** ：岗位要求因项目而异，侧重技术或运营看项目需求。
+        
+    -   **切入路径** ：运营背景可先看与岗位匹配度，有突出点可做技术布道师，项目以 to d 或 ToB 为主可能招运营人员。
+        
+    -   **项目经理** ：一般从底层职责晋升，能力较全面，需有较广技术栈。
+        
+    -   **套利问题** ：公链升级不一定给小型开发者带来更多空间，建议从不同方向寻找套利空间。
+        
+    -   **获奖概率** ：黑客松获奖概率约 2%，鼓励尝试，不用太在意获奖概率。
+        
+    -   **简历撰写** ：根据招聘 JD 找符合自己经验的岗位，而非调整经验去适配岗位。
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -117,6 +206,7 @@ Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -390,6 +480,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 
 
+
 ![fb690b004721cbabaf0c655243e4e3b1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769920110109-fb690b004721cbabaf0c655243e4e3b1.jpg)
 
 # 平台、社会、经济：去中心化之后如何了？
@@ -457,6 +548,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -663,6 +755,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -776,6 +869,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -864,6 +958,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1035,6 +1130,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -1091,6 +1187,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1301,6 +1398,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -1308,6 +1406,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1409,6 +1508,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -1418,6 +1518,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1603,6 +1704,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -1724,6 +1826,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2009,6 +2112,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -2056,6 +2160,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2463,6 +2568,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -2504,6 +2610,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2938,6 +3045,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -3272,6 +3380,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -3379,6 +3488,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
