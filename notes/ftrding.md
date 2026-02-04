@@ -15,13 +15,20 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+查看回放
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 观看回放
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 观看直播
@@ -32,11 +39,13 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 
 
+
 观看实习手册
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -51,11 +60,13 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 
 
+
 观看数据分析直播
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -78,11 +89,13 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 
 
+
 今天有点忙，只看了一会的实习手册
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -109,11 +122,13 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 
 
+
 学习中文排版规范并观看直播，了解活动举办需要的流程和人员分工安排
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -224,12 +239,14 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 
 
+
 观看youtube视频，加深对区域链的印象，了解平台：[https://defillama.com/](https://defillama.com/)  
 [https://x.com/hildaiscute/status/2012494673256857959?s=20](https://x.com/hildaiscute/status/2012494673256857959?s=20)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -270,6 +287,7 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 
 
+
 <img width="1446" height="1034" alt="image" src="[https://github.com/user-attachments/assets/dc9727b5-d037-4254-9ac9-19f4f0aaf30a](https://github.com/user-attachments/assets/dc9727b5-d037-4254-9ac9-19f4f0aaf30a)" />
 
 1.了解区块链的核心组成部分以及区块链生态系统的运行包含以下几个关键步骤：
@@ -295,6 +313,7 @@ web3小白，希望能在接下来的时间学到运营相关的知识
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -374,6 +393,7 @@ BTC 的突破：第一次在互联网上，实现了“无需信任第三方的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
