@@ -110,10 +110,108 @@ Web3 DevRel 岗位的工作内容、技能要求、岗位情况以及 Monad 公�
     -   **获奖概率** ：黑客松获奖概率约 2%，鼓励尝试，不用太在意获奖概率。
         
     -   **简历撰写** ：根据招聘 JD 找符合自己经验的岗位，而非调整经验去适配岗位。
+        
+
+# 《黑客松活动问题与优化》
+
+会议讨论了黑客松活动各环节存在的问题、优化方向以及 SOP（标准作业程序）的编写和完善事宜，具体如下：
+
+-   **BD 组工作复盘与优化**：
+    
+    -   **策划阶段问题**：活动初期对接嘉宾流程混乱，存在私联、对接重复以及信息不同步的情况，导致不清楚推进进度。
+        
+    -   **嘉宾邀请与管理**：应明确活动所需嘉宾，提前列出 3 - 5 位嘉宾名单并扩充，按匹配优先度排序后进行触达，优先确认嘉宾时间和分享内容与活动意向的匹配度，锁定嘉宾后及时同步制作物料。
+        
+    -   **量化指标补充**：每次活动后应增加量化指标总结，如总参与人数、峰值人数、新拉入人数等。
+        
+-   **设计组工作复盘与优化**：
+    
+    -   **需求确认**：设计对接需提供需求表，明确包括设计类型（海报、PPT 封面等）、设计比例、活动节点、标题、时间等相关信息。
+        
+    -   **优先级设定**：根据 DDL（截止日期）对设计需求进行优先级排序。
+        
+    -   **人员分工**：若设计人员增多，需明确分工，如指定专人负责特定活动海报。
+        
+    -   **设计规范**：遵循间距以 4 和 8 的倍数排版，避免小数，信息元素多时分好板块的设计规范。
+        
+    -   **风格确定**：提前确定设计风格，形成基本雏形以提高后续设计效率。
+        
+-   **内容组工作复盘与优化**：
+    
+    -   **信息对接**：等待策划组确定基本信息后再开始撰写，可提前确定组员可用时间，提高效率。
+        
+    -   **初审清单细化**：优化协调者初审清单，包括排版、错别字、品牌、时间、链接、推特文案核心信息等内容，初审后再交组长和助教老师审核。
+        
+    -   **资源整合**：协调者在文案撰写中期要协调对接海报和 BD 组资料、会议链接，并集中到 Notion 中，减少组员工作量。
+        
+    -   **内容查找**：通过 Notion 看板的活动侧和活动节点区查找策划、海报、推特 handle、项目方 LOGO 等信息，并整合到内容组工作中。
+        
+-   **技术组工作复盘与优化**：
+    
+    -   **需求确认**：活动前明确 GitHub 主页具体功能需求、交付时间和验收需求。
+        
+    -   **问题解答**：总结常见问题文档并放置公告，让参赛选手先自行查看。
+        
+-   **策划组工作复盘与优化**：
+    
+    -   **会议流程**：会议应制定固定流程，明确会议目的、参会人员，若有人缺席需会后文字传达需求并确认。
+        
+    -   **任务说明**：清晰说明任务内容、负责人、协作对象以及任务完成程度，如收集钱包需明确收集方式、交付形式和存放位置。
+        
+    -   **任务合理性评估**：考虑任务必要性，避免增加不必要的人员和环节，如 Demo day 已有两位主持人，引入计时员可能使场面混乱。
+        
+    -   **Deadline 确定**：明确任务 Deadline，便于各小组安排工作顺序。
+        
+    -   **信息同步**：建立专门用于信息同步的文件，设置节点审核人，确保信息及时准确更新，如海报终稿更新、获奖名单排序等。
+        
+    -   **拉群管理**：为每个活动拉单独的群，并指定负责人，便于沟通和管理。
+        
+-   **团队协作问题与优化**：
+    
+    -   **工作流透明**：协调者应在群里每日更新各部门 Todo list 和进度，让信息更透明，便于对接。
+        
+    -   **沟通方式**：尽量在专门群聊对接事情，若私聊需带上情境，避免信息传递不畅。
+        
+    -   **协调者职能**：协调者需盯好各时间节点任务，可设置审核员分担组长压力，避免任务拖延和遗漏。
+        
+    -   **人员状态管理**：活动结束后提醒成员活动未完全结束，避免放松导致后续工作延误。
+        
+    -   **角色分工调整**：考虑按活动节点设置负责人，大统筹负责串起所有节点并验收，小节点负责人负责分发任务和推进，同时给予成员创新机会，提高活动效果评估的准确性。
+        
+-   **SOP 编写与优化**：
+    
+    -   **整体框架搭建**：先搭建黑客松 SOP 整体骨架，再从全局视角添加各部分细节和小 Tips。
+        
+    -   **自动化流程引入**：考虑引入群聊机器人和工作流实现定时发信息、批量拉人入群等自动化操作，提高工作效率。
+        
+    -   **文案封装**：将优秀文案积累封装成技能，可借助大模型辅助工作。
+        
+    -   **SOP 内容完善**：统筹组 SOP 可补充团队搭建、人员配合、建群方式、各部分节点交付物和沟通顺序等内容。
+        
+    -   **终稿时间**：2 月 5 号整理好 SOP 终稿，2 月 6 号开会过一遍，确保达到可公开标准，同时多审几遍 recap。
+        
+    -   **信息收集与确认**：今晚将 badge 的 Excel 表格（包含名称、成员分隔、团队福利、钱包地址等信息）和图例发给老师，仔细核对信息并进行二次确认；2 月 6 号之前确认奖金相关信息，包括收奖金团队的唯一地址、团队名称，确定发奖金时间、领取要求，并以模板话术通知获奖团队。
+        
+-   **任务**
+    
+    -   **SOP 梳理**：梳理整体 SOP，确保在数据源出现问题时能够及时发现并改正，确定以 no 选形式上传 batch 相关内容，并在 SOP 里提及避免此类问题的方法
+        
+    -   **协调职能优化**：思考如何优化协调者职能，确保在紧急情况下能及时找到合适人员完成任务，避免跳过协调者直接找人导致事情增多、压力增大的问题。
+        
+    -   **SOP 完善**：以黑客松活动策划主要流程为骨架搭建专属面板，添加各视角小 tips，写 SOP 时抛开自身职能、从大局观出发，使各部分能拼接。
+        
+    -   **SOP 终稿整理**：2 月 5 号整理 SOP 终稿，想写的人自行撰写，将小细节添加到单独页面；2 月 6 号复盘会过一遍 SOP，同时多审几遍 recap
+        
+    -   **图例沟通确认**：与设计组沟通确认 48 个团队的 badge 图例、NFT 预测小活动（玉子妍家小活动）的图例以及对应的钱包地址，若今晚信息核对 ok 则发给车老师
+        
+    -   **信息核对发送**：核对 badge 图例、48 个福利相关钱包地址、预言小活动相关信息，确认无误后今晚发给说话人 10 ，由其转发给车老师
+        
+    -   **信息整理发送**：整理获奖团队的唯一地址和团队名称，发送给说话人 9；同步奖金情况，按统一话术告知 2 月 6 号后七个工作日内发放，收集团队确认信息；写模板对接前置动作要求；私发奖金信息。
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -206,6 +304,7 @@ Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -481,6 +580,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 
 
+
 ![fb690b004721cbabaf0c655243e4e3b1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769920110109-fb690b004721cbabaf0c655243e4e3b1.jpg)
 
 # 平台、社会、经济：去中心化之后如何了？
@@ -548,6 +648,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -756,6 +857,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -870,6 +972,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -958,6 +1061,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1131,6 +1235,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -1187,6 +1292,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1399,6 +1505,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -1406,6 +1513,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1509,6 +1617,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -1518,6 +1627,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1705,6 +1815,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -1826,6 +1937,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2113,6 +2225,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -2160,6 +2273,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2569,6 +2683,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -2610,6 +2725,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3046,6 +3162,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -3381,6 +3498,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -3488,6 +3606,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
