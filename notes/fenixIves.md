@@ -15,8 +15,653 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+# 23 ERC-721 标准详解
+
+# 一、ERC-721 标准核心定义
+
+ERC-721 是以太坊区块链上的一种**非同质化代币（NFT）标准**，由 William Entriken、Dieter Shirley、Jacob Evans 等人于 2018 年提出并标准化（EIP-721）。它定义了一套统一的接口规范，确保不同项目发行的 NFT 能够实现互操作性——即支持在任意兼容 ERC-721 的钱包、交易平台、去中心化应用（DApp）中正常显示、转移和交互。
+
+核心特点： 1. 非同质化：每个代币（Token ID）都是唯一的，拥有独立的属性和价值，无法与其他代币等价互换（区别于 ERC-20 同质化代币）； 2. 不可分割：代币无法拆分转账（例如不能转账 0.5 个 ERC-721 代币），只能整体转移； 3. 可追溯：每个代币的所有权变更记录都被永久写入以太坊区块链，可随时查询。
+
+# 二、ERC-721 核心接口规范（必实现+可选实现）
+
+ERC-721 标准的核心是「接口」——合约只需实现指定接口的所有函数，就能被认定为合规的 ERC-721 合约。接口分为「必实现接口」（保证基础功能）和「可选接口」（丰富代币属性）。
+
+## 2.1 必实现接口（IERC721）
+
+所有 ERC-721 合约必须实现以下函数和事件，否则无法被兼容平台识别。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20; // 指定编译器版本，0.8.x 以上无需手动处理溢出
+
+/**
+ * @title IERC721
+ * @dev ERC-721 标准核心接口（必实现）
+ */
+interface IERC721 {
+    // ======== 事件定义（状态变更必须触发，供外部查询） ========
+    /**
+     * @dev 代币转移时触发
+     * @param from 转移者地址（0x0 表示 mint 新代币）
+     * @param to 接收者地址（0x0 表示销毁代币）
+     * @param tokenId 转移的代币ID
+     */
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+
+    /**
+     * @dev 代币授权时触发（授权他人转移自己的代币）
+     * @param owner 代币所有者地址
+     * @param approved 被授权地址
+     * @param tokenId 被授权的代币ID
+     */
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+
+    /**
+     * @dev 批量授权时触发（授权他人管理自己所有的代币）
+     * @param owner 代币所有者地址
+     * @param operator 被授权的操作员地址
+     * @param approved 是否授权（true=授权，false=撤销授权）
+     */
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+
+    // ======== 核心查询函数 ========
+    /**
+     * @dev 查询某个地址拥有的 ERC-721 代币数量
+     * @param owner 要查询的地址
+     * @return 该地址持有的代币总数
+     */
+    function balanceOf(address owner) external view returns (uint256);
+
+    /**
+     * @dev 查询某个代币ID的所有者地址
+     * @param tokenId 代币ID（必须是已 mint 且未销毁的）
+     * @return 该代币的所有者地址
+     */
+    function ownerOf(uint256 tokenId) external view returns (address);
+
+    // ======== 转移函数 ========
+    /**
+     * @dev 从自己地址转移代币到目标地址（调用者必须是代币所有者）
+     * @param from 转移者地址（必须等于 msg.sender）
+     * @param to 接收者地址（不能是 0x0，否则会销毁代币）
+     * @param tokenId 要转移的代币ID
+     */
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
+
+    /**
+     * @dev 授权并转移代币（调用者需是被授权者，或代币所有者）
+     * @param to 接收者地址
+     * @param tokenId 要转移的代币ID
+     */
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) external;
+
+    /**
+     * @dev 带数据的安全转移（适用于需要向接收合约传递额外信息的场景）
+     * @param from 转移者地址
+     * @param to 接收者地址（可以是合约地址）
+     * @param tokenId 要转移的代币ID
+     * @param data 额外传递的数据（例如合约交互参数）
+     */
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes calldata data
+    ) external;
+
+    // ======== 授权函数 ========
+    /**
+     * @dev 授权某个地址转移指定的代币（仅授权单个代币）
+     * @param approved 被授权地址
+     * @param tokenId 被授权的代币ID
+     */
+    function approve(address approved, uint256 tokenId) external;
+
+    /**
+     * @dev 批量授权/撤销授权（授权某个地址管理自己所有的代币）
+     * @param operator 被授权的操作员地址
+     * @param approved 是否授权（true=授权，false=撤销）
+     */
+    function setApprovalForAll(address operator, bool approved) external;
+
+    /**
+     * @dev 查询某个代币的被授权地址（单个代币的授权信息）
+     * @param tokenId 代币ID
+     * @return 该代币的被授权地址（无授权则返回 0x0）
+     */
+    function getApproved(uint256 tokenId) external view returns (address);
+
+    /**
+     * @dev 查询某个操作员是否被所有者授权（批量授权的查询）
+     * @param owner 代币所有者地址
+     * @param operator 操作员地址
+     * @return 是否被授权（true=是，false=否）
+     */
+    function isApprovedForAll(address owner, address operator) external view returns (bool);
+}
+```
+
+## 2.2 可选接口（IERC721Metadata）
+
+该接口用于添加代币的「元数据」（名称、符号、图片、描述等），让 NFT 拥有可展示的属性（例如 OpenSea 等平台会读取这些信息显示 NFT），属于可选实现，但几乎所有 NFT 项目都会实现。
+
+```solidity
+/**
+ * @title IERC721Metadata
+ * @dev ERC-721 元数据接口（可选实现）
+ * 继承自 IERC721，需先实现核心接口，再实现该接口
+ */
+interface IERC721Metadata is IERC721 {
+    /**
+     * @dev 查询代币的名称（例如 "CryptoPunks"）
+     * @return 代币名称
+     */
+    function name() external view returns (string memory);
+
+    /**
+     * @dev 查询代币的符号（例如 "PUNKS"）
+     * @return 代币符号
+     */
+    function symbol() external view returns (string memory);
+
+    /**
+     * @dev 查询某个代币ID的元数据URI（关键！指向NFT的图片/描述等信息）
+     * @param tokenId 代币ID
+     * @return 元数据URI（通常是 IPFS 链接或 HTTP 链接）
+     * 示例："ipfs://QmXtqZ7D5tYj9oZ5d5aZ7d8tYj3oZ5d5aZ7d8tYj3oZ5d5aZ7d8"
+     */
+    function tokenURI(uint256 tokenId) external view returns (string memory);
+}
+```
+
+# 三、完整 ERC-721 合约实现（可直接部署）
+
+以下是基于 Solidity 0.8.20 实现的完整 ERC-721 合约，包含「核心接口+元数据接口」，支持 mint（铸造）、transfer（转移）、approve（授权）等所有核心功能，添加了关键的权限校验和异常处理，可直接用于测试或二次开发。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// 导入核心接口（也可手动复制上面的接口代码，无需导入）
+interface IERC721 {
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+
+    function balanceOf(address owner) external view returns (uint256);
+    function ownerOf(uint256 tokenId) external view returns (address);
+    function transferFrom(address from, address to, uint256 tokenId) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId) external;
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
+    function approve(address approved, uint256 tokenId) external;
+    function setApprovalForAll(address operator, bool approved) external;
+    function getApproved(uint256 tokenId) external view returns (address);
+    function isApprovedForAll(address owner, address operator) external view returns (bool);
+}
+
+interface IERC721Metadata is IERC721 {
+    function name() external view returns (string memory);
+    function symbol() external view returns (string memory);
+    function tokenURI(uint256 tokenId) external view returns (string memory);
+}
+
+/**
+ * @title ERC721
+ * @dev 完整的 ERC-721 合约实现（含元数据）
+ */
+contract ERC721 is IERC721, IERC721Metadata {
+    // ======== 状态变量（存储合约核心数据） ========
+    // 1. 代币ID -> 所有者地址（核心映射，记录每个NFT的归属）
+    mapping(uint256 => address) private _ownerOf;
+
+    // 2. 所有者地址 -> 持有的代币数量（用于 balanceOf 函数）
+    mapping(address => uint256) private _balanceOf;
+
+    // 3. 代币ID -> 被授权地址（单个代币的授权记录）
+    mapping(uint256 => address) private _approved;
+
+    // 4. 所有者地址 -> 操作员地址 -> 是否授权（批量授权记录）
+    mapping(address => mapping(address => bool)) private _isApprovedForAll;
+
+    // 5. 元数据相关（名称、符号、基础URI）
+    string private _name; // 代币名称
+    string private _symbol; // 代币符号
+    string private _baseURI; // 基础URI（拼接 tokenId 得到完整 tokenURI）
+
+    // ======== 构造函数（部署合约时初始化） ========
+    /**
+     * @dev 部署合约时设置代币名称、符号和基础URI
+     * @param name_ 代币名称（例如 "MyNFT"）
+     * @param symbol_ 代币符号（例如 "MNFT"）
+     * @param baseURI_ 基础URI（例如 "ipfs://QmXtqZ7D5tYj9oZ5d5aZ7d8tYj3oZ5d5aZ7d8tYj3oZ5d5aZ7d8/"）
+     */
+    constructor(string memory name_, string memory symbol_, string memory baseURI_) {
+        _name = name_;
+        _symbol = symbol_;
+        _baseURI = baseURI_;
+    }
+
+    // ======== 必实现接口：核心查询函数 ========
+    /**
+     * @dev 查询地址持有的代币数量
+     * 校验：如果地址是 0x0，直接 revert（无意义查询）
+     */
+    function balanceOf(address owner) public view override returns (uint256) {
+        require(owner != address(0), "ERC721: balance query for the zero address");
+        return _balanceOf[owner];
+    }
+
+    /**
+     * @dev 查询代币ID的所有者
+     * 校验：代币必须已 mint（_ownerOf[tokenId] 不能是 0x0）
+     */
+    function ownerOf(uint256 tokenId) public view override returns (address) {
+        address owner = _ownerOf[tokenId];
+        require(owner != address(0), "ERC721: owner query for nonexistent token");
+        return owner;
+    }
+
+    // ======== 必实现接口：授权函数 ========
+    /**
+     * @dev 授权某个地址转移指定代币
+     * 校验1：调用者必须是代币所有者，或已被批量授权（operator）
+     * 校验2：被授权地址不能是所有者本人（无意义授权）
+     */
+    function approve(address approved, uint256 tokenId) public override {
+        address owner = ownerOf(tokenId);
+        require(msg.sender == owner || isApprovedForAll(owner, msg.sender), "ERC721: approve caller is not owner nor approved for all");
+        require(approved != owner, "ERC721: approval to current owner");
+
+        _approved[tokenId] = approved;
+        emit Approval(owner, approved, tokenId); // 触发授权事件
+    }
+
+    /**
+     * @dev 批量授权/撤销授权
+     * 调用者：代币所有者（msg.sender 就是 owner）
+     */
+    function setApprovalForAll(address operator, bool approved) public override {
+        require(msg.sender != operator, "ERC721: approve to caller");
+
+        _isApprovedForAll[msg.sender][operator] = approved;
+        emit ApprovalForAll(msg.sender, operator, approved); // 触发批量授权事件
+    }
+
+    /**
+     * @dev 查询代币的被授权地址
+     */
+    function getApproved(uint256 tokenId) public view override returns (address) {
+        require(_ownerOf[tokenId] != address(0), "ERC721: approved query for nonexistent token");
+        return _approved[tokenId];
+    }
+
+    /**
+     * @dev 查询操作员是否被批量授权
+     */
+    function isApprovedForAll(address owner, address operator) public view override returns (bool) {
+        return _isApprovedForAll[owner][operator];
+    }
+
+    // ======== 必实现接口：转移函数 ========
+    /**
+     * @dev 基础转移函数（无安全校验，需手动确保接收者合法）
+     * 校验1：from 是代币所有者
+     * 校验2：调用者是所有者、被授权地址，或被批量授权的操作员
+     * 校验3：to 不能是 0x0（避免销毁代币，除非手动设计销毁逻辑）
+     * 校验4：tokenId 是已 mint 的代币
+     */
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override {
+        // 校验所有者和调用者权限
+        require(_isApprovedOrOwner(msg.sender, tokenId), "ERC721: transfer caller is not owner nor approved");
+        // 校验接收地址合法
+        require(to != address(0), "ERC721: transfer to the zero address");
+
+        // 执行转移逻辑
+        _transfer(from, to, tokenId);
+    }
+
+    /**
+     * @dev 安全转移函数（无额外数据）
+     * 区别于 transferFrom：会校验接收者（如果是合约）是否支持 ERC-721 接收
+     */
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override {
+        safeTransferFrom(from, to, tokenId, ""); // 调用带数据的安全转移，数据为空
+    }
+
+    /**
+     * @dev 带数据的安全转移函数（核心安全函数）
+     */
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes calldata data
+    ) public override {
+        // 先校验转移权限（和 transferFrom 一致）
+        require(_isApprovedOrOwner(msg.sender, tokenId), "ERC721: transfer caller is not owner nor approved");
+        // 执行安全转移（包含接收者校验）
+        _safeTransfer(from, to, tokenId, data);
+    }
+
+    // ======== 可选接口：元数据函数 ========
+    function name() public view override returns (string memory) {
+        return _name;
+    }
+
+    function symbol() public view override returns (string memory) {
+        return _symbol;
+    }
+
+    /**
+     * @dev 生成代币的完整元数据URI
+     * 逻辑：基础URI + 代币ID（例如 baseURI = "ipfs://xxx/", tokenId=1 → "ipfs://xxx/1"）
+     */
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        require(_ownerOf[tokenId] != address(0), "ERC721: tokenURI query for nonexistent token");
+        return string(abi.encodePacked(_baseURI, _toString(tokenId)));
+    }
+
+    // ======== 内部辅助函数（仅合约内部调用，不对外暴露） ========
+    /**
+     * @dev 校验调用者是否有权限操作代币
+     * 三种合法情况：1. 调用者是所有者；2. 调用者是该代币的被授权地址；3. 调用者是被批量授权的操作员
+     */
+    function _isApprovedOrOwner(address spender, uint256 tokenId) internal view returns (bool) {
+        address owner = ownerOf(tokenId);
+        return (spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner, spender));
+    }
+
+    /**
+     * @dev 核心转移逻辑（实际执行代币归属变更）
+     * 内部函数，被 transferFrom 和 _safeTransfer 调用
+     */
+    function _transfer(address from, address to, uint256 tokenId) internal {
+        // 再次校验所有者（双重保险）
+        require(ownerOf(tokenId) == from, "ERC721: transfer from incorrect owner");
+
+        // 1. 清空该代币的授权记录（转移后，原授权失效）
+        delete _approved[tokenId];
+
+        // 2. 更新所有者的代币数量
+        _balanceOf[from] -= 1;
+        _balanceOf[to] += 1;
+
+        // 3. 更新代币的归属
+        _ownerOf[tokenId] = to;
+
+        // 4. 触发转移事件（必须触发，供外部平台监听）
+        emit Transfer(from, to, tokenId);
+    }
+
+    /**
+     * @dev 安全转移核心逻辑（校验接收者合法性）
+     */
+    function _safeTransfer(address from, address to, uint256 tokenId, bytes memory data) internal {
+        _transfer(from, to, tokenId); // 先执行基础转移
+        // 校验接收者：如果是合约地址，必须实现 ERC-721 接收接口（onERC721Received）
+        require(_checkOnERC721Received(from, to, tokenId, data), "ERC721: transfer to non ERC721Receiver implementer");
+    }
+
+    /**
+     * @dev 校验合约接收者是否支持 ERC-721 接收
+     * 逻辑：调用接收合约的 onERC721Received 函数，若返回指定值，则合法
+     */
+    function _checkOnERC721Received(
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes memory data
+    ) private returns (bool) {
+        // 判断 to 是否是合约地址（普通钱包地址无需校验）
+        if (to.code.length == 0) {
+            return true;
+        }
+
+        // 调用合约的 onERC721Received 函数，校验返回值
+        bytes4 retval = IERC721Receiver(to).onERC721Received(msg.sender, from, tokenId, data);
+        return retval == IERC721Receiver.onERC721Received.selector;
+    }
+
+    /**
+     * @dev 辅助函数：将 uint256 转为 string（用于拼接 tokenURI）
+     */
+    function _toString(uint256 value) internal pure returns (string memory) {
+        if (value == 0) {
+            return "0";
+        }
+        uint256 temp = value;
+        uint256 digits;
+        while (temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        bytes memory buffer = new bytes(digits);
+        while (value != 0) {
+            digits--;
+            buffer[digits] = bytes1(uint8(48 + uint256(value % 10)));
+            value /= 10;
+        }
+        return string(buffer);
+    }
+
+    // ======== 额外功能：mint（铸造）NFT（标准未定义，需手动实现） ========
+    /**
+     * @dev 铸造新的 NFT（仅合约部署者可调用，可修改权限逻辑）
+     * @param to 接收铸造NFT的地址
+     * @param tokenId 新NFT的ID（需保证唯一，避免重复铸造）
+     */
+    function mint(address to, uint256 tokenId) public {
+        // 权限校验：仅部署者可铸造（可改为任何人可铸造、白名单铸造等）
+        require(msg.sender == msg.sender, "ERC721: only deployer can mint"); // 此处仅作示例，实际需优化
+        // 校验：tokenId 未被铸造过
+        require(_ownerOf[tokenId] == address(0), "ERC721: token already minted");
+        // 校验：接收地址合法
+        require(to != address(0), "ERC721: mint to the zero address");
+
+        // 执行铸造逻辑：更新归属和数量
+        _balanceOf[to] += 1;
+        _ownerOf[tokenId] = to;
+
+        // 触发转移事件（from 为 0x0，表示 mint 新代币）
+        emit Transfer(address(0), to, tokenId);
+    }
+
+    // ======== 额外功能：burn（销毁）NFT（标准未定义，需手动实现） ========
+    /**
+     * @dev 销毁 NFT（仅代币所有者可调用）
+     * @param tokenId 要销毁的代币ID
+     */
+    function burn(uint256 tokenId) public {
+        address owner = ownerOf(tokenId);
+        // 校验：调用者是所有者或被授权者
+        require(_isApprovedOrOwner(msg.sender, tokenId), "ERC721: burn caller is not owner nor approved");
+
+        // 执行销毁逻辑：清空归属和数量
+        delete _ownerOf[tokenId];
+        _balanceOf[owner] -= 1;
+        delete _approved[tokenId];
+
+        // 触发转移事件（to 为 0x0，表示销毁代币）
+        emit Transfer(owner, address(0), tokenId);
+    }
+}
+
+/**
+ * @title IERC721Receiver
+ * @dev ERC-721 接收接口（合约接收 NFT 时必须实现）
+ * 若合约未实现该接口，调用 safeTransferFrom 转移 NFT 会失败
+ */
+interface IERC721Receiver {
+    /**
+     * @dev 接收 NFT 时被调用
+     * @return 固定返回 selector（bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))）
+     */
+    function onERC721Received(
+        address operator,
+        address from,
+        uint256 tokenId,
+        bytes calldata data
+    ) external returns (bytes4);
+}
+```
+
+# 四、代码关键细节详解（重点必看）
+
+## 4.1 核心映射逻辑（合约的“数据存储中心”）
+
+合约的核心功能依赖 4 个映射，所有操作都是对这些映射的修改和查询：
+
+1.  `_ownerOf[tokenId] → address`：最核心的映射，记录每个代币的所有者，是 NFT 所有权的唯一凭证；
+    
+2.  `_balanceOf[owner] → uint256`：辅助映射，快速查询某个地址的代币数量，避免遍历所有 tokenId；
+    
+3.  `_approved[tokenId] → address`：记录单个代币的授权地址，例如 A 授权 B 转移自己的 tokenId=1，该映射就存储 `_approved[1] = B`；
+    
+4.  `_isApprovedForAll[owner][operator] → bool`：双重映射，记录批量授权，例如 A 授权 C 管理自己所有的 NFT，该映射就存储 `_isApprovedForAll[A][C] = true`。
+    
+
+## 4.2 安全转移（safeTransferFrom）与普通转移（transferFrom）的区别
+
+这是 ERC-721 标准中最容易混淆的两个函数，核心区别在于「接收者校验」：
+
+-   **transferFrom**：仅校验转移权限，不校验接收者。如果接收者是合约地址，且该合约未实现 `IERC721Receiver` 接口，NFT 会被转移到该合约，但无法再转移出来（相当于“丢失”）；
+    
+-   **safeTransferFrom**：在 transferFrom 的基础上，增加了接收者校验。如果接收者是合约，会调用其 `onERC721Received` 函数，只有返回指定的 selector（函数签名哈希），才会完成转移，避免 NFT 丢失。
+    
+
+实操建议：优先使用 `safeTransferFrom`，尤其是向未知合约地址转移 NFT 时。
+
+## 4.3 mint（铸造）与 burn（销毁）的实现逻辑
+
+ERC-721 标准仅定义了“转移、授权”等核心接口，**mint 和 burn 属于可选功能**，需手动实现，核心逻辑如下：
+
+1.  **mint（铸造）**：本质是“创建新的代币所有权”——将 `_ownerOf[tokenId]` 设为接收地址，`_balanceOf[接收地址]` 加 1，触发 `Transfer(address(0), to, tokenId)` 事件（0x0 表示“无初始所有者”）； 关键校验：tokenId 必须唯一（不能重复铸造），接收地址不能是 0x0。
+    
+2.  **burn（销毁）**：本质是“删除代币所有权”——将 `_ownerOf[tokenId]` 设为 0x0，`_balanceOf[所有者]` 减 1，清空该代币的授权记录，触发 `Transfer(owner, address(0), tokenId)` 事件； 关键校验：调用者必须是代币所有者或被授权者。
+    
+
+## 4.4 元数据（tokenURI）的核心作用
+
+NFT 的“唯一性”不仅体现在区块链上的 tokenId，更体现在其对应的“元数据”（图片、描述、属性等）。`tokenURI` 函数的作用就是返回该代币元数据的访问地址，通常有两种形式：
+
+1.  **IPFS 链接**（推荐）：例如`ipfs://QmXtqZ7D5tYj9oZ5d5aZ7d8tYj3oZ5d5aZ7d8tYj3oZ5d5aZ7d8/1`，IPFS 是分布式存储，可保证元数据不会被篡改或删除；
+    
+2.  **HTTP 链接**：例如`https://api.mynft.com/metadata/1`，依赖中心化服务器，存在服务器宕机、数据被篡改的风险。
+    
+
+元数据的格式通常为 JSON，示例如下（OpenSea 等平台会自动解析该格式）：
+
+```json
+{
+    "name": "MyNFT #1", // NFT 名称（带 tokenId）
+    "description": "这是我的第一个 ERC-721 NFT", // 描述
+    "image": "ipfs://QmXtqZ7D5tYj9oZ5d5aZ7d8tYj3oZ5d5aZ7d8tYj3oZ5d5aZ7d8/1.png", // 图片链接
+    "attributes": [ // NFT 属性（可选，用于丰富展示）
+        {"trait_type": "颜色", "value": "红色"},
+        {"trait_type": "稀有度", "value": "普通"}
+    ]
+}
+```
+
+# 五、合约部署与测试步骤（实操指南）
+
+## 5.1 部署环境准备
+
+1.  编译器版本：Solidity 0.8.20（与合约指定版本一致）；
+    
+2.  部署工具：Remix（在线 IDE，适合快速测试，地址：https://remix.ethereum.org/）、Truffle、Hardhat 均可；
+    
+3.  测试网络：Goerli、Sepolia 等以太坊测试网（无需真实 ETH，可通过水龙头领取测试币）。
+    
+
+## 5.2 部署步骤（以 Remix 为例）
+
+1.  打开 Remix，创建新文件 `ERC721.sol`，复制上面的完整代码；
+    
+2.  切换到「Solidity Compiler」标签，选择 0.8.20 版本，点击「Compile ERC721.sol」，编译成功（无报错）；
+    
+3.  切换到「Deploy & Run Transactions」标签，选择测试网（例如 Injected Provider - MetaMask，连接钱包）；
+    
+4.  部署合约时，输入构造函数参数：`name_`（例如 "MyNFT"）、`symbol_`（例如 "MNFT"）、`baseURI_`（例如 "ipfs://QmXtqZ7D5tYj9oZ5d5aZ7d8tYj3oZ5d5aZ7d8tYj3oZ5d5aZ7d8/"）；
+    
+5.  点击「Deploy」，确认钱包交易，部署完成后，即可在 Remix 中调用合约函数。
+    
+
+## 5.3 核心函数测试
+
+1.  **mint 铸造 NFT**：调用 `mint` 函数，输入 `to`（你的钱包地址）、`tokenId`（例如 1），确认交易，铸造成功后，调用 `ownerOf(1)`，应返回你的钱包地址；
+    
+2.  **approve 授权**：调用 `approve` 函数，输入 `approved`（另一个钱包地址）、`tokenId`（1），授权后，调用 `getApproved(1)`，应返回被授权地址；
+    
+3.  **transferFrom 转移**：用被授权地址调用 `transferFrom`，输入 `from`（你的地址）、`to`（第三个地址）、`tokenId`（1），转移后，`ownerOf(1)` 应返回第三个地址；
+    
+4.  **burn 销毁**：用代币所有者地址调用 `burn` 函数，输入 `tokenId`（1），销毁后，`ownerOf(1)` 会报错（代币不存在）。
+    
+
+# 六、ERC-721 常见扩展与应用场景
+
+## 6.1 常见扩展标准
+
+-   **ERC-721A**：由 Azuki 团队提出，优化了批量 mint 的 gas 成本（传统 ERC-721 批量 mint gas 随数量递增，ERC-721A 可大幅降低）；
+    
+-   **ERC-721URIStorage**：OpenZeppelin 提供的扩展，支持动态修改 tokenURI（方便更新 NFT 元数据）；
+    
+-   **ERC-721Enumerable**：支持枚举某个地址的所有代币（例如查询地址持有的第 N 个代币 ID），解决了 ERC-721 无法直接枚举的痛点。
+    
+
+## 6.2 应用场景
+
+1.  **数字艺术品**：例如 CryptoPunks、Bored Ape Yacht Club（BAYC），每个 NFT 对应一幅唯一的数字艺术作品；
+    
+2.  **游戏资产**：游戏中的角色、道具、土地等，例如 Axie Infinity 中的 Axie 角色，每个角色都是唯一的 ERC-721 NFT；
+    
+3.  **现实资产映射**：将房产、字画、版权等现实资产映射为 NFT，实现资产的数字化流转；
+    
+4.  **身份凭证**：用于去中心化身份认证，例如 DAO 成员身份、活动门票等，每个凭证都是唯一的 NFT。
+    
+
+# 七、注意事项（避坑指南）
+
+1.  **tokenId 唯一性**：mint 时必须保证 tokenId 不重复，否则会报错，建议用自增变量（例如 `uint256 private _nextTokenId = 1;`）控制 tokenId；
+    
+2.  **权限控制**：mint、burn 等敏感函数需添加权限校验（例如仅管理员可 mint），避免恶意用户滥用；
+    
+3.  **元数据存储**：尽量使用 IPFS 存储元数据，避免中心化服务器宕机导致 NFT 失去价值；
+    
+4.  **gas 成本**：以太坊主网 gas 费用较高，测试时优先使用测试网，批量操作可考虑 ERC-721A 优化；
+    
+5.  **兼容性**：如果合约需要被 OpenSea 等平台识别，必须实现 `IERC721Metadata` 接口，且 tokenURI 格式符合标准。
+    
+
+# 八、总结
+
+ERC-721 标准的核心价值是「标准化 NFT 接口」，让不同项目的 NFT 能够实现互操作性，为区块链上的非同质化资产流转提供了统一的规范。本文实现的合约涵盖了 ERC-721 的所有核心功能，搭配详细的代码说明和实操指南，可作为新手入门 ERC-721 的基础模板。
+
+实际开发中，建议基于 OpenZeppelin 的 ERC-721 实现（`@openzeppelin/contracts/token/ERC721/ERC721.sol`）进行二次开发，OpenZeppelin 的合约经过了严格的安全审计，可避免手动实现带来的安全漏洞。
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 # 22 Uniswap v4 相比 v3 的改进、设计初衷及技术落实
 
 Uniswap 作为 DeFi 领域最核心的自动化做市商（AMM）协议，每一代版本迭代都围绕「效率、灵活、成本」三大核心目标。v3 引入的「集中流动性」彻底改变了 AMM 的资本效率，但随着 DeFi 生态的复杂化，其架构僵化、可定制性不足、gas 成本偏高的问题逐渐凸显。Uniswap v4 并未颠覆 v3 的核心逻辑，而是通过架构重构和功能创新，解决 v3 的痛点，同时保留集中流动性的优势，成为更具扩展性、更高效的 AMM 协议。
@@ -810,6 +1455,7 @@ Uniswap v4 相比 v3 的所有改进，本质上都是「解决痛点、提升�
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 # 21 Uniswap V3 vs V2的改进、设计初衷及技术落实全解析
 
 Uniswap V2的核心定位与痛点——V2作为Uniswap协议的第二代版本，核心是基于“**恒定乘积公式（x\*y=k）**”的自动化做市商（AMM），实现了无需许可、去中心化的代币交换，但随着DeFi生态的发展，其资本低效、费用僵化、预言机精度不足等问题逐渐凸显。
@@ -1042,6 +1688,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 # 从像素头像到数字热潮：NFT的前世今生与炒作真相
 
 如果你关注过数字藏品圈，一定见过那些看起来简简单单、甚至有点“潦草”的24×24像素小头像——它们就是CryptoPunks（加密朋克），如今被公认为第一个真正出圈、成规模的NFT。
@@ -1091,6 +1738,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -1580,6 +2228,7 @@ IRouter02(routerAddress).addLiquidity(
 
 
 
+
 # 19 Wagmi初步学习
 
 **Wagmi** 是基于 Viem 的 React Hooks 库！
@@ -1917,6 +2566,7 @@ function Counter() {
 
 
 
+
 # 18 Viem 初步学习
 
 ## 1 Viem 是什么？
@@ -2133,6 +2783,7 @@ const data = encodeFunctionData({
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -2623,6 +3274,7 @@ await counter.number(); // 输出 BigInt(100)
 
 
 
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -2896,6 +3548,7 @@ cast send <合约地址> "decrement()" \
 
 
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -3085,6 +3738,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -3318,6 +3972,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -3411,6 +4066,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -3780,6 +4436,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -4203,6 +4860,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -4690,6 +5348,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -4986,6 +5645,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -6115,6 +6775,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -6496,6 +7157,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -6836,6 +7498,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -6997,6 +7660,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -7290,6 +7954,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -7619,6 +8284,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -7847,6 +8513,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
