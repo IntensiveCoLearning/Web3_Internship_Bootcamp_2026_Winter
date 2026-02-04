@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+Today I studied censorship resistance at the protocol level and learned where Ethereum draws the line between technical guarantees and social enforcement. I learned that the base protocol cannot fully prevent short-term censorship, because block proposers always have some freedom in choosing transactions, but it can make long-term censorship expensive and visible. I looked at how delayed inclusion, proposer rotation, and finality reduce the power of any single validator, and how fork choice and community coordination act as backstops when censorship becomes persistent. I also learned that features like PBS separate economic incentives from transaction ordering, but do not eliminate censorship by themselves, which means external monitoring and social responses are still necessary. Overall, today’s study helped me understand that Ethereum’s censorship resistance is not absolute, but is designed as a layered system where protocol rules limit damage, while social consensus handles extreme cases.
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 Today I kept thinking about yesterday’s deep dive into Ethereum’s decentralization and how much more complex it is than I first assumed. It’s easy to imagine decentralization as just “a lot of nodes spread around the world,” but now I see that real resilience comes from diversity — in software, infrastructure, and human decision-making.
 
 I spent more time reading about validators and how they interact with builders through relays. At first, relying on relays sounded like an extra layer of centralization, but I understand now why using multiple relays actually reduces censorship risk and improves fairness in block proposals. It’s a practical compromise between efficiency and decentralization — a recurring theme in blockchain design.
@@ -31,11 +37,13 @@ Learning this shifted my mindset: robustness comes from coordination without con
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 Today I learned more about how Ethereum tries to stay decentralized in practice, especially through validator roles, relays, and client diversity. I studied how validators rely on relays to receive blocks from builders, and why using multiple relays can reduce censorship risk. I also learned that Ethereum encourages client diversity, meaning validators should use different execution and consensus clients to avoid single points of failure. If too many validators run the same client software, a bug could affect the whole network. This made me realize that decentralization is not only about having many nodes, but also about having diversity in software, infrastructure, and operators. Overall, today’s study showed me that Ethereum’s security depends as much on coordination and diversity as it does on cryptography and economic incentives.
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 Today I learned about MEV (Maximal Extractable Value) and how it affects validators and block production in Ethereum. I understood that MEV is the extra value that can be gained by changing the order of transactions in a block, such as arbitrage or liquidations. To reduce unfair advantages and centralization, Ethereum uses proposer–builder separation (PBS), where block builders create optimized blocks and proposers choose among them instead of building blocks themselves. Builders send blocks to proposers through relays, and proposers select the block with the highest reward without seeing all transaction details. This design helps validators earn stable rewards while limiting direct manipulation of transactions. Overall, this study showed me that Ethereum not only cares about consensus and security, but also actively tries to manage economic behavior and reduce harmful incentives in the system.
@@ -46,6 +54,7 @@ Today I learned about MEV (Maximal Extractable Value) and how it affects validat
 
 
 
+
 今日玩了玩[Lean Game Server](https://adam.math.hhu.de/#/g/zrtmrh/linearalgebragame/world/TutorialWorld/level/1)
 
 放松了一下
@@ -53,6 +62,7 @@ Today I learned about MEV (Maximal Extractable Value) and how it affects validat
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -118,6 +128,7 @@ Today’s focus was less on theory and more on understanding Proof of Stake as a
 
 
 
+
 Today I went deeper into how Ethereum’s Proof of Stake system actually runs step by step. I learned that time on Ethereum is split into short periods called slots, which last about 12 seconds. A group of slots makes up an epoch. In each slot, one validator is chosen to create a new block.
 
 Other validators don’t just say “yes” or “no” — they send signed messages called attestations to confirm the block and the current chain. These signatures can be combined together using special cryptography, so the network can handle thousands of validators without slowing down too much.
@@ -131,6 +142,7 @@ Overall, today helped me see how Ethereum mixes timing, cryptography, and incent
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -155,11 +167,13 @@ Overall, today’s session helped me see how Ethereum’s Proof of Stake system 
 
 
 
+
 Today I focused on understanding validators and how proof of stake works in Ethereum. I learned that validators replace miners and are responsible for proposing blocks and voting on them. To become a validator, a user must stake ETH, which acts as a form of security deposit. Validators are randomly selected to propose blocks, and other validators attest to whether the block is valid. If a validator behaves honestly, it earns rewards, but if it behaves incorrectly or stays offline for too long, it can lose part of its stake through penalties or slashing. I also learned that consensus works in rounds and epochs, and that finality is achieved when enough validators agree across multiple rounds. This system encourages good behavior through economic incentives instead of raw computing power. Overall, today’s study helped me understand that Ethereum’s security depends not only on code and cryptography, but also on carefully designed incentives that guide validator behavior and keep the network reliable.
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -294,11 +308,13 @@ If you want, I can also:
 
 
 
+
 Today I continued learning about Ethereum by focusing on how blocks are created, how transaction fees work, and how a transaction becomes truly safe on the chain. I learned that a block proposer selects transactions from its mempool, usually choosing ones with higher fees first, and puts them into a block that includes a header, transactions, and execution results. Before a block is accepted, the execution client replays all transactions to make sure the results are correct, while the consensus client checks whether the block follows the rules of the proof-of-stake system. I also studied the EIP-1559 fee model and understood that each block has a base fee that goes up when the network is busy and goes down when it is quiet, and that users can add a priority fee as a tip for the proposer. The base fee is burned, and only the tip becomes a reward, and the block gas limit means that not all pending transactions can fit into one block. I learned that a transaction is first included in a block, then gains confirmations as more blocks are added, and finally becomes finalized after enough validators agree, which makes it extremely hard to reverse. This helped me understand why wallets and block explorers show different states like pending, confirmed, and finalized, and overall I realized that Ethereum uses multiple layers of checks and incentives to keep the network secure and stable.
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -371,6 +387,7 @@ Snap sync allows a node to become usable faster, while still moving toward full 
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -525,6 +542,7 @@ These nodes are mainly used by:
 
 
 
+
 Today I learned about the structure of an Ethereum node after The Merge. After The Merge, a full Ethereum node is no longer one single program. Instead, it is built from two main clients, the execution client and the consensus client. If a user only wants to sync the blockchain and check blocks and transactions, running these two clients is enough. However, if someone wants to produce blocks and earn staking rewards, they also need to run a validator client. The validator client works like a plugin of the consensus client and is used for signing messages, voting, and proposing blocks.
 
 The execution client is responsible for executing all transactions in a block. It calculates account balances and smart contract states and then gives the final execution results. In simple words, the execution client does the math but does not decide which block is the official one. The consensus client does not execute transactions by itself. Instead, it checks the execution results from the execution client and runs the Proof of Stake rules to decide which block is valid and which chain should be accepted as the official chain. This means the execution client gives the results, and the consensus client decides whether to accept them.
@@ -547,11 +565,13 @@ The execution client and the consensus client communicate through a special inte
 
 
 
+
 亲爱的助教老师您好，明天上午10点我要考电动力学，这学期的最后一门考试，今天实在是没有时间学习其他的了。之后我会补上今天的内容，谢谢啦！
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -594,6 +614,7 @@ Finally, I deeply understood that **"**compliance" is not just what is written o
 
 
 
+
 Today I reviewed the core structure of blockchain systems. A blockchain consists of a sequence of blocks, each containing transaction records and the hash of the previous block. This chained hash structure ensures data integrity and makes historical records effectively immutable.
 
 Wallet balances on a blockchain are not stored explicitly. Instead, balances are derived by scanning the entire transaction history associated with a given wallet address. Although all transactions are publicly accessible, wallet ownership remains anonymous because addresses are randomly generated and not directly linked to real-world identities.
@@ -609,6 +630,7 @@ Finally, I examined scalability challenges in public blockchains, such as increa
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
