@@ -15,8 +15,223 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+* * *
+
+# 一、结论
+
+> **Uniswap V2**
+
+-   storage 少
+    
+-   逻辑简单
+    
+-   每次 swap 改 3 个核心状态
+    
+-   gas 稳定但资本效率低
+    
+
+> **Uniswap V3**
+
+-   storage 结构极其复杂
+    
+-   每次 swap 可能改多个 slot
+    
+-   gas 显著更高
+    
+-   但资本效率极高（集中流动性）
+    
+
+一句话总结：
+
+> **V2 把“复杂性”交给数学**  
+> **V3 把“复杂性”搬进了 storage**
+
+* * *
+
+# 二、Uniswap V2：storage 设计为什么“极简到极致”
+
+## 1️⃣ V2 的核心 storage（全部）
+
+```
+uint112 reserve0;
+uint112 reserve1;
+uint32  blockTimestampLast;
+```
+
+就这三个。
+
+### packing 后的真实 storage
+
+这三个变量**被压进同一个 32 字节 slot**：
+
+```
+| reserve0 (112) | reserve1 (112) | timestamp (32) |
+```
+
+👉 **一次 SSTORE 就能更新全部状态**
+
+这是 V2 gas 低的根本原因。
+
+* * *
+
+## 2️⃣ V2 swap 时到底写了什么 storage？
+
+### swap 前状态
+
+```
+reserve0 = x
+reserve1 = y
+```
+
+### swap 后
+
+```
+reserve0 = x + amountIn;
+reserve1 = y - amountOut;
+```
+
+### EVM 层面
+
+-   1 次 `SLOAD`（读 slot）
+    
+-   1 次 `SSTORE`（写 slot）
+    
+
+⚠️ 非常关键：
+
+> **不管 swap 多复杂，V2 都只写一个 slot**
+
+* * *
+
+## 3️⃣ V2 为什么这么设计？
+
+因为 V2 的数学模型是：
+
+```
+x * y = k
+```
+
+特点：
+
+-   全池一个价格
+    
+-   不区分区间
+    
+-   不区分 LP
+    
+
+所以：
+
+-   不需要记录“谁在哪个价位”
+    
+-   不需要记录价格轨迹
+    
+-   不需要记录流动性分布
+    
+
+👉 **一个池 = 一个状态**
+
+* * *
+
+# 三、Uniswap V3：storage 复杂度爆炸的原因
+
+V3 引入了一个根本性变化：
+
+> **流动性是“区间化”的**
+
+这意味着什么？
+
+* * *
+
+## 1️⃣ V3 的核心变化（不是 NFT，而是状态模型）
+
+在 V3 中：
+
+-   不再是：
+    
+    ```
+    一个池 = 一个价格
+    ```
+    
+-   而是：
+    
+    ```
+    一个池 = 多个价格区间 + 多个 LP position
+    ```
+    
+
+于是你**必须存**：
+
+1.  当前价格
+    
+2.  当前 tick
+    
+3.  每个 tick 的状态
+    
+4.  每个 LP position 的状态
+    
+
+* * *
+
+## 2️⃣ V3 的核心 storage 结构（简化版）
+
+### Pool 层
+
+```
+struct Slot0 {
+    uint160 sqrtPriceX96;
+    int24  tick;
+    uint16 observationIndex;
+    uint16 observationCardinality;
+}
+Slot0 public slot0;
+```
+
+👉 **一个 slot 都装不下**
+
+* * *
+
+### Tick 层（最恐怖的部分）
+
+```
+mapping(int24 => TickInfo) public ticks;
+```
+
+```
+struct TickInfo {
+    uint128 liquidityGross;
+    int128  liquidityNet;
+    uint256 feeGrowthOutside0X128;
+    uint256 feeGrowthOutside1X128;
+}
+```
+
+⚠️ **每一个 tick = 多个 storage slot**
+
+* * *
+
+### Position 层（LP 的 NFT 状态）
+
+```
+mapping(bytes32 => Position) public positions;
+```
+
+```
+struct Position {
+    uint128 liquidity;
+    uint256 feeGrowthInside0Last;
+    uint256 feeGrowthInside1Last;
+}
+```
+
+👉 每个 LP position ≈ 3~4 个 slot
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 # 一、前端 → 钱包 → 交易 → EVM
 
 很多人把这句话当流程图看，其实它是 **四个完全不同的系统**。
@@ -202,6 +417,7 @@ balanceOf[to] += amount;
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 # 一、 EIP-1967
 
@@ -405,6 +621,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 # 一、Subgraph ≠ 传统数据库写入
@@ -611,6 +828,7 @@ Indexer 会：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -936,6 +1154,7 @@ Indexer 会：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1316,6 +1535,7 @@ event.on 实时提示
 
 
 
+
 # 一、为什么不用 Subgraph 会崩
 
 我们先假设一个**非常真实的 DApp 场景**：
@@ -1610,6 +1830,7 @@ Subgraph 刚好完美匹配。
 
 
 
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -1804,6 +2025,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2168,6 +2390,7 @@ uint32  blockTimestampLast;
 
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -2425,6 +2648,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2801,6 +3025,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -3127,6 +3352,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -3373,6 +3599,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3675,6 +3902,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -3823,6 +4051,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -4191,6 +4420,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -4529,6 +4759,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -4632,6 +4863,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4791,6 +5023,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5134,6 +5367,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -5236,6 +5470,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
