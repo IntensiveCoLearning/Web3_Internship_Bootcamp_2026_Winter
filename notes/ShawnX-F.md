@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+### Uniswap V3的实现原理
+
+核心实现原理其实还是基于恒定乘积公式（x × y = k），但它通过一个非常巧妙的技巧，让流动性“只在你指定的价格区间生效”，而不是像 V2 那样永远均匀铺满 0 到 ∞。
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 ### windows系统foundry路径配置问题
 
 最近在做相关作业时遇到，使用Windows自带PowerShell调用forge时，会遇到问题“无法将“forge”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正 确，然后再试一次。”而在Git Bash调用没有问题。经过排查，发现是path路径问题，接下来就记录一下排查和解决过程。
@@ -70,6 +78,7 @@ which forge
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 ### 1\. 什么是 Reactive？优势是什么？
 
 **Reactive** = Reactive Network + Reactive Smart Contracts 它本质上是一个专为**事件驱动、跨链自动化**而生的区块链/执行层
@@ -93,11 +102,13 @@ which forge
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 demoday
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -110,11 +121,13 @@ demoday
 
 
 
+
 松！～～～～
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -169,6 +182,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 自身技术漏洞太多，补不过来了！笔记都没时间写了，黑客松也开始了。已经在研究相关技术栈了，加油！
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
@@ -181,11 +195,13 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 恶补solidity中...
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -240,6 +256,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 学习了森老师的agent笔记
 
 学习了优秀同学的RC笔记
@@ -249,6 +266,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -279,6 +297,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 # 有关ERC-7962的思考
 
 最近在训练营学习了 ERC-7962，越琢磨越有意思。结合我的理解，浅谈一下对ERC-7962的定位、严格模式和批量传输的粗浅看法。
@@ -294,6 +313,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -401,6 +421,7 @@ collectionId = keccak256(parentCollectionId, conditionId, indexSet)
 
 
 
+
 // 基础合约  
 contract Animal {  
 string public name;  
@@ -482,6 +503,7 @@ Pet(\_name, \_owner) {}
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -652,6 +674,7 @@ function criticalFunction() public onlyOwner whenNotPaused {
 
 
 
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -752,6 +775,7 @@ _Tips：_
 
 
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -825,6 +849,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -861,6 +886,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -941,6 +967,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -955,6 +982,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1008,6 +1036,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1124,6 +1153,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
