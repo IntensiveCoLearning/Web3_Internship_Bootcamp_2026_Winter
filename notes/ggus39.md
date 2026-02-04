@@ -20,10 +20,13 @@ Web3 实习计划 2025 冬季实习生
 hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次老有问题，我把上次的都删了，，晚点会参加今天的会议，晚上再看一会之前的课，接下来一段时间会慢慢补一些东西，黑客松排名出来了，真的没想到会是第一个讲demo的，i人已经要爆炸了，很棒的一次实习，每次都有好多感觉，等会会看下ERC标准的，
 
 ![QQ_1770189836842.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-02-04-1770191058799-QQ_1770189836842.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-02-04-1770191090711-image.png)
+
+晚上完善了一下简历
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 部署了claude code 参加了一些会议，
 
@@ -34,6 +37,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 参见了几个会议听了老师讲，小休息
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
@@ -42,11 +46,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 最近黑客松有点乱
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -61,11 +67,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 做ppt。。。。。
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -84,11 +92,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 休闲黑客松ing
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -111,11 +121,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 下午跑了一下午代码，战败cg
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -142,11 +154,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 简单过了一下合约安全漏洞，回看了一些课，今天没什么劲，小歇，明天开始做一些深度技术的吧
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -210,6 +224,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 今天学习了solidity的DAICO,简单了解合约运行优选以及合约项目筹资
 
 接下来会看一下做一些任务，多看一些技术向，过一些solidity101吧
@@ -221,6 +236,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -259,6 +275,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 今天看了一下之前的回放，测试了测试币转账，测试了一下链上投票
 
 ![QQ_1768803279473.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-01-19-1768803359063-QQ_1768803279473.png)
@@ -268,6 +285,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -312,11 +330,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 时间较少，平板写了一些智能合约的基础代码
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -362,11 +382,13 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 今天把钓鱼的基本过完了，推的总结还在思考，看了一些回放，还在思考，得加一点时间，整体看起来有些东西占的时间太长了
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -424,6 +446,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 
 
+
 今天过了十关多一点的关于诈骗钓鱼的，在GitHub上开了一个自己的小记录，下来可能会在推上也开始记录，不仅仅记录web3了可能就，也会在睡前写一个小日记，看了一些昨天的web3行业岗位，看了一些NFT的东西吧，坚持输出与学习！！！
 
 ![QQ_1768294824119.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ggus39/images/2026-01-13-1768294830637-QQ_1768294824119.png)
@@ -433,6 +456,7 @@ hardhat部署完成，还有上次的foundry，算是完整部署了吧，上次
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
