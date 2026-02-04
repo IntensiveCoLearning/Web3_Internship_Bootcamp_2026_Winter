@@ -15,8 +15,49 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+# Web3J
+
+**Web3j** 是一个轻量级、响应式、类型安全的Java和Android库，用于与以太坊区块链节点交互。它是Java/Kotlin开发者进入Web3世界的**官方推荐桥梁**。
+
+## **核心特性**
+
+### **1\. 类型安全的智能合约封装**
+
+java
+
+```
+// 自动生成Java包装类
+YourContract contract = YourContract.load(
+    "0x123...", // 合约地址
+    web3j, 
+    credentials, 
+    ContractGasProvider
+);
+// 直接调用合约方法
+String result = contract.someMethod().send();
+```
+
+### **2\. 完整的以太坊JSON-RPC API支持**
+
+-   所有以太坊客户端方法（Geth, Parity, Besu等）
+    
+-   支持Infura、Alchemy等节点服务
+    
+-   WebSocket和HTTP协议
+    
+
+### **3\. 智能合约开发工具链**
+
+-   Solidity智能合约的Java包装器生成
+    
+-   支持所有ERC标准（ERC-20, ERC-721, ERC-1155等）
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 **Ethers.js** 是一个用于与以太坊区块链交互的JavaScript库。它提供了完整的工具集，让开发者能够构建基于以太坊的DApp（去中心化应用程序）、钱包、工具等。
 
 ## **主要特点**
@@ -80,6 +121,7 @@ const contract = new ethers.Contract(
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 # Wagmi案例
@@ -264,6 +306,7 @@ export function TokenInteraction() {
 
 
 
+
 ## dApp 组件
 
 dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）和数据存储。
@@ -285,6 +328,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -366,6 +410,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 
 
+
 # Uniswap
 
 **Uniswap** 是一个运行在以太坊等区块链上的**去中心化交易协议（DEX）**，它允许用户无需中介即可交易加密货币。其核心特点是采用**自动化做市商（AMM）模型**，通过智能合约提供流动性，而不是传统的订单簿模式。
@@ -403,6 +448,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -461,6 +507,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 
 
+
 本周末比较忙，所以没有具体完成什么新的学习方面的东西，目前正在努力追赶Solidity101网站的基础学习计划，目前进度是第三章，争取下周能跟上进度早日完成：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/daicidemeigui/images/2026-01-25-1769352218638-image.png)
@@ -468,6 +515,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -632,6 +680,7 @@ dApp 的组件会有三个不同的类型：智能合约，前端逻辑（UI）�
 
 
 
+
 # ERC20模板
 
 ```
@@ -717,6 +766,7 @@ ERC20 是 **以太坊区块链上创建和发行可互换代币** 的技术标�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -916,6 +966,7 @@ contract MyToken is Ownable {
 
 
 
+
 ## 一、Dapp 核心定义
 
 去中心化应用（Dapp）是运行在区块链或分布式网络上的全新应用模式，核心特征为**去中心化**—— 应用逻辑和数据不由单一实体控制，由多个参与者共同维护，区别于传统集中式应用。开发需掌握去中心化技术栈、智能合约编程及前端与区块链的交互方式。
@@ -953,6 +1004,7 @@ Dapp 架构包含四个核心部分，各组件分工明确、协同工作：
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1057,6 +1109,7 @@ contract TestToken {
 
 
 
+
 # 以太坊
 
 ## ERC
@@ -1118,6 +1171,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1203,6 +1257,7 @@ EIP 即以太坊改进提案，是以太坊社区为区块链提出升级建议�
 
 
 
+
 # 以太坊
 
 ## 以太坊的应用场景
@@ -1236,6 +1291,7 @@ PoS 是一种通过资产持有权达成共识的机制。验证者根据其持�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
