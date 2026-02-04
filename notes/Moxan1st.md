@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+# 总览
+
+# 详情
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 # 总览
 
 实操 Uniswap V2
@@ -34,6 +42,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 # 总览
@@ -104,6 +113,7 @@ V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
 
 
 
+
 # 总览
 
 完成 SpoonOS 的 Skill 提交——Done，提交了一个视觉的调用工具。  
@@ -126,6 +136,7 @@ V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
 
 
 
+
 # 总览
 
 制作 LOGO——Done
@@ -141,6 +152,7 @@ V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -243,6 +255,7 @@ V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
 
 
 
+
 # 总览
 
 项目跑通——Done，准备提交第一版
@@ -268,6 +281,7 @@ V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
 
 
 
+
 # 总览
 
 把黑客松项目做完——  
@@ -278,6 +292,7 @@ V2 的 Flash Swap 允许：**“先拿货，后给钱”**。
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -334,6 +349,7 @@ Vibe coding 一个DApp——Done
 
 
 
+
 # 总览
 
 完成入门技术的3个任务：
@@ -369,6 +385,7 @@ JS：交互方面的，input和output等。
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -450,6 +467,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 
 
+
 # 总览
 
 开了个会，尝试加入LXDAO。
@@ -459,6 +477,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -518,6 +537,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -639,6 +659,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 
 
+
 # 总览
 
 -   完成挑战 Challenge #0 - Tokenization
@@ -711,6 +732,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -886,6 +908,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 
 
+
 # 总览
 
 ### 提交任务
@@ -906,6 +929,7 @@ mapping 用作账本映射。`mapping(address => uint256) public balances；` �
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1093,6 +1117,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 
 
+
 # 总览
 
 -   Solidity 101——做题感觉自己有学到东西，查漏补缺很关键
@@ -1115,6 +1140,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1186,6 +1212,7 @@ Web3 实习计划官方平台 周折叠和学分图表改进建议：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1341,6 +1368,7 @@ cast send 0x02343bFb4CE8E6E5Add0D95562187787Fd5Ce2ec "increment
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1643,6 +1671,7 @@ foundryup
 
 
 
+
 # 总览
 
 -   领取sepolia测试币并且转账——Done
@@ -1751,6 +1780,7 @@ A:把规则转化为代码，把过程公开，贡献与激励挂钩即可。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
