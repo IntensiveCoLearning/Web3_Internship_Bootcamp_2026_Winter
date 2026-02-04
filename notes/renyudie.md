@@ -17,8 +17,221 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+以太坊活动调研：**EthCC**
+
+举办时间：30/03-02/04
+
+举办地点：Cannes，France
+
+活动主题：The Ethereum Community Conference (EthCC) is the largest and longest-running annual **European**Ethereum event focused on **technology and community**. Four intense days of conferences, networking and learning.
+
+报名方式：[https://ethcc.io/tickets](https://ethcc.io/tickets)
+
+参与方式：作为项目方/公司，可以以赞助或speaker的身份参与。如果作为共创者或者KOL，可以争取speaker的身份，或是买票到场。作为行业经验明显不足的小白，主办方也有准备供学生申请的免费票（大部分此类活动都会有这样的名额，限量申请，先到先得）。此外，如果能申请作为此次活动的志愿者，将是很有价值的一份工作，对想通过运营或其他赛道进入行业的同学是非常好的一次机会，既能积累行业经验，丰富履历，又能认识一些人脉。确定是可能会比较卡语言能力，也会卡地理位置，对身处国内的同学比较不友好。
+
+信息来源及宣传渠道：我自己是在ethereum官网看到的，
+
+规模及价值：四月初在Cannes举办的一共两场活动，先是**EthCC**，后是**ETHGlobal黑客松**。来参加这个活动的一般会连续参加两场，来参加黑客松的也非常建议先参加这个活动，这样可以在这个活动认识新的朋友，顺便组队。
+
+研报撰写——流程及框架（以ZAMA为例）
+
+1.  收集，整理，研读资料。
+    
+    Zama is an open source cryptography company that builds state-of-the-art Fully Homomorphic Encryption (FHE) solutions for blockchain.
+    
+    项目背景
+    
+    **项目名称**：Zama
+    
+    **成立时间**：2020 年
+    
+    **总部**：法国
+    
+    **核心方向**：Fully Homomorphic Encryption（FHE，全同态加密）
+    
+    **项目定位**：
+    
+    > 为区块链和 Web2 / Web3 应用提供“**数据可用但不可见**”的隐私计算基础设施。
+    
+    [https://coinmarketcap.com/it/currencies/zama/](https://coinmarketcap.com/it/currencies/zama/)
+    
+    [https://github.com/zama-ai/fhevm](https://github.com/zama-ai/fhevm)
+    
+    [https://www.zama.org](https://www.zama.org)
+    
+    基本面
+    
+    ### 2.2 产品矩阵
+    
+    ### （1）Concrete
+    
+    -   FHE 的开源工具链
+        
+    -   面向开发者（Web2 + Web3）
+        
+    -   类似“FHE 时代的 TensorFlow”
+        
+    
+    ### （2）fhEVM
+    
+    -   支持在 EVM 上直接运行加密状态的智能合约
+        
+    -   不改变 Solidity 语法（**极强的开发者友好性**）
+        
+    
+    ### （3）Zama Network（未来）
+    
+    -   原生支持 FHE 的区块链网络
+        
+    -   Token 经济模型的主要承载体
+        
+    
+    经济模型
+    
+    ## Token：ZAMA 的功能与经济模型（Tokenomics）
+    
+    > ⚠️ 如果目前 ZAMA 仍未完全公开流通，可用 **“预期模型 + 类比分析”** 写
+    
+    ### 4.1 Token 功能假设（合理路径）
+    
+    | 功能 | 合理性 |
+    | --- | --- |
+    | Gas / Computation Fee | ⭐⭐⭐⭐⭐ |
+    | Staking（验证 FHE 计算） | ⭐⭐⭐⭐ |
+    | Network Security | ⭐⭐⭐⭐ |
+    | Governance | ⭐⭐⭐ |
+    
+    📌 **注意**：
+    
+    如果 ZAMA **只做治理 token → 价值支撑偏弱**
+    
+    如果 **绑定计算资源消耗 → 强价值捕获**
+    
+    * * *
+    
+    ### 4.2 价值捕获逻辑（你可以直接写成公式）
+    
+    > ZAMA 价值 ∝
+    > 
+    > FHE 计算调用次数 × 单次计算成本 × Token 捕获率
+    
+    * * *
+    
+    ## 五、竞争格局（Competitive Landscape）
+    
+    | 项目 | 技术路线 | 定位 |
+    | --- | --- | --- |
+    | Zama | FHE | 通用隐私计算 |
+    | Aztec | ZK | 私密交易 |
+    | Secret Network | TEE | 隐私智能合约 |
+    | Inco | MPC / FHE | 隐私执行层 |
+    
+    📌 **Zama 的护城河**：
+    
+    -   FHE 工程化能力（极高门槛）
+        
+    -   Web2 + Web3 双生态
+        
+    -   法国密码学背景（学术壁垒）
+        
+    
+    * * *
+    
+    ## 六、团队与融资（Team & Funding）
+    
+    ![https://www.s-ge.com/sites/default/files/styles/sge\_header\_lg/public/article/images/zama-photoshoot2024-office72.jpg?itok=7dK8JHEd](https://www.s-ge.com/sites/default/files/styles/sge_header_lg/public/article/images/zama-photoshoot2024-office72.jpg?itok=7dK8JHEd)
+    
+    [https://cdn-images.welcometothejungle.com/Z\_pIDJrOChzFFu8-wZerTgGJ7LNumiz1p1Ob23aJK8k/rs%3Aauto%3A640%3A%3A/q%3A85/czM6Ly93dHRqLXByb2R1Y3Rpb24vdXBsb2Fkcy9pbWFnZS9maWxlLzI2NzEvMTY4NjgyL2MxMjdmNWU1LWNhNjgtNGYyOS05OTQ3LWNkNDVmYzllNDU2ZC5qcGc](https://cdn-images.welcometothejungle.com/Z_pIDJrOChzFFu8-wZerTgGJ7LNumiz1p1Ob23aJK8k/rs%3Aauto%3A640%3A%3A/q%3A85/czM6Ly93dHRqLXByb2R1Y3Rpb24vdXBsb2Fkcy9pbWFnZS9maWxlLzI2NzEvMTY4NjgyL2MxMjdmNWU1LWNhNjgtNGYyOS05OTQ3LWNkNDVmYzllNDU2ZC5qcGc)
+    
+    ![https://cdn.tracxn.com/images/seo/social/companies/zama-funding-and-investors-1753439614636.webp](https://cdn.tracxn.com/images/seo/social/companies/zama-funding-and-investors-1753439614636.webp)
+    
+    -   创始团队来自密码学与 AI 领域
+        
+    -   投资方包括：Multicoin / Protocol Labs 等（示例）
+        
+    
+    📌 **投研判断**：
+    
+    > Zama 是**研究驱动型项目**，不适合短期炒作，适合长期 Infra 逻辑。
+    
+    * * *
+    
+    ## 七、风险分析（Risks）
+    
+    **技术风险**
+    
+    -   FHE 计算成本高
+        
+    -   性能瓶颈是否能被优化
+        
+    
+    **市场风险**
+    
+    -   开发者是否愿意为隐私付费
+        
+    -   Web3 隐私需求是否被监管压制
+        
+    
+    **Token 风险**
+    
+    -   若 token 与计算需求脱钩 → 估值虚高
+        
+    
+    * * *
+    
+    ## 八、投资结论（Investment Thesis）
+    
+    你可以用 **Bull / Base / Bear** 三段式：
+    
+    -   **Bull Case**：
+        
+        FHE 成为 AI + Web3 标配，Zama 成为事实标准
+        
+    -   **Base Case**：
+        
+        小众高价值隐私场景落地
+        
+    -   **Bear Case**：
+        
+        性能瓶颈 + adoption 不足
+        
+    
+    * * *
+    
+    ## 下一步我可以直接帮你做的事
+    
+    如果你愿意，我可以 **继续往下落地**：
+    
+    1️⃣ **直接帮你写完整英文投研报告（VC 风格）**
+    
+    2️⃣ **单独深挖 ZAMA Tokenomics（假设 + 模型）**
+    
+    3️⃣ **做一版 PPT 结构（适合面试 / 路演）**
+    
+    4️⃣ **对比 Zama vs ZK Infra（用于产品 / 研究背景）**
+    
+    你更想往 **投研 / 产品 / 面试 / 学术** 哪个方向用？
+    
+    [https://www.binance.com/zh-CN/futures/ZAMAUSDT](https://www.binance.com/zh-CN/futures/ZAMAUSDT)
+    
+    流通量占总量百分比
+    
+    代币发行量/发行机制
+    
+    代币消耗机制
+    
+2.  收集处理数据（交易数据，关键指标）
+    
+3.  整理形成报告
+    
+4.  行文调整
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 以太坊活动调研：**EthCC**
 
 举办时间：30/03-02/04
@@ -38,6 +251,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 ### 本周感悟
@@ -111,6 +325,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ### 本周感悟
 
 本周是web3实习计划的第二周，本周继续学习运营的方法及技巧，熟悉运营工具，与此同时也开始了一些solidity智能合约的学习。
@@ -156,6 +371,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -212,6 +428,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ```
 Context:
 This is an existing project using <tech stack>.
@@ -234,6 +451,7 @@ Process:
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -396,6 +614,7 @@ Web3第一语言类Space，累计超千万播放量。
 
 
 
+
 第二周结束，本周思考与复盘。
 
 Typeless
@@ -454,6 +673,7 @@ TG社群运营SOP
 
 
 
+
 [XSpoonAi/spoon-core](https://github.com/XSpoonAi/spoon-core)
 
 Solidity 编译功能
@@ -463,6 +683,7 @@ LLM → 生成 Solidity ↓ Tool → solc 编译 ↓ ❌ 报错 ↓ LLM ← 读�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -632,6 +853,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 ### 运营渠道
 
 1.  telegram
@@ -705,6 +927,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -754,6 +977,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -887,6 +1111,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -936,6 +1161,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -967,6 +1193,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1126,6 +1353,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
