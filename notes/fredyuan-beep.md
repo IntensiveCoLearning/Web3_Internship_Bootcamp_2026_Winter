@@ -15,8 +15,106 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+**1\. Gas 优化**
+
+**// SPDX-License-Identifier: MIT**
+
+**pragma solidity ^0.8.20;**
+
+**contract SimpleStorage {**
+
+    **mapping(address => uint256) public balances;**
+
+    **uint256\[\] public arr;**
+
+    **function loopExample() public view returns (uint256 sum) {**
+
+        **uint256 len = arr.length;**
+
+        **for (uint256 i = 0; i < len; ++i) {**
+
+            **sum += arr\[i\];**
+
+        **}**
+
+    **}**
+
+    **function deposit() public payable {**
+
+        **balances\[msg.sender\] += msg.value;**
+
+    **}**
+
+    **function getBalance(address user) public view returns (uint256) {**
+
+        **return balances\[user\];**
+
+    **}**
+
+**}**
+
+**1\. Gas 优化**
+
+**在这个过程中，我出错：1、for 写在了 contract 作用域里面**
+
+**事实上，ParserError: Function, variable, struct or modifier declaration expected**
+
+**Solidity 的 contract 里只能放 4 种东西：**
+
+**状态变量（uint256 x;）**
+
+**mapping**
+
+**struct / enum**
+
+**function**
+
+**2、 arr不存在问题**
+
+**整个合约里 没有定义 arr**
+
+**后续通过GPT老师指导后修复**
+
+2 **Ether Wallet**
+
+_// SPDX-License-Identifier: MIT_
+
+pragma solidity ^0.8.26;
+
+contract EtherWallet {
+
+    address payable public owner;
+
+    constructor() {
+
+        owner = payable(msg.sender);
+
+    }
+
+    receive() external payable {}
+
+    function withdraw(uint256 \_amount) external {
+
+        require(msg.sender == owner, "caller is not owner");
+
+        payable(msg.sender).transfer(\_amount);
+
+    }
+
+    function getBalance() external view returns (uint256) {
+
+        return address(this).balance;
+
+    }
+
+}
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 **Gas 优化笔记**
 
 **// SPDX-License-Identifier: MIT**
@@ -80,6 +178,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 **目标职业规划为产品研究-产品经理细分**
 
 **主要想包括懂技术、会研究的产品经理，利用自有的商业思维去进行一定的职业发展**
@@ -97,6 +196,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -125,11 +225,13 @@ RPC 节点就像银行的 ATM 机
 
 
 
+
 Gm今日晚间更新
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -174,6 +276,7 @@ OK，今天的主题是：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -250,6 +353,7 @@ RPC 节点就像银行的 ATM 机
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -356,11 +460,13 @@ Dapp开发流程
 
 
 
+
 GN 晚间时候更新笔记
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -389,6 +495,7 @@ GN 晚间时候更新笔记
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -445,6 +552,7 @@ HTTP：原生机器支付
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -531,6 +639,7 @@ HTTP：原生机器支付
 
 
 
+
 1.  **罗伯特议事规则，全名是  
     罗伯特议事规则（**_Robert’s Rules of Order_**），  
     是一套用于会议与集体决策的“标准流程规则”。**
@@ -582,6 +691,7 @@ HTTP：原生机器支付
 
 
 
+
 **021学习以太坊**
 
 **1 POW相对安全，攻击需要付出大量算力和电费。目前能源相对关键，所以攻击者除非是国家联盟，否则难以攻破**
@@ -597,6 +707,7 @@ HTTP：原生机器支付
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -671,6 +782,7 @@ HTTP：原生机器支付
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -804,6 +916,7 @@ HTTP：原生机器支付
 
 
 
+
 **Web3实习计划 01.18**
 
 ERC-7962
@@ -825,6 +938,7 @@ ERC-7962 是一个以太坊提案（ERC, Ethereum Request for Comments），主�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -887,6 +1001,7 @@ ERC-7962 是一个以太坊提案（ERC, Ethereum Request for Comments），主�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1029,11 +1144,13 @@ DeFi 协议 =
 
 
 
+
 GM 有一点要注意，1.14 的任务未完成，需要今日结束。晚间更新学习笔记。13号的还有些补充没加上
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1183,6 +1300,7 @@ Web 3.0 是**语义网技术驱动**的数据组织升级
 
 
 
+
 # **Web3实习手册 入门导读笔记**
 
 ## **一、区块链是什么？**
@@ -1228,6 +1346,7 @@ Probably, 不论科技的尽头是什么样，我可以理解为尽头是power�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
