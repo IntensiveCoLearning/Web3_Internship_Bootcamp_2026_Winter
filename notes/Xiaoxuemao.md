@@ -15,8 +15,64 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+**调用函数**
+
+部署完成后，即可在 Remix 中调用合约的**留言函数**：
+
+1.  在合约实例中找到 leaveMessage 函数输入框；
+    
+2.  在输入框中填入留言内容（例如：Hello World）；
+    
+3.  点击 leaveMessage 按钮，发起交易调用；
+    
+4.  右侧命令终端将显示一条新的交易记录，点击该记录可查看交易详情与链上存储的留言信息。
+    
+
+\-
+
+**交易生命周期**
+
+-   签名构造
+    
+
+钱包收集字段：nonce, to, value, data, gasLimit, maxFeePerGas, priorityFeePerGas, chainId
+
+使用私钥生成 v, r, s 签名 → 序列化 RLP
+
+-   广播到 P2P 网络
+    
+
+交易进入本地 & 邻居节点的 mempool
+
+节点根据 maxFeePerGas、gasLimit、nonce 做基本筛查
+
+-   打包 / 提议区块
+    
+
+验证者（PoS）或矿工（PoW 时代）挑选利润最高、合法顺序的交易
+
+执行 EVM → 产生 交易收据（status, gasUsed, logsBloom, logs\[\]）
+
+-   区块传播与共识
+    
+
+区块头包含新 stateRoot、receiptsRoot
+
+超 2⁄3 质押者签名后在共识层定案（PoS Finality ≈ 2 Epoch ≈ 64 slot ≈ ~12 min）
+
+-   确认数 & Finality
+    
+
+客户端/前端常以 n ≥ 12 作"概率足够低"确认
+
+完全终结在 PoS 下由 Finality Gadget（Casper FFG）给出
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 **JSON-RPC 协议**
 
 以太坊使用 JSON-RPC 2.0 协议作为标准的 RPC 通信格式。所有请求和响应都是 JSON 格式，通过 HTTP 或 WebSocket 传输。
@@ -68,6 +124,7 @@ ReentrancyGuard（OpenZeppelin）
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 **以太坊本地开发链**
 
 一：**Foundry**（Rust 实现，极快）
@@ -108,6 +165,7 @@ Chainlink 测试环境 - 预言机集成指南
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 **web3求职网站**
@@ -156,6 +214,7 @@ Chainlink 测试环境 - 预言机集成指南
 
 
 
+
 **完整的 Danksharding**：单 proposer + DA 采样
 
 以前设想：很多分片链，各自出自己的块；
@@ -183,6 +242,7 @@ Verkle 树：用向量承诺（vector commitments）缩小证明
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -235,6 +295,7 @@ blob 数据不会进入普通执行状态，只用于 DA，保留一段时间后
 
 
 
+
 **The Merge**（合并）— 2022 年 9 月 15 日
 
 从 PoW → PoS
@@ -268,6 +329,7 @@ proto-danksharding 是「半成品分片」，主要解决数据可用性；未�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -333,6 +395,7 @@ St. Petersburg 主要任务是 “紧急拆雷”——禁用一个在测试中�
 
 
 
+
 以太坊几次主网升级，历次升级对系统的改进
 
 时间线
@@ -370,6 +433,7 @@ EVM 诞生：引入以太坊虚拟机（EVM），让链上可以运行通用的�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -429,6 +493,7 @@ PoW机制下的分片实现非常复杂，而PoS设计与**分片**技术天然�
 
 
 
+
 以太坊在设计之初就没打算“永远 PoW”。
 
 • 早期白皮书和官方资料中多次提到：PoW 只是过渡方案，长期目标是切换到 PoS（Casper），以降低能耗、提升经济安全性。
@@ -456,6 +521,7 @@ The Merge → Shanghai/Capella （ 开放取款）→ Dencun （ EIP-4844）→ 
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -504,6 +570,7 @@ priorityFee 归出块者（矿工/验证者）
 
 
 
+
 **London 升级**
 
 之前是你自己拍一个 gasPrice，矿工挑价高的先打包；
@@ -539,6 +606,7 @@ EIP-1559 之后：只有 Tip（优先费） + 区块奖励 归矿工 / 验证者
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -605,6 +673,7 @@ _想让合约“读外部世界的数据”，要靠 oracle 把数据先写进�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -699,6 +768,7 @@ _直角引号「『』」_
 
 
 
+
 宏观统计上，2025 年主网平均每笔普通**交易**的**费用**约在 几美元量级（比如 ~$3–4 美 金 ），在 NFT/牛市活动高峰则可能冲到 $5–50 一笔。
 
 平时可以在 不到 1 Gwei（极度清净时甚至 0.1 Gwei 左右）
@@ -759,6 +829,7 @@ Mythril：由 ConsenSys 维护的字节码安全分析工具
 
 
 
+
 **Source Map**（源映射）用于调试与审计：例如在 Remix、Hardhat Debugger 中单步调试时，高亮当前执行的源码行，或者在安全工具中精确指出“某条 opcode 对应哪行源代码”。
 
 Yul / IR：：**Yul** 是 Solidity 官方提供的**中间**语言，编译器在内部会先把 Solidity 源代码翻译成 Yul，再从 Yul 生成最终字节码； 对 Yul 做优化可以同时优化所有后端目标；
@@ -788,6 +859,7 @@ fallback()：处理“调用不存在的函数”或合约没有 receive() 时�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -854,6 +926,7 @@ Solidity状态修饰符
 
 
 
+
 现在 Ethers.js / Web3.js 已经不怎么使用了，大家现在基本上都是用的 Viem
 
 只有在“创建合约的同一笔交易中”调用时才会真正移除代码，否则只会清空余额而不会删掉合约代码和历史
@@ -897,6 +970,7 @@ Solidity 编译器会默认生成这一文件，并且（默认）把它的 IPFS
 
 
 
+
 **去中心化交易所（DEX）**
 
 **恒定乘积公式**：x \* y = k
@@ -920,6 +994,7 @@ MakerDAO 是一个去中心化的借贷协议，DAI，Sky，USDS。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1036,6 +1111,7 @@ SpoonOS：Web3
 
 
 
+
 **世界各势力对加密市场的态度趋势**
 
 -   1\. 美国监管框架
@@ -1123,6 +1199,7 @@ Web3 企业的薪酬结构常见“人民币 + Token”或“全 USDT”模式
 
 
 
+
 C/C++性能好但不安全；
 
 Java/C#拥有GC，安全但性能不行；
@@ -1178,6 +1255,7 @@ Discovery 协议，
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
