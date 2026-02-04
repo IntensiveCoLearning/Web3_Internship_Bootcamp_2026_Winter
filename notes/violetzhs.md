@@ -19,13 +19,20 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+打卡
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 数据分析
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 ### [**对于初学者：**](https://web3intern.xyz/zh/industry-knowledge/#%E5%AF%B9%E4%BA%8E%E5%88%9D%E5%AD%A6%E8%80%85)
 
@@ -45,11 +52,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-26_START -->
 
 
+
 补
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -64,11 +73,13 @@ timezone: UTC+8
 
 
 
+
 补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -97,6 +108,7 @@ timezone: UTC+8
 
 
 
+
 **AI 及其基础概念**
 
 **基础设施缺口：身份与信任的危机**
@@ -110,6 +122,7 @@ timezone: UTC+8
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -198,6 +211,7 @@ goplus 安全社区
 
 
 
+
 **「Web3 运行原理」**
 
 **智能合约 = 区块链账本里的“可执行代码”**
@@ -217,6 +231,7 @@ goplus 安全社区
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
