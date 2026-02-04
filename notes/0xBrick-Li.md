@@ -19,15 +19,20 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 # To do list
 
--   Uniswap 笔记发推特
+-   Uniswap 笔记发推特 v2 v3 发了 ✅
     
--   EIP笔记发推特
+-   EIP笔记发推特 ❌
     
--   改简历
+-   改简历 ✅
+    
+-   OGBC任务完成 ✅
+    
+-   spoonOS 提交 skill ✅
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 # To do list
 
@@ -42,6 +47,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -72,6 +78,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 黑客松卡在最后一点时间提交了，但是没法展示，一个人搞还是太难了
 
 总结
@@ -85,6 +92,7 @@ Bruce 老师说的对，要用CodeX，CodeX逻辑能力比ClaudeCode强多了
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -112,6 +120,7 @@ Bruce 老师说的对，要用CodeX，CodeX逻辑能力比ClaudeCode强多了
 
 
 
+
 今天把论文搞完，准备黑客松
 
 然后规划一下下周的事情
@@ -119,6 +128,7 @@ Bruce 老师说的对，要用CodeX，CodeX逻辑能力比ClaudeCode强多了
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -138,6 +148,7 @@ Bruce 老师说的对，要用CodeX，CodeX逻辑能力比ClaudeCode强多了
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -180,6 +191,7 @@ spoonOS框架怎么这么多bug要搞，kiteai的文档怎么还不完整，麻�
 
 
 
+
 # To do list
 
 -   学习如何制作简历
@@ -193,6 +205,7 @@ spoonOS框架怎么这么多bug要搞，kiteai的文档怎么还不完整，麻�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -247,6 +260,7 @@ spoonOS框架怎么这么多bug要搞，kiteai的文档怎么还不完整，麻�
 
 
 
+
 # To do list
 
 -   推特上发布学习总结 ✅
@@ -263,6 +277,7 @@ Note
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -301,6 +316,7 @@ Note
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -371,6 +387,7 @@ Austin 分享 学习自己写代码过程中尽量关掉AI
 
 
 
+
 # To do list
 
 -   Uniswap V2 实操
@@ -414,6 +431,7 @@ uint256 public immutable deadline = block.timestamp + 2 hours ;
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -506,6 +524,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 
 
+
 # To do list
 
 -   Uniswap v2 源码
@@ -519,6 +538,7 @@ P(i)=(1.0001)^i i:Tick 的索引
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -575,6 +595,7 @@ solidity改复习一下子了，明天抓紧复习，争取优化实习手册
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -789,6 +810,7 @@ ERC-7962的核心创新在于，它通过引入\*\*`密钥哈希 (keyHash)`\*\* 
 
 
 
+
 # To do list
 
 -   参加LXDAO周会 ✅
@@ -823,6 +845,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -933,6 +956,7 @@ LXDAO周会Random Talk环节Bruce老师答疑：
 
 
 
+
 # To do list
 
 -   推特持续关注行业名单 ✅
@@ -1006,6 +1030,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1160,6 +1185,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 
 
+
 # To do list
 
 -   学习alloy ✅
@@ -1217,6 +1243,7 @@ Web3知识量大，迭代快，多了嚼不烂，专注一个方向更容易成�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
