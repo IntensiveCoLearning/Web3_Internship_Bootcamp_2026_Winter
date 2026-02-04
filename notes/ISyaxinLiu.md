@@ -15,8 +15,563 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+加密货币的价格极度波动。为了缓解这种波动性，创建了与美元等其他稳定资产锚定的稳定币。稳定币帮助用户对冲这种价格波动，并提供可靠的交换媒介。稳定币已经迅速发展成为 DeFi 的一个重要组成部分，对这个模块化生态系统至关重要。
+
+目前有 49 种稳定币在 [CoinGecko](https://www.coingecko.com/en/categories/usd-stablecoin) 上列出。排名前五的稳定币的总市值超过 598 亿美元。
+
+## **排名前五的加密货币稳定币（2021 年 4 月 1 日）**
+
+排名 | 币种 | 市值（十亿美元）  
+1 | Tether (USDT) | 40.8  
+2 | USD Coin (USDC) | 10.8  
+3 | Binance USD (BUSD) | 3.5  
+4 | DAI (TUSD) | 3.0  
+5 | TerraUSD (USDT) | 1.6
+
+来源：[CoinGecko.com](http://CoinGecko.com)
+
+> **译者更新（2025年底）**: 稳定币市场已发生很大变化。截至2025年，稳定币总市值已超过2000亿美元。特别需要注意的是，TerraUSD (UST) 已于2022年5月崩盘，导致数百亿美元损失，成为加密货币历史上最大的稳定币失败案例之一。目前市场主要由USDT、USDC、USDe、DAI、PYUSD等稳定币主导。 **USDe（Ethena USD）**，由 Ethena 协议推出，和其他稳定币不同，它采用 delta-neutral（delta 中性）对冲策略，通过质押的以太坊（stETH）作为抵押品，并在衍生品市场开设相应的空头头寸来维持稳定性。这种机制使 USDe 能够在不依赖传统银行系统的情况下保持与美元的锚定，同时还能为持有者提供收益（通过质押收益和资金费率）。USDe 的市值在2024年快速增长，成为DeFi领域最重要的创新之一。值得注意的是，USDe 的机制与算法稳定币不同，它有实际的抵押品支持，但也引入了衍生品对冲策略的相关风险。
+
+在本章中，我们将研究与美元锚定的稳定币。并非所有稳定币都是相同的，因为它们采用不同的机制来保持与美元的锚定。稳定币有三种类型——法币抵押、加密货币抵押和算法稳定币。大多数稳定币使用法币抵押系统来维持其与美元的锚定。
+
+为了简单起见，我们将两种美元稳定币，Tether ([USDT](https://learnblockchain.cn/tags/tether)) 和 Dai ([DAI](https://learnblockchain.cn/tags/dai))，以展示它们在锚定管理方面的差异。我们不会在本书中介绍算法稳定币，这是一种较新的 DeFi 创新。如果你有兴趣了解更多关于算法稳定币的信息，你可以参考我们的 [How to DeFi 进阶篇](https://learnblockchain.cn/course/97) 书籍。
+
+Tether ([USDT](https://learnblockchain.cn/tags/tether)) 通过保持每个铸造的 Tether 代币 1 美元的储备金，将其价值与 1 美元锚定。虽然 Tether 是最大且最广泛使用的美元稳定币，2021 年 3 月的日均交易量约为 1130 亿美元，但 Tether 的储备金保存在监管很少的金融机构中，因此用户必须信任 Tether 作为一个实体，才能实际拥有他们声称的储备金额。因此，Tether 是一种**中心化的、法币抵押的稳定币**。
+
+> **备注（2025年更新）**: USDT的日均交易量已大幅增长，目前已超过千亿美元级别。Tether公司在2021-2024年间多次发布储备金审计报告，并受到美国监管机构的持续审查。尽管透明度有所提高，但关于其储备金组成的争议仍然存在。
+
+另一方面，DAI ([DAI](https://learnblockchain.cn/tags/dai)) 使用以太坊 ([ETH](https://learnblockchain.cn/tags/ethereum)) 等加密货币进行抵押。其价值通过去中心化自治组织和智能合约投票决定的协议与 1 美元锚定。在任何给定的时间，用户都可以轻松验证用于生成 DAI 的抵押品是否存在。因此，DAI 是一种**去中心化的、加密货币抵押的稳定币**。
+
+根据排名前五的稳定币的市值，Tether 在稳定币市场中占据主导地位，约占市场份额的 68%。虽然 DAI 的市场份额仅为 5% 左右，但其交易量的增长速度要快得多。在 2021 年第一季度，DAI 的交易量相对于 Tether 95% 的增长率增长了 158% 以上。
+
+DAI 是 DeFi 生态系统中使用最广泛的本地稳定币。它是 DeFi 交易、借贷等领域首选的美元稳定币之一。为了进一步了解 DAI，我们将向你介绍其平台 Maker。
+
+## **Maker**
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00016.jpeg)
+
+> **译者备注（2025年更新）**: MakerDAO 现在更名为 SKY
+
+### **什么是 Maker？**
+
+Maker 是一个运行在以太坊区块链上的智能合约平台，**拥有两种代币**：DAI（算法上都与 1 美元锚定）和它的治理代币——Maker ([MKR](https://learnblockchain.cn/tags/maker))。
+
+**Dai (**[DAI](https://learnblockchain.cn/tags/dai)**)** 于 2019 年 11 月推出，也被称为多抵押 DAI。目前，它由一篮子第三方资产支持，如以太币 (ETH)、基本注意力代币 (BAT)、USDC 和 Wrapped Bitcoin (wBTC)。基于社区提案，更多类型的抵押品会不断添加。
+
+**Maker (**[MKR](https://learnblockchain.cn/tags/maker)**)** 是 Maker 的治理代币，用户可以使用它通过 Maker 改进提案对 Maker 平台上的改进进行投票。Maker 是一种被称为去中心化自治组织 (DAO) 的组织。我们将在治理小节中进一步探讨这一点。
+
+### **SAI 和 DAI 之间有什么区别？**
+
+Maker 最初于 [2017 年 12 月 19 日](https://blog.makerdao.com/dai-is-now-live/) 以单抵押 DAI 启动。它使用以太币 ([ETH](https://learnblockchain.cn/tags/ethereum)) 作为唯一的抵押品进行铸造。在 [2019 年 11 月 18 日](https://blog.makerdao.com/multi-collateral-dai-is-live/)，Maker 宣布推出新的多抵押 DAI，可以使用以太币 ([ETH](https://learnblockchain.cn/tags/ethereum)) 和/或基本注意力代币 ([BAT](https://learnblockchain.cn/tags/basic-attention-token)) 作为抵押品进行铸造。
+
+在 2020 年 3 月，Maker 引入了其首个中心化抵押品 USDC，以帮助管理其流动性危机和黑色星期四崩盘期间的 DAI 价格不稳定。目前，用户可以在 [MakerDAO 论坛](https://forum.makerdao.com/c/collateral-onboarding/27) 提交提案，社区将在其中评估和决定是否加入新的抵押品类型。
+
+> **译者备注（2025年更新）**: MakerDAO 支持的抵押品类型大幅增加，包括更多的真实世界资产(RWA)作为抵押品。2022年MakerDAO进行了品牌重塑，推出了"Endgame Plan"来改进协议的去中心化和可持续性。DAI的抵押品组成也发生了显著变化，USDC等中心化稳定币在抵押品中的占比曾一度较高，引发了关于去中心化程度的争议。
+
+重申一下，
+
+| 单抵押 DAI | = | 旧版 DAI | = | SAI |
+| --- | --- | --- | --- | --- |
+| 多抵押 DAI | = | 新 DAI | = | DAI |
+
+SAI 已经逐步淘汰，多抵押 DAI 目前是 Maker 维护的事实上的稳定币标准。
+
+> **译者备注（2025年更新）**: DAI 逐渐被新的 USDS 替代，要铸造 USDC 在新的网站：[https://app.spark.fi/borrow](https://app.spark.fi/borrow)
+
+### **Maker 如何管理系统？**
+
+还记得我们简要提到的去中心化自治组织 (DAO) 吗？这就是 Maker (MKR) 代币的用武之地 - MKR 持有者拥有与他们在 DAO 中拥有的 MKR 代币数量成比例的投票权，并且可以对管理 Maker 协议的参数进行投票。
+
+MKR 持有者投票决定的参数对于保持生态系统的健康至关重要，这反过来有助于确保 DAI 保持与 1 美元锚定。我们将简要介绍你需要在 DAI 稳定币生态系统中了解的三个关键参数：
+
+I. 抵押比率
+
+可以铸造的 DAI 数量取决于抵押比率。
+
+例如：
+
+| Wrapped Bitcoin (wBTC) 抵押比率 | = | 150% |
+| --- | --- | --- |
+| 基本注意力代币 (BAT) 抵押比率 | = | 150% |
+
+因此，150% 的抵押比率意味着要铸造 100 美元，你需要至少存入价值 150 美元的 wBTC 或 BAT。
+
+II. 稳定费
+
+它相当于你需要与金库的本金债务一起支付的“利率”。每种金库类型的稳定费因 MKR 代币持有者的决定而异，他们管理协议。这些决定基于 Maker 内部风险团队的建议，他们对系统中使用的抵押品进行风险评估。例如，截至 2021 年 4 月，BAT 的当前[稳定费为 6.0%](https://oasis.app/borrow/markets)。\*\*\*\*
+
+III. DAI 储蓄利率 (DSR)
+
+DAI 储蓄利率 (DSR) 是通过长期持有 DAI 赚取的利息。它也可以作为一种货币工具来影响 DAI 的需求。[截至 2021 年 4 月，DSR 利率设定为 0.01%](https://daistats.com/)。
+
+### **发行 DAI 的动机：**
+
+为什么你要锁定更高价值的抵押品（如 ETH）才能发行价值较低的 DAI？你可以直接将你的资产出售为美元。
+
+有三种可能的情况：
+
+1.  你现在需要现金，并且你拥有你认为未来会更有价值的资产。
+    
+
+-   在这种情况下，你可以将你的资产保存在 Maker 金库中，并通过发行 DAI 立即获得资金。
+    
+
+2.  你现在需要现金，但不想冒险在出售你的资产时触发应税事件。
+    
+
+-   相反，你将通过发行 DAI 提取贷款。
+    
+
+3.  投资杠杆
+    
+
+-   鉴于你认为你的资产价值会上涨，你可以对你的资产进行投资杠杆。
+    
+
+### **我如何获得一些 Dai (DAI)？**
+
+你可以通过两种方式获得一些 Dai (DAI)：
+
+I. 铸造 DAI
+
+我们将通过当铺类比来讲解如何铸造 DAI。
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00017.jpeg)
+
+假设有一天你需要 10,000 美元的现金，但你拥有的只是价值 15,000 美元的金条。考虑到黄金的价格将来会上涨，你决定不去出售金条换取现金，而是去当铺借 10,000 美元的现金，并将你的金条作为抵押品。当铺同意以 8% 的利息借给你 10,000 美元现金。你们双方签署一份合同协议以完成交易。
+
+现在让我们更改术语以获得 DAI 的叙述：
+
+| 金条（抵押品） |   | 以太币（抵押品示例之一） |
+| --- | --- | --- |
+| 现金贷款 |   | Dai (DAI) |
+| 当铺 |   | Maker |
+| 合同协议 |   | 智能合约（金库） |
+| 贷款利息 |   | 稳定费 |
+
+发生的情况是，你将通过 Maker 平台通过将你的以太币 (ETH) 作为抵押品来铸造或“借入”DAI。当你想在贷款结束时赎回你的 ETH 时，你将必须偿还你的“贷款”以及“贷款利息”，即稳定费。
+
+为了提供一个概述，让我们来看看如何铸造你自己的 DAI。
+
+在 Maker 平台 ([www.oasis.app](http://www.oasis.app)) 上，你可以通过将你的 ETH 放入金库来借入 DAI。假设 ETH 当前价值 150 美元，因此你可以将 1 ETH 锁定在金库中，并以 150% 的抵押比率获得最多 100 DAI（100 美元）。目前有三种类型的 ETH 金库，具有不同的抵押比率，但为了简单起见，我们将假设抵押比率为 150%，即 ETH-A 金库。
+
+你不应该提取你被允许提取的最多 100 DAI，而应留下一些缓冲，以防 ETH 价格下跌。建议留出更大的差距，以确保你的抵押比率始终高于 150%。这确保了你的金库不会被清算，并且在 ETH 价格下跌并且你的抵押比率低于 150% 的情况下，不会被处以 13% 的清算罚款。
+
+II. 交易 DAI
+
+以上方式都是创建 DAI 的方法。一旦 DAI 创建完成，你可以将其发送到任何你想发送的地方。一些用户可能会将他们的 DAI 发送到加密货币交易所。你也可以从这些二级市场购买 DAI，而无需铸造它们。
+
+以这种方式购买 DAI 更容易，因为你不需要锁定抵押品，也不必担心抵押比率和稳定费。
+
+我们将保持本节简短 - 你可以查看 CoinGecko 上的 [交易 DAI 的交易所列表](https://learnblockchain.cn/tags/dai)。
+
+### **黑天鹅事件**
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00019.jpeg)
+
+黑天鹅事件是一种不可预测的极端事件，可能会导致严重的后果。如果 Maker 的抵押品价格大幅下跌，将触发紧急关闭。它是一种用作最后的手段的过程，通过关闭系统来结算 Maker 平台。该过程是为了确保 DAI 持有者和金库用户获得他们有权获得的资产净值。
+
+在 2020 年 3 月（也称为黑色星期四），几乎触发了紧急关闭，其中 ETH 的价格在 24 小时内下跌了 50%。Maker 通过其自动债务拍卖（尽管由于急剧下跌而延迟触发）缓解了影响，并迅速引入 USDC 作为支持该系统的新抵押品类型。
+
+> **备注（2025年更新）**: 自2020年黑色星期四事件后，MakerDAO对其清算机制和风险管理系统进行了重大改进，包括引入清算2.0系统和更多样化的抵押品类型。协议的抗风险能力已显著增强，并成功经历了2021-2023年间的多次市场波动。
+
+### **为什么要使用 Maker？**
+
+正如前面在第二章：稳定币中所提到的，有很多稳定币，这些稳定币的核心区别在于它们的协议。与大多数稳定币平台不同，Maker 完全在分布式账本上运行。因此，Maker 天生就具有区块链的特征：安全、不可变，最重要的是，透明。此外，Maker 的基础设施通过实时信息加强了系统的安全性，并具有全面的风险协议和机制。
+
+这就是 Maker 的稳定币 DAI 的全部内容。如果你渴望开始或测试它，我们已经包含了关于如何 (i) 为自己铸造一些 DAI 和 (ii) 节省 DAI 以赚取利息的逐步指南。否则，请转到下一节阅读更多关于下一个 DeFi 应用的信息！
+
+### **Maker：分步指南**
+
+**铸造你自己的 DAI**
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00020.jpeg)
+
+步骤 1
+
+-   转到 [https://oasis.app/](https://oasis.app/)
+    
+-   点击借款
+    
+-   你将被要求连接你的钱包。连接你的钱包是免费的，你所需要做的就是签署一项交易
+    
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00021.jpeg)
+
+步骤 2
+
+-   在借款页面 ([https://oasis.app/borrow/](https://oasis.app/borrow/)) 上点击“开始借款”
+    
+-   选择你想锁定（抵押）的加密资产
+    
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00022.jpeg)
+
+步骤 3
+
+-   在此示例中，我们选择锁定 ETH
+    
+-   插入你希望锁定的任何金额。注意：最小借款金额为 20 DAI
+    
+-   点击继续并按照提供的说明进行操作
+    
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00023.jpeg)
+
+步骤 4
+
+-   恭喜！你的 ETH 金库现已创建！
+    
+
+除了铸造 DAI，你还可以在 Maker 的平台上进行储蓄，以赚取你资产的利息。我们准备了一个关于如何节省你的 DAI 的逐步指南，如下所示：
+
+**节省你的 DAI**
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00024.jpeg)
+
+步骤 1
+
+-   导航到左侧边栏上的“储蓄”页面 ([https://oasis.app/save](https://oasis.app/save))
+    
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00025.jpeg)
+
+步骤 2
+
+-   点击“存款”
+    
+-   输入你希望储蓄的 DAI 金额
+    
+-   点击“继续”
+    
+-   在钱包中确认
+    
+
+![Image](https://img.learnblockchain.cn/how_to_defi/beginner/media/00026.jpeg)
+
+步骤 3
+
+-   完成！
+    
+-   注意：你只有一个 DSR 账户。如果你在第一次存款后存入更多 DAI，它将被添加到其中。
+    
+-   请注意，在撰写本文时（2021 年 4 月），DSR 的年利率为 0%。
+    
+
+### **推荐阅读**
+
+1.  [Maker 协议 101](https://docs.makerdao.com/maker-protocol-101) (Maker)
+    
+2.  [Maker for Dummies：对 Dai 稳定币的简单英语解释](https://medium.com/cryptolinks/maker-for-dummies-a-plain-english-explanation-of-the-dai-stablecoin-e4481d79b90) (Gregory DiPrisco)
+    
+3.  [什么是 MakerDAO，它发生了什么？用图片解释。](https://hackernoon.com/whats-makerdao-and-what-s-going-on-with-it-explained-with-pictures-f7ebf774e9c2) (Kerman Kohli)
+    
+4.  [如何获得 DAI 储蓄账户](https://bankless.substack.com/p/how-to-get-a-dai-saving-account) (Ryan Sean Adams)
+    
+5.  [Maker 的黑天鹅事件](https://tokentuesdays.substack.com/p/makers-black-swan)
+    
+
+* * *
+
+## **Ethena 与 USDe**
+
+![Ethena Logo](https://img.learnblockchain.cn/how_to_defi/beginner/media/ethena-logo.png)
+
+> **备注（2025年新增）**: Ethena 是 2023-2024 年间最具创新性的稳定币项目之一，代表了稳定币设计的新范式。USDe 在 2024 年迅速成为市值排名前五的稳定币，展示了其机制的有效性和市场需求。
+
+### **什么是 Ethena 和 USDe？**
+
+Ethena 是一个建立在以太坊上的**合成美元协议**，于 2023 年推出。它的核心产品是 **USDe (Ethena USD)**，一种通过 **Delta 中性对冲策略**维持与美元挂钩的稳定币。
+
+与传统稳定币不同：
+
+-   **USDT/USDC**：依赖法币储备和银行系统（中心化）
+    
+-   **DAI**：依赖加密货币超额抵押（去中心化但资本效率低）
+    
+-   **USDe**：依赖质押资产 + 衍生品对冲（去中心化且资本效率高）
+    
+
+USDe 是一种**加密原生稳定币**，完全不依赖传统银行系统，所有抵押品和对冲头寸都在链上可验证。
+
+### **USDe 如何工作？**
+
+**核心机制：Delta 中性策略**
+
+USDe 的稳定机制基于一个优雅的设计：**同时持有加密资产的多头和空头，使净敞口为零**。
+
+**步骤 1：质押 ETH 作为抵押品**
+
+-   用户存入 ETH（或 stETH）到 Ethena 协议
+    
+-   协议将 ETH 质押到以太坊网络，获得 stETH
+    
+-   stETH 产生质押收益（约 3-4% 年化）
+    
+
+**步骤 2：开设衍生品空头对冲**
+
+-   Ethena 在中心化交易所（如 Binance、Bybit、OKX）开设等值的 ETH 永续合约空头
+    
+-   空头规模与 stETH 价值相等，实现 delta 中性
+    
+-   如果 ETH 价格下跌，空头盈利抵消 stETH 贬值
+    
+-   如果 ETH 价格上涨，stETH 升值抵消空头亏损
+    
+
+**步骤 3：铸造 USDe**
+
+-   基于抵押品价值铸造 USDe 稳定币
+    
+-   用户获得 1:1 的 USDe（1 美元抵押品 = 1 USDe）
+    
+-   USDe 可以自由转账、交易或在 DeFi 中使用
+    
+
+**举例说明**
+
+```
+假设 ETH 价格 = $2,000
+
+用户操作：
+1. 存入 10 ETH 到 Ethena
+2. 协议将 10 ETH 质押，获得 10 stETH（价值 $20,000）
+3. 协议在 CEX 开设 $20,000 的 ETH 永续合约空头
+4. 用户获得 20,000 USDe
+
+情况 A：ETH 涨到 $2,200（+10%）
+- stETH 价值：$22,000（+$2,000）
+- 空头损失：-$2,000
+- 净值：$20,000（保持稳定）
+
+情况 B：ETH 跌到 $1,800（-10%）
+- stETH 价值：$18,000（-$2,000）
+- 空头盈利：+$2,000
+- 净值：$20,000（保持稳定）
+```
+
+### **USDe 的收益来源**
+
+USDe 持有者可以获得两种收益：
+
+**1\. 质押收益（Staking Yield）**
+
+-   来自 stETH 的以太坊质押奖励
+    
+-   年化约 3-4%
+    
+
+**2\. 资金费率（Funding Rate）**
+
+-   永续合约的资金费率收入
+    
+-   当市场看涨（多头 > 空头）时，空头收取资金费
+    
+-   历史平均约 5-10%，在牛市中可能更高
+    
+-   在熊市中可能为负（需要支付资金费）
+    
+
+**总收益 = 质押收益 + 资金费率**
+
+在 2024 年的牛市期间，USDe 的年化收益一度超过 25%，远高于传统稳定币。
+
+### **sUSDe：质押 USDe 赚取收益**
+
+**什么是 sUSDe？**
+
+sUSDe (Staked USDe) 是 USDe 的质押版本，类似于 stETH 之于 ETH。
+
+**如何工作：**
+
+-   用户将 USDe 质押到 Ethena 协议
+    
+-   获得 sUSDe 作为质押凭证
+    
+-   sUSDe 自动累积协议收益（质押奖励 + 资金费率）
+    
+-   可以随时解除质押换回 USDe
+    
+
+**sUSDe 的价值：**
+
+-   sUSDe 的价值随时间增长
+    
+-   1 sUSDe 的价值 = 1 USDe + 累积收益
+    
+-   价值通过 rebase 机制或汇率机制体现
+    
+
+**示例：**
+
+```
+2024 年 1 月 1 日：
+- 你用 10,000 USDe 兑换 10,000 sUSDe
+- 汇率：1 sUSDe = 1 USDe
+
+2024 年 12 月 31 日（假设年化收益 20%）：
+- 你仍持有 10,000 sUSDe
+- 汇率：1 sUSDe = 1.20 USDe
+- 你可以赎回 12,000 USDe（收益 2,000 USDe）
+```
+
+### **USDe 支持的抵押品**
+
+Ethena 支持多种质押资产作为抵押品：
+
+**主要抵押品：**
+
+-   **stETH (Lido)**：最主要的抵押品，占比最高
+    
+-   **cbETH (Coinbase)**：Coinbase 的流动性质押 ETH
+    
+-   **rETH (Rocket Pool)**：另一种流动性质押选项
+    
+-   **wBETH (Binance)**：Binance 的质押 ETH
+    
+
+**未来计划：**
+
+-   支持更多 PoS 资产（如 staked SOL、staked MATIC）
+    
+-   扩展到比特币抵押品（通过包装 BTC）
+    
+
+### **USDe 的风险**
+
+**资金费率风险**：资金费率可能转为负值
+
+-   在熊市中，多头 < 空头时，需要支付资金费
+    
+-   可能导致收益降低甚至为负
+    
+-   协议有保险基金来缓解短期负费率
+    
+
+**CEX 依赖风险**：依赖中心化交易所
+
+-   对冲头寸在 CEX 上（Binance、OKX 等）
+    
+-   如果 CEX 出现问题（如 FTX 崩盘），可能影响对冲
+    
+-   Ethena 分散在多个 CEX 以降低风险
+    
+
+**清算风险**：永续合约可能被清算
+
+-   极端行情下，空头头寸可能被清算
+    
+-   协议需要维持足够保证金
+    
+-   Ethena 有严格的风险管理和自动补仓机制
+    
+
+**脱锚风险**：市场恐慌时可能脱锚
+
+-   如果大量用户同时赎回，可能导致短期脱锚
+    
+-   DEX 流动性不足时，USDe 可能折价交易
+    
+-   通过套利机制和协议激励可以恢复锚定
+    
+
+**智能合约风险**：代码漏洞可能导致资金损失
+
+-   尽管经过多次审计，但新协议仍有风险
+    
+-   建议只投入能承受损失的资金
+    
+
+**监管风险**：可能面临监管审查
+
+-   使用 CEX 进行对冲可能引起监管关注
+    
+-   不同司法管辖区的法律不确定性
+    
+
+### **USDe 的市场表现**
+
+**市值增长（截至 2024-2025 年）：**
+
+-   2024 年初：数亿美元
+    
+-   2024 年中：超过 20 亿美元
+    
+-   2024 年底：超过 40 亿美元
+    
+-   成为市值前 5 的稳定币之一
+    
+
+**采用：**
+
+-   超过 50 个 DeFi 协议集成 USDe
+    
+-   Curve、Aave、Morpho、Pendle 等主流协议支持
+    
+-   成为 DeFi 中重要的稳定币选择
+    
+-   数十万用户使用 USDe
+    
+-   高收益吸引了大量 DeFi 用户
+    
+
+### **推荐阅读**
+
+1.  [Ethena 官方文档](https://ethena-labs.gitbook.io/) (Ethena Labs)
+    
+2.  [USDe 机制详解](https://ethena.fi/blog/understanding-usde) (Ethena Blog)
+    
+3.  [Delta 中性策略解释](https://www.investopedia.com/terms/d/deltaneutral.asp) (Investopedia)
+    
+4.  [稳定币的演变：从 USDT 到 USDe](https://bankless.substack.com/p/the-evolution-of-stablecoins) (Bankless)
+    
+5.  [Ethena 风险分析报告](https://www.theblock.co/post/ethena-risk-analysis) (The Block)
+    
+6.  [sUSDe 收益机制](https://ethena.fi/blog/introducing-susde) (Ethena Blog)
+    
+
+## **总结**
+
+在本章中，我们探讨了三种不同类型的稳定币：
+
+**Tether (USDT)** 💵
+
+-   中心化、法币抵押
+    
+-   最大市值，广泛使用
+    
+-   依赖传统银行系统
+    
+
+**Maker/DAI** 🏦
+
+-   去中心化、加密货币抵押
+    
+-   DeFi 原生，透明可验证
+    
+-   需要超额抵押，资本效率较低
+    
+
+**Ethena/USDe** 🚀
+
+-   去中心化、Delta 中性对冲
+    
+-   高收益，资本效率高
+    
+-   创新机制，但也有新的风险
+    
+
+这三种稳定币代表了稳定币设计的演进：从完全中心化到混合模式再到创新的去中心化方案。每种都有其优势和权衡，选择哪种稳定币取决于你的需求、风险承受能力和对去中心化的重视程度。
+
+随着 DeFi 的发展，我们可以期待看到更多创新的稳定币设计。但无论如何，**DYOR（Do Your Own Research）** 和**风险管理**永远是第一位的！
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 权益证明（PoS）
 
 权益证明 Pos（ Proof of Stake 的缩写） 是一种共识机制，共识机制是一整套由协议、激励和想法构成的体系，使得整个网络的节点能够就区块链状态达成一致。
@@ -119,6 +674,7 @@ DApp 在大规模采用上，也面临一些问题，dApps 的用户体验通常
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 分享百科
 
 # **PoW**
@@ -189,6 +745,7 @@ POW工作量证明的主要流程为：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -270,6 +827,7 @@ DEX 主要采用以下几种交易模型：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -870,6 +1428,7 @@ function setState(State newState) internal {
 
 
 
+
 ### [**1\. Gas 优化**](https://web3intern.xyz/zh/smart-contract-development/#_1-gas-%E4%BC%98%E5%8C%96)
 
 **基本原理与计量单位**
@@ -1209,6 +1768,7 @@ function setState(State newState) internal {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2018,6 +2578,7 @@ ERC20 Permit 通过引入链下签名机制，为代币授权带来了革命性�
 
 
 
+
 ## **什么是 ERC20?**
 
 [ERC20](https://learnblockchain.cn/docs/eips/EIPS/eip-20) 是 Ethereum 网络上最出名且应用最广的代币标准之一。它提供了一个统一的接口标准，用于创建可互换代币，这些代币可以用来代表任何事物，从货币到积分等。
@@ -2688,6 +3249,7 @@ ERC-1363 标准可以在任何应用 ERC-20 标准的地方使用。在作者看
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -3822,6 +4384,7 @@ contract Handler is Test {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -5763,11 +6326,13 @@ contract CompleteExample {
 
 
 
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -6694,6 +7259,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -7703,6 +8269,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -8737,6 +9304,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -8940,6 +9508,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -9680,6 +10249,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
