@@ -15,13 +15,59 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+# **行业前辈访谈录**
+
+1.  **大学阶段 → 初识 Web3**
+    
+    -   契机：参加深圳“账户抽象”黑客松，第一次写链上前台 Demo，感受到 Web3 项目的高速迭代。
+        
+    -   加入 LXDAO，初期做运营助手（统计贡献、发激励）、活动统筹（办黑客松）、社区答疑等。 → 收获：**目标拆解 + 把业务需求翻译给开发**的能力（他认为运营其实占了工程的 70%）。
+        
+2.  **从运营/PM 转向回归开发**
+    
+    -   OP 项目结束后，通过黑客松认识的人脉，拿到 Bybit 前端 offer。
+        
+    -   面试主要看 GitHub 和聊项目经历。
+        
+    -   入职后负责：资产页 → Trade GPT SDK → 交易机器人风控提醒 → Copy Trade 跟单仪表盘等。
+        
+3.  **Bybit 阶段（当前）**
+    
+    -   强调 Web3 前端真正拉开差距的两个点：
+        
+        -   **业务洞察**（尤其是“钱”和“风险”的逻辑）
+            
+        -   **质量体系**（监控、测试、灰度、快速回滚）
+            
+    -   老前端的标准：能给出多套落地方案、写清晰技术文档、提前想好风险。
+        
+    -   对 AI 的看法：能解放 30% 机械劳动（CSS、类型定义、时序图、报错诊断），但业务拆解、依赖管理、文档写作仍需人。
+        
+
+**给 Web3 前端初学者的核心建议**：
+
+-   先学：钱包签名、EVM 基础交互
+    
+-   做小项目：Mint NFT、自己搭个 DEX 可视化、Testnet 上 Swap/借贷实操
+    
+-   进阶路径（强烈推荐的顺序）：**小项目 → 加入社区/DAO → 参与 Hackathon → 贡献开源 PR**
+    
+-   低成本切入点：LXDAO「残酷共学」、休闲型黑客松、高校社团 Mini-Hack、GitHub good-first-issue
+    
+-   Web3 前端和 Web2 代码其实差不多，真正不同的地方是**钱包连接、Gas/Nonce/滑点/签名验证/链上状态**这些业务逻辑，多在测试网动手最有效。
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-02-03-1770097267957-image.png)
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-02-02-1770011921802-image.png)
 <!-- DAILY_CHECKIN_2026-02-02_END -->
@@ -30,11 +76,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-31-1769863208245-image.png)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -83,6 +131,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -152,6 +201,7 @@ timezone: UTC+8
 
 
 
+
 ## **Getting Started**
 
 📌 **Foundry 是什么？**  
@@ -185,6 +235,7 @@ timezone: UTC+8
 
 
 
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -199,6 +250,7 @@ timezone: UTC+8
 
 
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -206,6 +258,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -230,6 +283,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -237,6 +291,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -269,6 +324,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -280,6 +336,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -335,6 +392,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -450,6 +508,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -490,6 +549,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -548,6 +608,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 
 
+
 # 七、执行与共识客户端的协同配合
 
 1\. 一个节点 = 执行客户端 + 共识客户端 + Engine API
@@ -577,6 +638,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -703,6 +765,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -746,6 +809,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -893,6 +957,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
