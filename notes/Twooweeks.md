@@ -15,8 +15,158 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+\# 索引的最左匹配原则
+
+内容：
+
+\## 最左匹配原则
+
+1.可以查询从左到右查询（last\_name、first\_name、date）
+
+2.可以查询last\_name为Allen的人
+
+3.可以查询last\_name为A开头的人，但是不能查询last\_name为a结尾的人（左匹配）
+
+4.可以同时查询last\_name为A开头的人和last\_name为Allen的人
+
+5.可以同时查询last\_name为Allen的人，first\_name为Herry的人
+
+字段不会命中索引的场景
+
+1.不能跳过第二个字段，同时查询第一和第三字段
+
+2.范围查询的字段后面的命令不会走索引
+
+3.没有遵循最左匹配原则
+
+\## 关键字段说明：
+
+\- \`key：使用的索引名称，如果为NULL则表示未使用索引
+
+\- \`type:访问类型
+
+\- `ref或`range:使用索引进行高效查找
+
+\- `index`:全索引扫描（比全表扫描好，但不如ref/range) 数据已经是在改索引里面了
+
+\- `ALL`:全表扫描（最差）·
+
+\- `rows`:扫描的行数，越少越好
+
+\- `Extra`:额外信息
+
+`Using index`:覆盖索引(Covering Index),所有需要的数据都在索引中，无需回`Using where`:使用WHERE条件过滤
+
+\# 索引优化策略
+
+前缀索引
+
+目标：
+
+1.理解前缀索引优化方案
+
+2.理解索引最佳选择
+
+内容
+
+Q1：前缀索引的好处
+
+you can always save space and get good performance by indexing the first few characters instead of whole
+
+Q2：less selective
+
+more ambiguous
+
+Q3：index selectivity
+
+索引选择性是用来衡量索引区分度的指标，计算公式是「表中唯一索引值的数量 ÷ 总数据行数」，值越接近 1 越好，越接近 0 越差。
+
+\- 1000 个人的姓名都不重复（搜「比尔」），唯一索引值有 1000 个，总行数 1000，索引选择性 = 1000/1000=1，区分度拉满，索引效果极好。
+
+\- 1000 个人男女比例 1:1（搜「男生」），唯一索引值只有 2 个（男、女），总行数 1000，索引选择性 = 2/1000=0.002，区分度极低，索引效果很差，甚至可能不被使用。
+
+\- 前缀索引多少个字母是试出来的，知道能接近全字符索引的选择度
+
+\# 聚集索引
+
+聚簇索引（Clustered Index）不是「额外创建的索引文件」，而是\*\*将表的「数据行」和「索引结构」合二为一的索引\*\*—— 简单说：\*\*聚簇索引的叶子节点，就是表的数据本身\*\*，索引和数据存在同一个物理文件里，且数据会按照聚簇索引的顺序进行物理排序存储。
+
+\- 回表就是原先是id对应数据（聚簇索引），现在你用lastname去检索，它则会先找对应的id再找数据，形成一个回表的过程
+
+\- 叶子节点存储主键key值、事务Id和会滚指针和对应的行信息
+
+\## 注意
+
+\- **一张 InnoDB 表只能有一个聚簇索引**（数据只能有一套物理存储顺序，就像字典只能有一种物理装订顺序）。
+
+\- **默认是主键（PRIMARY KEY）**：如果你给表创建了主键（比如 `id int PRIMARY KEY`），InnoDB 会自动把主键作为聚簇索引，数据按主键值从小到大物理排序存储。
+
+\- **没有主键时，InnoDB 会自动选一个「唯一非空索引」作为聚簇索引**；如果连唯一非空索引都没有，InnoDB 会在后台创建一个隐藏的自增数字列作为聚簇索引（你看不到，但它存在）。但是，如果多张表都用了隐藏的主键，那么这个主键会变成一个共享的资源，会导致共享资源的锁竞争。
+
+\- 从业务逻辑看，同一个用户的数据就应该放在一起，但数据库的默认不这么干，除非你显示的通过聚簇索引告诉它要按哪个字段聚集。
+
+\## 局限性
+
+\- 如果数据查询不需要太多io，所有数据完全可以加载到内存中，那么可以直接在内存中进行数据排序，这样聚簇索引的优势就不大了
+
+\- 更新聚簇索引字段很昂贵，因为它会强制要求InnoDB将每个更新的row移动到新的位置
+
+\- 当讲数据移动到一个已经满了的page时，这个page会被拆分成两个page，这时候，会占用比原有一张表更大的空间
+
+\- **主键应该是单调递增的**
+
+\# 覆盖索引
+
+b+tree only
+
+\- 读目录就能找到相关的信息，比如数据格式为张山-上海-25岁，平时你想找张山多少岁就得先搜索张山，然后返回主键，根据主键再去找年龄信息，现在你用“张山”去查索引的时候就能直接查到\[“张山”，“上海”，“25岁”\]
+
+\## 优点
+
+1.速度快
+
+2.减少锁竞争（没有覆盖索引时，你得锁索引页和数据页供你查询，有覆盖索引就只用锁索引页）
+
+\# 事务与并发控制
+
+事务是原子性的操作，要全部操作成功才算成功，不然就回滚
+
+将id = 10233276 用户的checking account中的200元转到saveings account
+
+实例：
+
+\`\`\`
+
+START TRANSATION
+
+SELECT balance FORM checking WHERE customer\_id = 10233276
+
+UPDATE checking SET balance = balance - 200.00 WHERE customer\_id = 10233276
+
+UPDATE savings SET balance = balance +200.00 WHERE customer\_id = 10233276
+
+COMMIT;
+
+\`\`\`
+
+如果事务因为各种原因在执行过程中，突然中断，会发生什么问题，该怎么做？
+
+通过acid测试（Atomicity原子性、Consistency一致性、Isolation隔离性、Duration持久性）
+
+atomicity：it's all or nothing
+
+consistency：要是事务没有提交，就不会改变数据库。数据库的状态永远是一致的。
+
+isolation：一个事务对另一个事务通常来说是不可见的，直到事务执行完后，其他事务才能看到其改变后的数据库状态
+
+duration：一旦提交的事务就会持久化
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 # 增删改查
 
 索引
@@ -167,6 +317,7 @@ b:时间复杂度：全局扫描（n），B+tree（logMn） n是数据集大小�
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 今天学了会mysql 趁年轻多去做多去争取吧
 
 # 表创建
@@ -203,6 +354,7 @@ Match one part exactly and match a range on another part select \* from People w
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 # timer
@@ -441,6 +593,7 @@ go test -cover ./experiments -run TestTicker
 
 
 
+
 lesson 21 互斥锁
 
 目标：
@@ -503,6 +656,7 @@ lesson 23 context
 
 
 
+
 今日休息一天，接下来几天进行冲刺，看看自己能上到第几名
 
 ![ama.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-30-1769773996757-ama.png)
@@ -510,6 +664,7 @@ lesson 23 context
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -645,6 +800,7 @@ for { select { case message1 <-ch1: ... case message2 <-ch2: ... } }
 
 
 
+
 lesson 8 array
 
 目标：
@@ -752,6 +908,7 @@ lesson 12 pointer
 
 
 
+
 # 状态树
 
 \- 状态树包含所有账户的状态，交易树和收据树是由当前这个区块的交易组织起来的
@@ -783,6 +940,7 @@ lesson 12 pointer
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -946,6 +1104,7 @@ switch {
 
 
 
+
 总结一下这周干的事吧，也是很迷茫，选择了go，希望能尽快入行，不停成长
 
 -   EVM 与 opcode 入手，理解审计为何要追踪字节码执行路径、gas 炸弹与 out-of-gas 回滚机制，
@@ -963,6 +1122,7 @@ switch {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -998,6 +1158,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1048,6 +1209,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 
 
+
 今天休闲玩了三关
 
 ![第二关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097172267-___.png)![第三关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097181069-___.png)![第一关.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Twooweeks/images/2026-01-22-1769097187332-___.png)
@@ -1055,6 +1217,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1104,6 +1267,7 @@ Solidity的规则是:如果一个函数来自父接口/父合约，那你要实�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1220,6 +1384,7 @@ DEX学习
 
 
 
+
 今天是重拾solidity的第一天实在是太笨了自己，还是需要多多练习，才一个月很多东西都忘了差不多了，需要在这个实习计划中好好的学，把solidity捡起来，完成好入门技术的任务，试着去完成深度技术的任务。
 
 今日笔记：
@@ -1243,6 +1408,7 @@ DEX学习
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1298,6 +1464,7 @@ DEX学习
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1447,6 +1614,7 @@ The Scourge 想做的是：
 
 
 
+
 第四章学习
 
 -   evm不能随便调用外部的数据，可以调用通过oracle上链的数据，防止破坏共识。
@@ -1475,6 +1643,7 @@ The Scourge 想做的是：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1603,6 +1772,7 @@ payable(owner).transfer(address(this).balance);
 
 
 
+
 课堂分享：1，求职，一定要清楚项目方在国内是否有业务，可以看是否能用大陆的资料进行注册，不要只是ip的封禁；还要看是否有合法的拍照；合约、期权之类的开发不要碰。
 
 搞懂eoa和合约账户的互动形式：
@@ -1627,6 +1797,7 @@ payable(owner).transfer(address(this).balance);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1691,6 +1862,7 @@ DApp的“D”（Decentralized，去中心化）指的是其核心逻辑和状�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
