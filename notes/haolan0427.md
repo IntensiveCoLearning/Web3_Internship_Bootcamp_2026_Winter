@@ -15,8 +15,52 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+-   gorm笔记 gorm博客 1h
+    
+    -   让 AI 整理大纲，自己跟着源码再做一遍 ✅
+        
+    -   快速了解博客架构❌（忍不住从头开始看），补充知识点
+        
+-   [project.md](http://project.md) 1.5h
+    
+    -   按部就班 ✅
+        
+
+新建 `./task-management-system/internal/worker/pool.go` 实现工作池模式，用于处理后台异步任务
+
+新建 `./task-management-system/internal/repository/user.go` 完整实现了用户表的 CRUD 等操作
+
+新建 `./task-management-system/internal/repository/task.go` 完整实现了任务表的 CRUD 操作
+
+新建 `./task-management-system/internal/service/user.go` 实现用户注册和登录的业务逻辑
+
+新建 `./task-management-system/internal/service/task.go` 协调数据库和缓存，实现任务编排逻辑
+
+上传到 github 上，提交信息为 `"实现工作池模式、用户和任务表等增删改查、用户注册和登录哦逻辑、任务分配"`。
+
+-   algorithm 1个知识点 ✅
+    
+    -   速度要快，因为博客❌比较难做
+        
+-   vibe coding 1h ✅
+    
+-   web3 2h
+    
+    -   Solidity-by- examples
+        
+    -   快速刷任务
+        
+-   openclaw ✅
+    
+
+连接上 Discord，能使用Google Chrome
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 在 openclaw 中启用 Brave Search，去[官网](https://brave.com/search/api/)注册账号并申请 API key，输入 `openclaw configure —-section web` ，⇒ Where will the Gateway run? ⇒ Local (this machine) ⇒ Enable web\_search (Brave Search) ⇒ yes ⇒ Brave Search API key (paste it here; leave blank to use BRAVE\_API\_KEY) ⇒ “粘贴你的 api” ⇒ Enable web\_fetch (keyless HTTP fetch) ⇒ yes
 
 -   [project.md](http://project.md)
@@ -31,6 +75,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 GoLang
 
@@ -66,6 +111,7 @@ Solidity by Example
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 GoLang
@@ -132,6 +178,7 @@ Vibe Coding ，1h ✅
 
 
 
+
 GoLang
 
 -   [整理笔记](https://www.notion.so/Go-2eb730847f49808e9581ce95f0432eb6?pvs=21)，1h ✅
@@ -159,6 +206,7 @@ Gorm
 
 
 
+
 ### Gorm
 
 ### Solidity by example
@@ -171,6 +219,7 @@ Gorm
 
 
 
+
 ### Solidity by Example
 
 ### Gorm
@@ -178,6 +227,7 @@ Gorm
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -202,6 +252,7 @@ Gorm
 
 
 
+
 ### 学习并总结当前我能接触到的智能合约安全漏洞
 
 [笔记链接](https://joyous-stamp-b17.notion.site/2f2730847f4980fbae5bdaa84faea19f)
@@ -213,6 +264,7 @@ Gorm
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -253,11 +305,13 @@ Gorm
 
 
 
+
 ### Web2 to Web3 Week2 Day2 Reading and Writing
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -296,6 +350,7 @@ Gorm
 
 
 
+
 ### 继续补web2-to-web3第一周的课，已经补上，笔记如下链接：
 
 [week1主要是教如何在Ethereum上交互的](https://joyous-stamp-b17.notion.site/web2-to-web3-2ed730847f4980d98b3fc8c8f671f54a?pvs=74)
@@ -311,6 +366,7 @@ Gorm
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -363,6 +419,7 @@ Gorm
 
 
 
+
 # 总结过去的一周
 
 在web3实习计划的第一周已经结束了，遇到了很多实力强劲、深耕多年和见解不凡的老师，也有很多勤勉、有趣、积极和热心的同好。这一周学习了很多知识，也改变了许多之前的见解，同时对加密行业的认识更进一步。从基本的工具使用，如社群类的X、tg，会议类的Zoom，笔记类的Notion和Figma，日程规划类的Calendar，以及钱包插件MetaMask等；到对以太坊系统的详尽认识，[《从021学习以太坊》](https://github.com/XiaoHai67890/021Ethereum)这本书是在是太适合投喂小白了，娓娓道来，让人百读不倦；再到对个人在加密行业中的规划，有了更加清晰的认识，未来几年里最主要的任务是在基于GoLang的backend engineer职务上深耕。感谢这次活动，刚过1/4就让我收获匪浅，增长了见识，有vibe coding非常厉害的实例，有刚运营个媒体账户就很成果的大佬，也有来自各行各业，五湖四海的人，我个人非常有幸与参加这次活动。既然明确了未来的发展路线，那还有什么可以好说的呢？哦不～，最后送一句话给大家
@@ -376,6 +433,7 @@ Gorm
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -420,6 +478,7 @@ Gorm
 
 
 
+
 《021学习以太坊》第5章，了解EVM以及ta在以太坊生态中的意义，也深刻理解了为什么以太坊虚拟机能被称为真正意义上的世界计算机了，也学习了一笔交易的Gas是如何组成的，以及在编写智能合约时，如何让Gas是合理的。
 
 《021学习以太坊》第6章，这章主要讲述了以太坊是如何以及为什么从最初的PoW共识转移到PoS共识机制、以太坊目前PoS共识机制的核心组成和机理、以太坊系统的历史以及一些重要的升级。
@@ -427,6 +486,7 @@ Gorm
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -455,6 +515,7 @@ Gorm
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -509,6 +570,7 @@ Gorm
 
 
 
+
 2026-1-13：
 
 目标：确定在本次学习中，具体专研学习的方向。
@@ -524,6 +586,7 @@ Gorm
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
