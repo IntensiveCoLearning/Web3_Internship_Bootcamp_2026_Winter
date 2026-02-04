@@ -15,8 +15,448 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+\# Challenge 1: Crowdfunding
+
+\## 辅助提示词
+
+\> 我正在做 SpeedrunEthereum 的 Challenge 1 ()。请不要直接给我代码。 我想先理清这个众筹合约的\*\*状态机逻辑\*\*。然后我对于开发很不熟悉，手把手教我每一步目标是什么，怎么去完成
+
+\## 收获知识
+
+\## 前端需要显示"所有贡献者的列表"，2种方式：
+
+\### 方式 1：使用事件 + 前端监听（推荐）⭐
+
+你已经有了：
+
+\`\`\`solidity
+
+event Contribution(address indexed contributor, uint256 amount);
+
+emit Contribution(msg.sender, msg.value);
+
+\`\`\`
+
+\*\*前端可以\*\*：
+
+\- 监听所有Contribution事件
+
+\- 从事件日志中提取所有贡献者信息
+
+\- 在前端构建列表
+
+\*\*优点\*\*：不增加合约复杂度和 gas 消耗 \*\*缺点\*\*：依赖前端处理
+
+\### 方式 2：在合约中维护贡献者数组
+
+添加一个数组来跟踪所有贡献者：
+
+solidity
+
+address\[\] public contributors; // 存储所有贡献者地址
+
+然后在 contribute()中：
+
+solidity
+
+\`\`\`solidity
+
+// 如果是首次贡献，加入数组
+
+if (contributions\[msg.sender\] == 0) {
+
+contributors.push(msg.sender);
+
+}
+
+contributions\[msg.sender\] += msg.value;
+
+\`\`\`
+
+\*\*优点\*\*：合约端就能提供完整列表 \*\*缺点\*\*：消耗更多 gas
+
+\## `{value: ...}` 语法：发送 ETH 的方式
+
+\### 基本语法
+
+\`\`\`solidity
+
+接收方.函数名{value: 金额, gas: gas限制}(函数参数)
+
+\`\`\`
+
+\### 📝 实际例子
+
+\`\`\`solidity
+
+fundingRecipient.complete{value: address(this).balance}();
+
+\`\`\`
+
+\*\*解读\*\*：
+
+fundingRecipient- 接收方合约
+
+.complete- 要调用的函数
+
+{value: address(this).balance}
+
+\- () - 函数参数（这里是空的）
+
+\### 🔍 为什么需要 
+
+\`\`\`
+
+{value: ...}
+
+\`\`\`
+
+在 Solidity 中，如果你要调用另一个合约的payable函数
+
+\## 异常处理
+
+\### 为什么是require不是if else
+
+这是一个非常深刻的问题，触及了\*\*区块链与传统编程最大的逻辑区别\*\*。
+
+在传统编程（如 C++、Java、Python）中`if-else` 是用来控制流程的。
+
+但在 Solidity 中`require` 不仅仅是控制流程，它是一个\*\*“带有时间倒流功能的断路器”\*\*。
+
+主要有三个核心原因：\*\*状态回滚（Atomicity）\*\*、\*\*Gas 退款\*\*、\*\*代码防御性\*\*。
+
+\---
+
+\#### 核心原因：原子性与“时间倒流” (State Reversion)
+
+这是最关键的一点。区块链交易必须是\*\*原子的（Atomic）\*\*——要么全成功，要么全失败（什么都没发生）。
+
+\* \*\*使用 `if-else` (软失败)\*\*：
+
+如果你用 `if` 发现条件不对并 `return`，程序停止了，但\*\*之前已经发生的修改\*\*会被保留。
+
+\* _危险场景_：你先扣了用户的钱，然后用 `if` 检查库存，发现没货了，于是 `return`。
+
+\* _结果_：钱扣了，货没给，函数结束了。这是灾难。
+
+\* \*\*使用 `require` (硬回滚)\*\*：
+
+一旦 `require` 失败，EVM 会触发 `REVERT` 操作码。
+
+\* _结果_：它会像按下“Ctrl+Z”一样，\*\*撤销\*\*这笔交易中做过的所有状态修改（包括余额变动、变量赋值）。就像这笔交易从未发生过一样。
+
+\### erro revert为什么比传统的 require String 好
+
+\#### A. 极致的 Gas 节省（最重要原因）
+
+这是核心差异。
+
+\- \*\*传统的写法\*\*：
+
+\`\`\`solidity
+
+// 这种写法很昂贵！
+
+require(block.timestamp >= deadline, "Wait until the deadline has passed");
+
+\`\`\`
+
+\- \*\*原理\*\*：EVM 需要把 `"Wait until the deadline has passed"` 这串长字符串存储在字节码中，并且在报错时通过内存返回。
+
+\- \*\*成本\*\*：字符串越长，Gas 越贵。哪怕是一个字母，都要占空间。
+
+\- \*\*你的写法（Custom Error）\*\*：
+
+\`\`\`solidity
+
+// 定义错误（类似定义一个函数签名）
+
+error TooEarly();
+
+if (block.timestamp < deadline) {
+
+revert TooEarly(); // 这种写法非常便宜！
+
+}
+
+\`\`\`
+
+\- \*\*原理\*\*：EVM 不存字符串。它只存 `TooEarly()` 的哈希值前 4 个字节（Selector）。
+
+\- \*\*成本\*\*：无论错误名字叫 `A()` 还是 `ThisIsAVeryLongErrorName()`，它在运行时只占 \*\*4 个字节\*\*。\*\*这是固定成本，极其便宜。\*\*
+
+\#### B. 支持动态参数（调试神器）
+
+如果你用字符串 `require`，想告诉用户“还要等多久”，你得疯狂拼接字符串（Solidity 拼接字符串非常痛苦且费 Gas）。
+
+但在 `revert` 中，你可以像传函数参数一样传值：
+
+Solidity
+
+\`\`\`
+
+// 定义带参数的错误
+
+error TooEarly(uint256 currentTime, uint256 deadline);
+
+if (block.timestamp < deadline) {
+
+// 直接把数据抛出去，前端能收到具体数值！
+
+revert TooEarly(block.timestamp, deadline);
+
+}
+
+\`\`\`
+
+前端或者区块链浏览器会收到`TooEarly(1700000000, 1800000000)`。用户瞬间明白：“哦，还要等一亿秒”。
+
+\---
+
+\### 2. 进化史：从 require 到 revert
+
+为了让你更清楚 Web3 开发的演进，请看这个对比：
+
+| \*\*阶段\*\* | \*\*写法\*\* | \*\*评价\*\* | \*\*典型场景\*\* |
+
+| --------------------------- | --------------------------------- | --------- | --------------------------- |
+
+| \*\*石器时代\*\* | `require(cond, "Error String")` | \*\*耗气、笨重\*\* | 快速原型开发、老旧合约 |
+
+| \*\*青铜时代\*\* | `revert("Error String")` | \*\*同上\*\* | 复杂的逻辑分支中手动触发 |
+
+| \*\*黄金时代 \*\* | `if (!cond) revert CustomError()` | \*\*省气、专业\*\* | \*\*当前的行业标准\*\* |
+
+| \*\*未来时代 (Solidity 0.8.26+)\*\* | `require(cond, CustomError())` | \*\*完美\*\* | 最新版编译器支持直接在 require 里用自定义错误 |
+
+\# Challenge 2: 自动贩卖机（Vendor)
+
+\## 辅助提示词
+
+\*\*Role (角色):\*\* 你是一名 \*\*Web3 导师\*\*，擅长使用苏格拉底式教学法。你的目标是引导我完成 \*\*SpeedRunEthereum Challenge 2 (Token Vendor)\*\*，帮助我建立深层的理解，而不是直接给我答案。
+
+\*\*Constraints (绝对约束 - 重要):\*\*
+
+\- \*\*禁止直接给出完整的 Solidity 代码块。\*\*
+
+\- 请使用 \*\*伪代码 (Pseudo-code)\*\*、\*\*流程图描述\*\* 或 \*\*逻辑列表\*\* 来解释。
+
+\- 如果我卡住了，请通过提问引导我思考，而不是直接把代码写出来。
+
+\*\*Context (背景):\*\* 我正在做 Challenge 2，目标是创建一个自动贩卖机（Vendor）：
+
+1\. 用户可以用 ETH 买 Token。
+
+2\. 用户可以用 Token 换回 ETH（卖）。
+
+3\. 作为 Owner，我可以把赚到的 ETH 提走。
+
+\*\*Task (请按以下三个阶段指导我):\*\*
+
+\*\*Phase 1: 逻辑与机制 (The Mental Model)\*\*
+
+\- 请帮我梳理这个系统的“资金流向图”。
+
+\- \*\*重点解释：\*\* 在“买 Token”和“卖 Token”这两个操作中，资产（ETH 和 Token）分别是从谁流向谁？
+
+\- \*\*核心难点：\*\* 请用通俗的比喻（例如：支票、银行柜台）解释为什么在“卖 Token”时，需要先进行 `Approve` (授权)，再调用 `transferFrom`？为什么不能直接 `transfer`？
+
+\*\*Phase 2: 后端任务拆解 (The Roadmap)\*\* 请将我的开发任务拆解为 4 个具体的\*\*“微目标”\*\*。对于每个目标，请告诉我：
+
+1\. \*\*目标是什么？\*\* (例如：让 Vendor 合约拥有 Token)。
+
+2\. \*\*关键逻辑？\*\* (例如：在构造函数里做什么？)。
+
+3\. \*\*数学公式？\*\* (例如：如何根据 `tokensPerEth` 计算出用户该得多少 Token？)
+
+4\. 要求给出的目标要符合/packages/test/vendor中所有Checkpoint2
+
+\*\*Phase 3: 前端交互原理 (Frontend 101 for Non-Devs)\*\* 我不需要写前端代码，但我需要看懂 `Debug Contracts` 页面是怎么工作的。 请解释前端是如何构造交易参数的，特别是区分以下两种情况：
+
+\- \*\*Scenario A (买币):\*\* 当我点击“Buy”时，我的 ETH 是作为 `function arguments` 传进去的，还是作为 `msg.value` 传进去的？前端代码通常长什么样？
+
+\- \*\*Scenario B (卖币):\*\* 当我点击“Sell”时，数量参数是怎么传的？为什么这个操作不需要发送 ETH？
+
+\## 后端任务拆解 (The Roadmap)
+
+根据测试文件，我为你拆解为 4 个微目标：
+
+\### ✅ 微目标 1: YourToken 合约 (Checkpoint 1)
+
+| \*\*类别\*\* | \*\*详细要求\*\* |
+
+| -------- | ----------------------------------------------------------------- |
+
+| \*\*目标\*\* | 创建一个 ERC20 Token，部署时铸造 1000 个给 deployer。 |
+
+| \*\*关键逻辑\*\* | 在构造函数里调用铸币函数。 |
+
+| \*\*数学公式\*\* | $$初始供应量 = 1000 \\times 10^{18}$$<br><br>(因为 ERC20 默认 18 位小数)。 |
+
+| \*\*测试要求\*\* | `totalSupply() = 1000 ether`, `balanceOf(deployer) = 1000 ether`。 |
+
+\> 🤔 \*\*引导问题：\*\* ERC20 提供了哪个函数可以凭空创造 Token？提示：看看 OpenZeppelin 的 ERC20 合约有什么 \*\*internal\*\* 函数可用。
+
+\---
+
+\### ✅ 微目标 2: buyTokens() 函数 (Checkpoint 2)
+
+| \*\*类别\*\* | \*\*详细要求\*\* |
+
+| ------------- | ------------------------------------------------------------------ |
+
+| \*\*目标\*\* | 用户发送 ETH，获得对应数量的 Token。 |
+
+| \*\*核心逻辑\*\* | 1. 检查 ETH > 0；2. 计算 Token 数量；3. 检查 Vendor 余额；4. 转账 Token；5. 触发事件。 |
+
+| \*\*数学公式\*\* | `tokenAmount = msg.value * tokensPerEth` |
+
+| \*\*状态变量\*\* | `tokensPerEth = 100` |
+
+| \*\*自定义 Error\*\* | `InvalidEthAmount()`, `InsufficientVendorTokenBalance()` |
+
+| \*\*触发 Event\*\* | `BuyTokens(address buyer, uint256 ethAmount, uint256 tokenAmount)` |
+
+\> 🤔 \*\*引导问题：\*\*
+
+\>
+
+\> 1. Vendor 合约如何知道自己还剩多少 Token 可以卖？（提示：它需要问 Token 合约）
+
+\>
+
+\> 2. 为什么函数需要标记为 \*\*payable\*\*？
+
+\>
+
+\---
+
+\### ✅ 微目标 3: withdraw() 函数 (Checkpoint 3)
+
+| \*\*类别\*\* | \*\*详细要求\*\* |
+
+| ------------- | -------------------------------------------------------- |
+
+| \*\*目标\*\* | 只有 Owner 可以提走 Vendor 里所有的 ETH。 |
+
+| \*\*关键逻辑\*\* | 1. 验证 \*\*onlyOwner\*\*；2. 获取合约 ETH 余额；3. 发送给 Owner；4. 验证成功。 |
+
+| \*\*自定义 Error\*\* | `EthTransferFailed(address recipient, uint256 amount)` |
+
+\> 🤔 \*\*引导问题：\*\*
+
+\>
+
+\> 1. 用什么方式发送 ETH 最安全？（提示：\*\*call\*\* vs \*\*transfer\*\* vs \*\*send\*\*）
+
+\>
+
+\> 2. 如何获取合约当前的 ETH 余额？
+
+\>
+
+\---
+
+\### ✅ 微目标 4: sellTokens() 函数 (Checkpoint 4)
+
+| \*\*类别\*\* | \*\*详细要求\*\* |
+
+| ------------- | -------------------------------------------------------------------- |
+
+| \*\*目标\*\* | 用户用 Token 换回 ETH。 |
+
+| \*\*核心逻辑\*\* | 1. 检查 amount > 0；2. 计算 ETH；3. 检查 ETH 余额；4. 划转 Token；5. 发送 ETH。 |
+
+| \*\*数学公式\*\* | `ethAmount = tokenAmount / tokensPerEth` |
+
+| \*\*自定义 Error\*\* | `InvalidTokenAmount()`, `InsufficientVendorEthBalance()` |
+
+| \*\*触发 Event\*\* | `SellTokens(address seller, uint256 tokenAmount, uint256 ethAmount)` |
+
+\> 🤔 \*\*引导问题（核心！）：\*\*
+
+\>
+
+\> 1. 用户调用 `sellTokens()` 之前，需要先调用哪个函数？在哪个合约上调用？
+
+\>
+
+\> 2. 在 `sellTokens()` 内部，你应该用 \*\*transfer\*\* 还是 \*\*transferFrom\*\* 来获取用户的 Token？为什么？
+
+\>
+
+\## 学到的
+
+\### 有Ownable不需要自己声明 owner
+
+\*\*Ownable\*\* 合约已经提供了 
+
+\`\`\`
+
+owner()
+
+\`\`\`
+
+ 函数！你不应该再声明一个 
+
+\`\`\`
+
+owner
+
+\`\`\`
+
+ 变量，这会造成冲突。
+
+(bool success, ) = payable(owner()).call{value: address(this).balance}("");
+
+↑ ↑ ↑
+
+| | |
+
+转为payable 调用函数 空字符串参数
+
+\# Challenge 3 (Dice Game)
+
+\## 提示词
+
+\*\*Role (角色):\*\* 你是一名 \*\*Web3 安全审计专家\*\* 和 \*\*白帽黑客导师\*\*。你的教学风格是苏格拉底式的——你不会直接把攻击代码甩给学生，而是通过解释底层原理，引导学生自己发现漏洞并写出利用脚本（Exploit）。
+
+\*\*Context (背景):\*\* 我正在做 SpeedRunEthereum Challenge 3 (Dice Game)。 这个挑战要求我“攻破”一个使用 `block.hash` 或 `block.timestamp` 等变量生成随机数的骰子游戏，把合约里的钱全部赢走。 \*\*Constraint (绝对约束):\*\* \*\*不要直接给我 Solidity 代码。\*\* 请用伪代码、逻辑图或通俗比喻来解释。
+
+\*\*Task (请按以下三个阶段指导我):\*\*
+
+\*\*Phase 1: 漏洞原理 (The Mental Model - Atomicity)\*\*
+
+\- 请纠正我的思维模型：我不应该把这个看作一个“状态机”，而应该看作一次“原子交易”。
+
+\- 请解释什么是\*\*“伪随机数” (Pseudo-Randomness)\*\*？为什么在区块链上用 `block.number` 或 `block.difficulty` 生成随机数是不安全的？
+
+\- \*\*核心提示：\*\* 请解释如果我在\*\*同一个交易 (Transaction)\*\* 里既计算随机数又进行猜测，为什么我就能 100% 赢？（用“预知未来的水晶球”做比喻）。
+
+\*\*Phase 2: 攻击路径拆解 (The Hacker's Roadmap)\*\* 请指导我完成攻击合约 `RiggedRoll.sol`) 的开发逻辑，分步告诉我每一步的目标：
+
+1\. \*\*Target Lock (锁定目标):\*\* 我的攻击合约需要知道骰子游戏合约的地址，我该怎么在代码里引用它？
+
+2\. \*\*Prediction (预测结果):\*\* 我需要在攻击合约里\*\*复制\*\*骰子游戏的随机数生成逻辑。请告诉我这一步的逻辑是什么？（提示：复制粘贴哪些代码？）。
+
+3\. \*\*Decision (决策执行):\*\* 算出结果后，我需要做一个 `if` 判断。如果算出来会输，我该怎么办？如果算出来会赢，我该怎么调用目标合约？
+
+4\. \*\*Fund Management (资金流转):\*\* 赢了钱之后，钱在谁的肚子里（我的钱包还是攻击合约）？我需要写一个 `withdraw` 函数吗？
+
+\*\*Phase 3: 前端与交易参数 (Frontend & Payload)\*\* 我不需要写前端，但我需要看懂 `DiceGame.jsx` 是怎么把钱发出去的。
+
+\- 当我点击“Roll the Dice”时，前端是如何构建交易的？
+
+\- 请解释 `value: ethers.utils.parseEther("0.002")` 在交易中意味着什么？
+
+\- 为什么我的攻击合约在调用目标合约的 `rollTheDice()` 时，也需要附带 ETH？这个机制在 Solidity 里是怎么写的？
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 \## 前端需要显示"所有贡献者的列表"，2种方式：
 
 \### 方式 1：使用事件 + 前端监听（推荐）⭐
@@ -227,11 +667,13 @@ revert TooEarly(block.timestamp, deadline);
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 了解mcp skill
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 \# ai辅助思路
@@ -351,6 +793,7 @@ Authropic 的实验是让 52 位初级程序员一起学习一个新的 Python �
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -669,6 +1112,7 @@ myx@cs:~/web3开发/test$ cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "
 
 
 
+
 \## 滑点与价格冲击
 
 **滑点**就是：\*\*“你预期的价格”\*\* 和 **“实际成交的更差价格”** 之间的差额。
@@ -833,6 +1277,7 @@ amounts\[i + 1\] = getAmountOut(amounts\[i\], reserveIn, reserveOut);
 
 
 
+
 \### 3.实战模拟
 
 **场景设定：**
@@ -992,6 +1437,7 @@ ETH 涨了，你虽然赚了（从 4万 变成了 5.6万），但你跑输了大
 
 
 
+
 Uniswp是一个去中心化交易所，所谓去中心化，可以从以下两个方面理解：
 
 ●交易全部是由开源的代码来控制，没有任何人为的因素
@@ -1083,6 +1529,7 @@ $$\\Delta y = \\frac{y \\cdot \\Delta x\_{with\\\_fee}}{x + \\Delta x\_{with\\\_
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1511,6 +1958,7 @@ messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5
 
 
 
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -1654,6 +2102,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1898,6 +2347,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -1976,6 +2426,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2282,6 +2733,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -2327,6 +2779,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2459,6 +2912,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -2544,6 +2998,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2652,6 +3107,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2804,6 +3260,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -2905,6 +3362,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3072,6 +3530,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
