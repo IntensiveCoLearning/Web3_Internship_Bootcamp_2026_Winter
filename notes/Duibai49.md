@@ -15,8 +15,32 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+## [**二、优质招聘平台推荐**](https://web3intern.xyz/zh/job-platform/#%E4%BA%8C%E3%80%81%E4%BC%98%E8%B4%A8%E6%8B%9B%E8%81%98%E5%B9%B3%E5%8F%B0%E6%8E%A8%E8%8D%90)
+
+这里的平台都是满足几个特点：时间悠久（老牌）、真实与可靠
+
+1.  [**web3career.build**](http://web3career.build)
+    
+    -   **简介：** [Web3Career.build](http://Web3Career.build) 是 Web3 实习计划的官方平台，用于报名学习、管理进度与查看相关机会信息，适合想系统参与实习计划的同学优先使用。
+        
+2.  [**Web3.career**](http://Web3.career)
+    
+    -   **简介：** [Web3.career](http://Web3.career) 是一个专注于 Web3 领域的全球性招聘平台，汇集了大量来自区块链、加密货币、DeFi、NFT、元宇宙等领域的职位。其特点是职位更新及时，覆盖面广，且提供了详细的职位描述和公司信息，是 Web3 求职者的重要资源。
+        
+3.  [**DeJob**](https://www.dejob.top/)
+    
+    -   **简介：** DeJob 是一个专注于 Web3 和远程招聘的平台，旨在帮助 Web3 项目方和求职者进行匹配。该平台支持免费发布职位，且职位更新较快，尤其适合国内 Web3 项目和求职者。
+        
+4.  [**SmartDeer**](https://smartdeer.com/)
+    
+    -   **简介：** SmartDeer 是一个新兴的 Web3 人才招聘平台，专注于连接优质的 Web3 项目和专业人才。平台提供精准的岗位匹配服务，涵盖技术开发、产品运营、市场推广等多个职能领域。其特点是注重人才质量和项目可靠性，为求职者提供更有保障的就业选择。
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 -   **主流库：**
     
     -   **Viem & Wagmi：** 2026 年的首选组合。Viem 相比 Ethers.js 更轻量、类型安全且性能更高；Wagmi 则为 React 提供了强大的 Hook 支持。
@@ -31,6 +55,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-02-02-1770000553523-image.png)
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
@@ -38,11 +63,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 看了前辈入职Bybit的访谈，受益良多，不用刷八股，要Github项目，要懂钱包连接
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -61,11 +88,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-29-1769730682834-image.png)
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -82,11 +111,13 @@ Foundry本地部署节点教程
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-28-1769566104422-image.png)
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -107,11 +138,13 @@ Foundry本地部署节点教程
 
 
 
+
 Hardhat 有点像JS
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -143,11 +176,13 @@ Hardhat 有点像JS
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-24-1769221141289-image.png)
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -293,6 +328,7 @@ string public greeting = "Hello, Web3!";
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-22-1769053508623-image.png)
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
@@ -311,11 +347,13 @@ string public greeting = "Hello, Web3!";
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-21-1768974994477-image.png)
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -350,11 +388,13 @@ Solidity基础语法学习
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Duibai49/images/2026-01-19-1768793761701-image.png)
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -393,11 +433,13 @@ Dapp 架构由前端，智能合约，数据检索器，区块链和去中心化
 
 
 
+
 周六休息
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -442,6 +484,7 @@ Dapp 架构由前端，智能合约，数据检索器，区块链和去中心化
 
 
 
+
 AI机器基础概念
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
@@ -467,11 +510,13 @@ AI机器基础概念
 
 
 
+
 Web3 已从野蛮生长转向合规化，了解各国监管政策的同时注意安全反诈，警惕钓鱼链接，冒充官方，凡是助记词，账号密码等敏感信息谨慎输入，插件软件从官方下，面试只用Zoom/腾讯会议等主流平台，绝不下“专门面试平台”
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -534,6 +579,7 @@ Web3: 私钥（一串乱码）。千万不能丢！ 丢了谁也帮不了你，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
