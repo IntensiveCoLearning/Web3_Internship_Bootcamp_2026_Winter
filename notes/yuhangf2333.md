@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+今天看了行业前辈访谈录，感觉很有收获，对于web3这个行业有了更好的了解，非常干货！
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 [https://ethpanda.notion.site/Challenge-0-2afbbd63be8780dbbd56cb01490da15e](https://ethpanda.notion.site/Challenge-0-2afbbd63be8780dbbd56cb01490da15e) ，学习了这一部分的内容，这些文档都好清晰啊，感觉都不用记笔记了（偷懒！！）
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 继续学习Solidity by Example | 0.8.26 Foundry、DeFi
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 学习了solidity foundry的basic到send部分
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天没有学，一直在处理签证的问题，好烦啊，希望快点投入学习
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -77,6 +87,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天继续学习了有关solidity语法的有关知识，把官网上给的几个demo都给跑了一下
 
 学习agent的基本概念，了解了ReAct和一些模式，看了一下langgraph的文档
@@ -84,6 +95,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -102,11 +114,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 继续学习了简单的语法
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -243,6 +257,7 @@ contract FunctionsAndLocations {
 
 
 
+
 **1\. 核心概念**
 
 • **什么是质押 (Staking)**：将资金（ETH 或代币）锁定在一个智能合约中，就像把钱放入一台自动售货机。这是一种“去信任化”（Trustless）的机制，用户不需要信任某个人，只需要信任代码规则,。
@@ -276,6 +291,7 @@ contract FunctionsAndLocations {
 
 
 
+
 这一周主要在划水，准备期末考试复习
 
 等下一周考完后，就轻松不少了
@@ -283,6 +299,7 @@ contract FunctionsAndLocations {
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -368,11 +385,13 @@ contract FunctionsAndLocations {
 
 
 
+
 听了律师的讲解，了解了目前国内的一些情况
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -401,6 +420,7 @@ contract FunctionsAndLocations {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
