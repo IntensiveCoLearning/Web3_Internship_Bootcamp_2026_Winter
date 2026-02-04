@@ -15,8 +15,316 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+use bytes::{Buf, BufMut, BytesMut};
+
+use std::io;
+
+use tokio\_util::codec::{Decoder, Encoder};
+
+use thiserror::Error;
+
+const MAGIC\_BYTE: u8 = 0x4C; // 'L'
+
+#\[derive(Error, Debug)\]
+
+pub enum ProtocolError {
+
+#\[error("Invalid magic byte")\]
+
+InvalidMagic,
+
+#\[error("Unknown command: {0}")\]
+
+UnknownCommand(u8),
+
+#\[error("IO error: {0}")\]
+
+Io(#\[from\] io::Error),
+
+}
+
+#\[derive(Debug, PartialEq)\]
+
+pub enum Command {
+
+Ping = 0x01,
+
+Data = 0x02,
+
+}
+
+#\[derive(Debug)\]
+
+pub struct Frame {
+
+pub command: Command,
+
+pub payload: Vec<u8>,
+
+}
+
+pub struct LumiCodec;
+
+impl Decoder for LumiCodec {
+
+type Item = Frame;
+
+type Error = ProtocolError;
+
+fn decode(&mut self, src: &mut BytesMut) -> Result<Option<Self::Item>, Self::Error> {
+
+// 头部最小长度: Magic(1) + Cmd(1) + Len(4) = 6 bytes
+
+if src.len() < 6 {
+
+return Ok(None);
+
+}
+
+// 验证 Magic Byte
+
+if src\[0\] != MAGIC\_BYTE {
+
+return Err(ProtocolError::InvalidMagic);
+
+}
+
+// 读取长度字段 (索引 2 到 6)
+
+let payload\_len = u32::from\_be\_bytes(src\[2..6\].try\_into().unwrap()) as usize;
+
+// 检查总长度是否满足 (Header + Payload)
+
+let total\_len = 6 + payload\_len;
+
+if src.len() < total\_len {
+
+return Ok(None);
+
+}
+
+// 解析并移除已处理的字节
+
+let mut frame\_data = src.split\_to(total\_len);
+
+frame\_data.advance(1); // 跳过 Magic
+
+let cmd\_byte = frame\_data.get\_u8();
+
+let command = match cmd\_byte {
+
+0x01 => Command::Ping,
+
+0x02 => Command::Data,
+
+_\=> return Err(ProtocolError::UnknownCommand(cmd_byte)),
+
+};
+
+frame\_data.advance(4); // 跳过已读取的长度字段
+
+let payload = frame\_[data.to](http://data.to)\_vec();
+
+Ok(Some(Frame { command, payload }))
+
+}
+
+}
+
+impl Encoder<Frame> for LumiCodec {
+
+type Error = ProtocolError;
+
+fn encode(&mut self, item: Frame, dst: &mut BytesMut) -> Result<(), Self::Error> {
+
+dst.put\_u8(MAGIC\_BYTE);
+
+dst.put\_u8(item.command as u8);
+
+dst.put\_u32(item.payload.len() as u32);
+
+dst.extend\_from\_slice(&item.payload);
+
+Ok(())
+
+}
+
+}  
+impl Frame {
+
+pub fn new(command: Command, payload: Vec<u8>) -> Self {
+
+Self { command, payload }
+
+}
+
+/// 将 Frame 编码为字节数组 (Encode to bytes)
+
+pub fn encode(&self) -> Vec<u8> {
+
+let mut buffer = Vec::with\_capacity(7 + self.payload.len());
+
+buffer.push(MAGIC\_BYTE);
+
+buffer.push(self.command as u8);
+
+// 使用大端序写入长度 (Big-endian length)
+
+let len = self.payload.len() as u32;
+
+buffer.extend\_from\_slice(&[len.to](http://len.to)\_be\_bytes());
+
+buffer.extend\_from\_slice(&self.payload);
+
+// 简单的异或校验 (Simple XOR checksum)
+
+let checksum = buffer.iter().fold(0u8, |acc, &x| acc ^ x);
+
+buffer.push(checksum);
+
+buffer
+
+}
+
+/// 从 Reader 中解析 Frame (Decode from reader)
+
+pub fn decode<R: Read>(mut reader: R) -> io::Result<Self> {
+
+// 1. 检查 Magic Byte
+
+let mut magic = \[0u8; 1\];
+
+[reader.read](http://reader.read)\_exact(&mut magic)?;
+
+if magic\[0\] != MAGIC\_BYTE {
+
+return Err(io::Error::new(io::ErrorKind::InvalidData, "Invalid Magic Byte"));
+
+}
+
+// 2. 解析 Command
+
+let mut cmd\_byte = \[0u8; 1\];
+
+[reader.read](http://reader.read)\_exact(&mut cmd\_byte)?;
+
+let command = Command::from\_u8(cmd\_byte\[0\])
+
+.ok\_or\_else(|| io::Error::new(io::ErrorKind::InvalidData, "Unknown Command"))?;
+
+// 3. 解析 Payload 长度 (4字节, 大端)
+
+let mut len\_bytes = \[0u8; 4\];
+
+[reader.read](http://reader.read)\_exact(&mut len\_bytes)?;
+
+let length = u32::from\_be\_bytes(len\_bytes) as usize;
+
+// 4. 读取 Payload
+
+let mut payload = vec!\[0u8; length\];
+
+[reader.read](http://reader.read)\_exact(&mut payload)?;
+
+// 5. 校验 Checksum
+
+let mut received\_checksum = \[0u8; 1\];
+
+[reader.read](http://reader.read)\_exact(&mut received\_checksum)?;
+
+// 重新计算校验位以验证数据完整性
+
+// 注意：实际逻辑应包含 header 在内的计算
+
+Ok(Frame { command, payload })
+
+}
+
+}  
+/\* 依赖说明 (Cargo.toml):
+
+tokio-util = { version = "0.7", features = \["codec"\] }
+
+bytes = "1.0"
+
+\*/
+
+use tokio\_util::codec::{Decoder, Encoder};
+
+use bytes::{BytesMut, Buf, BufMut};
+
+pub struct LumiCodec;
+
+impl Decoder for LumiCodec {
+
+type Item = Frame;
+
+type Error = io::Error;
+
+fn decode(&mut self, src: &mut BytesMut) -> Result<Option<Self::Item>, Self::Error> {
+
+if src.len() < 7 { return Ok(None); } // 最小头部长度
+
+// 检查 Magic Byte 但不移动指针
+
+if src\[0\] != MAGIC\_BYTE {
+
+src.advance(1); // 寻找下一个可能的起始位
+
+return Err(io::Error::new(io::ErrorKind::InvalidData, "Invalid Magic"));
+
+}
+
+// 读取长度
+
+let payload\_len = u32::from\_be\_bytes(src\[2..6\].try\_into().unwrap()) as usize;
+
+let total\_len = 7 + payload\_len;
+
+if src.len() < total\_len {
+
+return Ok(None); // 数据不够，等待更多数据
+
+}
+
+// 完整包已到达，取走数据
+
+let data = src.split\_to(total\_len);
+
+let command = Command::from\_u8(data\[1\]).unwrap();
+
+let payload = data\[6..6+payload\_len\].to\_vec();
+
+Ok(Some(Frame { command, payload }))
+
+}
+
+}
+
+impl Encoder<Frame> for LumiCodec {
+
+type Error = io::Error;
+
+fn encode(&mut self, item: Frame, dst: &mut BytesMut) -> Result<(), Self::Error> {
+
+let bytes = item.encode();
+
+dst.reserve(bytes.len());
+
+dst.extend\_from\_slice(&bytes);
+
+Ok(())
+
+}
+
+}
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 今日主线（项目）
 
 **项目**: \[\[SimpleVoting-投票合约\]\]
@@ -199,6 +507,7 @@ return (p.description, p.voteCount, p.executed);
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.20;
@@ -376,6 +685,7 @@ return (p.description, p.voteCount, p.executed);
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 use std::env;
@@ -569,6 +879,7 @@ cargo run -- del 1
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -813,6 +1124,7 @@ r1.push\_str("def");
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1089,6 +1401,7 @@ a + b // 表达式作为返回值
 
 
 
+
 \# 2026-01-25 Rust入门学习
 
 \## 📅 日期
@@ -1290,6 +1603,7 @@ Ok(content)
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1536,6 +1850,7 @@ function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
 
 
 
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -1775,6 +2090,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 
 
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -1856,6 +2172,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2020,6 +2337,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2347,6 +2665,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -2548,6 +2867,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2810,6 +3130,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -3002,6 +3323,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
