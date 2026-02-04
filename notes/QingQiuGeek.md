@@ -17,28 +17,28 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
-\## 漏洞  
-  
-\### 重入攻击 Reentrancy  
-  
-利用外部合约在 fallback 中重新调用原函数。历史上最著名的 The DAO 事件便因重入漏洞导致约 6000 万美元 ETH 被盗，最终造成以太坊社区分裂（形成 ETH/ETC 链）。  
-  
-防护方法：先更新状态，再转账。  
-  
-\`\`\`c  
-  
+\## 漏洞
+
+\### 重入攻击 Reentrancy
+
+利用外部合约在 fallback 中重新调用原函数。历史上最著名的 The DAO 事件便因重入漏洞导致约 6000 万美元 ETH 被盗，最终造成以太坊社区分裂（形成 ETH/ETC 链）。
+
+防护方法：先更新状态，再转账。
+
+\`\`\`c
+
 // ❌ 有漏洞  
 function withdraw() public {  
 //检查用户余额  
 require(balance\[msg.sender\] > 0);  
-//msg.sender向用户转账，call会移交控制权，在它的 fallback() 函数里再次调用 withdraw()，此时 balance\[msg.sender\] 还没变，依然 > 0，于是递归再次转账，直到掏空池子！  
-(bool sent,) = msg.sender.call{value: balance\[msg.sender\]}("");  
+[//msg.sender向用户转账](//msg.xn--sender-1i6jw84g4v9a5e0c5hf)，call会移交控制权，在它的 fallback() 函数里再次调用 withdraw()，此时 balance\[msg.sender\] 还没变，依然 > 0，于是递归再次转账，直到掏空池子！  
+(bool sent,) = msg.sender.call{value: balance\[msg.sender\]}(“”);  
 //确认转账是否成功  
 require(sent);  
 //最后才清零余额  
 balance\[msg.sender\] = 0;  
-}  
-  
+}
+
 // ✅ 修复后  
 function withdraw() public {  
 //将余额提取到内存变量中  
@@ -46,72 +46,73 @@ uint256 amount = balance\[msg.sender\];
 //余额清零  
 balance\[msg.sender\] = 0;  
 //转账  
-(bool sent,) = msg.sender.call{value: amount}("");  
+(bool sent,) = msg.sender.call{value: amount}(“”);  
 //确认转账结果  
 require(sent);  
-}  
-  
-\`\`\`  
-  
-\### 预言机操纵 Oracle Manipulation  
-  
-依赖外部价格源的不可信更新。  
-  
-解决方法：  
-  
-\- 使用 Chainlink 等权威价格源。  
-  
-\- 增加时序约束和多源验证。  
-  
-\- 使用 TWAP 等加权算法。  
-  
-\### 整数溢出/下溢  
-  
-使用 unchecked {} 时需确保逻辑安全。  
-  
-推荐使用 Solidity 0.8+ 的内建溢出检查或 SafeMath。  
-  
-\### 权限控制缺失  
-  
-所有管理函数应使用 onlyOwner 或 AccessControl 修饰符保护。  
-  
-\### 未初始化代理  
-  
-基于代理模式的合约若未正确执行初始化函数，可能被任意人初始化并接管合约。  
-  
-著名的例子包括 Harvest Finance 其在使用 Uniswap V3 做市策略的 Vault 合约中存在未初始化漏洞，如果被利用攻击者可销毁实现合约。该团队曾为此漏洞支付高额赏金修复。  
-  
-\### 前置交易/三明治攻击  
-  
-攻击者在交易执行前后分别发送交易，以不利\*\*滑点或套利\*\*为目的。  
-  
-\## 合约审计工具  
-  
-\- Slither：以 Python 编写的静态分析工具，可检测安全漏洞和代码规范问题。常用命令为 slither MyContract.sol（也可指定合约地址）来扫描合约代码  
-  
-\[Slither 官方文档\](https://github.com/crytic/slither)  
-  
-\- MythX：基于云平台的安全分析服务，支持命令行和 API 调用。使用 CLI 时，可执行类似 mythx analyze MyContract.sol 进行安全扫描  
-  
-\[使用方式\](https://github.com/ConsenSysDiligence/mythx-cli)  
-  
-\- Foundry：高效的 Solidity 开发测试框架，支持属性测试（模糊测试）。可使用 forge test 运行所有测试  
-  
-\[Foundry 模糊测试文档\](https://book.getfoundry.sh/forge/fuzz-testing)，或通过 forge test --match-path <test 文件路径> 定向运行特定测试文件。  
-  
-\## 审计流程  
-  
-\- 静态分析（Static Analysis）：使用工具如 Slither、Mythril 扫描代码缺陷。  
-  
-\- 动态测试（Fuzzing/Property Testing）：模拟攻击行为和极限条件。  
-  
-\- 人工审查（Manual Review）：由资深审计员检查业务逻辑漏洞。  
-  
+}
+
+\`\`\`
+
+\### 预言机操纵 Oracle Manipulation
+
+依赖外部价格源的不可信更新。
+
+解决方法：
+
+\- 使用 Chainlink 等权威价格源。
+
+\- 增加时序约束和多源验证。
+
+\- 使用 TWAP 等加权算法。
+
+\### 整数溢出/下溢
+
+使用 unchecked {} 时需确保逻辑安全。
+
+推荐使用 Solidity 0.8+ 的内建溢出检查或 SafeMath。
+
+\### 权限控制缺失
+
+所有管理函数应使用 onlyOwner 或 AccessControl 修饰符保护。
+
+\### 未初始化代理
+
+基于代理模式的合约若未正确执行初始化函数，可能被任意人初始化并接管合约。
+
+著名的例子包括 Harvest Finance 其在使用 Uniswap V3 做市策略的 Vault 合约中存在未初始化漏洞，如果被利用攻击者可销毁实现合约。该团队曾为此漏洞支付高额赏金修复。
+
+\### 前置交易/三明治攻击
+
+攻击者在交易执行前后分别发送交易，以不利\*\*滑点或套利\*\*为目的。
+
+\## 合约审计工具
+
+\- Slither：以 Python 编写的静态分析工具，可检测安全漏洞和代码规范问题。常用命令为 slither MyContract.sol（也可指定合约地址）来扫描合约代码
+
+\[Slither 官方文档\]([https://github.com/crytic/slither](https://github.com/crytic/slither))
+
+\- MythX：基于云平台的安全分析服务，支持命令行和 API 调用。使用 CLI 时，可执行类似 mythx analyze MyContract.sol 进行安全扫描
+
+\[使用方式\]([https://github.com/ConsenSysDiligence/mythx-cli](https://github.com/ConsenSysDiligence/mythx-cli))
+
+\- Foundry：高效的 Solidity 开发测试框架，支持属性测试（模糊测试）。可使用 forge test 运行所有测试
+
+\[Foundry 模糊测试文档\]([https://book.getfoundry.sh/forge/fuzz-testing](https://book.getfoundry.sh/forge/fuzz-testing))，或通过 forge test --match-path <test 文件路径> 定向运行特定测试文件。
+
+\## 审计流程
+
+\- 静态分析（Static Analysis）：使用工具如 Slither、Mythril 扫描代码缺陷。
+
+\- 动态测试（Fuzzing/Property Testing）：模拟攻击行为和极限条件。
+
+\- 人工审查（Manual Review）：由资深审计员检查业务逻辑漏洞。
+
 \- 审计报告生成（Audit Report）：明确发现的问题及修复建议。
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas，具体可以看\[以太坊 操作码\]([https://ethereum.org/zh/developers/docs/evm/opcodes/](https://ethereum.org/zh/developers/docs/evm/opcodes/))，gas 优化目标是减少交易所需的总 gas，提高用户体验并降低成本。
 
@@ -197,6 +198,7 @@ for (uint i = 0; i < len; ++i) {
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -317,6 +319,7 @@ UEX 全称 Universal Exchange **全场景交易所**，由 Bitget 首席执行�
 
 
 
+
 \## 漏洞
 
 \### 重入攻击 Reentrancy
@@ -419,6 +422,7 @@ require(sent);
 
 
 
+
 [x402](https://www.x402.org/)
 
 [链技术](https://www.eoje.cn/qkljs/11406.html)
@@ -499,6 +503,7 @@ v2 在 v1 基础上，实现了：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -631,6 +636,7 @@ ERC-1271 定义了一个标准化的函数 isValidSignature(bytes32 \_messageHas
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -849,6 +855,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -975,6 +982,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -1018,11 +1026,13 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1129,6 +1139,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -1142,6 +1153,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1501,6 +1513,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -1597,6 +1610,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -1631,6 +1645,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1769,6 +1784,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1986,6 +2002,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -2128,6 +2145,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -2168,6 +2186,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
