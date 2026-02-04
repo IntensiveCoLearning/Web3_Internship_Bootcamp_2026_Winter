@@ -15,8 +15,186 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+## **内联函数**
+
+在Solidity中，"内联"这个概念通常与汇编（assembly）结合使用，称为“内联汇编”（inline assembly）。它指的是在Solidity代码中嵌入汇编代码块，而不是像其他一些语言那样，将一个函数标记为“内联”，指示编译器在调用处直接展开函数体。
+
+因此，在Solidity中，没有像C++或C#那样的“内联函数”的概念。我们讨论的是“内联汇编”，它允许你直接编写EVM（以太坊虚拟机）的指令。
+
+**什么是内联汇编？**
+
+内联汇编允许开发者在Solidity代码中直接插入汇编代码。这些汇编代码会在编译时被直接嵌入到合约的字节码中。这提供了一种更底层、更精细地控制EVM执行的方式，常用于优化Gas消耗或实现Solidity本身难以表达的功能。
+
+**内联汇编的语法**
+
+内联汇编使用`assembly { ... }`块来定义。在这个块中，你可以使用Yul语言，这是一种为EVM设计的中间语言，比原始的EVM操作码更易读写。
+
+**内联汇编的用途**
+
+NaN.  **Gas 优化：** 有时，使用内联汇编可以比使用Solidity代码更有效地利用Gas。例如，直接操作存储或内存可以避免Solidity编译器引入的一些额外开销。
+      
+NaN.  **访问底层功能：** 有些EVM指令Solidity没有直接的语法支持。这时，就需要使用内联汇编来访问这些底层功能，例如访问区块哈希、调用其他合约的低级函数等。
+      
+NaN.  **实现复杂逻辑：** 对于一些复杂的位操作或算术运算，使用内联汇编可能更清晰、更高效。
+      
+
+**内联汇编的示例**
+
+以下是一个简单的示例，演示如何使用内联汇编获取合约的余额：
+
+```
+pragma solidity ^0.8.0;
+​
+contract Example {
+    function getBalance() public view returns (uint256) {
+        uint256 balance;
+        assembly {
+            balance := balance(address()) // 使用汇编指令balance
+        }
+        return balance;
+    }
+}
+```
+
+在这个例子中，`balance(address())`是一个汇编指令，用于获取指定地址的余额。通过内联汇编，我们可以直接使用这个指令，而不需要通过Solidity的其他方式来间接实现。
+
+**内联汇编的注意事项**
+
+NaN.  **复杂性：** 编写汇编代码需要对EVM的内部工作原理有深入的了解，这增加了代码的复杂性和维护难度。
+      
+NaN.  **安全性：** 内联汇编绕过了Solidity的类型检查和安全机制，如果使用不当可能会引入安全漏洞。因此，使用内联汇编需要格外小心。
+      
+NaN.  **可移植性：** 内联汇编是针对EVM的，如果将来以太坊虚拟机发生变化，可能需要修改这些汇编代码。
+      
+NaN.  **调试难度：** 调试内联汇编代码比调试Solidity代码更困难。
+      
+
+**与“内联函数”的区别**
+
+在C++等语言中，“内联函数”是一种编译器优化技术，它建议编译器在调用函数的地方直接展开函数体，以减少函数调用的开销。这是一种编译时的优化。
+
+而Solidity的“内联汇编”是在Solidity代码中直接嵌入汇编代码，这是在代码编写阶段就进行的，并且直接操作EVM指令。它们是完全不同的概念。
+
+**总结**
+
+在Solidity中，没有传统的“内联函数”概念。我们所说的“内联”指的是“内联汇编”，它允许开发者在Solidity代码中嵌入汇编代码，以实现Gas优化、访问底层功能或实现复杂逻辑。使用内联汇编需要谨慎，因为它会增加代码的复杂性和潜在的安全风险。只有在必要时，并且对EVM有深入了解的情况下才应该使用。
+
+### **汇编的一些差异**
+
+我们需要区分Solidity的`return`和汇编的返回机制。
+
+**1\. Solidity 的** `return`
+
+Solidity的`return`关键字用于从一个Solidity函数中返回值。当Solidity编译器遇到`return`语句时，它会生成相应的EVM字节码，将返回值复制到调用者可以访问的位置。
+
+**2\. 内联汇编中的返回机制**
+
+在内联汇编中，你直接操作EVM的指令。EVM使用栈来传递参数和返回值。当一个函数（包括通过`delegatecall`调用的合约代码）执行完毕后，它会将返回值压入栈顶。调用者可以从栈顶获取这些返回值。
+
+因此，在内联汇编中，你不需要使用类似`return`的关键字。你只需要确保将需要返回的数据压入栈顶即可
+
+我们来看看这个函数
+
+```
+function _getImplementation() internal view returns (address impl) {
+    bytes32 slot = IMPLEMENTATION_SLOT;
+    assembly {
+        impl := sload(slot)
+    }
+}
+```
+
+-   一般的函数中我们需要返回对应的数据类型，但在这个函数中我们还制定了对应的名字
+    
+-   `impl` 是函数的返回值，因为它在函数签名中被声明为 `returns (address impl)`。
+    
+-   在内联汇编块中，`impl := sload(slot)` 将存储槽位中的值加载到 `impl` 变量中。
+    
+
+由于 `impl` 是函数的返回值，当函数执行完毕时，`impl` 的值会自动作为返回值返回给调用者。因此，不需要显式地使用 `return` 关键字。
+
+如果你尝试在函数内部显式地使用 `return` 关键字，例如：
+
+```
+        复制代码function _getImplementation() internal view returns (address impl) {
+    bytes32 slot = IMPLEMENTATION_SLOT;
+    assembly {
+        impl := sload(slot)
+    }
+    return impl; // 这是不必要的，也是不允许的
+}
+```
+
+这会导致编译错误，因为 `return` 关键字不能用于内联汇编块中。正确的方式是直接赋值给返回变量，如前所示。
+
+### **内联汇编常用的方法**
+
+NaN.  `sload` 和 `sstore`
+      
+
+-   `sload(slot)`: 从存储槽位加载数据。
+    
+-   `sstore(slot, value)`: 将数据存储到指定的存储槽位。
+    
+
+```
+assembly {
+    let slot := 0x12345678
+    let value := sload(slot)
+}    
+```
+
+2.  `mload` 和 `mstore`
+    
+
+-   `mload(pos)`: 从内存位置加载数据。
+    
+-   `mstore(pos, value)`: 将数据存储到指定的内存位置。
+    
+
+```
+assembly {
+    let pos := 0x1000
+    let value := mload(pos)
+}    
+```
+
+3.  `calldataload` 和 `calldatacopy`
+    
+
+-   `calldataload(pos)`: 从调用数据加载数据。
+    
+-   `calldatacopy(memPos, calldataPos, length)`: 从调用数据复制数据到内存。
+    
+
+```
+assembly {
+    let memPos := 0x2000
+    let calldataPos := 0x40
+    let length := 0x20
+    calldatacopy(memPos, calldataPos, length)
+}
+```
+
+4.  `keccak256`
+    
+
+-   `keccak256(value)`: 计算输入值的Keccak-256哈希。
+    
+
+```
+assembly {
+    let value := 0x12345678
+    let hash := keccak256(value)
+}
+```
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 **ZK-Rollups (Zero-Knowledge Rollups)**
 
 -   **核心理念：** “有效性证明” (你必须用数学方法立刻证明自己是好人)。
@@ -40,6 +218,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 ## **IPFS NFT**
 
@@ -398,6 +577,7 @@ contract MyNFT is ERC721 {
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 ## **Twitter Space 线上活动策划总结**
 
 ### **（一）全流程框架：准备 - 执行 - 复盘**
@@ -429,6 +609,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -471,6 +652,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## **数据分析总结**
 
 ### **（一）区块链数据结构基础**
@@ -507,6 +689,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -611,6 +794,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 # 侧链 (Sidechain) 笔记
 
 ## 1\. 背景与动机
@@ -689,6 +873,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## ptimistic Rollup 核心机制
 
 -   **基本原理**：假设大多数参与者是可信的。
@@ -740,6 +925,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -819,6 +1005,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1014,6 +1201,7 @@ contract NFTmarket  {
 
 
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -1027,6 +1215,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1057,6 +1246,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1117,6 +1307,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -1139,6 +1330,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1196,6 +1388,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1279,6 +1472,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1392,6 +1586,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -1475,6 +1670,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -1517,6 +1713,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1615,6 +1812,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -1677,6 +1875,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
