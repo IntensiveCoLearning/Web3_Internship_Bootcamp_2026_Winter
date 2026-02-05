@@ -15,8 +15,141 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+## 学习笔记：Foundry & Hardhat 的核心认知整理
+
+### 一、我到底在学什么（从“工具”到“范式”）
+
+Foundry 和 Hardhat 表面上是 **以太坊智能合约开发框架**，但你实际学到的是三件事：
+
+1.  **合约工程化能力**
+    
+2.  **自动化测试与验证思维**
+    
+3.  **链上系统的可重复、可验证构建流程**
+    
+
+不是“会写 Solidity”，而是：
+
+> 如何像做后端 / 系统工程一样做链上程序。
+
+* * *
+
+### 二、Hardhat：偏工程组织与生态集成
+
+1\. Hardhat 的核心定位
+
+Hardhat 更像一个 **Web3 工程脚手架**：
+
+-   JS / TS 驱动（Node 生态）
+    
+-   适合：
+    
+    -   dApp
+        
+    -   前端 + 合约一体项目
+        
+    -   多插件协作
+        
+
+你通过 Hardhat 实际在学：
+
+-   合约部署流程（compile → deploy → interact）
+    
+-   本地链 / fork 主网调试
+    
+-   JS 层如何控制链上行为
+    
+
+2\. Hardhat 的“思维模式”
+
+Hardhat 强调的是：
+
+-   **开发体验**
+    
+-   **工程可读性**
+    
+-   **生态兼容性**
+    
+
+测试本质是：
+
+-   用 JS 写“行为脚本”
+    
+-   把合约当成黑盒系统去验证
+    
+
+👉 更接近 Web2 工程师能快速上手的 Web3 方式。
+
+* * *
+
+### 三、Foundry：偏底层、偏验证、偏系统正确性
+
+1\. Foundry 的核心定位
+
+Foundry 是 **为合约本身而生的工具链**：
+
+-   Rust 编写，极快
+    
+-   Solidity 原生测试
+    
+-   几乎不依赖 JS
+    
+
+Foundry 让你直面的是：
+
+-   EVM 行为
+    
+-   Gas、storage、call 细节
+    
+-   合约的**数学与状态正确性**
+    
+
+2\. Foundry 的关键能力
+
+你在 Foundry 里真正学到的是：
+
+-   **测试即规范**
+    
+-   **状态即真相**
+    
+-   **失败路径和边界条件**
+    
+
+例如：
+
+-   revert 是否符合预期
+    
+-   fuzz testing 下是否存在隐藏状态
+    
+-   合约在极端输入下是否仍然安全
+    
+
+👉 Foundry 更像是“合约工程师 / 协议工程师”的工具。
+
+* * *
+
+### 四、Foundry vs Hardhat 的本质区别（不是“哪个好”）
+
+| 维度 | Hardhat | Foundry |
+| --- | --- | --- |
+| 驱动语言 | JavaScript / TypeScript | Solidity |
+| 学习曲线 | 平缓 | 陡，但更扎实 |
+| 测试关注点 | 行为流程 | 状态与不变量 |
+| 工程感 | 强 | 更偏系统验证 |
+| 适合场景 | dApp / 产品 | Protocol / DeFi / Infra |
+
+一句话总结：
+
+-   **Hardhat：我在“用合约”**
+    
+-   **Foundry：我在“证明合约是对的”**
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 ## 学习笔记：Challenge #0 —— 代币化（Tokenization）
 
 **来源**  
@@ -305,6 +438,7 @@ yarn verify --network sepolia
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 今天的核心学习不在“写简历”，而在如何把一个人的经历，转化成“岗位可识别的价值表达”。
 
 首先意识到一件事：
@@ -401,6 +535,7 @@ yarn verify --network sepolia
 
 
 
+
 产品经理学习笔记
 
 一、今天学习的核心内容
@@ -486,6 +621,7 @@ yarn verify --network sepolia
 
 
 
+
 # **用 SpoonOS Graph Agent 构建可解释的对话+占卜应用**
 
 ## **1\. 目标与背景**
@@ -547,6 +683,7 @@ yarn verify --network sepolia
 
 
 
+
 -   配置前端环境变量：在 Oracle-s-Choice/frontend/.env 中设置 VITE\_API\_URL 指向本地后端 [http://localhost:8001，用于前端请求后端接口。](http://localhost:8001，用于前端请求后端接口。)
     
 -   配置后端模型与密钥：在 Oracle-s-Choice/backend/.env 中设置 GEMINI\_MODEL=gemini-2.5-flash，并配置了 Gemini 与 OpenAI 的 API Key，用于后端调用大模型服务。
@@ -556,6 +693,7 @@ yarn verify --network sepolia
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -695,6 +833,7 @@ STAR 结构
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -856,6 +995,7 @@ STAR 结构
 
 
 
+
 \# 今日打卡（Web3 Portfolio建立）
 
 \## ✅ Web3 结构与路由
@@ -935,6 +1075,7 @@ STAR 结构
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1195,6 +1336,7 @@ assert
 
 
 
+
 黑客松经验分享
 
 一、什么是黑客松（Hackathon）
@@ -1368,6 +1510,7 @@ Demo
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1708,6 +1851,7 @@ Demo
 
 
 
+
 # AI 辅助搭建 Obsidian 个人知识库
 
 ## 一、为什么我们总是「收藏了不看」
@@ -2036,6 +2180,7 @@ Demo
 
 
 
+
 # DApp
 
 ## 一、DApp 的实用定义
@@ -2290,6 +2435,7 @@ Demo
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2683,6 +2829,7 @@ Demo
 
 
 
+
 ## 社区运营基础 & 活动策划与执行
 
 ### 一、前置规则与合规要求
@@ -2881,6 +3028,7 @@ Demo
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3110,6 +3258,7 @@ AI 是放大器，不是方向盘
 
 
 
+
 # 不同pre和会议记录总结
 
 ## 一、区块链金融 / On-Chain IPO（金融研究类材料）
@@ -3255,6 +3404,7 @@ AI 是放大器，不是方向盘
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3474,6 +3624,7 @@ SpoonOS 降低开发门槛，加速落地
 
 
 
+
 ## Web3 安全与刑事风险
 
 ### 一、Web3 当前整体安全形势
@@ -3551,6 +3702,7 @@ KOL 荐币、带单；
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3835,6 +3987,7 @@ Wallet（签名）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
