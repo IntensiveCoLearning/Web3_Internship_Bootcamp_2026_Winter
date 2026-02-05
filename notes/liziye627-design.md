@@ -15,8 +15,226 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+use anchor\_lang::prelude::\*;
+
+// 你的 Program ID
+
+declare\_id!("");
+
+// 定义常量
+
+const MAX\_HISTORY: usize = 10; // 环形缓冲区大小
+
+const DISCRIMINATOR\_LENGTH: usize = 8; // Anchor 账户判别器长度
+
+const PUBLIC\_KEY\_LENGTH: usize = 32;
+
+const HASH\_LENGTH: usize = 32; // SHA256 Hash 长度
+
+const U64\_LENGTH: usize = 8;
+
+const U8\_LENGTH: usize = 1;
+
+#\[program\]
+
+pub mod lumina\_protocol {
+
+use super::\*;
+
+// 指令 1: 初始化 AI Agent 身份
+
+// 用户通过 seeds = \[b"agent", owner\_key, agent\_id\] 来派生唯一的地址
+
+pub fn initialize\_agent(
+
+ctx: Context<InitializeAgent>,
+
+agent\_id: String // 比如 "agent\_001"
+
+) -> Result<()> {
+
+let agent\_account = &mut ctx.accounts.agent\_account;
+
+let signer = &ctx.accounts.signer;
+
+// 初始化基本信息
+
+agent\_account.owner = signer.key();
+
+agent\_account.agent\_id = agent\_id;
+
+agent\_account.current\_version = 0;
+
+// 初始化历史记录为空
+
+agent\_account.history\_cursor = 0;
+
+// 注意：Vec 在 Anchor 中需要初始化，避免读取未定义内存
+
+agent\_account.state\_history = vec!\[StateSnapshot::default(); MAX\_HISTORY\];
+
+msg!("Agent Initialized: {}", agent\_account.agent\_id);
+
+Ok(())
+
+}
+
+// 指令 2: 更新 AI 的记忆状态 (Commit Memory)
+
+// 只有 Owner 可以调用
+
+pub fn commit\_memory\_state(
+
+ctx: Context<UpdateState>,
+
+merkle\_root: \[u8; 32\], // 32字节的 Hash
+
+data\_uri: String // 链下数据存储位置 (如 IPFS/Arweave 链接)
+
+) -> Result<()> {
+
+let agent\_account = &mut ctx.accounts.agent\_account;
+
+// 构建新的快照
+
+let new\_snapshot = StateSnapshot {
+
+merkle\_root,
+
+timestamp: Clock::get()?.unix\_timestamp,
+
+data\_uri,
+
+};
+
+// --- 核心逻辑：环形缓冲区写入 ---
+
+// 这里的逻辑利用了取模运算来实现循环覆盖，类似硬件寄存器操作
+
+let cursor = agent\_account.history\_cursor as usize;
+
+agent\_account.state\_history\[cursor\] = new\_snapshot;
+
+// 更新游标，指向下一个写入位置
+
+agent\_account.history\_cursor = ((cursor + 1) % MAX\_HISTORY) as u8;
+
+// 更新版本号
+
+agent\_account.current\_version += 1;
+
+msg!("Memory State Committed. Version: {}", agent\_account.current\_version);
+
+Ok(())
+
+}
+
+}
+
+// --- 数据结构定义 ---
+
+#\[derive(Accounts)\]
+
+#\[instruction(agent\_id: String)\]
+
+pub struct InitializeAgent<'info> {
+
+// 使用 PDA (Program Derived Address) 确保地址唯一性且受程序控制
+
+// seeds 定义了地址的生成规则：静态字符串 + 用户公钥 + Agent ID
+
+#\[account(
+
+init,
+
+payer = signer,
+
+space = AgentAccount::LEN,
+
+seeds = \[b"agent", signer.key().as\_ref(), agent\_[id.as](http://id.as)\_bytes()\],
+
+bump
+
+)\]
+
+pub agent\_account: Account<'info, AgentAccount>,
+
+#\[account(mut)\]
+
+pub signer: Signer<'info>,
+
+pub system\_program: Program<'info, System>,
+
+}
+
+#\[derive(Accounts)\]
+
+pub struct UpdateState<'info> {
+
+// 这里不需要重新计算 seeds，只需要验证 owner 是否匹配
+
+#\[account(
+
+mut,
+
+has\_one = owner, // 约束：账户中的 owner 字段必须等于 signer 的 key
+
+)\]
+
+pub agent\_account: Account<'info, AgentAccount>,
+
+pub owner: Signer<'info>,
+
+}
+
+// 链上存储的主账户结构
+
+#\[account\]
+
+pub struct AgentAccount {
+
+pub owner: Pubkey, // 32
+
+pub agent\_id: String, // 4 + len (我们预留空间)
+
+pub current\_version: u64, // 8
+
+pub history\_cursor: u8, // 1 (指向环形缓冲区当前的写入位置)
+
+pub state\_history: Vec<StateSnapshot>, // 复杂结构
+
+}
+
+// 状态快照结构
+
+#\[derive(AnchorSerialize, AnchorDeserialize, Clone, Default)\]
+
+pub struct StateSnapshot {
+
+pub merkle\_root: \[u8; 32\], // 记忆库的指纹
+
+pub timestamp: i64, // 时间戳
+
+pub data\_uri: String, // 4 + len (外部链接)
+
+}
+
+// --- 空间计算 (极为重要) ---
+
+impl AgentAccount {
+
+// 我们需要精确计算账户所需的字节大小，支付租金 (Rent)
+
+// String 类型在 Borsh 序列化中需要 4 字节前缀存储长度
+
+const STRING\_LIMIT: usize = 50; //
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 use bytes::{Buf, BufMut, BytesMut};
 
 use std::io;
@@ -325,6 +543,7 @@ Ok(())
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 今日主线（项目）
 
 **项目**: \[\[SimpleVoting-投票合约\]\]
@@ -508,6 +727,7 @@ return (p.description, p.voteCount, p.executed);
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.20;
@@ -685,6 +905,7 @@ return (p.description, p.voteCount, p.executed);
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -879,6 +1100,7 @@ cargo run -- del 1
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1124,6 +1346,7 @@ r1.push\_str("def");
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1402,6 +1625,7 @@ a + b // 表达式作为返回值
 
 
 
+
 \# 2026-01-25 Rust入门学习
 
 \## 📅 日期
@@ -1603,6 +1827,7 @@ Ok(content)
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1851,6 +2076,7 @@ function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
 
 
 
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -2091,6 +2317,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 
 
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -2172,6 +2399,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2337,6 +2565,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2666,6 +2895,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -2867,6 +3097,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3131,6 +3362,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -3323,6 +3555,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
