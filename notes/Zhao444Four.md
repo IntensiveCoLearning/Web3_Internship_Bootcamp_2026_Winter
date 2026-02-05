@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+【今天继续完成学习任务】
+
+【1】又学了一遍remix基础，感觉更理解了
+
+【2】gas优化✅，大概原理是清楚的，只是还不知道代码基本规则
+
+【3】
+
+【19:30讲座】
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 【今天继续学习ERC。学完啦！】
 
 ![3.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Zhao444Four/images/2026-02-04-1770204669053-3.png)
@@ -70,6 +84,7 @@ Mvcs是开发者体验基石，5分钟速通，尽可能展示核心产品
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 【今天得认真学习了！】
@@ -291,6 +306,7 @@ safeTransferFrom(我, 你, id, 数量
 
 
 
+
 【今天复习了一下之前学的内容】
 
 【脑子不转了】
@@ -305,6 +321,7 @@ safeTransferFrom(我, 你, id, 数量
 
 
 
+
 1.【demo day】第一次参加黑客松，学习大家的创意！
 
 2.  真学不动了！休息1天。
@@ -312,6 +329,7 @@ safeTransferFrom(我, 你, id, 数量
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -335,11 +353,13 @@ safeTransferFrom(我, 你, id, 数量
 
 
 
+
 【今天研究一下黑客松】
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -360,6 +380,7 @@ safeTransferFrom(我, 你, id, 数量
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -469,6 +490,7 @@ dune, ethereum, rootdata, defiLlama ,token terminal
 
 
 
+
 【今天在考虑两个感兴趣的项目】
 
 bittensor：它的赛道是DeAI，从它的名字可以看出来，它在致敬比特币。它的白皮书写得非常出色动人，总体理念概括起来，就是利用达尔文优胜劣汰原理让各子网（subnet）充分竞争。为什么要在AI赛道上贯彻去中心化，是因为目前AI过于中心化了，掌握在少数科技寡头手里。bittensor并不想取而代之，而是作为AI生态里一个有益也必要的补充。其代币tao已经在涨过一波后持续低迷，去年暑假时入手。目前的现状需要进一步update。
@@ -480,6 +502,7 @@ bittensor：它的赛道是DeAI，从它的名字可以看出来，它在致敬�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -608,6 +631,7 @@ deepl翻译 网页插件很好用
 
 
 
+
 【今天完成了黑客松组队】
 
 【x402】
@@ -633,6 +657,7 @@ ERC8004相当于大众点评：第一部分，这个盘子里有哪些agent，�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -691,6 +716,7 @@ ERC8004相当于大众点评：第一部分，这个盘子里有哪些agent，�
 
 
 
+
 今天完成了两个任务（防钓鱼和zk投票），阅读了《021》第一章，参加了晚上的分享会。
 
 回答关于x402的问题：
@@ -704,6 +730,7 @@ ERC8004相当于大众点评：第一部分，这个盘子里有哪些agent，�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -998,6 +1025,7 @@ foundry：用命令行（文字RPG）玩转区块链
 
 
 
+
 【UNiswap原理】
 
 曾经浅尝试过做LP，听了这节课最大的收获不是听懂了（一点都听不懂），而是终于明白了自己有哪些不懂 ，与理解DEFI的差距到底有多大（一个银河系这么大）。
@@ -1057,6 +1085,7 @@ price vs liquidity
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1189,6 +1218,7 @@ price vs liquidity
 
 
 
+
 # eth周会
 
 ## 【新闻环节】
@@ -1230,6 +1260,7 @@ the costs of traditional cross-border payouts
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1374,6 +1405,7 @@ gas问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1603,6 +1635,7 @@ EVM（Ethereum Virtual Machine）=**以太坊的“大脑”=专门用来运行�
 
 
 
+
 # web3安全
 
 **GoPlus token安全检测官网**
@@ -1694,6 +1727,7 @@ trust wallet被插入恶意后门
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1947,6 +1981,7 @@ _开始构建你的自主智能体：为感知经济打造的agentic操作系统
 
 
 
+
 web3合规
 
 **合规风险1：金融与赌博混同**
@@ -2052,6 +2087,7 @@ web3合规
 
 
 
+
 web3运行原理
 
 **1.web3运行的起点是链上钱包，通过区块链技术进行交易，交易的过程叫出块，规制交易的方式叫合约。**
@@ -2075,6 +2111,7 @@ web3运行原理
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
