@@ -304,6 +304,7 @@ yarn verify --network sepolia
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 今天的核心学习不在“写简历”，而在如何把一个人的经历，转化成“岗位可识别的价值表达”。
 
 首先意识到一件事：
@@ -399,6 +400,7 @@ yarn verify --network sepolia
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 产品经理学习笔记
 
 一、今天学习的核心内容
@@ -483,6 +485,7 @@ yarn verify --network sepolia
 
 
 
+
 # **用 SpoonOS Graph Agent 构建可解释的对话+占卜应用**
 
 ## **1\. 目标与背景**
@@ -543,6 +546,7 @@ yarn verify --network sepolia
 
 
 
+
 -   配置前端环境变量：在 Oracle-s-Choice/frontend/.env 中设置 VITE\_API\_URL 指向本地后端 [http://localhost:8001，用于前端请求后端接口。](http://localhost:8001，用于前端请求后端接口。)
     
 -   配置后端模型与密钥：在 Oracle-s-Choice/backend/.env 中设置 GEMINI\_MODEL=gemini-2.5-flash，并配置了 Gemini 与 OpenAI 的 API Key，用于后端调用大模型服务。
@@ -552,6 +556,7 @@ yarn verify --network sepolia
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -690,6 +695,7 @@ STAR 结构
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -849,6 +855,7 @@ STAR 结构
 
 
 
+
 \# 今日打卡（Web3 Portfolio建立）
 
 \## ✅ Web3 结构与路由
@@ -928,6 +935,7 @@ STAR 结构
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1186,6 +1194,7 @@ assert
 
 
 
+
 黑客松经验分享
 
 一、什么是黑客松（Hackathon）
@@ -1359,6 +1368,7 @@ Demo
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1697,6 +1707,7 @@ Demo
 
 
 
+
 # AI 辅助搭建 Obsidian 个人知识库
 
 ## 一、为什么我们总是「收藏了不看」
@@ -2024,6 +2035,7 @@ Demo
 
 
 
+
 # DApp
 
 ## 一、DApp 的实用定义
@@ -2278,6 +2290,7 @@ Demo
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2669,6 +2682,7 @@ Demo
 
 
 
+
 ## 社区运营基础 & 活动策划与执行
 
 ### 一、前置规则与合规要求
@@ -2867,6 +2881,7 @@ Demo
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3094,6 +3109,7 @@ AI 是放大器，不是方向盘
 
 
 
+
 # 不同pre和会议记录总结
 
 ## 一、区块链金融 / On-Chain IPO（金融研究类材料）
@@ -3239,6 +3255,7 @@ AI 是放大器，不是方向盘
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3456,6 +3473,7 @@ SpoonOS 降低开发门槛，加速落地
 
 
 
+
 ## Web3 安全与刑事风险
 
 ### 一、Web3 当前整体安全形势
@@ -3533,6 +3551,7 @@ KOL 荐币、带单；
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3816,6 +3835,7 @@ Wallet（签名）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
