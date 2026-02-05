@@ -15,8 +15,232 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+# **招聘平台与职位推荐**  
+核心内容总结
+
+1.  **三大筛选原则** 强调只看“**及时 + 真实 + 准确**”的招聘信息，避免被过时岗位、假项目、诈骗链接浪费时间。
+    
+2.  **推荐的优质招聘平台**（都是相对老牌、靠谱的）
+    
+    -   web3career.build（Web3 实习计划自己的报名/机会平台，建议优先用）
+        
+    -   Web3.career（全球最大 Web3 职位聚合站，更新快、覆盖广）
+        
+    -   DeJob（偏中文 + 远程岗位，国内项目较多）
+        
+    -   SmartDeer（注重项目质量与人才匹配的新兴平台）
+        
+    
+    另外文章中还会提及一些英文站如 CryptoJobs、Ethereum Job Board 等作为补充。
+    
+3.  **12 项项目可靠性打分表**（最有实用价值的部分） 提供了一个满分 120 分的 checklist，帮助判断一个 Web3 项目/岗位是否靠谱，涉及维度包括：
+    
+    -   愿景与白皮书质量
+        
+    -   创始人/团队背景
+        
+    -   社区活跃度与真实性
+        
+    -   是否有真实产品/MVP
+        
+    -   融资情况与投资方
+        
+    -   是否要求先付费/下载不明软件等（低于 72 分强烈建议警惕）
+        
+4.  **常见骗局特征 & 防护清单** 列举了很多典型骗局套路（如：让你先付 gas fee、安装所谓“工作软件”、非官方 Telegram 私聊、高薪无门槛等），并教怎么通过官方渠道交叉验证。
+    
+5.  **运营 & 技术两条职业路径拆解**
+    
+    -   运营方向：大使计划 → 实习生 → 社区经理/市场/BD
+        
+    -   技术方向：开源贡献 → 实习 → 智能合约/后端/安全审计等 每条路径都有对应任务清单和积累经验的方法。
+        
+
+# **Web3 行业简历撰写指导**  
+**Web3 简历的“三板斧”原则**（最核心卖点）
+
+-   **链上战绩 > 宏大叙事**：别写“负责社区增长”，要写“设计 3 条 Galxe 任务，30 天内测试网跨链交互从 4,000 → 17,500（+337%），附交易哈希 0xabc…”
+    
+-   **参与度曲线 > 从属关系**：展示从 Bounty Hunter → Ambassador → Core Contributor 的成长时间轴，比单纯写“XX 项目社区经理”更可信。
+    
+-   **技能—结果 双链路**：每项技能必须配实战产出，如“熟练 Dune → 构建 Optimism 跨链流量仪表板（周查询量 1K+）”。
+    
+
+1.  **推荐简历结构**（1–2 页，关键贡献前置）
+    
+    -   **个人信息**：Telegram / Twitter(X) / GitHub / Discord Tag / 邮箱 / 微信 / 电话（Web3 招聘最看社交足迹）
+        
+    -   **学历**：相关则展开课程，不相关弱化或一笔带过
+        
+    -   **详细经历**（最多 3 段）：用 **STAR 模型** 写
+        
+        -   S：情境（项目背景/阶段）
+            
+        -   T：任务（瓶颈/目标）
+            
+        -   A：行动（具体做了什么 + 去中心化协作）
+            
+        -   R：结果（量化指标 + 链上证明链接）
+            
+    -   **技能栈 & 工具**：列出 Solidity / Galxe / Dune / Hardhat / Notion 等，每项附 GitHub / Dashboard / 合约地址 等证明
+        
+    -   **社区与 DAO 角色**（按重要性排序）：Core Contributor > Lead > Delegate > Contributor > Bounty Hunter，附 Snapshot 投票链接 / 区块高度 / 提案链接
+        
+    -   **奖项**：黑客松等有官方背书的优先，运营岗可弱化
+        
+2.  **量化指标参考表**（强烈建议抄作业）
+    
+    -   **运营向**：Telegram 新增成员、Discord 留存率、活动参与率、Galxe 任务完成数、推文曝光 / 互动量
+        
+    -   **用户增长**：测试网钱包地址数、链上 Tx 数量、日活 / 周活
+        
+    -   **技术向**：合约部署次数、审计问题级别（无 Medium 以上）、PR 合并数、GitHub 提交量
+        
+    -   **内容向**：YouTube 播放量、Mirror 阅读量、提案通过率
+        
+3.  **写作技巧 & 模板句式**
+    
+    -   每条贡献控制 **2 行以内**：【动作】+【指标变化】+【时间】+【证明链接】
+        
+    -   动词开头，高亮数字（如 **+337%**、**17,500**）
+        
+    -   技能描述示例：“Hardhat – 编写并部署可升级合约，GitHub: xxx”
+        
+    -   明确定位公式：**目标岗位 + 细分赛道 + 最大卖点**（例：Layer 2 生态增长运营 / 双语 AMA 主持人）
+        
+4.  **常见坑 & 避雷**
+    
+    -   空泛描述、无量化、无链接 → 直接被筛
+        
+    -   过分强调学历/传统公司头衔 → Web3 HR 不 care
+        
+    -   格式花哨、超过 2 页、字体乱七八糟
+        
+    -   技能罗列一堆却没产出证明
+        
+    -   社区角色乱写（HR 会去 Snapshot / Discord 核实）
+        
+5.  **制作工具推荐**
+    
+    -   Canva 在线简历模板（[https://www.canva.com/templates/EAGO\_l7bbes/）——简洁、专业、不花哨](https://www.canva.com/templates/EAGO_l7bbes/）——简洁、专业、不花哨)
+        
+    -   文章提供了 3 个虚构示例：智能合约工程师（陈大文）、研究分析师（王美丽）、社区运营师（姚大锤）
+        
+
+# **面试通关秘籍**
+
+[https://web3intern.xyz/zh/interview-preparedness/](https://web3intern.xyz/zh/interview-preparedness/) 是《Web3 实习手册》中的一章，标题为**“面试通关秘籍”**（约 2000 字，2025 年更新）。
+
+这是一篇针对 Web3 新人（尤其是大学生、0-1 经验实习生）的**系统面试准备指南**，从通用框架到运营/技术两条路径的针对性准备，再到实战技巧、跟进和心态调整。全篇强调：**Web3 面试更看重实践能力、学习意愿和对项目的真实理解**，而非死记硬背概念。面试是双向选择，展示“可预期、可沟通、可复盘”的潜力比完美答案更重要。
+
+### 核心内容总结
+
+1.  **面试准备通用框架**（所有岗位必备）
+    
+    -   **基础认知准备**（2-3 小时/项目）：
+        
+        -   深入了解目标项目：一句话概括核心价值、产品阶段、最新动态。
+            
+        -   行业基础：区块链、以太坊、DeFi、NFT、Web3 vs 传统互联网区别。
+            
+        -   个人经历梳理：用 STAR 模型准备 2-3 个最强案例（背景-任务-行动-结果）。
+            
+    -   **通用技巧**：
+        
+        -   自我介绍：1 分钟（姓名 + 背景 + 技能 + 动机）。
+            
+        -   项目介绍：3-5 分钟，用 STAR 讲清楚。
+            
+        -   技术/问题回答：不懂就诚实承认 + 说明学习计划。
+            
+        -   反问：准备 3-5 个高质量问题（团队文化、成长路径、项目挑战等）。
+            
+2.  **运营岗位面试准备**（社区运营/增长/内容/市场方向）
+    
+    -   **核心能力**：社区工具熟练（Discord/Telegram/Twitter）、内容创作（文案/公告）、数据分析（活跃率/互动率）、活动策划（AMA/Giveaway 等）。
+        
+    -   **准备清单**（强烈建议逐项打勾）：
+        
+        1.  注册并深度体验 2-3 个知名 Web3 项目社区。
+            
+        2.  分析 3-5 个优秀项目的内容/活动策略，准备 1-2 个可复盘案例。
+            
+        3.  练习 Canva 做海报、写 1-2 篇社区公告、了解关键指标（DAU、留存、互动率）。
+            
+    -   **常见问题 & 回答框架**（表格精华）：
+        
+        -   Web3 社区 vs 传统社区不同？ → 用户 crypto 原住民、去中心化价值分享、token 激励机制。
+            
+        -   如何策划一场 AMA？ → 前期选题/嘉宾/KOL 邀约 → 执行主持/互动 → 后期总结/跟进。
+            
+        -   社区 FUD 怎么处理？ → 快速响应 → 事实澄清 → 安抚情绪 → 后续信任重建。
+            
+        -   如何判断运营效果？ → 定指标 → 收集数据 → 分析结论 → 提出改进。
+            
+3.  **技术岗位面试准备**（分前端 & 后端/智能合约）
+    
+    -   **前端方向**（React + Web3 集成）：
+        
+        -   基础：HTML/CSS/JS、React/Vue、钱包连接（MetaMask）、Ethers.js/Viem。
+            
+        -   准备步骤：梳理技术栈 → 安装 MetaMask + 测试网交互 → 完成 1 个小 DApp（如余额查询、合约调用）。
+            
+        -   面试重点：
+            
+            -   React 组件/状态/生命周期（加分：Hook、性能优化）。
+                
+            -   Web3 集成：钱包连接、多链支持、错误处理。
+                
+            -   UX：加载状态、提示、响应式。
+                
+    -   **后端/智能合约方向**（Solidity 重度）：
+        
+        -   基础：Solidity 语法、合约结构、事件/修饰符、Hardhat/Foundry。
+            
+        -   准备步骤：CryptoZombies 或官方教程 → 搭建开发环境 → 写/部署/测试简单合约（ERC20、投票）。
+            
+        -   面试重点：
+            
+            -   Solidity：继承、接口、安全（重入攻击、溢出防范）。
+                
+            -   测试：写用例、覆盖边界。
+                
+            -   安全意识：常见漏洞 & 最佳实践。
+                
+4.  **面试实战技巧 & 加分项**
+    
+    -   技术题：先复述需求 → 思考过程大声说 → 代码写完解释。
+        
+    -   非技术题：为什么 Web3？（兴趣 + 前景 + 个人匹配）；职业规划（短期学习 + 长期贡献）；团队协作/压力处理（举真实例子）。
+        
+    -   加分表现：带作品集/项目 Demo、提前准备笔记、积极提问、表达持续学习计划、详细讲小项目实践。
+        
+5.  **面试后跟进 & 心态**
+    
+    -   当天：记录问题 + 自评优缺点 + 补不会的知识。
+        
+    -   24 小时内：感谢邮件 + 回顾关键点 + 补充答案/链接。
+        
+    -   持续：根据反馈迭代，下次更强。
+        
+    -   常见误区避雷：
+        
+        -   只背概念不做项目 → 面试直接露馅。
+            
+        -   不懂装懂 → 信任崩塌。
+            
+        -   临时抱佛脚 → 深度不够。
+            
+        -   只问薪资不问成长 → 显得短视。
+            
+    -   正确心态：面试 = 互相了解；学习能力 > 当前水平；诚实 + 热情最打动人。
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 # **行业前辈访谈录**
 
 1.  **大学阶段 → 初识 Web3**
@@ -62,11 +286,13 @@ timezone: UTC+8
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-02-03-1770097267957-image.png)
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-02-02-1770011921802-image.png)
@@ -77,11 +303,13 @@ timezone: UTC+8
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-31-1769863208245-image.png)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -131,6 +359,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -202,6 +431,7 @@ timezone: UTC+8
 
 
 
+
 ## **Getting Started**
 
 📌 **Foundry 是什么？**  
@@ -236,6 +466,7 @@ timezone: UTC+8
 
 
 
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -251,6 +482,7 @@ timezone: UTC+8
 
 
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -258,6 +490,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -284,6 +517,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -291,6 +525,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -325,6 +560,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -336,6 +572,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -392,6 +629,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -509,6 +747,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -549,6 +788,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -609,6 +849,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 
 
+
 # 七、执行与共识客户端的协同配合
 
 1\. 一个节点 = 执行客户端 + 共识客户端 + Engine API
@@ -638,6 +879,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -766,6 +1008,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -809,6 +1052,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -957,6 +1201,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
