@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+![屏幕截图 2026-02-05 182356.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/immortals1278/images/2026-02-05-1770287312336-_____2026-02-05_182356.png)
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 Hardhat 是以太坊智能合约开发环境，核心优势是灵活性、内置任务和插件生态。
 
 **核心功能**
@@ -56,11 +62,13 @@ Hardhat 是以太坊智能合约开发环境，核心优势是灵活性、内置
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 ![微信图片_20260201180407_147_3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/immortals1278/images/2026-02-01-1769940709709-_____20260201180407_147_3.jpg)
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 ### 完善github简介
@@ -120,6 +128,7 @@ Router（后续版本集成）。
 
 
 
+
 ## **零知识证明**
 
 **核心概念**  
@@ -160,6 +169,7 @@ Router（后续版本集成）。
 
 
 
+
 ### web3数据分析
 
 1.  **链上数据基础**：解释了交易、区块、智能合约等数据结构。
@@ -173,6 +183,7 @@ Router（后续版本集成）。
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -204,6 +215,7 @@ function pseudoRandom() private view returns (uint256) {
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -264,6 +276,7 @@ next.js框架前后端都能写
 
 
 
+
 第二周总结
 
 了解了Aave-V4，去中心化借贷协议，用户可以在里面存币赚息或借贷。
@@ -284,11 +297,13 @@ next.js框架前后端都能写
 
 
 
+
 可重入攻击源于以太坊合约调用外部合约时，状态更新与资金转出的时序错位。攻击者构造的恶意合约会在收到以太币的回调函数中，再次调用受害合约的提款函数。由于受害合约在首次转账后才更新账户余额状态，第二次调用仍会通过余额检查，导致资金被反复盗取。最有效的防御方法是使用“检查-生效-交互”模式，并在所有外部调用前完成自身状态更新。直接引入防重入锁（如OpenZeppelin的ReentrancyGuard）是简单可靠的选择，它能确保函数执行期间不被重入。同时，应谨慎使用低级别的call进行转账。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -336,6 +351,7 @@ anvil：启动本地区块链 forge：编译和部署合约 cast：和合约互�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -434,6 +450,7 @@ npm run dev
 
 
 
+
 ## 深度技术作业：
 
 ABI：json格式的接口描述，说明如何调用合约函数（函数名），如何编码或解码数据（参数，返回值）
@@ -467,6 +484,7 @@ forge script script/DeployMessageBoard.s.sol:DeployMessageBoard \`
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -524,6 +542,7 @@ forge init
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -651,6 +670,7 @@ forge init
 
 
 
+
 **1\. 核心概念**
 
 \- 新一代代币协议，融合零知识证明（ZK）与哈希算法
@@ -735,11 +755,13 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 第一周总结：了解了求职市场，找工作真的很难…不能只学写合约，还要学合约安全的部分，还要学rust。多参与链上活动如投票，贡献开源代码，建立链上声誉。 了解agent上链来帮助用户辨别选择agent，购买agent的部分
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -840,6 +862,7 @@ _场景背景_：商业机构间的会员互通场景
 
 
 
+
 一、AI的演进与核心
 
 传统AI（如早期ChatGPT）只是“高级复读机”，无状态、无工具、无身份。而未来的AI Agent将具备：
@@ -867,6 +890,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -955,6 +979,7 @@ SpoonOS是一个Web3原生的AI Agent框架，将底层复杂的钱包管理、�
 
 
 
+
 # web3运行原理
 
 ## 基础概念
@@ -1002,6 +1027,7 @@ EIP
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
