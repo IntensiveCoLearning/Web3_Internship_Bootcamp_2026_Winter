@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+先打个卡先
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 # Uniswap V4 Flash Accounting
 
 ## 一、定义
@@ -54,6 +60,7 @@ V1-V3 采用 “多合约架构”，跨池交易（如 ETH→USDC→BTC）需�
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 # Uniswap V3 ：SqrtPriceX96（价格底层表示格式）
 
@@ -101,6 +108,7 @@ V3 的集中流动性机制需要频繁计算价格与流动性的关系（如 L
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 # Uniswap V3 Tick Bitmap
 
 ## 一、定义
@@ -146,6 +154,7 @@ Tick Bitmap 是 Uniswap V3 为解决「Tick 映射不可迭代」问题设计的
 
 
 
+
 # Uniswap V3 、流动性 NFT 化（LP Token 升级）
 
 ## 一、定义
@@ -183,6 +192,7 @@ Uniswap V3 彻底改变了 V1/V2 的 LP Token 设计，将 LP 提供的 “带�
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -230,6 +240,7 @@ Uniswap V3 彻底改变了 V1/V2 的 LP Token 设计，将 LP 提供的 “带�
 
 
 
+
 # Uniswap V3 Tick 价格离散化
 
 ## 一、定义
@@ -271,6 +282,7 @@ Tick 是 Uniswap V3 实现集中流动性的核心底层机制，本质是将连
 
 
 
+
 ps：参加了黑客松，选择了赛道三，发现正是polymarket的阶段三自行去创新。和队友们讨论了不少，也逐渐把项目给做起来了，学习的时间就变短了，只看了一下集中流动性。
 
 # Uniswap V3 集中流动性（Concentrated Liquidity）
@@ -303,6 +315,7 @@ ps：参加了黑客松，选择了赛道三，发现正是polymarket的阶段�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -467,6 +480,7 @@ sqlite3 ./data/demo_indexer.db "SELECT COUNT(*) FROM markets; SELECT COUNT(*) FR
 
 
 
+
 # Bun + Hardhat 快速开发
 
 用 Bun 替代 npm/yarn 作为包管理器，大幅提升 Hardhat 构建、部署的运行效能，开发流程更轻快。
@@ -551,6 +565,7 @@ bunx hardhat ignition deploy ignition/modules/DemoDeploy.ts --network localhost
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -680,6 +695,7 @@ forge install
 
 
 
+
 * * *
 
 # Crowdfunding DApp 部署指南（挑战1）
@@ -763,6 +779,7 @@ ps :第一次部署时间比较长，我花了26min等待，之间因为时间�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1180,6 +1197,7 @@ async def main():
 
 
 
+
 ## 个人DApp（本地部署）介绍
 
 本项目是一个基于 Hardhat 框架开发的简易链上留言板。记录了从环境搭建、合约编写到本地节点部署以及前端交互的全过程。
@@ -1304,6 +1322,7 @@ _记录下输出的合约地址：_`0x...`
 
 
 
+
 # Uniswap 技术分享会+ 个人 DApp
 
 ## 一、Uniswap 技术分享会议
@@ -1357,6 +1376,7 @@ PS：当前卡点：本地部署环境未配置（Hardhat/Foundry 未初始化�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1707,6 +1727,7 @@ contract ZKVote {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2118,6 +2139,7 @@ function removeLiquidity(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2768,6 +2790,7 @@ ps： ethers.js 是以太坊链上交互的核心库，需熟练掌握 Provider�
 
 
 
+
 # 共识机制与生态展望
 
 了解以太坊共识优势与生态扩展方式
@@ -2834,6 +2857,7 @@ Danksharding、Verkle树、无状态客户端等技术均为区块链领域的�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3073,6 +3097,7 @@ ps:EVM 的沙盒本质和 Gas 的计费逻辑,本质上就是一种抠门的经�
 
 
 
+
 # 智能合约理论基础笔记
 
 深入理解智能合约到底是怎么在链上跑起来的？它的价值在哪？如何去创建、部署它，以及在写错的情况瞎，该怎么“修改”
@@ -3239,6 +3264,7 @@ ps:避免使用SELFDESTRUCT+CREATE2的“销毁重建”方案：EIP-6780后该�
 
 
 
+
 在中国Web3圈，监管的核心是“技术可以玩，金融属性别碰”。项目涉及发币、融资、交易、挖矿、返利、提现、换汇，就处于红线的边缘。技术岗也一样——写代码、设计模型、部署合约，也可能被认定为共同犯罪。并且全球监管越来越严，只有合规措施的执行，才能继续发展。
 
 除开监管之外的，更容易踩红线是贪婪作祟：高薪Token诱惑、归零风险、空投福利、陌生人全权委托、场外出金便利。这每一步都风险多多，极可能把自己送进雷区。
@@ -3337,6 +3363,7 @@ ERC-20与ERC-721代币本质是合约账户的“记账系统”：通过mapping
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3489,6 +3516,7 @@ ps:以太坊节点是网络的核心载体，合并后通过EL（算交易/管�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
