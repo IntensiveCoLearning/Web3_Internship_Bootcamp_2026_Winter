@@ -15,8 +15,800 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+# Web3 前端开发完整指南
+
+* * *
+
+## Web3 基础概念
+
+### 什么是 Web3？
+
+Web3 是基于区块链技术的新一代互联网，特点是去中心化、用户拥有数据所有权、通过加密货币进行价值交换。
+
+### 核心术语
+
+-   **区块链（Blockchain）**：分布式账本技术
+    
+-   **钱包（Wallet）**：存储加密货币和管理私钥的工具（如 MetaMask）
+    
+-   **智能合约（Smart Contract）**：部署在区块链上的自动执行代码
+    
+-   **Gas Fee**：在区块链上执行交易所需支付的费用
+    
+-   **DApp**：去中心化应用（Decentralized Application）
+    
+-   **NFT**：非同质化代币（Non-Fungible Token）
+    
+-   **ERC-20**：以太坊上的同质化代币标准
+    
+-   **ERC-721**：以太坊上的 NFT 标准
+    
+
+* * *
+
+## 核心技术栈
+
+### 必备基础
+
+```
+传统前端技能
+├── HTML/CSS/JavaScript
+├── React/Vue/Angular（任一框架）
+├── TypeScript
+└── 异步编程（Promise、async/await）
+```
+
+### Web3 专用技术
+
+```
+Web3 技术栈
+├── 钱包连接
+│   ├── MetaMask
+│   ├── WalletConnect
+│   └── Coinbase Wallet
+├── 区块链交互库
+│   ├── ethers.js（推荐）
+│   ├── web3.js
+│   └── viem（新一代库）
+├── 智能合约开发
+│   ├── Solidity（合约语言）
+│   ├── Hardhat（开发框架）
+│   └── Remix（在线IDE）
+└── Web3 UI 框架
+    ├── RainbowKit
+    ├── Web3Modal
+    └── ConnectKit
+```
+
+* * *
+
+## 开发环境搭建
+
+### 1\. 安装 Node.js 和包管理器
+
+```bash
+# 确保 Node.js 版本 >= 16
+node -v
+npm -v
+
+# 或使用 pnpm/yarn
+npm install -g pnpm
+```
+
+### 2\. 创建 React + Web3 项目
+
+```bash
+# 使用 Vite 创建项目
+npm create vite@latest my-web3-app -- --template react-ts
+cd my-web3-app
+
+# 安装 Web3 依赖
+npm install ethers@^6.0.0
+npm install wagmi viem @tanstack/react-query
+npm install @rainbow-me/rainbowkit
+
+# 安装开发依赖
+npm install -D @types/node
+```
+
+### 3\. 安装 MetaMask 浏览器扩展
+
+-   Chrome/Brave: [MetaMask官网](https://metamask.io/)
+    
+-   创建钱包并保存助记词（切勿泄露！）
+    
+-   切换到测试网络（Sepolia、Goerli）
+    
+
+### 4\. 获取测试币
+
+-   Sepolia 水龙头: [https://sepoliafaucet.com/](https://sepoliafaucet.com/)
+    
+-   Goerli 水龙头: [https://goerlifaucet.com/](https://goerlifaucet.com/)
+    
+
+* * *
+
+## 智能合约交互
+
+### 基础概念
+
+1\. Provider（提供者）
+
+连接到区块链网络的接口，可以读取区块链数据。
+
+```typescript
+import { ethers } from 'ethers';
+
+// 连接到以太坊主网（只读）
+const provider = new ethers.JsonRpcProvider('https://eth-mainnet.g.alchemy.com/v2/YOUR-API-KEY');
+
+// 使用 MetaMask 的 Provider
+const provider = new ethers.BrowserProvider(window.ethereum);
+```
+
+2\. Signer（签名者）
+
+可以签署交易的账户，用于发送交易和修改区块链状态。
+
+```typescript
+// 获取用户账户
+const signer = await provider.getSigner();
+const address = await signer.getAddress();
+```
+
+3\. Contract（合约）
+
+智能合约的 JavaScript 表示。
+
+```typescript
+const contractAddress = '0x...';
+const contractABI = [ /* ABI 数组 */ ];
+
+const contract = new ethers.Contract(
+  contractAddress,
+  contractABI,
+  signer // 使用 signer 可以调用写入方法
+);
+```
+
+### 完整示例：连接钱包并读取余额
+
+```typescript
+import { ethers } from 'ethers';
+import { useState } from 'react';
+
+function WalletConnect() {
+  const [address, setAddress] = useState<string>('');
+  const [balance, setBalance] = useState<string>('');
+
+  const connectWallet = async () => {
+    try {
+      // 检查是否安装 MetaMask
+      if (!window.ethereum) {
+        alert('请安装 MetaMask!');
+        return;
+      }
+
+      // 请求连接钱包
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      
+      // 获取签名者
+      const signer = await provider.getSigner();
+      const userAddress = await signer.getAddress();
+      setAddress(userAddress);
+
+      // 获取余额
+      const balance = await provider.getBalance(userAddress);
+      setBalance(ethers.formatEther(balance));
+
+    } catch (error) {
+      console.error('连接失败:', error);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={connectWallet}>连接钱包</button>
+      {address && (
+        <div>
+          <p>地址: {address}</p>
+          <p>余额: {balance} ETH</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### 与智能合约交互
+
+ERC-20 代币合约示例
+
+```typescript
+import { ethers } from 'ethers';
+
+// ERC-20 标准 ABI（简化版）
+const ERC20_ABI = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function decimals() view returns (uint8)",
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint256)",
+  "function transfer(address to, uint256 amount) returns (bool)",
+  "event Transfer(address indexed from, address indexed to, uint256 value)"
+];
+
+async function interactWithToken() {
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const signer = await provider.getSigner();
+  
+  // USDT 合约地址（以太坊主网）
+  const tokenAddress = '0xdAC17F958D2ee523a2206206994597C13D831ec7';
+  const contract = new ethers.Contract(tokenAddress, ERC20_ABI, signer);
+
+  // 读取代币信息
+  const name = await contract.name();
+  const symbol = await contract.symbol();
+  const decimals = await contract.decimals();
+  
+  console.log(`代币: ${name} (${symbol})`);
+  console.log(`精度: ${decimals}`);
+
+  // 查询余额
+  const userAddress = await signer.getAddress();
+  const balance = await contract.balanceOf(userAddress);
+  console.log(`余额: ${ethers.formatUnits(balance, decimals)}`);
+
+  // 转账（需要用户确认）
+  const recipient = '0x...'; // 接收地址
+  const amount = ethers.parseUnits('10', decimals); // 10 个代币
+  
+  const tx = await contract.transfer(recipient, amount);
+  console.log('交易哈希:', tx.hash);
+  
+  // 等待交易确认
+  const receipt = await tx.wait();
+  console.log('交易已确认:', receipt);
+}
+```
+
+监听合约事件
+
+```typescript
+// 监听转账事件
+contract.on('Transfer', (from, to, value, event) => {
+  console.log(`从 ${from} 转账 ${ethers.formatUnits(value, 18)} 到 ${to}`);
+});
+
+// 监听特定地址的转账
+const filter = contract.filters.Transfer(userAddress, null);
+contract.on(filter, (from, to, value) => {
+  console.log('收到转账:', ethers.formatUnits(value, 18));
+});
+```
+
+* * *
+
+## 常用库和工具
+
+### 1\. Wagmi - React Hooks for Ethereum
+
+现代化的 React Hooks 库，简化 Web3 开发。
+
+```typescript
+import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { useAccount, useConnect, useDisconnect, useBalance } from 'wagmi';
+
+// 配置
+const { chains, publicClient } = configureChains(
+  [mainnet],
+  [publicProvider()]
+);
+
+const config = createConfig({
+  autoConnect: true,
+  publicClient,
+});
+
+// 使用
+function App() {
+  return (
+    <WagmiConfig config={config}>
+      <Profile />
+    </WagmiConfig>
+  );
+}
+
+function Profile() {
+  const { address, isConnected } = useAccount();
+  const { connect, connectors } = useConnect();
+  const { disconnect } = useDisconnect();
+  const { data: balance } = useBalance({ address });
+
+  if (isConnected) {
+    return (
+      <div>
+        <p>地址: {address}</p>
+        <p>余额: {balance?.formatted} {balance?.symbol}</p>
+        <button onClick={() => disconnect()}>断开连接</button>
+      </div>
+    );
+  }
+
+  return (
+    <button onClick={() => connect({ connector: connectors[0] })}>
+      连接钱包
+    </button>
+  );
+}
+```
+
+### 2\. RainbowKit - 钱包连接 UI
+
+提供美观的钱包连接界面。
+
+```typescript
+import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum],
+  [publicProvider()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My DApp',
+  projectId: 'YOUR_PROJECT_ID', // 从 WalletConnect Cloud 获取
+  chains
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient
+});
+
+function App() {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        {/* 你的应用 */}
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+}
+```
+
+### 3\. The Graph - 数据查询
+
+使用 GraphQL 查询区块链数据。
+
+```typescript
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+  cache: new InMemoryCache()
+});
+
+const GET_TOKENS = gql`
+  query {
+    tokens(first: 5, orderBy: volumeUSD, orderDirection: desc) {
+      id
+      name
+      symbol
+      volumeUSD
+    }
+  }
+`;
+
+async function fetchTokens() {
+  const { data } = await client.query({ query: GET_TOKENS });
+  console.log(data.tokens);
+}
+```
+
+### 4\. IPFS - 去中心化存储
+
+```bash
+# 安装
+npm install ipfs-http-client
+
+# 使用
+import { create } from 'ipfs-http-client';
+
+const client = create({ url: 'https://ipfs.infura.io:5001/api/v0' });
+
+async function uploadToIPFS(file: File) {
+  const added = await client.add(file);
+  const url = `https://ipfs.io/ipfs/${added.path}`;
+  return url;
+}
+```
+
+* * *
+
+## 实战项目
+
+### 项目一：简单的 NFT 展示 DApp
+
+```typescript
+import { ethers } from 'ethers';
+import { useState, useEffect } from 'react';
+
+const NFT_CONTRACT_ADDRESS = '0x...';
+const NFT_ABI = [
+  "function tokenURI(uint256 tokenId) view returns (string)",
+  "function ownerOf(uint256 tokenId) view returns (address)",
+  "function balanceOf(address owner) view returns (uint256)"
+];
+
+function NFTGallery() {
+  const [nfts, setNfts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const loadNFTs = async () => {
+    setLoading(true);
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      
+      const contract = new ethers.Contract(
+        NFT_CONTRACT_ADDRESS,
+        NFT_ABI,
+        provider
+      );
+
+      // 获取用户拥有的 NFT 数量
+      const balance = await contract.balanceOf(address);
+      const nftList = [];
+
+      // 假设 tokenId 从 0 开始
+      for (let i = 0; i < Number(balance); i++) {
+        const tokenURI = await contract.tokenURI(i);
+        
+        // 获取元数据
+        const response = await fetch(tokenURI);
+        const metadata = await response.json();
+        
+        nftList.push({
+          id: i,
+          name: metadata.name,
+          image: metadata.image,
+          description: metadata.description
+        });
+      }
+
+      setNfts(nftList);
+    } catch (error) {
+      console.error('加载失败:', error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    loadNFTs();
+  }, []);
+
+  if (loading) return <div>加载中...</div>;
+
+  return (
+    <div className="nft-gallery">
+      {nfts.map(nft => (
+        <div key={nft.id} className="nft-card">
+          <img src={nft.image} alt={nft.name} />
+          <h3>{nft.name}</h3>
+          <p>{nft.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### 项目二：代币交换界面（简化版 DEX）
+
+```typescript
+import { ethers } from 'ethers';
+import { useState } from 'react';
+
+function TokenSwap() {
+  const [amountIn, setAmountIn] = useState('');
+  const [amountOut, setAmountOut] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Uniswap V2 Router 地址
+  const ROUTER_ADDRESS = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
+  const ROUTER_ABI = [
+    "function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] path, address to, uint deadline) returns (uint[] amounts)"
+  ];
+
+  const handleSwap = async () => {
+    setLoading(true);
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const router = new ethers.Contract(ROUTER_ADDRESS, ROUTER_ABI, signer);
+
+      const tokenA = '0x...'; // Token A 地址
+      const tokenB = '0x...'; // Token B 地址
+      const path = [tokenA, tokenB];
+      
+      const amountInWei = ethers.parseEther(amountIn);
+      const amountOutMin = ethers.parseEther(amountOut).mul(95).div(100); // 5% 滑点
+      const deadline = Math.floor(Date.now() / 1000) + 60 * 20; // 20 分钟
+
+      const tx = await router.swapExactTokensForTokens(
+        amountInWei,
+        amountOutMin,
+        path,
+        await signer.getAddress(),
+        deadline
+      );
+
+      await tx.wait();
+      alert('交换成功!');
+    } catch (error) {
+      console.error('交换失败:', error);
+      alert('交换失败');
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div className="swap-container">
+      <h2>代币交换</h2>
+      <input
+        type="number"
+        placeholder="输入金额"
+        value={amountIn}
+        onChange={(e) => setAmountIn(e.target.value)}
+      />
+      <p>预计获得: {amountOut}</p>
+      <button onClick={handleSwap} disabled={loading}>
+        {loading ? '交换中...' : '交换'}
+      </button>
+    </div>
+  );
+}
+```
+
+* * *
+
+## 最佳实践
+
+### 1\. 安全性
+
+```typescript
+// ❌ 不安全：硬编码私钥
+const privateKey = '0x123...';
+
+// ✅ 安全：使用环境变量
+const privateKey = import.meta.env.VITE_PRIVATE_KEY;
+
+// ✅ 最佳：让用户使用自己的钱包
+const provider = new ethers.BrowserProvider(window.ethereum);
+```
+
+### 2\. 错误处理
+
+```typescript
+async function safeContractCall() {
+  try {
+    const tx = await contract.transfer(to, amount);
+    await tx.wait();
+  } catch (error: any) {
+    // 用户拒绝交易
+    if (error.code === 4001) {
+      console.log('用户取消了交易');
+    }
+    // Gas 不足
+    else if (error.code === 'INSUFFICIENT_FUNDS') {
+      console.log('余额不足');
+    }
+    // 其他错误
+    else {
+      console.error('交易失败:', error.message);
+    }
+  }
+}
+```
+
+### 3\. Gas 优化
+
+```typescript
+// 估算 Gas
+const gasEstimate = await contract.transfer.estimateGas(to, amount);
+console.log('预计 Gas:', gasEstimate.toString());
+
+// 设置 Gas Limit（增加 20% 缓冲）
+const gasLimit = gasEstimate.mul(120).div(100);
+
+const tx = await contract.transfer(to, amount, {
+  gasLimit: gasLimit
+});
+```
+
+### 4\. 多链支持
+
+```typescript
+const CHAIN_CONFIG = {
+  1: { name: 'Ethereum', rpc: 'https://...' },
+  137: { name: 'Polygon', rpc: 'https://...' },
+  56: { name: 'BSC', rpc: 'https://...' }
+};
+
+async function switchNetwork(chainId: number) {
+  try {
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: `0x${chainId.toString(16)}` }],
+    });
+  } catch (error: any) {
+    // 链未添加，需要添加
+    if (error.code === 4902) {
+      await window.ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [{
+          chainId: `0x${chainId.toString(16)}`,
+          chainName: CHAIN_CONFIG[chainId].name,
+          rpcUrls: [CHAIN_CONFIG[chainId].rpc],
+        }],
+      });
+    }
+  }
+}
+```
+
+### 5\. 性能优化
+
+```typescript
+import { useMemo } from 'react';
+
+function TokenList({ tokens }) {
+  // 缓存合约实例
+  const contract = useMemo(() => {
+    return new ethers.Contract(address, abi, provider);
+  }, [address, provider]);
+
+  // 批量请求
+  const multicall = async () => {
+    const calls = tokens.map(token => 
+      contract.interface.encodeFunctionData('balanceOf', [token])
+    );
+    
+    // 使用 Multicall 合约一次性获取所有数据
+    const results = await multicallContract.aggregate(calls);
+    return results;
+  };
+
+  return <div>{/* UI */}</div>;
+}
+```
+
+* * *
+
+## 常见问题
+
+### Q1: MetaMask 连接失败？
+
+**A:**
+
+-   检查是否安装了 MetaMask
+    
+-   刷新页面重试
+    
+-   检查网络连接
+    
+-   查看浏览器控制台错误信息
+    
+
+### Q2: 交易失败，Gas 不足？
+
+**A:**
+
+-   确保钱包有足够的原生代币（ETH/MATIC 等）
+    
+-   增加 Gas Limit
+    
+-   等待网络拥堵缓解后重试
+    
+
+### Q3: 如何获取合约 ABI？
+
+**A:**
+
+-   Etherscan 上查看已验证的合约
+    
+-   从合约源代码编译获取
+    
+-   使用 Hardhat/Truffle 开发时自动生成
+    
+
+### Q4: 测试网和主网有什么区别？
+
+**A:**
+
+-   测试网：用于开发测试，代币无价值，可免费获取
+    
+-   主网：真实的区块链网络，代币有实际价值
+    
+-   部署前务必在测试网充分测试
+    
+
+### Q5: 如何调试智能合约交互？
+
+**A:**
+
+```typescript
+// 使用 console.log
+console.log('交易参数:', { to, amount: amount.toString() });
+
+// 监听事件
+contract.on('Transfer', (...args) => {
+  console.log('Transfer 事件:', args);
+});
+
+// 使用浏览器 DevTools
+// 在 Network 标签查看 JSON-RPC 请求
+```
+
+* * *
+
+## 学习资源
+
+### 官方文档
+
+-   [Ethers.js 文档](https://docs.ethers.org/)
+    
+-   [Wagmi 文档](https://wagmi.sh/)
+    
+-   [Solidity 文档](https://docs.soliditylang.org/)
+    
+
+### 教程和课程
+
+-   [CryptoZombies](https://cryptozombies.io/) - Solidity 游戏化教程
+    
+-   [Buildspace](https://buildspace.so/) - Web3 项目实战
+    
+-   [Alchemy University](https://university.alchemy.com/) - 免费 Web3 开发课程
+    
+
+### 工具和平台
+
+-   [Remix IDE](https://remix.ethereum.org/) - 在线智能合约开发
+    
+-   [Hardhat](https://hardhat.org/) - 本地开发框架
+    
+-   [Etherscan](https://etherscan.io/) - 区块链浏览器
+    
+-   [Alchemy](https://www.alchemy.com/) - 节点服务提供商
+    
+-   [Infura](https://infura.io/) - 以太坊 API 服务
+    
+
+### 社区
+
+-   [Ethereum Stack Exchange](https://ethereum.stackexchange.com/)
+    
+-   [r/ethdev](https://reddit.com/r/ethdev)
+    
+-   Discord 服务器：Ethers.js, Wagmi, OpenZeppelin
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 Finish：
 
 \[x\] Uniswap V3前三章实操
@@ -24,6 +816,7 @@ Finish：
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 今日完成：
 
@@ -34,11 +827,13 @@ Finish：
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 \[x\] I人完成Demo路演😭，天下英雄如过江之鲫😔
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -51,6 +846,7 @@ Finish：
 
 
 
+
 一天极限跑完整个项目：
 
 repo : [https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo](https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo)
@@ -58,6 +854,7 @@ repo : [https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo](https://github.com
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -2343,6 +3140,7 @@ contract CompleteHookExample is BaseHook {
 
 
 
+
 # Uniswap V3 学习笔记
 
 ## 1\. 概述
@@ -4006,6 +4804,7 @@ y = L * (√P - √P_a)
 
 
 
+
 # day16
 
 \[x\] Finish Challenge0 -Tokenization
@@ -4015,6 +4814,7 @@ y = L * (√P - √P_a)
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -4749,6 +5549,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day14
 
 \[x\] Uniswap V2 Factory合约代码解读
@@ -4770,6 +5571,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day13
 
 \[x\]搭建了本地区块链节点
@@ -4779,6 +5581,7 @@ _最后更新：2026年1月_
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -5391,6 +6194,7 @@ library SafeMath {
 
 
 
+
 # DAY11
 
 周始，观废寝忘食刷榜、寻到offer者甚多，顿觉无力，浑噩踱步，不知所向
@@ -5404,6 +6208,7 @@ library SafeMath {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -5787,6 +6592,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY9
 
 古法笔记：
@@ -5814,6 +6620,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY8
 
 \[\]frontend
@@ -5823,6 +6630,7 @@ router.swapExactTokensForTokens(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -5877,6 +6685,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -5960,6 +6769,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -6105,6 +6915,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -6203,6 +7014,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -6415,6 +7227,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -6511,6 +7324,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
