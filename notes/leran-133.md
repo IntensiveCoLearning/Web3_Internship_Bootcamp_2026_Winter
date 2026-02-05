@@ -15,8 +15,208 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+根据你提供的图片内容（第4周学习计划），结合你之前学习过 Hardhat 和 Foundry，我来帮你整理今天的学习任务、代码示例和学习笔记结构。
+
+\---
+
+📅 今日任务总结（基于图片内容）
+
+1\. 复习巩固 → 回顾 Hardhat 和 Foundry 的基础使用
+
+2\. 上手实战 → 完成一个简单的 Solidity 示例项目
+
+3\. 挑战练习 → 开始学习如何创建 NFT（根据链接内容）
+
+4\. 准备分享 → 整理笔记，准备周五例会分享
+
+\---
+
+📘 学习笔记结构建议
+
+一、Hardhat 与 Foundry 对比回顾
+
+特性 Hardhat Foundry
+
+语言 JavaScript/TypeScript Rust
+
+测试框架 Mocha/Chai Forge（内置）
+
+部署脚本 支持 支持（通过 Forge Script）
+
+交互式控制台 npx hardhat console forge script + cast
+
+优势 插件丰富、社区成熟 速度快、本地调试强
+
+\---
+
+二、今日实战：ERC-20 代币合约（Foundry 版本）
+
+1\. 创建项目
+
+\`\`\`bash
+
+forge init erc20-example
+
+cd erc20-example
+
+\`\`\`
+
+2\. 编写合约
+
+创建 src/MyToken.sol：
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.26;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract MyToken is ERC20 {
+
+constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
+
+\_mint(msg.sender, initialSupply _10_ \* decimals());
+
+}
+
+}
+
+\`\`\`
+
+3\. 安装依赖
+
+\`\`\`bash
+
+forge install OpenZeppelin/openzeppelin-contracts
+
+\`\`\`
+
+4\. 编写测试
+
+创建 test/MyToken.t.sol：
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.26;
+
+import "forge-std/Test.sol";
+
+import "../src/MyToken.sol";
+
+contract MyTokenTest is Test {
+
+MyToken token;
+
+address owner = address(1);
+
+function setUp() public {
+
+vm.prank(owner);
+
+token = new MyToken(1000); // 初始发行 1000 个
+
+}
+
+function testInitialSupply() public {
+
+assertEq(token.totalSupply(), 1000 _10_ \* token.decimals());
+
+}
+
+function testBalanceOfOwner() public {
+
+assertEq(token.balanceOf(owner), 1000 _10_ \* token.decimals());
+
+}
+
+}
+
+\`\`\`
+
+5\. 运行测试
+
+\`\`\`bash
+
+forge test -vvv
+
+\`\`\`
+
+\---
+
+三、今日挑战：NFT 创建入门
+
+根据你提供的链接：
+
+· 文档：[https://speedrunethereum.com/challenge/tutorials/](https://speedrunethereum.com/challenge/tutorials/)
+
+· 视频：[https://www.youtube.com/watch?v=ej\_RgaO1Pr0&list=PLJz1HruEnenAf80uOfDgXwVbEeRc9yQ](https://www.youtube.com/watch?v=ej_RgaO1Pr0&list=PLJz1HruEnenAf80uOfDgXwVbEeRc9yQ)
+
+快速实现一个 NFT 合约（ERC-721）
+
+\`\`\`solidity
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.26;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+import "@openzeppelin/contracts/utils/Counters.sol";
+
+contract SimpleNFT is ERC721 {
+
+using Counters for Counters.Counter;
+
+Counters.Counter private \_tokenIds;
+
+constructor() ERC721("SimpleNFT", "SNFT") {}
+
+function mintNFT(address recipient) public returns (uint256) {
+
+\_tokenIds.increment();
+
+uint256 newTokenId = \_tokenIds.current();
+
+\_safeMint(recipient, newTokenId);
+
+return newTokenId;
+
+}
+
+}
+
+\`\`\`
+
+\---
+
+本周学习总结
+
+掌握内容：
+
+1\. Hardhat 项目创建、测试、部署流程
+
+2\. Foundry 项目创建、测试、本地调试
+
+3\. ERC-20 代币合约编写与测试
+
+4\. ERC-721 NFT 合约基础结构实践成果：
+
+\- 成功部署一个 ERC-20 代币到本地网络
+
+\- 使用 Foundry 完成合约测试（覆盖率 xx%）
+
+\- 创建了一个简单的 NFT 合约
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 大致完成了Foudary学习，下面总结
 
 Foundry 掌握要点总结
@@ -92,6 +292,7 @@ anvil → 部署测试 → cast 交互
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 Foundry 进阶开发指南
 
@@ -628,6 +829,7 @@ forge geiger # 检查不安全操作
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 Foundry 开发工具包学习笔记
 
 概述
@@ -831,6 +1033,7 @@ REPL 内操作示例
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1131,6 +1334,7 @@ npx hardhat test 运行测试
 
 
 
+
 5.1 自定义任务
 
 \`\`\`typescript
@@ -1414,6 +1618,7 @@ async function interact() {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1832,6 +2037,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 
 
+
 智能合约实践关键注意事项：最后一天进行系统性学习，明天开始实践
 
 一、安全优先
@@ -1887,6 +2093,7 @@ expect(block2!.timestamp).to.equal(block1!.timestamp + 100n);
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2309,6 +2516,7 @@ balance := balance(addr)
 
 
 
+
 Solidity 智能合约基础语法笔记
 
 一、基础结构
@@ -2596,6 +2804,7 @@ emit CountChanged(\_count, msg.sender);
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2928,6 +3137,7 @@ GitHub 工作流：
 
 
 
+
 一、Dapp核心概念与架构
 
 1\. 什么是Dapp
@@ -3136,6 +3346,7 @@ GitHub 工作流：
 
 
 
+
 一、核心比喻
 
 · Foundry：代码特种兵的战场
@@ -3295,6 +3506,7 @@ C. 交互
 
 
 
+
 Layer2 核心理念
 
 资产锁 L1，交易在 L2 执行，结果提交回 L1 裁决。目标是速度与成本优化，同时兼顾安全与去中心化。
@@ -3342,6 +3554,7 @@ DAO 本质
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3446,6 +3659,7 @@ DAO 本质
 
 
 
+
 今日学习，安全与合规，根据我国最新出台法律，对加密货币有严格限制，加密货币行业虽然先进且方便，但是充斥着不确定与危险性，空投项目，挖矿项目等等都被严格限制，我们作为技术人员尽量也不要参加相关项目的开发，哪怕是写代码也难逃法律责任，更不用说教唆人们参加或者自己参加了，我们应该提前预防了解哪些行为可能造成违法，因为我们有时候出于对钱财的渴望会相信一些东西，看似不违法但其实有很大风险，交易对手如果涉嫌洗钱和非法经营给我们转帐，那我们甚至有可能被卷入协助非法洗钱的罪名，虚拟货币兑换一定要对对方的背景信息，钱财来源进行审核，并且虚拟货币在我国不被法律承认，涉及虚拟货币的纠纷可能不被法院受理，我们要注意，合同可能无效，我们要尽量在合同签前多思考，不让自己利益受损，同时全球虚拟货币行业也在提出更多监管，正在让虚拟货币不断合规化，虚拟货币的风险被监管体系脱离传统金融体系，我认为虚拟货币虽然具有交易属性，但上层希望让其作为商品，而非主流交易工具。
 
 之后，我们来讨论新型雇佣关系，1.区块链行业许多项目无法在国内注册公司，这时我们如果入职，我们将不受基本劳动法的保障，更多时候采用委托国内公司雇佣，总之关注社保和公积金结构，要能享受到社会保障服务，2.既然是虚拟货币公司，有的公司工资结构中会有虚拟货币，出金是最主要转换手段，在这之中我们还是要关注交易对手的资金来源，活动，以免陷入违法指控，可以与公司协商薪资结构，此外小心自发Token，这种代币不是主流，波动性和风险极大，项目结束后有可能失去价值，
@@ -3459,6 +3673,7 @@ DAO 本质
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -3785,6 +4000,7 @@ emit Voted(candidateId, msg.sender);
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
