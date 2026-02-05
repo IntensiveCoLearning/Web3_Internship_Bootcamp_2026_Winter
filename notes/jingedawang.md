@@ -15,8 +15,52 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+**区块链前端整合**
+
+为了让普通用户能调用合约，需要在前端集成链上功能。最简单的步骤如下：
+
+-   设置好ABI（Application Binary Interface）。因为合约代码是二进制格式的，所以需要指明接口格式才能调用。这里的ABI是JSON格式。
+    
+-   使用Viem、Wagmi等库连接用户钱包，向区块链发送请求。所有与链上信息交互的过程都通过这类web3库实现。
+    
+
+下面是一段使用Viem实现的功能。其中，需要指定RPC调用接口，如果是本地测试网络，需要写本地IP。publicClient只能读取数据，不能写入区块链。walletClient直接借用MetaMask钱包的RPC连接，可以将数据写入区块链。这样做的好处是，钱包负责签名，避免私钥暴露给前端应用。
+
+```solidity
+import { createPublicClient, http, createWalletClient, custom } from 'viem';
+
+// 读取客户端（无需签名）
+const publicClient = createPublicClient({
+  transport: http('<https://rpc.sepolia.org>')
+});
+
+// 写入客户端（需要钱包签名）
+const walletClient = createWalletClient({
+  transport: custom(window.ethereum)
+});
+
+// 读取数据（免费）
+const data = await publicClient.readContract({
+  address: contractAddress,
+  abi: ABI,
+  functionName: 'getMessage'
+});
+
+// 写入数据（需要交易）
+await walletClient.writeContract({
+  address: contractAddress,
+  abi: ABI,
+  functionName: 'setMessage',
+  args: ['Hello']
+});
+```
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 Antonia（[https://linktr.ee/antoniayly）讲：就业简历指导](https://linktr.ee/antoniayly）讲：就业简历指导) & 面经分享
 
 [https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl](https://hackmd.io/@hWAG5WOhSY6UoOL9VfSUNQ/HyzZH9TLWl)
@@ -29,11 +73,13 @@ Go语言在Web3中用的比较多。
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 黑客松demo day。
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 听Space论坛 **NFT价值流向 | 买一个NFT，我的钱去哪了**
@@ -47,6 +93,7 @@ NFT当时是伴随元宇宙的概念火起来的。后来元宇宙凉了，NFT�
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -65,6 +112,7 @@ NFT当时是伴随元宇宙的概念火起来的。后来元宇宙凉了，NFT�
 
 
 
+
 Weiling老师：SpoonOS框架从0-1搭建MCP和Skill的Agent。
 
 ![image.png](attachment:8c6e5684-8d9a-427f-bf26-1009dee44d13:image.png)
@@ -74,6 +122,7 @@ Skill竟然使用关键词或者正则表达式匹配触发，为什么不让模
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -224,6 +273,7 @@ Solidity 0.8之前不检测算数溢出，如果有个计数器达到最大值�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -567,6 +617,7 @@ contract EventExample {
 
 
 
+
 Hardhat需要用JS编写部署的代码。感觉文档写的不是特别容易理解。Web3实习手册里面也没说清楚。
 
 Web3的前端一般通过调用RPC节点的服务实现查询余额、发起交易等功能。
@@ -601,6 +652,7 @@ Web3的前端一般通过调用RPC节点的服务实现查询余额、发起交�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -750,6 +802,7 @@ KR的内容要尽可能量化。比如
 
 
 
+
 Jeff Huang老师讲Uniswap工作原理解析
 
 p是x用y表示的价格，也就是曲线的斜率。
@@ -793,6 +846,7 @@ BD：Business Development，商务拓展。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -892,6 +946,7 @@ Web3 + 乡村建设：南塘DAO
 
 
 
+
 ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数据仍然需要压缩上链。为了进一步提高效率，新的方案不把交易数据上链，只上链交易树的root hash以及ZK证明。这就是**Validium**。
 
 **Volition**进一步改进Validium，运用用户选择是否让交易上L1链。大额交易，对安全性要求高的交易可以选择上L1，其它的和Validium一样。
@@ -907,6 +962,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -976,6 +1032,7 @@ ZK-Rollup使用ZK证明交易的合法性，使用L1确保安全性，交易数�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1144,11 +1201,13 @@ SNARK落地更快，STARK前景更好。
 
 
 
+
 今天参加了周会，提了一些问题。其它的没什么进度。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1247,6 +1306,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 
 
+
 几个问题
 
 -   web3比web2快？我理解其实不会，只是上去了合规审查的部分，出海更方便了。Ricky也委婉表达了这个观点。
@@ -1258,6 +1318,7 @@ AI Agent的无状态性缺点可能通过Web3解决，将身份上链。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1441,6 +1502,7 @@ Gas 费用 = **用多少 × 每单位多少钱**，就像你打车一样：
 
 
 
+
 ## **以太坊概览**
 
 以太坊是区块链2.0，比特币是区块链1.0。
@@ -1511,6 +1573,7 @@ MetaMask这种钱包App生成私钥后会保存在本地，设置的密码用来
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
