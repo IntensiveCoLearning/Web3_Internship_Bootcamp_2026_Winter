@@ -15,8 +15,22 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+to do list：
+
+1.  回家了就需要这个饭局那个饭局的
+    
+2.  完成 figma 任务
+    
+3.  完成 ai vibe coding 的学习
+    
+4.  继续学习基础课程
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 to do list:
 
 1.  刚刚回家，准备把简历完善一下
@@ -31,6 +45,7 @@ to do list:
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 to do list:
 
 1.  这几天都忙得起飞，没有什么时间学习和进行工作了。忙着回家
@@ -42,6 +57,7 @@ to do list:
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 休闲黑客松终于完成了！！！  
@@ -60,6 +76,7 @@ to do list：
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -82,6 +99,7 @@ to do list：
 
 
 
+
 to do list:
 
 1.完成论文
@@ -97,6 +115,7 @@ to do list:
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -125,6 +144,7 @@ to do list：
 
 
 
+
 to do list:
 
 1.完成休闲黑客松的任务
@@ -136,6 +156,7 @@ to do list:
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -163,6 +184,7 @@ to do list：
 
 
 
+
 to do list：
 
 1.  完成open day 推文
@@ -176,6 +198,7 @@ to do list：
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -212,6 +235,7 @@ to do list:
 
 
 
+
 to do list:
 
 1.完成休闲黑客松的推文制作并且通过审核
@@ -225,6 +249,7 @@ to do list:
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -295,6 +320,7 @@ Web3 实习计划——day12
 
 
 
+
 to do list:
 
 1.练背
@@ -308,6 +334,7 @@ to do list:
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -381,6 +408,7 @@ Web1是只提供了一个信息的查阅，我们只能够接受和阅读电脑�
 
 
 
+
 to do list:
 
 1.练胸
@@ -394,6 +422,7 @@ to do list:
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -439,6 +468,7 @@ to do list:
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -552,6 +582,7 @@ to do list:
 
 
 
+
 to do list:
 
 1.完成figma软件的下载以及基础应用
@@ -569,6 +600,7 @@ Alex老师为我们介绍了一个应用，能够在隐私保护以及方便使�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -646,6 +678,7 @@ web3实习计划day6
 
 
 
+
 to do list:
 
 1.完成solidirity的环境搭建
@@ -667,6 +700,7 @@ to do list:
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -804,6 +838,7 @@ hub，害怕、恐惧，容易低价卖出
 
 
 
+
 to do list:
 
 1.完成第一个NFT
@@ -887,6 +922,7 @@ Web3的合规问题，给我们讲课分享的邓律用了这么一句话来总�
 
 
 
+
 我是sam，一个本科专业是国际经济与贸易的小白学生。小白到以太坊是什么玩意儿都不清楚的小白，今天请大家跟随我的视角开始第二天的Web3学习。
 
 今天的主要任务有两项，第一项是co-learning；第二项是web3运行原理分享会。现在请大家跟随我的视角进行回顾。
@@ -910,6 +946,7 @@ co-learning就是大家在一起线上共学一个小时，并且助教老师也
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
