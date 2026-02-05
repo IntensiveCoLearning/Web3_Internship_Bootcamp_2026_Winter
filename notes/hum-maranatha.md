@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+昨天忘记打卡了。。。。。。。。。。。。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 今天在学习运营方法
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 -   钱包与签名
@@ -281,11 +288,13 @@ while True:
 
 
 
+
 今天学习了一下campaign的方法
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -301,11 +310,13 @@ gn，今天学习了campaign方法
 
 
 
+
 看了胡老师X推文学习了锻炼身体很重要，运动起来要每天快走1～2小时
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -329,11 +340,13 @@ gn，今天学习了campaign方法
 
 
 
+
 在学习怎么起号，X和小红书的方法
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -361,11 +374,13 @@ gn，今天学习了campaign方法
 
 
 
+
 今天看了**投研基础框架建立**，明白了投研的方式
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -399,11 +414,13 @@ gn，今天学习了campaign方法
 
 
 
+
 今天参加了LXDAO的良心杀（公共产品预算分配讨论案）
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -445,11 +462,13 @@ gn，今天学习了campaign方法
 
 
 
+
 gm
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -495,6 +514,7 @@ gm
 
 
 
+
 今天换了推特的头像和banner还有个人简介，要是以前推特昵称的大家还以为我是宣传宗教的。。。
 
 今天继续学习solidity中
@@ -502,6 +522,7 @@ gm
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -553,6 +574,7 @@ gm
 
 
 
+
 开通了X Premium，其实之前开过了，费用大约是35人民币一个月，我的方法是在土耳其区用礼品卡开，和同学们互关了一下，现在粉丝数量又多了一些。
 
 晚上参加并且学习了社区运营基础 & 活动策划与执行流程，学习了Telegram 社群搭建与基础运营（社群基础搭建->题管理与分类->->数据面板分析->管理机器人配置）和Twitter Space 活动策划与执行全流程（筹备阶段->宣传物料准备->宣传节奏->现场执行流程->活动复盘）。得再实践一下才能知道。还有那些技术和运营任务今天已经开放了，我还没开始做，明天就去做了。
@@ -560,6 +582,7 @@ gm
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -618,6 +641,7 @@ gm
 
 
 
+
 今天了解了web3的求职平台，做了web3招聘平台的市场调研，市场调研一般遵循以下方法：为什么调研（调研背景与目的） → 怎么调研（调研对象与方法） → 看到什么（市场现状分析，竞品/平台分析包括商业模式、获客方式、盈利方式、核心优势和问题） → 问题在哪（用户需求与痛点） → 建议怎么做（结论与建议）
 
 晚上参加了英语角，但是英语角就听了一半，链接是这个，还可以，比我大学的好，我大学的英语角同学们私底下聊天全说中文。。。今天参加的是这个链接：[https://x.com/hildaiscute/status/2012494673256857959?s=20](https://x.com/hildaiscute/status/2012494673256857959?s=20)
@@ -629,6 +653,7 @@ gm
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -705,11 +730,13 @@ gm
 
 
 
+
 重新看了「Web3 安全」和「Web3 合规」的视频，重新看一遍又有更多收获了，打算后面区做一下这些网站的任务（跟 [unphishable.io](http://unphishable.io) 类似的其他安全挑战项目[https://phishing.therektgames.com/](https://phishing.therektgames.com/)  [https://theredguild.org/）， 然后晚上参加的AI和web3融合探讨会议学习了AI](https://theredguild.org/），然后晚上参加的AI和web3融合探讨会议学习了AI) 及其基础概念，今天还熟悉了一下remix 对合约编写、编译和部署流程有了更直观的认识, defillama 初步了解了如何通过 TVL、协议数据来判断一个 DeFi 项目的规模和发展情况, etherscan 开始习惯通过链上浏览器查看交易、地址、合约和真实的链上行为，至于dune analytics就明天再熟悉了。defillama和etherscan里面还挺多参数和按钮的，需要后面再多熟悉一下。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -794,6 +821,7 @@ gm
 
 
 
+
 **今天下午把web3行业全局介绍的回放又看了一遍，知道了其实Compliance/Law的赛道是最不卷的，看来这个方向不错。知道了**web3找工作链上简历很重要，举个例子，比如说开发岗的话，链上简历就包括① 钱包地址（核心）② 链上交互记录（最重要）③ GitHub / 合约部署（技术岗必备）④ DAO / 社区贡献记录⑤ ENS / Lens / Farcaster（身份增强），具体可实现方案就举个例子可以是要有一个用了一年以上的钱包地址，用过主流 DApp（非一次性交互），GitHub 有 2–3 个小项目至少部署过 1 个合约，有 ENS，参与过 1–2 个 DAO，这样链上简历的要求就入门了。如果还差项目经验也可以参加一些permissionless work，比如在 DAO 接任务和在开源社区贡献代码 / 改 bug，具体步骤是①Fork 项目②本地跑起来③建分支④修 bug（最小改动）⑤写清楚 Commit，提 PR。如果是**Compliance/Law入行的话可以弄个**CAMS，区块链基础+链上理解+CAMS=懂链的合规。
 
 还有就是知道了有很多Jobs category，有以下这些：Project/Program Management，Engineering (all types)，Operations/Admin，Compliance/Legal，Marketing/Community，Security/Auditing，Research。其中细分职位包括智能合约/链端，前端/全栈，安全审计，社区运营/Mod，增长/BD，Research/分析师，产品经理(PM)，合规/法务。初级的岗位还得是技术开发的薪资最高，不过各种细分职位的上限都挺高的。
@@ -803,6 +831,7 @@ gm
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
