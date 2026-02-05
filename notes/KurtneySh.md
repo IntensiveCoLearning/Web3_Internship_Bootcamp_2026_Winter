@@ -15,8 +15,18 @@ get hands dirty
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+1.  参加colearning
+    
+2.  继续投简历
+    
+3.  学习更多erc标准
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 1.  参加线上colearning
     
 2.  参加dev rel分享会
@@ -24,6 +34,7 @@ get hands dirty
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 1.  参加colearning
     
@@ -34,11 +45,13 @@ get hands dirty
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 1.  参加以太坊中文周会
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -49,6 +62,7 @@ get hands dirty
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -65,11 +79,13 @@ get hands dirty
 
 
 
+
 1.  黑客松 cobuilding
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -83,6 +99,7 @@ get hands dirty
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -105,11 +122,13 @@ get hands dirty
 
 
 
+
 其他助教总结的求职资源：[https://share.note.youdao.com/ynoteshare/index.html?id=0355cbd9824ca3037933341cc49726bb&type=notebook&\_time=1768991251724#/WEB860cb16e6da9ed8ee68702752cc285bd](https://share.note.youdao.com/ynoteshare/index.html?id=0355cbd9824ca3037933341cc49726bb&type=notebook&_time=1768991251724#/WEB860cb16e6da9ed8ee68702752cc285bd)
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -138,6 +157,7 @@ get hands dirty
 
 
 
+
 1.  参加 Speedrun Ethereum Basic workshop
     
 2.  复习 uniswap 机制：[https://docs.google.com/presentation/d/12jWBmU08H8L6961tD6gg28fTBS8y6m9FOzJozWwi4-A/edit?pli=1&slide=id.g3bab87f6ebd\_0\_0#slide=id.g3bab87f6ebd\_0\_0](https://docs.google.com/presentation/d/12jWBmU08H8L6961tD6gg28fTBS8y6m9FOzJozWwi4-A/edit?pli=1&slide=id.g3bab87f6ebd_0_0#slide=id.g3bab87f6ebd_0_0)
@@ -156,6 +176,7 @@ get hands dirty
 
 
 
+
 学习dapp架构
 
 ![9716d6d2cbdfc263148e45a661774d2a.PNG](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/KurtneySh/images/2026-01-22-1769076812007-9716d6d2cbdfc263148e45a661774d2a.PNG)
@@ -163,6 +184,7 @@ get hands dirty
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -197,6 +219,7 @@ get hands dirty
 
 
 
+
 1.  remix 学习
     
 2.  solidity 学习
@@ -214,6 +237,7 @@ get hands dirty
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -286,6 +310,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 
 
+
 1.  学习mpc钱包代码
     
 2.  参加Key Hash Based Tokens: 从 ERC-721 到 ERC-7962 分享会
@@ -293,6 +318,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -365,6 +391,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 
 
+
 **学习：香港的数字金融实验：IPO上链能否成为下一个风口？**
 
 时代背景
@@ -380,6 +407,7 @@ X402：是什么？尝试解决什么问题？解决了么？如何实现了Agen
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -442,6 +470,7 @@ ERC-8004: 智能体的链上护照
 
 
 
+
 直观查看交易的完整生命周期：[https://txcity.io/v/eth-btc](https://txcity.io/v/eth-btc)
 
 Builder/Validator（挑选） [https://beaconcha.in/block/24224597#votes](https://beaconcha.in/block/24224597#votes)
@@ -465,6 +494,7 @@ Rated Network Explorer 查看 Validators（验证者） [https://explorer.rated.
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
