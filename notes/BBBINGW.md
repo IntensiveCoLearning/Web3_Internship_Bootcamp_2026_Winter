@@ -15,13 +15,20 @@ note for 2026
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+一句话把这节定调: 合约账户 = “带代码的账户”,不靠私钥,而是靠部署在链上的 EVM 字 节码决定它能做什么; 它是通过 “创建合约交易 + 部署字节码 + CREATE / CREATE2 地址 规则” 被创建出来的。 1. 合约账户是什么? 在以太坊里有两种账户: 1.1 EOA(Externally Owned Account,外部拥有账户) • 有私钥,用户通过钱包控制; • 不能存代码,只能签名、发交易。 1.2 合约账户(Contract Account / Smart Contract Account) • 没有私钥,它的行为完全由账户里的代码(EVM bytecode)决定; • 有自己的地址和 ETH 余额,也可以持有 ERC-20 / NFT;
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 CREATE(传统创建):合约地址由 创建者地址 + 创建者的 nonce 决定, 地址不可在部署前精确预测(除非知道 nonce)。公式上是 keccak256( RLP(\[s ender, nonce\]) ) 的后 20 字节。 CREATE2(EIP-1014 引入):合约地址由 创建者地址 + salt + init\_code (init\_code 的哈希)决定,地址在部署前可以被精确预计算:keccak256(0xff ++ deployer ++ salt ++ keccak256(init\_code)) 的后 20 字节(0xff 是 定界前缀)。CREATE2 于 Constantinople(EIP-1014)引入。 作 用 差 异 要 点 : CREATE2 的 最 大 价 值 是 可 预 测 地 址 ( deterministic deployment)与跨链/跨环境一致性(相同输入在任意 EVM 链上会生成相同地 址),常用于工厂合约、代理/升级模式与“counterfactual contracts(反事实合约)”。
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 # 合约编译时产生的内容
 
@@ -34,6 +41,7 @@ CREATE(传统创建):合约地址由 创建者地址 + 创建者的 nonce 决定
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 # ZK-learning 笔记
@@ -126,6 +134,7 @@ But what about when the verifier is not honest?
 
 
 
+
 # 同步
 
 节点要同步的内容主要包括两部分:  
@@ -135,6 +144,7 @@ But what about when the verifier is not honest?
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -151,6 +161,7 @@ Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 
 
 
 
+
 # 区块链的可审计
 
 和传统合同一样,你可以在“签署”(调用)之前审查智能合约内容:  源码开源的合约(尤其是经过 Etherscan / Sourcify 验证的)可以直接 阅读、审计;  工具如 Slither、Mythril、Foundry + formal verification 框架可以自动化 发现一些安全问题;  大型协议通常会公布多轮审计报告。  这带来一个很重要的现实:  用户有能力在交互前知道“我在跟什么代码打交道”;  但前提是:你要么自己看得懂,要么相信专业审计团队给出的报告和 社区共识。
@@ -158,6 +169,7 @@ Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -178,6 +190,7 @@ Solidity 是为 Ethereum Virtual Machine(EVM)专门设计的合约导向语言, 
 
 
 
+
 # EVM的隔离和安全
 
 EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合约的 代码执行被隔离开来,一个合约被写错或被攻击,不易影响到整个网络。 使用 gas 模型防止无限循环 / 资源滥用攻击,因为每一步运算都要付 gas, 交易发起者承担运算资源成本。可以防止恶意攻击或不必要浪费。
@@ -185,6 +198,7 @@ EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -215,6 +229,7 @@ EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合
 
 
 
+
 每一条 EVM 指令都有一个固定的 Gas 价格,比如算术运算、读写 storage、 log 事件等,复杂操作如存储写入、创建合约会特别贵。 Gas 机制带来的好处: • 防止无限循环、恶意脚本把节点“算死” • 让复杂运算、写入操作“谁用谁付钱” • 给打包者(验证者)定价空间(优先打包高 Gas Price 交易)
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
@@ -230,11 +245,13 @@ EVM 为每个智能合约提供“沙箱”(sandbox)环境,这意味着每个合
 
 
 
+
 零知识证明（ZK）是身份栈中的隐私增强层，它通过“可验证却不可见”的密码学机制，确保身份声明（如“我年满18岁”）的真实性无需以暴露全部数据（如出生日期）为代价。尽管ZK本身是密码学原语，但其在身份领域的应用正由诸如ERC-5833（灵魂绑定令牌的隐私合规组合） 等探索性提案所推动，旨在解决SBT在合规与隐私方面的挑战
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -263,6 +280,7 @@ EVM(Ethereum Virtual Machine)是一台运行在每个以太坊节点上的虚拟
 
 
 
+
 zk最近比较火的项目是brevis，也上线币安了。
 
 现在说到扩容，其实主要思路都是：以太坊主链别干活，相信我就对了。
@@ -274,6 +292,7 @@ zk是通过数学方式，生成一个证明给以太坊。但是算这个证明
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -328,6 +347,7 @@ SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
 
 
 
+
 \# 分散资产，规划好钱包用途
 
 \- 日常高频使用的热钱包存放少量资产，不同的钱包使用不同的助记词创建。
@@ -341,6 +361,7 @@ SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -389,6 +410,7 @@ SNARKs和STARKs的核心理论基础就是PCP，也就是概率性检查证明
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -513,6 +535,7 @@ Blob具体怎么做：
 
 
 
+
 \*\*PoS验证者如何工作\*\*：
 
 \- **准入门槛**：质押 32 ETH 成为验证者
@@ -528,6 +551,7 @@ Blob具体怎么做：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -580,6 +604,7 @@ Blob具体怎么做：
 
 
 
+
 | 维度 | 比特币（Bitcoin） | 以太坊（Ethereum） |
 
 | :-------- | :------------------------------ | :---------------------------------- |
@@ -597,6 +622,7 @@ Blob具体怎么做：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -679,6 +705,7 @@ Blob具体怎么做：
 
 
 
+
 # 今日todo
 
 -   \[ \] 入门导读以太坊概览
@@ -703,6 +730,7 @@ Blob具体怎么做：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
