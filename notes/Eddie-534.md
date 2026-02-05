@@ -15,8 +15,105 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+26.2.5 今天学习了 Web3 实习手册中的招聘平台与职业推荐部分。
+
+## **一、核心原则：筛选招聘信息的黄金法则**
+
+-   **及时**：确保岗位仍在招聘中（HC 开放）。
+    
+-   **真实**：岗位真实存在，非虚假引流。
+    
+-   **准确**：岗位描述、薪资、地点等信息与实际一致，避免入职后产生落差。
+    
+
+## **二、优质招聘平台推荐**
+
+满足“老牌、真实、可靠”特点的平台：
+
+1.  [**web3career.build**](http://web3career.build)：Web3 实习计划官方平台。
+    
+2.  [**Web3.career**](http://Web3.career)：全球性 Web3 招聘平台，信息更新快、覆盖广。
+    
+3.  **DeJob**：专注 Web3 远程招聘，适合国内用户。
+    
+4.  **SmartDeer**：注重人才与项目匹配质量的新兴平台。
+    
+
+## **三、其他信息渠道**
+
+-   **社区**：LXDAO、ETHPanda（提供招聘与 Bounty 机会）。
+    
+-   **项目方官方渠道**：Discord、Telegram 社区。
+    
+-   **社交媒体**：Twitter（关注 KOL、项目方）、LinkedIn（成熟公司/转型企业）。
+    
+-   **行业媒体**：CoinDesk、The Block、Messari、Nansen 等报告与新闻。
+    
+-   **行业活动**：线下会议、线上 AMA（直接接触项目方）。
+    
+
+## **四、判断项目可靠性的12项评估表**
+
+评估项包括：愿景、声誉、创始人背景、办公地点、合规性、投资机构、社区运营等。
+
+-   **总分120分**，低于72分需谨慎。
+    
+-   警惕“拉人头”模式、无落地业务、无官方渠道的项目。
+    
+-   可借助 AI 辅助调查，或在 LXDAO、ETHPanda 社区中询问建议。
+    
+
+## **五、识别招聘骗局**
+
+**常见骗局特征**：
+
+-   要求先付费（培训费、押金、购买代币等）。
+    
+-   要求安装不明软件或开启高权限。
+    
+-   公司信息无法核验（官网、LinkedIn 缺失）。
+    
+-   岗位描述宽泛但承诺高回报。
+    
+-   要求使用非官方沟通渠道（私人 Telegram/WhatsApp）。
+    
+
+**自我保护清单**：
+
+-   核验公司主体与招聘者身份。
+    
+-   拒绝任何形式的付费招聘。
+    
+-   仅通过官方渠道沟通。
+    
+-   不运行未知程序。
+    
+-   存疑时通过官网公开方式二次确认。
+    
+
+## **六、职业发展路径**
+
+### **运营向**
+
+1.  **大使计划**：门槛低、灵活，适合零经验起步（社群运维、内容制作、活动协助）。
+    
+2.  **实习生**：正式入门，需承担更多责任（管理大使、独立策划 AMA、反馈收集等）。
+    
+3.  **正式职工**：社区经理、市场经理、BD、产品运营、内容创作等核心岗位。
+    
+
+### **技术向**
+
+-   **常见岗位**：区块链核心开发、智能合约工程师、Dapp 后端开发、安全审计师、密码学工程师、DevOps。
+    
+-   **积累经验方式**：参与开源项目、黑客松、构建个人项目、学习在线课程、阅读白皮书。
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 26.2.4 今天学习了链上留言板智能合约开发，完成了智能合约编写、测试、部署，到前端开发，上线，交互。
 
 ![屏幕截图 2026-02-04 002134.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-03-1770136179431-_____2026-02-04_002134.png)![屏幕截图 2026-02-04 144731.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-04-1770188662468-_____2026-02-04_144731.png)![屏幕截图 2026-02-04 144851.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-04-1770188674185-_____2026-02-04_144851.png)![屏幕截图 2026-02-04 152931.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-04-1770190184763-_____2026-02-04_152931.png)![屏幕截图 2026-02-04 152905.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-04-1770190194409-_____2026-02-04_152905.png)
@@ -25,6 +122,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 26.2.3 今天学习了本地区块链节点搭建并交互测试，完成了环境搭建、启动本地节点、部署合约和交互测试。
 
 ![屏幕截图 2026-02-03 151854.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-03-1770103495446-_____2026-02-03_151854.png)![屏幕截图 2026-02-03 151930.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-03-1770103503542-_____2026-02-03_151930.png)![屏幕截图 2026-02-03 152014.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-03-1770103511133-_____2026-02-03_152014.png)![屏幕截图 2026-02-03 152145.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-03-1770103519073-_____2026-02-03_152145.png)
@@ -32,6 +130,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 26.2.2 今天完成了铸造NFT前端部署和运行测试，合约验证因为网络超时问题无法解决。
@@ -44,6 +143,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 26.2.1 今天挑战了代币化，学习了铸造NFT和部署到测试网上还有发布到前端。
 
 ![屏幕截图 2026-02-01 233751.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-01-1769960298973-_____2026-02-01_233751.png)![屏幕截图 2026-02-01 233839.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-02-01-1769960330037-_____2026-02-01_233839.png)
@@ -51,6 +151,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -67,6 +168,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 26.1.30 今天依旧在研究 Hardhat ，还是遇到不少问题，明天继续研究。
 
 ![屏幕截图 2026-01-30 235455.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-30-1769788564275-_____2026-01-30_235455.png)![屏幕截图 2026-01-30 235432.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-30-1769788550008-_____2026-01-30_235432.png)
@@ -74,6 +176,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -94,6 +197,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 26.1.28 今天学会了在Hardhat撰写和测试Solidity合同，不过用的是 Hardhat2 ，Hardhat3 因为版本兼容问题无法使用。Foundry 还在安装中，明天继续学习 Foundry。
 
 ![屏幕截图 2026-01-28 235054.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-28-1769615466843-_____2026-01-28_235054.png)
@@ -101,6 +205,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -125,6 +230,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 26.1.26 今天学习使用 Hardhat ，中途还是遇到一些困难，如 Hardhat 、 Node 版本问题等，还在琢磨中。
 
 ![屏幕截图 2026-01-26 233429.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-26-1769441689788-_____2026-01-26_233429.png)![屏幕截图 2026-01-26 233403.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-26-1769441700346-_____2026-01-26_233403.png)
@@ -132,6 +238,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -160,6 +267,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 26.1.24 今天完成了 Solidity ethernaut 的部分挑战，对 Solidity 代码有了更深的理解，明天计划完成全部挑战。
 
 ![屏幕截图 2026-01-24 231701.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-24-1769269307128-_____2026-01-24_231701.png)![屏幕截图 2026-01-24 234710.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Eddie-534/images/2026-01-24-1769269638605-_____2026-01-24_234710.png)
@@ -167,6 +275,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -251,6 +360,7 @@ SendEther部分：
 
 
 
+
 26.1.22 今天继续学习solidity基础部分剩下内容。
 
 -   归纳整理：
@@ -318,6 +428,7 @@ unchecked 可以省 Gas 但得自己保证安全
 
 
 
+
 26.1.21 今天学习了Solidity的基础部分的部分内容。
 
 -   归纳：
@@ -340,6 +451,7 @@ unchecked 可以省 Gas 但得自己保证安全
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -450,6 +562,7 @@ contract.methods.函数名().call()  // 读操作，免费
 
 
 
+
 26.1.19 今天学习了021以太坊教材的第四章，了解了智能合约的工作原理与价值。
 
 -   智能合约
@@ -507,6 +620,7 @@ ABI（用于调用合约）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -616,6 +730,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.17跟着B站上的Chainlink预言机教程，继续学习Solidity的进阶部分
 
 -   内容梳理：
@@ -685,6 +800,7 @@ ABI（用于调用合约）
 
 
 
+
 26.1.16 今天在B站系统学习了区块链预言机相关课程，并重点通过Remix平台进行了Solidity基础实践。初步理解了智能合约的开发环境与编写逻辑，成功部署了第一个HelloWorld合约，体验了从代码编写到链上交互的全程。
 
 -   收获：
@@ -708,6 +824,7 @@ ABI（用于调用合约）
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -883,6 +1000,7 @@ SELFDESTRUCT 现在已被弱化（Dencun升级后），不再推荐用于“删�
 
 
 
+
 26.1.14学习了web3实习手册安全与合规部分
 
 -   一、Web3合规性：国内政策与风险
@@ -998,6 +1116,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 
 
+
 26.1.13 学习021以太坊学习教材第一章
 
 -   核心总结
@@ -1039,6 +1158,7 @@ Web3很酷，但风险也很大，法律红线别碰，网络安全别懒，钱�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
