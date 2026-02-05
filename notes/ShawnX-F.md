@@ -15,8 +15,83 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+### ERC20
+
+ERC-20 本质上就是一个**智能合约的接口规范** (Interface)。只要你的合约实现了以下规定的函数和事件，钱包（如 MetaMask）和交易所（如 Uniswap）就能无缝地识别并操作你的代币。
+
+1.  **必须实现的 6 个核心函数**
+    
+
+我们可以把这 6 个函数分为查询（读）和交易（写）两类：
+
+-   **查询类 (Read)**
+    
+    -   `totalSupply()`: 返回代币的总供应量。
+        
+    -   `balanceOf(address account)`: 返回某个特定地址（用户）持有的代币余额。
+        
+-   **交易类 (Write)**
+    
+    -   `transfer(address recipient, uint256 amount)`: 将代币从调用者（你）的账户直接发送给接收者。
+        
+    -   **授权转账 (DeFi 的核心)** 是 DeFi 协议（如 DEX 交易、借贷）能运作的关键：
+        
+        -   `approve(address spender, uint256 amount)`: 你（持币人）授权给第三方（spender，通常是合约）也就是允许它动用你多少金额的代币。调用此函数时，代币不会发生转移，只是在账本上记录了“授权人允许 Uniswap 动用 100 个币”。
+            
+        -   `allowance(address owner, address spender)`:查询还有多少剩余的授权额度。
+            
+        -   `transferFrom(address sender, address recipient, uint256 amount)`: 第三方（spender）调用此函数，将代币从sender（你）的账户转给 recipient。**必须先有** `approve` **的授权额度，否则交易会失败。**
+            
+
+2.  **必须触发的 2 个事件 (Events)**
+    
+
+事件用于通知区块链外部（如前端网页、Etherscan），状态发生了改变。
+
+-   `event Transfer(address indexed from, address indexed to, uint256 value)`: 每当代币发生移动（无论是 `transfer` 还是 `transferFrom`），**必须**触发此事件。铸造（Mint）和销毁（Burn）通常也被视为 Transfer（from 是 0x0 或 to 是 0x0）。
+    
+-   `event Approval(address indexed owner, address indexed spender, uint256 value)`: 当调用 `approve` 成功时触发。
+    
+-   可选信息 (Metadata)——虽然标准中列为可选，但几乎所有 ERC-20 代币都会包含：
+    
+    -   `name()`: 代币名称 (例如: "Dai Stablecoin")
+        
+    -   `symbol()`: 代币符号 (例如: "DAI")
+        
+    -   `decimals()`: 小数位数 (通常是 **18**)。
+        
+    -   _注意_：EVM 不支持小数运算。如果 `decimals` 是 18，意味着用户看到的 **1.0** 个代币，在合约代码底层存储的数值是 **1,000,000,000,000,000,000** (1e18)。
+        
+
+3.  **DeFi 交互模式**
+    
+
+假设你想在 Uniswap 上把 USDT 换成 ETH：
+
+**第一步 (Approve)**:
+
+-   调用 USDT 合约的 `approve(Uniswap合约地址, 1000 USDT)`。
+    
+-   此时你的钱包里 USDT 数量不变，但链上记录了 Uniswap 有权动你 1000 USDT。
+    
+
+**第二步 (Swap)**:
+
+-   调用 Uniswap 合约的 `swap` 函数。
+    
+-   Uniswap 合约内部会自动调用 USDT 合约的 `transferFrom(用户名, Uniswap, 1000 USDT)`。
+    
+-   Uniswap 拿走你的 USDT，并给你发回 ETH。
+    
+
+**为什么不能直接 Transfer 给 Uniswap？** 如果你直接 `transfer` 给合约，合约通常不知道是谁转的，也不知该如何处理（除非合约有接收钩子，但这属于 ERC-20 的设计缺陷，后续标准如 ERC-777 或 ERC-1363 试图解决此问题）。
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 ### Uniswap V3的实现原理
 
 核心实现原理仍是基于恒定乘积公式（x × y = k），但它通过一个非常巧妙的技巧，让流动性“只在指定的价格区间生效”，而不是像 V2 那样永远均匀铺满 0 到 ∞。
@@ -99,6 +174,7 @@ V3 用了一个“虚拟储备”的技巧：
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 ### windows系统foundry路径配置问题
 
 最近在做相关作业时遇到，使用Windows自带PowerShell调用forge时，会遇到问题“无法将“forge”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正 确，然后再试一次。”而在Git Bash调用没有问题。经过排查，发现是path路径问题，接下来就记录一下排查和解决过程。
@@ -154,6 +230,7 @@ which forge
 
 
 
+
 ### 1\. 什么是 Reactive？优势是什么？
 
 **Reactive** = Reactive Network + Reactive Smart Contracts 它本质上是一个专为**事件驱动、跨链自动化**而生的区块链/执行层
@@ -179,11 +256,13 @@ which forge
 
 
 
+
 demoday
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -200,11 +279,13 @@ demoday
 
 
 
+
 松！～～～～
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -263,6 +344,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 自身技术漏洞太多，补不过来了！笔记都没时间写了，黑客松也开始了。已经在研究相关技术栈了，加油！
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
@@ -277,11 +359,13 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 恶补solidity中...
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -340,6 +424,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 学习了森老师的agent笔记
 
 学习了优秀同学的RC笔记
@@ -349,6 +434,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -383,6 +469,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 # 有关ERC-7962的思考
 
 最近在训练营学习了 ERC-7962，越琢磨越有意思。结合我的理解，浅谈一下对ERC-7962的定位、严格模式和批量传输的粗浅看法。
@@ -398,6 +485,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -509,6 +597,7 @@ collectionId = keccak256(parentCollectionId, conditionId, indexSet)
 
 
 
+
 // 基础合约  
 contract Animal {  
 string public name;  
@@ -590,6 +679,7 @@ Pet(\_name, \_owner) {}
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -764,6 +854,7 @@ function criticalFunction() public onlyOwner whenNotPaused {
 
 
 
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -866,6 +957,7 @@ _Tips：_
 
 
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -941,6 +1033,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -977,6 +1070,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1061,6 +1155,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -1075,6 +1170,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1130,6 +1226,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1248,6 +1345,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
