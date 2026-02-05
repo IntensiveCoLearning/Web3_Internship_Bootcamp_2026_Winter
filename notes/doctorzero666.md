@@ -15,8 +15,136 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+**今日学习：链上数据分析（进阶复盘）**
+
+**1）链上数据分析的核心心智模型**
+
+一句话：链上数据分析就是把“交易 + 事件日志 + 账户状态”翻译成可量化的行为指标。
+
+你可以用三层结构理解链上数据：
+
+-   Transactions（交易）：谁发起、发给谁、金额、gas、成功/失败
+    
+-   Logs/Events（事件）：合约内部发生了什么（Transfer、Swap、Mint…）
+    
+-   State（状态）：某一时刻的余额、头寸、仓位（通常要靠事件推导）
+    
+
+**2）今天强化的分析流程（从问题到 Dashboard）**
+
+**Step 1：先定义问题（不然会迷路）**
+
+-   我想研究的是：协议增长？资金流？用户留存？鲸鱼操控？空投行为？
+    
+-   把问题写成一个可量化句子：  
+    “过去 30 天 Uniswap 某池子的日交易量是否上升？增长来自新用户还是老用户？”
+    
+
+**Step 2：确定分析对象**
+
+-   链：Ethereum / Base / Arbitrum …
+    
+-   协议：Uniswap/Compound/NFT 项目
+    
+-   关键地址：核心合约、池子地址、代币地址
+    
+
+**Step 3：选数据源（你今天主要在做的）**
+
+-   Dune：SQL + 图表 + Dashboard（很适合投研/公开输出）
+    
+-   辅助：Etherscan（查合约/事件/交易细节）
+    
+
+**Step 4：从“最小查询”开始**
+
+-   先 limit 10 看字段
+    
+-   确认：  
+    
+    -   时间字段（block\_time）
+        
+    -   地址字段（from/to/contract）
+        
+    -   数值单位（wei、decimals）
+        
+
+**Step 5：聚合成指标并可视化**
+
+-   按天趋势：date\_trunc('day', block\_time)
+    
+-   用户数：count(distinct trader)（注意是 EOA 还是合约地址）
+    
+-   交易量：sum(amount)（注意 decimals & token 价格）
+    
+
+**3）今天重点掌握的指标体系（投研最常用）**
+
+**A. 活跃度（Activity）**
+
+-   Tx Count：交易次数
+    
+-   Active Wallets / DAU：活跃地址数
+    
+-   New Users：首次交互地址数（first seen）
+    
+
+**B. 资金与规模（Flow / Scale）**
+
+-   Volume：交易量（Swap/Transfer）
+    
+-   Netflow：净流入/净流出（到协议/到交易所）
+    
+-   TVL（如果是 DeFi）：锁仓规模（注意 TVL 可能被激励“堆”出来）
+    
+
+**C. 商业模式（Monetization）**
+
+-   Fees / Revenue：手续费/协议收入
+    
+-   Fee per User：单用户贡献（更能看质量）
+    
+
+**D. 用户质量（Retention / Cohort）**
+
+-   留存：一周后/一月后还有没有回来用
+    
+-   Cohort 分析：同一批新用户后续行为曲线
+    
+
+**E. 集中度与风险（Concentration / Risk）**
+
+-   Top N 地址占比（鲸鱼是否过于集中）
+    
+-   异常行为：刷量、机器人、短期高频、同源地址集群
+    
+
+**4）常见“坑”**
+
+1.  把合约地址当用户  
+    很多交互来自 router/合约（不是人）。需要区分 EOA vs 合约地址。
+    
+2.  decimals 没处理  
+    链上金额常是 wei/最小单位，必须换算。
+    
+3.  同一行为被多次记录  
+    一笔交易可能触发多个 event，要避免重复统计。
+    
+4.  跨链/跨合约导致漏数  
+    协议可能多个入口合约、多个版本（v2/v3/v4）
+    
+5.  指标好看不等于真实增长  
+    可能是补贴、刷量、空投预期导致的短期行为。
+    
+6.  价格因素没考虑  
+    Volume 用 token 计还是用美元计？要统一口径。
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 # **Dune 学习笔记（Web3 数据分析工具）**
 
 ## **1）Dune 是什么？能做什么？**
@@ -172,6 +300,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 # **今日笔记：Web3 行业投研方式（Research Framework）**
 
@@ -398,6 +527,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 # **Rust 学习笔记**
 
 ## **1）Rust 是什么？适合做什么？**
@@ -553,6 +683,7 @@ Rust 强调“把错误写进类型里”。
 
 
 
+
 # **今日学习：Skills 相关内容（复盘笔记）**
 
 ## **1）我今天理解的“Skills”是什么？**
@@ -623,6 +754,7 @@ Rust 强调“把错误写进类型里”。
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -805,6 +937,7 @@ Web3 自治：代码定规则 +（投票/多签）触发执行
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1010,6 +1143,7 @@ Web3 自治：代码定规则 +（投票/多签）触发执行
 
 
 
+
 # **Uniswap v4 学习笔记**
 
 ## **1）一句话总结**
@@ -1157,6 +1291,7 @@ PoolManager 会做类似这几步：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1379,6 +1514,7 @@ Cheatcodes 让你在测试里“操控链环境”，非常关键：
 
 
 
+
 # **Hardhat 学习笔记**
 
 ## **1）Hardhat 是什么？解决什么问题？**
@@ -1562,6 +1698,7 @@ Cheatcodes 让你在测试里“操控链环境”，非常关键：
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1768,6 +1905,7 @@ Vibe coding：先出一个能跑的 demo → 边用边改 → 逐步加规则/�
 
 
 
+
 # **Ethernaut 前三关学习要点总结（Hello / Fallback / Fallout）**
 
 ## **关卡 1：Hello Ethernaut（熟悉 Console + 合约交互）**
@@ -1910,6 +2048,7 @@ function Fallout() public payable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2205,6 +2344,7 @@ ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2719,6 +2859,7 @@ for (...) {
 
 
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -2956,6 +3097,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -3228,6 +3370,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -3452,6 +3595,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -3657,6 +3801,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -3832,6 +3977,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -3943,6 +4089,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -4108,6 +4255,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4453,6 +4601,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -4570,6 +4719,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4935,6 +5085,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
