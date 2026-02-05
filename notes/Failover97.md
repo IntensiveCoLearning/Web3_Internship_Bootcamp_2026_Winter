@@ -15,8 +15,67 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+### 今天完成了常见的合约漏洞的最后一种类型
+
+### 使用tx.origin
+
+solidily提供了两种机制来识别调用方： msg.sender tx.origin
+
+msg.sender 直接调用合约者的地址
+
+tx.origin 完整调用链的最初的发送方
+
+tx.origin phising liquidator—>Manager—>LendingProtocol
+
+```jsx
+pragma solidity ^0.8.0;
+
+interface ILendingProtocol {//外部接口名称，约定以I开头 调用别人函数的接口
+    function liquidate(address user) external;
+}
+
+contract LiquidationManager {
+    address public authorizedLiquidator;
+    ILendingProtocol public lendingProtocol;
+
+    constructor(address _liquidator, address _lendingProtocol) {
+        authorizedLiquidator = _liquidator;//授权清算员
+        lendingProtocol = ILendingProtocol(_lendingProtocol);//借贷合约地址
+    }
+
+    // @audit tx.origin for authorization
+    function performLiquidation(address _user) external {
+        require(tx.origin == authorizedLiquidator, "Not authorized");
+        lendingProtocol.liquidate(_user);
+    }
+}
+```
+
+问题出在合约检查的是最初的调用者，而不是这个合约的发起者。所以只要用户授权了恶意合约作为proxy,恶意合约调用了这个清算合约的话，就会产生很大的问题。
+
+```jsx
+contract PhishingWrapper {
+    LiquidationManager public manager;
+    address public targetUser;
+
+    constructor(address _manager, address _targetUser) {
+        manager = LiquidationManager(_manager);
+        targetUser = _targetUser;
+    }
+
+    function bait() external {
+        manager.performLiquidation(targetUser);
+    }
+}
+如果授权清算人调用bait()函数，恶意合约调用清算合约后，授权清算人会产生法律风险
+```
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 ```
 NIST 网络安全框架 (CSF)
          ↓
@@ -214,6 +273,7 @@ RA-3 风险评估（Risk Assessment）— 核心中的核心
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 ## 一、核心术语对照表
 
@@ -466,6 +526,7 @@ git reset --hard commit-id # 危险操作！\`
 <!-- DAILY_CHECKIN_2026-01-31_START -->
 
 
+
 今天在为了项目要设计几个agent；怎么调校不同的agent;agent之间用什么pattern；agent\\MCP server\\skills\\tools到底是什么关系 狂补这些知识
 
 ### 主流的Agent在做什么
@@ -680,11 +741,13 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -864,6 +927,7 @@ k = 常数（池子创建时确定）
 
 
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -888,6 +952,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1031,6 +1096,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -1120,11 +1186,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1179,6 +1247,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 
 
+
 ### Rag
 
 RAG（检索增强生成）—Retrieval-Augmented Generation
@@ -1221,6 +1290,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1394,6 +1464,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1597,6 +1668,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -1614,6 +1686,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1868,6 +1941,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -2004,6 +2078,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
