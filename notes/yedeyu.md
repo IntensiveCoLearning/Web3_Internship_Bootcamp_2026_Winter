@@ -15,13 +15,20 @@ timezone: UTC-8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+-   观看「[走进 Web3 DevRel 一线](https://youtu.be/1bBgkU9R8rE)」回放
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 -   阅读 [Solidity 官方文档](https://docs.soliditylang.org/en/v0.8.33/introduction-to-smart-contracts.html)
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 -   观看 「[Web3 实习计划（冬季）：就业简历指导 & 面经分享](https://youtu.be/ngx4sw8jKe8)」 回放
 <!-- DAILY_CHECKIN_2026-02-02_END -->
@@ -30,11 +37,13 @@ timezone: UTC-8
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 -   昨天参与黑客松，今天休息
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -47,11 +56,13 @@ timezone: UTC-8
 
 
 
+
 -   参与 休闲黑客松
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -72,11 +83,13 @@ timezone: UTC-8
 
 
 
+
 -   参与 休闲黑客松 Open Day
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -97,11 +110,13 @@ timezone: UTC-8
 
 
 
+
 -   观看「[**Vibe Coding + 黑客松经验分享**](https://youtu.be/tx_wgp0eBIU)」分享会回放
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -126,11 +141,13 @@ timezone: UTC-8
 
 
 
+
 -   观看「[第 2 周例会](https://youtu.be/dwQXnQAq6w8)」回放
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -162,6 +179,7 @@ timezone: UTC-8
 
 
 
+
 -   观看「[南塘 DAO 主题](https://youtu.be/xFi-TcaC2Ks)」回放
     
 -   观看「[Web3 公共物品资金分配第一节课](https://youtu.be/rC0f634JrVI)」回放
@@ -169,6 +187,7 @@ timezone: UTC-8
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -205,11 +224,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 021 学习以太坊第 4 章
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -250,11 +271,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 021 学习以太坊第 3 章
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -302,6 +325,7 @@ timezone: UTC-8
 
 
 
+
 -   参加 LXDAO 周会 [260118](https://x.com/lxdao_official/status/2012360045485580478?s=46)
     
 -   继续阅读 [021 学习以太坊第 1 章](https://github.com/XiaoHai67890/021Ethereum/blob/main/%E3%80%8A021%E5%AD%A6%E4%B9%A0%E4%BB%A5%E5%A4%AA%E5%9D%8A%E3%80%8B%E5%BC%80%E6%BA%90%E6%95%99%E6%9D%90.pdf)
@@ -309,6 +333,7 @@ timezone: UTC-8
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -370,11 +395,13 @@ timezone: UTC-8
 
 
 
+
 -   阅读完 Web3 实习手册[「入门导读」](https://web3intern.xyz/zh/blockchain-basic/)部分
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -424,6 +451,7 @@ timezone: UTC-8
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
