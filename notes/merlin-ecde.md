@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+今日复盘了黑客松sop
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 今日的主要任务就是准备下一场周六的space，帮助vv获得学分
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
@@ -24,11 +30,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 今日又是什么都没干
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -41,11 +49,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 本周主要的事情是参与了黑客松的筹备，倍感煎熬但收获颇多，遇见了非常多优秀的朋友，高效率且高质量的任务完成令人印象深刻。本来报着bd组的协调但发现自己帮不上很多忙于是转战帮助设计组完任务，今天是demo day，看着小伙伴们交上了自己的答卷心里也是非常的开心，明天进行复盘总结，开始写简历
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -62,11 +72,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日任务：听了课程，总结复盘了区块链的基础知识，锻炼了身体
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -87,6 +99,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 主要完成了openday的PPT制作
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-28-1769601458475-image.png)
@@ -94,6 +107,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -120,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要的任务是做了黑客松openday的ppt部分
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-26-1769442780888-image.png)
@@ -127,6 +142,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -157,6 +173,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要制作一次space的海报和编辑文案，并且协调黑客松筹备活动
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-24-1769268635558-image.png)
@@ -164,6 +181,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -198,11 +216,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日主要的任务是邀请到了三位助教老师当我们x402专题space的嘉宾，以及学习了figma的基础操作，并且现在正在赶制海报！
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -415,6 +435,7 @@ x402 的核心是 **“机器对机器的自动支付”**。这恰恰踩中了�
 
 
 
+
 昨天开始和小伙伴们组队准备策划一个关于x402议题的分享会，但之前没有了解过相关的概念，相当于是第一次接触
 
 所以今天的主要任务就是了解x402协议的内容，以及里面涉及到的概念逻辑梳理
@@ -578,6 +599,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今天梳理了一下btc的基本实现逻辑，笔记好像不能打公式，按截图来了那就
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833787688-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833814968-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833834458-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/merlin-ecde/images/2026-01-19-1768833863761-image.png)
@@ -585,6 +607,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -679,11 +702,13 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -730,11 +755,13 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 2026年AI领域迎来关键转变，从2023年大语言模型（LLM）以预测下一个Token为核心的被动响应模式，升级为具备推理、记忆与工具使用能力的代理式AI（Agentic AI），能够自主执行任务。据Gartner预测，到2028年33%的企业软件应用将嵌入此类AI，而2024年这一比例尚不足1%，同时2025年被视为“AI问责之年”，法律焦点将集中在合规责任上。AI智能体的核心结构包括作为“大脑”的LLM（如GPT-5.2、DeepSeek V3.2等模型）、负责记忆存储的向量数据库（依托RAG流程实现数据抓取与上下文存储）以及连接外部世界的“工具”（通过API接口执行代码、查询数据库等），与传统无状态LLM不同，智能体借助向量数据库和API获得了持久化的记忆与执行身份。 当前AI智能体的发展面临诸多基础设施缺口，身份与信任危机尤为突出。在传统网络中，身份欺诈问题难以解决，无法验证操作者是人类还是机器人，攻击者可模仿代理执行未授权操作；同时缺乏不可篡改的日志，导致责任难以追溯，若AI签署不利合同，追责将面临阻碍。此外，59%的企业表示Agentic AI安全部署缺乏统一治理框架，“影子AI”问题凸显。支付层面也存在显著摩擦，传统信用卡订阅、人工KYC验证模式对微任务而言成本过高，而机器经济时代亟需机器对机器（M2M）的微支付模式，实现按API调用、推理付费及毫秒级结算，2025年机器人和自动化代理已处理70%的稳定币转账，印证了这一需求的紧迫性。 Web3 AI协议栈为解决上述问题提供了关键支撑，区块链技术赋予智能体不可篡改的身份证明和原生银行账户。其中，ERC-8004标准作为智能体的“链上护照”，基于ERC-721标准提供唯一可转移的链上ID，配套的声誉系统记录0-100分的不可篡改反馈评分（仅付费客户可评价），并通过TEE或zkML证明完成验证，核心解决“身份”与“可信度”问题；x402协议则实现HTTP原生的机器支付，支持按文件付费、按算力付费等场景，无需订阅模式。在安全与合规方面，Web3解决方案通过不可篡改的审计日志，将所有推理、交易、验证记录永久存证，满足持续监控、欧盟AI法案等监管要求，实现从“黑盒”到“透明审计”的转变。 SpoonOS作为Web3 AI时代的操作系统，搭建起Web2开发能力与Web3基础设施的桥梁，一站式集成ERC-8004和x402协议，开发者无需从头构建基础设施，可专注于模型能力，由SpoonOS处理信任与变现问题。其架构涵盖输入层（数据流、向量数据库）、核心层（SpoonOS Engine、Unified LLM APIs、智能体编排）、协议层（身份管理、支付网关）和输出层（链上交易、Web API操作），基于该框架可构建多种未来应用，如具备链上声誉历史、自动执行套利策略的DeFi交易智能体，抓取高质量数据并通过微支付出售数据集的数据市场代理，以及自动修复代码Bug并收取USDC的自主服务代理。 2026年将见证机器经济的崛起，稳定币月结算量已达1.39万亿美元，AI智能体普及率呈指数级增长，未来经济主体将不仅是人类，更是数以亿计拥有自主钱包的AI智能体，而Web3被认为是唯一能承载高频、低额机器交易的基础设施。总体来看，AI从“对话”转向“行动”是核心趋势，这一过程中面临法律与经济责任挑战，ERC-8004（身份）与x402（支付）协议构成了信任基础，SpoonOS框架则成为连接Web2 AI与Web3设施的关键工具，为自主智能体的开发与落地提供了完善支撑。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -791,6 +818,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 
 
+
 今日完成：区块链底层逻辑学习
 
 共同搭建链上投研社群
@@ -822,6 +850,7 @@ X402的价值就在于它让付费变成了一种协议能力，能被程序自�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
