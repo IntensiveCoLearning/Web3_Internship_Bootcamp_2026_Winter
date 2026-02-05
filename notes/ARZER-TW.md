@@ -17,11 +17,173 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
-写了一个简单的DAPP完成任务
+写了一个简单的DAPP完成任务  
+  
+  
+DApp 開發學習總結
+
+一、專案架構
+
+my\_hardhat\_project/
+
+├── contracts/ # 智能合約
+
+│ └── Counter.sol
+
+├── frontend/ # 前端介面
+
+│ └── index.html
+
+├── scripts/ # 部署腳本
+
+│ └── deploy.js
+
+├── artifacts/ # 編譯產物（ABI、Bytecode）
+
+└── hardhat.config.js # Hardhat 配置
+
+\---
+
+二、智能合約（Solidity）
+
+contract Counter {
+
+uint256 public number; // 狀態變數（存在區塊鏈上）
+
+function setNumber(uint256 n) public { number = n; } // 寫入（需 gas）
+
+function increment() public { number++; } // 寫入（需 gas）
+
+// number() 自動生成 getter // 讀取（免費）
+
+}
+
+重點：
+
+\- public 變數自動產生讀取函數
+
+\- 寫入操作需要發送交易、支付 gas
+
+\- 讀取操作免費
+
+\---
+
+三、開發流程
+
+┌───────────────┬───────────────────────────────────────────────────────┬───────────────────────────────┐
+
+│ 步驟 │ 指令 │ 說明 │
+
+├───────────────┼───────────────────────────────────────────────────────┼───────────────────────────────┤
+
+│ 1. 編譯合約 │ npx hardhat compile │ 產生 ABI 和 Bytecode │
+
+├───────────────┼───────────────────────────────────────────────────────┼───────────────────────────────┤
+
+│ 2. 啟動本地鏈 │ npx hardhat node │ 本地測試網路 (localhost:8545) │
+
+├───────────────┼───────────────────────────────────────────────────────┼───────────────────────────────┤
+
+│ 3. 部署合約 │ npx hardhat run scripts/deploy.js --network [localhost](http://localhost) │ 取得合約地址 │
+
+├───────────────┼───────────────────────────────────────────────────────┼───────────────────────────────┤
+
+│ 4. 啟動前端 │ python3 -m http.server 3000 │ 提供網頁服務 │
+
+└───────────────┴───────────────────────────────────────────────────────┴───────────────────────────────┘
+
+\---
+
+四、前端與合約互動（ethers.js）
+
+// 1. 連接錢包
+
+provider = new ethers.BrowserProvider(window.ethereum);
+
+signer = await provider.getSigner();
+
+// 2. 建立合約實例
+
+contract = new ethers.Contract(CONTRACT\_ADDRESS, CONTRACT\_ABI, signer);
+
+// 3. 讀取數據（免費）
+
+const value = await contract.number();
+
+// 4. 寫入數據（需簽名交易）
+
+const tx = await contract.increment();
+
+await tx.wait(); // 等待確認
+
+\---
+
+五、MetaMask 本地網路設定
+
+┌──────────┬───────────────────────┐
+
+│ 欄位 │ 值 │
+
+├──────────┼───────────────────────┤
+
+│ 網路名稱 │ Hardhat Local │
+
+├──────────┼───────────────────────┤
+
+│ RPC URL │ [http://127.0.0.1:8545](http://127.0.0.1:8545) │
+
+├──────────┼───────────────────────┤
+
+│ Chain ID │ 31337 (hex: 0x7A69) │
+
+├──────────┼───────────────────────┤
+
+│ 貨幣符號 │ ETH │
+
+└──────────┴───────────────────────┘
+
+測試帳戶私鑰（有 10000 ETH）：
+
+0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+\---
+
+六、核心概念
+
+┌─────────────┬──────────────────────────────────────────┐
+
+│ 概念 │ 說明 │
+
+├─────────────┼──────────────────────────────────────────┤
+
+│ ABI │ 合約介面定義，前端透過它知道如何呼叫合約 │
+
+├─────────────┼──────────────────────────────────────────┤
+
+│ Signer │ 有私鑰的帳戶，可簽名交易 │
+
+├─────────────┼──────────────────────────────────────────┤
+
+│ Provider │ 連接區塊鏈的通道 │
+
+├─────────────┼──────────────────────────────────────────┤
+
+│ Gas │ 執行交易的費用 │
+
+├─────────────┼──────────────────────────────────────────┤
+
+│ Transaction │ 改變區塊鏈狀態的操作，需等待確認 │
+
+└─────────────┴──────────────────────────────────────────┘
+
+\---
+
+這就是一個完整 DApp 的基本組成！
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 完成“链上留言板”智能合约开发
 
@@ -146,6 +308,7 @@ function get() public view returns (uint256) { return storedValue; }
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ARZER-TW/images/2026-02-03-1770129799680-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ARZER-TW/images/2026-02-03-1770129822926-image.png)
 
 1\. Call vs Send
@@ -173,11 +336,13 @@ function get() public view returns (uint256) { return storedValue; }
 
 
 
+
 作息變得好亂哈哈，快要12點才起床，等下預計把入門的學習任務補完，之前有發現wsl會黨檔foundry的本地區塊鏈的連結，等等嘗試解決
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -202,11 +367,13 @@ function get() public view returns (uint256) { return storedValue; }
 
 
 
+
 忙黑客松，發現前端的AI會自動幫分析一些請求錯誤，非常好玩哈哈。
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -559,11 +726,13 @@ Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
 
 
 
+
 沒什麼好多說，搞黑客松!
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -594,6 +763,7 @@ Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
 
 
 
+
 跟同學們進行了腦爆PT2，正式確定了題目。
 
 完成了漏洞修復，也完成了運行**Solidity by Example。**
@@ -601,6 +771,7 @@ Phase 0 (MCP + Skills) -----> Phase 1-2 (Proposal MVP) -----> Phase 3 (x402)
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -969,6 +1140,7 @@ contract CrossFunctionVulnerable {
 
 
 
+
 實習計畫第二周結束，本周最讓我印象深刻的是「與人合作」這個課題。
 
   
@@ -1002,6 +1174,7 @@ contract CrossFunctionVulnerable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1064,6 +1237,7 @@ ZK 是一個**選擇性隱藏**的工具，設計者決定保護什麼、公開�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1200,6 +1374,7 @@ if (amount == 0) revert ZeroAmount();
 
 
 
+
 完整閱讀並學習了這兩篇在 X 上非常熱門的 Claude Code 指南——  
 [https://x.com/affaanmustafa/status/2014040193557471352?s=20](https://x.com/affaanmustafa/status/2014040193557471352?s=20) 和  
 [https://x.com/affaanmustafa/status/2012378465664745795?s=20，](https://x.com/affaanmustafa/status/2012378465664745795?s=20，)  
@@ -1230,6 +1405,7 @@ if (amount == 0) revert ZeroAmount();
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -2300,6 +2476,7 @@ price_ratio = 新價格 / 舊價格
 
 
 
+
 # Elon 老師 Solidity 課程心得
 
 ## 核心收穫：從 EVM 底層理解 Solidity
@@ -2628,6 +2805,7 @@ unchecked：跳過溢位檢查，慎用
 
 
 
+
 与马铃薯还有功夫小马同学打算组织一场X SPACE活动，完成"**从 0 到 1 策划、组织、复盘一场活动"这个任务，按照实习手册的sop依序完成了确定活动背景与目标、准备流程按时接节点拆解(T-5至T-4天:启动准备)。**
 
 在群里跟大家一起讨论了中本聪的真身
@@ -2639,6 +2817,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2735,6 +2914,7 @@ unchecked：跳過溢位檢查，慎用
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3387,6 +3567,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 
 
+
 ## 2026/01/16 學習筆記
 
 今天重讀了余哲安老師的〈兩個記憶工程的故事（三）〉和比特幣白皮書。
@@ -3416,6 +3597,7 @@ _本文是我的學習筆記，如有錯誤歡迎指正。_
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3643,6 +3825,7 @@ PR #35 等合併後要追蹤一下線上是否正常。
 
 
 
+
 ## 今日完整工作總結
 
 * * *
@@ -3702,6 +3885,7 @@ npx serve docs/.vuepress/dist   # 模擬真實部署
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3964,6 +4148,7 @@ _2026/01/13_
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
