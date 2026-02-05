@@ -15,8 +15,326 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+## 一、什么是 DevRel（Developer Relations）
+
+**DevRel = 产品 / 工程 ↔ 外部开发者生态 的桥梁**
+
+核心目标：  
+通过技术赋能 + 社区互动，实现**双向价值传递**
+
+-   对内：反馈真实开发者需求，优化产品
+    
+-   对外：降低门槛，提升开发体验，壮大生态
+    
+
+## 二、DevRel 的组织形态
+
+### 1\. 独立 DevRel 部门
+
+**优势**
+
+-   以生态增长为核心
+    
+-   决策链路短，响应快
+    
+-   更容易联动市场、运营资源
+    
+
+### 2\. 归属产研（Product / Engineering）
+
+**优势**
+
+-   技术理解更深入
+    
+-   与产品迭代高度对齐
+    
+-   能直接影响 SDK / API 设计
+    
+
+Web3 项目中两种模式都常见，取决于团队规模与阶段
+
+## 三、DevRel 的 10 个核心岗位角色
+
+| 角色 | 核心职责 |
+| --- | --- |
+| Developer Advocate | 技术布道、对外演讲 |
+| Community Manager | 社区运营与维护 |
+| Technical Writer | 技术文档与信息架构 |
+| DevRel Engineer | 开发者体验工程 |
+| Solutions Architect / Partner Engineer | 解决方案与生态集成 |
+| Ecosystem Growth Lead | 生态增长 |
+| DevRel Program Manager | 项目管理 |
+| Developer Marketer | 开发者营销 |
+| Hackathon Lead | 黑客松负责人 |
+| DevRel Data Analyst | 数据分析与指标 |
+
+## 四、DevRel 在 Web3 中的 4 大核心职责
+
+### 1\. 倾听与反馈（Listen & Feedback）
+
+-   建立反馈渠道（Discord / Issue / Office Hours）
+    
+-   用户调研 & 竞品分析
+    
+-   将真实声音反哺产品迭代
+    
+
+### 2\. 赋能与教育（Empower & Educate）
+
+-   降低技术门槛
+    
+-   文档、教程、Workshop
+    
+-   提升开发者成功率
+    
+
+### 3\. 生态与连接（Ecosystem & Connection）
+
+-   合作伙伴集成
+    
+-   构建开发者社区
+    
+-   促进资源流动
+    
+
+### 4\. 影响与增长（Impact & Growth）
+
+-   Hackathon、大型活动
+    
+-   成功案例（Case Study）
+    
+-   扩大品牌与生态影响力
+    
+
+## 五、第一课：最小内容栈（MVCS）
+
+**MVCS = Minimum Viable Content Stack**
+
+目标：  
+**让开发者 5 分钟内跑通 Example**
+
+### MVCS 核心组成
+
+-   Quick Start（快速上手）
+    
+-   示例代码仓库
+    
+-   FAQ（高频问题）
+    
+-   架构与安全最佳实践
+    
+-   迁移 / 集成指南
+    
+-   SDK / API 文档
+    
+
+## 六、Quick Start / 示例仓库 / FAQ 设计要点
+
+### Quick Start & 示例仓库
+
+目标：**“乐高式”开发体验**
+
+-   一键脚手架（create-web3-app）
+    
+-   多语言支持：JS / TS / Go / Rust / Python / Solidity
+    
+-   多场景 Demo：NFT、DeFi、DAO
+    
+
+### FAQ
+
+目标：减少阻塞、提升自助率
+
+-   错误码 → 解决方案直连
+    
+-   关键词友好、支持自然语言搜索
+    
+
+## 七、架构、安全、迁移与 SDK
+
+### 架构与安全
+
+-   高可用、高并发参考架构
+    
+-   安全红线：私钥管理、鉴权、防攻击
+    
+
+### 迁移与集成
+
+-   技术迁移指南（如 JS → Solidity）
+    
+-   工具迁移（Hardhat → Foundry）
+    
+
+### SDK 与模板
+
+-   Scaffold-Eth-Monad
+    
+-   Hardhat / Foundry Starter
+    
+-   Embedded Wallet（Privy / Thirdweb）
+    
+-   Paymaster、Swap API 等
+    
+
+## 八、DevRel 的指标体系（验证影响）
+
+### 北极星 vs 护城河
+
+-   **北极星指标（增长）**：MAD（月活跃开发者）
+    
+-   **护城河指标（体验）**：TTHW（跑通 Hello World 的时间）
+    
+
+### 核心指标一览
+
+-   MAD：生态活跃度
+    
+-   TTHW：开发体验
+    
+-   Docs Conversion：文档 → 注册 / API 调用
+    
+-   POC → Prod：试点到生产转化
+    
+-   Issue Close Rate：支持效率
+    
+
+## 九、生态与社区（从 0 到 1）
+
+### 目标画像（Persona）
+
+-   Early Adopters
+    
+-   Builders
+    
+-   Degens
+    
+
+### 价值主张
+
+-   技术先发优势
+    
+-   Grant 激励
+    
+-   个人影响力提升
+    
+
+### 触达节律（Rhythm）
+
+-   Daily：Discord
+    
+-   Weekly：Office Hours / Dev Update
+    
+-   Monthly：Newsletter / 技术深度
+    
+-   Quarterly：Hackathon / 大版本发布
+    
+
+### 贡献阶梯
+
+User → Member → Contributor → Ambassador → Partner
+
+## 十、Hackathon 设计方法论
+
+### 赛道（Tracks）
+
+-   DeFi / Gaming / NFT / Infra / Public Goods
+    
+
+### 执行流程
+
+1.  预热：Workshop、组队
+    
+2.  比赛：Mentor、Office Hours
+    
+3.  产出：Demo Day、审计、公布结果
+    
+
+### 留存设计
+
+-   Grant
+    
+-   孵化器
+    
+-   投资对接
+    
+
+## 十一、Workshop 高转化 SOP
+
+### 标准流程
+
+-   10min Intro
+    
+-   40min Live Coding
+    
+-   10min QA
+    
+
+### 关键细节
+
+-   云端环境（Gitpod / Replit）
+    
+-   Starter Branch / Final Branch
+    
+-   1 个 TA 对 10 人
+    
+-   即时激励（跑通即送）
+    
+
+## 十二、DevRel 硬技能模型
+
+### 技术理解力
+
+-   Level 1：读文档，跑 Demo
+    
+-   Level 2：能 Debug 常见问题
+    
+-   Level 3：理解底层原理（共识 / 执行 / 存储）
+    
+
+### 写作与信息架构
+
+-   文档结构设计
+    
+-   技术翻译成人话
+    
+-   Workshop / 演讲 PPT
+    
+
+## 十三、DevRel 软技能模型
+
+### 同理心与沟通
+
+-   主动倾听
+    
+-   代表开发者视角
+    
+-   坏消息也要透明
+    
+
+### 跨部门协作
+
+-   无职权影响力
+    
+-   预期管理
+    
+-   KPI 对齐
+    
+
+### 项目管理
+
+-   稳定节奏
+    
+-   优先级判断
+    
+-   强闭环能力
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 补一下了 Challenge #0 挑战，前人栽树后人乘凉，感谢 Shelter 分享铸造出空白NFT的解决方案，在想实习计划中的一些任务是不是重复使用的，例如这个Challenge #0 ，在第三期实习计划还会用到的话把 Shelter 分享的解决方案也放到对应章节做个提示，也方便。
 
 然后是不是可以把实习计划中学员遇见的解决难题和方案收集起来。放入个集合中嵌入到实习计划平台，以方便消息太多时，看不见别的同学分享的解决方案。减少重复问题出现，让学习效率更高，也节省助教时间。
@@ -24,6 +342,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 ## 一、Web3 媒体在生态中的三大定位
 
@@ -310,6 +629,7 @@ AI 做不了：
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 ## 一、去中心化金融（DeFi / 稳定币 / RWA）
 
 这是以太坊**最成熟、体量最大**的应用方向，也是其核心竞争力所在。
@@ -407,11 +727,13 @@ NFT 与链游最早在以太坊爆发，并奠定了行业标准。
 
 
 
+
 听了令人心动的 Offer：Web3 职场生存指北，想了一想，像交易所、基金会这些头部的企业或者组织招收培养零经验可以是保持生态中的贡献者人数、维护头部声望、培养符合自己标准的新生力量。其余更小规模的、需要把故事落地的还是选择到岗即用。
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -570,6 +892,7 @@ NFT 与链游最早在以太坊爆发，并奠定了行业标准。
 
 
 
+
 黑客松，在想 polymarket 上有什么能做的，因为没玩过 polymarket ，一时间想不到什么，专门去注册了一个账号尝试了一下。
 
 想了一下，用户注册并玩的目的大多数获得收益或者是了解情绪面。散户们没有消息靠自己的推测和思考难以获得期望的收益。跟单聪明钱这一行为是较为简单的获取收益方式。想到 币coin 这个，polymarket 也可以做个类似 app ，综合历史收益率、交易频率、市场类型经验，给每个钱包一个分数，对对应钱包打上 “聪明钱” 、“笨蛋钱” 等标志，用户通过订阅聪明的交易者钱包实时了解其操作。
@@ -585,11 +908,13 @@ NFT 与链游最早在以太坊爆发，并奠定了行业标准。
 
 
 
+
 学习 Hardhat 的基本使用、VibeCoding 这个词已经是看到许久， 也看过相关文章，学习一下怎么使用，但一直都没有实际上手去用的需求，该技能方向经验条停滞不前，今天 HardMan 老师说到：“掌握 VibeCoding 犹如 20 年前的程序员掌握搜索引擎，必将成为基础技能。”明天就开始着手尝试一下，也趁着这个时间把经验条涨一涨。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -614,11 +939,13 @@ NFT 与链游最早在以太坊爆发，并奠定了行业标准。
 
 
 
+
 第二周例会，群友分享都很有帮助，特别是森理分享的AI辅助搭建 Obsidian 个人知识库，直击好资料多，收藏太多看了一时间不知道从哪里看，知识点分类和关联，加强笔记之间的联系，每次看到相关联笔记，再去复习一遍加深记忆。 明天把自己的笔记整理搭建一个出来。
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -680,6 +1007,7 @@ Foundry：
 
 
 
+
 分享会看了Elon老师边写边讲的简单教程，还是比生硬看教材好很多的。
 
 分享会提出的 “良心杀” 其中能进行的博弈还是很吸引人的，俺选 ETHPanda 它才是众望所归。
@@ -687,6 +1015,7 @@ Foundry：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -727,6 +1056,7 @@ Foundry：
 
 
 
+
 ERC7962 的核心目标:在不暴露真实地址的情况下，向第三方证明资产或身份的归属.
 
 解决三大问题：
@@ -749,6 +1079,7 @@ ERC7962中任何人都可以发起交易
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -916,6 +1247,7 @@ Sepolia ETH 是 **测试币**，特点：
 
 
 
+
 ETH安全依赖节点数量和节点分散程度。
 
 **全节点（Full Node）**
@@ -963,11 +1295,13 @@ ETH安全依赖节点数量和节点分散程度。
 
 
 
+
 分享会中的讲解AI要想从一个辅助工具，变成一个真正能执行决策的执行者，在其中加入区块链是必不可少的，区块链可以为监管方提供无法伪造的日志来确保合法。理解区块链能在信任上大大降低的成本。
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1016,6 +1350,7 @@ ETH安全依赖节点数量和节点分散程度。
 
 
 
+
 1ETH = 10^18 wei
 
 100ETH = 100000000000000000000 wei
@@ -1031,6 +1366,7 @@ ETH安全依赖节点数量和节点分散程度。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
