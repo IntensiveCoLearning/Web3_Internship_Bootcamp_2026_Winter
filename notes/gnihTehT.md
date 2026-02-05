@@ -15,8 +15,171 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+## 1\. Uniswap 简介
+
+Uniswap 是以太坊上的去中心化交易所（DEX），采用自动做市商（AMM, Automated Market Maker）模型。V2 是其第二代版本，相较 V1 有以下改进：
+
+-   支持 ERC-20 ↔ ERC-20 交易，而不再仅限于 ETH ↔ ERC-20。
+    
+-   引入闪电兑换（Flash Swap）。
+    
+-   引入时间加权平均价格（TWAP, Time-Weighted Average Price）。
+    
+-   改进合约安全性和可扩展性。
+    
+
+### AMM 核心理念
+
+AMM 通过流动性池（Liquidity Pool）替代订单簿来撮合交易：
+
+-   每个交易对（如 USDT/ETH）都有一个流动性池，池内存储两种代币。
+    
+-   使用恒定乘积公式：
+    
+
+x⋅y=kx \\cdot y = kx⋅y=k
+
+其中 xxx 和 yyy 为池中两种代币数量，k 为常数。
+
+-   当用户交易时，价格由池中代币比例自动调整。
+    
+
+* * *
+
+## 2\. 核心概念
+
+| 概念 | 说明 |
+| --- | --- |
+| 流动性提供者（LP） | 向池子中存入两种代币的人，获取 LP 代币作为份额凭证。 |
+| 流动性池（Pair） | 存储代币对并执行 AMM 算法的智能合约。 |
+| 交换（Swap） | 用户向池子发送一种代币以获取另一种代币。 |
+| 闪电兑换（Flash Swap） | 用户可以先借出代币，操作后在同一交易中归还。 |
+| TWAP | 利用时间加权平均价格防止价格操纵。 |
+
+* * *
+
+## 3\. Uniswap V2 核心合约
+
+1.  **Factory 合约 (**`UniswapV2Factory`**)**
+    
+    -   功能：创建新的交易对（Pair）。
+        
+    -   核心函数：
+        
+        -   `createPair(tokenA, tokenB)` → 返回 Pair 地址。
+            
+        -   `getPair(tokenA, tokenB)` → 查询已有 Pair 地址。
+            
+    -   事件：
+        
+        -   `PairCreated(token0, token1, pair, allPairsLength)`
+            
+2.  **Pair 合约 (**`UniswapV2Pair`**)**
+    
+    -   功能：管理流动性池、交易、LP 份额。
+        
+    -   核心函数：
+        
+        -   `mint(to)` → LP 添加流动性并铸造 LP 代币。
+            
+        -   `burn(to)` → LP 移除流动性，销毁 LP 代币。
+            
+        -   `swap(amount0Out, amount1Out, to, data)` → 执行代币交换。
+            
+        -   `sync()` → 手动同步储备量。
+            
+    -   核心变量：
+        
+        -   `reserve0`, `reserve1` → 当前代币储备量。
+            
+        -   `kLast` → 最近的恒定乘积，用于手续费计算。
+            
+3.  **Router 合约 (**`UniswapV2Router02`**)**
+    
+    -   功能：提供友好接口处理交易和流动性操作。
+        
+    -   核心函数：
+        
+        -   `addLiquidity()` / `addLiquidityETH()` → 添加流动性。
+            
+        -   `removeLiquidity()` / `removeLiquidityETH()` → 移除流动性。
+            
+        -   `swapExactTokensForTokens()` → 精确输入交易。
+            
+        -   `swapTokensForExactTokens()` → 精确输出交易。
+            
+    -   Router 实际调用 Pair 的低级函数完成操作。
+        
+
+* * *
+
+## 4\. 核心机制解析
+
+### 4.1 价格公式
+
+在交易中，Uniswap 使用恒定乘积公式：
+
+(x+Δx)(y−Δy)=x⋅y(x + \\Delta x)(y - \\Delta y) = x \\cdot y(x+Δx)(y−Δy)=x⋅y
+
+-   用户输入 Δx\\Delta xΔx 代币，输出 Δy\\Delta yΔy 代币：
+    
+
+Δy=y⋅Δxx+Δx(忽略手续费)\\Delta y = \\frac{y \\cdot \\Delta x}{x + \\Delta x} \\quad (\\text{忽略手续费})Δy=x+Δxy⋅Δx​(忽略手续费)
+
+-   交易手续费为 0.3%，分给 LP。
+    
+
+### 4.2 流动性提供
+
+-   LP 需要按比例存入两种代币，维持池子比例。
+    
+-   LP 代币数量：
+    
+
+LP=Δx⋅Δy−minLiquidity\\text{LP} = \\sqrt{\\Delta x \\cdot \\Delta y} - \\text{minLiquidity}LP=Δx⋅Δy​−minLiquidity
+
+### 4.3 闪电兑换
+
+-   允许用户在交易前借出任意数量代币。
+    
+-   用户必须在交易结束前归还，否则交易回滚。
+    
+-   可用于套利、清算等复杂操作。
+    
+
+### 4.4 时间加权平均价格 (TWAP)
+
+-   每个 Pair 合约记录价格累积值。
+    
+-   TWAP = 当前累积价格差 / 时间差。
+    
+-   防止短期价格操纵攻击。
+    
+
+## 5.学习心得
+
+1.  **V2 核心逻辑简单但可扩展性强**
+    
+    -   恒定乘积公式 + LP 份额机制 + Router 封装，使 AMM 模型容易理解和使用。
+        
+2.  **流动性风险不可忽视**
+    
+    -   永久损失（Impermanent Loss）是 LP 最大风险，需理解价格波动对收益影响。
+        
+3.  **闪电兑换是高级工具**
+    
+    -   可以实现套利、清算、复杂 DeFi 策略，但必须完全在一个交易内归还，技术门槛较高。
+        
+4.  **阅读源码有助于理解机制**
+    
+    -   Factory、Pair、Router 三层架构逻辑清晰，但实际逻辑涉及储备同步、费用分配、滑点计算，需要细读合约源码才能完全理解。
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 \### 合约是可以“套娃”的
 
 你不需要在一个合约里写完所有功能。你可以采用 **“模块化”** 的思路：
@@ -87,6 +250,7 @@ _to.transfer(DRIP_AMOUNT);
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 * * *
 
 ## 🏁 SmartDog 项目结项报告 (Project Conclusion)
@@ -136,11 +300,13 @@ _to.transfer(DRIP_AMOUNT);
 
 
 
+
 继续打磨黑客松项目
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -187,6 +353,7 @@ _to.transfer(DRIP_AMOUNT);
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -253,6 +420,7 @@ Web3 的数据高度“不可视化”且“生涩”，用户在面对链上交
 
 
 
+
 # DAY17
 
 ## **有关Web3 存在主义思考**
@@ -298,6 +466,7 @@ Web3 的数据高度“不可视化”且“生涩”，用户在面对链上交
 
 
 
+
 # Day16
 
 ## 一个探索通过削弱“钱包感”让非技术群体参与到Web3的计划
@@ -325,6 +494,7 @@ Web3 的数据高度“不可视化”且“生涩”，用户在面对链上交
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -423,6 +593,7 @@ Web3 开发最难的不是写代码，而是**调试网络链路**。
 
 
 
+
 # Day14
 
 学习心得已发布平台^^
@@ -432,6 +603,7 @@ challenge #0终于挑战成功！
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -466,6 +638,7 @@ challenge #0终于挑战成功！
 
 
 
+
 # Day12
 
 放假时间长了，开启了夜猫模式
@@ -477,6 +650,7 @@ challenge #0终于挑战成功！
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -626,6 +800,7 @@ challenge #0终于挑战成功！
 
 
 
+
 # Day10
 
 今天正在挑战Tokenization#0，但是我的网络配置有问题，花了我一下午的时间都没解决好TuT，本来想着或许可以在剩下的时间完成，但是发现马上不够记笔记打卡了。
@@ -635,6 +810,7 @@ challenge #0终于挑战成功！
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -750,6 +926,7 @@ function Fallout() public { }
 
 
 
+
 # Day 8
 
 ## 运营
@@ -783,6 +960,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -839,6 +1017,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # DAY 6
 
 今天把昨天的第一次例会又过了一遍，并在早上参加了LXDAO的周会，因为太i了怯场没能在这次自我介绍，很遗憾，希望能够趁下次机会加入！
@@ -871,6 +1050,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # **Day5**
 
 今天听了co learning和第一次例会，非常拓宽眼界！明天将把今晚的内容整理成一个笔记，今天的干货真的太多了，比在学校的学习知识密度要高很多倍！
@@ -880,6 +1060,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -975,6 +1156,7 @@ contract Counter{
 
 
 
+
 DAY3
 
 今天准备去学习剩下solidity入门课程，把入门通了一遍。
@@ -984,6 +1166,7 @@ DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1033,6 +1216,7 @@ DAY3
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
