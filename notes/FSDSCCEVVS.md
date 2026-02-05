@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+Learn how to create an NFT in solidity
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 Learn how to create an NFT in solidity
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 学习使用 Foundry
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 ### **学习使用 hardhat**
@@ -38,11 +46,13 @@ Learn how to create an NFT in solidity
 
 
 
+
 # 学习使用 Foundry
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Learn how to create an NFT in solidity
 
 
 
+
 完成Solidity 挑战部分
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -80,11 +92,13 @@ Learn how to create an NFT in solidity
 
 
 
+
 学习solidity基础语法
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -107,11 +121,13 @@ Learn how to create an NFT in solidity
 
 
 
+
 学习solidity基础语法
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -138,11 +154,13 @@ Learn how to create an NFT in solidity
 
 
 
+
 实习手册智能合约完成80%部分学习
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -240,6 +258,7 @@ Learn how to create an NFT in solidity
 
 
 
+
 实习手册智能合约完成50%部分学习
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
@@ -259,11 +278,13 @@ Learn how to create an NFT in solidity
 
 
 
+
 实习手册智能合约完成20%部分学习
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -339,11 +360,13 @@ Gas Limit
 
 
 
+
 请假一天
 <!-- DAILY_CHECKIN_2026-01-15_END -->
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -380,6 +403,7 @@ DAO 和智能合约在法律层面同样存在灰色地带。DAO 通常不具备
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -437,6 +461,7 @@ DAO 是用智能合约和投票规则运行的组织。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
