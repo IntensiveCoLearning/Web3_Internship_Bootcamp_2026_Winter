@@ -15,8 +15,194 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+# 一、函数
+
+函数是Solidity中定义的代码块，可以用来接收和返回值。
+
+```
+pragma solidity ^0.8.17; 
+
+contract Function {  // 定义了名为 Function 的智能合约
+    // Functions can return multiple values.  // 函数可以返回多个值
+    function returnMany() public pure returns (uint, bool, uint) {  // 定义了一个名为 returnMany 的函数，该函数没有修改状态（即 pure），并返回三个值（即 uint、bool 和 uint）
+        return (1, true, 2);  // 返回三个值
+    }
+
+    // Return values can be named.  // 返回值可以有名称
+    function named() public pure returns (uint x, bool b, uint y) {  // 定义了一个名为 named 的函数，该函数没有修改状态（即 pure），并返回三个值，分别是 uint 类型的 x 和 y，以及 bool 类型的 b
+        return (1, true, 2);  // 返回三个值，并将它们分别赋值给 x、b 和 y
+    }
+
+    // Return values can be assigned to their name.
+    // In this case the return statement can be omitted.  // 返回值也可以分配到它们的名称中。在这种情况下，返回语句可以省略
+    function assigned() public pure returns (uint x, bool b, uint y) {  // 定义了一个名为 assigned 的函数，该函数没有修改状态（即 pure），并返回三个值，分别是 uint 类型的 x 和 y，以及 bool 类型的 b
+        x = 1;  // 将 1 赋值给变量 x
+        b = true;  // 将 true 赋值给变量 b
+        y = 2;  // 将 2 赋值给变量 y
+    }
+
+    // Use destructuring assignment when calling another
+    // function that returns multiple values.  // 在调用返回多个值的另一个函数时使用解构赋值
+    function destructuringAssignments()
+        public
+        pure
+        returns (uint, bool, uint, uint, uint)  // 定义了一个名为 destructuringAssignments 的函数，该函数没有修改状态（即 pure），并返回五个值（即 uint、bool、uint、uint 和 uint）
+    {
+        (uint i, bool b, uint j) = returnMany();  // 调用之前定义的 returnMany 函数，并将它返回的三个值分别赋值给 i、b 和 j 变量
+
+        // Values can be left out.
+        (uint x, , uint y) = (4, 5, 6);  // 定义了一个包含三个元素的数组，将这个数组的第一个和第三个元素分别赋值给变量 x 和 y
+
+        return (i, b, j, x, y);  // 返回五个值，分别为 i、b、j、x 和 y
+    }
+
+    // Cannot use map for either input or output
+    // 不能将映射用于输入或输出
+
+    // Can use array for input  // 可以在输入中使用数组
+    function arrayInput(uint[] memory _arr) public {}  // 定义了一个名为 arrayInput 的函数，该函数接受一个 uint 类型的数组作为参数，并没有返回值
+
+    // Can use array for output  // 可以在输出中使用数组
+    uint[] public arr;  // 声明了一个名为 arr 的数组变量，类型为 uint 数组
+
+    function arrayOutput() public view returns (uint[] memory) {  // 定义了一个名为 arrayOutput 的函数，该函数只读（即 view），返回一个 uint 类型的数组
+        return arr;  // 返回数组 arr
+    }
+}
+
+// Call function with key-value inputs
+contract XYZ {  // 定义了一个名为 XYZ 的智能合约
+    function someFuncWithManyInputs(  // 定义了一个名为 someFuncWithManyInputs 的函数，它接收多个不同类型
+```
+
+-   `bytes`：字节数组
+    
+
+好长！！！
+
+## 接受和返回整数的函数：
+
+```
+function calculate(uint256 x) public pure returns (uint256) {
+    return x * 2;
+}
+```
+
+## 函数可以指定访问修饰符（`public`，`private`，`internal`和`external`），这将影响谁可以调用该函数。
+
+```
+// Public 函数可以由任何人调用（包括其他智能合约）
+function myPublicFunction() public {}
+
+// Private 函数只能从同一合约中的函数调用
+function myPrivateFunction() private {}
+
+// Internal 函数只能从同一合约或从与该合约继承关系的合约中的函数调用
+function myInternalFunction() internal {}
+
+// External 函数只能从外部（即其他智能合约或以太坊交易）调用
+function myExternalFunction() external {}
+```
+
+## 对于接受结构体或数组等复杂类型的函数，可以使用`memory`或`storage`关键字来确定参数或返回值的类型存储位置。
+
+```
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    function calculate(uint[] calldata numbers) public pure returns (uint) {
+        uint sum = 0;
+        for (uint i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        return sum;
+    }
+}
+```
+
+_当函数接收以太坊发送的资金时，必须使用_`payable`_关键字，并且可以指定函数触发的事件。_
+
+```
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    event PaymentReceived(address from, uint amount);
+
+    function receivePayment() external payable {
+        emit PaymentReceived(msg.sender, msg.value);
+    }
+}
+```
+
+注意：
+
+-   **函数可以返回多个值**
+    
+-   **可以命名返回参数**
+    
+-   **解构赋值获取多返回值**
+    
+-   **数组可以作为参数和返回值**
+    
+-   **函数调用可以按顺序或键值对方式传入参数**
+    
+
+# 二、View和Pure函数
+
+在 Solidity 0.5.0 及更高版本中，constant 被拆分成 view 和 pure。
+
+## **View 函数**
+
+View 函数指的是不修改合约状态的函数。
+
+如果调用 view 函数，则不会向区块链提交交易。
+
+将 view 视为函数的一个后缀，例如 getBalance 可以被重写为 getBalance view。
+
+对于其他合约调用 view 函数，也不会消耗任何 gas。
+
+eg：
+
+```
+pragma solidity ^0.5.0;
+
+contract Balance {
+    mapping(address => uint) public balances;
+
+    function getBalance() public view returns (uint) {
+ return balances[msg.sender];
+    }
+}
+```
+
+## **Pure 函数**
+
+Pure 函数指的是没有在合约存储中读取或写入任何数据，并且不会改变合约状态，也不会读取区块链的任何数据。
+
+如果调用 pure 函数，则不会向区块链提交交易。
+
+我们可以将 pure 视为函数的另一个后缀，例如 add 可以被重写为 add pure。
+
+eg：
+
+```
+pragma solidity ^0.5.0;
+
+contract Calculator {
+    function add(uint a, uint b) public pure returns (uint) {
+ return a + b;
+    }
+}
+```
+
+**一个 pure 函数也可以接受参数指定的字符串、bytes、uint、address、fixed 和 ufixed 类型，但是不能接受 memory 和 storage 类型。**
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 # 一、结构体
 
 用户可以自定义结构体类型。
@@ -221,6 +407,7 @@ contract Calldata {
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 # 一、数组
 
 数组有编译时固定大小或动态大小两个方式。
@@ -392,6 +579,7 @@ assert(false == e.isActive());
 
 
 
+
 # 一、映射
 
 语法：
@@ -460,6 +648,7 @@ contract Mapping {
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -622,6 +811,7 @@ contract Loops {
 
 
 
+
 # 一、常量
 
 常量是无法修改的变量。
@@ -736,6 +926,7 @@ contract SimpleStorage {
 
 
 
+
 Solidity
 
 # 一、Hello World
@@ -834,6 +1025,7 @@ contract Variables {
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1006,6 +1198,7 @@ describe("StanfordToken", function () {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 4
 
 Solidity 语法 + 测试
@@ -1090,6 +1283,7 @@ function doSomething() public onlyOwner { ... }
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1291,6 +1485,7 @@ npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -1362,6 +1557,7 @@ async function mintNFT() {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1448,6 +1644,7 @@ Provider 是区块链的“只读接口”。
 
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -1492,6 +1689,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1569,6 +1767,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1664,6 +1863,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -1727,6 +1927,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1870,6 +2071,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2156,6 +2358,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -2271,6 +2474,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2476,6 +2680,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -2604,6 +2809,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、以太坊节点&客户端
 
 ## 1.节点（node）：
@@ -2673,6 +2879,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2806,6 +3013,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3049,6 +3257,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
