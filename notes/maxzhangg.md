@@ -15,8 +15,295 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-04
+<!-- DAILY_CHECKIN_2026-02-04_START -->
+## 学习笔记：Challenge #0 —— 代币化（Tokenization）
+
+**来源**  
+Speedrun Ethereum · Tokenization Challenge  
+[https://speedrunethereum.com/challenge/tokenization](https://speedrunethereum.com/challenge/tokenization)
+
+* * *
+
+## 一、挑战概览
+
+本挑战通过 **ERC-721（NFT）** 的完整开发流程，帮助理解“代币化”在以太坊中的真实含义，而不仅是停留在图片或炒作层面。
+
+**目标交付**
+
+-   编译并部署一个 NFT 智能合约
+    
+-   在本地网络完成铸造、转账、所有权验证
+    
+-   将合约部署到 Sepolia 测试网
+    
+-   发布一个可交互的 Next.js 前端应用
+    
+-   理解链上所有权与可组合性
+    
+
+**难度与时间**
+
+-   技能水平：初学者
+    
+-   预估时间：1–4 小时
+    
+
+* * *
+
+## 二、核心概念理解
+
+### 1\. 什么是代币化（Tokenization）
+
+代币化可以理解为：  
+**为某个物品创建一个可以被钱包持有、被链上识别、可转移的“数字所有权凭证”**。
+
+在以太坊中：
+
+-   所有权由合约代码强制执行
+    
+-   转移是原子性的、即时的、可追踪的
+    
+-   不依赖第三方登记系统
+    
+
+### 2\. NFT 的本质
+
+NFT（Non-Fungible Token）= 非同质化代币
+
+-   每个 tokenId 唯一
+    
+-   每个 token 对应一个 owner
+    
+-   非常适合表示「唯一性资产」
+    
+
+NFT 并不等于 JPEG，而是一种 **链上所有权抽象**。
+
+### 3\. 三类被代币化的资产
+
+1.  **现实世界资产（RWA）**
+    
+    -   股票、房产、黄金
+        
+    -   需要法律或托管机制把链上转账与链下权利绑定
+        
+    -   否则只是“收藏品”
+        
+2.  **链上原生资产**
+    
+    -   数字艺术、ENS、游戏道具、链上门票
+        
+    -   代币本身就是资产
+        
+    -   天然具备全球流通与可组合性
+        
+3.  **静态 NFT 的再利用**
+    
+    -   即使 NFT 本身没有功能
+        
+    -   也可被其他协议读取、组合、金融化
+        
+
+* * *
+
+## 三、开发流程总结（按 Checkpoint）
+
+* * *
+
+### Checkpoint 0：环境与项目初始化
+
+**工具链**
+
+-   Node.js ≥ 20
+    
+-   Yarn
+    
+-   Git
+    
+
+**核心命令**
+
+```
+npx create-eth@1.0.5 -e challenge-tokenization challenge-tokenization
+yarn chain      # 本地链
+yarn deploy     # 本地部署合约
+yarn start      # 前端
+```
+
+本质上，这一步完成了：
+
+-   本地区块链（Hardhat）
+    
+-   NFT 合约部署
+    
+-   Next.js + Scaffold-ETH 前端启动
+    
+
+* * *
+
+### Step 1：Gas 与钱包机制
+
+**关键认知**
+
+-   Gas 是区块链执行交易的“燃料”
+    
+-   本地开发阶段使用 **Burner Wallet（临时钱包）**
+    
+-   临时钱包自动签名，降低学习摩擦
+    
+
+**实践要点**
+
+-   使用隐身窗口生成全新地址
+    
+-   用 Faucet 向该地址转账
+    
+-   关闭窗口即销毁钱包
+    
+
+👉 这是理解“钱包只是私钥管理方式”的关键一步
+
+* * *
+
+### Step 2：NFT 铸造与转账
+
+**完成内容**
+
+-   铸造 ERC-721 NFT
+    
+-   查看 NFT 列表
+    
+-   在两个地址间转移 NFT
+    
+-   理解 ownerOf / balanceOf
+    
+
+**核心链上逻辑**
+
+-   `ownerOf(tokenId)`：唯一所有权来源
+    
+-   `balanceOf(address)`：持仓数量
+    
+-   `approve` / `setApprovalForAll`：授权模型
+    
+-   转账触发 `Transfer` 事件
+    
+
+**关键理解**
+
+-   NFT 的所有权只存在于链上
+    
+-   前端只是状态读取器
+    
+-   钱包只是签名工具
+    
+
+* * *
+
+### Step 3：部署到 Sepolia 测试网
+
+**重要变化**
+
+-   从本地 Hardhat → 公共测试网
+    
+-   需要真实测试网 ETH
+    
+-   使用独立部署账户（而非个人主钱包）
+    
+
+**核心步骤**
+
+-   切换 defaultNetwork 为 sepolia
+    
+-   `yarn generate` 生成部署账户
+    
+-   Faucet 充值
+    
+-   `yarn deploy --network sepolia`
+    
+
+👉 这一步标志着：**你的合约真正进入公共区块链**
+
+* * *
+
+### Step 4：发布前端应用
+
+**关键配置**
+
+-   `targetNetwork = chains.sepolia`
+    
+-   Burner Wallet 默认仅限本地链
+    
+-   公网需连接 MetaMask 或显式开启 Burner
+    
+
+**部署**
+
+```
+yarn vercel
+```
+
+前端发布后：
+
+-   任意人可访问
+    
+-   任意人可与合约交互
+    
+-   应用开始具备“Web3 产品”属性
+    
+
+* * *
+
+### Step 5：合约验证（Etherscan）
+
+**目的**
+
+-   提升透明度与可信度
+    
+-   允许他人审计代码
+    
+-   防止“黑盒合约”
+    
+
+**命令**
+
+```
+yarn verify --network sepolia
+```
+
+验证成功后：
+
+-   合约代码与地址公开可查
+    
+-   可作为挑战提交 URL
+    
+
+* * *
+
+## 四、NFT 可组合性的意义
+
+-   NFT ≠ 图片
+    
+-   NFT = 可被任何合约识别的所有权单位
+    
+
+带来的能力包括：
+
+-   抵押
+    
+-   拆分
+    
+-   借贷
+    
+-   自动化策略
+    
+-   跨应用复用
+<!-- DAILY_CHECKIN_2026-02-04_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 今天的核心学习不在“写简历”，而在如何把一个人的经历，转化成“岗位可识别的价值表达”。
 
 首先意识到一件事：
@@ -111,6 +398,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 产品经理学习笔记
 
 一、今天学习的核心内容
@@ -194,6 +482,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 # **用 SpoonOS Graph Agent 构建可解释的对话+占卜应用**
 
 ## **1\. 目标与背景**
@@ -253,6 +542,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 -   配置前端环境变量：在 Oracle-s-Choice/frontend/.env 中设置 VITE\_API\_URL 指向本地后端 [http://localhost:8001，用于前端请求后端接口。](http://localhost:8001，用于前端请求后端接口。)
     
 -   配置后端模型与密钥：在 Oracle-s-Choice/backend/.env 中设置 GEMINI\_MODEL=gemini-2.5-flash，并配置了 Gemini 与 OpenAI 的 API Key，用于后端调用大模型服务。
@@ -262,6 +552,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -399,6 +690,7 @@ STAR 结构
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -556,6 +848,7 @@ STAR 结构
 
 
 
+
 \# 今日打卡（Web3 Portfolio建立）
 
 \## ✅ Web3 结构与路由
@@ -635,6 +928,7 @@ STAR 结构
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -891,6 +1185,7 @@ assert
 
 
 
+
 黑客松经验分享
 
 一、什么是黑客松（Hackathon）
@@ -1064,6 +1359,7 @@ Demo
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1400,6 +1696,7 @@ Demo
 
 
 
+
 # AI 辅助搭建 Obsidian 个人知识库
 
 ## 一、为什么我们总是「收藏了不看」
@@ -1726,6 +2023,7 @@ Demo
 
 
 
+
 # DApp
 
 ## 一、DApp 的实用定义
@@ -1980,6 +2278,7 @@ Demo
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2369,6 +2668,7 @@ Demo
 
 
 
+
 ## 社区运营基础 & 活动策划与执行
 
 ### 一、前置规则与合规要求
@@ -2567,6 +2867,7 @@ Demo
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2792,6 +3093,7 @@ AI 是放大器，不是方向盘
 
 
 
+
 # 不同pre和会议记录总结
 
 ## 一、区块链金融 / On-Chain IPO（金融研究类材料）
@@ -2937,6 +3239,7 @@ AI 是放大器，不是方向盘
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3152,6 +3455,7 @@ SpoonOS 降低开发门槛，加速落地
 
 
 
+
 ## Web3 安全与刑事风险
 
 ### 一、Web3 当前整体安全形势
@@ -3229,6 +3533,7 @@ KOL 荐币、带单；
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3511,6 +3816,7 @@ Wallet（签名）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
