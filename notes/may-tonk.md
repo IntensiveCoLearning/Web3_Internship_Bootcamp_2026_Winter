@@ -15,8 +15,252 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+# 、Curve：用数学解决问题，而不是 storage
+
+Curve 的设计哲学和 Uniswap V3 **完全相反**。
+
+* * *
+
+## 1️⃣ Curve 的核心假设（决定了一切）
+
+Curve 的前提是：
+
+-   token 价格 **本来就应该接近 1:1**
+    
+-   比如：
+    
+    -   USDC / USDT
+        
+    -   stETH / ETH
+        
+    -   crvUSD / USDC
+        
+
+👉 所以 Curve 不需要：
+
+-   价格区间
+    
+-   tick
+    
+-   position
+    
+-   NFT
+    
+
+* * *
+
+## 2️⃣ Curve 池子的核心 storage（高度简化）
+
+以最典型的 StableSwap 池为例：
+
+```
+uint256[N] balances;   // 每个币的余额
+uint256 amplification; // A 值（曲线陡峭程度）
+uint256 fee;
+```
+
+📌 **注意重点**：
+
+-   `balances` 是一个 **固定长度数组**
+    
+-   没有 mapping
+    
+-   没有动态增长结构
+    
+
+* * *
+
+## 3️⃣ Curve swap 时发生了什么？
+
+### ① 读 balances
+
+```
+x = balances[i];
+y = balances[j];
+```
+
+-   N 次以内 `SLOAD`
+    
+-   N 是池子大小（2~4 通常）
+    
+
+* * *
+
+### ② 纯数学计算（最重的部分）
+
+Curve 的核心是 **StableSwap 不变量**：
+
+```
+D = solve(x, y, A)
+```
+
+这一步：
+
+-   for 循环
+    
+-   牛顿迭代
+    
+-   大量乘除法
+    
+
+⚠️ 但重点是：
+
+> **计算 ≪ storage 写入的 gas**
+
+* * *
+
+### ③ 更新 balances（固定写入）
+
+```
+balances[i] += amountIn;
+balances[j] -= amountOut;
+```
+
+-   2 次 `SSTORE`
+    
+-   slot 位置固定
+    
+
+* * *
+
+## 4️⃣ 为什么 Curve gas 稳定？
+
+因为：
+
+-   没有 tick
+    
+-   没有 position
+    
+-   没有动态 mapping
+    
+-   写入 slot 数 **是固定的**
+    
+
+📌 Curve 的核心工程策略：
+
+> **宁愿算 1000 次，也不多写 1 个 slot**
+
+* * *
+
+## 5️⃣ Curve 的 storage 哲学总结
+
+> **用复杂数学，换取 storage 的可控性**
+
+这非常适合：
+
+-   稳定币
+    
+-   价格波动小的资产
+    
+-   高频大额交易
+    
+
+* * *
+
+# 三、Balancer：storage 为“配置自由度”买单
+
+Balancer 是另一个方向：  
+👉 **它追求“资产组合的自由度”**
+
+* * *
+
+## 1️⃣ Balancer 的核心创新点
+
+Balancer 的池子可以：
+
+-   2~8 个 token
+    
+-   每个 token 不同权重（比如 80/20）
+    
+-   类似“链上指数基金”
+    
+
+这意味着什么？
+
+👉 **权重必须上链存储**
+
+* * *
+
+## 2️⃣ Balancer 的核心 storage 结构
+
+### Pool 层
+
+```
+address[] tokens;
+mapping(address => uint256) balances;
+mapping(address => uint256) weights;
+uint256 swapFee;
+```
+
+⚠️ 关键差异：
+
+-   tokens 是数组（可遍历）
+    
+-   balances / weights 是 mapping
+    
+-   但 **mapping key 是固定集合**
+    
+
+* * *
+
+## 3️⃣ Balancer swap 的 storage 行为
+
+### ① 遍历 tokens（读）
+
+```
+for token in tokens:
+    load balance
+    load weight
+```
+
+-   多次 `SLOAD`
+    
+-   数量 = token 个数
+    
+
+* * *
+
+### ② 计算加权不变量
+
+```
+∏ balance[i] ^ weight[i] = k
+```
+
+👉 计算量比 Uniswap 大，但还是纯算术
+
+* * *
+
+### ③ 更新两个 balance
+
+```
+balances[tokenIn] += amountIn;
+balances[tokenOut] -= amountOut;
+```
+
+-   固定 2 次 `SSTORE`
+    
+
+* * *
+
+## 4️⃣ Balancer 的 gas 特点
+
+| 项目 | 特性 |
+| --- | --- |
+| storage 写入 | 固定 |
+| storage 读取 | 与 token 数量相关 |
+| gas 稳定性 | 稳定 |
+| 计算复杂度 | 中等 |
+
+📌 Balancer 的设计取舍：
+
+> **接受更多 storage 读取，换取配置自由**
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 * * *
 
 # 一、结论
@@ -232,6 +476,7 @@ struct Position {
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
+
 # 一、前端 → 钱包 → 交易 → EVM
 
 很多人把这句话当流程图看，其实它是 **四个完全不同的系统**。
@@ -417,6 +662,7 @@ balanceOf[to] += amount;
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 # 一、 EIP-1967
@@ -624,6 +870,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 
 
+
 # 一、Subgraph ≠ 传统数据库写入
 
 这是 90% 人理解错的地方。
@@ -828,6 +1075,7 @@ Indexer 会：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1154,6 +1402,7 @@ Indexer 会：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1536,6 +1785,7 @@ event.on 实时提示
 
 
 
+
 # 一、为什么不用 Subgraph 会崩
 
 我们先假设一个**非常真实的 DApp 场景**：
@@ -1831,6 +2081,7 @@ Subgraph 刚好完美匹配。
 
 
 
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -2025,6 +2276,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2391,6 +2643,7 @@ uint32  blockTimestampLast;
 
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -2648,6 +2901,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -3026,6 +3280,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -3353,6 +3608,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -3599,6 +3855,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3903,6 +4160,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -4051,6 +4309,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -4421,6 +4680,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -4760,6 +5020,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -4863,6 +5124,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5023,6 +5285,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5368,6 +5631,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -5470,6 +5734,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
