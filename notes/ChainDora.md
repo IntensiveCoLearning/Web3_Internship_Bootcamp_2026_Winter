@@ -15,8 +15,142 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-05
+<!-- DAILY_CHECKIN_2026-02-05_START -->
+## **代理合约**
+
+代理合约（Proxy Contract）是智能合约开发中一种重要的设计模式，主要用于解决智能合约一旦部署就无法修改的难题，实现合约的**可升级性**。简单来说，代理合约就像一个“中间人”，它接收用户的请求，然后将请求“委托”给另一个合约（称为“实现合约”或“逻辑合约”）来执行。通过更换代理合约指向的实现合约，就可以在不改变代理合约地址的情况下更新合约的逻辑。
+
+下面我将从以下几个方面详细解释代理合约：
+
+**1\. 为什么需要代理合约？**
+
+以太坊上的智能合约一旦部署到区块链上，就无法直接修改其代码。这是区块链不可篡改性的一个重要特性。然而，在实际应用中，合约的逻辑可能需要修复 bug、添加新功能或进行其他更新。如果没有某种机制，我们就需要重新部署整个合约，这将导致：
+
+-   **地址变更：** 新合约的地址与旧合约不同，所有依赖旧合约的应用和用户都需要进行相应的更新。
+    
+-   **状态丢失：** 新合约无法直接访问旧合约存储的数据，导致数据丢失。
+    
+
+代理合约模式就是为了解决这些问题而生的。
+
+**2\. 代理合约的基本原理**
+
+代理合约的核心是使用 `delegatecall` 操作码。`delegatecall` 与普通的 `call` 操作码类似，都用于调用其他合约的函数。但它们之间有一个关键的区别：
+
+-   `call`**：** 在被调用合约的上下文中执行代码，被调用合约可以访问自己的存储。
+    
+-   `delegatecall`**：** 在 **_调用合约_**_的上下文中_ 执行被调用合约的代码，被调用合约可以访问 _调用合约的存储_。
+    
+
+利用 `delegatecall`，代理合约可以将所有调用“委托”给实现合约，但实际操作的是代理合约的存储。这样，即使更换了实现合约，数据仍然保存在代理合约中。
+
+**3\. 代理合约的组成部分**
+
+一个典型的代理合约模式包含以下两个主要部分：
+
+-   代理合约（Proxy Contract）：
+    
+    负责接收用户的请求，并将请求委托给实现合约执行。它主要包含以下功能：
+    
+    -   存储实现合约的地址。
+        
+    -   使用 `fallback` 函数或 `receive` 函数接收所有调用。
+        
+    -   使用 `delegatecall` 将调用转发给实现合约。
+        
+    -   可能包含一些管理功能，例如设置管理员、升级合约等。
+        
+-   **实现合约（Implementation Contract / Logic Contract）：** 包含实际的业务逻辑。它可以被更新和替换。
+    
+
+### **4\. 代理合约的工作流程**
+
+NaN.  用户调用代理合约的某个函数。
+      
+NaN.  代理合约的 `fallback` 函数或 `receive` 函数被触发。
+      
+NaN.  代理合约使用 `delegatecall` 将调用转发给当前指向的实现合约。
+      
+NaN.  实现合约在 _代理合约的上下文中_ 执行代码，操作的是代理合约的存储。
+      
+NaN.  实现合约执行完毕后，将结果返回给代理合约。
+      
+NaN.  代理合约将结果返回给用户。
+      
+
+**5\. 代理合约的类型**
+
+常见的代理模式有以下几种：
+
+-   **透明代理（Transparent Proxy）：** 需要两个合约：代理合约和实现合约。代理合约只负责转发调用，不包含任何业务逻辑。
+    
+-   **UUPS（Universal Upgradeable Proxy Standard）：** 将升级逻辑放在实现合约中，减少了代理合约的复杂性，节省了 Gas 消耗。
+    
+-   **Beacon Proxy：** 使用信标合约来存储实现合约的地址，可以更灵活地管理多个代理合约的升级。
+    
+
+**6\. 代理合约的优点**
+
+-   **可升级性：** 允许在不改变合约地址的情况下更新合约的逻辑。
+    
+-   **数据持久性：** 升级后，数据仍然保存在代理合约中，不会丢失。
+    
+
+**7\. 代理合约的缺点**
+
+-   **复杂性增加：** 引入了额外的合约和调用流程，增加了代码的复杂性。
+    
+-   **Gas 消耗略有增加：** 转发调用会带来一定的 Gas 开销。
+    
+-   **初始化复杂：** 需要仔细设计初始化流程，以确保代理合约和实现合约的状态正确设置。
+    
+
+**8\. 示例说明（简化版）**
+
+假设我们有一个简单的计数器合约：
+
+```
+// 实现合约
+contract CounterV1 {
+    uint256 public count;
+​
+    function increment() public {
+        count++;
+    }
+}
+​
+// 代理合约
+contract Proxy {
+    address public implementation;
+​
+    constructor(address _implementation) {
+        implementation = _implementation;
+    }
+​
+    fallback() external {
+        assembly {
+            calldatacopy(0, 0, calldatasize())
+            let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)
+            returndatacopy(0, 0, returndatasize())
+            switch result
+                case 0 { revert(0, returndatasize()) }
+                default { return(0, returndatasize()) }
+        }
+    }
+}
+```
+
+在这个例子中，`Proxy` 合约将所有调用委托给 `CounterV1` 合约。如果我们想要升级计数器的逻辑，只需要部署一个新的实现合约（例如 `CounterV2`），然后更新 `Proxy` 合约中 `implementation` 变量的值即可。
+
+**总结**
+
+代理合约是实现智能合约可升级性的重要手段。它通过 `delegatecall` 操作码将调用委托给实现合约，从而在不改变代理合约地址的情况下更新合约的逻辑。虽然代理合约增加了一定的复杂性，但在需要合约升级的场景中，它是一种非常有价值的设计模式。
+<!-- DAILY_CHECKIN_2026-02-05_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 ## **内联函数**
 
 在Solidity中，"内联"这个概念通常与汇编（assembly）结合使用，称为“内联汇编”（inline assembly）。它指的是在Solidity代码中嵌入汇编代码块，而不是像其他一些语言那样，将一个函数标记为“内联”，指示编译器在调用处直接展开函数体。
@@ -195,6 +329,7 @@ assembly {
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 **ZK-Rollups (Zero-Knowledge Rollups)**
 
 -   **核心理念：** “有效性证明” (你必须用数学方法立刻证明自己是好人)。
@@ -218,6 +353,7 @@ assembly {
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 ## **IPFS NFT**
@@ -578,6 +714,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## **Twitter Space 线上活动策划总结**
 
 ### **（一）全流程框架：准备 - 执行 - 复盘**
@@ -609,6 +746,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -653,6 +791,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## **数据分析总结**
 
 ### **（一）区块链数据结构基础**
@@ -689,6 +828,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -795,6 +935,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 # 侧链 (Sidechain) 笔记
 
 ## 1\. 背景与动机
@@ -874,6 +1015,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## ptimistic Rollup 核心机制
 
 -   **基本原理**：假设大多数参与者是可信的。
@@ -925,6 +1067,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1005,6 +1148,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1202,6 +1346,7 @@ contract NFTmarket  {
 
 
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -1215,6 +1360,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1246,6 +1392,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1308,6 +1455,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -1330,6 +1478,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1388,6 +1537,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1472,6 +1622,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1587,6 +1738,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -1671,6 +1823,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -1713,6 +1866,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1813,6 +1967,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -1875,6 +2030,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
