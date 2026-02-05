@@ -17,17 +17,19 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
-观看分享会 - 技术 / 开发向的成长路径
+学习使用claude code写代码
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 参加分享会-走进Web3 DevRel一线
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 查看南塘DAO主题回放
@@ -38,11 +40,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 参与就业简历指导 & 面经分享会
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -57,11 +61,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 查看前几天有关黑客松的视频回放。
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -80,11 +86,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 参加**「SPARK AI Hackathon」休闲黑客松 Open Day“SPARK AI 黑客松” 休闲黑客松开放日**
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -111,6 +119,7 @@ colearning
 
 
 
+
 在notion上整理上两周的实习笔记
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
@@ -126,11 +135,13 @@ colearning
 
 
 
+
 整理上一周的学习笔记
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -255,11 +266,13 @@ colearning
 
 
 
+
 学习中文排版规范
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -292,11 +305,13 @@ colearning
 
 
 
+
 学习社区运营指南部分
 <!-- DAILY_CHECKIN_2026-01-19_END -->
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -339,6 +354,7 @@ web3社区运营的核心职责
 
 
 
+
 熟悉difiLIma
 
 \\[Dune Analytics\\](https://dune.com/)[Etherscan](https://etherscan.io/)：
@@ -346,6 +362,7 @@ web3社区运营的核心职责
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -382,6 +399,7 @@ web3社区运营的核心职责
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -439,6 +457,7 @@ web3社区运营的核心职责
 
 
 
+
 阅读以太坊概念和行业赛道概览。
 
 以太坊（Ethereum）是一个开源的去中心化区块链平台，通过其原生加密货币以太币（Ether，简称 ETH）提供去中心化的以太虚拟机（EVM）来处理点对点合约。
@@ -450,6 +469,7 @@ web3社区运营的核心职责
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
