@@ -15,8 +15,90 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+补充了一些媒体相关的知识
+
+1\. 媒体在Web3生态中的定位是什么？
+
+\- 信息分发者：包括外部的信息聚合、内部的内容创作，降低信息差，为市场提供增量。
+
+​- 市场教育者：大量新人接触Web3行业的第一站就是媒体，降低认知差，是最接地气的生态位。
+
+\- 价值传播者：对于Alpha，媒体是前期发掘的场所；对于Beta，媒体是价值Play的一环。
+
+2\. Web3媒体的文风有哪些要点？如何培养写作能力？
+
+\- Web3媒体的行文风格追求客观、中立、准确，同时兼顾故事性与可读性。
+
+​- 当解释复杂概念时，通过类比、分层解释、举例说明、场景化描述和可视化图表等手法，降低理解门槛。
+
+\- 避免堆砌术语，注重事实驱动，化繁为简。
+
+关于写作能力的锻炼，大家都听过知之而后行，但我认为行而后知更重要。
+
+只有开始写作，你才会知道自己的问题在哪里。
+
+如何开始？
+
+先甄别各种行文风格，再选择一种适合自己的文风进行学习并仿写，最后塑造出自己的风格。
+
+3\. 目前，大量工作都能被AI替代。Web3媒体人身上，哪些特质或能力是AI无法复制的？
+
+重要的是，Taste & Networking。
+
+\- Taste：对下个潜力赛道/项目、时事或数据的敏锐直觉，以及对叙事逻辑的审美。​
+
+\- Networking：如线下面对面、线上Space等基于多重感官因素建立起来的链接，是AI还无法比拟的。
+
+如何培养Taste & Networking？
+
+\- 直觉需要保证每天在信息一线高强度冲浪，如集中浏览@X和各家中英文媒体至少2小时，同时要保持思考。
+
+​- 审美需要通过大量的阅读，推荐@tongtongbee主编精选：远川研究所、虎嗅、晚点等优质传统媒体。
+
+\- Networking就靠手勤（多写）、脚勤（多跑）、嘴勤（多分享）。
+
+4\. 对致力于成为Web3媒体人的同学有哪些建议？
+
+🌸培养内容创作的习惯
+
+\- 通过写作逼迫自己思考。
+
+\- 如果想检验自己的写作能力是否过关，可以向各家媒体的专栏投稿。
+
+\- 如果没被采纳，你能去了解自己的不足在哪里。
+
+​- 如果被采纳，就算你没成为记者，起码也是个被认可的内容创作者。
+
+🎧培养网感
+
+\- 给内容引流的能力同样重要，推荐学习@PANewsLab，受到过许多KOL的好评喔！
+
+📛建立个人IP
+
+\- 需要有个身份为自己获取注意力。
+
+​- 但这也是最难的一步，人很可能发现花费了大量时间、精力后，效果仍有限，特别是在熊市。
+
+​- 如果没有灵光乍现，那么就咬牙坚持。
+
+​- 多写作、多互动、多上麦！
+
+理想情况：上面3步闭环成正反馈循环。
+
+阿Q情况：
+
+就算没成KOL，不管是去媒体，还是去各厂生态位，
+
+无论是做记者，还是干运营、PR，
+
+曾经创作的内容跟建立的个人IP都是最有力的POW！
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 今天开了 SOP 的会议，也看到了大家的 SOP,对比之下提取了一些异同。
 
 相同点：
@@ -41,6 +123,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 2.4：[https://share.mubu.com/doc/4cb10Ml2DBn](https://share.mubu.com/doc/4cb10Ml2DBn)
 
 ![2.4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-02-04-1770215385394-2.4.png)
@@ -48,6 +131,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 试着搓了个 SOP，先把初稿放在这里吧
@@ -136,6 +220,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 2.2：[https://share.mubu.com/doc/6gRv6soyFnn](https://share.mubu.com/doc/6gRv6soyFnn)
 
 ![2.2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-02-02-1770046676445-2.2.png)
@@ -143,6 +228,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -170,6 +256,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 疑似有点生病，胃疼一整天了TT
 
 又一次收集信息，这次要求一口气提完所以效果好了一些，但是面对一些艾特+私聊依然不回的友友还是比较麻烦，除了反复提醒也想不出什么更好的点了…
@@ -181,6 +268,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -218,6 +306,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 今天进行了黑客松的半程复盘，又有了一些心得。
 
 同样强调了全局观的重要性，看得出来大家对于这一点的重视（也算是一个共性的问题了）。对于“执行”和“策划”两种工作的不同，也达成了共识，鼓励大家踊跃参与“策划”任务而不是单独被动等待领活，这是很重要的一点。
@@ -248,6 +337,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.28：[https://share.mubu.com/doc/7aG5ZoXcgx7](https://share.mubu.com/doc/7aG5ZoXcgx7)
 
 ![1.28.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-28-1769611784966-1.28.png)
@@ -255,6 +345,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -315,6 +406,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.26：[https://share.mubu.com/doc/K1s7DGRqg7](https://share.mubu.com/doc/K1s7DGRqg7)
 
 ![1.26.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-26-1769441297945-1.26.png)
@@ -322,6 +414,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -356,6 +449,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 主要在筹备休闲黑客松。
 
 -   参加了两场会议，明确了任务
@@ -367,6 +461,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -404,6 +499,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -460,6 +556,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.21：[https://share.mubu.com/doc/5n50wur\_S67](https://share.mubu.com/doc/5n50wur_S67)
 
 ![1.21.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-21-1769008293172-1.21.png)
@@ -467,6 +564,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -511,6 +609,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.19.：[https://share.mubu.com/doc/1ae7\_ByGOQ7](https://share.mubu.com/doc/1ae7_ByGOQ7)
 
 ![1.19..png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-19-1768835442719-1.19..png)
@@ -518,6 +617,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -566,6 +666,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.17: [https://share.mubu.com/doc/1TgnooGlYc](https://share.mubu.com/doc/1TgnooGlYc)
 
 ![1.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-17-1768660624749-1.17.png)
@@ -573,6 +674,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -651,6 +753,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.15：[https://share.mubu.com/doc/6m79uk4dKs7](https://share.mubu.com/doc/6m79uk4dKs7)
 
 ![1.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-15-1768489745986-1.15.png)
@@ -658,6 +761,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -710,6 +814,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.13：[https://share.mubu.com/doc/msBQpFHRq7](https://share.mubu.com/doc/msBQpFHRq7)
 
 ![1.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-13-1768314188386-1.13.png)
@@ -719,6 +824,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
