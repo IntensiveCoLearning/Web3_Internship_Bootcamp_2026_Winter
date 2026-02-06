@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+今天一天都在回家的路上...真的没时间学习啦！和SPOONOS的老师提出了关于AGENT支付生态的观点
+
+明天接着干！
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 在线编写量化平台中 明天就回家啦  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/MapleCity1314/images/2026-02-05-1770301840439-image.png)
@@ -24,6 +32,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 今天回乡下了，没办法学太多了:(
 
@@ -40,6 +49,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 黑客松结束第一天 休息 调整  
 开始制作项目u0： [https://github.com/MapleCity1314/u0](https://github.com/MapleCity1314/u0)
 
@@ -48,6 +58,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -62,6 +73,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要库库做黑客松的内容 一口气不知道搓了多少东西
 
 其实SpoonOS并不是真正意义上的Trustless Agent, 等黑客松完事过后打算去看看Ocean那个框架，如果信息也能上链应该才算吧
@@ -71,6 +83,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -119,6 +132,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天做了reactive的任务
 
 -   reactive合约部署总结笔记
@@ -132,6 +146,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -169,6 +184,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1月25这天太忙了，主要在肝x402和新的合约
 
 然后和好朋友大老板交流了AI时代程序员何去何从的发展
@@ -187,6 +203,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -323,6 +340,7 @@ contract FallbackDynamicOwner {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -491,6 +509,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 
 
+
 今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
 
 ## 目标
@@ -578,6 +597,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -701,6 +721,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -988,6 +1009,7 @@ contract MessageBoardOptimized {
 
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -1062,6 +1084,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1237,6 +1260,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -1370,6 +1394,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1522,6 +1547,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1959,6 +1985,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -2068,6 +2095,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2199,6 +2227,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
