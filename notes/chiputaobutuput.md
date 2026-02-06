@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+学习中国人民银行 国家发展改革委 工业和信息化部 公安部 市场监管总局 金融监管总局 中国证监会 国家外汇局关于进一步防范和处置虚拟货币等相关风险的通知
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 -   律动 BlockBeats：[https://www.theblockbeats.info/](https://www.theblockbeats.info/)
     
 -   吴说：[https://www.wublock123.com/](https://www.wublock123.com/)
@@ -29,11 +35,13 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 学习**Web3 求职指南（简历优化与面试技巧）**
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 以太坊未来发展的潜力  
@@ -60,6 +68,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -90,11 +99,13 @@ Web3产品的痛点:现在的Web3产品大都处于"第一代”，UI烂、操�
 
 
 
+
 学习肖臻老师北大区块链公开课
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -131,6 +142,7 @@ rootdata热度曲线
 
 
 
+
 2008 年金融危机的根源是什么？简单来说：银行承担了过度的风险，当风险爆发时，政府用纳税人的钱来拯救它们。风险被私有化（银行赚取利润），损失被社会化（全民买单）。
 
 这正是密码朋克长期批评的“系统性权力失衡”的一个例子。普通人必须为自己的错误负责，但大型金融机构可以绑架整个经济系统，迫使政府救援。
@@ -140,6 +152,7 @@ rootdata热度曲线
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -162,6 +175,7 @@ rootdata热度曲线
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -343,6 +357,7 @@ rootdata热度曲线
 
 
 
+
 深挖代币分配、解锁周期、流动性需求
 
 学习如何计算一个项目的抛压与拉盘所需的流动性。如果一个项目的运营活动不能带来超过其解锁速度的新增资金，那么它的币价下跌是必然的。
@@ -382,6 +397,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 
 
+
 什么是三盘理论
 
 分红盘Mining，互助盘Pooling，拆分盘Splitting
@@ -405,6 +421,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -459,6 +476,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 
 
+
 -   熟悉频道管理、bot 功能、权限设置
     
 -   了解群数据面板与运营指标（活跃用户数、参与率等）
@@ -466,6 +484,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -532,6 +551,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -790,6 +810,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 
 
+
 ### 1.什么是公共物品
 
 -   非排他性
@@ -832,6 +853,7 @@ AAVE/MakerDAO:研究其治理模型(Governance)和社区运营逻辑。
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1598,6 +1620,7 @@ all, zalgo, album, anonchannel, audio, bot, botlink, button, cjk, command, comme
 
 
 
+
 ### 零知识证明：
 
 在不暴露具体细节的情况下，能够向第三方证明数据的某些特征。如提供Proof（X，Y），向第三方证明X+Y=Z，但Proof（X，Y）无法反推出X和Y的具体值。
@@ -1635,6 +1658,7 @@ deadline控制签名有效性
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1713,6 +1737,7 @@ deadline控制签名有效性
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1906,6 +1931,7 @@ Dune 有大量免费的社区 Dashboard 和 Query，可用于学习和灵感获�
 
 
 
+
 ## SpoonOS是一个让AI Agent能够真正工作的操作系统
 
 ### 1\. 输入层（相当于 “原材料仓库”）
@@ -1986,6 +2012,7 @@ Dune 有大量免费的社区 Dashboard 和 Query，可用于学习和灵感获�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2240,6 +2267,7 @@ FATF（金融行动特别工作组）
 
 
 
+
 1\. **认识以太坊**
 
 -   以太坊是一个支持图灵完备代码执行的开源区块链平台，用于构建 DApp 和智能合约。
@@ -2312,6 +2340,7 @@ FATF（金融行动特别工作组）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
