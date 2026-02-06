@@ -15,8 +15,97 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+## Uniswap V3费率层级（Fee Tiers）、Tick Spacing 与不同费率池的实际意义
+
+### 1\. 费率层级（Fee Tiers）是什么？
+
+Uniswap V3 引入了**多种固定费率池**，而不是 V2 的单一 0.3%。
+
+目前主流的费率层级（以 Uniswap 官方池为例）：
+
+| 费率 | 典型适用场景 | 常见代币对示例 |
+| --- | --- | --- |
+| 0.01% | 极稳定对（几乎无波动） | USDC/USDT, DAI/USDC 等稳定币对 |
+| 0.05% | 稳定币 + 轻度波动资产 | WBTC/renBTC, stETH/ETH 等 |
+| 0.30% | 大多数主流波动资产（V2 的默认值） | ETH/USDC, WBTC/USDC, UNI/ETH 等 |
+| 1.00% | 长尾资产、高波动、小市值代币 | 新发 meme 币、NFT 相关代币、远期代币 |
+
+### 2\. Tick Spacing（刻度间距）
+
+不同费率层级对应不同的 tick spacing（tick 之间的最小间隔）：
+
+| 费率 | Tick Spacing | 相邻 tick 价格差（约） | 含义 |
+| --- | --- | --- | --- |
+| 0.01% | 1 | 0.01% | 最高精度，适合极稳定对 |
+| 0.05% | 10 | ≈0.10% | 中等精度 |
+| 0.30% | 60 | ≈0.60% | 标准精度（V3 最常用） |
+| 1.00% | 200 | ≈2.00% | 最低精度，适合高波动资产 |
+
+**为什么有 Tick Spacing？**
+
+-   减少 tick 数量 → 减少存储和计算开销（gas 更低）
+    
+-   每个费率层级的 tick spacing 都与费率大小匹配：
+    
+    -   费率越低 → 需要更高精度 → tick spacing 越小
+        
+    -   费率越高 → 波动大 → 精度要求低 → tick spacing 越大
+        
+
+### 3\. 不同费率池的实际意义与选择逻辑
+
+| 费率 | LP 收益潜力 | 价格滑点（同等流动性） | LP 风险（无常损失） | 适合的 LP 类型 | 典型 TVL 分布（2025–2026） |
+| --- | --- | --- | --- | --- | --- |
+| 0.01% | 极低 | 极低 | 极低 | 机构 / 稳定收益型 | 稳定币对中占主导 |
+| 0.05% | 较低 | 很低 | 较低 | 稳健型 LP | stETH/ETH 等主流对常见 |
+| 0.30% | 中等 | 中等 | 中等 | 大多数普通 LP | 主流资产对的主力池 |
+| 1.00% | 最高 | 较高 | 最高 | 高风险偏好 / 专业 LP | 长尾、高波动代币 |
+
+**选择费率池的简单决策树**：
+
+1.  是极稳定的资产对吗？ → 选 0.01% 或 0.05%
+    
+2.  是主流资产（如 ETH、BTC、稳定币相关）吗？ → 大多数情况选 0.30%
+    
+3.  是新发、高波动、长尾代币吗？ → 选 1.00%
+    
+4.  流动性已经很深了吗？ → 可以尝试更低费率池（吸引更多交易量）
+    
+
+### 4\. 费率层级对资本效率的影响
+
+-   **低费率池**（0.01%、0.05%）：
+    
+    -   需要更高的资本效率（更窄的区间）才能赚到合理收益
+        
+    -   LP 倾向于把流动性放得非常集中（±0.1% ~ ±1% 区间）
+        
+-   **高费率池**（1.00%）：
+    
+    -   单笔交易费用高 → LP 即使放宽区间也能赚到钱
+        
+    -   更适合“懒人 LP”或波动极大的资产
+        
+
+### 5\. 费率层级 vs 实际使用场景
+
+| 你是哪种 LP？ | 推荐费率 | 推荐区间宽度（示例） | 预期管理频率 |
+| --- | --- | --- | --- |
+| 想极致稳定收益 | 0.01% | ±0.05% ~ ±0.5% | 低 |
+| 主流资产、愿意稍微管理 | 0.30% | ±1% ~ ±10% | 中 |
+| 高风险偏好、追高收益 | 1.00% | ±5% ~ ±50% 或更宽 | 中～高 |
+| 长尾代币、新币 | 1.00% | 极宽或全范围 | 低～中 |
+
+### 6\. 小结
+
+Uniswap V3 通过多费率层级（0.01%、0.05%、0.30%、1.00%）和对应的 tick spacing，让不同波动性资产对都能找到最匹配的费率与精度——低波动用低费高精度，高波动用高费低精度，这是 V3 生态多样性和效率提升的关键设计。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 ## Uniswap V3中流动性 L 的精确含义和添加/移除流动性的数学过程
 
 ### 1\. 流动性 L 到底代表什么？
@@ -121,6 +210,7 @@ timezone: UTC+8
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 ## Uniswap V3中的Tick 系统、价格区间与虚拟储备（Virtual Reserves）
 
@@ -227,6 +317,7 @@ V3 通过 tick 系统把价格离散化，用虚拟储备（virtual reserves）�
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 ## Uniswap V3基础概念
@@ -340,6 +431,7 @@ V3 把价格离散化为 **tick**（刻度）：
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -457,6 +549,7 @@ V3 把价格离散化为 **tick**（刻度）：
 
 
 
+
 ## Uniswap V2 事件与日志
 
 Uniswap V2 使用事件（Events）记录关键状态变化，便于 off-chain 索引、监听与历史查询。 所有事件在 Factory / Pair 合约中定义，遵循 EIP-20 / EIP-721 风格。 前端 / subgraph（如 The Graph）依赖这些事件构建索引。
@@ -530,6 +623,7 @@ Pair 继承 UniswapV2ERC20，触发标准事件：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -631,6 +725,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 的设计细节
 
 ### 1\. Core / Periphery 架构的深层意图
@@ -699,6 +794,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 与 V3 关键差异
 
 ### 1\. 流动性模型
@@ -752,6 +848,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -847,6 +944,7 @@ contract FlashArbitrage is IUniswapV2Callee {
 
 
 
+
 ## Uniswap V2 价格累积与 TWAP 预言机
 
 ### 1、核心目的
@@ -916,6 +1014,7 @@ uint averagePrice = (price0CumNow - price0CumOld) / deltaTime;  // token1 / toke
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1078,6 +1177,7 @@ function getAmountsOut(uint amountIn, address[] calldata path)
 
 
 
+
 ## Swap过程的参数传递
 
 问题1：直接调用 swap 函数时未设置 amountOutMin 或使用 0，导致大额交易在高滑点下执行，损失严重。
@@ -1109,6 +1209,7 @@ uint deadline = block.timestamp + 300; // 5 分钟
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1235,6 +1336,7 @@ interface IUniswapV2Callee {
 
 
 
+
 ## UniswapV2的协议费用
 
 V2 的协议费用（Protocol Fee）是一种可选机制，设计目标是从每笔交易的 0.3% 交易费中抽取 1/6（约 16.67%），即 0.05% 归协议所有（剩余 0.25% 全部给流动性提供者 LP）。
@@ -1318,6 +1420,7 @@ liquidity = totalSupply × (√k - √kLast) / (5 × √k + √kLast)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1469,6 +1572,7 @@ function _update(uint balance0, uint balance1, uint112 _reserve0, uint112 _reser
 
 
 
+
 ## UniswapV2Pair.sol - 交易对合约
 
 ### 主要作用
@@ -1588,6 +1692,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 了解UniswapV2合约的代币交换机制
 
 在 Uniswap V2 中，交换是通过Pair合约执行的。每次交换都会改变Pair中两个代币的储备余额，同时保持恒定乘积公式x\*y=k。
@@ -1636,6 +1741,7 @@ event Sync(uint112 reserve0, uint112 reserve1);
 
 
 
+
 ## 阅读Uniswap V2工厂合约代码
 
 Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心组件之一，用于创建和管理流动性池对（Pair）。它本质上是一个“工厂”，负责标准化地部署交易对合约，确保每个 token 对只有一个唯一的流动性池，从而避免流动性碎片化。代码很简洁高效，只有不到 50 行，但缺体现了 Uniswap 的创新设计。
@@ -1651,6 +1757,7 @@ Uniswap V2 的工厂合约（UniswapV2Factory.sol）是 Uniswap 协议的核心�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1717,6 +1824,7 @@ Uniswap V2 的核心由两个存储库组成：core 和 periphery。核心合约
 
 
 
+
 Uniswap 是一个基于恒定乘积公式的自动化流动性协议，它通过以太坊区块链上不可升级的智能合约系统实现。Uniswap 无需可信中介机构，优先考虑去中心化、抗审查性和安全性。Uniswap 是开源软件，采用 GPL 许可协议。  
 每个 Uniswap 智能合约（称为 pair 交易对）管理一个流动性池，它包含两种 ERC-20 代币的储备。  
   
@@ -1728,6 +1836,7 @@ Uniswap 对每笔交易收取 0.30% 的手续费，该费用会添加到储备�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
