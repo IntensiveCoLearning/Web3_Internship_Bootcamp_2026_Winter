@@ -15,8 +15,39 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+### Reactive Contracts
+
+### 架构设计：它是如何工作的？
+
+1.  **Reactive Network 的架构**主要由三个部分组成，形成了一个闭环：
+    
+
+-   **Origin Chain（源链）**：事件发生的地方（例如 Ethereum, Polygon, Arbitrum）。这里会产生我们感兴趣的“信号”（Event Logs）。
+    
+-   **Reactive Network (ReactVM)**：这是大脑。它通过特殊的节点（Relayers）监听源链上的事件。当捕获到你订阅的事件时，它会在一个并行化的 EVM 环境（ReactVM）中执行你的 Reactive Contract 逻辑。
+    
+-   **Destination Chain（目标链）**：执行结果的地方。Reactive Contract 计算完成后，会向目标链发起一个回调交易（Callback），完成最终操作（比如自动买入代币）。
+    
+
+2.  **代码逻辑**：
+    
+
+一个典型的 Reactive Contract 代码包含两个关键部分：
+
+1.  **订阅（Subscription）**： 你需要告诉网络：“我要监听哪条链？哪个合约？哪种事件？”
+    
+    -   _代码示例思路_：`service.subscribe(chainId, contractAddress, eventTopic)`
+        
+2.  **反应/回调（Callback）**： 当事件发生时，你想做什么？
+    
+    -   _代码示例思路_：实现 `react(...)` 函数。在这个函数里，你接收事件数据，进行逻辑判断（比如：价格是否跌破止损线？），然后打包一笔交易发送出去。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 ### ERC20
 
 ERC-20 本质上就是一个**智能合约的接口规范** (Interface)。只要你的合约实现了以下规定的函数和事件，钱包（如 MetaMask）和交易所（如 Uniswap）就能无缝地识别并操作你的代币。
@@ -91,6 +122,7 @@ ERC-20 本质上就是一个**智能合约的接口规范** (Interface)。只要
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 ### Uniswap V3的实现原理
 
@@ -175,6 +207,7 @@ V3 用了一个“虚拟储备”的技巧：
 
 
 
+
 ### windows系统foundry路径配置问题
 
 最近在做相关作业时遇到，使用Windows自带PowerShell调用forge时，会遇到问题“无法将“forge”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正 确，然后再试一次。”而在Git Bash调用没有问题。经过排查，发现是path路径问题，接下来就记录一下排查和解决过程。
@@ -231,6 +264,7 @@ which forge
 
 
 
+
 ### 1\. 什么是 Reactive？优势是什么？
 
 **Reactive** = Reactive Network + Reactive Smart Contracts 它本质上是一个专为**事件驱动、跨链自动化**而生的区块链/执行层
@@ -257,11 +291,13 @@ which forge
 
 
 
+
 demoday
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -280,11 +316,13 @@ demoday
 
 
 
+
 松！～～～～
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -345,6 +383,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 自身技术漏洞太多，补不过来了！笔记都没时间写了，黑客松也开始了。已经在研究相关技术栈了，加油！
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
@@ -360,11 +399,13 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 恶补solidity中...
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -425,6 +466,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 学习了森老师的agent笔记
 
 学习了优秀同学的RC笔记
@@ -434,6 +476,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -470,6 +513,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 
 
+
 # 有关ERC-7962的思考
 
 最近在训练营学习了 ERC-7962，越琢磨越有意思。结合我的理解，浅谈一下对ERC-7962的定位、严格模式和批量传输的粗浅看法。
@@ -485,6 +529,7 @@ SQL、Excel分析用户行为（A/B test等）
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -598,6 +643,7 @@ collectionId = keccak256(parentCollectionId, conditionId, indexSet)
 
 
 
+
 // 基础合约  
 contract Animal {  
 string public name;  
@@ -679,6 +725,7 @@ Pet(\_name, \_owner) {}
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -855,6 +902,7 @@ function criticalFunction() public onlyOwner whenNotPaused {
 
 
 
+
 # 1\. 合约部署的成本核算
 
 ### Gas 消耗量
@@ -958,6 +1006,7 @@ _Tips：_
 
 
 
+
 **智能合约编译产物**
 
 1.字节码Bytecode
@@ -1034,6 +1083,7 @@ Yul IR定义：Yul是solidity官方提供的中间语言，作为“IR—based c
 
 
 
+
 # Uniswap
 
 ### 1\. 工作原理
@@ -1070,6 +1120,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1156,6 +1207,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 
 
+
 # 国内相关法律最新研究
 
 1.  2026年1月1日施行修改后的《民事案件案由规定》，专门增加了第一级案由“数据、网络虚拟财产纠纷”，并且根据金杜律师事务所的调研结果——最高法研究室发表的署名文章“《民事案件案由规定》（2025年）的理解与适用”进一步明确了将虚拟货币、数字藏品（NFT）与网络游戏装备一同纳入网络虚拟财产的范畴。这意味着，若遇到加密货币相关的民事争议，不必再面对“案由不对，无法立案”的尴尬窘境。
@@ -1170,6 +1222,7 @@ LP收益=交易量\*0.30%\*份额比例 - 无常损失
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1226,6 +1279,7 @@ CREATE2：地址 = f(sender, salt, bytecode) → 可预测、可跨链统一、�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1345,6 +1399,7 @@ Gossip用于传播新交易喝区块，请求/响应用于按需拉取缺失的�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
