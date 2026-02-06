@@ -15,8 +15,16 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+-   [**Web3 求职指南（简历优化与面试技巧）**](https://youtu.be/Rtg6kbIVb9U?si=8MQiClWs5Fd-etIA)内容总结与研报撰写：
+    
+    -   行业新闻总结、活动回顾、项目分析
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 实践 & 小测验
 
 -   根据四周的学习，明确自己的职业目标
@@ -26,6 +34,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 学习内容：
 
@@ -40,6 +49,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 实践挑战：Learn how to create an NFT in solidity
 
 -   指引文档：[https://speedrunethereum.com/challenge/tokenization](https://speedrunethereum.com/challenge/tokenization) **（**[**中文版链接**](https://www.notion.so/Challenge-0-2afbbd63be8780dbbd56cb01490da15e?pvs=21)**）**
@@ -49,6 +59,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -63,11 +74,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 黑客松参赛
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -84,11 +97,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 黑客松比赛准备ing
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -109,6 +124,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 学习内容：
 
 1.  Web3 实习手册[「行业前辈访谈录」](https://web3intern.xyz/zh/logic-frontend-journey/)部分
@@ -118,6 +134,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -158,6 +175,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 学习内容：
 
 1.  [Solidity by Example | 0.8.26](https://solidity-by-example.org/) **Applications 部分**
@@ -169,6 +187,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -199,11 +218,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -240,6 +261,7 @@ figma、chatgpt 等创作类工具等熟练运用
 
 
 
+
 学习内容：
 
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
@@ -261,6 +283,7 @@ Gas代付机制与简化私钥管理的设计，更是打破了Web3普及的核�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -315,6 +338,7 @@ Uniswap V2 代码以及 SDK
 
 
 
+
 学习中文排版规范：[https://github.com/sparanoid/chinese-copywriting-guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)
 
 021 学习以太坊第 5 章
@@ -324,6 +348,7 @@ Web3 实习手册[「社区运营指南」](https://web3intern.xyz/zh/community-
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -372,6 +397,7 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 预习第二周目标
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -398,11 +424,13 @@ Web3 实习手册「智能合约开发」部分
 
 
 
+
 复习以太坊书籍的前三章
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -461,6 +489,7 @@ Remix 使用教程
 
 
 
+
 工具安装
 
 MetaMask / Rabby 钱包安装 & 创建，并熟悉
@@ -470,6 +499,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -528,6 +558,7 @@ MetaMask / Rabby 钱包安装 & 创建，并熟悉
 
 
 
+
 拓展 & 辅助理解材料
 
 Becoming a Power User - Wallets, Mnemonics, Keypairs
@@ -539,6 +570,7 @@ Becoming a Power User - Wallets, Mnemonics, Keypairs
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
