@@ -17,11 +17,12 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
-![屏幕截图 2026-02-07 024017.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403695857-_____2026-02-07_024017.png)![屏幕截图 2026-02-07 024049.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403724576-_____2026-02-07_024049.png)![屏幕截图 2026-02-07 024123.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403762412-_____2026-02-07_024123.png)![屏幕截图 2026-02-07 024242.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403805353-_____2026-02-07_024242.png)![屏幕截图 2026-02-07 024311.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403839063-_____2026-02-07_024311.png)
+![屏幕截图 2026-02-07 024017.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403695857-_____2026-02-07_024017.png)![屏幕截图 2026-02-07 024049.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403724576-_____2026-02-07_024049.png)![屏幕截图 2026-02-07 024123.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403762412-_____2026-02-07_024123.png)![屏幕截图 2026-02-07 024242.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403805353-_____2026-02-07_024242.png)![屏幕截图 2026-02-07 024311.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403839063-_____2026-02-07_024311.png)![屏幕截图 2026-02-07 024351.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-02-06-1770403893318-_____2026-02-07_024351.png)
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 
@@ -64,6 +65,7 @@ LOGO我是这样设计的：水是万物之源，小水滴代表我们团队所�
 
 
 
+
 初识量子密码：  
 刚开始接触量子密码的时候，我以为复杂的是数学公式，但其实却是整个思维方式的转变。以前学经典密码学，总觉得安全靠的是“算不过来”：比如RSA依赖大数分解的困难性，只要没人能在合理时间内把两个大质数乘积拆开，系统就安全。但量子密码不一样，它不靠计算复杂度，而是直接搬出物理世界的底层规则来当“保镖”。最让我震撼的是BB84协议：Alice用光子的偏振态编码比特，选两组非正交基随机发送；Bob也随机选基测量；之后他们公开比对用了哪些基，留下匹配的部分作为密钥。听起来像在玩一场“量子猜谜游戏”，但神奇的是，一旦Eve想偷听，她就必须测量光子——而量子不可克隆定理决定了她没法完美复制未知态，她的介入一定会扰动系统，留下痕迹。这就意味着，安全性不再是“理论上难破解”，而是“物理上不可能不被发现”。我第一次意识到，原来信息的安全可以和自然法则绑得这么紧，不是靠人聪明，而是靠宇宙守规矩。当然，实际搭实验平台时还是会被各种噪声、探测器效率、误码率折磨得怀疑人生，但每次想到我们其实在用光子的量子态编织一把“宇宙认证”的钥匙，就觉得这些折腾都值得。量子密码不是万能的（比如它解决不了身份认证问题，还得配合经典方法），但它打开了一扇门——让我们看到，在信息时代，最牢靠的锁，或许不在代码里，而在光子的偏振方向上。慢慢来吧，毕竟连薛定谔的猫都还在箱子里等着我们理解呢。  
 
@@ -74,6 +76,7 @@ Vitalik 为应对以太坊基金会可能收缩带来的资金缺口，主动承
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -321,6 +324,7 @@ Vitalik 为应对以太坊基金会可能收缩带来的资金缺口，主动承
 
 
 
+
 今晚的简历课，列一些笔记小点
 
 1.简历精简化：简历应简洁明了，控制在一页内，突出实际项目经验和成果。
@@ -360,6 +364,7 @@ Vitalik 为应对以太坊基金会可能收缩带来的资金缺口，主动承
 
 
 
+
 今天黑客松Demo day，笔记也休息一天吧  
 黑客松做了将预测市场仓位与 DeFi 协议结合，在仓位锁定期间实现申息的项目。之后笔记详细讲讲。
 
@@ -372,6 +377,7 @@ wachi老师全程在线，我爱wachi！
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -429,6 +435,7 @@ wachi老师全程在线，我爱wachi！
 
 
 
+
 DeFi 里的 Aave 和 Compound，本质上都在做同一件事：**把“借贷”这件在传统金融里高度依赖信用、机构和人工风控的事情，抽象成一套可以在链上自动运行的规则系统**。它们解决的不是“怎么放贷”，而是“在没有信任的前提下，如何让资金在时间中产生价格”。
 
 两者共同采用的是**资金池模型**：所有存款人把资产放入同一个池子，借款人从池子里按规则借出资产，利率由算法而非人工决定。这一点非常关键，因为它意味着：**你不是把钱借给某个人，而是把钱借给“市场本身”**。协议只关心两件事——池子里有多少钱、已经被借走多少钱。
@@ -454,6 +461,7 @@ Aave 则恰恰相反。它是在同一个借贷共识之上，向“金融产品
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -718,6 +726,7 @@ DeFi 并非单一产品，而是一个**乐高式可组合的协议栈**。以�
 
 
 
+
 **Web3 数据分析，本质不是看行情，而是在解构链上激励如何驱动行为，以及这些行为是否能形成可持续的经济系统。**  
 它研究的不是“用户喜欢什么”，而是“在给定规则下，理性参与者会做什么”。
 
@@ -755,6 +764,7 @@ Web3 数据分析的底层由三类数据构成：
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -928,6 +938,7 @@ Octant 在这方面的做法如下：
 
 
 
+
 # DAO 治理是否需要“非理性”成分？
 
 ### **一、“非理性”不是混乱，而是对“理性暴政”的制衡**
@@ -994,6 +1005,7 @@ DAO 若试图用代码彻底剔除这些“非理性因素”，等于在建造�
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1120,6 +1132,7 @@ DAO 的治理权威，究竟来自“人”，还是来自“机制”？
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1284,6 +1297,7 @@ wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心
 
 
 
+
 其实我讲完分享会之后心里是有点空的。不是那种“终于结束了”的轻松，而是一种很清楚地知道：我没有把自己真正想讲的东西讲出来。  
 准备 Fusaka 的时候，我是懂的，我知道 PeerDAS 为什么重要，知道它不是简单的“多一点 Blob”，而是在给以太坊的扩展性续命；我也知道节点分工、采样、50% 重构这些点背后，是在为普通人还能跑节点争一条路。但站在那一刻，我脑子里更多的是“别出错”“别卡住”，而不是“把这件事讲清楚”。
 
@@ -1297,6 +1311,7 @@ wachi老师给我安排了个小任务：组织这次模拟DAO治理——良心
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1548,6 +1563,7 @@ fetch('/api/transfer', {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1857,6 +1873,7 @@ L2 承担复杂性，换来了用户。**
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2219,6 +2236,7 @@ Solidity 的数据类型与可见性设计，本质上都是在和 Gas、权限�
 
 
 
+
 ## **一、什么是 Remix？**
 
 Remix 是一个基于 React 的全栈 Web 框架，强调：
@@ -2322,6 +2340,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2502,6 +2521,7 @@ Do you want me to run `npm install`? → Yes
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2930,6 +2950,7 @@ contract AIGPL {
 
 
 
+
 # 今天跟ai探讨学习了个小问题
 
 ## 问：假设我现在在opensea上买了个NFT，钱包已经显示交易成功，我也获得了NFT，那我在区块链游览器中查看是否已经成功上链了，如果是还在处理中，那我去取消这次交易，那不就白嫖了个NFT了么，还是NFT会原路返回，还是说我收到NFT其实就已经是交易上链成功了，这个假设是不存在的，还是说这个接收与发送的处理顺序是怎么样的，是有优先顺序还是同步进行的
@@ -3282,6 +3303,7 @@ contract AIGPL {
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4016,6 +4038,7 @@ contract AIGPL {
 
 
 
+
 # 领取 Sepolia 测试币并转账给同学
 
 ![屏幕截图 2026-01-14 134301.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/pillowtalk-Qy/images/2026-01-14-1768403310256-_____2026-01-14_134301.png)
@@ -4601,6 +4624,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 
 
+
 # co-learning
 
 ## 巨鲸话语权的现实：民主还是寡头？
@@ -5037,6 +5061,7 @@ Web3 行业“处处是风险”，从个人钱包安全到业务开展均有隐
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
