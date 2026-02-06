@@ -22,10 +22,63 @@ Web3 实习计划 2025 冬季实习生
 # 智能体支付得拆解与实战
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-06-1770347135238-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-06-1770347149839-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-06-1770347220764-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-06-1770347337902-image.png)
+
+AI Agent 经济的现状、发展趋势以及 CAT 项目的愿景和进展，具体如下：
+
+-   **会议背景与分享安排**：
+    
+    -   **分享语言确定**：由于面向中文学生，确定以中文进行分享。
+        
+    -   **分享内容变更**：原计划分享的成熟 demo 因 AI 和 Agent 领域近 10 天变化巨大而调整，改为介绍最新变化及相关问题，采用互动式交流。
+        
+-   **个人与 CAT 项目介绍**：
+    
+    -   **个人背景**：分享者毕业于浙大，后赴美深造，有在 Uber、Salesforce 等公司的工作经历，还是 RISING wave 的联合创始人，目前投身于 Agent 经济相关项目。
+        
+    -   **CAT 项目**：专注于分布式支付的区块链，聚焦 AI 和支付。获得众多硅谷 VC 投资，此前从事 AI 和数据基础设施服务，客户包括 OpenSea、Polygon 等。去年 3 月转型做 Agentic payment，为 Agent 提供 ID、授权和支付解决方案。
+        
+-   **AI Agent 经济解读**：
+    
+    -   **定义与应用场景**：AI Agent 经济指由 Agent 代理人类完成繁琐事务，如购物、预订派对场地、邀请朋友等。今年可能是 Agent 经济元年，人类只需提供 Agent Passport，Agent 就能代理消费。
+        
+    -   **市场需求与方向**：Agent 交易是有需求和营收的市场，有创业团队在做相关项目。CAT 项目与 Perplexity、Claude 等合作，推广 Agent Passport。
+        
+-   **AI 发展带来的影响**：
+    
+    -   **对开发者的影响**：新入门或初级开发者可能被 AI 浪潮淘汰，而资深开发者构建 POC 和生产代码的能力大幅提升。
+        
+    -   **技术变革**：从去年 12 月开始，Agent Coding 效率大幅提高，超过人类。Claude code 在设计理念上有创新，舍弃 MCP 和 RAG，采用文件系统和 Agent Search，效率提升 2 - 3 倍。
+        
+-   **人类在 AI 时代的角色**：
+    
+    -   **不可替代的能力**：人类的设计品味、工程品味、前沿研究能力、个人需求和兴趣等是 AI 无法取代的。
+        
+    -   **应对建议**：开发者应跳出简单算法，关注更高层次的架构和需求；学生应做自己感兴趣的事，培养独立思考能力。
+        
+-   **CAT 项目进展与规划**：
+    
+    -   **现有成果**：CAT Layer one 已可用，支持稳定币支付，零 Gas 费用。
+        
+    -   **未来规划**：打造 Agent Passport，为 Agent 提供 ID，实现资金充值、购物代理、政策管理等功能，确保交易可审计、可追溯。
+        
+-   **问答环节解答**：
+    
+    -   **技术替代问题**：RAG 将被 Agent Search 取代，MCP 将被命令行取代。
+        
+    -   **个人竞争力问题**：初级开发者可能被淘汰，有深入研究和独特能力的人可利用 AI 增强自身竞争力。
+        
+    -   **学习规划问题**：学生应做感兴趣的事，培养独立思考能力。
+        
+    -   **合规问题**：目前优先考虑美国市场的反洗钱合规，遵循 “法不禁止即可为” 原则。
+        
+    -   **服务网络问题**：Agent to Agent 模式大多失败，可从流量入口解决冷启动问题，Agent 世界信任优先。
+        
+    -   **交易协议问题**：区块链智能合约可实现 Escrow 合同，解决商家现金流权利问题，减少第三方平台干预。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 ![918dc33771d60dabdda27e34b43f37f3.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-05-1770276602989-918dc33771d60dabdda27e34b43f37f3.jpg)
@@ -79,6 +132,7 @@ AI 时代技术开发者的成长路径，包括 AI 对技术领域的变革、�
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -289,6 +343,7 @@ Web3 DevRel 岗位的工作内容、技能要求、岗位情况以及 Monad 公�
 
 
 
+
 ![126d63a3b7b28824e599567b05c214e7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770121142122-126d63a3b7b28824e599567b05c214e7.jpg)
 
 Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，具体如下：
@@ -376,6 +431,7 @@ Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -663,6 +719,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 
 
+
 ![fb690b004721cbabaf0c655243e4e3b1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769920110109-fb690b004721cbabaf0c655243e4e3b1.jpg)
 
 # 平台、社会、经济：去中心化之后如何了？
@@ -730,6 +787,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -950,6 +1008,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -1070,6 +1129,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -1158,6 +1218,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1343,6 +1404,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -1399,6 +1461,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1623,6 +1686,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -1630,6 +1694,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1745,6 +1810,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -1754,6 +1820,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1953,6 +2020,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -2074,6 +2142,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2373,6 +2442,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -2420,6 +2490,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2841,6 +2912,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -2882,6 +2954,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3330,6 +3403,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -3671,6 +3745,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -3778,6 +3853,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
