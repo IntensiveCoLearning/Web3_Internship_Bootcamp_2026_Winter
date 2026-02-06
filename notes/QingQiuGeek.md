@@ -15,13 +15,179 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+\---  
+date: '2026-02-04 12:00:00'  
+draft: false  
+title: solidity学习笔记02  
+slug: solidity-study-notes-02  
+categories:  
+\- Web3  
+\- 区块链  
+\- solidity  
+tags:  
+\- Web3  
+\- 区块链  
+\- solidity  
+\---  
+  
+\## error、revert、event  
+  
+\- error 用于自定义错误，错误将被抛出给客户端  
+  
+\- revert 关键字类似 Java 的 throw，用于主动终止当前交易的执行，并回滚所有状态更改。它可以配合自定义错误（custom error） 使用，也可以单独使用。  
+  
+\- event 关键字用于定义事件，事件将被发送给客户端（区块链网络）  
+  
+\`\`\`c  
+//定义一个名为Coin的智能合约  
+contract Coin {  
+  
+/\*  
+关键字 "public"会自动生成一个函数，使得该变量可以被其他合约访问。生成的函数大致如下：  
+function minter() external view returns (address) { return minter; }  
+\*/  
+address public minter;  
+  
+//mapping可以被看作是被初始化的哈希表，每一个可能的键从一开始就存在，并被映射到一个值，其字节表示为全零的值。但是无法获得所有的键或所有的值  
+mapping(address => uint) public balances;  
+  
+// 使用event关键字定义事件，允许客户端对声明的特定合约变化做出反应  
+event Sent(address from, address to, uint amount);  
+  
+// 构造函数代码只有在合约第一次部署创建时运行，因此部署者将成为minter，才有权限铸币。  
+constructor() {  
+minter = msg.sender;  
+}  
+  
+// 向一个地址发送一定数量的新创建的代币，但只能由合约创建者minter调用  
+function mint(address receiver, uint amount) public {  
+require(msg.sender == minter);  
+balances\[receiver\] += amount;  
+}  
+  
+// 使用 error 关键字自定义错误  
+error InsufficientBalance(uint requested, uint available);  
+  
+// 从调用者那里发送一定数量的代币到一个地址也就是转账  
+function send(address receiver, uint amount) public {  
+if (amount > balances\[msg.sender\])  
+// 使用 revert 抛出自定义的错误（类似 throw），终止并恢复所有变化  
+revert InsufficientBalance({  
+requested: amount,  
+available: balances\[msg.sender\]  
+});  
+  
+balances\[msg.sender\] -= amount;  
+balances\[receiver\] += amount;  
+  
+//发送事件，以太坊客户端如网络应用，可以监听区块链上发出的这些事件，事件一旦发出，监听器就会被动收到参数 from， to 和 amount，这使得跟踪交易成为可能。  
+emit Sent(msg.sender, receiver, amount);  
+}  
+}  
+  
+\`\`\`  
+  
+\## EVM 存储数据的三个区域  
+  
+\- 存储  
+  
+每个账户都有一个称为\`存储\`的数据区，持久化存储。存储是一个键值存储，将 256 位的字映射到 256 位的字。 无法枚举存储，读取的成本相对较高，初始化和修改存储的成本更高。  
+  
+\- 内存  
+  
+合约在每次消息调用时都会获得一个新清除的实例，内存是线性的，可以在字节级寻址，但读的宽度限制在 256 位，而写的宽度可以是 8 位或 256 位。  
+  
+\- 栈  
+  
+EVM 不是基于寄存器的，而是基于栈的，因此所有的计算都在一个被称为 栈（stack） 的区域执行。 栈最大有 1024 个元素，每个元素长度是一个字（256 位）。  
+  
+\## 委托调用和库  
+  
+存在一种特殊的消息调用，被称为委托调用（delegatecall），比如 msg.sender 和 msg.value。  
+  
+这意味着合约可以在\*\*运行时动态地\*\*从不同的地址加载代码。存储、当前地址、余额仍然指的是调用合约，只是代码取自被调用的地址。  
+  
+\## 创建、停用、自毁  
+  
+从区块链上删除代码的唯一方法是当该地址的合约执行 selfdestruct 操作。 存储在该地址的剩余以太币被发送到一个指定的目标，然后存储和代码被从状态中删除。如果有人向被删除的合约发送以太币，以太币就会永远丢失。  
+  
+\## 单位和全局可用变量  
+  
+\`\`\`  
+1 wei == 1  
+  
+1 gwei == 1e9  
+  
+1 szabo == 1e12 (Solidity 0.7.0 版本中被正式弃用)  
+  
+1 finney == 1e15 wei (Solidity 0.7.0 版本中被正式弃用)  
+  
+1 ether == 1e18 == 1ETH  
+  
+由于 \`闰秒\` 会造成不是每一年都等于365天，甚至不是每一天都有24小时，而且因为闰秒是无法预测的，所以需要借助外部的预言机来对一个确定的日期代码库进行时间矫正！因此在 0.5.0 版本中删除了后缀 years  
+  
+1 == 1 seconds  
+  
+1 minutes == 60 seconds  
+  
+1 hours == 60 minutes  
+  
+1 days == 24 hours  
+  
+1 weeks == 7 days  
+  
+\`\`\`  
+  
+\## 全局变量  
+  
+\- blockhash(uint blockNumber) returns (bytes32)： 给某个区块生成哈希值 - 只对最近的 256 个区块有效。在 0.4.22 版本中被废弃，在 0.5.0 版本中被删除。  
+  
+\- blobhash(uint index) returns (bytes32)： 与当前交易相关联的第 index 个 blob。 此带版本的哈希值是由一个表示版本的单字节（当前为 0x01 ）和紧随其后的 KZG 证明的 SHA256 哈希的最后 31 个字节组成。 （ EIP-4844 ）。  
+  
+\- block.basefee (uint)： 当前区块的基本费用 （ EIP-3198 和 EIP-1559 ）  
+  
+\- block.blobbasefee (uint): 当前区块的 blob 基础费用（ EIP-7516 和 EIP-4844）  
+  
+\- block.chainid (uint)： 当前链的 ID  
+  
+\- block.coinbase (address payable)： 当前区块矿工的地址  
+  
+\- block.difficulty (uint)： 当前区块的难度值（ EVM < Paris ）。对于其他 EVM 版本，它是 block.prevrandao 的一个废弃的别名，将在下一个重大改变版本中被删除。  
+  
+\- block.gaslimit (uint)： 当前区块的燃料上限  
+  
+\- block.number (uint)： 当前区块的区块号  
+  
+\- block.prevrandao (uint)： 由信标链提供的随机数（ EVM >= Paris ）（见 EIP-4399 ）。  
+  
+\- block.timestamp (uint)： 当前区块的时间戳，自 Unix epoch 以来的秒数  
+  
+\- gasleft() returns (uint256)： 剩余燃料，前身是 msg.gas， 在 0.4.21 版本中被弃用，在 0.5.0 版本中被删除。  
+  
+\- msg.data (bytes)： 完整的调用数据  
+  
+\- msg.sender (address)： 消息发送方（当前调用）  
+  
+\- msg.sig (bytes4)： 调用数据的前四个字节（即函数标识符）。  
+  
+\- msg.value (uint)： 随消息发送的 wei 的数量  
+  
+\- tx.gasprice (uint)： 交易的燃料价格  
+  
+\- tx.origin (address)： 交易发送方（完整调用链上的原始发送方）
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 打卡，今天在做foundry的demo
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 \## 漏洞
@@ -125,6 +291,7 @@ require(sent);
 
 
 
+
 Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas，具体可以看\[以太坊 操作码\]([https://ethereum.org/zh/developers/docs/evm/opcodes/](https://ethereum.org/zh/developers/docs/evm/opcodes/))，gas 优化目标是减少交易所需的总 gas，提高用户体验并降低成本。
 
 \*\*区块链数据存储位置有三种：storage（存储，也就是磁盘）、memory（内存，临时的）、calldata（只读数据）\*\*
@@ -209,6 +376,7 @@ for (uint i = 0; i < len; ++i) {
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -339,6 +507,7 @@ UEX 全称 Universal Exchange **全场景交易所**，由 Bitget 首席执行�
 
 
 
+
 \## 漏洞
 
 \### 重入攻击 Reentrancy
@@ -446,6 +615,7 @@ require(sent);
 
 
 
+
 [x402](https://www.x402.org/)
 
 [链技术](https://www.eoje.cn/qkljs/11406.html)
@@ -526,6 +696,7 @@ v2 在 v1 基础上，实现了：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -663,6 +834,7 @@ ERC-1271 定义了一个标准化的函数 isValidSignature(bytes32 \_messageHas
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -891,6 +1063,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -1022,6 +1195,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -1070,11 +1244,13 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1191,6 +1367,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -1204,6 +1381,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1573,6 +1751,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -1674,6 +1853,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -1708,6 +1888,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1851,6 +2032,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2078,6 +2260,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -2225,6 +2408,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -2265,6 +2449,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
