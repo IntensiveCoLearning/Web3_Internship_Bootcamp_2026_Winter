@@ -15,8 +15,20 @@ web2转web3学习者，前端开发
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+今日完成：
+
+1、solidity-by-example application部分跟敲完成；
+
+今日思考：
+
+1、今天查看了一些黑客松的赛事，准备参加一些黑客松比赛；
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 今日完成：
 
 1、[Solidity by Example application跟敲，80%；](https://solidity-by-example.org/)
@@ -28,6 +40,7 @@ web2转web3学习者，前端开发
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 今日完成：
 
@@ -42,6 +55,7 @@ web2转web3学习者，前端开发
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 今日完成：
 
 1、solidity-by-example application跟敲完成50%；
@@ -53,6 +67,7 @@ web2转web3学习者，前端开发
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -73,6 +88,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、黑客松项目前后端开发，部署完成；
@@ -86,6 +102,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -110,6 +127,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、solidity-by-example跟敲完成20%；
@@ -123,6 +141,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -151,6 +170,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、solidity-by-example，在remix跟敲basic部分完成100%；
@@ -162,6 +182,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -194,6 +215,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、**在 remix 中运行 Solidity by Example | 0.8.26 Basic 部分的代码，完成60%；**  
@@ -208,6 +230,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -251,6 +274,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、[Solidity by Example | 0.8.26](https://solidity-by-example.org/) Basic 部分完成50%
@@ -262,6 +286,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -308,6 +333,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1：今日完成实习手册智能合约开发solididy智能合约编程部分和智能合约项目学习和实践；
@@ -319,6 +345,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -369,6 +396,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、收看web3全局行业介绍；
@@ -382,6 +410,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -414,6 +443,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -470,6 +500,7 @@ web2转web3学习者，前端开发
 
 
 
+
 今日完成：
 
 1、1.13线上co Learning收听学习；
@@ -485,6 +516,7 @@ web2转web3学习者，前端开发
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
