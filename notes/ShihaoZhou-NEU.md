@@ -16,8 +16,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# 学习计划
+
+1.  完善 EIP Playground UI
+    
+    -   三个按钮，随机跳转
+        
+    -   手机屏幕适配
+        
+    -   使用posthog
+        
+2.  Speedrun 挑战
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 # **今日计划**
 
 1.  ✅ 完善 EIP Playground Team，FAQ，Blog 页面内容
@@ -27,6 +43,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 # 学习计划
@@ -41,6 +58,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -85,6 +103,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 黑客松项目的长期发展，在黑客松做出了这个项目，我觉得是可以长期发展的，这或许会成为进入 Web3 的一个踏板，哈哈哈，或许几年以后回顾今天，也会有怀念的感觉吧。
 
 回归学习，开始真的看 EIP 和 ERC 的技术文档，果然觉得如果有人能帮我嚼碎了喂给我吃多是一件美事。这个项目应该有搞头。接下去把别的任务也补上，再跳一跳拿点小奖品，留点小纪念。
@@ -94,6 +113,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -120,6 +140,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # **黑客松 Day3**
 
 Live Demo: [https://eip-playground-spark.vercel.app/](https://eip-playground-spark.vercel.app/)
@@ -129,6 +150,7 @@ GitHub: [https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.c
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -160,6 +182,7 @@ GitHub: [https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.c
 
 
 
+
 # 黑客松 Day1
 
 Live Demo: [https://eip-playground-spark.vercel.app/](https://eip-playground-spark.vercel.app/)
@@ -169,6 +192,7 @@ GitHub: [https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://github.c
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -205,6 +229,7 @@ GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://
 
 
 
+
 ## 准备黑客松
 
 1.  团队组建
@@ -219,6 +244,7 @@ GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -286,6 +312,7 @@ GitHub 仓库：[https://github.com/ShihaoZhou-NEU/web3-eip-playground](https://
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -531,6 +558,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 
 
+
 # 学习计划
 
 ✅️体验 My first zk vote
@@ -544,6 +572,7 @@ function isApprovedForAll(address owner, address operator) external view returns
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -649,6 +678,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 
 
+
 # 学习计划
 
 1.  ✅️[Gas 优化](https://github.com/ShihaoZhou-NEU/Solidity_Learning/tree/main/Homework)
@@ -671,6 +701,7 @@ Foundry：毫秒级编译，Solidity 单测，模糊测试（Fuzzing）
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1020,6 +1051,7 @@ NaN.  **开始交互**：如果地址和ABI正确，该合约实例会出现在�
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -1198,6 +1230,7 @@ Web3中的阳光和空气
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册
@@ -1237,6 +1270,7 @@ Web3中的阳光和空气
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1598,6 +1632,7 @@ EL + CL +Engine API
 
 
 
+
 # 学习计划
 
 ## Web3 实习手册「行业知识」部分
@@ -1902,6 +1937,7 @@ RPC = Remote Procedure Call，远程过程调用
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2293,6 +2329,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、集�
 
 
 
+
 # 学习计划
 
 ## 学习内容：
@@ -2372,6 +2409,7 @@ ERC（\*\*Ethereum Request for Comments\*\*，以太坊意见征求稿）就像�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2678,6 +2716,7 @@ _表：OKR 评分标准参考_
 
 
 
+
 # 学习计划
 
 1.  学习内容：
@@ -2854,6 +2893,7 @@ MEME 币的特点通常是“有趣、搞怪、社区驱动”，它们往往缺
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
