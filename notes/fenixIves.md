@@ -15,8 +15,229 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# 25 RCs学习笔记
+
+本次学习核心围绕RCs核心工作模型展开，重点掌握其实践思维框架、核心概念、DeFi场景应用及具体部署操作，形成从理论到实践的完整学习闭环，为后续深入应用RCs实现跨链或自动化操作奠定基础。
+
+# 一、RCs 核心工作模型（实践思维框架）
+
+RCs（反应式合约）的核心工作逻辑是**事件（event）→ RC 逻辑（RC logic）→ 回调交易（callback transaction）**，本质是一套事件驱动的自动化执行机制，无需人工干预即可完成跨链或链上自动化操作，核心流程拆解如下：
+
+1.  **事件捕捉（event）**：通过订阅机制，实时监控指定链上的目标合约事件（如Uniswap V2的交易事件、流动性变动事件），这些事件是触发后续操作的“触发器”，也是RCs工作的起点；
+    
+2.  **逻辑触发（RC logic）**：当捕捉到符合预设条件的链上事件时，自动触发RC合约内置的逻辑（如价格判断、条件校验、跨链消息组装等），这一步是RCs的“大脑”，负责解析事件信息并决定后续执行动作；
+    
+3.  **回调执行（callback transaction）**：RC逻辑验证通过后，自动在目标链（可为原链或其他跨链）执行预设的回调交易（如止损卖出、流动性调整、跨链资产转移等），完成整个自动化或跨链操作流程。
+    
+
+核心优势：无需人工值守、响应及时，可实现跨链与自动化的无缝衔接，大幅提升链上操作效率，降低人为操作失误风险，适配DeFi等需要高频、精准操作的场景。
+
+# 二、模块1：核心概念（基础必掌握）
+
+核心概念是理解RCs工作机制的前提，重点掌握以下5个核心术语，明确其定义及在整个框架中的作用：
+
+## 1\. 反应式合约（RCs，Reactive Contracts）
+
+RCs是部署在Reactive Network上的特殊智能合约，遵循事件驱动模型，与传统智能合约“被动等待用户调用”不同，它能主动监控链上事件、自主执行预设逻辑并触发回调交易，是实现自动化和跨链操作的核心载体，可使用Solidity等EVM兼容语言编写，兼容标准EVM工具链。
+
+## 2\. 事件与回调
+
+-   **事件（event）**：链上合约执行特定操作后对外释放的日志信息（如Uniswap V2 Pair合约的Sync事件，会在代币交换、流动性增减时触发，包含当前代币储备量等关键数据），是RCs的“触发信号”，所有RCs操作均以事件为起点；
+    
+-   **回调（callback）**：RCs触发内置逻辑后，在目标链执行的具体交易操作，是RCs工作的“终点”，回调交易的内容的预设在RC合约中，需与触发事件的条件相匹配（如价格触发后回调“卖出代币”交易）。
+    
+
+## 3\. ReactVM
+
+ReactVM是专为RCs设计的EVM兼容执行环境，相当于RCs的“运行容器”，核心作用是承载RC合约的部署、事件解析和逻辑执行。与标准EVM相比，它支持并行交易处理，可分配独立实例给单个RC合约，启动速度快（优化后启动时间约100微秒），能高效处理大量事件驱动型计算，同时通过沙箱机制保障合约执行安全。
+
+## 4\. 订阅机制
+
+RCs捕捉链上事件的核心方式，相当于RCs的“监控雷达”。用户可通过RC合约预设订阅规则，指定需要监控的“目标链、目标合约、事件类型”，当目标合约释放匹配的事件时，订阅机制会第一时间捕捉事件信息并传递给RC逻辑模块，是连接“事件”与“RC逻辑”的关键桥梁。部分场景中，RC合约还会订阅自身回调合约的事件，用于完成操作后的状态重置（如止损订单完成后注销监控）。
+
+## 5\. 预言机（Oracle）
+
+RCs实现跨链事件捕捉和数据验证的“中间件”。由于不同区块链网络无法直接互通，预言机负责将源链的事件信息（如价格、交易记录）安全、准确地传递到RC合约所在的网络，同时验证事件信息的真实性，避免虚假事件触发错误的回调交易，保障RCs执行的可靠性，是跨链场景下RCs正常工作的必要组件。
+
+# 三、模块2：DeFi 聚焦（RCs 实际应用场景）
+
+DeFi是RCs最核心的应用场景之一，其高频交易、自动化需求（如止损、流动性管理）与RCs的事件驱动特性高度契合。本模块重点掌握RCs基础反应式功能的实现，以及结合Uniswap V2场景的具体应用逻辑。
+
+## 1\. 基础反应式功能实现（核心流程）
+
+RCs基础反应式功能的实现围绕“订阅-捕捉-触发-回调”四大步骤展开，无需复杂跨链逻辑，聚焦单链自动化，核心实现流程如下：
+
+1.  部署RC合约：将编写好的RC合约（包含预设逻辑、订阅规则、回调交易内容）部署到ReactVM中；
+    
+2.  配置订阅规则：通过RC合约指定订阅的目标合约（如Uniswap V2 Pair合约）、事件类型（如Sync事件）及触发条件（如代币价格跌破某一阈值）；
+    
+3.  事件捕捉与验证：订阅机制实时监控目标合约，捕捉到匹配事件后，通过预言机验证事件信息的真实性和有效性；
+    
+4.  逻辑触发与回调：RC合约内置逻辑校验通过后，自动执行回调交易，完成基础自动化操作（如止损、止盈）。
+    
+
+核心关键点：预设逻辑的准确性（需贴合业务需求）、订阅规则的精准性（避免误捕捉、漏捕捉事件）、事件验证的安全性（防止虚假事件攻击）。
+
+## 2\. 结合Uniswap V2场景理解RCs应用
+
+Uniswap V2是以太坊上经典的AMM（自动化做市商）协议，核心由Factory（工厂合约）、Pair（交易对合约）、Router（路由合约）组成，其核心操作（代币交换、流动性增减）会释放特定事件，这些事件可作为RCs的触发信号，实现自动化流动性管理、止损止盈等功能，具体应用场景拆解如下：
+
+### （1）Uniswap V2 核心事件梳理（RCs触发源）
+
+RCs在Uniswap V2场景中，主要订阅Pair合约释放的以下核心事件，用于触发后续自动化操作：
+
+-   Sync事件：当Pair合约中的代币储备量发生变化（如用户交换代币、添加/移除流动性）时触发，包含当前token0、token1的储备量信息，可用于计算实时代币价格；
+    
+-   Swap事件：用户完成代币交换时触发，包含交换的代币数量、交易双方地址等信息，可用于监控交易行为；
+    
+-   Mint事件/ Burn事件：用户添加/移除流动性时触发，可用于自动化流动性管理（如自动补仓、撤仓）。
+    
+
+### （2）RCs在Uniswap V2中的核心应用逻辑
+
+以“自动化止损”为例，RCs的应用逻辑与Uniswap V2的合约机制深度结合，核心流程如下：
+
+1.  配置订阅：RC合约订阅目标Uniswap V2 Pair合约（如ETH-USDC交易对）的Sync事件，预设触发条件（如ETH价格跌破1800 USDC）；
+    
+2.  价格计算：当Sync事件触发时，RC合约通过事件中的代币储备量信息（reserve0、reserve1），结合恒定乘积公式（x\*y=k）计算当前ETH-USDC的实时价格；
+    
+3.  逻辑校验：RC合约将实时价格与预设止损阈值对比，若触发止损条件（价格跌破1800 USDC），则触发内置回调逻辑；
+    
+4.  回调执行：RC合约自动调用Uniswap V2 Router合约的swap函数，执行ETH卖出操作（将用户持有的ETH兑换为USDC），完成自动化止损，整个过程无需人工干预。
+    
+
+补充：RCs在Uniswap V2中的应用可扩展至自动化止盈、流动性自动复投、跨链套利等场景，核心逻辑均围绕“事件捕捉-价格/条件判断-回调交易”展开，依托Uniswap V2的开放合约接口实现无缝对接。
+
+# 四、模块3：应用案例——Uniswap V2止损订单演示及部署指南
+
+本案例基于上述Uniswap V2场景应用逻辑，重点演示RCs止损订单的完整流程（从环境准备到部署执行），实操性较强，需重点掌握部署步骤及关键注意事项，确保能独立完成基础部署。
+
+## 1\. 演示前提（环境准备）
+
+部署前需完成以下环境配置，避免部署过程中出现报错：
+
+-   开发环境：安装Remix IDE（在线合约开发工具）或Truffle/Hardhat（本地开发框架），推荐使用Remix IDE（入门友好，无需复杂配置）；
+    
+-   测试网络：选择Sepolia测试网（ETH测试网，手续费低、响应快），准备少量测试ETH（用于支付合约部署和交易手续费）；
+    
+-   合约依赖：获取Uniswap V2核心合约ABI（Pair合约、Router合约），可从Uniswap官方仓库或Etherscan获取；
+    
+-   ReactVM环境：确保已接入ReactVM执行环境，可通过Reactive Network官方接口完成接入，用于部署RC合约。
+    
+
+## 2\. 止损订单核心合约编写（关键代码逻辑）
+
+RC止损合约需包含“订阅配置、价格计算、止损逻辑、回调交易”四大核心模块，以下是简化版代码逻辑（基于Solidity编写），重点理解核心功能实现，具体代码可根据实际需求调整：
+
+```
+// 引入Uniswap V2 Pair合约和Router合约接口
+interface IUniswapV2Pair {
+    event Sync(uint112 reserve0, uint112 reserve1);
+    function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
+}
+
+interface IUniswapV2Router02 {
+    function swapExactTokensForTokens(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline) external returns (uint[] memory amounts);
+}
+
+// 部署在ReactVM上的RC止损合约
+contract UniswapV2StopLossRC {
+    // 预设参数：目标Pair合约地址、Router合约地址、止损阈值、用户地址
+    IUniswapV2Pair public targetPair;
+    IUniswapV2Router02 public router;
+    uint public stopLossPrice; // 止损阈值（如1800 USDC/ETH）
+    address public user;
+    address public token0; // 目标交易对token0（如USDC）
+    address public token1; // 目标交易对token1（如ETH）
+
+    // 构造函数：初始化参数，配置订阅规则
+    constructor(address _targetPair, address _router, uint _stopLossPrice, address _user) {
+        targetPair = IUniswapV2Pair(_targetPair);
+        router = IUniswapV2Router02(_router);
+        stopLossPrice = _stopLossPrice;
+        user = _user;
+        // 订阅目标Pair合约的Sync事件
+        targetPair = IUniswapV2Pair(_targetPair);
+        // 获取交易对代币地址
+        (token0, token1) = (targetPair.token0(), targetPair.token1());
+    }
+
+    // 事件捕捉与价格计算：监听Sync事件，触发价格校验
+    function onSync(uint112 reserve0, uint112 reserve1) external {
+        // 验证事件来源（确保是目标Pair合约触发）
+        require(msg.sender == address(targetPair), "Invalid Pair Contract");
+        // 计算实时价格（假设token0=USDC，token1=ETH，价格=reserve0/reserve1）
+        uint currentPrice = (reserve0 * 1e18) / reserve1;
+        // 触发止损逻辑
+        if (currentPrice <= stopLossPrice) {
+            executeStopLoss();
+        }
+    }
+
+    // 止损逻辑：执行回调交易（卖出ETH，兑换为USDC）
+    function executeStopLoss() internal {
+        // 1. 获取用户持有的ETH数量（简化处理，实际需授权）
+        uint amountIn = IERC20(token1).balanceOf(user);
+        // 2. 配置交易路径（ETH → USDC）
+        address[] memory path = new address[](2);
+        path[0] = token1;
+        path[1] = token0;
+        // 3. 执行回调交易（调用Router合约swap函数）
+        router.swapExactTokensForTokens(
+            amountIn,
+            0, // 简化处理，实际需设置最小输出量（滑点保护）
+            path,
+            user,
+            block.timestamp + 300 // 交易截止时间（5分钟）
+        );
+    }
+}
+```
+
+关键说明：合约中需添加代币授权逻辑（用户授权RC合约操作自身代币），实际部署时需优化滑点保护（设置amountOutMin），避免因价格波动导致交易失败。
+
+## 3\. 完整部署步骤（基于Remix IDE + Sepolia测试网）
+
+1.  步骤1：编译合约——打开Remix IDE，创建新的Solidity文件（如UniswapV2StopLossRC.sol），粘贴上述代码，选择Solidity版本（推荐0.8.17，与Uniswap V2合约兼容），点击“Compile”完成编译，确保无报错；
+    
+2.  步骤2：配置ReactVM环境——在Remix IDE中，切换至“Deploy”页面，选择“ReactVM”作为执行环境，连接测试网钱包（如MetaMask），确保钱包已切换至Sepolia测试网且拥有足够测试ETH；
+    
+3.  步骤3：部署RC合约——填写构造函数参数（\_targetPair：目标Uniswap V2 Pair合约地址、\_router：Uniswap V2 Router02合约地址、\_stopLossPrice：止损阈值、\_user：用户钱包地址），点击“Deploy”，支付部署手续费，等待合约部署完成；
+    
+4.  步骤4：授权合约——用户通过MetaMask授权RC合约操作自身的ETH（token1），授权金额需大于等于计划止损的ETH数量，确保RC合约有权执行卖出操作；
+    
+5.  步骤5：测试止损功能——通过Uniswap V2测试网界面，模拟ETH价格下跌（可通过添加流动性调整代币储备量），触发Pair合约的Sync事件，观察RC合约是否自动执行止损交易，查看用户钱包中USDC数量是否增加、ETH数量是否减少，验证止损功能是否正常。
+    
+
+## 4\. 部署注意事项（避坑重点）
+
+-   合约参数准确性：Pair合约地址、Router合约地址需确认无误（可在Etherscan测试网查询Uniswap V2官方合约地址），避免因地址错误导致合约无法正常工作；
+    
+-   授权操作不可遗漏：用户必须授权RC合约操作自身代币，否则RC合约无法执行回调交易（卖出代币），导致止损失败；
+    
+-   滑点保护设置：实际部署时，需合理设置swapExactTokensForTokens函数的amountOutMin参数（最小输出USDC数量），避免因价格波动导致交易被回滚；
+    
+-   测试网手续费：确保钱包中有足够的Sepolia测试ETH，用于支付合约部署和回调交易的手续费，手续费不足会导致部署或交易失败；
+    
+-   事件订阅有效性：部署后需确认RC合约已成功订阅目标Pair合约的Sync事件，可通过Reactive Network官方工具查看订阅状态，避免漏订阅导致无法捕捉事件。
+    
+
+# 五、学习总结
+
+1\. 核心重点：RCs的核心是“事件驱动+自动化回调”，其工作模型（事件→RC逻辑→回调交易）是所有应用场景的基础，需熟练掌握；
+
+2\. 概念关联：ReactVM是RCs的运行载体，订阅机制是事件捕捉的核心，预言机是跨链场景的必要组件，三者协同保障RCs的正常执行；
+
+3\. 实践关键：Uniswap V2场景是RCs在DeFi中的典型应用，重点掌握“Sync事件捕捉-价格计算-止损回调”的逻辑，部署时需关注参数准确性、授权操作和滑点保护；
+
+4\. 后续延伸：可基于本案例扩展RCs的其他应用（如止盈、跨链套利），深入学习ReactVM的并行执行机制和RC合约的安全优化方法，提升实操能力。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 # 24 从零到一理解零知识证明：起源、演化、原理与实践
 
 在数字时代，隐私保护与身份验证、数据有效性验证的矛盾日益突出——我们既希望向他人证明“我拥有某类权限”“我符合某个条件”，又不愿泄露身份证号、账户余额、个人隐私等敏感信息。零知识证明（Zero-Knowledge Proof, ZKP）作为密码学领域的核心技术之一，恰好破解了这一困境，它让“证明事实”与“泄露隐私”彻底脱钩，成为区块链、数字身份、隐私计算等领域的核心支撑。本文将从零知识证明的起源出发，梳理其演化历程，拆解核心技术原理，提供可落地的实现方案（含代码示例），并详解其实际应用场景，帮助读者全面掌握这一“隐私保护神器”。
@@ -216,6 +437,7 @@ if __name__ == "__main__":
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 # 23 ERC-721 标准详解
 
@@ -861,6 +1083,7 @@ ERC-721 标准的核心价值是「标准化 NFT 接口」，让不同项目的 
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 # 22 Uniswap v4 相比 v3 的改进、设计初衷及技术落实
@@ -1658,6 +1881,7 @@ Uniswap v4 相比 v3 的所有改进，本质上都是「解决痛点、提升�
 
 
 
+
 # 21 Uniswap V3 vs V2的改进、设计初衷及技术落实全解析
 
 Uniswap V2的核心定位与痛点——V2作为Uniswap协议的第二代版本，核心是基于“**恒定乘积公式（x\*y=k）**”的自动化做市商（AMM），实现了无需许可、去中心化的代币交换，但随着DeFi生态的发展，其资本低效、费用僵化、预言机精度不足等问题逐渐凸显。
@@ -1892,6 +2116,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 
 
+
 # 从像素头像到数字热潮：NFT的前世今生与炒作真相
 
 如果你关注过数字藏品圈，一定见过那些看起来简简单单、甚至有点“潦草”的24×24像素小头像——它们就是CryptoPunks（加密朋克），如今被公认为第一个真正出圈、成规模的NFT。
@@ -1941,6 +2166,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -2434,6 +2660,7 @@ IRouter02(routerAddress).addLiquidity(
 
 
 
+
 # 19 Wagmi初步学习
 
 **Wagmi** 是基于 Viem 的 React Hooks 库！
@@ -2773,6 +3000,7 @@ function Counter() {
 
 
 
+
 # 18 Viem 初步学习
 
 ## 1 Viem 是什么？
@@ -2989,6 +3217,7 @@ const data = encodeFunctionData({
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -3483,6 +3712,7 @@ await counter.number(); // 输出 BigInt(100)
 
 
 
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -3758,6 +3988,7 @@ cast send <合约地址> "decrement()" \
 
 
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -3947,6 +4178,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -4184,6 +4416,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -4277,6 +4510,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -4648,6 +4882,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -5073,6 +5308,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -5564,6 +5800,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -5860,6 +6097,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -6993,6 +7231,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -7376,6 +7615,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -7718,6 +7958,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -7879,6 +8120,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -8174,6 +8416,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -8507,6 +8750,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -8735,6 +8979,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
