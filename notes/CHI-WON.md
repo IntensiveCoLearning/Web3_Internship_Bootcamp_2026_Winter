@@ -15,8 +15,1196 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# 以太坊开发学习笔记
+
+* * *
+
+## 资源概述
+
+### 《精通以太坊》(Mastering Ethereum)
+
+-   **作者**: Andreas M. Antonopoulos, Gavin Wood
+    
+-   **性质**: O'Reilly 出版的开源书籍
+    
+-   **内容覆盖**: 19章全面内容，从基础到高级
+    
+-   **适用人群**: 程序员和技术人员
+    
+-   **许可**: Creative Commons CC-BY-NC-ND
+    
+
+### 以太坊官方开发文档
+
+-   **网址**: ethereum.org/developers/docs/
+    
+-   **特点**:
+    
+    -   开源社区维护
+        
+    -   持续更新
+        
+    -   多语言支持
+        
+    -   实践导向
+        
+
+* * *
+
+## 基础概念
+
+### 1\. 什么是以太坊
+
+核心定义
+
+以太坊是一个**去中心化的世界计算机**，它不仅仅是一个加密货币平台，更是一个可以运行智能合约的全球性、确定性状态机。
+
+关键特性
+
+-   **图灵完备**: 可以运行任意复杂度的计算程序
+    
+-   **全球单例**: EVM作为全球唯一实例运行，所有节点同步状态
+    
+-   **去中心化**: 无需中央机构控制
+    
+-   **不可篡改**: 一旦部署，智能合约代码无法更改
+    
+
+与比特币的区别
+
+-   比特币: 有限的脚本语言，专注于价值转移
+    
+-   以太坊: 通用可编程区块链，支持复杂应用逻辑
+    
+
+### 2\. 以太币 (ETH)
+
+功能定位
+
+以太币服务于以太坊作为世界计算机的功能，主要用途包括:
+
+-   支付智能合约执行的Gas费用
+    
+-   网络参与者的激励机制
+    
+-   作为价值存储和交换媒介
+    
+
+账户类型
+
+1.  **外部账户 (EOA - Externally Owned Account)**
+    
+    -   由私钥控制
+        
+    -   可以发起交易
+        
+    -   没有关联代码
+        
+2.  **合约账户 (Contract Account)**
+    
+    -   由智能合约代码控制
+        
+    -   不能主动发起交易
+        
+    -   通过EVM执行代码逻辑
+        
+
+### 3\. 以太坊虚拟机 (EVM)
+
+核心概念
+
+EVM是以太坊的计算引擎，负责执行所有智能合约代码。
+
+工作原理
+
+-   每个节点运行EVM的本地副本
+    
+-   所有节点独立验证合约执行
+    
+-   区块链记录世界状态的变化
+    
+-   确保所有节点达成共识
+    
+
+特点
+
+-   沙盒环境，隔离执行
+    
+-   基于堆栈的虚拟机
+    
+-   字节码操作指令集(Opcodes)
+    
+-   Gas机制防止无限循环
+    
+
+* * *
+
+## 核心技术栈
+
+### 1\. 密钥和地址
+
+密钥系统
+
+-   **私钥**: 256位随机数，绝对保密
+    
+-   **公钥**: 通过椭圆曲线加密(ECC)从私钥生成
+    
+-   **地址**: 公钥的Keccak-256哈希的后20字节
+    
+
+加密技术
+
+-   使用椭圆曲线数字签名算法(ECDSA)
+    
+-   secp256k1曲线标准
+    
+-   不可逆性: 无法从地址反推私钥
+    
+
+地址格式
+
+-   **十六进制编码**: 0x开头的40个十六进制字符
+    
+-   **EIP-55校验和**: 通过大小写混合提供错误检测
+    
+
+### 2\. 交易机制
+
+交易的本质
+
+交易是**唯一能够触发状态变化**的机制。以太坊不会在后台自动运行任何内容，一切都始于交易。
+
+交易组成
+
+-   **Nonce**: 发送者的交易计数器
+    
+-   **Gas Price**: 愿意支付的每单位Gas价格
+    
+-   **Gas Limit**: 愿意支付的最大Gas数量
+    
+-   **To**: 接收地址(可为空，部署合约时)
+    
+-   **Value**: 转账金额
+    
+-   **Data**: 附加数据/合约调用参数
+    
+-   **Signature**: 交易签名(v, r, s)
+    
+
+交易生命周期
+
+1.  创建和签名
+    
+2.  广播到网络
+    
+3.  验证者选择打包
+    
+4.  执行和状态更新
+    
+5.  区块确认
+    
+
+### 3\. Gas机制
+
+Gas的作用
+
+-   计量计算资源消耗
+    
+-   防止拒绝服务攻击
+    
+-   激励验证者打包交易
+    
+-   优化资源分配
+    
+
+Gas计算
+
+```
+交易费用 = Gas Used × Gas Price
+```
+
+Gas优化建议
+
+-   避免动态大小数组
+    
+-   减少存储操作(SSTORE成本高)
+    
+-   避免合约间调用
+    
+-   使用事件(Event)代替存储
+    
+
+### 4\. 区块结构
+
+区块组成
+
+-   **区块头**: 元数据(区块号、时间戳、难度等)
+    
+-   **交易列表**: 批量打包的交易
+    
+-   **状态根**: Merkle Patricia树的根哈希
+    
+-   **收据根**: 交易执行结果
+    
+
+区块链同步
+
+-   确保所有节点状态一致
+    
+-   通过共识机制达成协议
+    
+-   支持不同同步模式(全节点、轻节点、归档节点)
+    
+
+### 5\. 节点和客户端
+
+节点类型
+
+1.  **全节点**: 存储完整区块链数据
+    
+2.  **轻节点**: 仅存储区块头，按需请求数据
+    
+3.  **归档节点**: 存储所有历史状态
+    
+
+主流客户端
+
+-   **执行层**: Geth, Besu, Nethermind, Erigon
+    
+-   **共识层**: Prysm, Lighthouse, Teku, Nimbus
+    
+-   **客户端多样性**: 降低单点故障风险
+    
+
+### 6\. 共识机制
+
+权益证明 (Proof-of-Stake)
+
+以太坊目前使用的共识机制(The Merge后):
+
+-   **验证者**: 质押32 ETH成为验证者
+    
+-   **Gasper协议**: 结合Casper FFG和LMD GHOST
+    
+-   **奖励和惩罚**: 诚实行为获得奖励，恶意行为被罚没
+    
+-   **终局性**: 更快的区块确认
+    
+
+工作量证明 (Proof-of-Work - 历史)
+
+以太坊早期使用的共识机制:
+
+-   **挖矿**: 通过计算解决数学难题
+    
+-   **Ethash算法**: 内存密集型算法
+    
+-   **能源消耗**: 高能耗，已废弃
+    
+
+* * *
+
+## 开发环境与工具
+
+### 1\. 钱包
+
+钱包的本质
+
+钱包实际上是**密钥管理工具**，并不真正"存储"以太币。以太币存在于区块链上，钱包只是管理私钥的界面。
+
+钱包类型
+
+-   **非确定性钱包**: 每个密钥独立随机生成
+    
+-   **确定性钱包**: 从单一种子派生所有密钥
+    
+-   **分层确定性钱包(HD)**: BIP-32/BIP-44标准
+    
+
+主流钱包
+
+-   **MetaMask**: 浏览器插件钱包
+    
+-   **硬件钱包**: Ledger, Trezor
+    
+-   **移动钱包**: Trust Wallet, imToken
+    
+
+### 2\. 开发框架
+
+Truffle Suite
+
+```bash
+# 特点
+- 智能合约编译
+- 自动化测试
+- 部署脚本
+- 网络管理
+```
+
+Hardhat
+
+```bash
+# 优势
+- 灵活的插件系统
+- 内置Hardhat Network
+- 强大的调试工具
+- TypeScript支持
+```
+
+Foundry
+
+```bash
+# 特色
+- 使用Solidity编写测试
+- 极速编译和测试
+- 模糊测试(Fuzzing)
+- Gas报告
+```
+
+### 3\. 测试网络
+
+主要测试网
+
+-   **Sepolia**: 推荐的主要测试网
+    
+-   **Goerli**: 长期支持的测试网
+    
+-   **本地网络**: Ganache, Hardhat Network
+    
+
+测试网的作用
+
+-   零成本测试
+    
+-   模拟主网环境
+    
+-   部署前验证
+    
+-   获取免费测试币(Faucet)
+    
+
+### 4\. API和库
+
+JavaScript/TypeScript
+
+```javascript
+// Web3.js
+const Web3 = require('web3');
+const web3 = new Web3('https://mainnet.infura.io');
+
+// Ethers.js (推荐)
+const { ethers } = require('ethers');
+const provider = new ethers.providers.JsonRpcProvider();
+```
+
+Python
+
+```python
+# Web3.py
+from web3 import Web3
+w3 = Web3(Web3.HTTPProvider('https://mainnet.infura.io'))
+```
+
+其他语言
+
+-   **Java**: Web3j
+    
+-   **Go**: go-ethereum (Geth)
+    
+-   **Rust**: ethers-rs
+    
+-   **C#**: Nethereum
+    
+
+### 5\. 集成开发环境
+
+-   **Remix IDE**: 在线IDE，适合初学者
+    
+-   **Visual Studio Code**: 配合Solidity插件
+    
+-   **IntelliJ IDEA**: 配合Solidity插件
+    
+
+* * *
+
+## 智能合约开发
+
+### 1\. Solidity语言
+
+语言特性
+
+-   面向合约的高级语言
+    
+-   静态类型
+    
+-   支持继承、库和复杂用户自定义类型
+    
+-   编译为EVM字节码
+    
+
+基本语法
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 private storedData;
+    
+    event DataStored(uint256 data);
+    
+    function set(uint256 x) public {
+        storedData = x;
+        emit DataStored(x);
+    }
+    
+    function get() public view returns (uint256) {
+        return storedData;
+    }
+}
+```
+
+数据类型
+
+-   **值类型**: bool, int, uint, address, bytes
+    
+-   **引用类型**: arrays, structs, mappings
+    
+-   **特殊类型**: address payable, contract types
+    
+
+函数修饰符
+
+-   **visibility**: public, private, internal, external
+    
+-   **state mutability**: view, pure, payable
+    
+-   **自定义修饰符**: 用于访问控制等
+    
+
+### 2\. 合约结构
+
+生命周期
+
+1.  **编写**: Solidity源代码
+    
+2.  **编译**: 生成字节码和ABI
+    
+3.  **部署**: 创建合约账户
+    
+4.  **调用**: 与合约交互
+    
+5.  **销毁**: selfdestruct (已不推荐)
+    
+
+构造函数
+
+```solidity
+contract MyContract {
+    address public owner;
+    
+    constructor() {
+        owner = msg.sender;
+    }
+}
+```
+
+继承
+
+```solidity
+contract Parent {
+    function foo() public virtual returns (string memory) {
+        return "Parent";
+    }
+}
+
+contract Child is Parent {
+    function foo() public override returns (string memory) {
+        return "Child";
+    }
+}
+```
+
+### 3\. 智能合约安全
+
+常见漏洞
+
+1.  **重入攻击**:
+    
+    -   外部调用前更新状态
+        
+    -   使用ReentrancyGuard
+        
+2.  **整数溢出**:
+    
+    -   Solidity 0.8+内置检查
+        
+    -   或使用SafeMath库
+        
+3.  **访问控制**:
+    
+    -   正确设置函数可见性
+        
+    -   使用Ownable模式
+        
+4.  **前置运行**:
+    
+    -   了解交易池机制
+        
+    -   设计防前置运行逻辑
+        
+
+最佳实践
+
+-   **Checks-Effects-Interactions模式**
+    
+-   使用OpenZeppelin库
+    
+-   进行代码审计
+    
+-   编写全面的测试
+    
+-   使用形式化验证
+    
+
+### 4\. 合约测试
+
+测试类型
+
+```javascript
+// 单元测试
+describe("SimpleStorage", function () {
+  it("Should store the value", async function () {
+    const SimpleStorage = await ethers.getContractFactory("SimpleStorage");
+    const storage = await SimpleStorage.deploy();
+    
+    await storage.set(42);
+    expect(await storage.get()).to.equal(42);
+  });
+});
+```
+
+测试工具
+
+-   **Mocha/Chai**: JavaScript测试框架
+    
+-   **Hardhat Test**: 内置测试环境
+    
+-   **Foundry**: Solidity测试
+    
+-   **Slither**: 静态分析
+    
+
+### 5\. 合约部署
+
+部署流程
+
+```javascript
+async function deploy() {
+  const Contract = await ethers.getContractFactory("MyContract");
+  const contract = await Contract.deploy(constructorArg);
+  await contract.deployed();
+  console.log("Contract deployed to:", contract.address);
+}
+```
+
+部署考虑
+
+-   Gas优化
+    
+-   合约验证(Etherscan)
+    
+-   代理模式(可升级性)
+    
+-   多签钱包部署(安全性)
+    
+
+* * *
+
+## 去中心化应用(DApps)
+
+### 1\. DApp架构
+
+组件结构
+
+```
+前端(Frontend)
+    ↓
+Web3库(Web3.js/Ethers.js)
+    ↓
+区块链节点(Node)
+    ↓
+智能合约(Smart Contracts)
+```
+
+后端替代
+
+智能合约充当"后端"角色:
+
+-   业务逻辑
+    
+-   数据存储(链上)
+    
+-   权限控制
+    
+
+### 2\. 前端开发
+
+连接钱包
+
+```javascript
+// 检测MetaMask
+if (typeof window.ethereum !== 'undefined') {
+  await window.ethereum.request({ method: 'eth_requestAccounts' });
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+}
+```
+
+合约交互
+
+```javascript
+const contract = new ethers.Contract(address, abi, signer);
+
+// 读取数据
+const data = await contract.get();
+
+// 写入数据
+const tx = await contract.set(newValue);
+await tx.wait(); // 等待确认
+```
+
+### 3\. 数据存储
+
+存储方案
+
+1.  **链上存储**:
+    
+    -   关键数据
+        
+    -   成本高
+        
+    -   不可变
+        
+2.  **IPFS**:
+    
+    -   去中心化文件存储
+        
+    -   内容寻址
+        
+    -   存储哈希到链上
+        
+3.  **传统数据库**:
+    
+    -   辅助数据
+        
+    -   提高性能
+        
+    -   注意中心化风险
+        
+
+### 4\. 用户体验
+
+挑战
+
+-   Gas费用不确定
+    
+-   交易确认时间
+    
+-   钱包连接复杂度
+    
+-   错误处理
+    
+
+优化策略
+
+-   提供Gas估算
+    
+-   显示交易状态
+    
+-   友好的错误提示
+    
+-   离线签名
+    
+-   Meta交易(无Gas)
+    
+
+* * *
+
+## 高级主题
+
+### 1\. 代币标准
+
+ERC-20: 同质化代币
+
+```solidity
+interface IERC20 {
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address to, uint256 amount) external returns (bool);
+    function allowance(address owner, address spender) external view returns (uint256);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
+}
+```
+
+ERC-721: 非同质化代币(NFT)
+
+-   每个代币唯一
+    
+-   用于数字艺术、游戏物品等
+    
+-   tokenURI指向元数据
+    
+
+ERC-1155: 多代币标准
+
+-   同时支持同质化和非同质化
+    
+-   Gas效率更高
+    
+-   批量操作
+    
+
+### 2\. DeFi核心概念
+
+去中心化交易所(DEX)
+
+-   **Uniswap**: 自动做市商(AMM)
+    
+-   **恒定乘积公式**: x \* y = k
+    
+-   **流动性池**: 用户提供流动性获得手续费
+    
+
+借贷协议
+
+-   **Aave, Compound**: 超额抵押借贷
+    
+-   **利率模型**: 根据供需动态调整
+    
+-   **清算机制**: 防止坏账
+    
+
+稳定币
+
+-   **算法稳定币**: 通过算法维持锚定
+    
+-   **抵押稳定币**: DAI (超额抵押)
+    
+-   **中心化稳定币**: USDC, USDT
+    
+
+### 3\. 预言机(Oracles)
+
+问题
+
+区块链无法直接访问外部数据(确定性要求)
+
+解决方案
+
+-   **Chainlink**: 去中心化预言机网络
+    
+-   **价格预言机**: 提供资产价格数据
+    
+-   **VRF**: 可验证随机函数
+    
+
+使用示例
+
+```solidity
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
+contract PriceConsumer {
+    AggregatorV3Interface internal priceFeed;
+    
+    function getLatestPrice() public view returns (int) {
+        (, int price,,,) = priceFeed.latestRoundData();
+        return price;
+    }
+}
+```
+
+### 4\. Layer 2扩展方案
+
+Optimistic Rollups
+
+-   **原理**: 乐观假设交易有效
+    
+-   **欺诈证明**: 挑战期验证
+    
+-   **代表**: Optimism, Arbitrum
+    
+
+ZK-Rollups
+
+-   **原理**: 零知识证明验证有效性
+    
+-   **优势**: 更快的最终性
+    
+-   **代表**: zkSync, StarkNet
+    
+
+侧链
+
+-   **独立区块链**: 通过桥连接主链
+    
+-   **代表**: Polygon PoS
+    
+
+状态通道
+
+-   **链下交互**: 仅开启和关闭时上链
+    
+-   **即时确认**: 适合高频交易
+    
+
+### 5\. MEV (最大可提取价值)
+
+定义
+
+验证者通过重排、插入或审查交易能够提取的最大价值
+
+类型
+
+-   **抢先交易**: Front-running
+    
+-   **夹层攻击**: Sandwich attack
+    
+-   **套利**: DEX价格差
+    
+
+应对
+
+-   **私有交易池**: Flashbots
+    
+-   **MEV拍卖**: 将MEV价值返还用户
+    
+
+### 6\. DAO (去中心化自治组织)
+
+核心组件
+
+-   **治理代币**: 投票权
+    
+-   **提案系统**: 链上治理
+    
+-   **国库管理**: 多签控制
+    
+
+治理模式
+
+-   **链上投票**: 完全透明
+    
+-   **快照**: 链下投票，链上执行
+    
+-   **委托投票**: 提高参与度
+    
+
+* * *
+
+## 学习路径建议
+
+### 阶段一: 基础入门 (1-2个月)
+
+学习内容
+
+1.  区块链基础概念
+    
+2.  以太坊白皮书和黄皮书
+    
+3.  账户、交易、Gas机制
+    
+4.  使用MetaMask和测试网
+    
+
+实践项目
+
+-   创建钱包
+    
+-   发送测试交易
+    
+-   使用区块链浏览器(Etherscan)
+    
+-   与简单DApp交互
+    
+
+推荐资源
+
+-   《精通以太坊》第1-7章
+    
+-   [ethereum.org](http://ethereum.org)基础主题
+    
+-   以太坊白皮书
+    
+
+### 阶段二: 智能合约开发 (2-3个月)
+
+学习内容
+
+1.  Solidity语法和特性
+    
+2.  智能合约编写和测试
+    
+3.  开发工具使用(Remix, Hardhat)
+    
+4.  安全最佳实践
+    
+
+实践项目
+
+```
+项目1: 简单存储合约
+项目2: ERC-20代币
+项目3: 众筹合约
+项目4: NFT市场
+```
+
+推荐资源
+
+-   《精通以太坊》第8-10章
+    
+-   Solidity官方文档
+    
+-   OpenZeppelin合约库
+    
+-   CryptoZombies教程
+    
+
+### 阶段三: DApp全栈开发 (2-3个月)
+
+学习内容
+
+1.  Web3.js/Ethers.js使用
+    
+2.  前端框架集成(React/Vue)
+    
+3.  IPFS和去中心化存储
+    
+4.  用户体验优化
+    
+
+实践项目
+
+```
+项目1: 去中心化投票系统
+项目2: NFT铸造平台
+项目3: 简单DEX
+项目4: DAO治理界面
+```
+
+推荐资源
+
+-   《精通以太坊》第11章
+    
+-   [ethereum.org](http://ethereum.org) DApp开发
+    
+-   Scaffold-ETH模板
+    
+-   Wagmi库文档
+    
+
+### 阶段四: 高级主题 (持续学习)
+
+学习内容
+
+1.  DeFi协议深入
+    
+2.  Layer 2解决方案
+    
+3.  安全审计技术
+    
+4.  Gas优化策略
+    
+5.  MEV和链上博弈
+    
+
+实践项目
+
+```
+项目1: AMM流动性池
+项目2: 借贷协议
+项目3: 跨链桥
+项目4: Layer 2 DApp
+```
+
+推荐资源
+
+-   《精通以太坊》第12-19章
+    
+-   DeFi协议源码阅读
+    
+-   安全审计报告分析
+    
+-   Layer 2文档
+    
+
+### 持续学习建议
+
+跟进最新发展
+
+-   订阅以太坊基金会博客
+    
+-   关注EIP提案
+    
+-   参与社区讨论(Reddit, Discord)
+    
+-   参加黑客松
+    
+
+实战经验
+
+-   参与开源项目
+    
+-   贡献到协议
+    
+-   进行代码审计
+    
+-   发布自己的项目
+    
+
+深入源码
+
+-   Geth客户端源码
+    
+-   主流DeFi协议
+    
+-   OpenZeppelin库
+    
+-   Layer 2实现
+    
+
+* * *
+
+## 开发最佳实践总结
+
+### 安全第一
+
+-   始终假设代码有漏洞
+    
+-   使用经过审计的库
+    
+-   编写全面测试
+    
+-   进行专业审计
+    
+-   设置紧急暂停机制
+    
+
+### Gas优化
+
+-   使用适当的数据类型
+    
+-   批量处理操作
+    
+-   避免不必要的存储
+    
+-   使用events代替存储
+    
+-   优化循环和条件
+    
+
+### 代码质量
+
+-   遵循命名规范
+    
+-   添加详细注释
+    
+-   使用NatSpec文档
+    
+-   代码模块化
+    
+-   版本控制
+    
+
+### 用户体验
+
+-   清晰的错误提示
+    
+-   交易状态反馈
+    
+-   Gas费用估算
+    
+-   支持多种钱包
+    
+-   响应式设计
+    
+
+### 部署策略
+
+-   测试网充分测试
+    
+-   使用多签钱包
+    
+-   实施升级策略
+    
+-   监控和告警
+    
+-   应急响应计划
+    
+
+* * *
+
+## 推荐学习资源
+
+### 官方文档
+
+-   [以太坊开发文档](https://ethereum.org/developers/docs/)
+    
+-   [Solidity文档](https://docs.soliditylang.org/)
+    
+-   [OpenZeppelin文档](https://docs.openzeppelin.com/)
+    
+
+### 在线教程
+
+-   CryptoZombies
+    
+-   Alchemy University
+    
+-   Buildspace
+    
+-   Chainlink教程
+    
+
+### 书籍
+
+-   《精通以太坊》
+    
+-   《Solidity编程》
+    
+-   《以太坊技术详解与实战》
+    
+
+### 社区
+
+-   [Ethereum Stack Exchange](https://ethereum.stackexchange.com/)
+    
+-   [r/ethdev](https://reddit.com/r/ethdev)
+    
+-   Discord开发者频道
+    
+-   登链社区
+    
+
+### 工具和库
+
+-   Hardhat
+    
+-   Foundry
+    
+-   OpenZeppelin Contracts
+    
+-   Ethers.js
+    
+-   Wagmi
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 # Web3 前端开发完整指南
 
 * * *
@@ -809,6 +1997,7 @@ contract.on('Transfer', (...args) => {
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
+
 Finish：
 
 \[x\] Uniswap V3前三章实操
@@ -816,6 +2005,7 @@ Finish：
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 今日完成：
@@ -828,11 +2018,13 @@ Finish：
 
 
 
+
 \[x\] I人完成Demo路演😭，天下英雄如过江之鲫😔
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -847,6 +2039,7 @@ Finish：
 
 
 
+
 一天极限跑完整个项目：
 
 repo : [https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo](https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo)
@@ -854,6 +2047,7 @@ repo : [https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo](https://github.com
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -3141,6 +4335,7 @@ contract CompleteHookExample is BaseHook {
 
 
 
+
 # Uniswap V3 学习笔记
 
 ## 1\. 概述
@@ -4805,6 +6000,7 @@ y = L * (√P - √P_a)
 
 
 
+
 # day16
 
 \[x\] Finish Challenge0 -Tokenization
@@ -4814,6 +6010,7 @@ y = L * (√P - √P_a)
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -5550,6 +6747,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day14
 
 \[x\] Uniswap V2 Factory合约代码解读
@@ -5572,6 +6770,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day13
 
 \[x\]搭建了本地区块链节点
@@ -5581,6 +6780,7 @@ _最后更新：2026年1月_
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -6195,6 +7395,7 @@ library SafeMath {
 
 
 
+
 # DAY11
 
 周始，观废寝忘食刷榜、寻到offer者甚多，顿觉无力，浑噩踱步，不知所向
@@ -6208,6 +7409,7 @@ library SafeMath {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -6593,6 +7795,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY9
 
 古法笔记：
@@ -6621,6 +7824,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY8
 
 \[\]frontend
@@ -6630,6 +7834,7 @@ router.swapExactTokensForTokens(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -6685,6 +7890,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -6769,6 +7975,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -6916,6 +8123,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -7014,6 +8222,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -7228,6 +8437,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -7324,6 +8534,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
