@@ -15,8 +15,154 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# **今日学习：Solana 入门笔记**
+
+## **1）一句话理解 Solana**
+
+**Solana 是一条追求“高吞吐 + 低费用 + 并行执行”的公链**，核心思路是：把交易执行做得更像高性能系统，而不是所有合约都排队串行跑。
+
+* * *
+
+## **2）Solana 的最核心心智模型：Account Model**
+
+在 Solana 里，几乎一切都是 **Account（账户）**：
+
+-   **账户里存数据（state）**，也存 lamports（Solana 的最小单位）
+    
+-   **Program（程序/合约）本质也是一种账户**：它存的是“可执行代码”
+    
+-   你可以理解为：
+    
+    **Ethereum：合约自己带 storage**
+    
+    **Solana：程序不直接存状态，状态放在一堆账户里，程序去读写这些账户**
+    
+
+* * *
+
+## **3）Program（合约）怎么工作？**
+
+-   Solana 里叫 **Program**，通常用 **Rust** 写
+    
+-   Program 是“无状态的逻辑”（更像函数），状态由外部账户承载
+    
+-   Program 调用另一个 Program：叫 **CPI（Cross-Program Invocation）**
+    
+
+> 大白话：Program 像“操作数据库的业务逻辑”，Account 像“数据库里的表/记录”。
+
+* * *
+
+## **4）为什么 Solana 执行快？Sealevel 并行执行**
+
+Solana 的并行来自一个很重要的规则：
+
+-   **一笔交易会提前声明它要读/写哪些账户（accounts list）**
+    
+-   只要两笔交易 **写的账户不冲突**，就可以并行跑
+    
+
+这就是 Solana 的运行时（Sealevel）能并行调度的基础。
+
+* * *
+
+## **5）共识与时间：PoS + PoH**
+
+-   Solana 用 **PoS（权益证明）** 来选验证者与领导者
+    
+-   **PoH（Proof of History）** 更像一种“可验证的时间序列/时钟”，帮助网络更高效排序与同步
+    
+
+你只要记住：
+
+-   **PoS 负责安全与选人**
+    
+-   **PoH 帮助高频出块与排序效率**
+    
+
+* * *
+
+## **6）交易在 Solana 里长什么样？**
+
+Solana 交易一般包含：
+
+-   指令（Instructions）：要调用哪个 program、传什么参数
+    
+-   账户列表：这次要读/写哪些 accounts（并行执行关键）
+    
+-   签名（Signatures）
+    
+-   recent blockhash：防重放、保证交易新鲜
+    
+
+* * *
+
+## **7）费用与资源：Compute Units（CU）**
+
+Solana 的费用不是 “gas” 这个词，而是更像：
+
+-   每个交易有 **计算预算（Compute Units）**
+    
+-   你也可以设置优先费（priority fee）提高打包优先级（拥堵时更有用）
+    
+
+> 类比：
+
+> 以太坊：gas 定价每条 opcode
+
+> Solana：更像给交易一个“CPU 时间/预算”
+
+* * *
+
+## **8）Token 体系：SPL Token + ATA**
+
+Solana 的代币标准是 **SPL Token**（类似以太坊的 ERC20/721 体系）。
+
+常见概念：
+
+-   **Mint**：代币的“铸币账户”（定义总量、权限等）
+    
+-   **Token Account**：某个人持有某种 SPL token 的余额不在钱包地址本身，而在 Token Account 里
+    
+-   **ATA（Associated Token Account）**：一个标准化的“默认代币账户地址”，让“你持有某 token 的账户”更好找
+    
+
+> 大白话：你有某个 token，不是写在你的钱包地址上，而是写在“你的 token 专用账户”里。
+
+* * *
+
+## **9）PDA（Program Derived Address）很重要**
+
+**PDA = 程序派生地址**，用来让 Program 拥有“确定性地址的账户”，并用它来存状态/当权限主体。
+
+-   PDA 没有私钥
+    
+-   但 Program 可以“代表 PDA”签名（用程序规则控制）
+    
+
+常用场景：
+
+-   存用户状态（例如某玩家的积分、某头寸的记录）
+    
+-   做权限控制（把资产托管在 PDA 账户里）
+    
+
+* * *
+
+## **10）开发工具链**
+
+-   **Solana CLI**：本地配置、部署、测试网操作
+    
+-   **Anchor**：Solana 最常用的开发框架（像“Solana 的 Hardhat/Foundry + 强类型 + 约定目录结构”）
+    
+-   前端交互：常用 @solana/web3.js / Anchor client
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 **今日学习：链上数据分析（进阶复盘）**
 
 **1）链上数据分析的核心心智模型**
@@ -144,6 +290,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 # **Dune 学习笔记（Web3 数据分析工具）**
 
@@ -300,6 +447,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 # **今日笔记：Web3 行业投研方式（Research Framework）**
@@ -528,6 +676,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 # **Rust 学习笔记**
 
 ## **1）Rust 是什么？适合做什么？**
@@ -684,6 +833,7 @@ Rust 强调“把错误写进类型里”。
 
 
 
+
 # **今日学习：Skills 相关内容（复盘笔记）**
 
 ## **1）我今天理解的“Skills”是什么？**
@@ -754,6 +904,7 @@ Rust 强调“把错误写进类型里”。
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -937,6 +1088,7 @@ Web3 自治：代码定规则 +（投票/多签）触发执行
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1144,6 +1296,7 @@ Web3 自治：代码定规则 +（投票/多签）触发执行
 
 
 
+
 # **Uniswap v4 学习笔记**
 
 ## **1）一句话总结**
@@ -1291,6 +1444,7 @@ PoolManager 会做类似这几步：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1515,6 +1669,7 @@ Cheatcodes 让你在测试里“操控链环境”，非常关键：
 
 
 
+
 # **Hardhat 学习笔记**
 
 ## **1）Hardhat 是什么？解决什么问题？**
@@ -1698,6 +1853,7 @@ Cheatcodes 让你在测试里“操控链环境”，非常关键：
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1906,6 +2062,7 @@ Vibe coding：先出一个能跑的 demo → 边用边改 → 逐步加规则/�
 
 
 
+
 # **Ethernaut 前三关学习要点总结（Hello / Fallback / Fallout）**
 
 ## **关卡 1：Hello Ethernaut（熟悉 Console + 合约交互）**
@@ -2048,6 +2205,7 @@ function Fallout() public payable {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2344,6 +2502,7 @@ ERC-7962：资产归属是 keyHash(bytes32) -> balance/owner
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2860,6 +3019,7 @@ for (...) {
 
 
 
+
 # **DApp 开发流程笔记（从 0 到 1）**
 
 ## **1）先想清楚：DApp 由哪三块组成？**
@@ -3097,6 +3257,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -3371,6 +3532,7 @@ DApp 开发的本质是：**用 Solidity 在链上写规则（状态机），用
 
 
 
+
 # **以太坊的交易树（Transaction Trie）和收据树（Receipt Trie）**
 
 > 一句总览
@@ -3596,6 +3758,7 @@ receiptsRoot
 
 
 
+
 # **Ethereum 状态树（State Trie）学习笔记**
 
 ## **1\. 状态树是什么**
@@ -3802,6 +3965,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **今日记录：在 OpenSea 铸造并上架第一个 NFT（Base / ERC1155）**
 
 ## **目标**
@@ -3978,6 +4142,7 @@ Rollup 的扩容核心：
 
 
 
+
 # **Uniswap v4 学习笔记（基于官方 Contracts v4 Overview）**
 
 ## **1）Uniswap v4 一句话总结**
@@ -4089,6 +4254,7 @@ Universal Router 的定位（大白话）：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -4255,6 +4421,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -4602,6 +4769,7 @@ PoS 核心流程（你可以当成一条业务链路记）：
 
 
 
+
 ## **今日学习总结：Web3 合规 & 网络安全**
 
 ## **_两条终身安全法则（最重要）_**
@@ -4719,6 +4887,7 @@ Web3 安全分三层，你可以这样记：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -5085,6 +5254,7 @@ Rollup 之所以成为主流，核心是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
