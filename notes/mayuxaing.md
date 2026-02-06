@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+了解了技术开发人员成长路径
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 写简历
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 \# Challenge 1: Crowdfunding
 
@@ -464,6 +471,7 @@ owner
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 \## 前端需要显示"所有贡献者的列表"，2种方式：
 
 \### 方式 1：使用事件 + 前端监听（推荐）⭐
@@ -676,11 +684,13 @@ revert TooEarly(block.timestamp, deadline);
 
 
 
+
 了解mcp skill
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -802,6 +812,7 @@ Authropic 的实验是让 52 位初级程序员一起学习一个新的 Python �
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -1124,6 +1135,7 @@ myx@cs:~/web3开发/test$ cast call 0x5FbDB2315678afecb367f032d93F642f64180aa3 "
 
 
 
+
 \## 滑点与价格冲击
 
 **滑点**就是：\*\*“你预期的价格”\*\* 和 **“实际成交的更差价格”** 之间的差额。
@@ -1283,6 +1295,7 @@ amounts\[i + 1\] = getAmountOut(amounts\[i\], reserveIn, reserveOut);
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1451,6 +1464,7 @@ ETH 涨了，你虽然赚了（从 4万 变成了 5.6万），但你跑输了大
 
 
 
+
 Uniswp是一个去中心化交易所，所谓去中心化，可以从以下两个方面理解：
 
 ●交易全部是由开源的代码来控制，没有任何人为的因素
@@ -1542,6 +1556,7 @@ $$\\Delta y = \\frac{y \\cdot \\Delta x\_{with\\\_fee}}{x + \\Delta x\_{with\\\_
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1974,6 +1989,7 @@ messageboard:[https://sepolia.etherscan.io/address/0x6C1C45D9D0f7dd2697869254cF5
 
 
 
+
 # 智能合约 Gas 优化
 
 ## 核心原则
@@ -2117,6 +2133,7 @@ function good(uint256 x) external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2365,6 +2382,7 @@ IPFS 是一个\*\*点对点（Peer-to-Peer）\*\*的分布式文件存储网络�
 
 
 
+
 # 📝 ENS (Ethereum Name Service) 核心概念笔记
 
 ### 1\. 什么是 ENS？
@@ -2443,6 +2461,7 @@ ENS（以太坊域名服务）类似于互联网中的 **DNS（域名系统）**
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2753,6 +2772,7 @@ target.changeOwner(owner);
 
 
 
+
 ai与web3
 
 主题围绕 AI Agent（智能体）与 Web3 的结合，重点阐述了为什么 AI 需要 Web3 基础设施（身份、支付、可验证性），以及 SpoonOS 如何通过协议层（X402, C8004）和应用层解决这些问题。
@@ -2798,6 +2818,7 @@ C8004 标准 (Identity)：AI 的“链上护照”。基于 ERC-721 实现，包
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2934,6 +2955,7 @@ DAO是通过代码设定规则的公司或社区。成员通过持有代币进�
 
 
 
+
 \## 脚本
 
 \### 一、本质
@@ -3019,6 +3041,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3129,6 +3152,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3285,6 +3309,7 @@ OP\_DUP OP\_HASH160 <20字节 pubkeyhash> OP\_EQUALVERIFY OP\_CHECKSIG
 
 
 
+
 \# 钱包地址生成逻辑
 
 !\[\[图库/dfa1465c6710908114e7c40bbffa7e06\_MD5.jpg\]\]
@@ -3386,6 +3411,7 @@ MetaMask 支持：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3555,6 +3581,7 @@ L2 将大量计算从 L1 挪到链外，但最终结果仍必须通过 L1 验证
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
