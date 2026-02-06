@@ -15,8 +15,164 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# 简历优化与面试技巧
+
+### Web3面试典型流程（大多数项目/公司）
+
+-   **轮次划分**（从小公司到中型DAO/协议常见顺序）：
+    
+    1.  HR/社区初步筛选（5-15分钟语音/文字）
+        
+    2.  一面：岗位基础 + 自我介绍 + 动机（20-40分钟）
+        
+    3.  二面：核心能力考察（技术/项目/运营实战，40-90分钟）
+        
+    4.  三面（可选）：创始人/高管价值观 + 文化fit（30-60分钟）
+        
+    5.  部分项目有任务/试岗（1-7天付费或无薪）
+        
+-   **Web3 vs Web2最大区别**：
+    
+    -   面试官很可能就是未来直属leader甚至是联合创始人
+        
+    -   非常看重“链上痕迹 / 社区贡献 / 自驱力”
+        
+    -   经常问“你为什么现在进入Web3？”“你为这个行业做了什么可见的事情？”
+        
+
+### 2\. 常见岗位面试考察重点与高频问题
+
+**运营/社区/增长方向**（占比最高的新人岗位）
+
+-   核心看：对Web3用户心理的理解 + 活动策划执行力 + 数据敏感度
+    
+-   高频问题：
+    
+    -   你参与/运营过哪些Discord/Telegram/推特社区？增长数据是多少？
+        
+    -   设计一个 meme coin 发售前的社区预热计划（3-7天）
+        
+    -   如何判断一个活动是否成功？用哪些指标？
+        
+    -   如果社区出现 FUD，你第一时间会怎么回复/处理？
+        
+    -   讲讲你最自豪的一次内容/活动产出
+        
+
+**产品/BD方向**
+
+-   核心看：对协议/赛道的理解 + 用户/需求洞察 + 沟通协调
+    
+-   高频问题：
+    
+    -   分析某个你最熟悉的DeFi/NFT/GameFi项目，用户增长瓶颈在哪里？
+        
+    -   如果你是这个项目的PM，下个季度最想做的3件事是什么？
+        
+    -   如何说服一个KOL/项目方跟我们合作？
+        
+    -   你怎么看待当前的L2竞争格局？哪个赛道最有 Alpha？
+        
+
+**技术/开发方向**（ solidity /前端 / 数据）
+
+-   核心看：能写/读代码 + 理解Web3特有安全与gas问题
+    
+-   高频问题：
+    
+    -   写一个简单的 ERC-20 transfer 函数（或解释漏洞）
+        
+    -   解释 reentrancy / flashloan attack 原理 + 防御方式
+        
+    -   你调试过哪些链上交易失败？原因是什么？
+        
+    -   前端：如何安全连接钱包 + 处理网络切换
+        
+    -   数据：写过 Dune / Flipside / Nansen 查询吗？分享一个 dashboard
+        
+
+**通用三类面试（几乎所有岗位都会有）**
+
+1.  **动机 & 自我认知类**（几乎必问，开场杀手题）
+    
+    -   你是怎么入 Web3 的？目前对行业的认知是什么阶段？
+        
+    -   为什么选择我们项目/公司而不是别的？
+        
+    -   你未来 1-2 年在 Web3 的定位是什么？
+        
+    -   建议框架：过去（触发点）→ 现在（做了什么链上/社区事）→ 未来（想解决什么问题）
+        
+2.  **项目/经历深挖类**（星型面试法最常用）
+    
+    -   你简历/推特/GitHub上那个XX项目，能详细讲讲你是如何做的吗？
+        
+    -   遇到的最大困难是什么？你是怎么解决的？
+        
+    -   如果重新做，你会改哪3点？
+        
+    -   建议：用 **STAR法则**（Situation-Task-Action-Result）回答，每题控制1.5-2.5分钟
+        
+3.  **价值观 & 抗压类**（Web3 非常看重）
+    
+    -   你怎么看待 Web3 的“去中心化理想 vs 现实中心化”矛盾？
+        
+    -   如果项目方让你写软文/做不合规的事，你会怎么处理？
+        
+    -   遇到deadline很急但代码/方案有问题，你会怎么做？
+        
+    -   被社区喷/被质疑时你的心态？
+        
+
+### 3\. 面试表达与准备技巧（视频中最实操的部分）
+
+-   **自我介绍黄金1分钟模板**（强烈建议背熟改成自己的）： “大家好，我是\[名字\]，目前\[学校/上一份工作\]。202X年因为\[具体触发事件，比如DeFi summer / ENS域名热 / 参与XX黑客松\]进入Web3，目前最熟悉\[赛道/工具，例如DeFi + Dune分析 / Solidity基础 + Remix部署\]。过去半年我\[最硬核的一件事，例如：独立运营一个3000人Discord / 贡献了XX协议的中文文档 / 写了XX个智能合约并部署到测试网\]。希望在\[岗位\]上\[具体想做什么，例如帮项目提升社区活跃 / 优化on-chain数据仪表盘 / 参与协议迭代\]。很期待和团队一起把\[项目愿景\]做得更好。”
+    
+-   **回答问题时的“三明治结构”**（避免跑题/太啰嗦）
+    
+    1.  先一句话直接回答核心点
+        
+    2.  中间用数据/案例/逻辑展开
+        
+    3.  结尾再升华到对项目/行业的价值
+        
+-   **最大雷区汇总**（视频里反复强调的坑）
+    
+    -   只说“我很喜欢Web3”“我想赚大钱”“我觉得很有前景” → 太空洞
+        
+    -   背项目白皮书但说不出任何批判性思考
+        
+    -   链上0贡献却把“自学了solidity”写得很重 → 很容易被戳穿
+        
+    -   回答太长（超过3分钟还没重点）或太短（就一句话）
+        
+    -   对面试官项目一问三不知（起码提前研究官网、推特、 dune dashboard）
+        
+-   **临场救场话术**
+    
+    -   没听清：“不好意思，能否再重复一下问题？我想更准确地回答。”
+        
+    -   卡壳：“让我思考10秒钟，把思路整理一下。”
+        
+    -   不会：“我目前对这块了解不多，但我之前的经验是…，如果让我现在学习，我会从XX入手。”
+        
+
+### 4\. 最后冲刺建议（视频结尾常见叮嘱）
+
+-   投递前：把Twitter/Discord/Github/战报/Notion都整理成可公开链接
+    
+-   面试前24小时：再刷一遍目标项目的最近推文 + 链上数据 + 最近融资/新闻
+    
+-   面试后：发感谢信 + 附上你当天提到但没展开的补充资料（加分很大）
+    
+-   多模拟：找小伙伴/前辈mock 3-5轮，录音回听自己语速、嗯啊、废话
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 # **招聘平台与职位推荐**  
 核心内容总结
 
@@ -241,6 +397,7 @@ timezone: UTC+8
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 # **行业前辈访谈录**
 
 1.  **大学阶段 → 初识 Web3**
@@ -287,11 +444,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-02-03-1770097267957-image.png)
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -304,11 +463,13 @@ timezone: UTC+8
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-31-1769863208245-image.png)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -359,6 +520,7 @@ timezone: UTC+8
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -432,6 +594,7 @@ timezone: UTC+8
 
 
 
+
 ## **Getting Started**
 
 📌 **Foundry 是什么？**  
@@ -467,6 +630,7 @@ timezone: UTC+8
 
 
 
+
 ## Merkle Tree
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-27-1769505481134-image.png)
@@ -483,6 +647,7 @@ timezone: UTC+8
 
 
 
+
 ## Ether Wallet
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-26-1769418735928-image.png)
@@ -490,6 +655,7 @@ timezone: UTC+8
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -518,6 +684,7 @@ timezone: UTC+8
 
 
 
+
 ## Immutable  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-23-1769170805976-image.png)
@@ -525,6 +692,7 @@ timezone: UTC+8
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -561,6 +729,7 @@ timezone: UTC+8
 
 
 
+
 hello world：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/HauUhang/images/2026-01-21-1769004429299-image.png)
@@ -572,6 +741,7 @@ First Application：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -629,6 +799,7 @@ First Application：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -748,6 +919,7 @@ First Application：
 
 
 
+
 # 账户类型与结构
 
 CREATE （传统创建）：合约地址由 创建者地址 + 创建者的 nonce 决定，地址不可在部署前精确预测（除非知道 nonce）。公式上是 keccak256( RLP(\[s
@@ -788,6 +960,7 @@ Gas：想让 EOA 动起来，必须给它加油
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -850,6 +1023,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 
 
+
 # 七、执行与共识客户端的协同配合
 
 1\. 一个节点 = 执行客户端 + 共识客户端 + Engine API
@@ -879,6 +1053,7 @@ Gossip 协议就是以太坊的“八卦广播系统”：
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1009,6 +1184,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 
 
+
 # **安全与合规**
 
 ## Web3 合规性要求与常见法律风险
@@ -1052,6 +1228,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1201,6 +1378,7 @@ Web3 工作方式
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
