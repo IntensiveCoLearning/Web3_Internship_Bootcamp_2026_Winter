@@ -17,8 +17,157 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+## 🧠 一、基本发行数据
+
+| 项目 | 数据 |
+| --- | --- |
+| 代币名称 | ZAMA |
+| 总供应量（Total Supply） | 11,000,000,000 ZAMA |
+| 当前流通量（Circulating Supply） | ≈ 2.2–2.25 B ZAMA |
+| 流通占比 % | 约 20–20.5% of total |
+| 合约链 | ERC-20（Ethereum）、BEP-20（BSC）等 |
+
+**说明**：  
+“流通量”是指在各大交易平台（如 Binance）上可自由买卖的 ZAMA，当前大约为 **2.2 B / 11 B ≈ 20%**。剩余约 80% 仍在锁仓、团队/投资者持有、生态基金等。
+
+* * *
+
+## 🧱 二、发行机制（Allocation & Vesting）
+
+ZAMA 的发行并非一次性释放，而采用分配 + 解锁机制：
+
+### ✅ 总体结构
+
+| 类别 | 比例 | 数量 | 解锁机制 |
+| --- | --- | --- | --- |
+| Public Sale（公开拍卖等） | ~12% | 1.32 B | TGE 时全部解锁 |
+| Treasury / Ecosystem | 20% | 2.2 B | 长期储备/激励 |
+| Team | 20% | 2.2 B | 4 年线性解锁（开始于 Month 12） |
+| VC（机构投资） | 20% | 2.2 B | 2–3 年线性解锁 |
+| Angels（早期天使） | 10% | 1.1 B | 2–3 年解锁 |
+| Growth / Marketing | 10% | 1.1 B | 逐步释放 |
+| TGE Campaigns / Incentives | 6% | 660 M | 初始阶段释放 |
+
+**代币发行机制要点**：
+
+-   **公开销售**：通过 Dutch Auction（荷兰式拍卖）等方式分配 ~12%，拍卖价格由竞标决定，且拍卖过程中 FHE 技术用于隐私竞价。
+    
+-   **锁仓与线性释放**：核心团队、机构和天使投资人代币有较长的线性解锁期，旨在减少初始抛压。
+    
+
+* * *
+
+## 🔄 三、代币功能与消耗机制
+
+根据官方及资料整理，**ZAMA Token 的消耗或流转机制核心可以分为两块：**
+
+### 1) Protocol Fee Model（协议手续费 & 消耗定义）
+
+ZAMA 用于支付协议内真实经济活动产生的成本：
+
+**主要收费点**（由官方 litepaper 和团队公开内容推断）：
+
+| 操作 | 是否收费 | 费用方向 |
+| --- | --- | --- |
+| 加密交易数据验证 | 是 | ZAMA 支付给网络，然后 burn（销毁） |
+| 解密密文 | 是 | ZAMA 支付后 burn |
+| 桥接隐密值 | 是 | ZAMA 支付后 burn |
+
+**特征机制**：
+
+✔ **Burn-and-Mint 模式**：  
+协议将所有用户支付的费用 **销毁（Burn）**，然后按验证者/运营者激励重新 **铸造（Mint）**。  
+这类似质押激励 + 权力分配机制，有助于动态调节供需。
+
+✔ **USD 价格定价**：  
+协议费用以 **美元计价**，然后通过动态定价 oracle 将美元成本转换为 ZAMA 计价，而不是固定 ZAMA 数量，这样费用划算性不受 token 价格波动影响。
+
+这种机制有三个重要意义：
+
+1.  **使用即消耗 → 币价有手续费锚定现实价值**
+    
+2.  **防止长期锁仓造成过度通胀**
+    
+3.  **长期参与者通过 staking / 验证获得新铸代币奖励**
+    
+
+* * *
+
+## 📊 四、Tokenomics 假设模型（价值生成逻辑）
+
+在 VC 风格投研中，一般构建一个简化的价值模型：
+
+### 🔹 Token 经济基本公式
+
+Token Value Potential∝Protocol Usage (Tx Count × Fee per Tx)Circulating SupplyToken Value Potential∝Circulating SupplyProtocol Usage (Tx Count × Fee per Tx)​
+
+### 🔹 分解成四个关键变量
+
+1.  **U = 协议级年使用量**  
+    \= Confidential transactions + bridge + decryption requests
+    
+2.  **F = 平均手续费（按 USD 计）**
+    
+    -   低频用户平均：$0.005 – $1+
+        
+    -   高频隐私应用平均可更高
+        
+3.  **B = Token Burn Ratio**  
+    \= 用户手续费 \* 100%（全部 burned）
+    
+4.  **R = Token Reward Ratio**  
+    \= 按 staking /验证者奖励 mint 数量
+    
+
+### 🔹 简化长期模型
+
+Net Token Deflationary Pressure=B−RNet Token Deflationary Pressure=B−R
+
+如果用户使用极高，**手续费销毁 > 激励铸造 → 净通缩**  
+则：  
+→ 供给下降 → 压缩流通量 → Token 上升动力
+
+反之若使用不足，则：  
+→ 激励铸造 > 销毁 → 稀释压力产生
+
+* * *
+
+## 📌 五、平台流通量（以 Binance 上线数据为例）
+
+据市场数据：
+
+-   **流通量 ≈ 2.25 B ZAMA** （约 20.45% 总供应）
+    
+-   初始 TGE（Token Generation Event）释放约 20% 供交易所交易。
+    
+
+这个比例典型用于：
+
+-   公开交易（spot）流动性
+    
+-   Launchpool / staking 奖励
+    
+-   初期用户激励活动
+    
+
+* * *
+
+## 📉 六、总结与关键判断点
+
+📍 **代币总量固定**：11 B，不再无限增加。  
+📍 **当前流通 ≈ 20%**，剩余大多数仍锁仓与基金池。  
+📍 **交易手续费全 burn** → 有现实经济锚定。  
+📍 **验证者奖励通过 mint 支付** → 若使用量高可产生通缩压力。  
+📍 **拍卖 + 长期 vesting** 结构设计平衡公开流动性和抑制初期抛压。
+
+* * *
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 以太坊活动调研：**EthCC**
 
 举办时间：30/03-02/04
@@ -233,6 +382,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 以太坊活动调研：**EthCC**
 
 举办时间：30/03-02/04
@@ -252,6 +402,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -329,6 +480,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ### 本周感悟
 
 本周是web3实习计划的第二周，本周继续学习运营的方法及技巧，熟悉运营工具，与此同时也开始了一些solidity智能合约的学习。
@@ -374,6 +526,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -434,6 +587,7 @@ An academic background in Digital Skills for Sustainable Societal Transitions an
 
 
 
+
 ```
 Context:
 This is an existing project using <tech stack>.
@@ -456,6 +610,7 @@ Process:
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -622,6 +777,7 @@ Web3第一语言类Space，累计超千万播放量。
 
 
 
+
 第二周结束，本周思考与复盘。
 
 Typeless
@@ -682,6 +838,7 @@ TG社群运营SOP
 
 
 
+
 [XSpoonAi/spoon-core](https://github.com/XSpoonAi/spoon-core)
 
 Solidity 编译功能
@@ -691,6 +848,7 @@ LLM → 生成 Solidity ↓ Tool → solc 编译 ↓ ❌ 报错 ↓ LLM ← 读�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -864,6 +1022,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 ### 运营渠道
 
 1.  telegram
@@ -939,6 +1098,7 @@ Figma Community 是一个共享平台，里面有海量模板、组件、UI kit�
 
 
 
+
 这周是实习计划的第二周，由于我的理想岗位是产品经理，除了必备的运营赛道学习内容外，我还需要了解技术岗的一些初级任务。所以学习任务会相对较重，但好处是我有一些设计和技术方面的基础，所以不同软件上手还是挺快的。因此，本周我决定结合不同常用软件完成学习笔记，做中学。
 
 ### 工具类
@@ -988,6 +1148,7 @@ rose设置
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1125,6 +1286,7 @@ Oracle 是一种机制，用来把“链下世界的数据”安全、可信地�
 
 
 
+
 今日任务：看视频，理解概念
 
 ### 一些工具：
@@ -1176,6 +1338,7 @@ multiple agent pipeline写smart contract：有什么相关的DB推荐吗
 
 
 
+
 今日任务：**安全 & 合规**
 
 法币与稳定币的区别：
@@ -1207,6 +1370,7 @@ Web3 项目常常通过跨境分区的方式来规避境内的监管风险，通
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1368,6 +1532,7 @@ ZK Rollup
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
