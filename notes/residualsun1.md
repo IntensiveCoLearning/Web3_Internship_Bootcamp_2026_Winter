@@ -15,8 +15,170 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+接昨天对 SpoonOS 框架的分析，这里以 [spoon-core](https://github.com/XSpoonAi/spoon-core) 仓库中的代码为例，找到其中 `examples > skills > data-processor` 文件夹，里面有 `scripts` 文件夹和 `SKILL.md` 文件，以具体的 `SKILL.md` 文件来进行说明。
+
+以下是文件 `SKILL.md` 中的元数据部分。
+
+```
+---
+name: data-processor
+description: Data processing skill with Python and shell scripts for file analysis and transformation
+version: 1.0.0
+author: XSpoonAi Team
+tags:
+  - data
+  - processing
+  - analysis
+  - scripts
+triggers:
+  - type: keyword
+    keywords:
+      - process
+      - analyze
+      - transform
+      - data
+      - parse
+      - convert
+    priority: 80
+  - type: pattern
+    patterns:
+      - "(?i)(process|analyze|transform) .*(data|file|json|csv)"
+      - "(?i)convert .* to .*"
+    priority: 75
+parameters:
+  - name: input
+    type: string
+    required: false
+    description: Input data or file path to process
+  - name: format
+    type: string
+    required: false
+    default: json
+    description: Output format (json, csv, text)
+composable: true
+persist_state: false
+​
+scripts:
+  enabled: true
+  working_directory: ./scripts
+  definitions:
+    - name: analyze
+      description: Analyze input data and provide statistics
+      type: python
+      file: analyze.py
+      timeout: 30
+​
+    - name: transform
+      description: Transform data format
+      type: python
+      file: transform.py
+      timeout: 30
+​
+    - name: setup
+      description: Initialize processing environment
+      type: bash
+      inline: |
+        echo "Initializing data processor environment..."
+        echo "Ready for processing"
+      run_on_activation: true
+​
+    - name: cleanup
+      description: Clean up temporary files
+      type: bash
+      inline: |
+        echo "Cleaning up temporary files..."
+        echo "Cleanup complete"
+      run_on_deactivation: true
+---
+​
+```
+
+可以看到 `triggers` 中定义了 `keyword`、`pattern` 两种类型。就 `keyword` 类型而言，即关键词激活，当用户给出的命令输入中包含以下关键词的时候，大模型即会激活 Skill。
+
+```
+keywords:
+      - process
+      - analyze
+      - transform
+      - data
+      - parse
+      - convert
+```
+
+另外，如果是多个 Skill 匹配到大模型，大模型会根据 `triggers` 中 `priority` 的数值来决定激活哪些 Skill——数值越高的优先级越高。
+
+另外一个 `pattern` 则是正则表达式的激活方式。
+
+脚本 `scripts` 部分，已经打开全局开关并且定位好了工作目录，目录下有 `anglyze.py` 和 `transform.py` 两个脚本文件，它们的功能已经在 `description` 中得到了描述。`setup` 和 `cleanup` 分别在激活和停用时在输入提示符，告诉终端 Skill 已经完成。
+
+```
+# Data Processor Skill
+​
+You are now operating in **Data Processing Mode**. You have access to scripts that can help process and analyze data.
+​
+## Available Scripts
+​
+### analyze
+Analyzes input data and provides statistics. Pass data via stdin.
+​
+**Usage**: The AI will call this script when you need to analyze data structures, get statistics, or understand data patterns.
+​
+### transform
+Transforms data between formats. Supports JSON, CSV, and text.
+​
+**Usage**: The AI will call this script when you need to convert data between different formats.
+​
+### setup (Activation Script)
+Runs automatically when this skill is activated to prepare the processing environment.
+​
+### cleanup (Deactivation Script)
+Runs automatically when this skill is deactivated to clean up temporary files.
+​
+## Guidelines
+​
+1. **Always validate input** before processing
+2. **Handle errors gracefully** and provide informative messages
+3. **Preserve data integrity** during transformations
+4. **Report statistics** when analyzing data
+​
+## Example Tasks
+​
+1. "Analyze this JSON data and tell me about its structure"
+2. "Convert this CSV to JSON format"
+3. "Process this log file and extract key metrics"
+​
+```
+
+以上这部分 Markdown 内容则作为提示词被发送给激活了 Skill 的 Agent，这部分内容可以由开发者进行修改，以上所示是 SpoonOS 团队提前写好的。
+
+`example` 文件夹中有一个 `skill_testx.py` 文件，该文件导入了 Skill 系统里所有的核心组件。下面的代码即 SpooonOS 框架系统中 Skill 所有的核心功能。
+
+```
+from spoon_ai.skills import (
+    SkillManager,
+    SkillLoader,
+    ScriptExecutor,
+    ScriptType,
+    SkillScript,
+    ScriptConfig,
+    ScriptResult,
+    get_executor,
+    set_scripts_enabled,
+    ScriptTool,
+    create_script_tools,
+)
+```
+
+Skill 系统的核心价值是我们不需要重复写代码，只要将相关功能的脚本集中起来，后面设计不同的 Agent 时，只需要调用不同的封装好的能力即可。而且它自动触发，可以根据用户输入来自动激活相关的 Skill——也就是前面提到的触发器的规则。
+
+需要指出的是，只要关键词匹配得上，一个 Agent 可以激活多个 Skill——Skill 自带脚本，能力是即插即用，可以迁移到不同的 Agent上。总的来说，Skill 可以让开发者用配置文件而非代码来扩展 Agent 的专业能力。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 在这次休闲黑客松的比赛中，我选择了 SpoonOS - LLM 应用赛道，主要是使用 SpoonOS Framework 来构建 AI 应用/Agent 工作流。由于时间较短，我和队友直接上手 Vibe Coding，但对 SpoonOS 了解并不深入。如今比赛已经结束，可以慢慢回顾一下。
 
 如果我们需要调用 AI Agent，可能都难以避开 MCP 这一概念。MCP 是推出 Claude 的 Anthropic 在 2024 年发布的开放协议，定义了 AI 模型与外部工具（Tools）之间的标准通信方式——可以将 MCP 比喻为 AI 世界的 USB 接口，让 AI Agent 可以即插即用地调用外部工具。
@@ -98,6 +260,7 @@ Markdown 内容
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 之前一直没有搞懂什么是 ERC。从全称看，ERC 指 Ethereum Request for Comments（以太坊征求意见提案），是以太坊生态系统中定义标准接口和规范的提案。
 
@@ -211,6 +374,7 @@ ER-3643 是面向真实世界资产（RWA）的合规型代币标准，专为受
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 Polymarket 是基于区块链的预测市场平台，允许用户对现实世界事件的结果进行押注和交易。
 
 在 Polymarket 中包含多个关键概念：事件（Event）、市场（Market）、条件（Condition）、问题（Question）、集合（Collection）、头寸（Position/Tokenld）。
@@ -261,6 +425,7 @@ Ploymarket 从创建到结算，步骤大致如下：
 
 
 
+
 休闲黑客松以后，下午是以太坊的中文周会，晚上则是 Antonia 老师关于 Web3 的就业简历指导和面试经验分享。
 
 这一次的以太坊的中文周会中，一位嘉宾分享了《[再访Vitalik：拒绝末日剧本，寻找Crypto失落的灵魂](https://www.panewslab.com/zh/articles/cd6d6f1b-789c-43c2-a985-87cbca84dd3f)》一文，Vitalik 提了一些我觉得很有意思的观点：以太坊在技术上的发展十分成功（Gas 上限提升、zkEVM 成功落地、L2 等在实习手册中也有看到），但在应用层面上却让 Vitalik 感到忧虑，具体来说是技术的大大提升却并没有带来好的应用的大规模涌现——即便是 Polymarket 也有不少问题，它作为工具可以运行，但没有太大的社会意义，换句话说，如果**拥有最强的去中心化技术却只是用来制造了「一堆玩具或赌场」，这才是最大的风险**。  
@@ -276,6 +441,7 @@ Antonia 老师还说到自己刚毕业那会儿是一个什么都会一点，但
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -296,11 +462,13 @@ Antonia 老师还说到自己刚毕业那会儿是一个什么都会一点，但
 
 
 
+
 今天我主动和休闲黑客松的队友开了第二次会议。在这次会议上，基于我们产品的核心功能可能在回应赞助商技术要求的层面上有些「后继乏力」的考量，我主动提出了修改 UI 的看法，并阐述了将 UI 往简约风设计对论证产品营销的重要性——将 UI 设计风格背后的理念表达出来或许正是 idea 的体现？其次则是尽可能丰富 AI Agent 在我们产品中的功能展示，但是这一点在这么短时间里应当很难，我想了想觉得还是放在愿景中作为故事叙述出来更好。我的想法主要是这两点，主要思路就是围绕如何展示产品核心功能出发——因为感觉还匮乏，因此要通过设计 UI 的风格来传达我们的理念，以及尽可能描绘清楚未来可以拓展的功能，而这功能是可以打动用户以及赞助商。剩下的就是一些细节，比如在产品里多一些提及赞助商，毕竟是金主爸爸……也是通过会议，我能感觉到自己的思维活跃起来，我喜欢这种感觉，也觉得黑客松可贵的一点正在于团队协作。在我的分享之下，小白为我们团队项目想到了一个很有意思的名字，虽然我们的项目不算特别，但是名字起得好我也觉得开心，而小马后来设想的一个功能愿景也更是有趣。不过时间不多了，小白改 UI，我要及时准备好 PPT 和叙事的文稿，开干。不管项目最后怎么样，我们大家一起用心做好我们能做的，我觉得就是最好的。
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -367,6 +535,7 @@ Antonia 老师还说到自己刚毕业那会儿是一个什么都会一点，但
 
 
 
+
 今天和黑客松小队的队员们一起就项目的 Demo 进行了第一次讨论，就产品的定位、叙事、持续性、愿景，以及我们下一步的方案进行了梳理和总结。
 
 当前产品的叙事还有许多地方需要完善。虽然感觉方向可以明确，但如何将「明确」落实却还要等待 Demo 完整运行一次。总的来说，我们的分工其实有些「失衡」，因为整个技术架构基本由小白一人 Vibe 完成，我唯一感受到自己发挥作用的地方在于组织大家表达需求、召开会议——在讨论会议上，基于小白项目提案的理念，我想我应当是发挥了抛砖引玉的作用，从看起来不容易被注意到的概念上入手打开了一个可供叙事的角度。小白、小马和 ChiliChili 都赞成我的想法，我想我还是推进了项目的进展。话说回来，不知道这样算不算是我人文社科的思维在发挥作用呢，毕竟从某种程度上来说，将产品的概念拆解开来重新形成叙事，从一个概念联系到另外一些概念，再形成了一个新的故事。
@@ -376,6 +545,7 @@ Antonia 老师还说到自己刚毕业那会儿是一个什么都会一点，但
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -517,6 +687,7 @@ cast --to-dec $result
 
 
 
+
 我们小组今天开始黑客松了，以小白的提案为主，但我们不清楚应该怎么分工，最后还是小白决定自己先 Vibe 一个 Demo 出来，然后大家再一起讨论看看怎么优化。
 
 虽然小白先 Vibe 了一个 Demo，但我还是让 Claude Opus 分析了小白的提案，以给出一个便于分工的设计方案，提示词如下：
@@ -615,6 +786,7 @@ Echo：
 
 
 
+
 今天花了很长时间设置开发环境，找到了[中转站](https://0011.ai/)，终于可以在内地付费购买大模型的限额额度。由于之前使用 Antigravity IDE 时基本总让 AI 全程接管，从提出想法到创建文件，再到调试，消耗的 Token 太多，限额一下子便被用光，不得不寻找替代方案——在本地命令行中使用 Claude Code CLI 和 Codex CLI。
 
 但也是安装 CLI，才让我发现自己不过是刚走到 Vibe Coding 的大门前，或许连迈都没有迈进去。另外，我发现许多博主都是在 Cursor 上使用 AI，但我还不知道如何解决海外充值的问题，或许这也是我的路径依赖吧。
@@ -661,6 +833,7 @@ Echo：
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -793,6 +966,7 @@ function initStudent4() external {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -976,6 +1150,7 @@ contract ReturnDemo{
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1217,6 +1392,7 @@ function enumToUint() external view returns(uint){
 
 
 
+
 ## **1\. Solidity 语法中的基本结构**
 
 在 Solidity 代码中，都必须先指定和声明 Solidity 的编译器版本。
@@ -1399,6 +1575,7 @@ contract Counter {
 
 
 
+
 # 开发我的第一个 Web3 Vibe-Coding Demo 项目
 
 ## **1\. 今日想法**
@@ -1562,6 +1739,7 @@ contract AgentReputation {
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1852,6 +2030,7 @@ function getMessageCount(address user)
 
 
 
+
 \## Dapp
 
 \* 去中心化应用
@@ -2104,6 +2283,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **补充梳理：图灵完备与智能合约**
 
 当朋友问起我什么是「以太坊」（Ethereum）时，我总会习惯性地通过其与「比特币」的对比来进行说明。但需要指出的是，这里的比特币并非简单地指「代币」（Token）——一种在去中心化的网络中用于给予维持网络运行的节点/网络服务提供商/「矿工」 的奖励/Gas Fee，如比特币、以太币等。
@@ -2192,6 +2372,7 @@ returns (<返回值列表>)
 
 
 
+
 ## **1\. LXDAO 周会**
 
 今天早上参加了 LXDAO 的周会，大致了解一下社区的运作模式和每周一会的内容。就社区的运作模式来说，和在实习手册中看到的描述相近，主要是由成员来提出提案，大家进行讨论和反馈，确认对社区有帮助便会支持一起做出来。在LXDAO 的 [notion](https://www.notion.so/lxdao/LXDAO-Dashboard-253dceffe40b80efadf0dab89a1e33a9) 上可以见到其 Dashboard，根据不同主题分出了许多板块，包括教育、资金可持续性还有研究与机制创新等，里面还清晰地罗列着 Not started、In progress、Pending 和 Done 等状态的项目任务。接任务的方式有两种，一种是在周会现场举手加入，然后联系发起人；另一种是在路线图中找到任务并以详细计划进行申请。
@@ -2241,6 +2422,7 @@ returns (<返回值列表>)
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2342,6 +2524,7 @@ Leon 也是通过思维导图的方式来分享自己对 Web3 的学习。如果
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2524,6 +2707,7 @@ AI 与 Web3 的结合—— AI 赚钱？
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2849,6 +3033,7 @@ GoPlus 有相关网站可以检测风险。
 
 
 
+
 今日思绪：或许是因为早上将最后一份课程论文完成，我好像多出了不少干劲，中午睡了个午觉，下午全程学习 Web3。我的进度应该算是比较慢了，实习手册的阅读进度还停留在「入门导读」部分，今天一个下午的时间都用于理解「以太坊」，包括以太坊的具体含义、内容、结构、核心机制、发展演变以及价值观。但我感受到了一些专注和享受的感觉，可能有一点像是慢慢吸取知识的感觉，至少我真的开始对以太坊有了感性的认识。可能知识的积累真的需要一个过程，这才第二天。
 
 群里的小伙伴们都很活跃，求币、提问题、相互答疑、分享自己整理的资料和输出创作的内容，这些似乎在慢慢影响我——我也想多一些参与到大家的互动之中，但无奈于自己还有很多知识不懂，但昨晚给一个忘记保存笔记的小伙伴分享了用 Typora 记录和迁移笔记的建议，今天下午为一个小伙伴解答了如何查看测试币交易记录的问题。
@@ -3142,6 +3327,7 @@ wachi 助教补充了一段信息：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
