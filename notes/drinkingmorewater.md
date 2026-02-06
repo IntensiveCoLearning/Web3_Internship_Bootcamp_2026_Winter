@@ -79,10 +79,51 @@ AI Agent 经济的现状、发展趋势以及 CAT 项目的愿景和进展，具
 ![c3a138eab40f21414fe390f6d9d63a40.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-06-1770363348805-c3a138eab40f21414fe390f6d9d63a40.jpg)
 
 # Web3 BD 的工作日常与必备技能
+
+Web3 BD 岗位的相关内容，包括岗位定义、日常工作、不同阶段特点、新人入行途径、工作考核及薪资等，还对参会者的疑问进行了解答，具体如下：
+
+-   **Web3 BD 岗位定义与特点**：
+    
+    -   **与 Web2 区别**：Web2 产品标准化，BD 更像电销卖产品；Web3 产品迭代快、生态需求变动多，BD 需捕捉市场机会，将其转化为产品需求，打造产品，是综合型人才，需具备销售、运营、合作、产品解决方案、谈判等多种技能。
+        
+    -   **岗位类型与阶段**：可分为不同阶段，初期人脉少可通过跑会积累人脉；有一定人脉后，可通过已有客户牵线，跑会更多用于品牌宣传；后期可向公司战略、融资方向发展。
+        
+-   **Web3 BD 日常工作**：
+    
+    -   **跑会积累人脉**：初期跑会是积累人脉的好方式，一年可能 200 - 300 天在外面飞，跑各个会议，与当地合作伙伴交流，但跑会过程中也需做文案工作、内部沟通等。
+        
+    -   **销售周期长**：销售周期包括获取目标客户、研究需求并确定合作方向、商务谈判、技术支持、用户增长等阶段，b to b 销售时间长，如与大公司合作可能需一年半。
+        
+-   **新人入行 Web3 BD 途径**：
+    
+    -   **直接参与项目**：部分项目可让新人从 0 到 1 参与，培训好话术、理解项目逻辑后即可开展工作。
+        
+    -   **从社区大使切入**：可从社区大使做起，了解用户想法，积累社媒运营经验，还可基于项目找合作伙伴交流。
+        
+    -   **参与营销岗位**：很多项目会招 marketing junior，涉及活动管理等工作，也是入行的途径。
+        
+    -   **主动联系项目**：通过 AI 了解优质项目，到官网找招聘机会，主动发邮件、信息联系，为自己创造机会。
+        
+-   **Web3 BD 工作考核与薪资**：
+    
+    -   **考核指标**：核心考核指标是销售额，不同项目考核方式不同，可能考核 GMV、年收入等，考核周期一般为每月或每季度。
+        
+    -   **薪资构成**：提成比例因项目而异，欧美项目底薪较可观，还有激励机制，如 infra 项目 junior BD 年薪约 12 万美金，实习生月薪可能 2 - 3 万人民币。
+        
+-   **其他问题解答**：
+    
+    -   **判断工作好坏**：以销售额为目标判断工作好坏，通过价值互换把会上认识的人变成真正资源，多次合作建立信任。
+        
+    -   **展会筛选**：有时间可从感兴趣的赛道入手，研究相关项目开会信息，选择参加展会。
+        
+    -   **上币 BD 方法论**：靠品牌背书，要为项目方考虑赚钱途径，遵循帮别人降本增效的原则。
+        
+    -   **实习薪水**：欧美项目实习月薪有 2 - 3 万人民币，具体因项目而异。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 
@@ -138,6 +179,7 @@ AI 时代技术开发者的成长路径，包括 AI 对技术领域的变革、�
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -352,6 +394,7 @@ Web3 DevRel 岗位的工作内容、技能要求、岗位情况以及 Monad 公�
 
 
 
+
 ![126d63a3b7b28824e599567b05c214e7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770121142122-126d63a3b7b28824e599567b05c214e7.jpg)
 
 Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，具体如下：
@@ -439,6 +482,7 @@ Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -730,6 +774,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 
 
+
 ![fb690b004721cbabaf0c655243e4e3b1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769920110109-fb690b004721cbabaf0c655243e4e3b1.jpg)
 
 # 平台、社会、经济：去中心化之后如何了？
@@ -797,6 +842,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -1021,6 +1067,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -1143,6 +1190,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -1231,6 +1279,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1420,6 +1469,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -1476,6 +1526,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1704,6 +1755,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -1711,6 +1763,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1830,6 +1883,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -1839,6 +1893,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2042,6 +2097,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -2163,6 +2219,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2466,6 +2523,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -2513,6 +2571,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2938,6 +2997,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -2979,6 +3039,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3431,6 +3492,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -3774,6 +3836,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -3881,6 +3944,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
