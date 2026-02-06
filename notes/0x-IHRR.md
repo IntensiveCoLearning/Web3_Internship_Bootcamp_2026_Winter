@@ -15,8 +15,230 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+继承：在下面这个例子里面，contract B 会继承于 contract A，如果要重写，就需要在被重写的函数里面加上 virtual 修饰符，在重写函数里面加上 override 修饰符，没有被修饰的，就直接会被完整继承下来，这里还有一个 contract C 继承自 contract B，这样 C 就会同时继承于 B 和 A ，如果要重写 contract B 里面的函数，就也需要在被重写的函数里加上 virtual 修饰符，在重写函数里面加上 override 修饰符，这样才可以重写继承下来的函数
+
+\`\`\`
+
+contract A {
+
+function foo() public pure virtual returns (string memory) {
+
+return "A";
+
+}
+
+function bar() public pure virtual returns (string memory) {
+
+reutrn "A";
+
+}
+
+function baz() public pure returns (string memory) {
+
+return "A";
+
+}
+
+}
+
+contract B is A {
+
+function foo() public pure override returns (string memory) {
+
+return "B";
+
+}
+
+function bar() public pure virtual override returns (string memory) {
+
+reutrn "B";
+
+}
+
+// more code here
+
+}
+
+contract C is B {
+
+function bar() public pure override returns (string memory) {
+
+return "C";
+
+}
+
+}
+
+\`\`\`
+
+多线继承：要遵循线性继承的原则，有点默克尔树的感觉，谁继承于谁，没有父级的，肯定是最原始、最基础的合约，从它开始往下推：A --> B --> C
+
+下面这个例子：X 是原始合约，Y 继承于 X，Z 又继承于 X 和 Y，这里就有一个继承顺序，顺序错了就会编译不过，所以这里要注意继承顺序，因为 X 是原始合约，所以 X 要写在前面，Y 继承于 X ，就要写在后面，Z is X，Y，在函数里面的 override 修饰符后也要加个顺序，写明要重写那几个合约里面的函数， override(X, Y) ，问过AI，这里说是说 () 里面的顺序乱了也能编译，但我感觉，为了统一管理和方便理解，还是按照继承时的顺序来填这里会比较好 override(X, Y)
+
+\`\`\`
+
+contract X {
+
+function foo() public pure virtual returns (string memory) {
+
+return "X";
+
+}
+
+function bar() public pure virtual returns (string memory) {
+
+return "X";
+
+}
+
+function x() public pure returns (string memory) {
+
+return "X";
+
+}
+
+}
+
+contract Y is X {
+
+function foo() public pure virtual override returns (string memory) {
+
+return "Y";
+
+}
+
+function bar() public pure virtual override returns (string memory) {
+
+return "Y";
+
+}
+
+function y() public pure returns (string memory) {
+
+return "Y";
+
+}
+
+}
+
+contract Z is X, Y {
+
+function foo() public pure override(X, Y) returns (string memory) {
+
+return "Z";
+
+}
+
+function bar() public pure override(X, Y) returns (string memory) {
+
+return "Z";
+
+}
+
+}
+
+\`\`\`
+
+运行父级合约构造函数
+
+\`\`\`
+
+contract S {
+
+string pulic name;
+
+constructor(string memory \_name) {
+
+name = \_name;
+
+}
+
+}
+
+contract T {
+
+string public text;
+
+constructor(string memory \_text) {
+
+text = \_text;
+
+}
+
+}
+
+contract U is S("s"), T("t") {
+
+// more code here
+
+}
+
+contract V is S, T {
+
+constructor(string memory _name, string memory_ text) S(\_name) T(\_text) {
+
+// more code here
+
+}
+
+}
+
+contract VV is S("s"), T {
+
+constructor(string memory _text) T(_text) {
+
+// more code here
+
+}
+
+}
+
+// Order of execution
+
+// 1. S
+
+// 2. T
+
+// 3. V0
+
+// 这里构造函数的运行顺序是跟合约继承时的顺序有关，构造函数内的顺序如何不重要，但我还是继承时怎么写顺序，构造函数里面就按什么顺序写好一点，免得脑子转不过来
+
+contract V0 is S, T {
+
+constructor(string memory _name, string memory_ text) S(\_name) T(\_text) {
+
+// more code here
+
+}
+
+}
+
+// Order of execution
+
+// 1. T
+
+// 2. S
+
+// 3. V2
+
+contract V2 is T, S {
+
+constructor(string memory _text, string memory_ name) T(\_text) S(\_name) {
+
+// more code here
+
+}
+
+}
+
+\`\`\`
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 事件是 Solidity 中 **用于在链上记录日志、向链下（比如前端）传递信息** 的机制：
 
 \- 事件会被永久存储在区块链的 **日志（Log）** 中（属于链上数据，但比状态变量更节省 Gas）
@@ -67,6 +289,7 @@ emit Message(msg.sender, \_to, message);
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 今天看了一下黄瓜猫老师的那篇文章，看完之后确实挺有感触，也学到很多东西。
 
 特别是关于共识的问题，黄瓜猫老师一直秉持的是“慢就是快”的投资理念。他认为在加密市场中，如果你不能很好地守护自己的本金，其实很难真正生存下去。往往那些挺过几个周期的“老人”，身上都有一种“慢就是快”的眼界。
@@ -88,6 +311,7 @@ emit Message(msg.sender, \_to, message);
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 从应用视角，我现在能总结出 ERC-1155 的几个显著优点：
@@ -172,6 +396,7 @@ emit Message(msg.sender, \_to, message);
 
 
 
+
 **1\. 为什么会出现 ERC-1155？**
 
 在 ERC-1155 之前，主要有两种资产标准：
@@ -231,6 +456,7 @@ ERC-1155 = 一个“资产仓库合约”，里面可以发很多不同类型的
 
 
 
+
 今天把 Demo 已经全部完成了，但还没有部署到测试网上。接下来的计划是准备将其部署到测试网。
 
 今天的任务主要有两项：
@@ -246,6 +472,7 @@ ERC-1155 = 一个“资产仓库合约”，里面可以发很多不同类型的
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -278,6 +505,7 @@ ERC-1155 = 一个“资产仓库合约”，里面可以发很多不同类型的
 
 
 
+
 今天终于把 Demo 做出来了，整体流程已经基本上实现，但还是有几个技术性问题没有得到解决，距离我心目中的项目愿景其实还有很大一段距离。
 
 关于这个 Demo 里的 AI 审核模块，也就是链上链下信息如何进行快速验证的技术，我想到了 ZK（零知识证明）。但我不确定 ZK 是否能适配到我的项目中，因为它还缺了一块类似于预言机（Oracle）的中间层。至于 Spam 的一些工具，并没有帮到我太多。昨天问了一下老师，他说确实没有审核方面的工具提供给我们，所以这方面还是一个很大的技术难题。
@@ -289,6 +517,7 @@ ERC-1155 = 一个“资产仓库合约”，里面可以发很多不同类型的
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -323,6 +552,7 @@ ERC-1155 = 一个“资产仓库合约”，里面可以发很多不同类型的
 
 
 
+
 两个事件：
 
 event Transfer(address indexed from, address indexed to, uint256 value);
@@ -347,6 +577,7 @@ event Approval(address indexed owner, address indexed spender, uint256 value);
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -448,6 +679,7 @@ ERC‑20 标准其实就是规定：这些“按钮”必须叫什么名字、�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -664,6 +896,7 @@ updateText(toIndex, copyText);
 
 
 
+
 Figma 设计界面这节，看完之后，对这个工具的印象明显变了。
 
 刚进文件的时候，第一感觉还是有点被信息量压住。左边一大串图层名字，中间一堆画板，右边一排参数，像是刚打开一个别人写的巨大项目，不知道从哪看起。不过慢慢跟着讲解挨个看，界面好像没那么吓人了，只是规则比较多。
@@ -679,6 +912,7 @@ Figma 设计界面这节，看完之后，对这个工具的印象明显变了�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -738,6 +972,7 @@ address 的默认值是 0x0000000000000000000000000000000000000000 （40个0）
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -834,6 +1069,7 @@ balances\[msg.sender\] = 0; // 5行
 
 
 
+
 这个 memory 和 storage 的使用场景总算是弄的差不多了，\*\*引用类型\*\* / **值类型** ，还有在 **合约层** / **函数层** ，还有在 **函数参数** / **函数内局部变量**
 
 !\[\[Pasted image 20260122095943.png\]\]
@@ -907,6 +1143,7 @@ return result; // 返回结构体 result，还有一个 result1 没返回
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1263,6 +1500,7 @@ memory 和 storage 在什么情况下用？在什么情况下又不用？在什�
 
 
 
+
 关于ZK证明，又比之前更了解了一些，之前只知道零知识证明，是在验证者只知道结果正确的情况下，从而得到整个事件正确，但现在对于传统投票和零知识证明投票之间的优劣性有了更深的认识，链上传统投票，有点像是记名投票，在一些无关紧要的公众调研活动中无所谓，不用过于复杂的去考虑隐私性，但在一些比较敏感的场合下还运用这类“记名式投票”难免对一些人不方便，例如选举或者任何关于利益分配方面的事件，这个时候，零知识证明就派上了用场，三个特性决定了它未来的巨大应用场景，完备性、可靠性、零知识性，除了知道这个地址做了投票这个动作，其它一概不知道，在确认这个地址是否具备投票权，以及限制一个地址只能投票一次上都做了充分的技术保证，从Markle根确权到Nullifier防重复，再到最后的本地生成零证明，已经算是把无记名投票方式的概念充分在链上体现出来了，写到这里，我突然又想到刚刚看到的ERC-7962这个提案，它也是在链上隐私上面下工夫，它的核心就是把链上事件从绑定地址转移到绑定Hash上，那零知识证明可不可以和这个ERC-7962嵌套一下呢，先零知识再ERC-7962，这个最后一个公开信息（address）也被隐藏起来了，虽然说不是真的强隐私，无法追踪，但起码对一些专业技能不够强的人来说，这已经是很难去通过常规链上方法去追踪了，我想应该是会有人这样做的。  
   
 映射--之前就一直看到合约里面有 => 这个符号，一直没懂是什么意思，刷课的时候第一遍完全没听懂，问了AI才知道，原来就是个字典，映射本身只负责【“键类型” -> “值类型”的关联存储】，业务含义是开发者通过 【变量名 + 代码逻辑】赋予的，和映射本身无关！
@@ -1302,6 +1540,7 @@ isFriedn\[msg.sender\]\[address(this)\] = true; // 当前调用者和本合约�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1364,6 +1603,7 @@ assert(arr\[2\] == 3);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1457,6 +1697,7 @@ assert(arr.length == 0);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1635,6 +1876,7 @@ return nums; // 通过函数来返回数组的全部内容
 
 
 
+
 函数修饰器 **modifier** ：这是个关键字，它的主要作用是把重复的代码弄到一块去，这样其它函数需要使用的时候直接修饰一下就可以了，还可以弄三明治形式，插到中间，总的来说，就是可以不用写太多重复代码，跟函数一样，我觉得应该可以算是函数里面的函数，叫函函算了。
 
 \`\`\`
@@ -1736,6 +1978,7 @@ x = \_x; // 这个就是在部署合约时需要用户输入的一个值，也�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1922,6 +2165,7 @@ revert MyError(msg.sender, \_i); // msg.sender(调用者的地址) i(传入的�
 
 
 
+
 public 代表公开
 
 \## 类型和值
@@ -1969,6 +2213,7 @@ pure、view和无修饰符，是强制约束 + gas优化，我还以为可以从
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
