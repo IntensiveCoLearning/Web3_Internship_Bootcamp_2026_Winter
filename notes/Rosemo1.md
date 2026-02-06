@@ -15,8 +15,31 @@ cooking at solidity
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+学习了uniswap V2 core部分：
+
+主要两个合约：Factory 和 Pair。Factory 的作用是创建和管理所有的交易对（Pair）。  
+createPair(tokenA, tokenB) 会部署一个新的 Pair 合约，如果已经存在就直接返回地址。  
+它会自动把两个 token 排序，地址小的当 token0，大的当 token1。  
+还有 getPair 查地址，allPairs 和 allPairsLength 可以遍历所有已创建的 pair。  
+另外 setFeeTo 和 setFeeToSetter，用来开协议费（0.05%），把费用转给指定地址。  
+创建新 pair 的时候会 emit PairCreated 事件。Pair 合约才是真正的流动性池，每个交易对一个。  
+储备量用 uint112 的 reserve0 和 reserve1 保存，getReserves 可以读出来，还带一个 blockTimestampLast。  
+每次 mint、burn、swap、sync 都会更新储备并 emit Sync 事件。核心就是恒定乘积公式：交易前扣 0.3% 手续费后，reserve0 \* reserve1 要保持不变（k 不变）。  
+还有个 kLast 用来算如果开了协议费该收多少。主要函数：  
+mint(to)：加流动性，按比例铸造 LP token（Pair 本身就是 ERC20）。  
+burn(to)：烧掉 LP token，按比例拿回两种代币。  
+swap(amount0Out, amount1Out, to, data)：执行交易，可以指定只输出一种代币。data 为空就不回调，如果有数据就支持闪电贷。  
+skim(to)：把池子外多出来的代币转走（防止有人误转）。  
+sync()：手动把储备同步到实际余额。事件有 Mint、Burn、Swap、Sync、Transfer。
+
+还有个小细节：第一次加流动性的时候会永久锁掉 1000 单位的最小流动性，防止储备变成 0。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 完成solidity by example 中的defi（swap的V2部分） 和 foundry：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-02-03-1770131281378-image.png)
@@ -25,6 +48,7 @@ cooking at solidity
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
+
 完成solidity zombie ：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-02-01-1769960376749-image.png)
@@ -32,6 +56,7 @@ cooking at solidity
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 完成cryptozombies 前三关：  
@@ -44,6 +69,7 @@ cooking at solidity
 
 
 
+
 通关了solidity cryptozombie第一关，以及完成了foundry的相关课程：  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-29-1769699764446-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-29-1769699806420-image.png)
@@ -51,6 +77,7 @@ cooking at solidity
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -79,6 +106,7 @@ cooking at solidity
 
 
 
+
 完成hardhat交互：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-26-1769440749526-image.png)
@@ -92,6 +120,7 @@ cooking at solidity
 
 
 
+
 完成任务：看完了 [**scaffold-eth Introduction and Solidity Recap**](https://www.youtube.com/watch?v=7pIzfm7hxQk&list=PLJz1HruEnenAf80uOfDwBPqaliJkjKg69&index=10)
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-25-1769356187783-image.png)
@@ -99,6 +128,7 @@ cooking at solidity
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -125,6 +155,7 @@ cooking at solidity
 
 
 
+
 完成 The Ethernaut 第二关：
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-23-1769183796850-image.png)
@@ -132,6 +163,7 @@ cooking at solidity
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -155,6 +187,7 @@ interface，payable，TryCatch，ABI的编码和解码
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -239,6 +272,7 @@ Gas和Gas Price
 
 
 
+
 熟悉了remix并且写了一点solidity
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Rosemo1/images/2026-01-18-1768745613218-image.png)
@@ -250,6 +284,7 @@ Gas和Gas Price
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -320,6 +355,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 ## 学习了《021学习以太坊》的四五章 以下是一些概括性笔记
 
 ###   
@@ -377,6 +413,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 
 
+
 完成任务：  
 读完了XiaoHai老师的《021学习以太坊》前三章。以下是个人总结的一些比较重要的概括性笔记。
 
@@ -420,6 +457,7 @@ Slashing 是 PoS 安全的核心保障，针对恶意行为实施多层惩罚：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
