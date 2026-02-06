@@ -15,8 +15,97 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# Transformer
+
+每一个word都是一个向量
+
+![  Attention Blocks and Multi Layer Blocks 交替](attachment:949322af-1d18-42f8-950d-0182b0686796:image.png)
+
+Attention Blocks and Multi Layer Blocks 交替
+
+![所有含义都融入到最后一个向量中，并且产生一个Token的概率分布](attachment:fa11a1f6-b9fd-42ff-8b74-257ddaccb945:image.png)
+
+所有含义都融入到最后一个向量中，并且产生一个Token的概率分布
+
+![weights可以被看做向量变换的工具](attachment:e6fa9ac0-d925-4ec1-8056-c34b0cc28a8b:image.png)
+
+weights可以被看做向量变换的工具
+
+![向量的点积，适合计算两个向量之间的相似度](attachment:33fd6de7-e70e-4edb-ae67-793a9a62fea2:image.png)
+
+向量的点积，适合计算两个向量之间的相似度
+
+-   当两个向量指向同一个方向时，点积为正
+    
+-   垂直方向时，点积为零
+    
+-   相反方向时，点积是负的
+    
+
+Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Unembedding
+
+**Embedding** 决定了每一个单词转换成什么向量矩阵，且embedding matrix是会改变的。
+
+在chatgpt中每一个word的维度就高达12288 coordination(维），机器通过不断调整词向量的表示，找到一组嵌入使得空间中的方向含有特定的语义意义。
+
+训练后的embedding层的参数是固定的，这意味着每个token都可以用唯一的向量表示，但这时候的向量不包含上下文，我们的目标就是让向量通过网络传递，使得每个向量都获得比单个词更加丰富和具体的含义。
+
+每个网络都只能处理一定数量的上下文，这被我们称为context size
+
+**Unembedding** 为单词表里的每一个单词都分配了一行。最后的向量通过softmax的处理会把每一行变为概率分布（softmax是为了满足概率分布和加起来为1的概念）
+
+![                               softmax标准化的过程](attachment:2bf77c1e-60d2-40be-a329-64b483178684:image.png)
+
+```
+                           softmax标准化的过程
+```
+
+![加入t后的热力学标准化过程，使得概率分布更为均匀一些，当t越大，小的值会被分到更多的比重。t为零时，只有最大的数字是1.](attachment:7ae9c255-6ee0-4dab-aae4-d8b949cbcfd6:image.png)
+
+加入t后的热力学标准化过程，使得概率分布更为均匀一些，当t越大，小的值会被分到更多的比重。t为零时，只有最大的数字是1.
+
+## Attention（目标要让embedding vector联系上下文开始有更具体的含义）
+
+transformer通过最后一个词向量来做下一个词的预测。最后一个词向量通过transformer中的attention机制，获取了context的全部信息。
+
+在现实生活中每一个单词的具体含义是会参考上下文的
+
+![image.png](attachment:3b8ccfc6-c374-403d-969c-0fb3cd1237fe:image.png)
+
+但是在最初的vector embedding中，每一个token有这向量表达的唯一性
+
+## Single Head Attention
+
+![image.png](attachment:7be3e783-7962-4755-982a-966d7c8ecbda:image.png)
+
+目的是通过一系列的向量运算，让名词融合了上下文的形容词含义
+
+**Q向量：查询向量**
+
+![image.png](attachment:a2637acc-b57f-4246-9c7f-0c98910308f9:image.png)
+
+Wq被称为查询权重，比如说查询（Any adjectives in front of me),查询权重的横向维度会比embedding的横向维度小很多。Wq是由模型参数组成的矩阵，这意味这这个矩阵能把E从只包含词含义的向量，转换为一个我在找什么的向量Q
+
+**K：回答向量**
+
+![image.png](attachment:46dbd487-6d9f-4bfb-a0c1-6aee4e44ffb3:image.png)
+
+K=E2\*Wk ,可以试做是每个向量正在回答问题
+
+当K和Q密切对齐的时候，我们可以看做当前的键与查询匹配
+
+![image.png](attachment:4a8b5acb-96cd-4da3-a95b-b04c1ed5a973:image.png)
+
+这就意味着，这里的相同方向的K和Q的点积会是一个较大的正数
+
+我们希望，每一列的提示词都会
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 ### 今天完成了常见的合约漏洞的最后一种类型
 
 ### 使用tx.origin
@@ -75,6 +164,7 @@ contract PhishingWrapper {
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 ```
 NIST 网络安全框架 (CSF)
@@ -273,6 +363,7 @@ RA-3 风险评估（Risk Assessment）— 核心中的核心
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 ## 一、核心术语对照表
@@ -527,6 +618,7 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 今天在为了项目要设计几个agent；怎么调校不同的agent;agent之间用什么pattern；agent\\MCP server\\skills\\tools到底是什么关系 狂补这些知识
 
 ### 主流的Agent在做什么
@@ -742,11 +834,13 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -928,6 +1022,7 @@ k = 常数（池子创建时确定）
 
 
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -952,6 +1047,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1097,6 +1193,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -1187,11 +1284,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1248,6 +1347,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 
 
+
 ### Rag
 
 RAG（检索增强生成）—Retrieval-Augmented Generation
@@ -1290,6 +1390,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1464,6 +1565,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1669,6 +1771,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -1686,6 +1789,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1942,6 +2046,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -2078,6 +2183,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
