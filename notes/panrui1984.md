@@ -15,8 +15,64 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+**深入浅出 Uniswap V2**
+
+Uniswap V2 的设计哲学深刻影响了整个链上交易世界，学习核心源码与机制，产出这篇学习笔记，与大家共勉。
+
+1️⃣ 核心灵魂：x⋅y=k_x_⋅_y_\=_k_
+
+Uniswap V2 延续了 **AMM (自动做市商)** 的精髓 —— 恒定乘积公式。
+
+-   x_x_ 和y_y_ 分别代表池中两种代币的储备量。
+    
+-   k_k_ 是它们的乘积。
+    
+-   **交易逻辑**：当你买入x_x_ 时，池子里的x_x_ 减少，y_y_ 必须增加以维持k_k_ 值不变。这导致了x_x_ 的价格上升，实现了自动报价。
+    
+
+2️⃣ V2 升级：ERC20 - ERC20 交易对 🔄
+
+在 V1 时代，所有代币必须与 ETH 组成交易对。如果你想把 USDT 换成 DAI，需要走：USDT -> ETH -> DAI。 **V2 引入了任意两个 ERC20 代币的直接配对：**
+
+-   **降低滑点**：减少了中间路径的磨损。
+    
+-   **减少风险**：流动性提供者（LP）不再强制暴露在 ETH 的波动风险下。
+    
+
+3️⃣ 价格预言机 (TWAP)：防范操纵的护城河 🛡️
+
+V2 引入了 **时间加权平均价格 (TWAP)**，这是对 DeFi 安全性的巨大贡献。
+
+-   它记录每个区块开始时的累积价格。
+    
+-   攻击者如果想通过闪电贷瞬间拉升价格，成本极高，因为 TWAP 需要跨越多个区块计算平均值。这让 V2 成为了许多借贷协议最信任的价格来源。
+    
+
+4️⃣ 闪电兑换 (Flash Swaps)：空手套白狼的艺术 ⚡
+
+这是 V2 最迷人的功能之一。
+
+-   你可以从池中借出资产，在同一笔交易中执行任意操作（如在其他 DEX 套利），只要在交易结束时把本金和手续费还回来。
+    
+-   **意义**：它极大地提高了资本效率，让“无本套利”成为可能，同时也帮助市场更快速地抹平价差。
+    
+
+5️⃣ 极简架构：Factory & Pair 🏗️
+
+V2 的代码美学在于解耦：
+
+-   **Factory (工厂合约)**：使用 CREATE2 确定性地创建和管理 Pair 合约。
+    
+-   **Pair (配对合约)**：纯粹的逻辑层，负责 Swap、Mint（提供流动性）、Burn（提取流动性）。
+    
+-   **Router (路由合约)**：外壳合约，负责复杂的路径计算和安全检查（如滑点保护）。
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 ## 一、核心定位
 
 基于`reactive-lib`的跨链事件驱动核心合约，是前序回调合约的上游触发源，实现「日志订阅→条件判断→跨链回调触发」核心链路。
@@ -60,6 +116,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 1\. ERC-20 —— 可替代代币“大哥大”
 
@@ -124,6 +181,7 @@ ERC-20和ERC-721的“结合体”，既能发可替代代币（FT），也能�
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 # 去中心化交易（DEX）学习笔记
@@ -254,6 +312,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 
 
+
 提交休闲黑客松代码
 
 [panrui1984/polymarket-hackathon: 基于 Next.js 15、Prisma 7 和 Gemini 2.0 构建的 Polymarket 全生命周期数据索引器。通过解码链上原始日志（OrderFilled, PositionSplit 等）还原市场动态，结合 Gemini AI 实现交易意图深度翻译、Smart Money 行为画像及市场情绪智能诊断。集成了专业级金融看板、大额交易实时监测（Whale Watcher）以及标准的 Swagger API 聚合服务。](https://github.com/panrui1984/polymarket-hackathon)
@@ -263,6 +322,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -298,6 +358,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -364,6 +425,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 
 
+
 本次尝试使用viem前端库
 
 以下记录一些简要记录
@@ -392,6 +454,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -455,6 +518,7 @@ Polymarket 链上数据解析与索引器学习笔记
 
 
 
+
 # Uniswap V2 源代码学习笔记
 
 _x_×_y_\=_k_
@@ -503,6 +567,7 @@ V1 必须用 ETH 做中介 (TokenA -> ETH -> TokenB)，V2 允许任意 Token 对
 
 
 
+
 # Polymarket 技术向精简学习笔记
 
 Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依托**智能合约**、**AMM 机制**、**预言机**实现事件概率代币化交易与自动结算，底层部署于 Polygon 二层网络。
@@ -542,6 +607,7 @@ Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -665,6 +731,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -815,6 +882,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 编写了一份研究报告
 
 一、 项目概况与背景
@@ -937,6 +1005,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等五、如�
 
 
 
+
 Web3工具
 
 # 社交工具
@@ -998,6 +1067,7 @@ okx，binance钱包
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1156,6 +1226,7 @@ Lock = false;
 
 
 
+
 24-25区块链主要进展记录
 
 Ordi开启的BRC20铭文
@@ -1215,6 +1286,7 @@ ICO合规化（Project Crypto）
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1333,6 +1405,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1496,6 +1569,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -1525,6 +1599,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1576,6 +1651,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1664,6 +1740,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
