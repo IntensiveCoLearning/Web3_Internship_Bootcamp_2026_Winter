@@ -15,8 +15,316 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+# 一、核心结论
+
+> **Balancer Vault 的本质不是“合约分层”，而是一次彻底的「状态中心化」设计。**
+
+一句话总结：
+
+> **所有 token 的真实余额、授权、转账，只在 Vault 中发生一次。  
+> Pool 合约只负责“计算”，不负责“资产状态”。**
+
+这是 Balancer 和 Uniswap / Curve **本质层面的不同**。
+
+* * *
+
+# 二、如果不用 Vault，会发生什么？
+
+先假设一个「没有 Vault 的 Balancer」。
+
+## 1️⃣ 传统 AMM 的资产模型（Uniswap / Curve）
+
+```
+Pool 合约
+ ├── tokenA.balance
+ ├── tokenB.balance
+ ├── tokenC.balance
+```
+
+每一个池子：
+
+-   自己持有 token
+    
+-   自己做 ERC20 transfer
+    
+-   自己维护 balance mapping
+    
+
+**问题在于：**
+
+### ❌ 问题 1：重复的 storage 结构
+
+如果你有 100 个池子：
+
+-   100 套 balance mapping
+    
+-   100 套 allowance 检查
+    
+-   100 次 ERC20 转账逻辑
+    
+
+👉 **storage 和 gas 成本线性爆炸**
+
+* * *
+
+### ❌ 问题 2：多跳 swap 极其浪费 gas
+
+假设：
+
+```
+A → B → C → D
+```
+
+在传统模型下：
+
+1.  A → Pool1（transfer）
+    
+2.  Pool1 → B
+    
+3.  B → Pool2
+    
+4.  Pool2 → C
+    
+5.  C → Pool3
+    
+6.  Pool3 → D
+    
+
+👉 **6 次 ERC20 transfer**  
+👉 **12+ 次 SLOAD / SSTORE**
+
+* * *
+
+# 三、Balancer Vault 的核心设计
+
+Balancer 直接换了一个思路：
+
+> **池子不再持币，Vault 才是唯一资产持有者**
+
+* * *
+
+## 1️⃣ Vault 是什么？
+
+**Vault = Balancer 的“链上银行”**
+
+```
+Vault
+ ├── balances[token][poolId]
+ ├── internalBalance[user][token]
+ ├── allowance / transfer
+```
+
+📌 **所有 token 永远只进出 Vault**
+
+* * *
+
+## 2️⃣ Pool 合约变成了什么？
+
+Pool 合约只做一件事：
+
+> **“给我 amountIn，我告诉你 amountOut”**
+
+也就是说：
+
+-   Pool **不持币**
+    
+-   Pool **不转账**
+    
+-   Pool **不维护余额**
+    
+
+它只提供一个接口：
+
+```
+onSwap(SwapParams params) returns (amountOut)
+```
+
+👉 **纯计算合约**
+
+* * *
+
+# 四、一次 swap 在 Vault 架构下是如何执行的？
+
+这是最关键的部分，我们一步一步拆。
+
+* * *
+
+## 1️⃣ 用户调用的是谁？
+
+```
+用户 → Vault.swap(...)
+```
+
+⚠️ **不是 Pool.swap**
+
+* * *
+
+## 2️⃣ Vault 做的事情（核心流程）
+
+### Step 1：读取池子状态（SLOAD）
+
+```
+balances[tokenIn][poolId]
+balances[tokenOut][poolId]
+```
+
+* * *
+
+### Step 2：delegate / call Pool 计算价格
+
+```
+amountOut = pool.onSwap(...)
+```
+
+⚠️ 注意：
+
+-   Pool **无法修改状态**
+    
+-   Pool **无法转账**
+    
+-   Pool 只是一个“定价函数”
+    
+
+* * *
+
+### Step 3：Vault 统一修改余额（SSTORE）
+
+```
+balances[tokenIn][poolId] += amountIn;
+balances[tokenOut][poolId] -= amountOut;
+```
+
+* * *
+
+### Step 4：Vault 统一转账（一次）
+
+```
+ERC20(tokenOut).transfer(to, amountOut);
+```
+
+* * *
+
+## 3️⃣ 对比：传统模型 vs Vault 模型
+
+| 模型 | ERC20 transfer 次数 |
+| --- | --- |
+| Uniswap 多跳 | N * 2 |
+| Balancer Vault | 1 次（最终） |
+
+👉 **Vault 把“多跳 swap”压缩成了“一次资产流动”**
+
+* * *
+
+# 五、从 EVM / storage 角度看 Vault 的巨大收益
+
+这是工程师最关心的。
+
+* * *
+
+## 1️⃣ storage 写入次数骤降
+
+传统模型（3 hop swap）：
+
+-   每个 pool：
+    
+    -   写 balanceIn
+        
+    -   写 balanceOut
+        
+-   共 **6 次 SSTORE**
+    
+
+Vault 模型：
+
+-   所有 hop 合并
+    
+-   最终：
+    
+    -   写 balanceIn
+        
+    -   写 balanceOut
+        
+
+👉 **2 次 SSTORE**
+
+* * *
+
+## 2️⃣ allowance 检查只发生一次
+
+-   用户只需要：
+    
+    ```
+    approve(Vault, amount)
+    ```
+    
+-   不需要对每个池 approve
+    
+
+这是**用户体验 + gas 的双赢**。
+
+* * *
+
+## 3️⃣ ERC20 transfer 次数最小化
+
+-   transfer 是最贵的外部调用之一
+    
+-   Vault 模型 **极端压缩 transfer 次数**
+    
+
+* * *
+
+# 六、Vault 架构的“隐藏好处”（很多人忽略）
+
+### 1️⃣ Pool 可以是任意逻辑
+
+因为 Pool 不碰资产：
+
+-   可以写得非常复杂
+    
+-   可以支持：
+    
+    -   加权池
+        
+    -   稳定池
+        
+    -   LBP
+        
+    -   自定义 AMM
+        
+
+👉 **计算复杂 ≠ gas 爆炸**
+
+* * *
+
+### 2️⃣ Vault 可以做全局风控
+
+例如：
+
+-   pause 全系统
+    
+-   限制某 token
+    
+-   统一手续费
+    
+-   统一回调
+    
+
+这是**协议级治理能力**。
+
+* * *
+
+### 3️⃣ 极其利于代码审计
+
+-   资产逻辑集中在一个地方
+    
+-   Pool 合约攻击面大幅降低
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 # 、Curve：用数学解决问题，而不是 storage
 
 Curve 的设计哲学和 Uniswap V3 **完全相反**。
@@ -261,6 +569,7 @@ balances[tokenOut] -= amountOut;
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 * * *
 
 # 一、结论
@@ -477,6 +786,7 @@ struct Position {
 <!-- DAILY_CHECKIN_2026-02-02_START -->
 
 
+
 # 一、前端 → 钱包 → 交易 → EVM
 
 很多人把这句话当流程图看，其实它是 **四个完全不同的系统**。
@@ -662,6 +972,7 @@ balanceOf[to] += amount;
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -871,6 +1182,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 
 
+
 # 一、Subgraph ≠ 传统数据库写入
 
 这是 90% 人理解错的地方。
@@ -1075,6 +1387,7 @@ Indexer 会：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1402,6 +1715,7 @@ Indexer 会：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1786,6 +2100,7 @@ event.on 实时提示
 
 
 
+
 # 一、为什么不用 Subgraph 会崩
 
 我们先假设一个**非常真实的 DApp 场景**：
@@ -2082,6 +2397,7 @@ Subgraph 刚好完美匹配。
 
 
 
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -2276,6 +2592,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2644,6 +2961,7 @@ uint32  blockTimestampLast;
 
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -2901,6 +3219,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -3281,6 +3600,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -3609,6 +3929,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -3855,6 +4176,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -4161,6 +4483,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -4309,6 +4632,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -4681,6 +5005,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -5021,6 +5346,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -5124,6 +5450,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5285,6 +5612,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -5632,6 +5960,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -5734,6 +6063,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
