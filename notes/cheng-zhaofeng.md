@@ -15,8 +15,43 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+## 四、部署合约：地址与 ABI 获取
+
+ABI 是在本地编译时生成的，部署时是使用编译好的 bytecode 进行部署。
+
+1.  本地编译 → 得到 bytecode + ABI + metadata
+    
+2.  部署合约 → 得到链上的合约地址
+    
+3.  在 Etherscan 或 Sourcify 上做源码验证（source verification） → 区块 浏览器会根据 metadata 解析出 ABI，并在网页上暴露“Read / Write Contract”面板，供任何人交互。
+    
+
+解析时无法解析出源码，我理解 Etherscan 和 Sourcify 的主要工作是做安全审计
+
+## 五、智能合约常见组件有哪些
+
+1.1 状态变量（State Variables）
+
+1.2 函数（Functions）
+
+pure：不读取也不修改合约状态的函数。 那这个函数有什么用呢？
+
+1.3 事件（Events）
+
+1.4 构造函数（Constructor）
+
+1.5 修饰符（Modifiers）（典型如 onlyOwner）类似于 Java 注解
+
+1.6 结构体 / 枚举（Struct / Enum）与自定义错误（Custom Errors）
+
+类似于 Java 里的 类，枚举 和 Exception
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 进入交易所工作满一周了
 
 学会了很多交易所相关的基础知识，懂得了整个交易所的技术架构，比如技术分为五大类，21个技术小组，每个小组的职能。基本理清了交易所的业务全景，技术现状，发展方向。
@@ -24,6 +59,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 4.  ### 源映射 / Source Map / Storage Layout / AST（抽象语法树）
     
@@ -37,6 +73,7 @@ AST 是源代码的结构化表示。编译器在编译过程中会生成它，�
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 ## 三、合约编译时产生的内容
@@ -57,6 +94,7 @@ ABI 是一个 JSON （JavaScript Object Notation）格式的文件，它描述 �
 
 
 
+
 1.  学习了 Web3 安全相关的知识
     
 2.  做了 Web3 助教工作台相关的功能迭代
@@ -64,6 +102,7 @@ ABI 是一个 JSON （JavaScript Object Notation）格式的文件，它描述 �
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -120,11 +159,13 @@ Solidity 是以太坊上最普遍使用的合约语言，拥有完整生态系�
 
 
 
+
 爆肝黑客松
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -143,6 +184,7 @@ Solidity 是以太坊上最普遍使用的合约语言，拥有完整生态系�
 
 
 
+
 1.  学习了黑客松Vibe Coding相关知识，学会了spoonOS的skill能力
     
 2.  学习了运营相关的活动策划，figma海报编辑，文章排版相关的专业知识
@@ -152,6 +194,7 @@ Solidity 是以太坊上最普遍使用的合约语言，拥有完整生态系�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -183,6 +226,7 @@ EIP：一个提案，被采纳后转为ERC
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -252,6 +296,7 @@ EIP-7702 把“EOA 能不能执行合约逻辑”这件事，放进了协议层�
 
 
 
+
 ## 五、可主动发起交易的账户类型
 
 能发起交易的只有EOA
@@ -281,6 +326,7 @@ storageRoot和codeHash只有在合约账户中才存在，EOA中为空
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -325,6 +371,7 @@ storageRoot和codeHash只有在合约账户中才存在，EOA中为空
 
 
 
+
 1.  学习了DApp从编译，部署，前端部署上线的全流程
     
 2.  获得了Monad Blitz黑客松大赛第一名，项目地址：[https://mojo.devnads.com/projects/131](https://mojo.devnads.com/projects/131)
@@ -332,6 +379,7 @@ storageRoot和codeHash只有在合约账户中才存在，EOA中为空
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -455,6 +503,7 @@ EOA可以发起交易，合约只能被动等待调用
 
 
 
+
 ## 九、节点间交换的数据类型
 
 -   **交易信息**
@@ -499,6 +548,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -590,6 +640,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 
 
+
 ## 五、归档节点在数据查询中的优势
 
 **归档节点 = “国家档案馆 + 时间机器”：**
@@ -607,6 +658,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -659,6 +711,7 @@ idea：节点可以托管在云服务上，来降低验证者门槛
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -749,6 +802,7 @@ Gossip模式：随机告诉几个不知道的邻居完成传输
 
 
 
+
 # 第二章 网路结构与节点类型
 
 ## 一、以太坊节点与客户端软件
@@ -786,6 +840,7 @@ Engine API —— 一个专门给 EL ↔ CL 用的 JSON-RPC 接口。
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -919,6 +974,7 @@ Scaffold-ETH、Wagmi、第三方 SDK 等，帮开发者快速搭建前端、 集
 
 
 
+
 ## 八、网络结构的开放性与参与机制
 
 permissionless：任何人都可以运行节点、发送交易、部署合约，网络本身不设“准入门槛” 或白名单
@@ -1009,6 +1065,7 @@ Rollup又分为Optimistic和ZK Rollup
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1171,6 +1228,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了安全分享会
 
 # 1\. 安全事故规模
@@ -1233,6 +1291,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 
 
+
 学习了web3的运行原理
 
 # 1.钱包，私钥，和个人主权
@@ -1254,6 +1313,7 @@ Pectra 升级之后要特别说明的一点是： EIP-7251 并不是把「最低
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
