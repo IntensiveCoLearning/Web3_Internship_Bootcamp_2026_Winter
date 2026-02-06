@@ -127,8 +127,8 @@ windsurf
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-06-1770378194200-image.png)
 
-小海老师说自己的能力=本身的能力+可以利用的资源  
-  
+小海老师说自己的能力=本身的能力+可以利用的资源
+
 Vibe coding 相关交流分享会会议纪要
 
 本次分享会围绕**Vibe coding**展开，核心讲解了 AI 提示词撰写技巧、Vibe coding 作品集打造、项目实操方法，并针对 AI 时代技术迭代、职业竞争、简历撰写及 AI as a service 发展趋势等问题展开深度问答，参会人员各抒己见，为新手学习 Vibe coding 提供了实操方法与心态指导。
@@ -282,10 +282,32 @@ Vibe coding 相关交流分享会会议纪要
 3.  未来 AI as a service/AGI 的发展是大势所趋，Vibe coding 作为现阶段的实操方法，是从业者适应 AI 时代的基础，学会与 AI 协作，才是 AI 时代的核心能力；
     
 4.  分享者感谢了主办方及参会人员，强调本次分享的初心是为从业者提供 Vibe coding 的新思路，鼓励大家大胆尝试、积极实操，在与 AI 的协作中提升自身能力。
+    
+
+# 黑客松运营复盘
+
+-   **嘉宾邀请思路**：
+    
+    -   **优先级**：第一优先级服务赞助商需求，第二优先级激活社区大佬，最后考虑请助教老师保底。
+        
+    -   **意义**：让更多人参与活动，形成多元化生态系统，促进跨组织边界合作。
+        
+-   **活动反馈总结**：
+    
+    -   **进步**：问卷调查通过小群私聊收集，份数增多。
+        
+    -   **问题及建议**：评分细则可提前公布，奖金可按需决定是否公布；Demo day 策划可提前截止时间并限制参赛项目数量；话术表达可先暂定，预留调整空间；考虑项目顺序透明化；后续活动可邀请往期冠军分享。
+        
+-   **Web3 行业就业探讨**：
+    
+    -   **现状**：行业竞争大，岗位少，薪资并非普遍高，部分公司不稳定。
+        
+    -   **建议**：大学生不要 all in Web3，可两条腿走路，先找能站住脚的岗位。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 
@@ -345,6 +367,7 @@ AI 时代技术开发者的成长路径，包括 AI 对技术领域的变革、�
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -567,6 +590,7 @@ Web3 DevRel 岗位的工作内容、技能要求、岗位情况以及 Monad 公�
 
 
 
+
 ![126d63a3b7b28824e599567b05c214e7.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-03-1770121142122-126d63a3b7b28824e599567b05c214e7.jpg)
 
 Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，具体如下：
@@ -654,6 +678,7 @@ Web3 媒体人的日常工作、行业定位、与传统媒体区别等内容，
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -953,6 +978,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 
 
+
 ![fb690b004721cbabaf0c655243e4e3b1.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-02-01-1769920110109-fb690b004721cbabaf0c655243e4e3b1.jpg)
 
 # 平台、社会、经济：去中心化之后如何了？
@@ -1020,6 +1046,7 @@ Web3 行业的求职、发展、行业现状及未来等相关内容，具体如
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -1252,6 +1279,7 @@ cobuilding
 
 
 
+
 AMA火热预备中
 
 # AMA
@@ -1378,6 +1406,7 @@ AMA火热预备中
 
 
 
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769684870700-image.png)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-29-1769685909955-image.png)
 
 -   **AI 工作流程**：
@@ -1466,6 +1495,7 @@ AMA火热预备中
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1663,6 +1693,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 
 
+
 -   **API 与原生协议应用**：
     
     -   **提升获奖率应用**：赞助商的 API 或原生协议可用于提升黑客松获奖率，在 WEB3 中可应用于抽奖、NFT 票务防伪、机票点评等方面。
@@ -1719,6 +1750,7 @@ CoinMarketCap & CoinGecko:Crypto Price
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -1955,6 +1987,7 @@ defi summer
 
 
 
+
 1.  学习了文章排版
     
 2.  进行了一周学习总结
@@ -1962,6 +1995,7 @@ defi summer
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2089,6 +2123,7 @@ defi summer
 
 
 
+
 ![微信图片_20260123112614_82_102.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769138963221-_____20260123112614_82_102.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-23-1769171196581-image.png)
 
 用AI求职
@@ -2098,6 +2133,7 @@ defi summer
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2309,6 +2345,7 @@ WAT：JS的内部特性，只要是和区块链交互的操作我们都需要等
 
 
 
+
 # 「Uniswap 工作原理解析」
 
 ![5c546fc5dc9dfb28b1f5affa61116cac.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993388668-5c546fc5dc9dfb28b1f5affa61116cac.jpg)![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-21-1768993427422-image.png)
@@ -2430,6 +2467,7 @@ open call 有想法没做出来 今早上雷达 过程中需要支持都会尽�
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2741,6 +2779,7 @@ internal铸造
 
 
 
+
 ![ec2f35e903b16b08996023197f2608c4.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-19-1768826035346-ec2f35e903b16b08996023197f2608c4.jpg)
 
 # 「社区运营基础 & 活动策划与执行流程」分享
@@ -2788,6 +2827,7 @@ twitter space需要问题库
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3221,6 +3261,7 @@ ERC-7962M
 
 
 
+
 -   思维导图Mindmap
     
     ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-16-1768566450067-image.png)
@@ -3262,6 +3303,7 @@ Uniswap：开创链上交易所的方式
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3722,6 +3764,7 @@ ERC-8004 简单图解：如何建立 AI 之间的信任
 
 
 
+
 # **Web3安全**
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-14-1768388772542-image.png)
@@ -4069,6 +4112,7 @@ U卡：要考量项目方（发卡方）是否合规
 
 
 
+
 # Web3运行原理
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/drinkingmorewater/images/2026-01-13-1768305644146-image.png)
@@ -4176,6 +4220,7 @@ A:数额比较大的可能会立案，通过冻结对方账号来追回。但是
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
