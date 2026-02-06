@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-06
+<!-- DAILY_CHECKIN_2026-02-06_START -->
+Ai Agent economy  元年 调查
+<!-- DAILY_CHECKIN_2026-02-06_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 读区块链革命30page
 
 第一章
@@ -40,6 +46,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 [https://www.youtube.com/watch?v=gyMwXuJrbJQ](https://www.youtube.com/watch?v=gyMwXuJrbJQ)
 
@@ -90,6 +97,7 @@ Patrick 在课程中反复强调一个核心价值：构建去中心化应用，
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 ### **The Role of Web3 Media Practitioners in the Ecosystem**
 
 **1\. Information Distributors**
@@ -121,6 +129,7 @@ In addition, across more conventional projects—whether in DeFi or other sector
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -331,6 +340,7 @@ Tim Berners-Lee 在提出 Web 3.0 的时候，给它起了一个名字，叫“�
 
 
 
+
 SPace 嘉宾演讲稿整理：[https://www.notion.so/x-2fac601441eb8072b496fa1ce838d74a?source=copy\_link](https://www.notion.so/x-2fac601441eb8072b496fa1ce838d74a?source=copy_link)
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
@@ -341,11 +351,13 @@ SPace 嘉宾演讲稿整理：[https://www.notion.so/x-2fac601441eb8072b496fa1ce
 
 
 
+
 youtube greenpills视频观看
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -384,6 +396,7 @@ youtube greenpills视频观看
 
 
 
+
 **Green Pill Podcast / Ethereum Localism × Bioregionalism**
 
 [https://www.youtube.com/watch?v=JpHakNy0-EQ&list=PLF5CNzrKS9sol3VJ6515dXmuPObhRC-pr&index=5](https://www.youtube.com/watch?v=JpHakNy0-EQ&list=PLF5CNzrKS9sol3VJ6515dXmuPObhRC-pr&index=5)
@@ -409,6 +422,7 @@ youtube greenpills视频观看
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -457,6 +471,7 @@ Alchemy「Road to Web3」第二周的导入与实操核心，主题是 **DeFi（
 
 
 
+
 听jessica pratt一整天
 <!-- DAILY_CHECKIN_2026-01-27_END -->
 
@@ -472,11 +487,13 @@ Alchemy「Road to Web3」第二周的导入与实操核心，主题是 **DeFi（
 
 
 
+
 黑客松笔记整理+投研笔记📓
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -517,6 +534,7 @@ Vít 认为，一个主权国家就应该拥有主权软件，因此他们没有
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -588,6 +606,7 @@ Vít 认为，一个主权国家就应该拥有主权软件，因此他们没有
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -861,6 +880,7 @@ SVG 动态生成示例：
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1255,6 +1275,7 @@ yarn build
 
 
 
+
 **为什么很多品牌在 Web3 听起来很 cringe / 失败**
 
 **📌 核心观点资源与讨论**
@@ -1321,6 +1342,7 @@ Web3 本质是去中心化文化 + 社群参与，所以：
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1454,6 +1476,7 @@ Reddit 上最近关于 **Web3 营销失效与进化的讨论**——这已经是
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1668,6 +1691,7 @@ Reddit 上最近关于 **Web3 营销失效与进化的讨论**——这已经是
 
 
 
+
 这是以太坊「成为 Power User」第一周的第四天，主题是 **NFT**。这一天的目标不是从技术原理开始，而是像真实用户一样去 **买、铸造（mint）、发送和查看 NFT**，通过实际操作来理解 NFT 在 Web3 中是如何工作的。课程延续了之前的逻辑：钱包（MetaMask）、身份（ENS）、资产（NFT）会在不同 Web3 服务之间自然流动。
 
 课程一开始回顾了已经完成的步骤：安装并使用 MetaMask、进行过 ETH 与 DAI 的兑换、完成过链上交易。这些都是今天操作 NFT 的基础。接着通过 OpenSea 这个 NFT 市场，展示了一个重要概念：**你的 Web3 身份和资产会跨平台存在**。即使是 ENS 域名，本质上也是一个 ERC-721 NFT，它会出现在你的钱包和 OpenSea 的资产列表中。如果把 ENS NFT 转给别人，对方就会真正拥有并控制这个域名，这一点和 Uniswap 的 LP NFT（代表流动性所有权）是同样的逻辑。
@@ -1708,6 +1732,7 @@ NFT mint 成功后，虽然是在项目官网铸造的，但因为遵循 ERC-721
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1790,6 +1815,7 @@ In short:
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1928,6 +1954,7 @@ Web3 与生成艺术生态正处于一条微妙的平衡线上，机会也总伴
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2178,6 +2205,7 @@ NFT 可以被理解为一种**策展机制而不仅是媒介**：它通过区块
 
 
 
+
 **1\. 全球监管大趋势**
 
 -   各国对加密货币和区块链的监管持续加强，形成更明确的合规框架，例如欧盟的 _MiCA_（加密资产市场法规）、美国的稳定币监管法案，以及FATF（金融行动特别工作组）的反洗钱/反恐融资要求。合规可以降低风险、提升用户信心并带来发展机会。
@@ -2269,6 +2297,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 
 
+
 -   岗位视频 回放 并 制定计划
     
 -   优化 Web3 实习手册内容
@@ -2280,6 +2309,7 @@ _Travel Rule_（旅行规则）要求虚拟资产服务提供商在转账中收�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
