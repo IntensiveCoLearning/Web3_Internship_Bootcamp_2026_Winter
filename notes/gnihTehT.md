@@ -15,8 +15,183 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+## Hardhat 是什么
+
+Hardhat 是 **以 JavaScript/TypeScript 为核心的以太坊开发框架**，用来 **写合约、编译、测试、部署、调试**，本质是一个高度可定制的本地链上实验室。
+
+> 如果 Remix 是「试验台」，Hardhat 是「兵工厂」。
+
+* * *
+
+## 核心组件速览
+
+### 1️⃣ 项目结构（默认即最佳实践）
+
+```
+contracts/      // Solidity 合约
+scripts/        // 部署 / 执行脚本
+test/           // 测试（Mocha + Chai）
+hardhat.config  // 全局配置
+```
+
+这套结构不是强制，但**行业事实标准**。
+
+* * *
+
+### 2️⃣ Hardhat Network（杀手级功能）
+
+Hardhat 自带一个**本地以太坊节点**，特点：
+
+-   ⚡ 启动快、状态可控
+    
+-   🧠 支持 `console.log`（Solidity 调试神器）
+    
+-   🔁 支持 **fork 主网**
+    
+-   ⏪ 支持快照 / 回滚（测试必备）
+    
+
+```
+await network.provider.send("evm_snapshot")
+await network.provider.send("evm_revert", [snapshotId])
+```
+
+> 这点是 Remix 完全比不了的。
+
+* * *
+
+### 3️⃣ 编译系统
+
+-   默认使用 `solc`
+    
+-   可指定版本、多编译器
+    
+-   自动生成 **ABI + bytecode**
+    
+
+```
+solidity: {
+  version: "0.8.20",
+  settings: { optimizer: { enabled: true, runs: 200 } }
+}
+```
+
+优化器 **不是玄学**，会影响 gas 与安全边界。
+
+* * *
+
+### 4️⃣ 测试体系（Hardhat 的灵魂）
+
+-   使用 **Mocha + Chai**
+    
+-   直接用 JS/TS 写测试
+    
+-   与 EVM 深度交互
+    
+
+```
+const { expect } = require("chai");
+
+it("should update value", async () => {
+  await contract.set(42);
+  expect(await contract.value()).to.equal(42);
+});
+```
+
+💡 **好测试 = 合约的第二份文档**
+
+* * *
+
+### 5️⃣ ethers.js 深度集成
+
+Hardhat 默认集成 `ethers`：
+
+-   获取 signer
+    
+-   部署合约
+    
+-   调用方法
+    
+-   监听事件
+    
+
+```
+const Contract = await ethers.getContractFactory("MyContract");
+const contract = await Contract.deploy();
+```
+
+你写 DApp / Agent / 插件，**绕不开这一层**。
+
+* * *
+
+### 6️⃣ 部署脚本（scripts）
+
+把「部署」当成**可重复执行的程序**，而不是一次性操作。
+
+```
+async function main() {
+  const c = await Contract.deploy();
+  await c.deployed();
+  console.log(c.address);
+}
+```
+
+配合多网络：
+
+```
+npx hardhat run scripts/deploy.js --network sepolia
+```
+
+* * *
+
+### 7️⃣ 网络配置（真实世界）
+
+```
+networks: {
+  sepolia: {
+    url: process.env.RPC_URL,
+    accounts: [process.env.PRIVATE_KEY]
+  }
+}
+```
+
+👉 **私钥只进** `.env`**，不进 Git**  
+👉 Hardhat 是你通往真实链的桥
+
+* * *
+
+## 常用插件（别全装，挑必要的）
+
+-   `@nomicfoundation/hardhat-toolbox`：一站式（新手友好）
+    
+-   `hardhat-gas-reporter`：gas 分析
+    
+-   `solidity-coverage`：测试覆盖率
+    
+-   `hardhat-deploy`：大型项目推荐
+    
+
+* * *
+
+## Hardhat vs Remix（现实结论）
+
+| 项目 | Hardhat | Remix |
+| --- | --- | --- |
+| 调试能力 | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+| 测试 | 专业级 | 几乎没有 |
+| 自动化 | 强 | 弱 |
+| 学习成本 | 高一点 | 极低 |
+| 工程化 | 必选 | 不够 |
+
+> **结论：**  
+> Remix 用来「理解合约」，Hardhat 用来「交付系统」。
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 ## 1\. Uniswap 简介
 
 Uniswap 是以太坊上的去中心化交易所（DEX），采用自动做市商（AMM, Automated Market Maker）模型。V2 是其第二代版本，相较 V1 有以下改进：
@@ -180,6 +355,7 @@ LP=Δx⋅Δy−minLiquidity\\text{LP} = \\sqrt{\\Delta x \\cdot \\Delta y} - \\t
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 \### 合约是可以“套娃”的
 
 你不需要在一个合约里写完所有功能。你可以采用 **“模块化”** 的思路：
@@ -251,6 +427,7 @@ _to.transfer(DRIP_AMOUNT);
 <!-- DAILY_CHECKIN_2026-02-01_START -->
 
 
+
 * * *
 
 ## 🏁 SmartDog 项目结项报告 (Project Conclusion)
@@ -301,11 +478,13 @@ _to.transfer(DRIP_AMOUNT);
 
 
 
+
 继续打磨黑客松项目
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -353,6 +532,7 @@ _to.transfer(DRIP_AMOUNT);
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -421,6 +601,7 @@ Web3 的数据高度“不可视化”且“生涩”，用户在面对链上交
 
 
 
+
 # DAY17
 
 ## **有关Web3 存在主义思考**
@@ -467,6 +648,7 @@ Web3 的数据高度“不可视化”且“生涩”，用户在面对链上交
 
 
 
+
 # Day16
 
 ## 一个探索通过削弱“钱包感”让非技术群体参与到Web3的计划
@@ -494,6 +676,7 @@ Web3 的数据高度“不可视化”且“生涩”，用户在面对链上交
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -594,6 +777,7 @@ Web3 开发最难的不是写代码，而是**调试网络链路**。
 
 
 
+
 # Day14
 
 学习心得已发布平台^^
@@ -603,6 +787,7 @@ challenge #0终于挑战成功！
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -639,6 +824,7 @@ challenge #0终于挑战成功！
 
 
 
+
 # Day12
 
 放假时间长了，开启了夜猫模式
@@ -650,6 +836,7 @@ challenge #0终于挑战成功！
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -801,6 +988,7 @@ challenge #0终于挑战成功！
 
 
 
+
 # Day10
 
 今天正在挑战Tokenization#0，但是我的网络配置有问题，花了我一下午的时间都没解决好TuT，本来想着或许可以在剩下的时间完成，但是发现马上不够记笔记打卡了。
@@ -810,6 +998,7 @@ challenge #0终于挑战成功！
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -927,6 +1116,7 @@ function Fallout() public { }
 
 
 
+
 # Day 8
 
 ## 运营
@@ -960,6 +1150,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1018,6 +1209,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # DAY 6
 
 今天把昨天的第一次例会又过了一遍，并在早上参加了LXDAO的周会，因为太i了怯场没能在这次自我介绍，很遗憾，希望能够趁下次机会加入！
@@ -1051,6 +1243,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 
 
+
 # **Day5**
 
 今天听了co learning和第一次例会，非常拓宽眼界！明天将把今晚的内容整理成一个笔记，今天的干货真的太多了，比在学校的学习知识密度要高很多倍！
@@ -1060,6 +1253,7 @@ Karen 老师的笔记里还写了”**创作要有利他性**“，而绘画和�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1157,6 +1351,7 @@ contract Counter{
 
 
 
+
 DAY3
 
 今天准备去学习剩下solidity入门课程，把入门通了一遍。
@@ -1166,6 +1361,7 @@ DAY3
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1216,6 +1412,7 @@ DAY3
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
