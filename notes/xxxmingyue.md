@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+基本是本次实习计划的Last Day了。  
+本次实习计划给我最大的感悟就是：  
+1\. 输出带动输入  
+2\. 只要每个人愿意积极贡献自己的力量，就可以让平台变得更好  
+3\. 勇于分享、勇于建联、勇于表达自己  
+  
+感谢Ethpanda和LXDao的实习计划！
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 这几条在收集求职方向的内容，然后围绕猎头，个人做了总结：  
   
 
@@ -98,6 +110,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 以下是Moltbot自我生成：  
   
 \# 如何将 Moltbot 打造为个人助手
@@ -159,6 +172,7 @@ Moltbot 的初始状态是「空白画布」，需通过以下信息构建认知
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 今天尝试了clawbot，真的好用：  
   
 目前一个最重要的观念是:  
@@ -168,6 +182,7 @@ Moltbot 的初始状态是「空白画布」，需通过以下信息构建认知
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -399,6 +414,7 @@ function tryAttack(address target, bool guess) public {
 
 
 
+
 今天主要总结了下本周的学习内容：  
   
 于具体而言，对于本周的学习效果不是很满意  
@@ -470,6 +486,7 @@ function tryAttack(address target, bool guess) public {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -558,6 +575,7 @@ function tryAttack(address target, bool guess) public {
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -750,6 +768,7 @@ return allocations\[allocator\];
 
 
 
+
 今天主要学习了Polymarket的数据结构：  
   
   
@@ -850,6 +869,7 @@ orderfilled
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -972,6 +992,7 @@ Polymarket 的动态数据通过一系列链上事件（Logs）串联成完整�
 
 
 
+
 # 体验了 MyFirstZKVote
 
 ### 1\. 核心目标：我们要解决什么问题？
@@ -1061,6 +1082,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 
 
 
+
 今天学习到了最重要的是如何做好投研？  
 一个好的投研需要包含：技术背景、团队背景、代币经济学、宏观政策和叙事  
   
@@ -1121,6 +1143,7 @@ _对应文档中的：「提交投票交易」与「链上验证」_
 
 
 
+
 最近这段时间，不管是运营端还是技术端的深挖，体感上收获都挺大的。复盘了一下，大概分为这两个板块：
 
 1\. 运营实战：
@@ -1144,6 +1167,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1208,6 +1232,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 
 
+
 一次性将之前创作的链上安全的文章都更新上去了
 
 今天Secret同学的分享对我来说很有感悟：
@@ -1219,6 +1244,7 @@ DApp 框架的深度梳理： 听完 Wachi 老师对 DApp 框架的拆解，我�
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1277,6 +1303,7 @@ ORDER BY block_time DESC
 
 
 
+
 # 学习运营相关知识
 
 Telegram 如何运营？  
@@ -1306,6 +1333,7 @@ Figma 如何使用？
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1452,6 +1480,7 @@ Arweave：提供“永久存储”服务，一次付费永久保存；
 
 
 
+
 # 从 ERC-721 到 ERC-7962
 
 这是我让大模型解析文档得到的：
@@ -1551,6 +1580,7 @@ ERC-7962 的实现核心在于将代币的所有权绑定到公钥的哈希值�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1721,6 +1751,7 @@ SEO + 邮件订阅
 
 
 
+
 # **学习《安全和合规》部分**
 
 于自己而言，最重要的几点：
@@ -1782,6 +1813,7 @@ SEO + 邮件订阅
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1975,6 +2007,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 
 
+
 # 完成区块链完全-访问控制漏洞的撰写
 
 使用githubpages搭建了个人博客：\[xxxmingyue的个人博客\]([http://xxxmingyue.github.io](http://xxxmingyue.github.io))
@@ -1988,6 +2021,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2054,6 +2088,7 @@ Danksharding 是未来的完全体，它将进一步扩大 Blob 的数量，实�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
