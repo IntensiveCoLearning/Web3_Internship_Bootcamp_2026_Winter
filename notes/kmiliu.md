@@ -280,6 +280,7 @@ vm.store(address(vault), slot, bytes32(uint256(100 ether)));
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 ## 一、Web3 求职的“黄金判断标准”
 
 选平台 ≠ 平台多，而是 **信息质量高**：
@@ -483,6 +484,7 @@ vm.store(address(vault), slot, bytes32(uint256(100 ether)));
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 # 技术后端向 Jason：Web2 → Web3 转型之路｜Notes
@@ -737,6 +739,7 @@ vm.store(address(vault), slot, bytes32(uint256(100 ether)));
 
 
 
+
 ## 一、人物与背景
 
 -   **Logic**：Bybit 前端开发工程师
@@ -987,6 +990,7 @@ Web3 必须懂：
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -1295,6 +1299,7 @@ Web3 必须懂：
 
 
 
+
 ## 1) Foundry Basic：`Counter` + `CounterTest`
 
 ### 合约逻辑
@@ -1508,6 +1513,7 @@ Foundry 的思路是：**先告诉它你要检查哪些字段** → **发出你�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1734,6 +1740,7 @@ Hardhat 默认 **automine=true**：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -2006,6 +2013,7 @@ emit Buy(msg.sender, 1);
 
 
 
+
 ## 一、Foundry 是什么（一句话）
 
 **Foundry = 用 Rust 写的以 CLI 为核心的以太坊开发工具链**  
@@ -2232,6 +2240,7 @@ cast 交互 & 调试
 
 
 
+
 ## 1) Scaffold-ETH 是什么（核心卖点）
 
 -   **一句话**：Scaffold-ETH 是一个“本地链 + 合约开发 + 前端自动生成/适配”的全套 dApp 模板
@@ -2443,6 +2452,7 @@ cast 交互 & 调试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2803,6 +2813,7 @@ require(ok);
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -3186,6 +3197,7 @@ require(tx.origin == msg.sender);
 
 
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -3441,6 +3453,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3898,6 +3911,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -3995,6 +4009,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -4191,6 +4206,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -4298,6 +4314,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -5224,6 +5241,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -5406,6 +5424,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -5526,6 +5545,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -6421,6 +6441,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
