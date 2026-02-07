@@ -15,8 +15,72 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+真的好快啊，一个月一晃就要结束了。特别要感谢无偿付出的助教们，每天高频率在vx群冲浪，解答问题、活跃气氛。i人时时会忍不住窥屏，看着助教们一直在群里发光发热，即时是e人，这也是向外高耗能的工作，想想都太累太累。最后的最后，只有感谢。这次的实习大家都很厉害，又很包容。感恩一个月的同行，用wachi老师的话说，短短一个月时间可能学不到很多，但最重要的是认识到了靠谱的小伙伴。最后要特别鸣谢我的助教Tina老师，每天辛苦改作业，还在黑客松上捞我哈哈哈哈哈。  
+最近没有学和web3强相关的东西，疯狂补LLM和agent的知识  
+Single Head Attention
+
+![image.png](attachment:7be3e783-7962-4755-982a-966d7c8ecbda:image.png)
+
+目的是通过一系列的向量运算，让名词融合了上下文的形容词含义
+
+**Q向量：查询向量**
+
+![image.png](attachment:a2637acc-b57f-4246-9c7f-0c98910308f9:image.png)
+
+Wq被称为查询权重，比如说查询（Any adjectives in front of me),查询权重的横向维度会比embedding的横向维度小很多。Wq是由模型参数组成的矩阵，这意味这这个矩阵能把E从只包含词含义的向量，转换为一个我在找什么的向量Q
+
+**K：回答向量**
+
+![image.png](attachment:46dbd487-6d9f-4bfb-a0c1-6aee4e44ffb3:image.png)
+
+K=E2\*Wk ,可以试做是每个向量正在回答问题
+
+当K和Q密切对齐的时候，我们可以看做当前的键与查询匹配
+
+![                                                                                                       Attention Pattern](attachment:4a8b5acb-96cd-4da3-a95b-b04c1ed5a973:image.png)
+
+```
+                                                                                                   Attention Pattern
+```
+
+这就意味着，这里的相同方向的K和Q的点积会是一个较大的正数
+
+我们希望，每一列的提示词都会都会使用softmax进行标准化。这样每一格的的值会被视作，两个词相关性的权重
+
+![image.png](attachment:6d7cb64f-e307-49d2-8549-85d2f968ec75:image.png)
+
+d是空间维度
+
+![image.png](attachment:a45a2b3a-c555-4846-b2d6-01aae41f4fe5:image.png)
+
+在预测最终的文本之前，transformer还会对每一个子序列进行预测。为了降低后面的token对前面token的影响，我们会希望他的相关性为零。但为了不影响softmax的归一化进程，我们会使用**masking**将后token对前token的相关性变成负无穷。
+
+![image.png](attachment:12e8077f-2a96-4c2f-b1ec-8a55a1e82fbb:image.png)
+
+Q可以看做是查询向量；K被视为回答向量，当Q和K的相关性比较强的时候，被视为这两个词的关联度比较强。V可以看做是实际的意思（meaning)向量，用前面Q\*KT的相关性对每一个V作加权求和。
+
+![image.png](attachment:32f6d42b-f60b-4eae-bfa0-dc03f5771f02:image.png)
+
+![image.png](attachment:04e99599-348e-4441-bbde-227e0d6cca82:image.png)
+
+![image.png](attachment:bbf0b741-15a0-4107-a3a5-40bd525a773f:image.png)
+
+### 为什么这个注意力机制要被做很多遍？
+
+Multi-attention的机制就是把single-attention并行的完成，但是有不同的QKV向量矩阵
+
+![image.png](attachment:66403dcd-3333-4758-a982-04390d367eac:image.png)
+
+![image.png](attachment:698104e8-01e0-4e65-a633-5898d4151ebc:image.png)
+
+通过多头注意力机制，transformer就能通过不同方式来根据上下文改变特定词的含义
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 # Transformer
 
 每一个word都是一个向量
@@ -106,6 +170,7 @@ K=E2\*Wk ,可以试做是每个向量正在回答问题
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
+
 ### 今天完成了常见的合约漏洞的最后一种类型
 
 ### 使用tx.origin
@@ -164,6 +229,7 @@ contract PhishingWrapper {
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 ```
@@ -363,6 +429,7 @@ RA-3 风险评估（Risk Assessment）— 核心中的核心
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -619,6 +686,7 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 今天在为了项目要设计几个agent；怎么调校不同的agent;agent之间用什么pattern；agent\\MCP server\\skills\\tools到底是什么关系 狂补这些知识
 
 ### 主流的Agent在做什么
@@ -835,11 +903,13 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1023,6 +1093,7 @@ k = 常数（池子创建时确定）
 
 
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -1047,6 +1118,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1194,6 +1266,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -1285,11 +1358,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1348,6 +1423,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 
 
+
 ### Rag
 
 RAG（检索增强生成）—Retrieval-Augmented Generation
@@ -1390,6 +1466,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1565,6 +1642,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1772,6 +1850,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -1789,6 +1868,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2047,6 +2127,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -2183,6 +2264,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
