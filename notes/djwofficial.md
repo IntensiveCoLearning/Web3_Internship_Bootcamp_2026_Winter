@@ -21,13 +21,28 @@ timezone: UTC+8
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+今天的學習內容非常豐富，涵蓋了 DAO 運作機制、技術實作探索以及生態拓展角色等多個面向，讓我對 Web3 生態系有更全面的理解。
+
+首先，在參與 LXDAO Weekly Meeting 的過程中，我觀察到去中心化自治組織（DAO）如何透過開放透明的方式進行協作與決策。成員們分享專案進度、討論提案方向，並透過社群共識推動發展。這讓我真正理解到 DAO 並不是理論概念，而是一種以社群參與、協調機制與公開治理為核心的運作模式。相較於傳統組織，Web3 組織更依賴自發貢獻與清晰的溝通流程。
+
+接著，在 Reactive Workshop 與 Ambassador Program 的分享中，我看到了技術深化與生態擴張之間的平衡。Workshop 強調動手實作與底層理解，讓參與者透過實驗與建構提升技術能力；而 Ambassador Program 則專注於社群經營與專案推廣，強調溝通能力、代表性與影響力的建立。這讓我意識到，Web3 的成長不僅需要強大的技術基礎，也需要有效的生態拓展與教育推廣。
+
+同時，從 Smart Agent Payment 到 Web3 BD 的角色分享，我更加清楚未來區塊鏈與 AI 結合的發展方向，以及不同職能如何共同推動產業前進。Web3 不只是寫程式或發行代幣，而是關於系統設計、價值流動與生態協調。
+
+整體而言，今天的學習讓我更確定，想在 Web3 領域長期發展，必須同時培養技術深度與策略視野。理解 DAO 協作、掌握實作能力、並具備生態思維，才能在這個快速變動的產業中持續成長。
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 今天是非常充實且有收穫的一天。我參與了幾場分享會，對 Web3 生態系的不同面向有了更深入的理解。我學習了「智能代理支付」，了解自主代理如何透過區塊鏈執行與接收付款，並進一步理解 AI 與可程式化金融結合後，將形成新的自主經濟系統。同時，我也探討了 Web3 商務拓展（BD）的日常工作與核心能力，意識到 BD 不只是建立人脈，而是打造生態系、制定策略合作，並在技術團隊與市場之間扮演關鍵橋樑的角色。整體而言，今天讓我更加確信 Web3 不僅僅是寫程式，更是關於系統設計、價值協調與長期發展的思維，也讓我更清楚未來想同時培養技術深度與策略視野的方向。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 今天我學習了 Web3 DevRel Frontline。這是一個直接面向開發者的角色，主要負責在區塊鏈生態系中支援建構者，並作為開發者與協議團隊之間的第一接觸點。透過協助解決技術問題、回應疑問，以及引導開發者使用工具、SDK 與文件，前線 DevRel 同時也透過社群互動、蒐集回饋、支援黑客松與新手導入，來提升整體開發者體驗，並強化 Web3 生態系的發展。
 <!-- DAILY_CHECKIN_2026-02-04_END -->
@@ -36,11 +51,13 @@ timezone: UTC+8
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 今天我學習到 Web3 專業人士在日常與工作中的運作方式。Web3 的工作模式去中心化且高度自主，更重視實際貢獻與成果，而非固定工時。透過 Discord、GitHub 等社群工具進行合作，並持續學習協議文件與生態系更新。成為 Web3 專業人士不僅需要技術能力，也需要自律、適應力、良好溝通能力與長期思維。
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -66,6 +83,7 @@ timezone: UTC+8
 
 
 
+
 Today’s session focused on the "strategy of the sprint," specifically **Hackathon Basics** and **Meeting Fundamentals**. I learned that success in a high-pressure environment depends on an **MVP (Minimum Viable Product) mindset**—prioritizing a functional core loop over perfection to ensure you actually ship. Complementing this is the need for **high-signal meetings**; by enforcing strict agendas and defining clear action items, we protect "deep work" time and ensure the team moves as a single unit rather than a group of confused individuals.
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
@@ -78,11 +96,13 @@ Today’s session focused on the "strategy of the sprint," specifically **Hackat
 
 
 
+
 今天我参加了黑客松周会并听取了导师的指导。核心重点在于定义明确的**问题陈述**，并构建一个专注于单一“核心功能”的**最小可行性产品 (MVP)**。接下来，我需要优先规划**技术架构**，确保在编码前（特别是 Rust 仓库）数据流逻辑清晰，并利用每周的**里程碑**来保持进度。通过**快速迭代**和导师反馈，我可以有效验证想法，并确保最终的演示和 GitHub 文档能清晰传达项目的独特价值。
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -109,11 +129,13 @@ Today’s session focused on the "strategy of the sprint," specifically **Hackat
 
 
 
+
 今天我複習並演練了自己的程式撰寫能力，同時也嘗試從更宏觀的角度去想像與規劃，在這個生態系中可以實作出哪些產品與應用。,
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -134,6 +156,7 @@ Today’s session focused on the "strategy of the sprint," specifically **Hackat
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -168,11 +191,13 @@ Today’s session focused on the "strategy of the sprint," specifically **Hackat
 
 
 
+
 今天我參加了每週的例行會議。在會議中，我們進行了大量的程式撰寫與實作練習，強調實際動手操作的學習方式。此外，我也參與了 Speedrun Ethereum 的學習活動，深入了解以太坊的基礎概念，並實際完成了 NFT 的鑄造流程。透過這次的學習，我對智慧合約的運作方式，以及 NFT 從部署到互動的完整流程有了更清楚的理解。
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -211,11 +236,13 @@ Today’s session focused on the "strategy of the sprint," specifically **Hackat
 
 
 
+
 今天我也學到了 Uniswap，以及它的程式碼（智能合約）是如何運作的。
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -254,11 +281,13 @@ Today’s session focused on the "strategy of the sprint," specifically **Hackat
 
 
 
+
 今天的課程主要圍繞 Solidity 的實作講解。我們一起了解了智能合約的基礎架構與撰寫邏輯，學習如何定義合約、設計函式，以及處理區塊鏈上的互動流程。透過老師的範例演示，我更清楚掌握了 Solidity 的實際運作方式。同時，同學們也交流了各自的學習經驗與實務心得，讓整個學習過程更加豐富且有收穫。
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -341,6 +370,7 @@ NO Token
 
 
 
+
 今天我学习了：
 
 -   以太坊代币标准的发展，从 **ERC-721 到 ERC-7962**，重点了解了基于 Key Hash 的新型代币机制。
@@ -379,11 +409,13 @@ NO Token
 
 
 
+
 今天的周会主要围绕整个课程的整体安排展开讨论，从开营仪式到 Web3 在就业、公司发展以及加密市场趋势等内容都进行了介绍。本周属于入门阶段，重点帮助学员建立对 Web3 行业的基础认知。通过这次交流，我对课程结构和未来学习方向有了更加清晰的理解，也更加期待接下来每一次的学习与分享。整体来说，这是一次内容充实、氛围积极的会议，我对后续的课程充满期待与热情。
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -446,6 +478,7 @@ Web3 技术为这些问题提供了解决方案。区块链能够为 AI 提供�
 
 
 
+
 今天我学习了关于 Web3 安全的内容，主要了解了 GoPlus 提供的安全建议，以及 Web3 在走向大规模应用过程中为什么必须把安全放在核心位置。
 
 我了解到，在用户层面，最重要的是养成良好的安全习惯，例如不随意点击陌生链接、不盲目签名、不安装来源不明的应用，在进行交易或购买代币前核对合约地址，并妥善保管私钥和助记词，合理区分冷热钱包，以减少被钓鱼或资产被盗的风险。
@@ -483,11 +516,13 @@ Web3 技术为这些问题提供了解决方案。区块链能够为 AI 提供�
 
 
 
+
 2026 年的 Web3 行业已进入以合规和机构化为主导的发展阶段，总市值达到 3.1 万亿美元。然而，全球活跃开发者仅有 2.5 万至 3 万人，导致高端技术人才极度稀缺。技术与合规岗位薪资最高，尤其是精通 Rust 和全球监管的人才。招聘正在从传统简历转向可验证的链上行为，例如 GitHub 贡献、DAO 治理记录和生态参与情况。进入行业的建议路径包括：从 Web2 转型、以无许可方式参与开源或研究、以及建立链上身份，同时应避免缺乏透明团队、资金支持或代码更新的高风险项目。
 <!-- DAILY_CHECKIN_2026-01-13_END -->
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
