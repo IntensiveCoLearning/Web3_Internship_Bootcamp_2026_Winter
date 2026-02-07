@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+1.参加闭幕式
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 1.参加lxdao的周会
 
 2.学习react network
@@ -25,6 +31,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 1.参加**智能体支付的拆解与实战**
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
@@ -32,11 +39,13 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 1.做深度技术的任务
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -51,11 +60,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.参加web3实习计划休闲hackathon运营的总结
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -68,6 +79,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -88,6 +100,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.参加lauchpad
 
 2.听lxdao周会
@@ -95,6 +108,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -119,11 +133,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.主持co-building
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -141,6 +157,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -172,6 +189,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.作为运营对接休闲黑客松的bd需求
 
 2.参加Hardman Vibe Coding
@@ -181,6 +199,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -219,6 +238,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1.参加LXDAO周会
 
 2.参加Web303组会
@@ -226,6 +246,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -251,6 +272,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -342,6 +364,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天的学习主要围绕 Uniswap 的 AMM 数学模型和其在合约中的实现方式展开，目标是把“公式—机制—代码”三者对应起来，而不是停留在概念层。
 
 首先在数学层面，重点理解了 Uniswap V2 的定价模型来源。从流动性池中两种资产的边际变化关系出发，得到价格变化满足 `dy/dx = -y/x`，由此自然推出恒定乘积关系 `x * y = k`。通过这一模型，进一步理解了交易过程中价格滑点产生的原因，以及为什么交易规模越大，对价格影响越明显。
@@ -376,6 +399,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今日主要学习内容为 [ethereum.org](http://ethereum.org) 官方教程《Uniswap V2 Annotated Code》，对 Uniswap V2 合约结构和核心逻辑进行通读与理解。
 
 学习过程中重点梳理了 Uniswap V2 的整体架构，明确了 Core（Factory、Pair）与 Periphery（Router）的职责划分。Pair 合约负责资产托管和核心逻辑执行，Router 主要作为用户交互入口，负责路径计算和多跳交易组织。
@@ -391,6 +415,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -493,6 +518,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -617,6 +643,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要学习的问题是：**在考虑滑点和手续费的情况下，如何在 Uniswap V2 买入并去 Binance 卖出，以实现单笔利润最大化？**
 
 **1\. 市场环境假设**
@@ -701,6 +728,7 @@ $$\\Pi\_{net} = \[(1-f)P \\cdot y\_{trade}\] - \[\\text{DEX\\\_Cost}(y\_{trade})
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -838,6 +866,7 @@ pair.swap(amount0Out, amount1Out, nextTo, new bytes(0));
 
 
 
+
 ### 一、Uniswap V2（继续学习）
 
 在前两天理解了 Uniswap V2 的 swap 和 LP 机制后，今天主要补了一点 **Router 的作用**，搞清楚用户为什么几乎不直接和 Pair 合约交互。
@@ -910,6 +939,7 @@ function swapExactTokensForTokens(
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1034,6 +1064,7 @@ DeFi 表面上是“代码即规则”，但实际问题更多来自：
 
 
 
+
 今天主要学习了 **Uniswap V2 的基础 AMM 机制**，重点放在 **swap 定价公式和 Pair 合约的核心逻辑**，没有深入到全部源码。
 
 ### 1\. AMM 定价公式（今天重点）
@@ -1094,6 +1125,7 @@ require(balance0Adjusted * balance1Adjusted >= k, "K");
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
