@@ -15,8 +15,537 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+# 🎯 **Reactive Network Uniswap V2 止损单 - 完整部署教程**
+
+* * *
+
+## ✅ **前置条件检查**
+
+### **1\. 确认已完成的工作**
+
+-   ✅ Foundry 已安装
+    
+-   ✅ 项目已克隆并编译成功
+    
+-   ✅ 有 0.149 Sepolia ETH
+    
+
+### **2\. 确认你需要准备的**
+
+-   📝 MetaMask 钱包私钥（64位十六进制，不带 0x）
+    
+-   💰 至少 0.149 Sepolia ETH
+    
+
+* * *
+
+## 📋 **完整操作流程**
+
+* * *
+
+## **第一部分：环境配置**
+
+### **步骤 1：进入项目目录**
+
+bash
+
+```bash
+cd ~/reactive-smart-contract-demos
+```
+
+* * *
+
+### **步骤 2：创建配置文件**
+
+bash
+
+```bash
+# 创建 .env 文件
+nano .env
+```
+
+**在编辑器里输入以下内容（替换私钥）：**
+
+bash
+
+```bash
+# ===== Sepolia 测试网 =====
+SEPOLIA_RPC=https://rpc2.sepolia.org
+SEPOLIA_PRIVATE_KEY=你的64位私钥不要带0x
+SEPOLIA_CHAIN_ID=11155111
+
+# ===== Reactive Lasna 测试网 =====
+REACTIVE_RPC=https://lasna-rpc.rnk.dev/
+REACTIVE_PRIVATE_KEY=你的64位私钥不要带0x
+REACTIVE_CHAIN_ID=5318007
+
+# ===== 系统合约 =====
+SYSTEM_CONTRACT=0x0000000000000000000000000000000000fffFfF
+
+# ===== Uniswap Router =====
+UNISWAP_ROUTER=0xC532a74256D3Db42D0Bf7a0400fEFDbad7694008
+```
+
+**保存并退出：**
+
+-   按 `Ctrl + X`
+    
+-   按 `Y`
+    
+-   按 `Enter`
+    
+
+* * *
+
+### **步骤 3：加载环境变量**
+
+bash
+
+```bash
+source .env
+
+# 验证是否加载成功
+echo "Sepolia RPC: $SEPOLIA_RPC"
+echo "Reactive RPC: $REACTIVE_RPC"
+```
+
+**应该看到两个 URL 输出。**
+
+* * *
+
+### **步骤 4：检查钱包地址和余额**
+
+bash
+
+```bash
+# 自动从私钥推导钱包地址
+export MY_ADDRESS=$(cast wallet address --private-key $SEPOLIA_PRIVATE_KEY)
+
+# 显示钱包地址
+echo "===================="
+echo "我的钱包地址: $MY_ADDRESS"
+echo "===================="
+
+# 检查 Sepolia ETH 余额
+echo "Sepolia ETH 余额:"
+cast balance $MY_ADDRESS --rpc-url $SEPOLIA_RPC
+
+# 检查 REACT 余额
+echo "REACT 余额:"
+cast balance $MY_ADDRESS --rpc-url $REACTIVE_RPC
+```
+
+**预期输出：**
+
+-   钱包地址：0x开头的地址（应该和你 MetaMask 里的一样）
+    
+-   Sepolia ETH：149000000000000000（约 0.149 ETH）
+    
+-   REACT：0（因为还没领取）
+    
+
+* * *
+
+## **第二部分：获取 REACT 代币**
+
+### **步骤 5：转账获取 REACT**
+
+bash
+
+```bash
+echo "开始转账 0.05 ETH 到 faucet 获取 REACT..."
+
+cast send 0x9b9BB25f1A81078C544C829c5EB7822d747Cf434 \
+  --rpc-url $SEPOLIA_RPC \
+  --private-key $SEPOLIA_PRIVATE_KEY \
+  --value 0.05ether
+
+echo "转账成功！等待 1-2 分钟..."
+```
+
+**等待 1-2 分钟后检查：**
+
+bash
+
+```bash
+sleep 120  # 等待 2 分钟
+
+echo "检查 REACT 余额..."
+cast balance $MY_ADDRESS --rpc-url $REACTIVE_RPC
+```
+
+**应该看到：** 约 5000000000000000000（5 REACT）
+
+* * *
+
+## **第三部分：部署合约**
+
+### **步骤 6：部署 Token 合约（Sepolia）**
+
+bash
+
+````bash
+echo "===================="
+echo "部署 Token 合约..."
+echo "===================="
+
+forge create src/demos/uniswap-v2-stop-order/UniswapDemoToken.sol:UniswapDemoToken \
+  --rpc-url $SEPOLIA_RPC \
+  --private-key $SEPOLIA_PRIVATE_KEY
+```
+
+**⚠️ 重要：从输出中找到 `Deployed to:` 这一行，复制地址！**
+
+**示例输出：**
+```
+Deployer: 0xYourAddress
+Deployed to: 0xAbC123...  ← 复制这个地址
+Transaction hash: 0x123...
+````
+
+**保存 Token 地址：**
+
+bash
+
+```bash
+# 替换成你实际的地址
+export TOKEN_ADDRESS=0xAbC123替换成你的token地址
+
+# 验证
+echo "Token Address: $TOKEN_ADDRESS"
+```
+
+* * *
+
+### **步骤 7：部署 Callback 合约（Sepolia）**
+
+bash
+
+```bash
+echo "===================="
+echo "部署 Callback 合约..."
+echo "===================="
+
+forge create src/demos/uniswap-v2-stop-order/UniswapDemoStopOrderCallback.sol:UniswapDemoStopOrderCallback \
+  --rpc-url $SEPOLIA_RPC \
+  --private-key $SEPOLIA_PRIVATE_KEY \
+  --constructor-args $UNISWAP_ROUTER
+```
+
+**⚠️ 复制** `Deployed to:` **地址！**
+
+**保存 Callback 地址：**
+
+bash
+
+```bash
+# 替换成你实际的地址
+export CALLBACK_ADDRESS=0xDeF456替换成你的callback地址
+
+# 验证
+echo "Callback Address: $CALLBACK_ADDRESS"
+```
+
+* * *
+
+### **步骤 8：部署 Reactive 合约（Reactive Lasna）**
+
+bash
+
+```bash
+echo "===================="
+echo "部署 Reactive 合约..."
+echo "===================="
+
+# 准备参数
+export UNISWAP_PAIR=$TOKEN_ADDRESS  # 临时用 token 地址作为 pair
+export CLIENT_ADDRESS=$MY_ADDRESS
+
+# 部署
+forge create src/demos/uniswap-v2-stop-order/UniswapDemoStopOrderReactive.sol:UniswapDemoStopOrderReactive \
+  --rpc-url $REACTIVE_RPC \
+  --private-key $REACTIVE_PRIVATE_KEY \
+  --chain-id $REACTIVE_CHAIN_ID \
+  --value 0.001ether \
+  --constructor-args \
+    $CALLBACK_ADDRESS \
+    $SEPOLIA_CHAIN_ID \
+    $UNISWAP_PAIR \
+    $CLIENT_ADDRESS \
+    $TOKEN_ADDRESS \
+    1000 \
+    950
+```
+
+**⚠️ 复制** `Deployed to:` **地址！**
+
+**保存 Reactive 地址：**
+
+bash
+
+```bash
+# 替换成你实际的地址
+export REACTIVE_ADDRESS=0xGhi789替换成你的reactive地址
+
+# 验证
+echo "Reactive Address: $REACTIVE_ADDRESS"
+```
+
+* * *
+
+## **第四部分：授权和验证**
+
+### **步骤 9：授权 Callback 使用 Token**
+
+bash
+
+```bash
+echo "===================="
+echo "授权 Callback 合约..."
+echo "===================="
+
+cast send $TOKEN_ADDRESS \
+  --rpc-url $SEPOLIA_RPC \
+  --private-key $SEPOLIA_PRIVATE_KEY \
+  "approve(address,uint256)" \
+  $CALLBACK_ADDRESS \
+  100000000000000000000
+
+echo "授权成功！"
+```
+
+* * *
+
+### **步骤 10：验证部署结果**
+
+bash
+
+```bash
+echo "===================="
+echo "验证部署结果..."
+echo "===================="
+
+# 检查 Token 总供应量（应该是 100）
+echo "Token 总供应量:"
+cast call $TOKEN_ADDRESS "totalSupply()(uint256)" --rpc-url $SEPOLIA_RPC
+
+# 检查你的 Token 余额
+echo "我的 Token 余额:"
+cast call $TOKEN_ADDRESS "balanceOf(address)(uint256)" $MY_ADDRESS --rpc-url $SEPOLIA_RPC
+
+# 检查授权额度
+echo "授权额度:"
+cast call $TOKEN_ADDRESS "allowance(address,address)(uint256)" $MY_ADDRESS $CALLBACK_ADDRESS --rpc-url $SEPOLIA_RPC
+
+# 检查 Reactive 合约余额
+echo "Reactive 合约 REACT 余额:"
+cast balance $REACTIVE_ADDRESS --rpc-url $REACTIVE_RPC
+```
+
+* * *
+
+## **第五部分：生成部署报告**
+
+### **步骤 11：创建部署信息文件**
+
+bash
+
+````bash
+cat > deployment-info.txt << EOF
+========================================
+Uniswap V2 Stop Order Demo - 部署信息
+========================================
+
+部署时间: $(date)
+部署者: Yaxin Liu
+
+【Sepolia 测试网】
+Token Address: $TOKEN_ADDRESS
+Callback Address: $CALLBACK_ADDRESS
+Uniswap Pair: $UNISWAP_PAIR
+
+【Reactive Lasna 测试网】
+Reactive Contract: $REACTIVE_ADDRESS
+
+【钱包信息】
+Client Address: $CLIENT_ADDRESS
+
+【区块浏览器链接】
+Token: https://sepolia.etherscan.io/address/$TOKEN_ADDRESS
+Callback: https://sepolia.etherscan.io/address/$CALLBACK_ADDRESS
+Reactive: https://lasna.reactscan.net/address/$REACTIVE_ADDRESS
+
+【参数说明】
+- Coefficient: 1000 (价格基准)
+- Threshold: 950 (跌到95%时触发)
+- 初始充值: 0.001 REACT
+
+========================================
+EOF
+
+# 显示部署信息
+cat deployment-info.txt
+```
+
+---
+
+## **第六部分：作业提交**
+
+### **步骤 12：准备提交材料**
+
+**你需要提交的内容：**
+
+#### **1. Demo 选择**
+```
+我选择了：Uniswap V2 Stop Order Demo
+```
+
+#### **2. 部署的合约地址**
+```
+Token (Sepolia): [你的 TOKEN_ADDRESS]
+Callback (Sepolia): [你的 CALLBACK_ADDRESS]
+Reactive (Lasna): [你的 REACTIVE_ADDRESS]
+```
+
+#### **3. 交易哈希**
+从部署输出中复制所有的 `Transaction hash`
+
+#### **4. 触发方式说明**
+```
+我部署了完整的 Reactive 止损单系统：
+1. 在 Sepolia 上部署了测试代币和回调合约
+2. 在 Reactive Lasna 上部署了响应式合约
+3. Reactive 合约会监听 Uniswap pair 的 Sync 事件
+4. 当价格跌到设定阈值（95%）时，会自动触发回调执行卖出
+5. 已授权回调合约使用代币，并给 Reactive 合约充值
+````
+
+**5\. 证据截图**
+
+**访问这些链接并截图：**
+
+bash
+
+```bash
+echo "请访问并截图以下链接："
+echo ""
+echo "1. Token 合约:"
+echo "https://sepolia.etherscan.io/address/$TOKEN_ADDRESS"
+echo ""
+echo "2. Callback 合约:"
+echo "https://sepolia.etherscan.io/address/$CALLBACK_ADDRESS"
+echo ""
+echo "3. Reactive 合约:"
+echo "https://lasna.reactscan.net/address/$REACTIVE_ADDRESS"
+```
+
+* * *
+
+## **第七部分：最终检查**
+
+### **步骤 13：完整性检查清单**
+
+bash
+
+```bash
+echo "===================="
+echo "部署完整性检查"
+echo "===================="
+
+# 检查所有地址是否已设置
+if [ -z "$TOKEN_ADDRESS" ]; then
+  echo "❌ TOKEN_ADDRESS 未设置"
+else
+  echo "✅ Token: $TOKEN_ADDRESS"
+fi
+
+if [ -z "$CALLBACK_ADDRESS" ]; then
+  echo "❌ CALLBACK_ADDRESS 未设置"
+else
+  echo "✅ Callback: $CALLBACK_ADDRESS"
+fi
+
+if [ -z "$REACTIVE_ADDRESS" ]; then
+  echo "❌ REACTIVE_ADDRESS 未设置"
+else
+  echo "✅ Reactive: $REACTIVE_ADDRESS"
+fi
+
+# 检查剩余余额
+echo ""
+echo "剩余余额:"
+echo "Sepolia ETH:"
+cast balance $MY_ADDRESS --rpc-url $SEPOLIA_RPC
+echo "REACT:"
+cast balance $MY_ADDRESS --rpc-url $REACTIVE_RPC
+```
+
+* * *
+
+## 📊 **预期时间和费用**
+
+-   ⏱️ **总耗时：** 约 15-20 分钟
+    
+-   💰 **总花费：**
+    
+    -   Sepolia ETH: ~0.09 ETH
+        
+    -   REACT: ~0.001 REACT
+        
+    -   **剩余：** ~0.059 Sepolia ETH + ~4.999 REACT
+        
+
+* * *
+
+## 🎯 **快速操作清单**
+
+如果你想一次性执行所有命令（仅在理解每一步后使用）：
+
+bash
+
+```bash
+# ⚠️ 这是完整的自动化脚本，仅供参考
+# 建议一步步执行，而不是一次性运行
+
+cd ~/reactive-smart-contract-demos
+source .env
+export MY_ADDRESS=$(cast wallet address --private-key $SEPOLIA_PRIVATE_KEY)
+
+# 获取 REACT
+cast send 0x9b9BB25f1A81078C544C829c5EB7822d747Cf434 --rpc-url $SEPOLIA_RPC --private-key $SEPOLIA_PRIVATE_KEY --value 0.05ether
+sleep 120
+
+# 部署 Token
+# ⚠️ 需要手动设置 TOKEN_ADDRESS
+
+# 部署 Callback  
+# ⚠️ 需要手动设置 CALLBACK_ADDRESS
+
+# 部署 Reactive
+# ⚠️ 需要手动设置 REACTIVE_ADDRESS
+
+# 授权
+cast send $TOKEN_ADDRESS --rpc-url $SEPOLIA_RPC --private-key $SEPOLIA_PRIVATE_KEY "approve(address,uint256)" $CALLBACK_ADDRESS 100000000000000000000
+```
+
+* * *
+
+## ⚠️ **重要提醒**
+
+1.  **每次部署后都要复制地址并设置环境变量**
+    
+2.  **保存好 deployment-info.txt 文件**
+    
+3.  **截图保存所有区块浏览器页面**
+    
+4.  **不要分享你的私钥**
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 Uniswap V2 是一个去中心化交易协议(DEX),2020年5月发布,是Uniswap的第二个主要版本。它的核心特点包括:
 
 ## 核心机制
@@ -70,6 +599,7 @@ Uniswap V2 是一个去中心化交易协议(DEX),2020年5月发布,是Uniswap�
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 这篇论文研究的是一种**利用以太坊2.0机制漏洞进行高级套利攻击**的方法。让我通俗地解释:
 
@@ -772,6 +1302,7 @@ PoW/PoS机制
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
 
+
 加密货币的价格极度波动。为了缓解这种波动性，创建了与美元等其他稳定资产锚定的稳定币。稳定币帮助用户对冲这种价格波动，并提供可靠的交换媒介。稳定币已经迅速发展成为 DeFi 的一个重要组成部分，对这个模块化生态系统至关重要。
 
 目前有 49 种稳定币在 [CoinGecko](https://www.coingecko.com/en/categories/usd-stablecoin) 上列出。排名前五的稳定币的总市值超过 598 亿美元。
@@ -1329,6 +1860,7 @@ Ethena 支持多种质押资产作为抵押品：
 
 
 
+
 权益证明（PoS）
 
 权益证明 Pos（ Proof of Stake 的缩写） 是一种共识机制，共识机制是一整套由协议、激励和想法构成的体系，使得整个网络的节点能够就区块链状态达成一致。
@@ -1434,6 +1966,7 @@ DApp 在大规模采用上，也面临一些问题，dApps 的用户体验通常
 
 
 
+
 分享百科
 
 # **PoW**
@@ -1504,6 +2037,7 @@ POW工作量证明的主要流程为：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1588,6 +2122,7 @@ DEX 主要采用以下几种交易模型：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -2194,6 +2729,7 @@ function setState(State newState) internal {
 
 
 
+
 ### [**1\. Gas 优化**](https://web3intern.xyz/zh/smart-contract-development/#_1-gas-%E4%BC%98%E5%8C%96)
 
 **基本原理与计量单位**
@@ -2533,6 +3069,7 @@ function setState(State newState) internal {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -3348,6 +3885,7 @@ ERC20 Permit 通过引入链下签名机制，为代币授权带来了革命性�
 
 
 
+
 ## **什么是 ERC20?**
 
 [ERC20](https://learnblockchain.cn/docs/eips/EIPS/eip-20) 是 Ethereum 网络上最出名且应用最广的代币标准之一。它提供了一个统一的接口标准，用于创建可互换代币，这些代币可以用来代表任何事物，从货币到积分等。
@@ -4018,6 +4556,7 @@ ERC-1363 标准可以在任何应用 ERC-20 标准的地方使用。在作者看
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -5155,6 +5694,7 @@ contract Handler is Test {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -7102,11 +7642,13 @@ contract CompleteExample {
 
 
 
+
 今天好忙 先打卡占位 等会来补
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -8036,6 +8578,7 @@ solidity: {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -9048,6 +9591,7 @@ Alice发交易：
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -10088,6 +10632,7 @@ genesisBlock Block {
 
 
 
+
 以太坊网络本质是一个 **没有中央管理员、全球所有人共同维护的公开账本**（记录所有以太坊交易和数据），但这个账本有一套严格的 “记账规矩”（比如：怎么算一笔交易有效、怎么更新账本、怎么防造假）。**客户端软件**，就是把这些 “记账规矩” 翻译成电脑能看懂的程序，相当于给你的电脑装了一套 \*\*「合规记账工具 + 验真助手」\*\*它的核心工作：
 
 1.  **按规矩验真假**：别人发来新的账本页（区块链里的「区块」），它会检查这笔账是不是符合规则，防止有人篡改数据；
@@ -10291,6 +10836,7 @@ Gossip 协议负责 **“主动扩散新消息”**，保证新交易 / 区块�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -11034,6 +11580,7 @@ BlackRock是全球最大资产管理公司（管理10万亿美元）。
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
