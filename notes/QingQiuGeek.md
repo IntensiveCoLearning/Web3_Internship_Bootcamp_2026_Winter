@@ -17,103 +17,103 @@ timezone: UTC+8
 <!-- Content_START -->
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
-\## EXTCODESIZE 检查  
-  
-EVM 认为对一个不存在的合约的调用总是成功的，即使这个地址根本不是合约（比如一个普通钱包地址），EVM 也不会报错，而是：  
-  
+\## EXTCODESIZE 检查
+
+EVM 认为对一个不存在的合约的调用总是成功的，即使这个地址根本不是合约（比如一个普通钱包地址），EVM 也不会报错，而是：
+
 \> 不执行任何代码  
 \> 返回成功（success = true）  
-\> 返回数据为空（returndata = ""）  
-  
-所以为了避免上述问题，Solidity 在\*\*高级调用\*\*时会自动插入一个检查：  
-  
+\> 返回数据为空（returndata = “”）
+
+所以为了避免上述问题，Solidity 在\*\*高级调用\*\*时会自动插入一个检查：
+
 \> 在调用前，先用 EXTCODESIZE 操作码查询目标地址是否有代码。  
 \> 如果 code size == 0 → revert  
-\> 如果 code size > 0 → 正常调用  
-  
-但是有例外：  
-  
-1\. 如果要对返回数据进行 ABI 解码，则会跳过 EXTCODESIZE 检查，直接调用。  
-  
-\> 因为即使对方是空地址，CALL 也会返回空数据（""）  
+\> 如果 code size > 0 → 正常调用
+
+但是有例外：
+
+1\. 如果要对返回数据进行 ABI 解码，则会跳过 EXTCODESIZE 检查，直接调用。
+
+\> 因为即使对方是空地址，CALL 也会返回空数据（“”）  
 \> 当你尝试用 ABI 解码空数据时，解码器会失败并 revert  
-\> 所以“让解码器报错”和“提前检查”效果一样，但后者省了一次 EXTCODESIZE 操作（节省 gas）  
-  
-2\. 低级调用（.call, .delegatecall 等）没有 EXTCODESIZE 检查，低级调用是“裸操作”，完全信任开发者  
-  
-3\. 预编译合约（如 ECDSA 签名验证 0x1、SHA256 0x2 等）是 EVM 内置的特殊地址，没有字节码（extcodesize == 0），使用高级调用调用预编译合约时会 revert，调用失败，因此调用预编译合约要用低级调用。  
-  
+\> 所以“让解码器报错”和“提前检查”效果一样，但后者省了一次 EXTCODESIZE 操作（节省 gas）
+
+2\. 低级调用（.call, .delegatecall 等）没有 EXTCODESIZE 检查，低级调用是“裸操作”，完全信任开发者
+
+3\. 预编译合约（如 ECDSA 签名验证 0x1、SHA256 0x2 等）是 EVM 内置的特殊地址，没有字节码（extcodesize == 0），使用高级调用调用预编译合约时会 revert，调用失败，因此调用预编译合约要用低级调用。
+
 \`\`\`c  
 // 假设有一个接口指向 0x1（ecrecover 预编译）  
 IECRecover ecrecover = IECRecover(0x1);  
-bytes32 result = ecrecover.someFunction(...); // ← Solidity 会先检查 extcodesize(0x1)  
-// 发现为 0 → 直接 revert！调用失败  
-  
-bytes memory data = abi.encodeWithSignature("transfer(address,uint256)", to, amount);  
+bytes32 result = ecrecover.someFunction(…); // ← Solidity 会先检查 extcodesize(0x1)  
+// 发现为 0 → 直接 revert！调用失败
+
+bytes memory data = abi.encodeWithSignature(“transfer(address,uint256)”, to, amount);  
 (bool success, bytes memory ret) = address(0x1).call(data);  
 require(success);  
-// 然后手动 abi.decode(ret, ...)，调用成功  
-\`\`\`  
-  
-\## 外部函数调用  
-  
-feed.info{value: 10, gas: 800} 只在本地设置 value 和随函数调用发送的 gas 数量，\*\*最后的括号执行实际调用\*\*。所以 feed.info{value: 10, gas: 800} 不会调用函数， value 和 gas 的设置也会丢失，只有 feed.info{value: 10, gas: 800}() 执行了函数调用。  
-  
+// 然后手动 abi.decode(ret, …)，调用成功  
+\`\`\`
+
+\## 外部函数调用
+
+[feed.info](http://feed.info){value: 10, gas: 800} 只在本地设置 value 和随函数调用发送的 gas 数量，\*\*最后的括号执行实际调用\*\*。所以 [feed.info](http://feed.info){value: 10, gas: 800} 不会调用函数， value 和 gas 的设置也会丢失，只有 [feed.info](http://feed.info){value: 10, gas: 800}() 执行了函数调用。
+
 \`\`\`c  
-pragma solidity >=0.6.2 <0.9.0;  
-  
+pragma solidity >=0.6.2 <0.9.0;
+
 contract InfoFeed {  
 function info() public payable returns (uint ret) { return 42; }  
-}  
-  
+}
+
 contract Consumer {  
 InfoFeed feed;  
 function setFeed(InfoFeed addr) public { feed = addr; }  
-function callFeed() public { feed.info{value: 10, gas: 800}(); }  
+function callFeed() public { [feed.info](http://feed.info){value: 10, gas: 800}(); }  
 //要使用value、gas，需要对info函数用payable修饰  
 }  
-\`\`\`  
-  
-\## 溢出  
-  
+\`\`\`
+
+\## 溢出
+
 \`\`\`c  
 //上溢：当一个数超过类型最大值时  
 uint8 a = 255;  
-a = a + 1; // 255 + 1 = 256，但 uint8 最大是 255 → 溢出  
-  
+a = a + 1; // 255 + 1 = 256，但 uint8 最大是 255 → 溢出
+
 //下溢：当一个数低于类型最小值时  
 uint8 b = 0;  
 b = b - 1; // 0 - 1 = -1，但 uint8 不能为负 → 下溢  
-\`\`\`  
-  
-Solidity 0.8.0 之前对于溢出的行为：静默回绕  
-  
+\`\`\`
+
+Solidity 0.8.0 之前对于溢出的行为：静默回绕
+
 \`\`\`c  
 // Solidity < 0.8.0  
 uint8 x = 255;  
 x++; // x 变成 0（255 → 0）  
 uint8 y = 0;  
-y--; // y 变成 255（0 → 255）  
-\`\`\`  
-  
-攻击者可利用此漏洞盗取资金，\[漏洞\](https://github.com/sec-bit/awesome-buggy-erc20-tokens?spm=5176.28103460.0.0.96a07551SGudnY)，因此开发者必须使用 SafeMath 库手动检查。  
-  
-Solidity 0.8.0+ 对于溢出自动 revert，如果还想使用旧的“回绕行为”，可以用\`unchecked\`  
-  
+y–; // y 变成 255（0 → 255）  
+\`\`\`
+
+攻击者可利用此漏洞盗取资金，\[漏洞\]([https://github.com/sec-bit/awesome-buggy-erc20-tokens?spm=5176.28103460.0.0.96a07551SGudnY](https://github.com/sec-bit/awesome-buggy-erc20-tokens?spm=5176.28103460.0.0.96a07551SGudnY))，因此开发者必须使用 SafeMath 库手动检查。
+
+Solidity 0.8.0+ 对于溢出自动 revert，如果还想使用旧的“回绕行为”，可以用\`unchecked\`
+
 \`\`\`  
 uint8 x = 255;  
 unchecked {  
 x++; // x = 0，不会 revert  
 }  
-\`\`\`  
-  
-\## try/catch  
-  
+\`\`\`
+
+\## try/catch
+
 \`\`\`c  
-pragma solidity >=0.8.1;  
-  
-interface DataFeed { function getData(address token) external returns (uint value); }  
-  
+pragma solidity >=0.8.1;
+
+interface DataFeed { function getData(address token) external returns (uint value); }
+
 contract FeedConsumer {  
 DataFeed feed;  
 uint errorCount;  
@@ -141,21 +141,22 @@ return (0, false);
 }  
 }  
 }  
-\`\`\`  
-  
-\## 常量变量（constant）和不可改变的变量（immutable）  
-  
-状态变量可以被声明为 constant 或 immutable，这两种变量\*\*在合约构建完成后不能被修改\*\*。  
-  
-对于 constant 变量，其值必须在编译时固定，也可以在文件级别定义 constant 变量。  
-  
-对于 immutable 变量，仍然可以在构造时分配。与普通的状态变量相比，constant 和 immutable 的燃料成本要低得多。  
-  
+\`\`\`
+
+\## 常量变量（constant）和不可改变的变量（immutable）
+
+状态变量可以被声明为 constant 或 immutable，这两种变量\*\*在合约构建完成后不能被修改\*\*。
+
+对于 constant 变量，其值必须在编译时固定，也可以在文件级别定义 constant 变量。
+
+对于 immutable 变量，仍然可以在构造时分配。与普通的状态变量相比，constant 和 immutable 的燃料成本要低得多。
+
 目前支持常量和不可变量的类型是 字符串类型 （仅用于常量）和 值类型。
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 \-–  
 date: ‘2026-02-04 12:00:00’  
@@ -324,11 +325,13 @@ EVM 不是基于寄存器的，而是基于栈的，因此所有的计算都在�
 
 
 
+
 打卡，今天在做foundry的demo
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -438,6 +441,7 @@ require(sent);
 
 
 
+
 Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas，具体可以看\[以太坊 操作码\]([https://ethereum.org/zh/developers/docs/evm/opcodes/](https://ethereum.org/zh/developers/docs/evm/opcodes/))，gas 优化目标是减少交易所需的总 gas，提高用户体验并降低成本。
 
 \*\*区块链数据存储位置有三种：storage（存储，也就是磁盘）、memory（内存，临时的）、calldata（只读数据）\*\*
@@ -522,6 +526,7 @@ for (uint i = 0; i < len; ++i) {
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -658,6 +663,7 @@ UEX 全称 Universal Exchange **全场景交易所**，由 Bitget 首席执行�
 
 
 
+
 \## 漏洞
 
 \### 重入攻击 Reentrancy
@@ -768,6 +774,7 @@ require(sent);
 
 
 
+
 [x402](https://www.x402.org/)
 
 [链技术](https://www.eoje.cn/qkljs/11406.html)
@@ -848,6 +855,7 @@ v2 在 v1 基础上，实现了：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -988,6 +996,7 @@ ERC-1271 定义了一个标准化的函数 isValidSignature(bytes32 \_messageHas
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1222,6 +1231,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -1356,6 +1366,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -1407,11 +1418,13 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1534,6 +1547,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -1547,6 +1561,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1922,6 +1937,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -2026,6 +2042,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -2060,6 +2077,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2206,6 +2224,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2439,6 +2458,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -2589,6 +2609,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -2629,6 +2650,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
