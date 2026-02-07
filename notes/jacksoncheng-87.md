@@ -15,8 +15,200 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+## Uniswap V2 开发实战笔记
+
+### 第一节：Overview (架构概览)
+
+Uniswap V2 采用了经典的**核心 (Core)** 与**周边 (Periphery)** 分离的架构。这种设计不仅提高了安全性，还允许周边合约进行灵活升级。
+
+-   **Core (核心合约):**
+    
+    -   `UniswapV2Factory`: 负责创建和管理所有的交易对（Pairs）。它使用 `CREATE2` 确定性地部署合约。
+        
+    -   `UniswapV2Pair`: 核心逻辑所在，处理 `mint`（添加流动性）、`burn`（移除流动性）和 `swap`。
+        
+-   **Periphery (周边合约):**
+    
+    -   `UniswapV2Router02`: 开发者最常交互的合约。它负责处理复杂的逻辑，如：多级路由（Multi-hop）、滑点计算、以及与 ETH 的交互（包装/拆解 WETH）。
+        
+
+**Tips : Key Point:** 核心合约极其精简，不直接处理 ETH，只处理 ERC20。所有的 ETH 交互都在 Router 层通过 WETH 转换完成。
+
+* * *
+
+### 第二节：Swap (代币交换实操)
+
+在 Uniswap V2 中，交换遵循 **恒定乘积公式** ： X Y = K。作为开发者，我们通常调用 Router 合约。
+
+核心代码实现 (Solidity)
+
+如果你想在自己的合约中发起一次 Swap（例如：用 DAI 换 WETH ）：
+
+Solidity
+
+```
+// 1. 实例化 Router
+IUniswapV2Router02 router = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+
+// 2. 准备交易路径 (Path)
+address[] memory path = new address[](2);
+path[0] = address(DAI);   // 输入代币
+path[1] = router.WETH();  // 输出代币 (WETH)
+
+// 3. 执行交换
+// swapExactTokensForTokens: 指定输入的代币数量，换取尽可能多的输出代币
+router.swapExactTokensForTokens(
+    amountIn,          // 你投入的 DAI 数量
+    amountOutMin,      // 接受的最小输出（防止滑点）
+    path,              // 交易路径
+    msg.sender,        // 接收代币的地址
+    block.timestamp    // 过期时间
+);
+```
+
+关键参数拆解：
+
+-   **amountOutMin:** 这是防御**夹子机器人 (Sandwich Attack)** 的核心。通常通过 `getAmountsOut` 预估后再减去可接受的滑点比例（如 0.5%）。
+    
+-   **Deadline:** 保护用户不因为网络拥堵导致在价格剧烈波动后才成交。
+    
+
+* * *
+
+### 第三节：Create Pool (创建流动性池)
+
+创建池子本质上是在 Factory 合约中注册一个新的 `Pair` 合约。
+
+1\. 自动创建 (通过 Router 添加流动性)
+
+在实际操作中，我们很少直接调用 Factory。当你调用 `addLiquidity` 时，如果该交易对不存在，Router 会自动帮你创建：
+
+Solidity
+
+```
+router.addLiquidity(
+    tokenA,
+    tokenB,
+    amountADesired,
+    amountBDesired,
+    amountAMin,
+    amountBMin,
+    to,
+    deadline
+);
+```
+
+2\. 底层原理 (Factory)
+
+Factory 内部通过 `createPair` 函数实现，它会将两个代币地址按数值大小排序（`token0` < `token1`），以确保每个交易对的唯一性。
+
+```
+// Factory 内部逻辑伪代码
+function createPair(address tokenA, address tokenB) external returns (address pair) {
+    (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
+    // 使用 CREATE2 部署，地址可预测
+    bytes32 salt = keccak256(abi.encodePacked(token0, token1));
+    pair = address(new UniswapV2Pair{salt: salt}());
+    // ... 初始化并记录 ...
+}
+```
+
+## Uniswap V3 开发实战笔记：集中流动性篇
+
+### 第一节：Course Intro (课程导引)
+
+本课程的核心目标是理解 V3 如何通过**数学优化**和**集中流动性 (Concentrated Liquidity)** 提高资本效率。
+
+-   **从 ERC20 到 ERC721**：在 V2 中，流动性凭证是普通的 LP Token；在 V3 中，由于每个人的价格区间不同，流动性仓位变成了**不可替代的 NFT (ERC721)**。
+    
+-   **开发环境**：依然建议使用 **Foundry**。V3 的计算涉及大量的 `Tick` 和 `Q64.96` 定点数运算，测试驱动开发 (TDD) 在这里至关重要。
+    
+
+* * *
+
+### 第二节：Uniswap V3 Intro (V3 核心架构)
+
+V3 并不是简单地替换了 V2，而是重新定义了 AMM 的游戏规则。
+
+-   **集中流动性 (Concentrated Liquidity)**：
+    
+    -   **V2 痛点**：流动性分布在 \[0, 正无穷\]，大部分资金在远离当前价格时处于闲置状态。
+        
+    -   **V3 创新**：允许 LP 选择特定的价格区间 \[Pmin, Pmax}\] 提供流动性。当价格在该区间内时，LP 赚取手续费；一旦脱离区间，流动性变为 100% 的单一代币并停止赚取收益。
+        
+-   **多重费率层级 (Multiple Fee Tiers)**：
+    
+    -   不再统一收 0.3%。根据资产波动性提供：0.01% (稳定币对), 0.05%, 0.3%, 和 1.0% (长尾资产)。
+        
+-   **预言机 (Oracle) 升级**：
+    
+    -   V3 内置了更高效的算术平均价格 (TWAP) 预言机，通过单一存储槽即可获取历史数据，大大降低了集成成本。
+        
+
+* * *
+
+### 第三节：Spot Price (现货价格与数学逻辑)
+
+在 V3 中，价格的表示不再是简单的x/y，而是引入了 `sqrtPriceX96` 和 `Tick` 的概念。
+
+1\. 价格的数学表示： sqrtP
+
+为了优化计算，Uniswap V3 存储的是**价格的平方根**。
+
+公式：text{sqrtPriceX96} = \\sqrt{P} \\cdot 2^{96}
+
+-   **为什么用平方根？** 在交换计算中，\\sqrt{P} 的变化与代币数量的变化呈线性关系，能有效规避溢出并简化计算。
+    
+-   **什么是 X96？** 这表示定点数逻辑，即数字左移了 96 位。
+    
+
+2\. Tick：价格的“刻度”
+
+由于流动性是分段的，V3 将价格轴切分成了无数个离散的连续点，称为 **Tick**。
+
+-   每个 Tick 对应一个价格：$P(i) = 1.0001^i$
+    
+-   当价格变动时，实际上是在不同的 Tick 之间“穿梭”。
+    
+-   **Tick Index 与价格转换**：
+    
+    Solidity
+    
+    ```
+    // 价格 P = 1 时，Tick = 0
+    // 价格加倍，Tick 约增加 6931
+    ```
+    
+
+3\. 代码实操技巧：获取当前价格
+
+如果你想在合约中获取 V3 池子的当前价格，需要访问 `slot0`：
+
+```
+// 1. 实例化 V3 池子 (需已知池子地址)
+IUniswapV3Pool pool = IUniswapV3Pool(0x...);
+
+// 2. 读取 slot0
+// sqrtPriceX96: 当前平方根价格
+// tick: 当前价格对应的 Tick 索引
+(uint160 sqrtPriceX96, int24 tick, , , , , ) = pool.slot0();
+
+// 3. 将 sqrtPriceX96 转换为人类可读的价格 (伪代码逻辑)
+// Price = (sqrtPriceX96 / 2^96)^2
+```
+
+总结：
+
+-   **V2 像是一片大海**，水很浅但覆盖全覆盖；
+    
+-   **V3 像是一口深井**，你把水（资金）集中在最可能成交的价格区间，从而获得极高的乘数效应。
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 简历策略：
 
 **核心一：必须要有产出结果**
@@ -80,6 +272,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 ### 技术/开发向的成长路径
 
@@ -224,6 +417,7 @@ AI生成的所有代码都应该是你能看懂的、自己也能实现的。如
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
 
+
 ### **Web3 DevRel 职业分享会:**
 
 ### **1.DevRel 的定义和职责**
@@ -362,6 +556,7 @@ AI生成的所有代码都应该是你能看懂的、自己也能实现的。如
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -513,6 +708,7 @@ const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f
 
 
 
+
 ### 就业简历指导&面经分享
 
 一、简历要求：
@@ -632,6 +828,7 @@ const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f
 
 
 
+
 **本周总结：**
 
 本周主要是和三个小伙伴完成我们的黑客松项目，叫“Time Gambler(时间赌徒)”。这个项目我们给他的定义是是一个 **赌注驱动 (Stake-Driven)** 的去中心化行为矫正协议。 我们致力于解决现代人最大的痛点：**拖延 (Procrastination)** 与 **注意力涣散 (ADHD)**。引入 **“真金白银的抵押 (Staking)”** + **“SpoonOS 的严格审计 (AI Audit)”。**为了实现这个目标，我们试着做减法把UI界面做的尽可能地简洁，让人更容易去集中注意力去做一件事情，而不是跟现在市面上大部分app一样“偏养成系",我们的技术架构是这样的：
@@ -691,6 +888,7 @@ const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -844,6 +1042,7 @@ return messages\[user\].length;
 
 
 
+
 ### 学习ERC的标准
 
 ### 1\. 基础资产 (生态基石)
@@ -921,6 +1120,7 @@ return messages\[user\].length;
 
 
 
+
 Octant 是由 Golem 基金会发起的实验性公共资助平台，旨在利用ETH 质押收益创建了一个可持续的 Web3 项目公共资助模型。
 
 1\. 核心运行逻辑与分配机制
@@ -974,6 +1174,7 @@ Octant成功展示了如何通过存量资产项目的利息（收益率）除�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1047,6 +1248,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1263,6 +1465,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 
 
+
 **黑客松和 Vibe Coding（AI 辅助编程）**
 
 -   团队配置建议：3-4人团队（2个开发+1个产品+1个PM），PM在演示时非常重要
@@ -1302,6 +1505,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1418,6 +1622,7 @@ Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1570,6 +1775,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2138,6 +2344,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -2471,6 +2678,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -2717,6 +2925,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -2799,6 +3008,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3022,6 +3232,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -3029,6 +3240,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3121,6 +3333,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3284,6 +3497,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3604,6 +3818,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -3667,6 +3882,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3839,6 +4055,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
