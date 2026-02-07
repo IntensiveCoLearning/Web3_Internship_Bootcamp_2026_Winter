@@ -15,8 +15,42 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+如何进入 Web3
+
+SmartDeer 全球招&全球雇全球人力资源一站式服务解决方案
+
+6 00
+
+从 Web2 带能力迁移
+
+Web2 头部公司技术/产品/ 增长有海外/ 英文工作经验，能独立交付项目成
+
+果
+
+HR / 财务/法务/ 运营支持
+
+全球雇佣 / 薪酬/合规 / 牌照
+
+从生側切入 Pomisdonles Wok
+
+DAO
+
+开源社区
+
+投资研究社区
+
+建立链上声誉
+
+Twitter (X) / Farcaster
+
+输出研报、参与 Space 讨论，让Founder 在公域流量池里看到你
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 Web3关鍵特性
 
 去中心化
@@ -45,11 +79,13 @@ Web3关鍵特性
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
+
 今天开会主要讲述sop需要怎么调整 目前的太细致了不用分那么多职能，并且提醒把自己的分工时间上传
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 不同岗位的能力要求
@@ -84,6 +120,7 @@ discord等背景人选：
 
 
 
+
 区块链不可篡改，因为需要时间确认：
 
 为什么要等确认？
@@ -115,6 +152,7 @@ PoS(权益证明)：ETH
 
 
 
+
 1.29 co building 核心观点
 
 1\. Web coding 的关键是“你是谁”：在 AI 出现后，我们很多时候在写提示词；更重要的是把自己定位为负责人/组长：理解需求、拆分任务、评审方案、推动实施。
@@ -132,6 +170,7 @@ PoS(权益证明)：ETH
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -184,6 +223,7 @@ Ray 的核心观点及依据：提出完美团队三要素为创意优先、分�
 
 
 
+
 **（一）MCP 相关内容**
 
 介绍 MCP 作为 Agent 与外部工具之间的标准通信协议，支持运行时动态加载工具，避免传统方式下工具与 Agent 强耦合的问题。MCP 支持不同开发者提供的 MCP Server（如 DeepWiki MCP、TeaVM MCP），实现工具生态共享与独立升级。
@@ -208,6 +248,7 @@ Ray 的核心观点及依据：提出完美团队三要素为创意优先、分�
 
 
 
+
 今天参加了openday 主要介绍了我们黑客松spark ai 的玩法 赛道 奖励机制等 看到自己的作品被展示出来时自豪感满满 也有老师分享心得 受益匪浅
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
@@ -221,11 +262,13 @@ Ray 的核心观点及依据：提出完美团队三要素为创意优先、分�
 
 
 
+
 ![IMG_5177.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-26-1769435358174-IMG_5177.png)
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -250,6 +293,7 @@ Ray 的核心观点及依据：提出完美团队三要素为创意优先、分�
 
 
 
+
 今天加入了黑客松筹备组 我负责设计和运营策划
 
 会议主要先破冰 讲述各个组长的优势和分工 然后讲了后面一周的任务安排 怎么去合理完成任务
@@ -257,6 +301,7 @@ Ray 的核心观点及依据：提出完美团队三要素为创意优先、分�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -297,6 +342,7 @@ TS：可以模拟前端数据流与复杂跨合约交互
 
 
 
+
 今天有两个会议：uniswap 工作原理解析 和休闲黑客松案例解析
 
 第一个主要给我们讲解了uniswap 的运行原理 x·y=k，老师还用数学思维给我们推理了这个公式，还有一些关于流动性池的知识
@@ -319,11 +365,13 @@ TS：可以模拟前端数据流与复杂跨合约交互
 
 
 
+
 ![IMG_4924.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/Clarice-vv/images/2026-01-20-1768922559745-IMG_4924.png)
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -422,6 +470,7 @@ Twitter (X) / Farcaster
 
 
 
+
 补昨日笔记：
 
 主要就是一些学员web3的心得和感受
@@ -431,6 +480,7 @@ Twitter (X) / Farcaster
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -458,6 +508,7 @@ SpoonOS架构概览：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -525,6 +576,7 @@ Web3就是：用私钥签名证明你是谁，用共识网络保证账本可信�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
