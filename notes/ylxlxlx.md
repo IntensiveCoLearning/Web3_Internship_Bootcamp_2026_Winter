@@ -15,8 +15,24 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+明天就要结束实习计划了。比起“输出些什么”，还是更想回头看看我做了些什么。
+
+我不敢说我掌握了多少知识，那些整理完毕的思维导图肯定还要来回翻的，回放也要时不时重温，我已经很久没有在社媒发布学习总结了，如果一定要好好经营一个账号，我希望它的主页全是有价值的东西。总之，还要好好沉淀才行。
+
+但是回头看，我还是获得了很多微小的进步。在推上刷到0x开头的东西，我不再纠结那是什么神秘代码，那些黑话我也慢慢看懂了；以前的计算机课没有教过编程，我连 py 都搞不清楚，即使这样还是摸索着弄明白了一点 remix ；以前一直想学数媒的，海报设计让我稍稍圆了这个梦。我第一次做到每天记录自己，打字速度也变快了……
+
+可能我真的走得很慢很慢，很多时候被焦虑席卷也是真的，但我想，结营之后我还有很多地方可去。我可以好好学我的专业课，记住白丁老师讲的那些经济模型，可以坚持学英语，争取在母语之外的世界读到更多可能，可以力所能及去投入实践，努力去适应大家的工作节奏，可以一点点把研报啃透，模仿着写一个属于自己的作品集。
+
+比起可量化的结果，还是觉得在这里收获的更多是一个明确的方向吧。去年这个时候我就已经在焦虑志愿的事了，高考失利更是一记猛击，选择不复读就意味着接下来的每一步都在意料之外，DYOR 的日子比我想的要长久。
+
+还好，最后找到了这里。
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 补充了一些媒体相关的知识
 
 1\. 媒体在Web3生态中的定位是什么？
@@ -99,6 +115,7 @@ Web3 实习计划 2025 冬季实习生
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
+
 今天开了 SOP 的会议，也看到了大家的 SOP,对比之下提取了一些异同。
 
 相同点：
@@ -124,6 +141,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
 
+
 2.4：[https://share.mubu.com/doc/4cb10Ml2DBn](https://share.mubu.com/doc/4cb10Ml2DBn)
 
 ![2.4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-02-04-1770215385394-2.4.png)
@@ -131,6 +149,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -221,6 +240,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 2.2：[https://share.mubu.com/doc/6gRv6soyFnn](https://share.mubu.com/doc/6gRv6soyFnn)
 
 ![2.2.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-02-02-1770046676445-2.2.png)
@@ -228,6 +248,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -257,6 +278,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 疑似有点生病，胃疼一整天了TT
 
 又一次收集信息，这次要求一口气提完所以效果好了一些，但是面对一些艾特+私聊依然不回的友友还是比较麻烦，除了反复提醒也想不出什么更好的点了…
@@ -268,6 +290,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -307,6 +330,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 今天进行了黑客松的半程复盘，又有了一些心得。
 
 同样强调了全局观的重要性，看得出来大家对于这一点的重视（也算是一个共性的问题了）。对于“执行”和“策划”两种工作的不同，也达成了共识，鼓励大家踊跃参与“策划”任务而不是单独被动等待领活，这是很重要的一点。
@@ -338,6 +362,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.28：[https://share.mubu.com/doc/7aG5ZoXcgx7](https://share.mubu.com/doc/7aG5ZoXcgx7)
 
 ![1.28.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-28-1769611784966-1.28.png)
@@ -345,6 +370,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -407,6 +433,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.26：[https://share.mubu.com/doc/K1s7DGRqg7](https://share.mubu.com/doc/K1s7DGRqg7)
 
 ![1.26.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-26-1769441297945-1.26.png)
@@ -414,6 +441,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -437,6 +465,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -475,6 +504,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 今天发现被休闲黑客松筹备组录取了（）紧急补一下Notion的基础知识，后面再按需现学吧
 
 ### 核心三要素：Block（块）、Page（页面）、Database（数据库）
@@ -499,6 +529,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -557,6 +588,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.21：[https://share.mubu.com/doc/5n50wur\_S67](https://share.mubu.com/doc/5n50wur_S67)
 
 ![1.21.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-21-1769008293172-1.21.png)
@@ -564,6 +596,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -610,6 +643,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.19.：[https://share.mubu.com/doc/1ae7\_ByGOQ7](https://share.mubu.com/doc/1ae7_ByGOQ7)
 
 ![1.19..png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-19-1768835442719-1.19..png)
@@ -617,6 +651,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -667,6 +702,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.17: [https://share.mubu.com/doc/1TgnooGlYc](https://share.mubu.com/doc/1TgnooGlYc)
 
 ![1.17.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-17-1768660624749-1.17.png)
@@ -674,6 +710,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -754,6 +791,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.15：[https://share.mubu.com/doc/6m79uk4dKs7](https://share.mubu.com/doc/6m79uk4dKs7)
 
 ![1.15.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-15-1768489745986-1.15.png)
@@ -761,6 +799,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -815,6 +854,7 @@ X Space 一直在针对我（爆哭）
 
 
 
+
 1.13：[https://share.mubu.com/doc/msBQpFHRq7](https://share.mubu.com/doc/msBQpFHRq7)
 
 ![1.13.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ylxlxlx/images/2026-01-13-1768314188386-1.13.png)
@@ -824,6 +864,7 @@ X Space 一直在针对我（爆哭）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
