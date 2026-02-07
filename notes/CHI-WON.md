@@ -15,8 +15,523 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+# wagmi 开发笔记
+
+## 简介
+
+wagmi 是一个用于 Ethereum 的 React Hooks 库,提供了连接钱包、查询数据、发送交易等功能。它基于 viem 构建,提供了类型安全的 API 和优秀的开发体验。
+
+## 核心特性
+
+-   **TypeScript 优先**: 完整的类型支持
+    
+-   **React Hooks**: 符合 React 开发习惯
+    
+-   **自动缓存**: 智能的数据缓存和状态管理
+    
+-   **多链支持**: 轻松支持多个区块链网络
+    
+-   **钱包集成**: 支持多种主流钱包
+    
+
+## 快速开始
+
+### 1\. 安装依赖
+
+```bash
+npm install wagmi viem @tanstack/react-query
+```
+
+### 2\. 基础配置
+
+```typescript
+import { WagmiProvider, createConfig, http } from 'wagmi'
+import { mainnet, sepolia } from 'wagmi/chains'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { injected, metaMask, walletConnect } from 'wagmi/connectors'
+
+// 创建 wagmi 配置
+const config = createConfig({
+  chains: [mainnet, sepolia],
+  connectors: [
+    injected(),
+    metaMask(),
+    walletConnect({ projectId: 'YOUR_PROJECT_ID' }),
+  ],
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+  },
+})
+
+// 创建 QueryClient
+const queryClient = new QueryClient()
+
+// 在应用中使用
+function App() {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <YourApp />
+      </QueryClientProvider>
+    </WagmiProvider>
+  )
+}
+```
+
+## 常用 Hooks
+
+### 连接钱包
+
+useConnect - 连接钱包
+
+```typescript
+import { useConnect } from 'wagmi'
+
+function ConnectWallet() {
+  const { connect, connectors, isPending } = useConnect()
+
+  return (
+    <div>
+      {connectors.map((connector) => (
+        <button
+          key={connector.id}
+          onClick={() => connect({ connector })}
+          disabled={isPending}
+        >
+          {connector.name}
+        </button>
+      ))}
+    </div>
+  )
+}
+```
+
+useAccount - 获取账户信息
+
+```typescript
+import { useAccount } from 'wagmi'
+
+function Account() {
+  const { address, isConnected, chain } = useAccount()
+
+  if (!isConnected) return <div>未连接</div>
+
+  return (
+    <div>
+      <p>地址: {address}</p>
+      <p>链: {chain?.name}</p>
+    </div>
+  )
+}
+```
+
+useDisconnect - 断开连接
+
+```typescript
+import { useDisconnect } from 'wagmi'
+
+function DisconnectButton() {
+  const { disconnect } = useDisconnect()
+
+  return <button onClick={() => disconnect()}>断开连接</button>
+}
+```
+
+### 读取数据
+
+useBalance - 查询余额
+
+```typescript
+import { useBalance } from 'wagmi'
+
+function Balance() {
+  const { data, isLoading } = useBalance({
+    address: '0x...',
+  })
+
+  if (isLoading) return <div>加载中...</div>
+
+  return (
+    <div>
+      余额: {data?.formatted} {data?.symbol}
+    </div>
+  )
+}
+```
+
+useBlockNumber - 获取区块号
+
+```typescript
+import { useBlockNumber } from 'wagmi'
+
+function BlockNumber() {
+  const { data } = useBlockNumber({ watch: true })
+
+  return <div>当前区块: {data?.toString()}</div>
+}
+```
+
+useReadContract - 读取合约
+
+```typescript
+import { useReadContract } from 'wagmi'
+
+const abi = [
+  {
+    name: 'balanceOf',
+    type: 'function',
+    stateMutability: 'view',
+    inputs: [{ name: 'account', type: 'address' }],
+    outputs: [{ type: 'uint256' }],
+  },
+] as const
+
+function TokenBalance() {
+  const { data } = useReadContract({
+    address: '0x...',
+    abi,
+    functionName: 'balanceOf',
+    args: ['0x...'],
+  })
+
+  return <div>代币余额: {data?.toString()}</div>
+}
+```
+
+### 写入数据
+
+useWriteContract - 写入合约
+
+```typescript
+import { useWriteContract } from 'wagmi'
+
+const abi = [
+  {
+    name: 'transfer',
+    type: 'function',
+    stateMutability: 'nonpayable',
+    inputs: [
+      { name: 'to', type: 'address' },
+      { name: 'amount', type: 'uint256' },
+    ],
+    outputs: [{ type: 'bool' }],
+  },
+] as const
+
+function Transfer() {
+  const { writeContract, isPending } = useWriteContract()
+
+  const handleTransfer = () => {
+    writeContract({
+      address: '0x...',
+      abi,
+      functionName: 'transfer',
+      args: ['0x...', BigInt(1000000000000000000)],
+    })
+  }
+
+  return (
+    <button onClick={handleTransfer} disabled={isPending}>
+      {isPending ? '发送中...' : '转账'}
+    </button>
+  )
+}
+```
+
+useSendTransaction - 发送 ETH
+
+```typescript
+import { useSendTransaction } from 'wagmi'
+import { parseEther } from 'viem'
+
+function SendETH() {
+  const { sendTransaction, isPending } = useSendTransaction()
+
+  const handleSend = () => {
+    sendTransaction({
+      to: '0x...',
+      value: parseEther('0.01'),
+    })
+  }
+
+  return (
+    <button onClick={handleSend} disabled={isPending}>
+      发送 0.01 ETH
+    </button>
+  )
+}
+```
+
+useWaitForTransactionReceipt - 等待交易确认
+
+```typescript
+import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi'
+
+function TransferWithReceipt() {
+  const { data: hash, writeContract } = useWriteContract()
+  
+  const { isLoading, isSuccess } = useWaitForTransactionReceipt({
+    hash,
+  })
+
+  return (
+    <div>
+      <button onClick={() => writeContract({/* ... */})}>
+        发送交易
+      </button>
+      {isLoading && <div>等待确认...</div>}
+      {isSuccess && <div>交易成功!</div>}
+    </div>
+  )
+}
+```
+
+### 切换网络
+
+useSwitchChain - 切换链
+
+```typescript
+import { useSwitchChain } from 'wagmi'
+import { mainnet, sepolia } from 'wagmi/chains'
+
+function SwitchNetwork() {
+  const { chains, switchChain } = useSwitchChain()
+
+  return (
+    <div>
+      {chains.map((chain) => (
+        <button
+          key={chain.id}
+          onClick={() => switchChain({ chainId: chain.id })}
+        >
+          切换到 {chain.name}
+        </button>
+      ))}
+    </div>
+  )
+}
+```
+
+## 高级用法
+
+### 自定义 Connector
+
+```typescript
+import { createConnector } from 'wagmi'
+
+const customConnector = createConnector((config) => ({
+  id: 'custom',
+  name: 'Custom Wallet',
+  type: 'injected',
+  // 实现连接器接口
+  async connect() { /* ... */ },
+  async disconnect() { /* ... */ },
+  async getAccounts() { /* ... */ },
+  async getChainId() { /* ... */ },
+  // ...
+}))
+```
+
+### 使用多个配置
+
+```typescript
+import { createConfig } from 'wagmi'
+
+const mainnetConfig = createConfig({
+  chains: [mainnet],
+  // ...
+})
+
+const testnetConfig = createConfig({
+  chains: [sepolia],
+  // ...
+})
+
+// 根据环境选择配置
+const config = process.env.NODE_ENV === 'production' 
+  ? mainnetConfig 
+  : testnetConfig
+```
+
+### 监听事件
+
+```typescript
+import { useWatchContractEvent } from 'wagmi'
+
+function EventListener() {
+  useWatchContractEvent({
+    address: '0x...',
+    abi,
+    eventName: 'Transfer',
+    onLogs(logs) {
+      console.log('新的转账事件:', logs)
+    },
+  })
+
+  return <div>监听中...</div>
+}
+```
+
+## 最佳实践
+
+### 1\. 错误处理
+
+```typescript
+import { useReadContract } from 'wagmi'
+
+function SafeRead() {
+  const { data, error, isLoading } = useReadContract({
+    address: '0x...',
+    abi,
+    functionName: 'balanceOf',
+    args: ['0x...'],
+  })
+
+  if (isLoading) return <div>加载中...</div>
+  if (error) return <div>错误: {error.message}</div>
+
+  return <div>余额: {data?.toString()}</div>
+}
+```
+
+### 2\. 使用 useEffect 谨慎
+
+```typescript
+// ❌ 不推荐 - 可能导致无限循环
+useEffect(() => {
+  refetch()
+}, [data])
+
+// ✅ 推荐 - 使用 watch 选项
+const { data } = useBlockNumber({ watch: true })
+```
+
+### 3\. 缓存配置
+
+```typescript
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60_000, // 1 分钟
+      gcTime: 10 * 60_000, // 10 分钟
+    },
+  },
+})
+```
+
+### 4\. TypeScript 类型推断
+
+```typescript
+// 使用 as const 获得更好的类型推断
+const abi = [
+  {
+    name: 'balanceOf',
+    type: 'function',
+    inputs: [{ type: 'address' }],
+    outputs: [{ type: 'uint256' }],
+  },
+] as const
+
+// TypeScript 会自动推断参数和返回值类型
+const { data } = useReadContract({
+  abi,
+  functionName: 'balanceOf', // 有智能提示
+  args: ['0x...'], // 类型检查
+})
+```
+
+## 常见问题
+
+### Q: 如何处理钱包未安装?
+
+```typescript
+import { useConnect } from 'wagmi'
+
+function ConnectButton() {
+  const { connectors, connect } = useConnect()
+
+  return (
+    <div>
+      {connectors.map((connector) => (
+        <button
+          key={connector.id}
+          onClick={() => {
+            if (!connector.ready) {
+              alert('请先安装钱包')
+              return
+            }
+            connect({ connector })
+          }}
+        >
+          {connector.name}
+        </button>
+      ))}
+    </div>
+  )
+}
+```
+
+### Q: 如何处理网络切换?
+
+```typescript
+import { useAccount, useSwitchChain } from 'wagmi'
+import { mainnet } from 'wagmi/chains'
+
+function EnsureMainnet() {
+  const { chain } = useAccount()
+  const { switchChain } = useSwitchChain()
+
+  if (chain?.id !== mainnet.id) {
+    return (
+      <button onClick={() => switchChain({ chainId: mainnet.id })}>
+        请切换到主网
+      </button>
+    )
+  }
+
+  return <div>您在主网上</div>
+}
+```
+
+### Q: 如何优化性能?
+
+-   使用 `enabled` 选项控制查询
+    
+-   合理设置 `staleTime` 和 `gcTime`
+    
+-   避免不必要的重渲染
+    
+-   使用 `useMemo` 和 `useCallback`
+    
+
+```typescript
+const { data } = useReadContract({
+  address: '0x...',
+  abi,
+  functionName: 'balanceOf',
+  args: ['0x...'],
+  enabled: Boolean(address), // 只有在有地址时才查询
+  staleTime: 30_000, // 30 秒内不会重新请求
+})
+```
+
+## 资源链接
+
+-   [官方文档](https://wagmi.sh/)
+    
+-   [GitHub 仓库](https://github.com/wevm/wagmi)
+    
+-   [示例项目](https://wagmi.sh/examples)
+    
+-   [Viem 文档](https://viem.sh/)
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 # 以太坊开发学习笔记
 
 * * *
@@ -1206,6 +1721,7 @@ ZK-Rollups
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 # Web3 前端开发完整指南
 
 * * *
@@ -2000,6 +2516,7 @@ contract.on('Transfer', (...args) => {
 
 
 
+
 Finish：
 
 \[x\] Uniswap V3前三章实操
@@ -2007,6 +2524,7 @@ Finish：
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -2023,11 +2541,13 @@ Finish：
 
 
 
+
 \[x\] I人完成Demo路演😭，天下英雄如过江之鲫😔
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -2046,6 +2566,7 @@ Finish：
 
 
 
+
 一天极限跑完整个项目：
 
 repo : [https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo](https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo)
@@ -2053,6 +2574,7 @@ repo : [https://github.com/CHI-WON/Kite-AI-Coffee-Agent-Demo](https://github.com
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -4344,6 +4866,7 @@ contract CompleteHookExample is BaseHook {
 
 
 
+
 # Uniswap V3 学习笔记
 
 ## 1\. 概述
@@ -6010,6 +6533,7 @@ y = L * (√P - √P_a)
 
 
 
+
 # day16
 
 \[x\] Finish Challenge0 -Tokenization
@@ -6019,6 +6543,7 @@ y = L * (√P - √P_a)
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -6759,6 +7284,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day14
 
 \[x\] Uniswap V2 Factory合约代码解读
@@ -6783,6 +7309,7 @@ _最后更新：2026年1月_
 
 
 
+
 # day13
 
 \[x\]搭建了本地区块链节点
@@ -6792,6 +7319,7 @@ _最后更新：2026年1月_
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -7410,6 +7938,7 @@ library SafeMath {
 
 
 
+
 # DAY11
 
 周始，观废寝忘食刷榜、寻到offer者甚多，顿觉无力，浑噩踱步，不知所向
@@ -7423,6 +7952,7 @@ library SafeMath {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -7812,6 +8342,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY9
 
 古法笔记：
@@ -7842,6 +8373,7 @@ router.swapExactTokensForTokens(
 
 
 
+
 # DAY8
 
 \[\]frontend
@@ -7851,6 +8383,7 @@ router.swapExactTokensForTokens(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -7908,6 +8441,7 @@ ERC-721 是以太坊上一种用于非同质化代币的接口标准。这类代
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -7994,6 +8528,7 @@ viem 是一个用来和区块链打交道的前端/后端 JavaScript 库。\*\*�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -8145,6 +8680,7 @@ Gas：每笔交易收 **0.3%**
 
 
 
+
 # DAY4
 
 对foundry有了一个基本的认识，Foundry不是一个工具而是一套工具链，包括了forge, cast, anvil, chisel。Foundry通过rust语言编写，实现了一个非常快的EVM，测试、脚本和部署不需要再像Hardhat那样繁琐，一切都可以在Solidity语言中开发编写。Foundry中最重要的、最灵魂的就是Cheatcodes.
@@ -8243,6 +8779,7 @@ Definition of API: Application Programming Interface
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -8461,6 +8998,7 @@ event Transfer(address indexed from, address indexed to, uint256 value);
 
 
 
+
 # DAY2
 
 ## TASK:学习Hardhat3-Tutorial
@@ -8557,6 +9095,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
