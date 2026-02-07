@@ -15,8 +15,271 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+# Foundry Cheatcodes 核心笔记（MockCall / Label / Store）
+
+> 适用场景：**单元测试 / 安全测试 / 构造不可达状态 / 协议级模拟**
+
+* * *
+
+## 一、vm.mockCall —— 模拟外部调用返回值
+
+### 1️⃣ 是什么
+
+`vm.mockCall` 用来**强行指定某个合约调用的返回值**，而不执行真实逻辑。
+
+> 类似：Python 里的 mock / Jest 的 jest.mock
+
+```
+vm.mockCall(
+    address(target),
+    abi.encodeCall(Target.f, (x, y)),
+    abi.encode(uint256(99))
+);
+```
+
+* * *
+
+### 2️⃣ 解决什么问题
+
+✅ **隔离依赖**
+
+-   不想真的调用外部合约
+    
+-   不想触发复杂逻辑 / revert / gas 消耗
+    
+
+✅ **测试边界条件**
+
+-   外部合约返回异常值
+    
+-   模拟 oracle、DEX、ERC20 行为
+    
+
+✅ **安全测试**
+
+-   模拟恶意返回值
+    
+-   模拟被污染的依赖合约
+    
+
+* * *
+
+### 3️⃣ 核心机制（非常重要）
+
+```
+address + calldata  →  return data
+```
+
+-   **不是 mock 函数名**
+    
+-   而是 mock **“某个 calldata”**
+    
+-   只要 calldata 一样，就会返回你指定的值
+    
+
+⚠️ 参数必须 **完全匹配**
+
+```
+Target.f(1,1)  ✔
+Target.f(1,2)  ❌（mock 不生效）
+```
+
+* * *
+
+### 4️⃣ 常见坑
+
+❌ 忘记 `abi.encodeCall`  
+❌ 参数顺序/类型不一致  
+❌ 以为能 mock internal / private（不行）
+
+* * *
+
+### 5️⃣ 实战建议（你的 level）
+
+-   DeFi / Oracle / Price Feed → **必用**
+    
+-   ERC20 返回 false / 非标准实现 → **必测**
+    
+-   Audit 场景 → mock 恶意合约行为
+    
+
+* * *
+
+## 二、vm.label —— 给地址打“人类可读标签”
+
+### 1️⃣ 是什么
+
+给某个 address 起名字，只影响 **调试和 trace**。
+
+```
+vm.label(WETH, "WETH");
+```
+
+* * *
+
+### 2️⃣ 有什么用
+
+✅ **Stack Trace 更清晰**
+
+```
+call WETH.balanceOf(...)
+```
+
+而不是
+
+```
+call 0xC02aaA39b223FE8D...
+```
+
+✅ **调试 DeFi / 多合约系统**
+
+-   Router
+    
+-   Vault
+    
+-   Token
+    
+-   Attacker
+    
+
+* * *
+
+### 3️⃣ 特点
+
+-   ❌ 不影响链上状态
+    
+-   ❌ 不影响 gas
+    
+-   ✅ 只影响测试输出
+    
+
+* * *
+
+### 4️⃣ 强烈建议的使用习惯
+
+```
+vm.label(address(token), "USDC");
+vm.label(address(vault), "Vault");
+vm.label(address(attacker), "Attacker");
+```
+
+👉 **专业测试代码的标配**
+
+* * *
+
+## 三、[vm.store](http://vm.store) —— 直接写 EVM Storage（核武器）
+
+> 这是 **最危险但最强的 cheatcode**
+
+* * *
+
+### 1️⃣ 是什么
+
+绕过 Solidity，**直接往某个 storage slot 写值**
+
+```
+vm.store(
+    address(contract),
+    bytes32(slot),
+    bytes32(value)
+);
+```
+
+* * *
+
+### 2️⃣ 为什么要用
+
+✅ 构造 **正常逻辑无法到达的状态**
+
+-   owner 被改
+    
+-   balance 被篡改
+    
+-   mapping 注入数据
+    
+
+✅ 安全测试
+
+-   private ≠ safe
+    
+-   模拟攻击者“知道 storage 布局”
+    
+
+* * *
+
+### 3️⃣ Storage Slot 规则（重点）
+
+普通变量
+
+```
+// slot 0
+address owner;
+// slot 1
+uint256 password;
+```
+
+```
+vm.store(addr, bytes32(0), bytes32(uint256(uint160(newOwner))));
+```
+
+* * *
+
+Mapping（必考）
+
+```
+mapping(address => uint256) balances; // slot = 2
+```
+
+存储位置：
+
+```
+keccak256(abi.encode(key, mappingSlot))
+```
+
+示例：
+
+```
+bytes32 slot = keccak256(abi.encode(user, 2));
+vm.store(address(vault), slot, bytes32(uint256(100 ether)));
+```
+
+* * *
+
+### 4️⃣ [vm.store](http://vm.store) 能干什么（现实版）
+
+| 场景 | 作用 |
+| --- | --- |
+| 测试 withdraw | 直接给用户 balance |
+| 绕过 onlyOwner | 改 owner |
+| 验证“private 泄露” | 读 + 写 storage |
+| Fuzz 前状态构造 | 精确起点 |
+
+* * *
+
+### 5️⃣ 安全认知提升（非常重要）
+
+❗ **private ≠ 安全**  
+❗ **storage layout = attack surface**  
+❗ 攻击者 ≠ 不能读 storage（链上是透明的）
+
+👉 这正是为什么 **Foundry 测试 ≈ 安全研究工具**
+
+* * *
+
+## 四、三者对比速记表
+
+| Cheatcode | 用途 | 风险 |
+| --- | --- | --- |
+| mockCall | 模拟外部行为 | 低 |
+| label | 调试可读性 | 无 |
+| store | 强行改状态 | ⚠️ 高 |
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 ## 一、Web3 求职的“黄金判断标准”
 
 选平台 ≠ 平台多，而是 **信息质量高**：
@@ -220,6 +483,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 # 技术后端向 Jason：Web2 → Web3 转型之路｜Notes
 
@@ -472,6 +736,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 ## 一、人物与背景
 
 -   **Logic**：Bybit 前端开发工程师
@@ -722,6 +987,7 @@ Web3 必须懂：
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -1028,6 +1294,7 @@ Web3 必须懂：
 
 
 
+
 ## 1) Foundry Basic：`Counter` + `CounterTest`
 
 ### 合约逻辑
@@ -1241,6 +1508,7 @@ Foundry 的思路是：**先告诉它你要检查哪些字段** → **发出你�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1466,6 +1734,7 @@ Hardhat 默认 **automine=true**：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1736,6 +2005,7 @@ emit Buy(msg.sender, 1);
 
 
 
+
 ## 一、Foundry 是什么（一句话）
 
 **Foundry = 用 Rust 写的以 CLI 为核心的以太坊开发工具链**  
@@ -1961,6 +2231,7 @@ cast 交互 & 调试
 
 
 
+
 ## 1) Scaffold-ETH 是什么（核心卖点）
 
 -   **一句话**：Scaffold-ETH 是一个“本地链 + 合约开发 + 前端自动生成/适配”的全套 dApp 模板
@@ -2172,6 +2443,7 @@ cast 交互 & 调试
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -2531,6 +2803,7 @@ require(ok);
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2912,6 +3185,7 @@ require(tx.origin == msg.sender);
 
 
 
+
 # Uniswap Notes
 
 ## 一、Uniswap 的核心思想（一句话总览）
@@ -3167,6 +3441,7 @@ require(tx.origin == msg.sender);
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3622,6 +3897,7 @@ internal（状态修改）
 
 
 
+
 # 以太坊中文分享
 
 ![NotebookLM Mind Map.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/kmiliu/images/2026-01-19-1768827456773-NotebookLM_Mind_Map.png)
@@ -3719,6 +3995,7 @@ NotebookLM can be inaccurate; please double check its responses.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3913,6 +4190,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 
 
+
 # AI 及其基础概念
 
 ### 1\. 什么是 AI 智能体（Agent）？
@@ -4020,6 +4298,7 @@ A：目前没有完美方案，只能提高攻击成本（调用成本/评价成
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -4944,6 +5223,7 @@ function returnArray() external view returns (uint[] memory) {
 
 
 
+
 # Web3 实习手册[「安全与合规」](https://web3intern.xyz/zh/security/)
 
 ## 1）一句话总览：Web3 在国内的“红线”是什么？
@@ -5125,6 +5405,7 @@ Web3 项目常见：
 
 
 
+
 # Co-learning
 
 ## 运营
@@ -5245,6 +5526,7 @@ DeFi漏洞越来越深入：DeFi领域的安全性在2025年表现出相比往�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -6139,6 +6421,7 @@ EIP 的基本路径：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
