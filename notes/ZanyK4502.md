@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+今天主要在修改简历、看智能体拆解回放、研究 **Whisper AI+CTranslate 2 ，训练营总结**
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 一直在搞 recap 文案，漏打了 红温
 
 研究open code 中
@@ -42,6 +48,7 @@ gpt 给逻辑    snitch /gemini 生成前端代码  集成了codex的vs code
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 今天一直在忙 recap 
@@ -89,6 +96,7 @@ AI 智能体与多链生态加速融合，而「从智能决策到价值结算�
 
 
 
+
 现在在开黑客松筹备会议
 
 先打卡先
@@ -96,6 +104,7 @@ AI 智能体与多链生态加速融合，而「从智能决策到价值结算�
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -222,6 +231,7 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 
 
+
 今天收到布老师给我的简历建议
 
 ![22bf169358baaffe8515b05bd7770d2.jpg](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ZanyK4502/images/2026-02-02-1770044831330-22bf169358baaffe8515b05bd7770d2.jpg)
@@ -242,11 +252,13 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 
 
+
 黑客松demo中
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -320,6 +332,7 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 
 
+
 从今天起我要先打卡 笔记不能水下去了
 
 好吧上面那句是早上写的 但是今天一直在忙黑客松 现在是23：37 我真是疯了又筹备又参赛（自找的 第一次搞代码（ai牛逼
@@ -329,6 +342,7 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -387,6 +401,7 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 
 
+
 不知道记录点什么了，笔记也是越来越水了 服了 服了 不知道项目方看见这种笔记会怎么想
 
 这几天真的忙爆了 没有ai我可能已经死了 还有黑客松ama策划 推文 参赛项目构思 简历优化 补看数据视频 mini活动 我明天再总结吧 为了增效 研究了gpt和哈机密会员 今天双开了 原来的模型太辣了
@@ -394,6 +409,7 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -438,6 +454,7 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -564,11 +581,13 @@ boomthing 老师写的内容组 SOP 非常好，我看没有什么需要优化�
 
 
 
+
 先打卡
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -694,6 +713,7 @@ SOP = Standard Operating Procedure
 
 
 
+
 ![Untitled.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ZanyK4502/images/2026-01-23-1769183532873-Untitled.png)![Gemini_Generated_Image_o1v4dao1v4dao1v4.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ZanyK4502/images/2026-01-23-1769183553389-Gemini_Generated_Image_o1v4dao1v4dao1v4.png)
 
 做了这两个 大家觉得哪个好看
@@ -701,6 +721,7 @@ SOP = Standard Operating Procedure
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -919,6 +940,7 @@ SOP = Standard Operating Procedure
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1221,6 +1243,7 @@ handle这个词汇了解了
 
 
 
+
 先打卡先打卡 差点忘记打卡了今天 来不及了 简要记录一下吧
 
 感觉这是要开始上强度了
@@ -1282,6 +1305,7 @@ X Space = Twitter 里的“实时语音聊天室 / 直播间”
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1487,6 +1511,7 @@ RC 规范是写在 **EIP（Ethereum Improvement Proposal）框架内**
 
 
 
+
 今天不搞标题了，好吧今天弄那个推特，人都傻了，反正很麻烦 最终花了70大洋在闲鱼开了会员，
 
 有几个疑问
@@ -1560,6 +1585,7 @@ RC 规范是写在 **EIP（Ethereum Improvement Proposal）框架内**
 
 
 
+
 # 坚持还是偏执
 
 我没有什么好的文笔，就当是个日记吧，今天没有啥技术复盘，跟之前一样也没啥排版（到了真正内容创作我会严格排版的，太累了这个笔记就算了吧），简单复盘一下从开营到现在的心路历程吧，首先感觉群里的大部分同学都比我优秀的，方方面面，每次我完成任务后的成就感都在cl和会议环节狠狠击碎 完全是被按在地上踩，好吧 没事 次日我会再次站起来 这到底是毅力的坚持还是骨子的偏执我不知道，我只知道我当初认定的东西就必须完成，哦对了今天中午布老师介绍的AI工具很好用 谢谢布老师 然后我今天花了一点时间做兼职挣开推特会员的钱 我是真挂壁了 没事 都是小事 没有经济来源就是这个样子 每天为几个碎银破铜板操心 干就完了c\*\*\*
@@ -1569,6 +1595,7 @@ RC 规范是写在 **EIP（Ethereum Improvement Proposal）框架内**
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1830,6 +1857,7 @@ figma的熟悉 已经注册好了 但是客户端没有中文 网页端直接英
 
 
 
+
 # 徘徊、坚持、肯定
 
 ## 今天主要有三个点
@@ -1874,6 +1902,7 @@ ethereum 模式 tx table 数据表
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2019,6 +2048,7 @@ Chainlist 是社区维护的第三方工具，用于快速配置链的 RPC 和�
 
 
 
+
 # 松懈、焦虑、自省
 
 ### 由于自己的原因，导致今天的学习状态略显松懈，但总体节奏没有发生差错
@@ -2084,6 +2114,7 @@ Chainlist 是社区维护的第三方工具，用于快速配置链的 RPC 和�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
