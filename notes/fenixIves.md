@@ -15,8 +15,378 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+# 26 Reactive Contracts 跨链功能 Demo
+
+# 一、Demo 概述
+
+本Demo基于 Reactive Network（[https://dev.reactive.network）的](https://dev.reactive.network）的) Reactive Contracts 技术，实现 **ETH 链** 与 **BSC 链** 之间的简单跨链数据交互（链上消息传递+简单值同步），核心演示 Reactive Contracts 的跨链触发、事件监听及跨链响应能力，适配作业对跨链功能的核心要求。
+
+核心功能：ETH 链上部署消息发送合约，BSC 链上部署消息接收合约，通过 Reactive Network 的跨链中继机制，实现 ETH 链发送消息后，BSC 链自动接收并同步消息，同时触发简单的数值更新，完整复现 Reactive Contracts 跨链的核心流程。
+
+前置依赖：
+
+-   Node.js（v16+）、npm/yarn
+    
+-   Truffle/Hardhat（合约编译、部署工具，本Demo用Hardhat）
+    
+-   MetaMask（配置测试网账号，ETH Goerli 测试网、BSC Testnet）
+    
+-   Reactive Network SDK（@reactive-network/sdk）
+    
+-   测试网ETH、BSC测试币（用于支付Gas，可通过对应测试网 faucet 领取）
+    
+
+# 二、环境搭建
+
+## 2.1 初始化项目
+
+```bash
+# 1. 新建项目文件夹
+mkdir reactive-cross-chain-demo
+cd reactive-cross-chain-demo
+
+# 2. 初始化npm项目
+npm init -y
+
+# 3. 安装依赖
+npm install --save-dev hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
+npm install @reactive-network/sdk # Reactive Network 核心SDK
+npm install dotenv # 管理环境变量
+```
+
+## 2.2 配置Hardhat
+
+在项目根目录执行 `npx hardhat init`，选择「Create an empty hardhat.config.js」，然后修改配置文件（hardhat.config.js），添加测试网节点和账号：
+
+```javascript
+require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
+
+// 从.env文件读取私钥（测试用，请勿泄露真实私钥）
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+
+module.exports = {
+  solidity: "0.8.17", // 合约编译器版本，与Reactive Contracts兼容
+  networks: {
+    // ETH Goerli 测试网（发送链）
+    goerli: {
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`, // Infura API Key，可免费注册
+      accounts: [`0x${PRIVATE_KEY}`]
+    },
+    // BSC Testnet 测试网（接收链）
+    bscTestnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+      accounts: [`0x${PRIVATE_KEY}`]
+    }
+  }
+};
+```
+
+## 2.3 配置环境变量
+
+在项目根目录创建 .env 文件，填入以下内容：
+
+```text
+PRIVATE_KEY=你的测试网账号私钥（MetaMask中导出，测试用）
+INFURA_API_KEY=你的Infura API Key（用于ETH测试网节点）
+REACTIVE_API_KEY=你的Reactive Network API Key（可在https://dev.reactive.network注册获取，免费版足够测试）
+```
+
+# 三、合约编写（核心部分）
+
+本Demo包含2个合约：ETH链（Goerli）的 **CrossChainSender.sol**（消息发送合约）、BSC链（Testnet）的 **CrossChainReceiver.sol**（消息接收合约），均继承 Reactive Contracts 的核心接口，实现跨链交互。
+
+## 3.1 跨链发送合约（CrossChainSender.sol）
+
+路径：contracts/CrossChainSender.sol，功能：发送跨链消息，触发Reactive Network的跨链事件，指定接收链和接收合约。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+// 引入Reactive Contracts核心接口（跨链发送必备）
+import "@reactive-network/sdk/contracts/IReactiveCrossChain.sol";
+
+contract CrossChainSender {
+    // 注入Reactive Network的跨链核心合约地址（测试网地址，从Reactive文档获取）
+    address public reactiveCrossChainAddr = 0x1234567890abcdef1234567890abcdef12345678; // 替换为Reactive测试网地址
+    IReactiveCrossChain public reactiveCrossChain;
+
+    // 事件：记录跨链消息发送
+    event CrossChainMessageSent(string message, uint256 value, uint256 chainId);
+
+    constructor() {
+        // 初始化Reactive跨链合约实例
+        reactiveCrossChain = IReactiveCrossChain(reactiveCrossChainAddr);
+    }
+
+    /**
+     * @dev 发送跨链消息
+     * @param _message 要发送的消息
+     * @param _value 要同步的数值
+     * @param _destChainId 接收链ID（BSC Testnet链ID为97）
+     * @param _destContract 接收链上的合约地址
+     */
+    function sendCrossChainMessage(
+        string calldata _message,
+        uint256 _value,
+        uint256 _destChainId,
+        address _destContract
+    ) external payable {
+        // 1. 构造跨链消息（编码消息和数值，供接收链解析）
+        bytes memory messageData = abi.encode(_message, _value);
+
+        // 2. 调用Reactive Contracts的跨链发送方法
+        // 参数：接收链ID、接收合约地址、消息数据、Gas限制（测试用默认值）
+        reactiveCrossChain.sendCrossChainMessage{value: msg.value}(
+            _destChainId,
+            _destContract,
+            messageData,
+            200000 // Gas限制，可根据实际调整
+        );
+
+        // 3. 触发本地事件，便于调试
+        emit CrossChainMessageSent(_message, _value, _destChainId);
+    }
+
+    // 接收ETH（用于支付跨链Gas费用）
+    receive() external payable {}
+};
+```
+
+## 3.2 跨链接收合约（CrossChainReceiver.sol）
+
+路径：contracts/CrossChainReceiver.sol，功能：接收Reactive Network中继的跨链消息，解析消息并更新本地状态，实现跨链同步。
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+// 引入Reactive Contracts核心接口（跨链接收必备）
+import "@reactive-network/sdk/contracts/IReactiveCrossChainReceiver.sol";
+
+// 继承Reactive的跨链接收接口，必须实现onCrossChainMessage方法
+contract CrossChainReceiver is IReactiveCrossChainReceiver {
+    // 存储接收的跨链消息和数值
+    string public lastMessage;
+    uint256 public lastValue;
+    // 存储发送链ID
+    uint256 public lastSourceChainId;
+    // 存储发送合约地址
+    address public lastSourceContract;
+
+    // 事件：记录跨链消息接收
+    event CrossChainMessageReceived(string message, uint256 value, uint256 sourceChainId, address sourceContract);
+
+    /**
+     * @dev 跨链消息接收回调方法（Reactive中继器会调用此方法）
+     * 必须实现，否则无法接收跨链消息
+     * @param _sourceChainId 发送链ID（ETH Goerli链ID为5）
+     * @param _sourceContract 发送链上的合约地址
+     * @param _messageData 跨链消息数据（需解析）
+     */
+    function onCrossChainMessage(
+        uint256 _sourceChainId,
+        address _sourceContract,
+        bytes calldata _messageData
+    ) external override {
+        // 1. 解析跨链消息（与发送时的编码格式一致）
+        (string memory message, uint256 value) = abi.decode(_messageData, (string, uint256));
+
+        // 2. 更新本地状态，实现跨链同步
+        lastMessage = message;
+        lastValue = value;
+        lastSourceChainId = _sourceChainId;
+        lastSourceContract = _sourceContract;
+
+        // 3. 触发本地事件，便于调试
+        emit CrossChainMessageReceived(message, value, _sourceChainId, _sourceContract);
+    }
+};
+```
+
+# 四、合约编译与部署
+
+## 4.1 编译合约
+
+在项目根目录执行以下命令，编译2个合约（确保无报错）：
+
+```bash
+npx hardhat compile
+```
+
+编译成功后，会生成 artifacts 文件夹，包含合约ABI和字节码（部署和调用必备）。
+
+## 4.2 部署合约
+
+创建部署脚本，分别将发送合约部署到ETH Goerli测试网，接收合约部署到BSC Testnet测试网。
+
+路径：scripts/deploy.js
+
+```javascript
+const hre = require("hardhat");
+require("dotenv").config();
+
+async function main() {
+  // 1. 部署ETH Goerli链的发送合约（CrossChainSender）
+  console.log("Deploying CrossChainSender to ETH Goerli...");
+  const CrossChainSender = await hre.ethers.getContractFactory("CrossChainSender");
+  const senderContract = await CrossChainSender.deploy();
+  await senderContract.deployed();
+  console.log("CrossChainSender deployed to (ETH Goerli):", senderContract.address);
+
+  // 等待10秒，确保合约部署上链
+  await new Promise(resolve => setTimeout(resolve, 10000));
+
+  // 2. 部署BSC Testnet链的接收合约（CrossChainReceiver）
+  console.log("Deploying CrossChainReceiver to BSC Testnet...");
+  const CrossChainReceiver = await hre.ethers.getContractFactory("CrossChainReceiver");
+  const receiverContract = await CrossChainReceiver.deploy();
+  await receiverContract.deployed();
+  console.log("CrossChainReceiver deployed to (BSC Testnet):", receiverContract.address);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+## 4.3 执行部署
+
+```bash
+# 部署发送合约到ETH Goerli
+npx hardhat run scripts/deploy.js --network goerli
+
+# 部署接收合约到BSC Testnet
+npx hardhat run scripts/deploy.js --network bscTestnet
+```
+
+部署成功后，记录两个合约的地址（后续调用需用到）：
+
+-   ETH Goerli 发送合约地址：SENDER\_ADDR
+    
+-   BSC Testnet 接收合约地址：RECEIVER\_ADDR
+    
+
+# 五、跨链功能测试（核心演示）
+
+创建测试脚本，实现「ETH链发送消息 → Reactive Network中继 → BSC链接收消息并同步」的完整流程，路径：scripts/test-cross-chain.js
+
+```javascript
+const hre = require("hardhat");
+require("dotenv").config();
+const { ReactiveSDK } = require("@reactive-network/sdk");
+
+// 配置参数（替换为你部署的合约地址和测试网信息）
+const SENDER_ADDR = "你的ETH Goerli发送合约地址";
+const RECEIVER_ADDR = "你的BSC Testnet接收合约地址";
+const DEST_CHAIN_ID = 97; // BSC Testnet链ID
+const SOURCE_CHAIN_ID = 5; // ETH Goerli链ID
+
+async function main() {
+  // 1. 初始化Reactive SDK
+  const reactiveSDK = new ReactiveSDK({
+    apiKey: process.env.REACTIVE_API_KEY,
+    network: "testnet" // 测试网环境
+  });
+
+  // 2. 连接发送合约（ETH Goerli链）
+  const senderContract = await hre.ethers.getContractAt("CrossChainSender", SENDER_ADDR, await hre.ethers.getSigner());
+  console.log("Connected to CrossChainSender (ETH Goerli):", senderContract.address);
+
+  // 3. 发送跨链消息（消息内容、同步数值、接收链ID、接收合约地址）
+  const message = "Hello Reactive Cross-Chain!";
+  const value = 100; // 要同步的数值
+  const gasFee = hre.ethers.utils.parseEther("0.001"); // 跨链Gas费用（测试用，可调整）
+
+  console.log(`Sending cross-chain message to BSC Testnet: ${message}, value: ${value}`);
+  const tx = await senderContract.sendCrossChainMessage(
+    message,
+    value,
+    DEST_CHAIN_ID,
+    RECEIVER_ADDR,
+    { value: gasFee }
+  );
+  await tx.wait();
+  console.log("Cross-chain message sent! Tx hash:", tx.hash);
+
+  // 4. 等待Reactive中继器处理（测试网可能需要30-60秒）
+  console.log("Waiting for Reactive Network to relay message... (30 seconds)");
+  await new Promise(resolve => setTimeout(resolve, 30000));
+
+  // 5. 连接接收合约（BSC Testnet链），验证消息是否接收成功
+  const receiverContract = await hre.ethers.getContractAt("CrossChainReceiver", RECEIVER_ADDR, await hre.ethers.getSigner());
+  console.log("Connected to CrossChainReceiver (BSC Testnet):", receiverContract.address);
+
+  // 6. 读取接收合约的状态，验证跨链同步结果
+  const lastMessage = await receiverContract.lastMessage();
+  const lastValue = await receiverContract.lastValue();
+  const lastSourceChainId = await receiverContract.lastSourceChainId();
+
+  console.log("\n=== Cross-Chain Test Result ===");
+  console.log("Last received message:", lastMessage);
+  console.log("Last received value:", lastValue.toString());
+  console.log("Source chain ID:", lastSourceChainId.toString());
+
+  // 验证是否与发送的消息一致
+  if (lastMessage === message && lastValue.toString() === value.toString() && lastSourceChainId.toString() === SOURCE_CHAIN_ID.toString()) {
+    console.log("\n✅ Cross-chain function test SUCCESS!");
+  } else {
+    console.log("\n❌ Cross-chain function test FAILED!");
+  }
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+## 5.1 执行测试
+
+```bash
+npx hardhat run scripts/test-cross-chain.js --network goerli
+```
+
+## 5.2 测试结果说明
+
+-   若输出「✅ Cross-chain function test SUCCESS!」，说明跨链功能正常：ETH链发送的消息和数值，已通过Reactive Contracts中继到BSC链，接收合约成功解析并更新状态。
+    
+-   若测试失败，可检查以下几点：① 测试网Gas费用是否充足；② Reactive API Key是否有效；③ 合约地址、链ID是否填写正确；④ 等待时间是否足够（测试网中继可能延迟）。
+    
+
+# 六、Demo 关键说明（作业重点）
+
+## 6.1 Reactive Contracts 跨链核心原理
+
+本Demo的跨链功能，核心依赖 Reactive Network 的「跨链中继机制」和「Reactive Contracts 接口规范」：
+
+1.  发送端：合约继承 IReactiveCrossChain 接口，调用 sendCrossChainMessage 方法，将跨链消息提交到 Reactive 核心合约；
+    
+2.  中继器：Reactive Network 的中继节点监听发送链的跨链事件，获取消息并验证；
+    
+3.  接收端：合约继承 IReactiveCrossChainReceiver 接口，实现 onCrossChainMessage 回调方法，中继器将消息转发到接收链合约，触发回调并更新状态。
+    
+
+## 6.2 作业适配说明
+
+-   本Demo已覆盖 Reactive Contracts 跨链的核心流程，可直接作为作业提交基础，如需扩展，可增加「跨链转账」「多链交互」等功能；
+    
+-   所有合约均与 Reactive Network SDK 兼容，部署和测试步骤完整，可复现跨链效果；
+    
+-   测试结果可通过测试网区块浏览器验证（ETH Goerli 浏览器、BSC Testnet 浏览器），查询合约交易和事件记录。
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 # 25 RCs学习笔记
 
 本次学习核心围绕RCs核心工作模型展开，重点掌握其实践思维框架、核心概念、DeFi场景应用及具体部署操作，形成从理论到实践的完整学习闭环，为后续深入应用RCs实现跨链或自动化操作奠定基础。
@@ -238,6 +608,7 @@ contract UniswapV2StopLossRC {
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
+
 # 24 从零到一理解零知识证明：起源、演化、原理与实践
 
 在数字时代，隐私保护与身份验证、数据有效性验证的矛盾日益突出——我们既希望向他人证明“我拥有某类权限”“我符合某个条件”，又不愿泄露身份证号、账户余额、个人隐私等敏感信息。零知识证明（Zero-Knowledge Proof, ZKP）作为密码学领域的核心技术之一，恰好破解了这一困境，它让“证明事实”与“泄露隐私”彻底脱钩，成为区块链、数字身份、隐私计算等领域的核心支撑。本文将从零知识证明的起源出发，梳理其演化历程，拆解核心技术原理，提供可落地的实现方案（含代码示例），并详解其实际应用场景，帮助读者全面掌握这一“隐私保护神器”。
@@ -437,6 +808,7 @@ if __name__ == "__main__":
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 # 23 ERC-721 标准详解
@@ -1083,6 +1455,7 @@ ERC-721 标准的核心价值是「标准化 NFT 接口」，让不同项目的 
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -1882,6 +2255,7 @@ Uniswap v4 相比 v3 的所有改进，本质上都是「解决痛点、提升�
 
 
 
+
 # 21 Uniswap V3 vs V2的改进、设计初衷及技术落实全解析
 
 Uniswap V2的核心定位与痛点——V2作为Uniswap协议的第二代版本，核心是基于“**恒定乘积公式（x\*y=k）**”的自动化做市商（AMM），实现了无需许可、去中心化的代币交换，但随着DeFi生态的发展，其资本低效、费用僵化、预言机精度不足等问题逐渐凸显。
@@ -2117,6 +2491,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 
 
+
 # 从像素头像到数字热潮：NFT的前世今生与炒作真相
 
 如果你关注过数字藏品圈，一定见过那些看起来简简单单、甚至有点“潦草”的24×24像素小头像——它们就是CryptoPunks（加密朋克），如今被公认为第一个真正出圈、成规模的NFT。
@@ -2166,6 +2541,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -2661,6 +3037,7 @@ IRouter02(routerAddress).addLiquidity(
 
 
 
+
 # 19 Wagmi初步学习
 
 **Wagmi** 是基于 Viem 的 React Hooks 库！
@@ -3001,6 +3378,7 @@ function Counter() {
 
 
 
+
 # 18 Viem 初步学习
 
 ## 1 Viem 是什么？
@@ -3217,6 +3595,7 @@ const data = encodeFunctionData({
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -3713,6 +4092,7 @@ await counter.number(); // 输出 BigInt(100)
 
 
 
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -3989,6 +4369,7 @@ cast send <合约地址> "decrement()" \
 
 
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -4178,6 +4559,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -4417,6 +4799,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -4510,6 +4893,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -4882,6 +5266,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -5308,6 +5693,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -5801,6 +6187,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -6097,6 +6484,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -7232,6 +7620,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -7616,6 +8005,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -7959,6 +8349,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -8120,6 +8511,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -8416,6 +8808,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -8751,6 +9144,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -8979,6 +9373,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
