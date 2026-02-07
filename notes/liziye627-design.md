@@ -15,8 +15,217 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+写了个状态树，之后明天打算再写异步运行时与 Actor 模型  
+use dashmap::DashMap;
+
+use sha2::{Sha256, Digest};
+
+use std::sync::Arc;
+
+// --- 类型定义 ---
+
+type Hash = \[u8; 32\];
+
+/// 模拟账户状态 (Account State)
+
+/// 包含余额和随机数（Nonce），这是区块链状态最基本的组成部分
+
+#\[derive(Clone, Debug, Default)\]
+
+pub struct Account {
+
+pub balance: u64,
+
+pub nonce: u64,
+
+}
+
+impl Account {
+
+/// 将账户信息序列化并计算哈希，用于构建 Merkle Tree
+
+pub fn to\_hash(&self) -> Hash {
+
+let mut hasher = Sha256::new();
+
+hasher.update([self.balance.to](http://self.balance.to)\_le\_bytes());
+
+hasher.update([self.nonce.to](http://self.nonce.to)\_le\_bytes());
+
+hasher.finalize().into()
+
+}
+
+}
+
+// --- Merkle 树设计 ---
+
+#\[derive(Debug, Clone)\]
+
+pub enum MerkleNode {
+
+Leaf { hash: Hash },
+
+Internal { left: Hash, right: Hash, hash: Hash },
+
+Empty,
+
+}
+
+// --- 核心状态管理器 ---
+
+pub struct StateEngine {
+
+/// 热数据缓存：使用 DashMap 实现细粒度锁的并发访问
+
+/// Hot data cache: High-concurrency access with DashMap's fine-grained locking.
+
+state\_cache: Arc<DashMap<String, Account>>,
+
+/// 历史状态根记录
+
+/// History of state roots.
+
+history\_roots: Arc<DashMap<u64, Hash>>,
+
+}
+
+impl StateEngine {
+
+pub fn new() -> Self {
+
+Self {
+
+state\_cache: Arc::new(DashMap::new()),
+
+history\_roots: Arc::new(DashMap::new()),
+
+}
+
+}
+
+/// 模拟执行交易：更新内存状态
+
+/// Execute transaction: Update state in memory.
+
+pub fn apply\_transaction(&self, account\_id: &str, amount: u64) {
+
+let mut account = self.state\_cache.entry(account\_[id.to](http://id.to)\_string())
+
+.or\_insert(Account::default());
+
+account.balance += amount;
+
+account.nonce += 1;
+
+// 术语解释：Interior Mutability (内部可变性)
+
+// 允许我们在拥有不可变引用时修改数据，这在并发编程中至关重要。
+
+}
+
+/// 核心逻辑：提交区块并计算默克尔根
+
+/// 这通常是一个串行过程，将并发收集的状态“定格”
+
+pub fn commit\_block(&self, block\_height: u64) -> Hash {
+
+// 1. 获取当前所有账户的哈希列表（简化版 Merkle 计算）
+
+let mut hashes: Vec<Hash> = self.state\_cache
+
+.iter()
+
+.map(|entry| entry.value().to\_hash())
+
+.collect();
+
+// 2. 排序以保证哈希的一致性（确定性）
+
+hashes.sort();
+
+// 3. 递归计算根哈希
+
+let root\_hash = self.compute\_root(hashes);
+
+// 4. 存入历史记录
+
+self.history\_roots.insert(block\_height, root\_hash);
+
+root\_hash
+
+}
+
+fn compute\_root(&self, mut nodes: Vec<Hash>) -> Hash {
+
+if [nodes.is](http://nodes.is)\_empty() { return \[0u8; 32\]; }
+
+if nodes.len() == 1 { return nodes\[0\]; }
+
+let mut next\_level = Vec::new();
+
+for chunk in nodes.chunks(2) {
+
+let mut hasher = Sha256::new();
+
+hasher.update(chunk\[0\]);
+
+if chunk.len() > 1 {
+
+hasher.update(chunk\[1\]);
+
+} else {
+
+hasher.update(chunk\[0\]); // 奇数个节点时复制自身
+
+}
+
+next\_level.push(hasher.finalize().into());
+
+}
+
+self.compute\_root(next\_level)
+
+}
+
+}
+
+// --- 测试与演示 ---
+
+fn main() {
+
+let engine = StateEngine::new();
+
+// 模拟多线程环境下的状态更新
+
+crossbeam::scope(|scope| {
+
+scope.spawn(|\_| {
+
+engine.apply\_transaction("Alice", 100);
+
+});
+
+scope.spawn(|\_| {
+
+engine.apply\_transaction("Bob", 50);
+
+});
+
+}).unwrap();
+
+let root = engine.commit\_block(1);
+
+println!("Block 1 Committed. State Root: {:?}", root);
+
+}
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/liziye627-design/images/2026-02-06-1770390781853-image.png)
 
 绘制前端ui实现完整项目
@@ -240,6 +449,7 @@ const STRING\_LIMIT: usize = 50; //
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 use anchor\_lang::prelude::\*;
 
 // 你的 Program ID
@@ -457,6 +667,7 @@ const STRING\_LIMIT: usize = 50; //
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -771,6 +982,7 @@ Ok(())
 
 
 
+
 今日主线（项目）
 
 **项目**: \[\[SimpleVoting-投票合约\]\]
@@ -957,6 +1169,7 @@ return (p.description, p.voteCount, p.executed);
 
 
 
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.20;
@@ -1134,6 +1347,7 @@ return (p.description, p.voteCount, p.executed);
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1331,6 +1545,7 @@ cargo run -- del 1
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1579,6 +1794,7 @@ r1.push\_str("def");
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1863,6 +2079,7 @@ a + b // 表达式作为返回值
 
 
 
+
 \# 2026-01-25 Rust入门学习
 
 \## 📅 日期
@@ -2064,6 +2281,7 @@ Ok(content)
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2318,6 +2536,7 @@ function unpause() public onlyOwner { \_paused = false; emit Unpaused(); }
 
 
 
+
 \## 1. 核心知识点梳理
 
 \### 1.1 函数可见性 (Function Visibility)
@@ -2561,6 +2780,7 @@ Mapping 非常高效，但不能直接通过 `length` 获取长度，也不能�
 
 
 
+
 Course Note: WTF Academy Solidity 101
 
 \> \[!info\] 课程信息
@@ -2642,6 +2862,7 @@ Solidity 中的整数类型包括有符号整数和无符号整数。它可以�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2810,6 +3031,7 @@ Web3 运营不仅是聊天和发推，而是围绕共识 (Consensus) 构建生�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -3145,6 +3367,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 # 每日学习日志 - 2026-01-17
 
 ## 学习信息
@@ -3346,6 +3569,7 @@ _最后更新: 2026‑01‑18_
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3616,6 +3840,7 @@ _最后更新: 2026‑01‑18_
 
 
 
+
 ## 区块链到底是什么：区块、链、交易、状态
 
 我们先从最直观的开始：**区块链，本质上是一套公开账本**。
@@ -3808,6 +4033,7 @@ PoS 的逻辑是：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
