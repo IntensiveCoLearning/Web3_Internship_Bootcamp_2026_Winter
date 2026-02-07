@@ -15,8 +15,162 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-07
+<!-- DAILY_CHECKIN_2026-02-07_START -->
+## Array
+
+An array can have a compile-time fixed size or a dynamic size.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract Array {
+    // Several ways to initialize an array
+    uint256[] public arr;
+    uint256[] public arr2 = [1, 2, 3];
+    // Fixed sized array, all elements initialize to 0
+    uint256[10] public myFixedSizeArr;
+
+    function get(uint256 i) public view returns (uint256) {
+        return arr[i];
+    }
+
+    // Solidity can return the entire array.
+    // But this function should be avoided for
+    // arrays that can grow indefinitely in length.
+    function getArr() public view returns (uint256[] memory) {
+        return arr;
+    }
+
+    function push(uint256 i) public {
+        // Append to array
+        // This will increase the array length by 1.
+        arr.push(i);
+    }
+
+    function pop() public {
+        // Remove last element from array
+        // This will decrease the array length by 1
+        arr.pop();
+    }
+
+    function getLength() public view returns (uint256) {
+        return arr.length;
+    }
+
+    function remove(uint256 index) public {
+        // Delete does not change the array length.
+        // It resets the value at index to it's default value,
+        // in this case 0
+        delete arr[index];
+    }
+
+    function examples() external pure {
+        // create array in memory, only fixed size can be created
+        uint256[] memory a = new uint256[](5);
+
+        // create a nested array in memory
+        // b = [[1, 2, 3], [4, 5, 6]]
+        uint256[][] memory b = new uint256[][](2);
+        for (uint256 i = 0; i < b.length; i++) {
+            b[i] = new uint256[](3);
+        }
+        b[0][0] = 1;
+        b[0][1] = 2;
+        b[0][2] = 3;
+        b[1][0] = 4;
+        b[1][1] = 5;
+        b[1][2] = 6;
+    }
+}
+```
+
+### Examples of removing an array element
+
+Remove an array element by shifting elements from right to left
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract ArrayRemoveByShifting {
+    // [1, 2, 3] -- remove(1) --> [1, 3, 3] --> [1, 3]
+    // [1, 2, 3, 4, 5, 6] -- remove(2) --> [1, 2, 4, 5, 6, 6] --> [1, 2, 4, 5, 6]
+    // [1, 2, 3, 4, 5, 6] -- remove(0) --> [2, 3, 4, 5, 6, 6] --> [2, 3, 4, 5, 6]
+    // [1] -- remove(0) --> [1] --> []
+
+    uint256[] public arr;
+
+    function remove(uint256 _index) public {
+        require(_index < arr.length, "index out of bounds");
+
+        for (uint256 i = _index; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr.pop();
+    }
+
+    function test() external {
+        arr = [1, 2, 3, 4, 5];
+        remove(2);
+        // [1, 2, 4, 5]
+        assert(arr[0] == 1);
+        assert(arr[1] == 2);
+        assert(arr[2] == 4);
+        assert(arr[3] == 5);
+        assert(arr.length == 4);
+
+        arr = [1];
+        remove(0);
+        // []
+        assert(arr.length == 0);
+    }
+}
+```
+
+Remove an array element by copying last element into to the place to remove
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.26;
+
+contract ArrayReplaceFromEnd {
+    uint256[] public arr;
+
+    // Deleting an element creates a gap in the array.
+    // One trick to keep the array compact is to
+    // move the last element into the place to delete.
+    function remove(uint256 index) public {
+        // Move the last element into the place to delete
+        arr[index] = arr[arr.length - 1];
+        // Remove the last element
+        arr.pop();
+    }
+
+    function test() public {
+        arr = [1, 2, 3, 4];
+
+        remove(1);
+        // [1, 4, 3]
+        assert(arr.length == 3);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+        assert(arr[2] == 3);
+
+        remove(2);
+        // [1, 4]
+        assert(arr.length == 2);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+    }
+}
+```
+<!-- DAILY_CHECKIN_2026-02-07_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 ## Mapping
 
 Maps are created with the syntax `mapping(keyType => valueType)`.
@@ -76,6 +230,7 @@ contract NestedMapping {
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
+
 ## For and While Loop
 
 Solidity supports `for`, `while`, and `do while` loops.
@@ -116,6 +271,7 @@ contract Loop {
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 ## If / Else  
 
 Solidity supports conditional statements `if`, `else if` and `else`.
@@ -154,6 +310,7 @@ contract IfElse {
 
 
 
+
 **ERC-7962（原 Key-Based Tokens）**
 
 **核心逻辑：从“地址”到“密钥哈希”的转移**
@@ -185,11 +342,13 @@ ERC-7962 现在的定位非常清晰：它不是一个简单的代币标准，�
 
 
 
+
 1
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -206,11 +365,13 @@ ERC-7962 现在的定位非常清晰：它不是一个简单的代币标准，�
 
 
 
+
 今天听了老师的web3数据分析课程，了解到数据分析中比较重要的一些相关数据，比如（总锁仓量(TVL)、活跃地址数、交易量、Gas 费用、协议收入），数据分析工作流（提取(extract) -> 转换 (transform) -> 加载 (load）），常见 Web3 数据分析工具（Etherscan, Dune, RootData, DefiLlama, Token Terminal）
 <!-- DAILY_CHECKIN_2026-01-28_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -231,11 +392,13 @@ ERC-7962 现在的定位非常清晰：它不是一个简单的代币标准，�
 
 
 
+
 今天听了Oxhardman老师分享的黑客松分享，了解到了黑客松的比赛内容和相关的注意事项，收获很多。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -260,11 +423,13 @@ ERC-7962 现在的定位非常清晰：它不是一个简单的代币标准，�
 
 
 
+
 今天听了Austin的分享会，对学习路径有了更深的了解
 <!-- DAILY_CHECKIN_2026-01-23_END -->
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -346,6 +511,7 @@ contract CoreConcept {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -647,6 +813,7 @@ nullifier = Hash(identitySecret, electionId)
 
 
 
+
 ### **三、RPC 节点服务详解**
 
 在 Web3 开发中，**RPC（Remote Procedure Call，远程过程调用）** 是连接前端应用与区块链网络的关键桥梁。理解 RPC 的工作原理、选择合适的 RPC 服务商，以及正确配置和使用 RPC 节点，是每个 Web3 开发者必须掌握的基础知识。
@@ -694,6 +861,7 @@ nullifier = Hash(identitySecret, electionId)
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -796,6 +964,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -923,6 +1092,7 @@ DApp 前端不会直接连接区块链网络，而是通过钱包注入的 Provi
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -1081,6 +1251,7 @@ MEME 币具有极高的投机性和波动性。价格可能在短时间内暴涨
 
 
 
+
 ## 二、以太坊概览
 
 ### 2.7 **以太坊核心机制：从账户到执行的完整链路**
@@ -1219,6 +1390,7 @@ Compound 是一个去中心化的借贷平台，允许用户借入或借出加�
 
 
 
+
 二、以太坊概览
 
 \*\*2.4 2022 年 9 月 The merge : PoW(\*\*工作量证明 Proof of Work) \*\*—> PoS(\*\*权益证明 Proof of Stake)
@@ -1284,6 +1456,7 @@ Layer 2 Rollups：Arbitrum、Optimism、Polygon zkEVM、zkSync Era
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
