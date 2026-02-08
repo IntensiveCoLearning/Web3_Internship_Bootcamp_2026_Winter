@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+毕业快乐
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 。
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 。
@@ -38,11 +46,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 。
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -57,11 +67,13 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 。
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -218,6 +230,7 @@ CMC，CoinGecko
 
 
 
+
 。
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
@@ -231,11 +244,13 @@ CMC，CoinGecko
 
 
 
+
 。
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -260,11 +275,13 @@ CMC，CoinGecko
 
 
 
+
 。
 <!-- DAILY_CHECKIN_2026-01-26_END -->
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -337,6 +354,7 @@ CMC，CoinGecko
 
 
 
+
 查看了南塘DAO的回放
 
 共识不是等来的
@@ -369,6 +387,7 @@ CMC，CoinGecko
 
 
 
+
 创立了自己的telegram小组
 
 安装了Figma，有待研究
@@ -378,6 +397,7 @@ CMC，CoinGecko
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -478,6 +498,7 @@ hooks
 
 
 
+
 公共物品：非排他性，非竞争性
 
 开源代码
@@ -522,11 +543,13 @@ hooks
 
 
 
+
 1
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -566,6 +589,7 @@ X Space
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -653,11 +677,13 @@ PoS机制以质押量决定话语权大小，实际上演变成另一种垄断�
 
 
 
+
 参与LXDAO的周会，对LXDAO有一定了解，打算进一步探索，能够为社区做出自己的贡献
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -703,6 +729,7 @@ KOL：注意推广的合规性，避免成为共犯
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -774,6 +801,7 @@ Bybit 15亿美元的损失
 
 
 
+
 今日学习：
 
 铸造了自己的NFT
@@ -781,6 +809,7 @@ Bybit 15亿美元的损失
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -842,6 +871,7 @@ POS的共识机制，资本游戏，股份制
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
