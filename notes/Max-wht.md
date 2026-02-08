@@ -15,19 +15,33 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+一个月就这样过去了。。。
+
+对于整个行业的认识又清楚了不少，技术也提升了不少。
+
+web3是一个全新的领域。在2000年的时候没有人会想象出未来的微信，抖音是个什么样子。我想现在的web3也是这样的，个人能做的是沉淀自己，等待机会。
+
+只有自己的能力提升，人脉拓展了之后，有些机遇才能被看见。
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 把整个codebase都看完了，已学习的目的为主，知道主流的defi怎么设计，代码应该怎么写。发了几篇推特当作学习记录
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 sloc 两千多的仓库快看完了，感觉自己又在进步。像健身，肌肉只有不断训练才能变大，反之缩水。一月份基本没健身，现在推五十千克都费劲。二月的学习是看网课，训练审计能力，花了我老多钱，希望能给我带来提升。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 今天昨天在做家务，把我的房间重新设计了一下，书桌抵着窗户，阳光明媚写代码挺爽的
@@ -38,11 +52,13 @@ sloc 两千多的仓库快看完了，感觉自己又在进步。像健身，肌
 
 
 
+
 今天在加班加点干活，明天继续合约审计
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -57,11 +73,13 @@ sloc 两千多的仓库快看完了，感觉自己又在进步。像健身，肌
 
 
 
+
 黑客松中！！！
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -84,11 +102,13 @@ sloc 两千多的仓库快看完了，感觉自己又在进步。像健身，肌
 
 
 
+
 头脑风暴中。多人协作很吃交流啊
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -115,6 +135,7 @@ sloc 两千多的仓库快看完了，感觉自己又在进步。像健身，肌
 
 
 
+
 **time:** 2026:: 01/26 -> 02/01
 
 **Description:** 我打算做一个Solidity Contests的汇总网站，类似于 [DailyWarden](https://www.dailywarden.com/) 。列出当前正在进行的Competitive Audit和即将到来的Audit的同时，我打算让AI综合对应项目的SLOC和对应推特帖子的数量和讨论度，给出一个全面评价，主要涉及的方面有 1.难度 2.类型 3.参与热度 \[我觉得这是一个创新点，目前市场上是没有同类型的产品的\]。这个项目的目的是为了方便合约安全审计工程师合理安排比赛时间和任务，节约时间，成为所有安全审计人员的必备工具。
@@ -122,6 +143,7 @@ sloc 两千多的仓库快看完了，感觉自己又在进步。像健身，肌
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -238,6 +260,7 @@ assembly{
 
 
 
+
 **推特写了个文章**
 
 [https://x.com/0xMax2557/status/2014938927061471348](https://x.com/0xMax2557/status/2014938927061471348)
@@ -261,6 +284,7 @@ assembly{
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -301,6 +325,7 @@ assembly{
 
 
 
+
 ### \[T-2\] 1/21/2026
 
 这三天一直在做`VII-Finance`的audit，一共差不多花了八小时，现在应该是进行到了1/2，还剩几个合约没有review。这算我第一次的审计，很激动的，希望我的Finding都能通过。但是这几天还要加急"复习"数字电路，其实这学期这个课我一节没听，有些难！这两件事叠加在一起导致实习计划的很多colearning和分享会没听到。。。23号回家重新看录播吧
@@ -308,6 +333,7 @@ assembly{
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -340,6 +366,7 @@ ISO 4217 is the international standard defining three-letter alphabetic and thre
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -420,6 +447,7 @@ Tempo链稳定币支付
 
 
 
+
 ### \[N-4\] Just jotting down some thoughts in 1/18/2026
 
 昨天找了一个competitve audit参加。过程并没有我想象中的顺利，昨天前前后后花了三个小时，整个audit的进度推进并不大，整个codebase知识密度太大了，很多我都不了解，不过我知道自己正在正确的成长，一周之后我一定可以交出一份令我满意的report。
@@ -435,6 +463,7 @@ Tempo链稳定币支付
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -625,6 +654,7 @@ contract UniswapV3SwapTest is Test {
 
 
 
+
 ### **\[UNIV-3\] Math In UniswapV3**
 
 **Discription:** 在 uniswapv3 中，代币池中 x，y 或者说 tokne0 和 token1 的数量不能直白地如 uniswapv2 那样"xy = L^2"表示出来。相反，uniswapv3 通过追踪 price 和 liquidity 来计算代币的数量
@@ -648,6 +678,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -876,6 +907,7 @@ y=LPh−LPl_y_\=_LPh_​​−_LPl_​​
 
 
 
+
 ### **\[UNIV3-1\] Introduction of Uniswap V3**
 
 **Discription:** 对于 UniswapV2，所有的流动性都集中在一个 Pair 中，AMM 方程如下
@@ -895,6 +927,7 @@ $$
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1145,6 +1178,7 @@ contract UniswapV2Twap {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
