@@ -15,13 +15,80 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+3\. ECDSA 与 secp256k1 机制
+
+ECDSA（Elliptic Curve Digital Signature Algorithm）是基于椭圆曲线的数字签名算法。以太坊采用 secp256k1 曲线，其参数如下：
+
+\- 曲线方程：y² = x³ + 7（在有限域 F\_p 上）
+
+\- 基点 G：具有特定的 x 和 y 坐标
+
+\- 阶 n：G 的阶为一个大素数
+
+签名过程包括：
+
+\- 生成私钥 d，计算公钥 Q = dG
+
+\- 对消息哈希 z，生成随机数 k，计算签名对 (r, s)
+
+\- 验证时使用公钥 Q 和消息哈希 z 验证 (r, s) 的合法性
+
+4\. EIP-712 的设计动机
+
+EIP-712 是以太坊改进提案，旨在标准化结构化数据的签名格式。其设计动机包括：
+
+\- 防止签名钓鱼攻击：传统的签名机制对用户展示的信息不明确，容易被诱导签署恶意交易。
+
+\- 提高可读性：EIP-712 允许用户清晰看到将要签署的结构化数据。
+
+\- 支持复杂数据结构：支持嵌套对象、数组等复杂类型，适用于 DeFi、DAO 等场景。
+
+5\. Typed Data 的结构与哈希流程
+
+EIP-712 使用 Typed Data（类型化数据）进行签名，结构包括：
+
+\- types：定义数据结构的类型和字段
+
+\- domain：域分隔符，包含 name、version、chainId、verifyingContract 等字段
+
+\- primaryType：主类型名称
+
+\- message：实际要签名的数据
+
+哈希流程如下：
+
+1\. 对每个类型计算 typeHash：keccak256(encodeType(type))
+
+2\. 对每个字段进行编码：encodeData(type, data)
+
+3\. 计算结构体哈希：keccak256(typeHash || encodedData)
+
+4\. 构造最终哈希：keccak256("\\x19\\x01" || domainSeparator || structHash)
+
+5\. 使用 ECDSA 对最终哈希进行签名
+
+6\. EIP-712 的安全性与最佳实践
+
+\- 始终使用 domainSeparator 防止跨合约重放攻击
+
+\- 避免使用未定义类型或字段，确保 encodeType 一致性
+
+\- 在前端清晰展示签名内容，避免用户误签
+
+\- 使用最新的以太坊客户端支持 EIP-712 标准（如 MetaMask）
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 暂时提前打卡, 笔记内容后续补
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 **一、 核心资产标准与扩展 (Standardization)**
 
@@ -100,6 +167,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 1\. 函数重载 (Function Overloading)
@@ -202,6 +270,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 简单理解
 
 1\. AMM 模型的数学基础
@@ -281,6 +350,7 @@ Uniswap 成为以太坊生态的基础设施之一，其设计理念影响了整
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -556,6 +626,7 @@ contract SimpleUniswapPool is MinimalERC20 {
 
 
 
+
 1-30笔记,昨天因为时间忘记上传,补上,今天的在后面
 
 \# ERC-7962：Key Hash Based Tokens 核心概念总结
@@ -793,11 +864,13 @@ bytes calldata signature
 
 
 
+
 因为忘记上传,笔记放在第二天
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1232,6 +1305,7 @@ Uniswap 的价格可以被其他合约用作 **去中心化预言机**，但单�
 
 
 
+
 **1\. 合约基础结构**
 
 一个 Solidity 合约通常由状态变量、函数、修改器和事件组成。
@@ -1407,6 +1481,7 @@ enum Status { Pending, Active, Inactive }
 
 
 
+
 **1\. 从 PoW 到 PoS**
 
 • **早期 PoW 的角色**：以太坊初期选择 PoW 是为了利用其成熟的安全性和低门槛特性（显卡矿工）安全启动网络。它被视为“起飞用的助推火箭”，在生态成熟后再切换到 PoS。
@@ -1494,6 +1569,7 @@ Verkle 树通过以下方式让“无状态”成为可能：
 
 
 
+
 **1\. EVM：以太坊的“大脑”**
 
 **EVM (Ethereum Virtual Machine)** 是一台运行在所有以太坊节点上的虚拟计算机，它将合约代码（字节码）转变为链上的状态更新。
@@ -1541,6 +1617,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1611,11 +1688,13 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 
 
+
 忘记上传笔记,放在第二天
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1674,6 +1753,7 @@ Gas 是衡量计算工作量的抽象单位，旨在**防止网络滥用和攻�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1941,6 +2021,7 @@ Web3 中大量应用依赖隐私计算：如 DeFi 中的隐私订单簿、DAO �
 
 
 
+
 ## Web3 安全与合规
 
 ### 常规法律风险
@@ -1967,6 +2048,7 @@ MiCA禁止了算法稳定币,要求稳定币发行商必须持有等值储备资
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2092,6 +2174,7 @@ Patricia Trie
 
 
 
+
 ## 分享会 web3安全
 
 **CeFi成为主要的黑客攻击靶机**：管理层私钥被盗、热钱包私钥被盗是主要的原因，暴露了显著的风险。
@@ -2148,6 +2231,7 @@ Liquidity Rug / Insider Dump / Malicious Contract / Honey pot
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2353,6 +2437,7 @@ RPC 挂了（被攻击、被关停、区域性屏蔽），你这边钱包就“�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
