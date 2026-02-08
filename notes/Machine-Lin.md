@@ -15,8 +15,89 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+# 一、继承
+
+合约继承是一种使合约代码重用更加容易的方法。
+
+通过使用合约继承，可以在新合约中使用已有合约的功能而无需重复编写代码。
+
+```
+pragma solidity ^0.8.3;
+
+contract Ownable {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "must be owner");
+        _;
+    }
+}
+
+contract SecretVault {
+    string secret;
+
+    constructor(string memory _secret) {
+        secret = _secret;
+    }
+
+    function getSecret() public view returns (string memory) {
+        return secret;
+    }
+}
+
+contract MyContract is Ownable {
+    address private _secretVaultAddress;
+    string public myString;
+
+    constructor(string memory _myString, address secretVaultAddress) {
+        myString = _myString;
+        _secretVaultAddress = secretVaultAddress;
+    }
+
+    function getSecret() public view onlyOwner returns (string memory) {
+        SecretVault secretVault = SecretVault(_secretVaultAddress);
+        return secretVault.getSecret();
+    }
+}
+```
+
+\>只能从一个合约继承。
+
+好难~
+
+# 二、**继承状态变量的屏蔽（Shadowing Inherited State Variables）**
+
+当一个合约继承了另一个合约时，如果它重复定义了继承合约中已有的状态变量，则新合约中的变量将覆盖继承合约中的变量。
+
+这种现象被称为“状态变量的屏蔽”。
+
+```
+pragma solidity ^0.8.3;
+
+contract A {
+    uint256 public myUint = 1;
+}
+
+// B 继承自 A
+contract B is A {
+    uint256 public myUint = 2;
+}
+```
+
+\>在新合约中屏蔽继承合约中的状态变量可能会导致意外的行为。
+
+一个月的时间，对于web3整体有了一个大概的认知，区块链、以太坊，在未来信息爆炸的世界，这个技术对于隐私安全会是具有很大的帮助，这是可否定的。要说最大的一个收获，莫过于这一个月以来对于持续学习的一个习惯，似乎一天不打卡，就觉得自己遗失了什么，哪怕自己的脑子记忆力并不强悍，但持续输入总是不错，但也要做到不断的输出~
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 # 一、事件
 
 事件是**合约和外部世界之间**的通信机制。
@@ -127,6 +208,7 @@ contract CallerContract {
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 
 # 一、错误和异常
@@ -310,6 +392,7 @@ function someFunction() public onlyBefore(someTimestamp) {
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 
@@ -498,6 +581,7 @@ contract Calculator {
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -710,6 +794,7 @@ contract Calldata {
 
 
 
+
 # 一、数组
 
 数组有编译时固定大小或动态大小两个方式。
@@ -885,6 +970,7 @@ assert(false == e.isActive());
 
 
 
+
 # 一、映射
 
 语法：
@@ -953,6 +1039,7 @@ contract Mapping {
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -1123,6 +1210,7 @@ contract Loops {
 
 
 
+
 # 一、常量
 
 常量是无法修改的变量。
@@ -1241,6 +1329,7 @@ contract SimpleStorage {
 
 
 
+
 Solidity
 
 # 一、Hello World
@@ -1339,6 +1428,7 @@ contract Variables {
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1519,6 +1609,7 @@ describe("StanfordToken", function () {
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 4
 
 Solidity 语法 + 测试
@@ -1603,6 +1694,7 @@ function doSomething() public onlyOwner { ... }
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1812,6 +1904,7 @@ npx hardhat verify --network sepolia DEPLOYED_ADDRESS "Constructor Arg"
 
 
 
+
 # 一、Web2 to Web3 Week 2 Day 2
 
 ethers.js 从 JavaScript 脚本读取（read）和写入（write）以太坊智能合约。
@@ -1883,6 +1976,7 @@ async function mintNFT() {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1977,6 +2071,7 @@ Provider 是区块链的“只读接口”。
 
 
 
+
 # 一、Web2 to Web3 Week 1 Day 5
 
 ## 1.Stuck Transactions/交易停滞
@@ -2021,6 +2116,7 @@ Provider 是区块链的“只读接口”。
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2102,6 +2198,7 @@ contract SimpleNFT {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -2205,6 +2302,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 
 
+
 # 一、Web2 to Web3 WEEK 1 day1 总结笔记
 
 ## 1.该系列的整体定位：
@@ -2268,6 +2366,7 @@ DAI是锚定$1的去中心化稳定币，避免ETH价格剧烈波动。
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -2415,6 +2514,7 @@ easy~与之前学的Solidity基本语法差不多，大概能看懂，但自己�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2709,6 +2809,7 @@ contract EventExample {
 
 
 
+
 # 一、Solidity智能合约编程
 
 Solidity 是一种 面向合约 的高级编程语言，专门用于在 以太坊虚拟机（EVM）上编写智能合约。
@@ -2824,6 +2925,7 @@ contract MyContract{
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3037,6 +3139,7 @@ Dapp 的架构主要由三个核心部分组成：
 
 
 
+
 # 一、节点间的链接&通信方式
 
 ## 1.节点发现——先加好友再扩散（基于UDP+Kademlia）
@@ -3135,6 +3238,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3275,6 +3379,7 @@ Gossip 适合传播“最新消息”，而请求-响应则是精准请求。
 
 
 
+
 # 一、“全球可编程区块链”——以太坊
 
 全球性（Global）+可编程（Programmable）+区块链（Blockchain）
@@ -3375,6 +3480,7 @@ _我的理解是你可以看作是编程中的函数。_
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -3622,6 +3728,7 @@ _其更适用于货币、计价单位、储值和高流动性资产的角色，�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
