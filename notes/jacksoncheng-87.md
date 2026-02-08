@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+**本周总结：**
+
+这也是本次实习计划的最后一次笔记提交，总结一下这一周，学习了深度技术中入门的一些challenge：入门级 Web2 to Web3 中的 Week 3, Day 1 - simple NFT、challenge 0 ：**tokenization**、Challenge 1: **Crowdfunding、**Challenge 2 **：token vendor** 、challenge 3:**Dice Game**、然后后面也试着搭建自己的节点。
+
+也算是在学习并提高我的自己的技术了，目前我技术栈感觉还是好弱，还需要不断地去提升；我目前能去实习时间还有一段时间，所以还有时间去提升自己的技术，那么暑假再见吧
+
+下面是我今天的学习笔记：Uniswap V4 学习笔记
+
+### 1\. 简介
+
+Uniswap V4 是 Uniswap 协议的最新版本，旨在提供更高的灵活性和资本效率。它保留了 V3 的集中流动性模型，并引入了架构上的重大改进，使开发者能够构建高度定制化的 AMM (自动做市商)。
+
+### **2\. 核心特性**
+
+-   Hooks (挂钩)：这是 V4 最重要的创新。Hooks 是外部智能合约，允许开发者在资金池生命周期的特定时间点（例如交易前/后、添加流动性前/后）执行自定义逻辑；
+    
+-   用途：实现限价单 (Limit Orders)、动态费用 (Dynamic Fees)、自定义预言机 (Custom Oracles)、加权平均做市商 (TWAMM) 等；
+    
+-   灵活性：每个池都可以绑定一个 Hook，从而创造出千变万化的交易池；
+    
+-   Singleton Architecture (单例架构)：V4 放弃了之前版本的 Factory/Pool 模式（每个交易对一个合约），改为将所有资金池管理在一个单一的合约 `PoolManager`) 中。
+    
+
+• **优势**：
+
+-   **大幅降低 Gas 费**：创建新池的成本降低了约 99%；
+    
+-   **多跳交易优化**：在不同池之间交易时，不再需要跨合约转移代币，只需在内部更新余额，显著减少 Gas 消耗；
+    
+-   **Flash Accounting (闪电记账)：**利用 EIP-1153 (瞬态存储) 技术，系统只在交易结束时结算净余额 (Net Balances)；
+    
+-   **机制**：在交易过程中，只记录余额的变动 (Deltas)，而不进行实际的代币转账。只有在交易结束时，如果所有差额都已结清，交易才算成功。
+    
+-   **效果**：进一步降低了复杂交易的 Gas 成本。
+    
+
+Native ETH Support (原生 ETH 支持)：V4 恢复了对原生 ETH 的支持，用户交易 ETH 时不再需要先包装成 WETH (Wrapped ETH)，减少了包装/解包的步骤，节省了 Gas 费用。
+
+### 3\. 与 V3 的主要区别:
+
+### 4\. 总结:
+
+Uniswap V4 通过 Hooks 将协议从一个单纯的应用程序转变为一个底层的流动性平台。开发者可以在此基础上构建各种创新的 DeFi 功能，而单例架构和闪电记账则确保了极致的 Gas 效率。它是 DeFi 基础设施的一次重大升级。
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 ## Uniswap V2 开发实战笔记
 
 ### 第一节：Overview (架构概览)
@@ -209,6 +257,7 @@ IUniswapV3Pool pool = IUniswapV3Pool(0x...);
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 简历策略：
 
 **核心一：必须要有产出结果**
@@ -272,6 +321,7 @@ IUniswapV3Pool pool = IUniswapV3Pool(0x...);
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 ### 技术/开发向的成长路径
@@ -418,6 +468,7 @@ AI生成的所有代码都应该是你能看懂的、自己也能实现的。如
 
 
 
+
 ### **Web3 DevRel 职业分享会:**
 
 ### **1.DevRel 的定义和职责**
@@ -556,6 +607,7 @@ AI生成的所有代码都应该是你能看懂的、自己也能实现的。如
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -709,6 +761,7 @@ const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f
 
 
 
+
 ### 就业简历指导&面经分享
 
 一、简历要求：
@@ -829,6 +882,7 @@ const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f
 
 
 
+
 **本周总结：**
 
 本周主要是和三个小伙伴完成我们的黑客松项目，叫“Time Gambler(时间赌徒)”。这个项目我们给他的定义是是一个 **赌注驱动 (Stake-Driven)** 的去中心化行为矫正协议。 我们致力于解决现代人最大的痛点：**拖延 (Procrastination)** 与 **注意力涣散 (ADHD)**。引入 **“真金白银的抵押 (Staking)”** + **“SpoonOS 的严格审计 (AI Audit)”。**为了实现这个目标，我们试着做减法把UI界面做的尽可能地简洁，让人更容易去集中注意力去做一件事情，而不是跟现在市面上大部分app一样“偏养成系",我们的技术架构是这样的：
@@ -888,6 +942,7 @@ const balance = await web3.eth.getBalance('0x742d35Cc6634C0532925a3b844Bc9e7595f
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -1043,6 +1098,7 @@ return messages\[user\].length;
 
 
 
+
 ### 学习ERC的标准
 
 ### 1\. 基础资产 (生态基石)
@@ -1121,6 +1177,7 @@ return messages\[user\].length;
 
 
 
+
 Octant 是由 Golem 基金会发起的实验性公共资助平台，旨在利用ETH 质押收益创建了一个可持续的 Web3 项目公共资助模型。
 
 1\. 核心运行逻辑与分配机制
@@ -1174,6 +1231,7 @@ Octant成功展示了如何通过存量资产项目的利息（收益率）除�
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1248,6 +1306,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1466,6 +1525,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 
 
+
 **黑客松和 Vibe Coding（AI 辅助编程）**
 
 -   团队配置建议：3-4人团队（2个开发+1个产品+1个PM），PM在演示时非常重要
@@ -1505,6 +1565,7 @@ Nonce：交易发起者账号的交易计数器，用于防止重复交易
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1622,6 +1683,7 @@ Solidity 的语法类似于 JavaScript 和 C++，但专为区块链设计。以�
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1775,6 +1837,7 @@ require(sent);
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -2345,6 +2408,7 @@ Solidity 的基础部分聚焦于智能合约的核心构建块，从简单"Hell
 
 
 
+
 补充昨天内容：
 
 **6.引用类型**
@@ -2679,6 +2743,7 @@ safeTransferFrom：安全转账的重载函数，参数里面包含了data。
 
 
 
+
 **soildity的深入学习**
 
 **1.HelloWeb3(三行代码)**
@@ -2926,6 +2991,7 @@ weeks: 7 days = 604800
 
 
 
+
 课上笔记
 
 ## **一、EVM存储架构**
@@ -3008,6 +3074,7 @@ Remix基础学习部分：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -3233,6 +3300,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 
 
+
 **一周总结**
 
 这一周从零摸索Web3，区块链本质是一台停不下来的全球共享电脑，用代码和激励让互不信任的人可靠协作，从平台许可转向私钥即一切。ENS成了链上永久身份证，DEX无需KYC直接换币，NFT的链上存储带来真正的永久性和可组合性，而L2和多签工具把Gas贵、卡顿、踩坑的真实痛苦降到可接受范围。节点自己跑才最信任、抗审查，合约账户代码写死基本不可改，代币NFT不过是合约里的记账表。安全底线是助记词绝不截图云存，转账核对地址，钓鱼和红线（ICO、返利、场外）一碰就翻车。总之，Web3把控制权交给用户，但代价是自己全责——贵、慢、麻烦，却也自由、震撼、值得。
@@ -3240,6 +3308,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3333,6 +3402,7 @@ event MessageLeft(address indexed user, string message, uint256 timestamp);
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -3497,6 +3567,7 @@ Week 1 整体收获一句话提炼 从安全钱包 + 身份（ENS） → 交�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3819,6 +3890,7 @@ SRP → 本地派生私钥 / 地址 → 本地签名 → 通过 RPC 广播。
 
 
 
+
 ## **安全与合规**
 
 一、合规不是形式，是底线
@@ -3882,6 +3954,7 @@ Web3 的工作方式很特别：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4055,6 +4128,7 @@ tips：什么是 P2P 网络：简单把它想象成一群“好友”节点互�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
