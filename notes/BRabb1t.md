@@ -17,6 +17,16 @@ Web3 实习计划 2025 冬季实习生
 <!-- Content_START -->
 # 2026-02-08
 <!-- DAILY_CHECKIN_2026-02-08_START -->
+\## Small tips
+
+\- 可以使用 chat 模式，跟 AI 聊好你的需求，然后再进行实际的开发(Plan first, then implement)
+
+\- 每次只做一个小功能/小改动，需求描述准确(Stay small & specific)
+
+\- 经常重置对话，压缩上下文的内容(Reset the chat often, and/or keep the context tight)
+
+\- 持续更新 [AGENTS.md](http://AGENTS.md) 文件，每次完成一个功能之后，让 AI 更新文件(Keep [AGENTS.md](http://AGENTS.md) update!)
+
 \## 使用之前创建 [AGENTS.md](http://AGENTS.md) 文件
 
 \- Codex 中使用 /init 命令创建 [AGENTS.md](http://AGENTS.md) 文件
@@ -54,6 +64,7 @@ developer\_instructions = "除非我明确要求英文，否则一律使用简�
 
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 
 \## 面试准备通用框架
 
@@ -210,6 +221,7 @@ developer\_instructions = "除非我明确要求英文，否则一律使用简�
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
 
+
 \## 选招聘信息与平台：我会先看三件事
 
 \- **及时**：岗位还在招（别拿到一条“转发了很多次”的旧信息）
@@ -327,6 +339,7 @@ developer\_instructions = "除非我明确要求英文，否则一律使用简�
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 
@@ -505,6 +518,7 @@ Logic 的建议可以整理成一条渐进式路线：
 
 
 
+
 \## 以太坊在做什么
 
 以太坊正在从“单体 L1（自己执行+自己结算）”演化为：
@@ -566,6 +580,7 @@ Logic 的建议可以整理成一条渐进式路线：
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -664,6 +679,7 @@ Logic 的建议可以整理成一条渐进式路线：
 
 
 
+
 这两天在开发黑客松，忘记打卡两天了  
 差点就要前功尽弃了  
 汗流浃背了
@@ -671,6 +687,7 @@ Logic 的建议可以整理成一条渐进式路线：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -739,6 +756,7 @@ Logic 的建议可以整理成一条渐进式路线：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -887,6 +905,7 @@ type Timestamp is uint64;
 
 
 
+
 工程师的思考 (Reflections)
 
 1\. **开发体验的进化 (DX)**：
@@ -910,6 +929,7 @@ type Timestamp is uint64;
 
 # 2026-01-26
 <!-- DAILY_CHECKIN_2026-01-26_START -->
+
 
 
 
@@ -947,6 +967,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1071,6 +1092,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 ### 读取合约 (Read Contracts)
 
 1\. **核心三要素**： 要与合约交互，你需要：
@@ -1143,6 +1165,7 @@ VibeCoding的核心能力就是上下文管理能力
 
 
 
+
 \### Ethers.js 脚本与交互基础
 
 今天视频主要介绍的是 Node.js 环境下来和链上进行交互
@@ -1188,6 +1211,7 @@ Ethers.js 使用 `BigNumber` 对象来安全地存储和操作这些数字。
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1261,6 +1285,7 @@ ABI 是你的合约如何交互的说明书
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1437,6 +1462,7 @@ v3 允许 LP 只在一个价格区间内提供流动性，例如只在 **\[2800,
 
 
 
+
 ## 1\. Web3 实习手册 ｜ 智能合约开发
 
 ### 架构差异 去中心化应用 DApp
@@ -1509,6 +1535,7 @@ Solidity 是静态类型语言，语法有点像 JavaScript 和 C++ 的混合，
 
 
 
+
 ## 1\. **Web2 开发者向 Web3 转型** （Day 2: Wallets, Mnemonics, Keypairs）
 
 ### 账户本质
@@ -1534,6 +1561,7 @@ L3 **智能合约钱包 (Smart Contract Wallet)**：像 Gnosis Safe 或 Argent�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1581,6 +1609,7 @@ L3 审计 成为以太坊或者说是区块链专家 这是最难的
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1657,6 +1686,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 2 章
 
 1\. 节点双大脑：执行客户端EL，公式客户端CL
@@ -1692,6 +1722,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1760,6 +1791,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 
 
+
 ## 1\. 阅读021 学习以太坊第 1 章
 
 \- 什么是以太坊？一个**去中心化、开源、支持智能合约**的公共区块链平台。
@@ -1799,6 +1831,7 @@ EOA：由私钥控制的账号，我们的 okx wallet、metamask 钱包
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
