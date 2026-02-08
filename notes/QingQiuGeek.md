@@ -23,6 +23,7 @@ timezone: UTC+8
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
 
+
 \## EXTCODESIZE 检查
 
 EVM 认为对一个不存在的合约的调用总是成功的，即使这个地址根本不是合约（比如一个普通钱包地址），EVM 也不会报错，而是：
@@ -162,6 +163,7 @@ return (0, false);
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 
 
@@ -334,11 +336,13 @@ EVM 不是基于寄存器的，而是基于栈的，因此所有的计算都在�
 
 
 
+
 打卡，今天在做foundry的demo
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -452,6 +456,7 @@ require(sent);
 
 
 
+
 Gas 是 EVM 执行操作的单位。每条指令消耗固定的 gas，具体可以看\[以太坊 操作码\]([https://ethereum.org/zh/developers/docs/evm/opcodes/](https://ethereum.org/zh/developers/docs/evm/opcodes/))，gas 优化目标是减少交易所需的总 gas，提高用户体验并降低成本。
 
 \*\*区块链数据存储位置有三种：storage（存储，也就是磁盘）、memory（内存，临时的）、calldata（只读数据）\*\*
@@ -536,6 +541,7 @@ for (uint i = 0; i < len; ++i) {
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -676,6 +682,7 @@ UEX 全称 Universal Exchange **全场景交易所**，由 Bitget 首席执行�
 
 
 
+
 \## 漏洞
 
 \### 重入攻击 Reentrancy
@@ -788,6 +795,7 @@ require(sent);
 
 
 
+
 [x402](https://www.x402.org/)
 
 [链技术](https://www.eoje.cn/qkljs/11406.html)
@@ -868,6 +876,7 @@ v2 在 v1 基础上，实现了：
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1010,6 +1019,7 @@ ERC-1271 定义了一个标准化的函数 isValidSignature(bytes32 \_messageHas
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1248,6 +1258,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 * * *
 
 [以太坊节点、客户端](https://ethereum.org/zh/developers/docs/nodes-and-clients/#execution-clients)
@@ -1384,6 +1395,7 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 ## 从账本到状态机
 
 我们通常用“分布式账本”的类比来描述像比特币这样的区块链，它使用密码学的基本工具来实现去中心化的货币。而以太坊也有自己的本土加密货币并同样遵循着**分布式账本规则**，但同时它也支持更强大的功能“智能合约”，这也是以太坊可编程的关键，因此以太坊除了是一个分布式账本之外，还是一个状态机器，可以根据预定义的规则（智能合约）在不同区块之间更改。
@@ -1437,11 +1449,13 @@ npx hardhat test  # 内部自动启动 hardhat network
 
 
 
+
 打卡
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1568,6 +1582,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 
 
+
 昨天学习了solidity基础语法，因为有java底子，而且solidity没有java那些web框架，所以学起来很快。另外solidity through walk 分享课上，老师说solidity写合约，一般一个合约几百行代码，代码量不大，部署上链就ok了，所以但看solidity合约开发岗位，需求量并不多，更多的是安全合规和漏洞审查以及全栈开发，全栈用nodejs+ts\\js，前后端通用，技术栈一样。今天做了以下事情：
 
 1、休闲黑客松案例拆解
@@ -1581,6 +1596,7 @@ V2 还引加入了**闪电贷 (Flash Loan)**。闪电贷是一种无需抵押、
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1960,6 +1976,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 ## 概述 🎯
 
 本课程围绕社群运营的基础技巧及活动策划展开，以 Telegram 社群作为主要示范平台，详解如何快速搭建并管理一个社群，如何利用数据面板监控社群活跃度和成员行为，结合实用的机器人工具提升管理效率。
@@ -2066,6 +2083,7 @@ users.push(User(\_name, \_age));
 
 
 
+
 # **Key Hash Based Tokens: 从 ERC-721 到 ERC-7962**
 
 ## 动机与背景
@@ -2100,6 +2118,7 @@ ERC-7962 的核心是在链上确认资产归属，同时避免暴露持有者�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -2248,6 +2267,7 @@ Ethereum Request for Comments（以太坊征求意见稿），ERC 是针对智�
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -2485,6 +2505,7 @@ my-node-app/
 
 
 
+
 # 以太坊**分叉**
 
 我们知道智能合约特点就是不可篡改+自动执行，那么部署过的合约，如果真的有漏洞，如何弥补呢？有几个方法：
@@ -2637,6 +2658,7 @@ my-node-app/
 
 
 
+
 # **Web3 行业全局介绍 & 岗位概览**
 
 ## 发展规模
@@ -2677,6 +2699,7 @@ POS：权益证明，一种更环保的验证方式，验证者/矿工需要先�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
