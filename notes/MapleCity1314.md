@@ -15,8 +15,235 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+结业快乐！
+
+放出我的职业规划，有对AGENT EVALS感兴趣的小伙伴可以一起聊聊啊
+
+## I. Self-Assessment
+
+### 1\. Academic Background and Technical Skills
+
+I am an undergraduate student majoring in **Artificial Intelligence**, with my technical focus on **AI engineering and Agent-based systems**. I have developed a solid foundation at the intersection of **software engineering and AI**, with experience in the following areas:
+
+-   **Frontend & Engineering Capabilities**
+    
+    -   Specialized in frontend engineering, infrastructure, and tooling
+        
+    -   Open-source contributor to **Next.js**, with strong familiarity with modern web frameworks and engineering ecosystems
+        
+-   **AI & Agent-Oriented Focus**
+    
+    -   Practical experience integrating **Web3 and AI technologies**
+        
+    -   Current research and development focus on **Agent system development**
+        
+    -   Academic interests centered on **Agent Security** and **Agent Evaluation**
+        
+-   **Technical Characteristics**
+    
+    -   Capable of working across layers, from low-level engineering implementation to high-level system abstraction and design
+        
+    -   Strong and sustained interest in system **reliability, reproducibility, and real-world engineering deployment** of AI systems
+        
+
+* * *
+
+### 2\. Motivation, Interests, and Values
+
+Compared with purely theoretical research or isolated engineering tasks, I am more inclined to:
+
+-   **Transform cutting-edge AI research into deployable systems or products**
+    
+-   Address real engineering pain points faced by developers and teams building Agent systems
+    
+-   Develop **tools or platforms with tangible real-world value**, grounded in technical depth
+    
+
+From a career values perspective, I emphasize:
+
+-   Technical capability → productization → scalable impact
+    
+-   Creating **sustainable, practical value through technology**, rather than remaining at a purely conceptual level
+    
+
+* * *
+
+## II. Career Positioning and Overall Goals
+
+### 1\. Core Career Positioning
+
+> **An AI Infrastructure / DevTool-oriented engineer centered on Agent Evaluation, capable of integrating methodology, engineering systems, and product thinking.**
+
+This positioning highlights:
+
+-   Strong AI engineering capabilities
+    
+-   System design and standard abstraction skills
+    
+-   A developer-oriented product mindset
+    
+
+* * *
+
+### 2\. Overall Career Objectives
+
+-   **Short-term (within 1 year)**
+    
+    Build systematic understanding and hands-on experience in **Agent Evaluation**, and become qualified for internships in relevant teams
+    
+-   **Mid-term (3–5 years)**
+    
+    Grow into a core engineer in **Agent / LLM Infrastructure or DevTool teams**, capable of leading module design or tool development
+    
+-   **Long-term (5–10 years)**
+    
+    Gain the ability to define **evaluation standards for Agent systems** or build influential evaluation platforms, establishing personal technical impact
+    
+
+* * *
+
+## III. Career Path Planning
+
+### Stage 1: Capability Building and Focused Exploration (Undergraduate Phase)
+
+**Timeline:** Present – Undergraduate graduation
+
+**Core Objectives:**
+
+-   Build strong engineering capabilities for AI Agent systems
+    
+-   Establish a clear technical identity in **Agent Evaluation, Security, and Reliability**
+    
+
+**Key Actions:**
+
+-   In-depth study of:
+    
+    -   Agent architecture and system design
+        
+    -   Evaluation methodologies, benchmarks, and regression testing
+        
+-   Continuous involvement in:
+    
+    -   Open-source projects (Agent frameworks, evaluation tools)
+        
+    -   Related research or engineering practice
+        
+-   Deliverables:
+    
+    -   Open-source tools or repositories
+        
+    -   Technical blogs or documentation
+        
+
+* * *
+
+### Stage 2: Internships and Engineering Deployment (Around Graduation)
+
+**Timeline:** Late undergraduate period – 1–2 years after graduation
+
+**Core Objectives:**
+
+-   Intern or work in **AI Infrastructure or Agent-focused teams**
+    
+-   Apply theoretical methods and tools to real-world systems
+    
+
+**Potential Roles:**
+
+-   AI Engineer (Agent / LLM focus)
+    
+-   AI Infrastructure / Platform Engineer
+    
+-   DevTool or Systems Engineering roles
+    
+
+**Key Skill Focus:**
+
+-   Engineering stability and robustness
+    
+-   Reproducible evaluation pipelines
+    
+-   Toolchains and developer experience (DX)
+    
+
+* * *
+
+### Stage 3: Productization and Impact Expansion (Mid to Long Term)
+
+**Timeline:** 3–5 years and beyond
+
+**Core Objectives:**
+
+-   Become a domain expert in a specific area (e.g., Agent Evaluation)
+    
+-   Lead the development of tools or platform-level systems
+    
+
+**Possible Development Paths:**
+
+-   Core contributor in open-source communities
+    
+-   Product lead for AI DevTool or Infrastructure platforms
+    
+-   Exploration of technology-driven entrepreneurship
+    
+
+* * *
+
+## IV. Execution Plan and Action Items
+
+### 1\. Short-Term Action Plan (6–12 Months)
+
+-   Complete at least one **Agent Evaluation-related tool or system**
+    
+-   Produce demonstrable technical outputs (GitHub repositories, documentation, demos)
+    
+-   Actively participate in relevant open-source communities and technical discussions
+    
+
+### 2\. Skill Development Path
+
+-   **Technical Skills**
+    
+    -   Agent evaluation methodologies
+        
+    -   Systems engineering and tool design
+        
+-   **Non-Technical Skills**
+    
+    -   Product thinking
+        
+    -   Technical communication and documentation
+        
+
+* * *
+
+## V. Risk Analysis and Alternative Paths
+
+-   If the development pace of Agent systems changes:
+    
+    -   Skills can transfer to **LLM Infrastructure, MLOps, or AI platform engineering**
+        
+-   If productization opportunities are temporarily limited:
+    
+    -   Continue building influence as an engineering specialist or open-source contributor
+        
+
+* * *
+
+## VI. Summary
+
+This career development plan centers on **AI Agent engineering and evaluation systems**, outlining phased goals and a clear execution path. It aims to support a gradual transition from student to professional engineer, and ultimately to a technologist with system-level influence. The plan balances **practical feasibility with long-term growth potential**, offering strong guidance value for real-world implementation.
+
+* * *
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 倒数的第二天，完成了线上随机数（顺便去看了一下布老师说的爆炸糖游戏，感觉很有意思，未来或许可以试着vibe一下（有空余额度情况下））  
 然后小小休息调整的一天~
 
@@ -25,6 +252,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 今天一天都在回家的路上...真的没时间学习啦！和SPOONOS的老师提出了关于AGENT支付生态的观点
 
@@ -35,6 +263,7 @@ Web3 实习计划 2025 冬季实习生
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 在线编写量化平台中 明天就回家啦  
 
 ![image.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/MapleCity1314/images/2026-02-05-1770301840439-image.png)
@@ -42,6 +271,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -62,6 +292,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 黑客松结束第一天 休息 调整  
 开始制作项目u0： [https://github.com/MapleCity1314/u0](https://github.com/MapleCity1314/u0)
 
@@ -70,6 +301,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -88,6 +320,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天主要库库做黑客松的内容 一口气不知道搓了多少东西
 
 其实SpoonOS并不是真正意义上的Trustless Agent, 等黑客松完事过后打算去看看Ocean那个框架，如果信息也能上链应该才算吧
@@ -97,6 +330,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -149,6 +383,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 今天做了reactive的任务
 
 -   reactive合约部署总结笔记
@@ -162,6 +397,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -203,6 +439,7 @@ Web3 实习计划 2025 冬季实习生
 
 
 
+
 1月25这天太忙了，主要在肝x402和新的合约
 
 然后和好朋友大老板交流了AI时代程序员何去何从的发展
@@ -221,6 +458,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -359,6 +597,7 @@ contract FallbackDynamicOwner {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -531,6 +770,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 
 
+
 今天没有涉及web3的内容哎 主要是和py还有AI相关的，windows上安装embedding python以及pytorch
 
 ## 目标
@@ -618,6 +858,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -743,6 +984,7 @@ agent\_instance.bind\_tools(\[fetch\_system\_logs\])
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1034,6 +1276,7 @@ contract MessageBoardOptimized {
 
 
 
+
 ````markdown
 # 实际完成内容
 - 阅读 `Memo` 合约源码，理解 `Message` 结构体与消息存储方式
@@ -1108,6 +1351,7 @@ function getMessages(
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1287,6 +1531,7 @@ ERC-8004标准设计时考虑到与其他ERC标准的兼容性，尤其是：
 
 
 
+
 Uniswap是一个基于以太坊区块链的去中心化交易所（DEX），使用自动化做市商（AMM）模型，让用户能够在没有中心化交易平台的情况下进行代币交易。下面是Uniswap的简单入门笔记：
 
 ### 1\. **什么是Uniswap？**
@@ -1420,6 +1665,7 @@ swapETHForUSDT(0.1); // 例如交换0.1 ETH为USDT
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1574,6 +1820,7 @@ Trustless Agent 不会去读 Etherscan 的网页，它需要像 **0xScope** 或 
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2015,6 +2262,7 @@ Agent AI 则走向了完全不同的方向。
 
 
 
+
 ## 智能合约开发入门
 
 ### 一、 DAPP架构和开发流程
@@ -2124,6 +2372,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -2257,6 +2506,7 @@ Foundry 提供以下以太坊开发工具：
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
