@@ -15,13 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+参加 Web3 实习计划结业典礼
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】Wildflower wildfire! 星尘之下，温柔而坚定的力量
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 参加智能体支付的拆解与实战，co-learning
 <!-- DAILY_CHECKIN_2026-02-06_END -->
@@ -30,11 +37,13 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 准备投简历和面试技巧
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -54,6 +63,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态、
@@ -63,6 +73,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -87,11 +98,13 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 收尾黑客松项目
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -120,6 +133,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -129,6 +143,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -161,6 +176,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -170,6 +186,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -206,6 +223,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -215,6 +233,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -255,6 +274,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -264,6 +284,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -308,6 +329,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -317,6 +339,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -365,6 +388,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -374,6 +398,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -426,6 +451,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -435,6 +461,7 @@ LXDAO 周会、分享会 - Reactive Workshop & 大使计划、【学员 Space】
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -588,6 +615,7 @@ SharedObject（像账户，多写者）：读写需全局排序。两者可按�
 
 
 
+
 1.  学习 以太坊协议
     
 2.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
@@ -625,6 +653,7 @@ SharedObject（像账户，多写者）：读写需全局排序。两者可按�
 
 
 
+
 1.  看币圈资讯、深潮、区块律动等平台，了解 Web3 行业动态
     
 2.  参与线上 Co-Learning、AI 及其基础概念分享会
@@ -634,6 +663,7 @@ SharedObject（像账户，多写者）：读写需全局排序。两者可按�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -806,6 +836,7 @@ Pinata（用户可以在Pinata上注册账户，创建存储桶，并上传图�
 
 
 
+
 1.  √ 学习UI UX Pro Max的使用
     
 2.  √ 学习 AI 原生开发工作流
@@ -919,6 +950,7 @@ Pinata（用户可以在Pinata上注册账户，创建存储桶，并上传图�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
