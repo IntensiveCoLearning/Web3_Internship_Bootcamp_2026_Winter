@@ -15,8 +15,124 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+一、核心技术主题回顾
+
+1️⃣ 智能合约开发与部署（Hardhat / Foundry）
+
+熟悉了 Hardhat + Hardhat-deploy 的基本工作流
+
+本地网络 / Sepolia 测试网部署
+
+\--reset、reuse 合约行为的含义
+
+理解了 部署失败的常见原因
+
+insufficient funds for intrinsic transaction cost
+
+网络不匹配、私钥钱包余额不足
+
+实际体会到：
+
+合约逻辑没问题 ≠ 部署一定成功，链上环境与资金状态同样关键
+
+2️⃣ Gas 机制与 Gas 优化（实践导向）
+
+系统理解了 Gas 的本质
+
+EVM 指令级消耗
+
+SLOAD / SSTORE 是性能瓶颈
+
+对比了 未优化 vs 优化实现
+
+Storage 多次读写 → Memory 缓存
+
+循环体内避免重复访问 storage
+
+在 Remix 中实测 Gas 差异
+
+Bad：107,971 gas
+
+Good：106,722 gas
+
+得出关键结论：
+
+Gas 优化不是“技巧炫技”，而是在高频场景下的真实成本优化
+
+3️⃣ 合约安全与攻击理解（Dice Game / Reentrancy）
+
+分析了 Dice Game 中的异常行为
+
+返回值类型不符合预期（字母 vs 数字）
+
+地址、调用对象、状态变量混乱
+
+在调试过程中进一步理解：
+
+链上状态 ≠ 前端显示
+
+成功交易 ≠ 业务逻辑正确
+
+对重入攻击有了更清晰的执行顺序认知：
+
+CALL → 状态未更新 → 再次进入函数
+
+加深了对 Checks-Effects-Interactions 模式的理解
+
+4️⃣ Web3 工程工具链与环境问题
+
+解决 / 遇到的问题包括：
+
+Node 版本与 Hardhat 不兼容
+
+npm 锁文件 ECOMPROMISED
+
+Windows 下 nvm / PowerShell / bash 行为差异
+
+形成了一个现实认知：
+
+Web3 开发 ≈ 50% 写合约 + 50% 对抗环境
+
+二、方法论与认知提升
+
+🔹 从“写合约”到“链上系统思维”
+
+今天的学习明显从：
+
+「能不能写出函数」
+
+转向了：
+
+「这个函数在链上是否可靠、可部署、可维护、可扩展」
+
+具体体现在：
+
+会主动关心 Gas
+
+会检查交易上下文
+
+会怀疑“看起来能跑”的代码
+
+🔹 实践驱动的学习节奏
+
+不再停留在文档层面
+
+每个知识点都：
+
+部署过
+
+报错过
+
+debug 过
+
+学到的是「真实 Web3 工程经验」，不是教程幻觉
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 ## 学习总结｜Web3 Internship Bootcamp 阶段性回顾
 
 在本阶段的学习中，我主要围绕 **Web3 基础开发、智能合约安全、Gas 优化、开发工具链（Hardhat / Foundry）以及公共资助机制理解** 展开系统学习，并通过实操任务不断加深理解。
@@ -65,6 +181,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 ## Web3 开发入门与工程实践
 
@@ -184,6 +301,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 ## 学习笔记：Foundry & Hardhat 的核心认知整理
@@ -318,6 +436,7 @@ Foundry 让你直面的是：
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -612,6 +731,7 @@ yarn verify --network sepolia
 
 
 
+
 今天的核心学习不在“写简历”，而在如何把一个人的经历，转化成“岗位可识别的价值表达”。
 
 首先意识到一件事：
@@ -711,6 +831,7 @@ yarn verify --network sepolia
 
 
 
+
 产品经理学习笔记
 
 一、今天学习的核心内容
@@ -799,6 +920,7 @@ yarn verify --network sepolia
 
 
 
+
 # **用 SpoonOS Graph Agent 构建可解释的对话+占卜应用**
 
 ## **1\. 目标与背景**
@@ -863,6 +985,7 @@ yarn verify --network sepolia
 
 
 
+
 -   配置前端环境变量：在 Oracle-s-Choice/frontend/.env 中设置 VITE\_API\_URL 指向本地后端 [http://localhost:8001，用于前端请求后端接口。](http://localhost:8001，用于前端请求后端接口。)
     
 -   配置后端模型与密钥：在 Oracle-s-Choice/backend/.env 中设置 GEMINI\_MODEL=gemini-2.5-flash，并配置了 Gemini 与 OpenAI 的 API Key，用于后端调用大模型服务。
@@ -872,6 +995,7 @@ yarn verify --network sepolia
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1014,6 +1138,7 @@ STAR 结构
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -1181,6 +1306,7 @@ STAR 结构
 
 
 
+
 \# 今日打卡（Web3 Portfolio建立）
 
 \## ✅ Web3 结构与路由
@@ -1260,6 +1386,7 @@ STAR 结构
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1526,6 +1653,7 @@ assert
 
 
 
+
 黑客松经验分享
 
 一、什么是黑客松（Hackathon）
@@ -1699,6 +1827,7 @@ Demo
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -2045,6 +2174,7 @@ Demo
 
 
 
+
 # AI 辅助搭建 Obsidian 个人知识库
 
 ## 一、为什么我们总是「收藏了不看」
@@ -2376,6 +2506,7 @@ Demo
 
 
 
+
 # DApp
 
 ## 一、DApp 的实用定义
@@ -2630,6 +2761,7 @@ Demo
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -3029,6 +3161,7 @@ Demo
 
 
 
+
 ## 社区运营基础 & 活动策划与执行
 
 ### 一、前置规则与合规要求
@@ -3227,6 +3360,7 @@ Demo
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -3462,6 +3596,7 @@ AI 是放大器，不是方向盘
 
 
 
+
 # 不同pre和会议记录总结
 
 ## 一、区块链金融 / On-Chain IPO（金融研究类材料）
@@ -3607,6 +3742,7 @@ AI 是放大器，不是方向盘
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -3832,6 +3968,7 @@ SpoonOS 降低开发门槛，加速落地
 
 
 
+
 ## Web3 安全与刑事风险
 
 ### 一、Web3 当前整体安全形势
@@ -3909,6 +4046,7 @@ KOL 荐币、带单；
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -4196,6 +4334,7 @@ Wallet（签名）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
