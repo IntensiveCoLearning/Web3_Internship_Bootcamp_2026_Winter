@@ -15,8 +15,627 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+# 26 📘使用别人区块链项目测试部署完整流程指南
+
+## 🎯 第一阶段：准备工作
+
+### 1\. 阅读项目文档（最重要！）
+
+```
+# 必读文件清单
+1. README.md              # 项目概览、快速开始
+2. docs/ 目录             # 详细文档
+3. .env.example           # 环境变量模板
+4. foundry.toml           # Foundry 配置（网络、RPC等）
+5. script/ 目录           # 部署脚本示例
+```
+
+**关键信息提取：**
+
+-   ✅ 需要哪些测试网？（Sepolia、Base Sepolia、Optimism Goerli 等）
+    
+-   ✅ RPC 端点地址是什么？
+    
+-   ✅ 需要什么测试币？从哪里获取？
+    
+-   ✅ 部署顺序是什么？
+    
+-   ✅ 是否需要桥接？
+    
+
+### 2\. 理解项目架构
+
+```
+典型的跨链/L2 项目结构：
+
+主链（L1）         →    L2/侧链           →    目标链
+├─ 源合约              ├─ 中间/监听合约        ├─ 回调合约
+└─ 发起事件            └─ 处理逻辑            └─ 接收结果
+```
+
+**确认：**
+
+-   需要在哪些链上部署合约？
+    
+-   各个合约的作用是什么？
+    
+-   它们如何相互通信？
+    
+
+* * *
+
+## 🔐 第二阶段：安全配置
+
+### 1\. 创建测试钱包（永远不要用公开的私钥！）
+
+```
+# 生成新钱包
+cast wallet new
+
+# 输出示例：
+# Address:     0xAbC123...
+# Private key: 0xDef456...
+```
+
+**安全原则：**
+
+-   ❌ 不要用 Hardhat/Anvil 默认私钥（如 `0xac0974...`）
+    
+-   ❌ 不要在公开场合分享私钥
+    
+-   ✅ 即使是测试网也要妥善保管
+    
+-   ✅ 可以为不同链使用同一私钥（方便）或不同私钥（更安全）
+    
+
+### 2\. 配置环境变量
+
+创建 `.env` 文件（从 `.env.example` 复制）：
+
+```
+# 复制模板
+cp .env.example .env
+
+# 编辑配置
+nano .env
+```
+
+**标准 .env 结构：**
+
+```
+# ===== 源链配置 =====
+ORIGIN_RPC=https://sepolia.base.org
+ORIGIN_CHAIN_ID=84532
+ORIGIN_PRIVATE_KEY=你的私钥（不要0x开头的公开私钥！）
+
+# ===== 目标链配置 =====
+DESTINATION_RPC=https://sepolia.base.org
+DESTINATION_CHAIN_ID=84532
+DESTINATION_PRIVATE_KEY=你的私钥
+
+# ===== 特殊网络配置（如 Reactive Network）=====
+REACTIVE_RPC=https://lasna-rpc.rnk.dev/
+REACTIVE_CHAIN_ID=5318007
+REACTIVE_PRIVATE_KEY=你的私钥
+
+# ===== 系统合约地址（项目提供）=====
+SYSTEM_CONTRACT_ADDR=0x...
+CALLBACK_PROXY_ADDR=0x...
+```
+
+**验证配置：**
+
+```
+# 加载环境变量
+source .env
+
+# 检查是否正确加载
+echo "Origin RPC: $ORIGIN_RPC"
+echo "Chain ID: $ORIGIN_CHAIN_ID"
+echo "Private Key: ${ORIGIN_PRIVATE_KEY:0:10}..."  # 只显示前10位
+```
+
+* * *
+
+## 💰 第三阶段：获取测试币
+
+### 1\. 识别需要哪些测试币
+
+根据你的部署计划，可能需要：
+
+```
+你的钱包地址（同一个地址）
+├── Sepolia 测试网        → 需要 Sepolia ETH
+├── Base Sepolia 测试网   → 需要 Base Sepolia ETH  
+├── Optimism Goerli      → 需要 OP Goerli ETH
+└── Reactive Network     → 需要 REACT 测试币
+```
+
+### 2\. 获取测试币的典型流程
+
+方式 A：直接从水龙头获取
+
+```
+# 常见测试网水龙头
+Sepolia:        https://sepoliafaucet.com/
+                https://www.alchemy.com/faucets/ethereum-sepolia
+
+Base Sepolia:   https://www.alchemy.com/faucets/base-sepolia
+                https://bwarelabs.com/faucets/base-sepolia
+
+Optimism:       https://app.optimism.io/faucet
+
+Arbitrum:       https://faucet.triangleplatform.com/arbitrum/sepolia
+```
+
+**注意：**
+
+-   有些水龙头需要主网 ETH 余额（防机器人）
+    
+-   有些需要社交媒体验证
+    
+-   有些有每日限额
+    
+
+方式 B：先获取 Sepolia ETH，再桥接
+
+**适用场景：** L2 水龙头不可用或需要主网余额
+
+```
+步骤 1: 获取 Sepolia ETH
+       ↓ (从水龙头，门槛通常较低)
+       
+步骤 2: 访问官方桥
+       Base:     https://bridge.base.org/
+       Optimism: https://app.optimism.io/bridge
+       Arbitrum: https://bridge.arbitrum.io/
+       
+步骤 3: 连接 MetaMask，选择 Sepolia → Base Sepolia
+       
+步骤 4: 输入金额（建议 0.05-0.1 ETH）
+       
+步骤 5: 确认交易，等待 2-10 分钟
+```
+
+方式 C：通过项目社区获取
+
+```
+# 加入项目 Discord
+1. 查找 README 中的 Discord 链接
+2. 加入社区
+3. 找 #faucet 频道
+4. 使用机器人命令（如 !faucet 你的地址）
+```
+
+### 3\. 验证余额
+
+```
+# 检查各个网络的余额
+cast balance 你的地址 --rpc-url https://rpc.sepolia.org
+cast balance 你的地址 --rpc-url https://sepolia.base.org
+cast balance 你的地址 --rpc-url https://lasna-rpc.rnk.dev/
+```
+
+**预期结果：**
+
+```
+100000000000000000  # = 0.1 ETH（足够测试）
+```
+
+* * *
+
+## 🛠️ 第四阶段：环境搭建
+
+### 1\. 安装依赖
+
+```
+# Foundry 项目
+forge install
+
+# 如果有 npm 依赖
+npm install
+```
+
+### 2\. 编译合约
+
+```
+# 清理并编译
+forge clean
+forge build
+
+# 检查编译是否成功
+ls out/
+```
+
+### 3\. 测试 RPC 连接
+
+```
+# 测试各个 RPC 是否可用
+cast block-number --rpc-url $ORIGIN_RPC
+cast block-number --rpc-url $DESTINATION_RPC
+cast block-number --rpc-url $REACTIVE_RPC
+
+# 如果返回数字 = 成功
+# 如果 404/500 错误 = RPC 地址错误，需要查文档
+```
+
+* * *
+
+## 🚀 第五阶段：部署合约
+
+### 1\. 理解部署顺序（关键！）
+
+**典型的跨链项目部署顺序：**
+
+```
+第一步：部署源链合约（Origin Contract）
+   ↓
+   └─ 记录合约地址 → ORIGIN_ADDR
+
+第二步：部署目标链/回调合约（Callback Contract）
+   ↓
+   └─ 记录合约地址 → CALLBACK_ADDR
+
+第三步：部署中间链/监听合约（Reactive Contract）
+   ↓
+   └─ 使用前两步的地址作为构造参数
+```
+
+### 2\. 部署方法选择
+
+方式 A：使用项目提供的脚本（推荐）
+
+```
+# 查看可用脚本
+ls script/
+
+# 常见脚本名称
+script/Deploy.s.sol
+script/DeployBasic.s.sol
+script/setup.sh
+
+# 运行脚本
+forge script script/Deploy.s.sol \
+  --rpc-url $ORIGIN_RPC \
+  --broadcast \
+  --verify  # 可选：自动验证合约
+```
+
+**优点：**
+
+-   ✅ 自动处理部署顺序
+    
+-   ✅ 参数配置正确
+    
+-   ✅ 不容易出错
+    
+
+方式 B：手动部署（灵活但容易出错）
+
+```
+# 步骤 1: 部署源合约
+forge create \
+  --rpc-url $ORIGIN_RPC \
+  --private-key $ORIGIN_PRIVATE_KEY \
+  src/contracts/OriginContract.sol:OriginContract
+
+# 输出：Deployed to: 0xABC123...
+# 复制地址
+
+# 步骤 2: 更新环境变量
+echo "ORIGIN_ADDR=0xABC123..." >> .env
+source .env
+
+# 步骤 3: 部署回调合约
+forge create \
+  --rpc-url $DESTINATION_RPC \
+  --private-key $DESTINATION_PRIVATE_KEY \
+  src/contracts/CallbackContract.sol:CallbackContract
+
+# 记录地址
+echo "CALLBACK_ADDR=0xDEF456..." >> .env
+source .env
+
+# 步骤 4: 部署 Reactive 合约（带构造参数）
+forge create \
+  --rpc-url $REACTIVE_RPC \
+  --private-key $REACTIVE_PRIVATE_KEY \
+  --value 0.1ether \  # 如果需要发送 ETH
+  src/contracts/ReactiveContract.sol:ReactiveContract \
+  --constructor-args \
+    $SYSTEM_CONTRACT_ADDR \
+    $ORIGIN_CHAIN_ID \
+    $DESTINATION_CHAIN_ID \
+    $ORIGIN_ADDR \
+    $TOPIC_0 \
+    $CALLBACK_ADDR
+```
+
+### 3\. 常见部署错误处理
+
+| 错误信息 | 原因 | 解决方案 |
+| insufficient funds | 余额不足 | 获取更多测试币 |
+| nonce too low | 交易 nonce 冲突 | cast nonce 地址 --rpc-url RPC检查 |
+| invalid string length | 参数类型/格式错误 | 检查构造函数参数类型 |
+| HTTP 404/500 | RPC 地址错误 | 查文档确认正确 RPC |
+| gas too low | Gas 估算失败 | 添加 --gas-limit 3000000 |
+
+* * *
+
+## ✅ 第六阶段：验证部署
+
+### 1\. 检查合约是否部署成功
+
+```
+# 查看合约代码
+cast code 合约地址 --rpc-url RPC地址
+
+# 如果返回一长串 hex = 成功
+# 如果返回 0x = 失败（地址无合约）
+```
+
+### 2\. 在区块浏览器验证
+
+```
+# 常见测试网浏览器
+Sepolia:        https://sepolia.etherscan.io/
+Base Sepolia:   https://sepolia.basescan.org/
+Optimism:       https://goerli-optimism.etherscan.io/
+Arbitrum:       https://goerli.arbiscan.io/
+
+# 搜索你的合约地址
+```
+
+### 3\. 验证合约源码（可选但推荐）
+
+```
+forge verify-contract \
+  合约地址 \
+  src/Contract.sol:ContractName \
+  --chain-id 链ID \
+  --constructor-args $(cast abi-encode "constructor(参数类型)" 参数值) \
+  --etherscan-api-key 你的API_KEY
+```
+
+**为什么要验证？**
+
+-   ✅ 他人可以查看源码
+    
+-   ✅ 可以直接在浏览器交互
+    
+-   ✅ 增加可信度
+    
+
+* * *
+
+## 🧪 第七阶段：测试功能
+
+### 1\. 调用合约函数
+
+```
+# 读取函数（不消耗 gas）
+cast call 合约地址 "functionName()" --rpc-url RPC
+
+# 写入函数（需要 gas）
+cast send 合约地址 \
+  "functionName(uint256)" \
+  参数值 \
+  --rpc-url RPC \
+  --private-key 私钥
+```
+
+### 2\. 监听事件
+
+```
+# 监听特定事件
+cast logs \
+  --address 合约地址 \
+  --rpc-url RPC
+
+# 过滤特定 topic
+cast logs \
+  --address 合约地址 \
+  "EventName(address,uint256)" \
+  --rpc-url RPC
+```
+
+### 3\. 查看交易详情
+
+```
+# 查看交易收据
+cast receipt 交易哈希 --rpc-url RPC
+
+# 查看交易详情
+cast tx 交易哈希 --rpc-url RPC
+```
+
+* * *
+
+## 📋 完整流程检查清单
+
+### 准备阶段
+
+-   \[ \] 阅读完整 README 和文档
+    
+-   \[ \] 理解项目架构和部署顺序
+    
+-   \[ \] 查看 `.env.example` 了解需要哪些配置
+    
+-   \[ \] 检查需要哪些测试网
+    
+
+### 安全配置
+
+-   \[ \] 生成新的测试钱包（不用公开私钥）
+    
+-   \[ \] 配置 `.env` 文件
+    
+-   \[ \] 验证环境变量加载正确
+    
+-   \[ \] **绝不分享私钥**
+    
+
+### 获取测试币
+
+-   \[ \] 列出需要的所有测试网
+    
+-   \[ \] 为每个测试网获取测试币
+    
+-   \[ \] 验证各网络余额充足（建议 0.05+ ETH）
+    
+-   \[ \] 如需桥接，等待确认完成
+    
+
+### 环境搭建
+
+-   \[ \] 安装依赖 (`forge install`)
+    
+-   \[ \] 编译合约 (`forge build`)
+    
+-   \[ \] 测试所有 RPC 连接
+    
+-   \[ \] 确认本地环境无错误
+    
+
+### 部署合约
+
+-   \[ \] 按正确顺序部署（Origin → Callback → Reactive）
+    
+-   \[ \] 记录每个合约地址
+    
+-   \[ \] 更新 `.env` 文件
+    
+-   \[ \] 检查部署交易状态
+    
+
+### 验证测试
+
+-   \[ \] 在区块浏览器查看合约
+    
+-   \[ \] （可选）验证合约源码
+    
+-   \[ \] 测试合约基本功能
+    
+-   \[ \] 监听相关事件
+    
+
+* * *
+
+## 🎓 最佳实践总结
+
+### 安全方面
+
+1.  **永远不要用公开私钥**（如 Hardhat 默认私钥）
+    
+2.  **不要在公共场合分享私钥**（即使是测试网）
+    
+3.  **测试网私钥也要妥善保管**（养成好习惯）
+    
+4.  **主网部署前用硬件钱包**
+    
+
+### 效率方面
+
+1.  **先全面阅读文档**（省时间，少踩坑）
+    
+2.  **优先使用项目提供的脚本**（比手动部署可靠）
+    
+3.  **善用区块浏览器**（快速查看状态）
+    
+4.  **记录所有合约地址**（避免重复查找）
+    
+
+### 调试方面
+
+1.  **遇错先查文档和 Issues**（大概率别人遇到过）
+    
+2.  **检查 RPC 连接**（很多问题源于此）
+    
+3.  **验证余额充足**（包括所有涉及的链）
+    
+4.  **逐步部署**（不要一次运行全部）
+    
+
+### 学习方面
+
+1.  **理解为什么这样设计**（不只是照搬命令）
+    
+2.  **对比不同项目的异同**（积累经验）
+    
+3.  **记录踩坑经验**（写笔记或博客）
+    
+4.  **参与社区讨论**（Discord、Telegram）
+    
+
+* * *
+
+## 🔧 常用命令速查
+
+```
+# ===== 钱包管理 =====
+cast wallet new                                    # 生成新钱包
+cast wallet address --private-key 私钥             # 查看地址
+cast balance 地址 --rpc-url RPC                    # 查余额
+cast nonce 地址 --rpc-url RPC                      # 查 nonce
+
+# ===== RPC 测试 =====
+cast block-number --rpc-url RPC                    # 测试连接
+cast chain-id --rpc-url RPC                        # 查链 ID
+cast client --rpc-url RPC                          # 查客户端信息
+
+# ===== 合约部署 =====
+forge build                                        # 编译
+forge create 合约路径 --rpc-url RPC --private-key 私钥  # 部署
+forge script 脚本路径 --rpc-url RPC --broadcast    # 运行脚本
+
+# ===== 合约交互 =====
+cast call 地址 "函数()" --rpc-url RPC              # 读取
+cast send 地址 "函数()" --rpc-url RPC --private-key 私钥  # 写入
+cast code 地址 --rpc-url RPC                       # 查代码
+
+# ===== 交易查询 =====
+cast tx 交易哈希 --rpc-url RPC                     # 查交易
+cast receipt 交易哈希 --rpc-url RPC                # 查收据
+cast logs --address 地址 --rpc-url RPC             # 查日志
+
+# ===== 工具函数 =====
+cast keccak "事件签名"                             # 计算 topic
+cast abi-encode "类型" 值                          # 编码参数
+cast --to-wei 0.1ether                             # 单位转换
+```
+
+* * *
+
+## 📚 推荐资源
+
+### 学习资源
+
+-   Foundry Book: [https://book.getfoundry.sh/](https://book.getfoundry.sh/)
+    
+-   Ethereum 测试网: [https://ethereum.org/en/developers/docs/networks/](https://ethereum.org/en/developers/docs/networks/)
+    
+-   Chainlist (查 RPC): [https://chainlist.org/](https://chainlist.org/)
+    
+
+### 工具网站
+
+-   测试币水龙头聚合: [https://faucetlink.to/](https://faucetlink.to/)
+    
+-   Gas 追踪器: [https://etherscan.io/gastracker](https://etherscan.io/gastracker)
+    
+-   ABI 编码器: [https://abi.hashex.org/](https://abi.hashex.org/)
+    
+
+* * *
+
+**核心思路就是：先读文档 → 配安全 → 拿测试币 → 按序部署 → 验证测试**。
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 # 26 Reactive Contracts 跨链功能 Demo
 
 # 一、Demo 概述
@@ -387,6 +1006,7 @@ npx hardhat run scripts/test-cross-chain.js --network goerli
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 # 25 RCs学习笔记
 
 本次学习核心围绕RCs核心工作模型展开，重点掌握其实践思维框架、核心概念、DeFi场景应用及具体部署操作，形成从理论到实践的完整学习闭环，为后续深入应用RCs实现跨链或自动化操作奠定基础。
@@ -609,6 +1229,7 @@ contract UniswapV2StopLossRC {
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 # 24 从零到一理解零知识证明：起源、演化、原理与实践
 
 在数字时代，隐私保护与身份验证、数据有效性验证的矛盾日益突出——我们既希望向他人证明“我拥有某类权限”“我符合某个条件”，又不愿泄露身份证号、账户余额、个人隐私等敏感信息。零知识证明（Zero-Knowledge Proof, ZKP）作为密码学领域的核心技术之一，恰好破解了这一困境，它让“证明事实”与“泄露隐私”彻底脱钩，成为区块链、数字身份、隐私计算等领域的核心支撑。本文将从零知识证明的起源出发，梳理其演化历程，拆解核心技术原理，提供可落地的实现方案（含代码示例），并详解其实际应用场景，帮助读者全面掌握这一“隐私保护神器”。
@@ -808,6 +1429,7 @@ if __name__ == "__main__":
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -1455,6 +2077,7 @@ ERC-721 标准的核心价值是「标准化 NFT 接口」，让不同项目的 
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -2256,6 +2879,7 @@ Uniswap v4 相比 v3 的所有改进，本质上都是「解决痛点、提升�
 
 
 
+
 # 21 Uniswap V3 vs V2的改进、设计初衷及技术落实全解析
 
 Uniswap V2的核心定位与痛点——V2作为Uniswap协议的第二代版本，核心是基于“**恒定乘积公式（x\*y=k）**”的自动化做市商（AMM），实现了无需许可、去中心化的代币交换，但随着DeFi生态的发展，其资本低效、费用僵化、预言机精度不足等问题逐渐凸显。
@@ -2492,6 +3116,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 
 
+
 # 从像素头像到数字热潮：NFT的前世今生与炒作真相
 
 如果你关注过数字藏品圈，一定见过那些看起来简简单单、甚至有点“潦草”的24×24像素小头像——它们就是CryptoPunks（加密朋克），如今被公认为第一个真正出圈、成规模的NFT。
@@ -2541,6 +3166,7 @@ Uniswap V3相比V2的所有改进，本质上都是围绕“**解决V2的核心�
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -3038,6 +3664,7 @@ IRouter02(routerAddress).addLiquidity(
 
 
 
+
 # 19 Wagmi初步学习
 
 **Wagmi** 是基于 Viem 的 React Hooks 库！
@@ -3379,6 +4006,7 @@ function Counter() {
 
 
 
+
 # 18 Viem 初步学习
 
 ## 1 Viem 是什么？
@@ -3595,6 +4223,7 @@ const data = encodeFunctionData({
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -4093,6 +4722,7 @@ await counter.number(); // 输出 BigInt(100)
 
 
 
+
 # 16 Foundry 初学：从安装到合约交互
 
 本文将详细介绍 Foundry 工具链的全流程操作，涵盖安装配置、项目初始化、合约开发、部署及交互等核心环节，适用于 Web3 开发入门者及技术实践人员。遵循以下规范步骤，可在本地搭建区块链测试环境，完成智能合约的全生命周期管理。
@@ -4370,6 +5000,7 @@ cast send <合约地址> "decrement()" \
 
 
 
+
 # 沉睡30年的HTTP 402：被x402唤醒，重塑Web3支付新生态
 
 在HTTP协议的状态码体系中，402 Payment Required是一个极具传奇色彩的存在。它于1997年随HTTP/1.1正式纳入标准，却在互联网浪潮中尘封近30年，成为“有定义无落地”的预留状态码。直到Web3与AI时代来临，Coinbase推出的x402协议才真正激活了这一“沉睡代码”，让HTTP原生支付能力从概念走向现实，为Web3生态注入全新活力。
@@ -4559,6 +5190,7 @@ const getPaidData = async () => {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -4800,6 +5432,7 @@ function WalletComponent() {
 
 
 
+
 # 14 DApp中前端、后端、传统数据库与区块链交互逻辑
 
 # 核心分工前提
@@ -4893,6 +5526,7 @@ function WalletComponent() {
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -5266,6 +5900,7 @@ DeFi流动性生态的核心逻辑是“LP提供资金→支撑Swap交易→赚�
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -5693,6 +6328,7 @@ contract SafeCodeExecution {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -6188,6 +6824,7 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
 
 
 
+
 # 10 Gas优化
 
 ## 一、Gas 优化总纲
@@ -6484,6 +7121,7 @@ function contribute() public payable {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -7621,6 +8259,7 @@ contract ExceptionExample {
 
 
 
+
 # 07 智能合约开发大致流程
 
 智能合约开发是一个**从需求定义到上线维护的闭环流程**，核心遵循「**设计→开发→测试→部署→交互**」的步骤，且每个环节都需要严格把控安全性（因为合约部署后无法修改）。以下是详细的、可落地的具体流程：
@@ -8006,6 +8645,7 @@ npx hardhat run scripts/deploy.js --network mainnet
 
 
 
+
 # Dapp开发四大核心角色交互详解
 
 ### 一、先建立整体认知：四大核心组件的角色定位
@@ -8350,6 +8990,7 @@ RPC节点 → 1. 接收签名交易 2. 广播到区块链网络 3. 等待矿工�
 
 
 
+
 # Dapp开发全流程
 
 DApp（去中心化应用）开发区别于传统Web应用，核心是“前端交互+智能合约执行+区块链上链”的协同，全流程需串联合约、前端、RPC节点、钱包四大核心组件，遵循“设计→开发→测试→部署→上线运维”的闭环，具体步骤如下：
@@ -8511,6 +9152,7 @@ DApp涉及区块链资产和不可篡改合约，测试需覆盖功能、安全�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -8808,6 +9450,7 @@ EVM（以太坊虚拟机）是**运行智能合约的沙盒环境**，不是物�
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -9145,6 +9788,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 
 
+
 ## 1\. BTC是什么？
 
 **比特币（Bitcoin）不是一家公司、不是一个APP、不是一台服务器。**
@@ -9373,6 +10017,7 @@ ETH 追求的是**可编程 + 可扩展性**
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
