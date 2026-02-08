@@ -15,8 +15,55 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+### **默克尔树在 Optimistic Rollup 中的作用**
+
+在 Optimistic Rollup 中，默克尔树主要用于**数据可用性（Data Availability）和欺诈证明（Fraud Proof）**。
+
+NaN.  **状态树和默克尔根**：与 ZK-Rollup 类似，Optimistic Rollup 也会用默克尔树来表示 Layer 2 的状态。每批交易执行后，会生成一个新的默克尔根，这个根代表了新的状态。这个根和所有交易数据都会被提交到 Layer 1。
+      
+NaN.  默克尔证明（Merkle Proof）
+      
+      这是 Optimistic Rollup 中默克尔树最核心的作用。在挑战期内，如果有人怀疑某笔交易是无效的，他可以提交一个
+      
+      欺诈证明
+      
+      来挑战这个批次。这个证明的核心就是利用默克尔树。
+      
+      -   **挑战者**会向 Layer 1 上的合约提供特定的交易数据和其**默克尔证明**。
+          
+      -   这个证明能够让 Layer 1 的合约验证，被挑战的交易确实是包含在那个批次中的。
+          
+      -   然后，Layer 1 的合约会重新执行这笔有争议的交易，如果发现它确实是无效的，那么提交该批次的排序器（Sequencer）就会受到惩罚。
+          
+
+简单来说，在 Optimistic Rollup 中，默克尔树是**挑战机制的基石**，它让任何人都可以有效地证明某笔交易是批次的一部分，从而发起欺诈挑战。
+
+* * *
+
+### **默克尔树在 ZK-Rollup 中的作用**
+
+在 ZK-Rollup 中，默克尔树主要用于**高效的状态表示**和**零知识证明的输入**。
+
+NaN.  **状态树和默克尔根**：同样，ZK-Rollup 也用默克尔树来表示 Layer 2 的状态。当一个批次执行后，会生成一个新的默克尔根。
+      
+
+作为零知识证明的输入
+
+：这是与 Optimistic Rollup 的根本区别。在 ZK-Rollup 中，证明器（Prover）会使用旧的默克尔根、新的默克尔根以及所有交易数据，来生成一个零知识证明
+
+-   这个证明会**数学上**证明“存在一个旧状态的默克尔根，通过执行这些交易，可以得到一个新的状态默克尔根”。
+    
+-   最终上链的不是具体的交易，也不是一个欺诈挑战，而是一个简洁的**零知识证明**。
+    
+
+在 ZK-Rollup 中，默克尔树是**证明有效性的数学结构**。它提供了简洁的“哈希指纹”，让零知识证明可以高效地证明整个状态的转换是正确的，而**不需要**挑战期或重新执行交易。
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 ### **代理模式的工作流程：**
 
 NaN.  用户调用代理合约的某个函数。
@@ -64,6 +111,7 @@ NaN.  代理合约将结果返回给用户。
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 ## **升级合约**
 
@@ -119,6 +167,7 @@ NaN.  代理合约将结果返回给用户。
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 ## **代理合约**
@@ -254,6 +303,7 @@ contract Proxy {
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 
@@ -438,6 +488,7 @@ assembly {
 
 
 
+
 **ZK-Rollups (Zero-Knowledge Rollups)**
 
 -   **核心理念：** “有效性证明” (你必须用数学方法立刻证明自己是好人)。
@@ -461,6 +512,7 @@ assembly {
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -827,6 +879,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## **Twitter Space 线上活动策划总结**
 
 ### **（一）全流程框架：准备 - 执行 - 复盘**
@@ -858,6 +911,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -908,6 +962,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## **数据分析总结**
 
 ### **（一）区块链数据结构基础**
@@ -944,6 +999,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -1056,6 +1112,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 # 侧链 (Sidechain) 笔记
 
 ## 1\. 背景与动机
@@ -1138,6 +1195,7 @@ contract MyNFT is ERC721 {
 
 
 
+
 ## ptimistic Rollup 核心机制
 
 -   **基本原理**：假设大多数参与者是可信的。
@@ -1189,6 +1247,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1272,6 +1331,7 @@ contract MyNFT is ERC721 {
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -1475,6 +1535,7 @@ contract NFTmarket  {
 
 
 
+
 -   figma对于平行元素只是部分元素不相同的部分只需要先将其中的一个元素建立好，部分的内容再做修改
     
 -   平行图标的使用可以统一对应的大小，间距等
@@ -1488,6 +1549,7 @@ contract NFTmarket  {
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1522,6 +1584,7 @@ contract NFTmarket  {
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -1590,6 +1653,7 @@ contract NFTmarket  {
 
 
 
+
 右侧即为**属性栏**为详细的一些调整其中有对应的design，prototype，也就是对应的静态设计和原型模式，一般我们会先设计出对应的静态网页，如一些钱包界面，转账，出块这种，然后通过对应的图标和连线使整个过程可以串联起来，同时上方还有基本的演示按钮，如果设计出原型即可使用对应的功能
 
 ![b3f380b27ecd20b7230c37f2e966d564.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/ChainDora/images/2026-01-20-1768924120711-b3f380b27ecd20b7230c37f2e966d564.png)
@@ -1612,6 +1676,7 @@ contract NFTmarket  {
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1673,6 +1738,7 @@ contract NFTmarket  {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1760,6 +1826,7 @@ contract NFTmarket  {
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1881,6 +1948,7 @@ contract NFTmarket  {
 
 
 
+
 # Web3 合规与法律风险
 
 -   **中国监管态度**：全面禁止金融属性（ICO、交易所、支付工具），有限容忍技术创新。
@@ -1968,6 +2036,7 @@ contract NFTmarket  {
 
 
 
+
 ## Web3 社区运营指南要点
 
 ### 一、社区运营核心职责
@@ -2010,6 +2079,7 @@ contract NFTmarket  {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2116,6 +2186,7 @@ contract NFTmarket  {
 
 
 
+
 ## 以太坊学习要点
 
 ### 1\. 基本介绍
@@ -2178,6 +2249,7 @@ contract NFTmarket  {
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
