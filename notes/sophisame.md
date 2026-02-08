@@ -15,8 +15,56 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+# 代币套利
+
+-   Pendle项目
+    
+    -   我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
+        
+        -   一个SY可以拆分成一个PT+一个YT。相应的一个YT+一个PT也能总换成SY（直接合并拆分）
+            
+    -   {2EA176DA-F772-4E6D-8385-F778C28CFEE8}.png
+        
+        -   U...APY：实际资产能产生的收益
+            
+        -   I...APY:市场认为这个资产的年化是多少(收益多少)
+            
+        -   L..APY:
+            
+-   做市Pools
+    
+    -   LP：LP是SY和PT之间的交易
+        
+    -   会有一堆堆磨损（亏损），可以通过0价格影响磨损进入：可以获得一个LP,和YT
+        
+        -   一个eETH放进去 --> 包装成一个SY：然后将一半(具体看汇率)SY留下+（将剩下的SY）拆分成PT+YT --> 再将SY和PT混合为LP，YT则自己留在钱包里
+            
+    -   如果不以0价格影响进入
+        
+        -   意味着直接将eETH直接换成LP
+            
+        -   相当于直接把YT直接兑换成LP，所以会有点磨损
+            
+        -   如果没有YT，[ether.fi](http://ether.fi)协议不会给我们积分
+            
+    -   在退出的时候选择手动Manual退出，再选择Remove Li
+        
+        -   它会将YT和PT组合在一起变成eETH退出
+            
+-   penpie
+    
+    -   可以把如pendle币放到里面集中管理，可提高收益
+        
+    -   也可存LP
+        
+    -   如果你想在pendle上去上协议，可以去penpie买别人的币，再去投票。因为别人手里的VEpendle是有投票权利的，买了这些去支持我们的项目
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 bd需要去捕捉市场机会
 
 # web3bd早期
@@ -43,6 +91,7 @@ bd步骤：获取目标客户+根据对方需求进行结合+商务谈判（金�
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 # 生态与社区（从0-1）
 
@@ -103,6 +152,7 @@ grant激励，孵化器对接
 <!-- DAILY_CHECKIN_2026-02-03_START -->
 
 
+
 # **什么是以太坊2.0**
 
 **共识机制升级：以太坊2.0将把以前依靠高耗能的PoW工作量证明改为PoS。在PoS中，用户通过质押（staking）自己的ETH来参与网络的共识，成为验证者，从而获得奖励。这种方式不仅能大幅降低能源消耗（可减少99.95%的能耗），还能提高网络扩展性和交易处理速度。**
@@ -118,6 +168,7 @@ grant激励，孵化器对接
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -203,6 +254,7 @@ web3面试流程与互联网相比相对简短。大公司需要口语英语好�
 
 
 
+
 -   内存，引用与持久化存储
     
     -   EVM数据存储类型
@@ -244,6 +296,7 @@ web3面试流程与互联网相比相对简短。大公司需要口语英语好�
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -370,6 +423,7 @@ solidity
 
 
 
+
 # 区块链数据结构
 
 ## 链上数据基本类型
@@ -464,6 +518,7 @@ value：转账的费用
 
 
 
+
 # **plume质押与流动性项目**
 
 ## Nest
@@ -531,6 +586,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 ## 哈希指针
 
 ![截屏2026-01-27 22.05.06.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-27-1769522717205-__2026-01-27_22.05.06.png)
@@ -550,6 +606,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -660,6 +717,7 @@ Royco Protocol是Plume Network生态中\*\*去中心化流动性管理协议\*\*
 
 
 
+
 # Hooked Protocol 代币经济模型
 
 Hooked Protocol采用了创新的单一代币（HOOK）结构，并辅以生态圈内部的的实用代币HGT（Hooked Gold Token）。其HOOK作为生态系统治理代币，具有社区活动和独家NFT访问功能，质押奖励与平台盈利，未来将用于Hooked基础设施的燃气费代币。
@@ -720,6 +778,7 @@ Gas 抵扣：在 Hooked Rollup 上的链上操作，使用 HOOK 可享手续费�
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -805,6 +864,7 @@ retro funding是通过ai模型对项目先进行判断，产出方案，再结�
 
 
 
+
 # pendle协议
 
 我们将资产通过协议转化为生息代币aUSDC，再将aUSDC包装为SY-aUSDC，将每个SY-aUSDC拆分成一个PT-aUSDC+一个YT-aUSDC。YT代表的就是从今天开始到到期日这段时间里，整个SY产生的收益（利息）
@@ -867,6 +927,7 @@ LP是SY和PT之间的交易
 
 
 
+
 LIdo
 
 ![截屏2026-01-20 22.31.50.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/sophisame/images/2026-01-20-1768919519461-__2026-01-20_22.31.50.png)
@@ -888,6 +949,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1020,6 +1082,7 @@ lido是帮助用户将以太坊质押到以太坊2.0的信标链上，然后获�
 
 
 
+
 # uniswap协议：LP挖矿：AMM恒定乘积做市函数
 
 uniswap协议是以池子的方式进行交易的形式。这是一种做市函数。我们是和资金池做交易，所以Dex里需要引入新角色：LP的提供者，他们维持了整个交易的流动性。LP提供者就是普通用户的对手。
@@ -1081,6 +1144,7 @@ T0时间是添加流动性的时候，T1,T2分别为两次变化。并且假如y
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1341,6 +1405,7 @@ DeFi 的优势与风险：
 
 
 
+
 # 支付摩擦：机器经济需要新货币
 
 -   新需求：
@@ -1410,6 +1475,7 @@ web3对ai合规的解决方案：
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1504,6 +1570,7 @@ kol会被当作交易所共犯：非法利用信息网络：进行交易所永�
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1668,6 +1735,7 @@ rpc具有中心化的风险
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
