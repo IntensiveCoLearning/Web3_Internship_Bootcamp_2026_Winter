@@ -15,19 +15,27 @@ ha
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+1.打卡最后一天，看看ETH白皮书，参加结业仪式
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 1.看以太坊协议
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 1.结合uniswap的文档继续看代码，缺少一些的必备的金融知识，一起补补
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 1.技术 / 开发向的成长路径 参会
@@ -40,6 +48,7 @@ ha
 
 
 
+
 1.看uniswap v2 core代码
 <!-- DAILY_CHECKIN_2026-02-03_END -->
 
@@ -49,11 +58,13 @@ ha
 
 
 
+
 1.玩了一天openclawd
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -73,11 +84,13 @@ ha
 
 
 
+
 1.再优化下之前的留言板代码[https://github.com/lorstyang/messageboard-frontend](https://github.com/lorstyang/messageboard-frontend)
 <!-- DAILY_CHECKIN_2026-01-31_END -->
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -102,6 +115,7 @@ ha
 
 
 
+
 -   workshop参会
     
 -   黑客松cobuilding
@@ -109,6 +123,7 @@ ha
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -137,6 +152,7 @@ ha
 
 
 
+
 1.投研基础框架分享录播
 
 2.SPARK AI Hackathon 休闲黑客松
@@ -144,6 +160,7 @@ ha
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -212,6 +229,7 @@ ha
 
 
 
+
 1.继续solidy101，复习一下
 
 2.昨天分享了解了RainbowKit，hardhat，wagmi，今天实践尝试一下
@@ -219,6 +237,7 @@ ha
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -262,6 +281,7 @@ ha
 
 
 
+
 1.参会 Dapp Workshop
 
 2.参会南塘 DAO
@@ -273,6 +293,7 @@ ha
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -324,6 +345,7 @@ ha
 
 
 
+
 1.参会公共物品资金分配
 
 2.参会「Solidity Walk Through」
@@ -333,6 +355,7 @@ ha
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -426,6 +449,7 @@ contract SimpleStorage {
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -647,6 +671,7 @@ L1（以太坊主网）的问题：
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1027,6 +1052,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 ## 安全
 
 ### 常见风险
@@ -1146,6 +1172,7 @@ tokenURI(tokenId) → 一个 URL
 
 
 
+
 # 创建钱包以及测试网转账
 
 [https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59](https://sepolia.etherscan.io/tx/0x33c92ea26d4603816cc29b34793c042d4f2c8ddc0ac1f998604b4656f37eda59)
@@ -1221,6 +1248,7 @@ tokenURI(tokenId) → 一个 URL
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
