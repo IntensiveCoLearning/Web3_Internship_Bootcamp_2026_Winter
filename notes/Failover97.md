@@ -15,8 +15,41 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+The last Day 善始善终
+
+**合约的调用**
+
+在EVM中所有交易都是顺序执行的，所以在同一时间严格上来说只有一个调用栈在调用智能合约
+
+## 如何阅读合约
+
+1、阅读目的：阅读的起点不应该是第一行代码，而是合约在**维护什么状态**
+
+2、首先找：核心变量。 钱放在哪里，谁有权限，先看怎样算成功，什么条件会导致回滚或者结束。
+
+3、其次找：什么函数能够改变状态。尤其要留意**payable函数**和构造函数。
+
+4、总结：一个合约的注意力必须放在资金流上：主线是——-钱从哪里进入合约、进入后以什么形式存在、最后在什么条件被转出。
+
+读完合约应该能说清楚的三件事：
+
+1.  系统一开始是什么状态？
+    
+2.  用户能做哪些事情？
+    
+3.  在什么条件下系统结束或产生结果？
+    
+
+![image.png](attachment:f33fe9e7-8734-4865-bd4d-5471116d98d3:image.png)
+
+## 危险调用
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 真的好快啊，一个月一晃就要结束了。特别要感谢无偿付出的助教们，每天高频率在vx群冲浪，解答问题、活跃气氛。i人时时会忍不住窥屏，看着助教们一直在群里发光发热，即时是e人，这也是向外高耗能的工作，想想都太累太累。最后的最后，只有感谢。这次的实习大家都很厉害，又很包容。感恩一个月的同行，用wachi老师的话说，短短一个月时间可能学不到很多，但最重要的是认识到了靠谱的小伙伴。最后要特别鸣谢我的助教Tina老师，每天辛苦改作业，还在黑客松上捞我哈哈哈哈哈。  
 最近没有学和web3强相关的东西，疯狂补LLM和agent的知识  
 Single Head Attention
@@ -80,6 +113,7 @@ Multi-attention的机制就是把single-attention并行的完成，但是有不�
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 # Transformer
 
@@ -171,6 +205,7 @@ K=E2\*Wk ,可以试做是每个向量正在回答问题
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 ### 今天完成了常见的合约漏洞的最后一种类型
 
 ### 使用tx.origin
@@ -229,6 +264,7 @@ contract PhishingWrapper {
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -429,6 +465,7 @@ RA-3 风险评估（Risk Assessment）— 核心中的核心
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -687,6 +724,7 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 今天在为了项目要设计几个agent；怎么调校不同的agent;agent之间用什么pattern；agent\\MCP server\\skills\\tools到底是什么关系 狂补这些知识
 
 ### 主流的Agent在做什么
@@ -904,11 +942,13 @@ git reset --hard commit-id # 危险操作！\`
 
 
 
+
 最近几天在参加hackthon，笔记后面再补（免淘汰卡，滴）
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -1094,6 +1134,7 @@ k = 常数（池子创建时确定）
 
 
 
+
 今天复习一下transformer 准备选LLM+agent方向
 
 -   当两个向量指向同一个方向时，点积为正
@@ -1118,6 +1159,7 @@ Embedding、Key、Query、Value、Output、Up-projection、Down-projection、Une
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -1267,6 +1309,7 @@ bytes32 hash = keccak256(abi.encodePacked(_param2, _nonce, _chainId));//签名�
 
 
 
+
 ### Oracle Manipulation Attacks(预言机操纵攻击）
 
 漏洞：盲目依赖单一数据源信息
@@ -1359,11 +1402,13 @@ contract Vulnerable {//用于内部记账，影响withdraw balances的状态
 
 
 
+
 今天完善了一下领英和web3 security governance的英文简历，就不在这里po了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -1424,6 +1469,7 @@ transfer(notify=True, to="0x123...", amount=100)  ✅
 
 
 
+
 ### Rag
 
 RAG（检索增强生成）—Retrieval-Augmented Generation
@@ -1466,6 +1512,7 @@ MCP采用client-server架构。AI系统作为MCP client,各种工具/数据源�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -1642,6 +1689,7 @@ magician：[https://ethereum-magicians.org/t/erc-7962-key-hash-based-tokens/2442
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1851,6 +1899,7 @@ contract Relayer {
 
 
 
+
 ## Exposed Data
 
 区块链看似匿名的特性可能会给用户带来虚假的安全感。只要链上拥有足够的数据，用户的匿名性就很容易被破解。个人身份信息（PII）
@@ -1868,6 +1917,7 @@ contract Relayer {
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -2128,6 +2178,7 @@ console.log(multiply(3, 4)); // 输出: 12
 
 
 
+
 **unchecked:**
 
 避免solidity 0.8.0开始的编译器自动对合约做数学安全检查，消耗gas.(高频函数非常在意gas)
@@ -2264,6 +2315,7 @@ Payable函数，红色按钮（可以接受ETH）
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
