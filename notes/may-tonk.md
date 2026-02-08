@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+最后一天，新的开始！
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 # 一、结论
 
 ### ✅ 结论先行
@@ -248,6 +254,7 @@ PnL 结算时：
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 # 一、核心结论
 
@@ -558,6 +565,7 @@ Vault 模型：
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
 
+
 # 、Curve：用数学解决问题，而不是 storage
 
 Curve 的设计哲学和 Uniswap V3 **完全相反**。
@@ -804,6 +812,7 @@ balances[tokenOut] -= amountOut;
 
 
 
+
 * * *
 
 # 一、结论
@@ -1022,6 +1031,7 @@ struct Position {
 
 
 
+
 # 一、前端 → 钱包 → 交易 → EVM
 
 很多人把这句话当流程图看，其实它是 **四个完全不同的系统**。
@@ -1207,6 +1217,7 @@ balanceOf[to] += amount;
 
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 
 
 
@@ -1420,6 +1431,7 @@ function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data)
 
 
 
+
 # 一、Subgraph ≠ 传统数据库写入
 
 这是 90% 人理解错的地方。
@@ -1624,6 +1636,7 @@ Indexer 会：
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -1953,6 +1966,7 @@ Indexer 会：
 
 # 2026-01-29
 <!-- DAILY_CHECKIN_2026-01-29_START -->
+
 
 
 
@@ -2341,6 +2355,7 @@ event.on 实时提示
 
 
 
+
 # 一、为什么不用 Subgraph 会崩
 
 我们先假设一个**非常真实的 DApp 场景**：
@@ -2639,6 +2654,7 @@ Subgraph 刚好完美匹配。
 
 
 
+
 # 一、Event 设计原则
 
 ## 1️⃣ Event 是“行为日志”，不是“状态快照”
@@ -2833,6 +2849,7 @@ const events = await contract.queryFilter(
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -3205,6 +3222,7 @@ uint32  blockTimestampLast;
 
 
 
+
 # 一、第一层：**前端（UI）不是“业务核心”，而是“操作入口”**
 
 ### 1️⃣ 前端在 Web3 里真正的角色是什么？
@@ -3462,6 +3480,7 @@ IERC 本质上只是：
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -3846,6 +3865,7 @@ UI 更新 = 链上状态确认**
 
 
 
+
 # 一、第一条规则：**链 ≠ 以太坊**
 
 很多人潜意识里以为：
@@ -4176,6 +4196,7 @@ ERC20 / ERC721 解决的是：
 
 
 
+
 # 为什么 storage 写入特别贵？
 
 # 一、结论
@@ -4422,6 +4443,7 @@ mapping(address => uint256) balance;
 
 # 2026-01-20
 <!-- DAILY_CHECKIN_2026-01-20_START -->
+
 
 
 
@@ -4732,6 +4754,7 @@ Proxy 用 `delegatecall` 调用 Logic
 
 
 
+
 ### **  
 ERC-1155 介绍**
 
@@ -4880,6 +4903,7 @@ ERC-1155 不是必须的，但它解决了 ERC-20/721 的痛点，尤其在多�
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -5256,6 +5280,7 @@ ERC-721 强依赖事件，而不是函数返回值：
 
 
 
+
 # 今日复习hash的处理（详细代码上传在GitHub）
 
 [GitHub中hash代码链接](https://github.com/may-tonk/my_web3_study/blob/master/contracts/_hash.sol)
@@ -5598,6 +5623,7 @@ contract Hash {
 
 
 
+
 # 关于ETH的部分总结理解：
 
 ### ETH的运用场景详细讲解
@@ -5701,6 +5727,7 @@ Layer 2 (L2)：扩展解决方案
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -5864,6 +5891,7 @@ contract fundme{
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -6215,6 +6243,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 
 
+
 ## 今天分享solidity复盘和最新学习的进展(已上传在本人自己的GitHub)和在学习过程中关于区块的一些疑惑(下面有解决）
 
 -   **复习solidity内容(ERC20)**
@@ -6317,6 +6346,7 @@ AMM 和 K 线的关系是：K 线反映已经发生的交换结果，而 AMM 池
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
