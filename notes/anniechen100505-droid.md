@@ -15,19 +15,107 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+结合Crypto Infra行业BD的冷触达、展会洽谈、商务沟通、跟进客户、跨团队协作、求职对接六大核心场景，整理高频实用英文句子，适配ToB商务拓展日常，贴合Web3基建赛道的沟通习惯，分场景整理好直接用：
+
+一、展会/线下搭讪（跑会建联高频，自然破冰不生硬）
+
+1\. Hi, I’m \[Your Name\] from \[Your Team/Project\]. Great to connect with you at this event!
+
+2\. I’ve been following your project \[Project Name\] for a long time, especially your Infra product. Do you have a minute to chat about potential cooperation?
+
+3\. Could I add your LinkedIn/Twitter? I’d love to keep in touch and share more about our collaboration opportunities.
+
+4\. Nice talking to you! I’ll send you a follow-up message later with our project brief.
+
+二、冷触达（邮件/领英/推特私信，投简历/建联项目方通用）
+
+通用求职/实习版（适配你零经验投Infra项目）
+
+1\. Hi \[Name\], I’m a Web3 enthusiast passionate about Crypto Infra track. I noticed your project is expanding in the APAC region, and I’d love to apply for an intern position to support your BD/community work. Attached is my resume for your reference.
+
+2\. Hi \[Name\], I’ve done a deep research on your \[Project Name\] and prepared a brief analysis of your APAC market expansion. I wonder if there’s any internship opportunity to join your team? I’m fluent in CN/EN and willing to take on basic tasks like event coordination and user communication.
+
+商务合作版（后续工作对接用）
+
+1\. Hi \[Name\], This is \[Your Name\] from \[Your Project\]. Our \[product/service\] is a blockchain infrastructure solution for \[pain point\], and I think it could bring mutual value to your project. Would you be available for a short call next week to discuss further?
+
+2\. Hi \[Name\], I got your contact from \[Event/Referral\]. Our team is focusing on \[cooperation direction, e.g., liquidity support/ecosystem integration\], and I’d like to share more details with you.
+
+三、商务沟通/合作洽谈（对接需求、聊方案高频）
+
+1\. Could you tell me more about your team’s current needs for blockchain infrastructure? We can provide a customized solution for you.
+
+2\. Our core advantage is \[e.g., low cost/high efficiency/APAC resource coverage\], which can help your project reduce costs and increase efficiency in the Infra sector.
+
+3\. Let’s discuss the specific cooperation terms, such as the cooperation cycle and resource support from both sides.
+
+4\. I’ll work out a detailed proposal and send it to you by the end of this week.
+
+5\. If you have any questions about the proposal, feel free to let me know and we can adjust it in time.
+
+四、客户跟进（会后/首次沟通后，避免失联）
+
+1\. Hi \[Name\], Hope you had a great day! This is the project brief we talked about at the event, and I’ve attached it for you. Let me know if you have any questions.
+
+2\. Just following up on our previous call—have you had a chance to review the proposal I sent you?
+
+3\. Hi \[Name\], I’m checking in to see if your team has any new thoughts on our cooperation plan. We’re flexible to adjust based on your needs.
+
+4\. If you’re not the right person to talk to about this cooperation, could you refer me to the relevant BD/Product manager?
+
+五、跨团队/内部协作（和产研、运营配合，日常工作用）
+
+1\. I need to coordinate with the tech team to confirm the technical docking details for this cooperation.
+
+2\. Could you provide the latest project data? I need it for the client proposal.
+
+3\. Let’s have a quick sync call this afternoon to align the BD plan for the upcoming Consensus event.
+
+4\. I’ll share the meeting minutes with the team later and list the next action items.
+
+六、日常回复/礼貌收尾（所有场景通用，显专业）
+
+1\. Thank you for your time and reply! I’ll get back to you as soon as possible.
+
+2\. Sorry for the late reply— I’ve been busy with the \[Event/Project\] these days.
+
+3\. Looking forward to your further feedback!
+
+4\. Feel free to contact me if you need any more information.
+
+5\. Have a nice day!
+
+七、求职面试/沟通（面BD岗，和项目方HR/负责人聊）
+
+1\. I have a strong motivation to work in the Crypto Infra track, and I’m a fast learner who can quickly adapt to your project’s work rhythm.
+
+2\. Though I don’t have professional BD experience, I’m good at communication and have organized several Web3 offline sharing sessions, which helps me build basic networking skills.
+
+3\. I’m willing to start with basic work like event coordination and community support, and I hope to grow with your Infra project in the long term.
+
+4\. Could you tell me more about the daily work of this BD intern position and the key responsibilities?
+
+我可以帮你把这些句子按「求职/工作」分类整理成可复制的文档，再标注上「适用场景+替换关键词」，你投简历/跑会时直接改名字就能用，需要吗？
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 .
 <!-- DAILY_CHECKIN_2026-02-07_END -->
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
 
+
 已帮你记录好《BD岗位相关探讨》,详细内容请点击下方查看: BD岗位相关探讨 会议讨论了BD岗位相关经验、技能要求、考核指标、实习机会及职业发展等内容，具体如下： - **BD岗位优势与个人偏好**： - **了解行业全貌**：BD是进入行业了解全貌的好位置，从业者可从与他人交流中获取能量，且能不断挖掘市场反馈并调优策略。 - **磨练心性**：对于刚进入职场或Crypto行业的人，BD能在被拒绝中磨练心性，反思所需知识。 - **协作资源多**：BD可与行业各场景、资源协作，了解市场热点。 - **0经验新人入行建议**： - **从0到1项目入手**：部分项目可让新人从0到1参与，经培训理解逻辑后即可开展工作。 - **社群大使途径**：可担任项目的community ambassador，做项目运营，积累经验和人脉。 - **营销初级岗位**：应聘marketing junior岗位，参与活动管理等工作。 - **主动建立联系**：主动与项目方交流，展示对Web3的兴趣、学习能力和对项目的忠诚度。 - **BD工作考核指标**： - **不同项目不同指标**：不同Crypto项目考核指标不同，如Li BA以revenue、GMV和arr衡量，上币项目考核每月上币数量和带来的收入。 - **考核周期**：通常按每月或每季度考核，与销售额挂钩计算绩效和奖金。 - **BD不同阶段特点**： - **第一阶段**：单纯建联，认识人脉。 - **第二阶段**：带领团队工作，涉及技术推进需专业伙伴协助。 - **第三阶段**：参与项目投融资等更高级事务。 - **BD实习相关要点**： - **基本面展示**：展示对Web3的兴趣、学习能力和对项目的忠诚度。 - **寻找途径**：通过AI查找头部项目，在官网找招聘机会，主动发邮件或信息联系。 - **岗位比较**：KOL BD较适合新手，背靠品牌做预算投放；marketing BD负责品牌宣传，不背营收指标。 - **资源转化与价值提供**： - **提供价值**：将会上认识的人转化为资源需提供价值，如情绪价值或解决实际需求。 - **建立信任**：通过多次合作，一起赚钱或亏钱建立信任。 - **日常工作流程示例**： - **处理前期反馈**：查看客户、产研反馈和团队交流内容。 - **安排日常活动**：如健身、与客户共进午餐等。 - **推进项目工作**：开会、做会议纪要、商讨方案、与团队沟通计划和目标、复盘客户。 - **上币BD方法论**： - **品牌背书重要**：大交易所做上币BD靠品牌，需做好时间管理。 - **为项目方着想**：中小交易所做上币BD要考虑为项目方带来资源和赚钱方案。 - **实习薪资与选择**： - **薪资范围**：实习生月薪可能2 - 3万人民币，有经验的junior BD年薪可能12万美金以上。 - **项目选择**：熊市可选择头部或基建项目积累资源和认知。 - **展会筛选建议**：有时间时从感兴趣的赛道入手，研究相关项目和活动。 - **职业理解与选择**： - **适合特质**：善于撮合价差和需求差、对跑会感兴趣的人适合做BD。 - **平台选择**：起步阶段找好平台和产品更易开展工作。 - **Infra选择**：风险偏好低的人可选择Infra项目，风险偏好高的人有不同选择。 - **任务** - **JD 私聊事项**：将推特运营实习生的 JD 私聊给说话人2，用于其在岗位对接周帮忙发布并筛选简历
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
+
 
 
 Web3 DevRel 学习笔记
@@ -140,11 +228,13 @@ Issue Close Rate 服务 工单关闭率，反映技术支持质量与响应速�
 
 
 
+
 .
 <!-- DAILY_CHECKIN_2026-02-04_END -->
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -253,6 +343,7 @@ Web3媒体人学习笔记
 
 
 
+
 .
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
@@ -264,11 +355,13 @@ Web3媒体人学习笔记
 
 
 
+
 。
 <!-- DAILY_CHECKIN_2026-02-01_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -343,6 +436,7 @@ NFT价值流向及相关问题分享会学习笔记&总结
 
 
 
+
 .
 <!-- DAILY_CHECKIN_2026-01-30_END -->
 
@@ -357,11 +451,13 @@ NFT价值流向及相关问题分享会学习笔记&总结
 
 
 
+
 .
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -437,6 +533,7 @@ Token Terminal 聚合协议市值、活跃用户、交易量等指标 项目估�
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -739,6 +836,7 @@ README 必寫內容：
 
 
 
+
 **Web3 职业发展与行业前景分享会会议纪要**
 
 **1.**
@@ -985,6 +1083,7 @@ USDT 等加密货币，他们能融入全
 
 
 
+
 .
 <!-- DAILY_CHECKIN_2026-01-25_END -->
 
@@ -1004,11 +1103,13 @@ USDT 等加密货币，他们能融入全
 
 
 
+
 .
 <!-- DAILY_CHECKIN_2026-01-24_END -->
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -1056,6 +1157,7 @@ Web3 领域有大量的讨论，关于技术架构、代币经济、治理模型
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -1498,6 +1600,7 @@ Web3 BD需将激励机制视为生态系统的血液，不仅要吸引短期参�
 
 
 
+
 21/01/2026 Uniswap工作原理解析：
 
 Agenda議程：
@@ -1843,6 +1946,7 @@ Web3 職涯發展分享會
 
 
 
+
 Solidity 與 Web3 治理學習筆記：
 
 一、這場會議究竟在講什麼？
@@ -2012,6 +2116,7 @@ Solidity 與 Web3 治理學習筆記：
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -2266,6 +2371,7 @@ TX（交易） 任何鏈上操作（如加入提案、投票）都會產生一�
 
 
 
+
 熟悉相关数据平台（用于运营分析）：
 
 -   [DeFiLlama](https://defillama.com/)：各赛道概览、TVL 数据分析、专有名词 & 缩写的理解
@@ -2285,6 +2391,7 @@ TX（交易） 任何鏈上操作（如加入提案、投票）都會產生一�
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -2331,6 +2438,7 @@ TX（交易） 任何鏈上操作（如加入提案、投票）都會產生一�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -2737,6 +2845,7 @@ AI Agent 在未經治理框架下運作（Source: Truyo）
 
 
 
+
 ## **Web3 合規與刑事風險防範**
 
 深度合規不是 Web3 特有：
@@ -2858,6 +2967,7 @@ Web3 常被包裝成「自由、匿名、無國界」，但實際上只要牽涉
 
 
 
+
 一。资产自托管：如何提高安全性、降低管理私钥的复杂度？核心矛盾：自托管 = 自由 + 风险。大部分人死在私钥丢失、助记词泄露、以及社交工程攻击。未來私钥管理的趨勢是：用戶不再看到私钥，所有複雜度都被 AA + MPC + TEE 隱藏，由智能帳戶負責安全與恢復。解决路径：
 
 1.智能账户。可提供：無私鑰登錄（email、手機登入 → 背後由 MPC + AA 實現）。交易可限額、可凍結。社交恢復（朋友、家人、多設備）。
@@ -2913,6 +3023,7 @@ Web3 常被包裝成「自由、匿名、無國界」，但實際上只要牽涉
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
