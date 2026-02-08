@@ -15,19 +15,27 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+最后一天，撒花撒花。
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 四周共学的最后一天工作日，别空着，写点啥。打个卡证明来过，非常开心能与这么多小伙伴还有各位助教老师度过愉快的四周时光。
 <!-- DAILY_CHECKIN_2026-02-06_END -->
 
 # 2026-02-05
 <!-- DAILY_CHECKIN_2026-02-05_START -->
 
+
 co-learning
 <!-- DAILY_CHECKIN_2026-02-05_END -->
 
 # 2026-02-04
 <!-- DAILY_CHECKIN_2026-02-04_START -->
+
 
 
 打一下卡，本期共学营不知不觉已经到了最后一周。  
@@ -40,11 +48,13 @@ co-learning
 
 
 
+
 今天是实习计划第四周的第一天，仿佛一切与三周前相比都有了很大区别。
 <!-- DAILY_CHECKIN_2026-02-02_END -->
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -108,6 +118,7 @@ co-learning
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -229,12 +240,14 @@ co-learning
 
 
 
+
 今天体验了vibe coding，一个prompt就能生成一个flappy cat小游戏。  
 AI IS THE FUTURE.
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -321,6 +334,7 @@ AI IS THE FUTURE.
 
 
 
+
 # Web3 投研基础框架与市场分析
 
 ### 1\. 投研核心三要素
@@ -393,6 +407,7 @@ AI IS THE FUTURE.
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -528,6 +543,7 @@ AI IS THE FUTURE.
 
 
 
+
 **Speedrun Ethereum** 的核心挑战和相关概念。
 
 **1\. 核心理念转变：AI 辅助编程 ("Vibe Coding")**
@@ -620,6 +636,7 @@ AI IS THE FUTURE.
 
 
 
+
 看来要忙起来了
 <!-- DAILY_CHECKIN_2026-01-21_END -->
 
@@ -637,11 +654,13 @@ AI IS THE FUTURE.
 
 
 
+
 可持续性学习ing
 <!-- DAILY_CHECKIN_2026-01-20_END -->
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -708,6 +727,7 @@ AI IS THE FUTURE.
 
 # 2026-01-18
 <!-- DAILY_CHECKIN_2026-01-18_START -->
+
 
 
 
@@ -790,6 +810,7 @@ AI IS THE FUTURE.
 
 
 
+
 今天参加了 LXDAO 的周会，关于 AI 编程的讨论给了我很大启发。
 
 **1\. 现象：Vibe Coding 的“甜蜜陷阱”** 现在很流行 Vibe Coding（随缘编程）：你描述需求，AI 写代码，跑通了就算赢。 对于新手（特别是懂逻辑但代码基础弱的人），这有个巨大的隐患：
@@ -814,6 +835,7 @@ AI IS THE FUTURE.
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -874,6 +896,7 @@ AI IS THE FUTURE.
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -964,6 +987,7 @@ AI IS THE FUTURE.
 
 
 
+
 会议讨论了 Web3 实习计划第三天的两场分享会，第一场由 Goplus 的 Adam 老师分享 Web3 安全主题，包括 2025 年安全事件数据、典型案例、新趋势及安全建议；第二场由邓律讲解 Web3 合规相关内容，强调合规意识及刑事合规层面案例，具体如下：
 
 -   **会议开场与学分情况**：
@@ -1019,6 +1043,7 @@ AI IS THE FUTURE.
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1176,6 +1201,7 @@ Web3 的核心在于用户拥有账户的绝对控制权（个人主权），这
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
