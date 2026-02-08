@@ -15,8 +15,20 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-02-08
+<!-- DAILY_CHECKIN_2026-02-08_START -->
+4个星期的实习计划已经结束，我在这里深入学习了以太坊的开发，
+
+实习计划后，我将不停息，继续完成深度学习，
+
+我从网上摘得如下计划，下一步严格遵守完成
+
+![G73jMdWaMAY5Q-b.png](https://raw.githubusercontent.com/IntensiveCoLearning/Web3_Internship_Bootcamp_2026_Winter/main/assets/panrui1984/images/2026-02-08-1770556856521-G73jMdWaMAY5Q-b.png)
+<!-- DAILY_CHECKIN_2026-02-08_END -->
+
 # 2026-02-07
 <!-- DAILY_CHECKIN_2026-02-07_START -->
+
 ### Reactive Network 学习笔记
 
 1\. 什么是 Reactive Network？
@@ -59,6 +71,7 @@ Reactive Network 引入了“控制反转”的概念：
 
 # 2026-02-06
 <!-- DAILY_CHECKIN_2026-02-06_START -->
+
 
 **深入浅出 Uniswap V2**
 
@@ -117,6 +130,7 @@ V2 的代码美学在于解耦：
 <!-- DAILY_CHECKIN_2026-02-04_START -->
 
 
+
 ## 一、核心定位
 
 基于`reactive-lib`的跨链事件驱动核心合约，是前序回调合约的上游触发源，实现「日志订阅→条件判断→跨链回调触发」核心链路。
@@ -160,6 +174,7 @@ V2 的代码美学在于解耦：
 
 # 2026-02-03
 <!-- DAILY_CHECKIN_2026-02-03_START -->
+
 
 
 
@@ -226,6 +241,7 @@ ERC-20和ERC-721的“结合体”，既能发可替代代币（FT），也能�
 
 # 2026-02-02
 <!-- DAILY_CHECKIN_2026-02-02_START -->
+
 
 
 
@@ -360,6 +376,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 
 
+
 提交休闲黑客松代码
 
 [panrui1984/polymarket-hackathon: 基于 Next.js 15、Prisma 7 和 Gemini 2.0 构建的 Polymarket 全生命周期数据索引器。通过解码链上原始日志（OrderFilled, PositionSplit 等）还原市场动态，结合 Gemini AI 实现交易意图深度翻译、Smart Money 行为画像及市场情绪智能诊断。集成了专业级金融看板、大额交易实时监测（Whale Watcher）以及标准的 Swagger API 聚合服务。](https://github.com/panrui1984/polymarket-hackathon)
@@ -369,6 +386,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 
 
@@ -406,6 +424,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 # 2026-01-30
 <!-- DAILY_CHECKIN_2026-01-30_START -->
+
 
 
 
@@ -476,6 +495,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 
 
+
 本次尝试使用viem前端库
 
 以下记录一些简要记录
@@ -504,6 +524,7 @@ function init(uint256 tokens) public payable returns (uint256) {
 
 # 2026-01-27
 <!-- DAILY_CHECKIN_2026-01-27_START -->
+
 
 
 
@@ -571,6 +592,7 @@ Polymarket 链上数据解析与索引器学习笔记
 
 
 
+
 # Uniswap V2 源代码学习笔记
 
 _x_×_y_\=_k_
@@ -621,6 +643,7 @@ V1 必须用 ETH 做中介 (TokenA -> ETH -> TokenB)，V2 允许任意 Token 对
 
 
 
+
 # Polymarket 技术向精简学习笔记
 
 Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依托**智能合约**、**AMM 机制**、**预言机**实现事件概率代币化交易与自动结算，底层部署于 Polygon 二层网络。
@@ -660,6 +683,7 @@ Polymarket 是基于区块链的去中心化预测市场标杆平台，核心依
 
 # 2026-01-23
 <!-- DAILY_CHECKIN_2026-01-23_START -->
+
 
 
 
@@ -785,6 +809,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等
 
 # 2026-01-22
 <!-- DAILY_CHECKIN_2026-01-22_START -->
+
 
 
 
@@ -939,6 +964,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 编写了一份研究报告
 
 一、 项目概况与背景
@@ -1063,6 +1089,7 @@ o 与 Bitlayer 社区和基金会对接生态资源、技术指导等五、如�
 
 
 
+
 Web3工具
 
 # 社交工具
@@ -1124,6 +1151,7 @@ okx，binance钱包
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -1286,6 +1314,7 @@ Lock = false;
 
 
 
+
 24-25区块链主要进展记录
 
 Ordi开启的BRC20铭文
@@ -1345,6 +1374,7 @@ ICO合规化（Project Crypto）
 
 # 2026-01-17
 <!-- DAILY_CHECKIN_2026-01-17_START -->
+
 
 
 
@@ -1465,6 +1495,7 @@ Blast项目方设计了一套积分策略。
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -1632,6 +1663,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 
 
+
 以下纪录今天学习以太坊开发的部分内容
 
 ### **交易**
@@ -1661,6 +1693,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-14
 <!-- DAILY_CHECKIN_2026-01-14_START -->
+
 
 
 
@@ -1714,6 +1747,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1804,6 +1838,7 @@ Arc的Fx模块支持7×24 小时可编程支付对支付（PvP）结算，实现
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
