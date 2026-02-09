@@ -1,5 +1,5 @@
 ---
-timezone: UTC+6
+timezone: UTC+7
 ---
 
 # Qy
