@@ -15,8 +15,14 @@ Web3 实习计划 2025 冬季实习生
 ## Notes
 
 <!-- Content_START -->
+# 2026-03-11
+<!-- DAILY_CHECKIN_2026-03-11_START -->
+今天没有好好学习，在鼓捣抖音直播后台刷礼物的接口
+<!-- DAILY_CHECKIN_2026-03-11_END -->
+
 # 2026-02-01
 <!-- DAILY_CHECKIN_2026-02-01_START -->
+
 ### 1.
 
 第一个黑客松 Demo 终于跑通了，这种从零到一完整闭环的感觉真的爽。和队友的配合也很顺利, 尤其是 AI 效率极高。
@@ -32,6 +38,7 @@ Web3 实习计划 2025 冬季实习生
 
 # 2026-01-31
 <!-- DAILY_CHECKIN_2026-01-31_START -->
+
 
 昨天漏打,哭.今天搞了个SpoonOS分析GMGN上meme币的工具  
   
@@ -178,11 +185,13 @@ return self.model.generate\_content(prompt).text
 <!-- DAILY_CHECKIN_2026-01-29_START -->
 
 
+
 黑客松DEMO低配版完成, 但是kiteAI的SDK一直没跑通,破防了
 <!-- DAILY_CHECKIN_2026-01-29_END -->
 
 # 2026-01-28
 <!-- DAILY_CHECKIN_2026-01-28_START -->
+
 
 
 
@@ -266,6 +275,7 @@ return self.model.generate\_content(prompt).text
 
 
 
+
 回看ETH中文周会:  
 2026 加密格局大揭秘：以太坊的“结构性阻力”、社交协议的软着陆与数字三位一体的到来
 
@@ -327,6 +337,7 @@ return self.model.generate\_content(prompt).text
 
 
 
+
 [https://x.com/uogh007/status/2015791177174602225?s=20](https://x.com/uogh007/status/2015791177174602225?s=20)
 
 [https://x.com/uogh007/status/2015745951437099149?s=20](https://x.com/uogh007/status/2015745951437099149?s=20)
@@ -338,6 +349,7 @@ return self.model.generate\_content(prompt).text
 
 # 2026-01-25
 <!-- DAILY_CHECKIN_2026-01-25_START -->
+
 
 
 
@@ -373,6 +385,7 @@ V3 不再一刀切收 0.3% 的手续费，而是提供了 0.05%、0.3% 和 1% �
 
 # 2026-01-24
 <!-- DAILY_CHECKIN_2026-01-24_START -->
+
 
 
 
@@ -485,6 +498,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 完成了Twitter Space策划方案，希望能过。  
 开发黑客松项目中。
 
@@ -505,11 +519,13 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 听了xAI员工播客，原来xAI用Tesla车上的FSD算力来快速迭代小模型。那么ETH完全可以做同样的事！
 <!-- DAILY_CHECKIN_2026-01-22_END -->
 
 # 2026-01-21
 <!-- DAILY_CHECKIN_2026-01-21_START -->
+
 
 
 
@@ -617,6 +633,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 今天看同学笔记，深入了解了polymarket的机制，一切馈赠都标好了价格。
 
 加了投研群，感觉这才是web3的根基啊。
@@ -626,6 +643,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 # 2026-01-19
 <!-- DAILY_CHECKIN_2026-01-19_START -->
+
 
 
 
@@ -662,6 +680,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 撰写了学习总结，[https://x.com/uogh007/status/2012760845420261510?s=20](https://x.com/uogh007/status/2012760845420261510?s=20)
 <!-- DAILY_CHECKIN_2026-01-18_END -->
 
@@ -682,11 +701,13 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 
 
+
 研究了polymarket，好多套利项目
 <!-- DAILY_CHECKIN_2026-01-17_END -->
 
 # 2026-01-16
 <!-- DAILY_CHECKIN_2026-01-16_START -->
+
 
 
 
@@ -808,6 +829,7 @@ DeFi 协议如何确保在“恶意环境（Adversarial Environment）”中存�
 
 # 2026-01-15
 <!-- DAILY_CHECKIN_2026-01-15_START -->
+
 
 
 
@@ -994,11 +1016,13 @@ AI 技术的大规模应用彻底重塑了 Web3 的社交工程学边界。2025 
 
 
 
+
 参加了Billions线下活动
 <!-- DAILY_CHECKIN_2026-01-14_END -->
 
 # 2026-01-13
 <!-- DAILY_CHECKIN_2026-01-13_START -->
+
 
 
 
@@ -1184,6 +1208,7 @@ Web3被称为“世界上人效杠杆率最高的行业之一”，以下这组�
 
 # 2026-01-12
 <!-- DAILY_CHECKIN_2026-01-12_START -->
+
 
 
 
